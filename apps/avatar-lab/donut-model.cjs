@@ -21,15 +21,21 @@ module.exports=function(THREE){
   }
   for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];
   const glaze=k.geometry(p,ix);glaze.scale(1,1,1.55);mesh("ChocolateGlaze",glaze,chocolate,head);
+  const glazeCarrier=new THREE.Mesh(glaze,new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));glazeCarrier.updateMatrixWorld(true);
   const sprinkles=["#f3c5a1","#e5a2a7","#c0d5d4","#f4d4a5","#eac5b4"].map((c,i)=>solid("SprinkleColor"+i,c));
   for(let i=0;i<23;i++){
-    const theta=.08+(i*.83%(Math.PI-.16)),cross=.40+(i*.71%2.25),r=.760+.260*Math.cos(cross);
+    // The source already contains front sprinkles. Carry that motif onto the
+    // rear coating without scattering a second set across the original face.
+    const theta=.08+(i*.83%(Math.PI-.16)),cross=-.40-(i*.71%2.25),r=.760+.260*Math.cos(cross);
     const v=new THREE.Vector3(Math.cos(theta)*Math.cos(cross),Math.sin(theta)*Math.cos(cross),Math.sin(cross)).normalize();
     const center=new THREE.Vector3(Math.cos(theta)*r,Math.sin(theta)*r*.96-(1-Math.cos(cross))*.5*(.08+.045*Math.sin(theta)),.260*1.55*Math.sin(cross));
-    const tangent=new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0).applyAxisAngle(v,(i%5)*.57).multiplyScalar(.031);
-    k.tube("Sprinkle"+i,[center.clone().sub(tangent).toArray(),center.clone().add(tangent).toArray()],.012,sprinkles[i%5],head);
-    for(const sign of [-1,1])mesh("SprinkleCap"+i+"_"+sign,new THREE.SphereGeometry(.012,8,6),sprinkles[i%5],head,center.clone().addScaledVector(tangent,sign).toArray());
+    const hit=new THREE.Raycaster(center.clone().addScaledVector(v,.2),v.clone().negate()).intersectObject(glazeCarrier)[0];if(!hit)throw new Error('Donut sprinkle outside chocolate coating: '+i);
+    const normal=hit.face.normal.clone();if(normal.dot(v)<0)normal.negate();v.copy(normal);center.copy(hit.point).addScaledVector(v,.006);
+    const tangent=new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0);tangent.addScaledVector(v,-tangent.dot(v)).normalize().applyAxisAngle(v,(i%5)*.57).multiplyScalar(.031);
+    k.tube("Sprinkle"+i,[center.clone().sub(tangent).toArray(),center.clone().add(tangent).toArray()],.012,sprinkles[i%5],head).userData.skipOriginalPaint=true;
+    for(const sign of [-1,1]){const cap=mesh("SprinkleCap"+i+"_"+sign,new THREE.SphereGeometry(.012,8,6),sprinkles[i%5],head,center.clone().addScaledVector(tangent,sign).toArray());cap.userData.skipOriginalPaint=true;cap.userData.coatingNormal=v.toArray();}
   }
+  glazeCarrier.material.dispose();
   volume("OriginalFace",[[216,264],[226,224],[253,198],[288,183],[325,182],[364,195],[398,220],[416,257],[419,293],[402,325],[369,348],[329,359],[284,353],[246,332],[222,301]],[319,271],[320,255],.215,.23,head,skin,{z:.10,samples:96});
   k.suit([
     ["Torso",[320,485],[[254,430],[286,440],[351,440],[381,430],[386,477],[378,514],[353,540],[282,539],[259,514]], [320,486],.24,-.035],

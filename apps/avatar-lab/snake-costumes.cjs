@@ -1,35 +1,35 @@
 "use strict";
-// Short limbless costumes: rounded hood, low real coil and an attached tail.
 module.exports=function snakes(THREE,k,id,parts){
  if(!['animal-viper','animal-ratsnake'].includes(id))return false;
- const viper=id==='animal-viper',head=parts.get('Head'),s=require('./sculpt-kit.cjs')(THREE,k,head);
- s.parent.clear();const green=viper?'#91ab45':'#77a84d',belly=viper?'#d4d479':'#c7d778';
- const outline=viper?[[306,95],[359,101],[403,94],[439,125],[459,188],[475,260],[460,331],[414,386],[350,411],[281,416],[213,394],[164,350],[138,277],[146,215],[173,162],[175,130],[205,96],[256,103]]:[[317,62],[230,82],[166,135],[128,204],[116,278],[140,355],[202,417],[280,452],[348,450],[421,413],[484,352],[517,278],[493,195],[447,123],[382,80]];
- k.volume('SnakeHood',outline,viper?[306,255]:[317,258],head.part.pivot,viper?.70:.78,viper?.70:.78,s.parent,k.solid('SnakeHoodGreen',green),{art:false,samples:96});
- if(viper){
-  s.cone('ViperCrest',[306,83,-.03],.15,.23,'#b8c75e');
-  for(const [name,x,y] of [['Left',211,143],['Right',401,144]])s.ellipsoid('Viper'+name+'EyeBulge',[x,y,.28],[40,47,.19],green);
-  s.ellipsoid('ViperUpperMuzzle',[306,210,.60],[119,26,.09],green);
+ for(const p of parts.values())k.body.remove(p.group);parts.clear();
+ const viper=id==='animal-viper',green=viper?'#91ac49':'#7da74c',belly=viper?'#d4d47e':'#d1d984';
+ function part(name,pivot,z=0){const p={part:{pivot,color:green},group:k.group(name,pivot,z),special:true};p.group.userData.directSurfaceArtwork=true;parts.set(name,p);return p;}
+ function vol(p,name,shape,center,front,back=front,color=green){k.volume(name,shape,center,p.part.pivot,front,back,p.group,k.solid(name+'Color',color),{art:false,samples:128});}
+ function paint(p){require('./project-model-artwork.cjs')(THREE,k,p.group,p.part.pivot);}
+ const head=part('Head',viper?[306,255]:[317,257]);
+ const shape=viper?[[305,89],[353,99],[387,96],[416,106],[439,136],[450,171],[460,211],[472,254],[472,292],[460,331],[438,364],[407,388],[364,407],[317,416],[271,413],[225,401],[188,380],[159,349],[140,310],[135,270],[143,228],[157,191],[169,151],[175,126],[191,107],[213,99],[243,107],[274,96]]:[[317,63],[379,73],[430,99],[471,139],[502,190],[519,247],[515,303],[497,352],[465,392],[421,423],[371,445],[317,455],[263,446],[212,428],[166,398],[135,357],[118,308],[115,258],[127,204],[153,153],[191,110],[238,81],[281,67]];
+ vol(head,'SmoothSnakeHood',shape,viper?[306,259]:[317,260],viper?.68:.76);
+ head.group.userData.artworkOpaqueRegions=[viper?{cx:305,cy:315,rx:115,ry:88}:{cx:317,cy:313,rx:140,ry:109}];
+ const s=require('./sculpt-kit.cjs')(THREE,k,head),rim=shape.map(([x,y])=>[x,y,0]);rim.push(rim[0]);s.tube('SnakeHoodPiping',rim,.008,viper?'#52672e':'#456b35').userData.skipOriginalPaint=true;
+ if(viper)vol(head,'RoundedCrest',[[276,101],[285,76],[305,60],[321,70],[342,100]],[306,87],.12,.12,'#abc05a');
+ paint(head);
+ const trunk=part('SnakeTrunk',viper?[306,444]:[317,480]);
+ const shapeTrunk=viper?[[260,394],[356,394],[350,427],[366,453],[393,477],[385,495],[345,505],[286,503],[232,492],[224,475],[245,445]]:[[270,425],[367,425],[360,455],[366,474],[398,489],[394,510],[361,523],[290,523],[243,514],[230,498],[247,478],[267,455]];
+ vol(trunk,'ShortContinuousSnakeTrunk',shapeTrunk,viper?[306,453]:[317,483],.35,.40);paint(trunk);
+ const coil=part('SnakeCoil',viper?[311,505]:[320,527]);
+ const cx=viper?311:320,cy=viper?504:523;
+ const coilShape=viper?[[307,461],[345,460],[382,470],[410,482],[433,499],[436,515],[421,530],[393,539],[354,544],[310,547],[265,544],[224,536],[198,522],[188,505],[190,488],[211,474],[245,464],[278,459]]:[[320,466],[375,471],[421,482],[455,497],[471,514],[468,536],[448,551],[416,563],[368,575],[320,579],[270,576],[219,568],[183,552],[166,535],[164,516],[176,498],[199,482],[238,470],[278,464]];
+ // The resting coil forms a single closed mass around the short neck.
+ vol(coil,'RestingCoiledBody',coilShape,[cx,cy],.48,.52);
+ for(const mesh of coil.group.children){const p=mesh.geometry.attributes.position,colors=[];
+  for(let i=0;i<p.count;i++){const x=p.getX(i)/.005+cx,y=coil.part.pivot[1]-p.getY(i)/.005;const blend=Math.min(1,Math.max(0,(y-cy-14)/8));
+   const c=new THREE.Color(green).lerp(new THREE.Color(belly),blend).convertSRGBToLinear();colors.push(c.r,c.g,c.b);
+  }
+  mesh.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));mesh.material.color.set(0xffffff);mesh.material.userData.preserveVertexColor=true;
  }
- s.lathe('ShortSnakeTorso',viper?[[488,0,306],[478,58,306],[453,55,305],[427,44,304],[409,53,303],[400,0,303]]:[[528,0,317],[516,85,317],[495,62,317],[472,47,317],[445,57,317],[437,0,317]],green);
- const radius=viper?.47:.65,tube=viper?.19:.16;
- const coil=s.torus('LowSnakeCoil',viper?[313,505,0]:[320,548,0],radius,tube,green);
- coil.geometry.dispose();coil.geometry=new THREE.TorusGeometry(radius,tube,24,128);
- coil.rotation.x=Math.PI/2;
- coil.userData.skipOriginalPaint=true;
- const normal=coil.geometry.attributes.normal,uv=coil.geometry.attributes.uv,colors=[];
- for(let i=0;i<normal.count;i++){
-  const ny=normal.getY(i)*Math.cos(coil.rotation.x)-normal.getZ(i)*Math.sin(coil.rotation.x);
-  const u=uv.getX(i),v=uv.getY(i),seam=viper&&Math.abs(Math.sin(u*Math.PI*32))<.10;
-  const spot=viper&&Math.hypot((u*16-Math.round(u*16))/.30,(v-.76)/.10)<1;
-  const c=new THREE.Color(ny<-.10?(seam?'#a7af62':belly):spot?'#749640':green).convertSRGBToLinear();colors.push(c.r,c.g,c.b);
- }
- coil.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));coil.material.color.set(0xffffff);coil.material.userData.preserveVertexColor=true;
- s.paint();head.special=true;head.authoredFamily='coiled-snake';
- const path=viper?[[418,492,-.10,18],[460,473,-.09,19],[482,433,.01,15],[458,402,.03,2]]:[[435,533,-.08,14],[476,517,-.04,14],[480,493,.03,8],[455,481,.06,2]];
- const pivot=path[0].slice(0,2),tail={group:k.group('SnakeTail',pivot,path[0][2]),part:{pivot,color:green}};
- const ts=require('./sculpt-kit.cjs')(THREE,k,tail),mesh=ts.sweep('ContinuousSnakeTail',path,green),p=mesh.geometry.attributes.normal,tc=[];
- for(let i=0;i<p.count;i++){const c=new THREE.Color(p.getY(i)<-.15?belly:green).convertSRGBToLinear();tc.push(c.r,c.g,c.b);}
- mesh.geometry.setAttribute('color',new THREE.Float32BufferAttribute(tc,3));mesh.material.color.set(0xffffff);mesh.material.userData.preserveVertexColor=true;
+ paint(coil);
+ const tail=part('SnakeTail',viper?[407,492]:[436,529]);
+ const ts=require('./sculpt-kit.cjs')(THREE,k,tail),path=viper?[[399,494,-.10,24],[443,484,-.08,23],[473,457,-.04,20],[474,427,.02,15],[456,407,.03,7],[445,405,.03,1]]:[[423,532,-.10,20],[458,521,-.06,17],[470,500,.0,13],[462,483,.03,7],[447,479,.04,1]];
+ ts.sweep('ConnectedSnakeTail',path,green);paint(tail);
  return true;
 };

@@ -22,15 +22,20 @@ module.exports=function projectModelArtwork(THREE,k,parent,pivot){
  for(const surface of surfaces){
   if(surface.userData.skipOriginalPaint){transformed.get(surface).dispose();continue;}
   const source=transformed.get(surface),p=source.attributes.position,n=source.attributes.normal,ix=source.index,indices=[];
-  for(let i=0;i<(ix?ix.count:p.count);i+=3){const a=ix?ix.getX(i):i,b=ix?ix.getX(i+1):i+1,c=ix?ix.getX(i+2):i+2;if((n.getZ(a)+n.getZ(b)+n.getZ(c))/3>.12)indices.push(a,b,c);}
+  const facing=i=>surface.userData.artworkHorizontalNormal?n.getZ(i)/Math.max(.001,Math.hypot(n.getX(i),n.getZ(i))):surface.userData.artworkCylindrical?p.getZ(i)/Math.max(.001,Math.hypot(p.getX(i),p.getZ(i))):n.getZ(i);
+  for(let i=0;i<(ix?ix.count:p.count);i+=3){const a=ix?ix.getX(i):i,b=ix?ix.getX(i+1):i+1,c=ix?ix.getX(i+2):i+2;if((facing(a)+facing(b)+facing(c))/3>.12)indices.push(a,b,c);}
   if(!indices.length){source.dispose();continue;}
   const uv=[],colors=[];for(let i=0;i<p.count;i++){
    const px=p.getX(i)/.005+pivot[0],py=pivot[1]-p.getY(i)/.005;uv.push(px/640,py/640);
-   let alpha=Math.min(1,Math.max(0,(n.getZ(i)-.35)/.35));
+   const fade=surface.userData.artworkFacingFade||[.35,.70];
+   let alpha=Math.min(1,Math.max(0,(facing(i)-fade[0])/(fade[1]-fade[0])));
    const dx=Math.max(0,Math.min(319,Math.floor(px/2))),dy=Math.max(0,Math.min(319,Math.floor(py/2))),front=depth[dy*resolution+dx];
-   if(front-p.getZ(i)>.035)alpha=0;
+   if(!parent.userData.directSurfaceArtwork&&front-p.getZ(i)>.035)alpha=0;
+   for(const f of parent.userData.artworkOpaqueRegions||[])if(((px-f.cx)/f.rx)**2+((py-f.cy)/f.ry)**2<1)alpha=1;
    for(const f of parent.userData.originalFaceRegions||[])if(((px-f.cx)/f.rx)**2+((py-f.cy)/f.ry)**2<1.015)alpha=0;
+   for(const f of surface.userData.artworkExcludedRegions||[])if(((px-f.cx)/f.rx)**2+((py-f.cy)/f.ry)**2<1.015)alpha=0;
    if(surface.userData.artworkMinY!==undefined)alpha*=Math.min(1,Math.max(0,(py-surface.userData.artworkMinY)/12));
+   if(parent.userData.artworkOcclusion&&front-p.getZ(i)>.035)alpha=0;
    colors.push(1,1,1,alpha);p.setZ(i,p.getZ(i)+.006);
   }
   source.setIndex(indices);source.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));source.setAttribute('color',new THREE.Float32BufferAttribute(colors,4));

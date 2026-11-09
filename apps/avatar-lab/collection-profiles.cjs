@@ -83,7 +83,7 @@ food-sushi|초밥|420|535|.65|walk|sushi
 food-toast|토스트|440|537|.30|walk|box
 food-tteokbokki|떡볶이|580|580|1.20|hop|bowl
 fruit-apple|사과|432|537|.70|walk|fruit
-fruit-avocado|아보카도|545|553|.55|walk|fruit
+fruit-avocado|아보카도|545|553|.55|hop|fruit
 fruit-banana|바나나|403|536|.43|walk|custom
 fruit-blueberry|블루베리|432|536|.68|walk|fruit
 fruit-cherry|체리|580|580|.68|hop|fruit
@@ -174,11 +174,14 @@ for(const [id,x,y] of [
   ["animal-seal",420,468],["animal-squirrel",402,251],["animal-tiger",420,451],["animal-unicorn",405,442],
   ["animal-viper",420,412],["animal-wolf",421,390]
 ])set(id,{tail:{x,y,side:id==="animal-fox"?"left":"right"}});
-set("animal-elephant",{cx:310,armHalf:62,holdArms:true});
+set("animal-elephant",{cx:320,armHalf:62,holdArms:true,motion:'hop'});
 set('animal-squirrel',{cx:262,neck:418,leg:537,armHalf:69});
 set('animal-panda',{neck:400,leg:534});
+set('animal-seal',{cx:289,neck:390,leg:535});
 set("animal-giraffe",{armHalf:45});set("animal-kangaroo",{cx:287,armHalf:51,holdArms:true});
 set("animal-ostrich",{cx:290,armHalf:45,holdArms:true});set("animal-flamingo",{armHalf:42,holdArms:true});
+set('animal-ostrich',{neck:388,leg:497});
+set('animal-frog',{motion:'hop'});
 set("animal-rabbit",{armHalf:48});set("animal-unicorn",{armHalf:51});
 set("animal-butterfly",{wingEllipse:[320,300,144,148],wingTop:180,armHalf:45,holdArms:true});
 set("animal-dragonfly",{wingEllipse:[320,307,103,107],wingTop:260,armHalf:33,holdArms:true});
@@ -186,9 +189,11 @@ set("animal-ladybug",{wingEllipse:[320,284,160,145],wingTop:360,armHalf:48,holdA
 set("animal-peacock",{wingEllipse:[320,316,121,130],wingTop:60,armHalf:43,holdArms:true});
 for(const id of ["animal-tiger","animal-wolf"])set(id,{pattern:"stripes"});
 set('animal-crested-gecko',{pattern:'crested',headColor:'#a26738',bodyColor:'#664128'});
+set('animal-crocodile',{cx:289,neck:392,leg:535});
+set('animal-leopard-gecko',{cx:304,neck:425,leg:540});
 set('animal-leopard-gecko',{pattern:'leopard'});
 set('animal-giraffe',{pattern:'giraffe'});
-set("animal-turtle",{pattern:"shell"});set("animal-bee",{pattern:"bee",holdArms:true});
+set("animal-turtle",{pattern:"shell"});set("animal-bee",{pattern:"bee",holdArms:true,cx:292});
 set("food-fish-pastry",{pattern:"scales"});set("fruit-melon",{pattern:"melon"});
 set("fruit-strawberry",{pattern:"seeds"});set("fruit-orange",{pattern:"pores"});
 set("fruit-pineapple",{pattern:"pineapple"});set("vegetable-corn",{pattern:"corn"});

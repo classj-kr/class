@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "count": 152,
+  "count": 169,
   "categoryCounts": {
-    "animal": 52,
+    "animal": 59,
     "award": 1,
-    "drink": 1,
-    "food": 24,
+    "drink": 2,
+    "food": 26,
     "fruit": 14,
     "game": 1,
-    "object": 15,
-    "sport": 4,
-    "theme": 19,
+    "object": 16,
+    "sport": 5,
+    "theme": 23,
     "vegetable": 11,
-    "vehicle": 10
+    "vehicle": 11
   },
   "styleReferences": [
     "animal-cat",
@@ -33,66 +33,91 @@
       "source": "apps/classtools/assets/avatars/animal-bear.webp",
       "sourceCategory": "animal",
       "sourceSha256": "15dfcbda1b4bdaa540377fe01579831b6e6e2ebf3f2d3a610b2fdb360068be12",
-      "modelSha256": "507139bd8dcaee4f26a6c4ea80b8d081d515f266fbb6a218b98938d40f32c4fe",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "fbe85aabed2974e6d7721674d5937e79ab0ba4209c288692a2d992350d28223c",
+      "structureNote": "Original face, round ears and short suit preserved. Removed full-surface opaque artwork override; source paint fades before the flank and actual silhouette shells provide outlines. Joined surface normals eliminate split rim shading. Reduced greeting angle to keep the bear hand outside the hood. Closed head/body/limb/feature pairs, head-feature contact and actual body/head/limb contacts at five phases of every clip pass. Source/front, all directions under four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-bear.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-bee",
       "source": "apps/classtools/assets/avatars/animal-bee.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "bf13ed878b8f07296fd43f366f83d0551ab956967db3f32535e981a219793f48",
-      "modelSha256": "a2c4dab578e795c313dd99caf23607b64622d51af97fae39af96bc3705b11182",
-      "structureNote": "Individual structure: bee. Visual review remains open.",
-      "status": "needs_remodeling",
+      "sourceSha256": "a67042bbb00d0f8e7ba98431ee4c9105d66b6d2a35b4e4856dfb1e865bc8ce73",
+      "modelSha256": "fb31d8731c5635e771b2b9a59b221b0ba4b6c5cafdfe9890a60e27bfe4a7de5e",
+      "structureNote": "Preserved original smiling face and short striped abdomen. Replaced hood meridian with actual silhouette shell, welded split surface normals and limited hood projection to the face neighbourhood. Removed foreground-source contamination from sleeves and boots; restored continuous fitted honey-dipper grooves. Small held-prop greeting keeps the arm attached. Closed costume/antenna solids and actual torso/limb/wing/hand/handle contact tests pass through Idle, Walk and Wave at five phases. Original/front, all animated directions at four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-bee.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-butterfly",
       "source": "apps/classtools/assets/avatars/animal-butterfly.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "e2881d5d4aea002d194bfb868c7ecb925a6d94a15471be34da9767aac423d205",
-      "modelSha256": "66584bf200911bc144bfecca611a5e5d72c6f1154cf782774e8c9f03d1916ac5",
-      "structureNote": "Individual structure: narrow_appendages. Visual review remains open.",
-      "status": "needs_remodeling",
+      "sourceSha256": "34d700c13b41d05f3b9e7c0f5943e4fc6b58f072b4658820422ecf85f2ba31b5",
+      "modelSha256": "623d5ca6d16c5b62b76cc2c4a0692326b3a465b0445ff5473e0e5c260ccf4b33",
+      "structureNote": "Preserved smiling expression, curled antennae, patterned wings and short rainbow abdomen. Replaced hood meridian with actual silhouette shell and welded rim normals. Removed wing/foreground projection from sleeves and boots. Extended hidden upper-wing root into the body, retaining visible outline and wing pattern. Closed costume/antenna solids and actual torso/limb/wing-root contacts pass through Idle, Walk and Wave at five phases. Original/front, all animated directions at four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-butterfly.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-cat",
       "source": "apps/classtools/assets/avatars/animal-cat.webp",
       "sourceCategory": "animal",
       "sourceSha256": "13db2c476eb70ad7ca6c52ac39c143265b76779812adefac1840d3f95b760e35",
-      "modelSha256": "2ce39270f7f7eaacaaea01d86a56a1666acc1c973939e744420c463eb6244ce5",
-      "structureNote": "Individual structure: original_six. Visual review remains open.",
-      "status": "needs_review",
+      "modelSha256": "c55744b785f7ab6916a3c59ec2367e2db3ceb44e1dcc79c7bd7af49c067c244f",
+      "structureNote": "Continuous closed hood and ears with original expression, closed striped tail and short attached suit/limbs. Current-hash front/all-view/animation/export/museum review passed.",
+      "status": "complete",
+      "checks": {
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-cat.json",
+      "reviewDate": "2026-11-09"
+    },
+    {
+      "id": "animal-caterpillar",
+      "source": "apps/classtools/assets/avatars/animal-caterpillar.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "30fc7112d5eeb05f163c69a801d4a821330437d2c0062acb79927e6904eff632",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
       "checks": {
         "identity": "pending",
         "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -101,12 +126,31 @@
       "source": "apps/classtools/assets/avatars/animal-chick.webp",
       "sourceCategory": "animal",
       "sourceSha256": "7eafe3c34943d8d65eaee81e55b6330e719c271b85ade623aaf3269f662483b0",
-      "modelSha256": "4fd618e0ca50f8f5caac33faeb17d138e2f9ed082c0829b9b4aadb584ed128ad",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "3a54a9b978e1b15cc64fcd5f13e15107ef5b1894cf817065173d336bbb816774",
+      "structureNote": "Original smiling face, scalloped hood, crest and compact body preserved. Localized small scallops to the edge instead of propagating folds over the cranium, and smoothed down-like shading. Source paint fades before the flank; actual silhouette shells retain the perimeter. Feet remain orange around the full volume. Replaced detached overhead human-arm gesture with a connected small wing greeting. Closed surfaces, hood/crest/beak contact and actual body/head/limb contacts through all clips pass. Source/front, all directions under four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
+      "checks": {
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-chick.json",
+      "reviewDate": "2026-11-09"
+    },
+    {
+      "id": "animal-cow",
+      "source": "apps/classtools/assets/avatars/animal-cow.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "ad6983d599a272c472fc5f57964b78b9e5df36c492b8786e000ee91def0c328e",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
       "checks": {
         "identity": "pending",
-        "allViews": "failed",
+        "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
         "glb": "pending",
@@ -118,284 +162,335 @@
       "source": "apps/classtools/assets/avatars/animal-crab.webp",
       "sourceCategory": "animal",
       "sourceSha256": "66320105d3dd381481fa5cebdc4e60a6a336ba9bd632c6acf1c74b0ab9204848",
-      "modelSha256": "8454dc490e03c22d1c5ebd6ea594fdae6f906471be4bd2ad537cf92de15ac02f",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "6682dd4f88e6ca80547f92755c8027ad3e7782628af63b8add4e46ed6cc14a8c",
+      "structureNote": "Original expression, red crab hood/claws/side legs and compact green-backed suit preserved. Removed fixed hood meridian and welded paired normals; actual silhouette shells retain outline from each view. Moved arm pivot into the sleeve/body overlap and reduced greeting angle to prevent detachment. Closed surfaces, eye-stalk/eye/hood and claw/arm/hood contacts, all six side-leg connections, torso/limb/back-costume contact tested through all clips. Source/front, all views at four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-crab.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-crested-gecko",
       "source": "apps/classtools/assets/avatars/animal-crested-gecko.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "6b47321e9b78dcb73ae312b47dc256e47c8b7831384a9c6aea9eef73b87ecc8c",
-      "modelSha256": "a4244a704057d644da7b85768b98939e7b2df18ddb11a9ba991c1f563bd5720d",
-      "structureNote": "Individual structure: gecko. Visual review remains open.",
-      "status": "needs_remodeling",
+      "sourceSha256": "a4375a92b6a85653f7d4ac06100c9362abd0168fb4df781bae7bd7ff4606a597",
+      "modelSha256": "428c3198adea740c9b0808b8925cab4bab2c060a11c7bb1b5cfc460f779dc524",
+      "structureNote": "Original human and gecko expressions, scalloped crest, orange flame pattern and short suit preserved. Removed opaque full-surface artwork override, preventing source outlines from stretching across the sides. Localized small crest scallops to the edge rather than spreading radial ridges over the cranium; smoothed/welded surface normals. Refit eye/muzzle volumes to the new hood and removed a bright muzzle boundary absent from the source. Reduced greeting angle so the hand remains outside the hood. Closed surfaces, facial feature contact, tail/body and all limb/body connections tested through all clips; wrist exclusion from hood also tested. Source/front, all views at four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-crested-gecko.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-crocodile",
       "source": "apps/classtools/assets/avatars/animal-crocodile.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "2273699b48ce290e082321985bb0a30685cfc3f8c13e3939c3fbc9fd673e56a1",
-      "modelSha256": "0ba5e9c782fd87f2742821f09daed90ec54a60abb755205817d423ccc8c4da1b",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "161a28283d66bc0185cf36f150aff507770dc17d1fa07a5b83eb6a708321f957",
+      "modelSha256": "51679d8d75dc5b558ccdafbdca091fa250f618dde47323803dbebe8f33be2503",
+      "structureNote": "Original expression, asymmetric long snout/teeth and short green suit preserved. Removed opaque full-surface artwork override and welded paired surface normals; actual silhouette outlines replace stretched side markings. Localized small head/tail scallops to the edge and smoothed the rear surfaces. Added hidden back support connected to the torso, dorsal crests and tail after actual contact tests found detached components. Reduced greeting angle to keep the hand outside the hood. Closed surfaces, snout/teeth, back support/crests, torso/limbs/tail actual contacts and greeting wrist exclusion pass. Source/front, all views at four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-crocodile.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-deer",
       "source": "apps/classtools/assets/avatars/animal-deer.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3d821b8644b37cabdcb9760ccfdaee9598df265c6c9253dc3c7fa31e62812e16",
-      "modelSha256": "7799cb43aa93083aa477c2a39f873f3d8b81a38c609dc21d316480a7e04c4d4f",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "3195a3b45ef5a6aec54b24b969d1ffe4dd1da52a45da01ddff70c5328281e44e",
+      "structureNote": "Original expression, spotted deer forehead, antlers/ears and short body preserved. Removed opaque full-surface artwork override to stop side streaks; welded paired rim normals and added actual silhouette shells. Reduced greeting angle so the hand remains visible outside the head. Closed solids, ear/antler/muzzle contact, torso/head and all limb/body contacts, greeting wrist exclusion tested at five phases of every clip. Source/front, all views at four Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-deer.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-dog",
       "source": "apps/classtools/assets/avatars/animal-dog.webp",
       "sourceCategory": "animal",
       "sourceSha256": "1a364e809184092cdf2bd734d9da3f28dea72647e54ada6b79ac3d628c1032ae",
-      "modelSha256": "35b24e406352a54f283c35d69739b4ae22e4b87fe6ffb4003a874fb195cc0b6c",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "a7afc3a516e2e6dcf55f0a32806fa31a9f7fde0302a378c9a069c260ee2f2b1f",
+      "structureNote": "Preserved original green-eyed human expression, drooping ears, muzzle, tongue, red collar, gold bell, raised tail and short body. Removed full-surface opaque artwork override, welded paired rim normals and used actual silhouette shells. Reduced greeting angle. Closed paired surfaces, ears/muzzle/nose/tongue/tail-tip contacts, head/body, limbs/body and tail/body contacts checked at five phases of every clip; greeting wrist remains outside hood. Source/front, both profiles, rear, four animated Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-dog.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-dolphin",
       "source": "apps/classtools/assets/avatars/animal-dolphin.webp",
       "sourceCategory": "animal",
       "sourceSha256": "122b41e4488ade3620376d197b6084f0961e98fed48298f881c87430a472592d",
-      "modelSha256": "7a30856712a5364e1b306fc7fc1025040004e00ca3e49bf9eebd3f3b1d1324d5",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "f130bb14e8d87c9efb57c5963a188dca0a0703e0a6ad2bf0091eab56706a49a5",
+      "structureNote": "Preserved original brown-eyed human expression, smiling shallow muzzle, blue-gray hood, side fins, short body and broad fluked tail. Removed full-surface opaque artwork override, welded paired rim normals and used actual silhouette shells. Reduced greeting angle. Closed paired surfaces, fin/muzzle contacts, head/body, limbs/body and tail/body contacts checked at five phases of every clip; greeting wrist remains outside hood. Source/front, both profiles, rear, four animated Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-dolphin.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-dragon",
       "source": "apps/classtools/assets/avatars/animal-dragon.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "86f21c6089cc0d9278eea28ec14986c2b191a7bd673d04d009b7d4077d8cee43",
-      "modelSha256": "580fa2a04139835dd96415e27f17543680e4bdfd1aeac89a1afd96bbb2013794",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "4fb48114d684a8a93a01d1363a8c6a8932c94ae1e80a6b7ee271a526b8bbddcc",
+      "modelSha256": "17bafcd9b144e74ae7c89da89033874263f5407c6ea441a7c18943cf16b3d597",
+      "structureNote": "Preserved original green-eyed human expression, green reptile hood, brow/muzzle, forehead crest, yellow belly and short body. Removed full-surface opaque artwork override and side streaks; welded paired rim normals; smoothed hood and tail while keeping their original silhouette. Refit brow/muzzle onto the new hood. Removed overlapping feature silhouette ink causing lines across the forehead. Built three attached cream tail crests instead of stretched source pixels. Reduced greeting angle. Closed volumes, crest/muzzle/ridge and tail-crest contacts, head/body, limbs/body and tail/body contacts pass five phases of all clips; greeting wrist outside hood. Source/front, both profiles, rear, four animated Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-dragon.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-dragonfly",
       "source": "apps/classtools/assets/avatars/animal-dragonfly.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "093797ef501a7f306346372a462785e47b1ceb212d43d8cdb00ea1f8111fb9ef",
-      "modelSha256": "879fc76f1a1f3cf4630cf0d911953f9e0648c5142ab7e317e05a730bfd87868b",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "1ae12d6d76a2abae939fd643fc6d4354f3e6c5cfe301ca3069b6d24e9d76cbb8",
+      "modelSha256": "b63ee80a8bbd4e56fd969abedce52e1344c3108d485a70151cdeca4faccd10ae",
+      "structureNote": "Preserved original blue-eyed human expression, curved antennae, four patterned pale blue wings and short segmented body. Removed fixed hood meridian and welded paired rim normals. Actual silhouette outlines replace the fixed stripe. Kept front abdomen artwork and rear segmentation while removing wing pixels from narrow limbs. Wing reverse patterns preserved. Reduced greeting angle. Closed hood, abdomen, limbs and wing volumes, antenna/hood and antenna-tip contacts, head/body, limbs/body, each wing hinge/body and all four wing/hinge contacts pass five phases of every clip; greeting wrist outside hood. Source/front, both profiles, rear, four animated Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-dragonfly.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-duck",
       "source": "apps/classtools/assets/avatars/animal-duck.webp",
       "sourceCategory": "animal",
       "sourceSha256": "43f1466c3fc4103ebf0a6d40e0a211412e5f892c2c5e31619522dfb328b70147",
-      "modelSha256": "4c2c1c59d6248980f4af2924dd3aa86e3e7cb027b78b92538fd4ea5eac5bc955",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "457c14d1e426c9a8c125490c62a4009aa47b29e144d8883665b73c0c47476af7",
+      "structureNote": "Preserved source brown eyes, small duck-mouth expression, broad orange bill, curled crest, yellow short costume and wing shapes. Removed full-surface opaque artwork override and welded paired rim normals; actual silhouette ink replaces flank streaks. Orange colour now continues around both feet. Reduced greeting angle. Closed hood/bill and paired costume surfaces, crest/bill attachments, head/body and all limb/body contacts pass five phases of Idle, Walk and Wave. Greeting wrist stays outside hood. Source/front, both profiles, rear, four animated Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-duck.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-eagle",
       "source": "apps/classtools/assets/avatars/animal-eagle.webp",
       "sourceCategory": "animal",
       "sourceSha256": "6bd413154d09ae445d96cf5848b48162caf0140885e33b079991d55d0a806739",
-      "modelSha256": "18f52b4ae819144cf10f41fafc491da17c6540ada13287a38871b40f4114ca38",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "7e8ba67a7356c4fec6966f437838fd6ce63681cd3320cff974aa180f74125c42",
+      "structureNote": "Preserved source blue-eyed human smile, fierce eagle eyes, wide hooked yellow beak, white feathered hood, short brown body and feathered wing/tail shapes. Removed full-surface opaque artwork override and side streaks, welded rim normals and added actual silhouette ink. Smoothed the rear hood while localizing feather scallops to the lower edge and refit the beak onto the changed hood. Yellow colour continues around both feet. Replaced detached overhead greeting with a small attached wing greeting. Closed paired surfaces, beak/hood, head/body, limbs/body and tail/body contacts pass five phases of Idle, Walk and Wave; wrist outside hood. Source/front, both profiles, rear, four animated Walk phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-eagle.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-elephant",
       "source": "apps/classtools/assets/avatars/animal-elephant.webp",
       "sourceCategory": "animal",
       "sourceSha256": "154f23f70c9e7dbace010a2ea8db5553760ffa6c4f95fed65f316ffa2d91dab6",
-      "modelSha256": "79ef1c71843d4fe47a02c6e97198893a359c0183c00ccea4ff5e560660dd7fbb",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "a4faa0ed5efe3d70f87877297249f5e3606443020743119944ea67a727884627",
+      "structureNote": "Preserved original smiling human face, large ears, trunk, crest and short seated costume with resting hands/feet. Removed full-surface opaque artwork override, flank streaks and split rim shading. Overlapping trunk/crest/hem outline shells were omitted to avoid extra seam lines. Retained seated hopping rather than adding walking legs. Closed hood/ears/trunk/crest/body/hem/hand/foot volumes, hood feature contacts, head/body, hem/body and resting hand/foot supports pass five phases of Idle, Walk and Wave. Source/front, both profiles, rear, four animated movement phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-elephant.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-flamingo",
       "source": "apps/classtools/assets/avatars/animal-flamingo.webp",
       "sourceCategory": "animal",
       "sourceSha256": "da3c09df6b02853e99a6b40cd42231e99cda93b6d7c5eb90bcbe19f0d50b173c",
-      "modelSha256": "c5685d5ddd825473728ad7aa32ee4a806828cbf34e55d93cd32981d3ede8ec51",
-      "structureNote": "Individual structure: narrow_appendages. Visual review remains open.",
-      "status": "needs_remodeling",
+      "modelSha256": "f0367e535c137909b1652d23874bb01ce4574fa360020b20ecd46d151a1662c0",
+      "structureNote": "Preserved original brown-eyed human smile, curved bird neck, hooked beak, pink hood and short body/legs with two wings. Removed full-surface opaque artwork override, flank streaks and split rim shading. Omitted overlapping outline shells on neck/bird-head/beak; black beak tip now continues around the volume. Reduced wing greeting angle. Closed neck and paired costume volumes, neck/hood, neck/bird-head, beak/bird-head, head/body and all limb/body contacts pass five phases of every clip; greeting wrist outside hood. Source/front, both profiles, rear, four animated movement phases, Wave and exact-revision museum load/move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-flamingo.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-fox",
       "source": "apps/classtools/assets/avatars/animal-fox.webp",
       "sourceCategory": "animal",
       "sourceSha256": "cbf2d5fb40772894878739e582ed321cd74a79cf9643886e8e124b2472560da6",
-      "modelSha256": "6ead5690419bd29ceb128cbec9e8b8902ce5b717f9d4eb513a6c33ff26437a28",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "e5c60b18b862ce8116a26855864949797c0ef0e0662bdca5a0dff50dfa0e17e6",
+      "structureNote": "Green human eyes, small smile, pointed ears, cream muzzle and tail tip, short canine suit preserved. Paired canine hood rebuilt with smooth 32-ring interior and original silhouette; muzzle refitted and base colour repaired to avoid a pale rim. Source border fades toward real silhouettes; welded rim normals remove flank streaks. Closed paired hood, ears, muzzle, body, sleeves, boots and tail; ear/muzzle contact and head/body, limb/body and tail/body contact tested at five phases of every clip. Wave wrist remains outside hood. Walk phases 0, 25, 50 and 75 percent and Wave directly inspected in all directions; short arms and boots remain attached. Current-revision museum front, moving oblique and rear directly inspected at 56-57 FPS.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-fox.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-frog",
       "source": "apps/classtools/assets/avatars/animal-frog.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "2d6f387ef33bd905414548c2c2209162dd3da9faa699b04c863cfe281ca381d9",
-      "modelSha256": "8dc431c55d0c5eb5301ec35125d81b8ae31ae680b26bad031047ccce14b280e0",
-      "structureNote": "Individual structure: narrow_appendages. Visual review remains open.",
-      "status": "needs_remodeling",
+      "sourceSha256": "c15527621685c7155bb3328b85521b741418c5fa26781968d5a726f36d0c6ca9",
+      "modelSha256": "4b12d347e2b8cef99c20695e39efa922f0cb0c630d548599f3d800077beab6dd",
+      "structureNote": "Original closed smiling human eyes, happy open mouth, green frog hood with golden animal eyes and crouched short body preserved. Full hood rebuilt with smooth 32-ring interior and original eye-lobe silhouette. Removed redundant overlaid eye bulbs; source outlines fade toward the real rim. Hands exclude hood pixels and sleeve/forearm use their own colour. Closed paired hood/body/folded legs/raised arms and closed finger/forearm sweeps. Finger-pad/palm/forearm connections and head/body, raised-arm/body and folded-leg/body contact tested at five phases of every clip. Hop phases 0, 25, 50 and 75 percent and Wave clip directly inspected in all directions; crouched frog anatomy retained without added human legs. Review camera now frames full jump in all animated views. Current-revision museum front, moving oblique and rear directly inspected at 56-57 FPS.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-frog.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-giraffe",
       "source": "apps/classtools/assets/avatars/animal-giraffe.webp",
       "sourceCategory": "animal",
       "sourceSha256": "6eb2cad9286a0d7e7de1528c823e7fd4e5a1f4235ff7083e63fdc2644f2f2d8c",
-      "modelSha256": "1a592e31bf001ca536a70ae971cd83b9c1613b3876998ea259fd9b603a103d85",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "f1338091aa9b847a92dd8421b54d275d979fef903fad18c47814eb01571b0a00",
+      "structureNote": "Preserved original brown-eyed smile, rounded animal muzzle, long species neck, compact lower suit, ears/horns, brown hand/foot tips and curled tail. Removed opaque whole-hood projection override, flank streaks and split shading. Narrowed torso to reveal source-shaped sleeves, added rounded brown hand tips and reattached tail root. Rear neck/body spots follow the real suit surface. Closed hood, torso, sleeves, horn stems and tail checked. Ear/muzzle/horn-tip/hand/hoof/tail-tuft connections checked; head/body, all limbs/body and tail/body contact pass five phases of every clip. Four Walk phases (0, 25, 50 and 75 percent) and Wave directly inspected in front, both sides, rear and oblique views. Feet alternate with body and costume remaining connected; no floor penetration or duplicated limbs observed. Exact-revision museum front, moving view and rear directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-giraffe.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-hedgehog",
       "source": "apps/classtools/assets/avatars/animal-hedgehog.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3906259faea52d84d3960e6008f3eff600b7d7f69eed6e222e7927df04089ba0",
-      "modelSha256": "6f76955254e277a8dd744a561345e866ff2fa4b7f3eedd5215e71f44a0f2b9bf",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "d10dbcac60698e4e22c0b3537ff070be95540596ed7dcaab5d68f28f9dfb48b9",
+      "structureNote": "Preserved original happy brown-eyed human expression, animal nose/ears, short pink suit and feet within full grey-brown quill costume. Rebuilt hood and coat with 32-ring smooth interior while retaining original contour. Coat no longer has radial ribs; adjusted depth fits around the hood/body. Rear quills are fitted to the actual coat rather than buried or floating. Source borders fade toward real silhouettes. Closed paired hood/muzzle/coat/body/limb volumes and individual rear quills checked. All retained rear quills touch coat; head/coat and muzzle/head contacts checked. Head/body, limbs/body and coat/body contact pass five phases of every clip. Four Walk phases (0, 25, 50 and 75 percent) and Wave directly inspected in front, both sides, rear and oblique views. Feet alternate with body and costume remaining connected; no floor penetration or duplicated limbs observed. Exact-revision museum front, moving view and rear directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-hedgehog.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-hippopotamus",
       "source": "apps/classtools/assets/avatars/animal-hippopotamus.webp",
       "sourceCategory": "animal",
       "sourceSha256": "677e53ca66f628a5f23eae202b183ad7af46285283062b594df98671f7f456e1",
-      "modelSha256": "217c6ae080b97dc8f17ce67ea114753be7b33cf6d95f8b952faf9db5bb047074",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "90a08f92cd9b95a79335a686e15738a88d848fa99aa038d4a6290b970b8690b1",
+      "structureNote": "Preserved original happy brown-eyed human face, broad hippo muzzle/teeth, round ears, grey-purple hood and short body/limbs. Rebuilt hood interior with 32 rings and original silhouette, refitted broad muzzle, welded split rim normals and faded projected source borders before the flank. Kept rounded ear lining without overlapping outline shells. Closed paired hood/muzzle/body/limbs and round ears checked. Muzzle/hood and ear/root/hood connections checked. Head/body and each limb/body contact pass five phases of all three clips. Walk phases 0, 25, 50 and 75 percent and Wave directly inspected in front, both profiles, rear and oblique views. No separated parts, duplicated limbs or floor penetration observed. Exact-revision museum front, moving view and rear directly inspected.",
+      "status": "complete",
+      "checks": {
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-hippopotamus.json",
+      "reviewDate": "2026-11-09"
+    },
+    {
+      "id": "animal-jellyfish",
+      "source": "apps/classtools/assets/avatars/animal-jellyfish.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "ca30c7c72ee81bff88f195b54a66d813ad25c9a5e5c8aca5111cc402ea365b60",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
       "checks": {
         "identity": "pending",
-        "allViews": "failed",
+        "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
         "glb": "pending",
@@ -407,211 +502,235 @@
       "source": "apps/classtools/assets/avatars/animal-kangaroo.webp",
       "sourceCategory": "animal",
       "sourceSha256": "1e17091064e3a686c57ed2a3a9f9431b6b12dfb2ebeb0db73846535e8ca11e78",
-      "modelSha256": "2293399f93a8fafd4cd6f7ed1b8baf6fe91f90f9032ca40a615faa830a7a85c3",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "1d4fce3f4e284d5bd9abb125737a02363fe9c4d3ec4fc3a4128065c3a68894ae",
+      "structureNote": "Preserved original human smile, tall ears, animal muzzle, compact body, broad feet, curved tail and joey inside pouch. Rebuilt smooth hood while keeping source contour, refitted muzzle and removed flank projection streaks. Original joey head/ears and pouch are now fitted shallow closed relief on torso; omitted overlapping outlines that made artificial seams on tail or relief. Closed paired costume and relief volumes checked. Adult ears/muzzle touch hood; joey head/ears/pouch touch torso and each other. Head/body, all limb/body and tail/body connections pass five phases of each clip. Walk phases 0, 25, 50 and 75 percent and Wave directly inspected in front, both profiles, rear and oblique views. No separated parts, duplicated limbs or floor penetration observed. Exact-revision museum front, moving view and rear directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-kangaroo.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-koala",
       "source": "apps/classtools/assets/avatars/animal-koala.webp",
       "sourceCategory": "animal",
       "sourceSha256": "80df92ca5728b8cd52da65c52d0e006312d19a4521731cadd90957a8a9240abb",
-      "modelSha256": "09ecf95976433976d3e4fce8d813c27f1391cd99f9ed19b7117b59480a30cd0a",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "f2db905f2dd270a6c3b0fa1c5d9d94e7b0325b05671b83453f9c55922a8d6b40",
+      "structureNote": "Original smiling human face, grey costume, large pink-lined ears, broad black nose and short torso/limbs preserved in equal-scale front comparison. Rebuilt hood and ears with smooth interior rings while retaining source silhouette. Welded rim normals and source edge fade remove radial ear streaks and flank lines. Front, both sides, rear and oblique views directly inspected. Closed paired hood, ears, body and limbs; ear and nose contact with hood checked. Head/body and all limb/body contacts verified through five phases of Idle, Walk and Wave. Walk at 0, 25, 50 and 75 percent and Wave directly inspected in all views. Reduced greeting keeps hand outside hood. No floating parts, extra limbs or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clip and floor-contact tests. Exact revision f2db905f2dd2 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS; front, moving view and rear directly inspected. Single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-koala.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-ladybug",
       "source": "apps/classtools/assets/avatars/animal-ladybug.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "af0802b993a51991a83fdd2db03d6f01add0fefaebbde6accc3e7de4bc4cca49",
-      "modelSha256": "e921d0e07a46fb5ae9de501131cad5c831dd6573cc9af694f2985dfa7c68b986",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "eb8acdd6d672a36e74cdd306006aaaffb76f8984cde4bb161b3d05e95dfe63e3",
+      "modelSha256": "b52ce8df49414f764bbb25ec771367b9d30f4e44683aa3db2094c22a0fdbc790",
+      "structureNote": "Original human smile, red hood, brown antennae, compact striped torso and red spotted wing covers with pale inner wings preserved. Removed hood meridian piping and projection streaks, retained front and rear wing spots, and kept original colours on separate limbs. Front, both sides, rear and oblique views directly inspected. Closed hood and antenna sweeps checked. Antenna root/tip, wing/hinge/body, head/body and limb/body contacts verified through five phases of each clip. Walk at 0, 25, 50 and 75 percent and Wave directly inspected in all views. Reduced greeting keeps hand outside hood. No floating parts, extra limbs or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clip and floor-contact tests. Exact revision b52ce8df4941 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS; front, moving view and rear directly inspected. Single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-ladybug.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-leopard-gecko",
       "source": "apps/classtools/assets/avatars/animal-leopard-gecko.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "cda6259bfffaae25e76c3bdc89579fb1c56f9c31060faf7f7b6d6c602835bdf0",
-      "modelSha256": "0cb7f86ac857338f2829eedca7ad158a9ba75b2edd9ee6fffb6c65204edece76",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "861da4163c5c53a4a5a74e4349417b0f5835818c043c84251505484f3526ef2f",
+      "modelSha256": "ba14fd018ed9436662d3f1448a16bbddf038e411d3d43d6aadd4be4e800c711b",
+      "structureNote": "Preserved original smiling human face, golden spotted hood with large animal eyes, broad curled tail and short torso/limbs. Original/front equal-scale comparison directly inspected. Smooth 32-ring hood and tail interiors retain original contours. Refitted eye ridges and muzzle, welded rim normals and faded projected source borders remove flank streaks. Added surface-fitted rear head/body/tail spots. Direct both-side, rear and oblique inspection completed. Closed paired costume volumes and welded normals checked. Eye ridges/muzzle touch hood, rear spots follow actual surface, and head/body, limb/body and tail/body contacts pass five phases of all three clips. Walk at 0, 25, 50 and 75 percent and Wave directly inspected in front, both profiles, back and oblique views. No detached parts, duplicate limbs or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clip and floor-contact tests. Exact revision ba14fd018ed9 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-leopard-gecko.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-lion",
       "source": "apps/classtools/assets/avatars/animal-lion.webp",
       "sourceCategory": "animal",
       "sourceSha256": "78ca850c7a0e0f95af00df4b7132fa6ff5d96386ce9b3b218903031babc8d962",
-      "modelSha256": "c7ca21bc82a3d9fcaba27e56a185216a659cc66a4b19f072ab61b03403e2507c",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "2d6e3b43885ce3b258c41addfd77328029d81c368a14a0459b1231fb7ac33de2",
+      "structureNote": "Preserved original lion-costume expression, brown mane silhouette, golden short body, round paws and curved tufted tail. Original/front equal-scale comparison directly inspected. Rebuilt smooth 32-ring mane while retaining original edge. Upper body/sleeves fitted beneath lower mane and redundant neck connector removed. Removed overlapping shoulder outline shells while retaining original body artwork and shading. Direct both-side, rear and oblique inspection completed. Closed mane/muzzle volumes checked. Muzzle, mane and ears contact hood; tail tuft contacts tail. Head/body, sleeves/body, hands/sleeves, legs/body, feet/legs and tail/body connections pass five phases of Idle, Walk and Wave. Walk at 0, 25, 50 and 75 percent and Wave directly inspected in front, both profiles, back and oblique views. No detached parts, duplicate limbs or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clip and floor-contact tests. Exact revision 2d6e3b43885c loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-lion.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-llama",
       "source": "apps/classtools/assets/avatars/animal-llama.webp",
       "sourceCategory": "animal",
       "sourceSha256": "c405be751393612c9e9088334c4dd76a546531ca3c2ad2b5f46c2b4ff9b9399d",
-      "modelSha256": "dbb1e368b1b516e2432527d2d11c613b2ea1bab4f5728126def6af9b3d987fb5",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "317cb7133c4bd82355cdb018376f228050280c50d7772a6e885cfa2ced28e089",
+      "structureNote": "Preserved original smiling human face, cream sheep hood and costume, pink ears, forehead wool and short body. Display name remains sheep; existing internal file id is retained. Equal-scale original/front directly inspected. Separate rear and rim fleece beads replaced with shallow lobes blended into one closed hood. Source-border paint fades before the curved rim; separate forehead fleece retained. Brown hand and hoof colours continue around the rear. Both profiles, rear and oblique views directly inspected. Closed hood and paired body/limbs/muzzle checked. Both ears and their lining, forehead fleece and muzzle touch supporting hood. Head/body and all limb/body connections pass five phases of Idle, Walk and Wave. Walk at 0, 25, 50 and 75 percent directly inspected across front, both sides, back and moving oblique views. Sheep greeting and meerkat held-hand greeting directly inspected. No disconnected parts, extra limbs or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clip and floor-contact tests. Exact revision 317cb7133c4b loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-llama.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-meerkat",
       "source": "apps/classtools/assets/avatars/animal-meerkat.webp",
       "sourceCategory": "animal",
       "sourceSha256": "d8c48d3d31b3c59946b45761ed1219c3943d819b0f275ca4d98f8201f09116c6",
-      "modelSha256": "d1b98e2555e4b51f6c1ffff2244ac5c4164e3ee39952e74827e54a64da2e539e",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "d2eb3a1665d735ddd11a97828c6118542ea8ca372f3afb829c001d52d368b3ff",
+      "structureNote": "Preserved original human smile, animal eye patches, brown ears, folded hands, short body and slender curled tail. Equal-scale original/front directly inspected. Smooth hood interior and welded rim normals remove lateral projection streaks. Darker upper tail and paw colours continue around the rear. Both profiles, rear and oblique views directly inspected. Closed paired hood/body/limbs and ears checked. Ear/lining/hood, head/body, limb/body and tail/body connections pass five phases of all three clips. Both hands remain in contact, including corrected Wave clip. Walk at 0, 25, 50 and 75 percent directly inspected across front, both sides, back and moving oblique views. Sheep greeting and meerkat held-hand greeting directly inspected. No disconnected parts, extra limbs or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clip and floor-contact tests. Exact revision d2eb3a1665d7 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-meerkat.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-monkey",
       "source": "apps/classtools/assets/avatars/animal-monkey.webp",
       "sourceCategory": "animal",
       "sourceSha256": "c6fef49b9e2595ddbaa7840d9d2a0e07002f234fc374cf0725cfef2de0eb9afe",
-      "modelSha256": "048cc7e2826f9802b8c5fadcdbbdff675aa970e913f77a07a9792a7be182ba6e",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "542da98479071e8b8e9dc9d32b34a7145b00bcc36872aa2ca8024216a5912b1f",
+      "structureNote": "Original face, short body, round ears and held bananas retained. Original/front equal-scale comparison directly inspected. Rebuilt closed hood at 32 depth rings, blended source-border paint before the curved flank and directly inspected front, both profiles, back and moving oblique views. Brown hood colour continues around the rear. Closed paired solids and welded rim normals passed. Ear/hood and ear lining contacts passed. Tail root extended inside body and right hand moved forward into banana contact. Head/body, four limbs/body, tail/body and holding hand/prop contacts passed five phases of all three clips. Directly inspected all directions at Walk 0, 25, 50 and 75 percent, and the held-prop greeting. Hands retain the held prop in Wave. No detachment or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clips and floor-contact tests. Exact revision 542da9847907 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected. Single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-monkey.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-mouse",
       "source": "apps/classtools/assets/avatars/animal-mouse.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "8a84667334bfdf490eadc16615e899018f6340cd44bc86bd5a64a2df9b3708ca",
-      "modelSha256": "2ee1fd6205732e82de6391407f78b6a3a4e5d1e4a93cb58c41839138fd004261",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "7664ad94167d52ca9513388cae52eb2794c5ecb8aaaa792c97fe59e08f0668d7",
+      "modelSha256": "4cde1c89ff415617abc949b53ce8c325a68a6fb783bc995250d369dcb6c1d6bb",
+      "structureNote": "Repaired source human face from incorrect cyan skin and rough polygon forehead to peach skin, clean chestnut fringe, closed smiling eyes, pink cheeks and a gentle open smile without human nostrils. Blue mouse hood, round ears, animal nose, cheese, short body and front silhouette preserved. Full source and equal-scale source/current 3D front directly inspected. Smooth closed hood and fitted nose retained. Removed projected black outline marks from the uniformly blue boots. Current revised face and costume inspected from front, both profiles, rear and moving oblique views; no flank streaks or floating face observed. Closed paired solids and welded rim normals passed. Ear/hood and ear lining contacts passed. Nose refitted to new hood. Both hands contact cheese and costume tail contacts body. Head/body, four limbs/body, tail/body and holding hand/prop contacts passed five phases of all three clips. Directly inspected all directions at Walk 0, 25, 50 and 75 percent, and the held-prop greeting. Hands retain the held prop in Wave. No detachment or floor penetration observed. Current GLB/source hashes match targeted finite/closed geometry, original artwork, exported clips and floor-contact tests. Exact revision 4cde1c89ff41 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-mouse.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-octopus",
       "source": "apps/classtools/assets/avatars/animal-octopus.webp",
       "sourceCategory": "animal",
       "sourceSha256": "7b36883c42f80d6e77d15e523f5cd3fbb97e60fce25820bb78cdf4e0a76521e2",
-      "modelSha256": "e6919ad2bdaf23db96fcbbcdda259c3cfed10815248b351144da4b38c9b822e8",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "b441643f03f38f5bbb30c31621c97a72d37dd6473e553f51a1343f0f38143ba0",
+      "structureNote": "Source-shaped octopus hood and continuous short mantle with eight connected moving tentacles. Buried roots, supported suckers and exact-hash visual/technical/museum review passed.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-octopus.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-ostrich",
       "source": "apps/classtools/assets/avatars/animal-ostrich.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "66684d62a8979ddc143ea025419897350c210819e7f91b8227675493c438ecf5",
-      "modelSha256": "337ebea049b21a867c21513089230293b0b481bc033ca8274feb855337293cf7",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "sourceSha256": "2687b96fb0e74d39fcdec42ef668ad2ab1c286f01d71be8e5b45f5d5d9ad6de1",
+      "modelSha256": "0fc8f9c8ea1ef6db4ef6145af7c2ea164097bab6cb2fa05767484441b1300dcf",
+      "structureNote": "Preserved original smiling human face, compact body and measured source silhouette. Pink hood and short neck, black costume, white feather tips and ruff retained. Equal-scale original/front directly inspected. Smoothed closed hood volume and faded source-outline projection before the side rim. Smoothed ruff and tail feathers, refitted beak, retained dark inner/white outer tail colouring and extended feather colours around the volume. Both profiles, back and moving oblique views directly inspected. Hood/short neck/body, ruff/body, beak/hood, four limbs/body and all five tail feather roots/body contacts passed five phases of Idle, Walk and Wave. Paired solids are closed and coincident rim normals agree. Walk 0, 25, 50 and 75 percent directly inspected in all directions. Mild wing greeting replaces the overhead human arm rotation; no detachment or floor penetration observed. Current GLB/source hashes match targeted finite geometry, closed solids, source artwork, exported clips and floor-contact checks. Exact revision 0fc8f9c8ea1e loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-ostrich.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-owl",
       "source": "apps/classtools/assets/avatars/animal-owl.webp",
       "sourceCategory": "animal",
       "sourceSha256": "343c3f94d3363715cc2007000a1d5e343cdc64ed700c88747b78cac59084dd50",
-      "modelSha256": "3339c43a8ba3da92c46db2967d9613d93870c67761e9668c6ae71c9a0568f6ed",
-      "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
-      "status": "needs_remodeling",
+      "modelSha256": "94d668ab92161726593edd6f581a7d3f9b3d1de12dafd89fe39005ce7949da5c",
+      "structureNote": "Preserved original smiling human face, compact body and measured source silhouette. Brown owl hood, large animal eye markings, raised brows, spread wings and golden feet retained. Equal-scale original/front directly inspected. Smoothed closed hood volume and faded source-outline projection before the side rim. Replaced protruding eye ellipsoids with closed fitted shallow eye disks; rebuilt fitted beak, removed brow edge height discontinuities and source ghost marks, and continued gold foot colour around the rear. Both profiles, back and moving oblique views directly inspected. Inner wing roots extended into the body without moving exposed feather tips. Eye disks, beak and brows contact the hood; hood/body, four limbs/body and tail/body contacts passed five phases of Idle, Walk and Wave. Paired solids are closed and coincident rim normals agree. Walk 0, 25, 50 and 75 percent directly inspected in all directions. Mild wing greeting replaces the overhead human arm rotation; no detachment or floor penetration observed. Current GLB/source hashes match targeted finite geometry, closed solids, source artwork, exported clips and floor-contact checks. Exact revision 94d668ab9216 loaded, moved, turned and stopped in Portrait gallery at 56-57 FPS. Front, moving view and rear directly inspected; single-model preview only.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "failed",
-        "connections": "pending",
-        "animation": "pending",
-        "glb": "pending",
-        "museumRuntime": "pending"
-      }
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-animal-owl.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "animal-panda",
       "source": "apps/classtools/assets/avatars/animal-panda.webp",
       "sourceCategory": "animal",
       "sourceSha256": "25264c6f0e3804c229c41877b2ee7da7bebb229b479c6fb34ae3daed1887dcd6",
-      "modelSha256": "590dbe1d628f19713c0ef48c92448657e1ae951fbc3ce0b8ca3b0cdf5a6dc5d5",
+      "modelSha256": "92301fed5c4e3b7c63cc3f468f836caf5d84fcb7028973ed72028e62aaecc9b5",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -627,8 +746,8 @@
       "id": "animal-peacock",
       "source": "apps/classtools/assets/avatars/animal-peacock.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "f303bb351e55f652c106eb3b170d3ba728e0cc795f4956023c374e1fbc7c3280",
-      "modelSha256": "79b78202a3afd6ba0ad2aeb84b08d4a498386b1cad0b13ea1fbe19054692885f",
+      "sourceSha256": "3460f8af7cf3cab8b1be67cd527496dfdee0f9bd1a141f10a229afe874486cf8",
+      "modelSha256": "63f4ccca0cfe37967ae6055e1c0e7be7536bca3f4fcf1d39698573ad26b89e62",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -644,8 +763,8 @@
       "id": "animal-penguin",
       "source": "apps/classtools/assets/avatars/animal-penguin.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "889adfb10fa032076b97a39c3693129040db47e3ba0bbf40fac55b741e11f3ee",
-      "modelSha256": "1dc41df1915d9f74d3972cbcaca55463c1715d037662ce195486e53e32c978ef",
+      "sourceSha256": "5a7b88c33eb8e97f690e7298aa0dbe9edae3e279ff25cc6be4346d550c043460",
+      "modelSha256": "0a50fb5e60abc155bbc1e703ca2445edeb5c9d8f4b1470d776e334fac99d6932",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -661,8 +780,8 @@
       "id": "animal-praying-mantis",
       "source": "apps/classtools/assets/avatars/animal-praying-mantis.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "6bc7e722247f0200dbcb98082a103730ded43687aec90165df7a78a6a8e98f04",
-      "modelSha256": "cecb74951f067ec9fc1bcecb09346cf46771519dc532b3751e8ec5354b08df73",
+      "sourceSha256": "22ea3988ab185d7e093b4995c2ed1f9d0ef64bcf0eb69c699e9840867cb329ad",
+      "modelSha256": "ae824af8cf6759ce342d5f17abcafe2168b11cec509eba37831b26bede08ec38",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -679,7 +798,7 @@
       "source": "apps/classtools/assets/avatars/animal-rabbit.webp",
       "sourceCategory": "animal",
       "sourceSha256": "a8a5a1f373d6420ea10b40b02be8d0ca5e1c0bb5b00ec3f9af0a76781a79dfb1",
-      "modelSha256": "a246605ca3fe132af94de41cb843b9955b294e3739d55941dc578d5453b2bd16",
+      "modelSha256": "b3fb4a36297d6ee18a7d51e909f18837c3508d2c48404069f62330b8fdd79c8e",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -696,7 +815,7 @@
       "source": "apps/classtools/assets/avatars/animal-ratsnake.webp",
       "sourceCategory": "animal",
       "sourceSha256": "bbe9e98332d8eecf73dbff75e42c21b4e59f3690d7ffb80ee94d7174649aad41",
-      "modelSha256": "edd92c9f8a8eb308c6f30a85569df0f6a6c16ea43b55b7c2634a60c47bd43b64",
+      "modelSha256": "2f70b710443c68ddfd82fa4c68497c9cfc44957c984bbbe98a649cbf70f2a696",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -709,11 +828,28 @@
       }
     },
     {
+      "id": "animal-rhinoceros-beetle",
+      "source": "apps/classtools/assets/avatars/animal-rhinoceros-beetle.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "bc71aa0f0861d55cbcf0deae2c54f5de71c19d07e47bba77095b8960047af419",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "animal-rhinoceros",
       "source": "apps/classtools/assets/avatars/animal-rhinoceros.webp",
       "sourceCategory": "animal",
       "sourceSha256": "122f6e9e47c74dfcc63a0b17e192c6baa46e0f7481b06c45425113cd00bca8a7",
-      "modelSha256": "97f2b1b816a5056e5eaf53c49d50ef7683edf93e288fa53d4fb3045779194695",
+      "modelSha256": "204081e42080087042c726916f79f6b49aa8d0bcee8f84b7cc336bdce867acc9",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -730,7 +866,7 @@
       "source": "apps/classtools/assets/avatars/animal-seal.webp",
       "sourceCategory": "animal",
       "sourceSha256": "90e63a9e29c164bf5d4d509ec144a96a6df18022b2adb4d2e8b047380efd954f",
-      "modelSha256": "c97570b2a82d22d2292c799f7e60c0ae9e960e42b6ffe65a198390dfab5e799e",
+      "modelSha256": "4b1197ceed17fc99d94d10609ded4e544549976a21a923b00cad2369a5caa6c6",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -747,7 +883,7 @@
       "source": "apps/classtools/assets/avatars/animal-shark.webp",
       "sourceCategory": "animal",
       "sourceSha256": "b328d9a9945a72c64fad2cb1995c8062eb4c634b1a83678350bbe23a26a97720",
-      "modelSha256": "3cf05f193f3719dccced5fc4b4cf409ee7d380056d2d3405aa878af7ba7da0ea",
+      "modelSha256": "8ac00d07b970af17221a50e3ce88c77bdf55d96fad45e1a46f060bbdaf538835",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -764,7 +900,7 @@
       "source": "apps/classtools/assets/avatars/animal-sloth.webp",
       "sourceCategory": "animal",
       "sourceSha256": "a30bceec08ff5bfc5adb70c0628f29ab906a68667fa5b9a2b760df0f0647681a",
-      "modelSha256": "9028990ed0cdbfc1e69afac693fcf2e2bd8466308681f6f7f96b429ca8ffd2ee",
+      "modelSha256": "3189094f43d8eea8f419221608749a65f5d6e34f6155cdb1800cb920c6ca66b1",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -780,8 +916,8 @@
       "id": "animal-snail",
       "source": "apps/classtools/assets/avatars/animal-snail.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "152c50700604f5f6b2c6df0dc9a2b13ef013d68827fb51cc042d6a9d836448e0",
-      "modelSha256": "ebea3f94e5a5e75197047a84dce2f9dbfd7b9acd400c37dd78551b04975c5d55",
+      "sourceSha256": "d7d4c19e43d762ddd0608bd0aa51afb7d6277732d64d1e57291ac0c31f85a35e",
+      "modelSha256": "eaed8119f6ab231907a2534e8c2d578247012028b99160a9ae0abe2f778ff2b5",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -798,12 +934,46 @@
       "source": "apps/classtools/assets/avatars/animal-squirrel.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3a0c58ef84eaa83678a82756cfe63535dc3f72ea8201b686810b5403085ee493",
-      "modelSha256": "226abb4d5ede31afe85ff7e4d8468c893544cd1199bf57fa02f80b0c5883fece",
+      "modelSha256": "5f53b137e8cf4afefeb7df87be7f4ac68a31717f5fcbc98fc8979d5102635bea",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
+      "id": "animal-stag-beetle",
+      "source": "apps/classtools/assets/avatars/animal-stag-beetle.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "6c6882de08392fee9cf43a18f0e3a2c5f6da60759989863e26517db3df910087",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
+      "id": "animal-stingray",
+      "source": "apps/classtools/assets/avatars/animal-stingray.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "5b9e68bf35b2444617134983da1451b794cea975f2b3736bd56d09b08e21a8f3",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
         "glb": "pending",
@@ -815,7 +985,7 @@
       "source": "apps/classtools/assets/avatars/animal-tiger.webp",
       "sourceCategory": "animal",
       "sourceSha256": "7cf6f5c2f6761ab7d1008760a12c5a1ecd0a4fef7b6f854c47057b36dfa498f8",
-      "modelSha256": "c8ed243b307b6d800becabbdd59022c5dfb08ca6cf1fe95a9353521b80e4910e",
+      "modelSha256": "7b4e556c1b18b6a3ff2c4370fe492c63a15b6d5502b8cb9c14962dad09ba3c74",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -828,11 +998,28 @@
       }
     },
     {
+      "id": "animal-triceratops",
+      "source": "apps/classtools/assets/avatars/animal-triceratops.webp",
+      "sourceCategory": "animal",
+      "sourceSha256": "1e3be7aaaf61d9cfb69906856e22fadc74dea5c24a3bd9b0ae87251dfe612376",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "animal-turtle",
       "source": "apps/classtools/assets/avatars/animal-turtle.webp",
       "sourceCategory": "animal",
       "sourceSha256": "3d06908528bd00bfc8405b1bb4c1f60322c53c3f3ff08b494a06567d12546596",
-      "modelSha256": "0ecf24da794938a2f10ea599b904e6d05a769dc17c6b2d73b2f6e7ced79dc865",
+      "modelSha256": "3284de4e4d50a130fda3b3073316d4e6464641d6345b9a14ee23afc37cea91fc",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -849,7 +1036,7 @@
       "source": "apps/classtools/assets/avatars/animal-unicorn.webp",
       "sourceCategory": "animal",
       "sourceSha256": "628f5c12a10c1b873d55e5397f1fc983b73c024683aee32daaeb2e08bca45fa0",
-      "modelSha256": "906a20fd513c737e5071676083e3d5a81a94f59ad93ab50dd43c199d3c465b01",
+      "modelSha256": "2b9bfce3addbfa605230c54823b9302cd9f8a9b411d5a10ce30d435fdd58281c",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -866,7 +1053,7 @@
       "source": "apps/classtools/assets/avatars/animal-viper.webp",
       "sourceCategory": "animal",
       "sourceSha256": "e1edb0a011e9fa3bf46039da05a920e26440b9464ebff6a69291b2e0209f048b",
-      "modelSha256": "26fbb7e33bfa499814958913dd6902d699de7b7afa7bc1ac2e6550319375900d",
+      "modelSha256": "a9640cd932d3f0e34e13e0fac4550f674387977c9359b3fba7a7478a7955c79f",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -883,7 +1070,7 @@
       "source": "apps/classtools/assets/avatars/animal-whale.webp",
       "sourceCategory": "animal",
       "sourceSha256": "0e36bbe6cbf6eff9839163bc7914e60aac04c5c206fcc03cd9e403ac0bbf2cf7",
-      "modelSha256": "822d1aee4eb6d118061096fd316b4d4b7656c6de3b7b4e09a3c3e31203ddb2d6",
+      "modelSha256": "8f62821256f5a1ac675e5c8cb3f02f01dd36f5e04037db8e9e60b57a3ab91c15",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -899,8 +1086,8 @@
       "id": "animal-wolf",
       "source": "apps/classtools/assets/avatars/animal-wolf.webp",
       "sourceCategory": "animal",
-      "sourceSha256": "f40b7ae979c611886bb607f8676642862ca52f70d744c7ed3ec65b3070fa68bc",
-      "modelSha256": "6110fde2965e076aa6b44dfd95c9df15be59810e3dfdc9f0f5ea3213f4d317c6",
+      "sourceSha256": "dec958bd0641c4c8f341fca1ca3806fed7a40649c4f61b28c4f6f5678089e1a3",
+      "modelSha256": "b4f34859983116a55b94187168916c87ab8d8350db86326e7128c46d41fc310f",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -917,7 +1104,7 @@
       "source": "apps/classtools/assets/avatars/award-trophy.webp",
       "sourceCategory": "award",
       "sourceSha256": "0cc862cebeee4362bc12088028c608b6d4539184b80e8f287ae7dda9d44e48f9",
-      "modelSha256": "977aa4e4349ac5d1fb259f844a49cde53faa5b2116e12f171e194bc9578a6349",
+      "modelSha256": "46aefdcb6bf7308462719133af433080abcfdf8bbe8bd129f542334fa2652ce6",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -930,11 +1117,28 @@
       }
     },
     {
+      "id": "drink-banana-milk",
+      "source": "apps/classtools/assets/avatars/drink-banana-milk.webp",
+      "sourceCategory": "drink",
+      "sourceSha256": "304443e1cfe7a71790154380f41fee80ce11bbbd358171d7f794bff09b24eeab",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "drink-bubble-tea",
       "source": "apps/classtools/assets/avatars/drink-bubble-tea.webp",
       "sourceCategory": "drink",
       "sourceSha256": "24cd946d9a30b6de40f3d5e821668d06b92aff9e8695fb23e5977a92c69bb8c5",
-      "modelSha256": "ae689b70742e182cef14230345b30be0f8265e8cc30d4a5903f669c0a632c55a",
+      "modelSha256": "eccda5c350fe602a7e7aadd7676301fb4e591f60dffc55aae8f68bf81ad2d652",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -951,7 +1155,7 @@
       "source": "apps/classtools/assets/avatars/food-bingsu.webp",
       "sourceCategory": "food",
       "sourceSha256": "6d55ce499c9c0d60ca461ba2315b2f815919997ca70dce8df184cdf7353de9c2",
-      "modelSha256": "974738a8d54f8f5f91b0018a14b7643f4fc115bc946f38b2d75e771d8b45628c",
+      "modelSha256": "20057fc1c8db7b351e4810f254caa8d8e2ebfe8cf04fe04d98c818ebb077dfe2",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -968,7 +1172,7 @@
       "source": "apps/classtools/assets/avatars/food-birthday-cake.webp",
       "sourceCategory": "food",
       "sourceSha256": "448a6dfda24f2d564624b0c9448788737a3a8a6338b6bdca8dc4ce5dfa079ab1",
-      "modelSha256": "bacaf9ebdae204e5d3136efd0ab99a087104f37f59c26d49bad050ad64eefabe",
+      "modelSha256": "ac6b7a17fa5a3220c13158c7674f0aa39568ccf21d339d72e6a65bc66ff86614",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -985,7 +1189,7 @@
       "source": "apps/classtools/assets/avatars/food-candy.webp",
       "sourceCategory": "food",
       "sourceSha256": "2f5fa0ef80c09675de0f66684b74da8f71d91781ec6b7771c09476d854875062",
-      "modelSha256": "8999ec3d945a24f60804ce5a0f941a5417bd6c8d3f09c5931408e3f4e5560bfc",
+      "modelSha256": "f91055478773f0a2cda878a4c41cf3158c6a16c5670eac1d0bcf50bb12e8645d",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1002,7 +1206,7 @@
       "source": "apps/classtools/assets/avatars/food-cheese.webp",
       "sourceCategory": "food",
       "sourceSha256": "53d86042e692b62db4131f564df094b59a8e09c0517679f5e483cad551133525",
-      "modelSha256": "ac86feaf697bda55e3e2c02db2ba569e586333f395b799b4e5dd8a88a69e659d",
+      "modelSha256": "b7851de4d24a3ad06c25c104f1aa97db4bb89c7d6f3db4a8499cb5e818ede94e",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1019,7 +1223,7 @@
       "source": "apps/classtools/assets/avatars/food-chocolate.webp",
       "sourceCategory": "food",
       "sourceSha256": "b579903cbee197231e24abdd6a0b4cf481020bd9152aa1767628e142846a6352",
-      "modelSha256": "13bd507ae366cff30b0ef6622e27938a6c6b1634c0d65c39dd3fcfcb2044c685",
+      "modelSha256": "12c37ac0120c349c7fa677bdc3f68973dfb3d1cfa1503f23e128b44a735bf6cb",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1036,7 +1240,7 @@
       "source": "apps/classtools/assets/avatars/food-cookie.webp",
       "sourceCategory": "food",
       "sourceSha256": "d1c026c5ffeb38c436f8a75a3b1c33115287bebc86a94a0834c7a59dcf36d20c",
-      "modelSha256": "a174da3d848079831caa61644125f9ece1ea629b84db34ae249afa195c6f02c1",
+      "modelSha256": "2a7f91a6ddda437ddddecdaf2953b8e2f74d091c2554bf8b31b2cb48cb4ce19b",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1049,13 +1253,13 @@
       }
     },
     {
-      "id": "food-donut",
-      "source": "apps/classtools/assets/avatars/food-donut.webp",
+      "id": "food-cotton-candy",
+      "source": "apps/classtools/assets/avatars/food-cotton-candy.webp",
       "sourceCategory": "food",
-      "sourceSha256": "345b74bce063cebdc14a5ec90e299b7f390e29879e6ccfe3a0ede81902f3bae7",
-      "modelSha256": "f67797475dcaabf18218e8ddc7c40728bfa707f91729585a3ce350af7fcdbebf",
-      "structureNote": "Individual structure: original_six. Visual review remains open.",
-      "status": "needs_review",
+      "sourceSha256": "e75d45f17449a1e2ff06cb12ce5dc3334d0761ae33ad94204cc95b718a09fb14",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
       "checks": {
         "identity": "pending",
         "allViews": "pending",
@@ -1066,11 +1270,30 @@
       }
     },
     {
+      "id": "food-donut",
+      "source": "apps/classtools/assets/avatars/food-donut.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "345b74bce063cebdc14a5ec90e299b7f390e29879e6ccfe3a0ede81902f3bae7",
+      "modelSha256": "606ad6e160de0aa131224dd7279a5d72f3419ef4fd1d0f5f782cba03dce03334",
+      "structureNote": "Original expression, glaze contour and short suit preserved. Rear sprinkles fitted into the actual curved chocolate coating; rounded caps overlap the coating. Face opening has opaque backing with radial coverage checks. Head/suit/limb contacts tested at five phases of Idle, Walk and Wave. Actual front, both profiles, rear, four gait phases, Wave and museum movement directly inspected. Rear opening is backed by the wearer hair/lining, not an open hole.",
+      "status": "complete",
+      "checks": {
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-food-donut.json",
+      "reviewDate": "2026-11-09"
+    },
+    {
       "id": "food-dumpling",
       "source": "apps/classtools/assets/avatars/food-dumpling.webp",
       "sourceCategory": "food",
       "sourceSha256": "f1afe01f9af4fbf258370933767ab40f104f3798b6179f571d1a45a1f51e86fe",
-      "modelSha256": "48fea4525ca2567530bb6c98d7136ad03fd06282d5f8e3f6f7577756bd13895e",
+      "modelSha256": "cb56dcdb4d4f8a4cadf742065ff829a3199dba8c1b5bc877a2191e30ce019dfa",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1087,7 +1310,7 @@
       "source": "apps/classtools/assets/avatars/food-fish-pastry.webp",
       "sourceCategory": "food",
       "sourceSha256": "8a030d57d182a01b02597417c47040d75c26966952303f09e0d63147a708470a",
-      "modelSha256": "84f6291014920f93512223fff71484bfa5727a99cd4920745cb48db5e8184cfe",
+      "modelSha256": "2c8f1ed570c8c022560ab243a23d9cdddad1248d29361bcba57d8856d0ea5eb6",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1100,11 +1323,28 @@
       }
     },
     {
+      "id": "food-french-fries",
+      "source": "apps/classtools/assets/avatars/food-french-fries.webp",
+      "sourceCategory": "food",
+      "sourceSha256": "4d968b7cc6ef8b9b28ae3739bdab6185daa973c978a02d55b94b6de0ec604491",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "food-fried-egg",
       "source": "apps/classtools/assets/avatars/food-fried-egg.webp",
       "sourceCategory": "food",
       "sourceSha256": "2398a6a730cc91ba84be6c8d62339f2b8b78ea4dd6cce708ed03ca114a1a25a3",
-      "modelSha256": "752d0f7a3a2ed56c83f4d34cff5b5a12799c64ecf15c02ffe458b04392417552",
+      "modelSha256": "9046778b1ebfb251e7b7fc26c2db0aeb1af4b3ba84d1f7f62176ddf858d04eaa",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1121,7 +1361,7 @@
       "source": "apps/classtools/assets/avatars/food-gimbap.webp",
       "sourceCategory": "food",
       "sourceSha256": "f5fab854900301249cb3bd5eda381c082c68d50e04ac722a4b002fe52ad2c85c",
-      "modelSha256": "c9bd740394fb9629df21bf88190d8be80d1871d8743536577a99ab204b0be700",
+      "modelSha256": "a78212f8b9dea2394a8c9e6cc9cfbc64f30d90388c4ca809d1d54f99c5600fea",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1138,7 +1378,7 @@
       "source": "apps/classtools/assets/avatars/food-hamburger.webp",
       "sourceCategory": "food",
       "sourceSha256": "147c631837479aeadc3c267442f9e51b88edc775cdc8826831c007651c00207e",
-      "modelSha256": "066ec01aaf9ca35e3d46e217e220184ea918aa4b076b960672760c4a176ab8fe",
+      "modelSha256": "dcc80964c147586f4773e2c5e1fa0104759c3e8d614b6d374c5dc56fad4ae38d",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1155,7 +1395,7 @@
       "source": "apps/classtools/assets/avatars/food-hot-dog.webp",
       "sourceCategory": "food",
       "sourceSha256": "a3711c20d535cf5491eea5e1645e1117409bc25467fc4052a93b3b123811d3ae",
-      "modelSha256": "dac257a8fee7246671dc49e9b97aac0663434ab7e575f4cd1096464fb065829d",
+      "modelSha256": "7378778b29dfeeac30f730963fdf0bd6b485b02feda56d32c4f24f5e977abe36",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1172,7 +1412,7 @@
       "source": "apps/classtools/assets/avatars/food-ice-cream.webp",
       "sourceCategory": "food",
       "sourceSha256": "f8e318bf582c9100d57f2e4fc98dc1179affe7ed11b29a7e2b21ec3fa7f45df6",
-      "modelSha256": "33d4ccde45b41209561f7a8d223aa798b1e0c0fa31b00983aa5915be6758e147",
+      "modelSha256": "f12fa0cf2f215eb7395d3e81431ea4f8e5cea702ea62d85d6ac322079bac485a",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1189,7 +1429,7 @@
       "source": "apps/classtools/assets/avatars/food-macaron.webp",
       "sourceCategory": "food",
       "sourceSha256": "81f5748a5a9d57658e4f8b8a9c354b8f7657c65c480a890030f02e87a1bb32b3",
-      "modelSha256": "d274fd4eba411d8e69679a0730bd66d62c99daa1582f05fffc9663399011cd11",
+      "modelSha256": "1072228c975a6a5e26e667f41301e9ac2efaa7f45f8a4317336e109d0f2c80db",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1206,7 +1446,7 @@
       "source": "apps/classtools/assets/avatars/food-pizza.webp",
       "sourceCategory": "food",
       "sourceSha256": "4cc6d12a4027fd467f84ec9e4ebd74cfaddf95c34f84b284043e35a981bc5902",
-      "modelSha256": "a97691e41258861b46ca95861d50f4bd3567013ebbfeb261c06699e31a6ebf07",
+      "modelSha256": "54eafb3578589a76472286c8cb3463420869502d9ab92b9dc94da3fca8069198",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1223,7 +1463,7 @@
       "source": "apps/classtools/assets/avatars/food-popcorn.webp",
       "sourceCategory": "food",
       "sourceSha256": "f0a4293b403b1d539720e2d3bea223d14bd219d66a4dc0e160e0e1a81cbfa670",
-      "modelSha256": "66caf7524a185754e6e1fd0cc6c287cd7633ba52f1046948c24b388e92739d67",
+      "modelSha256": "c2d8e78af125626426e78c51ce82ef4c51690481789474c1d390ad7298b4b50f",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1240,7 +1480,7 @@
       "source": "apps/classtools/assets/avatars/food-pudding.webp",
       "sourceCategory": "food",
       "sourceSha256": "b0d0f7cfa7091166ab63187e786f456751a384b145f58114a9a1654719ac69c3",
-      "modelSha256": "e56fa89f400eeeaaffe2fb63555c110b80f18177e868ce432f503b407417ce27",
+      "modelSha256": "5dbfeaae2998da16fe98337fba8aea1199ca6abd80e1f03a1a24dcbada309ced",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1257,32 +1497,26 @@
       "source": "apps/classtools/assets/avatars/food-ramen.webp",
       "sourceCategory": "food",
       "sourceSha256": "41ea42e2b8dba2bf931be6fd20b812c0d5906b3d84e666ea3ecf0536e0170da1",
-      "modelSha256": "750c0713a6e522416d0a3e42277ef218644ce111dda950a9ba3b4d6e21743f94",
-      "structureNote": "Individual structure: original_six. Visual review remains open.",
-      "status": "needs_review",
+      "modelSha256": "c8d9a93cdd4b07e6a2567ff3b682684b9c79e3d2483812837f08b9ba5b65fc3f",
+      "structureNote": "Original expression and short suit preserved. Restored broad red bowl band and lighter reflection stripe with separate offsets, brighter noodles and source-like nori lean. Added bowl-fitted ceramic reflections. Closed noodle and marbling tubes. Broth now contacts the actual bowl wall; pork, egg, noodles and scallion cluster contact broth or their supporting ingredient. Fixed detached sleeves with pivots and buried shoulder bridges; all clips at five phases retain actual suit/sleeve contact. Directly inspected front, both profiles, rear, four gait phases, Wave and museum movement. Whole bowl and ingredients share the forward costume tilt.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "pending",
-        "connections": "pending",
-        "animation": "pending",
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
         "glb": "passed",
-        "museumRuntime": "pending"
+        "museumRuntime": "passed"
       },
-      "visualReview": {
-        "date": "2026-11-08",
-        "status": "refined_and_reviewed",
-        "reviewer": "agent",
-        "userApproved": false,
-        "evidence": "outputs/qa/avatar-lab/refined-six/ramen-views.webp"
-      },
-      "evidenceDirectory": "outputs/qa/avatar-lab/refined-six/"
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-food-ramen.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "food-rice-ball",
       "source": "apps/classtools/assets/avatars/food-rice-ball.webp",
       "sourceCategory": "food",
       "sourceSha256": "b0d581748837ec269647b160521f961e177edca5546d0ab6059616ffa6170caf",
-      "modelSha256": "32d7ef0c8d38027449d9628d26b450309e79a1e83bf2eac2770236bd940ca6fe",
+      "modelSha256": "790de76369be1d4e824c747b2e3edeb6c60d9991742347b420209d339bd7c942",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1299,7 +1533,7 @@
       "source": "apps/classtools/assets/avatars/food-sandwich.webp",
       "sourceCategory": "food",
       "sourceSha256": "0bcada062a5f0192a76bb5d7091971c5168f9f2a7733590c8fcbc9efa678ba6e",
-      "modelSha256": "c8986eeb5b342ec330a99ba6a6372f76616a74f0bab1212bb115a85608e26684",
+      "modelSha256": "7412ad24c4497bbcb671ab0ed23cd63bc4400c4829d94fc9e78bee6632f3297f",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1316,7 +1550,7 @@
       "source": "apps/classtools/assets/avatars/food-sushi.webp",
       "sourceCategory": "food",
       "sourceSha256": "b4bded7578d3a24139928ec2782e8af819526f0352545bd86aa00d04683d1d59",
-      "modelSha256": "ed87f18155e449b9dbc798e6920c87a36283d386341d799c3ee0f803c48944af",
+      "modelSha256": "3e16292afd35ebbf6be287654da7b21aa5fcc4d9660c863c39a2d2055499e423",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1333,7 +1567,7 @@
       "source": "apps/classtools/assets/avatars/food-toast.webp",
       "sourceCategory": "food",
       "sourceSha256": "5d3b033689b35960d9f054f76384c0641254f8beddf89e99f8cba30bde28dda4",
-      "modelSha256": "4eeeda00eb94c99d58230c53114e4d926fee4cc5e2c870ddd86614ba4c77419e",
+      "modelSha256": "17e292c32cc08eadc04f33049a8b5a4515cdd12e9237f354c75e78962179ec2b",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1350,7 +1584,7 @@
       "source": "apps/classtools/assets/avatars/food-tteokbokki.webp",
       "sourceCategory": "food",
       "sourceSha256": "7313a6b011a789aedb602774aa9b4766fa8d94121ee78bc7ac0a0934688c502f",
-      "modelSha256": "2a857848ba4ce6eea7b62d6c7607a44620d414b8f155cc9847228f08f60add3f",
+      "modelSha256": "d6f1e22f05211effec1fd91fed91205b4143039a04d262a9bd4687c232d06fe6",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1367,7 +1601,7 @@
       "source": "apps/classtools/assets/avatars/fruit-apple.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "e230997d32b46f936186da97645de4c84af4bc63d27c1681315e71a8e538e410",
-      "modelSha256": "584a4d0d7839dc4cb320619f16db6550d0697405f4ae9a85b44d4837d92d36d2",
+      "modelSha256": "30ec781e3bf44f6e149aba91600b3c4ab29f65a4f2e525c71b4db7d7dfb9b9a8",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1384,7 +1618,7 @@
       "source": "apps/classtools/assets/avatars/fruit-avocado.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "2d32dc10d7e01c1c8e77f089a32c9f91333728c21a584d2ead4db611cc348289",
-      "modelSha256": "fa3ba4ab20f6b2effdd8203d66a8a42bbc803ddebc2c21daa6a62babad2f32cb",
+      "modelSha256": "4f24e9fccebdfae6336536fec38bd84bde4b24089fe26dc42be392ef9e8d9ed9",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1401,24 +1635,26 @@
       "source": "apps/classtools/assets/avatars/fruit-banana.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "bf141c8dd82c26bfb9c09966e89b18ea55ecdb511e8e2e28400392862b4ba1a7",
-      "modelSha256": "fb68e02af7f77de5524fdb48e0863ff37c0038f9c67eb26f98d4e95facd3b956",
-      "structureNote": "Individual structure: original_six. Visual review remains open.",
-      "status": "needs_review",
+      "modelSha256": "e8a1872213d86b34f5e529220335f392432a6489e00f7caca7eff9c4fee6fed7",
+      "structureNote": "Original face, pale fruit, ivory peel interiors and short suit preserved. Source-shaped curved peels and continuous lower fruit remain attached through actual-volume tests. Reduced Wave gesture to the free area below the peel so the hand stays visible rather than disappearing inside the costume. Current source/front, both profiles, rear, four walk phases, live short-arm gesture and museum move/turn/stop directly inspected.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "pending",
-        "connections": "pending",
-        "animation": "pending",
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
         "glb": "passed",
-        "museumRuntime": "pending"
-      }
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-fruit-banana.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "fruit-blueberry",
       "source": "apps/classtools/assets/avatars/fruit-blueberry.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "bf34515bfdfc178227f91e3567f878badf4742f004c5dab54a85f937b13f27a7",
-      "modelSha256": "8500439477ac27e82347aae46ac6486c65a5fc5085676192048641281d08c3c3",
+      "modelSha256": "27eec87e72fc813a7d6bb31b039158bc4a09ae582745092a55c7b02e5dea2056",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1435,7 +1671,7 @@
       "source": "apps/classtools/assets/avatars/fruit-cherry.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "c1ea4f4d1e0e1f86c2d509dbac06304dfc7e8742c2517b7b1538c1be7d4dff8f",
-      "modelSha256": "bc6b90cb06432e0a2214f96690a923d19f79dc90f40c47bea2650fa9ab84c2fd",
+      "modelSha256": "2257fe1a4ea927771ba344343589d7c4c26810f8448ab669a8ef64db0c82f153",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1451,8 +1687,8 @@
       "id": "fruit-grape",
       "source": "apps/classtools/assets/avatars/fruit-grape.webp",
       "sourceCategory": "fruit",
-      "sourceSha256": "c879e12bace9e10d642cd260d3f024bab09ee4fa37ba7adf5da1cd0349d33d8a",
-      "modelSha256": "0a4542666a93747e02a0cde56bba89feac3e37e960584c4f4070aa266c6917d4",
+      "sourceSha256": "6e7edf4275f2c472f0830733e84b3f7dd245e57a4e26509eb0d092d940cef19c",
+      "modelSha256": "cb6162e3658710303a79032e4b83fa91e03bd19babdc6dc3e878a7ddd6d3aafc",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1469,7 +1705,7 @@
       "source": "apps/classtools/assets/avatars/fruit-mango.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "1420c90619e7dbd2cda48dbc224ac4bf7899a1274a745fc945bbac3551fd2e2c",
-      "modelSha256": "4c5249c7e5660982c6085968097ef7b7322c01301c5fc523a11e6944535479f2",
+      "modelSha256": "1db29855f7c99f3dc1317545d7014ed7c0d957069b144e6e278c47690e3a02b7",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1485,8 +1721,8 @@
       "id": "fruit-melon",
       "source": "apps/classtools/assets/avatars/fruit-melon.webp",
       "sourceCategory": "fruit",
-      "sourceSha256": "d7cedba32940ceeac0e9120c44ad4424bd01d5743a88b34d1b563f076e0c21f9",
-      "modelSha256": "972821d9f0c91bf7f138fa269090675ee1fb317f1f20d1e92ab95036b052bb0c",
+      "sourceSha256": "ec42a1210e01881ae40ed9008b038422cbb50ca38085292703f206ff8e82b24d",
+      "modelSha256": "69b8f57f1794b888ad02d6e34bad8831d40c486fe42c50a97c35820c3a843bb0",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1503,7 +1739,7 @@
       "source": "apps/classtools/assets/avatars/fruit-orange.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "a494c80b99d347ade886abe482273a3145111e6ee62fc1ae4f9ad4ed53aee42b",
-      "modelSha256": "d551bd6b20b1535df46af96c0234f8bacadd526ab23eaa3525222b6461148c7b",
+      "modelSha256": "756396821abdcd94b5681da93777c06436cd239deda2119b83b50143a8c23d01",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1520,7 +1756,7 @@
       "source": "apps/classtools/assets/avatars/fruit-peach.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "6de3d04c1d3422bdabe90fe4cd78cfa8afc9107291ac90aa6ed1599317c4754d",
-      "modelSha256": "00b3b47a0e6bbb9515b3de15c31f96934b7005631011ef3e9812b4c04035a3cc",
+      "modelSha256": "6c902b828a27bc9120f7802d8bada9f75b8cfc5b68d39ae305065e228d8d9f15",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1537,7 +1773,7 @@
       "source": "apps/classtools/assets/avatars/fruit-persimmon.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "f02a59c3f7c700b95688a29a274656293c491ee0beef13ba793bb2162098a40f",
-      "modelSha256": "ac2e3c756e7c82a699beebc9ebb5cd8cfe5b6d71e80b3ee2367ce370867c5002",
+      "modelSha256": "7d07a07f8e603714a8128d0677af37fedfdfbdf436d3e07455f2a2a162315a7d",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1554,7 +1790,7 @@
       "source": "apps/classtools/assets/avatars/fruit-pineapple.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "8c60d7a82cbe94e2f227531dcd9de0c68ffc883396867d02ddf932ea9f2e9a41",
-      "modelSha256": "c13363bc165537223c925b024654af691eb31547213892f83cc7f1a337441d24",
+      "modelSha256": "babe9e12b65d03def659d8d6696860b49a1f9f0644c379c705e30c908ce810df",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1571,7 +1807,7 @@
       "source": "apps/classtools/assets/avatars/fruit-strawberry.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "3d3896f2d8106806c25277895375ea1d82fa3b16d021a063067d01523c180c91",
-      "modelSha256": "7adfccdacfb367a296ff3b1cd167aadf460df45789db258eb44437ac16d5fd5c",
+      "modelSha256": "62127c6c35842918f605e5497f708f71924c419164fdeab3cd0ced048ae2ec35",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1588,7 +1824,7 @@
       "source": "apps/classtools/assets/avatars/fruit-watermelon.webp",
       "sourceCategory": "fruit",
       "sourceSha256": "797fdcc1468a79645df1ba0ef8ef5f0367efba8e9586be32b6e5091cb17ce6aa",
-      "modelSha256": "0f31becc32d0d048f1d0a520663046b07d31f51679d7766078ec1c52a9a8ff5e",
+      "modelSha256": "bfb6a924db38d8e8cf66ddc21888664552ee558d45c6b14b27eda694253325bf",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1605,7 +1841,7 @@
       "source": "apps/classtools/assets/avatars/game-dice.webp",
       "sourceCategory": "game",
       "sourceSha256": "2e2609fcb9c238b80532b4086d2667d852df741a5509fa58f7803790291f38d7",
-      "modelSha256": "c33ae9afced4781682ae373e6ac99359497a3c06ff30f38135876c716a50436a",
+      "modelSha256": "57a3eb463da9a12a400ed7002cd7470b6b0f5be30ab857f327e73d3fbe08e3c3",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1622,7 +1858,7 @@
       "source": "apps/classtools/assets/avatars/object-boot.webp",
       "sourceCategory": "object",
       "sourceSha256": "6569a27d3f97e9a711867dc8ac3faf3c898eeca001dfb11daa8eccd36201b7f9",
-      "modelSha256": "9d4de0c6df66e205fb76a52b1439a49f6139fd249df0411907ccd0af724dc8c5",
+      "modelSha256": "743f8abf2fb9d73cf4bc09f58a9795edaab815bbd608f0644aec112b368f95fe",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1639,7 +1875,7 @@
       "source": "apps/classtools/assets/avatars/object-camera.webp",
       "sourceCategory": "object",
       "sourceSha256": "53df46dcbd44f122286e498102431ca0237861095dd93526969507b4bc5571cd",
-      "modelSha256": "fd88442e75a9cab4dd1816b52b06dc525d152638bc9c9ea668d7d58c051a5e43",
+      "modelSha256": "10b5a076f24349fc62c0d70b5bccdd5d6eb6dca9ce502ccbd439a002b707e8bb",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1656,7 +1892,7 @@
       "source": "apps/classtools/assets/avatars/object-eraser.webp",
       "sourceCategory": "object",
       "sourceSha256": "b450d9332428f7fe4b6a2786fd3b5a70bfdb67afc2483d1efe14dff028f9621f",
-      "modelSha256": "3f874eab7ffc0fa86c56cc3e1f250dc06b2fa69e3d26b27f0d662da1d59f3439",
+      "modelSha256": "2a11078ee63ac0ea71e90a2cc0ae9fffcbdb2e1aa7432ba7a16e13d7ad954b64",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1673,7 +1909,7 @@
       "source": "apps/classtools/assets/avatars/object-gift.webp",
       "sourceCategory": "object",
       "sourceSha256": "0df5c78d22ae1010397a2c119bfe5cd4afaca9d032ed4a5f1a4e9110939f5133",
-      "modelSha256": "5944b7cf2bae8046e9a6c0cfed72042c80e96c56f0e5f0f65cd1fac13177938d",
+      "modelSha256": "989d5d26f5195d86d2d40d003cbf9053cfa3d50e7d84d0847a6958eab07e7a7f",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1690,7 +1926,7 @@
       "source": "apps/classtools/assets/avatars/object-key.webp",
       "sourceCategory": "object",
       "sourceSha256": "8d8fe83bd48803af6a57b7cf99c3a2304695234d1eb2dc69602d29872ca46bcc",
-      "modelSha256": "4d144b0cf4378236028fe053f873cd4435cda793b013fe18f71b1e63b22d10b8",
+      "modelSha256": "ab14ec422c07f2e113ab5b6ef69ec2c5017f6627f109e5e5e8dc47bfc7002c25",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1707,7 +1943,7 @@
       "source": "apps/classtools/assets/avatars/object-lamp.webp",
       "sourceCategory": "object",
       "sourceSha256": "d1baab65563a8cc53eee02cf39a23882a17d13a99591a196204bd21122cca28a",
-      "modelSha256": "63f17aae679eef40eb63e2c59cddfc998ccc30e79756435a9211ab659dc3bcee",
+      "modelSha256": "3ba7f80aaa6ef09569e77f01c81000dbc704c5b2d087c2d3ed2ad2d29b8ce38f",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1724,7 +1960,7 @@
       "source": "apps/classtools/assets/avatars/object-lock.webp",
       "sourceCategory": "object",
       "sourceSha256": "64e3a84ea366e7c724dbb8bd34cdc726b204a4a9e7c2815b0ac763cac1ed29b5",
-      "modelSha256": "2fef17d71e3b1d147afe0f0a39839f850a20eaf58b8573228c5ce145f4a397c9",
+      "modelSha256": "7854acac2c6b5f4999ff97e31f66930af23af16368b06d1be7b315489da1e215",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1741,7 +1977,7 @@
       "source": "apps/classtools/assets/avatars/object-mitten.webp",
       "sourceCategory": "object",
       "sourceSha256": "de8fd928a30d7d6e5544cff694f4bfab24078147e6499bc35c073bc8cb017acb",
-      "modelSha256": "81da7db5228deca6e6e0de07d5381ea5ea836d69e53e1b82dc6626f384f1b213",
+      "modelSha256": "ccf360f55e9426276e56aea720bfed53b3378af0f0474604f271ddcb72935423",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1758,7 +1994,7 @@
       "source": "apps/classtools/assets/avatars/object-newspaper.webp",
       "sourceCategory": "object",
       "sourceSha256": "b6f79061522eb1486a22c6a5695c1fb15fde0919330503baabbd2ce7ff782db9",
-      "modelSha256": "ea5266a2896ddad73a38ce3f0fba7217d8ef4a9c03ec7f80b32a0200b18ed605",
+      "modelSha256": "7475e136c078f8c831bd40a978cd12712bb9a23b592ce3549cc6a92b77f1b62f",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1775,7 +2011,7 @@
       "source": "apps/classtools/assets/avatars/object-pencil.webp",
       "sourceCategory": "object",
       "sourceSha256": "162f172be52544da8994460c40bcd80dbeacc6f566d6771521225436dd26040a",
-      "modelSha256": "4e0c2ef6184c531a4450fe90247c8919188d8ad6d44ace94bd4b55a375f0e3ea",
+      "modelSha256": "e1a2991aabe02cf26a365af63a5f777226705dd829ba4330bc6d4818e0dee38d",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1792,7 +2028,7 @@
       "source": "apps/classtools/assets/avatars/object-radio.webp",
       "sourceCategory": "object",
       "sourceSha256": "d1811cfc18032a0c3a7f462f411431a70d0eb2ed9f9d8e58cf670b5d97d00b89",
-      "modelSha256": "81ff9536bdf88d88e4ed348c6460ce1a983cb5412c61531bc318cfc8726faa6d",
+      "modelSha256": "d94eecac53e603ca6235bfac8440582735f19f6530321a2e7d1ad4e0a2c1f85b",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1809,7 +2045,7 @@
       "source": "apps/classtools/assets/avatars/object-sack.webp",
       "sourceCategory": "object",
       "sourceSha256": "0d1cb112193cba74d3b483be251ffd4c405009be1dadca75f191b39449307e27",
-      "modelSha256": "28bafd12972d65b9ad8f178a746fd142535d3c236b28a1f81136a3bb00d4b939",
+      "modelSha256": "274416f8ea932b1a10822f2a27c2da2b8b409d33ccebcd3c636b33e3f8ae222b",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1826,7 +2062,7 @@
       "source": "apps/classtools/assets/avatars/object-television.webp",
       "sourceCategory": "object",
       "sourceSha256": "1c27c5540d5e581cf8ee3e5e161ac731a63bc08f1457669d72deaeff447dd71e",
-      "modelSha256": "41a3fededba941514f92e0470d36deb37392c0f5305b2fdd1c755e3d467ba5d6",
+      "modelSha256": "8efdc942762f4a246dfd54a293a6f4fca7e4b18fdca3629adc6a60cdaf14e3ff",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1839,28 +2075,47 @@
       }
     },
     {
-      "id": "object-umbrella",
-      "source": "apps/classtools/assets/avatars/object-umbrella.webp",
+      "id": "object-treasure-chest",
+      "source": "apps/classtools/assets/avatars/object-treasure-chest.webp",
       "sourceCategory": "object",
-      "sourceSha256": "bdad4d1f4ca1a632f51d21dfe2f3fffd8de445b8980626cb5d38b878ee69e10b",
-      "modelSha256": "e4f20edf4973e0da44a9f150de541921c3c74066aa625409916ee6ec8700a330",
-      "structureNote": "Individual structure: original_six. Visual review remains open.",
-      "status": "needs_review",
+      "sourceSha256": "97daf920c1bb9701f9a1ad5c6940453410dbf1028ed79c2948fb16a2a1029ffd",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
       "checks": {
         "identity": "pending",
         "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
+    },
+    {
+      "id": "object-umbrella",
+      "source": "apps/classtools/assets/avatars/object-umbrella.webp",
+      "sourceCategory": "object",
+      "sourceSha256": "bdad4d1f4ca1a632f51d21dfe2f3fffd8de445b8980626cb5d38b878ee69e10b",
+      "modelSha256": "65e089108f9b6e56b016a0e7fc0922dfba886d7bac60314919439a22ac7e5f8d",
+      "structureNote": "Original face, three front canopy colors, blue hood and short suit preserved. Actual-volume tests revealed a detached held sleeve. Added buried shoulder bridges and moved the right shoulder pivot inward; all limbs, hood, mast/hook and held grip now contact throughout Idle/Walk/Wave at five phases. Closed both ends of all ribs, hems, pole, handle and rear hood seam. Reduced raised-hand angle to keep the hand visible below the hood. Current source/front, both profiles, rear, four walk phases, live Wave and museum move/turn/stop directly inspected.",
+      "status": "complete",
+      "checks": {
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
+        "glb": "passed",
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-object-umbrella.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "object-watch",
       "source": "apps/classtools/assets/avatars/object-watch.webp",
       "sourceCategory": "object",
       "sourceSha256": "f31b1310173922b125aac58b615cca6410c8ad239ed098ebc71c3e5e8e71e90e",
-      "modelSha256": "1d3d4cbf423f854c67e7f644247e2aac4507cb8819825df1e46d98f46a34f35e",
+      "modelSha256": "3f78d4ab29c8d5718bc29d95de6a7b4b7ac08ae1332c412bb3b5422a4931bdd3",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1877,7 +2132,7 @@
       "source": "apps/classtools/assets/avatars/sport-baseball.webp",
       "sourceCategory": "sport",
       "sourceSha256": "32f9f51af797a79d9fc2e9a668ed1293fbfefda70cc76ed88873f9212abd0051",
-      "modelSha256": "c87b124f2af6a456c255cc46357b97f5c07ae8276c299877db9f18108ef2e4bb",
+      "modelSha256": "056065a1ff3730a63a521f7f4b34019ea76298e873069d49a34c6a0411845976",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1894,7 +2149,7 @@
       "source": "apps/classtools/assets/avatars/sport-basketball.webp",
       "sourceCategory": "sport",
       "sourceSha256": "58b06bbe3c5873bd38339e149ef6605494824d80a64869ffe8d4e72c31d1c309",
-      "modelSha256": "fe9806e558ecf4e7732813f4160e56e5d37533f74a852e26c6d332ccc0fe6a07",
+      "modelSha256": "8a527dfb6d4dfe7160c1b46b185ffa2d5f5805b1cda6542997344f3044b638e4",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1911,7 +2166,7 @@
       "source": "apps/classtools/assets/avatars/sport-bowling.webp",
       "sourceCategory": "sport",
       "sourceSha256": "e023e128d4e82d773fa83c3f361629ce5ac5362efc52892689eed0443e345d84",
-      "modelSha256": "53e68f2d0488dc56ac8aa6c793a94fe5731913a387be68d5e33887029b9c9713",
+      "modelSha256": "30ee448e513d9064d591914fce435c0299a1f61ee978bcd59e4deba3b3bc10db",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1924,11 +2179,28 @@
       }
     },
     {
+      "id": "sport-shuttlecock",
+      "source": "apps/classtools/assets/avatars/sport-shuttlecock.webp",
+      "sourceCategory": "sport",
+      "sourceSha256": "77bbc7ccd8069214e9d74e47576cd774e7ab30b165825e23880bedabbcc43e9f",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "sport-soccer",
       "source": "apps/classtools/assets/avatars/sport-soccer.webp",
       "sourceCategory": "sport",
       "sourceSha256": "31de1c0fc39525ead6e7c9e0a47b7ccb5ad449e2870512d27cf9d04c628ebebb",
-      "modelSha256": "5fc86aafe2207914bdb2daf471bb9836d20acc8351dbdecdf2133c66a5f8c7f6",
+      "modelSha256": "6ac6d35ad79cc07b63289a0797b07318a83357448dad78f7deb584f0070f81d1",
       "structureNote": "Individual structure: sports. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1945,7 +2217,7 @@
       "source": "apps/classtools/assets/avatars/theme-balloons.webp",
       "sourceCategory": "theme",
       "sourceSha256": "d11201d48f84360195230a2f853883a191a401ba93e7661798c895eb4396ca4f",
-      "modelSha256": "6fc06a73057635bc8b9c084434863dd35a00f742d9c4d168a3a6e63d9627888c",
+      "modelSha256": "6c492d8a326e0ef37de2e56a54a9ccd06867930b358878c1e22a7203925b0d82",
       "structureNote": "Individual structure: objects. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -1962,7 +2234,7 @@
       "source": "apps/classtools/assets/avatars/theme-cactus.webp",
       "sourceCategory": "theme",
       "sourceSha256": "18f966f3f7ea3e1c2ffb256099cb461cb68d203182e028870caa4003498eaab8",
-      "modelSha256": "81380c6d5b8fd95aeed6db77e68c2fdf9a02ee47558972308223d54c37ca61aa",
+      "modelSha256": "6c87c7f23bb90374b0c71c27a30b05aa5a894ec01579bb937549f1831158b242",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1979,7 +2251,7 @@
       "source": "apps/classtools/assets/avatars/theme-cherry-blossom.webp",
       "sourceCategory": "theme",
       "sourceSha256": "fe7a71dc7460ee53bf97fede5b5e99c799deb0a39bf9da14a39137d947ee4ca3",
-      "modelSha256": "b6f9afbf658aacd8c619a3db0a87937349f6587953e06131553f7f31be62f999",
+      "modelSha256": "84c4d0065458971c1be4ad9ffd940bad392542d81610655f48947761c42849ad",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -1996,7 +2268,7 @@
       "source": "apps/classtools/assets/avatars/theme-cloud.webp",
       "sourceCategory": "theme",
       "sourceSha256": "8fa4e47a71d06f9e8ebbf6b9ffae60678650a53c4aa582b551d6aaf9cab5aa22",
-      "modelSha256": "749b1a97298bffcf1ec7878824b8b708cd8daaa734c709d6b27db5c81f33433e",
+      "modelSha256": "625f8cf317ebf1c080bee0ce10210b62c382d6c293bb4bd0b246595940ec86bb",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2013,7 +2285,7 @@
       "source": "apps/classtools/assets/avatars/theme-clover.webp",
       "sourceCategory": "theme",
       "sourceSha256": "62537de099c01bf5aa86a2e79ab39442e99d69276dd4e8397c8c63863f3cf33f",
-      "modelSha256": "7c7c73529355f9ab3f9f05c13f58f3faf274275939d3f5413dc6dc1865eae9c0",
+      "modelSha256": "1689eff0ffc3774d1f777a3b6c5def6ffd78d6908aaa5b27b3b5e7986f1502c8",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2030,12 +2302,29 @@
       "source": "apps/classtools/assets/avatars/theme-crown.webp",
       "sourceCategory": "theme",
       "sourceSha256": "4ed8fb0b5bdccdcc0498a28553982e686e474b3a5592961d3e0c8f43401798d0",
-      "modelSha256": "f78084f27de58a81339adc8ec0476d7a65b1351aa29f17f29e726a247c148589",
+      "modelSha256": "e614419e8127f7091bd45aaeaba2841bca0fab8eb613a22cf4ea9d35c23c076d",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
+      "id": "theme-gem",
+      "source": "apps/classtools/assets/avatars/theme-gem.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "38cff9b7ccddc592818643e6ead27d8f0d5b282e758c6c9b66b668e1918ba0db",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
         "glb": "pending",
@@ -2047,7 +2336,7 @@
       "source": "apps/classtools/assets/avatars/theme-guitar.webp",
       "sourceCategory": "theme",
       "sourceSha256": "899df3e2bb5f71c1480ed26db904509242f87d71b7ca6701706ca4818db73819",
-      "modelSha256": "09fb81f5ff9a87873de95c39a15be1e279e9bb0a4389c4d7df2ea41682e86240",
+      "modelSha256": "c4dfda06f2028675c678b18eed3ed339c7a0129c799ce3024d78789d19a7290f",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2060,11 +2349,28 @@
       }
     },
     {
+      "id": "theme-heart",
+      "source": "apps/classtools/assets/avatars/theme-heart.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "825cedb053285aec6a8992b33158cbe1af03a5761caca829d8d54d5fad3bdb19",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "theme-lightning",
       "source": "apps/classtools/assets/avatars/theme-lightning.webp",
       "sourceCategory": "theme",
       "sourceSha256": "b7eca8cff0d414c6ab2e0f674d6d25fa0c08224b063769a9742aa42ba34efcca",
-      "modelSha256": "d7010be434a56118270d78e73ec7160c6b8a3f2a88bce91dfefa3483427bc321",
+      "modelSha256": "075fe13c779b275aaa80c2172cc3ccb1284052ba689e4c952d04f044aa460710",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2081,7 +2387,7 @@
       "source": "apps/classtools/assets/avatars/theme-maple-leaf.webp",
       "sourceCategory": "theme",
       "sourceSha256": "370de952390e854995608324ae394aac0783a41fafdc54a4d4a20b74dcd7c6fb",
-      "modelSha256": "ae6f140ac8042776dcf5903c5ed75e2f011fed36a46b22071c9e176112f312ee",
+      "modelSha256": "fe96012853d15a75b3bbd7a7f2455cf82ef04e4c2b2e64b2b17a8f2c3fb73fda",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2098,7 +2404,7 @@
       "source": "apps/classtools/assets/avatars/theme-moon.webp",
       "sourceCategory": "theme",
       "sourceSha256": "d101de9d85ee9b45a138f632ccdff7383123602b9af549b5e690e240d5651509",
-      "modelSha256": "1d9450c55da4fdc48faff7fac346c0cc08e8d184ffc3fa72e017549899c46d4a",
+      "modelSha256": "1e1d06f9f2d2f38fd33286826fa051cead83ec5acf34a7770108d5e53af173db",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2115,7 +2421,7 @@
       "source": "apps/classtools/assets/avatars/theme-music-note.webp",
       "sourceCategory": "theme",
       "sourceSha256": "1e53f434aee5319119e8b98d858c2493073a3154c02306a4fa87746c56c2b3c6",
-      "modelSha256": "c9b4b2107c81ff77f9a06fa7e5202ba7cb1471be6afb178d2ccbf42d3219e65b",
+      "modelSha256": "8b2e59257f0e99bac325261ada63d83d330395242c01aa0977e8b2e29c41f62b",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2132,7 +2438,7 @@
       "source": "apps/classtools/assets/avatars/theme-paper-airplane.webp",
       "sourceCategory": "theme",
       "sourceSha256": "ad5644494f53e5f3ece81d495d50f93e7f0e7bf722f515623779e305d9461111",
-      "modelSha256": "b46acebfe3bc6877fdbed49d08c45cfa1cfdef07b08264fd59056d77599a436d",
+      "modelSha256": "5940ee579a31c8b07bb1d088741baa072e19655c869937c1115b7530b0ecd0de",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2149,12 +2455,29 @@
       "source": "apps/classtools/assets/avatars/theme-rainbow.webp",
       "sourceCategory": "theme",
       "sourceSha256": "2ae28d5954b70141d0448f89c7b9aca45aa21381b8b2a4375f29acac2c6c8c7a",
-      "modelSha256": "42205fb5b6fb5ee895fbd5c336ec83de83540b3663d391165a9edcbceadbb6e9",
+      "modelSha256": "57d8667820813944023ec0f3ce656b0e00a33290aa70c6f4caa43ff628f2ad47",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
         "identity": "pending",
         "allViews": "failed",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
+      "id": "theme-robot",
+      "source": "apps/classtools/assets/avatars/theme-robot.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "57dfe1fe0bc811d6c5531afbbef45dc11df1e7b9fc8f149b11c44ac568d5f8b7",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
         "connections": "pending",
         "animation": "pending",
         "glb": "pending",
@@ -2166,7 +2489,7 @@
       "source": "apps/classtools/assets/avatars/theme-rose.webp",
       "sourceCategory": "theme",
       "sourceSha256": "78aae012d1807d039bd5868e584a6a7dd517c985ca33dd4c7db2ab98f6b447d6",
-      "modelSha256": "be5f1f419624048d607456b7d81eeaea4b4a8908c12f175b024f265ea1476410",
+      "modelSha256": "f97a9cef74397ba9aec7a5c0fba60927cab6e9a9c51a86736b3b3388262eb2c5",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2179,11 +2502,28 @@
       }
     },
     {
+      "id": "theme-saturn",
+      "source": "apps/classtools/assets/avatars/theme-saturn.webp",
+      "sourceCategory": "theme",
+      "sourceSha256": "7aeb76ab3ad55b236892956e5d2ed78dd600ea545de3a1719ff681885c49c87b",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
       "id": "theme-snowman",
       "source": "apps/classtools/assets/avatars/theme-snowman.webp",
       "sourceCategory": "theme",
       "sourceSha256": "e275c213962468513e66853daff50e3b842e78a410781ab79292fad1fa12a2e4",
-      "modelSha256": "cf96ccb5ebfb62d6bde1e6b1f06d0bd21630b069f1f2c6b5e6d0139fea22c1d9",
+      "modelSha256": "c371195db9585c6aebd82c62c156ba417928c26a0fb4d7e244980d91d774fa09",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2200,7 +2540,7 @@
       "source": "apps/classtools/assets/avatars/theme-star.webp",
       "sourceCategory": "theme",
       "sourceSha256": "9448c73d0a8f629db5d011f8e6231be6c014dbfe54b1aff8332bdeb014fc802d",
-      "modelSha256": "97a846099d121ef884656c26543ca869eec06b807913c04575193a93c7ec9e75",
+      "modelSha256": "7f4fd797ed52a7e3e7852c7628b051969422a5f69be755f25c7da272694f5afb",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2217,7 +2557,7 @@
       "source": "apps/classtools/assets/avatars/theme-sun.webp",
       "sourceCategory": "theme",
       "sourceSha256": "2a589a92ce2bed9db22d6cf4d8cf98531a54ddf04fca74e61878938074af899e",
-      "modelSha256": "e21ef764f47d9bbf7d20e1894a09ff309a4cce6728674a1412043ed0740cd5ac",
+      "modelSha256": "5236427a9340128e1bfac470f51844fc3432f2b31e6e79a6e443e3efbefff29f",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2234,7 +2574,7 @@
       "source": "apps/classtools/assets/avatars/theme-sunflower.webp",
       "sourceCategory": "theme",
       "sourceSha256": "66a83018e74b5eb5078feea287f9ba31f0c21a501e5302a4a9ad97a43ab02aac",
-      "modelSha256": "d127c8d439bc73dbcb12aa99e8c60e8b7288fb7b1cf4327ab5de1e91a09efbc5",
+      "modelSha256": "fe7821f1a59cd0ae5a5085112b5b37c96cba6d0a72781c7c58065cd6957c2508",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2251,7 +2591,7 @@
       "source": "apps/classtools/assets/avatars/theme-tulip.webp",
       "sourceCategory": "theme",
       "sourceSha256": "5a2b4b94cad1b0e62d81d2c87e46d1da36a7ac36e3ac21fed1a447ed5961f75c",
-      "modelSha256": "5d06a6d18b3d7e3cad8b459146955ee5ee7c6738bed1a7a23fc9917044f6b0af",
+      "modelSha256": "ae76c0b914945fe5446653312974f0a8f682303a35408cd8601e81f9fc80bf20",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2268,7 +2608,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-bell-pepper.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "f0e4f30c4b5794df12cbe5a9b6c3fcbb98a93f70644353465e825eef95f9f768",
-      "modelSha256": "80b379c2e0f2609d3fa9d731ce51e237d75d77981f39c253d60ec36ae4455c7a",
+      "modelSha256": "859eb0d2cc1f85e57205a12755142bf11822320d305f225ae3ebfbbf1d25d119",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2285,7 +2625,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-broccoli.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "a7f2110da4f0667f31bf6c92515cd43098fbb0e3671d6291ba04b30899bc0f58",
-      "modelSha256": "251db944e2cae8a48bc5465e1364f204b3c9d89c4f19df0e20212e4dd1b77429",
+      "modelSha256": "3ac1c310aeae221e94e4d329543fa91bf17e5418ef6c6ef45e6455f9bcbab370",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2302,7 +2642,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-carrot.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "f4e1d1e6b34f4b86fa4ee40a038a6f265e8edad9f9e0048b298205fa6e3fcd8f",
-      "modelSha256": "4a36573a0ac2fc41d2c3f9dd7f58a684b3f413bd7c4e4effce27c33b25bf614a",
+      "modelSha256": "ad57613538d152f2887b771455574734ca9e6f7457e1a13e4160d854f72e50ad",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2319,7 +2659,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-corn.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "ee5220bad6b38eee354185a088b4d9c57f8e366b82b87e986aa486eac6c8e268",
-      "modelSha256": "70be7052bfba27b24e25850dc57b0f036b358ed36457905c1c351204c0950451",
+      "modelSha256": "218a9e72b4a460d08023f8deb083cb9ae595c0a565b435b6d8e6898b1b97adb9",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2336,7 +2676,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-eggplant.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "6214dae48cc6900e1aec49a5a066e14bee486a6d60ee98b0d288d638fdd77c4a",
-      "modelSha256": "a5f3bd29cbf703d640a6b8a074feda84cf7e28595c3434c33d3e9bac42fabac0",
+      "modelSha256": "7be47a5adf5403af44ee42a0409b654be1638f2da8badd21030a99d01be97cd7",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2353,7 +2693,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-mushroom.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "223d3adebe3a5bbae562ce326c90265731284796396cdcd92aa2bdbe6b5e8ae5",
-      "modelSha256": "7f19d4525eb3639deab1be8bc0e16ecf73a6a0f30440d8665737d6e76779367a",
+      "modelSha256": "0d602d72b78c7435a81d89866427d9595d30aab3bc2520e62c9ed115cb103575",
       "structureNote": "Individual structure: food_containers. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2370,7 +2710,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-potato.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "ee5e029026a0678a950d37c5b4ac7863f7e5ab31dc28c98a23881ce90310f673",
-      "modelSha256": "ceb6d45c9b5d0af37cb543bec125fde61315a556d111530c11a2491b383596a3",
+      "modelSha256": "4351d238ed40f06661f14fb70bb72421076dc7c354038f83b53e894717110554",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2387,7 +2727,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-pumpkin.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "04d7023cce9c0e819ff1e7d1bdd0cd240649c9f8899c84f3803c6255e38a178b",
-      "modelSha256": "71c1753fd7704ba51e9514ac370c560437935bc361340f70c969ac674388233e",
+      "modelSha256": "2aa40f1ba4ccc6ae2708de771d0f0f4ae292651cfe6429d4de5bb6ff3994f8fb",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2404,7 +2744,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-radish.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "19aa149789890e6b8b81b23bfac592b32cafd5e7b6c4a02ecf7ef644edbb4607",
-      "modelSha256": "78485bd674b5e9c49a1af2da0ae3c0842f6ab91f9d2dce68287edafad37fed53",
+      "modelSha256": "b81e7fb00941fa7684acf3d98c7bbc6c9b24695b544c767d3208ddc4e76f7fdf",
       "structureNote": "Individual structure: root_and_leaves. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2421,7 +2761,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-sweet-potato.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "a3981a41d488efeb68edf4299dafc0accce8bb464f896031135338a3ea8c0e07",
-      "modelSha256": "18d28faeea6d4be2ac2994e7b9a7ac62d14b5527234f9f4fb20f5da31e8af360",
+      "modelSha256": "e0521fb0e1d0fd475a2aab69163761a1294c7f78f974842683fcd4b46737f653",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2438,7 +2778,7 @@
       "source": "apps/classtools/assets/avatars/vegetable-tomato.webp",
       "sourceCategory": "vegetable",
       "sourceSha256": "29418ca9ac3dabd76f89708b202f40c9562346c9019c0e8929f4ebb1324d3ad0",
-      "modelSha256": "bd51a925a9eb37476c31a062496327bf4d852df1ccbabfd70037ebcc711936b9",
+      "modelSha256": "f78e58c5050c13350ed1e6e575adcf9266a146cc0ea4c8d7fa9c9d1fecb151d9",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2455,7 +2795,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-airplane.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "767fb126fa444ef1e0c0cc0534c8a9ce394522a25beae60f7db9534840e4aae3",
-      "modelSha256": "6b4bda87ebdbdc659b0f1b447fa88d2c1a8ef6b3b5aa926f8be25601f0115cda",
+      "modelSha256": "170840e2db1d8ba618e8b4509647ef5f0923bf8eac64938dfa475802b8f74c70",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2472,7 +2812,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-airship.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "47d83314497cf41dc1577ad653d13df9d4cbe272a21c34909c5f51c6542fbc57",
-      "modelSha256": "0236dc6d5370326e15840a489dc895a47c07ddf1954773e4302e8794827946ae",
+      "modelSha256": "f445a993798c28195307904e1265b9af12ea72a98168c2866ed3c582c706872e",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2489,7 +2829,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-ambulance.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "c4fb84f9dbb8ee3ada2f362376782ecf3b34b2d56f092fbc0972cd0058dfe229",
-      "modelSha256": "8df270fdc817533f9bb38a9044fa38f835339c3a031991cc1e0a9b7820b7f3c5",
+      "modelSha256": "2b7c6c874cf7ba615f29e9d105e6a0fe156098328a08ef6de431b7aa0b69cf4a",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2506,7 +2846,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-boat.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "912dd220dabe4f3c026576353f71fa52d4a7c5c41b2d0deae25ff36fee198827",
-      "modelSha256": "159b288455b707084399b27aae2fd313e95852bb77743645247191c00c20b9de",
+      "modelSha256": "8ac20fcc6eef11732f709c2488e000095580a1aee7c76a8bb9aa97722537d15a",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2523,7 +2863,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-fire-truck.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "8a705b4e40e1bd00de010d0fea422d7a418118de897aea37b2df32b4f5f4a264",
-      "modelSha256": "9a5aa41157935338661d27d8b0b94853741cf2b1359faeb4f752d3d31ab7000a",
+      "modelSha256": "330f393138bb1b03483820832fbff6c2ce9ed8eca8ed1496222380123b56d2d7",
       "structureNote": "Authored costume or prop form; some traced limb components remain. Visual acceptance is pending.",
       "status": "needs_remodeling",
       "checks": {
@@ -2540,24 +2880,26 @@
       "source": "apps/classtools/assets/avatars/vehicle-helicopter.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "d5df267e721939c1ef3992f73f52be829bd4b56fdef32fc426b6714173b507d0",
-      "modelSha256": "bf5dd58594cf3f62445ba30c5324bb11ff8c7c507f6d38f308df9bd9706314d7",
-      "structureNote": "Individual structure: original_six. Visual review remains open.",
-      "status": "needs_review",
+      "modelSha256": "52271bede3eaebaeac20065ac5996a748e973cf5b920068f366a4730054a8230",
+      "structureNote": "Closed source-shaped helicopter hood, supported original expression, connected tail and two animated rotors, short wearer. Exact-hash visual/technical/museum checks passed.",
+      "status": "complete",
       "checks": {
-        "identity": "pending",
-        "allViews": "pending",
-        "connections": "pending",
-        "animation": "pending",
+        "identity": "passed",
+        "allViews": "passed",
+        "connections": "passed",
+        "animation": "passed",
         "glb": "passed",
-        "museumRuntime": "pending"
-      }
+        "museumRuntime": "passed"
+      },
+      "reviewEvidence": "outputs/qa/avatar-lab/rebuild-20261108/final-review-vehicle-helicopter.json",
+      "reviewDate": "2026-11-09"
     },
     {
       "id": "vehicle-hot-air-balloon",
       "source": "apps/classtools/assets/avatars/vehicle-hot-air-balloon.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "5bb4126906b32ea13b13da1206d67adedfcb207b73977d0588adcd7f0a7a0ce3",
-      "modelSha256": "ec4649ca4657667c315f413d10757cc09ba7e6df6a5ff2f28e0fbae3a4f94dd9",
+      "modelSha256": "b86519ef87976bf6218ec693425e4913be39550c056e815f9b0ca01207dde9f9",
       "structureNote": "Individual structure: vehicles. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2574,7 +2916,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-rocket.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "9d2445b79067503fbee6b01924c8f70104a30b0c0a1d83b1f01c8537003274bb",
-      "modelSha256": "60683af28695e16be40c561e2c0925a71002a2cf07554500e23864930d1449fb",
+      "modelSha256": "dbe588bf3bd026c4dc9f83c52cd9f3f09e00034aed4dcfc70f7602fcc9c014e7",
       "structureNote": "Individual structure: vehicles. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2591,7 +2933,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-submarine.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "a389f2fcc235e455aa2041e20ed31291dbc17317cc8fcaf2abd09ce0af54be01",
-      "modelSha256": "e25fdd70c085c7773d57cb405397aff66033a50fade0b107d03cd524ea69598a",
+      "modelSha256": "8fafbe325f256509cd9445d64e10b2232588d7ff7ebe83392a915f3ba5efa307",
       "structureNote": "Individual structure: vehicles. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2599,7 +2941,7 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     },
@@ -2608,7 +2950,7 @@
       "source": "apps/classtools/assets/avatars/vehicle-train.webp",
       "sourceCategory": "vehicle",
       "sourceSha256": "a9be33cce7369b0623ddcef3ebf960fb80d1f1bcafe49049e1e8fa818d13a9d0",
-      "modelSha256": "33bd3552b4f4e6082bf10fb1435444e24df1858a2fba888454ce87a27163ff76",
+      "modelSha256": "eff1386eb1414c18e0eb1f3190aa6373aa473ec22223cadb36b97420b42661a7",
       "structureNote": "Individual structure: vehicles. Visual review remains open.",
       "status": "needs_remodeling",
       "checks": {
@@ -2616,7 +2958,24 @@
         "allViews": "failed",
         "connections": "pending",
         "animation": "pending",
-        "glb": "passed",
+        "glb": "pending",
+        "museumRuntime": "pending"
+      }
+    },
+    {
+      "id": "vehicle-ufo",
+      "source": "apps/classtools/assets/avatars/vehicle-ufo.webp",
+      "sourceCategory": "vehicle",
+      "sourceSha256": "e4f6221636bd5c1bdf4ccd0c1f0e8bb37e008eb82f124e190445efc3c081cea2",
+      "modelSha256": null,
+      "structureNote": null,
+      "status": "not_started",
+      "checks": {
+        "identity": "pending",
+        "allViews": "pending",
+        "connections": "pending",
+        "animation": "pending",
+        "glb": "pending",
         "museumRuntime": "pending"
       }
     }

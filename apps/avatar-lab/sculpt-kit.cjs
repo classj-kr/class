@@ -33,8 +33,8 @@ module.exports=function sculptKit(THREE,k,head){
  }
  function cone(name,p,r,h,color,direction=[0,1,0]){const o=mesh(name,new THREE.ConeGeometry(r,h,24),color,p);o.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),new THREE.Vector3(...direction).normalize());return o;}
  function torus(name,p,r,t,color,scale=[1,1,1]){const o=mesh(name,new THREE.TorusGeometry(r,t,12,64),color,p);o.scale.set(...scale);return o;}
- function lathe(name,profile,color,z=0){const curve=new THREE.CatmullRomCurve3(profile.map(([y,r,x=320])=>new THREE.Vector3(r*.005,(580-y)*.005,(x-320)*.005)));
-  const levels=curve.getPoints(96),P=[],I=[],n=64;
+ function lathe(name,profile,color,z=0,detail={}){const curve=new THREE.CatmullRomCurve3(profile.map(([y,r,x=320])=>new THREE.Vector3(r*.005,(580-y)*.005,(x-320)*.005)));
+  const levels=curve.getPoints(detail.levels||96),P=[],I=[],n=detail.segments||64;
   for(const v of levels)for(let i=0;i<n;i++){const a=i/n*Math.PI*2;P.push(v.z+Math.cos(a)*Math.max(0,v.x),v.y,z+Math.sin(a)*Math.max(0,v.x));}
   for(let row=0;row<levels.length-1;row++)for(let i=0;i<n;i++){const a=row*n+i,b=row*n+(i+1)%n,c=a+n,d=b+n;I.push(a,c,d,a,d,b);}
   const g=k.geometry(P,I);if(g.attributes.normal.getY(0)>0){/* profiles go bottom to top */}return mesh(name,g,color);
@@ -44,6 +44,6 @@ module.exports=function sculptKit(THREE,k,head){
   for(let i=12;i>=0;i--){const t=i/12,w=Math.sin(t*Math.PI)*width;ps.push([base[0]+dx*t-nx*w,base[1]+dy*t-ny*w]);}
   return outline(name,ps,depth,color,base[2]||0,.012);
  }
- function paint(){require('./visible-front-artwork.cjs')(THREE,k,parent,pivot);head.special=true;}
+ function paint(){require(parent.userData.directSurfaceArtwork?'./project-model-artwork.cjs':'./visible-front-artwork.cjs')(THREE,k,parent,pivot);head.special=true;}
  return{parent,offset,pivot,point,mesh,ellipsoid,outline,smoothOutline,box,tube,sweep,cone,torus,lathe,leaf,paint};
 };

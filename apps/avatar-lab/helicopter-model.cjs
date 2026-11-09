@@ -1,41 +1,50 @@
 "use strict";
-module.exports=function(THREE){
-  const k=require("./model-kit.cjs")(THREE,"vehicle-helicopter"),{solid,mesh,group,ellipsoid,volume,tube}=k;
-  const red=solid("HelicopterRed","#cf2635",.65),darkRed=solid("DarkRedTrim","#761f2d"),blue=solid("CockpitBlue","#8ab1cb",.22),metal=solid("RotorSilver","#b6acba",.6),dark=solid("RotorEdge","#584151"),skin=solid("FaceBase","#ffd2b2");
-  const head=group("Head",[290,275]);
-  ellipsoid("HelmetHull",[.84,.74,.66],red,head);
-  const p=[],ix=[],U=32,V=24;
-  for(let u=0;u<=U;u++)for(let v=0;v<=V;v++){
-    const theta=-1.58+u/U*1.40,t=Math.max(0,Math.min(1,(theta+1.30)/.80)),low=-.30+.80*t*t*(3-2*t),lat=low+v/V*(1.47-low);
-    p.push(.842*Math.sin(theta)*Math.cos(lat),.742*Math.sin(lat),.662*Math.cos(theta)*Math.cos(lat));
-    if(u<U&&v<V){const a=u*(V+1)+v;ix.push(a,a+V+1,a+1,a+1,a+V+1,a+V+2);}
-  }
-  mesh("BlueCockpitPanel",k.geometry(p,ix),blue,head);
-  const seam=[];for(let i=0;i<=24;i++){const lat=.50+i/24*.97;seam.push([.85*Math.sin(-.18)*Math.cos(lat),.75*Math.sin(lat),.67*Math.cos(-.18)*Math.cos(lat)]);}tube("CockpitSeam",seam,.014,darkRed,head);
-  k.projectArtwork("OriginalFace",[[184,287],[194,253],[220,226],[255,212],[290,210],[328,216],[363,234],[390,263],[401,299],[392,332],[366,359],[332,378],[289,383],[246,374],[209,355],[187,327]],[292,299],[290,275],head,head.getObjectByName("HelmetHull"));
-  k.projectArtwork("OriginalCockpit",[[258,139],[269,147],[270,184],[259,206],[222,221],[194,245],[181,274],[178,316],[152,335],[139,315],[130,281],[139,242],[158,203],[185,172],[221,149]],[196,232],[290,275],head,[head.getObjectByName("HelmetHull"),head.getObjectByName("BlueCockpitPanel")]);
-  // Rear fuselage: a tapered boom with a fin and a separate tail rotor.
-  const a=new THREE.Vector3(.47,.06,-.36),b=new THREE.Vector3(.98,.30,-1.02),delta=b.clone().sub(a);
-  const boom=mesh("TailBoom",new THREE.CylinderGeometry(.105,.24,delta.length()+.14,24),red,head,a.clone().add(b).multiplyScalar(.5).toArray());boom.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),delta.normalize());
-  const finShape=new THREE.Shape();finShape.moveTo(-.12,-.13);finShape.lineTo(.16,-.08);finShape.lineTo(.20,.43);finShape.quadraticCurveTo(.15,.52,.07,.43);finShape.lineTo(-.13,.12);finShape.closePath();
-  const fin=mesh("TailFin",new THREE.ExtrudeGeometry(finShape,{depth:.08,bevelEnabled:true,bevelSize:.025,bevelThickness:.025,bevelSegments:3,steps:1}),darkRed,head,[.96,.29,-1.02]);fin.rotation.y=.55;
-  const tailRotor=new THREE.Group();tailRotor.name="TailRotor";tailRotor.position.set(1.02,.35,-.86);tailRotor.rotation.y=.55;head.add(tailRotor);
-  ellipsoid("TailRotorHub",[.08,.08,.075],dark,tailRotor);
-  for(let i=0;i<3;i++){const blade=ellipsoid("TailRotorBlade"+i,[.065,.20,.025],metal,tailRotor,[Math.sin(i/3*Math.PI*2)*.15,Math.cos(i/3*Math.PI*2)*.15,0]);blade.rotation.z=-i/3*Math.PI*2;}
-  mesh("RotorMast",new THREE.CylinderGeometry(.065,.11,.25,20),darkRed,head,[0,.78,0]);
-  const rotor=new THREE.Group();rotor.name="Rotor";rotor.position.set(0,.92,0);head.add(rotor);
-  ellipsoid("RotorHub",[.11,.075,.11],dark,rotor);
-  // Blades lie in the horizontal XZ plane, with real thickness and rounded tips.
-  for(const sign of [-1,1]){
-    const shape=new THREE.Shape();shape.moveTo(.04,-.045);shape.lineTo(.97,-.105);shape.quadraticCurveTo(1.20,-.10,1.23,-.02);shape.quadraticCurveTo(1.17,.10,.98,.10);shape.lineTo(.04,.045);shape.closePath();
-    const blade=mesh("MainRotorBlade"+sign,new THREE.ExtrudeGeometry(shape,{depth:.025,bevelEnabled:true,bevelSize:.012,bevelThickness:.01,bevelSegments:2,steps:1}),metal,rotor);blade.rotation.x=-Math.PI/2;blade.rotation.z=sign===1?0:Math.PI;
-  }
-  k.suit([
-    ["Torso",[293,469],[[230,412],[268,421],[316,422],[353,411],[365,448],[362,485],[345,516],[313,531],[270,526],[239,506]], [294,468],.24,-.035],
-    ["LeftArm",[216,427],[[204,412],[225,416],[229,442],[220,472],[210,490],[198,494],[189,484],[193,458]], [211,452],.115,-.02],
-    ["RightArm",[369,428],[[356,413],[377,414],[388,437],[401,472],[398,487],[383,496],[372,485],[368,461]], [380,452],.115,-.02],
-    ["LeftLeg",[259,520],[[235,500],[278,518],[278,542],[269,563],[249,569],[236,563]], [258,541],.15,-.035],
-    ["RightLeg",[327,521],[[307,518],[348,500],[348,540],[354,558],[343,567],[322,564],[311,548]], [329,540],.15,-.035]
-  ],"#c62b3a");
-  return k.finish({rotor:true,authoring:"Rounded helicopter helmet, inset original face, wrapped blue cockpit, attached rear boom/fin/tail rotor, horizontal main rotor"});
+module.exports=function(T){
+ const k=require('./model-kit.cjs')(T,'vehicle-helicopter'),head=k.group('Head',[320,580]),s=require('./sculpt-kit.cjs')(T,k,{group:head,part:{pivot:[320,580]}}),shells=[];
+ head.userData.directSurfaceArtwork=true;head.userData.artworkOcclusion=true;head.userData.originalFaceRegions=[{cx:292,cy:298,rx:119,ry:94}];
+ const red='#e62b36',dark='#632c3b',metal='#c2b7c5',blue='#8bc9e1';
+ const hoodPs=[[282,132],[330,140],[377,160],[412,193],[438,229],[453,274],[451,320],[432,361],[397,395],[350,417],[292,429],[237,422],[188,403],[151,377],[130,346],[120,308],[122,269],[133,225],[154,188],[190,158],[235,138]];
+ k.volume('HelicopterHood',hoodPs,[287,280],[320,580],.72,.65,head,k.solid('HelicopterRed',red),{art:false,samples:128});
+ function join(name,prefix,parent){const P=[],I=[];for(const suffix of ['Surface','Back']){const o=parent.getObjectByName(prefix+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,i=>i+n));parent.remove(o);}const g=k.geometry(P,I),p=g.attributes.position,N=g.attributes.normal,keys=new Map();for(let i=0;i<p.count;i++){const q=[p.getX(i),p.getY(i),p.getZ(i)].map(v=>Math.round(v*1e5)).join(',');if(!keys.has(q))keys.set(q,[]);keys.get(q).push(i);}for(const ids of keys.values()){const n=new T.Vector3();for(const i of ids)n.add(new T.Vector3().fromBufferAttribute(N,i));n.normalize();for(const i of ids)N.setXYZ(i,n.x,n.y,n.z);}return k.mesh(name,g,k.solid(name+'Color',red),parent);}
+ const hull=join('HelmetHull','HelicopterHood',head);hull.userData.artworkFacingFade=[.35,.70];shells.push([hull,head,.019]);
+ // The blue cockpit wraps around the nose. Its front remains the original
+ // illustration; only the actual side/back volume receives this base palette.
+ const hp=hull.geometry.attributes.position,hn=hull.geometry.attributes.normal,hi=hull.geometry.index,CP=[],CI=[];
+ const cuts=[v=>270-(320+v.x/.005),v=>270-.0065*Math.max(0,580-v.y/.005-195)**2-(320+v.x/.005)];
+ for(let i=0;i<hi.count;i+=3){let poly=[0,1,2].map(j=>{const q=hi.getX(i+j);return{p:new T.Vector3().fromBufferAttribute(hp,q),n:new T.Vector3().fromBufferAttribute(hn,q)}});for(const f of cuts){const next=[];for(let j=0;j<poly.length;j++){const a=poly[j],b=poly[(j+1)%poly.length],fa=f(a.p),fb=f(b.p);if(fa>=0)next.push(a);if((fa>=0)!==(fb>=0)){const t=fa/(fa-fb);next.push({p:a.p.clone().lerp(b.p,t),n:a.n.clone().lerp(b.n,t).normalize()});}}poly=next;}const start=CP.length/3;for(const v of poly)CP.push(...v.p.clone().addScaledVector(v.n,.001).toArray());for(let j=1;j<poly.length-1;j++)CI.push(start,start+j,start+j+1);}
+ const cockpit=k.mesh('BlueCockpitPanel',k.geometry(CP,CI),k.solid('BlueCockpitColor',blue),head);cockpit.userData.skipOriginalPaint=true;
+
+ const boom=s.sweep('TailBoom',[[420,267,-.16,43],[466,258,-.21,33],[508,241,-.27,24],[548,221,-.30,17]],red);shells.push([boom,head,.015]);
+ const fin=s.smoothOutline('HelicopterTailFinSolid',[[525,227],[539,191],[558,162],[579,155],[593,165],[586,193],[572,230],[553,246]],.20,'#bd2135',-.39,.018);shells.push([fin,head,.014]);
+ const mast=s.smoothOutline('HelicopterRotorMastSolid',[[260,136],[269,116],[280,104],[306,104],[322,120],[329,138]],.24,'#923345',0,.018);shells.push([mast,head,.012]);
+ s.paint();
+ // A fitted narrow glass seam keeps the source's crisp upper cockpit edge.
+ hull.updateWorldMatrix(true,false);const seamCurve=new T.CatmullRomCurve3([[270,140],[273,160],[274,182],[272,203]].map(([x,y])=>new T.Vector3(x,y,0))),seamPoints=[];for(let i=0;i<=32;i++){const p=seamCurve.getPoint(i/32),hit=new T.Raycaster(new T.Vector3((p.x-320)*.005,(580-p.y)*.005,4),new T.Vector3(0,0,-1)).intersectObject(hull)[0];if(!hit)throw new Error('Cockpit seam outside hood');seamPoints.push([p.x,p.y,hit.point.z-.003]);}s.tube('HelicopterCockpitSeam',seamPoints,.012,'#643541');
+ const face=k.projectArtwork('OriginalFace',k.ellipse(292,298,119,94),[292,298],[320,580],head,hull,{samples:128,rings:24,offset:.008});
+ // Real 2-blade main rotor: its slight blade pitch shows the original broad
+ // silver upper surface while its rotation axis stays vertical.
+ const rotor=new T.Group();rotor.name='Rotor';rotor.position.set((295-320)*.005,(580-97)*.005,0);head.add(rotor);
+ k.ellipsoid('RotorHub',[.075,.075,.075],k.solid('RotorHubColor','#855262'),rotor);
+ for(const sign of [-1,1]){const P=[],I=[],C=[],L=64,R=24,edge=new T.Color('#775361').convertSRGBToLinear(),silver=new T.Color('#dedbe5').convertSRGBToLinear();for(let i=0;i<=L;i++){const t=i/L,x=.04+1.22*t,w=Math.pow(Math.sin(Math.PI*t),.65)*(.09+.18*t),h=.020*Math.pow(Math.sin(Math.PI*t),.5);for(let j=0;j<R;j++){const a=j/R*Math.PI*2;P.push(x,h*Math.sin(a),w*Math.cos(a));const c=edge.clone().lerp(silver,Math.max(0,Math.sin(a))*.90);C.push(c.r,c.g,c.b);}}for(let i=0;i<L;i++)for(let j=0;j<R;j++){const a=i*R+j,b=i*R+(j+1)%R,c=a+R,d=b+R;I.push(a,b,d,a,d,c);}let volume=0;for(let j=0;j<I.length;j+=3)volume+=new T.Vector3().fromArray(P,I[j]*3).dot(new T.Vector3().fromArray(P,I[j+1]*3).cross(new T.Vector3().fromArray(P,I[j+2]*3)));if(volume<0)for(let j=0;j<I.length;j+=3)[I[j+1],I[j+2]]=[I[j+2],I[j+1]];const g=k.geometry(P,I);g.setAttribute('color',new T.Float32BufferAttribute(C,3));const o=k.mesh('MainRotorBlade'+sign,g,k.solid('MainRotorMetal','#ffffff'),rotor);o.material.userData.preserveVertexColor=true;o.material.userData.alreadyShaded=true;o.rotation.x=.32;o.rotation.y=sign===1?0:Math.PI;}
+
+ const tailRotor=new T.Group();tailRotor.name='TailRotor';tailRotor.position.set((555-320)*.005,(580-224)*.005,-.16);head.add(tailRotor);
+ const axleGeometry=new T.CylinderGeometry(.045,.045,.25,20);axleGeometry.rotateX(Math.PI/2);k.mesh('HelicopterTailAxleSolid',axleGeometry,k.solid('TailAxleColor',dark),head,[(555-320)*.005,(580-224)*.005,-.27]);
+ k.ellipsoid('TailRotorHub',[.085,.085,.08],k.solid('TailRotorHubColor','#9e6278'),tailRotor);
+ for(let i=0;i<3;i++){const shape=new T.Shape();shape.moveTo(-.040,.015);shape.lineTo(-.071,.225);shape.quadraticCurveTo(-.04,.31,.01,.30);shape.quadraticCurveTo(.08,.26,.062,.22);shape.lineTo(.035,.015);shape.closePath();const g=new T.ExtrudeGeometry(shape,{depth:.030,bevelEnabled:true,bevelSize:.008,bevelThickness:.008,bevelSegments:2,curveSegments:16});g.translate(0,0,-.015);const o=k.mesh('TailRotorBlade'+i,g,k.solid('TailRotorMetal','#8a405b'),tailRotor);o.rotation.z=-.48+i*Math.PI*2/3;shells.push([o,tailRotor,.009]);const inset=g.clone();inset.scale(.66,.84,.30);inset.translate(0,.018,.020);const inlay=k.mesh('TailRotorBladeInlay'+i,inset,k.solid('TailRotorInlay','#d6b5c9'),tailRotor);inlay.rotation.copy(o.rotation);}
+ k.suit([
+ ['Torso',[291,468],[[233,407],[261,414],[294,419],[329,412],[350,407],[358,439],[355,480],[339,511],[310,524],[275,522],[246,509],[231,483],[225,450]],[291,468],.25,0],
+ ['LeftArm',[228,426],[[207,411],[233,416],[234,440],[223,471],[210,488],[198,492],[190,484],[193,463]],[213,451],.125,0],
+ ['RightArm',[353,427],[[342,411],[370,417],[384,442],[396,474],[394,488],[382,494],[369,487],[363,466],[350,443]],[373,451],.125,0],
+ ['LeftLeg',[260,514],[[235,498],[279,512],[280,538],[270,560],[252,568],[236,563],[240,545]],[258,538],.16,0],
+ ['RightLeg',[326,515],[[306,514],[348,500],[349,539],[354,558],[342,566],[324,564],[312,548]],[330,539],.16,0]
+ ],red);
+ const torso=k.root.getObjectByName('Torso');k.ellipsoid('HelicopterNeckBridge',[.18,.09,.12],k.solid('NeckColor',red),torso,[(291-291)*.005,(468-421)*.005,0]);
+ for(const name of ['Torso','LeftArm','RightArm','LeftLeg','RightLeg']){const p=k.root.getObjectByName(name),front=p.getObjectByName(name+'SuitSurface'),back=p.getObjectByName(name+'SuitBack');const P=[...front.geometry.attributes.position.array,...back.geometry.attributes.position.array],I=[...front.geometry.index.array,...Array.from(back.geometry.index.array,v=>v+front.geometry.attributes.position.count)],o=new T.Mesh(k.geometry(P,I));o.name=name+'OutlineBasis';shells.push([o,p,.013]);}
+ // Fade painted perimeter ink before it reaches the hood's side seam.
+ const art=head.getObjectByName('HelmetHullOriginalPaint'),ap=art.geometry.attributes.position,ac=art.geometry.attributes.color,edge=new T.CatmullRomCurve3(hoodPs.map(([x,y])=>new T.Vector3(x,y,0)),true,'centripetal').getSpacedPoints(160);
+ for(let i=0;i<ap.count;i++){const x=320+ap.getX(i)/.005,y=580-ap.getY(i)/.005;let d=Infinity;for(let j=0;j<edge.length-1;j++){const a=edge[j],b=edge[j+1],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy)));d=Math.min(d,Math.hypot(x-a.x-t*dx,y-a.y-t*dy));}const t=Math.max(0,Math.min(1,(d-4)/12));ac.setW(i,ac.getW(i)*t*t*(3-2*t));}
+ for(const[o,parent,width]of shells){o.updateMatrix();const g=o.geometry.clone().applyMatrix4(o.matrix),p=g.attributes.position,b=new T.Box3().setFromBufferAttribute(p),c=b.getCenter(new T.Vector3()),f=1+width/(b.getSize(new T.Vector3()).length()/2),ix=g.index?Array.from(g.index.array):Array.from({length:p.count},(_,i)=>i);for(let i=0;i<p.count;i++)p.setXYZ(i,c.x+(p.getX(i)-c.x)*f,c.y+(p.getY(i)-c.y)*f,c.z+(p.getZ(i)-c.z)*f);for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];g.setIndex(ix);g.computeVertexNormals();const ink=k.mesh(o.name+'InkShell',g,k.solid(o.name+'Ink',dark),parent);ink.material.userData.alreadyShaded=true;}
+ const result=k.finish({rotor:true,holdLeft:true,holdRight:true,authoring:'Source-shaped closed helicopter hood, supported original expression, visible tapered tail/fin, attached two-blade main rotor and three-blade tail rotor, short human suit'});
+ for(const clip of result.clips){const times=Array.from({length:49},(_,i)=>clip.duration*i/48),main=[],tail=[];for(let i=0;i<49;i++){const a=i/48*Math.PI*2;main.push(...new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),a*(clip.name==='Walk'?4:2)).toArray());tail.push(...new T.Quaternion().setFromAxisAngle(new T.Vector3(0,0,1),a*(clip.name==='Walk'?6:3)).toArray());}clip.tracks.find(t=>t.name==='Rotor.quaternion').values=new Float32Array(main);clip.tracks.push(new T.QuaternionKeyframeTrack('TailRotor.quaternion',times,tail));for(const track of clip.tracks)if(['Head.quaternion','LeftArm.quaternion','RightArm.quaternion'].includes(track.name))for(let i=0;i<track.values.length;i+=4)track.values.set([0,0,0,1],i);}
+ Object.assign(result.root.userData,{locomotion:'walk',canWave:false});return result;
 };

@@ -12,9 +12,21 @@ module.exports=function characterEffects(THREE,k,id){
   for(let i=0;i<3;i++){
    const old=k.root.getObjectByName('Flame'+i),parent=old.parent;
    const flame=new THREE.Group();flame.name='CandleFlame'+i;flame.position.copy(old.position).add(new THREE.Vector3(0,-.15,0));parent.add(flame);parent.remove(old);
-   const points=[[0,0],[.055,.025],[.09,.10],[.074,.18],[.034,.27],[0,.34]].map(p=>new THREE.Vector2(...p));
-   k.mesh('OuterFlame'+i,new THREE.LatheGeometry(points,24),material('WarmFlame'+i,'#ffb34b'),flame);
-   k.ellipsoid('FlameCore'+i,[.045,.073,.028],material('FlameCoreColor'+i,'#ffeaa1'),flame,[0,.09,.063]);
+   const curve=new THREE.CatmullRomCurve3([[0,0],[.05,.015],[.085,.06],[.095,.12],[.080,.18],[.050,.24],[.025,.29],[0,.34]].map(([r,y])=>new THREE.Vector3(r,y,0)));
+   const points=curve.getPoints(48).map(p=>new THREE.Vector2(Math.max(0,p.x),p.y)),geometry=new THREE.LatheGeometry(points,32),colors=[];
+   for(let j=0;j<geometry.attributes.normal.count;j++){
+    const n=new THREE.Vector3().fromBufferAttribute(geometry.attributes.normal,j),c=new THREE.Color('#f8b64d').convertSRGBToLinear(),shade=.68+.30*Math.abs(n.z)+.02*Math.max(0,n.y);colors.push(c.r*shade,c.g*shade,c.b*shade);
+   }
+   geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));const fire=material('WarmFlame'+i,'#ffffff');fire.userData.preserveVertexColor=true;
+   k.mesh('OuterFlame'+i,geometry,fire,flame);
+   const coreOutline=new THREE.CatmullRomCurve3([[0,.245],[.018,.205],[.035,.165],[.047,.115],[.043,.075],[.025,.048],[0,.040],[-.025,.048],[-.043,.075],[-.047,.115],[-.035,.165],[-.018,.205]].map(([x,y])=>new THREE.Vector3(x,y,0)),true,'centripetal').getSpacedPoints(64).slice(0,64);
+   const radiusAt=y=>{for(let j=1;j<points.length;j++)if(y<=points[j].y){const a=points[j-1],b=points[j],t=(y-a.y)/(b.y-a.y);return a.x+(b.x-a.x)*t;}return 0;};
+   for(const back of [false,true]){
+    const P=[],I=[];for(let ring=0;ring<=8;ring++)for(const edge of coreOutline){const t=ring/8,x=edge.x*t,y=.12+(edge.y-.12)*t,r=radiusAt(y);P.push(x,y,(back?-1:1)*(Math.sqrt(Math.max(0,r*r-x*x))+.0015));}
+    for(let ring=0;ring<8;ring++)for(let j=0;j<64;j++){const a=ring*64+j,b=ring*64+(j+1)%64,c=a+64,d=b+64;if(ring)I.push(a,b,d);I.push(a,d,c);}
+    const core=k.geometry(P,I);if((core.attributes.normal.getZ(128)<0)!==back){for(let j=0;j<I.length;j+=3)[I[j+1],I[j+2]]=[I[j+2],I[j+1]];core.setIndex(I);core.computeVertexNormals();}
+    k.mesh((back?'FlameCoreBack':'FlameCore')+i,core,material('FlameCoreColor'+i,'#ffe49b'),flame);
+   }
    vectorTrack(flame.name+'.scale',p=>{const a=p*Math.PI*2,dy=.06*Math.sin(a*5+i*1.7)+.025*Math.sin(a*9+i*.9);return[1-dy*.3,1+dy,1-dy*.3];});
    rotationTrack(flame.name,p=>{const a=p*Math.PI*2;return[.025*Math.sin(a*4+i),0,.06*Math.sin(a*3+i*2.1)+.02*Math.sin(a*7+i)];});
   }
