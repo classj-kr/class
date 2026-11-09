@@ -11,6 +11,23 @@
   const result=controls?.querySelector('.result-box');
   if(stage&&result){stage.append(result);result.classList.add('lab-observation-result');}
  });
+ // 예상을 고르기 전에는 답이 될 것을 가린다(그래프·판정·읽은 값·관찰 배지·「실험 결과의 의미」).
+ // 예상을 고르거나 실행 단추를 누르면 걷히고, 조건이 바뀌어 예상 단추가 새로 그려지면 다시 가린다.
+ const predictionField=document.querySelector('.prediction-field');
+ if(predictionField){
+  let ran=false;
+  const chosen=()=>!!predictionField.querySelector('[data-prediction].selected,[data-prediction][aria-pressed="true"],[data-prediction][aria-checked="true"]');
+  const syncGate=()=>document.body.classList.toggle('lab-awaiting-prediction',!ran&&!chosen());
+  new MutationObserver(records=>{if(records.some(r=>r.type==='childList'))ran=false;syncGate();})
+   .observe(predictionField,{subtree:true,childList:true,attributes:true,attributeFilter:['class','aria-pressed','aria-checked']});
+  document.addEventListener('click',event=>{
+   const button=event.target.closest('button');if(!button)return;
+   if(button.matches('.run-button'))ran=true;
+   else if(button.matches('.reset-button'))ran=false;
+   setTimeout(syncGate);
+  },true);
+  syncGate();
+ }
  // A verdict belongs to the submitted answer, never to a subsequently edited answer.
  window.scienceInvalidatePrediction=()=>{
   const empty=document.getElementById('resultEmpty'),content=document.getElementById('resultContent'),feedback=document.getElementById('predictionResult');

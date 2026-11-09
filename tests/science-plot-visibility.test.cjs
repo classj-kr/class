@@ -8,6 +8,8 @@ for(const engine of ['chromium','webkit'])test(engine+': height annotation and c
   for(const slug of ['energy-heat','wave-transfer','solubility-curve','photosynthesis','recrystallise']){
    await page.bringToFront();await page.goto('http://127.0.0.1:18765/learning/inquiry/science-lab/'+slug+'/');
    await page.waitForSelector('[data-assessment-ready]',{state:'attached'});await page.evaluate(()=>document.fonts.ready);
+   // 예상을 고르기 전에는 그래프를 가리므로(lab-ui.js), 예상을 하나 고른 뒤 그래프 글자를 잰다.
+   await page.evaluate(()=>document.querySelector('[data-prediction]')?.click());
    await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
    assert.deepEqual(await page.evaluate(clippedSvgText),[],slug);
    const labels=await page.locator('svg .curve-tag,svg .curve-name').evaluateAll(es=>es.filter(e=>e.getClientRects().length&&e.getBoundingClientRect().width).map(e=>{
