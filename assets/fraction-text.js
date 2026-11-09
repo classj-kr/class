@@ -3,6 +3,7 @@
 (function (root) {
   'use strict';
   const PATTERN = /(\d+)(와|과) (\d+)분의 ?(\d+)|(\d+)분의 ?(\d+)/g;
+  const READING = /^\s*['’"”]?\s*(?:이)?(?:라고|처럼|으로|로)?\s*읽/;
   const SKIP = new Set(['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'SELECT', 'OPTION', 'CODE', 'PRE']);
   let styled = false;
   function style() {
@@ -54,11 +55,14 @@
     const out = document.createDocumentFragment();
     let last = 0, m, head = null;
     while ((m = PATTERN.exec(text))) {
+      // "8분의 3이라고 읽습니다", "2와 3분의 1처럼 읽고"처럼 읽는 법을 가르치는 말은 글자 그대로 둔다.
+      if (READING.test(text.slice(m.index + m[0].length, m.index + m[0].length + 12))) continue;
       if (head === null) head = text.slice(0, m.index);
       else if (m.index > last) out.append(text.slice(last, m.index));
       out.append(piece(m));
       last = m.index + m[0].length;
     }
+    if (head === null) return; // 모두 읽는 법 문장이라 바꿀 것이 없다
     if (last < text.length) out.append(text.slice(last));
     // 부모가 flex·grid 이면 글자 조각 하나하나가 따로 칸이 되어 글이 토막 난다. 그때는 한 덩어리로 감싼다.
     const parent = node.parentElement;
