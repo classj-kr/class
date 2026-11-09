@@ -6,11 +6,7 @@
         "70년 넘게 남과 북은 편지도 마음대로 주고받지 못합니다.",
         "생활 속 예: 서울에서 기차를 타고 평양까지 갈 수 없는 것도 분단 때문입니다."
       ],
-      "beats": [
-        "푸른 산과 들 한가운데를 높은 철조망이 가로지릅니다.",
-        "철조망 앞에서 길이 뚝 끊겼고, 새들만 넘나듭니다.",
-        "하나였던 땅과 겨레가 둘로 갈라진 것이 분단입니다."
-      ],
+      "beats": ["푸른 산과 들 한가운데를 높은 철조망이 가로지릅니다.", "철조망 앞에서 길이 뚝 끊겼고, 새들만 넘나듭니다.", "하나였던 땅과 겨레가 둘로 갈라진 것이 분단입니다."],
       "img": "A wide green valley with rolling hills, seen from a low hilltop. A tall double barbed-wire fence runs straight across the whole valley from left to right, and a country road coming from the foreground stops abruptly at the fence, continuing faintly on the far side. Only a flock of white birds flies freely over the fence. No people, no text.",
       "imgKo": "푸른 골짜기를 높은 철조망이 왼쪽에서 오른쪽으로 가로지르고, 앞에서 오던 시골길이 철조망 앞에서 끊긴다. 하얀 새 떼만 철조망 위를 날아 넘는다."
     },
@@ -49,31 +45,13 @@
         "군인들의 밥과 옷, 군함과 비행기를 사는 돈이 모두 국방비입니다."
       ]
     },
-    "동질성": {
-      "explain": [
-        "쉬운 뜻: 여럿이 '우리 똑같네!' 하고 함께 가진 바탕입니다.",
-        "낱말 나누기: 동질(바탕이 같음) + 성(성질), 바탕이 같은 성질입니다.",
-        "남과 북 모두 추석에 송편을 빚고 아리랑을 부를 줄 압니다."
-      ],
-      "beats": [
-        "왼쪽과 오른쪽, 두 집에서 설날 아침을 맞습니다.",
-        "두 집 모두 떡국을 먹고 웃어른께 세배를 드립니다.",
-        "여럿이 똑같이 가진 바탕과 특징이 동질성입니다."
-      ],
-      "img": "A picture split into two matching halves by a thin vertical line. In each half, a different Korean family in winter hanbok celebrates Lunar New Year morning in their own home: children bow deeply to grandparents, and bowls of rice cake soup sit on a low table. The rooms differ slightly in decoration, but the actions are the same. No text.",
-      "imgKo": "가운데 가는 선으로 나뉜 두 집에서 한복 입은 두 가족이 설날 아침을 맞는다. 집 꾸밈은 조금 다르지만 두 집 모두 아이들이 웃어른께 세배하고 상에 떡국이 놓여 있다."
-    },
     "평화 통일": {
       "explain": [
         "쉬운 뜻: 싸우지 않고 대화로 남과 북이 다시 한 나라가 되는 것입니다.",
         "낱말 나누기: 평화(싸움 없이 사이좋음) + 통일(하나로 합침)입니다.",
         "1991년 남북은 한 팀으로 세계 탁구 대회에 나가 우승했습니다."
       ],
-      "beats": [
-        "끊어진 철길 양쪽에서 사람들이 다가옵니다.",
-        "총 대신 연장을 들고 철길을 이어 붙이며 악수합니다.",
-        "싸우지 않고 대화로 다시 한 나라가 되는 것이 평화 통일입니다."
-      ],
+      "beats": ["끊어진 철길 양쪽에서 사람들이 다가옵니다.", "총 대신 연장을 들고 철길을 이어 붙이며 악수합니다.", "싸우지 않고 대화로 다시 한 나라가 되는 것이 평화 통일입니다."],
       "img": "A railway track broken in the middle in a green field. Railway workers in helmets approach the gap from both sides carrying rails and tools, laying the last pieces to join the track, and two of them shake hands over the joined rails. A white dove flies above in a clear sky. No weapons, no flags, no text.",
       "imgKo": "들판 가운데 끊어진 철길 양쪽에서 안전모를 쓴 일꾼들이 연장과 레일을 들고 와 철길을 잇고, 이어진 레일 위에서 두 사람이 악수한다. 하늘에 흰 비둘기가 난다."
     },
@@ -111,26 +89,9 @@
         "쉬운 뜻: 여기저기 흩어진 자료를 모아 차례대로 엮어 책으로 만드는 일입니다.",
         "생활 속 예: 국어사전은 학자들이 낱말을 오래 모아 편찬한 책입니다."
       ],
-      "beats": [
-        "학자들이 긴 탁자에 낱말 카드를 잔뜩 펼쳐 놓았습니다.",
-        "카드를 차례대로 묶고 정리해 두꺼운 책으로 엮습니다.",
-        "자료를 모아 정리하여 책으로 엮는 일이 편찬입니다."
-      ],
+      "beats": ["학자들이 긴 탁자에 낱말 카드를 잔뜩 펼쳐 놓았습니다.", "카드를 차례대로 묶고 정리해 두꺼운 책으로 엮습니다.", "자료를 모아 정리하여 책으로 엮는 일이 편찬입니다."],
       "img": "In a quiet library workroom, several scholars of different ages sit around a long table covered with hundreds of small word cards sorted into neat stacks and boxes. One scholar arranges the cards in order, another checks pages, and at the end of the table a thick finished dictionary stands next to bound piles of paper. No readable text.",
       "imgKo": "도서관 작업실에서 학자들이 긴 탁자에 낱말 카드를 쌓아 놓고 차례대로 정리하며, 탁자 끝에는 다 엮은 두꺼운 사전이 서 있다."
-    },
-    "방북": {
-      "explain": [
-        "쉬운 뜻: 남쪽 사람이 북쪽 땅을 찾아가는 것입니다.",
-        "2000년 첫 남북 정상 회담 때 대통령도 비행기를 타고 방북했습니다."
-      ],
-      "beats": [
-        "소를 가득 실은 트럭들이 줄지어 북쪽으로 달립니다.",
-        "트럭 행렬이 경계선의 검문소를 지나 북녘 땅으로 들어갑니다.",
-        "남쪽에서 북쪽 땅을 찾아가는 것이 방북입니다."
-      ],
-      "img": "A long line of identical cargo trucks, each carrying brown cattle in its open back, drives north along a country road in 1998. The front truck is passing through a simple border checkpoint gate with a raised barrier, with hills beyond. Seen from behind and slightly above. No text.",
-      "imgKo": "누런 소를 실은 트럭들이 시골길을 따라 북쪽으로 줄지어 달리고, 맨 앞 트럭이 차단봉이 올라간 검문소를 지나 언덕 너머로 들어간다."
     },
     "공단": {
       "explain": [
@@ -167,24 +128,13 @@
         "쉬운 뜻: 영어로 civilian입니다. 군인이 아닌 우리 같은 보통 사람입니다.",
         "생활 속 예: 군부대 정문에서 군인은 그냥 지나가지만 가족은 허락을 받아야 합니다."
       ],
-      "beats": [
-        "휴전선 가까운 길에 검문소가 있습니다.",
-        "군인이 탄 차는 지나가지만, 관광객 가족은 출입 허가를 보여 줍니다.",
-        "군인이 아닌 보통 사람이 민간인입니다."
-      ],
+      "beats": ["휴전선 가까운 길에 검문소가 있습니다.", "군인이 탄 차는 지나가지만, 관광객 가족은 출입 허가를 보여 줍니다.", "군인이 아닌 보통 사람이 민간인입니다."],
       "img": "A checkpoint on a country road near the border with a striped barrier. On one lane, a military jeep with uniformed soldiers drives through. On the other lane, a family in casual travel clothes, parents and two children with backpacks, stop at the booth and hand a pass card to a guard. No weapons visible, no text.",
       "imgKo": "줄무늬 차단봉이 있는 검문소. 한쪽 길로는 군인이 탄 지프가 지나가고, 다른 쪽에서는 배낭을 멘 가족이 멈춰 서서 출입증을 건넨다."
     },
     "육로": {
-      "explain": [
-        "쉬운 뜻: 땅 위로 난 길입니다. 기차나 자동차가 다니는 길입니다.",
-        "섬나라가 아닌데도 우리는 비행기나 배를 타야만 외국에 갈 수 있습니다."
-      ],
-      "beats": [
-        "기차와 트럭이 땅 위로 쭉 뻗은 길을 따라 달립니다.",
-        "먼 바다에는 배가, 하늘에는 비행기가 지나갑니다.",
-        "바다나 하늘이 아닌 땅 위로 다니는 길이 육로입니다."
-      ],
+      "explain": ["쉬운 뜻: 땅 위로 난 길입니다. 기차나 자동차가 다니는 길입니다.", "섬나라가 아닌데도 우리는 비행기나 배를 타야만 외국에 갈 수 있습니다."],
+      "beats": ["기차와 트럭이 땅 위로 쭉 뻗은 길을 따라 달립니다.", "먼 바다에는 배가, 하늘에는 비행기가 지나갑니다.", "바다나 하늘이 아닌 땅 위로 다니는 길이 육로입니다."],
       "img": "A wide landscape in bright colors: in the foreground, a long freight train and a line of trucks travel side by side across land on a railway and a highway stretching toward distant mountains. In the faded background, a cargo ship sails on the sea and an airplane flies in the sky, drawn smaller and paler. No text.",
       "imgKo": "앞쪽에는 화물 기차와 트럭들이 먼 산까지 뻗은 철길과 고속 도로를 따라 땅 위를 달리고, 뒤쪽 흐린 바다에는 화물선이, 하늘에는 비행기가 작게 지나간다."
     }
@@ -219,10 +169,7 @@
       "imgKo": "1960년 새벽의 어두운 투표소에서 양복 입은 두 남자가 주위를 살피며, 탁자 위 나무 투표함을 표가 가득 든 다른 투표함과 몰래 바꿔치기한다."
     },
     "무효": {
-      "explain": [
-        "쉬운 뜻: '없던 일로 하자!' 하고 결과를 인정하지 않는 것입니다.",
-        "생활 속 예: 피구에서 선을 밟고 던진 공은 맞혀도 무효입니다."
-      ],
+      "explain": ["쉬운 뜻: '없던 일로 하자!' 하고 결과를 인정하지 않는 것입니다.", "생활 속 예: 피구에서 선을 밟고 던진 공은 맞혀도 무효입니다."],
       "beats": [
         "반장 선거 개표를 하다가 한 번에 두 장 접힌 투표용지가 나왔습니다.",
         "선생님이 투표함을 옆으로 밀어 두고 고개를 젓습니다.",
@@ -251,11 +198,7 @@
         "쉬운 뜻: 영어로 revolution입니다. 국민이 힘을 모아 잘못된 정치를 통째로 바꾸는 것입니다.",
         "1960년 학생과 시민들이 일어나 12년 동안 이어진 정부를 물러나게 했습니다."
       ],
-      "beats": [
-        "학생과 시민들이 거리를 가득 메웠습니다.",
-        "대통령이 물러난다는 소식에 사람들이 모자를 던지며 환호합니다.",
-        "국민이 들고일어나 잘못된 정치를 뒤엎은 일이 혁명입니다."
-      ],
+      "beats": ["학생과 시민들이 거리를 가득 메웠습니다.", "대통령이 물러난다는 소식에 사람들이 모자를 던지며 환호합니다.", "국민이 들고일어나 잘못된 정치를 뒤엎은 일이 혁명입니다."],
       "img": "A broad avenue in Seoul in April 1960, packed with students in school uniforms and citizens in 1960s clothes. Hearing news from a crowd member holding a radio, people throw their caps into the air, hug each other and cheer joyfully, some climbing onto a truck. Bright spring sky. No violence, no text.",
       "imgKo": "1960년 4월 서울의 넓은 거리를 교복 입은 학생과 시민들이 가득 메우고, 라디오 소식을 듣고 모자를 하늘로 던지며 얼싸안고 환호한다."
     },
@@ -273,10 +216,7 @@
       "imgKo": "1979년 대학교 정문 밖에 헬멧을 쓴 경찰들이 큰 방패를 들고 줄지어 길을 막고, 교문 안에는 학생들이 현수막을 들고 서 있다. 그 사이에 하얀 연기가 옅게 떠 있다."
     },
     "정변": {
-      "explain": [
-        "쉬운 뜻: 몇몇 사람이 법을 어기고 갑자기 정권을 빼앗는 것입니다.",
-        "1961년과 1979년, 일부 군인들이 군대를 움직여 권력을 잡았습니다."
-      ],
+      "explain": ["쉬운 뜻: 몇몇 사람이 법을 어기고 갑자기 정권을 빼앗는 것입니다.", "1961년과 1979년, 일부 군인들이 군대를 움직여 권력을 잡았습니다."],
       "beats": [
         "새벽, 조용한 도시의 다리 위로 군대 트럭들이 줄지어 들어옵니다.",
         "잠에서 깬 사람들이 창문 너머로 걱정스럽게 내다봅니다.",
@@ -292,11 +232,7 @@
         "다른 법이 헌법과 어긋나면 그 법은 쓸 수 없게 됩니다.",
         "1948년 7월 17일에 처음 만들어 이날을 제헌절로 기립니다."
       ],
-      "beats": [
-        "작은 법 책들이 차곡차곡 쌓여 탑을 이룹니다.",
-        "그 탑의 맨 아래에 가장 크고 단단한 책 한 권이 받치고 있습니다.",
-        "나라의 가장 기본이 되는 법이 헌법입니다."
-      ],
+      "beats": ["작은 법 책들이 차곡차곡 쌓여 탑을 이룹니다.", "그 탑의 맨 아래에 가장 크고 단단한 책 한 권이 받치고 있습니다.", "나라의 가장 기본이 되는 법이 헌법입니다."],
       "img": "A tall tower made of many smaller books of different colors stacked neatly on top of each other. At the very bottom, one large, thick, sturdy book with a golden cover supports the whole tower like a foundation stone. Soft light shines from behind. No titles or text on any book.",
       "imgKo": "여러 색의 작은 책들이 차곡차곡 쌓여 탑을 이루고, 맨 아래에서 금빛 표지의 크고 두꺼운 책 한 권이 주춧돌처럼 탑 전체를 받치고 있다."
     },
@@ -397,10 +333,7 @@
       "imgKo": "1980년 5월 도시 거리에서 평범한 셔츠에 머리띠를 맨 젊은이들이 트럭 짐칸에 서 있고, 동네 아주머니들이 주먹밥과 물병을 올려 건네며 응원한다."
     },
     "탄압": {
-      "explain": [
-        "쉬운 뜻: 힘센 쪽이 힘으로 남을 꽉 눌러 꼼짝 못 하게 하는 것입니다.",
-        "정부를 비판하는 노래를 부르지 못하게 막는 것도 탄압입니다."
-      ],
+      "explain": ["쉬운 뜻: 힘센 쪽이 힘으로 남을 꽉 눌러 꼼짝 못 하게 하는 것입니다.", "정부를 비판하는 노래를 부르지 못하게 막는 것도 탄압입니다."],
       "beats": [
         "신문사 사무실에 기자들이 쓴 원고가 쌓여 있습니다.",
         "사람들이 들어와 원고와 신문 뭉치를 상자에 담아 가져갑니다.",
@@ -535,20 +468,6 @@
         "낱말 나누기: 도시 + 화(그렇게 됨), 도시처럼 되어 감입니다.",
         "지금은 우리나라 사람 열 명 가운데 여덟 명쯤이 도시에 삽니다."
       ]
-    },
-    "달동네": {
-      "explain": [
-        "쉬운 뜻: 산꼭대기 가까이에 있어 달이 잘 보인다고 붙은 이름입니다.",
-        "도시로 온 사람들이 집값이 싼 산비탈에 작은 집을 지어 살았습니다.",
-        "좁고 가파른 골목과 계단이 거미줄처럼 이어졌습니다."
-      ],
-      "beats": [
-        "도시 끝 산비탈에 작은 집들이 다닥다닥 붙어 있습니다.",
-        "좁은 계단 골목으로 아이들이 물통을 들고 오르고, 위로 둥근 달이 떴습니다.",
-        "산비탈 높은 곳에 형편이 어려운 사람들이 모여 살던 마을이 달동네입니다."
-      ],
-      "img": "Early evening in a 1980s Korean city. A steep hillside is covered with tiny houses with slate and tin roofs packed tightly together, connected by narrow winding stairs and alleys. Children carry water buckets up the steps, laundry hangs between houses, and a big round moon rises just above the hilltop, with tall city buildings glowing far below. No text.",
-      "imgKo": "1980년대 저녁, 도시 끝 가파른 산비탈에 작은 집들이 다닥다닥 붙어 있고 좁은 계단 골목으로 아이들이 물통을 들고 오른다. 산꼭대기 위로 둥근 달이 뜨고 저 아래 도시 건물이 불을 밝힌다."
     },
     "생활권": {
       "explain": [
@@ -791,16 +710,10 @@
       "imgKo": "병실에서 다리에 깁스를 한 이모가 침대에 앉아 손으로 가리며 투표용지에 도장을 찍고 회송 봉투에 넣고, 간호사가 우편 쟁반을 들고 문가에서 기다린다."
     },
     "보통 선거": {
-      "explain": [
-        "쉬운 뜻: 나이만 되면 누구나 투표할 수 있다는 원칙입니다.",
-        "옛날 어떤 나라에서는 돈 많은 남자만 투표할 수 있었습니다."
-      ]
+      "explain": ["쉬운 뜻: 나이만 되면 누구나 투표할 수 있다는 원칙입니다.", "옛날 어떤 나라에서는 돈 많은 남자만 투표할 수 있었습니다."]
     },
     "직접 선거": {
-      "explain": [
-        "쉬운 뜻: 내 표는 내가 직접 찍어야 한다는 원칙입니다.",
-        "몸이 불편한 사람도 머무는 곳에서 스스로 표를 찍어 우편으로 보냅니다."
-      ]
+      "explain": ["쉬운 뜻: 내 표는 내가 직접 찍어야 한다는 원칙입니다.", "몸이 불편한 사람도 머무는 곳에서 스스로 표를 찍어 우편으로 보냅니다."]
     },
     "평등 선거": {
       "explain": [
@@ -821,11 +734,7 @@
         "쉬운 뜻: 영어로 neutral입니다. 줄다리기 한가운데 깃발처럼 어느 쪽으로도 기울지 않는 것입니다.",
         "생활 속 예: 가위바위보 심판은 어느 쪽 친구도 편들지 않습니다."
       ],
-      "beats": [
-        "운동장에서 두 반이 줄다리기를 합니다.",
-        "선생님은 줄 한가운데 서서 양쪽을 똑같이 바라봅니다.",
-        "어느 편에도 치우치지 않고 가운데에 서는 것이 중립입니다."
-      ],
+      "beats": ["운동장에서 두 반이 줄다리기를 합니다.", "선생님은 줄 한가운데 서서 양쪽을 똑같이 바라봅니다.", "어느 편에도 치우치지 않고 가운데에 서는 것이 중립입니다."],
       "img": "On a school field, two classes pull a long rope in a tug-of-war, one team in blue shirts and one in yellow. The TEACHER stands exactly at the center beside the middle flag on the rope, whistle in mouth, arms held out evenly, looking at both sides fairly. A chalk center line is on the ground. No text.",
       "imgKo": "운동장에서 파란 옷 반과 노란 옷 반이 줄다리기를 하고, 선생님이 줄 한가운데 깃발 옆에 서서 호루라기를 물고 두 팔을 고르게 벌려 양쪽을 똑같이 바라본다."
     },

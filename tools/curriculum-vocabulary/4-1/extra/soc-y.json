@@ -31,10 +31,7 @@
       "imgKo": "맑은 하늘 아래 선사 시대 마을 유적지. 넓은 풀밭에 짚으로 덮은 고깔 모양 움집 몇 채가 다시 지어져 있고, 땅에는 옛 집터 테두리가 낮은 돌로 남아 있다. 베이지 재킷을 입은 선생님이 아이들을 데리고 그 사이 길을 걷는다."
     },
     "유물": {
-      "explain": [
-        "쉬운 뜻: 할아버지의 할아버지보다 훨씬 오래전 사람들이 쓰던 물건입니다.",
-        "생활 속 예: 신라 임금이 머리에 썼던 금관도 박물관에 있는 유물입니다."
-      ],
+      "explain": ["쉬운 뜻: 할아버지의 할아버지보다 훨씬 오래전 사람들이 쓰던 물건입니다.", "생활 속 예: 신라 임금이 머리에 썼던 금관도 박물관에 있는 유물입니다."],
       "beats": [
         "줄을 쳐 놓은 네모난 구덩이에서 흙을 조금씩 걷어 냅니다.",
         "작은 솔로 흙을 털자 옛날 토기가 모습을 드러냅니다.",
@@ -104,19 +101,6 @@
       ],
       "img": "An old stone wall of a historic Korean fortress has messy scratch marks on its surface and one broken corner stone lying on the ground. HARIN, a girl with a yellow headband and a mint cardigan, and TEACHER, a woman in her 30s in a beige jacket, look at the damaged part with worried faces. The scratches are abstract marks, not letters. No text.",
       "imgKo": "오래된 성벽 한쪽에 긁힌 자국이 어지럽게 나 있고, 깨진 모서리 돌 하나가 땅에 떨어져 있다. 하린과 선생님이 걱정스러운 얼굴로 그 자리를 바라본다. 긁힌 자국은 글자가 아니다."
-    },
-    "전승": {
-      "explain": [
-        "쉬운 뜻: 이어달리기 바통처럼, 솜씨를 받아서 다음 사람에게 넘겨주는 것입니다.",
-        "생활 속 예: 강강술래와 탈춤은 오랫동안 사람에서 사람으로 전승되어 왔습니다."
-      ],
-      "beats": [
-        "할아버지가 장구를 치며 장단을 보여 줍니다.",
-        "마주 앉은 아이가 손 모양을 그대로 따라 합니다.",
-        "앞 사람의 솜씨를 물려받아 다음 사람에게 잇는 것이 전승입니다."
-      ],
-      "img": "In a traditional Korean village yard, an elderly man in white hanbok beats a janggu drum and shows the rhythm, while a young girl in hanbok sits facing him with her own small janggu and copies his hand movements carefully. No text.",
-      "imgKo": "옛 마을 마당. 흰 한복을 입은 할아버지가 장구를 치며 장단을 보여 주고, 마주 앉은 한복 차림의 여자아이가 작은 장구로 할아버지의 손 모양을 조심스레 따라 한다."
     },
     "개최": {
       "explain": [
@@ -241,21 +225,6 @@
         "쉬운 뜻: 영어로 income, 일을 해서 집에 들어오는 돈입니다.",
         "생활 속 예: 농부가 배추를 팔아 번 돈, 작가가 책을 써서 받은 돈도 소득입니다."
       ]
-    },
-    "가계부": {
-      "explain": [
-        "쉬운 뜻: 우리 집 살림살이를 돈으로 적어 두는 일기장입니다.",
-        "낱말 나누기: 가계(한 집의 살림) + 부(적어 두는 책)입니다.",
-        "생활 속 예: 요즘은 휴대 전화 앱에 가계부를 쓰는 집도 많습니다."
-      ],
-      "beats": [
-        "저녁 식탁 위에 영수증과 계산기, 공책이 놓여 있습니다.",
-        "아빠가 공책에 오늘 쓴 돈을 차곡차곡 적습니다.",
-        "하린이가 구겨진 영수증을 펴서 아빠에게 건넵니다.",
-        "우리 집에 들어온 돈과 쓴 돈을 적는 책이 가계부입니다."
-      ],
-      "img": "At a dining table in the evening, a father writes in a notebook ruled into neat columns, with a few receipts and a calculator beside it. HARIN, a girl with a yellow headband and a mint cardigan, sits next to her and smooths out a crumpled receipt to hand over. The writing is not readable. No text.",
-      "imgKo": "저녁 식탁. 아빠가 칸이 나뉜 공책에 무언가를 적고, 옆에는 영수증 몇 장과 계산기가 놓여 있다. 곁에 앉은 하린이 구겨진 영수증을 펴서 아빠에게 건넨다. 글씨는 읽히지 않는다."
     },
     "용돈 기입장": {
       "explain": [

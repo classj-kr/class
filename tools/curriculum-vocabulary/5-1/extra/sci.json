@@ -22,13 +22,6 @@
     "생활 속 예: 비 온 뒤 물웅덩이 바닥에 고운 흙이 얇게 깔립니다."
    ]
   },
-  "침식 작용": {
-   "explain": [
-    "쉬운 뜻: 물과 바람이 사포처럼 땅과 바위를 조금씩 갈아 없애는 일입니다.",
-    "낱말 나누기: 침식(조금씩 갉아 먹듯 깎임) + 작용(일으키는 일)입니다.",
-    "생활 속 예: 큰비가 온 뒤 운동장 흙에 물길 자국이 패어 있습니다."
-   ]
-  },
   "암석": {
    "en": "rock",
    "explain": [
@@ -90,7 +83,11 @@
     "생활 속 예: 식탁 위 빵 부스러기를 보고 동생이 몰래 빵을 먹었다고 알아냅니다.",
     "과학자는 화석과 지층을 보고 옛날 모습을 추리합니다."
    ],
-   "beats": ["하린이가 돌에 찍힌 고사리 화석을 돋보기로 들여다봅니다.", "도윤이는 고사리가 우거진 축축한 옛 숲을 떠올립니다.", "이처럼 단서를 바탕으로 보지 못한 옛일을 생각해 알아내는 것이 추리입니다."],
+   "beats": [
+    "하린이가 돌에 찍힌 고사리 화석을 돋보기로 들여다봅니다.",
+    "도윤이는 고사리가 우거진 축축한 옛 숲을 떠올립니다.",
+    "이처럼 단서를 바탕으로 보지 못한 옛일을 생각해 알아내는 것이 추리입니다."
+   ],
    "img": "A science classroom lab table with a gray rock slab showing a clear fern leaf fossil. HARIN (girl, yellow headband, mint cardigan) holds a magnifying glass over the fossil, while DOYUN (boy, round glasses, navy hoodie) beside her looks up thoughtfully. A soft thought bubble above his head shows a warm, damp ancient forest full of tall ferns; the bubble holds only a picture, no words.",
    "imgKo": "실험대 위 고사리 화석을 하린이가 돋보기로 들여다보고, 도윤이 머리 위 생각 풍선에 고사리가 우거진 축축한 옛 숲이 떠오른다. 풍선에 글자는 없다."
   }
@@ -183,16 +180,10 @@
    ]
   },
   "용질": {
-   "explain": [
-    "쉬운 뜻: 물에 '들어가서 녹는' 쪽의 물질입니다.",
-    "생활 속 예: 레몬차를 만들 때 넣어 녹이는 설탕이 용질입니다."
-   ]
+   "explain": ["쉬운 뜻: 물에 '들어가서 녹는' 쪽의 물질입니다.", "생활 속 예: 레몬차를 만들 때 넣어 녹이는 설탕이 용질입니다."]
   },
   "용매": {
-   "explain": [
-    "쉬운 뜻: 녹는 물질을 품어 주는 쪽입니다. 대부분 물이 용매가 됩니다.",
-    "생활 속 예: 꿀물을 만들 때 꿀을 녹이는 따뜻한 물이 용매입니다."
-   ]
+   "explain": ["쉬운 뜻: 녹는 물질을 품어 주는 쪽입니다. 대부분 물이 용매가 됩니다.", "생활 속 예: 꿀물을 만들 때 꿀을 녹이는 따뜻한 물이 용매입니다."]
   },
   "용액": {
    "en": "solution",
@@ -209,7 +200,12 @@
     "생활 속 예: 물 온도만 다르게 하고 물의 양과 젓는 횟수는 똑같이 맞춥니다.",
     "다르게 하는 조건은 한 가지여야 무엇 때문인지 알 수 있습니다."
    ],
-   "beats": ["창가에 크기와 흙이 똑같은 화분 두 개가 있습니다.", "하린이가 두 화분에 똑같은 양의 물을 붓습니다.", "다른 점은 하나뿐, 한 화분만 상자로 덮어 햇빛을 막습니다.", "이렇게 실험에서 같게 할 것과 다르게 할 것을 정한 것이 조건입니다."],
+   "beats": [
+    "창가에 크기와 흙이 똑같은 화분 두 개가 있습니다.",
+    "하린이가 두 화분에 똑같은 양의 물을 붓습니다.",
+    "다른 점은 하나뿐, 한 화분만 상자로 덮어 햇빛을 막습니다.",
+    "이렇게 실험에서 같게 할 것과 다르게 할 것을 정한 것이 조건입니다."
+   ],
    "img": "A sunny classroom windowsill with two identical small pots of young bean seedlings, the same pot size and the same soil. One pot is covered with an upside-down cardboard box, the other stands uncovered in the sunlight. HARIN (girl, yellow headband, mint cardigan) carefully pours the same amount of water into each pot from a measuring cup, while DOYUN (boy, round glasses, navy hoodie) holds the box beside her.",
    "imgKo": "창가에 똑같은 콩 새싹 화분 두 개가 있고 하나만 상자로 덮여 있다. 하린이가 두 화분에 계량컵으로 같은 양의 물을 붓고 도윤이가 옆에서 상자를 잡고 있다."
   },
@@ -227,7 +223,12 @@
     "낱말 나누기: 상대(마주 보는 짝) + 적(~인 것), 짝과 견주어 보는 것입니다.",
     "생활 속 예: 개미 옆의 생쥐는 크지만, 코끼리 옆의 생쥐는 작습니다."
    ],
-   "beats": ["1학년 동생들 옆에 선 도윤이는 키가 큽니다.", "6학년 형들 옆에서는 도윤이가 키가 작습니다.", "도윤이의 키는 그대로인데 누구와 견주느냐에 따라 크다, 작다가 달라집니다.", "이렇게 다른 것과 견주어 보아서 정하는 것이 상대적입니다."],
+   "beats": [
+    "1학년 동생들 옆에 선 도윤이는 키가 큽니다.",
+    "6학년 형들 옆에서는 도윤이가 키가 작습니다.",
+    "도윤이의 키는 그대로인데 누구와 견주느냐에 따라 크다, 작다가 달라집니다.",
+    "이렇게 다른 것과 견주어 보아서 정하는 것이 상대적입니다."
+   ],
    "img": "A school hallway with a plain wall. DOYUN (boy, round glasses, navy hoodie) stands in the middle; on his left stand two little first-grade children who reach only up to his shoulders, and on his right stand two tall sixth-grade students who are a whole head taller than him. Everyone faces forward so their heights are easy to compare.",
    "imgKo": "복도 가운데 도윤이가 서 있고, 왼쪽에는 어깨까지 오는 1학년 동생들, 오른쪽에는 머리 하나만큼 큰 6학년 형들이 서 있다."
   }
@@ -253,7 +254,11 @@
     "쉬운 뜻: 영어로 support, 집의 기둥처럼 무게를 받아서 버텨 주는 것입니다.",
     "생활 속 예: 다리를 다친 사람은 목발로 몸을 지탱합니다."
    ],
-   "beats": ["기둥을 빼낸 텐트는 풀밭에 납작하게 주저앉았습니다.", "옆의 텐트는 가운데 기둥 하나가 천막 전체를 받치고 서 있습니다.", "이렇게 쓰러지지 않도록 받쳐서 버티는 것이 지탱입니다."],
+   "beats": [
+    "기둥을 빼낸 텐트는 풀밭에 납작하게 주저앉았습니다.",
+    "옆의 텐트는 가운데 기둥 하나가 천막 전체를 받치고 서 있습니다.",
+    "이렇게 쓰러지지 않도록 받쳐서 버티는 것이 지탱입니다."
+   ],
    "img": "Two identical canvas tents side by side on a grassy campsite. On the left, a tent without its center pole lies collapsed flat on the grass; on the right, the same kind of tent stands tall, held up by one wooden pole in its middle. DOYUN (boy, round glasses, navy hoodie) kneels beside the standing tent, holding its pole steady with both hands.",
    "imgKo": "풀밭에 기둥 없는 텐트는 납작하게 주저앉아 있고, 옆의 똑같은 텐트는 가운데 나무 기둥 하나로 우뚝 서 있다. 도윤이가 그 기둥을 두 손으로 붙잡고 있다."
   },
@@ -280,7 +285,11 @@
     "낱말 나누기: 영양(몸을 기르는 것) + 소(바탕), 몸을 기르는 바탕 물질입니다.",
     "생활 속 예: 우유에는 뼈를 튼튼하게 하는 칼슘이라는 영양소가 있습니다."
    ],
-   "beats": ["급식판에 밥, 국, 생선, 나물, 우유, 귤이 담겨 있습니다.", "하린이가 가리지 않고 골고루 먹습니다.", "음식마다 들어 있는, 몸이 자라고 움직이는 데 꼭 필요한 성분이 영양소입니다."],
+   "beats": [
+    "급식판에 밥, 국, 생선, 나물, 우유, 귤이 담겨 있습니다.",
+    "하린이가 가리지 않고 골고루 먹습니다.",
+    "음식마다 들어 있는, 몸이 자라고 움직이는 데 꼭 필요한 성분이 영양소입니다."
+   ],
    "img": "A Korean school cafeteria table. A metal lunch tray seen at a slight angle holds a bowl of rice, a bowl of soup, a piece of grilled fish, a small dish of seasoned spinach, a carton of milk and a few tangerine slices. HARIN (girl, yellow headband, mint cardigan) sits at the table with chopsticks, happily eating a bit of everything on her tray.",
    "imgKo": "급식판에 밥, 국, 생선구이, 시금치나물, 우유, 귤이 골고루 담겨 있고, 하린이가 젓가락으로 이것저것 맛있게 먹는다."
   },
@@ -303,7 +312,11 @@
     "쉬운 뜻: 몸속 작은 공장이 침, 땀, 눈물 같은 물을 만들어 내놓는 것입니다.",
     "생활 속 예: 맛있는 음식 냄새를 맡으면 입안에 침이 고입니다."
    ],
-   "beats": ["뜨거운 햇볕 아래에서 도윤이가 달리기를 마쳤습니다.", "이마와 팔에 땀방울이 송골송골 맺혔습니다.", "몸이 이렇게 땀 같은 액체를 스스로 만들어 내보내는 것이 분비입니다."],
+   "beats": [
+    "뜨거운 햇볕 아래에서 도윤이가 달리기를 마쳤습니다.",
+    "이마와 팔에 땀방울이 송골송골 맺혔습니다.",
+    "몸이 이렇게 땀 같은 액체를 스스로 만들어 내보내는 것이 분비입니다."
+   ],
    "img": "A hot, sunny summer afternoon on a school field. DOYUN (boy, round glasses, wearing a navy short-sleeved T-shirt instead of his hoodie) has just finished a running race; beads of sweat glisten on his forehead and arms and his cheeks are flushed. He wipes his forehead with a small towel.",
    "imgKo": "뙤약볕 아래 운동장에서 달리기를 마친 도윤이의 이마와 팔에 땀방울이 송골송골 맺혀 있고, 수건으로 이마를 닦는다."
   },
@@ -404,12 +417,6 @@
     "생활 속 예: 비면 쪼그라들고, 오줌이 차면 풍선처럼 부풀어 늘어납니다."
    ]
   },
-  "요도": {
-   "explain": [
-    "쉬운 뜻: 오줌이 지나는 길의 맨 끝, 몸 밖으로 나가는 문까지 이어진 관입니다.",
-    "콩팥에서 만든 오줌은 오줌관, 방광, 요도 차례로 지나갑니다."
-   ]
-  },
   "맥박": {
    "en": "pulse",
    "explain": [
@@ -417,7 +424,11 @@
     "생활 속 예: 손가락을 목 옆에 살짝 대어도 맥박을 느낄 수 있습니다.",
     "맥박 수는 심장이 뛴 횟수와 같습니다."
    ],
-   "beats": ["줄넘기를 마친 하린이가 숨을 몰아쉬며 의자에 앉았습니다.", "손목 안쪽에 두 손가락을 대니 톡톡 뛰는 것이 느껴집니다.", "심장이 뛸 때마다 혈관에 전해지는 이 떨림이 맥박입니다."],
+   "beats": [
+    "줄넘기를 마친 하린이가 숨을 몰아쉬며 의자에 앉았습니다.",
+    "손목 안쪽에 두 손가락을 대니 톡톡 뛰는 것이 느껴집니다.",
+    "심장이 뛸 때마다 혈관에 전해지는 이 떨림이 맥박입니다."
+   ],
    "img": "A school gym after jump-rope practice. HARIN (girl, yellow headband, mint cardigan tied around her waist) sits on a bench catching her breath, a jump rope on her lap. She presses two fingers lightly on the inside of her other wrist near the thumb and watches the second hand of a round wall clock that has only tick marks and no numbers.",
    "imgKo": "줄넘기를 마친 하린이가 체육관 의자에 앉아 손목 안쪽에 두 손가락을 대고, 숫자 없는 벽시계의 초바늘을 본다."
   },

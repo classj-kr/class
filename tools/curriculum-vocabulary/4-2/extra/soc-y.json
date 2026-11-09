@@ -7,11 +7,7 @@
         "생활 속 예: 교실 창밖의 나무와 하늘, 운동장과 학교 건물이 모두 환경입니다.",
         "바닷가에 살면 고기를 잡고, 들판에 살면 농사를 짓습니다."
       ],
-      "beats": [
-        "하린이가 언덕에 올라 동네를 내려다봅니다.",
-        "산과 하천, 논과 도로, 아파트와 학교가 한눈에 보입니다.",
-        "우리 둘레에서 삶에 영향을 주는 이 모든 것이 환경입니다."
-      ],
+      "beats": ["하린이가 언덕에 올라 동네를 내려다봅니다.", "산과 하천, 논과 도로, 아파트와 학교가 한눈에 보입니다.", "우리 둘레에서 삶에 영향을 주는 이 모든 것이 환경입니다."],
       "img": "HARIN, a girl with a yellow headband and a mint cardigan, stands on a grassy hilltop looking down at her hometown. Below her spread green mountains, a winding river, rice paddies, roads, apartment buildings and a school, all visible in one wide view. No text.",
       "imgKo": "노란 머리띠에 민트 카디건을 입은 하린이가 풀 언덕 위에서 동네를 내려다본다. 아래로 푸른 산, 굽이치는 하천, 논, 도로, 아파트, 학교가 한눈에 펼쳐진다."
     },
@@ -21,11 +17,7 @@
         "낱말 나누기: 자연(저절로 생겨난 것) + 환경(둘러싼 모든 것)입니다.",
         "생활 속 예: 뒷산, 바닷가 모래밭, 여름 장마가 모두 자연환경입니다."
       ],
-      "beats": [
-        "높은 산 사이로 하천이 구불구불 흘러 바다로 갑니다.",
-        "하늘에는 비구름이 몰려오고 바람이 풀을 눕힙니다.",
-        "사람이 만들지 않고 저절로 생겨난 것들이 자연환경입니다."
-      ],
+      "beats": ["높은 산 사이로 하천이 구불구불 흘러 바다로 갑니다.", "하늘에는 비구름이 몰려오고 바람이 풀을 눕힙니다.", "사람이 만들지 않고 저절로 생겨난 것들이 자연환경입니다."],
       "img": "A wide natural landscape with no buildings, roads or people: tall forested mountains, a river winding across a plain of wild grass down to the sea, and a sandy shore. Dark rain clouds roll in over the mountains and the wind bends the grass. No text.",
       "imgKo": "건물도 길도 사람도 없는 넓은 자연 풍경. 숲이 우거진 높은 산, 들풀 사이로 굽이쳐 바다로 흐르는 하천, 모래 바닷가가 있고, 산 위로 비구름이 몰려오며 바람에 풀이 눕는다."
     },
@@ -72,11 +64,7 @@
         "산이 가로막지 않을 만큼 들이 아주 넓어야 보입니다.",
         "생활 속 예: 기차를 타고 넓은 들을 지날 때 창밖 멀리 보입니다."
       ],
-      "beats": [
-        "도윤이가 넓은 들 한가운데 서 있습니다.",
-        "누렇게 익은 논이 산 하나 없이 끝없이 이어집니다.",
-        "그 끝에서 평평한 땅과 하늘이 맞닿아 보이는 줄이 지평선입니다."
-      ],
+      "beats": ["도윤이가 넓은 들 한가운데 서 있습니다.", "누렇게 익은 논이 산 하나 없이 끝없이 이어집니다.", "그 끝에서 평평한 땅과 하늘이 맞닿아 보이는 줄이 지평선입니다."],
       "img": "DOYUN, a boy with round glasses and a navy hoodie, stands on a narrow path in the middle of an enormous flat plain of golden ripe rice paddies in autumn. There are no mountains anywhere; the fields stretch on until they meet the sky in one straight, level line, and he points toward that line. No text.",
       "imgKo": "둥근 안경에 남색 후드를 입은 도윤이가 가을의 끝없이 넓은 누런 논 한가운데 좁은 길에 서 있다. 산이 하나도 없이 들이 이어지다 하늘과 곧고 평평한 한 줄로 맞닿고, 도윤이가 그 줄을 가리킨다."
     },
@@ -102,11 +90,7 @@
         "낱말 나누기: 산 + 비탈(기울어진 땅)입니다.",
         "생활 속 예: 등산할 때 숨이 차오르는 오르막이 산비탈입니다."
       ],
-      "beats": [
-        "산의 옆면이 미끄럼틀처럼 기울어져 있습니다.",
-        "사람들이 기울어진 땅을 층층이 깎아 배추와 무를 심었습니다.",
-        "산의 기울어진 면이 산비탈입니다."
-      ],
+      "beats": ["산의 옆면이 미끄럼틀처럼 기울어져 있습니다.", "사람들이 기울어진 땅을 층층이 깎아 배추와 무를 심었습니다.", "산의 기울어진 면이 산비탈입니다."],
       "img": "A steep green mountainside in the Korean highlands. Farmers have cut the slope into terraced fields where rows of cabbages and radishes grow, and a farmer carefully climbs a narrow path between them carrying a basket. No text.",
       "imgKo": "높은 산골의 가파른 산 옆면을 층층이 깎아 만든 밭에 배추와 무가 줄지어 자라고, 농부가 바구니를 메고 밭 사이 좁은 길을 조심조심 오른다."
     },
@@ -116,11 +100,7 @@
         "낱말 나누기: 양식(가두어 기름) + 장(곳)입니다.",
         "생활 속 예: 우리가 먹는 김과 전복도 이런 곳에서 많이 자랍니다."
       ],
-      "beats": [
-        "바다 위에 동그란 부표가 줄지어 떠 있습니다.",
-        "어민이 줄을 끌어 올리자 굴이 주렁주렁 달려 나옵니다.",
-        "물고기나 김, 굴 등을 가두어 기르는 곳이 양식장입니다."
-      ],
+      "beats": ["바다 위에 동그란 부표가 줄지어 떠 있습니다.", "어민이 줄을 끌어 올리자 굴이 주렁주렁 달려 나옵니다.", "물고기나 김, 굴 등을 가두어 기르는 곳이 양식장입니다."],
       "img": "A calm southern Korean bay filled with long, neat rows of white floating buoys holding ropes and nets under the water. From a small boat, a fisher pulls up a rope heavy with clusters of oysters, and a floating fish pen with a net is nearby. No text.",
       "imgKo": "잔잔한 남해 바다에 하얀 부표가 길게 줄지어 떠 있다. 작은 배에서 어민이 굴이 주렁주렁 달린 줄을 끌어 올리고, 옆에는 그물을 친 물고기 가두리가 떠 있다."
     },
@@ -137,20 +117,6 @@
       ],
       "img": "A salt farm by the sea under a bright sun: shallow square pans of sea water laid out like rice paddies, some still shining with water and others covered with white salt crystals. A worker in a straw hat pushes a long wooden rake, gathering the salt into small white piles, and a wooden salt storehouse stands at the edge. No text.",
       "imgKo": "쨍쨍한 햇볕 아래 바닷가에 논처럼 네모난 얕은 판이 줄지어 있고, 물이 반짝이는 판과 하얀 소금 알갱이가 덮인 판이 있다. 밀짚모자를 쓴 일꾼이 긴 나무 밀대로 소금을 모아 작은 더미로 쌓고, 가장자리에 나무 소금 창고가 있다."
-    },
-    "지하자원": {
-      "explain": [
-        "쉬운 뜻: 땅이 품고 있는 보물 상자 속 석탄, 철, 금 같은 것입니다.",
-        "낱말 나누기: 지하(땅 밑) + 자원(쓸모 있는 것)입니다.",
-        "생활 속 예: 연필심의 흑연도 땅속에서 캐낸 것입니다."
-      ],
-      "beats": [
-        "산을 잘라 보니 땅속이 보입니다.",
-        "땅속에 검은 석탄층과 쇠가 든 돌, 반짝이는 금속이 묻혀 있습니다.",
-        "땅속에 묻혀 있어 사람이 캐내어 쓰는 쓸모 있는 것이 지하자원입니다."
-      ],
-      "img": "A cutaway view of a mountain showing what lies underground: thick black layers of coal, reddish-brown iron ore rocks, and small shiny veins of metal in the stone. A tunnel leads from the surface down to the coal, where a small rail cart waits. On the surface above are trees and a little mining village. No text.",
-      "imgKo": "산을 잘라 땅속을 보인 그림. 두꺼운 검은 석탄층, 붉은 갈색의 철광석, 돌 사이에 반짝이는 금속 줄기가 묻혀 있고, 땅 위에서 석탄층까지 굴이 이어져 작은 수레가 서 있다. 땅 위에는 나무와 작은 광산 마을이 있다."
     },
     "광산": {
       "en": "mine",
@@ -201,11 +167,7 @@
         "쉬운 뜻: 영어로 manufacturing, 공장 기계로 자동차, 옷, 과자 같은 물건을 만드는 일입니다.",
         "생활 속 예: 내 운동화와 휴대 전화도 공장에서 만든 물건입니다."
       ],
-      "beats": [
-        "커다란 공장 한쪽으로 철판이 들어갑니다.",
-        "로봇 팔과 사람들이 차례로 붙이고 끼워 자동차를 만듭니다.",
-        "원료로 사람들에게 필요한 물건을 만드는 산업이 공업입니다."
-      ],
+      "beats": ["커다란 공장 한쪽으로 철판이 들어갑니다.", "로봇 팔과 사람들이 차례로 붙이고 끼워 자동차를 만듭니다.", "원료로 사람들에게 필요한 물건을 만드는 산업이 공업입니다."],
       "img": "Inside a bright, huge car factory: sheets of steel enter at one end of a long assembly line, robotic arms weld car bodies, workers in uniforms and safety glasses fit doors and wheels, and finished shiny cars roll out at the far end. No text or logos.",
       "imgKo": "밝고 커다란 자동차 공장 안. 긴 조립 줄 한쪽 끝으로 철판이 들어가고, 로봇 팔이 차체를 붙이며, 작업복과 보안경 차림의 일꾼들이 문과 바퀴를 끼우고, 반대쪽 끝으로 반짝이는 새 자동차가 나온다."
     },
@@ -216,11 +178,7 @@
         "생활 속 예: 우유는 치즈의, 모래는 유리의 원료입니다.",
         "원료가 공장에 들어가면 새 물건이 되어 나옵니다."
       ],
-      "beats": [
-        "트럭이 공장 앞에 모래를 쏟아붓습니다.",
-        "공장을 거쳐 나온 모래는 투명한 유리병이 되었습니다.",
-        "물건을 만드는 데 바탕이 되는 재료가 원료입니다."
-      ],
+      "beats": ["트럭이 공장 앞에 모래를 쏟아붓습니다.", "공장을 거쳐 나온 모래는 투명한 유리병이 되었습니다.", "물건을 만드는 데 바탕이 되는 재료가 원료입니다."],
       "img": "A cutaway glass factory. On the left, a truck dumps a big pile of pale sand into a hopper. In the middle, the sand melts into glowing orange liquid glass in a furnace. On the right, rows of clear glass bottles come out on a conveyor belt. No text.",
       "imgKo": "안을 들여다본 유리 공장. 왼쪽에서 트럭이 옅은 모래 더미를 쏟아붓고, 가운데 가마에서 모래가 주황빛 유리 물로 녹으며, 오른쪽 벨트 위로 투명한 유리병이 줄지어 나온다."
     },
@@ -259,11 +217,7 @@
         "쉬운 뜻: 영어로 damage, 새 책을 찢고 낙서해 놓은 것처럼 상하게 하는 것입니다.",
         "생활 속 예: 문화유산에 낙서를 하는 것도 훼손입니다."
       ],
-      "beats": [
-        "푸르던 산의 나무를 위에서 아래까지 길게 베어 냈습니다.",
-        "나무가 사라진 자리에 그루터기와 맨흙이 드러났습니다.",
-        "이렇게 부수거나 더럽혀 망가뜨리는 것이 훼손입니다."
-      ],
+      "beats": ["푸르던 산의 나무를 위에서 아래까지 길게 베어 냈습니다.", "나무가 사라진 자리에 그루터기와 맨흙이 드러났습니다.", "이렇게 부수거나 더럽혀 망가뜨리는 것이 훼손입니다."],
       "img": "A mountainside that used to be covered in thick forest. A wide strip of trees has been cut down from the top to the bottom for a ski slope, leaving tree stumps and bare brown soil exposed, with piles of logs and a bulldozer at the bottom. The untouched forest on either side is still green. No text.",
       "imgKo": "울창한 숲이던 산 옆면에 스키장을 만들려고 위에서 아래까지 나무를 넓게 베어 내, 그루터기와 갈색 맨흙이 드러나 있다. 아래에는 통나무 더미와 불도저가 있고, 양옆 숲은 아직 푸르다."
     },
@@ -337,11 +291,7 @@
         "생활 속 예: 순천만 습지에는 갈대가 우거지고 겨울마다 철새가 찾아옵니다.",
         "비가 많이 오면 스펀지처럼 물을 머금었다가 천천히 내보냅니다."
       ],
-      "beats": [
-        "얕은 물이 고인 땅에 갈대가 빽빽하게 자랍니다.",
-        "개구리가 물풀 위에 앉고, 백로와 왜가리가 물가에서 먹이를 찾습니다.",
-        "물기가 많아 늘 축축한 땅이 습지입니다."
-      ],
+      "beats": ["얕은 물이 고인 땅에 갈대가 빽빽하게 자랍니다.", "개구리가 물풀 위에 앉고, 백로와 왜가리가 물가에서 먹이를 찾습니다.", "물기가 많아 늘 축축한 땅이 습지입니다."],
       "img": "A wide wetland in summer with shallow water among dense green reeds. A wooden boardwalk crosses it, frogs sit on lily pads, and herons and egrets wade and feed in the shallow water. No text.",
       "imgKo": "얕은 물 사이로 푸른 갈대가 빽빽한 여름 습지. 나무 데크 길이 가로지르고, 개구리가 연잎 위에 앉아 있으며, 백로와 왜가리가 얕은 물에서 먹이를 찾는다."
     },
@@ -554,11 +504,7 @@
         "낱말 나누기: 제철(철을 만듦) + 소(곳)입니다.",
         "생활 속 예: 포항 바닷가에는 밤에도 불이 꺼지지 않는 제철소가 있습니다."
       ],
-      "beats": [
-        "바닷가 공장 앞에 붉은 돌 더미가 산처럼 쌓여 있습니다.",
-        "커다란 가마에서 녹은 쇳물이 불꽃을 튀기며 흘러나옵니다.",
-        "철광석을 녹여 철을 만드는 공장이 제철소입니다."
-      ],
+      "beats": ["바닷가 공장 앞에 붉은 돌 더미가 산처럼 쌓여 있습니다.", "커다란 가마에서 녹은 쇳물이 불꽃을 튀기며 흘러나옵니다.", "철광석을 녹여 철을 만드는 공장이 제철소입니다."],
       "img": "A huge steel mill by the sea. Piles of reddish iron ore lie by the dock, and inside, glowing orange molten iron pours from a giant furnace into a channel, throwing sparks, while workers in silver heat-proof suits and helmets watch from a safe distance. No text.",
       "imgKo": "바닷가의 거대한 제철소. 부두에 붉은 철광석 더미가 쌓여 있고, 안에서는 커다란 가마에서 주황빛 쇳물이 불꽃을 튀기며 물길로 쏟아지며, 은빛 방열복과 안전모를 쓴 일꾼들이 멀찍이서 지켜본다."
     },
@@ -583,20 +529,6 @@
         "생활 속 예: 분당, 일산은 서울 둘레에 세운 신도시입니다.",
         "서울로 일하러 다니는 사람이 많이 삽니다."
       ]
-    },
-    "대도시": {
-      "en": "big city",
-      "explain": [
-        "쉬운 뜻: 영어로 big city, 도시 가운데서도 몸집이 아주 큰 도시입니다.",
-        "생활 속 예: 지하철이 여러 노선으로 다니고 큰 병원과 대학이 많습니다."
-      ],
-      "beats": [
-        "하늘에서 보니 빌딩 숲이 끝없이 펼쳐져 있습니다.",
-        "큰 강 위 여러 다리와 넓은 길로 사람과 차가 쉴 새 없이 오갑니다.",
-        "사람이 아주 많이 살고 정치, 경제, 교육, 문화의 중심 역할을 하는 큰 시가 대도시입니다."
-      ],
-      "img": "An aerial view at dusk of a huge city that stretches to the horizon: forests of skyscrapers, a wide river crossed by many bridges, highways full of car lights, elevated subway trains, big hospitals, universities and stadiums. No text.",
-      "imgKo": "해 질 녘 하늘에서 본, 땅끝까지 펼쳐진 거대한 도시. 빌딩 숲, 여러 다리가 놓인 넓은 강, 자동차 불빛으로 가득한 큰길, 지상으로 달리는 지하철 열차, 큰 병원과 대학, 경기장이 보인다."
     },
     "중심지": {
       "en": "center",

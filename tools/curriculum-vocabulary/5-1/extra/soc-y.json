@@ -122,42 +122,6 @@
       "img": "A wide city road at evening rush hour is packed with cars bumper to bumper as far as the eye can see, their red brake lights glowing in long rows. In the back seat of one car, DOYUN, a boy with round glasses and a navy hoodie, rests his chin on his hand and yawns while looking out the window. No text.",
       "imgKo": "저녁 퇴근 시간, 넓은 도로에 차들이 끝없이 바짝 붙어 늘어서 있고 빨간 브레이크 등이 줄줄이 켜져 있다. 한 차의 뒷자리에서 둥근 안경에 남색 후드를 입은 도윤이가 턱을 괴고 창밖을 보며 하품한다."
     },
-    "지역 소멸": {
-      "explain": [
-        "쉬운 뜻: 사람이 떠나고 또 떠나서, 마을이 아예 없어질 만큼 비어 가는 것입니다.",
-        "낱말 나누기: 지역(땅의 한 부분) + 소멸(사라져 없어짐)입니다.",
-        "아이 울음소리가 끊기고 빈집이 늘어나는 것이 그 신호입니다."
-      ]
-    },
-    "생활 사막": {
-      "explain": [
-        "쉬운 뜻: 물 없는 사막처럼, 가까이에 가게와 병원이 없어 살기 힘든 곳입니다.",
-        "낱말 나누기: 생활(먹고 자고 사는 일) + 사막(아무것도 없는 메마른 땅)입니다."
-      ],
-      "beats": [
-        "마을에 하나뿐인 가게의 셔터가 내려져 있습니다.",
-        "아이를 안은 엄마가 빈 장바구니를 들고 멀리 뻗은 길을 바라봅니다.",
-        "길 끝 저 멀리에 작은 약국 표시가 아득하게 보입니다.",
-        "먹을거리와 약을 가까이에서 구하기 어려운 곳이 생활 사막입니다."
-      ],
-      "img": "In a quiet country village, the only small grocery store has its metal shutter pulled down. A young mother holding a toddler stands in front of it with an empty shopping bag, looking down a long empty road. Far away at the end of the road, a tiny green pharmacy cross sign can just be seen. No text.",
-      "imgKo": "조용한 시골 마을, 하나뿐인 작은 가게의 철 셔터가 내려져 있다. 아이를 안은 젊은 엄마가 빈 장바구니를 들고 그 앞에 서서 길게 뻗은 텅 빈 길을 바라보고, 길 끝 아주 먼 곳에 작은 초록 약국 십자 표시가 겨우 보인다."
-    },
-    "생필품": {
-      "explain": [
-        "쉬운 뜻: 하루라도 없으면 곤란한, 날마다 쓰는 물건입니다.",
-        "낱말 나누기: 생활 필수품(살아가는 데 꼭 있어야 하는 물건)을 줄인 말입니다.",
-        "생활 속 예: 칫솔, 치약, 쌀, 화장지가 모두 생필품입니다."
-      ],
-      "beats": [
-        "마트 창밖 하늘에 먹구름이 몰려옵니다.",
-        "하린이네 가족이 쌀, 물, 화장지를 카트에 담습니다.",
-        "비누와 칫솔도 빠뜨리지 않고 챙깁니다.",
-        "이렇게 살아가는 데 꼭 있어야 하는 물건이 생필품입니다."
-      ],
-      "img": "Inside a supermarket, dark storm clouds gather outside the big front windows. HARIN, a girl with a yellow headband and a mint cardigan, and her parents fill a shopping cart with a bag of rice, bottled water, rolls of toilet paper, bars of soap and toothbrushes. No text.",
-      "imgKo": "마트 안, 커다란 앞 유리창 밖으로 먹구름이 몰려온다. 노란 머리띠에 민트 카디건을 입은 하린이와 부모님이 카트에 쌀 포대, 생수, 두루마리 화장지, 비누, 칫솔을 담는다."
-    },
     "균형 발전": {
       "explain": [
         "쉬운 뜻: 화분 하나에만 물을 주지 않고 모든 화분에 고루 물을 주는 것과 같습니다.",
@@ -206,19 +170,6 @@
         "낱말 나누기: 혁신(낡은 것을 새롭게 바꿈) + 도시입니다.",
         "경상남도 진주, 강원특별자치도 원주, 경상북도 김천에도 있습니다."
       ]
-    },
-    "귀농": {
-      "explain": [
-        "쉬운 뜻: 도시 생활을 접고 농사를 지으러 시골로 가는 것입니다."
-      ],
-      "beats": [
-        "과수원 울타리에 양복 윗옷이 걸려 있습니다.",
-        "작업복을 입은 삼촌이 빨간 사과를 따서 바구니에 담습니다.",
-        "옆에서 아이가 바구니를 받쳐 들고 웃습니다.",
-        "도시를 떠나 시골에서 농사지으며 사는 것이 귀농입니다."
-      ],
-      "img": "In a sunny apple orchard, a man's dark office suit jacket hangs on a wooden fence post. The man, now in work clothes and a straw hat, picks red apples from a tree and puts them in a basket, while his young child beside him holds up the basket and smiles. No text.",
-      "imgKo": "햇살 좋은 사과 과수원, 나무 울타리 기둥에 짙은 양복 윗옷이 걸려 있다. 작업복에 밀짚모자를 쓴 남자가 빨간 사과를 따서 바구니에 담고, 옆에서 어린 아이가 바구니를 받쳐 들고 웃는다."
     },
     "정착": {
       "explain": [
@@ -301,10 +252,7 @@
       "imgKo": "붐비는 도심 길모퉁이. 보행 신호가 빨간불이라 여러 나이의 사람들이 정지선 뒤에서 차분히 기다린다. 옆 버스 정류장에는 사람들이 한 줄로 서 있고, 한 아저씨가 빈 컵을 길가 쓰레기통에 넣는다. 거리는 깨끗하다."
     },
     "준법": {
-      "explain": [
-        "쉬운 뜻: 나라가 정한 법을 어기지 않고 잘 따르는 것입니다.",
-        "생활 속 예: 아무도 없는 밤길에서도 빨간불이면 멈추어 기다립니다."
-      ],
+      "explain": ["쉬운 뜻: 나라가 정한 법을 어기지 않고 잘 따르는 것입니다.", "생활 속 예: 아무도 없는 밤길에서도 빨간불이면 멈추어 기다립니다."],
       "beats": [
         "하린이가 횡단보도 앞에서 자전거를 멈춥니다.",
         "자전거에서 내려 손으로 끌고 길을 건넙니다.",
@@ -331,10 +279,7 @@
     },
     "의무": {
       "en": "duty",
-      "explain": [
-        "쉬운 뜻: 영어로 duty, 하기 싫어도 마땅히 해야 하는 일입니다.",
-        "생활 속 예: 어른이 되어 돈을 벌면 세금을 내야 하는 것도 의무입니다."
-      ]
+      "explain": ["쉬운 뜻: 영어로 duty, 하기 싫어도 마땅히 해야 하는 일입니다.", "생활 속 예: 어른이 되어 돈을 벌면 세금을 내야 하는 것도 의무입니다."]
     },
     "헌법": {
       "en": "constitution",
@@ -344,10 +289,7 @@
       ]
     },
     "헌법재판소": {
-      "explain": [
-        "쉬운 뜻: 어떤 법이 헌법에 맞는지 어긋나는지 심판해 주는 곳입니다.",
-        "낱말 나누기: 헌법(으뜸 법) + 재판소(옳고 그름을 가리는 곳)입니다."
-      ],
+      "explain": ["쉬운 뜻: 어떤 법이 헌법에 맞는지 어긋나는지 심판해 주는 곳입니다.", "낱말 나누기: 헌법(으뜸 법) + 재판소(옳고 그름을 가리는 곳)입니다."],
       "beats": [
         "넓은 심판정 앞쪽에 긴 책상이 놓여 있습니다.",
         "검은 옷을 입은 재판관 아홉 명이 나란히 앉아 있습니다.",
@@ -484,20 +426,6 @@
       "img": "Late at night in a dim bedroom, a child sits on the bed hugging a blanket and looks down sadly at a glowing smartphone. Many angry-face emoji and mocking icons without any letters pop out of the screen like a swarm. No text.",
       "imgKo": "늦은 밤 어두운 방, 아이가 침대에 앉아 이불을 끌어안고 빛나는 스마트폰을 슬프게 내려다본다. 화면에서 글자 없는 화난 얼굴 그림과 놀리는 표시들이 떼 지어 튀어나온다."
     },
-    "저상 버스": {
-      "explain": [
-        "쉬운 뜻: 바닥이 낮아 계단 없이 바로 올라탈 수 있는 버스입니다.",
-        "낱말 나누기: 저상(바닥이 낮음) + 버스입니다."
-      ],
-      "beats": [
-        "버스가 정류장에 서자 차체가 쓱 낮아집니다.",
-        "문 아래에서 판이 길게 내려와 땅에 닿습니다.",
-        "휠체어를 탄 아저씨가 그 판을 따라 버스에 오릅니다.",
-        "바닥을 낮춰 누구나 쉽게 탈 수 있게 만든 버스가 저상 버스입니다."
-      ],
-      "img": "A city bus with a very low floor has stopped at a bus stop and tilted down toward the curb. A ramp slides out from under the middle door and touches the sidewalk, and a man in a wheelchair rolls up it into the bus. A mother with a baby stroller waits her turn. No text.",
-      "imgKo": "바닥이 아주 낮은 시내버스가 정류장에 서서 보도 쪽으로 몸을 낮췄다. 가운데 문 아래에서 판이 미끄러져 나와 보도에 닿고, 휠체어를 탄 아저씨가 그 판을 따라 버스에 오른다. 유아차를 끈 엄마가 차례를 기다린다."
-    },
     "경사로": {
       "en": "ramp",
       "explain": [
@@ -526,21 +454,6 @@
       ],
       "img": "Inside an elevator, a woman holding a white cane runs her fingertips over small raised dots next to a column of blank round buttons. A close-up shows her fingertip on the bumps, and she presses one button with a confident smile. No text, no numbers.",
       "imgKo": "엘리베이터 안, 흰 지팡이를 든 여자가 글자 없는 둥근 단추 줄 옆의 작은 볼록 점들을 손끝으로 쓸어 본다. 손끝이 점에 닿은 모습이 크게 보이고, 여자는 자신 있게 웃으며 단추 하나를 누른다."
-    },
-    "배리어 프리": {
-      "en": "barrier-free",
-      "explain": [
-        "쉬운 뜻: 영어로 barrier-free, '걸림돌(barrier)이 없다(free)'는 말입니다.",
-        "생활 속 예: 소리로 안내하고 화면이 낮게 내려오는 주문 기계도 배리어 프리입니다."
-      ],
-      "beats": [
-        "식당 입구에 문턱이 없어 휠체어가 그대로 들어갑니다.",
-        "계산대는 낮고, 메뉴판에는 음식 사진이 크게 붙어 있습니다.",
-        "안내견과 함께 온 손님도 자리에 편하게 앉습니다.",
-        "이처럼 누구에게나 걸림돌을 없애는 것이 배리어 프리입니다."
-      ],
-      "img": "A cozy restaurant has a wide entrance with no step, and a woman in a wheelchair rolls straight in. Inside, the order counter is low and the menu board shows only big food photos. A man with a guide dog sits comfortably at a table. No text.",
-      "imgKo": "아늑한 식당 입구가 넓고 문턱이 없어 휠체어를 탄 여자가 그대로 들어온다. 안의 주문 계산대는 낮고 메뉴판에는 큰 음식 사진만 붙어 있으며, 안내견과 함께 온 남자가 식탁에 편하게 앉아 있다."
     },
     "사회 보장 제도": {
       "explain": [

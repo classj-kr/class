@@ -73,21 +73,6 @@
       "img": "A sunny park on a weekend afternoon. HARIN, a girl with a yellow headband and a mint cardigan, rides a bicycle along a path with her parents. Nearby, two grandfathers play badminton, a woman reads a book on a bench, and children fly a kite on the grass. Relaxed, happy mood. No text.",
       "imgKo": "햇살 좋은 주말 오후 공원. 하린이 엄마 아빠와 함께 길을 따라 자전거를 탄다. 그 옆에서 할아버지 둘이 배드민턴을 치고, 의자에 앉은 아주머니는 책을 읽고, 아이들은 잔디밭에서 연을 날린다."
     },
-    "대피소": {
-      "en": "shelter",
-      "explain": [
-        "쉬운 뜻: 영어로 shelter입니다. 큰 위험이 닥쳤을 때 몸을 피해 숨는 안전한 곳입니다.",
-        "낱말 나누기: 대피(위험을 잠시 피함) + 소(곳)입니다.",
-        "생활 속 예: 아파트 지하 주차장이나 지하철역이 대피소가 되기도 합니다."
-      ],
-      "beats": [
-        "훈련 날, 아이들이 선생님을 따라 줄지어 계단을 내려갑니다.",
-        "넓은 지하 공간에 들어가 벽 쪽에 차분히 모여 앉습니다.",
-        "위험할 때 몸을 안전하게 피하는 곳이 대피소입니다."
-      ],
-      "img": "During a calm school safety drill, TEACHER, a woman in her 30s in a beige jacket, leads a line of children, including HARIN, a girl with a yellow headband and a mint cardigan, and DOYUN, a boy with round glasses and a navy hoodie, down the stairs into a large, well-lit underground parking area of an apartment building. Some children already sit quietly along the wall. A green running-person exit symbol glows on the wall. No text.",
-      "imgKo": "차분한 안전 훈련 날. 베이지 재킷의 선생님이 하린과 도윤을 비롯한 아이들을 이끌고 계단을 내려가 환한 아파트 지하 주차장으로 들어간다. 먼저 온 아이들은 벽 쪽에 조용히 앉아 있고, 벽에는 달리는 사람 모양의 초록 비상구 표시가 켜져 있다. 글자는 없다."
-    },
     "보건소": {
       "en": "health center",
       "explain": [
@@ -192,10 +177,7 @@
       "imgKo": "학교 수돗가에 운동장에서 막 들어온 아이들이 손을 씻으려고 줄을 섰다. 하린이 흐르는 물 아래에서 비누 거품을 내어 손가락 사이까지 꼼꼼히 문지른다. 벽에는 글자 없이 손과 비누 거품만 그린 그림 포스터가 붙어 있다."
     },
     "시설": {
-      "explain": [
-        "쉬운 뜻: 사람들이 편하게 쓰도록 만들어 둔 건물이나 기구, 장치입니다.",
-        "생활 속 예: 놀이터의 미끄럼틀, 공원의 의자와 화장실도 시설입니다."
-      ],
+      "explain": ["쉬운 뜻: 사람들이 편하게 쓰도록 만들어 둔 건물이나 기구, 장치입니다.", "생활 속 예: 놀이터의 미끄럼틀, 공원의 의자와 화장실도 시설입니다."],
       "beats": [
         "공원에 미끄럼틀과 그네, 운동 기구가 놓여 있습니다.",
         "할아버지는 운동 기구를 돌리고, 휠체어를 탄 아이는 경사로를 따라 놀이터로 갑니다.",
@@ -228,11 +210,7 @@
         "여행이나 생일처럼 가끔 있는 특별한 날은 일상이 아닙니다.",
         "생활 속 예: 저녁마다 강아지와 산책하고 숙제하는 것도 일상입니다."
       ],
-      "beats": [
-        "아침에 하린이가 일어나 이를 닦습니다.",
-        "식구들과 둘러앉아 밥을 먹고, 늘 다니던 길로 학교에 갑니다.",
-        "이렇게 날마다 되풀이하는 보통의 생활이 일상입니다."
-      ],
+      "beats": ["아침에 하린이가 일어나 이를 닦습니다.", "식구들과 둘러앉아 밥을 먹고, 늘 다니던 길로 학교에 갑니다.", "이렇게 날마다 되풀이하는 보통의 생활이 일상입니다."],
       "img": "Three small panels in a row showing an ordinary school-day morning of HARIN, a girl with a yellow headband and a mint cardigan: first she brushes her teeth at the bathroom sink, then she eats breakfast at the table with her family, then she walks to school along a familiar street with her backpack. Soft morning light. No text, no clock numbers.",
       "imgKo": "세 칸으로 나눈 그림. 하린이 아침에 세면대에서 이를 닦고, 식탁에서 식구들과 아침밥을 먹고, 배낭을 메고 늘 다니던 길로 학교에 간다. 부드러운 아침 햇살. 글자와 시계 숫자는 없다."
     },
@@ -281,39 +259,12 @@
         "생활 속 예: 내가 태어난 해, 입학한 해를 차례로 적으면 내 연표가 됩니다."
       ]
     },
-    "조부모": {
-      "en": "grandparents",
-      "explain": [
-        "쉬운 뜻: 영어로 grandparents입니다. 엄마 아빠의 부모님, 곧 할아버지와 할머니입니다.",
-        "생활 속 예: 명절에 찾아뵙는 할아버지, 할머니가 나의 조부모입니다."
-      ],
-      "beats": [
-        "하린이네 가족이 시골 할아버지 댁 대문 앞에 도착했습니다.",
-        "할아버지와 할머니가 두 팔을 벌려 하린이를 안아 줍니다.",
-        "엄마 아빠의 부모님인 할아버지와 할머니를 조부모라고 합니다."
-      ],
-      "img": "In front of the gate of a countryside house with a small vegetable garden, a grandfather and a grandmother open their arms wide and hug HARIN, a girl with a yellow headband and a mint cardigan, who runs to them. Her mother and father stand behind her smiling, carrying bags. Warm, happy reunion. No text.",
-      "imgKo": "작은 텃밭이 있는 시골집 대문 앞. 할아버지와 할머니가 두 팔을 활짝 벌려 달려오는 하린을 안아 준다. 뒤에서 엄마 아빠가 가방을 들고 웃으며 서 있다."
-    },
     "역사": {
       "en": "history",
       "explain": [
         "쉬운 뜻: 영어로 history입니다. 사람들이 지금까지 살아온 이야기와 그것을 적은 기록입니다.",
         "생활 속 예: 우리 학교가 처음 문을 연 해부터 이어진 이야기가 우리 학교의 역사입니다."
       ]
-    },
-    "피난": {
-      "explain": [
-        "쉬운 뜻: 전쟁 같은 큰 위험을 피해 살던 집을 떠나 안전한 곳으로 가는 일입니다.",
-        "부산에는 6·25 전쟁 때 피난 온 사람들이 산비탈에 지은 마을이 지금도 남아 있습니다."
-      ],
-      "beats": [
-        "추운 겨울, 사람들이 보따리를 이고 지고 줄지어 걷습니다.",
-        "아빠는 어린아이를 업고, 엄마는 짐 보따리를 머리에 이었습니다.",
-        "전쟁 같은 위험을 피해 살던 곳을 떠나 안전한 곳으로 가는 일이 피난입니다."
-      ],
-      "img": "Korea in the winter of the early 1950s: a long line of families in plain padded clothes walks south along a snowy country road. A father carries a small child on his back, a mother balances a large cloth bundle on her head, and an older child holds her hand. Gray sky, quiet and sad mood. No soldiers, no weapons, no injured people. No text.",
-      "imgKo": "1950년대 초 겨울. 솜옷 차림의 가족들이 눈 덮인 시골길을 따라 남쪽으로 길게 줄지어 걷는다. 아빠는 어린아이를 업고, 엄마는 큰 보따리를 머리에 이고, 큰아이는 엄마 손을 잡았다. 군인, 무기, 다친 사람은 그리지 않는다."
     }
   },
   "2-2": {

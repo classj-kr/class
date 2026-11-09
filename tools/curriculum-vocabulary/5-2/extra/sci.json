@@ -119,12 +119,6 @@
    "img": "A bright sunny daytime beach seen from the side, with the sandy land on the left glowing warm orange-red and the sea on the right a cool blue. Wavy arrows of warm air rise from the hot sand, and a big arrow near the ground flows from over the sea toward the land. A Korean child's kite on the beach and the beach flags are all pulled toward the land.",
    "imgKo": "옆에서 본 맑은 한낮 바닷가. 왼쪽 모래밭은 주황빛으로 뜨겁고 오른쪽 바다는 시원한 파랑. 모래 위로 따뜻한 공기 화살표가 올라가고, 땅 가까이 큰 화살표가 바다에서 육지 쪽으로 흐른다. 아이의 연과 깃발이 모두 육지 쪽으로 날린다."
   },
-  "육풍": {
-   "en": "land breeze",
-   "beats": ["밤에는 육지가 바다보다 빨리 식습니다.", "모닥불 연기가 바다 쪽으로 흘러갑니다.", "밤에 육지에서 바다로 부는 바람이 육풍입니다."],
-   "img": "A moonlit beach at night seen from the side, with the sandy land on the left tinted cool blue and the sea on the right tinted slightly warmer orange. A big arrow near the ground flows from the land toward the sea. A small campfire at a campsite on the beach sends its smoke drifting out over the sea, and a Korean family sits beside it.",
-   "imgKo": "옆에서 본 달밤 바닷가. 왼쪽 모래밭은 차가운 파란빛, 오른쪽 바다는 조금 따뜻한 주황빛. 땅 가까이 큰 화살표가 육지에서 바다 쪽으로 흐르고, 캠핑장 모닥불 연기도 바다 쪽으로 흘러간다."
-  },
   "기상 관측": {
    "beats": ["바람개비, 온도계 상자, 빗물 통이 날씨를 잽니다.", "잰 자료가 모여 화면에 그래프로 쌓입니다.", "이렇게 날씨를 재고 살피는 일이 기상 관측입니다."],
    "img": "A small automatic weather station on a school rooftop: a white louvered instrument box, a spinning cup anemometer, an arrow-shaped wind vane, a cylinder rain gauge and a small solar panel. A Korean weather staff member in a work vest holds a tablet showing only a simple wavy line graph with no numbers. Dotted arrows lead from each instrument to the tablet, and a drone flies in the sky above.",
@@ -261,12 +255,6 @@
    "beats": ["어린 물고기는 강으로 다시 놓아줍니다.", "이듬해에도 강에는 물고기가 가득합니다.", "몫을 남겨 오래 이어 가는 것이 지속가능입니다."],
    "img": "Two riverside scenes connected by an arrow. On the left, a Korean grandfather and child sit by a river with a fishing net; they keep one big fish in a bucket and gently release several small young fish back into the water. On the right, a year later at the same spot, the river is full of many grown fish swimming, and the child, a little taller, smiles at the water.",
    "imgKo": "화살표로 이은 강가 두 장면. 왼쪽은 할아버지와 아이가 그물에서 큰 물고기 하나만 양동이에 두고 어린 물고기 여럿을 강에 놓아준다. 오른쪽은 한 해 뒤 같은 자리, 강에 다 자란 물고기가 가득하고 조금 큰 아이가 웃는다."
-  },
-  "친환경": {
-   "en": "eco-friendly",
-   "beats": ["예전 자동차와 공장은 검은 연기를 뿜었습니다.", "전기 자동차와 태양 전지판 공장은 연기가 없습니다.", "환경을 덜 더럽히고 자연과 잘 어울리는 것이 친환경입니다."],
-   "img": "A side-by-side comparison with a big arrow from left to right. On the left, under a dull grey sky, an old car puffs thick dark exhaust smoke and a factory chimney pours out black smoke. On the right, under a clear blue sky with green trees, an electric car is plugged into a charging station and a factory with solar panels on its roof gives off no smoke.",
-   "imgKo": "왼쪽에서 오른쪽으로 큰 화살표. 왼쪽 잿빛 하늘 아래 낡은 자동차가 검은 배기가스를, 공장 굴뚝이 검은 연기를 뿜는다. 오른쪽 맑은 하늘과 초록 나무 아래 전기 자동차가 충전기에 꽂혀 있고, 지붕에 태양 전지판을 얹은 공장은 연기가 없다."
   },
   "에너지 효율": {
    "beats": ["두 전구가 똑같이 밝게 빛납니다.", "옛 전구는 전기를 많이 먹고 열로 많이 버립니다.", "같은 일에 에너지를 덜 쓰는 정도가 에너지 효율입니다."],

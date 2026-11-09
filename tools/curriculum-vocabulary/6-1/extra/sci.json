@@ -7,7 +7,11 @@
     "생활 속 예: 식초, 레몬즙, 바닷물도 모두 용액입니다.",
     "흙탕물처럼 가만히 두면 가라앉는 것이 섞인 물은 용액이 아닙니다."
    ],
-   "beats": ["마트 진열대에 식초, 주방 세제, 세탁 세제 병이 종류별로 줄지어 있습니다.", "하린이가 병 속에 담긴 맑거나 빛깔 있는 액체를 하나하나 살펴봅니다.", "이렇게 어떤 물질이 액체에 고루 녹아 섞여 있는 것이 용액입니다."],
+   "beats": [
+    "마트 진열대에 식초, 주방 세제, 세탁 세제 병이 종류별로 줄지어 있습니다.",
+    "하린이가 병 속에 담긴 맑거나 빛깔 있는 액체를 하나하나 살펴봅니다.",
+    "이렇게 어떤 물질이 액체에 고루 녹아 섞여 있는 것이 용액입니다."
+   ],
    "img": "A bright supermarket aisle with a long shelf of clear and colored plastic bottles grouped by kind: vinegar bottles, dish soap bottles and laundry liquid jugs, all with blank labels. HARIN (girl, yellow headband, mint cardigan) stands in front of the shelf holding a shopping basket and looks closely at the liquids inside the bottles.",
    "imgKo": "마트 진열대에 식초, 주방 세제, 세탁 세제 병이 종류별로 놓여 있고, 하린이가 장바구니를 든 채 병 속 액체를 들여다본다. 병의 상표는 비어 있다."
   },
@@ -17,7 +21,11 @@
     "낱말 나누기: 겉보기(겉으로 보이는 모습) + 성질(그 물질만의 특징)입니다.",
     "생활 속 예: 설탕물과 소금물은 둘 다 맑고 냄새가 없어 눈으로는 못 가립니다."
    ],
-   "beats": ["실험대 위 투명한 컵마다 색깔과 맑은 정도가 다른 용액이 담겨 있습니다.", "하린이는 노르스름한 것과 뒤가 비치는 맑은 것을 나누어 놓습니다.", "이렇게 눈으로 보거나 냄새를 맡아 바로 알 수 있는 특징이 겉보기 성질입니다."],
+   "beats": [
+    "실험대 위 투명한 컵마다 색깔과 맑은 정도가 다른 용액이 담겨 있습니다.",
+    "하린이는 노르스름한 것과 뒤가 비치는 맑은 것을 나누어 놓습니다.",
+    "이렇게 눈으로 보거나 냄새를 맡아 바로 알 수 있는 특징이 겉보기 성질입니다."
+   ],
    "img": "A science classroom lab table with a row of identical clear cups holding different liquids: one pale yellow and slightly cloudy, one bright orange and opaque, and several perfectly clear and colorless. HARIN (girl, yellow headband, mint cardigan) slides the cups into two groups while DOYUN (boy, round glasses, navy hoodie) leans in, comparing their colors and how see-through they are.",
    "imgKo": "실험대 위 투명한 컵에 노르스름한 것, 주황색 탁한 것, 맑고 색 없는 것들이 담겨 있고, 하린이가 컵을 두 무리로 나누며 도윤이가 들여다본다."
   },
@@ -43,13 +51,6 @@
     "생활 속 예: 비눗물에 한 방울 떨어뜨리면 금세 붉은빛으로 바뀝니다."
    ]
   },
-  "붉은 양배추 지시약": {
-   "explain": [
-    "쉬운 뜻: 자주색 양배추를 잘게 썰어 우려낸 보랏빛 물로 만든 지시약입니다.",
-    "한 가지로 산성과 염기성을 모두 색깔로 보여 줍니다.",
-    "생활 속 예: 레몬즙을 떨어뜨리면 보랏빛 물이 금세 붉어집니다."
-   ]
-  },
   "산성 용액": {
    "explain": [
     "쉬운 뜻: 여러 용액을 두 무리로 나눌 때 식초, 레몬즙이 드는 무리입니다.",
@@ -62,14 +63,6 @@
     "쉬운 뜻: 여러 용액을 두 무리로 나눌 때 비눗물, 석회수가 드는 무리입니다.",
     "산성 용액에 염기성 용액을 넣을수록 산성이 점점 약해집니다.",
     "생활 속 예: 하수구 세정제처럼 센 염기성 용액은 맨손으로 만지면 안 됩니다."
-   ]
-  },
-  "무색": {
-   "en": "colorless",
-   "explain": [
-    "쉬운 뜻: 영어로 colorless, '색이 없는'이라는 말입니다. 물처럼 빛깔이 없습니다.",
-    "낱말 나누기: 무(없음) + 색(빛깔)입니다.",
-    "생활 속 예: 분리배출할 때 색이 없는 페트병은 무색 페트병으로 따로 모읍니다."
    ]
   },
   "탄산 칼슘": {
@@ -85,7 +78,11 @@
     "생활 속 예: 달걀, 두부, 우유, 고기에 많이 들어 있습니다.",
     "콩은 '밭에서 나는 고기'라 불릴 만큼 단백질이 많습니다."
    ],
-   "beats": ["아침 식탁에 삶은 달걀, 두부부침, 우유 한 잔이 놓여 있습니다.", "하린이가 두부를 한 입 먹고 우유를 꿀꺽 마십니다.", "이 음식들에 많이 든, 몸의 살과 근육을 이루는 물질이 단백질입니다."],
+   "beats": [
+    "아침 식탁에 삶은 달걀, 두부부침, 우유 한 잔이 놓여 있습니다.",
+    "하린이가 두부를 한 입 먹고 우유를 꿀꺽 마십니다.",
+    "이 음식들에 많이 든, 몸의 살과 근육을 이루는 물질이 단백질입니다."
+   ],
    "img": "A cozy Korean breakfast table seen from the side: a plate of peeled boiled eggs, a dish of pan-fried tofu slices, a bowl of rice and a tall glass of milk. HARIN (girl, yellow headband, mint cardigan) sits at the table, lifting a piece of tofu with chopsticks, with the glass of milk in front of her.",
    "imgKo": "아침 식탁에 삶은 달걀, 두부부침, 밥, 우유 한 잔이 놓여 있고, 하린이가 젓가락으로 두부를 집어 든다."
   },
@@ -96,7 +93,11 @@
     "생활 속 예: 미술관의 하얀 조각상이나 건물 바닥에 많이 쓰입니다.",
     "탄산 칼슘으로 되어 있어서 식초를 떨어뜨리면 기포가 생깁니다."
    ],
-   "beats": ["박물관 넓은 홀 한가운데에 하얀 돌로 깎은 조각상이 서 있습니다.", "도윤이가 반들반들 빛나는 하얀 기둥과 바닥을 둘러봅니다.", "이렇게 조각상과 건물에 쓰이는 하얗고 단단한 돌이 대리암입니다."],
+   "beats": [
+    "박물관 넓은 홀 한가운데에 하얀 돌로 깎은 조각상이 서 있습니다.",
+    "도윤이가 반들반들 빛나는 하얀 기둥과 바닥을 둘러봅니다.",
+    "이렇게 조각상과 건물에 쓰이는 하얗고 단단한 돌이 대리암입니다."
+   ],
    "img": "The bright entrance hall of a museum with tall white marble columns and a glossy white stone floor that reflects the light. In the center stands a smooth white marble statue of a seated figure on a pedestal. DOYUN (boy, round glasses, navy hoodie) stands behind a low rope, looking up at the statue and the shining columns.",
    "imgKo": "박물관 홀에 하얀 대리암 기둥과 반들반들한 바닥이 있고, 가운데 하얀 조각상을 도윤이가 줄 밖에서 올려다본다."
   },
@@ -106,7 +107,11 @@
     "낱말 나누기: 제산(산을 누름) + 제(약), 산성을 누르는 약이라는 뜻입니다.",
     "생활 속 예: 매운 음식을 많이 먹고 속이 쓰릴 때 먹기도 합니다."
    ],
-   "beats": ["저녁을 드신 할머니께서 얼굴을 찡그리며 배를 문지르십니다.", "아버지께서 약상자에서 작은 약 봉지를 꺼내 할머니께 드립니다.", "이렇게 쓰린 속을 달래 주는 약이 제산제입니다."],
+   "beats": [
+    "저녁을 드신 할머니께서 얼굴을 찡그리며 배를 문지르십니다.",
+    "아버지께서 약상자에서 작은 약 봉지를 꺼내 할머니께 드립니다.",
+    "이렇게 쓰린 속을 달래 주는 약이 제산제입니다."
+   ],
    "img": "A Korean family living room after dinner. A grandmother sits on a floor cushion with a slight frown, rubbing her stomach with one hand. A father in his 40s kneels beside her, handing her a small medicine packet from an open first-aid box, and a glass of water sits on the low table. HARIN (girl, yellow headband, mint cardigan) watches with concern.",
    "imgKo": "저녁 뒤 거실에서 할머니가 배를 문지르시고, 아버지가 구급상자에서 꺼낸 약 봉지를 건넨다. 하린이가 걱정스럽게 지켜본다."
   },
@@ -123,7 +128,11 @@
     "쉬운 뜻: 영어로 acid rain, 공기 속 더러운 물질이 녹아 시큼해진 비입니다.",
     "숲의 나뭇잎을 상하게 하고 호수의 물고기를 줄어들게 합니다."
    ],
-   "beats": ["비가 내리는 숲에 잎이 누렇게 시든 나무들이 서 있습니다.", "멀리 공장 굴뚝에서 짙은 연기가 하늘로 올라갑니다.", "공기 속 오염 물질이 녹아들어 산성을 띠게 된 이런 비가 산성비입니다."],
+   "beats": [
+    "비가 내리는 숲에 잎이 누렇게 시든 나무들이 서 있습니다.",
+    "멀리 공장 굴뚝에서 짙은 연기가 하늘로 올라갑니다.",
+    "공기 속 오염 물질이 녹아들어 산성을 띠게 된 이런 비가 산성비입니다."
+   ],
    "img": "A rainy forest on a hillside where many trees have yellowed, thinning leaves and some bare grey branches. Light rain falls from heavy grey clouds. In the far background, tall factory chimneys release thick smoke into the sky. No people.",
    "imgKo": "비 내리는 산비탈 숲에 잎이 누렇게 시들고 가지가 앙상한 나무들이 서 있고, 멀리 공장 굴뚝에서 짙은 연기가 오른다."
   },
@@ -133,7 +142,11 @@
     "낱말 나누기: 토양(흙) + 산성화(산성으로 바뀌어 감)입니다.",
     "생활 속 예: 농부들은 흙에 석회 가루를 뿌려 흙의 산성을 약하게 합니다."
    ],
-   "beats": ["논의 벼가 누렇게 시들어 힘없이 쓰러져 있습니다.", "농부가 흙을 한 줌 쥐고 걱정스럽게 들여다봅니다.", "흙이 산성으로 변해 식물이 잘 자라지 못하는 것이 토양 산성화입니다."],
+   "beats": [
+    "논의 벼가 누렇게 시들어 힘없이 쓰러져 있습니다.",
+    "농부가 흙을 한 줌 쥐고 걱정스럽게 들여다봅니다.",
+    "흙이 산성으로 변해 식물이 잘 자라지 못하는 것이 토양 산성화입니다."
+   ],
    "img": "A rice paddy in summer where large patches of rice plants are yellow, wilted and drooping instead of green. A Korean farmer in a straw hat crouches at the edge of the field, holding a handful of soil and looking at it with a worried face. Green hills in the background.",
    "imgKo": "여름 논에 벼가 군데군데 누렇게 시들어 처져 있고, 밀짚모자를 쓴 농부가 논가에 쪼그려 앉아 흙 한 줌을 걱정스럽게 들여다본다."
   },
@@ -143,7 +156,11 @@
     "낱말 나누기: 해양(넓은 바다) + 산성화(산성으로 바뀌어 감)입니다.",
     "생활 속 예: 굴, 조개, 성게처럼 껍데기가 있는 생물이 먼저 해를 입습니다."
    ],
-   "beats": ["바닷속 산호초의 한쪽은 알록달록하고, 다른 쪽은 잿빛으로 부서져 있습니다.", "모래 위에는 얇아져 깨진 조개껍데기가 흩어져 있습니다.", "바닷물이 점점 산성 쪽으로 바뀌어 생기는 이런 일이 해양 산성화입니다."],
+   "beats": [
+    "바닷속 산호초의 한쪽은 알록달록하고, 다른 쪽은 잿빛으로 부서져 있습니다.",
+    "모래 위에는 얇아져 깨진 조개껍데기가 흩어져 있습니다.",
+    "바닷물이 점점 산성 쪽으로 바뀌어 생기는 이런 일이 해양 산성화입니다."
+   ],
    "img": "An underwater view of a coral reef split in two: on the left, healthy colorful corals with small fish; on the right, grey crumbling coral branches with few fish. On the sandy sea floor in front lie thin, cracked and broken seashells. Soft blue light filters down from the surface.",
    "imgKo": "바닷속 산호초의 왼쪽은 알록달록하고 물고기가 놀지만, 오른쪽은 잿빛으로 부서져 있다. 앞쪽 모래 위에 얇게 깨진 조개껍데기가 흩어져 있다."
   },
@@ -153,7 +170,11 @@
     "한자 뜻: 荒(거칠 황)과 廢(버릴 폐), 거칠어져 버려졌다는 뜻입니다.",
     "생활 속 예: 오랫동안 아무도 돌보지 않은 빈집 마당은 잡초와 돌로 황폐해집니다."
    ],
-   "beats": ["잎 하나 없이 말라 죽은 나무들이 회색빛으로 서 있습니다.", "땅은 쩍쩍 갈라지고 새 한 마리 보이지 않습니다.", "땅과 숲이 망가져 쓸모없어진 이런 모습을 황폐하다고 합니다."],
+   "beats": [
+    "잎 하나 없이 말라 죽은 나무들이 회색빛으로 서 있습니다.",
+    "땅은 쩍쩍 갈라지고 새 한 마리 보이지 않습니다.",
+    "땅과 숲이 망가져 쓸모없어진 이런 모습을 황폐하다고 합니다."
+   ],
    "img": "A wide desolate landscape under a pale sky: dead grey trees with no leaves stand scattered across dry ground cracked into pieces, with only a few dry weeds here and there. There are no animals or birds anywhere. No people.",
    "imgKo": "잎 없이 말라 죽은 회색 나무들이 갈라진 메마른 땅에 흩어져 서 있고, 마른 잡초만 듬성듬성하며 새 한 마리 없다."
   },
@@ -163,7 +184,11 @@
     "한자 뜻: 展(펼 전)과 望(바라볼 망), 멀리 펼쳐 바라본다는 뜻입니다.",
     "생활 속 예: 일기 예보에서 '다음 주는 더 추워질 전망입니다'라고 말합니다."
    ],
-   "beats": ["도윤이네 모둠이 칠판 앞에서 바다 그림 두 장을 들고 섰습니다.", "하나는 지금의 바다, 다른 하나는 십 년 뒤 산호가 사라진 바다입니다.", "이렇게 앞으로 어떻게 될지 미리 헤아려 보는 것이 전망입니다."],
+   "beats": [
+    "도윤이네 모둠이 칠판 앞에서 바다 그림 두 장을 들고 섰습니다.",
+    "하나는 지금의 바다, 다른 하나는 십 년 뒤 산호가 사라진 바다입니다.",
+    "이렇게 앞으로 어떻게 될지 미리 헤아려 보는 것이 전망입니다."
+   ],
    "img": "A classroom presentation. DOYUN (boy, round glasses, navy hoodie) and two classmates stand at the front holding up two large hand-drawn posters with no writing: the left poster shows a colorful sea full of coral and fish, the right poster shows the same sea grey and empty with broken coral. Seated students watch, and TEACHER (woman in her 30s, beige jacket) listens at the side.",
    "imgKo": "도윤이네 모둠이 교실 앞에서 그림 두 장을 들고 발표한다. 왼쪽은 산호와 물고기가 가득한 바다, 오른쪽은 같은 바다가 잿빛으로 텅 빈 모습이다. 그림에 글자는 없다."
   },
@@ -173,7 +198,11 @@
     "한자 뜻: 對(맞설 대)와 策(방법 책), 문제에 맞서 세운 방법이라는 뜻입니다.",
     "생활 속 예: 장마 전에 하수구 덮개를 치우는 것도 물난리에 대한 대책입니다."
    ],
-   "beats": ["학급 회의 시간, 아이들이 쓰지 않는데도 켜져 있는 전등을 가리킵니다.", "하린이가 전등 스위치를 끄는 손 그림을 칠판에 붙입니다.", "이렇게 문제를 풀거나 피해를 막으려고 세우는 방법이 대책입니다."],
+   "beats": [
+    "학급 회의 시간, 아이들이 쓰지 않는데도 켜져 있는 전등을 가리킵니다.",
+    "하린이가 전등 스위치를 끄는 손 그림을 칠판에 붙입니다.",
+    "이렇게 문제를 풀거나 피해를 막으려고 세우는 방법이 대책입니다."
+   ],
    "img": "A class meeting in an elementary classroom. Some students point at ceiling lights that are on above an empty corner of the room. HARIN (girl, yellow headband, mint cardigan) stands at the board, sticking up a large sheet with a simple drawing of a hand turning off a light switch, with no writing. Classmates raise their hands with ideas.",
    "imgKo": "학급 회의 중 아이들이 빈 자리 위에 켜진 전등을 가리키고, 하린이가 칠판에 스위치를 끄는 손 그림을 붙인다. 그림에 글자는 없다."
   }
@@ -216,7 +245,11 @@
     "낱말 나누기: 안전(위험이 없음) + 수칙(지켜야 할 규칙)입니다.",
     "생활 속 예: 수영장에서 뛰지 않기, 들어가기 전 준비 운동 하기도 안전 수칙입니다."
    ],
-   "beats": ["지하철역 자동계단 입구에 손잡이를 잡은 사람 그림 안내판이 서 있습니다.", "하린이가 손잡이를 꼭 잡고 한 칸에 가만히 서서 올라갑니다.", "이렇게 사고를 막으려고 지키기로 정한 규칙이 안전 수칙입니다."],
+   "beats": [
+    "지하철역 자동계단 입구에 손잡이를 잡은 사람 그림 안내판이 서 있습니다.",
+    "하린이가 손잡이를 꼭 잡고 한 칸에 가만히 서서 올라갑니다.",
+    "이렇게 사고를 막으려고 지키기로 정한 규칙이 안전 수칙입니다."
+   ],
    "img": "A subway station escalator going up. At the entrance stands a sign with only simple pictograms: a figure holding the handrail and a crossed-out running figure, with no words or numbers. HARIN (girl, yellow headband, mint cardigan) rides the escalator standing still on one step, holding the handrail firmly.",
    "imgKo": "지하철역 자동계단 입구에 손잡이 잡기와 뛰지 않기를 그림으로만 나타낸 안내판이 있고, 하린이가 손잡이를 꼭 잡고 한 칸에 가만히 서서 올라간다."
   },
@@ -226,7 +259,11 @@
     "낱말 나누기: 안전(위험이 없음) + 장치(설치해 둔 기계나 시설)입니다.",
     "생활 속 예: 도로의 안전 울타리와 자동차 안전띠도 안전장치입니다."
    ],
-   "beats": ["도윤이가 자동차 뒷자리에 앉아 안전띠를 딸깍 맵니다.", "창밖 길가에는 차가 길 밖으로 나가지 않게 막는 튼튼한 울타리가 이어져 있습니다.", "이렇게 사고를 막거나 다치는 것을 줄여 주는 것들이 안전장치입니다."],
+   "beats": [
+    "도윤이가 자동차 뒷자리에 앉아 안전띠를 딸깍 맵니다.",
+    "창밖 길가에는 차가 길 밖으로 나가지 않게 막는 튼튼한 울타리가 이어져 있습니다.",
+    "이렇게 사고를 막거나 다치는 것을 줄여 주는 것들이 안전장치입니다."
+   ],
    "img": "Inside a family car seen from the back seat. DOYUN (boy, round glasses, navy hoodie) is clicking his seat belt into the buckle. Through the side window, a sturdy metal guardrail runs along the edge of a winding mountain road.",
    "imgKo": "자동차 뒷자리에서 도윤이가 안전띠를 딸깍 맨다. 옆 창밖으로 굽은 산길 가장자리를 따라 튼튼한 쇠 울타리가 이어진다."
   }
@@ -247,7 +284,11 @@
     "낱말 나누기: 광학(빛을 다룸) + 현미경(아주 작은 것을 크게 보는 기구)입니다.",
     "생활 속 예: 돋보기는 몇 배, 광학 현미경은 수백 배까지 크게 보여 줍니다."
    ],
-   "beats": ["과학실에서 도윤이가 현미경에 한쪽 눈을 대고 있습니다.", "아래에서 올라온 불빛이 받침 유리 위 양파 껍질을 비춥니다.", "빛과 렌즈로 아주 작은 것을 크게 보는 이 기구가 광학 현미경입니다."],
+   "beats": [
+    "과학실에서 도윤이가 현미경에 한쪽 눈을 대고 있습니다.",
+    "아래에서 올라온 불빛이 받침 유리 위 양파 껍질을 비춥니다.",
+    "빛과 렌즈로 아주 작은 것을 크게 보는 이 기구가 광학 현미경입니다."
+   ],
    "img": "A bright elementary science lab. DOYUN (boy, round glasses, navy hoodie) sits at a lab table, bending over a school light microscope with one eye at the eyepiece and a hand on the focus knob. A glass slide with a thin onion skin rests on the stage, lit from below. TEACHER (woman in her 30s, beige jacket) leans in beside him, pointing at the microscope.",
    "imgKo": "과학실에서 도윤이가 광학 현미경 접안렌즈에 한쪽 눈을 대고 초점 나사를 잡는다. 재물대 위 양파 껍질 표본이 아래 불빛에 비치고, 선생님이 옆에서 현미경을 가리킨다."
   },
@@ -286,7 +327,11 @@
     "쉬운 뜻: 현미경으로 들여다볼 수 있게 생물 조각을 납작하게 꾸민 것입니다.",
     "덮개 유리는 공기 방울이 안 생기게 비스듬히 천천히 내려 덮습니다."
    ],
-   "beats": ["하린이가 받침 유리 위에 물을 한 방울 떨어뜨리고 얇은 양파 껍질을 올립니다.", "핀셋으로 덮개 유리를 비스듬히 기울여 천천히 덮습니다.", "이렇게 현미경으로 볼 수 있게 꾸민 것이 표본입니다."],
+   "beats": [
+    "하린이가 받침 유리 위에 물을 한 방울 떨어뜨리고 얇은 양파 껍질을 올립니다.",
+    "핀셋으로 덮개 유리를 비스듬히 기울여 천천히 덮습니다.",
+    "이렇게 현미경으로 볼 수 있게 꾸민 것이 표본입니다."
+   ],
    "img": "Close-up of a lab table. HARIN (girl, yellow headband, mint cardigan), wearing thin lab gloves, uses tweezers to lower a small square cover glass at a slant onto a glass slide, where a tiny transparent piece of onion skin lies in a drop of water. A cut onion, a dropper bottle and a sheet of filter paper sit nearby.",
    "imgKo": "실험 장갑을 낀 하린이가 받침 유리 위 물방울 속 얇은 양파 껍질에 핀셋으로 덮개 유리를 비스듬히 내려 덮는다. 옆에 자른 양파, 스포이트 병, 거름종이가 있다."
   },
@@ -298,11 +343,7 @@
    ]
   },
   "세포막": {
-   "explain": [
-    "쉬운 뜻: 세포를 비닐봉지처럼 얇게 감싸 안과 밖을 나누는 막입니다.",
-    "낱말 나누기: 세포 + 막(얇은 껍질)입니다.",
-    "식물 세포에도 동물 세포에도 모두 있습니다."
-   ]
+   "explain": ["쉬운 뜻: 세포를 비닐봉지처럼 얇게 감싸 안과 밖을 나누는 막입니다.", "낱말 나누기: 세포 + 막(얇은 껍질)입니다.", "식물 세포에도 동물 세포에도 모두 있습니다."]
   },
   "세포벽": {
    "en": "cell wall",
@@ -313,10 +354,7 @@
    ]
   },
   "핵": {
-   "explain": [
-    "쉬운 뜻: 세포 속 동그란 알맹이로, 세포가 하는 일을 이끄는 곳입니다.",
-    "생활 속 예: 달걀 프라이의 노른자처럼 세포 속에 동그랗게 자리합니다."
-   ]
+   "explain": ["쉬운 뜻: 세포 속 동그란 알맹이로, 세포가 하는 일을 이끄는 곳입니다.", "생활 속 예: 달걀 프라이의 노른자처럼 세포 속에 동그랗게 자리합니다."]
   },
   "구조": {
    "en": "structure",
@@ -347,7 +385,11 @@
     "흙에 닿는 넓이가 넓어져서 물을 더 많이 빨아들입니다.",
     "생활 속 예: 콩에 싹을 틔우면 뿌리 끝에 하얀 솜털이 보입니다."
    ],
-   "beats": ["도윤이가 흙을 털어 낸 고추 모종을 검은 종이 위에 올려놓습니다.", "돋보기로 보니 뿌리 끝에 하얀 솜털이 보송보송 나 있습니다.", "뿌리에 돋은 이 아주 가늘고 짧은 털이 뿌리털입니다."],
+   "beats": [
+    "도윤이가 흙을 털어 낸 고추 모종을 검은 종이 위에 올려놓습니다.",
+    "돋보기로 보니 뿌리 끝에 하얀 솜털이 보송보송 나 있습니다.",
+    "뿌리에 돋은 이 아주 가늘고 짧은 털이 뿌리털입니다."
+   ],
    "img": "A lab table covered with a sheet of black paper. A washed young pepper seedling lies on it, its roots spread out. DOYUN (boy, round glasses, navy hoodie) holds a magnifying glass over the root tips; inside the lens, countless tiny white fuzzy hairs are clearly visible along the thin roots.",
    "imgKo": "검은 종이 위에 씻은 고추 모종이 뿌리를 펼친 채 놓여 있고, 도윤이가 돋보기를 대자 렌즈 속 뿌리 끝에 하얀 솜털이 빼곡히 보인다."
   },
@@ -366,7 +408,11 @@
     "한자 뜻: 支(버틸 지)와 持(잡을 지), 버티어 붙잡고 있다는 뜻입니다.",
     "생활 속 예: 텐트를 칠 때 막대와 줄이 천을 지지해 세워 줍니다."
    ],
-   "beats": ["바위 절벽 틈에 소나무 한 그루가 비스듬히 자라 있습니다.", "거센 바람이 불어도 바위틈 깊이 뻗은 뿌리가 나무를 꽉 붙들고 있습니다.", "이렇게 쓰러지지 않게 받쳐서 버티는 것이 지지입니다."],
+   "beats": [
+    "바위 절벽 틈에 소나무 한 그루가 비스듬히 자라 있습니다.",
+    "거센 바람이 불어도 바위틈 깊이 뻗은 뿌리가 나무를 꽉 붙들고 있습니다.",
+    "이렇게 쓰러지지 않게 받쳐서 버티는 것이 지지입니다."
+   ],
    "img": "A single pine tree grows at a slant out of a crack in a steep rocky cliff above the sea. Strong wind bends its branches, but thick roots spread deep into the cracks of the rock, gripping it tightly. Waves crash far below. No people.",
    "imgKo": "바닷가 바위 절벽 틈에 소나무 한 그루가 비스듬히 자라 있다. 거센 바람에 가지가 휘어도 굵은 뿌리가 바위틈 깊이 뻗어 꽉 붙들고 있다."
   },
@@ -377,7 +423,11 @@
     "낱말 나누기: 단(끊음) + 면(겉으로 드러난 쪽)입니다.",
     "생활 속 예: 통나무를 자른 단면에는 둥근 나이테가 보입니다."
    ],
-   "beats": ["엄마가 도마 위에서 김밥 한 줄을 썰고 있습니다.", "잘린 쪽마다 단무지, 시금치, 달걀이 동그랗게 모여 있습니다.", "이렇게 잘랐을 때 새로 드러나는 안쪽 모습이 단면입니다."],
+   "beats": [
+    "엄마가 도마 위에서 김밥 한 줄을 썰고 있습니다.",
+    "잘린 쪽마다 단무지, 시금치, 달걀이 동그랗게 모여 있습니다.",
+    "이렇게 잘랐을 때 새로 드러나는 안쪽 모습이 단면입니다."
+   ],
    "img": "A kitchen counter seen from above. A mother's hands slice a long roll of gimbap on a wooden cutting board with a knife. The cut pieces lie in a row, each showing the colorful round inside: yellow pickled radish, green spinach, yellow egg and orange carrot surrounded by white rice and black seaweed. HARIN (girl, yellow headband, mint cardigan) peeks in from the side.",
    "imgKo": "도마 위에서 엄마가 김밥 한 줄을 썰고, 잘린 조각마다 단무지, 시금치, 달걀, 당근이 밥과 김에 둘러싸여 동그랗게 보인다. 하린이가 옆에서 들여다본다."
   },
@@ -396,7 +446,11 @@
     "생활 속 예: 감자를 갈아 물에 담가 두면 바닥에 하얀 녹말이 가라앉습니다.",
     "밥을 오래 씹으면 침이 녹말을 단맛 나는 당으로 바꾸어 달아집니다."
    ],
-   "beats": ["하린이가 할머니와 함께 감자를 강판에 갈아 물에 담가 둡니다.", "얼마 뒤 그릇 바닥에 하얀 가루가 소복이 가라앉아 있습니다.", "감자와 쌀에 많이 든 이 하얀 양분이 녹말입니다."],
+   "beats": [
+    "하린이가 할머니와 함께 감자를 강판에 갈아 물에 담가 둡니다.",
+    "얼마 뒤 그릇 바닥에 하얀 가루가 소복이 가라앉아 있습니다.",
+    "감자와 쌀에 많이 든 이 하얀 양분이 녹말입니다."
+   ],
    "img": "A Korean home kitchen. HARIN (girl, yellow headband, mint cardigan) and her grandmother sit at a table with a bowl of grated potato in water and a metal grater. In a clear glass bowl in front of them, the water has been left to settle, and a thick layer of pure white powder lies at the bottom under clear water.",
    "imgKo": "부엌 식탁에서 하린이와 할머니가 강판에 간 감자를 물에 담가 두었고, 앞의 유리 그릇 바닥에 하얀 가루가 두껍게 가라앉아 있다."
   },
@@ -524,7 +578,11 @@
     "쉬운 뜻: 영어로 midnight, '밤의 한가운데'라는 말입니다. 밤 12시입니다.",
     "생활 속 예: 12월 31일 밤, 사람들은 자정 10초 전부터 숫자를 거꾸로 셉니다."
    ],
-   "beats": ["새해를 앞둔 밤, 하린이네 가족이 거실에 모여 있습니다.", "벽시계의 두 바늘이 맨 위에서 딱 겹치자 텔레비전 속 커다란 종이 울립니다.", "이렇게 밤 열두 시, 하룻밤의 한가운데가 자정입니다."],
+   "beats": [
+    "새해를 앞둔 밤, 하린이네 가족이 거실에 모여 있습니다.",
+    "벽시계의 두 바늘이 맨 위에서 딱 겹치자 텔레비전 속 커다란 종이 울립니다.",
+    "이렇게 밤 열두 시, 하룻밤의 한가운데가 자정입니다."
+   ],
    "img": "A family living room late at night on New Year's Eve. HARIN (girl, yellow headband, mint cardigan) and her family sit together on the sofa in pajamas. A round wall clock with no numerals shows both hands pointing straight up together. On the TV screen, a large traditional Korean bronze bell is being struck at night.",
    "imgKo": "12월 31일 밤 하린이네 가족이 잠옷 차림으로 소파에 모여 있다. 숫자 없는 벽시계의 두 바늘이 맨 위에서 겹치고, 텔레비전에서 커다란 종을 치고 있다."
   },
