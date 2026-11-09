@@ -34,14 +34,23 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
     const duration = Core.DURATIONS.includes(Number(body?.duration)) ? Number(body.duration) : previous.duration || 90;
     const teamMode = typeof body?.teamMode === 'boolean' ? body.teamMode : Boolean(previous.teamMode);
     const teamCount = Core.TEAM_COUNTS.includes(Number(body?.teamCount)) ? Number(body.teamCount) : previous.teamCount || 2;
+    const teamSize = Core.TEAM_SIZES.includes(Number(body?.teamSize)) ? Number(body.teamSize) : previous.teamSize || Core.TEAM_SIZE_DEFAULT;
     // 오래 열린 화면이 평균 설정을 보내도 팀원 모두의 점수를 합산한다.
     const teamScore = 'sum';
-    return { mode, duration, teamMode, teamCount, teamScore };
+    return { mode, duration, teamMode, teamCount, teamSize, teamScore };
   }
   function applyConfig(r, body) {
     r.config = config(body, r.config);
     // 줄어든 팀에 있던 학생은 다시 고르게 한다.
     students(r).forEach((p) => { if (p.team !== null && p.team >= r.config.teamCount) p.team = null; });
+    // 한 팀 인원을 줄이면 넘친 사람(나중에 들어온 사람부터)은 팀 없음으로 돌아간다.
+    const kept = new Map();
+    students(r).forEach((p) => {
+      if (p.team === null) return;
+      const n = (kept.get(p.team) || 0) + 1;
+      kept.set(p.team, n);
+      if (n > r.config.teamSize) p.team = null;
+    });
   }
   const teamSize = (r, team) => students(r).filter((p) => p.team === team).length;
   function validTeam(r, value) {
@@ -50,7 +59,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
     return team;
   }
   function openTeam(r) {
-    const sizes = Core.TEAMS.slice(0, r.config.teamCount).map((_, i) => [i, teamSize(r, i)]).filter(([, n]) => n < Core.TEAM_MAX);
+    const sizes = Core.TEAMS.slice(0, r.config.teamCount).map((_, i) => [i, teamSize(r, i)]).filter(([, n]) => n < r.config.teamSize);
     sizes.sort((a, b) => a[1] - b[1] || a[0] - b[0]);
     return sizes.length ? sizes[0][0] : null;
   }
@@ -283,7 +292,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       const { room: r, player: p } = member(req);
       if (!p.plays || r.phase === 'running' || !r.config.teamMode) throw fail(409, '지금은 팀을 고를 수 없어요.');
       const team = validTeam(r, req.body?.team);
-      if (p.team !== team && teamSize(r, team) >= Core.TEAM_MAX) throw fail(409, `한 팀은 ${Core.TEAM_MAX}명까지예요.`);
+      if (p.team !== team && teamSize(r, team) >= r.config.teamSize) throw fail(409, `한 팀은 ${r.config.teamSize}명까지예요.`);
       p.team = team;
       r.updated = now();
       res.json(state(r, p));
@@ -297,7 +306,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       const target = students(r).find((s) => s.id === req.body?.playerId);
       if (!target) throw fail(404, '학생을 찾지 못했어요.');
       const team = req.body?.team === null ? null : validTeam(r, req.body?.team);
-      if (team !== null && target.team !== team && teamSize(r, team) >= Core.TEAM_MAX) throw fail(409, `한 팀은 ${Core.TEAM_MAX}명까지예요.`);
+      if (team !== null && target.team !== team && teamSize(r, team) >= r.config.teamSize) throw fail(409, `한 팀은 ${r.config.teamSize}명까지예요.`);
       target.team = team;
       r.updated = now();
       res.json(state(r, p));
@@ -309,8 +318,8 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       const { room: r, player: p } = await host(req);
       if (r.phase === 'running' || !r.config.teamMode) throw fail(409, '지금은 팀을 바꿀 수 없어요.');
       const list = students(r);
-      if (list.length > r.config.teamCount * Core.TEAM_MAX)
-        throw fail(409, `${r.config.teamCount}팀에는 ${r.config.teamCount * Core.TEAM_MAX}명까지 들어가요. 팀 수를 늘려 주세요.`);
+      if (list.length > r.config.teamCount * r.config.teamSize)
+        throw fail(409, `${r.config.teamCount}팀에는 ${r.config.teamCount * r.config.teamSize}명까지 들어가요. 팀 수나 한 팀 인원을 늘려 주세요.`);
       const order = list.map((s) => [random(), s]).sort((a, b) => a[0] - b[0]).map(([, s]) => s);
       order.forEach((s, i) => (s.team = i % r.config.teamCount));
       r.updated = now();

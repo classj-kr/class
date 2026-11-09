@@ -19,7 +19,10 @@
   const RACERS = ['🚀', '🏎️', '🐆', '🦄', '🐉', '🦖', '🐬', '🦅', '🐝', '🦊', '🐯', '🐧', '🛸', '🚁', '🐎', '🦈', '🐙', '🦉', '🐼', '🐸', '🦁', '🐳', '🦋', '🐢'];
   const COMBO_CAP = 10;
   // 팀전: 팀마다 1~5명, 8팀까지. 모두가 보탠 점수를 합쳐 겨룬다.
-  const TEAM_MAX = 5;
+  // 한 팀 인원은 방장이 고른다(기본 5명). TEAM_MAX 는 고를 수 있는 가장 큰 값.
+  const TEAM_SIZES = [2, 3, 4, 5, 6, 8, 10];
+  const TEAM_SIZE_DEFAULT = 5;
+  const TEAM_MAX = 10;
   const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
   const TEAMS = [
     { name: '레드', emoji: '🔴', hue: 352 },
@@ -134,5 +137,5 @@
         String(a.name).localeCompare(String(b.name), 'ko'),
     );
   }
-  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, keysFromHangul, strokes, clash, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
+  return { MODES, DURATIONS, RACERS, COMBO_CAP, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, teamBoard, keys, hangulFromKeys, keysFromHangul, strokes, clash, onTrack, multiplier, itemScore, ORDER_BONUS, orderBonus, claimScore, boardSize, HOLD_MS, accuracy, rank };
 });

@@ -26,6 +26,14 @@ export function raceTeamCount(value: unknown) {
   return (RACE_TEAM_COUNTS as readonly number[]).includes(count) ? count : null;
 }
 
+// 한 팀 인원 상한. 고르지 않으면(null) 제한 없음.
+export const RACE_TEAM_SIZES = [2, 3, 4, 5, 6, 8, 10] as const;
+
+export function raceTeamSize(value: unknown) {
+  const size = Number(value);
+  return (RACE_TEAM_SIZES as readonly number[]).includes(size) ? size : null;
+}
+
 export type TeamMember = { id: string; team?: number | null; score?: number; correct_count?: number | null };
 export type TeamStanding = { index: number; name: string; symbol: string; hue: number; score: number; size: number; rank: number; memberIds: string[] };
 
@@ -50,12 +58,15 @@ export function raceTeamBoard(rows: readonly TeamMember[], teamCount: number): T
 }
 
 // 팀이 없는 사람을 가장 적은 팀에 넣는다. 출발할 때 아무도 빠지지 않게 한다.
-export function fillRaceTeams(rows: readonly TeamMember[], teamCount: number) {
+// 한 팀 인원이 정해져 있으면 꽉 찬 팀은 건너뛴다. 자리가 모자라면 남은 사람은 팀 없음으로 둔다(출발 전에 막는다).
+export function fillRaceTeams(rows: readonly TeamMember[], teamCount: number, teamSize: number | null = null) {
   const sizes = Array.from({ length: teamCount }, (_, index) => rows.filter((row) => row.team === index).length);
   const changes: Array<{ id: string; team: number }> = [];
   for (const row of rows) {
     if (row.team !== null && row.team !== undefined && row.team < teamCount) continue;
-    const team = sizes.indexOf(Math.min(...sizes));
+    const open = sizes.filter((size) => teamSize === null || size < teamSize);
+    if (!open.length) break;
+    const team = sizes.indexOf(Math.min(...open));
     sizes[team] += 1;
     changes.push({ id: row.id, team });
   }

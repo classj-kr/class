@@ -1,0 +1,1 @@
+ALTER TABLE `arithmetic_races` ADD `team_size` integer;

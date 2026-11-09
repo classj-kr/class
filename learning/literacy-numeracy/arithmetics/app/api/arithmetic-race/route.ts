@@ -2,7 +2,7 @@ import { raceWorksheetByRoute } from "../../../lib/arithmetic-worksheets";
 import { rankArrivedParticipants, rankCardParticipants } from "../../../lib/arithmetic-race-ranking";
 import { hasRaceCards, isRaceAnswerCorrect, raceAnswerText, raceCard } from "../../../lib/race-cards";
 import { raceComboPoints, raceStore, type ParticipantRow, type RaceRow } from "../../../lib/arithmetic-race-store";
-import { fillRaceTeams, RACE_DEFAULT_DURATION, raceDuration, raceTeamBoard, raceTeamCount, shuffleRaceTeams } from "../../../lib/arithmetic-race-teams";
+import { fillRaceTeams, RACE_DEFAULT_DURATION, raceDuration, raceTeamBoard, raceTeamCount, shuffleRaceTeams, raceTeamSize } from "../../../lib/arithmetic-race-teams";
 import { requestRoomCode } from "../../../../../../shared/room-codes.cjs";
 
 function error(message: string, status = 400) {
@@ -28,6 +28,7 @@ function publicRace(race: RaceRow) {
     mode: race.duration_seconds ? "cards" : "sheet",
     durationSeconds: race.duration_seconds ?? null,
     teamCount: race.duration_seconds ? race.team_count ?? null : null,
+    teamSize: race.duration_seconds ? race.team_size ?? null : null,
     endsAt: race.duration_seconds && race.started_at ? race.started_at + race.duration_seconds * 1000 : null,
   };
 }
@@ -233,7 +234,11 @@ export async function POST(request: Request) {
       const race = await store.race(code);
       // 팀전에서 아직 팀을 안 고른 사람은 가장 적은 팀에 넣고 출발한다.
       if (race?.team_count && race.teacher_token === hostToken && race.status === "waiting") {
-        await store.setTeams(code, fillRaceTeams(await store.participants(code), race.team_count));
+        const participants = await store.participants(code);
+        const size = race.team_size ?? null;
+        if (size !== null && participants.length > race.team_count * size)
+          return error(`${race.team_count}팀에는 ${race.team_count * size}명까지 들어가요. 팀 수나 한 팀 인원을 늘려 주세요.`, 409);
+        await store.setTeams(code, fillRaceTeams(participants, race.team_count, size));
       }
       // 모두 같은 서버 시각에 출발하며 준비 시간은 제한 시간에서 빼지 않는다.
       const startedAt = Date.now() + (race?.duration_seconds ? 3500 : 0);
@@ -309,7 +314,7 @@ export async function POST(request: Request) {
       return Response.json({ outcome, points, answer: outcome === "skip" ? raceAnswerText(card) : "", participant: cardParticipant(me) });
     }
 
-    if (action === "teams" || action === "shuffle") {
+    if (action === "teams" || action === "shuffle" || action === "teamSize") {
       const code = String(payload.roomCode ?? "").trim();
       const hostToken = String(payload.hostToken ?? "");
       const race = await store.race(code);
@@ -320,9 +325,17 @@ export async function POST(request: Request) {
         const teamCount = payload.teamCount === null ? null : raceTeamCount(payload.teamCount);
         if (payload.teamCount !== null && teamCount === null) return error("팀 수를 확인하세요.");
         await store.setTeamCount(code, hostToken, teamCount);
+      } else if (action === "teamSize") {
+        const teamSize = payload.teamSize === null ? null : raceTeamSize(payload.teamSize);
+        if (payload.teamSize !== null && teamSize === null) return error("한 팀 인원을 확인하세요.");
+        await store.setTeamSize(code, hostToken, teamSize);
       } else {
         if (!race.team_count) return error("팀전이 아닙니다.");
-        await store.setTeams(code, shuffleRaceTeams(await store.participants(code), race.team_count));
+        const participants = await store.participants(code);
+        const size = race.team_size ?? null;
+        if (size !== null && participants.length > race.team_count * size)
+          return error(`${race.team_count}팀에는 ${race.team_count * size}명까지 들어가요. 팀 수나 한 팀 인원을 늘려 주세요.`, 409);
+        await store.setTeams(code, shuffleRaceTeams(participants, race.team_count));
       }
       return Response.json({ ok: true });
     }
@@ -352,6 +365,9 @@ export async function POST(request: Request) {
       if (!Number.isInteger(team) || team < 0 || team >= race.team_count) return error("팀을 확인하세요.");
       const me = (await store.participants(code)).find((row) => row.id === participantId && row.participant_token === participantToken);
       if (!me) return error("학생 입장 정보를 확인하세요.", 403);
+      const size = race.team_size ?? null;
+      if (size !== null && me.team !== team && (await store.participants(code)).filter((row) => row.team === team).length >= size)
+        return error(`한 팀은 ${size}명까지예요.`, 409);
       await store.setTeams(code, [{ id: me.id, team }]);
       return Response.json({ ok: true, team });
     }

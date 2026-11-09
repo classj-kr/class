@@ -3,10 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { RaceAvatar, RaceBackdrop } from "../../components/arithmetic-race-scene";
-import { RACE_DURATIONS, RACE_TEAM_COUNTS, RACE_TEAMS } from "../../../lib/arithmetic-race-teams";
+import { RACE_DURATIONS, RACE_TEAM_COUNTS, RACE_TEAM_SIZES, RACE_TEAMS } from "../../../lib/arithmetic-race-teams";
 import { rememberRaceHost, useRaceMusic } from "../../components/race-music";
 
-type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null; teamCount?: number | null };
+type Race = { worksheetName: string; worksheetRoute: string; status: string; mode?: string; durationSeconds?: number | null; teamCount?: number | null; teamSize?: number | null };
 type JoinState = { roomCode: string; participantId: string; participantToken: string; hostToken?: string; race: Race };
 type Person = { id: string; name: string; avatarUrl?: string | null; team?: number | null };
 type Board = { participants: Person[]; race: Race };
@@ -224,6 +224,7 @@ export default function ArithmeticRaceJoinPage() {
   }
 
   const teamCount = joined?.race.mode === "cards" ? joined.race.teamCount ?? null : null;
+  const teamSize = teamCount ? joined?.race.teamSize ?? null : null;
   const myTeam = board?.participants.find((participant) => participant.id === joined?.participantId)?.team ?? null;
   // 다섯 팀부터는 대기실을 넓히고, 좁은 화면에서는 두 줄로 나눈다.
   const manyTeams = Boolean(board && teamCount && teamCount > 4);
@@ -249,15 +250,20 @@ export default function ArithmeticRaceJoinPage() {
                   onClick={() => void lobbyAction({ action: "teams", teamCount: count })}>{count ? `${count}팀` : "개인전"}</button>)}
                 {teamCount ? <button type="button" className="math-race-shuffle" onClick={() => void lobbyAction({ action: "shuffle" })}>🔀 섞기</button> : null}
               </div>
+              {teamCount ? <div className="math-race-team-setup" role="group" aria-label="한 팀 인원">
+                {[null, ...RACE_TEAM_SIZES].map((size) => <button key={size ?? "free"} type="button" aria-pressed={teamSize === size}
+                  onClick={() => void lobbyAction({ action: "teamSize", teamSize: size }, "한 팀 인원을 바꾸지 못했습니다.")}>{size ? `한 팀 ${size}명` : "인원 제한 없음"}</button>)}
+              </div> : null}
             </> : null}
             {board && teamCount ? <>
               <div className="math-race-team-pick" style={{ "--teams": teamCount, "--wrap": teamCount > 4 ? Math.ceil(teamCount / 2) : teamCount } as CSSProperties}>
                 {RACE_TEAMS.slice(0, teamCount).map((team, index) => {
                   const members = board.participants.filter((participant) => participant.team === index);
                   const mine = myTeam === index;
+                  const full = teamSize !== null && members.length >= teamSize;
                   return <section key={team.name} className={`math-race-team-column${mine ? " is-mine" : ""}`} style={{ "--hue": team.hue } as CSSProperties}>
-                    <button type="button" className="math-race-team-head" aria-pressed={mine} onClick={() => void lobbyAction({ action: "team", team: index })}>
-                      <i aria-hidden="true">{team.symbol}</i><b>{team.name}</b><small>{members.length}명</small>
+                    <button type="button" className="math-race-team-head" aria-pressed={mine} disabled={full && !mine} onClick={() => void lobbyAction({ action: "team", team: index })}>
+                      <i aria-hidden="true">{team.symbol}</i><b>{team.name}</b><small>{teamSize ? `${members.length}/${teamSize}` : `${members.length}명`}</small>
                     </button>
                     <ul aria-label={`${team.name} 명단`}>{members.map((participant) => <li key={participant.id}><RaceAvatar {...participant} /><span>{participant.name}</span>{participant.id === joined.participantId ? <em>나</em> : null}</li>)}</ul>
                   </section>;
