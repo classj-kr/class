@@ -4,6 +4,8 @@ const fs=require("node:fs"),path=require("node:path");
 module.exports=function createCollectionAvatar(THREE,id){
   const source=JSON.parse(fs.readFileSync(path.resolve(__dirname,"../../outputs/avatar-lab/mesh-source",id+".json"),"utf8"));
   const profile=source.profile,k=require("./model-kit.cjs")(THREE,id),parts=new Map();
+  if(['food-hot-dog','food-sandwich','theme-sunflower'].includes(id))profile.holdArms=true;
+  if(id==='fruit-avocado')profile.motion='hop';
   function floats(base64){const b=Buffer.from(base64,"base64");return new Float32Array(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength));}
   function integers(base64){const b=Buffer.from(base64,"base64");return new Uint32Array(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength));}
   for(const part of source.parts){
@@ -52,12 +54,36 @@ module.exports=function createCollectionAvatar(THREE,id){
     }
     parts.set(part.name,{part,group,shell,solid,points});
   }
+  if(['animal-fox','animal-wolf','animal-panda','animal-lion','animal-giraffe','animal-tiger','animal-bear','animal-dog','animal-koala','animal-llama','animal-meerkat','animal-rhinoceros','animal-squirrel','animal-hedgehog','animal-rabbit','animal-deer','animal-chick','animal-duck','animal-elephant','animal-hippopotamus','animal-kangaroo','animal-monkey','animal-dolphin','animal-penguin','animal-seal','animal-whale','animal-shark','animal-eagle','animal-owl','animal-mouse','animal-sloth','animal-turtle','animal-unicorn','animal-crocodile','animal-dragon','animal-leopard-gecko','animal-crested-gecko'].includes(id)){
+    for(const {group} of parts.values()){
+      group.userData.directSurfaceArtwork=true;
+      group.userData.artworkOpaqueRegions=[{cx:320,cy:300,rx:420,ry:420}];
+    }
+  }
   require("./collection-specials.cjs")(THREE,k,id,parts);
   require("./animal-appendages.cjs")(THREE,k,id,parts);
+  require('./finish-soft-animal.cjs')(THREE,k,id,parts);
+  require('./finish-garden.cjs')(THREE,k,id,parts);
+  require('./finish-coastal-reptile.cjs')(THREE,k,id,parts);
+  require('./finish-deer-crocodile.cjs')(THREE,k,id,parts);
+  require('./finish-dragon.cjs')(THREE,k,id,parts);
+  require('./finish-birds.cjs')(THREE,k,id,parts);
+  require('./finish-fox-frog.cjs')(THREE,k,id,parts);
+  require('./finish-giraffe-hedgehog.cjs')(THREE,k,id,parts);
+  require('./finish-hippo-kangaroo.cjs')(THREE,k,id,parts);
+  require('./finish-koala.cjs')(THREE,k,id,parts);
+  require('./finish-gecko-lion.cjs')(THREE,k,id,parts);
+  require('./finish-sheep-meerkat.cjs')(THREE,k,id,parts);
+  require('./finish-monkey-mouse.cjs')(THREE,k,id,parts);
+  require('./finish-ostrich-owl.cjs')(THREE,k,id,parts);
+  require('./finish-panda-peacock.cjs')(THREE,k,id,parts);
+  require('./finish-padded-suits.cjs')(THREE,k,id,parts);
+  require('./finish-peacock-rear.cjs')(THREE,k,id,parts);
   const characterEffects=require('./character-effects.cjs')(THREE,k,id);
   const torso=parts.get("Torso"),head=parts.get("Head");
-  if(torso&&head){
-    k.ellipsoid("NeckJoin",[Math.min(.22,profile.armHalf*.003),.10,.16],torso.solid,k.body,[(profile.cx-320)*.005,(580-profile.neck)*.005,-.025]);
+  if(torso&&head&&!head.skipNeckJoin){
+    const macaronJoin=['food-macaron','food-dumpling'].includes(id);
+    k.ellipsoid("NeckJoin",[Math.min(.22,profile.armHalf*.003),macaronJoin?.16:id==='food-cheese'?.13:.10,.16],torso.solid,k.body,[(profile.cx-320)*.005,(580-profile.neck)*.005+(macaronJoin?.06:0),id==='food-cheese'?.335:-.025]);
   }
   if(parts.has("Tail")&&!parts.get('Tail').special&&torso){
     const tail=parts.get("Tail"),origin=[profile.cx+(profile.tail.side==="left"?-25:25),Math.min(530,profile.neck+65)];
@@ -117,7 +143,7 @@ module.exports=function createCollectionAvatar(THREE,id){
       }
     }
   }
-  if(profile.pattern==="shell"&&torso){
+  if(profile.pattern==="shell"&&torso&&!torso.authoredShell){
     const shell=k.ellipsoid("TurtleShell",[.31,.35,.22],k.solid("TurtleShellGreen","#567f36"),torso.group,[0,0,-.22]);
     const rim=k.mesh("TurtleShellRim",new THREE.TorusGeometry(.29,.018,8,36),k.solid("TurtleShellRimColor","#d4bd63"),torso.group,[0,0,-.35]);rim.scale.y=1.12;
   }
@@ -143,6 +169,21 @@ module.exports=function createCollectionAvatar(THREE,id){
     for(const clip of clips){const track=clip.tracks.find(t=>t.name==='Body.position'),mix=new THREE.AnimationMixer(k.root);mix.clipAction(clip).play();for(let i=0;i<49;i++){mix.setTime(times[i]);k.root.updateMatrixWorld(true);const floor=new THREE.Box3().setFromObject(k.root).min.y;if(floor<0)track.values[i*3+1]-=floor;}mix.stopAllAction();k.body.position.set(0,0,0);k.body.quaternion.identity();}
     k.root.userData={walkStride:.4,walkDuration:1.8};require("./illustration-materials.cjs")(THREE,k.root);result={root:k.root,clips};
   }
+  // Two-handed props and their cords keep the same frame as the holding arms.
+  if(['animal-bee','animal-crab'].includes(id)){
+    const wave=result.clips.find(c=>c.name==='Wave'),track=wave.tracks.find(t=>t.name==='RightArm.quaternion');
+    for(let i=0;i<track.times.length;i++){const a=track.times[i]/wave.duration*Math.PI*2;track.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(.02,0,(id==='animal-crab'?.65:.10)+Math.sin(a*2)*.08)).toArray(),i*4);}
+  }
+  if(['animal-bear','animal-chick','animal-crested-gecko','animal-crocodile','animal-deer','animal-dog','animal-dolphin','animal-dragon','animal-dragonfly','animal-duck','animal-eagle','animal-flamingo','animal-fox','animal-giraffe','animal-hedgehog','animal-hippopotamus','animal-kangaroo','animal-koala','animal-ladybug','animal-leopard-gecko','animal-lion','animal-llama'].includes(id)){
+    const wave=result.clips.find(c=>c.name==='Wave'),track=wave.tracks.find(t=>t.name==='RightArm.quaternion');
+    // The chick has a broad feathered wing: a human overhead wave rotated
+    // its entire root out of the short body. Use a small wing greeting.
+    for(let i=0;i<track.times.length;i++){const a=track.times[i]/wave.duration*Math.PI*2;track.values.set(new THREE.Quaternion().setFromEuler(['animal-chick','animal-eagle'].includes(id)?new THREE.Euler(0,Math.sin(a*2)*.22,.12):new THREE.Euler(.02,0,.9+Math.sin(a*2)*.15)).toArray(),i*4);}
+  }
+  if(['animal-ostrich','animal-owl','animal-peacock'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.times.length;i++){const a=arm.times[i]/wave.duration*Math.PI*2;arm.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(0,Math.sin(a*2)*.12,.03)).toArray(),i*4);}}
+  if(id==='animal-panda'){const wave=result.clips.find(c=>c.name==='Wave'),track=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<track.times.length;i++){const a=track.times[i]/wave.duration*Math.PI*2;track.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(.02,0,.65+Math.sin(a*2)*.12)).toArray(),i*4);}}
+  if(['animal-meerkat','animal-monkey','animal-mouse'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.values.length;i+=4)arm.values.set([0,0,0,1],i);}
+  if(head?.lockToBody)for(const clip of result.clips)for(const name of ['Head',...(profile.holdArms?['LeftArm','RightArm']:[])]){const track=clip.tracks.find(t=>t.name===name+'.quaternion');if(track)for(let i=0;i<track.values.length;i+=4)track.values.set([0,0,0,1],i);}
   // Wings stay attached at their original shoulder points and flap mildly.
   for(const clip of result.clips)if(clip.name==="Walk")for(const name of ["LeftWing","RightWing"]){
     if(!parts.has(name))continue;const times=Array.from({length:49},(_,i)=>i/48*clip.duration),values=[];
@@ -150,6 +191,11 @@ module.exports=function createCollectionAvatar(THREE,id){
     clip.tracks.push(new THREE.QuaternionKeyframeTrack(name+".quaternion",times,values));
   }
   Object.assign(result.root.userData,{avatarKey:id+".webp",prototype:true,revision:profile.revision,collection:true,shape:profile.shape,locomotion:profile.motion,canWave:profile.motion==="walk"&&!profile.holdArms,sourceChecksum:source.checksum});
+  if(id==='animal-octopus')for(const clip of result.clips)if(clip.name==='Walk')for(let j=0;j<8;j++){
+    const times=Array.from({length:49},(_,i)=>i/48*clip.duration),values=[];
+    for(let i=0;i<49;i++)values.push(...new THREE.Quaternion().setFromEuler(new THREE.Euler(0,Math.sin(i/48*Math.PI*2+j*.75)*.065,0)).toArray());
+    clip.tracks.push(new THREE.QuaternionKeyframeTrack('OctopusTentacle'+j+'.quaternion',times,values));
+  }
   if(characterEffects){result.clips.push(characterEffects);result.root.userData.effectClip=characterEffects.name;}
   return result;
 };

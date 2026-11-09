@@ -1,6 +1,12 @@
 "use strict";
 const ids=['theme-cactus','theme-cherry-blossom','theme-cloud','theme-clover','theme-crown','theme-guitar','theme-lightning','theme-maple-leaf','theme-moon','theme-music-note','theme-paper-airplane','theme-rainbow','theme-rose','theme-snowman','theme-star','theme-sun','theme-sunflower','theme-tulip'];
 module.exports=function themes(THREE,k,id,parts){
+ if(require('./source-tulip-costume.cjs')(THREE,k,id,parts))return true;
+ if(require('./blossom-costumes.cjs')(THREE,k,id,parts))return true;
+ if(require('./seasonal-costumes.cjs')(THREE,k,id,parts))return true;
+ if(require('./symbol-costumes.cjs')(THREE,k,id,parts))return true;
+ if(require('./celestial-costumes.cjs')(THREE,k,id,parts))return true;
+ if(require('./soft-theme-costumes.cjs')(THREE,k,id,parts))return true;
  if(!ids.includes(id))return false;const head=parts.get('Head'),s=require('./sculpt-kit.cjs')(THREE,k,head);s.parent.clear();
  const gold='#f7c735',green='#639c39',white='#f1f4f3';
  function radialPetals(name,count,cx,cy,inner,outer,width,color,z=0,depth=.13,phase=0){

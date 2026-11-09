@@ -27,7 +27,10 @@ module.exports = function kit(THREE, key) {
         if(back){if(ring)indices.push(a,d,b);indices.push(a,c,d);}else{if(ring)indices.push(a,b,d);indices.push(a,d,c);}
       }
       const g=geometry(positions,indices);
-      if((g.attributes.normal.getZ(samples*3)<0)!==back){for(let i=0;i<g.index.count;i+=3)[g.index.array[i+1],g.index.array[i+2]]=[g.index.array[i+2],g.index.array[i+1]];g.computeVertexNormals();}
+      // One normal on a concave tuft can point inward. Use the complete
+      // projected surface area to choose its outward orientation.
+      let areaZ=0;for(let i=0;i<indices.length;i+=3){const a=indices[i]*3,b=indices[i+1]*3,c=indices[i+2]*3;areaZ+=(positions[b]-positions[a])*(positions[c+1]-positions[a+1])-(positions[b+1]-positions[a+1])*(positions[c]-positions[a]);}
+      if((areaZ<0)!==back){for(let i=0;i<g.index.count;i+=3)[g.index.array[i+1],g.index.array[i+2]]=[g.index.array[i+2],g.index.array[i+1]];g.computeVertexNormals();}
       mesh(name+(back?"Back":"Surface"),g,material,parent);
       if(!back&&options.art!==false){
         const decal=g.clone();decal.setAttribute("uv",new THREE.Float32BufferAttribute(uv,2));decal.translate(0,0,.002);
