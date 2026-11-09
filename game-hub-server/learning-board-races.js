@@ -1,5 +1,6 @@
 const crypto = require('node:crypto');
 const { buildArtQuiz } = require('./learning-board-art-quiz');
+const { classboardAvatars } = require('./classboard-avatars');
 
 // Scoring is independent of presentation and participant grouping, so a future
 // team mode can aggregate these results without changing answer validation.
@@ -10,7 +11,11 @@ function scoreAnswer(correct, streak, elapsed, duration) {
   return { points: 100 + Math.round(20 * Math.max(0, 1 - elapsed / duration)) + (boost ? 60 : 0), streak: next, boost };
 }
 
-function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now = Date.now }) {
+// 아바타는 서버가 사용자 번호로 찾아 붙인다. 다른 학생 화면에 내보내기 전에 주소 꼴을 한 번 더 확인한다.
+const AVATAR_URL = /^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i;
+const safeAvatar = value => typeof value === 'string' && AVATAR_URL.test(value) ? value : '';
+
+function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now = Date.now, avatarUrl = null }) {
   const automatic = s => s.autoAdvance !== false;
   const allAnswered = s => s.players.length > 0 && s.players.every(p => s.answers[p.id]);
   function nextRound(s) {
@@ -21,7 +26,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
   }
   async function load(db, b, raceId) {
     const row = (await db.query('SELECT * FROM learning_board_races WHERE board_id=$1 AND id=$2', [b.id, raceId])).rows[0];
-    if (!row) fail(404, 'RACE_NOT_FOUND', '경주를 찾을 수 없어요.');
+    if (!row) fail(404, 'RACE_NOT_FOUND', '순위전을 찾을 수 없어요.');
     return row;
   }
   async function save(db, row) {
@@ -74,10 +79,21 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       me: { teacher: who.teacher, joined: !!player, name: who.name, number: who.number,
         ...(player ? { score: player.score, rank: 1 + s.players.filter(p => p.score > player.score).length,
           correctCount: player.correctCount, attempts: player.attempts, delta: revealed ? player.delta : 0 } : {}),
-        ...(answer ? { choice: answer.choice } : {}) },
+        ...(player?.avatar ? { avatar: player.avatar } : {}), ...(answer ? { choice: answer.choice } : {}) },
       // Never publish answer-dependent scores during an open question.
       ...(who.teacher ? { racers: s.players.map(p => ({ id: p.id, name: p.name, number: p.number, score: p.score,
-        delta: revealed ? p.delta : 0, boost: revealed && p.boost, correct: phase === 'reveal' ? p.correct : null })) } : {}) };
+        delta: revealed ? p.delta : 0, boost: revealed && p.boost, correct: phase === 'reveal' ? p.correct : null, ...(p.avatar ? { avatar: p.avatar } : {}) })) } : {}) };
+  }
+  // 로그인한 학생만 아바타가 있다(게스트는 우주선 그대로). 찾다가 틀려도 입장은 막지 않는다.
+  async function joinAvatar(db, who) {
+    if (!who.userId || !avatarUrl) return {};
+    // 거래 안이므로 같은 연결로 묻고, 실패해도 거래가 깨지지 않게 저장점으로 감싼다.
+    await db.query('SAVEPOINT race_avatar');
+    try {
+      const avatar = safeAvatar((await classboardAvatars(db, [who.userId], avatarUrl)).get(String(who.userId)));
+      await db.query('RELEASE SAVEPOINT race_avatar');
+      return avatar ? { avatar } : {};
+    } catch (_) { await db.query('ROLLBACK TO SAVEPOINT race_avatar'); return {}; }
   }
   async function createRace(db, b, set, body) {
     const seconds = integer(body?.seconds ?? 20, 10, 120);
@@ -95,7 +111,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
   const activeRace = async (db, b) => (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0];
   router.post('/:id/races', asyncRoute(async (req, res) => {
     const result = await transaction(req, async (db, b) => {
-      if (b.layout !== 'quiz') fail(400, 'QUIZ_REQUIRED', '문제 출제 게시판에서 경주를 시작해 주세요.');
+      if (b.layout !== 'quiz') fail(400, 'QUIZ_REQUIRED', '문제 출제 게시판에서 순위전을 시작해 주세요.');
       const existing = await activeRace(db, b);
       if (existing) return { id: existing.id, resumed: true };
       const set = (await db.query('SELECT * FROM learning_board_sets WHERE board_id=$1 AND id=$2', [b.id, req.body?.setId])).rows[0];
@@ -139,8 +155,9 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       const row = await load(db, b, req.params.raceId); await expire(db, row);
       const s = row.state;
       if (!who.teacher && !s.players.some(p => p.id === who.id)) {
-        if (s.phase !== 'lobby') fail(409, 'RACE_STARTED', '이미 시작한 경주예요. 다음 경주에서 참여해 주세요.');
-        s.players.push({ id: who.id, name: who.name, number: who.number, score: 0, streak: 0, correctCount: 0, attempts: 0, delta: 0, boost: false });
+        if (s.phase !== 'lobby') fail(409, 'RACE_STARTED', '이미 시작한 순위전이에요. 다음 순위전에서 참여해 주세요.');
+        s.players.push({ id: who.id, name: who.name, number: who.number, score: 0, streak: 0, correctCount: 0, attempts: 0, delta: 0, boost: false,
+          ...await joinAvatar(db, who) });
         await save(db, row);
       }
       return project(row, b, who);
@@ -176,7 +193,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       if (who.teacher) fail(403, 'STUDENTS_ONLY', '학생만 답을 제출할 수 있어요.');
       if (s.phase !== 'question' || time < s.startsAt || time >= s.endsAt) fail(409, 'ANSWER_CLOSED', '답안 제출 시간이 아니에요.');
       const player = s.players.find(p => p.id === who.id), q = s.questions[s.index];
-      if (!player) fail(403, 'NOT_PLAYING', '경주에 참여하지 않았어요.');
+      if (!player) fail(403, 'NOT_PLAYING', '순위전에 참여하지 않았어요.');
       if (req.body?.questionId !== q.id) fail(409, 'WRONG_QUESTION', '현재 문제에 답해 주세요.');
       const choice = integer(req.body?.choice, 0, q.choices.length - 1);
       if (!s.answers[who.id]) {

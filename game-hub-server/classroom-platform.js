@@ -1668,7 +1668,7 @@ function createClassroomPlatform(options = {}) {
   });
 
   const learningBoards = createLearningBoards({
-    pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute,
+    pool, sessionUser, requireTeacher, requireDatabase, HttpError, asyncRoute, avatarUrl,
     async joinIdentity(req, user) {
       if (user) {
         const membership = await studentMembership(user.id);

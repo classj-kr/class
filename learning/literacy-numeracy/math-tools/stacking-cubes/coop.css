@@ -69,6 +69,11 @@
 .lane-score,.lane-members { color:#56665f; font-size:13px; overflow-wrap:anywhere; }
 .lane-score { font-variant-numeric:tabular-nums; font-weight:650; }
 .lane-members { border-top:1px solid #dedfd7; padding-top:7px; }
+/* 모둠원: 각자 고른 아바타 + 이름 */
+.coop-members,.lane-members { display:flex; flex-wrap:wrap; gap:6px 10px; }
+.stacking-member { display:inline-flex; align-items:center; gap:5px; min-width:0; color:#3f4d46; font-size:13px; }
+.lane-members .stacking-face { width:38px; height:38px; }
+.lane-members .stacking-member { font-size:14px; }
 .relay-lane.has-finished { border-color:#d2b06c; background:linear-gradient(145deg,#fff5d7,#fffdf6); }
 .relay-lane.has-finished[data-place="2"] { border-color:#acb7c2; background:linear-gradient(145deg,#eaf0f7,#fdfefe); }
 .relay-lane.has-finished[data-place="3"] { border-color:#c79879; background:linear-gradient(145deg,#f8e7dc,#fffdf9); }
