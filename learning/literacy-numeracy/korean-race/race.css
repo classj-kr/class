@@ -326,7 +326,16 @@ body.spectator .towers { height: calc(100vh - 260px); min-height: 320px; }
 .place-3 .block { height: 80px; background: #c3834c; }
 .step.empty { opacity: 0.4; }
 .pod-face { width: 60px; height: 60px; font-size: 42px; }
-.pod-racer { position: relative; }
+/* 시상대가 올라온 뒤 아바타가 단 위에서 살짝 통통 튄다(늘 단에 다시 닿는다). 1등은 조금 더 높이 */
+.pod-racer { position: relative; transform-origin: 50% 100%; animation: pod-hop 1.3s calc(var(--delay, 0s) + 0.8s) ease-in-out infinite; }
+.place-1 .pod-racer { --hop: -16px; }
+@keyframes pod-hop {
+  0%, 60%, 100% { transform: translateY(0) scale(1, 1); }
+  8% { transform: translateY(0) scale(1.06, 0.92); }
+  22% { transform: translateY(var(--hop, -10px)) scale(0.97, 1.04); }
+  38% { transform: translateY(0) scale(1.05, 0.94); }
+  46% { transform: translateY(0) scale(1, 1); }
+}
 .pod-racer.crowned::before { content: "👑"; position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 28px; }
 .pod-name { font-size: 17px; }
 /* 팀 시상대: 팀원 모두가 단 위에 나란히 선다. 단 색은 팀 색 */
