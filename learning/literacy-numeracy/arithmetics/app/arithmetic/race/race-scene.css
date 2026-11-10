@@ -329,6 +329,7 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
   .math-race .card-race-card { min-height: 240px; padding: 38px 14px 20px; }
   .math-race .card-race-question { font-size: 34px; gap: 8px; }
   .math-race .card-race-question.is-dense { font-size: 24px; }
+  .math-race .card-race-question.is-wordy { font-size: 22px; }
   .math-race .card-race-podium strong { font-size: 14px; }
   .math-race .card-race-podium .step-1 .math-race-avatar { width: 54px; height: 54px; }
   .math-race .card-race-podium .math-race-avatar { width: 44px; height: 44px; }
