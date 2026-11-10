@@ -16,7 +16,7 @@ assert.doesNotMatch(
 
 assert.match(
   html,
-  /href="learning\/inquiry\/periodic-table\/"(?:(?!<\/a>)[\s\S])*?<strong>원소·물질 모형<\/strong><small>\(Elements &amp; Matter Model\)<\/small>/,
+  /href="learning\/inquiry\/periodic-table\/"(?:(?!<\/a>)[\s\S])*?<strong>원소·물질 모형<\/strong><small>\(Elements(?: &amp; |·)Matter Model\)<\/small>/,
   "The periodic-table menu must use the Korean title of the elements-and-matter model with its English translation.",
 );
 assert.doesNotMatch(

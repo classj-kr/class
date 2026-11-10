@@ -889,7 +889,8 @@
             gap: 6px;
         }
 
-        .meal-dish-item > span:first-child { flex: none; font-size: 1.18rem; line-height: 1; }
+        .meal-dish-item > span:first-child { flex: none; font-size: 1.18rem; line-height: 1; display: inline-flex; align-items: center; justify-content: center; }
+        .meal-dish-item > span:first-child svg { width: 1.22rem; height: 1.22rem; display: block; }
         .meal-dish-item > span:last-child { min-width: 0; }
 
         /* Opaque notice items stay separate from the textured board. */
@@ -1462,7 +1463,8 @@
             const name = String(dish).replace(/\s+/g, "");
             const rules = [
                 // 유제품·음료·디저트·간식·분식
-                [/우유|요구르트|요거트|비요뜨|짜요짜요|액티비아|불가리스|야쿠르트|두유|밀크/, "🥛"],
+                // 유제품·음료·디저트·간식·분식 (급식 우유는 컵이 아닌 삼각지붕 종이팩 아이콘으로 표시)
+                [/우유|요구르트|요거트|비요뜨|짜요짜요|액티비아|불가리스|야쿠르트|두유|밀크/, '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" stroke-linejoin="round" d="M6 9.5L9.5 5h5L18 9.5V20a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 20V9.5z"/><path fill="#22c55e" d="M9.5 3h5v2h-5z"/><path fill="#dcfce7" stroke="#86efac" stroke-width="1" stroke-linejoin="round" d="M6 9.5L9.5 5h5L18 9.5H6z"/><rect x="6.6" y="12.5" width="10.8" height="4.5" fill="#22c55e"/><circle cx="12" cy="14.75" r="1.4" fill="#ffffff"/></svg>'],
                 [/치즈|스트링치즈|모짜렐라/, "🧀"],
                 [/주스|쥬스|식혜|수정과|미숫가루|스무디|음료|아이스티|매실차|유자차|복숭아티|에이드|쿨피스|쥬시쿨|뽀로로/, "🧃"],
                 [/아이스크림|빙수|설레임|요맘때|샤베트|젤라또|구슬아이스/, "🍨"],
@@ -2776,7 +2778,12 @@
                         item.className = "meal-dish-item";
                         const bullet = document.createElement("span");
                         bullet.style.color = "var(--accent-green)";
-                        bullet.textContent = getMealDishIcon(dish);
+                        const iconMarkup = getMealDishIcon(dish);
+                        if (iconMarkup.startsWith("<svg")) {
+                            bullet.innerHTML = iconMarkup;
+                        } else {
+                            bullet.textContent = iconMarkup;
+                        }
                         const text = document.createElement("span");
                         text.textContent = dish;
                         item.append(bullet, text);
