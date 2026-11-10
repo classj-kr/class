@@ -149,8 +149,87 @@ h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp
 .nb-cell.filled { background: linear-gradient(145deg, #fff2c9, #d79a43); border-color: #e6b66d; box-shadow: inset 0 2px rgba(255,255,255,.6), inset 0 -3px rgba(99,48,15,.22); }
 .nb-cell.marked { color: rgba(255,140,120,.85); }
 
-.status { min-height: 1.5em; margin: 14px 0 13px; color: var(--muted); }
+.status-stack { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 12px; }
+.status { min-height: 1.4em; margin: 0; color: var(--muted); font-size: .92rem; }
 .status.success { color: var(--gold-bright); font-weight: 800; }
+
+.coach-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(229, 173, 75, .42);
+  border-radius: 12px;
+  background: rgba(20, 12, 7, .58);
+  text-align: left;
+}
+.coach-card[data-tone="safe"] { border-color: rgba(74, 222, 128, .65); background: rgba(20, 48, 28, .55); }
+.coach-card[data-tone="warn"] { border-color: rgba(248, 113, 113, .72); background: rgba(58, 20, 20, .58); }
+.coach-text { margin: 0; color: var(--ink); font-size: .86rem; line-height: 1.45; word-break: keep-all; flex: 1; }
+.coach-text strong { color: var(--gold-bright); }
+.coach-hint-btn {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 217, 138, .22), rgba(229, 173, 75, .14));
+  color: var(--gold-bright);
+  font-size: .82rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.coach-hint-btn:hover { background: linear-gradient(180deg, rgba(255, 217, 138, .35), rgba(229, 173, 75, .24)); }
+
+#gameScreen .nb-row-clue.clue-done,
+#gameScreen .nb-col-clue.clue-done {
+  color: #86efac;
+  opacity: .72;
+}
+#gameScreen .nb-row-clue.clue-over,
+#gameScreen .nb-col-clue.clue-over {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, .22);
+  border-radius: 4px;
+}
+#gameScreen .nb-row-clue.clue-focus,
+#gameScreen .nb-col-clue.clue-focus {
+  color: #fde047;
+  background: rgba(250, 204, 21, .18);
+  border-radius: 4px;
+}
+#gameScreen .nb-cell.hint-fill {
+  box-shadow: inset 0 0 0 3px #22c55e, 0 0 12px rgba(34, 197, 94, .9) !important;
+  z-index: 2;
+}
+#gameScreen .nb-cell.hint-wrong {
+  box-shadow: inset 0 0 0 3px #ef4444, 0 0 12px rgba(239, 68, 68, .9) !important;
+  z-index: 2;
+}
+
+.nono-visual-cards { display: grid; gap: 10px; margin-bottom: 14px; }
+.nono-visual-card {
+  padding: 10px 12px;
+  border: 1px solid rgba(229, 173, 75, .32);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .26);
+}
+.nono-visual-card p { margin: 6px 0 0; font-size: .83rem; line-height: 1.45; color: var(--ink); }
+.nono-mini-row {
+  display: inline-grid;
+  grid-template-columns: 38px repeat(5, 24px);
+  gap: 3px;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: #3c2011;
+}
+.nm-clue { text-align: right; padding-right: 5px; font-weight: 900; font-size: 13px; color: var(--gold-bright); border-right: 2px solid rgba(235,183,91,.4); }
+.nm-cell { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 3px; background: #f4e2be; color: #653422; font-size: 12px; font-weight: 900; }
+.nm-cell.fill { background: #603819; box-shadow: inset 0 0 0 2px #e8b66e; }
+.nm-cell.mark { color: #b91c1c; }
 .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
 .primary, .secondary { min-height: 46px; border-radius: 4px; padding: 0 22px; font-weight: 900; cursor: pointer; }
 .primary { border: 1px solid var(--gold-bright); color: #251409; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }
@@ -260,7 +339,11 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   body[data-entry-game="nonogram"] #gameScreen .game-topbar :is(.text-button, #modeLabel) { white-space: nowrap; }
   body[data-entry-game="nonogram"] #gameScreen .celebration { position: static; z-index: auto; grid-column: 2; grid-row: 3 / 6; display: flex; align-items: stretch; min-height: 0; padding: 0; background: none; contain: size; }
   body[data-entry-game="nonogram"] #gameScreen .celebration[hidden],
-  body[data-entry-game="nonogram"] #gameScreen:has(.celebration:not([hidden])) :is(.tool-switch, .status, .actions),
+  body[data-entry-game="nonogram"] #gameScreen .status-stack { grid-column: 2; grid-row: 4; align-self: center; margin: 0; }
+  body[data-entry-game="nonogram"] #gameScreen .coach-card { flex-direction: column; align-items: stretch; gap: 6px; padding: 8px 10px; }
+  body[data-entry-game="nonogram"] #gameScreen .coach-text { font-size: .78rem; line-height: 1.38; }
+  body[data-entry-game="nonogram"] #gameScreen .coach-hint-btn { width: 100%; min-height: 32px; font-size: .78rem; }
+  body[data-entry-game="nonogram"] #gameScreen:has(.celebration:not([hidden])) :is(.tool-switch, .status, .status-stack, .actions),
   body[data-entry-game="nonogram"] #gameScreen .result-card > .eyebrow,
   body[data-entry-game="nonogram"] #gameScreen .result-mark { display: none; }
   body[data-entry-game="nonogram"] #gameScreen .result-card { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 0; overflow: hidden; padding: 12px; text-align: center; box-shadow: 0 10px 26px rgba(0,0,0,.45); }

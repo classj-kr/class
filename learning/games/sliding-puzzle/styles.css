@@ -108,8 +108,69 @@ h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp
 .tile.correct { color: #18331f; background: linear-gradient(145deg, #f8ebbd, #cbaa54); }
 .empty { border: 0; border-radius: 12px; background: rgba(15,8,4,.34); box-shadow: inset 0 4px 12px rgba(0,0,0,.36); }
 
-.status { min-height: 1.5em; margin: 16px 0 13px; color: var(--muted); }
+.status-stack { display: flex; flex-direction: column; gap: 6px; margin: 10px 0 12px; }
+.status { min-height: 1.3em; margin: 0; color: var(--muted); font-size: .9rem; }
 .status.success { color: var(--gold-bright); font-weight: 800; }
+
+.coach-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(229, 173, 75, .42);
+  border-radius: 12px;
+  background: rgba(20, 12, 7, .58);
+  text-align: left;
+}
+.coach-text { margin: 0; color: var(--ink); font-size: .85rem; line-height: 1.45; word-break: keep-all; flex: 1; }
+.coach-text strong { color: var(--gold-bright); }
+.coach-hint-btn {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 217, 138, .22), rgba(229, 173, 75, .14));
+  color: var(--gold-bright);
+  font-size: .82rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.coach-hint-btn:hover { background: linear-gradient(180deg, rgba(255, 217, 138, .35), rgba(229, 173, 75, .24)); }
+
+.tile { position: relative; }
+.tile.tile-locked {
+  background: linear-gradient(145deg, #fde68a, #b45309);
+  border-color: #fde047;
+  color: #1c1008;
+}
+.tile.tile-locked::after {
+  content: "고정";
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(28, 16, 8, .75);
+  color: #fde047;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: .62rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.tile.tile-focus {
+  box-shadow: inset 0 0 0 3px #22c55e, 0 0 14px rgba(34, 197, 94, .9) !important;
+  z-index: 2;
+}
+
+@media (min-width: 900px) and (max-height: 700px) {
+  #gameScreen .status-stack { grid-column: 2; grid-row: 4; align-self: center; margin: 0; }
+  #gameScreen .coach-card { flex-direction: column; align-items: stretch; gap: 6px; padding: 8px 10px; }
+  #gameScreen .coach-text { font-size: .78rem; line-height: 1.38; }
+  #gameScreen .coach-hint-btn { width: 100%; min-height: 32px; font-size: .78rem; }
+}
 .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
 .primary, .secondary { min-height: 46px; border-radius: 4px; padding: 0 22px; font-weight: 900; cursor: pointer; }
 .primary { border: 1px solid var(--gold-bright); color: #251409; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }

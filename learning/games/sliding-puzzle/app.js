@@ -17,6 +17,9 @@
   const guideButton = document.getElementById('guideButton');
   const guidePanel = document.getElementById('guidePanel');
   const guideBackdrop = document.getElementById('guideBackdrop');
+  const coachText = document.getElementById('coachText');
+  const hintButton = document.getElementById('hintButton');
+  let showFocusHighlight = false;
 
   let size = new URLSearchParams(location.search).get('size') === '4' ? 4 : 3;
   let tiles = [];
@@ -69,7 +72,104 @@
     return values.join(',') === solvedTiles().join(',') ? shuffledSolvableTiles() : values;
   }
 
+
+  function analyzeSlidingStep() {
+    if (size === 3) {
+      if (tiles[0] !== 1) {
+        return {
+          locked: [],
+          focus: [1],
+          text: '<strong>1단계 · 1번 맞추기:</strong> 먼저 <strong>[1번]</strong> 타일을 맨 왼쪽 위(1행 1열) 자리로 옮겨 보세요!'
+        };
+      }
+      if (tiles[1] !== 2 || tiles[2] !== 3) {
+        if (tiles[1] === 3 && tiles[4] === 2) {
+          return {
+            locked: [1],
+            focus: [3, 2],
+            text: '<strong>2단계 · 넣기 준비 완료!</strong> [1번]은 건드리지 말고 빈칸을 오른쪽 위로 보낸 뒤 <strong>3번 →, 2번 ↑</strong> 순서로 밀어 넣으세요!'
+          };
+        }
+        return {
+          locked: [1],
+          focus: [2, 3],
+          text: '<strong>2단계 · 2·3번 세로로 준비하기:</strong> [1번]은 건드리지 말고, <strong>[3번]</strong>을 가운데 위(1행 2열)에, <strong>[2번]</strong>을 그 바로 아래(2행 2열)에 세로로 놓아 보세요!'
+        };
+      }
+      if (tiles[3] !== 4 || tiles[6] !== 7) {
+        if (tiles[3] === 7 && tiles[4] === 4) {
+          return {
+            locked: [1, 2, 3],
+            focus: [7, 4],
+            text: '<strong>3단계 · 넣기 준비 완료!</strong> 첫째 줄(1·2·3)은 건드리지 말고 빈칸을 왼쪽 아래로 보낸 뒤 <strong>7번 ↓, 4번 ←</strong> 순서로 밀어 넣으세요!'
+          };
+        }
+        return {
+          locked: [1, 2, 3],
+          focus: [4, 7],
+          text: '<strong>3단계 · 4·7번 나란히 준비하기:</strong> 완성한 첫째 줄(1·2·3)은 건드리지 말고, <strong>[7번]</strong>을 2행 1열에, <strong>[4번]</strong>을 그 오른쪽(2행 2열)에 나란히 놓아 보세요!'
+        };
+      }
+      return {
+        locked: [1, 2, 3, 4, 7],
+        focus: [5, 6, 8],
+        text: '<strong>4단계(마지막) · 2×2 회전하기:</strong> 다 왔어요! 남은 오른쪽 아래 네 칸에서 <strong>[5·6·8]</strong>을 한 방향으로 빙글빙글 돌리면 완성됩니다!'
+      };
+    }
+
+    // 15 PUZZLE (size === 4)
+    if (tiles[0] !== 1 || tiles[1] !== 2) {
+      return {
+        locked: tiles[0] === 1 ? [1] : [],
+        focus: tiles[0] === 1 ? [2] : [1, 2],
+        text: '<strong>1단계 · 첫째 줄 왼쪽:</strong> 먼저 <strong>[1번]</strong>과 <strong>[2번]</strong>을 첫째 줄 왼쪽 두 칸에 순서대로 놓아 보세요!'
+      };
+    }
+    if (tiles[2] !== 3 || tiles[3] !== 4) {
+      return {
+        locked: [1, 2],
+        focus: [3, 4],
+        text: '<strong>2단계 · 3·4번 짝 맞추기:</strong> [1·2번]은 건드리지 말고, <strong>[4번]</strong>을 1행 3열에, <strong>[3번]</strong>을 그 아래(2행 3열)에 놓은 뒤 <strong>4 →, 3 ↑</strong>로 넣으세요!'
+      };
+    }
+    if (tiles[4] !== 5 || tiles[5] !== 6) {
+      return {
+        locked: [1, 2, 3, 4, ...(tiles[4] === 5 ? [5] : [])],
+        focus: tiles[4] === 5 ? [6] : [5, 6],
+        text: '<strong>3단계 · 둘째 줄 왼쪽:</strong> 첫째 줄(1~4)은 건드리지 말고, <strong>[5번]</strong>과 <strong>[6번]</strong>을 둘째 줄 왼쪽 두 칸에 놓아 보세요!'
+      };
+    }
+    if (tiles[6] !== 7 || tiles[7] !== 8) {
+      return {
+        locked: [1, 2, 3, 4, 5, 6],
+        focus: [7, 8],
+        text: '<strong>4단계 · 7·8번 짝 맞추기:</strong> <strong>[8번]</strong>을 2행 3열에, <strong>[7번]</strong>을 그 아래(3행 3열)에 놓은 뒤 <strong>8 →, 7 ↑</strong>로 둘째 줄을 완성하세요!'
+      };
+    }
+    if (tiles[8] !== 9 || tiles[12] !== 13) {
+      return {
+        locked: [1, 2, 3, 4, 5, 6, 7, 8],
+        focus: [9, 13],
+        text: '<strong>5단계 · 9·13번 세로쌍:</strong> 위 두 줄은 건드리지 말고, <strong>[13번]</strong>을 3행 1열에, <strong>[9번]</strong>을 3행 2열에 나란히 놓은 뒤 <strong>13 ↓, 9 ←</strong>로 넣으세요!'
+      };
+    }
+    if (tiles[9] !== 10 || tiles[13] !== 14) {
+      return {
+        locked: [1, 2, 3, 4, 5, 6, 7, 8, 9, 13],
+        focus: [10, 14],
+        text: '<strong>6단계 · 10·14번 세로쌍:</strong> <strong>[14번]</strong>을 3행 2열에, <strong>[10번]</strong>을 3행 3열에 나란히 놓은 뒤 <strong>14 ↓, 10 ←</strong>로 넣으세요!'
+      };
+    }
+    return {
+      locked: [1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 10, 14],
+      focus: [11, 12, 15],
+      text: '<strong>7단계(마지막) · 2×2 회전하기:</strong> 오른쪽 아래 네 칸에서 <strong>[11·12·15]</strong>를 한 방향으로 빙글빙글 돌리면 완성됩니다!'
+    };
+  }
+
   function render() {
+    const stepInfo = analyzeSlidingStep();
+    if (coachText && !isSolved()) coachText.innerHTML = stepInfo.text;
     const previousRects = new Map([...boardElement.querySelectorAll('.tile[data-tile]')].map(tile => [tile.dataset.tile, tile.getBoundingClientRect()]));
     boardElement.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     boardElement.setAttribute('aria-label', `${size === 3 ? '8' : '15'} 퍼즐 게임판`);
@@ -84,7 +184,9 @@
       }
       const button = document.createElement('button');
       button.type = 'button';
-      button.className = `tile${value === index + 1 ? ' correct' : ''}`;
+      const isLocked = stepInfo.locked.includes(value);
+      const isFocus = showFocusHighlight && stepInfo.focus.includes(value);
+      button.className = `tile${value === index + 1 ? ' correct' : ''}${isLocked ? ' tile-locked' : ''}${isFocus ? ' tile-focus' : ''}`;
       button.textContent = value;
       button.setAttribute('role', 'gridcell');
       button.setAttribute('aria-label', `${value}번 타일`);
@@ -128,6 +230,7 @@
     stopTimer();
     statusElement.textContent = 'PUZZLE COMPLETE!';
     statusElement.classList.add('success');
+    if (coachText) coachText.innerHTML = '🎉 <strong>축하해요!</strong> 모든 숫자 타일을 순서대로 완벽하게 맞췄어요!';
     const previous = store.get(bestKey()) || null;
     if (!previous || moves < previous.moves || (moves === previous.moves && elapsed < previous.time)) {
       store.set(bestKey(), { moves, time: elapsed });
@@ -246,6 +349,10 @@
   document.getElementById('startButton').addEventListener('click', startGame);
   document.getElementById('settingsButton').addEventListener('click', showSettings);
   guideButton.addEventListener('click', openGuide);
+  hintButton?.addEventListener('click', () => {
+    showFocusHighlight = true;
+    render();
+  });
   document.getElementById('guideCloseButton').addEventListener('click', closeGuide);
   guideBackdrop.addEventListener('click', closeGuide);
   document.addEventListener('keydown', event => {
