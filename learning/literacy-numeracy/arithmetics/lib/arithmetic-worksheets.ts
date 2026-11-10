@@ -195,7 +195,7 @@ const elementaryHorizontalMentalMathWorksheets = new Set<string>([
 ]);
 const elementaryMemorizationWorksheets = new Set<string>(["제곱수"]);
 // 심화: 교과 과정 너머까지 다루는 학습지. 하나씩 지정한다.
-const elementaryAdvancedWorksheets = new Set<string>(["제곱수", "3분수③", "단위변환"]);
+const elementaryAdvancedWorksheets = new Set<string>(["제곱수", "19단", "3분수③", "단위변환"]);
 
 function badgesFor(name: string) {
   const badges: WorksheetBadge[] = [];

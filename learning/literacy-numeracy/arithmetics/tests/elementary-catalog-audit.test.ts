@@ -70,7 +70,7 @@ test("암산과 암기 표시는 사용자가 지정한 학습지에만 붙인�
     ["2덧셈·뺄셈 빈칸", "3보수뺄셈100", "3보수뺄셈1000", "3덧셈뺄셈②", "3곱셈②", "19단", "3나눗셈③", "4큰수곱셈", "5약수,배수", "5분수③", "6소수①"],
   );
   assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암기")).map(({ name }) => name), ["제곱수"]);
-  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("심화")).map(({ name }) => name), ["제곱수", "3분수③", "단위변환"]);
+  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("심화")).map(({ name }) => name), ["19단", "제곱수", "3분수③", "단위변환"]);
 });
 
 test("초등 문제지 제목은 중·고등 문제지와 같은 23px 제목 규격을 쓴다", () => {
