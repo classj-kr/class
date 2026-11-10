@@ -51,14 +51,14 @@ export default function ArithmeticCatalog({ initialStage }: { initialStage: Cata
           </div>
         </header>
         <ol id="worksheet-catalog" className="worksheet-catalog" aria-label="연산 학습지 목록">
-          {visibleWorksheets.map(({ route, grade, title, badge, index, stage }, visibleIndex) => {
+          {visibleWorksheets.map(({ route, grade, title, badges, index, stage }, visibleIndex) => {
             const previousStage = visibleIndex > 0 ? visibleWorksheets[visibleIndex - 1].stage : null;
             const content = <>
               <span className="worksheet-number">{String(index + 1).padStart(2, "0")}</span>
               <span className="worksheet-title">
                 <span className="worksheet-meta">
                   <small className="worksheet-grade">{`(${grade})`}</small>
-                  {badge && <span className={`worksheet-badge worksheet-badge-${badge === "암산" ? "mental" : "memorization"}`}>{badge}</span>}
+                  {badges?.map((badge) => <span key={badge} className={`worksheet-badge worksheet-badge-${badge === "암산" ? "mental" : badge === "암기" ? "memorization" : "advanced"}`}>{badge}</span>)}
                 </span>
                 <strong><InlineMathText text={title} /></strong>
               </span>

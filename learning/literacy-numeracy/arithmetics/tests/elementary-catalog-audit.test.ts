@@ -17,7 +17,7 @@ test("초1 학습지는 실제 유형명을 쓰고 암산 표시를 붙이지 �
     "10을 넘는 덧셈·뺄셈",
     "덧셈·뺄셈 빈칸 채우기",
   ]);
-  assert.equal(gradeOne.some(({ badge }) => badge === "암산"), false);
+  assert.equal(gradeOne.some(({ badges }) => badges?.includes("암산")), false);
 });
 
 test("초2 학습지는 구형 순번 제목 대신 실제 훈련 유형명을 쓴다", () => {
@@ -66,10 +66,11 @@ test("학기가 섞인 학습지는 마지막 선수 내용을 배운 뒤에 배
 
 test("암산과 암기 표시는 사용자가 지정한 학습지에만 붙인다", () => {
   assert.deepEqual(
-    arithmeticWorksheetCatalog.filter(({ badge }) => badge === "암산").map(({ name }) => name),
+    arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암산")).map(({ name }) => name),
     ["2덧셈·뺄셈 빈칸", "3보수뺄셈100", "3보수뺄셈1000", "3덧셈뺄셈②", "3곱셈②", "19단", "3나눗셈③", "4큰수곱셈", "5약수,배수", "5분수③", "6소수①"],
   );
-  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badge }) => badge === "암기").map(({ name }) => name), ["제곱수"]);
+  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암기")).map(({ name }) => name), ["제곱수"]);
+  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("심화")).map(({ name }) => name), ["제곱수", "3분수③", "단위변환"]);
 });
 
 test("초등 문제지 제목은 중·고등 문제지와 같은 23px 제목 규격을 쓴다", () => {
@@ -80,7 +81,7 @@ test("초등 문제지 제목은 중·고등 문제지와 같은 23px 제목 규
 });
 
 test("목록의 모든 암산 학습지는 실제 문제지 제목에도 암산 딱지를 표시한다", () => {
-  const mentalWorksheets = arithmeticWorksheetCatalog.filter(({ badge }) => badge === "암산");
+  const mentalWorksheets = arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암산"));
   for (const worksheet of mentalWorksheets) {
     assert.ok(worksheet.route);
     const pagePath = worksheet.route!.startsWith("/arithmetic/")
@@ -95,15 +96,18 @@ test("목록의 모든 암산 학습지는 실제 문제지 제목에도 암산 
   assert.match(css, /\.mental-math-sheet :where\([\s\S]*?\.multiplication-question,[\s\S]*?\.digit-equation,[\s\S]*?\.complement-row,[\s\S]*?input,[\s\S]*?button[\s\S]*?\)\s*\{[\s\S]*?font-family:\s*"Suneung Math", "STIX Two Math"[\s\S]*?font-synthesis:\s*none;[\s\S]*?font-weight:\s*400;/);
 });
 
-test("제곱수 학습지는 암기 딱지와 2·5제곱수 입력칸을 쓴다", () => {
+test("제곱수 학습지는 '같은 수의 곱셈' 제목과 암기·심화 딱지, 2·5제곱수 입력칸을 쓴다", () => {
   const worksheet = arithmeticWorksheetCatalog.find(({ name }) => name === "제곱수");
-  assert.equal(worksheet?.badge, "암기");
+  assert.deepEqual(worksheet?.badges, ["암기", "심화"]);
+  assert.equal(worksheet?.title, "같은 수의 곱셈");
   const source = readFileSync(new URL("../app/arithmetic/square-numbers/page.tsx", import.meta.url), "utf8");
   const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.equal(source.includes('className="a4-sheet counting-sheet memory-math-sheet '), true);
   assert.equal(source.includes('data-testid="square-memory-input"'), true);
   assert.equal(source.includes("<small>/41 정답</small>"), true);
   assert.equal(css.includes('content: "암기";'), true);
+  assert.equal(css.includes('content: "심화";'), true);
+  assert.equal(source.includes('className="counting-sheet-title is-advanced"'), true);
 });
 test("초등 목록 버튼과 실제 학습지 제목은 같은 유형명을 쓴다", () => {
   // 목록 버튼은 폭이 좁아 영어 병기까지 넣으면 카드가 커지므로, 이 학습지만 목록엔 짧은 제목을 쓴다.

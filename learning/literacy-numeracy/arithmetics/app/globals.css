@@ -1137,7 +1137,20 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 .card-race-figure { display: flex; justify-content: center; }
 .card-race-figure svg { width: auto; max-width: min(100%, 320px); height: auto; max-height: 220px; }
 .card-race-mixed { display: inline-flex; align-items: center; gap: 6px; }
-.card-race-fraction { display: inline-grid; justify-items: center; font-size: .75em; line-height: 1.1; }
+.card-race-fraction { display: inline-grid; justify-items: center; font-size: .82em; line-height: 1.1; }
+/* 문제 글씨는 학습지와 같은 수학 글꼴(수능 수학체 + KoPub 바탕). 한 굵기뿐이라 가짜 굵게를 막는다. */
+.card-race-question,
+.card-race-question .card-race-answer,
+.card-race-choices button,
+.card-race-reveal strong {
+  font-family: "Suneung Math", "STIX Two Math", "KoPubWorld Batang", "Cambria Math", "Times New Roman", serif;
+  font-synthesis: none;
+  font-weight: 400;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.card-race-prompt { font-family: "KoPubWorld Batang", "Noto Serif KR", "Batang", serif; font-synthesis: none; font-weight: 400; }
+.card-race-text.is-unit, .card-race-text .is-unit { font-size: .72em; align-self: center; }
+.card-race-text .is-unit { margin: 0 .12em 0 .04em; }
 .card-race-fraction > span:first-child { padding: 0 6px 4px; border-bottom: 3px solid currentColor; }
 .card-race-fraction > span:last-child { padding-top: 4px; }
 .card-race-fraction .card-race-answer { width: 2.4em; }
@@ -6464,6 +6477,11 @@ button.division-option {
   }
 
   .worksheet-badge-memorization {
+    color: #25712b;
+    background: #e2f5de;
+  }
+
+  .worksheet-badge-advanced {
     color: #8c2277;
     background: #ffe4f6;
   }
@@ -9562,10 +9580,30 @@ main {
 }
 
 .memory-math-sheet .counting-sheet-title::after {
-  border-color: #b36a24;
-  color: #8f4f16;
-  background: #fff5e8;
+  border-color: #3f9a45;
+  color: #25712b;
+  background: #e2f5de;
   content: "암기";
+}
+
+/* 심화 딱지는 제목 뒤, 암기·암산 딱지 다음에 붙는다. */
+.counting-sheet-title.is-advanced::before {
+  order: 9;
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  border: 1px solid #b4469c;
+  border-radius: 999px;
+  padding: 1px 7px 0;
+  color: #8c2277;
+  background: #ffe4f6;
+  content: "심화";
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .mental-math-sheet :where(

@@ -42,6 +42,9 @@ function isWordy(card: RaceCard) {
   return card.parts.some((part) => typeof part === "string" && /[가-힣]/.test(part) && part.replace(/\s/g, "").length > 5);
 }
 
+// kg, mL, cm², 시간, 분 같은 단위는 숫자보다 작고 연하게 보여 숫자가 먼저 눈에 들어오게 한다.
+const UNIT = /^(?:[a-zA-Zµ]{1,3}[²³]?|°|[가-힣]{1,2})$/;
+
 function wait(milliseconds: number) {
   return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
@@ -308,7 +311,12 @@ export default function ArithmeticRaceCardsPage() {
 
   function renderPart(part: RacePart | undefined, key: string): ReactNode {
     if (part === undefined) return null;
-    if (typeof part === "string") return <span key={key} className="card-race-text">{part}</span>;
+    if (typeof part === "string") {
+      if (UNIT.test(part.trim())) return <span key={key} className="card-race-text is-unit">{part}</span>;
+      // "1km 733m"처럼 숫자에 붙은 영문 단위도 작게 보인다.
+      const pieces = /\d/.test(part) ? part.split(/((?<=\d)\s?[a-zA-Zµ]{1,3}[²³]?(?![a-zA-Z]))/) : [part];
+      return <span key={key} className="card-race-text">{pieces.map((piece, index) => index % 2 ? <span key={index} className="is-unit">{piece}</span> : piece)}</span>;
+    }
     if ("br" in part) return <span key={key} className="card-race-break" />;
     if ("group" in part) return <span key={key} className="card-race-group">{part.group.map((piece, index) => renderPart(piece, `${key}.${index}`))}</span>;
     if ("svg" in part) return <span key={key} className="card-race-figure" dangerouslySetInnerHTML={{ __html: part.svg }} />;
