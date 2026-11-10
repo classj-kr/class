@@ -1129,6 +1129,9 @@ html[data-race-mode="true"] body { padding-bottom: 72px; }
 .card-race-card.is-wrong .card-race-answer { border-color: var(--red); color: var(--red); }
 .card-race-answer.is-text { width: 6em; font-size: .7em; }
 .card-race-question.is-dense { font-size: clamp(24px, 5vw, 34px); gap: 8px; }
+.card-race-question.is-wordy { font-size: clamp(22px, 3.2vw, 30px); gap: 8px 10px; line-height: 1.45; }
+.card-race-question.is-wordy .card-race-text { max-width: 100%; text-align: center; word-break: keep-all; overflow-wrap: break-word; }
+.card-race-question.is-wordy .card-race-answer { width: 3em; }
 .card-race-prompt { margin: 0; color: var(--muted); font-size: 18px; font-weight: 800; text-align: center; }
 .card-race-break { flex-basis: 100%; height: 0; }
 .card-race-figure { display: flex; justify-content: center; }

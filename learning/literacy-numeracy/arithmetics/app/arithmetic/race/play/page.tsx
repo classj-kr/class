@@ -37,6 +37,11 @@ function sound(name: "success" | "error" | "back" | "tick" | "timeout" | "bell")
   try { (window as unknown as { ClassGameSfx?: { play: (name: string) => void } }).ClassGameSfx?.play(name); } catch { /* 소리 없이 진행 */ }
 }
 
+// 한글 문장이 든 문제(예: "81을 4 : 5로 비례배분한 두 수")는 식보다 작은 글씨로 읽기 좋게 줄을 바꾼다.
+function isWordy(card: RaceCard) {
+  return card.parts.some((part) => typeof part === "string" && /[가-힣]/.test(part) && part.replace(/\s/g, "").length > 5);
+}
+
 function wait(milliseconds: number) {
   return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
@@ -446,7 +451,7 @@ export default function ArithmeticRaceCardsPage() {
               <span className="card-race-number">{(cardIndex ?? 0) + 1}번째 미션</span>
               {streak >= 4 ? <span key={comboPoints(streak + 1)} className={`math-race-stamp level-${comboPoints(streak + 1)}`} aria-label={`맞히면 ${comboPoints(streak + 1)}점`}>+{comboPoints(streak + 1)}</span> : null}
               {card.prompt && <p className="card-race-prompt">{card.prompt}</p>}
-              <div className={`card-race-question${fields.length >= 3 || card.parts.some((part) => typeof part === "object" && "svg" in part) ? " is-dense" : ""}`}>{card.parts.map((part, index) => renderPart(part, String(index)))}</div>
+              <div className={`card-race-question${isWordy(card) ? " is-wordy" : fields.length >= 3 || card.parts.some((part) => typeof part === "object" && "svg" in part) ? " is-dense" : ""}`}>{card.parts.map((part, index) => renderPart(part, String(index)))}</div>
               {card.choices ? (
                 <div className="card-race-choices">
                   {card.choices.map((choice) => (
