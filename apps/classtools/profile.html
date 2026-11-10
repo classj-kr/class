@@ -85,10 +85,10 @@
         <div class="actions"><span></span><button id="openAvatarPicker" class="secondary-button" type="button">&#50500;&#48148;&#53440; &#48148;&#44984;&#44592;</button></div>
         <div id="avatarPicker" class="avatar-picker" hidden>
             <p id="avatarChangeHint" class="hint warning">&#49352; &#50500;&#48148;&#53440;&#47484; &#54869;&#51221;&#54616;&#47732; &#51060;&#48264; &#44592;&#44036;&#51032; &#48320;&#44221; &#44592;&#54924; 1&#54924;&#47484; &#49324;&#50857;&#54633;&#45768;&#45796;.</p>
-            <h3>&#52628;&#52380; &#50500;&#48148;&#53440;</h3>
-            <div id="recommendedAvatars" class="avatar-grid"></div>
-            <button id="toggleAllAvatars" class="secondary-button" type="button">&#51204;&#52404; &#50500;&#48148;&#53440; &#48372;&#44592;</button>
-            <div id="allAvatars" class="avatar-grid" hidden></div>
+
+
+
+            <div id="allAvatars" class="avatar-grid"></div>
             <div class="picker-actions"><span id="avatarStatus" role="status" aria-live="polite"></span><button id="saveAvatar" type="button" disabled>&#51060; &#50500;&#48148;&#53440;&#47196; &#54869;&#51221;</button></div>
         </div>
     </section>
@@ -139,10 +139,10 @@ populateDayOptions('');
 function currentMmdd(){const m=birthdayMonth.value,d=birthdayDay.value;return m&&d?String(m).padStart(2,'0')+String(d).padStart(2,'0'):''}
 function setBirthdaySelects(mmdd){const value=String(mmdd||'');const month=value.length===4?String(Number(value.slice(0,2))):'';const day=value.length===4?String(Number(value.slice(2))):'';birthdayMonth.value=month;populateDayOptions(month,day)}
 async function api(path,options={}){const response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.message||'요청을 처리하지 못했습니다.');return data}
-const avatarCard=document.querySelector('#avatarCard'),currentAvatarImage=document.querySelector('#currentAvatarImage'),currentAvatarName=document.querySelector('#currentAvatarName'),avatarPolicy=document.querySelector('#avatarPolicy'),openAvatarPicker=document.querySelector('#openAvatarPicker'),avatarPicker=document.querySelector('#avatarPicker'),recommendedAvatars=document.querySelector('#recommendedAvatars'),toggleAllAvatars=document.querySelector('#toggleAllAvatars'),allAvatars=document.querySelector('#allAvatars'),avatarStatus=document.querySelector('#avatarStatus'),saveAvatar=document.querySelector('#saveAvatar');
+const avatarCard=document.querySelector('#avatarCard'),currentAvatarImage=document.querySelector('#currentAvatarImage'),currentAvatarName=document.querySelector('#currentAvatarName'),avatarPolicy=document.querySelector('#avatarPolicy'),openAvatarPicker=document.querySelector('#openAvatarPicker'),avatarPicker=document.querySelector('#avatarPicker'),allAvatars=document.querySelector('#allAvatars'),avatarStatus=document.querySelector('#avatarStatus'),saveAvatar=document.querySelector('#saveAvatar');
 let currentAvatarProfile=null,selectedAvatarKey='';
 function avatarDisplayName(key){return String(key||'').replace(/\.(?:png|webp)$/i,'').replace(/^(animal|food|fruit|vegetable|object|vehicle|theme|sport|award|drink|game)-/,'').replace(/-/g,' ')}
-function shuffled(items){const result=[...items];for(let index=result.length-1;index>0;index-=1){const swap=Math.floor(Math.random()*(index+1));[result[index],result[swap]]=[result[swap],result[index]]}return result}
+
 function updateAvatarSelection(){
     document.querySelectorAll('[data-avatar-key]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.avatarKey===selectedAvatarKey)));
     saveAvatar.disabled=!selectedAvatarKey||selectedAvatarKey===currentAvatarProfile?.key;
@@ -155,7 +155,7 @@ function createAvatarButton(option){
 }
 function renderAvatarGrid(container,options){container.replaceChildren(...options.map(createAvatarButton));updateAvatarSelection()}
 function renderAvatar(avatar){
-    currentAvatarProfile=avatar||{key:'',url:'',options:[],canChange:false};selectedAvatarKey='';avatarPicker.hidden=true;allAvatars.hidden=true;toggleAllAvatars.textContent='\uc804\uccb4 \uc544\ubc14\ud0c0 \ubcf4\uae30';avatarStatus.textContent='';
+    currentAvatarProfile=avatar||{key:'',url:'',options:[],canChange:false};selectedAvatarKey='';avatarPicker.hidden=true;avatarStatus.textContent='';
     document.querySelector('#avatarPlaceholder').hidden=Boolean(currentAvatarProfile.url);
     if(currentAvatarProfile.url){currentAvatarImage.src=currentAvatarProfile.url;currentAvatarImage.hidden=false;currentAvatarName.textContent=avatarDisplayName(currentAvatarProfile.key)}else{currentAvatarImage.removeAttribute('src');currentAvatarImage.hidden=true;currentAvatarName.textContent='\uc544\uc9c1 \ubc30\uc815\ub418\uc9c0 \uc54a\uc74c'}
     if(isTeacherProfile)avatarPolicy.textContent='원하는 아바타를 선택하고 언제든 바꿀 수 있습니다.';
@@ -165,10 +165,10 @@ function renderAvatar(avatar){
     else avatarPolicy.textContent='1~2\uc6d4\uc5d0\ub294 \uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.';
     openAvatarPicker.disabled=!currentAvatarProfile.canChange;
     const available=(currentAvatarProfile.options||[]).filter(option=>option.available&&option.key!==currentAvatarProfile.key);
-    renderAvatarGrid(recommendedAvatars,shuffled(available).slice(0,12));renderAvatarGrid(allAvatars,available);
+    renderAvatarGrid(allAvatars,available);
 }
-openAvatarPicker.addEventListener('click',()=>{avatarPicker.hidden=!avatarPicker.hidden;if(!avatarPicker.hidden)recommendedAvatars.querySelector('button')?.focus()});
-toggleAllAvatars.addEventListener('click',()=>{allAvatars.hidden=!allAvatars.hidden;toggleAllAvatars.textContent=allAvatars.hidden?'\uc804\uccb4 \uc544\ubc14\ud0c0 \ubcf4\uae30':'\uc804\uccb4 \uc544\ubc14\ud0c0 \uc811\uae30'});
+openAvatarPicker.addEventListener('click',()=>{avatarPicker.hidden=!avatarPicker.hidden;if(!avatarPicker.hidden)allAvatars.querySelector('button')?.focus()});
+
 saveAvatar.addEventListener('click',async()=>{
     if(!selectedAvatarKey||selectedAvatarKey===currentAvatarProfile?.key)return;
     if(!isTeacherProfile&&!confirm('\uc774 \uc544\ubc14\ud0c0\ub85c \ud655\uc815\ud560\uae4c\uc694? \ud655\uc815\ud558\uba74 \uc774\ubc88 \uae30\uac04\uc758 \ubcc0\uacbd \uae30\ud68c 1\ud68c\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.'))return;

@@ -85,7 +85,7 @@ async function main() {
         await page.waitForFunction(() => document.querySelector('#status').textContent.includes('저장했습니다'));
         assert.equal(profile.birthdayVisible, false);
         await page.locator('#openAvatarPicker').click();
-        await page.locator('#recommendedAvatars button').first().click();
+        await page.locator('#allAvatars button').first().click();
         await page.locator('#saveAvatar').click();
         await page.waitForFunction(() => !document.querySelector('#currentAvatarImage').hidden);
         assert.ok(profile.avatar.key);
