@@ -62,7 +62,13 @@
             <div class="board" id="board" role="grid" aria-label="8 퍼즐 게임판"></div>
           </div>
 
-          <p class="status" id="status" role="status" aria-live="polite">READY</p>
+          <div class="status-stack">
+            <p class="status" id="status" role="status" aria-live="polite">READY</p>
+            <div class="coach-card" id="coachCard" aria-live="polite">
+              <p class="coach-text" id="coachText">👆 먼저 <strong>1번 타일</strong>을 맨 왼쪽 위 자리로 옮겨 보세요!</p>
+              <button class="coach-hint-btn" id="hintButton" type="button" data-sfx="none">💡 지금 할 일</button>
+            </div>
+          </div>
 
           <div class="actions">
             <button class="primary" id="newGameButton" type="button">NEW GAME</button>

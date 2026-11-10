@@ -163,8 +163,97 @@ h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp
 @keyframes nudge { 0%, 100% { transform: none; } 30% { transform: translateX(-12%); } 70% { transform: translateX(12%); } }
 @keyframes shake { 0%, 100% { transform: none; } 20% { transform: translate(-7px, 2px); } 40% { transform: translate(6px, -3px); } 60% { transform: translate(-4px, 2px); } 80% { transform: translate(3px, -1px); } }
 
-.status { min-height: 1.5em; margin: 14px 0 13px; color: var(--muted); }
+.status-stack { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 12px; }
+.status { min-height: 1.4em; margin: 0; color: var(--muted); font-size: .92rem; }
+.status:empty { min-height: 0; margin: 0; }
 .status.success { color: var(--gold-bright); font-weight: 800; }
+.status.fail { color: #fca5a5; font-weight: 800; }
+
+.coach-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(229, 173, 75, .42);
+  border-radius: 12px;
+  background: rgba(20, 12, 7, .58);
+  text-align: left;
+}
+.coach-card[data-tone="safe"] { border-color: rgba(74, 222, 128, .65); background: rgba(20, 48, 28, .55); }
+.coach-card[data-tone="mine"] { border-color: rgba(248, 113, 113, .65); background: rgba(58, 20, 20, .55); }
+.coach-card[data-tone="warn"] { border-color: rgba(251, 191, 36, .75); background: rgba(62, 40, 12, .62); }
+.coach-text { margin: 0; color: var(--ink); font-size: .86rem; line-height: 1.45; word-break: keep-all; flex: 1; }
+.coach-text strong { color: var(--gold-bright); }
+.coach-hint-btn {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 217, 138, .22), rgba(229, 173, 75, .14));
+  color: var(--gold-bright);
+  font-size: .82rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.coach-hint-btn:hover { background: linear-gradient(180deg, rgba(255, 217, 138, .35), rgba(229, 173, 75, .24)); }
+
+.mb-cell.hint-source {
+  box-shadow: inset 0 0 0 3px #f59e0b, 0 0 10px rgba(245, 158, 11, .75) !important;
+  z-index: 2;
+}
+.mb-cell.hint-safe {
+  box-shadow: inset 0 0 0 3px #22c55e, 0 0 12px rgba(34, 197, 94, .9) !important;
+  animation: hint-pulse 1.1s ease-in-out infinite;
+  z-index: 2;
+}
+.mb-cell.hint-mine, .mb-cell.hint-wrong {
+  box-shadow: inset 0 0 0 3px #ef4444, 0 0 12px rgba(239, 68, 68, .9) !important;
+  animation: hint-pulse 1.1s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes hint-pulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.06); filter: brightness(1.22); }
+}
+
+.ms-visual-cards { display: grid; gap: 10px; margin-bottom: 14px; }
+.ms-visual-card {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid rgba(229, 173, 75, .32);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .26);
+}
+.ms-mini-board {
+  display: grid;
+  grid-template-columns: repeat(3, 22px);
+  grid-template-rows: repeat(3, 22px);
+  gap: 3px;
+  padding: 3px;
+  border-radius: 6px;
+  background: #3c2011;
+}
+.ms-m-cell {
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  background: linear-gradient(150deg, #c08a52, #8a5428);
+  font-size: 12px;
+  font-weight: 900;
+  color: #2a170b;
+}
+.ms-m-cell.open { background: #f4e2be; }
+.ms-m-cell.num1 { color: #1d4ed8; font-size: 13px; }
+.ms-m-cell.mine-hint { box-shadow: inset 0 0 0 2px #ef4444; background: #fee2e2; }
+.ms-m-cell.safe-hint { box-shadow: inset 0 0 0 2px #22c55e; background: #dcfce7; color: #15803d; font-size: 11px; }
+.ms-visual-copy strong { display: block; color: var(--gold-bright); font-size: .9rem; margin-bottom: 3px; }
+.ms-visual-copy p { margin: 0; font-size: .83rem; line-height: 1.45; color: var(--ink); }
 .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
 .primary, .secondary { min-height: 46px; border-radius: 4px; padding: 0 22px; font-weight: 900; cursor: pointer; }
 .primary { border: 1px solid var(--gold-bright); color: #251409; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }
@@ -267,7 +356,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   body[data-entry-game="minesweeper"] #gameScreen .game-topbar { grid-column: 2; grid-row: 1; }
   body[data-entry-game="minesweeper"] #gameScreen .stats { grid-column: 2; grid-row: 2; width: 100%; }
   body[data-entry-game="minesweeper"] #gameScreen .tool-switch { grid-column: 2; grid-row: 3; }
-  body[data-entry-game="minesweeper"] #gameScreen .status { grid-column: 2; grid-row: 4; }
+  body[data-entry-game="minesweeper"] #gameScreen .status-stack { grid-column: 2; grid-row: 4; align-self: center; margin: 0; }
+  body[data-entry-game="minesweeper"] #gameScreen .coach-card { flex-direction: column; align-items: stretch; gap: 7px; padding: 8px 10px; }
+  body[data-entry-game="minesweeper"] #gameScreen .coach-text { font-size: .78rem; line-height: 1.38; }
+  body[data-entry-game="minesweeper"] #gameScreen .coach-hint-btn { width: 100%; min-height: 32px; font-size: .78rem; }
   body[data-entry-game="minesweeper"] #gameScreen .actions { grid-column: 2; grid-row: 5; }
   body[data-entry-game="minesweeper"] #gameScreen .actions button { flex: 1 1 100%; }
   body[data-entry-game="minesweeper"] #gameScreen .guide-panel { position: fixed; inset: 64px 12px 12px auto; width: min(430px, 90vw); z-index: 51; max-height: none; }
@@ -277,7 +369,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   /* contain: size — 결과 칸이 오른쪽 줄 높이를 늘리지 않게(판 높이 안에서 남는 자리만 쓴다). */
   body[data-entry-game="minesweeper"] #gameScreen .celebration { position: static; z-index: auto; grid-column: 2; grid-row: 3 / 5; display: flex; align-items: stretch; min-height: 0; padding: 0; background: none; contain: size; }
   body[data-entry-game="minesweeper"] #gameScreen .celebration[hidden],
-  body[data-entry-game="minesweeper"] #gameScreen:has(.celebration:not([hidden])) :is(.tool-switch, .status),
+  body[data-entry-game="minesweeper"] #gameScreen:has(.celebration:not([hidden])) :is(.tool-switch, .status, .status-stack),
   body[data-entry-game="minesweeper"] #gameScreen .result-card .primary,
   body[data-entry-game="minesweeper"] #gameScreen .result-card > .eyebrow { display: none; }
   body[data-entry-game="minesweeper"] #gameScreen .result-card { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 0; overflow: hidden; padding: 12px; text-align: center; box-shadow: 0 10px 26px rgba(0,0,0,.45); }

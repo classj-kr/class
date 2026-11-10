@@ -29,6 +29,8 @@
   const guideBackdrop = $('guideBackdrop');
   const toolOpenButton = $('toolOpenButton');
   const toolFlagButton = $('toolFlagButton');
+  const coachText = $('coachText');
+  const hintButton = $('hintButton');
 
   let levelKey = 'easy';
   let level = LEVELS.easy;
@@ -98,6 +100,170 @@
     statusElement.className = `status${kind ? ` ${kind}` : ''}`;
   }
 
+  function setCoach(html, tone = '') {
+    if (!coachText) return;
+    coachText.innerHTML = html;
+    const card = $('coachCard');
+    if (card) card.dataset.tone = tone;
+  }
+
+  function clearHintHighlights() {
+    for (const cell of cells) {
+      cell.classList.remove('hint-source', 'hint-safe', 'hint-mine', 'hint-wrong');
+    }
+  }
+
+  function rowColText(i) {
+    const r = Math.floor(i / level.cols) + 1;
+    const c = (i % level.cols) + 1;
+    return `${r}행 ${c}열`;
+  }
+
+  function refreshDefaultCoach() {
+    if (!coachText) return;
+    if (finished) return;
+    if (!mines) {
+      setCoach('👆 <strong>아무 칸이나 눌러 보세요!</strong> 첫 번째로 누르는 칸은 언제나 지뢰가 없어서 안전해요.');
+      return;
+    }
+    // 혹시 숫자보다 깃발을 더 많이 꽂은 곳이 있는지 먼저 알려 준다.
+    for (let i = 0; i < cells.length; i += 1) {
+      if (!opened[i] || !counts[i]) continue;
+      const flags = table[i].filter(j => flagged[j]).length;
+      if (flags > counts[i]) {
+        setCoach(`⚠️ <strong>${rowColText(i)}의 숫자 [${counts[i]}]</strong> 주변에 🚩깃발이 ${flags}개나 꽂혔어요! 숫자보다 깃발이 많으니 잘못 꽂은 깃발을 빼 주세요.`, 'warn');
+        return;
+      }
+    }
+    setCoach('🔍 열린 숫자 주변의 닫힌 칸 수를 세어 보세요. 어디를 열지 모르겠으면 <strong>💡 한 수 힌트</strong>를 눌러 보세요!');
+  }
+
+  function giveHint() {
+    if (finished) return;
+    clearHintHighlights();
+
+    if (!mines) {
+      const center = Math.floor(level.rows / 2) * level.cols + Math.floor(level.cols / 2);
+      cells[center]?.classList.add('hint-safe');
+      setCoach('💡 <strong>첫 번째 칸은 어디를 눌러도 안전해요!</strong> 초록색으로 반짝이는 가운데 칸을 눌러 시작해 볼까요?', 'safe');
+      return;
+    }
+
+    // 1) 잘못 꽂은 깃발이 있으면 먼저 알려 준다.
+    for (let i = 0; i < cells.length; i += 1) {
+      if (flagged[i] && !mines[i]) {
+        cells[i].classList.add('hint-wrong');
+        setCoach(`💡 잠깐! <strong>${rowColText(i)}</strong>에 꽂은 🚩깃발은 사실 지뢰가 아니에요(안전한 칸). 깃발이 틀리면 다른 숫자가 헷갈리니 먼저 이 깃발을 뽑아 주세요!`, 'warn');
+        return;
+      }
+    }
+
+    // 2) 기본 규칙 A: 이미 깃발을 다 찾은 숫자 칸 (남은 닫힌 이웃은 모두 안전!)
+    let bestSafeSingle = null;
+    for (let i = 0; i < cells.length; i += 1) {
+      if (!opened[i] || !counts[i]) continue;
+      const around = table[i];
+      const flags = around.filter(j => flagged[j]);
+      const closed = around.filter(j => !opened[j] && !flagged[j]);
+      if (closed.length > 0 && flags.length === counts[i]) {
+        if (!bestSafeSingle || counts[i] < counts[bestSafeSingle.src]) {
+          bestSafeSingle = { src: i, targets: closed };
+        }
+      }
+    }
+    if (bestSafeSingle) {
+      const { src, targets } = bestSafeSingle;
+      cells[src].classList.add('hint-source');
+      targets.forEach(j => cells[j].classList.add('hint-safe'));
+      setCoach(`💡 <strong>${rowColText(src)}의 숫자 [${counts[src]}]</strong> 주변에는 이미 🚩깃발 ${counts[src]}개가 다 꽂혀 있어요! 초록색 칸(${rowColText(targets[0])})은 지뢰가 없으니 <strong>⛏열기</strong>로 열어 보세요. (숫자 ${counts[src]} 칸을 톡 눌러도 한꺼번에 열려요!)`, 'safe');
+      return;
+    }
+
+    // 3) 기본 규칙 B: 남은 닫힌 칸 수 + 깃발 수 == 숫자 (남은 닫힌 이웃은 모두 지뢰!)
+    let bestMineSingle = null;
+    for (let i = 0; i < cells.length; i += 1) {
+      if (!opened[i] || !counts[i]) continue;
+      const around = table[i];
+      const flags = around.filter(j => flagged[j]);
+      const closed = around.filter(j => !opened[j] && !flagged[j]);
+      if (closed.length > 0 && flags.length + closed.length === counts[i]) {
+        if (!bestMineSingle || closed.length < bestMineSingle.targets.length) {
+          bestMineSingle = { src: i, targets: closed, flags: flags.length };
+        }
+      }
+    }
+    if (bestMineSingle) {
+      const { src, targets, flags } = bestMineSingle;
+      cells[src].classList.add('hint-source');
+      targets.forEach(j => cells[j].classList.add('hint-mine'));
+      const remain = counts[src] - flags;
+      setCoach(`💡 <strong>${rowColText(src)}의 숫자 [${counts[src]}]</strong>을 보세요! 찾아야 할 지뢰가 ${remain}개인데 주변에 닫힌 칸도 딱 ${targets.length}칸뿐이에요. 빨간색 칸(${rowColText(targets[0])})에 <strong>🚩깃발</strong>을 꽂아 보세요!`, 'mine');
+      return;
+    }
+
+    // 4) 두 숫자 비교하기 (겹치는 칸으로 추리하기)
+    const activeClues = [];
+    for (let i = 0; i < cells.length; i += 1) {
+      if (!opened[i] || !counts[i]) continue;
+      const around = table[i];
+      const flags = around.filter(j => flagged[j]).length;
+      const closed = around.filter(j => !opened[j] && !flagged[j]);
+      if (closed.length > 0) {
+        activeClues.push({ i, rem: counts[i] - flags, closed });
+      }
+    }
+
+    for (const a of activeClues) {
+      for (const b of activeClues) {
+        if (a.i === b.i) continue;
+        const onlyA = a.closed.filter(x => !b.closed.includes(x));
+        const onlyB = b.closed.filter(x => !a.closed.includes(x));
+        const shared = a.closed.filter(x => b.closed.includes(x));
+        if (shared.length === 0) continue;
+
+        if (b.rem - a.rem === onlyB.length && (onlyB.length > 0 || onlyA.length > 0)) {
+          cells[a.i].classList.add('hint-source');
+          cells[b.i].classList.add('hint-source');
+          if (onlyA.length > 0) {
+            onlyA.forEach(j => cells[j].classList.add('hint-safe'));
+            setCoach(`💡 나란히 있는 <strong>${rowColText(a.i)}의 [${counts[a.i]}]</strong>과 <strong>${rowColText(b.i)}의 [${counts[b.i]}]</strong>을 함께 보세요! 겹치는 칸에 지뢰가 들어가야 해서, 초록색 칸(${rowColText(onlyA[0])})에는 지뢰가 들어갈 수 없어요. 안전하니 <strong>⛏열기</strong>로 열어 보세요!`, 'safe');
+          } else {
+            onlyB.forEach(j => cells[j].classList.add('hint-mine'));
+            setCoach(`💡 나란히 있는 <strong>${rowColText(a.i)}의 [${counts[a.i]}]</strong>과 <strong>${rowColText(b.i)}의 [${counts[b.i]}]</strong>을 함께 보세요! 겹치는 칸을 빼고도 지뢰가 ${onlyB.length}개 더 필요해서, 빨간색 칸(${rowColText(onlyB[0])})은 무조건 지뢰예요. <strong>🚩깃발</strong>을 꽂아 보세요!`, 'mine');
+          }
+          return;
+        }
+      }
+    }
+
+    // 5) 전체 남은 지뢰 수(MINES)나 여러 숫자 묶음으로 알 수 있는 안전한 칸 알려주기
+    const unflaggedClosedAll = [];
+    for (let i = 0; i < cells.length; i += 1) {
+      if (!opened[i] && !flagged[i]) unflaggedClosedAll.push(i);
+    }
+    const minesRemaining = level.mines - flagCount;
+    if (minesRemaining === 0 && unflaggedClosedAll.length > 0) {
+      unflaggedClosedAll.forEach(j => cells[j].classList.add('hint-safe'));
+      setCoach('💡 지뢰에 모두 🚩깃발을 꽂아서 남은 지뢰(MINES)가 <strong>0개</strong>예요! 초록색으로 표시된 남은 칸은 모두 안전하니 <strong>⛏열기</strong>로 열어 보세요!', 'safe');
+      return;
+    }
+    if (minesRemaining === unflaggedClosedAll.length && unflaggedClosedAll.length > 0) {
+      unflaggedClosedAll.forEach(j => cells[j].classList.add('hint-mine'));
+      setCoach(`💡 남은 지뢰 수(${minesRemaining}개)와 남은 닫힌 칸 수가 똑같아요! 남은 칸은 모두 지뢰이니 <strong>🚩깃발</strong>을 꽂아 보세요.`, 'mine');
+      return;
+    }
+
+    for (const clue of activeClues) {
+      const safeTarget = clue.closed.find(j => !mines[j]);
+      if (safeTarget !== undefined) {
+        cells[clue.i].classList.add('hint-source');
+        cells[safeTarget].classList.add('hint-safe');
+        setCoach(`💡 주변 여러 숫자들의 겹치는 칸을 함께 맞춰 보면, <strong>${rowColText(safeTarget)}</strong>(초록색 칸)에는 지뢰가 들어갈 수 없어요! 이 안전한 칸을 <strong>⛏열기</strong>로 열어 보세요.`, 'safe');
+        return;
+      }
+    }
+  }
+
   function cellLabel(i) {
     const r = Math.floor(i / level.cols) + 1;
     const c = (i % level.cols) + 1;
@@ -165,6 +331,7 @@
     boardWrap.classList.remove('shake', 'won');
     buildBoard();
     updateMines();
+    refreshDefaultCoach();
   }
 
   function newPuzzle() {
@@ -173,6 +340,7 @@
     startCell = -1;
     resetState();
     setStatus('READY');
+    refreshDefaultCoach();
   }
 
   // 같은 판을 처음부터. 첫 칸은 다시 열어 준다.
@@ -182,6 +350,7 @@
     setStatus('같은 판을 다시 풉니다');
     openFrom(startCell);
     startTimer();
+    setCoach('🔄 아까 틀렸던 판을 처음부터 다시 시작했어요! 천천히 숫자 주변의 닫힌 칸을 세어 보세요.');
   }
 
   function ensureBoard(first) {
@@ -230,6 +399,7 @@
     boardWrap.classList.add('shake');
     playSfx('explosion');
     setStatus('지뢰를 열었습니다. RETRY로 같은 판을 다시 풀 수 있습니다.', 'fail');
+    setCoach('💥 앗, 지뢰가 숨어 있던 칸이었어요! 아래 <strong>RETRY</strong>를 누르면 똑같은 판을 다시 도전할 수 있어요.', 'warn');
     const others = [];
     mines.forEach((mine, i) => { if (mine && i !== hit && !flagged[i]) others.push(i); });
     const hr = Math.floor(hit / level.cols);
@@ -250,6 +420,8 @@
     finished = true;
     stopTimer();
     setStatus('ALL CLEAR!', 'success');
+    clearHintHighlights();
+    setCoach('🎉 축하해요! 지뢰가 없는 안전한 칸을 끝까지 모두 찾아냈어요!', 'safe');
     const rest = [];
     mines.forEach((mine, i) => { if (mine && !flagged[i]) rest.push(i); });
     rest.forEach((i, k) => later(() => {
@@ -286,6 +458,7 @@
 
   function openCell(i) {
     if (finished || flagged[i]) return;
+    clearHintHighlights();
     if (opened[i]) { chord(i); return; }
     if (!ensureBoard(i)) return;
     startTimer();
@@ -298,6 +471,7 @@
     const newly = openFrom(i);
     playSfx(newly > 1 ? 'card' : 'stone');
     if (statusElement.textContent === 'READY') setStatus('');
+    refreshDefaultCoach();
     afterOpen(-1);
   }
 
@@ -311,6 +485,7 @@
       void cells[i].offsetWidth;
       cells[i].classList.add('nudge');
       playSfx('tick');
+      setCoach(`💬 숫자 <strong>[${counts[i]}]</strong> 주변의 칸을 한꺼번에 열려면, 먼저 주변에 <strong>🚩깃발 ${counts[i]}개</strong>를 꽂아야 해요! (지금 꽂은 깃발: ${flags}개)`);
       return;
     }
     let hit = -1;
@@ -326,12 +501,16 @@
       }
     }
     // 한 동작에 한 번만 재생하고, 지뢰를 열었으면 폭발음만 낸다.
-    if (hit < 0 && newly > 0) playSfx(newly > 1 ? 'card' : 'stone');
+    if (hit < 0 && newly > 0) {
+      playSfx(newly > 1 ? 'card' : 'stone');
+      refreshDefaultCoach();
+    }
     afterOpen(hit);
   }
 
   function toggleFlag(i) {
     if (finished || opened[i]) return;
+    clearHintHighlights();
     flagged[i] = !flagged[i];
     flagCount += flagged[i] ? 1 : -1;
     paintCell(i);
@@ -478,6 +657,7 @@
   });
   toolOpenButton.addEventListener('click', () => setTool('open'));
   toolFlagButton.addEventListener('click', () => setTool('flag'));
+  hintButton?.addEventListener('click', giveHint);
   $('newGameButton').addEventListener('click', newPuzzle);
   $('retryButton').addEventListener('click', retry);
   $('playAgainButton').addEventListener('click', newPuzzle);

@@ -67,7 +67,13 @@
             <div class="mine-board" id="board" role="grid" aria-label="지뢰찾기 게임판"></div>
           </div>
 
-          <p class="status" id="status" role="status" aria-live="polite">READY</p>
+          <div class="status-stack">
+            <p class="status" id="status" role="status" aria-live="polite">READY</p>
+            <div class="coach-card" id="coachCard" aria-live="polite">
+              <p class="coach-text" id="coachText">👆 <strong>아무 칸이나 눌러 보세요!</strong> 첫 번째로 누르는 칸은 언제나 안전해요.</p>
+              <button class="coach-hint-btn" id="hintButton" type="button" data-sfx="none">💡 한 수 힌트</button>
+            </div>
+          </div>
 
           <div class="celebration" id="celebration" hidden>
             <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
@@ -98,33 +104,58 @@
             <button class="guide-close" id="guideCloseButton" type="button" aria-label="놀이 방법 닫기">×</button>
           </header>
           <div class="solve-guide">
+            <div class="ms-visual-cards">
+              <div class="ms-visual-card">
+                <div class="ms-mini-board" aria-hidden="true">
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell"></span><span class="ms-m-cell flag">🚩</span>
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open num1">1</span><span class="ms-m-cell open"></span>
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open"></span><span class="ms-m-cell open"></span>
+                </div>
+                <div class="ms-visual-copy">
+                  <strong>1단계 · 숫자는 내 주변 8칸의 지뢰 개수!</strong>
+                  <p>가운데 숫자 <strong>1</strong>은 나를 둘러싼 <strong>8칸(위·아래·양옆·대각선)</strong> 안에 지뢰가 딱 1개 숨어 있다는 뜻이에요.</p>
+                </div>
+              </div>
+
+              <div class="ms-visual-card">
+                <div class="ms-mini-board" aria-hidden="true">
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open"></span><span class="ms-m-cell mine-hint">🚩</span>
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open num1">1</span><span class="ms-m-cell open"></span>
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open"></span><span class="ms-m-cell open"></span>
+                </div>
+                <div class="ms-visual-copy">
+                  <strong>2단계 · 남은 닫힌 칸 수 = 숫자면 무조건 🚩깃발!</strong>
+                  <p>숫자 <strong>1</strong> 주변에 안 열린 칸이 <strong>딱 1칸뿐</strong>인가요? 그럼 그 칸이 바로 지뢰예요! <strong>🚩깃발</strong>로 표시해 두세요.</p>
+                </div>
+              </div>
+
+              <div class="ms-visual-card">
+                <div class="ms-mini-board" aria-hidden="true">
+                  <span class="ms-m-cell safe-hint">⛏</span><span class="ms-m-cell safe-hint">⛏</span><span class="ms-m-cell flag">🚩</span>
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open num1">1</span><span class="ms-m-cell open"></span>
+                  <span class="ms-m-cell open"></span><span class="ms-m-cell open"></span><span class="ms-m-cell open"></span>
+                </div>
+                <div class="ms-visual-copy">
+                  <strong>3단계 · 🚩깃발을 다 찾았으면 나머지는 ⛏안전!</strong>
+                  <p>숫자 <strong>1</strong> 주변에 이미 <strong>🚩깃발 1개</strong>를 꽂았다면 지뢰를 다 찾은 거예요! 남은 닫힌 칸은 안전하니 <strong>⛏열기</strong>로 여세요. (숫자 칸을 톡 눌러도 한꺼번에 열려요!)</p>
+                </div>
+              </div>
+            </div>
+
             <h3>기본 규칙</h3>
             <ol>
-              <li>판의 닫힌 칸 몇 곳에 지뢰가 숨어 있습니다. <strong>지뢰가 없는 칸을 모두 열면</strong> 이깁니다. 지뢰가 있는 칸을 열면 집니다.</li>
+              <li>판의 닫힌 칸 몇 곳에 지뢰가 숨어 있습니다. <strong>지뢰가 없는 안전한 칸을 모두 열면</strong> 이깁니다.</li>
               <li>열린 칸의 숫자는 그 칸을 둘러싼 <strong>여덟 칸</strong>(위·아래·양옆·네 대각선)에 있는 지뢰의 개수입니다.</li>
-              <li>숫자가 없는 빈 칸은 둘레에 지뢰가 하나도 없다는 뜻입니다. 그래서 둘레 칸이 저절로 함께 열립니다.</li>
-              <li>처음 누르는 칸은 언제나 안전하고, 그 둘레까지 함께 열립니다.</li>
-              <li>이 판은 <strong>숫자와 전체 지뢰 수를 보고 추측 없이 끝까지 풀 수 있게</strong> 검증한 판입니다. 막히면 이웃한 숫자를 함께 살펴보고, 확실하지 않은 깃발이 있는지도 확인하세요.</li>
+              <li>숫자가 없는 빈 칸은 둘레에 지뢰가 0개라는 뜻이라서 안전한 둘레 칸이 저절로 함께 열립니다.</li>
+              <li>처음 누르는 칸은 언제나 안전하고, 이 판은 <strong>찍기(추측) 없이 끝까지 풀 수 있게</strong> 만들어진 판입니다.</li>
             </ol>
-            <h3>조작 방법</h3>
+            <h3>조작 방법과 힌트</h3>
             <ol>
-              <li><strong>⛏ 열기</strong>를 고른 채 칸을 누르면 그 칸이 열립니다.</li>
-              <li><strong>🚩 깃발</strong>을 고른 채 칸을 누르면 "여기는 지뢰"라는 깃발이 꽂힙니다. 한 번 더 누르면 깃발이 뽑힙니다. <strong>깃발은 내가 붙인 표시이며 정답 확인이 아닙니다.</strong> 깃발이 꽂힌 칸은 열리지 않습니다.</li>
-              <li>마우스 오른쪽 단추로 누르거나, 화면을 손가락으로 <strong>길게 누르면</strong> 도구를 바꾸지 않고도 깃발을 꽂고 뽑을 수 있습니다.</li>
-              <li>둘레에 꽂은 깃발 수가 숫자와 같아진 숫자 칸을 누르면, 깃발이 없는 둘레 칸이 한꺼번에 열립니다. 깃발을 잘못 꽂았다면 지뢰가 열리니 조심하세요.</li>
-              <li>위의 <strong>MINES</strong>는 전체 지뢰 수에서 꽂은 깃발 수를 뺀 수입니다.</li>
-              <li>지뢰를 열었으면 <strong>RETRY</strong>로 같은 판을 처음부터 다시 풀 수 있습니다. <strong>NEW PUZZLE</strong>은 새 판을 만듭니다.</li>
+              <li><strong>⛏ 열기</strong>를 고른 채 안전한 칸을 누르면 열리고, <strong>🚩 깃발</strong>을 고른 채 지뢰 칸을 누르면 깃발이 꽂힙니다. (마우스 우클릭이나 화면 길게 누르기로도 깃발을 꽂을 수 있어요.)</li>
+              <li>어디를 열지 막막할 때는 판 아래의 <strong>💡 한 수 힌트</strong> 단추를 눌러 보세요! 지금 봐야 할 숫자와 안전한 칸(초록색)·지뢰 칸(빨간색)을 친절하게 알려 줍니다.</li>
+              <li>지뢰를 열었으면 <strong>RETRY</strong>로 같은 판을 다시 도전할 수 있습니다.</li>
             </ol>
-            <h3>푸는 방법</h3>
-            <ol>
-              <li><strong>숫자 = 둘레 닫힌 칸 수</strong>이면 그 닫힌 칸은 모두 지뢰입니다. 예를 들어 1 둘레에 닫힌 칸이 하나뿐이면 그 칸이 지뢰입니다.</li>
-              <li><strong>숫자 = 둘레 깃발 수</strong>이면 나머지 둘레 칸은 모두 안전합니다.</li>
-              <li><strong>1-1 꼴:</strong> 닫힌 칸 줄을 따라 1, 1이 나란히 있고 판 가장자리 쪽 1이 보는 닫힌 칸이 두 개뿐이면, 그 두 칸은 옆의 1도 함께 봅니다. 그 두 칸에 지뢰가 하나 있으니, 옆의 1만 보는 다음 칸은 안전합니다.</li>
-              <li><strong>1-2-1 꼴:</strong> 곧게 뻗은 닫힌 칸 줄을 따라 1, 2, 1이 나란히 있으면, 두 1의 바로 앞 칸이 지뢰이고 2의 바로 앞 칸은 안전합니다.</li>
-              <li>한 숫자만 봐서 모르겠으면 <strong>이웃한 두 숫자가 함께 보는 칸</strong>을 따져 보세요. 한쪽 숫자가 다른 쪽보다 몇 개 더 많은지가 단서가 됩니다.</li>
-              <li><strong>깃발을 모두 정확히 꽂았다면</strong>, 끝 무렵에 MINES가 0일 때 깃발 없는 닫힌 칸은 모두 안전합니다. MINES가 깃발 없는 닫힌 칸 수와 같으면 그 칸은 모두 지뢰입니다.</li>
-            </ol>
-            <p class="solve-tip"><strong>팁:</strong> 확실한 칸만 여세요. 모르는 칸은 내버려 두고 다른 쪽 숫자부터 살피면 새 단서가 열립니다.</p>
+            <p class="solve-tip"><strong>초등 꿀팁:</strong> 숫자 <strong>1</strong>이나 모서리에 있는 숫자부터 먼저 살펴보세요! 닫힌 칸이 적어서 지뢰를 훨씬 쉽게 찾을 수 있답니다.</p>
           </div>
         </aside>
       </div>

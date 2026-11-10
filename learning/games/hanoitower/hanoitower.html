@@ -814,6 +814,24 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
   #game-container #info { grid-column: 2; grid-row: 2; margin: 0; }
   #game-container .tap-guide { grid-column: 2; grid-row: 3; margin: 0; }
 }
+
+#game-container .disk.hint-disk {
+  outline: 3px solid #4ade80 !important;
+  box-shadow: 0 0 18px rgba(74, 222, 128, .95) !important;
+}
+#game-container .pole.hint-pole {
+  background: rgba(74, 222, 128, .14) !important;
+  box-shadow: inset 0 0 0 2px rgba(74, 222, 128, .75), 0 0 16px rgba(74, 222, 128, .35) !important;
+}
+.hanoi-rule-tip {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-left: 3px solid #8b5a2b;
+  background: rgba(139, 90, 43, .12);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
 </style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260927-titles">
 </head>
 <body data-game-navigation="single-player" data-entry-game="hanoitower">
@@ -869,6 +887,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
                 </div>
             </div>
         </div>
+        <button onclick="showHanoiHint()" style="margin-top: 5px; border-color: #ffd98a; color: #ffd98a;">💡 한 수 힌트</button>
         <button onclick="initGame()" style="margin-top: 5px;">RESET GAME</button>
         <button onclick="showRules()" style="margin-top: 5px;">Rules</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
@@ -1057,10 +1076,52 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
 
     function showRules() {
         showCustomAlert("古塔 規則 (RULES)", [
-            "1. 모든 원판을 가운데 기둥으로 옮겨 쌓아야 합니다.",
-            "2. 맨 위 원판을 톡 누른 뒤, 옮길 기둥 영역을 톡 누르면 이동합니다.",
-            "3. 큰 원판을 작은 원판 위에 쌓을 수 없습니다."
+            "1. 모든 원판을 <strong>가운데 기둥</strong>으로 옮겨 쌓으면 성공입니다.",
+            "2. 맨 위 원판을 <strong>톡 누른 뒤</strong>, 옮길 기둥을 <strong>톡 누르면</strong> 이동합니다.",
+            "3. <strong>큰 원판은 작은 원판 위에 올릴 수 없습니다.</strong>",
+            "<div class='hanoi-rule-tip'><strong>🌟 초등 비결 1 (이사 비결):</strong> 가장 큰 원판을 가운데 기둥으로 옮기려면, 그 위의 작은 원판들을 먼저 <strong>오른쪽 빈 기둥으로 피신</strong>시켜야 해요!</div>",
+            "<div class='hanoi-rule-tip'><strong>🌟 초등 비결 2 (첫 수 비결):</strong> 원판이 <strong>홀수 개(3·5·7개)</strong>면 첫 1번 원판을 <strong>가운데 기둥</strong>으로, <strong>짝수 개(2·4·6개)</strong>면 <strong>오른쪽 기둥</strong>으로 먼저 옮기면 딱 맞아요!</div>",
+            "<div class='hanoi-rule-tip'><strong>💡 막힐 때:</strong> <strong>[💡 한 수 힌트]</strong> 단추를 누르면 다음에 옮길 원판과 기둥을 초록색 불빛으로 알려 줍니다!</div>"
         ]);
+    }
+
+    function findNextBestMove(currentPoles, disk, targetPole) {
+        if (disk === 0) return null;
+        let from = -1;
+        for (let i = 0; i < 3; i++) {
+            if (currentPoles[i].includes(disk)) from = i;
+        }
+        if (from === targetPole) {
+            return findNextBestMove(currentPoles, disk - 1, targetPole);
+        }
+        const spare = 3 - from - targetPole;
+        const subMove = findNextBestMove(currentPoles, disk - 1, spare);
+        if (subMove) return subMove;
+        return { disk, from, to: targetPole };
+    }
+
+    function showHanoiHint() {
+        const poleNames = ['왼쪽 기둥', '가운데 기둥', '오른쪽 기둥'];
+        const nextMove = findNextBestMove(poles, totalDisks, 1);
+        if (!nextMove) return;
+
+        let bigDisk = totalDisks;
+        while (bigDisk > 1 && poles[1].includes(bigDisk)) bigDisk--;
+
+        const minLeft = calculateMinMoves(poles, totalDisks, 1);
+        selectedPoleIndex = nextMove.from;
+        render();
+
+        const fromPoleEl = document.getElementById('pole' + nextMove.from);
+        const toPoleEl = document.getElementById('pole' + nextMove.to);
+        const topDiskEl = fromPoleEl ? fromPoleEl.lastElementChild : null;
+        if (topDiskEl) topDiskEl.classList.add('hint-disk');
+        if (toPoleEl) toPoleEl.classList.add('hint-pole');
+
+        const reason = nextMove.disk === bigDisk
+            ? `드디어 ${bigDisk}번 원판이 갈 길이 열렸어요!`
+            : `${bigDisk}번 원판을 옮길 길을 비워 주기 위해`;
+        updateTapGuide(`💡 힌트 (${reason}): [${poleNames[nextMove.from]}]의 [${nextMove.disk}번 원판]을 [${poleNames[nextMove.to]}]으로 옮기세요! (남은 최소 ${minLeft}회)`);
     }
 
     function setDisk(n) {
@@ -1116,6 +1177,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
         for (let i = 0; i < 3; i++) {
             const poleEl = document.getElementById('pole' + i);
             poleEl.innerHTML = '';
+            poleEl.classList.remove('hint-pole');
             poleEl.classList.toggle('tap-target', selectedPoleIndex !== null && selectedPoleIndex !== i);
 
             poles[i].forEach((size, diskIndex) => {
@@ -1179,7 +1241,8 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
         if (message) {
             guide.textContent = message;
         } else if (selectedPoleIndex === null) {
-            guide.textContent = "맨 위 원판을 톡 누른 뒤, 옮길 기둥 영역을 톡 누르세요.";
+            const minLeft = calculateMinMoves(poles, totalDisks, 1);
+            guide.textContent = `맨 위 원판을 톡 누른 뒤 옮길 기둥을 누르세요. (남은 최소 이동: ${minLeft}회 · 막히면 💡한 수 힌트!)`;
         } else {
             const diskSize = poles[selectedPoleIndex][poles[selectedPoleIndex].length - 1];
             guide.textContent = `${diskSize}번 원판 선택됨 · 옮길 기둥을 톡 누르세요.`;

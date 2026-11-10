@@ -169,6 +169,9 @@
   const guideBackdrop = document.getElementById('guideBackdrop');
   const modeFillButton = document.getElementById('modeFillButton');
   const modeMarkButton = document.getElementById('modeMarkButton');
+  const coachText = document.getElementById('coachText');
+  const hintButton = document.getElementById('hintButton');
+  let activeHint = null;
 
   let n = 5;
   let solution = [];
@@ -244,9 +247,15 @@
     corner.className = 'nb-corner';
     boardElement.append(corner);
 
+    const sameClue = (a, b) => a.length === b.length && a.every((v, idx) => v === b[idx]);
+    const sumClue = arr => arr.reduce((acc, v) => acc + v, 0);
+
     for (let c = 0; c < n; c += 1) {
       const cell = document.createElement('div');
-      cell.className = 'nb-col-clue';
+      const colLine = filled.map(row => row[c]);
+      const colDone = sameClue(lineClues(colLine), clues.cols[c]);
+      const colOver = colLine.filter(Boolean).length > sumClue(clues.cols[c]);
+      cell.className = `nb-col-clue${colDone ? ' clue-done' : ''}${colOver ? ' clue-over' : ''}${activeHint && activeHint.col === c ? ' clue-focus' : ''}`;
       clues.cols[c].forEach(num => {
         const span = document.createElement('span');
         span.textContent = num;
@@ -257,7 +266,10 @@
 
     for (let r = 0; r < n; r += 1) {
       const rowClue = document.createElement('div');
-      rowClue.className = 'nb-row-clue';
+      const rowLine = filled[r];
+      const rowDone = sameClue(lineClues(rowLine), clues.rows[r]);
+      const rowOver = rowLine.filter(Boolean).length > sumClue(clues.rows[r]);
+      rowClue.className = `nb-row-clue${rowDone ? ' clue-done' : ''}${rowOver ? ' clue-over' : ''}${activeHint && activeHint.row === r ? ' clue-focus' : ''}`;
       clues.rows[r].forEach(num => {
         const span = document.createElement('span');
         span.textContent = num;
@@ -273,6 +285,9 @@
         if ((r + 1) % 5 === 0 && r < n - 1) cell.classList.add('group-bottom');
         if (filled[r][c]) cell.classList.add('filled');
         if (marked[r][c] && !filled[r][c]) cell.classList.add('marked');
+        if (activeHint && activeHint.r === r && activeHint.c === c) {
+          cell.classList.add(activeHint.kind === 'wrong' ? 'hint-wrong' : 'hint-fill');
+        }
         cell.dataset.r = String(r);
         cell.dataset.c = String(c);
         cell.dataset.sfx = 'none';
@@ -283,7 +298,109 @@
     }
   }
 
+
+  function setCoach(html, tone = '') {
+    if (!coachText) return;
+    coachText.innerHTML = html;
+    const card = document.getElementById('coachCard');
+    if (card) card.dataset.tone = tone;
+  }
+
+  function refreshCoach() {
+    if (!coachText || completed) return;
+    const sumClue = arr => arr.reduce((acc, v) => acc + v, 0);
+    for (let r = 0; r < n; r += 1) {
+      const count = filled[r].filter(Boolean).length;
+      const target = sumClue(clues.rows[r]);
+      if (count > target) {
+        setCoach(`⚠️ <strong>${r + 1}번째 가로줄</strong>은 숫자 합이 <strong>${target}칸</strong>인데 지금 <strong>${count}칸</strong>이나 칠했어요! 넘친 칸을 다시 눌러 지워 보세요.`, 'warn');
+        return;
+      }
+    }
+    for (let c = 0; c < n; c += 1) {
+      const count = filled.map(row => row[c]).filter(Boolean).length;
+      const target = sumClue(clues.cols[c]);
+      if (count > target) {
+        setCoach(`⚠️ <strong>${c + 1}번째 세로줄</strong>은 숫자 합이 <strong>${target}칸</strong>인데 지금 <strong>${count}칸</strong>이나 칠했어요! 넘친 칸을 다시 눌러 지워 보세요.`, 'warn');
+        return;
+      }
+    }
+    const totalToFill = solution.flat().filter(Boolean).length;
+    const currentFilled = filled.flat().filter(Boolean).length;
+    if (currentFilled === 0) {
+      setCoach(`👆 <strong>${n}</strong>이나 <strong>0</strong>처럼 가장 쉬운 숫자가 적힌 줄부터 찾아 칠해 보세요! 막히면 <strong>💡 한 수 힌트</strong>를 누르세요.`);
+    } else {
+      setCoach(`🎨 잘하고 있어요! 초록빛으로 바뀐 숫자는 조건에 맞게 채운 줄이에요. 막히면 <strong>💡 한 수 힌트</strong>를 눌러 보세요!`);
+    }
+  }
+
+  function giveHint() {
+    if (completed) return;
+    // 1) 잘못 칠한 칸(빈칸인데 칠한 칸)이 있는지 먼저 확인
+    for (let r = 0; r < n; r += 1) {
+      for (let c = 0; c < n; c += 1) {
+        if (filled[r][c] && !solution[r][c]) {
+          activeHint = { r, c, row: r, col: c, kind: 'wrong' };
+          render();
+          setCoach(`💡 잠깐! 빨갛게 표시된 <strong>${r + 1}행 ${c + 1}열</strong> 칸은 사실 비어 있어야 하는 칸이에요. 다시 눌러 지우고 <strong>✕ 표시</strong>를 해 두세요!`, 'warn');
+          return;
+        }
+      }
+    }
+    // 2) 칠해야 하는 칸인데 ✕ 표시를 해 둔 칸이 있는지 확인
+    for (let r = 0; r < n; r += 1) {
+      for (let c = 0; c < n; c += 1) {
+        if (marked[r][c] && solution[r][c]) {
+          activeHint = { r, c, row: r, col: c, kind: 'wrong' };
+          render();
+          setCoach(`💡 잠깐! <strong>${r + 1}행 ${c + 1}열</strong>에 ✕ 표시가 되어 있지만, 사실 칠해야 하는 칸이에요! <strong>🖊 칠하기</strong>로 바꿔 칠해 보세요.`, 'warn');
+          return;
+        }
+      }
+    }
+    // 3) 아직 덜 채운 줄 중에서 가장 쉬운 줄(남은 빈칸이나 조건이 명확한 줄)의 정답 칸 하나 안내
+    let bestCandidate = null;
+    for (let r = 0; r < n; r += 1) {
+      const missingCols = [];
+      for (let c = 0; c < n; c += 1) {
+        if (solution[r][c] && !filled[r][c]) missingCols.push(c);
+      }
+      if (missingCols.length > 0) {
+        const clue = clues.rows[r];
+        const minLen = clue.reduce((a, b) => a + b, 0) + (clue.length - 1);
+        const score = ( n - minLen ) * 10 + missingCols.length;
+        if (!bestCandidate || score < bestCandidate.score) {
+          bestCandidate = { r, c: missingCols[0], axis: ' 가로줄', idx: r + 1, clueText: clue.join(' '), minLen, score };
+        }
+      }
+    }
+    for (let c = 0; c < n; c += 1) {
+      const missingRows = [];
+      for (let r = 0; r < n; r += 1) {
+        if (solution[r][c] && !filled[r][c]) missingRows.push(r);
+      }
+      if (missingRows.length > 0) {
+        const clue = clues.cols[c];
+        const minLen = clue.reduce((a, b) => a + b, 0) + (clue.length - 1);
+        const score = ( n - minLen ) * 10 + missingRows.length;
+        if (!bestCandidate || score < bestCandidate.score) {
+          bestCandidate = { r: missingRows[0], c, axis: ' 세로줄', idx: c + 1, clueText: clue.join(' '), minLen, score };
+        }
+      }
+    }
+    if (bestCandidate) {
+      const { r, c, axis, idx, clueText, minLen } = bestCandidate;
+      activeHint = { r, c, row: r, col: c, kind: 'fill' };
+      render();
+      const reason = minLen === n
+        ? `숫자와 띄어쓰기 칸을 합치면 딱 ${n}칸에 맞아서 자리가 바로 정해져요!`
+        : `가로·세로 숫자를 함께 맞춰 보면 이 자리가 꼭 겹쳐요!`;
+      setCoach(`💡 <strong>${idx}번째${axis} 숫자 [${clueText}]</strong>를 보세요! ${reason} 초록색으로 표시된 <strong>${r + 1}행 ${c + 1}열</strong> 칸을 <strong>🖊 칠하기</strong>로 칠해 보세요!`, 'safe');
+    }
+  }
+
   function setCellFilled(r, c, value) {
+    activeHint = null;
     if (filled[r][c] === value) return false;
     filled[r][c] = value;
     if (value) {
@@ -312,10 +429,12 @@
 
   function toggleMark(r, c) {
     if (completed) return;
+    activeHint = null;
     if (filled[r][c]) return;
     marked[r][c] = !marked[r][c];
     playSfx('click');
     render();
+    refreshCoach();
   }
 
   function cellFromPoint(clientX, clientY) {
@@ -335,6 +454,7 @@
     const changed = setCellFilled(r, c, intent === 'fill');
     if (!changed) return;
     render();
+    refreshCoach();
     if (isComplete()) completePuzzle();
   }
 
@@ -418,8 +538,11 @@
     if (completed) return;
     completed = true;
     stopTimer();
+    activeHint = null;
+    render();
     statusElement.textContent = 'PUZZLE COMPLETE!';
     statusElement.classList.add('success');
+    setCoach(`🎉 완성! 숨어 있던 그림은 <strong>[${currentPuzzle ? currentPuzzle.name : '멋진 그림'}]</strong>이었어요!`, 'safe');
     const previous = store.get(bestKey()) || null;
     if (!previous || elapsed < previous.time) {
       store.set(bestKey(), { time: elapsed });
@@ -445,6 +568,7 @@
     if (completed) return;
     setCellFilled(r, c, !filled[r][c]);
     render();
+    refreshCoach();
     if (isComplete()) completePuzzle();
   }
 
@@ -470,8 +594,10 @@
     timerElement.textContent = '00:00';
     statusElement.textContent = 'READY';
     statusElement.classList.remove('success');
+    activeHint = null;
     celebration.hidden = true;
     render();
+    refreshCoach();
   }
 
   function newPuzzle() {
@@ -571,6 +697,7 @@
   });
   modeFillButton.addEventListener('click', () => setTool('fill'));
   modeMarkButton.addEventListener('click', () => setTool('mark'));
+  hintButton?.addEventListener('click', giveHint);
   document.getElementById('newGameButton').addEventListener('click', newPuzzle);
   document.getElementById('resetButton').addEventListener('click', resetRound);
   document.getElementById('playAgainButton').addEventListener('click', newPuzzle);

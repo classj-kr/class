@@ -66,7 +66,13 @@
             <div class="nono-board" id="board" role="grid" aria-label="노노그램 게임판"></div>
           </div>
 
-          <p class="status" id="status" role="status" aria-live="polite">READY</p>
+          <div class="status-stack">
+            <p class="status" id="status" role="status" aria-live="polite">READY</p>
+            <div class="coach-card" id="coachCard" aria-live="polite">
+              <p class="coach-text" id="coachText">👆 <strong>가장 큰 숫자</strong>나 <strong>0</strong>이 적힌 줄부터 찾아 칠해 보세요!</p>
+              <button class="coach-hint-btn" id="hintButton" type="button" data-sfx="none">💡 한 수 힌트</button>
+            </div>
+          </div>
 
           <div class="celebration" id="celebration" hidden>
             <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
@@ -98,20 +104,52 @@
             <button class="guide-close" id="guideCloseButton" type="button" aria-label="공략 닫기">×</button>
           </header>
           <div class="solve-guide">
+            <div class="nono-visual-cards">
+              <div class="nono-visual-card">
+                <div class="nono-mini-row" aria-hidden="true">
+                  <span class="nm-clue">5</span>
+                  <span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell fill"></span>
+                </div>
+                <p><strong>숫자 5 (한 줄 전체):</strong> 5칸이 모두 이어져 있으니 한 줄을 전부 <strong>🖊 칠하기</strong>로 채워요!</p>
+              </div>
+
+              <div class="nono-visual-card">
+                <div class="nono-mini-row" aria-hidden="true">
+                  <span class="nm-clue">0</span>
+                  <span class="nm-cell mark">✕</span><span class="nm-cell mark">✕</span><span class="nm-cell mark">✕</span><span class="nm-cell mark">✕</span><span class="nm-cell mark">✕</span>
+                </div>
+                <p><strong>숫자 0 (빈 줄):</strong> 칠할 칸이 하나도 없어요! 헷갈리지 않게 모두 <strong>✕ 표시</strong>를 해 두세요.</p>
+              </div>
+
+              <div class="nono-visual-card">
+                <div class="nono-mini-row" aria-hidden="true">
+                  <span class="nm-clue">3 1</span>
+                  <span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell mark">✕</span><span class="nm-cell fill"></span>
+                </div>
+                <p><strong>숫자가 여러 개 (3 1):</strong> 순서대로 <strong>3칸 칠하기 → 최소 1칸 띄우기(✕) → 1칸 칠하기</strong>! 딱 5칸에 맞아요.</p>
+              </div>
+
+              <div class="nono-visual-card">
+                <div class="nono-mini-row" aria-hidden="true">
+                  <span class="nm-clue">4</span>
+                  <span class="nm-cell"></span><span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell fill"></span><span class="nm-cell"></span>
+                </div>
+                <p><strong>큰 숫자 겹치기 (4):</strong> 왼쪽 끝부터 4칸을 세어도, 오른쪽 끝부터 4칸을 세어도 <strong>가운데 3칸</strong>은 무조건 겹치므로 먼저 칠해요!</p>
+              </div>
+            </div>
+
             <h3>기본 규칙</h3>
             <ol>
-              <li>줄마다 붙어 있는 숫자는 그 줄에서 <strong>연속으로 칠해야 하는 칸의 개수</strong>입니다.</li>
-              <li>숫자가 2개 이상이면, 그 순서대로 최소 한 칸 이상 띄워서 칠해야 합니다.</li>
-              <li>모든 가로줄·세로줄 힌트를 만족하면 숨어 있던 그림이 완성됩니다.</li>
+              <li>줄마다 적힌 숫자는 그 줄에서 <strong>이어서 칠해야 하는 칸의 개수</strong>입니다.</li>
+              <li>숫자가 2개 이상이면, 숫자 사이를 <strong>최소 한 칸 이상 띄워서(✕)</strong> 순서대로 칠해야 합니다.</li>
+              <li>줄의 숫자 조건에 맞게 칠하면 숫자 색이 초록빛으로 바뀌며, 혹시 숫자보다 많이 칠하면 빨간색으로 알려 줍니다.</li>
             </ol>
-            <h3>조작 방법</h3>
+            <h3>조작 방법과 힌트</h3>
             <ol>
-              <li><strong>🖊 칠하기</strong> 모드에서 칸을 누르면 색이 칠해집니다. 맞았는지 틀렸는지는 알려주지 않으니, 힌트 숫자만 보고 스스로 판단해야 합니다.</li>
-              <li>칸을 누른 채로 가로 또는 세로로 <strong>쭉 드래그</strong>하면 그 줄이 한 번에 칠해집니다.</li>
-              <li><strong>✕ 표시</strong> 모드에서 칸을 누르면 "여기는 비어 있다"는 메모를 남길 수 있습니다.</li>
-              <li>칠한 칸이 정답과 정확히 일치해야만 퍼즐이 완성됩니다.</li>
+              <li><strong>🖊 칠하기</strong>로 색을 칠하고, 절대 칠하면 안 되는 빈칸은 <strong>✕ 표시</strong>로 표시해 두세요.</li>
+              <li>막힐 때는 아래의 <strong>💡 한 수 힌트</strong> 단추를 눌러 보세요! 잘못 칠한 칸이나 지금 바로 칠할 수 있는 칸을 콕 집어 알려 줍니다.</li>
             </ol>
-            <p class="solve-tip"><strong>팁:</strong> 확실한 줄부터 채우고, 애매한 칸은 ✕ 표시로 남겨두면 헷갈리지 않습니다.</p>
+            <p class="solve-tip"><strong>초등 꿀팁:</strong> 가로줄을 먼저 칠한 뒤 세로줄 숫자를 다시 보면, 빈칸(✕)과 칠할 칸이 저절로 보인답니다!</p>
           </div>
         </aside>
       </div>

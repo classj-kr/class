@@ -244,6 +244,108 @@
             display: block;
         }
 
+        .sphinx-coach {
+            margin: 0 auto 14px;
+            padding: 11px 14px;
+            border: 1px solid rgba(144, 104, 50, 0.55);
+            border-radius: 8px;
+            background: rgba(255, 248, 228, 0.86);
+            color: #2b1c0e;
+            text-align: left;
+            font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+        }
+
+        .sphinx-coach-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .sphinx-summary-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .sphinx-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            border: 1px solid rgba(144, 104, 50, 0.45);
+            background: rgba(236, 219, 167, 0.9);
+            color: #3a2310;
+            font-size: 12.5px;
+            font-weight: 700;
+        }
+
+        .sphinx-hint-toggle {
+            min-height: 34px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid #8b5b22;
+            background: linear-gradient(180deg, #fff3cf, #e5c478);
+            color: #3a210c;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .sphinx-hint-toggle:hover {
+            background: linear-gradient(180deg, #fff8e2, #edd089);
+        }
+
+        .sphinx-steps {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(144, 104, 50, 0.45);
+        }
+
+        .sphinx-steps[hidden] {
+            display: none;
+        }
+
+        .sphinx-steps ol {
+            margin: 6px 0 0;
+            padding-left: 20px;
+        }
+
+        .sphinx-steps li {
+            margin: 5px 0;
+        }
+
+        .sphinx-retry-notice {
+            margin: 0 0 8px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(180, 45, 30, 0.13);
+            border: 1px solid rgba(180, 45, 30, 0.4);
+            color: #7a1c12;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .sphinx-rule-card {
+            margin: 8px 0;
+            padding: 9px 12px;
+            border-radius: 7px;
+            background: rgba(255, 248, 228, 0.78);
+            border: 1px solid rgba(144, 104, 50, 0.4);
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .sphinx-rule-card strong {
+            color: #5a2d0c;
+        }
+
         .volume-control {
             margin-top: 15px;
             padding: 10px 12px;
@@ -740,45 +842,164 @@ body{align-items:center;padding:18px}
         }
 
         const standardOptions = Array.from({length: difficulty}, (_, i) => `${i + 1}마리`);
-        let qText = "", ans = "";
+        let qText = "", ans = "", coachHtml = "";
 
         if (currentStage === 1) {
             qText = "<스핑크스> 아침에는 4개의 다리, 낮에는 2개의 다리, 밤에는 3개의 다리로 걷는 괴물은?";
-            let html = `<div class="question-text">${qText}</div><div class="options-container">`;
+            coachHtml = `
+                <div class="sphinx-coach">
+                    <div class="sphinx-coach-top">
+                        <div class="sphinx-summary-badges">
+                            <span class="sphinx-badge">🌅 아침 = 다리 4개</span>
+                            <span class="sphinx-badge">☀️ 낮 = 다리 2개</span>
+                            <span class="sphinx-badge">🌙 밤 = 다리 3개</span>
+                        </div>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 쉽게 풀기 도우미</button>
+                    </div>
+                    <div id="sphinxRetryBox"></div>
+                    <div class="sphinx-steps" id="sphinxSteps" hidden>
+                        <strong>🧒 초등학생 눈높이 힌트</strong>
+                        <ol>
+                            <li><strong>아침(아기 때):</strong> 네 발(손과 무릎 <strong>4개</strong>)로 기어 다녀요.</li>
+                            <li><strong>낮(어른이 되면):</strong> 두 발(<strong>2개</strong>)로 걸어 다녀요.</li>
+                            <li><strong>밤(할머니·할아버지가 되면):</strong> 두 발에 <strong>지팡이 1개</strong>를 짚어 <strong>3개</strong>로 걸어요.</li>
+                            <li>즉 이 수수께끼의 정답은 스핑크스 앞에 서 있는 사람, 바로 <strong>「자신」</strong>이에요!</li>
+                        </ol>
+                    </div>
+                </div>`;
+            let html = `<div class="question-text">${qText}</div>${coachHtml}<div class="options-container">`;
             ["스핑크스", "자신", "기타", "없다", "모른다", "무시한다", "도망간다"].forEach(o => html += `<button class="quiz-btn" onclick="check('${o}', '자신')">${o}</button>`);
             displayArea.innerHTML = html + `</div>`;
             return;
-        } 
+        }
 
         if (currentStage === 2) {
             const x = getRandomInt(1, difficulty), y = getRandomInt(1, difficulty);
-            qText = `<스핑크스> 그럼 그대에게 묻겠다.\n다리가 4개 있는 괴물과 2개 있는 괴물이 ${x + y}마리 있다. 그 다리는 합쳐서 ${4*x + 2*y}개가 있다.\n그러면 다리가 4개있는 괴물은 몇 마린가?`;
+            const total = x + y, legs = 4 * x + 2 * y;
+            const baseLegs = total * 2, extraLegs = legs - baseLegs;
+            qText = `<스핑크스> 그럼 그대에게 묻겠다.\n다리가 4개 있는 괴물과 2개 있는 괴물이 ${total}마리 있다. 그 다리는 합쳐서 ${legs}개가 있다.\n그러면 다리가 4개있는 괴물은 몇 마린가?`;
             ans = x + "마리";
+            coachHtml = `
+                <div class="sphinx-coach">
+                    <div class="sphinx-coach-top">
+                        <div class="sphinx-summary-badges">
+                            <span class="sphinx-badge">📋 전체 괴물: ${total}마리</span>
+                            <span class="sphinx-badge">🦵 전체 다리: ${legs}개</span>
+                            <span class="sphinx-badge">❓ 다리 4개 괴물 = 몇 마리?</span>
+                        </div>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 초등 풀이 도우미</button>
+                    </div>
+                    <div id="sphinxRetryBox"></div>
+                    <div class="sphinx-steps" id="sphinxSteps" hidden>
+                        <strong>🧒 방정식 없이 초등식으로 풀기 (모두 다리 2개라고 상상하기)</strong>
+                        <ol>
+                            <li>먼저 <strong>${total}마리 모두 다리가 2개</strong>라고 상상해 봐요: <strong>${total} × 2 = ${baseLegs}개</strong></li>
+                            <li>실제 다리는 <strong>${legs}개</strong>니까, 다리가 <strong>${legs} − ${baseLegs} = ${extraLegs}개</strong> 남아요!</li>
+                            <li>다리 4개 괴물은 다리 2개 괴물보다 다리가 <strong>2개씩 더 많아요.</strong></li>
+                            <li>남은 다리 <strong>${extraLegs}개</strong>를 <strong>2개씩 묶어서</strong> 붙여 주면(<strong>${extraLegs} ÷ 2</strong>) 다리 4개 괴물이 몇 마리인지 바로 나와요!</li>
+                        </ol>
+                    </div>
+                </div>`;
         } else if (currentStage === 3) {
             const x = getRandomInt(1, difficulty), y = getRandomInt(3, difficulty);
-            qText = `<스핑크스> 다시 그대에게 묻겠다.\n다리가 4개와 2개 있는 괴물의 다리를 합쳐서 ${4*x + 2*y}개가 있다. 세월이 지나서 다리 4개의 괴물은 모두 다리가 2개가 되고, 2개의 다리를 가지고 있는 것 중 2마리는 3개의 다리가 되었다. 괴물들의 다리를 모두 합치니 ${2*x + 2*(y-2) + 3*2}개가 되었다. 처음에 다리가 4개 있었던 괴물은 몇 마리였느냐?`;
+            const initLegs = 4 * x + 2 * y;
+            const laterLegs = 2 * x + 2 * (y - 2) + 3 * 2;
+            const expectedIfNoShrink = initLegs + 2;
+            const lostLegs = expectedIfNoShrink - laterLegs;
+            qText = `<스핑크스> 다시 그대에게 묻겠다.\n다리가 4개와 2개 있는 괴물의 다리를 합쳐서 ${initLegs}개가 있다. 세월이 지나서 다리 4개의 괴물은 모두 다리가 2개가 되고, 2개의 다리를 가지고 있는 것 중 2마리는 3개의 다리가 되었다. 괴물들의 다리를 모두 합치니 ${laterLegs}개가 되었다. 처음에 다리가 4개 있었던 괴물은 몇 마리였느냐?`;
             ans = x + "마리";
+            coachHtml = `
+                <div class="sphinx-coach">
+                    <div class="sphinx-coach-top">
+                        <div class="sphinx-summary-badges">
+                            <span class="sphinx-badge">처음 다리: ${initLegs}개</span>
+                            <span class="sphinx-badge">나중 다리: ${laterLegs}개</span>
+                            <span class="sphinx-badge">변화: 4발→2발, 2마리는 2발→3발(+2개)</span>
+                        </div>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 초등 풀이 도우미</button>
+                    </div>
+                    <div id="sphinxRetryBox"></div>
+                    <div class="sphinx-steps" id="sphinxSteps" hidden>
+                        <strong>🧒 방정식 없이 초등식으로 풀기 (바뀐 다리 수만 비교하기)</strong>
+                        <ol>
+                            <li>다리 2개짜리 <strong>2마리</strong>가 다리 3개가 되었으니, 여기서 다리가 <strong>2개 늘어났어요</strong> (안 줄었다면 <strong>${initLegs} + 2 = ${expectedIfNoShrink}개</strong>).</li>
+                            <li>그런데 나중 다리는 <strong>${laterLegs}개</strong>뿐이에요! 다리가 <strong>${expectedIfNoShrink} − ${laterLegs} = ${lostLegs}개</strong> 줄어들었어요.</li>
+                            <li>왜 줄었을까요? <strong>다리 4개짜리가 다리 2개로 변하면서 1마리당 다리가 2개씩 줄었기 때문</strong>이에요!</li>
+                            <li>줄어든 다리 <strong>${lostLegs}개</strong>를 <strong>2개씩 나누면(${lostLegs} ÷ 2)</strong> 처음 다리 4개 괴물이 몇 마리였는지 바로 나와요!</li>
+                        </ol>
+                    </div>
+                </div>`;
         } else if (currentStage === 4) {
             const x = getRandomInt(1, difficulty), y = getRandomInt(5, difficulty);
-            qText = `<스핑크스> 마지막으로 그대에게 묻겠다.\n다리가 4개와 2개 있는 괴물의 다리를 합쳐서 ${4*x + 2*y}개가 있다. 세월이 지나서 4개의 다리를 가진 괴물은 모두 다리가 2개로 성장하고, 다리가 2개 있는 괴물중 4마리는 다리가 3개가 되었다. 게다가 다리가 4개였던 괴물의 2배가 되는 4개의 다리를 가지는 괴물이 새로이 태어났다. 괴물들의 다리를 다 합쳐 ${2*x + 2*(y-4) + 3*4 + 4*(2*x)}개가 있다. 그러면 처음에 다리가 4개 있었던 괴물은 몇 마리였느냐?`;
+            const initLegs = 4 * x + 2 * y;
+            const laterLegs = 2 * x + 2 * (y - 4) + 3 * 4 + 4 * (2 * x);
+            const withoutCane = laterLegs - 4;
+            const gainedLegs = withoutCane - initLegs;
+            qText = `<스핑크스> 마지막으로 그대에게 묻겠다.\n다리가 4개와 2개 있는 괴물의 다리를 합쳐서 ${initLegs}개가 있다. 세월이 지나서 4개의 다리를 가진 괴물은 모두 다리가 2개로 성장하고, 다리가 2개 있는 괴물중 4마리는 다리가 3개가 되었다. 게다가 다리가 4개였던 괴물의 2배가 되는 4개의 다리를 가지는 괴물이 새로이 태어났다. 괴물들의 다리를 다 합쳐 ${laterLegs}개가 있다. 그러면 처음에 다리가 4개 있었던 괴물은 몇 마리였느냐?`;
             ans = x + "마리";
+            coachHtml = `
+                <div class="sphinx-coach">
+                    <div class="sphinx-coach-top">
+                        <div class="sphinx-summary-badges">
+                            <span class="sphinx-badge">처음 다리: ${initLegs}개</span>
+                            <span class="sphinx-badge">나중 다리: ${laterLegs}개</span>
+                            <span class="sphinx-badge">4마리 다리 +4개 / 4발 1마리당 아기 4발 2마리 탄생</span>
+                        </div>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 초등 풀이 도우미</button>
+                    </div>
+                    <div id="sphinxRetryBox"></div>
+                    <div class="sphinx-steps" id="sphinxSteps" hidden>
+                        <strong>🧒 방정식 없이 초등식으로 풀기 (1마리당 늘어난 다리 묶기)</strong>
+                        <ol>
+                            <li>먼저 다리 2개짜리 <strong>4마리</strong>가 다리 3개가 되며 늘어난 <strong>4개</strong>를 나중 다리에서 빼요: <strong>${laterLegs} − 4 = ${withoutCane}개</strong></li>
+                            <li>처음 다리(<strong>${initLegs}개</strong>)와 비교하면 다리가 <strong>${withoutCane} − ${initLegs} = ${gainedLegs}개</strong> 늘어났어요!</li>
+                            <li>처음 4발 괴물 <strong>1마리</strong>마다: 자기 다리는 4개→2개로 <strong>2개 줄었지만(−2)</strong>, 4발 아기 괴물이 <strong>2마리 태어나 다리 8개가 생겨요(+8)</strong>. 즉 <strong>처음 4발 괴물 1마리당 다리가 꼭 6개씩(8 − 2 = 6) 늘어나요!</strong></li>
+                            <li>늘어난 다리 <strong>${gainedLegs}개</strong>를 <strong>6개씩 묶으면(${gainedLegs} ÷ 6)</strong> 처음 4발 괴물이 몇 마리였는지 바로 나와요!</li>
+                        </ol>
+                    </div>
+                </div>`;
         } else { showResult(true); return; }
 
-        let html = `<div class="question-text">${qText}</div><div class="options-container">`;
+        let html = `<div class="question-text">${qText}</div>${coachHtml}<div class="options-container">`;
         standardOptions.forEach(o => html += `<button class="quiz-btn" onclick="check('${o}', '${ans}')">${o}</button>`);
         displayArea.innerHTML = html + `</div>`;
+    }
+
+    function toggleSphinxHint(forceOpen = false) {
+        const steps = document.getElementById("sphinxSteps");
+        const btn = document.getElementById("sphinxHintBtn");
+        if (!steps) return;
+        const nextHidden = forceOpen ? false : !steps.hidden;
+        steps.hidden = nextHidden;
+        if (btn) btn.textContent = nextHidden ? "💡 초등 풀이 도우미" : "▲ 풀이 도우미 접기";
     }
 
     function showSphinxRules() {
         displayArea.innerHTML = `
             <div class="question-text">HOW TO PLAY</div>
-            <div style="text-align:left;line-height:1.75;margin:12px auto;max-width:620px">
-                <p>스핑크스 수수께끼와 관련된 문제를 풀어봅니다.</p>
-                <ol>
-                    <li>초급은 1~5마리, 고급은 1~10마리 범위의 수가 사용됩니다.</li>
-                    <li>문제에 나온 다리의 총개수와 괴물의 수를 이용해 정답을 계산하세요.</li>
-                </ol>
-                <div style="margin-top:14px; padding-top:10px; border-top:1px solid rgba(147,103,45,.35); color:rgba(87,63,35,.72); font-size:12px; line-height:1.55; text-align:center;">
+            <div style="text-align:left;line-height:1.65;margin:10px auto;max-width:640px">
+                <p style="margin:0 0 8px;">스핑크스의 질문은 글이 길지만, <strong>방정식(x, y) 없이 초등학생 방법(다리 묶기)</strong>으로 아주 쉽게 풀 수 있어요!</p>
+                <div class="sphinx-rule-card">
+                    <strong>1단계 · 스핑크스의 수수께끼</strong><br>
+                    아침(👶아기=4발) → 낮(🚶어른=2발) → 밤(🦯노인+지팡이=3발)로 걷는 존재는 바로 스핑크스 앞에 선 사람, <strong>「자신」</strong>입니다.
+                </div>
+                <div class="sphinx-rule-card">
+                    <strong>2단계 · 모두 다리 2개라고 상상하기</strong> (예: 모두 5마리, 다리 16개)<br>
+                    ① 5마리 모두 다리가 2개라면 <strong>5 × 2 = 10개</strong>예요.<br>
+                    ② 남는 다리 <strong>16 − 10 = 6개</strong>를 <strong>2개씩 묶어(6 ÷ 2 = 3)</strong> 붙여 주면 다리 4개 괴물은 <strong>3마리</strong>!
+                </div>
+                <div class="sphinx-rule-card">
+                    <strong>3단계 · 줄어든 다리 수만 보기</strong><br>
+                    2마리가 다리 3개가 되어 <strong>2개 늘어났는데도</strong> 전체 다리가 줄어들었다면, 4발 괴물이 2발이 되면서 <strong>1마리당 2개씩 줄었기 때문</strong>이에요!<br>
+                    👉 <strong>(처음 다리 + 2 − 나중 다리) ÷ 2</strong> = 처음 4발 괴물 수!
+                </div>
+                <div class="sphinx-rule-card">
+                    <strong>4단계 · 1마리당 6개씩 늘어나는 규칙</strong><br>
+                    처음 4발 괴물 1마리는 다리가 2개 줄지만(−2), 아기 4발 괴물이 2마리 태어나(+8) <strong>1마리당 다리가 꼭 6개씩 늘어나요!</strong><br>
+                    👉 <strong>(나중 다리 − 4 − 처음 다리) ÷ 6</strong> = 처음 4발 괴물 수!
+                </div>
+                <div style="margin-top:10px; padding-top:8px; border-top:1px solid rgba(147,103,45,.35); color:rgba(87,63,35,.72); font-size:12px; line-height:1.5; text-align:center;">
+                    문제 화면의 <strong>「💡 초등 풀이 도우미」</strong> 버튼을 누르면 그 문제의 숫자로 한 걸음씩 계산 순서를 보여줍니다.<br>
                     이 퍼즐은 고전 게임 <strong>《대항해시대 III》</strong>의 스핑크스 이벤트에서 착안해 교육용으로 재구성했습니다.
                 </div>
             </div>
@@ -795,7 +1016,20 @@ body{align-items:center;padding:18px}
         currentStage = 1;
         loadQuestion();
     }
-    function check(s, a) { if (s === a) { currentStage++; loadQuestion(); } else showResult(false); }
+    function check(s, a) {
+        if (s === a) {
+            currentStage++;
+            loadQuestion();
+            return;
+        }
+        const retryBox = document.getElementById("sphinxRetryBox");
+        if (retryBox) {
+            retryBox.innerHTML = `<p class="sphinx-retry-notice">앗, <strong>"${escapeFinisherHtml(s)}"</strong>은(는) 정답이 아니에요! 아래 초등 풀이 순서를 보고 다시 골라 보세요.</p>`;
+            toggleSphinxHint(true);
+            return;
+        }
+        showResult(false);
+    }
     function showResult(win) {
         displayArea.innerHTML = `
             <div class="question-text" style="text-align:center;">
