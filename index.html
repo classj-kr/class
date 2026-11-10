@@ -386,9 +386,9 @@
         .worksheet-container,
         .game-card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(154px, 1fr));
             align-items: start;
-            gap: 10px;
+            gap: 8px;
         }
 
         .worksheet-container a,
@@ -399,8 +399,8 @@
             grid-template-columns: 1fr auto;
             align-items: center;
             min-width: 0;
-            min-height: 72px;
-            padding: 11px 15px;
+            min-height: 68px;
+            padding: 10px 11px;
             border: 2px solid var(--gold);
             background: linear-gradient(135deg, var(--gold-dark), var(--panel));
             color: #ffffff;
@@ -461,8 +461,8 @@
         .worksheet-chevron {
             display: block;
             justify-self: end;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             color: #fff0c7;
             transition: transform 0.22s ease;
         }
@@ -484,9 +484,10 @@
             top: calc(100% + 6px);
             left: 0;
             display: grid;
-            width: min(260px, calc(100vw - 32px));
-            padding: 7px;
-            gap: 6px;
+            grid-template-columns: minmax(0, 1fr);
+            width: min(218px, calc(100vw - 32px));
+            padding: 6px;
+            gap: 5px;
             border: 2px solid var(--gold);
             border-radius: 6px;
             background: rgba(var(--panel-darker-rgb), 0.98);
@@ -494,18 +495,18 @@
         }
 
         .worksheet-container .worksheet-group-options :is(a, .worksheet-item) {
-            min-height: 54px;
-            padding: 9px 12px;
+            min-height: 50px;
+            padding: 8px 10px;
             border-width: 1px;
             border-radius: 4px;
         }
 
         .worksheet-group-options :is(.worksheet-copy, .game-card-copy) strong {
-            font-size: 15px;
+            font-size: 14.5px;
         }
 
         .worksheet-group-options :is(.worksheet-copy, .game-card-copy) small {
-            font-size: 11px;
+            font-size: 10.5px;
         }
 
         .worksheet-group-options .worksheet-arrow {
@@ -652,17 +653,18 @@
         .worksheet-copy strong,
         .game-card-copy strong {
             color: #fff0d4;
-            font-size: 18px;
-            line-height: 1.25;
+            font-size: 16.5px;
+            line-height: 1.22;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         .worksheet-copy small,
         .game-card-copy small {
             color: #d1d9e0;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            line-height: 1.25;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
         }
 
         .game-card-title {
@@ -1059,11 +1061,11 @@
         <h2 id="worksheet-title" class="category-heading"><button id="category-literacy-toggle" class="category-toggle" type="button" aria-expanded="false" aria-controls="category-literacy-panel"><span class="category-number" aria-hidden="true">01</span><span class="category-label">문해·수리·교과</span><span class="category-chevron" aria-hidden="true"></span></button></h2>
         <div id="category-literacy-panel" class="worksheet-container category-panel" role="region" aria-labelledby="category-literacy-toggle" hidden>
             <details class="worksheet-group" data-access-group="reading-writing">
-                <summary aria-label="읽기·쓰기 메뉴 열기">
-                    <span class="worksheet-copy"><strong>읽기·쓰기</strong><small>(Reading &amp; Writing)</small></span>
+                <summary aria-label="읽기 메뉴 열기">
+                    <span class="worksheet-copy"><strong>읽기</strong><small>(Reading)</small></span>
                     <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
-                <div class="worksheet-group-options" aria-label="읽기·쓰기 활동 선택">
+                <div class="worksheet-group-options" aria-label="읽기 활동 선택">
                     <a href="learning/literacy-numeracy/story-books/korea-tales/" data-requires-player="true">
                         <span class="worksheet-copy"><strong>한국 전래 동화</strong><small>(Korean Folk Tales)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true">🏮</span>
@@ -1084,6 +1086,14 @@
                         <span class="worksheet-copy"><strong>비문학</strong><small>(Nonfiction)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#ef5350" d="M3 5c0-1.1.9-2 2-2h6v17H5c-1.1 0-2-.9-2-2V5z"/><path fill="#42a5f5" d="M21 5c0-1.1-.9-2-2-2h-6v17h6c1.1 0 2-.9 2-2V5z"/><path fill="#fff" d="M5 6h5v2H5zm0 4h5v2H5zm0 4h5v2H5zm9-8h5v2h-5zm0 4h5v2h-5zm0 4h5v2h-5z"/></svg></span>
                     </a>
+                </div>
+            </details>
+            <details class="worksheet-group" data-access-group="writing">
+                <summary aria-label="쓰기 메뉴 열기">
+                    <span class="worksheet-copy"><strong>쓰기</strong><small>(Writing)</small></span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+                </summary>
+                <div class="worksheet-group-options" aria-label="쓰기 활동 선택">
                     <a href="learning/literacy-numeracy/handwriting/" data-requires-player="true">
                         <span class="worksheet-copy"><strong>글씨 쓰기</strong><small>(Handwriting)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true">✍️</span>
@@ -1135,11 +1145,11 @@
                 </div>
             </details>
             <details class="worksheet-group" data-access-group="numeracy">
-                <summary aria-label="수리·과학 메뉴 열기">
-                    <span class="worksheet-copy"><strong>수리·과학</strong><small>(Math &amp; Science)</small></span>
+                <summary aria-label="수리 메뉴 열기">
+                    <span class="worksheet-copy"><strong>수리</strong><small>(Math)</small></span>
                     <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
-                <div class="worksheet-group-options" aria-label="수리·과학 선택">
+                <div class="worksheet-group-options" aria-label="수리 선택">
                     <a href="/arithmetic">
                         <span class="worksheet-copy"><strong>연산</strong><small>(Arithmetic)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="20" rx="3" fill="#ff9800" stroke="#e65100" stroke-width="1"/><rect x="5" y="4" width="14" height="4.5" rx="1" fill="#e0f7fa" stroke="#00acc1" stroke-width="0.8"/><text x="17" y="7.5" font-size="4" font-weight="bold" fill="#006064" text-anchor="end">123</text><rect x="5" y="10" width="3.5" height="3.5" rx="0.8" fill="#ef5350"/><text x="6.75" y="12.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">+</text><rect x="10" y="10" width="3.5" height="3.5" rx="0.8" fill="#42a5f5"/><text x="11.75" y="12.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">-</text><rect x="15" y="10" width="3.5" height="3.5" rx="0.8" fill="#66bb6a"/><text x="16.75" y="12.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">×</text><rect x="5" y="15" width="3.5" height="3.5" rx="0.8" fill="#ab47bc"/><text x="6.75" y="17.7" font-size="4.5" font-weight="bold" fill="#fff" text-anchor="middle">÷</text><rect x="10" y="15" width="8.5" height="3.5" rx="0.8" fill="#ffca28"/><text x="14.25" y="17.7" font-size="5" font-weight="bold" fill="#37474f" text-anchor="middle">=</text></svg></span>
@@ -1152,6 +1162,14 @@
                         <span class="worksheet-copy"><strong>수학 교구</strong><small>(Math Tools)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#f7d48a" d="m12 2 9 5-9 5-9-5z"/><path fill="#e3b97a" d="m3 7 9 5v10l-9-5z"/><path fill="#b38242" d="m12 12 9-5v10l-9 5z"/><path fill="none" stroke="#805e33" stroke-width=".8" d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm0 10 9-5M12 12 3 7m9 5v10"/></svg></span>
                     </a>
+                </div>
+            </details>
+            <details class="worksheet-group" data-access-group="science-computing">
+                <summary aria-label="과학·정보 메뉴 열기">
+                    <span class="worksheet-copy"><strong>과학·정보</strong><small>(Science &amp; IT)</small></span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+                </summary>
+                <div class="worksheet-group-options" aria-label="과학·정보 선택">
                     <a href="learning/inquiry/science-lab/" data-requires-player="true">
                         <span class="worksheet-copy"><strong>과학 실험</strong><small>(Science Experiments)</small></span>
                         <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#b0bec5" d="M14 11V4h1V2H9v2h1v7L5 19c-.6.9 0 2 1.1 2h11.8c1.1 0 1.7-1.1 1.1-2l-5-8z"/><path fill="#00e676" d="M7 17l3-5h4l3 5H7z"/><circle cx="10" cy="14" r="1" fill="#fff"/><circle cx="13" cy="15.5" r="0.8" fill="#fff"/></svg></span>
@@ -1180,7 +1198,7 @@
             </details>
             <details class="worksheet-group" data-access-group="social-studies">
                 <summary aria-label="역사·지리 메뉴 열기">
-                    <span class="worksheet-copy"><strong>역사·지리</strong><small>(History &amp; Geography)</small></span>
+                    <span class="worksheet-copy"><strong>역사·지리</strong><small>(History &amp; Geo)</small></span>
                     <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
                 </summary>
                 <div class="worksheet-group-options" aria-label="역사·지리 선택">
@@ -1209,7 +1227,35 @@
                     </a>
                 </div>
             </details>
-            <a href="learning/literacy-numeracy/metacognition/">
+            <details class="worksheet-group" data-access-group="arts">
+                <summary aria-label="미술·음악 메뉴 열기">
+                    <span class="worksheet-copy"><strong>미술·음악</strong><small>(Art &amp; Music)</small></span>
+                    <span class="worksheet-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+                </summary>
+                <div class="worksheet-group-options" aria-label="미술·음악 선택">
+                    <a href="learning/arts/art-appreciation/museum/">
+                        <span class="worksheet-copy"><strong>미술 감상</strong><small>(Art Appreciation)</small></span>
+                        <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="#8d6e63" stroke="#ffb300" stroke-width="2"/><rect x="5" y="5" width="14" height="14" fill="#64b5f6"/><circle cx="9" cy="9" r="2" fill="#ffeb3b"/><polygon points="5,19 11,12 15,16 19,10 19,19" fill="#81c784"/></svg></span>
+                    </a>
+                    <a href="learning/arts/music-listening/">
+                        <span class="worksheet-copy"><strong>음악 감상</strong><small>(Music Appreciation)</small></span>
+                        <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="#ffb300" stroke-width="2.5" stroke-linecap="round" d="M4 13v-3a8 8 0 0 1 16 0v3"/><rect x="1" y="11" width="5" height="9" rx="2.5" fill="#ef5350"/><rect x="4" y="12.5" width="2" height="6" fill="#ffe082"/><rect x="18" y="11" width="5" height="9" rx="2.5" fill="#ef5350"/><rect x="18" y="12.5" width="2" height="6" fill="#ffe082"/></svg></span>
+                    </a>
+                    <a href="learning/arts/art-studio/">
+                        <span class="worksheet-copy"><strong>그림판</strong><small>(Art Studio)</small></span>
+                        <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2" fill="#fff8e1" stroke="#8d6e63" stroke-width="1.5"/><circle cx="8" cy="8" r="2.6" fill="#ff9f1c"/><circle cx="16" cy="8" r="2.6" fill="#3a86ff"/><circle cx="8" cy="16" r="2.6" fill="#2ec4b6"/><path fill="none" stroke="#e53935" stroke-width="2" stroke-linecap="round" d="M13.5 13.5l6 6M17.5 17.8l1.6-1.6"/></svg></span>
+                    </a>
+                    <a href="learning/arts/instrument-room/">
+                        <span class="worksheet-copy"><strong>악기</strong><small>(Instruments)</small></span>
+                        <span class="worksheet-arrow" aria-hidden="true" style="font-size:1.55rem">🎸</span>
+                    </a>
+                    <a href="learning/arts/music-theory/ear-training/">
+                        <span class="worksheet-copy"><strong>청음</strong><small>(Ear Training)</small></span>
+                        <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10a8 8 0 0 1 16 0" fill="none" stroke="#e0e0e0" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="10" width="4" height="8" rx="2" fill="#ffb300"/><rect x="17" y="10" width="4" height="8" rx="2" fill="#ffb300"/><path d="M7 14h1.6M15.4 14H17" stroke="#e0e0e0" stroke-width="1.2" stroke-linecap="round"/><circle cx="12" cy="14.5" r="1.5" fill="#38bdf8"/><path d="M9.6 12.4a3.4 3.4 0 0 1 4.8 0M10.9 10.9a5.3 5.3 0 0 1 2.2 0" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+                    </a>
+                </div>
+            </details>
+            <a href="learning/literacy-numeracy/metacognition/" hidden>
                 <span class="worksheet-copy"><strong>학습 점검</strong><small>(Learning Check)</small></span>
                 <span class="worksheet-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#ffd54f" d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/><path fill="#fff" d="M12 5a4 4 0 0 0-4 4c0 1.2.5 2.3 1.4 3.1L10 14h4l.6-1.9c.9-.8 1.4-1.9 1.4-3.1a4 4 0 0 0-4-4z"/><rect x="9" y="18" width="6" height="2" fill="#78909c" rx="0.5"/><line x1="12" y1="0.5" x2="12" y2="1.8" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="4.5" y1="4.5" x2="5.5" y2="5.5" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="19.5" y1="4.5" x2="18.5" y2="5.5" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="1.5" y1="9" x2="2.8" y2="9" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><line x1="22.5" y1="9" x2="21.2" y2="9" stroke="#ff9800" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="17.5" r="3.5" fill="#4caf50"/><path stroke="#fff" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" d="M15.8 17.5l1.2 1.2 2.2-2.2"/></svg></span>
             </a>
@@ -1311,7 +1357,7 @@
         </div>
     </section>
 
-    <section class="hub-section training-section category-section" data-category-section aria-labelledby="other-subjects-title">
+    <section class="hub-section training-section category-section" aria-labelledby="other-subjects-title" hidden>
         <h2 id="other-subjects-title" class="category-heading"><button id="category-arts-toggle" class="category-toggle" type="button" aria-expanded="false" aria-controls="category-arts-panel"><span class="category-number" aria-hidden="true">03</span><span class="category-label">예술</span><span class="category-chevron" aria-hidden="true"></span></button></h2>
         <div id="category-arts-panel" class="worksheet-container category-panel" role="region" aria-labelledby="category-arts-toggle" hidden>
             <details class="worksheet-group" data-access-group="arts-appreciation">

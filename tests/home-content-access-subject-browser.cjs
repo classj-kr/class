@@ -119,7 +119,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     await go();
     await toggle('#contentAccessButton');
     await toggle('#category-literacy-toggle');
-    const science = page.locator('[data-access-group="numeracy"]');
+    const science = page.locator('[data-access-group="science-computing"]');
     await science.locator('summary').click();
     const lab = science.locator('a[href="learning/inquiry/science-lab/"]');
     await lab.click();
@@ -128,6 +128,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     assert.equal(await science.locator('a[href="learning/inquiry/human-body/"]').getAttribute('data-class-locked'), 'false');
 
     const math = '/learning/literacy-numeracy/math-tools/';
+    await page.locator('[data-access-group="numeracy"] > summary').click();
     await page.locator('a[data-access-catalog]').click();
     await page.waitForURL(base + math + '?settings=class');
     await visible(page.locator('#tool-settings'));
