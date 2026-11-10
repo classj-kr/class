@@ -1371,11 +1371,11 @@ test("renders the square-numbers worksheet", async () => {
   const source = await readFile(new URL("../app/arithmetic/square-numbers/page.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.match(html, /3학년/);
-  assert.match(html, /제곱수/);
+  assert.match(html, /같은 수의 곱셈/);
   assert.match(html, /2제곱수:/);
   assert.match(html, /5제곱수:/);
-  assert.match(html, /aria-label="A4 제곱수 문제지"/);
-  assert.match(html, /aria-label="A4 제곱수 전체 답지"/);
+  assert.match(html, /aria-label="A4 같은 수의 곱셈 문제지"/);
+  assert.match(html, /aria-label="A4 같은 수의 곱셈 전체 답지"/);
   assert.equal((html.match(/data-testid="square-number-question"/g) ?? []).length, 54);
   assert.equal((html.match(/class="multiplication-input square-number-input"/g) ?? []).length, 27);
   assert.equal((html.match(/class="multiplication-static-answer square-number-static-answer"/g) ?? []).length, 27);

@@ -94,7 +94,7 @@ export default function GradeThreeFractionThreePage() {
     return (
       <div className="a4-sheet counting-sheet unit-fraction-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
-          <div className="counting-sheet-title"><span>3학년</span><strong>분수와 단위{answerSheet ? " 정답" : ""}</strong></div>
+          <div className="counting-sheet-title is-advanced"><span>3학년</span><strong>분수와 단위{answerSheet ? " 정답" : ""}</strong></div>
           <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
         </header>
         <div className="unit-fraction-grid">{questionSet.problems.map((problem, index) => renderProblem(problem, index, answerSheet))}</div>

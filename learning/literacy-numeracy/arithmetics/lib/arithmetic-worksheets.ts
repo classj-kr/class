@@ -1,9 +1,11 @@
+export type WorksheetBadge = "암산" | "암기" | "심화";
+
 export type ArithmeticWorksheet = {
   name: string;
   route: string | null;
   grade: string;
   title: string;
-  badge?: "암산" | "암기";
+  badges?: WorksheetBadge[];
 };
 
 const readyRoutes: Record<string, string> = {
@@ -142,7 +144,7 @@ const elementaryTitles: Record<string, string> = {
   "3시간②": "시간의 덧셈·뺄셈",
   "3곱셈③": "여러 자리 수의 곱셈",
   "19단": "19단 곱셈",
-  "제곱수": "제곱수",
+  "제곱수": "같은 수의 곱셈",
   "3나눗셈②": "몫과 나머지",
   "3나눗셈③": "나눗셈 구구",
   "3분수①": "분수만큼 구하기",
@@ -192,6 +194,16 @@ const elementaryHorizontalMentalMathWorksheets = new Set<string>([
   "6소수①",
 ]);
 const elementaryMemorizationWorksheets = new Set<string>(["제곱수"]);
+// 심화: 교과 과정 너머까지 다루는 학습지. 하나씩 지정한다.
+const elementaryAdvancedWorksheets = new Set<string>(["제곱수", "3분수③", "단위변환"]);
+
+function badgesFor(name: string) {
+  const badges: WorksheetBadge[] = [];
+  if (elementaryHorizontalMentalMathWorksheets.has(name)) badges.push("암산");
+  if (elementaryMemorizationWorksheets.has(name)) badges.push("암기");
+  if (elementaryAdvancedWorksheets.has(name)) badges.push("심화");
+  return badges.length ? badges : undefined;
+}
 
 export const arithmeticWorksheetCatalog: ArithmeticWorksheet[] = worksheetNames.map((name) => {
   const gradeMatch = name.match(/^([1-6])(?!\d)(.+)$/);
@@ -201,7 +213,7 @@ export const arithmeticWorksheetCatalog: ArithmeticWorksheet[] = worksheetNames.
     route: readyRoutes[name] ?? null,
     grade: `초${grade}`,
     title: elementaryTitles[name] ?? (explicitGrades[name] ? name : gradeMatch ? gradeMatch[2] : name),
-    badge: elementaryMemorizationWorksheets.has(name) ? "암기" : elementaryHorizontalMentalMathWorksheets.has(name) ? "암산" : undefined,
+    badges: badgesFor(name),
   };
 });
 
