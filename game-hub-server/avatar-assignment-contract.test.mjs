@@ -99,7 +99,8 @@ test("student profile offers a confirmed, server-enforced avatar change", () => 
   assert.match(serverSource, /router\.patch\("\/student\/avatar"/);
   assert.match(serverSource, /AVATAR_CHANGE_ALREADY_USED/);
   assert.match(serverSource, /AVATAR_UNAVAILABLE/);
-  assert.match(profileSource, /id="recommendedAvatars"/);
-  assert.match(profileSource, /id="toggleAllAvatars"/);
+  assert.doesNotMatch(profileSource, /id="recommendedAvatars"/);
+  assert.doesNotMatch(profileSource, /id="toggleAllAvatars"/);
+  assert.match(profileSource, /id="allAvatars"/);
   assert.match(profileSource, /\/api\/student\/avatar/);
 });

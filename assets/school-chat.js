@@ -25,7 +25,7 @@
     let logMode = false;        // 선생님: 지운 줄까지 보이는 기록 보기
     let logChannel = SCHOOL;
     let logMessages = [];
-    let enabled = false;        // 설정에서 "채팅 사용"을 켠 학생만 연결하고 💬를 보인다(계정에 저장, 기본 꺼짐)
+    let enabled = false;        // 설정에서 "채팅 사용"을 끈 사람만 빼고 연결하고 💬를 보인다(계정에 저장, 기본 켜짐)
     let call = null;            // 방 통화(assets/school-call.js, 방에 들어가면 그때 불러온다)
     let callScript = null;
     const CALL_TAB_KEY = "schoolChatCallChannel";
@@ -204,7 +204,7 @@
         const slot = document.getElementById("schoolChatPresence");
         if (!slot) return;
         const users = enabled && presenceBy[SCHOOL]
-            ? [...presenceBy[SCHOOL].values()].filter(user => user.role === "student" && !(me && user.userId === me.userId))
+            ? [...presenceBy[SCHOOL].values()].filter(user => user.role === "student")
             : [];
         users.sort((a, b) => (a.grade || 99) - (b.grade || 99) || (a.classNumber || 99) - (b.classNumber || 99)
             || String(a.name).localeCompare(String(b.name), "ko"));
@@ -702,7 +702,7 @@
         const store = window.SiteStorage ? await window.SiteStorage.open("site-settings") : null;
         if (!store || !store.persistent) return;   // 계정에 저장할 수 없으면 켜고 끌 수도 없다
         // 켜져 있던 상태를 먼저 반영한 뒤 항목을 그려야 글자가 실제 상태와 맞는다.
-        if (store.get("chatEnabled") === true) enableChat();
+        if (store.get("chatEnabled") !== false) enableChat();
         installSetting(store);
     }
 
