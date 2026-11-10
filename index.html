@@ -2263,7 +2263,7 @@
     </script>
     <div id="schoolChatPresence" class="chat-presence" aria-label="채팅 접속 중인 학생" hidden data-nosnippet></div>
     <style>
-        .chat-presence{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 6px;width:min(600px,calc(100% - 24px));max-height:96px;overflow-y:auto;margin:24px auto 0;padding:3px}
+        .chat-presence{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 6px;width:min(600px,calc(100% - 24px));max-height:96px;overflow-y:auto;margin:24px auto 24px;padding:3px}
         .chat-presence[hidden]{display:none}
         .chat-presence-avatar{flex:none;width:50px;padding:0;border:0;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
         .chat-presence-avatar .name{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff0c7;font:600 11px/1.2 Pretendard,"Noto Sans KR",sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.8)}
@@ -2280,7 +2280,9 @@
         <a href="/support">문의</a>
     </footer>
     <style>
-        .policy-footer{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;margin:28px auto 0;padding:2px 12px;width:fit-content;max-width:calc(100% - 24px);border:1px solid rgba(var(--panel-dark-rgb),.98);border-radius:999px;background:rgba(var(--panel-darker-rgb),.30);box-shadow:0 2px 8px rgba(0,0,0,.3);font-family:Pretendard,"Noto Sans KR",sans-serif;font-size:calc(13px - 1pt)}
+        body{display:flex;flex-direction:column}
+        #hubContent{margin-bottom:24px}
+        .policy-footer{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;margin:auto auto 0;padding:2px 12px;width:fit-content;max-width:calc(100% - 24px);border:1px solid rgba(var(--panel-dark-rgb),.98);border-radius:999px;background:rgba(var(--panel-darker-rgb),.30);box-shadow:0 2px 8px rgba(0,0,0,.3);font-family:Pretendard,"Noto Sans KR",sans-serif;font-size:calc(13px - 1pt)}
         .policy-footer a{display:inline-flex;align-items:center;min-height:24px;color:#fff0c7;font-weight:600;text-decoration:none}
         .policy-footer a:hover,.policy-footer a:focus-visible{color:#fff;text-decoration:underline}
     </style>
