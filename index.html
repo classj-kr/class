@@ -437,6 +437,136 @@
             border-color: var(--gold-dark);
         }
 
+        .hub-room-form {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(90deg, rgba(var(--panel-dark-rgb), 0.98) 0%, rgba(var(--panel-dark-rgb), 0.92) 25%, rgba(var(--panel-darker-rgb), 0.6) 55%, rgba(var(--panel-darker-rgb), 0.25) 100%);
+            border: 1px solid rgba(var(--panel-dark-rgb), 0.98);
+            border-radius: 999px;
+            padding: 3px 4px 3px 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            font-family: inherit;
+        }
+
+        .hub-room-form:focus-within {
+            border-color: var(--gold-dark);
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+        }
+
+        .hub-room-form a.hub-room-label-link {
+            display: inline-flex;
+            align-items: center;
+            color: #fff8e8;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0;
+            background: none;
+            border: none;
+            box-shadow: none;
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+
+        .hub-room-form a.hub-room-label-link:hover,
+        .hub-room-form a.hub-room-label-link:focus-visible {
+            color: var(--gold-light, #ffeaa7);
+            background: none;
+            text-decoration: underline;
+        }
+
+        .hub-room-input-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(0, 0, 0, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            padding: 2px 2px 2px 7px;
+            transition: border-color 0.15s ease;
+        }
+
+        .hub-room-input-wrap:focus-within {
+            border-color: var(--gold);
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .hub-room-input {
+            width: 48px;
+            padding: 1px 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .hub-room-input::placeholder {
+            color: rgba(255, 248, 232, 0.45);
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .hub-room-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px 10px;
+            background: linear-gradient(135deg, rgba(var(--panel-dark-rgb), 1), var(--gold-dark));
+            border: 1px solid var(--gold-dark);
+            border-radius: 999px;
+            color: #fff8e8;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.15s ease;
+            line-height: 1.25;
+        }
+
+        .hub-room-button:hover,
+        .hub-room-button:focus-visible {
+            background: linear-gradient(135deg, var(--gold-dark), var(--panel));
+            border-color: var(--gold);
+            color: #ffffff;
+        }
+
+        .hub-room-button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .hub-room-status {
+            position: absolute;
+            top: calc(100% + 5px);
+            right: 6px;
+            font-size: 0.74rem;
+            color: #fca5a5;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            padding: 3px 9px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            display: none;
+            z-index: 100;
+        }
+
+        .hub-room-status.visible {
+            display: block;
+        }
+
+        .hub-room-status.info {
+            color: #fef08a;
+            border-color: rgba(234, 179, 8, 0.5);
+        }
+
         .worksheet-group {
             position: relative;
             min-width: 0;
@@ -938,8 +1068,8 @@
             .hub-title-link {
                 position: static;
                 transform: none;
-                display: block;
-                text-align: right;
+                display: flex;
+                justify-content: flex-end;
                 margin: 4px 4px 0;
             }
             .category-section { margin-bottom: 8px; border-radius: 11px; }
@@ -1056,7 +1186,17 @@
     <div id="hubContent" hidden data-nosnippet>
         <div class="hub-title-row">
             <h1 class="learning-hub-title">기초학력</h1>
-            <p class="hub-title-link"><a href="/room/" data-requires-player="true" data-always-open="true" lang="en">Room Code <span aria-hidden="true">→</span></a></p>
+            <div class="hub-title-link">
+                <form id="hubRoomForm" class="hub-room-form" action="/room/" method="GET" novalidate>
+                    <a href="/room/" class="hub-room-label-link" data-requires-player="true" data-always-open="true" title="방 번호 페이지로 이동">방 번호</a>
+                    <div class="hub-room-input-wrap">
+                        <label class="sr-only" for="hubRoomCode">방 번호 숫자 4자리</label>
+                        <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4자리" aria-label="방 번호 4자리">
+                        <button id="hubRoomSubmit" class="hub-room-button" type="submit" aria-label="방 입장">입장</button>
+                    </div>
+                    <span id="hubRoomStatus" class="hub-room-status" role="status" aria-live="polite"></span>
+                </form>
+            </div>
         </div>
         <section class="hub-section worksheet-section category-section" data-category-section aria-labelledby="worksheet-title">
         <h2 id="worksheet-title" class="category-heading"><button id="category-literacy-toggle" class="category-toggle" type="button" aria-expanded="false" aria-controls="category-literacy-panel"><span class="category-number" aria-hidden="true">01</span><span class="category-label">문해·수리·교과</span><span class="category-chevron" aria-hidden="true"></span></button></h2>
@@ -2260,6 +2400,95 @@
             }
 
             start();
+        })();
+    </script>
+    <script>
+        (() => {
+            'use strict';
+            const form = document.getElementById('hubRoomForm');
+            if (!form) return;
+            const input = document.getElementById('hubRoomCode');
+            const button = document.getElementById('hubRoomSubmit');
+            const status = document.getElementById('hubRoomStatus');
+            const codePattern = /^\d{4}$/;
+            let statusTimer = null;
+
+            function showStatus(message, isInfo = false) {
+                if (!status) return;
+                status.textContent = message;
+                status.className = 'hub-room-status visible' + (isInfo ? ' info' : '');
+                clearTimeout(statusTimer);
+                statusTimer = setTimeout(() => {
+                    status.className = 'hub-room-status';
+                }, 4000);
+            }
+
+            function clearStatus() {
+                if (!status) return;
+                clearTimeout(statusTimer);
+                status.className = 'hub-room-status';
+            }
+
+            if (input) {
+                input.addEventListener('input', () => {
+                    input.value = input.value.replace(/\D/g, '');
+                    clearStatus();
+                });
+                input.addEventListener('paste', (event) => {
+                    if (!event.clipboardData) return;
+                    event.preventDefault();
+                    const digits = event.clipboardData.getData('text').replace(/\D/g, '').slice(0, 4);
+                    input.value = digits;
+                    clearStatus();
+                });
+            }
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const code = input ? input.value.trim() : '';
+
+                if (!code) {
+                    location.href = '/room/';
+                    return;
+                }
+
+                if (!codePattern.test(code)) {
+                    showStatus('방 번호 4자리를 입력해 주세요.');
+                    input.focus();
+                    return;
+                }
+
+                clearStatus();
+                if (button) button.disabled = true;
+                showStatus('방을 확인하고 있어요…', true);
+
+                try {
+                    const response = await fetch('/api/room-entry/resolve/' + encodeURIComponent(code), { cache: 'no-store' });
+                    const payload = await response.json().catch(() => ({}));
+                    if (!response.ok) throw new Error(payload.message || '해당 방을 찾을 수 없습니다.');
+                    const destination = new URL(payload.href, location.origin);
+                    if (!payload.href || destination.origin !== location.origin) {
+                        throw new Error('입장 주소를 확인할 수 없습니다.');
+                    }
+                    if (payload.type === 'voyage' || payload.type === 'rhythm') {
+                        const meResponse = await fetch('/api/auth/me', { cache: 'no-store' });
+                        const me = meResponse.ok ? await meResponse.json() : null;
+                        const name = String(me?.membership?.studentName || me?.guestName || me?.user?.name || '').trim();
+                        if (!name || (payload.type === 'voyage' && !/^[가-힣]{2,6}$/.test(name))) {
+                            throw new Error('이름을 확인한 뒤 다시 입장해 주세요.');
+                        }
+                        destination.searchParams.set('name', name);
+                    }
+                    location.href = destination.href;
+                } catch (error) {
+                    showStatus(error.message || '입장에 실패했습니다.');
+                    if (button) button.disabled = false;
+                    if (input) {
+                        input.focus();
+                        input.select();
+                    }
+                }
+            });
         })();
     </script>
     <div id="schoolChatPresence" class="chat-presence" aria-label="채팅 접속 중인 학생" hidden data-nosnippet></div>
