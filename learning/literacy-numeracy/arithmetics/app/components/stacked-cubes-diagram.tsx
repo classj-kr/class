@@ -10,7 +10,7 @@ export default function StackedCubesDiagram({ heights, showMap = false, showDire
 
   const maxHeight = heights.reduce((max, row) => Math.max(max, ...row), 0);
   const minX = -size * TILE_W - 20;
-  const maxX = size * TILE_W;
+  const maxX = size * TILE_W + 20;
   const minY = -maxHeight * CUBE_H - TILE_H;
   const cubesMaxY = 2 * (size - 1) * TILE_H + TILE_H;
   const mapOffsetY = cubesMaxY + MAP_GAP;
@@ -22,6 +22,11 @@ export default function StackedCubesDiagram({ heights, showMap = false, showDire
   const arrowTailY = cubesMaxY - 30;
   const arrowTipX = arrowTailX + TILE_W * 0.85;
   const arrowTipY = arrowTailY - TILE_H * 0.85;
+
+  const sideArrowTailX = maxX - 8;
+  const sideArrowTailY = cubesMaxY - 30;
+  const sideArrowTipX = sideArrowTailX - TILE_W * 0.85;
+  const sideArrowTipY = sideArrowTailY - TILE_H * 0.85;
 
   return (
     <svg
@@ -40,6 +45,10 @@ export default function StackedCubesDiagram({ heights, showMap = false, showDire
           <line x1={arrowTailX} y1={arrowTailY} x2={arrowTipX} y2={arrowTipY} />
           <polygon points={`${arrowTipX},${arrowTipY} ${arrowTipX - 6},${arrowTipY + 2} ${arrowTipX - 2},${arrowTipY + 6}`} />
           <text x={arrowTailX - 2} y={arrowTailY + 12}>앞</text>
+
+          <line x1={sideArrowTailX} y1={sideArrowTailY} x2={sideArrowTipX} y2={sideArrowTipY} />
+          <polygon points={`${sideArrowTipX},${sideArrowTipY} ${sideArrowTipX + 2},${sideArrowTipY + 6} ${sideArrowTipX + 6},${sideArrowTipY + 2}`} />
+          <text x={sideArrowTailX - 8} y={sideArrowTailY + 12}>옆</text>
         </g>
       )}
       {displayMap && heights.map((row, r) => row.map((cellHeight, c) => {
