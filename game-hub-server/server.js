@@ -747,7 +747,7 @@ app.use((req, res, next) => {
   res.sendStatus(404);
 });
 
-const CLEAN_HTML_ROOTS = [...APP_DIRECTORIES.map(directory => `/${directory}`), "/learning"];
+const CLEAN_HTML_ROOTS = [...APP_DIRECTORIES.map(directory => `/${directory}`), "/learning", "/apps/avatar-lab"];
 app.use((req, res, next) => {
   if (req.method !== "GET" && req.method !== "HEAD") return next();
 
@@ -801,6 +801,18 @@ app.use((req, res, next) => {
     sendSiteHtml(req, res, candidate, next);
   });
 });
+
+// Publish only the avatar studio under /apps; other application source roots stay private.
+app.use("/apps/avatar-lab", express.static(path.join(SITE_ROOT, "apps/avatar-lab"), {
+  ...staticAssetOptions,
+  setHeaders(res, filepath) {
+    staticAssetOptions.setHeaders(res, filepath);
+    if ([".glb", ".wasm"].includes(path.extname(filepath).toLowerCase())) {
+      const version = new URL(res.req.originalUrl, "http://localhost").searchParams.get("v");
+      res.setHeader("Cache-Control", version ? "public, max-age=31536000, immutable" : "public, max-age=0, must-revalidate");
+    }
+  },
+}));
 
 for (const directory of [...APP_DIRECTORIES, "css", "js", "learning"]) {
   app.use(`/${directory}`, express.static(resolveSitePath(SITE_ROOT, `/${directory}`), staticAssetOptions));
