@@ -437,7 +437,7 @@
             border-color: var(--gold-dark);
         }
 
-        .hub-room-form {
+                .hub-room-form {
             position: relative;
             display: inline-flex;
             align-items: center;
@@ -445,8 +445,8 @@
             background: linear-gradient(90deg, rgba(var(--panel-dark-rgb), 0.98) 0%, rgba(var(--panel-dark-rgb), 0.92) 25%, rgba(var(--panel-darker-rgb), 0.6) 55%, rgba(var(--panel-darker-rgb), 0.25) 100%);
             border: 1px solid rgba(var(--panel-dark-rgb), 0.98);
             border-radius: 999px;
-            padding: 3px 4px 3px 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            padding: 3px 4px 3px 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
             font-family: inherit;
         }
 
@@ -455,61 +455,63 @@
             box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
         }
 
-        .hub-room-form a.hub-room-label-link {
+        .hub-room-door-link {
             display: inline-flex;
             align-items: center;
-            color: #fff8e8;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 0;
-            background: none;
-            border: none;
-            box-shadow: none;
+            padding: 1px 2px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: color 0.15s ease;
+            transition: transform 0.18s ease, filter 0.18s ease;
+            line-height: 1;
         }
 
-        .hub-room-form a.hub-room-label-link:hover,
-        .hub-room-form a.hub-room-label-link:focus-visible {
-            color: var(--gold-light, #ffeaa7);
-            background: none;
-            text-decoration: underline;
+        .hub-room-door-link:hover,
+        .hub-room-door-link:focus-visible {
+            transform: scale(1.12);
+            filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.75));
+        }
+
+        .hub-room-door-icon {
+            display: block;
+            width: 22px;
+            height: 22px;
+            border-radius: 2px;
         }
 
         .hub-room-input-wrap {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            background: rgba(0, 0, 0, 0.32);
+            background: rgba(0, 0, 0, 0.38);
             border: 1px solid rgba(255, 255, 255, 0.16);
             border-radius: 999px;
-            padding: 2px 2px 2px 7px;
-            transition: border-color 0.15s ease;
+            padding: 2px 4px;
+            transition: border-color 0.15s ease, background 0.15s ease;
         }
 
         .hub-room-input-wrap:focus-within {
             border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.55);
         }
 
         .hub-room-input {
-            width: 48px;
+            width: 58px;
             padding: 1px 0;
             background: transparent;
             border: none;
             outline: none;
             color: #ffffff;
             font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            font-weight: 600;
+            letter-spacing: 0.04em;
             text-align: center;
             font-family: inherit;
         }
 
         .hub-room-input::placeholder {
-            color: rgba(255, 248, 232, 0.45);
-            font-weight: 500;
+            color: rgba(255, 255, 255, 0.42);
+            font-weight: 400;
             letter-spacing: 0;
         }
 
@@ -517,13 +519,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 3px 10px;
+            padding: 3px 12px;
             background: linear-gradient(135deg, rgba(var(--panel-dark-rgb), 1), var(--gold-dark));
             border: 1px solid var(--gold-dark);
             border-radius: 999px;
             color: #fff8e8;
-            font-size: 0.76rem;
+            font-size: 0.78rem;
             font-weight: 700;
+            letter-spacing: 0.03em;
             cursor: pointer;
             font-family: inherit;
             transition: all 0.15s ease;
@@ -1188,12 +1191,51 @@
             <h1 class="learning-hub-title">기초학력</h1>
             <div class="hub-title-link">
                 <form id="hubRoomForm" class="hub-room-form" action="/room/" method="GET" novalidate>
-                    <a href="/room/" class="hub-room-label-link" data-requires-player="true" data-always-open="true" title="방 번호 페이지로 이동">방 번호</a>
+                    <a href="/room/" class="hub-room-door-link" data-requires-player="true" data-always-open="true" title="방 번호로 입장" aria-label="방 번호로 입장">
+                        <svg class="hub-room-door-icon" viewBox="0 0 32 32" aria-hidden="true">
+  <defs>
+    <linearGradient id="doorFrameGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3e2718"/>
+      <stop offset="50%" stop-color="#7a4f2b"/>
+      <stop offset="100%" stop-color="#301c10"/>
+    </linearGradient>
+    <linearGradient id="doorGlowGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="45%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="doorWoodGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c431d"/>
+      <stop offset="50%" stop-color="#9a572a"/>
+      <stop offset="100%" stop-color="#5a2e12"/>
+    </linearGradient>
+    <radialGradient id="doorKnobGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fff8db"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </radialGradient>
+  </defs>
+  <!-- 문틀 -->
+  <rect x="3" y="2" width="26" height="28" rx="1.5" fill="url(#doorFrameGrad)" stroke="#1a0f08" stroke-width="0.8"/>
+  <rect x="5.5" y="4.5" width="21" height="25" fill="#180e07"/>
+  <!-- 열린 틈으로 쏟아지는 방 안쪽 황금빛 조명 -->
+  <rect x="6" y="5" width="20" height="24" fill="url(#doorGlowGrad)"/>
+  <!-- 살짝 열린 3D 입체 원목 문짝 -->
+  <path d="M6 5 L19.5 7.2 L19.5 26.8 L6 29 Z" fill="url(#doorWoodGrad)" stroke="#2b1508" stroke-width="0.6"/>
+  <!-- 상단 패널 몰딩 -->
+  <path d="M8 7.8 L17.5 9.2 L17.5 14.8 L8 14.2 Z" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
+  <path d="M9 8.7 L16.5 9.8 L16.5 14 L9 13.5 Z" fill="#874720"/>
+  <!-- 하단 패널 몰딩 -->
+  <path d="M8 16.5 L17.5 17.4 L17.5 24.8 L8 26.2 Z" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
+  <path d="M9 17.4 L16.5 18.1 L16.5 24 L9 25.2 Z" fill="#874720"/>
+  <!-- 반짝이는 황동 문 손잡이 -->
+  <circle cx="17.2" cy="17" r="1.5" fill="url(#doorKnobGrad)" stroke="#78350f" stroke-width="0.3"/>
+</svg>
+                    </a>
                     <div class="hub-room-input-wrap">
-                        <label class="sr-only" for="hubRoomCode">방 번호 숫자 4자리</label>
-                        <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4자리" aria-label="방 번호 4자리">
-                        <button id="hubRoomSubmit" class="hub-room-button" type="submit" aria-label="방 입장">입장</button>
+                        <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4 digits" aria-label="방 번호 4자리">
                     </div>
+                    <button id="hubRoomSubmit" class="hub-room-button" type="submit" aria-label="Enter">Enter</button>
                     <span id="hubRoomStatus" class="hub-room-status" role="status" aria-live="polite"></span>
                 </form>
             </div>
