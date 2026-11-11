@@ -927,6 +927,7 @@
     const accel=28,maxSpeed=(keys.ShiftLeft||keys.ShiftRight)?7.5:4.8;velocity.addScaledVector(wish,accel*dt);velocity.multiplyScalar(Math.pow(.03,dt));if(velocity.length()>maxSpeed)velocity.setLength(maxSpeed);
     const oldX=playerPosition.x,oldZ=playerPosition.z;playerPosition.addScaledVector(velocity,dt);const half=4.85;
     playerPosition.x=clamp(playerPosition.x,-half,half);playerPosition.z=clamp(playerPosition.z,GALLERY_END+1.4,6.5);
+    MuseumFollowCamera.constrainPlayer(playerPosition);
     for(const o of sculptureObstacles){const dx=playerPosition.x-o.x,dz=playerPosition.z-o.z,dist=Math.hypot(dx,dz);if(dist<o.r){if(dist<.001){playerPosition.x=oldX;playerPosition.z=oldZ;}else{playerPosition.x=o.x+dx/dist*o.r;playerPosition.z=o.z+dz/dist*o.r;}}}
     const movedX=playerPosition.x-oldX,movedZ=playerPosition.z-oldZ;
     actualSpeed=Math.hypot(movedX,movedZ)/Math.max(dt,.001);
@@ -948,12 +949,13 @@
   }
 
   function updateSelfAvatar(){
-    camera.position.x=clamp(playerPosition.x+Math.sin(yaw)*2.6,-4.85,4.85);
-    camera.position.z=clamp(playerPosition.z+Math.cos(yaw)*2.6,GALLERY_END+.6,7.2);
+    const follow=MuseumFollowCamera.position(playerPosition,yaw,GALLERY_END);
+    camera.position.x=follow.x;
+    camera.position.z=follow.z;
     selfAvatar.position.copy(playerPosition);
     selfAvatar.rotation.y=avatarHeading;
     selfActor.moving=actualSpeed>.03;selfActor.speed=actualSpeed;
-    selfAvatar.visible=!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
+    selfAvatar.visible=follow.distance>.85&&!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
   }
 
   function animate(){requestAnimationFrame(animate);const frameStart=avatarReview?performance.now():0;const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateSelfAvatar();updateArtLights(dt);updateFocus();updateRemoteAvatars(dt);assignedAvatars.update(dt);avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);}
