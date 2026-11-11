@@ -13,7 +13,7 @@
       "model": "models/animal-bear.glb",
       "revision": "e9bf65f54c15",
       "sourceRevision": "15dfcbda1b4b",
-      "original": "../classtools/assets/avatars/animal-bear.webp",
+      "original": "/assets/avatars/animal-bear.webp",
       "bytes": 356740
     },
     {
@@ -27,7 +27,7 @@
       "model": "models/animal-bee.glb",
       "revision": "c70ac520dffe",
       "sourceRevision": "a67042bbb00d",
-      "original": "../classtools/assets/avatars/animal-bee.webp",
+      "original": "/assets/avatars/animal-bee.webp",
       "bytes": 451028
     },
     {
@@ -41,7 +41,7 @@
       "model": "models/animal-butterfly.glb",
       "revision": "8e2297f8bf8e",
       "sourceRevision": "34d700c13b41",
-      "original": "../classtools/assets/avatars/animal-butterfly.webp",
+      "original": "/assets/avatars/animal-butterfly.webp",
       "bytes": 447380
     },
     {
@@ -55,7 +55,7 @@
       "model": "models/animal-cat.glb",
       "revision": "118ac760c3d2",
       "sourceRevision": "13db2c476eb7",
-      "original": "../classtools/assets/avatars/animal-cat.webp",
+      "original": "/assets/avatars/animal-cat.webp",
       "bytes": 324948
     },
     {
@@ -69,7 +69,7 @@
       "model": "models/animal-chick.glb",
       "revision": "380b42bdcf42",
       "sourceRevision": "7eafe3c34943",
-      "original": "../classtools/assets/avatars/animal-chick.webp",
+      "original": "/assets/avatars/animal-chick.webp",
       "bytes": 366112
     },
     {
@@ -83,7 +83,7 @@
       "model": "models/animal-crab.glb",
       "revision": "692d81527fe0",
       "sourceRevision": "66320105d3dd",
-      "original": "../classtools/assets/avatars/animal-crab.webp",
+      "original": "/assets/avatars/animal-crab.webp",
       "bytes": 423844
     },
     {
@@ -97,7 +97,7 @@
       "model": "models/animal-crested-gecko.glb",
       "revision": "10625e2d9a82",
       "sourceRevision": "a4375a92b6a8",
-      "original": "../classtools/assets/avatars/animal-crested-gecko.webp",
+      "original": "/assets/avatars/animal-crested-gecko.webp",
       "bytes": 444608
     },
     {
@@ -111,7 +111,7 @@
       "model": "models/animal-crocodile.glb",
       "revision": "5c09fec824c6",
       "sourceRevision": "161a28283d66",
-      "original": "../classtools/assets/avatars/animal-crocodile.webp",
+      "original": "/assets/avatars/animal-crocodile.webp",
       "bytes": 480456
     },
     {
@@ -125,7 +125,7 @@
       "model": "models/animal-deer.glb",
       "revision": "9a44210bf7f8",
       "sourceRevision": "3d821b8644b3",
-      "original": "../classtools/assets/avatars/animal-deer.webp",
+      "original": "/assets/avatars/animal-deer.webp",
       "bytes": 361484
     },
     {
@@ -139,7 +139,7 @@
       "model": "models/animal-dog.glb",
       "revision": "bad8081d11c8",
       "sourceRevision": "1a364e809184",
-      "original": "../classtools/assets/avatars/animal-dog.webp",
+      "original": "/assets/avatars/animal-dog.webp",
       "bytes": 397448
     },
     {
@@ -153,7 +153,7 @@
       "model": "models/animal-dolphin.glb",
       "revision": "20d616dbbfe9",
       "sourceRevision": "122b41e4488a",
-      "original": "../classtools/assets/avatars/animal-dolphin.webp",
+      "original": "/assets/avatars/animal-dolphin.webp",
       "bytes": 375128
     },
     {
@@ -167,7 +167,7 @@
       "model": "models/animal-dragon.glb",
       "revision": "f906bde411ff",
       "sourceRevision": "4fb48114d684",
-      "original": "../classtools/assets/avatars/animal-dragon.webp",
+      "original": "/assets/avatars/animal-dragon.webp",
       "bytes": 447636
     },
     {
@@ -181,7 +181,7 @@
       "model": "models/animal-dragonfly.glb",
       "revision": "19d513f86347",
       "sourceRevision": "1ae12d6d76a2",
-      "original": "../classtools/assets/avatars/animal-dragonfly.webp",
+      "original": "/assets/avatars/animal-dragonfly.webp",
       "bytes": 414432
     },
     {
@@ -195,7 +195,7 @@
       "model": "models/animal-duck.glb",
       "revision": "bd5b007268b3",
       "sourceRevision": "43f1466c3fc4",
-      "original": "../classtools/assets/avatars/animal-duck.webp",
+      "original": "/assets/avatars/animal-duck.webp",
       "bytes": 304588
     },
     {
@@ -209,7 +209,7 @@
       "model": "models/animal-eagle.glb",
       "revision": "d08dc6be7fcb",
       "sourceRevision": "6bd413154d09",
-      "original": "../classtools/assets/avatars/animal-eagle.webp",
+      "original": "/assets/avatars/animal-eagle.webp",
       "bytes": 370536
     },
     {
@@ -223,7 +223,7 @@
       "model": "models/animal-elephant.glb",
       "revision": "fcccfdb415c9",
       "sourceRevision": "154f23f70c9e",
-      "original": "../classtools/assets/avatars/animal-elephant.webp",
+      "original": "/assets/avatars/animal-elephant.webp",
       "bytes": 372288
     },
     {
@@ -237,7 +237,7 @@
       "model": "models/animal-flamingo.glb",
       "revision": "18b9ac9ea35c",
       "sourceRevision": "da3c09df6b02",
-      "original": "../classtools/assets/avatars/animal-flamingo.webp",
+      "original": "/assets/avatars/animal-flamingo.webp",
       "bytes": 315224
     },
     {
@@ -251,7 +251,7 @@
       "model": "models/animal-fox.glb",
       "revision": "74249c65d78a",
       "sourceRevision": "cbf2d5fb4077",
-      "original": "../classtools/assets/avatars/animal-fox.webp",
+      "original": "/assets/avatars/animal-fox.webp",
       "bytes": 390000
     },
     {
@@ -265,7 +265,7 @@
       "model": "models/animal-frog.glb",
       "revision": "1a25272d685b",
       "sourceRevision": "c15527621685",
-      "original": "../classtools/assets/avatars/animal-frog.webp",
+      "original": "/assets/avatars/animal-frog.webp",
       "bytes": 412300
     },
     {
@@ -279,7 +279,7 @@
       "model": "models/animal-giraffe.glb",
       "revision": "8a1f48cb9ab2",
       "sourceRevision": "6eb2cad9286a",
-      "original": "../classtools/assets/avatars/animal-giraffe.webp",
+      "original": "/assets/avatars/animal-giraffe.webp",
       "bytes": 338996
     },
     {
@@ -293,7 +293,7 @@
       "model": "models/animal-hedgehog.glb",
       "revision": "7170c16d775d",
       "sourceRevision": "3906259faea5",
-      "original": "../classtools/assets/avatars/animal-hedgehog.webp",
+      "original": "/assets/avatars/animal-hedgehog.webp",
       "bytes": 459488
     },
     {
@@ -307,7 +307,7 @@
       "model": "models/animal-hippopotamus.glb",
       "revision": "1dcf219819cd",
       "sourceRevision": "677e53ca66f6",
-      "original": "../classtools/assets/avatars/animal-hippopotamus.webp",
+      "original": "/assets/avatars/animal-hippopotamus.webp",
       "bytes": 355420
     },
     {
@@ -321,7 +321,7 @@
       "model": "models/animal-kangaroo.glb",
       "revision": "d3066977bb7d",
       "sourceRevision": "1e17091064e3",
-      "original": "../classtools/assets/avatars/animal-kangaroo.webp",
+      "original": "/assets/avatars/animal-kangaroo.webp",
       "bytes": 418872
     },
     {
@@ -335,7 +335,7 @@
       "model": "models/animal-koala.glb",
       "revision": "d9a242a643b1",
       "sourceRevision": "80df92ca5728",
-      "original": "../classtools/assets/avatars/animal-koala.webp",
+      "original": "/assets/avatars/animal-koala.webp",
       "bytes": 405308
     },
     {
@@ -349,7 +349,7 @@
       "model": "models/animal-ladybug.glb",
       "revision": "818f79f0b15a",
       "sourceRevision": "eb8acdd6d672",
-      "original": "../classtools/assets/avatars/animal-ladybug.webp",
+      "original": "/assets/avatars/animal-ladybug.webp",
       "bytes": 433124
     },
     {
@@ -363,7 +363,7 @@
       "model": "models/animal-leopard-gecko.glb",
       "revision": "48b6f330589c",
       "sourceRevision": "861da4163c5c",
-      "original": "../classtools/assets/avatars/animal-leopard-gecko.webp",
+      "original": "/assets/avatars/animal-leopard-gecko.webp",
       "bytes": 450036
     },
     {
@@ -377,7 +377,7 @@
       "model": "models/animal-lion.glb",
       "revision": "f8e7b752bb4c",
       "sourceRevision": "78ca850c7a0e",
-      "original": "../classtools/assets/avatars/animal-lion.webp",
+      "original": "/assets/avatars/animal-lion.webp",
       "bytes": 356412
     },
     {
@@ -391,7 +391,7 @@
       "model": "models/animal-llama.glb",
       "revision": "d2ba8dfd6d76",
       "sourceRevision": "c405be751393",
-      "original": "../classtools/assets/avatars/animal-llama.webp",
+      "original": "/assets/avatars/animal-llama.webp",
       "bytes": 389180
     },
     {
@@ -405,7 +405,7 @@
       "model": "models/animal-meerkat.glb",
       "revision": "3a379c1416e0",
       "sourceRevision": "d8c48d3d31b3",
-      "original": "../classtools/assets/avatars/animal-meerkat.webp",
+      "original": "/assets/avatars/animal-meerkat.webp",
       "bytes": 346788
     },
     {
@@ -419,7 +419,7 @@
       "model": "models/animal-monkey.glb",
       "revision": "4cf60b10a0a2",
       "sourceRevision": "c6fef49b9e25",
-      "original": "../classtools/assets/avatars/animal-monkey.webp",
+      "original": "/assets/avatars/animal-monkey.webp",
       "bytes": 387172
     },
     {
@@ -433,7 +433,7 @@
       "model": "models/animal-mouse.glb",
       "revision": "911fdebfa177",
       "sourceRevision": "7664ad94167d",
-      "original": "../classtools/assets/avatars/animal-mouse.webp",
+      "original": "/assets/avatars/animal-mouse.webp",
       "bytes": 408216
     },
     {
@@ -447,7 +447,7 @@
       "model": "models/animal-octopus.glb",
       "revision": "3692f8dee0f3",
       "sourceRevision": "7b36883c42f8",
-      "original": "../classtools/assets/avatars/animal-octopus.webp",
+      "original": "/assets/avatars/animal-octopus.webp",
       "bytes": 379416
     },
     {
@@ -461,7 +461,7 @@
       "model": "models/animal-ostrich.glb",
       "revision": "97665a79798b",
       "sourceRevision": "2687b96fb0e7",
-      "original": "../classtools/assets/avatars/animal-ostrich.webp",
+      "original": "/assets/avatars/animal-ostrich.webp",
       "bytes": 482372
     },
     {
@@ -475,7 +475,7 @@
       "model": "models/animal-owl.glb",
       "revision": "9b123861a9e1",
       "sourceRevision": "343c3f94d336",
-      "original": "../classtools/assets/avatars/animal-owl.webp",
+      "original": "/assets/avatars/animal-owl.webp",
       "bytes": 437616
     },
     {
@@ -489,7 +489,7 @@
       "model": "models/animal-panda.glb",
       "revision": "7265937740f8",
       "sourceRevision": "25264c6f0e38",
-      "original": "../classtools/assets/avatars/animal-panda.webp",
+      "original": "/assets/avatars/animal-panda.webp",
       "bytes": 263636
     },
     {
@@ -503,7 +503,7 @@
       "model": "models/animal-peacock.glb",
       "revision": "265991c27e2e",
       "sourceRevision": "3460f8af7cf3",
-      "original": "../classtools/assets/avatars/animal-peacock.webp",
+      "original": "/assets/avatars/animal-peacock.webp",
       "bytes": 458776
     },
     {
@@ -517,7 +517,7 @@
       "model": "models/animal-penguin.glb",
       "revision": "6ce8927a2fda",
       "sourceRevision": "5a7b88c33eb8",
-      "original": "../classtools/assets/avatars/animal-penguin.webp",
+      "original": "/assets/avatars/animal-penguin.webp",
       "bytes": 308156
     },
     {
@@ -531,7 +531,7 @@
       "model": "models/animal-praying-mantis.glb",
       "revision": "7b7757c25775",
       "sourceRevision": "22ea3988ab18",
-      "original": "../classtools/assets/avatars/animal-praying-mantis.webp",
+      "original": "/assets/avatars/animal-praying-mantis.webp",
       "bytes": 372944
     },
     {
@@ -545,7 +545,7 @@
       "model": "models/animal-rabbit.glb",
       "revision": "55c25f963c5f",
       "sourceRevision": "a8a5a1f373d6",
-      "original": "../classtools/assets/avatars/animal-rabbit.webp",
+      "original": "/assets/avatars/animal-rabbit.webp",
       "bytes": 303668
     },
     {
@@ -559,7 +559,7 @@
       "model": "models/animal-ratsnake.glb",
       "revision": "8f02a20e1d50",
       "sourceRevision": "bbe9e98332d8",
-      "original": "../classtools/assets/avatars/animal-ratsnake.webp",
+      "original": "/assets/avatars/animal-ratsnake.webp",
       "bytes": 313980
     },
     {
@@ -573,7 +573,7 @@
       "model": "models/animal-rhinoceros.glb",
       "revision": "3f75248a68ca",
       "sourceRevision": "122f6e9e47c7",
-      "original": "../classtools/assets/avatars/animal-rhinoceros.webp",
+      "original": "/assets/avatars/animal-rhinoceros.webp",
       "bytes": 390576
     },
     {
@@ -587,7 +587,7 @@
       "model": "models/animal-seal.glb",
       "revision": "cc5a6896729a",
       "sourceRevision": "90e63a9e29c1",
-      "original": "../classtools/assets/avatars/animal-seal.webp",
+      "original": "/assets/avatars/animal-seal.webp",
       "bytes": 353520
     },
     {
@@ -601,7 +601,7 @@
       "model": "models/animal-shark.glb",
       "revision": "08010b13ad46",
       "sourceRevision": "996f7dc3d3a5",
-      "original": "../classtools/assets/avatars/animal-shark.webp",
+      "original": "/assets/avatars/animal-shark.webp",
       "bytes": 395268
     },
     {
@@ -615,7 +615,7 @@
       "model": "models/animal-sloth.glb",
       "revision": "bac7897875a1",
       "sourceRevision": "880a6ff8c66b",
-      "original": "../classtools/assets/avatars/animal-sloth.webp",
+      "original": "/assets/avatars/animal-sloth.webp",
       "bytes": 394348
     },
     {
@@ -629,7 +629,7 @@
       "model": "models/animal-snail.glb",
       "revision": "ae249acb42f9",
       "sourceRevision": "d7d4c19e43d7",
-      "original": "../classtools/assets/avatars/animal-snail.webp",
+      "original": "/assets/avatars/animal-snail.webp",
       "bytes": 411696
     },
     {
@@ -643,7 +643,7 @@
       "model": "models/animal-squirrel.glb",
       "revision": "b070dcae0432",
       "sourceRevision": "3a0c58ef84ea",
-      "original": "../classtools/assets/avatars/animal-squirrel.webp",
+      "original": "/assets/avatars/animal-squirrel.webp",
       "bytes": 458784
     },
     {
@@ -657,7 +657,7 @@
       "model": "models/animal-tiger.glb",
       "revision": "b26e059fe103",
       "sourceRevision": "7cf6f5c2f676",
-      "original": "../classtools/assets/avatars/animal-tiger.webp",
+      "original": "/assets/avatars/animal-tiger.webp",
       "bytes": 441312
     },
     {
@@ -671,7 +671,7 @@
       "model": "models/animal-turtle.glb",
       "revision": "fb00ddeaf0c1",
       "sourceRevision": "31e8d400ec61",
-      "original": "../classtools/assets/avatars/animal-turtle.webp",
+      "original": "/assets/avatars/animal-turtle.webp",
       "bytes": 405276
     },
     {
@@ -685,7 +685,7 @@
       "model": "models/animal-unicorn.glb",
       "revision": "97acc62cd412",
       "sourceRevision": "25f74a6ccedb",
-      "original": "../classtools/assets/avatars/animal-unicorn.webp",
+      "original": "/assets/avatars/animal-unicorn.webp",
       "bytes": 402324
     },
     {
@@ -699,7 +699,7 @@
       "model": "models/animal-viper.glb",
       "revision": "168bbddec363",
       "sourceRevision": "e1edb0a011e9",
-      "original": "../classtools/assets/avatars/animal-viper.webp",
+      "original": "/assets/avatars/animal-viper.webp",
       "bytes": 362248
     },
     {
@@ -713,7 +713,7 @@
       "model": "models/animal-whale.glb",
       "revision": "176ce6fdc01c",
       "sourceRevision": "8d51abc6339d",
-      "original": "../classtools/assets/avatars/animal-whale.webp",
+      "original": "/assets/avatars/animal-whale.webp",
       "bytes": 446224
     },
     {
@@ -727,7 +727,7 @@
       "model": "models/animal-wolf.glb",
       "revision": "ca501347d645",
       "sourceRevision": "ff16b64084ce",
-      "original": "../classtools/assets/avatars/animal-wolf.webp",
+      "original": "/assets/avatars/animal-wolf.webp",
       "bytes": 450932
     },
     {
@@ -741,7 +741,7 @@
       "model": "models/award-trophy.glb",
       "revision": "f8ed794d5229",
       "sourceRevision": "0cc862cebeee",
-      "original": "../classtools/assets/avatars/award-trophy.webp",
+      "original": "/assets/avatars/award-trophy.webp",
       "bytes": 454448
     },
     {
@@ -755,7 +755,7 @@
       "model": "models/drink-bubble-tea.glb",
       "revision": "f5ce9e67e11a",
       "sourceRevision": "afac563646e6",
-      "original": "../classtools/assets/avatars/drink-bubble-tea.webp",
+      "original": "/assets/avatars/drink-bubble-tea.webp",
       "bytes": 239224
     },
     {
@@ -769,7 +769,7 @@
       "model": "models/food-bingsu.glb",
       "revision": "f46940eaa308",
       "sourceRevision": "12db569e6def",
-      "original": "../classtools/assets/avatars/food-bingsu.webp",
+      "original": "/assets/avatars/food-bingsu.webp",
       "bytes": 445112
     },
     {
@@ -783,7 +783,7 @@
       "model": "models/food-birthday-cake.glb",
       "revision": "39109a6f61dd",
       "sourceRevision": "1781f42e5af8",
-      "original": "../classtools/assets/avatars/food-birthday-cake.webp",
+      "original": "/assets/avatars/food-birthday-cake.webp",
       "bytes": 395588
     },
     {
@@ -797,7 +797,7 @@
       "model": "models/food-candy.glb",
       "revision": "a4b9151303d7",
       "sourceRevision": "9d17bd81828a",
-      "original": "../classtools/assets/avatars/food-candy.webp",
+      "original": "/assets/avatars/food-candy.webp",
       "bytes": 402884
     },
     {
@@ -811,7 +811,7 @@
       "model": "models/food-cheese.glb",
       "revision": "9f09c84a9a73",
       "sourceRevision": "7e27e7730cb2",
-      "original": "../classtools/assets/avatars/food-cheese.webp",
+      "original": "/assets/avatars/food-cheese.webp",
       "bytes": 262220
     },
     {
@@ -825,7 +825,7 @@
       "model": "models/food-chocolate.glb",
       "revision": "7fefbf25aa7c",
       "sourceRevision": "853ef1509303",
-      "original": "../classtools/assets/avatars/food-chocolate.webp",
+      "original": "/assets/avatars/food-chocolate.webp",
       "bytes": 372468
     },
     {
@@ -839,7 +839,7 @@
       "model": "models/food-cookie.glb",
       "revision": "712af72ccd5c",
       "sourceRevision": "800f4de75693",
-      "original": "../classtools/assets/avatars/food-cookie.webp",
+      "original": "/assets/avatars/food-cookie.webp",
       "bytes": 464412
     },
     {
@@ -853,7 +853,7 @@
       "model": "models/food-donut.glb",
       "revision": "e296834c4966",
       "sourceRevision": "345b74bce063",
-      "original": "../classtools/assets/avatars/food-donut.webp",
+      "original": "/assets/avatars/food-donut.webp",
       "bytes": 301024
     },
     {
@@ -867,7 +867,7 @@
       "model": "models/food-dumpling.glb",
       "revision": "5edcb94a8cb7",
       "sourceRevision": "502630bd173b",
-      "original": "../classtools/assets/avatars/food-dumpling.webp",
+      "original": "/assets/avatars/food-dumpling.webp",
       "bytes": 378468
     },
     {
@@ -881,7 +881,7 @@
       "model": "models/food-fish-pastry.glb",
       "revision": "4f627b4d12cd",
       "sourceRevision": "1b7e0d0c8215",
-      "original": "../classtools/assets/avatars/food-fish-pastry.webp",
+      "original": "/assets/avatars/food-fish-pastry.webp",
       "bytes": 488356
     },
     {
@@ -895,7 +895,7 @@
       "model": "models/food-fried-egg.glb",
       "revision": "750619a6d5d2",
       "sourceRevision": "7ccc5763fed5",
-      "original": "../classtools/assets/avatars/food-fried-egg.webp",
+      "original": "/assets/avatars/food-fried-egg.webp",
       "bytes": 373032
     },
     {
@@ -909,7 +909,7 @@
       "model": "models/food-gimbap.glb",
       "revision": "fb8c8e381732",
       "sourceRevision": "a3a4e9d4dfdc",
-      "original": "../classtools/assets/avatars/food-gimbap.webp",
+      "original": "/assets/avatars/food-gimbap.webp",
       "bytes": 385972
     },
     {
@@ -923,7 +923,7 @@
       "model": "models/food-hamburger.glb",
       "revision": "400cd8eafa4e",
       "sourceRevision": "bd7bb5f4d0e0",
-      "original": "../classtools/assets/avatars/food-hamburger.webp",
+      "original": "/assets/avatars/food-hamburger.webp",
       "bytes": 414524
     },
     {
@@ -937,7 +937,7 @@
       "model": "models/food-hot-dog.glb",
       "revision": "5380baf05966",
       "sourceRevision": "4514b020e0c9",
-      "original": "../classtools/assets/avatars/food-hot-dog.webp",
+      "original": "/assets/avatars/food-hot-dog.webp",
       "bytes": 416344
     },
     {
@@ -951,7 +951,7 @@
       "model": "models/food-ice-cream.glb",
       "revision": "71e53ce11f3f",
       "sourceRevision": "c7d96210a148",
-      "original": "../classtools/assets/avatars/food-ice-cream.webp",
+      "original": "/assets/avatars/food-ice-cream.webp",
       "bytes": 327300
     },
     {
@@ -965,7 +965,7 @@
       "model": "models/food-macaron.glb",
       "revision": "d22848c2bf42",
       "sourceRevision": "22eec6d5d5cb",
-      "original": "../classtools/assets/avatars/food-macaron.webp",
+      "original": "/assets/avatars/food-macaron.webp",
       "bytes": 432932
     },
     {
@@ -979,7 +979,7 @@
       "model": "models/food-pizza.glb",
       "revision": "ee26b2362427",
       "sourceRevision": "9121c16f5425",
-      "original": "../classtools/assets/avatars/food-pizza.webp",
+      "original": "/assets/avatars/food-pizza.webp",
       "bytes": 370460
     },
     {
@@ -993,7 +993,7 @@
       "model": "models/food-popcorn.glb",
       "revision": "59db7fdcac7c",
       "sourceRevision": "69ccd9394cd8",
-      "original": "../classtools/assets/avatars/food-popcorn.webp",
+      "original": "/assets/avatars/food-popcorn.webp",
       "bytes": 489416
     },
     {
@@ -1007,7 +1007,7 @@
       "model": "models/food-pudding.glb",
       "revision": "a9c04ef1b5a5",
       "sourceRevision": "3223a2cd1e78",
-      "original": "../classtools/assets/avatars/food-pudding.webp",
+      "original": "/assets/avatars/food-pudding.webp",
       "bytes": 435392
     },
     {
@@ -1021,7 +1021,7 @@
       "model": "models/food-ramen.glb",
       "revision": "c00ae79c97c4",
       "sourceRevision": "41ea42e2b8db",
-      "original": "../classtools/assets/avatars/food-ramen.webp",
+      "original": "/assets/avatars/food-ramen.webp",
       "bytes": 475544
     },
     {
@@ -1035,7 +1035,7 @@
       "model": "models/food-rice-ball.glb",
       "revision": "0bf217d57469",
       "sourceRevision": "34fd4eaeae33",
-      "original": "../classtools/assets/avatars/food-rice-ball.webp",
+      "original": "/assets/avatars/food-rice-ball.webp",
       "bytes": 416812
     },
     {
@@ -1049,7 +1049,7 @@
       "model": "models/food-sandwich.glb",
       "revision": "208320380ad8",
       "sourceRevision": "3a20e74e3457",
-      "original": "../classtools/assets/avatars/food-sandwich.webp",
+      "original": "/assets/avatars/food-sandwich.webp",
       "bytes": 393636
     },
     {
@@ -1063,7 +1063,7 @@
       "model": "models/food-sushi.glb",
       "revision": "590560bfacd2",
       "sourceRevision": "06acb6a0e7aa",
-      "original": "../classtools/assets/avatars/food-sushi.webp",
+      "original": "/assets/avatars/food-sushi.webp",
       "bytes": 478236
     },
     {
@@ -1077,7 +1077,7 @@
       "model": "models/food-toast.glb",
       "revision": "b42c71670445",
       "sourceRevision": "b51ddc0ecbdc",
-      "original": "../classtools/assets/avatars/food-toast.webp",
+      "original": "/assets/avatars/food-toast.webp",
       "bytes": 355636
     },
     {
@@ -1091,7 +1091,7 @@
       "model": "models/food-tteokbokki.glb",
       "revision": "6805135cd322",
       "sourceRevision": "2cd38d25f55f",
-      "original": "../classtools/assets/avatars/food-tteokbokki.webp",
+      "original": "/assets/avatars/food-tteokbokki.webp",
       "bytes": 469848
     },
     {
@@ -1105,7 +1105,7 @@
       "model": "models/fruit-apple.glb",
       "revision": "f1a8f7681a8d",
       "sourceRevision": "6338c036d8a7",
-      "original": "../classtools/assets/avatars/fruit-apple.webp",
+      "original": "/assets/avatars/fruit-apple.webp",
       "bytes": 429840
     },
     {
@@ -1119,7 +1119,7 @@
       "model": "models/fruit-avocado.glb",
       "revision": "4bc414826e92",
       "sourceRevision": "035491d587ca",
-      "original": "../classtools/assets/avatars/fruit-avocado.webp",
+      "original": "/assets/avatars/fruit-avocado.webp",
       "bytes": 216732
     },
     {
@@ -1133,7 +1133,7 @@
       "model": "models/fruit-banana.glb",
       "revision": "f194367a0607",
       "sourceRevision": "bf141c8dd82c",
-      "original": "../classtools/assets/avatars/fruit-banana.webp",
+      "original": "/assets/avatars/fruit-banana.webp",
       "bytes": 355304
     },
     {
@@ -1147,7 +1147,7 @@
       "model": "models/fruit-blueberry.glb",
       "revision": "ebd1f508edee",
       "sourceRevision": "e1da274ebce0",
-      "original": "../classtools/assets/avatars/fruit-blueberry.webp",
+      "original": "/assets/avatars/fruit-blueberry.webp",
       "bytes": 407136
     },
     {
@@ -1161,7 +1161,7 @@
       "model": "models/fruit-cherry.glb",
       "revision": "2e18759e8121",
       "sourceRevision": "f236d458056b",
-      "original": "../classtools/assets/avatars/fruit-cherry.webp",
+      "original": "/assets/avatars/fruit-cherry.webp",
       "bytes": 195104
     },
     {
@@ -1175,7 +1175,7 @@
       "model": "models/fruit-grape.glb",
       "revision": "33b19b1016cf",
       "sourceRevision": "6e7edf4275f2",
-      "original": "../classtools/assets/avatars/fruit-grape.webp",
+      "original": "/assets/avatars/fruit-grape.webp",
       "bytes": 380140
     },
     {
@@ -1189,7 +1189,7 @@
       "model": "models/fruit-mango.glb",
       "revision": "f5746fb9c4ae",
       "sourceRevision": "e62d7162b585",
-      "original": "../classtools/assets/avatars/fruit-mango.webp",
+      "original": "/assets/avatars/fruit-mango.webp",
       "bytes": 277596
     },
     {
@@ -1203,7 +1203,7 @@
       "model": "models/fruit-melon.glb",
       "revision": "1b76e1aa2b27",
       "sourceRevision": "bf4405092de3",
-      "original": "../classtools/assets/avatars/fruit-melon.webp",
+      "original": "/assets/avatars/fruit-melon.webp",
       "bytes": 494728
     },
     {
@@ -1217,7 +1217,7 @@
       "model": "models/fruit-orange.glb",
       "revision": "0d2d5bf1c39c",
       "sourceRevision": "93ed0e5b5573",
-      "original": "../classtools/assets/avatars/fruit-orange.webp",
+      "original": "/assets/avatars/fruit-orange.webp",
       "bytes": 448036
     },
     {
@@ -1231,7 +1231,7 @@
       "model": "models/fruit-peach.glb",
       "revision": "cfa513d9438b",
       "sourceRevision": "8416672d8d9a",
-      "original": "../classtools/assets/avatars/fruit-peach.webp",
+      "original": "/assets/avatars/fruit-peach.webp",
       "bytes": 442432
     },
     {
@@ -1245,7 +1245,7 @@
       "model": "models/fruit-persimmon.glb",
       "revision": "56b650198ae4",
       "sourceRevision": "c28762fdfa82",
-      "original": "../classtools/assets/avatars/fruit-persimmon.webp",
+      "original": "/assets/avatars/fruit-persimmon.webp",
       "bytes": 454496
     },
     {
@@ -1259,7 +1259,7 @@
       "model": "models/fruit-pineapple.glb",
       "revision": "6436d31752db",
       "sourceRevision": "1651a7a78095",
-      "original": "../classtools/assets/avatars/fruit-pineapple.webp",
+      "original": "/assets/avatars/fruit-pineapple.webp",
       "bytes": 466148
     },
     {
@@ -1273,7 +1273,7 @@
       "model": "models/fruit-strawberry.glb",
       "revision": "5b4fbd52ac01",
       "sourceRevision": "cee8c99f13b3",
-      "original": "../classtools/assets/avatars/fruit-strawberry.webp",
+      "original": "/assets/avatars/fruit-strawberry.webp",
       "bytes": 457420
     },
     {
@@ -1287,7 +1287,7 @@
       "model": "models/fruit-watermelon.glb",
       "revision": "b3b225644b3c",
       "sourceRevision": "b45e73462cc1",
-      "original": "../classtools/assets/avatars/fruit-watermelon.webp",
+      "original": "/assets/avatars/fruit-watermelon.webp",
       "bytes": 378556
     },
     {
@@ -1301,7 +1301,7 @@
       "model": "models/game-dice.glb",
       "revision": "2f6e72a9e35b",
       "sourceRevision": "05cbeb9b4a8b",
-      "original": "../classtools/assets/avatars/game-dice.webp",
+      "original": "/assets/avatars/game-dice.webp",
       "bytes": 298260
     },
     {
@@ -1315,7 +1315,7 @@
       "model": "models/object-boot.glb",
       "revision": "906c34474ee0",
       "sourceRevision": "6569a27d3f97",
-      "original": "../classtools/assets/avatars/object-boot.webp",
+      "original": "/assets/avatars/object-boot.webp",
       "bytes": 478316
     },
     {
@@ -1329,7 +1329,7 @@
       "model": "models/object-camera.glb",
       "revision": "a85e6d8ef4fc",
       "sourceRevision": "53df46dcbd44",
-      "original": "../classtools/assets/avatars/object-camera.webp",
+      "original": "/assets/avatars/object-camera.webp",
       "bytes": 370688
     },
     {
@@ -1343,7 +1343,7 @@
       "model": "models/object-eraser.glb",
       "revision": "03b17d950cbe",
       "sourceRevision": "b450d9332428",
-      "original": "../classtools/assets/avatars/object-eraser.webp",
+      "original": "/assets/avatars/object-eraser.webp",
       "bytes": 292332
     },
     {
@@ -1357,7 +1357,7 @@
       "model": "models/object-gift.glb",
       "revision": "deee54ad3cf2",
       "sourceRevision": "0df5c78d22ae",
-      "original": "../classtools/assets/avatars/object-gift.webp",
+      "original": "/assets/avatars/object-gift.webp",
       "bytes": 405796
     },
     {
@@ -1371,7 +1371,7 @@
       "model": "models/object-key.glb",
       "revision": "08ba53bda4b7",
       "sourceRevision": "8d8fe83bd488",
-      "original": "../classtools/assets/avatars/object-key.webp",
+      "original": "/assets/avatars/object-key.webp",
       "bytes": 262048
     },
     {
@@ -1385,7 +1385,7 @@
       "model": "models/object-lamp.glb",
       "revision": "51fdcf689fd9",
       "sourceRevision": "d1baab65563a",
-      "original": "../classtools/assets/avatars/object-lamp.webp",
+      "original": "/assets/avatars/object-lamp.webp",
       "bytes": 465444
     },
     {
@@ -1399,7 +1399,7 @@
       "model": "models/object-lock.glb",
       "revision": "b14c0ade3ce7",
       "sourceRevision": "64e3a84ea366",
-      "original": "../classtools/assets/avatars/object-lock.webp",
+      "original": "/assets/avatars/object-lock.webp",
       "bytes": 295716
     },
     {
@@ -1413,7 +1413,7 @@
       "model": "models/object-mitten.glb",
       "revision": "28948332ed06",
       "sourceRevision": "5f971dafe1b0",
-      "original": "../classtools/assets/avatars/object-mitten.webp",
+      "original": "/assets/avatars/object-mitten.webp",
       "bytes": 384428
     },
     {
@@ -1427,7 +1427,7 @@
       "model": "models/object-newspaper.glb",
       "revision": "7f121b5159f0",
       "sourceRevision": "29bc01875291",
-      "original": "../classtools/assets/avatars/object-newspaper.webp",
+      "original": "/assets/avatars/object-newspaper.webp",
       "bytes": 348848
     },
     {
@@ -1441,7 +1441,7 @@
       "model": "models/object-pencil.glb",
       "revision": "da128e92102c",
       "sourceRevision": "162f172be525",
-      "original": "../classtools/assets/avatars/object-pencil.webp",
+      "original": "/assets/avatars/object-pencil.webp",
       "bytes": 291520
     },
     {
@@ -1455,7 +1455,7 @@
       "model": "models/object-radio.glb",
       "revision": "58ab7600ab66",
       "sourceRevision": "d1811cfc1803",
-      "original": "../classtools/assets/avatars/object-radio.webp",
+      "original": "/assets/avatars/object-radio.webp",
       "bytes": 386680
     },
     {
@@ -1469,7 +1469,7 @@
       "model": "models/object-sack.glb",
       "revision": "70b56d9e933c",
       "sourceRevision": "0d1cb112193c",
-      "original": "../classtools/assets/avatars/object-sack.webp",
+      "original": "/assets/avatars/object-sack.webp",
       "bytes": 431060
     },
     {
@@ -1483,7 +1483,7 @@
       "model": "models/object-television.glb",
       "revision": "b6d447f6438a",
       "sourceRevision": "1c27c5540d5e",
-      "original": "../classtools/assets/avatars/object-television.webp",
+      "original": "/assets/avatars/object-television.webp",
       "bytes": 391608
     },
     {
@@ -1497,7 +1497,7 @@
       "model": "models/object-umbrella.glb",
       "revision": "3ae2d858082f",
       "sourceRevision": "bdad4d1f4ca1",
-      "original": "../classtools/assets/avatars/object-umbrella.webp",
+      "original": "/assets/avatars/object-umbrella.webp",
       "bytes": 307836
     },
     {
@@ -1511,7 +1511,7 @@
       "model": "models/object-watch.glb",
       "revision": "d0cf6c129b13",
       "sourceRevision": "f31b13101739",
-      "original": "../classtools/assets/avatars/object-watch.webp",
+      "original": "/assets/avatars/object-watch.webp",
       "bytes": 286432
     },
     {
@@ -1525,7 +1525,7 @@
       "model": "models/sport-baseball.glb",
       "revision": "ae33b502e66e",
       "sourceRevision": "32f9f51af797",
-      "original": "../classtools/assets/avatars/sport-baseball.webp",
+      "original": "/assets/avatars/sport-baseball.webp",
       "bytes": 326932
     },
     {
@@ -1539,7 +1539,7 @@
       "model": "models/sport-basketball.glb",
       "revision": "57712b6adcd1",
       "sourceRevision": "58b06bbe3c58",
-      "original": "../classtools/assets/avatars/sport-basketball.webp",
+      "original": "/assets/avatars/sport-basketball.webp",
       "bytes": 330760
     },
     {
@@ -1553,7 +1553,7 @@
       "model": "models/sport-bowling.glb",
       "revision": "1fef8a227613",
       "sourceRevision": "e023e128d4e8",
-      "original": "../classtools/assets/avatars/sport-bowling.webp",
+      "original": "/assets/avatars/sport-bowling.webp",
       "bytes": 273892
     },
     {
@@ -1567,7 +1567,7 @@
       "model": "models/sport-soccer.glb",
       "revision": "a057dab7bc57",
       "sourceRevision": "31de1c0fc395",
-      "original": "../classtools/assets/avatars/sport-soccer.webp",
+      "original": "/assets/avatars/sport-soccer.webp",
       "bytes": 282976
     },
     {
@@ -1581,7 +1581,7 @@
       "model": "models/theme-balloons.glb",
       "revision": "79bdb6a31590",
       "sourceRevision": "d11201d48f84",
-      "original": "../classtools/assets/avatars/theme-balloons.webp",
+      "original": "/assets/avatars/theme-balloons.webp",
       "bytes": 394272
     },
     {
@@ -1595,7 +1595,7 @@
       "model": "models/theme-cactus.glb",
       "revision": "2944ad923668",
       "sourceRevision": "18f966f3f7ea",
-      "original": "../classtools/assets/avatars/theme-cactus.webp",
+      "original": "/assets/avatars/theme-cactus.webp",
       "bytes": 381228
     },
     {
@@ -1609,7 +1609,7 @@
       "model": "models/theme-cherry-blossom.glb",
       "revision": "997f087f8007",
       "sourceRevision": "fe7a71dc7460",
-      "original": "../classtools/assets/avatars/theme-cherry-blossom.webp",
+      "original": "/assets/avatars/theme-cherry-blossom.webp",
       "bytes": 340384
     },
     {
@@ -1623,7 +1623,7 @@
       "model": "models/theme-cloud.glb",
       "revision": "b1d64eb949d6",
       "sourceRevision": "8fa4e47a71d0",
-      "original": "../classtools/assets/avatars/theme-cloud.webp",
+      "original": "/assets/avatars/theme-cloud.webp",
       "bytes": 319368
     },
     {
@@ -1637,7 +1637,7 @@
       "model": "models/theme-clover.glb",
       "revision": "27a40af83da7",
       "sourceRevision": "62537de099c0",
-      "original": "../classtools/assets/avatars/theme-clover.webp",
+      "original": "/assets/avatars/theme-clover.webp",
       "bytes": 416016
     },
     {
@@ -1651,7 +1651,7 @@
       "model": "models/theme-crown.glb",
       "revision": "8cebdb8368a3",
       "sourceRevision": "4ed8fb0b5bdc",
-      "original": "../classtools/assets/avatars/theme-crown.webp",
+      "original": "/assets/avatars/theme-crown.webp",
       "bytes": 329620
     },
     {
@@ -1665,7 +1665,7 @@
       "model": "models/theme-guitar.glb",
       "revision": "d8e9e3985e03",
       "sourceRevision": "899df3e2bb5f",
-      "original": "../classtools/assets/avatars/theme-guitar.webp",
+      "original": "/assets/avatars/theme-guitar.webp",
       "bytes": 387276
     },
     {
@@ -1679,7 +1679,7 @@
       "model": "models/theme-lightning.glb",
       "revision": "b389086c36c0",
       "sourceRevision": "b7eca8cff0d4",
-      "original": "../classtools/assets/avatars/theme-lightning.webp",
+      "original": "/assets/avatars/theme-lightning.webp",
       "bytes": 230072
     },
     {
@@ -1693,7 +1693,7 @@
       "model": "models/theme-maple-leaf.glb",
       "revision": "7a15e9f0bef7",
       "sourceRevision": "370de952390e",
-      "original": "../classtools/assets/avatars/theme-maple-leaf.webp",
+      "original": "/assets/avatars/theme-maple-leaf.webp",
       "bytes": 355328
     },
     {
@@ -1707,7 +1707,7 @@
       "model": "models/theme-moon.glb",
       "revision": "757c6169c860",
       "sourceRevision": "b03fd1191c0b",
-      "original": "../classtools/assets/avatars/theme-moon.webp",
+      "original": "/assets/avatars/theme-moon.webp",
       "bytes": 262524
     },
     {
@@ -1721,7 +1721,7 @@
       "model": "models/theme-music-note.glb",
       "revision": "52fa036f546a",
       "sourceRevision": "1e53f434aee5",
-      "original": "../classtools/assets/avatars/theme-music-note.webp",
+      "original": "/assets/avatars/theme-music-note.webp",
       "bytes": 233044
     },
     {
@@ -1735,7 +1735,7 @@
       "model": "models/theme-paper-airplane.glb",
       "revision": "a9ed9a106e3b",
       "sourceRevision": "ad5644494f53",
-      "original": "../classtools/assets/avatars/theme-paper-airplane.webp",
+      "original": "/assets/avatars/theme-paper-airplane.webp",
       "bytes": 307476
     },
     {
@@ -1749,7 +1749,7 @@
       "model": "models/theme-rainbow.glb",
       "revision": "eae5632271c6",
       "sourceRevision": "2ae28d5954b7",
-      "original": "../classtools/assets/avatars/theme-rainbow.webp",
+      "original": "/assets/avatars/theme-rainbow.webp",
       "bytes": 404680
     },
     {
@@ -1763,7 +1763,7 @@
       "model": "models/theme-rose.glb",
       "revision": "bc4539358d39",
       "sourceRevision": "78aae012d180",
-      "original": "../classtools/assets/avatars/theme-rose.webp",
+      "original": "/assets/avatars/theme-rose.webp",
       "bytes": 452636
     },
     {
@@ -1777,7 +1777,7 @@
       "model": "models/theme-snowman.glb",
       "revision": "5c6ee41f8123",
       "sourceRevision": "e275c2139624",
-      "original": "../classtools/assets/avatars/theme-snowman.webp",
+      "original": "/assets/avatars/theme-snowman.webp",
       "bytes": 211680
     },
     {
@@ -1791,7 +1791,7 @@
       "model": "models/theme-star.glb",
       "revision": "ecf195456203",
       "sourceRevision": "9448c73d0a8f",
-      "original": "../classtools/assets/avatars/theme-star.webp",
+      "original": "/assets/avatars/theme-star.webp",
       "bytes": 380440
     },
     {
@@ -1805,7 +1805,7 @@
       "model": "models/theme-sun.glb",
       "revision": "7301b9b4650f",
       "sourceRevision": "2a589a92ce2b",
-      "original": "../classtools/assets/avatars/theme-sun.webp",
+      "original": "/assets/avatars/theme-sun.webp",
       "bytes": 342980
     },
     {
@@ -1819,7 +1819,7 @@
       "model": "models/theme-sunflower.glb",
       "revision": "5d5b29fc1b2e",
       "sourceRevision": "66a83018e74b",
-      "original": "../classtools/assets/avatars/theme-sunflower.webp",
+      "original": "/assets/avatars/theme-sunflower.webp",
       "bytes": 425352
     },
     {
@@ -1833,7 +1833,7 @@
       "model": "models/theme-tulip.glb",
       "revision": "1c52eb691bff",
       "sourceRevision": "5a2b4b94cad1",
-      "original": "../classtools/assets/avatars/theme-tulip.webp",
+      "original": "/assets/avatars/theme-tulip.webp",
       "bytes": 409068
     },
     {
@@ -1847,7 +1847,7 @@
       "model": "models/vegetable-bell-pepper.glb",
       "revision": "e00aaac52e29",
       "sourceRevision": "f0e4f30c4b57",
-      "original": "../classtools/assets/avatars/vegetable-bell-pepper.webp",
+      "original": "/assets/avatars/vegetable-bell-pepper.webp",
       "bytes": 324304
     },
     {
@@ -1861,7 +1861,7 @@
       "model": "models/vegetable-broccoli.glb",
       "revision": "46270a5bfa48",
       "sourceRevision": "a7f2110da4f0",
-      "original": "../classtools/assets/avatars/vegetable-broccoli.webp",
+      "original": "/assets/avatars/vegetable-broccoli.webp",
       "bytes": 473432
     },
     {
@@ -1875,7 +1875,7 @@
       "model": "models/vegetable-carrot.glb",
       "revision": "64b675bb0153",
       "sourceRevision": "f4e1d1e6b34f",
-      "original": "../classtools/assets/avatars/vegetable-carrot.webp",
+      "original": "/assets/avatars/vegetable-carrot.webp",
       "bytes": 304236
     },
     {
@@ -1889,7 +1889,7 @@
       "model": "models/vegetable-corn.glb",
       "revision": "18f3ceaa8b76",
       "sourceRevision": "ee5220bad6b3",
-      "original": "../classtools/assets/avatars/vegetable-corn.webp",
+      "original": "/assets/avatars/vegetable-corn.webp",
       "bytes": 442752
     },
     {
@@ -1903,7 +1903,7 @@
       "model": "models/vegetable-eggplant.glb",
       "revision": "3b4708f95def",
       "sourceRevision": "6214dae48cc6",
-      "original": "../classtools/assets/avatars/vegetable-eggplant.webp",
+      "original": "/assets/avatars/vegetable-eggplant.webp",
       "bytes": 244444
     },
     {
@@ -1917,7 +1917,7 @@
       "model": "models/vegetable-mushroom.glb",
       "revision": "e87e315c3ea2",
       "sourceRevision": "223d3adebe3a",
-      "original": "../classtools/assets/avatars/vegetable-mushroom.webp",
+      "original": "/assets/avatars/vegetable-mushroom.webp",
       "bytes": 424556
     },
     {
@@ -1931,7 +1931,7 @@
       "model": "models/vegetable-potato.glb",
       "revision": "5f6ebc97d086",
       "sourceRevision": "ee5e029026a0",
-      "original": "../classtools/assets/avatars/vegetable-potato.webp",
+      "original": "/assets/avatars/vegetable-potato.webp",
       "bytes": 236364
     },
     {
@@ -1945,7 +1945,7 @@
       "model": "models/vegetable-pumpkin.glb",
       "revision": "1f6b175925df",
       "sourceRevision": "04d7023cce9c",
-      "original": "../classtools/assets/avatars/vegetable-pumpkin.webp",
+      "original": "/assets/avatars/vegetable-pumpkin.webp",
       "bytes": 350732
     },
     {
@@ -1959,7 +1959,7 @@
       "model": "models/vegetable-radish.glb",
       "revision": "e8ac6f18f9f1",
       "sourceRevision": "19aa14978989",
-      "original": "../classtools/assets/avatars/vegetable-radish.webp",
+      "original": "/assets/avatars/vegetable-radish.webp",
       "bytes": 324160
     },
     {
@@ -1973,7 +1973,7 @@
       "model": "models/vegetable-sweet-potato.glb",
       "revision": "f512a6abb6e0",
       "sourceRevision": "a3981a41d488",
-      "original": "../classtools/assets/avatars/vegetable-sweet-potato.webp",
+      "original": "/assets/avatars/vegetable-sweet-potato.webp",
       "bytes": 267792
     },
     {
@@ -1987,7 +1987,7 @@
       "model": "models/vegetable-tomato.glb",
       "revision": "1d900205afbc",
       "sourceRevision": "29418ca9ac3d",
-      "original": "../classtools/assets/avatars/vegetable-tomato.webp",
+      "original": "/assets/avatars/vegetable-tomato.webp",
       "bytes": 319208
     },
     {
@@ -2001,7 +2001,7 @@
       "model": "models/vehicle-airplane.glb",
       "revision": "5e586fb81fbf",
       "sourceRevision": "767fb126fa44",
-      "original": "../classtools/assets/avatars/vehicle-airplane.webp",
+      "original": "/assets/avatars/vehicle-airplane.webp",
       "bytes": 360056
     },
     {
@@ -2015,7 +2015,7 @@
       "model": "models/vehicle-airship.glb",
       "revision": "4a7af97e81ca",
       "sourceRevision": "47d83314497c",
-      "original": "../classtools/assets/avatars/vehicle-airship.webp",
+      "original": "/assets/avatars/vehicle-airship.webp",
       "bytes": 468180
     },
     {
@@ -2029,7 +2029,7 @@
       "model": "models/vehicle-ambulance.glb",
       "revision": "74c1e9644d59",
       "sourceRevision": "c4fb84f9dbb8",
-      "original": "../classtools/assets/avatars/vehicle-ambulance.webp",
+      "original": "/assets/avatars/vehicle-ambulance.webp",
       "bytes": 437052
     },
     {
@@ -2043,7 +2043,7 @@
       "model": "models/vehicle-boat.glb",
       "revision": "b5a54ea072da",
       "sourceRevision": "912dd220dabe",
-      "original": "../classtools/assets/avatars/vehicle-boat.webp",
+      "original": "/assets/avatars/vehicle-boat.webp",
       "bytes": 325320
     },
     {
@@ -2057,7 +2057,7 @@
       "model": "models/vehicle-fire-truck.glb",
       "revision": "1618f3501404",
       "sourceRevision": "8a705b4e40e1",
-      "original": "../classtools/assets/avatars/vehicle-fire-truck.webp",
+      "original": "/assets/avatars/vehicle-fire-truck.webp",
       "bytes": 497676
     },
     {
@@ -2071,7 +2071,7 @@
       "model": "models/vehicle-helicopter.glb",
       "revision": "d65bada10270",
       "sourceRevision": "d5df267e7219",
-      "original": "../classtools/assets/avatars/vehicle-helicopter.webp",
+      "original": "/assets/avatars/vehicle-helicopter.webp",
       "bytes": 356680
     },
     {
@@ -2085,7 +2085,7 @@
       "model": "models/vehicle-hot-air-balloon.glb",
       "revision": "c4f1e1249fde",
       "sourceRevision": "5bb4126906b3",
-      "original": "../classtools/assets/avatars/vehicle-hot-air-balloon.webp",
+      "original": "/assets/avatars/vehicle-hot-air-balloon.webp",
       "bytes": 493656
     },
     {
@@ -2099,7 +2099,7 @@
       "model": "models/vehicle-rocket.glb",
       "revision": "2c0d0b71818b",
       "sourceRevision": "9d2445b79067",
-      "original": "../classtools/assets/avatars/vehicle-rocket.webp",
+      "original": "/assets/avatars/vehicle-rocket.webp",
       "bytes": 337568
     },
     {
@@ -2113,7 +2113,7 @@
       "model": "models/vehicle-submarine.glb",
       "revision": "0b80aa74ed34",
       "sourceRevision": "50671abf5f1f",
-      "original": "../classtools/assets/avatars/vehicle-submarine.webp",
+      "original": "/assets/avatars/vehicle-submarine.webp",
       "bytes": 472716
     },
     {
@@ -2127,7 +2127,7 @@
       "model": "models/vehicle-train.glb",
       "revision": "56a564357910",
       "sourceRevision": "7701d38f979b",
-      "original": "../classtools/assets/avatars/vehicle-train.webp",
+      "original": "/assets/avatars/vehicle-train.webp",
       "bytes": 442824
     },
     {
@@ -2141,7 +2141,7 @@
       "model": "models/animal-caterpillar.glb",
       "revision": "bc07901176d9",
       "sourceRevision": "30fc7112d5ee",
-      "original": "../classtools/assets/avatars/animal-caterpillar.webp",
+      "original": "/assets/avatars/animal-caterpillar.webp",
       "bytes": 365968
     },
     {
@@ -2155,7 +2155,7 @@
       "model": "models/animal-cow.glb",
       "revision": "621c0fab96b0",
       "sourceRevision": "ad6983d599a2",
-      "original": "../classtools/assets/avatars/animal-cow.webp",
+      "original": "/assets/avatars/animal-cow.webp",
       "bytes": 442240
     },
     {
@@ -2169,7 +2169,7 @@
       "model": "models/animal-jellyfish.glb",
       "revision": "fdda58f531d4",
       "sourceRevision": "ca30c7c72ee8",
-      "original": "../classtools/assets/avatars/animal-jellyfish.webp",
+      "original": "/assets/avatars/animal-jellyfish.webp",
       "bytes": 317996
     },
     {
@@ -2183,7 +2183,7 @@
       "model": "models/animal-rhinoceros-beetle.glb",
       "revision": "37b12017b8dd",
       "sourceRevision": "bc71aa0f0861",
-      "original": "../classtools/assets/avatars/animal-rhinoceros-beetle.webp",
+      "original": "/assets/avatars/animal-rhinoceros-beetle.webp",
       "bytes": 258084
     },
     {
@@ -2197,7 +2197,7 @@
       "model": "models/animal-stag-beetle.glb",
       "revision": "45683cfbe094",
       "sourceRevision": "6c6882de0839",
-      "original": "../classtools/assets/avatars/animal-stag-beetle.webp",
+      "original": "/assets/avatars/animal-stag-beetle.webp",
       "bytes": 279592
     },
     {
@@ -2211,7 +2211,7 @@
       "model": "models/animal-stingray.glb",
       "revision": "c103b6a0cc27",
       "sourceRevision": "5b9e68bf35b2",
-      "original": "../classtools/assets/avatars/animal-stingray.webp",
+      "original": "/assets/avatars/animal-stingray.webp",
       "bytes": 245296
     },
     {
@@ -2225,7 +2225,7 @@
       "model": "models/animal-triceratops.glb",
       "revision": "7a35cc90d317",
       "sourceRevision": "1e3be7aaaf61",
-      "original": "../classtools/assets/avatars/animal-triceratops.webp",
+      "original": "/assets/avatars/animal-triceratops.webp",
       "bytes": 318568
     },
     {
@@ -2239,7 +2239,7 @@
       "model": "models/drink-banana-milk.glb",
       "revision": "6380f1c46bc0",
       "sourceRevision": "304443e1cfe7",
-      "original": "../classtools/assets/avatars/drink-banana-milk.webp",
+      "original": "/assets/avatars/drink-banana-milk.webp",
       "bytes": 212212
     },
     {
@@ -2253,7 +2253,7 @@
       "model": "models/food-cotton-candy.glb",
       "revision": "c1a0935894c9",
       "sourceRevision": "e75d45f17449",
-      "original": "../classtools/assets/avatars/food-cotton-candy.webp",
+      "original": "/assets/avatars/food-cotton-candy.webp",
       "bytes": 263276
     },
     {
@@ -2267,7 +2267,7 @@
       "model": "models/food-french-fries.glb",
       "revision": "c15ae4062f10",
       "sourceRevision": "4d968b7cc6ef",
-      "original": "../classtools/assets/avatars/food-french-fries.webp",
+      "original": "/assets/avatars/food-french-fries.webp",
       "bytes": 253756
     },
     {
@@ -2281,7 +2281,7 @@
       "model": "models/object-treasure-chest.glb",
       "revision": "7e6fc53ee47f",
       "sourceRevision": "97daf920c1bb",
-      "original": "../classtools/assets/avatars/object-treasure-chest.webp",
+      "original": "/assets/avatars/object-treasure-chest.webp",
       "bytes": 291460
     },
     {
@@ -2295,7 +2295,7 @@
       "model": "models/sport-shuttlecock.glb",
       "revision": "42c9d5d792ef",
       "sourceRevision": "77bbc7ccd806",
-      "original": "../classtools/assets/avatars/sport-shuttlecock.webp",
+      "original": "/assets/avatars/sport-shuttlecock.webp",
       "bytes": 356192
     },
     {
@@ -2309,7 +2309,7 @@
       "model": "models/theme-gem.glb",
       "revision": "76ff496cc432",
       "sourceRevision": "38cff9b7ccdd",
-      "original": "../classtools/assets/avatars/theme-gem.webp",
+      "original": "/assets/avatars/theme-gem.webp",
       "bytes": 207844
     },
     {
@@ -2323,7 +2323,7 @@
       "model": "models/theme-heart.glb",
       "revision": "77e2756d0fbc",
       "sourceRevision": "825cedb05328",
-      "original": "../classtools/assets/avatars/theme-heart.webp",
+      "original": "/assets/avatars/theme-heart.webp",
       "bytes": 236564
     },
     {
@@ -2337,7 +2337,7 @@
       "model": "models/theme-robot.glb",
       "revision": "1bc441c81e12",
       "sourceRevision": "57dfe1fe0bc8",
-      "original": "../classtools/assets/avatars/theme-robot.webp",
+      "original": "/assets/avatars/theme-robot.webp",
       "bytes": 284496
     },
     {
@@ -2351,7 +2351,7 @@
       "model": "models/theme-saturn.glb",
       "revision": "e557af992107",
       "sourceRevision": "7aeb76ab3ad5",
-      "original": "../classtools/assets/avatars/theme-saturn.webp",
+      "original": "/assets/avatars/theme-saturn.webp",
       "bytes": 239124
     },
     {
@@ -2365,7 +2365,7 @@
       "model": "models/vehicle-ufo.glb",
       "revision": "c7a1a45ac6c8",
       "sourceRevision": "e4f6221636bd",
-      "original": "../classtools/assets/avatars/vehicle-ufo.webp",
+      "original": "/assets/avatars/vehicle-ufo.webp",
       "bytes": 221300
     }
   ],

@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+const base=process.argv[2]||'https://classj.kr',out=new URL('../../outputs/qa/avatar-lab/compression-20261112/',import.meta.url);
+const expected=JSON.parse(await fs.readFile(new URL('release-report.json',out),'utf8'));
+const report=await fetch(base+'/apps/avatar-lab/compression-report.json?v=d2f122137').then(r=>{assert.ok(r.ok);return r.json()});
+assert.deepEqual(report,expected);
+const index=await fetch(base+'/apps/avatar-lab/collection-index.json?v=d2f122137').then(r=>{assert.ok(r.ok);return r.json()});
+assert.equal(index.avatars.length,169);
+const results=[],failures=[];let next=0;
+await Promise.all(Array.from({length:6},async()=>{while(next<report.models.length){const m=report.models[next++];try{assert.match(m.id,/^[a-z0-9-]+$/);const response=await fetch(base+'/apps/avatar-lab/models/'+m.id+'.glb?v='+m.sha256.slice(0,12),{signal:AbortSignal.timeout(30000)});assert.ok(response.ok);const bytes=Buffer.from(await response.arrayBuffer());assert.equal(bytes.toString('ascii',0,4),'glTF');assert.equal(bytes.length,m.bytes);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),m.sha256);results.push({id:m.id,bytes:bytes.length,sha256:m.sha256,cache:response.headers.get('cache-control')});}catch(e){failures.push({id:m.id,error:e.message});}}}));
+const health=await fetch(base+'/health').then(r=>r.json());
+const result={base,health,verified:results.length,failures,totalBytes:results.reduce((n,r)=>n+r.bytes,0),results};
+await fs.writeFile(new URL(base.startsWith('https:')?'live-verification.json':'express-verification.json',out),JSON.stringify(result,null,2));console.log(JSON.stringify({health,verified:results.length,failures,totalBytes:result.totalBytes}));assert.equal(failures.length,0);

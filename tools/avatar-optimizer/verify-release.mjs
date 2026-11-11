@@ -18,7 +18,7 @@ for(const a of index.avatars){
  const source=await fs.readFile(path.join(root,'apps/avatar-lab/models',a.id+'.glb'));assert.equal(sha(source),m.sourceHash);
  const orig=await io.readBinary(source),small=await io.readBinary(buf);assert.deepEqual(signature(small),signature(orig),a.id+' animation mismatch');
  for(const t of small.getRoot().listTextures())assert.equal(t.getMimeType(),'image/webp');
- const original=await fs.readFile(path.resolve(release,'apps/avatar-lab',a.original));assert.equal(sha(original).slice(0,12),a.sourceRevision,a.id+' source artwork');
+ const original=await fs.readFile(path.resolve(release,'apps/classtools/assets/avatars',a.id+'.webp'));assert.equal(sha(original).slice(0,12),a.sourceRevision,a.id+' source artwork');
  bytes+=buf.length;
 }
 for(const f of ['index.html','collection.html','collection-review.html']){const html=await fs.readFile(path.join(release,'apps/avatar-lab',f),'utf8');assert.ok(html.includes('DRACOLoader.js'));assert.ok(html.includes('avatar-loader.js'));}
