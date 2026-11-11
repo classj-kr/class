@@ -437,11 +437,11 @@
             border-color: var(--gold-dark);
         }
 
-                        .hub-room-form {
+                                        .hub-room-form {
             position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             background: linear-gradient(90deg, rgba(var(--panel-dark-rgb), 0.98) 0%, rgba(var(--panel-dark-rgb), 0.92) 25%, rgba(var(--panel-darker-rgb), 0.6) 55%, rgba(var(--panel-darker-rgb), 0.25) 100%);
             border: 1px solid rgba(var(--panel-dark-rgb), 0.98);
             border-radius: 999px;
@@ -455,29 +455,47 @@
             box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
         }
 
-        .hub-room-door-link {
+        .hub-room-door-icon-wrap {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            padding: 1px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: transform 0.15s ease, filter 0.15s ease;
             line-height: 1;
-        }
-
-        .hub-room-door-link:hover,
-        .hub-room-door-link:focus-visible {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.8));
+            pointer-events: none;
+            user-select: none;
+            perspective: 120px;
         }
 
         .hub-room-door-icon {
             display: block;
-            width: 18px;
-            height: 18px;
-            border-radius: 2px;
+            width: 17px;
+            height: 17px;
+            overflow: visible;
+        }
+
+        /* 문짝 3D 회전 애니메이션 */
+        .hub-door-leaf {
+            transform-origin: 6px 16px;
+            transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 방 안쪽 불빛 트랜지션 */
+        .hub-door-glow {
+            opacity: 0.15;
+            transition: opacity 0.32s ease;
+        }
+
+        /* Enter 버튼 호버 또는 포커스 시 문이 활짝 열림 */
+        .hub-room-form:has(.hub-room-button:hover) .hub-door-leaf,
+        .hub-room-form:has(.hub-room-button:focus-visible) .hub-door-leaf,
+        .hub-room-door-icon-wrap.door-open .hub-door-leaf {
+            transform: perspective(120px) rotateY(-62deg);
+        }
+
+        .hub-room-form:has(.hub-room-button:hover) .hub-door-glow,
+        .hub-room-form:has(.hub-room-button:focus-visible) .hub-door-glow,
+        .hub-room-door-icon-wrap.door-open .hub-door-glow {
+            opacity: 1;
+            filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.9));
         }
 
         .hub-room-input-wrap {
@@ -1194,8 +1212,7 @@
             <h1 class="learning-hub-title">기초학력</h1>
             <div class="hub-title-link">
                 <form id="hubRoomForm" class="hub-room-form" action="/room/" method="GET" novalidate>
-                    <a href="/room/" class="hub-room-door-link" data-requires-player="true" data-always-open="true" title="방 번호로 입장" aria-label="방 번호로 입장">
-                        <svg class="hub-room-door-icon" viewBox="0 0 32 32" aria-hidden="true">
+                    <span id="hubRoomDoorWrap" class="hub-room-door-icon-wrap"><svg class="hub-room-door-icon" viewBox="0 0 32 32" aria-hidden="true">
   <defs>
     <linearGradient id="doorFrameGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#3e2718"/>
@@ -1221,25 +1238,27 @@
   <!-- 문틀 -->
   <rect x="3" y="2" width="26" height="28" rx="1.5" fill="url(#doorFrameGrad)" stroke="#1a0f08" stroke-width="0.8"/>
   <rect x="5.5" y="4.5" width="21" height="25" fill="#180e07"/>
-  <!-- 열린 틈으로 쏟아지는 방 안쪽 황금빛 조명 -->
-  <rect x="6" y="5" width="20" height="24" fill="url(#doorGlowGrad)"/>
-  <!-- 살짝 열린 3D 입체 원목 문짝 -->
-  <path d="M6 5 L19.5 7.2 L19.5 26.8 L6 29 Z" fill="url(#doorWoodGrad)" stroke="#2b1508" stroke-width="0.6"/>
-  <!-- 상단 패널 몰딩 -->
-  <path d="M8 7.8 L17.5 9.2 L17.5 14.8 L8 14.2 Z" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
-  <path d="M9 8.7 L16.5 9.8 L16.5 14 L9 13.5 Z" fill="#874720"/>
-  <!-- 하단 패널 몰딩 -->
-  <path d="M8 16.5 L17.5 17.4 L17.5 24.8 L8 26.2 Z" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
-  <path d="M9 17.4 L16.5 18.1 L16.5 24 L9 25.2 Z" fill="#874720"/>
-  <!-- 반짝이는 황동 문 손잡이 -->
-  <circle cx="17.2" cy="17" r="1.5" fill="url(#doorKnobGrad)" stroke="#78350f" stroke-width="0.3"/>
-</svg>
-                    </a>
+  <!-- 방 안쪽 따뜻한 불빛 (문 열릴 때 환하게 빛남) -->
+  <rect class="hub-door-glow" x="6" y="5" width="20" height="24" fill="url(#doorGlowGrad)"/>
+  <!-- 문짝 본체 (3D 회전으로 열림) -->
+  <g class="hub-door-leaf">
+    <rect x="6" y="5" width="20" height="24" rx="0.5" fill="url(#doorWoodGrad)" stroke="#2b1508" stroke-width="0.6"/>
+    <!-- 상단 패널 몰딩 -->
+    <rect x="8" y="7" width="16" height="8.5" rx="0.5" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
+    <rect x="9" y="8" width="14" height="6.5" rx="0.5" fill="#874720"/>
+    <!-- 하단 패널 몰딩 -->
+    <rect x="8" y="17.5" width="16" height="9.5" rx="0.5" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
+    <rect x="9" y="18.5" width="14" height="7.5" rx="0.5" fill="#874720"/>
+    <!-- 황동 문고리 손잡이 -->
+    <circle cx="22" cy="17" r="1.5" fill="url(#doorKnobGrad)" stroke="#78350f" stroke-width="0.3"/>
+  </g>
+</svg></span>
                     <div class="hub-room-input-wrap">
                         <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4 digits" aria-label="방 번호 4자리">
                     </div>
                     <button id="hubRoomSubmit" class="hub-room-button" type="submit" aria-label="Enter">Enter</button>
                     <span id="hubRoomStatus" class="hub-room-status" role="status" aria-live="polite"></span>
+                    <a href="/room/" style="display:none;" data-requires-player="true" data-always-open="true" tabindex="-1" aria-hidden="true">방 번호</a>
                 </form>
             </div>
         </div>
@@ -2455,6 +2474,14 @@
             const input = document.getElementById('hubRoomCode');
             const button = document.getElementById('hubRoomSubmit');
             const status = document.getElementById('hubRoomStatus');
+            const doorWrap = document.getElementById('hubRoomDoorWrap');
+
+            if (button && doorWrap) {
+                button.addEventListener('mouseenter', () => doorWrap.classList.add('door-open'));
+                button.addEventListener('mouseleave', () => doorWrap.classList.remove('door-open'));
+                button.addEventListener('focus', () => doorWrap.classList.add('door-open'));
+                button.addEventListener('blur', () => doorWrap.classList.remove('door-open'));
+            }
             const codePattern = /^\d{4}$/;
             let statusTimer = null;
 
