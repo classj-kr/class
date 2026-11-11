@@ -1825,16 +1825,16 @@ function createClassroomPlatform(options = {}) {
   async function studentMembership(userId) {
     try {
       const result = await pool.query(
-        `SELECT s.student_number::TEXT AS student_number, s.roster_name,
+        `SELECT s.student_number::TEXT AS student_number, s.roster_name, s.avatar_key,
                 s.academic_year, s.grade, s.class_number,
-                sc.name AS school_name
+                sc.name AS school_name, sc.id AS school_id
          FROM school_students s
          JOIN classroom_schools sc ON sc.id = s.school_id
          WHERE sc.enabled = TRUE AND (s.user_id = $1 OR (s.student_email IS NOT NULL AND LOWER(s.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $1)))
          UNION ALL
-         SELECT s.student_number::TEXT AS student_number, s.roster_name,
+         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.avatar_key,
                 c.academic_year, c.grade, c.class_number,
-                sc.name AS school_name
+                sc.name AS school_name, sc.id AS school_id
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
          JOIN classroom_schools sc ON sc.id = c.school_id
@@ -1848,8 +1848,10 @@ function createClassroomPlatform(options = {}) {
       return {
         studentNumber: row.student_number,
         studentName: row.roster_name,
+        avatarKey: normalizeAvatarKey(row.avatar_key),
         name: row.roster_name,
         schoolName: row.school_name,
+        schoolId: String(row.school_id),
         academicYear: row.academic_year,
         grade: row.grade,
         classNumber: row.class_number
@@ -2893,7 +2895,8 @@ function createClassroomPlatform(options = {}) {
   router.get("/museum/presence-ticket", asyncRoute(async (req, res) => {
     const accessMode = await getSiteAccessMode();
     const expiresAt = Date.now() + 10 * 60 * 1000;
-    if (accessMode === "open") {
+    const signedInUser = await sessionUser(req);
+    if (accessMode === "open" && !signedInUser) {
       const name = normalizePersonName(req.query?.name);
       const clientId = String(req.query?.clientId || "").trim();
       if (name.length < 2 || name.length > 6) {
@@ -2904,35 +2907,38 @@ function createClassroomPlatform(options = {}) {
       }
       const userId = `guest-${crypto.createHash("sha256").update(clientId).digest("hex").slice(0, 16)}`;
       const ticket = signMuseumPresence({
-        kind: "museum-presence", exp: expiresAt, userId, name, classKey: "open"
+        kind: "museum-presence", exp: expiresAt, userId, name, schoolKey: "open", classKey: "open"
       });
       return res.json({ ticket, expiresAt, scope: "open" });
     }
 
-    const user = await requireUser(req);
-    if (user.role === "student") {
-      const membership = await studentMembership(user.id);
-      if (!membership) throw new HttpError(403, "CLASS_MEMBERSHIP_REQUIRED", "Join your class before entering the museum.");
+    const user = signedInUser || await requireUser(req);
+    const membership = await studentMembership(user.id);
+    if (membership) {
       const ticket = signMuseumPresence({
-        kind: "museum-presence", exp: expiresAt, userId: String(user.id), name: membership.name,
-        classKey: `${membership.schoolName}|${membership.academicYear}|${membership.grade}|${membership.classNumber}`
+        kind: "museum-presence", exp: expiresAt, userId: String(user.id), name: membership.name, avatarKey: membership.avatarKey,
+        schoolKey: `school:${membership.schoolId}`,
+        classKey: `${membership.schoolId}|${membership.academicYear}|${membership.grade}|${membership.classNumber}`
       });
-      return res.json({ ticket, expiresAt, scope: "class" });
+      return res.json({ ticket, expiresAt, scope: "school" });
     }
 
-    // 담임교사도 자기 반 학생들과 같은 공간에서 보이도록: 등록된 담임 학급이 있을 때만 허용한다.
+    // 교사도 소속 학교로 입장한다. 31명부터는 등록된 담임 학급 단위로 제한한다.
     const registration = await teacherRegistration(user);
-    if (!registration || !registration.grade || !registration.class_number) {
+    if (!registration || !registration.school_id) {
       throw new HttpError(403, "STUDENT_REQUIRED", "Museum presence is for student accounts only.");
     }
     // classroom_teachers.academic_year는 오랫동안 비워둔 채 저장된 줄이 많다(위 teacherRegistrations
     // 주석 참고). 비어 있으면 올해로 채워야 학생 쪽 classKey(실제 연도)와 갈라지지 않는다.
+    const teacherAvatar = await pool.query("SELECT avatar_key FROM classroom_teacher_settings WHERE user_id = $1", [user.id]);
     const teacherYear = registration.academic_year || new Date().getFullYear();
     const ticket = signMuseumPresence({
       kind: "museum-presence", exp: expiresAt, userId: String(user.id), name: registration.teacher_name,
-      classKey: `${registration.school_name}|${teacherYear}|${registration.grade}|${registration.class_number}`
+      avatarKey: normalizeAvatarKey(teacherAvatar.rows[0]?.avatar_key),
+      schoolKey: `school:${registration.school_id}`,
+      classKey: `${registration.school_id}|${teacherYear}|${registration.grade || 0}|${registration.class_number || 0}`
     });
-    res.json({ ticket, expiresAt, scope: "class" });
+    res.json({ ticket, expiresAt, scope: "school" });
   }));
 
   async function listMuseumCompletionRecords(date, classId, roomId) {

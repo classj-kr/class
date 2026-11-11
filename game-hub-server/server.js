@@ -28,7 +28,8 @@ const { createStackingCubes } = require("./stacking-cubes");
 const { createTypingRace } = require("./typing-race");
 const { createKoreanRace } = require("./korean-race");
 const { createRoomEntry } = require("./room-entry");
-const { createClassroomPlatform } = require("./classroom-platform");
+const { createClassroomPlatform, normalizeAvatarKey } = require("./classroom-platform");
+const { createMuseumPresence } = require("./museum-presence");
 const { GAME_PAGE_ALIASES } = require("./home-content-paths");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { hideUnpublishedLessons } = require("./unpublished-lessons");
@@ -818,7 +819,10 @@ for (const directory of [...APP_DIRECTORIES, "css", "js", "learning"]) {
   app.use(`/${directory}`, express.static(resolveSitePath(SITE_ROOT, `/${directory}`), staticAssetOptions));
 }
 
-const museumClasses = new Map();
+const museumPresence = createMuseumPresence({
+  verifyTicket: ticket => classroomPlatform.verifyMuseumPresenceTicket(ticket),
+  normalizeAvatarKey, send: safeSend
+});
 const parkClasses = new Map();
 const roomSnapshotFingerprints = new Map();
 const roomRestorePromises = new Map();
@@ -907,31 +911,6 @@ function removeRoom(key) {
   void classroomPlatform.deleteMultiplayerRoomSnapshot(key).catch(error => {
     console.error(`Failed to delete multiplayer room snapshot ${key}:`, error);
   });
-}
-
-function museumBroadcast(classKey) {
-  const museumClass = museumClasses.get(classKey);
-  if (!museumClass) return;
-  const visitors = [...museumClass.clients.values()].map(socket => socket.meta.museumVisitor).filter(Boolean);
-  for (const socket of museumClass.clients.values()) safeSend(socket, { type: "MUSEUM_STATE", visitors });
-}
-
-function leaveMuseum(socket) {
-  const visitor = socket.meta.museumVisitor;
-  if (!visitor) return;
-  const museumClass = museumClasses.get(visitor.classKey);
-  if (museumClass) {
-    museumClass.clients.delete(visitor.userId);
-    if (museumClass.clients.size) museumBroadcast(visitor.classKey);
-    else museumClasses.delete(visitor.classKey);
-  }
-  socket.meta.museumVisitor = null;
-}
-
-function safeMuseumPosition(room, x, z) {
-  let nextX = Math.max(-1.9, Math.min(1.9, Number(x) || 0));
-  let nextZ = Math.max(-28.2, Math.min(6.1, Number(z) || 5.8));
-  return { x:nextX, z:nextZ };
 }
 
 function parkBroadcast(classKey) {
@@ -2213,26 +2192,7 @@ wss.on("connection", (socket, request) => {
     if (type.startsWith("SCHOOLCHAT_")
       && await classroomPlatform.schoolChat.handleSocketMessage(socket, message, classroomPlatform.verifyMuseumPresenceTicket)) return;
 
-    if (type === "MUSEUM_JOIN") {
-      const identity = classroomPlatform.verifyMuseumPresenceTicket(cleanToken(message.ticket, 2048));
-      if (!identity) { safeSend(socket, { type: "MUSEUM_AUTH_REQUIRED" }); return; }
-      leaveMuseum(socket);
-      const museumClass = museumClasses.get(identity.classKey) || { clients: new Map() };
-      museumClasses.set(identity.classKey, museumClass);
-      const position = safeMuseumPosition("portrait", 0, 5.8);
-      socket.meta.museumVisitor = { userId:identity.userId, name:cleanToken(identity.name,12), classKey:identity.classKey, room:"portrait", x:position.x, z:position.z, yaw:0 };
-      const oldSocket = museumClass.clients.get(identity.userId);
-      if (oldSocket && oldSocket !== socket) { oldSocket.meta.museumVisitor = null; try { oldSocket.close(4003, "REPLACED"); } catch (_) {} }
-      museumClass.clients.set(identity.userId, socket); safeSend(socket, { type: "MUSEUM_JOINED", userId: identity.userId }); museumBroadcast(identity.classKey); return;
-    }
-    if (type === "MUSEUM_MOVE") {
-      const visitor = socket.meta.museumVisitor;
-      if (!visitor) return;
-      const room = ["portrait","nature","story","color","space"].includes(message.room) ? message.room : visitor.room;
-      const position = safeMuseumPosition(room, message.x, message.z);
-      visitor.room=room; visitor.x=position.x; visitor.z=position.z; visitor.yaw=Number.isFinite(message.yaw) ? Math.max(-6.4,Math.min(6.4,message.yaw)) : visitor.yaw;
-      museumBroadcast(visitor.classKey); return;
-    }
+    if (museumPresence.handle(socket, message)) return;
 
     if (type === "PARK_JOIN") {
       const identity = classroomPlatform.verifyMuseumPresenceTicket(cleanToken(message.ticket, 2048));
@@ -4375,7 +4335,7 @@ wss.on("connection", (socket, request) => {
   });
 
   socket.on("close", code => {
-    leaveMuseum(socket);
+    museumPresence.leave(socket);
     leavePark(socket);
     classroomPlatform.schoolChat.leave(socket);
     const key = socket.meta.roomKey;
