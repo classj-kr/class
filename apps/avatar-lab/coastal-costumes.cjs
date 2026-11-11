@@ -9,6 +9,25 @@ module.exports=function coastal(THREE,k,id,parts){
   const area=(Math.max(...outline.map(p=>p[0]))-Math.min(...outline.map(p=>p[0])))*(Math.max(...outline.map(p=>p[1]))-Math.min(...outline.map(p=>p[1])));
   k.volume(name,outline,center,p.part.pivot,depth,backDepth,p.group,k.solid(name+'Color',color),{art:false,z,samples:area>60000?112:area>20000?80:48});
   if(crab)return;
+  if(name==='WholeCoastalHood')for(const suffix of ['Surface','Back']){
+   // More radial rings keep the hood/mantle junction round at avatar scale.
+   // Preserve the authored boundary and source registration exactly.
+   const half=p.group.getObjectByName(name+suffix),old=half.geometry.attributes.position,samples=old.count/13;
+   const edge=Array.from({length:samples},(_,i)=>new THREE.Vector3().fromBufferAttribute(old,12*samples+i)),center=new THREE.Vector3().fromBufferAttribute(old,0),base=edge[0].z,depth=center.z-base;
+   const positions=[],indices=[],rings=32;
+   for(let ring=0;ring<=rings;ring++){
+    const angle=ring/rings*Math.PI/2,r=Math.sin(angle);
+    for(const v of edge)positions.push(center.x+(v.x-center.x)*r,center.y+(v.y-center.y)*r,base+depth*Math.cos(angle));
+   }
+   for(let ring=0;ring<rings;ring++)for(let i=0;i<samples;i++){
+    const a=ring*samples+i,b=ring*samples+(i+1)%samples,c=a+samples,d=b+samples;
+    if(depth>0){if(ring)indices.push(a,b,d);indices.push(a,d,c);}
+    else{if(ring)indices.push(a,d,b);indices.push(a,c,d);}
+   }
+   const g=k.geometry(positions,indices);
+   if((g.attributes.normal.getZ(samples*4)>0)!==(depth>0)){for(let i=0;i<indices.length;i+=3)[indices[i+1],indices[i+2]]=[indices[i+2],indices[i+1]];g.setIndex(indices);g.computeVertexNormals();}
+   half.geometry.dispose();half.geometry=g;
+  }
   // Smooth the shared equator, including duplicate fan-center vertices. A
   // painted line at z=0 looked like a split down the side of the entire hood.
   const P=[],I=[];for(const suffix of ['Surface','Back']){const half=p.group.getObjectByName(name+suffix),offset=P.length/3;P.push(...half.geometry.attributes.position.array);I.push(...Array.from(half.geometry.index.array,i=>i+offset));p.group.remove(half);half.geometry.dispose();}
@@ -113,7 +132,10 @@ module.exports=function coastal(THREE,k,id,parts){
   if(volume<0)for(let j=0;j<I.length;j+=3)[I[j+1],I[j+2]]=[I[j+2],I[j+1]];
   const o=k.mesh('RoundedOctopusArm'+i+'Solid',k.geometry(P,I),k.solid('RoundedOctopusArmColor',base),arm.group);o.userData.outlineWeights=outlineWeights;o.userData.artworkFacingFade=[.18,.55];return o;
  }
- const cupPaths=[[[117,414],[119,434],[133,450],[155,462],[181,466],[207,459]],[[252,484],[242,507],[224,524],[202,532],[180,529]],[[304,508],[299,533],[288,552],[273,565],[255,563]]];
+ // Follow the illustration's lower rim instead of drawing a necklace down
+ // the middle of each tentacle. The ray-fit below keeps every raised cup on
+ // the curved arm, including the outward-turning tips.
+ const cupPaths=[[[110,415],[112,434],[125,453],[149,469],[177,472],[207,464],[220,454]],[[252,485],[240,510],[225,526],[204,535],[182,535],[168,527]],[[311,506],[304,535],[292,557],[278,570],[260,574],[247,569]]];
  function fitUnderHood(mesh){
   // Preserve the hood's original lower rim. Thick attachments must remain
   // behind its front surface, not emerge as scallops over the face opening.
@@ -144,9 +166,9 @@ module.exports=function coastal(THREE,k,id,parts){
    silhouette(arm,surface,'OctopusArmSilhouette'+i,.019);
    delete surface.userData.outlineWeights;
    for(const [c,{point,normal}] of cups.entries()){
-    const rim=k.mesh('OctopusSuckerRim'+i+'_'+c,new THREE.TorusGeometry(.018,.0065,6,12),k.solid('OctopusSuckerRimColor','#f1c6e4'),arm.group,point.toArray());
+    const rim=k.mesh('OctopusSuckerRim'+i+'_'+c,new THREE.TorusGeometry(.020,.0075,6,12),k.solid('OctopusSuckerRimColor','#f8d8ee'),arm.group,point.toArray());
     rim.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),normal);rim.userData.suckerSupport=surface.name;
-    const bowl=k.mesh('OctopusSuckerBowl'+i+'_'+c,new THREE.SphereGeometry(1,12,6),k.solid('OctopusSuckerBowlColor','#c995c7'),arm.group,point.clone().addScaledVector(normal,-.002).toArray());bowl.scale.set(.017,.017,.0035);bowl.quaternion.copy(rim.quaternion);
+    const bowl=k.mesh('OctopusSuckerBowl'+i+'_'+c,new THREE.SphereGeometry(1,12,6),k.solid('OctopusSuckerBowlColor','#d6a0cc'),arm.group,point.clone().addScaledVector(normal,-.002).toArray());bowl.scale.set(.019,.019,.0035);bowl.quaternion.copy(rim.quaternion);
    }
   }else{const surface=sculpt(arm).sweep('RoundedOctopusArm'+i,path,base);fitUnderHood(surface);surface.userData.skipOriginalPaint=true;}
  });

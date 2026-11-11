@@ -2,11 +2,11 @@
 // Only individually reviewed costumes use this finish. Keep the original face
 // opaque, while letting source outlines disappear as the volume turns away.
 module.exports=function finishPaddedSuits(T,k,id,parts){
- if(!['animal-dog','animal-dolphin','animal-dragon','animal-dragonfly','animal-duck','animal-eagle','animal-elephant','animal-flamingo','animal-fox','animal-frog','animal-giraffe','animal-hedgehog','animal-hippopotamus','animal-kangaroo','animal-koala','animal-ladybug','animal-leopard-gecko','animal-lion','animal-llama','animal-meerkat','animal-monkey','animal-mouse','animal-ostrich','animal-owl','animal-panda','animal-peacock'].includes(id))return;
+ if(!['animal-dog','animal-dolphin','animal-dragon','animal-dragonfly','animal-duck','animal-eagle','animal-elephant','animal-flamingo','animal-fox','animal-frog','animal-giraffe','animal-hedgehog','animal-hippopotamus','animal-kangaroo','animal-koala','animal-ladybug','animal-leopard-gecko','animal-lion','animal-llama','animal-meerkat','animal-monkey','animal-mouse','animal-ostrich','animal-owl','animal-panda','animal-peacock','animal-penguin','animal-praying-mantis','animal-rabbit','animal-ratsnake','animal-rhinoceros','animal-seal','animal-shark','animal-sloth','animal-snail','animal-squirrel','animal-tiger','animal-turtle','animal-unicorn','animal-viper','animal-whale','animal-wolf'].includes(id))return;
  const insect=['animal-dragonfly','animal-ladybug'].includes(id);
- const faces={'animal-dog':[320,332,124,94],'animal-dolphin':[320,338,124,94],'animal-dragon':[320,347,125,93],'animal-dragonfly':[320,299,90,76],'animal-duck':[320,340,124,90],'animal-eagle':[320,327,115,90],'animal-elephant':[320,352,112,87],'animal-flamingo':[320,333,103,84],'animal-fox':[320,343,124,98],'animal-frog':[320,323,126,103],'animal-giraffe':[320,296,110,78],'animal-hedgehog':[320,370,124,90],'animal-hippopotamus':[320,354,125,92],'animal-kangaroo':[296,333,118,88],'animal-koala':[320,340,123,88],'animal-ladybug':[318,318,120,94],'animal-leopard-gecko':[303,331,123,94],'animal-lion':[320,358,99,85],'animal-llama':[320,330,113,83],'animal-meerkat':[320,305,127,89],'animal-monkey':[320,330,123,95],'animal-mouse':[320,336,140,105],'animal-ostrich':[289,281,101,79],'animal-owl':[320,335,123,92],'animal-panda':[320,306,126,88],'animal-peacock':[320,337,118,91]};
+ const faces={'animal-dog':[320,332,124,94],'animal-dolphin':[320,338,124,94],'animal-dragon':[320,347,125,93],'animal-dragonfly':[320,299,90,76],'animal-duck':[320,340,124,90],'animal-eagle':[320,327,115,90],'animal-elephant':[320,352,112,87],'animal-flamingo':[320,333,103,84],'animal-fox':[320,343,124,98],'animal-frog':[320,323,126,103],'animal-giraffe':[320,296,110,78],'animal-hedgehog':[320,370,124,90],'animal-hippopotamus':[320,354,125,92],'animal-kangaroo':[296,333,118,88],'animal-koala':[320,340,123,88],'animal-ladybug':[318,318,120,94],'animal-leopard-gecko':[303,331,123,94],'animal-lion':[320,358,99,85],'animal-llama':[320,330,113,83],'animal-meerkat':[320,305,127,89],'animal-monkey':[320,330,123,95],'animal-mouse':[320,336,140,105],'animal-ostrich':[289,281,101,79],'animal-owl':[320,335,123,92],'animal-panda':[320,306,126,88],'animal-peacock':[320,337,118,91],'animal-penguin':[320,331,121,97],'animal-praying-mantis':[320,350,112,89],'animal-rabbit':[320,377,111,83],'animal-ratsnake':[317,313,140,109],'animal-rhinoceros':[318,320,121,91],'animal-seal':[289,286,127,99],'animal-shark':[320,344,116,100],'animal-sloth':[314,294,125,90],'animal-snail':[195,345,115,93],'animal-squirrel':[262,330,135,96],'animal-tiger':[311,337,133,102],'animal-turtle':[317,294,125,98],'animal-unicorn':[318,344,117,92],'animal-viper':[305,315,115,88],'animal-whale':[320,350,120,93],'animal-wolf':[320,340,127,99]};
  const [cx,cy,rx,ry]=faces[id];
- const inks={'animal-dog':'#79502a','animal-dolphin':'#4e6678','animal-dragon':'#2b4e25','animal-dragonfly':'#275b5c','animal-duck':'#ab701f','animal-eagle':'#66533f','animal-elephant':'#6c5a4c','animal-flamingo':'#874958','animal-fox':'#70351f','animal-frog':'#335920','animal-giraffe':'#785032','animal-hedgehog':'#6c5952','animal-hippopotamus':'#655f70','animal-kangaroo':'#75482c','animal-koala':'#555761','animal-ladybug':'#59251f','animal-leopard-gecko':'#7b4d26','animal-lion':'#80502a','animal-llama':'#a48762','animal-meerkat':'#775030','animal-monkey':'#654024','animal-mouse':'#416976','animal-ostrich':'#4b3c40','animal-owl':'#664730','animal-panda':'#444641','animal-peacock':'#185a71'};
+ const inks={'animal-dog':'#79502a','animal-dolphin':'#4e6678','animal-dragon':'#2b4e25','animal-dragonfly':'#275b5c','animal-duck':'#ab701f','animal-eagle':'#66533f','animal-elephant':'#6c5a4c','animal-flamingo':'#874958','animal-fox':'#70351f','animal-frog':'#335920','animal-giraffe':'#785032','animal-hedgehog':'#6c5952','animal-hippopotamus':'#655f70','animal-kangaroo':'#75482c','animal-koala':'#555761','animal-ladybug':'#59251f','animal-leopard-gecko':'#7b4d26','animal-lion':'#80502a','animal-llama':'#a48762','animal-meerkat':'#775030','animal-monkey':'#654024','animal-mouse':'#416976','animal-ostrich':'#4b3c40','animal-owl':'#664730','animal-panda':'#444641','animal-peacock':'#185a71','animal-penguin':'#28282e','animal-praying-mantis':'#4d6d28','animal-rabbit':'#9b687d','animal-ratsnake':'#456b35','animal-rhinoceros':'#655b58','animal-seal':'#535d6a','animal-shark':'#194465','animal-sloth':'#65452f','animal-snail':'#81502b','animal-squirrel':'#80512e','animal-tiger':'#764416','animal-turtle':'#476b17','animal-unicorn':'#998c7b','animal-viper':'#52672e','animal-whale':'#225778','animal-wolf':'#55565b'};
  for(const [name,part]of parts){
   const group=part.group;
   if(insect)for(const o of [...group.children])if(o.name.startsWith('HoodEdgePiping'))group.remove(o);
@@ -73,7 +73,7 @@ module.exports=function finishPaddedSuits(T,k,id,parts){
    }
    delete mesh.userData.foxFrogArtworkBoundary;
   }
-  if(['animal-hedgehog','animal-hippopotamus','animal-kangaroo','animal-koala','animal-leopard-gecko','animal-lion','animal-meerkat','animal-monkey','animal-mouse','animal-ostrich','animal-owl','animal-peacock'].includes(id))for(const mesh of solids){
+  if(['animal-hedgehog','animal-hippopotamus','animal-kangaroo','animal-koala','animal-leopard-gecko','animal-lion','animal-meerkat','animal-monkey','animal-mouse','animal-ostrich','animal-owl','animal-peacock','animal-penguin','animal-praying-mantis','animal-rabbit','animal-ratsnake','animal-rhinoceros','animal-seal','animal-shark','animal-sloth','animal-snail','animal-squirrel','animal-tiger','animal-turtle','animal-unicorn','animal-viper','animal-whale','animal-wolf'].includes(id))for(const mesh of solids){
    const boundary=mesh.userData.paddedBoundary,art=group.getObjectByName(mesh.name+'OriginalPaint');delete mesh.userData.paddedBoundary;if(!boundary||!art)continue;
    const p=art.geometry.attributes.position,c=art.geometry.attributes.color;
    for(let i=0;i<p.count;i++){
@@ -84,6 +84,17 @@ module.exports=function finishPaddedSuits(T,k,id,parts){
    delete mesh.userData.paddedBoundary;
   }
   for(const mesh of solids){
+   if(id==='animal-rhinoceros'&&mesh.name.startsWith('RhinoClaw'))continue;
+   if(id==='animal-sloth'&&mesh.name.startsWith('SlothClaw'))continue;
+   if(id==='animal-snail'&&!/Surface$|Back$/.test(mesh.name))continue;
+   if(id==='animal-squirrel'&&mesh.name.startsWith('SquirrelPalm'))continue;
+   if(id==='animal-tiger'&&!/Surface$|Back$/.test(mesh.name))continue;
+   if(id==='animal-turtle'&&mesh.name.startsWith('TurtleClaw'))continue;
+   if(id==='animal-unicorn'&&!/Surface$|Back$/.test(mesh.name))continue;
+   if(id==='animal-wolf'&&mesh.name.startsWith('AnimalMuzzle'))continue;
+   if(['animal-ratsnake','animal-viper'].includes(id)&&/^(ConnectedSnakeTail|SnakeBellySeam)/.test(mesh.name))continue;
+   if(id==='animal-penguin'&&mesh.name.startsWith('AnimalMuzzle'))continue;
+   if(id==='animal-praying-mantis'&&!/Surface$|Back$/.test(mesh.name))continue;
    if(insect&&!/Surface$|Back$/.test(mesh.name))continue;
    if(['animal-monkey','animal-mouse'].includes(id)&&/^(InnerEar|MouseNose|AttachedTail)/.test(mesh.name))continue;
    if(id==='animal-ostrich'&&/^(OstrichRoundedBeak|OstrichTailFeather)/.test(mesh.name))continue;

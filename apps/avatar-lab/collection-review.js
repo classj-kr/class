@@ -5,7 +5,7 @@
  const selectedIds=new Set((params.get('ids')||'').split(',').filter(Boolean));
  const entries=data.avatars.filter(a=>a.model&&(!selectedIds.size||selectedIds.has(a.id))),rowsPerPage=Math.max(1,Math.min(4,entries.length)),host=document.querySelector('#review'),status=document.querySelector('#status'),choice=document.querySelector('#page-choice');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.NoToneMapping;renderer.setClearColor('#e9ede3');host.append(renderer.domElement);
- const loader=new THREE.GLTFLoader(),cache=new Map(),pages=Math.ceil(entries.length/rowsPerPage);let page=0,rows=[],playing=true,token=0,previous=performance.now(),time=0,renderedFrames=0;
+ const loader=window.createClassJAvatarLoader(),cache=new Map(),pages=Math.ceil(entries.length/rowsPerPage);let page=0,rows=[],playing=true,token=0,previous=performance.now(),time=0,renderedFrames=0;
  const camera=new THREE.OrthographicCamera(-1.8,1.8,1.8,-1.8,.01,40);
  if(frontOnly){document.title='아바타 · 원본과 정면 비교';document.querySelector('h1').textContent='정면 우선 검수 · 원본과 비교';const headings=document.querySelector('.columns');headings.style.gridTemplateColumns='repeat(2,1fr)';[...headings.children].slice(2).forEach(el=>el.remove());document.querySelector('#motion').hidden=true;document.querySelector('#clip').parentElement.hidden=true;document.querySelector('#pose-all-label').hidden=true;document.querySelector('#phase').parentElement.hidden=true;playing=false;host.setAttribute('aria-label','원본과 3D 정면 비교');}
  for(let i=0;i<pages;i++){const option=document.createElement('option');option.value=i;option.textContent=(i+1)+' · '+entries[i*rowsPerPage].name;choice.append(option);}
@@ -30,7 +30,7 @@
    });
    const selectedPhase=document.querySelector('#phase').value;
    if(selectedPhase!=='live')for(const r of rows)r.mixer.setTime(r.clip.duration*Number(selectedPhase));
-   host.dataset.clip=document.querySelector('#clip').value;host.dataset.ready='true';host.dataset.page=String(page+1);host.dataset.models=batch.map(a=>a.id).join(',');host.dataset.revisions=batch.map(a=>a.revision).join(',');status.textContent='전체 제작 검수 중 · 완료 판정 전';
+   host.dataset.clip=document.querySelector('#clip').value;host.dataset.ready='true';host.dataset.page=String(page+1);host.dataset.models=batch.map(a=>a.id).join(',');host.dataset.revisions=batch.map(a=>a.revision).join(',');status.textContent=batch.every(a=>a.status==='complete')?'현재 모델·원본 기준 개별 검수 완료':'선택 아바타 제작 검수 중 · 완료 판정 전';
   }catch(error){host.dataset.ready='error';status.textContent=error.message;}
  }
  document.querySelector('#previous').addEventListener('click',()=>show(page-1));document.querySelector('#next').addEventListener('click',()=>show(page+1));choice.addEventListener('change',()=>show(Number(choice.value)));

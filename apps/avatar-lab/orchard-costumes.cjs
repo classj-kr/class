@@ -7,6 +7,7 @@ module.exports=function orchard(T,k,id,parts){
  s.parent.userData.artworkOpaqueRegions=[{cx:320,cy:320,rx:118,ry:101}];
  function volume(name,outline,center,front,back,color,z=0){
   k.volume(name+'Half',outline,center,s.pivot,front,back,s.parent,k.solid(name+'Color',color),{art:false,samples:96,z});
+  if(['fruit-apple','fruit-avocado','fruit-blueberry','fruit-orange'].includes(id))require('./smooth-paired-volume.cjs')(T,k,s.parent,name+'Half',{rings:24});
   const P=[],I=[];for(const suffix of ['Surface','Back']){const o=s.parent.getObjectByName(name+'Half'+suffix),offset=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+offset));s.parent.remove(o);}
   return k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),s.parent);
  }
@@ -19,7 +20,7 @@ module.exports=function orchard(T,k,id,parts){
  let body;
  if(id==='fruit-apple'){
   body=volume('AppleFruitSolid',[[320,148],[372,132],[428,144],[472,183],[500,238],[506,294],[492,354],[459,398],[411,431],[363,442],[321,432],[278,444],[232,433],[188,401],[155,357],[137,302],[134,245],[151,193],[188,153],[236,133],[282,136]],[320,288],.78,.78,'#d94538');
-  volume('AppleStalkSolid',[[310,163],[304,131],[292,106],[278,87],[279,77],[291,68],[305,75],[317,91],[325,114],[334,158]],[309,115],.055,.055,'#79452a');
+  volume('AppleStalkSolid',[[310,163],[304,131],[292,106],[278,87],[279,77],[291,68],[305,75],[317,91],[325,114],[334,158]],[309,115],.095,.095,'#79452a');
   volume('AppleLeafSolid',[[328,143],[329,119],[343,91],[371,71],[411,63],[410,87],[400,113],[372,134]],[367,105],.075,.075,'#5e8b31');
  }
  if(id==='fruit-blueberry'){

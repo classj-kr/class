@@ -6,12 +6,14 @@ module.exports=function softThemes(T,k,id,parts){
  s.parent.userData.artworkOpaqueRegions=[{cx:320,cy:id==='theme-clover'?301:290,rx:118,ry:105}];
  function volume(name,ps,center,front,back,color,z=0,tool=s){
   k.volume(name+'Half',ps,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,samples:64,z:z-tool.offset.z});
+  if(id==='theme-cloud'||(['theme-clover','theme-rainbow'].includes(id)&&tool!==s))require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:24});
   const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),offset=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+offset));tool.parent.remove(o);}
   const geometry=k.geometry(P,I),normal=geometry.attributes.normal,position=geometry.attributes.position,groups=new Map();
   for(let i=0;i<position.count;i++){const key=[position.getX(i),position.getY(i),position.getZ(i)].map(v=>Math.round(v*1e5)).join(',');if(!groups.has(key))groups.set(key,[]);groups.get(key).push(i);}
   for(const members of groups.values()){const n=new T.Vector3();for(const i of members)n.add(new T.Vector3().fromBufferAttribute(normal,i));n.normalize();for(const i of members)normal.setXYZ(i,n.x,n.y,n.z);}
   const o=k.mesh(name,geometry,k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.18,.50];
   if(name==='ContinuousCloud'){
+   o.userData.sourceContour=ps;
    const curve=new T.CatmullRomCurve3(ps.map(([x,y])=>new T.Vector3(...tool.point([x,y,z]))),true,'centripetal');
    const rim=k.mesh('CloudContour',new T.TubeGeometry(curve,192,.009,6,true),k.solid('CloudContourInk','#879aaa'),tool.parent);rim.userData.skipOriginalPaint=true;return o;
   }
@@ -51,7 +53,7 @@ module.exports=function softThemes(T,k,id,parts){
   const colors=['#e43a45','#ff922f','#ffe15a','#83ba51','#43adbd','#578bd0','#7a599d'];
   for(let b=0;b<7;b++){
    const ps=[];for(const edge of [b,b+1])for(let j=0;j<=80;j++){const t=edge===b?j/80:1-j/80,a=Math.PI+t*Math.PI,rx=275-edge*23,ry=320-edge*19.5;ps.push([320+Math.cos(a)*rx,383+Math.sin(a)*ry]);}
-   s.outline('RainbowArchBand'+b,ps,.47,colors[b],0,.008);
+   s.outline('RainbowArchBand'+b,ps,.30,colors[b],.08,.02);
   }
   volume('RainbowFaceHood',k.ellipse(320,294,119,107,64),[320,294],.065,.50,'#735c9b',.245);
   suit('#729c79',391);

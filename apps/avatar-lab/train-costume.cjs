@@ -2,7 +2,7 @@
 module.exports=function trainCostume(T){
  const k=require('./model-kit.cjs')(T,'vehicle-train'),head=k.group('Head',[320,580]),s=require('./sculpt-kit.cjs')(T,k,{group:head,part:{pivot:[320,580]}}),shells=[];
  head.userData.directSurfaceArtwork=true;head.userData.artworkOcclusion=false;head.userData.artworkOpaqueRegions=[{cx:318,cy:302,rx:100,ry:84}];
- function volume(name,ps,c,depth,color,z=0){k.volume(name+'Half',ps,c,[320,580],depth,depth,head,k.solid(name+'Color',color),{art:false,samples:96,z});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=head.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,j=>j+n));head.remove(o);}const o=k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),head);o.userData.artworkFacingFade=[.15,.48];return o;}
+ function volume(name,ps,c,depth,color,z=0){k.volume(name+'Half',ps,c,[320,580],depth,depth,head,k.solid(name+'Color',color),{art:false,samples:96,z});require('./smooth-paired-volume.cjs')(T,k,head,name+'Half',{rings:24});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=head.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,j=>j+n));head.remove(o);}const o=k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),head);o.userData.artworkFacingFade=[.15,.48];return o;}
  const cab=s.smoothOutline('TrainCabSolid',[[166,151],[213,122],[264,103],[318,96],[371,104],[424,123],[469,147],[470,402],[462,418],[176,418],[166,404]],1.04,'#efb85c',-.48,.022);cab.userData.artworkExcludedRegions=[{cx:318,cy:301,rx:145,ry:133}];shells.push([cab,'#653c34',.014]);
  const roof=s.smoothOutline('TrainCurvedRoofSolid',[[147,118],[196,93],[257,70],[312,61],[372,68],[429,87],[485,114],[493,129],[491,148],[477,154],[421,132],[367,116],[314,109],[258,121],[201,141],[162,157],[147,147]],1.18,'#d92a3c',-.42,.025);shells.push([roof,'#702431',.018]);
  const chassis=s.smoothOutline('TrainConnectedChassisSolid',[[181,328],[213,343],[423,342],[451,329],[470,349],[478,384],[476,490],[460,500],[174,500],[155,489],[154,378],[165,345]],.22,'#55454d',.67,.026);chassis.userData.artworkExcludedRegions=[{cx:318,cy:301,rx:145,ry:133},{cx:203,cy:419,rx:23,ry:23},{cx:430,cy:419,rx:23,ry:23}];shells.push([chassis,'#3c2e36',.016]);
@@ -14,7 +14,7 @@ module.exports=function trainCostume(T){
  const lip=s.lathe('TrainChimneyLipSolid',[[131,0,314],[131,43,314],[125,49,314],[90,49,314],[84,43,314],[84,0,314]],'#5c545a',.36,{levels:32,segments:64});shells.push([stem,'#322b2e',.012],[lip,'#322b2e',.015]);
  // The front grille has actual recessed slots, with a separate dark backing.
  const apronOutline=[[209,449],[416,449],[431,476],[448,511],[447,526],[389,544],[350,552],[318,558],[278,550],[231,540],[186,528],[183,513],[194,481]];
- function pathFrom(ps){const curve=new T.CatmullRomCurve3(ps.map(([x,y])=>new T.Vector3((x-320)*.005,(580-y)*.005,0)),true,'centripetal'),path=new T.Shape();curve.getSpacedPoints(64).slice(0,64).forEach((p,j)=>j?path.lineTo(p.x,p.y):path.moveTo(p.x,p.y));path.closePath();return path;}
+ function pathFrom(ps){const curve=new T.CatmullRomCurve3(ps.map(([x,y])=>new T.Vector3((x-320)*.005,(580-y)*.005,0)),true,'centripetal'),path=new T.Shape();curve.getSpacedPoints(64).slice(0,64).forEach((p,j)=>{if(ps===apronOutline)p.y=Math.min(p.y,(580-449)*.005);j?path.lineTo(p.x,p.y):path.moveTo(p.x,p.y);});path.closePath();return path;}
  const shape=pathFrom(apronOutline);
  const leftSlots=[[[224,469],[236,470],[236,480],[223,514],[213,517],[208,511],[218,480]],[[255,470],[268,471],[268,484],[259,523],[247,524],[244,518],[250,482]],[[288,469],[300,471],[301,485],[296,529],[283,530],[279,524],[283,481]]];
  for(const side of [-1,1])for(const ps of leftSlots)shape.holes.push(pathFrom(ps.map(([x,y])=>[320+side*(320-x),y])));
@@ -56,6 +56,19 @@ module.exports=function trainCostume(T){
  // Axles physically join the wheels to the chassis.
  for(const [label,z]of [['Rear',-.59],['Front',.46]]){const g=new T.CylinderGeometry(.045,.045,1.40,24);g.rotateZ(Math.PI/2);k.mesh('Train'+label+'AxleSolid',g,k.solid('TrainAxle','#3b3038'),head,[0,(580-538)*.005,z]);const bracket=s.box('Train'+label+'AxleMountSolid',[320,513,z],[84,60,.18],'#493940',5);bracket.userData.skipOriginalPaint=true;}
  for(const[o,color,width]of shells){o.updateMatrix();const g=o.geometry.clone().applyMatrix4(o.matrix),p=g.attributes.position,b=new T.Box3().setFromBufferAttribute(p),c=b.getCenter(new T.Vector3()),f=1+width/(b.getSize(new T.Vector3()).length()/2),ix=g.index?Array.from(g.index.array):Array.from({length:p.count},(_,i)=>i);for(let i=0;i<p.count;i++)p.setXYZ(i,c.x+(p.getX(i)-c.x)*f,c.y+(p.getY(i)-c.y)*f,c.z+(p.getZ(i)-c.z)*f);for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];g.setIndex(ix);g.computeVertexNormals();const ink=k.mesh(o.name+'InkShell',g,k.solid(o.name+'Ink',color),head);ink.material.userData.alreadyShaded=true;}
+ // Front illustration stops before the side bevels of the cab and guards.
+ for(const o of head.children)if(o.material?.userData.originalTexture){
+  const n=o.geometry.attributes.normal,c=o.geometry.attributes.color;
+  if(c)for(let i=0;i<c.count;i++){
+   let alpha=c.getW(i)*Math.max(0,Math.min(1,(n.getZ(i)-.40)/.35));
+   // The cowcatcher has its own forward solid; never stamp it on the chassis behind it.
+   if(o.name==='TrainConnectedChassisSolidOriginalPaint'){
+    const y=580-o.geometry.attributes.position.getY(i)/.005;
+    alpha*=Math.max(0,Math.min(1,(447-y)/8));
+   }
+   c.setW(i,alpha);
+  }
+ }
  k.root.updateMatrixWorld(true);k.root.position.y-=new T.Box3().setFromObject(k.root).min.y;require('./illustration-materials.cjs')(T,k.root);
  const clips=[],times=Array.from({length:49},(_,i)=>i/48*2);for(const name of ['Idle','Walk','Wave']){const tracks=[new T.VectorKeyframeTrack('Body.position',times,Array(times.length*3).fill(0))];if(name==='Walk')for(const wheel of wheels){const values=[];for(let i=0;i<49;i++)values.push(...new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),i/48*Math.PI*2).toArray());tracks.push(new T.QuaternionKeyframeTrack(wheel.name+'.quaternion',times,values));}clips.push(new T.AnimationClip(name,2,tracks));}
  Object.assign(k.root.userData,{avatarKey:'vehicle-train.webp',prototype:true,locomotion:'roll',canWave:false,walkStride:Math.PI*2*radius,walkDuration:2,authoring:'Source-shaped arched roof, fitted boiler face, connected cab and chassis, recessed grille and rolling wheels'});return{root:k.root,clips};

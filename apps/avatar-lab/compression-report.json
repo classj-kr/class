@@ -1,0 +1,1046 @@
+{
+  "date": "2026-11-12",
+  "models": [
+    {
+      "id": "animal-bear",
+      "bytes": 356740,
+      "sha256": "e9bf65f54c156c4cd58706f992c25bffaf5f7d87587c484356b77f9182d568c1",
+      "sourceSha256": "fbe85aabed2974e6d7721674d5937e79ab0ba4209c288692a2d992350d28223c"
+    },
+    {
+      "id": "animal-bee",
+      "bytes": 451028,
+      "sha256": "c70ac520dffef708519cedbeb6ca9b5b441b451175d832729b33745289090f19",
+      "sourceSha256": "fb31d8731c5635e771b2b9a59b221b0ba4b6c5cafdfe9890a60e27bfe4a7de5e"
+    },
+    {
+      "id": "animal-butterfly",
+      "bytes": 447380,
+      "sha256": "8e2297f8bf8e382dae29c528372a4a16f13a10ccf5d6b609ae3995dc30022959",
+      "sourceSha256": "623d5ca6d16c5b62b76cc2c4a0692326b3a465b0445ff5473e0e5c260ccf4b33"
+    },
+    {
+      "id": "animal-cat",
+      "bytes": 324948,
+      "sha256": "118ac760c3d2ac53b33452392620fd620f1a71a6c2764f8568129aa907907f11",
+      "sourceSha256": "c55744b785f7ab6916a3c59ec2367e2db3ceb44e1dcc79c7bd7af49c067c244f"
+    },
+    {
+      "id": "animal-chick",
+      "bytes": 366112,
+      "sha256": "380b42bdcf42e4dabd352b5ae4de4add9d05e8ccfb71f600f085a8086e1da990",
+      "sourceSha256": "3a54a9b978e1b15cc64fcd5f13e15107ef5b1894cf817065173d336bbb816774"
+    },
+    {
+      "id": "animal-crab",
+      "bytes": 423844,
+      "sha256": "692d81527fe041c9aaab0941e201d9396ecdf805f94282c8b1d92a4aa85e12b1",
+      "sourceSha256": "6682dd4f88e6ca80547f92755c8027ad3e7782628af63b8add4e46ed6cc14a8c"
+    },
+    {
+      "id": "animal-crested-gecko",
+      "bytes": 444608,
+      "sha256": "10625e2d9a8234c44f0ac30b2210656b0d2c7cb1890fa5350d8dfad65d965d09",
+      "sourceSha256": "428c3198adea740c9b0808b8925cab4bab2c060a11c7bb1b5cfc460f779dc524"
+    },
+    {
+      "id": "animal-crocodile",
+      "bytes": 480456,
+      "sha256": "5c09fec824c6f9f79cf136df3a7a72938bf2f4404a07b44888709181cf1749e8",
+      "sourceSha256": "51679d8d75dc5b558ccdafbdca091fa250f618dde47323803dbebe8f33be2503"
+    },
+    {
+      "id": "animal-deer",
+      "bytes": 361484,
+      "sha256": "9a44210bf7f870f93f5e1d60fee3d5217777d8407d09120c65525567afa8827f",
+      "sourceSha256": "3195a3b45ef5a6aec54b24b969d1ffe4dd1da52a45da01ddff70c5328281e44e"
+    },
+    {
+      "id": "animal-dog",
+      "bytes": 397448,
+      "sha256": "bad8081d11c8d84363fe09ccd867459237d5af03fe44d63a63d8356c55306a2f",
+      "sourceSha256": "a7afc3a516e2e6dcf55f0a32806fa31a9f7fde0302a378c9a069c260ee2f2b1f"
+    },
+    {
+      "id": "animal-dolphin",
+      "bytes": 375128,
+      "sha256": "20d616dbbfe9aad86bd73a6eac842c421739ecf6f28fc352443a96d7d93a6a7a",
+      "sourceSha256": "f130bb14e8d87c9efb57c5963a188dca0a0703e0a6ad2bf0091eab56706a49a5"
+    },
+    {
+      "id": "animal-dragon",
+      "bytes": 447636,
+      "sha256": "f906bde411ff27789313e54076c3f0763aeee92600bb32e40d87e2051d060247",
+      "sourceSha256": "17bafcd9b144e74ae7c89da89033874263f5407c6ea441a7c18943cf16b3d597"
+    },
+    {
+      "id": "animal-dragonfly",
+      "bytes": 414432,
+      "sha256": "19d513f86347906b90fa7ee09c07656bd1a06b8adaf50550cf152fc556076e00",
+      "sourceSha256": "b63ee80a8bbd4e56fd969abedce52e1344c3108d485a70151cdeca4faccd10ae"
+    },
+    {
+      "id": "animal-duck",
+      "bytes": 304588,
+      "sha256": "bd5b007268b3f3b464058a6f5a82be19bd1c22facfb6c8c9fd3f83f9167d9a0c",
+      "sourceSha256": "457c14d1e426c9a8c125490c62a4009aa47b29e144d8883665b73c0c47476af7"
+    },
+    {
+      "id": "animal-eagle",
+      "bytes": 370536,
+      "sha256": "d08dc6be7fcbd99a02ea394a24a888b439d61f3d47fb290cf4625f6d1dc98d37",
+      "sourceSha256": "7e8ba67a7356c4fec6966f437838fd6ce63681cd3320cff974aa180f74125c42"
+    },
+    {
+      "id": "animal-elephant",
+      "bytes": 372288,
+      "sha256": "fcccfdb415c9fc0a86ec4239e23d127d378e40e710efe1553b1478eac745cd76",
+      "sourceSha256": "a4faa0ed5efe3d70f87877297249f5e3606443020743119944ea67a727884627"
+    },
+    {
+      "id": "animal-flamingo",
+      "bytes": 315224,
+      "sha256": "18b9ac9ea35c56584f50f3cc7bf95595f6304c1effcf8007f36f0530361f0845",
+      "sourceSha256": "f0367e535c137909b1652d23874bb01ce4574fa360020b20ecd46d151a1662c0"
+    },
+    {
+      "id": "animal-fox",
+      "bytes": 390000,
+      "sha256": "74249c65d78a128c8734a9e46ecefa47728a160aab55ced536fe0799bdce4cb6",
+      "sourceSha256": "e5c60b18b862ce8116a26855864949797c0ef0e0662bdca5a0dff50dfa0e17e6"
+    },
+    {
+      "id": "animal-frog",
+      "bytes": 412300,
+      "sha256": "1a25272d685b4ddeeb5f77bfc1adf94b85151f93218acf3c64f93aae90f116c1",
+      "sourceSha256": "4b12d347e2b8cef99c20695e39efa922f0cb0c630d548599f3d800077beab6dd"
+    },
+    {
+      "id": "animal-giraffe",
+      "bytes": 338996,
+      "sha256": "8a1f48cb9ab2360b88afe7df95089068c23f224f44130f2cf177aed533a8ea3b",
+      "sourceSha256": "f1338091aa9b847a92dd8421b54d275d979fef903fad18c47814eb01571b0a00"
+    },
+    {
+      "id": "animal-hedgehog",
+      "bytes": 459488,
+      "sha256": "7170c16d775d8b68ac7a5e53f90f68a1fe3e37745f0cb674d8f70a010b6a904b",
+      "sourceSha256": "d10dbcac60698e4e22c0b3537ff070be95540596ed7dcaab5d68f28f9dfb48b9"
+    },
+    {
+      "id": "animal-hippopotamus",
+      "bytes": 355420,
+      "sha256": "1dcf219819cdef956863e244d2fe3cb375e1b9601bcce1a60c747f1d50c38efe",
+      "sourceSha256": "90a08f92cd9b95a79335a686e15738a88d848fa99aa038d4a6290b970b8690b1"
+    },
+    {
+      "id": "animal-kangaroo",
+      "bytes": 418872,
+      "sha256": "d3066977bb7d5a2c79796e8a2714bcd8c5f3a7abcfd28b17c564a58a9c923ccb",
+      "sourceSha256": "1d4fce3f4e284d5bd9abb125737a02363fe9c4d3ec4fc3a4128065c3a68894ae"
+    },
+    {
+      "id": "animal-koala",
+      "bytes": 405308,
+      "sha256": "d9a242a643b1d0ee0607f4e31a8f31ae3eeecc62ecc0c82c0fe220260833c850",
+      "sourceSha256": "f2db905f2dd270a6c3b0fa1c5d9d94e7b0325b05671b83453f9c55922a8d6b40"
+    },
+    {
+      "id": "animal-ladybug",
+      "bytes": 433124,
+      "sha256": "818f79f0b15a3512017b342a42af2f16fa4045a097ce689d26fa16d316af3c45",
+      "sourceSha256": "b52ce8df49414f764bbb25ec771367b9d30f4e44683aa3db2094c22a0fdbc790"
+    },
+    {
+      "id": "animal-leopard-gecko",
+      "bytes": 450036,
+      "sha256": "48b6f330589c7b1b37074ab8fe2703da9f0ed3cc93f93e45fb2c0ca68607b7de",
+      "sourceSha256": "ba14fd018ed9436662d3f1448a16bbddf038e411d3d43d6aadd4be4e800c711b"
+    },
+    {
+      "id": "animal-lion",
+      "bytes": 356412,
+      "sha256": "f8e7b752bb4c1abf5ffbd99324a16a873b54044162c2fc0a982a410e13f0c706",
+      "sourceSha256": "2d6e3b43885ce3b258c41addfd77328029d81c368a14a0459b1231fb7ac33de2"
+    },
+    {
+      "id": "animal-llama",
+      "bytes": 389180,
+      "sha256": "d2ba8dfd6d7640360bd4d4db54b7e971ddc12ade89979a6dd806078b5f6cbc49",
+      "sourceSha256": "317cb7133c4bd82355cdb018376f228050280c50d7772a6e885cfa2ced28e089"
+    },
+    {
+      "id": "animal-meerkat",
+      "bytes": 346788,
+      "sha256": "3a379c1416e0696fbac7d5c622c32278d58b8ca607cf16bd2b253f99ab8d771d",
+      "sourceSha256": "d2eb3a1665d735ddd11a97828c6118542ea8ca372f3afb829c001d52d368b3ff"
+    },
+    {
+      "id": "animal-monkey",
+      "bytes": 387172,
+      "sha256": "4cf60b10a0a2375845279f10b9c1d076a6f5eaca9b3652ee0bac701d94d80075",
+      "sourceSha256": "542da98479071e8b8e9dc9d32b34a7145b00bcc36872aa2ca8024216a5912b1f"
+    },
+    {
+      "id": "animal-mouse",
+      "bytes": 408216,
+      "sha256": "911fdebfa177e49e17c48ec7563526ff2f2789ce1585c8e7cd7606e44dda4898",
+      "sourceSha256": "4cde1c89ff415617abc949b53ce8c325a68a6fb783bc995250d369dcb6c1d6bb"
+    },
+    {
+      "id": "animal-octopus",
+      "bytes": 379416,
+      "sha256": "3692f8dee0f332b5899bd4772d050cfcff104e4e90fa38f223044f5d36c046a6",
+      "sourceSha256": "084b8494d01a3a4b4d5cddeb68b99c2533003b319073e269a9cb2b7c0f581846"
+    },
+    {
+      "id": "animal-ostrich",
+      "bytes": 482372,
+      "sha256": "97665a79798bb8635fe3029c4c1cf6e05a0394d6f1924f30c6afd283c2352bf4",
+      "sourceSha256": "0fc8f9c8ea1ef6db4ef6145af7c2ea164097bab6cb2fa05767484441b1300dcf"
+    },
+    {
+      "id": "animal-owl",
+      "bytes": 437616,
+      "sha256": "9b123861a9e116eef5201f4eec84683d9b0a138d18fd9bfd07f3d0fc01d49ad0",
+      "sourceSha256": "94d668ab92161726593edd6f581a7d3f9b3d1de12dafd89fe39005ce7949da5c"
+    },
+    {
+      "id": "animal-panda",
+      "bytes": 263636,
+      "sha256": "7265937740f8e2e3249951211dfbc37ba03fb57b82df43c2e7f6907986fddee6",
+      "sourceSha256": "6b81ee00db5dc05c7d6a39b2a557376b0e76c01e89471069a5ecee07f62ca31b"
+    },
+    {
+      "id": "animal-peacock",
+      "bytes": 458776,
+      "sha256": "265991c27e2ed07c2fcb763e5ad20c044b396cd80fd5e7fffcaf291dc51a2bd6",
+      "sourceSha256": "2d34acb647c328eac8d2458e2e3f934a5f4b20276fdbb59af6fa8038742918c4"
+    },
+    {
+      "id": "animal-penguin",
+      "bytes": 308156,
+      "sha256": "6ce8927a2fdabf71437434e51b4ad2fb5735504c91657237bb2f88cacd498657",
+      "sourceSha256": "ea256d2d85da6f932af04d5c731a00a5871529de66f0b9b69776963bc4e1d15f"
+    },
+    {
+      "id": "animal-praying-mantis",
+      "bytes": 372944,
+      "sha256": "7b7757c25775965f1ec39223826ca31cff847466fb6348ae91d1ff694837e85e",
+      "sourceSha256": "a9fd18018342f62921408f13e6099cd1e2d84b8873c7238e30dc3abf05540841"
+    },
+    {
+      "id": "animal-rabbit",
+      "bytes": 303668,
+      "sha256": "55c25f963c5f5eaa05fcfebb0b549af2d1264a5c4631290242e83ae790400918",
+      "sourceSha256": "1298caeca32a1cbc60e97f4382f7042c4a07cd02451dd4f965d01109d4e3c0dc"
+    },
+    {
+      "id": "animal-ratsnake",
+      "bytes": 313980,
+      "sha256": "8f02a20e1d50a16a647b26bd3bcaebc41dcf7853cd101b3e4cd8ed60c4574b2a",
+      "sourceSha256": "822ba6e6f916fa5b407ac42bbf1e4424237ad2a8f06fc7355df27ce432a48d5e"
+    },
+    {
+      "id": "animal-rhinoceros",
+      "bytes": 390576,
+      "sha256": "3f75248a68cac08dfaebfdde20d7af9db04aa6ee716b83071405d6fde3bd785b",
+      "sourceSha256": "d1d0fcbe183b984e11e51a4d7653df90e908ba2a0e72652e5ba95461423e948b"
+    },
+    {
+      "id": "animal-seal",
+      "bytes": 353520,
+      "sha256": "cc5a6896729a7d09e48d8948b6e4cbd65edba57063be50d93a30b14daaacc74a",
+      "sourceSha256": "5a0fc9bdbc9b3525852eba18a5661b0975cf4c9683f9b8361f0dfdeca9d77b76"
+    },
+    {
+      "id": "animal-shark",
+      "bytes": 395268,
+      "sha256": "08010b13ad46a40be6b3245b5117e71a9e7e173a7a6c409ef14203e568935cdc",
+      "sourceSha256": "74d676a418bf79fc4bcd4093b5fb2d76be409bb10a0eac3146e80398c761a6f5"
+    },
+    {
+      "id": "animal-sloth",
+      "bytes": 394348,
+      "sha256": "bac7897875a1a2c6889d6fd87f1a9aa2863e5a81b66563490842d390986f2106",
+      "sourceSha256": "ffdc5c470fa1cb8f53091a7220886d49fd9b95d8d18d83fc96efcca56fe3d232"
+    },
+    {
+      "id": "animal-snail",
+      "bytes": 411696,
+      "sha256": "ae249acb42f9d1cb3c3b7fa92ec1f8453bd3aeb336d7c873169bf2a49002569f",
+      "sourceSha256": "736c406e628ef24927b12671c250004f1f82e3e122a1842bda0d1e962d8012c9"
+    },
+    {
+      "id": "animal-squirrel",
+      "bytes": 458784,
+      "sha256": "b070dcae04328d6d635a20c04a954afd2d91894c6848a0b2668ac64ecadfe2fe",
+      "sourceSha256": "17c2e3eabdae88e607157579d43e1bc4ca2bb49c6dc8ba7a7f1185a6bc3ea431"
+    },
+    {
+      "id": "animal-tiger",
+      "bytes": 441312,
+      "sha256": "b26e059fe103b424d48e4bed8646a6d53f402a53d608de5362f5fbddc4835c5d",
+      "sourceSha256": "46b1ccce62928afd94597cce47a4ad50fe58d5cbcdcf58abacf35f5663a77f4c"
+    },
+    {
+      "id": "animal-turtle",
+      "bytes": 405276,
+      "sha256": "fb00ddeaf0c11759d5faa19ed75cb3d3752eb5dc4ed08aedc98faa59180fe33c",
+      "sourceSha256": "0575480e10d5476affde4864a5b2dacfac62fd4e13b80d37701da10bb3fe9930"
+    },
+    {
+      "id": "animal-unicorn",
+      "bytes": 402324,
+      "sha256": "97acc62cd4120c8ddd5794eae885fbd283b0b73e693d23db691815bc9fe8f8e1",
+      "sourceSha256": "7a1e678f8a55ac9e40f77738ff329d9bfc478341adb4cab6a755a5094bbb34d5"
+    },
+    {
+      "id": "animal-viper",
+      "bytes": 362248,
+      "sha256": "168bbddec363c5502da62a13d3606f6f4d003f162753ac64ae9418444c2ef6e5",
+      "sourceSha256": "8ebf3b4c7a591dc3d9a7dc847588bbc9f7601cbae3a070cddd9686941070c323"
+    },
+    {
+      "id": "animal-whale",
+      "bytes": 446224,
+      "sha256": "176ce6fdc01c205006f0f1e277b6c6e14d3ee5c6e002a292e26f420653d8ca16",
+      "sourceSha256": "a30b79a459aa0a167982e33ef6ea5429a18bd55b8e71f7cde9da780c213f9db2"
+    },
+    {
+      "id": "animal-wolf",
+      "bytes": 450932,
+      "sha256": "ca501347d64516274bd21a901fe2c357509d6803841e6e8d1b6b2a0b220428f3",
+      "sourceSha256": "c0aa0c3f6f9885f024ee9c9a4ee7d38ce44ec89401535a7385be48dcc65aaf91"
+    },
+    {
+      "id": "award-trophy",
+      "bytes": 454448,
+      "sha256": "f8ed794d522929a9d56f308421aec5c76e788d222654756314bcead807c91804",
+      "sourceSha256": "b2664aa5fbfb87d06142ce6720ace79b22a2e1211814a2cfbe6db74ec04ae909"
+    },
+    {
+      "id": "drink-bubble-tea",
+      "bytes": 239224,
+      "sha256": "f5ce9e67e11aee62deb25ceff34363d0d7afc5704f0d302dcdb09b8a58844229",
+      "sourceSha256": "ed83f01ca838834570c3ac136625edd393f70ce0131eb7822b040e2f31970952"
+    },
+    {
+      "id": "food-bingsu",
+      "bytes": 445112,
+      "sha256": "f46940eaa308c4cdabe8fd324177a2dad813ae6636e24ab31560e5045204a20f",
+      "sourceSha256": "03595e55ec206e5f7ae7a9c732ad7ec0c739ba4076a81c929f7f9b3288433653"
+    },
+    {
+      "id": "food-birthday-cake",
+      "bytes": 395588,
+      "sha256": "39109a6f61dd8ded3a8cb051907cbd3683c97f3a0f760f962763dd157a8a87c6",
+      "sourceSha256": "2bf51f4285fa850137e2cf63317c2598c5add7d365f92781fc70a77b0c9d9092"
+    },
+    {
+      "id": "food-candy",
+      "bytes": 402884,
+      "sha256": "a4b9151303d74b34d90fd76c69c5ad87457a497154492f45c5e6b33acc249046",
+      "sourceSha256": "e3d87e3009a98342bac62028ad14258a53b616c392289b96cd6934b8045cd02d"
+    },
+    {
+      "id": "food-cheese",
+      "bytes": 262220,
+      "sha256": "9f09c84a9a73b0c8726d6275a0ced035daef57a17bd3ed37f0efc393578e6175",
+      "sourceSha256": "e7dceb2d3bdb463e2f4eb117bf8d9f4ab49915fda5738ad49e5aec262c282c9b"
+    },
+    {
+      "id": "food-chocolate",
+      "bytes": 372468,
+      "sha256": "7fefbf25aa7c5950c7afec99291a871f16654ee16cf32ee1de6df9381ab84950",
+      "sourceSha256": "90518b046937f5f770d78a14bcd6b99ccedb847542ab39ac021e7b283c4027a2"
+    },
+    {
+      "id": "food-cookie",
+      "bytes": 464412,
+      "sha256": "712af72ccd5c79fb94d2d7bd1a0301f36f2b28701bc1b39009b56e63c039a602",
+      "sourceSha256": "ee0e53ea587e7dc7f779f321e46ce08b5d0c8c6bc3fcf269e68b755d5db700aa"
+    },
+    {
+      "id": "food-donut",
+      "bytes": 301024,
+      "sha256": "e296834c4966494a284597893bd92bf7515fe5fc784fd66656ce95a7290de6f9",
+      "sourceSha256": "606ad6e160de0aa131224dd7279a5d72f3419ef4fd1d0f5f782cba03dce03334"
+    },
+    {
+      "id": "food-dumpling",
+      "bytes": 378468,
+      "sha256": "5edcb94a8cb7ae45f889744c47cf8e6b6d7a521a9cf7d083c7f44626916d6ae4",
+      "sourceSha256": "56b14b7df9e570eddc7e67320640c59f7b338c0b83169fe22182bdee0633dd96"
+    },
+    {
+      "id": "food-fish-pastry",
+      "bytes": 488356,
+      "sha256": "4f627b4d12cd59e791bc54abbcf45aa113e1cdc86caac1d892346d4b521f687d",
+      "sourceSha256": "f143de7cadab1f1a449c83c5b1ac528b685f223dc8a915a104fbbae3c0ba1ce0"
+    },
+    {
+      "id": "food-fried-egg",
+      "bytes": 373032,
+      "sha256": "750619a6d5d2d145effb89ae5db7c2a0f5a7b34ac1196c3658822c8c6023ade5",
+      "sourceSha256": "37943ede4e52a26539eeae5509a035702fc6d9340c814d9f5449eb6985f4673e"
+    },
+    {
+      "id": "food-gimbap",
+      "bytes": 385972,
+      "sha256": "fb8c8e3817326fc1c65f6495b724f62118f30ed7a4b515c9111d71bfc40519d2",
+      "sourceSha256": "2aa02d42647564b681a9dc0e2c08dc6664755e9af60d7d5cf72f3ac6d65f9e45"
+    },
+    {
+      "id": "food-hamburger",
+      "bytes": 414524,
+      "sha256": "400cd8eafa4ec2084ab37b72d2dbe2f2a16aae4e2d510d98837b7d29b64110c0",
+      "sourceSha256": "396938bee60bf57cc02fefd232cd683d1fc28c8b38932c4cadf6561af36f0727"
+    },
+    {
+      "id": "food-hot-dog",
+      "bytes": 416344,
+      "sha256": "5380baf059663ba8c2a52da6851f037acdbebfa1386cb0f78fe3db49331a3643",
+      "sourceSha256": "93a080d938aff7d686ede8a54ab1c7e5da2e119a42db3c05b73f9e49838ecab7"
+    },
+    {
+      "id": "food-ice-cream",
+      "bytes": 327300,
+      "sha256": "71e53ce11f3f95b0ce9fc3eca878fd8c5a80c12669bbf7730cd9e1bf7262f516",
+      "sourceSha256": "6f0fdff2211e8aef68da4cc11f3b90382acf2996b5725e4a3b0ba010219eb30a"
+    },
+    {
+      "id": "food-macaron",
+      "bytes": 432932,
+      "sha256": "d22848c2bf424fb589e36d81e1249feea11f436221bfa1cedd7442ad61337258",
+      "sourceSha256": "f519cd5304f72a7ec78606bd81e1c3094cababbd39da4191ca149b71dce2eadf"
+    },
+    {
+      "id": "food-pizza",
+      "bytes": 370460,
+      "sha256": "ee26b2362427dc93d97228e39a2361a68d299af50ffc953b6ac3c790fcc93b83",
+      "sourceSha256": "faaf1697ceec203fdbbd684f95d04452968cd50e21e589a3212b1c267bd4d373"
+    },
+    {
+      "id": "food-popcorn",
+      "bytes": 489416,
+      "sha256": "59db7fdcac7c4f4fd067603559b28b1082a0e5f84cd9985df42bc8dab0deda42",
+      "sourceSha256": "23f59601be95faeb3212b6b8558c7bdbb1da2713dbb5f72483e90bdc56f8a456"
+    },
+    {
+      "id": "food-pudding",
+      "bytes": 435392,
+      "sha256": "a9c04ef1b5a52bbef64c29394b29d9d120e95683563c674ef19343917da451f9",
+      "sourceSha256": "7be907c8108e390983de6ade9933d766a0e1ee680ee8eac66b7f7a93766863c9"
+    },
+    {
+      "id": "food-ramen",
+      "bytes": 475544,
+      "sha256": "c00ae79c97c408f48a93fc035863bce91fa1ea8f375938659c9ca72378e22e1b",
+      "sourceSha256": "c8d9a93cdd4b07e6a2567ff3b682684b9c79e3d2483812837f08b9ba5b65fc3f"
+    },
+    {
+      "id": "food-rice-ball",
+      "bytes": 416812,
+      "sha256": "0bf217d57469e7b7f44a4d0dea78a1928b1e3e2d39dab636ef3b6b13fdb33491",
+      "sourceSha256": "1c11b1e7e716d35a54762fc247b9587e9f711b77f20ea9338ff7b7331a2d0269"
+    },
+    {
+      "id": "food-sandwich",
+      "bytes": 393636,
+      "sha256": "208320380ad8653adab679390e86e8ded9655f02567f7140c869801dc9a91a14",
+      "sourceSha256": "f5dc09e5799df447be9a3a05a26e781700d3af05ad3bbb5689566d2a2e319d4f"
+    },
+    {
+      "id": "food-sushi",
+      "bytes": 478236,
+      "sha256": "590560bfacd28a3058b5291e6162beb9840768ff18c7384a13457e62d6641cc9",
+      "sourceSha256": "00a3347fe4548395b06eb1bf145eb690d708291e4ec0017ab36778331f6d3280"
+    },
+    {
+      "id": "food-toast",
+      "bytes": 355636,
+      "sha256": "b42c7167044545f02b400265466d351302b067c1b1b9746211059f5273513391",
+      "sourceSha256": "9f3edda0824aa09e75b33287707c2351e0a105b5f21c212015106bf9524f8447"
+    },
+    {
+      "id": "food-tteokbokki",
+      "bytes": 469848,
+      "sha256": "6805135cd322bbba323ff487329c610ceddb341c6d51645f31eab52581a9eb53",
+      "sourceSha256": "96015b279ab4026f97ba0a4e86bcb7dec45932ff4760f37711a5330f286d2f4c"
+    },
+    {
+      "id": "fruit-apple",
+      "bytes": 429840,
+      "sha256": "f1a8f7681a8d0da7a1a692ffba7d1c8078c620c53b9b4dad2d6ab3fd44b3a4d6",
+      "sourceSha256": "1351479c760b972bd5593661f28ce22ea406a934f30416b618efe97b0f1f5899"
+    },
+    {
+      "id": "fruit-avocado",
+      "bytes": 216732,
+      "sha256": "4bc414826e92ba67b4714c6f9fc500645d55850e8d74842001259a449829a3ba",
+      "sourceSha256": "eb696141f1cf2aeb0d744a83b73eae897426c2d0e513c2cefb7c4faebc15f420"
+    },
+    {
+      "id": "fruit-banana",
+      "bytes": 355304,
+      "sha256": "f194367a0607b5458e8586ab93df6fdb6d8a1c8fa79dc8b005c99f52c052e791",
+      "sourceSha256": "e8a1872213d86b34f5e529220335f392432a6489e00f7caca7eff9c4fee6fed7"
+    },
+    {
+      "id": "fruit-blueberry",
+      "bytes": 407136,
+      "sha256": "ebd1f508edeea0f38bd133c3ff5a1fd4aa5b068e44fa6489778d8e08d5a65d36",
+      "sourceSha256": "0166108f02e144a67534ad5371ad2e3ec8cdeb47caf4b1bf35109f359deb1516"
+    },
+    {
+      "id": "fruit-cherry",
+      "bytes": 195104,
+      "sha256": "2e18759e8121ffbc2bda82460a3674c94d9ace943b9454c598e7e1db8f463e8b",
+      "sourceSha256": "acc4ab3e092000834b4b51bdd8cba12ad5f06353a5abcd02009b28f47fa891fa"
+    },
+    {
+      "id": "fruit-grape",
+      "bytes": 380140,
+      "sha256": "33b19b1016cf1818a2c7c6e2851f64e6751383c36458b57466b7674881e62ac6",
+      "sourceSha256": "a8f9061ddfce0b84344d783893d60621cb033543e41d1c865dbaf2770ad627ca"
+    },
+    {
+      "id": "fruit-mango",
+      "bytes": 277596,
+      "sha256": "f5746fb9c4ae3f4d599c11619494faccbd5ba87f028bdf3c060cdc003a8b4d44",
+      "sourceSha256": "b6b95ea2ff9e459436dd2dd5f85580c3926e17dd4b7993f0e8466242322aa011"
+    },
+    {
+      "id": "fruit-melon",
+      "bytes": 494728,
+      "sha256": "1b76e1aa2b271bbe4b213df128bfb4713cbcbfbce034702ff3b251bb13f46db9",
+      "sourceSha256": "3ebad322d8edba3979fca30faf923bc5ca478a6b345df95ddd35f174cfe106e6"
+    },
+    {
+      "id": "fruit-orange",
+      "bytes": 448036,
+      "sha256": "0d2d5bf1c39c176ed2e17a43f4ae5bc5731a702a663d0d78cf941a44b0afcd48",
+      "sourceSha256": "2511120cf53fd726dd02d96ba5fd23ee148016f6732932391661bd3a1691bbd3"
+    },
+    {
+      "id": "fruit-peach",
+      "bytes": 442432,
+      "sha256": "cfa513d9438b30357a87af0924b63fdbcc781892451dd94302a3e668ca8d8578",
+      "sourceSha256": "58c785059755a8ccaec935a2f9720483dafa1f08e230e921f10d6e27bd42d5d4"
+    },
+    {
+      "id": "fruit-persimmon",
+      "bytes": 454496,
+      "sha256": "56b650198ae4f7919b6417dfcccf1cfd3db09c3e1deaf8fa152fec98f4015b68",
+      "sourceSha256": "b0663dfdbc6c2fe199be91353315be1aa44b3ea75d9f7dd8109d602c2832920b"
+    },
+    {
+      "id": "fruit-pineapple",
+      "bytes": 466148,
+      "sha256": "6436d31752db9ad21984024383c3cde899c1ab278b5b46078d7c7a8ad8c051b1",
+      "sourceSha256": "a75b56195924a1ee33dc8c2cce05f1bddcaf96cbf2b6eee503858f8740883efe"
+    },
+    {
+      "id": "fruit-strawberry",
+      "bytes": 457420,
+      "sha256": "5b4fbd52ac01a342b797482747381e8391b691097460e31b46d468035044deb9",
+      "sourceSha256": "3cdec277bfccaba7289af32e94dce86020d99aa82b556c4deb28a728bc6d7b58"
+    },
+    {
+      "id": "fruit-watermelon",
+      "bytes": 378556,
+      "sha256": "b3b225644b3c9c2ee8ca8e800e52844849c2530c21c2b38d88a9bb512efe031b",
+      "sourceSha256": "e56e4e4eea710f136933ad18c2c55a49f3f003e87ea3600bb8bb01aabf344531"
+    },
+    {
+      "id": "game-dice",
+      "bytes": 298260,
+      "sha256": "2f6e72a9e35b6adffccaee8e8b528b31bb2f0979b5d5ef310349c34a3f530385",
+      "sourceSha256": "ce8703cb520dddc57c43e36c14901319184863d00f40800c4f1f7a0b29bdd0fe"
+    },
+    {
+      "id": "object-boot",
+      "bytes": 478316,
+      "sha256": "906c34474ee02c8c25e84ddcf68355e1ac6873cc7b4e8ba7c755c65411a4f261",
+      "sourceSha256": "1ae0ba703d7adcadbf07a12830cc7aea0a189dd06f4c70a482dee142f84babf9"
+    },
+    {
+      "id": "object-camera",
+      "bytes": 370688,
+      "sha256": "a85e6d8ef4fc348696e24d1212bf187dd24ce51a51fbc9ea0e5bf4430ded366e",
+      "sourceSha256": "fc3bcc27bc8e81ebfc1da08c74dbf31e75488b566b6aee5c267b1024c5165b23"
+    },
+    {
+      "id": "object-eraser",
+      "bytes": 292332,
+      "sha256": "03b17d950cbec709529a31c5920576745de91dfe283aeea92f61a566804cf3cc",
+      "sourceSha256": "98a4b11cdb44da3ebf228e0a39c036706caafbbeaa91899ff837321040c995dd"
+    },
+    {
+      "id": "object-gift",
+      "bytes": 405796,
+      "sha256": "deee54ad3cf2aee27c76b210cd06f4010403fc2e838435e3d0a3a06bc46a9927",
+      "sourceSha256": "5cdd941aa305402a2bc79b94d8f244e82c58db58649bc8e1adc8d1efa60d7a99"
+    },
+    {
+      "id": "object-key",
+      "bytes": 262048,
+      "sha256": "08ba53bda4b78908604ae3389818f80c03aebe93cdcde7366efad385c5e901bc",
+      "sourceSha256": "4e4f5d8ac144efd755babdfc728520663c034cfc7f26bc966f032ec6f3b23d4a"
+    },
+    {
+      "id": "object-lamp",
+      "bytes": 465444,
+      "sha256": "51fdcf689fd97ee875b90c67d09c06d17347f70ee844f1f8f6eee92d81adbfa2",
+      "sourceSha256": "ad2bb085288f873704a95db017851f06b09704d5a7802eb6a4eb7c5534c924eb"
+    },
+    {
+      "id": "object-lock",
+      "bytes": 295716,
+      "sha256": "b14c0ade3ce71d5b0809247561bd71a849fd5b4e605ddfa2d3d3a14ce146647e",
+      "sourceSha256": "169218e0f3f17cbe3790914f089830b639147086c26d74b972d16ee716fcd740"
+    },
+    {
+      "id": "object-mitten",
+      "bytes": 384428,
+      "sha256": "28948332ed0671828d220f30cc39e8fa1653bb6c3b0fbc4ddffa7d3df822cd0f",
+      "sourceSha256": "d9b1b2c54f15823927af28bbd7b3da5a800278b69bb27b20bd3e6faf3e8fb453"
+    },
+    {
+      "id": "object-newspaper",
+      "bytes": 348848,
+      "sha256": "7f121b5159f0ee49e1b17a741b9c5c266b9d82b2ffd837c0ee98742fd48ccc3e",
+      "sourceSha256": "768f8124a4d02ae26141bca628077c23778b8e4ed552e3f73163fcf76706d331"
+    },
+    {
+      "id": "object-pencil",
+      "bytes": 291520,
+      "sha256": "da128e92102c31c7ff700cbc49ae9b8895c7c92ff34f8236142232c821cf411a",
+      "sourceSha256": "075434917d37be22c1e4e44e69bb91ed945e613e4ae04ed6035f4d9285f8d554"
+    },
+    {
+      "id": "object-radio",
+      "bytes": 386680,
+      "sha256": "58ab7600ab6645e6d033de073659f53a61f83410b9252c2046e0f243f74eabae",
+      "sourceSha256": "c984bc6e9e31bac9104275456019792f2d3168bd4826c1f42ed78f2981276ac9"
+    },
+    {
+      "id": "object-sack",
+      "bytes": 431060,
+      "sha256": "70b56d9e933ced27abd30200a08dc8b9aed7793e2544bb7add2eacbe83915589",
+      "sourceSha256": "40e91a37fe5681c42c12d8e6d1bfa1256db2eabf57e7158e121834ad407b6c36"
+    },
+    {
+      "id": "object-television",
+      "bytes": 391608,
+      "sha256": "b6d447f6438aa3ed83b29f1a425d52f492e738fcc8800044fe3ab57b3c96248b",
+      "sourceSha256": "df22bbc9a1b2af3824ee26449b0069529bc68b7cd77b1fc43dc1369d14df5933"
+    },
+    {
+      "id": "object-umbrella",
+      "bytes": 307836,
+      "sha256": "3ae2d858082f530a81faa894d3885da3c32bed5b15342d636ebc4007952cd033",
+      "sourceSha256": "65e089108f9b6e56b016a0e7fc0922dfba886d7bac60314919439a22ac7e5f8d"
+    },
+    {
+      "id": "object-watch",
+      "bytes": 286432,
+      "sha256": "d0cf6c129b13d7e4f8304a27fe60b88ee966fa684e96deb21415933bd013d4ed",
+      "sourceSha256": "9198abdf9b661e19f3c0cb0d5fe27a3e86334c26260f5da2d0140f8bec4ab952"
+    },
+    {
+      "id": "sport-baseball",
+      "bytes": 326932,
+      "sha256": "ae33b502e66e06f95d81455b960e8ccad17620adbebe8d9d1317d18530a70be8",
+      "sourceSha256": "8c453cc45d031c63a0c7b40f0c3ee962cf4ae456b76d14b00b1fe92a0ac598d0"
+    },
+    {
+      "id": "sport-basketball",
+      "bytes": 330760,
+      "sha256": "57712b6adcd1fadcd4950bd0bdbc333985f24e8aa60a4f3a5ebe7d95ddf85228",
+      "sourceSha256": "0b2d985d7f04123236fd32746d13415ada7efbb5f0e649d5443c4ecbcaa4ff50"
+    },
+    {
+      "id": "sport-bowling",
+      "bytes": 273892,
+      "sha256": "1fef8a227613356f8e25efbfa67d1fc5e0c08ea1ab94c5423674aae823a46511",
+      "sourceSha256": "331e1d221aa7745084982c810e2356deba87421133b5536a9a27d2b38cd084d1"
+    },
+    {
+      "id": "sport-soccer",
+      "bytes": 282976,
+      "sha256": "a057dab7bc57202427778f2c8a2101958f6495f419b5bbfafc62c2cc11bc34a1",
+      "sourceSha256": "bd19b2f7d3ad9cfa98022d42f613b01322e6e06a5645bcfc67206d261296e7bc"
+    },
+    {
+      "id": "theme-balloons",
+      "bytes": 394272,
+      "sha256": "79bdb6a31590e247854b83306847e7c4bbbf5c54c62a0c4836a1d331b67dfe92",
+      "sourceSha256": "8d888fe9009f39c71d69d87d1dda86bd4873516eb2bbb0b806e566fbab46a4c8"
+    },
+    {
+      "id": "theme-cactus",
+      "bytes": 381228,
+      "sha256": "2944ad923668c277e64e44f0b29c73b778e1ec77764d444ea16229af2fce1928",
+      "sourceSha256": "498079247d3169f3927e518d61651a2ce561adfd37f5083c811e4ae3f505c848"
+    },
+    {
+      "id": "theme-cherry-blossom",
+      "bytes": 340384,
+      "sha256": "997f087f80078473fb9fe9c94a86090d6873c6193dffb2d592f9b3f50bac226f",
+      "sourceSha256": "c85fccd319a2ab50bde2b5e99ef8217d419c913c61bb2c0009dfc19233459d18"
+    },
+    {
+      "id": "theme-cloud",
+      "bytes": 319368,
+      "sha256": "b1d64eb949d6e802bb04c050e5fc8b911f4853245a0810bd106e87e6bd4449f8",
+      "sourceSha256": "ae9fbf69fc7ddc5c7ad00bfc4f8b395224fd569c96c2d3d20c0299d31716ca84"
+    },
+    {
+      "id": "theme-clover",
+      "bytes": 416016,
+      "sha256": "27a40af83da7d36c30ba0ae1efbc00e08667e8009f1861f0dc6f8a7efec33222",
+      "sourceSha256": "75759b6a0c00b17af0fdf4228709250afea2b5cb22f37acf5e502b6c63c05aa6"
+    },
+    {
+      "id": "theme-crown",
+      "bytes": 329620,
+      "sha256": "8cebdb8368a30019a722d21c0cac9ad33df98c0a0e6feab2aee1dc0adb342d08",
+      "sourceSha256": "78282ca95c9767f407d9ff70c14562331959d68cbdcf87d5e2806688756212b3"
+    },
+    {
+      "id": "theme-guitar",
+      "bytes": 387276,
+      "sha256": "d8e9e3985e038c33765673fbe2f065b995d8d7ec02b3b95a5a7cb691ca59d166",
+      "sourceSha256": "0adb3df0981c7dfda01edbfa22fa57a92dbd5e8a66276f5ad0060d8596009c9b"
+    },
+    {
+      "id": "theme-lightning",
+      "bytes": 230072,
+      "sha256": "b389086c36c086debb03e6a8db82c380c4bd35cf18fe90a37a7de3bbd2c2ba47",
+      "sourceSha256": "0497fd496f63575b6ceb61b716198d3e1428c1d59863155b53aab0c30d4fee66"
+    },
+    {
+      "id": "theme-maple-leaf",
+      "bytes": 355328,
+      "sha256": "7a15e9f0bef7a96d8959bdf1d89c342a7b90d767e7bdec077eb66d68e6376e50",
+      "sourceSha256": "d8eb0c35b74515c23abf23f01197b8309f7a982b1f219d9e916bc1d895596001"
+    },
+    {
+      "id": "theme-moon",
+      "bytes": 262524,
+      "sha256": "757c6169c8608c1379919ba9d93016900c7638b35baf8d91e9e91d376dd84b0b",
+      "sourceSha256": "c4ee8b72a60c5116da4b9acd1188776577d7560f77b305468f142a720d6c1609"
+    },
+    {
+      "id": "theme-music-note",
+      "bytes": 233044,
+      "sha256": "52fa036f546a8ea4557cee0adc0d6a7f2c98f49633bafbb8dde8c10f549afbed",
+      "sourceSha256": "fb606438b31aea95238ed8d20ea1f807569508a4d782dadd7e26af301deb21f0"
+    },
+    {
+      "id": "theme-paper-airplane",
+      "bytes": 307476,
+      "sha256": "a9ed9a106e3b22d579978183443b88e5776681760fdf2ba451714f41c9fb8160",
+      "sourceSha256": "eb8f005d10b413a852d0f754d56b3030ba0d9d465c8f504310f1b196d7a79b91"
+    },
+    {
+      "id": "theme-rainbow",
+      "bytes": 404680,
+      "sha256": "eae5632271c6ae7517717fbd790eec460cb6e9c975e81fb0a132f9224040c8e6",
+      "sourceSha256": "8c446fc9831bed20fb33ee7402691698bfca886aff518c0b19c9964aa3beacf6"
+    },
+    {
+      "id": "theme-rose",
+      "bytes": 452636,
+      "sha256": "bc4539358d3938f67f054f79c2394a0ca4a0345f98689023ef45b765703592af",
+      "sourceSha256": "22e5b16a8dd225798d7c1db19f7e23d693f2fc985324bfc6082d3a1f1bae4e33"
+    },
+    {
+      "id": "theme-snowman",
+      "bytes": 211680,
+      "sha256": "5c6ee41f8123c32a120249dcc8924662c16f21b94f427c6442383ab466505586",
+      "sourceSha256": "2c387a10516719bf7589b44fb398bd11b26687f8bd5c24739bf4ccea2ef8dde0"
+    },
+    {
+      "id": "theme-star",
+      "bytes": 380440,
+      "sha256": "ecf195456203fef870c9b3f1fc0b988eb93a510ef355382e28ecd6d323c90e82",
+      "sourceSha256": "1cc2d050412fa7436a6301f84820a1925fbfbd0e8d0ddcf296bf9122ef799991"
+    },
+    {
+      "id": "theme-sun",
+      "bytes": 342980,
+      "sha256": "7301b9b4650f70bbeb589c936bb1830fe41943c0e96f6a8e4b664972e54b71b7",
+      "sourceSha256": "aed1c9e50a5fb3615828d4784786b0bf64408735227db349b10ae819b12201e4"
+    },
+    {
+      "id": "theme-sunflower",
+      "bytes": 425352,
+      "sha256": "5d5b29fc1b2e99afd4bf86c71a20f56ffd462cc5fb3b447141cc4222cb362732",
+      "sourceSha256": "064445137965d0f61bd20538bb3b9146b5f3db00d0539100d99c50dbb6911624"
+    },
+    {
+      "id": "theme-tulip",
+      "bytes": 409068,
+      "sha256": "1c52eb691bffe33494427898a2fd9a1ddd4b9d526e94a3b8d25abfc7bcaaa728",
+      "sourceSha256": "c5fb2d2ef7e01ca2c6a13294d492a386bf6ea771907c0e32181def7f41509cf0"
+    },
+    {
+      "id": "vegetable-bell-pepper",
+      "bytes": 324304,
+      "sha256": "e00aaac52e29bee15c034c429ee92365a211a4d67556431ea478e78d5e2f2668",
+      "sourceSha256": "3984a924098aec48a1d8d16aff64e077187a20fa1db7a9a55ba2383a85cd2e48"
+    },
+    {
+      "id": "vegetable-broccoli",
+      "bytes": 473432,
+      "sha256": "46270a5bfa48a089d31bdb0affb5f13ea5ab7ddd4844957f04cf50be8a3e5fca",
+      "sourceSha256": "82c2ca9c53965a09d9a3eddadec7efda22ac147287c49df8ac764f8d3d7f8c49"
+    },
+    {
+      "id": "vegetable-carrot",
+      "bytes": 304236,
+      "sha256": "64b675bb0153248e537ab5cb665fc0e7c13e8b456a803bef2790beac1a6acf9f",
+      "sourceSha256": "9ed4a888b9e233317213d4c421b827579f60f41d8ed77c842346f0cca276c377"
+    },
+    {
+      "id": "vegetable-corn",
+      "bytes": 442752,
+      "sha256": "18f3ceaa8b7610522e1f9947c973886af12a34929d4f2706feaeddc0dec6fd19",
+      "sourceSha256": "7c6ea3d136f8d974066dc1706cc119d8f0368e91f1fcf746d4955905c798cdee"
+    },
+    {
+      "id": "vegetable-eggplant",
+      "bytes": 244444,
+      "sha256": "3b4708f95def3cacfa3546cf7fdddbd9afd8579bdedc4d9dc621b2191ec5d778",
+      "sourceSha256": "998ca2acbb40f04caac3afa0e3df235f59b3cbe9cfc5c9e4986952f62fc4dd06"
+    },
+    {
+      "id": "vegetable-mushroom",
+      "bytes": 424556,
+      "sha256": "e87e315c3ea2bb399dae428b887c268f3f7e5c3d227949a2e4d2e70834430f8e",
+      "sourceSha256": "e667f0d60acbc4767f2cf4754610e678caf654c9c4231a48687820dee7033845"
+    },
+    {
+      "id": "vegetable-potato",
+      "bytes": 236364,
+      "sha256": "5f6ebc97d086d695b0c2a2483ceeb361b07035989c4187de9b7799d4d70a8082",
+      "sourceSha256": "5e8999613bacd3b90f71ae899a40a615bb59c6d44bbf2a4df49fce230ba0cba8"
+    },
+    {
+      "id": "vegetable-pumpkin",
+      "bytes": 350732,
+      "sha256": "1f6b175925df22b23eb97b1fc5f98ecebfbac7a89524e02ecf1d95af375d512c",
+      "sourceSha256": "ff90b3005def4a082a6ae5a017355832ce46ef330dda59235519b9e76a101774"
+    },
+    {
+      "id": "vegetable-radish",
+      "bytes": 324160,
+      "sha256": "e8ac6f18f9f18ad67c2128fd132c819af81c920fb4a13c7f7820288f4a438744",
+      "sourceSha256": "887eb7fbacbd5c80beef0cce0c6c026b6e7f3b87b32b51dfa4a1adf5d07b6f03"
+    },
+    {
+      "id": "vegetable-sweet-potato",
+      "bytes": 267792,
+      "sha256": "f512a6abb6e02e3f41fb1bcdd0d9883524748771bacad5cbffc174f867395fc9",
+      "sourceSha256": "b0ff9de372aab33e00a1e54d021ac88ec42ba5ad89dc2d754044e97a98799d63"
+    },
+    {
+      "id": "vegetable-tomato",
+      "bytes": 319208,
+      "sha256": "1d900205afbc8a3014e7304d7aab425d8f92ac04ff32ce8b16528ac395be35aa",
+      "sourceSha256": "0a283a1fefd538ae343024da13751b266358fce92de4b42e0b39275d91dae192"
+    },
+    {
+      "id": "vehicle-airplane",
+      "bytes": 360056,
+      "sha256": "5e586fb81fbfe9cbf2e189f9f2f0f2acc434625b5b624f0c18052a24c985e366",
+      "sourceSha256": "c305a0a14bb2dda7e30eb277003099e2cae30c75ded682daa9a2f428c760b40b"
+    },
+    {
+      "id": "vehicle-airship",
+      "bytes": 468180,
+      "sha256": "4a7af97e81ca0b518a30f41587e374c9d72b6025c0803a6ab019f7ecab645899",
+      "sourceSha256": "3518296e00f1d4399f4af5ce81bcc2b7c428949d859717172b129c6c99f1d98e"
+    },
+    {
+      "id": "vehicle-ambulance",
+      "bytes": 437052,
+      "sha256": "74c1e9644d59e4196c0716d9a19c8d7793a7a0f01bb52aa3c92e5d0b3a3640d9",
+      "sourceSha256": "6755c699c09897e28d3bd9164b3eae9ed16e962b0511f005b51e10f680047259"
+    },
+    {
+      "id": "vehicle-boat",
+      "bytes": 325320,
+      "sha256": "b5a54ea072da1fc7568d21b8b76a7c7163b69296a8ab65cecec11cdd5ae73a9b",
+      "sourceSha256": "8ac20fcc6eef11732f709c2488e000095580a1aee7c76a8bb9aa97722537d15a"
+    },
+    {
+      "id": "vehicle-fire-truck",
+      "bytes": 497676,
+      "sha256": "1618f35014040e740b7df7f87c824bf5aa0ea5dc43f25687983ab2ca7b173f9b",
+      "sourceSha256": "dad3f7dd5f77e18c0d5098e89ece0a741881f3e43e0de85e079d7eb7b9facf9c"
+    },
+    {
+      "id": "vehicle-helicopter",
+      "bytes": 356680,
+      "sha256": "d65bada10270d42822b7ce3883829f4aac1a1ad3859a700f750a2cd35241730f",
+      "sourceSha256": "52271bede3eaebaeac20065ac5996a748e973cf5b920068f366a4730054a8230"
+    },
+    {
+      "id": "vehicle-hot-air-balloon",
+      "bytes": 493656,
+      "sha256": "c4f1e1249fdef4307110ccf2872509e73245fe961657ab98ed86ce12fae1033f",
+      "sourceSha256": "ae7d33f91080f04cedb933c80397dbfaec1426f6217dbd6b721583d62679a98a"
+    },
+    {
+      "id": "vehicle-rocket",
+      "bytes": 337568,
+      "sha256": "2c0d0b71818b172681e4b85a9a30e38ab16629b1afdacee6c613fa8abf1d3899",
+      "sourceSha256": "2274634d47f7d961d5e4c7eb958ecf5c1b6816584bfbba2c8f436aaf9f955ff9"
+    },
+    {
+      "id": "vehicle-submarine",
+      "bytes": 472716,
+      "sha256": "0b80aa74ed347cf3115a3d7a56a08c6ee9aeac970dfd88b2e089971a7a3cd835",
+      "sourceSha256": "69515a360471d7628f2de6f764d65e5bf3c598cc3ab3175102a06dfa664e203d"
+    },
+    {
+      "id": "vehicle-train",
+      "bytes": 442824,
+      "sha256": "56a5643579107dfb1f256396c3c309c010ccd845539d0d042dc31961903e5c7d",
+      "sourceSha256": "00b81f2f7cc9fa2e7524f2d6a74c1a47858655361c0af6a7404731fa0abc02f0"
+    },
+    {
+      "id": "animal-caterpillar",
+      "bytes": 365968,
+      "sha256": "bc07901176d9bb077c898ca7ee301222f81696d2f82525089d6fd0da801fdbc9",
+      "sourceSha256": "71a7a03f09323bf73b4313e2c56a008ba88a2850838f2cb374add470623b60f2"
+    },
+    {
+      "id": "animal-cow",
+      "bytes": 442240,
+      "sha256": "621c0fab96b0dc3243e3c7912db540172b535a1f0e00bc307d732769717b8f7f",
+      "sourceSha256": "254717ff9ad77d0286db5c993b60b211a34b1798980b984c23adc8a2cbb3d041"
+    },
+    {
+      "id": "animal-jellyfish",
+      "bytes": 317996,
+      "sha256": "fdda58f531d4200b12cb9d78428986094d265531847f9b17695808cdb972beba",
+      "sourceSha256": "e0e36f09c4b952c1facf8d4b198733d4d15aec3509bc03fe32e4cadcaef21783"
+    },
+    {
+      "id": "animal-rhinoceros-beetle",
+      "bytes": 258084,
+      "sha256": "37b12017b8dd9d44d09f1fcd1d131b06e0b2feea6cfb37e6eb74baf8070cccdd",
+      "sourceSha256": "4a3d8f75e9fab05f8c338dbac4fa934114403e7ecee03c344a0e8751bcb7741d"
+    },
+    {
+      "id": "animal-stag-beetle",
+      "bytes": 279592,
+      "sha256": "45683cfbe09435d2c55054a4221716c89c7adab7b32a2c6f20389c2a0b9a7d3e",
+      "sourceSha256": "78c3a8fb616940635db5aeec312309d0afd0298c901c2a038945cfc60a38302a"
+    },
+    {
+      "id": "animal-stingray",
+      "bytes": 245296,
+      "sha256": "c103b6a0cc2795bef41a90f6d57b6cb7230727f38c2b9838362aab75bf1d626e",
+      "sourceSha256": "f309360744284c33e62a74bb9147cb452fea346a44f574e4a0ba6a0b3c2996be"
+    },
+    {
+      "id": "animal-triceratops",
+      "bytes": 318568,
+      "sha256": "7a35cc90d317ff174ddc1a80923142873edaf4f6cd53d81fc4290a6d3355a398",
+      "sourceSha256": "636bda7e98bac70a4a5b72a91bda6f3ea7ab3b1631471aeae2a96aee71122faf"
+    },
+    {
+      "id": "drink-banana-milk",
+      "bytes": 212212,
+      "sha256": "6380f1c46bc0a5d89d32f7a9447f0a557a8167a32e31dd818bdde0ea9e1e5dd7",
+      "sourceSha256": "56173a05153f2f9eb9c4211e63674ec9a594a0c48e85617429234660eff2d9d6"
+    },
+    {
+      "id": "food-cotton-candy",
+      "bytes": 263276,
+      "sha256": "c1a0935894c93455c4504ea040ef786c10c596f8c9f870fc14855057a9caacac",
+      "sourceSha256": "e312b1cb9fe6b0e12323fce9284c7206743561e0686efe193700c9c38e5fdb3c"
+    },
+    {
+      "id": "food-french-fries",
+      "bytes": 253756,
+      "sha256": "c15ae4062f10f26fb2611856d903329ec0a0fbe42a45627129944547986f4872",
+      "sourceSha256": "8bbbfd35db29c8d9cfa0b38a95e17ec03b830652fcec5ad0a33cdb88f4bea3a5"
+    },
+    {
+      "id": "object-treasure-chest",
+      "bytes": 291460,
+      "sha256": "7e6fc53ee47f57a292c632d8bfeaa86307e83b1d34d95fcec5cbbad9e654df8f",
+      "sourceSha256": "3c76f40e122515c03b93b430a745a191c62e0081be9e1ab2ea48cebd03321ed6"
+    },
+    {
+      "id": "sport-shuttlecock",
+      "bytes": 356192,
+      "sha256": "42c9d5d792ef6abc9972135614f730a28d86962daa04c6cb14554a80095ee80f",
+      "sourceSha256": "6b83b01a4de7f4674c33e6b1f025b8fd6b62c0287d347ec13e340587a00d405f"
+    },
+    {
+      "id": "theme-gem",
+      "bytes": 207844,
+      "sha256": "76ff496cc4322f15ae3abda1da5537277ac6a47f1921fcaed0736fe0cca35517",
+      "sourceSha256": "e93a3e69dc3d5ebb2a32af8d96ae4b10fc9bd6cbabf81e05bfe1ff2db3666868"
+    },
+    {
+      "id": "theme-heart",
+      "bytes": 236564,
+      "sha256": "77e2756d0fbc17e57453af13bcdc90ee1a286c1931f9f7d9cd99a0f71ccb40e0",
+      "sourceSha256": "5541b0fd25aa22804acd0c826a64d2d92b8eb0352c96a355cda1525f53c8dac0"
+    },
+    {
+      "id": "theme-robot",
+      "bytes": 284496,
+      "sha256": "1bc441c81e129b6b51738444387f0f2ea29ff98e109082b22f3ac45b7fa25d0f",
+      "sourceSha256": "abc525216b9562455cc8a7b9cdfc1df4a58ebbdc92510a664c522d87b601d6a0"
+    },
+    {
+      "id": "theme-saturn",
+      "bytes": 239124,
+      "sha256": "e557af992107bc336034393420ee911b99d32a9009ab1e60906814d5d9039584",
+      "sourceSha256": "2babb8fe0c10ab1056f4d12266700a36b02e8b46ac57f049bf0ca2a4666ee2b9"
+    },
+    {
+      "id": "vehicle-ufo",
+      "bytes": 221300,
+      "sha256": "c7a1a45ac6c80dbd5a21177d78c1b0262199967910c086c5904609667d5126f8",
+      "sourceSha256": "c172ece3f651135c7c53d898831cc3d01fcaf87e85e7ccc0e25ec64d83151a11"
+    }
+  ],
+  "budgetBytes": 500000,
+  "totalBytes": 62473912,
+  "verification": {
+    "browserDecode": 169,
+    "manualSheets": 29,
+    "closeups": [
+      "animal-butterfly",
+      "animal-crested-gecko",
+      "animal-crocodile",
+      "animal-leopard-gecko",
+      "animal-peacock",
+      "food-fish-pastry",
+      "food-popcorn",
+      "food-rice-ball",
+      "food-sushi",
+      "food-tteokbokki",
+      "fruit-melon",
+      "fruit-pineapple",
+      "object-newspaper",
+      "sport-bowling",
+      "vehicle-ambulance",
+      "vehicle-submarine"
+    ],
+    "clips": "All source clips, four phases, four directions; animation channels round-trip unchanged.",
+    "scope": "Compression fidelity against existing 3D masters. Does not certify redesign fidelity to every 2D illustration.",
+    "limitations": "Small texture resampling and fine-edge differences remain, most noticeable on peacock feathers at close zoom. Museum performance tested on desktop with four repeated representative avatars, not 30 unique avatars or low-end school devices."
+  }
+}

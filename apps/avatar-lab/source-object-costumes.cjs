@@ -10,6 +10,7 @@ module.exports=function sourceObjects(T,k,id,parts){
  const plain=o=>{o.userData.skipOriginalPaint=true;return o;};
  function volume(name,outline,center,front,back,color,z=0,tool=s){
   k.volume(name+'Half',outline,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,samples:80,z:z-tool.offset.z});
+  if(['object-camera','object-boot','object-eraser','object-gift','object-key','object-lamp','object-lock','object-mitten','object-newspaper','object-pencil','object-radio','object-sack','object-television','object-watch'].includes(id))require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:id==='object-mitten'?12:24});
   const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),offset=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+offset));tool.parent.remove(o);}
   const o=k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.16,.48];return o;
  }
@@ -42,17 +43,18 @@ module.exports=function sourceObjects(T,k,id,parts){
   const body=rect('CameraCaseSolid',319,307,416,275,.70,'#474448',0,[39,39,37,37]);body.userData.artworkExcludedRegions=[{cx:320,cy:314,rx:125,ry:125}];
   s.outline('CameraTopBandSolid',[[150,168],[489,168],[513,180],[528,207],[528,239],[110,239],[110,210],[120,184]],.724,'#c8c0c2',0,.012);
   s.outline('CameraBottomBandSolid',[[110,396],[528,396],[528,413],[519,432],[497,445],[144,445],[122,434],[111,414]],.724,'#b6adb2',0,.012);
-  const barrel=cylinder('CameraLensBarrelSolid',320,314,.43,121,.21,'#5d5155');barrel.userData.artworkExcludedRegions=[{cx:320,cy:314,rx:92,ry:92}];
+  const barrel=cylinder('CameraLensBarrelSolid',320,314,.43,121,.25,'#5d5155');barrel.userData.artworkExcludedRegions=[{cx:320,cy:314,rx:92,ry:92}];
   const ring=s.torus('CameraLensRim',[320,314,.54],.553,.04,'#b5a7a9');ring.userData.artworkExcludedRegions=[{cx:320,cy:314,rx:92,ry:92}];
   cylinder('CameraFaceGlassSolid',320,314,.56,92,.035,'#efd0ac');
   rect('CameraShutterSolid',178,155,68,30,.26,'#5a565c',-.05,[17,17,5,5]);
   s.outline('CameraPrismSolid',[[230,169],[251,128],[269,110],[369,110],[384,119],[407,169]],.34,'#52494d',-.02,.015);
+  rect('CameraPrismWindowSolid',320,142,86,27,.024,'#ffe7a5',.155,[10,10,10,10]);
   rect('CameraFlashStemSolid',458,154,55,30,.18,'#716369',-.04,[3,3,3,3]);
   rect('CameraFlashSolid',457,105,108,83,.27,'#65595d',-.02,[14,14,14,14]);
   plain(rect('CameraRearDisplaySolid',295,308,225,141,.035,'#282a30',-.373,[12,12,12,12]));
   plain(rect('CameraRearDisplayGlassSolid',295,308,199,115,.013,'#526875',-.398,[7,7,7,7]));
   for(let i=0;i<3;i++)plain(cylinder('CameraRearButton'+i,459,270+i*37,-.371,9,.035,'#a99da2'));
-  suit('Camera','#756a6c',[[268,438],[372,438],[386,478],[381,516],[361,545],[325,553],[286,544],[258,518],[251,483]],[320,491],[[235,439],[257,446],[247,468],[243,497],[246,510],[238,519],[225,514],[215,499],[218,470]],[243,451],{pivotY:536,cy:554,outline:[[270,523],[307,526],[315,544],[306,565],[307,573],[293,581],[276,578],[264,566],[269,549]]});
+  suit('Camera','#756a6c',[[268,438],[372,438],[386,478],[381,516],[361,545],[325,553],[286,544],[258,518],[251,483]],[320,491],[[253,433],[278,444],[266,466],[243,497],[246,510],[238,519],[225,514],[215,499],[218,470]],[243,451],{pivotY:536,cy:554,outline:[[270,523],[307,526],[315,544],[306,565],[307,573],[293,581],[276,578],[264,566],[269,549]]});
  }
  if(id==='object-eraser'){
   rect('EraserWhiteSolid',318,252,275,382,.65,'#f4f3f7',0,[70,70,48,48]);
@@ -60,7 +62,7 @@ module.exports=function sourceObjects(T,k,id,parts){
   plain(rect('EraserRearLabelSolid',318,307,165,58,.012,'#e7eff4',-.367,[7,7,7,7]));
   for(let i=0;i<3;i++)plain(rect('EraserRearLabelLine'+i,318,297+i*10,112-i*18,2,.004,'#99b6c7',-.376,[.5,.5,.5,.5]));
   // Preserve the deliberately tiny suit without the old traced side ripples.
-  suit('Eraser','#f1eff3',[[272,441],[366,441],[370,466],[364,487],[346,500],[319,506],[290,498],[274,485],[264,464]],[320,470],[[255,447],[270,449],[269,462],[263,474],[258,486],[249,487],[242,481],[243,464]],[260,450],{pivotY:497,cy:509,outline:[[279,493],[310,494],[311,505],[307,517],[290,524],[276,520],[270,512],[275,504]]});
+  suit('Eraser','#f1eff3',[[272,441],[366,441],[370,466],[364,487],[346,500],[319,506],[290,498],[274,485],[264,464]],[320,470],[[261,443],[282,450],[278,462],[263,474],[258,486],[249,487],[242,481],[243,464]],[260,450],{pivotY:497,cy:509,outline:[[279,493],[310,494],[311,505],[307,517],[290,524],[276,520],[270,512],[275,504]]});
  }
  if(id==='object-lock'){
   rect('LockCaseSolid',318,323,296,246,.76,'#f7b529',0,[47,47,42,42]);
@@ -86,7 +88,7 @@ module.exports=function sourceObjects(T,k,id,parts){
   // Rubber toe and red upper share one watertight surface. Two intersecting
   // domes produced torn-looking triangles where their front depths crossed.
   const up=upper.geometry.attributes.position,un=upper.geometry.attributes.normal,ui=upper.geometry.index.array,P=[],N=[],C=[];
-  const boundary=p=>{const x=s.pivot[0]+p[0]/.005,y=s.pivot[1]-p[1]/.005;return y<270?1:x-(178+90*Math.sin(Math.max(0,Math.min(1,(y-270)/166))*Math.PI/2));};
+  const boundary=p=>{const x=s.pivot[0]+p[0]/.005,y=s.pivot[1]-p[1]/.005;return x-(178+90*Math.sin(Math.max(0,Math.min(1,(y-270)/166))*Math.PI/2));};
   for(let i=0;i<ui.length;i+=3){const original=[0,1,2].map(j=>({p:[up.getX(ui[i+j]),up.getY(ui[i+j]),up.getZ(ui[i+j])],n:[un.getX(ui[i+j]),un.getY(ui[i+j]),un.getZ(ui[i+j])]}));for(const side of [-1,1]){const poly=[];for(let j=0;j<3;j++){const a=original[j],b=original[(j+1)%3],fa=boundary(a.p)*side,fb=boundary(b.p)*side;if(fa>=0)poly.push(a);if((fa>=0)!==(fb>=0)){const t=fa/(fa-fb);poly.push({p:a.p.map((v,n)=>v+(b.p[n]-v)*t),n:a.n.map((v,n)=>v+(b.n[n]-v)*t)});}}const c=new T.Color(side<0?'#f0e4e4':'#df1731').convertSRGBToLinear();for(let j=1;j+1<poly.length;j++)for(const v of [poly[0],poly[j],poly[j+1]]){P.push(...v.p);N.push(...new T.Vector3(...v.n).normalize().toArray());C.push(c.r,c.g,c.b);}}}
   const welded=new Map(),wp=[],wn=[],wc=[],wi=[];for(let i=0;i<P.length;i+=3){const key=[...P.slice(i,i+3),...C.slice(i,i+3)].map(v=>Math.round(v*1e7)).join(',');let j=welded.get(key);if(j===undefined){j=wp.length/3;welded.set(key,j);wp.push(...P.slice(i,i+3));wn.push(...N.slice(i,i+3));wc.push(...C.slice(i,i+3));}wi.push(j);}
   const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(wp,3));geo.setAttribute('normal',new T.Float32BufferAttribute(wn,3));geo.setAttribute('color',new T.Float32BufferAttribute(wc,3));geo.setIndex(wi);upper.geometry=geo;upper.material.color.set(0xffffff);upper.material.userData.preserveVertexColor=true;
@@ -124,11 +126,11 @@ module.exports=function sourceObjects(T,k,id,parts){
  if(id==='object-newspaper'){
   const paper=[[165,64],[432,64],[448,90],[473,115],[500,133],[507,147],[507,410],[499,429],[481,440],[159,441],[142,431],[132,413],[132,94],[142,75]];
   s.smoothOutline('NewspaperSheetSolid',paper,.16,'#eee4de',0,.012);
-  s.smoothOutline('NewspaperFoldSolid',[[433,73],[443,94],[464,115],[499,137],[461,142],[443,138],[433,128],[431,111]],.026,'#d8c3b6',.099,.005);
+  s.smoothOutline('NewspaperFoldSolid',[[433,73],[443,94],[464,115],[499,137],[461,142],[443,138],[433,128],[431,111]],.026,'#d8c3b6',.087,.005);
   for(let col=0;col<3;col++)for(let line=0;line<18;line++){const o=plain(s.mesh('NewspaperRearLine'+col+'_'+line,new T.PlaneGeometry((82-(line%4)*7)*.005,.01),'#9a8a82',[195+col*119,129+line*16,-.092]));o.rotation.y=Math.PI;}
   plain(rect('NewspaperRearPhotoSolid',319,263,100,90,.009,'#b8aaa3',-.097,[6,6,6,6]));
   plain(rect('NewspaperRearHeadlineSolid',295,93,255,12,.005,'#765c56',-.092,[1,1,1,1]));
-  suit('Newspaper','#c9c3c7',[[260,436],[380,436],[392,472],[390,510],[365,543],[321,551],[279,540],[250,512],[246,476]],[320,494],[[232,441],[258,447],[245,473],[241,491],[232,505],[220,508],[209,497],[211,480],[223,453]],[241,447],{pivotY:537,cy:558,outline:[[274,527],[312,531],[312,550],[304,562],[304,573],[286,579],[269,575],[262,563],[270,544]]});
+  suit('Newspaper','#c9c3c7',[[260,420],[380,420],[392,472],[390,510],[365,543],[321,551],[279,540],[250,512],[246,476]],[320,494],[[232,441],[258,447],[245,473],[241,491],[232,505],[220,508],[209,497],[211,480],[223,453]],[241,447],{pivotY:537,cy:558,outline:[[274,527],[312,531],[312,550],[304,562],[304,573],[286,579],[269,575],[262,563],[270,544]]});
  }
  if(id==='object-lamp'){
   // Tilted circular rings preserve the source elliptical hem and top opening.
@@ -213,12 +215,12 @@ module.exports=function sourceObjects(T,k,id,parts){
   glove.updateWorldMatrix(true,false);const ray=new T.Raycaster();
   function rearLine(name,ps,r,color){const sampled=[];for(const [x,y] of ps){ray.set(new T.Vector3((x-320)*.005,(580-y)*.005,-3),new T.Vector3(0,0,1));const hit=ray.intersectObject(glove)[0];if(hit)sampled.push([x,y,hit.point.z-.006]);}if(sampled.length>1)fineThread(name,sampled,r,color);}
   for(let row=0;row<8;row++)for(let col=0;col<9;col++){const x=230+col*27,y=225+row*26;rearLine('MittenRearKnit'+row+'_'+col,[[x-7,y-9],[x,y+7],[x+7,y-9]],.007,'#d34443');}
-  for(const y of [122,204]){const ps=[];for(let x=205;x<=502;x+=4)ps.push([x,y]);rearLine('MittenRearBand'+y,ps,.022,'#f0b4a6');}
+  for(const y of [122,204]){const ps=[];for(let j=0;j<=128;j++){const a=j/128*Math.PI*2,dir=new T.Vector3(Math.sin(a),0,Math.cos(a)),center=new T.Vector3((350-320)*.005,(580-y)*.005,0);ray.set(center.clone().addScaledVector(dir,4),dir.clone().negate());const hit=ray.intersectObject(glove)[0];if(hit){const q=hit.point.clone().addScaledVector(dir,.004);ps.push([320+q.x/.005,y,q.z]);}}fineThread('MittenWrappedBand'+y,ps,.022,'#f0b4a6');}
   for(const x of [246,352,457])for(let j=0;j<4;j++){const a=j*Math.PI/4;rearLine('MittenRearStar'+x+'_'+j,[[x-Math.cos(a)*16,166-Math.sin(a)*16],[x+Math.cos(a)*16,166+Math.sin(a)*16]],.015,'#edc2ab');}
  }
  if(id==='object-sack'){
   const bag=volume('SackBodySolid',[[219,169],[254,178],[320,184],[385,180],[424,171],[459,204],[487,252],[502,302],[500,348],[479,389],[443,421],[393,442],[335,452],[278,450],[222,436],[178,412],[148,379],[133,341],[131,303],[141,263],[162,222],[191,190]],[320,313],.64,.64,'#e82137');
-  const gathered=volume('SackGatheredTopSolid',[[219,164],[203,138],[192,116],[193,98],[207,84],[226,82],[246,89],[265,94],[285,78],[305,65],[325,62],[344,68],[363,83],[380,94],[402,90],[425,83],[445,90],[452,107],[446,127],[429,152],[418,168],[384,178],[320,181],[257,176]],[320,126],.34,.34,'#ef2c40');
+  const gathered=volume('SackGatheredTopSolid',[[219,164],[203,138],[192,116],[193,98],[207,84],[226,82],[246,89],[265,94],[285,78],[305,65],[325,62],[344,68],[363,83],[380,94],[402,90],[425,83],[445,90],[452,107],[446,127],[429,152],[418,176],[384,190],[320,197],[257,189]],[320,126],.34,.34,'#ef2c40');
   // A closed cord ring wraps around the gathered neck; its front line sags.
   bag.updateWorldMatrix(true,false);gathered.updateWorldMatrix(true,false);const supportRay=new T.Raycaster(),cloth=[bag,gathered];
   const cord=[];for(let j=0;j<=96;j++){const a=j/96*Math.PI*2,y=164+Math.cos(a)*14,dir=new T.Vector3(Math.sin(a),0,Math.cos(a));supportRay.set(new T.Vector3(dir.x*4,(580-y)*.005,dir.z*4),dir.clone().negate());const hit=supportRay.intersectObjects(cloth)[0];if(hit){const p=hit.point.clone().addScaledVector(dir,.01);cord.push([320+p.x/.005,y,p.z]);}}

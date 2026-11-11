@@ -8,7 +8,7 @@ module.exports=function sport(THREE,id){
  const positions=[];let target;
  if(id!=='sport-bowling'){
   target=egg('Ball',[R,R,R],id==='sport-basketball'?orange:white,C.toArray());
-  target.geometry=new THREE.SphereGeometry(1,64,40);
+  target.geometry=new THREE.SphereGeometry(1,id==='sport-soccer'?64:96,id==='sport-soccer'?40:64);
   // The original illustration supplies the face, not a stretched colour lookup
   // on the sides. Smooth costume colour and lighting remain coherent at 360°.
   if(id==='sport-basketball'){
@@ -64,14 +64,14 @@ module.exports=function sport(THREE,id){
   for(const o of head.children){if(o!==target&&!o.name.startsWith('FootballPanel'))continue;
    const p=o.geometry.attributes.position,colors=[],isBlack=o.name.startsWith('FootballPanel')&&Number(o.name.replace('FootballPanel',''))<12;
    const light=new THREE.Color(id==='sport-basketball'?'#ff9c2c':isBlack?'#454047':'#ffffff').convertSRGBToLinear(),dark=new THREE.Color(id==='sport-basketball'?'#de7623':isBlack?'#302e35':'#bdc3ca').convertSRGBToLinear();
-   for(let i=0;i<p.count;i++){const n=new THREE.Vector3().fromBufferAttribute(p,i);if(o!==target)n.sub(C);n.normalize();const d=-.45*n.x+.55*n.y+Math.abs(n.z),t=Math.max(0,Math.min(1,(d-.15)/.18)),f=t*t*(3-2*t),c=dark.clone().lerp(light,f);colors.push(c.r,c.g,c.b);}
+   for(let i=0;i<p.count;i++){const n=new THREE.Vector3().fromBufferAttribute(p,i);if(o!==target)n.sub(C);n.normalize();const d=-.45*n.x+.55*n.y+Math.abs(n.z),t=Math.max(0,Math.min(1,(d-.15)/.50)),f=t*t*(3-2*t),c=dark.clone().lerp(light,f);colors.push(c.r,c.g,c.b);}
    o.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));o.material.color.set(0xffffff);o.material.userData.preserveVertexColor=true;o.material.userData.alreadyShaded=true;
   }
   const faceSupport=id==='sport-soccer'?[target,...head.children.filter(o=>/^FootballPanel\d+$/.test(o.name))]:target;
   face(320,id==='sport-basketball'?302:293,id==='sport-soccer'?110:104,id==='sport-soccer'?90:86,faceSupport);
   if(id==='sport-basketball'){
-   const ps=[[202,141],[223,122],[255,113],[292,103],[324,96],[335,105],[323,117],[285,132],[250,145],[222,151]],center=[266,125],ray=new THREE.Raycaster(),P=[],I=[],n=ps.length;
-   target.updateWorldMatrix(true,false);for(let ring=0;ring<=10;ring++)for(const [x,y] of ps){const px=center[0]+(x-center[0])*ring/10,py=center[1]+(y-center[1])*ring/10;ray.set(new THREE.Vector3((px-320)*.005,(580-py)*.005,3),new THREE.Vector3(0,0,-1));const hit=ray.intersectObject(target)[0];P.push((px-320)*.005,(580-py)*.005,(hit?.point.z||0)+.006);}for(let ring=0;ring<10;ring++)for(let i=0;i<n;i++){const a=ring*n+i,b=ring*n+(i+1)%n,c=a+n,d=b+n;if(ring)I.push(a,b,d);I.push(a,d,c);}const highlight=k.mesh('BasketballPaintedHighlight',k.geometry(P,I),mat('BallHighlight','#ffc161'),head);highlight.material.side=THREE.DoubleSide;
+   const ps=[[202,141],[223,122],[255,113],[292,103],[324,96],[335,105],[323,117],[285,132],[250,145],[222,151]],center=[266,125],ray=new THREE.Raycaster(),P=[],I=[];const outline=new THREE.CatmullRomCurve3(ps.map(([x,y])=>new THREE.Vector3(x,y,0)),true,'centripetal').getSpacedPoints(64).slice(0,64).map(p=>[p.x,p.y]),n=outline.length;
+   target.updateWorldMatrix(true,false);for(let ring=0;ring<=10;ring++)for(const [x,y] of outline){const px=center[0]+(x-center[0])*ring/10,py=center[1]+(y-center[1])*ring/10;ray.set(new THREE.Vector3((px-320)*.005,(580-py)*.005,3),new THREE.Vector3(0,0,-1));const hit=ray.intersectObject(target)[0];P.push((px-320)*.005,(580-py)*.005,(hit?.point.z||0)+.006);}for(let ring=0;ring<10;ring++)for(let i=0;i<n;i++){const a=ring*n+i,b=ring*n+(i+1)%n,c=a+n,d=b+n;if(ring)I.push(a,b,d);I.push(a,d,c);}const highlight=k.mesh('BasketballPaintedHighlight',k.geometry(P,I),mat('BallHighlight','#ffc161'),head);highlight.material.side=THREE.DoubleSide;
   }
   const color=id==='sport-basketball'?orange:white;
   k.suit([
@@ -81,7 +81,8 @@ module.exports=function sport(THREE,id){
    ['LeftLeg',[292,526],[[271,514],[311,520],[308,547],[303,570],[279,579],[262,568],[274,550]],[289,549],.14,0],
    ['RightLeg',[348,526],[[369,514],[329,520],[332,547],[337,570],[361,579],[378,568],[366,550]],[351,549],.14,0]
   ],color);
-  const result=k.finish({authoring:'Spherical sports ball with continuous three-dimensional seams and original face'});Object.assign(result.root.userData,{locomotion:'walk',canWave:true});return result;
+  require('./finish-ball-suits.cjs')(THREE,k,id);
+  const result=k.finish({authoring:'Spherical sports ball with continuous three-dimensional seams and original face',waveAngle:.4,waveAmplitude:.1});Object.assign(result.root.userData,{locomotion:'walk',canWave:true});return result;
  }
  const pinProfile=[[0,.01],[.24,.015],[.33,.06],[.41,.25],[.45,.65],[.44,.90],[.37,1.15],[.27,1.42],[.19,1.62],[.17,1.88],[.22,2.12],[.26,2.35],[.25,2.48],[.15,2.58],[0,2.60]],pinCurve=new THREE.CatmullRomCurve3(pinProfile.map(([r,y])=>new THREE.Vector3(r,y,0))),pinShape=pinCurve.getPoints(192).map(p=>new THREE.Vector2(Math.max(0,p.x),p.y));pinShape.push(new THREE.Vector2(0,.01));
  const pin=k.mesh('BowlingPin',new THREE.LatheGeometry(pinShape,64),mat('Pin',white),head,[-.56,0,.05]);
@@ -96,6 +97,7 @@ module.exports=function sport(THREE,id){
  for(const [i,x,y] of [[0,.565,.72],[1,.785,.70],[2,.68,.54]]){const dx=x-.55,dy=y-.48,z=.20+Math.sqrt(.475*.475-dx*dx-dy*dy);const hole=egg('FingerHole'+i,[.057,.057,.014],'#323238',[x,y,z+.003]);hole.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),new THREE.Vector3(dx,dy,z-.20).normalize());}
  head.userData.artworkOcclusion=true;for(const o of [pin,hood,ball])o.userData.artworkFacingFade=[.20,.5];
  require('./project-model-artwork.cjs')(THREE,k,head,[320,580]);
+ require('./finish-bowling.cjs')(THREE,k,head,pin,hood,ball);
  k.root.updateMatrixWorld(true);k.root.position.y-=new THREE.Box3().setFromObject(k.root).min.y;
  const clips=[];for(const name of ['Idle','Walk','Wave']){const times=Array.from({length:49},(_,i)=>i/24),values=[];for(let i=0;i<49;i++)values.push(0,name==='Idle'?0:.035*(1-Math.cos(i/48*Math.PI*2)),0);clips.push(new THREE.AnimationClip(name,2,[new THREE.VectorKeyframeTrack('Body.position',times,values)]));}
  require('./illustration-materials.cjs')(THREE,k.root);k.root.userData={avatarKey:id+'.webp',prototype:true,locomotion:'hop',canWave:false,walkStride:.4,walkDuration:2};return{root:k.root,clips};

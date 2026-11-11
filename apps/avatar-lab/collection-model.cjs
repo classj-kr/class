@@ -6,6 +6,7 @@ module.exports=function createCollectionAvatar(THREE,id){
   const profile=source.profile,k=require("./model-kit.cjs")(THREE,id),parts=new Map();
   if(['food-hot-dog','food-sandwich','theme-sunflower'].includes(id))profile.holdArms=true;
   if(id==='fruit-avocado')profile.motion='hop';
+  if(id==='fruit-pineapple')profile.holdArms=false;
   function floats(base64){const b=Buffer.from(base64,"base64");return new Float32Array(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength));}
   function integers(base64){const b=Buffer.from(base64,"base64");return new Uint32Array(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength));}
   for(const part of source.parts){
@@ -77,7 +78,59 @@ module.exports=function createCollectionAvatar(THREE,id){
   require('./finish-monkey-mouse.cjs')(THREE,k,id,parts);
   require('./finish-ostrich-owl.cjs')(THREE,k,id,parts);
   require('./finish-panda-peacock.cjs')(THREE,k,id,parts);
+  require('./finish-penguin-mantis.cjs')(THREE,k,id,parts);
+  require('./finish-rabbit-ratsnake.cjs')(THREE,k,id,parts);
+  require('./finish-rhino-seal.cjs')(THREE,k,id,parts);
+  require('./finish-shark-sloth.cjs')(THREE,k,id,parts);
+  require('./finish-snail-squirrel.cjs')(THREE,k,id,parts);
+  require('./finish-tiger-turtle.cjs')(THREE,k,id,parts);
+  require('./finish-unicorn.cjs')(THREE,k,id,parts);
+  require('./finish-whale-wolf.cjs')(THREE,k,id,parts);
+  require('./finish-candy-cheese.cjs')(THREE,k,id,parts);
+  require('./finish-chocolate-cookie.cjs')(THREE,k,id,parts);
+  require('./finish-dumpling-pastry.cjs')(THREE,k,id,parts);
+  require('./finish-egg-gimbap.cjs')(THREE,k,id,parts);
+  require('./finish-burger-hotdog.cjs')(THREE,k,id,parts);
+  require('./finish-cream-macaron.cjs')(THREE,k,id,parts);
+  require('./finish-pizza-popcorn.cjs')(THREE,k,id,parts);
+  require('./finish-pudding-rice.cjs')(THREE,k,id,parts);
+  require('./finish-sandwich-sushi.cjs')(THREE,k,id,parts);
+  require('./finish-toast-bowl.cjs')(THREE,k,id,parts);
+  require('./finish-apple-avocado.cjs')(THREE,k,id,parts);
+  require('./finish-blueberry-cherry.cjs')(THREE,k,id,parts);
+  require('./finish-grape-mango.cjs')(THREE,k,id,parts);
+  require('./finish-melon-orange.cjs')(THREE,k,id,parts);
+  require('./finish-peach-persimmon.cjs')(THREE,k,id,parts);
+  require('./finish-pineapple-strawberry.cjs')(THREE,k,id,parts);
+  require('./finish-watermelon.cjs')(THREE,k,id,parts);
+  require('./finish-boot-camera.cjs')(THREE,k,id,parts);
+  require('./finish-eraser-gift.cjs')(THREE,k,id,parts);
+  require('./finish-key-lamp.cjs')(THREE,k,id,parts);
+  require('./finish-lock-mitten.cjs')(THREE,k,id,parts);
+  require('./finish-newspaper-pencil.cjs')(THREE,k,id,parts);
+  require('./finish-radio-sack.cjs')(THREE,k,id,parts);
+  require('./finish-tv-watch.cjs')(THREE,k,id,parts);
+  require('./finish-balloon-cactus.cjs')(THREE,k,id,parts);
+  require('./finish-blossom-cloud.cjs')(THREE,k,id,parts);
+  require('./finish-clover-crown.cjs')(THREE,k,id,parts);
+  require('./finish-guitar-lightning.cjs')(THREE,k,id,parts);
+  require('./finish-maple-moon.cjs')(THREE,k,id,parts);
+  require('./finish-note-paper.cjs')(THREE,k,id,parts);
+  require('./finish-rainbow-rose.cjs')(THREE,k,id,parts);
+  require('./finish-snow-star.cjs')(THREE,k,id,parts);
+  require('./finish-sun-flower.cjs')(THREE,k,id,parts);
+  require('./finish-tulip.cjs')(THREE,k,id,parts);
+  require('./finish-pepper-broccoli.cjs')(THREE,k,id,parts);
+  require('./finish-carrot-corn.cjs')(THREE,k,id,parts);
+  require('./finish-eggplant-mushroom.cjs')(THREE,k,id,parts);
+  require('./finish-potato-pumpkin.cjs')(THREE,k,id,parts);
+  require('./finish-last-vegetables.cjs')(THREE,k,id,parts);
   require('./finish-padded-suits.cjs')(THREE,k,id,parts);
+  require('./finish-unicorn-artwork.cjs')(THREE,k,id,parts);
+  require('./finish-coiled-patterns.cjs')(THREE,k,id,parts);
+  require('./finish-turtle-shell-patterns.cjs')(THREE,k,id,parts);
+  require('./finish-tiger-body-stripes.cjs')(THREE,k,id,parts);
+  require('./finish-snake-artwork.cjs')(THREE,k,id,parts);
   require('./finish-peacock-rear.cjs')(THREE,k,id,parts);
   const characterEffects=require('./character-effects.cjs')(THREE,k,id);
   const torso=parts.get("Torso"),head=parts.get("Head");
@@ -180,9 +233,11 @@ module.exports=function createCollectionAvatar(THREE,id){
     // its entire root out of the short body. Use a small wing greeting.
     for(let i=0;i<track.times.length;i++){const a=track.times[i]/wave.duration*Math.PI*2;track.values.set(new THREE.Quaternion().setFromEuler(['animal-chick','animal-eagle'].includes(id)?new THREE.Euler(0,Math.sin(a*2)*.22,.12):new THREE.Euler(.02,0,.9+Math.sin(a*2)*.15)).toArray(),i*4);}
   }
-  if(['animal-ostrich','animal-owl','animal-peacock'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.times.length;i++){const a=arm.times[i]/wave.duration*Math.PI*2;arm.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(0,Math.sin(a*2)*.12,.03)).toArray(),i*4);}}
-  if(id==='animal-panda'){const wave=result.clips.find(c=>c.name==='Wave'),track=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<track.times.length;i++){const a=track.times[i]/wave.duration*Math.PI*2;track.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(.02,0,.65+Math.sin(a*2)*.12)).toArray(),i*4);}}
-  if(['animal-meerkat','animal-monkey','animal-mouse'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.values.length;i+=4)arm.values.set([0,0,0,1],i);}
+  if(['animal-ostrich','animal-owl','animal-peacock','animal-penguin','animal-praying-mantis','animal-seal','animal-shark'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.times.length;i++){const a=arm.times[i]/wave.duration*Math.PI*2;arm.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(0,Math.sin(a*2)*.12,.03)).toArray(),i*4);}}
+  if(['animal-panda','animal-rabbit','animal-rhinoceros','animal-squirrel','animal-tiger','animal-turtle','animal-unicorn','animal-whale','animal-wolf'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),track=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<track.times.length;i++){const a=track.times[i]/wave.duration*Math.PI*2;track.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(.02,0,.65+Math.sin(a*2)*.12)).toArray(),i*4);}}
+  if(['animal-meerkat','animal-monkey','animal-mouse','animal-sloth'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.values.length;i+=4)arm.values.set([0,0,0,1],i);}
+  if(id==='award-trophy'){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.times.length;i++){const a=arm.times[i]/wave.duration*Math.PI*4;arm.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(.02,0,.15+Math.sin(a)*.08)).toArray(),i*4);}}
+  if(['food-candy','food-cheese','food-chocolate','food-cookie','food-dumpling','food-fried-egg','food-gimbap','food-hamburger','food-macaron','food-popcorn','food-pudding','food-rice-ball','food-sushi','food-toast','fruit-apple','fruit-blueberry','fruit-melon','fruit-orange','fruit-peach','fruit-persimmon','fruit-pineapple','fruit-strawberry','fruit-watermelon','game-dice','object-camera','object-boot','object-eraser','object-gift','object-lamp','object-lock','object-newspaper','object-pencil','object-radio','object-sack','object-television','theme-cherry-blossom','theme-cloud','theme-clover','theme-crown','theme-lightning','theme-maple-leaf','theme-moon','theme-music-note','theme-paper-airplane','theme-rainbow','theme-rose','theme-star','theme-sun','theme-tulip','vegetable-bell-pepper','vegetable-broccoli','vegetable-mushroom','vegetable-pumpkin','vegetable-tomato'].includes(id)){const wave=result.clips.find(c=>c.name==='Wave'),arm=wave.tracks.find(t=>t.name==='RightArm.quaternion');for(let i=0;i<arm.times.length;i++){const a=arm.times[i]/wave.duration*Math.PI*4;arm.values.set(new THREE.Quaternion().setFromEuler(new THREE.Euler(.02,0,.40+Math.sin(a)*.10)).toArray(),i*4);}}
   if(head?.lockToBody)for(const clip of result.clips)for(const name of ['Head',...(profile.holdArms?['LeftArm','RightArm']:[])]){const track=clip.tracks.find(t=>t.name===name+'.quaternion');if(track)for(let i=0;i<track.values.length;i+=4)track.values.set([0,0,0,1],i);}
   // Wings stay attached at their original shoulder points and flap mildly.
   for(const clip of result.clips)if(clip.name==="Walk")for(const name of ["LeftWing","RightWing"]){
