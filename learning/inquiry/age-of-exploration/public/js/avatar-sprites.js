@@ -1,0 +1,17 @@
+/* Small pre-rendered avatars: no Three.js, model downloads, or per-player timers. */
+(function(root){
+  'use strict';
+  const base='/learn/world-voyage/assets/avatar-sprites/',cache=new Map(),limit=48;
+  let manifest=null,citySignature='';
+  const ready=fetch(base+'manifest.json?v=1').then(r=>{if(!r.ok)throw Error('Avatar catalog');return r.json();}).then(m=>(manifest=m)).catch(()=>(manifest={avatars:{}}));
+  function idFor(key){return typeof key==='string'&&/^[a-z0-9-]+\.webp$/.test(key)?key.slice(0,-5):'';}
+  function asset(key,kind){const id=idFor(key),m=manifest?.avatars[id];return m?base+kind+'/'+id+'.webp?v='+m[kind+'Hash']:'';}
+  function original(key){return idFor(key)?'/assets/avatars/'+key:'';}
+  function image(key){if(!manifest)return null;const atlasUrl=asset(key,'map'),url=atlasUrl||original(key);if(!url)return null;let entry=cache.get(url);if(entry){cache.delete(url);cache.set(url,entry);return entry.loaded?entry:null;}const img=new Image();entry={img,loaded:false,atlas:!!atlasUrl};cache.set(url,entry);img.onload=()=>{entry.loaded=true;};img.onerror=()=>{if(entry.atlas){entry.atlas=false;img.src=original(key);}else entry.failed=true;};img.src=url;while(cache.size>limit)cache.delete(cache.keys().next().value);return null;}
+
+  function frame(dir,moving,now){return{x:(moving?Math.floor(now/125)%4:4)*40,y:((Number.isInteger(dir)?dir:4)&7)*40};}
+  function draw(ctx,p,x,y,size,now=performance.now(),mine=false){const img=image(p.avatarKey);ctx.save();ctx.fillStyle=mine?'#ffe6a8bb':'#10273155';ctx.beginPath();ctx.ellipse(x,y-2,size*.23,size*.07,0,0,Math.PI*2);ctx.fill();if(img){const f=frame(p.dir,p.moving,now);ctx.imageSmoothingEnabled=true;if(img.atlas)ctx.drawImage(img.img,f.x,f.y,40,40,x-size/2,y-size,size,size);else ctx.drawImage(img.img,x-size/2,y-size,size,size);}else{ctx.fillStyle=mine?'#f2cf78':'#d9eef5';ctx.beginPath();ctx.arc(x,y-size*.62,size*.18,0,Math.PI*2);ctx.fill();ctx.fillRect(x-size*.15,y-size*.42,size*.3,size*.32);}ctx.restore();}
+  function cityPeople(self,peers){if(!self||self.mode!=='city'||!self.currentCityId)return[];return[self,...Array.from(peers).filter(p=>p.id!==self.id&&p.mode==='city'&&p.currentCityId===self.currentCityId).sort((a,b)=>String(a.id).localeCompare(String(b.id)))];}
+  function renderCity(container,self,peers){const people=cityPeople(self,peers),signature=(manifest?'ready':'pending')+JSON.stringify(people.map(p=>[p.id,p.name,p.avatarKey,p.currentCityId]));if(signature===citySignature)return;citySignature=signature;container.replaceChildren();if(!people.length)return;const heading=document.createElement('div');heading.className='cityVisitorsTitle';heading.textContent=`함께 쉬는 탐험가 ${people.length}명`;const list=document.createElement('div');list.className='cityVisitorsList';for(const p of people){const person=document.createElement('div');person.className='cityVisitor'+(p.id===self.id?' mine':'');const url=asset(p.avatarKey,'city')||original(p.avatarKey);if(url){const img=document.createElement('img');img.src=url;img.onerror=()=>{img.onerror=null;img.src=original(p.avatarKey);};img.width=56;img.height=56;img.alt='';person.append(img);}else{const icon=document.createElement('span');icon.className='visitorPlaceholder';icon.textContent='●';person.append(icon);}const name=document.createElement('span');name.textContent=p.name+(p.id===self.id?' (나)':'');person.append(name);list.append(person);}container.append(heading,list);}
+  root.VoyageAvatars={ready,draw,renderCity,cityPeople,frame,idFor};
+})(typeof window==='undefined'?globalThis:window);
