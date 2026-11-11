@@ -437,7 +437,7 @@
             border-color: var(--gold-dark);
         }
 
-                                                .hub-room-form {
+        .hub-room-form {
             position: relative;
             display: inline-flex;
             align-items: center;
@@ -459,10 +459,20 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            padding: 0;
+            background: none;
+            border: 0;
+            border-radius: 2px;
             line-height: 1;
-            pointer-events: none;
+            cursor: pointer;
             user-select: none;
             perspective: 140px;
+        }
+
+        .hub-room-door-icon-wrap:focus-visible,
+        .hub-room-button:focus-visible {
+            outline: 2px solid #fff0c7;
+            outline-offset: 2px;
         }
 
         .hub-room-door-icon {
@@ -484,16 +494,11 @@
             transition: opacity 0.32s ease, filter 0.32s ease;
         }
 
-        /* Enter 버튼 호버 또는 포커스 시 문이 활짝 열림 */
-        .hub-room-form:has(.hub-room-button:hover) .hub-door-leaf,
-        .hub-room-form:has(.hub-room-button:focus-visible) .hub-door-leaf,
-        .hub-room-door-icon-wrap.door-open .hub-door-leaf {
+        .hub-room-form:has(.hub-room-input:focus) .hub-door-leaf {
             transform: perspective(140px) rotateY(-68deg);
         }
 
-        .hub-room-form:has(.hub-room-button:hover) .hub-door-glow,
-        .hub-room-form:has(.hub-room-button:focus-visible) .hub-door-glow,
-        .hub-room-door-icon-wrap.door-open .hub-door-glow {
+        .hub-room-form:has(.hub-room-input:focus) .hub-door-glow {
             opacity: 1;
             filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.95));
         }
@@ -513,7 +518,7 @@
             height: 18px;
             background: rgba(255, 255, 255, 0.96);
             border: 1px solid rgba(203, 213, 225, 0.92);
-            border-radius: 999px;
+            border-radius: 2px;
             padding: 0 4px;
             box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.14);
             transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
@@ -556,10 +561,10 @@
             width: 100%;
             height: 18px;
             padding: 0;
-            background: linear-gradient(135deg, rgba(var(--panel-dark-rgb), 1), var(--gold-dark));
-            border: 1px solid var(--gold-dark);
+            background: #f8cd84;
+            border: 1px solid #edb75f;
             border-radius: 999px;
-            color: #fff8e8;
+            color: #2b1b11;
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 0.02em;
@@ -570,11 +575,9 @@
             box-sizing: border-box;
         }
 
-        .hub-room-button:hover,
-        .hub-room-button:focus-visible {
-            background: linear-gradient(135deg, var(--gold-dark), var(--panel));
-            border-color: var(--gold);
-            color: #ffffff;
+        .hub-room-button:hover:not(:disabled) {
+            background: #ffe2ab;
+            border-color: #f8cd84;
         }
 
         .hub-room-button:disabled {
@@ -1229,7 +1232,7 @@
             <h1 class="learning-hub-title">기초학력</h1>
             <div class="hub-title-link">
                 <form id="hubRoomForm" class="hub-room-form" action="javascript:void(0);" novalidate>
-                    <span id="hubRoomDoorWrap" class="hub-room-door-icon-wrap"><svg class="hub-room-door-icon" viewBox="0 0 28 40" aria-hidden="true">
+                    <button id="hubRoomDoor" class="hub-room-door-icon-wrap" type="button" aria-label="방 번호 입력 시작"><svg class="hub-room-door-icon" viewBox="0 0 28 40" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="doorFrameGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#341e12"/>
@@ -1269,7 +1272,7 @@
     <!-- 황동 문고리 손잡이 -->
     <circle cx="21" cy="22" r="1.8" fill="url(#doorKnobGrad)" stroke="#6b2f0a" stroke-width="0.4"/>
   </g>
-</svg></span>
+</svg></button>
                     <div class="hub-room-stack">
                         <div class="hub-room-input-wrap">
                             <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4 digits" aria-label="방 번호 4자리">
@@ -1630,7 +1633,7 @@
     </div>
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="assets/hub-accordion.js?v=20261021-reveal-menu-end"></script>
+    <script src="assets/hub-accordion.js?v=20261111-footer"></script>
     <script>
         (() => {
             'use strict';
@@ -2493,14 +2496,7 @@
             const input = document.getElementById('hubRoomCode');
             const button = document.getElementById('hubRoomSubmit');
             const status = document.getElementById('hubRoomStatus');
-            const doorWrap = document.getElementById('hubRoomDoorWrap');
-
-            if (button && doorWrap) {
-                button.addEventListener('mouseenter', () => doorWrap.classList.add('door-open'));
-                button.addEventListener('mouseleave', () => doorWrap.classList.remove('door-open'));
-                button.addEventListener('focus', () => doorWrap.classList.add('door-open'));
-                button.addEventListener('blur', () => doorWrap.classList.remove('door-open'));
-            }
+            document.getElementById('hubRoomDoor').addEventListener('click', () => input.focus());
             const codePattern = /^\d{4}$/;
             let statusTimer = null;
 
@@ -2598,7 +2594,7 @@
     <style>
         body{display:flex;flex-direction:column}
         #hubContent{margin-bottom:24px}
-        .policy-footer{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;margin:auto auto 0;padding:2px 12px;width:fit-content;max-width:calc(100% - 24px);border:1px solid rgba(var(--panel-dark-rgb),.98);border-radius:999px;background:rgba(var(--panel-darker-rgb),.30);box-shadow:0 2px 8px rgba(0,0,0,.3);font-family:Pretendard,"Noto Sans KR",sans-serif;font-size:calc(13px - 1pt)}
+        .policy-footer{position:sticky;bottom:18px;z-index:40;display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;margin:auto auto 0;padding:2px 12px;width:fit-content;max-width:calc(100% - 24px);border:1px solid rgba(var(--panel-dark-rgb),.98);border-radius:999px;background:rgba(var(--panel-darker-rgb),.88);box-shadow:0 2px 8px rgba(0,0,0,.3);font-family:Pretendard,"Noto Sans KR",sans-serif;font-size:calc(13px - 1pt)}
         .policy-footer a{display:inline-flex;align-items:center;min-height:24px;color:#fff0c7;font-weight:600;text-decoration:none}
         .policy-footer a:hover,.policy-footer a:focus-visible{color:#fff;text-decoration:underline}
     </style>

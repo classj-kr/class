@@ -11,11 +11,14 @@
         const guard = document.createElement('div');
         guard.setAttribute('aria-hidden', 'true');
         guard.style.cssText = 'height:0;pointer-events:none;overflow-anchor:none';
-        document.body.append(guard);
-        // This script initializes before the trailing footer is parsed.
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => document.body.append(guard), { once: true });
+        let footer = null;
+        function placeGuard() {
+            footer = document.querySelector('.policy-footer');
+            document.body.insertBefore(guard, footer);
         }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', placeGuard, { once: true });
+        } else placeGuard();
         let frame = 0;
         let session = null;
         let pageFloor = 0;
@@ -39,24 +42,27 @@
             add(node, node.querySelector(':scope > summary'), node.querySelector(':scope > .worksheet-group-options'), false);
         });
 
-        function naturalPageHeight() {
+        function bottomInset() {
             const padding = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
-            let bottom = guard.getBoundingClientRect().top + window.scrollY + padding;
+            return padding + (footer?.offsetHeight || 0);
+        }
+
+        function naturalPageHeight(inset) {
+            let bottom = guard.getBoundingClientRect().top + window.scrollY + inset;
             for (const entry of entries) {
                 if (entry.category || !entry.node.open || entry.node.closest('.hub-accordion-clipping')) continue;
                 if (getComputedStyle(entry.panel).position !== 'absolute') continue;
                 const rect = entry.panel.getBoundingClientRect();
-                if (rect.height) bottom = Math.max(bottom, rect.top + window.scrollY + rect.height * entry.visual + padding);
+                if (rect.height) bottom = Math.max(bottom, rect.top + window.scrollY + rect.height * entry.visual + inset);
             }
             return Math.max(window.innerHeight, bottom);
         }
 
-        function reservePageHeight() {
+        function reservePageHeight(inset) {
             // Keep the browser from clamping scrollY before our animated layout and
             // scroll position have reached their destination together.
             // The spacer extends document flow, not an absolutely positioned menu.
-            const padding = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
-            const flowBottom = guard.getBoundingClientRect().top + window.scrollY + padding;
+            const flowBottom = guard.getBoundingClientRect().top + window.scrollY + inset;
             guard.style.height = `${Math.max(0, pageFloor - flowBottom)}px`;
         }
 
@@ -65,7 +71,7 @@
         }
 
         function interact(trigger, change) {
-            if (guard !== document.body.lastElementChild) document.body.append(guard);
+            if (!guard.isConnected) placeGuard();
             pageFloor = Math.max(pageFloor, document.documentElement.scrollHeight);
             session = {
                 trigger,
@@ -75,7 +81,7 @@
                 reveal: null,
             };
             document.documentElement.classList.add('hub-accordion-active');
-            reservePageHeight();
+            reservePageHeight(bottomInset());
             change();
             requestTick();
         }
@@ -192,18 +198,19 @@
                 if (!motion.layout) entry.panel.style.clipPath = `inset(0 0 ${(1 - entry.visual) * 100}% 0)`;
                 if (progress === 1) finish(entry);
             }
-            let naturalHeight = naturalPageHeight();
+            const inset = bottomInset();
+            let naturalHeight = naturalPageHeight(inset);
             // Reserve the opened menu's destination from the first frame. Otherwise
             // short pages cannot scroll until the growing menu reaches the bottom,
             // causing the page to catch up abruptly halfway through the animation.
             for (const entry of moving) {
                 if (!entry.expanded) continue;
                 const bottom = entry.panel.getBoundingClientRect().bottom + window.scrollY
-                    + (1 - entry.visual) * 6 + 18;
+                    + (1 - entry.visual) * 6 + inset;
                 naturalHeight = Math.max(naturalHeight, bottom);
                 pageFloor = Math.max(pageFloor, bottom);
             }
-            reservePageHeight();
+            reservePageHeight(inset);
             const maxScroll = Math.max(0, naturalHeight - window.innerHeight);
             let scroll = Math.min(window.scrollY, maxScroll);
             if (session) {
@@ -217,7 +224,7 @@
                     // and scrolling follow one easing curve without a final jump.
                     const extent = reveal.panel.getBoundingClientRect().bottom
                         + (1 - reveal.visual) * 6 - reveal.trigger.getBoundingClientRect().top;
-                    const shift = Math.max(0, session.top + extent - (window.innerHeight - 12));
+                    const shift = Math.max(0, session.top + extent - (window.innerHeight - inset));
                     const progress = reducedMotion.matches ? 1 : Math.min(1, (now - session.started) / DURATION);
                     scroll += shift * ease(progress);
                 }
@@ -228,8 +235,8 @@
             else {
                 // Floating menus also need real document space below their last
                 // button; removing it here would clamp scrollY on the final frame.
-                pageFloor = naturalPageHeight();
-                reservePageHeight();
+                pageFloor = naturalPageHeight(inset);
+                reservePageHeight(inset);
                 pageFloor = 0;
                 session = null;
                 document.documentElement.classList.remove('hub-accordion-active');
