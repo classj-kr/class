@@ -4,6 +4,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const http = require('node:http');
 const crypto = require('node:crypto');
+const { verifyVoyageAvatar } = require('../../../shared/voyage-avatar.cjs');
 const { requestRoomCode } = require('../../../shared/room-codes.cjs');
 const express = require('express');
 const { Server } = require('socket.io');
@@ -491,6 +492,10 @@ app.use(express.static(path.join(__dirname, 'public'), {
   setHeaders(res, filePath) {
     if (filePath.endsWith('.gz')) res.setHeader('Content-Type', 'application/gzip');
     if (filePath.endsWith('.html')) res.setHeader('Cache-Control', 'no-store, max-age=0');
+    if (filePath.includes(path.join('assets', 'avatar-sprites'))) {
+      // Sprite URLs include their content hash. The small manifest is revalidated.
+      res.setHeader('Cache-Control', filePath.endsWith('.webp') ? 'public, max-age=31536000, immutable' : 'no-cache');
+    }
   }
 }));
 app.get('/api/mission-catalog', (_req, res) => { res.setHeader('Cache-Control', 'no-store'); res.json(publicMissionCatalog()); });
@@ -1868,7 +1873,7 @@ function updateFatigue(p, dt) {
   });
 }
 
-const NEARBY_FIELDS = ['id', 'name', 'x', 'y', 'dir', 'moving', 'mode', 'missionStatus', 'finishRank', 'missionCompleted', 'speedBoostMultiplier',
+const NEARBY_FIELDS = ['id', 'name', 'avatarKey', 'currentCityId', 'x', 'y', 'dir', 'moving', 'mode', 'missionStatus', 'finishRank', 'missionCompleted', 'speedBoostMultiplier',
   'shipType', 'shipName', 'shipOriginId', 'shipOriginName', 'shipScale', 'shipAnchoredAtShore', 'shipAnchorX', 'shipAnchorY', 'shipAnchorDir'];
 function nearbyPlayer(pub) {
   return Object.fromEntries(NEARBY_FIELDS.map((key) => [key, pub[key]]));
@@ -1900,6 +1905,7 @@ function publicPlayer(p, nowGameMinutes = classGameMinutes(p.roomCode)) {
   return {
     id: p.id,
     name: p.name,
+    avatarKey: p.avatarKey || '',
     sessionMode: p.sessionMode || 'competition',
     x: Math.round(p.x * 10) / 10,
     y: Math.round(p.y * 10) / 10,
@@ -2208,6 +2214,8 @@ io.on('connection', (socket) => {
   });
   socket.on('joinClass', (payload, ack = () => {}) => {
     try {
+      const avatarIdentity = payload?.avatarTicket ? verifyVoyageAvatar(process.env.VOYAGE_AVATAR_SECRET, payload.avatarTicket) : null;
+      if (payload?.avatarTicket && !avatarIdentity) return ack({ok:false,error:'아바타 정보를 확인하지 못했습니다. 다시 입장해 주세요.'});
       removePlayer(socket);
       const name = cleanName(payload?.name);
       const roomCode = cleanRoom(payload?.roomCode);
@@ -2246,6 +2254,7 @@ io.on('connection', (socket) => {
         id: socket.id,
         resumeToken: crypto.randomUUID(),
         name,
+        avatarKey: avatarIdentity?.avatarKey || '',
         roomCode,
         sessionMode: 'competition',
         x: spawn.x,
@@ -3442,7 +3451,8 @@ setInterval(() => {
       const nearby = [];
       for (const other of room.values()) {
         if (other.id === p.id) continue;
-        if (freeRoom || distance(p, other) <= NEARBY_RADIUS) nearby.push(nearbyById.get(other.id));
+        const sameCity = p.mode === 'city' && other.mode === 'city' && p.currentCityId && p.currentCityId === other.currentCityId;
+        if (sameCity || freeRoom || distance(p, other) <= NEARBY_RADIUS) nearby.push(nearbyById.get(other.id));
       }
       const missionState = activeMissionState(roomCode, p.name, p);
       io.to(p.id).emit('snapshot', { serverTime: now, classGameMinutes: classMinutes, sessionMode:'competition', roomType: freeRoom ? 'free' : 'race', roomLabel:`방 ${roomCode}`, you: publicById.get(p.id), nearby, online: room.size, settings: store.room(roomCode).settings, ...missionState });

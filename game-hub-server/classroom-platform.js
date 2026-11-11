@@ -2892,6 +2892,19 @@ function createClassroomPlatform(options = {}) {
     res.json({ ok: true, name });
   }));
 
+  router.get("/voyage/avatar-ticket", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    const membership = await studentMembership(user.id);
+    let avatarKey = membership?.avatarKey || '';
+    if (!membership && (user.role === 'teacher' || user.role === 'admin')) {
+      const result = await pool.query('SELECT avatar_key FROM classroom_teacher_settings WHERE user_id = $1', [user.id]);
+      avatarKey = normalizeAvatarKey(result.rows[0]?.avatar_key);
+    }
+    const { signVoyageAvatar } = require('../shared/voyage-avatar.cjs');
+    res.set('Cache-Control', 'no-store');
+    res.json({ ticket: signVoyageAvatar(options.voyageAvatarSecret, {userId:user.id, avatarKey}) });
+  }));
+
   router.get("/museum/presence-ticket", asyncRoute(async (req, res) => {
     const accessMode = await getSiteAccessMode();
     const expiresAt = Date.now() + 10 * 60 * 1000;

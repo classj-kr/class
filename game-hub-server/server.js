@@ -48,7 +48,9 @@ app.set("trust proxy", 1);
 const server = http.createServer(app);
 const wss = new WebSocketServer({ noServer: true });
 const rooms = new Map();
+const voyageAvatarSecret = crypto.randomBytes(32).toString('hex');
 const classroomPlatform = createClassroomPlatform({
+  voyageAvatarSecret,
   databaseUrl: process.env.DATABASE_URL,
   googleClientId: process.env.GOOGLE_CLIENT_ID,
   teacherEmails: process.env.TEACHER_EMAILS,
@@ -300,7 +302,7 @@ const worldVoyageApp = startNodeLearningApp(
   "learning/inquiry/age-of-exploration",
   WORLD_VOYAGE_PORT,
   "World Voyage app",
-  { DATA_DIR: WORLD_VOYAGE_DATA_DIR },
+  { DATA_DIR: WORLD_VOYAGE_DATA_DIR, VOYAGE_AVATAR_SECRET: voyageAvatarSecret },
 );
 
 const stopLearningApps = () => {
