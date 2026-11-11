@@ -1,8 +1,8 @@
 "use strict";
 module.exports=function flightCostumes(T,id){
- const k=require('./model-kit.cjs')(T,id),head=k.group('Head',[320,580]),sculpt=require('./sculpt-kit.cjs'),s=sculpt(T,k,{group:head,part:{pivot:[320,580]}}),shells=[];
+ const k=require('./model-kit.cjs')(T,id),head=k.group('Head',[320,580]),sculpt=require('./sculpt-kit.cjs'),s=sculpt(T,k,{group:head,part:{pivot:[320,580]}}),shells=[],tools=[s];
  head.userData.directSurfaceArtwork=true;head.userData.artworkOcclusion=true;
- function volume(tool,name,ps,c,depth,color,z=0){k.volume(name+'Half',ps,c,tool.pivot,depth,depth,tool.parent,k.solid(name+'Color',color),{art:false,samples:88,z:z-tool.offset.z});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,j=>j+n));tool.parent.remove(o);}const o=k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.15,.48];return o;}
+ function volume(tool,name,ps,c,depth,color,z=0){k.volume(name+'Half',ps,c,tool.pivot,depth,depth,tool.parent,k.solid(name+'Color',color),{art:false,samples:88,z:z-tool.offset.z});require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:24});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,j=>j+n));tool.parent.remove(o);}const o=k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.15,.48];return o;}
  if(id==='vehicle-rocket'){
   head.userData.artworkOpaqueRegions=[{cx:319,cy:291,rx:108,ry:85}];
   const hull=s.lathe('RocketContinuousHullSolid',[[505,0],[505,65],[499,83],[484,96],[452,110],[437,115],[383,132],[320,144],[267,141],[214,127],[166,103],[149,93],[116,68],[85,37],[65,9],[63,0]],'#ffffff',0,{levels:144,segments:80});
@@ -16,9 +16,9 @@ module.exports=function flightCostumes(T,id){
    const fin=require('./rounded-contour-solid.cjs')(T,k,s,'RocketSideFin'+side+'Solid',ps,{front:.10,back:.10,color:'#e92f32',rounding:16});fin.userData.artworkFacingFade=[.15,.50];shells.push([fin,s,'#8e2926',.012]);
   }
   const finOutline=[[320,395],[333,408],[344,441],[346,474],[339,504],[329,526],[320,537],[310,524],[299,500],[292,471],[293,441],[303,410]];
-  for(const side of [-1,1]){const fin=volume(s,'RocketAxialFin'+side+'Solid',finOutline,[320,465],.16,'#e82b30',side*.48);const p=fin.geometry.attributes.position;for(let i=0;i<p.count;i++){const y=580-p.getY(i)/.005,t=Math.max(0,Math.min(1,(y-395)/142));p.setZ(i,p.getZ(i)+side*.26*Math.sin(t*Math.PI));}fin.geometry.computeVertexNormals();if(side<0)fin.userData.skipOriginalPaint=true;shells.push([fin,s,'#8e2926',.012]);}
+  for(const side of [-1,1]){const fin=volume(s,'RocketAxialFin'+side+'Solid',finOutline,[320,465],.16,'#e82b30',side*.48);const p=fin.geometry.attributes.position;for(let i=0;i<p.count;i++){const y=580-p.getY(i)/.005,t=Math.max(0,Math.min(1,(y-395)/142));p.setZ(i,p.getZ(i)+side*.32*Math.sin(t*Math.PI));}fin.geometry.computeVertexNormals();if(side<0)fin.userData.skipOriginalPaint=true;shells.push([fin,s,'#8e2926',.012]);}
   s.paint();
-  const exhaust=k.group('RocketExhaust',[320,500]),f=sculpt(T,k,{group:exhaust,part:{pivot:[320,500]}});exhaust.userData.directSurfaceArtwork=true;
+  const exhaust=k.group('RocketExhaust',[320,500]),f=sculpt(T,k,{group:exhaust,part:{pivot:[320,500]}});exhaust.userData.directSurfaceArtwork=true;tools.push(f);
   const flame=volume(f,'RocketFlameSolid',[[272,494],[367,494],[375,519],[371,544],[358,564],[342,571],[320,588],[300,577],[286,567],[272,552],[264,529]],[320,535],.23,'#ff9c20');flame.userData.artworkFacingFade=[.15,.48];f.paint();shells.push([flame,f,'#d26613',.010]);
   // Warm yellow core continues on the back of the actual flame volume.
   flame.updateWorldMatrix(true,false);const ps=[[320,511],[345,526],[339,548],[320,574],[303,551],[296,529]],curve=new T.CatmullRomCurve3(ps.map(([x,y])=>new T.Vector3(x,y,0)),true,'centripetal'),edge=curve.getSpacedPoints(48).slice(0,48),P=[],I=[];
@@ -48,14 +48,27 @@ module.exports=function flightCostumes(T,id){
     if(Math.cos(a)>.38)continue;const origin=new T.Vector3(Math.sin(a)*2,(580-y)*.005,Math.cos(a)*2),ray=new T.Raycaster(origin,new T.Vector3(-Math.sin(a),0,-Math.cos(a))),hit=ray.intersectObject(basket)[0];if(hit)ps.push([320+hit.point.x/.005,580-hit.point.y/.005,hit.point.z+Math.cos(a)*.003]);
    }if(ps.length>2)s.tube('BalloonBasketWeave'+band+'_'+direction,ps,.004,'#976033');}
   for(const side of [-1,1]){
-   const arm=k.group(side<0?'LeftArm':'RightArm',[320+side*79,461]),a=sculpt(T,k,{group:arm,part:{pivot:[320+side*79,461]}});arm.userData.directSurfaceArtwork=true;
+   const arm=k.group(side<0?'LeftArm':'RightArm',[320+side*79,461]),a=sculpt(T,k,{group:arm,part:{pivot:[320+side*79,461]}});arm.userData.directSurfaceArtwork=true;tools.push(a);
    const mitten=volume(a,'BalloonMitten'+side+'Solid',[[242,452],[253,460],[257,476],[253,496],[240,506],[226,502],[219,489],[221,474],[230,458]].map(([x,y])=>[320+(-side)*(x-320),y]),[320+side*81,479],.12,'#a85b36');a.paint();shells.push([mitten,a,'#71331c',.014]);
-   const leg=k.group(side<0?'LeftLeg':'RightLeg',[320+side*28,543]),f=sculpt(T,k,{group:leg,part:{pivot:[320+side*28,543]}});leg.userData.directSurfaceArtwork=true;
+   const leg=k.group(side<0?'LeftLeg':'RightLeg',[320+side*28,543]),f=sculpt(T,k,{group:leg,part:{pivot:[320+side*28,543]}});leg.userData.directSurfaceArtwork=true;tools.push(f);
    const boot=volume(f,'BalloonBoot'+side+'Solid',[[276,537],[313,539],[312,558],[307,573],[294,579],[273,577],[264,571],[266,561],[274,554]].map(([x,y])=>[320+(-side)*(x-320),y]),[320+side*29,560],.16,'#bd763c');f.paint();shells.push([boot,f,'#71331c',.014]);
   }
  }
  for(const[o,tool,color,width]of shells){o.updateMatrix();const g=o.geometry.clone().applyMatrix4(o.matrix),p=g.attributes.position,b=new T.Box3().setFromBufferAttribute(p),c=b.getCenter(new T.Vector3()),f=1+width/(b.getSize(new T.Vector3()).length()/2),ix=g.index?Array.from(g.index.array):Array.from({length:p.count},(_,i)=>i);for(let i=0;i<p.count;i++)p.setXYZ(i,c.x+(p.getX(i)-c.x)*f,c.y+(p.getY(i)-c.y)*f,c.z+(p.getZ(i)-c.z)*f);for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];g.setIndex(ix);g.computeVertexNormals();const ink=k.mesh(o.name+'InkShell',g,k.solid(o.name+'Ink',color),tool.parent);ink.material.userData.alreadyShaded=true;}
 
+ // Keep the face registered, but fade the source outline before the profile
+ // turns away from the viewer. The closed hull supplies its own side colors.
+ for(const [name,face]of [['RocketContinuousHullSolidOriginalPaint',[319,291,108,85]]]){
+  const art=head.getObjectByName(name);if(!art)continue;
+  const p=art.geometry.attributes.position,n=art.geometry.attributes.normal,c=art.geometry.attributes.color;
+  for(let i=0;i<c.count;i++){
+   const x=320+p.getX(i)/.005,y=580-p.getY(i)/.005;
+   if(((x-face[0])/face[2])**2+((y-face[1])/face[3])**2<1)continue;
+   const facing=n.getZ(i)/Math.max(1e-6,Math.hypot(n.getX(i),n.getZ(i)));
+   c.setW(i,c.getW(i)*Math.max(0,Math.min(1,(facing-.45)/.3)));
+  }
+ }
+ require('./finish-small-vehicle-parts.cjs')(T,k,tools);
  if(id==='vehicle-hot-air-balloon'){
   const result=k.finish({holdLeft:true,holdRight:true,authoring:'Source-shaped striped balloon, connected short collar, rounded basket, small mittens and grounded boots'});
   // The envelope, collar and basket are a connected costume, so no separate

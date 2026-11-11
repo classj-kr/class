@@ -1,7 +1,7 @@
 "use strict";
 // Closed softly rounded solid with a constrained concave front contour.
 // Shared interior edge splits prevent collapsed walls and preserve watertightness.
-module.exports=function contourSolid(T,k,tool,name,ps,{front=.1,back=.1,color='#ffffff',z=0,samples=112,rounding=14}={}){
+module.exports=function contourSolid(T,k,tool,name,ps,{front=.1,back=.1,color='#ffffff',z=0,samples=112,rounding=14,analyticNormals=false}={}){
  const edge=new T.CatmullRomCurve3(ps.map(([x,y])=>new T.Vector3(x,y,0)),true,'centripetal').getSpacedPoints(samples).slice(0,samples),points=edge.map(v=>new T.Vector2(v.x,v.y)),key=(a,b)=>a<b?a+','+b:b+','+a;
  let faces=T.ShapeUtils.triangulateShape(points,[]);
  for(let pass=0;pass<10;pass++){
@@ -18,5 +18,10 @@ module.exports=function contourSolid(T,k,tool,name,ps,{front=.1,back=.1,color='#
  for(const rear of [false,true])for(const v of points){let d=Infinity;for(let j=0;j<edge.length;j++){const a=edge[j],b=edge[(j+1)%edge.length],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((v.x-a.x)*dx+(v.y-a.y)*dy)/(dx*dx+dy*dy)));d=Math.min(d,Math.hypot(v.x-a.x-t*dx,v.y-a.y-t*dy));}const f=Math.sqrt(1-Math.max(0,1-d/rounding)**2);P.push(...tool.point([v.x,v.y,z+(rear?-back:front)*f]));}
  for(const rear of [false,true])for(let[a,b,c]of faces){const A=points[a],B=points[b],C=points[c];if((B.x-A.x)*(C.y-A.y)-(B.y-A.y)*(C.x-A.x)>0)[b,c]=[c,b];rear?I.push(a+n,c+n,b+n):I.push(a,b,c);}
  const g=k.geometry(P,I),p=g.attributes.position,N=g.attributes.normal,m=new Map();for(let i=0;i<p.count;i++){const key=[p.getX(i),p.getY(i),p.getZ(i)].map(v=>Math.round(v*1e5)).join(',');if(!m.has(key))m.set(key,[]);m.get(key).push(i);}for(const indices of m.values()){const v=new T.Vector3();for(const i of indices)v.add(new T.Vector3().fromBufferAttribute(N,i));v.normalize();for(const i of indices)N.setXYZ(i,v.x,v.y,v.z);}
+ if(analyticNormals)for(let i=0;i<p.count;i++){
+  const v=points[i%n];let d=Infinity,gx=0,gy=0;
+  for(let j=0;j<edge.length;j++){const a=edge[j],b=edge[(j+1)%edge.length],ex=b.x-a.x,ey=b.y-a.y,t=Math.max(0,Math.min(1,((v.x-a.x)*ex+(v.y-a.y)*ey)/(ex*ex+ey*ey))),dx=v.x-a.x-t*ex,dy=v.y-a.y-t*ey,l=Math.hypot(dx,dy);if(l<d){d=l;if(l>1e-6){gx=dx/l;gy=dy/l;}else{const len=Math.hypot(ex,ey);gx=-ey/len;gy=ex/len;}}}
+  const rear=i>=n,f=Math.sqrt(1-Math.max(0,1-d/rounding)**2),slope=(rear?back:front)*Math.max(0,1-d/rounding)/(rounding*.005*Math.max(.00001,f)),vN=new T.Vector3(-gx*slope,gy*slope,rear?-1:1).normalize();N.setXYZ(i,vN.x,vN.y,vN.z);
+ }
  return k.mesh(name,g,k.solid(name+'Color',color),tool.parent);
 };

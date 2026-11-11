@@ -10,6 +10,7 @@ module.exports=function remainingFruit(T,k,id,parts){
  const plain=o=>{o.userData.skipOriginalPaint=true;return o;};
  function volume(name,outline,center,front,back,color,z=0,tool=s){
   k.volume(name+'Half',outline,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,samples:96,z:z-tool.offset.z});
+  if(['fruit-cherry','fruit-persimmon','fruit-pineapple','fruit-strawberry'].includes(id))require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:24});
   const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),offset=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+offset));tool.parent.remove(o);}
   const mesh=k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),tool.parent);mesh.userData.artworkFacingFade=[.16,.48];return mesh;
  }

@@ -6,7 +6,7 @@ window.createMuseumAvatarReview = function ({THREE,scene,renderer}) {
   const panel=document.createElement('section');panel.id='avatar-review';panel.setAttribute('aria-label','아바타 미술관 시험');
   panel.style.cssText='position:fixed;z-index:30;left:50%;top:76px;transform:translateX(-50%);width:min(780px,calc(100% - 32px));padding:12px 16px;border:1px solid #a59066;border-radius:14px;background:rgba(24,22,19,.96);color:#f3e8cf;font:12px/1.6 sans-serif;box-sizing:border-box';
   panel.innerHTML=`<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><strong>아바타 · 미술관 시험</strong>
-    <label>보기 <select id="avatar-review-choice" aria-label="미술관에서 볼 아바타"><option value="all">대표 6종 함께</option><option value="batch">전체 152종 · 4종씩 검수</option></select></label>
+    <label>보기 <select id="avatar-review-choice" aria-label="미술관에서 볼 아바타"><option value="all">대표 6종 함께</option><option value="batch">전체 아바타 · 4종씩 검수</option></select></label>
     <button id="avatar-review-previous" type="button">이전</button><span id="avatar-review-page"></span><button id="avatar-review-next" type="button">다음</button>
     <button id="avatar-review-toggle" type="button">이동 멈추기</button>
     <label>방향 <select id="avatar-review-view"><option value="motion">이동 방향</option><option value="0">앞</option><option value="-1.5707963267948966">왼쪽</option><option value="1.5707963267948966">오른쪽</option><option value="3.141592653589793">뒤</option></select></label>
@@ -18,7 +18,7 @@ window.createMuseumAvatarReview = function ({THREE,scene,renderer}) {
   panel.querySelectorAll('button,select').forEach(el=>el.style.cssText='border:1px solid #8b7952;border-radius:5px;background:#fff8e7;color:#241d12;padding:4px 6px;font:inherit');
   panel.addEventListener('keydown',event=>event.stopPropagation());
   const layer=new THREE.Group();layer.name='AvatarReview';scene.add(layer);
-  const loader=new THREE.GLTFLoader();let entries=[],characters=[],page=0,request=0,ready=false,elapsed=0,frames=0,lastSample=performance.now(),active=!matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const loader=window.createClassJAvatarLoader();let entries=[],characters=[],page=0,request=0,ready=false,elapsed=0,frames=0,lastSample=performance.now(),active=!matchMedia('(prefers-reduced-motion:reduce)').matches;
   function dispose(character){
     const geometries=new Set(),materials=new Set(),textures=new Set();
     character.traverse(o=>{if(!o.isMesh)return;geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material]){materials.add(m);for(const value of Object.values(m))if(value?.isTexture)textures.add(value);}});
@@ -49,7 +49,7 @@ window.createMuseumAvatarReview = function ({THREE,scene,renderer}) {
       return {item,index,character,mixer,stride,duration:clip.duration};
     });
     ready=true;setPhase();place();panel.dataset.ready='true';panel.dataset.loaded=String(characters.length);panel.dataset.models=batch.map(e=>e.id).join(',');panel.dataset.revisions=batch.map(e=>e.revision).join(',');
-    status.textContent=batch.map(e=>e.name).join(' · ')+' — 이동·방향 검수 중, 완료 판정 전';
+    status.textContent=batch.map(e=>e.name).join(' · ')+(batch.every(e=>e.status==='complete')?' — 개별 모델 검수 완료 · 미술관 시험 보기':' — 이동·방향 검수 중, 완료 판정 전');
   }
   function place(){
     for(const c of characters){
@@ -69,8 +69,16 @@ window.createMuseumAvatarReview = function ({THREE,scene,renderer}) {
     const params=new URLSearchParams(location.search),key=params.get('avatar');if(entries.some(e=>e.id===key))select.value=key;
     if(params.has('avatarBatch')){select.value='batch';page=Math.max(0,Math.min(Math.ceil(entries.length/4)-1,(Number(params.get('avatarBatch'))||1)-1));}show();
   }).catch(()=>{panel.dataset.ready='error';status.textContent='아바타 목록을 불러오지 못했습니다.';});
-  return {update(dt){
+  let frameCost=0,frameCostSamples=0,previousFrameStart=null,frameGap=0;
+  return {sampleFrame(start){
+    frameCost+=performance.now()-start;frameCostSamples++;
+    if(previousFrameStart!==null)frameGap=start-previousFrameStart;
+    previousFrameStart=start;
+    panel.dataset.frameGapMs=frameGap.toFixed(1);
+    panel.dataset.visibility=document.visibilityState;
+    panel.dataset.renderCpuMs=(frameCost/frameCostSamples).toFixed(1);
+  },update(dt){
     if(ready&&active){elapsed+=dt;for(const c of characters)c.mixer.update(dt);}place();
-    const now=performance.now();frames++;if(now-lastSample>=2000){const fps=Math.round(frames*1000/(now-lastSample));stats.textContent='이 화면 기준 '+fps+' FPS · '+renderer.info.render.triangles.toLocaleString()+'개 삼각형 · 학급 전체 접속 시험은 별도';panel.dataset.fps=String(fps);panel.dataset.triangles=String(renderer.info.render.triangles);frames=0;lastSample=now;}
+    const now=performance.now();frames++;if(now-lastSample>=2000){const fps=Math.round(frames*1000/(now-lastSample));stats.textContent='이 화면 기준 '+fps+' FPS · '+renderer.info.render.triangles.toLocaleString()+'개 삼각형 · '+(document.hidden?'배경 탭':'표시 중')+' · 프레임 처리 '+(frameCostSamples?frameCost/frameCostSamples:0).toFixed(1)+' ms · 학급 전체 접속 시험은 별도';panel.dataset.fps=String(fps);panel.dataset.triangles=String(renderer.info.render.triangles);frames=0;lastSample=now;frameCost=0;frameCostSamples=0;}
   }};
 };

@@ -8,7 +8,7 @@ module.exports=function blossoms(T,k,id,parts){
  function smoothNormals(g){const p=g.attributes.position,n=g.attributes.normal,m=new Map();for(let i=0;i<p.count;i++){const key=[p.getX(i),p.getY(i),p.getZ(i)].map(v=>Math.round(v*1e5)).join(',');if(!m.has(key))m.set(key,[]);m.get(key).push(i);}for(const a of m.values()){const v=new T.Vector3();for(const i of a)v.add(new T.Vector3().fromBufferAttribute(n,i));v.normalize();for(const i of a)n.setXYZ(i,v.x,v.y,v.z);}}
  function outline(o,tool=s,width=.014,color=ink){o.updateMatrix();const g=o.geometry.clone().applyMatrix4(o.matrix),p=g.attributes.position,box=new T.Box3().setFromBufferAttribute(p),c=box.getCenter(new T.Vector3()),d=box.getSize(new T.Vector3()),f=1+width/(Math.max(d.x,d.y,d.z)/2),ix=g.index.array;for(let i=0;i<p.count;i++)p.setXYZ(i,c.x+(p.getX(i)-c.x)*f,c.y+(p.getY(i)-c.y)*f,c.z+(p.getZ(i)-c.z)*f);for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];g.computeVertexNormals();const shell=k.mesh(o.name+'InkShell',g,k.solid(o.name+'Ink',color),tool.parent);shell.userData.skipOriginalPaint=true;shell.material.userData.alreadyShaded=true;}
  function volume(name,ps,center,front,back,color,z=0,tool=s,samples=48){
-  k.volume(name+'Half',ps,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,z:z-tool.offset.z,samples});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),off=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+off));tool.parent.remove(o);o.geometry.dispose();}const g=k.geometry(P,I);smoothNormals(g);const o=k.mesh(name,g,k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.18,.52];return o;
+  k.volume(name+'Half',ps,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,z:z-tool.offset.z,samples});if(tool!==s)require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:24});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),off=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+off));tool.parent.remove(o);o.geometry.dispose();}const g=k.geometry(P,I);smoothNormals(g);const o=k.mesh(name,g,k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.18,.52];return o;
  }
  function curvedStrip(name,ps,front,back,color,z){
   // Triangulate the actual concave petal. A radial fan crosses the inner
@@ -37,6 +37,7 @@ module.exports=function blossoms(T,k,id,parts){
  function suit(neck,color,arms=true){
   const t=part('Torso',[320,neck+26]),body=volume('BlossomShortTorsoSolid',[[270,neck],[320,neck],[370,neck],[382,476],[376,511],[359,534],[332,545],[303,545],[279,533],[262,507],[256,473]],[320,484],.27,.27,color,bodyZ,t,48);outline(body,t,.014,cherry?ink:'#365e2e');
   if(cherry)t.ellipsoid('BlossomHiddenJoinSolid',[320,415,-.035],[45,66,.21],color);
+  if(id==='theme-sunflower'){const join=t.ellipsoid('SunflowerHiddenJoinSolid',[320,417,-.32],[45,40,.18],color);join.userData.skipOriginalPaint=true;}
   t.paint();
   for(const side of [-1,1]){
    const mirror=ps=>ps.map(([x,y])=>[side<0?x:640-x,y]),name=side<0?'LeftArm':'RightArm';

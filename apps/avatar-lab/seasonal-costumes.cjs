@@ -19,7 +19,7 @@ module.exports=function seasonal(T,k,id,parts){
   const shell=k.mesh(o.name+'InkShell',g,k.solid(o.name+'Ink',color),tool.parent);shell.userData.skipOriginalPaint=true;shell.material.userData.alreadyShaded=true;
  }
  function volume(name,ps,center,front,back,color,z=0,tool=s,samples=96){
-  k.volume(name+'Half',ps,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,samples,z:z-tool.offset.z});const P=[],I=[];
+  k.volume(name+'Half',ps,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,samples,z:z-tool.offset.z});if(['theme-cactus','theme-maple-leaf'].includes(id))require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:24});const P=[],I=[];
   for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),off=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+off));tool.parent.remove(o);o.geometry.dispose();}
   const g=k.geometry(P,I),p=g.attributes.position,n=g.attributes.normal,groups=new Map();for(let i=0;i<p.count;i++){const key=[p.getX(i),p.getY(i),p.getZ(i)].map(v=>Math.round(v*1e5)).join(',');if(!groups.has(key))groups.set(key,[]);groups.get(key).push(i);}for(const indices of groups.values()){const normal=new T.Vector3();for(const i of indices)normal.add(new T.Vector3().fromBufferAttribute(n,i));normal.normalize();for(const i of indices)n.setXYZ(i,normal.x,normal.y,normal.z);}
   const o=k.mesh(name,g,k.solid(name+'Color',color),tool.parent);o.userData.artworkFacingFade=[.16,.50];return o;
@@ -78,9 +78,9 @@ module.exports=function seasonal(T,k,id,parts){
    const path=[];for(let j=0;j<=24;j++){const t=j/24,px=320+(x-320)*t,py=423+(y-423)*t,hit=frontHit(leaf,px,py,true),p=s.parent.worldToLocal(hit.point.clone());path.push([px,py,p.z+s.offset.z-.004]);}
    const vein=s.tube('MapleRearVein'+i,path,.009,'#a23321');vein.userData.skipOriginalPaint=true;for(const o of s.parent.children)if(o.name.startsWith('MapleRearVein'))o.userData.skipOriginalPaint=true;
   }
-  const t=part('Torso',[320,464]);const torso=volume('MapleShortTorsoSolid',[[269,434],[320,436],[371,434],[382,471],[378,505],[363,531],[338,546],[305,547],[278,534],[262,506],[255,470]],[320,483],.27,.26,'#ee682b',.03,t,64);outline(torso,t,.014);t.paint();
+  const t=part('Torso',[320,464]);const torso=volume('MapleShortTorsoSolid',[[269,426],[320,422],[371,426],[382,471],[378,505],[363,531],[338,546],[305,547],[278,534],[262,506],[255,470]],[320,483],.27,.26,'#ee682b',.03,t,64);outline(torso,t,.014);t.paint();
   for(const side of [-1,1]){
-   const mirror=ps=>ps.map(([x,y])=>[side<0?x:640-x,y]),arm=part(side<0?'LeftArm':'RightArm',[320+side*78,444]);const a=volume('MapleSleeveSolid'+side,mirror([[228,438],[251,442],[251,464],[250,488],[245,504],[234,512],[222,507],[218,492],[220,466]]),[320+side*84,475],.13,.13,'#ffa833',0,arm,48);outline(a,arm,.012);arm.paint();
+   const mirror=ps=>ps.map(([x,y])=>[side<0?x:640-x,y]),arm=part(side<0?'LeftArm':'RightArm',[320+side*78,444]);const a=volume('MapleSleeveSolid'+side,mirror([[228,438],[272,432],[282,449],[251,468],[250,488],[245,504],[234,512],[222,507],[218,492],[220,466]]),[320+side*84,475],.13,.13,'#ffa833',0,arm,48);outline(a,arm,.012);arm.paint();
    const leg=part(side<0?'LeftLeg':'RightLeg',[320+side*33,529]),f=volume('MapleFootSolid'+side,mirror([[269,518],[307,520],[309,543],[302,559],[304,571],[291,579],[271,578],[260,569],[264,554],[270,537]]),[320+side*35,550],.17,.17,'#ed6529',.03,leg,48);outline(f,leg,.014);leg.paint();
   }
   s.paint();fadeContour(leaf,ps);
@@ -105,7 +105,7 @@ module.exports=function seasonal(T,k,id,parts){
   for(const [i,[x,y,rx,ry,angle]] of [[199,94,19,28,.75],[237,84,19,25,-.30],[267,100,19,26,-.85],[257,136,20,28,1.2],[216,149,19,28,-.45],[190,131,19,26,1.35]].entries()){
    const petal=s.ellipsoid('CactusFlowerPetal'+i,[x,y,flowerZ],[rx,ry,.07],'#ef567c',angle);petal.userData.artworkFacingFade=[.16,.50];outline(petal,s,.011,'#a52e55');
   }
-  const center=s.ellipsoid('CactusFlowerCenter',[229,116,flowerZ+.07],[20,14,.065],'#ffe85a',.45);center.userData.artworkFacingFade=[.16,.50];outline(center,s,.008,'#98532b');
+  const center=s.ellipsoid('CactusFlowerCenter',[229,116,flowerZ+.045],[23,18,.095],'#ffe85a',.45);center.userData.artworkFacingFade=[.16,.50];outline(center,s,.008,'#98532b');
   for(const side of [-1,1]){
    const leg=part(side<0?'LeftLeg':'RightLeg',[320+side*31,526]),mirror=ps=>ps.map(([x,y])=>[side<0?x:640-x,y]);
    const foot=volume('CactusFootSolid'+side,mirror([[265,513],[303,515],[308,539],[301,554],[302,568],[290,577],[271,578],[261,570],[266,553],[265,536]]),[320+side*35,548],.18,.18,'#6fa23e',0,leg,48);outline(foot,leg,.014);leg.paint();

@@ -4,22 +4,23 @@ module.exports=function(T,k,id,parts){
  if(id==='animal-panda'){
   parts.get('Head').group.getObjectByName('CostumeHood').material.color.set('#f0f1ef').convertSRGBToLinear();
   for(const [name,part]of parts)for(const mesh of part.group.children.filter(o=>o.isMesh&&!o.material.userData.originalTexture))if(name!=='Head'&&name!=='Torso'||/^(Ear|InnerEar)/.test(mesh.name))mesh.userData.skipOriginalPaint=true;
+  for(const name of ['LeftArm','RightArm']){const part=parts.get(name);for(const mesh of part.group.children.filter(o=>o.isMesh&&!o.material.userData.originalTexture)){const p=mesh.geometry.attributes.position;for(let i=0;i<p.count;i++){const y=part.part.pivot[1]-p.getY(i)/.005,x=p.getX(i)+part.group.position.x;p.setX(i,p.getX(i)-Math.sign(x)*.09*Math.max(0,Math.min(1,(444-y)/42)));}mesh.geometry.computeVertexNormals();}}
   return;
  }
  const head=parts.get('Head'),name='FullFeatureHood',a=head.group.getObjectByName(name+'Surface'),b=head.group.getObjectByName(name+'Back');
  const oldHood=new T.Mesh(a.geometry.clone(),new T.MeshBasicMaterial({side:T.DoubleSide}));oldHood.updateMatrixWorld(true);
- for(const partName of [name]){
- const a=head.group.getObjectByName(partName+'Surface'),b=head.group.getObjectByName(partName+'Back');
+ for(const [group,partName] of [[head.group,name],...Array.from({length:13},(_,i)=>[parts.get('PeacockTailFan').group,'RoundedPeacockFeather'+i])]){
+ const a=group.getObjectByName(partName+'Surface'),b=group.getObjectByName(partName+'Back'),feather=partName.startsWith('RoundedPeacock');
  const base=(a.geometry.attributes.position.getZ(0)+b.geometry.attributes.position.getZ(0))/2;
  for(const mesh of [a,b]){
-  const p=mesh.geometry.attributes.position,samples=p.count/13,edge=Array.from({length:samples},(_,i)=>new T.Vector3().fromBufferAttribute(p,12*samples+i)),center=new T.Vector3().fromBufferAttribute(p,0);center.z=0;
+  const p=mesh.geometry.attributes.position,oldSamples=p.count/13,samples=feather?64:oldSamples,edge=Array.from({length:samples},(_,i)=>new T.Vector3().fromBufferAttribute(p,12*oldSamples+Math.floor(i*oldSamples/samples))),center=new T.Vector3().fromBufferAttribute(p,0);center.z=0;
   let smooth=edge.map(v=>v.clone());for(let pass=0;pass<4;pass++)smooth=smooth.map((v,i)=>{const sum=v.clone().multiplyScalar(2);for(const d of [-3,-2,-1,1,2,3])sum.add(smooth[(i+d+samples)%samples]);return sum.multiplyScalar(1/8);});
-  const P=[],I=[],rings=32,depth=p.getZ(0)-base;
+  const P=[],I=[],rings=feather?16:32,depth=p.getZ(0)-base;
   for(let ring=0;ring<=rings;ring++){const angle=ring/rings*Math.PI/2,r=Math.sin(angle),w=Math.max(0,(r-.94)/.06)**3;for(let i=0;i<samples;i++){const v=center.clone().lerp(smooth[i],r).addScaledVector(edge[i].clone().sub(smooth[i]),w);P.push(v.x,v.y,base+depth*Math.cos(angle));}}
   for(let ring=0;ring<rings;ring++)for(let i=0;i<samples;i++){const a=ring*samples+i,b=ring*samples+(i+1)%samples,c=a+samples,d=b+samples;if(depth<0){if(ring)I.push(a,d,b);I.push(a,c,d);}else{if(ring)I.push(a,b,d);I.push(a,d,c);}}
   const g=k.geometry(P,I);if((g.attributes.normal.getZ(samples*4)>0)!==(depth>0)){for(let i=0;i<I.length;i+=3)[I[i+1],I[i+2]]=[I[i+2],I[i+1]];g.setIndex(I);g.computeVertexNormals();}
   const N=g.attributes.normal;for(let pass=0;pass<3;pass++){const next=N.array.slice();for(let ring=0;ring<=rings;ring++)for(let i=0;i<samples;i++){const v=new T.Vector3();for(let d=-3;d<=3;d++)v.addScaledVector(new T.Vector3().fromBufferAttribute(N,ring*samples+(i+d+samples)%samples),4-Math.abs(d));next.set(v.normalize().toArray(),(ring*samples+i)*3);}N.array.set(next);}
-  mesh.geometry.dispose();mesh.geometry=g;mesh.userData.paddedBoundary=edge;
+  mesh.geometry.dispose();mesh.geometry=g;if(!feather)mesh.userData.paddedBoundary=edge;
  }
  }
  const newHood=new T.Mesh(a.geometry,new T.MeshBasicMaterial({side:T.DoubleSide}));newHood.updateMatrixWorld(true);
@@ -31,6 +32,6 @@ module.exports=function(T,k,id,parts){
  }
  const fan=parts.get('PeacockTailFan');fan.group.position.z=-.85;
  const body=parts.get('Torso'),sculpt=require('./sculpt-kit.cjs')(T,k,body);
- const support=sculpt.ellipsoid('PeacockFanRootSupport',[320,481,-.48],[38,42,.40],'#287ead');support.userData.skipOriginalPaint=true;
+ const support=sculpt.ellipsoid('PeacockFanRootSupport',[320,481,-.48],[24,30,.40],'#287ead');support.userData.skipOriginalPaint=true;
  oldHood.geometry.dispose();oldHood.material.dispose();newHood.material.dispose();
 };

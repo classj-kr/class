@@ -18,7 +18,7 @@ module.exports=function characterEffects(THREE,k,id){
     const n=new THREE.Vector3().fromBufferAttribute(geometry.attributes.normal,j),c=new THREE.Color('#f8b64d').convertSRGBToLinear(),shade=.68+.30*Math.abs(n.z)+.02*Math.max(0,n.y);colors.push(c.r*shade,c.g*shade,c.b*shade);
    }
    geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));const fire=material('WarmFlame'+i,'#ffffff');fire.userData.preserveVertexColor=true;
-   k.mesh('OuterFlame'+i,geometry,fire,flame);
+   const outer=k.mesh('OuterFlame'+i,geometry,fire,flame);require('./solid-ink-shell.cjs')(THREE,k,outer,'#b56b24',.012);
    const coreOutline=new THREE.CatmullRomCurve3([[0,.245],[.018,.205],[.035,.165],[.047,.115],[.043,.075],[.025,.048],[0,.040],[-.025,.048],[-.043,.075],[-.047,.115],[-.035,.165],[-.018,.205]].map(([x,y])=>new THREE.Vector3(x,y,0)),true,'centripetal').getSpacedPoints(64).slice(0,64);
    const radiusAt=y=>{for(let j=1;j<points.length;j++)if(y<=points[j].y){const a=points[j-1],b=points[j],t=(y-a.y)/(b.y-a.y);return a.x+(b.x-a.x)*t;}return 0;};
    for(const back of [false,true]){

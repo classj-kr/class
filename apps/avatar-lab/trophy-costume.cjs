@@ -11,6 +11,7 @@ module.exports=function trophyCostume(T,k,id,parts){
   const handle=s.sweep('TrophyHandle'+side+'Solid',ps,'#f6b72c');handle.userData.artworkFacingFade=[.15,.48];shells.push([handle,s,'#a7621f',.013]);
   for(const[j,p]of [ps[0],ps.at(-1)].entries()){const cap=s.ellipsoid('TrophyHandleTip'+side+'_'+j,p.slice(0,3),[p[3],p[3],p[3]*.005],'#f6b72c');cap.userData.artworkFacingFade=[.15,.48];}
  }
+ cup.userData.artworkFacingFade=[.42,.72];
  shells.push([cup,s,'#ad681d',.012],[rim,s,'#b16a1d',.010]);s.paint();
  function part(name,pivot){const v={part:{pivot},group:k.group(name,pivot),special:true};parts.set(name,v);v.group.userData.directSurfaceArtwork=true;return sculpt(T,k,v);}
  function volume(tool,name,ps,c,depth){k.volume(name+'Half',ps,c,tool.pivot,depth,depth,tool.parent,k.solid(name+'Color','#ffc037'),{art:false,samples:72});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,i=>i+n));tool.parent.remove(o);}const o=k.mesh(name,k.geometry(P,I),k.solid(name+'Color','#ffc037'),tool.parent);shells.push([o,tool,'#a96922',.012]);return o;}
@@ -18,7 +19,12 @@ module.exports=function trophyCostume(T,k,id,parts){
  const base=torso.box('TrophyWoodBaseSolid',[320,500,0],[208,54,.72],'#945831',9);base.userData.artworkFacingFade=[.15,.45];shells.push([base,torso,'#60391f',.012]);torso.paint();
  for(const side of [-1,1]){
   const mirror=ps=>ps.map(([x,y])=>[320+side*(320-x),y]);
-  const arm=part(side<0?'LeftArm':'RightArm',[320+side*41,399]),sleeve=require('./rounded-contour-solid.cjs')(T,k,arm,'TrophySleeve'+side+'Solid',mirror([[279,388],[287,400],[282,420],[273,437],[252,450],[243,465],[230,468],[217,458],[209,443],[213,425],[230,408],[254,396]]),{front:.145,back:.145,color:'#ffc037',rounding:12});shells.push([sleeve,arm,'#a96922',.012]);arm.paint();
+  const arm=part(side<0?'LeftArm':'RightArm',[320+side*41,399]);
+  const armPath=[[307,405,0,18],[280,407,0,18],[250,411,0,17],[232,431,0,17],[228,451,0,16],[237,456,0,14]].map(([x,y,z,r])=>[320+side*(320-x),y,z,r]);
+  const sleeve=arm.sweep('TrophySleeve'+side+'Solid',armPath,'#ffc037');
+  sleeve.userData.artworkFacingFade=[.45,.75];
+  const hand=arm.ellipsoid('TrophyHand'+side+'Solid',armPath.at(-1).slice(0,3),[14,14,.07],'#ffc037');hand.userData.skipOriginalPaint=true;
+  shells.push([sleeve,arm,'#a96922',.012],[hand,arm,'#a96922',.009]);arm.paint();
   const foot=part(side<0?'LeftLeg':'RightLeg',[320+side*36,525]);volume(foot,'TrophyFoot'+side+'Solid',mirror([[264,518],[300,519],[305,539],[304,559],[297,569],[281,575],[264,574],[257,568],[263,553],[268,540]]),[320+side*39,548],.18);foot.paint();
  }
  // Export a reversed-winding outline; glTF has no BackSide material mode.

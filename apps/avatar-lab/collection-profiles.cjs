@@ -224,4 +224,5 @@ for(const id of ['animal-viper','animal-ratsnake']){
  set(id,{motion:'glide',shape:'snake',neck:580,leg:580,holdArms:true,revision:2});
  delete profiles[id].tail;
 }
+Object.assign(profiles,require('./addition-profiles.cjs'));
 module.exports=profiles;

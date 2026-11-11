@@ -15,8 +15,9 @@ module.exports=function filledFoods(THREE,k,id,parts){
   }
  }
  if(id==='food-hot-dog'){
-  const outline=[[319,62],[345,76],[355,100],[389,135],[423,137],[458,161],[481,209],[494,279],[497,360],[487,442],[466,494],[431,524],[389,529],[364,544],[279,544],[253,529],[217,529],[185,515],[159,478],[147,430],[141,353],[145,261],[160,185],[185,150],[219,133],[252,133],[282,101],[291,80]];
+  const outline=[[319,62],[331,66],[336,80],[348,79],[356,88],[352,102],[373,122],[389,135],[423,137],[458,161],[481,209],[494,279],[497,360],[487,442],[466,494],[431,524],[389,529],[364,532],[346,541],[320,545],[294,541],[279,532],[253,529],[217,529],[185,515],[159,478],[147,430],[141,353],[145,261],[160,185],[185,150],[219,133],[252,133],[276,107],[286,99],[284,88],[291,80],[303,82],[306,68]];
   k.volume('HotDogRounded',outline,[320,306],s.pivot,.55,.62,s.parent,k.solid('HotDogColor','#e8b36a'),{art:false,samples:128});
+  require('./smooth-paired-volume.cjs')(THREE,k,s.parent,'HotDogRounded',{rings:28});
   const halves=['HotDogRoundedSurface','HotDogRoundedBack'].map(name=>s.parent.getObjectByName(name)),positions=[],indices=[];
   for(const half of halves){const offset=positions.length/3;positions.push(...half.geometry.attributes.position.array);indices.push(...Array.from(half.geometry.index.array,i=>i+offset));s.parent.remove(half);}
   const body=k.mesh('HotDogCostumeSolid',k.geometry(positions,indices),k.solid('HotDogBread','#e8b36a'),s.parent),p=body.geometry.attributes.position,colors=[];
@@ -40,9 +41,9 @@ module.exports=function filledFoods(THREE,k,id,parts){
  }
  if(id==='food-pizza'){
   const outline=[[320,62],[414,74],[486,99],[537,128],[543,151],[529,181],[477,285],[425,395],[375,493],[340,544],[321,553],[302,538],[261,463],[207,350],[154,240],[108,184],[97,160],[96,135],[125,113],[209,78]];
-  const base=s.smoothOutline('PizzaBaseSolid',outline,.36,'#c38d50',0,.035);
+  const base=s.smoothOutline('PizzaBaseSolid',[[320,128],[414,140],[479,164],[519,182],[477,285],[425,395],[375,493],[340,544],[321,553],[302,538],[261,463],[207,350],[154,240],[120,184],[163,162],[230,137]],.26,'#d49e5b',0,.065);
   const cheese=[[319,132],[398,140],[467,165],[520,182],[468,289],[419,393],[370,490],[330,538],[316,539],[263,451],[210,342],[162,241],[119,183],[204,146]];
-  s.smoothOutline('PizzaCheeseSolid',cheese,.045,'#f1cd77',.193,.008);
+  s.smoothOutline('PizzaCheeseSolid',cheese,.045,'#f7d170',.145,.008);
   const crust=[[97,135],[126,111],[208,79],[319,63],[413,74],[487,102],[539,130],[540,156],[527,180],[479,165],[414,144],[319,132],[230,141],[163,165],[118,181],[106,166]];
   s.smoothOutline('PizzaRolledCrustSolid',crust,.43,'#dba464',0,.032);
   surfaceMarks(base,'RearPizzaToast',[[0,244,194,9,6],[1,368,220,7,5],[2,294,286,8,5],[3,347,369,10,6],[4,292,428,6,4],[5,409,202,6,4]],'#ba8249');
@@ -69,13 +70,13 @@ module.exports=function filledFoods(THREE,k,id,parts){
   s.parent.userData.artworkOcclusion=true;
   const bread=[[320,102],[405,113],[461,137],[493,171],[500,207],[488,245],[474,264],[477,466],[469,501],[449,521],[400,532],[232,533],[175,524],[153,505],[145,481],[145,270],[128,239],[124,206],[136,169],[166,139],[230,114]];
   const lettuce=[[114,195],[143,143],[177,99],[242,77],[283,75],[313,62],[350,64],[376,74],[404,66],[463,90],[499,133],[521,178],[527,222],[513,266],[529,314],[513,353],[528,397],[514,447],[499,487],[476,516],[157,517],[126,486],[117,447],[129,402],[112,364],[124,323],[112,282],[125,240]];
-  unpaint(s.smoothOutline('SandwichBackBreadSolid',bread,.18,'#bf884c',-.32,.025));
+  unpaint(s.smoothOutline('SandwichBackBreadSolid',bread,.18,'#bf884c',-.32,.045));
   unpaint(s.smoothOutline('SandwichRearCrumbSolid',bread.map(([x,y])=>[315+(x-315)*.90,320+(y-320)*.93]),.026,'#eed4a3',-.421,.009));
   for(const [i,z] of [[0,-.20],[1,.11]])s.smoothOutline('LettuceLayerSolid'+i,lettuce,.075,'#8baf4e',z,.016);
   for(const [i,y] of [[0,210],[1,403]])s.ellipsoid('SandwichTomatoFilling'+i,[320,y,-.045],[166,105,.23],'#ce6650');
   for(const [i,x,y] of [[0,474,201],[1,477,405],[2,147,337]])s.ellipsoid('SandwichTomato'+i,[x,y,.09],[42,65,.20],'#ce6650');
   s.smoothOutline('SandwichCheeseSolid',[[139,158],[229,98],[307,109],[402,66],[482,134],[490,457],[463,506],[149,494]],.06,'#e8bf62',.18,.01);
-  s.smoothOutline('SandwichFrontBreadSolid',bread,.20,'#c69558',.30,.025);
+  s.smoothOutline('SandwichFrontBreadSolid',bread,.20,'#c69558',.30,.045);
   s.smoothOutline('SandwichFrontCrumbSolid',bread.map(([x,y])=>[315+(x-315)*.90,320+(y-320)*.93]),.024,'#f2d9aa',.411,.008);
   for(const name of ['LeftArm','RightArm'])parts.get(name)?.group.clear();
  }

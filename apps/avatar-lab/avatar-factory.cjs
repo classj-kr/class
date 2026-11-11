@@ -3,6 +3,7 @@ const aliases={cat:'animal-cat',ramen:'food-ramen',donut:'food-donut',banana:'fr
 const vehicles=new Set(['vehicle-hot-air-balloon','vehicle-rocket','vehicle-submarine','vehicle-train']);
 function create(THREE,key){
  const id=aliases[key]||key,custom=Object.keys(aliases).find(k=>aliases[k]===id);
+ if(require('./addition-profiles.cjs')[id])return require('./addition-models.cjs')(THREE,id);
  if(custom)return require('./'+custom+'-model.cjs')(THREE);
  if(['vehicle-rocket','vehicle-hot-air-balloon'].includes(id))return require('./flight-costumes.cjs')(THREE,id);
  if(id==='vehicle-submarine')return require('./submarine-costume.cjs')(THREE);

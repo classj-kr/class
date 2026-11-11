@@ -1,15 +1,15 @@
 "use strict";
 module.exports=function diceCostume(T,k,id,parts){
  if(id!=='game-dice')return false;
- const head=parts.get('Head'),sculpt=require('./sculpt-kit.cjs'),s=sculpt(T,k,head),ink='#59616d';
+ const head=parts.get('Head'),sculpt=require('./sculpt-kit.cjs'),s=sculpt(T,k,head),ink='#494b58';
  for(const[name,p]of parts)if(name!=='Head'){k.body.remove(p.group);parts.delete(name);}
  s.parent.clear();s.parent.userData.directSurfaceArtwork=true;s.parent.userData.artworkOcclusion=false;
  s.parent.userData.artworkOpaqueRegions=[{cx:260,cy:307,rx:108,ry:89}];
  // Three real, rounded faces follow the illustration's slightly stylized
  // perspective. The artwork is on these surfaces, not on a square billboard.
- const A=new T.Vector3(1.39,-.10,.50),B=new T.Vector3(0,1.23,.46),C=new T.Vector3(-.54,-.50,1.40),center=new T.Vector3(0,1.62,0);
+ const A=new T.Vector3(1.39,-.10,.50),B=new T.Vector3(0,1.27,.46),C=new T.Vector3(-.54,-.50,1.40),center=new T.Vector3(0,1.62,0);
  const map=v=>center.clone().addScaledVector(A,v.x).addScaledVector(B,v.y).addScaledVector(C,v.z);
- const geometry=new T.BoxGeometry(1,1,1,32,32,32),p=geometry.attributes.position,round=.065;
+ const geometry=new T.BoxGeometry(1,1,1,48,48,48),p=geometry.attributes.position,round=.085;
  for(let i=0;i<p.count;i++){const v=new T.Vector3().fromBufferAttribute(p,i),q=v.clone().clampScalar(-.5+round,.5-round),n=v.clone().sub(q).normalize();v.copy(q).addScaledVector(n,round);p.setXYZ(i,...map(v).sub(s.offset).toArray());}
  geometry.computeVertexNormals();
  // Shared edge shading is averaged after the affine transform.
@@ -28,12 +28,12 @@ module.exports=function diceCostume(T,k,id,parts){
  }
  // The inverted outline shares the rounded cube's actual silhouette.
  const outline=k.mesh('DiceCubeOutline',geometry.clone(),k.solid('DiceOutlineInk',ink),s.parent);outline.userData.skipOriginalPaint=true;outline.material.userData.alreadyShaded=true;
- const op=outline.geometry.attributes.position;for(let i=0;i<op.count;i++)op.setXYZ(i,op.getX(i)+norm.getX(i)*.009,op.getY(i)+norm.getY(i)*.009,op.getZ(i)+norm.getZ(i)*.009);
+ const op=outline.geometry.attributes.position;for(let i=0;i<op.count;i++)op.setXYZ(i,op.getX(i)+norm.getX(i)*.012,op.getY(i)+norm.getY(i)*.012,op.getZ(i)+norm.getZ(i)*.012);
  const oi=outline.geometry.index.array;for(let i=0;i<oi.length;i+=3)[oi[i+1],oi[i+2]]=[oi[i+2],oi[i+1]];outline.geometry.computeVertexNormals();
  s.paint();
  function part(name,pivot){const v={part:{pivot},group:k.group(name,pivot,.50),special:true};parts.set(name,v);v.group.userData.directSurfaceArtwork=true;return sculpt(T,k,v);}
- function volume(tool,name,ps,c,depth){k.volume(name+'Half',ps,c,tool.pivot,depth,depth,tool.parent,k.solid(name+'Color','#e4e8ef'),{art:false,samples:72});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,i=>i+n));tool.parent.remove(o);}return k.mesh(name,k.geometry(P,I),k.solid(name+'Color','#e4e8ef'),tool.parent);}
- const torso=part('Torso',[304,480]);volume(torso,'DiceShortSuitSolid',[[246,421],[354,430],[374,451],[373,492],[358,524],[337,539],[302,541],[271,535],[248,517],[237,483],[237,450]],[306,480],.31);torso.paint();
+ function volume(tool,name,ps,c,depth){k.volume(name+'Half',ps,c,tool.pivot,depth,depth,tool.parent,k.solid(name+'Color','#e4e8ef'),{art:false,samples:96});require("./smooth-paired-volume.cjs")(T,k,tool.parent,name+"Half",{rings:24});const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,i=>i+n));tool.parent.remove(o);}const mesh=k.mesh(name,k.geometry(P,I),k.solid(name+'Color','#e4e8ef'),tool.parent);mesh.userData.artworkFacingFade=[.35,.70];if(name==='DiceShortSuitSolid')mesh.userData.artworkMinY=452;else mesh.userData.skipOriginalPaint=true;return mesh;}
+ const torso=part('Torso',[304,480]);volume(torso,'DiceShortSuitSolid',[[246,414],[354,419],[374,451],[373,492],[358,524],[337,534],[302,535],[271,531],[248,517],[237,483],[237,450]],[306,480],.31);torso.paint();
  for(const side of [-1,1]){
   const left=side<0,arm=part(left?'LeftArm':'RightArm',[left?245:366,439]);volume(arm,'DiceSleeve'+side+'Solid',left?[[239,429],[253,434],[242,458],[233,483],[232,499],[222,506],[209,501],[204,489],[207,465],[220,439]]:[[356,435],[372,437],[385,460],[397,485],[400,498],[390,508],[377,507],[369,495],[368,476],[360,454]],[left?227:379,472],.13);arm.paint();
   const foot=part(left?'LeftLeg':'RightLeg',[left?270:337,527]);volume(foot,'DiceFoot'+side+'Solid',left?[[248,519],[286,522],[290,540],[283,559],[280,570],[267,579],[251,577],[245,567],[252,554],[247,539]]:[[320,525],[356,521],[359,539],[354,552],[364,563],[366,570],[352,578],[338,578],[325,570],[320,552]],[left?265:342,550],.17);foot.paint();

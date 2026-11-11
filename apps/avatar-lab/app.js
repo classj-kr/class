@@ -151,7 +151,7 @@
   }
   frame = requestAnimationFrame(render); updatePause();
   const models = new Map(avatarButtons.map(button => [button.dataset.avatar, new Promise((resolve,reject) => {
-    new THREE.GLTFLoader().load(button.dataset.model, resolve, undefined, reject);
+    window.createClassJAvatarLoader().load(button.dataset.model+'?v=20261112-draco', resolve, undefined, reject);
   })]));
   function prepareModel(object) {
     object.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = false; if (o.material.isMeshBasicMaterial) o.material.toneMapped = false; } });
@@ -169,7 +169,7 @@
       currentAction=null;currentAvatar=key;viewer.dataset.currentAvatar=key;setMotion("Idle");paused=reducedMotion;updatePause();mixer.update(0);
       const button=avatarButtons.find(b=>b.dataset.avatar===key), info=descriptions[key];
       avatarButtons.forEach(b=>b.setAttribute("aria-pressed",String(b===button)));
-      const download=document.querySelector(".download"); download.href=button.dataset.model;
+      const download=document.querySelector(".download"); download.href=button.dataset.model+'?v=20261112-draco';
       download.download="classj-"+button.dataset.asset+".glb";
       const image=document.querySelector(".reference-art img");image.src=button.dataset.image;image.alt=info.alt;
       document.querySelector(".character-number").textContent=info.number;

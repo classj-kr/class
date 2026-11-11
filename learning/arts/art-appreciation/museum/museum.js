@@ -898,7 +898,7 @@
     selfAvatar.visible=!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
   }
 
-  function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateArtLights(dt);updateFocus();updateSelfAvatar();avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);}
+  function animate(){requestAnimationFrame(animate);const frameStart=avatarReview?performance.now():0;const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateArtLights(dt);updateFocus();updateSelfAvatar();avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);}
 
   addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
   addEventListener('keyup',e=>{keys[e.code]=false;});

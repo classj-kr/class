@@ -1,0 +1,17 @@
+{
+  "name": "classj-avatar-optimizer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sample": "node optimize.mjs"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "draco3dgltf": "1.5.7",
+    "meshoptimizer": "1.0.1",
+    "sharp": "0.35.5",
+    "three": "0.128.0"
+  }
+}

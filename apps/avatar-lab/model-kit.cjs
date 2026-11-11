@@ -73,7 +73,7 @@ module.exports = function kit(THREE, key) {
     }
     make("Idle",3,a=>({bounce:(1-Math.cos(a))*.003}));
     make("Walk",1.1,a=>({LeftLeg:[Math.sin(a)*.36,0,0],RightLeg:[-Math.sin(a)*.36,0,0],LeftArm:options.holdLeft?[0,0,0]:[-Math.sin(a)*.25,0,0],RightArm:options.holdRight?[0,0,0]:[Math.sin(a)*.25,0,0],Body:[.01,0,Math.sin(a)*.012],Head:[-.01,0,-Math.sin(a)*.012],Rotor:[0,a,0],bounce:.014+(1-Math.cos(a*2))*.009}));
-    make("Wave",2,a=>({RightArm:[.02,0,1.8+Math.sin(a*2)*.18],bounce:(1-Math.cos(a))*.003}));
+    make("Wave",2,a=>({RightArm:[.02,0,(options.waveAngle??1.8)+Math.sin(a*2)*(options.waveAmplitude??.18)],bounce:(1-Math.cos(a))*.003}));
     root.userData={avatarKey:key+".webp",prototype:true,revision:1,authoring:options.authoring||"Individually shaped solid prop, original face artwork, rigid animated limbs"};
     return require("./ground-avatar.cjs")(THREE,{root,clips});
   }

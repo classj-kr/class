@@ -7,7 +7,8 @@ module.exports=function bakeryBowl(T,k,id,parts){
  s.parent.userData.artworkOpaqueRegions=[{cx:320,cy:id==='food-tteokbokki'?292:314,rx:120,ry:101}];
  const plain=o=>{o.userData.skipOriginalPaint=true;return o;};
  function volume(name,outline,center,depth,color){
-  k.volume(name+'Half',outline,center,s.pivot,depth,depth,s.parent,k.solid(name+'Color',color),{art:false,samples:128});
+  k.volume(name+'Half',outline,center,s.pivot,depth,depth,s.parent,k.solid(name+'Color',color),{art:false,samples:id==='food-fish-pastry'?96:128});
+  if(id==='food-fish-pastry')require('./smooth-paired-volume.cjs')(T,k,s.parent,name+'Half',{rings:20});
   const P=[],I=[];for(const suffix of ['Surface','Back']){const o=s.parent.getObjectByName(name+'Half'+suffix),offset=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+offset));s.parent.remove(o);}
   return k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),s.parent);
  }
@@ -21,7 +22,7 @@ module.exports=function bakeryBowl(T,k,id,parts){
   const tail=volume('PastryTailSolid',[[468,214],[514,177],[551,163],[577,171],[585,190],[577,228],[562,267],[564,300],[585,346],[588,367],[570,382],[537,382],[503,372],[466,348]],[530,273],.17,'#dfa45c');
   const fin=volume('PastryDorsalSolid',[[227,121],[253,88],[278,69],[302,63],[333,73],[379,101],[421,126],[437,146],[440,175],[397,153],[349,133],[290,118]],[329,119],.12,'#e5ad66');
   const lower=volume('PastryLowerFinSolid',[[369,395],[414,378],[459,358],[465,389],[445,420],[417,433],[378,440],[348,435]],[410,409],.12,'#d89a51');
-  for(const o of [body,tail,fin,lower])o.userData.artworkExcludedRegions=[{cx:275,cy:414,rx:35,ry:42},{cx:357,cy:414,rx:35,ry:42}];
+  for(const o of [body,tail,fin,lower])o.userData.artworkExcludedRegions=[{cx:275,cy:414,rx:38,ry:45},{cx:357,cy:414,rx:38,ry:45}];
   for(let row=0;row<4;row++)for(let col=0;col<5;col++){
    const x=246+col*39,y=165+row*48,ps=[];for(let j=0;j<=14;j++){const a=-Math.PI/2+j/14*Math.PI;ps.push([x+Math.cos(a)*15,y+Math.sin(a)*23]);}
    backLine('RearPastryScale'+row+'_'+col,body,ps,'#ae7238');
@@ -42,7 +43,7 @@ module.exports=function bakeryBowl(T,k,id,parts){
  }
  if(id==='food-toast'){
   const outline=[[320,63],[387,68],[438,87],[474,113],[495,146],[501,176],[493,202],[477,220],[481,338],[477,386],[463,412],[439,427],[395,438],[244,440],[198,433],[172,419],[158,396],[154,361],[159,220],[143,203],[139,179],[148,146],[172,116],[211,89],[266,70]];
-  s.smoothOutline('ToastBreadSolid',outline,.47,'#b9854b',0,.03);
+  s.smoothOutline('ToastBreadSolid',outline,.47,'#b9854b',0,.06);
   plain(s.smoothOutline('ToastRearCrumbSolid',outline.map(([x,y])=>[320+(x-320)*.88,253+(y-253)*.91]),.026,'#efcf98',-.24,.008));
  }
  if(id==='food-tteokbokki'){

@@ -1,10 +1,10 @@
 "use strict";
 module.exports=function airplaneCostume(T){
- const k=require('./model-kit.cjs')(T,'vehicle-airplane'),sculpt=require('./sculpt-kit.cjs'),shells=[];
- function part(name,pivot){const group=k.group(name,pivot),s=sculpt(T,k,{group,part:{pivot}});group.userData.directSurfaceArtwork=true;group.userData.artworkOcclusion=true;return s;}
+ const k=require('./model-kit.cjs')(T,'vehicle-airplane'),sculpt=require('./sculpt-kit.cjs'),shells=[],tools=[];
+ function part(name,pivot){const group=k.group(name,pivot),s=sculpt(T,k,{group,part:{pivot}});tools.push(s);group.userData.directSurfaceArtwork=true;group.userData.artworkOcclusion=true;return s;}
  function volume(s,name,ps,c,front,back,color,z=0){
   const area=(Math.max(...ps.map(p=>p[0]))-Math.min(...ps.map(p=>p[0])))*(Math.max(...ps.map(p=>p[1]))-Math.min(...ps.map(p=>p[1])));
-  k.volume(name+'Half',ps,c,s.pivot,front,back,s.parent,k.solid(name+'Color',color),{art:false,z,samples:area>50000?96:area>14000?64:48});const P=[],I=[];
+  k.volume(name+'Half',ps,c,s.pivot,front,back,s.parent,k.solid(name+'Color',color),{art:false,z,samples:area>50000?96:area>14000?64:48});require('./smooth-paired-volume.cjs')(T,k,s.parent,name+'Half',{rings:24});const P=[],I=[];
   for(const suffix of ['Surface','Back']){const o=s.parent.getObjectByName(name+'Half'+suffix),n=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,j=>j+n));s.parent.remove(o);}
   const g=k.geometry(P,I),pos=g.attributes.position,norm=g.attributes.normal,buckets=new Map();
   for(let i=0;i<pos.count;i++){const key=[pos.getX(i),pos.getY(i),pos.getZ(i)].map(v=>Math.round(v*1e5)).join(',');if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(i);}
@@ -50,5 +50,6 @@ module.exports=function airplaneCostume(T){
    for(let i=0;i<p.count;i++){const x=p.getX(i)/.005+s.pivot[0],y=s.pivot[1]-p.getY(i)/.005;let d=Infinity;for(let j=0;j<boundary.length-1;j++){const a=boundary[j],b=boundary[j+1],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy)));d=Math.min(d,Math.hypot(x-a.x-t*dx,y-a.y-t*dy));}const t=Math.max(0,Math.min(1,(d-6)/12));c.setW(i,c.getW(i)*t*t*(3-2*t));}
   }
   o.updateMatrix();const g=o.geometry.clone().applyMatrix4(o.matrix),p=g.attributes.position,b=new T.Box3().setFromBufferAttribute(p),c=b.getCenter(new T.Vector3()),f=1+.022/(b.getSize(new T.Vector3()).length()/2),ix=Array.from(g.index.array);for(let i=0;i<p.count;i++)p.setXYZ(i,c.x+(p.getX(i)-c.x)*f,c.y+(p.getY(i)-c.y)*f,c.z+(p.getZ(i)-c.z)*f);for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];g.setIndex(ix);g.computeVertexNormals();const ink=k.mesh(o.name+'InkShell',g,k.solid(o.name+'Ink','#67484b'),s.parent);ink.material.userData.alreadyShaded=true;}
+ require('./finish-air-vehicles.cjs')(T,k,tools,'airplane');
  const result=k.finish({authoring:'Source-shaped airplane hood, swept wings, hollow nacelles, rear tail and short attached wearer'});Object.assign(result.root.userData,{locomotion:'walk',canWave:true});return result;
 };

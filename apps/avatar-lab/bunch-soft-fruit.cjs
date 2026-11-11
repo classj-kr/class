@@ -7,6 +7,7 @@ module.exports=function softFruit(T,k,id,parts){
  const plain=o=>{o.userData.skipOriginalPaint=true;return o;};
  function volume(name,outline,center,front,back,color,z=0,tool=s){
   k.volume(name+'Half',outline,center,tool.pivot,front,back,tool.parent,k.solid(name+'Color',color),{art:false,samples:96,z:z-tool.offset.z});
+  if(['fruit-grape','fruit-mango','fruit-melon','fruit-peach'].includes(id))require('./smooth-paired-volume.cjs')(T,k,tool.parent,name+'Half',{rings:24});
   const P=[],I=[];for(const suffix of ['Surface','Back']){const o=tool.parent.getObjectByName(name+'Half'+suffix),offset=P.length/3;P.push(...o.geometry.attributes.position.array);I.push(...Array.from(o.geometry.index.array,v=>v+offset));tool.parent.remove(o);}
   return k.mesh(name,k.geometry(P,I),k.solid(name+'Color',color),tool.parent);
  }
