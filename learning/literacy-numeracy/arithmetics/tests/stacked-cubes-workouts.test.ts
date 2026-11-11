@@ -64,10 +64,10 @@ test("side view collapses each row to its tallest cube, bottom-aligned", () => {
     [0, 1, 0],
   ];
   const views = computeViews(heights, 3);
-  // row heights: [2, 3, 1] -> bottom-aligned bars in a 3-row grid
+  // 오른쪽 옆에서 본 모습: 앞쪽(r=2, 높이 1), 가운데(r=1, 높이 3), 뒤쪽(r=0, 높이 2) -> [1, 3, 2]
   assert.deepEqual(views.side, [
     [false, true, false],
-    [true, true, false],
+    [false, true, true],
     [true, true, true],
   ]);
 });

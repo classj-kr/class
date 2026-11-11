@@ -120,6 +120,8 @@ export default function GradeSixStackedCubesPage() {
   }
 
   function renderCountProblem(problem: StackProblem, index: number, answerSheet: boolean) {
+    const graded = problem.id in results;
+    const isWrong = graded && !results[problem.id];
     return (
       <article className="stack-problem stack-count-problem" data-testid="stack-problem" key={problem.id}>
         <p><b>{index + 1}</b>쌓기나무의 개수를 구하시오.</p>
@@ -140,6 +142,7 @@ export default function GradeSixStackedCubesPage() {
                 aria-label={`${index + 1}번 답`}
               />}
             <em>개</em>
+            {!answerSheet && isWrong && <span style={{ marginLeft: 8, color: '#dc2626', fontWeight: 700, fontSize: '0.85rem' }}>정답: {problem.total}개</span>}
           </div>
         </div>
       </article>
@@ -148,6 +151,8 @@ export default function GradeSixStackedCubesPage() {
 
   function renderViewProblem(problem: StackProblem, index: number, answerSheet: boolean) {
     const answer = views[problem.id] ?? blankViews(problem.size);
+    const graded = problem.id in results;
+    const isWrong = graded && !results[problem.id];
     return (
       <article className="stack-problem stack-view-problem" data-testid="stack-problem" key={problem.id}>
         <p><b>{index + 1}</b>쌓기나무를 위, 앞, 옆에서 본 모양을 그리시오.</p>
@@ -167,6 +172,23 @@ export default function GradeSixStackedCubesPage() {
             ))}
           </div>
         </div>
+        {!answerSheet && isWrong && (
+          <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', gap: 6, padding: '3px 8px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 6 }}>
+            <span style={{ color: '#dc2626', fontWeight: 700, fontSize: '0.78rem', whiteSpace: 'nowrap' }}>정답:</span>
+            <div className="stack-view-grids" style={{ display: 'inline-flex', gap: 6 }}>
+              {VIEW_FIELDS.map(({ field, label }) => (
+                <StackedCubesViewGrid
+                  key={`ans-${field}`}
+                  size={problem.size}
+                  label={`<${label}>`}
+                  value={problem.views[field]}
+                  readOnly={true}
+                  correct={problem.views[field]}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </article>
     );
   }

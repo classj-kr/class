@@ -95,7 +95,8 @@ function barsToGrid(bars: number[], size: number): boolean[][] {
 export function computeViews(heights: number[][], size: number): ViewGrids {
   const top = heights.map((row) => row.map((height) => height > 0));
   const frontHeights = Array.from({ length: size }, (_, col) => Math.max(...heights.map((row) => row[col])));
-  const sideHeights = heights.map((row) => Math.max(...row));
+  // 오른쪽 옆에서 본 모양: 앞쪽(r = size - 1)이 그림의 왼쪽, 뒤쪽(r = 0)이 그림의 오른쪽
+  const sideHeights = Array.from({ length: size }, (_, i) => Math.max(...heights[size - 1 - i]));
   return { top, front: barsToGrid(frontHeights, size), side: barsToGrid(sideHeights, size) };
 }
 
