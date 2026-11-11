@@ -24,7 +24,7 @@ app.get([museum,museum+'index.html'],(q,r)=>{
  let html=fs.readFileSync(path.join(root,museum,'index.html'),'utf8');
  const controls=`<aside style="position:fixed;bottom:8px;left:12px;z-index:1000;background:#fff;padding:8px;color:#222" id="qa-controls">
  <b>로컬 가상 접속 시험 · ${q.query.testVisitor||'cat'}</b>
- <button data-qa-key="KeyW">앞으로 걷기</button><button data-qa-key="KeyA">왼쪽 걷기</button><button id="qa-loop">왕복 걷기</button><button id="qa-stop">멈추기</button>
+ <button data-qa-key="KeyW">앞으로 걷기</button><button data-qa-key="KeyS">입구로 걷기</button><button data-qa-key="KeyA">왼쪽 걷기</button><button id="qa-loop">왕복 걷기</button><button id="qa-stop">멈추기</button>
  </aside><script>
  let qaKey,qaLoop;function qaStop(){clearInterval(qaLoop);if(qaKey)window.dispatchEvent(new KeyboardEvent('keyup',{code:qaKey}));qaKey=null;}
  document.querySelectorAll('[data-qa-key]').forEach(b=>b.onclick=()=>{qaStop();qaKey=b.dataset.qaKey;window.dispatchEvent(new KeyboardEvent('keydown',{code:qaKey}));});
