@@ -437,16 +437,16 @@
             border-color: var(--gold-dark);
         }
 
-                                        .hub-room-form {
+                                                .hub-room-form {
             position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            background: linear-gradient(90deg, rgba(var(--panel-dark-rgb), 0.98) 0%, rgba(var(--panel-dark-rgb), 0.92) 25%, rgba(var(--panel-darker-rgb), 0.6) 55%, rgba(var(--panel-darker-rgb), 0.25) 100%);
+            gap: 7px;
+            background: linear-gradient(135deg, rgba(var(--panel-dark-rgb), 0.98) 0%, rgba(var(--panel-dark-rgb), 0.92) 40%, rgba(var(--panel-darker-rgb), 0.7) 100%);
             border: 1px solid rgba(var(--panel-dark-rgb), 0.98);
-            border-radius: 999px;
-            padding: 2px 3px 2px 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            border-radius: 10px;
+            padding: 3px 5px 3px 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
             font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
         }
 
@@ -462,95 +462,110 @@
             line-height: 1;
             pointer-events: none;
             user-select: none;
-            perspective: 120px;
+            perspective: 140px;
         }
 
         .hub-room-door-icon {
             display: block;
-            width: 17px;
-            height: 17px;
+            width: 26px;
+            height: 38px;
             overflow: visible;
         }
 
         /* 문짝 3D 회전 애니메이션 */
         .hub-door-leaf {
-            transform-origin: 6px 16px;
-            transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: 3.5px 20px;
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* 방 안쪽 불빛 트랜지션 */
         .hub-door-glow {
-            opacity: 0.15;
-            transition: opacity 0.32s ease;
+            opacity: 0.12;
+            transition: opacity 0.32s ease, filter 0.32s ease;
         }
 
         /* Enter 버튼 호버 또는 포커스 시 문이 활짝 열림 */
         .hub-room-form:has(.hub-room-button:hover) .hub-door-leaf,
         .hub-room-form:has(.hub-room-button:focus-visible) .hub-door-leaf,
         .hub-room-door-icon-wrap.door-open .hub-door-leaf {
-            transform: perspective(120px) rotateY(-62deg);
+            transform: perspective(140px) rotateY(-68deg);
         }
 
         .hub-room-form:has(.hub-room-button:hover) .hub-door-glow,
         .hub-room-form:has(.hub-room-button:focus-visible) .hub-door-glow,
         .hub-room-door-icon-wrap.door-open .hub-door-glow {
             opacity: 1;
-            filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.9));
+            filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.95));
+        }
+
+        /* 우측 2단 스택 (위: 입력창, 아래: Enter 버튼) */
+        .hub-room-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            justify-content: center;
+            width: 58px;
         }
 
         .hub-room-input-wrap {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            height: 18px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             border-radius: 999px;
-            padding: 1px 3px;
+            padding: 0 4px;
             transition: border-color 0.15s ease, background 0.15s ease;
+            box-sizing: border-box;
         }
 
         .hub-room-input-wrap:focus-within {
             border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.65);
         }
 
         .hub-room-input {
-            width: 44px;
-            padding: 1px 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
             background: transparent;
             border: none;
             outline: none;
             color: #ffffff;
-            font-size: 0.8rem;
+            font-size: 0.74rem;
             font-weight: 600;
             letter-spacing: 0.04em;
             text-align: center;
             font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            box-sizing: border-box;
         }
 
         .hub-room-input::placeholder {
-            color: rgba(255, 255, 255, 0.38);
+            color: rgba(255, 255, 255, 0.4);
             font-weight: 400;
             letter-spacing: 0;
-            font-size: 0.74rem;
+            font-size: 0.68rem;
         }
 
         .hub-room-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 2px 8px;
-            min-height: 22px;
+            width: 100%;
+            height: 18px;
+            padding: 0;
             background: linear-gradient(135deg, rgba(var(--panel-dark-rgb), 1), var(--gold-dark));
             border: 1px solid var(--gold-dark);
             border-radius: 999px;
             color: #fff8e8;
-            font-size: 0.72rem;
-            font-weight: 600;
+            font-size: 0.7rem;
+            font-weight: 700;
             letter-spacing: 0.02em;
             cursor: pointer;
             font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             transition: all 0.15s ease;
-            line-height: 1.2;
+            line-height: 1;
+            box-sizing: border-box;
         }
 
         .hub-room-button:hover,
@@ -568,7 +583,7 @@
         .hub-room-status {
             position: absolute;
             top: calc(100% + 5px);
-            right: 4px;
+            right: 0;
             font-size: 0.74rem;
             color: #fca5a5;
             background: rgba(15, 23, 42, 0.96);
@@ -1212,12 +1227,12 @@
             <h1 class="learning-hub-title">기초학력</h1>
             <div class="hub-title-link">
                 <form id="hubRoomForm" class="hub-room-form" action="javascript:void(0);" novalidate>
-                    <span id="hubRoomDoorWrap" class="hub-room-door-icon-wrap"><svg class="hub-room-door-icon" viewBox="0 0 32 32" aria-hidden="true">
+                    <span id="hubRoomDoorWrap" class="hub-room-door-icon-wrap"><svg class="hub-room-door-icon" viewBox="0 0 28 40" aria-hidden="true">
   <defs>
     <linearGradient id="doorFrameGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3e2718"/>
-      <stop offset="50%" stop-color="#7a4f2b"/>
-      <stop offset="100%" stop-color="#301c10"/>
+      <stop offset="0%" stop-color="#341e12"/>
+      <stop offset="50%" stop-color="#6e4424"/>
+      <stop offset="100%" stop-color="#2a170d"/>
     </linearGradient>
     <linearGradient id="doorGlowGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#fffbeb"/>
@@ -1225,9 +1240,9 @@
       <stop offset="100%" stop-color="#d97706"/>
     </linearGradient>
     <linearGradient id="doorWoodGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7c431d"/>
-      <stop offset="50%" stop-color="#9a572a"/>
-      <stop offset="100%" stop-color="#5a2e12"/>
+      <stop offset="0%" stop-color="#733c19"/>
+      <stop offset="50%" stop-color="#935127"/>
+      <stop offset="100%" stop-color="#51270e"/>
     </linearGradient>
     <radialGradient id="doorKnobGrad" cx="35%" cy="35%" r="65%">
       <stop offset="0%" stop-color="#fff8db"/>
@@ -1235,28 +1250,30 @@
       <stop offset="100%" stop-color="#78350f"/>
     </radialGradient>
   </defs>
-  <!-- 문틀 -->
-  <rect x="3" y="2" width="26" height="28" rx="1.5" fill="url(#doorFrameGrad)" stroke="#1a0f08" stroke-width="0.8"/>
-  <rect x="5.5" y="4.5" width="21" height="25" fill="#180e07"/>
-  <!-- 방 안쪽 따뜻한 불빛 (문 열릴 때 환하게 빛남) -->
-  <rect class="hub-door-glow" x="6" y="5" width="20" height="24" fill="url(#doorGlowGrad)"/>
-  <!-- 문짝 본체 (3D 회전으로 열림) -->
+  <!-- 외곽 문틀 -->
+  <rect x="1" y="1" width="26" height="38" rx="2" fill="url(#doorFrameGrad)" stroke="#1a0d07" stroke-width="0.8"/>
+  <rect x="3.5" y="3.5" width="21" height="33" fill="#140b05"/>
+  <!-- 안쪽 방의 따뜻한 조명 불빛 (문 열릴 때 환하게 비침) -->
+  <rect class="hub-door-glow" x="3.5" y="3.5" width="21" height="33" fill="url(#doorGlowGrad)"/>
+  <!-- 3D 회전하는 원목 문짝 본체 -->
   <g class="hub-door-leaf">
-    <rect x="6" y="5" width="20" height="24" rx="0.5" fill="url(#doorWoodGrad)" stroke="#2b1508" stroke-width="0.6"/>
+    <rect x="3.5" y="3.5" width="21" height="33" rx="0.5" fill="url(#doorWoodGrad)" stroke="#241005" stroke-width="0.6"/>
     <!-- 상단 패널 몰딩 -->
-    <rect x="8" y="7" width="16" height="8.5" rx="0.5" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
-    <rect x="9" y="8" width="14" height="6.5" rx="0.5" fill="#874720"/>
+    <rect x="5.5" y="6" width="17" height="12" rx="0.5" fill="#461f0a" stroke="#2e1305" stroke-width="0.5"/>
+    <rect x="6.5" y="7" width="15" height="10" rx="0.5" fill="#7d3f18"/>
     <!-- 하단 패널 몰딩 -->
-    <rect x="8" y="17.5" width="16" height="9.5" rx="0.5" fill="#4d240d" stroke="#361706" stroke-width="0.4"/>
-    <rect x="9" y="18.5" width="14" height="7.5" rx="0.5" fill="#874720"/>
+    <rect x="5.5" y="21" width="17" height="13" rx="0.5" fill="#461f0a" stroke="#2e1305" stroke-width="0.5"/>
+    <rect x="6.5" y="22" width="15" height="11" rx="0.5" fill="#7d3f18"/>
     <!-- 황동 문고리 손잡이 -->
-    <circle cx="22" cy="17" r="1.5" fill="url(#doorKnobGrad)" stroke="#78350f" stroke-width="0.3"/>
+    <circle cx="21" cy="22" r="1.8" fill="url(#doorKnobGrad)" stroke="#6b2f0a" stroke-width="0.4"/>
   </g>
 </svg></span>
-                    <div class="hub-room-input-wrap">
-                        <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4 digits" aria-label="방 번호 4자리">
+                    <div class="hub-room-stack">
+                        <div class="hub-room-input-wrap">
+                            <input id="hubRoomCode" name="code" class="hub-room-input" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" placeholder="4 digits" aria-label="방 번호 4자리">
+                        </div>
+                        <button id="hubRoomSubmit" class="hub-room-button" type="submit" aria-label="Enter">Enter</button>
                     </div>
-                    <button id="hubRoomSubmit" class="hub-room-button" type="submit" aria-label="Enter">Enter</button>
                     <span id="hubRoomStatus" class="hub-room-status" role="status" aria-live="polite"></span>
                     <a href="/room/" style="display:none;" data-requires-player="true" data-always-open="true" tabindex="-1" aria-hidden="true">방 번호</a>
                 </form>
