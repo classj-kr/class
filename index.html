@@ -1211,7 +1211,7 @@
         <div class="hub-title-row">
             <h1 class="learning-hub-title">기초학력</h1>
             <div class="hub-title-link">
-                <form id="hubRoomForm" class="hub-room-form" action="/room/" method="GET" novalidate>
+                <form id="hubRoomForm" class="hub-room-form" action="javascript:void(0);" novalidate>
                     <span id="hubRoomDoorWrap" class="hub-room-door-icon-wrap"><svg class="hub-room-door-icon" viewBox="0 0 32 32" aria-hidden="true">
   <defs>
     <linearGradient id="doorFrameGrad" x1="0" y1="0" x2="1" y2="0">
@@ -2519,14 +2519,9 @@
                 event.preventDefault();
                 const code = input ? input.value.trim() : '';
 
-                if (!code) {
-                    location.href = '/room/';
-                    return;
-                }
-
-                if (!codePattern.test(code)) {
+                if (!code || !codePattern.test(code)) {
                     showStatus('방 번호 4자리를 입력해 주세요.');
-                    input.focus();
+                    if (input) input.focus();
                     return;
                 }
 
