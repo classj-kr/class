@@ -1,8 +1,29 @@
-# Local avatar compression experiment
+# Avatar compression and release verification
 
-This is an isolated four-avatar trial. It does not replace the 169 authoring GLBs,
-change the avatar catalog, publish assets, or connect compressed files to the live museum.
-The strict target is **less than 500,000 bytes per GLB**, including texture and animations.
+The 2026-11-12 release contains 169 animated GLBs totaling **62,473,912 bytes**.
+Every model is below **500,000 bytes**, including WebP textures and animation data;
+the largest is 497,676 bytes. `apps/avatar-lab/compression-report.json` records the
+source and released hashes. The catalog, six-avatar studio, multi-view review and
+opt-in museum preview use the shared local Draco decoder. Normal class-presence
+avatars are not replaced by this release.
+
+All 169 models were decoded in the browser, compared at four directions and four
+phases of every animation clip, and inspected in 29 source/compressed contact
+sheets. Sixteen flagged models were reviewed again at larger size. Animation
+channels, targets, interpolation and keyframe values round-trip exactly. Small
+texture resampling and fine-edge differences remain, most visibly in peacock
+feathers at close zoom. This checks compression fidelity against the existing 3D
+masters; it does not certify that every 3D design exactly reproduces its 2D art.
+
+Production GLBs are compressed. Full-size authoring masters remain in the original
+local working tree, separate from the release worktree. Do not run the optimizer
+on released GLBs and call them authoring masters. Local comparison evidence lives
+under `outputs/qa/avatar-lab/compression-20261112/` and is intentionally not deployed.
+`collection-build.mjs` builds the full set from those masters; `prepare-release.mjs`
+stages a separate `outputs/avatar-release` worktree; `verify-release.mjs` checks
+hashes, all animation channels, size limits, texture formats and artwork references.
+
+The sections below record the earlier four-avatar experiment and museum load test.
 
 ## Reproduce
 
