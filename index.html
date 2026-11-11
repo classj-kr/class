@@ -437,17 +437,17 @@
             border-color: var(--gold-dark);
         }
 
-                .hub-room-form {
+                        .hub-room-form {
             position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 7px;
+            gap: 4px;
             background: linear-gradient(90deg, rgba(var(--panel-dark-rgb), 0.98) 0%, rgba(var(--panel-dark-rgb), 0.92) 25%, rgba(var(--panel-darker-rgb), 0.6) 55%, rgba(var(--panel-darker-rgb), 0.25) 100%);
             border: 1px solid rgba(var(--panel-dark-rgb), 0.98);
             border-radius: 999px;
-            padding: 3px 4px 3px 8px;
+            padding: 2px 3px 2px 6px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-            font-family: inherit;
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
         }
 
         .hub-room-form:focus-within {
@@ -460,77 +460,79 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            padding: 1px 2px;
+            padding: 1px;
             border-radius: 4px;
             cursor: pointer;
-            transition: transform 0.18s ease, filter 0.18s ease;
+            transition: transform 0.15s ease, filter 0.15s ease;
             line-height: 1;
         }
 
         .hub-room-door-link:hover,
         .hub-room-door-link:focus-visible {
-            transform: scale(1.12);
-            filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.75));
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.8));
         }
 
         .hub-room-door-icon {
             display: block;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 2px;
         }
 
         .hub-room-input-wrap {
             display: inline-flex;
             align-items: center;
-            background: rgba(0, 0, 0, 0.38);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 999px;
-            padding: 2px 4px;
+            padding: 1px 3px;
             transition: border-color 0.15s ease, background 0.15s ease;
         }
 
         .hub-room-input-wrap:focus-within {
             border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.6);
         }
 
         .hub-room-input {
-            width: 58px;
+            width: 44px;
             padding: 1px 0;
             background: transparent;
             border: none;
             outline: none;
             color: #ffffff;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 0.04em;
             text-align: center;
-            font-family: inherit;
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         .hub-room-input::placeholder {
-            color: rgba(255, 255, 255, 0.42);
+            color: rgba(255, 255, 255, 0.38);
             font-weight: 400;
             letter-spacing: 0;
+            font-size: 0.74rem;
         }
 
         .hub-room-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 3px 12px;
+            padding: 2px 8px;
+            min-height: 22px;
             background: linear-gradient(135deg, rgba(var(--panel-dark-rgb), 1), var(--gold-dark));
             border: 1px solid var(--gold-dark);
             border-radius: 999px;
             color: #fff8e8;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
             cursor: pointer;
-            font-family: inherit;
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             transition: all 0.15s ease;
-            line-height: 1.25;
+            line-height: 1.2;
         }
 
         .hub-room-button:hover,
@@ -548,7 +550,7 @@
         .hub-room-status {
             position: absolute;
             top: calc(100% + 5px);
-            right: 6px;
+            right: 4px;
             font-size: 0.74rem;
             color: #fca5a5;
             background: rgba(15, 23, 42, 0.96);
@@ -559,6 +561,7 @@
             white-space: nowrap;
             display: none;
             z-index: 100;
+            font-family: Pretendard, -apple-system, "Noto Sans KR", sans-serif;
         }
 
         .hub-room-status.visible {
