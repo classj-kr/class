@@ -3,7 +3,7 @@ const test = require("node:test"),
 const root = "../learning/literacy-numeracy/math-tools/";
 const M = require(root + "assets/math.js"),
   N = require(root + "number-line/core.js"),
-  NapierBones = require(root + "napier-bones/core.js"),
+  CuisenaireRods = require(root + "cuisenaire-rods/core.js"),
   K = require(root + "clock/core.js"),
   G = require(root + "geometry-tools/core.js"),
   P = require(root + "pattern-blocks/core.js"),
@@ -248,25 +248,19 @@ test("malformed saved state cannot introduce invalid values into a manipulative"
 });
 
 
-test("napier bones supports single-digit and custom multi-digit numbers for common multiples and LCM", () => {
-  const s = NapierBones.validate(NapierBones.initial);
-  assert.deepEqual(s.numbers, [4, 6]);
-  assert.equal(NapierBones.lcmAll(s.numbers), 12);
+test("cuisenaire rods aligns rod trains to find common multiples and LCM for 1-digit and custom numbers", () => {
+  const s = CuisenaireRods.validate(CuisenaireRods.initial);
+  assert.deepEqual(CuisenaireRods.alignedMultiples(s.rows), [12]);
 
-  NapierBones.applyPreset(s, "22-33");
-  const validated = NapierBones.validate(s);
-  assert.deepEqual(validated.numbers, [22, 33]);
-  const info = NapierBones.commonMultiplesInfo(validated.numbers, validated.rows);
+  CuisenaireRods.applyPreset(s, "22-33");
+  assert.deepEqual(s.rows.map((r) => r.unit), [22, 33]);
+  assert.deepEqual(CuisenaireRods.alignedMultiples(s.rows), []);
+
+  // Step shortest row or auto-match to LCM (66)
+  CuisenaireRods.matchToNextCommonMultiple(s);
+  assert.deepEqual(s.rows.map((r) => [r.unit, r.count]), [[22, 3], [33, 2]]);
+  const info = CuisenaireRods.analysis(s);
   assert.equal(info.lcm, 66);
-  assert.equal(info.gcd, 11);
-  assert.deepEqual(info.commonInTable, [66, 132, 198]);
-
-  const row22x3 = NapierBones.boneRow(22, 3);
-  assert.equal(row22x3.value, 66);
-  assert.deepEqual(row22x3.digits, [2, 2]);
-  assert.deepEqual(row22x3.cells.map((c) => [c.tens, c.ones]), [[0, 6], [0, 6]]);
-
-  NapierBones.addNumber(s, "44");
-  assert.deepEqual(s.numbers, [22, 33, 44]);
-  assert.equal(NapierBones.lcmAll(s.numbers), 132);
+  assert.equal(info.allEqual, true);
+  assert.deepEqual(info.matches, [66]);
 });
