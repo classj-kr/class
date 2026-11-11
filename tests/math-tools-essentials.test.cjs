@@ -3,6 +3,7 @@ const test = require("node:test"),
 const root = "../learning/literacy-numeracy/math-tools/";
 const M = require(root + "assets/math.js"),
   N = require(root + "number-line/core.js"),
+  NapierBones = require(root + "napier-bones/core.js"),
   K = require(root + "clock/core.js"),
   G = require(root + "geometry-tools/core.js"),
   P = require(root + "pattern-blocks/core.js"),
@@ -244,4 +245,28 @@ test("malformed saved state cannot introduce invalid values into a manipulative"
       },
     }),
   );
+});
+
+
+test("napier bones supports single-digit and custom multi-digit numbers for common multiples and LCM", () => {
+  const s = NapierBones.validate(NapierBones.initial);
+  assert.deepEqual(s.numbers, [4, 6]);
+  assert.equal(NapierBones.lcmAll(s.numbers), 12);
+
+  NapierBones.applyPreset(s, "22-33");
+  const validated = NapierBones.validate(s);
+  assert.deepEqual(validated.numbers, [22, 33]);
+  const info = NapierBones.commonMultiplesInfo(validated.numbers, validated.rows);
+  assert.equal(info.lcm, 66);
+  assert.equal(info.gcd, 11);
+  assert.deepEqual(info.commonInTable, [66, 132, 198]);
+
+  const row22x3 = NapierBones.boneRow(22, 3);
+  assert.equal(row22x3.value, 66);
+  assert.deepEqual(row22x3.digits, [2, 2]);
+  assert.deepEqual(row22x3.cells.map((c) => [c.tens, c.ones]), [[0, 6], [0, 6]]);
+
+  NapierBones.addNumber(s, "44");
+  assert.deepEqual(s.numbers, [22, 33, 44]);
+  assert.equal(NapierBones.lcmAll(s.numbers), 132);
 });
