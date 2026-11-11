@@ -45,7 +45,7 @@ test("learning menus use the four top-level domains", () => {
   const catalog = read("learning/literacy-numeracy/math-tools/index.html");
   assert.doesNotMatch(catalog, /class="(?:intro|topic|tool-action)"|교구 열기/);
   assert.match(catalog, /<h2 id="blocks-title">자연수·소수 모형<\/h2>/);
-  for (const tool of ["number-models", "fraction-board", "number-line", "napier-bones", "clock", "geometry-tools", "measure-lab", "geoboard", "pattern-blocks", "area-lab", "stacking-cubes", "solid-nets", "data-graphs", "probability", "graph-studio"]) {
+  for (const tool of ["number-models", "fraction-board", "number-line", "cuisenaire-rods", "clock", "geometry-tools", "measure-lab", "geoboard", "pattern-blocks", "area-lab", "stacking-cubes", "solid-nets", "data-graphs", "probability", "graph-studio"]) {
     const href = `learning/literacy-numeracy/math-tools/${tool}/`;
     assert.ok(homeContent.individualMenuPaths.has(`/${href.slice(0, -1)}`), `${tool} has its own canonical access key`);
     assert.ok(catalog.includes(`href="/${href}"`), `${tool} is listed in the catalog`);
