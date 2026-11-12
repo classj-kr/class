@@ -3,6 +3,16 @@
 // The signed ticket, never a movement packet, supplies the roster avatar and class.
 function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send }) {
   const classes = new Map();
+  const dirty = new Set();
+  let broadcastTimer;
+  function flush() {
+    clearTimeout(broadcastTimer);broadcastTimer=null;
+    const keys=[...dirty];dirty.clear();keys.forEach(broadcast);
+  }
+  function queueBroadcast(key) {
+    dirty.add(key);
+    if(!broadcastTimer){broadcastTimer=setTimeout(flush,100);broadcastTimer.unref?.();}
+  }
   const rooms = new Set(["portrait", "nature", "story", "shape", "space"]);
   function position(x, z) {
     return {
@@ -11,6 +21,7 @@ function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send }) {
     };
   }
   function broadcast(key) {
+    dirty.delete(key);
     const clients = classes.get(key);
     if (!clients) return;
     const visitors = [...clients.values()].map(s => {
@@ -67,14 +78,17 @@ function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send }) {
       const room = rooms.has(message.room) ? message.room : visitor.room;
       const next = position(message.x, message.z);
       const moved = Math.hypot(next.x - visitor.x, next.z - visitor.z) > .003;
-      visitor.moving = visitor.room === room && moved && message.moving === true;
+      const moving = visitor.room === room && moved && message.moving === true;
+      const yaw = Number.isFinite(message.yaw) ? Math.max(-6.4, Math.min(6.4, message.yaw)) : visitor.yaw;
+      const changed = moved || room !== visitor.room || moving !== visitor.moving || Math.abs(yaw-visitor.yaw)>.003;
+      visitor.moving = moving;
       Object.assign(visitor, next, { room });
-      if (Number.isFinite(message.yaw)) visitor.yaw = Math.max(-6.4, Math.min(6.4, message.yaw));
-      broadcast(visitor.schoolKey);
+      visitor.yaw = yaw;
+      if(changed)queueBroadcast(visitor.schoolKey);
       return true;
     }
     return false;
   }
-  return { handle, leave };
+  return { handle, leave, flush };
 }
 module.exports = { createMuseumPresence };

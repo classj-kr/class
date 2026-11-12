@@ -157,8 +157,9 @@
   renderer.physicallyCorrectLights = true;
 
   const textureLoader = new THREE.TextureLoader();
-  const gltfLoader = new THREE.GLTFLoader();
   const textureCache = new Map();
+  const framePolicy=MuseumPerformance.createFramePolicy(),resolutionBudget=MuseumPerformance.createResolutionBudget();
+  let resolutionScale=1,lastLoopTime=performance.now(),lastPresence=null;
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const centerPointer = new THREE.Vector2(0,0);
@@ -178,6 +179,7 @@
   let presenceSocket = null, presenceTimer = 0, localPresenceId = null, presenceScope = 'class';
   const tmpDirection = new THREE.Vector3();
   const tmpRight = new THREE.Vector3();
+  const wish = new THREE.Vector3();
   const velocity = new THREE.Vector3();
   let gallery = null;
   let activeRoom = 0;
@@ -251,7 +253,7 @@
           if(!localPresenceId&&Number.isFinite(msg.position?.x)&&Number.isFinite(msg.position?.z)) {
             spawnX=msg.position.x;playerPosition.set(spawnX,.002,msg.position.z);updateSelfAvatar();
           }
-          localPresenceId=msg.userId;void selfActor.assign(msg.avatarKey);presenceTimer=0;sendPresence();
+          localPresenceId=msg.userId;void selfActor.assign(msg.avatarKey);presenceTimer=0;lastPresence=null;sendPresence();
         }
         if(msg.type==='MUSEUM_STATE'){
           presenceScope=msg.scope||presenceScope;updatePeople(msg.visitors);
@@ -268,8 +270,9 @@
   }
   function sendPresence(){
     if(!presenceSocket||presenceSocket.readyState!==WebSocket.OPEN||!localPresenceId)return;
-    const now=performance.now();if(now-presenceTimer<100)return;presenceTimer=now;
-    presenceSocket.send(JSON.stringify({type:'MUSEUM_MOVE',room:rooms[activeRoom].id,x:selfAvatar.position.x,z:selfAvatar.position.z,yaw:avatarHeading,moving:actualSpeed>.03}));
+    const now=performance.now(),state={room:rooms[activeRoom].id,x:selfAvatar.position.x,z:selfAvatar.position.z,yaw:avatarHeading,moving:actualSpeed>.03};
+    if(now-presenceTimer<100||(!MuseumPerformance.presenceChanged(lastPresence,state)&&now-presenceTimer<3000))return;
+    presenceTimer=now;lastPresence=state;presenceSocket.send(JSON.stringify({type:'MUSEUM_MOVE',...state}));
   }
   addEventListener('pagehide',()=>{closing=true;clearTimeout(reconnectTimer);presenceSocket?.close();});
   addEventListener('pageshow',event=>{if(event.persisted&&!avatarReview){closing=false;connectClassPresence();}});
@@ -336,9 +339,10 @@
     return {light,anchor:null,level:0};
   });
   const artLightFocus=new THREE.Vector3();
+  let lightSelectionAt=-Infinity,wantedArtLights=[];
 
   function resetArtLights() {
-    artLightAnchors.length=0;
+    artLightAnchors.length=0;lightSelectionAt=-Infinity;wantedArtLights=[];
     for(const slot of artLightPool){slot.anchor=null;slot.level=0;slot.light.intensity=0;}
   }
 
@@ -351,10 +355,12 @@
 
   function updateArtLights(dt) {
     // 시선 앞쪽 지점에서 가까운 작품에 조명을 몰아주고, 교체는 서서히 페이드한다.
-    artLightFocus.set(camera.position.x-Math.sin(yaw)*2.5,0,camera.position.z-Math.cos(yaw)*2.5);
-    const wanted=artLightAnchors
+    const now=performance.now();
+    if(now-lightSelectionAt>=150){lightSelectionAt=now;artLightFocus.set(camera.position.x-Math.sin(yaw)*2.5,0,camera.position.z-Math.cos(yaw)*2.5);
+    wantedArtLights=artLightAnchors
       .map(anchor=>({anchor,dist:Math.hypot(anchor.target.x-artLightFocus.x,anchor.target.z-artLightFocus.z)}))
-      .sort((a,b)=>a.dist-b.dist).slice(0,ART_LIGHT_POOL_SIZE).map(item=>item.anchor);
+      .sort((a,b)=>a.dist-b.dist).slice(0,ART_LIGHT_POOL_SIZE).map(item=>item.anchor);}
+    const wanted=wantedArtLights;
     const step=Math.min(1,dt*3);
     for(const slot of artLightPool){
       if(!slot.anchor)continue;
@@ -710,7 +716,7 @@
     const grad=g.createLinearGradient(0,0,512,640);grad.addColorStop(0,'#3b3023');grad.addColorStop(1,'#17130f');g.fillStyle=grad;g.fillRect(0,0,512,640);
     g.strokeStyle='#a58140';g.lineWidth=3;g.strokeRect(28,28,456,584);g.fillStyle='#d4bc83';g.textAlign='center';g.font='700 28px serif';
     const words=title.split(' ');words.forEach((x,i)=>g.fillText(x,256,286+i*40));g.font='18px sans-serif';g.fillStyle='#8c795a';g.fillText('이미지를 준비하고 있어요',256,520);
-    const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return t;
+    const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.userData={...t.userData,museumPlaceholder:true};return t;
   }
 
   function fitArtworkPlane(texture,plane,targetAspect) {
@@ -728,14 +734,14 @@
 
   function loadArtTexture(work,material,plane,aspect,version,roomGallery,transparent=false) {
     const cached=textureCache.get(work.image);
-    if(cached){if(isCurrentRoomLoad(version,roomGallery)){fitArtworkPlane(cached,plane,aspect);material.map=cached;material.needsUpdate=true;markLoaded(version,roomGallery);}return;}
+    if(cached){if(isCurrentRoomLoad(version,roomGallery)){fitArtworkPlane(cached,plane,aspect);MuseumPerformance.replaceArtwork(material,cached);markLoaded(version,roomGallery);}return;}
     textureLoader.load(work.image,(t)=>{
+      if(!isCurrentRoomLoad(version,roomGallery)){t.dispose();return;}
       textureCache.set(work.image,t);
-      if(!isCurrentRoomLoad(version,roomGallery))return;
-      fitArtworkPlane(t,plane,aspect);material.map=t;material.needsUpdate=true;markLoaded(version,roomGallery);
+      fitArtworkPlane(t,plane,aspect);MuseumPerformance.replaceArtwork(material,t);markLoaded(version,roomGallery);
     },undefined,()=>{
       if(!isCurrentRoomLoad(version,roomGallery))return;
-      material.map=placeholderTexture(work.title);material.needsUpdate=true;markLoaded(version,roomGallery);
+      MuseumPerformance.replaceArtwork(material,placeholderTexture(work.title));markLoaded(version,roomGallery);
     });
     material.transparent=transparent;
   }
@@ -804,11 +810,17 @@
     return {width,length,height};
   }
 
+  const frameMaterialPool=new Map();
   function frameMaterials(index,type) {
-    const palettes=[0x6b421f,0x8a5b28,0x3b2718,0x75502d];
-    if(type==='mural')return new THREE.MeshStandardMaterial({color:0x4d4032,roughness:.75,metalness:.08});
-    return new THREE.MeshStandardMaterial({color:palettes[index%palettes.length],roughness:.32,metalness:.28});
+    const key=type==='mural'?'mural':index%4;
+    if(!frameMaterialPool.has(key)){
+      const palettes=[0x6b421f,0x8a5b28,0x3b2718,0x75502d];
+      const material=new THREE.MeshStandardMaterial(type==='mural'?{color:0x4d4032,roughness:.75,metalness:.08}:{color:palettes[index%4],roughness:.32,metalness:.28});
+      frameMaterialPool.set(key,material);sharedMaterials.add(material);
+    }
+    return frameMaterialPool.get(key);
   }
+  const innerFrameMaterial=new THREE.MeshStandardMaterial({color:0xc3a875,roughness:.35,metalness:.35});sharedMaterials.add(innerFrameMaterial);
 
   function addSpotlight(x,y,z,side,glow) {
     artLightAnchors.push({position:new THREE.Vector3(x-side*.85,Math.min(5.7,y+1.7),z+.05),target:new THREE.Vector3(x,3.05,z),color:0xffd29a,intensity:62,distance:8.2,angle:Math.PI*.18,penumbra:.48,decay:1.8,glow,glowOpacity:ART_GLOW_OPACITY});
@@ -824,7 +836,7 @@
     mesh([display.w+border*2,border,depth],mat,[0,(display.h+border)/2,.08],group);mesh([display.w+border*2,border,depth],mat,[0,-(display.h+border)/2,.08],group);
     mesh([border,display.h,depth],mat,[-(display.w+border)/2,0,.08],group);mesh([border,display.h,depth],mat,[(display.w+border)/2,0,.08],group);
     if(work.type!=='mural'){
-      const inner=new THREE.MeshStandardMaterial({color:0xc3a875,roughness:.35,metalness:.35});
+      const inner=innerFrameMaterial;
       const b=border*.23;mesh([display.w+b*2,b,.08],inner,[0,(display.h+b)/2,.2],group);mesh([display.w+b*2,b,.08],inner,[0,-(display.h+b)/2,.2],group);mesh([b,display.h,.08],inner,[-(display.w+b)/2,0,.2],group);mesh([b,display.h,.08],inner,[(display.w+b)/2,0,.2],group);
     }
     // 작품 이미지는 조명의 입사각 때문에 어두워지지 않도록 자체 색으로 표시한다.
@@ -843,11 +855,13 @@
     activeRoom=index;clickable.length=0;sculptureObstacles.length=0;nearest=null;prompt.hidden=true;loadDone=0;loadTotal=rooms[index].works.length;
     loading.classList.remove('done');loadingBar.style.width='0';loadingText.textContent='0%';
     finaleSurface=null;resetArtLights();
-    if(gallery){scene.remove(gallery);gallery.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material&&!Array.isArray(o.material)&&!sharedMaterials.has(o.material)){if(o.material.map?.userData?.finaleTexture)o.material.map.dispose();o.material.dispose();}});}
+    if(gallery){scene.remove(gallery);MuseumPerformance.disposeRoom(gallery,sharedMaterials,new Set(textureCache.values()));}
+    MuseumPerformance.retainRoomTextures(textureCache,rooms[index].works.map(w=>w.image));
     gallery=new THREE.Group();scene.add(gallery);const roomGallery=gallery,shell=buildShell(rooms[index]);
     addFinaleWall(rooms[index],shell);
     void loadMuseumCompletions(rooms[index]);
     rooms[index].works.forEach((w,i)=>addFramedWork(w,i,i%2===0?-1:1,1-Math.floor(i/2)*5.15,shell.width,version,roomGallery));
+    MuseumPerformance.batchStaticMeshes(THREE,gallery,clickable);
     playerPosition.set(spawnX,.002,3.75);camera.position.set(spawnX,1.68,6.35);yaw=0;pitch=-.15;avatarHeading=Math.PI;actualSpeed=0;velocity.set(0,0,0);camera.rotation.set(pitch,yaw,0);
     document.getElementById('room-kicker').textContent='GALLERY '+rooms[index].number;
     document.getElementById('room-title').textContent=rooms[index].title;
@@ -916,14 +930,14 @@
     modal.showModal();keysClear();
   }
 
-  function keysClear(){Object.keys(keys).forEach(k=>keys[k]=false);velocity.set(0,0,0);}
+  function keysClear(){Object.keys(keys).forEach(k=>keys[k]=false);velocity.set(0,0,0);actualSpeed=0;}
 
   function updateMovement(dt){
     actualSpeed=0;
     if(modal.open||finaleModal.open)return;
     let f=(keys.KeyW||keys.ArrowUp?1:0)-(keys.KeyS||keys.ArrowDown?1:0),s=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0);
     tmpDirection.set(-Math.sin(yaw),0,-Math.cos(yaw));tmpRight.set(Math.cos(yaw),0,-Math.sin(yaw));
-    const wish=new THREE.Vector3().addScaledVector(tmpDirection,f).addScaledVector(tmpRight,s);if(wish.lengthSq()>0)wish.normalize();
+    wish.set(0,0,0).addScaledVector(tmpDirection,f).addScaledVector(tmpRight,s);if(wish.lengthSq()>0)wish.normalize();
     const accel=28,maxSpeed=(keys.ShiftLeft||keys.ShiftRight)?7.5:4.8;velocity.addScaledVector(wish,accel*dt);velocity.multiplyScalar(Math.pow(.03,dt));if(velocity.length()>maxSpeed)velocity.setLength(maxSpeed);
     const oldX=playerPosition.x,oldZ=playerPosition.z;playerPosition.addScaledVector(velocity,dt);const half=4.85;
     playerPosition.x=clamp(playerPosition.x,-half,half);playerPosition.z=clamp(playerPosition.z,GALLERY_END+1.4,6.5);
@@ -958,17 +972,29 @@
     selfAvatar.visible=follow.distance>.85&&!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
   }
 
-  function animate(){requestAnimationFrame(animate);const frameStart=avatarReview?performance.now():0;const dt=Math.min(clock.getDelta(),.04);updateMovement(dt);updateSelfAvatar();updateArtLights(dt);updateFocus();updateRemoteAvatars(dt);assignedAvatars.update(dt);avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);}
+  function animate(){
+    requestAnimationFrame(animate);
+    const now=performance.now(),gap=now-lastLoopTime;lastLoopTime=now;
+    const modalOpen=modal.open||finaleModal.open,hidden=document.hidden;
+    const active=dragging||velocity.lengthSq()>.0009||Object.values(keys).some(Boolean)||[...remotePeople.values()].some(p=>p.room===rooms[activeRoom].id&&p.moving&&now-p.received<700);
+    const loadingRoom=!loading.classList.contains('done');
+    const scale=resolutionBudget.sample(gap,!hidden&&!modalOpen&&active&&!loadingRoom);
+    if(scale!==resolutionScale){resolutionScale=scale;renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO)*scale);}
+    sendPresence();
+    if(!framePolicy.draw(now,{hidden,modal:modalOpen,active,avatars:selfActor.state==='ready'||[...remotePeople.values()].some(p=>p.group.visible)||!!avatarReview,loading:loadingRoom}))return;
+    const frameStart=avatarReview?performance.now():0,dt=Math.min(clock.getDelta(),.05);
+    updateMovement(dt);updateSelfAvatar();updateArtLights(dt);updateFocus();updateRemoteAvatars(dt);assignedAvatars.update(dt);avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);
+  }
 
   addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
   addEventListener('keyup',e=>{keys[e.code]=false;});
   addEventListener('blur',keysClear);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)keysClear();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){keysClear();sendPresence();}});
   canvas.addEventListener('pointerdown',e=>{dragging=true;pointerDown={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,time:performance.now()};canvas.classList.add('dragging');canvas.setPointerCapture(e.pointerId);});
   canvas.addEventListener('pointermove',e=>{if(!dragging||!pointerDown)return;const dx=e.clientX-pointerDown.lastX,dy=e.clientY-pointerDown.lastY;pointerDown.lastX=e.clientX;pointerDown.lastY=e.clientY;yaw-=dx*.0032;pitch=clamp(pitch-dy*.0025,-1.15,1.15);});
   canvas.addEventListener('pointerup',e=>{dragging=false;canvas.classList.remove('dragging');if(!pointerDown)return;const moved=Math.hypot(e.clientX-pointerDown.x,e.clientY-pointerDown.y);if(moved<8&&performance.now()-pointerDown.time<550){pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false).find(x=>x.distance<10);if(hit){if(hit.object.userData.finaleRoom)showFinale(hit.object.userData.finaleRoom);else showWork(hit.object.userData.work,hit.object.userData.room);}}pointerDown=null;});
   canvas.addEventListener('pointercancel',()=>{dragging=false;pointerDown=null;canvas.classList.remove('dragging');});
-  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO));});
+  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO)*resolutionScale);framePolicy.invalidate();});
   document.getElementById('modal-close').addEventListener('click',()=>modal.close());document.getElementById('finale-close').addEventListener('click',()=>finaleModal.close());
   finaleNext.addEventListener('click',()=>{finaleQuizIndex++;const total=finaleQuizQuestions.length;if(finaleQuizIndex>=total){if(finaleQuizCorrect===total)showFinaleCompletion(finaleQuizRoom,true);else showFinaleRetry(finaleQuizRoom);}else renderFinaleQuestion();});
   document.getElementById('finale-again').addEventListener('click',()=>startFinaleQuiz(finaleQuizRoom));
@@ -976,5 +1002,6 @@
   document.querySelectorAll('.touch-controls button').forEach(b=>{const k=b.dataset.key;b.addEventListener('pointerdown',e=>{e.preventDefault();keys[k]=true;});b.addEventListener('pointerup',()=>keys[k]=false);b.addEventListener('pointercancel',()=>keys[k]=false);});
 
   buildTabs();setRoom(0);if(!avatarReview)connectClassPresence();animate();
+  setInterval(()=>{if(document.hidden)sendPresence();},3000);
   setInterval(()=>{if(document.visibilityState==='visible')void loadMuseumCompletions(rooms[activeRoom]);},30000);
 })();

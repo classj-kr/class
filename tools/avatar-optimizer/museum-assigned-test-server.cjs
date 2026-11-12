@@ -20,6 +20,21 @@ app.get('/api/museum/presence-ticket',(request,response)=>{
 app.get('/api/me/storage/museum',(q,r)=>r.json({items:{}}));
 app.get('/api/museum/completions',(q,r)=>r.json({records:[]}));
 const museum='/learning/arts/art-appreciation/museum/';
+app.get('/performance/:version',(q,r)=>{
+ const version=q.params.version==='before'?'before':'after';
+ let html=fs.readFileSync(path.join(root,version==='before'?'outputs/qa/museum-overhaul/before/index.html':museum+'index.html'),'utf8');
+ html=html.replace('<head>','<head><base href="'+museum+'">');
+ if(version==='before')html=html.replace(/src="museum.js[^\"]*"/,'src="/outputs/qa/museum-overhaul/before/museum.js"').replace(/href="styles.css[^\"]*"/,'href="/outputs/qa/museum-overhaul/before/styles.css"');
+ html=html.replace(/(<script src="(?:museum.js|\/outputs\/qa\/museum-overhaul\/before\/museum.js)[^\"]*"><\/script>)/,'<script src="/tools/avatar-optimizer/museum-performance-review.js"></script>$1');
+ r.type('html').send(html);
+});
+app.post('/performance-capture/:name',express.raw({type:'image/png',limit:'10mb'}),async(q,r)=>{
+ try{if(!/^(before|after)-(entrance|resumed)$/.test(q.params.name))return r.sendStatus(400);const sharp=require('sharp'),bytes=await sharp(q.body).webp({lossless:true}).toBuffer();const out=path.join(root,'outputs/qa/museum-overhaul',q.params.name+'.webp');fs.writeFileSync(out,bytes);r.sendStatus(200);}catch(e){r.status(500).send(e.message);}
+});
+app.post('/performance-report/:version',express.json({limit:'2mb'}),(q,r)=>{
+ if(!['before','after'].includes(q.params.version))return r.sendStatus(400);
+ fs.writeFileSync(path.join(root,'outputs/qa/museum-overhaul',q.params.version+'.json'),JSON.stringify(q.body,null,2));r.sendStatus(200);
+});
 app.get([museum,museum+'index.html'],(q,r)=>{
  let html=fs.readFileSync(path.join(root,museum,'index.html'),'utf8');
  const controls=`<aside style="position:fixed;bottom:8px;left:12px;z-index:1000;background:#fff;padding:8px;color:#222" id="qa-controls">
