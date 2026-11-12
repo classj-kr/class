@@ -236,8 +236,12 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
   clock += Core.HOLD_MS;
   const later = (await req(path, undefined, b.token)).data;
   assert.ok(!later.board.some((x) => x.id === w0.id || x.id === w1.id), 'claimed words are replaced');
-  assert.ok(later.recent.some((x) => x.id === w0.id), 'a word that just left can still be finished');
-  assert.equal((await type(b.token, w0)).data.order, 2, 'finishing a word that just left still counts');
+  const retiring = later.recent.find((x) => x.id === w0.id);
+  assert.deepEqual(retiring, { id: w0.id, text: w0.text, count: 1, expiresAt: clock + 5000 });
+  clock = retiring.expiresAt - 1;
+  assert.equal((await type(b.token, w0)).data.order, 2, 'finishing just before the five-second deadline still counts');
+  clock++;
+  assert.equal((await type(host, w1, 0)).status, 409, 'a word cannot be claimed once its five-second window expires');
   clock += 4000;
   const missed = (await type(a.token, w2, 2)).data;
   assert.equal(missed.combo, 0);

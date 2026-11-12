@@ -280,6 +280,14 @@ body.fever .word-card::before { content: "FEVER x2"; position: absolute; top: -1
 .type-box #typeInput { display: block; width: 100%; color: transparent; caret-color: transparent; }
 .typed { position: absolute; inset: 3px; display: flex; align-items: center; justify-content: center; padding: 0 12px; overflow: hidden; white-space: pre; pointer-events: none; color: var(--ink); font: 800 30px var(--font); }
 .type-box:focus-within .typed::after { content: ""; width: 3px; height: 1.1em; margin-left: 2px; background: var(--yellow); animation: caret-blink 1s steps(1) infinite; }
+.retired-word {
+  display: flex; align-items: center; gap: 8px; width: min(560px, 100%); margin: 0;
+  padding: 6px 10px; border: 1px solid var(--yellow); border-radius: 10px;
+  background: #241939; color: var(--yellow); font-size: 14px; font-weight: 800;
+}
+.retired-word > span { flex: none; }
+.retired-word strong { min-width: 0; flex: 1; color: #fff; font-size: 17px; overflow-wrap: anywhere; }
+.retired-word span:last-child { font-variant-numeric: tabular-nums; }
 @keyframes caret-blink { 50% { opacity: 0; } }
 .chase { margin: 0; min-height: 1.4em; font-weight: 900; color: var(--yellow); font-size: 18px; text-align: center; }
 .mini-board { list-style: none; margin: 0; padding: 12px; border-radius: 22px; background: var(--panel); border: 2px solid var(--line); display: grid; gap: 6px; }

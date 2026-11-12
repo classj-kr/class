@@ -5,7 +5,8 @@ const Core = require('../learning/inquiry/information-computing/typing/race/race
 const { roundItems } = require('./typing-race-words');
 const CONTENT = '/learning/inquiry/information-computing/typing';
 const COUNTDOWN_MS = 3500;
-const GRACE_MS = 1500;
+const FINISH_GRACE_MS = 1500;
+const REPLACED_WORD_GRACE_MS = 5000;
 // 1초에 50타(3000타/분)보다 빠른 제출은 사람이 친 것으로 보지 않는다.
 const MIN_MS_PER_STROKE = 20;
 
@@ -64,12 +65,12 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
     return sizes.length ? sizes[0][0] : null;
   }
   function expire(r) {
-    if (r.phase === 'running' && now() > r.deadline + GRACE_MS) r.phase = 'results';
+    if (r.phase === 'running' && now() > r.deadline + FINISH_GRACE_MS) r.phase = 'results';
     tick(r);
   }
   // ── 낱말판 ── 모두 같은 판을 보고, 아무 낱말이나 골라 친다. 먼저 친 순서대로 1·2·3등.
   // 낱말은 모두가 쳤거나, 첫 사람이 친 뒤 HOLD_MS가 지나면 새 낱말로 바뀐다.
-  // 막 바뀐 낱말도 GRACE_MS 동안은 받아 준다(치던 중에 사라져도 억울하지 않게).
+  // 판에서 바뀐 낱말은 개인이 마저 칠 수 있도록 잠시 더 받는다.
   // 다 치는 순간 바로 받아 주므로, 아직 받을 수 있는 낱말(판·막 바뀐 낱말)과 앞부분이 겹치는 낱말은 건너뛴다.
   function slot(r, others = []) {
     let index = r.next++;
@@ -79,10 +80,10 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
   function tick(r) {
     if (r.phase !== 'running' || !r.board) return;
     const t = now(), everyone = students(r).length;
-    r.recent = r.recent.filter((x) => t - x.retiredAt < GRACE_MS);
+    r.recent = r.recent.filter((x) => t < x.expiresAt);
     r.board.forEach((x, i) => {
       if (!x.claims.length || (x.claims.length < everyone && t - x.claims[0].at < Core.HOLD_MS)) return;
-      r.recent.push({ ...x, retiredAt: t });
+      if (x.claims.length < everyone) r.recent.push({ ...x, expiresAt: t + REPLACED_WORD_GRACE_MS });
       r.board[i] = slot(r, [...r.board.filter((_, j) => j !== i), ...r.recent].map((y) => y.text));
     });
   }
@@ -142,7 +143,9 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       deadline: r.deadline || null,
       serverNow: now(),
       board: r.phase === 'running' && r.board ? r.board.map((x) => publicSlot(r, x, p)) : null,
-      recent: r.phase === 'running' && r.recent ? r.recent.filter((x) => !x.claims.some((c) => c.player === p.id)).map((x) => ({ id: x.id, text: x.text })) : null,
+      recent: r.phase === 'running' && r.recent ? r.recent
+        .filter((x) => !x.claims.some((c) => c.player === p.id))
+        .map((x) => ({ id: x.id, text: x.text, count: x.claims.length, expiresAt: x.expiresAt })) : null,
       me: { id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null, team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0, rank: mine?.rank || null },
       participants,
       teams: r.config.teamMode ? Core.teamBoard(participants, r.config.teamCount) : null,
@@ -248,7 +251,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       const { room: r, player: p } = member(req);
       const t = now();
       if (!p.plays || req.body?.roundId !== r.roundId) throw fail(409, '지금 판의 기록이 아니에요.');
-      if (r.phase !== 'running' || t > r.deadline + GRACE_MS) throw fail(409, '이번 판이 끝났어요.');
+      if (r.phase !== 'running' || t > r.deadline + FINISH_GRACE_MS) throw fail(409, '이번 판이 끝났어요.');
       if (t < r.startsAt) throw fail(409, '출발 신호 뒤에 입력해 주세요.');
       tick(r);
       const id = Number(req.body?.slot);
