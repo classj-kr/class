@@ -1069,9 +1069,18 @@
         if (t) {
           div.style.setProperty('--team-hue', t.hue);
           div.innerHTML = '<span class="pod-racer pod-team"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
+          const racers = div.querySelector('.pod-team');
           const members = s.participants.filter((p) => p.team === t.index);
-          div.querySelector('.pod-racer').append(...members.map((p) => face(p, 'pod-face')));
-          if (place === 1) div.querySelector('.pod-racer').classList.add('crowned');
+          racers.append(...members.map((p) => {
+            const member = document.createElement('span');
+            member.className = 'pod-member';
+            const name = document.createElement('span');
+            name.className = 'pod-member-name';
+            name.textContent = p.name;
+            member.append(name, face(p, 'pod-face'));
+            return member;
+          }));
+          if (place === 1) racers.classList.add('crowned');
           div.querySelector('.pod-name').textContent = `${t.emoji} ${t.name}팀`;
           div.querySelector('.pod-score').textContent = t.value + '점';
         } else div.innerHTML = '<div class="block"><b class="pod-place"></b></div>';
