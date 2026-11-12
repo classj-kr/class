@@ -11,8 +11,8 @@
   let board = [], recent = [], claimedLocal = new Set(), targetId = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   let localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
-  // skip: 칸 앞쪽에서 이미 받은 낱말이 차지한 글자 수. 조합 중인 칸은 비우지 않고(IME가 끝 글자를 다시 붙인다) 이만큼 건너뛰어 읽는다.
-  let sendChain = Promise.resolve(), skip = 0, skipKeys = 0, composing = false, muted = false;
+  // 입력기가 조합한 문자열은 보존하고, 이미 채점한 부분은 자판 키 수로 건너뛴다.
+  let sendChain = Promise.resolve(), acceptedKeys = 0, preserveComposition = false;
   let shownCount = -1, goShown = '', finishShown = '', resultShown = '', lastRank = null;
   const prevScores = new Map();
   const choice = { mode: 'ko-words', duration: 90, teamMode: false, teamCount: 2, teamSize: C.TEAM_SIZE_DEFAULT };
@@ -355,8 +355,8 @@
       parts.length = 0;
       $('track').innerHTML = '';
       input.value = '';
-      skip = 0;
-      skipKeys = 0;
+      acceptedKeys = 0;
+      preserveComposition = false;
       paintTyped();
       document.body.classList.remove('fever');
       document.body.classList.toggle('sentence-mode', C.MODES[s.config.mode].sentence);
@@ -670,34 +670,39 @@
 
   // ── 입력 ─────────────────────────────────────────
   const sentenceMode = () => Boolean(state && C.MODES[state.config.mode].sentence);
-  // 화면에 보이는 입력 글자: 받은 낱말 몫(skip)을 뺀 나머지. 실제 칸 글자는 투명하고 위에 이것만 그린다.
-  // 영어 판은 친 키 줄로 읽는다: 한/영 키가 한글이라 ㅈ댜홋처럼 찍혀도 weight로 받는다(칸은 건드리지 않는다).
   const englishBoard = () => Boolean(state && C.MODES[state.config.mode].lang === 'en');
-  let enNoted = '';
-  // 칸이 잠깐 짧아져도(입력기가 받침을 떼어 다음 글자로 옮기는 사이) 경계는 그대로 둔다. 지우기 키를 눌렀을 때만 줄인다(shrinkSkip).
-  function typedText() {
-    if (!englishBoard()) return input.value.slice(Math.min(skip, input.value.length));
-    const stream = C.keysFromHangul(input.value);
-    if (stream !== input.value && enNoted !== state.roundId) { enNoted = state.roundId; toast('한/영 키가 한글로 되어 있어서 영어로 바꿔 받고 있어요.'); }
-    return stream.slice(Math.min(skipKeys, stream.length));
+  let enNoted = '', hanEnNoted = '';
+  function koreanAfterAcceptedKeys(raw) {
+    let remaining = acceptedKeys, offset = 0;
+    for (const char of raw) {
+      if (!remaining) return raw.slice(offset);
+      const keys = C.keys(char);
+      offset += char.length;
+      // 다음 낱말 첫 자음이 앞 글자의 받침에 붙어 있어도 그 자음은 다음 낱말에 표시한다.
+      if (remaining < keys.length) return C.hangulFromKeys(keys.slice(remaining)) + raw.slice(offset);
+      remaining -= keys.length;
+    }
+    return '';
   }
-  function shrinkSkip() {
-    skip = Math.min(skip, input.value.length);
-    skipKeys = Math.min(skipKeys, C.keysFromHangul(input.value).length);
+  function typedText() {
+    const raw = input.value;
+    if (englishBoard()) {
+      const stream = C.keysFromHangul(raw);
+      if (stream !== raw && enNoted !== state.roundId) {
+        enNoted = state.roundId;
+        toast('한/영 키가 한글로 되어 있어서 영어로 바꿔 받고 있어요.');
+      }
+      return stream.slice(acceptedKeys);
+    }
+    const typed = koreanAfterAcceptedKeys(raw);
+    if (!state || !/[A-Za-z]/.test(typed)) return typed;
+    if (hanEnNoted !== state.roundId) {
+      hanEnNoted = state.roundId;
+      toast('한/영 키가 영어로 되어 있어서 한글로 바꿔 받고 있어요.');
+    }
+    return C.hangulFromKeys(typed);
   }
   function paintTyped() { $('typed').textContent = typedText().replace(/[\r\n]/g, ''); }
-  // 조합이 끝난 뒤에만 받은 낱말 몫을 칸에서 실제로 지운다. 영어 판은 받은 키 수가 글자 경계와 맞을 때만 자른다
-  // (받침이 다음 글자로 넘어가 한 글자에 두 낱말의 키가 섞여 있으면 그대로 둔다).
-  function tidy() {
-    if (!skip || composing) return;
-    if (!englishBoard()) { if (input.value.length >= skip) { input.value = input.value.slice(skip); skip = 0; skipKeys = 0; } return; }
-    for (let cut = 0; cut <= input.value.length; cut++) {
-      if (C.keysFromHangul(input.value.slice(0, cut)).length !== skipKeys) continue;
-      input.value = input.value.slice(cut);
-      skip = 0; skipKeys = 0;
-      return;
-    }
-  }
   function normalized() {
     const v = typedText().replace(/[\r\n]/g, '');
     return sentenceMode() ? v.replace(/^\s+/, '').replace(/\s+$/, (m) => (m.length > 1 ? ' ' : m)) : v.replace(/\s/g, '');
@@ -712,7 +717,7 @@
   const cleaned = () => (sentenceMode() ? normalized().replace(/\s+$/, '') : normalized());
   function check(fromKey = false) {
     paintTyped();
-    if (!racing() || muted) return;
+    if (!racing()) return;
     const clean = cleaned();
     if (!clean) { targetId = null; erroring = false; $('card').classList.remove('wrong'); return paintBoard(); }
     // 치는 중인 낱말: 지금 고른 낱말이 계속 맞으면 그대로, 아니면 맞는 낱말 가운데 판 앞쪽 것.
@@ -736,15 +741,17 @@
   }
   // 판이 바뀌어 더 긴 낱말이 빠지면, 기다리던 짧은 낱말을 그때 받는다.
   function acceptIfDone() {
-    if (!racing() || muted || !typedText()) return;
+    if (!racing() || !typedText()) return;
     const { exact, longer } = matches(cleaned());
     if (exact && !longer) complete(exact);
   }
-  // 다 친 낱말을 칸에서 지운다. 끝 글자가 아직 조합 중이면 칸을 건드리지 않고(비우면 IME가 그 글자를 다시 붙여
-  // 앞 낱말 끝 글자가 남는다) 그 길이만큼 건너뛰어 읽는다. 조합이 끝나면 tidy()가 실제로 지운다.
   function clearField() {
-    if (composing && document.activeElement === input) { skip = input.value.length; skipKeys = C.keysFromHangul(input.value).length; }
-    else { input.value = ''; skip = 0; skipKeys = 0; }
+    if (preserveComposition) {
+      acceptedKeys = C.keys(input.value).length;
+    } else {
+      input.value = '';
+      acceptedKeys = 0;
+    }
     paintTyped();
   }
   function floatAtCard(text, cls) {
@@ -795,20 +802,17 @@
         } catch { /* 다음 확인 때 다시 맞춘다 */ }
       });
   }
-  input.addEventListener('compositionstart', () => { if (!muted) composing = true; });
-  input.addEventListener('compositionend', () => { if (muted) return; composing = false; setTimeout(() => { tidy(); check(); }, 0); });
-  // 한글 판인데 한/영 키가 영어로 되어 있으면, 친 키를 두벌식 한글로 바꿔 받는다(애들이 한/영 때문에 막히지 않게).
-  let hanEnNoted = '';
-  function fixHanEn() {
-    if (!state || C.MODES[state.config.mode].lang !== 'ko' || !/[A-Za-z]/.test(typedText())) return;
-    input.value = input.value.slice(0, skip) + C.hangulFromKeys(input.value.slice(skip));
-    if (hanEnNoted !== state.roundId) { hanEnNoted = state.roundId; toast('한/영 키가 영어로 되어 있어서 한글로 바꿔 받고 있어요.'); }
-  }
+  input.addEventListener('compositionstart', () => { preserveComposition = true; });
+  input.addEventListener('compositionend', () => {
+    // 일부 IME는 이 이벤트 뒤에 마지막 확정 입력을 보낸다. 원본을 비우면 그 글자가 새 낱말에 다시 붙는다.
+    preserveComposition = true;
+    setTimeout(check, 0);
+  });
   input.addEventListener('input', (e) => {
-    if (muted) return;
-    composing = e.isComposing;
-    if (e.inputType?.startsWith('delete')) shrinkSkip();
-    if (!composing) { tidy(); fixHanEn(); }
+    preserveComposition = e.isComposing || Boolean(e.inputType?.includes('Composition'));
+    if (!preserveComposition && e.inputType?.startsWith('delete')) {
+      acceptedKeys = Math.min(acceptedKeys, C.keys(input.value).length);
+    }
     if (e.inputType !== 'deleteContentBackward') sfx.key();
     check();
   });

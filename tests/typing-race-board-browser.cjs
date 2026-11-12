@@ -167,10 +167,18 @@ async function main() {
       },
     });
     assert.equal(await page.locator('#typed').textContent(), '', 'the shown text is empty while the last syllable is still composing');
-    // 조합 중인 칸은 건드리지 않는다. 입력기가 끝 글자를 확정하면 그때 칸이 실제로 비워진다.
+    // 일부 입력기는 compositionend 뒤에 마지막 글자의 확정 입력을 보낸다.
+    // 브라우저가 아직 잡고 있는 조합 범위를 먼저 비우면 끝 글자가 새 입력으로 되살아난다.
+    const composingValue = await page.locator('#typeInput').inputValue();
+    await page.locator('#typeInput').evaluate(async (field) => {
+      field.dispatchEvent(new CompositionEvent('compositionend', { bubbles: true }));
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    const beforeCommit = await page.locator('#typeInput').inputValue();
     await cdp.send('Input.insertText', { text: imeWord.slice(-1) });
+    assert.equal(await page.locator('#typed').textContent(), '', 'the late IME commit must not become the first character of the next word');
+    assert.equal(beforeCommit, composingValue, 'do not rewrite the field before the IME finishes its commit');
     await accepted(imeWord, 'IME');
-    await page.waitForFunction(() => document.querySelector('#typeInput').value === '');
     assert.equal(await page.evaluate(() => document.activeElement?.id), 'typeInput', 'focus comes straight back');
     // 다음 낱말 첫 키는 깨끗한 칸에서 새로 조합된다(되살아난 글자가 앞에 붙지 않는다).
     board = await tiles();
@@ -183,11 +191,15 @@ async function main() {
     const imeChain = board.find((t) => t.tier === 'gold').word;
     await imeType(cdp, imeChain, {
       prefix: imeNext.slice(-1),
+      first: async () => {
+        assert.equal(await page.locator('#typed').textContent(), Core.keys(imeChain)[0], 'show the next initial even when the IME attaches it to the accepted syllable');
+        assert.equal(await page.locator('#card.wrong').count(), 0);
+      },
       beforeLast: async () => assert.equal(await page.locator('#typed').textContent(), Core.hangulFromKeys(qwerty(imeChain).slice(0, -1))),
     });
     await accepted(imeChain, 'IME chained');
     await cdp.send('Input.insertText', { text: imeChain.slice(-1) });
-    await page.waitForFunction(() => document.querySelector('#typeInput').value === '');
+    assert.equal(await page.locator('#typed').textContent(), '', 'a committed syllable does not reappear');
 
     // ── 6. 버릇처럼 Space·Enter를 눌러도 아무 일 없다 ──
     board = await tiles();
