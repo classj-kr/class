@@ -33,16 +33,29 @@ const { createHarness } = require('./learning-boards-harness.cjs');
     await bob.goto(h.base + '/boards/?id=' + board.id);
     await bob.locator('#boardView').waitFor(); assert.equal(await bob.locator('.post').count(), 0);
     await teacher.goto(h.base + '/boards/?id=' + board.id + '&set=' + set.id);
-    await teacher.getByRole('button', { name: '순위전 시작', exact: true }).last().click();
+    const settings = teacher.getByRole('dialog', { name: '순위전 설정' });
+    const seconds = settings.getByRole('spinbutton', { name: /문제당 제한 시간/ });
+    await teacher.locator('#setControls').getByRole('button', { name: '순위전 시작', exact: true }).click();
+    assert.equal(await seconds.inputValue(), '20');
+    await settings.getByRole('button', { name: '닫기' }).click();
+    await teacher.locator('#backToBoard').click();
+    await teacher.locator('#setDetails summary').click();
+    await teacher.locator('#setList').getByRole('button', { name: '순위전 시작', exact: true }).click();
+    await seconds.fill('37');
+    await settings.getByRole('button', { name: '대기실 열기' }).click();
     await teacher.locator('#teacher').waitFor({ state: 'visible' });
     await alice.locator('#student').waitFor({ state: 'visible' });
     await bob.locator('#student').waitFor({ state: 'visible' });
+    assert.match(await teacher.locator('#roundLabel').innerText(), /문제당 37초/);
+    assert.match(await bob.locator('#roundLabel').innerText(), /문제당 37초/);
     await teacher.waitForFunction(() => document.getElementById('participation').textContent === '입장 2명');
     assert.equal(await alice.locator('#studentName').innerText(), '민서');
     await teacher.locator('#advance').click();
     await teacher.locator('#advance').waitFor({ state: 'hidden' });
     assert.equal(await teacher.locator('#automatic').getAttribute('aria-pressed'), 'true');
     await bob.locator('#choices button').first().waitFor();
+    const raceState = await (await teacherContext.request.get(h.base + '/api/boards' + base + '/races/' + new URL(teacher.url()).searchParams.get('game'))).json();
+    assert.equal(raceState.endsAt - raceState.startsAt, 37000);
     await alice.waitForFunction(() => document.getElementById('studentStatus').textContent === '답을 선택하세요');
     await alice.locator('#choices button').first().click();
     assert.equal(await bob.locator('#feedback').innerText(), '');
@@ -69,7 +82,32 @@ const { createHarness } = require('./learning-boards-harness.cjs');
     await teacher.getByRole('button', { name: '게시판으로', exact: true }).waitFor();
     for (const page of [teacher, alice, bob]) assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.equal(await bob.locator('#teacher').isVisible(), false);
+
+    const { board: art } = await post(teacherContext, '/', { title: '작품 순위전 확인', layout: 'wall' });
+    await post(aliceContext, '/join', { code: art.code, number: 1, name: '민서' });
+    const upload = await aliceContext.request.post(h.base + '/api/boards/' + art.id + '/images', {
+      headers: { 'Content-Type': 'image/webp' },
+      data: fs.readFileSync(path.join(__dirname, '../assets/icons/favicon-32x32.webp'))
+    });
+    assert.ok(upload.ok(), await upload.text());
+    const artwork = await post(aliceContext, '/' + art.id + '/posts', { content: '별이 빛나는 밤', image: (await upload.json()).id });
+    const decoys = await teacherContext.request.put(h.base + '/api/boards/' + art.id + '/posts/' + artwork.id + '/decoys', {
+      data: { decoys: ['바다', '봄 소풍', '오후의 숲'] }
+    });
+    assert.ok(decoys.ok(), await decoys.text());
+    await teacher.goto(h.base + '/boards/?id=' + art.id);
+    await teacher.locator('#artQuiz').click();
+    await seconds.fill('62');
+    await settings.getByRole('button', { name: '대기실 열기' }).click();
+    await teacher.locator('#teacher').waitFor({ state: 'visible' });
+    assert.match(await teacher.locator('#roundLabel').innerText(), /문제당 62초/);
+    const artRaceUrl = teacher.url();
+    await teacher.goto(h.base + '/boards/?id=' + art.id);
+    await teacher.getByRole('button', { name: /진행 중인 순위전으로/ }).click();
+    await teacher.waitForURL(artRaceUrl);
+    await teacher.locator('#teacher').waitFor({ state: 'visible' });
+    assert.match(await teacher.locator('#roundLabel').innerText(), /문제당 62초/);
     assert.deepEqual(errors, []);
-    console.log('PASS: teacher starts once; both students answer; automatic reveal, next question and final results; private board, author participation, reload and no overflow.');
+    console.log('PASS: custom question time for question sets and art races, active race resume, student answers, automatic reveal and results, reload and no overflow.');
   } finally { await browser?.close(); await h.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

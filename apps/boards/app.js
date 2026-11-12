@@ -156,15 +156,22 @@
   }
   function navigateBoard(id) { location.href = `?id=${encodeURIComponent(id)}`; }
   function navigateRace(id) { location.href = `live.html?id=${encodeURIComponent(boardId)}&game=${encodeURIComponent(id)}`; }
-  async function startRace(set, seconds = 20) {
-    const result = await api(`/${boardId}/races`, 'POST', { setId: set, seconds });
-    navigateRace(result.id);
+  let raceSetId = null;
+  function openRaceSetup(set = null) {
+    if (data?.live) return navigateRace(data.live.id);
+    raceSetId = set;
+    $('raceForm').reset();
+    openDialog('raceDialog');
   }
   $('resumeRace').addEventListener('click', () => { if (data?.live) navigateRace(data.live.id); });
-  $('artQuiz').addEventListener('click', () => run(async () => {
-    const result = await api(`/${boardId}/art-quiz`, 'POST', { seconds: 20 });
+  $('artQuiz').addEventListener('click', () => openRaceSetup());
+  handleForm('raceForm', async () => {
+    const seconds = $('raceSeconds').valueAsNumber;
+    const result = raceSetId
+      ? await api(`/${boardId}/races`, 'POST', { setId: raceSetId, seconds })
+      : await api(`/${boardId}/art-quiz`, 'POST', { seconds });
     navigateRace(result.id);
-  }));
+  });
   function historyView() {
     const query = new URLSearchParams({ id: boardId });
     if (setId) query.set('set', setId);
@@ -377,7 +384,7 @@
     data.sets.forEach(s => {
       const row = element('div', undefined, 'set-row'); const title = element('div');
       title.append(element('strong', s.title), element('small', `${s.count}문항 · ${statuses[s.status]}`));
-      row.append(title, button('문제 확인', () => openSet(s.id)), button('순위전 시작', () => startRace(s.id), 'primary')); $('setList').append(row);
+      row.append(title, button('문제 확인', () => openSet(s.id)), button('순위전 시작', () => openRaceSetup(s.id), 'primary')); $('setList').append(row);
     });
     if (!data.sets.length) $('setList').append(element('p', '문제 세트 없음', 'hint'));
     renderPosts();
@@ -573,9 +580,7 @@
     $('setTitle').textContent = s.title; $('setStatus').textContent = statuses[s.status];
     $('setControls').replaceChildren(); $('setQuestions').replaceChildren();
     if (data.me.teacher) {
-      const duration = element('select'); duration.setAttribute('aria-label', '문제당 제한 시간');
-      [20, 30, 45, 60, 90, 120].forEach(seconds => { const option = element('option', seconds + '초'); option.value = seconds; duration.append(option); });
-      $('setControls').append(duration, button('순위전 시작', () => startRace(setId, Number(duration.value)), 'primary'));
+      $('setControls').append(button('순위전 시작', () => openRaceSetup(s.id), 'primary'));
     }
     const answered = s.questions.filter(q => q.myChoice !== undefined).length;
     const correct = s.questions.filter(q => q.myChoice !== undefined && q.myChoice === q.answer).length;
