@@ -45,6 +45,9 @@
     return span;
   }
   const input = $('typeInput');
+  const retiredWord = $('retiredWord');
+  const retiredWordText = $('retiredWordText');
+  const retiredWordTime = $('retiredWordTime');
 
   // ── 소리 ──────────────────────────────────────────
   function tone(freq, length, type = 'sine', volume = 0.15, delay = 0, slideTo = 0) {
@@ -559,7 +562,19 @@
   const MEDALS = ['🥇', '🥈', '🥉'];
   const TIERS = ['gold', 'silver', 'bronze'];
   const mineOf = (cell) => cell.mine || (claimedLocal.has(cell.id) ? 1 : 0);
-  const open = () => [...board, ...recent].filter((cell) => !mineOf(cell));
+  const open = () => {
+    const now = serverNow();
+    return [...board, ...recent.filter((cell) => cell.expiresAt > now)].filter((cell) => !mineOf(cell));
+  };
+  function paintRetiredWord(now = serverNow()) {
+    const cell = recent.find((item) => item.id === targetId);
+    const remaining = cell ? Math.min(cell.expiresAt, state.deadline) - now : 0;
+    retiredWord.hidden = !(remaining > 0);
+    if (retiredWord.hidden) return;
+    if (retiredWordText.textContent !== cell.text) retiredWordText.textContent = cell.text;
+    const time = Math.ceil(remaining / 1000) + '초';
+    if (retiredWordTime.textContent !== time) retiredWordTime.textContent = time;
+  }
   // 실수 없이 다음 낱말을 치면 콤보가 하나 오른다(실수가 있으면 콤보 0으로 센다). 서버와 같은 셈.
   const nextCombo = () => (mistakesThis ? 0 : localCombo + 1);
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -618,6 +633,7 @@
       if (count && !timer.dataset.on) { timer.dataset.on = '1'; timer.style.animationDuration = C.HOLD_MS + 'ms'; }
     });
     paintCombo();
+    paintRetiredWord();
   }
   // 판에서 빠지는 칸: 제자리를 지킨 채(카드 위에 겹쳐) 부풀며 사라진다. 그 밑으로 새 칸이 떨어진다.
   function leave(tile) {
@@ -723,7 +739,8 @@
     // 치는 중인 낱말: 지금 고른 낱말이 계속 맞으면 그대로, 아니면 맞는 낱말 가운데 판 앞쪽 것.
     const { tracking, exact, longer } = matches(clean);
     const keep = tracking.find((cell) => cell.id === targetId);
-    targetId = (keep || exact || tracking[0])?.id ?? null;
+    const retired = recent.find((cell) => cell.id === targetId && cell.expiresAt > serverNow());
+    targetId = (keep || exact || tracking[0] || retired)?.id ?? null;
     // 다 친 순간 바로 받는다. Space·Enter는 누르지 않아도 되고, 마지막 글자가 아직 조합 중이어도 된다.
     // 더 긴 낱말이 함께 맞을 때만 다음 키(Space·Enter)를 기다린다. 서버가 그런 낱말을 판에 함께 두지 않으므로 거의 없다.
     if (exact && (!longer || fromKey)) return complete(exact);
@@ -942,6 +959,7 @@
       return;
     }
     const t = serverNow(), before = state.startsAt - t, left = state.deadline - t;
+    if (!retiredWord.hidden) paintRetiredWord(t);
     // 한 번 출발하면 다시 세지 않는다. 서버 시계 보정값이 출발 직후 조금 흔들려 남은 시간이 다시 0보다 커지면
     // 카운트다운이 다시 켜졌는데, '시작!'은 한 판에 한 번만 띄우므로 회색 막과 「1」이 그대로 남았다(입력도 잠겼다).
     if (before > 0 && goShown !== state.roundId) {

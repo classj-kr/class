@@ -254,6 +254,22 @@ async function main() {
       await shot(page, name);
     }
     await page.setViewportSize({ width: 1487, height: 722 });
+
+    // 치던 낱말이 판에서 교체되면 입력칸 아래에 남고, 1.5초가 지난 뒤에도 마저 칠 수 있다.
+    await page.waitForFunction(() => document.querySelector('#board .tile[data-tier="gold"]'));
+    const carried = (await tiles()).find((tile) => tile.tier === 'gold');
+    await friend.bringToFront();
+    await friend.keyboard.type(carried.word.slice(0, -1), { delay: 30 });
+    const scoreBeforeCarry = Number(await friend.locator('#scoreNow').innerText());
+    const hostClaim = await api('/rooms/' + code + '/type', { roundId, slot: Number(carried.id), text: carried.word, mistakes: 0 }, hostToken);
+    assert.ok(hostClaim.gained, hostClaim.message);
+    await friend.waitForFunction(({ id, word }) => !document.querySelector(`#board [data-id="${id}"]`) &&
+      !document.querySelector('#retiredWord').hidden && document.querySelector('#retiredWordText').textContent === word,
+    { id: carried.id, word: carried.word }, { timeout: 9000 });
+    await friend.waitForFunction(() => /^[23]초$/.test(document.querySelector('#retiredWordTime').textContent));
+    await friend.keyboard.type(carried.word.slice(-1));
+    await friend.waitForFunction((before) => Number(document.querySelector('#scoreNow').textContent) > before &&
+      document.querySelector('#retiredWord').hidden, scoreBeforeCarry);
     await api('/rooms/' + code + '/leave', {}, hostToken);
 
     // ── 9. 8팀: 대기실 네 칸씩 두 줄, 경주 중 팀 막대 두 줄, 결과 ──

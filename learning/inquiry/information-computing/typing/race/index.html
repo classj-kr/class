@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b0820">
   <title>타자 RACE</title>
-  <link rel="stylesheet" href="race.css?v=20261112-results-names">
+  <link rel="stylesheet" href="race.css?v=20261112-word-grace">
 </head>
 <body data-screen="entry">
   <div class="sky" aria-hidden="true"><div class="stars"></div><div class="grid-floor"></div></div>
@@ -68,6 +68,7 @@
         <div class="play">
           <div id="card" class="word-card"><div id="board" class="board" aria-live="off"></div></div>
           <div class="type-box"><textarea id="typeInput" rows="1" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="위 글자 입력"></textarea><div id="typed" class="typed" aria-hidden="true"></div></div>
+          <p id="retiredWord" class="retired-word" hidden><span>마저 치기</span><strong id="retiredWordText"></strong><span id="retiredWordTime"></span></p>
           <p id="chase" class="chase"></p>
         </div>
         <ol id="miniBoard" class="mini-board"></ol>
@@ -109,6 +110,6 @@
   <script src="/assets/sound/race-music.js?v=20261106-1"></script>
   <script src="/assets/sound/music-control.js?v=20261105-settings-panel" data-settings-help="settingsHelp"></script>
   <script src="race-core.js?v=20261109-team-view"></script>
-  <script src="race.js?v=20261112-results-names"></script>
+  <script src="race.js?v=20261112-word-grace"></script>
 </body>
 </html>
