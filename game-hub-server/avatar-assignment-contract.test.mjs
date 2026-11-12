@@ -23,6 +23,7 @@ const sandbox = {
   setTimeout,
   clearTimeout,
   require(specifier) {
+    if (specifier === "../assets/avatar-catalog.js") return nodeRequire(specifier);
     if (["crypto", "fs", "path"].includes(specifier)) return nodeRequire(`node:${specifier}`);
     if (["./student-character-style", "./attendance-events", "./web-push", "./canonical-host", "./learning-records", "./learning-boards"].includes(specifier)) return nodeRequire(specifier);
     if (specifier === "express") return {};

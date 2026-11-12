@@ -57,7 +57,13 @@
         .avatar-picker { margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
         #avatarCard:has(.avatar-picker:not([hidden])) { grid-column:1/-1; }
         .avatar-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(76px,1fr)); gap:10px; margin-top:12px; }
-        .avatar-option { min-height:86px; padding:6px; border:2px solid transparent; border-radius:12px; background:var(--inset); }
+        .avatar-option { min-height:104px; padding:6px; border:2px solid transparent; border-radius:12px; background:var(--inset); color:var(--ink); }
+        .avatar-option span { display:block; font-size:.75rem; line-height:1.35; overflow-wrap:anywhere; }
+        .avatar-group-title { grid-column:1/-1; margin:14px 0 0; font-size:.9rem; color:var(--muted); }
+        .avatar-tools { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; }
+        .avatar-tools input { flex:1; min-width:140px; }
+        .avatar-filter[aria-pressed="true"] { border-color:var(--amber); color:var(--amber); }
+        .avatar-empty { grid-column:1/-1; color:var(--muted); }
         .avatar-option img { width:66px; height:66px; max-width:100%; object-fit:contain; pointer-events:none; }
         .avatar-option[aria-pressed="true"] { border-color:var(--amber); background:#254733; }
         .secondary-button { color:var(--green); background:transparent; }
@@ -88,6 +94,14 @@
 
 
 
+            <div class="avatar-tools" role="group" aria-label="아바타 찾기">
+                <button class="avatar-filter secondary-button" type="button" data-avatar-category="all" aria-pressed="true">전체</button>
+                <button class="avatar-filter secondary-button" type="button" data-avatar-category="animal" aria-pressed="false">동물</button>
+                <button class="avatar-filter secondary-button" type="button" data-avatar-category="food" aria-pressed="false">음식</button>
+                <button class="avatar-filter secondary-button" type="button" data-avatar-category="object" aria-pressed="false">자연·사물</button>
+                <input id="avatarSearch" type="search" placeholder="이름으로 찾기" aria-label="아바타 이름 검색">
+            </div>
+            <p class="hint">선택 가능한 아바타만 보여요. 비슷한 종류끼리 모아 두었어요.</p>
             <div id="allAvatars" class="avatar-grid"></div>
             <div class="picker-actions"><span id="avatarStatus" role="status" aria-live="polite"></span><button id="saveAvatar" type="button" disabled>&#51060; &#50500;&#48148;&#53440;&#47196; &#54869;&#51221;</button></div>
         </div>
@@ -122,6 +136,7 @@
     </section>
 </main>
 <script src="/classtools/ai-client.js?v=20261006-server-key"></script>
+<script src="/assets/avatar-catalog.js?v=20261112-catalog1"></script>
 <script>
 let isTeacherProfile=false;
 function profilePath(){return isTeacherProfile?'/api/teacher/settings':'/api/student/profile'}
@@ -140,8 +155,9 @@ function currentMmdd(){const m=birthdayMonth.value,d=birthdayDay.value;return m&
 function setBirthdaySelects(mmdd){const value=String(mmdd||'');const month=value.length===4?String(Number(value.slice(0,2))):'';const day=value.length===4?String(Number(value.slice(2))):'';birthdayMonth.value=month;populateDayOptions(month,day)}
 async function api(path,options={}){const response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.message||'요청을 처리하지 못했습니다.');return data}
 const avatarCard=document.querySelector('#avatarCard'),currentAvatarImage=document.querySelector('#currentAvatarImage'),currentAvatarName=document.querySelector('#currentAvatarName'),avatarPolicy=document.querySelector('#avatarPolicy'),openAvatarPicker=document.querySelector('#openAvatarPicker'),avatarPicker=document.querySelector('#avatarPicker'),allAvatars=document.querySelector('#allAvatars'),avatarStatus=document.querySelector('#avatarStatus'),saveAvatar=document.querySelector('#saveAvatar');
-let currentAvatarProfile=null,selectedAvatarKey='';
-function avatarDisplayName(key){return String(key||'').replace(/\.(?:png|webp)$/i,'').replace(/^(animal|food|fruit|vegetable|object|vehicle|theme|sport|award|drink|game)-/,'').replace(/-/g,' ')}
+let currentAvatarProfile=null,selectedAvatarKey='',avatarCategory='all',availableAvatars=[];
+const avatarCatalog=window.ClassAvatarCatalog;
+function avatarDisplayName(key){return avatarCatalog.get(key)?.name||String(key||'').replace(/\.(?:png|webp)$/i,'').replace(/^(animal|food|fruit|vegetable|object|vehicle|theme|sport|award|drink|game)-/,'').replace(/-/g,' ')}
 
 function updateAvatarSelection(){
     document.querySelectorAll('[data-avatar-key]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.avatarKey===selectedAvatarKey)));
@@ -150,10 +166,22 @@ function updateAvatarSelection(){
 function createAvatarButton(option){
     const button=document.createElement('button');button.type='button';button.className='avatar-option';button.dataset.avatarKey=option.key;button.setAttribute('aria-label',`${avatarDisplayName(option.key)} \uc544\ubc14\ud0c0 \uc120\ud0dd`);button.setAttribute('aria-pressed','false');
     const image=document.createElement('img');image.src=option.url;image.alt='';image.loading='lazy';button.append(image);
+    const label=document.createElement('span');label.textContent=avatarDisplayName(option.key);button.append(label);
     button.addEventListener('click',()=>{selectedAvatarKey=option.key;avatarStatus.textContent='\uc120\ud0dd\ud55c \uc544\ubc14\ud0c0\ub97c \ud655\uc778\ud55c \ub4a4 \ud655\uc815\ud574 \uc8fc\uc138\uc694.';updateAvatarSelection()});
     return button;
 }
-function renderAvatarGrid(container,options){container.replaceChildren(...options.map(createAvatarButton));updateAvatarSelection()}
+function renderAvatarGrid(container,options){
+    const query=document.querySelector('#avatarSearch').value.trim().toLowerCase();
+    const filtered=options.filter(option=>{const item=avatarCatalog.get(option.key);return (avatarCategory==='all'||item?.category===avatarCategory)&&(!query||[avatarDisplayName(option.key),item?.answer,option.key].join(' ').toLowerCase().includes(query))}).sort((a,b)=>avatarCatalog.compareKeys(a.key,b.key));
+    const children=[];let previousGroup;
+    for(const option of filtered){const group=avatarCatalog.get(option.key)?.group||'other';if(group!==previousGroup){const heading=document.createElement('h3');heading.className='avatar-group-title';heading.textContent=avatarCatalog.groups.find(g=>g.id===group)?.label||'새 아바타';children.push(heading);previousGroup=group;}children.push(createAvatarButton(option));}
+    if(!filtered.length){const empty=document.createElement('p');empty.className='avatar-empty';empty.textContent='선택 가능한 아바타가 없어요. 다른 이름이나 종류로 찾아보세요.';children.push(empty);}
+    container.replaceChildren(...children);
+    document.querySelectorAll('[data-avatar-category]').forEach(button=>{const category=button.dataset.avatarCategory,count=options.filter(o=>category==='all'||avatarCatalog.get(o.key)?.category===category).length;button.setAttribute('aria-pressed',String(category===avatarCategory));button.textContent=({all:'전체',animal:'동물',food:'음식',object:'자연·사물'})[category]+' '+count;});
+    updateAvatarSelection();
+}
+document.querySelector('#avatarSearch').addEventListener('input',()=>renderAvatarGrid(allAvatars,availableAvatars));
+document.querySelectorAll('[data-avatar-category]').forEach(button=>button.addEventListener('click',()=>{avatarCategory=button.dataset.avatarCategory;renderAvatarGrid(allAvatars,availableAvatars)}));
 function renderAvatar(avatar){
     currentAvatarProfile=avatar||{key:'',url:'',options:[],canChange:false};selectedAvatarKey='';avatarPicker.hidden=true;avatarStatus.textContent='';
     document.querySelector('#avatarPlaceholder').hidden=Boolean(currentAvatarProfile.url);
@@ -164,8 +192,8 @@ function renderAvatar(avatar){
     else if(currentAvatarProfile.changeUsed)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} \ubcc0\uacbd \uae30\ud68c\ub97c \uc774\ubbf8 \uc0ac\uc6a9\ud588\uc2b5\ub2c8\ub2e4.`;
     else avatarPolicy.textContent='1~2\uc6d4\uc5d0\ub294 \uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.';
     openAvatarPicker.disabled=!currentAvatarProfile.canChange;
-    const available=(currentAvatarProfile.options||[]).filter(option=>option.available&&option.key!==currentAvatarProfile.key);
-    renderAvatarGrid(allAvatars,available);
+    availableAvatars=(currentAvatarProfile.options||[]).filter(option=>option.available&&option.key!==currentAvatarProfile.key);
+    avatarCategory='all';document.querySelector('#avatarSearch').value='';renderAvatarGrid(allAvatars,availableAvatars);
 }
 openAvatarPicker.addEventListener('click',()=>{avatarPicker.hidden=!avatarPicker.hidden;if(!avatarPicker.hidden)allAvatars.querySelector('button')?.focus()});
 

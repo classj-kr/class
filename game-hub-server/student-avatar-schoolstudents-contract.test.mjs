@@ -52,8 +52,11 @@ test("PUT /school/students auto-assigns a per-grade avatar to new students and k
   assert.match(body, /avatar_key = COALESCE\(school_students\.avatar_key, EXCLUDED\.avatar_key\)/);
 });
 
-test("requireSiteAccess always allows the student profile settings page in both its .html and clean-URL forms", () => {
-  const body = handlerBody(serverSource, `const requireSiteAccess = asyncRoute`);
+test("site access uses the student lock helper that exempts both profile URL forms", () => {
+  const middleware = handlerBody(serverSource, `const requireSiteAccess = asyncRoute`);
+  assert.match(middleware, /await isStudentContentLocked\(user, req.originalUrl, requestPath\)/);
+  const start=serverSource.indexOf('async function isStudentContentLocked(');
+  const body=serverSource.slice(start,serverSource.indexOf('\n  async function ',start+1));
   assert.match(body, /requestPath === "\/classtools\/profile\.html"/);
   assert.match(body, /requestPath === "\/classtools\/profile"/);
 });
