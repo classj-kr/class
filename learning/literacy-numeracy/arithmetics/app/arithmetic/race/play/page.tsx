@@ -28,8 +28,12 @@ const BURST = Array.from({ length: 18 }, (_, index) => {
   const distance = 90 + (index * 37) % 80;
   return { x: Math.round(Math.cos(angle) * distance), y: Math.round(Math.sin(angle) * distance), color: BURST_COLORS[index % BURST_COLORS.length], spin: (index * 73) % 360 };
 });
-// 팀전 시상대에 선 팀원 얼굴 크기. 팀원이 많을수록 작게 겹쳐 세운다.
-const crewFace = (count: number, winner: boolean) => count <= 2 ? (winner ? 58 : 50) : count <= 4 ? (winner ? 46 : 40) : count <= 6 ? 34 : 28;
+function PodiumMember({ entry }: { entry: Entry }) {
+  return <span className="math-race-podium-member">
+    <span className="math-race-podium-name">{entry.name}</span>
+    <RaceAvatar {...entry} />
+  </span>;
+}
 const RAIN = Array.from({ length: 36 }, (_, index) => ({ left: (index * 29) % 100, delay: (index * 0.17) % 2.4, color: BURST_COLORS[index % BURST_COLORS.length], spin: (index * 47) % 360 }));
 
 // 사이트 공통 효과음(assets/sound/game-sfx.js). 없거나 꺼져 있으면 조용히 넘어간다.
@@ -394,8 +398,8 @@ export default function ArithmeticRaceCardsPage() {
               {teamPodium.map((team, index) => team ? (
                 <div key={team.index} className={`step step-${Math.min(3, team.rank)}${team.index === myTeam?.index ? " is-me" : ""}`} style={{ "--hue": team.hue, animationDelay: `${[0.3, 0.6, 0][index]}s` } as CSSProperties}>
                   <span className="medal">{MEDALS[Math.min(3, team.rank) - 1]}</span>
-                  <span className={`math-race-podium-crew${team.rank === 1 ? " is-winner" : ""}`} style={{ "--face": `${crewFace(team.size, team.rank === 1)}px` } as CSSProperties}>
-                    {membersOf(team).map((entry) => <RaceAvatar key={entry.id} {...entry} />)}
+                  <span className="math-race-podium-crew">
+                    {membersOf(team).map((entry) => <PodiumMember key={entry.id} entry={entry} />)}
                   </span>
                   <strong>{team.emoji} {team.name}</strong>
                   <b>{team.score}점</b>
@@ -417,8 +421,7 @@ export default function ArithmeticRaceCardsPage() {
             {podium.map((entry, index) => entry ? (
               <div key={entry.id} className={`step step-${entry.rank}${entry.id === me?.id ? " is-me" : ""}`} style={{ animationDelay: `${[0.3, 0.6, 0][index]}s` }}>
                 <span className="medal">{MEDALS[entry.rank - 1]}</span>
-                <RaceAvatar {...entry} />
-                <strong>{entry.name}</strong>
+                <PodiumMember entry={entry} />
                 <b>{entry.score}점</b>
                 <i>{entry.rank}</i>
               </div>

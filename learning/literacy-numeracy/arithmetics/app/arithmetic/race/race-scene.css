@@ -225,7 +225,15 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race .card-race-podium .step-3 { min-height: 175px; background: repeating-linear-gradient(0deg, #f6dccb 0 22px, #ebc4ab 22px 24px); }
 .math-race .card-race-podium .step.is-me { outline: 3px solid var(--blue); }
 .math-race .card-race-podium .step.empty { background: transparent; }
-.math-race .card-race-podium .math-race-avatar { width: 54px; height: 54px; animation: math-race-bob 1.6s ease-in-out infinite alternate; }
+.math-race-podium-member {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; max-width: 100%;
+  animation: math-race-bob 1.6s ease-in-out infinite alternate;
+}
+.math-race-podium-name {
+  max-width: 100%; padding: 2px; border-radius: 5px; background: #fff; color: var(--pencil);
+  font-size: clamp(11px, 1.7vw, 13px); font-weight: 900; line-height: 1.15; text-align: center; overflow-wrap: anywhere;
+}
+.math-race .card-race-podium .math-race-avatar { width: 54px; height: 54px; }
 .math-race .card-race-podium .step-1 .math-race-avatar { width: 66px; height: 66px; }
 .math-race .card-race-podium b { color: var(--pencil); }
 .math-race .card-race-podium .medal { line-height: 1; }
@@ -274,10 +282,13 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race .math-race-team-podium .step.is-me { outline: 3px dashed var(--blue); outline-offset: 3px; }
 .math-race .math-race-team-podium strong { color: hsl(var(--hue) 65% 26%); }
 .math-race .math-race-team-podium i { color: hsl(var(--hue) 50% 30% / .35); }
-.math-race-podium-crew { position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; max-width: 100%; padding: 0 calc(var(--face) * .14); }
-.math-race .card-race-podium.math-race-team-podium .math-race-podium-crew .math-race-avatar { width: var(--face); height: var(--face); margin: calc(var(--face) * -.08) calc(var(--face) * -.14); font-size: calc(var(--face) * .4); border-width: 1px; animation: math-race-bob 1.6s ease-in-out infinite alternate; }
-.math-race-podium-crew .math-race-avatar:nth-child(2n) { animation-delay: -.5s; }
-.math-race-podium-crew .math-race-avatar:nth-child(3n) { animation-delay: -1s; }
+.math-race-podium-crew { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 5px 4px; width: 100%; }
+.math-race-podium-crew .math-race-podium-member { width: min(44px, calc((100% - 4px) / 2)); }
+.math-race .card-race-podium .math-race-podium-crew .math-race-avatar {
+  width: 100%; height: auto; aspect-ratio: 1; font-size: 16px; border-width: 1px;
+}
+.math-race-podium-crew .math-race-podium-member:nth-child(2n) { animation-delay: -.5s; }
+.math-race-podium-crew .math-race-podium-member:nth-child(3n) { animation-delay: -1s; }
 .math-race .card-race-board.is-teams li { grid-template-columns: 22px 20px 32px minmax(0, 1fr) auto; }
 .math-race-row-team { font-size: 15px; line-height: 1; text-align: center; }
 .math-race-team-results span { display: grid; font-size: 18px; font-weight: 900; color: var(--pencil); }

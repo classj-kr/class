@@ -734,8 +734,10 @@
         block.append(mark);
         if (p) {
           const score = el('span', 'pod-score', '0점');
-          block.append(el('b', 'pod-name', p.name), score, el('span', 'pod-detail', detailOf(p.result)));
-          step.append(face(p, 'pod-face'));
+          block.append(score, el('span', 'pod-detail', detailOf(p.result)));
+          const racer = el('div', 'pod-racer');
+          racer.append(el('b', 'pod-name', p.name), face(p, 'pod-face'));
+          step.append(racer);
           if (p.rank === 1) block.append(el('b', 'jangwon', '장원'));
           later(times[place], () => {
             mark.textContent = String(p.rank);
