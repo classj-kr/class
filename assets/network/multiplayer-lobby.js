@@ -268,10 +268,10 @@
         }
 
         _attachAvatar() {
-            loadAvatarKey().then(key => {
+            Promise.resolve().then(() => this.options.getAvatarKey ? this.options.getAvatarKey() : loadAvatarKey()).then(key => {
                 if (!key || !this.myId || !this.players[this.myId]) return;
                 this.updateLocalPlayer({ avatarKey: key });
-            });
+            }).catch(() => {});
         }
 
         // 게임 화면에서 참가자 얼굴을 그릴 때 쓴다. 없으면 빈 문자열이라 그대로 조건문에 넣으면 된다.
@@ -624,7 +624,7 @@
         render() {
             const ids = Object.keys(this.players);
             const list = this.elements.playerList;
-            if (list) {
+            if (list && !this.options.renderPlayerList) {
                 const fragment = document.createDocumentFragment();
                 ids.forEach(id => {
                     const chip = document.createElement("span");
@@ -636,6 +636,7 @@
                 });
                 list.replaceChildren(fragment);
             }
+            if (list && this.options.renderPlayerList) this.options.renderPlayerList(list, this.snapshot());
 
             const presentation = this.options.getLobbyPresentation?.({
                 count: ids.length,
