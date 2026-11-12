@@ -30,6 +30,7 @@ const { createKoreanRace } = require("./korean-race");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform, normalizeAvatarKey } = require("./classroom-platform");
 const { createMuseumPresence } = require("./museum-presence");
+const { createParkPresence } = require("./park-presence");
 const { GAME_PAGE_ALIASES } = require("./home-content-paths");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { hideUnpublishedLessons } = require("./unpublished-lessons");
@@ -825,7 +826,7 @@ const museumPresence = createMuseumPresence({
   verifyTicket: ticket => classroomPlatform.verifyMuseumPresenceTicket(ticket),
   normalizeAvatarKey, send: safeSend
 });
-const parkClasses = new Map();
+const parkPresence = createParkPresence({verifyTicket: ticket => classroomPlatform.verifyMuseumPresenceTicket(ticket), normalizeAvatarKey, send: safeSend});
 const roomSnapshotFingerprints = new Map();
 const roomRestorePromises = new Map();
 
@@ -913,50 +914,6 @@ function removeRoom(key) {
   void classroomPlatform.deleteMultiplayerRoomSnapshot(key).catch(error => {
     console.error(`Failed to delete multiplayer room snapshot ${key}:`, error);
   });
-}
-
-function parkBroadcast(classKey) {
-  const parkClass = parkClasses.get(classKey);
-  if (!parkClass) return;
-  const visitors = [...parkClass.clients.values()].map(socket => socket.meta.parkVisitor).filter(Boolean);
-  for (const socket of parkClass.clients.values()) safeSend(socket, { type: "PARK_STATE", visitors });
-}
-
-function leavePark(socket) {
-  const visitor = socket.meta.parkVisitor;
-  if (!visitor) return;
-  const parkClass = parkClasses.get(visitor.classKey);
-  if (parkClass) {
-    parkClass.clients.delete(visitor.userId);
-    if (parkClass.clients.size) parkBroadcast(visitor.classKey);
-    else parkClasses.delete(visitor.classKey);
-  }
-  socket.meta.parkVisitor = null;
-}
-
-const PARK_ZONE_OBSTACLES = [
-  {x:9,z:-17.75,r:2.94},{x:-7.5,z:-19.5,r:2.94},{x:19.375,z:-6.875,r:2.94},{x:-19.375,z:-6.875,r:2.94},
-  {x:0,z:-21.25,r:2.94},{x:0,z:50,hx:20,hz:30},{x:52,z:0,r:13.68},{x:0,z:14,r:2.94},{x:0,z:-13.75,r:2.94}
-];
-
-function safeParkPosition(x, z) {
-  let nextX = Number(x) || 0, nextZ = Number(z) || 0;
-  const radius = Math.hypot(nextX, nextZ);
-  if (radius > 85) { const scale = 85 / radius; nextX *= scale; nextZ *= scale; }
-  for (const obstacle of PARK_ZONE_OBSTACLES) {
-    const dx = nextX - obstacle.x, dz = nextZ - obstacle.z;
-    if (obstacle.hx != null) {
-      if (Math.abs(dx) < obstacle.hx && Math.abs(dz) < obstacle.hz) {
-        const pushX = obstacle.hx - Math.abs(dx), pushZ = obstacle.hz - Math.abs(dz);
-        if (pushX < pushZ) nextX = obstacle.x + (Math.sign(dx) || 1) * obstacle.hx;
-        else nextZ = obstacle.z + (Math.sign(dz) || 1) * obstacle.hz;
-      }
-      continue;
-    }
-    const d = Math.hypot(dx, dz);
-    if (d < obstacle.r) { const scale = obstacle.r / (d || 1); nextX = obstacle.x + (dx || .01) * scale; nextZ = obstacle.z + (dz || .01) * scale; }
-  }
-  return { x: nextX, z: nextZ };
 }
 
 function loveLetterBroadcast(room) {
@@ -2196,24 +2153,7 @@ wss.on("connection", (socket, request) => {
 
     if (museumPresence.handle(socket, message)) return;
 
-    if (type === "PARK_JOIN") {
-      const identity = classroomPlatform.verifyMuseumPresenceTicket(cleanToken(message.ticket, 2048));
-      if (!identity) { safeSend(socket, { type: "MUSEUM_AUTH_REQUIRED" }); return; }
-      leavePark(socket);
-      const parkClass = parkClasses.get(identity.classKey) || { clients: new Map() };
-      parkClasses.set(identity.classKey, parkClass);
-      socket.meta.parkVisitor = { userId:identity.userId, name:cleanToken(identity.name,12), classKey:identity.classKey, x:0, z:28, yaw:0 };
-      const oldSocket = parkClass.clients.get(identity.userId);
-      if (oldSocket && oldSocket !== socket) { oldSocket.meta.parkVisitor = null; try { oldSocket.close(4003, "REPLACED"); } catch (_) {} }
-      parkClass.clients.set(identity.userId, socket); safeSend(socket, { type: "PARK_JOINED", userId: identity.userId }); parkBroadcast(identity.classKey); return;
-    }
-    if (type === "PARK_MOVE") {
-      const visitor = socket.meta.parkVisitor;
-      if (!visitor) return;
-      const position = safeParkPosition(message.x, message.z);
-      visitor.x=position.x; visitor.z=position.z; visitor.yaw=Number.isFinite(message.yaw) ? Math.max(-6.4,Math.min(6.4,message.yaw)) : visitor.yaw;
-      parkBroadcast(visitor.classKey); return;
-    }
+    if (parkPresence.handle(socket, message)) return;
 
     if (type === "CREATE_ROOM") {
       const gameId = cleanToken(message.gameId, 30);
@@ -4338,7 +4278,7 @@ wss.on("connection", (socket, request) => {
 
   socket.on("close", code => {
     museumPresence.leave(socket);
-    leavePark(socket);
+    parkPresence.leave(socket);
     classroomPlatform.schoolChat.leave(socket);
     const key = socket.meta.roomKey;
     if (!key) return;

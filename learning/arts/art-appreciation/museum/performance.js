@@ -19,12 +19,15 @@
     const previous=material.map;material.map=texture;material.needsUpdate=true;
     if(previous!==texture&&previous?.userData?.museumPlaceholder)previous.dispose();
   }
-  function batchStaticMeshes(THREE,root,interactive){
+  function batchStaticMeshes(THREE,root,interactive,{cellSize=0}={}){
     const excluded=new Set(interactive),groups=new Map(),removedGeometries=new Set();
     root.updateMatrixWorld(true);const inverse=new THREE.Matrix4().copy(root.matrixWorld).invert();
     root.traverse(o=>{if(!o.isMesh||o.isSkinnedMesh||o.isInstancedMesh||excluded.has(o)||!o.visible||Array.isArray(o.material)||o.material.transparent)return;
+      for(let parent=o.parent;parent&&parent!==root;parent=parent.parent)if(excluded.has(parent)||!parent.visible)return;
       const attributes=Object.keys(o.geometry.attributes).sort().map(k=>k+':'+o.geometry.attributes[k].itemSize).join(',');
-      const key=o.material.uuid+'|'+o.renderOrder+'|'+attributes;
+      const p=cellSize?new THREE.Vector3().setFromMatrixPosition(o.matrixWorld):null;
+      const cell=p?Math.floor(p.x/cellSize)+','+Math.floor(p.z/cellSize):'';
+      const key=o.material.uuid+'|'+o.renderOrder+'|'+attributes+'|'+o.castShadow+'|'+o.receiveShadow+'|'+cell;
       if(!groups.has(key))groups.set(key,[]);groups.get(key).push(o);
     });
     let removed=0;
@@ -39,6 +42,7 @@
       }
       geometry.computeBoundingBox();geometry.computeBoundingSphere();
       const merged=new THREE.Mesh(geometry,meshes[0].material);merged.name='Static gallery batch';merged.renderOrder=meshes[0].renderOrder;root.add(merged);
+      merged.castShadow=meshes[0].castShadow;merged.receiveShadow=meshes[0].receiveShadow;
       for(const o of meshes){removedGeometries.add(o.geometry);o.parent.remove(o);}parts.forEach(g=>g.dispose());removed+=meshes.length-1;
     }
     const remaining=new Set();root.traverse(o=>{if(o.geometry)remaining.add(o.geometry);});

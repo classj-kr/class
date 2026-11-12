@@ -5,6 +5,7 @@ const { createRequire } = require('node:module');
 const root = path.resolve(__dirname,'../..'), req = createRequire(path.join(root,'game-hub-server/package.json'));
 const express=req('express'), {WebSocketServer}=req('ws');
 const {createMuseumPresence}=require('../../game-hub-server/museum-presence');
+const {createParkPresence}=require('../../game-hub-server/park-presence');
 const identities={
   cat:{userId:'test-cat',name:'시험고양이',schoolKey:'test-school',classKey:'test-school|1',avatarKey:'animal-cat.webp'},
   ramen:{userId:'test-ramen',name:'시험라멘',schoolKey:'test-school',classKey:'test-school|2',avatarKey:'food-ramen.webp'},
@@ -12,12 +13,13 @@ const identities={
 };
 const app=express(),server=http.createServer(app),wss=new WebSocketServer({server});
 const presence=createMuseumPresence({verifyTicket:t=>identities[t],normalizeAvatarKey:k=>k,send:(s,m)=>s.send(JSON.stringify(m))});
-wss.on('connection',s=>{s.meta={};s.on('message',raw=>presence.handle(s,JSON.parse(raw)));s.on('close',()=>presence.leave(s));});
+const parkPresence=createParkPresence({verifyTicket:t=>identities[t],normalizeAvatarKey:k=>k,send:(s,m)=>s.send(JSON.stringify(m))});
+wss.on('connection',s=>{s.meta={};s.on('message',raw=>{const m=JSON.parse(raw);presence.handle(s,m)||parkPresence.handle(s,m);});s.on('close',()=>{presence.leave(s);parkPresence.leave(s);});});
 app.get('/api/museum/presence-ticket',(request,response)=>{
  const key=new URL(request.headers.referer||'http://local').searchParams.get('testVisitor')||'cat';
  if(!identities[key])return response.sendStatus(403);response.json({ticket:key,scope:'school'});
 });
-app.get('/api/me/storage/museum',(q,r)=>r.json({items:{}}));
+app.get(['/api/me/storage/museum','/api/me/storage/park'],(q,r)=>r.json({items:{}}));
 app.get('/api/museum/completions',(q,r)=>r.json({records:[]}));
 const museum='/learning/arts/art-appreciation/museum/';
 app.get('/performance/:version',(q,r)=>{
@@ -47,6 +49,19 @@ app.get([museum,museum+'index.html'],(q,r)=>{
  document.querySelector('#qa-loop').onclick=()=>{qaStop();let side=false;const step=()=>{if(qaKey)window.dispatchEvent(new KeyboardEvent('keyup',{code:qaKey}));qaKey=side?'KeyD':'KeyA';side=!side;window.dispatchEvent(new KeyboardEvent('keydown',{code:qaKey}));};step();qaLoop=setInterval(step,650);};
  </script>`;
  r.type('html').send(html.replace('</body>',controls+'</body>'));
+});
+const park='/learning/arts/art-appreciation/park/';
+app.get('/park-review/:version',(q,r)=>{
+ const version=q.params.version==='before'?'before':'after';
+ let html=fs.readFileSync(path.join(root,version==='before'?'outputs/qa/park-overhaul/before/index.html':park+'index.html'),'utf8');
+ html=html.replace('<head>','<head><base href="'+park+'">');
+ if(version==='before')html=html.replace(/src="park.js[^\"]*"/,'src="/outputs/qa/park-overhaul/before/park.js"');
+ html=html.replace(/(<script src="(?:park.js|\/outputs\/qa\/park-overhaul\/before\/park.js)[^\"]*"><\/script>)/,'<script src="/tools/avatar-optimizer/park-performance-review.js"></script>$1');
+ r.type('html').send(html);
+});
+app.post('/park-report/:version',express.json({limit:'2mb'}),(q,r)=>{
+ if(!['before','after'].includes(q.params.version))return r.sendStatus(400);
+ fs.writeFileSync(path.join(root,'outputs/qa/park-overhaul',q.params.version+'.json'),JSON.stringify(q.body,null,2));r.sendStatus(200);
 });
 app.use('/assets/avatars',express.static(path.join(root,'apps/classtools/assets/avatars')));
 app.use(express.static(root));

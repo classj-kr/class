@@ -197,3 +197,13 @@ Proof: `museum-performance.json`, `museum-source-hashes.json`, `museum-0.webp`,
 After saving the page's report, run `node tools/avatar-optimizer/verify-museum-test.mjs`
 to verify all 15 conditions and source hashes. Timer reference:
 [Khronos elapsed-query specification](https://registry.khronos.org/webgl/extensions/EXT_disjoint_timer_query_webgl2/).
+
+## Outdoor park parity (2026-11-12)
+
+The park uses the same assigned-avatar loader and signed, school-scoped presence logic as the indoor museum. At 31 connections the park switches to each student's class; at 30 it returns to school scope. Park and museum have separate presence instances. Outdoor positions use the park radius and sculpture footprints, not indoor corridor bounds.
+
+`node --test game-hub-server/museum-presence.test.mjs game-hub-server/park-presence.test.mjs learning/arts/art-appreciation/museum/performance.test.cjs`
+
+The local fixture also exposes `/park-review/before?testVisitor=cat` and `/park-review/after?testVisitor=cat`. Its rendered measurement button visits all nine sculpture viewpoints, walks, opens/closes the actual detail dialog and writes reports to `outputs/qa/park-overhaul/`. The before route requires `before/index.html` and `before/park.js` saved from commit `c02587d68`. Run before and after sequentially at the same viewport, closing the first tab before the second. Open `after?testVisitor=ramen` separately for different-class friend walking, distance release/reload and departure checks. These use synthetic identities only.
+
+Measured at 1280×720 on the local browser, old placeholder character versus assigned cat: draw-call sums across nine views 680 → 571; idle render CPU across the nine 1.2s samples 403.5 → 204.5ms; walking frames over 1.5s 86 → 85; dialog background frames over 1.5s 86 → 0. Concurrent sculpture requests 9 → 2. This is not a low-end-device benchmark, and sculpture file sizes are unchanged. Lossless WebP screenshots and JSON reports are under `outputs/qa/park-overhaul/`.
