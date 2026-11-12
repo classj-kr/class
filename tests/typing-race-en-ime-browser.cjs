@@ -86,12 +86,12 @@ async function main() {
       for (const text of shown) assert.ok(text === '' || word.startsWith(text), `${word}: shown "${text}"`);
       assert.equal(await page.locator('#card.wrong').count(), 0, `${word}: no wrong flash`);
     }
-    // 입력기가 끝 글자를 확정하면 칸이 실제로 비워진다.
+    // 입력기가 끝 글자를 확정해도 화면의 새 입력은 빈 상태로 유지된다.
     await cdp.send('Input.insertText', { text: Core.hangulFromKeys(tail) });
-    await page.waitForFunction(() => document.querySelector('#typeInput').value === '');
+    assert.equal(await page.locator('#typed').textContent(), '');
     assert.match(await page.locator('#toast').innerText(), /영어로 바꿔 받고/);
     assert.deepEqual(errors, []);
-    console.log('PASS: English board typed with the Korean IME (ㅈ댜홋 → weight), carried-over 받침 between words, field tidied after commit.');
+    console.log('PASS: English board typed with the Korean IME (ㅈ댜홋 → weight), with stable word boundaries during and after composition.');
   } finally {
     await browser?.close();
     server.close();
