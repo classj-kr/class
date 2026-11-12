@@ -118,6 +118,36 @@ Evidence: `outputs/qa/avatar-lab/compression-20261111/draco/crowd-performance.js
 `crowd-performance.webp`. JSON includes frame percentiles, visibility, texture-memory estimates,
 input hashes, and assertions that 30 cats share one model's geometry while all 30 are rendered.
 
+## Museum performance overhaul (2026-11-12)
+
+`museum-assigned-test-server.cjs` serves the actual museum at port 8771 with synthetic
+cat/ramen identities and the production WebSocket handler; it does not write account data.
+For a baseline, save the previous museum `index.html`, `museum.js`, `styles.css`, and
+`assigned-avatars.js` under `outputs/qa/museum-overhaul/before/` before making changes.
+The recorded baseline for this overhaul was commit `dbb89d0a42e487753cdeeae563b85ca775324e8c`.
+
+Open `/performance/before?avatars=preview` and run the room-cycle, movement, and dialog
+buttons. Close that tab before opening `/performance/after?avatars=preview` and repeating
+the same sequence. Each page runs the real gallery renderer without avatars, records its
+CPU submission time, draw calls, geometry/texture counters, and saves lossless WebP captures.
+Then run `node tools/avatar-optimizer/verify-museum-performance.cjs`.
+
+Recorded at 1280×720, pixel ratio 1: entrance calls 257 → 73; end-of-second-lap GPU texture
+count 245 → 31 (new version stays at 31–33 across all five rooms). Moving render rate stayed
+56.5 → 56.4 Hz, while average CPU update/render submission fell 1.19 → 0.41 ms per frame.
+An open artwork dialog rendered 113 → 0 background frames over two seconds and resumed on
+close. These are local browser measurements, not GPU timings or a guarantee for school PCs.
+Art source pixels were not resized. Batching increases submitted triangles slightly because
+the merged static geometry has coarser frustum culling, while reducing draw calls substantially.
+
+`node --test learning/arts/art-appreciation/museum/performance.test.cjs
+learning/arts/art-appreciation/museum/follow-camera.test.cjs
+game-hub-server/museum-presence.test.mjs` covers room-resource lifetime, stale loads, geometry,
+frame scheduling, entrance collision, and school/class visibility. A 30-mover simulation
+confirms one 100 ms batch sends 30 snapshots instead of 900, and unchanged idle packets send
+none. Local UI checks also covered two assigned avatars, walking/stopping, room separation
+and reunion, entrance retreat, artwork opening/closing, and no browser errors.
+
 ## Actual museum comparison: 0, 10, 30 avatars
 
 ```powershell

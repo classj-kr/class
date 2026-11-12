@@ -7,6 +7,17 @@ const require = createRequire(import.meta.url);
 const { createMuseumPresence } = require('./museum-presence');
 const { WebSocketServer, WebSocket } = require('ws');
 
+test('30 simultaneous movers share one broadcast and idle heartbeats produce none',()=>{
+  const messages=[],sockets=[];
+  const p=createMuseumPresence({verifyTicket:id=>({userId:id,name:id,schoolKey:'one',classKey:'one|1',avatarKey:'animal-cat.webp'}),normalizeAvatarKey:x=>x,send:(s,m)=>messages.push({s,m})});
+  for(let i=0;i<30;i++){const s={meta:{},close(){}};sockets.push(s);p.handle(s,{type:'MUSEUM_JOIN',ticket:String(i)});}
+  messages.length=0;
+  for(let i=0;i<30;i++)p.handle(sockets[i],{type:'MUSEUM_MOVE',room:'portrait',x:i/10,z:-2,yaw:0,moving:true});
+  assert.equal(messages.length,0);p.flush();assert.equal(messages.length,30);assert.ok(messages.every(({m})=>m.visitors.length===30));
+  for(let i=0;i<30;i++)p.handle(sockets[i],{type:'MUSEUM_MOVE',room:'portrait',x:i/10,z:-2,yaw:0,moving:false});p.flush();messages.length=0;
+  for(let n=0;n<10;n++)for(let i=0;i<30;i++)p.handle(sockets[i],{type:'MUSEUM_MOVE',room:'portrait',x:i/10,z:-2,yaw:0,moving:false});p.flush();assert.equal(messages.length,0);
+});
+
 test('same-school visibility switches at 31 and returns at 30 without exposing other schools', () => {
   const identities = new Map(), sockets = [];
   const p = createMuseumPresence({verifyTicket:k=>identities.get(k),normalizeAvatarKey:k=>k,send:(s,m)=>{s.last=m;}});
