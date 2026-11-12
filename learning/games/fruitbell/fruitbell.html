@@ -128,7 +128,9 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261113-fruit-avatars"></script>
+<link rel="stylesheet" href="lobby-avatars.css?v=20261113-1">
+<script src="lobby-avatars.js?v=20261113-1"></script>
 <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -189,7 +191,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
         <div class="mp-lobby-status" id="joinStatus"></div>
       </div>
     </div>
-    <div class="mp-lobby-card"><div class="mp-lobby-status" id="lobbyGuide">참가 가능 인원: 2~4명</div><div class="mp-lobby-player-list" id="lobbyPlayers"></div><div id="teamPicker" class="team-picker hidden" aria-label="2 대 2 팀 선택"><div class="team-picker-board"><section class="team-picker-column a"><div class="team-picker-heading"><span>파랑팀</span><span id="teamACount">0 / 2</span></div><div id="teamASlots" class="team-picker-slots"></div></section><section class="team-picker-column b"><div class="team-picker-heading"><span>빨강팀</span><span id="teamBCount">0 / 2</span></div><div id="teamBSlots" class="team-picker-slots"></div></section></div><p id="teamPickerGuide" class="team-picker-guide">원하는 팀의 빈 자리를 누르세요.</p></div></div>
+    <div class="mp-lobby-card"><div class="mp-lobby-status" id="lobbyGuide">참가 가능 인원: 2~4명</div><p id="teamUnassignedLabel" class="hidden">팀을 고르는 중</p><div class="mp-lobby-player-list" id="lobbyPlayers"></div><div id="teamPicker" class="team-picker hidden" aria-label="2 대 2 팀 선택"><div class="team-picker-board"><section class="team-picker-column a"><div class="team-picker-heading"><span>파랑팀</span><span id="teamACount">0 / 2</span></div><div id="teamASlots" class="team-picker-slots"></div></section><section class="team-picker-column b"><div class="team-picker-heading"><span>빨강팀</span><span id="teamBCount">0 / 2</span></div><div id="teamBSlots" class="team-picker-slots"></div></section></div><p id="teamPickerGuide" class="team-picker-guide">원하는 팀의 빈 자리를 누르세요.</p></div></div>
     <div class="mp-lobby-actions"><button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="small" type="button">Rules</button></div>
 
     <div class="music-control">
@@ -251,7 +253,7 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 const GAME_ID="fruitbell";
 const FRUITS=["strawberry","banana","lime","plum"];
 let lobby=null,myId=null,myRole="host",players={},started=false;
-let gameMode="individual";
+let gameMode="individual",lobbyHostId=null;
 const BELL_TARGETS=[4,5,6];
 let bellTarget=5;
 let state={turn:0,order:[],scores:{},decks:{},faceUp:{},faceUpPiles:{},wonCards:{},penaltyPot:[],locked:false,ended:false,turnDeadline:0,gameMode:"individual",bellTarget:5,teams:{}};
@@ -467,17 +469,18 @@ function assignFruitTeam(playerId,team){
  if(requested&&players[playerId].fruitTeam!==requested&&fruitTeamMembers(requested).length>=2)return;
  players[playerId].fruitTeam=requested;lobby?.publishLobbyState();
 }
-function renderFruitTeamSlots(team,elementId){
- const members=fruitTeamMembers(team).slice(0,2),slots=[];
- members.forEach(id=>{const mine=id===myId;slots.push(`<button class="team-picker-slot occupied${mine?" mine":""}" type="button" ${mine?`onclick="chooseFruitTeam('${team}')"`:"disabled"}>${cleanName(players[id]?.name)}${mine?"<br><small>나 · 다시 눌러 취소</small>":""}</button>`)});
- for(let i=members.length;i<2;i++)slots.push(`<button class="team-picker-slot empty" type="button" onclick="chooseFruitTeam('${team}')">빈 자리<br><small>선택하기</small></button>`);
- $(elementId).innerHTML=slots.join("");
-}
 function renderTeamPicker(){
  const picker=$("teamPicker"),list=$("lobbyPlayers");if(!picker||!list)return;
- const teamMode=gameMode==="team"&&!started;picker.classList.toggle("hidden",!teamMode);list.classList.toggle("hidden",teamMode);if(!teamMode)return;
- const a=fruitTeamMembers("A").length,b=fruitTeamMembers("B").length;$("teamACount").textContent=`${a} / 2`;$("teamBCount").textContent=`${b} / 2`;
- renderFruitTeamSlots("A","teamASlots");renderFruitTeamSlots("B","teamBSlots");
+ const teamMode=gameMode==="team"&&!started,ids=Object.keys(players),unassigned=ids.filter(id=>!["A","B"].includes(players[id]?.fruitTeam));
+ const options={myId,hostId:lobbyHostId,onTeamSelect:chooseFruitTeam};
+ picker.classList.toggle("hidden",!teamMode);
+ list.classList.toggle("hidden",teamMode&&!unassigned.length);
+ $("teamUnassignedLabel").classList.toggle("hidden",!teamMode||!unassigned.length);
+ FruitBellLobbyAvatars.render(list,teamMode?unassigned:ids,players,{...options,slots:teamMode||!ids.length?0:4});
+ if(!teamMode)return;
+ const a=fruitTeamMembers("A"),b=fruitTeamMembers("B");$("teamACount").textContent=`${a.length} / 2`;$("teamBCount").textContent=`${b.length} / 2`;
+ FruitBellLobbyAvatars.render($("teamASlots"),a,players,{...options,team:"A",slots:2});
+ FruitBellLobbyAvatars.render($("teamBSlots"),b,players,{...options,team:"B",slots:2});
  const mine=players[myId]?.fruitTeam;$("teamPickerGuide").textContent=validFruitTeams()?"팀 구성이 완료되었습니다. 방장이 게임을 시작할 수 있습니다.":mine?`${mine==="A"?"파랑":"빨강"}팀을 선택했습니다. 다른 팀의 빈 자리를 누르면 바뀝니다.`:"원하는 팀의 빈 자리를 누르세요.";
 }
 function teamTotal(team){
@@ -487,7 +490,7 @@ function teamTotal(team){
 }
 
 function currentPlayerName(){return getSavedPlayerName()}
-function syncLobbyState(snapshot){myId=snapshot.myId;myRole=snapshot.role;players=snapshot.players;started=snapshot.started;renderTeamPicker()}
+function syncLobbyState(snapshot){myId=snapshot.myId;myRole=snapshot.role;players=snapshot.players;started=snapshot.started;if(myRole==="host")lobbyHostId=myId;else if(!Object.keys(players).length)lobbyHostId=null;renderTeamPicker()}
 function send(payload){return lobby?.send(payload)||false}
 function broadcast(payload){return lobby?.broadcast(payload)||false}
 function handleGame(sender,data){
@@ -778,8 +781,11 @@ function initFruitBellLobby(){
     getPlayerName:currentPlayerName,
     maxPlayers:4,
     canStart:canStartFruitBell,
-    getLobbyData:()=>({gameMode,bellTarget}),
-    onLobbyData:data=>{if(data?.gameMode)applyGameMode(data.gameMode);applyBellTarget(data?.bellTarget)},
+    getAvatarKey:FruitBellLobbyAvatars.loadAvatarKey,
+    // syncLobbyState renders both the unassigned seats and the selected teams together.
+    renderPlayerList:()=>{},
+    getLobbyData:()=>({gameMode,bellTarget,hostId:myId}),
+    onLobbyData:data=>{lobbyHostId=data?.hostId||lobbyHostId;if(data?.gameMode)applyGameMode(data.gameMode);applyBellTarget(data?.bellTarget)},
     getLobbyPresentation:fruitBellLobbyPresentation,
     formatPlayerName:player=>isValidName(player?.name)?player.name:"이름 입력 중",
     rulesButtonIds:["rulesBtnLobby","rulesBtnGame"],
