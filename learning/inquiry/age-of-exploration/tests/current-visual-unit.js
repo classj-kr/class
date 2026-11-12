@@ -3,6 +3,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const Current=require('../public/js/ocean-current.js');
 const html=fs.readFileSync('public/index.html','utf8');
 assert.doesNotMatch(html,/currentClouds|drawOriginalCurrentCloud/,'clouds are reserved for wind');
+const sprite=html.slice(html.indexOf('function buildCurrentSprite('),html.indexOf('function seedCurrentVisuals('));
+assert.doesNotMatch(sprite,/\.fill\(|\.closePath\(/,'water streaks have no filled arrowheads');
 const seed=html.slice(html.indexOf('function seedCurrentVisuals('),html.indexOf('\nbuildCurrentSprite();'));
 const renderer=html.slice(html.indexOf('function drawCurrentTracer('),html.indexOf('function choiceModalActive('))+
   html.slice(html.indexOf('function drawOceanCurrents('),html.indexOf('function drawWindClouds('));
@@ -21,17 +23,19 @@ function render(lon,lat,zoom,width,height,now=1000){
   return draws.filter(p=>p.x>=0&&p.x<=width&&p.y>=0&&p.y<=height);
 }
 for(const [lon,lat]of[[-48,46],[136,33],[-77,-24]])for(const zoom of[.55,1,3.6]){
-  assert.ok(render(lon,lat,zoom,1366,768).length>=10,`current must remain visible at ${lon},${lat}, zoom ${zoom}`);
-  assert.ok(render(lon,lat,zoom,390,844).length>=2,'a phone must show multiple current markers');
+  const desktop=render(lon,lat,zoom,1366,768).length;
+  const phone=render(lon,lat,zoom,390,844).length;
+  assert.ok(desktop>=3&&desktop<=18,`sparse desktop current marks at ${lon},${lat}, zoom ${zoom}: ${desktop}`);
+  assert.ok(phone>=1&&phone<=7,`sparse phone current marks at ${lon},${lat}, zoom ${zoom}: ${phone}`);
 }
-const first=render(-48,46,1,1366,768),next=render(-48,46,1,1366,768,1050);
-assert.ok(first.every(p=>p.alpha>=.45&&p.size>=55),'markers must have readable opacity and size');
-const motions=first.map(a=>next.filter(b=>Math.abs(b.size-a.size)<.001).map(b=>Math.hypot(b.x-a.x,b.y-a.y)).find(d=>d>0&&d<10)).filter(Number.isFinite);
-assert.ok(motions.length>=5,'markers must move continuously along the current');
-assert.ok(motions.every(d=>d/.05>=20),'surface flow must be visibly moving');
+const first=render(-48,46,1,1366,768),next=render(-48,46,1,1366,768,1100);
+assert.ok(first.every(p=>p.alpha<=.59&&p.size<=68),'ripples stay subdued on the map');
+const motions=first.map(a=>next.map(b=>Math.hypot(b.x-a.x,b.y-a.y)).find(d=>d>0&&d<3)).filter(Number.isFinite);
+assert.ok(motions.length>=3,'ripples must move continuously along the current');
+assert.ok(motions.every(d=>d/.1>=3&&d/.1<=7.1),'water ripples travel slowly');
 assert.equal(render(-140,0,1,1366,768).length,0,'quiet ocean must not invent a current');
 flowOverride={x:0,y:1,strength:.8};const south=render(-48,46,1,1366,768);
-assert.ok(south.length>0&&south.every(p=>Math.abs(p.angle-Math.PI/2)<1e-6),'arrows must follow the local sailing current');
+assert.ok(south.length>0&&south.every(p=>Math.abs(p.angle-Math.PI/2)<1e-6),'ripples must follow the local sailing current');
 sea=false;assert.equal(render(-48,46,1,1366,768).length,0,'no markers on land');sea=true;
 modal=true;assert.equal(render(-48,46,1,1366,768).length,0);modal=false;
 context.mode='land';assert.equal(render(-48,46,1,1366,768).length,0);

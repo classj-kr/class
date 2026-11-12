@@ -44,13 +44,16 @@ let browser,logs='';fixture.stdout.on('data',d=>logs+=d);fixture.stderr.on('data
         try{drawOceanCurrents(width,height,left,top,1000)}finally{ctx.drawImage=draw}
         const elapsed=performance.now()-start;
         const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
-        for(let i=3;i<data.length;i+=4)if(data[i]>80)pixels++;
+        for(let i=3;i<data.length;i+=4)if(data[i]>32)pixels++;
         ctx.drawImage=function(img,...args){if(img===windCloudAtlas)clouds++;return draw.call(this,img,...args)};
         try{drawWindClouds(width,height,left,top,1000)}finally{ctx.drawImage=draw;paintScene()}
         return{marks,pixels,clouds,elapsed,globe:globeReady,lat:90-view.y/MAP_H*180};
       });
       if(label==='quiet-ocean')assert.equal(result.marks,0,'quiet ocean has no current overlay');
-      else{assert.ok(result.marks>=2,label+': multiple current marks must be drawn');assert.ok(result.pixels>120,label+': water marks must have visible pixels')}
+      else{
+        assert.ok(result.marks>=1&&result.marks<=22,label+': sparse water marks '+JSON.stringify(result));
+        assert.ok(result.pixels>30,label+': water marks must have visible pixels '+JSON.stringify(result));
+      }
       cases.push({label,...result});
       if(process.env.VOYAGE_FLOW_CAPTURE&&['atlantic-desktop','atlantic-phone','kuroshio-phone'].includes(label)){
         fs.mkdirSync(process.env.VOYAGE_FLOW_CAPTURE,{recursive:true});
