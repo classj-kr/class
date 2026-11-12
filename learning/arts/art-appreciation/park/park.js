@@ -233,47 +233,89 @@
   const tmpDirection = new THREE.Vector3();
   const tmpRight = new THREE.Vector3();
 
+  const playerPosition=new THREE.Vector3(0,.002,6.5);
   const presenceEl = document.getElementById('class-presence');
   const remotePeople = new Map();
-  const remoteLayer = new THREE.Group(); scene.add(remoteLayer);
-  let presenceSocket = null, presenceTimer = 0, localPresenceId = null, presenceScope = 'class';
-  const avatarColors = [0x547da6, 0x9d5b4c, 0x5a896a, 0x886ca5];
-  function avatarColor(value) { const text = String(value || ''); let hash = 0; for (let i = 0; i < text.length; i++) hash = (hash * 31 + text.charCodeAt(i)) >>> 0; return avatarColors[hash % avatarColors.length]; }
-  function personLabel(name) { const c = document.createElement('canvas'); c.width = 300; c.height = 64; const g = c.getContext('2d'); g.fillStyle = 'rgba(9,7,5,.82)'; g.fillRect(0, 4, 300, 52); g.strokeStyle = '#d6b66b'; g.strokeRect(1, 5, 298, 50); g.fillStyle = '#fff0ca'; g.textAlign = 'center'; g.font = 'bold 25px sans-serif'; g.fillText(name, 150, 39); const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; return new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false })); }
-  function makeSelfAvatar() {
-    const group = new THREE.Group();
-    const cloth = new THREE.MeshStandardMaterial({ color: 0x547da6, roughness: .72 });
-    const skin = new THREE.MeshStandardMaterial({ color: 0xe2ad88, roughness: .82 });
-    const hair = new THREE.MeshStandardMaterial({ color: 0x241a15, roughness: .92 });
-    const torso = new THREE.Mesh(new THREE.CylinderGeometry(.2, .27, .58, 14), cloth); torso.position.y = .94;
-    const shoulders = new THREE.Mesh(new THREE.BoxGeometry(.58, .16, .22), cloth); shoulders.position.set(0, 1.17, 0);
-    const neck = new THREE.Mesh(new THREE.CylinderGeometry(.075, .085, .13, 12), skin); neck.position.y = 1.3;
-    const head = new THREE.Mesh(new THREE.SphereGeometry(.19, 18, 14), skin); head.position.y = 1.47;
-    const hairCap = new THREE.Mesh(new THREE.SphereGeometry(.198, 18, 10, 0, Math.PI * 2, 0, Math.PI * .58), hair); hairCap.position.set(0, 1.5, .005);
-    const leftArm = new THREE.Mesh(new THREE.CylinderGeometry(.065, .075, .48, 10), cloth); leftArm.position.set(-.28, .92, 0); leftArm.rotation.z = -.08;
-    const rightArm = leftArm.clone(); rightArm.position.x = .28; rightArm.rotation.z = .08;
-    group.add(torso, shoulders, neck, head, hairCap, leftArm, rightArm);
-    group.userData.cloth = cloth;
-    group.scale.setScalar(.72);
-    group.traverse(part => { if (part.isMesh) { part.castShadow = false; part.receiveShadow = false; part.renderOrder = 3; } });
-    return group;
+  const assignedAvatars = window.createMuseumAssignedAvatars({THREE,scene,canvas});
+  const selfActor = assignedAvatars.create({self:true}), selfAvatar = selfActor.group;
+  let actualSpeed=0, avatarHeading=Math.PI, reconnectTimer=0, closing=false;
+  let presenceSocket=null, presenceTimer=0, localPresenceId=null, presenceScope='school', lastPresence=null;
+  const framePolicy=MuseumPerformance.createFramePolicy(), resolutionBudget=MuseumPerformance.createResolutionBudget();
+  let resolutionScale=1,lastLoopTime=performance.now();
+  function updatePeople(visitors) {
+    const friends=visitors.filter(v=>v.userId!==localPresenceId),ids=new Set(friends.map(v=>v.userId));
+    for(const [id,entry] of remotePeople)if(!ids.has(id)){entry.actor.dispose();remotePeople.delete(id);}
+    for(const v of friends){
+      let entry=remotePeople.get(v.userId);
+      if(!entry){const actor=assignedAvatars.create({name:v.name});entry={actor,group:actor.group};entry.group.position.set(v.x,.002,v.z);remotePeople.set(v.userId,entry);}
+      const now=performance.now(),distance=Math.hypot(v.x-(entry.x??v.x),v.z-(entry.z??v.z));
+      const changed=distance>.001||entry.moving!==(v.moving===true);
+      Object.assign(entry,{x:v.x,z:v.z,yaw:v.yaw,avatarKey:v.avatarKey||'',moving:v.moving===true,
+        speed:changed?Math.min(7.5,distance/Math.max(.05,(now-(entry.received||now-100))/1000)):entry.speed||0,
+        received:changed?now:entry.received||now});
+    }
   }
-  const selfAvatar = makeSelfAvatar(); scene.add(selfAvatar);
-  function makePerson(visitor) { const g = new THREE.Group(), cloth = new THREE.MeshStandardMaterial({ color: avatarColor(visitor.userId), roughness: .7, transparent: true, opacity: .86 }); const skin = new THREE.MeshStandardMaterial({ color: 0xe4b18d, roughness: .8, transparent: true, opacity: .86 }); const head = new THREE.Mesh(new THREE.SphereGeometry(.17, 16, 12), skin); head.position.y = 1.38; const body = new THREE.Mesh(new THREE.CylinderGeometry(.18, .24, .54, 12), cloth); body.position.y = .93; const leg = new THREE.Mesh(new THREE.CylinderGeometry(.07, .08, .42, 10), new THREE.MeshStandardMaterial({ color: 0x23252c, transparent: true, opacity: .86 })); leg.position.set(-.09, .42, 0); const leg2 = leg.clone(); leg2.position.x = .09; g.add(head, body, leg, leg2); const label = personLabel(visitor.name); label.position.y = 1.78; label.scale.set(.9, .19, 1); g.add(label); remoteLayer.add(g); return g; }
-  function updatePeople(visitors) { const visible = visitors.filter(v => v.userId !== localPresenceId); const ids = new Set(visible.map(v => v.userId)); for (const [id, entry] of remotePeople) { if (!ids.has(id)) { remoteLayer.remove(entry.group); remotePeople.delete(id); } } for (const v of visible) { let entry = remotePeople.get(v.userId); if (!entry) { entry = { group: makePerson(v) }; remotePeople.set(v.userId, entry); } entry.x = v.x; entry.z = v.z; entry.yaw = v.yaw; entry.group.position.set(v.x, 0, v.z); entry.group.rotation.y = v.yaw; } }
-  async function connectClassPresence() { try { const name = String((window.CLASS_PLAYER_NAME || "") || '').trim(); let clientId = sessionStorage.getItem('museumPresenceClientId'); if (!clientId) { clientId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`; sessionStorage.setItem('museumPresenceClientId', clientId); } const query = new URLSearchParams({ name, clientId }); const response = await fetch(`/api/museum/presence-ticket?${query}`); if (!response.ok) return; const payload = await response.json(); presenceScope = payload.scope || 'class'; const proto = location.protocol === 'https:' ? 'wss' : 'ws'; presenceSocket = new WebSocket(`${proto}://${location.host}`); presenceSocket.addEventListener('open', () => presenceSocket.send(JSON.stringify({ type: 'PARK_JOIN', ticket: payload.ticket }))); presenceSocket.addEventListener('message', event => { const msg = JSON.parse(event.data); if (msg.type === 'PARK_JOINED') { localPresenceId = msg.userId; selfAvatar.userData.cloth.color.setHex(avatarColor(msg.userId)); } if (msg.type === 'PARK_STATE') { updatePeople(msg.visitors); const here = msg.visitors.length; presenceEl.textContent = presenceScope === 'open' ? `함께 탐험 중 ${here}명` : `우리 반 함께 탐험 중 ${here}명`; presenceEl.hidden = false; } }); } catch (_) {} }
-  function sendPresence() { if (!presenceSocket || presenceSocket.readyState !== WebSocket.OPEN) return; const now = performance.now(); if (now - presenceTimer < 100) return; presenceTimer = now; presenceSocket.send(JSON.stringify({ type: 'PARK_MOVE', x: camera.position.x, z: camera.position.z, yaw })); }
-  function updateSelfAvatar() {
-    const forwardX = -Math.sin(yaw), forwardZ = -Math.cos(yaw);
-    selfAvatar.position.set(camera.position.x + forwardX * 1.05, -.12, camera.position.z + forwardZ * 1.05);
-    selfAvatar.rotation.y = yaw;
-    selfAvatar.visible = !detailModal.open && !finaleModal.open;
+  function updateRemoteAvatars(dt) {
+    for(const entry of remotePeople.values()){
+      const nearby=Math.hypot(entry.x-camera.position.x,entry.z-camera.position.z)<45;
+      entry.group.visible=nearby&&!detailModal.open&&!finaleModal.open;
+      const key=nearby?entry.avatarKey:'';
+      if(entry.actor.key!==key)void entry.actor.assign(key);
+      const blend=1-Math.exp(-dt*14),gap=Math.hypot(entry.x-entry.group.position.x,entry.z-entry.group.position.z);
+      if(gap>4)entry.group.position.set(entry.x,.002,entry.z);
+      else {entry.group.position.x+=(entry.x-entry.group.position.x)*blend;entry.group.position.z+=(entry.z-entry.group.position.z)*blend;}
+      entry.group.rotation.y+=Math.atan2(Math.sin(entry.yaw-entry.group.rotation.y),Math.cos(entry.yaw-entry.group.rotation.y))*blend;
+      entry.actor.moving=nearby&&entry.moving&&performance.now()-entry.received<700;entry.actor.speed=entry.speed;
+    }
   }
+  async function connectClassPresence(){
+    try{
+      let clientId=sessionStorage.getItem('museumPresenceClientId');
+      if(!clientId){clientId=crypto.randomUUID();sessionStorage.setItem('museumPresenceClientId',clientId);}
+      const query=new URLSearchParams({name:String(window.CLASS_PLAYER_NAME||'').trim(),clientId});
+      const response=await fetch(`/api/museum/presence-ticket?${query}`,{cache:'no-store'});
+      if(!response.ok){presenceEl.textContent='함께 탐험 연결을 확인해 주세요.';presenceEl.hidden=false;return;}
+      const payload=await response.json(),socket=new WebSocket(`${location.protocol==='https:'?'wss':'ws'}://${location.host}`);
+      presenceSocket=socket;presenceScope=payload.scope||'school';
+      socket.addEventListener('open',()=>socket.send(JSON.stringify({type:'PARK_JOIN',ticket:payload.ticket})));
+      socket.addEventListener('message',event=>{
+        let msg;try{msg=JSON.parse(event.data);}catch{return;}
+        if(msg.type==='PARK_JOINED'){
+          if(!localPresenceId&&Number.isFinite(msg.position?.x)&&Number.isFinite(msg.position?.z))playerPosition.set(msg.position.x,.002,msg.position.z);
+          localPresenceId=msg.userId;void selfActor.assign(msg.avatarKey);presenceTimer=0;lastPresence=null;sendPresence();
+        }
+        if(msg.type==='PARK_STATE'){
+          presenceScope=msg.scope||presenceScope;updatePeople(msg.visitors);
+          presenceEl.textContent=presenceScope==='class'?`우리 반 함께 탐험 중 ${msg.visitors.length}명 · 학교 접속 30명 초과`:presenceScope==='school'?`우리 학교 함께 탐험 중 ${msg.visitors.length}명`:`함께 탐험 중 ${msg.visitors.length}명`;presenceEl.hidden=false;
+        }
+      });
+      socket.addEventListener('close',event=>{if(presenceSocket!==socket)return;presenceSocket=null;updatePeople([]);presenceEl.textContent='함께 탐험 연결이 끊겼어요.';presenceEl.hidden=false;if(!closing&&event.code!==4003)reconnectTimer=setTimeout(connectClassPresence,2000);});
+    }catch(error){if(!closing)reconnectTimer=setTimeout(connectClassPresence,3000);}
+  }
+  function sendPresence(){
+    if(!presenceSocket||presenceSocket.readyState!==WebSocket.OPEN||!localPresenceId)return;
+    const now=performance.now(),state={room:'park',x:playerPosition.x,z:playerPosition.z,yaw:avatarHeading,moving:actualSpeed>.03&&!document.hidden&&!detailModal.open&&!finaleModal.open};
+    if(now-presenceTimer<100||(!MuseumPerformance.presenceChanged(lastPresence,state)&&now-presenceTimer<3000))return;
+    presenceTimer=now;lastPresence=state;presenceSocket.send(JSON.stringify({type:'PARK_MOVE',...state}));
+  }
+  function updateSelfAvatar(){
+    const follow=ParkFollowCamera.position(playerPosition,yaw,zoneObstacles);
+    camera.position.x=follow.x;camera.position.z=follow.z;
+    selfAvatar.position.copy(playerPosition);selfAvatar.rotation.y=avatarHeading;
+    selfActor.moving=actualSpeed>.03;selfActor.speed=actualSpeed;
+    selfAvatar.visible=follow.distance>.85&&!detailModal.open&&!finaleModal.open;
+  }
+  function clearMovement(){for(const key of Object.keys(keys))keys[key]=false;velocity.set(0,0,0);actualSpeed=0;dragging=false;}
+  addEventListener('blur',clearMovement);
+  document.addEventListener('visibilitychange',()=>{clearMovement();framePolicy.invalidate();sendPresence();});
+  for(const dialog of [detailModal,finaleModal])dialog.addEventListener('close',()=>framePolicy.invalidate());
+  addEventListener('pagehide',()=>{closing=true;clearTimeout(reconnectTimer);presenceSocket?.close();});
+  addEventListener('pageshow',event=>{if(event.persisted){closing=false;connectClassPresence();}});
 
   const textureLoader = new THREE.TextureLoader();
 
   function surfaceTexture(path, repeatX, repeatY, color = true) {
-    const texture = textureLoader.load(path);
+    const texture = textureLoader.load(path,()=>framePolicy.invalidate());
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(repeatX, repeatY);
     texture.anisotropy = Math.min(12, renderer.capabilities.getMaxAnisotropy());
@@ -343,6 +385,8 @@
     return new THREE.MeshStandardMaterial({ color: 0xbab2a5, roughness: .58, metalness: .02 });
   }
 
+  const modelQueue=[];let modelLoads=0;
+  function drainModels(){while(modelLoads<2&&modelQueue.length){modelLoads++;modelQueue.shift()();}}
   function loadZoneModel(zone) {
     const rootGroup = new THREE.Group();
     rootGroup.position.set(zone.position[0], 0, zone.position[2]);
@@ -353,7 +397,7 @@
     plinth.receiveShadow = true;
     plinth.frustumCulled = false;  // 받침대가 카메라 경계에서 갑자기 사라지는 현상 방지
 
-    gltfLoader.load(zone.modelPath, (gltf) => {
+    modelQueue.push(()=>gltfLoader.load(zone.modelPath, (gltf) => {
       const model = gltf.scene;
       model.matrixAutoUpdate = true;
       if (zone.modelRotation) model.rotation.set(zone.modelRotation[0], zone.modelRotation[1], zone.modelRotation[2]);
@@ -364,7 +408,7 @@
         if (child.isMesh) {
           child.castShadow = true;
           child.receiveShadow = true;
-          child.geometry.computeVertexNormals();
+          if(!child.geometry.attributes.normal)child.geometry.computeVertexNormals();
 
           if (mat) {
             child.material = mat;
@@ -389,10 +433,11 @@
       model.position.y = 0.4 - scaledBounds.min.y - (zone.groundSink || 0);
 
       rootGroup.add(model);
-      renderer.shadowMap.needsUpdate = true;
+      renderer.shadowMap.needsUpdate = true;framePolicy.invalidate();modelLoads--;drainModels();
     }, undefined, (err) => {
       console.error('Error loading 3D GLB model for zone:', zone.id, err);
-    });
+      modelLoads--;drainModels();framePolicy.invalidate();
+    }));
 
     // Room 05-style Sculpture Spotlight & Rim Light — 가까운 구역에만 조명 풀에서 배정한다.
     zoneLightAnchors.push({
@@ -495,7 +540,8 @@
       const crown = sphere(1.4 + (i % 4) * .18, i % 3 ? MAT.leaf : MAT.leaf2, tree, [0, h + .8, 0], 12, 9); crown.scale.y = 1.25;
       tree.position.set(x, 0, z); tree.rotation.y = a; tree.traverse(o => { if (o.isMesh) { o.castShadow = i % 4 === 0; o.receiveShadow = true; } }); park.add(tree);
     }
-    for (let i = 0; i < 26; i++) { const a = i / 26 * Math.PI * 2; const lamp = cylinder(.06, .09, 3.4, 10, MAT.darkStone, park, [Math.cos(a) * 28, 1.7, Math.sin(a) * 28]); sphere(.16, new THREE.MeshStandardMaterial({ color: 0xffe1a5, emissive: 0xffba55, emissiveIntensity: 1.2 }), park, [Math.cos(a) * 28, 3.5, Math.sin(a) * 28], 12, 8); }
+    const lampMaterial=new THREE.MeshStandardMaterial({color:0xffe1a5,emissive:0xffba55,emissiveIntensity:1.2});
+    for (let i = 0; i < 26; i++) { const a = i / 26 * Math.PI * 2; const lamp = cylinder(.06, .09, 3.4, 10, MAT.darkStone, park, [Math.cos(a) * 28, 1.7, Math.sin(a) * 28]); sphere(.16, lampMaterial, park, [Math.cos(a) * 28, 3.5, Math.sin(a) * 28], 12, 8); }
   }
 
   function setupLights() {
@@ -513,10 +559,12 @@
     });
   }
   function teleport(zone) {
+    clearMovement();framePolicy.invalidate();
     camera.position.set(zone.arrival[0], zone.arrival[1], zone.arrival[2]);
     const target = new THREE.Vector3(zone.lookAt[0], zone.lookAt[1], zone.lookAt[2]);
     const d = target.sub(camera.position); yaw = Math.atan2(-d.x, -d.z); pitch = Math.atan2(d.y, Math.hypot(d.x, d.z)); updateCamera();
-    setActiveZone(zone);
+    playerPosition.set(zone.arrival[0]-Math.sin(yaw)*2.6,.002,zone.arrival[2]-Math.cos(yaw)*2.6);
+    avatarHeading=yaw+Math.PI;updateSelfAvatar();sendPresence();setActiveZone(zone);
   }
   function setActiveZone(zone) {
     if (activeZone === zone) return; activeZone = zone;
@@ -537,7 +585,7 @@
     document.getElementById('modal-docent').textContent = zone.docent;
     document.getElementById('modal-caution').textContent = zone.caution;
     document.getElementById('modal-look').textContent = zone.look;
-    detailModal.showModal();
+    clearMovement();detailModal.showModal();sendPresence();
   }
   function shuffledCopy(items) {
     const result = [...items];
@@ -583,7 +631,7 @@
     document.getElementById('finale-complete').hidden = true;
     document.getElementById('finale-question-wrap').hidden = false;
     renderQuizQuestion();
-    finaleModal.showModal();
+    clearMovement();finaleModal.showModal();sendPresence();
   }
   function renderQuizQuestion() {
     const item = quizQuestions[quizIndex];
@@ -642,7 +690,7 @@
   }
   function updateCamera() { camera.rotation.y = yaw; camera.rotation.x = pitch; }
   function updateMovement(dt) {
-    if (detailModal.open || finaleModal.open) return;
+    if (detailModal.open || finaleModal.open) {actualSpeed=0;return;}
     const forward = (keys.KeyW || keys.ArrowUp ? 1 : 0) - (keys.KeyS || keys.ArrowDown ? 1 : 0);
     const strafe = (keys.KeyD || keys.ArrowRight ? 1 : 0) - (keys.KeyA || keys.ArrowLeft ? 1 : 0);
     tmpDirection.set(-Math.sin(yaw), 0, -Math.cos(yaw)); tmpRight.set(Math.cos(yaw), 0, -Math.sin(yaw));
@@ -651,34 +699,44 @@
     const accel = 28, maxSpeed = (keys.ShiftLeft || keys.ShiftRight) ? 7.5 : 4.8;
     velocity.addScaledVector(wish, accel * dt); velocity.multiplyScalar(Math.pow(.03, dt));
     if (velocity.length() > maxSpeed) velocity.setLength(maxSpeed);
-    const oldX = camera.position.x, oldZ = camera.position.z;
-    camera.position.addScaledVector(velocity, dt);
-    const radius = Math.hypot(camera.position.x, camera.position.z);
-    if (radius > 85) { camera.position.x *= 85 / radius; camera.position.z *= 85 / radius; }
+    const oldX = playerPosition.x, oldZ = playerPosition.z;
+    playerPosition.addScaledVector(velocity, dt);
+    const radius = Math.hypot(playerPosition.x, playerPosition.z);
+    if (radius > 85) { playerPosition.x *= 85 / radius; playerPosition.z *= 85 / radius; }
     for (const o of zoneObstacles) {
-      const dx = camera.position.x - o.x, dz = camera.position.z - o.z;
+      const dx = playerPosition.x - o.x, dz = playerPosition.z - o.z;
       if (o.hx != null) {
         if (Math.abs(dx) < o.hx && Math.abs(dz) < o.hz) {
           const pushX = o.hx - Math.abs(dx), pushZ = o.hz - Math.abs(dz);
-          if (pushX < pushZ) camera.position.x = o.x + Math.sign(dx || 1) * o.hx;
-          else camera.position.z = o.z + Math.sign(dz || 1) * o.hz;
+          if (pushX < pushZ) playerPosition.x = o.x + Math.sign(dx || 1) * o.hx;
+          else playerPosition.z = o.z + Math.sign(dz || 1) * o.hz;
         }
         continue;
       }
       const dist = Math.hypot(dx, dz);
-      if (dist < o.r) { if (dist < .001) { camera.position.x = oldX; camera.position.z = oldZ; } else { camera.position.x = o.x + dx / dist * o.r; camera.position.z = o.z + dz / dist * o.r; } }
+      if (dist < o.r) { if (dist < .001) { playerPosition.x = oldX; playerPosition.z = oldZ; } else { playerPosition.x = o.x + dx / dist * o.r; playerPosition.z = o.z + dz / dist * o.r; } }
     }
     camera.position.y = 1.62 + Math.sin(performance.now() * .009) * Math.min(velocity.length() * .012, .025);
+    const dx=playerPosition.x-oldX,dz=playerPosition.z-oldZ;actualSpeed=Math.hypot(dx,dz)/Math.max(.001,dt);
+    if(actualSpeed>.03)avatarHeading=Math.atan2(dx,dz);
     setActiveZone(nearestZone());
   }
 
   function animate() {
-    requestAnimationFrame(animate); const dt = Math.min(clock.getDelta(), .05); updateMovement(dt); updateZoneLights(dt);
-    park.children.forEach(o => { if (o.userData.faceCamera) o.lookAt(camera.position.x, o.position.y, camera.position.z); });
-    compassArrow.style.transform = `rotate(${-yaw}rad)`; updateSelfAvatar(); sendPresence(); renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+    const now=performance.now(),gap=now-lastLoopTime;lastLoopTime=now;
+    const modal=detailModal.open||finaleModal.open,hidden=document.hidden;
+    const active=dragging||velocity.lengthSq()>.0009||Object.values(keys).some(Boolean)||[...remotePeople.values()].some(e=>e.group.visible&&e.moving&&now-e.received<700);
+    const scale=resolutionBudget.sample(gap,!hidden&&!modal&&active&&!modelLoads);
+    if(scale!==resolutionScale){resolutionScale=scale;renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO)*scale);}
+    sendPresence();
+    if(!framePolicy.draw(now,{hidden,modal,active,avatars:selfActor.state==='ready'||[...remotePeople.values()].some(e=>e.group.visible),loading:modelLoads>0}))return;
+    const dt=Math.min(clock.getDelta(),.05);updateMovement(dt);updateZoneLights(dt);
+    park.children.forEach(o=>{if(o.userData.faceCamera)o.lookAt(camera.position.x,o.position.y,camera.position.z);});
+    compassArrow.style.transform=`rotate(${-yaw}rad)`;updateSelfAvatar();updateRemoteAvatars(dt);assignedAvatars.update(dt);sendPresence();renderer.render(scene,camera);
   }
 
-  setupLights(); makePark(); buildTabs(); updateCamera(); connectClassPresence(); animate();
+  setupLights();makePark();MuseumPerformance.batchStaticMeshes(THREE,park,[...zoneObjects,...quizObjects],{cellSize:24});drainModels();buildTabs();updateCamera();connectClassPresence();animate();
   setTimeout(() => loading.classList.add('done'), 650);
 
   addEventListener('keydown', e => { keys[e.code] = true; if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space'].includes(e.code)) e.preventDefault(); });
@@ -687,7 +745,7 @@
   canvas.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.movementX || 0, dy = e.movementY || 0; yaw -= dx * .0032; pitch = Math.max(-1.35, Math.min(1.35, pitch - dy * .0028)); updateCamera(); });
   canvas.addEventListener('pointerup', e => { if (!dragging) return; dragging = false; canvas.classList.remove('dragging'); if (dragStart && Math.hypot(e.clientX - dragStart.x, e.clientY - dragStart.y) < 10) { const rect = canvas.getBoundingClientRect(); centerPointer.set((e.clientX - rect.left) / rect.width * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1); raycaster.setFromCamera(centerPointer, camera); const quizHit = raycaster.intersectObjects(quizObjects, true)[0]; if (quizHit) { startQuiz(); } else { const hit = raycaster.intersectObjects(zoneObjects, true)[0]; if (hit) { let o = hit.object; while (o && !o.userData.zone) o = o.parent; if (o) openDetail(o.userData.zone); } } } centerPointer.set(0, 0); dragStart = null; });
   canvas.addEventListener('pointercancel', () => { dragging = false; dragStart = null; canvas.classList.remove('dragging'); centerPointer.set(0, 0); });
-  addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); renderer.setPixelRatio(Math.min(devicePixelRatio, MAX_PIXEL_RATIO)); });
+  addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); renderer.setPixelRatio(Math.min(devicePixelRatio, MAX_PIXEL_RATIO)*resolutionScale);framePolicy.invalidate(); });
 
   document.getElementById('detail-button').addEventListener('click', () => openDetail(activeZone));
   document.getElementById('modal-close').addEventListener('click', () => detailModal.close());

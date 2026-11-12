@@ -2,6 +2,21 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const perf=require('./performance.js');
 const THREE=require('./vendor/three.min.js');
+test('outdoor batches preserve shadows, spatial culling and clickable descendants',()=>{
+  const root=new THREE.Group(),mat=new THREE.MeshBasicMaterial(),zone=new THREE.Group();root.add(zone);
+  for(const x of [1,2,50]){const m=new THREE.Mesh(new THREE.BoxGeometry(),mat);m.position.x=x;m.castShadow=m.receiveShadow=true;root.add(m);}
+  const sculpture=new THREE.Mesh(new THREE.BoxGeometry(),mat);zone.add(sculpture);
+  perf.batchStaticMeshes(THREE,root,[zone],{cellSize:24});
+  assert.equal(sculpture.parent,zone);const merged=root.children.find(o=>o.name==='Static gallery batch');assert.ok(merged.castShadow&&merged.receiveShadow);
+  assert.equal(root.children.filter(o=>o.isMesh).length,2);assert.ok(merged.geometry.boundingBox.max.x<3);
+});
+test('outdoor follow camera cannot enter a plinth or the park boundary',()=>{
+  const follow=require('../park/follow-camera.js');
+  assert.equal(follow.position({x:0,z:0},0,[]).distance,2.6);
+  assert.ok(follow.position({x:0,z:0},0,[{x:0,z:2,r:1}]).z<1);
+  assert.ok(follow.position({x:0,z:0},0,[{x:0,z:2,hx:1,hz:1}]).z<1);
+  assert.ok(follow.position({x:0,z:84},0,[]).z<=85);
+});
 function texture(){return{isTexture:true,userData:{},disposed:0,dispose(){this.disposed++;}};}
 test('room disposal releases owned textures once and preserves shared and retained art',()=>{
   const shared=texture(),art=texture(),label=texture(),placeholder=texture(),sharedMaterial={map:shared},materials=[{map:art,dispose(){}},{map:label,dispose(){}},{map:placeholder,otherMap:shared,dispose(){}}];
