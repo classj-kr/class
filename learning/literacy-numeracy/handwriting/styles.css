@@ -1312,21 +1312,28 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
   display: grid;
   justify-items: center;
 }
+.step .pod-racer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+}
 .step .pod-face {
   width: 82px;
   height: 82px;
   font-size: 38px;
   margin-bottom: -2px;
 }
-.step:not(.show) :is(.pod-face, .pod-name, .pod-score, .pod-detail) {
+.step:not(.show) :is(.pod-racer, .pod-score, .pod-detail) {
   visibility: hidden;
 }
 /* 떨어져 내린 뒤 단 위에서 살짝 통통 튄다(늘 단에 다시 닿는다). 장원은 조금 더 높이 */
-.step.show .pod-face {
+.step.show .pod-racer {
   transform-origin: 50% 100%;
   animation: drop 0.65s cubic-bezier(0.3, 1.5, 0.5, 1) both, pod-hop 1.3s 0.9s ease-in-out infinite;
 }
-.step.place-1 .pod-face {
+.step.place-1 .pod-racer {
   --hop: -16px;
 }
 @keyframes pod-hop {
@@ -1337,7 +1344,7 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
   46% { transform: translateY(0) scale(1, 1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .step.show .pod-face { animation: none; }
+  .step.show .pod-racer { animation: none; }
 }
 .step.rolling {
   animation: shake 0.13s linear infinite;
@@ -1394,11 +1401,14 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
 }
 .pod-name {
   max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 17px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #fff8e6;
+  font-size: clamp(11px, 1.7vw, 15px);
   font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
   color: #2a2118;
 }
 .pod-score {

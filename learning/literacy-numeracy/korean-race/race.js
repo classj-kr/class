@@ -1022,6 +1022,16 @@
   }
 
   // ── 결과 ─────────────────────────────────────────
+  function podiumMember(p) {
+    const member = document.createElement('span');
+    member.className = 'pod-member';
+    const name = document.createElement('span');
+    name.className = 'pod-member-name';
+    name.textContent = p.name;
+    member.append(name, face(p, 'pod-face'));
+    return member;
+  }
+
   function renderResults(s) {
     show('result');
     document.body.classList.remove('fever', 'warm', 'hurry');
@@ -1071,15 +1081,7 @@
           div.innerHTML = '<span class="pod-racer pod-team"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
           const racers = div.querySelector('.pod-team');
           const members = s.participants.filter((p) => p.team === t.index);
-          racers.append(...members.map((p) => {
-            const member = document.createElement('span');
-            member.className = 'pod-member';
-            const name = document.createElement('span');
-            name.className = 'pod-member-name';
-            name.textContent = p.name;
-            member.append(name, face(p, 'pod-face'));
-            return member;
-          }));
+          racers.append(...members.map(podiumMember));
           if (place === 1) racers.classList.add('crowned');
           div.querySelector('.pod-name').textContent = `${t.emoji} ${t.name}팀`;
           div.querySelector('.pod-score').textContent = t.value + '점';
@@ -1099,11 +1101,9 @@
       div.className = 'step place-' + place + (p ? '' : ' empty');
       div.style.setProperty('--delay', [0.5, 1.1, 0.2][i] + 's');
       if (p) {
-        // 아바타는 단 위에 바로 서고, 이름·점수는 단 안에 적는다(아바타와 단 사이가 비어 떠 보이지 않게).
-        div.innerHTML = '<span class="pod-racer"></span><div class="block"><b class="pod-place"></b><b class="pod-name"></b><span class="pod-score"></span></div>';
-        div.querySelector('.pod-racer').append(face(p, 'pod-face'));
+        div.innerHTML = '<span class="pod-racer"></span><div class="block"><b class="pod-place"></b><span class="pod-score"></span></div>';
+        div.querySelector('.pod-racer').append(podiumMember(p));
         if (place === 1) div.querySelector('.pod-racer').classList.add('crowned');
-        div.querySelector('.pod-name').textContent = p.name;
         div.querySelector('.pod-score').textContent = p.score + '점';
       } else div.innerHTML = '<div class="block"><b class="pod-place"></b></div>';
       div.querySelector('.pod-place').textContent = place;
