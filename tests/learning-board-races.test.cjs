@@ -175,6 +175,54 @@ test('private submissions, synchronized rounds, immutable answers, restart, scor
     const replayResult = await req(replay + '/control', 'POST', { action: 'reveal', phase: 'question', index: 0 });
     assert.equal(replayResult.racers.find(p => p.number === 1).delta, 0, 'incorrect own answer earns no average movement');
     assert.ok(replayResult.racers.find(p => p.number === 2).delta >= 100);
+    await req(replay + '/control', 'POST', { action: 'finish', phase: 'reveal', index: 0 });
+    const timed = await req(base + '/races', 'POST', { setId, seconds: 10, duration: 60, teamCount: 2 }, teacher, 201);
+    const teamRace = base + '/races/' + timed.id;
+    await req(teamRace + '/join', 'POST', {}, alice);
+    await req(teamRace + '/join', 'POST', {}, bob);
+    await req(teamRace + '/team', 'POST', { team: 0 }, alice);
+    await req(teamRace + '/team', 'POST', { team: 0 }, bob, 409);
+    const teamStart = await req(teamRace + '/control', 'POST', { action: 'start', phase: 'lobby', index: -1 });
+    assert.equal(teamStart.raceEndsAt - teamStart.startsAt, 60000);
+    assert.deepEqual(teamStart.teams.map(t => t.size), [1, 1]);
+    await req(teamRace + '/team', 'POST', { team: 1 }, alice, 409);
+    time += 3100;
+    const bobFirst = await req(teamRace, 'GET', undefined, bob);
+    let firstId, earned = 0;
+    for (let i = 0; i < 4; i++) {
+      const current = await req(teamRace, 'GET', undefined, alice);
+      assert.equal(current.index, i);
+      assert.equal(current.question.answer, undefined);
+      if (i === 0) firstId = current.question.id;
+      if (i === 3) {
+        assert.equal(current.question.content, bobFirst.question.content);
+        assert.notEqual(current.question.id, firstId);
+        await req(teamRace + '/answer', 'POST', { questionId: firstId, choice: 1 }, alice, 409);
+      }
+      const body = { questionId: current.question.id, choice: 1 };
+      await req(teamRace + '/answer', 'POST', body, alice);
+      assert.equal((await req(teamRace + '/answer', 'POST', { ...body, choice: 0 }, alice)).choice, 1);
+      const feedback = await req(teamRace, 'GET', undefined, alice);
+      assert.equal(feedback.phase, 'reveal');
+      assert.equal(feedback.question.answer, 1);
+      earned += feedback.me.delta;
+      time += 900;
+    }
+    const bobWaiting = await req(teamRace, 'GET', undefined, bob);
+    assert.equal(bobWaiting.question.id, bobFirst.question.id);
+    assert.equal(bobWaiting.question.answer, undefined);
+    assert.equal(bobWaiting.me.attempts, 0);
+    assert.equal(bobWaiting.racers, undefined);
+    const standings = await req(teamRace);
+    assert.equal(standings.question, null);
+    assert.equal(standings.teams[0].score, earned);
+    assert.equal(standings.answered, 4);
+    time = bobWaiting.endsAt;
+    await req(teamRace + '/answer', 'POST', { questionId: bobFirst.question.id, choice: 1 }, bob, 409);
+    assert.equal((await req(teamRace, 'GET', undefined, bob)).phase, 'reveal');
+    time = teamStart.raceEndsAt;
+    assert.equal((await req(base)).live, null);
+    assert.equal((await req(teamRace)).phase, 'finished');
     const other = (await req('/', 'POST', { title: '다른 방', layout: 'quiz' }, teacher, 201)).board;
     await req('/' + other.id + '/races/' + raceId, 'GET', undefined, teacher, 404);
     await req(route, 'GET', undefined, 'test_teacher=2', 401);

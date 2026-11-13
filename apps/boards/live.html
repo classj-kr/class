@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081127"><title>순위전</title><link rel="stylesheet" href="live.css?v=20261109-avatars"></head>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081127"><title>순위전</title><link rel="stylesheet" href="live.css?v=20261113-race-teams"></head>
 <body>
   <main id="liveApp">
-    <header class="live-bar"><a id="backLink" href="/boards/">← 게시판</a><span>방번호 <b id="roomCode">—</b></span><span id="roundLabel"></span><span id="connection" role="status"></span><strong id="clock" aria-label="남은 시간"></strong></header>
+    <header class="live-bar"><a id="backLink" href="/boards/">← 게시판</a><span>방번호 <b id="roomCode">—</b></span><span id="roundLabel"></span><span id="raceClock"></span><span id="connection" role="status"></span><strong id="clock" aria-label="남은 시간"></strong></header>
     <p id="error" role="alert" hidden></p>
     <section id="teacher" hidden>
       <div class="race-stage">
         <canvas id="raceCanvas" role="img" aria-label="학생별 아바타와 이름이 표시된 순위전"></canvas>
-        <figure id="teacherArt" class="teacher-art" hidden><img id="teacherArtImage" alt=""><figcaption id="teacherArtCaption"></figcaption></figure>
+        <figure id="teacherArt" class="teacher-art" hidden><img id="teacherArtImage" alt=""><figcaption id="teacherArtCaption"></figcaption><ol id="teacherArtChoices" hidden></ol></figure>
+        <div id="raceCue" class="race-cue" hidden><span id="raceCueLabel"></span><strong id="raceCueValue"></strong></div>
       </div>
       <div id="ranking" aria-label="순위"></div>
       <div class="control-bar"><span id="participation"></span><span id="phaseLabel"></span><button id="automatic" aria-pressed="true">자동 진행 켜짐</button><button id="fullscreen">전체 화면</button><button id="finish" class="secondary">순위전 종료</button><button id="advance" class="primary" disabled>연결 중</button></div>
@@ -15,10 +16,13 @@
     </section>
     <section id="student" hidden>
       <div class="student-meta"><span class="student-who"><img id="studentAvatar" class="student-avatar" alt="" hidden><strong id="studentName"></strong></span><span id="studentScore"></span></div>
-      <p id="studentStatus" role="status">연결 중</p><img id="studentArt" class="student-art" alt="" hidden><h1 id="question"></h1><div id="choices"></div><p id="feedback" aria-live="polite"></p><p id="explanation"></p>
+      <fieldset id="teamPicker" class="team-picker" hidden><legend>팀 고르기</legend><div id="teamButtons"></div><p>고르지 않으면 출발할 때 자동 배정돼요.</p></fieldset>
+      <p id="studentStatus" role="status">연결 중</p><img id="studentArt" class="student-art" alt="" hidden><h1 id="question"></h1><div id="choices"></div>
+      <form id="textAnswerForm" hidden><label for="textAnswer" class="sr-only">답</label><input id="textAnswer" placeholder="답을 입력하세요" maxlength="80" required autocomplete="off"><button class="primary" type="submit">제출</button></form>
+      <p id="feedback" aria-live="polite"></p><p id="explanation"></p>
     </section>
     <p id="loading">연결 중…</p>
   </main>
   <script src="/assets/sound/race-music.js?v=20261106-1"></script>
-  <script src="race-scene.js?v=20261109-avatars"></script><script src="live.js?v=20261113-race-seconds"></script>
+  <script src="race-scene.js?v=20261113-race-teams"></script><script src="live.js?v=20261113-race-teams"></script>
 </body></html>
