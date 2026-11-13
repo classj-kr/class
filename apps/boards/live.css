@@ -5,4 +5,45 @@
 .teacher-art img{display:block;width:100%;max-height:calc(100dvh - 330px);object-fit:contain;border-radius:8px;background:#fffdf6}
 .teacher-art figcaption{margin-top:8px;color:#14213b;font-size:clamp(20px,2.2vw,30px);font-weight:800;text-align:center;white-space:pre-wrap}
 .student-art{display:block;width:100%;max-height:42vh;object-fit:contain;margin:6px 0 0;border-radius:12px;background:#fffdf6}
+.teacher-art ol{display:grid;gap:6px;max-height:24vh;overflow:auto;margin:10px 0 0;padding:4px 10px 4px 2em;color:#253858;font-size:clamp(16px,1.6vw,23px);overflow-wrap:anywhere}
+.race-cue{
+  position:absolute;z-index:2;top:19%;left:50%;translate:-50% 0;max-width:calc(100% - 32px);
+  display:grid;justify-items:center;gap:8px;text-align:center;pointer-events:none
+}
+.race-cue span{padding:4px 12px;border-radius:20px;background:#101c39;color:#c5e7ff;font-size:clamp(14px,2vw,22px);font-weight:800}
+.race-cue strong{
+  display:grid;place-items:center;line-height:1.05;font-weight:900;color:#f2ffff;
+  text-shadow:0 0 24px #55bfff;animation:race-cue-in .62s ease-out both
+}
+.race-cue[data-kind=countdown] strong{
+  width:clamp(104px,18vw,180px);aspect-ratio:1;border:2px solid #a0eeff;border-radius:50%;
+  background:radial-gradient(circle,#2871ae 0,#132452 72%);box-shadow:0 0 38px #469cff8a;
+  font-size:clamp(74px,12vw,132px)
+}
+.race-cue[data-kind=launch] strong{font-size:clamp(48px,10vw,112px);animation:race-launch .9s ease-out both}
+.race-cue[data-kind=finish]{
+  top:10%;width:max-content;padding:12px clamp(16px,4vw,42px);
+  border:1px solid #ffda86;border-radius:18px;background:#111b3bee;box-shadow:0 0 30px #eeb66442
+}
+.race-cue[data-kind=finish] span{background:#4b371d;color:#ffe4a3}
+.race-cue[data-kind=finish] strong{font-size:clamp(23px,4vw,52px);color:#ffe5a4;text-shadow:none;overflow-wrap:anywhere}
+@keyframes race-cue-in{from{opacity:.15;transform:scale(.78)}45%{transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
+@keyframes race-launch{0%{opacity:0;transform:scale(.62)}22%,68%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.1)}}
+.team-picker{margin:18px 0 0;padding:12px;border:1px solid #42587c;border-radius:10px}
+.team-picker legend{padding:0 6px;font-weight:800}
+.team-picker p{margin:8px 0 0;color:#b2c4e1;font-size:13px}
+#teamButtons{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:7px}
+#teamButtons button{border-color:var(--team-color);color:var(--team-color);font-weight:800;padding-inline:8px}
+#teamButtons button[aria-pressed=true]{background:var(--team-color);color:#15243e}
+.team-rank-card{flex-wrap:wrap;border-color:var(--team-color)}
+.team-rank-card b{color:var(--team-color)}
+.team-members{flex-basis:100%;color:#c5d2e6;overflow-wrap:anywhere}
+#textAnswerForm{display:flex;gap:8px}
+#textAnswer{flex:1;min-width:0;padding:10px 12px;border:1px solid #7292be;border-radius:8px;background:#142744;color:#f5f9ff;font:inherit}
+#textAnswer::placeholder{color:#b6c9e3}
+#textAnswer:focus-visible{outline:2px solid #b5ebff;outline-offset:2px}
+#raceClock:empty{display:none}
+#feedback.earned{color:#8dffbf}
+.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.race-cue strong,.race-cue[data-kind=launch] strong{animation:none}}
 @media(max-width:650px){.teacher-art{position:static;width:auto;margin:10px}.live-bar{gap:10px;padding:8px 12px}.live-bar a,.live-bar span{font-size:12px}.live-bar b{font-size:16px}#connection{flex-basis:100%;order:5}#connection:empty{display:none}#raceCanvas{min-height:420px}#ranking{padding:0 10px 10px;gap:6px}.rank-card{padding:8px;gap:6px;flex-wrap:wrap;font-size:13px}.rank-card b{font-size:17px}.rank-avatar{width:36px;height:36px;margin:-4px 0}.rank-card span{width:100%;text-align:right;font-size:12px}.control-bar{padding:10px;gap:7px}.control-bar button{font-size:13px;padding:8px 10px}#student{padding:20px 16px}#question{margin:16px 0 22px}#choices button{font-size:18px}}

@@ -52,12 +52,27 @@
     <form id="raceForm">
       <div class="dialog-head"><h2 id="raceDialogTitle">순위전 설정</h2><button type="button" data-close aria-label="닫기">✕</button></div>
       <label>문제당 제한 시간 (10~120초)<input id="raceSeconds" type="number" inputmode="numeric" min="10" max="120" step="1" value="20" required autofocus></label>
+      <label>전체 경기 시간
+        <select id="raceDuration">
+          <option value="60">1분</option><option value="90">1분 30초</option>
+          <option value="120" selected>2분</option><option value="180">3분</option><option value="300">5분</option>
+        </select>
+      </label>
+      <label>경기 방식
+        <select id="raceTeamCount">
+          <option value="">개인전</option>
+          <option value="2">팀전 · 2팀</option><option value="3">팀전 · 3팀</option>
+          <option value="4">팀전 · 4팀</option><option value="5">팀전 · 5팀</option>
+          <option value="6">팀전 · 6팀</option><option value="7">팀전 · 7팀</option>
+          <option value="8">팀전 · 8팀</option>
+        </select>
+      </label>
       <p class="form-error error" role="alert"></p>
       <button type="submit" class="primary full">대기실 열기</button>
     </form>
   </dialog>
   <script src="backdrop.js?v=20261106"></script>
-  <script src="app.js?v=20261113-race-seconds"></script>
+  <script src="app.js?v=20261113-race-teams"></script>
 </body>
 </html>
 

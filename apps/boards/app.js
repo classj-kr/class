@@ -166,10 +166,11 @@
   $('resumeRace').addEventListener('click', () => { if (data?.live) navigateRace(data.live.id); });
   $('artQuiz').addEventListener('click', () => openRaceSetup());
   handleForm('raceForm', async () => {
-    const seconds = $('raceSeconds').valueAsNumber;
+    const settings = { seconds: $('raceSeconds').valueAsNumber, duration: Number($('raceDuration').value),
+      teamCount: Number($('raceTeamCount').value) || null };
     const result = raceSetId
-      ? await api(`/${boardId}/races`, 'POST', { setId: raceSetId, seconds })
-      : await api(`/${boardId}/art-quiz`, 'POST', { seconds });
+      ? await api(`/${boardId}/races`, 'POST', { ...settings, setId: raceSetId })
+      : await api(`/${boardId}/art-quiz`, 'POST', settings);
     navigateRace(result.id);
   });
   function historyView() {

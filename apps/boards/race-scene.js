@@ -6,6 +6,8 @@ window.createRaceScene = function(canvas) {
  // Points that would carry a racer all the way to the finish gate by the last question.
  const POINTS_TO_FINISH=140;
  let racers=[],W=0,H=0,phase='idle',stage='lobby',progress=0,playTime=0,raf=0,idle=0,start=0,version='',total=1,code='',count=0,lastIdle=0;
+ let moveDuration=3600;
+ let trackScale=1,finishAt=0;
  const displayName = r => racers.some(other=>other.id!==r.id&&other.name===r.name)?r.name+' '+r.number+'번':r.name;
  // 학생이 고른 아바타 그림. 다 받은 뒤에만 그려서 깜박이지 않게 하고, 없거나 못 받으면 우주선을 그린다.
  const AVATAR_URL=/^\/assets\/avatars\/[A-Za-z0-9._%()-]+\.webp$/i;
@@ -124,6 +126,28 @@ window.createRaceScene = function(canvas) {
    ctx.fillText(`${count}명 입장`,cx,cy+big*.75);
    ctx.restore();
  }
+ function drawRaceWake(x,y,size,color,boosted) {
+   const strength=Math.sin(Math.PI*progress), length=(boosted?115:75)*size;
+   const trail=ctx.createLinearGradient(x,y,x,y+length);
+   trail.addColorStop(0,color);trail.addColorStop(1,color+'00');
+   ctx.save();ctx.globalAlpha=.66*strength;ctx.strokeStyle=trail;ctx.lineWidth=(boosted?5:3)*size;
+   for(const side of [-1,1]){
+     ctx.beginPath();ctx.moveTo(x+side*10*size,y);ctx.quadraticCurveTo(x+side*19*size,y+length*.5,x+side*27*size,y+length);ctx.stroke();
+   }
+   ctx.restore();
+ }
+ function drawFinishSparks(t,gate) {
+   const elapsed=(t-finishAt)/2300;
+   if(!finishAt||elapsed<0||elapsed>=1)return;
+   ctx.save();ctx.globalAlpha=(1-elapsed)*.8;
+   for(let i=0;i<32;i++){
+     const star=stars[i], angle=star.x*Math.PI*2, spread=(30+star.y*155)*elapsed;
+     const x=gate.x+Math.cos(angle)*spread,y=gate.y-26+Math.sin(angle)*spread*.75+45*elapsed*elapsed;
+     ctx.fillStyle=i%3===0?'#ffe1a0':colors[i%colors.length];
+     ctx.fillRect(x,y,i%3===0?5:3,3);
+   }
+   ctx.restore();
+ }
  function paint(t=performance.now()) {
    if(!W||!H)return;
    ctx.clearRect(0,0,W,H);
@@ -143,9 +167,10 @@ window.createRaceScene = function(canvas) {
    }
    const gate=project(0,.94);ctx.save();ctx.translate(gate.x,gate.y);ctx.strokeStyle='#68deff72';ctx.lineWidth=5;ctx.shadowBlur=16;ctx.shadowColor='#3ce2ff';ctx.beginPath();ctx.ellipse(0,-17,W*.09,44,0,Math.PI,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;ctx.strokeStyle='#d7fbff';ctx.lineWidth=1.4;ctx.stroke();
    if(stage!=='lobby'){ctx.font='800 13px system-ui';ctx.fillStyle='#bff6ff';ctx.textAlign='center';ctx.fillText('FINISH',0,-17-50);}ctx.restore();
+   if(stage==='finished')drawFinishSparks(t,gate);
    if(stage==='lobby')drawLobby(t);
    // Distance is progress through the whole race, so the field reaches the gate at the end.
-   const finish=Math.max(1,total)*POINTS_TO_FINISH;
+   const finish=Math.max(1,total)*POINTS_TO_FINISH*trackScale;
    const ordered=racers.map(r=>{
      const z=.2+.72*Math.min(1,r.score/finish)-r.row*.05;
      const p=project(r.column,z);const boosted=phase==='racing'&&r.boost&&progress>.15&&progress<.9;
@@ -165,8 +190,9 @@ window.createRaceScene = function(canvas) {
      const box=img?Math.max(W<500?34:44,Math.min(120,104*size)):0,cy=y-8*size,foot=img?cy+box*.45:y+18*size;
      const ring=img?{rx:box*.48,ry:box*.62,cy}:{rx:34*size,ry:50*size,cy:y+3};
      if(p.boosted){ctx.save();ctx.strokeStyle='#ffe1a076';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(x,ring.cy,ring.rx,ring.ry,angle,0,Math.PI*2);ctx.stroke();ctx.restore();}
-     const judged=stage==='reveal'&&typeof r.correct==='boolean';
+     const judged=(stage==='reveal'&&typeof r.correct==='boolean')||(stage==='running'&&phase==='racing'&&r.delta>0);
      if(judged){const rx=img?box*.46:40*size,ry=img?box*.15:14*size;ctx.save();ctx.strokeStyle=r.correct?'#7dffb5cc':'#ff9a9a88';ctx.lineWidth=2.5;ctx.beginPath();ctx.ellipse(x,foot,rx,ry,0,0,Math.PI*2);ctx.stroke();ctx.restore();}
+     if(phase==='racing'&&r.delta>0)drawRaceWake(x,foot,Math.max(.48,size),r.color,p.boosted);
      if(img)rider(img,x,cy,box,r.color,angle,p.boosted,r.lane,t);else ship(x,y,size,r.color,angle,p.boosted,r.lane,t);
      const label=displayName(r);ctx.font='700 '+(front?(W<500?12:15):12)+'px system-ui,"Malgun Gothic"';const tw=ctx.measureText(label).width;
      const lx=x-tw/2-8,ly=img?cy-box/2-28:y-60*size-14;
@@ -175,7 +201,7 @@ window.createRaceScene = function(canvas) {
        // "+120 ✓" floats up as the ship surges; "✗" stays put.
        const lift=phase==='racing'?Math.min(1,progress*1.6)*26:26;
        ctx.font='900 '+(front?20:15)+'px system-ui';ctx.fillStyle=r.correct?'#8dffbf':'#ffb0b0';
-       ctx.fillText(r.correct?`+${r.delta} ✓`:'✗',x,ly-6-lift*.4);
+       ctx.fillText(r.correct?`+${r.delta} ✓`:r.team?'+0':'✗',x,ly-6-lift*.4);
      }
      if(p.boosted){ctx.font='800 12px system-ui';ctx.fillStyle='#ffe09c';ctx.fillText('BOOST',x,img?Math.max(y+85*size,foot+box*.75):y+85*size);}
    });
@@ -184,9 +210,13 @@ window.createRaceScene = function(canvas) {
 
  function size() {const r=canvas.getBoundingClientRect();W=r.width;H=r.height;if(!W||!H)return;const d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(W*d);canvas.height=Math.round(H*d);ctx.setTransform(d,0,0,d,0,0);paint();}
  function tick(t) {
-  if(!start)start=t;playTime=t-start;progress=Math.min(1,playTime/4000);
+  if(!start)start=t;playTime=t-start;progress=Math.min(1,playTime/moveDuration);
   const ease=progress*progress*(3-2*progress);
-  racers.forEach(r=>{r.score=r.from+(r.to-r.from)*ease;});paint(t);
+  racers.forEach(r=>{
+    r.score=r.from+(r.to-r.from)*ease;
+    r.column=r.fromColumn+(r.toColumn-r.fromColumn)*ease;
+    r.row=r.fromRow+(r.toRow-r.fromRow)*ease;
+  });paint(t);
   if(progress<1)raf=requestAnimationFrame(tick);else{phase='idle';paint();startIdle();}
  }
  // Between reveals the scene keeps breathing at ~15fps: bobbing ships, twinkling stars.
@@ -199,22 +229,32 @@ window.createRaceScene = function(canvas) {
  const observer=new ResizeObserver(size);observer.observe(canvas);
  return {
   update(state) {
-   total=state.total||1;code=state.code||'';count=state.participantCount||0;
-   stage=state.phase==='countdown'?'question':state.phase;
+   total=state.total||1;code=state.code||'';count=state.participantCount||0;trackScale=state.trackScale||1;
+   if(state.duration){
+     const best=Math.max(0,...state.racers.map(r=>r.score));
+     total=Math.max(total,Math.ceil(state.duration/4),Math.ceil(best/(POINTS_TO_FINISH*trackScale)*1.1));
+   }
+   if(state.phase==='finished'&&stage!=='finished'&&version&&!reduce)finishAt=performance.now();
+   stage=state.phase;
    const nextVersion=state.id+':'+state.index+':'+state.phase+':'+JSON.stringify(state.racers);
    if(version===nextVersion)return;
-   const animate=version!==''&&state.phase==='reveal'&&!reduce;
+   const live=state.phase==='running',previous=new Map(racers.map(r=>[r.id,r]));
+   const animate=version!==''&&!reduce&&(state.phase==='reveal'||(live&&state.racers.some(r=>r.score>(previous.get(r.id)?.to??0))));
+   moveDuration=live?850:3600;
    const firstPaint=version==='';
    version=nextVersion;cancelAnimationFrame(raf);
-   const previous=new Map(racers.map(r=>[r.id,r]));
    const now=performance.now();
    // Lanes follow the standings at this moment: the leader runs in the middle.
    const ranked=(state.racers||[]).map((r,i)=>({r,i})).sort((a,b)=>b.r.score-a.r.score||a.i-b.i);
    const laneOf=new Map(ranked.map((x,lane)=>[x.r.id,lane]));
    racers=(state.racers||[]).map((r,i)=>{
      const old=previous.get(r.id),lane=laneOf.get(r.id);
+     const row=Math.floor(lane/6),column=[0,-.3,.3,-.6,.6,-.85][lane%6]+(row%2?.15:0);
      avatarImage(r.avatar);
-     return {...r,color:colors[i%colors.length],lane,row:Math.floor(lane/6),column:[0,-.3,.3,-.6,.6,-.85][lane%6]+(Math.floor(lane/6)%2?.15:0),
+     const fromColumn=old?.column??column,fromRow=old?.row??row;
+     const delta=live?Math.max(0,r.score-(old?.to??r.score)):r.delta;
+     return {...r,delta,correct:live?delta>0:r.correct,boost:live?delta>=160||r.boost:r.boost,color:r.color||colors[i%colors.length],lane,
+       fromColumn,toColumn:column,column:animate?fromColumn:column,fromRow,toRow:row,row:animate?fromRow:row,
        from:old?old.score:r.score,to:r.score,score:animate&&old?old.score:r.score,enterAt:old?old.enterAt:(firstPaint?0:now)};
    });
    phase=animate?'racing':'idle';start=0;progress=0;playTime=0;

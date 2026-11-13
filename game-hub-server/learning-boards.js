@@ -286,7 +286,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const comments = b.comments_enabled ? (await db.query('SELECT post_id, COUNT(*)::int AS count FROM learning_board_comments WHERE board_id=$1 GROUP BY post_id', [b.id])).rows : [];
       const images = (await db.query('SELECT id, post_id FROM learning_board_images WHERE board_id=$1 AND post_id IS NOT NULL', [b.id])).rows;
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
-      const live = (await db.query('SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished', [b.id])).rows[0] || null;
+      const live = (await db.query("SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished AND (state->>'phase' <> 'running' OR (state->>'endsAt')::bigint > $2)", [b.id, now()])).rows[0] || null;
       const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id))).map(p => {
         const m = members.find(m => m.id === p.member_id);
         const own = who.teacher || p.member_id === who.id;
