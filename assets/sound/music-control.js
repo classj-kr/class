@@ -31,7 +31,7 @@
         document.documentElement.classList.add("site-game-controls");
         const gameStyle = document.createElement("link");
         gameStyle.rel = "stylesheet";
-        gameStyle.href = "/assets/game-controls.css?v=20261114-safe-controls";
+        gameStyle.href = "/assets/game-controls.css?v=20261115-game-backdrop";
         document.head.appendChild(gameStyle);
     }
     if (!document.querySelector("script[data-site-back-navigation]")) {

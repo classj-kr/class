@@ -49,11 +49,11 @@
             #schoolChatPanel{position:fixed;left:14px;bottom:70px;z-index:100000;width:min(330px,calc(100vw - 28px));height:min(560px,calc(100vh - 90px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
             #schoolChatPanel.open{display:flex}
             #schoolChatPanel .sc-head{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
-            #schoolChatPanel .sc-head .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+            #schoolChatPanel .sc-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:inherit;color:inherit}
             #schoolChatPanel .sc-head .code{color:#f0d77c;font-weight:400;margin-left:6px}
             #schoolChatPanel .sc-head button,#schoolChatPanel .sc-tabs button,#schoolChatPanel .sc-rooms button{background:none;border:1px solid rgba(255,255,255,.2);color:#cfd8e3;padding:3px 8px;font-size:12px;cursor:pointer;font-family:inherit}
             #schoolChatPanel .sc-head button.on,#schoolChatPanel .sc-tabs button.on{background:#3b4a60;color:#fff}
-            #schoolChatPanel .sc-tabs{display:flex;gap:4px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);overflow-x:auto;white-space:nowrap}
+            #schoolChatPanel .sc-tabs{display:flex;flex-shrink:0;gap:4px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);overflow-x:auto;overflow-y:hidden;white-space:nowrap}
             #schoolChatPanel .sc-tabs button{position:relative;flex:none}
             #schoolChatPanel .sc-tabs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d8352d;margin-left:5px}
             #schoolChatPanel .sc-rooms{display:none;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
@@ -86,7 +86,7 @@
             #schoolChatPanel .sc-people-list{display:flex;flex-wrap:wrap;gap:2px 10px;max-height:60px;overflow-y:auto;margin-top:4px;font-size:12px;color:#c3cddb}
             #schoolChatPanel .sc-people-list .t{color:#f0d77c}
             #schoolChatPanel .sc-people-list .me{color:#8fe0a8}
-            #schoolChatPanel .sc-list{flex:1 1 auto;min-height:140px;overflow-y:auto;padding:8px 10px;user-select:text}
+            #schoolChatPanel .sc-list{flex:1 1 auto;min-height:0;overflow-y:auto;padding:8px 10px;user-select:text}
             #schoolChatPanel .sc-empty{color:#8794a6;padding:6px 0}
             #schoolChatPanel .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
             #schoolChatPanel .sc-msg .who{color:#9fc6ee;font-weight:700;margin-right:5px}
@@ -518,7 +518,7 @@
         panel.id = "schoolChatPanel";
         ui.panel = panel;
         const head = el("div", "sc-head");
-        ui.title = el("span", "title");
+        ui.title = el("span", "sc-title");
         ui.titleText = el("span");
         ui.code = el("span", "code");
         ui.title.append(ui.titleText, ui.code);
