@@ -6,7 +6,8 @@
   let catalog = [], data = { roster: [], sessions: [] }, mode = 'student', selected = null, generation = 0;
   let allPeriod = false;
   let detailGeneration = 0;
-  const domainClass = domain => ({ 읽기: 'reading', 문법: 'grammar', 어휘: 'words', 수리: 'math', '학습 점검': 'reflection' }[domain] || '');
+  const domainClass = domain => ({ 읽기: 'reading', 문법: 'grammar', 어휘: 'words', 수리: 'math', '학습 점검': 'reflection',
+    쓰기:'grammar', 정보:'reading', '역사·지리':'words', 음악:'reflection', 미술:'reflection', '수학 탐구':'math', 게임:'reading' }[domain] || '');
   function formattedText(value, className) {
     const target = node('span', null, className), source = String(value ?? '');
     const formulas = /\$\$([\s\S]+?)\$\$|(?<!\\)\$([^$\n]+?)\$|\\\(([\s\S]+?)\\\)|\\\[([\s\S]+?)\\\]/g;
@@ -31,7 +32,7 @@
   }
   function outcome(event) {
     if (event.kind === 'answer') return event.correct === true ? ['correct', '✓ 정답'] : event.correct === false ? ['incorrect', '× 오답'] : ['unscored', '채점 없음'];
-    return { read: ['reading', '읽기'], 'self-assessment': ['reflection', '학습 점검'], hint: ['hint', '도움말'] }[event.kind] || ['unscored', '기록'];
+    return { read: ['reading', '읽기'], 'self-assessment': ['reflection', '학습 점검'], hint: ['hint', '도움말'], activity: ['reading', '활동'] }[event.kind] || ['unscored', '기록'];
   }
   function firstAttemptRate(correct, total) {
     const rate = node('span', null, `first-rate${total ? '' : ' no-attempts'}`);
@@ -131,14 +132,15 @@
       const metrics = node('div', null, 'metrics'), s = row.summary;
       if (s.firstScored) {
         metrics.append(firstAttemptRate(s.firstCorrect, s.firstScored));
-      } else if (!s.readCount && !s.selfAssessments) metrics.append(firstAttemptRate(0, 0));
+      } else if (!s.readCount && !s.selfAssessments && !s.activityCount) metrics.append(firstAttemptRate(0, 0));
+      if (s.activityCount) metrics.append(node('span', s.activitySummary || `참여 기록 ${s.activityCount}건`));
       if (s.retryCount) metrics.append(node('span', `다시 풀이 ${s.retryCount}회`, 'metric-retry'));
       if (s.readCount) metrics.append(node('span', `열어 본 부분 ${s.readCount}개`));
       if (s.selfAssessments) metrics.append(node('span', `스스로 점검 ${s.selfAssessments}회`));
       if (row.activity === 'metacognition' && !s.firstScored && row.progress.current) metrics.append(node('span', `점검 응답 ${row.progress.current}/${row.progress.total}`));
       if (s.hints) metrics.append(node('span', `도움말 ${s.hints}회`));
       if (!metrics.children.length) metrics.append(node('span', '응답 없음'));
-      const detail = node('button', '문항·응답 보기', 'detail-button'); detail.onclick = () => showDetail(row);
+      const detail = node('button', s.activityCount && !s.firstScored ? '활동 내역 보기' : '문항·응답 보기', 'detail-button'); detail.onclick = () => showDetail(row);
       card.append(title, metrics, badge, detail); target.append(card);
     }
   }
@@ -171,6 +173,7 @@
           const response = node('div', null, 'answer-response');
           response.append(node('span', e.kind === 'read' ? '열어 본 부분' : e.kind === 'hint' ? '도움말 확인' : '학생 응답:', 'response-label'), formattedText(LearningRecords.responseText(e.response), 'response-value'));
           block.append(meta, prompt, response); list.append(block);
+          if (e.snapshot.imported) block.append(node('p', '이전 누적 기록 · 마지막 저장 시점 기준', 'meta'));
         });
         if (!list.children.length) list.append(node('p', filter === 'all' ? '응답 없음' : '해당 응답 없음', 'empty'));
       }

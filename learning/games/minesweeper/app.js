@@ -1,5 +1,6 @@
 (async () => {
   'use strict';
+  const activityRound = window.LearningActivity?.round('minesweeper', () => '지뢰찾기 · ' + `${level.rows}×${level.cols}`);
 
   const LEVELS = {
     easy: { rows: 8, cols: 8, mines: 10, rank: 1 },
@@ -326,6 +327,7 @@
   }
 
   function resetState() {
+    activityRound?.reset();
     clearLater();
     stopTimer();
     window.clearTimeout(revealId);
@@ -428,6 +430,7 @@
   }
 
   function win() {
+    activityRound?.finish(`퍼즐 완료 · ${level.rows}×${level.cols}`);
     finished = true;
     stopTimer();
     setStatus('ALL CLEAR!', 'success');
@@ -472,6 +475,7 @@
     clearHintHighlights();
     if (opened[i]) { chord(i); return; }
     if (!ensureBoard(i)) return;
+    activityRound?.start();
     startTimer();
     if (mines[i]) {
       opened[i] = true;

@@ -11,7 +11,7 @@ const NAME = /^[\p{L}\p{N}_.:@-]{1,128}$/u;
 const MAX_VALUE_BYTES = 1024 * 1024;   // 칠판 획처럼 큰 것도 들어간다
 const MAX_ITEMS_PER_APP = 500;
 
-function createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute }) {
+function createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute, onSave }) {
   const router = express.Router();
   const fail = (code, message, status = 400) => { throw new HttpError(status, code, message); };
 
@@ -53,6 +53,7 @@ function createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyn
        ON CONFLICT (user_id, app, item) DO UPDATE SET value = EXCLUDED.value, updated_at = NOW()`,
       [user.id, app, item, encoded]
     );
+    if (onSave) await onSave(user, { app, item, value });
     res.json({ ok: true });
   }));
 

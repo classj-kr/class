@@ -109,8 +109,8 @@ async function main() {
         });
         await page.goto(`${base}/learning/literacy-numeracy/math-ox/`);
         await page.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor();
-        await page.locator('.ox-btn[data-choice="O"]').first().click();
-        await page.locator('.question-card.answered').first().waitFor();
+        await page.locator('.mb-ox-answer[data-choice="O"]').first().click();
+        await page.locator('.mb-ox-item.is-right,.mb-ox-item.is-wrong').first().waitFor();
         await page.locator('learning-records .status').filter({ hasText: '저장 완료' }).waitFor();
         const savedBook = async action => {
           const response = page.waitForResponse(r => /\/learning-records\/sessions\/[^/]+\/changes$/.test(r.url()) && r.status() === 200);

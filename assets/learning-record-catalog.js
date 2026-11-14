@@ -19,7 +19,25 @@
     ['math-ox', '수리', '수학 기초 OX', 'math-ox/'],
     ['math-bank', '수리', '수학 문제', 'math-bank/'],
     ['csat-math', '수리', '수능 수학', 'csat-math/'],
-    ['metacognition', '학습 점검', '학습 점검', 'metacognition/']
+    ['metacognition', '학습 점검', '학습 점검', 'metacognition/'],
+    ['curriculum-vocabulary', '어휘', '교과 어휘', 'curriculum-vocabulary/'],
+    ['handwriting', '쓰기', '글씨 쓰기', 'handwriting/'],
+    ['typing', '정보', '타자', '/learning/inquiry/information-computing/typing/'],
+    ['computer-literacy', '정보', '컴퓨터 이론', '/learning/inquiry/information-computing/computer-fundamentals/'],
+    ['korean-history', '역사·지리', '한국사', '/learning/inquiry/korean-history/'],
+    ['korea-map', '역사·지리', '국내 지도', '/learning/inquiry/korea-map/'],
+    ['ear-training', '음악', '청음', '/learning/arts/music-theory/ear-training/'],
+    ['music-studio', '음악', '음악 연습', '/learning/arts/music-studio/'],
+    ['museum', '미술', '미술 감상', '/learning/arts/art-appreciation/museum/'],
+    ['park', '미술', '야외 미술관', '/learning/arts/art-appreciation/park/'],
+    ...['geoboard', 'number-models', 'fraction-board', 'graph-studio'].map((id, i) =>
+      [id, '수학 탐구', ['지오보드', '수 모형', '분수판', '그래프'][i], `math-tools/${id}/`]),
+    ...[['chess','체스'],['lastcard','라스트 카드'],['bomb77','77 폭탄'],['loveletter','러브레터'],
+      ['clue','추리 게임'],['codenames','코드네임'],['dobble','도블'],['avalon','원정대 추리'],
+      ['citychase','도시 추격'],['beantrading','콩 거래'],['gemguild','보석 길드'],['kingdomtrails','왕국 탐험'],
+      ['rummikub','루미큐브'],['blokus','블로커스'],['honeycomb','벌집'],['expedition','탐험'],['drawrelay','그림 릴레이'],
+      ['sliding-puzzle','슬라이딩 퍼즐'],['nonogram','네모로직'],['minesweeper','지뢰찾기']].map(([id, label]) =>
+      [id, '게임', label, `/learning/games/${id === 'kingdomtrails' ? 'kingdom-trails' : id}/`])
   ];
   const catalog = Object.freeze(rows.map(([id, domain, label, route]) => Object.freeze({
     id, domain, label, href: route.startsWith('/') ? route : base + route

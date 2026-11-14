@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { mathQuestions, isMathCourse, mathUnits, inRange } = require('./learning-record-units');
 const catalog = require('../assets/learning-record-catalog');
+const { createActivityWriter } = require('./learning-record-sources');
 const activities = new Map(catalog.map(row => [row.id, row]));
 const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const object = value => value && typeof value === 'object' && !Array.isArray(value);
@@ -49,12 +50,15 @@ function summarize(events) {
     solvedAfterRetry: new Set(answers.filter(e => e.attempt_number > 1 && e.correct === true).map(e => e.question_key)).size,
     hints: events.filter(e => e.kind === 'hint').length,
     readCount: new Set(events.filter(e => e.kind === 'read').map(e => e.question_key)).size,
-    selfAssessments: events.filter(e => e.kind === 'self-assessment').length
+    selfAssessments: events.filter(e => e.kind === 'self-assessment').length,
+    activityCount: events.filter(e => e.kind === 'activity').length,
+    activitySummary: events.filter(e => e.kind === 'activity').at(-1)?.snapshot?.summary || ''
   };
 }
 
 function createLearningRecords({ pool, requireUser, requireTeacher, requireDatabase, teacherRegistrations, HttpError, asyncRoute }) {
   const router = express.Router();
+  const activityWriter = createActivityWriter({ pool, membershipSql: STUDENT_SQL });
   const fail = (code, message, status = 400) => { throw new HttpError(status, code, message); };
   function grade(activity, event) {
     if (event.kind !== 'answer') return { correct: null, source: 'none' };
@@ -69,6 +73,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
   }
   async function initialize() {
     if (pool) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations/007-learning-records.sql'), 'utf8'));
+    if (pool) await pool.query(fs.readFileSync(path.join(__dirname, 'migrations/027-learning-activity-sources.sql'), 'utf8'));
   }
   async function student(req) {
     requireDatabase();
@@ -124,6 +129,21 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const user = await requireUser(req);
     const membership = (await pool.query(STUDENT_SQL, [user.id, user.email])).rows[0];
     res.json({ catalog, mode: membership ? 'student' : 'preview', student: membership ? { name: membership.student_name } : null });
+  }));
+  router.post('/actions', asyncRoute(async (req, res) => {
+    const { user } = await student(req), b = req.body || {};
+    if (!activities.has(b.activity) || !uuid.test(b.eventId || '') || !text(b.context, 400) || !text(b.title) ||
+        !text(b.questionKey) || !['activity','answer','read','self-assessment','hint'].includes(b.kind) ||
+        !object(b.snapshot || {}) || JSON.stringify(b).length > 32000 ||
+        b.progress != null && (!Number.isInteger(b.progress) || b.progress < 0 || b.progress > 100000) ||
+        b.total != null && (!Number.isInteger(b.total) || b.total < (b.progress || 0) || b.total > 100000) ||
+        b.complete != null && typeof b.complete !== 'boolean') fail('INVALID_EVENT', '활동 기록을 확인해 주세요.');
+    // Preserve server grading for legacy OX even when using the action endpoint.
+    const score = grade(b.activity, b);
+    const id = await activityWriter.record(user, { activity:b.activity,eventId:b.eventId,context:b.context,title:b.title,
+      questionKey:b.questionKey,kind:b.kind,response:b.response,snapshot:b.snapshot || {},correct:score.correct,scoringSource:score.source,
+      ...(b.progress != null ? {progress:b.progress} : {}),...(b.total != null ? {total:b.total} : {}),complete:Boolean(b.complete) });
+    res.json({ ok:true, sessionId:id });
   }));
   router.get('/word-progress', asyncRoute(async (req, res) => {
     const { user } = await student(req);
@@ -275,8 +295,8 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const all = req.query.period === 'all';
     const range = all ? { all: true, from: null, to: null } : dateRange(req.query);
     const cursor = req.query.cursor || null;
-    if (cursor && (!all || !uuid.test(cursor))) fail('INVALID_PAGE', '조회 위치를 확인해 주세요.');
-    const pageSize = all ? 200 : 1000;
+    if (cursor && !uuid.test(cursor)) fail('INVALID_PAGE', '조회 위치를 확인해 주세요.');
+    const pageSize = 200;
     if (req.query.activity && !activities.has(req.query.activity)) fail('INVALID_ACTIVITY', '활동을 확인해 주세요.');
     const args = [scope.school_id, scope.academic_year, scope.grade, scope.class_number];
     const roster = await rosterForScope(scope);
@@ -290,12 +310,12 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       AND ($7::text IS NULL OR activity = $7)
       AND ($9::uuid IS NULL OR s.id > $9::uuid)
       AND ${REPORT_ACTIVITY_SQL}
-      ORDER BY ${all ? 's.id' : 's.updated_at DESC, s.id'} LIMIT ${pageSize + 1}`, [...args, range.from, range.to, req.query.activity || null, studentIds, cursor])).rows;
-    if (!all && found.length > pageSize) fail('REPORT_TOO_LARGE', '기록이 많아요. 조회 기간이나 영역을 좁혀 주세요.');
+      ORDER BY s.id LIMIT ${pageSize + 1}`, [...args, range.from, range.to, req.query.activity || null, studentIds, cursor])).rows;
     const rows = found.slice(0, pageSize);
     const eventGroups = new Map(rows.map(row => [row.id, []]));
     if (rows.length) {
-      const events = (await pool.query(`SELECT id, session_id, kind, question_key, correct, attempt_number, recorded_at FROM learning_record_events
+      const events = (await pool.query(`SELECT id, session_id, kind, question_key, correct, attempt_number, recorded_at,
+        CASE WHEN kind='activity' THEN snapshot ELSE NULL END AS snapshot FROM learning_record_events
         WHERE session_id=ANY($1::uuid[]) AND ($2::date IS NULL OR session_id=ANY($4::uuid[]) OR recorded_at >= $2::date::timestamp AT TIME ZONE 'Asia/Seoul'
         AND recorded_at < ($3::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul') ORDER BY id`, [rows.map(row => row.id), range.from, range.to, rows.filter(isMathCourse).map(row => row.id)])).rows;
       for (const event of events) eventGroups.get(event.session_id).push(event);
@@ -311,7 +331,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
         updatedAt: lastActivity ? new Date(lastActivity).toISOString() : row.updated_at,
         userId: String(row.user_id), studentNumber: row.student_number, studentName: row.student_name });
     }
-    res.json({ range, roster, sessions, nextCursor: all && found.length > pageSize ? rows[rows.length - 1].id : null });
+    res.json({ range, roster, sessions, nextCursor: found.length > pageSize ? rows[rows.length - 1].id : null });
   }));
   router.get('/teacher/sessions/:id', asyncRoute(async (req, res) => {
     const allowed = await scopes(req);
@@ -329,6 +349,6 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     if (!readable) fail('NOT_FOUND', '학습 기록을 찾을 수 없어요.', 404);
     res.json({ session: unitDetail(await serialize(pool, row, true), req.query.unit) });
   }));
-  return { router, initialize };
+  return { router, initialize, ...activityWriter };
 }
 module.exports = { createLearningRecords, summarize, STUDENT_SQL, REPORT_ACTIVITY_SQL };

@@ -1,5 +1,6 @@
 (async () => {
   'use strict';
+  const activityRound = window.LearningActivity?.round('sliding-puzzle', () => '슬라이딩 퍼즐 · ' + `${size}×${size}`);
 
   const boardElement = document.getElementById('board');
   const titleElement = document.getElementById('gameTitle');
@@ -227,6 +228,7 @@
   }
 
   function completeGame() {
+    activityRound?.finish(`퍼즐 완료 · ${moves}번 이동`);
     stopTimer();
     statusElement.textContent = 'PUZZLE COMPLETE!';
     statusElement.classList.add('success');
@@ -258,6 +260,7 @@
     startTimer();
     [tiles[blank], tiles[index]] = [tiles[index], tiles[blank]];
     moves += 1;
+    activityRound?.start();
     moveElement.textContent = moves;
     statusElement.textContent = 'READY';
     playSfx('stone');
@@ -272,6 +275,7 @@
   }
 
   function resetRound(values) {
+    activityRound?.reset();
     stopTimer();
     tiles = [...values];
     moves = 0;

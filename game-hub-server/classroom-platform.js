@@ -1456,6 +1456,7 @@ function createClassroomPlatform(options = {}) {
       await exams.initialize();
       await teacherAi.initialize();
       await userStorage.initialize();
+      await learningRecords.importStored();
       await schoolChat.initialize();
       await assessmentPlans.initialize();
       await schoolTextbooks.initialize();
@@ -1714,7 +1715,7 @@ function createClassroomPlatform(options = {}) {
   router.use("/teacher-ai", teacherAi.router);
 
   // 계정별 저장 공간. 화면들이 브라우저에 두던 값을 여기로 옮긴다(assets/site-storage.js).
-  const userStorage = createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute });
+  const userStorage = createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute, onSave: learningRecords.captureStorage });
   router.use("/me/storage", userStorage.router);
 
   // 학교 공용 채팅(학교마다 방 하나). 입장권은 박물관 입장권과 같은 서명을 쓰되 종류만 다르다.
@@ -9134,6 +9135,10 @@ function createClassroomPlatform(options = {}) {
     canBypassGlobalContentLock,
     gameAccessError,
     isTeacherRequest,
+    async recordLearningActivity(request, entry) {
+      const user = await requireUser(request);
+      return learningRecords.record(user, entry);
+    },
     readStackingRaceBank: learningBoards.readStackingRaceBank,
     getStudentCharacterStyle,
     verifyMuseumPresenceTicket,

@@ -50,7 +50,7 @@ async function main() {
     await request(reportUrl + '&period=all', null, 4, 403);
     await request(reportUrl + '&period=all&cursor=invalid', null, 3, 400);
     await request(reportUrl + '&period=unknown', null, 3, 400);
-    await request(reportUrl + '&cursor=' + sessions[0], null, 3, 400);
+    await request(reportUrl + '&cursor=invalid', null, 3, 400);
 
     browser = await chromium.launch({ channel: 'msedge', headless: true });
     const context = await browser.newContext({ extraHTTPHeaders: { 'x-test-user': '3' }, viewport: { width: 1440, height: 1000 } });
@@ -110,6 +110,13 @@ async function main() {
       if (pages === 1) await h.pool.query('UPDATE learning_record_sessions SET updated_at=NOW() WHERE id=$1', [part.sessions[0].id]);
     } while (cursor);
     assert.equal(pages, 6); assert.equal(seen.size, 1006, 'every authorized session is returned exactly once, including ongoing saves');
+    const dated = new Set(); cursor = null;
+    do {
+      const part = await request(reportUrl + '&from=2025-01-01&to=2025-01-01' + (cursor ? '&cursor=' + cursor : ''), null, 3);
+      for (const row of part.sessions) {assert.ok(!dated.has(row.id));dated.add(row.id);}
+      cursor = part.nextCursor;
+    } while (cursor);
+    assert.equal(dated.size,1001,'custom date ranges also load every page beyond 1,000 records');
     await choose('allPeriod', 1006);
     assert.equal(await page.locator('#summary .rate-count').innerText(), '2/3', 'final totals include all pages');
     assert.equal(await page.locator('.quick button[aria-pressed=true]').count(), 1);
