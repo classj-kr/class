@@ -123,8 +123,8 @@
         <p class="eyebrow"><span id="stepLabel">1 / 10</span><span id="bestLabel">최고 0타/분</span></p>
         <div class="prompt-stage"><img id="avatarPrompt" class="avatar-prompt" alt="" hidden><div class="prompt-copy"><div id="prompt" class="prompt" aria-label="따라 쓸 글자"></div><p id="promptLiteral" class="prompt-literal" hidden></p></div><button id="audioPromptButton" class="tts-button" type="button" aria-label="발음 다시 듣기" title="발음 다시 듣기" hidden>🔊</button></div>
         <label for="typingInput">위의 글자를 그대로 입력하세요</label>
-        <textarea id="typingInput" rows="1" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-describedby="feedback"></textarea>
-        <p id="feedback" class="feedback" aria-live="polite">준비되면 바로 입력해 보세요!</p>
+        <textarea id="typingInput" rows="1" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-describedby="feedback" data-sfx-feedback="none"></textarea>
+        <p id="feedback" class="feedback" aria-live="polite" data-sfx-feedback="none">준비되면 바로 입력해 보세요!</p>
         <div class="progress"><span id="progressBar"></span></div>
       </div>
 
@@ -143,6 +143,6 @@
   <script src="avatar-words.js?v=20261112-catalog1"></script>
   <script src="../../../literacy-numeracy/proverbs/proverbs-data.js"></script>
   <script src="/assets/site-storage.js?v=20261006-1"></script>
-  <script src="app.js?v=20261112-catalog1"></script>
+  <script src="app.js?v=20261114-boing"></script>
 </body>
 </html>

@@ -266,14 +266,12 @@ let lastPlayedSfxCue="";
 
 const FRUIT_SFX={
  bell:["/learning/games/fruitbell/assets/sound/sfx/bell-hit-01.ogg"],
- penaltyBell:["/learning/games/fruitbell/assets/sound/sfx/bell-hit-02.ogg"],
  card:[
    "/learning/games/fruitbell/assets/sound/sfx/card-flip-01.ogg",
    "/learning/games/fruitbell/assets/sound/sfx/card-flip-02.ogg",
    "/learning/games/fruitbell/assets/sound/sfx/card-flip-03.ogg"
  ],
  correct:["/learning/games/fruitbell/assets/sound/sfx/answer-correct.ogg"],
- timeout:["/learning/games/fruitbell/assets/sound/sfx/turn-timeout.ogg"],
  collect:["/learning/games/fruitbell/assets/sound/sfx/cards-collected.ogg"],
  start:["/learning/games/fruitbell/assets/sound/sfx/round-start.ogg"],
  finish:["/learning/games/fruitbell/assets/sound/sfx/match-finish.ogg"]
@@ -305,10 +303,10 @@ function consumeSfxCue(cue){
      playFruitSfx("correct",{delay:120,gain:.9});
      playFruitSfx("collect",{delay:300,gain:.75});
    }else{
-     playFruitSfx("penaltyBell",{delay:120,gain:.9});
+     setTimeout(()=>window.ClassGameSfx?.play("error"),120);
    }
  }
- if(cue.type==="timeout")playFruitSfx("timeout",{gain:.8});
+ if(cue.type==="timeout")window.ClassGameSfx?.play("timeout");
 }
 
 const $=id=>document.getElementById(id);

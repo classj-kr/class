@@ -37,25 +37,26 @@ const server = app.listen(0, '127.0.0.1');
         });
         await page.goto(`http://127.0.0.1:${server.address().port}/learning/arts/music-theory/rhythm-training/`);
         await page.selectOption('#level', '3'); await page.selectOption('#length', '1');
-        await page.locator('#bpm').fill('100'); await page.locator('#bpm').dispatchEvent('input');
-        const targets = await page.evaluate(() => {
-            const chart = RhythmTrainer.chart({ level: 3, bpm: 100 }, 123, 1), beat = .6;
+        const bpm = Number(await page.locator('#bpm').getAttribute('max'));
+        await page.locator('#bpm').fill(String(bpm)); await page.locator('#bpm').dispatchEvent('input');
+        const targets = await page.evaluate(bpm => {
+            const chart = RhythmTrainer.chart({ level: 3, bpm }, 123, 1), beat = 60 / bpm;
             return chart.targets.map((time, index, list) => {
                 const previous = index ? (time - list[index - 1]) / beat : Infinity;
                 const next = index + 1 < list.length ? (list[index + 1] - time) / beat : Infinity;
                 const offset = previous < .26 && next > .5 ? .17 * beat : previous > .5 && next < .26 ? -.17 * beat : 0;
                 return time + offset;
             });
-        });
+        }, bpm);
         await page.click('#start'); await page.locator('#stop').waitFor({ state: 'visible' });
         for (const target of targets) {
-            await page.waitForFunction(target => {
+            await page.waitForFunction(({ target, countIn }) => {
                 const context = testAudio, stamp = context.getOutputTimestamp();
                 const heard = stamp.contextTime > 0 && stamp.performanceTime > 0
                     ? stamp.contextTime + (performance.now() - stamp.performanceTime) / 1000
                     : context.currentTime - (context.outputLatency || 0);
-                return heard >= context.resumedAt + .18 + 2.4 + target - .008;
-            }, target, { polling: 'raf' });
+                return heard >= context.resumedAt + .18 + countIn + target - .008;
+            }, { target, countIn: 4 * 60 / bpm }, { polling: 'raf' });
             await page.keyboard.press('Space', { delay: 20 });
         }
         await page.locator('#result').waitFor({ state: 'visible' });
@@ -75,13 +76,13 @@ const server = app.listen(0, '127.0.0.1');
         await page.selectOption('#activity', 'choice');
         const answer = await page.evaluate(() => lastQuestion.bars.answer);
         await page.locator(`#barChoices [data-index="${(answer + 1) % 4}"]`).click();
-        await page.waitForFunction(() => mediaResults.some(result => result.src.endsWith('/error.ogg') && result.played));
+        await page.waitForFunction(() => mediaResults.some(result => new URL(result.src).pathname.endsWith('/error.ogg') && result.played));
         assert.equal(await page.locator('#listeningAnswer').isVisible(), false);
         await page.locator(`#barChoices [data-index="${answer}"]`).click();
         await page.waitForFunction(() => mediaResults.some(result => result.src.endsWith('/success.ogg') && result.played));
         await page.waitForTimeout(250); // Let the semantic observer run; explicit cues must not be doubled.
         const media = await page.evaluate(() => mediaResults);
-        assert.deepEqual(media.map(result => result.src.split('/').at(-1)), ['error.ogg', 'success.ogg']);
+        assert.deepEqual(media.map(result => new URL(result.src).pathname.split('/').at(-1)), ['error.ogg', 'success.ogg']);
         assert.ok(media.every(result => result.played && !result.muted && result.volume > 0 && !result.error));
         assert.deepEqual(errors, []);
         console.log('Native Chrome: error/success Ogg playback succeeded once each; wrong answers remain open for retry');

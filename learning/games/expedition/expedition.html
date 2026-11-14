@@ -316,7 +316,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(var(--site-game-height, 10
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
-<script src="expedition-sfx.js?v=20261009-sound-bus" defer></script>
+<script src="expedition-sfx.js?v=20261114-boing" defer></script>
 <style>
 
 @media(min-width:700px){
@@ -662,9 +662,8 @@ function flashCard(card,index){
       el.innerHTML=`<span class="art big">${hazardArt(state.theme,card.hazard)}</span><span class="revealLabel" style="font-size:27px">${escapeHtml(name)}</span><span class="revealNote">${repeat?"두 번째! 라운드가 끝납니다":"한 번 더 나오면 끝입니다"}</span>`;
     }
     if(repeat)ms=1900;
-    // 같은 위험이 두 번째면 라운드가 끝나므로 그 위험 소리 뒤에 붕괴음을 겹친다.
-    sfx(`hazard${card.hazard}`,"stone");
-    if(repeat)setTimeout(()=>sfx("wipe","error"),260);
+    if(repeat)sfx("wipe","explosion");
+    else sfx(`hazard${card.hazard}`,"stone");
   }
   flash(el,ms);
 }
