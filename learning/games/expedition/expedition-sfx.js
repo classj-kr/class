@@ -123,16 +123,11 @@
             [523.25, 659.25, 783.99].forEach((frequency, index) => {
                 tone({ at: now + index * 0.085, duration: 0.4, from: frequency, gain: 0.24, type: "triangle" });
             });
-        },
-        // 전멸: 아래로 꺼지는 소리에 잔해가 깔린다.
-        wipe(now) {
-            tone({ at: now, duration: 0.9, from: 320, to: 55, gain: 0.4, type: "sawtooth" });
-            tone({ at: now + 0.08, duration: 0.9, from: 240, to: 41, gain: 0.3, type: "sine" });
-            burst({ at: now + 0.05, duration: 0.8, type: "lowpass", from: 1200, to: 110, q: 0.7, gain: 0.32 });
         }
     };
 
     function play(name) {
+        if (name === "wipe") return window.ClassGameSfx?.play("explosion") ?? false;
         const recipe = RECIPES[name];
         if (!recipe) return false;
         if (!ensure()) return false;

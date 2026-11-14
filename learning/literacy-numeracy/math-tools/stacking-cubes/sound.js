@@ -8,6 +8,7 @@
   const stored = key => { try { return localStorage.getItem(key); } catch (_) { return null; } };
 
   function play(kind, height = 1, column = 2) {
+    if (kind === 'retry') return window.ClassGameSfx?.play('error') ?? false;
     const bus = window.ClassGameSfx?.getAudioBus();
     if (!bus) return false;
     const { context: ctx, output } = bus;
@@ -76,7 +77,7 @@
         [523.25, 659.25, 783.99, 1046.5].forEach(note => tone(note, .52, .62, .13, 'triangle'));
         tone(2093, .64, .45, .07);
       }
-    } else if (kind === 'retry') { tone(330, 0, .12, .2, 'triangle'); tone(294, .11, .16, .18, 'triangle'); }
+    }
     else if (kind === 'save') { knock(0, 660, .55); tone(880, .075, .2, .22, 'triangle'); }
     else if (kind === 'view') { tone(420, 0, .075, .16, 'sine', 680); }
     else knock(0, 500, .35);

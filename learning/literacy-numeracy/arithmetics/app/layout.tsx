@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file" defer />
+        <script src="/assets/sound/game-sfx.js?v=20261114-boing" defer />
         {/* 학교 공용 채팅(같은 학교 학생·교사만, 설정에서 켠 학생에게만 💬가 뜸). 위젯을 고치면 버전 표시도 올릴 것: game-hub-server/server.js 의 SITE_SCHOOL_CHAT_TAG 와 같은 값. */}
         <script data-school-chat="true" src="/assets/school-chat.js?v=20261107-nomute" defer />
       </head>

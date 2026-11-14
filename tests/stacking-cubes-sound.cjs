@@ -9,7 +9,7 @@ const source = fs.readFileSync(path.join(__dirname, '../learning/literacy-numera
   try {
     const page = await browser.newPage();
     const rendered = [];
-    for (const [kind, height] of [['add', 1], ['add', 6], ['erase', 1], ['undo', 1], ['clear', 1], ['success', 1], ['found', 1], ['retry', 1], ['save', 1], ['view', 1]]) {
+    for (const [kind, height] of [['add', 1], ['add', 6], ['erase', 1], ['undo', 1], ['clear', 1], ['success', 1], ['found', 1], ['save', 1], ['view', 1]]) {
       await page.goto('about:blank');
       await page.evaluate(() => {
         window.soundContext = new OfflineAudioContext(2, 96000, 48000);
@@ -47,6 +47,12 @@ const source = fs.readFileSync(path.join(__dirname, '../learning/literacy-numera
       rendered.push({ kind, height, ...metrics });
     }
     assert.ok(rendered[1].crossings > rendered[0].crossings, 'higher stacks have a higher pitch');
+    assert.deepEqual(await page.evaluate(() => {
+      const sounds = [];
+      ClassGameSfx.play = name => { sounds.push(name); return true; };
+      StackingSounds.play('retry');
+      return sounds;
+    }), ['error']);
     console.log(JSON.stringify({ ok: true, rendered }, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

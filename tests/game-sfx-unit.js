@@ -53,7 +53,7 @@ assert.ok(sfxSource.includes('DEFAULT_VOLUME = 0.65;'), "Default SFX volume shou
 const musicControlSource = fs.readFileSync(musicControlPath, "utf8");
 new vm.Script(musicControlSource, { filename: musicControlPath });
 assert.ok(musicControlSource.includes('new URL("game-sfx.js", currentScript.src)'), "Music-enabled games should load the shared effect module.");
-assert.ok(musicControlSource.includes('sfxScriptUrl.searchParams.set("v", "20261009-explosion-file")'), "Music-enabled games should cache-bust the current shared effect module.");
+assert.ok(musicControlSource.includes('sfxScriptUrl.searchParams.set("v", "20261114-boing")'), "Music-enabled games should cache-bust the current shared effect module.");
 assert.ok(musicControlSource.includes("classmusicchange"), "Music controls should publish the shared mute and volume state.");
 assert.ok(musicControlSource.includes('id="musicVolumeSlider"'), "Shared music volume should use the compact linear slider.");
 assert.ok(musicControlSource.includes('id="sfxVolumeSlider"'), "Shared effect volume should use the compact linear slider.");
@@ -75,7 +75,8 @@ assert.ok(!voyage.includes('id="bgmVolume"'), "World Voyage should not keep its 
 
 const hub = fs.readFileSync(hubPath, "utf8");
 const routeSource = fs.readFileSync(path.join(root, "game-hub-server/server.js"), "utf8");
-const friendlyGameFiles = new Map([...routeSource.matchAll(/\["(\/learning\/games\/[^"\n]+)", "\/learning\/games\/[^"\n]+", "([^"]+\.html)"\]/g)].map(match => [match[1].slice(1), match[2]]));
+const { GAME_PAGE_ALIASES } = require("../game-hub-server/home-content-paths");
+const friendlyGameFiles = new Map(GAME_PAGE_ALIASES.map(([friendly, legacy]) => [friendly.slice(1), legacy.slice(1) + ".html"]));
 assert.ok(hub.includes('<audio id="bgm" preload="none"></audio>'), "The hub should keep the shared music control without loading a track.");
 assert.ok(!hub.includes("`assets/sound/${currentMonth}.ogg`"), "The hub should not load monthly background music.");
 const gameLinks = [...hub.matchAll(/href="(learning\/games\/[^"]+)"/g)].map((match) => {

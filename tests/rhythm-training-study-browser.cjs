@@ -74,7 +74,7 @@ function mockAudio() {
                         assert.equal(await page.locator('#beatGrid .right, #beatGrid .missed').count(), 0);
                         assert.equal(await page.locator('#beatGrid button:disabled').count(), 0);
                         assert.match(await page.locator('#listeningFeedback').textContent(), /다시 듣고/);
-                        assert.ok((await page.evaluate(() => answerSounds.at(-1))).endsWith('/error.ogg'));
+                        assert.ok(new URL(await page.evaluate(() => answerSounds.at(-1))).pathname.endsWith('/error.ogg'));
                     }
                     for (const cell of question.grid.answer) await page.locator(`#beatGrid [data-cell="${cell}"]`).click();
                     await page.click('#listen'); await page.locator('#stop').waitFor({ state: 'visible' });
@@ -104,7 +104,7 @@ function mockAudio() {
             assert.equal(await page.locator('#listeningAnswer').isVisible(), false);
             assert.match(await page.locator('#listeningFeedback').textContent(), /다시 듣고/);
             await page.locator(`#barChoices [data-index="${wrong}"]`).click();
-            assert.deepEqual(await page.evaluate(start => answerSounds.slice(start).map(url => url.split('/').at(-1)), soundCount), ['error.ogg', 'error.ogg']);
+            assert.deepEqual(await page.evaluate(start => answerSounds.slice(start).map(url => new URL(url).pathname.split('/').at(-1)), soundCount), ['error.ogg', 'error.ogg']);
             await page.click('#listen'); await page.locator('#stop').waitFor({ state: 'visible' }); await page.click('#stop');
             assert.equal(await page.locator('#listeningAnswer').isVisible(), false, 'replaying after a wrong answer does not reveal it');
             assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -114,7 +114,7 @@ function mockAudio() {
             assert.equal(await page.locator('#barChoices .wrong').count(), 0);
             assert.equal(await page.locator('#barChoices button:disabled').count(), 4);
             assert.equal(await page.locator('#listeningAnswer').isVisible(), true);
-            assert.deepEqual(await page.evaluate(start => answerSounds.slice(start).map(url => url.split('/').at(-1)), soundCount), ['error.ogg', 'error.ogg', 'success.ogg']);
+            assert.deepEqual(await page.evaluate(start => answerSounds.slice(start).map(url => new URL(url).pathname.split('/').at(-1)), soundCount), ['error.ogg', 'error.ogg', 'success.ogg']);
             await page.click('#start');
             const beforeReveal = await page.evaluate(() => answerSounds.length);
             await page.click('#showAnswer');

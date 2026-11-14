@@ -72,7 +72,7 @@
       tone(base * 1.5, 0.12, 'triangle', 0.13, 0.06);
       if (combo && combo % 5 === 0) [0, 1, 2, 3].forEach((i) => tone(base * [1, 1.25, 1.5, 2][i], 0.12, 'square', 0.06, 0.12 + i * 0.06));
     },
-    bad: () => tone(200, 0.14, 'sawtooth', 0.12, 0, 90),
+    bad: () => window.ClassGameSfx?.play('error'),
     count: () => tone(660, 0.16, 'square', 0.12),
     go: () => { tone(880, 0.5, 'square', 0.13); tone(1320, 0.5, 'triangle', 0.1); },
     tick: () => tone(1000, 0.05, 'square', 0.06),

@@ -12,14 +12,13 @@
         "click", "select", "back", "bell", "card", "stone", "success",
         "error", "tick", "turn", "timeout", "capture", "explosion"
     ]);
-    const SYNTH_FALLBACKS = Object.freeze({
-                select: "click", back: "click", turn: "bell", timeout: "error"
-    });
+    const SYNTH_FALLBACKS = Object.freeze({ select: "click", back: "click", turn: "bell" });
+    const RETRY_SOUNDS = new Set(["error", "timeout", "explosion"]);
     const scriptUrl = document.currentScript?.src || new URL("/assets/sound/game-sfx.js", window.location.href).href;
     const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => !["click", "capture"].includes(name)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
-        new URL(`sfx/${name}.ogg`, scriptUrl).href
+        new URL(`sfx/${name}.ogg${RETRY_SOUNDS.has(name) ? "?v=20261114-boing" : ""}`, scriptUrl).href
     ]));
 
     let context = null;
@@ -224,28 +223,26 @@
         tone(ctx, { start: now + 0.065, from: 1560, to: 1170, duration: 0.18, gain: 0.09 });
     }
 
-    // Brief impact, broad debris and a low rumble; no pitched sawtooth buzz.
-    function playExplosion(ctx) {
-        const now = ctx.currentTime;
-        const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * 0.95), ctx.sampleRate);
-        const samples = buffer.getChannelData(0);
-        for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
-        for (const [from, to, duration, peak] of [[3600, 650, 0.24, 0.65], [480, 85, 0.88, 0.9]]) {
-            const source = ctx.createBufferSource();
-            const filter = ctx.createBiquadFilter();
-            const gain = makeGain(ctx, now, peak, 0.0001, duration);
-            source.buffer = buffer;
-            filter.type = "lowpass";
-            filter.Q.value = 0.55;
-            filter.frequency.setValueAtTime(from, now);
-            filter.frequency.exponentialRampToValueAtTime(to, now + duration);
-            source.connect(filter);
-            filter.connect(gain);
-            source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
-            source.start(now);
-            source.stop(now + duration + 0.01);
-        }
-        tone(ctx, { start: now, from: 95, to: 38, duration: 0.38, gain: 0.45, type: "sine" });
+    function playBoing(ctx, pitch, level) {
+        const start = ctx.currentTime;
+        const duration = 0.34;
+        const spring = ctx.createOscillator();
+        const envelope = ctx.createGain();
+        spring.type = "triangle";
+        const curve = Float32Array.from({ length: 128 }, (_, index) => {
+            const t = index / 127;
+            return pitch * (0.66 + 0.34 * Math.exp(-3.7 * t)
+                + 0.68 * Math.sin(5 * Math.PI * t) * Math.exp(-4 * t));
+        });
+        spring.frequency.setValueCurveAtTime(curve, start, duration);
+        envelope.gain.setValueAtTime(0, start);
+        envelope.gain.linearRampToValueAtTime(level, start + 0.019);
+        envelope.gain.exponentialRampToValueAtTime(0.001, start + duration - 0.02);
+        envelope.gain.linearRampToValueAtTime(0, start + duration);
+        spring.connect(envelope).connect(output);
+        spring.onended = () => { spring.disconnect(); envelope.disconnect(); };
+        spring.start(start);
+        spring.stop(start + duration);
     }
 
     function playSuccess(ctx) {
@@ -262,12 +259,6 @@
         });
     }
 
-    function playError(ctx) {
-        const now = ctx.currentTime;
-        tone(ctx, { start: now, from: 210, to: 155, duration: 0.14, gain: 0.24, type: "square" });
-        tone(ctx, { start: now + 0.08, from: 165, to: 125, duration: 0.15, gain: 0.18, type: "square" });
-    }
-
     function playTick(ctx) {
         const now = ctx.currentTime;
         tone(ctx, { start: now, from: 1180, to: 930, duration: 0.025, gain: 0.16, type: "square" });
@@ -279,9 +270,10 @@
         card: playCard,
         stone: playStone,
         capture: playCapture,
-        explosion: playExplosion,
+        explosion: ctx => playBoing(ctx, 290, 0.23),
         success: playSuccess,
-        error: playError,
+        error: ctx => playBoing(ctx, 510, 0.19),
+        timeout: ctx => playBoing(ctx, 405, 0.17),
         tick: playTick
     };
 

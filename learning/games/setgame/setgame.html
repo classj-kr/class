@@ -2117,18 +2117,7 @@ body:has(#game-container[style*="flex"]){height:var(--site-game-height, 100dvh);
     }
 
     function playFailSound() {
-        const bus = window.ClassGameSfx?.getAudioBus();
-        if (!bus) return;
-        const audioCtx = bus.context;
-        let osc = audioCtx.createOscillator();
-        let gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(bus.output);
-        osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.4);
+        window.ClassGameSfx?.play("error");
     }
 
     // 팝업 모달 관리

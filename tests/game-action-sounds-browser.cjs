@@ -32,8 +32,9 @@ async function main() {
       const play = HTMLMediaElement.prototype.play;
       HTMLMediaElement.prototype.play = function() {
         if (this.src.includes('/sfx/')) {
-          soundProbe.files.push(this.src.split('/').pop());
-          this.addEventListener('playing', ()=>soundProbe.playing.push(this.src.split('/').pop()), {once:true});
+          const file = new URL(this.src).pathname.split('/').pop();
+          soundProbe.files.push(file);
+          this.addEventListener('playing', ()=>soundProbe.playing.push(file), {once:true});
         }
         return play.call(this);
       };
@@ -131,6 +132,14 @@ async function main() {
       await fruit.waitForFunction(()=>soundProbe.playing.length===2);
       await check(fruit, `fruit ${input}: own result does not repeat bell`,0,['answer-correct.ogg','cards-collected.ogg']);
       await reset(fruit);
+      await fruit.evaluate(()=>consumeSfxCue({id:'test-wrong',type:'bell-result',sender:'me',ok:false}));
+      await fruit.waitForFunction(()=>soundProbe.playing.includes('error.ogg'));
+      await check(fruit, `fruit ${input}: wrong bell only adds a spring sound`,0,['error.ogg']);
+      await reset(fruit);
+      await fruit.evaluate(()=>consumeSfxCue({id:'test-timeout',type:'timeout'}));
+      await fruit.waitForFunction(()=>soundProbe.playing.includes('timeout.ogg'));
+      await check(fruit, `fruit ${input}: timeout plays a spring sound`,0,['timeout.ogg']);
+      await reset(fruit);
       await fruit.evaluate(()=>{consumeSfxCue({id:'test-muted-result',type:'bell-result',sender:'me',ok:true});ClassGameSfx.setMuted(true);});
       await fruit.waitForTimeout(350);
       await check(fruit, `fruit ${input}: mute cancels delayed results`,0);
@@ -179,13 +188,8 @@ async function main() {
     await expedition.evaluate(()=>{
       const before=structuredClone(state);state.revealed.push({kind:'hazard',hazard:2});reactToChange(before,state);
     });
-    await expedition.waitForTimeout(180);
-    const beforeMute=await expedition.evaluate(()=>{ClassGameSfx.setMuted(true);return soundProbe.oscillators+soundProbe.buffers;});
-    assert.ok(beforeMute>0);
-    await expedition.waitForTimeout(350);
-    assert.equal(await expedition.evaluate(()=>soundProbe.oscillators+soundProbe.buffers),beforeMute,'Delayed wipe must respect mute');
-    assert.deepEqual(await expedition.evaluate(()=>soundProbe.files),[]);
-    report.passed.push('expedition: mute cancels delayed collapse');
+    await check(expedition, 'expedition: round loss plays the spring sound only', 0, ['explosion.ogg']);
+    assert.equal(await expedition.evaluate(()=>soundProbe.buffers),0);
     await expedition.close();
     assert.deepEqual(report.errors, [], 'No page errors');
   } finally {
