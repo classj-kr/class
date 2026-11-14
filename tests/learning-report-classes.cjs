@@ -90,7 +90,15 @@ async function main() {
     await refreshed(() => page.evaluate(() => window.dispatchEvent(new Event('focus'))));
     assert.deepEqual(await options(), ['10:2026:4:1']);
     assert.equal(await page.locator('#classSelect').isEnabled(), true);
-    assert.equal(await page.locator('#activitySelect optgroup').count(), new Set(require('../assets/learning-record-catalog').map(row=>row.domain)).size, 'refresh does not duplicate activity filters');
+    await page.locator('#areaTab').click();
+    assert.deepEqual(await page.locator('#activitySelect optgroup').evaluateAll(groups => groups.map(group => group.label)),
+      ['읽기', '쓰기', '문법', '어휘', '수학', '역사·지리', '정보', '예술', '학습 점검', '게임']);
+    await page.getByRole('button', { name: '수학', exact: true }).click();
+    assert.deepEqual(await page.locator('#activitySelect optgroup').evaluateAll(groups => groups.map(group => group.label)), ['수학']);
+    assert.equal(await page.locator('#activitySelect option[value="math-ox"]').count(), 1);
+    assert.equal(await page.locator('#activitySelect option[value="geoboard"]').count(), 1);
+    await page.locator('#activitySelect').selectOption('geoboard');
+    assert.match(await page.locator('#reportHeading').innerText(), /지오보드/);
     assert.equal((await request(`/teacher/sessions/${historical.id}`)).session.events.length, 1);
     assert.deepEqual(errors, []);
     console.log('PASS report classes: current roster only, inactive/empty classes hidden, new/unlinked/legacy pupils, school/year/homeroom scope, history preserved, refresh/return updates, selection and period retention, empty roster recovery.');

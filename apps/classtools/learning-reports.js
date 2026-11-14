@@ -70,10 +70,34 @@
     for (const row of data.sessions) if (!map.has(row.userId)) map.set(row.userId, { id: row.userId, name: row.studentName, number: row.studentNumber });
     return [...map.values()].sort((a, b) => Number(a.number) - Number(b.number));
   }
+  const areaOrder = ['읽기', '쓰기', '문법', '어휘', '수학', '역사·지리', '정보', '예술', '학습 점검', '게임'];
+  const reportArea = domain => ({ 수리: '수학', '수학 탐구': '수학', 음악: '예술', 미술: '예술' })[domain] || domain;
+  function reportAreas() {
+    const areas = new Set(catalog.map(row => reportArea(row.domain)));
+    return [...areaOrder.filter(area => areas.delete(area)), ...areas];
+  }
+  function updateActivityOptions() {
+    const select = $('activitySelect'), previous = select.value;
+    select.replaceChildren(node('option', '전체 활동'));
+    select.options[0].value = '';
+    for (const area of reportAreas()) {
+      if (selected && selected !== '전체' && selected !== area) continue;
+      const group = node('optgroup'); group.label = area;
+      for (const row of catalog.filter(row => reportArea(row.domain) === area)) {
+        const option = node('option', row.label); option.value = row.id; group.append(option);
+      }
+      select.append(group);
+    }
+    if (Array.from(select.options).some(option => option.value === previous)) select.value = previous;
+  }
   function render() {
+    if (mode === 'area') {
+      if (!reportAreas().includes(selected)) selected = '전체';
+      updateActivityOptions();
+    }
     const all = LearningRecords.recordRows(data.sessions), filtered = mode === 'area' ? all.filter(s =>
       (!$('activitySelect').value || s.activity === $('activitySelect').value) &&
-      (!selected || selected === '전체' || s.domain === selected)) : all;
+      (selected === '전체' || reportArea(s.domain) === selected)) : all;
     const roster = students(), ids = new Set(filtered.map(s => s.userId));
     const first = filtered.reduce((sum, s) => sum + s.summary.firstScored, 0), right = filtered.reduce((sum, s) => sum + s.summary.firstCorrect, 0);
     const inRange = value => value && (data.range?.all || new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) >= data.range?.from && new Date(new Date(value).getTime() + 32400000).toISOString().slice(0, 10) <= data.range?.to);
@@ -108,14 +132,13 @@
       heading(student ? `${student.number}번 ${student.name}` : '');
       renderRecords(all.filter(s => s.userId === student?.id), false);
     } else {
-      const domains = ['전체', ...new Set(catalog.map(s => s.domain))];
-      if (!domains.includes(selected)) selected = '전체';
+      const domains = ['전체', ...reportAreas()];
       for (const domain of domains) {
         const button = node('button', domain); button.setAttribute('aria-pressed', String(selected === domain)); button.onclick = () => { selected = domain; $('activitySelect').value = ''; render(); }; list.append(button);
       }
-      const rows = filtered.filter(s => selected === '전체' || s.domain === selected);
-      heading(`${selected} 학습 내역`, `${new Set(rows.map(s => s.userId)).size}명 · ${rows.length}개 활동`);
-      renderRecords(rows, true);
+      const activity = catalog.find(row => row.id === $('activitySelect').value);
+      heading(`${activity?.label || selected} 학습 내역`, `${ids.size}명 · ${filtered.length}개 활동`);
+      renderRecords(filtered, true);
     }
   }
   function heading(title, subtitle) { $('reportHeading').hidden = !title; $('reportHeading').replaceChildren(...(title ? [node('h2', title)] : [])); if (subtitle) $('reportHeading').append(node('p', subtitle)); }
@@ -245,14 +268,8 @@
     }
     select.disabled = !context.classes.length;
     if (select.value !== preferred) { selected = null; $('detailDialog').close(); }
-    if (!catalog.length) {
-      catalog = context.catalog;
-      for (const domain of new Set(catalog.map(row => row.domain))) {
-        const group = node('optgroup'); group.label = domain;
-        for (const row of catalog.filter(row => row.domain === domain)) { const option = node('option', row.label); option.value = row.id; group.append(option); }
-        $('activitySelect').append(group);
-      }
-    }
+    catalog = context.catalog;
+    if (mode !== 'area') updateActivityOptions();
   }
   async function load() {
     const current = ++generation; $('load').disabled = true; status('불러오는 중…');
