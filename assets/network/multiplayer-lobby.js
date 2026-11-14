@@ -32,11 +32,7 @@
 
     function loadAvatarKey() {
         if (avatarPromise) return avatarPromise;
-        avatarPromise = fetch("/api/student/profile", { credentials: "same-origin" })
-            .then(response => (response.ok ? response.json() : null))
-            .then(data => { avatarKey = data?.profile?.avatar?.key || ""; return avatarKey; })
-            // 게스트나 비로그인이면 아바타가 없다. 게임은 이름만으로 계속 돌아간다.
-            .catch(() => { avatarKey = ""; return ""; });
+        avatarPromise = window.ClassroomAvatars.loadKey().then(key => (avatarKey = key));
         return avatarPromise;
     }
 
@@ -72,6 +68,7 @@
             this.hostCreateAttempts = 0;
             this.role = "host";
             this.roomCode = "";
+            this.hostId = null;
             this.myId = null;
             this.players = {};
             this.connected = false;
@@ -228,7 +225,7 @@
             title.setAttribute("aria-level", "1");
             header.appendChild(title);
             const help = (this.options.rulesButtonIds || []).map(getElement).find(button => root.contains(button));
-            if (help) { if (!this.options.preserveRulesUi) help.textContent = "Rules"; help.classList.add("mp-ui-help"); header.appendChild(help); }
+            if (help) { help.textContent = "Rules"; help.classList.add("mp-ui-help"); header.appendChild(help); }
             const meta = document.createElement("div");
             meta.className = "mp-ui-meta";
             const counts = this.allowedPlayerCounts;
@@ -260,7 +257,7 @@
             e.playerList?.classList.add("mp-ui-roster");
             e.guide?.classList.add("mp-ui-guide");
             e.startButton?.classList.add("mp-ui-start");
-            if (!this.options.preserveRulesUi) (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button) button.textContent = "Rules"; });
+            (this.options.rulesButtonIds || []).forEach(id => { const button = getElement(id); if (button) button.textContent = "Rules"; });
         }
 
         get playerName() {
@@ -277,6 +274,35 @@
         // 게임 화면에서 참가자 얼굴을 그릴 때 쓴다. 없으면 빈 문자열이라 그대로 조건문에 넣으면 된다.
         playerAvatar(playerId) {
             return avatarUrlFor(this.players[String(playerId ?? "")]?.avatarKey);
+        }
+
+        avatarMarkup(id, {walking=false}={}) {
+            if (walking) return window.ClassroomAvatars?.markup(this.players[String(id)]?.avatarKey) || "";
+            const url = this.playerAvatar(id);
+            return url ? `<img class="mp-face" src="${url}" alt="" decoding="async" draggable="false">` : "";
+        }
+
+        decorateName(element, id) {
+            if (!element) return;
+            element.querySelector(":scope > .mp-face")?.remove();
+            const url = this.playerAvatar(id);
+            if (!url) return;
+            const image = document.createElement("img");
+            image.className = "mp-face"; image.src = url; image.alt = ""; image.decoding = "async";
+            element.prepend(image);
+        }
+
+        renderCompactPlayers(container) {
+            if (!container) return;
+            const signature = JSON.stringify([this.myId, this.players]);
+            if (container.dataset.avatarRoster === signature) return;
+            container.dataset.avatarRoster = signature;
+            container.replaceChildren(...Object.entries(this.players).map(([id, player]) => {
+                const label = document.createElement("span");
+                label.textContent = safeName(player.name) + (id === this.myId ? " · 나" : "");
+                this.decorateName(label, id);
+                return label;
+            }));
         }
 
         snapshot() {
@@ -300,6 +326,7 @@
             this._closeTransport();
             this.role = mode === "host" ? "host" : "guest";
             this.roomCode = "";
+            this.hostId = null;
             this.myId = null;
             this.players = {};
             this.connected = false;
@@ -425,6 +452,7 @@
             this.connected = false;
             this.started = false;
             this.roomCode = "";
+            this.hostId = null;
             this.myId = null;
             this.players = {};
             if (this.elements.roomCode) this.elements.roomCode.textContent = "----";
@@ -481,6 +509,7 @@
                 return;
             }
             if (message.type === "ROOM_CREATED") {
+                this.hostId = String(message.playerId ?? this.myId);
                 this.myId = String(message.playerId ?? this.myId);
                 this.connected = true;
                 this.roomCode = String(message.roomCode || this.roomCode);
@@ -562,6 +591,7 @@
         _handleGameMessage(senderId, payload) {
             if (!payload) return;
             if (payload.type === MESSAGE.STATE && !this.started) {
+                this.hostId = String(senderId);
                 this.players = payload.players || {};
                 this.options.onLobbyData?.(payload.data, this.snapshot());
                 this.render();
@@ -625,16 +655,24 @@
             const ids = Object.keys(this.players);
             const list = this.elements.playerList;
             if (list && !this.options.renderPlayerList) {
-                const fragment = document.createDocumentFragment();
-                ids.forEach(id => {
-                    const chip = document.createElement("span");
-                    chip.className = `mp-lobby-player${id === this.myId ? " me" : ""}`;
-                    const label = this.options.formatPlayerName?.(this.players[id], id, this.snapshot())
-                        || safeName(this.players[id]?.name);
-                    chip.textContent = `${label}${id === this.myId ? " (나)" : ""}`;
-                    fragment.appendChild(chip);
-                });
-                list.replaceChildren(fragment);
+                list.classList.add("mp-avatar-roster");
+                const signature = JSON.stringify([this.myId, this.hostId, ids.map(id => [id, this.players[id]?.name, this.players[id]?.avatarKey,
+                    this.options.formatPlayerName?.(this.players[id], id, this.snapshot())])]);
+                if (list.dataset.avatarRoster !== signature || (ids.length && !list.children.length)) {
+                    list.dataset.avatarRoster = signature;
+                    list.replaceChildren(...ids.map(id => {
+                        const chip = document.createElement("div");
+                        chip.className = "mp-avatar-seat" + (id === this.myId ? " me" : "");
+                        const name = document.createElement("span");
+                        name.className = "mp-avatar-name";
+                        name.textContent = this.options.formatPlayerName?.(this.players[id], id, this.snapshot()) || safeName(this.players[id]?.name);
+                        const badge = document.createElement("span");
+                        badge.className = "mp-avatar-badge";
+                        badge.textContent = [id === this.hostId ? "방장" : "", id === this.myId ? "나" : ""].filter(Boolean).join(" · ");
+                        chip.append(name, badge, window.ClassroomAvatars.create(this.players[id]?.avatarKey, {walking:true}));
+                        return chip;
+                    }));
+                }
             }
             if (list && this.options.renderPlayerList) this.options.renderPlayerList(list, this.snapshot());
 

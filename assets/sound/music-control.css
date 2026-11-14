@@ -7,7 +7,7 @@
     display: none !important;
 }
 
-.unified-music-control {
+#classSiteSettings {
     position: fixed;
     top: max(10px, env(safe-area-inset-top));
     right: max(10px, env(safe-area-inset-right));
@@ -15,20 +15,22 @@
     display: block;
     width: 36px;
     height: 36px;
+    min-height: 36px;
     color: #f4f4f5;
     font: 14px/1.5 "Pretendard", "Malgun Gothic", system-ui, sans-serif;
     text-align: left;
 }
 
-.unified-music-control *, .unified-music-control *::before, .unified-music-control *::after { box-sizing: border-box; }
-.unified-music-control [hidden] { display: none !important; }
+#classSiteSettings *, #classSiteSettings *::before, #classSiteSettings *::after { box-sizing: border-box; }
+#classSiteSettings [hidden] { display: none !important; }
 
-.unified-music-control .unified-audio-menu-toggle {
+#classSiteSettings .unified-audio-menu-toggle {
     appearance: none;
     display: grid;
     place-items: center;
     width: 36px;
     height: 36px;
+    min-height: 36px;
     margin: 0;
     padding: 0;
     border: 1px solid rgba(255, 255, 255, .16);
@@ -43,19 +45,19 @@
     backdrop-filter: blur(8px);
 }
 
-.unified-music-control .unified-audio-menu-toggle:active {
+#classSiteSettings .unified-audio-menu-toggle:active {
     transform: scale(.95);
     background: rgba(72, 72, 77, .98);
 }
 
-.unified-music-control button:focus-visible,
-.unified-music-control summary:focus-visible,
-.unified-music-control input:focus-visible {
+#classSiteSettings button:focus-visible,
+#classSiteSettings summary:focus-visible,
+#classSiteSettings input:focus-visible {
     outline: 3px solid #60a5fa;
     outline-offset: 3px;
 }
 
-.unified-music-control .unified-audio-panel {
+#classSiteSettings .unified-audio-panel {
     position: absolute;
     top: 48px;
     right: 0;
@@ -74,19 +76,19 @@
     animation: unified-audio-open .14s ease-out;
 }
 
-.unified-music-control .unified-audio-panel[hidden] {
+#classSiteSettings .unified-audio-panel[hidden] {
     display: none !important;
 }
 
-.unified-music-control .unified-audio-group {
+#classSiteSettings .unified-audio-group {
     display: grid;
     grid-template-columns: 44px minmax(0, 1fr);
     align-items: center;
     gap: 8px 12px;
 }
 
-.unified-music-control .unified-settings-title { font-size: 17px; color: #fff; }
-.unified-music-control .unified-audio-group label {
+#classSiteSettings .unified-settings-title { font-size: 17px; color: #fff; }
+#classSiteSettings .unified-audio-group label {
     grid-column: 1 / -1;
     grid-row: 1;
     margin: 0;
@@ -95,8 +97,8 @@
     font: inherit;
     font-weight: 600;
 }
-.unified-music-control .unified-audio-group output { grid-column: 2; grid-row: 1; justify-self: end; color: #c9c5d0; font-size: 12px; font-variant-numeric: tabular-nums; }
-.unified-music-control .unified-settings-action {
+#classSiteSettings .unified-audio-group output { grid-column: 2; grid-row: 1; justify-self: end; color: #c9c5d0; font-size: 12px; font-variant-numeric: tabular-nums; }
+#classSiteSettings .unified-settings-action {
     appearance: none;
     width: 100%;
     min-height: 44px;
@@ -111,12 +113,12 @@
     box-shadow: none;
     letter-spacing: normal;
 }
-.unified-music-control .unified-settings-help { border-top: 1px solid rgba(255, 255, 255, .14); padding-top: 8px; }
-.unified-music-control .unified-settings-help summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 600; }
-.unified-music-control .unified-settings-help p,
-.unified-music-control .unified-settings-status { margin: 8px 0 0; color: #c9c5d0; font: inherit; font-size: 13px; line-height: 1.65; }
+#classSiteSettings .unified-settings-help { border-top: 1px solid rgba(255, 255, 255, .14); padding-top: 8px; }
+#classSiteSettings .unified-settings-help summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 600; }
+#classSiteSettings .unified-settings-help p,
+#classSiteSettings .unified-settings-status { margin: 8px 0 0; color: #c9c5d0; font: inherit; font-size: 13px; line-height: 1.65; }
 
-.unified-music-control .unified-audio-toggle {
+#classSiteSettings .unified-audio-toggle {
     appearance: none;
     display: grid;
     place-items: center;
@@ -133,12 +135,12 @@
     touch-action: manipulation;
 }
 
-.unified-music-control .unified-audio-toggle.is-muted {
+#classSiteSettings .unified-audio-toggle.is-muted {
     color: #f08b7d;
     background: rgba(240, 139, 125, .1);
 }
 
-.unified-music-control .unified-audio-slider {
+#classSiteSettings .unified-audio-slider {
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
@@ -155,7 +157,7 @@
     touch-action: pan-y;
 }
 
-.unified-music-control .unified-audio-slider::-webkit-slider-runnable-track {
+#classSiteSettings .unified-audio-slider::-webkit-slider-runnable-track {
     width: 100%;
     height: 6px;
     border-radius: 999px;
@@ -163,7 +165,7 @@
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, .55);
 }
 
-.unified-music-control .unified-audio-slider::-webkit-slider-thumb {
+#classSiteSettings .unified-audio-slider::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
     width: 22px;
@@ -175,14 +177,14 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, .55);
 }
 
-.unified-music-control .unified-audio-slider::-moz-range-track {
+#classSiteSettings .unified-audio-slider::-moz-range-track {
     width: 100%;
     height: 6px;
     border-radius: 999px;
     background: linear-gradient(90deg, #9b6a2a, #efb85b);
 }
 
-.unified-music-control .unified-audio-slider::-moz-range-thumb {
+#classSiteSettings .unified-audio-slider::-moz-range-thumb {
     width: 18px;
     height: 18px;
     border: 2px solid #dfb66e;
@@ -196,17 +198,17 @@
 }
 
 @media (max-width: 760px), (hover: none) and (pointer: coarse) {
-    .unified-music-control {
+    #classSiteSettings {
         top: max(8px, env(safe-area-inset-top));
         right: max(8px, env(safe-area-inset-right));
     }
 
-    .unified-music-control .unified-audio-panel {
+    #classSiteSettings .unified-audio-panel {
         top: 54px;
         padding: 18px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .unified-music-control .unified-audio-panel { animation: none; }
+    #classSiteSettings .unified-audio-panel { animation: none; }
 }

@@ -6,12 +6,13 @@
   <meta name="theme-color" content="#d8e8dc">
   <meta name="description" content="경찰팀과 도둑팀이 각자의 기기로 접속해 보석을 둘러싼 추격전을 벌이는 2~6인 보드게임">
   <title>경찰과 도둑</title>
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261001-citychase-bg">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
   <link rel="stylesheet" href="citychase.css?v=20261109-clear-face">
-  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules"></script>
+  <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
   <script src="citychase-data.js?v=20261001-original-routes"></script>
   <script src="citychase-layout.js?v=20261002-road-clearance"></script>
 </head>
@@ -87,7 +88,7 @@
           <p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p>
           <button id="startBtn" class="primary startButton" type="button" disabled>참가자를 기다리는 중</button>
           <div class="lobbySecondaryActions">
-            <button id="rulesBtnLobby" class="secondary" type="button">게임 방법</button>
+            <button id="rulesBtnLobby" class="secondary" type="button">Rules</button>
             <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
           </div>
         </section>
@@ -129,7 +130,7 @@
               <button id="boardZoomIn" type="button" aria-label="게임판 확대">＋</button>
             </div>
             <div class="headerMeta">
-              <button id="rulesBtnGame" class="iconButton" type="button" aria-label="게임 방법">?</button>
+              <button id="rulesBtnGame" class="iconButton" type="button" aria-label="게임 방법">Rules</button>
               <button id="leaveBtnGame" class="iconButton" type="button" aria-label="게임 나가기">×</button>
             </div>
           </div>
@@ -253,6 +254,6 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
   <audio id="bgm" preload="auto"></audio>
-  <script src="citychase.js?v=20261006-name"></script>
+  <script src="citychase.js?v=20261114-avatars"></script>
 </body>
 </html>

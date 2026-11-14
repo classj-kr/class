@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>저택 추리</title>
 <link rel="preload" as="image" href="/learning/games/clue/assets/images/board-v5.webp">
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef0f5;background:#10121a;--accent:#d9a441;--accent-soft:#8a662a;--panel:#1b1f2b;--panel-edge:#3a3f52;--danger:#c8544a;--safe:#3f9e6c}
 *{box-sizing:border-box}
@@ -181,8 +181,9 @@ h1,h2,h3,p{margin-top:0}
 #roomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#gameScreen:not(.hidden)){padding:8px}
@@ -569,26 +570,8 @@ let localDeadline=0;
 let lastAnimatedClueMove=0;
 const savedName=String((window.CLASS_PLAYER_NAME || "")||"").trim();
 
-const GUEST_AVATAR_KEYS=[
-  "animal-bear","animal-bee","animal-butterfly","animal-cat","animal-chick","animal-crab","animal-crested-gecko","animal-crocodile","animal-deer","animal-dog",
-  "animal-dolphin","animal-dragon","animal-dragonfly","animal-duck","animal-eagle","animal-elephant","animal-flamingo","animal-fox","animal-frog","animal-giraffe",
-  "animal-hedgehog","animal-hippopotamus","animal-kangaroo","animal-koala","animal-ladybug","animal-leopard-gecko","animal-lion","animal-llama","animal-meerkat","animal-monkey",
-  "animal-mouse","animal-octopus","animal-ostrich","animal-owl","animal-panda","animal-peacock","animal-penguin","animal-praying-mantis","animal-rabbit","animal-ratsnake",
-  "animal-rhinoceros","animal-seal","animal-shark","animal-sloth","animal-snail","animal-squirrel","animal-tiger","animal-turtle","animal-unicorn","animal-viper",
-  "animal-whale","animal-wolf","fruit-apple","fruit-avocado","fruit-banana","fruit-blueberry","fruit-cherry","fruit-grape","fruit-mango","fruit-melon",
-  "fruit-orange","fruit-peach","fruit-persimmon","fruit-pineapple","fruit-strawberry","fruit-watermelon","theme-balloons","theme-rainbow","theme-star","theme-sun"
-];
 async function loadMyAvatar(){
-  try{
-    const response=await fetch("/api/student/profile");
-    if(response.ok){
-      const data=await response.json();
-      myAvatarUrl=data&&data.profile&&data.profile.avatar&&data.profile.avatar.url||null;
-      if(myAvatarUrl)return;
-    }
-  }catch(_){}
-  const key=GUEST_AVATAR_KEYS[Math.floor(Math.random()*GUEST_AVATAR_KEYS.length)];
-  myAvatarUrl="/assets/avatars/"+key+".webp";
+  myAvatarUrl=ClassroomMultiplayerLobby.avatarUrl(await ClassroomAvatars.loadKey())||null;
 }
 
 const DIE_PIPS=Object.freeze({
@@ -765,6 +748,7 @@ function renderTokens(){
     if(!layer)return;
     const isRoom=key.startsWith("r");
     players.forEach((player,index)=>{
+      player = {...player, avatarUrl:lobby?.playerAvatar(player.id)||player.avatarUrl};
       const cx=isRoom?20+(index%3)*20:0;
       const cy=isRoom?62+Math.floor(index/3)*16:0;
       const size=player.avatarUrl?(isRoom?16:11):(isRoom?13:9);
@@ -850,6 +834,7 @@ function renderPlayerList(){
   if(!gameState)return;
   const snapshot=lobby.snapshot();
   const rows=gameState.players.map(player=>{
+    player = {...player, avatarUrl:lobby?.playerAvatar(player.id)||player.avatarUrl};
     const color=playerColor(player);
     const isTurn=gameState.turnPlayerId===player.id;
     const isMe=snapshot.myId===player.id;

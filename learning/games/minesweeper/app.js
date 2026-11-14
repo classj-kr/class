@@ -108,6 +108,7 @@
   }
 
   function clearHintHighlights() {
+    boardWrap.classList.remove('show-coordinates');
     for (const cell of cells) {
       cell.classList.remove('hint-source', 'hint-safe', 'hint-mine', 'hint-wrong');
     }
@@ -141,6 +142,7 @@
   function giveHint() {
     if (finished) return;
     clearHintHighlights();
+    boardWrap.classList.add('show-coordinates');
 
     if (!mines) {
       const center = Math.floor(level.rows / 2) * level.cols + Math.floor(level.cols / 2);
@@ -175,7 +177,7 @@
       const { src, targets } = bestSafeSingle;
       cells[src].classList.add('hint-source');
       targets.forEach(j => cells[j].classList.add('hint-safe'));
-      setCoach(`💡 <strong>${rowColText(src)}의 숫자 [${counts[src]}]</strong> 주변에는 이미 🚩깃발 ${counts[src]}개가 다 꽂혀 있어요! 초록색 칸(${rowColText(targets[0])})은 지뢰가 없으니 <strong>⛏열기</strong>로 열어 보세요. (숫자 ${counts[src]} 칸을 톡 눌러도 한꺼번에 열려요!)`, 'safe');
+      setCoach(`💡 노란 테두리의 <strong>${rowColText(src)}의 숫자 [${counts[src]}]</strong> 주변에는 이미 🚩깃발 ${counts[src]}개가 다 꽂혀 있어요! 초록색 칸(${rowColText(targets[0])})은 지뢰가 없으니 <strong>⛏열기</strong>로 열어 보세요. (숫자 ${counts[src]} 칸을 톡 눌러도 한꺼번에 열려요!)`, 'safe');
       return;
     }
 
@@ -197,7 +199,7 @@
       cells[src].classList.add('hint-source');
       targets.forEach(j => cells[j].classList.add('hint-mine'));
       const remain = counts[src] - flags;
-      setCoach(`💡 <strong>${rowColText(src)}의 숫자 [${counts[src]}]</strong>을 보세요! 찾아야 할 지뢰가 ${remain}개인데 주변에 닫힌 칸도 딱 ${targets.length}칸뿐이에요. 빨간색 칸(${rowColText(targets[0])})에 <strong>🚩깃발</strong>을 꽂아 보세요!`, 'mine');
+      setCoach(`💡 노란 테두리의 <strong>${rowColText(src)}의 숫자 [${counts[src]}]</strong>을 보세요! 찾아야 할 지뢰가 ${remain}개인데 주변에 닫힌 칸도 딱 ${targets.length}칸뿐이에요. 빨간색 칸(${rowColText(targets[0])})에 <strong>🚩깃발</strong>을 꽂아 보세요!`, 'mine');
       return;
     }
 
@@ -226,10 +228,10 @@
           cells[b.i].classList.add('hint-source');
           if (onlyA.length > 0) {
             onlyA.forEach(j => cells[j].classList.add('hint-safe'));
-            setCoach(`💡 나란히 있는 <strong>${rowColText(a.i)}의 [${counts[a.i]}]</strong>과 <strong>${rowColText(b.i)}의 [${counts[b.i]}]</strong>을 함께 보세요! 겹치는 칸에 지뢰가 들어가야 해서, 초록색 칸(${rowColText(onlyA[0])})에는 지뢰가 들어갈 수 없어요. 안전하니 <strong>⛏열기</strong>로 열어 보세요!`, 'safe');
+            setCoach(`💡 노란 테두리로 표시한 <strong>${rowColText(a.i)}의 [${counts[a.i]}]</strong>과 <strong>${rowColText(b.i)}의 [${counts[b.i]}]</strong>을 함께 보세요! 겹치는 칸에 지뢰가 들어가야 해서, 초록색 칸(${rowColText(onlyA[0])})에는 지뢰가 들어갈 수 없어요. 안전하니 <strong>⛏열기</strong>로 열어 보세요!`, 'safe');
           } else {
             onlyB.forEach(j => cells[j].classList.add('hint-mine'));
-            setCoach(`💡 나란히 있는 <strong>${rowColText(a.i)}의 [${counts[a.i]}]</strong>과 <strong>${rowColText(b.i)}의 [${counts[b.i]}]</strong>을 함께 보세요! 겹치는 칸을 빼고도 지뢰가 ${onlyB.length}개 더 필요해서, 빨간색 칸(${rowColText(onlyB[0])})은 무조건 지뢰예요. <strong>🚩깃발</strong>을 꽂아 보세요!`, 'mine');
+            setCoach(`💡 노란 테두리로 표시한 <strong>${rowColText(a.i)}의 [${counts[a.i]}]</strong>과 <strong>${rowColText(b.i)}의 [${counts[b.i]}]</strong>을 함께 보세요! 겹치는 칸을 빼고도 지뢰가 ${onlyB.length}개 더 필요해서, 빨간색 칸(${rowColText(onlyB[0])})은 무조건 지뢰예요. <strong>🚩깃발</strong>을 꽂아 보세요!`, 'mine');
           }
           return;
         }
@@ -277,6 +279,15 @@
   function buildBoard() {
     const { rows, cols } = level;
     table = MineLogic.makeNeighborTable(rows, cols);
+    boardWrap.style.setProperty('--cols', cols);
+    boardWrap.style.setProperty('--rows', rows);
+    for (const [id, count] of [['boardColumns', cols], ['boardRows', rows]]) {
+      $(id).replaceChildren(...Array.from({length: count}, (_, i) => {
+        const label = document.createElement('span');
+        label.textContent = i + 1;
+        return label;
+      }));
+    }
     boardElement.style.setProperty('--cols', cols);
     boardElement.className = `mine-board size-${cols}`;
     boardElement.replaceChildren();

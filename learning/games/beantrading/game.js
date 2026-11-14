@@ -32,7 +32,7 @@
   }
   function renderPlayers() {
     $("playerStrip").style.setProperty("--players", state.players.length);
-    $("playerStrip").innerHTML = state.players.map(p => `<article class="player${p.id === state.turnPlayerId && state.phase === "playing" ? " active" : ""}"><div class="player-top"><strong>${escape(p.name)}${p.id === myId() ? " · 나" : ""}</strong><span class="player-meta" title="손패 ${p.handCount}장${p.pendingCount ? ` · 심을 콩 ${p.pendingCount}장` : ""}">손 ${p.handCount}</span><span class="coins">${coin(p.coins)}</span></div><div class="player-fields">${p.fields.map(f => `<div class="mini-field">${f.kind ? `<span>${beans[f.kind].name} ${f.count}장</span><small>수확 ${f.value}금화</small>` : "빈 밭"}</div>`).join("")}</div></article>`).join("");
+    $("playerStrip").innerHTML = state.players.map(p => `<article class="player${p.id === state.turnPlayerId && state.phase === "playing" ? " active" : ""}"><div class="player-top">${lobby?.avatarMarkup(p.id)||""}<strong>${escape(p.name)}${p.id === myId() ? " · 나" : ""}</strong><span class="player-meta" title="손패 ${p.handCount}장${p.pendingCount ? ` · 심을 콩 ${p.pendingCount}장` : ""}">손 ${p.handCount}</span><span class="coins">${coin(p.coins)}</span></div><div class="player-fields">${p.fields.map(f => `<div class="mini-field">${f.kind ? `<span>${beans[f.kind].name} ${f.count}장</span><small>수확 ${f.value}금화</small>` : "빈 밭"}</div>`).join("")}</div></article>`).join("");
   }
   function plantingCard() {
     if (state.stage === "plant" && isTurn() && state.planted < 2) return state.hand[0];

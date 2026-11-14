@@ -42,64 +42,69 @@
     function injectStyle() {
         const style = el("style");
         style.textContent = `
-            .sc-toggle{position:fixed;left:14px;bottom:14px;z-index:70;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:#27303d;color:#eef2f7;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.35)}
-            .sc-toggle:hover{background:#334052}
-            .sc-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#d8352d;color:#fff;font-size:11px;line-height:18px;text-align:center}
-            .sc-badge[hidden]{display:none}
-            .sc-panel{position:fixed;left:14px;bottom:70px;z-index:70;width:min(330px,calc(100vw - 28px));height:min(560px,calc(100vh - 90px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
-            .sc-panel.open{display:flex}
-            .sc-head{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
-            .sc-head .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-            .sc-head .code{color:#f0d77c;font-weight:400;margin-left:6px}
-            .sc-head button,.sc-tabs button,.sc-rooms button{background:none;border:1px solid rgba(255,255,255,.2);color:#cfd8e3;padding:3px 8px;font-size:12px;cursor:pointer;font-family:inherit}
-            .sc-head button.on,.sc-tabs button.on{background:#3b4a60;color:#fff}
-            .sc-tabs{display:flex;gap:4px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);overflow-x:auto;white-space:nowrap}
-            .sc-tabs button{position:relative;flex:none}
-            .sc-tabs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d8352d;margin-left:5px}
-            .sc-rooms{display:none;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
-            .sc-rooms.open{display:block}
-            .sc-panel{text-align:left}
-            .sc-rooms .row{display:grid;grid-template-columns:1fr 76px;gap:6px;margin-bottom:6px}
-            .sc-rooms .row button{width:100%;padding:6px 4px}
-            .sc-rooms .row .wide{grid-column:1/-1}
-            .sc-rooms input,.sc-form input{min-width:0;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit;outline:none}
-            .sc-rooms input:focus,.sc-form input:focus{border-color:#f0d77c}
-            .sc-rooms select{width:100%;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit}
-            .sc-call{display:none;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(40,60,50,.35)}
-            .sc-call.open{display:block}
-            .sc-call .bar{display:flex;align-items:center;gap:6px}
-            .sc-call .info{flex:1;min-width:0;font-size:12px;color:#bfe8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-            .sc-call .bar button{width:34px;height:30px;border:1px solid rgba(255,255,255,.22);background:#2a323f;color:#eef2f7;cursor:pointer;position:relative;padding:0;font-size:14px}
-            .sc-call .bar button.off{background:#4a2320;border-color:#7a3630}
-            .sc-call .bar button.off::after{content:"";position:absolute;left:15%;right:15%;top:50%;height:2px;background:#f0847c;transform:rotate(-30deg)}
-            .sc-call .bar button.wait{opacity:.6}
-            .sc-call .bar .end{width:auto;padding:0 8px;font-size:12px}
-            .sc-call .note{min-height:0;color:#f0a39c;font-size:12px;margin-top:4px}
-            .sc-call .note:empty{display:none}
-            .sc-videos{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;max-height:68px;overflow-y:auto}
-            .sc-videos:empty{display:none}
-            .sc-video{position:relative;width:80px;height:60px;background:#0a0d12;border:1px solid rgba(255,255,255,.16);overflow:hidden}
-            .sc-video video{width:100%;height:100%;object-fit:cover;display:block}
-            .sc-video span{position:absolute;left:0;right:0;bottom:0;padding:1px 4px;font-size:10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#e9edf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-            .sc-people{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
-            .sc-people .sum{width:100%;display:flex;justify-content:space-between;background:none;border:none;color:#cfd8e3;padding:0;font:inherit;font-size:12px;cursor:pointer}
-            .sc-people-list{display:flex;flex-wrap:wrap;gap:2px 10px;max-height:60px;overflow-y:auto;margin-top:4px;font-size:12px;color:#c3cddb}
-            .sc-people-list .t{color:#f0d77c}
-            .sc-people-list .me{color:#8fe0a8}
-            .sc-list{flex:1 1 auto;min-height:140px;overflow-y:auto;padding:8px 10px;user-select:text}
-            .sc-empty{color:#8794a6;padding:6px 0}
-            .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
-            .sc-msg .who{color:#9fc6ee;font-weight:700;margin-right:5px}
-            .sc-msg.teacher .who{color:#f0d77c}
-            .sc-msg.mine .who{color:#8fe0a8}
-            .sc-msg.deleted{opacity:.45;text-decoration:line-through}
-            .sc-msg .tools{display:none;margin-left:6px}
-            .sc-msg:hover .tools{display:inline}
-            .sc-msg .tools button{background:none;border:1px solid rgba(255,255,255,.22);color:#cfd8e3;font-size:11px;padding:0 5px;margin-right:3px;cursor:pointer}
-            .sc-msg .keep{color:#f0d77c;margin-left:4px;font-size:11px}
-            .sc-status{min-height:18px;padding:0 12px;color:#f0a39c;font-size:12px}
-            .sc-form{display:grid;grid-template-columns:1fr auto;gap:6px;padding:8px 10px;border-top:1px solid rgba(255,255,255,.12)}
-            .sc-form button{background:#3b4a60;border:1px solid #55657d;color:#fff;padding:0 12px;cursor:pointer;font:inherit}
+            #schoolChatToggle{position:fixed;left:14px;bottom:14px;z-index:100000;width:80px;height:40px;min-height:40px;gap:6px;border-radius:22px;border:1px solid rgba(255,255,255,.22);background:#27303d;color:#eef2f7;font:700 12px/1 system-ui;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+            #schoolChatToggle:hover{background:#334052}
+            #schoolChatToggle .sc-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#d8352d;color:#fff;font-size:11px;line-height:18px;text-align:center}
+            #schoolChatToggle .sc-badge[hidden]{display:none}
+            #schoolChatPanel{position:fixed;left:14px;bottom:70px;z-index:100000;width:min(330px,calc(100vw - 28px));height:min(560px,calc(100vh - 90px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+            #schoolChatPanel.open{display:flex}
+            #schoolChatPanel .sc-head{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700}
+            #schoolChatPanel .sc-head .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+            #schoolChatPanel .sc-head .code{color:#f0d77c;font-weight:400;margin-left:6px}
+            #schoolChatPanel .sc-head button,#schoolChatPanel .sc-tabs button,#schoolChatPanel .sc-rooms button{background:none;border:1px solid rgba(255,255,255,.2);color:#cfd8e3;padding:3px 8px;font-size:12px;cursor:pointer;font-family:inherit}
+            #schoolChatPanel .sc-head button.on,#schoolChatPanel .sc-tabs button.on{background:#3b4a60;color:#fff}
+            #schoolChatPanel .sc-tabs{display:flex;gap:4px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);overflow-x:auto;white-space:nowrap}
+            #schoolChatPanel .sc-tabs button{position:relative;flex:none}
+            #schoolChatPanel .sc-tabs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d8352d;margin-left:5px}
+            #schoolChatPanel .sc-rooms{display:none;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
+            #schoolChatPanel .sc-rooms.open{display:block}
+            #schoolChatPanel{text-align:left}
+            #schoolChatPanel .sc-rooms .row{display:grid;grid-template-columns:1fr 76px;gap:6px;margin-bottom:6px}
+            #schoolChatPanel .sc-rooms .row button{width:100%;padding:6px 4px}
+            #schoolChatPanel .sc-rooms .row .wide{grid-column:1/-1}
+            #schoolChatPanel .sc-rooms input,#schoolChatPanel .sc-form input{min-width:0;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit;outline:none}
+            #schoolChatPanel .sc-rooms input:focus,#schoolChatPanel .sc-form input:focus{border-color:#f0d77c}
+            #schoolChatPanel .sc-rooms select{width:100%;background:#0a0d12;border:1px solid #4a5568;color:#e6ebf2;padding:6px 8px;font:inherit}
+            #schoolChatPanel .sc-call{display:none;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(40,60,50,.35)}
+            #schoolChatPanel .sc-call.open{display:block}
+            #schoolChatPanel .sc-call .bar{display:flex;align-items:center;gap:6px}
+            #schoolChatPanel .sc-call .info{flex:1;min-width:0;font-size:12px;color:#bfe8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+            #schoolChatPanel .sc-call .bar button{width:34px;height:30px;border:1px solid rgba(255,255,255,.22);background:#2a323f;color:#eef2f7;cursor:pointer;position:relative;padding:0;font-size:14px}
+            #schoolChatPanel .sc-call .bar button.off{background:#4a2320;border-color:#7a3630}
+            #schoolChatPanel .sc-call .bar button.off::after{content:"";position:absolute;left:15%;right:15%;top:50%;height:2px;background:#f0847c;transform:rotate(-30deg)}
+            #schoolChatPanel .sc-call .bar button.wait{opacity:.6}
+            #schoolChatPanel .sc-call .bar .end{width:auto;padding:0 8px;font-size:12px}
+            #schoolChatPanel .sc-call .note{min-height:0;color:#f0a39c;font-size:12px;margin-top:4px}
+            #schoolChatPanel .sc-call .note:empty{display:none}
+            #schoolChatPanel .sc-videos{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;max-height:68px;overflow-y:auto}
+            #schoolChatPanel .sc-videos:empty{display:none}
+            #schoolChatPanel .sc-video{position:relative;width:80px;height:60px;background:#0a0d12;border:1px solid rgba(255,255,255,.16);overflow:hidden}
+            #schoolChatPanel .sc-video video{width:100%;height:100%;object-fit:cover;display:block}
+            #schoolChatPanel .sc-video span{position:absolute;left:0;right:0;bottom:0;padding:1px 4px;font-size:10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#e9edf3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+            #schoolChatPanel .sc-people{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
+            #schoolChatPanel .sc-people .sum{width:100%;display:flex;justify-content:space-between;background:none;border:none;color:#cfd8e3;padding:0;font:inherit;font-size:12px;cursor:pointer}
+            #schoolChatPanel .sc-people-list{display:flex;flex-wrap:wrap;gap:2px 10px;max-height:60px;overflow-y:auto;margin-top:4px;font-size:12px;color:#c3cddb}
+            #schoolChatPanel .sc-people-list .t{color:#f0d77c}
+            #schoolChatPanel .sc-people-list .me{color:#8fe0a8}
+            #schoolChatPanel .sc-list{flex:1 1 auto;min-height:140px;overflow-y:auto;padding:8px 10px;user-select:text}
+            #schoolChatPanel .sc-empty{color:#8794a6;padding:6px 0}
+            #schoolChatPanel .sc-msg{margin-bottom:7px;overflow-wrap:anywhere}
+            #schoolChatPanel .sc-msg .who{color:#9fc6ee;font-weight:700;margin-right:5px}
+            #schoolChatPanel .sc-msg.teacher .who{color:#f0d77c}
+            #schoolChatPanel .sc-msg.mine .who{color:#8fe0a8}
+            #schoolChatPanel .sc-msg.deleted{opacity:.45;text-decoration:line-through}
+            #schoolChatPanel .sc-msg .tools{display:none;margin-left:6px}
+            #schoolChatPanel .sc-msg:hover .tools{display:inline}
+            #schoolChatPanel .sc-msg .tools button{background:none;border:1px solid rgba(255,255,255,.22);color:#cfd8e3;font-size:11px;padding:0 5px;margin-right:3px;cursor:pointer}
+            #schoolChatPanel .sc-msg .keep{color:#f0d77c;margin-left:4px;font-size:11px}
+            #schoolChatPanel .sc-status{min-height:18px;padding:0 12px;color:#f0a39c;font-size:12px}
+            #schoolChatPanel .sc-form{display:grid;grid-template-columns:1fr auto;gap:6px;padding:8px 10px;border-top:1px solid rgba(255,255,255,.12)}
+            #schoolChatPanel .sc-form button{background:#3b4a60;border:1px solid #55657d;color:#fff;padding:0 12px;cursor:pointer;font:inherit}
+
+            #schoolChatToggle svg{display:block;width:20px;height:20px;flex:none;}
+            #schoolChatToggle:focus-visible{outline:3px solid #60a5fa;outline-offset:3px;}
+            #schoolChatPanel{border-radius:15px;overflow:hidden;}
+            #schoolChatPanel button{min-height:30px;border-radius:7px;box-shadow:none;letter-spacing:normal;line-height:1.4;}
         `;
         document.head.appendChild(style);
     }
@@ -216,7 +221,10 @@
             button.title = label;
             button.setAttribute("aria-label", `${label} 채팅 열기`);
             const face = el("span", "face");
-            if (user.avatar) {
+            const avatarKey = String(user.avatar || "").split("/").pop()?.split("?")[0];
+            if (window.ClassroomAvatars && /^[a-z0-9-]+\.webp$/i.test(avatarKey || "")) {
+                face.appendChild(window.ClassroomAvatars.create(avatarKey, {walking:true}));
+            } else if (user.avatar) {
                 const img = el("img");
                 img.src = user.avatar;
                 img.alt = "";
@@ -495,7 +503,10 @@
 
     function buildUi() {
         injectStyle();
-        const toggle = el("button", "sc-toggle", "💬");
+        const toggle = el("button", "sc-toggle");
+        toggle.id = "schoolChatToggle";
+        toggle.title = "학교 채팅";
+        toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-3 2 1.7-6A8.5 8.5 0 1 1 21 11.5Z"/><path d="M7 9h9M7 13h6"/></svg><span>채팅</span>';
         ui.toggle = toggle;
         toggle.type = "button";
         toggle.setAttribute("aria-label", "학교 채팅 열기");
@@ -504,6 +515,7 @@
         toggle.appendChild(ui.badge);
 
         const panel = el("div", "sc-panel");
+        panel.id = "schoolChatPanel";
         ui.panel = panel;
         const head = el("div", "sc-head");
         ui.title = el("span", "title");

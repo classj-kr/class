@@ -6,11 +6,12 @@
   <meta name="theme-color" content="#273f24">
   <title>왕국의 길</title>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="kingdom-trails.css?v=20260929-top-strip">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+  <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+  <script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 </head>
 <body>
   <main class="app-shell">
@@ -78,7 +79,7 @@
         </div>
         <div id="topActions" class="top-actions">
           <span hidden class="room-pill">방 <strong id="gameRoomCode">----</strong></span>
-          <button id="rulesBtnGame" class="icon-button" type="button" aria-label="게임 방법">?</button>
+          <button id="rulesBtnGame" class="icon-button" type="button" aria-label="게임 방법">Rules</button>
           <button id="leaveBtnGame" class="icon-button" type="button" aria-label="메인 화면">⌂</button>
         </div>
       </header>
@@ -166,6 +167,6 @@
 
   <audio id="bgm" src="/learning/games/kingdom-trails/assets/sound/kingdom-trails-table.m4a" loop preload="auto"></audio>
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-  <script src="kingdom-trails.js?v=20261006-name"></script>
+  <script src="kingdom-trails.js?v=20261114-avatars"></script>
 </body>
 </html>

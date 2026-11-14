@@ -228,6 +228,7 @@ function renderGame(){
   $("modeName").textContent=currentMode().name;
   $("blackName").textContent=playerName(gameState.playerOrder[0])+(snapshot.myId===gameState.playerOrder[0]?" · 나":"");
   $("whiteName").textContent=playerName(gameState.playerOrder[1])+(snapshot.myId===gameState.playerOrder[1]?" · 나":"");
+  lobby.decorateName($("blackName"),gameState.playerOrder[0]);lobby.decorateName($("whiteName"),gameState.playerOrder[1]);
   $("blackCaptured").textContent=gameState.captures[0];$("whiteCaptured").textContent=gameState.captures[1];
   $("blackCard").classList.toggle("active",!ended&&gameState.turn===0);$("whiteCard").classList.toggle("active",!ended&&gameState.turn===1);
   document.querySelectorAll(".point").forEach(point=>{

@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>바둑</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <link rel="stylesheet" href="baduk.css?v=20260923-scoring">
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <script src="../../../assets/game-motion.js?v=20261006-capture"></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
@@ -27,7 +28,7 @@
 </section>
 
 <section id="gameScreen" class="hidden">
-  <header class="panel"><div class="row spread"><div><strong id="gameRoomCode" hidden>----</strong><strong id="modeName"></strong></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">규칙</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div><div class="players"><div id="blackCard" class="player"><span class="sample black"></span><span><small>흑 · 선공</small><br><strong id="blackName">-</strong> · 잡은 돌 <b id="blackCaptured">0</b></span></div><div id="whiteCard" class="player"><span class="sample white"></span><span><small>백 · 후공</small><br><strong id="whiteName">-</strong> · 잡은 돌 <b id="whiteCaptured">0</b></span></div></div><div class="turn-area"><div id="turnBanner" class="turn-banner">대국 준비 중</div><div id="turnClock" class="clock">30</div></div><div id="gameStatus" class="game-status"></div><div class="actions"><button id="passBtn" class="secondary hidden" type="button">패스</button><button id="resignBtn" class="secondary" type="button">기권</button><span id="scoringActions" class="hidden"><button id="agreeScoreBtn" class="primary" type="button">이 점수에 동의</button><button id="resumeGameBtn" class="secondary" type="button">대국 계속하기</button></span><span id="resultActions" class="hidden"><button id="rematchBtn" class="primary" type="button">재대국</button><button id="returnLobbyBtn" class="secondary" type="button">대기실</button></span></div></header>
+  <header class="panel"><div class="row spread"><div><strong id="gameRoomCode" hidden>----</strong><strong id="modeName"></strong></div><div class="row"><button id="rulesBtnGame" class="secondary" type="button">Rules</button><button id="leaveBtnGame" class="secondary" type="button">메인 화면</button></div></div><div class="players"><div id="blackCard" class="player"><span class="sample black"></span><span><small>흑 · 선공</small><br><strong id="blackName">-</strong> · 잡은 돌 <b id="blackCaptured">0</b></span></div><div id="whiteCard" class="player"><span class="sample white"></span><span><small>백 · 후공</small><br><strong id="whiteName">-</strong> · 잡은 돌 <b id="whiteCaptured">0</b></span></div></div><div class="turn-area"><div id="turnBanner" class="turn-banner">대국 준비 중</div><div id="turnClock" class="clock">30</div></div><div id="gameStatus" class="game-status"></div><div class="actions"><button id="passBtn" class="secondary hidden" type="button">패스</button><button id="resignBtn" class="secondary" type="button">기권</button><span id="scoringActions" class="hidden"><button id="agreeScoreBtn" class="primary" type="button">이 점수에 동의</button><button id="resumeGameBtn" class="secondary" type="button">대국 계속하기</button></span><span id="resultActions" class="hidden"><button id="rematchBtn" class="primary" type="button">재대국</button><button id="returnLobbyBtn" class="secondary" type="button">대기실</button></span></div></header>
   <section class="panel play-panel"><div class="board-stage"><div class="board-frame"><div id="board" data-sfx-clicks="none" class="board" role="grid"></div></div></div></section>
 </section></main>
 
@@ -36,5 +37,5 @@
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal"><div id="rulesBody"></div><button id="closeRulesBtn" class="primary" type="button">확인</button></div></section>
 <section id="abortOverlay" class="overlay hidden" role="dialog" aria-modal="true"><div class="modal"><h2 id="abortTitle">연결 종료</h2><p id="abortMessage"></p><button class="primary" type="button" onclick="location.reload()">처음부터</button></div></section>
 <div id="toast" class="toast hidden" role="status"></div>
-<script src="baduk.js?v=20261006-name"></script>
+<script src="baduk.js?v=20261114-avatars"></script>
 </body></html>

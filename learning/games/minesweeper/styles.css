@@ -394,3 +394,34 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   /* 낮은 화면: 결과 칸이 좁으니 동그라미 표시를 빼고 명단에 자리를 준다. */
   body[data-entry-game="minesweeper"] #gameScreen .result-mark { display: none; }
 }
+
+/* Coordinates stay outside the playable cells, aligned at every board size. */
+#gameScreen #boardWrap {
+  --axis: 26px;
+  display: grid;
+  grid-template-columns: var(--axis) minmax(0, 1fr);
+  grid-template-rows: var(--axis) auto;
+  gap: 4px;
+}
+#boardWrap .mine-board {
+  grid-column: 2; grid-row: 2;
+  --cell: calc((100cqw - var(--axis) - 4px - (var(--cols) - 1) * var(--gap)) / var(--cols));
+}
+.board-axis-corner, .board-columns, .board-rows {
+  color: #ffe1a3; font: 700 12px/1.1 system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.board-axis-corner { align-self: center; font-size: 9px; }
+.board-columns { grid-column: 2; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 3px; }
+.board-rows { grid-row: 2; display: grid; grid-template-rows: repeat(var(--rows), 1fr); gap: 3px; }
+.board-columns span, .board-rows span { display: grid; place-items: center; }
+#boardWrap:has(.size-16) .board-columns, #boardWrap:has(.size-16) .board-rows { gap: 2px; }
+@media (max-width: 480px) {
+  #gameScreen #boardWrap { --axis: 20px; }
+  .board-columns, .board-rows { gap: 2px; font-size: 10px; }
+  #boardWrap:has(.size-16) .board-columns, #boardWrap:has(.size-16) .board-rows { gap: 1px; }
+}
+
+/* Only reveal coordinate guides while a hint is on screen; reserve their space
+   so the target cell never moves under the pointer when the hint closes. */
+#boardWrap:not(.show-coordinates) > :is(.board-axis-corner, .board-columns, .board-rows) { visibility: hidden; }

@@ -6,11 +6,12 @@
 <meta name="theme-color" content="#142238">
 <title>벌집 블록</title>
 <link rel="preload" as="image" href="/learning/games/honeycomb/assets/images/honeycomb-cover.webp">
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <link rel="stylesheet" href="styles.css?v=20260929-nobrand">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="../block-board-layout.css?v=20260929-slim">
 </head>
@@ -67,7 +68,7 @@
   <header class="panel game-header">
     <div class="room-lockup" hidden><div class="eyebrow">ROOM</div><div id="gameRoomCode" class="room-code">----</div></div>
     <nav class="header-actions" aria-label="게임 메뉴">
-      <button id="rulesBtnGame" class="quiet" type="button">규칙</button>
+      <button id="rulesBtnGame" class="quiet" type="button">Rules</button>
       <button id="leaveBtnGame" class="quiet" type="button">나가기</button>
     </nav>
   </header>
@@ -578,7 +579,7 @@ function renderPlayers() {
     card.className = `player-card${active ? " active" : ""}${player.out ? " out" : ""}`;
     card.style.setProperty("--active-color", active ? colorValue(gameState.activeColor) : "#a5adb6");
     const dots = player.colors.map(color => `<i class="color-dot" style="--dot-color:${colorValue(color)}" title="${COLORS[color].label}"></i>`).join("");
-    card.innerHTML = `<div class="player-card-top"><span class="player-name">${html(player.name)}${player.id === myId() ? " · 나" : ""}</span><span class="player-piece-count">${player.pieceCount}조각</span></div><div class="color-dots">${dots}<span class="player-score">${player.remainingCells}칸 남음</span></div>`;
+    card.innerHTML = `<div class="player-card-top">${lobby?.avatarMarkup(player.id)||""}<span class="player-name">${html(player.name)}${player.id === myId() ? " · 나" : ""}</span><span class="player-piece-count">${player.pieceCount}조각</span></div><div class="color-dots">${dots}<span class="player-score">${player.remainingCells}칸 남음</span></div>`;
     fragment.appendChild(card);
   }
   $("playerStrip").replaceChildren(fragment);

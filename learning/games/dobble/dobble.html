@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>같은 그림 찾기</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef0f5;background:#161221;--accent:#e0855a;--accent-soft:#8a4a2a;--panel:#211b30;--panel-edge:#453a5c}
 *{box-sizing:border-box}
@@ -100,8 +100,9 @@ h1,h2,h3,p{margin-top:0}
 #roomCode,#roomShare #gameRoomCode{font-size:clamp(36px,8vw,44px);line-height:1.15;font-variant-numeric:tabular-nums}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#playArea:not(.hidden)){padding:8px}
@@ -472,7 +473,7 @@ function renderLobbySetup() {
   renderModeRow();
   $("lobbyCount").textContent = `${state.players.length}/8`;
   $("playerList").innerHTML = state.players.map(player =>
-    `<span class="playerChip${player.id === myId ? " me" : ""}">${esc(player.name)}${player.id === myId ? " (나)" : ""}</span>`
+    `<span class="playerChip${player.id === myId ? " me" : ""}">${lobby?.avatarMarkup(player.id,{walking:true})||""}<span>${esc(player.name)}${player.id === myId ? " (나)" : ""}</span></span>`
   ).join("");
 
   const ready = canStartClient(state);
@@ -494,7 +495,7 @@ function renderStandings(target) {
   target.innerHTML = ranked.map((player, index) => `
     <div class="standingsRow${player.id === myId ? " me" : ""}${index === 0 ? " leader" : ""}">
       <span class="rank" aria-label="${player.finishedAt || index + 1}위">${player.finishedAt || index + 1}</span>
-      <span class="standingPlayer"><strong>${esc(player.name)}</strong>${player.id === myId ? '<small class="meBadge">나</small>' : ''}</span>
+      <span class="standingPlayer">${lobby?.avatarMarkup(player.id)||""}<strong>${esc(player.name)}</strong>${player.id === myId ? '<small class="meBadge">나</small>' : ''}</span>
       <span class="standingScore"><strong>${isCatalog ? player.collectedCount : (player.finishedAt ? '✓' : player.cardsLeft)}</strong><small>${isCatalog ? '모은 카드' : (player.finishedAt ? '완주' : '남은 카드')}</small></span>
     </div>`).join("");
 }

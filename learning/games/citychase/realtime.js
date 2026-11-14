@@ -194,7 +194,13 @@
       const atlas=illustratedReaction?captureSprite:moving?sprites[p.team]:idle;
       const col=illustratedReaction?reaction.frame:moving?Math.floor(now/(p.dashUntil>view.elapsed?65:105))%4:(p.team==='police'?0:1),spritePixels=overview?Math.max(36,Math.min(68,scale*90)):reaction?.phase==='caught'?86:76,size=spritePixels/scale;
       actorBounds.push({x,y,w:spritePixels*.6,h:spritePixels*.95});
-      if(atlas.complete&&atlas.naturalWidth){
+      const assigned=ClassroomAvatars.canvasImage(p.avatarKey);
+      if(assigned&&!illustratedReaction){
+        ctx.save();ctx.translate(x,y-(reaction?.jump||0)/scale);ctx.rotate(reaction?.rotation||0);ctx.scale(reaction?.sx??1,reaction?.sy??1);ctx.globalAlpha=reaction?.alpha??1;
+        if(assigned.atlas){const frame=moving&&!motionPreference.matches?Math.floor(now/125)%4:4,dir=[4,6,2,0][pose.row];ctx.drawImage(assigned.image,frame*40,dir*40,40,40,-size/2,-size,size,size);}
+        else ctx.drawImage(assigned.image,-size/2,-size,size,size);
+        ctx.restore();
+      }else if(atlas.complete&&atlas.naturalWidth){
         const sw=atlas.naturalWidth/(illustratedReaction?3:moving?4:2),sh=atlas.naturalHeight/(illustratedReaction?1:4),bob=moving?Math.sin(now/65)*1.2/scale:0;
         ctx.save();ctx.translate(x,y-(reaction?.jump||0)*(overview?.5:1)/scale);ctx.rotate(reaction?.rotation||0);ctx.scale(reaction?.sx??1,reaction?.sy??1);ctx.globalAlpha=reaction?.alpha??1;
         ctx.drawImage(atlas,col*sw,illustratedReaction?0:pose.row*sh,sw,sh,-size/2,-size*(illustratedReaction?.92:moving?.91:.98)+bob,size,size);ctx.restore();

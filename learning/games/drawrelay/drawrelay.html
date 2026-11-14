@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#173f45">
   <title>그림 릴레이</title>
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="styles.css?v=20261019-custom-topic">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
+  <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
   <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" defer></script>
-  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
   <script src="drawrelay-bgm.js" defer></script>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 </head>
@@ -395,6 +396,7 @@
       const chip = document.createElement("span");
       chip.className = `status-chip${player.submitted ? " done" : ""}`;
       chip.textContent = `${player.submitted ? "✓ " : ""}${player.name}`;
+      lobby?.decorateName(chip,player.id);
       players.appendChild(chip);
     }
     $("playerStatus").replaceChildren(players);
