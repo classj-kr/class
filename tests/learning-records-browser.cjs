@@ -56,7 +56,7 @@ async function main() {
     }
     assert.ok(lessonDone, 'lesson completes through the common result dialog');
     await page.getByRole('button', { name: '닫기', exact: true }).click();
-    await page.getByRole('button', { name: '학습 기록', exact: true }).click();
+    await page.getByRole('button', { name: '내 기록', exact: true }).click();
     await page.locator('learning-records .row').first().waitFor();
     await page.setViewportSize({ width: 390, height: 844 }); await page.screenshot({ path: path.join(output, 'student-records-mobile.png') });
     await page.setViewportSize({ width: 1440, height: 1000 });
@@ -70,6 +70,8 @@ async function main() {
     await page.locator('#nextButton:not([hidden])').waitFor();
     assert.deepEqual(await page.locator('.choice-button').allTextContents(), sentenceOrder);
     await page.goto(h.base + '/learning/literacy-numeracy/spelling/');
+    await page.locator('learning-records .strip').getByRole('link', { name: '🏁 순위전', exact: true }).waitFor();
+    assert.equal(await page.locator('learning-records .strip').getByRole('button', { name: '내 기록', exact: true }).count(), 1);
     await page.locator('.lesson-card').first().click();
     await page.locator('.choice-button').first().click();
     await page.waitForFunction(() => !document.querySelector('main').inert);

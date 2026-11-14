@@ -57,12 +57,12 @@
       const identity = el('div', null, 'identity');
       this.title = el('p', '학습 기록', 'title'); this.status = el('p', '불러오는 중…', 'status'); this.status.setAttribute('role', 'status');
       identity.append(this.title, this.status); this.progress = el('div', null, 'progress');
-      const history = el('button', '학습 기록', 'history-button'); history.type = 'button'; history.setAttribute('aria-haspopup', 'dialog'); history.onclick = () => this.showHistory(); this.historyButton = history;
+      const history = el('button', '내 기록', 'history-button'); history.type = 'button'; history.setAttribute('aria-haspopup', 'dialog'); history.onclick = () => this.showHistory(); this.historyButton = history;
       strip.append(identity, this.progress, history); this.strip = strip;
       // 순위전 바로 가기는 머리줄에 따로 자리를 만들지 않고, 타자 앱처럼 기록 단추 옆에 둔다.
-      const race = document.querySelector('a.race-link');
+      const race = options.toolbar === false ? null : document.querySelector('a.race-link');
       if (race) {
-        race.className = 'race'; strip.prepend(race);
+        race.className = 'race'; race.textContent = '🏁 순위전'; strip.prepend(race);
         // 순위전은 지금 보고 있는 차시(단계)를 범위로 넘겨받는다. 화면이 window.currentRaceRange 로 알려 준다.
         const base = race.getAttribute('href');
         race.addEventListener('click', () => {
