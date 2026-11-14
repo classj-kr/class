@@ -24,6 +24,10 @@ async function main() {
     await dock.getByRole('link',{name:'🏁 순위전',exact:true}).waitFor();
     await dock.getByRole('button',{name:'내 기록',exact:true}).click();
     await controls.locator('learning-records dialog[open]').waitFor();
+    await controls.goto(h.base+'/learning/literacy-numeracy/handwriting/');
+    await dock.getByRole('link',{name:'🏁 순위전',exact:true}).waitFor();
+    await dock.getByRole('button',{name:'내 기록',exact:true}).click();
+    await controls.locator('learning-records dialog[open]').waitFor();
     await controls.close();
     const actions=[];
     page.on('request',r=>{if(r.url().endsWith('/actions')) actions.push(r.postDataJSON());});
