@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>님</title>
-    <link rel="stylesheet" href="strategy-guide.css?v=20261020-visual-1">
+    <link rel="stylesheet" href="strategy-guide.css?v=20261114-safe-controls">
     <style>
         :root {
             --bg: #070a10;
@@ -31,7 +31,7 @@
         }
 
         body {
-            min-height: 100vh;
+            min-height: var(--site-game-height, 100dvh);
             background:
                 linear-gradient(rgba(30, 20, 12, 0.18), rgba(18, 10, 6, 0.34)),
                 url('/learning/games/nimgame/assets/images/background.webp') center / cover fixed;
@@ -70,7 +70,7 @@
 
         .app-shell {
             width: min(980px, 100%);
-            min-height: min(720px, calc(100vh - 32px));
+            min-height: min(720px, calc(var(--site-game-height, 100dvh) - 32px));
             border: 2px solid var(--gold-dark);
             background:
                 linear-gradient(rgba(8,12,19,.72), rgba(8,12,19,.84)),
@@ -766,7 +766,7 @@
 
         .modal-box {
             width: min(560px, 100%);
-            max-height: calc(100dvh - 36px);
+            max-height: calc(var(--site-game-height, 100dvh) - 36px);
             overflow-y: auto;
             overscroll-behavior: contain;
             border: 3px solid #8c7535;
@@ -843,7 +843,7 @@
             body { padding: 0; align-items: flex-start; }
 
             .app-shell {
-                min-height: 100vh;
+                min-height: var(--site-game-height, 100dvh);
                 border-left: 0;
                 border-right: 0;
             }
@@ -992,7 +992,7 @@ textarea,
 /* Compact Chromebook and iPad landscapes start at the top; tall desktops balance the start screen. */
 @media (min-width:761px) and (max-width:900px), (min-width:761px) and (max-height:860px){
 body{align-items:flex-start;padding:8px}
-.app-shell{min-height:min(720px,calc(100dvh - 16px))}
+.app-shell{min-height:min(720px,calc(var(--site-game-height, 100dvh) - 16px))}
 }
 @media (min-width:901px) and (min-height:861px){
 body{align-items:center;padding:18px}
@@ -1002,11 +1002,11 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
-body:has(#game-screen:not(.hidden)){padding:8px;box-sizing:border-box;height:100dvh;min-height:0}
-body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16px));min-height:0}
+body:has(#game-screen:not(.hidden)){padding:8px;box-sizing:border-box;height:var(--site-game-height, 100dvh);min-height:0}
+body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(var(--site-game-height, 100dvh) - 16px));min-height:0}
 #game-screen:not(.hidden){height:100%;min-height:0;padding:12px;gap:6px}
 #game-screen .stage-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:0}
 #game-screen .stage-viewport{flex:1;min-height:0;overflow:auto}

@@ -12,7 +12,7 @@
   const object=word=>word+((word.charCodeAt(word.length-1)-0xac00)%28?'을':'를');
   const escape=text=>String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const endLabels={mate:"외통수",bikjang:"빅장",passes:"양쪽 한 수 쉬기",repetition:"같은 판 반복","perpetual-check":"반복 장군",quiet:"잡기 없이 100수",resign:"기권"};
-  document.title="장기 · AI와 배우기";document.body.classList.add("janggi-coach");
+  document.title="장기 · 혼자 하기";document.body.classList.add("janggi-coach");
   $("title").textContent="장기";$("backLink").href="../janggi/janggi";
   $("principle").textContent="마와 상을 꺼내고, 차가 나갈 길을 열며, 서로 말을 지키세요.";
   document.querySelector(".color-options legend").textContent="내 편";

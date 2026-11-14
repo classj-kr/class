@@ -13,7 +13,7 @@ body{
     url('/learning/games/fruitbell/assets/images/background.webp') center / cover fixed no-repeat;
 }
 button,input{font:inherit}.hidden{display:none!important}
-.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.screen{min-height:var(--site-game-height, 100dvh);display:flex;align-items:center;justify-content:center;padding:16px}
 .panel,.game{
   width:min(980px,100%);
   border:3px solid #9a7b3d;
@@ -36,8 +36,8 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 .bell{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:140px;aspect-ratio:1;border:0;background:transparent;z-index:10;touch-action:none;-webkit-tap-highlight-color:transparent;user-select:none;transition:transform 55ms ease-out,filter 55ms ease-out}.bell.is-pressed{transform:translate(-50%,-47%) scale(.93);filter:brightness(1.22)}.dome{position:absolute;left:12%;right:12%;top:16%;height:58%;border-radius:50% 50% 35% 35%;background:radial-gradient(circle at 35% 25%,#fffad2,#d3d0c2 28%,#7e8079 60%,#3e403b);border:3px solid #282a27}.base{position:absolute;left:3%;right:3%;bottom:12%;height:25%;border-radius:50%;background:linear-gradient(#d7a34b,#805616);border:3px solid #49310d}.knob{position:absolute;left:42%;top:3%;width:16%;height:18%;border-radius:50%;background:#b8b8ae;border:2px solid #373832}
 .flip{display:block;margin:12px auto 0;min-width:190px;padding:12px 20px;border:0;border-radius:10px;background:#f0cf73;color:#24322f;font-weight:1000}
 .overlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.72);z-index:50}.overlay.show{display:flex}.modal{width:min(430px,100%);padding:22px;border-radius:15px;background:#f7eed9;color:#32210e;text-align:center}
-@media(max-width:760px) and (orientation:portrait){.screen{padding:0}.game{min-height:100vh;border-radius:0}.board{grid-template-columns:1fr;min-height:470px}.bell{width:110px}.cardwrap{width:130px}}
-@media(orientation:landscape) and (max-height:540px){.screen{padding:0}.game{width:100vw;min-height:100vh;border:0;border-radius:0;padding:8px}.board{min-height:290px}.cardwrap{width:110px}.bell{width:105px}.message{margin:5px auto}.flip{margin-top:4px;padding:8px}}
+@media(max-width:760px) and (orientation:portrait){.screen{padding:0}.game{min-height:var(--site-game-height, 100dvh);border-radius:0}.board{grid-template-columns:1fr;min-height:470px}.bell{width:110px}.cardwrap{width:130px}}
+@media(orientation:landscape) and (max-height:540px){.screen{padding:0}.game{width:100vw;min-height:var(--site-game-height, 100dvh);border:0;border-radius:0;padding:8px}.board{min-height:290px}.cardwrap{width:110px}.bell{width:105px}.message{margin:5px auto}.flip{margin-top:4px;padding:8px}}
 
 .name-missing{text-align:center}.name-missing h2{color:#f3d77d}
 .turn-timer{
@@ -132,10 +132,10 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
 <link rel="stylesheet" href="lobby-avatars.css?v=20261114-1">
 <script src="lobby-avatars.js?v=20261114-1"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
-#gameScreen{height:100dvh;min-height:0;padding:8px}
+#gameScreen{height:var(--site-game-height, 100dvh);min-height:0;padding:8px}
 #gameScreen>.game{height:100%;min-height:0;display:flex;flex-direction:column;padding:10px}
 #gameScreen .board{flex:1;min-height:0}
 #gameScreen .music-control{margin:5px auto 0;padding:5px;flex-shrink:0}

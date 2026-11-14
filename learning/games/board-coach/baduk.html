@@ -2,17 +2,17 @@
 <html lang="ko" data-coach-game="baduk" data-coach-state="loading">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>바둑 · AI와 배우기</title>
+  <title>바둑 · 혼자 하기</title>
   <!-- Board, stones, background and match layout are owned by the original game. -->
-  <link rel="stylesheet" href="../baduk/baduk.css?v=20260923-scoring">
+  <link rel="stylesheet" href="../baduk/baduk.css?v=20261114-safe-controls">
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="baduk-theme.css?v=2">
+  <link rel="stylesheet" href="baduk-theme.css?v=20261114-safe-controls">
   <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
   <script src="../../../assets/game-motion.js?v=20261006-capture" defer></script>
   <script src="coach-ui.js?v=8" defer></script>
-  <script src="baduk-rules.js?v=2" defer></script><script src="baduk-ai.js?v=5" defer></script><script src="baduk-coach.js?v=5" defer></script>
+  <script src="baduk-rules.js?v=2" defer></script><script src="baduk-ai.js?v=5" defer></script><script src="baduk-coach.js?v=20261114-solo" defer></script>
   <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
-  <script src="../../../assets/sound/music-control.js?v=20261114-site-controls" data-sfx-controls defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" data-sfx-controls defer></script>
   <script>
     window.BoardCoachBoot={ready(){document.documentElement.dataset.coachState='ready';}};
     document.addEventListener('DOMContentLoaded',()=>{
@@ -25,7 +25,7 @@
   <main class="shell">
     <section id="gameScreen">
       <header class="panel" id="badukHeader">
-        <div class="row spread"><strong id="title">바둑</strong><div class="row"><button id="rulesButton" class="secondary" type="button">규칙</button><a id="backLink" class="secondary back-link" href="../baduk/baduk">게임으로</a></div></div>
+        <div class="row spread"><strong id="title">바둑</strong><div class="row"><button id="rulesButton" class="secondary" type="button">Rules</button><a id="backLink" class="secondary back-link" href="../baduk/baduk">게임으로</a></div></div>
         <div class="players">
           <div id="blackCard" class="player"><span class="sample black"></span><span><small>흑 · 선공</small><br><strong id="blackName">나</strong> · 잡은 돌 <b id="blackCaptured">0</b></span></div>
           <div id="whiteCard" class="player"><span class="sample white"></span><span><small>백 · 후공</small><br><strong id="whiteName">AI</strong> · 잡은 돌 <b id="whiteCaptured">0</b></span></div>
@@ -33,7 +33,7 @@
         <div class="turn-area"><div id="turn" class="turn-banner" role="status">대국 준비 중</div><div id="score" class="clock">0수</div></div>
         <div id="badukStatus" class="game-status" aria-live="polite"></div>
         <div class="actions controls"><button id="hint" class="primary" type="button">힌트</button><button id="undo" class="secondary" type="button">내 수 물리기</button><button id="badukPass" class="secondary" type="button">패스</button><button id="badukResign" class="secondary" type="button">기권</button><button id="newGame" class="secondary" type="button">새 대국</button></div>
-        <div class="coach-caption muted">AI와 배우기 · <span id="levelLabel">레벨 1</span><span id="colorLabel" hidden></span></div>
+        <div class="coach-caption muted">혼자 하기 · <span id="levelLabel">레벨 1</span><span id="colorLabel" hidden></span></div>
         <button id="badukFinish" class="secondary hidden" type="button">끝내고 계가</button>
       </header>
       <section class="panel play-panel"><div id="boardViewport" class="board-stage"><div class="board-frame"><div id="board" class="board" data-sfx-clicks="none" role="grid"></div></div></div></section>
@@ -46,7 +46,8 @@
     </aside>
   </main>
   <dialog id="setup" aria-labelledby="setupTitle"><form id="setupForm">
-    <div class="row spread"><h2 id="setupTitle">바둑 · AI와 배우기</h2><button id="closeSetup" class="secondary" type="button">닫기</button></div>
+    <div class="row spread"><h2 id="setupTitle">바둑 · 혼자 하기</h2><button id="closeSetup" class="secondary" type="button">닫기</button></div>
+    <p class="muted">컴퓨터와 연습해요. 내 실력에 맞는 레벨을 골라 주세요.</p>
     <fieldset class="level-options" aria-describedby="levelDescription"><legend>AI 레벨</legend>
       <label class="option secondary"><input type="radio" name="level" value="beginner" aria-label="레벨 1" checked><strong>1</strong></label>
       <label class="option secondary"><input type="radio" name="level" value="level2" aria-label="레벨 2"><strong>2</strong></label>

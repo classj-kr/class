@@ -22,7 +22,7 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: var(--site-game-height, 100dvh);
   padding: 18px;
   background:
     linear-gradient(rgba(10, 12, 18, .58), rgba(9, 11, 16, .72)),
@@ -203,7 +203,7 @@ button:disabled { cursor: not-allowed; opacity: .38; box-shadow: none; transform
   .panel { border-radius: 17px; }
   .game-header { grid-template-columns: 1fr auto; }
   .room-lockup { grid-column: 1 / -1; grid-row: 2; padding-top: 9px; border-top: 1px solid var(--line); }
-  .header-actions .quiet:first-child { display: none; }
+  .header-actions .quiet:first-child { display: inline-flex; }
   .board-panel { padding: 9px; }
   .turn-banner { flex-wrap: wrap; padding: 3px 2px 9px; }
   .turn-tag { display: none; }

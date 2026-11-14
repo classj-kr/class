@@ -24,7 +24,7 @@
         }
 
         body {
-            min-height: 100vh;
+            min-height: var(--site-game-height, 100dvh);
             padding: 18px;
             display: flex;
             justify-content: center;
@@ -414,7 +414,7 @@
             }
 
             .game-frame {
-                min-height: 100vh;
+                min-height: var(--site-game-height, 100dvh);
                 grid-template-columns: 1fr;
                 border-left: 0;
                 border-right: 0;
@@ -710,10 +710,10 @@ body{align-items:center;padding:18px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
-<script src="../../../assets/network/finisher-board.js"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:100dvh}.game-frame{height:calc(100dvh - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260927-titles">
+<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:var(--site-game-height, 100dvh)}.game-frame{height:calc(var(--site-game-height, 100dvh) - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260927-titles">
 </head>
 <body data-game-navigation="single-player" data-entry-game="sphinx">
 <audio id="bgm" src="/learning/games/sphinx/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -824,7 +824,7 @@ body{align-items:center;padding:18px}
                 <div class="options-container" data-game-entry>
                     <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">Start · Beginner</button>
                     <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">Start · Advanced</button>
-                    <button class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
+                    <button data-game-rules class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
                 </div>
                 <div class="finishers-panel">
                     <div class="finishers-title">🏆 TODAY’S FINISHERS</div>

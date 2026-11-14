@@ -59,9 +59,8 @@ function initMusic() {
 function syncAudioControlDock(inGame) {
   const control = document.querySelector(".unified-music-control");
   if (!control) return;
-  if (inGame) {
-    if (control.parentElement !== $("topActions")) $("topActions").prepend(control);
-  } else if (control.parentElement !== document.body) document.body.appendChild(control);
+  // Keep shared settings outside transformed/sticky game panels.
+  if (control.parentElement !== document.body) document.body.appendChild(control);
 }
 
 function html(value) {

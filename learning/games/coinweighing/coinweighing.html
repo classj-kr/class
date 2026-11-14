@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: var(--site-game-height, 100dvh);
             margin: 0;
             font-family: 'Times New Roman', serif;
             user-select: none;
@@ -321,6 +321,11 @@
         }
         .plate-wrapper.left { left: -40px; }
         .plate-wrapper.right { right: -40px; }
+        @media(max-width:600px) {
+            .plate-wrapper { width:160px; }
+            .plate-wrapper.left { left:-20px; }
+            .plate-wrapper.right { right:-20px; }
+        }
 
         .plate-strings {
             width: 100px;
@@ -784,7 +789,7 @@ textarea,
 
     .game-board {
         width: 100vw;
-        height: 100vh;
+        height: var(--site-game-height, 100dvh);
         padding: 6px 8px;
         border-width: 3px;
         overflow: hidden;
@@ -834,7 +839,7 @@ textarea,
     }
 
     .top-section {
-        height: calc(100vh - 145px);
+        height: calc(var(--site-game-height, 100dvh) - 145px);
         min-height: 210px;
         margin-top: 33px;
         gap: 5px;
@@ -929,7 +934,7 @@ textarea,
 
     .start-screen {
         width: 100vw;
-        min-height: 100vh;
+        min-height: var(--site-game-height, 100dvh);
         height: auto;
         padding: 22px 12px;
         border-left: 0;
@@ -958,7 +963,7 @@ textarea,
     .game-board {
         width: 100vw;
         height: auto;
-        min-height: 100vh;
+        min-height: var(--site-game-height, 100dvh);
         padding: 54px 6px 10px;
         border-left: 0;
         border-right: 0;
@@ -1071,8 +1076,8 @@ body{align-items:center;padding:18px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
-<script src="../../../assets/network/finisher-board.js?v=20260727"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 
@@ -1144,7 +1149,7 @@ body{align-items:center;padding:18px}
 .cw-rule-card strong { color: #8b0000; }
 
 /* The beam and pillar share the original 290px scale coordinate system. */
-body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-sizing: border-box; padding: 64px 12px 20px; align-items: flex-start; overflow: auto; }
+body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-game-height, 100dvh); box-sizing: border-box; padding: 64px 12px 20px; align-items: flex-start; overflow: auto; }
 #game-board { width: min(780px, 100%); height: auto; min-height: 540px; max-height: none; margin: 0 auto; }
 #game-board .top-section { height: 290px; min-height: 290px; margin-top: 54px; }
 #game-board .scale-area { height: 290px; flex-shrink: 0; }
@@ -1211,7 +1216,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
 
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>Start</button>
-        <button class="action-btn" type="button" onclick="openRules()">Rules</button>
+        <button data-game-rules class="action-btn" type="button" onclick="openRules()">Rules</button>
     </div>
 
     <div class="finishers-panel">
@@ -1281,7 +1286,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: 100dvh; box-si
             <button class="action-btn" id="weigh-btn" onclick="weighCoins()">WEIGH</button>
             <button class="action-btn" onclick="clearPlates()">CLEAR</button>
             <button class="action-btn btn-decide" id="decide-btn" onclick="toggleDecideMode()">DECIDE</button>
-            <button class="action-btn" onclick="openRules()">Rules</button>
+            <button data-game-rules class="action-btn" onclick="openRules()">Rules</button>
             <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
         </div>
 

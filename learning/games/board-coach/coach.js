@@ -13,7 +13,7 @@
   const coordinate = i => R.coord(i, state.size);
   const variant = game === "omok" ? "검은 돌부터 빈자리에 하나씩 번갈아 둡니다. 가로·세로·대각선으로 내 돌을 5개 이상 이으면 이깁니다. 이 사이트에서는 렌주의 금수·개국 규칙을 적용하지 않습니다." : "검은 돌부터 둡니다. 새로 놓을 돌과 내 돌 사이에 상대 돌이 가로·세로·대각선으로 이어진 곳에 놓아, 사이의 상대 돌을 모두 뒤집습니다. 둘 곳이 없으면 자동으로 차례를 넘깁니다. 양쪽 모두 둘 곳이 없을 때 돌이 더 많은 쪽이 이깁니다.";
   const principle = game === "omok" ? "중앙에서 연결하기 → 바로 이길 곳 찾기 → 상대의 세 돌·네 돌 막기" : "모서리 지키기 → 상대가 둘 곳 줄이기 → 마지막 돌 수 계산하기";
-  document.title = `${name} · AI와 배우기`;
+  document.title = `${name} · 혼자 하기`;
   $("title").textContent = name;
   $("backLink").href = `../${game}/${game}`;
   BoardCoachUI.useOriginalTheme(game);

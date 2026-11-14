@@ -4,7 +4,7 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: var(--site-game-height, 100dvh);
     padding: 20px;
     background:
         linear-gradient(rgba(3, 8, 19, 0.64), rgba(3, 8, 19, 0.78)),
@@ -426,8 +426,8 @@ body {
 
 /* Active card match: table and hand share one viewport instead of stacking vertically. */
 @media (min-width:700px){
-body:has(#gameScreen:not(.hidden)){height:100dvh;min-height:0;overflow:hidden;padding:8px}
-body:has(#gameScreen:not(.hidden)) .game-shell{height:calc(100dvh - 16px)}
+body:has(#gameScreen:not(.hidden)){height:var(--site-game-height, 100dvh);min-height:0;overflow:hidden;padding:8px}
+body:has(#gameScreen:not(.hidden)) .game-shell{height:calc(var(--site-game-height, 100dvh) - 16px)}
 #gameScreen:not(.hidden){display:grid;grid-template-rows:auto minmax(0,1fr);height:100%}
 #gameScreen .game-header{min-height:0;padding:8px 12px;grid-template-columns:minmax(150px,1fr) auto auto;gap:10px}
 #gameScreen .game-header h1{font-size:30px;line-height:.9}

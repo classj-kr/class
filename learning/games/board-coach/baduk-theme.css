@@ -20,7 +20,7 @@ html[data-coach-state="ready"] #coachLoading{display:none}
 .baduk-learning #reviewList{display:grid;gap:8px;margin:10px 0}
 .baduk-learning #reviewList button{text-align:left;font-size:14px;line-height:1.55}
 .baduk-learning #reviewList strong{display:block}
-.baduk-learning dialog{width:min(520px,calc(100% - 28px));max-height:calc(100dvh - 28px);overflow:auto;padding:22px;border:1px solid #aa7f45;border-radius:16px;background:#241b13;color:#f5efe3;box-shadow:0 18px 50px #0007}
+.baduk-learning dialog{width:min(520px,calc(100% - 28px));max-height:calc(var(--site-game-height, 100dvh) - 28px);overflow:auto;padding:22px;border:1px solid #aa7f45;border-radius:16px;background:#241b13;color:#f5efe3;box-shadow:0 18px 50px #0007}
 .baduk-learning dialog::backdrop{background:#090704df}
 .baduk-learning dialog h2{font-size:20px;margin:0 0 10px}
 .baduk-learning dialog p{line-height:1.6}
@@ -44,5 +44,3 @@ html[data-coach-state="ready"] #coachLoading{display:none}
   .baduk-learning .shell>.coach-notes>section:first-child{border-top:0}
 }
 .baduk-learning #badukFinish{width:100%;margin-top:10px}
-.baduk-learning .unified-music-control{top:auto;bottom:max(12px,env(safe-area-inset-bottom))}
-.baduk-learning .unified-music-control .unified-audio-panel{top:auto;bottom:56px}

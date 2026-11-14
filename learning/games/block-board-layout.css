@@ -1,6 +1,6 @@
 /* Use the SVG's own aspect ratio inside a height-constrained board area. */
 body:has(#gameScreen:not(.hidden)){padding:8px}
-#gameScreen:not(.hidden){display:grid;width:min(1400px,100%);height:calc(100dvh - 16px);min-height:560px;grid-template-columns:minmax(0,1fr) 320px;grid-template-rows:auto auto minmax(0,1fr);gap:8px}
+#gameScreen:not(.hidden){display:grid;width:min(1400px,100%);height:calc(var(--site-game-height, 100dvh) - 16px);min-height:560px;grid-template-columns:minmax(0,1fr) 320px;grid-template-rows:auto auto minmax(0,1fr);gap:8px}
 #gameScreen .game-header{grid-column:2;grid-row:1;grid-template-columns:1fr auto;gap:6px;padding:0 56px 0 0;margin:0;min-height:48px;background:none;border:0;box-shadow:none;backdrop-filter:none}
 #gameScreen .room-lockup{grid-column:2;grid-row:1;padding:0;border:0}
 #gameScreen .header-actions{grid-column:1/-1;justify-content:flex-end}
@@ -61,3 +61,8 @@ body:has(#gameScreen:not(.hidden)){padding:8px}
 #gameScreen .selection-name{font-size:16px}#gameScreen .selection-guide{font-size:11px;margin:3px 0}#gameScreen .piece-list-wrap{min-height:52px}#gameScreen .side-panel{padding:0}
 
 #gameScreen .player-strip:has(.player-card:nth-child(5)){grid-template-columns:repeat(3,minmax(0,1fr))}#gameScreen .player-card{min-width:0}
+
+/* Common controls now have their own rail; headers no longer need corner gaps. */
+html.site-game-controls #gameScreen .game-header{padding:0;grid-template-columns:minmax(0,1fr) auto}
+html.site-game-controls #gameScreen .room-lockup{grid-column:1}
+html.site-game-controls #gameScreen .header-actions{grid-column:2;grid-row:1}

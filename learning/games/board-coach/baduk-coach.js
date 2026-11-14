@@ -7,7 +7,7 @@
   let hint=null,feedback=null,scene=null,history=[],job='move';
   const escape=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const principle='활로 세기 → 단수에서 내 돌 지키기 → 돌 연결하기 → 집 지키기';
-  document.title='바둑 · AI와 배우기';$('title').textContent='바둑';$('backLink').href='../baduk/baduk';
+  document.title='바둑 · 혼자 하기';$('title').textContent='바둑';$('backLink').href='../baduk/baduk';
   BoardCoachUI.mountOpponent();
   // Keep the original game header and board. On small screens explanations go
   // below the match instead of taking height away from the board.

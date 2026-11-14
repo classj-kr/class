@@ -11,7 +11,7 @@
 *{box-sizing:border-box}
 /* 배경 위에 어두운 막을 덮어야 판과 글자가 읽힌다. 배경은 분위기지 주인공이 아니다.
    대기실에는 세 테마가 다 나오는 합본을 쓴다. */
-body{margin:0;min-height:100vh;padding:20px;background:linear-gradient(180deg,rgba(18,13,8,.34),rgba(9,7,5,.6)),url("/learning/games/expedition/assets/images/lobby.webp") center/cover fixed no-repeat,#12100c}
+body{margin:0;min-height:var(--site-game-height, 100dvh);padding:20px;background:linear-gradient(180deg,rgba(18,13,8,.34),rgba(9,7,5,.6)),url("/learning/games/expedition/assets/images/lobby.webp") center/cover fixed no-repeat,#12100c}
 body.inGame{background:linear-gradient(180deg,rgba(18,13,8,.34),rgba(9,7,5,.6)),url("/learning/games/expedition/assets/images/orerun.webp") center/cover fixed no-repeat,#12100c}
 body.theme-tombdig{--accent:#c9a24a;--accent-soft:#7a5c23;--panel:#1d1a16;--panel-edge:#4b402d;--danger:#c14a4a;--relic:#c08cd0;background:linear-gradient(180deg,rgba(20,16,10,.36),rgba(10,8,5,.62)),url("/learning/games/expedition/assets/images/tombdig.webp") center/cover fixed no-repeat,#14110d}
 body.theme-voidrun{--accent:#5fa8d8;--accent-soft:#2c5c80;--panel:#141a22;--panel-edge:#2f4560;--danger:#e0644f;--relic:#9d8ce8;background:linear-gradient(180deg,rgba(8,14,22,.4),rgba(4,7,12,.66)),url("/learning/games/expedition/assets/images/voidrun.webp") center/cover fixed no-repeat,#0b1018}
@@ -286,8 +286,8 @@ body.impact::after{animation:dangerFlash .55s ease-out}
 
 /* Active expedition: compact the scene before allowing page-level scrolling. */
 @media (min-width:700px){
-body:has(#gameScreen:not(.hidden)){height:100dvh;min-height:0;overflow:hidden;padding:8px}
-body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
+body:has(#gameScreen:not(.hidden)){height:var(--site-game-height, 100dvh);min-height:0;overflow:hidden;padding:8px}
+body:has(#gameScreen:not(.hidden)) .shell{height:calc(var(--site-game-height, 100dvh) - 16px)}
 #gameScreen:not(.hidden){height:100%;overflow:hidden}
 #gameScreen .topbar{margin-bottom:6px}
 #gameScreen .scene{padding:10px}
@@ -315,7 +315,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(100dvh - 16px)}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <script src="expedition-sfx.js?v=20261009-sound-bus" defer></script>
 <style>
 

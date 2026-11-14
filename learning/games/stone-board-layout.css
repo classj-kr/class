@@ -6,8 +6,8 @@ body:has(#gameScreen:not(.hidden)){
 .shell:has(#gameScreen:not(.hidden)){width:min(1200px,100%)}
 #gameScreen{
   display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;
-  height:min(820px,calc(100vh - 20px));
-  height:min(820px,calc(100dvh - max(var(--game-inset),env(safe-area-inset-top)) - max(var(--game-inset),env(safe-area-inset-bottom))));
+  height:min(820px,calc(var(--site-game-height, 100dvh) - 20px));
+  height:min(820px,calc(var(--site-game-height, 100dvh) - max(var(--game-inset),env(safe-area-inset-top)) - max(var(--game-inset),env(safe-area-inset-bottom))));
   min-height:0;
 }
 #gameScreen>.panel{min-width:0;margin:0;padding:10px}
