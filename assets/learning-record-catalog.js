@@ -36,7 +36,7 @@
       ['clue','추리 게임'],['codenames','코드네임'],['dobble','도블'],['avalon','원정대 추리'],
       ['citychase','도시 추격'],['beantrading','콩 거래'],['gemguild','보석 길드'],['kingdomtrails','왕국 탐험'],
       ['rummikub','루미큐브'],['blokus','블로커스'],['honeycomb','벌집'],['expedition','탐험'],['drawrelay','그림 릴레이'],
-      ['sliding-puzzle','슬라이딩 퍼즐'],['nonogram','네모로직'],['minesweeper','지뢰찾기']].map(([id, label]) =>
+      ['sliding-puzzle','8 퍼즐·15 퍼즐'],['nonogram','네모로직'],['minesweeper','지뢰찾기']].map(([id, label]) =>
       [id, '게임', label, `/learning/games/${id === 'kingdomtrails' ? 'kingdom-trails' : id}/`])
   ];
   const catalog = Object.freeze(rows.map(([id, domain, label, route]) => Object.freeze({
