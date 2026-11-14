@@ -711,9 +711,12 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
 <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
+<script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="/assets/network/single-player-avatar.js?v=1"></script>
+
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:var(--site-game-height, 100dvh)}.game-frame{height:calc(var(--site-game-height, 100dvh) - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260927-titles">
+<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:var(--site-game-height, 100dvh)}.game-frame{height:calc(var(--site-game-height, 100dvh) - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261114-avatar">
 </head>
 <body data-game-navigation="single-player" data-entry-game="sphinx">
 <audio id="bgm" src="/learning/games/sphinx/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -830,6 +833,7 @@ body{align-items:center;padding:18px}
                     <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
                     <div class="finishers-list" id="today-finishers-list"></div>
                 </div>`;
+            if (playerName) window.ClassroomSoloAvatar.show(displayArea.querySelector(".question-text"));
             const playerEntry = document.querySelector(".player-entry");
             document.querySelectorAll("[data-difficulty-button]").forEach(button => {
                 button.disabled = !isValidKoreanName(playerName);

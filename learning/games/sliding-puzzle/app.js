@@ -383,6 +383,7 @@
   playerName = normalizePlayerName((window.CLASS_PLAYER_NAME || ""));
   const hasPlayer = isValidPlayerName(playerName);
   playerLine.textContent = hasPlayer ? `PLAYER · ${playerName}` : 'SAVE YOUR NAME ON THE MAIN PAGE';
+  if (hasPlayer) window.ClassroomSoloAvatar.show(playerLine);
   startButton.disabled = !hasPlayer;
   startButton.textContent = hasPlayer ? 'Start' : 'GO TO MAIN PAGE';
   finisherBoard.load('today-finishers-list');

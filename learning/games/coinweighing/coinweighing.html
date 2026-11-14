@@ -1077,6 +1077,9 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
 <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
+<script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="/assets/network/single-player-avatar.js?v=1"></script>
+
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
@@ -1172,7 +1175,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
   #game-board .log-monitor { height: 78px; margin-bottom: 0; padding-block: 4px; }
   #game-board .button-section { margin-bottom: 6px; }
 }
-</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20260927-titles">
+</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261114-avatar">
 </head>
 <body data-game-navigation="single-player" data-entry-game="coinweighing">
 
@@ -1360,6 +1363,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
             entry.style.display = "none";
             const subtitle = document.querySelector(".start-subtitle");
             if (subtitle) subtitle.textContent = `PLAYER · ${playerName} · COIN WEIGHING GAME`;
+            window.ClassroomSoloAvatar.show(subtitle);
         }
 
         if (startButton) {
