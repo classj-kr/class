@@ -44,3 +44,7 @@ dialog[open]{display:flex;flex-direction:column}dialog::backdrop{background:#162
 @media(max-width:620px){dialog{width:calc(100vw - 16px);max-height:94dvh;border-radius:9px}dialog header{padding:11px 12px;gap:8px}dialog header h2{font-size:14px}#detailBody{padding:0 10px 12px;scrollbar-gutter:auto}.detail-toolbar{gap:7px;padding:10px 0}.detail-scope{width:100%}.answer{padding:10px;border-left-width:3px}.answer-info{gap:5px}.answer-meta{gap:7px}.answer-meta time{font-size:11px}.answer-response{gap:8px;padding:7px 8px}.answer-prompt{font-size:15px;line-height:1.85}}
 @media(max-width:620px){.first-rate{gap:6px}.first-rate .rate-track{width:54px;flex-basis:54px}}
 @media(max-width:620px){.student-list .student-row{padding:8px;min-height:40px}}
+.handwriting-heading{font-size:14px;margin:12px 0 6px}
+.handwriting-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px}
+.handwriting-cell{display:grid;justify-items:center;gap:3px;min-width:0;font-size:12px;color:#52647a}
+.handwriting-cell canvas{display:block;width:100%;border:1px solid #d8e2ec;border-radius:4px;background:#fff}

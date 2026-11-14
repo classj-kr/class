@@ -4,6 +4,21 @@
 const crypto = require('node:crypto');
 const catalog = require('../assets/learning-record-catalog');
 const items = new Map(catalog.map(row => [row.id, row]));
+const handwriting = require('../learning/literacy-numeracy/handwriting/core');
+
+function handwritingWork(value) {
+  const work = { text: value.text };
+  if (typeof work.text !== 'string') return null;
+  for (const phase of ['trace', 'solo']) {
+    try {
+      const cells = handwriting.validateCells(work.text, value.cells?.[phase]);
+      if (cells.some(strokes => strokes.length)) work[phase] = cells;
+    } catch {
+      // An older or incomplete draft may only contain one valid phase.
+    }
+  }
+  return work.trace || work.solo ? work : null;
+}
 const SOURCE_APPS = ['typing', 'handwriting', 'korean-history', 'computer-literacy', 'korea-map',
   'ear-training', 'music-studio', 'museum', 'park', 'geoboard', 'number-models', 'fraction-board',
   'graph-studio', 'sliding-puzzle', 'nonogram', 'minesweeper'];
@@ -100,20 +115,33 @@ function createActivityWriter({ pool, membershipSql }) {
       const day = new Date(recordedAt.getTime() + 32400000).toISOString().slice(0, 10);
       const schoolYear = Number(day.slice(0,4)) - (Number(day.slice(5,7)) < 3 ? 1 : 0);
       if (options.imported && schoolYear !== m.academic_year) { await db.query('ROLLBACK'); return null; }
+      let unchanged = false;
       if (options.sourceKey) {
         const previous = (await db.query('SELECT fingerprint FROM learning_record_source_state WHERE user_id=$1 AND source_key=$2', [user.id, options.sourceKey])).rows[0];
-        if (previous?.fingerprint === options.fingerprint) { await db.query('COMMIT'); return null; }
+        unchanged = previous?.fingerprint === options.fingerprint;
+        if (unchanged && !(options.imported && options.work)) { await db.query('COMMIT'); return null; }
       }
       const contentKey = `${entry.context || entry.activity}:${day}`.slice(0, 512);
       let row = (await db.query(`SELECT * FROM learning_record_sessions WHERE user_id=$1 AND activity=$2 AND content_key=$3
         AND content_version='activity-v1' AND school_id=$4 AND academic_year=$5 AND grade=$6 AND class_number=$7 ORDER BY started_at LIMIT 1`,
       [user.id, entry.activity, contentKey, m.school_id, m.academic_year, m.grade, m.class_number])).rows[0];
+      if (!row && unchanged && options.work) {
+        row = (await db.query(`SELECT * FROM learning_record_sessions WHERE user_id=$1 AND activity=$2
+          AND left(content_key,length($3::text))=$3 AND content_version='activity-v1'
+          AND school_id=$4 AND academic_year=$5 AND grade=$6 AND class_number=$7
+          ORDER BY updated_at DESC LIMIT 1`,
+        [user.id, entry.activity, entry.context + ':', m.school_id, m.academic_year, m.grade, m.class_number])).rows[0];
+      }
       // Historical recovery cannot append an older/equal snapshot over evidence
       // already captured for that source/day (also safe across projection upgrades).
-      if (row && options.imported && options.sourceKey && recordedAt <= new Date(row.updated_at)) {
+      if (options.imported && (unchanged || (row && recordedAt <= new Date(row.updated_at)))) {
+        if (row && options.work && !row.checkpoint?.handwriting) {
+          await db.query('UPDATE learning_record_sessions SET checkpoint=$2::jsonb WHERE id=$1',
+            [row.id, JSON.stringify({ handwriting: options.work })]);
+        }
         await db.query(`INSERT INTO learning_record_source_state(user_id,source_key,fingerprint) VALUES($1,$2,$3)
           ON CONFLICT(user_id,source_key) DO UPDATE SET fingerprint=EXCLUDED.fingerprint`, [user.id,options.sourceKey,options.fingerprint]);
-        await db.query('COMMIT'); return row.id;
+        await db.query('COMMIT'); return row?.id ?? null;
       }
       if (!row) row = (await db.query(`INSERT INTO learning_record_sessions
         (id,user_id,school_id,academic_year,grade,class_number,student_number,student_name,activity,content_key,content_version,title,href,started_at,updated_at)
@@ -135,8 +163,10 @@ function createActivityWriter({ pool, membershipSql }) {
       await db.query(`UPDATE learning_record_sessions SET progress_current=$2, progress_total=$3,
         status=CASE WHEN $4 THEN 'completed' ELSE status END,
         completed_at=CASE WHEN $4 THEN COALESCE(completed_at,$5) ELSE completed_at END,
-        updated_at=GREATEST(updated_at,$5),revision=revision+1 WHERE id=$1`,
-      [row.id,entry.progress ?? row.progress_current + 1,entry.total ?? row.progress_total,Boolean(entry.complete),recordedAt]);
+        updated_at=GREATEST(updated_at,$5),revision=revision+1,
+        checkpoint=COALESCE($6::jsonb,checkpoint) WHERE id=$1`,
+      [row.id,entry.progress ?? row.progress_current + 1,entry.total ?? row.progress_total,Boolean(entry.complete),recordedAt,
+        options.work ? JSON.stringify({ handwriting: options.work }) : null]);
       await db.query('INSERT INTO learning_record_mutations(session_id,mutation_id,payload_hash) VALUES($1,$2,$3)', [row.id,mutation,payloadHash]);
       if (options.sourceKey) await db.query(`INSERT INTO learning_record_source_state(user_id,source_key,fingerprint) VALUES($1,$2,$3)
         ON CONFLICT(user_id,source_key) DO UPDATE SET fingerprint=EXCLUDED.fingerprint`, [user.id,options.sourceKey,options.fingerprint]);
@@ -151,6 +181,7 @@ function createActivityWriter({ pool, membershipSql }) {
         VALUES($1,$2,$3) ON CONFLICT(user_id,source_key) DO UPDATE SET fingerprint=EXCLUDED.fingerprint`, [user.id,e.key,e.fingerprint]);
       return;
     }
+    const work = row.app === 'handwriting' ? handwritingWork(object(row.value)) : null;
     for (const e of storageEvidence(row)) {
       const saved = Date.parse(row.updated_at), own = Date.parse(e.recordedAt);
       const recordedAt = Number.isFinite(own) && own <= saved ? new Date(own) : Number.isFinite(saved) ? new Date(saved) : null;
@@ -158,7 +189,7 @@ function createActivityWriter({ pool, membershipSql }) {
       if (imported && (!recordedAt || recordedAt.getTime() > Date.now())) continue;
       await record(user, { ...e, context: `saved:${hash(e.key)}`,
       snapshot: { source: 'saved-progress', summary: e.response, ...(imported ? { note: '이전 누적 기록 · 마지막 저장 시점' } : {}) } },
-      { sourceKey: e.key, fingerprint: e.fingerprint, recordedAt: imported ? recordedAt : undefined, imported });
+      { sourceKey: e.key, fingerprint: e.fingerprint, recordedAt: imported ? recordedAt : undefined, imported, work });
     }
   }
   async function importStored() {

@@ -144,6 +144,51 @@
       card.append(title, metrics, badge, detail); target.append(card);
     }
   }
+  function renderHandwriting(body, session) {
+    const work = session.checkpoint?.handwriting;
+    const latest = session.events.at(-1);
+    body.replaceChildren();
+    if (latest) {
+      const time = node('p', stamp(latest.recordedAt), 'meta');
+      if (latest.snapshot.imported) time.append(' · 이전 누적 기록 · 마지막 저장 시점 기준');
+      body.append(time);
+    }
+    if (!work) {
+      body.append(node('p', latest ? `${latest.response} · 남아 있는 획 기록이 없어요.` : '남아 있는 획 기록이 없어요.', 'empty'));
+      return;
+    }
+    const letters = Array.from(work.text.normalize('NFC').replace(/\s/g, ''));
+    for (const [phase, label] of [['trace', '따라 쓰기'], ['solo', '혼자 쓰기']]) {
+      if (!work[phase]) continue;
+      const grid = node('div', null, 'handwriting-grid');
+      body.append(node('h3', label, 'handwriting-heading'), grid);
+      work[phase].forEach((strokes, index) => {
+        const cell = node('div', null, 'handwriting-cell');
+        const canvas = node('canvas');
+        canvas.width = canvas.height = 200;
+        canvas.setAttribute('role', 'img');
+        canvas.setAttribute('aria-label', `${letters[index] || index + 1} ${strokes.length ? '쓴 글씨' : '빈 칸'}`);
+        const pen = canvas.getContext('2d');
+        pen.scale(2, 2);
+        pen.strokeStyle = pen.fillStyle = '#233c34';
+        pen.lineCap = pen.lineJoin = 'round';
+        for (const { points, width } of strokes) {
+          pen.beginPath();
+          if (points.length === 1) {
+            pen.arc(...points[0], width / 2, 0, Math.PI * 2);
+            pen.fill();
+          } else {
+            pen.lineWidth = width;
+            pen.moveTo(...points[0]);
+            for (const point of points.slice(1)) pen.lineTo(...point);
+            pen.stroke();
+          }
+        }
+        cell.append(node('span', letters[index]), canvas);
+        grid.append(cell);
+      });
+    }
+  }
   async function showDetail(record) {
     const current = ++detailGeneration, body = $('detailBody');
     $('detailTitle').textContent = '학습 응답'; body.replaceChildren(node('p', '응답을 불러오는 중…', 'empty')); $('detailDialog').showModal();
@@ -151,6 +196,11 @@
       const { session } = await request(`/teacher/sessions/${record.id}${record.unit ? '?unit=' + encodeURIComponent(record.unit) : ''}`);
       if (current !== detailGeneration) return;
       $('detailTitle').textContent = `${record ? `${record.studentNumber}번 ${record.studentName} · ` : ''}${session.title}`;
+      if (session.activity === 'handwriting') {
+        renderHandwriting(body, session);
+        body.scrollTop = 0;
+        return;
+      }
       const toolbar = node('div', null, 'detail-toolbar'), filters = node('div', null, 'detail-filters');
       filters.setAttribute('role', 'group'); filters.setAttribute('aria-label', '응답 필터');
       toolbar.append(node('p', '전체 기간', 'detail-scope'), filters);

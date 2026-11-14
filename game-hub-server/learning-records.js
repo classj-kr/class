@@ -102,16 +102,19 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const savedEvents = providedEvents || (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
     const events = course ? savedEvents.filter(event => inRange(event, range)) : savedEvents;
     const units = mathUnits(row, savedEvents, range, summarize);
+    const title = row.content_version === 'activity-v1' && ['sliding-puzzle', 'nonogram'].includes(row.activity)
+      ? row.title.replace(/ · (\d+)$/, ' · $1×$1') : row.title;
     return {
       id: row.id, activity: row.activity, domain: activities.get(row.activity)?.domain,
-      contentKey: row.content_key, contentVersion: row.content_version, title: row.title, href: row.href,
+      contentKey: row.content_key, contentVersion: row.content_version, title, href: row.href,
       status: row.status, revision: row.revision,
       progress: { current: row.progress_current, total: row.progress_total },
       startedAt: row.started_at, updatedAt: row.updated_at, completedAt: row.completed_at,
       summary: summarize(events),
       ...(units ? { units } : {}),
       ...(detail ? { checkpoint: row.checkpoint, events: distinctImportedEvents(events).map(e => ({
-        id: String(e.id), kind: e.kind, questionKey: e.question_key, response: e.response, snapshot: e.snapshot,
+        id: String(e.id), kind: e.kind, questionKey: e.question_key, response: e.response,
+        snapshot: title !== row.title && e.snapshot?.title === row.title ? { ...e.snapshot, title } : e.snapshot,
         correct: e.correct, scoringSource: e.scoring_source, attemptNumber: e.attempt_number,
         durationMs: e.duration_ms, recordedAt: e.recorded_at
       })) } : {})
