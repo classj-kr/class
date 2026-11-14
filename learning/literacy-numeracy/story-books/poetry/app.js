@@ -517,6 +517,7 @@
                     if (!item || item.classList.contains("graded")) return;
 
                     const isCorrect = btn.getAttribute("data-correct") === "1";
+                    window.ClassGameSfx?.playBookAnswer?.(isCorrect);
                     const qid = btn.getAttribute("data-qid");
                     const choice = btn.getAttribute('data-choice');
                     busy = true; bookScreen.inert = true;

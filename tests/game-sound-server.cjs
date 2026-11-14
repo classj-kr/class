@@ -12,17 +12,17 @@ const report={origin,pages:[],assets:[]};
     const html=await response.text();
     assert.equal(response.status,200,route);
     const sources=[...html.matchAll(/<script[^>]+src="([^"]+)"/g)].map(m=>m[1]);
-    assert.ok(sources.some(src=>src.includes('/assets/sound/game-sfx.js?v=20261114-boing')),route);
+    assert.ok(sources.some(src=>src.includes('/assets/sound/game-sfx.js?v=20261115-book-answer-sfx')),route);
     for(const src of sources){
       if(src.includes('/assets/network/multiplayer-lobby.js')) assert.ok(src.endsWith('?v=20261101-game-entry-size'),route+': '+src);
-      if(src.includes('assets/sound/music-control.js')) assert.ok(src.endsWith('?v=20261114-lobby-music'),route+': '+src);
+      if(src.includes('assets/sound/music-control.js')) assert.ok(src.endsWith('?v=20261115-book-answer-sfx'),route+': '+src);
     }
     report.pages.push({route,status:response.status,scriptVersions:true});
   }
   for(const [file,version] of [
     ['assets/network/multiplayer-lobby.js','20261101-game-entry-size'],
-    ['assets/sound/game-sfx.js','20261114-boing'],
-    ['assets/sound/music-control.js','20261114-lobby-music'],
+    ['assets/sound/game-sfx.js','20261115-book-answer-sfx'],
+    ['assets/sound/music-control.js','20261115-book-answer-sfx'],
     ...['error', 'timeout', 'explosion'].map(name => ['assets/sound/sfx/' + name + '.ogg', '20261114-boing'])
   ]){
     const response=await fetch(`${origin}/${file}?v=${version}`,{headers:{'Cache-Control':'no-cache'}});

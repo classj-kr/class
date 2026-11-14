@@ -1491,8 +1491,6 @@ paint();
       item.querySelectorAll('.quiz-choice').forEach(button => button.addEventListener('click', async () => {
         if (!hooks?.canAct() || item.classList.contains('graded')) return;
         const chosen = Number(button.dataset.choice), correct = chosen === q.answer;
-        if (correct) window.ClassGameSfx?.play('success');
-        else window.ClassGameSfx?.playFile('/assets/sound/sfx/story-quiz-squeak.ogg');
         if (correct) QUIZ_PICKED[qi] = chosen; else QUIZ_WRONG[qi].add(chosen);
         await hooks.answer({ kind: 'answer', questionKey: LANG + ':' + qi, response: q.choices[chosen], correct,
           snapshot: { prompt: q.q, choices: q.choices, language: LANG } });
