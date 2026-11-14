@@ -8,7 +8,7 @@ const { harness } = require('./learning-records-integration.cjs');
 const screenshotWebp = require('./screenshot-webp.cjs');
 
 async function main() {
-  const h = await harness(), browser = await chromium.launch({ channel: 'msedge', headless: true });
+  const h = await harness({ withStorage: true }), browser = await chromium.launch({ channel: 'msedge', headless: true });
   const output = path.resolve(__dirname, '../outputs/learning-records-review');
   const request = async (route, body) => {
     const response = await fetch(h.base + '/api/learning-records' + route, {
@@ -99,6 +99,21 @@ async function main() {
     assert.equal(await page.locator('.answer img,.answer script').count(), 0, 'saved text is never interpreted as HTML');
     assert.equal(await page.evaluate(() => window.injected), undefined);
     assert.equal(await page.locator('.answer.reflection').count(), 1);
+    await page.keyboard.press('Escape');
+    const savedWriting = await fetch(h.base + '/api/me/storage/handwriting/draft', {
+      method: 'PUT', headers: { 'Content-Type': 'application/json', 'x-test-user': '1' },
+      body: JSON.stringify({ value: { text: '가나', cells: {
+        trace: [[{ points: [[15, 15], [70, 80]], width: 3.9 }], []],
+        solo: [[], [{ points: [[45, 50]], width: 3.9 }]]
+      } } })
+    });
+    assert.equal(savedWriting.status, 200);
+    await page.reload();
+    await page.locator('.record-card').filter({ hasText: '글씨 쓰기 · 가나' }).locator('.detail-button').click();
+    const ink = page.getByRole('img', { name: '가 쓴 글씨', exact: true });
+    assert.ok(await ink.evaluate(canvas => canvas.getContext('2d').getImageData(0, 0, 200, 200).data.some(value => value > 0)));
+    assert.equal(await page.getByRole('img', { name: '나 빈 칸', exact: true }).count(), 1);
+    assert.ok(await page.getByRole('heading', { name: '혼자 쓰기' }).isVisible());
     assert.deepEqual(errors, []);
     console.log('PASS report readability: weighted first-attempt rates, retries excluded, 0%/100%/no attempts, 320px layout, actual fractional OX records, local math rendering, result colors, wrong/retry filters, safe text, desktop/mobile dialog.');
   } finally { await browser.close(); await h.close(); }

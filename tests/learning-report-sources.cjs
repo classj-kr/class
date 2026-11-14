@@ -78,7 +78,7 @@ async function main(){
     assert.equal((await submit(1,{...body,progress:-1})).status,400);
     assert.equal((await submit(1,{...body,kind:'open'})).status,400);
     const examples=[
-      ['handwriting','draft',{text:'가',cells:{trace:[[{points:[{x:0,y:0},{x:1,y:1}]}]],solo:[[]]}}],
+      ['handwriting','draft',{text:'가',cells:{trace:[[{points:[[15,15],[70,80]],width:3.9}]],solo:[[]]}}],
       ['korean-history','hanguksa-done',{q10:'right',q2:'wrong'}],
       ['computer-literacy','computer-literacy:a01',{completed:true,score:3,updatedAt:new Date().toISOString()}],
       ['korea-map','classj-korea-geography-progress-v2',{total:3,correct:2,items:{}}],
@@ -93,6 +93,14 @@ async function main(){
       const res=await fetch(`${h.base}/api/me/storage/${app}/${encodeURIComponent(item)}`,{method:'PUT',headers:{'x-test-user':'1','Content-Type':'application/json'},body:JSON.stringify({value})});
       assert.equal(res.status,200,app);assert.ok((await report()).sessions.some(s=>s.activity===app),app+' storage API reaches reports');
     }
+    const writing = (await report()).sessions.find(s=>s.activity==='handwriting');
+    const writingDetail = async () => (await (await fetch(h.base+'/api/learning-records/teacher/sessions/'+writing.id,
+      {headers:{'x-test-user':'3'}})).json()).session;
+    assert.deepEqual((await writingDetail()).checkpoint.handwriting.trace[0][0].points, [[15,15],[70,80]]);
+    await h.pool.query("UPDATE learning_record_sessions SET checkpoint='{}' WHERE id=$1",[writing.id]);
+    await h.feature.importStored();
+    assert.deepEqual((await writingDetail()).checkpoint.handwriting.trace[0][0].points, [[15,15],[70,80]]);
+    assert.equal((await writingDetail()).events.length,1);
     // Restart recovery imports previously saved account data without rewriting its date.
     const countBeforeImport=(await report('&period=all')).sessions.length;
     const eventsBeforeImport=(await h.pool.query('SELECT COUNT(*)::int AS n FROM learning_record_events')).rows[0].n;
