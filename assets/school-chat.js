@@ -42,9 +42,9 @@
     function injectStyle() {
         const style = el("style");
         style.textContent = `
-            #schoolChatToggle{position:fixed;left:14px;bottom:14px;z-index:100000;width:80px;height:40px;min-height:40px;gap:6px;border-radius:22px;border:1px solid rgba(255,255,255,.22);background:#27303d;color:#eef2f7;font:700 12px/1 system-ui;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+            #schoolChatToggle{position:fixed;left:14px;bottom:14px;z-index:100000;width:36px;min-width:36px;height:36px;min-height:36px;box-sizing:border-box;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:#27303d;color:#eef2f7;font:700 12px/1 system-ui;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.35)}
             #schoolChatToggle:hover{background:#334052}
-            #schoolChatToggle .sc-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#d8352d;color:#fff;font-size:11px;line-height:18px;text-align:center}
+            #schoolChatToggle .sc-badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#d8352d;color:#fff;font-size:10px;line-height:16px;text-align:center}
             #schoolChatToggle .sc-badge[hidden]{display:none}
             #schoolChatPanel{position:fixed;left:14px;bottom:70px;z-index:100000;width:min(330px,calc(100vw - 28px));height:min(560px,calc(100vh - 90px));display:none;flex-direction:column;background:rgba(14,18,25,.96);border:1px solid rgba(255,255,255,.16);color:#e6ebf2;font:13px/1.5 "Malgun Gothic",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45)}
             #schoolChatPanel.open{display:flex}
@@ -506,7 +506,7 @@
         const toggle = el("button", "sc-toggle");
         toggle.id = "schoolChatToggle";
         toggle.title = "학교 채팅";
-        toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-3 2 1.7-6A8.5 8.5 0 1 1 21 11.5Z"/><path d="M7 9h9M7 13h6"/></svg><span>채팅</span>';
+        toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-3 2 1.7-6A8.5 8.5 0 1 1 21 11.5Z"/><path d="M7 9h9M7 13h6"/></svg>';
         ui.toggle = toggle;
         toggle.type = "button";
         toggle.setAttribute("aria-label", "학교 채팅 열기");
