@@ -1,18 +1,19 @@
-/* Site controls occupy their own rail, outside the game's scrollable surface. */
+/* Keep controls above the scrollport while the game backdrop covers the viewport. */
 html.site-game-controls {
     --site-controls-height: calc(56px + env(safe-area-inset-top));
     --site-game-height: calc(100dvh - var(--site-controls-height));
     height: 100%;
     box-sizing: border-box;
-    padding-top: var(--site-controls-height);
     overflow: hidden;
-    background: #18212b;
 }
 html.site-game-controls body {
     position: fixed !important;
-    inset: var(--site-controls-height) 0 0 !important;
+    inset: 0 !important;
     box-sizing: border-box;
-    height: var(--site-game-height) !important;
+    height: 100dvh !important;
+    border-top: var(--site-controls-height) solid transparent !important;
+    background-origin: border-box !important;
+    background-clip: border-box !important;
     min-height: 0 !important;
     margin: 0 !important;
     overflow: auto !important;
