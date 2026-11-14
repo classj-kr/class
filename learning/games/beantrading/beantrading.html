@@ -4,15 +4,16 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>콩 거래 (Bean Trading)</title>
   <meta name="description" content="4~5명이 함께 심고, 흥정하고, 수확하는 콩 거래 게임">
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="game.css?v=8">
   <script src="../../../assets/network/game-network.js?v=20260821" defer></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels" defer></script>
+  <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars" defer></script>
   <script src="music.js" defer></script>
-  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
   <script src="engine.js?v=2" defer></script>
   <script src="strategy.js?v=1" defer></script>
-  <script src="game.js?v=20261006-name" defer></script>
+  <script src="game.js?v=20261114-avatars" defer></script>
 </head>
 <body>
 <main class="shell">
@@ -21,13 +22,13 @@
     <header class="panel lobbyHead"><div class="row spread"><div><h1 class="lobbyTitle">BEAN TRADING</h1></div><strong id="savedName"></strong></div><div class="mp-lobby-tabs"><button id="hostTab" class="primary" type="button">방 만들기</button><button id="joinTab" class="secondary" type="button">방 참가</button></div></header>
     <section id="hostPane" class="panel hidden"><span class="eyebrow">방 번호</span><strong id="roomCode" class="room-code">----</strong><div id="hostStatus" class="mp-lobby-status"></div></section>
     <section id="joinPane" class="panel hidden"><div class="mp-lobby-row"><input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="방 번호 4자리" aria-label="방 번호"><button id="joinBtn" class="primary">참가하기</button></div><div id="joinStatus" class="mp-lobby-status"></div></section>
-    <section class="panel"><div id="lobbyPlayers" class="mp-lobby-players"></div><p id="lobbyGuide">4~5명이 모이면 시작할 수 있습니다.</p><div class="row"><button id="startBtn" class="primary" disabled>시작하기</button><button id="practiceBtn" class="secondary" type="button">혼자 연습하기</button><button id="rulesBtnLobby" class="secondary">규칙 / 수확표</button><button id="leaveBtnLobby" class="ghost">메인 화면</button></div></section>
+    <section class="panel"><div id="lobbyPlayers" class="mp-lobby-players"></div><p id="lobbyGuide">4~5명이 모이면 시작할 수 있습니다.</p><div class="row"><button id="startBtn" class="primary" disabled>시작하기</button><button id="practiceBtn" class="secondary" type="button">혼자 연습하기</button><button id="rulesBtnLobby" class="secondary">Rules</button><button id="leaveBtnLobby" class="ghost">메인 화면</button></div></section>
   </section>
   <section id="gameScreen" class="hidden">
     <button id="leaveBtnGame" type="button" hidden>나가기</button>
     <div id="playerStrip" class="players"></div>
     <section id="playArea">
-      <div class="turn-banner"><div class="turn-copy"><div class="turn-meta"><span id="roundLabel">1 / 5 라운드</span><span id="roomLabel"></span><span id="stageLabel"></span></div><h2 id="turnTitle"></h2><p id="turnHint"></p></div><div class="timer"><strong id="seconds">10</strong><span>초</span></div><button id="nextBtn" class="primary hidden"></button><button id="rulesBtnGame" class="ghost" type="button">규칙</button></div>
+      <div class="turn-banner"><div class="turn-copy"><div class="turn-meta"><span id="roundLabel">1 / 5 라운드</span><span id="roomLabel"></span><span id="stageLabel"></span></div><h2 id="turnTitle"></h2><p id="turnHint"></p></div><div class="timer"><strong id="seconds">10</strong><span>초</span></div><button id="nextBtn" class="primary hidden"></button><button id="rulesBtnGame" class="ghost" type="button">Rules</button></div>
       <div class="game-grid">
         <section class="market panel"><div class="section-head"><h2>오늘의 장터</h2><span id="deckLabel"></span></div><div class="market-center"><div class="draw-pile"><img src="assets/images/card-back-v1.webp" alt="카드 더미"><span>공개 카드</span></div><div id="marketCards" class="card-row"></div></div><p id="marketHint" class="muted"></p></section>
         <aside class="trade-panel panel">

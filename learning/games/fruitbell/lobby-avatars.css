@@ -23,3 +23,5 @@
 @media(max-width:520px){#lobby .team-picker-board{grid-template-columns:1fr;gap:8px;}#lobby .team-picker-column{padding:6px;}#lobby .avatar-seat-stage{height:85px;}#lobby .avatar-seat-image{height:82px;}#lobby .avatar-seat-name{font-size:12px;}#lobby .avatar-seat-hint{font-size:9px;}#lobby .team-picker-heading{font-size:13px;}}
 @media(max-width:380px){#lobby #lobbyPlayers.avatar-seats{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(prefers-reduced-motion:reduce){#lobby .avatar-seat-image{animation:none;}}
+
+#lobby .avatar-seat-stage .mp-avatar-figure{--mp-avatar-size:64px;position:relative;margin-bottom:4px;}

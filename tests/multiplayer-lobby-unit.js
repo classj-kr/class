@@ -28,6 +28,7 @@ class FakeElement extends EventTarget {
         this.className = "";
     }
     setAttribute(name, value) { (this.attributes ||= {})[name] = String(value); }
+    append(...nodes) { this.children.push(...nodes); }
     appendChild(child) { this.children.push(child); return child; }
     replaceChildren(...children) { this.children = [...children.flatMap(child => child.children || [child])]; }
     focus() {}
@@ -81,6 +82,7 @@ window.ClassroomNetwork = {
     }
 };
 
+window.ClassroomAvatars = {loadKey: async () => "", create: () => new FakeElement()};
 require(path.join(__dirname, "..", "assets", "network", "multiplayer-lobby.js"));
 
 function makeElements(prefix) {

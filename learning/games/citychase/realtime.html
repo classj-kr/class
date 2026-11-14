@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#193a32"><title>술래잡기</title>
-  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261001-citychase-bg">
-  <link rel="stylesheet" href="realtime.css?v=20261010-webp">
+  <link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
+  <link rel="stylesheet" href="realtime.css?v=20261114-rules">
   <script src="../../../assets/network/game-network.js?v=20260821" defer></script>
-  <script src="../../../assets/network/multiplayer-lobby.js?v=20260927-custom-rules" defer></script>
+  <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars" defer></script>
   <script src="realtime-world.js?v=20261009e" defer></script>
   <script src="realtime-steering.js?v=20261009c" defer></script>
   <script src="realtime-engine.js?v=20261009p" defer></script>
   <script src="realtime-capture.js?v=20261009c" defer></script>
   <script src="realtime-controls.js?v=20261009c" defer></script>
   <script src="realtime-audio.js?v=20261009l" defer></script>
-  <script src="realtime.js?v=20261010-webp" defer></script>
+  <script src="realtime.js?v=20261114-avatars" defer></script>
 </head>
 <body>
   <main id="welcome" class="welcome">
     <section id="lobbyScreen" class="panel" data-multiplayer-lobby>
-      <header><h1 class="lobbyTitle">술래잡기</h1><span id="savedName"></span><a id="rulesBtnLobby" class="rulesLink" href="realtime-rules.html" target="_blank" rel="noopener">게임 규칙</a></header>
+      <header><h1 class="lobbyTitle">술래잡기</h1><span id="savedName"></span><a id="rulesBtnLobby" class="rulesLink" href="realtime-rules.html" target="_blank" rel="noopener">Rules</a></header>
       <div class="mp-lobby-tabs"><button id="hostTab">방 만들기</button><button id="joinTab">참가하기</button></div>
       <section id="hostPane" class="hidden"><strong id="roomCode"></strong><p id="hostStatus"></p></section>
       <section id="joinPane"><div class="mp-lobby-row"><input id="joinCode" inputmode="numeric" maxlength="4" placeholder="방 번호" aria-label="방 번호"><button id="joinBtn" class="primary">참가</button></div><p id="joinStatus"></p></section>
@@ -40,7 +41,7 @@
       <div class="score" aria-label="양 팀 진행 상황"><div class="scoreItem"><span>보석</span><strong id="scoreText">0 / 3</strong></div><div class="scoreItem policeScore"><span>체포</span><strong id="captureText">0 / 5</strong></div></div>
       <time id="clock">3:00</time>
       <button id="viewBtn" class="icon" aria-label="전체 지도 보기">전체</button>
-      <a id="rulesBtnGame" class="icon rulesLink" href="realtime-rules.html" target="_blank" rel="noopener" aria-label="게임 규칙">?</a>
+      <a id="rulesBtnGame" class="icon rulesLink" href="realtime-rules.html" target="_blank" rel="noopener" aria-label="게임 규칙">Rules</a>
       <button id="soundBtn" class="icon" aria-label="소리 끄기" aria-pressed="true" data-sfx="none">🔊</button>
     </div>
     <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>

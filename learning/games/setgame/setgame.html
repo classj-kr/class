@@ -1005,10 +1005,11 @@ textarea,
 #lobby-guide { margin-top: 10px; }
 
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:border-box;padding:8px}
@@ -1614,6 +1615,7 @@ body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:b
             score.className = "player-score";
             score.textContent = `${players[pId].score} points`;
 
+            lobby?.decorateName(name,pId);
             card.append(name, score);
             board.appendChild(card);
         });

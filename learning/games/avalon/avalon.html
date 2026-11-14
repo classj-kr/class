@@ -20,11 +20,13 @@ body{background-image:linear-gradient(rgba(7,10,16,.66),rgba(7,10,16,.88)),url("
 .identityCard.evil .identityCardFace .roleCardImage{filter:hue-rotate(285deg) saturate(1.25) brightness(.72)}
 #entry[data-multiplayer-lobby]{max-width:760px;margin-inline:auto}
 #roomShare{padding-left:32px}
+@media(max-width:600px){#game .players{grid-template-columns:minmax(0,1fr)}#game .player{min-width:0;padding:8px;gap:5px}#game .player span{overflow-wrap:anywhere}}
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game:not(.hide)){padding:8px}
@@ -113,7 +115,7 @@ function roleDisplayName(role){const korean=ROLE_LABELS[role]||role,english=ROLE
 function formatRoleList(roles){const counts={};for(const role of roles||[])counts[role]=(counts[role]||0)+1;return Object.entries(counts).map(([role,count])=>`${roleDisplayName(role)}${count>1?` ×${count}`:""}`).join(", ")}
 function renderLobbySetup(){const guide=$("setupGuide"),summary=$("roleComposition"),count=state.players.length;guide.classList.toggle("custom",!!state.settingsCustomized);if(count<5)guide.textContent=`현재 ${count}명입니다. 5명이 모이면 인원수에 맞는 추천 역할 구성이 자동 적용됩니다.`;else if(state.settingsCustomized)guide.textContent="방장이 추천 역할 구성을 수정했습니다. 체크를 끄면 그 역할이 일반 신하 또는 하수인으로 교체됩니다.";else guide.textContent=`${count}인 추천 역할 구성이 자동 적용되었습니다. 그대로 시작해도 균형 있게 플레이할 수 있습니다.`;summary.innerHTML=count<5?'<div class="roleSide">5명 이상 모이면 실제 역할 구성을 미리 보여드립니다.</div>':`<div class="roleSide good"><b>선의 세력 ${state.roleSummary.good.length}명</b><br>${esc(formatRoleList(state.roleSummary.good))}</div><div class="roleSide evil"><b>악의 세력 ${state.roleSummary.evil.length}명</b><br>${esc(formatRoleList(state.roleSummary.evil))}</div>`;$("resetRecommended").disabled=!isHost||count<5;document.querySelectorAll("[data-role]").forEach(control=>{control.disabled=!isHost||count<5;control.checked=!!state.settings[control.dataset.role]})}
 // 아바타는 대기실이 참가자별로 실어 나른다. 없는 사람은 그냥 이름만 나온다.
-function faceTag(id){const face=lobby?.playerAvatar(id);return face?`<img class="mp-face" src="${face}" alt="">`:""}
+function faceTag(id){if(state?.phase==="lobby")return lobby?.avatarMarkup(id,{walking:true})||"";const face=lobby?.playerAvatar(id);return face?`<img class="mp-face" src="${face}" alt="">`:""}
 function render(){if(!state)return;$("roomShare").hidden=state.phase!=="lobby";$("phaseText").textContent=phaseNames[state.phase]||state.phase;$("count").textContent=`${state.players.length}/8`;$("lobby").classList.toggle("hide",state.phase!=="lobby");$("start").disabled=!isHost||state.players.length<5||state.players.length>8;if(state.phase==="lobby")renderLobbySetup();$("missions").innerHTML=[0,1,2,3,4].map((_,i)=>`<div class="mission ${state.results[i]?.success===true?'ok':state.results[i]?.success===false?'fail':''}">${i+1}</div>`).join("");$("players").innerHTML=state.players.map(p=>`<button class="player ${p.id===myId?'me':''} ${p.id===state.leaderId?'leader':''} ${selected.has(p.id)?'selected':''}" data-player="${p.id}">${faceTag(p.id)}<span>${esc(p.name)}${p.id===state.hostId?' · 방장':''}</span></button>`).join("");document.querySelectorAll("[data-player]").forEach(b=>b.onclick=()=>choose(b.dataset.player));if(roleInfo&&state.phase==="ended")revealIdentityCardPermanently();renderAction();renderTurnClock()}
 
 function renderTurnClock(){const clock=$("turnClock");const deadline=state?.turnDeadline;if(!state||state.phase==="lobby"||state.phase==="ended"||!deadline){clock.classList.add("hide");return}clock.classList.remove("hide");const totalMs=(state.turnSeconds||60)*1000;const remainingMs=Math.max(0,deadline-Date.now());const remainingSeconds=Math.ceil(remainingMs/1000);$("turnSeconds").textContent=`${remainingSeconds}초`;$("turnTimerBar").style.transform=`scaleX(${Math.max(0,Math.min(1,remainingMs/totalMs))})`;clock.classList.toggle("urgent",remainingSeconds<=5)}

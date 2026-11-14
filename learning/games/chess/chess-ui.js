@@ -238,7 +238,7 @@ function playerFor(color) { return gameState?.players?.find(player => player.col
 
 function playerBarHtml(color, mine) {
   const player = playerFor(color);
-  return `<div class="player-info"><span class="color-dot ${color}"></span><span><strong>${escapeHtml(player.name)}</strong><span class="side-label"> · ${color === "w" ? "백" : "흑"}${mine ? " · 나" : ""}</span></span></div><div class="player-clock" data-clock-color="${color}">--:--</div>`;
+  return `<div class="player-info">${lobby?.avatarMarkup(player.id)||""}<span class="color-dot ${color}"></span><span><strong>${escapeHtml(player.name)}</strong><span class="side-label"> · ${color === "w" ? "백" : "흑"}${mine ? " · 나" : ""}</span></span></div><div class="player-clock" data-clock-color="${color}">--:--</div>`;
 }
 
 function renderPlayerBars() {

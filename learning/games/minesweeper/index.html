@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#1d130d">
   <title>지뢰찾기</title>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="styles.css?v=20261110-result">
+  <link rel="stylesheet" href="styles.css?v=20261114-coordinates">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js"></script>
   <script src="/assets/site-storage.js?v=20261006-1"></script>
-  <script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+  <script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../puzzle-board-layout.css?v=20260927-chromebook-recovery">
 <link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261108-minesweeper">
 </head>
@@ -64,6 +64,9 @@
           </div>
 
           <div class="board-wrap" id="boardWrap">
+            <span class="board-axis-corner" aria-hidden="true">열→<br>행↓</span>
+            <div class="board-columns" id="boardColumns" aria-hidden="true"></div>
+            <div class="board-rows" id="boardRows" aria-hidden="true"></div>
             <div class="mine-board" id="board" role="grid" aria-label="지뢰찾기 게임판"></div>
           </div>
 
@@ -164,6 +167,6 @@
   </main>
 
   <script src="logic.js?v=20261108-audit"></script>
-  <script src="app.js?v=20261110-result"></script>
+  <script src="app.js?v=20261114-coordinates"></script>
 </body>
 </html>

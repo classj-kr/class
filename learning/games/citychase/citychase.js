@@ -331,6 +331,8 @@
   }
 
   function seatAvatarMarkup(player) {
+    const walking = lobby?.avatarMarkup(player.id, {walking:true});
+    if (walking) return walking;
     const url = avatarOf(player.id);
     return url
       ? `<img class="teamSeatAvatar" src="${escapeHtml(url)}" alt="">`

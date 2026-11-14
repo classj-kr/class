@@ -4,18 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>체스</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="board.css?v=2">
 <link rel="stylesheet" href="styles.css?v=20261107-nochat">
 <link rel="stylesheet" href="../board-coach/entry.css?v=2">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <script src="chess-rules.js?v=20261001-standard"></script>
 <script src="pieces.js?v=1" defer></script>
 <script src="motion.js?v=2" defer></script>
-<script src="chess-ui.js?v=20261107-nochat" defer></script>
+<script src="chess-ui.js?v=20261114-avatars" defer></script>
 <script src="../board-coach/entry.js?v=1" defer></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
@@ -71,7 +72,7 @@
       <div id="drawResponse" class="draw-response hidden"><p>상대방이 무승부를 제안했습니다.</p><div><button id="acceptDrawBtn" class="btn primary" type="button">수락</button><button id="declineDrawBtn" class="btn" type="button">거절</button></div></div>
       <section class="captured-section"><div class="capture-card"><span>내가 잡은 말</span><div id="myCaptures" class="captures"></div></div><div class="capture-card"><span>상대가 잡은 말</span><div id="opponentCaptures" class="captures"></div></div></section>
       <section class="moves-card"><div class="section-title">기보</div><div id="moveList" class="move-list"><div class="move-empty">아직 둔 수가 없습니다.</div></div></section>
-      <div class="game-actions"><button id="drawBtn" class="btn" type="button">무승부 제안</button><button id="resignBtn" class="btn danger" type="button">기권</button><button id="rematchBtn" class="btn primary hidden" type="button">재대국</button><button id="rulesBtnGame" class="btn" type="button">규칙 보기</button></div>
+      <div class="game-actions"><button id="drawBtn" class="btn" type="button">무승부 제안</button><button id="resignBtn" class="btn danger" type="button">기권</button><button id="rematchBtn" class="btn primary hidden" type="button">재대국</button><button id="rulesBtnGame" class="btn" type="button">Rules</button></div>
     </aside>
   </section>
 </main>

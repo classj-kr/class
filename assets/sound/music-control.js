@@ -60,7 +60,7 @@
         const stylesheetUrl = currentScript
             ? new URL("music-control.css", currentScript.src)
             : new URL("../../assets/sound/music-control.css", location.href);
-        stylesheetUrl.searchParams.set("v", "20261110-circle-toggle");
+        stylesheetUrl.searchParams.set("v", "20261114-site-controls");
         stylesheet.href = stylesheetUrl.href;
         document.head.appendChild(stylesheet);
     }
@@ -147,6 +147,7 @@
 
     const control = document.createElement("div");
     control.className = "unified-music-control";
+    control.id = "classSiteSettings";
     control.setAttribute("role", "group");
     control.setAttribute("aria-label", "공통 설정");
     control.innerHTML = `

@@ -998,10 +998,11 @@ body{align-items:flex-start;padding:8px}
 body{align-items:center;padding:18px}
 }
 </style>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20260926-button-labels"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#game-screen:not(.hidden)){padding:8px;box-sizing:border-box;height:100dvh;min-height:0}
@@ -1150,7 +1151,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
     <section class="screen game-screen hidden" id="game-screen">
         <div class="game-header">
             <div class="header-left">
-                <span class="meta-chip" id="round-chip">1라운드</span>
+                <div id="gameAvatarPlayers" class="mp-compact-players"></div><span class="meta-chip" id="round-chip">1라운드</span>
             </div>
             <div class="turn-badge" id="turn-badge">WAITING...</div>
             <div id="turn-clock" class="turn-clock hidden">
@@ -1950,6 +1951,7 @@ body:has(#game-screen:not(.hidden)) .app-shell{height:min(720px,calc(100dvh - 16
     }
 
     function renderTurnStatus() {
+        lobby?.renderCompactPlayers($("gameAvatarPlayers"));
         const badge = $("turn-badge");
         const myTurn = isMyTurn() && !state.over;
 

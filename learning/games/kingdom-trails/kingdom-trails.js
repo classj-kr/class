@@ -193,7 +193,7 @@ function renderPlayers() {
     const active = gameState.phase === "playing" && player.id === gameState.activePlayerId;
     card.className = `player-card${active ? " active" : ""}`;
     card.style.setProperty("--player", player.color);
-    card.innerHTML = `<span class="player-token" aria-hidden="true">♟</span><div class="player-copy"><strong>${html(player.name)}${player.id === myId() ? " · 나" : ""}</strong><small>탐험가 ${player.workers}명</small></div><span class="player-score">${player.score}<small>점</small></span>`;
+    card.innerHTML = `${lobby?.avatarMarkup(player.id)||'<span class="player-token" aria-hidden="true">♟</span>'}<div class="player-copy"><strong>${html(player.name)}${player.id === myId() ? " · 나" : ""}</strong><small>탐험가 ${player.workers}명</small></div><span class="player-score">${player.score}<small>점</small></span>`;
     fragment.appendChild(card);
   }
   $("playerStrip").replaceChildren(fragment);

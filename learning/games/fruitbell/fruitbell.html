@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>과일 종</title>
-<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20260929-top-strip">
+<link rel="stylesheet" href="../../../assets/network/multiplayer-lobby.css?v=20261114-avatars">
 <style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:"Malgun Gothic",sans-serif;color:#fff}
 body{
@@ -128,10 +128,11 @@ input{width:100%;min-height:44px;border:1px solid #987d42;border-radius:8px;back
 
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
-<script src="../../../assets/network/multiplayer-lobby.js?v=20261113-fruit-avatars"></script>
-<link rel="stylesheet" href="lobby-avatars.css?v=20261113-1">
-<script src="lobby-avatars.js?v=20261113-1"></script>
-<script src="../../../assets/sound/music-control.js?v=20261105-settings-panel" defer></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<link rel="stylesheet" href="lobby-avatars.css?v=20261114-1">
+<script src="lobby-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 #gameScreen{height:100dvh;min-height:0;padding:8px}
@@ -735,7 +736,7 @@ function renderGame(){
    const teamClass=teamMode?(team==="A"?"team-a":"team-b"):"";
    const tag=teamMode?`<span class="team-tag ${team==="A"?"a":"b"}">${team==="A"?"파랑":"빨강"}</span>`:"";
    const personalScore=teamMode?"":cardStackMarkup(state.scores[id]||0);
-   return `<div class="score ${id===myId?"me":""} ${teamClass}">${cleanName(players[id]?.name)} ${tag}${personalScore}</div>`;
+   return `<div class="score ${id===myId?"me":""} ${teamClass}">${lobby?.avatarMarkup(id)||""}${cleanName(players[id]?.name)} ${tag}${personalScore}</div>`;
  }).join("");
  const noticeText=state.notice?.text||"";
  $("message").textContent=noticeText||(state.turn<0?"뒤집을 카드가 없습니다. 조건에 맞으면 종을 누르세요.":myTurn()?"내 차례입니다. 4초 안에 카드를 뒤집으세요.":`${players[state.order[state.turn]]?.name||""} 차례입니다.`);

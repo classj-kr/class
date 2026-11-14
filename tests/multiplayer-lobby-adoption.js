@@ -8,6 +8,7 @@ const gamesRoot = path.resolve(__dirname, "..", "learning", "games");
 const expectedMultiplayerGames = [
     "avalon",
     "baduk",
+    "beantrading",
     "blokus",
     "bomb77",
     "chess",
@@ -47,7 +48,7 @@ const ordinaryGames = fs.readdirSync(gamesRoot, { withFileTypes: true })
 
 const multiplayerGames = ordinaryGames.filter(({ file }) => {
     const html = fs.readFileSync(file, "utf8");
-    return html.includes("ClassroomMultiplayerLobby.create") ||
+    return html.includes("multiplayer-lobby.js") || html.includes("ClassroomMultiplayerLobby.create") ||
         (/CREATE ROOM/i.test(html) && /JOIN ROOM/i.test(html));
 });
 const singlePlayerGames = ordinaryGames.filter(game => !multiplayerGames.includes(game));
