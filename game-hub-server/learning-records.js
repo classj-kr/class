@@ -102,13 +102,8 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
     const savedEvents = providedEvents || (await db.query('SELECT * FROM learning_record_events WHERE session_id = $1' + filter + ' ORDER BY id', args)).rows;
     const events = course ? savedEvents.filter(event => inRange(event, range)) : savedEvents;
     const units = mathUnits(row, savedEvents, range, summarize);
-    let title = row.content_version === 'activity-v1' && ['sliding-puzzle', 'nonogram'].includes(row.activity)
+    const title = row.content_version === 'activity-v1' && ['sliding-puzzle', 'nonogram'].includes(row.activity)
       ? row.title.replace(/ · (\d+)$/, ' · $1×$1') : row.title;
-    if (row.activity === 'sliding-puzzle') {
-      title = title.replace(/^슬라이딩 퍼즐(?= · |$)/, activities.get(row.activity).label);
-      if (title === '8 퍼즐·15 퍼즐 · 3×3') title = '8 퍼즐 · 3×3';
-      if (title === '8 퍼즐·15 퍼즐 · 4×4') title = '15 퍼즐 · 4×4';
-    }
     return {
       id: row.id, activity: row.activity, domain: activities.get(row.activity)?.domain,
       contentKey: row.content_key, contentVersion: row.content_version, title, href: row.href,
