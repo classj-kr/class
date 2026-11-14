@@ -38,7 +38,17 @@ const REPORT_ACTIVITY_SQL = `
     OR (${CHECK_DRAFT_SQL}) AND s.updated_at >= $5::date::timestamp AT TIME ZONE 'Asia/Seoul'
       AND s.updated_at < ($6::date + 1)::timestamp AT TIME ZONE 'Asia/Seoul')`;
 
+function distinctImportedEvents(events) {
+  const seen=new Set();
+  return events.filter(event=>{
+    if(event.kind!=='activity' || !event.snapshot?.imported) return true;
+    const key=JSON.stringify([event.session_id,event.recorded_at,event.question_key,event.snapshot]);
+    if(seen.has(key)) return false;
+    seen.add(key);return true;
+  });
+}
 function summarize(events) {
+  events=distinctImportedEvents(events);
   const answers = events.filter(e => e.kind === 'answer');
   const first = answers.filter(e => e.attempt_number === 1);
   const scored = first.filter(e => e.correct !== null);
@@ -100,7 +110,7 @@ function createLearningRecords({ pool, requireUser, requireTeacher, requireDatab
       startedAt: row.started_at, updatedAt: row.updated_at, completedAt: row.completed_at,
       summary: summarize(events),
       ...(units ? { units } : {}),
-      ...(detail ? { checkpoint: row.checkpoint, events: events.map(e => ({
+      ...(detail ? { checkpoint: row.checkpoint, events: distinctImportedEvents(events).map(e => ({
         id: String(e.id), kind: e.kind, questionKey: e.question_key, response: e.response, snapshot: e.snapshot,
         correct: e.correct, scoringSource: e.scoring_source, attemptNumber: e.attempt_number,
         durationMs: e.duration_ms, recordedAt: e.recorded_at

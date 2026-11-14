@@ -105,6 +105,14 @@ async function main(){
     assert.equal((await h.pool.query('SELECT COUNT(*)::int AS n FROM learning_record_events')).rows[0].n,eventsBeforeImport+1,'projection upgrades preserve historical evidence exactly once');
     assert.equal((await report('&period=all')).sessions.filter(s=>s.activity==='nonogram').length,1);
     assert.equal((await report()).sessions.filter(s=>s.activity==='nonogram').length,0);
+    // Even a snapshot replayed by an earlier deployment is one historical fact.
+    const importedRow=(await report('&period=all')).sessions.find(s=>s.activity==='nonogram');
+    await h.pool.query(`INSERT INTO learning_record_events(session_id,kind,question_key,response,snapshot,correct,scoring_source,attempt_number,recorded_at)
+      SELECT session_id,kind,question_key,response,snapshot,correct,scoring_source,attempt_number+1,recorded_at
+      FROM learning_record_events WHERE session_id=$1`,[importedRow.id]);
+    const detail=await (await fetch(h.base+'/api/learning-records/teacher/sessions/'+importedRow.id,{headers:{'x-test-user':'3'}})).json();
+    assert.equal(detail.session.events.length,1);assert.equal(detail.session.summary.activityCount,1);
+    assert.equal((await report('&period=all')).sessions.find(s=>s.id===importedRow.id).summary.activityCount,1);
     console.log('PASS source reports: legacy timestamps, meaningful saved work, idempotence, preference exclusion, school isolation, game participation/completion, first answer/retry preservation.');
   }finally{await h.close();}
 }
