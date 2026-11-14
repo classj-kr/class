@@ -7,16 +7,19 @@ function raw(pieces,x,y) {const s=fixture(pieces);return R.targets(s.board,sq(x,
 function move(s,fx,fy,tx,ty) {const a=R.play(s,{from:sq(fx,fy),to:sq(tx,ty)});assert.equal(a.ok,true,a.error);return a.state;}
 const matePieces=[["cK",4,8],["hK",4,0],["cR",3,2],["cR",5,3],["cP",4,4]];
 
-test("third occurrence is blocked at 30 points but allowed below 30",()=>{
+test("third repeated move is blocked at 30 points independent of board repetition",()=>{
   let state=R.initial();
   const request=R.boardMoves(state).find(move=>!move.capture);
-  const next=R.advance(state,request);
-  const history=[{key:R.key(next)},{key:R.key(next)}];
+  const reverse={...request,from:request.to,to:request.from};
+  const history=[request,reverse,request,reverse].map(move=>({move}));
   state={...state,history};
   assert.ok(!R.actions(state).some(move=>R.same(move,request)));
   assert.match(R.play(state,request).error,/다른 수/);
-  assert.equal(R.repeatsForbidden(["cR","cR","cP","cP"],R.key(next),history),true);
-  assert.equal(R.repeatsForbidden(["cR","cR","cA"],R.key(next),history),false);
+  assert.equal(R.repeatsForbidden(["cR","cR","cP","cP"],request,history),true);
+  assert.equal(R.repeatsForbidden(["cR","cR","cA"],request,history),false);
+  assert.equal(R.repeatsForbidden(state.board,request,[...history,{move:{...request,to:80}}]),false);
+  const key=R.key(R.advance(state,request));
+  assert.equal(R.repeatsForbidden(state.board,request,[{key},{key}]),false);
 });
 
 test("all sixteen formations have 32 pieces and each side's own orientation",()=>{

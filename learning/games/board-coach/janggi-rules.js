@@ -126,14 +126,26 @@
     const board=state.board.slice();board[move.to]=board[move.from];board[move.from]=null;return board;
   }
   const POINTS = {R:13,C:7,H:5,E:3,A:3,P:2,K:0};
-  function repeatsForbidden(board, nextKey, history) {
-    if(history.filter(entry=>entry.key===nextKey).length<2)return false;
+  function repeatsForbidden(board, move, history) {
+    if(move.kind || move.capture || !move.piece)return false;
+    let repeats=0;
+    let returning=true;
+    for(let i=history.length-1;i>=0;i--){
+      const previous=history[i].move;
+      if(previous?.capture)break;
+      if(!previous || previous.kind || previous.piece?.[0]!==move.piece[0])continue;
+      if(previous.piece!==move.piece)break;
+      if(previous.from!==(returning?move.to:move.from)||previous.to!==(returning?move.from:move.to))break;
+      if(!returning)repeats++;
+      returning=!returning;
+    }
+    if(repeats<2)return false;
     const totals={c:0,h:0};
     for(const piece of board) if(piece) totals[piece[0]]+=POINTS[piece[1]];
     return totals.c>=30||totals.h>=30;
   }
-  function blockedMove(state, move, board=movedBoard(state,move)) {
-    return !move.kind && !state.board[move.to] && repeatsForbidden(board,key({board,turn:other(state.turn)}),state.history);
+  function blockedMove(state, move) {
+    return repeatsForbidden(state.board,{...move,piece:state.board[move.from],capture:state.board[move.to]},state.history);
   }
   function boardMoves(state) {
     const out=[],breakFacing=facing(state);
@@ -142,7 +154,7 @@
       for(const to of targets(state.board,from)) {
         if(state.board[to]?.[1]==="K")continue;
         const move={from,to,piece,capture:state.board[to]}, next={...state,board:movedBoard(state,{from,to})};
-        if(!inCheck(next,state.turn)&&(!breakFacing||!facing(next))&&!blockedMove(state,move,next.board))out.push(move);
+        if(!inCheck(next,state.turn)&&(!breakFacing||!facing(next))&&!blockedMove(state,move))out.push(move);
       }
     }
     return out;
@@ -192,7 +204,7 @@
     if(status(state).ended)return {ok:false,error:"끝난 대국입니다."};
     const move=actions(state).find(m=>same(m,request));
     if(!move)return {ok:false,error:!request.kind&&state.board[request.from]?.[0]===state.turn&&blockedMove(state,request)
-      ?"같은 판이 세 번째 됩니다. 다른 수를 두세요.":"그곳으로는 둘 수 없습니다."};
+      ?"같은 이동을 세 번째 반복할 수 없습니다. 다른 수를 두세요.":"그곳으로는 둘 수 없습니다."};
     const next=advance(state,move),result=status(next);if(result.ended)next.result=result;
     return {ok:true,state:next,move};
   }
