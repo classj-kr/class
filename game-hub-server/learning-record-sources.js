@@ -108,6 +108,13 @@ function createActivityWriter({ pool, membershipSql }) {
       let row = (await db.query(`SELECT * FROM learning_record_sessions WHERE user_id=$1 AND activity=$2 AND content_key=$3
         AND content_version='activity-v1' AND school_id=$4 AND academic_year=$5 AND grade=$6 AND class_number=$7 ORDER BY started_at LIMIT 1`,
       [user.id, entry.activity, contentKey, m.school_id, m.academic_year, m.grade, m.class_number])).rows[0];
+      // Historical recovery cannot append an older/equal snapshot over evidence
+      // already captured for that source/day (also safe across projection upgrades).
+      if (row && options.imported && options.sourceKey && recordedAt <= new Date(row.updated_at)) {
+        await db.query(`INSERT INTO learning_record_source_state(user_id,source_key,fingerprint) VALUES($1,$2,$3)
+          ON CONFLICT(user_id,source_key) DO UPDATE SET fingerprint=EXCLUDED.fingerprint`, [user.id,options.sourceKey,options.fingerprint]);
+        await db.query('COMMIT'); return row.id;
+      }
       if (!row) row = (await db.query(`INSERT INTO learning_record_sessions
         (id,user_id,school_id,academic_year,grade,class_number,student_number,student_name,activity,content_key,content_version,title,href,started_at,updated_at)
         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'activity-v1',$11,$12,$13,$13) RETURNING *`,

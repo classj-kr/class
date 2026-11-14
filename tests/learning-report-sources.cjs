@@ -95,9 +95,14 @@ async function main(){
     }
     // Restart recovery imports previously saved account data without rewriting its date.
     const countBeforeImport=(await report('&period=all')).sessions.length;
+    const eventsBeforeImport=(await h.pool.query('SELECT COUNT(*)::int AS n FROM learning_record_events')).rows[0].n;
     await h.pool.query('INSERT INTO user_storage(user_id,app,item,value,updated_at) VALUES($1,$2,$3,$4::jsonb,$5)',[1,'nonogram','best-5',JSON.stringify({time:54}),savedAt]);
     await h.feature.importStored();await h.feature.importStored();
     assert.equal((await report('&period=all')).sessions.length,countBeforeImport+1,'JSONB key ordering and restart do not duplicate existing activity');
+    assert.equal((await h.pool.query('SELECT COUNT(*)::int AS n FROM learning_record_events')).rows[0].n,eventsBeforeImport+1,'recovery never duplicates snapshot events');
+    await h.pool.query("UPDATE learning_record_source_state SET fingerprint='previous-projection'");
+    await h.feature.importStored();
+    assert.equal((await h.pool.query('SELECT COUNT(*)::int AS n FROM learning_record_events')).rows[0].n,eventsBeforeImport+1,'projection upgrades preserve historical evidence exactly once');
     assert.equal((await report('&period=all')).sessions.filter(s=>s.activity==='nonogram').length,1);
     assert.equal((await report()).sessions.filter(s=>s.activity==='nonogram').length,0);
     console.log('PASS source reports: legacy timestamps, meaningful saved work, idempotence, preference exclusion, school isolation, game participation/completion, first answer/retry preservation.');
