@@ -5,7 +5,7 @@ const { PGlite } = require('../game-hub-server/node_modules/@electric-sql/pglite
 const express = require('../game-hub-server/node_modules/express');
 const { createLearningRecords } = require('../game-hub-server/learning-records');
 
-async function harness({ teacherRegistrations: registrations } = {}) {
+async function harness({ teacherRegistrations: registrations, withStorage = false } = {}) {
   const db = new PGlite();
   // Windows supplies the local KST zone to PGlite by default. Use UTC so that
   // date filters cannot accidentally depend on the database session time zone.
@@ -35,11 +35,16 @@ async function harness({ teacherRegistrations: registrations } = {}) {
     teacherRegistrations, requireDatabase() {}, HttpError, asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next) });
   await feature.initialize(); await feature.initialize();
   const app = express(); app.use(express.json({ limit: '512kb' })); app.use('/api/learning-records', feature.router);
+  if (withStorage) {
+    const storage = require('../game-hub-server/user-storage').createUserStorage({pool,requireUser,requireDatabase(){},HttpError,
+      asyncRoute:fn=>(req,res,next)=>Promise.resolve(fn(req,res,next)).catch(next),onSave:feature.captureStorage});
+    await storage.initialize();app.use('/api/me/storage',storage.router);
+  }
   app.use(express.static(require('node:path').resolve(__dirname, '../apps')));
   app.use(express.static(require('node:path').resolve(__dirname, '..')));
   app.use((err, req, res, next) => { if (!err.status) console.error(err); res.status(err.status || 500).json({ code: err.code, message: err.message }); });
   const server = await new Promise(resolve => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
-  return { db, pool, base: `http://127.0.0.1:${server.address().port}`, close: async () => { await new Promise(resolve => server.close(resolve)); await db.close(); } };
+  return { db, pool, feature, base: `http://127.0.0.1:${server.address().port}`, close: async () => { await new Promise(resolve => server.close(resolve)); await db.close(); } };
 }
 async function main() {
   const h = await harness();

@@ -39,6 +39,10 @@
   let unitId = query.get('unit');
   let mode = query.get('mode') === 'practice' ? 'practice' : 'words';
   let leavePractice = null;
+  const recordActivity = (unit, event) => window.LearningActivity?.record({
+    activity:'curriculum-vocabulary', context:`${term}:${subject}:${unit.id}`,
+    title:`교과 어휘 · ${termName(term)} ${subject} · ${unit.title}`, ...event
+  });
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -332,7 +336,8 @@
     function select(i, focus) {
       stopScene();
       controls.forEach((control, j) => control.setAttribute('aria-pressed', String(i === j)));
-      holder.replaceChildren(wordPageOf(unit, i, (n) => { select(n); chips.scrollIntoView({ block: 'nearest' }); controls[n].focus({ preventScroll: true }); }));
+      holder.replaceChildren(wordPageOf(unit, i, (n) => { select(n, true); chips.scrollIntoView({ block: 'nearest' }); controls[n].focus({ preventScroll: true }); }));
+      if (focus) recordActivity(unit,{kind:'read',questionKey:unit.words[i].w,response:'낱말 읽기',snapshot:{title:unit.words[i].w}});
       if (focus) controls[i].focus({ preventScroll: true });
     }
     view.append(chips, holder);
@@ -466,9 +471,10 @@
   function practiceViewOf(unit) {
     const view = element('div', '', 'practice');
     const pool = poolFor(unit);
-    let queue, total, done, missed, firstTry;
+    let queue, total, done, missed, firstTry, recordRound;
 
     function start() {
+      recordRound = `${term}:${subject}:${unit.id}:${crypto.randomUUID()}`;
       queue = questionsFor(unit, pool);
       total = queue.length;
       done = 0;
@@ -561,6 +567,9 @@
       let tried = false;
       function answer(option) {
         const chosen = buttons[options.indexOf(option)];
+        if (chosen.disabled) return;
+        recordActivity(unit,{context:recordRound,kind:'answer',questionKey:word.w,response:option.label,correct:option.right,
+          progress:done,total,snapshot:{prompt:heading + ' ' + prompt.textContent,choices:options.map(o=>o.label)}});
         if (!option.right) {
           chosen.classList.add('wrong');
           chosen.disabled = true;
@@ -609,6 +618,8 @@
     }
 
     function finish() {
+      recordActivity(unit,{context:recordRound,kind:'activity',questionKey:'completed',response:'단원 연습 완료',
+        progress:total,total,complete:true,snapshot:{summary:`단원 연습 ${total}문항 완료`}});
       const end = element('section', '', 'finish');
       end.append(element('p', `처음에 맞힌 문제 ${firstTry} / ${total}`, 'score'));
       if (missed.size) {

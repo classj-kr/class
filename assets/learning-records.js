@@ -35,6 +35,7 @@
     if (summary.retryCount) parts.push(`다시 풀이 ${summary.retryCount}회`);
     if (summary.readCount) parts.push(`열어 본 부분 ${summary.readCount}개`);
     if (summary.selfAssessments) parts.push(`스스로 점검 ${summary.selfAssessments}회`);
+    if (summary.activityCount) parts.push(summary.activitySummary || `참여 기록 ${summary.activityCount}건`);
     return parts.join(' · ') || '응답 없음';
   }
   // The same unit records feed the pupil's history and the teacher's report.

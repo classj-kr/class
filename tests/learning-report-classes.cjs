@@ -90,7 +90,7 @@ async function main() {
     await refreshed(() => page.evaluate(() => window.dispatchEvent(new Event('focus'))));
     assert.deepEqual(await options(), ['10:2026:4:1']);
     assert.equal(await page.locator('#classSelect').isEnabled(), true);
-    assert.equal(await page.locator('#activitySelect optgroup').count(), 5, 'refresh does not duplicate activity filters');
+    assert.equal(await page.locator('#activitySelect optgroup').count(), new Set(require('../assets/learning-record-catalog').map(row=>row.domain)).size, 'refresh does not duplicate activity filters');
     assert.equal((await request(`/teacher/sessions/${historical.id}`)).session.events.length, 1);
     assert.deepEqual(errors, []);
     console.log('PASS report classes: current roster only, inactive/empty classes hidden, new/unlinked/legacy pupils, school/year/homeroom scope, history preserved, refresh/return updates, selection and period retention, empty roster recovery.');

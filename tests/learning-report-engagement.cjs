@@ -34,7 +34,9 @@ async function main() {
     await save(empty.find(s => s.activity === 'csat-math'), [], true);
     assert.equal((await report()).sessions.length, 0, 'opening, changing filters and finishing empty sessions do not count');
     assert.equal((await report('&period=all')).sessions.length, 0, 'all-period reports also exclude opens');
-    assert.equal((await request('/sessions', null, 5)).sessions.length, catalog.length, 'resumable checkpoints are preserved');
+    let historyCount=0,offset=0;
+    do {const page=await request('/sessions?offset='+offset,null,5);historyCount+=page.sessions.length;offset=page.nextOffset;} while(offset!=null);
+    assert.equal(historyCount, catalog.length, 'resumable checkpoints are preserved across history pages');
 
     // Filter before LIMIT: a large pile of empty opens must not break today's
     // report or consume whole-period pages ahead of actual activity.

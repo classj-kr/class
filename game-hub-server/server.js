@@ -29,6 +29,7 @@ const { createTypingRace } = require("./typing-race");
 const { createKoreanRace } = require("./korean-race");
 const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform, normalizeAvatarKey } = require("./classroom-platform");
+const { createGameActivityRecorder } = require('./game-activity-records');
 const { createMuseumPresence } = require("./museum-presence");
 const { createParkPresence } = require("./park-presence");
 const { GAME_PAGE_ALIASES } = require("./home-content-paths");
@@ -919,6 +920,7 @@ function removeRoom(key) {
 }
 
 function loveLetterBroadcast(room) {
+  void recordGameActivity.finish(room, room?.loveletter);
   if (!room?.loveletter) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -949,6 +951,7 @@ function scheduleLoveLetterTimeout(room) {
 }
 
 function clueBroadcast(room) {
+  void recordGameActivity.finish(room, room?.clue);
   if (!room?.clue) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -963,6 +966,7 @@ function clueError(socket, message) {
 }
 
 function lastCardBroadcast(room) {
+  void recordGameActivity.finish(room, room?.lastcard);
   if (!room?.lastcard) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -994,6 +998,7 @@ function scheduleLastCardTimeout(room) {
 }
 
 function bomb77Broadcast(room) {
+  void recordGameActivity.finish(room, room?.bomb77);
   if (!room?.bomb77) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1027,6 +1032,7 @@ function scheduleBomb77Timeout(room) {
 }
 
 function rummikubBroadcast(room) {
+  void recordGameActivity.finish(room, room?.rummikub);
   if (!room?.rummikub) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1058,6 +1064,7 @@ function scheduleRummikubTimeout(room) {
 }
 
 function beanTradingBroadcast(room) {
+  void recordGameActivity.finish(room, room?.beantrading);
   if (!room?.beantrading) return;
   for (const [id, client] of room.clients) {
     safeSend(client, { type: "BEANTRADING_STATE", state: BeanTrading.stateFor(room.beantrading, id) });
@@ -1074,6 +1081,7 @@ function beanTradingBroadcast(room) {
 }
 
 function gemGuildBroadcast(room) {
+  void recordGameActivity.finish(room, room?.gemguild);
   if (!room?.gemguild) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1089,6 +1097,7 @@ function gemGuildError(socket, message) {
 }
 
 function cityChaseBroadcast(room) {
+  void recordGameActivity.finish(room, room?.citychase);
   if (!room?.citychase) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1118,6 +1127,7 @@ function scheduleGemGuildTimeout(room) {
 }
 
 function kingdomTrailsBroadcast(room) {
+  void recordGameActivity.finish(room, room?.kingdomtrails);
   if (!room?.kingdomtrails) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1148,6 +1158,7 @@ function scheduleKingdomTrailsTimeout(room) {
 }
 
 function blokusBroadcast(room) {
+  void recordGameActivity.finish(room, room?.blokus);
   if (!room?.blokus) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1178,6 +1189,7 @@ function scheduleBlokusTimeout(room) {
 }
 
 function chessBroadcast(room) {
+  void recordGameActivity.finish(room, room?.chess);
   if (!room?.chess) return;
   const now = Date.now();
   for (const [id, client] of room.clients) {
@@ -1212,6 +1224,7 @@ function scheduleChessTimeout(room) {
 }
 
 function honeycombBroadcast(room) {
+  void recordGameActivity.finish(room, room?.honeycomb);
   if (!room?.honeycomb) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1243,6 +1256,7 @@ function scheduleHoneycombTimeout(room) {
 }
 
 function codenamesBroadcast(room) {
+  void recordGameActivity.finish(room, room?.codenames);
   if (!room?.codenames) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1273,6 +1287,7 @@ function scheduleCodenamesTimeout(room) {
 }
 
 function dobbleBroadcast(room) {
+  void recordGameActivity.finish(room, room?.dobble);
   if (!room?.dobble) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1319,6 +1334,7 @@ function expeditionSchedule(room) {
 }
 
 function expeditionBroadcast(room) {
+  void recordGameActivity.finish(room, room?.expedition);
   if (!room?.expedition) return;
   expeditionSchedule(room);
   for (const [id, client] of room.clients) {
@@ -1334,6 +1350,7 @@ function expeditionError(socket, message) {
 }
 
 function drawRelayBroadcast(room) {
+  void recordGameActivity.finish(room, room?.drawrelay);
   if (!room?.drawrelay) return;
   for (const [id, client] of room.clients) {
     safeSend(client, {
@@ -1816,6 +1833,7 @@ function avalonPublicState(room) {
 }
 
 function avalonBroadcast(room) {
+  void recordGameActivity.finish(room, room?.avalon);
   const payload = { type: "AVALON_STATE", state: avalonPublicState(room) };
   for (const client of room.clients.values()) safeSend(client, payload);
   scheduleAvalonTimeout(room);
@@ -2070,6 +2088,7 @@ server.on("upgrade", (request, socket, head) => {
   wss.handleUpgrade(request, socket, head, client => wss.emit("connection", client, request));
 });
 
+const recordGameActivity = createGameActivityRecorder((request, entry) => classroomPlatform.recordLearningActivity(request, entry));
 wss.on("connection", (socket, request) => {
   let playerId = crypto.randomUUID();
   const globalContentLockBypass = classroomPlatform.canBypassGlobalContentLock(request).catch(error => {
@@ -3526,6 +3545,7 @@ wss.on("connection", (socket, request) => {
         lastCardError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       lastCardBroadcast(room);
       return;
     }
@@ -3559,6 +3579,7 @@ wss.on("connection", (socket, request) => {
         bomb77Error(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       bomb77Broadcast(room);
       return;
     }
@@ -3608,6 +3629,7 @@ wss.on("connection", (socket, request) => {
           }
         });
       }
+      void recordGameActivity(request, room, playerId, action, game);
       loveLetterBroadcast(room);
       return;
     }
@@ -3668,6 +3690,7 @@ wss.on("connection", (socket, request) => {
           }
         });
       }
+      void recordGameActivity(request, room, playerId, action, game);
       clueBroadcast(room);
       return;
     }
@@ -3717,6 +3740,7 @@ wss.on("connection", (socket, request) => {
         codenamesError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       codenamesBroadcast(room);
       return;
     }
@@ -3767,6 +3791,7 @@ wss.on("connection", (socket, request) => {
         if (action === "CLAIM") dobbleBroadcast(room);
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       dobbleBroadcast(room);
       return;
     }
@@ -3782,10 +3807,12 @@ wss.on("connection", (socket, request) => {
       if (action === "SETTINGS" && playerId === room.hostId && game.phase === "lobby") {
         game.settings = normalizeAvalonSettings(game.players.length, message.settings);
         game.settingsCustomized = true;
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       } else if (action === "RESET_RECOMMENDED" && playerId === room.hostId && game.phase === "lobby") {
         game.settings = recommendedAvalonSettings(game.players.length);
         game.settingsCustomized = false;
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       } else if (action === "START" && playerId === room.hostId && game.phase === "lobby") {
         if (game.players.length < 5) return safeSend(socket, { type: "ERROR", message: "게임 시작에는 최소 5명이 필요합니다." });
@@ -3806,6 +3833,7 @@ wss.on("connection", (socket, request) => {
         game.turnDeadline = Date.now() + AVALON_TURN_SECONDS * 1000;
         game.assassinId = game.players.find(p => p.role === "Assassin")?.id || null;
         game.players.forEach(p => safeSend(room.clients.get(p.id), { type: "AVALON_ROLE", info: avalonRoleInfo(game, p) }));
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       } else if (action === "PROPOSE" && game.phase === "team" && game.players[game.leaderIndex]?.id === playerId) {
         const team = Array.isArray(message.team) ? [...new Set(message.team.map(id => cleanToken(id, 60)))] : [];
@@ -3813,21 +3841,25 @@ wss.on("connection", (socket, request) => {
         if (team.length !== required || team.some(id => !game.players.some(p => p.id === id))) return safeSend(socket, { type: "ERROR", message: `원정대 ${required}명을 선택하세요.` });
         game.selectedTeam = team; game.proposalVotes = {}; game.phase = "proposalVote";
         game.turnDeadline = Date.now() + AVALON_TURN_SECONDS * 1000;
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       } else if (action === "PROPOSAL_VOTE" && game.phase === "proposalVote" && !(playerId in game.proposalVotes)) {
         game.proposalVotes[playerId] = !!message.approve;
         if (Object.keys(game.proposalVotes).length === game.players.length) avalonTallyProposal(room);
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       } else if (action === "QUEST_VOTE" && game.phase === "questVote" && game.selectedTeam.includes(playerId) && !(playerId in game.questVotes)) {
         const evil = ["Assassin", "Morgana", "Mordred", "Oberon", "Minion of Mordred"].includes(player.role);
         game.questVotes[playerId] = evil ? !!message.success : true;
         if (Object.keys(game.questVotes).length === game.selectedTeam.length) avalonTallyQuest(room);
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       } else if (action === "ASSASSINATE" && game.phase === "assassination" && playerId === game.assassinId) {
         const target = game.players.find(p => p.id === cleanToken(message.targetId, 60));
         if (!target) return;
         game.winner = target.role === "Merlin" ? "evil" : "good"; game.phase = "ended"; game.turnDeadline = null;
         avalonRevealRoles(room);
+        void recordGameActivity(request, room, playerId, action, game);
         avalonBroadcast(room);
       }
       return;
@@ -3883,6 +3915,7 @@ wss.on("connection", (socket, request) => {
         cityChaseError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       cityChaseBroadcast(room);
       return;
     }
@@ -3896,6 +3929,7 @@ wss.on("connection", (socket, request) => {
       const revision = room.beantrading.revision;
       const result = BeanTrading.act(room.beantrading, playerId, cleanToken(message.action, 30), message);
       if (!result.ok) safeSend(socket, { type: "BEANTRADING_ERROR", message: result.error });
+      if (result.ok) void recordGameActivity(request, room, playerId, cleanToken(message.action, 30), room.beantrading);
       if (result.ok || room.beantrading.revision !== revision) beanTradingBroadcast(room);
       return;
     }
@@ -3945,6 +3979,7 @@ wss.on("connection", (socket, request) => {
         gemGuildError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       gemGuildBroadcast(room);
       return;
     }
@@ -3986,6 +4021,7 @@ wss.on("connection", (socket, request) => {
         kingdomTrailsError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       kingdomTrailsBroadcast(room);
       return;
     }
@@ -4026,6 +4062,7 @@ wss.on("connection", (socket, request) => {
         rummikubError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       rummikubBroadcast(room);
       return;
     }
@@ -4070,6 +4107,7 @@ wss.on("connection", (socket, request) => {
         chessError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       chessBroadcast(room);
       return;
     }
@@ -4111,6 +4149,7 @@ wss.on("connection", (socket, request) => {
         blokusError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       blokusBroadcast(room);
       return;
     }
@@ -4152,6 +4191,7 @@ wss.on("connection", (socket, request) => {
         honeycombError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       honeycombBroadcast(room);
       return;
     }
@@ -4199,6 +4239,7 @@ wss.on("connection", (socket, request) => {
         expeditionError(socket, result.error || "행동을 처리하지 못했습니다.");
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       expeditionBroadcast(room);
       return;
     }
@@ -4240,6 +4281,7 @@ wss.on("connection", (socket, request) => {
         if (action === "START") drawRelayBroadcast(room);
         return;
       }
+      void recordGameActivity(request, room, playerId, action, game);
       drawRelayBroadcast(room);
       return;
     }

@@ -1,5 +1,6 @@
 (async () => {
   'use strict';
+  const activityRound = window.LearningActivity?.round('nonogram', () => '네모로직 · ' + `${n}×${n}`);
 
   const PUZZLES = {
     5: [
@@ -403,6 +404,7 @@
     activeHint = null;
     if (filled[r][c] === value) return false;
     filled[r][c] = value;
+    activityRound?.start();
     if (value) {
       if (marked[r][c]) marked[r][c] = false;
       startTimer();
@@ -535,6 +537,7 @@
   }
 
   function completePuzzle() {
+    activityRound?.finish(`퍼즐 완료 · ${n}×${n}`);
     if (completed) return;
     completed = true;
     stopTimer();
@@ -582,6 +585,7 @@
   }
 
   function resetRound() {
+    activityRound?.reset();
     endDrag();
     stopTimer();
     window.clearTimeout(completionRevealId);
