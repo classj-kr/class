@@ -947,7 +947,7 @@ function quizPage() {
         return `
         <div class="quiz-item${graded ? ' graded' : ''}" data-qindex="${i}">
             <p class="quiz-question">${i + 1}. ${item.q}</p>
-            <div class="quiz-choices${item.wide ? ' quiz-choices-stack' : ''}">
+            <div class="quiz-choices${item.wide ? ' quiz-choices-stack' : ''}" data-sfx-clicks="none" data-sfx-feedback="none">
                 ${QUIZ_ORDER[i].map(ci => `<button type="button" class="quiz-choice${cls(ci)}" data-choice="${ci}">${item.choices[ci]}</button>`).join('')}
             </div>
         </div>`;
@@ -1491,6 +1491,8 @@ paint();
       item.querySelectorAll('.quiz-choice').forEach(button => button.addEventListener('click', async () => {
         if (!hooks?.canAct() || item.classList.contains('graded')) return;
         const chosen = Number(button.dataset.choice), correct = chosen === q.answer;
+        if (correct) window.ClassGameSfx?.play('success');
+        else window.ClassGameSfx?.playFile('/assets/sound/sfx/story-quiz-squeak.ogg');
         if (correct) QUIZ_PICKED[qi] = chosen; else QUIZ_WRONG[qi].add(chosen);
         await hooks.answer({ kind: 'answer', questionKey: LANG + ':' + qi, response: q.choices[chosen], correct,
           snapshot: { prompt: q.q, choices: q.choices, language: LANG } });
