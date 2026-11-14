@@ -99,7 +99,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(var(--site-game-height, 100dvh) 
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-lobby-music" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="../board-coach/entry.css?v=2">
 <script src="../board-coach/entry.js?v=2" defer></script>
@@ -107,7 +107,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(var(--site-game-height, 100dvh) 
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
 </head>
 <body>
-<audio id="bgm" src="/learning/games/janggi/assets/sound/bgm.ogg" loop></audio>
+<audio id="bgm" src="/learning/games/janggi/assets/sound/bgm.ogg" data-music-lobby="lobby" loop></audio>
 <div class="shell">
 <section id="missingScreen" class="hidden"><h1 class="title">KOREAN CHESS</h1><div class="panel"><strong>이름이 없습니다.</strong><br>이름 변경은 메인 화면에서만 가능합니다.<div class="row"><button class="btn primary" type="button" onclick="location.href='../../../'">메인 화면으로</button></div><a class="coach-entry" href="../board-coach/coach.html?game=janggi">혼자 하기</a></div></section>
 <section id="lobby" class="hidden mp-lobby-compact" data-multiplayer-lobby>
@@ -136,27 +136,27 @@ body:has(#game:not(.hidden)) .shell{height:calc(var(--site-game-height, 100dvh) 
 <div id="lobbyGuide" class="lobby-guide">상대방을 기다리는 중입니다.</div>
 <p class="lobby-guide">방장은 초(선공), 참가자는 한(후공)입니다.</p>
 <div class="row mp-lobby-actions"><button id="startBtn" class="btn primary" type="button" disabled>WAITING FOR PLAYERS</button><button id="rulesBtnLobby" class="btn" type="button">Rules</button><button id="leaveBtn" class="btn" type="button">메인 화면으로</button></div>
-<div class="music"><b>음악</b><button id="mute1" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div>
+
 </section>
 <section id="game" class="hidden">
 <div class="gamehead"><div class="turnwrap"><div id="turnText" class="turn">대기 중</div><div id="turnClock" class="clock">00:30</div></div></div>
-<div class="gamebody"><div class="boardwrap"><div id="board" data-sfx-clicks="none" class="board janggi-board"></div></div><aside class="side"><div class="match-actions"><button class="btn danger" onclick="resign()">기권</button><button id="rematchBtn" class="btn" onclick="requestRematch()">재대국 요청</button><button id="rulesBtnGame" class="btn" type="button">Rules</button><button id="leaveBtnGame" class="btn" type="button">메인 화면으로</button></div><div id="gameAvatarPlayers" class="mp-compact-players"></div><h3>대국 상태</h3><div id="notice" class="notice">말을 선택하세요.</div><div class="capture-area"><div class="capture-card"><span class="capture-label">초가 잡은 말</span><div id="choCaptures" class="captures"></div></div><div class="capture-card"><span class="capture-label">한이 잡은 말</span><div id="hanCaptures" class="captures"></div></div></div><div id="log" class="log"></div><div class="music"><button id="mute2" class="btn" onclick="toggleMute()">음소거</button><div class="segments"><button class="seg" onclick="setVolume(1)"></button><button class="seg" onclick="setVolume(2)"></button><button class="seg" onclick="setVolume(3)"></button><button class="seg" onclick="setVolume(4)"></button><button class="seg" onclick="setVolume(5)"></button></div></div></aside></div>
+<div class="gamebody"><div class="boardwrap"><div id="board" data-sfx-clicks="none" class="board janggi-board"></div></div><aside class="side"><div class="match-actions"><button class="btn danger" onclick="resign()">기권</button><button id="rematchBtn" class="btn" onclick="requestRematch()">재대국 요청</button><button id="rulesBtnGame" class="btn" type="button">Rules</button><button id="leaveBtnGame" class="btn" type="button">메인 화면으로</button></div><div id="gameAvatarPlayers" class="mp-compact-players"></div><h3>대국 상태</h3><div id="notice" class="notice">말을 선택하세요.</div><div class="capture-area"><div class="capture-card"><span class="capture-label">초가 잡은 말</span><div id="choCaptures" class="captures"></div></div><div class="capture-card"><span class="capture-label">한이 잡은 말</span><div id="hanCaptures" class="captures"></div></div></div><div id="log" class="log"></div></aside></div>
 </section>
 </div>
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="box"><h2 id="modalTitle"></h2><div id="modalBody"></div><div class="actions"><button class="btn primary" onclick="closeModal()">확인</button></div></div></div>
 <script>
 "use strict";
-const $=id=>document.getElementById(id);const GAME_ID='janggi';let lobby=null,myId=null,myRole='host',players={},connected=false,roomCode='',selected=null,legalTargets=[],logs=[],musicStarted=false,volumeLevel=3,gameOver=false,rematchMine=false,rematchOther=false,turnTimerId=null,turnDeadline=0,opponentName='',formationSyncPending=false,lastAnimatedMoveSeq=0;
+const $=id=>document.getElementById(id);const GAME_ID='janggi';let lobby=null,myId=null,myRole='host',players={},connected=false,roomCode='',selected=null,legalTargets=[],logs=[],gameOver=false,rematchMine=false,rematchOther=false,turnTimerId=null,turnDeadline=0,opponentName='',formationSyncPending=false,lastAnimatedMoveSeq=0;
 const savedPlayerName=(()=>{const name=((window.CLASS_PLAYER_NAME || "")||'').trim();return /^[가-힣]{2,6}$/.test(name)?name:''})();
 function getPlayerName(){return savedPlayerName}
 function displayPlayerLabel(side){if(side===mySide())return getPlayerName();if(opponentName)return opponentName;return sideLabel(side)}
 let boardMotion=null;
 const state={pieces:[],turn:'cho',choFormation:'HEEH',hanFormation:'HEEH',timeLimit:30,started:false,winner:null,lastMove:null,lastCapture:null,endReason:null};
 const typeName={king:'왕',guard:'사',rook:'차',horse:'마',elephant:'상',cannon:'포',soldier:'졸'};
-window.addEventListener('DOMContentLoaded',initJanggiLobby);document.addEventListener('pointerdown',startMusic,{once:true});
+window.addEventListener('DOMContentLoaded',initJanggiLobby);
 function drawBoardLines(){const b=$('board');for(let x=0;x<9;x++){let l=document.createElement('div');l.className='gridline vline';l.style.left=`${5.55+x*11.11}%`;b.appendChild(l)}for(let y=0;y<10;y++){let l=document.createElement('div');l.className='gridline hline';l.style.top=`${5+y*10}%`;b.appendChild(l)}const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','palace-svg');svg.setAttribute('viewBox','0 0 8 9');svg.setAttribute('preserveAspectRatio','none');[[3,0,5,2],[5,0,3,2],[3,7,5,9],[5,7,3,9]].forEach(([x1,y1,x2,y2])=>{const line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',x1);line.setAttribute('y1',y1);line.setAttribute('x2',x2);line.setAttribute('y2',y2);svg.appendChild(line)});b.appendChild(svg)}
 function initJanggiLobby(){
- drawBoardLines();setVolume(3);const sub=document.querySelector('.sub');if(sub&&savedPlayerName)sub.textContent=`PLAYER · ${savedPlayerName} · 2명`;
+ drawBoardLines();const sub=document.querySelector('.sub');if(sub&&savedPlayerName)sub.textContent=`PLAYER · ${savedPlayerName} · 2명`;
  $('choFormation').addEventListener('change',syncFormationChoice);$('hanFormation').addEventListener('change',syncFormationChoice);
  lobby=ClassroomMultiplayerLobby.create({
   gameId:GAME_ID,initialMode:'guest',ids:{lobbyScreen:'lobby'},getPlayerName,maxPlayers:2,allowedPlayerCounts:[2],
@@ -250,7 +250,6 @@ ruleCard('외통수',ruleBoard(5,5,[['h',2,0,'車'],['h',0,4,'車'],['x',2,3],['
 ];
 showModal('',`<div class="rule-grid">${pieces.join('')}</div><div class="rule-grid">${palace.join('')}${states.join('')}</div><dl class="rule-list"><dt>학습 규칙</dt><dd>말의 이동 규칙에 맞으면 위험한 칸에도 갈 수 있습니다. 장군은 경고이며, 왕을 실제로 잡으면 이깁니다.</dd><dt>순서</dt><dd>방을 만든 사람이 초(楚)로 먼저 두고, 들어온 사람이 한(漢)으로 둡니다. 한 수씩 번갈아 둡니다.</dd><dt>차림</dt><dd>시작 전에 마·상 자리를 네 가지(마상마상·상마상마·마상상마·상마마상) 가운데 하나로 고릅니다.</dd><dt>이기기</dt><dd>상대 왕 잡기, 상대 기권, 상대가 둘 수 있는 수가 하나도 없음</dd><dt>시간</dt><dd>한 수 제한시간이 지나면 차례가 상대에게 넘어갑니다.</dd></dl>`)}
 function showModal(t,b){$('modalTitle').textContent=t;$('modalTitle').hidden=!t;$('modalBody').innerHTML=b;$('modal').classList.add('show')}function closeModal(){$('modal').classList.remove('show')}
-function startMusic(){let a=$('bgm');if(!a||musicStarted)return;a.volume=volumeLevel/5*.8;a.play().then(()=>musicStarted=true).catch(()=>{})}function setVolume(n){volumeLevel=n;let a=$('bgm');a.muted=false;a.volume=n/5*.8;document.querySelectorAll('.seg').forEach((e,i)=>e.classList.toggle('on',i%5<n));['mute1','mute2'].forEach(id=>{let b=$(id);if(b)b.textContent='음소거'});startMusic()}function toggleMute(){let a=$('bgm');startMusic();a.muted=!a.muted;['mute1','mute2'].forEach(id=>{let b=$(id);if(b)b.textContent=a.muted?'음소거 해제':'음소거'})}
 function playSelect(){window.ClassGameSfx?.play('select')}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 </script>
