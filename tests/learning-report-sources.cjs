@@ -79,7 +79,7 @@ async function main(){
     assert.equal((await submit(1,{...body,kind:'open'})).status,400);
     const examples=[
       ['handwriting','draft',{text:'가',cells:{trace:[[{points:[{x:0,y:0},{x:1,y:1}]}]],solo:[[]]}}],
-      ['korean-history','hanguksa-done',{q1:'right',q2:'wrong'}],
+      ['korean-history','hanguksa-done',{q10:'right',q2:'wrong'}],
       ['computer-literacy','computer-literacy:a01',{completed:true,score:3,updatedAt:new Date().toISOString()}],
       ['korea-map','classj-korea-geography-progress-v2',{total:3,correct:2,items:{}}],
       ['music-studio','practice',{date:today,count:1}],
@@ -94,8 +94,10 @@ async function main(){
       assert.equal(res.status,200,app);assert.ok((await report()).sessions.some(s=>s.activity===app),app+' storage API reaches reports');
     }
     // Restart recovery imports previously saved account data without rewriting its date.
+    const countBeforeImport=(await report('&period=all')).sessions.length;
     await h.pool.query('INSERT INTO user_storage(user_id,app,item,value,updated_at) VALUES($1,$2,$3,$4::jsonb,$5)',[1,'nonogram','best-5',JSON.stringify({time:54}),savedAt]);
     await h.feature.importStored();await h.feature.importStored();
+    assert.equal((await report('&period=all')).sessions.length,countBeforeImport+1,'JSONB key ordering and restart do not duplicate existing activity');
     assert.equal((await report('&period=all')).sessions.filter(s=>s.activity==='nonogram').length,1);
     assert.equal((await report()).sessions.filter(s=>s.activity==='nonogram').length,0);
     console.log('PASS source reports: legacy timestamps, meaningful saved work, idempotence, preference exclusion, school isolation, game participation/completion, first answer/retry preservation.');

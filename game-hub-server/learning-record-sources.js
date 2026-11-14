@@ -9,7 +9,11 @@ const SOURCE_APPS = ['typing', 'handwriting', 'korean-history', 'computer-litera
   'graph-studio', 'sliding-puzzle', 'nonogram', 'minesweeper'];
 const count = value => Number.isFinite(Number(value)) ? Math.max(0, Number(value)) : 0;
 const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
-const hash = value => crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
+// JSONB changes object-key order. Compare semantic content, so a server restart
+// or another device cannot turn an unchanged saved value into a new activity.
+const hash = value => crypto.createHash('sha256').update(JSON.stringify(value, (_key,row) =>
+  row && typeof row === 'object' && !Array.isArray(row)
+    ? Object.fromEntries(Object.keys(row).sort().map(key=>[key,row[key]])) : row)).digest('hex');
 
 function storageEvidence({ app, item, value }) {
   const rows = [], v = object(value), base = items.get(app);
@@ -32,7 +36,7 @@ function storageEvidence({ app, item, value }) {
     const written = cells.filter(cell => Array.isArray(cell) && cell.some(stroke => Array.isArray(stroke) ? stroke.length > 0 : stroke?.points?.length > 0)).length;
     add('writing', String(v.text || '').slice(0, 50), `${written}칸 쓰기`, { text: v.text, cells: v.cells }, written);
   } else if (app === 'korean-history' && item === 'hanguksa-done') {
-    const answers = Object.entries(v).filter(([, result]) => ['right', 'wrong'].includes(result));
+    const answers = Object.entries(v).filter(([, result]) => ['right', 'wrong'].includes(result)).sort(([a],[b])=>a.localeCompare(b));
     add('answers', '저장된 풀이', `풀이 ${answers.length}문항 · 현재 정답 ${answers.filter(([, r]) => r === 'right').length}문항`, answers, answers.length);
   } else if (app === 'computer-literacy' && item.startsWith('computer-literacy:') && v.completed === true) {
     add(item, item.split(':').at(-1), `차시 완료 · ${count(v.score)}문항 정답`, v, 1, true, v.updatedAt);
@@ -60,8 +64,9 @@ function storageEvidence({ app, item, value }) {
       .map(band => band?.points).filter(points => Array.isArray(points) && points.length >= 2);
     add('board', '도형 구성', `${bands.length}개 도형 구성`, bands, bands.length);
   } else if (app === 'number-models' && item === 'board') {
-    const scenes = Object.entries(object(v.scenes)).map(([mode, row]) => [mode, row?.counts, row?.example, row?.done]);
-    const changed = scenes.some(([mode, values, example, done]) => example || done || JSON.stringify(values) !== JSON.stringify(mode === 'whole' ? [0,1,2,3] : [1,2,3,0]));
+    const scenes = Object.entries(object(v.scenes)).sort(([a],[b])=>a.localeCompare(b)).map(([mode, row]) => [mode, row?.counts, row?.example, row?.done]);
+    const changed = Object.values(object(v.comparisons)).some(rows=>Array.isArray(rows) && rows.length > 0) ||
+      scenes.some(([mode, values, example, done]) => example || done || JSON.stringify(values) !== JSON.stringify(mode === 'whole' ? [0,1,2,3] : [1,2,3,0]));
     if (changed) add('board', '수 구성', '수 모형을 구성하고 저장함', { scenes, comparisons: v.comparisons });
   } else if (app === 'fraction-board' && item === 'board' && Array.isArray(v.cards)) {
     const cards = v.cards.filter(c => c && Array.isArray(c.cells)).map(c => ({ shape: c.shape, denominator: c.denominator, cells: c.cells }));
@@ -72,7 +77,7 @@ function storageEvidence({ app, item, value }) {
       ghosts:state.ghosts || [], analysis:state.analysis});
     const core = require('../learning/literacy-numeracy/math-tools/graph-studio/graph-core');
     const work = project(v);
-    if (JSON.stringify(work) !== JSON.stringify(project(core.initialState()))) add('current', v.title || '그래프 구성', `${v.functions.length}개 함수 탐구`, work);
+    if (hash(work) !== hash(project(core.initialState()))) add('current', v.title || '그래프 구성', `${v.functions.length}개 함수 탐구`, work);
   } else if (app === 'graph-studio' && item === 'scenes' && Array.isArray(value)) {
     for (const scene of value) if (scene?.id && scene.state) add(String(scene.id), scene.state.title || '그래프 구성', '그래프 작품 저장', scene.state, 1, false, scene.savedAt);
   }
