@@ -25,6 +25,15 @@
     const DEFAULT_SFX_LEVEL = Math.max(1, Math.round(DEFAULT_SFX_VOLUME * 5));
 
     const currentScript = document.currentScript;
+    // Games reserve a small, separate rail for site navigation and chat.
+    // The play surface scrolls below it, so fixed buttons never cover a move.
+    if (location.pathname.startsWith("/learning/games/")) {
+        document.documentElement.classList.add("site-game-controls");
+        const gameStyle = document.createElement("link");
+        gameStyle.rel = "stylesheet";
+        gameStyle.href = "/assets/game-controls.css?v=20261114-safe-controls";
+        document.head.appendChild(gameStyle);
+    }
     if (!document.querySelector("script[data-site-back-navigation]")) {
         const backScript = document.createElement("script");
         backScript.dataset.siteBackNavigation = "true";
@@ -60,7 +69,7 @@
         const stylesheetUrl = currentScript
             ? new URL("music-control.css", currentScript.src)
             : new URL("../../assets/sound/music-control.css", location.href);
-        stylesheetUrl.searchParams.set("v", "20261114-site-controls");
+        stylesheetUrl.searchParams.set("v", "20261114-safe-controls");
         stylesheet.href = stylesheetUrl.href;
         document.head.appendChild(stylesheet);
     }

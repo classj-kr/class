@@ -42,7 +42,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            min-height: var(--site-game-height, 100dvh);
             padding: 20px;
         }
 
@@ -863,7 +863,7 @@ textarea,
 
     .lobby-card {
         width: 100%;
-        min-height: 100dvh;
+        min-height: var(--site-game-height, 100dvh);
         height: auto;
         padding: 22px 18px max(28px, env(safe-area-inset-bottom));
         overflow: visible;
@@ -872,10 +872,10 @@ textarea,
     .tablet-landscape-hint { display:none !important; }
 
     .game-container {
-        width:100vw;
-        height:100dvh;
-        min-height:100dvh;
-        max-height:100dvh;
+        width:100%;
+        height:var(--site-game-height, 100dvh);
+        min-height:var(--site-game-height, 100dvh);
+        max-height:var(--site-game-height, 100dvh);
         padding:6px 7px max(6px, env(safe-area-inset-bottom));
         border:0;
         gap:5px;
@@ -883,7 +883,7 @@ textarea,
     }
 
     body:has(.game-container[style*="display: flex"]) {
-        height:100dvh;
+        height:var(--site-game-height, 100dvh);
         overflow:hidden;
     }
 
@@ -1009,11 +1009,11 @@ textarea,
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
-body:has(#game-container[style*="flex"]){height:100dvh;min-height:0;box-sizing:border-box;padding:8px}
-#game-container[style*="flex"]{height:calc(100dvh - 16px);min-height:0;max-width:1400px;padding:12px;gap:6px;box-sizing:border-box}
+body:has(#game-container[style*="flex"]){height:var(--site-game-height, 100dvh);min-height:0;box-sizing:border-box;padding:8px}
+#game-container[style*="flex"]{height:calc(var(--site-game-height, 100dvh) - 16px);min-height:0;max-width:1400px;padding:12px;gap:6px;box-sizing:border-box}
 #game-container .game-header,#game-container .scoreboard,#game-container>.music-control{flex-shrink:0;margin:0}
 #game-container .board-layout{flex:1;min-height:0;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:12px}
 #game-container .card-grid{height:100%;min-height:0;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;align-items:center}

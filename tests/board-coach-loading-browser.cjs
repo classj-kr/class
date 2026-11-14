@@ -38,7 +38,7 @@ async function main() {
         await page.route(`**/${controller}.js?*`, async route => { await held; await route.continue(); });
         await page.goto(`${url}?game=${game}`, { waitUntil: 'commit' });
         await page.waitForFunction(() => document.querySelector('#title') && document.documentElement.dataset.coachGame);
-        assert.equal(await page.title(), `${name} · AI와 배우기`);
+        assert.equal(await page.title(), `${name} · 혼자 하기`);
         assert.equal(await page.locator('#coachLoadingTitle').innerText(), `${name} AI 대전`);
         assert.equal(await page.locator('#coachLoading').isVisible(), true);
         assert.equal(await page.locator('#coachBack').getAttribute('href'), `../${game}/${game}`);

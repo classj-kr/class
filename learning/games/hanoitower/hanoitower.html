@@ -18,7 +18,7 @@
             justify-content: center; 
             margin: 0; 
             padding: 20px; 
-            min-height: 100vh;
+            min-height: var(--site-game-height, 100dvh);
             box-sizing: border-box;
         }
 
@@ -589,8 +589,8 @@ textarea,
     .game-container {
         width: 100%;
         max-width: none;
-        height: 100vh;
-        height: 100dvh;
+        height: var(--site-game-height, 100dvh);
+        height: var(--site-game-height, 100dvh);
         justify-content: flex-start;
         overflow: hidden;
     }
@@ -784,12 +784,12 @@ body{justify-content:flex-start;padding:8px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
-<script src="../../../assets/network/finisher-board.js"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 /* Keep the original controls-above-towers layout; do not stretch the poles. */
-body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; padding: 64px 12px 8px; justify-content: flex-start; overflow: auto; }
+body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-game-height, 100dvh); padding: 64px 12px 8px; justify-content: flex-start; overflow: auto; }
 #game-container { max-width: 900px; height: auto; min-height: 0; padding: 14px; overflow: visible; }
 #game-container .controls { margin: 0; padding: 8px; }
 #game-container .option-group { margin: 0 0 8px; gap: 10px; flex-wrap: wrap; }
@@ -849,7 +849,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
     </div>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>Start</button>
-        <button class="action-btn btn-start-action" type="button" onclick="showRules()">Rules</button>
+        <button data-game-rules class="action-btn btn-start-action" type="button" onclick="showRules()">Rules</button>
     </div>
     <div class="finishers-panel">
         <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
@@ -889,7 +889,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: 100dvh; pad
         </div>
         <button onclick="showHanoiHint()" style="margin-top: 5px; border-color: #ffd98a; color: #ffd98a;">💡 한 수 힌트</button>
         <button onclick="initGame()" style="margin-top: 5px;">RESET GAME</button>
-        <button onclick="showRules()" style="margin-top: 5px;">Rules</button>
+        <button data-game-rules onclick="showRules()" style="margin-top: 5px;">Rules</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
 

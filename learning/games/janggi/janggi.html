@@ -10,9 +10,9 @@
 :root{--bg:#090c12;--panel:#111722;--gold:#c6aa55;--gold2:#f0d77c;--red:#b9362f;--blue:#245d9b;--text:#eee6d2;--muted:#93a0b1;--wood:#d5a65c;--line:#3f2412}
 .latest-capture{grid-column:1/-1;color:#ffe1a1;font-size:13px;line-height:1.5;white-space:pre-line}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"Malgun Gothic",sans-serif;background:#080b10;color:var(--text)}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:14px;background:linear-gradient(rgba(5,8,12,.46),rgba(5,8,12,.62)),url('/learning/games/janggi/assets/images/background.webp') center/cover fixed}
+body{min-height:var(--site-game-height, 100dvh);display:flex;align-items:center;justify-content:center;padding:14px;background:linear-gradient(rgba(5,8,12,.46),rgba(5,8,12,.62)),url('/learning/games/janggi/assets/images/background.webp') center/cover fixed}
 button,input,select{font:inherit}.hidden{display:none!important}
-.shell{width:min(1100px,100%);background:linear-gradient(rgba(18,25,37,.88),rgba(8,13,20,.92)),url('../../../assets/images/mainbg2.webp') center/cover;border:2px solid #6b5520;box-shadow:0 20px 70px #000;padding:20px;min-height:min(760px,calc(100vh - 28px))}
+.shell{width:min(1100px,100%);background:linear-gradient(rgba(18,25,37,.88),rgba(8,13,20,.92)),url('../../../assets/images/mainbg2.webp') center/cover;border:2px solid #6b5520;box-shadow:0 20px 70px #000;padding:20px;min-height:min(760px,calc(var(--site-game-height, 100dvh) - 28px))}
 .title{text-align:center;color:var(--gold2);font:700 clamp(28px,5vw,44px) Georgia,serif;letter-spacing:4px;margin:4px 0 5px}.sub{text-align:center;color:#8d7a45;font-size:13px;letter-spacing:2px;margin-bottom:18px}
 .status{text-align:center;color:var(--muted);min-height:24px;margin-bottom:12px}.status.ok{color:#75d19a}.status.err{color:#e27c73}
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:700px;margin:auto}.tab,.btn{border:1px solid #6b5520;background:linear-gradient(#182130,#0c1119);color:var(--gold2);padding:10px 14px;cursor:pointer;font-weight:700}.tab.active,.btn.primary{background:linear-gradient(#ecd579,#a68835);color:#181207;border-color:#f1dc86}.btn.danger{background:#351716;color:#f4c6c0;border-color:#74352e}.btn:disabled{opacity:.4;cursor:not-allowed}
@@ -39,8 +39,8 @@ button,input,select{font:inherit}.hidden{display:none!important}
 
 /* Active janggi match: the board owns the full height; match status lives beside it. */
 @media (min-width:900px){
-body:has(#game:not(.hidden)){height:100dvh;min-height:0;align-items:flex-start;overflow:hidden;padding:6px}
-body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 12px);max-width:none;height:calc(100dvh - 12px);min-height:0;padding:8px;overflow:hidden}
+body:has(#game:not(.hidden)){height:var(--site-game-height, 100dvh);min-height:0;align-items:flex-start;overflow:hidden;padding:6px}
+body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 12px);max-width:none;height:calc(var(--site-game-height, 100dvh) - 12px);min-height:0;padding:8px;overflow:hidden}
 #game:not(.hidden){display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,20vw,300px);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"board head" "board side";gap:8px;height:100%}
 #game .gamebody{display:contents}
 #game .gamehead{grid-area:head;grid-template-columns:1fr;gap:4px;padding:0 56px 6px 0}
@@ -63,7 +63,7 @@ body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 12px);max-width:none;hei
 /* Portrait tablets and phones: show the board first, then status and controls. */
 @media (max-width:899px){
 body:has(#game:not(.hidden)){align-items:flex-start;padding:4px;overflow-x:hidden}
-body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 8px);max-width:none;min-height:calc(100dvh - 8px);padding:6px}
+body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 8px);max-width:none;min-height:calc(var(--site-game-height, 100dvh) - 8px);padding:6px}
 #game:not(.hidden){display:grid;grid-template-columns:1fr;grid-template-areas:"board" "head" "side";gap:8px}
 #game .gamebody{display:contents}
 #game .boardwrap{grid-area:board;width:100%;min-width:0}
@@ -71,11 +71,11 @@ body:has(#game:not(.hidden)) .shell{width:calc(100dvw - 8px);max-width:none;min-
 #game .gamehead{grid-area:head}
 #game .side{grid-area:side;width:100%;max-width:none;padding:8px}
 }
-.box{width:min(620px,100%);max-height:calc(100dvh - 40px);overflow:auto}
+.box{width:min(620px,100%);max-height:calc(var(--site-game-height, 100dvh) - 40px);overflow:auto}
 
 .rule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0 0 8px}.rule-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px;border:1px solid #bda969;border-radius:8px;background:#fff9e4}.rule-card p{margin:0;align-self:stretch;font-size:14px;line-height:1.5}.rule-board{max-width:100%;height:auto;background:#e3b56e;border:2px solid #6a3b18}.rule-board line{stroke:#6a3b18;stroke-width:1.2}.rb-piece{fill:#f1d49c;stroke:#6a3b18;stroke-width:2}.rb-hot{stroke:#d93e35;stroke-width:3.5}.rb-cho,.rb-han{font:900 17px Batang,"Noto Serif KR",serif;text-anchor:middle}.rb-cho{fill:#114e91}.rb-han{fill:#a51f19}.rb-dot{fill:#246fa7}.rb-x{stroke:#d93e35;stroke-width:3;stroke-linecap:round}.rule-list{margin:10px 0 0}.rule-list dt{margin-top:8px;font-weight:800}.rule-list dd{margin:2px 0 0}@media(max-width:420px){.rule-grid{grid-template-columns:1fr}}
-body:has(#game:not(.hidden)){padding:8px;min-height:100dvh;height:auto;overflow:visible}
-body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;padding:8px;overflow:visible}
+body:has(#game:not(.hidden)){padding:8px;min-height:var(--site-game-height, 100dvh);height:auto;overflow:visible}
+body:has(#game:not(.hidden)) .shell{height:calc(var(--site-game-height, 100dvh) - 16px);min-height:560px;padding:8px;overflow:visible}
 #game .boardwrap{container-type:size;display:grid;place-items:center;min-height:0}
 #game .board{width:min(600px,100cqw,90cqh);height:auto;aspect-ratio:9/10}
 #game .side .match-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex-shrink:0}
@@ -99,7 +99,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <link rel="stylesheet" href="../board-coach/entry.css?v=2">
 <script src="../board-coach/entry.js?v=2" defer></script>
@@ -109,7 +109,7 @@ body:has(#game:not(.hidden)) .shell{height:calc(100dvh - 16px);min-height:560px;
 <body>
 <audio id="bgm" src="/learning/games/janggi/assets/sound/bgm.ogg" loop></audio>
 <div class="shell">
-<section id="missingScreen" class="hidden"><h1 class="title">KOREAN CHESS</h1><div class="panel"><strong>이름이 없습니다.</strong><br>이름 변경은 메인 화면에서만 가능합니다.<div class="row"><button class="btn primary" type="button" onclick="location.href='../../../'">메인 화면으로</button></div><a class="coach-entry" href="../board-coach/coach.html?game=janggi">AI와 배우기</a></div></section>
+<section id="missingScreen" class="hidden"><h1 class="title">KOREAN CHESS</h1><div class="panel"><strong>이름이 없습니다.</strong><br>이름 변경은 메인 화면에서만 가능합니다.<div class="row"><button class="btn primary" type="button" onclick="location.href='../../../'">메인 화면으로</button></div><a class="coach-entry" href="../board-coach/coach.html?game=janggi">혼자 하기</a></div></section>
 <section id="lobby" class="hidden mp-lobby-compact" data-multiplayer-lobby>
 <h1 class="title">KOREAN CHESS</h1><div class="sub">장기 · 2명</div>
 <div class="mp-lobby-player-name">PLAYER · <strong id="savedName">-</strong></div>

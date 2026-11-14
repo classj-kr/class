@@ -28,10 +28,18 @@
         return records.map(record => `
             <div class="finisher-row">
                 <span class="finisher-time">${escapeHtml(record.time || "--:--")}</span>
-                <span class="finisher-name">${escapeHtml(record.name)}</span>
+                <span class="finisher-name">${escapeHtml(playerLabel(record))}</span>
                 <span class="finisher-difficulty">${escapeHtml(record.difficulty)}</span>
             </div>
         `).join("");
+    }
+
+    function playerLabel(record) {
+        const grade = Number(record.grade), classNumber = Number(record.classNumber);
+        const prefix = Number.isInteger(grade) && grade >= 1 && grade <= 12
+            && Number.isInteger(classNumber) && classNumber >= 1 && classNumber <= 30
+            ? `${grade}-${classNumber} ` : "";
+        return prefix + String(record.name || "");
     }
 
     function create({ gameId, getPlayerName, isValidPlayerName }) {

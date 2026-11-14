@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <script>if(new URLSearchParams(location.search).get('game')==='baduk')location.replace('baduk.html?game=baduk');</script>
-  <title>AI와 배우기</title>
+  <title>혼자 하기</title>
   <style>
     /* Keep the shared shell out of the first paint, even before external styles load. */
     html:not([data-coach-state="ready"]) body > :not(#coachLoading) { visibility: hidden !important; }
@@ -13,26 +13,26 @@
     #coachLoading a { display: inline-block; min-height: 48px; padding: 12px; color: #f0d77c; }
     #coachLoading [hidden], html[data-coach-state="ready"] #coachLoading { display: none; }
   </style>
-  <link rel="stylesheet" href="coach.css?v=10">
+  <link rel="stylesheet" href="coach.css?v=20261114-safe-controls">
   <link rel="stylesheet" href="../chess/board.css?v=2">
   <link rel="stylesheet" href="../omok/board.css?v=1">
   <link rel="stylesheet" href="../reversi/board.css?v=1">
-  <link rel="stylesheet" href="game-theme.css?v=3">
+  <link rel="stylesheet" href="game-theme.css?v=20261114-safe-controls">
   <link rel="stylesheet" href="../janggi/board.css?v=3">
-  <link rel="stylesheet" href="janggi-theme.css?v=20261101-edge-coordinates">
+  <link rel="stylesheet" href="janggi-theme.css?v=20261114-safe-controls">
   <script src="../../../assets/game-motion.js?v=20261006-capture" defer></script>
   <script src="../chess/motion.js?v=2" defer></script>
   <script src="coach-ui.js?v=8" defer></script>
-  <script src="rules.js?v=1" defer></script><script src="ai.js?v=11" defer></script><script src="coach.js?v=23" defer></script>
-  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=14" defer></script><script src="../chess/pieces.js?v=1" defer></script><script src="chess-pieces.js?v=2" defer></script><script src="chess-coach.js?v=19" defer></script>
-  <script src="../janggi/motion.js?v=2" defer></script><script src="janggi-rules.js?v=3" defer></script><script src="janggi-ai.js?v=18" defer></script><script src="janggi-coach.js?v=20261101-edge-coordinates" defer></script>
+  <script src="rules.js?v=1" defer></script><script src="ai.js?v=11" defer></script><script src="coach.js?v=20261114-solo" defer></script>
+  <script src="../chess/chess-rules.js?v=20261001-standard" defer></script><script src="chess-ai.js?v=14" defer></script><script src="../chess/pieces.js?v=1" defer></script><script src="chess-pieces.js?v=2" defer></script><script src="chess-coach.js?v=20261114-solo" defer></script>
+  <script src="../janggi/motion.js?v=2" defer></script><script src="janggi-rules.js?v=3" defer></script><script src="janggi-ai.js?v=18" defer></script><script src="janggi-coach.js?v=20261114-solo" defer></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" data-sfx-controls defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" data-sfx-controls defer></script>
 </head>
 <body class="board-coach">
   <div id="coachLoading" role="status" aria-live="polite"><div>
-    <h1 id="coachLoadingTitle">AI와 배우기</h1>
+    <h1 id="coachLoadingTitle">혼자 하기</h1>
     <p id="coachLoadingMessage">대국판을 준비하고 있어요.</p>
     <noscript><p>AI 대전을 하려면 브라우저의 자바스크립트를 켜 주세요.</p></noscript>
     <a id="coachReload" href="" hidden>다시 불러오기</a><a id="coachBack" href="../../../">게임으로 돌아가기</a>
@@ -45,7 +45,7 @@
       const game = Object.hasOwn(names, requested) ? requested : "reversi";
       const root = document.documentElement;
       root.dataset.coachGame = game;
-      document.title = `${names[game]} · AI와 배우기`;
+      document.title = `${names[game]} · 혼자 하기`;
       document.getElementById("coachLoadingTitle").textContent = `${names[game]} AI 대전`;
       document.getElementById("coachBack").href = `../${game}/${game}`;
       window.BoardCoachBoot = { ready() { root.dataset.coachState = "ready"; } };
@@ -57,7 +57,7 @@
       }, { once: true });
     })();
   </script>
-  <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">AI와 배우기</span><h1 id="title">AI와 배우기</h1></div><button id="newGame" type="button">새 대국</button></header>
+  <header class="topbar"><a id="backLink" class="quiet" href="../../../">← 게임으로</a><div><span class="eyebrow">혼자 하기</span><h1 id="title">혼자 하기</h1></div><button id="newGame" type="button">새 대국</button></header>
   <main class="layout">
     <section class="table panel" aria-label="학습 대국">
       <div class="matchbar"><strong id="turn" role="status">AI 레벨을 골라 시작하세요.</strong><span id="score"></span></div>
@@ -73,7 +73,8 @@
     </aside>
   </main>
   <dialog id="setup" aria-labelledby="setupTitle"><form id="setupForm">
-    <div class="section-title"><h2 id="setupTitle">AI와 배우기</h2><button id="closeSetup" class="quiet" type="button" aria-label="설정 닫기">닫기</button></div>
+    <div class="section-title"><h2 id="setupTitle">혼자 하기</h2><button id="closeSetup" class="quiet" type="button" aria-label="설정 닫기">닫기</button></div>
+    <p class="muted">컴퓨터와 연습해요. 내 실력에 맞는 레벨을 골라 주세요.</p>
     <fieldset class="level-options" aria-describedby="levelDescription"><legend>AI 레벨</legend>
       <label class="option"><input type="radio" name="level" value="beginner" aria-label="레벨 1" checked><span><strong>1</strong></span></label>
       <label class="option"><input type="radio" name="level" value="level2" aria-label="레벨 2"><span><strong>2</strong></span></label>

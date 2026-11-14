@@ -20,7 +20,7 @@ p { line-height: 1.65; }
 .topbar { max-width: 1440px; margin: 0 auto 12px; display: flex; align-items: center; gap: 14px; min-height: 60px; }
 .topbar > div { flex: 1; }
 .panel { background: #fffdf7; border: 1px solid #d3dccb; border-radius: 16px; padding: 18px; min-width: 0; }
-.layout { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 16px; max-width: 1440px; height: calc(100dvh - 108px); min-height: 480px; margin: auto; }
+.layout { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 16px; max-width: 1440px; height: calc(var(--site-game-height, 100dvh) - 108px); min-height: 480px; margin: auto; }
 .table { display: grid; grid-template-rows: auto minmax(0,1fr) auto; gap: 8px; padding: 12px; min-height: 0; }
 .matchbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 42px; padding: 0 6px; }
 #turn { font-size: 18px; }
@@ -79,7 +79,7 @@ p { line-height: 1.65; }
 #reviewList { display: grid; gap: 8px; margin: 12px 0; }
 #reviewList button { text-align: left; line-height: 1.5; font-size: 14px; }
 #reviewList strong { display: block; font-size: 16px; }
-dialog { border: 1px solid #c8d2bd; border-radius: 20px; color: inherit; background: #fffdf7; width: min(520px, calc(100% - 28px)); padding: 24px; max-height: calc(100dvh - 28px); }
+dialog { border: 1px solid #c8d2bd; border-radius: 20px; color: inherit; background: #fffdf7; width: min(520px, calc(100% - 28px)); padding: 24px; max-height: calc(var(--site-game-height, 100dvh) - 28px); }
 dialog::backdrop { background: #132c22b0; backdrop-filter: blur(3px); }
 fieldset { border: 0; margin: 18px 0; padding: 0; display: grid; gap: 8px; }
 legend { font-weight: 800; margin-bottom: 8px; }
@@ -127,5 +127,3 @@ legend { font-weight: 800; margin-bottom: 8px; }
 }
 
 /* Keep the sound control clear of the new-game button on narrow boards. */
-.board-coach .unified-music-control{top:auto;bottom:max(12px,env(safe-area-inset-bottom))}
-.board-coach .unified-music-control .unified-audio-panel{top:auto;bottom:56px}

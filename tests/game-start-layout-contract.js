@@ -31,8 +31,8 @@ for (const [file, label] of targets) {
 const nonogram = fs.readFileSync(path.join(root, "learning/games/nonogram/styles.css"), "utf8");
 assert.match(
     nonogram,
-    /\.page-shell\s*\{[^}]*min-height:\s*100dvh;[^}]*align-items:\s*center;/,
-    "Nonogram's centered desktop start screen must remain bounded to the visible viewport.",
+    /\.page-shell\s*\{[^}]*min-height:\s*var\(--site-game-height,\s*100dvh\);[^}]*align-items:\s*center;/,
+    "Nonogram's start screen must use the space below the shared controls, with a full-height fallback.",
 );
 
 const hanoi = fs.readFileSync(path.join(root, "learning/games/hanoitower/hanoitower.html"), "utf8");

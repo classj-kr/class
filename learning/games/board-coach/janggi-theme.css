@@ -4,7 +4,7 @@ body.janggi-coach {
   --gold: #f0d77c;
   color: #eee6d2;
   font-family: "Malgun Gothic", sans-serif;
-  min-height: 100dvh;
+  min-height: var(--site-game-height, 100dvh);
   padding: 8px;
   background: linear-gradient(rgba(5,8,12,.46), rgba(5,8,12,.62)),
     url('../janggi/assets/images/background.webp') center / cover fixed;
@@ -14,7 +14,7 @@ body.janggi-coach {
   --coach-side: clamp(260px, 25vw, 300px);
   width: min(100%, calc(90dvh + var(--coach-side)));
   max-width: none;
-  height: calc(100dvh - 16px);
+  height: calc(var(--site-game-height, 100dvh) - 16px);
   min-height: 560px;
   grid-template-columns: minmax(0, 1fr) var(--coach-side);
   gap: 12px;
@@ -192,7 +192,7 @@ body.janggi-coach {
   /* The site back control stays above the board, including portrait tablets. */
   body.janggi-coach { padding: 52px 6px 6px; }
   .janggi-coach .layout { height: auto; min-height: 0; grid-template-columns: 1fr; padding: 8px; gap: 12px; }
-  .janggi-coach .board-viewport { height: min(calc((100vw - 32px) * 10 / 9), calc(100dvh - 78px)); }
+  .janggi-coach .board-viewport { height: min(calc((100vw - 32px) * 10 / 9), calc(var(--site-game-height, 100dvh) - 78px)); }
   .janggi-coach .sidebar { overflow: visible; width: 100%; margin: auto; }
   .janggi-coach .sidebar > .explanation { order: 0; }
   .janggi-coach .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }

@@ -10,7 +10,7 @@
   let motion=null,moving=false;
   const escape=text=>String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const endLabels={checkmate:"체크메이트",stalemate:"스테일메이트", "insufficient-material":"메이트할 기물 부족",threefold:"같은 판 3회",fivefold:"같은 판 5회","fifty-move":"50수 규칙","seventy-five-move":"75수 규칙",resign:"기권"};
-  document.title="체스 · AI와 배우기"; $("title").textContent="체스"; $("backLink").href="../chess/chess";
+  document.title="체스 · 혼자 하기"; $("title").textContent="체스"; $("backLink").href="../chess/chess";
   $("principle").textContent="중앙 칸을 차지하고, 나이트와 비숍을 꺼내며, 왕을 안전하게 지키세요.";
   document.querySelector(".color-options legend").textContent="내 말 색깔";
   document.querySelector(".color-options input[value='1'] + span strong").textContent="흰색";

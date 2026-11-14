@@ -103,7 +103,7 @@
 }
 @media (max-width: 480px) {
     .modal-overlay:has(.nim-guide) { padding-top: 64px; }
-    .modal-box:has(.nim-guide) { padding: 16px 12px; max-height: calc(100dvh - 82px); }
+    .modal-box:has(.nim-guide) { padding: 16px 12px; max-height: calc(var(--site-game-height, 100dvh) - 82px); }
     .modal-box:has(.nim-guide) .modal-actions { bottom: -16px; }
     .guide-heading { padding-inline: 10px; }
     .guide-panel { padding-inline: 8px; }

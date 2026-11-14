@@ -14,6 +14,7 @@
     z-index: 100000;
     display: block;
     width: 36px;
+    min-width: 36px;
     height: 36px;
     min-height: 36px;
     color: #f4f4f5;
@@ -29,6 +30,7 @@
     display: grid;
     place-items: center;
     width: 36px;
+    min-width: 36px;
     height: 36px;
     min-height: 36px;
     margin: 0;
@@ -60,7 +62,9 @@
 #classSiteSettings .unified-audio-panel {
     position: absolute;
     top: 48px;
+    bottom: auto;
     right: 0;
+    height: auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 18px;

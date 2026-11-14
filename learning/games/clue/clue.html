@@ -9,7 +9,7 @@
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#eef0f5;background:#10121a;--accent:#d9a441;--accent-soft:#8a662a;--panel:#1b1f2b;--panel-edge:#3a3f52;--danger:#c8544a;--safe:#3f9e6c}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;padding:20px;background:linear-gradient(180deg,#0c0d1382,#08090eb8),url("/learning/games/clue/assets/images/background.webp") center/cover fixed no-repeat,#10121a}
+body{margin:0;min-height:var(--site-game-height, 100dvh);padding:20px;background:linear-gradient(180deg,#0c0d1382,#08090eb8),url("/learning/games/clue/assets/images/background.webp") center/cover fixed no-repeat,#10121a}
 button,input,select{font:inherit}
 .hidden{display:none!important}
 .shell{width:min(1280px,100%);margin:auto}
@@ -36,7 +36,7 @@ h1,h2,h3,p{margin-top:0}
 .turnPanel{order:-3}
 .turnControls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
 .turnControls .diceRow,.turnControls .actionBar{padding:0}
-.boardWrap{width:min(900px,100%,calc(100dvh - 126px));margin:auto}
+.boardWrap{width:min(900px,100%,calc(var(--site-game-height, 100dvh) - 126px));margin:auto}
 
 @media(max-width:1200px) and (min-width:820px){
   body{padding:8px}
@@ -45,7 +45,7 @@ h1,h2,h3,p{margin-top:0}
   #gameScreen .panel{padding:10px;border-radius:12px}
   .playersPanel{order:-2;max-height:240px;overflow:auto}
   .roomPanel{order:-1}
-  .boardWrap{width:min(100%,calc(100dvh - 112px))}
+  .boardWrap{width:min(100%,calc(var(--site-game-height, 100dvh) - 112px))}
   .boardLegend{margin-top:5px;font-size:11px}
   .boardLegend span{min-height:24px;padding:2px 7px}
 }
@@ -59,7 +59,7 @@ h1,h2,h3,p{margin-top:0}
   .roomPanel{grid-column:2;grid-row:1}
   .playersPanel{grid-column:1/-1;grid-row:2;max-height:96px;overflow:auto}
   .playerRow{padding:5px 7px;margin-bottom:4px}
-  .boardWrap{width:min(100%,calc(100dvh - 300px))}
+  .boardWrap{width:min(100%,calc(var(--site-game-height, 100dvh) - 300px))}
   .boardLegend{display:none}
 }
 @media(max-width:600px){
@@ -183,12 +183,12 @@ h1,h2,h3,p{margin-top:0}
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-site-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
 <style>
 body:has(#gameScreen:not(.hidden)){padding:8px}
 body:has(#gameScreen:not(.hidden)) .shell{width:100%;max-width:1440px}
-#gameScreen .gameLayout{height:calc(100dvh - 16px);min-height:560px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:8px;align-items:stretch}
+#gameScreen .gameLayout{height:calc(var(--site-game-height, 100dvh) - 16px);min-height:560px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:8px;align-items:stretch}
 #gameScreen .gameSidebar{grid-column:2;grid-row:1;min-height:0;overflow:auto;gap:6px}
 #gameScreen .gameSidebar>.panel{padding:8px;flex-shrink:0}
 #gameScreen .roomPanel .row{margin:0!important}

@@ -8,6 +8,7 @@ const { attendanceEventSchema, createAttendanceEventHub } = require("./attendanc
 const { createReadingBank } = require("./reading-bank");
 const { createMetacognition } = require("./metacognition");
 const { createLearningRecords } = require("./learning-records");
+const finisherRecords = require("./finisher-records");
 const { createTeacherAi } = require("./teacher-ai");
 const { createUserStorage } = require("./user-storage");
 const { createSchoolChat } = require("./school-chat");
@@ -1428,6 +1429,7 @@ function createClassroomPlatform(options = {}) {
 
     try {
       for (const statement of statements) await pool.query(statement);
+      await finisherRecords.initializeFinisherIdentity(pool);
       // Preserve earlier group-wide stops as individual stops on today's menu.
       await pool.query(
         `WITH previous AS (
@@ -1500,36 +1502,20 @@ function createClassroomPlatform(options = {}) {
 
   async function listFinisherRecords(date, gameId) {
     requireDatabaseReady();
-    const result = await pool.query(
-      `SELECT player_name AS name, difficulty, rank, finished_time AS time
-       FROM game_finisher_records
-       WHERE record_date = $1::date AND game_id = $2
-       ORDER BY finished_time ASC, player_name ASC`,
-      [date, gameId]
-    );
-    return result.rows.map((row) => ({ ...row, rank: Number(row.rank) }));
+    return finisherRecords.listFinisherRecords(pool, date, gameId);
   }
 
-  async function saveFinisherRecord({ date, gameId, name, difficulty, rank, time }) {
+  async function saveFinisherRecord({ request, date, gameId, name, difficulty, rank, time }) {
     requireDatabaseReady();
-    await pool.query(
-      `INSERT INTO game_finisher_records
-         (record_date, game_id, player_name, difficulty, rank, finished_time)
-       VALUES ($1::date, $2, $3, $4, $5, $6)
-       ON CONFLICT (record_date, game_id, player_name) DO UPDATE
-       SET difficulty = EXCLUDED.difficulty,
-           rank = EXCLUDED.rank,
-           finished_time = EXCLUDED.finished_time,
-           updated_at = NOW()
-       WHERE EXCLUDED.rank > game_finisher_records.rank`,
-      [date, gameId, name, difficulty, rank, time]
-    );
-    await pool.query(
-      `DELETE FROM game_finisher_records
-       WHERE record_date < $1::date - 13`,
-      [date]
-    );
-    return listFinisherRecords(date, gameId);
+    const user = request ? await sessionUser(request) : null;
+    const membership = user ? await studentMembership(user.id) : null;
+    return finisherRecords.saveFinisherRecord(pool, {
+      date, gameId, difficulty, rank, time,
+      name: membership?.studentName || (user ? (await displayNameFor(request)).name : name),
+      userId: user?.id,
+      grade: membership?.grade,
+      classNumber: membership?.classNumber
+    });
   }
 
   async function saveMultiplayerRoomSnapshot({ roomKey, gameId, roomCode, snapshot, ttlSeconds = 10800 }) {
