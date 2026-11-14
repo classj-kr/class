@@ -50,7 +50,7 @@
         const sfxScriptUrl = currentScript
             ? new URL("game-sfx.js", currentScript.src)
             : new URL("../../assets/sound/game-sfx.js", location.href);
-        sfxScriptUrl.searchParams.set("v", "20261114-boing");
+        sfxScriptUrl.searchParams.set("v", "20261115-book-answer-sfx");
         sfxScript.src = sfxScriptUrl.href;
         document.head.appendChild(sfxScript);
     }

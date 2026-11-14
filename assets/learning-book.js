@@ -25,6 +25,7 @@ window.connectBookRecords = async function (adapter) {
   adapter.connect({
     async answer(event) {
       if (busy) return;
+      window.ClassGameSfx?.playBookAnswer?.(event.correct);
       busy = true; adapter.lock(true); await save([event]);
       const view = saveScroll(); adapter.repaint(); restoreScroll(view); requestAnimationFrame(() => restoreScroll(view));
       adapter.lock(false); busy = false;

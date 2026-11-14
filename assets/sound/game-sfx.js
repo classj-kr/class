@@ -14,6 +14,7 @@
     ]);
     const SYNTH_FALLBACKS = Object.freeze({ select: "click", back: "click", turn: "bell" });
     const RETRY_SOUNDS = new Set(["error", "timeout", "explosion"]);
+    const isBookReader = /^\/learning\/(?:literacy-numeracy|academics)\/story-books\/(?:korea-tales|world-tales|world-novels|poetry)\//.test(location.pathname);
     const scriptUrl = document.currentScript?.src || new URL("/assets/sound/game-sfx.js", window.location.href).href;
     const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => !["click", "capture"].includes(name)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
@@ -357,6 +358,7 @@
 
     function soundForElement(element) {
         if (!element || element.matches(":disabled, [aria-disabled='true']")) return "";
+        if (isBookReader && element.matches(".quiz-choice")) return "";
         const requested = String(element.dataset.sfx || "").toLowerCase();
         if (requested === "none") return "";
         if (requested) return requested;
@@ -388,6 +390,7 @@
 
     function semanticOutcome(element) {
         if (!(element instanceof Element) || element.closest("[data-sfx-feedback='none']")) return "";
+        if (isBookReader && element.closest(".quiz-choice")) return "";
         const values = [
             ...element.classList,
             element.dataset.state,
@@ -495,6 +498,7 @@
     window.ClassGameSfx = {
         play,
         playFile,
+        playBookAnswer: correct => correct ? play("success") : playFile("/assets/sound/sfx/story-quiz-squeak.ogg"),
         // Custom game timbres share the same context, volume and mute envelope.
         getAudioBus: () => {
             if (muted || volume === 0) return null;
