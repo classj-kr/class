@@ -1,5 +1,18 @@
 
 /* Entry UI only; gameplay sizing is unchanged. */
+.solo-player-avatar {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-inline-end: 5px;
+  vertical-align: middle;
+}
+.solo-player-avatar > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 html { box-sizing: border-box; }
 body { box-sizing: border-box; }
 body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden])) { height: auto; min-height: 100dvh; }
