@@ -60,6 +60,8 @@
     const externalMusic = window.ClassMusicController;
     const audio = externalMusic ? null : document.getElementById("bgm");
     const sfxOnly = !audio && !externalMusic;
+    const musicLobby = audio?.dataset.musicLobby ? document.getElementById(audio.dataset.musicLobby) : null;
+    const lobbyMusicBlocked = () => musicLobby && (musicLobby.hidden || musicLobby.classList.contains("hidden"));
 
 
     if (!document.querySelector('link[data-class-music-style]')) {
@@ -376,7 +378,7 @@
     }
 
     async function startPlayback() {
-        if (sfxOnly) return false;
+        if (sfxOnly || lobbyMusicBlocked()) return false;
         if (document.body.dataset.musicPausedForReading === "true") return false;
         applyAudioState();
         if (externalMusic) {
@@ -449,6 +451,10 @@
         if (!applyingAudioState) queueMicrotask(applyAudioState);
     });
     audio?.addEventListener("play", () => {
+        if (lobbyMusicBlocked()) {
+            audio.pause();
+            return;
+        }
         shouldResumePlayback = true;
         applyAudioState();
         savePlaybackState();
@@ -501,6 +507,17 @@
         unlockEvents.forEach(eventName => document.removeEventListener(eventName, unlockPlayback, true));
     };
     unlockEvents.forEach(eventName => document.addEventListener(eventName, unlockPlayback, { capture: true }));
+
+    if (musicLobby) {
+        const musicControls = musicMuteBtn.closest(".unified-audio-group");
+        const syncLobbyMusic = () => {
+            musicControls.hidden = Boolean(lobbyMusicBlocked());
+            if (musicControls.hidden) audio.pause();
+            else startPlayback();
+        };
+        new MutationObserver(syncLobbyMusic).observe(musicLobby, { attributes: true, attributeFilter: ["class", "hidden"] });
+        syncLobbyMusic();
+    }
 
     render();
     applyAudioState();

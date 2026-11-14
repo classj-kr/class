@@ -53,6 +53,22 @@ async function main() {
     report.passed.push(name); console.log('PASS',name);
   }
   try {
+    for (const [game, lobbyId] of [['baduk', 'lobbyScreen'], ['janggi', 'lobby']]) {
+      const page = await pageFor(game);
+      await page.evaluate(id => {
+        window.testLobby = document.getElementById(id);
+        testLobby.classList.remove('hidden');
+      }, lobbyId);
+      await page.keyboard.press('Shift');
+      await page.waitForFunction(() => !document.getElementById('bgm').paused);
+      await page.evaluate(() => testLobby.classList.add('hidden'));
+      await page.waitForFunction(() => document.getElementById('bgm').paused && document.getElementById('musicMuteBtn').closest('.unified-audio-group').hidden);
+      await page.evaluate(() => dispatchEvent(new Event('pageshow')));
+      assert.equal(await page.evaluate(() => document.getElementById('bgm').paused), true);
+      await page.evaluate(() => testLobby.classList.remove('hidden'));
+      await page.waitForFunction(() => !document.getElementById('bgm').paused && !document.getElementById('musicMuteBtn').closest('.unified-audio-group').hidden);
+      await page.close();
+    }
     for (const touch of [false,true]) {
       const input = touch ? 'touch' : 'mouse';
       const click = locator => touch ? locator.tap() : locator.click();

@@ -15,14 +15,14 @@ const report={origin,pages:[],assets:[]};
     assert.ok(sources.some(src=>src.includes('/assets/sound/game-sfx.js?v=20261114-boing')),route);
     for(const src of sources){
       if(src.includes('/assets/network/multiplayer-lobby.js')) assert.ok(src.endsWith('?v=20261101-game-entry-size'),route+': '+src);
-      if(src.includes('assets/sound/music-control.js')) assert.ok(src.endsWith('?v=20261114-boing'),route+': '+src);
+      if(src.includes('assets/sound/music-control.js')) assert.ok(src.endsWith('?v=20261114-lobby-music'),route+': '+src);
     }
     report.pages.push({route,status:response.status,scriptVersions:true});
   }
   for(const [file,version] of [
     ['assets/network/multiplayer-lobby.js','20261101-game-entry-size'],
     ['assets/sound/game-sfx.js','20261114-boing'],
-    ['assets/sound/music-control.js','20261114-boing'],
+    ['assets/sound/music-control.js','20261114-lobby-music'],
     ...['error', 'timeout', 'explosion'].map(name => ['assets/sound/sfx/' + name + '.ogg', '20261114-boing'])
   ]){
     const response=await fetch(`${origin}/${file}?v=${version}`,{headers:{'Cache-Control':'no-cache'}});

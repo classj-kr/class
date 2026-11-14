@@ -356,7 +356,8 @@ const SITE_BACK_PENDING_TAG = '<script>if(window.self===window.top&&!["/","/inde
 const SITE_BACK_SCRIPT_TAG = `${SITE_BACK_PENDING_TAG}<script data-site-back-navigation="true" src="/assets/site-back-navigation.js?v=20261108-menu-locks" defer></script>`;
 const SITE_SFX_VERSION = "20261114-boing";
 const SITE_SFX_SCRIPT_TAG = `<script data-class-game-sfx="true" src="/assets/sound/game-sfx.js?v=${SITE_SFX_VERSION}" defer></script>`;
-const SITE_MUSIC_CONTROL_TAG = `<script data-class-music-control="true" src="/assets/sound/music-control.js?v=${SITE_SFX_VERSION}" defer></script>`;
+const SITE_MUSIC_VERSION = "20261114-lobby-music";
+const SITE_MUSIC_CONTROL_TAG = `<script data-class-music-control="true" src="/assets/sound/music-control.js?v=${SITE_MUSIC_VERSION}" defer></script>`;
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261029-lesson-navigation">';
 // 학교 공용 채팅 위젯: 메인 화면과 보드게임 쪽에만 끼운다. 학교 학생·교사가 아니면 위젯이 스스로 안 뜬다.
 const SITE_SCHOOL_CHAT_TAG = '<script data-school-chat="true" src="/assets/school-chat.js?v=20261114-compact-chat" defer></script>';
@@ -391,8 +392,8 @@ function sendSiteHtml(req, res, filepath, next) {
       /(\/assets\/network\/multiplayer-lobby\.js)(?:\?[^"'<>\s]*)?/g,
       "$1?v=20261101-game-entry-size"
     ).replace(
-      /(assets\/sound\/(?:game-sfx|music-control)\.js)(?:\?[^"'<>\s]*)?/g,
-      `$1?v=${SITE_SFX_VERSION}`
+      /(assets\/sound\/(game-sfx|music-control)\.js)(?:\?[^"'<>\s]*)?/g,
+      (_match, script, name) => `${script}?v=${name === "music-control" ? SITE_MUSIC_VERSION : SITE_SFX_VERSION}`
     ).replace(
       /(\/assets\/learning-records\.js)(?:\?[^"'<>\s]*)?/g,
       "$1?v=20261107-race-range"

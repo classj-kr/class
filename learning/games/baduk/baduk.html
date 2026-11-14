@@ -10,7 +10,7 @@
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-<script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
+<script src="../../../assets/sound/music-control.js?v=20261114-lobby-music" defer></script>
 <script src="../../../assets/game-motion.js?v=20261006-capture"></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
@@ -32,7 +32,7 @@
   <section class="panel play-panel"><div class="board-stage"><div class="board-frame"><div id="board" data-sfx-clicks="none" class="board" role="grid"></div></div></div></section>
 </section></main>
 
-<audio id="bgm" src="/learning/games/baduk/assets/sound/baduk-bgm.ogg" loop preload="auto"></audio>
+<audio id="bgm" src="/learning/games/baduk/assets/sound/baduk-bgm.ogg" data-music-lobby="lobbyScreen" loop preload="auto"></audio>
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="규칙"><div class="modal"><div id="rulesBody"></div><button id="closeRulesBtn" class="primary" type="button">확인</button></div></section>
 <section id="abortOverlay" class="overlay hidden" role="dialog" aria-modal="true"><div class="modal"><h2 id="abortTitle">연결 종료</h2><p id="abortMessage"></p><button class="primary" type="button" onclick="location.reload()">처음부터</button></div></section>
