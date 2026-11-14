@@ -19,7 +19,7 @@
     --green: #48725a;
     --blue: #456c85;
     --navy: #263f51;
-    --reading-serif: "Times New Roman", "Noto Serif KR", "Batang", "바탕", "AppleMyungjo", serif;
+    --reading-serif: var(--class-exam-font, "Batang", "Times New Roman", serif);
     --shadow: 0 24px 60px rgba(55, 42, 25, .14);
 }
 

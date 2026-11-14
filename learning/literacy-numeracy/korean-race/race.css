@@ -234,7 +234,7 @@ body.hurry #timeLeft { color: var(--red); }
 .q-ask { margin: 0; font-size: clamp(15px, 1.9vw, 17px); font-weight: 700; color: var(--ink-soft); }
 .q-text { margin: 0; font-size: clamp(19px, 2.6vw, 23px); font-weight: 800; line-height: 1.55; word-break: keep-all; }
 .q-text.long { font-size: clamp(17px, 2.2vw, 20px); }
-.q-text.word { font-size: clamp(38px, 9vw, 64px); text-align: center; letter-spacing: 0.01em; font-family: "Andika Learning", "Segoe UI", Roboto, sans-serif; font-weight: 700; }
+#qText.word { font-size: clamp(38px, 9vw, 64px); text-align: center; letter-spacing: 0.01em; font-family: "Andika Learning", "Segoe UI", Roboto, sans-serif !important; font-weight: 700; }
 .blank { display: inline-block; width: 3.2em; height: 1.1em; margin: 0 0.2em; border-bottom: 4px solid var(--red); vertical-align: -0.1em; background: rgba(216, 69, 47, 0.08); border-radius: 6px 6px 0 0; }
 .choices { display: grid; gap: 10px; grid-template-columns: 1fr; }
 .choices[data-count="2"] { grid-template-columns: 1fr 1fr; }
