@@ -18,14 +18,20 @@ await page.context().grantPermissions(['local-network-access'],{origin});
 await page.route('**/learning/games/**',async route=>{if(route.request().resourceType()!=='document')return route.continue();const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace(/window.CLASS_PLAYER_NAME="[^"]*"/,'window.CLASS_PLAYER_NAME="크기확인"')})});
 try{
 await page.goto(origin+'/'+file.replaceAll('\\','/'),{waitUntil:'domcontentloaded'});
+await page.waitForFunction(()=>!!document.querySelector('link[href*="game-controls.css"]')?.sheet);
 const entry=multi?'.mp-ui-lobby':game==='sphinx'?'.game-frame':'[data-game-entry]';
 await page.locator(entry).waitFor();
 if(multi)await page.locator('.mp-ui-tabs button').nth(1).click();
 const measure=async(phase,selector)=>{for(const [width,height]of sizes){await page.setViewportSize({width,height});
- const metric=await page.evaluate(selector=>{const el=[...document.querySelectorAll(selector)].find(e=>e.checkVisibility());if(!el)return null;const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,overflow:el.scrollWidth-el.clientWidth,title:el.querySelector('h1,.start-title,.quiz-title')?.textContent}},selector);
+ const metric=await page.evaluate(selector=>{const el=[...document.querySelectorAll(selector)].find(e=>e.checkVisibility());if(!el)return null;const r=el.getBoundingClientRect(),body=document.body,top=body.clientTop;return {x:r.x,y:r.y,width:r.width,height:r.height,top,visibleHeight:body.clientHeight,pageOverflowX:body.scrollWidth-body.clientWidth,pageOverflowY:body.scrollHeight-body.clientHeight,overflow:el.scrollWidth-el.clientWidth,title:el.querySelector('h1,.start-title,.quiz-title')?.textContent}},selector);
  const row={game,phase,viewport:[width,height],...metric};results.push(row);
- try{assert.ok(metric,'visible panel');assert.ok(metric.x>=-1&&metric.x+metric.width<=width+1,'horizontal bounds');assert.ok(Math.abs(metric.x-(width-metric.width)/2)<=2,'horizontal center');
- if(metric.height<=height-32)assert.ok(Math.abs(metric.y-(height-metric.height)/2)<=2,'vertical center');else assert.ok(metric.y>=0&&metric.y<=24,'tall panel starts in reach');assert.ok(metric.overflow<=2,'content does not overflow panel');}
+ try{assert.ok(metric,'visible panel');assert.equal(metric.top,0,'no reserved top strip');assert.ok(metric.x>=-1&&metric.x+metric.width<=width+1,'horizontal bounds');assert.ok(Math.abs(metric.x-(width-metric.width)/2)<=2,'horizontal center');
+ if(metric.height<=metric.visibleHeight-32){
+  assert.ok(metric.y>=metric.top&&metric.y+metric.height<=height+1,'entry is in reach');
+  assert.ok(metric.pageOverflowY<=1,`unnecessary vertical scrolling (${metric.pageOverflowY}px)`);
+ }else assert.ok(metric.y>=metric.top&&metric.y<=metric.top+24,'tall panel starts in reach');
+ assert.ok(metric.pageOverflowX<=1,`page overflows horizontally (${metric.pageOverflowX}px)`);
+ assert.ok(metric.overflow<=2,'content does not overflow panel');}
  catch(e){row.failure=e.message;}
  if(game==='bomb77'&&width===1366){const png=await page.screenshot();const target=path.join(output,`bomb77-${phase}.webp`);const saved=spawnSync('python',['-c','import sys,io;from PIL import Image;Image.open(io.BytesIO(sys.stdin.buffer.read())).save(sys.argv[1],"WEBP",lossless=True)',target],{input:png});assert.equal(saved.status,0);}
 }};

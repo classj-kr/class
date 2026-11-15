@@ -1,6 +1,6 @@
 /* Keep fixed controls clear of the play surface and paint the backdrop behind them. */
 html.site-game-controls {
-    --site-controls-height: calc(56px + env(safe-area-inset-top));
+    --site-controls-height: env(safe-area-inset-top, 0px);
     --site-game-height: calc(100dvh - var(--site-controls-height));
     height: 100%;
     box-sizing: border-box;
@@ -20,9 +20,6 @@ html.site-game-controls body {
     overscroll-behavior: contain;
 }
 @media (min-width: 1300px) and (orientation: landscape) {
-    html.site-game-controls {
-        --site-controls-height: env(safe-area-inset-top, 0px);
-    }
     html.site-game-controls body {
         border-left: calc(96px + env(safe-area-inset-left)) solid transparent !important;
         border-right: calc(96px + env(safe-area-inset-right)) solid transparent !important;
