@@ -29,6 +29,25 @@ html.site-game-controls #schoolChatPanel {
     bottom: auto;
     max-height: calc(var(--site-game-height) - 12px);
 }
+@media (min-width: 1300px) and (orientation: landscape) {
+    html.site-game-controls:has(body.janggi-coach) {
+        --site-controls-height: env(safe-area-inset-top, 0px);
+    }
+    html.site-game-controls body.janggi-coach .layout {
+        width: min(calc(100% - 184px), calc(.9 * (var(--site-game-height) - 36px) + var(--coach-side) + 32px));
+        min-height: 0;
+    }
+    html.site-game-controls #schoolChatToggle {
+        left: auto;
+        right: calc(54px + env(safe-area-inset-right));
+    }
+    html.site-game-controls #schoolChatPanel {
+        top: calc(56px + env(safe-area-inset-top));
+        left: auto;
+        right: calc(10px + env(safe-area-inset-right));
+        max-height: calc(100dvh - 68px - env(safe-area-inset-top));
+    }
+}
 html.site-game-controls #classSiteSettings {
     position: fixed !important;
     top: calc(10px + env(safe-area-inset-top)) !important;
