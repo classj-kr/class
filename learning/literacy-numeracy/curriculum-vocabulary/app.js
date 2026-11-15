@@ -474,7 +474,7 @@
     let queue, total, done, missed, firstTry, recordRound;
 
     function start() {
-      recordRound = `${term}:${subject}:${unit.id}:${crypto.randomUUID()}`;
+      recordRound = `${term}:${subject}:${unit.id}:${crypto.randomUUID?.() || Date.now().toString(36) + Math.random().toString(36).slice(2)}`;
       queue = questionsFor(unit, pool);
       total = queue.length;
       done = 0;

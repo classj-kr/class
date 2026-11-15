@@ -15,9 +15,14 @@ for (const key of Object.keys(manifest)) require('..' + base + 'words-' + key + 
 const books = globalThis.CurriculumWords;
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.webp': 'image/webp' };
 
+// 쌓은 분수(assets/fraction-text.js)는 원래 말(aria-label "3분의 2")로 읽는다.
+const PLAIN = (node) => { const c = node.cloneNode(true); c.querySelectorAll('.ft-mixed[aria-label]').forEach((f) => f.replaceWith(f.getAttribute('aria-label'))); return c.textContent; };
+const plain = (locator) => locator.evaluate((n, src) => (0, eval)(src)(n), PLAIN.toString());
+const plainAll = (locator) => locator.evaluateAll((ns, src) => ns.map((0, eval)(src)), PLAIN.toString());
+
 // 화면에 뜬 문제에서 정답(보기에 적힌 글)을 원고로 찾아낸다.
 async function answerOf(page, words) {
-  const text = (await page.locator('.prompt').textContent()).trim();
+  const text = (await plain(page.locator('.prompt'))).trim();
   if (await page.locator('.prompt.sense').count()) {
     // '이 문장에서 ○○의 뜻은?': 문장이 이 단원 예문이면 이 단원 뜻, 다른 뜻 예문이면 그 뜻
     for (const word of words) for (const row of [{ mean: word.mean, use: word.use }, ...(word.senses || [])]) if (row.use === text) return row.mean;
@@ -26,7 +31,7 @@ async function answerOf(page, words) {
   if (await page.locator('.prompt.rel').count()) {
     const word = words.find(row => row.w === text);
     const key = (await page.locator('.question h3').textContent()).includes('반대') ? 'ant' : 'syn';
-    const names = await page.locator('.choices button').allTextContents();
+    const names = await plainAll(page.locator('.choices button'));
     const hit = names.filter(name => word.rel[key].some(row => row.w === name));
     assert.equal(hit.length, 1, '관계어 정답이 하나가 아님: ' + text);
     return hit[0];
@@ -36,11 +41,12 @@ async function answerOf(page, words) {
   assert.ok(hit, '정답을 찾지 못함: ' + text);
   return hit.w;
 }
-const clickChoice = (page, label, right) => page.evaluate(([label, right]) => {
+const clickChoice = (page, label, right) => page.evaluate(([label, right, src]) => {
+  const text = (0, eval)(src);
   const all = [...document.querySelectorAll('.choices button')];
-  const target = all.find(node => right ? node.textContent === label : node.textContent !== label && !node.disabled);
+  const target = all.find(node => right ? text(node) === label : text(node) !== label && !node.disabled);
   target.click();
-}, [label, right]);
+}, [label, right, PLAIN.toString()]);
 
 (async () => {
   const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL || 'chrome' });
@@ -71,7 +77,7 @@ const clickChoice = (page, label, right) => page.evaluate(([label, right]) => {
         while (await page.locator('.question').count()) {
           const answer = await answerOf(page, unit.words);
           const choices = page.locator('.choices button');
-          const names = await choices.allTextContents();
+          const names = await plainAll(choices);
           assert.equal(new Set(names).size, names.length, '보기 겹침');
           assert.ok(names.includes(answer));
           if (first) {
@@ -81,7 +87,7 @@ const clickChoice = (page, label, right) => page.evaluate(([label, right]) => {
             first = false;
           }
           await clickChoice(page, answer, true);
-          assert.equal(await page.locator('.choices button.right').textContent(), answer);
+          assert.equal(await plain(page.locator('.choices button.right')), answer);
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, unit.title + ' 문제 넘침 ' + width);
           await page.locator('.next').click();
           asked++;
