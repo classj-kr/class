@@ -648,7 +648,7 @@ body:has(> .mp-ui-lobby:not(.hidden):not(.hide):not([hidden])),
 :is(main,.shell,.app-shell,.game-shell,.container,.app,.wrap,.page-shell):has(> .mp-ui-lobby:not(.hidden):not(.hide):not([hidden])) {
     display: flex !important; flex-direction: column !important;
     justify-content: safe center !important; align-items: center !important;
-    min-height: 100dvh !important; height: auto !important;
+    min-height: var(--site-game-height, 100dvh) !important; height: auto !important;
     box-sizing: border-box; padding: 16px !important; margin: 0 !important;
     width: 100% !important; max-width: none !important;
 }
@@ -694,7 +694,7 @@ body:has(.mp-ui-separate-waiting #lobbySetup:not(.hidden)) {
 .shell:has(> #game:not(.hide) > #lobby:not(.hide)),
 .shell:has(> .mp-ui-separate-waiting #lobbySetup:not(.hidden)) {
   display: flex !important; flex-direction: column; justify-content: safe center; align-items: center;
-  min-height: 100dvh !important; box-sizing: border-box; width: 100% !important; max-width: none !important;
+  min-height: var(--site-game-height, 100dvh) !important; box-sizing: border-box; width: 100% !important; max-width: none !important;
   padding: 16px !important; margin: 0 !important;
 }
 body:has(#game:not(.hide) > #lobby:not(.hide)) #game {

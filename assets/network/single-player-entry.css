@@ -55,7 +55,7 @@ body:is(:has([data-game-entry]:not([hidden]):not(.hidden):not([style*="display: 
 }
 body > .page-shell:has(> [data-game-entry]:not([hidden]):not(.hidden)),
 body[data-entry-game]:has(.game-frame [data-difficulty-button]) {
-  min-height: 100dvh; height: auto !important; width: 100%; max-width: none;
+  min-height: var(--site-game-height, 100dvh); height: auto !important; width: 100%; max-width: none;
   box-sizing: border-box; padding: 16px !important; margin: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: safe center;
 }

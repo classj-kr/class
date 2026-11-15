@@ -387,7 +387,7 @@ function sendSiteHtml(req, res, filepath, next) {
     // Refresh shared scripts even when an older page still names an old cache version.
     const htmlSource = withSiteIdentity(source, identity).replace(
       /(\/assets\/network\/(?:multiplayer-lobby|single-player-entry)\.css)(?:\?[^"'<>\s]*)?/g,
-      "$1?v=20261101-game-entry-size"
+      "$1?v=20261116-lobby-height"
     ).replace(
       /(\/assets\/network\/multiplayer-lobby\.js)(?:\?[^"'<>\s]*)?/g,
       "$1?v=20261101-game-entry-size"
