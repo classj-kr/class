@@ -19,16 +19,6 @@ html.site-game-controls body {
     overflow: auto !important;
     overscroll-behavior: contain;
 }
-html.site-game-controls #schoolChatToggle {
-    top: calc(10px + env(safe-area-inset-top));
-    left: calc(54px + env(safe-area-inset-left));
-    bottom: auto;
-}
-html.site-game-controls #schoolChatPanel {
-    top: var(--site-controls-height);
-    bottom: auto;
-    max-height: calc(var(--site-game-height) - 12px);
-}
 @media (min-width: 1300px) and (orientation: landscape) {
     html.site-game-controls {
         --site-controls-height: env(safe-area-inset-top, 0px);
@@ -40,16 +30,6 @@ html.site-game-controls #schoolChatPanel {
     html.site-game-controls body.janggi-coach .layout {
         width: min(100%, calc(.9 * (var(--site-game-height) - 36px) + var(--coach-side) + 32px));
         min-height: 0;
-    }
-    html.site-game-controls #schoolChatToggle {
-        left: auto;
-        right: calc(54px + env(safe-area-inset-right));
-    }
-    html.site-game-controls #schoolChatPanel {
-        top: calc(56px + env(safe-area-inset-top));
-        left: auto;
-        right: calc(10px + env(safe-area-inset-right));
-        max-height: calc(100dvh - 68px - env(safe-area-inset-top));
     }
 }
 html.site-game-controls #classSiteSettings {
