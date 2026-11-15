@@ -32,18 +32,20 @@
       }
     } catch(error) {console.warn('[learning-activity]',error.message);}
   }
+  // crypto.randomUUID 가 없는 환경(https 아닌 주소·오래된 브라우저)에서도 기록이 화면을 멈추지 않게 한다.
+  const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2));
   function record(entry) {
-    const event = JSON.parse(JSON.stringify({kind:'activity',...entry,eventId:crypto.randomUUID()}));
+    const event = JSON.parse(JSON.stringify({kind:'activity',...entry,eventId:uid()}));
     pending.set(event.eventId,event);
     return flush();
   }
   function round(activity, title) {
-    let id=crypto.randomUUID(), started=false, finished=false;
+    let id=uid(), started=false, finished=false;
     const save=(questionKey,summary,complete=false)=>record({activity,context:id,title:title(),questionKey,
       response:summary,snapshot:{summary},complete});
     return {start(){if(started) return;started=true;return save('participation','퍼즐 풀이');},
       finish(summary){if(finished) return;finished=true;return save('completed',summary,true);},
-      reset(){id=crypto.randomUUID();started=false;finished=false;}};
+      reset(){id=uid();started=false;finished=false;}};
   }
   addEventListener('online',()=>{if(pending.size) flush();});
   addEventListener('pagehide',()=>{if(pending.size) flush();});
