@@ -61,6 +61,8 @@ function boot(book) {
         IntersectionObserver: class { observe() {} unobserve() {} disconnect() {} },
         Image: class { set src(v) {} },
         fetch: () => Promise.resolve({ ok: true, text: () => Promise.resolve('') }),
+        // 읽기 기록은 공용 스크립트(/assets/learning-book.js)가 맡는다. 여기서는 책이 건네는 것만 한 번 불러 본다.
+        connectBookRecords: adapter => { adapter.snapshot(); return Promise.resolve(); },
         Math, JSON, Date, Array, Object, String, Number, Boolean, Set, Map, Promise,
         RegExp, Error, parseInt, parseFloat, isNaN, encodeURIComponent, decodeURIComponent,
     };
