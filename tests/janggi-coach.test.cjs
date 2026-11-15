@@ -166,6 +166,23 @@ test("search opponents avoid a quiet reversal even when the opponent has changed
   }
 });
 
+test("level 5 breaks the reported cannon and chariot loop",()=>{
+  const start=fixture([
+    ["hA",3,0],["hA",5,0],["hK",4,1],["hR",8,1],["hH",2,2],["hH",5,2],
+    ["hC",4,0],["hP",1,3],["hP",2,3],["hE",4,3],["hE",8,3],["hP",6,4],
+    ["hP",7,4],["hR",0,5],["hP",5,5],["cR",7,0],["cP",1,6],["cP",2,6],
+    ["cP",3,6],["cE",4,6],["cR",7,6],["cP",8,6],["cH",2,7],["cC",3,7],
+    ["cH",6,7],["cC",8,7],["cA",4,8],["cE",2,9],["cA",3,9],["cK",5,9]
+  ],"h");
+  let state=start;
+  for(const args of [[4,0,4,2],[7,0,7,2],[4,2,4,0],[7,2,7,0]])state=move(state,...args);
+  for(const options of [{nodes:0,ms:0},{nodes:2000,ms:3000}]){
+    const answer=AI.choose(state,"advanced",options);
+    assert.ok(answer);
+    assert.equal(R.same(answer.move,{from:sq(4,0),to:sq(4,2)}),false);
+  }
+});
+
 test("a losing side keeps the saving repetition draw and explains why the game ends",()=>{
   let s=fixture([["cK",4,8],["hK",3,1],["hR",8,4]],"h");
   const cycle=[[3,1,3,0],[4,8,5,8],[3,0,3,1],[5,8,4,8]];

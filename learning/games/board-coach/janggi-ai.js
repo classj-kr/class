@@ -130,10 +130,26 @@
     // but keep a necessary retreat over losing material or allowing mate.
     return repeated?48:reversed?18:0;
   }
+  function avoidEstablishedLoop(state, candidates) {
+    if(R.inCheck(state))return candidates;
+    const own=state.history.filter(entry=>entry.mover===state.turn&&entry.move&&!entry.move.kind);
+    const last=own.at(-1)?.move, earlier=own.at(-2)?.move;
+    if(!last||!earlier||last.capture||earlier.capture||last.piece!==earlier.piece||
+      last.from!==earlier.to||last.to!==earlier.from)return candidates;
+    const repeated=candidates.find(move=>R.same(move,earlier)&&!move.capture);
+    if(!repeated)return candidates;
+    const result=R.status(R.advance(state,repeated));
+    if(result.winner===state.turn||(!result.winner&&result.ended&&
+      (cannotForceMate(state)||evaluate(state)<-VALUES.P)))return candidates;
+    const repeatScore=fallbackScore(state,repeated);
+    const canDevelop=candidates.some(move=>!move.kind&&!R.same(move,repeated)&&
+      R.repetitionCount(R.advance(state,move))===1&&fallbackScore(state,move)>=repeatScore-VALUES.P);
+    return canDevelop?candidates.filter(move=>!R.same(move,repeated)):candidates;
+  }
   function choose(state,level="beginner",options={}){
     if(R.status(state).ended)return null;
     const settings={...(LEVELS[level]||LEVELS.beginner),...options};
-    const practice=settings.practice&&!settings.coaching,candidates=roots(state);
+    const practice=settings.practice&&!settings.coaching,candidates=avoidEstablishedLoop(state,roots(state));
     const drawScore=settings.coaching?-120:0;
     if(!candidates.length)return null;
     if(practice){
