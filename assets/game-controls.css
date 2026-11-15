@@ -1,4 +1,4 @@
-/* Keep controls above the scrollport while the game backdrop covers the viewport. */
+/* Keep fixed controls clear of the play surface and paint the backdrop behind them. */
 html.site-game-controls {
     --site-controls-height: calc(56px + env(safe-area-inset-top));
     --site-game-height: calc(100dvh - var(--site-controls-height));
@@ -30,11 +30,15 @@ html.site-game-controls #schoolChatPanel {
     max-height: calc(var(--site-game-height) - 12px);
 }
 @media (min-width: 1300px) and (orientation: landscape) {
-    html.site-game-controls:has(body.janggi-coach) {
+    html.site-game-controls {
         --site-controls-height: env(safe-area-inset-top, 0px);
     }
+    html.site-game-controls body {
+        border-left: calc(96px + env(safe-area-inset-left)) solid transparent !important;
+        border-right: calc(96px + env(safe-area-inset-right)) solid transparent !important;
+    }
     html.site-game-controls body.janggi-coach .layout {
-        width: min(calc(100% - 184px), calc(.9 * (var(--site-game-height) - 36px) + var(--coach-side) + 32px));
+        width: min(100%, calc(.9 * (var(--site-game-height) - 36px) + var(--coach-side) + 32px));
         min-height: 0;
     }
     html.site-game-controls #schoolChatToggle {
