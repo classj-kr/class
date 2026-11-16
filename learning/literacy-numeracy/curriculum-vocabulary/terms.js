@@ -1,7 +1,7 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
  "3-1": {
-  "words": "words-3-1.js?v=8831ad91",
+  "words": "words-3-1.js?v=3af8ef11",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -20,7 +20,7 @@ window.CurriculumTerms = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=e9486cb9",
+  "words": "words-3-2.js?v=a3ea0904",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -36,7 +36,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=09052d90",
+  "words": "words-4-1.js?v=11b88a54",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -127,7 +127,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=af3e8de6",
+  "words": "words-6-2.js?v=9357056c",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
@@ -179,7 +179,7 @@ window.CurriculumTerms = {
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
  "3-1": {
-  "words": "words-3-1.js?v=8831ad91",
+  "words": "words-3-1.js?v=3af8ef11",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -198,7 +198,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=e9486cb9",
+  "words": "words-3-2.js?v=a3ea0904",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -214,7 +214,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=09052d90",
+  "words": "words-4-1.js?v=11b88a54",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -305,7 +305,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=af3e8de6",
+  "words": "words-6-2.js?v=9357056c",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
