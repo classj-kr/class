@@ -11,7 +11,11 @@
 body {
   min-height: 100vh;
   margin: 0;
-  background: radial-gradient(ellipse at 50% 0, #1a3353, #0b1729 66%);
+  /* 예전 수학 OX 앱의 물결 배경(/assets/images/math-ox-bg.webp). 카드 글씨가 묻히지 않게 살짝 어둡게 덮는다. */
+  background:
+    linear-gradient(#0b172955, #0b172988),
+    url("/assets/images/math-ox-bg.webp") center top / cover fixed no-repeat,
+    #0b1729;
 }
 
 .catalog {
