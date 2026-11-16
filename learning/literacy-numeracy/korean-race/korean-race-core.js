@@ -23,7 +23,7 @@
   };
   const SUBJECTS = { kor: '국어', math: '수학', soc: '사회', sci: '과학', his: '역사' };
   const SUBJECT_CODES = Object.fromEntries(Object.entries(SUBJECTS).map(([code, name]) => [name, code]));
-  const TEXTBOOK_RANGE = /^([3-9]-[12])\.(kor|math|soc|sci|his)(?:\.([A-Za-z0-9-]{1,12}))?$/;
+  const TEXTBOOK_RANGE = /^([1-9]-[12])\.(kor|math|soc|sci|his)(?:\.([A-Za-z0-9-]{1,12}))?$/;
   // 학기 이름: 초 6학년 1학기, 중 1학년 1학기(열쇠 7-1)
   const termLabel = (term) => (Number(term[0]) >= 7 ? `중 ${term[0] - 6}학년 ${term[2]}학기` : `초 ${term[0]}학년 ${term[2]}학기`);
   const unitLabel = (unit) => (unit === 'reading' ? '독서 단원' : unit === 'media' ? '매체 단원' : `${unit}단원`);
