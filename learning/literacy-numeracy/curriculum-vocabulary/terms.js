@@ -93,7 +93,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=908dff86",
+  "words": "words-5-2.js?v=5760b640",
   "figures": [
    "figures/5-2/kor.js?v=beaf6e0d",
    "figures/5-2/math-1.js?v=30cd38eb",
@@ -271,7 +271,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=908dff86",
+  "words": "words-5-2.js?v=5760b640",
   "figures": [
    "figures/5-2/kor.js?v=beaf6e0d",
    "figures/5-2/math-1.js?v=30cd38eb",
