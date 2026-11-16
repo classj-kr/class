@@ -1,7 +1,7 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
  "3-1": {
-  "words": "words-3-1.js?v=3a171cbb",
+  "words": "words-3-1.js?v=8831ad91",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -20,7 +20,7 @@ window.CurriculumTerms = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=ceff4a21",
+  "words": "words-3-2.js?v=e9486cb9",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -179,7 +179,7 @@ window.CurriculumTerms = {
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
  "3-1": {
-  "words": "words-3-1.js?v=3a171cbb",
+  "words": "words-3-1.js?v=8831ad91",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -198,7 +198,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=ceff4a21",
+  "words": "words-3-2.js?v=e9486cb9",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
