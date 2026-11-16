@@ -1,9 +1,12 @@
 /* 차시 목록 화면에만 쓰는 꾸밈. 차시 화면 것과 같은 모양을 shell.css에서 옮겨 왔다. */
-/* 위쪽 단추 줄이 화면에 붙어 있으므로 그만큼 비워 둔다. */
 .course-shell {
     width: min(1080px, calc(100% - 28px));
     margin: 0 auto 44px;
-    padding-top: 64px;
+    padding-top: max(12px, env(safe-area-inset-top));
+}
+
+@media (max-width: 1184px) {
+    .course-module:first-child { margin-inline: 38px; }
 }
 
 .course-modules {

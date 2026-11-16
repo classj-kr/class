@@ -17,7 +17,11 @@ body {
 .catalog {
   width: min(1240px, 100%);
   margin: 0 auto;
-  padding: max(62px, calc(env(safe-area-inset-top) + 52px)) clamp(16px, 4vw, 36px) clamp(18px, 2.5vh, 36px);
+  padding: max(12px, env(safe-area-inset-top)) clamp(16px, 4vw, 36px) clamp(18px, 2.5vh, 36px);
+}
+
+@media (min-width: 561px) and (max-width: 1280px) {
+  .catalog { padding-inline: 54px; }
 }
 
 .sr-only {

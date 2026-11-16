@@ -6192,7 +6192,7 @@ button.division-option {
   }
 
   .catalog-shell {
-    padding: 28px 0 70px;
+    padding: max(12px, env(safe-area-inset-top)) 0 70px;
   }
 
   .catalog-page {
@@ -6207,7 +6207,7 @@ button.division-option {
     gap: 24px;
     border-bottom: 0;
     background: transparent;
-    padding: 20px 22px 24px;
+    padding: 0 0 4px;
     backdrop-filter: none;
   }
 
@@ -6289,7 +6289,6 @@ button.division-option {
     background: transparent;
     box-shadow: none;
     backdrop-filter: none;
-    padding-right: 170px;
   }
 
   .catalog-stage-link {
@@ -6378,6 +6377,10 @@ button.division-option {
     padding: 24px 2px 2px;
     color: white;
     text-shadow: 0 2px 5px rgba(4, 10, 28, 0.95);
+  }
+
+  .worksheet-stage-heading:first-child {
+    padding-top: 0;
   }
 
   .worksheet-stage-heading strong {
@@ -6538,6 +6541,12 @@ button.division-option {
     }
   }
 
+  @media (max-width: 1190px) {
+    .catalog-header {
+      padding-inline: 30px;
+    }
+  }
+
   @media (max-width: 520px) {
     .portal-shell,
     .catalog-shell {
@@ -6567,7 +6576,7 @@ button.division-option {
       grid-template-columns: minmax(0, 1fr);
       align-items: center;
       gap: 12px;
-      padding: 24px 0 16px;
+      padding-inline: 40px;
     }
 
     .catalog-race-link {
@@ -6578,11 +6587,12 @@ button.division-option {
 
 
     .catalog-stage-nav {
-      padding-right: 0;
+      gap: 4px;
     }
 
     .catalog-stage-link {
       min-height: 44px;
+      padding-inline: 7px;
     }
   }
 }

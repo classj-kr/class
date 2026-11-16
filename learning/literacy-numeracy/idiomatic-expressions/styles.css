@@ -101,7 +101,8 @@ main {
 }
 
 @media (max-width: 1020px) {
-  main { margin-top: 64px; }
+  .lesson-list > :first-child, .learning-utility { margin-inline: 36px; }
+  .lesson-list > :first-child { width: calc(100% - 72px); }
 }
 
 .learning-utility { min-height: 44px; margin-bottom: 8px; }
@@ -116,7 +117,6 @@ main {
 
 @media (min-width: 761px) and (max-height: 820px) {
   header { min-height: 48px; }
-  main { margin-top: 64px; }
   .panel { padding-top: 18px; padding-bottom: 18px; }
   #illustration { max-height: 240px; }
 }

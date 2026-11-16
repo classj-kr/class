@@ -66,7 +66,7 @@ export default function ArithmeticCatalog({ initialStage }: { initialStage: Cata
             </>;
             return (
               <Fragment key={`${index}-${title}`}>
-                {stage !== previousStage && (
+                {selectedStage === "all" && stage !== previousStage && (
                   <li className={`worksheet-stage-heading stage-${stage}`} id={`stage-${stage}`}>
                     <strong>{stageMeta[stage].shortLabel}</strong>
                   </li>
