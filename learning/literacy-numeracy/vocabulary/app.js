@@ -314,19 +314,32 @@
             const english = document.createElement("td");
             english.className = "sheet-word";
             english.lang = "en";
+            const wordLine = document.createElement("div");
+            wordLine.className = "sheet-word-line";
             const wordLabel = document.createElement("span");
             wordLabel.textContent = word.word;
             enableEnglishSpeech(wordLabel);
             const pronunciationButton = document.createElement("button");
             pronunciationButton.type = "button";
             pronunciationButton.className = "sheet-speak-button";
-            pronunciationButton.textContent = "🔊";
             pronunciationButton.setAttribute("aria-label", `${word.word} 듣기`);
             pronunciationButton.addEventListener("click", () => speakText(word.word));
-            english.append(wordLabel, pronunciationButton);
+            wordLine.append(wordLabel, pronunciationButton);
+            english.append(wordLine);
             const meaning = document.createElement("td");
+            meaning.className = "sheet-meaning";
             meaning.textContent = word.meanings.join("; ");
-            row.append(rowNumber, level, english, meaning);
+            const go = document.createElement("td");
+            go.className = "sheet-go";
+            const goButton = document.createElement("button");
+            goButton.type = "button";
+            goButton.className = "sheet-go-button";
+            goButton.setAttribute("aria-label", `${word.word} 카드로 공부하러 가기`);
+            goButton.title = "이 카드로 공부하기";
+            goButton.addEventListener("click", () => studyFromBandList(word));
+            go.append(goButton);
+            row.dataset.wordId = String(word.id);
+            row.append(rowNumber, level, english, meaning, go);
             fragment.appendChild(row);
         });
         elements.bandListBody.replaceChildren(fragment);
@@ -343,6 +356,31 @@
         elements.bandListScreen.hidden = false;
         renderBandList();
         window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // 목록에서 고른 낱말이 든 차시를 열고, 그 낱말 카드부터 보여 준다. 카드 화면의 뒤로는 이 목록으로 돌아온다.
+    function studyFromBandList(word) {
+        const level = Number(word.globalLevel);
+        const lessonIndex = lessonsForLevel(level).findIndex((lesson) => lesson.some((item) => String(item.id) === String(word.id)));
+        if (lessonIndex < 0) return;
+        state.bandListScrollTop = elements.bandListBody.closest(".sheet-wrap")?.scrollTop || 0;
+        openLesson(level, lessonIndex, { startWordId: word.id, from: "bandList" });
+    }
+
+    function backToBandList() {
+        const studiedId = String(currentWord()?.id || "");
+        elements.studyScreen.hidden = true;
+        elements.bandListScreen.hidden = false;
+        renderOverallProgress();
+        const wrap = elements.bandListBody.closest(".sheet-wrap");
+        if (wrap) wrap.scrollTop = state.bandListScrollTop || 0;
+        // 마지막으로 본 카드의 줄을 화면 안에 두고 잠깐 밝혀 어디서 돌아왔는지 보여 준다(감췄던 목록이 다시 그려진 뒤에).
+        const row = studiedId && elements.bandListBody.querySelector(`tr[data-word-id="${studiedId}"]`);
+        elements.bandListBody.querySelectorAll("tr.sheet-row-flash").forEach((item) => item.classList.remove("sheet-row-flash"));
+        if (row) requestAnimationFrame(() => {
+            row.scrollIntoView({ block: "nearest" });
+            row.classList.add("sheet-row-flash");
+        });
     }
 
     function backFromBandList() {
@@ -412,11 +450,15 @@
         state.unknownOnly = unknownOnly;
         const lessonWords = unknownOnly ? unknownWords : [...baseWords];
         state.currentWords = state.shuffleEnabled ? core.shuffleWords(lessonWords) : lessonWords;
-        state.currentIndex = 0;
+        const startIndex = options.startWordId == null ? -1 : state.currentWords.findIndex((word) => String(word.id) === String(options.startWordId));
+        state.currentIndex = Math.max(0, startIndex);
         state.revealed = false;
         state.studySeen = new Set();
+        state.studyFromBandList = options.from === "bandList";
+        elements.backToLevels.textContent = state.studyFromBandList ? "← 단어 목록" : "← 차시 선택";
         elements.levelScreen.hidden = true;
         elements.lessonScreen.hidden = true;
+        elements.bandListScreen.hidden = true;
         elements.studyScreen.hidden = false;
         window.scrollTo({ top: 0, behavior: "smooth" });
         renderStudyCard();
@@ -907,6 +949,10 @@
     }
 
     function backToLevels() {
+        if (state.studyFromBandList) {
+            backToBandList();
+            return;
+        }
         elements.studyScreen.hidden = true;
         elements.lessonScreen.hidden = false;
         renderLessonPicker(state.currentLevel);

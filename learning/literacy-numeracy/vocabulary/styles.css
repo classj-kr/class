@@ -247,17 +247,28 @@ main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 16px 0 48
 .band-list-count { margin: 0 0 8px; color: var(--muted); text-align: right; font-size: 13px; font-weight: 800; }
 .sheet-wrap { max-height: calc(100dvh - 126px); overflow: auto; border: 1px solid #aeb8b2; border-radius: 10px; background: rgba(255,255,255,.9); box-shadow: 0 12px 32px rgba(37,48,42,.12); }
 .word-sheet { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; color: var(--ink); font-size: 14px; }
-.word-sheet th, .word-sheet td { padding: 8px 10px; border-right: 1px solid #cbd3ce; border-bottom: 1px solid #cbd3ce; text-align: left; vertical-align: top; line-height: 1.4; }
+.word-sheet th, .word-sheet td { padding: 8px 10px; border-right: 1px solid #cbd3ce; border-bottom: 1px solid #cbd3ce; text-align: left; vertical-align: middle; line-height: 1.4; }
 .sheet-row-col { width: 58px; }
 .sheet-level-col { width: 100px; }
 .sheet-word-col { width: 190px; }
+.sheet-go-col { width: 66px; }
+.word-sheet td.sheet-meaning { overflow-wrap: anywhere; }
 .word-sheet tbody th { text-align: center; }
 .word-sheet tbody th { position: sticky; left: 0; z-index: 1; background: #f0f2ef; color: #68766f; font-weight: 700; }
 .word-sheet tbody tr:nth-child(even) td { background: rgba(241,246,242,.62); }
 .sheet-level { color: var(--green); font-weight: 850; white-space: nowrap; }
-.sheet-word { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--navy); font: 700 17px/1.35 "Andika Learning", "Segoe UI", Roboto, sans-serif; }
-.sheet-speak-button { flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid #b8c9d1; border-radius: 10px; background: #edf5f7; color: var(--blue); font-size: 19px; line-height: 1; cursor: pointer; }
-.sheet-speak-button:hover, .sheet-speak-button:focus-visible { border-color: var(--blue); background: #dfeef2; outline: 2px solid rgba(56,105,135,.2); outline-offset: 1px; }
+.sheet-word { color: var(--navy); font: 700 17px/1.35 "Andika Learning", "Segoe UI", Roboto, sans-serif; }
+.sheet-word-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sheet-word-line span { min-width: 0; overflow-wrap: anywhere; }
+.sheet-speak-button { flex: 0 0 40px; width: 40px; height: 40px; padding: 0; border: 1px solid #b8c9d1; border-radius: 50%; background: #fffdf7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23263f51' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9h4l5-4v14l-5-4H4z' fill='%23263f51'/%3E%3Cpath d='M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12'/%3E%3C/svg%3E") center / 20px no-repeat; cursor: pointer; }
+.sheet-speak-button:hover, .sheet-speak-button:focus-visible { border-color: var(--blue); background-color: #dfeef2; outline: 2px solid rgba(56,105,135,.2); outline-offset: 1px; }
+/* 줄 끝 화살표: 이 낱말이 든 차시의 이 카드로 바로 간다. */
+.word-sheet td.sheet-go { padding: 6px; text-align: center; }
+.sheet-go-button { width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M12 6l6 6-6 6'/%3E%3C/svg%3E") center / 22px no-repeat; box-shadow: 0 3px 8px rgba(37,48,42,.18); cursor: pointer; transition: transform .12s ease, filter .12s ease; }
+.sheet-go-button:hover { filter: brightness(1.1); transform: translateX(2px); }
+.sheet-go-button:focus-visible { outline: 3px solid rgba(72,114,90,.35); outline-offset: 2px; }
+.word-sheet tbody tr.sheet-row-flash > * { animation: sheet-row-flash 1.6s ease-out; }
+@keyframes sheet-row-flash { 0%, 35% { background: #fff1c7; } 100% { background: transparent; } }
 .study-screen { width: min(840px, 100%); margin: 0 auto; }
 .study-toolbar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin-bottom: 10px; text-align: center; }
 .study-toolbar h1 { margin: 0; font-size: 27px; line-height: 1.1; font-weight: 900; }
@@ -650,6 +661,15 @@ body:has(#levelScreen:not([hidden])) main { padding-bottom: 14px; }
 }
 
 @media (max-width: 620px) {
+    .sheet-row-col { width: 40px; }
+    .sheet-level-col { width: 62px; }
+    .sheet-word-col { width: 114px; }
+    .sheet-go-col { width: 52px; }
+    .word-sheet th, .word-sheet td { padding: 6px 5px; }
+    .sheet-level { font-size: 11.5px; }
+    .sheet-word { font-size: 15px; }
+    .sheet-speak-button { flex-basis: 34px; width: 34px; height: 34px; background-size: 17px; }
+    .sheet-go-button { width: 40px; height: 40px; }
     main { width: min(100% - 24px, 1160px); padding-top: 16px; }
     .dashboard-heading { grid-template-columns: 1fr auto; gap: 8px 14px; }
     .dashboard-heading > div { grid-column: 1 / -1; grid-row: 2; }
