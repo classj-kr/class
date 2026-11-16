@@ -156,14 +156,18 @@
   const paint = (k, ph) => { svg.setAttribute('viewBox', '0 0 460 310'); svg.innerHTML = mixingSvg(st, k, ph, M.tested); };
   const animate = st.stage === 'after' && !reduce() && !(M.last && M.last.acid === st.acid && M.last.stage === 'after');
   M.last = { ...st };
+  // 섞고 온도가 오르는 동안에는 결과 문장을 가렸다가, 점이 찍힌 뒤 보인다.
+  const veil = on => { if (!obs) return; obs.style.transition = 'opacity .35s'; obs.style.opacity = on ? '0' : ''; if (on) svg.setAttribute('data-animb-busy', '1'); else svg.removeAttribute('data-animb-busy'); };
+  veil(false);
   if (st.stage !== 'after') { paint(0, 0); return; }
   if (!animate) { M.tested.add(+st.acid); paint(1, 0); return; }
+  veil(true);
   const start = performance.now(), dur = 3200;
   const step = now => {
-   if (!svg.isConnected) return;
+   if (!svg.isConnected) { veil(false); return; }
    const t = Math.min(1, Math.max(0, (now - start) / dur));
    paint(t, now / 1000);
-   if (t < 1) M.frame = requestAnimationFrame(step); else { M.tested.add(+st.acid); paint(1, now / 1000); }
+   if (t < 1) M.frame = requestAnimationFrame(step); else { M.tested.add(+st.acid); paint(1, now / 1000); veil(false); }
   };
   M.frame = requestAnimationFrame(step);
  }

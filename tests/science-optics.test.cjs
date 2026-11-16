@@ -23,7 +23,7 @@ for(const engine of ['chromium','webkit'])test(engine+': all optical conditions,
  try{
   const {context,p}=await open();
   for(const width of [1366,1180,1024,820,768,390]){await p.setViewportSize({width,height:width===820?1180:1024});for(const optic of optics)for(const distance of distances){
-   await p.evaluate(scenario,optic+':'+distance);await p.evaluate(()=>new Promise(r=>requestAnimationFrame(r)));
+   await p.evaluate(scenario,optic+':'+distance);await p.waitForFunction(()=>!document.querySelector('[data-animb-busy]'));await p.evaluate(()=>new Promise(r=>requestAnimationFrame(r)));
    assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,width+' '+optic+':'+distance);
    assert.deepEqual(await p.evaluate(clip),[]);assert.equal(await p.locator('[data-ray-direction=light]').count(),4);
    assert.deepEqual(await p.locator('[data-supplement-choice]').evaluateAll(es=>es.filter(e=>e.getBoundingClientRect().height<43.5||e.scrollWidth>e.clientWidth+2).map(e=>e.textContent)),[]);

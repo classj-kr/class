@@ -62,6 +62,9 @@ function requiredExperimentModels(){
  const apparatus=typeof module!=='undefined'?require('./apparatus-scenes.js'):window.scienceApparatusScenes;
  for(const spec of Object.values(specs).flat())if(apparatus?.ids.includes(spec.id)){
   const view=spec.view;spec.view=state=>{const result=view(state),figure=apparatus.render(spec.id,state,result);return{...result,svg:figure.svg,figure};};
+  // In-between pictures of the physical process (k: 0..1) and how long the change plays.
+  spec.frame=(state,prev,k)=>apparatus.render(spec.id,state,view(state),{k,prev,prevView:view(prev)}).svg;
+  spec.motion=(prev,state)=>apparatus.motion(spec.id,prev,state);
  }
  return specs;
 }
@@ -70,19 +73,33 @@ if(typeof window!=='undefined')(()=>{
  window.requiredExperimentModels=requiredExperimentModels;
  const parts=location.pathname.split('/').filter(Boolean),slug=parts.at(-1)==='index.html'?parts.at(-2):parts.at(-1),specs=requiredExperimentModels()[slug];
  if(specs){
-  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('required-experiments.css?v=ddedd4e629af',document.currentScript.src);document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('required-experiments.css?v=e85e95d0fe7d',document.currentScript.src);document.head.append(css);
   const panel=document.createElement('section');panel.id='required-experiments';panel.className='panel required-experiments';panel.setAttribute('aria-label','실험으로 확인하기');
   panel.innerHTML='<h2>실험으로 확인하기</h2><nav class="required-tabs" aria-label="실험 선택"></nav><div class="required-layout"><div class="required-controls"></div><div><div class="required-visuals"><figure class="apparatus-main"><svg class="required-figure" viewBox="0 0 460 310" role="img"></svg><figcaption class="apparatus-caption"></figcaption></figure><div class="apparatus-explanation" hidden></div></div><div class="apparatus-key" hidden></div><p class="required-observation" aria-live="polite"></p><dl class="required-readings"></dl></div></div><div class="required-actions"><button type="button" data-reset>처음으로</button></div><div class="required-check"></div><p class="required-note"></p>';
   const anchor=document.querySelector('.meaning-panel,.interpretation,.quiz-section');if(anchor)anchor.before(panel);else document.querySelector('main').append(panel);
   const saved=specs.map(s=>({state:{...s.initial}}));
-  let selected=0,state={...saved[0].state},last;
+  let selected=0,state={...saved[0].state},last,shown=null,frameId=0;
+  // A changed condition that stands for a physical process plays over time, then settles on the final picture.
+  // The observation text is already set; it stays visually hidden until the picture has played.
+  function play(spec,before,target,result){
+   cancelAnimationFrame(frameId);panel.classList.remove('is-playing');
+   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,ms=before&&result.figure&&spec.motion&&!reduce?spec.motion(before,target):0;
+   if(!ms)return;
+   const svg=at('svg'),from={...before},to={...target},start=performance.now();panel.classList.add('is-playing');
+   const frame=now=>{const k=Math.min(1,(now-start)/ms);
+    if(k<1){try{svg.innerHTML=spec.frame(to,from,k);}catch(e){svg.innerHTML=result.svg;panel.classList.remove('is-playing');throw e;}frameId=requestAnimationFrame(frame);}
+    else{svg.innerHTML=result.svg;panel.classList.remove('is-playing');frameId=0;}
+   };
+   svg.innerHTML=spec.frame(to,from,0);frameId=requestAnimationFrame(frame);
+  }
   const at=s=>panel.querySelector(s),el=(tag,txt)=>{const e=document.createElement(tag);e.textContent=txt;return e;};
   at('.required-tabs').replaceChildren(...specs.map((v,i)=>{const b=el('button',v.title);b.type='button';b.dataset.experiment=v.id;b.setAttribute('aria-pressed',String(i===selected));b.onclick=()=>{saved[selected]={state:{...state}};selected=i;state={...saved[i].state};render();at(`[data-experiment="${v.id}"]`).focus({preventScroll:true});};return b;}));
   function render(){const spec=specs[selected];
    at('.required-tabs').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===selected)));
    at('.required-controls').replaceChildren(...spec.fields.map(f=>{const label=el('label',f.title),select=document.createElement('select');select.dataset.requiredField=f.key;select.setAttribute('aria-label',f.title);for(const o of f.items){const option=el('option',o.text);option.value=o.value;select.append(option);}select.value=state[f.key];select.onchange=()=>{state[f.key]=select.value;render();at(`[data-required-field="${f.key}"]`).focus({preventScroll:true});};label.append(select);return label;}));
    last=spec.view(state);panel.toggleAttribute('data-apparatus',!!last.figure);
-   at('svg').innerHTML=last.svg;at('svg').setAttribute('viewBox',last.figure?.viewBox||'0 0 460 310');at('svg').setAttribute('aria-label',last.figure?.caption||spec.title);
+   const before=shown&&shown.id===spec.id?shown.state:null;shown={id:spec.id,state:{...state}};
+   at('svg').innerHTML=last.svg;play(spec,before,state,last);at('svg').setAttribute('viewBox',last.figure?.viewBox||'0 0 460 310');at('svg').setAttribute('aria-label',last.figure?.caption||spec.title);
    at('.apparatus-caption').textContent=last.figure?.caption||'';at('.apparatus-caption').hidden=!last.figure;
    at('.apparatus-explanation').innerHTML=last.figure?.detail||'';at('.apparatus-explanation').hidden=!last.figure?.detail;
    at('.apparatus-key').innerHTML=last.figure?.legend||'';at('.apparatus-key').hidden=!last.figure?.legend;

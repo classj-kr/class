@@ -46,3 +46,5 @@
 .curriculum-supplement .supplement-guidance{font-size:14px;line-height:1.8;font-weight:400;color:#34515a;margin:0 0 18px}
 
 .curriculum-supplement .supplement-specimens figcaption{font-family:var(--science-reading-font,serif)}
+
+.curriculum-supplement[data-supplement-playing] .supplement-observation{color:#5b7380}

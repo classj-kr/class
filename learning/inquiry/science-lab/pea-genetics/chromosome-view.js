@@ -90,19 +90,24 @@
   if (!svg || svg.querySelector('[data-local-art]')) return;
   const st = window.__scienceSupplement?.getState?.(); if (!st) return;
   cancelAnimationFrame(frame);
+  // 염색체가 움직이는 동안에는 결과 문장을 가렸다가, 나뉨이 끝나면 보인다.
+  const obs = section.querySelector('.supplement-observation');
+  const veil = on => { if (!obs) return; obs.style.transition = 'opacity .35s'; obs.style.opacity = on ? '0' : ''; if (on) svg.setAttribute('data-animb-busy', '1'); else svg.removeAttribute('data-animb-busy'); };
+  veil(false);
   const target = layout(st.kind, st.step), prev = shown;
   shown = { kind: st.kind, step: st.step };
   if (reduce() || !prev || prev.kind !== st.kind || prev.step === st.step) { paint(svg, target); return; }
+  veil(true);
   // From the first picture to the second, go through the line-up in the middle.
   const path = prev.step === 'start' && st.step !== 'start' ? [layout(st.kind, 'start'), layout(st.kind, 'meta'), layout(st.kind, 'middle')].concat(st.step === 'end' ? [target] : [])
    : [layout(prev.kind, prev.step), target];
   const legs = path.length - 1, dur = 900 * legs, start = performance.now();
   const step = now => {
-   if (!svg.isConnected) return;
+   if (!svg.isConnected) { veil(false); return; }
    const t = Math.min(1, Math.max(0, (now - start) / dur)), pos = t * legs, i = Math.min(legs - 1, Math.floor(pos)), u = pos - i;
    const e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
    paint(svg, mix(path[i], path[i + 1], e));
-   if (t < 1) frame = requestAnimationFrame(step); else paint(svg, target);
+   if (t < 1) frame = requestAnimationFrame(step); else { paint(svg, target); veil(false); }
   };
   frame = requestAnimationFrame(step);
  }
