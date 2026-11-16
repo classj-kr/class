@@ -9,9 +9,7 @@
     large: { rows: 6, cols: 10, pairs: 30, rank: 3 }
   };
   const HINTS = 3;
-  const SHUFFLES = 2;
   const WRONG_PENALTY = 5;
-  const STUCK_PENALTY = 10;
   const COMBO_WINDOW = 4000;
 
   const boardEl = $('board');
@@ -54,7 +52,6 @@
   let tiles = [];        // 칸 번호 → 단추
   let selected = -1;
   let hintsLeft = HINTS;
-  let shufflesLeft = SHUFFLES;
   let penalty = 0;
   let bonus = 0;
   let combo = 0;
@@ -101,10 +98,6 @@
     for (let i = 0; i < 4; i += 1) tone(note(PENTA[Math.min(top + i, PENTA.length - 1)] + 12), 0.1 + i * 0.05, 0.18, { type: 'square', gain: 0.05 });
   }
   function soundSelect() { tone(880, 0, 0.07, { type: 'sine', gain: 0.1, slide: 1.25 }); }
-  function soundBlocked() { tone(220, 0, 0.12, { type: 'square', gain: 0.06, slide: 0.8 }); tone(196, 0.09, 0.14, { type: 'square', gain: 0.05, slide: 0.8 }); }
-  function soundShuffle() {
-    for (let i = 0; i < 7; i += 1) tone(300 + Math.random() * 500, i * 0.035, 0.08, { type: 'triangle', gain: 0.06, slide: 1.6 });
-  }
   function soundHint() { [0, 4, 7, 12].forEach((s, i) => tone(note(s + 12), i * 0.07, 0.25, { type: 'sine', gain: 0.08 })); }
   function soundWin() { [0, 4, 7, 12, 16, 19, 24].forEach((s, i) => tone(note(s), i * 0.09, 0.35, { type: 'triangle', gain: 0.14 })); }
 
@@ -149,7 +142,7 @@
     const seed = Math.floor(Math.random() * 2 ** 31) || 7;
     const rand = L.rng(seed);
     const pairs = pickPairs(level, spec.pairs, rand);
-    return { level, size: key, rows: spec.rows, cols: spec.cols, seed, words: pairs, board: L.generate(spec.rows, spec.cols, pairs.length, seed + 1) };
+    return { level, size: key, rows: spec.rows, cols: spec.cols, seed, words: pairs, board: L.shuffleInPlace([...Array(pairs.length * 2).keys(), ...Array(spec.rows * spec.cols - pairs.length * 2).fill(-1)], L.rng(seed + 1)) };
   }
 
   /* ---------- 판 그리기 ---------- */
@@ -276,11 +269,8 @@
   function updateCounters() {
     const left = board.filter(t => t >= 0).length;
     $('tilesLeft').textContent = String(left);
-    $('movesLeft').textContent = String(left ? L.availableMoves(board, puzzle.rows, puzzle.cols).length : 0);
     $('hintCount').textContent = String(hintsLeft);
-    $('shuffleCount').textContent = String(shufflesLeft);
     $('hintButton').disabled = finished || hintsLeft <= 0;
-    $('shuffleButton').disabled = finished || shufflesLeft <= 0;
   }
 
   /* ---------- 연출 ---------- */
@@ -382,15 +372,9 @@
       setStatus(`짝이 아닙니다 · +${WRONG_PENALTY}초`, 'fail');
       return;
     }
-    const path = L.findPath(board, puzzle.rows, puzzle.cols, a, i);
-    if (!path) {
-      nudge(a, 'blocked'); nudge(i, 'blocked');
-      soundBlocked();
-      setSelected(-1);
-      setStatus('짝은 맞지만 선이 막혔습니다. 두 번 넘게 꺾이거나 패를 지나갑니다.');
-      return;
-    }
-    removePair(a, i, path);
+    // 판 어디에 있든 낱말과 뜻이 맞으면 지운다(길을 따지지 않는다 — 뜻을 떠올리는 것이 이 판의 일).
+    const at = k => [Math.floor(k / puzzle.cols) + 1, k % puzzle.cols + 1];
+    removePair(a, i, [at(a), at(i)]);
   }
 
   function setSelected(i) {
@@ -440,68 +424,17 @@
 
   function afterMove() {
     if (!board.some(t => t >= 0)) { win(); return; }
-    if (!L.availableMoves(board, puzzle.rows, puzzle.cols, 1).length) {
-      if (shufflesLeft > 0) {
-        shufflesLeft -= 1;
-        setStatus('지울 짝이 없어 재배치를 썼습니다.');
-      } else {
-        penalty += STUCK_PENALTY;
-        floatText(geometry.width / 2, geometry.height / 2, `+${STUCK_PENALTY}초`, 'penalty');
-        setStatus(`지울 짝이 없어 판을 섞었습니다 · +${STUCK_PENALTY}초`, 'fail');
-      }
-      reshuffle();
-      return;
-    }
     updateCounters();
-  }
-
-  function reshuffle() {
-    const before = new Map();
-    tiles.forEach((tile, i) => { if (tile) before.set(board[i], tile.getBoundingClientRect()); });
-    board = L.reshuffle(board, puzzle.rows, puzzle.cols, random);
-    // 단추는 패에 붙어 있으니 패가 옮겨 간 칸으로 단추를 옮긴다.
-    const tileOf = new Map();
-    tiles.forEach(tile => { if (tile) tileOf.set(tile.dataset.tile, tile); });
-    const next = board.map(() => null);
-    board.forEach((t, i) => {
-      if (t < 0) return;
-      const tile = tileOf.get(String(t));
-      next[i] = tile;
-      tile.dataset.i = String(i);
-      placeTile(tile, i);
-    });
-    tiles = next;
-    soundShuffle();
-    playSfx('card');
-    tiles.forEach((tile, i) => {
-      if (!tile) return;
-      const old = before.get(board[i]);
-      const now = tile.getBoundingClientRect();
-      if (!old) return;
-      tile.animate([
-        { transform: `translate(${old.left - now.left}px, ${old.top - now.top}px) rotate(${(Math.random() - 0.5) * 40}deg) scale(.85)` },
-        { transform: 'translate(0, 0) rotate(0) scale(1)' }
-      ], { duration: 520 + Math.random() * 200, easing: 'cubic-bezier(.2,.9,.3,1.15)' });
-    });
-    clearHints();
-    setSelected(-1);
-    updateCounters();
-  }
-
-  function useShuffle() {
-    if (finished || paused || busy || shufflesLeft <= 0) return;
-    shufflesLeft -= 1;
-    setStatus('');
-    reshuffle();
   }
 
   function useHint() {
     if (finished || paused || busy || hintsLeft <= 0) return;
-    const moves = L.availableMoves(board, puzzle.rows, puzzle.cols);
-    if (!moves.length) return;
+    const words = board.map((t, k) => (t >= 0 && !(t & 1) ? k : -1)).filter(k => k >= 0);
+    if (!words.length) return;
     hintsLeft -= 1;
     clearHints();
-    const [a, b] = moves[Math.floor(Math.random() * moves.length)];
+    const a = words[Math.floor(Math.random() * words.length)];
+    const b = board.indexOf(board[a] ^ 1);
     tiles[a]?.classList.add('hinted');
     tiles[b]?.classList.add('hinted');
     soundHint();
@@ -517,7 +450,6 @@
     board = data.board.slice();
     random = L.rng((data.seed || 1) + 99);
     hintsLeft = HINTS;
-    shufflesLeft = SHUFFLES;
     penalty = 0; bonus = 0; combo = 0; lastMatchAt = 0; removedPairs = 0;
     elapsedMs = 0; runningSince = 0;
     window.clearInterval(timerId);
@@ -540,7 +472,7 @@
 
   function newPuzzle() {
     if (race.active) return;
-    activityRound = window.LearningActivity?.round('sachunseong', () => `사천성 · ${words.labels[levelKey] || levelKey} · ${size.pairs}쌍`);
+    activityRound = window.LearningActivity?.round('sachunseong', () => `짝 찾기 · ${words.labels[levelKey] || levelKey} · ${size.pairs}쌍`);
     activityRound?.reset();
     loadPuzzle(createPuzzle(levelKey, sizeKey));
     window.RaceMusic?.set('race');
@@ -636,7 +568,7 @@
   const sizeLabel = key => `${SIZES[key].cols} × ${SIZES[key].rows} · ${SIZES[key].pairs}쌍`;
   const race = window.ClassroomPuzzleRace.create({
     gameId: 'sachunseong',
-    title: '사천성',
+    title: '짝 찾기',
     maxPlayers: 8,
     settings: [
       { key: 'level', label: '단계', options: levelKeys.map(key => ({ value: key, label: words.labels[key] || key })) },
@@ -667,7 +599,6 @@
     if (tile) select(Number(tile.dataset.i));
   });
   $('hintButton').addEventListener('click', useHint);
-  $('shuffleButton').addEventListener('click', useShuffle);
   $('newGameButton').addEventListener('click', newPuzzle);
   $('playAgainButton').addEventListener('click', newPuzzle);
   $('startButton').addEventListener('click', startGame);

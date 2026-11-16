@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#1d130d">
-  <title>사천성</title>
+  <title>짝 찾기</title>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
   <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261117-shisen">
-  <link rel="stylesheet" href="styles.css?v=20261117-1">
+  <link rel="stylesheet" href="styles.css?v=20261117-2">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
@@ -23,7 +23,7 @@
 <body data-game-navigation="single-player" data-entry-game="sachunseong" data-sfx-feedback="none">
   <main class="page-shell">
     <section class="start-screen screen" id="startScreen" data-game-entry aria-labelledby="startTitle">
-      <h1 class="start-title" id="startTitle"><span>사천성</span></h1>
+      <h1 class="start-title" id="startTitle"><span>짝 찾기</span></h1>
 
       <p class="player-line" id="playerLine"></p>
 
@@ -53,10 +53,10 @@
     </section>
 
     <section class="game-panel screen" id="gameScreen" aria-labelledby="gameTitle" hidden>
-      <h1 id="gameTitle" class="visually-hidden">사천성</h1>
+      <h1 id="gameTitle" class="visually-hidden">짝 찾기</h1>
       <div class="board-area" id="boardArea">
         <div class="board-wrap" id="boardWrap">
-          <div class="tile-board" id="board" role="grid" aria-label="사천성 판"></div>
+          <div class="tile-board" id="board" role="grid" aria-label="짝 찾기 판"></div>
           <svg class="link-layer" id="linkLayer" aria-hidden="true"></svg>
           <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
         </div>
@@ -70,13 +70,11 @@
 
         <div class="stats" aria-label="게임 기록">
           <div><span>남은 패</span><strong id="tilesLeft">0</strong></div>
-          <div class="stat-moves"><span>지울 수 있는 짝</span><strong id="movesLeft">0</strong></div>
           <div><span>TIME</span><strong id="timer">00:00</strong></div>
         </div>
 
         <div class="tools" role="group" aria-label="도움 쓰기">
           <button type="button" id="hintButton" class="tool-button"><span class="tool-key">힌트</span><strong id="hintCount">3</strong></button>
-          <button type="button" id="shuffleButton" class="tool-button"><span class="tool-key">재배치</span><strong id="shuffleCount">2</strong></button>
         </div>
 
         <div class="race-standings" id="raceStandings" hidden></div>
@@ -110,31 +108,28 @@
         </header>
         <div class="solve-guide">
           <div class="guide-demo" aria-hidden="true">
-            <svg viewBox="0 0 220 120">
-              <rect x="6" y="66" width="44" height="34" rx="5" class="g-tile en"/><text x="28" y="84" class="g-en">apple</text>
-              <rect x="88" y="20" width="44" height="34" rx="5" class="g-tile"/><text x="110" y="38" class="g-ko">책</text>
-              <rect x="88" y="66" width="44" height="34" rx="5" class="g-tile"/><text x="110" y="84" class="g-ko">학교</text>
-              <rect x="170" y="66" width="44" height="34" rx="5" class="g-tile ko"/><text x="192" y="84" class="g-ko">사과</text>
-              <polyline points="28,66 28,9 192,9 192,66" class="g-line"/>
+            <svg viewBox="0 0 220 84">
+              <rect x="10" y="10" width="44" height="34" rx="5" class="g-tile en"/><text x="32" y="28" class="g-en">apple</text>
+              <rect x="88" y="10" width="44" height="34" rx="5" class="g-tile"/><text x="110" y="28" class="g-ko">학교</text>
+              <rect x="88" y="44" width="44" height="34" rx="5" class="g-tile"/><text x="110" y="62" class="g-en">book</text>
+              <rect x="166" y="44" width="44" height="34" rx="5" class="g-tile ko"/><text x="188" y="62" class="g-ko">사과</text>
+              <line x1="32" y1="27" x2="188" y2="61" class="g-line"/>
             </svg>
           </div>
           <h3>기본 규칙</h3>
           <ol>
             <li>영어 낱말 패와 그 뜻이 적힌 패가 한 짝입니다. <strong>두 패를 차례로 누르면</strong> 짝이 맞을 때 둘 다 사라집니다.</li>
-            <li>두 패 사이를 <strong>선으로 이을 수 있어야</strong> 지울 수 있습니다. 선은 빈칸으로만 지나가고, <strong>두 번까지만 꺾일 수 있습니다</strong>(곧은 선 세 토막까지).</li>
-            <li>판 바깥 둘레도 빈 길이라 선이 판 밖으로 돌아 나갈 수 있습니다.</li>
+            <li>짝은 판 어디에 있어도 지울 수 있습니다.</li>
             <li>패를 모두 지우면 끝납니다. 걸린 시간이 기록입니다.</li>
           </ol>
           <h3>시간이 더해지는 일</h3>
           <ol>
-            <li>짝이 아닌 낱말과 뜻을 고르면 <strong>5초</strong>가 더해집니다. 짝은 맞는데 선이 막혔으면 시간은 그대로입니다.</li>
-            <li>재배치를 다 쓴 뒤 지울 짝이 하나도 없으면 판이 저절로 섞이고 <strong>10초</strong>가 더해집니다.</li>
+            <li>짝이 아닌 낱말과 뜻을 고르면 <strong>5초</strong>가 더해집니다.</li>
           </ol>
-          <h3>콤보와 도움</h3>
+          <h3>콤보와 힌트</h3>
           <ol>
             <li>앞 짝을 지우고 <strong>4초 안에</strong> 다음 짝을 지우면 콤보가 이어집니다. 콤보가 셋째부터는 짝마다 <strong>1초</strong>가 줄어듭니다.</li>
-            <li><strong>힌트</strong>(판마다 3번)는 지금 지울 수 있는 짝 하나를 반짝여 줍니다.</li>
-            <li><strong>재배치</strong>(판마다 2번)는 남은 패를 지금 자리끼리 섞습니다. 지울 짝이 없으면 저절로 한 번 씁니다.</li>
+            <li><strong>힌트</strong>(판마다 3번)는 남은 짝 하나를 반짝여 줍니다.</li>
           </ol>
           <h3>순위전</h3>
           <ol>
@@ -149,6 +144,6 @@
 
   <script src="logic.js?v=20261117-1"></script>
   <script src="/assets/learning-activity.js?v=20261116-2"></script>
-  <script src="app.js?v=20261117-3"></script>
+  <script src="app.js?v=20261117-4"></script>
 </body>
 </html>

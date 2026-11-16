@@ -88,13 +88,12 @@ body.playing .game-panel { height: calc(var(--site-game-height, 100dvh) - 72px);
 .text-button { min-height: 44px; border: 0; padding: 0; background: none; color: var(--muted); font-weight: 800; cursor: pointer; }
 body.pr-racing #settingsButton, body.pr-racing .actions { display: none; }
 
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid rgba(255,255,255,.1); }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); border-block: 1px solid rgba(255,255,255,.1); }
 .stats div { display: grid; gap: 2px; padding: 8px 2px; }
 .stats span { color: var(--muted); font-size: .7rem; line-height: 1.2; word-break: keep-all; }
 .stats strong { font-size: 1.35rem; font-variant-numeric: tabular-nums; }
-.stat-moves strong { color: var(--gold-bright); }
 
-.tools { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tools { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .tool-button { display: flex; align-items: center; justify-content: space-between; gap: 4px; min-height: 48px; padding: 6px 8px 6px 10px; white-space: nowrap; border: 1px solid rgba(255,217,138,.45); border-radius: 12px; color: var(--ink); background: linear-gradient(180deg, rgba(255,217,138,.16), rgba(0,0,0,.25)); cursor: pointer; font-weight: 800; }
 .tool-button strong { display: grid; place-items: center; min-width: 30px; height: 30px; border-radius: 50%; color: #2a170b; background: var(--gold-bright); font-size: 1rem; }
 .tool-button:not(:disabled):hover { filter: brightness(1.15); }
