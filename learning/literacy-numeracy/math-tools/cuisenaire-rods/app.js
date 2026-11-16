@@ -6,6 +6,8 @@
     $ = U.$;
 
   let hitboxes = [];
+  let animFrame = 0;
+  let animState = null;
 
   function chooseTickStep(maxScale, gcd) {
     if (gcd > 1 && maxScale / gcd <= 18) return gcd;
@@ -14,28 +16,25 @@
     return nice.find((s) => s >= raw) || Math.ceil(raw);
   }
 
-  function render(s) {
-    hitboxes = [];
-    const info = C.analysis(s);
-    U.pressed("labels", s.showNumbers);
-    U.pressed("toggle-third-row", s.rows.length === 3);
-    $("toggle-third-row").textContent =
-      s.rows.length === 3 ? "2줄로 줄이기" : "3줄 비교";
-
-    // Sync preset select
-    const matchedPreset = Object.entries(C.PRESETS).find(
-      ([, p]) =>
-        p.rows.length === s.rows.length &&
-        p.rows.every((r, i) => r.unit === s.rows[i].unit),
-    );
-    $("preset").value = matchedPreset ? matchedPreset[0] : "";
-
-    // Calculate horizontal scale so current rods + 1 ghost rod fit comfortably
+  function computeTargetScale(s, info) {
+    const maxUnit = Math.max(...s.rows.map((r) => r.unit));
     const maxWithGhost = Math.max(
       ...s.rows.map((r) => r.unit * (r.count + 1)),
-      s.rows[0].unit * 2,
+      maxUnit * 3,
     );
-    const maxScale = Math.ceil(maxWithGhost * 1.06);
+    // Keep a stable scale horizon up to the first LCM when reachable so rods don't rescale on every click
+    const baseHorizon = info.canAutoMatch
+      ? Math.max(info.lcm + maxUnit, maxUnit * 3)
+      : maxUnit * 4;
+    const needed = Math.max(maxWithGhost, baseHorizon);
+    return Math.ceil(needed * 1.05);
+  }
+
+  function drawStage(s, info, view) {
+    hitboxes = [];
+    const maxScale = view.scale;
+    const targetScale = view.targetScale;
+    const stageH = view.stageH;
 
     const trackLeft = 126;
     const trackRight = 996;
@@ -45,10 +44,9 @@
     const rowStartY = 104;
     const rowGap = 92;
     const rodH = 52;
-    const stageH = rowStartY + s.rows.length * rowGap + 56;
-    $("stage").setAttribute("viewBox", `0 0 1040 ${stageH}`);
+    $("stage").setAttribute("viewBox", `0 0 1040 ${Number(stageH.toFixed(1))}`);
 
-    let svg = `<rect x="14" y="12" width="1012" height="${stageH - 24}" rx="20" class="paper"/>`;
+    let svg = `<rect x="14" y="12" width="1012" height="${Number((stageH - 24).toFixed(1))}" rx="20" class="paper"/>`;
 
     // Ruler at top
     const rulerY = 64;
@@ -59,22 +57,26 @@
       rulerY,
       'stroke="#6b8478" stroke-width="2.5"',
     );
-    const step = chooseTickStep(maxScale, info.gcd);
-    for (let v = 0; v <= maxScale; v += step) {
+    const step = chooseTickStep(Math.round(targetScale), info.gcd);
+    const tickLimit = Math.ceil(Math.max(maxScale, targetScale));
+    for (let v = 0; v <= tickLimit; v += step) {
       const px = xOf(v);
+      if (px > trackRight + 1) break;
+      const edgeFade = px > trackRight - 14 ? Math.max(0, (trackRight - px) / 14) : 1;
+      const opacityAttr = edgeFade < 1 ? ` opacity="${edgeFade.toFixed(2)}"` : "";
       svg += U.line(
         px,
         rulerY - 8,
         px,
         rulerY + 8,
-        'stroke="#6b8478" stroke-width="1.8"',
+        `stroke="#6b8478" stroke-width="1.8"${opacityAttr}`,
       );
       if (s.showNumbers) {
         svg += U.text(
           px,
           rulerY - 22,
           String(v),
-          'class="number" style="font-size:15px;fill:#526b60;font-weight:700"',
+          `class="number" style="font-size:15px;fill:#526b60;font-weight:700"${opacityAttr}`,
         );
       }
     }
@@ -84,6 +86,12 @@
       const cy = rowStartY + rowIndex * rowGap;
       const style = C.styleForRod(row.unit, rowIndex);
       const isSelected = s.selectedRow === rowIndex;
+      const dispUnit = view.units[rowIndex] ?? row.unit;
+      const dispCount = view.counts[rowIndex] ?? row.count;
+      const rowAlpha = view.rowAlphas[rowIndex] ?? 1;
+      const rowGroupOpen = rowAlpha < 0.999 ? `<g opacity="${rowAlpha.toFixed(2)}">` : "";
+      const rowGroupClose = rowAlpha < 0.999 ? `</g>` : "";
+      svg += rowGroupOpen;
 
       // Left row badge
       svg += `<rect x="26" y="${cy}" width="86" height="${rodH}" rx="12" fill="${isSelected ? "#e3efe8" : "#f3f1e9"}" stroke="${isSelected ? "#305f50" : "#cfd8ce"}" stroke-width="${isSelected ? 2.5 : 1.5}"/>`;
@@ -105,64 +113,65 @@
       // Faint guide track
       svg += `<rect x="${trackLeft}" y="${cy}" width="${trackW}" height="${rodH}" rx="10" fill="#f5f3eb" stroke="#e3e7de" stroke-width="1"/>`;
 
-      // Placed rods end-to-end
-      for (let i = 0; i < row.count; i++) {
-        const startVal = i * row.unit;
-        const endVal = (i + 1) * row.unit;
+      // Placed rods end-to-end (with smooth fractional extension/retraction on the trailing rod)
+      const visualRodCount = Math.max(1, Math.ceil(dispCount - 1e-4));
+      for (let i = 0; i < visualRodCount; i++) {
+        const frac = M.clamp(dispCount - i, 0, 1);
+        if (frac <= 0.005) continue;
+        const startVal = i * dispUnit;
+        const endVal = (i + frac) * dispUnit;
         const rx = xOf(startVal);
-        const rw = Math.max(8, xOf(endVal) - rx);
+        const rw = Math.max(4, xOf(endVal) - rx);
+        const rodOpacity = frac < 1 ? (0.35 + 0.65 * frac).toFixed(2) : "1";
+        const opAttr = frac < 1 ? ` opacity="${rodOpacity}"` : "";
 
         // Rod body with subtle 3D bottom bevel
-        svg += `<rect x="${rx + 1}" y="${cy + 2}" width="${rw - 2}" height="${rodH - 4}" rx="8" fill="${style.fill}" stroke="${style.stroke}" stroke-width="2"/>`;
-        svg += `<rect x="${rx + 3}" y="${cy + rodH - 10}" width="${Math.max(4, rw - 6)}" height="6" rx="3" fill="#000000" fill-opacity="0.12"/>`;
+        svg += `<rect x="${rx + 1}" y="${cy + 2}" width="${Math.max(2, rw - 2)}" height="${rodH - 4}" rx="8" fill="${style.fill}" stroke="${style.stroke}" stroke-width="2"${opAttr}/>`;
+        if (rw > 8) {
+          svg += `<rect x="${rx + 3}" y="${cy + rodH - 10}" width="${Math.max(2, rw - 6)}" height="6" rx="3" fill="#000000" fill-opacity="${(0.12 * Number(rodOpacity)).toFixed(3)}"/>`;
+        }
 
-        if (s.showNumbers && rw >= 30) {
+        if (s.showNumbers && rw >= 30 && frac > 0.65) {
           svg += U.text(
             rx + rw / 2,
             cy + rodH / 2 - 1,
             String(row.unit),
-            `class="number" style="font-size:${rw < 44 ? 15 : 19}px;font-weight:800;fill:${style.text}"`,
+            `class="number" style="font-size:${rw < 44 ? 15 : 19}px;font-weight:800;fill:${style.text}"${opAttr}`,
           );
         }
 
         // Cumulative length number below the right seam of each rod
-        if (s.showNumbers) {
-          const isMatch = info.matches.includes(endVal);
+        const seamVal = (i + 1) * row.unit;
+        if (s.showNumbers && i < row.count && frac > 0.55) {
+          const isMatch = info.matches.includes(seamVal);
           svg += U.text(
             rx + rw,
             cy + rodH + 18,
-            String(endVal),
-            `class="number" style="font-size:${isMatch ? 16 : 14}px;font-weight:${isMatch ? 800 : 700};fill:${isMatch ? "#b86b00" : "#566f64"}"`,
+            String(seamVal),
+            `class="number" style="font-size:${isMatch ? 16 : 14}px;font-weight:${isMatch ? 800 : 700};fill:${isMatch ? "#b86b00" : "#566f64"}"${opAttr}`,
           );
         }
+      }
 
-        // Clicking the last rod removes it (if count > 1)
-        if (i === row.count - 1) {
-          hitboxes.push({
-            x: rx,
-            y: cy,
-            w: rw,
-            h: rodH,
-            action: row.count > 1 ? "remove" : "select",
-            rowIndex,
-          });
-        } else {
-          hitboxes.push({
-            x: rx,
-            y: cy,
-            w: rw,
-            h: rodH,
-            action: "select",
-            rowIndex,
-          });
-        }
+      // Hitboxes use target positions so rapid clicks work immediately without waiting for animation
+      for (let i = 0; i < row.count; i++) {
+        const rx = xOf(i * dispUnit);
+        const rw = Math.max(8, xOf((i + 1) * dispUnit) - rx);
+        hitboxes.push({
+          x: rx,
+          y: cy,
+          w: rw,
+          h: rodH,
+          action: i === row.count - 1 && row.count > 1 ? "remove" : "select",
+          rowIndex,
+        });
       }
 
       // Ghost "+ rod" button right at the end of the train so kids can click directly on the track
       if (row.count < C.MAX_COUNT) {
-        const gx = xOf(row.count * row.unit);
-        const gw = Math.max(48, Math.min(xOf((row.count + 1) * row.unit) - gx, trackRight - gx));
-        if (gw >= 36) {
+        const gx = xOf(dispCount * dispUnit);
+        const gw = Math.max(48, Math.min(xOf((dispCount + 1) * dispUnit) - gx, trackRight - gx));
+        if (gw >= 36 && gx < trackRight - 24) {
           svg += `<rect x="${gx + 2}" y="${cy + 3}" width="${gw - 4}" height="${rodH - 6}" rx="8" fill="#ffffff" fill-opacity="0.75" stroke="${style.stroke}" stroke-width="2" stroke-dasharray="6 4"/>`;
           svg += U.text(
             gx + gw / 2,
@@ -180,6 +189,7 @@
           });
         }
       }
+      svg += rowGroupClose;
     });
 
     // Draw vertical alignment lines & badges for all reached Common Multiples!
@@ -190,7 +200,15 @@
       const badgeW = isLcm ? 128 : 98;
       const topY = rulerY - 6;
       const bottomY = rowStartY + (s.rows.length - 1) * rowGap + rodH + 6;
+      const lag = Math.max(
+        0,
+        ...s.rows.map((r, ri) => (m - (view.counts[ri] ?? r.count) * (view.units[ri] ?? r.unit)) / Math.max(1, r.unit)),
+      );
+      const matchAlpha = M.clamp(1 - lag * 1.1, 0, 1);
+      if (matchAlpha <= 0.02) return;
+      const opAttr = matchAlpha < 0.99 ? ` opacity="${matchAlpha.toFixed(2)}"` : "";
 
+      svg += `<g${opAttr}>`;
       svg += U.line(
         mx,
         topY,
@@ -209,25 +227,123 @@
         isLcm ? `★ 최소공배수 ${m}` : `공배수 ${m}`,
         `style="font-size:14px;font-weight:800;fill:${isLcm ? "#7c4600" : "#18594a"}"`,
       );
+      svg += `</g>`;
     });
 
     $("stage").innerHTML = svg;
+  }
 
-    // Render simple per-row controls
-    $("row-controls").innerHTML = s.rows
-      .map((row, i) => {
-        const label = `${i + 1}번 줄`;
-        const total = C.rowTotal(row);
-        return `
-        <div class="row-box ${s.selectedRow === i ? "is-selected" : ""}" data-row-box="${i}">
-          <span style="font-weight:800">${label}</span>
-          <input type="number" min="1" max="999" value="${row.unit}" data-unit-input="${i}" aria-label="${label} 막대 수" />
-          <button type="button" data-count-delta="-1" data-row="${i}" aria-label="${label} 막대 하나 빼기" ${row.count <= 1 ? "disabled" : ""}>−</button>
-          <span class="math" style="min-width:74px;text-align:center;font-weight:700">×${row.count} = ${s.showNumbers ? total : "?"}</span>
-          <button type="button" class="primary" data-count-delta="1" data-row="${i}" aria-label="${label} 막대 하나 더 놓기" ${row.count >= C.MAX_COUNT ? "disabled" : ""}>＋ 막대</button>
-        </div>`;
-      })
-      .join("");
+  function render(s) {
+    const info = C.analysis(s);
+    U.pressed("labels", s.showNumbers);
+    U.pressed("toggle-third-row", s.rows.length === 3);
+    $("toggle-third-row").textContent =
+      s.rows.length === 3 ? "2줄로 줄이기" : "3줄 비교";
+
+    // Sync preset select
+    const matchedPreset = Object.entries(C.PRESETS).find(
+      ([, p]) =>
+        p.rows.length === s.rows.length &&
+        p.rows.every((r, i) => r.unit === s.rows[i].unit),
+    );
+    $("preset").value = matchedPreset ? matchedPreset[0] : "";
+
+    const targetScale = computeTargetScale(s, info);
+    const rowStartY = 104;
+    const rowGap = 92;
+    const targetStageH = rowStartY + s.rows.length * rowGap + 56;
+    const targetUnits = s.rows.map((r) => r.unit);
+    const targetCounts = s.rows.map((r) => r.count);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    cancelAnimationFrame(animFrame);
+    if (!animState || reduced) {
+      animState = {
+        scale: targetScale,
+        targetScale,
+        stageH: targetStageH,
+        units: [...targetUnits],
+        counts: [...targetCounts],
+        rowAlphas: s.rows.map(() => 1),
+      };
+      drawStage(s, info, animState);
+    } else {
+      const fromScale = animState.scale;
+      const fromStageH = animState.stageH;
+      const fromUnits = s.rows.map((r, i) => animState.units[i] ?? r.unit);
+      const fromCounts = s.rows.map((r, i) =>
+        animState.counts[i] !== undefined ? animState.counts[i] : Math.max(0.25, r.count - 0.75),
+      );
+      const fromAlphas = s.rows.map((_, i) => (i < animState.rowAlphas.length ? animState.rowAlphas[i] : 0));
+      const needsAnim =
+        Math.abs(fromScale - targetScale) > 0.05 ||
+        Math.abs(fromStageH - targetStageH) > 0.5 ||
+        fromUnits.some((u, i) => Math.abs(u - targetUnits[i]) > 0.02) ||
+        fromCounts.some((c, i) => Math.abs(c - targetCounts[i]) > 0.02) ||
+        fromAlphas.some((a) => a < 0.99);
+
+      if (!needsAnim) {
+        animState = {
+          scale: targetScale,
+          targetScale,
+          stageH: targetStageH,
+          units: [...targetUnits],
+          counts: [...targetCounts],
+          rowAlphas: s.rows.map(() => 1),
+        };
+        drawStage(s, info, animState);
+      } else {
+        const start = performance.now();
+        const duration = 260;
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / duration);
+          const ease = 1 - Math.pow(1 - t, 3);
+          const lerp = (a, b) => (t < 1 ? a + (b - a) * ease : b);
+          animState = {
+            scale: lerp(fromScale, targetScale),
+            targetScale,
+            stageH: lerp(fromStageH, targetStageH),
+            units: targetUnits.map((u, i) => lerp(fromUnits[i], u)),
+            counts: targetCounts.map((c, i) => lerp(fromCounts[i], c)),
+            rowAlphas: s.rows.map((_, i) => lerp(fromAlphas[i], 1)),
+          };
+          drawStage(s, info, animState);
+          if (t < 1) animFrame = requestAnimationFrame(tick);
+        };
+        animFrame = requestAnimationFrame(tick);
+      }
+    }
+
+    // Update per-row controls in-place so number inputs keep focus
+    const rc = $("row-controls");
+    while (rc.children.length > s.rows.length) rc.lastElementChild.remove();
+    s.rows.forEach((row, i) => {
+      const label = `${i + 1}번 줄`;
+      const total = C.rowTotal(row);
+      let box = rc.children[i];
+      if (!box) {
+        box = document.createElement("div");
+        box.dataset.rowBox = String(i);
+        box.innerHTML = `<span class="row-label" style="font-weight:800"></span><input type="number" min="1" max="999" data-unit-input="${i}" /><button type="button" data-count-delta="-1" data-row="${i}">−</button><span class="math row-math" style="min-width:74px;text-align:center;font-weight:700"></span><button type="button" class="primary" data-count-delta="1" data-row="${i}">＋ 막대</button>`;
+        rc.append(box);
+      }
+      box.className = `row-box${s.selectedRow === i ? " is-selected" : ""}`;
+      box.dataset.rowBox = String(i);
+      box.querySelector(".row-label").textContent = label;
+      const input = box.querySelector("[data-unit-input]");
+      input.dataset.unitInput = String(i);
+      input.setAttribute("aria-label", `${label} 막대 수`);
+      if (document.activeElement !== input) input.value = String(row.unit);
+      const minusBtn = box.querySelector('[data-count-delta="-1"]');
+      minusBtn.dataset.row = String(i);
+      minusBtn.setAttribute("aria-label", `${label} 막대 하나 빼기`);
+      minusBtn.disabled = row.count <= 1;
+      box.querySelector(".row-math").textContent = `×${row.count} = ${s.showNumbers ? total : "?"}`;
+      const plusBtn = box.querySelector('[data-count-delta="1"]');
+      plusBtn.dataset.row = String(i);
+      plusBtn.setAttribute("aria-label", `${label} 막대 하나 더 놓기`);
+      plusBtn.disabled = row.count >= C.MAX_COUNT;
+    });
 
     // Render 1..10 Cuisenaire color swatches
     const activeUnit = s.rows[s.selectedRow].unit;

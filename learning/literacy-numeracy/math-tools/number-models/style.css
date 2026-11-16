@@ -86,11 +86,12 @@ body.comparing{height:auto;min-height:100dvh}
 .exchange-buttons button{font-size:12px;font-weight:500;min-height:38px;padding:7px 4px;white-space:nowrap}
 .exchange-buttons button[data-action=bundle]:not(:disabled){background:#e7f1e9;border-color:#aacbb3}
 #message,#save-status{margin:8px 0 0;font-size:13px;line-height:1.7;color:#a03e28;flex-shrink:0}
-.block.is-leaving{animation:leaving .3s ease-in forwards}
-.block.is-arriving{animation:arriving .65s ease-out}
+.block.is-leaving{animation:leaving .26s cubic-bezier(.4,0,1,1) forwards}
+.block.is-arriving{animation:arriving .45s cubic-bezier(.22,1,.36,1)}
+.block-ghost{position:fixed;pointer-events:none;z-index:4;animation:leaving .22s cubic-bezier(.4,0,1,1) forwards}
 .place-column.is-exchanged .place-heading{animation:glow .8s ease-out}
 @keyframes leaving{to{transform:scale(.4);opacity:0}}
-@keyframes arriving{from{transform:translateY(-14px) scale(.7);opacity:.2;background:#e8d88d}to{transform:none;opacity:1;background:transparent}}
+@keyframes arriving{from{opacity:.25;background:#e8d88d}to{opacity:1;background:transparent}}
 @keyframes glow{from{background:#fff0b8}to{background:transparent}}
 
 @media(max-width:1100px){

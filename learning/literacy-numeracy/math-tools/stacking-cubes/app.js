@@ -16,6 +16,7 @@
   let yaw = DEFAULT_YAW;
   let pitch = DEFAULT_PITCH;
   let zoom = 1;
+  let smoothCam = null;
   let view = 'solid';
   let tool = 'add';
   let hovered = null;
@@ -191,7 +192,25 @@
     }
     turns.delete(svg);
     if (svg.hasAttribute('aria-busy')) svg.removeAttribute('aria-busy');
-    return direction === 'solid' ? renderSolid(w, h, board, isTarget) : flat(direction);
+    if (direction !== 'solid') { if (!isTarget) smoothCam = null; return flat(direction); }
+    const targetCam = cameraFor(w, h, board, isTarget, 'solid');
+    if (!isTarget && !reduceMotion.matches) {
+      if (!smoothCam || smoothCam.w !== w || smoothCam.h !== h || smoothCam.size !== board.rules.size) {
+        smoothCam = { scale: targetCam.scale, cy: targetCam.cy, w, h, size: board.rules.size };
+      } else {
+        const ds = targetCam.scale - smoothCam.scale, dcy = targetCam.cy - smoothCam.cy;
+        if (Math.abs(ds) > 0.08 || Math.abs(dcy) > 0.15) {
+          smoothCam.scale += ds * 0.32;
+          smoothCam.cy += dcy * 0.32;
+          schedule();
+        } else {
+          smoothCam.scale = targetCam.scale;
+          smoothCam.cy = targetCam.cy;
+        }
+      }
+      return renderSolid(w, h, board, isTarget, { ...targetCam, scale: smoothCam.scale, cy: smoothCam.cy });
+    }
+    return renderSolid(w, h, board, isTarget, targetCam);
   }
 
   function renderSolid(width, height, board = model, isTarget = false, camera = cameraFor(width, height, board, isTarget, 'solid')) {

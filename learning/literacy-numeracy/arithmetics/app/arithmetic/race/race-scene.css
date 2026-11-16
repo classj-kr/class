@@ -158,17 +158,17 @@ img.math-race-avatar { border: 0; border-radius: 0; background: transparent; box
 .math-race-crew.is-hop { animation: math-race-hop .5s cubic-bezier(.3, 1.8, .5, 1); }
 .math-race-gain { position: absolute; left: 50%; bottom: 100%; translate: -50% 0; color: hsl(var(--hue) 70% 38%); font-size: 20px; font-style: normal; font-weight: 900; text-shadow: 0 2px 0 white, 0 0 6px white; pointer-events: none; z-index: 2; animation: math-race-gain 1s ease-out forwards; }
 .is-leader .math-race-climber::before { content: "👑"; position: absolute; left: 50%; top: -18px; translate: -50% 0; font-size: 18px; z-index: 1; animation: math-race-bob .8s ease-in-out infinite alternate; }
-.math-race-ones { display: grid; grid-template-columns: repeat(10, 1fr); gap: 1px; height: calc(var(--row) - 3px); }
+.math-race-ones { display: grid; grid-template-columns: repeat(10, 1fr); gap: 1px; height: calc(var(--row) - 3px); transition: height .26s cubic-bezier(.22, 1, .36, 1); }
 .math-race-cube { display: block; border-radius: 1px; background: hsl(var(--hue) 75% 62%); box-shadow: inset 0 -2px 0 hsl(var(--hue) 60% 42%); animation: math-race-cube .42s cubic-bezier(.3, 1.4, .5, 1) both; }
 .math-race-rod {
-  display: block; height: calc(var(--row) - 3px); border-radius: 2px;
+  display: block; height: calc(var(--row) - 3px); border-radius: 2px; transition: height .26s cubic-bezier(.22, 1, .36, 1);
   background: repeating-linear-gradient(90deg, hsl(var(--hue) 70% 50%) 0 calc(10% - 1px), hsl(var(--hue) 60% 38%) calc(10% - 1px) 10%);
   box-shadow: inset 0 -2px 0 hsl(var(--hue) 60% 34%);
   animation: math-race-merge .7s cubic-bezier(.2, 1.2, .4, 1) both;
 }
 /* 백 모형: 십 모형 열 개가 합쳐진 10×10 판. 처음 생길 때 막대들이 눌려 판이 되며 번쩍인다. */
 .math-race-flat {
-  position: relative; display: block; height: calc(var(--flat) - 3px); border-radius: 3px;
+  position: relative; display: block; height: calc(var(--flat) - 3px); border-radius: 3px; transition: height .26s cubic-bezier(.22, 1, .36, 1);
   background-color: hsl(var(--hue) 70% 52%);
   background-image: linear-gradient(90deg, hsl(var(--hue) 60% 36%) 1px, transparent 1px), linear-gradient(hsl(var(--hue) 60% 36%) 1px, transparent 1px);
   background-size: 10% 10%;

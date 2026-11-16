@@ -9,37 +9,258 @@
   const message = (text, error = false) => { $('message').textContent = text; $('message').dataset.error = String(error); $('message').hidden = !error; };
   const saveStatus = (text, error = false) => { $('save-status').textContent = text; $('save-status').dataset.error = String(error); $('save-status').hidden = !error; };
   let fitFrame;
+  function fitModelsNow(animate = false) {
+    const columns = $('columns');
+    if (!columns) return;
+    if (C.rows(state).length > 1 || innerWidth <= 900) {
+      columns.style.removeProperty('--model-zoom');
+      return;
+    }
+    const clouds = [...columns.querySelectorAll('.block-cloud')];
+    if (!clouds.some(c => c.clientHeight > 0)) return;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const doAnimate = animate && !reduced;
+    let prevScale = null;
+    const firstRects = new Map();
+    if (doAnimate) {
+      const sample = columns.querySelector('.block:not(.is-leaving) svg');
+      if (sample) prevScale = sample.getBoundingClientRect().width / Number(sample.getAttribute('width'));
+      columns.querySelectorAll('.place-column').forEach(col => {
+        const colIdx = col.dataset.index;
+        [...col.querySelectorAll('.block:not(.is-leaving) svg')].forEach((svg, k) => {
+          firstRects.set(`${colIdx}:${k}`, svg.getBoundingClientRect());
+        });
+      });
+      columns.getAnimations({ subtree: true }).forEach(a => {
+        if (a.effect?.target?.tagName?.toLowerCase() === 'svg') a.cancel();
+      });
+    }
+    const boxes = clouds.flatMap(cloud => {
+      const block = cloud.querySelector('.block'), svg = block?.querySelector('svg');
+      if (!svg) return [];
+      const style = getComputedStyle(cloud), blockStyle = getComputedStyle(block);
+      return [{
+        count: cloud.children.length,
+        width: cloud.getBoundingClientRect().width - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight),
+        height: cloud.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom),
+        blockWidth: Number(svg.getAttribute('width')), blockHeight: Number(svg.getAttribute('height')),
+        insetX: parseFloat(blockStyle.paddingLeft) + parseFloat(blockStyle.paddingRight),
+        insetY: parseFloat(blockStyle.paddingTop) + parseFloat(blockStyle.paddingBottom),
+        gapX: parseFloat(style.columnGap), gapY: parseFloat(style.rowGap)
+      }];
+    });
+    // Keep the same unit length in every place; never shrink one shape independently.
+    const fits = scale => boxes.every(box => {
+      const width = box.blockWidth * scale + box.insetX;
+      const perRow = Math.max(1, Math.floor((box.width + box.gapX) / (width + box.gapX)));
+      const rows = Math.ceil(box.count / perRow);
+      return width <= box.width && rows * (box.blockHeight * scale + box.insetY) + (rows - 1) * box.gapY <= box.height - 1;
+    });
+    let scale = 150;
+    while (scale > 80 && !fits(scale / 100)) scale--;
+    const nextZoom = scale / 100;
+    const prevZoom = parseFloat(columns.style.getPropertyValue('--model-zoom'));
+    columns.style.setProperty('--model-zoom', nextZoom);
+    if (doAnimate && prevScale && Math.abs(prevZoom - nextZoom) > 0.004) {
+      const sample = columns.querySelector('.block:not(.is-leaving) svg');
+      const newScale = sample ? sample.getBoundingClientRect().width / Number(sample.getAttribute('width')) : nextZoom;
+      const s = newScale ? prevScale / newScale : 1;
+      const scaleChanged = Math.abs(s - 1) > 0.004;
+      const fromScale = scaleChanged ? s.toFixed(5) : '1';
+      columns.querySelectorAll('.place-column').forEach(col => {
+        const colIdx = col.dataset.index;
+        [...col.querySelectorAll('.block:not(.is-leaving) svg')].forEach((svg, k) => {
+          const first = firstRects.get(`${colIdx}:${k}`);
+          const last = svg.getBoundingClientRect();
+          const dx = first ? first.left - last.left : 0;
+          const dy = first ? first.top - last.top : 0;
+          if (scaleChanged || Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+            svg.style.transformOrigin = '0 0';
+            svg.animate(
+              [
+                { transform: `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px) scale(${fromScale})` },
+                { transform: 'translate(0px, 0px) scale(1)' }
+              ],
+              { duration: 220, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+            );
+          }
+        });
+      });
+    }
+  }
   function fitModels() {
     cancelAnimationFrame(fitFrame);
-    fitFrame = requestAnimationFrame(() => {
-      const columns = $('columns');
-      if (C.rows(state).length > 1) { columns.style.removeProperty('--model-zoom'); return; }
-      if (innerWidth <= 900) { columns.style.removeProperty('--model-zoom'); return; }
-      const boxes = [...columns.querySelectorAll('.block-cloud')].flatMap(cloud => {
-        const block = cloud.querySelector('.block'), svg = block?.querySelector('svg');
-        if (!svg) return [];
-        const style = getComputedStyle(cloud), blockStyle = getComputedStyle(block);
-        return [{
-          count: cloud.children.length,
-          width: cloud.getBoundingClientRect().width - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight),
-          height: cloud.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom),
-          blockWidth: Number(svg.getAttribute('width')), blockHeight: Number(svg.getAttribute('height')),
-          insetX: parseFloat(blockStyle.paddingLeft) + parseFloat(blockStyle.paddingRight),
-          insetY: parseFloat(blockStyle.paddingTop) + parseFloat(blockStyle.paddingBottom),
-          gapX: parseFloat(style.columnGap), gapY: parseFloat(style.rowGap)
-        }];
+    fitModelsNow(false);
+    fitFrame = requestAnimationFrame(() => fitModelsNow(false));
+  }
+  function spawnGhost(block) {
+    if (!block || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const svg = block.querySelector('svg');
+    if (!svg) return;
+    const rect = svg.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const ghost = svg.cloneNode(true);
+    ghost.classList.add('block-ghost');
+    ghost.style.left = `${rect.left}px`;
+    ghost.style.top = `${rect.top}px`;
+    ghost.style.width = `${rect.width}px`;
+    ghost.style.height = `${rect.height}px`;
+    ghost.style.transformOrigin = 'center center';
+    document.body.append(ghost);
+    setTimeout(() => ghost.remove(), 240);
+  }
+  function syncModelRows(list, mode, info, indexes, motion) {
+    const container = $('model-rows');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const firstRects = new Map(), prevScales = new Map(), oldCounts = new Map();
+    if (!reduced && container.children.length) {
+      [...container.querySelectorAll('.model-row')].forEach(sec => {
+        const rIdx = Number(sec.dataset.row);
+        const sample = sec.querySelector('.block:not(.is-leaving) svg');
+        if (sample) {
+          const w = Number(sample.getAttribute('width'));
+          if (w) prevScales.set(rIdx, sample.getBoundingClientRect().width / w);
+        } else {
+          const cols = sec.querySelector('.columns');
+          const z = cols ? parseFloat(getComputedStyle(cols).getPropertyValue('--model-zoom')) : 0;
+          if (z) prevScales.set(rIdx, z);
+        }
+        sec.querySelectorAll('.place-column').forEach(col => {
+          const cIdx = Number(col.dataset.index);
+          const blocks = [...col.querySelector('.block-cloud').children];
+          oldCounts.set(`${rIdx}:${cIdx}`, blocks.length);
+          blocks.forEach((b, k) => {
+            if (b.classList.contains('is-leaving')) return;
+            const svg = b.querySelector('svg');
+            if (svg) firstRects.set(`${rIdx}:${cIdx}:${k}`, svg.getBoundingClientRect());
+          });
+        });
       });
-      // Keep the same unit length in every place; never shrink one shape independently.
-      const fits = scale => boxes.every(box => {
-        const width = box.blockWidth * scale + box.insetX;
-        const perRow = Math.max(1, Math.floor((box.width + box.gapX) / (width + box.gapX)));
-        const rows = Math.ceil(box.count / perRow);
-        return width <= box.width && rows * (box.blockHeight * scale + box.insetY) + (rows - 1) * box.gapY <= box.height - 1;
+      if (motion?.type === 'remove') {
+        const targetCloud = container.querySelector(`.model-row[data-row="${motion.row}"] .place-column[data-index="${motion.index}"] .block-cloud`);
+        spawnGhost(targetCloud?.lastElementChild);
+      }
+      container.getAnimations({ subtree: true }).forEach(a => {
+        if (a.effect?.target?.tagName?.toLowerCase() === 'svg') a.cancel();
       });
-      let scale = 150;
-      while (scale > 80 && !fits(scale / 100)) scale--;
-      columns.style.setProperty('--model-zoom', scale / 100);
+    }
+    while (container.children.length > list.length) container.lastElementChild.remove();
+    list.forEach((row, rowIndex) => {
+      const active = rowIndex === state.selected[mode], label = `수 ${String.fromCharCode(65 + rowIndex)}`;
+      let sec = container.children[rowIndex];
+      if (!sec) {
+        sec = document.createElement('section');
+        sec.innerHTML = `<div class="row-heading"><button type="button" data-select-row=""><span class="row-label"></span><span class="row-total"></span></button><button type="button" data-remove-row="">삭제</button></div><div class="columns"></div>`;
+        container.append(sec);
+      }
+      sec.className = 'model-row' + (active ? ' selected' : '');
+      sec.dataset.row = String(rowIndex);
+      sec.setAttribute('aria-label', label);
+      const heading = sec.querySelector('.row-heading');
+      heading.hidden = list.length === 1;
+      const selectBtn = heading.querySelector('[data-select-row]');
+      selectBtn.dataset.selectRow = String(rowIndex);
+      selectBtn.setAttribute('aria-pressed', String(active));
+      selectBtn.querySelector('.row-label').textContent = label;
+      selectBtn.querySelector('.row-total').textContent = state.showTotal ? C.format(C.total(row.counts), mode) : '?';
+      const removeBtn = heading.querySelector('[data-remove-row]');
+      removeBtn.dataset.removeRow = String(rowIndex);
+      removeBtn.setAttribute('aria-label', `${label} 삭제`);
+      const columns = sec.querySelector('.columns');
+      if (!active && columns.id === 'columns') columns.removeAttribute('id');
     });
+    list.forEach((row, rowIndex) => {
+      const active = rowIndex === state.selected[mode];
+      const sec = container.children[rowIndex];
+      const columns = sec.querySelector('.columns');
+      if (active) columns.id = 'columns';
+      columns.style.setProperty('--places', String(indexes.length));
+      [...columns.querySelectorAll('.place-column')].forEach(col => {
+        if (!indexes.includes(Number(col.dataset.index))) col.remove();
+      });
+      indexes.forEach((i, pos) => {
+        const n = row.counts[i], bundle = allowed(() => C.exchange(row, i, 'bundle', mode)), split = allowed(() => C.exchange(row, i, 'split', mode));
+        let col = columns.querySelector(`.place-column[data-index="${i}"]`);
+        if (!col) {
+          col = document.createElement('article');
+          col.className = 'place-column';
+          col.dataset.index = String(i);
+          col.innerHTML = `<div class="place-heading" tabindex="-1"><div class="place-value"><h2></h2><span class="place-name"></span></div><div class="counter-buttons"><button type="button" data-action="remove">−</button><span class="count"><b></b>개</span><button type="button" data-action="add">＋</button></div></div><div class="block-cloud" data-shape="${i}" role="img"></div><div class="exchange-buttons"><button type="button" data-action="bundle">← 10개 묶기</button><button type="button" data-action="split">1개 풀기 →</button></div>`;
+        }
+        if (columns.children[pos] !== col) columns.insertBefore(col, columns.children[pos] || null);
+        col.classList.remove('is-exchanged');
+        col.setAttribute('aria-label', `${info.values[i]} 모형 ${n}개`);
+        col.querySelector('.place-value h2').textContent = info.values[i];
+        col.querySelector('.place-name').textContent = info.labels[i];
+        const remBtn = col.querySelector('[data-action="remove"]');
+        remBtn.setAttribute('aria-label', `${info.values[i]} 모형 1개 지우기`);
+        remBtn.disabled = !n;
+        col.querySelector('.count b').textContent = String(n);
+        const addBtn = col.querySelector('[data-action="add"]');
+        addBtn.setAttribute('aria-label', `${info.values[i]} 모형 1개 놓기`);
+        addBtn.disabled = !allowed(() => C.add(row, i, 1, mode));
+        const cloud = col.querySelector('.block-cloud');
+        cloud.setAttribute('aria-label', `${info.values[i]} 모형 ${n}개`);
+        [...cloud.children].forEach(b => b.classList.remove('is-leaving', 'is-arriving'));
+        while (cloud.children.length > n) cloud.lastElementChild.remove();
+        while (cloud.children.length < n) {
+          const span = document.createElement('span');
+          span.className = 'block';
+          span.setAttribute('aria-hidden', 'true');
+          span.innerHTML = C.blockSVG(i);
+          cloud.append(span);
+        }
+        const bundleBtn = col.querySelector('[data-action="bundle"]');
+        bundleBtn.title = indexes.includes(i - 1) ? info.values[i - 1] + ' 모형 1개로 묶기' : '가장 큰 자리';
+        bundleBtn.disabled = !bundle;
+        const splitBtn = col.querySelector('[data-action="split"]');
+        splitBtn.title = indexes.includes(i + 1) ? info.values[i + 1] + ' 모형 10개로 풀기' : '가장 작은 자리';
+        splitBtn.disabled = !split;
+      });
+    });
+    fitModelsNow(false);
+    if (!reduced && prevScales.size > 0) {
+      [...container.querySelectorAll('.model-row')].forEach(sec => {
+        const rIdx = Number(sec.dataset.row);
+        const prevScale = prevScales.get(rIdx);
+        const sample = sec.querySelector('.block svg');
+        if (!sample || !prevScale) return;
+        const w = Number(sample.getAttribute('width'));
+        const newScale = w ? sample.getBoundingClientRect().width / w : 0;
+        if (!newScale) return;
+        const s = prevScale / newScale;
+        const scaleChanged = Math.abs(s - 1) > 0.004;
+        const fromScale = scaleChanged ? s.toFixed(5) : '1';
+        sec.querySelectorAll('.place-column').forEach(col => {
+          const cIdx = Number(col.dataset.index);
+          const oldCount = oldCounts.get(`${rIdx}:${cIdx}`) ?? 0;
+          [...col.querySelector('.block-cloud').children].forEach((block, k) => {
+            const svg = block.querySelector('svg');
+            if (!svg) return;
+            const first = firstRects.get(`${rIdx}:${cIdx}:${k}`);
+            let dx = 0, dy = 0;
+            if (first) {
+              const last = svg.getBoundingClientRect();
+              dx = first.left - last.left;
+              dy = first.top - last.top;
+            } else if (k >= oldCount && motion && (motion.type === 'add' || motion.type === 'exchange')) {
+              dy = -10;
+              if (motion.type === 'add') block.classList.add('is-arriving');
+            }
+            if (scaleChanged || Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+              svg.style.transformOrigin = '0 0';
+              svg.animate(
+                [
+                  { transform: `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px) scale(${fromScale})` },
+                  { transform: 'translate(0px, 0px) scale(1)' }
+                ],
+                { duration: 240, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+              );
+            }
+          });
+        });
+      });
+    }
   }
   function persist() {
     edited = true;
@@ -53,7 +274,7 @@
       if (revision === generation && !failed) saveStatus('계정에 자동 저장됨');
     }).catch(() => saveStatus('저장하지 못했어요. 잠시 후 다시 조작하면 재시도해요.', true));
   }
-  function render() {
+  function render(motion = null) {
     const s = scene(), mode = state.mode, info = C.MODES[mode], indexes = C.visible(mode, s.places);
     const focused = document.activeElement?.closest('#columns [data-action]');
     const focus = focused ? { index: focused.closest('[data-index]').dataset.index, action: focused.dataset.action } : null;
@@ -61,15 +282,26 @@
     $('total').textContent = state.showTotal ? C.format(C.total(s.counts), mode) : '?';
     $('total').classList.toggle('hidden-total', !state.showTotal);
     $('expression').textContent = state.showTotal ? C.expression(s, mode) : '';
-    $('unit-model').innerHTML = C.blockSVG(mode === 'whole' ? 3 : 0);
+    if ($('unit-model').dataset.mode !== mode) {
+      $('unit-model').innerHTML = C.blockSVG(mode === 'whole' ? 3 : 0);
+      $('unit-model').dataset.mode = mode;
+    }
     $('unit-label').textContent = mode === 'whole' ? '작은 정육면체 1개 = 1' : '큰 정육면체 1개 = 1';
     $('number-input').value = C.format(C.total(s.counts), mode);
     $('number-form').hidden = !state.showTotal;
     $('number-input').inputMode = mode === 'whole' ? 'numeric' : 'decimal';
     $('number-help').textContent = mode === 'whole' ? '0부터 9999까지' : '0부터 9.999까지 · 소수 셋째 자리까지';
-    $('places').innerHTML = [2, 3, 4].map(n => `<option value="${n}">${C.visible(mode, n).map(i => mode === 'whole' ? info.labels[i] : info.values[i]).join(' · ')}</option>`).join('');
+    if ($('places').dataset.mode !== mode) {
+      $('places').innerHTML = [2, 3, 4].map(n => `<option value="${n}">${C.visible(mode, n).map(i => mode === 'whole' ? info.labels[i] : info.values[i]).join(' · ')}</option>`).join('');
+      $('places').dataset.mode = mode;
+    }
     $('places').value = s.places; $('show-total').checked = state.showTotal;
-    $('examples').innerHTML = Object.entries(C.EXAMPLES).filter(([, v]) => v.mode === mode).map(([key, v]) => `<button type="button" data-example="${key}" aria-pressed="${key === s.example}">${v.title}</button>`).join('');
+    if ($('examples').dataset.mode !== mode) {
+      $('examples').innerHTML = Object.entries(C.EXAMPLES).filter(([, v]) => v.mode === mode).map(([key, v]) => `<button type="button" data-example="${key}" aria-pressed="${key === s.example}">${v.title}</button>`).join('');
+      $('examples').dataset.mode = mode;
+    } else {
+      $('examples').querySelectorAll('[data-example]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.example === s.example)));
+    }
     const example = C.EXAMPLES[s.example];
     $('lesson').hidden = !example;
     $('subtract').hidden = !example?.subtract || s.done;
@@ -84,43 +316,30 @@
     const list = C.rows(state);
     document.body.classList.toggle('comparing', list.length > 1);
     $('add-number').disabled = list.length >= C.MAX_ROWS;
-    $('model-rows').innerHTML = list.map((row, rowIndex) => {
-      const active = rowIndex === state.selected[mode], label = `수 ${String.fromCharCode(65 + rowIndex)}`;
-      return `<section class="model-row${active ? ' selected' : ''}" data-row="${rowIndex}" aria-label="${label}">
-      <div class="row-heading" ${list.length === 1 ? 'hidden' : ''}><button type="button" data-select-row="${rowIndex}" aria-pressed="${active}">${label}<span class="row-total">${state.showTotal ? C.format(C.total(row.counts), mode) : '?'}</span></button><button type="button" data-remove-row="${rowIndex}" aria-label="${label} 삭제">삭제</button></div>
-      <div ${active ? 'id="columns"' : ''} class="columns" style="--places:${indexes.length}">${indexes.map(i => {
-      const n = row.counts[i], bundle = allowed(() => C.exchange(row, i, 'bundle', mode)), split = allowed(() => C.exchange(row, i, 'split', mode));
-      return `<article class="place-column" data-index="${i}" aria-label="${info.values[i]} 모형 ${n}개">
-        <div class="place-heading" tabindex="-1"><div class="place-value"><h2>${info.values[i]}</h2><span class="place-name">${info.labels[i]}</span></div><div class="counter-buttons"><button type="button" data-action="remove" aria-label="${info.values[i]} 모형 1개 지우기" ${n ? '' : 'disabled'}>−</button><span class="count"><b>${n}</b>개</span><button type="button" data-action="add" aria-label="${info.values[i]} 모형 1개 놓기" ${allowed(() => C.add(row, i, 1, mode)) ? '' : 'disabled'}>＋</button></div></div>
-        <div class="block-cloud" data-shape="${i}" role="img" aria-label="${info.values[i]} 모형 ${n}개">${Array.from({ length: n }, () => `<span class="block" aria-hidden="true">${C.blockSVG(i)}</span>`).join('')}</div>
-        <div class="exchange-buttons"><button type="button" data-action="bundle" title="${indexes.includes(i-1) ? info.values[i-1] + ' 모형 1개로 묶기' : '가장 큰 자리'}" ${bundle ? '' : 'disabled'}>← 10개 묶기</button><button type="button" data-action="split" title="${indexes.includes(i+1) ? info.values[i+1] + ' 모형 10개로 풀기' : '가장 작은 자리'}" ${split ? '' : 'disabled'}>1개 풀기 →</button></div>
-      </article>`;
-    }).join('')}</div></section>`;
-    }).join('');
+    syncModelRows(list, mode, info, indexes, motion);
     $('clear').disabled = !C.total(s.counts);
     $('undo').disabled = !undo.length; $('redo').disabled = !redo.length;
-    fitModels();
     if (focus) {
       const target = document.querySelector(`#columns [data-index="${focus.index}"] [data-action="${focus.action}"]`);
       if (target && !target.disabled) target.focus({ preventScroll: true });
-      else target?.closest('.place-column').querySelector('.place-heading').focus({ preventScroll: true });
+      else target?.closest('.place-column')?.querySelector('.place-heading')?.focus({ preventScroll: true });
     }
   }
-  function commit(next, text) {
+  function commit(next, text, motion = null) {
     try {
       next = C.validate(next);
       if (JSON.stringify(next) === JSON.stringify(state)) { render(); return; }
       undo.push(copy(state)); if (undo.length > 60) undo.shift();
-      redo = []; state = next; render(); persist();
+      redo = []; state = next; render(motion); persist();
       message(text || '');
     } catch (error) { render(); message(error.message, true); }
   }
-  function update(transform, text) {
+  function update(transform, text, motion = null) {
     if (busy) return;
     try {
       let next = copy(state); next.scenes[next.mode] = transform(next.scenes[next.mode]);
       next = C.changePlaces(next, next.scenes[next.mode].places);
-      commit(next, text);
+      commit(next, text, motion);
     }
     catch (error) { render(); message(error.message, true); }
   }
@@ -144,13 +363,13 @@
     controls.forEach(([el]) => { el.disabled = true; });
     if (!reduced) {
       [...document.querySelectorAll(`#columns [data-index="${index}"] .block`)].slice(-removed).forEach(el => el.classList.add('is-leaving'));
-      await new Promise(resolve => setTimeout(resolve, 300));
+      await new Promise(resolve => setTimeout(resolve, 260));
     }
     controls.forEach(([el, disabled]) => { el.disabled = disabled; });
     busy = false;
     previous.scenes[mode] = nextScene;
     const values = C.MODES[mode].values, total = C.format(C.total(nextScene.counts), mode);
-    commit(previous, `${values[index]} 모형 ${removed}개 → ${values[target]} 모형 ${added}개. ${state.showTotal ? '전체 값은 ' + total + ' 그대로예요.' : '전체 값은 그대로예요.'}`);
+    commit(previous, `${values[index]} 모형 ${removed}개 → ${values[target]} 모형 ${added}개. ${state.showTotal ? '전체 값은 ' + total + ' 그대로예요.' : '전체 값은 그대로예요.'}`, { type: 'exchange', row: state.selected[mode], index, target });
     const column = document.querySelector(`#columns [data-index="${target}"]`);
     column.classList.add('is-exchanged');
     [...column.querySelectorAll('.block')].slice(-added).forEach(el => el.classList.add('is-arriving'));
@@ -202,10 +421,10 @@
     if (remove) { commit(C.removeRow(state, Number(remove.dataset.removeRow))); return; }
     const button = event.target.closest('[data-action]');
     if (!button || button.disabled || busy) return;
-    const index = Number(button.closest('[data-index]').dataset.index), action = button.dataset.action;
-    selectRow(Number(button.closest('[data-row]').dataset.row));
+    const index = Number(button.closest('[data-index]').dataset.index), action = button.dataset.action, row = Number(button.closest('[data-row]').dataset.row);
+    selectRow(row);
     if (action === 'bundle' || action === 'split') exchange(index, action);
-    else update(s => C.add(s, index, action === 'add' ? 1 : -1, state.mode), `${C.MODES[state.mode].values[index]} 모형 1개를 ${action === 'add' ? '놓았어요.' : '지웠어요.'}`);
+    else update(s => C.add(s, index, action === 'add' ? 1 : -1, state.mode), `${C.MODES[state.mode].values[index]} 모형 1개를 ${action === 'add' ? '놓았어요.' : '지웠어요.'}`, { type: action, row, index });
   });
   document.addEventListener('keydown', event => {
     if (!(event.ctrlKey || event.metaKey) || event.target.closest('input,select,textarea,[contenteditable=true]')) return;

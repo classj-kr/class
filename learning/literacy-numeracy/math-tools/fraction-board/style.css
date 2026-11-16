@@ -150,4 +150,4 @@ input[type=number]{font-size:20px}
 .fraction-controls{gap:4px}
 .fraction-input{width:56px}
 }
-@media(prefers-reduced-motion:no-preference){button{transition:background .12s,border-color .12s}}
+@media(prefers-reduced-motion:no-preference){button{transition:background .12s,border-color .12s}.fraction-drawing{transition:height .24s cubic-bezier(.22,1,.36,1)}.piece>.hit{transition:fill .16s ease}}

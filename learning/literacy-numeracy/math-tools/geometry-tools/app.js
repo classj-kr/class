@@ -5,17 +5,35 @@
     C = GeometryTools,
     $ = U.$;
   let zoomed = matchMedia("(max-width:600px)").matches,
-    viewportMode = "";
-  function viewport(s = app.state) {
-    viewportMode = s.mode;
-    const box = zoomed
+    viewportMode = "",
+    viewFrame = 0;
+  function targetBox(s = app.state) {
+    return zoomed
       ? s.mode === "angle"
-        ? `${s.tool.x - 285} ${s.tool.y - 275} 570 430`
-        : `${s.tool.x - 55} ${s.tool.y - 180} 720 400`
-      : "0 0 1000 600";
-    $("stage").setAttribute("viewBox", box);
+        ? [s.tool.x - 285, s.tool.y - 275, 570, 430]
+        : [s.tool.x - 55, s.tool.y - 180, 720, 400]
+      : [0, 0, 1000, 600];
+  }
+  function viewport(s = app.state, animate = false) {
+    viewportMode = s.mode;
+    const next = targetBox(s);
+    cancelAnimationFrame(viewFrame);
     U.pressed("zoom", zoomed);
     $("zoom").textContent = zoomed ? "전체 보기" : "확대 보기";
+    const cur = ($("stage").getAttribute("viewBox") || "0 0 1000 600").split(/\s+/).map(Number);
+    if (!animate || matchMedia("(prefers-reduced-motion: reduce)").matches || cur.length !== 4 || cur.every((v, i) => Math.abs(v - next[i]) < 0.5)) {
+      $("stage").setAttribute("viewBox", next.join(" "));
+      return;
+    }
+    const start = performance.now(), duration = 220;
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const u = 1 - Math.pow(1 - t, 3);
+      const box = cur.map((v, i) => (t < 1 ? Number((v + (next[i] - v) * u).toFixed(2)) : next[i]));
+      $("stage").setAttribute("viewBox", box.join(" "));
+      if (t < 1) viewFrame = requestAnimationFrame(step);
+    };
+    viewFrame = requestAnimationFrame(step);
   }
   function render(s) {
     if (viewportMode !== s.mode) viewport(s);
@@ -125,7 +143,7 @@
   U.bind("mode", "change", () => viewport());
   U.bind("zoom", "click", () => {
     zoomed = !zoomed;
-    viewport();
+    viewport(app.state, true);
   });
   for (const key of ["show", "visible"])
     U.bind(key, "click", () => app.commit((s) => (s[key] = !s[key]), false));

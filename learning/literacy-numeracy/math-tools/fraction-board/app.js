@@ -22,18 +22,87 @@
       if (revision === generation && !saveFailed) saveStatus('계정에 자동 저장됨');
     }).catch(() => saveStatus('저장하지 못했어요. 그림 저장을 이용해 주세요.', true));
   }
+  let shownMaxUnits = maxUnits(), unitFrame = 0;
+  function updateViewBoxes(unitsValue) {
+    document.querySelectorAll('#cards [data-card]').forEach(article => {
+      const card = state.cards.find(c => c.id === article.dataset.card);
+      const svg = article.querySelector('.fraction-drawing');
+      if (!card || !svg) return;
+      const unit = ['bar', 'line'].includes(card.shape) ? 640 : card.shape === 'grid' ? 252 : 200;
+      const gap = card.shape === 'line' ? 0 : 32;
+      const width = 48 + unit * unitsValue + gap * (unitsValue - 1);
+      const height = card.shape === 'grid' ? 242 : card.shape === 'circle' ? 276 : 174;
+      svg.setAttribute('viewBox', `0 0 ${Number(width.toFixed(2))} ${height}`);
+    });
+  }
+  function animateMaxUnits(targetUnits) {
+    cancelAnimationFrame(unitFrame);
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || Math.abs(shownMaxUnits - targetUnits) < 0.005) {
+      shownMaxUnits = targetUnits;
+      updateViewBoxes(targetUnits);
+      return;
+    }
+    const startUnits = shownMaxUnits, startTime = performance.now(), duration = 220;
+    const step = now => {
+      const t = Math.min(1, (now - startTime) / duration);
+      const ease = 1 - Math.pow(1 - t, 3);
+      shownMaxUnits = t < 1 ? startUnits + (targetUnits - startUnits) * ease : targetUnits;
+      updateViewBoxes(shownMaxUnits);
+      if (t < 1) unitFrame = requestAnimationFrame(step);
+    };
+    updateViewBoxes(shownMaxUnits);
+    unitFrame = requestAnimationFrame(step);
+  }
   function render() {
     const c = current(), active = document.activeElement?.closest('[data-cell]');
     const focus = active ? { card: active.closest('[data-card]').dataset.card, cell: active.dataset.cell } : null;
+    const targetUnits = maxUnits();
     $('cards').dataset.count = state.cards.length;
-    $('cards').innerHTML = state.cards.map((card, i) => {
+    const container = $('cards');
+    const existingById = new Map([...container.querySelectorAll('[data-card]')].map(el => [el.dataset.card, el]));
+    state.cards.forEach((card, i) => {
       const letter = String.fromCharCode(65 + i), n = C.count(card), mixed = C.mixed(card);
-      return `<article class="fraction-card${card.id === state.selectedId ? ' selected' : ''}" data-card="${card.id}" aria-label="그림 ${letter}, ${C.SHAPES[card.shape]}">
-        <div class="card-heading"><button type="button" class="card-title" data-action="select" aria-label="그림 ${letter} 설정" aria-pressed="${card.id === state.selectedId}" ${state.cards.length === 1 ? 'hidden' : ''}><span class="card-letter">${letter}</span></button>
-        <div class="card-value">${card.labels ? `<span class="fraction-number" aria-label="${card.denominator}분의 ${n}"><span>${n}</span><span>${card.denominator}</span></span>${mixed ? `<span class="mixed-number">= ${mixed}</span>` : ''}` : ''}</div>
-        <div class="card-actions"><button type="button" data-action="duplicate" aria-label="그림 ${letter} 복제" ${state.cards.length >= C.MAX_CARDS ? 'disabled' : ''}>복제</button><button type="button" class="remove" data-action="remove" aria-label="그림 ${letter} 삭제" ${state.cards.length === 1 ? 'disabled' : ''}>×</button></div></div>
-        ${C.drawing(card, maxUnits())}</article>`;
-    }).join('');
+      const sig = `${card.shape}:${card.denominator}:${card.units}:${card.rows}:${card.lines}:${card.labels}`;
+      let article = existingById.get(card.id);
+      if (!article) {
+        article = document.createElement('article');
+        article.dataset.card = card.id;
+        article.innerHTML = `<div class="card-heading"><button type="button" class="card-title" data-action="select"><span class="card-letter"></span></button><div class="card-value"></div><div class="card-actions"><button type="button" data-action="duplicate">복제</button><button type="button" class="remove" data-action="remove">×</button></div></div>` + C.drawing(card, targetUnits);
+        article.dataset.sig = sig;
+      } else {
+        existingById.delete(card.id);
+      }
+      if (container.children[i] !== article) container.insertBefore(article, container.children[i] || null);
+      article.className = 'fraction-card' + (card.id === state.selectedId ? ' selected' : '');
+      article.setAttribute('aria-label', `그림 ${letter}, ${C.SHAPES[card.shape]}`);
+      const titleBtn = article.querySelector('.card-title');
+      titleBtn.setAttribute('aria-label', `그림 ${letter} 설정`);
+      titleBtn.setAttribute('aria-pressed', String(card.id === state.selectedId));
+      titleBtn.hidden = state.cards.length === 1;
+      article.querySelector('.card-letter').textContent = letter;
+      article.querySelector('.card-value').innerHTML = card.labels ? `<span class="fraction-number" aria-label="${card.denominator}분의 ${n}"><span>${n}</span><span>${card.denominator}</span></span>${mixed ? `<span class="mixed-number">= ${mixed}</span>` : ''}` : '';
+      const dupBtn = article.querySelector('[data-action="duplicate"]');
+      dupBtn.setAttribute('aria-label', `그림 ${letter} 복제`);
+      dupBtn.disabled = state.cards.length >= C.MAX_CARDS;
+      const remBtn = article.querySelector('[data-action="remove"]');
+      remBtn.setAttribute('aria-label', `그림 ${letter} 삭제`);
+      remBtn.disabled = state.cards.length === 1;
+      if (article.dataset.sig !== sig || card.shape === 'line') {
+        article.querySelector('.fraction-drawing').outerHTML = C.drawing(card, targetUnits);
+        article.dataset.sig = sig;
+      } else {
+        const selected = new Set(card.cells);
+        article.querySelectorAll('.fraction-drawing [data-cell]').forEach(piece => {
+          const idx = Number(piece.dataset.cell);
+          const on = selected.has(idx);
+          piece.setAttribute('aria-pressed', String(on));
+          const hit = piece.querySelector('.hit');
+          if (hit) hit.setAttribute('fill', card.shading && on ? card.color : '#f3f1e9');
+        });
+      }
+    });
+    existingById.forEach(el => el.remove());
+    animateMaxUnits(targetUnits);
     $('editing-label').textContent = '그림 ' + String.fromCharCode(65 + state.cards.indexOf(c));
     $('editing-label').hidden = state.cards.length === 1;
     document.querySelectorAll('[data-shape]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.shape === c.shape)));
