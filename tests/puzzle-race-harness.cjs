@@ -23,7 +23,7 @@ app.post('/api/finishers', (req, res) => {
   finishers.push({ ...req.body, name: req.body.name || '시험' });
   res.json({ ok: true, records: finishers.filter(r => r.gameId === req.body.gameId) });
 });
-app.get(/^\/learning\/games\/[^/]+\/(index\.html)?$/, (req, res, next) => {
+app.get(/^\/learning\/games\/[^/]+\/([\w-]+\.html)?$/, (req, res, next) => {
   const file = path.join(ROOT, req.path.endsWith('/') ? req.path + 'index.html' : req.path);
   if (!fs.existsSync(file)) return next();
   const name = String(req.query.name || '하나둘').replace(/[^가-힣]/g, '').slice(0, 6);

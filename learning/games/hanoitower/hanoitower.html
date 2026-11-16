@@ -787,6 +787,9 @@ body{justify-content:flex-start;padding:8px}
 <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
+<link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+<script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="/assets/network/puzzle-race.js?v=20261117-2"></script>
 
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
@@ -835,6 +838,11 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
   line-height: 1.5;
   text-align: left;
 }
+/* 순위전(puzzle-race.js): 판 고르기·힌트·다시 하기 단추는 감추고 경주로를 판 아래에 둔다. */
+body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race-standings) { display: none !important; }
+.race-standings { width: 100%; margin: 10px 0 0; text-align: left; }
+.race-standings[hidden] { display: none; }
+#race-time[hidden] { display: none; }
 </style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261114-avatar">
 </head>
 <body data-game-navigation="single-player" data-entry-game="hanoitower">
@@ -852,6 +860,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
     </div>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>Start</button>
+        <button class="action-btn btn-start-action" id="race-button" type="button" hidden>순위전</button>
         <button data-game-rules class="action-btn btn-start-action" type="button" onclick="showRules()">Rules</button>
     </div>
     <div class="finishers-panel">
@@ -894,6 +903,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
         <button onclick="initGame()" style="margin-top: 5px;">RESET GAME</button>
         <button data-game-rules onclick="showRules()" style="margin-top: 5px;">Rules</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
+        <div class="race-standings" id="raceStandings" hidden></div>
     </div>
 
     <div class="board-wrapper">
@@ -902,7 +912,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
         <div class="pole" id="pole2" onclick="handlePoleTap(2)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
 
-    <div id="info">MOVES: <span id="moveCount">0</span></div>
+    <div id="info"><span id="race-time" hidden>TIME: <span id="raceTimer">00:00</span> · </span>MOVES: <span id="moveCount">0</span></div>
     <div class="tap-guide" id="tap-guide">맨 위 원판을 톡 누른 뒤, 옮길 기둥 영역을 톡 누르세요.</div>
 </div>
 
@@ -1246,7 +1256,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
             guide.textContent = message;
         } else if (selectedPoleIndex === null) {
             const minLeft = calculateMinMoves(poles, totalDisks, 1);
-            guide.textContent = `맨 위 원판을 톡 누른 뒤 옮길 기둥을 누르세요. (남은 최소 이동: ${minLeft}회 · 막히면 💡한 수 힌트!)`;
+            guide.textContent = `맨 위 원판을 톡 누른 뒤 옮길 기둥을 누르세요. (남은 최소 이동: ${minLeft}회${document.body.classList.contains('pr-racing') ? '' : ' · 막히면 💡한 수 힌트!'})`;
         } else {
             const diskSize = poles[selectedPoleIndex][poles[selectedPoleIndex].length - 1];
             guide.textContent = `${diskSize}번 원판 선택됨 · 옮길 기둥을 톡 누르세요.`;
@@ -1254,6 +1264,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
     }
 
     function selectTopDisk(poleIndex) {
+        if (racePaused || raceDone) return;
         if (!poles[poleIndex].length) return;
 
         if (selectedPoleIndex === poleIndex) {
@@ -1276,6 +1287,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
     }
 
     function moveTopDisk(fromPoleIdx, toPoleIdx) {
+        if (racePaused || raceDone) return false;
         if (
             !Number.isInteger(fromPoleIdx) ||
             !Number.isInteger(toPoleIdx) ||
@@ -1314,6 +1326,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
                 { transform: 'translate(0, 0)', offset: 1 }
             ], { duration: 120, easing: 'linear' });
         }
+        reportRaceProgress();
         checkWin();
         return true;
     }
@@ -1353,6 +1366,10 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
     }
 
     function checkWin() {
+        if (poles[1].length === totalDisks && race.active) {
+            finishRace();
+            return;
+        }
         if (poles[1].length === totalDisks) {
             const minMoves = calculateMinMoves(initialPoles, totalDisks, 1);
             setTimeout(() => {
@@ -1371,7 +1388,92 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
             }, 100);
         }
     }
+    /* 순위전: 방장이 원판 수와 놓인 모양을 정해 보낸다. 순위는 걸린 시간. */
+    let racePaused = false;
+    let raceDone = false;
+    let raceElapsed = 0;
+    let raceTimerId = null;
+    const fmtTime = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+
+    function startRaceTimer() {
+        if (raceTimerId) return;
+        raceTimerId = setInterval(() => {
+            raceElapsed += 1;
+            document.getElementById('raceTimer').textContent = fmtTime(raceElapsed);
+        }, 1000);
+    }
+    function stopRaceTimer() { clearInterval(raceTimerId); raceTimerId = null; }
+
+    function reportRaceProgress() {
+        if (!race.active) return;
+        const total = calculateMinMoves(initialPoles, totalDisks, 1);
+        race.progress(Math.max(0, total - calculateMinMoves(poles, totalDisks, 1)), Math.max(1, total));
+    }
+
+    function finishRace() {
+        raceDone = true;
+        stopRaceTimer();
+        updateTapGuide(`완성! ${fmtTime(raceElapsed)} · ${moveCount}회 이동`);
+        window.ClassGameSfx?.play('success');
+        race.finish(raceElapsed);
+    }
+
+    function showHanoiStart() {
+        document.getElementById('game-container').style.display = 'none';
+        document.getElementById('start-screen').style.display = '';
+        document.getElementById('race-time').hidden = true;
+    }
+
+    const race = ClassroomPuzzleRace.create({
+        gameId: 'hanoitower',
+        title: 'TOWER OF HANOI',
+        settings: [
+            { key: 'disks', label: '원판', options: [3, 4, 5, 6, 7, 8].map(n => ({ value: n, label: `${n}개` })) },
+            { key: 'mode', label: '처음 모양', options: [{ value: 'normal', label: 'Normal (한 기둥에)' }, { value: 'random', label: 'Random (흩어져서)' }] }
+        ],
+        getSettings: () => ({ disks: Math.max(3, totalDisks), mode }),
+        createPuzzle: settings => {
+            const keep = [totalDisks, mode, poles, initialPoles];
+            totalDisks = Number(settings.disks);
+            mode = settings.mode;
+            initGame();
+            const data = { disks: totalDisks, mode, poles: initialPoles.map(p => [...p]) };
+            [totalDisks, mode, poles, initialPoles] = keep;
+            return data;
+        },
+        hideSolo: () => {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-container').style.display = 'none';
+        },
+        start: data => {
+            totalDisks = data.disks;
+            mode = data.mode;
+            document.querySelectorAll('.option-group button').forEach((btn, i) => { if (i < 8) btn.classList.toggle('active', i + 1 === totalDisks); });
+            document.getElementById('modeNormal').classList.toggle('active', mode === 'normal');
+            document.getElementById('modeRandom').classList.toggle('active', mode === 'random');
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-container').style.display = 'flex';
+            poles = data.poles.map(p => [...p]);
+            initialPoles = data.poles.map(p => [...p]);
+            selectedPoleIndex = null;
+            moveCount = 0;
+            document.getElementById('moveCount').textContent = '0';
+            raceDone = false;
+            raceElapsed = 0;
+            document.getElementById('raceTimer').textContent = '00:00';
+            document.getElementById('race-time').hidden = false;
+            render();
+            reportRaceProgress();
+        },
+        pause: on => { racePaused = on; if (!on && !raceDone) startRaceTimer(); },
+        stop: () => { raceDone = true; stopRaceTimer(); },
+        exit: () => { raceDone = false; racePaused = false; showHanoiStart(); },
+        standingsHost: () => document.getElementById('raceStandings')
+    });
+    document.getElementById('race-button').addEventListener('click', () => race.open());
+
     initializePlayerEntry();
+    document.getElementById('race-button').hidden = !playerName;
 </script>
 </body>
 </html>
