@@ -13,7 +13,7 @@
     advanced: { name: "레벨 5", depth: 4, nodes: 120000, ms: 2400 }
   });
   // Teaching advice is independent of the strength selected for the opponent.
-  const HINT = Object.freeze({ depth:6, nodes:360000, ms:4800, kingTempo:24 });
+  const HINT = Object.freeze({ depth:8, nodes:1500000, ms:12000, kingTempo:24, coaching:true });
   const VALUES = { P:100, N:320, B:330, R:500, Q:900, K:0 };
   const NAMES = { P:"폰", N:"나이트", B:"비숍", R:"룩", Q:"퀸", K:"킹" };
   const MATE = 100000, book = new Map();
@@ -129,7 +129,7 @@
     const finish=C.advance(state,roots[0]);
     if(C.isInCheck(finish) && !C.allLegalMoves(finish).length) return { move:roots[0], reason:explain(state,roots[0]), depth:1, nodes:0 };
     const learned=book.get(C.positionKey(state));
-    if(!practice && learned && roots.some(m=>same(m,learned))) return { move:roots.find(m=>same(m,learned)), reason:explain(state,learned), depth:0, nodes:0 };
+    if(!settings.coaching && !practice && learned && roots.some(m=>same(m,learned))) return { move:roots.find(m=>same(m,learned)), reason:explain(state,learned), depth:0, nodes:0 };
     const currentClaim=C.drawClaims(state).find(c=>!c.move);
     if(options.allowClaim!==false && currentClaim && evaluate(state)<-150) return { claim:true, reason:"이 판은 무승부를 선언할 수 있어요. 기물이 불리한 상황에서 무승부로 마칩니다." };
     if(practice){
@@ -190,6 +190,7 @@
       const next=C.advance(state,move);
       return {move,score:-evaluate(next)-replyLoss(next)-costs.get(move)};
     }).sort((a,b)=>b.score-a.score)[0].move;
+    options.onCandidate?.({move:best,reason:explain(state,best),depth:1,nodes});
     // A one-move comparison cannot drive a bare king to mate and only repeats,
     // so simple endings always search at least two plies.
     const pieces=state.board.filter(p=>p&&p[1]!=="K").length;
@@ -203,6 +204,7 @@
           if(score>top) { top=score; candidate=move; }
         }
         best=candidate; completed=depth;
+        options.onCandidate?.({move:best,reason:explain(state,best),depth:completed,nodes});
       } catch(error) { if(error!==stop) throw error; break; }
     }
     return { move:best, reason:explain(state,best), depth:completed, nodes };

@@ -24,10 +24,10 @@
   document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel chess-record"><summary>기보</summary><div id="chessMoves">아직 둔 수가 없습니다.</div></details>');
   document.body.insertAdjacentHTML("beforeend",'<dialog id="chessPromotion" aria-labelledby="promotionTitle"><h2 id="promotionTitle">승격할 말</h2><div id="chessPromotionChoices"></div><button id="cancelPromotion" class="quiet" type="button">취소</button></dialog><dialog id="chessDraw" aria-labelledby="drawTitle"><h2 id="drawTitle">무승부 선언</h2><p class="muted">표시된 조건으로 대국을 마칩니다.</p><div id="chessDrawChoices"></div><button id="cancelDraw" class="quiet" type="button">취소</button></dialog><dialog id="chessResign" aria-labelledby="resignTitle"><h2 id="resignTitle">이 대국을 기권할까요?</h2><div class="resign-choices"><button id="confirmResign" type="button">기권</button><button id="cancelResign" class="quiet" type="button">계속 두기</button></div></dialog>');
   function reason(label,title,text) { $("reasonLabel").textContent=label; $("moveLabel").textContent=title; $("reason").textContent=text; }
-  const preparedHint=BoardCoachUI.prepareTurnHint("chess-worker.js?v=prepared-hint", result=>{
+  const preparedHint=BoardCoachUI.prepareTurnHint("chess-worker.js?v=20261116-deep-hints", (result, progress)=>{
     hint=result;
-    reason("힌트", result.claim?"무승부 선언":AI.label(result.move), result.reason);
-    render();BoardCoachUI.revealExplanation();
+    reason(progress.pending?"분석 중 · 임시 힌트":"힌트", result.claim?"무승부 선언":AI.label(result.move), result.reason);
+    render();if(progress.first)BoardCoachUI.revealExplanation();
   },()=>reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
   function stop() { preparedHint.clear();token++; worker?.terminate(); worker=null; clearTimeout(timeout); clearTimeout(nextTurn); busy=false;moving=false;motion?.cancel();motion=null; }
   function renderCaptures(position) {
@@ -107,7 +107,7 @@
     const id=token;
 
     try {
-      worker=new Worker("chess-worker.js?v=prepared-hint");
+      worker=new Worker("chess-worker.js?v=20261116-deep-hints");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==token)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

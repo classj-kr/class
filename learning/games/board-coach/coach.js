@@ -21,10 +21,10 @@
   if(game==='reversi')document.querySelector('.controls').insertAdjacentHTML('afterend','<section class="panel" aria-label="최근 뒤집기"><p id="lastFlip" class="move-result" aria-live="polite">돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.</p></section>');
   $("principle").textContent = principle;
   $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>레벨 1은 처음 배우는 연습 상대입니다. 레벨이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
-  const preparedHint=BoardCoachUI.prepareTurnHint("ai-worker.js?v=prepared-hint", result=>{
+  const preparedHint=BoardCoachUI.prepareTurnHint("ai-worker.js?v=20261116-deep-hints", (result, progress)=>{
     hint=result;
-    setReason("힌트", coordinate(result.index), result.reason);
-    render();BoardCoachUI.revealExplanation();
+    setReason(progress.pending?"분석 중 · 임시 힌트":"힌트", coordinate(result.index), result.reason);
+    render();if(progress.first)BoardCoachUI.revealExplanation();
   },()=>setReason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
   function stopWork() { preparedHint.clear();
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
@@ -91,7 +91,7 @@
     render();
 
     try {
-      worker = new Worker("ai-worker.js?v=prepared-hint");
+      worker = new Worker("ai-worker.js?v=20261116-deep-hints");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;

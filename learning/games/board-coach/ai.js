@@ -12,7 +12,7 @@
     level4: { name: "레벨 4", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
     advanced: { name: "레벨 5", reversi: 5, omok: 5, nodes: 45000, ms: 1200, width: 10 }
   });
-  const HINT = Object.freeze({ reversi:12, omok:6, nodes:400000, ms:4500, width:16, coaching:true });
+  const HINT = Object.freeze({ reversi:16, omok:9, nodes:2000000, ms:12000, width:16, coaching:true });
   const corners = [0, 7, 56, 63], WIN = 10000000;
   const book = new Map();
   // Randy Fang, Othello: From Beginner to Master, pp. 44–46:
@@ -214,7 +214,7 @@
     const roots = state.game === "omok" ? omokRanked(state) : reversiRanked(state,settings.coaching);
     if (!roots.length) return null;
     const learned = state.game === "reversi" ? book.get(state.board.join("") + ":" + state.color) : undefined;
-    if (learned !== undefined && R.legal(state).includes(learned)) return { index: learned, depth: 0, nodes: 0, reason: explain(state, learned) };
+    if (!settings.coaching && learned !== undefined && R.legal(state).includes(learned)) return { index: learned, depth: 0, nodes: 0, reason: explain(state, learned) };
     let nodes = 0, best = roots[0].index, completeDepth = 0;
     const deadline = Date.now() + (options.ms ?? settings.ms), maxNodes = options.nodes ?? settings.nodes;
     const aborted = {};
@@ -244,6 +244,7 @@
       if(cache&&(cache.size<60000||cache.has(key)))cache.set(key,{depth,score,move:bestMove,bound:score<=originalAlpha?'upper':score>=beta?'lower':'exact'});
       return score;
     }
+    options.onCandidate?.({index:best,depth:0,nodes,reason:explain(state,best)});
     // Omok deepens by two so a timed-out search falls back to an odd depth.
     for (let depth = 1; depth <= settings[state.game]; depth += state.game === "omok" ? 2 : 1) {
       let candidate = best, top = -Infinity;
@@ -255,6 +256,7 @@
           if (v > top) { top = v; candidate = move.index; }
         }
         best = candidate; completeDepth = depth;
+        options.onCandidate?.({index:best,depth:completeDepth,nodes,reason:explain(state,best)});
       } catch (error) { if (error !== aborted) throw error; break; }
     }
     return { index: best, depth: completeDepth, nodes, reason: explain(state, best) };

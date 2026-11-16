@@ -75,7 +75,7 @@
     function prepare(state) {
       if (current?.state === state) return;
       clear();
-      const task = {state, worker:null, result:null, requested:false};
+      const task = {state, worker:null, result:null, requested:false, pending:true, shown:false};
       current = task;
       const failed = () => {
         if (current !== task) return;
@@ -87,10 +87,15 @@
         task.worker.onmessage = ({data}) => {
           if (current !== task) return;
           if (data.error || !data.result) { failed(); return; }
-          const first = !task.result;
           task.result = data.result;
-          if (!data.partial) { task.worker.terminate(); task.worker = null; }
-          if (first && task.requested) show(task.result);
+          task.pending = Boolean(data.partial);
+          if (!task.pending) { task.worker.terminate(); task.worker = null; }
+          // An early click must not pin the shallow preview after deeper search finishes.
+          if (task.requested) {
+            const first = !task.shown;
+            task.shown = true;
+            show(task.result, { pending:task.pending, first });
+          }
         };
         task.worker.onerror = failed;
         task.worker.postMessage({state, kind:"hint"});
@@ -100,7 +105,11 @@
       prepare(state);
       if (!current) { unavailable(); return; }
       current.requested = true;
-      if (current.result) show(current.result);
+      if (current.result) {
+        const first = !current.shown;
+        current.shown = true;
+        show(current.result, { pending:current.pending, first });
+      }
       else return false;
       return true;
     }

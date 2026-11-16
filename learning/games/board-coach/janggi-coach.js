@@ -121,13 +121,15 @@
     current.finished.then(()=>{if(token!==id||state!==position||motion!==current)return;motion=null;moving=false;render();resume();});
   }
   function fail(text){stop();$("retry").classList.remove("hidden");reason("계산을 마치지 못했어요","다시 계산할 수 있어요",text);render();}
-  function showHint(answer){
-    hint=answer;selected=null;
-    reason("힌트",AI.label(answer.move),answer.reason);render();BoardCoachUI.revealExplanation();
+  function showHint(answer,pending=false){
+    const first=!hint;
+    hint=answer;if(first)selected=null;
+    reason(pending?"분석 중 · 임시 힌트":"힌트",AI.label(answer.move),answer.reason);
+    render();if(first)BoardCoachUI.revealExplanation();
   }
   function prepareHint(){
     if(hintSearch)return hintSearch;
-    const search={position:state,answer:null,requested:false,worker:null};
+    const search={position:state,answer:null,requested:false,worker:null,pending:true};
     hintSearch=search;
     const failed=()=>{
       if(hintSearch!==search)return;
@@ -136,13 +138,13 @@
       if(requested&&!hint)reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요.");
     };
     try{
-      search.worker=new Worker("janggi-worker.js?v=23");
+      search.worker=new Worker("janggi-worker.js?v=20261116-deep-hints");
       search.worker.onmessage=({data})=>{
         if(hintSearch!==search||state!==search.position)return;
         if(data.error||!data.result){failed();return;}
         search.answer=data.result;
-        // Keep the arrow the student already saw stable while search continues.
-        if(search.requested&&!hint)showHint(search.answer);
+        search.pending=Boolean(data.partial);
+        if(search.requested)showHint(search.answer,search.pending);
         if(!data.partial){search.worker.terminate();search.worker=null;}
       };
       search.worker.onerror=failed;
@@ -156,13 +158,13 @@
       const search=prepareHint();
       if(!search){reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요.");return;}
       search.requested=true;
-      if(search.answer)showHint(search.answer);
+      if(search.answer)showHint(search.answer,search.pending);
       else reason("힌트 준비 중","둘 곳을 살펴보고 있어요","");
       return;
     }
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
     try{
-      worker=new Worker("janggi-worker.js?v=23");
+      worker=new Worker("janggi-worker.js?v=20261116-deep-hints");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

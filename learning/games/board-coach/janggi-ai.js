@@ -12,7 +12,7 @@
     level4:{name:"레벨 4",depth:2,nodes:9000,ms:500},
     advanced:{name:"레벨 5",depth:3,nodes:16000,ms:700}
   });
-  const HINT=Object.freeze({depth:6,nodes:240000,ms:2600,kingTempo:28,coaching:true});
+  const HINT=Object.freeze({depth:8,nodes:1200000,ms:12000,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
   const NAMES={R:"차",C:"포",H:"마",E:"상",A:"사",P:"졸",K:"왕"};
   const name=piece=>piece?.[1]==="P"&&piece[0]==="h"?"병":NAMES[piece?.[1]];
@@ -365,7 +365,15 @@
       if(still)reason+=` 다만 이 수 뒤에도 ${threatText(still)} 이어지는 공격도 살펴보세요.`;
     }
     const steps=legalLine(state,line);
-    if(steps.length>=2&&R.same(steps[0].move,move))reason+=`\n예상 응수: 상대 ${label(steps[1].move)}. ${nextPurpose(steps[1],next.turn)}`;
+    if(steps.length>=2&&R.same(steps[0].move,move)){
+      reason+=`\n예상 응수: 상대 ${label(steps[1].move)}. ${nextPurpose(steps[1],next.turn)}`;
+      // Include our continuation so a planned exchange does not look like an
+      // unexplained sacrifice that ends with the opponent taking our piece.
+      if(steps[2]){
+        const follow=steps[2].move;
+        reason+=`\n그렇게 두면: 내 ${label(follow)}.${follow.capture?` 상대 ${object(name(follow.capture))} 잡아요.`:""}`;
+      }
+    }
     return reason;
   }
   function explain(state,move){

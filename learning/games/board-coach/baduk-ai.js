@@ -11,7 +11,7 @@
     // On the 9x9 board depth 4 rarely finishes in time; a wider depth 3 does.
     advanced:{name:'레벨 5',depth:4,width:10,nodes:8000,ms:2000,standard:{depth:3,width:12}}
   });
-  const HINT=Object.freeze({depth:4,width:16,nodes:12000,ms:3000,practice:false});
+  const HINT=Object.freeze({depth:6,width:16,nodes:80000,ms:12000,practice:false});
   // A conservative local eye filter, not a life-and-death solver.
   function ownEye(s,index){
     if(!R.neighbors(index,s.size).every(i=>s.board[i]===s.color))return false;
@@ -91,6 +91,7 @@
       const choices=roots.filter(r=>r.score>=best.score-(slip?60:12)).slice(0,slip?6:3);
       best=choices[Math.min(choices.length-1,Math.floor(random()*choices.length))];
     }else{
+      options.onCandidate?.({index:best.index,reason:explain(s,best.index),depth,nodes});
       function search(position,left,alpha,beta){
         if(++nodes>settings.nodes||Date.now()-start>=settings.ms)throw stop;
         if(!left||position.ended||position.scoring)return evaluate(position,s.color);
@@ -113,6 +114,7 @@
             if(value>score){score=value;candidate=row;}
           }
           best=candidate;depth=d;
+          options.onCandidate?.({index:best.index,reason:explain(s,best.index),depth,nodes});
           roots=[best,...roots.filter(r=>r!==best)];
         }catch(error){if(error!==stop)throw error;break;}
       }

@@ -5,6 +5,22 @@ const C=require('../learning/games/chess/chess-rules.js'),CA=require('../learnin
 const J=require('../learning/games/board-coach/janggi-rules.js'),JA=require('../learning/games/board-coach/janggi-ai.js');
 function janggi(pieces,turn='c'){const board=Array(90).fill(null);for(const[p,x,y]of pieces)board[y*9+x]=p;return J.position(board,turn);}
 
+test('Janggi screenshot exchange explains our second cannon capture after losing the chariot',()=>{
+  const s=janggi([['hA',3,0],['hK',4,0],['hA',5,0],['hE',6,0],['hH',4,1],['cR',6,1],['hC',7,1],['hR',8,1],
+    ['hP',2,3],['hP',3,3],['hP',4,3],['hE',6,3],['hP',7,3],['cH',5,4],['hC',6,4],
+    ['cH',0,6],['cP',1,6],['cP',2,6],['cP',4,6],['cP',5,6],['cP',7,6],['cC',3,7],['cA',4,7],['cA',4,8],['cK',3,9],['cR',6,9],['cC',8,9]]);
+  s.ply=49;
+  let current=s;const line=[];
+  for(const [from,to] of [[15,16],[17,16],[87,42]]){
+    const next=J.play(current,{from,to});assert.ok(next.ok);line.push(next.move);current=next.state;
+  }
+  assert.deepEqual(line.map(move=>move.capture),['hC','cR','hC']);
+  const text=JA.explainHint(s,line[0],line);
+  assert.match(text,/예상 응수: 상대 차 29 → 28/);
+  assert.match(text,/그렇게 두면: 내 차 07 → 57\. 상대 포를 잡아요/);
+  assert.doesNotMatch(JA.explainHint(s,line[0],line.slice(0,2)),/그렇게 두면/);
+});
+
 test('chess hint finds mate and offers a saving draw rather than endlessly fleeing',()=>{
   const winning=C.boardFromFen('7k/5Q2/6K1/8/8/8/r7/q7 w - - 100 51','standard');
   const answer=CA.chooseHint(winning);assert.ok(answer.move);
