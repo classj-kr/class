@@ -48,6 +48,9 @@
         const piece = state.pieces.find(item => item.id === id);
         const roll = state.results[result];
         if (state.throwing || !roll || !piece || piece.finished || piece.team !== state.turn % 2) return null;
+        // Active pieces remain selectable; introduce waiting pieces in number order.
+        if (piece.node === null && state.pieces.some(item => item.team === piece.team &&
+            !item.finished && item.node === null && item.id < piece.id)) return null;
         const route = routeFrom(piece);
         const remaining = route.slice(roll.steps);
         const path = route.slice(1, roll.steps + 1);

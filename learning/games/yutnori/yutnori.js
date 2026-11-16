@@ -21,6 +21,8 @@
     });
     let lobby, state, selected, selectedResult = 0, noticeTimer, animation, turnTimer, waiting = false, lastTick;
     let rollTimer, rolling = false;
+    const returningPieces = new Set();
+    const returnEffects = new Set();
     const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function notice(text) {
@@ -33,6 +35,7 @@
     function token(piece, walking = false) {
         const el = document.createElement("span");
         el.className = "token team-" + piece.team;
+        el.dataset.piece = piece.id;
         const player = state.players[piece.owner];
         if (player.avatarKey) el.append(ClassroomAvatars.create(player.avatarKey, {walking}));
         else el.classList.add("plain");
@@ -40,6 +43,43 @@
         number.textContent = piece.id % 4 + 1;
         el.append(number);
         return el;
+    }
+
+    function groupToken(pieces, walking = false) {
+        if (pieces.length === 1) return token(pieces[0], walking);
+        const group = document.createElement("span");
+        group.className = "token-group";
+        group.dataset.count = pieces.length;
+        for (const piece of pieces) group.append(token(piece, walking));
+        return group;
+    }
+
+    function clearReturns() {
+        for (const effect of returnEffects) { effect.motion?.cancel(); effect.ghost.remove(); }
+        returnEffects.clear();
+        returningPieces.clear();
+    }
+
+    function returnToBench(effects) {
+        effects.forEach((effect, index) => {
+            const target = $("teamBench").querySelector(`[data-bench-piece="${effect.id}"] .token`);
+            if (!target) { effect.ghost.remove(); returnEffects.delete(effect); returningPieces.delete(effect.id); return; }
+            const end = target.getBoundingClientRect(), start = effect.rect;
+            const dx = end.left + end.width / 2 - start.left - start.width / 2;
+            const dy = end.top + end.height / 2 - start.top - start.height / 2;
+            const scale = end.width / start.width;
+            effect.motion = effect.ghost.animate([
+                {transform:"translate(0,0) rotate(0) scale(1)"},
+                {transform:`translate(${dx * .5}px,${Math.min(0,dy) - 45}px) rotate(360deg) scale(${(1+scale)/2})`, offset:.5},
+                {transform:`translate(${dx}px,${dy}px) rotate(720deg) scale(${scale})`}
+            ], {duration:850, delay:index * 60, easing:"ease-in-out", fill:"forwards"});
+            effect.motion.finished.then(() => {
+                returnEffects.delete(effect);
+                returningPieces.delete(effect.id);
+                effect.ghost.remove();
+                if (state) renderBench();
+            }, () => effect.ghost.remove());
+        });
     }
 
     function isMyTurn() {
@@ -69,9 +109,11 @@
             roster.className = "bench-pieces";
             for (const piece of pieces) {
                 const atStart = !piece.finished && piece.node === null;
-                const selectable = atStart && piece.team === state.turn % 2 && canPick();
+                const selectable = atStart && canPick() && !!YutRules.preview(state, piece.id, selectedResult);
                 const slot = document.createElement(selectable ? "button" : "div");
                 slot.className = "bench-slot";
+                slot.dataset.benchPiece = piece.id;
+                slot.classList.toggle("returning", returningPieces.has(piece.id));
                 slot.classList.toggle("away", !atStart);
                 if (selectable) {
                     slot.type = "button";
@@ -167,10 +209,8 @@
             piecesAtNode.add(piece.node);
             const group = state.pieces.filter(item => !item.finished && item.node === piece.node && item.team === piece.team);
             const [x,y] = points[piece.node];
-            const el = token(piece);
-            if (group.length > 1) el.querySelector("b").textContent = `×${group.length}`;
+            const el = groupToken(group);
             el.classList.add("board-token");
-            el.dataset.piece = piece.id;
             el.style.left = x + "%";
             el.style.top = y + "%";
             if (myTurn && !state.throwing && piece.team === state.turn % 2) {
@@ -294,6 +334,7 @@
     function update(next, animate = true) {
         animation?.cancel();
         animation = null;
+        clearReturns();
         clearTimeout(rollTimer);
         rolling = false;
         $("rollStage").hidden = true;
@@ -309,11 +350,22 @@
         selectedResult = 0;
         waiting = false;
         const event = state.event;
-        const captured = animate && event?.caught ? [...board.querySelectorAll("[data-piece]")]
+        const captured = animate && !reducedMotion() && event?.caught ? [...board.querySelectorAll(".token[data-piece]")]
             .filter(el => {
                 const piece = state.pieces.find(item => item.id === Number(el.dataset.piece));
                 return piece && piece.team !== state.pieces[event.id].team && piece.node === null;
-            }).map(el => el.cloneNode(true)) : [];
+            }).map(el => {
+                const id = Number(el.dataset.piece), rect = el.getBoundingClientRect();
+                const ghost = el.cloneNode(true);
+                ghost.classList.remove("board-token");
+                ghost.classList.add("returning-token");
+                ghost.style.cssText = `left:${rect.left}px;top:${rect.top}px;--piece-size:${rect.width}px;width:${rect.width}px;height:${rect.height}px`;
+                document.body.append(ghost);
+                const effect = {id, rect, ghost};
+                returningPieces.add(id);
+                returnEffects.add(effect);
+                return effect;
+            }) : [];
         if (!event || event.kind === "roll") showSticks(event?.roll);
         announce(animate ? null : event);
         if (animate && event?.kind === "roll") {
@@ -331,8 +383,7 @@
             }
         }
         if (animate && event?.kind === "move" && !reducedMotion()) {
-            const el = token(state.pieces.find(piece => piece.id === event.id), true);
-            if (event.group.length > 1) el.querySelector("b").textContent = `×${event.group.length}`;
+            const el = groupToken(event.group.map(id => state.pieces.find(piece => piece.id === id)), true);
             el.classList.add("walking-token");
             board.append(el);
             const path = [event.from ?? 0, ...event.path];
@@ -350,17 +401,7 @@
                     animation = null;
                     render();
                     announce(event);
-                    for (const ghost of captured) {
-                        ghost.classList.remove("board-token");
-                        ghost.classList.add("returning-token");
-                        board.append(ghost);
-                        const retreat = ghost.animate([
-                            {transform:"rotate(0) scale(1)", opacity:1},
-                            {transform:"translateY(-30px) rotate(-18deg) scale(1.1)", opacity:1, offset:.3},
-                            {transform:"translate(-95px,45px) rotate(-35deg) scale(.2)", opacity:0}
-                        ], {duration:550, easing:"ease-in", fill:"forwards"});
-                        retreat.finished.then(() => ghost.remove(), () => ghost.remove());
-                    }
+                    returnToBench(captured);
                 }
             })
                 .catch(() => {}).finally(() => el.remove());
@@ -391,6 +432,7 @@
     }
 
     function returnToLobby() {
+        clearReturns();
         clearInterval(turnTimer);
         clearTimeout(rollTimer);
         rolling = false;

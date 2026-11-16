@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>윷놀이</title>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
-<link rel="stylesheet" href="yutnori.css?v=8">
+<link rel="stylesheet" href="yutnori.css?v=10">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
 <script src="/assets/sound/music-control.js?v=20261115-game-backdrop" defer></script>
-<script src="rules.js?v=4" defer></script>
-<script src="yutnori.js?v=7" defer></script>
+<script src="rules.js?v=5" defer></script>
+<script src="yutnori.js?v=10" defer></script>
 </head>
 <body>
 <main class="shell">
@@ -71,7 +71,7 @@
         <svg viewBox="0 0 100 100" class="tracks" aria-hidden="true"><path d="M12 12H88V88H12ZM12 12L88 88M88 12L12 88"/></svg>
         <span class="shortcut-label" aria-hidden="true">지름길</span>
         <span class="gate">출발 · 도착</span>
-        <div id="rollStage" hidden aria-hidden="true"><div class="roll-aura"></div><div id="stageSticks" class="sticks"></div><p>두근두근…</p></div>
+        <div id="rollStage" hidden aria-hidden="true"><div class="roll-aura"></div><div id="stageSticks" class="sticks"></div></div>
         <div id="boardEffects" aria-hidden="true"></div>
         <div id="boardCallout" aria-hidden="true"></div>
       </div>
@@ -97,6 +97,7 @@
     <div id="practiceActions" class="row"></div>
   </section>
   <ul class="quick-rules">
+    <li><b>출발</b> 새 말은 1→2→3→4번 순서로 내보내요. 판 위의 말은 계속 움직일 수 있어요.</li>
     <li><b>업기</b> 같은 편 말에 닿으면 같이 가요.</li>
     <li><b>잡기</b> 상대 말에 닿으면 출발 전으로 보내고 한 번 더 던져요.</li>
     <li><b>지름길</b> 모서리나 가운데에 딱 멈추면 다음 이동 때 써요.</li>
