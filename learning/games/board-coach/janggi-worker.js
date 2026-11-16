@@ -1,5 +1,5 @@
 "use strict";
-importScripts("janggi-rules.js?v=5", "janggi-ai.js?v=19");
+importScripts("janggi-rules.js?v=5", "janggi-ai.js?v=20");
 self.onmessage=({data:{token,state,level,kind}})=>{
   try{
     const result=kind==="hint"?JanggiCoachAI.chooseHint(state):JanggiCoachAI.choose(state,level);

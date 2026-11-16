@@ -12,7 +12,7 @@
     level4:{name:"레벨 4",depth:2,nodes:9000,ms:500},
     advanced:{name:"레벨 5",depth:3,nodes:16000,ms:700}
   });
-  const HINT=Object.freeze({depth:8,nodes:600000,ms:5000,kingTempo:28,coaching:true});
+  const HINT=Object.freeze({depth:3,nodes:16000,ms:220,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
   const NAMES={R:"차",C:"포",H:"마",E:"상",A:"사",P:"졸",K:"왕"};
   const name=piece=>piece?.[1]==="P"&&piece[0]==="h"?"병":NAMES[piece?.[1]];
