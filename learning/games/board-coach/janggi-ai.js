@@ -12,7 +12,7 @@
     level4:{name:"레벨 4",depth:2,nodes:9000,ms:500},
     advanced:{name:"레벨 5",depth:3,nodes:16000,ms:700}
   });
-  const HINT=Object.freeze({depth:3,nodes:16000,ms:220,kingTempo:28,coaching:true});
+  const HINT=Object.freeze({depth:6,nodes:240000,ms:2600,kingTempo:28,coaching:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
   const NAMES={R:"차",C:"포",H:"마",E:"상",A:"사",P:"졸",K:"왕"};
   const name=piece=>piece?.[1]==="P"&&piece[0]==="h"?"병":NAMES[piece?.[1]];
@@ -200,6 +200,7 @@
     }).sort((a,b)=>b.score-a.score);
     if(ranked[0].score>=MATE)return {move:ranked[0].move,line:[ranked[0].move],reason:explain(state,ranked[0].move),depth:1,nodes:0};
     let best=ranked[0].move,bestLine=[best],nodes=0,completed=0;
+    options.onCandidate?.({move:best,line:bestLine,depth:1,nodes});
     const stop={},deadline=Date.now()+(options.ms??settings.ms),budget=options.nodes??settings.nodes;
     // Reuse promising moves across iterative depths, not their scores: draw
     // results depend on repetition history as well as the board position.
@@ -258,14 +259,16 @@
           if(score>top){top=score;candidate=move;candidateLine=[move,...(lines[1]||[])].slice(0,5);}
         }
         best=candidate;bestLine=candidateLine;completed=depth;
+        options.onCandidate?.({move:best,line:bestLine,depth:completed,nodes});
       }catch(error){if(error!==stop)throw error;break;}
     }
     return {move:best,line:bestLine,reason:explain(state,best),depth:completed,nodes};
   }
   function chooseHint(state,options={}){
-    const answer=choose(state,"advanced",{...HINT,...options});
-    if(answer)answer.reason=explainHint(state,answer.move,answer.line);
-    return answer;
+    const explain=answer=>({...answer,reason:explainHint(state,answer.move,answer.line)});
+    const answer=choose(state,"advanced",{...HINT,...options,
+      onCandidate:options.onCandidate&& (candidate=>options.onCandidate(explain(candidate)))});
+    return answer&&explain(answer);
   }
   // Inspect attacks in the current layout without pretending the defender has
   // actually passed. Only legal captures count; pinned attackers cannot threaten.

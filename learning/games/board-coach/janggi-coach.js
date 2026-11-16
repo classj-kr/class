@@ -5,6 +5,7 @@
   const R=JanggiCoachRules,AI=JanggiCoachAI,$=id=>document.getElementById(id);
   let state=R.initial(),human="c",level="beginner",started=false,selected=null,hint=null,scene=null,feedback=null,history=[];
   let worker=null,token=0,timeout=null,nextTurn=null,busy=false,job="move";
+  let hintSearch=null;
   let motion=null,moving=false;
   const pieceTypes={R:'rook',C:'cannon',H:'horse',E:'elephant',A:'guard',P:'soldier',K:'king'};
   const pieceInfo=p=>({side:p[0]==='c'?'cho':'han',type:pieceTypes[p[1]]});
@@ -34,7 +35,8 @@
   document.body.insertAdjacentHTML("beforeend",'<dialog id="janggiConfirm" aria-labelledby="janggiConfirmTitle"><h2 id="janggiConfirmTitle"></h2><p id="janggiConfirmText"></p><div class="resign-choices"><button id="janggiConfirmYes" type="button"></button><button id="janggiConfirmCancel" class="quiet" type="button">취소</button></div></dialog>');
   let confirmKind=null;
   function reason(label,title,text){$("reasonLabel").textContent=label;$("moveLabel").textContent=title;$("reason").textContent=text;}
-  function stop(){if(busy&&job==="hint")reason("힌트 계산 취소","계산을 멈췄어요","힌트를 누르면 다시 계산합니다.");token++;worker?.terminate();worker=null;clearTimeout(timeout);clearTimeout(nextTurn);busy=false;moving=false;motion?.cancel();motion=null;}
+  function cancelHint(){hintSearch?.worker?.terminate();hintSearch=null;}
+  function stop(){cancelHint();token++;worker?.terminate();worker=null;clearTimeout(timeout);clearTimeout(nextTurn);busy=false;moving=false;motion?.cancel();motion=null;}
   function renderCaptures(position){
     const captures=position.history.filter(entry=>entry.move?.capture),latest=captures.at(-1);
     for(const [side,id,countId]of [[human,'myCaptures','myCaptureCount'],[R.other(human),'aiCaptures','aiCaptureCount']]){
@@ -100,6 +102,7 @@
   }
   function commit(move,isHuman=false,opponent=null){
     const result=R.play(state,move);if(!result.ok){reason("이동 확인","둘 수 없는 수",result.error);return;}
+    cancelHint();
     const followed=isHuman&&hint?.move&&R.same(result.move,hint.move);
     const before=state,explanation=followed?hint.reason:AI.explain(before,result.move);
     feedback=isHuman?(followed?null:AI.review(before,result.move)):feedback;
@@ -118,19 +121,55 @@
     current.finished.then(()=>{if(token!==id||state!==position||motion!==current)return;motion=null;moving=false;render();resume();});
   }
   function fail(text){stop();$("retry").classList.remove("hidden");reason("계산을 마치지 못했어요","다시 계산할 수 있어요",text);render();}
+  function showHint(answer){
+    hint=answer;selected=null;
+    reason("힌트",AI.label(answer.move),answer.reason);render();BoardCoachUI.revealExplanation();
+  }
+  function prepareHint(){
+    if(hintSearch)return hintSearch;
+    const search={position:state,answer:null,requested:false,worker:null};
+    hintSearch=search;
+    const failed=()=>{
+      if(hintSearch!==search)return;
+      const requested=search.requested;
+      cancelHint();
+      if(requested&&!hint)reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요.");
+    };
+    try{
+      search.worker=new Worker("janggi-worker.js?v=23");
+      search.worker.onmessage=({data})=>{
+        if(hintSearch!==search||state!==search.position)return;
+        if(data.error||!data.result){failed();return;}
+        search.answer=data.result;
+        // Keep the arrow the student already saw stable while search continues.
+        if(search.requested&&!hint)showHint(search.answer);
+        if(!data.partial){search.worker.terminate();search.worker=null;}
+      };
+      search.worker.onerror=failed;
+      search.worker.postMessage({token,state,level,kind:"hint"});
+    }catch{failed();}
+    return hintSearch;
+  }
   function calculate(kind){
     if(!started||moving||R.status(state).ended||$("setup").open||$("janggiConfirm").open||(kind==="hint")!==(state.turn===human))return;
+    if(kind==="hint"){
+      const search=prepareHint();
+      if(!search){reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요.");return;}
+      search.requested=true;
+      if(search.answer)showHint(search.answer);
+      else reason("힌트 준비 중","둘 곳을 살펴보고 있어요","");
+      return;
+    }
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
-    if(kind==="hint")reason("힌트 계산 중","둘 곳을 살펴보고 있어요","왕과 다른 말이 공격받는지 확인하고 있어요.");
     try{
-      worker=new Worker("janggi-worker.js?v=22");
+      worker=new Worker("janggi-worker.js?v=23");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
         const answer=data.result,move=R.actions(state).find(m=>R.same(m,answer.move));
         if(!move)return fail("수 계산을 다시 시도해 주세요.");
         worker.terminate();worker=null;clearTimeout(timeout);busy=false;
-        if(kind==="hint"){hint={...answer,move};reason("힌트",AI.label(move),answer.reason);render();BoardCoachUI.revealExplanation();}else commit(move,false,answer.opponent);
+        commit(move,false,answer.opponent);
       };
       worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
       timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},20000);
@@ -138,6 +177,7 @@
     }catch{fail("이 브라우저에서 계산을 시작하지 못했어요.");}
   }
   function resume(){
+    if(started&&state.turn===human&&!R.status(state).ended&&!$("setup").open&&!$("janggiConfirm").open)prepareHint();
     if(started&&!moving&&!R.status(state).ended&&state.turn!==human&&!$("setup").open&&!$("janggiConfirm").open){
       const id=token;clearTimeout(nextTurn);nextTurn=setTimeout(()=>{if(id===token)calculate("move");},350);
     }
@@ -145,7 +185,7 @@
   function undo(){
     const at=history.findLastIndex(m=>m.side===human);if(at<0)return;
     stop();state=history[at].before;history=history.slice(0,at);selected=null;hint=null;scene=null;feedback=null;
-    $("retry").classList.add("hidden");reason("다시 생각할 차례","내 수를 물렸어요","내 마지막 수를 두기 전으로 돌아왔어요.");render();
+    $("retry").classList.add("hidden");reason("다시 생각할 차례","내 수를 물렸어요","내 마지막 수를 두기 전으로 돌아왔어요.");render();resume();
   }
   $("board").addEventListener("click",event=>{
     const button=event.target.closest("[data-square]");if(!button||busy||moving||scene||!started||state.turn!==human||R.status(state).ended)return;
