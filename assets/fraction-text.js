@@ -2,7 +2,7 @@
 // 자료는 그대로 두고 화면에 그려진 글자만 바꾼다. 읽어 주기 프로그램에는 원래 말("3분의 2")을 들려준다.
 (function (root) {
   'use strict';
-  const PATTERN = /(\d+)(와|과) (\d+)분의 ?(\d+)|(\d+)분의 ?(\d+)/g;
+  const PATTERN = /(\d+)(와|과) (\d+)분의 ?(\d+)|(\d+|\b[a-z])분의 ?(\d+|[a-z]\b)/g;
   const READING = /^\s*['’"”]?\s*(?:이)?(?:라고|처럼|으로|로)?\s*읽/;
   const SKIP = new Set(['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'SELECT', 'OPTION', 'CODE', 'PRE']);
   let styled = false;
@@ -16,6 +16,7 @@
       '.ft-frac>span:first-child{border-bottom:.09em solid currentColor}',
       '.ft-mixed{display:inline-flex;align-items:center;vertical-align:middle;white-space:nowrap}',
       '.ft-mixed>.ft-whole{margin-right:.04em}',
+      '.ft-frac>.ft-var{font-style:italic;font-family:"Times New Roman",serif}',
     ].join('');
     document.head.append(css);
   }
@@ -24,8 +25,10 @@
     box.className = 'ft-frac';
     const a = document.createElement('span');
     a.textContent = top;
+    if (/^[a-z]$/.test(top)) a.className = 'ft-var';
     const b = document.createElement('span');
     b.textContent = bottom;
+    if (/^[a-z]$/.test(bottom)) b.className = 'ft-var';
     box.append(a, b);
     return box;
   }
