@@ -35,6 +35,7 @@ const lines = [`# 교과 단어 ${term} 그림 프롬프트`, '',
   '각 칸의 글을 통째로 복사해 붙여 넣으면 화풍 문단까지 함께 들어간다. 그림 속에 글자가 생기면 다시 만든다.', ''];
 let count = 0, missing = [], drawn = [];
 for (const [code, subject] of books) {
+  if (!fs.existsSync(path.join(dir, code + '.json'))) continue; // 1·2학년은 국어·수학뿐
   const book = JSON.parse(fs.readFileSync(path.join(dir, code + '.json'), 'utf8'));
   lines.push(`## ${subject}`, '');
   for (const unit of book.units) {
