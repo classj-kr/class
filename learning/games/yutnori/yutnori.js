@@ -2,6 +2,7 @@
     "use strict";
     const $ = id => document.getElementById(id);
     const teamName = ["청팀", "홍팀"];
+    const themes = ["garden", "cherry", "snow", "night"];
     const corners = [[88,88], [88,12], [12,12], [12,88]];
     const points = corners.flatMap(([x,y], side) => {
         const [nextX,nextY] = corners[(side + 1) % 4];
@@ -45,6 +46,17 @@
         return state.winner === null && state.players[state.turn].id === lobby.snapshot().myId;
     }
 
+    function canPick() {
+        return isMyTurn() && !state.throwing && !waiting && !animation && !rolling;
+    }
+
+    function pickPiece(id) {
+        if (!canPick() || !YutRules.preview(state, id, selectedResult)) return;
+        selected = id;
+        render();
+        $("destination")?.focus({preventScroll:true});
+    }
+
     function renderBench() {
         $("teamBench").replaceChildren(...teamName.map((name, team) => {
             const card = document.createElement("section");
@@ -56,8 +68,17 @@
             const roster = document.createElement("div");
             roster.className = "bench-pieces";
             for (const piece of pieces) {
-                const slot = document.createElement("div");
+                const atStart = !piece.finished && piece.node === null;
+                const selectable = atStart && piece.team === state.turn % 2 && canPick();
+                const slot = document.createElement(selectable ? "button" : "div");
                 slot.className = "bench-slot";
+                slot.classList.toggle("away", !atStart);
+                if (selectable) {
+                    slot.type = "button";
+                    slot.setAttribute("aria-label", `대기 중인 ${piece.id % 4 + 1}번 말 고르기`);
+                    slot.setAttribute("aria-pressed", String(selected === piece.id));
+                    slot.onclick = () => pickPiece(piece.id);
+                }
                 const label = document.createElement("span");
                 label.textContent = state.players[piece.owner].name;
                 const status = document.createElement("small");
@@ -132,8 +153,9 @@
         renderBench();
         const myTurn = isMyTurn();
         const move = selected == null ? null : YutRules.preview(state, selected, selectedResult);
-        const piecesAtNode = new Map();
+        const piecesAtNode = new Set();
         board.querySelectorAll(".board-token").forEach(node => node.remove());
+        $("destination")?.remove();
         nodes.forEach((node, index) => {
             node.classList.toggle("trail", !!move?.path.includes(index));
             node.classList.toggle("target", move?.node === index);
@@ -141,29 +163,47 @@
         board.classList.toggle("finish-target", !!move && move.node === null);
         for (const piece of state.pieces) {
             if (piece.node === null || piece.finished || animation && event.group.includes(piece.id)) continue;
-            const offset = piecesAtNode.get(piece.node) || 0;
-            piecesAtNode.set(piece.node, offset + 1);
+            if (piecesAtNode.has(piece.node)) continue;
+            piecesAtNode.add(piece.node);
+            const group = state.pieces.filter(item => !item.finished && item.node === piece.node && item.team === piece.team);
             const [x,y] = points[piece.node];
             const el = token(piece);
+            if (group.length > 1) el.querySelector("b").textContent = `×${group.length}`;
             el.classList.add("board-token");
             el.dataset.piece = piece.id;
-            el.style.left = `calc(${x}% + ${offset * 7}px)`;
-            el.style.top = `calc(${y}% - ${offset * 8}px)`;
+            el.style.left = x + "%";
+            el.style.top = y + "%";
             if (myTurn && !state.throwing && piece.team === state.turn % 2) {
                 const pick = document.createElement("button");
                 pick.type = "button";
                 pick.className = "board-token pick-token";
-                pick.classList.toggle("selected", selected === piece.id);
+                pick.classList.toggle("selected", group.some(item => item.id === selected));
                 pick.style.cssText = el.style.cssText;
-                pick.setAttribute("aria-label", `${piece.id % 4 + 1}번 말 고르기`);
+                pick.setAttribute("aria-label", `${piece.id % 4 + 1}번 말 고르기${group.length > 1 ? ` · ${group.length}개 업음` : ""}`);
                 pick.disabled = waiting || !!animation || rolling;
                 pick.append(el);
                 el.classList.remove("board-token");
                 el.style.left = "";
                 el.style.top = "";
-                pick.onclick = () => { selected = piece.id; render(); $("moveBtn").focus(); };
+                pick.onclick = () => pickPiece(piece.id);
                 board.append(pick);
             } else board.append(el);
+        }
+        if (move && canPick()) {
+            const destination = document.createElement("button");
+            destination.id = "destination";
+            destination.type = "button";
+            const occupants = state.pieces.filter(piece => !piece.finished && piece.node !== null && piece.node === move.node);
+            const action = move.node === null ? "완주" : occupants.some(piece => piece.team !== state.turn % 2) ? "잡기" : occupants.length ? "업기" : "여기로";
+            destination.className = "destination";
+            destination.classList.toggle("occupied", occupants.length > 0);
+            const [x,y] = points[move.node ?? 29];
+            destination.style.left = (move.node === null ? 88 : x) + "%";
+            destination.style.top = (move.node === null ? 96 : y) + "%";
+            destination.textContent = action;
+            destination.setAttribute("aria-label", `${YutRules.names[state.results[selectedResult].steps]} 결과로 ${action}`);
+            destination.onclick = () => submit("move");
+            board.append(destination);
         }
         $("score").replaceChildren(...teamName.map((name, team) => {
             const text = document.createElement("span");
@@ -193,29 +233,10 @@
             button.onclick = () => { selectedResult = index; render(); $("results").children[index]?.focus(); };
             return button;
         }));
-        $("pieces").replaceChildren();
-        if (myTurn && !state.throwing) {
-            const team = state.turn % 2;
-            for (const piece of state.pieces.filter(item => item.team === team && !item.finished)) {
-                const button = document.createElement("button");
-                button.type = "button";
-                button.disabled = waiting || !!animation || rolling;
-                button.setAttribute("aria-pressed", String(selected === piece.id));
-                button.append(token(piece), document.createTextNode(piece.node === null ? "출발 전" : "윷판 위"));
-                button.onclick = () => {
-                    selected = piece.id;
-                    render();
-                    $("pieces").querySelector('[aria-pressed="true"]')?.focus();
-                };
-                $("pieces").append(button);
-            }
-        }
-        $("moveBtn").classList.toggle("hidden", !move || !myTurn);
-        $("moveBtn").disabled = waiting || !!animation || rolling;
         $("turnHint").textContent = !myTurn ? "" : state.throwing
             ? state.results.length ? "결과를 모아 뒀어요. 윷을 한 번 더 던져요." : "윷 던지기를 눌러요."
-            : move ? "빛나는 칸으로 이 말을 옮겨요."
-                : state.results.length > 1 ? "쓸 결과를 고르고, 움직일 말을 눌러요." : "움직일 우리 팀 말을 눌러요.";
+            : move ? "판 위의 빛나는 도착 칸을 눌러요."
+                : state.results.length > 1 ? "쓸 결과를 고른 뒤, 움직일 아바타를 직접 눌러요." : "판 위나 대기석의 우리 팀 아바타를 눌러요.";
         $("rematchBtn").classList.toggle("hidden", state.winner === null || lobby.snapshot().role !== "host");
     }
 
@@ -249,6 +270,12 @@
         return game;
     }
 
+    function createMatch(players) {
+        const game = YutRules.create(players);
+        game.theme = themes[Math.floor(Math.random() * themes.length)];
+        return setDeadline(game);
+    }
+
     function showSticks(roll, container = $("sticks"), toss = true) {
         container.replaceChildren(...Array.from({length:4}, (_, index) => {
             const stick = document.createElement("span");
@@ -272,6 +299,12 @@
         $("rollStage").hidden = true;
         $("boardEffects").replaceChildren();
         state = next;
+        const theme = themes.includes(state.theme) ? state.theme : "garden";
+        document.body.dataset.yutTheme = theme;
+        if (board.dataset.theme !== theme) {
+            board.dataset.theme = theme;
+            board.style.backgroundImage = `url("${new URL(`assets/${theme}-board.webp`, document.baseURI).href}")`;
+        }
         selected = null;
         selectedResult = 0;
         waiting = false;
@@ -373,7 +406,7 @@
     function showPractice() {
         const dialog = $("rulesDialog");
         const available = [];
-        let throws = 0, position = 0, chosen = -1;
+        let throws = 0, position = 0, chosen = -1, picked = false;
         let avatarKey = lobby.snapshot().players[lobby.snapshot().myId]?.avatarKey;
         function draw() {
             const actions = $("practiceActions");
@@ -398,26 +431,36 @@
             } else if (available.length) {
                 hint.textContent = chosen < 0
                     ? "모아 둔 결과 중 먼저 쓸 것을 골라요."
-                    : `빛나는 칸까지 ${available[chosen]}칸 옮겨요.`;
+                    : picked ? `빛나는 도착 칸을 눌러 ${available[chosen]}칸 옮겨요.` : "연습판의 내 아바타를 눌러요.";
                 available.forEach((steps, index) => addButton(`${YutRules.names[steps]} · ${steps}칸`, () => {
                     chosen = index;
+                    picked = false;
                     draw();
-                    $("practiceMove").focus();
+                    $("practicePiece").focus();
                 }, chosen === index));
-                if (chosen >= 0) {
-                    addButton("말 옮기기", () => {
+            } else hint.textContent = "잘했어요! 모와 개를 골라 말 하나를 두 번 옮겼어요.";
+            const target = chosen < 0 || !picked ? -1 : position + available[chosen];
+            $("practiceTrack").replaceChildren(...Array.from({length:8}, (_, index) => {
+                const isPiece = index === position && chosen >= 0;
+                const cell = document.createElement(index === target || isPiece ? "button" : "span");
+                if (cell.tagName === "BUTTON") cell.type = "button";
+                cell.classList.toggle("target", index === target);
+                if (isPiece) {
+                    cell.id = "practicePiece";
+                    cell.onclick = () => { picked = true; draw(); $("practiceMove").focus(); };
+                }
+                if (index === target) {
+                    cell.id = "practiceMove";
+                    cell.textContent = "여기로";
+                    cell.setAttribute("aria-label", "연습판의 도착 칸");
+                    cell.onclick = () => {
                         position += available.splice(chosen, 1)[0];
                         chosen = -1;
+                        picked = false;
                         draw();
                         (actions.firstElementChild || dialog.querySelector("form button")).focus();
-                    });
-                    actions.lastElementChild.id = "practiceMove";
+                    };
                 }
-            } else hint.textContent = "잘했어요! 모와 개를 골라 말 하나를 두 번 옮겼어요.";
-            const target = chosen < 0 ? -1 : position + available[chosen];
-            $("practiceTrack").replaceChildren(...Array.from({length:8}, (_, index) => {
-                const cell = document.createElement("span");
-                cell.classList.toggle("target", index === target);
                 if (index === position) {
                     if (avatarKey) cell.append(ClassroomAvatars.create(avatarKey));
                     else cell.textContent = "●";
@@ -462,10 +505,10 @@
         onRules:showPractice,
         onLeave:() => { location.href = "/"; },
         onNotice:notice,
-        createStartData:({players, myId}) => ({state:setDeadline(YutRules.create(
+        createStartData:({players, myId}) => ({state:createMatch(
             [myId, ...Object.keys(players).filter(id => id !== myId)].map(id => ({
                 id, name:players[id].name, avatarKey:players[id].avatarKey
-            })))) }),
+            }))) }),
         onStarted:({data}) => {
             $("lobbyScreen").classList.add("hidden");
             $("gameScreen").classList.remove("hidden");
@@ -495,7 +538,6 @@
         };
     });
     $("throwBtn").onclick = () => submit("throw");
-    $("moveBtn").onclick = () => submit("move");
     $("reloadBtn").onclick = () => location.reload();
     $("rematchBtn").onclick = () => { lobby.broadcast({type:"YUT_REMATCH"}); returnToLobby(); };
 })();
