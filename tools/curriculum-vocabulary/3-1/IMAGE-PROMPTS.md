@@ -1243,15 +1243,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A sunny park on a weekend afternoon. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, rides a bicycle along a path with her parents. Nearby, two grandfathers play badminton, a woman reads a book on a bench, and children fly a kite on the grass. Relaxed, happy mood. No text.
 ```
 
-**soc-1-2-02** 대피소 — 차분한 안전 훈련 날. 베이지 재킷의 선생님이 하린과 도윤을 비롯한 아이들을 이끌고 계단을 내려가 환한 아파트 지하 주차장으로 들어간다. 먼저 온 아이들은 벽 쪽에 조용히 앉아 있고, 벽에는 달리는 사람 모양의 초록 비상구 표시가 켜져 있다. 글자는 없다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-During a calm school safety drill, a Korean woman teacher in her 30s in a beige blazer, a woman in her 30s in a beige jacket, leads a line of children, including a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, and a Korean boy (short black hair, round glasses, navy hoodie), a boy with round glasses and a navy hoodie, down the stairs into a large, well-lit underground parking area of an apartment building. Some children already sit quietly along the wall. A green running-person exit symbol glows on the wall. No text.
-```
-
-**soc-1-2-03** 보건소 — 깨끗한 보건소 안. 엄마가 아기를 무릎에 안고 앉아 있고, 흰 옷의 간호사가 아기 팔에 예방 주사를 살며시 놓는다. 하린은 엄마 곁에 서서 아기 손을 잡고 있고, 뒤쪽 의자에는 어린아이를 데려온 다른 부모들이 기다린다.
+**soc-1-2-02** 보건소 — 깨끗한 보건소 안. 엄마가 아기를 무릎에 안고 앉아 있고, 흰 옷의 간호사가 아기 팔에 예방 주사를 살며시 놓는다. 하린은 엄마 곁에 서서 아기 손을 잡고 있고, 뒤쪽 의자에는 어린아이를 데려온 다른 부모들이 기다린다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1259,7 +1251,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Inside a clean public health center room, a mother sits holding her baby on her lap while a nurse in a white uniform gently gives the baby a vaccine shot in the upper arm. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, stands beside her mother and holds the baby's hand. A few other parents with small children wait on chairs in the background. No text.
 ```
 
-**soc-1-2-10** 행정 복지 센터 — 환한 행정 복지 센터 안. 아빠가 포대기에 싼 갓난아기를 안고 창구에 앉아 있고, 친절한 직원이 아빠가 내민 종이를 받아 컴퓨터에 입력한다. 하린이 새로 태어난 동생을 신나게 들여다본다. 뒤쪽에 번호 알림판과 기다리는 의자가 있지만 숫자와 글자는 없다.
+**soc-1-2-09** 행정 복지 센터 — 환한 행정 복지 센터 안. 아빠가 포대기에 싼 갓난아기를 안고 창구에 앉아 있고, 친절한 직원이 아빠가 내민 종이를 받아 컴퓨터에 입력한다. 하린이 새로 태어난 동생을 신나게 들여다본다. 뒤쪽에 번호 알림판과 기다리는 의자가 있지만 숫자와 글자는 없다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1267,7 +1259,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Inside a bright Korean community service center, a father holding a newborn baby wrapped in a blanket sits at a service counter. A friendly clerk takes a paper form from him and types on a computer. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, peeks happily at her new baby brother. A queue number display and waiting chairs are in the background, without numbers or text.
 ```
 
-**soc-1-2-11** 답사 — 동네 놀이터. 도윤이 작은 사진기로 미끄럼틀을 찍고, 하린은 작은 수첩에 무언가를 적는다. 보호자인 엄마가 바로 뒤에 서 있다. 두 아이 모두 물병을 꽂은 작은 배낭을 메었다.
+**soc-1-2-10** 답사 — 동네 놀이터. 도윤이 작은 사진기로 미끄럼틀을 찍고, 하린은 작은 수첩에 무언가를 적는다. 보호자인 엄마가 바로 뒤에 서 있다. 두 아이 모두 물병을 꽂은 작은 배낭을 메었다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1275,7 +1267,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At a neighborhood playground, a Korean boy (short black hair, round glasses, navy hoodie), a boy with round glasses and a navy hoodie, takes a photo of a slide with a small camera, while a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, writes notes in a small notebook. A mother stands right behind them as their guardian. Both children wear small backpacks with water bottles. No text.
 ```
 
-**soc-1-2-12** 예방 — 학교 수돗가에 운동장에서 막 들어온 아이들이 손을 씻으려고 줄을 섰다. 하린이 흐르는 물 아래에서 비누 거품을 내어 손가락 사이까지 꼼꼼히 문지른다. 벽에는 글자 없이 손과 비누 거품만 그린 그림 포스터가 붙어 있다.
+**soc-1-2-11** 예방 — 학교 수돗가에 운동장에서 막 들어온 아이들이 손을 씻으려고 줄을 섰다. 하린이 흐르는 물 아래에서 비누 거품을 내어 손가락 사이까지 꼼꼼히 문지른다. 벽에는 글자 없이 손과 비누 거품만 그린 그림 포스터가 붙어 있다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1283,7 +1275,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At a row of school sinks, children who just came in from the playground line up to wash their hands. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, rubs thick soap bubbles carefully between her fingers under running water. On the wall hangs a simple picture poster of hands and soap bubbles, without any words. No text.
 ```
 
-**soc-1-2-13** 시설 — 여러 시설이 있는 동네 공원. 놀이터에는 미끄럼틀과 그네, 옆에는 운동 기구와 의자, 작은 화장실 건물이 있다. 할아버지가 운동 기구 손잡이를 돌리고, 휠체어를 탄 아이가 완만한 경사로를 따라 놀이터로 들어서자 친구들이 손을 흔든다.
+**soc-1-2-12** 시설 — 여러 시설이 있는 동네 공원. 놀이터에는 미끄럼틀과 그네, 옆에는 운동 기구와 의자, 작은 화장실 건물이 있다. 할아버지가 운동 기구 손잡이를 돌리고, 휠체어를 탄 아이가 완만한 경사로를 따라 놀이터로 들어서자 친구들이 손을 흔든다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1291,7 +1283,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A neighborhood park with many facilities: a slide and swings in a playground, outdoor exercise machines, benches, and a small public restroom building. A grandfather turns the wheel of an exercise machine, and a child in a wheelchair rolls up a gentle ramp into the playground while friends wave. No text.
 ```
 
-**soc-1-2-14** 보고서 — 교실 책상에 모인 모둠 친구들이 큰 종이 한 장을 함께 만든다. 하린은 놀이터 사진을 붙이고, 도윤은 사진 옆에 줄을 맞추어 글을 적는다. 글씨는 알아볼 수 없는 줄로만 그린다.
+**soc-1-2-13** 보고서 — 교실 책상에 모인 모둠 친구들이 큰 종이 한 장을 함께 만든다. 하린은 놀이터 사진을 붙이고, 도윤은 사진 옆에 줄을 맞추어 글을 적는다. 글씨는 알아볼 수 없는 줄로만 그린다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1307,22 +1299,6 @@ In a classroom, a small group of children works around a desk on a large sheet o
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
 
 Three small panels in a row showing an ordinary school-day morning of a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan: first she brushes her teeth at the bathroom sink, then she eats breakfast at the table with her family, then she walks to school along a familiar street with her backpack. Soft morning light. No text, no clock numbers.
-```
-
-**soc-2-1-08** 조부모 — 작은 텃밭이 있는 시골집 대문 앞. 할아버지와 할머니가 두 팔을 활짝 벌려 달려오는 하린을 안아 준다. 뒤에서 엄마 아빠가 가방을 들고 웃으며 서 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-In front of the gate of a countryside house with a small vegetable garden, a grandfather and a grandmother open their arms wide and hug a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, who runs to them. Her mother and father stand behind her smiling, carrying bags. Warm, happy reunion. No text.
-```
-
-**soc-2-1-10** 피난 — 1950년대 초 겨울. 솜옷 차림의 가족들이 눈 덮인 시골길을 따라 남쪽으로 길게 줄지어 걷는다. 아빠는 어린아이를 업고, 엄마는 큰 보따리를 머리에 이고, 큰아이는 엄마 손을 잡았다. 군인, 무기, 다친 사람은 그리지 않는다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Korea in the winter of the early 1950s: a long line of families in plain padded clothes walks south along a snowy country road. A father carries a small child on his back, a mother balances a large cloth bundle on her head, and an older child holds her hand. Gray sky, quiet and sad mood. No soldiers, no weapons, no injured people. No text.
 ```
 
 ### 2-2 일상에서 만나는 과거의 모습

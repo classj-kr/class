@@ -1037,15 +1037,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In a warm Korean home kitchen, a grandmother, a mother and a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) sit around a big basin full of salted napa cabbage, rubbing red seasoning into the leaves together. All wear rubber gloves. The grandmother gently shows the girl how to spread the seasoning while the mother smiles. No text.
 ```
 
-**soc-2-1-08** 역사적 가치 — 서울 종묘 정전. 아주 길고 낮은 나무 건물에 붉은 기둥이 줄지어 서 있고 앞에 돌을 깐 넓은 마당이 있다. 제사 때 붉은 옷의 악사들이 옛 악기를 연주하고 줄지어 선 무용수들이 천천히 춤춘다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-The main hall of Jongmyo Shrine in Seoul: a very long, low wooden building with a dark tiled roof and a long row of red pillars, in front of a wide raised stone-paved courtyard. During the royal ancestral rite, musicians in red robes play traditional instruments and rows of dancers in robes perform slowly in the courtyard. No text.
-```
-
-**soc-2-1-09** 예술적 가치 — 은은한 조명의 박물관 유리장 안에 비취색 고려청자 향로가 있다. 뚜껑은 동그라미 무늬로 구멍이 뚫린 공 모양, 몸통은 겹겹의 연꽃잎, 받침은 웅크린 토끼 세 마리다. 하린이가 유리에 다가가 감탄하며 본다.
+**soc-2-1-08** 예술적 가치 — 은은한 조명의 박물관 유리장 안에 비취색 고려청자 향로가 있다. 뚜껑은 동그라미 무늬로 구멍이 뚫린 공 모양, 몸통은 겹겹의 연꽃잎, 받침은 웅크린 토끼 세 마리다. 하린이가 유리에 다가가 감탄하며 본다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1053,7 +1045,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In a softly lit museum glass case stands the Goryeo celadon incense burner with an openwork lid: a jade-green ceramic piece whose lid is a round ball of interlocking openwork circles, whose body is shaped like layers of lotus petals, and which is held up by three small crouching rabbits at the base. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) leans close to the glass with a look of wonder. No text.
 ```
 
-**soc-2-1-10** 과학적 가치 — 산비탈에 선 해인사 장경판전. 기와지붕을 얹은 길고 수수한 나무 건물 벽에 위에는 작은 창, 아래에는 큰 창이 두 줄로 나 있고, 창살 사이로 나무판이 가득 꽂힌 높은 선반이 보인다.
+**soc-2-1-09** 과학적 가치 — 산비탈에 선 해인사 장경판전. 기와지붕을 얹은 길고 수수한 나무 건물 벽에 위에는 작은 창, 아래에는 큰 창이 두 줄로 나 있고, 창살 사이로 나무판이 가득 꽂힌 높은 선반이 보인다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1061,15 +1053,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 The Janggyeong Panjeon depositories at Haeinsa Temple in Korea: long, plain wooden buildings with grey tiled roofs on a mountainside. On the front wall, wooden slatted windows are arranged in two rows — small windows on top and large windows at the bottom — so wind can flow through. Through the slats, tall shelves stacked with wooden printing blocks can be seen. No people, no text.
 ```
 
-**soc-2-1-11** 생태적 가치 — 제주 바닷속에서 검은 고무 옷과 둥근 물안경을 쓴 해녀가 작은 전복을 미역이 붙은 바위에 살며시 도로 붙여 놓는다. 망에는 큰 조개 몇 개만 들어 있고, 둘레에 작은 물고기가 헤엄친다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Underwater near Jeju Island, a haenyeo woman diver in a black rubber wetsuit and a round diving mask gently places a small abalone back onto a rock covered with seaweed. Her net bag holds only a few large shells. Small fish swim around in the clear blue water. No text.
-```
-
-**soc-2-1-14** 석빙고 — 여름날 경주 석빙고. 풀로 덮인 길고 낮은 둥근 언덕 한쪽에 돌로 짠 입구가 안으로 이어지고, 언덕 위에 작은 돌 굴뚝 셋이 서 있다. 하린이와 도윤이가 입구에서 서늘한 바람에 놀란다.
+**soc-2-1-12** 석빙고 — 여름날 경주 석빙고. 풀로 덮인 길고 낮은 둥근 언덕 한쪽에 돌로 짠 입구가 안으로 이어지고, 언덕 위에 작은 돌 굴뚝 셋이 서 있다. 하린이와 도윤이가 입구에서 서늘한 바람에 놀란다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1077,7 +1061,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 The Seokbinggo stone ice storage in Gyeongju, Korea, on a summer day: a long, low, rounded grassy mound like a small hill, with a stone-framed entrance on one side leading down inside and three small stone chimney vents standing on top of the mound. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie) stand at the entrance, feeling cool air with surprised faces. No text.
 ```
 
-**soc-2-1-15** 해녀 — 제주 바다에서 검은 고무 옷과 둥근 물안경을 쓴 할머니 해녀가 주황색 동그란 뜨개 옆으로 막 올라와 소라가 가득한 망을 들어 올린다. 뒤로 다른 해녀들이 떠 있고 멀리 검은 바위 해안이 보인다.
+**soc-2-1-13** 해녀 — 제주 바다에서 검은 고무 옷과 둥근 물안경을 쓴 할머니 해녀가 주황색 동그란 뜨개 옆으로 막 올라와 소라가 가득한 망을 들어 올린다. 뒤로 다른 해녀들이 떠 있고 멀리 검은 바위 해안이 보인다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1143,15 +1127,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 An old stone wall of a historic Korean fortress has messy scratch marks on its surface and one broken corner stone lying on the ground. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, and a Korean woman teacher in her 30s in a beige blazer, a woman in her 30s in a beige jacket, look at the damaged part with worried faces. The scratches are abstract marks, not letters. No text.
 ```
 
-**soc-2-2-08** 전승 — 옛 마을 마당. 흰 한복을 입은 할아버지가 장구를 치며 장단을 보여 주고, 마주 앉은 한복 차림의 여자아이가 작은 장구로 할아버지의 손 모양을 조심스레 따라 한다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-In a traditional Korean village yard, an elderly man in white hanbok beats a janggu drum and shows the rhythm, while a young girl in hanbok sits facing him with her own small janggu and copies his hand movements carefully. No text.
-```
-
-**soc-2-2-09** 개최 — 해 질 녘 옛 성문 앞, 지역 역사 축제가 열리는 첫날 밤. 종이 등불이 줄지어 빛나고 성문 앞에 무대가 섰으며 하늘에는 불꽃이 터진다. 환호하는 사람들 속에서 하린과 도윤이 즐겁게 손뼉을 친다.
+**soc-2-2-08** 개최 — 해 질 녘 옛 성문 앞, 지역 역사 축제가 열리는 첫날 밤. 종이 등불이 줄지어 빛나고 성문 앞에 무대가 섰으며 하늘에는 불꽃이 터진다. 환호하는 사람들 속에서 하린과 도윤이 즐겁게 손뼉을 친다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1185,15 +1161,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At the front door of an apartment, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, happily opens a delivery box with new sneakers inside. Behind her, her father holds a tablet whose screen shows a picture of the same sneakers. No text.
 ```
 
-**soc-3-1-13** 가계부 — 저녁 식탁. 아빠가 칸이 나뉜 공책에 무언가를 적고, 옆에는 영수증 몇 장과 계산기가 놓여 있다. 곁에 앉은 하린이 구겨진 영수증을 펴서 아빠에게 건넨다. 글씨는 읽히지 않는다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-At a dining table in the evening, a father writes in a notebook ruled into neat columns, with a few receipts and a calculator beside it. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan), a girl with a yellow headband and a mint cardigan, sits next to her and smooths out a crumpled receipt to hand over. The writing is not readable. No text.
-```
-
-**soc-3-1-14** 용돈 기입장 — 책상 앞의 도윤. 한 손으로 동전 몇 개를 세고, 다른 손으로 칸이 나뉜 작은 공책에 적는다. 공책 옆에 분홍 돼지 저금통과 지폐 한 장이 놓여 있다. 글씨와 숫자는 보이지 않는다.
+**soc-3-1-13** 용돈 기입장 — 책상 앞의 도윤. 한 손으로 동전 몇 개를 세고, 다른 손으로 칸이 나뉜 작은 공책에 적는다. 공책 옆에 분홍 돼지 저금통과 지폐 한 장이 놓여 있다. 글씨와 숫자는 보이지 않는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.

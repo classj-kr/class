@@ -1241,15 +1241,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In front of a school building, a group stands together as if for a photo: students including a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie), the a Korean woman teacher in her 30s in a beige blazer, a few parents, a school cook in a white apron and a school custodian, all smiling. Each person clearly has a different role. No text.
 ```
 
-**soc-1-1-05** 안건 — 도윤이가 사회자로 앞에 서서 칠판을 가리킨다. 칠판에는 산·바닷가·동물원 그림 사이에 큰 물음표가 있는 그림이 붙어 있고, 친구들이 보며 손을 든다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A class meeting: a Korean boy (short black hair, round glasses, navy hoodie) stands at the front as the meeting chair, pointing at the blackboard where a large drawing is pinned showing a big question mark between a mountain, a beach and a zoo. Classmates at their desks look at it and start raising their hands. No written words on the board.
-```
-
-**soc-1-1-06** 의사 결정 — 칠판 앞에 파랑·노랑·초록 반 티셔츠 견본이 걸려 있고, 아이들이 의논한 뒤 색깔 카드를 들어 투표하자 노란 카드가 가장 많아 선생님이 노란 티셔츠를 든다.
+**soc-1-1-05** 의사 결정 — 칠판 앞에 파랑·노랑·초록 반 티셔츠 견본이 걸려 있고, 아이들이 의논한 뒤 색깔 카드를 들어 투표하자 노란 카드가 가장 많아 선생님이 노란 티셔츠를 든다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1257,7 +1249,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Classmates discuss which color their class T-shirt should be; sample shirts in blue, yellow and green hang on the board. Then students hold up color cards to vote and most cards are yellow; a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) smiles as the a Korean woman teacher in her 30s in a beige blazer holds up the yellow shirt. No text.
 ```
 
-**soc-1-1-07** 학생 자치회 — 작은 회의실에서 여러 학년 학생 대표 여덟 명쯤이 긴 탁자에 둘러앉아, 건의함에서 꺼낸 쪽지를 펼쳐 놓고 의논한다.
+**soc-1-1-06** 학생 자치회 — 작은 회의실에서 여러 학년 학생 대표 여덟 명쯤이 긴 탁자에 둘러앉아, 건의함에서 꺼낸 쪽지를 펼쳐 놓고 의논한다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1265,15 +1257,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In a small meeting room, about eight student representatives of different ages sit around a long table. One opens a suggestion box and spreads folded notes on the table while the others lean in to read and discuss. A girl leads the meeting. No readable text.
 ```
 
-**soc-1-1-08** 학급 자치 — 아침 교실에서 하린이는 화분에 물을 주고 도윤이는 책장을 정리하며, 다른 친구는 칠판을 닦고 또 다른 친구는 분리배출을 한다. 벽에 그림으로 된 역할표가 붙어 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A classroom in the morning: students carry out the class jobs they chose themselves. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) waters potted plants by the window, a Korean boy (short black hair, round glasses, navy hoodie) tidies the class bookshelf, another student wipes the board, and another sorts recycling into bins. A job chart made only of picture icons hangs on the wall. No text.
-```
-
-**soc-1-1-09** 선거 — 강당에서 후보 세 명이 그림만 있는 포스터 옆에 서 있고, 학생들이 줄을 서서 차례로 칸막이 안에서 표를 찍은 뒤 투명한 투표함에 접은 종이를 넣는다.
+**soc-1-1-07** 선거 — 강당에서 후보 세 명이 그림만 있는 포스터 옆에 서 있고, 학생들이 줄을 서서 차례로 칸막이 안에서 표를 찍은 뒤 투명한 투표함에 접은 종이를 넣는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1281,7 +1265,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A school election day in the gym: three candidate students stand by their poster boards that show only drawings. Students line up and, one by one, step behind a small privacy booth to mark a ballot, then drop the folded paper into a clear ballot box. No readable text.
 ```
 
-**soc-1-1-10** 공약 — 회장 후보 학생이 강당 연단에서 연설하며, 옆에 세운 그림 판의 햇볕 쨍쨍한 운동장에 새 그늘막과 의자가 그려진 곳을 가리킨다.
+**soc-1-1-08** 공약 — 회장 후보 학생이 강당 연단에서 연설하며, 옆에 세운 그림 판의 햇볕 쨍쨍한 운동장에 새 그늘막과 의자가 그려진 곳을 가리킨다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1289,7 +1273,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A student candidate stands at a podium on the school stage giving a speech, pointing to a large drawing beside her that shows a sunny playground with new benches under a shade canopy. Students in the audience listen. No text.
 ```
 
-**soc-1-1-11** 토론 — 책상이 마주 보게 두 줄로 놓인 교실에서 한쪽의 하린이가 손가락을 꼽으며 까닭을 말하고, 맞은편 도윤이는 받아 적으며 차례를 기다린다. 두 줄 사이 끝에 선생님이 앉아 있다.
+**soc-1-1-09** 토론 — 책상이 마주 보게 두 줄로 놓인 교실에서 한쪽의 하린이가 손가락을 꼽으며 까닭을 말하고, 맞은편 도윤이는 받아 적으며 차례를 기다린다. 두 줄 사이 끝에 선생님이 앉아 있다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1297,7 +1281,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A classroom debate: desks are arranged in two facing rows. On one side a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) stands and speaks, counting her reasons on her fingers; on the other side a Korean boy (short black hair, round glasses, navy hoodie) listens carefully, taking notes and waiting for his turn. The a Korean woman teacher in her 30s in a beige blazer sits at the end between the rows as the moderator. No text.
 ```
 
-**soc-1-1-12** 양보 — 놀이터의 빈 그네 하나 앞에 하린이와 어린아이가 함께 왔다. 하린이가 웃으며 한 걸음 물러나 손바닥으로 먼저 타라고 하자 아이가 기뻐하며 그네에 앉는다.
+**soc-1-1-10** 양보 — 놀이터의 빈 그네 하나 앞에 하린이와 어린아이가 함께 왔다. 하린이가 웃으며 한 걸음 물러나 손바닥으로 먼저 타라고 하자 아이가 기뻐하며 그네에 앉는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1305,7 +1289,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At a playground, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a small younger child arrive at the only empty swing at the same time. The girl steps back with a smile and gestures with an open hand for the little child to go first; the child happily sits on the swing. No text.
 ```
 
-**soc-1-1-13** 타협 — 왼쪽은 도윤이와 여동생이 메뉴판의 불고기 피자와 채소 피자 그림을 저마다 가리키며 다툰다. 오른쪽은 반은 불고기, 반은 채소인 피자 한 판을 함께 웃으며 먹는다.
+**soc-1-1-11** 타협 — 왼쪽은 도윤이와 여동생이 메뉴판의 불고기 피자와 채소 피자 그림을 저마다 가리키며 다툰다. 오른쪽은 반은 불고기, 반은 채소인 피자 한 판을 함께 웃으며 먹는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1313,7 +1297,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two panels. Left: a Korean boy (short black hair, round glasses, navy hoodie) and his little sister argue in the kitchen, each pointing to a different pizza picture on a menu, one with bulgogi meat and one with vegetables. Right: they happily share one pizza that is half bulgogi and half vegetables, both smiling. No text.
 ```
 
-**soc-1-1-14** 관용 — 학급 회의에서 도윤이가 칠판에 붙은 하린이의 생각 그림에 고개를 저으며 다른 생각을 말하자, 하린이는 찡그리지 않고 따뜻하게 웃으며 고개를 끄덕이고 손을 펼쳐 받아들인다.
+**soc-1-1-12** 관용 — 학급 회의에서 도윤이가 칠판에 붙은 하린이의 생각 그림에 고개를 저으며 다른 생각을 말하자, 하린이는 찡그리지 않고 따뜻하게 웃으며 고개를 끄덕이고 손을 펼쳐 받아들인다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1321,7 +1305,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 During a class meeting, a Korean boy (short black hair, round glasses, navy hoodie) stands and explains a different idea, shaking his head at a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan)'s drawing pinned on the board. The girl does not frown; she listens calmly, nodding with a warm smile and an open, welcoming hand. Other classmates watch. No text.
 ```
 
-**soc-1-1-15** 비판적 — 도윤이가 과자를 먹고 키가 쑥 큰 아이가 나오는 화려한 광고를 태블릿으로 보다가, 한쪽 눈썹을 올리고 돋보기를 든 채 옆에 과학책을 펼쳐 맞는지 확인한다.
+**soc-1-1-13** 비판적 — 도윤이가 과자를 먹고 키가 쑥 큰 아이가 나오는 화려한 광고를 태블릿으로 보다가, 한쪽 눈썹을 올리고 돋보기를 든 채 옆에 과학책을 펼쳐 맞는지 확인한다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1329,7 +1313,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean boy (short black hair, round glasses, navy hoodie) sits at a desk looking at a tablet showing a flashy advertisement in which a cartoon kid grows super tall after eating a snack. Instead of believing it, he raises one eyebrow, holds a magnifying glass, and opens a science book beside the tablet to check. No readable text.
 ```
 
-**soc-1-1-16** 존중 — 학급 회의에서 수줍은 여자아이가 작은 그림을 들고 조용히 말하고, 하린이와 도윤이를 비롯한 친구들이 의자를 돌려 몸을 기울이며 귀 기울여 듣는다.
+**soc-1-1-14** 존중 — 학급 회의에서 수줍은 여자아이가 작은 그림을 들고 조용히 말하고, 하린이와 도윤이를 비롯한 친구들이 의자를 돌려 몸을 기울이며 귀 기울여 듣는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1337,7 +1321,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In a class meeting, a shy girl holds a small drawing and speaks softly. All her classmates, including a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie), have turned their chairs toward her and lean in, listening attentively; nobody is talking. No text.
 ```
 
-**soc-1-1-17** 평등 — 키 큰 아이, 작은 아이, 휠체어를 탄 아이, 피부색이 다른 아이, 하린이와 도윤이가 투표함 앞에 줄을 서서 똑같은 크기의 투표용지를 한 장씩 넣는다.
+**soc-1-1-15** 평등 — 키 큰 아이, 작은 아이, 휠체어를 탄 아이, 피부색이 다른 아이, 하린이와 도윤이가 투표함 앞에 줄을 서서 똑같은 크기의 투표용지를 한 장씩 넣는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1345,7 +1329,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A line of very different students stands before a ballot box: a tall boy, a small girl, a child in a wheelchair, a child with a different skin color, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie). Each holds exactly one folded ballot paper of the same size, and they drop them in one by one. No text.
 ```
 
-**soc-1-1-18** 실천 — 왼쪽은 학급 회의에서 깨끗한 운동장 그림을 붙여 놓고 손을 들어 정하는 모습, 오른쪽은 점심시간에 하린이와 도윤이를 비롯한 친구들이 집게와 봉투로 운동장 쓰레기를 줍는 모습.
+**soc-1-1-16** 실천 — 왼쪽은 학급 회의에서 깨끗한 운동장 그림을 붙여 놓고 손을 들어 정하는 모습, 오른쪽은 점심시간에 하린이와 도윤이를 비롯한 친구들이 집게와 봉투로 운동장 쓰레기를 줍는 모습.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1353,7 +1337,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two panels. Left: in a class meeting, students raise their hands to agree on a plan, with a drawing of a clean playground pinned on the board. Right: at lunchtime the same students, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie) among them, walk across the playground with tongs and bags picking up litter. No text.
 ```
 
-**soc-1-1-19** 민주시민 — 선거 날 하린이가 엄마와 학교에 차려진 투표소에 간다. 엄마가 후보 안내 책자를 꼼꼼히 읽은 뒤 투표함에 표를 넣고, 하린이는 기다리는 곳에서 자랑스럽게 지켜본다.
+**soc-1-1-17** 민주시민 — 선거 날 하린이가 엄마와 학교에 차려진 투표소에 간다. 엄마가 후보 안내 책자를 꼼꼼히 읽은 뒤 투표함에 표를 넣고, 하린이는 기다리는 곳에서 자랑스럽게 지켜본다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1361,7 +1345,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 On election day, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) walks with her mother to a polling station set up in a school. Her mother reads a candidate booklet carefully, then drops a ballot into the box while the girl watches proudly from the waiting area. No readable text.
 ```
 
-**soc-1-1-20** 건의 — 왼쪽은 키 작은 1학년 아이들이 복도의 높은 정수기에 까치발로도 닿지 못하는 모습, 오른쪽은 학생 대표 둘이 교장실에서 낮은 정수기 그림이 담긴 편지를 공손히 건네는 모습.
+**soc-1-1-18** 건의 — 왼쪽은 키 작은 1학년 아이들이 복도의 높은 정수기에 까치발로도 닿지 못하는 모습, 오른쪽은 학생 대표 둘이 교장실에서 낮은 정수기 그림이 담긴 편지를 공손히 건네는 모습.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1605,22 +1589,6 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At an apartment recycling station, separate colored bins stand in a row, each marked only with a picture: paper, plastic bottle, can, glass bottle and plastic film. A Korean boy (short black hair, round glasses, navy hoodie) peels the label off a plastic bottle before putting it in, while his father puts flattened boxes into the paper bin. No text.
 ```
 
-**soc-2-1-16** 과대 포장 — 하린이가 거실에서 커다랗고 화려한 명절 선물 상자를 연다. 상자 속 상자, 스티로폼과 비닐을 지나 한가운데에 사과 두 개만 있고, 둘레에 포장 쓰레기가 수북하다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) opens a huge, fancy holiday gift box on the living room floor. Inside is another box, then foam trays and plastic wrap, and at the very center just two apples. A pile of packaging waste surrounds her and she looks surprised. No text.
-```
-
-**soc-2-1-17** 무단 투기 — 왼쪽은 밤에 그림자 같은 사람이 쓰레기봉투 금지 그림 표지판 옆 공터 울타리에 몰래 봉투를 두는 모습, 오른쪽은 다음 날 아침 봉투와 부서진 의자가 쌓여 지나가는 주민들이 코를 막는 모습.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-Left: at night, a shadowy figure sneaks a trash bag beside an empty lot fence, next to a sign that shows only a crossed-out trash bag picture. Right: the next morning, a pile of trash bags and a broken chair sit there, and residents walking by hold their noses. No text.
-```
-
 ### 2-2 지역을 알리려는 노력
 
 **soc-2-2-01** 특성 — 왼쪽은 항구에 고기잡이배가 있고 줄에 생선을 말리는 바닷가 마을, 오른쪽은 비탈에 계단밭이 있고 숲이 우거진 산골 마을.
@@ -1655,15 +1623,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan)'s family, on a trip to Jeju, walks through a traditional market. Stalls are piled high with bright orange tangerines and bumpy hallabong citrus fruits in baskets, and a vendor offers the girl a taste. Stone walls and the silhouette of a volcanic mountain are visible beyond. No text.
 ```
 
-**soc-2-2-05** 향토 음식 — 마을 음식 축제에서 앞치마를 두른 어르신들이 근처 들에서 난 나물과 채소 바구니를 옆에 두고 큰 그릇에 비빔밥을 만들어, 하린이와 도윤이에게 나누어 준다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-At a village food festival, elderly villagers in aprons prepare a big bowl of bibimbap with piles of fresh greens and vegetables from nearby fields shown in baskets. They serve bowls to visitors, and a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie) taste it happily. No text.
-```
-
-**soc-2-2-06** 문화유산 — 하린이네 가족이 수원 화성 같은 옛 돌 성곽과 기와지붕 문루를 따라 걷고, 안내원이 돌을 가리키는 동안 하린이가 신기한 듯 성벽을 만진다.
+**soc-2-2-05** 문화유산 — 하린이네 가족이 수원 화성 같은 옛 돌 성곽과 기와지붕 문루를 따라 걷고, 안내원이 돌을 가리키는 동안 하린이가 신기한 듯 성벽을 만진다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1671,15 +1631,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan)'s family walks along a long old stone fortress wall with a traditional Korean gate tower and curved tiled roofs, like Suwon Hwaseong. A guide points to the stones as the girl touches the wall in wonder. Autumn trees stand around. No text.
 ```
 
-**soc-2-2-07** 위인 — 도윤이네 반이 고장 기념관에 갔다. 유리 상자 안에 옛 책, 붓, 나무 발명품이 있고 도포 입은 학자의 큰 동상은 뒷모습만 보이며, 아이들이 올려다보고 선생님이 설명한다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A class visits a memorial museum in their town. Glass cases display old books, brushes and a wooden invention; a large bronze statue of a historical scholar in traditional robes is seen only from behind, its face not shown. A Korean boy (short black hair, round glasses, navy hoodie) and his classmates look up respectfully while the a Korean woman teacher in her 30s in a beige blazer explains. No text.
-```
-
-**soc-2-2-08** 문화제 — 옛 궁중 옷과 옛 병사 옷을 입은 사람들이 무기 없이 깃발과 북을 들고 거리를 행진하고, 길가 구경꾼들 옆에서 아이들이 투호 같은 옛 놀이를 해 본다. 하린이와 도윤이가 신나게 구경한다.
+**soc-2-2-06** 문화제 — 옛 궁중 옷과 옛 병사 옷을 입은 사람들이 무기 없이 깃발과 북을 들고 거리를 행진하고, 길가 구경꾼들 옆에서 아이들이 투호 같은 옛 놀이를 해 본다. 하린이와 도윤이가 신나게 구경한다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1687,7 +1639,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A town festival parade: performers in ancient Korean royal court costumes and old-style soldier outfits, carrying no weapons, march with flags and drums. Spectators line the street; on the side, children try traditional games like tuho. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie) watch excitedly. No text.
 ```
 
-**soc-2-2-09** 상징 — 시청 앞에 꽃과 새로 된 글자 없는 무늬 깃발이 펄럭이고, 아래 꽃밭에 같은 꽃이 피고 나무에 같은 새가 앉아 있다. 하린이가 깃발 그림과 진짜 꽃과 새를 견주어 본다.
+**soc-2-2-07** 상징 — 시청 앞에 꽃과 새로 된 글자 없는 무늬 깃발이 펄럭이고, 아래 꽃밭에 같은 꽃이 피고 나무에 같은 새가 앉아 있다. 하린이가 깃발 그림과 진짜 꽃과 새를 견주어 본다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1695,7 +1647,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 In front of a city hall, a large flag waves with a simple emblem made of a flower and a bird and no letters. Below it, a flowerbed of the same flower blooms, and the same kind of bird perches on a nearby tree. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) compares the flag picture with the real flower and bird. No text.
 ```
 
-**soc-2-2-10** 홍보 — 하린이네 모둠이 등불이 걸린 고장 축제장 앞에서 짧은 영상을 찍는다. 하린이가 태블릿을 들고 도윤이가 뒤의 등불을 가리키며 신나게 소개하고, 다른 친구는 그림만 있는 손그림 포스터를 든다.
+**soc-2-2-08** 홍보 — 하린이네 모둠이 등불이 걸린 고장 축제장 앞에서 짧은 영상을 찍는다. 하린이가 태블릿을 들고 도윤이가 뒤의 등불을 가리키며 신나게 소개하고, 다른 친구는 그림만 있는 손그림 포스터를 든다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1703,7 +1655,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan)'s group films a short video in front of their town's colorful festival grounds hung with lanterns. The girl holds a tablet camera while a Korean boy (short black hair, round glasses, navy hoodie) speaks enthusiastically, gesturing to the lanterns behind him; another classmate holds up a hand-drawn poster made only of pictures. No readable text.
 ```
 
-**soc-2-2-11** 소식지 — 도윤이가 아파트 우편함에서 알록달록한 얇은 책자를 꺼내고, 할머니와 의자에 앉아 축제 사진, 새 도서관 사진, 지도가 실린 쪽을 함께 읽는다.
+**soc-2-2-09** 소식지 — 도윤이가 아파트 우편함에서 알록달록한 얇은 책자를 꺼내고, 할머니와 의자에 앉아 축제 사진, 새 도서관 사진, 지도가 실린 쪽을 함께 읽는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1711,7 +1663,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A Korean boy (short black hair, round glasses, navy hoodie) pulls a thin, colorful booklet from his apartment mailbox. Then he and his grandmother read it together on a bench; the pages show photos of a festival, a new library building and a map, with no readable words. No text.
 ```
 
-**soc-2-2-12** 사회 관계망 서비스 — 바닷가 머드 축제에서 하린이 삼촌이 휴대 전화로 사진을 찍어 올리자, 전화기에서 하트와 빈 말풍선 그림이 떠올라 먼 도시에서 휴대 전화를 보며 웃는 친구들에게 닿는다.
+**soc-2-2-10** 사회 관계망 서비스 — 바닷가 머드 축제에서 하린이 삼촌이 휴대 전화로 사진을 찍어 올리자, 전화기에서 하트와 빈 말풍선 그림이 떠올라 먼 도시에서 휴대 전화를 보며 웃는 친구들에게 닿는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1719,7 +1671,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 At a mud festival on a beach, a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan)'s uncle takes a photo with his phone and posts it. Small floating heart and empty speech-bubble icons with no words rise from the phone toward tiny pictures of friends in faraway cities who look at their own phones and smile. No text.
 ```
 
-**soc-2-2-13** 경제 — 축제가 열린 작은 고장의 거리에 배낭 멘 관광객이 북적이고, 식당은 가득 차고 기념품 가게 주인은 손님에게 봉투를 건네며 농부는 과일을 판다. 곳곳에서 돈이 오간다.
+**soc-2-2-11** 경제 — 축제가 열린 작은 고장의 거리에 배낭 멘 관광객이 북적이고, 식당은 가득 차고 기념품 가게 주인은 손님에게 봉투를 건네며 농부는 과일을 판다. 곳곳에서 돈이 오간다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1801,15 +1753,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A salt farm by the sea under a bright sun: shallow square pans of sea water laid out like rice paddies, some still shining with water and others covered with white salt crystals. A worker in a straw hat pushes a long wooden rake, gathering the salt into small white piles, and a wooden salt storehouse stands at the edge. No text.
 ```
 
-**soc-3-1-11** 지하자원 — 산을 잘라 땅속을 보인 그림. 두꺼운 검은 석탄층, 붉은 갈색의 철광석, 돌 사이에 반짝이는 금속 줄기가 묻혀 있고, 땅 위에서 석탄층까지 굴이 이어져 작은 수레가 서 있다. 땅 위에는 나무와 작은 광산 마을이 있다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-A cutaway view of a mountain showing what lies underground: thick black layers of coal, reddish-brown iron ore rocks, and small shiny veins of metal in the stone. A tunnel leads from the surface down to the coal, where a small rail cart waits. On the surface above are trees and a little mining village. No text.
-```
-
-**soc-3-1-12** 광산 — 산 중턱에 나무 기둥으로 받친 굴 입구가 있다. 불 달린 안전모를 쓰고 먼지 묻은 작업복을 입은 광부들이 석탄을 가득 실은 작은 수레를 좁은 철길을 따라 굴 밖으로 밀고 나오고, 옆에 석탄 더미와 창고가 있다.
+**soc-3-1-11** 광산 — 산 중턱에 나무 기둥으로 받친 굴 입구가 있다. 불 달린 안전모를 쓰고 먼지 묻은 작업복을 입은 광부들이 석탄을 가득 실은 작은 수레를 좁은 철길을 따라 굴 밖으로 밀고 나오고, 옆에 석탄 더미와 창고가 있다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1817,7 +1761,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 The wooden-framed entrance of a tunnel in the side of a mountain. Miners wearing helmets with lamps and dusty work clothes push small rail carts loaded with black coal out of the dark tunnel along narrow tracks. A pile of coal and a simple shed stand nearby. No text.
 ```
 
-**soc-3-1-13** 촌락 — 푸른 언덕 아래 바닷가의 작은 시골 마을. 낮은 집들이 옹기종기 모여 있고 둘레의 논밭에서 농부들이 벼를 거두며, 작은 포구에서는 고깃배가 바다로 나간다. 높은 건물은 없다.
+**soc-3-1-12** 촌락 — 푸른 언덕 아래 바닷가의 작은 시골 마을. 낮은 집들이 옹기종기 모여 있고 둘레의 논밭에서 농부들이 벼를 거두며, 작은 포구에서는 고깃배가 바다로 나간다. 높은 건물은 없다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1825,7 +1769,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A small Korean countryside village at the foot of green hills beside the sea. Low houses cluster together, surrounded by rice paddies and vegetable fields where farmers harvest rice, and in the little harbor fishing boats head out to sea. No tall buildings. No text.
 ```
 
-**soc-3-1-14** 개발 — 같은 곳의 두 칸. 왼쪽은 나무와 작은 개울, 밭 몇 뙈기가 있는 조용한 푸른 언덕이고, 오른쪽은 몇 해 뒤 언덕을 깎아 넓은 새 길이 나고 크레인이 높은 아파트를 짓고 새 학교와 주차장이 들어선 모습이다.
+**soc-3-1-13** 개발 — 같은 곳의 두 칸. 왼쪽은 나무와 작은 개울, 밭 몇 뙈기가 있는 조용한 푸른 언덕이고, 오른쪽은 몇 해 뒤 언덕을 깎아 넓은 새 길이 나고 크레인이 높은 아파트를 짓고 새 학교와 주차장이 들어선 모습이다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1833,7 +1777,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two panels of the same place. Left: a quiet green hillside with trees and a small stream next to a few farm fields. Right, years later: the hill has been cut and leveled, with a wide new road, cranes finishing tall apartment buildings, a new school and a parking lot. No text.
 ```
 
-**soc-3-1-15** 공업 — 밝고 커다란 자동차 공장 안. 긴 조립 줄 한쪽 끝으로 철판이 들어가고, 로봇 팔이 차체를 붙이며, 작업복과 보안경 차림의 일꾼들이 문과 바퀴를 끼우고, 반대쪽 끝으로 반짝이는 새 자동차가 나온다.
+**soc-3-1-14** 공업 — 밝고 커다란 자동차 공장 안. 긴 조립 줄 한쪽 끝으로 철판이 들어가고, 로봇 팔이 차체를 붙이며, 작업복과 보안경 차림의 일꾼들이 문과 바퀴를 끼우고, 반대쪽 끝으로 반짝이는 새 자동차가 나온다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1841,7 +1785,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Inside a bright, huge car factory: sheets of steel enter at one end of a long assembly line, robotic arms weld car bodies, workers in uniforms and safety glasses fit doors and wheels, and finished shiny cars roll out at the far end. No text or logos.
 ```
 
-**soc-3-1-16** 원료 — 안을 들여다본 유리 공장. 왼쪽에서 트럭이 옅은 모래 더미를 쏟아붓고, 가운데 가마에서 모래가 주황빛 유리 물로 녹으며, 오른쪽 벨트 위로 투명한 유리병이 줄지어 나온다.
+**soc-3-1-15** 원료 — 안을 들여다본 유리 공장. 왼쪽에서 트럭이 옅은 모래 더미를 쏟아붓고, 가운데 가마에서 모래가 주황빛 유리 물로 녹으며, 오른쪽 벨트 위로 투명한 유리병이 줄지어 나온다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1849,7 +1793,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A cutaway glass factory. On the left, a truck dumps a big pile of pale sand into a hopper. In the middle, the sand melts into glowing orange liquid glass in a furnace. On the right, rows of clear glass bottles come out on a conveyor belt. No text.
 ```
 
-**soc-3-1-17** 산업 단지 — 하늘에서 본 넓은 산업 단지. 파랗고 회색인 지붕의 공장 수십 채가 곧고 넓은 길을 따라 반듯하게 모여 있고, 트럭들이 상자와 부품을 싣고 공장 사이를 오가며, 멀리 초록 언덕과 아파트 마을이 보인다.
+**soc-3-1-16** 산업 단지 — 하늘에서 본 넓은 산업 단지. 파랗고 회색인 지붕의 공장 수십 채가 곧고 넓은 길을 따라 반듯하게 모여 있고, 트럭들이 상자와 부품을 싣고 공장 사이를 오가며, 멀리 초록 언덕과 아파트 마을이 보인다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1857,7 +1801,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 An aerial view of a large industrial park: dozens of factory buildings with blue and grey roofs arranged in neat blocks along wide straight roads. Trucks carry boxes and parts between the factories, and a few chimneys and warehouses stand among them, with green hills and a town of apartments in the distance. No text or logos.
 ```
 
-**soc-3-1-20** 훼손 — 울창한 숲이던 산 옆면에 스키장을 만들려고 위에서 아래까지 나무를 넓게 베어 내, 그루터기와 갈색 맨흙이 드러나 있다. 아래에는 통나무 더미와 불도저가 있고, 양옆 숲은 아직 푸르다.
+**soc-3-1-19** 훼손 — 울창한 숲이던 산 옆면에 스키장을 만들려고 위에서 아래까지 나무를 넓게 베어 내, 그루터기와 갈색 맨흙이 드러나 있다. 아래에는 통나무 더미와 불도저가 있고, 양옆 숲은 아직 푸르다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1865,7 +1809,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A mountainside that used to be covered in thick forest. A wide strip of trees has been cut down from the top to the bottom for a ski slope, leaving tree stumps and bare brown soil exposed, with piles of logs and a bulldozer at the bottom. The untouched forest on either side is still green. No text.
 ```
 
-**soc-3-1-21** 오염 — 파도에 밀려온 플라스틱병, 비닐봉지 같은 쓰레기가 모래밭에 널린 바닷가. 물가의 물은 탁한 잿빛이고, 바다거북이 떠다니는 비닐봉지 가까이에서 헤엄치며, 멀리 도시 하늘은 뿌옇다.
+**soc-3-1-20** 오염 — 파도에 밀려온 플라스틱병, 비닐봉지 같은 쓰레기가 모래밭에 널린 바닷가. 물가의 물은 탁한 잿빛이고, 바다거북이 떠다니는 비닐봉지 가까이에서 헤엄치며, 멀리 도시 하늘은 뿌옇다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1873,7 +1817,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A beach whose sand is littered with plastic bottles, bags and other trash washed up by the waves. The water near the shore is cloudy and grey, and a sea turtle swims close to a floating plastic bag. Above, the sky over a distant city is hazy. No injured animals, no text.
 ```
 
-**soc-3-1-22** 폐수 — 공장 뒤 굵은 관에서 거품 섞인 거무스름한 물이 맑은 냇물로 쏟아진다. 관 위쪽 물은 맑아 물고기와 조약돌이 보이지만, 아래쪽은 탁해지고 물고기들이 달아난다.
+**soc-3-1-21** 폐수 — 공장 뒤 굵은 관에서 거품 섞인 거무스름한 물이 맑은 냇물로 쏟아진다. 관 위쪽 물은 맑아 물고기와 조약돌이 보이지만, 아래쪽은 탁해지고 물고기들이 달아난다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1881,7 +1825,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Behind a factory, a thick pipe pours foamy, dark brown water into a clear stream. Upstream of the pipe the water is clear with fish and pebbles visible; downstream it turns murky and the fish swim away. No text.
 ```
 
-**soc-3-1-24** 친환경 — 밝은 동네 거리. 하린이는 천 장바구니를, 도윤이는 텀블러를 들었고, 전기 버스와 자전거 탄 사람들이 지나가며, 지붕마다 햇빛 전기판이 반짝이고 길가에 나무와 꽃밭이 있다.
+**soc-3-1-23** 친환경 — 밝은 동네 거리. 하린이는 천 장바구니를, 도윤이는 텀블러를 들었고, 전기 버스와 자전거 탄 사람들이 지나가며, 지붕마다 햇빛 전기판이 반짝이고 길가에 나무와 꽃밭이 있다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1889,7 +1833,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A cheerful town street. A Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) carries a cloth shopping bag and a Korean boy (short black hair, round glasses, navy hoodie) drinks from a reusable tumbler; an electric bus and people on bicycles pass by, solar panels shine on the rooftops, and trees and flower beds line the sidewalk. No text.
 ```
 
-**soc-3-1-25** 생태 하천 — 같은 도시 냇물의 두 칸. 왼쪽은 가파른 잿빛 시멘트 벽 사이로 곧게 흐르는 생물 없는 물길이고, 오른쪽은 시멘트를 걷어 내 돌과 자갈 위로 냇물이 굽이치며 갈대와 물풀이 자라고 물고기, 왜가리, 산책하는 사람들이 보인다.
+**soc-3-1-24** 생태 하천 — 같은 도시 냇물의 두 칸. 왼쪽은 가파른 잿빛 시멘트 벽 사이로 곧게 흐르는 생물 없는 물길이고, 오른쪽은 시멘트를 걷어 내 돌과 자갈 위로 냇물이 굽이치며 갈대와 물풀이 자라고 물고기, 왜가리, 산책하는 사람들이 보인다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1897,7 +1841,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Two panels of the same city stream. Left, before: a straight concrete channel with steep grey walls and almost no life. Right, after: the concrete is gone, the stream curves over stones and gravel, reeds and water plants grow along the banks, fish swim, a heron hunts, and people walk on a path beside it. No text.
 ```
 
-**soc-3-1-26** 습지 — 얕은 물 사이로 푸른 갈대가 빽빽한 여름 습지. 나무 데크 길이 가로지르고, 개구리가 연잎 위에 앉아 있으며, 백로와 왜가리가 얕은 물에서 먹이를 찾는다.
+**soc-3-1-25** 습지 — 얕은 물 사이로 푸른 갈대가 빽빽한 여름 습지. 나무 데크 길이 가로지르고, 개구리가 연잎 위에 앉아 있으며, 백로와 왜가리가 얕은 물에서 먹이를 찾는다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -1905,7 +1849,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A wide wetland in summer with shallow water among dense green reeds. A wooden boardwalk crosses it, frogs sit on lily pads, and herons and egrets wade and feed in the shallow water. No text.
 ```
 
-**soc-3-1-28** 특색 — 언덕에서 내려다본 마을들이 거의 똑같이 같은 높이의 회색 네모 아파트로 줄지어 있다. 그 가운데 한 마을만 곡선의 기와지붕 한옥과 광장의 알록달록한 전통 축제, 하늘의 연으로 눈에 띈다.
+**soc-3-1-27** 특색 — 언덕에서 내려다본 마을들이 거의 똑같이 같은 높이의 회색 네모 아파트로 줄지어 있다. 그 가운데 한 마을만 곡선의 기와지붕 한옥과 광장의 알록달록한 전통 축제, 하늘의 연으로 눈에 띈다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -2019,15 +1963,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 A huge steel mill by the sea. Piles of reddish iron ore lie by the dock, and inside, glowing orange molten iron pours from a giant furnace into a channel, throwing sparks, while workers in silver heat-proof suits and helmets watch from a safe distance. No text.
 ```
 
-**soc-3-2-18** 대도시 — 해 질 녘 하늘에서 본, 땅끝까지 펼쳐진 거대한 도시. 빌딩 숲, 여러 다리가 놓인 넓은 강, 자동차 불빛으로 가득한 큰길, 지상으로 달리는 지하철 열차, 큰 병원과 대학, 경기장이 보인다.
-
-```text
-Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
-
-An aerial view at dusk of a huge city that stretches to the horizon: forests of skyscrapers, a wide river crossed by many bridges, highways full of car lights, elevated subway trains, big hospitals, universities and stadiums. No text.
-```
-
-**soc-3-2-19** 중심지 — 위에서 내려다본 장날의 작은 읍내. 사방의 여러 마을에서 이어진 길이 가운데의 붐비는 장터로 모이고, 걸어오는 사람, 버스, 작은 트럭이 모두 물건을 싣고 장터로 몰려든다.
+**soc-3-2-18** 중심지 — 위에서 내려다본 장날의 작은 읍내. 사방의 여러 마을에서 이어진 길이 가운데의 붐비는 장터로 모이고, 걸어오는 사람, 버스, 작은 트럭이 모두 물건을 싣고 장터로 몰려든다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -2035,7 +1971,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 An overhead view of a small country town on market day. Roads from several villages in every direction lead to the busy market square in the middle, and people on foot, buses and small trucks all stream toward it carrying goods. No text.
 ```
 
-**soc-3-2-20** 교통 혼잡 — 해 질 녘 퇴근 시간의 넓은 도로. 멈춰 선 자동차들이 줄줄이 꽉 차 운전자들이 지친 얼굴이고 인도에도 사람들이 붐비는데, 파랗게 칠한 버스 전용 차로의 버스 한 대만 막힘없이 달린다.
+**soc-3-2-19** 교통 혼잡 — 해 질 녘 퇴근 시간의 넓은 도로. 멈춰 선 자동차들이 줄줄이 꽉 차 운전자들이 지친 얼굴이고 인도에도 사람들이 붐비는데, 파랗게 칠한 버스 전용 차로의 버스 한 대만 막힘없이 달린다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -2043,7 +1979,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 Rush hour on a wide city road at sunset: lanes packed bumper to bumper with cars that are not moving, drivers looking tired, and crowds of people squeezing along the sidewalks, while a single bus moves freely in a dedicated bus lane painted blue. No text.
 ```
 
-**soc-3-2-21** 매연 — 도시 길에서 낡은 트럭이 배기관으로 시커먼 연기를 뿜고, 인도의 하린이와 도윤이가 코와 입을 가린다. 멀리 공장 굴뚝에서도 검은 연기가 나와 건물 위 하늘이 잿빛으로 뿌옇다.
+**soc-3-2-20** 매연 — 도시 길에서 낡은 트럭이 배기관으로 시커먼 연기를 뿜고, 인도의 하린이와 도윤이가 코와 입을 가린다. 멀리 공장 굴뚝에서도 검은 연기가 나와 건물 위 하늘이 잿빛으로 뿌옇다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
@@ -2051,7 +1987,7 @@ Children's textbook illustration for Korean 5th graders. Soft, warm digital pain
 On a city road, an old truck puffs thick black smoke from its exhaust pipe while a Korean girl (shoulder-length black hair with a yellow hairband, mint-green cardigan) and a Korean boy (short black hair, round glasses, navy hoodie) on the sidewalk cover their noses and mouths. In the distance, factory chimneys release dark smoke, and the sky over the buildings looks grey and hazy. No text.
 ```
 
-**soc-3-2-22** 여가 — 햇살 좋은 주말 오후의 도시 공원. 가족이 길을 따라 자전거를 타고, 할아버지가 그늘 벤치에서 책을 읽으며, 하린이와 도윤이가 잔디밭에서 배드민턴을 치고 다른 사람들은 소풍을 즐긴다.
+**soc-3-2-21** 여가 — 햇살 좋은 주말 오후의 도시 공원. 가족이 길을 따라 자전거를 타고, 할아버지가 그늘 벤치에서 책을 읽으며, 하린이와 도윤이가 잔디밭에서 배드민턴을 치고 다른 사람들은 소풍을 즐긴다.
 
 ```text
 Children's textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.
