@@ -143,7 +143,7 @@
       }
       let lastTerm = '';
       return [...groups.values()].map(({ term, subject, parts }) => {
-        const head = term === lastTerm ? '' : `${term.replace('-', '학년 ')}학기 `;
+        const head = term === lastTerm ? '' : `초 ${term.replace('-', '학년 ')}학기 `;
         lastTerm = term;
         const numbered = parts.every((part) => /^[0-9-]+$/.test(part || ''));
         const units = parts.includes(null) ? ' 전체' : numbered ? ` ${parts.join('·')}단원` : ' ' + parts.map(unitLabel).join('·');

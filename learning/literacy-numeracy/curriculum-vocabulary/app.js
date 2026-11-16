@@ -30,7 +30,7 @@
   window.FractionText?.watch(lesson);
   const query = new URLSearchParams(location.search);
   const terms = Array.from({ length: 12 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
-  const termName = (key) => `${key[0]}학년 ${key[2]}학기`;
+  const termName = (key) => `초 ${key[0]}학년 ${key[2]}학기`;
   const subjectsFor = (key) => Number(key[0]) <= 2 ? ['국어', '수학'] : ['국어', '수학', '사회', '과학'];
   const ready = Object.keys(manifest);
   const currentTerm = window.LearningDefaults?.mathTerm(window.CLASS_SCHOOL_LEVEL, window.CLASS_SCHOOL_GRADE, ready);

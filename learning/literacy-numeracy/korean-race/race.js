@@ -405,7 +405,7 @@
     head.className = 'range-head';
     const select = document.createElement('select');
     select.setAttribute('aria-label', '학년과 학기');
-    for (const t of catalog) select.append(new Option(t.term.replace('-', '학년 ') + '학기', t.term, false, t.term === tbTerm));
+    for (const t of catalog) select.append(new Option('초 ' + t.term.replace('-', '학년 ') + '학기', t.term, false, t.term === tbTerm));
     select.onchange = () => { tbTerm = select.value; paintSettings(); };
     const tabs = document.createElement('div');
     tabs.className = 'range-subjects';

@@ -336,7 +336,7 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
 test('the textbook race asks only the checked units', async (t) => {
   assert.equal(Core.validRange('textbook', '6-2.sci.1,6-2.kor.3'), '6-2.sci.1,6-2.kor.3');
   assert.equal(Core.validRange('textbook', '6-2.sci.1,nope'), null);
-  assert.equal(Core.rangeLabel('textbook', '6-2.sci.1,6-2.sci.2,6-2.kor.3'), '6학년 2학기 과학 1·2단원, 국어 3단원');
+  assert.equal(Core.rangeLabel('textbook', '6-2.sci.1,6-2.sci.2,6-2.kor.3'), '초 6학년 2학기 과학 1·2단원, 국어 3단원');
   const pools = bank.load();
   const round = Questions.makeRound(pools, { set: 'textbook', range: '6-2.sci.1,6-2.kor.3', count: 120, random: Math.random });
   assert.equal(round.length, 120);
