@@ -1177,7 +1177,7 @@ const items=Object.freeze([
   {
     "key": "object-boot.webp",
     "name": "운동화",
-    "answer": "boot",
+    "answer": "sneaker",
     "category": "object",
     "group": "everyday"
   },
