@@ -1,7 +1,6 @@
 :root { color-scheme:dark; font:16px system-ui, sans-serif; color:#fff2d2; background:#1d2923; }
 * { box-sizing:border-box; }
 body { margin:0; min-height:100dvh; padding:8px; background:linear-gradient(#112b2140,#101b1bb8), url("assets/lobby-courtyard.webp") center / cover fixed; }
-body:has(#gameScreen:not(.hidden)) { background-image:linear-gradient(#19291955,#192919a0),url("assets/garden-board.webp"); }
 .hidden { display:none !important; }
 h1,h2,p { margin:0; }
 a { color:#ffe09a; }
@@ -19,12 +18,13 @@ button:disabled { cursor:default; }
 #variants span { font-size:13px; }
 #gameScreen { min-height:calc(var(--site-game-height, 100dvh) - 16px); display:grid; grid-template-columns:minmax(0,1fr) minmax(190px,235px); align-items:center; gap:12px; max-width:1090px; margin:auto; }
 #boardArea { display:grid; place-items:center; min-width:0; }
-#board { position:relative; width:min(100%,calc(var(--site-game-height, 100dvh) - 28px)); aspect-ratio:1; background:radial-gradient(circle at 35% 30%,#f2dba6,#c7945c); border:3px solid #70462b; border-radius:13px; box-shadow:0 12px 32px #0008; color:#603f26; }
-#lines,#cells { position:absolute; inset:0; width:100%; height:100%; }
-#lines { fill:none; stroke:currentColor; stroke-width:.65; }
-.cell { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); display:grid; place-items:center; padding:0; width:8.7%; aspect-ratio:1; border:0; border-radius:50%; background:transparent; touch-action:manipulation; }
-.cell::before { content:""; position:absolute; width:20%; aspect-ratio:1; border-radius:50%; background:#543821; }
-.cell.legal::before { width:39%; background:#dfff96; outline:2px solid #536525; }
+/* 말판 = 풀밭 그림. 점과 선은 풀밭 안쪽(그림의 가로 8~92%, 세로 4~88%)에만 놓는다. */
+#board { position:relative; width:min(100%,calc(var(--site-game-height, 100dvh) - 28px)); aspect-ratio:1; background:url("assets/garden-board.webp") center / 100% 100% no-repeat; filter:drop-shadow(0 16px 22px #0009); color:#4b2f17; }
+#lines,#cells { position:absolute; left:8%; top:4%; width:84%; height:84%; }
+#lines { fill:none; stroke:currentColor; stroke-width:.85; stroke-linecap:round; }
+.cell { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); display:grid; place-items:center; padding:0; width:10.4%; aspect-ratio:1; border:0; border-radius:50%; background:transparent; touch-action:manipulation; }
+.cell::before { content:""; position:absolute; width:22%; aspect-ratio:1; border-radius:50%; background:#4b2f17; }
+.cell.legal::before { width:42%; background:#fff3b0; outline:3px solid #8a5a14; box-shadow:0 0 0 5px #fff3b055; }
 .cell.selected { outline:3px solid #ffeb5d; }
 .cell.blocked::before { width:36%; background:#785739; }
 .piece { width:100%; height:100%; position:relative; display:grid; place-items:center; border-radius:50%; background:var(--team); color:#fff; font-weight:900; border:2px solid #fff4d2; box-shadow:0 3px 6px #47251189; }
@@ -37,6 +37,15 @@ button:disabled { cursor:default; }
 .player img { width:29px; height:29px; }
 .player.active { background:#ffe1a421; }
 #status { min-height:3em; line-height:1.45; }
+/* 차례 시계: 남은 5초부터 빨갛게, 내 차례면 째깍 소리. */
+.turn-clock { display:grid; gap:6px; }
+#gonuClock { font-weight:800; font-variant-numeric:tabular-nums; }
+.turn-clock-bar { height:7px; border-radius:4px; background:#ffffff1f; overflow:hidden; }
+.turn-clock-bar i { display:block; height:100%; background:#f2d58c; transform-origin:left center; }
+.turn-clock.urgent #gonuClock { color:#ff6b57; animation:clock-pulse 1s ease-in-out infinite; }
+.turn-clock.urgent .turn-clock-bar i { background:#e5533c; }
+@keyframes clock-pulse { 50% { transform:scale(1.08); } }
+#gonuClock { display:inline-block; transform-origin:left center; }
 dialog { width:min(448px,calc(100% - 24px)); color:inherit; }
 dialog::backdrop { background:#06120ec0; }
 dialog p { margin:12px 0; line-height:1.55; }
@@ -47,5 +56,6 @@ dialog p { margin:12px 0; line-height:1.55; }
   #players,#status { grid-column:1/-1; }
   #players { grid-template-columns:1fr 1fr; }
   #status { min-height:0; }
+  .turn-clock { grid-column:1/-1; }
 }
 

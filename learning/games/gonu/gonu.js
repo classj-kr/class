@@ -10,6 +10,9 @@
     let variant = "well";
     let lobby, match = null, selected = null, pending = false;
     let selectionTimer, animation = null;
+    // 한 수의 시간. 말이 적은 우물·호박고누는 10초, 놓을 자리와 잡을 말을 따지는 참고누는 20초. 넘기면 진다.
+    const TURN_SECONDS = {well:10, pumpkin:10, cham:20};
+    let deadline = null, lastTick = "";
 
     function svg(tag, attributes) {
         const node = document.createElementNS(namespace, tag);
@@ -48,6 +51,7 @@
         const board = boards[match?.state.kind || variant];
         $("ruleTitle").textContent = board.name;
         $("ruleText").textContent = board.rule;
+        $("ruleTime").textContent = `한 수를 ${TURN_SECONDS[match?.state.kind || variant]}초 안에 두지 못하면 져요. 남은 시간이 5초가 되면 째깍 소리가 나요.`;
         $("help").showModal();
     }
 
@@ -79,6 +83,7 @@
         const destinations = new Set(moves.filter(move => move.from === (selected ?? undefined)).map(move => move.to));
         const sources = new Set(moves.map(move => move.from));
         $("status").textContent = state.winner === 0 ? "같은 판이 반복되어 비겼어요." :
+            state.timedOut ? `${people[state.timedOut - 1].name}님이 ${TURN_SECONDS[state.kind]}초 안에 두지 못해 ${people[state.winner - 1].name}님이 이겼어요!` :
             state.winner ? `${people[state.winner - 1].name}님이 이겼어요!` :
             animation ? "말이 움직이는 중이에요." :
             !mine ? `${current.name}님 차례예요.` :
@@ -116,6 +121,74 @@
         }));
     }
 
+    // 두 점 사이 길을 따라 찍은 점들(말판 % 좌표). 곡선(원호) 길이면 원을 따라, 아니면 곧게.
+    function routeBetween(kind, from, to, steps) {
+        const board = boards[kind];
+        const [x0,y0] = board.points[from], [x1,y1] = board.points[to];
+        const arcIndex = board.edges.findIndex(([a,b]) => (a === from && b === to) || (a === to && b === from));
+        const onArc = arcIndex >= 0 && arcIndex < (board.arcs || 0);
+        const start = Math.atan2(y0 - 50, x0 - 50), radius = Math.hypot(x0 - 50, y0 - 50);
+        let turn = Math.atan2(y1 - 50, x1 - 50) - start;
+        if (turn > Math.PI) turn -= 2 * Math.PI;
+        if (turn <= -Math.PI) turn += 2 * Math.PI;
+        return Array.from({length:steps + 1}, (_, i) => {
+            const t = i / steps;
+            return onArc ? [50 + radius * Math.cos(start + turn * t), 50 + radius * Math.sin(start + turn * t), t]
+                : [x0 + (x1 - x0) * t, y0 + (y1 - y0) * t, t];
+        });
+    }
+
+    function startClock() {
+        deadline = match && match.state.winner === null ? performance.now() + TURN_SECONDS[match.state.kind] * 1000 : null;
+        lastTick = "";
+    }
+
+    function endByTimeout(loser) {
+        animation?.cancel();
+        animation = null;
+        clearTimeout(selectionTimer);
+        match.state = {...match.state, winner:3 - loser, timedOut:loser, revision:match.state.revision + 1};
+        selected = null;
+        pending = false;
+        deadline = null;
+        render();
+        tickClock();
+        window.ClassGameSfx?.play("timeout");
+    }
+
+    // 시간은 방장 화면이 잰다. 넘기면 방장이 알리고 모두 같은 결과로 끝낸다.
+    function timeout() {
+        const state = match.state;
+        if (state.winner !== null) return;
+        lobby.broadcast({type:"GONU_TIMEOUT", revision:state.revision, loser:state.turn});
+        endByTimeout(state.turn);
+    }
+
+    function tickClock() {
+        const box = $("turnClockBox");
+        if (!match || match.state.winner !== null || deadline === null) {
+            box.classList.add("hidden");
+            box.classList.remove("urgent");
+            return;
+        }
+        const total = TURN_SECONDS[match.state.kind] * 1000;
+        const remaining = Math.max(0, deadline - performance.now());
+        const seconds = Math.ceil(remaining / 1000);
+        const current = match.people[match.state.turn - 1];
+        const mine = current.id === lobby.myId;
+        const text = `${mine ? "내" : current.name + "님"} 차례 · ${seconds}초`;
+        box.classList.remove("hidden");
+        if ($("gonuClock").textContent !== text) $("gonuClock").textContent = text;
+        $("gonuClockBar").style.transform = `scaleX(${remaining / total})`;
+        const urgent = seconds > 0 && seconds <= 5;
+        box.classList.toggle("urgent", urgent);
+        const key = `${match.state.revision}:${seconds}`;
+        if (urgent && mine && key !== lastTick && !$("help").open) window.ClassGameSfx?.play("tick");
+        lastTick = key;
+        if (remaining <= 0 && lobby.role === "host") timeout();
+    }
+    setInterval(tickClock, 100);
+
     function accept(state, action) {
         const phase = match.state.phase;
         const from = action.from === undefined ? null : $("cells").children[action.from]?.getBoundingClientRect();
@@ -125,6 +198,7 @@
         clearTimeout(selectionTimer);
         animation?.cancel();
         animation = null;
+        startClock();
         render();
 
         const piece = $("cells").children[action.to]?.querySelector(".piece");
@@ -132,12 +206,15 @@
             window.ClassGameSfx?.play(phase === "take" ? "capture" : "stone");
             return;
         }
-        const to = piece.getBoundingClientRect();
-        const frames = from ? [
-            {transform:`translate(${from.left-to.left}px,${from.top-to.top}px)`},
-            {transform:"translate(0,0)"}
-        ] : [{transform:"translateY(-10px) scale(1.12)",opacity:.45},{transform:"none",opacity:1}];
-        const movement = piece.animate(frames,{duration:from ? 280 : 180,easing:"ease-out"});
+        const area = $("cells").getBoundingClientRect();
+        const [tx,ty] = boards[state.kind].points[action.to];
+        const route = from ? routeBetween(state.kind, action.from, action.to, 16) : null;
+        const onArc = route && Math.abs(route[8][0] - (route[0][0] + route[16][0]) / 2) + Math.abs(route[8][1] - (route[0][1] + route[16][1]) / 2) > 1;
+        const frames = route ? route.map(([x,y,t]) => ({
+            transform:`translate(${(x - tx) / 100 * area.width}px,${(y - ty) / 100 * area.height}px) scale(${1 + 0.14 * Math.sin(Math.PI * t)})`
+        })) : [{transform:"translateY(-10px) scale(1.12)",opacity:.45},{transform:"none",opacity:1}];
+        piece.parentElement.style.zIndex = "3";
+        const movement = piece.animate(frames,{duration:route ? (onArc ? 420 : 320) : 180,easing:"ease-in-out"});
         animation = movement;
         for (const cell of $("cells").children) cell.disabled = true;
         $("status").textContent = "말이 움직이는 중이에요.";
@@ -173,6 +250,7 @@
         animation?.cancel();
         animation = null;
         match = null;
+        deadline = null;
         selected = null;
         pending = false;
         $("gameScreen").classList.add("hidden");
@@ -210,12 +288,15 @@
             drawLines(boards[data.kind]);
             $("lobbyScreen").classList.add("hidden");
             $("gameScreen").classList.remove("hidden");
+            startClock();
             render();
         },
         onGameMessage:(sender,data,{role}) => {
             if (role === "host" && data.type === "GONU_ACTION") apply(sender,data.action,data.revision);
             if (role !== "guest" || sender !== lobby.hostId || !match) return;
             if (data.type === "GONU_REMATCH" && match.state.winner !== null) returnToLobby();
+            if (data.type === "GONU_TIMEOUT" && data.revision === match.state.revision &&
+                match.state.winner === null && data.loser === match.state.turn) endByTimeout(data.loser);
             if (data.type !== "GONU_MOVE" || data.revision !== match.state.revision ||
                 data.sender !== match.people[match.state.turn-1].id) return;
             const next = play(match.state,data.action);

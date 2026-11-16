@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>고누놀이</title>
   <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
-  <link rel="stylesheet" href="gonu.css?v=1">
+  <link rel="stylesheet" href="gonu.css?v=20261117-garden">
   <script src="/assets/network/game-network.js?v=20260821" defer></script>
   <script src="/assets/network/multiplayer-avatars.js?v=20261114-1" defer></script>
   <script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars" defer></script>
   <script src="music.js?v=1" defer></script>
   <script src="/assets/sound/music-control.js?v=20261115-game-backdrop" defer></script>
   <script src="rules.js?v=1" defer></script>
-  <script src="gonu.js?v=1" defer></script>
+  <script src="gonu.js?v=20261117-garden" defer></script>
 </head>
 <body>
 <audio id="bgm" preload="metadata"></audio>
@@ -56,6 +56,10 @@
       <h1 id="variantName"></h1>
       <div id="players" aria-label="참가자"></div>
       <p id="status" role="status"></p>
+      <div id="turnClockBox" class="turn-clock hidden" aria-live="off">
+        <span id="gonuClock"></span>
+        <span class="turn-clock-bar" aria-hidden="true"><i id="gonuClockBar"></i></span>
+      </div>
       <button id="rulesBtnGame" type="button">Rules</button>
       <button id="rematch" class="hidden" type="button">대기실로</button>
     </aside>
@@ -64,6 +68,7 @@
 <dialog id="help">
   <h2 id="ruleTitle"></h2>
   <p id="ruleText"></p>
+  <p id="ruleTime"></p>
   <p>움직이는 단계에서 같은 판과 차례가 세 번 나오면 비겨요.</p>
   <form method="dialog"><button>닫기</button></form>
 </dialog>
