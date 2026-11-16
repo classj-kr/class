@@ -1079,6 +1079,9 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
+<link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+<script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="/assets/network/puzzle-race.js?v=20261117-2"></script>
 
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
@@ -1175,6 +1178,13 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
   #game-board .log-monitor { height: 78px; margin-bottom: 0; padding-block: 4px; }
   #game-board .button-section { margin-bottom: 6px; }
 }
+/* 순위전(puzzle-race.js): 동전 수 바꾸기·힌트·메인 화면 단추는 감추고 경주로를 둔다. */
+body.pr-racing .ingame-difficulty-panel, body.pr-racing .cw-hint-btn, body.pr-racing .solo-only { display: none !important; }
+.race-info { margin: 0 auto 6px; font-weight: 800; letter-spacing: .08em; text-align: center; color: #f3e2b0; }
+.race-info[hidden], .race-standings[hidden] { display: none; }
+/* 판이 화면을 꽉 채우니 경주로는 오른쪽 가장자리에 띄운다. */
+.race-standings { position: fixed; z-index: 20; right: 10px; top: 64px; width: min(260px, 46vw); max-height: calc(100dvh - 80px); overflow: auto; padding: 6px; border-radius: 12px; background: rgba(20, 12, 6, .82); text-align: left; }
+@media (max-width: 1100px) { .race-standings { top: auto; bottom: 10px; max-height: 40dvh; } }
 </style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261114-avatar">
 </head>
 <body data-game-navigation="single-player" data-entry-game="coinweighing">
@@ -1219,6 +1229,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
 
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>Start</button>
+        <button class="action-btn" id="race-button" type="button" hidden>순위전</button>
         <button data-game-rules class="action-btn" type="button" onclick="openRules()">Rules</button>
     </div>
 
@@ -1257,6 +1268,8 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
         </div>
     </div>
 
+    <div class="race-info" id="raceInfo" hidden>ROUND <strong id="raceRound">1/3</strong> · TIME <strong id="raceTimer">00:00</strong></div>
+
     <div class="top-section">
         <div class="scale-area">
             <div class="scale-pillar"></div>
@@ -1290,7 +1303,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
             <button class="action-btn" onclick="clearPlates()">CLEAR</button>
             <button class="action-btn btn-decide" id="decide-btn" onclick="toggleDecideMode()">DECIDE</button>
             <button data-game-rules class="action-btn" onclick="openRules()">Rules</button>
-            <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
+            <button class="action-btn solo-only" type="button" onclick="location.href='../../../'">메인 화면으로</button>
         </div>
 
         <div class="log-monitor">
@@ -1299,6 +1312,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
             <div class="log-row" id="log-3"><span>3- </span><span id="log-3-content"></span></div>
             <div class="status-msg">> SELECT THE FAKE COIN <</div>
         </div>
+        <div class="race-standings" id="raceStandings" hidden></div>
     </div>
 
 </div>
@@ -1546,6 +1560,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
 
     // 동전 클릭 시 상태 처리 (선택 토글)
     function handleCoinSelection(coinEl) {
+        if (racePaused || raceDone) return;
         if (selectedCoin === coinEl) {
             clearSelection();
         } else {
@@ -1747,6 +1762,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
     }
 
     function weighCoins() {
+        if (racePaused || raceDone) return;
         if (currentTurn > 3 || isDecideMode) return;
 
         const leftCoins = Array.from(document.getElementById('left-plate').querySelectorAll('.coin'));
@@ -1956,6 +1972,7 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
 
     function checkAnswer(selectedIndex) {
         if (!isDecideMode) return;
+        if (race.active) { checkRaceAnswer(selectedIndex); return; }
 
         const selectedNumber = selectedIndex + 1;
         const fakeNumber = fakeCoinIndex + 1;
@@ -2010,9 +2027,103 @@ body:has(#game-board[style*="block"]) { height: auto; min-height: var(--site-gam
         }
     });
 
+    /* 순위전: 방장이 판마다 가짜 동전 자리·무게를 정해 보낸다. 여러 판을 이어 풀고, 잘못 고르면 시간이 더해진다. */
+    const RACE_WRONG_PENALTY = 30;
+    let raceRounds = [], raceRoundIndex = 0;
+    let racePaused = false, raceDone = false, raceElapsed = 0, raceTimerId = null;
+    const fmtTime = t => `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
+    function startRaceTimer() {
+        if (raceTimerId) return;
+        raceTimerId = setInterval(() => { raceElapsed += 1; document.getElementById('raceTimer').textContent = fmtTime(raceElapsed); }, 1000);
+    }
+    function stopRaceTimer() { clearInterval(raceTimerId); raceTimerId = null; }
+    function setRaceStatus(text) { document.querySelector('.status-msg').textContent = text; }
+
+    function startRaceRound() {
+        initGame();
+        fakeCoinIndex = raceRounds[raceRoundIndex].fake;
+        fakeCoinWeight = raceRounds[raceRoundIndex].weight;
+        document.getElementById('raceRound').textContent = `${raceRoundIndex + 1}/${raceRounds.length}`;
+        setRaceStatus('> SELECT THE FAKE COIN <');
+    }
+
+    function checkRaceAnswer(selectedIndex) {
+        if (racePaused || raceDone) return;
+        if (selectedIndex !== fakeCoinIndex) {
+            raceElapsed += RACE_WRONG_PENALTY;
+            document.getElementById('raceTimer').textContent = fmtTime(raceElapsed);
+            document.getElementById(`coin-${selectedIndex}`)?.classList.add('coin-real');
+            toggleDecideMode();
+            window.ClassGameSfx?.play('error');
+            setRaceStatus(`> ${selectedIndex + 1}번은 진짜 동전입니다 · +${RACE_WRONG_PENALTY}초 <`);
+            return;
+        }
+        window.ClassGameSfx?.play('success');
+        raceRoundIndex += 1;
+        race.progress(raceRoundIndex, raceRounds.length);
+        if (raceRoundIndex >= raceRounds.length) {
+            raceDone = true;
+            stopRaceTimer();
+            toggleDecideMode();
+            setRaceStatus(`> 모두 찾았습니다 · ${fmtTime(raceElapsed)} <`);
+            race.finish(raceElapsed);
+            return;
+        }
+        startRaceRound();
+        setRaceStatus(`> ${selectedIndex + 1}번이 가짜였습니다 · 다음 판 <`);
+    }
+
+    function showCoinStart() {
+        document.getElementById('game-board').style.display = 'none';
+        document.getElementById('start-screen').style.display = '';
+        document.getElementById('raceInfo').hidden = true;
+    }
+
+    const race = ClassroomPuzzleRace.create({
+        gameId: 'coinweighing',
+        title: 'COIN WEIGHING',
+        settings: [
+            { key: 'coins', label: '동전', options: [8, 9, 10, 11, 12, 13].map(n => ({ value: n, label: `${n}개` })) },
+            { key: 'rounds', label: '판 수', options: [{ value: 3, label: '3판' }, { value: 5, label: '5판' }] }
+        ],
+        getSettings: () => ({ coins: coinCount, rounds: 3 }),
+        createPuzzle: settings => ({
+            coins: Number(settings.coins),
+            rounds: Array.from({ length: Number(settings.rounds) }, () => ({
+                fake: Math.floor(Math.random() * Number(settings.coins)),
+                weight: Math.random() > 0.5 ? 1.2 : 0.8
+            }))
+        }),
+        hideSolo: () => {
+            closeModal();
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-board').style.display = 'none';
+        },
+        start: data => {
+            coinCount = data.coins;
+            document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('onclick').includes(`(${coinCount},`)));
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-board').style.display = 'block';
+            raceRounds = data.rounds;
+            raceRoundIndex = 0;
+            raceDone = false;
+            raceElapsed = 0;
+            document.getElementById('raceTimer').textContent = '00:00';
+            document.getElementById('raceInfo').hidden = false;
+            startRaceRound();
+            race.progress(0, raceRounds.length);
+        },
+        pause: on => { racePaused = on; if (!on && !raceDone) startRaceTimer(); },
+        stop: () => { raceDone = true; stopRaceTimer(); },
+        exit: () => { raceDone = false; racePaused = false; showCoinStart(); },
+        standingsHost: () => document.getElementById('raceStandings')
+    });
+    document.getElementById('race-button').addEventListener('click', () => race.open());
+
     setVolume(currentVolume);
     setGlobalDifficulty(coinCount, true);
     initializePlayerEntry();
+    document.getElementById('race-button').hidden = !playerName;
 </script>
 
 </body>
