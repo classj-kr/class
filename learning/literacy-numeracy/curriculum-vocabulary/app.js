@@ -6,20 +6,27 @@
   // ?preview=1 이면 만드는 중인 학기까지 보인다(만드는 사람이 확인할 때).
   const manifest = (new URLSearchParams(location.search).has('preview') ? window.CurriculumTermsPreview : window.CurriculumTerms) || {};
   const loading = {};
-  const loadScript = (src) => new Promise((resolve, reject) => {
+  // 여러 파일을 한꺼번에 받되 실행은 넣은 차례대로(async = false).
+  const loadScript = (src) => loading[src] = loading[src] || new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = src;
+    script.async = false;
     script.onload = resolve;
     script.onerror = reject;
     document.head.append(script);
   });
-  function loadTerm(key) {
+  const subjectCode = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' };
+  // 고른 과목의 도식 파일만 받는다(figures/<학기>/<과목 코드>.js, <과목 코드>-2.js …). 학기 하나에 도식 파일이 열 개 넘게 있어
+  // 전부 하나씩 차례로 받으면 화면이 오래 「불러오는 중」에 머문다.
+  const figuresOf = (key, name) => manifest[key].figures.filter((file) => file.split('/').pop().split(/[-.]/)[0] === subjectCode[name]);
+  function loadTerm(key, name = subject) {
     if (!manifest[key]) return Promise.resolve();
-    loading[key] = loading[key] || (async () => {
-      await loadScript(manifest[key].words);
-      for (const file of manifest[key].figures) await loadScript(file);
-    })();
-    return loading[key];
+    return Promise.all([manifest[key].words, ...figuresOf(key, name)].map(loadScript));
+  }
+  // 화면을 그린 뒤 같은 학기 다른 과목의 도식은 뒤에서 미리 받아 둔다(과목을 바꿀 때 기다리지 않게).
+  function prefetchTerm(key) {
+    if (!manifest[key]) return;
+    setTimeout(() => manifest[key].figures.forEach((file) => loadScript(file).catch(() => {})), 1500);
   }
   const termSelect = document.getElementById('term');
   const subjectList = document.getElementById('subjects');
@@ -688,7 +695,11 @@
     termSelect.value = term;
     let focusTarget;
     subjectList.replaceChildren(...subjectsFor(term).map((name) => {
-      const control = button(name, () => { subject = name; unitId = null; mode = 'words'; render('subject'); });
+      const control = button(name, () => {
+        subject = name; unitId = null; mode = 'words';
+        const shown = term;
+        loadTerm(term, name).catch(() => {}).then(() => { if (term === shown && subject === name) render('subject'); });
+      });
       control.setAttribute('aria-pressed', String(name === subject));
       if (focusGroup === 'subject' && name === subject) focusTarget = control;
       return control;
@@ -725,7 +736,8 @@
     unitId = null;
     mode = 'words';
     lesson.replaceChildren(element('p', '불러오는 중입니다.', 'empty'));
-    loadTerm(term).then(() => render(), () => render());
+    const shown = term;
+    loadTerm(term).then(() => render(), () => render()).then(() => { if (term === shown) prefetchTerm(term); });
   });
   unitSelect.addEventListener('change', () => {
     unitId = unitSelect.value;
@@ -738,5 +750,5 @@
     event.preventDefault();
     leavePractice();
   });
-  loadTerm(term).then(() => render(), () => render());
+  loadTerm(term).then(() => render(), () => render()).then(() => prefetchTerm(term));
 })();
