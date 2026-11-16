@@ -19,12 +19,17 @@
   document.body.insertAdjacentHTML('beforeend','<dialog id="badukResignDialog" aria-labelledby="badukResignTitle"><h2 id="badukResignTitle">이번 대국을 기권할까요?</h2><p>기권하면 대국을 마치고 중요한 장면을 복기할 수 있어요.</p><div class="resign-choices"><button id="badukResignCancel" class="secondary" type="button">계속 두기</button><button id="badukResignConfirm" class="primary" type="button">기권하기</button></div></dialog>');
   $('rulesCopy').innerHTML='<p>흑부터 교차점에 하나씩 둡니다. 위·아래·왼쪽·오른쪽으로 이어진 돌은 활로(빈 이웃 자리)를 공유해요. 마지막 활로를 막으면 상대 돌을 잡아요. 상대 돌을 잡지 못하면서 내 활로가 없어지는 수와 이전 판을 되풀이하는 수는 둘 수 없어요.</p><p>돌 따먹기: 7×7에서 돌 3개를 먼저 잡으면 승리해요. 땅 따먹기: 7×7에서 40수 뒤 내 돌과 둘러싼 빈 땅을 합산해요. 두 모드는 사석을 따로 제거하지 않아요. 둘 곳이 없을 때만 패스하며, 둘 다 못 두면 잡은 돌 수(돌 따먹기) 또는 면적(땅 따먹기)으로 끝내요.</p><p>정식 바둑 연습: 9×9, 백 덤 7.5점, 연속 패스 후 사석 확인. 사석을 직접 표시한 뒤 남은 돌과 둘러싼 빈 땅을 합산해요. 흑돌과 백돌 양쪽에 닿은 빈 영역은 어느 쪽 점수에도 넣지 않아요. AI는 사활 전문가가 아니므로 불확실하면 대국을 계속하세요.</p><p>레벨 1~5는 이 연습 AI 안에서의 상대적 수준이에요. 힌트는 상대 레벨과 별도로 더 깊게 계산한 후보이며 최선 수나 정석을 보장하지 않아요. 시간 제한과 순위 기록은 없어요.</p>';
   function reason(label,title,text){$('reasonLabel').textContent=label;$('moveLabel').textContent=title;$('reason').textContent=text;}
-  function stop(){
-    if(busy&&job==='hint')reason('힌트 계산 취소','계산을 멈췄어요','힌트를 누르면 다시 계산해요.');
+  const preparedHint=BoardCoachUI.prepareTurnHint("baduk-worker.js?v=prepared-hint", result=>{
+    hint=result;
+    reason("힌트", R.coord(result.index,state.size), result.reason);
+    render();BoardCoachUI.revealExplanation();
+  },()=>reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
+  function stop(){ preparedHint.clear();
     token++;worker?.terminate();worker=null;clearTimeout(timer);clearTimeout(timeout);busy=false;
     window.ClassGameMotion?.cancel();
   }
   function render(){
+    syncPreparedHint();
     const position=scene?.before||state,mark=scene?scene.feedback?.alternative??scene.index:hint?.index;
     const legal=new Set(R.legal(position)),active=started&&!busy&&!state.ended&&!scene&&state.color===human&&!state.scoring;
     const board=$('board');board.className='board';board.style.gridTemplateColumns=`repeat(${position.size},1fr)`;
@@ -61,19 +66,26 @@
     }
   }
   function fail(text){stop();$('retry').classList.remove('hidden');reason('다시 시도할 수 있어요','계산을 마치지 못했어요',text);render();}
+  function syncPreparedHint(){
+    if(started&&!busy&&!state.ended&&state.color===human&&!scene&&!state.scoring&&!$("setup").open)preparedHint.prepare(state);
+    else preparedHint.clear();
+  }
   function calculate(kind){
     if(!started||state.ended||state.scoring||scene||$('setup').open||$('badukResignDialog').open||(kind==='hint')!==(state.color===human))return;
+    if(kind==="hint"){
+      if(preparedHint.request(state)===false)reason("힌트 준비 중","둘 곳을 살펴보고 있어요","");
+      return;
+    }
     stop();hint=null;job=kind;busy=true;$('retry').classList.add('hidden');const id=token;
-    if(kind==='hint')reason('힌트를 생각하고 있어요','잠깐만 기다려 주세요','활로와 연결, 상대가 잡을 수 있는 돌을 살펴보고 있어요.');render();
+    render();
     try{
-      worker=new Worker('baduk-worker.js?v=5');
+      worker=new Worker('baduk-worker.js?v=prepared-hint');
       worker.onmessage=event=>{
         if(id!==token||event.data.token!==id)return;
         const {result,error}=event.data;
         if(error||!result||!R.play(state,result.index)){fail('다시 계산해 주세요. 현재 판은 그대로 남아 있어요.');return;}
         worker.terminate();worker=null;clearTimeout(timeout);busy=false;
-        if(kind==='hint'){hint=result;reason('힌트 · 한 가지 후보',R.coord(result.index,state.size),result.reason);render();BoardCoachUI.revealExplanation();}
-        else apply(result.index,false,result);
+        apply(result.index,false,result);
       };
       worker.onerror=()=>{if(id===token)fail('다시 계산하기를 누르거나 내 수를 물릴 수 있어요.');};
       timeout=setTimeout(()=>{if(id===token)fail('계산이 오래 걸리고 있어요. 다시 시도해 주세요.');},12000);

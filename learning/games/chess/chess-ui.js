@@ -371,7 +371,7 @@ function init() {
   buildStateGuide();
   lobby = ClassroomMultiplayerLobby.create({
     gameId: GAME_ID,
-    initialMode: "host",
+    initialMode: "guest",
     getPlayerName: () => /^[가-힣]{2,6}$/.test(savedName) ? savedName : "",
     allowedPlayerCounts: [2],
     maxPlayers: 2,

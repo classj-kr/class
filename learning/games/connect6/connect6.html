@@ -101,7 +101,7 @@
   </section>
 </main>
 
-<audio id="bgm" src="/learning/games/connect6/assets/sound/bgm.ogg" loop preload="auto"></audio>
+<audio id="bgm" data-music-lobby="lobbyScreen" src="/learning/games/connect6/assets/sound/bgm.ogg" loop preload="auto"></audio>
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true">
   <div class="modal">
@@ -315,10 +315,12 @@ function renderGame(){
     point.classList.toggle("winning",winning.has(row+","+col));
     point.disabled=ended||Boolean(value)||activeId!==snapshot.myId;
     point.setAttribute("aria-label",(row+1)+"행 "+(col+1)+"열"+(value?(value===1?" 흑돌":" 백돌"):" 빈 자리"));
+    const wasRendered=point.dataset.stoneValue!==undefined;
     const previousValue=Number(point.dataset.stoneValue||0);
     point.dataset.stoneValue=String(value);
     if(value&&value===previousValue)return;
     if(value){
+      if(isLast&&wasRendered)window.ClassGameSfx?.play("stone");
       point.innerHTML='<span class="stone '+(value===1?"black":"white")+'"></span>';
       window.ClassGameMotion?.appear(point.firstElementChild);
     }else if(STAR_POINTS.has(row+","+col)){

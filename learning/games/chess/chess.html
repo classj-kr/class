@@ -16,7 +16,7 @@
 <script src="chess-rules.js?v=20261001-standard"></script>
 <script src="pieces.js?v=1" defer></script>
 <script src="motion.js?v=2" defer></script>
-<script src="chess-ui.js?v=20261114-avatars" defer></script>
+<script src="chess-ui.js?v=20261116-entry" defer></script>
 <script src="../board-coach/entry.js?v=1" defer></script>
 <link rel="stylesheet" href="../../../assets/capture-feedback.css?v=1">
 <script src="../../../assets/sound/game-sfx.js?v=20261006-capture" data-class-game-sfx defer></script>
@@ -83,7 +83,7 @@
 
 <section id="abortModal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-box"><h2 id="abortTitle">게임 중단</h2><p id="abortMessage"></p><button class="btn primary" type="button" onclick="location.reload()">처음부터</button></div></section>
 <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
-<audio id="bgm" loop preload="metadata" muted aria-label="체스 배경음악">
+<audio id="bgm" data-music-lobby="lobbyScreen" loop preload="metadata" muted aria-label="체스 배경음악">
   <source src="assets/sound/chess-cozy-focus.ogg" type="audio/ogg">
 </audio>
 </body>

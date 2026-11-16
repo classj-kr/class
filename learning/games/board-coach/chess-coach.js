@@ -24,7 +24,12 @@
   document.querySelector(".sidebar").insertAdjacentHTML("beforeend",'<details class="panel chess-record"><summary>기보</summary><div id="chessMoves">아직 둔 수가 없습니다.</div></details>');
   document.body.insertAdjacentHTML("beforeend",'<dialog id="chessPromotion" aria-labelledby="promotionTitle"><h2 id="promotionTitle">승격할 말</h2><div id="chessPromotionChoices"></div><button id="cancelPromotion" class="quiet" type="button">취소</button></dialog><dialog id="chessDraw" aria-labelledby="drawTitle"><h2 id="drawTitle">무승부 선언</h2><p class="muted">표시된 조건으로 대국을 마칩니다.</p><div id="chessDrawChoices"></div><button id="cancelDraw" class="quiet" type="button">취소</button></dialog><dialog id="chessResign" aria-labelledby="resignTitle"><h2 id="resignTitle">이 대국을 기권할까요?</h2><div class="resign-choices"><button id="confirmResign" type="button">기권</button><button id="cancelResign" class="quiet" type="button">계속 두기</button></div></dialog>');
   function reason(label,title,text) { $("reasonLabel").textContent=label; $("moveLabel").textContent=title; $("reason").textContent=text; }
-  function stop() { if(busy&&job==="hint")reason("힌트 계산 취소","계산을 멈췄어요","힌트를 누르면 다시 계산합니다.");token++; worker?.terminate(); worker=null; clearTimeout(timeout); clearTimeout(nextTurn); busy=false;moving=false;motion?.cancel();motion=null; }
+  const preparedHint=BoardCoachUI.prepareTurnHint("chess-worker.js?v=prepared-hint", result=>{
+    hint=result;
+    reason("힌트", result.claim?"무승부 선언":AI.label(result.move), result.reason);
+    render();BoardCoachUI.revealExplanation();
+  },()=>reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
+  function stop() { preparedHint.clear();token++; worker?.terminate(); worker=null; clearTimeout(timeout); clearTimeout(nextTurn); busy=false;moving=false;motion?.cancel();motion=null; }
   function renderCaptures(position) {
     for(const [side,id,count] of [[human,'myCaptures','myCaptureCount'],[human==='w'?'b':'w','aiCaptures','aiCaptureCount']]) {
       const pieces=position.captures.filter(p=>p[0]!==side),groups=new Map();
@@ -36,6 +41,7 @@
     $('latestCapture').textContent=latest?`최근 잡기 · ${history.indexOf(latest)+1}수\n${latest.color===human?'내':'AI의'} ${AI.NAMES[latest.move.piece[1]]} → ${latest.color===human?'상대':'내'} ${AI.NAMES[latest.move.capture[1]]} 잡음`:'아직 잡힌 말이 없어요.';
   }
   function render() {
+    syncPreparedHint();
     const position=scene?.before||state, result=C.status(state), legal=C.allLegalMoves(position);
     renderCaptures(moving?history.at(-1).before:position);
     const opponent=started&&!scene&&!result.ended&&state.turn===human?history.at(-1)?.opponent:null;
@@ -87,22 +93,25 @@
     current.finished.then(()=>{if(token!==id||state!==position||motion!==current)return;motion=null;moving=false;render();resume();});
   }
   function fail(message) { stop(); $("retry").classList.remove("hidden"); reason("계산을 마치지 못했어요","다시 계산할 수 있어요",message); render(); }
+  function syncPreparedHint(){
+    if(started&&!busy&&!C.status(state).ended&&state.turn===human&&!scene&&!$("setup").open)preparedHint.prepare(state);
+    else preparedHint.clear();
+  }
   function calculate(kind) {
     if(!started||moving||C.status(state).ended||$("setup").open||(kind==="hint")!==(state.turn===human)) return;
+    if(kind==="hint"){
+      if(preparedHint.request(state)===false)reason("힌트 준비 중","둘 곳을 살펴보고 있어요","");
+      return;
+    }
     stop(); job=kind; busy=true; selected=null; hint=null; $("retry").classList.add("hidden"); render();
     const id=token;
-    if(kind==="hint") reason("힌트 계산 중","후보를 살펴보고 있어요","체크와 기물의 안전을 확인하고 있어요.");
+
     try {
-      worker=new Worker("chess-worker.js?v=14");
+      worker=new Worker("chess-worker.js?v=prepared-hint");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==token)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");
         const answer=data.result;
-        if(answer.claim&&kind==="hint") {
-          if(!C.drawClaims(state).some(c=>!c.move))return fail("무승부 조건을 다시 확인해 주세요.");
-          worker.terminate();worker=null;clearTimeout(timeout);busy=false;hint=answer;
-          reason("힌트","무승부 선언",answer.reason);render();BoardCoachUI.revealExplanation();return;
-        }
         if(answer.claim&&kind==="move") {
           const outcome=C.claimDraw(state); if(!outcome.ok)return fail(outcome.error);
           stop(); state=outcome.state; reason("AI의 선택","무승부 선언",answer.reason); render(); return;
@@ -110,8 +119,7 @@
         const move=C.allLegalMoves(state).find(m=>AI.same(m,answer.move));
         if(!move)return fail("수 계산을 다시 시도해 주세요.");
         worker.terminate();worker=null;clearTimeout(timeout);busy=false;
-        if(kind==="hint") { hint={...answer,move}; reason("힌트 · 한 가지 후보",AI.label(move),answer.reason);render();BoardCoachUI.revealExplanation(); }
-        else commit(move,false,answer.opponent);
+        commit(move,false,answer.opponent);
       };
       worker.onerror=()=>{if(id===token)fail("다시 계산하거나 수를 물려 보세요.");};
       timeout=setTimeout(()=>{if(id===token)fail("계산이 오래 걸리고 있어요. 다시 시도해 주세요.");},12000);

@@ -66,5 +66,45 @@
     if (selected) document.getElementById('levelDescription').textContent = selected.dataset.description;
   }
   levelOptions?.addEventListener('change', describeLevel);
-  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent, ready };
+  function prepareTurnHint(workerUrl, show, unavailable) {
+    let current;
+    function clear() {
+      current?.worker?.terminate();
+      current = null;
+    }
+    function prepare(state) {
+      if (current?.state === state) return;
+      clear();
+      const task = {state, worker:null, result:null, requested:false};
+      current = task;
+      const failed = () => {
+        if (current !== task) return;
+        clear();
+        if (task.requested) unavailable();
+      };
+      try {
+        task.worker = new Worker(workerUrl);
+        task.worker.onmessage = ({data}) => {
+          if (current !== task) return;
+          if (data.error || !data.result) { failed(); return; }
+          const first = !task.result;
+          task.result = data.result;
+          if (!data.partial) { task.worker.terminate(); task.worker = null; }
+          if (first && task.requested) show(task.result);
+        };
+        task.worker.onerror = failed;
+        task.worker.postMessage({state, kind:"hint"});
+      } catch { failed(); }
+    }
+    function request(state) {
+      prepare(state);
+      if (!current) { unavailable(); return; }
+      current.requested = true;
+      if (current.result) show(current.result);
+      else return false;
+      return true;
+    }
+    return {prepare, request, clear};
+  }
+  window.BoardCoachUI = { markMove, revealExplanation, useOriginalTheme, mountOpponent, showOpponent, ready, prepareTurnHint };
 })();

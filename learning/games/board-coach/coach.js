@@ -21,8 +21,12 @@
   if(game==='reversi')document.querySelector('.controls').insertAdjacentHTML('afterend','<section class="panel" aria-label="최근 뒤집기"><p id="lastFlip" class="move-result" aria-live="polite">돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.</p></section>');
   $("principle").textContent = principle;
   $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>레벨 1은 처음 배우는 연습 상대입니다. 레벨이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
-  function stopWork() {
-    if (busy && retryKind === "hint") setReason("힌트 계산 취소", "계산을 멈췄어요", "힌트를 누르면 다시 계산합니다.");
+  const preparedHint=BoardCoachUI.prepareTurnHint("ai-worker.js?v=prepared-hint", result=>{
+    hint=result;
+    setReason("힌트", coordinate(result.index), result.reason);
+    render();BoardCoachUI.revealExplanation();
+  },()=>setReason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
+  function stopWork() { preparedHint.clear();
     token++; worker?.terminate(); worker = null; clearTimeout(timeout); clearTimeout(nextTurnTimer); busy = false;
     moving=false;ClassGameMotion.cancel();
   }
@@ -43,6 +47,7 @@
   }
   function setReason(label, title, text) { $("reasonLabel").textContent = label; $("moveLabel").textContent = title; $("reason").textContent = text; }
   function render() {
+    syncPreparedHint();
     const current = reviewPosition?.before || state;
     drawBoard(current, reviewPosition ? reviewPosition.feedback?.alternative ?? reviewPosition.index : hint?.index);
     const opponent=started&&!reviewPosition&&!state.ended?moves.at(-1)?.opponent:null;
@@ -70,28 +75,34 @@
     stopWork(); $("retry").classList.remove("hidden"); render();
     setReason("다시 시도할 수 있어요", "계산을 마치지 못했어요", message);
   }
+  function syncPreparedHint(){
+    if(started&&!busy&&!state.ended&&state.color === human&&!reviewPosition&&!$("setup").open)preparedHint.prepare(state);
+    else preparedHint.clear();
+  }
   function startJob(kind) {
     if (!started || moving || state.ended || $("setup").open) return;
     if ((kind === "hint") !== (state.color === human)) return;
+    if(kind==="hint"){
+      if(preparedHint.request(state)===false)setReason("힌트 준비 중","둘 곳을 살펴보고 있어요","");
+      return;
+    }
     stopWork(); hint = null; retryKind = kind; busy = true; $("retry").classList.add("hidden");
     const id = token;
     render();
-    if (kind === "hint") setReason("힌트를 생각하고 있어요", "잠깐만 기다려 주세요", "공격할 곳과 상대의 위협을 함께 살펴보고 있어요.");
+
     try {
-      worker = new Worker("ai-worker.js?v=11");
+      worker = new Worker("ai-worker.js?v=prepared-hint");
       worker.onmessage = event => {
         if (event.data.token !== token || id !== token) return;
         const { result, error } = event.data;
         if (error || !result || !R.legal(state).includes(result.index)) { failJob("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요."); return; }
         worker?.terminate(); worker = null; clearTimeout(timeout); busy = false;
-        if (kind === "hint") { hint = result; setReason("힌트 · 한 가지 후보", coordinate(result.index), result.reason); render(); BoardCoachUI.revealExplanation(); }
-        else {
+
           const before = state;
           state = R.play(state, result.index);
           moves.push({ before, color: before.color, index: result.index, reason: result.reason,opponent:result.opponent||AI.opponentView(before,result.index) });
           setReason("AI의 수", `${coordinate(result.index)}에 두었어요`, result.reason);
           animateMove(before,result.index);
-        }
       };
       worker.onerror = () => { if (id === token) failJob("계산을 다시 시도해 주세요. 수 물리기와 새 대국도 사용할 수 있어요."); };
       timeout = setTimeout(() => { if (id === token) failJob("계산이 오래 걸리고 있어요. 다시 시도하거나 다른 레벨을 골라보세요."); }, 10000);
@@ -117,7 +128,7 @@
     animateMove(before,index);
   }
   function animateMove(before,index) {
-    window.ClassGameSfx?.play("stone");
+    window.ClassGameSfx?.play(game==="reversi"&&state.flipped?.length?"capture":"stone");
     moving=true;render();
     const animations=[ClassGameMotion.appear($('board').querySelector(`[data-index="${index}"] .stone`))];
     for(const i of state.flipped||[])animations.push(ClassGameMotion.flip($('board').querySelector(`[data-index="${i}"] .stone`),'stone disc '+(before.board[i]===1?'black':'white')));

@@ -136,7 +136,7 @@ body:has(#gameScreen:not(.hidden)) .shell{height:calc(var(--site-game-height, 10
   </section>
 </main>
 
-<audio id="bgm" src="/learning/games/reversi/assets/sound/bgm.ogg" loop preload="auto"></audio>
+<audio id="bgm" data-music-lobby="lobbyScreen" src="/learning/games/reversi/assets/sound/bgm.ogg" loop preload="auto"></audio>
 
 <section id="rulesOverlay" class="overlay hidden" role="dialog" aria-modal="true">
   <div class="modal">
@@ -441,10 +441,12 @@ function renderGame(){
     cell.classList.toggle("flipped",flipped.has(key));
     cell.classList.toggle("legal",isLegal&&canPlay);
     cell.setAttribute("aria-label",(row+1)+"행 "+(col+1)+"열"+(value?(value===1?" 흑돌":" 백돌"):isLegal?" 둘 수 있음":" 빈 자리"));
+    const wasRendered=cell.dataset.stoneValue!==undefined;
     const previousValue=Number(cell.dataset.stoneValue||0);
     cell.dataset.stoneValue=String(value);
     if(value&&value===previousValue)return;
     if(value){
+      if(isLast&&wasRendered)window.ClassGameSfx?.play("capture");
       cell.innerHTML='<span class="disc '+(value===1?"black":"white")+'"></span>';
       if(previousValue)window.ClassGameMotion?.flip(cell.firstElementChild,'disc '+(previousValue===1?'black':'white'));else window.ClassGameMotion?.appear(cell.firstElementChild);
     }else if(isLegal){

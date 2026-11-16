@@ -16,10 +16,18 @@
     const RETRY_SOUNDS = new Set(["error", "timeout", "explosion"]);
     const isBookReader = /^\/learning\/(?:literacy-numeracy|academics)\/story-books\/(?:korea-tales|world-tales|world-novels|poetry)\//.test(location.pathname);
     const scriptUrl = document.currentScript?.src || new URL("/assets/sound/game-sfx.js", window.location.href).href;
-    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => !["click", "capture"].includes(name)));
+    const pathGame = location.pathname.match(/^\/learning\/games\/([^/]+)/)?.[1];
+    const boardGame = pathGame === "board-coach"
+        ? new URLSearchParams(location.search).get("game") || (location.pathname.includes("/baduk") ? "baduk" : "reversi")
+        : pathGame;
+    const boardSounds = ["baduk", "chess", "janggi", "omok", "connect6", "reversi"].includes(boardGame);
+    const specialCapture = ["baduk", "chess", "janggi", "reversi"].includes(boardGame);
+    const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => name !== "click" && (name !== "capture" || specialCapture)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
-        new URL(`sfx/${name}.ogg${RETRY_SOUNDS.has(name) ? "?v=20261114-boing" : ""}`, scriptUrl).href
+        new URL(boardSounds && (name === "stone" || name === "capture")
+            ? `sfx/boards/${boardGame}-${name}.ogg`
+            : `sfx/${name}.ogg${RETRY_SOUNDS.has(name) ? "?v=20261114-boing" : ""}`, scriptUrl).href
     ]));
 
     let context = null;
