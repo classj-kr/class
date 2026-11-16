@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>윷놀이</title>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
-<link rel="stylesheet" href="yutnori.css?v=7">
+<link rel="stylesheet" href="yutnori.css?v=8">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
@@ -64,11 +64,10 @@
   </section>
 
   <section id="gameScreen" class="hidden">
-    <header class="match-header"><h1>윷놀이</h1><div id="score"></div><button id="rulesBtnGame" class="secondary" type="button">Rules</button></header>
+    <header class="match-header"><div id="score"></div><button id="rulesBtnGame" class="secondary" type="button">Rules</button></header>
     <div class="match">
       <aside id="teamBench" aria-label="양 팀 윷말"></aside>
       <div id="board" aria-label="윷판">
-        <div class="board-brand" aria-hidden="true"><small>함께 달리는</small><strong>아바타 윷놀이</strong></div>
         <svg viewBox="0 0 100 100" class="tracks" aria-hidden="true"><path d="M12 12H88V88H12ZM12 12L88 88M88 12L12 88"/></svg>
         <span class="shortcut-label" aria-hidden="true">지름길</span>
         <span class="gate">출발 · 도착</span>

@@ -32,7 +32,6 @@ button:focus-visible, select:focus-visible { outline: 2px solid #ffd483; outline
 .primary { background: #f2cb75; color: #302113; font-weight: 800; }
 .code { font-size: 34px; letter-spacing: .13em; }
 .match-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 12px; padding-inline: 40px; }
-.match-header h1 { color: #fff6cf; text-shadow: 0 2px 0 #427079, 0 3px 7px #335654; }
 .team-score { background: #173f4acc; }
 #score { flex: 1; display: flex; flex-wrap: wrap; gap: 6px; }
 .team-score { padding: 4px 9px; border-radius: 20px; border: 1px solid var(--team); }
@@ -156,11 +155,8 @@ dialog::backdrop { background: #101712b8; }
 /* The board is the stage: effects never intercept a player's next choice. */
 #board { border: 0; border-radius: 0; background: none center / 100% 100% no-repeat; box-shadow: none; filter: drop-shadow(0 16px 12px #28513b45); }
 #board::before { content: ""; position: absolute; inset: 7%; border: 0; pointer-events: none; }
-.board-brand { position: absolute; top: 4%; left: 0; right: 0; text-align: center; color: #3d672b; line-height: 1.1; text-shadow: 0 1px #f4ffcda0; }
 .tracks { stroke: #efedbe; stroke-width: .85; filter: drop-shadow(0 1px 1px #446b37a0); }
 .node { border-color: #a18c4d; background: radial-gradient(circle at 35% 25%, #ffffd9, #d7c484); box-shadow: 0 3px 0 #6c8137, inset 0 1px 2px #fff9db; }
-.board-brand small { display: block; font-size: clamp(9px, 1vw, 12px); letter-spacing: .18em; }
-.board-brand strong { font-size: clamp(13px, 1.9vw, 23px); font-weight: 900; }
 .shortcut-label { position: absolute; left: 43%; top: 68%; color: #52792e; font-size: 12px; rotate: -45deg; }
 .node.junction { background: radial-gradient(circle at 35% 25%, #f6fff4, #91cfc1); border-color: #467f70; box-shadow: 0 3px 0 #3c7566, inset 0 0 0 3px #d6ead1; }
 .gate { color: #355830; right: 9%; bottom: 5%; text-shadow: 0 1px #f4ffcda0; }
@@ -199,8 +195,7 @@ dialog::backdrop { background: #101712b8; }
 @media (max-width: 620px) {
     #board { border: 0; }
     .match-header { display: grid; grid-template-columns: 1fr auto; padding: 0 40px; gap: 7px; }
-    .match-header h1 { font-size: 26px; }
-    #score { grid-column: 1/-1; grid-row: 2; }
+    #score { grid-column: 1; grid-row: 1; }
     .team-score { flex: 1; font-size: 11px; padding: 4px 6px; }
     .turn-panel { grid-template-columns: 1fr 1fr; align-items: center; }
     #turn, #yutClock, #result, #results, #turnHint, #rematchBtn { grid-column: 1/-1; }
@@ -233,6 +228,6 @@ body[data-yut-theme="night"]:has(#gameScreen:not(.hidden)) { background: radial-
 [data-theme="cherry"] .tracks { stroke: #a06e87; }
 [data-theme="snow"] .tracks { stroke: #7e96b4; }
 [data-theme="night"] .tracks { stroke: #d7d6fd; }
-[data-theme="cherry"] :is(.board-brand,.gate,.shortcut-label) { color: #844c69; }
-[data-theme="snow"] :is(.board-brand,.gate,.shortcut-label) { color: #425d88; }
-[data-theme="night"] :is(.board-brand,.gate,.shortcut-label) { color: #f7eaff; text-shadow: 0 2px #342e64; }
+[data-theme="cherry"] :is(.gate,.shortcut-label) { color: #844c69; }
+[data-theme="snow"] :is(.gate,.shortcut-label) { color: #425d88; }
+[data-theme="night"] :is(.gate,.shortcut-label) { color: #f7eaff; text-shadow: 0 2px #342e64; }
