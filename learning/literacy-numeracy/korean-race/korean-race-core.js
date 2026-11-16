@@ -46,7 +46,7 @@
   const TEAM_SIZE_DEFAULT = 6;
   // 짝 찾기 방식: 낱말↔뜻처럼 짝이 있는 콘텐츠만. 판은 짝 찾기 앱과 같은 세 크기, 틀린 짝마다 끝낸 시각에 5초를 더한다.
   const MATCH_SETS = ['hanja', 'idioms', 'proverbs', 'vocabulary', 'textbook'];
-  const MATCH_BOARDS = { small: { rows: 4, cols: 6, pairs: 12, label: '6 × 4 · 12쌍' }, medium: { rows: 5, cols: 8, pairs: 20, label: '8 × 5 · 20쌍' }, large: { rows: 6, cols: 10, pairs: 30, label: '10 × 6 · 30쌍' } };
+  const MATCH_BOARDS = { small: { rows: 4, cols: 6, pairs: 12, label: '12쌍' }, medium: { rows: 5, cols: 8, pairs: 20, label: '20쌍' }, large: { rows: 6, cols: 10, pairs: 30, label: '30쌍' } };
   const MATCH_PENALTY = 5;
   const TEAM_MAX = 10;
   const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];

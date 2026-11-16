@@ -348,7 +348,7 @@
         ], choice.range, (range) => change({ range }), true));
       if (levels && !choice.range) box.append(optionRow('수준', levels, choice.level, (level) => change({ level }), true));
       if (canMatch(choice.set)) {
-        box.append(optionRow('문제 방식', [['quiz', '문제 풀이'], ['match', '짝 찾기']], choice.mode, (mode) => change({ mode })));
+        box.append(optionRow('문제 방식', [['quiz', '문제 풀이'], ['match', '짝 찾기']], choice.mode, (mode) => change({ mode }), true));
         if (choice.mode === 'match') box.append(optionRow('판 크기', Object.entries(C.MATCH_BOARDS).map(([key, b]) => [key, b.label]), choice.board, (board) => change({ board }), true));
       }
       box.append(

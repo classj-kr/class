@@ -38,7 +38,14 @@
       face.style.whiteSpace = 'nowrap';
       if (kind === 'hanja') { shrink(h * 0.6, 8); return; }
       if (shrink(h * (kind === 'en' ? 0.4 : 0.34), h * 0.25)) return;
-      // 띄어쓰기가 있으면 그 자리에서 두 줄로, 아니면 반으로 나눠 두 줄로.
+      // 영어는 낱말 중간에서 끊지 않고 글씨만 줄인다(띄어쓰기가 있으면 그 자리에서만 두 줄).
+      if (kind === 'en') {
+        if (/\s/.test(face.textContent.trim())) { face.style.whiteSpace = ''; if (shrink(h * 0.32, h * 0.16)) return; }
+        face.style.whiteSpace = 'nowrap';
+        shrink(h * 0.25, 6);
+        return;
+      }
+      // 우리말: 띄어쓰기가 있으면 그 자리에서 두 줄로, 아니면 반으로 나눠 두 줄로.
       face.style.whiteSpace = '';
       if (/\s/.test(face.textContent.trim()) && shrink(h * 0.32, h * 0.16)) return;
       const text = face.textContent;
@@ -94,8 +101,9 @@
       const tile = tiles[i];
       if (!tile || tile.classList.contains('gone')) return;
       if (i === selected) selected = -1;
-      tile.classList.remove('selected');
-      tile.classList.add(mine ? 'gone' : 'gone', mine ? 'mine' : 'mate');
+      // 틀렸을 때 붙은 흔들림을 떼야 사라지는 움직임이 덮이지 않는다.
+      tile.classList.remove('selected', 'shake', 'pop');
+      tile.classList.add('gone', mine ? 'mine' : 'mate');
       tile.disabled = true;
     }
 

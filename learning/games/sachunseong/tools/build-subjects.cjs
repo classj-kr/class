@@ -166,7 +166,18 @@ function avatars() {
   write('avatars', labels, levels);
 }
 
+/* 한국사: 수능 필수 키워드 짝(tools/history-pairs.json 원고). 시대마다 한 단계, 끝에 「전체」. */
+function history() {
+  const src = JSON.parse(fs.readFileSync(path.join(__dirname, 'history-pairs.json'), 'utf8'));
+  const labels = {}, levels = {};
+  src.eras.forEach((era, k) => { labels[k + 1] = era.label; levels[k + 1] = era.pairs; });
+  labels.all = '전체';
+  levels.all = src.eras.flatMap(era => era.pairs);
+  write('history', labels, levels);
+}
+
 fs.mkdirSync(OUT, { recursive: true });
+history();
 avatars();
 hanja();
 vocab();

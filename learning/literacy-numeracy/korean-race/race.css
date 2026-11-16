@@ -704,10 +704,26 @@ body.match-mode #card { display: none; }
 .mb-tile[data-kind="hanja"] .mb-face { font-family: KleeRaceHanja, KleeHanja, serif; font-weight: 600; line-height: 1; }
 .mb-tile:hover { transform: translateY(-2px); }
 .mb-tile.selected { transform: translateY(-6%) scale(1.05); box-shadow: inset 0 0 0 3px #e7a91c, 0 6px 0 #b3925e, 0 0 16px 4px rgba(231, 169, 28, .8); z-index: 2; }
-.mb-tile.gone { animation: mb-out .38s ease-in forwards; pointer-events: none; }
+.mb-tile.gone, .mb-tile.gone.shake { animation: mb-out .38s ease-in forwards; pointer-events: none; }
 .mb-tile.gone.mate { animation-duration: .5s; }
 .mb-tile.shake { animation: shake .35s ease; box-shadow: inset 0 0 0 3px var(--red), 0 4px 0 #b3925e; }
+.mb-tile.gone.mate, .mb-tile.gone.mate.shake { animation-duration: .5s; }
 .match-board.finished { border-color: var(--gold); box-shadow: var(--shadow), 0 0 0 3px var(--gold); }
 body:not(.match-mode) .match-board { display: none; }
 @keyframes mb-in { from { opacity: 0; transform: translateY(-18px) scale(.6) rotate(-6deg); } to { opacity: 1; transform: none; } }
 @keyframes mb-out { 0% { transform: scale(1.1); filter: brightness(1.4); } 100% { transform: scale(.2) rotate(20deg); opacity: 0; visibility: hidden; } }
+
+/* 대기실 설정: 스크롤은 설정 칸 하나만(단원 목록 안 스크롤 없앰), 넓은 화면에서는 칸을 넓히고 짧은 설정은 두 칸으로 나란히. */
+.lobby-settings .range-units { max-height: none; overflow: visible; }
+@media (min-width: 861px) {
+  body.is-host .lobby { grid-template-columns: minmax(0, 1fr) minmax(360px, 500px); }
+  body.is-host .lobby-settings .settings { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+  body.is-host .lobby-settings .settings > .exam-range,
+  body.is-host .lobby-settings .settings > .stage-field { grid-column: 1 / -1; }
+}
+@media (min-width: 861px) {
+  /* 아래 여백(40px)까지 화면 안에 들어오게: 페이지는 스크롤되지 않는다. */
+  body.is-host .lobby-settings { max-height: calc(100vh - 112px); }
+  body.is-host .lobby-settings .range-units { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+  body.is-host .lobby-settings .range-unit { padding: 7px 9px; font-size: 14px; }
+}

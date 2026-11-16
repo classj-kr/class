@@ -37,9 +37,10 @@
     { key: 'idioms', label: '고사성어', a: 'ko', b: 'ko' },
     { key: 'proverbs', label: '속담', a: 'ko', b: 'ko' },
     { key: 'elements', label: '원소', a: 'en', b: 'ko' },
-    { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' }
+    { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' },
+    { key: 'history', label: '한국사', a: 'ko', b: 'ko' }
   ];
-  const DATA_VERSION = '20261117-no-kp';
+  const DATA_VERSION = '20261117-history';
   const bank = {};
   await Promise.all(SUBJECTS.map(async subject => {
     try {
@@ -457,6 +458,7 @@
       [a, b].forEach(i => {
         const [x, y] = indexCenter(i);
         burst(x, y, Math.min(combo, 6), (board[i] & 1) ? 'rose' : 'sky');
+        tiles[i].classList.remove('shake', 'blocked', 'selected');
         tiles[i].classList.add('gone');
         const node = tiles[i];
         window.setTimeout(() => node.remove(), 420);
@@ -518,6 +520,7 @@
     selected = -1;
     celebration.hidden = true;
     boardWrap.classList.remove('won');
+    clearRecap();
     linkLayer.replaceChildren();
     fxLayer.replaceChildren();
     $('modeLabel').textContent = `${playLabel()} · ${size.cols} × ${size.rows}`;
@@ -550,6 +553,7 @@
     boardWrap.classList.add('won');
     const g = geometry;
     for (let k = 0; k < 6; k += 1) window.setTimeout(() => burst(g.width * (0.15 + Math.random() * 0.7), g.height * (0.2 + Math.random() * 0.6), 5, ['gold', 'sky', 'rose'][k % 3]), k * 140);
+    revealId = window.setTimeout(showRecap, 700);
     if (race.active) {
       setStatus(`다 지웠습니다 · ${formatTime(seconds)}`, 'success');
       race.finish(seconds);
@@ -566,17 +570,51 @@
       rank: size.rank,
       targetId: 'result-finishers-list'
     });
-    revealId = window.setTimeout(() => {
+    window.setTimeout(() => {
+      if (!finished || !puzzle || board.some(t => t >= 0)) return; // 그사이 새 판을 열었으면 띄우지 않는다
       celebration.hidden = false;
       const again = $('playAgainButton');
       (again.offsetParent ? again : $('newGameButton')).focus();
     }, 1100);
   }
 
+  // 다 지우면 빈 판 대신 방금 지운 짝을 판 자리에 하나씩 펼친다(한 번 더 훑어보는 복습).
+  function pairFace(text, kind) {
+    const span = document.createElement('span');
+    span.className = `recap-face ${kind}`;
+    if (text.startsWith('img:')) {
+      const [src, name] = text.slice(4).split('|');
+      const img = document.createElement('img');
+      img.src = src; img.alt = name || ''; img.decoding = 'async';
+      span.append(img);
+    } else span.textContent = text;
+    return span;
+  }
+  function showRecap() {
+    clearRecap();
+    if (!puzzle) return;
+    const subject = subjectOf(puzzle.subject || 'english');
+    const list = document.createElement('ol');
+    list.className = 'recap';
+    list.style.setProperty('--recap-cols', String(puzzle.words.length > 20 ? 3 : 2));
+    puzzle.words.forEach(([a, b], k) => {
+      const item = document.createElement('li');
+      item.style.setProperty('--delay', `${Math.min(k * 45, 1200)}ms`);
+      const link = document.createElement('i');
+      link.setAttribute('aria-hidden', 'true');
+      link.textContent = '↔';
+      item.append(pairFace(a, `a ${subject?.a || 'ko'}`), link, pairFace(b, `b ${subject?.b || 'ko'}`));
+      list.append(item);
+    });
+    boardArea.append(list);
+  }
+  function clearRecap() { boardArea.querySelector('.recap')?.remove(); }
+
   /* ---------- 화면 오가기 ---------- */
   function showStart() {
     finished = true;
     stopClock();
+    clearRecap();
     window.clearTimeout(revealId);
     celebration.hidden = true;
     closeGuide();
