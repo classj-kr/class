@@ -10,8 +10,20 @@
     double: '까따빠싸짜애얘에예와왜외워웨위의',
     nature: '나무 바다 하늘 꽃 구름',
     school: '학교 친구 연필 책 가방',
+    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    lower: 'abcdefghijklmnopqrstuvwxyz',
+    enAnimals: 'cat dog pig cow fox hen',
+    enFood: 'apple egg milk juice',
+    enSchool: 'book pen desk bag ruler',
+    enColors: 'red blue pink green',
     custom: '',
   };
+  // 알파벳 글씨체는 영어 연습 글만, 한글 글씨체는 한글 연습 글만 고를 수 있다. 연습장도 따로 저장한다.
+  const ALPHABET_LESSONS = ['upper', 'lower', 'enAnimals', 'enFood', 'enSchool', 'enColors'];
+  const alphabetStyle = () => Font.style() === 'alphabet';
+  const firstLesson = () => (alphabetStyle() ? 'upper' : 'gana');
+  const draftKey = () => (alphabetStyle() ? 'draft-alphabet' : 'draft');
+  const lessonFits = (lesson) => lesson === 'custom' || ALPHABET_LESSONS.includes(lesson) === alphabetStyle();
   // 속담·한자성어·관용어: 학습 자료에서 뽑은 문구를 무작위로 하나씩 쓴다(writing-texts.js).
   const banks = window.HANDWRITING_TEXTS || {};
   const isBank = (lesson) => Array.isArray(banks[lesson]) && banks[lesson].length > 0;
@@ -22,6 +34,7 @@
   }
   const meaningOf = (lesson, text) => (isBank(lesson) ? (banks[lesson].find(([t]) => t === text) || [])[1] || '' : '');
 
+  const Font = window.HandwritingFont;
   let doc = fresh('가나다라마바사아자차카타파하', 'gana'),
     store,
     saveTimer,
@@ -44,11 +57,11 @@
     marks = [];
   const CELL_PIXELS = 240;
   // 본보기와 획순·채점은 font-engine.js가 선택한 같은 글씨 모형을 쓴다.
-  const Font = window.HandwritingFont,
-    STYLE_FONTS = { gyeongpil: 'PracticeReference', badasseugi: 'PracticeReferenceBadasseugi' },
+  const STYLE_FONTS = { gyeongpil: 'PracticeReference', badasseugi: 'PracticeReferenceBadasseugi' },
     STYLE_WEIGHTS = { gyeongpil: 500, badasseugi: 400 },
     // 화면에 보이는 본보기 획 굵기(글꼴 획 굵기 × 칸 맞춤 비율)가 '보통'이다.
-    STYLE_PEN = { gyeongpil: [2.9, 3.9, 5.2], badasseugi: [2.4, 3.3, 4.4] },
+    STYLE_PEN = { gyeongpil: [2.9, 3.9, 5.2], badasseugi: [2.4, 3.3, 4.4], alphabet: [2.4, 3.3, 4.4] },
+    STYLES = ['gyeongpil', 'badasseugi', 'alphabet'],
     OLD_PEN = [3.5, 5.5, 7.5];
   let roomStyle = null;
   // 펜 굵기는 단계(가늘게·보통·굵게)를 지키고 값은 지금 글씨체에 맞춘다.
@@ -59,14 +72,35 @@
     [...$('penWidth').options].forEach((o, i) => (o.value = String(list[i])));
   }
   function applyStyle(name) {
-    Font.setStyle(STYLE_FONTS[name] ? name : 'gyeongpil');
+    Font.setStyle(STYLES.includes(name) ? name : 'gyeongpil');
     $('styleSelect').value = Font.style();
+    syncLessons();
+  }
+  // 고를 수 있는 연습 글 목록을 글씨체에 맞춘다(iPad 사파리는 숨긴 option도 보여 주므로 아예 빼고 넣는다).
+  const lessonParts = [...document.querySelectorAll('#lessonSelect > *')];
+  function syncLessons() {
+    const want = alphabetStyle() ? 'alphabet' : 'hangul';
+    $('lessonSelect').replaceChildren(...lessonParts.filter((el) => (el.dataset.family || 'hangul') === want || el.value === 'custom'));
+    $('customText').placeholder = alphabetStyle() ? '연습할 영어 낱말을 넣으세요' : '연습할 한글을 넣으세요';
+    $('customText').previousElementSibling.textContent = alphabetStyle() ? '연습할 영어' : '연습할 한글';
+  }
+  function freshDefault() {
+    return fresh(presets[firstLesson()], firstLesson());
+  }
+  // 저장된 연습장(글씨체 갈래마다 따로)을 불러온다. 없거나 못 읽으면 첫 연습 글로 연다.
+  function loadDraft() {
+    try {
+      return store.has(draftKey()) ? normalize(store.get(draftKey())) : freshDefault();
+    } catch {
+      return freshDefault();
+    }
   }
   // 교과서 칸 공책처럼 글자 높이가 칸의 70%쯤 되고 칸 한가운데 오게 한다. 글꼴마다 글자의 평균 잉크 상자
   // (모형 단위: 높이 h, 가운데 cx·cy)를 재 둔 값이다. 쓴 획은 채점 전에 본보기 좌표로 되돌린다.
   const STYLE_FIT = {
       gyeongpil: { h: 90.9, cx: 44.9, cy: 48.7 },
       badasseugi: { h: 85.8, cx: 42, cy: 50 },
+      alphabet: { h: 70, cx: 50, cy: 50 }, // 알파벳 모형은 칸 좌표 그대로
     },
     GLYPH_HEIGHT = 70;
   const fit = () => {
@@ -130,7 +164,7 @@
       !C.supported(raw.text)
     )
       throw Error('저장된 연습을 읽지 못했어요.');
-    const next = fresh(raw.text, knownLesson(raw.lesson) ? raw.lesson : 'custom', raw.phase === 'solo' ? 'solo' : 'trace');
+    const next = fresh(raw.text, knownLesson(raw.lesson) && lessonFits(raw.lesson) ? raw.lesson : 'custom', raw.phase === 'solo' ? 'solo' : 'trace');
     next.cells.trace = C.validateCells(raw.text, raw.cells?.trace);
     next.cells.solo = C.validateCells(raw.text, raw.cells?.solo);
     next.index = Math.max(0, Math.min(next.cells.trace.length - 1, Number(raw.index) || 0));
@@ -181,6 +215,11 @@
   function reference(context, char, color) {
     const layout = Reference.layout(char);
     if (!layout) return;
+    if (alphabetStyle()) {
+      // 알파벳은 글꼴 파일 없이 같은 중심선을 둥근 펜으로 그린다.
+      shownModel(char).forEach((p) => path(context, p, color, Font.Alphabet.PEN));
+      return;
+    }
     context.save();
     const f = fit();
     context.translate(50, 50);
@@ -211,7 +250,16 @@
     context.clearRect(0, 0, 100, 100);
     context.fillStyle = '#fffefa';
     context.fillRect(0, 0, 100, 100);
-    if (guide) {
+    if (guide && alphabetStyle()) {
+      // 영어 공책 네 줄: 윗줄·아랫줄은 실선, 가운뎃줄은 점선, 바닥줄은 붉은 실선
+      const [top, mid, base, bottom] = Font.Alphabet.LINES;
+      path(context, [[0, top], [100, top]], '#c9d1c2', 0.6);
+      path(context, [[0, bottom], [100, bottom]], '#c9d1c2', 0.6);
+      path(context, [[0, base], [100, base]], '#e2aea4', 0.7);
+      context.setLineDash([1.6, 2]);
+      path(context, [[0, mid], [100, mid]], '#c9d1c2', 0.6);
+      context.setLineDash([]);
+    } else if (guide) {
       context.setLineDash([1.6, 2]);
       path(context, [[50, 0], [50, 100]], '#d8ded1', 0.5);
       path(context, [[0, 50], [100, 50]], '#d8ded1', 0.5);
@@ -551,7 +599,9 @@
   $('inputDialog').addEventListener('close', cancel);
   function changeLesson(text, lesson) {
     if (!C.supported(text)) {
-      toast('한글 자모와 한글 낱말·문장을 넣어 주세요. 숫자와 문장 부호는 빼 주세요.');
+      toast(alphabetStyle()
+        ? '영어 알파벳(A~Z, a~z)으로 된 낱말을 넣어 주세요. 숫자와 문장 부호는 빼 주세요.'
+        : '한글 자모와 한글 낱말·문장을 넣어 주세요. 숫자와 문장 부호는 빼 주세요.');
       return false;
     }
     if (Array.from(text.replace(/\s/g, '')).length > 48) {
@@ -736,8 +786,18 @@
     applyStyle(store.get('font-style'));
     $('styleSelect').onchange = () => {
       cancel();
+      const wasAlphabet = alphabetStyle();
+      save();
       applyStyle($('styleSelect').value);
       store.set('font-style', Font.style());
+      if (wasAlphabet !== alphabetStyle()) {
+        // 한글 ↔ 알파벳: 그 갈래의 연습장을 따로 불러온다.
+        saveKey = draftKey();
+        doc = loadDraft();
+        undo = [];
+        redo = [];
+        marks = [];
+      }
       syncPen();
       save();
       render();
@@ -748,7 +808,9 @@
       toast('연습을 저장하지 못했어요. 연결을 확인해 주세요.');
     });
     try {
-      if (store.has('draft')) {
+      saveKey = draftKey();
+      if (alphabetStyle()) doc = loadDraft();
+      else if (store.has('draft')) {
         const saved = store.get('draft');
         if ([1, 2, 3, 4, 5, 6, 7].includes(saved?.version)) {
           store.set('legacy-draft-v' + saved.version, saved);
@@ -800,12 +862,8 @@
       $('styleSelect').disabled = false;
       if (roomStyle !== null) applyStyle(roomStyle);
       roomStyle = null;
-      saveKey = 'draft';
-      try {
-        doc = store.has('draft') ? normalize(store.get('draft')) : fresh(presets.gana, 'gana');
-      } catch {
-        doc = fresh(presets.gana, 'gana');
-      }
+      saveKey = draftKey();
+      doc = loadDraft();
       locked = false;
       marks = [];
       render();

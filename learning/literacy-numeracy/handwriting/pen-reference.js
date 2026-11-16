@@ -4,10 +4,7 @@
   const cache = new Map(),
     distance = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
   const sample = (p, n = 32) => Font.sample(p, n);
-  const supported = (char) => {
-    const cp = char?.codePointAt(0);
-    return (cp >= 0xac00 && cp <= 0xd7a3) || (cp >= 0x3131 && cp <= 0x3163);
-  };
+  const supported = (char) => Font.has(char);
   function cloud(strokes) {
     return strokes.flatMap((s) => {
       const p = s.points || s,

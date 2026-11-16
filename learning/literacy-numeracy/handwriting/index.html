@@ -30,12 +30,23 @@
               <option value="idioms">한자성어</option>
               <option value="expressions">관용어</option>
             </optgroup>
+            <optgroup label="알파벳" data-family="alphabet">
+              <option value="upper">대문자</option>
+              <option value="lower">소문자</option>
+            </optgroup>
+            <optgroup label="영어 낱말" data-family="alphabet">
+              <option value="enAnimals">동물</option>
+              <option value="enFood">먹을거리</option>
+              <option value="enSchool">학교</option>
+              <option value="enColors">색깔</option>
+            </optgroup>
             <option value="custom">직접 넣기</option>
           </select>
           <label class="sr-only" for="styleSelect">글씨체</label>
           <select id="styleSelect">
             <option value="gyeongpil">경필체</option>
             <option value="badasseugi">받아쓰기체</option>
+            <option value="alphabet">Alphabet</option>
           </select>
           <div class="phase-tabs" role="group" aria-label="연습 단계">
             <button data-phase="trace" aria-pressed="true">따라 쓰기</button
@@ -194,11 +205,12 @@
     <script src="font-source.js?v=20261107-pen-m-1300"></script>
     <script src="style-badasseugi.js?v=20261107-2"></script>
     <script src="/assets/fonts/classj-pen-m/source.js?v=2.000"></script>
-    <script src="font-engine.js?v=20261107-pen-m-1300"></script>
-    <script src="pen-reference.js?v=20261107-pen-m-1300"></script>
-    <script src="core.js?v=20261108-penwidth"></script>
+    <script src="alphabet-source.js?v=20261117-alphabet"></script>
+    <script src="font-engine.js?v=20261117-alphabet"></script>
+    <script src="pen-reference.js?v=20261117-alphabet"></script>
+    <script src="core.js?v=20261117-alphabet"></script>
     <script src="writing-texts.js?v=20261107-1"></script>
-    <script src="app.js?v=20261108-penwidth"></script>
+    <script src="app.js?v=20261117-alphabet"></script>
     <script src="race.js?v=20261112-results-names"></script>
     <script src="record-controls.js?v=1"></script>
   </body>

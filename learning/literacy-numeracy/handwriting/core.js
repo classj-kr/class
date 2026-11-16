@@ -68,7 +68,7 @@
         distance(s[0], p[0]) <= 22 &&
         distance(s[s.length - 1], p[p.length - 1]) <= 22 &&
         length(p) >= length(s) * 0.55 &&
-        length(p) <= length(s) * 1.8
+        length(p) <= Math.max(length(s) * 1.8, length(s) + 6) // i·j의 점처럼 아주 짧은 획은 조금 끌어도 받는다
       )
         correct++;
     });
