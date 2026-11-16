@@ -39,7 +39,7 @@
     { key: 'elements', label: '원소', a: 'en', b: 'ko' },
     { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' }
   ];
-  const DATA_VERSION = '20261117-subjects';
+  const DATA_VERSION = '20261117-modern-hun';
   const bank = {};
   await Promise.all(SUBJECTS.map(async subject => {
     try {

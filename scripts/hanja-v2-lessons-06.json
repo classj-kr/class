@@ -133,7 +133,7 @@
   {
     "term": "結當政",
     "reading": "결 · 당 · 정",
-    "theme": "맺을 · 마땅 · 정사",
+    "theme": "맺을 · 마땅 · 정치",
     "characters": [
       {
         "character": "結",
@@ -206,10 +206,10 @@
       {
         "character": "政",
         "reading": "정",
-        "meaning": "정사",
+        "meaning": "정치",
         "hunEum": [
           {
-            "hun": "정사",
+            "hun": "정치",
             "eum": "정"
           }
         ],
@@ -325,15 +325,15 @@
   {
     "term": "要最置",
     "reading": "요 · 최 · 치",
-    "theme": "요긴할 · 가장 · 둘",
+    "theme": "중요할 · 가장 · 둘",
     "characters": [
       {
         "character": "要",
         "reading": "요",
-        "meaning": "요긴할",
+        "meaning": "중요할",
         "hunEum": [
           {
-            "hun": "요긴할",
+            "hun": "중요할",
             "eum": "요"
           }
         ],
@@ -901,7 +901,7 @@
   {
     "term": "程院準",
     "reading": "정 · 원 · 준",
-    "theme": "한도·길 · 집 · 준할",
+    "theme": "한도·길 · 집 · 기준",
     "characters": [
       {
         "character": "程",
@@ -978,10 +978,10 @@
       {
         "character": "準",
         "reading": "준",
-        "meaning": "준할",
+        "meaning": "기준",
         "hunEum": [
           {
-            "hun": "준할",
+            "hun": "기준",
             "eum": "준"
           }
         ],
@@ -2446,7 +2446,7 @@
   {
     "term": "想境規",
     "reading": "상 · 경 · 규",
-    "theme": "생각 · 지경 · 법",
+    "theme": "생각 · 경계 · 법",
     "characters": [
       {
         "character": "想",
@@ -2485,10 +2485,10 @@
       {
         "character": "境",
         "reading": "경",
-        "meaning": "지경",
+        "meaning": "경계",
         "hunEum": [
           {
-            "hun": "지경",
+            "hun": "경계",
             "eum": "경"
           }
         ],
@@ -2830,7 +2830,7 @@
   {
     "term": "像提以",
     "reading": "상 · 제 · 이",
-    "theme": "모양 · 끌 · 써",
+    "theme": "모양 · 끌 · 로써",
     "characters": [
       {
         "character": "像",
@@ -2903,10 +2903,10 @@
       {
         "character": "以",
         "reading": "이",
-        "meaning": "써",
+        "meaning": "로써",
         "hunEum": [
           {
-            "hun": "써",
+            "hun": "로써",
             "eum": "이"
           }
         ],
@@ -3598,7 +3598,7 @@
   {
     "term": "法域件",
     "reading": "법 · 역 · 건",
-    "theme": "법 · 지경 · 물건",
+    "theme": "법 · 구역 · 물건",
     "characters": [
       {
         "character": "法",
@@ -3637,10 +3637,10 @@
       {
         "character": "域",
         "reading": "역",
-        "meaning": "지경",
+        "meaning": "구역",
         "hunEum": [
           {
-            "hun": "지경",
+            "hun": "구역",
             "eum": "역"
           }
         ],
@@ -3715,9 +3715,9 @@
             "법 법"
           ],
           [
-            "지경 역",
+            "구역 역",
             "",
-            "지경 역"
+            "구역 역"
           ],
           [
             "물건 건",
@@ -3791,7 +3791,7 @@
   {
     "term": "導製常",
     "reading": "도 · 제 · 상",
-    "theme": "인도할 · 지을 · 떳떳할",
+    "theme": "인도할 · 지을 · 항상",
     "characters": [
       {
         "character": "導",
@@ -3864,10 +3864,10 @@
       {
         "character": "常",
         "reading": "상",
-        "meaning": "떳떳할",
+        "meaning": "항상",
         "hunEum": [
           {
-            "hun": "떳떳할",
+            "hun": "항상",
             "eum": "상"
           }
         ],
@@ -4059,7 +4059,7 @@
         "meaning": "본디·흴",
         "hunEum": [
           {
-            "hun": "본디",
+            "hun": "바탕",
             "eum": "소"
           },
           {
@@ -4096,7 +4096,7 @@
       {
         "target": "資",
         "answer": 3,
-        "note": "‘기자’에는 ‘놈 자’를 씁니다.",
+        "note": "‘기자’에는 ‘사람 자’를 씁니다.",
         "options": [
           [
             "자료",
@@ -4756,7 +4756,7 @@
   {
     "term": "技士團",
     "reading": "기 · 사 · 단",
-    "theme": "재주 · 선비 · 둥글",
+    "theme": "재주 · 선비 · 모일",
     "characters": [
       {
         "character": "技",
@@ -4829,10 +4829,10 @@
       {
         "character": "團",
         "reading": "단",
-        "meaning": "둥글",
+        "meaning": "모일",
         "hunEum": [
           {
-            "hun": "둥글",
+            "hun": "모일",
             "eum": "단"
           }
         ],
@@ -5634,7 +5634,7 @@
       {
         "target": "示",
         "answer": 3,
-        "note": "‘도시’에는 ‘저자 시’를 씁니다.",
+        "note": "‘도시’에는 ‘시장 시’를 씁니다.",
         "options": [
           [
             "계시",
@@ -5688,7 +5688,7 @@
       {
         "target": "産",
         "answer": 3,
-        "note": "‘산악’에는 ‘메 산’을 씁니다.",
+        "note": "‘산악’에는 ‘산 산’을 씁니다.",
         "options": [
           [
             "산업",
@@ -6072,7 +6072,7 @@
       {
         "target": "疑",
         "answer": 3,
-        "note": "‘의사’에는 ‘의원 의’를 씁니다.",
+        "note": "‘의사’에는 ‘의사 의’를 씁니다.",
         "options": [
           [
             "의심",
@@ -6101,15 +6101,15 @@
   {
     "term": "協務構",
     "reading": "협 · 무 · 구",
-    "theme": "화할 · 힘쓸 · 얽을",
+    "theme": "도울 · 힘쓸 · 얽을",
     "characters": [
       {
         "character": "協",
         "reading": "협",
-        "meaning": "화할",
+        "meaning": "도울",
         "hunEum": [
           {
-            "hun": "화할",
+            "hun": "도울",
             "eum": "협"
           }
         ],
@@ -6677,7 +6677,7 @@
   {
     "term": "歷限圍",
     "reading": "력·역 · 한 · 위",
-    "theme": "지날 · 한할 · 에워쌀",
+    "theme": "지날 · 한정할 · 에워쌀",
     "characters": [
       {
         "character": "歷",
@@ -6716,10 +6716,10 @@
       {
         "character": "限",
         "reading": "한",
-        "meaning": "한할",
+        "meaning": "한정할",
         "hunEum": [
           {
-            "hun": "한할",
+            "hun": "한정할",
             "eum": "한"
           }
         ],
@@ -6786,7 +6786,7 @@
       {
         "target": "歷",
         "answer": 3,
-        "note": "‘광역’에는 ‘지경 역’을 씁니다.",
+        "note": "‘광역’에는 ‘구역 역’을 씁니다.",
         "options": [
           [
             "역사",
@@ -7540,7 +7540,7 @@
         "meaning": "말씀·달랠",
         "hunEum": [
           {
-            "hun": "말씀",
+            "hun": "말",
             "eum": "설"
           },
           {
@@ -7631,7 +7631,7 @@
       {
         "target": "說",
         "answer": 3,
-        "note": "‘근세’에는 ‘인간 세’를 씁니다.",
+        "note": "‘근세’에는 ‘세상 세’를 씁니다.",
         "options": [
           [
             "설명",
@@ -7852,15 +7852,15 @@
   {
     "term": "次競告",
     "reading": "차 · 경 · 고",
-    "theme": "버금 · 다툴 · 고할",
+    "theme": "다음 · 다툴 · 고할",
     "characters": [
       {
         "character": "次",
         "reading": "차",
-        "meaning": "버금",
+        "meaning": "다음",
         "hunEum": [
           {
-            "hun": "버금",
+            "hun": "다음",
             "eum": "차"
           }
         ],
@@ -8052,7 +8052,7 @@
         "meaning": "더불·줄",
         "hunEum": [
           {
-            "hun": "더불",
+            "hun": "더불어",
             "eum": "여"
           },
           {
@@ -8376,7 +8376,7 @@
       {
         "target": "週",
         "answer": 3,
-        "note": "‘숙주’에는 ‘임금 주’를 씁니다.",
+        "note": "‘숙주’에는 ‘주인 주’를 씁니다.",
         "options": [
           [
             "주말",
@@ -9175,7 +9175,7 @@
       {
         "target": "濟",
         "answer": 3,
-        "note": "‘국제’에는 ‘즈음 제’를 씁니다.",
+        "note": "‘국제’에는 ‘사이 제’를 씁니다.",
         "options": [
           [
             "경제",
@@ -10361,7 +10361,7 @@
   {
     "term": "藝痛署",
     "reading": "예 · 통 · 서",
-    "theme": "재주 · 아플 · 마을",
+    "theme": "재주 · 아플 · 관청",
     "characters": [
       {
         "character": "藝",
@@ -10434,10 +10434,10 @@
       {
         "character": "署",
         "reading": "서",
-        "meaning": "마을",
+        "meaning": "관청",
         "hunEum": [
           {
-            "hun": "마을",
+            "hun": "관청",
             "eum": "서"
           }
         ],
@@ -10662,7 +10662,7 @@
       {
         "target": "否",
         "answer": 3,
-        "note": "‘마부’에는 ‘지아비 부’를 씁니다.",
+        "note": "‘마부’에는 ‘남편 부’를 씁니다.",
         "options": [
           [
             "부인",
@@ -10745,7 +10745,7 @@
   {
     "term": "調請原",
     "reading": "조 · 청 · 원",
-    "theme": "고를 · 청할 · 언덕",
+    "theme": "고를 · 청할 · 근원",
     "characters": [
       {
         "character": "調",
@@ -10818,10 +10818,10 @@
       {
         "character": "原",
         "reading": "원",
-        "meaning": "언덕",
+        "meaning": "근원",
         "hunEum": [
           {
-            "hun": "언덕",
+            "hun": "근원",
             "eum": "원"
           }
         ],
@@ -10854,7 +10854,7 @@
       {
         "target": "調",
         "answer": 3,
-        "note": "‘조상’에는 ‘할아비 조’를 씁니다.",
+        "note": "‘조상’에는 ‘할아버지 조’를 씁니다.",
         "options": [
           [
             "조사",
@@ -11325,7 +11325,7 @@
   {
     "term": "曜談展",
     "reading": "요 · 담 · 전",
-    "theme": "빛날 · 말씀 · 펼",
+    "theme": "빛날 · 말 · 펼",
     "characters": [
       {
         "character": "曜",
@@ -11364,10 +11364,10 @@
       {
         "character": "談",
         "reading": "담",
-        "meaning": "말씀",
+        "meaning": "말",
         "hunEum": [
           {
-            "hun": "말씀",
+            "hun": "말",
             "eum": "담"
           }
         ],
@@ -12290,15 +12290,15 @@
   {
     "term": "盤流器",
     "reading": "반 · 류·유 · 기",
-    "theme": "소반 · 흐를 · 그릇",
+    "theme": "쟁반 · 흐를 · 그릇",
     "characters": [
       {
         "character": "盤",
         "reading": "반",
-        "meaning": "소반",
+        "meaning": "쟁반",
         "hunEum": [
           {
-            "hun": "소반",
+            "hun": "쟁반",
             "eum": "반"
           }
         ],
@@ -12814,7 +12814,7 @@
       {
         "target": "婦",
         "answer": 3,
-        "note": "‘부모’에는 ‘아비 부’를 씁니다.",
+        "note": "‘부모’에는 ‘아버지 부’를 씁니다.",
         "options": [
           [
             "신부",
@@ -12870,7 +12870,7 @@
   {
     "term": "求因適",
     "reading": "구 · 인 · 적",
-    "theme": "구할 · 인할 · 맞을",
+    "theme": "구할 · 까닭 · 맞을",
     "characters": [
       {
         "character": "求",
@@ -12909,10 +12909,10 @@
       {
         "character": "因",
         "reading": "인",
-        "meaning": "인할",
+        "meaning": "까닭",
         "hunEum": [
           {
-            "hun": "인할",
+            "hun": "까닭",
             "eum": "인"
           }
         ],
@@ -13062,7 +13062,7 @@
   {
     "term": "暴興致",
     "reading": "포·폭 · 흥 · 치",
-    "theme": "사나울·모질 · 일 · 이를",
+    "theme": "사나울·모질 · 일어날 · 이룰",
     "characters": [
       {
         "character": "暴",
@@ -13105,10 +13105,10 @@
       {
         "character": "興",
         "reading": "흥",
-        "meaning": "일",
+        "meaning": "일어날",
         "hunEum": [
           {
-            "hun": "일",
+            "hun": "일어날",
             "eum": "흥"
           }
         ],
@@ -13139,10 +13139,10 @@
       {
         "character": "致",
         "reading": "치",
-        "meaning": "이를",
+        "meaning": "이룰",
         "hunEum": [
           {
-            "hun": "이를",
+            "hun": "이룰",
             "eum": "치"
           }
         ],
@@ -13202,12 +13202,12 @@
       {
         "target": "興",
         "answer": 0,
-        "note": "‘興’은 ‘일 흥’입니다.",
+        "note": "‘興’은 ‘일어날 흥’입니다.",
         "options": [
           [
-            "일 흥",
+            "일어날 흥",
             "",
-            "일 흥"
+            "일어날 흥"
           ],
           [
             "사나울 폭",
@@ -13215,9 +13215,9 @@
             "사나울 폭"
           ],
           [
-            "이를 치",
+            "이룰 치",
             "",
-            "이를 치"
+            "이룰 치"
           ],
           [
             "구할 구",

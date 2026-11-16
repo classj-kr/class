@@ -242,7 +242,7 @@
       {
         "target": "男",
         "answer": 3,
-        "note": "‘남극’에는 ‘남녘 남’을 씁니다.",
+        "note": "‘남극’에는 ‘남쪽 남’을 씁니다.",
         "options": [
           [
             "남학생",
@@ -632,7 +632,7 @@
       {
         "target": "下",
         "answer": 3,
-        "note": "‘하천’에는 ‘물 하’를 씁니다.",
+        "note": "‘하천’에는 ‘강 하’를 씁니다.",
         "options": [
           [
             "지하",
@@ -782,16 +782,16 @@
   {
     "term": "東西",
     "reading": "동 · 서",
-    "theme": "동녘 · 서녘",
+    "theme": "동쪽 · 서쪽",
     "characters": [
       {
         "character": "東",
         "reading": "동",
-        "meaning": "동녘",
+        "meaning": "동쪽",
         "explanation": "해가 나무 사이로 떠오르는 모습에서 시작했습니다. 동서·동부·동해처럼 해가 뜨는 방향을 나타냅니다.",
         "hunEum": [
           {
-            "hun": "동녘",
+            "hun": "동쪽",
             "eum": "동"
           }
         ],
@@ -816,11 +816,11 @@
       {
         "character": "西",
         "reading": "서",
-        "meaning": "서녘",
+        "meaning": "서쪽",
         "explanation": "해가 지는 쪽의 모습을 나타낸 글자입니다. 서부·서양·서해처럼 해가 지는 방향을 나타냅니다.",
         "hunEum": [
           {
-            "hun": "서녘",
+            "hun": "서쪽",
             "eum": "서"
           }
         ],
@@ -903,16 +903,16 @@
   {
     "term": "南北",
     "reading": "남 · 북",
-    "theme": "남녘 · 북녘",
+    "theme": "남쪽 · 북쪽",
     "characters": [
       {
         "character": "南",
         "reading": "남",
-        "meaning": "남녘",
+        "meaning": "남쪽",
         "explanation": "해가 높이 드는 방향을 나타냅니다. 남북·남부·남해처럼 남쪽 지역이나 방향에 쓰입니다.",
         "hunEum": [
           {
-            "hun": "남녘",
+            "hun": "남쪽",
             "eum": "남"
           }
         ],
@@ -937,11 +937,11 @@
       {
         "character": "北",
         "reading": "북",
-        "meaning": "북녘",
+        "meaning": "북쪽",
         "explanation": "두 사람이 등을 맞댄 모습에서 방향의 반대를 나타내게 된 글자입니다. 북부·남북·북극처럼 북쪽을 나타냅니다.",
         "hunEum": [
           {
-            "hun": "북녘",
+            "hun": "북쪽",
             "eum": "북"
           }
         ],

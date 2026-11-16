@@ -2,7 +2,7 @@
   {
     "term": "子友",
     "reading": "자 · 우",
-    "theme": "아들 · 벗",
+    "theme": "아들 · 친구",
     "characters": [
       {
         "character": "子",
@@ -36,10 +36,10 @@
       {
         "character": "友",
         "reading": "우",
-        "meaning": "벗",
+        "meaning": "친구",
         "hunEum": [
           {
-            "hun": "벗",
+            "hun": "친구",
             "eum": "우"
           }
         ],
@@ -840,7 +840,7 @@
       {
         "target": "天",
         "answer": 3,
-        "note": "‘천원’에는 ‘일천 천’을 씁니다.",
+        "note": "‘천원’에는 ‘천 천’을 씁니다.",
         "options": [
           [
             "천지",
@@ -896,15 +896,15 @@
   {
     "term": "山川土",
     "reading": "산 · 천 · 토",
-    "theme": "메 · 내 · 흙",
+    "theme": "산 · 냇물 · 흙",
     "characters": [
       {
         "character": "山",
         "reading": "산",
-        "meaning": "메",
+        "meaning": "산",
         "hunEum": [
           {
-            "hun": "메",
+            "hun": "산",
             "eum": "산"
           }
         ],
@@ -930,10 +930,10 @@
       {
         "character": "川",
         "reading": "천",
-        "meaning": "내",
+        "meaning": "냇물",
         "hunEum": [
           {
-            "hun": "내",
+            "hun": "냇물",
             "eum": "천"
           }
         ],
@@ -1286,7 +1286,7 @@
       {
         "target": "材",
         "answer": 3,
-        "note": "‘재판’에는 ‘마를 재’를 씁니다.",
+        "note": "‘재판’에는 ‘자를 재’를 씁니다.",
         "options": [
           [
             "목재",

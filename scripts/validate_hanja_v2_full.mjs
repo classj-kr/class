@@ -176,7 +176,7 @@ const carQuestion = carLesson?.questions.find((question) => question.target === 
 const carTerms = carQuestion?.options.map((option) => option[0]) || [];
 for (const term of ['전차', '주차장', '자전거', '차이']) if (!carTerms.includes(term)) errors.push(`車 문제에 ${term} 보기가 없습니다.`);
 const long = lessons.flatMap((lesson) => lesson.characters).find((item) => item.character === '長');
-if (!long?.hunEum?.some((item) => item.hun.includes('길')) || !long?.hunEum?.some((item) => /어른|우두머리/.test(item.hun))) errors.push('長의 길다·어른/대표자 뜻이 함께 설명되지 않았습니다.');
+if (!long?.hunEum?.some((item) => /길|긴/.test(item.hun)) || !long?.hunEum?.some((item) => /어른|우두머리/.test(item.hun))) errors.push('長의 길다·어른/대표자 뜻이 함께 설명되지 않았습니다.');
 
 const report = {
   lessons: lessons.length,

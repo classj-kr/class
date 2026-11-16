@@ -2,15 +2,15 @@
   {
     "term": "四五",
     "reading": "사 · 오",
-    "theme": "넉 · 다섯",
+    "theme": "넷 · 다섯",
     "characters": [
       {
         "character": "四",
         "reading": "사",
-        "meaning": "넉",
+        "meaning": "넷",
         "hunEum": [
           {
-            "hun": "넉",
+            "hun": "넷",
             "eum": "사"
           }
         ],
@@ -425,15 +425,15 @@
   {
     "term": "百千萬",
     "reading": "백 · 천 · 만",
-    "theme": "일백 · 일천 · 일만",
+    "theme": "백 · 천 · 만",
     "characters": [
       {
         "character": "百",
         "reading": "백",
-        "meaning": "일백",
+        "meaning": "백",
         "hunEum": [
           {
-            "hun": "일백",
+            "hun": "백",
             "eum": "백"
           }
         ],
@@ -459,10 +459,10 @@
       {
         "character": "千",
         "reading": "천",
-        "meaning": "일천",
+        "meaning": "천",
         "hunEum": [
           {
-            "hun": "일천",
+            "hun": "천",
             "eum": "천"
           }
         ],
@@ -488,10 +488,10 @@
       {
         "character": "萬",
         "reading": "만",
-        "meaning": "일만",
+        "meaning": "만",
         "hunEum": [
           {
-            "hun": "일만",
+            "hun": "만",
             "eum": "만"
           }
         ],
@@ -667,7 +667,7 @@
       {
         "target": "時",
         "answer": 3,
-        "note": "‘시청’에는 ‘저자 시’를 씁니다.",
+        "note": "‘시청’에는 ‘시장 시’를 씁니다.",
         "options": [
           [
             "시간",
@@ -1057,7 +1057,7 @@
       {
         "target": "夏",
         "answer": 3,
-        "note": "‘하천’에는 ‘물 하’를 씁니다.",
+        "note": "‘하천’에는 ‘강 하’를 씁니다.",
         "options": [
           [
             "하계",
@@ -1207,15 +1207,15 @@
   {
     "term": "父母",
     "reading": "부 · 모",
-    "theme": "아비 · 어미",
+    "theme": "아버지 · 어머니",
     "characters": [
       {
         "character": "父",
         "reading": "부",
-        "meaning": "아비",
+        "meaning": "아버지",
         "hunEum": [
           {
-            "hun": "아비",
+            "hun": "아버지",
             "eum": "부"
           }
         ],
@@ -1241,10 +1241,10 @@
       {
         "character": "母",
         "reading": "모",
-        "meaning": "어미",
+        "meaning": "어머니",
         "hunEum": [
           {
-            "hun": "어미",
+            "hun": "어머니",
             "eum": "모"
           }
         ],

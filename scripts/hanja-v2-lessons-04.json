@@ -188,7 +188,7 @@
       {
         "target": "降",
         "answer": 3,
-        "note": "‘강의’에는 ‘외울 강’을 씁니다.",
+        "note": "‘강의’에는 ‘강의할 강’을 씁니다.",
         "options": [
           [
             "강우",
@@ -784,15 +784,15 @@
   {
     "term": "文字",
     "reading": "문 · 자",
-    "theme": "글월 · 글자",
+    "theme": "글 · 글자",
     "characters": [
       {
         "character": "文",
         "reading": "문",
-        "meaning": "글월",
+        "meaning": "글",
         "hunEum": [
           {
-            "hun": "글월",
+            "hun": "글",
             "eum": "문"
           }
         ],
@@ -905,7 +905,7 @@
   {
     "term": "國語民",
     "reading": "국 · 어 · 민",
-    "theme": "나라 · 말씀 · 백성",
+    "theme": "나라 · 말 · 백성",
     "characters": [
       {
         "character": "國",
@@ -939,10 +939,10 @@
       {
         "character": "語",
         "reading": "어",
-        "meaning": "말씀",
+        "meaning": "말",
         "hunEum": [
           {
-            "hun": "말씀",
+            "hun": "말",
             "eum": "어"
           }
         ],
@@ -1082,7 +1082,7 @@
   {
     "term": "對話",
     "reading": "대 · 화",
-    "theme": "대할 · 말씀",
+    "theme": "대할 · 말",
     "characters": [
       {
         "character": "對",
@@ -1116,10 +1116,10 @@
       {
         "character": "話",
         "reading": "화",
-        "meaning": "말씀",
+        "meaning": "말",
         "hunEum": [
           {
-            "hun": "말씀",
+            "hun": "말",
             "eum": "화"
           }
         ],
@@ -1295,7 +1295,7 @@
       {
         "target": "書",
         "answer": 3,
-        "note": "‘서부’에는 ‘서녘 서’를 씁니다.",
+        "note": "‘서부’에는 ‘서쪽 서’를 씁니다.",
         "options": [
           [
             "도서",
@@ -1687,7 +1687,7 @@
   {
     "term": "場所",
     "reading": "장 · 소",
-    "theme": "마당 · 바",
+    "theme": "마당 · 곳",
     "characters": [
       {
         "character": "場",
@@ -1721,10 +1721,10 @@
       {
         "character": "所",
         "reading": "소",
-        "meaning": "바",
+        "meaning": "곳",
         "hunEum": [
           {
-            "hun": "바",
+            "hun": "곳",
             "eum": "소"
           }
         ],
@@ -1929,7 +1929,7 @@
   {
     "term": "都市",
     "reading": "도 · 시",
-    "theme": "도읍 · 저자",
+    "theme": "도읍 · 시장",
     "characters": [
       {
         "character": "都",
@@ -1963,10 +1963,10 @@
       {
         "character": "市",
         "reading": "시",
-        "meaning": "저자",
+        "meaning": "시장",
         "hunEum": [
           {
-            "hun": "저자",
+            "hun": "시장",
             "eum": "시"
           }
         ],
@@ -2171,15 +2171,15 @@
   {
     "term": "長短反",
     "reading": "장 · 단 · 반",
-    "theme": "길 · 짧을 · 돌이킬",
+    "theme": "긴 · 짧을 · 돌이킬",
     "characters": [
       {
         "character": "長",
         "reading": "장",
-        "meaning": "길",
+        "meaning": "긴",
         "hunEum": [
           {
-            "hun": "길",
+            "hun": "긴",
             "eum": "장"
           },
           {
@@ -2594,15 +2594,15 @@
   {
     "term": "同別",
     "reading": "동 · 별",
-    "theme": "한가지 · 나눌",
+    "theme": "같을 · 나눌",
     "characters": [
       {
         "character": "同",
         "reading": "동",
-        "meaning": "한가지",
+        "meaning": "같을",
         "hunEum": [
           {
-            "hun": "한가지",
+            "hun": "같을",
             "eum": "동"
           }
         ],
