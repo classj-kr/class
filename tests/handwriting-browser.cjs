@@ -452,7 +452,7 @@ test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, 
 test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();
-  assert.equal(await page.locator('#styleSelect option:checked').textContent(), '경필체 M');
+  assert.equal(await page.locator('#styleSelect option:checked').textContent(), '경필체');
   assert.equal(await page.evaluate(() => HandwritingFont.FAMILY), 'ClassJ Pen M');
   assert.equal(await page.evaluate(() => document.fonts.check('500 100px PracticeReference', '를어푸')), true);
   assert.ok(await page.evaluate(() => performance.getEntriesByType('resource').some(r => r.name.includes('/classj-pen-m/ClassJPenM-Regular.woff2'))));
