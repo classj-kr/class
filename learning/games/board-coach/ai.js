@@ -12,7 +12,7 @@
     level4: { name: "레벨 4", reversi: 4, omok: 3, nodes: 18000, ms: 800, width: 10 },
     advanced: { name: "레벨 5", reversi: 5, omok: 5, nodes: 45000, ms: 1200, width: 10 }
   });
-  const HINT = Object.freeze({ reversi:16, omok:9, nodes:2000000, ms:12000, width:16, coaching:true });
+  const HINT = Object.freeze({ reversi:16, omok:9, nodes:2000000, ms:2500, width:16, coaching:true, quick:true });
   const corners = [0, 7, 56, 63], WIN = 10000000;
   const book = new Map();
   // Randy Fang, Othello: From Beginner to Master, pp. 44–46:
@@ -246,8 +246,10 @@
     }
     options.onCandidate?.({index:best,depth:0,nodes,reason:explain(state,best)});
     // Omok deepens by two so a timed-out search falls back to an odd depth.
+    let lastTook = 0;
     for (let depth = 1; depth <= settings[state.game]; depth += state.game === "omok" ? 2 : 1) {
       let candidate = best, top = -Infinity;
+      const depthStart = Date.now();
       try {
         const ordered = roots.slice(0, state.game === "omok" ? settings.width : 64).sort((a, b) => Number(b.index === best) - Number(a.index === best));
         for (const move of ordered) {
@@ -257,6 +259,10 @@
         }
         best = candidate; completeDepth = depth;
         options.onCandidate?.({index:best,depth:completeDepth,nodes,reason:explain(state,best)});
+        // 힌트: 다음 깊이를 시간 안에 끝내지 못할 것 같으면 지금까지 다 읽은 답으로 멈춘다(끝내지 못한 탐색은 버려지니 기다릴 까닭이 없다).
+        const took = Date.now() - depthStart, growth = lastTook ? Math.min(20, Math.max(3, took / lastTook)) : 3;
+        lastTook = Math.max(1, took);
+        if (settings.quick && Date.now() + took * growth > deadline) break;
       } catch (error) { if (error !== aborted) throw error; break; }
     }
     return { index: best, depth: completeDepth, nodes, reason: explain(state, best) };

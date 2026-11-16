@@ -1,5 +1,5 @@
 "use strict";
-importScripts("../chess/chess-rules.js?v=20261001-standard", "chess-ai.js?v=20261116-deep-hints");
+importScripts("../chess/chess-rules.js?v=20261001-standard", "chess-ai.js?v=20261117-quick-hints");
 self.onmessage = ({ data: { token, state, level, allowClaim, kind } }) => {
   try {
     const result=kind==="hint"?ChessCoachAI.chooseHint(state,{onCandidate:result=>self.postMessage({token,result,partial:true})}):ChessCoachAI.choose(state, level, { allowClaim });

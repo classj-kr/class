@@ -138,7 +138,7 @@
       if(requested&&!hint)reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요.");
     };
     try{
-      search.worker=new Worker("janggi-worker.js?v=20261116-deep-hints");
+      search.worker=new Worker("janggi-worker.js?v=20261117-quick-hints");
       search.worker.onmessage=({data})=>{
         if(hintSearch!==search||state!==search.position)return;
         if(data.error||!data.result){failed();return;}
@@ -165,7 +165,7 @@
     }
     stop();job=kind;busy=true;selected=null;hint=null;$("retry").classList.add("hidden");render();const id=token;
     try{
-      worker=new Worker("janggi-worker.js?v=20261116-deep-hints");
+      worker=new Worker("janggi-worker.js?v=20261117-quick-hints");
       worker.onmessage=({data})=>{
         if(id!==token||data.token!==id)return;
         if(data.error||!data.result)return fail("다시 계산하기를 누르세요. 현재 판은 그대로 남아 있어요.");

@@ -12,7 +12,7 @@
     level4:{name:"레벨 4",depth:2,nodes:9000,ms:500},
     advanced:{name:"레벨 5",depth:3,nodes:16000,ms:700}
   });
-  const HINT=Object.freeze({depth:8,nodes:1200000,ms:12000,kingTempo:28,coaching:true});
+  const HINT=Object.freeze({depth:8,nodes:1200000,ms:2500,kingTempo:28,coaching:true,quick:true});
   const VALUES={R:1300,C:700,H:500,E:300,A:300,P:200,K:0};
   const NAMES={R:"차",C:"포",H:"마",E:"상",A:"사",P:"졸",K:"왕"};
   const name=piece=>piece?.[1]==="P"&&piece[0]==="h"?"병":NAMES[piece?.[1]];
@@ -250,8 +250,10 @@
     }
     // Keep the full one-ply capture safety evaluation as the fallback when a
     // device cannot finish depth two. Never replace it with a shallow partial scan.
+    let lastTook=0;
     for(let depth=2;depth<=settings.depth;depth++){
       let top=-Infinity,candidate=best,candidateLine=bestLine;
+      const depthStart=Date.now();
       try{
         for(const {move,cost} of ranked.slice().sort((a,b)=>Number(R.same(b.move,best))-Number(R.same(a.move,best)))){
           // Shift the search window as well as the result by the root cost.
@@ -260,6 +262,10 @@
         }
         best=candidate;bestLine=candidateLine;completed=depth;
         options.onCandidate?.({move:best,line:bestLine,depth:completed,nodes});
+        // 힌트: 다음 깊이를 시간 안에 끝내지 못할 것 같으면 지금까지 다 읽은 답으로 멈춘다(끝내지 못한 탐색은 버려지니 기다릴 까닭이 없다).
+        const took=Date.now()-depthStart,growth=lastTook?Math.min(20,Math.max(3,took/lastTook)):3;
+        lastTook=Math.max(1,took);
+        if(settings.quick&&Date.now()+took*growth>deadline)break;
       }catch(error){if(error!==stop)throw error;break;}
     }
     return {move:best,line:bestLine,reason:explain(state,best),depth:completed,nodes};

@@ -1,4 +1,4 @@
-importScripts('baduk-rules.js?v=2','baduk-ai.js?v=20261116-deep-hints');
+importScripts('baduk-rules.js?v=2','baduk-ai.js?v=20261117-quick-hints');
 self.onmessage=({data})=>{
   try{
     const result=data.kind==='hint'?BadukCoachAI.chooseHint(data.state,{onCandidate:result=>self.postMessage({token:data.token,result,partial:true})}):BadukCoachAI.choose(data.state,data.level);

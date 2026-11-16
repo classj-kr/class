@@ -13,7 +13,7 @@
     advanced: { name: "레벨 5", depth: 4, nodes: 120000, ms: 2400 }
   });
   // Teaching advice is independent of the strength selected for the opponent.
-  const HINT = Object.freeze({ depth:8, nodes:1500000, ms:12000, kingTempo:24, coaching:true });
+  const HINT = Object.freeze({ depth:8, nodes:1500000, ms:2500, kingTempo:24, coaching:true, quick:true });
   const VALUES = { P:100, N:320, B:330, R:500, Q:900, K:0 };
   const NAMES = { P:"폰", N:"나이트", B:"비숍", R:"룩", Q:"퀸", K:"킹" };
   const MATE = 100000, book = new Map();
@@ -194,8 +194,10 @@
     // A one-move comparison cannot drive a bare king to mate and only repeats,
     // so simple endings always search at least two plies.
     const pieces=state.board.filter(p=>p&&p[1]!=="K").length;
+    let lastTook=0;
     for(let depth=2;depth<=Math.max(settings.depth,pieces<=3?2:0);depth++) {
       let candidate=best, top=-Infinity;
+      const depthStart=Date.now();
       try {
         const ordered=roots.slice().sort((a,b)=>Number(same(b,best))-Number(same(a,best)));
         for(const move of ordered) {
@@ -205,6 +207,10 @@
         }
         best=candidate; completed=depth;
         options.onCandidate?.({move:best,reason:explain(state,best),depth:completed,nodes});
+        // 힌트: 다음 깊이를 시간 안에 끝내지 못할 것 같으면 지금까지 다 읽은 답으로 멈춘다(끝내지 못한 탐색은 버려지니 기다릴 까닭이 없다).
+        const took=Date.now()-depthStart, growth=lastTook?Math.min(20,Math.max(3,took/lastTook)):3;
+        lastTook=Math.max(1,took);
+        if(settings.quick&&Date.now()+took*growth>deadline) break;
       } catch(error) { if(error!==stop) throw error; break; }
     }
     return { move:best, reason:explain(state,best), depth:completed, nodes };

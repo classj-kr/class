@@ -11,7 +11,7 @@
     // On the 9x9 board depth 4 rarely finishes in time; a wider depth 3 does.
     advanced:{name:'레벨 5',depth:4,width:10,nodes:8000,ms:2000,standard:{depth:3,width:12}}
   });
-  const HINT=Object.freeze({depth:6,width:16,nodes:80000,ms:12000,practice:false});
+  const HINT=Object.freeze({depth:6,width:16,nodes:80000,ms:2500,practice:false,quick:true});
   // A conservative local eye filter, not a life-and-death solver.
   function ownEye(s,index){
     if(!R.neighbors(index,s.size).every(i=>s.board[i]===s.color))return false;
@@ -104,8 +104,10 @@
         }
         return value;
       }
+      let lastTook=0;
       for(let d=2;d<=settings.depth;d++){
         let candidate=best,score=-Infinity;
+        const depthStart=Date.now();
         try{
           for(const row of roots.slice(0,settings.width)){
             // Keep the root bonuses for captures, rescues and self-atari;
@@ -116,6 +118,10 @@
           best=candidate;depth=d;
           options.onCandidate?.({index:best.index,reason:explain(s,best.index),depth,nodes});
           roots=[best,...roots.filter(r=>r!==best)];
+          // 힌트: 다음 깊이를 시간 안에 끝내지 못할 것 같으면 지금까지 다 읽은 답으로 멈춘다(끝내지 못한 탐색은 버려지니 기다릴 까닭이 없다).
+          const took=Date.now()-depthStart,growth=lastTook?Math.min(20,Math.max(3,took/lastTook)):3;
+          lastTook=Math.max(1,took);
+          if(settings.quick&&Date.now()+took*growth>start+settings.ms)break;
         }catch(error){if(error!==stop)throw error;break;}
       }
     }
