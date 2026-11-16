@@ -8,10 +8,10 @@ OUT = ROOT / "learning/inquiry/globe/data/capitals.json"
 
 CONTINENTS = [("asia", "아시아"), ("europe", "유럽"), ("africa", "아프리카"), ("americas", "아메리카"), ("oceania", "오세아니아")]
 
+# 북한은 헌법(제3조 영토 조항)상 나라로 다루지 않아 넣지 않는다(2026-11-17 사용자 지적).
 # (iso, 나라, 대륙, 수도, 위도, 경도, 가장 큰 도시(수도와 다르고 헷갈리기 쉬울 때), 덧말)
 C = [
  ("KR","대한민국","asia","서울",37.566,126.978,None,None),
- ("KP","북한","asia","평양",39.039,125.762,None,None),
  ("CN","중국","asia","베이징",39.904,116.407,"상하이",None),
  ("JP","일본","asia","도쿄",35.690,139.692,None,None),
  ("MN","몽골","asia","울란바토르",47.886,106.906,None,None),
@@ -126,7 +126,7 @@ OTHERS = {
 
 # 나라 영어 이름: 영어 교과서·공항·뉴스에서 흔히 보는 꼴로 적는다(Korea, USA, UK).
 COUNTRY_EN = {
- "KR":"Korea","KP":"North Korea","CN":"China","JP":"Japan","MN":"Mongolia","VN":"Vietnam","TH":"Thailand","KH":"Cambodia",
+ "KR":"Korea","CN":"China","JP":"Japan","MN":"Mongolia","VN":"Vietnam","TH":"Thailand","KH":"Cambodia",
  "LA":"Laos","MM":"Myanmar","MY":"Malaysia","SG":"Singapore","ID":"Indonesia","PH":"the Philippines","IN":"India","PK":"Pakistan",
  "BD":"Bangladesh","LK":"Sri Lanka","NP":"Nepal","AF":"Afghanistan","IR":"Iran","IQ":"Iraq","SA":"Saudi Arabia","AE":"UAE",
  "QA":"Qatar","KW":"Kuwait","OM":"Oman","JO":"Jordan","SY":"Syria","TR":"Türkiye","KZ":"Kazakhstan","UZ":"Uzbekistan",

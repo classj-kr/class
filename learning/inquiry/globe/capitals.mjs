@@ -1,6 +1,6 @@
 // 나라와 수도: 목록에서 익히기, 나라 보고 수도 고르기, 수도 보고 지도에서 나라 누르기.
 // 자료는 data/capitals.json(앱 코드와 떼어 둔 파일, 짝 잇기 게임도 같은 파일을 읽는다).
-const DATA_URL = new URL('./data/capitals.json?v=20261117-1', import.meta.url);
+const DATA_URL = new URL('./data/capitals.json?v=20261117-2', import.meta.url);
 const FLAG = (code) => new URL(`./data/flags/${code}.webp?v=2`, import.meta.url).href;
 const NONE = { type: 'FeatureCollection', features: [] };
 // 지도에서 찾기를 시작할 때 화면에 들어오게 할 대륙의 범위(서경·남위는 음수). 전체는 지구 전체.

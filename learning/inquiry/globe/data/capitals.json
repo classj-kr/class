@@ -34,16 +34,6 @@
    "lon": 126.978
   },
   {
-   "iso": "KP",
-   "flag": "kp",
-   "country": "북한",
-   "countryEn": "North Korea",
-   "continent": "asia",
-   "capital": "평양",
-   "lat": 39.039,
-   "lon": 125.762
-  },
-  {
    "iso": "CN",
    "flag": "cn",
    "country": "중국",
