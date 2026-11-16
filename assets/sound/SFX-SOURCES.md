@@ -13,6 +13,7 @@ Shared effects in `sfx/` are mono 48 kHz Ogg Vorbis. The three spring sounds are
 - Source: https://kenney.nl/assets/casino-audio
 - License: CC0 1.0
 - Used originals: `chip-lay-1.ogg`
+- The eight game-specific effects for Baduk, Chess, Omok, Connect6 and Reversi reuse the site's chip-contact recording, with filtering, fixed-rate resampling and layered contacts. Janggi uses the original shared placement recording and synthesized capture sound.
 
 ## Kenney Music Jingles
 

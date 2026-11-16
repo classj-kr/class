@@ -20,13 +20,13 @@
     const boardGame = pathGame === "board-coach"
         ? new URLSearchParams(location.search).get("game") || (location.pathname.includes("/baduk") ? "baduk" : "reversi")
         : pathGame;
-    const boardSounds = ["baduk", "chess", "janggi", "omok", "connect6", "reversi"].includes(boardGame);
-    const specialCapture = ["baduk", "chess", "janggi", "reversi"].includes(boardGame);
+    const boardSounds = ["baduk", "chess", "omok", "connect6", "reversi"].includes(boardGame);
+    const specialCapture = ["baduk", "chess", "reversi"].includes(boardGame);
     const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => name !== "click" && (name !== "capture" || specialCapture)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
         new URL(boardSounds && (name === "stone" || name === "capture")
-            ? `sfx/boards/${boardGame}-${name}.ogg`
+            ? `sfx/boards/${boardGame}-${name}.ogg?v=20261116-board-foley`
             : `sfx/${name}.ogg${RETRY_SOUNDS.has(name) ? "?v=20261114-boing" : ""}`, scriptUrl).href
     ]));
 

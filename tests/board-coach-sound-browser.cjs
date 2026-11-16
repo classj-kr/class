@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
     const errors = [], soundResponses = [];
     page.on('pageerror', error => errors.push(error.message));
     page.on('response', response => {
-      if (response.url().includes('/assets/sound/sfx/stone.ogg')) soundResponses.push(response.status());
+      if (response.url().includes('/assets/sound/sfx/boards/')) soundResponses.push(response.url());
     });
     for (const [game, initialStones] of [['omok', 0], ['reversi', 4]]) {
       await page.goto(`http://127.0.0.1:${server.address().port}/learning/games/board-coach/coach.html?game=${game}`);
@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
         const play = ClassGameSfx.play;
         ClassGameSfx.play = name => {
           const result = play(name);
-          if (name === 'stone') stoneSounds.push(result);
+          if (name === 'stone' || name === 'capture') stoneSounds.push(result);
           return result;
         };
       });
@@ -45,13 +45,28 @@ const server = http.createServer((req, res) => {
       await page.waitForFunction(() => stoneSounds.length === 2);
       await page.waitForFunction(count => document.querySelectorAll('#board .stone').length === count, initialStones + 2);
       assert.deepEqual(await page.evaluate(() => stoneSounds), [true, true], `${game}: human and AI moves play one stone sound each`);
-      assert.ok(soundResponses.includes(200), `${game}: stone sound file loads`);
+      const action = game === 'reversi' ? 'capture' : 'stone';
+      assert.ok(soundResponses.some(url => url.includes(`/${game}-${action}.ogg?v=20261116-board-foley`)),
+        `${game}: its versioned sound file loads`);
       await page.evaluate(() => ClassGameSfx.setMuted(true));
       await page.locator('#board button:not(:disabled)').first().click();
       await page.waitForFunction(() => stoneSounds.length === 4);
       await page.waitForFunction(count => document.querySelectorAll('#board .stone').length === count, initialStones + 4);
       assert.deepEqual(await page.evaluate(() => stoneSounds), [true, true, false, false], `${game}: mute applies to both moves`);
     }
+    await page.goto(`http://127.0.0.1:${server.address().port}/learning/games/board-coach/coach.html?game=janggi`);
+    await page.waitForFunction(() => !!window.ClassGameSfx);
+    const janggi = await page.evaluate(() => {
+      const sources = [];
+      HTMLMediaElement.prototype.play = function () { sources.push(this.src); return Promise.resolve(); };
+      ClassGameSfx.setMuted(false);
+      ClassGameSfx.setVolume(.65);
+      ClassGameSfx.play('stone');
+      return { sources, capture: ClassGameSfx.play('capture') };
+    });
+    assert.equal(janggi.sources.length, 1, 'Janggi capture uses the original Web Audio sound');
+    assert.ok(janggi.sources[0].endsWith('/assets/sound/sfx/stone.ogg'), 'Janggi placement uses the original recording');
+    assert.equal(janggi.capture, true);
     assert.deepEqual(errors, []);
     console.log('omok and reversi AI placement sound: human, AI, asset, and mute passed');
   } finally {
