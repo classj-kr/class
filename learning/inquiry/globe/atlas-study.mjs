@@ -20,7 +20,7 @@ export function createAtlas(api){
   const storeReady=SiteStorage.open('atlas').then(opened=>{store=opened;store.adopt([{localKey:KEY,item:'progress'}]);progress=cleanProgress(store.get('progress'));}).catch(()=>{progress={};});
   document.body.classList.add('atlas','lesson-closed');
   document.body.insertAdjacentHTML('afterbegin',`<header class="atlas-header"><button id="catalogToggle" aria-expanded="false" aria-controls="atlasCatalog" aria-label="학습 목록 열기">☰</button><div class="projection-toggle" role="group" aria-label="지도 보기 모드"><button data-view="globe" aria-pressed="true">지구본</button><button data-view="flat" aria-pressed="false" title="메르카토르 도법: 고위도일수록 면적이 크게 보입니다.">평면지도</button></div></header>
-    <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden></section><footer class="catalog-footer"><button id="wrongPractice">오답 다시 풀기</button></footer></aside>
+    <aside class="atlas-catalog" id="atlasCatalog" aria-label="학습 주제 목록"><div class="catalog-tabs" role="group" aria-label="목록 종류"><button id="topicsTab" aria-pressed="true">학습 주제</button><button id="layersTab" aria-pressed="false">지도 표시</button><button id="capitalsTab" aria-pressed="false">수도</button></div><section id="topicsPane"><label class="search-box"><span class="sr-only">학습 주제 검색</span><input id="topicSearch" type="search" placeholder="주제·개념 검색" autocomplete="off"></label><nav id="topicList" aria-label="주제별 학습 목록"></nav></section><section id="layersPane" hidden></section><section id="capitalsPane" class="capitals-pane" hidden></section><footer class="catalog-footer"><button id="wrongPractice">오답 다시 풀기</button></footer></aside>
     <section class="atlas-lesson" id="lessonPanel" aria-label="주제 학습"></section>
     <button id="lessonReopen" hidden>학습 카드 열기</button><div class="map-caption" id="mapCaption" aria-live="polite"></div><div class="atlas-legend" id="atlasLegend" hidden></div><div class="map-tools" id="mapTools"></div>
     <dialog class="atlas-quiz" id="atlasQuiz" aria-label="확인 문제"><button class="quiz-close" aria-label="문제 닫기">×</button><div id="quizBody"></div></dialog>
@@ -43,10 +43,8 @@ export function createAtlas(api){
   if($('seasonSwitch'))$('mapTools').append($('seasonSwitch'));
   $('catalogToggle').onclick=()=>setCatalog(!document.body.classList.contains('catalog-open'));
   function setCatalog(open){document.body.classList.toggle('catalog-open',open);$('atlasCatalog').inert=!open;$('catalogToggle').setAttribute('aria-expanded',String(open));if(!open)$('catalogToggle').focus({preventScroll:true});}
-  for(const [id,showTopics] of [['topicsTab',true],['layersTab',false]])$(id).onclick=()=>{
-    $('topicsPane').hidden=!showTopics;$('layersPane').hidden=showTopics;
-    $('topicsTab').setAttribute('aria-pressed',String(showTopics));$('layersTab').setAttribute('aria-pressed',String(!showTopics));
-  };
+  const TABS=[['topicsTab','topicsPane'],['layersTab','layersPane'],['capitalsTab','capitalsPane']];
+  for(const [tab] of TABS)$(tab).onclick=()=>TABS.forEach(([t,pane])=>{$(pane).hidden=t!==tab;$(t).setAttribute('aria-pressed',String(t===tab));});
   $('topicSearch').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();renderCatalog();});
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=async()=>{
     if(!loaded)return;
@@ -188,7 +186,7 @@ export function createAtlas(api){
   // Every entry starts with an unselected map, including old automatically saved topic hashes.
   if(location.hash)history.replaceState(null,'',location.pathname+location.search);
   renderCatalog();
-  return {async ready(){
+  return {closeCatalog:()=>setCatalog(false),async ready(){
     layers=await installAtlasLayers(api.map,pick=>{caption(pick.text);if(pick.spot!==undefined)focusSpot(pick.spot);});
     loaded=true;api.map.resize();
     if(document.body.dataset.startView==='flat'){await api.setView('flat',true);document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view==='flat')));}

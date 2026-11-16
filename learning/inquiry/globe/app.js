@@ -2,10 +2,11 @@ import * as maplibregl from "./vendor/maplibre-gl-6.10.0/maplibre-gl.mjs";
 
 import { buildFlowModel, flowFrame, installFlowImages } from "./flow-textures.mjs?v=20260920-17";
 
-import { createAtlas } from "./atlas-study.mjs?v=20261012-remaster1";
+import { createAtlas } from "./atlas-study.mjs?v=20261117-capitals";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 import { createAxisView } from "./axis-view.mjs?v=20260920-31";
+import { createCapitals } from "./capitals.mjs?v=20261117-1";
 
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
@@ -52,6 +53,7 @@ const BACKDROPS = [
   { id: "current", label: "해류", color: "#ff9e8f", light: "#ff9e8f" },
   { id: "wind", label: "바람·기압대", color: "#a8e06a", light: "#9be36d", members: ["wind", "belt"] },
   { id: "country", label: "나라", color: "#f5f5f5", light: "#ffe066" },
+  { id: "capital", label: "수도", color: "#ffd9a0", light: "#ff8a5c" },
   { id: "grid", label: "위선·경선", color: "#ffd166", light: "#ffd166" },
 ];
 // 판 구조론: 판 경계선과 그 이름표(판·해령·해구·변환 단층·열점·조산대), 지진·화산 분포. 점 자료는 단추를 처음 켤 때 받는다.
@@ -73,7 +75,7 @@ const chipOfKind = new Map(CHIPS.flatMap((chip) => membersOf(chip).map((kind) =>
 const KIND_NAME = {
   mountain: "산맥·산지", peak: "높은 산", plateau: "고원", plain: "평원", basin: "분지", desert: "사막",
   peninsula: "반도", cape: "곶", other: "지형", river: "강", lake: "호수", island: "섬", sea: "바다",
-  strait: "해협", country: "나라", grid: "위선·경선", wind: "바람", belt: "기압대",
+  strait: "해협", country: "나라", capital: "수도", grid: "위선·경선", wind: "바람", belt: "기압대",
   plate: "판", ridge: "해령 · 발산 경계", trench: "해구 · 수렴 경계", fault: "변환 단층 · 보존 경계", hotspot: "열점", orogen: "조산대",
 };
 const WARM = { line: "#ff5a45", flow: "#ffd0c8", text: "#ffb4a6" };
@@ -154,7 +156,18 @@ const poleMarks = [
 let ready = false;
 let viewMode = "globe";
 let axisView;
+let capitals;
 const atlas = createAtlas({ map, clear: clearSelection, select, setView: setViewMode, setLayers: setStudyLayers });
+capitals = createCapitals({
+  map,
+  clear: clearSelection,
+  select,
+  loadShapes: () => loadExtras().then(() => shapes),
+  closeCatalog: () => atlas.closeCatalog?.(),
+  wholeGlobe: () => fitWholeGlobe(true),
+  quietMap,
+});
+capitals.mountPane(document.getElementById("capitalsPane"));
 axisView = createAxisView({ map, host: document.getElementById("mapTools"), getZoom: wholeGlobeZoom, reducedMotion });
 map.on("load", () => {
   ready = true;
@@ -326,6 +339,7 @@ function buildStyle() {
       grid: { type: "geojson", data: buildGrid() },
       gridLabels: { type: "geojson", data: noShape },
       highlight: { type: "geojson", data: noShape },
+      capitals: { type: "geojson", data: noShape },
       tectonicLines: { type: "geojson", data: noShape },
       quakes: { type: "geojson", data: noShape },
       volcanoes: { type: "geojson", data: noShape },
@@ -525,6 +539,42 @@ function buildStyle() {
           "text-color": ["match", ["get", "special"], "equator", "#ffb3aa", "tropic", "#ffe0a0", "polar", "#c4e8ff", "dateline", "#ffc2e0", "#f3f6fa"],
           "text-halo-color": "rgba(12, 14, 18, 0.85)",
           "text-halo-width": 1.4,
+        },
+      },
+      {
+        id: "capital-dots",
+        type: "circle",
+        source: "capitals",
+        layout: { visibility: visibility("capital") },
+        paint: {
+          "circle-radius": ["case", ["get", "main"], 4.2, 3],
+          "circle-color": ["case", ["get", "main"], "#ffffff", "#ffd9a0"],
+          "circle-stroke-color": "#d94b2b",
+          "circle-stroke-width": ["case", ["get", "main"], 2.2, 1.4],
+          // 수도 구실을 나눠 맡은 도시(헤이그·라파스 등)는 확대했을 때만 보인다.
+          "circle-opacity": ["interpolate", ["linear"], ["zoom"], 2.8, ["case", ["get", "main"], 1, 0], 3.3, 1],
+          "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 2.8, ["case", ["get", "main"], 1, 0], 3.3, 1],
+        },
+      },
+      {
+        id: "capital-labels",
+        type: "symbol",
+        source: "capitals",
+        layout: {
+          visibility: visibility("capital"),
+          "text-field": ["get", "name"],
+          "text-font": LABEL_FONT,
+          "text-size": ["case", ["get", "main"], 13, 11.5],
+          "text-anchor": "left",
+          "text-offset": [0.7, 0],
+          "text-padding": 2,
+          "symbol-sort-key": ["case", ["get", "main"], 0, 1],
+        },
+        paint: {
+          "text-color": "#ffe2b8",
+          "text-halo-color": "rgba(12, 14, 18, 0.9)",
+          "text-halo-width": 1.5,
+          "text-opacity": ["interpolate", ["linear"], ["zoom"], 2.8, ["case", ["get", "main"], 1, 0], 3.3, 1],
         },
       },
       layer(labelLayers, 1),
@@ -846,7 +896,9 @@ function visibility(id) {
 function applyLayerFilters() {
   for (const tier of [1, 2, 3, 4]) map.setFilter(`labels-${tier}`, labelFilter(tier));
   for (const mark of poleMarks) mark.getElement().hidden = !enabled.has("grid") || viewMode === "flat";
-  for (const id of ["borders-casing", "borders"]) map.setLayoutProperty(id, "visibility", visibility("country"));
+  for (const id of ["borders-casing", "borders"]) map.setLayoutProperty(id, "visibility", quiet === "borders" || enabled.has("country") ? "visible" : "none");
+  for (const id of ["capital-dots", "capital-labels"]) map.setLayoutProperty(id, "visibility", visibility("capital"));
+  capitals?.setShown(enabled.has("capital"));
   if (enabled.has("country")) loadFlags();
   for (const id of ["grid-coarse", "grid-fine", "grid-special", "grid-labels"]) {
     map.setLayoutProperty(id, "visibility", visibility("grid"));
@@ -1009,7 +1061,7 @@ function saveSettings() {
 }
 
 // ── 누르면 불 켜기와 설명 창 ─────────────────────────────────
-const CLICKABLE = ["labels-1", "labels-2", "labels-3", "labels-4", "grid-labels"];
+const CLICKABLE = ["capital-dots", "capital-labels", "labels-1", "labels-2", "labels-3", "labels-4", "grid-labels"];
 let selected = null;
 let shapes = null;
 let info = null;
@@ -1032,7 +1084,16 @@ function loadExtras() {
 function bindSelection() {
   const near = (point, pad = 6) => [[point.x - pad, point.y - pad], [point.x + pad, point.y + pad]];
   const pick = (point) => {
-    const label = map.queryRenderedFeatures(near(point), { layers: CLICKABLE }).find((f) => f.properties.key);
+    const hits = map.queryRenderedFeatures(near(point), { layers: CLICKABLE })
+      .filter((f) => f.properties.key && !(f.properties.main === false && map.getZoom() < 3.05 + latitudeShift()));
+    // 수도 점은 서로 가까이 붙어 있을 때가 많다(서울·평양). 누른 자리에서 가장 가까운 점을 고른다.
+    const gap = (f) => {
+      if (f.properties.kind !== "capital") return Infinity;
+      const at = map.project(f.geometry.coordinates);
+      return Math.hypot(at.x - point.x, at.y - point.y);
+    };
+    const dots = hits.filter((f) => f.layer.id === "capital-dots").sort((a, b) => gap(a) - gap(b));
+    const label = dots[0] || hits[0];
     if (label) return label;
     const lineLayers = [
       ...(enabled.has("current") ? ["currents-line-main", "currents-line-local"] : []),
@@ -1045,6 +1106,7 @@ function bindSelection() {
     return { properties: { key: `${kind}:${line.properties.name}`, kind, name: line.properties.name, warm: line.properties.warm }, geometry: null };
   };
   map.on("click", (event) => {
+    if (capitals?.onMapClick(event)) return;
     const feature = pick(event.point);
     if (!feature) {
       clearSelection();
@@ -1052,9 +1114,18 @@ function bindSelection() {
     }
     const { key, kind, name, warm, flag, owner } = feature.properties;
     const lngLat = feature.geometry?.type === "Point" ? feature.geometry.coordinates : event.lngLat.toArray();
+    if (kind === "capital") {
+      const item = capitals.itemFor(feature);
+      if (item) select(item, lngLat);
+      return;
+    }
     select({ key, kind: kind || "grid", name, warm, flag, owner }, lngLat);
   });
   map.on("mousemove", (event) => {
+    if (capitals?.active()) {
+      map.getCanvas().style.cursor = "";
+      return;
+    }
     map.getCanvas().style.cursor = pick(event.point) ? "pointer" : "";
   });
 }
@@ -1079,6 +1150,7 @@ function clearSelection() {
   }
   pulseMarker?.remove();
   pulseMarker = null;
+  capitals?.clearPaint();
   panel.hidden = true;
   map.setPadding({top:0,bottom:0,left:0,right:0});
   highlightFlow(null);
@@ -1195,12 +1267,12 @@ function kindName(item) {
 }
 
 function showPanel(item) {
-  const entry = info?.[item.key];
+  const entry = item.entry || info?.[item.key];
   panel.hidden = false;
   panel.dataset.kind = item.kind;
   panelKind.textContent = kindName(item);
   panelTitle.textContent = item.name;
-  if (item.kind === "country" && item.flag) {
+  if ((item.kind === "country" || item.kind === "capital") && item.flag) {
     panelFlag.src = `${BASE}data/flags/${item.flag}.webp?v=${FLAG_VERSION}`;
     panelFlag.hidden = false;
   } else {
@@ -1239,6 +1311,23 @@ function showPanel(item) {
     panelPhotoSource.removeAttribute("aria-label");
   }
   panel.scrollTop = 0;
+}
+
+// 수도 문제 동안에는 답이 보이는 이름표(나라·수도)를 끈다. 지도에서 찾기는 나라 경계선만 남긴다.
+// 문제를 마치면 문제 전에 켜 두었던 것을 되살린다.
+let quiet = null;
+let beforeQuiet = null;
+function quietMap(on, restore = false) {
+  if (on !== false || !restore) {
+    beforeQuiet ??= [...enabled];
+    quiet = on ? "borders" : "all";
+    setStudyLayers([]);
+    return;
+  }
+  quiet = null;
+  const back = beforeQuiet || [];
+  beforeQuiet = null;
+  setStudyLayers(back);
 }
 
 function setStudyLayers(ids) {

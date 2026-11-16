@@ -1,0 +1,52 @@
+/* 나라와 수도: 학습 목록의 「수도」 탭과 문제 카드 */
+.capitals-pane{min-height:0;overflow-y:auto;flex:1;padding:2px 0 14px;scrollbar-width:thin;scrollbar-color:#3e5267 transparent}
+.capital-continents{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px}
+.capital-continents button{border:1px solid #34465a;border-radius:16px;background:#0a1522;color:#b9cad9;font-size:13px;min-height:34px;padding:0 12px}
+.capital-continents button[aria-pressed=true]{background:#d4f5e6;border-color:#d4f5e6;color:#173d35;font-weight:600}
+.capital-modes{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:0 14px 12px;border-bottom:1px solid #253546}
+.capital-modes button{border:0;border-radius:8px;background:#205f60;color:#fff;font-size:14px;font-weight:600;min-height:42px}
+.capital-list{list-style:none;margin:0;padding:6px 0 0}
+.capital-list button{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:9px;width:100%;border:0;background:none;color:#d7e5ee;text-align:left;font-size:14px;min-height:42px;padding:6px 16px}
+.capital-list button:hover{background:#182a3b}
+.capital-list img{width:26px;height:auto;border-radius:2px;box-shadow:0 0 0 1px #0006}
+.capital-name{color:#ffe2b8;font-size:14px;text-align:right}
+.capital-empty{color:#9fb3c5;font-size:13px;padding:14px 16px}
+
+.capital-card{position:fixed;top:68px;right:12px;width:330px;max-height:calc(100dvh - 150px);overflow-y:auto;z-index:16;padding:16px 18px 18px;border:1px solid #c9cec8;border-radius:12px;background:#f7f5ef;color:#202124;color-scheme:light;box-shadow:0 8px 25px #0003;font-family:var(--interface-font,inherit)}
+.capital-card[hidden]{display:none}
+.capital-close{position:absolute;top:10px;right:10px;width:34px;height:34px;border:1px solid #aab8b2;border-radius:50%;background:#f7f5ef;color:#234c4d;font-size:20px;line-height:1}
+.capital-meta{margin:0 44px 8px 0;color:#54616a;font-size:13px}
+.capital-card progress{display:block;width:calc(100% - 44px);height:6px;accent-color:#205f60;margin:0 0 14px}
+.capital-ask{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:24px;line-height:1.35;color:#202124;word-break:keep-all}
+.capital-ask img{width:42px;height:auto;border-radius:3px;box-shadow:0 0 0 1px #0002}
+.capital-cue{margin:-6px 0 12px;color:#365353;font-size:15px;line-height:1.6}
+.capital-options{display:grid;gap:7px}
+.capital-options button{display:flex;align-items:center;gap:10px;min-height:46px;padding:8px 12px;border:1px solid #aab8b2;border-radius:9px;background:#fffefb;color:#202124;font-size:17px;text-align:left}
+.capital-options button span{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border:1px solid #7a9690;border-radius:50%;color:#54616a;font-size:12px}
+.capital-options button:hover:not(:disabled){background:#e7eeea}
+.capital-options button.correct{background:#e0efe5;color:#184b37;border-color:#32734f}
+.capital-options button.incorrect{background:#f6e4e0;color:#722d2b;border-color:#ad534c}
+.capital-feedback{margin-top:12px}
+.capital-feedback:empty{display:none}
+.capital-feedback p{margin:0 0 8px;font-size:15px;line-height:1.65;color:#202124}
+.capital-feedback .is-right strong{color:#184b37}
+.capital-feedback .is-wrong,.capital-feedback .is-wrong strong{color:#722d2b}
+.capital-feedback .capital-hint{color:#54616a}
+.capital-next,.capital-again{width:100%;min-height:44px;margin-top:6px;border:0;border-radius:8px;background:#205f60;color:#fff;font-size:15px;font-weight:600}
+.capital-again{background:#e7eeea;color:#234c4d;border:1px solid #aab8b2}
+.capital-wrong{list-style:none;margin:0 0 12px;padding:0;max-height:40dvh;overflow-y:auto}
+.capital-wrong li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #dde1db;font-size:15px}
+.capital-wrong img{width:26px;height:auto;border-radius:2px;box-shadow:0 0 0 1px #0002}
+.capital-wrong strong{color:#205f60}
+/* 문제 동안 학습 카드는 비켜 둔다 */
+.capital-quiz-on .atlas-lesson,.capital-quiz-on #lessonReopen{display:none!important}
+@media(max-width:860px){
+ .capital-card{top:auto;bottom:12px;left:12px;right:12px;width:auto;max-height:46dvh;padding:12px 14px 14px}
+ .capital-ask{font-size:20px;margin-bottom:10px}
+ .capital-options{grid-template-columns:1fr 1fr;gap:6px}
+ .capital-options button{font-size:15px;min-height:42px;padding:6px 8px}
+ .capital-options button span{display:none}
+}
+/* 학습 목록 탭이 셋이라 줄바꿈 없이 좁게 */
+.atlas .catalog-tabs{gap:3px}
+.atlas .catalog-tabs button{white-space:nowrap;padding:0 6px;font-size:12.5px}
