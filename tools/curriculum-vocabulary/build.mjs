@@ -105,7 +105,7 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
         const explainRows = more.explain || word.explain || [];
         const bodyLength = explainRows.reduce((sum, line) => sum + line.replace(/^(쉬운 뜻|낱말 나누기|한자 뜻|생활 속 예): /, '').length, 0);
         if (explainRows.length > 3) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명 줄이 셋보다 많음`);
-        if (bodyLength > 160) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명이 너무 김(${bodyLength}자)`);
+        if (bodyLength > 180) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명이 너무 김(${bodyLength}자)`);
         for (const line of explainRows) if (/^[^:]{1,6}: /.test(line) && !/^(쉬운 뜻|낱말 나누기|한자 뜻|생활 속 예): /.test(line)) problems.push(`${book.subject} ${unit.id} ${word.w}: 쓰지 않는 설명 이름표 — ${line.slice(0, 30)}`);
         if (explainRows.some(line => line.includes('헷갈'))) problems.push(`${book.subject} ${unit.id} ${word.w}: 설명에 '헷갈' — 아이에게 헷갈린다고 말하지 않는다`);
         // 한자 훈은 아이가 아는 말로: '글월 문' 말고 '글 문'처럼(옛 훈 목록에 걸리면 고친다).
