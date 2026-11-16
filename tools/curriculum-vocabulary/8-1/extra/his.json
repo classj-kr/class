@@ -1,0 +1,1540 @@
+{
+ "1": {
+  "역사가": {
+   "en": "historian",
+   "explain": [
+    "쉬운 뜻: 남은 자료를 탐정처럼 살펴 지난 일을 밝혀 쓰는 사람입니다. 영어 history는 그리스 말 historia(물어서 알아냄)에서 왔습니다.",
+    "낱말 나누기: 역사(歷史, 지나온 일의 기록) + 가(家, 그 일을 하는 사람) — 역사를 연구하는 사람입니다.",
+    "박물관 유물 옆 설명판의 글도 역사가가 자료를 연구해 쓴 것입니다."
+   ],
+   "beats": [
+    "책상 위에 낡은 편지, 지도, 동전이 펼쳐져 있습니다.",
+    "한 사람이 돋보기로 자료를 하나하나 살피며 공책에 적습니다.",
+    "남은 자료로 지난 일을 밝혀 쓰는 사람이 역사가입니다."
+   ],
+   "img": "A quiet study room lit by a desk lamp. A middle-aged historian with rolled-up sleeves leans over a wide wooden desk covered with old yellowed letters, a faded hand-drawn map, a few ancient coins and a broken piece of pottery, holding a magnifying glass over one letter. An open notebook and a pencil lie beside her, and bookshelves full of old books fill the wall behind. No readable text anywhere.",
+   "imgKo": "스탠드 불빛 아래 넓은 책상에 누런 옛 편지, 빛바랜 지도, 옛 동전, 깨진 그릇 조각이 펼쳐져 있고, 역사가가 돋보기로 편지를 살피며 공책에 적는다."
+  },
+  "사실로서의 역사": {
+   "explain": [
+    "쉬운 뜻: 누가 보든 안 보든, 실제로 일어났던 일 그 자체입니다. 지나간 일은 아무도 바꿀 수 없습니다.",
+    "낱말 나누기: 사실(事實, 실제로 있었던 일) + 로서의(~인 것으로서) + 역사 — 실제 일어난 일로서의 역사입니다.",
+    "1945년 8월 15일 광복은 누가 어떻게 적든 그날 일어난 일 그대로입니다."
+   ]
+  },
+  "기록으로서의 역사": {
+   "explain": [
+    "쉬운 뜻: 지난 일을 사람이 골라 적고 풀어 쓴 것입니다. 같은 일도 누가 쓰느냐에 따라 글이 달라집니다.",
+    "낱말 나누기: 기록(記錄, 적어 남긴 것) + 으로서의(~인 것으로서) + 역사 — 적어 남긴 것으로서의 역사입니다.",
+    "같은 축구 경기도 두 나라 신문은 저마다 자기 나라 선수 이야기를 먼저 씁니다."
+   ]
+  },
+  "사관": {
+   "explain": [
+    "쉬운 뜻: 역사를 바라보는 안경 같은 것입니다. 어떤 안경을 쓰느냐에 따라 같은 일도 달리 보입니다.",
+    "낱말 나누기: 사(史, 역사) + 관(觀, 보다) — 역사를 보는 눈입니다. 관찰의 '관'과 같은 글자입니다.",
+    "같은 전쟁도 장군의 이야기로 쓸 수도, 피란 간 백성의 이야기로 쓸 수도 있습니다."
+   ]
+  },
+  "사료": {
+   "en": "historical source",
+   "explain": [
+    "쉬운 뜻: 과거를 알려 주는 단서입니다. 영어 source는 강물이 솟아 시작되는 '샘'이라는 뜻도 있어, 옛이야기가 솟는 샘인 셈입니다.",
+    "낱말 나누기: 사(史, 역사) + 료(料, 재료) — 역사를 쓰는 재료입니다.",
+    "옛 동전, 깨진 그릇 조각, 비석에 새긴 글씨도 모두 사료가 됩니다."
+   ],
+   "beats": [
+    "땅속에서 깨진 그릇 조각과 녹슨 동전이 나왔습니다.",
+    "옆 상자에는 오래된 편지와 빛바랜 사진도 있습니다.",
+    "이렇게 과거를 알려 주는 자료가 사료입니다."
+   ],
+   "img": "An archaeology work table in a bright museum workroom. On the left, freshly dug pottery shards and a few green rusted bronze coins lie on a cloth next to a small brush. On the right, an open box holds old folded letters, a faded black-and-white photograph and a small carved stone with worn marks. Gloved hands gently lift one coin. No readable text.",
+   "imgKo": "밝은 박물관 작업실 탁자 왼쪽에 막 파낸 그릇 조각과 녹슨 동전이, 오른쪽 상자에 옛 편지, 빛바랜 흑백 사진, 닳은 돌 조각이 놓여 있고, 장갑 낀 손이 동전을 집는다."
+  },
+  "사료 비판": {
+   "en": "source criticism",
+   "explain": [
+    "쉬운 뜻: 사료를 그대로 믿지 않고 '누가, 언제, 왜 썼지?' 하고 따져 보는 일입니다.",
+    "낱말 나누기: 사료(史料, 역사의 재료) + 비판(批判, 옳고 그름을 따짐) — 역사의 재료를 따져 봄입니다.",
+    "왕을 칭찬한 글을 그 왕의 신하가 썼다면, 부풀린 곳이 없는지 살펴야 합니다."
+   ]
+  },
+  "구술": {
+   "explain": [
+    "쉬운 뜻: 글이 아니라 입으로 들려주는 이야기입니다. 그 일을 겪은 사람이 직접 말해 주는 기억입니다.",
+    "낱말 나누기: 구(口, 입) + 술(述, 말하다) — 입으로 말함입니다. 서술의 '술'과 같은 글자입니다.",
+    "글을 배우지 못한 사람들의 삶은 구술로만 남은 경우가 많습니다."
+   ],
+   "beats": [
+    "하린이가 할머니 앞에 녹음기를 놓았습니다.",
+    "할머니가 어릴 적 겪은 일을 천천히 이야기하십니다.",
+    "겪은 일을 입으로 들려주는 것이 구술입니다."
+   ],
+   "img": "In a cozy Korean living room, HARIN (a girl with a yellow headband and mint cardigan) sits on the floor facing her grandmother and places a small voice recorder on a low table between them. The grandmother, in a soft cardigan, gestures gently as she tells a story, and an old black-and-white family photo lies on the table. HARIN listens closely with a notebook on her lap. No text.",
+   "imgKo": "거실 바닥에 앉은 하린이가 할머니와 마주 앉아 낮은 상 위에 작은 녹음기를 놓고, 할머니는 옛 흑백 사진을 곁에 두고 손짓하며 이야기하신다."
+  },
+  "역사 시대": {
+   "explain": [
+    "쉬운 뜻: 글로 적은 기록이 남은 때입니다. 기록이 없는 그 앞의 때는 영어로 prehistory, pre(앞) + history(역사)라고 합니다.",
+    "낱말 나누기: 역사(歷史, 적어 남긴 지난 일) + 시대(時代, 때) — 기록이 있는 때입니다.",
+    "같은 때에도 글을 쓴 지역은 역사 시대, 글이 없던 지역은 아직 선사 시대였습니다."
+   ]
+  },
+  "서기": {
+   "explain": [
+    "쉬운 뜻: 달력에 적힌 2026년 같은 연도가 바로 서기로 센 것입니다. 서양에서 들어온 해 세기 방법입니다.",
+    "낱말 나누기: 서(西, 서양) + 기(紀, 해를 세는 기준) — '서력기원'을 줄인 말로, 서양의 해 세는 법입니다.",
+    "단군이 고조선을 세운 해로 세는 단기로는 서기 2026년이 4359년입니다."
+   ]
+  },
+  "기원전": {
+   "en": "B.C.",
+   "explain": [
+    "쉬운 뜻: 서기 1년보다 앞선 때입니다. 영어 B.C.는 Before Christ(그리스도 앞)의 머리글자입니다.",
+    "낱말 나누기: 기원(紀元, 해를 세기 시작한 첫해) + 전(前, 앞) — 첫해보다 앞입니다.",
+    "기원전 1년 바로 다음 해가 서기 1년이고, 0년은 없습니다."
+   ]
+  },
+  "기원후": {
+   "en": "A.D.",
+   "explain": [
+    "쉬운 뜻: 서기 1년부터 그 뒤의 때입니다. 영어 A.D.는 라틴 말 Anno Domini(주님의 해)의 머리글자입니다.",
+    "낱말 나누기: 기원(紀元, 해를 세기 시작한 첫해) + 후(後, 뒤) — 첫해부터 그 뒤입니다.",
+    "조선이 세워진 1392년도 기원후의 일이지만, 보통은 '기원후'를 떼고 씁니다."
+   ]
+  },
+  "세기": {
+   "en": "century",
+   "explain": [
+    "쉬운 뜻: 100년을 한 묶음으로 센 것입니다. 영어 century는 라틴 말 centum(100)에서 왔고, 돈 단위 cent(센트)도 같은 뿌리입니다.",
+    "낱말 나누기: 세(世, 시대) + 기(紀, 햇수를 세는 단위) — 시대를 세는 단위입니다.",
+    "1592년 임진왜란은 16세기, 1945년 광복은 20세기의 일입니다."
+   ]
+  }
+ },
+ "2": {
+  "직립 보행": {
+   "en": "bipedalism",
+   "explain": [
+    "쉬운 뜻: 허리를 곧게 펴고 두 발로 걷는 것입니다. 영어 bipedalism은 bi(둘) + ped(발), '두 발로 다니기'입니다.",
+    "낱말 나누기: 직립(直立, 곧게 섬) + 보행(步行, 걸어 다님) — 곧게 서서 걷기입니다.",
+    "두 손이 걷는 일에서 풀려나, 돌을 깨 도구를 만들고 먹을 것을 들고 다녔습니다."
+   ],
+   "beats": [
+    "넓은 풀밭에 옛 인류 가족이 서 있습니다.",
+    "허리를 펴고 두 발로 걸으며, 빈손에 돌과 열매를 들었습니다.",
+    "곧게 서서 두 발로 걷는 것이 직립 보행입니다."
+   ],
+   "img": "A wide African savanna at dawn with tall grass and a flat-topped acacia tree. A small family of early hominins with hairy bodies and ape-like faces walks upright on two legs across the grass in a line. The adults carry a stone and a bundle of fruit in their free hands, and a child walks holding a parent's hand. Their footprints show behind them in a patch of soft mud. No text.",
+   "imgKo": "새벽의 아프리카 초원에서 털이 많은 옛 인류 가족이 두 발로 똑바로 서서 줄지어 걷고, 어른들은 빈손에 돌과 열매를 들었다. 뒤쪽 진흙에 발자국이 찍혀 있다."
+  },
+  "호모 사피엔스": {
+   "en": "Homo sapiens",
+   "explain": [
+    "쉬운 뜻: 지금 지구에 사는 사람 모두가 속한 종입니다. 생김새는 달라도 우리는 모두 호모 사피엔스입니다.",
+    "낱말 나누기: 라틴 말 homo(사람) + sapiens(슬기로운) — '슬기로운 사람'입니다.",
+    "동굴 벽에 들소와 말을 그리고, 뼈를 갈아 바늘을 만들어 썼습니다."
+   ],
+   "beats": [
+    "동굴 안에서 불빛이 흔들립니다.",
+    "사람들이 벽에 들소와 말을 그리고, 한쪽에서는 뼈바늘로 가죽을 꿰맵니다.",
+    "그림을 그리고 도구를 다듬은 슬기로운 사람이 호모 사피엔스입니다."
+   ],
+   "img": "Inside a large Ice Age cave lit by a small fire and stone oil lamps. Early modern humans in fur clothing paint red and black bison and horses on the rock wall with their fingers and simple brushes. Nearby, a woman sews pieces of animal hide together with a fine bone needle, and a child watches the paintings in wonder. No text.",
+   "imgKo": "불과 돌 등잔이 밝힌 빙하기 동굴에서 털옷 입은 사람들이 바위벽에 붉고 검은 들소와 말을 그리고, 곁에서 한 여인이 뼈바늘로 가죽을 꿰매며 아이가 그림을 구경한다."
+  },
+  "신석기 혁명": {
+   "en": "Neolithic Revolution",
+   "explain": [
+    "쉬운 뜻: 먹을 것을 찾아다니다가 직접 길러 먹게 된 큰 변화입니다. 영어 Neolithic은 neo(새) + lithic(돌의)입니다.",
+    "낱말 나누기: 신(新, 새) + 석기(石器, 돌 도구) + 혁명(革命, 확 바뀜) — 새 돌 도구 시대의 큰 바뀜입니다.",
+    "서아시아 사람들은 들에 자라던 밀과 보리를 심고, 염소와 양을 길렀습니다."
+   ],
+   "beats": [
+    "예전에는 사람들이 짐승을 쫓아 들판을 떠돌았습니다.",
+    "이제 강가 밭에 밀을 심고, 울타리 안에서 염소와 양을 기릅니다.",
+    "먹을 것을 스스로 기르게 된 큰 변화가 신석기 혁명입니다."
+   ],
+   "img": "A split scene of the same river valley. Left half, earlier time: a small group of hunter-gatherers in hide clothes walk through wild grass, one picking berries and another following a herd of wild goats. Right half, later time: the same valley with neat little fields of wheat beside the river, a few round huts with thatched roofs, a wooden fence holding goats and sheep, and a woman grinding grain on a flat stone next to clay pots. No text.",
+   "imgKo": "같은 강 골짜기를 둘로 나눈 그림. 왼쪽은 가죽옷 사람들이 열매를 따고 들염소를 쫓아 떠돌고, 오른쪽은 강가에 밀밭과 움집, 염소·양 울타리가 있고 여인이 돌판에 곡식을 간다."
+  },
+  "계급": {
+   "en": "class",
+   "explain": [
+    "쉬운 뜻: 사람들이 위아래 층으로 나뉜 것입니다. 영어 class는 로마에서 시민을 재산에 따라 나눈 무리 classis에서 온 말입니다.",
+    "낱말 나누기: 계(階, 층계) + 급(級, 등급) — 계단처럼 층이 진 등급입니다.",
+    "남는 곡식을 많이 가진 사람이 땅과 사람을 거느리며 지배자가 되었습니다."
+   ]
+  },
+  "문명": {
+   "en": "civilization",
+   "explain": [
+    "쉬운 뜻: 도시가 생기고 글자와 나라가 나타나 삶이 크게 앞선 상태입니다. 영어 civilization은 civis(도시에 사는 시민)에서 왔습니다.",
+    "낱말 나누기: 문(文, 글·문화) + 명(明, 밝다) — 글과 배움으로 밝아진 삶입니다.",
+    "문명이 생기자 왕, 사제, 군인, 장인, 농민처럼 하는 일이 저마다 나뉘었습니다."
+   ]
+  },
+  "메소포타미아 문명": {
+   "en": "Mesopotamian civilization",
+   "explain": [
+    "쉬운 뜻: 두 강 사이 기름진 땅에서 인류 가운데 가장 먼저 피어난 문명입니다. 지금의 이라크 땅입니다.",
+    "낱말 나누기: 그리스 말 meso(가운데) + potamos(강) — '두 강 사이 땅'입니다.",
+    "티그리스강과 유프라테스강이 넘친 뒤 남은 기름진 흙에 보리를 심었습니다."
+   ]
+  },
+  "이집트 문명": {
+   "explain": [
+    "쉬운 뜻: 나일강을 따라 길게 피어난 문명입니다. 나일강이 해마다 넘쳐 기름진 흙을 날라다 주었습니다.",
+    "낱말 나누기: 이집트 + 문(文, 글) + 명(明, 밝다) — 이집트 땅에서 글과 배움으로 밝아진 삶입니다.",
+    "여름마다 나일강이 넘쳤다 빠지면, 사람들은 밧줄로 밭의 경계를 다시 재었습니다."
+   ]
+  },
+  "인도 문명": {
+   "en": "Indus Valley Civilization",
+   "explain": [
+    "쉬운 뜻: 인더스강 가에 반듯한 벽돌 도시를 세운 문명입니다. '인도'라는 나라 이름도 이 강 이름에서 나왔습니다.",
+    "낱말 나누기: 인더스와 인도는 옛 인도 말 sindhu(강)에서 온 이름 — '강가 땅의 문명'입니다.",
+    "하라파와 모헨조다로에서는 같은 크기로 구운 벽돌로 집과 창고를 지었습니다."
+   ]
+  },
+  "중국 문명": {
+   "explain": [
+    "쉬운 뜻: 황허 가 누런 흙땅에서 피어난 문명입니다. 강물이 누런 흙을 실어 와서 이름도 '누런 강'이라는 뜻의 황허입니다.",
+    "낱말 나누기: 중국(中國, 가운데 나라) + 문명 — 스스로 세상 가운데라 여긴 나라의 문명입니다.",
+    "상 사람들은 청동으로 큰 솥과 술잔을 부어 만들어 조상에게 제사를 지냈습니다."
+   ]
+  },
+  "도시 국가": {
+   "en": "city-state",
+   "explain": [
+    "쉬운 뜻: 도시 하나가 그대로 한 나라인 것입니다. 영어 city-state도 city(도시) + state(나라)로 짜임이 같습니다.",
+    "낱말 나누기: 도시(都市, 사람이 모여 사는 큰 마을) + 국가(國家, 나라) — 도시가 곧 나라입니다.",
+    "성벽 안에 신전과 집이 모여 있고, 성 밖 밭까지가 한 나라의 땅이었습니다."
+   ],
+   "beats": [
+    "높은 성벽이 흙벽돌 집들을 둥글게 감쌉니다.",
+    "가운데에는 신전이 솟아 있고, 성 밖에는 밭과 물길이 펼쳐집니다.",
+    "도시 하나와 둘레 땅이 한 나라를 이룬 것이 도시 국가입니다."
+   ],
+   "img": "A bird's-eye view of an ancient Sumerian city in Mesopotamia around 3000 BC. A thick mud-brick wall encircles crowded flat-roofed houses, with a tall stepped temple rising in the center. Outside the wall, green fields of barley crossed by straight irrigation canals stretch to the river, and farmers work in them. Far away on the horizon, a second walled city is faintly visible. No text.",
+   "imgKo": "기원전 3000년 무렵 수메르의 도시를 하늘에서 본다. 두꺼운 흙벽돌 성벽 안에 집들이 빽빽하고 가운데 계단 신전이 솟았으며, 성 밖에 물길로 나뉜 보리밭이 강까지 이어진다. 멀리 다른 성벽 도시가 보인다."
+  },
+  "쐐기 문자": {
+   "en": "cuneiform",
+   "explain": [
+    "쉬운 뜻: 젖은 진흙판을 갈대 붓으로 꾹꾹 눌러 쓴 글자입니다. 획 하나하나가 쐐기처럼 생겼습니다.",
+    "낱말 나누기: 쐐기(뾰족한 나뭇조각) + 문자 — 영어 cuneiform도 cuneus(쐐기) + form(꼴)입니다.",
+    "진흙판은 말리거나 구우면 단단해져, 오늘날까지 수많은 판이 남아 있습니다."
+   ],
+   "beats": [
+    "서기가 손바닥만 한 젖은 진흙판을 들었습니다.",
+    "끝을 비스듬히 자른 갈대 붓으로 진흙을 꾹꾹 누릅니다.",
+    "진흙에 쐐기 모양으로 눌러 쓴 글자가 쐐기 문자입니다."
+   ],
+   "img": "Close-up of an ancient Mesopotamian scribe in a simple wool robe sitting cross-legged in a sunlit mud-brick room. He holds a small wet clay tablet in one palm and presses the cut end of a reed stylus into it, leaving rows of tiny wedge-shaped marks. Finished tablets dry in the sun on a shelf behind him. The marks are abstract wedges, not readable writing.",
+   "imgKo": "햇볕 드는 흙벽돌 방에서 양털 옷의 서기가 손바닥 위 젖은 진흙판에 갈대 붓 끝을 눌러 작은 쐐기 모양 자국을 줄지어 남기고, 뒤 선반에서 다 쓴 판들이 마른다."
+  },
+  "지구라트": {
+   "en": "ziggurat",
+   "explain": [
+    "쉬운 뜻: 흙벽돌을 계단처럼 층층이 쌓은 높은 신전입니다. 꼭대기가 하늘의 신과 가장 가까운 곳이라 여겼습니다.",
+    "낱말 나누기: 아카드 말 ziqqurratu(높이 솟은 꼭대기) — 높이 쌓아 올린 탑 신전입니다.",
+    "도시 어디에서나 보이는 지구라트는 도시를 지켜 주는 신의 집이었습니다."
+   ],
+   "beats": [
+    "넓은 흙벽돌 계단 건물이 층층이 솟아 있습니다.",
+    "사제들이 긴 계단을 따라 꼭대기 작은 신전으로 올라갑니다.",
+    "흙벽돌로 높이 쌓은 메소포타미아의 계단 신전이 지구라트입니다."
+   ],
+   "img": "A huge stepped mud-brick temple tower rising in three wide terraces above a Mesopotamian city under a bright blue sky. A long straight central staircase leads to a small shrine on the top terrace. A line of priests in white robes climbs the stairs carrying offerings of grain and fruit, while townspeople gather at the base. No text.",
+   "imgKo": "파란 하늘 아래 메소포타미아 도시 위로 세 층의 넓은 흙벽돌 계단 탑이 솟고, 흰 옷의 사제들이 곡식과 과일을 들고 가운데 긴 계단을 올라 꼭대기 작은 신전으로 향한다."
+  },
+  "함무라비 법전": {
+   "en": "Code of Hammurabi",
+   "explain": [
+    "쉬운 뜻: 바빌로니아의 함무라비 왕이 법을 돌기둥에 새겨 모두가 보게 한 것입니다.",
+    "낱말 나누기: 함무라비(왕 이름) + 법(法, 지킬 규칙) + 전(典, 책) — 함무라비 왕이 만든 법 책입니다.",
+    "돌기둥 위쪽에는 왕이 태양신 앞에 선 모습이, 아래에는 법 약 280조가 새겨졌습니다."
+   ],
+   "beats": [
+    "사람 키보다 큰 검은 돌기둥이 서 있습니다.",
+    "위에는 신과 왕의 모습이, 아래에는 글자가 빼곡히 새겨져 있습니다.",
+    "함무라비 왕이 돌에 새겨 모두에게 알린 법이 함무라비 법전입니다."
+   ],
+   "img": "In a dim museum hall, a tall black basalt stone pillar, taller than a person, stands under a spotlight. At its top is a carved relief of a seated god and a standing king facing each other; below, the surface is covered with dense rows of tiny wedge-shaped marks. DOYUN (a boy with round glasses and a navy hoodie) looks up at it with his mouth open. The marks are not readable.",
+   "imgKo": "어두운 박물관 전시실의 조명 아래 사람 키보다 큰 검은 돌기둥이 서 있고, 위쪽엔 앉은 신과 선 왕이 새겨졌으며 아래엔 작은 쐐기 글자가 빼곡하다. 도윤이가 입을 벌리고 올려다본다."
+  },
+  "파라오": {
+   "en": "pharaoh",
+   "explain": [
+    "쉬운 뜻: 고대 이집트의 왕입니다. 줄무늬 두건을 쓰고, 지팡이와 도리깨를 가슴에 엇갈려 든 모습으로 그려졌습니다.",
+    "낱말 나누기: 이집트 말 per(집) + aa(크다) — '큰 집', 곧 왕궁을 뜻하던 말이 왕을 가리키게 되었습니다.",
+    "파라오는 살아 있을 때부터 자기가 묻힐 무덤과 신전을 짓게 하였습니다."
+   ],
+   "beats": [
+    "황금빛 왕좌에 줄무늬 두건을 쓴 왕이 앉아 있습니다.",
+    "신하들이 엎드려 절하고, 곡식 자루를 바칩니다.",
+    "신처럼 받들어진 고대 이집트의 왕이 파라오입니다."
+   ],
+   "img": "Inside a grand ancient Egyptian palace hall with painted columns shaped like papyrus plants. A generic pharaoh wearing a blue-and-gold striped headdress sits on a golden throne, holding a crook and flail crossed over his chest; his face is calm and stylized, not a portrait. Officials kneel and bow low before him, and servants bring baskets of grain and jars. No text, no hieroglyphs that can be read.",
+   "imgKo": "파피루스 모양 기둥이 선 이집트 궁전에서 파랑·금색 줄무늬 두건을 쓴 왕이 지팡이와 도리깨를 가슴에 엇갈려 들고 금빛 왕좌에 앉아 있고, 신하들이 엎드리며 곡식 바구니를 바친다."
+  },
+  "피라미드": {
+   "en": "pyramid",
+   "explain": [
+    "쉬운 뜻: 밑은 네모이고 위로 갈수록 좁아져 한 점에서 만나는 거대한 돌무덤입니다. 수학의 '각뿔'을 영어에서는 pyramid라고 합니다.",
+    "낱말 나누기: 우리말로는 금자탑(金字塔) — '金' 글자처럼 생긴 탑이라는 뜻입니다.",
+    "가장 큰 피라미드는 돌 약 230만 개를 쌓아, 처음 높이가 약 146 m였습니다."
+   ],
+   "beats": [
+    "사막 위에 거대한 세모꼴 돌무덤이 솟아 있습니다.",
+    "돌덩이 하나가 사람 키만 하고, 곁을 지나는 낙타 행렬은 개미처럼 작아 보입니다.",
+    "돌을 쌓아 만든 이집트 왕의 사각뿔 무덤이 피라미드입니다."
+   ],
+   "img": "The great pyramids of Giza rising from the golden desert under a clear sky at sunset, their four triangular faces made of huge stacked stone blocks. Near the base, a few workers' tools and a single stone block taller than a man lie in the sand, and a small line of camels with travelers passes by, looking tiny next to the pyramids and showing how enormous they are. No text.",
+   "imgKo": "노을 진 하늘 아래 황금빛 사막에서 거대한 돌을 쌓은 기자의 피라미드들이 솟아 있고, 아래쪽에 사람 키보다 큰 돌덩이가 놓여 있고, 곁을 지나는 낙타 행렬이 아주 작아 보여 크기를 알려 준다."
+  },
+  "상형 문자": {
+   "en": "hieroglyph",
+   "explain": [
+    "쉬운 뜻: 그림처럼 생긴 글자입니다. 영어 hieroglyph는 hiero(거룩한) + glyph(새김), '신전에 새긴 거룩한 글'입니다.",
+    "낱말 나누기: 상(象, 모양) + 형(形, 꼴) + 문자 — 물건 모양을 본떠 만든 글자입니다.",
+    "로제타석에 같은 내용이 그리스 문자로도 적혀 있어, 이를 견주어 상형 문자를 읽어 냈습니다."
+   ],
+   "beats": [
+    "신전 벽에 새, 눈, 물결 같은 작은 그림들이 줄지어 새겨져 있습니다.",
+    "화가가 붓으로 그림 글자 하나하나에 색을 칠합니다.",
+    "물건 모양을 본떠 만든 이집트의 글자가 상형 문자입니다."
+   ],
+   "img": "Inside an ancient Egyptian temple, a painter in a white linen kilt stands on a low wooden platform and colors carved picture-signs on a sandstone wall with a fine brush: an owl, a hand, a wavy water line, an eye, a reed and a snake, arranged in neat vertical columns. Pots of blue, red and yellow paint sit beside him. The signs are decorative and not a readable sentence.",
+   "imgKo": "이집트 신전 안에서 흰 아마포 치마를 두른 화가가 낮은 발판에 서서, 사암 벽에 세로로 줄지어 새긴 올빼미·손·물결·눈·갈대·뱀 그림 글자에 가는 붓으로 색을 칠한다."
+  },
+  "브라만교": {
+   "en": "Brahmanism",
+   "explain": [
+    "쉬운 뜻: 아리아인이 믿은 옛 인도 종교입니다. 자연의 여러 신에게 올리는 제사를 무엇보다 중요하게 여겼습니다.",
+    "낱말 나누기: 브라만(제사를 맡은 사제) + 교(敎, 가르침) — 사제가 이끄는 가르침입니다.",
+    "제사 순서와 노래가 어려워, 그것을 다 아는 사제만이 제사를 맡아 큰 대접을 받았습니다."
+   ],
+   "beats": [
+    "불을 피운 제단 둘레에 사제들이 둘러앉았습니다.",
+    "사제들이 신을 찬양하는 노래를 외우며 불에 곡식과 기름을 바칩니다.",
+    "사제가 이끄는 제사를 중요하게 여긴 아리아인의 종교가 브라만교입니다."
+   ],
+   "img": "Ancient India, around 1000 BC, at dawn by a river. Bare-chested priests with sacred threads across their shoulders sit cross-legged around a square brick fire altar, chanting with closed eyes and pouring ghee and grain into the flames with long wooden ladles. Villagers watch respectfully from a distance. No text.",
+   "imgKo": "기원전 1000년 무렵 새벽 강가에서 어깨에 끈을 두른 사제들이 네모난 벽돌 불 제단에 둘러앉아 눈을 감고 노래를 외우며 긴 국자로 기름과 곡식을 불에 붓고, 마을 사람들이 멀리서 지켜본다."
+  },
+  "카스트제": {
+   "en": "caste system",
+   "explain": [
+    "쉬운 뜻: 태어날 때 신분이 정해져 평생 바꿀 수 없던 인도의 제도입니다. 영어 caste는 포르투갈 말 casta(혈통)에서 왔습니다.",
+    "낱말 나누기: 카스트(혈통으로 나눈 신분) + 제(制, 제도) — 혈통으로 신분을 나눈 제도입니다.",
+    "브라만, 크샤트리아, 바이샤, 수드라의 네 신분은 서로 결혼하기도 어려웠습니다."
+   ]
+  },
+  "갑골 문자": {
+   "en": "oracle bone script",
+   "explain": [
+    "쉬운 뜻: 거북 껍데기와 짐승 뼈로 점을 친 뒤 그 내용을 새긴 글자입니다. 영어 oracle bone도 oracle(신의 대답) + bone(뼈)입니다.",
+    "낱말 나누기: 갑(甲, 거북 껍데기) + 골(骨, 뼈) + 문자(文字, 글자) — 껍데기와 뼈에 새긴 글자입니다.",
+    "'해(日)'는 동그라미 안에 점, '산(山)'은 봉우리 셋 모양으로 새겼습니다."
+   ],
+   "beats": [
+    "점치는 사람이 거북 배딱지를 불에 달굽니다.",
+    "딱 소리와 함께 금이 가자, 그 모양을 보고 칼로 글자를 새깁니다.",
+    "거북 껍데기나 뼈에 점친 내용을 새긴 글자가 갑골 문자입니다."
+   ],
+   "img": "Shang dynasty China, inside a dim palace room. A diviner in a dark robe holds a flat turtle shell over a small glowing bronze brazier with tongs, and fine cracks spread across the shell. On a low table beside him lie cleaned ox shoulder bones and a small bronze knife, and another shell already carved with tiny simple pictograph-like marks. The marks are not readable.",
+   "imgKo": "상나라 궁궐의 어두운 방에서 점치는 사람이 집게로 거북 배딱지를 작은 청동 화로 위에 들어 금이 가게 하고, 곁 상에는 소뼈와 작은 청동 칼, 작은 그림 글자를 새긴 다른 껍데기가 놓여 있다."
+  },
+  "봉건제": {
+   "explain": [
+    "쉬운 뜻: 왕이 넓은 땅을 다 다스리기 어려워, 친척과 공신에게 땅을 떼어 주고 다스리게 한 제도입니다.",
+    "낱말 나누기: 봉(封, 땅을 나누어 줌) + 건(建, 세움) + 제(制, 제도) — 땅을 주어 제후를 세우는 제도입니다.",
+    "주 왕실과 제후는 한집안 친척 사이가 많아, 집안의 예절로 서로 묶였습니다."
+   ]
+  },
+  "유대교": {
+   "en": "Judaism",
+   "explain": [
+    "쉬운 뜻: 헤브라이인이 믿은, 오직 하나의 신만 섬기는 종교입니다. 영어 Judaism은 옛 나라 이름 유다(Judah)에서 왔습니다.",
+    "낱말 나누기: 유대(유다 사람) + 교(敎, 가르침) — 유다 사람들의 종교입니다.",
+    "유대교 사람들은 일주일에 하루, 안식일에는 일을 쉬고 기도합니다."
+   ],
+   "beats": [
+    "천막 안에 가족이 모여 앉았습니다.",
+    "할아버지가 두루마리를 펴서 읽고, 모두 한 신에게 기도합니다.",
+    "오직 하나의 신만 섬긴 헤브라이인의 종교가 유대교입니다."
+   ],
+   "img": "An ancient Hebrew family gathered inside a large tent at evening, around 1000 BC. An elderly man with a long beard and a striped shawl unrolls a parchment scroll and reads aloud, while the family sits on woven mats with hands folded in prayer. Two small oil lamps glow on a low table. The scroll's writing is not readable.",
+   "imgKo": "기원전 1000년 무렵 저녁, 큰 천막 안에서 줄무늬 숄을 두른 할아버지가 두루마리를 펴 읽고, 가족들이 돗자리에 앉아 손을 모아 기도한다. 작은 기름 등잔 둘이 빛난다."
+  },
+  "아케메네스 왕조": {
+   "explain": [
+    "쉬운 뜻: 페르시아 사람들이 세워, 이집트에서 인도 가까이까지 다스린 큰 나라의 왕실입니다.",
+    "낱말 나누기: 아케메네스(왕실 조상 이름) + 왕조(王朝, 대를 이어 다스린 왕실) — 아케메네스 집안의 나라입니다.",
+    "수도 페르세폴리스 궁전 계단에는 여러 민족 사람들이 선물을 들고 오는 모습이 새겨져 있습니다."
+   ]
+  },
+  "조로아스터교": {
+   "en": "Zoroastrianism",
+   "explain": [
+    "쉬운 뜻: 빛과 어둠이 싸운다고 보고, 사람도 착한 생각·말·행동으로 빛의 편에 서야 한다고 가르친 페르시아 종교입니다.",
+    "낱말 나누기: 조로아스터(처음 가르친 사람 이름) + 교(敎, 가르침) — 조로아스터가 연 종교입니다.",
+    "선한 신과 악한 신, 마지막 심판 같은 생각은 뒤의 종교들에도 영향을 주었다고 봅니다."
+   ],
+   "beats": [
+    "돌로 지은 사원 안에 불이 활활 타오릅니다.",
+    "입을 천으로 가린 사제가 불 앞에서 기도합니다.",
+    "불을 신성하게 여기고 빛과 선의 승리를 믿은 페르시아 종교가 조로아스터교입니다."
+   ],
+   "img": "Inside an ancient Persian stone fire temple, a large metal fire bowl on a stone pedestal holds a bright, steady flame. A priest in white robes with a white cloth covering his mouth and nose stands before it, feeding the fire with a small piece of sandalwood, while a few worshippers bow quietly behind him. No text.",
+   "imgKo": "옛 페르시아의 돌 사원 안에서 돌 받침 위 큰 쇠 그릇에 불이 타오르고, 흰 옷에 흰 천으로 입과 코를 가린 사제가 향나무 조각을 넣으며, 뒤에서 신자들이 조용히 절한다."
+  },
+  "폴리스": {
+   "en": "polis",
+   "explain": [
+    "쉬운 뜻: 고대 그리스의 도시 국가입니다. 영어 politics(정치), police(경찰)도 모두 polis에서 나온 말입니다.",
+    "낱말 나누기: polis(성채 도시) — 아크로폴리스는 akros(높은) + polis, '높은 곳의 도시'입니다.",
+    "아테네 사람들은 아크로폴리스 언덕 위 파르테논 신전에 아테나 여신을 모셨습니다."
+   ],
+   "beats": [
+    "언덕 꼭대기에 하얀 기둥의 신전이 서 있습니다.",
+    "언덕 아래 광장에서는 시민들이 모여 이야기를 나눕니다.",
+    "신전과 광장을 중심으로 이룬 그리스의 도시 국가가 폴리스입니다."
+   ],
+   "img": "A view of ancient Athens around 450 BC. On top of a rocky hill stands a white marble temple with many columns, and below the hill spreads an open marketplace square lined with columned halls, where citizens in draped white robes gather in small groups talking. Houses with red tile roofs fill the city, enclosed by a stone wall, with olive groves and the sea beyond. No text.",
+   "imgKo": "기원전 450년 무렵 아테네. 바위 언덕 꼭대기에 흰 대리석 기둥 신전이 서 있고, 언덕 아래 광장에서 흰 옷의 시민들이 무리 지어 이야기하며, 성벽 너머 올리브 숲과 바다가 보인다."
+  },
+  "민주 정치": {
+   "en": "democracy",
+   "explain": [
+    "쉬운 뜻: 시민이 나라의 주인으로서 함께 정하는 정치입니다. 영어 democracy는 demos(민중) + kratos(다스림)입니다.",
+    "낱말 나누기: 민(民, 백성) + 주(主, 주인) + 정치(政治, 나라를 다스림) — 백성이 주인인 정치입니다.",
+    "아테네는 관리도 대부분 제비뽑기로 뽑아, 시민 누구나 나랏일을 맡을 수 있었습니다."
+   ]
+  },
+  "민회": {
+   "explain": [
+    "쉬운 뜻: 아테네의 남자 시민이 한자리에 모여 나랏일을 정한 큰 회의입니다. 학급 회의를 나라만큼 키운 셈입니다.",
+    "낱말 나누기: 민(民, 백성) + 회(會, 모임) — 백성들의 모임입니다.",
+    "언덕 비탈에 수천 명이 모여 앉고, 누구나 앞에 나가 의견을 말할 수 있었습니다."
+   ],
+   "beats": [
+    "언덕 비탈에 수많은 시민이 모여 앉았습니다.",
+    "한 사람이 돌 연단에 올라 의견을 말하고, 사람들은 손을 들어 찬성합니다.",
+    "시민들이 모여 나랏일을 직접 정한 아테네의 회의가 민회입니다."
+   ],
+   "img": "A large open-air assembly on a sloping hillside in ancient Athens. Thousands of men in simple white and beige robes sit on the ground facing a stone speaker's platform, where one citizen speaks with an open hand. Many in the crowd raise their right hands to vote. The Acropolis temple can be seen on a nearby hill. No text.",
+   "imgKo": "옛 아테네의 언덕 비탈에 흰 옷 차림 남자 수천 명이 앉아 돌 연단을 바라보고, 한 시민이 손을 펴며 말하자 많은 사람이 오른손을 들어 표를 던진다. 옆 언덕에 신전이 보인다."
+  },
+  "도편 추방제": {
+   "en": "ostracism",
+   "explain": [
+    "쉬운 뜻: 힘이 너무 커질 듯한 사람을 투표로 미리 내보낸 제도입니다. 영어 ostracism은 ostrakon(그릇 조각)에서 왔습니다.",
+    "낱말 나누기: 도편(陶片, 도자기 조각) + 추방(追放, 쫓아냄) + 제(制, 제도) — 조각 투표로 쫓아내는 제도입니다.",
+    "쫓겨난 사람도 재산은 그대로였고, 10년 뒤에는 돌아올 수 있었습니다."
+   ],
+   "beats": [
+    "시민들이 깨진 항아리 조각을 하나씩 들었습니다.",
+    "조각에 이름을 긁어 쓰고, 줄지어 상자에 넣습니다.",
+    "그릇 조각에 이름을 적어 위험한 사람을 내보낸 제도가 도편 추방제입니다."
+   ],
+   "img": "An ancient Athenian marketplace on voting day. Citizens in white robes stand in a line, each holding a small broken piece of reddish clay pottery and scratching marks on it with a sharp stone. One by one they drop the shards into a large wooden box guarded by officials. A pile of shards is visible inside. The scratches are simple lines, not readable names.",
+   "imgKo": "투표 날 아테네 광장에서 흰 옷의 시민들이 줄을 서서 붉은 흙그릇 조각에 뾰족한 돌로 자국을 긁어 쓰고, 관리가 지키는 큰 나무 상자에 차례로 넣는다."
+  },
+  "헬레니즘": {
+   "en": "Hellenism",
+   "explain": [
+    "쉬운 뜻: 그리스 문화와 동쪽 오리엔트 문화가 섞여 생긴 새 문화입니다.",
+    "낱말 나누기: 헬렌(그리스 사람이 스스로를 부른 이름) + 이즘(-ism, ~식 문화) — '그리스식 문화'입니다.",
+    "알렉산드로스의 이름을 딴 이집트 도시 알렉산드리아에 큰 도서관이 서서 여러 나라 학자가 모였습니다."
+   ]
+  },
+  "공화정": {
+   "en": "republic",
+   "explain": [
+    "쉬운 뜻: 왕 없이 뽑힌 대표들이 다스리는 정치입니다. 영어 republic은 라틴 말 res(일) + publica(모두의), '모두의 일'입니다.",
+    "낱말 나누기: 공(共, 함께) + 화(和, 어울림) + 정(政, 정치) — 여럿이 함께 어울려 하는 정치입니다.",
+    "대한민국 헌법 제1조도 '대한민국은 민주 공화국이다.'로 시작합니다."
+   ]
+  },
+  "원로원": {
+   "en": "Senate",
+   "explain": [
+    "쉬운 뜻: 나이와 경험이 많은 귀족들이 모여 나라의 큰일을 의논한 로마의 회의입니다. 영어 Senate는 라틴 말 senex(늙은이)에서 왔습니다.",
+    "낱말 나누기: 원로(元老, 나이와 경험이 많은 어른) + 원(院, 기관) — 어른들의 회의 기관입니다.",
+    "오늘날 미국 의회의 상원도 이름이 Senate로, 로마 원로원에서 따온 것입니다."
+   ],
+   "beats": [
+    "돌로 지은 회의장에 흰 겉옷을 두른 어른들이 앉아 있습니다.",
+    "한 사람이 일어나 말하고, 다른 사람들은 고개를 끄덕이며 듣습니다.",
+    "로마 귀족 어른들이 모여 나랏일을 의논한 곳이 원로원입니다."
+   ],
+   "img": "Inside the Roman Senate house, a tall stone hall with marble floors. Older men wearing white togas with purple borders sit on long wooden benches arranged in rows facing each other. One gray-haired senator stands in the middle and speaks with a raised hand while the others listen thoughtfully, some nodding. Faces are generic, not real portraits. No text.",
+   "imgKo": "대리석 바닥의 높은 로마 원로원 회의장에서 자줏빛 테 두른 흰 토가 차림의 나이 든 남자들이 마주 보는 긴 의자에 앉아 있고, 가운데서 흰머리 원로가 손을 들어 말하며 다른 이들이 끄덕인다."
+  },
+  "제정": {
+   "explain": [
+    "쉬운 뜻: 황제 한 사람이 나라의 권력을 쥐고 다스리는 정치입니다. 로마는 공화정 다음에 제정으로 바뀌었습니다.",
+    "낱말 나누기: 제(帝, 황제) + 정(政, 정치) — 황제가 하는 정치입니다. 황제의 '제'와 같은 글자입니다.",
+    "로마 황제들은 동전에 자기 얼굴을 새겨 제국 곳곳에 황제의 힘을 알렸습니다."
+   ]
+  },
+  "로마법": {
+   "en": "Roman law",
+   "explain": [
+    "쉬운 뜻: 로마가 넓은 나라의 여러 민족을 함께 다스리려고 다듬은 법입니다.",
+    "낱말 나누기: 로마 + 법(法, 지킬 규칙) — 로마 시민의 법이 여러 민족 모두의 법으로 넓어졌습니다.",
+    "로마 사람들은 12표법을 광장에 내걸어, 누구나 법을 읽고 알 수 있게 하였습니다."
+   ],
+   "beats": [
+    "로마 광장 벽에 청동 판 열두 개가 걸려 있습니다.",
+    "시민과 상인, 다른 나라 사람들이 모여 판을 읽습니다.",
+    "로마가 만들어 여러 민족에게 두루 쓴 법이 로마법입니다."
+   ],
+   "img": "The Roman Forum in daylight. Twelve large bronze tablets engraved with dense rows of letters hang on a stone wall under a portico. A varied crowd gathers to read them: Roman citizens in togas, a merchant from Egypt in a striped robe, a soldier off duty, and a mother pointing a tablet out to her child. The engraving is too small to read.",
+   "imgKo": "낮의 로마 광장, 돌담에 글자를 빼곡히 새긴 큰 청동 판 열두 개가 걸려 있고, 토가 입은 시민, 줄무늬 옷의 이집트 상인, 쉬는 병사, 아이에게 판을 가리키는 엄마가 모여 읽는다."
+  },
+  "크리스트교": {
+   "en": "Christianity",
+   "explain": [
+    "쉬운 뜻: 예수의 가르침을 따르는 종교입니다. Christ는 그리스 말 Christos(기름 부어 세운 사람), 곧 구원자라는 뜻입니다.",
+    "낱말 나누기: 크리스트(그리스도, 예수를 높여 부르는 말) + 교(敎, 가르침) — 그리스도를 믿는 종교입니다.",
+    "박해받던 신자들은 물고기 그림을 몰래 그려 서로 같은 신자임을 알렸습니다."
+   ],
+   "beats": [
+    "어두운 지하 통로에 작은 등잔불이 켜져 있습니다.",
+    "사람들이 몰래 모여 함께 기도하고, 벽에는 물고기 그림이 그려져 있습니다.",
+    "예수의 사랑과 평등의 가르침을 믿는 종교가 크리스트교입니다."
+   ],
+   "img": "An underground catacomb passage beneath ancient Rome, lit by small clay oil lamps in wall niches. A small group of early Christians in plain tunics, men, women and children, kneel together in quiet prayer. On the rough stone wall, a simple fish symbol is scratched in white chalk. Warm, peaceful light. No text.",
+   "imgKo": "옛 로마 땅밑 무덤 통로에 벽감마다 작은 등잔이 켜지고, 소박한 옷의 남녀와 아이들이 함께 무릎 꿇고 기도한다. 거친 돌벽에 흰 물고기 그림이 그려져 있다."
+  },
+  "춘추 전국 시대": {
+   "explain": [
+    "쉬운 뜻: 주 왕실이 힘을 잃은 뒤, 제후들이 저마다 왕처럼 나서 500년 넘게 다툰 때입니다.",
+    "낱말 나누기: 춘추(공자가 엮은 역사책 『춘추』) + 전국(戰國, 싸우는 나라들) + 시대 — 두 시기를 합친 이름입니다.",
+    "나라마다 칼 모양, 삽 모양처럼 생김새가 다른 돈을 따로 썼습니다."
+   ]
+  },
+  "제자백가": {
+   "en": "Hundred Schools of Thought",
+   "explain": [
+    "쉬운 뜻: 어지러운 세상을 바로잡을 방법을 저마다 내놓은 여러 스승과 학파입니다. 영어 Hundred Schools도 '백 개의 학파'라는 말입니다.",
+    "낱말 나누기: 제자(諸子, 여러 스승) + 백가(百家, 백 개의 학파) — 여러 스승과 수많은 학파입니다.",
+    "유가, 도가, 법가, 묵가처럼 이름 끝의 '가(家)'가 학파라는 뜻입니다."
+   ],
+   "beats": [
+    "나무 그늘 아래 학자들이 모여 앉았습니다.",
+    "한 사람은 예절을, 다른 사람은 엄한 법을, 또 다른 사람은 자연을 말합니다.",
+    "나라를 바로잡을 길을 저마다 내놓은 여러 학자와 학파가 제자백가입니다."
+   ],
+   "img": "Ancient China, around 400 BC, in a courtyard under a large old tree. Several scholars in long robes and topknots sit on mats in a circle debating lively. One raises a bamboo-slip book as he speaks, another gestures firmly with a fist, and an older one points calmly at the tree and sky. Young students listen around them. No readable text on the bamboo slips.",
+   "imgKo": "기원전 400년 무렵 중국의 큰 나무 아래 마당에서 긴 옷에 상투 튼 학자들이 둥글게 앉아 열띠게 토론한다. 한 사람은 죽간 책을 들고, 한 사람은 주먹을 쥐고, 나이 든 이는 나무와 하늘을 가리킨다."
+  },
+  "법가": {
+   "en": "Legalism",
+   "explain": [
+    "쉬운 뜻: 엄한 법으로 상과 벌을 분명히 해야 나라가 강해진다고 본 학파입니다. 영어 Legalism도 legal(법의)에서 온 말입니다.",
+    "낱말 나누기: 법(法, 지킬 규칙) + 가(家, 학파) — 법을 앞세운 학파입니다.",
+    "법가를 따른 나라에서는 신분이 높든 낮든 같은 법으로 벌을 받았습니다."
+   ]
+  },
+  "진": {
+   "explain": [
+    "쉬운 뜻: 춘추 전국 시대를 끝내고 중국을 처음 하나로 묶은 나라입니다. 그 왕은 스스로 시황제라고 불렀습니다.",
+    "낱말 나누기: 시황제 = 시(始, 처음) + 황제(皇帝, 왕 위의 임금) — 진의 왕이 처음 쓴 '황제'라는 이름입니다.",
+    "진은 수레바퀴 사이 너비까지 하나로 맞추어, 어느 길이든 같은 수레가 달리게 하였습니다."
+   ],
+   "beats": [
+    "관리들이 저울과 됫박을 하나씩 견주어 봅니다.",
+    "모양이 같은 둥근 동전이 쌓이고, 같은 너비의 수레들이 길을 달립니다.",
+    "중국을 처음 하나로 묶고 모든 것을 하나로 맞춘 나라가 진입니다."
+   ],
+   "img": "A busy government office yard in the Qin dynasty, around 220 BC. Officials in black robes check bronze weights and standard measuring cups on a long table, comparing them carefully. Stacks of identical round coins with square holes sit in baskets. Beyond the gate, several ox carts with wheels set exactly the same distance apart roll along a straight dirt road. No readable text.",
+   "imgKo": "기원전 220년 무렵 진의 관청 마당에서 검은 옷의 관리들이 긴 탁자 위 청동 저울추와 됫박을 꼼꼼히 견주고, 바구니에 네모 구멍 둥근 동전이 쌓여 있다. 문밖 곧은 길로 바퀴 너비가 같은 수레들이 달린다."
+  },
+  "군현제": {
+   "explain": [
+    "쉬운 뜻: 나라를 군과 현으로 나누고, 황제가 보낸 관리가 다스리게 한 제도입니다.",
+    "낱말 나누기: 군(郡, 고을) + 현(縣, 작은 고을) + 제(制, 제도) — 고을을 나누어 다스리는 제도입니다.",
+    "관리는 자리를 자식에게 물려줄 수 없었고, 황제가 언제든 바꿀 수 있었습니다."
+   ]
+  },
+  "한": {
+   "explain": [
+    "쉬운 뜻: 진 뒤에 들어서 약 400년 동안 중국을 다스린 왕조입니다. '한자', '한족'의 '한'이 이 나라 이름입니다.",
+    "낱말 나누기: 한(漢, 한수라는 강 이름) — 유방이 받은 땅 한중의 이름이 그대로 나라 이름이 되었습니다.",
+    "한 때 비단길로 들어온 포도, 석류, 호두가 중국 밥상에 오르기 시작하였습니다."
+   ],
+   "beats": [
+    "한나라 수도의 시장이 사람들로 붐빕니다.",
+    "서쪽에서 온 상인이 낙타에서 포도와 호두를 내리고, 비단을 받아 갑니다.",
+    "약 400년 동안 중국을 다스리며 비단길을 연 왕조가 한입니다."
+   ],
+   "img": "A lively market street in Chang'an, the capital of the Han dynasty, around 100 BC. A Central Asian merchant with a pointed felt hat unloads baskets of grapes, pomegranates and walnuts from a two-humped camel, while a Han merchant in a long robe hands him rolls of shining silk. Wooden shop fronts with tiled roofs line the street. No readable text.",
+   "imgKo": "기원전 100년 무렵 한의 수도 장안의 시장에서 뾰족한 펠트 모자를 쓴 서역 상인이 쌍봉낙타에서 포도·석류·호두 바구니를 내리고, 긴 옷의 한나라 상인이 빛나는 비단 두루마리를 건넨다."
+  },
+  "비단길": {
+   "en": "Silk Road",
+   "explain": [
+    "쉬운 뜻: 중국의 비단이 서쪽으로 실려 간 길이라 붙은 이름입니다. 영어 Silk Road도 silk(비단) + road(길)로 짜임이 같습니다.",
+    "낱말 나누기: 비단(누에고치 실로 짠 옷감) + 길 — 비단이 오간 길입니다.",
+    "상인들은 한 번에 끝까지 가지 않고, 오아시스 도시마다 물건을 주고받으며 이어 날랐습니다."
+   ]
+  },
+  "불교": {
+   "en": "Buddhism",
+   "explain": [
+    "쉬운 뜻: 석가모니의 가르침을 따르는 종교입니다. 영어 Buddha는 옛 인도 말로 '깨달은 사람'이라는 뜻입니다.",
+    "낱말 나누기: 불(佛, 부처, 깨달은 사람) + 교(敎, 가르침) — 부처의 가르침입니다.",
+    "석가모니는 왕자로 태어났지만, 늙고 병들고 죽는 괴로움을 보고 궁궐을 떠나 수행하였습니다."
+   ],
+   "beats": [
+    "큰 나무 아래 한 수행자가 조용히 앉아 있습니다.",
+    "여러 신분의 사람들이 모여 그의 가르침을 듣습니다.",
+    "누구나 깨달으면 괴로움에서 벗어난다고 가르친 종교가 불교입니다."
+   ],
+   "img": "Ancient northern India, around 500 BC. Under a large spreading fig tree, a calm teacher in a simple orange robe sits cross-legged and speaks gently, his face peaceful and simply drawn, not a statue likeness. Around him sit people of many kinds: a farmer, a merchant in fine cloth, a poor laborer, a woman with a child and a warrior who has set down his helmet, all listening together. No text.",
+   "imgKo": "기원전 500년 무렵 북인도의 큰 무화과나무 아래 주황색 옷의 스승이 가부좌로 앉아 조용히 말하고, 농부·상인·가난한 일꾼·아이 안은 여인·투구를 내려놓은 무사가 함께 앉아 듣는다."
+  },
+  "대승 불교": {
+   "en": "Mahayana Buddhism",
+   "explain": [
+    "쉬운 뜻: 나 혼자가 아니라 모든 사람을 함께 괴로움에서 건지려는 불교입니다. 영어 Mahayana는 maha(큰) + yana(수레)입니다.",
+    "낱말 나누기: 대(大, 크다) + 승(乘, 수레) + 불교 — '큰 수레'처럼 많은 사람을 태우는 불교입니다.",
+    "보살은 깨달음을 앞두고도 남을 먼저 돕겠다고 다짐한 이로, 대승 불교에서 높이 받듭니다."
+   ],
+   "beats": [
+    "절의 법당에 부드럽게 웃는 보살상이 서 있습니다.",
+    "할머니와 아이, 젊은이가 함께 손을 모아 절합니다.",
+    "모든 사람을 함께 구하려는 불교가 대승 불교입니다."
+   ],
+   "img": "Inside a traditional Korean Buddhist temple hall with colorful painted beams. A gilded bodhisattva statue with a gentle smile and a jeweled crown stands on a lotus pedestal. In front of it, people of different ages, an old woman, a young father with a small child and a teenage girl, bow together with palms joined. Soft candlelight and incense smoke fill the air. No text.",
+   "imgKo": "단청이 화려한 우리나라 절 법당에 보석 관을 쓰고 부드럽게 웃는 금빛 보살상이 연꽃 받침 위에 서 있고, 할머니, 아이를 데려온 아빠, 여학생이 함께 손을 모아 절한다."
+  },
+  "상좌부 불교": {
+   "en": "Theravada Buddhism",
+   "explain": [
+    "쉬운 뜻: 스님이 계율을 지키며 스스로 깨닫는 것을 무겁게 보는 불교입니다. 영어 Theravada는 thera(늙은 스님) + vada(가르침)입니다.",
+    "낱말 나누기: 상좌(上座, 윗자리의 나이 든 스님) + 부(部, 무리) + 불교 — 옛 스님들의 가르침을 지킨 무리입니다.",
+    "타이의 아침 거리에서는 주황색 옷의 스님들이 맨발로 공양 음식을 받습니다."
+   ],
+   "beats": [
+    "이른 아침, 주황색 옷의 스님들이 맨발로 줄지어 걷습니다.",
+    "길가 사람들이 무릎을 꿇고 스님의 그릇에 밥을 담습니다.",
+    "스님이 계율을 지키며 스스로 깨달음을 구하는 불교가 상좌부 불교입니다."
+   ],
+   "img": "Early morning on a quiet street in Thailand with golden temple roofs in the background. A line of barefoot monks in saffron-orange robes walks slowly, each holding a round alms bowl. Local people kneel along the roadside and gently place sticky rice and fruit into the bowls with respect. Soft sunrise light. No text.",
+   "imgKo": "황금빛 절 지붕이 보이는 타이의 이른 아침 거리에서 주황색 옷의 스님들이 맨발로 둥근 발우를 들고 줄지어 걷고, 길가 사람들이 무릎 꿇고 찹쌀밥과 과일을 담는다."
+  },
+  "간다라 양식": {
+   "explain": [
+    "쉬운 뜻: 그리스 조각을 닮은 모습으로 부처를 새긴 미술입니다. 그 전에는 부처를 사람 모습으로 잘 새기지 않았습니다.",
+    "낱말 나누기: 간다라(지금의 파키스탄 북서부 땅 이름) + 양식(樣式, 만드는 모양새) — 간다라 땅의 미술 모양새입니다.",
+    "알렉산드로스 원정 뒤 이 땅에 남은 그리스 문화가 불교와 만나 생겨났습니다."
+   ],
+   "beats": [
+    "조각가가 회색 돌로 부처의 모습을 새기고 있습니다.",
+    "곁에 놓인 그리스 신 조각처럼 물결 머리와 깊은 옷 주름을 새깁니다.",
+    "그리스 조각을 닮게 부처를 새긴 미술이 간다라 양식입니다."
+   ],
+   "img": "A sculptor's workshop in ancient Gandhara, around 100 AD. A sculptor carves a standing Buddha statue from gray stone, giving it wavy hair, a straight nose and deep flowing robe folds. Beside him on a shelf stands a small Greek-style marble statue of a young god with similar wavy hair and drapery, which he glances at as a model. Mountains are visible through the open doorway. No text.",
+   "imgKo": "서기 100년 무렵 간다라의 작업장에서 조각가가 회색 돌로 물결 머리와 깊은 옷 주름의 부처 입상을 새기며, 선반 위 비슷한 머리와 옷 주름의 그리스 신 조각을 본보기로 힐끗 본다."
+  }
+ },
+ "3": {
+  "위진 남북조 시대": {
+   "explain": [
+    "쉬운 뜻: 한이 무너진 뒤 수가 다시 하나로 묶기까지, 중국 땅에 여러 나라가 들어섰다 사라진 혼란기입니다.",
+    "낱말 나누기: 위·진(앞선 두 나라) + 남북조(南北朝, 남쪽과 북쪽 왕조) — 나라 이름을 이은 시대 이름입니다.",
+    "이때 고구려와 백제는 중국의 여러 나라와 오가며 불교를 받아들였습니다."
+   ]
+  },
+  "한화 정책": {
+   "explain": [
+    "쉬운 뜻: 다스리는 쪽이 오히려 다스림받는 한족의 문화를 따라 한 정책입니다. 수가 훨씬 많은 한족을 다스리려는 뜻이었습니다.",
+    "낱말 나누기: 한화(漢化, 한족처럼 됨) + 정책(政策, 나라가 정한 방법) — 한족처럼 바꾸는 정책입니다.",
+    "북위의 효문제는 왕실의 두 글자 성 '탁발'을 한족식 한 글자 성 '원'으로 바꾸었습니다."
+   ],
+   "beats": [
+    "말 타는 옷을 입은 유목민 관리들이 궁궐에 모였습니다.",
+    "관리들이 짧은 옷을 벗고 소매 넓은 한족의 긴 옷으로 갈아입습니다.",
+    "유목 민족 나라가 옷과 말과 성을 한족처럼 바꾸게 한 것이 한화 정책입니다."
+   ],
+   "img": "A palace courtyard of the Northern Wei dynasty, around 490 AD. On the left, nomadic Xianbei officials in short belted riding tunics, trousers, boots and fur-trimmed caps stand waiting. On the right, the same officials now wear long, wide-sleeved Han Chinese court robes and black official hats, bowing politely in neat rows. Servants carry folded robes between the two groups. No text.",
+   "imgKo": "490년 무렵 북위 궁궐 마당. 왼쪽엔 짧은 승마복과 바지, 장화, 털모자 차림의 선비족 관리들이 서 있고, 오른쪽엔 같은 관리들이 소매 넓은 한족 관복과 검은 관모 차림으로 줄지어 절한다."
+  },
+  "대운하": {
+   "en": "Grand Canal",
+   "explain": [
+    "쉬운 뜻: 땅을 길게 파서 남쪽과 북쪽을 배로 오가게 만든 물길입니다. 영어 canal은 라틴 말 canalis(물이 흐르는 관)에서 왔습니다.",
+    "낱말 나누기: 대(大, 크다) + 운(運, 나르다) + 하(河, 물길) — 짐을 나르는 큰 물길입니다.",
+    "중국의 큰 강은 대부분 서쪽에서 동쪽으로 흘러, 남북을 잇는 물길이 따로 필요하였습니다."
+   ]
+  },
+  "당": {
+   "explain": [
+    "쉬운 뜻: 수를 이어 약 300년 동안 중국을 다스리며, 이웃 나라들이 본받은 제도를 갖춘 왕조입니다.",
+    "낱말 나누기: 당(唐, 왕실 조상이 받은 땅 이름) — 우리가 '당나라'라고 부르는 그 나라입니다.",
+    "신라, 발해, 일본에서 온 유학생들이 당의 수도에서 공부하고 과거도 보았습니다."
+   ],
+   "beats": [
+    "장안의 넓은 큰길에 사람과 낙타가 오갑니다.",
+    "머리에 수건을 두른 서역 상인, 일본과 신라의 유학생이 한데 섞여 걷습니다.",
+    "약 300년 동안 중국을 다스리며 세계 사람들이 모여든 왕조가 당입니다."
+   ],
+   "img": "The wide main avenue of Chang'an, the Tang dynasty capital, around 750 AD. Under tall city gates with sweeping tiled roofs, a colorful crowd passes: a Persian merchant with a turban leading a camel, Silla and Japanese students in neat robes carrying books, a Tang lady in a high-waisted dress, and a Buddhist monk. Shops and pagodas line the avenue. No readable text.",
+   "imgKo": "750년 무렵 당의 수도 장안의 넓은 큰길. 기와지붕 성문 아래로 낙타를 끄는 터번 쓴 페르시아 상인, 책을 든 신라·일본 유학생, 허리 높은 치마의 당나라 여인, 스님이 함께 오간다."
+  },
+  "율령": {
+   "explain": [
+    "쉬운 뜻: 나라를 다스리는 기본 법입니다. 잘못하면 받는 벌을 정한 '율'과 나랏일 하는 방법을 정한 '령'을 합친 말입니다.",
+    "낱말 나누기: 율(律, 벌을 정한 법) + 령(令, 나랏일의 규칙) — 벌의 법과 일의 법입니다.",
+    "우리나라에서는 고구려 소수림왕, 신라 법흥왕 때 율령을 반포하였습니다."
+   ]
+  },
+  "균전제": {
+   "explain": [
+    "쉬운 뜻: 땅은 나라의 것이라 여겨, 농민이 일할 나이가 되면 땅을 받고 늙으면 돌려주게 한 제도입니다.",
+    "낱말 나누기: 균(均, 고르다) + 전(田, 밭) + 제(制, 제도) — 밭을 고르게 나누는 제도입니다.",
+    "땅을 받은 농민은 곡식(조), 일하는 날(용), 옷감(조)을 세금으로 냈습니다."
+   ]
+  },
+  "3성 6부": {
+   "explain": [
+    "쉬운 뜻: 명령이 한 관청 마음대로 되지 않도록, 만드는 곳·살피는 곳·실행하는 곳을 따로 둔 당의 관청 짜임입니다.",
+    "낱말 나누기: 3성(三省, 세 관청) + 6부(六部, 여섯 부서) — 관청 셋과 그 아래 부서 여섯입니다.",
+    "6부는 관리, 세금, 예절, 군사, 재판, 건설을 나누어 맡았습니다."
+   ]
+  },
+  "동아시아 문화권": {
+   "explain": [
+    "쉬운 뜻: 중국, 한국, 일본, 베트남이 한 울타리 안처럼 비슷한 문화를 나눈 지역입니다.",
+    "낱말 나누기: 동아시아(아시아의 동쪽) + 문화권(文化圈, 문화가 같은 테두리) — 문화가 같은 동아시아 테두리입니다.",
+    "네 나라는 말은 달라도 한자로 글을 써서, 붓으로 적어 뜻을 나눌 수 있었습니다."
+   ]
+  },
+  "국풍 문화": {
+   "explain": [
+    "쉬운 뜻: 일본이 당의 문화를 그대로 따르지 않고 일본만의 멋을 살려 꽃피운 문화입니다.",
+    "낱말 나누기: 국(國, 나라) + 풍(風, 모습·풍습) + 문화 — 제 나라 모습을 살린 문화입니다.",
+    "귀족 여인들은 여러 겹의 옷을 겹쳐 입고, 가나 문자로 이야기책과 일기를 썼습니다."
+   ],
+   "beats": [
+    "귀족 여인이 여러 겹 색 옷을 겹쳐 입고 앉아 있습니다.",
+    "붓을 들어 부드러운 일본 글자로 이야기를 써 내려갑니다.",
+    "일본만의 글자와 옷차림을 살린 헤이안 시대 문화가 국풍 문화입니다."
+   ],
+   "img": "A Heian-period Japanese noblewoman, around 1000 AD, sits on a tatami floor in a wooden palace room with sliding screens open to a garden. She wears many layered silk robes in graded colors spreading around her, with very long straight black hair. She writes flowing cursive kana characters with a brush on a sheet of paper on a low lacquered desk. The writing is decorative and not readable.",
+   "imgKo": "1000년 무렵 헤이안 시대 궁궐 방, 정원 쪽 미닫이가 열려 있고, 여러 겹 비단옷을 펼쳐 입고 긴 검은 머리를 늘인 귀족 여인이 낮은 옻칠 책상에서 붓으로 흐르는 가나 글자를 쓴다."
+  },
+  "절도사": {
+   "explain": [
+    "쉬운 뜻: 당이 국경을 지키라고 큰 군대를 맡긴 장군입니다. 힘이 너무 커지자 오히려 나라를 흔들었습니다.",
+    "낱말 나누기: 절도(節度, 알맞게 거느려 다스림) + 사(使, 일을 맡은 관리) — 군대를 거느려 다스리는 관리입니다.",
+    "당이 무너진 뒤 절도사들이 저마다 나라를 세워, 50여 년 동안 다섯 왕조와 열 나라가 들어섰습니다."
+   ]
+  },
+  "굽타 왕조": {
+   "explain": [
+    "쉬운 뜻: 북인도를 다시 하나로 묶고, 남의 것보다 인도다운 멋을 살린 문화를 꽃피운 왕조입니다.",
+    "낱말 나누기: 굽타(세운 왕실 집안 이름) + 왕조(王朝, 한 집안이 대를 이어 다스린 나라) — 굽타 집안의 나라입니다.",
+    "이 무렵 인도에서 0을 숫자로 쓰는 셈법이 발달해, 뒤에 아라비아 숫자로 퍼졌습니다."
+   ],
+   "beats": [
+    "바위산을 깎아 만든 동굴 안에 화가들이 있습니다.",
+    "등불을 비추며 벽에 부처와 인도 사람들의 모습을 그립니다.",
+    "인도 고유의 문화를 꽃피운 4세기 북인도의 왕조가 굽타 왕조입니다."
+   ],
+   "img": "Inside a rock-cut Buddhist cave in India during the Gupta period, around 450 AD. Painters stand on wooden scaffolding and paint a large mural of graceful Indian figures, princes, dancers and a seated Buddha, in rich red, green and gold, by the light of oil lamps held by an assistant. Carved stone pillars line the cave hall. No text.",
+   "imgKo": "450년 무렵 굽타 시대 인도의 바위 굴 안에서 화가들이 나무 발판에 올라, 조수가 든 기름 등불에 비추며 우아한 인도 사람들과 앉은 부처를 붉은색·초록·금빛으로 벽에 그린다."
+  },
+  "힌두교": {
+   "en": "Hinduism",
+   "explain": [
+    "쉬운 뜻: 오늘날 인도 사람 대부분이 믿는 종교입니다. 영어 Hindu는 인더스강의 옛 이름 sindhu(강)에서 왔습니다.",
+    "낱말 나누기: 힌두(인더스강 둘레 땅과 사람) + 교(敎, 가르침) — 인도 땅 사람들의 종교입니다.",
+    "힌두교 신자들은 갠지스강을 신성하게 여겨, 강물에 몸을 씻으며 기도합니다."
+   ],
+   "beats": [
+    "넓은 강가 돌계단에 사람들이 모였습니다.",
+    "강물에 몸을 담그고 꽃과 등잔을 띄우며 기도합니다.",
+    "여러 신을 섬기며 갠지스강을 신성하게 여기는 인도의 종교가 힌두교입니다."
+   ],
+   "img": "Sunrise over the wide Ganges River at Varanasi. Long stone steps lead down to the water, where many Hindu worshippers in colorful saris and white dhotis stand waist-deep, praying with folded hands and pouring water from brass pots. Small leaf boats carrying flowers and tiny oil lamps float on the river, and ornate temples rise behind the steps. No text.",
+   "imgKo": "해 뜨는 바라나시 갠지스강가 긴 돌계단 아래에서 색색의 사리와 흰 옷을 입은 신자들이 허리까지 물에 들어가 손을 모으고 놋 항아리로 물을 붓고, 꽃과 작은 등잔을 실은 잎 배가 떠간다."
+  },
+  "이슬람교": {
+   "en": "Islam",
+   "explain": [
+    "쉬운 뜻: 무함마드가 알라의 가르침을 전하며 생겨난 종교입니다. 아랍 말 Islam은 '알라에게 자신을 맡기고 따름'이라는 뜻입니다.",
+    "낱말 나누기: 이슬람(알라를 따름) + 교(敎, 가르침) — 알라를 따르는 가르침입니다.",
+    "신자들은 하루 다섯 번 메카 쪽을 향해 절하며 기도합니다."
+   ],
+   "beats": [
+    "둥근 지붕과 높은 탑이 있는 모스크에 사람들이 모였습니다.",
+    "모두 같은 쪽을 향해 줄지어 서서 엎드려 절합니다.",
+    "유일신 알라를 믿고 그 가르침을 따르는 종교가 이슬람교입니다."
+   ],
+   "img": "Inside a large, bright mosque with a high dome and arched windows, rows of men in simple robes and caps kneel and bow together on long patterned carpets, all facing the same direction toward a decorated niche in the wall. Sunlight streams through the windows onto the worshippers. No people's faces in detail, no readable text.",
+   "imgKo": "높은 둥근 지붕과 아치 창이 있는 밝은 모스크 안에서 소박한 옷과 모자 차림의 사람들이 무늬 카펫 위에 줄지어 모두 같은 쪽 벽감을 향해 엎드려 절하고, 창으로 햇빛이 쏟아진다."
+  },
+  "헤지라": {
+   "en": "Hijra",
+   "explain": [
+    "쉬운 뜻: 박해를 피해 고향 메카를 떠난 이 길이, 오히려 이슬람이 크게 자라는 출발점이 되었습니다.",
+    "낱말 나누기: 아랍 말 hijra(떠나 옮겨 감) — 고향을 떠나 다른 곳으로 옮겨 간 일입니다.",
+    "이슬람 달력은 헤지라가 있었던 622년을 1년으로 삼아 해를 셉니다."
+   ]
+  },
+  "쿠란": {
+   "en": "Quran",
+   "explain": [
+    "쉬운 뜻: 이슬람교 신자에게 가장 귀한 책입니다. 무함마드가 알라에게 들은 말씀을 모았다고 믿습니다.",
+    "낱말 나누기: 아랍 말 qur'an(소리 내어 읽음) — 소리 내어 읽고 외우는 책이라는 이름입니다.",
+    "쿠란은 아랍어로 된 것만 참된 경전으로 여겨, 이슬람이 퍼진 곳마다 아랍어도 함께 퍼졌습니다."
+   ],
+   "beats": [
+    "모스크 한쪽에 아이들이 둥글게 앉아 있습니다.",
+    "선생님을 따라 몸을 앞뒤로 흔들며 책을 소리 내어 읽습니다.",
+    "알라의 말씀을 아랍어로 적은 이슬람교의 경전이 쿠란입니다."
+   ],
+   "img": "In a quiet corner of an old mosque with carved wooden screens, a group of children sit cross-legged in a circle on a carpet, each with a book open on a small wooden folding stand. A gentle teacher in a white robe and cap leads them, and the children read aloud, swaying slightly. The book pages show only decorative patterns and lines, no readable text.",
+   "imgKo": "나무 창살이 있는 옛 모스크 한쪽 카펫에 아이들이 둥글게 앉아 작은 접이 받침에 책을 펴 놓고, 흰 옷의 선생님을 따라 몸을 살짝 흔들며 소리 내어 읽는다."
+  },
+  "칼리프": {
+   "en": "caliph",
+   "explain": [
+    "쉬운 뜻: 무함마드의 뒤를 이어 이슬람 세계를 이끈 우두머리입니다. 나라의 정치와 종교를 함께 맡았습니다.",
+    "낱말 나누기: 아랍 말 khalifa(뒤를 잇는 사람) — 무함마드의 뒤를 이은 사람입니다.",
+    "아바스 왕조의 칼리프가 다스린 바그다드에서는 그리스 책을 아랍어로 많이 옮겼습니다."
+   ],
+   "beats": [
+    "바그다드 궁궐의 넓은 방에 학자들이 모였습니다.",
+    "가운데 앉은 우두머리 앞에서 학자들이 옮겨 적은 책을 펼쳐 보입니다.",
+    "무함마드의 뒤를 이어 이슬람 세계를 이끈 우두머리가 칼리프입니다."
+   ],
+   "img": "A grand hall of an Abbasid palace in Baghdad, around 830 AD, with tiled arches and hanging brass lamps. A caliph in rich robes and a large white turban sits on cushions on a raised platform, shown from the side with a simple, non-portrait face. Scholars in robes kneel before him, presenting open handwritten books and scrolls; shelves of books line the walls. The writing is not readable.",
+   "imgKo": "830년 무렵 바그다드 궁궐의 타일 아치 방, 높은 단의 방석에 화려한 옷과 큰 흰 터번 차림의 우두머리가 앉아 있고, 학자들이 무릎 꿇고 옮겨 적은 책과 두루마리를 펼쳐 보인다."
+  },
+  "아라베스크": {
+   "en": "arabesque",
+   "explain": [
+    "쉬운 뜻: 사람이나 동물 그림 대신 쓴 이슬람의 장식 무늬입니다. 같은 무늬가 끝없이 되풀이되며 벽 한 면을 가득 채웁니다.",
+    "낱말 나누기: 영어 arabesque는 arab(아랍) + esque(~풍) — '아랍풍 무늬'입니다.",
+    "모스크의 타일 벽을 가까이 보면 작은 별과 꽃무늬가 맞물려 끝없이 이어집니다."
+   ],
+   "beats": [
+    "궁전의 벽 한 면이 무늬로 가득합니다.",
+    "가까이 보니 덩굴과 별 모양이 서로 맞물려 끝없이 이어집니다.",
+    "덩굴, 별, 글자를 엮어 꾸민 이슬람의 무늬가 아라베스크입니다."
+   ],
+   "img": "A close view of a wall inside a Moorish palace in Spain. Intricate carved stucco and colorful glazed tiles cover every surface with endlessly repeating patterns of twisting vines, leaves, interlocking eight-pointed stars and geometric shapes in blue, green, white and gold. DOYUN (a boy with round glasses and a navy hoodie) traces one vine line with his finger in amazement. No readable script.",
+   "imgKo": "에스파냐의 이슬람 궁전 벽 가득 덩굴과 잎, 맞물린 팔각 별 무늬가 파랑·초록·흰색·금빛 타일과 회벽 조각으로 끝없이 되풀이되고, 도윤이가 신기한 듯 손가락으로 덩굴 선을 따라간다."
+  },
+  "게르만족": {
+   "explain": [
+    "쉬운 뜻: 로마 사람들이 국경 너머 북쪽 숲에 사는 여러 부족을 한데 묶어 부른 이름입니다.",
+    "낱말 나누기: 게르만 + 족(族, 겨레) — 게르만 겨레로, 오늘날 독일, 영국, 북유럽 사람들의 조상 가운데 하나입니다.",
+    "영국을 뜻하는 England는 게르만족의 한 갈래인 앵글족의 땅(Angle-land)에서 온 이름입니다."
+   ]
+  },
+  "프랑크 왕국": {
+   "explain": [
+    "쉬운 뜻: 게르만족의 한 갈래인 프랑크족이 세워, 서유럽에서 가장 크게 자란 나라입니다.",
+    "낱말 나누기: 프랑크(부족 이름) + 왕국(王國, 왕의 나라) — France라는 이름도 프랑크에서 왔습니다.",
+    "800년 크리스마스에 교황이 카롤루스 대제에게 서로마 황제의 관을 씌워 주었습니다."
+   ]
+  },
+  "비잔티움 제국": {
+   "en": "Byzantine Empire",
+   "explain": [
+    "쉬운 뜻: 로마 제국의 동쪽 절반이 1000년 넘게 이어진 나라입니다.",
+    "낱말 나누기: 비잔티움(수도의 옛 이름) + 제국 — 수도 콘스탄티노폴리스는 '콘스탄티누스의 도시'라는 뜻입니다.",
+    "동서양을 잇는 길목에 있어, 수도에는 비단과 향신료를 사고파는 시장이 붐볐습니다."
+   ]
+  },
+  "그리스 정교": {
+   "en": "Orthodox Church",
+   "explain": [
+    "쉬운 뜻: 비잔티움 황제와 함께 동쪽에서 자란 크리스트교입니다. 영어 orthodox는 ortho(바른) + dox(믿음), '바른 믿음'입니다.",
+    "낱말 나누기: 그리스 + 정(正, 바르다) + 교(敎, 가르침) — 그리스 말을 쓴 교회의 '바른 가르침'입니다.",
+    "그리스 정교에서는 교황 같은 우두머리 대신 황제가 교회의 큰일까지 이끌었습니다."
+   ]
+  },
+  "로마 가톨릭": {
+   "en": "Roman Catholic",
+   "explain": [
+    "쉬운 뜻: 로마의 교황을 우두머리로 서유럽에서 자란 크리스트교입니다. 우리나라의 성당도 로마 가톨릭 교회에 속합니다.",
+    "낱말 나누기: 로마 + 가톨릭(그리스 말 katholikos, 온 세상에 두루) — 온 세상을 아우르려 한 교회입니다.",
+    "중세 마을 사람들은 성당 종소리로 하루를 시작하고, 일요일마다 미사에 모였습니다."
+   ]
+  },
+  "교황": {
+   "en": "pope",
+   "explain": [
+    "쉬운 뜻: 로마 가톨릭 교회에서 가장 높은 성직자입니다. 영어 pope는 '아버지'를 뜻하는 말 papa에서 왔습니다.",
+    "낱말 나누기: 교(敎, 종교) + 황(皇, 임금) — 종교의 임금처럼 가장 높은 자리입니다.",
+    "새 교황을 뽑을 때 성당 굴뚝으로 흰 연기가 오르면 뽑혔다는 신호입니다."
+   ],
+   "beats": [
+    "큰 성당 앞 광장에 사람들이 가득 모였습니다.",
+    "지붕 위 작은 굴뚝에서 하얀 연기가 피어오르자 사람들이 환호합니다.",
+    "로마 가톨릭 교회에서 가장 높은 성직자가 교황입니다."
+   ],
+   "img": "St. Peter's Square in Vatican City at dusk, packed with a huge crowd of people from many countries holding umbrellas and small flags without writing. All eyes look up at a small chimney on the roof of a chapel, from which white smoke is rising into the purple sky. People cheer and raise their hands. No readable text.",
+   "imgKo": "해 질 녘 바티칸 성 베드로 광장에 여러 나라 사람들이 빽빽이 모여, 성당 지붕 위 작은 굴뚝에서 하얀 연기가 보랏빛 하늘로 오르는 것을 올려다보며 손을 들고 환호한다."
+  },
+  "카노사의 굴욕": {
+   "explain": [
+    "쉬운 뜻: 교회에서 쫓겨난 황제가 맨발로 교황에게 용서를 빈 사건입니다. 황제조차 교황을 이기지 못했습니다.",
+    "낱말 나누기: 카노사(이탈리아의 성 이름) + 굴욕(屈辱, 굽히고 창피를 당함) — 카노사 성에서 당한 창피입니다.",
+    "파문당한 황제는 신하와 백성이 따르지 않아도 되었기에, 황제는 버틸 수 없었습니다."
+   ],
+   "beats": [
+    "눈 덮인 산 위에 돌로 쌓은 성이 서 있습니다.",
+    "성문 앞 눈밭에 거친 옷을 입은 사람이 맨발로 서서 기다립니다.",
+    "황제가 교황에게 용서를 빈 1077년의 사건이 카노사의 굴욕입니다."
+   ],
+   "img": "A medieval stone castle on a snowy hilltop in northern Italy in January 1077. Before its closed wooden gate, a lone man in a plain coarse brown penitent's robe stands barefoot in the snow with his head bowed and hands clasped, seen from behind. A few attendants wait at a distance, and snowflakes fall. High on the castle wall, a figure in white robes looks down. No text.",
+   "imgKo": "1077년 1월, 눈 덮인 언덕 위 돌성의 닫힌 나무 문 앞에서 거친 갈색 옷을 입은 한 사람이 맨발로 고개를 숙이고 손을 모은 채 서 있는 뒷모습. 성벽 위에서 흰 옷의 사람이 내려다본다."
+  },
+  "봉건 사회": {
+   "en": "feudal society",
+   "explain": [
+    "쉬운 뜻: 땅을 주고 충성을 받는 약속으로 위아래가 묶인 중세 서유럽 사회입니다. 영어 feudal은 라틴 말 feudum(받은 땅)에서 왔습니다.",
+    "낱말 나누기: 봉건(封建, 땅을 나누어 주고 세움) + 사회 — 땅을 나누어 주는 약속으로 이루어진 사회입니다.",
+    "바이킹과 이슬람 세력이 쳐들어오자, 사람들은 가까운 힘센 귀족에게 몸을 맡겼습니다."
+   ]
+  },
+  "주군": {
+   "explain": [
+    "쉬운 뜻: 기사에게 땅을 내려 주며 '나를 섬겨라' 하고 약속을 맺은 윗사람입니다. 그 대신 기사를 지켜 줄 의무가 있었습니다.",
+    "낱말 나누기: 주(主, 주인) + 군(君, 임금) — 섬기는 주인입니다.",
+    "약속식에서 봉신이 두 손을 모아 내밀면, 주군이 그 손을 감싸 쥐었습니다."
+   ]
+  },
+  "봉신": {
+   "en": "vassal",
+   "explain": [
+    "쉬운 뜻: 윗사람에게 땅을 받고, 그 대가로 충성과 싸움을 약속한 사람입니다. 영어 vassal은 '섬기는 사람'이라는 옛말에서 왔습니다.",
+    "낱말 나누기: 봉(封, 땅을 받음) + 신(臣, 신하) — 땅을 받은 신하입니다.",
+    "봉신은 정해진 날 동안 주군의 싸움에 나가야 했고, 주군이 붙잡히면 몸값도 보탰습니다."
+   ]
+  },
+  "장원": {
+   "en": "manor",
+   "explain": [
+    "쉬운 뜻: 영주가 다스린 농촌 마을입니다. 밭과 방앗간, 교회까지 갖추어 필요한 것을 거의 마을 안에서 해결하였습니다.",
+    "낱말 나누기: 장(莊, 농장) + 원(園, 뜰) — 넓은 농장입니다. 영어 manor는 '머물러 사는 집'에서 왔습니다.",
+    "밭을 셋으로 나누어 봄 곡식, 가을 곡식을 심고 한 곳은 쉬게 하며 돌아가며 썼습니다."
+   ]
+  },
+  "영주": {
+   "en": "lord",
+   "explain": [
+    "쉬운 뜻: 장원의 주인입니다. 영어 lord는 옛 영어 hlaford, '빵을 지키는 사람'에서 온 말입니다.",
+    "낱말 나누기: 영(領, 거느리다) + 주(主, 주인) — 땅과 사람을 거느린 주인입니다.",
+    "농노가 영주의 방앗간에서 밀을 빻으면, 그 대가로 밀가루 일부를 바쳤습니다."
+   ],
+   "beats": [
+    "돌로 지은 저택 앞마당에 영주가 서 있습니다.",
+    "농민들이 밀 자루와 닭, 달걀 바구니를 들고 줄지어 옵니다.",
+    "장원을 가지고 농민을 다스린 귀족이 영주입니다."
+   ],
+   "img": "A medieval European manor in autumn. In front of a stone manor house with a small tower, a lord in a fur-lined cloak stands with a steward who records in a ledger. A line of peasants in plain wool tunics brings sacks of grain, baskets of eggs and live chickens to hand over. A water mill and a village church stand in the background. Faces are generic. No readable text.",
+   "imgKo": "가을의 중세 장원, 작은 탑이 있는 돌 저택 앞에 털 망토를 두른 영주가 장부에 적는 관리와 서 있고, 양털 옷의 농민들이 밀 자루, 달걀 바구니, 닭을 들고 줄지어 온다. 뒤로 물레방아와 교회가 보인다."
+  },
+  "농노": {
+   "en": "serf",
+   "explain": [
+    "쉬운 뜻: 장원에 매여 영주의 땅을 갈던 농민입니다. 영어 serf는 라틴 말 servus(종)에서 왔습니다.",
+    "낱말 나누기: 농(農, 농사) + 노(奴, 종) — 종처럼 땅에 매인 농민입니다.",
+    "농노는 일주일에 사흘쯤은 영주의 밭에서, 나머지 날은 자기 밭에서 일하였습니다."
+   ],
+   "beats": [
+    "새벽 들판에서 농민 가족이 소에 쟁기를 매었습니다.",
+    "먼저 영주의 넓은 밭을 갈고, 해 질 녘에야 자기 작은 밭으로 갑니다.",
+    "장원에 매여 영주의 땅을 갈던 농민이 농노입니다."
+   ],
+   "img": "A medieval European field at early morning mist. A serf family in patched wool clothes works a large strip field: the father guides a heavy plow pulled by two oxen, the mother scatters seed from a cloth bag, and a child chases birds away. In the distance stands the lord's stone manor house, and beside the field is their own tiny strip with a small wooden hut. No text.",
+   "imgKo": "안개 낀 새벽 중세 들판에서 기운 양털 옷의 농노 가족이 일한다. 아빠는 소 두 마리가 끄는 쟁기를 잡고, 엄마는 씨를 뿌리고, 아이는 새를 쫓는다. 멀리 영주의 돌 저택이, 옆에는 그들의 작은 밭과 오두막이 있다."
+  },
+  "십자군 전쟁": {
+   "en": "Crusades",
+   "explain": [
+    "쉬운 뜻: 서유럽 사람들이 성지 예루살렘을 되찾겠다며 200년 가까이 일으킨 원정입니다. 영어 crusade는 라틴 말 crux(십자가)에서 왔습니다.",
+    "낱말 나누기: 십자(十字, 열 십 자 모양) + 군(軍, 군대) + 전쟁 — 십자가를 단 군대의 전쟁입니다.",
+    "원정에 나선 사람들은 옷에 붉은 십자가 표시를 달았습니다."
+   ]
+  },
+  "지중해 무역권": {
+   "explain": [
+    "쉬운 뜻: 이탈리아 상인들이 동방 물건을 사고판 지중해의 무역 지역입니다. 영어 Mediterranean도 medi(가운데) + terra(땅)입니다.",
+    "낱말 나누기: 지중해(地中海, 땅 가운데 바다) + 무역권(貿易圈, 사고파는 테두리) — 지중해의 무역 테두리입니다.",
+    "베네치아는 바다 위 섬에 세운 도시라, 길 대신 물길로 배가 다녔습니다."
+   ]
+  },
+  "흑사병": {
+   "en": "Black Death",
+   "explain": [
+    "쉬운 뜻: 몇 년 사이 유럽 사람 셋 가운데 한 명꼴로 목숨을 앗아 간 무서운 병입니다.",
+    "낱말 나누기: 흑(黑, 검다) + 사(死, 죽음) + 병(病) — 영어 Black Death와 같은 '검은 죽음'입니다.",
+    "쥐에 붙어사는 벼룩이 옮긴 병균 때문이었다는 것이 오늘날 밝혀졌습니다."
+   ]
+  },
+  "백년 전쟁": {
+   "en": "Hundred Years' War",
+   "explain": [
+    "쉬운 뜻: 영국과 프랑스가 프랑스 왕위와 땅을 두고 벌인 긴 전쟁입니다. 이름은 백 년이지만 실제로는 116년입니다.",
+    "낱말 나누기: 백년(百年, 100년) + 전쟁(戰爭, 나라끼리 싸움) — 백 년 넘게 이어진 싸움입니다.",
+    "전쟁 동안 말 탄 기사보다 활과 대포를 쓰는 군대가 더 중요해졌습니다."
+   ]
+  },
+  "고딕 양식": {
+   "en": "Gothic",
+   "explain": [
+    "쉬운 뜻: 뾰족한 탑과 색유리 창으로, 하늘을 향해 솟은 듯 지은 중세 성당 건축입니다.",
+    "낱말 나누기: 고딕(고트족풍, 르네상스 때 '거칠다'며 붙인 이름) + 양식(樣式, 모양새)입니다.",
+    "벽 바깥의 버팀벽이 높은 지붕을 떠받쳐 주어, 벽에 큰 창을 낼 수 있었습니다."
+   ],
+   "beats": [
+    "하늘을 찌를 듯 뾰족한 탑이 솟은 성당이 서 있습니다.",
+    "안으로 들어가니 색유리 창으로 들어온 빛이 바닥을 알록달록 물들입니다.",
+    "뾰족한 탑과 색유리 창이 특징인 중세 건축이 고딕 양식입니다."
+   ],
+   "img": "A split view of a medieval Gothic cathedral. Left: the outside, with two tall pointed spires reaching into the sky, pointed arches, and flying buttresses supporting the high walls. Right: the inside, a very tall nave where sunlight pours through huge stained-glass windows, casting patches of red, blue and gold light on the stone floor where a few people stand looking up. No readable text.",
+   "imgKo": "둘로 나눈 그림. 왼쪽은 하늘로 솟은 뾰족한 탑 둘과 높은 벽을 떠받치는 버팀벽이 있는 성당 겉모습, 오른쪽은 아주 높은 성당 안에서 큰 색유리 창으로 든 햇빛이 돌바닥을 빨강·파랑·금빛으로 물들인다."
+  },
+  "스콜라 철학": {
+   "en": "scholasticism",
+   "explain": [
+    "쉬운 뜻: '믿음이 옳다는 것을 생각으로도 따져 증명할 수 있다'고 본 중세 학자들의 학문입니다.",
+    "낱말 나누기: 스콜라(라틴 말 schola, 학교) + 철학 — 학교의 철학입니다. 영어 school과 같은 뿌리입니다.",
+    "중세 대학에서는 질문을 던지고 찬성과 반대 근거를 차례로 따지는 토론으로 공부하였습니다."
+   ],
+   "beats": [
+    "돌로 지은 대학 강당에 학생들이 앉아 있습니다.",
+    "검은 옷의 학자가 두꺼운 책을 펴고 묻고 답하며 근거를 하나하나 따집니다.",
+    "크리스트교 믿음을 이성과 논리로 설명하려 한 학문이 스콜라 철학입니다."
+   ],
+   "img": "A medieval university lecture hall with stone arches and tall narrow windows, around 1250. A master in a black academic gown stands at a wooden lectern with a large open handwritten book, raising one finger to make a point. Two students stand facing each other in the middle, one gesturing as if objecting and the other answering, while rows of students in dark robes take notes on wax tablets. No readable text.",
+   "imgKo": "1250년 무렵 돌 아치의 중세 대학 강당에서 검은 옷의 학자가 큰 책을 편 강대에서 손가락을 들어 말하고, 가운데 두 학생이 마주 서서 반대하고 답하며, 다른 학생들은 밀랍 판에 받아 적는다."
+  },
+  "르네상스": {
+   "en": "Renaissance",
+   "explain": [
+    "쉬운 뜻: 신을 먼저 그리던 화가들이 사람의 몸과 얼굴, 표정을 생생하게 그리기 시작한 때의 문화 운동입니다.",
+    "낱말 나누기: 프랑스 말 re(다시) + naissance(태어남) — 그리스·로마 문화가 다시 태어남입니다.",
+    "레오나르도 다빈치는 화가이면서 하늘을 나는 기계와 다리를 설계한 발명가였습니다."
+   ],
+   "beats": [
+    "피렌체의 작업실에서 화가가 큰 그림을 그리고 있습니다.",
+    "모델의 얼굴과 손을 꼼꼼히 보며, 멀리 있는 것은 작게 그려 깊이를 줍니다.",
+    "그리스·로마 문화를 되살리고 사람을 중심에 둔 문화 운동이 르네상스입니다."
+   ],
+   "img": "A Renaissance painter's workshop in Florence around 1500, with an arched window showing red-tiled rooftops and a great dome. A painter in a cap and tunic stands at a large easel painting a realistic portrait of a young woman, who sits as a model by the window. Around the room are Greek and Roman marble statues, sketches of human hands and a wooden model of a flying machine with bat-like wings. No readable text.",
+   "imgKo": "1500년 무렵 피렌체의 작업실, 아치 창밖으로 붉은 지붕과 큰 둥근 지붕이 보이고, 화가가 큰 이젤에 창가 모델의 얼굴을 생생하게 그린다. 방에는 그리스·로마 조각, 손 스케치, 박쥐 날개 모양 비행 기계 모형이 있다."
+  }
+ },
+ "4": {
+  "송": {
+   "explain": [
+    "쉬운 뜻: 당이 무너진 뒤의 혼란을 끝내고, 군인보다 학자 관리를 높인 중국 왕조입니다. 고려와 같은 때의 나라입니다.",
+    "낱말 나누기: 송(宋, 세운 사람이 다스리던 땅 이름) — 우리가 '송나라'라고 부르는 그 나라입니다.",
+    "송의 도시는 밤에도 가게 문을 열었고, 세계에서 처음으로 종이돈 교자가 쓰였습니다."
+   ],
+   "beats": [
+    "밤이 되었는데도 도시의 거리가 등불로 환합니다.",
+    "가게마다 물건이 가득하고, 사람들은 종이돈을 내고 물건을 삽니다.",
+    "상업과 도시가 크게 발달한 중국의 왕조가 송입니다."
+   ],
+   "img": "A bustling night market street in Kaifeng, capital of the Song dynasty, around 1100. Red paper lanterns glow above wooden two-story shops selling tea, silk, books and steamed buns. Townspeople in long robes stroll and bargain, and one customer pays with a rectangular paper note printed only with decorative patterns. A stone bridge arches over a canal with small boats. No readable text.",
+   "imgKo": "1100년 무렵 송의 수도 카이펑의 밤거리, 붉은 등불 아래 차·비단·책·만두를 파는 2층 가게들이 늘어서고, 긴 옷의 사람들이 흥정하며 한 손님이 무늬만 찍힌 네모난 종이돈을 낸다. 운하 위에 돌다리가 있다."
+  },
+  "문치주의": {
+   "explain": [
+    "쉬운 뜻: 칼보다 붓, 곧 군인보다 학문을 갖춘 관리를 높여 나라를 다스리는 방식입니다.",
+    "낱말 나누기: 문(文, 학문) + 치(治, 다스리다) + 주의(主義, 앞세우는 생각) — 학문으로 다스림을 앞세움입니다.",
+    "송에서는 장군도 문신의 지휘를 받았고, 과거 시험에 황제가 직접 문제를 내기도 하였습니다."
+   ],
+   "beats": [
+    "궁궐 시험장에 수험생들이 줄지어 앉아 붓을 놀립니다.",
+    "갑옷 입은 장군들은 한쪽에 물러서 있고, 글 잘하는 관리들이 앞에 섭니다.",
+    "군인보다 학문을 갖춘 관리를 높여 다스리는 방식이 문치주의입니다."
+   ],
+   "img": "A palace examination hall in the Song dynasty. Rows of candidates in plain scholar robes sit at small desks writing with brushes, while the emperor, a generic figure seen from behind on a raised throne, watches over them. Civil officials in red robes holding writing tablets stand in front near the throne, and a few generals in armor stand quietly at the far back of the hall. No readable text.",
+   "imgKo": "송나라 궁궐 시험장에서 수험생들이 작은 책상에 줄지어 앉아 붓으로 쓰고, 높은 자리에 앉은 황제의 뒷모습이 지켜본다. 붉은 옷의 문신들이 앞쪽에 서고, 갑옷 입은 장군들은 맨 뒤에 조용히 서 있다."
+  },
+  "사대부": {
+   "explain": [
+    "쉬운 뜻: 핏줄보다 과거 시험으로 관리가 되어, 학문과 정치를 함께 이끈 송의 새 지배층입니다.",
+    "낱말 나누기: 사(士, 선비) + 대부(大夫, 높은 벼슬아치) — 선비이면서 관리인 사람입니다.",
+    "송에서는 인쇄술이 발달해 책값이 싸지자, 과거를 준비하는 사람이 크게 늘었습니다."
+   ],
+   "beats": [
+    "관청 일을 마친 관리가 서재에 앉았습니다.",
+    "유교 경전을 펴 놓고 읽다가, 붓을 들어 시를 짓습니다.",
+    "유학을 공부해 과거로 관리가 된 송의 지배층이 사대부입니다."
+   ],
+   "img": "A Song dynasty scholar-official's study in the evening, with a round window opening onto bamboo in a garden. A man in a dark official robe and a soft black cap sits at a desk stacked with printed books, reading one thoughtfully, while a sheet of paper, an inkstone and brushes are ready beside him. A landscape painting hangs on the wall. No readable text.",
+   "imgKo": "저녁의 송나라 관리 서재, 둥근 창 너머로 대나무 정원이 보이고, 검은 관복에 부드러운 검은 모자를 쓴 사람이 인쇄된 책이 쌓인 책상에서 책을 읽는다. 곁에 종이와 벼루, 붓이 놓여 있고 벽에 산수화가 걸려 있다."
+  },
+  "성리학": {
+   "en": "Neo-Confucianism",
+   "explain": [
+    "쉬운 뜻: 우주의 이치와 사람의 본성을 따진 새 유학입니다. 영어 Neo-Confucianism도 neo(새) + Confucianism(유학)입니다.",
+    "낱말 나누기: 성(性, 사람의 본성) + 리(理, 이치) + 학(學, 학문) — 본성과 이치를 따지는 학문입니다.",
+    "조선 서당에서 아이들이 읽은 『소학』은 주희가 엮어 펴낸 책입니다."
+   ]
+  },
+  "북방 민족": {
+   "explain": [
+    "쉬운 뜻: 만리장성 북쪽 바깥에서 양을 치고 사냥하며 말을 달리던 여러 민족입니다.",
+    "낱말 나누기: 북방(北方, 북쪽) + 민족(民族, 말과 풍습이 같은 겨레) — 북쪽에 사는 겨레입니다.",
+    "거란과 여진은 고려와도 맞닿아, 고려는 이들과 싸우기도 하고 사귀기도 하였습니다."
+   ]
+  },
+  "몽골 제국": {
+   "en": "Mongol Empire",
+   "explain": [
+    "쉬운 뜻: 아시아에서 유럽까지 걸쳐 역사상 땅이 가장 넓었던 나라입니다. 영어 empire는 imperium(명령해 다스림)에서 왔습니다.",
+    "낱말 나누기: 몽골(겨레 이름) + 제국(帝國, 황제가 다스리는 큰 나라) — 몽골이 세운 큰 나라입니다.",
+    "동쪽 고려 가까이부터 서쪽 동유럽까지, 말을 타고 가도 몇 달이 걸리는 넓이였습니다."
+   ]
+  },
+  "칭기즈 칸": {
+   "explain": [
+    "쉬운 뜻: 흩어진 몽골 부족을 하나로 묶고 몽골 제국을 세운 지도자입니다.",
+    "낱말 나누기: 칭기즈(테무친이 받은 칭호) + 칸(유목 민족의 임금) — 몽골 사람들이 테무친을 높여 부른 이름입니다.",
+    "칭기즈 칸은 군사를 10명, 100명, 1,000명 단위로 묶어 빠르게 움직이게 하였습니다."
+   ],
+   "beats": [
+    "넓은 초원에 둥근 천막과 깃발이 늘어섰습니다.",
+    "여러 부족의 우두머리들이 말에서 내려 한 사람 앞에 모입니다.",
+    "몽골 부족을 하나로 묶은 지도자가 칭기즈 칸입니다."
+   ],
+   "img": "The vast green Mongolian steppe in 1206 under a huge blue sky. Many round white felt yurts stand in a wide circle, and tall poles topped with white horsehair banners wave in the wind. Chiefs of many tribes in fur-trimmed robes dismount from their horses and gather to bow before one leader, who stands seen from behind on a low platform in front of the largest yurt. No weapons, no text.",
+   "imgKo": "1206년 끝없는 파란 하늘 아래 몽골 초원, 흰 펠트 천막이 둥글게 늘어서고 흰 말총 깃발이 바람에 날린다. 털옷 차림의 여러 부족 우두머리들이 말에서 내려, 가장 큰 천막 앞 단 위에 선 한 사람의 뒷모습 앞에 모여 절한다."
+  },
+  "몽골 제일주의": {
+   "explain": [
+    "쉬운 뜻: 수가 적은 몽골인이 많은 한족을 다스리려고 민족마다 등급을 매긴 원의 방식입니다.",
+    "낱말 나누기: 몽골 + 제일(第一, 첫째) + 주의(主義, 앞세우는 생각) — 몽골인을 첫째로 앞세움입니다.",
+    "가장 아래 남인은 마지막까지 원에 맞섰던 옛 남송 땅 사람들이었습니다."
+   ]
+  },
+  "역참": {
+   "explain": [
+    "쉬운 뜻: 말을 갈아타는 휴게소 같은 곳입니다. 지친 말을 두고 새 말로 바꾸어 타고 계속 달렸습니다.",
+    "낱말 나누기: 역(驛, 말을 갈아타는 곳) + 참(站, 쉬어 가는 곳) — 기차역의 '역'과 같은 글자입니다.",
+    "몽골 제국의 역참은 수천 곳이나 되어, 급한 소식은 하루에 수백 km씩 전해졌습니다."
+   ],
+   "beats": [
+    "초원 길가에 천막과 마구간이 있는 쉼터가 있습니다.",
+    "땀 흘린 말을 탄 전령이 도착하자, 기다리던 새 말에 바로 올라탑니다.",
+    "길을 따라 말과 잠자리를 갖추어 둔 곳이 역참입니다."
+   ],
+   "img": "A Mongol Empire relay station on a dusty steppe road, around 1270. There are a few felt yurts, a wooden stable and water troughs. A tired messenger on a sweating horse arrives at a gallop, while a station keeper holds a fresh saddled horse ready, and the messenger shows a small round metal pass on a cord. Other horses rest and drink in the background. No readable text.",
+   "imgKo": "1270년 무렵 먼지 이는 초원 길가의 몽골 역참, 천막 몇 채와 나무 마구간, 물통이 있다. 땀에 젖은 말을 탄 전령이 달려오고, 관리인이 안장 얹은 새 말을 잡고 기다리며, 전령은 끈에 단 둥근 쇠 통행증을 내보인다."
+  },
+  "조공·책봉": {
+   "en": "tribute system",
+   "explain": [
+    "쉬운 뜻: 선물과 인정을 주고받으며 나라끼리 평화롭게 지내던 동아시아의 외교 방식입니다. 영어 tribute도 '바치는 것'입니다.",
+    "낱말 나누기: 조공(朝貢, 찾아가 바침) + 책봉(冊封, 문서로 지위를 내려 줌) — 바치고 인정받는 관계입니다.",
+    "사절단은 인삼, 종이 같은 특산물을 가져가고, 돌아올 때 비단과 책을 받아 왔습니다."
+   ]
+  },
+  "명": {
+   "explain": [
+    "쉬운 뜻: 몽골의 원을 몰아내고 한족이 다시 세운 왕조입니다.",
+    "낱말 나누기: 명(明, 밝다) — '밝은 나라'라는 뜻의 이름입니다.",
+    "지금 베이징 둘레에 남은 벽돌 만리장성은 대부분 명 때 다시 쌓은 것입니다."
+   ],
+   "beats": [
+    "항구에 집채만 한 나무배들이 줄지어 떠 있습니다.",
+    "돛을 여러 개 단 배들이 비단과 도자기를 싣고 먼 바다로 떠납니다.",
+    "원을 몰아내고 한족이 세운 왕조가 명입니다."
+   ],
+   "img": "A Ming dynasty harbor around 1410. An enormous wooden treasure ship with nine red sails and a high stern, far larger than the small boats around it, waits at the dock. Sailors load crates of blue-and-white porcelain and bolts of silk, while a fleet of many more large ships sails out toward the open sea. No weapons, no readable text.",
+   "imgKo": "1410년 무렵 명나라 항구, 붉은 돛 아홉 개를 단 거대한 나무 보물선이 작은 배들 사이에 서 있고, 선원들이 청화 백자 상자와 비단을 싣는다. 뒤로 큰 배 여러 척이 넓은 바다로 나아간다."
+  },
+  "청": {
+   "explain": [
+    "쉬운 뜻: 만주의 여진족이 세워 중국 전체를 다스린 마지막 왕조입니다.",
+    "낱말 나누기: 청(淸, 맑다) — '맑은 나라'라는 뜻의 이름입니다. 여진족은 이 무렵부터 만주족이라 불렸습니다.",
+    "청은 명보다 훨씬 넓게 몽골, 타이완, 티베트까지 다스렸습니다."
+   ],
+   "beats": [
+    "거리의 남자들이 머리 앞쪽을 깎고 뒷머리를 길게 땋았습니다.",
+    "관청에서는 만주족 관리와 한족 관리가 나란히 앉아 일합니다.",
+    "만주족이 세워 중국을 다스린 마지막 왕조가 청입니다."
+   ],
+   "img": "A Qing dynasty government office in Beijing around 1750. Two officials sit side by side at the same long desk reviewing documents: one Manchu official and one Han Chinese official, both in Qing court robes with round hats. Through the open door, men on the street wear the queue hairstyle, with the front of the head shaved and a long braid down the back. No readable text.",
+   "imgKo": "1750년 무렵 베이징의 청나라 관청에서 만주족 관리와 한족 관리가 둥근 모자에 청나라 관복을 입고 한 책상에 나란히 앉아 문서를 살핀다. 열린 문밖 거리의 남자들은 앞머리를 깎고 뒷머리를 길게 땋았다."
+  },
+  "신사": {
+   "en": "gentry",
+   "explain": [
+    "쉬운 뜻: 벼슬을 그만두고 고향에 돌아와서도, 마을을 이끄는 어른으로 대접받은 명·청의 지배층입니다.",
+    "낱말 나누기: 신(紳, 관리가 허리에 매던 큰 띠) + 사(士, 선비) — 관리의 띠를 맨 선비입니다.",
+    "신사는 세금과 노동을 덜어 받는 대신, 흉년이면 곡식을 풀어 마을을 도왔습니다."
+   ],
+   "beats": [
+    "마을 앞 냇가에서 사람들이 무너진 다리를 고칩니다.",
+    "학자 옷을 입은 어른이 일을 이끌고 비용을 내어 줍니다.",
+    "명·청 때 지방 사회를 이끈 학자 출신 지배층이 신사입니다."
+   ],
+   "img": "A village in Ming-Qing China. By a stream, villagers repair a broken stone bridge, carrying stones and timber. An older man in a long scholar's robe and cap directs the work calmly, pointing at the bridge, while a servant beside him hands coins to a foreman. Behind them stands the village's small school building with a tiled roof. No readable text.",
+   "imgKo": "명·청 시대 마을 냇가에서 사람들이 돌과 나무를 날라 무너진 돌다리를 고치고, 긴 학자 옷의 나이 든 어른이 다리를 가리키며 일을 이끌며, 곁의 하인이 일꾼 우두머리에게 돈을 건넨다. 뒤에 작은 기와 학교가 있다."
+  },
+  "양명학": {
+   "explain": [
+    "쉬운 뜻: 알면서 행하지 않으면 아직 모르는 것이라며, 앎과 실천을 하나로 본 명의 유학입니다.",
+    "낱말 나누기: 양명(陽明, 왕수인의 호) + 학(學, 학문) — 왕양명의 학문입니다.",
+    "효도는 책으로 외워서가 아니라, 부모님께 직접 잘해 드릴 때 아는 것이 된다고 보았습니다."
+   ]
+  },
+  "막부": {
+   "en": "shogunate",
+   "explain": [
+    "쉬운 뜻: 일본에서 천황 대신 무사들이 실제로 나라를 다스린 정부입니다.",
+    "낱말 나누기: 막(幕, 천막) + 부(府, 관청) — 싸움터 장군의 천막에서 일을 보던 데서 나온 말입니다.",
+    "일본에는 가마쿠라, 무로마치, 에도의 세 막부가 차례로 들어섰습니다."
+   ]
+  },
+  "쇼군": {
+   "en": "shogun",
+   "explain": [
+    "쉬운 뜻: 무사 가운데 가장 높은 우두머리입니다. 천황이 이 자리를 내리는 형식이었지만, 실제 힘은 쇼군에게 있었습니다.",
+    "낱말 나누기: 쇼군(將軍, 장군의 일본 발음) — '정이대장군'을 줄인 말입니다.",
+    "에도 막부가 있던 에도가 오늘날 일본의 수도 도쿄입니다."
+   ],
+   "beats": [
+    "넓은 성의 큰 방에 무사들이 줄지어 엎드려 있습니다.",
+    "맨 앞 높은 자리에 앉은 사람에게 모두 고개를 숙입니다.",
+    "막부의 우두머리로 일본을 실제로 다스린 무사가 쇼군입니다."
+   ],
+   "img": "A vast audience hall in Edo Castle around 1650, with tatami floors, painted gold sliding screens and wooden pillars. Rows of samurai lords in formal stiff-shouldered robes kneel and bow deeply toward a raised platform at the far end, where the shogun sits in dark silk robes, shown from behind and small in the distance. No swords or weapons anywhere, no readable text.",
+   "imgKo": "1650년 무렵 에도성의 넓은 다다미 방, 금빛 미닫이 그림과 나무 기둥이 있고, 어깨가 각진 예복의 무사 영주들이 줄지어 무릎 꿇고 맨 끝 높은 단에 앉은 쇼군의 뒷모습을 향해 깊이 절한다."
+  },
+  "다이묘": {
+   "en": "daimyo",
+   "explain": [
+    "쉬운 뜻: 쇼군에게서 땅을 받아 자기 지방을 다스린 무사 영주입니다.",
+    "낱말 나누기: 다이묘(大名) — 대(大, 크다) + 명(名, 이름 붙은 땅), 넓은 땅을 가진 무사입니다.",
+    "다이묘들은 지방마다 높은 돌담 위에 하얀 성을 쌓았습니다."
+   ],
+   "beats": [
+    "높은 돌담 위에 하얀 성이 우뚝 서 있습니다.",
+    "성 아래 마을에서는 무사와 상인, 농민이 살며 세금을 바칩니다.",
+    "쇼군에게 땅을 받아 지방을 다스린 무사 영주가 다이묘입니다."
+   ],
+   "img": "A white Japanese castle with layered curved roofs standing on high stone walls above a castle town, around 1600. In the town below, samurai without swords walk the streets, merchants open shops, and farmers carry bales of rice to a storehouse by the castle gate as tax. Rice fields and mountains surround the town. No readable text.",
+   "imgKo": "1600년 무렵 높은 돌담 위에 겹겹이 휜 지붕의 하얀 성이 서 있고, 성 아래 마을에서 무사가 거닐고 상인이 가게를 열며 농민이 쌀가마를 성문 옆 창고로 나른다. 둘레로 논과 산이 펼쳐진다."
+  },
+  "산킨코타이": {
+   "explain": [
+    "쉬운 뜻: 다이묘를 쇼군 가까이 두고 지켜보려고, 에도와 자기 땅을 번갈아 오가며 살게 한 제도입니다.",
+    "낱말 나누기: 산킨(参勤, 찾아가 섬김) + 코타이(交代, 번갈아 바꿈) — 번갈아 찾아가 섬김입니다.",
+    "많게는 수천 명의 행렬이 몇 주씩 걸어서 에도까지 갔습니다."
+   ]
+  },
+  "난학": {
+   "explain": [
+    "쉬운 뜻: 네덜란드 사람을 통해 들어온 서양 학문입니다.",
+    "낱말 나누기: 난(蘭, 네덜란드를 한자로 적은 '화란'의 '란') + 학(學, 학문) — 네덜란드 학문입니다.",
+    "에도 막부는 나가사키 앞바다의 작은 인공 섬 데지마에서만 네덜란드 상인과 거래하였습니다."
+   ],
+   "beats": [
+    "일본 학자들이 둥글게 앉아 서양 책을 펼쳤습니다.",
+    "곁에는 망원경과 지구본, 사람 몸 그림이 놓여 있습니다.",
+    "네덜란드를 통해 들어온 서양 학문이 난학입니다."
+   ],
+   "img": "A room in Edo-period Japan, around 1770. Several Japanese scholars in kimono with shaved crowns kneel around a low table, studying a large open Dutch book with detailed drawings of the human skeleton, comparing it with their own notes. A brass telescope, a globe and a clock sit nearby, and through the window a Dutch sailing ship can be seen in a harbor. No readable text.",
+   "imgKo": "1770년 무렵 에도 시대의 방, 기모노 차림 일본 학자들이 낮은 상에 둘러앉아 사람 뼈 그림이 실린 네덜란드 책을 펴고 자기 노트와 견주어 본다. 곁에 놋 망원경, 지구본, 시계가 있고 창밖 항구에 네덜란드 배가 보인다."
+  },
+  "무굴 제국": {
+   "en": "Mughal Empire",
+   "explain": [
+    "쉬운 뜻: 16세기에 인도 대부분을 다스린 이슬람 왕조입니다.",
+    "낱말 나누기: 무굴(페르시아 말로 '몽골') + 제국 — 세운 바부르가 칭기즈 칸의 핏줄이라 붙은 이름입니다.",
+    "아크바르 황제는 여러 종교의 학자를 궁궐에 불러 서로 토론하게 하였습니다."
+   ]
+  },
+  "시크교": {
+   "en": "Sikhism",
+   "explain": [
+    "쉬운 뜻: 모든 사람은 신 앞에 평등하다며, 신분과 상관없이 함께 둘러앉아 밥을 먹게 한 종교입니다.",
+    "낱말 나누기: 시크(옛 인도 말로 '제자, 배우는 사람') + 교(敎) — 스승의 가르침을 배우는 사람들의 종교입니다.",
+    "남자 신자들은 머리카락을 자르지 않고 터번으로 감쌉니다."
+   ],
+   "beats": [
+    "사원 옆 넓은 방에 사람들이 줄지어 바닥에 앉았습니다.",
+    "터번을 쓴 사람들이 모두에게 똑같이 밥과 콩죽을 나누어 줍니다.",
+    "신 앞의 평등을 가르친 인도의 종교가 시크교입니다."
+   ],
+   "img": "A large dining hall next to a Sikh temple in Punjab, India. People of all kinds, rich and poor, old and young, men and women, sit side by side in long rows on floor mats. Volunteers wearing turbans and head scarves walk along the rows serving the same simple meal of flatbread, lentils and rice from buckets onto metal plates. Warm and friendly atmosphere. No text.",
+   "imgKo": "인도 펀자브의 시크교 사원 옆 큰 식당에서 부자와 가난한 사람, 노인과 아이, 남녀가 바닥 깔개에 나란히 줄지어 앉고, 터번과 머릿수건을 쓴 봉사자들이 모두에게 같은 납작빵, 콩죽, 밥을 나누어 준다."
+  },
+  "인도·이슬람 문화": {
+   "explain": [
+    "쉬운 뜻: 인도 것과 이슬람 것이 비빔밥처럼 섞여 생긴 새로운 문화입니다.",
+    "낱말 나누기: 인도 + 이슬람 + 문화(文化, 생활 방식과 예술) — 두 문화가 하나로 어우러진 것입니다.",
+    "무굴 황제의 궁궐에는 이슬람식 둥근 지붕과 인도식 기둥 장식이 함께 쓰였습니다."
+   ],
+   "beats": [
+    "강가에 하얀 대리석 건물이 물에 비쳐 빛납니다.",
+    "가까이 보니 둥근 지붕 아래 벽에 꽃무늬와 글자 무늬가 새겨져 있습니다.",
+    "인도 문화와 이슬람 문화가 어우러진 문화가 인도·이슬람 문화입니다."
+   ],
+   "img": "The Taj Mahal in Agra seen at sunrise across its long garden pool: a white marble mausoleum with a large onion-shaped dome and four slender minarets reflected in the still water. An inset at the corner shows a close-up of the marble wall with inlaid colored stone flowers and carved arches. No readable text.",
+   "imgKo": "해 뜰 녘 아그라의 긴 정원 연못 너머 커다란 양파 모양 둥근 지붕과 가는 탑 넷이 있는 흰 대리석 타지마할이 물에 비친다. 구석 작은 칸에 색 돌로 꽃무늬를 박아 넣은 대리석 벽을 가까이 보여 준다."
+  },
+  "오스만 제국": {
+   "en": "Ottoman Empire",
+   "explain": [
+    "쉬운 뜻: 튀르크족이 세워 아시아, 아프리카, 유럽 세 대륙에 걸쳐 600년 넘게 이어진 이슬람 나라입니다.",
+    "낱말 나누기: 오스만(세운 사람 이름) + 제국 — 영어 Ottoman도 오스만이라는 이름에서 왔습니다.",
+    "콘스탄티노폴리스를 차지한 뒤, 성 소피아 대성당 둘레에 첨탑을 세워 모스크로 썼습니다."
+   ]
+  },
+  "술탄": {
+   "en": "sultan",
+   "explain": [
+    "쉬운 뜻: 이슬람 세계에서 실제로 나라를 다스린 임금을 부르던 이름입니다.",
+    "낱말 나누기: 아랍 말 sultan(힘, 권력) — '힘을 쥔 사람'을 뜻하게 되었습니다.",
+    "오스만 제국의 술탄은 이스탄불의 톱카프 궁전에서 나라를 다스렸습니다."
+   ],
+   "beats": [
+    "넓은 궁전 마당에 여러 나라 사신들이 선물을 들고 섰습니다.",
+    "높은 자리에 앉은 임금 앞에 사신들이 차례로 나아가 절합니다.",
+    "이슬람 세계에서 나라를 다스린 임금이 술탄입니다."
+   ],
+   "img": "The inner courtyard of Topkapi Palace in Istanbul around 1550, with domed pavilions, tiled walls and cypress trees. Foreign envoys in European and Persian clothes wait in line holding gifts such as fabric, clocks and gold cups. At a shaded throne pavilion, an Ottoman sultan in a tall white turban and fur-trimmed robe sits on cushions, shown from the side with a simple, non-portrait face. No readable text.",
+   "imgKo": "1550년 무렵 이스탄불 톱카프 궁전 안마당, 둥근 지붕 정자와 타일 벽, 측백나무가 있고, 유럽·페르시아 옷의 사신들이 옷감과 시계, 금잔을 들고 줄 서 있다. 그늘진 정자에 높은 흰 터번의 술탄이 방석에 앉아 있다."
+  },
+  "예니체리": {
+   "en": "Janissary",
+   "explain": [
+    "쉬운 뜻: 술탄 곁을 지킨 오스만 제국의 가장 뛰어난 부대입니다.",
+    "낱말 나누기: 튀르크 말 yeni(새) + çeri(군대) — '새 군대'라는 뜻입니다.",
+    "예니체리 군악대는 북과 나팔로 행진하였고, 이 음악은 유럽 군악대에도 영향을 주었습니다."
+   ],
+   "beats": [
+    "높은 흰 모자를 쓴 병사들이 줄지어 행진합니다.",
+    "앞에서는 군악대가 큰 북과 나팔을 울립니다.",
+    "술탄을 지킨 오스만 제국의 정예 부대가 예니체리입니다."
+   ],
+   "img": "A parade on a wide street in Istanbul around 1600. Janissary soldiers in long red and blue coats and tall white felt caps with a cloth flap hanging down the back march in neat rows, carrying no weapons. At the front, a military band plays large drums, cymbals and long trumpets. Townspeople watch from balconies and doorways. No readable text.",
+   "imgKo": "1600년 무렵 이스탄불 큰길의 행진, 긴 빨강·파랑 외투에 뒤로 천이 늘어진 높은 흰 펠트 모자를 쓴 병사들이 무기 없이 줄지어 걷고, 앞에서 군악대가 큰북과 심벌즈, 긴 나팔을 울린다."
+  },
+  "밀레트": {
+   "en": "millet",
+   "explain": [
+    "쉬운 뜻: 같은 종교를 믿는 사람끼리 모여 스스로 다스리던 오스만 제국 안의 공동체입니다.",
+    "낱말 나누기: 밀레트(아랍 말에서 온 튀르크 말 '종교 공동체') — 종교로 묶인 무리입니다.",
+    "그리스 정교, 아르메니아 교회, 유대교 공동체가 저마다 지도자를 두고 결혼과 교육을 스스로 맡았습니다."
+   ],
+   "beats": [
+    "한 거리에 모스크와 성당, 유대교 회당이 나란히 서 있습니다.",
+    "저마다 자기 지도자에게 모여 혼인과 학교 일을 의논합니다.",
+    "같은 종교를 믿는 사람끼리 스스로 다스린 공동체가 밀레트입니다."
+   ],
+   "img": "A street in Ottoman Istanbul around 1700 where a mosque with a minaret, an Orthodox church with a cross-topped dome and a Jewish synagogue stand close together. In front of each building, a small community gathers around its own leader: an imam, an Orthodox priest with a tall black hat and a rabbi, discussing matters peacefully with families. No readable text.",
+   "imgKo": "1700년 무렵 오스만 이스탄불의 한 거리에 첨탑 있는 모스크, 둥근 지붕의 정교회 성당, 유대교 회당이 나란히 있고, 건물마다 앞에서 사람들이 이맘, 높은 검은 모자의 사제, 랍비를 둘러싸고 평화롭게 의논한다."
+  },
+  "관용 정책": {
+   "en": "tolerance",
+   "explain": [
+    "쉬운 뜻: 다른 종교와 문화를 억지로 바꾸지 않고 너그럽게 인정한 정책입니다. 영어 tolerance는 tolerare(참다)에서 왔습니다.",
+    "낱말 나누기: 관용(寬容, 너그럽게 받아들임) + 정책(政策, 나라가 정한 방법) — 너그럽게 받아들이는 정책입니다.",
+    "아케메네스, 오스만, 무굴처럼 오래간 큰 나라들은 관용 정책을 썼습니다."
+   ],
+   "beats": [
+    "궁궐 마당에 옷차림이 서로 다른 사람들이 모였습니다.",
+    "임금이 그들의 신앙과 풍습을 지켜도 된다고 손을 들어 허락합니다.",
+    "다른 종교와 문화를 너그럽게 인정하는 정책이 관용 정책입니다."
+   ],
+   "img": "A Mughal palace courtyard around 1580. A generic emperor in a jeweled turban, seen from behind on a balcony, raises his open hand in a gesture of welcome. Below him stand people of different faiths and dress side by side: a Hindu priest with a sacred mark on his forehead, a Muslim scholar in a turban, a Jain monk in white, a Christian priest in a black robe and a Zoroastrian in white with a cap. No readable text.",
+   "imgKo": "1580년 무렵 무굴 궁궐 마당, 보석 터번의 황제가 발코니에서 손을 펴 맞이하는 뒷모습이고, 아래에 이마에 표시를 한 힌두교 사제, 터번의 이슬람 학자, 흰 옷의 자이나교 수행자, 검은 옷의 신부, 흰 옷의 조로아스터교도가 나란히 서 있다."
+  },
+  "신항로 개척": {
+   "explain": [
+    "쉬운 뜻: 땅길이 막히자, 배를 타고 아무도 가 보지 않은 먼 바다로 새 길을 찾아 나선 일입니다.",
+    "낱말 나누기: 신(新, 새) + 항로(航路, 뱃길) + 개척(開拓, 처음 열어 엶) — 새 뱃길을 처음 엶입니다.",
+    "나침반과 커다란 돛배 덕분에 육지가 보이지 않는 넓은 바다도 건널 수 있었습니다."
+   ]
+  },
+  "가격 혁명": {
+   "en": "Price Revolution",
+   "explain": [
+    "쉬운 뜻: 아메리카의 은이 유럽에 쏟아져 물건값이 크게 뛴 일입니다. 영어 revolution은 re(다시) + volve(구르다), 판이 뒤집힘입니다.",
+    "낱말 나누기: 가격(價格, 물건값) + 혁명(革命, 확 바뀜) — 물건값이 확 바뀐 일입니다.",
+    "돈이 흔해지면 돈의 값어치가 떨어져, 같은 빵을 사는 데 더 많은 돈이 듭니다."
+   ]
+  },
+  "상업 혁명": {
+   "en": "Commercial Revolution",
+   "explain": [
+    "쉬운 뜻: 장사의 무대가 지중해에서 대서양과 온 세계로 넓어진 변화입니다. 영어 commerce는 com(함께) + merx(물건)입니다.",
+    "낱말 나누기: 상업(商業, 사고파는 일) + 혁명(革命, 확 바뀜) — 장사가 확 바뀐 일입니다.",
+    "리스본, 안트베르펜, 암스테르담 같은 대서양 쪽 항구에 세계 곳곳의 배가 모여들었습니다."
+   ]
+  },
+  "삼각 무역": {
+   "en": "triangular trade",
+   "explain": [
+    "쉬운 뜻: 유럽, 아프리카, 아메리카를 세모꼴로 잇는 무역입니다. 영어 triangular도 tri(셋) + angle(모서리)입니다.",
+    "낱말 나누기: 삼각(三角, 세모) + 무역(貿易, 나라끼리 사고팖) — 세모꼴로 오간 무역입니다.",
+    "이 무역으로 1,000만 명이 넘는 아프리카 사람이 강제로 아메리카에 끌려갔습니다."
+   ]
+  },
+  "종교 개혁": {
+   "en": "Reformation",
+   "explain": [
+    "쉬운 뜻: 교회의 잘못을 고치자며 새 교회가 생겨난 운동입니다. 영어 Reformation은 re(다시) + form(만들다), '고쳐 만들기'입니다.",
+    "낱말 나누기: 종교(宗敎, 믿음의 가르침) + 개혁(改革, 고쳐 새롭게 함) — 믿음의 틀을 고쳐 새롭게 함입니다.",
+    "마침 퍼진 인쇄술 덕분에 루터의 글이 몇 주 만에 독일 곳곳에 퍼졌습니다."
+   ],
+   "beats": [
+    "인쇄소에서 일꾼들이 커다란 인쇄기를 돌립니다.",
+    "갓 찍은 종이 묶음이 거리로 나가고, 사람들이 모여 읽습니다.",
+    "교회를 고쳐 새롭게 하자며 새 교회가 생겨난 운동이 종교 개혁입니다."
+   ],
+   "img": "A German town in 1520. On the left, inside a printing workshop, two workers pull the lever of a large wooden printing press while freshly printed sheets hang drying on strings. On the right, in the town square outside, townspeople, a farmer, a craftsman and a woman, crowd around and read the printed pamphlets eagerly, some pointing toward the church. The printed pages show only gray lines, no readable text.",
+   "imgKo": "1520년 독일의 한 마을, 왼쪽 인쇄소에서 일꾼 둘이 커다란 나무 인쇄기 손잡이를 당기고 갓 찍은 종이가 줄에 걸려 마르며, 오른쪽 광장에서 농부, 장인, 여인이 인쇄물을 둘러싸고 읽으며 교회 쪽을 가리킨다."
+  },
+  "면벌부": {
+   "en": "indulgence",
+   "explain": [
+    "쉬운 뜻: '돈을 내면 벌을 줄여 준다'는 종이였습니다. 영어 indulgence는 '너그럽게 봐줌'이라는 뜻입니다.",
+    "낱말 나누기: 면(免, 벗어나다) + 벌(罰, 벌) + 부(符, 증서) — 벌에서 벗어나게 해 준다는 증서입니다.",
+    "예전에는 '면죄부'라고도 했지만, 죄가 아니라 벌을 덜어 준다는 뜻이라 지금은 면벌부라고 합니다."
+   ],
+   "beats": [
+    "마을 광장에 커다란 돈궤가 놓였습니다.",
+    "사람들이 동전을 넣고, 도장 찍힌 종이를 한 장씩 받아 갑니다.",
+    "돈을 받고 벌을 줄여 준다며 교회가 판 증서가 면벌부입니다."
+   ],
+   "img": "A crowded medieval German town square in 1517. A preacher in clerical robes stands on a small wooden stage beside a large iron-bound money chest. Townspeople in plain clothes line up, dropping coins into the chest, and an assistant hands each of them a sheet of paper with a red wax seal. A young monk in a dark robe, with a simple generic face, watches from the edge of the crowd with a frown. The papers show no readable text.",
+   "imgKo": "1517년 붐비는 독일 마을 광장, 성직자 옷의 설교자가 쇠테 두른 큰 돈궤 옆 나무 단에 서 있고, 사람들이 줄 서서 동전을 넣으면 조수가 붉은 밀랍 도장이 찍힌 종이를 한 장씩 준다. 젊은 수도사가 군중 끝에서 얼굴을 찌푸리고 본다."
+  },
+  "재정·군사 국가": {
+   "explain": [
+    "쉬운 뜻: 세금을 잘 걷는 조직과 늘 있는 큰 군대를 함께 갖춘 16~18세기 유럽의 나라입니다.",
+    "낱말 나누기: 재정(財政, 나라의 살림 돈) + 군사(軍事, 군대 일) + 국가 — 돈과 군대를 함께 키운 나라입니다.",
+    "전쟁에 돈이 많이 들자, 나라는 세금을 꼼꼼히 걷으려고 관리를 늘리고 장부를 정리하였습니다."
+   ]
+  },
+  "왕권신수설": {
+   "en": "divine right of kings",
+   "explain": [
+    "쉬운 뜻: 왕의 힘은 신이 준 것이니 누구도 거스르면 안 된다는 주장입니다. 영어 divine right도 divine(신의) + right(권리)입니다.",
+    "낱말 나누기: 왕권(王權, 왕의 힘) + 신수(神授, 신이 줌) + 설(說, 주장) — 왕의 힘은 신이 주었다는 말입니다.",
+    "이 주장을 믿은 왕들은 의회 없이 마음대로 세금을 걷으려 하였습니다."
+   ],
+   "beats": [
+    "화려한 궁전 방에 햇빛이 쏟아집니다.",
+    "높은 왕좌의 왕 앞에 귀족들이 깊이 머리를 숙입니다.",
+    "왕의 힘은 신이 주었으니 따라야 한다는 주장이 왕권신수설입니다."
+   ],
+   "img": "A magnificent baroque palace hall around 1680, with gilded mirrors and painted ceilings showing clouds and angels. A beam of sunlight falls from a high window onto a king seated on a tall golden throne, seen from behind, wearing a long blue robe with gold patterns. Nobles in wigs and fine coats bow deeply before him in rows. No readable text.",
+   "imgKo": "1680년 무렵 금빛 거울과 구름·천사 천장화가 있는 화려한 궁전 방, 높은 창의 햇살이 금색 높은 왕좌에 앉은 왕의 뒷모습을 비추고, 가발 쓴 귀족들이 줄지어 깊이 절한다."
+  },
+  "중상주의": {
+   "en": "mercantilism",
+   "explain": [
+    "쉬운 뜻: 수출을 늘리고 수입을 줄여 금과 은을 쌓으려 한 정책입니다. 영어 mercantilism은 merchant(상인)와 같은 뿌리입니다.",
+    "낱말 나누기: 중(重, 무겁게 여기다) + 상(商, 장사) + 주의(主義, 앞세우는 생각) — 장사를 무겁게 여김입니다.",
+    "많이 팔고 적게 사면 금과 은이 쌓여 나라가 강해진다고 여겼습니다."
+   ]
+  },
+  "상비군": {
+   "en": "standing army",
+   "explain": [
+    "쉬운 뜻: 전쟁이 없을 때에도 늘 갖추어 둔 군대입니다. 영어 standing army도 standing(늘 서 있는) + army(군대)입니다.",
+    "낱말 나누기: 상(常, 늘) + 비(備, 갖추다) + 군(軍, 군대) — 늘 갖추어 둔 군대입니다.",
+    "그전에는 전쟁이 나면 그때그때 사람을 모으거나 돈을 주고 군인을 썼습니다."
+   ],
+   "beats": [
+    "평화로운 날에도 궁전 앞 광장에 군인들이 모였습니다.",
+    "같은 제복을 입고 북소리에 맞추어 발을 맞춰 행진합니다.",
+    "전쟁이 없을 때에도 늘 갖추어 둔 군대가 상비군입니다."
+   ],
+   "img": "A sunny parade ground in front of a European palace around 1750. Hundreds of soldiers in identical blue coats, white trousers and tricorn hats march in perfect rows to the beat of drummers, with no weapons shown. Children and townspeople watch from behind a low fence, and the palace stands peacefully in the background. No readable text.",
+   "imgKo": "1750년 무렵 햇살 좋은 유럽 궁전 앞 연병장에서 같은 파란 제복과 흰 바지, 세모 모자 차림의 군인 수백 명이 무기 없이 북소리에 맞추어 줄지어 행진하고, 아이들과 주민이 낮은 울타리 뒤에서 구경한다."
+  },
+  "청교도 혁명": {
+   "en": "Puritan Revolution",
+   "explain": [
+    "쉬운 뜻: 영국에서 왕과 의회가 맞서다 의회가 이겨 왕정을 끝낸 혁명입니다. 영어 Puritan은 pure(깨끗한)에서 온 말입니다.",
+    "낱말 나누기: 청교도(淸敎徒, 교회를 깨끗이 하자던 신자) + 혁명(革命, 판을 바꿈) — 청교도가 이끈 혁명입니다.",
+    "의회 쪽에 청교도가 많아 이런 이름이 붙었고, 크롬웰이 의회군을 이끌었습니다."
+   ]
+  },
+  "명예혁명": {
+   "en": "Glorious Revolution",
+   "explain": [
+    "쉬운 뜻: 큰 싸움 없이 왕을 바꾼 영국의 혁명입니다. 영어 glorious도 '자랑스럽고 빛나는'이라는 뜻입니다.",
+    "낱말 나누기: 명예(名譽, 자랑스러운 이름) + 혁명(革命, 다스리는 판을 바꿈) — 자랑스러운 혁명이라는 이름입니다.",
+    "쫓겨날 처지가 된 제임스 2세가 프랑스로 달아나, 왕이 바뀌었습니다."
+   ],
+   "beats": [
+    "밤의 강가에서 옛 왕이 작은 배를 타고 조용히 떠납니다.",
+    "다음 날 런던 거리에서는 시민들이 새 왕 부부를 반기며 손을 흔듭니다.",
+    "큰 싸움 없이 왕을 바꾼 영국의 혁명이 명예혁명입니다."
+   ],
+   "img": "A two-part scene in England, 1688. Left, at night: a king in a dark cloak quietly steps into a small rowing boat on the River Thames, seen from behind, leaving by lantern light. Right, the next day in bright sunshine: London townspeople fill a street, cheering and waving their hats at a royal couple riding in an open carriage, faces simple and not portraits. No soldiers fighting, no readable text.",
+   "imgKo": "1688년 영국을 둘로 나눈 그림. 왼쪽은 밤 템스강가에서 검은 망토의 왕이 등불 아래 작은 배에 조용히 오르는 뒷모습, 오른쪽은 다음 날 햇살 속 런던 거리에서 시민들이 지붕 없는 마차의 새 왕 부부에게 모자를 흔들며 환호한다."
+  },
+  "권리 장전": {
+   "en": "Bill of Rights",
+   "explain": [
+    "쉬운 뜻: 왕보다 법과 의회가 위에 있다는 것을 글로 적어 약속한 문서입니다. 영어 bill은 '적어 낸 문서'라는 뜻입니다.",
+    "낱말 나누기: 권리(權利, 마땅히 누릴 힘) + 장전(章典, 조목조목 적은 법) — 권리를 조목조목 적은 문서입니다.",
+    "의회 안에서 한 말 때문에 의원이 벌받지 않는다는 내용도 들어 있었습니다."
+   ],
+   "beats": [
+    "의회 건물의 큰 방에 의원들이 모였습니다.",
+    "의원 대표가 두루마리 문서를 새 왕과 왕비에게 바치고, 둘이 받아 듭니다.",
+    "왕도 의회의 동의 없이 세금을 걷지 못하게 정한 문서가 권리 장전입니다."
+   ],
+   "img": "The Banqueting House in London, February 1689, a grand hall with a painted ceiling. Members of Parliament in dark coats and long wigs stand in rows. A representative steps forward and presents a long parchment scroll to a new king and queen standing together, who accept it with their hands. Faces are generic, not portraits. The parchment shows no readable text.",
+   "imgKo": "1689년 2월 런던의 천장화가 있는 큰 방에 검은 옷과 긴 가발 차림 의원들이 줄지어 서 있고, 대표가 나아가 긴 양피지 문서를 나란히 선 새 왕과 왕비에게 바치자 둘이 받아 든다."
+  },
+  "과학 혁명": {
+   "en": "Scientific Revolution",
+   "explain": [
+    "쉬운 뜻: 책 속 옛 가르침 대신 관찰과 실험으로 자연의 법칙을 찾게 된 큰 변화입니다. 영어 science는 라틴 말 scire(알다)에서 왔습니다.",
+    "낱말 나누기: 과학(科學, 관찰과 실험으로 밝히는 학문) + 혁명(革命, 확 바뀜) — 세상을 보는 눈이 확 바뀜입니다.",
+    "망원경과 현미경이 생겨, 먼 하늘과 작은 생물까지 관찰하게 되었습니다."
+   ],
+   "beats": [
+    "밤하늘 아래 한 학자가 망원경으로 별을 봅니다.",
+    "본 것을 그림으로 그리고, 계산하며 공책에 적습니다.",
+    "관찰과 실험으로 자연의 법칙을 밝혀 세상을 보는 눈이 바뀐 일이 과학 혁명입니다."
+   ],
+   "img": "A rooftop terrace in Italy on a clear starry night around 1610. A scholar in a long dark coat, a generic figure, looks through a long wooden telescope on a stand at a bright Jupiter in the sky. On a small table beside him, an oil lamp lights a notebook with simple sketches of a planet and dots, along with compasses and a pen. No readable text.",
+   "imgKo": "1610년 무렵 별이 총총한 밤, 이탈리아의 옥상에서 긴 외투의 학자가 받침대 위 긴 나무 망원경으로 밝은 목성을 보고, 곁 작은 탁자에서 기름 등불이 행성과 점을 그린 공책과 컴퍼스를 비춘다."
+  },
+  "계몽사상": {
+   "en": "Enlightenment",
+   "explain": [
+    "쉬운 뜻: 이성의 빛으로 낡은 생각과 제도를 깨우치려 한 사상입니다. 영어 Enlightenment도 en + light(빛), '빛을 비춤'입니다.",
+    "낱말 나누기: 계(啓, 열다) + 몽(蒙, 어두움) + 사상(思想, 생각) — 어두움을 열어 밝힌다는 생각입니다.",
+    "왕이 국민의 권리를 지키지 못하면 국민이 바꿀 수 있다는 생각이 퍼졌습니다."
+   ],
+   "beats": [
+    "촛불이 켜진 방에 사람들이 책을 들고 모였습니다.",
+    "한 사람이 책을 소리 내어 읽고, 다른 사람들이 열띠게 이야기를 나눕니다.",
+    "이성으로 낡은 생각과 제도를 깨우치려 한 사상이 계몽사상입니다."
+   ],
+   "img": "An elegant 18th-century Paris drawing room lit by candles and a large window. Men and women in powdered wigs and fine clothes sit around a table covered with books and newspapers. One person reads aloud from an open book, while others lean forward and debate with lively gestures, and a coffee pot steams on the table. The books show no readable text.",
+   "imgKo": "촛불과 큰 창이 밝힌 18세기 파리의 우아한 방, 가발과 고운 옷차림의 남녀가 책과 신문이 쌓인 탁자에 둘러앉아, 한 사람이 책을 소리 내어 읽고 다른 이들이 몸을 숙여 열띠게 토론한다. 탁자 위 커피 주전자에서 김이 난다."
+  }
+ }
+}

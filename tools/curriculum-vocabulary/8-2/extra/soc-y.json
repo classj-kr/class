@@ -1,0 +1,374 @@
+{
+ "11": {
+  "대륙성 기후": {
+   "en": "continental climate",
+   "explain": [
+    "쉬운 뜻: 영어 continent는 '이어져 있는 땅'이라는 라틴 말에서 왔습니다. 바다에서 먼 큰 땅의 영향으로 여름과 겨울 차이가 큰 기후입니다.",
+    "낱말 나누기: 대륙(大陸, 큰 땅) + 성(性, 성질) + 기후(氣候, 오랜 날씨의 모습)입니다.",
+    "땅은 바다보다 빨리 데워지고 빨리 식어서, 바다에서 먼 곳일수록 더위와 추위가 심합니다."
+   ]
+  },
+  "밭농사": {
+   "explain": [
+    "쉬운 뜻: 물을 대 놓고 벼를 기르는 논농사와 달리, 마른땅에서 짓는 농사입니다.",
+    "낱말 나누기: 밭(물을 대지 않은 땅) + 농사(農事, 곡식을 기르는 일)입니다.",
+    "생활 속 예: 강원도 비탈밭의 감자와 옥수수가 밭농사로 거둔 것입니다."
+   ],
+   "beats": [
+    "산이 많고 서늘한 북쪽 지방의 비탈에 밭이 펼쳐져 있습니다.",
+    "농부들이 물을 대지 않은 밭에 옥수수와 감자를 심습니다.",
+    "가을이 되자 누렇게 익은 옥수수와 굵은 감자를 거둡니다.",
+    "이렇게 밭에서 곡식과 채소를 기르는 농사가 밭농사입니다."
+   ],
+   "img": "Terraced dry fields climb up a cool mountain slope under a clear autumn sky. Tall golden corn stalks stand in rows, and farmers dig up big potatoes from the dry soil and fill baskets. There are no flooded rice paddies anywhere. No text.",
+   "imgKo": "맑은 가을 하늘 아래 서늘한 산비탈에 계단처럼 밭이 이어지고, 누렇게 익은 옥수숫대가 줄지어 서 있으며, 농부들이 마른 흙에서 굵은 감자를 캐 바구니에 담는다. 물 댄 논은 보이지 않는다."
+  },
+  "계획 경제": {
+   "en": "planned economy",
+   "explain": [
+    "쉬운 뜻: 영어 planned economy는 planned(계획된) + economy(경제)입니다. 나라가 무엇을 얼마나 만들지 미리 정하는 경제입니다.",
+    "낱말 나누기: 계획(計劃, 미리 셈하여 그어 둠) + 경제(經濟, 살림)입니다.",
+    "생활 속 예: 학급비로 살 물건을 반장 혼자 정해 모두에게 똑같이 나눠 주는 모습과 닮았습니다."
+   ]
+  },
+  "경제특구": {
+   "en": "special economic zone",
+   "explain": [
+    "쉬운 뜻: 영어 special economic zone은 special(특별한) + zone(구역)이 든 말입니다. 경제 규칙을 특별히 풀어 준 곳입니다.",
+    "낱말 나누기: 경제(經濟, 살림) + 특구(特區, 특별한 구역)입니다.",
+    "생활 속 예: 공항 면세점처럼 세금 규칙이 다른 특별한 곳을 떠올리면 쉽습니다."
+   ]
+  },
+  "분단 비용": {
+   "explain": [
+    "쉬운 뜻: 남북이 갈라져 있는 동안 계속 치러야 하는 값비싼 대가입니다. 돈만이 아니라 마음의 아픔도 들어갑니다.",
+    "낱말 나누기: 분단(分斷, 나뉘어 끊어짐) + 비용(費用, 드는 돈)입니다.",
+    "철길이 끊겨 대륙으로 갈 화물을 배로 돌려 보내는 것도 분단 비용입니다."
+   ]
+  },
+  "접경지역": {
+   "en": "border area",
+   "explain": [
+    "쉬운 뜻: 영어 border area는 border(경계, 가장자리) + area(지역)입니다. 경계선 바로 곁에 붙은 지역입니다.",
+    "낱말 나누기: 접(接, 닿다) + 경(境, 경계) + 지역 — 경계에 닿은 지역입니다.",
+    "생활 속 예: 이곳에서는 군인들이 오가는 모습과 군부대 차를 자주 볼 수 있습니다."
+   ]
+  },
+  "남방 한계선": {
+   "explain": [
+    "쉬운 뜻: 휴전선 양쪽에 비워 둔 띠 모양 땅의 남쪽 가장자리를 긋는 선입니다.",
+    "낱말 나누기: 남방(南方, 남쪽) + 한계선(限界線, 넘지 못하는 끝 선)입니다.",
+    "생활 속 예: 전망대에서 북쪽을 보면 산등성이를 따라 이어진 긴 철책이 보입니다."
+   ]
+  },
+  "북방 한계선": {
+   "explain": [
+    "쉬운 뜻: 휴전선 양쪽에 비워 둔 띠 모양 땅의 북쪽 가장자리를 긋는 선입니다.",
+    "낱말 나누기: 북방(北方, 북쪽) + 한계선(限界線, 넘지 못하는 끝 선)입니다.",
+    "바다 위에 그은 '북방 한계선'은 이 선과 이름만 같고 다른 선입니다."
+   ]
+  },
+  "민간인 통제선": {
+   "explain": [
+    "쉬운 뜻: 남방 한계선보다 더 남쪽에 그어, 여기서부터는 허락받은 사람만 들어가게 한 선입니다.",
+    "낱말 나누기: 민간인(民間人, 군인이 아닌 보통 사람) + 통제선(統制線, 드나듦을 막는 선)입니다.",
+    "생활 속 예: 줄여서 '민통선'이라고 부르며, 안쪽 마을 주민은 출입증을 보여 주고 드나듭니다."
+   ]
+  },
+  "통일 국토": {
+   "explain": [
+    "쉬운 뜻: 휴전선이 지워지고 남과 북이 하나로 이어진 우리 땅입니다.",
+    "낱말 나누기: 통일(統一, 거느려 하나로 함) + 국토(國土, 나라의 땅)입니다.",
+    "땅 넓이가 지금 남한의 두 배쯤 되고, 백두산부터 한라산까지 한 나라가 됩니다."
+   ]
+  },
+  "시베리아 횡단 철도": {
+   "en": "Trans-Siberian Railway",
+   "explain": [
+    "쉬운 뜻: 영어 Trans-Siberian은 trans(가로질러) + Siberian(시베리아의)입니다. 러시아 땅을 동서로 가로지르는 철길입니다.",
+    "낱말 나누기: 횡단(橫斷, 가로질러 끊음) + 철도(鐵道, 쇠로 만든 길), trans와 橫斷이 모두 '가로질러'입니다.",
+    "길이가 9천 km가 넘어, 기차로 일주일 가까이 달립니다."
+   ]
+  }
+ },
+ "12": {
+  "식량 자원": {
+   "en": "food resources",
+   "explain": [
+    "쉬운 뜻: 영어 resource는 re(다시) + source(솟아나다), '다시 솟아나는 것'이라는 말입니다. 사람이 먹고 사는 데 쓰는 자원입니다.",
+    "낱말 나누기: 식량(食糧, 먹을거리) + 자원(資源, 쓸모 있는 밑천)입니다.",
+    "생활 속 예: 급식 식판의 밥, 빵, 고기, 김치 재료가 모두 식량 자원입니다."
+   ],
+   "beats": [
+    "넓은 들판에서 벼와 밀이 익어 갑니다.",
+    "목장에서는 소와 닭을 기르고, 바다에서는 물고기를 잡습니다.",
+    "이 모든 것이 우리 식탁에 올라 밥과 반찬이 됩니다.",
+    "이렇게 사람이 먹고 살아가는 데 필요한 자원이 식량 자원입니다."
+   ],
+   "img": "A scene in four panels around a family dinner table. Golden rice and wheat fields, a farm with cows and chickens, a fishing boat with a net of fish, and in the center, HARIN's family enjoys a meal of rice, bread, meat, fish, and vegetables. No text.",
+   "imgKo": "가족 식탁을 가운데 두고 네 칸에 누렇게 익은 벼와 밀 들판, 소와 닭을 기르는 목장, 물고기 그물을 끌어 올리는 고깃배가 있고, 가운데서 하린이네 가족이 밥, 빵, 고기, 생선, 채소로 식사한다."
+  },
+  "곡물": {
+   "en": "grain",
+   "explain": [
+    "쉬운 뜻: 영어 grain은 라틴 말 granum(낟알)에서 온 말입니다. 작은 낟알을 먹는 곡식을 모두 이르는 말입니다.",
+    "낱말 나누기: 곡(穀, 곡식) + 물(物, 물건) — 곡식이라는 물건입니다.",
+    "생활 속 예: 라면은 밀, 팝콘은 옥수수, 두부는 콩, 모두 곡물로 만듭니다."
+   ],
+   "beats": [
+    "하린이 앞에 작은 그릇 다섯 개가 놓여 있습니다.",
+    "쌀, 보리, 밀, 옥수수, 콩이 한 그릇씩 담겨 있습니다.",
+    "모두 작은 낟알을 먹는 농작물입니다.",
+    "이런 농작물을 곡물이라고 합니다."
+   ],
+   "img": "HARIN sits at a kitchen table looking closely through a magnifying glass at five small wooden bowls filled with rice, barley, wheat, corn kernels, and soybeans. Behind each bowl, a small picture shows the plant it came from. No text.",
+   "imgKo": "하린이가 부엌 식탁에서 쌀, 보리, 밀, 옥수수 알, 콩이 담긴 작은 나무 그릇 다섯 개를 돋보기로 들여다보고, 그릇마다 뒤에 그 곡식이 열리는 식물 그림이 작게 놓여 있다."
+  },
+  "자급률": {
+   "en": "self-sufficiency rate",
+   "explain": [
+    "쉬운 뜻: 영어 self-sufficiency는 self(스스로) + sufficiency(넉넉함)입니다. 필요한 만큼을 제 힘으로 채우는 비율입니다.",
+    "낱말 나누기: 자급(自給, 스스로 대어 줌) + 률(率, 비율)입니다.",
+    "생활 속 예: 텃밭 상추만으로 한 달 쌈을 다 먹으면 우리 집 상추 자급률은 100 %입니다."
+   ]
+  },
+  "수입 의존도": {
+   "en": "import dependence",
+   "explain": [
+    "쉬운 뜻: 영어 import는 im(안으로) + port(나르다), depend는 de(아래로) + pend(매달리다)입니다. 외국에 매달린 정도입니다.",
+    "낱말 나누기: 수입(輸入, 안으로 실어 옴) + 의존(依存, 기대어 있음) + 도(度, 정도)입니다.",
+    "생활 속 예: 우리나라는 커피콩과 바나나를 거의 다 외국에서 사 옵니다."
+   ]
+  },
+  "로컬 푸드": {
+   "en": "local food",
+   "explain": [
+    "쉬운 뜻: 밭에서 식탁까지 오는 길이 짧은 먹을거리입니다. 그만큼 싱싱하고 실어 나르는 기름도 덜 듭니다.",
+    "낱말 나누기: 영어 local(그 지역의, 가까운) + food(먹을거리) — 가까운 곳 먹을거리입니다.",
+    "생활 속 예: 동네 직매장 채소에는 기른 농부의 이름과 얼굴이 붙어 있기도 합니다."
+   ],
+   "beats": [
+    "새벽에 마을 농부가 밭에서 상추와 오이를 땁니다.",
+    "아침이 되자 그 채소가 가까운 동네 직매장에 진열됩니다.",
+    "하린이 엄마가 그 채소를 사서 점심상에 올립니다.",
+    "이렇게 가까운 지역에서 기르고 만든 먹을거리가 로컬 푸드입니다."
+   ],
+   "img": "A scene in three steps connected by a short winding road. At dawn, a farmer picks lettuce and cucumbers in a nearby field. In the morning, the vegetables are placed on shelves of a small neighborhood farmers' store. At noon, HARIN's mother serves them on the family lunch table. No text.",
+   "imgKo": "짧고 구불구불한 길로 이어진 세 장면으로, 새벽에 농부가 가까운 밭에서 상추와 오이를 따고, 아침에 그 채소가 동네 작은 직매장 선반에 놓이며, 점심에 하린이 엄마가 가족 밥상에 올린다."
+  },
+  "에너지 자원": {
+   "en": "energy resources",
+   "explain": [
+    "쉬운 뜻: 영어 energy는 그리스 말 en(안에) + ergon(일), '안에 든 일하는 힘'입니다. 그 힘을 얻는 데 쓰는 자원입니다.",
+    "낱말 나누기: 에너지(일하는 힘) + 자원(資源, 쓸모 있는 밑천)입니다.",
+    "생활 속 예: 자동차 기름, 가스레인지 불, 콘센트 전기 모두 에너지 자원에서 옵니다."
+   ],
+   "beats": [
+    "유전에서 석유를, 탄광에서 석탄을 캐냅니다.",
+    "들판에서는 햇빛을 받는 판과 바람개비 같은 발전기가 돌아갑니다.",
+    "이 힘으로 자동차가 달리고, 공장이 돌고, 집에 불이 켜집니다.",
+    "이렇게 힘을 얻는 데 쓰는 자원이 에너지 자원입니다."
+   ],
+   "img": "A wide landscape showing many energy sources at once: an oil pump on the left, a coal mine entrance, a gas storage tank, rows of solar panels, and white wind turbines on a hill. Glowing lines flow from all of them toward a city in the distance where cars move, factories run, and windows light up. No text.",
+   "imgKo": "넓은 풍경에 석유 펌프, 탄광 입구, 가스 저장 탱크, 줄지은 태양광 판, 언덕 위 하얀 풍력 발전기가 함께 있고, 모두에서 빛나는 선이 멀리 자동차가 달리고 공장이 돌며 창마다 불이 켜진 도시로 흘러간다."
+  },
+  "천연가스": {
+   "en": "natural gas",
+   "explain": [
+    "쉬운 뜻: 영어 natural gas는 natural(자연 그대로의) + gas(기체)입니다. 땅속에서 뽑아 쓰는 기체 연료입니다.",
+    "낱말 나누기: 천연(天然, 하늘이 낸 그대로) + 가스(기체), natural과 같은 '자연 그대로'입니다.",
+    "생활 속 예: 버스 옆면에 'CNG'라고 적힌 천연가스 버스는 매연이 적습니다."
+   ],
+   "beats": [
+    "땅속 깊은 곳에서 천연가스를 뽑아 올립니다.",
+    "아주 차갑게 식혀 액체로 만든 뒤 둥근 탱크를 실은 배로 실어 옵니다.",
+    "관을 따라 집집마다 들어와 보일러와 가스레인지를 켭니다.",
+    "이렇게 땅속에서 얻는 기체 연료가 천연가스입니다."
+   ],
+   "img": "A scene in three steps. A gas well platform pulls gas from deep underground, a large ship with round dome-shaped tanks crosses the sea, and pipes lead into a cozy apartment kitchen where a blue flame burns on the stove while HARIN's father cooks. No text.",
+   "imgKo": "세 장면으로, 가스정 설비가 땅속 깊은 곳에서 가스를 뽑아 올리고, 둥근 탱크를 실은 큰 배가 바다를 건너며, 관이 아늑한 아파트 부엌으로 이어져 하린이 아빠가 요리하는 가스레인지에 파란 불꽃이 탄다."
+  },
+  "원자력": {
+   "en": "nuclear power",
+   "explain": [
+    "쉬운 뜻: 영어 nuclear는 nucleus(씨, 알맹이)에서 온 말입니다. 원자의 알맹이가 쪼개질 때 나오는 큰 힘입니다.",
+    "낱말 나누기: 원자(原子, 물질을 이루는 아주 작은 알갱이) + 력(力, 힘)입니다.",
+    "생활 속 예: 우리 집 전기의 상당 부분도 바닷가 원자력 발전소에서 옵니다."
+   ],
+   "beats": [
+    "바닷가에 둥근 지붕의 발전소가 서 있습니다.",
+    "적은 양의 연료에서 아주 큰 열이 나와 물을 끓이고 발전기를 돌립니다.",
+    "만든 전기가 전선을 타고 도시로 갑니다.",
+    "이렇게 원자핵이 쪼개질 때 나오는 큰 에너지가 원자력입니다."
+   ],
+   "img": "A clean seaside power plant with round dome-shaped buildings stands by the blue sea. Steam rises gently, and tall power lines carry electricity over the hills toward a brightly lit city at dusk. No text.",
+   "imgKo": "푸른 바닷가에 둥근 지붕 건물이 있는 깨끗한 발전소가 서 있고, 김이 살며시 오르며, 높은 송전탑이 언덕 너머 해 질 녘 환하게 불 밝힌 도시로 전기를 실어 나른다."
+  },
+  "재생 에너지": {
+   "en": "renewable energy",
+   "explain": [
+    "쉬운 뜻: 영어 renewable은 re(다시) + new(새로운) + able(할 수 있는)입니다. 써도 다시 새로 얻을 수 있는 힘입니다.",
+    "낱말 나누기: 재생(再生, 다시 살아남) + 에너지(일하는 힘), renewable과 같은 '다시'입니다.",
+    "생활 속 예: 해는 날마다 뜨고 바람은 또 불어서, 오늘 써도 내일 다시 쓸 수 있습니다."
+   ],
+   "beats": [
+    "해가 뜨자 지붕의 판이 햇빛으로 전기를 만듭니다.",
+    "언덕 위 바람개비 같은 발전기는 바람으로 돌아갑니다.",
+    "강에서는 흐르는 물이 발전기를 돌립니다.",
+    "이렇게 써도 계속 다시 얻을 수 있는 에너지가 재생 에너지입니다."
+   ],
+   "img": "A bright green valley under a big shining sun. Solar panels cover house roofs, white wind turbines spin on the hills, and a small dam on a flowing river turns a generator. Circular arrows around the sun, wind, and water show they keep coming back. No text.",
+   "imgKo": "큰 해가 빛나는 초록 골짜기에 집 지붕마다 태양광 판이 덮이고 언덕에 하얀 풍력 발전기가 돌며 흐르는 강의 작은 댐이 발전기를 돌리고, 해와 바람과 물 둘레에 다시 돌아오는 둥근 화살표가 그려져 있다."
+  },
+  "태양광": {
+   "en": "solar power",
+   "explain": [
+    "쉬운 뜻: 영어 solar는 라틴 말 sol(해)에서 온 말입니다. 해에서 오는 빛을 판에 받아 전기로 바꿉니다.",
+    "낱말 나누기: 태양(太陽, 큰 볕, 해) + 광(光, 빛) — 햇빛입니다.",
+    "생활 속 예: 길가의 태양광 가로등은 낮에 빛을 모아 두었다가 밤에 불을 밝힙니다."
+   ],
+   "beats": [
+    "맑은 날, 아파트 지붕에 검푸른 판들이 해를 향해 놓여 있습니다.",
+    "판이 햇빛을 받아 전기를 만들고, 그 전기로 복도 불을 켭니다.",
+    "이렇게 햇빛을 판에 받아 전기로 바꾸는 것이 태양광 발전입니다."
+   ],
+   "img": "On a sunny day, rows of dark blue solar panels tilt toward the sun on an apartment rooftop. Gentle glowing lines run from the panels down through the building to light up the hallway lamps and an elevator. No text.",
+   "imgKo": "맑은 날 아파트 옥상에 검푸른 태양광 판들이 해를 향해 줄지어 기울어 있고, 은은히 빛나는 선이 판에서 건물 안으로 내려가 복도 등과 엘리베이터를 밝힌다."
+  },
+  "풍력": {
+   "en": "wind power",
+   "explain": [
+    "쉬운 뜻: 영어 wind power는 wind(바람) + power(힘), '바람의 힘'입니다. 큰 날개를 돌려 전기를 만듭니다.",
+    "낱말 나누기: 풍(風, 바람) + 력(力, 힘), wind power와 똑같이 '바람의 힘'입니다.",
+    "생활 속 예: 바람개비를 들고 달리면 빙글빙글 도는 것과 같은 힘입니다."
+   ],
+   "beats": [
+    "바닷가 언덕에 하얀 기둥들이 줄지어 서 있습니다.",
+    "바람이 불자 기둥 끝의 커다란 날개가 천천히 돌아갑니다.",
+    "날개가 돌며 기둥 속 발전기가 전기를 만듭니다.",
+    "이렇게 바람의 힘으로 전기를 만드는 것이 풍력 발전입니다."
+   ],
+   "img": "A row of tall white wind turbines stands on a grassy seaside hill, their three long blades turning in the strong breeze. In the foreground, DOYUN holds up a small colorful pinwheel that spins in the same wind. No text.",
+   "imgKo": "바닷가 풀 언덕에 키 큰 하얀 풍력 발전기들이 줄지어 서서 세 개의 긴 날개가 센 바람에 돌고, 앞쪽에서 도윤이가 들어 올린 작은 알록달록한 바람개비도 같은 바람에 돈다."
+  },
+  "수력": {
+   "en": "hydropower",
+   "explain": [
+    "쉬운 뜻: 영어 hydropower는 그리스 말 hydro(물) + power(힘), '물의 힘'입니다. 떨어지는 물로 발전기를 돌립니다.",
+    "낱말 나누기: 수(水, 물) + 력(力, 힘), hydropower와 똑같이 '물의 힘'입니다.",
+    "생활 속 예: 물레방아가 떨어지는 물에 빙빙 도는 것과 같은 힘입니다."
+   ],
+   "beats": [
+    "산골짜기에 큰 댐이 강물을 가두고 있습니다.",
+    "댐 아래로 물을 쏟아 내리자 그 힘으로 발전기가 돌아갑니다.",
+    "이렇게 흐르거나 떨어지는 물의 힘으로 전기를 만드는 것이 수력 발전입니다."
+   ],
+   "img": "A large concrete dam holds back a deep blue lake between green mountains. White water gushes powerfully out of the bottom of the dam, and a cutaway view shows the falling water spinning a big turbine inside. No text.",
+   "imgKo": "초록 산 사이 큰 콘크리트 댐이 깊고 푸른 호수를 막고 있고, 댐 아래로 하얀 물이 힘차게 쏟아지며, 잘라 본 그림 속에서 떨어지는 물이 커다란 발전기 날개를 돌린다."
+  },
+  "조력": {
+   "en": "tidal power",
+   "explain": [
+    "쉬운 뜻: 영어 tidal power는 tide(밀물과 썰물) + power(힘)입니다. 바닷물이 드나드는 힘으로 전기를 만듭니다.",
+    "낱말 나누기: 조(潮, 밀물과 썰물) + 력(力, 힘) — 밀물과 썰물의 힘입니다.",
+    "바닷물은 하루 두 번 들고 나서, 날씨와 상관없이 언제 전기를 만들지 미리 압니다."
+   ]
+  },
+  "바이오 에너지": {
+   "en": "bioenergy",
+   "explain": [
+    "쉬운 뜻: 영어 bioenergy는 그리스 말 bio(생명) + energy(힘), '생물에서 얻는 힘'이라는 말입니다.",
+    "낱말 나누기: 바이오(생물) + 에너지(일하는 힘) — 생물에서 얻는 에너지입니다.",
+    "생활 속 예: 옛날 시골에서 볏짚과 나무를 아궁이에 때던 것도 생물에서 얻은 에너지입니다."
+   ],
+   "beats": [
+    "돼지 농장 옆에 커다란 둥근 통이 있습니다.",
+    "가축 똥오줌과 음식물 찌꺼기를 넣고 썩히자 가스가 생깁니다.",
+    "모은 가스로 농장의 난방을 하고 전기를 만듭니다.",
+    "이렇게 생물에서 얻는 에너지가 바이오 에너지입니다."
+   ],
+   "img": "Next to a clean pig farm stands a large round green tank. Workers pour in animal manure and food scraps, a pipe carries gas from the tank to a small generator building, and the farmhouse windows glow warmly with light. No text.",
+   "imgKo": "깨끗한 돼지 농장 옆에 커다란 둥근 초록 통이 있고, 일꾼들이 가축 분뇨와 음식물 찌꺼기를 넣으며, 통에서 나온 가스가 관을 따라 작은 발전 건물로 가고 농가 창에 따뜻한 불빛이 켜진다."
+  },
+  "글로컬": {
+   "en": "glocal",
+   "explain": [
+    "쉬운 뜻: 세계를 생각하면서 내 동네에서 움직이는 마음가짐을 담은 말입니다.",
+    "낱말 나누기: 영어 global(지구 전체의, globe는 '둥근 공') + local(지역의)을 합친 말입니다.",
+    "생활 속 예: 지구의 기후를 걱정해 우리 반이 교실 불 끄기와 분리배출을 실천합니다."
+   ],
+   "beats": [
+    "뉴스에서 북극 얼음이 녹고 있다는 소식이 나옵니다.",
+    "하린이네 반은 우리 학교에서 할 수 있는 일을 찾아봅니다.",
+    "빈 교실 불 끄기, 급식 남기지 않기를 날마다 실천합니다.",
+    "세계의 문제를 생각하며 내가 사는 곳에서 실천하는 것이 글로컬입니다."
+   ],
+   "img": "A scene in two halves. On the left, a classroom TV shows a melting iceberg with a polar bear. On the right, HARIN, DOYUN, and classmates switch off lights in an empty classroom, sort recycling into bins, and finish every bite of their school lunch, with a small globe on the teacher's desk. No text.",
+   "imgKo": "왼쪽은 교실 텔레비전에 녹아내리는 빙산과 북극곰이 나오는 모습, 오른쪽은 하린이와 도윤이, 반 친구들이 빈 교실 불을 끄고 분리배출을 하며 급식을 남김없이 먹는 모습이고 선생님 책상에 작은 지구본이 놓여 있다."
+  },
+  "환경 이슈": {
+   "en": "environmental issue",
+   "explain": [
+    "쉬운 뜻: 같은 환경 문제를 두고 '해야 한다', '안 된다'로 생각이 갈려 다투게 되는 문제입니다.",
+    "낱말 나누기: 환경(環境, 둘러싼 자연과 주변) + 이슈(사람들이 다투어 이야기하는 문제)입니다.",
+    "생활 속 예: 학교 앞에 큰길을 낼지, 오래된 나무를 지킬지를 두고 주민 생각이 갈립니다."
+   ],
+   "beats": [
+    "바닷가 마을 회관에 주민들이 모였습니다.",
+    "한쪽은 바다에 풍력 발전기를 세워 깨끗한 전기를 만들자고 합니다.",
+    "다른 쪽 어민들은 물고기가 줄어들까 봐 걱정합니다.",
+    "이렇게 환경을 두고 생각이 갈려 논쟁이 되는 문제가 환경 이슈입니다."
+   ],
+   "img": "In a seaside village hall, residents sit on two sides of a long table. One side points to a picture of wind turbines in the sea with hopeful faces, while fishermen on the other side hold a fishing net and look worried. A moderator stands in the middle listening to both. No text.",
+   "imgKo": "바닷가 마을 회관 긴 탁자 양쪽에 주민들이 앉아, 한쪽은 바다 위 풍력 발전기 그림을 가리키며 희망찬 얼굴이고 다른 쪽 어민들은 그물을 든 채 걱정스러운 얼굴이며, 가운데서 진행하는 사람이 양쪽 이야기를 듣는다."
+  },
+  "미세 먼지": {
+   "en": "fine dust",
+   "explain": [
+    "쉬운 뜻: 영어 fine dust는 fine(아주 고운) + dust(먼지)입니다. 머리카락 굵기보다 훨씬 작아 숨 쉴 때 몸속 깊이 들어옵니다.",
+    "낱말 나누기: 미세(微細, 작고 가늚) + 먼지 — 아주 작고 가는 먼지입니다.",
+    "생활 속 예: 일기 예보에서 '나쁨'이 뜬 날은 창문을 닫고 마스크를 씁니다."
+   ],
+   "beats": [
+    "아침 하늘이 누렇고 뿌옇게 흐립니다.",
+    "먼 빌딩이 잘 보이지 않고 목이 따끔거립니다.",
+    "하린이는 마스크를 쓰고 학교에 갑니다.",
+    "이렇게 눈에 보이지 않을 만큼 작아 몸속 깊이 들어오는 먼지가 미세 먼지입니다."
+   ],
+   "img": "A hazy yellowish-gray morning over a city where distant buildings fade into the dusty air. HARIN walks to school wearing a white mask and holding her backpack straps, while a nearby outdoor display shows only a frowning face icon in orange. No text.",
+   "imgKo": "먼 빌딩이 뿌연 공기 속에 흐릿하게 사라지는 누르스름한 아침 도시에서 하린이가 흰 마스크를 쓰고 가방끈을 잡은 채 학교에 가고, 옆 바깥 전광판에는 주황색 찡그린 얼굴 그림만 떠 있다."
+  },
+  "산성비": {
+   "en": "acid rain",
+   "explain": [
+    "쉬운 뜻: 영어 acid rain의 acid는 라틴 말 acidus(신)에서 온 말입니다. 오염 물질이 녹아 시큼해진 비입니다.",
+    "낱말 나누기: 산성(酸性, 신맛을 내는 성질) + 비, acid와 酸이 모두 '시다'입니다.",
+    "생활 속 예: 오래된 돌탑과 동상이 녹아 겉이 거칠어지는 까닭 가운데 하나입니다."
+   ],
+   "beats": [
+    "공장 굴뚝과 자동차에서 나온 연기가 하늘로 올라갑니다.",
+    "연기 속 오염 물질이 구름 속 물방울에 녹아듭니다.",
+    "그 비를 오래 맞은 숲의 나무가 시들고 돌 조각상이 깎입니다.",
+    "이렇게 오염 물질이 녹아 산성이 강해진 비가 산성비입니다."
+   ],
+   "img": "A scene that flows from left to right. Smoke rises from factory chimneys and car exhausts into gray clouds, rain falls from those clouds onto a forest where some trees have bare, wilted branches, and a stone statue in a park looks worn with blurred features. No text.",
+   "imgKo": "왼쪽에서 오른쪽으로 이어지는 장면으로, 공장 굴뚝과 자동차 배기구 연기가 잿빛 구름으로 올라가고, 그 구름의 비가 숲에 내려 몇몇 나무가 잎이 지고 시들며, 공원의 돌 조각상은 닳아서 얼굴이 흐릿하다."
+  },
+  "열대림": {
+   "en": "tropical rainforest",
+   "explain": [
+    "쉬운 뜻: 영어 tropical rainforest는 tropical(열대의) + rain(비) + forest(숲), 덥고 비 많은 열대의 숲입니다.",
+    "낱말 나누기: 열대(熱帶, 더운 띠) + 림(林, 수풀) — 더운 지역의 숲입니다.",
+    "생활 속 예: 초콜릿 원료 카카오와 바나나도 열대림 둘레에서 자랍니다."
+   ],
+   "beats": [
+    "적도 가까이에 키 큰 나무들이 빽빽한 숲이 있습니다.",
+    "날마다 소나기가 쏟아지고 온갖 새와 원숭이, 곤충이 삽니다.",
+    "이 숲은 많은 이산화 탄소를 빨아들입니다.",
+    "이렇게 일 년 내내 덥고 비가 많은 열대 지역의 숲이 열대림입니다."
+   ],
+   "img": "A dense, steamy rainforest with giant trees reaching high into the mist, thick vines hanging down, and warm rain falling. Colorful parrots, monkeys, butterflies, and frogs live among the layers of leaves, and a wide brown river winds below. No text.",
+   "imgKo": "거대한 나무들이 안개 속으로 높이 솟고 굵은 덩굴이 늘어진 습하고 빽빽한 열대 숲에 따뜻한 비가 내리고, 겹겹의 잎 사이에 알록달록한 앵무새, 원숭이, 나비, 개구리가 살며, 아래로 넓은 갈색 강이 굽이친다."
+  }
+ }
+}

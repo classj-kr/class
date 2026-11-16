@@ -1,0 +1,407 @@
+{
+ "9": {
+  "수도권": {
+   "en": "capital region",
+   "explain": [
+    "쉬운 뜻: 영어 capital은 라틴 말 caput(머리)에서 온 말입니다. 나라의 머리인 서울과 그 둘레를 묶은 지역입니다.",
+    "낱말 나누기: 수도(首都, 나라의 머리 도시) + 권(圈, 범위), 首도 caput처럼 '머리'입니다.",
+    "지하철 노선도를 보면 서울, 인천, 경기도가 한 그물로 이어져 있습니다."
+   ]
+  },
+  "공간 구조": {
+   "en": "spatial structure",
+   "explain": [
+    "쉬운 뜻: 영어 structure는 라틴 말 struere(쌓다)에서 온 말, '쌓아 짠 틀'입니다. 지역 안에서 무엇이 어디에 놓였는지 본 짜임새입니다.",
+    "낱말 나누기: 공간(空間, 비어 있는 자리) + 구조(構造, 얽어 지은 짜임새)입니다.",
+    "생활 속 예: 우리 동네 지도에서 아파트, 상가, 공장, 학교가 어디에 모여 있는지 보는 것입니다."
+   ]
+  },
+  "대도시권": {
+   "en": "metropolitan area",
+   "explain": [
+    "쉬운 뜻: 영어 metropolitan은 metro(어머니) + polis(도시), '어머니 도시'입니다. 큰 도시와 둘레 도시들이 묶인 생활권입니다.",
+    "낱말 나누기: 대도시(大都市, 큰 도시) + 권(圈, 범위) — 큰 도시가 미치는 범위입니다.",
+    "생활 속 예: 이웃 도시에 살며 날마다 큰 도시의 회사와 학교로 오가는 사람이 많습니다."
+   ]
+  },
+  "제조업": {
+   "en": "manufacturing",
+   "explain": [
+    "쉬운 뜻: 영어 manufacture는 manu(손) + facture(만들기), '손으로 만들기'입니다. 재료를 가공해 새 물건을 만드는 산업입니다.",
+    "낱말 나누기: 제조(製造, 만들고 지음) + 업(業, 일) — 물건을 만드는 일입니다.",
+    "생활 속 예: 내가 쓰는 휴대 전화, 운동화, 과자는 모두 제조업 공장에서 나왔습니다."
+   ],
+   "beats": [
+    "밀가루, 설탕, 버터가 과자 공장으로 들어갑니다.",
+    "기계가 반죽을 하고 모양을 찍어 구운 뒤 봉지에 담습니다.",
+    "이렇게 원료를 가공하여 새로운 물건을 만드는 산업이 제조업입니다."
+   ],
+   "img": "Inside a bright, clean snack factory, sacks of flour and sugar enter at one end of a long conveyor belt. Machines knead dough, stamp cookie shapes, bake them in a long oven, and pack them into plain bags at the other end, while workers in white caps check the line. No text.",
+   "imgKo": "밝고 깨끗한 과자 공장에서 밀가루와 설탕 포대가 긴 컨베이어 벨트 한쪽 끝으로 들어가고, 기계가 반죽하고 모양을 찍어 긴 오븐에 구운 뒤 다른 끝에서 봉지에 담으며, 흰 모자를 쓴 직원들이 살핀다."
+  },
+  "서비스업": {
+   "en": "service industry",
+   "explain": [
+    "쉬운 뜻: 영어 service는 라틴 말 servus(시중드는 사람)에서 온 말입니다. 물건 대신 사람에게 필요한 일을 해 주는 산업입니다.",
+    "낱말 나누기: 서비스(남을 위해 해 주는 일) + 업(業, 일)입니다.",
+    "생활 속 예: 미용실, 학원, 택배, 놀이공원에서 일하는 사람들이 모두 서비스업에서 일합니다."
+   ],
+   "beats": [
+    "아침, 택배 기사님이 상자를 집 앞에 놓고 갑니다.",
+    "병원에서는 의사가 환자를 진료하고, 학원에서는 선생님이 수업을 합니다.",
+    "모두 물건을 만들지 않고 사람들에게 필요한 일을 해 줍니다.",
+    "이런 일을 하는 산업이 서비스업입니다."
+   ],
+   "img": "A scene in three panels. A delivery worker places a box at an apartment door, a doctor kindly examines a child's throat in a clinic, and a teacher explains something at a whiteboard to students in an after-school academy. No text.",
+   "imgKo": "세 칸으로 나누어, 택배 기사가 아파트 문 앞에 상자를 놓고, 의사가 병원에서 아이의 목을 다정하게 살피며, 학원 선생님이 칠판 앞에서 학생들에게 설명한다."
+  },
+  "고속 철도": {
+   "en": "high-speed rail",
+   "explain": [
+    "쉬운 뜻: 영어 high-speed rail은 high-speed(아주 빠른) + rail(철길)입니다. 날렵한 모양으로 아주 빠르게 달리는 기차입니다.",
+    "낱말 나누기: 고속(高速, 높은 속도) + 철도(鐵道, 쇠로 만든 길)입니다.",
+    "생활 속 예: 서울에서 부산까지 고속 열차로 3시간이 채 걸리지 않습니다."
+   ],
+   "beats": [
+    "하린이네 가족이 할머니 댁에 가려고 기차역에 갑니다.",
+    "길쭉하고 날렵한 열차가 미끄러지듯 들어옵니다.",
+    "창밖 풍경이 휙휙 지나가더니 먼 도시에 금세 닿습니다.",
+    "이렇게 아주 빠른 속도로 달리는 철도가 고속 철도입니다."
+   ],
+   "img": "A sleek, streamlined high-speed train with a pointed nose rushes along elevated tracks across the countryside, with motion blur on the fields. Inside a window, HARIN and her family smile and look out at the scenery flying by. No text.",
+   "imgKo": "앞이 뾰족하고 매끈한 고속 열차가 들판 위 높은 철길을 쏜살같이 달려 들판이 흐릿하게 지나가고, 창 안에서 하린이네 가족이 웃으며 휙휙 지나가는 풍경을 바라본다."
+  },
+  "고속 국도": {
+   "en": "expressway",
+   "explain": [
+    "쉬운 뜻: 영어 expressway는 express(빠른) + way(길)입니다. 도시와 도시를 곧게 이어 차가 쌩쌩 달리는 길입니다.",
+    "낱말 나누기: 고속(高速, 높은 속도) + 국도(國道, 나라가 만든 길)입니다.",
+    "생활 속 예: 명절에 가족과 들르는 휴게소는 고속 국도 옆에 있습니다."
+   ],
+   "beats": [
+    "명절 아침, 도윤이네 차가 고향으로 출발합니다.",
+    "넓은 길에 신호등 없이 자동차들이 줄지어 빠르게 달립니다.",
+    "중간에 휴게소에 들러 쉬었다가 다시 달립니다.",
+    "이렇게 자동차가 빠르게 달리도록 나라에서 만든 길이 고속 국도입니다."
+   ],
+   "img": "A wide multi-lane highway curves through green hills and passes through a mountain tunnel. Cars and trucks drive smoothly with no traffic lights. In the foreground, DOYUN's family car pulls into a rest area where people stretch and buy snacks. No text.",
+   "imgKo": "여러 차선의 넓은 길이 초록 언덕 사이를 굽이돌아 산 터널을 지나고, 신호등 없이 차와 트럭이 매끄럽게 달리며, 앞쪽에서 도윤이네 차가 사람들이 기지개를 켜고 간식을 사는 휴게소로 들어간다."
+  },
+  "교통망": {
+   "en": "transportation network",
+   "explain": [
+    "쉬운 뜻: 영어 transportation은 trans(건너) + port(나르다), '건너 나름'이라는 말입니다. 그런 길들이 그물처럼 엮인 것입니다.",
+    "낱말 나누기: 교통(交通, 오고 가는 일) + 망(網, 그물) — 오가는 길의 그물입니다.",
+    "생활 속 예: 지하철 노선도의 알록달록한 선들이 서로 엮인 모습이 교통망입니다."
+   ]
+  },
+  "접근성": {
+   "en": "accessibility",
+   "explain": [
+    "쉬운 뜻: 영어 access는 ac(~쪽으로) + cess(가다), '다가가다'라는 말입니다. 어떤 곳에 얼마나 쉽게 다가갈 수 있는지입니다.",
+    "낱말 나누기: 접근(接近, 가까이 다가감) + 성(性, 성질) — 다가가기 쉬운 정도입니다.",
+    "생활 속 예: 학교 바로 앞에 버스 정류장이 생기면 학교 접근성이 좋아집니다."
+   ],
+   "beats": [
+    "산골 마을 정류장에 버스가 하루에 몇 번만 옵니다.",
+    "할머니는 읍내 병원에 가려고 한참을 기다리십니다.",
+    "도시에 사는 하린이는 집 앞 지하철역에서 몇 분 만에 병원에 닿습니다.",
+    "이렇게 어떤 곳에 얼마나 쉽고 빠르게 갈 수 있는지가 접근성입니다."
+   ],
+   "img": "A scene in two halves. On the left, an elderly grandmother waits at a lonely bus stop on an empty mountain road, checking her watch. On the right, HARIN steps out of a subway station right in front of her apartment and walks to a hospital just across the street. No text.",
+   "imgKo": "왼쪽은 텅 빈 산길 외딴 정류장에서 할머니가 시계를 보며 버스를 기다리는 모습, 오른쪽은 하린이가 아파트 바로 앞 지하철역에서 나와 길 건너 병원으로 걸어가는 모습이다."
+  },
+  "석탄 산업": {
+   "en": "coal industry",
+   "explain": [
+    "쉬운 뜻: 땅속 깊이 굴을 파서 검은 돌 석탄을 캐내 연료로 파는 산업입니다.",
+    "낱말 나누기: 석탄(石炭, 돌 + 숯, 돌처럼 굳은 숯) + 산업(産業, 물건을 만들어 내는 일)입니다.",
+    "생활 속 예: 옛날에는 집집마다 구멍 뚫린 연탄을 때서 방을 데웠는데, 그 원료가 석탄입니다."
+   ],
+   "beats": [
+    "옛날 탄광 마을에서 광부들이 안전모에 불을 켜고 굴로 들어갑니다.",
+    "캐낸 석탄은 연탄이 되어 집집마다 방을 데웠습니다.",
+    "사람들이 석유와 가스를 쓰게 되자 탄광이 하나둘 문을 닫았습니다.",
+    "땅속에서 석탄을 캐내어 연료로 대 주는 산업이 석탄 산업입니다."
+   ],
+   "img": "An old mining village in the mountains drawn in warm, slightly faded colors. Miners with lamps on their helmets walk into a dark mine entrance, coal carts roll out on rails, and in the village below, stacks of round coal briquettes with holes sit beside small houses with smoking chimneys. No text.",
+   "imgKo": "따뜻하고 조금 빛바랜 색의 옛 산골 탄광 마을에서 안전모에 등을 단 광부들이 어두운 굴로 들어가고, 석탄 수레가 철길로 나오며, 아래 마을 굴뚝 연기 나는 작은 집 옆에 구멍 뚫린 연탄이 쌓여 있다."
+  },
+  "폐광": {
+   "en": "abandoned mine",
+   "explain": [
+    "쉬운 뜻: 광물이 바닥났거나 캐도 이익이 없어 입구를 막아 버린 광산입니다.",
+    "낱말 나누기: 폐(廢, 그만두다) + 광(鑛, 광산) — 그만둔 광산입니다.",
+    "생활 속 예: 오래된 폐광 굴은 사철 서늘해서 저장고나 동굴 체험장으로 쓰기도 합니다."
+   ],
+   "beats": [
+    "광부들이 일하던 탄광의 입구가 굳게 닫혔습니다.",
+    "일자리가 사라지자 사람들이 떠나고 마을에 빈집이 늘어납니다.",
+    "몇 년 뒤, 닫혔던 굴이 박물관과 체험장으로 새로 문을 엽니다.",
+    "이렇게 광물을 더 캐지 않고 문을 닫은 광산이 폐광입니다."
+   ],
+   "img": "A scene in two halves. On the left, the entrance of an old coal mine is boarded up with planks, rusty carts sit still, and empty houses stand quietly in the village. On the right, the same mine entrance is brightly lit and reopened as a museum, where families with HARIN and DOYUN wear helmets and walk inside on a tour. No text.",
+   "imgKo": "왼쪽은 옛 탄광 입구가 판자로 막히고 녹슨 수레가 멈춰 있으며 마을의 빈집들이 조용한 모습, 오른쪽은 같은 입구가 환하게 불을 밝힌 박물관으로 다시 열려 하린이와 도윤이 등 가족들이 안전모를 쓰고 들어가는 모습이다."
+  },
+  "지역 불균형": {
+   "en": "regional imbalance",
+   "explain": [
+    "쉬운 뜻: 영어 imbalance는 im(아니) + balance(저울의 맞음), '저울이 맞지 않음'입니다. 사람과 일자리가 한쪽에만 몰린 상태입니다.",
+    "낱말 나누기: 지역 + 불(不, 아님) + 균형(均衡, 고른 저울대) — 지역 사이 저울이 기운 상태입니다.",
+    "생활 속 예: 큰 공연과 전시회는 대부분 서울에서 열려, 다른 지역 사람은 멀리 가야 합니다."
+   ]
+  },
+  "지방 소멸": {
+   "explain": [
+    "쉬운 뜻: 젊은이는 떠나고 아이는 태어나지 않아, 마을이 지도에서 사라질 위기에 놓이는 것입니다.",
+    "낱말 나누기: 지방(地方, 서울 밖 지역) + 소멸(消滅, 사라져 없어짐)입니다.",
+    "생활 속 예: 학생이 줄어 문을 닫는 시골 학교가 해마다 생깁니다."
+   ],
+   "beats": [
+    "시골 마을의 젊은이들이 일자리를 찾아 도시로 떠납니다.",
+    "어르신들만 남은 집이 하나둘 비어 갑니다.",
+    "학생이 없어 마을 학교도 문을 닫습니다.",
+    "이렇게 인구가 줄어 지역 공동체가 사라질 위기에 놓이는 것이 지방 소멸입니다."
+   ],
+   "img": "A quiet countryside village in late afternoon. A young person with a suitcase boards a bus leaving for the city, while a few elderly villagers wave goodbye. Several houses have closed doors and overgrown yards, and a small village school stands empty with its gate shut. No text.",
+   "imgKo": "늦은 오후 조용한 시골 마을에서 여행 가방을 든 젊은이가 도시로 떠나는 버스에 오르고 어르신 몇이 손을 흔들며, 여러 집은 문이 닫히고 마당에 풀이 무성하며 작은 마을 학교는 대문이 닫힌 채 비어 있다."
+  },
+  "행정 중심 복합 도시": {
+   "explain": [
+    "쉬운 뜻: 나라 일을 하는 큰 관청들을 서울에서 옮겨 와, 일터와 집과 학교를 함께 갖추어 지은 새 도시입니다.",
+    "낱말 나누기: 행정(行政, 나라 살림을 맡아 처리함) + 중심 + 복합(複合, 여러 기능을 합침) + 도시입니다.",
+    "정부 청사 건물들이 구불구불 하나로 이어져, 하늘에서 보면 용처럼 보입니다."
+   ]
+  },
+  "혁신 도시": {
+   "explain": [
+    "쉬운 뜻: 공공 기관이 이사 가며 일자리와 사람을 데려가, 지방에 새 활기를 불어넣으려고 만든 도시입니다.",
+    "낱말 나누기: 혁신(革新, 새롭게 바꿈) + 도시 — 지역을 새롭게 바꾸려는 도시입니다.",
+    "전국 여러 곳에 만들어져 전기, 도로, 건강 같은 분야의 공공 기관이 옮겨 갔습니다."
+   ]
+  },
+  "기업 도시": {
+   "explain": [
+    "쉬운 뜻: 나라 대신 회사가 주인공이 되어, 일터와 생활 공간을 한꺼번에 지은 도시입니다.",
+    "낱말 나누기: 기업(企業, 이익을 내려고 사업하는 곳) + 도시입니다.",
+    "직원들이 회사 가까이 살며 걸어서 출퇴근할 수 있도록 계획합니다."
+   ]
+  }
+ },
+ "10": {
+  "산업 단지": {
+   "en": "industrial complex",
+   "explain": [
+    "쉬운 뜻: 영어 complex는 com(함께) + plex(엮다), '함께 엮인 것'입니다. 공장들이 한곳에 모여 엮인 곳입니다.",
+    "낱말 나누기: 산업(産業, 물건을 만들어 내는 일) + 단지(團地, 모여 있는 땅)입니다.",
+    "생활 속 예: 아파트 단지에 집이 모여 있듯, 산업 단지에는 공장이 모여 있습니다."
+   ],
+   "beats": [
+    "넓은 빈 땅에 반듯한 도로와 전깃줄이 먼저 놓입니다.",
+    "그 위에 크고 작은 공장들이 줄지어 들어섭니다.",
+    "공장끼리 부품을 주고받으며 물건을 만들어 냅니다.",
+    "이렇게 공장들이 모여 일하도록 계획해 갖춘 곳이 산업 단지입니다."
+   ],
+   "img": "An aerial view of a large planned industrial complex near the sea. Straight roads form a neat grid, power lines and water pipes run along them, and many factories of different sizes line up in rows, with trucks carrying parts from one factory to another. No text.",
+   "imgKo": "바닷가 가까운 넓은 산업 단지를 하늘에서 본 모습으로, 곧은 도로가 바둑판처럼 나 있고 전깃줄과 수도관이 그 옆을 따라가며, 크고 작은 공장이 줄지어 서고 트럭이 공장 사이로 부품을 나른다."
+  },
+  "남동 임해 공업 지역": {
+   "explain": [
+    "쉬운 뜻: 우리나라 남동쪽 바닷가를 따라 커다란 공장들이 띠처럼 늘어선 공업 지역입니다.",
+    "낱말 나누기: 남동(南東) + 임해(臨海, 바다에 닿음) + 공업 지역(工業 地域, 공장이 모인 곳)입니다.",
+    "생활 속 예: 우리 집 자동차와 냉장고의 철판도 이곳 제철소에서 왔을 수 있습니다."
+   ]
+  },
+  "석유 화학": {
+   "en": "petrochemical",
+   "explain": [
+    "쉬운 뜻: 영어 petrochemical은 petro(돌) + chemical(화학)입니다. 석유로 여러 물질을 만들어 내는 공업입니다.",
+    "낱말 나누기: 석유(石油, 돌 기름, petroleum도 '돌 기름') + 화학(化學, 물질이 바뀌는 것을 다룸)입니다.",
+    "생활 속 예: 운동복 천, 플라스틱 물병, 칫솔도 석유 화학 제품입니다."
+   ],
+   "beats": [
+    "큰 배가 원유를 싣고 바닷가 공장에 닿습니다.",
+    "공장에서는 관과 탑을 거쳐 원유에서 여러 원료를 뽑아냅니다.",
+    "그 원료로 플라스틱 물병과 운동복 실이 만들어집니다.",
+    "이렇게 석유를 원료로 여러 제품을 만드는 공업이 석유 화학입니다."
+   ],
+   "img": "A scene in two halves. On the left, a seaside petrochemical plant with tall towers and a maze of silver pipes stands next to a tanker ship unloading crude oil. On the right, everyday items made from it are laid out neatly: plastic bottles, a toothbrush, sports clothes, and colorful toys. No text.",
+   "imgKo": "왼쪽은 높은 탑과 은빛 관이 미로처럼 얽힌 바닷가 석유 화학 공장 옆에 유조선이 원유를 내리는 모습, 오른쪽은 그것으로 만든 플라스틱 물병, 칫솔, 운동복, 알록달록한 장난감이 가지런히 놓인 모습이다."
+  },
+  "조선업": {
+   "en": "shipbuilding",
+   "explain": [
+    "쉬운 뜻: 영어 shipbuilding은 ship(배) + building(짓기), '배 짓기'입니다. 커다란 배를 설계하고 만드는 산업입니다.",
+    "낱말 나누기: 조선(造船, 배를 지음) + 업(業, 일), shipbuilding과 똑같이 '배 짓기'입니다.",
+    "생활 속 예: 바다 건너 석유와 가스를 실어 오는 거대한 운반선도 조선소에서 만듭니다."
+   ],
+   "beats": [
+    "바닷가 조선소에 집채만 한 철판 덩어리들이 놓여 있습니다.",
+    "거대한 기중기가 덩어리를 들어 올려 차례로 이어 붙입니다.",
+    "완성된 배가 바다로 나아갑니다.",
+    "이렇게 배를 설계하고 만드는 산업이 조선업입니다."
+   ],
+   "img": "A huge seaside shipyard. A giant gantry crane lifts an enormous steel block, as big as a house, onto a half-built cargo ship in a dry dock. Workers in helmets look tiny beside the ship, and a finished ship floats in the harbor nearby. No text.",
+   "imgKo": "거대한 바닷가 조선소에서 큰 기중기가 집채만 한 철판 덩어리를 들어 올려 반쯤 지은 화물선에 얹고, 안전모 쓴 일꾼들이 배 옆에서 아주 작아 보이며, 근처 항구에 완성된 배가 떠 있다."
+  },
+  "이차 전지": {
+   "en": "rechargeable battery",
+   "explain": [
+    "쉬운 뜻: 영어 rechargeable은 re(다시) + charge(채우다) + able(할 수 있는), '다시 채울 수 있는'이라는 말입니다.",
+    "낱말 나누기: 이차(二次, 두 번째) + 전지(電池, 전기를 담은 못) — 두 번, 여러 번 쓰는 전지입니다.",
+    "생활 속 예: 휴대 전화를 밤새 충전해 다음 날 다시 쓰는 것이 이차 전지 덕분입니다."
+   ],
+   "beats": [
+    "리모컨에 넣은 일회용 건전지는 다 쓰면 버립니다.",
+    "휴대 전화 배터리는 다 닳으면 충전기에 꽂아 다시 채웁니다.",
+    "전기 자동차도 큰 배터리를 충전해 달립니다.",
+    "이렇게 충전해서 여러 번 다시 쓰는 전지가 이차 전지입니다."
+   ],
+   "img": "A scene in two halves. On the left, a used disposable battery from a TV remote goes into a recycling box. On the right, a smartphone charges on a desk with a full battery icon glowing, and outside the window an electric car is plugged into a charging station. No text.",
+   "imgKo": "왼쪽은 텔레비전 리모컨에서 뺀 다 쓴 일회용 건전지가 수거함에 들어가는 모습, 오른쪽은 책상 위 휴대 전화가 가득 찬 배터리 그림을 빛내며 충전되고 창밖에 전기 자동차가 충전기에 꽂혀 있는 모습이다."
+  },
+  "스마트 팜": {
+   "en": "smart farm",
+   "explain": [
+    "쉬운 뜻: 휴대 전화와 센서가 농부 대신 온도와 물을 맞춰 주는 똑똑한 농장입니다.",
+    "낱말 나누기: 영어 smart(똑똑한) + farm(농장) — 똑똑한 농장입니다.",
+    "생활 속 예: 한겨울에도 마트에 싱싱한 딸기와 상추가 나오는 것은 이런 농장 덕분이기도 합니다."
+   ],
+   "beats": [
+    "비닐하우스 안 곳곳에 작은 센서가 달려 있습니다.",
+    "흙이 마르면 센서가 알아채고 저절로 물을 줍니다.",
+    "농부는 집에서 휴대 전화로 온도를 보고 창문을 엽니다.",
+    "이렇게 정보 통신 기술로 작물을 기르는 농장이 스마트 팜입니다."
+   ],
+   "img": "Inside a bright greenhouse with rows of strawberry plants, small sensors stick out of the soil and thin pipes drip water automatically. In an inset circle, a young farmer sits on a sofa at home and taps a smartphone, and the greenhouse roof window opens by itself. No text.",
+   "imgKo": "딸기가 줄지어 자라는 밝은 비닐하우스 안에 흙마다 작은 센서가 꽂히고 가는 관에서 물이 저절로 떨어지며, 작은 동그라미 안에는 젊은 농부가 집 소파에서 휴대 전화를 누르자 비닐하우스 지붕 창이 저절로 열린다."
+  },
+  "위상": {
+   "en": "status",
+   "explain": [
+    "쉬운 뜻: 영어 status는 라틴 말 stare(서다)에서 온 말, '서 있는 자리'입니다. 여럿 가운데서 차지하는 자리나 처지입니다.",
+    "낱말 나누기: 위(位, 자리) + 상(相, 모양) — 자리의 모양, 곧 서 있는 자리입니다.",
+    "생활 속 예: 우리 노래와 드라마가 세계에서 인기를 끌며 우리 문화의 위상이 높아졌습니다."
+   ]
+  },
+  "지역 개발": {
+   "en": "regional development",
+   "explain": [
+    "쉬운 뜻: 영어 develop은 '감싼 것을 풀어 펼치다'라는 옛 프랑스 말에서 왔습니다. 지역이 가진 힘을 펼쳐 살기 좋게 만드는 일입니다.",
+    "낱말 나누기: 지역 + 개발(開發, 열어서 피워 냄) — 지역을 열어 피워 냄입니다.",
+    "생활 속 예: 버려진 공장 터에 도서관과 공원을 짓는 것도 지역 개발입니다."
+   ],
+   "beats": [
+    "바닷가 작은 마을에 길이 좁고 낡은 집이 많습니다.",
+    "새 도로가 놓이고 관광객을 위한 쉼터와 시장이 생깁니다.",
+    "주민들이 모여 산과 바다가 망가지지 않게 할 방법도 함께 의논합니다.",
+    "이렇게 주민의 생활을 나아지게 하려고 시설과 산업을 키우는 일이 지역 개발입니다."
+   ],
+   "img": "A scene in two halves of the same small seaside village. On the left, a narrow dirt road runs between old, worn houses. On the right, a new paved road, a tidy market, and a rest area for visitors have been built, while villagers gather at a table looking at a plan and pointing at the green hills and sea they want to protect. No text.",
+   "imgKo": "같은 바닷가 작은 마을을 둘로 나누어, 왼쪽은 낡은 집 사이 좁은 흙길, 오른쪽은 새로 포장한 길과 깔끔한 시장, 관광객 쉼터가 생기고 주민들이 탁자에 모여 계획도를 보며 지키고 싶은 푸른 언덕과 바다를 가리키는 모습이다."
+  },
+  "지역 축제": {
+   "en": "local festival",
+   "explain": [
+    "쉬운 뜻: 영어 festival은 라틴 말 festum(잔치)에서 온 말입니다. 그 고장의 자랑거리를 내세워 여는 잔치입니다.",
+    "낱말 나누기: 지역 + 축제(祝祭, 축하하고 기리는 잔치)입니다.",
+    "생활 속 예: 갯벌에서 진흙 놀이를 하는 축제, 반딧불이를 보는 축제처럼 고장마다 특색이 있습니다."
+   ],
+   "beats": [
+    "가을, 한 고장의 들판에 꽃이 가득 피었습니다.",
+    "주민들이 꽃밭 사이에 먹거리 장터와 공연 무대를 차립니다.",
+    "멀리서 온 관광객들이 사진을 찍고 특산물을 삽니다.",
+    "이렇게 지역의 특색을 살려 주민과 관광객이 함께 즐기는 잔치가 지역 축제입니다."
+   ],
+   "img": "A cheerful autumn festival in a field full of blooming flowers. Colorful tents of a local food market line the paths, villagers in aprons sell local produce, a small stage hosts a traditional dance, and visitors including HARIN and DOYUN take photos among the flowers. No text.",
+   "imgKo": "꽃이 가득 핀 들판의 즐거운 가을 축제에서 알록달록한 먹거리 장터 천막이 길을 따라 서고, 앞치마 두른 주민들이 특산물을 팔며, 작은 무대에서 전통 춤 공연이 열리고 하린이와 도윤이 등 관광객이 꽃밭에서 사진을 찍는다."
+  },
+  "현무암": {
+   "en": "basalt",
+   "explain": [
+    "쉬운 뜻: 스펀지처럼 구멍이 숭숭 뚫린, 화산이 만든 검은 돌입니다.",
+    "낱말 나누기: 현(玄, 검다) + 무(武) + 암(巖, 바위) — 첫 글자 玄이 말해 주듯 검은 바위입니다.",
+    "생활 속 예: 제주도 밭의 검은 돌담은 돌 틈으로 바람이 빠져나가 잘 무너지지 않습니다."
+   ],
+   "beats": [
+    "화산에서 뜨거운 용암이 흘러나옵니다.",
+    "용암이 땅 위에서 빠르게 식으며 속의 가스가 빠져나가 작은 구멍들이 남습니다.",
+    "제주 사람들은 이 검은 돌로 돌담을 쌓았습니다.",
+    "이렇게 용암이 빨리 식어 굳은 구멍 많은 검은 돌이 현무암입니다."
+   ],
+   "img": "A scene in two halves. On the left, glowing orange lava flows down a volcano and cools into dark rock, with tiny gas bubbles escaping. On the right, HARIN touches a low black stone wall full of small holes that winds between green fields on a breezy island. No text.",
+   "imgKo": "왼쪽은 화산에서 주황빛 용암이 흘러내리며 작은 가스 거품이 빠져나가고 검은 돌로 식는 모습, 오른쪽은 바람 부는 섬의 초록 밭 사이로 이어진 구멍 숭숭한 낮은 검은 돌담을 하린이가 만져 보는 모습이다."
+  },
+  "용암 동굴": {
+   "en": "lava tube",
+   "explain": [
+    "쉬운 뜻: 영어 lava tube는 lava(용암) + tube(관), '용암이 흐른 관'입니다. 용암이 빠져나간 자리에 남은 긴 굴입니다.",
+    "낱말 나누기: 용암(鎔巖, 녹은 바위) + 동굴(洞窟, 굴) — 녹은 바위가 만든 굴입니다.",
+    "굴 벽에는 용암이 흐르며 남긴 줄무늬가 선반처럼 남아 있기도 합니다."
+   ]
+  },
+  "주상 절리": {
+   "en": "columnar joint",
+   "explain": [
+    "쉬운 뜻: 영어 columnar joint는 column(기둥) + joint(이음매)입니다. 용암이 식으며 기둥 모양으로 쩍쩍 갈라진 바위입니다.",
+    "낱말 나누기: 주상(柱狀, 기둥 모양) + 절리(節理, 바위에 생긴 마디와 결)입니다.",
+    "생활 속 예: 진흙 웅덩이가 마르며 거북 등처럼 갈라지는 것과 같은 까닭으로 생깁니다."
+   ],
+   "beats": [
+    "뜨거운 용암이 바닷가로 흘러와 멈춥니다.",
+    "용암이 식으며 오그라들자 바위가 세로로 쩍쩍 갈라집니다.",
+    "오랜 세월 뒤, 바닷가에 육각형 돌기둥들이 빽빽이 서 있습니다.",
+    "이렇게 용암이 식으며 생긴 기둥 모양 바위가 주상 절리입니다."
+   ],
+   "img": "A dramatic seaside cliff made of tightly packed black hexagonal stone columns standing side by side like a giant bundle of pencils. White waves crash and spray at the base, and HARIN and DOYUN look on in amazement from a viewing deck above. No text.",
+   "imgKo": "검은 육각형 돌기둥들이 거대한 연필 묶음처럼 빽빽이 늘어선 바닷가 절벽 아래로 하얀 파도가 부딪쳐 물보라가 일고, 위쪽 전망대에서 하린이와 도윤이가 놀라워하며 바라본다."
+  },
+  "오름": {
+   "explain": [
+    "쉬운 뜻: 제주 사람들이 한라산 둘레의 작은 화산을 부르는 말입니다.",
+    "낱말 나누기: 오르다 + ㅁ — 올라가는 곳, 곧 작은 산이라는 제주말입니다.",
+    "생활 속 예: 둥근 언덕 같은 오름에 오르면 바다와 한라산이 한눈에 보입니다."
+   ],
+   "beats": [
+    "한라산 아래 들판에 둥근 언덕들이 여기저기 솟아 있습니다.",
+    "하린이가 그 언덕 하나에 오르니 꼭대기가 그릇처럼 움푹 파여 있습니다.",
+    "옛날 화산이 터졌던 자리입니다.",
+    "이렇게 한라산 둘레에 흩어진 작은 화산을 오름이라고 합니다."
+   ],
+   "img": "A wide grassy landscape on a volcanic island with many soft, rounded green hills scattered across it and a tall mountain in the distance. HARIN stands at the rim of one hill looking down into a bowl-shaped crater covered with grass, with silver reeds waving in the wind. No text.",
+   "imgKo": "화산섬의 넓은 풀밭에 부드럽고 둥근 초록 언덕들이 여기저기 흩어지고 멀리 높은 산이 보이며, 하린이가 한 언덕 꼭대기 가장자리에 서서 풀로 덮인 그릇 모양 분화구를 내려다보고 은빛 억새가 바람에 흔들린다."
+  },
+  "세계 자연 유산": {
+   "en": "World Natural Heritage",
+   "explain": [
+    "쉬운 뜻: 영어 heritage는 heir(물려받는 사람)와 같은 뿌리로 '물려받은 것'입니다. 온 인류가 물려받아 지킬 뛰어난 자연입니다.",
+    "낱말 나누기: 세계 + 자연 + 유산(遺産, 앞 세대가 남겨 준 재산)입니다.",
+    "생활 속 예: 이름이 오르면 그 나라는 그곳을 잘 지키겠다고 세계에 약속하는 셈입니다."
+   ],
+   "beats": [
+    "조사단이 화산섬의 용암 동굴과 분화구를 둘러봅니다.",
+    "다른 곳에서 보기 힘든 지형과 아름다운 경치를 꼼꼼히 기록합니다.",
+    "마침내 온 인류가 함께 지킬 곳으로 이름을 올립니다.",
+    "이렇게 유네스코가 뛰어난 가치를 인정한 자연이 세계 자연 유산입니다."
+   ],
+   "img": "A team of researchers with notebooks and cameras explores a volcanic island: one group inside a long lava cave lit by lamps, another on the rim of a crater by the sea at sunrise. Around the scene, a soft glowing circle like a protective seal surrounds the island. No text.",
+   "imgKo": "공책과 사진기를 든 조사단이 화산섬을 살피는데, 한 무리는 등불을 켠 긴 용암 동굴 안에, 다른 무리는 해 뜨는 바닷가 분화구 가장자리에 있고, 섬 둘레를 지켜 주는 도장처럼 은은한 빛 테두리가 감싼다."
+  },
+  "아열대": {
+   "en": "subtropical",
+   "explain": [
+    "쉬운 뜻: 영어 subtropical은 sub(아래, 버금) + tropical(열대의), '열대 바로 다음'이라는 말입니다.",
+    "낱말 나누기: 아(亞, 버금) + 열대(熱帶, 더운 띠) — 열대에 버금가는 곳, sub와 亞가 같은 뜻입니다.",
+    "생활 속 예: 미국 플로리다와 홍콩이 아열대에 속합니다."
+   ],
+   "beats": [
+    "제주도의 한 비닐하우스에 노란 망고가 주렁주렁 열렸습니다.",
+    "예전에는 따뜻한 남쪽 나라에서만 기르던 과일입니다.",
+    "겨울이 따뜻해지면서 우리나라에서도 기를 수 있게 되었습니다.",
+    "열대보다는 덜 덥지만 온대보다 따뜻한 지역을 아열대라고 합니다."
+   ],
+   "img": "Inside a warm greenhouse on a southern island, ripe yellow-orange mangoes hang heavily from leafy trees and bunches of bananas grow nearby. A farmer smiles and shows a basket of mangoes to HARIN, while outside the window a mild winter sky is visible. No text.",
+   "imgKo": "남쪽 섬의 따뜻한 비닐하우스 안에 잘 익은 노란 망고가 주렁주렁 매달리고 옆에 바나나 송이가 자라며, 농부가 웃으며 하린이에게 망고 바구니를 보여 주고 창밖으로 포근한 겨울 하늘이 보인다."
+  }
+ }
+}

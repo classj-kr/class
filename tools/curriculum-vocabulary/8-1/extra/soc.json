@@ -1,0 +1,521 @@
+{
+ "1": {
+  "정부 형태": {
+   "en": "form of government",
+   "explain": [
+    "쉬운 뜻: 영어 government는 '배의 키를 잡다'라는 옛말에서 왔습니다. 나라라는 배의 키를 누가 어떻게 잡는지 짜 놓은 틀입니다.",
+    "낱말 나누기: 정부(나라 살림을 맡은 곳) + 형태(形態, 생김새) — 정부가 짜인 생김새입니다.",
+    "정상 회담에 나오는 나라 대표가 어떤 나라는 대통령, 어떤 나라는 총리인 것도 정부 형태가 달라서입니다."
+   ]
+  },
+  "대통령제": {
+   "en": "presidential system",
+   "explain": [
+    "쉬운 뜻: 영어 president는 pre(앞) + sid(앉다), '맨 앞에 앉은 사람'입니다. 그 사람을 국민이 의회와 따로 뽑는 제도입니다.",
+    "낱말 나누기: 대통령(大統領, 크게 거느리고 다스리는 사람) + 제(制, 제도)입니다.",
+    "우리나라 대통령은 국민이 직접 뽑고, 5년 동안 한 번만 일합니다."
+   ]
+  },
+  "의원 내각제": {
+   "en": "parliamentary system",
+   "explain": [
+    "쉬운 뜻: 영어 parliament는 프랑스 말 parler(말하다)에서 온 말, '말하며 의논하는 곳'입니다. 그 의회가 행정부까지 꾸리는 제도입니다.",
+    "낱말 나누기: 의원(議院, 의회) + 내각(內閣, 안쪽 방) + 제(제도), 영어 cabinet도 '작은 방'입니다.",
+    "총리와 장관 대부분이 의회 의원이라서 의회와 행정부가 한 팀처럼 움직입니다."
+   ]
+  },
+  "국가 원수": {
+   "en": "head of state",
+   "explain": [
+    "쉬운 뜻: 영어 head of state는 '나라의 머리'라는 말입니다. 다른 나라 앞에서 우리나라 전체를 대신하는 맨 윗자리입니다.",
+    "낱말 나누기: 국가(나라) + 원수(元首, 으뜸 + 머리), 미워하는 원수(怨讐)와는 글자가 다릅니다.",
+    "올림픽을 여는 나라에서 개막을 선언하는 사람도 그 나라의 국가 원수입니다."
+   ]
+  },
+  "수반": {
+   "en": "head of government",
+   "explain": [
+    "쉬운 뜻: 영어 head of government는 '정부의 머리'라는 말입니다. 행정부 맨 위에서 장관과 공무원을 이끄는 사람입니다.",
+    "낱말 나누기: 수(首, 머리) + 반(班, 반장의 '반', 무리) — 무리의 머리입니다.",
+    "우리 대통령은 나라의 대표이면서 행정부의 수반, 두 자리를 한 사람이 함께 맡습니다."
+   ]
+  },
+  "법률안 거부권": {
+   "en": "veto",
+   "explain": [
+    "쉬운 뜻: 영어 veto는 라틴 말로 '나는 막는다'라는 뜻입니다. 국회가 통과시킨 법안을 대통령이 막아 다시 의논하라고 돌려보내는 힘입니다.",
+    "낱말 나누기: 법률안(법이 되기 전의 안) + 거부(拒否, 막고 아니라 함) + 권(權, 권리)입니다.",
+    "돌려보낸 법안도 국회 출석 의원 3분의 2 이상이 찬성하면 다시 법이 됩니다."
+   ]
+  },
+  "감사원": {
+   "explain": [
+    "쉬운 뜻: 나라 살림의 영수증을 검사하는 곳입니다. 세금이 제대로 쓰였는지, 공무원이 일을 바르게 했는지 살핍니다.",
+    "낱말 나누기: 감사(監査, 살피고 조사함) + 원(院, 큰 기관) — 살피고 조사하는 기관입니다.",
+    "생활 속 예: 나랏돈으로 산 물건이 창고에 쓰이지 않고 쌓여 있으면 감사원이 바로잡게 합니다."
+   ]
+  },
+  "임기": {
+   "en": "term",
+   "explain": [
+    "쉬운 뜻: 영어 term은 라틴 말 terminus(끝, 경계)에서 온 말입니다. 시작과 끝이 정해진 자리의 기간입니다.",
+    "낱말 나누기: 임(任, 맡기다) + 기(期, 기간) — 맡겨진 기간입니다.",
+    "생활 속 예: 학생회장도 1년 임기가 끝나면 새로 뽑힌 회장에게 자리를 넘깁니다."
+   ],
+   "beats": [
+    "학기 첫날, 하린이가 학급 회장으로 뽑혀 회장 배지를 답니다.",
+    "하린이는 한 학기 동안 학급 회의를 이끌고 친구들의 의견을 모읍니다.",
+    "학기 마지막 날, 하린이는 새로 뽑힌 도윤이에게 배지를 건넵니다.",
+    "이렇게 어떤 자리를 맡아 일하도록 정해진 기간이 임기입니다."
+   ],
+   "img": "A classroom scene in two halves. On the left, on the first day of spring semester, classmates clap as HARIN pins a small class president badge on her mint cardigan, with cherry blossoms outside the window. On the right, on the last day of the semester with summer trees outside, HARIN smiles and hands the same badge to DOYUN while the classmates clap again. No text.",
+   "imgKo": "교실을 둘로 나누어, 왼쪽은 벚꽃 핀 학기 첫날 하린이가 회장 배지를 달고 친구들이 손뼉 치는 모습, 오른쪽은 여름 나무가 보이는 학기 마지막 날 하린이가 같은 배지를 도윤이에게 건네는 모습이다."
+  },
+  "국회": {
+   "en": "National Assembly",
+   "explain": [
+    "쉬운 뜻: 영어 assembly는 '함께 모이다'에서 온 말입니다. 국민이 뽑은 대표들이 한자리에 모여 법을 만드는 곳입니다.",
+    "낱말 나누기: 국(國, 나라) + 회(會, 모이다) — 나라의 대표가 모이는 곳입니다.",
+    "우리 국회 의원은 300명이고, 4년마다 선거로 새로 뽑습니다."
+   ]
+  },
+  "지역구": {
+   "explain": [
+    "쉬운 뜻: 선거 때 나라를 동네 몇 개씩 묶어 칸으로 나누고, 칸마다 대표를 한 명씩 뽑는 그 칸입니다.",
+    "낱말 나누기: 지역(땅의 구역) + 구(區, 나눈 칸) — 선거를 위해 나눈 땅의 칸입니다.",
+    "생활 속 예: 선거 때 우리 동네 길가에 붙는 후보 벽보는 우리 지역구 후보들입니다."
+   ]
+  },
+  "비례 대표": {
+   "en": "proportional representation",
+   "explain": [
+    "쉬운 뜻: 영어 proportional은 pro(~에 따라) + portion(몫), '몫에 따라'라는 말입니다. 정당이 얻은 표만큼 자리를 나눕니다.",
+    "낱말 나누기: 비례(比例, 견주어 그만큼) + 대표 — 얻은 표에 견주어 뽑는 대표입니다.",
+    "생활 속 예: 국회 의원 선거 날 받는 아주 긴 투표용지가 정당을 고르는 비례 대표 투표용지입니다."
+   ]
+  },
+  "상임 위원회": {
+   "en": "standing committee",
+   "explain": [
+    "쉬운 뜻: 영어 committee는 commit(맡기다)에서 온 말, '일을 맡긴 사람들'입니다. 국회에서 분야를 나눠 맡아 늘 일하는 모임입니다.",
+    "낱말 나누기: 상임(常任, 늘 맡음) + 위원회(委員會, 일을 맡은 사람들의 모임)입니다.",
+    "생활 속 예: 학급의 미화부, 체육부처럼 교육, 국방, 환경을 나누어 맡습니다."
+   ]
+  },
+  "본회의": {
+   "en": "plenary session",
+   "explain": [
+    "쉬운 뜻: 영어 plenary는 '가득 찬'이라는 말, 의원이 빠짐없이 모인 회의입니다. 국회의 마지막 결정은 여기서 내립니다.",
+    "낱말 나누기: 본(本, 으뜸) + 회의(會議, 모여 의논함) — 으뜸가는 회의입니다.",
+    "생활 속 예: 모둠별로 정한 의견을 마지막에 반 전체가 모여 손을 들어 정하는 것과 같습니다."
+   ]
+  },
+  "공포": {
+   "explain": [
+    "쉬운 뜻: 새 법을 온 국민에게 “이제부터 이 법을 지킵니다.” 하고 널리 알리는 일입니다.",
+    "낱말 나누기: 공(公, 드러내 놓고 모두에게) + 포(布, 펴다) — 모두에게 펴서 알림입니다.",
+    "대통령은 국회를 통과한 법을 15일 안에 공포하고, 따로 정한 날이 없으면 20일 뒤부터 지킵니다."
+   ]
+  },
+  "국정 감사": {
+   "explain": [
+    "쉬운 뜻: 국회가 해마다 행정부의 한 해 성적표를 꼼꼼히 들여다보는 일입니다.",
+    "낱말 나누기: 국정(國政, 나라의 정치) + 감사(監査, 살피고 조사함) — 나라 일을 살펴 조사함입니다.",
+    "이때 장관과 공무원이 국회에 나와 의원들의 질문에 답합니다."
+   ]
+  },
+  "국정 조사": {
+   "explain": [
+    "쉬운 뜻: 큰 사고나 의혹이 생기면 국회가 그 일 하나만 골라 깊이 파헤치는 일입니다.",
+    "낱말 나누기: 국정(國政, 나라의 정치) + 조사(調査, 고르게 살펴 따짐)입니다.",
+    "국회 의원 4분의 1 이상이 요구하면 열 수 있습니다."
+   ]
+  },
+  "탄핵": {
+   "en": "impeachment",
+   "explain": [
+    "쉬운 뜻: 영어 impeach는 im(안에) + pedica(족쇄), '발을 묶다'에서 왔습니다. 법을 어긴 높은 공무원을 물러나게 하는 일입니다.",
+    "낱말 나누기: 탄(彈, 잘못을 들추어 따짐) + 핵(劾, 캐묻다) — 잘못을 들추어 캐묻는 일입니다.",
+    "대통령은 국회 의원 3분의 2 이상과 헌법재판관 6명 이상이 찬성해야 물러납니다."
+   ]
+  },
+  "대법원": {
+   "en": "Supreme Court",
+   "explain": [
+    "쉬운 뜻: 영어 supreme은 super(위)의 가장 높은 꼴, '맨 위'라는 말입니다. 재판의 맨 마지막 계단입니다.",
+    "낱말 나누기: 대(大, 크다) + 법원(法院, 재판하는 곳) — 가장 큰 법원입니다.",
+    "대법원장과 대법관을 합쳐 14명이 일합니다."
+   ]
+  },
+  "헌법재판소": {
+   "en": "Constitutional Court",
+   "explain": [
+    "쉬운 뜻: 영어 constitution은 con(함께) + stitute(세우다), '나라의 틀을 세운 것'입니다. 그 틀인 헌법을 지키는 재판소입니다.",
+    "낱말 나누기: 헌법(憲法, 나라의 으뜸 법) + 재판소(裁判所, 옳고 그름을 가리는 곳)입니다.",
+    "재판관 9명은 대통령, 국회, 대법원장이 3명씩 정합니다."
+   ]
+  },
+  "위헌": {
+   "en": "unconstitutional",
+   "explain": [
+    "쉬운 뜻: 영어 unconstitutional은 un(아니) + constitutional(헌법에 맞는), '헌법에 맞지 않는'이라는 말입니다.",
+    "낱말 나누기: 위(違, 어기다) + 헌(憲, 헌법) — 헌법을 어김입니다.",
+    "생활 속 예: 학급 규칙이 학교 규칙과 어긋나면 고쳐야 하듯, 법도 헌법과 어긋나면 고쳐야 합니다."
+   ]
+  },
+  "위헌 법률 심판": {
+   "explain": [
+    "쉬운 뜻: 재판에 쓰려는 법이 헌법에 어긋나 보이면, 판사가 헌법재판소에 “이 법 괜찮나요?” 하고 묻는 심판입니다.",
+    "낱말 나누기: 위헌(헌법을 어김) + 법률(법) + 심판(審判, 살펴서 판단함)입니다.",
+    "재판을 받는 사람도 판사에게 이 법을 헌법재판소에 물어 달라고 신청할 수 있습니다."
+   ]
+  },
+  "권한 쟁의 심판": {
+   "explain": [
+    "쉬운 뜻: 나라 기관끼리 “그건 우리 일이야!” 하고 다툴 때, 누구 일인지 헌법재판소가 금을 그어 주는 심판입니다.",
+    "낱말 나누기: 권한(權限, 맡아서 할 수 있는 범위) + 쟁의(爭議, 다투어 따짐) + 심판입니다.",
+    "국회와 정부, 시·도와 정부처럼 기관 사이의 다툼을 가립니다."
+   ]
+  },
+  "정당 해산 심판": {
+   "explain": [
+    "쉬운 뜻: 민주주의를 무너뜨리려는 정당이 있을 때, 그 정당을 없앨지 헌법재판소가 정하는 심판입니다.",
+    "낱말 나누기: 정당(政黨, 정치를 하려고 모인 무리) + 해산(解散, 풀어 흩어지게 함) + 심판입니다.",
+    "정부만 청구할 수 있고, 재판관 6명 이상이 찬성해야 해산됩니다."
+   ]
+  }
+ },
+ "2": {
+  "희소성": {
+   "en": "scarcity",
+   "explain": [
+    "쉬운 뜻: 영어 scarcity는 scarce(모자란)에서 온 말입니다. 갖고 싶은 마음에 비해 물건과 돈이 모자란 성질입니다.",
+    "낱말 나누기: 희소(稀少, 드물고 적음) + 성(性, 성질) — 바라는 만큼에 비해 적은 성질입니다.",
+    "생활 속 예: 흔한 공기는 공짜지만, 사려는 사람이 몰리는 한정판 운동화는 값이 뜁니다."
+   ],
+   "beats": [
+    "도윤이는 새 운동화도, 게임도, 만화책도 다 갖고 싶습니다.",
+    "하지만 지갑에 든 용돈은 그 가운데 하나를 살 만큼뿐입니다.",
+    "바라는 것은 끝이 없는데 채울 돈과 물건은 모자란 것, 이것이 희소성입니다."
+   ],
+   "img": "DOYUN stands in front of a shop window with dreamy, wishful eyes, looking at a pair of sneakers, a video game box, and a stack of comic books. In his open palm he holds only a few coins. Three soft thought bubbles above his head show the three items while he scratches his head. No text.",
+   "imgKo": "도윤이가 가게 진열창 앞에서 운동화, 게임, 만화책을 바라보는데 손바닥에는 동전 몇 개뿐이고, 머리 위 생각 풍선 셋에 세 물건이 떠 있어 머리를 긁적인다."
+  },
+  "합리적 선택": {
+   "en": "rational choice",
+   "explain": [
+    "쉬운 뜻: 영어 rational은 ratio(셈, 따짐)에서 온 말입니다. 들인 것과 얻는 것을 따져 가장 이득인 쪽을 고르는 것입니다.",
+    "낱말 나누기: 합리(合理, 이치에 맞음) + 적 + 선택(選擇, 골라 뽑음) — 이치에 맞게 고름입니다.",
+    "생활 속 예: 학용품을 살 때 값, 품질, 얼마나 오래 쓸지를 하나하나 따져 보고 고릅니다."
+   ],
+   "beats": [
+    "하린이가 문구점에서 필통 두 개를 놓고 고민합니다.",
+    "하나는 싸지만 금방 망가지고, 하나는 조금 비싸지만 튼튼합니다.",
+    "하린이는 값과 얼마나 오래 쓸지를 견주어 보고 튼튼한 필통을 고릅니다.",
+    "이렇게 따져서 만족이 가장 큰 쪽을 고르는 것이 합리적 선택입니다."
+   ],
+   "img": "HARIN stands in a stationery store holding two pencil cases, one in each hand. The left one is thin and flimsy with a loose zipper, and the right one is thick and sturdy. She tilts her head and compares them thoughtfully. No text.",
+   "imgKo": "하린이가 문구점에서 두 손에 필통을 하나씩 들고, 지퍼가 헐거운 얇은 필통과 두툼하고 튼튼한 필통을 고개를 갸웃하며 견주어 본다."
+  },
+  "기회비용": {
+   "en": "opportunity cost",
+   "explain": [
+    "쉬운 뜻: 영어 opportunity는 '항구(port) 쪽으로 부는 바람', 곧 좋은 때입니다. 하나를 고르며 놓친 것 가운데 가장 큰 값입니다.",
+    "낱말 나누기: 기회(機會, 알맞은 때) + 비용(費用, 드는 돈) — 놓친 기회가 곧 치른 값입니다.",
+    "생활 속 예: 시험 전날 밤 게임을 하면 그 시간에 할 수 있던 공부가 기회비용입니다."
+   ],
+   "beats": [
+    "일요일 오후, 하린이는 영화 보기와 수영장 가기 가운데 하나만 할 수 있습니다.",
+    "하린이는 영화를 골라 즐겁게 보았습니다.",
+    "하지만 수영장에서 누렸을 시원한 즐거움은 놓쳤습니다.",
+    "이렇게 하나를 고르며 포기한 것의 가치가 기회비용입니다."
+   ],
+   "img": "HARIN stands at a fork in a sunny path on a Sunday afternoon. One path leads to a movie theater entrance, and the other leads to an outdoor swimming pool where children splash. She walks toward the theater while glancing back at the pool with a little wistful look. No text.",
+   "imgKo": "하린이가 갈림길에서 한쪽은 영화관, 다른 쪽은 아이들이 물놀이하는 수영장으로 이어진 가운데, 영화관 쪽으로 걸으며 아쉬운 눈길로 수영장을 돌아본다."
+  },
+  "편익": {
+   "en": "benefit",
+   "explain": [
+    "쉬운 뜻: 영어 benefit은 bene(좋게) + fit(하다), '좋은 일을 해 줌'이라는 말입니다. 무언가를 골라서 얻는 이득과 만족입니다.",
+    "낱말 나누기: 편(便, 편하다) + 익(益, 더하다) — 편함과 이득이 더해짐입니다.",
+    "생활 속 예: 우산을 챙겨 나간 날 비가 오면 젖지 않은 것이 그 선택의 편익입니다."
+   ],
+   "beats": [
+    "하린이가 용돈을 모아 줄넘기를 샀습니다.",
+    "날마다 줄넘기를 하니 몸이 튼튼해지고 친구들과 노는 시간도 즐거워졌습니다.",
+    "이렇게 고른 것에서 얻는 이득과 만족이 편익입니다."
+   ],
+   "img": "HARIN happily jumps rope in a park in the evening light, cheeks rosy and smiling. Two friends count and cheer beside her, and a new jump rope box lies open on a bench. No text.",
+   "imgKo": "저녁 햇살 속 공원에서 하린이가 볼이 발그레하게 웃으며 줄넘기를 하고, 옆에서 친구 둘이 응원하며 벤치에는 새 줄넘기 상자가 열려 있다."
+  },
+  "재화": {
+   "en": "goods",
+   "explain": [
+    "쉬운 뜻: 영어 goods는 good(좋은)에서 온 말, '쓸모 있는 좋은 것들'입니다. 눈에 보이고 손에 잡히는 물건입니다.",
+    "낱말 나누기: 재(財, 재물) + 화(貨, 물건) — 값나가는 물건입니다.",
+    "생활 속 예: 편의점의 삼각김밥과 음료는 재화, 택배 기사님이 날라 주는 일은 서비스입니다."
+   ],
+   "beats": [
+    "하린이의 장바구니에 공책, 운동화, 빵이 담겨 있습니다.",
+    "모두 눈에 보이고 손으로 만질 수 있으며, 쓰거나 먹으면 만족을 줍니다.",
+    "같은 날 미용실에서 머리를 자른 일은 손에 잡히지 않는 서비스입니다.",
+    "이렇게 만질 수 있고 만족을 주는 물건을 재화라고 합니다."
+   ],
+   "img": "A scene in two halves. On the left, HARIN holds up a shopping basket filled with notebooks, sneakers, and a loaf of bread. On the right, HARIN sits in a hair salon chair while a hairdresser trims her hair, and the left items glow softly while the haircut has no object to hold. No text.",
+   "imgKo": "왼쪽은 하린이가 공책, 운동화, 빵이 든 장바구니를 들어 보이는 모습, 오른쪽은 미용실 의자에 앉아 머리를 다듬는 모습이다."
+  },
+  "경제 주체": {
+   "en": "economic agent",
+   "explain": [
+    "쉬운 뜻: 영어 economy는 그리스 말 oikos(집) + nomos(관리), '집안 살림 관리'입니다. 그 살림을 스스로 꾸리는 주인공들입니다.",
+    "낱말 나누기: 경제(經濟, 세상을 다스려 사람을 도움) + 주체(主體, 스스로 하는 주인)입니다.",
+    "가계는 일하고 소비하며, 기업은 만들어 팔고, 정부는 세금으로 나라 살림을 꾸립니다."
+   ]
+  },
+  "생애 주기": {
+   "en": "life cycle",
+   "explain": [
+    "쉬운 뜻: 영어 cycle은 그리스 말 kyklos(바퀴, 원)에서 온 말입니다. 사람이 태어나 늙기까지 차례로 거쳐 가는 삶의 단계입니다.",
+    "낱말 나누기: 생애(生涯, 살아 있는 동안) + 주기(週期, 한 바퀴 도는 기간)입니다.",
+    "어릴 때와 늙어서는 버는 돈보다 쓰는 돈이 많아, 일하는 시기에 돈을 모아 둡니다."
+   ]
+  },
+  "금융": {
+   "en": "finance",
+   "explain": [
+    "쉬운 뜻: 영어 finance는 프랑스 말 finer(끝내다, 빚을 갚다)에서 온 말입니다. 돈을 맡기고 빌리고 갚으며 돈이 돌게 하는 일입니다.",
+    "낱말 나누기: 금(金, 돈) + 융(融, 통하다) — 돈이 통하게 함입니다.",
+    "생활 속 예: 용돈을 통장에 넣는 것, 부모님이 카드로 값을 치르는 것도 금융입니다."
+   ]
+  },
+  "자산": {
+   "en": "asset",
+   "explain": [
+    "쉬운 뜻: 영어 asset은 옛 프랑스 말 asetz(넉넉히)에서 온 말입니다. 돈, 통장, 집처럼 가진 것 가운데 값어치 있는 것입니다.",
+    "낱말 나누기: 자(資, 밑천) + 산(産, 재산) — 밑천이 되는 재산입니다.",
+    "생활 속 예: 저금통의 돈, 통장의 예금도 내 자산입니다."
+   ],
+   "beats": [
+    "할아버지가 하린이에게 오래된 나무 상자를 보여 주십니다.",
+    "상자 안에는 은행 통장, 집 문서, 회사 주식 증서가 들어 있습니다.",
+    "이렇게 경제적 가치가 있어 돈으로 바꿀 수 있는 재산을 자산이라고 합니다."
+   ],
+   "img": "A kind grandfather sits at a low table with HARIN and opens an old wooden box. Inside are a bank passbook, a folded house document, and a decorative paper certificate, all shown without readable writing. HARIN leans in with curious eyes. No text.",
+   "imgKo": "다정한 할아버지가 하린이와 낮은 상에 앉아 오래된 나무 상자를 열자, 안에 은행 통장과 접힌 집 문서, 무늬 있는 증서가 들어 있고 하린이가 궁금한 눈으로 들여다본다."
+  },
+  "예금": {
+   "en": "deposit",
+   "explain": [
+    "쉬운 뜻: 영어 deposit은 de(아래로) + posit(놓다), '내려놓다, 맡겨 두다'라는 말입니다. 은행에 돈을 맡기는 일입니다.",
+    "낱말 나누기: 예(預, 맡기다) + 금(金, 돈) — 돈을 맡김입니다.",
+    "생활 속 예: 은행 자동화 기기에 돈을 넣으면 통장에 찍힌 숫자가 늘어납니다."
+   ],
+   "beats": [
+    "도윤이가 가득 찬 돼지 저금통을 들고 엄마와 은행에 갑니다.",
+    "창구 직원이 돈을 세어 도윤이 통장에 넣어 줍니다.",
+    "필요할 때는 언제든 다시 찾아 쓸 수 있습니다.",
+    "이렇게 은행에 돈을 맡기는 것이 예금입니다."
+   ],
+   "img": "DOYUN proudly holds a full pink piggy bank at a bank counter with his mother beside him. A smiling bank clerk counts coins and bills on the counter and hands him back his passbook. No text.",
+   "imgKo": "도윤이가 엄마와 함께 은행 창구에서 가득 찬 돼지 저금통을 자랑스럽게 내밀고, 웃는 직원이 돈을 세어 통장을 돌려준다."
+  },
+  "적금": {
+   "explain": [
+    "쉬운 뜻: 계단을 하나씩 오르듯 매달 같은 돈을 은행에 붓는 저축입니다. 끝까지 채워야 이자를 다 받습니다.",
+    "낱말 나누기: 적(積, 쌓다) + 금(金, 돈) — 돈을 쌓아 감입니다.",
+    "생활 속 예: 매달 2만 원씩 1년을 부으면 24만 원에 이자가 붙어 돌아옵니다."
+   ],
+   "beats": [
+    "하린이가 수학여행 비용을 모으려고 은행에서 통장을 만듭니다.",
+    "매달 같은 날 같은 돈을 넣고, 달력에 동그라미를 하나씩 그립니다.",
+    "1년이 지나자 모은 돈에 이자를 더해 한꺼번에 받습니다.",
+    "이렇게 정해진 돈을 꾸준히 쌓아 가는 저축이 적금입니다."
+   ],
+   "img": "HARIN stands beside a wall calendar where every month has one small circle drawn on the same day. In front of her, small stacks of coins grow taller step by step like a staircase, and at the top a slightly bigger stack shines. No text.",
+   "imgKo": "하린이 옆 벽걸이 달력에 달마다 같은 날 동그라미가 하나씩 그려져 있고, 앞에는 동전 더미가 계단처럼 한 칸씩 높아져 맨 위 더미가 반짝인다."
+  },
+  "주식": {
+   "en": "share",
+   "explain": [
+    "쉬운 뜻: 영어 share는 '나눈 몫'이라는 말입니다. 회사를 피자처럼 나눈 한 조각, 곧 회사 주인의 몫입니다.",
+    "낱말 나누기: 주(株, 본디 나무 그루) + 식(式, 꼴) — 회사 몫을 그루처럼 한 주, 두 주로 셉니다.",
+    "생활 속 예: 뉴스 끝에 오르내리는 빨간 숫자, 파란 숫자가 주식 값입니다."
+   ],
+   "beats": [
+    "친구 다섯이 돈을 모아 작은 빵 가게를 차렸습니다.",
+    "가게를 다섯 몫으로 나누어, 돈을 낸 사람마다 한 몫씩 증서를 가졌습니다.",
+    "가게가 잘되자 몫을 가진 사람마다 이익을 나누어 받습니다.",
+    "이렇게 회사의 주인 몫을 나타내는 증서가 주식입니다."
+   ],
+   "img": "Five young adults stand proudly in front of a small new bakery. Above them floats a large round cake-like drawing of the shop cut into five equal slices, and each person holds one matching slice-shaped paper certificate. No text.",
+   "imgKo": "젊은이 다섯이 새로 연 작은 빵 가게 앞에 서 있고, 머리 위에 가게를 다섯 조각으로 나눈 둥근 그림이 떠 있으며 저마다 조각 모양 증서를 하나씩 들고 있다."
+  },
+  "채권": {
+   "en": "bond",
+   "explain": [
+    "쉬운 뜻: 영어 bond는 '묶는 끈', 곧 꼭 지킨다는 약속이라는 말입니다. 돈을 빌린 쪽이 이자를 붙여 갚겠다고 약속한 증서입니다.",
+    "낱말 나누기: 채(債, 빚) + 권(券, 문서) — 빚을 적은 문서입니다.",
+    "생활 속 예: 친구에게 돈을 빌리며 “다음 주에 갚을게.” 하고 써 준 쪽지와 닮았습니다."
+   ],
+   "beats": [
+    "한 도시가 지하철을 새로 놓으려는데 돈이 모자랍니다.",
+    "도시는 '5년 뒤에 이자를 붙여 갚겠다'는 증서를 사람들에게 팝니다.",
+    "증서를 산 사람은 약속한 날 빌려준 돈과 이자를 돌려받습니다.",
+    "이렇게 돈을 빌리며 갚을 날과 이자를 약속한 증서가 채권입니다."
+   ],
+   "img": "In front of a city building with a model of a new subway line on display, people line up and buy elegant paper certificates tied with a ribbon. In the background, workers begin building a subway entrance. No text.",
+   "imgKo": "새 지하철 모형이 놓인 시청 앞에서 사람들이 줄을 서서 리본으로 묶은 증서를 사고, 뒤에서는 일꾼들이 지하철 입구를 짓기 시작한다."
+  },
+  "안전성": {
+   "en": "safety",
+   "explain": [
+    "쉬운 뜻: 영어 safety는 라틴 말 salvus(다치지 않은, 온전한)에서 온 말입니다. 맡긴 돈이 줄지 않고 온전히 지켜지는 정도입니다.",
+    "낱말 나누기: 안전(安全, 편안하고 온전함) + 성(性, 성질)입니다.",
+    "생활 속 예: 은행 예금은 은행이 문을 닫아도 일정 금액까지 돌려받도록 법으로 지켜 줍니다."
+   ]
+  },
+  "수익성": {
+   "en": "profitability",
+   "explain": [
+    "쉬운 뜻: 영어 profit은 pro(앞으로) + fit(만들다), '앞으로 나아가 늘어남'이라는 말입니다. 넣은 돈이 얼마나 불어나는지의 정도입니다.",
+    "낱말 나누기: 수익(收益, 거두어들인 이익) + 성(性, 성질) — 이익을 거두는 정도입니다.",
+    "생활 속 예: 이자가 정해진 예금보다 값이 크게 오를 수 있는 주식이 수익성은 높습니다."
+   ]
+  },
+  "유동성": {
+   "en": "liquidity",
+   "explain": [
+    "쉬운 뜻: 영어 liquidity는 liquid(물처럼 흐르는 것)에서 온 말입니다. 가진 것이 물처럼 쉽게 현금으로 바뀌는 정도입니다.",
+    "낱말 나누기: 유동(流動, 흘러 움직임) + 성(性, 성질) — liquid처럼 '흐름'을 뜻합니다.",
+    "생활 속 예: 지갑 속 현금은 바로 쓰지만, 집은 팔아서 돈으로 만들기까지 몇 달이 걸립니다."
+   ]
+  },
+  "신용": {
+   "en": "credit",
+   "explain": [
+    "쉬운 뜻: 영어 credit은 라틴 말 credere(믿다)에서 온 말입니다. 빌린 돈을 제때 갚을 사람이라고 믿어 주는 마음입니다.",
+    "낱말 나누기: 신(信, 믿다) + 용(用, 쓰다) — 믿고 쓰게 해 줌, credit과 같은 '믿음'입니다.",
+    "생활 속 예: 카드로 먼저 사고 다음 달에 갚을 수 있는 것은 카드 회사가 나를 믿기 때문입니다."
+   ],
+   "beats": [
+    "하린이 엄마가 동네 가게에서 물건을 고르다 지갑을 두고 온 것을 압니다.",
+    "가게 주인은 “늘 약속을 지키셨으니 내일 주셔도 돼요.” 하고 웃습니다.",
+    "다음 날 엄마는 잊지 않고 값을 치릅니다.",
+    "이렇게 나중에 꼭 갚을 거라고 믿어 주는 것이 신용입니다."
+   ],
+   "img": "In a cozy neighborhood grocery store, HARIN's mother pats her empty coat pockets with an embarrassed smile while holding a bag of groceries. The friendly shop owner waves his hand kindly as if to say it is fine, and HARIN watches beside her. No text.",
+   "imgKo": "동네 가게에서 하린이 엄마가 장바구니를 든 채 빈 주머니를 더듬으며 멋쩍게 웃고, 가게 주인은 괜찮다는 듯 손을 저으며 하린이가 옆에서 지켜본다."
+  },
+  "대출": {
+   "en": "loan",
+   "explain": [
+    "쉬운 뜻: 은행에서 돈을 빌려 쓰는 일입니다. 빌린 돈에 이자를 더해 정한 날까지 조금씩 갚아 나갑니다.",
+    "낱말 나누기: 대(貸, 빌려주다) + 출(出, 내보내다) — 돈을 빌려주어 내보냄입니다.",
+    "생활 속 예: 대학생이 등록금을 은행에서 빌리는 학자금 대출도 있습니다."
+   ],
+   "beats": [
+    "삼촌이 작은 빵집을 열고 싶지만 돈이 모자랍니다.",
+    "삼촌은 은행에서 돈을 빌리고, 몇 년 동안 이자와 함께 나누어 갚기로 약속합니다.",
+    "그 돈으로 오븐을 들이고 가게 문을 엽니다.",
+    "이렇게 금융 기관에서 돈을 빌리는 것이 대출입니다."
+   ],
+   "img": "A scene in two halves. On the left, a young uncle sits across a desk from a bank officer, signing a paper with a hopeful face. On the right, the same uncle in an apron opens the door of his small new bakery with a shiny oven inside. No text.",
+   "imgKo": "왼쪽은 젊은 삼촌이 은행 직원과 마주 앉아 희망찬 얼굴로 서류에 서명하는 모습, 오른쪽은 앞치마를 두른 삼촌이 반짝이는 오븐이 있는 작은 빵집 문을 여는 모습이다."
+  },
+  "이자": {
+   "en": "interest",
+   "explain": [
+    "쉬운 뜻: 돈을 빌려 쓴 값입니다. 은행에 맡기면 받고, 은행에서 빌리면 냅니다.",
+    "낱말 나누기: 이(利, 이익) + 자(子, 새끼) — 돈이 낳은 새끼 돈입니다.",
+    "생활 속 예: 친구에게 빌린 천 원을 갚으며 고맙다고 사탕 하나를 더 주는 것과 닮았습니다."
+   ],
+   "beats": [
+    "도윤이가 은행에 돈을 맡겨 둡니다.",
+    "1년 뒤 통장을 보니 맡긴 돈보다 조금 더 많아졌습니다.",
+    "은행이 도윤이 돈을 빌려 쓴 값을 덧붙여 준 것입니다.",
+    "이렇게 돈을 빌려 쓴 대가로 주고받는 돈이 이자입니다."
+   ],
+   "img": "A scene in two halves. On the left, DOYUN places a neat stack of coins into a bank's open drawer in spring. On the right, one year later in winter, the same stack is returned with a few extra small coins on top, like a tiny sprout growing on a plant, and DOYUN smiles in surprise. No text.",
+   "imgKo": "왼쪽은 봄에 도윤이가 은행 서랍에 동전 더미를 맡기는 모습, 오른쪽은 1년 뒤 겨울에 같은 더미 위에 작은 동전 몇 개가 새싹처럼 더 얹혀 돌아와 도윤이가 놀라 웃는 모습이다."
+  },
+  "보험": {
+   "en": "insurance",
+   "explain": [
+    "쉬운 뜻: 영어 insurance는 in + sure(확실한), '확실하게 해 둠'입니다. 여럿이 조금씩 모았다가 사고 난 사람을 돕는 제도입니다.",
+    "낱말 나누기: 보(保, 지키다) + 험(險, 험한 일) — 험한 일에서 지켜 줌입니다.",
+    "생활 속 예: 학교에서 다치면 치료비를 돌려받는 학교 안전 공제도 같은 생각입니다."
+   ],
+   "beats": [
+    "마을 사람 열 명이 해마다 조금씩 돈을 모아 큰 항아리에 넣습니다.",
+    "어느 날 한 집에 불이 나 큰돈이 필요해졌습니다.",
+    "모아 둔 돈으로 그 집을 다시 고칩니다.",
+    "이렇게 미리 조금씩 내고 사고를 당한 사람이 돈을 받는 제도가 보험입니다."
+   ],
+   "img": "A scene in two halves. On the left, ten villagers each drop a coin into one big clay jar in the village square. On the right, a house with a scorched roof is being repaired with money from the jar while the villagers help and comfort the family. No text.",
+   "imgKo": "왼쪽은 마을 사람 열 명이 광장의 큰 항아리에 동전을 하나씩 넣는 모습, 오른쪽은 지붕이 그을린 집을 항아리 돈으로 고치며 마을 사람들이 그 가족을 돕는 모습이다."
+  },
+  "연금": {
+   "en": "pension",
+   "explain": [
+    "쉬운 뜻: 영어 pension은 라틴 말 pendere(값을 치르다)에서 온 말입니다. 나이 들어 일을 그만둔 뒤 달마다 치러 받는 돈입니다.",
+    "낱말 나누기: 연(年, 해) + 금(金, 돈) — 해마다 받는 돈입니다.",
+    "생활 속 예: 회사에 다니는 부모님 월급에서 국민연금이 다달이 조금씩 빠져나갑니다."
+   ],
+   "beats": [
+    "젊은 아버지가 회사에서 일하며 월급의 일부를 연금으로 냅니다.",
+    "수십 년이 흘러 아버지는 할아버지가 되어 회사를 그만둡니다.",
+    "이제는 달마다 정해진 돈을 받아 생활비로 씁니다.",
+    "이렇게 일할 때 내고 나이 들어 받는 돈이 연금입니다."
+   ],
+   "img": "A scene in two halves. On the left, a young office worker drops a small coin into a large glass jar every month while working at his desk. On the right, the same man, now a gray-haired grandfather, receives coins from the jar each month and enjoys a walk in the park. No text.",
+   "imgKo": "왼쪽은 젊은 회사원이 일하며 달마다 커다란 유리병에 동전을 넣는 모습, 오른쪽은 머리가 하얗게 센 같은 사람이 달마다 병에서 돈을 받아 공원을 산책하는 모습이다."
+  },
+  "기업가 정신": {
+   "en": "entrepreneurship",
+   "explain": [
+    "쉬운 뜻: 영어 entrepreneur는 entre(사이) + prendre(잡다), '맡아 나서다'입니다. 실패를 무릅쓰고 새 일에 뛰어드는 마음입니다.",
+    "낱말 나누기: 기업가(企業家, 사업을 꾀하는 사람) + 정신(精神, 마음가짐)입니다.",
+    "생활 속 예: 학교 축제에서 새 놀이 부스를 직접 생각해 내고 꾸려 보는 것도 그 시작입니다."
+   ],
+   "beats": [
+    "두 젊은이가 작은 차고에서 새 기계를 만들고 있습니다.",
+    "여러 번 실패해 부품이 바닥에 흩어져도 다시 도전합니다.",
+    "마침내 만든 물건이 사람들의 생활을 편하게 바꿉니다.",
+    "위험이 있어도 새로운 것에 도전하는 마음이 기업가 정신입니다."
+   ],
+   "img": "Two young adults work late at night in a small cluttered garage full of tools and parts. Broken prototypes lie on the floor, but one of them raises a working gadget that lights up, and both cheer with tired but excited faces. No text.",
+   "imgKo": "늦은 밤 공구와 부품이 가득한 좁은 차고에서 젊은이 둘이 일하고, 바닥에는 망가진 시제품이 흩어져 있지만 한 사람이 불이 켜진 기계를 들어 올리자 둘이 지쳤지만 신나게 환호한다."
+  },
+  "혁신": {
+   "en": "innovation",
+   "explain": [
+    "쉬운 뜻: 영어 innovation은 in(안으로) + nov(새로운), '새롭게 바꿈'이라는 말입니다. 옛날 방법을 통째로 새로 바꾸는 것입니다.",
+    "낱말 나누기: 혁(革, 가죽을 다루어 고치다) + 신(新, 새롭다) — 껍질을 벗기듯 새롭게 함입니다.",
+    "생활 속 예: 줄 서서 표를 사던 극장이 휴대 전화 예매로 바뀐 것도 혁신입니다."
+   ],
+   "beats": [
+    "옛날 사람들은 공중전화 앞에 줄을 서서 전화를 걸었습니다.",
+    "이제는 손안의 휴대 전화로 언제 어디서나 얼굴을 보며 이야기합니다.",
+    "이렇게 오래된 방법을 완전히 새롭게 바꾸는 것이 혁신입니다."
+   ],
+   "img": "A scene in two halves. On the left, in an old street, people wait in a long line in front of a single public phone booth. On the right, in a modern street, the same kinds of people each hold a smartphone and happily video-chat while walking. No text.",
+   "imgKo": "왼쪽은 옛 거리에서 사람들이 공중전화 한 대 앞에 길게 줄을 선 모습, 오른쪽은 오늘날 거리에서 저마다 휴대 전화로 걸으며 즐겁게 영상 통화를 하는 모습이다."
+  },
+  "고용": {
+   "en": "employment",
+   "explain": [
+    "쉬운 뜻: 영어 employ는 '사람을 쓰다'라는 말입니다. 회사가 일할 사람을 뽑아 일을 맡기고 그 대가로 돈을 주는 것입니다.",
+    "낱말 나누기: 고(雇) + 용(傭), 두 글자 모두 '삯을 주고 일을 시키다'라는 뜻입니다.",
+    "생활 속 예: 편의점 사장님이 아르바이트생을 뽑아 일을 맡기는 것도 고용입니다."
+   ],
+   "beats": [
+    "마을에 새 공장이 들어섭니다.",
+    "공장 앞에서 일할 사람을 뽑고, 주민들이 차례로 면접을 봅니다.",
+    "뽑힌 사람들이 작업복을 입고 일을 시작하며 달마다 월급을 받습니다.",
+    "이렇게 돈을 주고 사람을 써서 일을 시키는 것이 고용입니다."
+   ],
+   "img": "A scene in two halves. On the left, local villagers of different ages wait in line at the gate of a brand-new factory with a blank notice board. On the right, the same villagers wear matching work uniforms and helmets, starting work cheerfully inside the factory. No text.",
+   "imgKo": "왼쪽은 새로 지은 공장 문 앞에서 여러 나이의 주민들이 줄을 서 기다리는 모습, 오른쪽은 같은 주민들이 작업복과 안전모를 갖춰 입고 공장 안에서 즐겁게 일을 시작하는 모습이다."
+  }
+ }
+}

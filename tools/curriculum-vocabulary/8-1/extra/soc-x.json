@@ -1,0 +1,407 @@
+{
+ "3": {
+  "시장": {
+   "en": "market",
+   "explain": [
+    "쉬운 뜻: 영어 market은 라틴 말 mercari(사고팔다)에서 온 말입니다. 사려는 사람과 팔려는 사람이 만나는 곳은 모두 시장입니다.",
+    "낱말 나누기: 시(市, 사고파는 곳) + 장(場, 마당) — 사고파는 마당입니다.",
+    "생활 속 예: 중고 거래 앱, 일자리를 찾는 누리집도 눈에 보이지 않는 시장입니다."
+   ],
+   "beats": [
+    "할머니가 전통 시장에서 생선 가게 주인과 값을 흥정합니다.",
+    "같은 시각, 하린이는 휴대 전화 속 쇼핑몰에서 운동화를 고릅니다.",
+    "두 곳 모두 사려는 사람과 팔려는 사람이 만나 거래가 이루어지는 시장입니다."
+   ],
+   "img": "A scene in two halves. On the left, a grandmother bargains cheerfully with a fish seller at a busy traditional market full of stalls. On the right, HARIN sits on a sofa at home browsing sneakers on a smartphone, with a delivery box arriving at the door. No text.",
+   "imgKo": "왼쪽은 할머니가 북적이는 전통 시장에서 생선 가게 주인과 즐겁게 흥정하는 모습, 오른쪽은 하린이가 집 소파에서 휴대 전화로 운동화를 고르고 현관에 택배 상자가 도착하는 모습이다."
+  },
+  "생산물 시장": {
+   "en": "product market",
+   "explain": [
+    "쉬운 뜻: 영어 product는 pro(앞으로) + duct(이끌어 내다), '만들어 내놓은 것'입니다. 그렇게 만든 물건과 서비스를 사고파는 시장입니다.",
+    "낱말 나누기: 생산물(生産物, 만들어 낸 물건) + 시장(市場, 사고파는 곳)입니다.",
+    "생활 속 예: 편의점, 영화관, 미용실처럼 우리가 돈을 내고 무언가를 사는 곳입니다."
+   ]
+  },
+  "생산 요소 시장": {
+   "en": "factor market",
+   "explain": [
+    "쉬운 뜻: 영어 factor는 라틴 말 facere(만들다)에서 온 말, '만드는 데 드는 것'입니다. 일손, 땅, 밑천이 거래되는 시장입니다.",
+    "낱말 나누기: 생산(만들어 냄) + 요소(要素, 꼭 있어야 할 바탕) + 시장입니다.",
+    "생활 속 예: 부모님이 회사에 일하는 시간을 내주고 월급을 받는 곳이 바로 이 시장입니다."
+   ]
+  },
+  "분업": {
+   "en": "division of labor",
+   "explain": [
+    "쉬운 뜻: 큰일을 여러 조각으로 나누어 저마다 한 조각씩 맡는 것입니다. 손에 익어 더 빠르고 잘하게 됩니다.",
+    "낱말 나누기: 분(分, 나누다) + 업(業, 일) — 일을 나눔입니다.",
+    "생활 속 예: 김밥 가게에서 한 사람은 밥을 펴고, 한 사람은 말고, 한 사람은 썹니다."
+   ],
+   "beats": [
+    "한 사람이 혼자 의자를 만들면 하루에 한 개를 겨우 만듭니다.",
+    "다섯 사람이 다리 깎기, 판 붙이기, 칠하기를 나누어 맡습니다.",
+    "저마다 한 가지만 하니 손이 빨라져 하루에 의자가 훨씬 많이 나옵니다.",
+    "이렇게 일을 나누어 맡는 것이 분업입니다."
+   ],
+   "img": "A scene in two halves inside a wood workshop. On the left, one tired carpenter works alone surrounded by tools, with only one chair finished. On the right, five workers stand in a row, each doing one step such as cutting legs, attaching seats, and painting, and a long line of finished chairs stands behind them. No text.",
+   "imgKo": "목공소를 둘로 나누어, 왼쪽은 지친 목수 한 사람이 혼자 일해 의자가 한 개뿐인 모습, 오른쪽은 다섯 사람이 줄지어 다리 깎기, 판 붙이기, 칠하기를 하나씩 맡아 뒤에 의자가 길게 늘어선 모습이다."
+  },
+  "특화": {
+   "en": "specialization",
+   "explain": [
+    "쉬운 뜻: 영어 specialization은 special(특별한)에서 온 말입니다. 내가 남보다 잘하는 한 가지에 힘을 모으는 것입니다.",
+    "낱말 나누기: 특(特, 특별하다) + 화(化, 되다) — 특별한 것이 되게 함입니다.",
+    "생활 속 예: 바다 마을은 김과 미역을, 산골 마을은 버섯을 길러 서로 바꾸어 먹습니다."
+   ],
+   "beats": [
+    "빵을 잘 굽는 제빵사와 고기를 잘 잡는 어부가 있습니다.",
+    "제빵사는 빵만, 어부는 고기잡이만 힘껏 합니다.",
+    "둘은 시장에서 빵과 생선을 바꾸어 둘 다 배불리 먹습니다.",
+    "이렇게 잘하는 일에 힘을 모아 주로 생산하는 것이 특화입니다."
+   ],
+   "img": "A scene in three parts. A baker pulls golden loaves from an oven, a fisher hauls a net full of fish onto a small boat, and in the middle the two meet at a market stall and happily trade a basket of bread for a basket of fish. No text.",
+   "imgKo": "세 칸으로 나누어, 제빵사가 오븐에서 노릇한 빵을 꺼내고, 어부가 작은 배에서 물고기가 가득한 그물을 끌어 올리며, 가운데 시장에서 둘이 빵 바구니와 생선 바구니를 즐겁게 바꾼다."
+  },
+  "거래 비용": {
+   "en": "transaction cost",
+   "explain": [
+    "쉬운 뜻: 물건 값 말고, 사고팔기까지 드는 덤 비용입니다. 상대를 찾고, 알아보고, 흥정하는 데 드는 시간과 돈입니다.",
+    "낱말 나누기: 거래(去來, 가고 옴, 주고받음) + 비용(費用, 드는 돈) — 주고받는 데 드는 돈입니다.",
+    "생활 속 예: 시장까지 가는 버스비, 가게 다섯 곳을 둘러본 시간도 거래 비용입니다."
+   ],
+   "beats": [
+    "도윤이가 쓰던 책장을 팔려고 이웃집을 하나하나 찾아다닙니다.",
+    "한나절이 지나도록 살 사람을 찾지 못해 다리만 아픕니다.",
+    "중고 거래 앱에 올리자 몇 분 만에 살 사람이 나타납니다.",
+    "사고팔 상대를 찾고 흥정하는 데 드는 시간과 돈이 거래 비용입니다."
+   ],
+   "img": "A scene in two halves. On the left, DOYUN looks exhausted under the hot sun, knocking on one apartment door after another with a small bookshelf beside him. On the right, DOYUN sits relaxed and taps a smartphone, and a buyer is already arriving at his door to pick up the bookshelf. No text.",
+   "imgKo": "왼쪽은 도윤이가 작은 책장을 옆에 두고 뙤약볕 아래 집집마다 문을 두드리다 지친 모습, 오른쪽은 편히 앉아 휴대 전화를 누르자 벌써 산 사람이 책장을 가지러 문 앞에 온 모습이다."
+  },
+  "수요": {
+   "en": "demand",
+   "explain": [
+    "쉬운 뜻: 영어 demand는 de(단단히) + mand(맡기다), '달라고 요구하다'라는 말입니다. 돈을 내고 사겠다는 마음입니다.",
+    "낱말 나누기: 수(需, 구하다) + 요(要, 구하다) — 구하고 또 구함, 곧 사려는 마음입니다.",
+    "생활 속 예: 비 오는 날 아침 편의점 우산이 금세 동나는 것은 우산 수요가 늘어서입니다."
+   ],
+   "beats": [
+    "찬 바람이 부는 날, 붕어빵 가게 앞에 사람들이 줄을 섭니다.",
+    "저마다 돈을 들고 “세 마리 주세요.” 하고 사고 싶어 합니다.",
+    "이렇게 일정한 값에 돈을 내고 사려는 마음이 수요입니다."
+   ],
+   "img": "On a chilly winter evening, people wrapped in scarves line up in front of a small fish-shaped bread stall with steam rising. Each person holds out coins eagerly, and DOYUN at the front rubs his cold hands while waiting. No text.",
+   "imgKo": "쌀쌀한 겨울 저녁 김이 피어오르는 붕어빵 가게 앞에 목도리를 두른 사람들이 동전을 들고 줄을 서 있고, 맨 앞에서 도윤이가 언 손을 비비며 기다린다."
+  },
+  "공급": {
+   "en": "supply",
+   "explain": [
+    "쉬운 뜻: 영어 supply는 sub(아래에서) + ply(채우다), '모자란 곳을 채워 주다'라는 말입니다. 물건을 팔려고 내놓는 마음입니다.",
+    "낱말 나누기: 공(供, 내주다) + 급(給, 주다) — 내어 줌입니다.",
+    "생활 속 예: 딸기 철이 되면 시장마다 딸기가 수북이 쌓이는 것은 공급이 늘어서입니다."
+   ],
+   "beats": [
+    "가을에 농부가 사과를 한가득 땁니다.",
+    "트럭에 사과 상자를 싣고 시장으로 나가 팔려고 내놓습니다.",
+    "이렇게 일정한 값에 팔려고 하는 마음이 공급입니다."
+   ],
+   "img": "A scene in two halves. On the left, a farmer happily picks red apples in an autumn orchard and fills wooden crates. On the right, the farmer unloads the crates from a small truck and stacks them high at a market stall for sale. No text.",
+   "imgKo": "왼쪽은 가을 과수원에서 농부가 빨간 사과를 따 나무 상자에 채우는 모습, 오른쪽은 작은 트럭에서 상자를 내려 시장 가게에 팔려고 높이 쌓는 모습이다."
+  },
+  "수요량": {
+   "en": "quantity demanded",
+   "explain": [
+    "쉬운 뜻: 영어 quantity는 라틴 말 quantus(얼마나)에서 온 말입니다. 어떤 값일 때 사람들이 '얼마나' 사려 하는지 센 양입니다.",
+    "낱말 나누기: 수요(需要, 사려는 마음) + 량(量, 양) — 사려는 양입니다.",
+    "생활 속 예: 떡볶이가 3천 원이면 친구 열 명이, 5천 원이면 네 명만 사겠다고 합니다."
+   ]
+  },
+  "공급량": {
+   "en": "quantity supplied",
+   "explain": [
+    "쉬운 뜻: 영어 quantity supplied는 quantity(양) + supplied(내놓은), 팔려고 내놓는 양입니다. 값마다 달라집니다.",
+    "낱말 나누기: 공급(供給, 팔려고 내놓음) + 량(量, 양) — 팔려는 양입니다.",
+    "생활 속 예: 귤 값이 오르면 농부들이 창고에 두었던 귤까지 더 많이 내놓습니다."
+   ]
+  },
+  "수요 법칙": {
+   "en": "law of demand",
+   "explain": [
+    "쉬운 뜻: 시소의 두 끝처럼, 값이 올라가면 사려는 양은 내려가는 규칙입니다. 대부분의 물건에서 늘 이렇게 됩니다.",
+    "낱말 나누기: 수요(需要, 사려는 마음) + 법칙(法則, 늘 맞는 규칙)입니다.",
+    "생활 속 예: 마트의 하나 더 주는 행사 날에는 평소보다 장바구니가 무거워집니다."
+   ]
+  },
+  "공급 법칙": {
+   "en": "law of supply",
+   "explain": [
+    "쉬운 뜻: 값이 오르면 만드는 사람이 신이 나서 더 많이 내놓는 규칙입니다. 값과 팔려는 양이 같은 쪽으로 움직입니다.",
+    "낱말 나누기: 공급(供給, 팔려고 내놓음) + 법칙(法則, 늘 맞는 규칙)입니다.",
+    "생활 속 예: 붕어빵이 비싸게 팔리자 동네에 붕어빵 가게가 하나둘 더 생깁니다."
+   ]
+  },
+  "수요 곡선": {
+   "en": "demand curve",
+   "explain": [
+    "쉬운 뜻: 영어 curve는 라틴 말 curvus(굽은)에서 온 말로, 曲(굽다)과 뜻이 같습니다. 값과 사려는 양을 그린 미끄럼틀 모양 선입니다.",
+    "낱말 나누기: 수요(需要, 사려는 마음) + 곡선(曲線, 굽은 선)입니다.",
+    "세로는 값, 가로는 양이라서, 값이 내려갈수록 선이 오른쪽으로 갑니다."
+   ]
+  },
+  "공급 곡선": {
+   "en": "supply curve",
+   "explain": [
+    "쉬운 뜻: 영어 supply curve는 supply(채워 주다) + curve(굽은 선), 파는 쪽의 그래프 선입니다. 오르막길처럼 생겼습니다.",
+    "낱말 나누기: 공급(供給, 팔려고 내놓음) + 곡선(曲線, 굽은 선)입니다.",
+    "수요 곡선과 X자로 엇갈려, 두 선이 만나는 곳에서 값이 정해집니다."
+   ]
+  },
+  "초과 수요": {
+   "en": "excess demand",
+   "explain": [
+    "쉬운 뜻: 영어 excess는 ex(밖으로) + cess(가다), '넘쳐 나가다'라는 말입니다. 사려는 사람이 물건보다 넘쳐 나는 상태입니다.",
+    "낱말 나누기: 초과(超過, 넘어서 지나침) + 수요(需要, 사려는 마음) — 사려는 마음이 넘침입니다.",
+    "생활 속 예: 매점에 새 빵이 열 개 들어왔는데 서른 명이 줄을 섰습니다."
+   ],
+   "beats": [
+    "이름난 빵집이 갓 구운 빵 스무 개를 내놓습니다.",
+    "빵을 사려는 사람은 백 명이 넘게 줄을 섰습니다.",
+    "빵은 금방 동나고, 많은 사람이 빈손으로 돌아갑니다.",
+    "이렇게 사려는 양이 팔려는 양보다 많은 상태가 초과 수요입니다."
+   ],
+   "img": "A long, winding line of people stretches down the street from a small famous bakery. At the counter, the baker shows an empty tray with only one loaf left, and people at the back of the line look disappointed. No text.",
+   "imgKo": "이름난 작은 빵집 앞에서 사람들의 줄이 길게 구불구불 이어지고, 계산대에서 제빵사가 빵이 하나만 남은 빈 쟁반을 보여 주자 줄 뒤쪽 사람들이 실망한다."
+  },
+  "초과 공급": {
+   "en": "excess supply",
+   "explain": [
+    "쉬운 뜻: 영어 excess supply는 excess(넘침) + supply(내놓음), 팔려고 내놓은 물건이 넘쳐 나는 상태입니다.",
+    "낱말 나누기: 초과(超過, 넘어서 지나침) + 공급(供給, 팔려고 내놓음) — 내놓은 물건이 넘침입니다.",
+    "생활 속 예: 여름이 끝날 무렵 가게마다 수영복을 반값에 파는 것도 이 때문입니다."
+   ],
+   "beats": [
+    "풍년이 들어 시장마다 배추가 산더미처럼 쌓였습니다.",
+    "사러 오는 손님은 평소와 비슷해 배추가 남아돕니다.",
+    "가게 주인들은 값을 크게 내려서라도 팔려고 합니다.",
+    "이렇게 팔려는 양이 사려는 양보다 많은 상태가 초과 공급입니다."
+   ],
+   "img": "At a market, cabbages are piled up like a mountain at every stall, much taller than the sellers. Only a few shoppers walk by, and the worried sellers wave and offer bundles of cabbages at a discount. No text.",
+   "imgKo": "시장 가게마다 배추가 파는 사람 키보다 높게 산처럼 쌓였는데 지나가는 손님은 몇 명뿐이고, 걱정스러운 가게 주인들이 손짓하며 배추 묶음을 싸게 내민다."
+  },
+  "균형 가격": {
+   "en": "equilibrium price",
+   "explain": [
+    "쉬운 뜻: 영어 equilibrium은 equi(같은) + libra(저울), '저울이 맞음'입니다. 사려는 양과 팔려는 양이 저울처럼 딱 맞는 값입니다.",
+    "낱말 나누기: 균형(均衡, 고른 저울대) + 가격(價格, 값) — 저울이 고르게 맞은 값입니다.",
+    "생활 속 예: 흥정 끝에 사는 사람과 파는 사람이 둘 다 “좋아요!” 하는 값과 같습니다."
+   ]
+  },
+  "균형 거래량": {
+   "en": "equilibrium quantity",
+   "explain": [
+    "쉬운 뜻: 영어 equilibrium quantity는 equilibrium(저울이 맞음) + quantity(양), 균형 가격에서 실제로 팔린 양입니다.",
+    "낱말 나누기: 균형(均衡, 고른 저울대) + 거래량(去來量, 주고받은 양)입니다.",
+    "생활 속 예: 붕어빵 값이 천 원에 자리 잡은 날, 하루 동안 팔린 붕어빵 수가 이것입니다."
+   ]
+  },
+  "대체재": {
+   "en": "substitute",
+   "explain": [
+    "쉬운 뜻: 영어 substitute는 sub(대신) + stitute(세우다), '대신 세우다'라는 말입니다. 서로 대신 쓸 수 있는 상품입니다.",
+    "낱말 나누기: 대체(代替, 대신 바꿈) + 재(財, 물건) — 대신 바꿔 쓰는 물건입니다.",
+    "생활 속 예: 버스 요금이 오르면 지하철을 타는 사람이 늘어나는 것도 같은 까닭입니다."
+   ],
+   "beats": [
+    "문구점에서 연필 값이 두 배로 올랐습니다.",
+    "하린이는 연필 대신 비슷하게 쓸 수 있는 샤프를 삽니다.",
+    "이처럼 서로 대신 쓸 수 있는 상품이 대체재입니다."
+   ],
+   "img": "In a stationery store, HARIN looks surprised at a shelf of pencils whose price tag has been pasted over with a bigger tag. She puts the pencil back and picks up a mechanical pencil from the next shelf instead, nodding with satisfaction. No text.",
+   "imgKo": "문구점에서 하린이가 값표 위에 더 큰 값표가 덧붙은 연필 칸을 보고 놀라, 연필을 내려놓고 옆 칸의 샤프를 집어 들며 고개를 끄덕인다."
+  },
+  "보완재": {
+   "en": "complement",
+   "explain": [
+    "쉬운 뜻: 영어 complement는 com(함께) + ple(채우다), '함께 채워 온전하게 함'이라는 말입니다. 짝을 이뤄 함께 써야 좋은 상품입니다.",
+    "낱말 나누기: 보완(補完, 모자란 것을 채워 온전하게 함) + 재(財, 물건)입니다.",
+    "생활 속 예: 핫도그와 케첩, 휴대 전화와 충전기처럼 짝으로 팔립니다."
+   ],
+   "beats": [
+    "도윤이가 새 물감을 샀습니다.",
+    "그런데 붓이 없어 그림을 그릴 수가 없습니다.",
+    "붓을 함께 사자 비로소 신나게 그림을 그립니다.",
+    "이렇게 함께 써야 만족이 커지는 상품이 보완재입니다."
+   ],
+   "img": "A scene in two halves. On the left, DOYUN sits at a desk with a new set of paints and blank paper, looking puzzled because he has no brush. On the right, he holds a new brush in one hand and happily paints a colorful picture with the same paints. No text.",
+   "imgKo": "왼쪽은 도윤이가 새 물감과 빈 종이 앞에서 붓이 없어 어리둥절한 모습, 오른쪽은 새 붓을 쥐고 같은 물감으로 알록달록한 그림을 신나게 그리는 모습이다."
+  }
+ },
+ "4": {
+  "국내 총생산": {
+   "en": "gross domestic product",
+   "explain": [
+    "쉬운 뜻: 영어 GDP의 domestic은 라틴 말 domus(집)에서 온 말, '나라 안'입니다. 나라 경제의 크기를 재는 자입니다.",
+    "낱말 나누기: 국내(國內, 나라 안) + 총(總, 모두) + 생산(生産, 만들어 냄)입니다.",
+    "뉴스의 '경제 성장률'은 국내 총생산이 지난해보다 얼마나 커졌는지를 말합니다."
+   ]
+  },
+  "최종 생산물": {
+   "en": "final product",
+   "explain": [
+    "쉬운 뜻: 영어 final은 라틴 말 finis(끝)에서 온 말입니다. 만드는 과정의 끝에서 소비자 손에 들어가는 물건입니다.",
+    "낱말 나누기: 최종(最終, 가장 마지막) + 생산물(生産物, 만들어 낸 물건)입니다.",
+    "생활 속 예: 목화 → 실 → 티셔츠로 이어질 때 가게에서 사 입는 티셔츠만 최종 생산물입니다."
+   ]
+  },
+  "경제 지표": {
+   "en": "economic indicator",
+   "explain": [
+    "쉬운 뜻: 영어 indicator는 indicate(가리키다)에서 온 말입니다. 나라 경제가 건강한지 가리켜 주는 숫자입니다.",
+    "낱말 나누기: 경제(經濟, 나라 살림) + 지표(指標, 가리키는 표시), 指도 '가리키다'입니다.",
+    "생활 속 예: 몸 상태를 체온과 키로 알듯, 나라 살림은 물가와 실업률로 봅니다."
+   ]
+  },
+  "삶의 질": {
+   "en": "quality of life",
+   "explain": [
+    "쉬운 뜻: 영어 quality는 라틴 말 qualis(어떠한)에서 온 말, '얼마나 좋은가'입니다. 건강, 여유, 행복까지 본 삶의 좋은 정도입니다.",
+    "낱말 나누기: 삶(살아가는 것) + 의 + 질(質, 바탕, 됨됨이) — 삶의 바탕이 얼마나 좋은가입니다.",
+    "생활 속 예: 깨끗한 공기, 가까운 병원, 쉴 시간이 모두 삶의 질을 높입니다."
+   ],
+   "beats": [
+    "도윤이네 동네에 오래된 공장이 떠나 빈터가 생겼습니다.",
+    "그 자리에 공원과 작은 도서관이 들어섰습니다.",
+    "주민들이 저녁마다 산책하고 책을 읽으며 웃음이 늘었습니다.",
+    "이렇게 사람들이 얼마나 건강하고 만족하며 사는지가 삶의 질입니다."
+   ],
+   "img": "A scene in two halves of the same neighborhood corner. On the left, an empty gray lot with an old closed factory and dusty air. On the right, the same place has become a green park with a small library, where families stroll, a grandmother reads on a bench, and DOYUN plays with friends under clear blue sky. No text.",
+   "imgKo": "같은 동네 모퉁이를 둘로 나누어, 왼쪽은 문 닫은 낡은 공장과 먼지 낀 빈터, 오른쪽은 같은 자리가 작은 도서관이 있는 푸른 공원이 되어 가족들이 산책하고 할머니가 벤치에서 책을 읽으며 도윤이가 친구들과 노는 모습이다."
+  },
+  "물가": {
+   "en": "price level",
+   "explain": [
+    "쉬운 뜻: 영어 price level은 price(값) + level(높이), '값의 높이'입니다. 장바구니 전체가 비싸졌는지 싸졌는지 보는 값입니다.",
+    "낱말 나누기: 물(物, 물건) + 가(價, 값) — 여러 물건의 값입니다.",
+    "생활 속 예: 부모님이 “작년보다 장보기 돈이 더 든다.” 하시면 물가가 오른 것입니다."
+   ]
+  },
+  "인플레이션": {
+   "en": "inflation",
+   "explain": [
+    "쉬운 뜻: 풍선이 부풀듯 물건값이 해마다 계속 부풀어 오르는 일입니다.",
+    "낱말 나누기: 영어 inflation은 in(안으로) + flate(불다), 바람을 불어 넣어 부풀린다는 말입니다.",
+    "생활 속 예: 해마다 버스비와 과자 가격이 조금씩 오르는 것도 인플레이션의 모습입니다."
+   ]
+  },
+  "화폐 가치": {
+   "en": "value of money",
+   "explain": [
+    "쉬운 뜻: 영어 value는 라틴 말 valere(힘이 있다)에서 온 말입니다. 돈 한 장이 물건을 얼마나 살 수 있는지, 곧 돈의 힘입니다.",
+    "낱말 나누기: 화폐(貨幣, 돈) + 가치(價値, 값어치) — 돈의 값어치입니다.",
+    "생활 속 예: 같은 만 원으로 살 수 있는 과자 수가 줄면 화폐 가치가 떨어진 것입니다."
+   ],
+   "beats": [
+    "할아버지가 어릴 때는 지폐 한 장으로 과자를 한 봉지 가득 샀습니다.",
+    "지금은 같은 지폐 한 장으로 과자를 두세 개밖에 못 삽니다.",
+    "돈은 그대로인데 살 수 있는 물건이 줄었습니다.",
+    "이렇게 돈으로 살 수 있는 물건의 양으로 본 돈의 값어치가 화폐 가치입니다."
+   ],
+   "img": "A scene in two halves. On the left, in an old-fashioned corner shop drawn in sepia tones, a little boy hands over one paper bill and receives a big bag overflowing with snacks. On the right, in a modern convenience store, DOYUN hands over the same kind of single bill and receives only two small snacks. No text.",
+   "imgKo": "왼쪽은 빛바랜 옛 구멍가게에서 어린 소년이 지폐 한 장을 내고 과자가 넘치는 큰 봉지를 받는 모습, 오른쪽은 오늘날 편의점에서 도윤이가 같은 지폐 한 장을 내고 작은 과자 두 개만 받는 모습이다."
+  },
+  "실업": {
+   "en": "unemployment",
+   "explain": [
+    "쉬운 뜻: 영어 unemployment는 un(아니) + employ(사람을 쓰다), '쓰이지 못함'입니다. 일하고 싶은데 일자리가 없는 상태입니다.",
+    "낱말 나누기: 실(失, 잃다) + 업(業, 일) — 일을 잃음입니다.",
+    "생활 속 예: 졸업 뒤 여러 회사에 원서를 내며 일자리를 찾고 있는 형도 실업 상태입니다."
+   ],
+   "beats": [
+    "삼촌이 다니던 공장이 문을 닫았습니다.",
+    "삼촌은 날마다 일자리 누리집을 살피고 면접을 보러 다닙니다.",
+    "일할 힘과 뜻이 있는데 일자리를 얻지 못한 이 상태가 실업입니다."
+   ],
+   "img": "A scene in two halves. On the left, a young uncle stands in front of a factory gate that is chained shut, holding his work helmet with a sad face. On the right, the same uncle in a neat shirt sits at a laptop searching for jobs late at night, with interview papers spread on the table. No text.",
+   "imgKo": "왼쪽은 젊은 삼촌이 사슬로 잠긴 공장 문 앞에서 안전모를 든 채 슬픈 얼굴로 선 모습, 오른쪽은 단정한 셔츠를 입고 밤늦게 노트북으로 일자리를 찾으며 탁자에 면접 서류를 펼쳐 둔 모습이다."
+  },
+  "실업률": {
+   "en": "unemployment rate",
+   "explain": [
+    "쉬운 뜻: 영어 unemployment rate는 un(아니) + employment(일자리) + rate(비율), 일자리 없는 사람의 비율입니다.",
+    "낱말 나누기: 실업(失業, 일자리를 잃음) + 률(率, 비율)입니다.",
+    "일할 뜻이 없는 학생과 은퇴한 노인은 셈에서 빼고 계산합니다."
+   ]
+  },
+  "노동 가능 인구": {
+   "explain": [
+    "쉬운 뜻: 실업률을 셀 때 맨 먼저 세는, 나이로 보아 일할 수 있는 사람들입니다. 중학교 3학년쯤부터 들어갑니다.",
+    "낱말 나누기: 노동(勞動, 몸과 머리를 써서 일함) + 가능(可能, 할 수 있음) + 인구(人口, 사람 수)입니다.",
+    "다시 일할 뜻이 있는 경제 활동 인구와, 없는 비경제 활동 인구로 나뉩니다."
+   ]
+  },
+  "경제 활동 인구": {
+   "en": "labor force",
+   "explain": [
+    "쉬운 뜻: 영어 labor force는 labor(일) + force(힘), '일하는 힘'이라는 말입니다. 지금 일하거나 일자리를 찾는 사람 모두입니다.",
+    "낱말 나누기: 경제 활동(돈을 벌려고 일함) + 인구(人口, 사람 수) — 일하려는 사람들입니다.",
+    "생활 속 예: 편의점에서 일하는 대학생, 가게를 하는 사장님도 모두 들어갑니다."
+   ]
+  },
+  "비경제 활동 인구": {
+   "en": "economically inactive population",
+   "explain": [
+    "쉬운 뜻: 영어 inactive는 in(아니) + active(움직이는), 일하러 나서지 않는다는 말입니다. 일할 뜻이 없는 사람들입니다.",
+    "낱말 나누기: 비(非, 아니다) + 경제 활동 인구 — 경제 활동을 하지 않는 사람들입니다.",
+    "생활 속 예: 대학 입시를 준비하는 고3 언니는 15세가 넘었지만 여기에 들어갑니다."
+   ]
+  },
+  "중앙은행": {
+   "en": "central bank",
+   "explain": [
+    "쉬운 뜻: 영어 central은 center(원의 한가운데)에서 온 말입니다. 나라 돈의 한가운데서 돈을 발행하고 그 양을 조절하는 은행들의 은행입니다.",
+    "낱말 나누기: 중앙(中央, 한가운데) + 은행(銀行, 돈을 맡고 빌려주는 곳)입니다.",
+    "생활 속 예: 지갑 속 지폐 앞면을 보면 '한국은행'이라고 적혀 있습니다."
+   ]
+  },
+  "국제 거래": {
+   "en": "international trade",
+   "explain": [
+    "쉬운 뜻: 영어 international은 inter(사이) + national(나라의), '나라 사이의'입니다. 나라끼리 물건과 돈을 주고받는 일입니다.",
+    "낱말 나누기: 국제(國際, 나라 사이) + 거래(去來, 주고받음)입니다.",
+    "생활 속 예: 바나나, 커피처럼 우리 땅에서 잘 나지 않는 것을 사 먹는 것도 국제 거래 덕분입니다."
+   ],
+   "beats": [
+    "부산항에 커다란 배들이 오갑니다.",
+    "우리 공장에서 만든 자동차를 배에 싣고 다른 나라로 보냅니다.",
+    "돌아오는 배에는 다른 나라에서 사 온 석유와 밀이 실려 있습니다.",
+    "이렇게 나라와 나라 사이에 물건과 돈을 주고받는 것이 국제 거래입니다."
+   ],
+   "img": "A busy harbor with giant cranes. On one side, rows of new cars drive onto a huge cargo ship leaving for the sea. On the other side, an arriving ship unloads oil tanks and sacks of wheat onto the dock. No text.",
+   "imgKo": "커다란 기중기가 선 바쁜 항구에서 한쪽은 새 자동차들이 바다로 떠날 큰 화물선에 줄지어 오르고, 다른 쪽은 들어온 배가 기름 탱크와 밀 포대를 부두에 내린다."
+  },
+  "환율": {
+   "en": "exchange rate",
+   "explain": [
+    "쉬운 뜻: 영어 exchange rate는 exchange(맞바꾸다) + rate(비율)입니다. 외국 돈 한 단위가 우리 돈 얼마인지 나타냅니다.",
+    "낱말 나누기: 환(換, 바꾸다) + 율(率, 비율) — 바꾸는 비율입니다.",
+    "생활 속 예: 해외여행 전 뉴스에서 환율이 올랐다고 하면 여행 경비가 더 듭니다."
+   ]
+  },
+  "외화": {
+   "en": "foreign currency",
+   "explain": [
+    "쉬운 뜻: 영어 foreign은 라틴 말 foris(문 밖), currency는 currere(흐르다)에서 왔습니다. 나라 밖에서 돌고 도는 돈입니다.",
+    "낱말 나누기: 외(外, 바깥) + 화(貨, 돈) — 바깥 나라 돈, foreign과 뜻이 같습니다.",
+    "생활 속 예: 여행 다녀온 친구가 보여 준 달러 지폐, 엔 동전이 모두 외화입니다."
+   ],
+   "beats": [
+    "하린이네 가족이 해외여행을 앞두고 은행에 갑니다.",
+    "우리 돈을 내고, 여행 갈 나라에서 쓰는 지폐와 동전으로 바꿉니다.",
+    "이렇게 다른 나라에서 쓰는 돈을 외화라고 합니다."
+   ],
+   "img": "At a bank counter, HARIN and her parents with a travel suitcase hand over Korean bills. The bank clerk hands back a small stack of colorful foreign bills and coins of a different design, and HARIN looks at them curiously. No text.",
+   "imgKo": "은행 창구에서 여행 가방을 든 하린이네 가족이 우리 돈을 내자, 직원이 생김새가 다른 알록달록한 외국 지폐와 동전을 건네고 하린이가 신기한 듯 들여다본다."
+  }
+ }
+}

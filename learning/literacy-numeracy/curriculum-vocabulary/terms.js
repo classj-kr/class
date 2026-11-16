@@ -174,6 +174,50 @@ window.CurriculumTerms = {
    "figures/7-2/soc-4.js?v=4e240cef",
    "figures/7-2/soc.js?v=ddbc2cb3"
   ]
+ },
+ "8-1": {
+  "words": "words-8-1.js?v=88b81db5",
+  "figures": [
+   "figures/8-1/his-2.js?v=6df9285a",
+   "figures/8-1/his-3.js?v=c99b573d",
+   "figures/8-1/his-4.js?v=6d4a7e62",
+   "figures/8-1/his.js?v=2a0134af",
+   "figures/8-1/kor-2.js?v=ef7dd37e",
+   "figures/8-1/kor.js?v=21370704",
+   "figures/8-1/math-1.js?v=0cb6660d",
+   "figures/8-1/math-2.js?v=4ef78572",
+   "figures/8-1/math-3.js?v=90e68c51",
+   "figures/8-1/math-4.js?v=106732ee",
+   "figures/8-1/math-5.js?v=1068f4a6",
+   "figures/8-1/sci-2.js?v=e1269804",
+   "figures/8-1/sci-3.js?v=3b4565ed",
+   "figures/8-1/sci-4.js?v=eea5b16e",
+   "figures/8-1/sci.js?v=064c145a",
+   "figures/8-1/soc-2.js?v=240a335e",
+   "figures/8-1/soc-3.js?v=244ce166",
+   "figures/8-1/soc-4.js?v=6beb9759",
+   "figures/8-1/soc.js?v=a3058307"
+  ]
+ },
+ "8-2": {
+  "words": "words-8-2.js?v=fb4776ff",
+  "figures": [
+   "figures/8-2/his-2.js?v=8270492b",
+   "figures/8-2/his.js?v=a688476f",
+   "figures/8-2/kor-2.js?v=74321907",
+   "figures/8-2/kor.js?v=66f7afaa",
+   "figures/8-2/math-1.js?v=9bab1df4",
+   "figures/8-2/math-2.js?v=5805240c",
+   "figures/8-2/math-3.js?v=0f7b4db6",
+   "figures/8-2/sci-2.js?v=8e0b378c",
+   "figures/8-2/sci-3.js?v=fb2655a3",
+   "figures/8-2/sci-4.js?v=a3ad759d",
+   "figures/8-2/sci.js?v=4a077f5d",
+   "figures/8-2/soc-2.js?v=c17ff5ac",
+   "figures/8-2/soc-3.js?v=d01b0f69",
+   "figures/8-2/soc-4.js?v=1a99674c",
+   "figures/8-2/soc.js?v=574c06a5"
+  ]
  }
 };
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
@@ -351,6 +395,50 @@ window.CurriculumTermsPreview = {
    "figures/7-2/soc-3.js?v=55a98b43",
    "figures/7-2/soc-4.js?v=4e240cef",
    "figures/7-2/soc.js?v=ddbc2cb3"
+  ]
+ },
+ "8-1": {
+  "words": "words-8-1.js?v=88b81db5",
+  "figures": [
+   "figures/8-1/his-2.js?v=6df9285a",
+   "figures/8-1/his-3.js?v=c99b573d",
+   "figures/8-1/his-4.js?v=6d4a7e62",
+   "figures/8-1/his.js?v=2a0134af",
+   "figures/8-1/kor-2.js?v=ef7dd37e",
+   "figures/8-1/kor.js?v=21370704",
+   "figures/8-1/math-1.js?v=0cb6660d",
+   "figures/8-1/math-2.js?v=4ef78572",
+   "figures/8-1/math-3.js?v=90e68c51",
+   "figures/8-1/math-4.js?v=106732ee",
+   "figures/8-1/math-5.js?v=1068f4a6",
+   "figures/8-1/sci-2.js?v=e1269804",
+   "figures/8-1/sci-3.js?v=3b4565ed",
+   "figures/8-1/sci-4.js?v=eea5b16e",
+   "figures/8-1/sci.js?v=064c145a",
+   "figures/8-1/soc-2.js?v=240a335e",
+   "figures/8-1/soc-3.js?v=244ce166",
+   "figures/8-1/soc-4.js?v=6beb9759",
+   "figures/8-1/soc.js?v=a3058307"
+  ]
+ },
+ "8-2": {
+  "words": "words-8-2.js?v=fb4776ff",
+  "figures": [
+   "figures/8-2/his-2.js?v=8270492b",
+   "figures/8-2/his.js?v=a688476f",
+   "figures/8-2/kor-2.js?v=74321907",
+   "figures/8-2/kor.js?v=66f7afaa",
+   "figures/8-2/math-1.js?v=9bab1df4",
+   "figures/8-2/math-2.js?v=5805240c",
+   "figures/8-2/math-3.js?v=0f7b4db6",
+   "figures/8-2/sci-2.js?v=8e0b378c",
+   "figures/8-2/sci-3.js?v=fb2655a3",
+   "figures/8-2/sci-4.js?v=a3ad759d",
+   "figures/8-2/sci.js?v=4a077f5d",
+   "figures/8-2/soc-2.js?v=c17ff5ac",
+   "figures/8-2/soc-3.js?v=d01b0f69",
+   "figures/8-2/soc-4.js?v=1a99674c",
+   "figures/8-2/soc.js?v=574c06a5"
   ]
  }
 };

@@ -1,0 +1,620 @@
+{
+ "5": {
+  "시민 혁명": {
+   "explain": [
+    "쉬운 뜻: 영어 revolution은 re(다시) + volve(구르다), 세상이 굴러 뒤집힌 일입니다. 시민이 왕과 귀족의 특권을 무너뜨린 혁명입니다.",
+    "낱말 나누기: 시민(市民, 도시에서 장사하고 물건 만드는 사람) + 혁명(革命, 다스리는 판을 바꿈)입니다.",
+    "영국, 미국, 프랑스에서 차례로 일어나 헌법과 의회로 다스리는 나라를 열었습니다."
+   ]
+  },
+  "국민 국가": {
+   "en": "nation-state",
+   "explain": [
+    "쉬운 뜻: 영어 nation은 natio(태어남)에서 온 말로, 한 땅에서 태어나 함께 사는 사람들입니다. 그 국민이 주인인 나라입니다.",
+    "낱말 나누기: 국민(國民, 나라의 사람) + 국가(國家, 나라) — 국민이 주인인 나라입니다.",
+    "왕의 신하였던 사람들이 같은 깃발 아래 서로를 '우리 국민'이라고 여기게 되었습니다."
+   ],
+   "beats": [
+    "빵집 주인, 대장장이, 농부, 학생이 한 광장에 모였습니다.",
+    "모두 같은 깃발을 흔들며 같은 노래를 부릅니다.",
+    "왕의 신하가 아니라 국민이 주인으로 하나 된 나라가 국민 국가입니다."
+   ],
+   "img": "A town square in France in the 1790s. People of many trades stand together: a baker in an apron, a blacksmith, a farmer with a hat, a schoolteacher and children. Everyone waves the same plain red, white and blue striped flag and sings together. No text.",
+   "imgKo": "1790년대 프랑스 광장에 빵집 주인, 대장장이, 농부, 선생님과 아이들이 함께 서서 똑같은 빨강·하양·파랑 깃발을 흔들며 노래한다."
+  },
+  "미국 혁명": {
+   "en": "American Revolution",
+   "explain": [
+    "쉬운 뜻: 북아메리카 13개 식민지 사람들이 영국에서 벗어나, 왕 없이 국민이 대표를 뽑는 나라를 세운 일입니다.",
+    "낱말 나누기: 미국(美國, 아메리카를 한자로 적은 이름의 나라) + 혁명(革命, 다스리는 판을 바꿈)입니다.",
+    "1783년 독립을 인정받고, 1789년 워싱턴이 첫 대통령이 되었습니다."
+   ],
+   "beats": [
+    "영국이 차에까지 세금을 매기자 식민지 사람들이 화가 났습니다.",
+    "밤 항구에서 사람들이 영국 배의 차 상자를 바다에 쏟아 버립니다.",
+    "이 다툼이 커져 영국에서 벗어나 새 나라를 세운 일이 미국 혁명입니다."
+   ],
+   "img": "Boston harbor at night in 1773. Colonists in 18th-century coats and hats stand on the deck of a British merchant ship and tip wooden tea chests over the side; tea leaves spill into the dark water. A crowd watches quietly from the lantern-lit wharf. No weapons, no text.",
+   "imgKo": "1773년 밤 보스턴 항구에서 식민지 사람들이 영국 상선 갑판에 올라 나무 차 상자를 바다로 쏟고, 등불 켜진 부두에서 사람들이 지켜본다."
+  },
+  "독립 선언문": {
+   "en": "Declaration of Independence",
+   "explain": [
+    "쉬운 뜻: 영어 independence는 in(아니) + depend(기대다), 남에게 기대지 않는다는 말입니다. 그 뜻을 온 세상에 밝힌 글입니다.",
+    "낱말 나누기: 독립(獨立, 홀로 섬) + 선언(宣言, 널리 알리는 말) + 문(文, 글)입니다.",
+    "필라델피아에 모인 13개 식민지 대표들이 이 글에 차례로 이름을 적었습니다."
+   ],
+   "beats": [
+    "1776년 여름, 13개 식민지의 대표들이 한 방에 모였습니다.",
+    "대표들이 차례로 나와 큰 종이에 이름을 적습니다.",
+    "영국에서 벗어나겠다고 세상에 밝힌 이 글이 독립 선언문입니다."
+   ],
+   "img": "Inside a bright 18th-century meeting hall in Philadelphia, delegates in long coats, waistcoats and white stockings gather around a wooden table. One delegate leans over to sign a large parchment with a quill pen while others wait in line behind him. The writing on the parchment is too small to read, and the faces are simple, not portraits of real people. No readable text.",
+   "imgKo": "18세기 필라델피아의 밝은 회의실에서 긴 외투를 입은 대표들이 탁자에 둘러서 있고, 한 사람이 깃펜으로 큰 양피지에 이름을 적는다."
+  },
+  "프랑스 혁명": {
+   "en": "French Revolution",
+   "explain": [
+    "쉬운 뜻: 1789년 프랑스에서 세금에 지친 평민들이 일어나 신분의 특권을 없애고, 마침내 왕정까지 무너뜨린 혁명입니다.",
+    "낱말 나누기: 프랑스 + 혁명(革命, 革 바꾸다 + 命 하늘의 명령) — 왕이 하늘에서 받았다던 권력을 바꾼 일입니다.",
+    "평민은 무거운 세금을 냈지만, 땅이 많은 성직자와 귀족은 세금을 거의 내지 않았습니다."
+   ],
+   "beats": [
+    "빵값이 치솟자 파리 시민들이 거리로 쏟아져 나왔습니다.",
+    "사람들은 빨강·하양·파랑 리본을 달고 돌로 지은 감옥 쪽으로 몰려갑니다.",
+    "평민들이 일어나 신분의 특권과 왕정을 무너뜨린 일이 프랑스 혁명입니다."
+   ],
+   "img": "A crowded Paris street in July 1789. Ordinary men and women in plain 18th-century clothes, many wearing red, white and blue ribbon rosettes, march together waving tricolor flags toward a dark stone fortress with round towers in the background. A baker's shop with an empty bread shelf stands at the side of the street. No weapons, no fighting, no text.",
+   "imgKo": "1789년 7월 파리 거리에 삼색 리본을 단 평범한 시민들이 삼색기를 흔들며 둥근 탑이 있는 돌 요새 쪽으로 행진한다. 옆 빵집 선반은 비어 있다."
+  },
+  "삼부회": {
+   "explain": [
+    "쉬운 뜻: 성직자, 귀족, 평민 세 신분의 대표가 한자리에 모이는 프랑스의 회의입니다. 왕이 부를 때만 열렸습니다.",
+    "낱말 나누기: 삼(三, 셋) + 부(部, 무리) + 회(會, 모임) — 세 신분 무리의 모임입니다.",
+    "1789년 175년 만에 열렸는데, 신분마다 한 표라 평민은 늘 2 대 1로 밀렸습니다."
+   ],
+   "beats": [
+    "큰 회의장 맨 앞에 왕이 앉고, 세 무리가 따로 자리 잡았습니다.",
+    "붉고 검은 옷의 성직자, 깃털 모자의 귀족, 수수한 검은 옷의 평민입니다.",
+    "세 신분의 대표가 모인 프랑스의 회의가 삼부회입니다."
+   ],
+   "img": "A grand hall at Versailles in 1789. At the far end the king, small and with a generic face, sits on a raised throne under a canopy. In front of him three separate groups of representatives sit in rows: clergy in red and black robes on one side, nobles in colorful silk coats with plumed hats on the other side, and a much larger crowd of commoners in plain black coats at the back. No text.",
+   "imgKo": "1789년 베르사유의 큰 회의장 끝에 왕이 높은 자리에 앉고, 앞에 붉고 검은 옷의 성직자, 깃털 모자를 쓴 귀족, 수가 훨씬 많은 검은 옷의 평민이 따로 줄지어 앉아 있다."
+  },
+  "국민 의회": {
+   "en": "National Assembly",
+   "explain": [
+    "쉬운 뜻: 영어 assembly는 ad(~에) + simul(함께), 함께 모인 것입니다. 평민 대표들이 '우리가 국민의 대표'라며 따로 연 의회입니다.",
+    "낱말 나누기: 국민(國民, 나라의 사람) + 의회(議會, 의논하는 모임)입니다.",
+    "인구의 대부분인 제3 신분 대표들이 '우리가 곧 국민'이라며 스스로 이 이름을 붙였습니다."
+   ],
+   "beats": [
+    "회의장 문이 닫히자 평민 대표들이 실내 테니스장으로 모였습니다.",
+    "모두 한 손을 들고 헌법을 만들 때까지 흩어지지 않겠다고 맹세합니다.",
+    "평민 대표들이 국민의 이름으로 세운 의회가 국민 의회입니다."
+   ],
+   "img": "A large indoor tennis court hall with high windows in 1789. Hundreds of men in plain dark coats crowd together, all raising their right hands to take an oath, while one man stands on a table in the middle reading aloud. Curtains blow in through the windows. Faces are generic. No text.",
+   "imgKo": "높은 창이 있는 실내 테니스장에 검은 외투를 입은 수많은 사람이 모여 오른손을 들고 맹세하고, 가운데 탁자 위에서 한 사람이 맹세문을 읽는다."
+  },
+  "인권 선언": {
+   "explain": [
+    "쉬운 뜻: 왕도 귀족도 빼앗을 수 없는 사람의 권리를 글로 적어, 누구나 읽을 수 있게 내건 것입니다.",
+    "낱말 나누기: 인권(人權, 사람의 권리) + 선언(宣言, 宣 널리 펴다 + 言 말) — 사람의 권리를 널리 알린 말입니다.",
+    "정식 이름은 '인간과 시민의 권리 선언'이고, 모두 17개 조항입니다."
+   ],
+   "beats": [
+    "파리 거리 벽에 커다란 종이가 나붙었습니다.",
+    "빵 장수도, 일꾼도, 학생도 멈춰 서서 함께 읽습니다.",
+    "누구도 빼앗을 수 없는 사람의 권리를 널리 알린 글이 인권 선언입니다."
+   ],
+   "img": "A Paris street corner in August 1789. A large printed proclamation is pasted on a stone wall, its writing too small to read. A mixed crowd gathers in front of it: a baker woman with a basket, workers, a student reading aloud to an old man, and children. Hopeful faces. No readable text.",
+   "imgKo": "1789년 8월 파리 길모퉁이 돌벽에 큰 인쇄 포고문이 붙어 있고, 빵 바구니를 든 여자, 일꾼, 학생과 노인, 아이들이 모여 함께 읽는다."
+  },
+  "나폴레옹": {
+   "explain": [
+    "쉬운 뜻: 프랑스 혁명 뒤 전쟁 영웅으로 이름을 날리다 황제까지 된 군인입니다. 그의 전쟁으로 혁명의 생각이 유럽에 퍼졌습니다.",
+    "지중해의 코르시카섬에서 태어났고, 서른다섯 살에 황제 자리에 올랐습니다.",
+    "1815년 워털루 전투에서 진 뒤 대서양의 먼 섬으로 쫓겨났습니다."
+   ],
+   "beats": [
+    "커다란 성당 안에 귀족과 군인들이 가득 모였습니다.",
+    "한 군인이 붉은 망토를 두르고 스스로 머리에 관을 씁니다.",
+    "혁명 뒤 황제까지 된 이 군인이 나폴레옹입니다."
+   ],
+   "img": "The interior of Notre-Dame Cathedral in Paris in 1804, filled with nobles, officials and officers in fine clothes. At the altar, a man in a long red velvet cloak is seen from behind, lifting a golden laurel crown onto his own head. Candles and tall stone arches. His face is not shown. No text.",
+   "imgKo": "1804년 파리 노트르담 성당 안에 귀족과 장교들이 가득하고, 제단 앞에서 붉은 망토를 두른 사람이 뒷모습으로 금빛 관을 스스로 머리에 쓴다."
+  },
+  "빈 체제": {
+   "explain": [
+    "쉬운 뜻: 나폴레옹 전쟁이 끝난 뒤 유럽의 왕들이 오스트리아 빈에 모여, 세상을 혁명 전으로 되돌리자고 짠 질서입니다.",
+    "낱말 나누기: 빈(오스트리아의 수도) + 체제(體制, 짜인 틀) — 빈 회의에서 짠 틀입니다.",
+    "빈 체제를 이끈 나라들은 자유를 외치는 대학생 모임과 신문을 막았습니다."
+   ]
+  },
+  "자유주의": {
+   "en": "liberalism",
+   "explain": [
+    "쉬운 뜻: 영어 liberalism은 liber(자유로운)에서 온 말입니다. 신분에 묶이지 않고 누구나 자유롭게 생각하고 말할 권리를 지키자는 생각입니다.",
+    "낱말 나누기: 자유(自由, 스스로 정함) + 주의(主義, 굳게 믿고 따르는 생각)입니다.",
+    "1830년 프랑스 7월 혁명 때 파리 시민들은 신문을 막은 왕을 몰아냈습니다."
+   ],
+   "beats": [
+    "1830년대 파리의 카페에서 사람들이 신문을 펼쳐 읽습니다.",
+    "학생과 상인이 나라 일을 두고 마음껏 의견을 나눕니다.",
+    "누구나 자유롭게 생각하고 말할 권리를 지키자는 생각이 자유주의입니다."
+   ],
+   "img": "A busy Paris café in the 1830s. Students, shopkeepers and writers sit at small tables with coffee, reading newspapers and arguing politely, some pointing at a page. A newspaper seller stands at the door with a stack of papers. Warm lamplight. No readable text.",
+   "imgKo": "1830년대 파리 카페에서 학생, 상인, 글쓴이들이 작은 탁자에 앉아 신문을 읽으며 의견을 나누고, 문 앞에서 신문 장수가 신문을 판다."
+  },
+  "민족주의": {
+   "en": "nationalism",
+   "explain": [
+    "쉬운 뜻: 영어 nationalism도 natio(태어남)에서 온 말입니다. 같은 말과 역사를 가진 사람들이 한 나라로 뭉치자는 생각입니다.",
+    "낱말 나누기: 민족(民族, 같은 겨레의 사람들) + 주의(主義, 굳게 믿고 따르는 생각)입니다.",
+    "여러 작은 나라로 흩어져 있던 이탈리아는 1861년, 독일은 1871년에 하나가 되었습니다."
+   ],
+   "beats": [
+    "옷차림이 조금씩 다른 여러 마을 사람들이 한 광장에 모였습니다.",
+    "같은 말로 같은 노래를 부르며 한 깃발을 높이 듭니다.",
+    "같은 말과 역사를 가진 사람들이 한 나라로 뭉치자는 생각이 민족주의입니다."
+   ],
+   "img": "An Italian town square in the 1860s. People from different small regions, wearing slightly different local costumes, stand shoulder to shoulder and sing together while raising one large plain green, white and red striped flag. Church bells and old stone houses around them. No text.",
+   "imgKo": "1860년대 이탈리아 광장에 옷차림이 조금씩 다른 여러 지방 사람들이 어깨를 맞대고 함께 노래하며 초록·하양·빨강 깃발 하나를 높이 든다."
+  },
+  "차티스트 운동": {
+   "en": "Chartism",
+   "explain": [
+    "쉬운 뜻: 영어 charter는 charta(종이, 문서)에서 온 말로 '헌장'입니다. 노동자들이 인민헌장을 내걸고 투표권을 요구한 운동입니다.",
+    "낱말 나누기: 차티스트(헌장을 따르는 사람) + 운동(運動, 뜻을 이루려고 여럿이 힘씀)입니다.",
+    "수백만 명이 서명한 두루마리를 의회로 가져갔지만 번번이 거절당했습니다."
+   ],
+   "beats": [
+    "공장 노동자들이 수많은 서명을 받았습니다.",
+    "서명을 이어 붙인 두루마리가 너무 커서 수레에 싣고 갑니다.",
+    "투표권을 달라며 헌장을 내건 이 운동이 차티스트 운동입니다."
+   ],
+   "img": "A London street in the 1840s. A long procession of working men and women in caps, shawls and worn coats pushes a cart carrying a gigantic rolled-up paper petition, as wide as the cart, toward a Gothic parliament building by a river. Factory chimneys rise in the distance. No readable text.",
+   "imgKo": "1840년대 런던 거리에서 모자와 숄을 걸친 노동자들이 수레만큼 큰 서명 두루마리를 싣고 강가의 의회 건물 쪽으로 행진한다. 멀리 공장 굴뚝이 보인다."
+  },
+  "입헌 군주제": {
+   "en": "constitutional monarchy",
+   "explain": [
+    "쉬운 뜻: 영어 monarchy는 mono(하나) + archy(다스림), 한 사람이 다스림입니다. 그런 왕도 헌법을 지켜야 하는 정치 체제입니다.",
+    "낱말 나누기: 입헌(立憲, 헌법을 세움) + 군주(君主, 임금) + 제(制, 제도) — 헌법으로 임금을 묶는 제도입니다.",
+    "영국 왕은 지금도 왕관을 쓰지만, 나라 일은 국민이 뽑은 의회와 총리가 맡습니다."
+   ]
+  },
+  "철혈 정책": {
+   "explain": [
+    "쉬운 뜻: 말이나 투표 대신 군대의 힘으로 흩어진 독일을 하나로 묶겠다는 프로이센 비스마르크의 정책입니다.",
+    "낱말 나누기: 철(鐵, 쇠) + 혈(血, 피) + 정책(政策) — 쇠는 무기, 피는 병사를 가리킵니다.",
+    "1871년 프랑스 베르사유 궁전에서 독일 제국이 세워졌다고 알렸습니다."
+   ],
+   "beats": [
+    "프로이센 의회에서 의원들이 돈을 두고 다툽니다.",
+    "총리가 일어나 '말이 아니라 쇠와 피로 정해진다'고 외칩니다.",
+    "군대의 힘으로 독일을 하나로 묶으려 한 정책이 철혈 정책입니다."
+   ],
+   "img": "The Prussian parliament chamber in 1862. Rows of members in dark 19th-century suits sit and listen tensely while a tall man in a dark coat stands at the speaker's desk with one fist raised, seen from behind. A large map of the German states hangs on the wall. No weapons, no text.",
+   "imgKo": "1862년 프로이센 의회에서 검은 정장 의원들이 긴장한 채 듣고, 뒷모습의 키 큰 총리가 연단에서 주먹을 든다. 벽에 독일 여러 나라 지도가 걸려 있다."
+  },
+  "남북 전쟁": {
+   "en": "American Civil War",
+   "explain": [
+    "쉬운 뜻: 영어 civil은 civis(시민)에서 온 말로, Civil War는 한 나라 사람끼리 싸운 전쟁입니다. 미국 북부와 남부가 맞섰습니다.",
+    "낱말 나누기: 남북(南北, 남쪽과 북쪽) + 전쟁(戰爭, 싸움) — 한 나라의 남쪽과 북쪽이 싸운 일입니다.",
+    "남부는 노예에게 목화를 따게 했고, 공장이 많은 북부는 노예제를 넓히는 데 반대했습니다."
+   ],
+   "beats": [
+    "남쪽 들판에서는 노예들이 목화를 따고, 북쪽에는 공장이 늘어섰습니다.",
+    "4년의 싸움 끝에 두 장군이 작은 시골집에서 마주 앉습니다.",
+    "노예제를 두고 미국의 남과 북이 싸운 전쟁이 남북 전쟁입니다."
+   ],
+   "img": "A two-part scene from the 1860s United States. Left: enslaved workers picking cotton in a wide southern field under a hot sun. Right: in the quiet parlor of a small farmhouse in 1865, two generals in different uniforms, one grey and one blue, with simple generic faces that are not portraits, sit at separate small tables to sign surrender papers while officers stand by. No weapons shown, no text.",
+   "imgKo": "왼쪽에 남부 목화밭에서 노예들이 목화를 따고, 오른쪽에 1865년 작은 시골집 거실에서 회색 군복과 파란 군복의 두 장군이 항복 문서에 서명한다."
+  },
+  "크리오요": {
+   "explain": [
+    "쉬운 뜻: 조상은 유럽 사람이지만 아메리카 식민지에서 태어나 자란 백인입니다. 본국에서 온 사람보다 낮게 대접받았습니다.",
+    "낱말 나누기: 에스파냐 말 criollo는 criar(기르다)에서 온 말 — 식민지 땅에서 길러진 사람입니다.",
+    "부자 크리오요도 높은 관리 자리는 에스파냐에서 건너온 사람에게 내주어야 했습니다."
+   ]
+  },
+  "산업 혁명": {
+   "en": "Industrial Revolution",
+   "explain": [
+    "쉬운 뜻: 영어 industry는 industria(부지런함)에서 온 말입니다. 손 대신 기계가 물건을 쏟아 내며 사람들의 삶이 통째로 바뀐 일입니다.",
+    "낱말 나누기: 산업(産業, 물건을 만드는 일) + 혁명(革命, 판을 뒤집어 바꿈)입니다.",
+    "증기 기관이 기계를 돌리고 기차를 달리게 하면서 영국 하늘에 공장 굴뚝이 늘어섰습니다."
+   ],
+   "beats": [
+    "강가에 높은 굴뚝이 늘어선 공장들이 들어섰습니다.",
+    "증기 기관차가 석탄과 면직물을 싣고 달립니다.",
+    "기계가 생산을 맡으며 삶이 통째로 바뀐 일이 산업 혁명입니다."
+   ],
+   "img": "A wide view of an English industrial town around 1840. Red brick cotton mills with tall smoking chimneys line a canal, a steam locomotive pulls wagons of coal across a stone bridge, and rows of small workers' houses crowd the hillside. The sky is grey with smoke. No text.",
+   "imgKo": "1840년 무렵 영국 공업 도시에 굴뚝 높은 붉은 벽돌 공장이 운하를 따라 늘어서고, 증기 기관차가 석탄 화차를 끌며 돌다리를 건넌다. 언덕에 작은 노동자 집들이 빽빽하다."
+  },
+  "인클로저 운동": {
+   "en": "enclosure",
+   "explain": [
+    "쉬운 뜻: 영어 enclosure는 en(안에) + close(닫다), 울타리로 둘러막음입니다. 지주가 여럿이 쓰던 땅을 막아 자기 것으로 만든 일입니다.",
+    "낱말 나누기: 인클로저(울타리 치기) + 운동(運動, 여럿이 벌인 움직임)입니다.",
+    "울타리 안에서는 양털을 얻을 양이 풀을 뜯고, 쫓겨난 농민은 일자리를 찾아 도시로 떠났습니다."
+   ],
+   "beats": [
+    "마을 사람들이 함께 소를 먹이던 넓은 풀밭이 있었습니다.",
+    "지주가 울타리를 치자 그 안에는 양만 남았습니다.",
+    "농민 가족은 짐을 지고 도시로 떠납니다. 땅에 울타리를 친 이 일이 인클로저 운동입니다."
+   ],
+   "img": "An English countryside scene in the 18th century. On the left, a long new hedge and wooden fence encloses a green pasture full of sheep, with a well-dressed landowner on horseback watching. On the right, outside the fence, a poor farming family carries bundles and walks down a dirt road toward a distant town with chimneys. No text.",
+   "imgKo": "18세기 영국 시골에서 새 울타리 안 초원에 양 떼가 가득하고 말 탄 지주가 바라본다. 울타리 밖에서 가난한 농민 가족이 보따리를 지고 멀리 굴뚝 있는 도시로 걸어간다."
+  },
+  "공장제 기계 공업": {
+   "en": "factory system",
+   "explain": [
+    "쉬운 뜻: 영어 factory는 facere(만들다)에서 온 말로, 물건을 만드는 곳입니다. 기계를 들인 공장에 노동자를 모아 대량으로 만드는 방식입니다.",
+    "낱말 나누기: 공장제(工場制, 공장에 모여 일하는 방식) + 기계 공업(機械工業, 기계로 물건을 만드는 일)입니다.",
+    "물레 앞에서 한 가닥씩 뽑던 실을, 기계는 수백 가닥씩 한꺼번에 뽑아냈습니다."
+   ],
+   "beats": [
+    "커다란 공장 안에 실 뽑는 기계가 끝없이 늘어서 있습니다.",
+    "증기 기관이 축을 돌리자 수백 가닥의 실이 한꺼번에 감깁니다.",
+    "노동자를 공장에 모아 기계로 대량 생산하는 방식이 공장제 기계 공업입니다."
+   ],
+   "img": "Inside a huge 19th-century cotton mill: long rows of spinning machines with hundreds of spindles stretch into the distance, driven by leather belts from shafts on the ceiling. Workers in aprons, including young women, tend the machines. Cotton fluff floats in the light from tall windows. No text.",
+   "imgKo": "19세기 큰 면직 공장 안에 수백 개 가락이 달린 방적기가 길게 늘어서고, 천장 축에서 내려온 가죽 띠가 기계를 돌린다. 앞치마를 두른 노동자들이 기계를 돌본다."
+  },
+  "자본주의": {
+   "en": "capitalism",
+   "explain": [
+    "쉬운 뜻: 영어 capital은 caput(머리)에서 온 말로, 으뜸 밑천인 돈입니다. 밑천을 가진 사람이 자유롭게 만들고 팔아 이익을 얻는 경제입니다.",
+    "낱말 나누기: 자본(資本, 사업의 밑천) + 주의(主義, 굳게 믿고 따르는 생각) — 밑천이 일을 움직이는 체제입니다.",
+    "공장 주인은 기계와 원료를 사고, 노동자는 일한 대가로 임금을 받았습니다."
+   ],
+   "beats": [
+    "상인이 모은 돈으로 기계를 사서 공장을 차렸습니다.",
+    "노동자들이 일한 대가로 주말마다 임금을 받습니다.",
+    "밑천을 가진 사람이 자유롭게 만들고 팔아 이익을 얻는 경제가 자본주의입니다."
+   ],
+   "img": "A 19th-century English factory yard. On the left, a well-dressed factory owner in a top hat pays a machine maker for a new steam engine being unloaded from a wagon. On the right, a line of workers in caps receives coins in envelopes at a small pay window. Smoking chimney behind. No text.",
+   "imgKo": "19세기 영국 공장 마당 왼쪽에서 중절모를 쓴 공장 주인이 수레에서 내리는 새 증기 기관값을 치르고, 오른쪽에서 노동자들이 작은 창구에 줄 서서 임금 봉투를 받는다."
+  },
+  "러다이트 운동": {
+   "en": "Luddite movement",
+   "explain": [
+    "쉬운 뜻: 기계가 사람의 일을 빼앗는다고 여긴 노동자들이 기계에 분노를 쏟은 운동입니다. 1811년 무렵 영국에서 일어났습니다.",
+    "낱말 나누기: 러다이트(전설 속 기계 부순 사람 '네드 러드'를 따르는 무리) + 운동(運動)입니다.",
+    "오늘날에도 새 기술을 무조건 거부하는 사람을 영어로 러다이트라고 부릅니다."
+   ],
+   "beats": [
+    "새 방직기 한 대가 여러 직공의 일을 해냈습니다.",
+    "일자리를 잃은 직공들이 밤에 공장으로 몰려갔습니다.",
+    "아침이 되자 부서진 기계가 남았습니다. 기계에 분노를 쏟은 이 운동이 러다이트 운동입니다."
+   ],
+   "img": "Dawn inside a small English textile workshop around 1812. Several wooden knitting frames lie broken on the floor with snapped threads and scattered parts. In the doorway, a worried factory owner looks in, and through the window a group of unemployed weavers in shabby coats walk away down a misty street. No people hurt, no weapons, no text.",
+   "imgKo": "1812년 무렵 새벽, 영국 작은 직물 공장 바닥에 부서진 나무 편직기가 흩어져 있고, 문간에서 공장 주인이 들여다보며 창밖으로 일자리를 잃은 직공들이 안개 낀 길을 걸어간다."
+  },
+  "사회주의": {
+   "en": "socialism",
+   "explain": [
+    "쉬운 뜻: 영어 socialism은 socius(동료)에서 온 말입니다. 몇 사람만 부자가 되는 대신, 동료끼리 함께 갖고 나누자는 생각입니다.",
+    "낱말 나누기: 사회(社會, 함께 모여 사는 무리) + 주의(主義, 굳게 믿고 따르는 생각)입니다.",
+    "공장 주인은 부자가 되는데 아이들까지 하루 열몇 시간씩 일하자, 이를 바꾸자는 목소리가 커졌습니다."
+   ],
+   "beats": [
+    "어린아이들까지 공장에서 하루 종일 일했습니다.",
+    "노동자들이 모임 방에 모여 함께 나누는 세상을 이야기합니다.",
+    "공장과 땅을 함께 갖고 고르게 나누자는 생각이 사회주의입니다."
+   ],
+   "img": "A two-part scene from 1840s England. Left: thin children and adults work at noisy machines in a dim factory. Right: in the evening, workers in caps sit on benches in a plain meeting room, listening to a speaker seen from behind, and pass bread around to share. No text.",
+   "imgKo": "왼쪽에 어두운 공장에서 마른 아이들과 어른들이 기계 앞에서 일하고, 오른쪽에 저녁 모임 방에서 노동자들이 뒷모습의 연사 말을 들으며 빵을 나눈다."
+  },
+  "제국주의": {
+   "en": "imperialism",
+   "explain": [
+    "쉬운 뜻: 영어 imperialism은 imperium(명령, 다스림)에서 온 말입니다. 힘센 나라가 남의 땅을 빼앗아 다스리며 넓혀 가려 한 정책입니다.",
+    "낱말 나누기: 제국(帝國, 황제가 다스리는 큰 나라) + 주의(主義, 굳게 믿고 따르는 생각)입니다.",
+    "영국은 '해가 지지 않는 나라'라고 불릴 만큼 세계 곳곳에 식민지를 두었습니다."
+   ],
+   "beats": [
+    "유럽 나라 대표들이 커다란 아프리카 지도 앞에 모였습니다.",
+    "자를 대고 지도 위에 곧은 선을 긋습니다. 그곳 사람들은 그 자리에 없습니다.",
+    "힘센 나라가 남의 땅을 빼앗아 다스리려 한 정책이 제국주의입니다."
+   ],
+   "img": "A grand European conference room in 1884. Diplomats in dark frock coats stand around a huge map of Africa spread on a table, using rulers to draw straight border lines across it. No African people are present at the table. The map has no readable names. No text.",
+   "imgKo": "1884년 유럽의 큰 회의실에서 검은 정장 외교관들이 탁자 위 커다란 아프리카 지도에 자를 대고 곧은 국경선을 긋는다. 그 자리에 아프리카 사람은 없다."
+  },
+  "열강": {
+   "en": "great powers",
+   "explain": [
+    "쉬운 뜻: 줄지어 선 듯 여럿인 힘센 나라들입니다. 영국, 프랑스, 독일, 러시아, 미국, 일본 등이 그랬습니다.",
+    "낱말 나누기: 열(列, 줄지어 늘어섬) + 강(强, 강하다) — 줄지어 선 강한 나라들입니다.",
+    "19세기 말 아프리카 지도는 열강이 나누어 가진 땅마다 다른 색으로 칠해졌습니다."
+   ],
+   "beats": [
+    "중국의 한 항구에 여러 나라의 증기선이 줄지어 들어왔습니다.",
+    "배마다 다른 깃발을 달고, 부두에는 저마다 다른 나라 건물이 섰습니다.",
+    "줄지어 선 힘센 나라들이 열강입니다."
+   ],
+   "img": "A busy Chinese treaty port around 1900. Merchant steamships from many different countries crowd the harbor, each flying a different plain colored national flag without letters. Along the waterfront stand Western-style buildings of different nations, while Chinese porters carry goods. No weapons, no text.",
+   "imgKo": "1900년 무렵 중국 항구에 여러 나라 증기선이 저마다 다른 깃발을 달고 가득 들어오고, 부두에 여러 나라의 서양식 건물이 늘어서 있으며 중국인 짐꾼들이 짐을 나른다."
+  },
+  "사회 진화론": {
+   "en": "Social Darwinism",
+   "explain": [
+    "쉬운 뜻: 생물이 살아남는 다윈의 진화론을 사람 사회에 억지로 갖다 붙인 생각입니다. 강한 나라가 약한 나라를 먹는 게 당연하다고 했습니다.",
+    "낱말 나누기: 사회(社會, 사람의 무리) + 진화(進化, 나아가며 바뀜) + 론(論, 주장)입니다.",
+    "다윈은 생물을 연구했을 뿐인데, 이 주장은 그의 이론을 침략의 핑계로 바꾸어 썼습니다."
+   ],
+   "beats": [
+    "한 학자가 섬에서 새의 부리를 들여다보며 생물이 바뀌는 까닭을 연구합니다.",
+    "몇십 년 뒤, 다른 사람들이 그 이론을 세계 지도 앞에 갖다 붙입니다.",
+    "생물의 진화론을 침략의 핑계로 바꾼 생각이 사회 진화론입니다."
+   ],
+   "img": "A two-part scene. Left: a 19th-century naturalist in a field coat, seen from behind, sits on a rocky island beach, carefully sketching small finches with different beaks. Right: decades later, gentlemen in top hats in a dark wood-paneled office point at a large world globe and nod to each other with proud faces. No text.",
+   "imgKo": "왼쪽에 19세기 박물학자가 바위섬 해변에서 부리 모양이 다른 작은 새들을 그리고, 오른쪽에 몇십 년 뒤 어두운 사무실에서 중절모 신사들이 큰 지구본을 가리키며 뽐낸다."
+  },
+  "인종주의": {
+   "en": "racism",
+   "explain": [
+    "쉬운 뜻: 피부색이나 생김새로 사람을 갈래 짓고, 어느 갈래가 타고나기를 더 낫다고 믿는 잘못된 생각입니다.",
+    "낱말 나누기: 인종(人種, 사람의 갈래) + 주의(主義, 굳게 믿고 따르는 생각)입니다.",
+    "오늘날 과학은 피부색과 머리가 좋고 나쁨은 아무 상관이 없다고 밝혔습니다."
+   ]
+  },
+  "종단 정책": {
+   "explain": [
+    "쉬운 뜻: 영국이 아프리카를 세로로, 곧 북쪽 이집트 카이로에서 남쪽 끝 케이프타운까지 이어 차지하려 한 정책입니다.",
+    "낱말 나누기: 종(縱, 세로) + 단(斷, 끊고 지나감) + 정책(政策) — 세로로 질러 감입니다.",
+    "생활 속 예: 국토 종단 자전거 여행처럼, 위아래로 끝까지 가는 것이 종단입니다."
+   ]
+  },
+  "횡단 정책": {
+   "explain": [
+    "쉬운 뜻: 프랑스가 아프리카를 가로로, 곧 서쪽 알제리와 사하라에서 동쪽 바닷가까지 이어 차지하려 한 정책입니다.",
+    "낱말 나누기: 횡(橫, 가로) + 단(斷, 끊고 지나감) + 정책(政策) — 가로로 질러 감입니다.",
+    "생활 속 예: 길을 가로로 건너는 횡단보도의 '횡단'과 같은 말입니다."
+   ]
+  },
+  "탄지마트": {
+   "en": "Tanzimat",
+   "explain": [
+    "쉬운 뜻: 흔들리던 오스만 제국이 서양식 법, 학교, 군대를 들여와 나라를 새로 고친 개혁입니다. 1839년에 시작했습니다.",
+    "낱말 나누기: 오스만 제국의 말 탄지마트는 '정리, 다시 짬'이라는 뜻 — 나라의 제도를 다시 짠다는 말입니다.",
+    "종교가 달라도 법 앞에서는 똑같은 백성으로 대하겠다고 약속했습니다."
+   ],
+   "beats": [
+    "이스탄불의 궁전 정원에 관리들이 모였습니다.",
+    "모든 백성을 법 앞에 똑같이 대하겠다는 칙령을 읽습니다.",
+    "서양식 법과 학교를 들여와 나라를 고친 오스만 제국의 개혁이 탄지마트입니다."
+   ],
+   "img": "A palace garden in Istanbul in 1839, with domes and a minaret in the background. Ottoman officials in red fez hats and dark frock coats stand in rows while an official reads a long scroll aloud. Representatives of different religious communities, in different robes, listen side by side. No readable text.",
+   "imgKo": "1839년 둥근 지붕이 보이는 이스탄불 궁전 정원에서 붉은 페즈를 쓴 관리들이 줄지어 서고, 한 관리가 긴 두루마리를 읽으며 여러 종교 대표들이 나란히 듣는다."
+  },
+  "청년 튀르크당": {
+   "en": "Young Turks",
+   "explain": [
+    "쉬운 뜻: 술탄의 독재에 맞서 헌법을 되살리려 한 오스만 제국의 젊은 장교와 지식인들입니다.",
+    "낱말 나누기: 청년(靑年, 젊은이) + 튀르크(오스만 제국의 중심 민족) + 당(黨, 무리)입니다.",
+    "1908년 일어나 멈춰 있던 헌법을 30년 만에 되살렸습니다."
+   ],
+   "beats": [
+    "젊은 장교와 학생들이 비밀리에 모여 헌법을 되살리자고 다짐했습니다.",
+    "1908년, 헌법이 돌아오자 이스탄불 거리에 사람들이 쏟아져 나왔습니다.",
+    "술탄의 독재에 맞서 헌법을 되살린 젊은이들이 청년 튀르크당입니다."
+   ],
+   "img": "An Istanbul street in July 1908 filled with celebrating people. Young army officers in uniforms without weapons, students in fez hats, and citizens of different religions hug and cheer, waving plain red flags. Old wooden houses and a mosque dome in the background. No text.",
+   "imgKo": "1908년 7월 이스탄불 거리에 무기 없는 군복의 젊은 장교, 페즈를 쓴 학생, 여러 종교의 시민들이 붉은 깃발을 흔들며 서로 껴안고 기뻐한다."
+  },
+  "와하브 운동": {
+   "en": "Wahhabism",
+   "explain": [
+    "쉬운 뜻: 이슬람교가 처음 모습을 잃었다며, 무함마드가 살던 때의 깨끗한 믿음으로 돌아가자고 한 아랍 사람들의 운동입니다.",
+    "낱말 나누기: 운동을 시작한 이븐 압둘 와하브의 이름 + 운동(運動) — 이 사람의 이름을 땄습니다.",
+    "아라비아반도의 사우드 가문과 손잡고 세력을 넓혔습니다."
+   ],
+   "beats": [
+    "아라비아반도의 사막 마을에 흙벽돌 집들이 모여 있습니다.",
+    "사람들이 꾸밈없는 사원에 모여 처음의 깨끗한 믿음을 되찾자고 다짐합니다.",
+    "무함마드 때의 믿음으로 돌아가자고 한 아랍 사람들의 운동이 와하브 운동입니다."
+   ],
+   "img": "A mud-brick desert town in central Arabia in the 18th century, with palm trees and a dry valley. Men in white robes and head cloths walk toward a very plain mud-brick mosque without decoration, seen from a distance at sunset. Camels rest nearby. No text.",
+   "imgKo": "18세기 아라비아반도 한가운데 야자나무가 있는 흙벽돌 사막 마을에서 흰 옷을 입은 사람들이 꾸밈없는 흙벽돌 사원으로 걸어간다. 해 질 녘이고 낙타들이 쉬고 있다."
+  },
+  "입헌 혁명": {
+   "explain": [
+    "쉬운 뜻: 이란의 왕이 외국에 나라의 이권을 마구 넘기자, 국민이 일어나 헌법을 만들고 의회를 열게 한 혁명입니다.",
+    "낱말 나누기: 입헌(立憲, 헌법을 세움) + 혁명(革命, 판을 바꿈) — 헌법을 세운 혁명입니다.",
+    "1906년 첫 의회가 열렸지만 몇 해 뒤 러시아 군대가 들어와 의회를 닫게 했습니다."
+   ],
+   "beats": [
+    "이란 사람들이 왕에게 의회를 열라며 큰 정원에 모여 천막을 쳤습니다.",
+    "상인은 가게 문을 닫고, 학자와 시민이 함께 버팁니다.",
+    "마침내 의회가 열렸습니다. 헌법을 세운 이란의 이 혁명이 입헌 혁명입니다."
+   ],
+   "img": "Tehran in 1906. A large walled garden is filled with white tents and thousands of men in long robes, turbans and felt hats, sitting and talking calmly, shops closed behind them. In the second part of the picture, a new parliament building with columns opens its doors to a cheering crowd. No weapons, no text.",
+   "imgKo": "1906년 테헤란의 넓은 정원에 흰 천막이 가득하고 긴 옷과 터번 차림의 사람들이 앉아 버티며, 그림 한쪽에 기둥 있는 새 의회 건물이 문을 열고 사람들이 환호한다."
+  },
+  "세포이의 항쟁": {
+   "en": "Indian Rebellion of 1857",
+   "explain": [
+    "쉬운 뜻: 영국 동인도 회사에 고용된 인도 병사들이 시작해, 온 인도 사람이 영국 지배에 맞선 싸움입니다. 1857년 일입니다.",
+    "낱말 나누기: 세포이(페르시아 말 sipahi, 병사) + 항쟁(抗爭, 맞서 다툼) — 병사들이 맞서 싸운 일입니다.",
+    "새 총알 종이에 소와 돼지 기름을 발랐다는 소문이 힌두교도와 이슬람교도 병사를 화나게 했습니다."
+   ],
+   "beats": [
+    "영국 동인도 회사에 고용된 인도 병사들이 넓은 연병장에 줄지어 섰습니다.",
+    "병사들이 팔짱을 끼고 명령을 거부하자, 영국 장교가 당황합니다.",
+    "인도 병사들에게서 시작해 온 인도가 영국에 맞선 일이 세포이의 항쟁입니다."
+   ],
+   "img": "A dusty parade ground in northern India in 1857. A long row of Indian soldiers in red coats and turbans stand with arms crossed and empty hands, refusing an order, while a surprised British officer in a red coat faces them. Hot sky and old barracks behind. No guns or weapons shown, no text.",
+   "imgKo": "1857년 인도 북부의 먼지 낀 연병장에 붉은 군복과 터번 차림의 인도 병사들이 빈손으로 팔짱을 끼고 줄지어 서 있고, 영국 장교가 당황한 얼굴로 마주 선다."
+  },
+  "인도 국민 회의": {
+   "en": "Indian National Congress",
+   "explain": [
+    "쉬운 뜻: 영어 congress는 con(함께) + gress(가다), 함께 와서 모인 것입니다. 인도 지식인들이 1885년 만든 모임입니다.",
+    "낱말 나누기: 인도 + 국민(國民, 나라 사람) + 회의(會議, 모여 의논함)입니다.",
+    "간디와 네루도 이 단체를 이끌었고, 지금도 인도의 큰 정당입니다."
+   ],
+   "beats": [
+    "1885년, 인도 곳곳에서 온 변호사와 교사, 기자들이 한 강당에 모였습니다.",
+    "사람들은 인도 사람의 목소리를 정치에 담자고 의논합니다.",
+    "인도 지식인들이 만들어 뒤에 독립운동을 이끈 단체가 인도 국민 회의입니다."
+   ],
+   "img": "A college hall in Bombay in 1885. About seventy Indian lawyers, teachers and journalists in turbans, caps and long coats sit on rows of chairs and listen to a speaker at a lectern, seen from behind. Some take notes. Tall arched windows. No readable text.",
+   "imgKo": "1885년 봄베이의 대학 강당에 터번과 긴 외투 차림의 인도 변호사, 교사, 기자들이 줄지어 앉아 뒷모습의 연사 말을 들으며 받아 적는다."
+  },
+  "벵골 분할령": {
+   "en": "Partition of Bengal",
+   "explain": [
+    "쉬운 뜻: 영국이 인도 사람들끼리 다투게 하려고, 한 지방을 믿는 종교에 따라 반으로 자른 명령입니다.",
+    "낱말 나누기: 분할(分割, 나누어 가름) + 령(令, 명령) — 땅을 나누라는 명령입니다.",
+    "거센 반대에 부딪혀 영국은 1911년 이 명령을 거두어들였습니다."
+   ]
+  },
+  "아편 전쟁": {
+   "en": "Opium War",
+   "explain": [
+    "쉬운 뜻: 영국이 인도에서 만든 아편을 청에 몰래 팔다가, 청이 이를 막자 일으킨 전쟁입니다. 1840년에 시작했습니다.",
+    "낱말 나누기: 아편(阿片, 영어 opium을 한자 소리로 옮긴 말) + 전쟁(戰爭, 싸움)입니다.",
+    "영국은 청의 차를 사느라 은을 많이 썼는데, 아편을 팔아 그 은을 되찾았습니다."
+   ]
+  },
+  "불평등 조약": {
+   "en": "unequal treaty",
+   "explain": [
+    "쉬운 뜻: 힘센 나라가 억지로 맺게 한, 한쪽만 이득을 보는 약속입니다. 영어 unequal도 un(아니) + equal(같은)입니다.",
+    "낱말 나누기: 불(不, 아니) + 평등(平等, 고르고 같음) + 조약(條約, 조목을 정한 약속)입니다.",
+    "외국인이 죄를 지어도 그 나라 영사가 재판해, 청의 법으로는 벌할 수 없었습니다."
+   ]
+  },
+  "태평천국 운동": {
+   "explain": [
+    "쉬운 뜻: 홍수전이 '크게 평화로운 하늘나라'를 세우겠다며 청에 맞서 일으킨 운동입니다. 땅을 고루 나누자고 했습니다.",
+    "낱말 나누기: 태평(太平, 크게 평화로움) + 천국(天國, 하늘나라) + 운동(運動)입니다.",
+    "남자와 여자가 똑같이 땅을 받고, 여자의 발을 묶는 풍습을 없애자고 했습니다."
+   ],
+   "beats": [
+    "청의 남자들은 머리를 땋아 내리는 변발을 해야 했습니다.",
+    "홍수전을 따르는 사람들은 변발을 풀고 머리를 길게 길렀습니다.",
+    "땅을 고루 나눈 크게 평화로운 나라를 세우자며 청에 맞선 운동이 태평천국 운동입니다."
+   ],
+   "img": "A southern Chinese village in the 1850s. Men untie their long braided queues and let their hair grow loose, while families, men and women together, stand in rice fields as an official divides the land into equal plots with ropes. Peaceful mood. No weapons, no text.",
+   "imgKo": "1850년대 중국 남부 마을에서 남자들이 땋은 변발을 풀어 머리를 늘어뜨리고, 논에서는 남녀 가족들이 지켜보는 가운데 밧줄로 땅을 똑같이 나눈다."
+  },
+  "양무운동": {
+   "en": "Self-Strengthening Movement",
+   "explain": [
+    "쉬운 뜻: 중국의 전통은 그대로 두고 서양의 기술만 들여와 힘을 키우려 한 청의 운동입니다. 영어 이름은 '스스로 강해지기 운동'입니다.",
+    "낱말 나누기: 양(洋, 큰 바다 건너 서양) + 무(務, 일) + 운동(運動) — 서양의 일을 배우는 운동입니다.",
+    "'중국의 정신에 서양의 기술을'이라는 뜻의 중체서용을 내세웠습니다."
+   ],
+   "beats": [
+    "청의 강가에 서양식 배를 만드는 조선소가 세워졌습니다.",
+    "청의 관리들이 증기선과 기계를 들여다봅니다.",
+    "전통은 지키고 서양의 기술만 들여와 힘을 키우려 한 운동이 양무운동입니다."
+   ],
+   "img": "A Chinese shipyard by a river in the 1870s. A new Western-style steamship stands on the slipway, and Chinese workers rivet its iron hull. Qing officials in long robes and round hats inspect a large steam machine together with a foreign engineer in a suit. Chimneys and cranes. No weapons, no text.",
+   "imgKo": "1870년대 중국 강가 조선소에 서양식 증기선이 놓여 있고 노동자들이 쇠 선체를 조립하며, 긴 관복을 입은 청 관리들이 외국 기술자와 함께 증기 기계를 살핀다."
+  },
+  "변법자강 운동": {
+   "en": "Hundred Days' Reform",
+   "explain": [
+    "쉬운 뜻: 기계만 사 와서는 안 된다며, 법과 정치 제도까지 바꾸어 청을 스스로 강하게 만들려 한 운동입니다.",
+    "낱말 나누기: 변법(變法, 법을 바꿈) + 자강(自强, 스스로 강해짐) + 운동(運動)입니다.",
+    "청일 전쟁에서 작은 섬나라 일본에 진 충격이 이 운동을 불렀습니다."
+   ],
+   "beats": [
+    "청일 전쟁에 진 뒤 젊은 학자들이 황제에게 글을 올렸습니다.",
+    "젊은 황제가 법과 제도를 새로 바꾸라는 명령을 잇달아 내립니다.",
+    "정치 제도까지 바꾸어 청을 스스로 강하게 하려 한 운동이 변법자강 운동입니다."
+   ],
+   "img": "The Forbidden City in Beijing in 1898. Young scholars in long robes kneel in a palace courtyard holding long folded petitions, while in the hall above, a young emperor seen from far away and from the side reads documents at a desk. Red walls and golden roofs. No readable text.",
+   "imgKo": "1898년 베이징 자금성 마당에 긴 옷의 젊은 학자들이 접은 상소문을 들고 꿇어앉고, 위쪽 전각에서 멀리 옆모습만 보이는 젊은 황제가 책상에서 글을 읽는다."
+  },
+  "의화단 운동": {
+   "en": "Boxer Rebellion",
+   "explain": [
+    "쉬운 뜻: 서양 세력을 몰아내자며 청의 백성들이 일으킨 운동입니다. 주먹 무술을 익혀 서양 사람들은 Boxer(권투하는 사람)라고 불렀습니다.",
+    "낱말 나누기: 의화(義和, 의로움으로 뭉침) + 단(團, 무리) + 운동(運動)입니다.",
+    "'청을 도와 서양을 물리치자'는 구호를 외치며 1900년 베이징까지 몰려갔습니다."
+   ],
+   "beats": [
+    "중국 북쪽 마을 사람들이 마당에 모여 주먹 무술을 익혔습니다.",
+    "새로 놓인 철길과 서양 교회를 바라보며 서양 세력을 몰아내자고 외칩니다.",
+    "청을 도와 서양 세력을 몰아내자며 일어난 백성들의 운동이 의화단 운동입니다."
+   ],
+   "img": "A village courtyard in northern China in 1899. Young villagers with red headbands and sashes practice empty-hand martial arts together, punching the air in rows. Beyond the low wall, a new railway line and a foreign church tower stand on the plain. No weapons, no text.",
+   "imgKo": "1899년 중국 북부 마을 마당에서 붉은 머리띠를 맨 젊은이들이 줄지어 맨손 무술을 익히고, 낮은 담 너머 들판에 새 철길과 서양 교회 탑이 보인다."
+  },
+  "신해혁명": {
+   "explain": [
+    "쉬운 뜻: 1911년 청을 무너뜨리고, 황제 대신 국민이 주인인 나라 중화민국을 세운 혁명입니다.",
+    "낱말 나누기: 신해(辛亥, 1911년을 부르는 옛날식 해 이름) + 혁명(革命, 판을 바꿈)입니다.",
+    "이듬해 마지막 황제 푸이가 여섯 살 나이로 자리에서 물러났습니다."
+   ],
+   "beats": [
+    "1911년, 중국 거리에서 남자들이 땋은 변발을 잘라 냅니다.",
+    "다섯 빛깔 줄무늬 새 깃발이 거리에 걸립니다.",
+    "청을 무너뜨리고 공화국 중화민국을 세운 혁명이 신해혁명입니다."
+   ],
+   "img": "A Chinese city street in 1912. Men happily cut off each other's long braided queues with scissors while a crowd cheers. New flags with five horizontal stripes of red, yellow, blue, white and black hang from the shop fronts. Some men already wear short hair and Western suits. No text.",
+   "imgKo": "1912년 중국 거리에서 남자들이 가위로 서로의 변발을 잘라 주며 기뻐하고, 가게마다 빨강·노랑·파랑·하양·검정 다섯 줄 깃발이 걸려 있다."
+  },
+  "삼민주의": {
+   "en": "Three Principles of the People",
+   "explain": [
+    "쉬운 뜻: 쑨원이 '중국을 바로 세울 세 가지 길'로 내건 생각입니다. 세 가지 모두 '민(국민)'으로 시작합니다.",
+    "낱말 나누기: 삼(三, 셋) + 민(民, 국민) + 주의(主義) — 민족, 민권, 민생의 세 원칙입니다.",
+    "민족은 나라의 독립, 민권은 국민의 권리, 민생은 배불리 먹고 사는 일입니다."
+   ]
+  },
+  "메이지 유신": {
+   "en": "Meiji Restoration",
+   "explain": [
+    "쉬운 뜻: 영어 restoration은 '되돌려 세움'입니다. 막부가 쥐던 권력을 천황에게 되돌리고 서양식으로 나라를 고친 일본의 개혁입니다.",
+    "낱말 나누기: 메이지(明治, 그 무렵 해를 세던 이름) + 유신(維新, 모든 것을 새롭게 함)입니다.",
+    "사무라이가 칼을 차고 다니는 것을 막고, 도쿄와 요코하마 사이에 기차를 달리게 했습니다."
+   ],
+   "beats": [
+    "기모노를 입은 사람과 양복을 입은 사람이 한 거리를 걷습니다.",
+    "새로 놓은 철길 위로 증기 기관차가 달려옵니다.",
+    "천황 중심으로 서양식 제도를 들여와 나라를 고친 일이 메이지 유신입니다."
+   ],
+   "img": "A Tokyo street scene in the 1870s. Traditional wooden shops line the road; some people wear kimono and topknots while others wear Western suits, bowler hats and long dresses. Gas street lamps stand along the road, and a small steam train crosses a bridge in the background. No readable signs.",
+   "imgKo": "1870년대 도쿄 거리에 기모노를 입은 사람과 양복·중절모 차림의 사람이 함께 걷고, 가스등이 서 있으며 뒤로 작은 증기 기관차가 다리를 건넌다."
+  },
+  "청일 전쟁": {
+   "en": "First Sino-Japanese War",
+   "explain": [
+    "쉬운 뜻: 영어 Sino-Japanese의 Sino는 '중국'을 뜻하는 앞가지입니다. 1894년 청과 일본이 조선을 두고 벌인 전쟁입니다.",
+    "낱말 나누기: 청(淸, 그때 중국의 왕조) + 일(日, 일본) + 전쟁(戰爭, 싸움)입니다.",
+    "싸움터는 주로 조선 땅과 그 앞바다였고, 이긴 일본은 조선에 대한 간섭을 키웠습니다."
+   ],
+   "beats": [
+    "전쟁이 끝나고 청과 일본의 대표가 일본 시모노세키에서 마주 앉았습니다.",
+    "청의 대표는 타이완을 넘기고 큰돈을 물기로 한 문서에 서명합니다.",
+    "조선을 두고 청과 일본이 벌인 이 전쟁이 청일 전쟁입니다."
+   ],
+   "img": "A Japanese-style meeting room in Shimonoseki in 1895. An elderly Qing envoy in long silk robes sits on one side of a table and Japanese officials in Western suits sit on the other, with papers and brushes between them. A map of East Asia without names hangs on the wall. Faces are generic. No text.",
+   "imgKo": "1895년 시모노세키의 일본식 회의실에서 비단 관복을 입은 늙은 청 대표와 양복 차림 일본 관리들이 탁자에 마주 앉아 있고, 벽에 이름 없는 동아시아 지도가 걸려 있다."
+  },
+  "러일 전쟁": {
+   "en": "Russo-Japanese War",
+   "explain": [
+    "쉬운 뜻: 영어 Russo-Japanese의 Russo는 '러시아'를 뜻하는 앞가지입니다. 1904년 러시아와 일본이 한반도와 만주를 두고 싸웠습니다.",
+    "낱말 나누기: 러(러시아) + 일(日, 일본) + 전쟁(戰爭, 싸움)입니다.",
+    "1905년 미국이 사이에 들어 두 나라가 포츠머스 조약을 맺고 전쟁이 끝났습니다."
+   ],
+   "beats": [
+    "러시아와 일본은 한반도와 만주를 서로 차지하려 했습니다.",
+    "전쟁이 끝나고 두 나라 대표가 미국의 한 항구 도시에서 조약을 맺습니다.",
+    "한반도와 만주를 두고 러시아와 일본이 벌인 전쟁이 러일 전쟁입니다."
+   ],
+   "img": "A formal meeting room in a navy building in Portsmouth, USA, in 1905. Russian diplomats in dark suits sit on one side of a long table and Japanese diplomats on the other, signing papers, while American officials watch. Through the window, a harbor with sailing ships. Faces are generic. No weapons, no text.",
+   "imgKo": "1905년 미국 포츠머스의 회의실에서 러시아 대표와 일본 대표가 긴 탁자 양쪽에 앉아 문서에 서명하고 미국 관리들이 지켜본다. 창밖으로 항구가 보인다."
+  }
+ }
+}

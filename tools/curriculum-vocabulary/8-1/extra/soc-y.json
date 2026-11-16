@@ -1,0 +1,411 @@
+{
+ "5": {
+  "국제 사회": {
+   "en": "international community",
+   "explain": [
+    "쉬운 뜻: 영어 international은 inter(사이) + national(나라의), '나라 사이의'입니다. 나라들이 이웃처럼 함께 사는 사회입니다.",
+    "낱말 나누기: 국제(國際, 나라 사이) + 사회(社會, 함께 모여 사는 무리)입니다.",
+    "생활 속 예: 올림픽에는 200개가 넘는 나라와 지역이 모여 함께 경기를 엽니다."
+   ],
+   "beats": [
+    "한 나라에 큰 지진이 일어났습니다.",
+    "여러 나라 구조대가 비행기를 타고 달려와 함께 사람들을 돕습니다.",
+    "다른 나라들은 물과 담요, 약을 실어 보냅니다.",
+    "이렇게 여러 나라가 영향을 주고받으며 함께 살아가는 사회가 국제 사회입니다."
+   ],
+   "img": "At an airport near an earthquake-hit city, rescue teams in uniforms of different colors step off airplanes from many countries, each team with a small flag patch on the sleeve. Volunteers unload boxes of water, blankets, and medicine together. No text.",
+   "imgKo": "지진이 난 도시 가까운 공항에 여러 나라 비행기에서 저마다 다른 색 옷을 입고 소매에 작은 깃발을 단 구조대가 내리고, 자원봉사자들이 물과 담요, 약 상자를 함께 내린다."
+  },
+  "행위 주체": {
+   "en": "actor",
+   "explain": [
+    "쉬운 뜻: 영어 actor는 act(행동하다)에서 온 말, '움직이는 이'입니다. 세계라는 무대에서 직접 움직여 영향을 주는 주인공들입니다.",
+    "낱말 나누기: 행위(行爲, 행동) + 주체(主體, 주인이 되는 몸) — 행동하는 주인입니다.",
+    "나라, 국제 연합, 큰 회사, 이름난 운동가 한 사람까지 모두 들어갑니다."
+   ]
+  },
+  "주권 국가": {
+   "en": "sovereign state",
+   "explain": [
+    "쉬운 뜻: 영어 sovereign은 라틴 말 super(위)에서 온 말, '맨 위에 있는'입니다. 제 일을 남의 간섭 없이 스스로 정하는 나라입니다.",
+    "낱말 나누기: 주권(主權, 주인으로서의 권리) + 국가(國家, 나라)입니다.",
+    "나라가 되려면 국민, 영역, 주권 세 가지를 모두 갖추어야 합니다."
+   ]
+  },
+  "정부 간 국제기구": {
+   "en": "intergovernmental organization",
+   "explain": [
+    "쉬운 뜻: 영어 intergovernmental은 inter(사이) + governmental(정부의)입니다. 여러 나라 정부가 회원인 모임입니다.",
+    "낱말 나누기: 정부 간(정부와 정부 사이) + 국제기구(國際機構, 나라 사이의 큰 조직)입니다.",
+    "회의장 자리마다 나라 이름표가 놓이고, 각 나라 정부가 보낸 대표가 앉습니다."
+   ]
+  },
+  "국제 비정부 기구": {
+   "en": "international NGO",
+   "explain": [
+    "쉬운 뜻: 영어 NGO는 non(아닌) + governmental(정부의) + organization(조직)입니다. 시민들이 국경을 넘어 만든 모임입니다.",
+    "낱말 나누기: 국제(나라 사이) + 비(非, 아님) + 정부 + 기구(機構, 조직)입니다.",
+    "회비를 내는 시민들과 자원봉사자들의 힘으로 움직입니다."
+   ]
+  },
+  "다국적 기업": {
+   "en": "multinational corporation",
+   "explain": [
+    "쉬운 뜻: 영어 multinational은 multi(많은) + national(나라의)입니다. 여러 나라에 공장과 가게를 둔 회사입니다.",
+    "낱말 나누기: 다(多, 많다) + 국적(國籍, 나라에 속함) + 기업 — 여러 나라에 걸친 회사입니다.",
+    "생활 속 예: 휴대 전화 부품은 이 나라에서, 조립은 저 나라에서 하는 회사가 많습니다."
+   ]
+  },
+  "국제 연합": {
+   "en": "United Nations (UN)",
+   "explain": [
+    "쉬운 뜻: 영어 United Nations는 united(뭉친) + nations(나라들)입니다. 세계 평화를 지키려는 가장 큰 나라들의 모임입니다.",
+    "낱말 나누기: 국제(國際, 나라 사이) + 연합(聯合, 이어서 합침)입니다.",
+    "회원국은 193개 나라이고, 하늘색 바탕에 올리브 가지가 지구를 감싼 깃발을 씁니다."
+   ]
+  },
+  "안전 보장 이사회": {
+   "en": "Security Council",
+   "explain": [
+    "쉬운 뜻: 영어 security는 se(없이) + cura(걱정), '걱정 없음'입니다. 세계가 걱정 없이 평화롭도록 지키는 국제 연합의 기관입니다.",
+    "낱말 나누기: 안전(安全) + 보장(保障, 지키고 막아 줌) + 이사회(理事會, 일을 맡아 정하는 모임)입니다.",
+    "15개 나라가 모이며, 여기서 결정하면 회원국 모두가 따라야 합니다."
+   ]
+  },
+  "상임 이사국": {
+   "en": "permanent member",
+   "explain": [
+    "쉬운 뜻: 영어 permanent는 per(끝까지) + manent(머무르다), '늘 머무는'입니다. 안전 보장 이사회에 늘 앉는 다섯 나라입니다.",
+    "낱말 나누기: 상임(常任, 늘 맡음) + 이사국(理事國, 이사회에 든 나라), permanent와 뜻이 같습니다.",
+    "나머지 10개 나라는 선거로 뽑혀 2년씩 맡는 비상임 이사국입니다."
+   ]
+  },
+  "국제법": {
+   "en": "international law",
+   "explain": [
+    "쉬운 뜻: 영어 international law는 inter(사이) + nation(나라) + law(법)입니다. 나라들이 약속으로 지키는 규칙입니다.",
+    "낱말 나누기: 국제(國際, 나라 사이) + 법(法, 규칙) — 나라 사이의 규칙입니다.",
+    "생활 속 예: 외국 비행기가 허락 없이 다른 나라 하늘을 날 수 없는 것도 국제법 때문입니다."
+   ]
+  },
+  "힘의 논리": {
+   "en": "power politics",
+   "explain": [
+    "쉬운 뜻: “힘센 쪽 말이 옳다.”처럼, 국력이 센 나라 뜻대로 국제 사회 일이 정해지는 흐름입니다.",
+    "낱말 나누기: 힘(군사력과 경제력) + 의 + 논리(論理, 이치를 따지는 길) — 힘으로 따지는 길입니다.",
+    "생활 속 예: 놀이터에서 덩치 큰 아이가 미끄럼틀 차례를 마음대로 정하는 모습과 닮았습니다."
+   ]
+  },
+  "국제 분쟁": {
+   "en": "international dispute",
+   "explain": [
+    "쉬운 뜻: 영어 dispute는 dis(따로) + pute(따지다), '서로 따로 따지다'라는 말입니다. 나라끼리 맞서 다투는 일입니다.",
+    "낱말 나누기: 국제(國際, 나라 사이) + 분쟁(紛爭, 어지럽게 다툼)입니다.",
+    "생활 속 예: 뉴스에서 두 나라 군대가 국경에서 맞섰다는 소식이 국제 분쟁입니다."
+   ]
+  },
+  "영토 분쟁": {
+   "en": "territorial dispute",
+   "explain": [
+    "쉬운 뜻: 영어 territory는 라틴 말 terra(땅)에서 온 말입니다. 어떤 땅이나 섬이 누구 것인지 나라끼리 다투는 일입니다.",
+    "낱말 나누기: 영토(領土, 다스리는 땅) + 분쟁(紛爭, 어지럽게 다툼)입니다.",
+    "생활 속 예: 운동장 한 구역을 두고 두 반이 서로 우리 자리라고 맞서는 것과 닮았습니다."
+   ]
+  },
+  "영유권": {
+   "en": "territorial sovereignty",
+   "explain": [
+    "쉬운 뜻: 영어 territorial sovereignty의 territorial은 terra(땅)에서 온 말입니다. 땅의 주인으로서 다스릴 자격입니다.",
+    "낱말 나누기: 영(領, 거느리다) + 유(有, 가지다) + 권(權, 권리) — 거느려 가질 권리입니다.",
+    "독도는 역사적·지리적으로 우리 땅이며, 우리나라가 실제로 다스리고 있습니다."
+   ]
+  },
+  "국제 문제": {
+   "explain": [
+    "쉬운 뜻: 한 나라 울타리 안에서 끝나지 않고, 여러 나라가 함께 피해를 입거나 함께 풀어야 하는 문제입니다.",
+    "낱말 나누기: 국제(國際, 나라 사이) + 문제(問題, 풀어야 할 일) — 나라 사이에 걸린 풀 일입니다.",
+    "생활 속 예: 감염병, 기후 변화, 바다 쓰레기는 한 나라 힘만으로 막을 수 없습니다."
+   ],
+   "beats": [
+    "한 나라 바닷가에 쓰레기가 버려집니다.",
+    "쓰레기는 바닷물을 타고 멀리 다른 나라 해변까지 떠밀려 갑니다.",
+    "여러 나라 사람들이 함께 모여 해변을 치우고 대책을 의논합니다.",
+    "이렇게 한 나라를 넘어 여러 나라에 영향을 주는 문제가 국제 문제입니다."
+   ],
+   "img": "A scene in two halves. On the left, plastic bottles and bags float away from one coast across a wide blue sea with curved arrows of ocean current. On the right, on a faraway beach, people of many different countries in matching volunteer vests pick up the washed-up trash together. No text.",
+   "imgKo": "왼쪽은 한 바닷가의 플라스틱병과 비닐이 해류를 타고 넓은 바다를 건너가는 모습, 오른쪽은 먼 나라 해변에서 여러 나라 사람들이 같은 조끼를 입고 밀려온 쓰레기를 함께 줍는 모습이다."
+  },
+  "외교": {
+   "en": "diplomacy",
+   "explain": [
+    "쉬운 뜻: 영어 diplomacy는 diploma(두 겹으로 접은 나라의 문서)에서 온 말입니다. 나라끼리 말과 문서로 사귀며 이익을 지키는 일입니다.",
+    "낱말 나누기: 외(外, 바깥) + 교(交, 사귀다) — 바깥 나라와 사귐입니다.",
+    "생활 속 예: 다른 나라에 있는 우리 대사관이 외교를 맡는 곳입니다."
+   ],
+   "beats": [
+    "두 나라의 대표가 긴 탁자에 마주 앉았습니다.",
+    "서로의 깃발 앞에서 오랫동안 이야기를 나누고 약속을 정합니다.",
+    "마침내 악수를 하고 협정 문서에 이름을 씁니다.",
+    "이렇게 대화와 협상으로 나라의 이익을 지키는 활동이 외교입니다."
+   ],
+   "img": "In an elegant meeting room, two national representatives in suits sit facing each other at a long table, each with a small blank flag on a stand beside them. In the second moment, they stand and shake hands warmly over a signed folder while their teams applaud. No text.",
+   "imgKo": "우아한 회의실 긴 탁자에 두 나라 대표가 작은 깃발을 곁에 두고 마주 앉아 있고, 이어서 일어나 서명한 서류철 위로 따뜻하게 악수하며 양쪽 사람들이 손뼉을 친다."
+  },
+  "민간 외교": {
+   "explain": [
+    "쉬운 뜻: 정부 대신 시민 한 사람 한 사람이 나라의 얼굴이 되어 다른 나라 사람들과 사귀는 외교입니다.",
+    "낱말 나누기: 민간(民間, 보통 사람들 사이) + 외교(外交, 바깥 나라와 사귐)입니다.",
+    "생활 속 예: 외국 친구와 편지를 주고받으며 우리 명절과 음식을 소개하는 것도 민간 외교입니다."
+   ],
+   "beats": [
+    "하린이네 반 친구들이 외국 학교 친구들과 화상으로 만납니다.",
+    "한복과 송편을 보여 주며 우리 명절 이야기를 들려줍니다.",
+    "외국 친구들도 저마다 자기 나라 명절을 소개합니다.",
+    "이렇게 시민이 직접 다른 나라 사람과 사귀며 나라를 알리는 것이 민간 외교입니다."
+   ],
+   "img": "In a classroom, HARIN wears a colorful hanbok and holds up a plate of songpyeon toward a large screen. On the screen, smiling students from a school in another country wave and hold up their own traditional festival food. DOYUN and classmates wave back. No text.",
+   "imgKo": "교실에서 한복을 입은 하린이가 큰 화면을 향해 송편 접시를 들어 보이고, 화면 속 외국 학교 학생들이 웃으며 손을 흔들고 자기 나라 명절 음식을 들어 보이며, 도윤이와 친구들도 손을 흔든다."
+  },
+  "안보": {
+   "en": "national security",
+   "explain": [
+    "쉬운 뜻: 영어 security는 se(없이) + cura(걱정), '걱정 없음'입니다. 나라와 국민이 침략 걱정 없이 지내도록 지키는 것입니다.",
+    "낱말 나누기: '안전 보장'을 줄인 말, 안(安, 편안하다) + 보(保, 지키다)입니다.",
+    "생활 속 예: 바다를 지키는 해군과 해양 경찰, 하늘을 지키는 공군이 모두 안보를 맡습니다."
+   ],
+   "beats": [
+    "밤에도 바닷가 초소에서 군인이 쌍안경으로 바다를 살핍니다.",
+    "그 덕분에 마을 사람들은 마음 놓고 잠자리에 듭니다.",
+    "이렇게 바깥의 위협으로부터 나라와 국민을 지키는 것이 안보입니다."
+   ],
+   "img": "A calm night scene by the sea. On a hill, a soldier in a small lookout post watches the dark sea through binoculars under the stars. Below, a peaceful seaside village has warm lights in the windows and a family tucking children into bed. No weapons are shown. No text.",
+   "imgKo": "고요한 밤바다, 언덕 위 작은 초소에서 군인이 별빛 아래 쌍안경으로 바다를 살피고, 아래 바닷가 마을 창마다 불빛이 따뜻하며 한 가족이 아이들을 재운다. 무기는 보이지 않는다."
+  },
+  "비핵화": {
+   "en": "denuclearization",
+   "explain": [
+    "쉬운 뜻: 영어 denuclearization은 de(없앰) + nuclear(핵), '핵을 없앰'입니다. 핵무기를 만들지도 갖지도 않는 것입니다.",
+    "낱말 나누기: 비(非, 아님) + 핵(核, 씨) + 화(化, 되다), nuclear도 '씨, 알맹이'에서 왔습니다.",
+    "핵무기는 아주 큰 피해를 낳아 여러 나라가 퍼지지 않게 함께 막으려 합니다."
+   ]
+  },
+  "역사 왜곡": {
+   "en": "distortion of history",
+   "explain": [
+    "쉬운 뜻: 영어 distort는 라틴 말 torquere(비틀다)에서 온 말, '비틀어 놓다'입니다. 지난 일을 사실과 다르게 비틀어 전하는 것입니다.",
+    "낱말 나누기: 역사(歷史, 지나온 일) + 왜곡(歪曲, 비뚤고 굽게 함), distort와 뜻이 같습니다.",
+    "생활 속 예: 다툰 일을 전하며 내게 불리한 부분만 쏙 빼고 말하는 것과 닮았습니다."
+   ],
+   "beats": [
+    "한 사람이 오래된 역사책을 펼칩니다.",
+    "자기 나라에 불리한 쪽은 지우개로 지우고, 좋은 쪽만 크게 고쳐 씁니다.",
+    "옆에서 옛 기록과 사진을 든 사람들이 사실과 다르다고 말합니다.",
+    "이렇게 지난 일을 사실과 다르게 바꾸어 전하는 것이 역사 왜곡입니다."
+   ],
+   "img": "A man in a suit sits at a desk with a large old history book, erasing part of a page with a big eraser and drawing over it. Beside him, HARIN, DOYUN, and an elderly scholar hold up old documents and faded photographs, shaking their heads firmly. No text.",
+   "imgKo": "양복 입은 남자가 책상에서 오래된 역사책의 한 쪽을 큰 지우개로 지우고 덧그리며, 옆에서 하린이와 도윤이, 나이 든 학자가 옛 문서와 빛바랜 사진을 들어 보이며 단호하게 고개를 젓는다."
+  }
+ },
+ "6": {
+  "사회 변동": {
+   "explain": [
+    "쉬운 뜻: 사람들이 사는 모습, 생각, 제도가 세월 따라 달라지는 것입니다. 느리게도, 아주 빠르게도 바뀝니다.",
+    "낱말 나누기: 사회(社會, 함께 사는 무리) + 변동(變動, 바뀌어 움직임)입니다.",
+    "생활 속 예: 부모님 어릴 때 흔하던 공중전화와 비디오 가게는 지금 거의 사라졌습니다."
+   ],
+   "beats": [
+    "할아버지 어릴 적 사진 속에는 대가족이 한 마당에 모여 삽니다.",
+    "오늘날 도윤이네는 아파트에 네 식구가 살고, 할아버지와는 화상 통화를 합니다.",
+    "이렇게 생활 방식과 가치관, 제도가 세월 따라 바뀌는 것이 사회 변동입니다."
+   ],
+   "img": "A scene in two halves. On the left, in a faded old photograph style, a big family of three generations gathers in the yard of a traditional house. On the right, in a bright modern apartment, DOYUN and his parents and sister wave at a tablet screen showing the grandfather smiling. No text.",
+   "imgKo": "왼쪽은 빛바랜 옛 사진처럼 세 세대 대가족이 한옥 마당에 모인 모습, 오른쪽은 밝은 아파트에서 도윤이네 네 식구가 태블릿 화면 속 웃는 할아버지에게 손을 흔드는 모습이다."
+  },
+  "정보 통신 기술": {
+   "en": "information and communication technology (ICT)",
+   "explain": [
+    "쉬운 뜻: 영어 communication은 라틴 말 communis(함께 나누는)에서 온 말입니다. 정보를 만들어 멀리까지 함께 나누게 하는 기술입니다.",
+    "낱말 나누기: 정보(情報, 알릴 내용) + 통신(通信, 소식을 통하게 함) + 기술(技術, 재주)입니다.",
+    "생활 속 예: 택배가 지금 어디쯤 오고 있는지 휴대 전화로 바로 알 수 있습니다."
+   ],
+   "beats": [
+    "도윤이가 휴대 전화 앱으로 버스가 몇 분 뒤에 오는지 확인합니다.",
+    "기다리는 동안 학급 대화방에 숙제를 올리고, 친구와 사진을 주고받습니다.",
+    "이렇게 정보를 만들고 저장하며 빠르게 주고받게 하는 기술이 정보 통신 기술입니다."
+   ],
+   "img": "DOYUN stands at a bus stop looking at his smartphone, which shows a simple map with a small bus icon approaching. Around him, soft glowing lines connect his phone to a satellite in the sky, a cell tower, and a friend far away who receives his photo. No text.",
+   "imgKo": "도윤이가 버스 정류장에서 작은 버스 그림이 다가오는 지도가 뜬 휴대 전화를 보고, 둘레에 은은한 빛줄기가 하늘의 인공위성, 통신탑, 멀리서 사진을 받는 친구와 이어진다."
+  },
+  "원격": {
+   "en": "remote",
+   "explain": [
+    "쉬운 뜻: 영어 remote는 remove(멀리 옮기다)와 같은 뿌리로 '멀리 떨어진'입니다. 리모컨(remote control)의 그 remote입니다.",
+    "낱말 나누기: 원(遠, 멀다) + 격(隔, 사이가 뜨다) — 멀리 사이가 떨어짐입니다.",
+    "생활 속 예: 퇴근길에 휴대 전화 앱으로 집 보일러를 미리 켜 둡니다."
+   ],
+   "beats": [
+    "폭설이 내려 학교에 갈 수 없는 날입니다.",
+    "하린이는 집에서 노트북을 켜고 화면 속 선생님과 친구들을 만납니다.",
+    "멀리 떨어져 있어도 함께 수업을 할 수 있습니다.",
+    "이렇게 멀리 떨어진 채로 하는 것을 원격이라고 합니다."
+   ],
+   "img": "Heavy snow falls outside the window of HARIN's room. HARIN sits at her desk with a laptop showing a grid of classmates' faces and the TEACHER explaining at a whiteboard. Her mug of cocoa steams beside the laptop. No text.",
+   "imgKo": "창밖에 함박눈이 내리는 날, 하린이가 방 책상에서 노트북을 켜자 화면에 친구들 얼굴이 바둑판처럼 떠 있고 선생님이 칠판 앞에서 설명하며, 옆에 코코아 잔에서 김이 오른다."
+  },
+  "정보 격차": {
+   "en": "digital divide",
+   "explain": [
+    "쉬운 뜻: 영어 digital divide는 digital(디지털) + divide(갈라짐), 디지털을 쓸 줄 아는 사람과 아닌 사람 사이가 갈라짐입니다.",
+    "낱말 나누기: 정보(情報, 알릴 내용) + 격차(隔差, 사이가 벌어진 차이)입니다.",
+    "생활 속 예: 앱으로만 예약을 받는 식당 앞에서 발길을 돌리는 할머니가 그 예입니다."
+   ],
+   "beats": [
+    "할머니가 식당 앞 무인 주문기 앞에서 한참을 서 계십니다.",
+    "화면을 이리저리 눌러 보지만 주문을 마치지 못합니다.",
+    "뒤에 선 젊은 사람들은 휴대 전화로 금세 주문을 끝냅니다.",
+    "정보를 다룰 수 있느냐에 따라 생활의 차이가 벌어지는 것이 정보 격차입니다."
+   ],
+   "img": "In a restaurant entrance, a grandmother stands in front of a touchscreen ordering kiosk with a confused, worried face, her finger hovering over the screen. Behind her, young people quickly finish ordering on their phones, and HARIN steps forward kindly to help her. No text.",
+   "imgKo": "식당 입구 무인 주문기 앞에서 할머니가 손가락을 화면 위에 든 채 난처한 얼굴로 서 계시고, 뒤에서는 젊은이들이 휴대 전화로 금세 주문을 끝내며, 하린이가 다정하게 다가가 돕는다."
+  },
+  "사이버 범죄": {
+   "en": "cybercrime",
+   "explain": [
+    "쉬운 뜻: 영어 cybercrime은 cyber(컴퓨터와 인터넷 세상의) + crime(범죄)입니다. 인터넷 공간에서 남을 속이거나 해치는 범죄입니다.",
+    "낱말 나누기: 사이버(인터넷 공간) + 범죄(犯罪, 죄를 저지름)입니다.",
+    "생활 속 예: 모르는 번호로 온 문자 속 주소는 누르지 말고 지우는 것이 좋습니다."
+   ],
+   "beats": [
+    "도윤이 아빠 휴대 전화에 택배가 왔으니 주소를 누르라는 문자가 옵니다.",
+    "주소를 누르자 몰래 프로그램이 깔리고 통장에서 돈이 빠져나갑니다.",
+    "이렇게 인터넷과 컴퓨터를 이용해 저지르는 범죄가 사이버 범죄입니다."
+   ],
+   "img": "DOYUN's father looks at a suspicious message on his phone showing only a delivery box icon and a link button. A shadowy figure with a hood hides behind a computer screen in the background, and coin symbols fly out from a bank icon toward the figure. DOYUN tugs his father's sleeve with a worried face. No text.",
+   "imgKo": "도윤이 아빠가 택배 상자 그림과 주소 단추만 있는 수상한 문자를 보고, 뒤쪽 컴퓨터 화면 뒤에 모자 쓴 그림자가 숨어 은행 그림에서 동전이 그쪽으로 날아가며, 도윤이가 걱정스레 아빠 소매를 당긴다."
+  },
+  "저출산·고령화": {
+   "explain": [
+    "쉬운 뜻: 아기 울음소리는 줄고 흰머리 어르신은 늘어, 나라의 나이가 점점 많아지는 일입니다.",
+    "낱말 나누기: 저출산(低出産, 아이를 적게 낳음) + 고령화(高齡化, 나이 많은 사람이 많아짐)입니다.",
+    "우리나라는 65세 이상이 다섯 명 가운데 한 명이 넘는 초고령 사회가 되었습니다."
+   ]
+  },
+  "생산 가능 인구": {
+   "en": "working-age population",
+   "explain": [
+    "쉬운 뜻: 영어 working-age population은 working(일하는) + age(나이), 일할 나이의 인구입니다. 나라 살림을 떠받칩니다.",
+    "낱말 나누기: 생산(生産, 만들어 냄) + 가능(可能, 할 수 있음) + 인구(人口, 사람 수)입니다.",
+    "생활 속 예: 중학교 3학년 형부터 64세 어른까지 들어갑니다."
+   ]
+  },
+  "부양": {
+   "explain": [
+    "쉬운 뜻: 스스로 살림을 꾸리기 어려운 가족을 먹이고 돌보며 책임지는 것입니다.",
+    "낱말 나누기: 부(扶, 돕다) + 양(養, 기르다) — 도와서 기름입니다.",
+    "생활 속 예: 엄마가 일해서 번 돈으로 할머니 병원비와 우리 학원비를 냅니다."
+   ],
+   "beats": [
+    "아침 일찍 아버지가 일터로 나갑니다.",
+    "집에는 학교에 다니는 아이 셋과 걷기가 불편한 할머니가 계십니다.",
+    "아버지가 번 돈으로 온 가족이 먹고, 공부하고, 병원에 다닙니다.",
+    "이렇게 스스로 생활하기 어려운 사람을 돌보고 책임지는 것이 부양입니다."
+   ],
+   "img": "Early morning at the front door of a home. A father with a work bag waves goodbye, and behind him three children with school bags and a grandmother leaning on a cane wave back from the hallway. Gentle lines of light connect the father to each family member like threads of care. No text.",
+   "imgKo": "이른 아침 현관에서 가방을 든 아버지가 손을 흔들고, 뒤에서 책가방을 멘 아이 셋과 지팡이를 짚은 할머니가 손을 흔들며, 은은한 빛줄기가 아버지와 가족 한 사람 한 사람을 잇는다."
+  },
+  "육아 휴직": {
+   "en": "parental leave",
+   "explain": [
+    "쉬운 뜻: 영어 parental leave는 parent(부모) + leave(자리를 비워도 된다는 허락), 아이를 돌보려고 부모가 얻는 쉼입니다.",
+    "낱말 나누기: 육아(育兒, 아이를 기름) + 휴직(休職, 일을 쉼)입니다.",
+    "쉬는 동안에도 일자리는 지켜지고, 나라에서 돈을 일부 지원합니다."
+   ],
+   "beats": [
+    "동생이 태어나자 아빠가 회사에 1년 동안 쉬겠다고 알립니다.",
+    "아빠는 집에서 아기에게 분유를 먹이고 기저귀를 갈며 재웁니다.",
+    "1년이 지나면 아빠는 다니던 회사로 다시 출근합니다.",
+    "아이를 기르려고 일정 기간 직장을 쉬는 것이 육아 휴직입니다."
+   ],
+   "img": "A scene in two halves. On the left, a father in casual clothes at home feeds a baby with a bottle and gently rocks the baby to sleep, while a calendar on the wall shows many months. On the right, the same father in office clothes waves goodbye at the door, holding the toddler's hand one last time before going back to work. No text.",
+   "imgKo": "왼쪽은 집에서 평상복 차림의 아빠가 아기에게 분유를 먹이고 살살 흔들어 재우며 벽에 여러 달짜리 달력이 걸린 모습, 오른쪽은 출근 옷을 입은 같은 아빠가 아장아장 걷는 아이 손을 잡았다 놓고 현관에서 손을 흔드는 모습이다."
+  },
+  "사회 문제": {
+   "en": "social problem",
+   "explain": [
+    "쉬운 뜻: 영어 problem은 그리스 말로 '앞에 던져진 것'이라는 뜻입니다. 사회 앞에 놓여 모두가 함께 풀어야 할 일입니다.",
+    "낱말 나누기: 사회(社會, 함께 사는 무리) + 문제(問題, 풀어야 할 물음)입니다.",
+    "생활 속 예: 학교 앞 불법 주차로 많은 아이가 위험해지면 동네의 사회 문제가 됩니다."
+   ],
+   "beats": [
+    "처음에는 한 가족만 아이가 찻길에서 노는 것을 걱정했습니다.",
+    "알고 보니 온 동네 아이들이 놀 곳이 없어 찻길을 뛰어다닙니다.",
+    "주민들이 모여 함께 놀이터를 만들어 달라고 구청에 요청합니다.",
+    "많은 사람이 문제라고 여기고 함께 고쳐야 한다고 보는 일이 사회 문제입니다."
+   ],
+   "img": "A scene in two halves. On the left, many neighborhood children play ball on a narrow street between parked cars while a car approaches and parents look worried. On the right, many residents of different ages gather in a community hall, raising their hands together to agree on asking for a playground. No text.",
+   "imgKo": "왼쪽은 동네 아이들이 주차된 차 사이 좁은 찻길에서 공놀이를 하고 차가 다가와 부모들이 걱정하는 모습, 오른쪽은 여러 나이의 주민들이 주민 센터에 모여 놀이터를 요청하자며 함께 손을 드는 모습이다."
+  },
+  "사회 불평등": {
+   "en": "social inequality",
+   "explain": [
+    "쉬운 뜻: 영어 inequality는 in(아니) + equality(같음), '같지 않음'입니다. 돈, 힘, 배울 기회가 고르지 않게 나뉜 상태입니다.",
+    "낱말 나누기: 사회 + 불(不, 아님) + 평등(平等, 고르고 같음), inequality와 뜻이 같습니다.",
+    "생활 속 예: 사는 동네에 따라 가까운 병원과 도서관 수가 크게 다른 것도 그 모습입니다."
+   ],
+   "beats": [
+    "두 아이가 같은 출발선에 서 있습니다.",
+    "한 아이 앞에는 평평한 길이, 다른 아이 앞에는 돌멩이와 웅덩이가 놓여 있습니다.",
+    "같은 힘으로 달려도 두 아이가 닿는 곳이 달라집니다.",
+    "이렇게 돈, 권력, 기회가 고르지 않게 나뉜 상태가 사회 불평등입니다."
+   ],
+   "img": "Two children stand side by side at the same starting line of a race track. In front of one child the lane is smooth and flat, while in front of the other child the lane is full of rocks, puddles, and small hurdles. Both look ahead with determination. No text.",
+   "imgKo": "두 아이가 달리기 길의 같은 출발선에 나란히 서 있는데, 한 아이 앞길은 평평하고 매끄럽지만 다른 아이 앞길에는 돌멩이와 웅덩이, 작은 장애물이 가득하고, 둘 다 다부지게 앞을 본다."
+  },
+  "비정규직": {
+   "explain": [
+    "쉬운 뜻: 계약서에 끝나는 날이 적혀 있어, 그날이 오면 다시 일할 수 있을지 모르는 일자리입니다.",
+    "낱말 나누기: 비(非, 아님) + 정규(正規, 정식) + 직(職, 일자리) — 정식이 아닌 일자리입니다.",
+    "생활 속 예: 방학 동안만 하는 아르바이트, 하루 몇 시간만 일하는 시간제 일자리도 들어갑니다."
+   ],
+   "beats": [
+    "두 사람이 같은 사무실에서 같은 일을 합니다.",
+    "한 사람은 정년까지 일할 수 있지만, 다른 사람은 계약 기간이 끝나면 그만둬야 할 수도 있습니다.",
+    "달력에 표시한 계약 끝나는 날을 보며 걱정하는 사람의 일자리가 비정규직입니다."
+   ],
+   "img": "Two office workers sit at neighboring desks doing exactly the same work on computers. One works calmly, while the other glances worriedly at a desk calendar with one day circled in red a few pages ahead. No text.",
+   "imgKo": "두 회사원이 나란히 놓인 책상에서 똑같은 일을 하는데, 한 사람은 편안하게 일하고 다른 사람은 몇 장 뒤 한 날짜에 빨간 동그라미가 그려진 탁상 달력을 걱정스레 바라본다."
+  },
+  "기후 위기": {
+   "en": "climate crisis",
+   "explain": [
+    "쉬운 뜻: 영어 crisis는 그리스 말 krisis(갈림길, 결정할 때)에서 온 말입니다. 기후 변화가 생명을 위협하는 갈림길에 선 상황입니다.",
+    "낱말 나누기: 기후(氣候, 오랜 날씨의 모습) + 위기(危機, 위태로운 때)입니다.",
+    "생활 속 예: 해마다 역대 가장 더운 여름이라는 뉴스가 나오고 봄꽃이 일찍 핍니다."
+   ],
+   "beats": [
+    "뜨거운 햇볕에 논바닥이 쩍쩍 갈라집니다.",
+    "다른 곳에서는 큰비가 쏟아져 마을이 물에 잠기고, 산에는 불이 번집니다.",
+    "북극에서는 얼음이 녹아 북극곰이 쉴 곳을 잃습니다.",
+    "기후 변화가 심해져 생명까지 위협받는 상황이 기후 위기입니다."
+   ],
+   "img": "A scene in four panels around a globe. A cracked dry rice paddy under a blazing sun, a village flooded by heavy rain, a mountain forest with smoke from a wildfire, and a polar bear standing on a small melting piece of ice. No people are hurt. No text.",
+   "imgKo": "지구본 둘레 네 칸에 뙤약볕 아래 쩍쩍 갈라진 논, 큰비에 잠긴 마을, 산불 연기가 피어오르는 산, 녹아 가는 작은 얼음 위에 선 북극곰이 그려져 있다. 다친 사람은 보이지 않는다."
+  },
+  "연대": {
+   "en": "solidarity",
+   "explain": [
+    "쉬운 뜻: 영어 solidarity는 라틴 말 solidus(단단한)에서 온 말, 단단히 하나로 뭉침입니다. 서로 돕고 책임을 나누는 것입니다.",
+    "낱말 나누기: 연(連, 잇다) + 대(帶, 띠) — 띠로 이어 묶듯 하나가 됨입니다.",
+    "생활 속 예: 바닷가에 기름이 쏟아졌을 때 전국에서 온 사람들이 함께 바위를 닦았습니다."
+   ],
+   "beats": [
+    "홍수로 한 마을의 집과 논이 물에 잠겼습니다.",
+    "전국에서 사람들이 달려와 진흙을 퍼내고 가구를 닦습니다.",
+    "멀리 사는 사람들은 성금과 물품을 보냅니다.",
+    "이렇게 여럿이 한 덩어리처럼 서로 돕고 책임을 나누는 것이 연대입니다."
+   ],
+   "img": "After a flood has gone down, a muddy village street is full of volunteers in rubber boots and gloves who came from all over the country. They pass buckets of mud hand to hand in a long chain and wipe furniture together, while delivery trucks bring boxes of supplies. No text.",
+   "imgKo": "홍수가 빠진 진흙투성이 마을 길에서 전국에서 온 자원봉사자들이 장화와 장갑을 끼고 진흙 양동이를 손에서 손으로 건네며 가구를 함께 닦고, 트럭이 물품 상자를 실어 온다."
+  }
+ }
+}
