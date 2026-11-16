@@ -14,17 +14,17 @@ function harness() {
   const hints = context.window.BoardCoachUI.prepareTurnHint('test-worker', (result, progress) => shown.push({ result, ...progress }), () => failures.push(true));
   return { hints, workers, shown, failures };
 }
-test('clicking before the preview arrives still receives every deeper result and the final move', () => {
+test('an early click shows no unstable intermediate moves and publishes only the final result', () => {
   const { hints, workers, shown } = harness(), state = {};
   hints.prepare(state);
   assert.equal(hints.request(state), false);
   workers[0].emit({ index: 4, depth: 0 }, true);
   workers[0].emit({ index: 8, depth: 3 }, true);
+  assert.equal(shown.length, 0);
+  assert.equal(hints.request(state), false);
   workers[0].emit({ index: 9, depth: 5 });
   assert.deepEqual(shown, [
-    { result: { index: 4, depth: 0 }, pending: true, first: true },
-    { result: { index: 8, depth: 3 }, pending: true, first: false },
-    { result: { index: 9, depth: 5 }, pending: false, first: false }
+    { result: { index: 9, depth: 5 }, pending: false, first: true }
   ]);
   assert.equal(workers[0].stopped, true);
 });
@@ -39,7 +39,7 @@ test('completed precomputation is immediately available and old turns cannot ove
   assert.equal(shown.length, 1);
   hints.request(next); workers[1].emit({ index: 12, depth: 1 }, true);
   hints.clear(); workers[1].emit({ index: 18, depth: 5 });
-  assert.equal(shown.length, 2);
+  assert.equal(shown.length, 1);
   assert.equal(workers[1].stopped, true);
 });
 test('worker failure ends the pending request and permits retry', () => {

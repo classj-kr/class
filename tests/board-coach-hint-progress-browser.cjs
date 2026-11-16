@@ -39,7 +39,8 @@ const server = http.createServer((req, res) => {
       await page.locator('#startLearning').click();
       await page.locator('#hint').click();
       await page.waitForFunction(() => hintEvents.some(event => event.partial), { timeout: 10000 });
-      await page.waitForFunction(() => document.querySelector('#reasonLabel').textContent.includes('임시 힌트'));
+      assert.equal(await page.locator('#reasonLabel').textContent(), '힌트 준비 중');
+      assert.equal(await page.locator('.move-arrow').count(), 0);
       await page.waitForFunction(() => hintEvents.some(event => !event.partial), { timeout: 30000 });
       const report = await page.evaluate(game => {
         const final = hintEvents.find(event => !event.partial);
@@ -52,7 +53,7 @@ const server = http.createServer((req, res) => {
           label: document.querySelector('#reasonLabel').textContent, depth: answer.depth,
           firstMs: Math.round(hintEvents[0].ms), finalMs: Math.round(final.ms), stages: hintEvents.length };
       }, game);
-      assert.equal(report.label, '힌트', game + ': final analysis replaces preview without a second click');
+      assert.equal(report.label, '힌트', game + ': only final analysis is displayed after an early click');
       assert.equal(report.displayed, report.expected, game + ': displayed move is the completed search result');
       assert.ok(report.depth >= 2, game + ': final result is deeper than preview');
       assert.deepEqual(errors, []);

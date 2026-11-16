@@ -121,10 +121,10 @@
     current.finished.then(()=>{if(token!==id||state!==position||motion!==current)return;motion=null;moving=false;render();resume();});
   }
   function fail(text){stop();$("retry").classList.remove("hidden");reason("계산을 마치지 못했어요","다시 계산할 수 있어요",text);render();}
-  function showHint(answer,pending=false){
+  function showHint(answer){
     const first=!hint;
     hint=answer;if(first)selected=null;
-    reason(pending?"분석 중 · 임시 힌트":"힌트",AI.label(answer.move),answer.reason);
+    reason("힌트",AI.label(answer.move),answer.reason);
     render();if(first)BoardCoachUI.revealExplanation();
   }
   function prepareHint(){
@@ -142,6 +142,7 @@
       search.worker.onmessage=({data})=>{
         if(hintSearch!==search||state!==search.position)return;
         if(data.error||!data.result){failed();return;}
+        if(data.partial)return;
         search.answer=data.result;
         search.pending=Boolean(data.partial);
         if(search.requested)showHint(search.answer,search.pending);

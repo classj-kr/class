@@ -87,10 +87,12 @@
         task.worker.onmessage = ({data}) => {
           if (current !== task) return;
           if (data.error || !data.result) { failed(); return; }
+          // Intermediate iterations can disagree. Only publish a completed search.
+          if (data.partial) return;
           task.result = data.result;
           task.pending = Boolean(data.partial);
           if (!task.pending) { task.worker.terminate(); task.worker = null; }
-          // An early click must not pin the shallow preview after deeper search finishes.
+          // A request made while computing receives the final answer once.
           if (task.requested) {
             const first = !task.shown;
             task.shown = true;

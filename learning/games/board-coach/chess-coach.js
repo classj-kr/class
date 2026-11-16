@@ -26,7 +26,7 @@
   function reason(label,title,text) { $("reasonLabel").textContent=label; $("moveLabel").textContent=title; $("reason").textContent=text; }
   const preparedHint=BoardCoachUI.prepareTurnHint("chess-worker.js?v=20261116-deep-hints", (result, progress)=>{
     hint=result;
-    reason(progress.pending?"분석 중 · 임시 힌트":"힌트", result.claim?"무승부 선언":AI.label(result.move), result.reason);
+    reason("힌트", result.claim?"무승부 선언":AI.label(result.move), result.reason);
     render();if(progress.first)BoardCoachUI.revealExplanation();
   },()=>reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
   function stop() { preparedHint.clear();token++; worker?.terminate(); worker=null; clearTimeout(timeout); clearTimeout(nextTurn); busy=false;moving=false;motion?.cancel();motion=null; }

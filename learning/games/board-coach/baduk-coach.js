@@ -21,7 +21,7 @@
   function reason(label,title,text){$('reasonLabel').textContent=label;$('moveLabel').textContent=title;$('reason').textContent=text;}
   const preparedHint=BoardCoachUI.prepareTurnHint("baduk-worker.js?v=20261116-deep-hints", (result, progress)=>{
     hint=result;
-    reason(progress.pending?"분석 중 · 임시 힌트":"힌트", R.coord(result.index,state.size), result.reason);
+    reason("힌트", R.coord(result.index,state.size), result.reason);
     render();if(progress.first)BoardCoachUI.revealExplanation();
   },()=>reason("힌트","다시 눌러 주세요","힌트를 준비하지 못했어요."));
   function stop(){ preparedHint.clear();
