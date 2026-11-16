@@ -6,12 +6,15 @@
   <meta name="theme-color" content="#1d130d">
   <title>지뢰찾기</title>
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-  <link rel="stylesheet" href="styles.css?v=20261114-safe-controls">
+  <link rel="stylesheet" href="styles.css?v=20261117-race">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
+<link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+<script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="/assets/network/puzzle-race.js?v=20261117-2"></script>
 
   <script src="/assets/site-storage.js?v=20261006-1"></script>
   <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
@@ -37,6 +40,7 @@
 
       <div class="start-actions">
         <button class="primary start-button" id="startButton" type="button">Start</button>
+        <button class="secondary start-button" id="raceButton" type="button">순위전</button>
       </div>
       <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
@@ -80,6 +84,8 @@
               <button class="coach-hint-btn" id="hintButton" type="button" data-sfx="none">💡 한 수 힌트</button>
             </div>
           </div>
+
+          <div class="race-standings" id="raceStandings" hidden></div>
 
           <div class="celebration" id="celebration" hidden>
             <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
@@ -171,6 +177,6 @@
 
   <script src="logic.js?v=20261108-audit"></script>
   <script src="/assets/learning-activity.js?v=20261116-2"></script>
-  <script src="app.js?v=20261114-entry-avatar"></script>
+  <script src="app.js?v=20261117-race"></script>
 </body>
 </html>

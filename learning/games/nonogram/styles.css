@@ -356,3 +356,11 @@ button:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset:
   body[data-entry-game="nonogram"] #gameScreen .result-card .finisher-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
   body[data-entry-game="nonogram"] #gameScreen .result-card .primary { flex: none; align-self: stretch; width: auto; margin-top: 10px; }
 }
+
+/* 순위전(puzzle-race.js): 혼자 하기 단추는 감추고 그 자리에 경주로를 둔다. */
+body.pr-racing #settingsButton, body.pr-racing .actions, body.pr-racing #coachCard, body.pr-racing .celebration { display: none !important; }
+.race-standings { margin: 8px 0; text-align: left; }
+.race-standings[hidden] { display: none; }
+@media (min-width: 900px) and (max-height: 780px) {
+  body.pr-racing #gameScreen .race-standings { grid-column: 2; grid-row: 5; align-self: start; margin: 0; }
+}

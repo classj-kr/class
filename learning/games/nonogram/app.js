@@ -187,6 +187,7 @@
   let completed = false;
   let playerName = '';
   let currentPuzzle = null;
+  let paused = false; // 순위전 셋둘하나 동안
   const lastIndex = {};
 
   const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
@@ -239,6 +240,7 @@
   }
 
   function render() {
+    reportProgress();
     boardElement.className = `nono-board size-${n}`;
     boardElement.style.gridTemplateColumns = `var(--clue) repeat(${n}, var(--cell))`;
     boardElement.style.gridTemplateRows = `var(--clue) repeat(${n}, var(--cell))`;
@@ -299,6 +301,16 @@
     }
   }
 
+
+  // 순위전 진행: 칠해야 할 칸 중 맞게 칠한 칸(틀리게 칠한 칸은 하나마다 하나씩 뺀다).
+  function reportProgress() {
+    if (!race?.active || !solution.length) return;
+    let right = 0, wrong = 0, total = 0;
+    for (let r = 0; r < n; r += 1) for (let c = 0; c < n; c += 1) {
+      if (solution[r][c]) { total += 1; if (filled[r]?.[c]) right += 1; } else if (filled[r]?.[c]) wrong += 1;
+    }
+    race.progress(Math.max(0, right - wrong), total);
+  }
 
   function setCoach(html, tone = '') {
     if (!coachText) return;
@@ -430,7 +442,7 @@
   }
 
   function toggleMark(r, c) {
-    if (completed) return;
+    if (completed || paused) return;
     activeHint = null;
     if (filled[r][c]) return;
     marked[r][c] = !marked[r][c];
@@ -506,7 +518,7 @@
   }
 
   function startDrag(r, c) {
-    if (completed) return;
+    if (completed || paused) return;
     let intent;
     if (tool === 'mark') {
       if (filled[r][c]) return;
@@ -537,8 +549,19 @@
   }
 
   function completePuzzle() {
-    activityRound?.finish(`퍼즐 완료 · ${n}×${n}`);
     if (completed) return;
+    if (race?.active) {
+      completed = true;
+      stopTimer();
+      activeHint = null;
+      render();
+      statusElement.textContent = `PUZZLE COMPLETE · ${formatTime(elapsed)}`;
+      statusElement.classList.add('success');
+      playSfx('success');
+      race.finish(elapsed);
+      return;
+    }
+    activityRound?.finish(`퍼즐 완료 · ${n}×${n}`);
     completed = true;
     stopTimer();
     activeHint = null;
@@ -576,7 +599,7 @@
   }
 
   function handleCellTap(r, c) {
-    if (completed) return;
+    if (completed || paused) return;
     if (tool === 'mark') {
       toggleMark(r, c);
       return;
@@ -696,6 +719,33 @@
     toggleMark(Number(target.dataset.r), Number(target.dataset.c));
   });
 
+  /* 순위전: 방장이 같은 그림 문제를 골라 보낸다. */
+  const race = window.ClassroomPuzzleRace.create({
+    gameId: 'nonogram',
+    title: 'NONOGRAM',
+    settings: [{ key: 'n', label: '판 크기', options: Object.keys(PUZZLES).map(size => ({ value: Number(size), label: `${size} × ${size}` })) }],
+    getSettings: () => ({ n }),
+    createPuzzle: settings => ({ n: Number(settings.n), index: Math.floor(Math.random() * PUZZLES[settings.n].length) }),
+    hideSolo: () => { showSettings(); startScreen.hidden = true; },
+    start: data => {
+      selectDifficulty(Number(data.n));
+      currentPuzzle = PUZZLES[data.n][data.index] || PUZZLES[data.n][0];
+      solution = parseGrid(currentPuzzle.rows);
+      buildClues();
+      startScreen.hidden = true;
+      gameScreen.hidden = false;
+      setTool('fill');
+      resetRound();
+      statusElement.textContent = '';
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    },
+    pause: on => { paused = on; if (!on && !completed) startTimer(); },
+    stop: () => { completed = true; stopTimer(); endDrag(); window.clearTimeout(completionRevealId); },
+    exit: () => showSettings(),
+    standingsHost: () => document.getElementById('raceStandings')
+  });
+  document.getElementById('raceButton').addEventListener('click', () => race.open());
+
   document.querySelectorAll('[data-n]').forEach(button => {
     button.addEventListener('click', () => selectDifficulty(Number(button.dataset.n)));
   });
@@ -720,6 +770,7 @@
   if (hasPlayer) window.ClassroomSoloAvatar.show(playerLine);
   startButton.disabled = !hasPlayer;
   startButton.textContent = hasPlayer ? 'Start' : 'GO TO MAIN PAGE';
+  document.getElementById('raceButton').hidden = !hasPlayer;
   finisherBoard.load('today-finishers-list');
   setTool('fill');
   selectDifficulty(n);

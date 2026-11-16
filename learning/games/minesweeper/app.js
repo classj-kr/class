@@ -50,6 +50,8 @@
   let revealId = null;
   let finished = false;
   let playerName = '';
+  let paused = false;          // 순위전 셋둘하나 동안
+  const RACE_MINE_PENALTY = 10; // 순위전에서 지뢰를 밟으면 판을 잃지 않고 시간만 더한다
   const timeouts = new Set();
 
   const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
@@ -430,9 +432,16 @@
   }
 
   function win() {
-    activityRound?.finish(`퍼즐 완료 · ${level.rows}×${level.cols}`);
     finished = true;
     stopTimer();
+    if (race.active) {
+      setStatus(`ALL CLEAR · ${formatTime(elapsed)}`, 'success');
+      boardWrap.classList.add('won');
+      playSfx('success');
+      race.finish(elapsed);
+      return;
+    }
+    activityRound?.finish(`퍼즐 완료 · ${level.rows}×${level.cols}`);
     setStatus('ALL CLEAR!', 'success');
     clearHintHighlights();
     setCoach('🎉 축하해요! 지뢰가 없는 안전한 칸을 끝까지 모두 찾아냈어요!', 'safe');
@@ -466,12 +475,41 @@
   }
 
   function afterOpen(hitMine) {
-    if (hitMine >= 0) { lose(hitMine); return; }
+    if (hitMine >= 0) {
+      if (race.active) { stepOnMine(); return; }
+      lose(hitMine);
+      return;
+    }
+    race.progress(openedCount, level.rows * level.cols - level.mines);
     if (openedCount === level.rows * level.cols - level.mines) win();
   }
 
+  // 순위전: 지뢰를 밟아도 판은 이어진다. 그 칸은 지뢰로 드러나 깃발처럼 남고 시간이 더해진다.
+  function stepOnMine() {
+    // 밟은 지뢰는 열린 지뢰 그림으로 남기고 깃발로 센다(숫자 칸 한꺼번에 열기·남은 지뢰 수가 맞도록).
+    let hits = 0;
+    mines.forEach((mine, j) => {
+      if (!mine || !opened[j] || flagged[j]) return;
+      flagged[j] = true;
+      flagCount += 1;
+      hits += 1;
+      paintCell(j);
+      cells[j].classList.remove('hit');
+      void cells[j].offsetWidth;
+      cells[j].classList.add('hit');
+    });
+    elapsed += RACE_MINE_PENALTY * hits;
+    timerElement.textContent = formatTime(elapsed);
+    boardWrap.classList.remove('shake');
+    void boardWrap.offsetWidth;
+    boardWrap.classList.add('shake');
+    playSfx('explosion');
+    updateMines();
+    setStatus(`지뢰를 밟았습니다 · +${RACE_MINE_PENALTY * hits}초`, 'fail');
+  }
+
   function openCell(i) {
-    if (finished || flagged[i]) return;
+    if (finished || paused || flagged[i]) return;
     clearHintHighlights();
     if (opened[i]) { chord(i); return; }
     if (!ensureBoard(i)) return;
@@ -524,7 +562,7 @@
   }
 
   function toggleFlag(i) {
-    if (finished || opened[i]) return;
+    if (finished || paused || opened[i]) return;
     clearHintHighlights();
     flagged[i] = !flagged[i];
     flagCount += flagged[i] ? 1 : -1;
@@ -667,6 +705,47 @@
     }
   });
 
+  /* 순위전: 방장이 판과 첫 칸을 정해 보내고, 모두 같은 칸이 열린 채로 시작한다. */
+  const LEVEL_LABEL = key => `${LEVELS[key].rows} × ${LEVELS[key].cols} · 지뢰 ${LEVELS[key].mines}개`;
+  const race = window.ClassroomPuzzleRace.create({
+    gameId: 'minesweeper',
+    title: 'MINESWEEPER',
+    settings: [{ key: 'level', label: '난이도', options: Object.keys(LEVELS).map(key => ({ value: key, label: LEVEL_LABEL(key) })) }],
+    getSettings: () => ({ level: levelKey }),
+    createPuzzle: settings => {
+      const spec = LEVELS[settings.level];
+      for (let attempt = 0; attempt < 12; attempt += 1) {
+        const r = Math.floor(spec.rows * (0.3 + Math.random() * 0.4));
+        const c = Math.floor(spec.cols * (0.3 + Math.random() * 0.4));
+        const first = r * spec.cols + c;
+        const result = MineLogic.generate(spec.rows, spec.cols, spec.mines, first);
+        if (result) return { level: settings.level, start: first, mines: result.mines.map(Number), counts: result.counts };
+      }
+      return null;
+    },
+    hideSolo: () => { showSettings(); startScreen.hidden = true; },
+    start: data => {
+      if (!data) return;
+      selectLevel(data.level);
+      startScreen.hidden = true;
+      gameScreen.hidden = false;
+      setTool('open');
+      mines = data.mines.map(Boolean);
+      counts = data.counts;
+      startCell = data.start;
+      resetState();
+      openFrom(startCell);
+      setStatus('');
+      race.progress(openedCount, level.rows * level.cols - level.mines);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    },
+    pause: on => { paused = on; if (!on && !finished) startTimer(); },
+    stop: () => { finished = true; stopTimer(); window.clearTimeout(revealId); clearLater(); },
+    exit: () => showSettings(),
+    standingsHost: () => $('raceStandings')
+  });
+  $('raceButton').addEventListener('click', () => race.open());
+
   document.querySelectorAll('[data-level]').forEach(button => {
     button.addEventListener('click', () => selectLevel(button.dataset.level));
   });
@@ -691,6 +770,7 @@
   if (hasPlayer) window.ClassroomSoloAvatar.show(playerLine);
   startButton.disabled = !hasPlayer;
   startButton.textContent = hasPlayer ? 'Start' : 'GO TO MAIN PAGE';
+  $('raceButton').hidden = !hasPlayer;
   finisherBoard.load('today-finishers-list');
   setTool('open');
   selectLevel(levelKey);

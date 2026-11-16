@@ -30,6 +30,8 @@
   let timerId = null;
   let started = false;
   let playerName = '';
+  let paused = false;   // 순위전 셋둘하나 동안
+  let raceDone = false; // 순위전에서 다 맞춘 뒤
 
   const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
   const normalizePlayerName = value => String(value || '').replace(/[^가-힣]/g, '').slice(0, 6);
@@ -228,6 +230,15 @@
   }
 
   function completeGame() {
+    if (race.active) {
+      raceDone = true;
+      stopTimer();
+      statusElement.textContent = `PUZZLE COMPLETE · ${formatTime(elapsed)}`;
+      statusElement.classList.add('success');
+      playSfx('success');
+      race.finish(elapsed);
+      return;
+    }
     activityRound?.finish(`퍼즐 완료 · ${moves}번 이동`);
     stopTimer();
     statusElement.textContent = 'PUZZLE COMPLETE!';
@@ -252,6 +263,7 @@
   }
 
   function moveTile(index) {
+    if (paused || raceDone) return;
     const blank = tiles.indexOf(0);
     if (!neighboringIndexes(blank).includes(index)) {
       playSfx('error');
@@ -265,6 +277,7 @@
     statusElement.textContent = 'READY';
     playSfx('stone');
     render();
+    race.progress(tiles.filter((value, i) => value && value === i + 1).length, size * size - 1);
     if (isSolved()) completeGame();
   }
 
@@ -343,6 +356,38 @@
     guideButton.focus({ preventScroll: true });
   }
 
+  /* 순위전: 방장이 섞은 배치를 그대로 보낸다. */
+  const race = window.ClassroomPuzzleRace.create({
+    gameId: 'slidingpuzzle',
+    title: '8 · 15 PUZZLE',
+    settings: [{ key: 'size', label: '판 크기', options: [{ value: 3, label: '8 PUZZLE · 3 × 3' }, { value: 4, label: '15 PUZZLE · 4 × 4' }] }],
+    getSettings: () => ({ size }),
+    createPuzzle: settings => {
+      const previous = size;
+      size = Number(settings.size);
+      const values = shuffledSolvableTiles();
+      size = previous;
+      return { size: Number(settings.size), tiles: values };
+    },
+    hideSolo: () => { showSettings(); startScreen.hidden = true; },
+    start: data => {
+      selectMode(Number(data.size));
+      startScreen.hidden = true;
+      gameScreen.hidden = false;
+      raceDone = false;
+      initialTiles = data.tiles.slice();
+      resetRound(initialTiles);
+      statusElement.textContent = '';
+      race.progress(tiles.filter((value, i) => value && value === i + 1).length, size * size - 1);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    },
+    pause: on => { paused = on; if (!on && !raceDone) startTimer(); },
+    stop: () => { raceDone = true; stopTimer(); },
+    exit: () => { raceDone = false; showSettings(); },
+    standingsHost: () => document.getElementById('raceStandings')
+  });
+  document.getElementById('raceButton').addEventListener('click', () => race.open());
+
   document.querySelectorAll('[data-size]').forEach(button => {
     button.addEventListener('click', () => selectMode(Number(button.dataset.size)));
   });
@@ -385,6 +430,7 @@
   if (hasPlayer) window.ClassroomSoloAvatar.show(playerLine);
   startButton.disabled = !hasPlayer;
   startButton.textContent = hasPlayer ? 'Start' : 'GO TO MAIN PAGE';
+  document.getElementById('raceButton').hidden = !hasPlayer;
   finisherBoard.load('today-finishers-list');
   selectMode(size);
   showSettings();

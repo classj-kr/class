@@ -28,7 +28,7 @@
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.dataset.puzzleRaceStyle = "true";
-        link.href = new URL("puzzle-race.css?v=20261117-1", script?.src || location.href).href;
+        link.href = new URL("puzzle-race.css?v=20261117-2", script?.src || location.href).href;
         document.head.appendChild(link);
     }
 
@@ -247,6 +247,8 @@
 
         function progress(done, total) {
             if (!racing || iFinished) return;
+            const mine = racers[me()];
+            if (mine && mine.done === done && mine.total === Math.max(1, Number(total) || 1)) return; // 바뀐 것이 없으면 보내지 않는다
             applyProgress(me(), done, total);
             if (isHost()) broadcastStandings();
             else lobby.send({ type: MSG.PROGRESS, done, total });
