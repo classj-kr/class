@@ -46,7 +46,7 @@ const server = http.createServer((req, res) => {
       await page.waitForFunction(count => document.querySelectorAll('#board .stone').length === count, initialStones + 2);
       assert.deepEqual(await page.evaluate(() => stoneSounds), [true, true], `${game}: human and AI moves play one stone sound each`);
       const action = game === 'reversi' ? 'capture' : 'stone';
-      assert.ok(soundResponses.some(url => url.includes(`/${game}-${action}.ogg?v=20261116-board-foley`)),
+      assert.ok(soundResponses.some(url => url.includes(`/${game}-${action}.ogg?v=20261116-reversi-contact`)),
         `${game}: its versioned sound file loads`);
       await page.evaluate(() => ClassGameSfx.setMuted(true));
       await page.locator('#board button:not(:disabled)').first().click();

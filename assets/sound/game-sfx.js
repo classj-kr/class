@@ -26,7 +26,7 @@
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
         new URL(boardSounds && (name === "stone" || name === "capture")
-            ? `sfx/boards/${boardGame}-${name}.ogg?v=20261116-board-foley`
+            ? `sfx/boards/${boardGame}-${name}.ogg?v=20261116-reversi-contact`
             : `sfx/${name}.ogg${RETRY_SOUNDS.has(name) ? "?v=20261114-boing" : ""}`, scriptUrl).href
     ]));
 

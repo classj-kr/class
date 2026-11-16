@@ -49,7 +49,7 @@
         const sfxScriptUrl = currentScript
             ? new URL("game-sfx.js", currentScript.src)
             : new URL("../../assets/sound/game-sfx.js", location.href);
-        sfxScriptUrl.searchParams.set("v", "20261116-board-foley");
+        sfxScriptUrl.searchParams.set("v", "20261116-reversi-contact");
         sfxScript.src = sfxScriptUrl.href;
         document.head.appendChild(sfxScript);
     }
