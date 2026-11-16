@@ -39,7 +39,8 @@
   // 학기 열쇠: 초등 1-1 ~ 6-2, 중학교는 7-1(중 1학년 1학기) ~ 9-2.
   const terms = Array.from({ length: 18 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
   const termName = (key) => (Number(key[0]) >= 7 ? `중 ${key[0] - 6}학년 ${key[2]}학기` : `초 ${key[0]}학년 ${key[2]}학기`);
-  const subjectsFor = (key) => Number(key[0]) <= 2 ? ['국어', '수학'] : ['국어', '수학', '사회', '과학'];
+  // 역사는 중2(8-1)부터 따로 칸을 둔다(역사①은 중2, 역사②는 중3).
+  const subjectsFor = (key) => Number(key[0]) <= 2 ? ['국어', '수학'] : Number(key[0]) >= 8 ? ['국어', '수학', '사회', '과학', '역사'] : ['국어', '수학', '사회', '과학'];
   const ready = Object.keys(manifest);
   const currentTerm = window.LearningDefaults?.mathTerm(window.CLASS_SCHOOL_LEVEL, window.CLASS_SCHOOL_GRADE, ready);
   let term = terms.includes(query.get('term')) ? query.get('term') : (ready.includes(currentTerm) ? currentTerm : ready[0] || '1-1');
@@ -330,7 +331,7 @@
     controls.forEach((control, i) => control.setAttribute('aria-pressed', String(i === current)));
     practice.setAttribute('aria-pressed', String(mode === 'practice'));
     // 순위전 단추는 공용 학습 기록 줄(오른쪽 아래 「🏁 순위전 · 내 기록」)에 있다. 누르면 지금 단원이 범위로 넘어간다.
-    const code = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' }[subject];
+    const code = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' }[subject];
     window.currentRaceRange = () => `${term}.${code}.${unit.id}`;
     chips.append(...controls, practice);
     return { chips, controls, practice };

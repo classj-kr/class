@@ -289,7 +289,7 @@
   // 교과서 단어: 학습 화면의 연습 문제와 같은 규칙으로 빈칸·뜻 문제를 만든다.
   // 아래 낱말·유의어(끝까지)는 둘째 정답이 되므로 보기에서 빼고, 단원 낱말로 채울 때는 위 낱말도 뺀다.
   // 뜻 문제는 두 글자 조각을 나눠 가진 목록 낱말이 있을 때만 내고 그 낱말을 오답에 먼저 넣는다(태양 고도 측정기 ↔ 태양 고도).
-  const TEXTBOOK_SUBJECTS = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' };
+  const TEXTBOOK_SUBJECTS = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' };
   function textbook(books) {
     const out = [];
     const pieces = (name) => {

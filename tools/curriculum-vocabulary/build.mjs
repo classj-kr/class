@@ -8,11 +8,11 @@ const term = process.argv[2] || '5-2';
 const here = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
 const dir = path.join(here, term);
 const out = path.resolve(here, '../../learning/literacy-numeracy/curriculum-vocabulary', `words-${term}.js`);
-const order = ['국어', '수학', '사회', '과학'];
+const order = ['국어', '수학', '사회', '과학', '역사'];
 const after = /^(의|도|만|에서|에게|에|까지|부터|처럼|보다|\(이\)라고|\(이\)라는|\(으\)로|을\/를|이\/가|은\/는|와\/과|인|이다|입니다|한|하고|했|적인|된|되)/;
 const problems = [];
 const data = {};
-const codes = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' };
+const codes = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' };
 const picDir = path.resolve(here, '../../learning/literacy-numeracy/curriculum-vocabulary/images', term);
 // 그림 명세·영어·설명은 extra/*.json 에 따로 둔다: { 단원 id: { 낱말: { en, beats, explain, img, imgKo } } }
 const extra = {};

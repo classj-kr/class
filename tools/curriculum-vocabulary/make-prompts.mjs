@@ -6,7 +6,7 @@ import path from 'node:path';
 const term = process.argv[2] || '5-2';
 const here = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
 const dir = path.join(here, term);
-const books = [['kor', '국어'], ['soc', '사회'], ['sci', '과학']];
+const books = [['kor', '국어'], ['soc', '사회'], ['sci', '과학'], ['his', '역사']];
 const style = 'Children\'s textbook illustration for Korean 5th graders. Soft, warm digital painting with clean outlines, gentle shading and bright natural colors (not neon). Uncluttered background, one clear focal point, 16:9 landscape. Do not put any text, letters, numbers, labels or writing anywhere in the image.';
 // 생성기는 이름을 모른다. 첫 번째로 나올 때는 생김새를, 그다음은 짧은 가리킴말을 넣는다.
 const cast = {

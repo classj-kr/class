@@ -61,7 +61,7 @@ function textbookBooks() {
   return books;
 }
 // 시험 범위 고르기 화면에 띄울 단원 목록(학기 → 과목 → 단원 이름·낱말 수).
-const SUBJECT_CODES = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' };
+const SUBJECT_CODES = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' };
 let catalogCache = null;
 function textbookCatalog() {
   if (catalogCache) return catalogCache;
