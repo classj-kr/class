@@ -7,8 +7,9 @@
   try { if (window.SiteStorage) store = await window.SiteStorage.open('typing-race'); } catch { /* 게스트는 이 탭에서만 기억 */ }
 
   let code = '', token = '', state = null;
-  // 낱말판: 서버가 주는 공용 판(board)과 막 바뀐 낱말(recent). 내가 막 친 칸은 답이 오기 전에도 친 것으로 둔다.
-  let board = [], recent = [], claimedLocal = new Set(), targetId = null;
+  // 낱말판: 서버가 주는 공용 판(board). 내가 막 친 칸은 답이 오기 전에도 친 것으로 둔다.
+  // held: 치던 낱말이 판에서 바뀌면 내 화면에서만 그 칸에 그대로 둔다. 다 치거나 지우면 놓아 주고 새 낱말이 나온다.
+  let board = [], claimedLocal = new Set(), targetId = null, held = null;
   let pollTimer = 0, failures = 0, busy = false, offset = 0;
   let localScore = 0, localCombo = 0, mistakesThis = 0, erroring = false;
   // 입력기가 조합한 문자열은 보존하고, 이미 채점한 부분은 자판 키 수로 건너뛴다.
@@ -45,9 +46,6 @@
     return span;
   }
   const input = $('typeInput');
-  const retiredWord = $('retiredWord');
-  const retiredWordText = $('retiredWordText');
-  const retiredWordTime = $('retiredWordTime');
 
   // ── 소리 ──────────────────────────────────────────
   function tone(freq, length, type = 'sine', volume = 0.15, delay = 0, slideTo = 0) {
@@ -348,6 +346,8 @@
       roundSeen = s.roundId;
       claimedLocal = new Set();
       targetId = null;
+      held = null;
+      board = [];
       localScore = s.me.score;
       localCombo = s.me.combo;
       mistakesThis = 0;
@@ -366,8 +366,12 @@
       $('board').replaceChildren();
     }
     if (s.board) {
+      // 치던 낱말이 판에서 빠졌으면 그 칸을 내 화면에서는 붙잡아 둔다.
+      if (targetId && typedText() && !held && !s.board.some((cell) => cell.id === targetId)) {
+        const at = board.findIndex((cell) => cell.id === targetId);
+        if (at >= 0) held = { cell: board[at], at };
+      }
       board = s.board;
-      recent = s.recent || [];
       paintBoard();
       acceptIfDone();
     }
@@ -562,18 +566,11 @@
   const MEDALS = ['🥇', '🥈', '🥉'];
   const TIERS = ['gold', 'silver', 'bronze'];
   const mineOf = (cell) => cell.mine || (claimedLocal.has(cell.id) ? 1 : 0);
-  const open = () => {
-    const now = serverNow();
-    return [...board, ...recent.filter((cell) => cell.expiresAt > now)].filter((cell) => !mineOf(cell));
-  };
-  function paintRetiredWord(now = serverNow()) {
-    const cell = recent.find((item) => item.id === targetId);
-    const remaining = cell ? Math.min(cell.expiresAt, state.deadline) - now : 0;
-    retiredWord.hidden = !(remaining > 0);
-    if (retiredWord.hidden) return;
-    if (retiredWordText.textContent !== cell.text) retiredWordText.textContent = cell.text;
-    const time = Math.ceil(remaining / 1000) + '초';
-    if (retiredWordTime.textContent !== time) retiredWordTime.textContent = time;
+  // 내 화면의 판: 붙잡은 칸 자리에는 새 낱말 대신 치던 낱말이 있다.
+  const shown = () => board.map((cell, i) => (held && i === held.at ? held.cell : cell));
+  const open = () => shown().filter((cell) => !mineOf(cell));
+  function release() {
+    held = null;
   }
   // 실수 없이 다음 낱말을 치면 콤보가 하나 오른다(실수가 있으면 콤보 0으로 센다). 서버와 같은 셈.
   const nextCombo = () => (mistakesThis ? 0 : localCombo + 1);
@@ -582,11 +579,12 @@
     const box = $('board');
     const typed = normalized();
     box.classList.toggle('sentence', sentenceMode());
-    const alive = new Set(board.map((cell) => String(cell.id)));
+    const cells = shown();
+    const alive = new Set(cells.map((cell) => String(cell.id)));
     // 바뀐 칸: 옛 낱말은 제자리에서 터지듯 사라지고 새 낱말이 위에서 떨어진다.
     box.querySelectorAll('.tile').forEach((tile) => { if (!alive.has(tile.dataset.id)) leave(tile); });
     const dealing = !box.children.length;
-    board.forEach((cell, i) => {
+    cells.forEach((cell, i) => {
       let tile = box.querySelector(`.tile[data-id="${cell.id}"]`);
       if (!tile) {
         tile = document.createElement('div');
@@ -603,6 +601,7 @@
       if (tile.dataset.tier && tile.dataset.tier !== tier && tier !== 'done') retrigger(tile, 'hit');
       tile.dataset.tier = tier;
       tile.classList.toggle('target', cell.id === targetId);
+      tile.classList.toggle('held', Boolean(held && cell === held.cell));
       tile.querySelector('.tile-medal').textContent = mine ? '✓' : MEDALS[count] || '';
       const points = tile.querySelector('.tile-points');
       const label = mine ? (mine <= 3 ? mine + '등' : '') : '+' + C.claimScore(cell.text, nextCombo(), count + 1);
@@ -633,7 +632,6 @@
       if (count && !timer.dataset.on) { timer.dataset.on = '1'; timer.style.animationDuration = C.HOLD_MS + 'ms'; }
     });
     paintCombo();
-    paintRetiredWord();
   }
   // 판에서 빠지는 칸: 제자리를 지킨 채(카드 위에 겹쳐) 부풀며 사라진다. 그 밑으로 새 칸이 떨어진다.
   function leave(tile) {
@@ -735,12 +733,14 @@
     paintTyped();
     if (!racing()) return;
     const clean = cleaned();
-    if (!clean) { targetId = null; erroring = false; $('card').classList.remove('wrong'); return paintBoard(); }
+    if (!clean) { targetId = null; release(); erroring = false; $('card').classList.remove('wrong'); return paintBoard(); }
     // 치는 중인 낱말: 지금 고른 낱말이 계속 맞으면 그대로, 아니면 맞는 낱말 가운데 판 앞쪽 것.
     const { tracking, exact, longer } = matches(clean);
     const keep = tracking.find((cell) => cell.id === targetId);
-    const retired = recent.find((cell) => cell.id === targetId && cell.expiresAt > serverNow());
-    targetId = (keep || exact || tracking[0] || retired)?.id ?? null;
+    targetId = (keep || exact || tracking[0])?.id ?? null;
+    // 붙잡은 낱말에서 다른 낱말로 옮겨 가면 놓아 준다(틀린 글자일 때는 그대로 둔다).
+    if (held && targetId && targetId !== held.cell.id) release();
+    else if (!targetId && held) targetId = held.cell.id;
     // 다 친 순간 바로 받는다. Space·Enter는 누르지 않아도 되고, 마지막 글자가 아직 조합 중이어도 된다.
     // 더 긴 낱말이 함께 맞을 때만 다음 키(Space·Enter)를 기다린다. 서버가 그런 낱말을 판에 함께 두지 않으므로 거의 없다.
     if (exact && (!longer || fromKey)) return complete(exact);
@@ -785,6 +785,7 @@
     erroring = false;
     claimedLocal.add(cell.id);
     targetId = null;
+    const wasHeld = held && held.cell.id === cell.id;
     clearField();
     $('card').classList.remove('wrong');
     const tile = $('board').querySelector(`.tile[data-id="${cell.id}"]`);
@@ -794,6 +795,8 @@
     fly(text, r);
     if (tile) retrigger(tile, 'claim');
     $('scoreNow').textContent = localScore;
+    // 붙잡아 둔 칸은 다 친 뒤 잠깐 보여 주고 새 낱말로 뒤집는다.
+    if (wasHeld) setTimeout(() => { if (held && held.cell.id === cell.id) { release(); paintBoard(); } }, 350);
     paintBoard();
     const roundId = state.roundId;
     sendChain = sendChain.then(() => api('/rooms/' + code + '/type', { roundId, slot: cell.id, text, mistakes }))
@@ -959,7 +962,6 @@
       return;
     }
     const t = serverNow(), before = state.startsAt - t, left = state.deadline - t;
-    if (!retiredWord.hidden) paintRetiredWord(t);
     // 한 번 출발하면 다시 세지 않는다. 서버 시계 보정값이 출발 직후 조금 흔들려 남은 시간이 다시 0보다 커지면
     // 카운트다운이 다시 켜졌는데, '시작!'은 한 판에 한 번만 띄우므로 회색 막과 「1」이 그대로 남았다(입력도 잠겼다).
     if (before > 0 && goShown !== state.roundId) {

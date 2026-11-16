@@ -280,14 +280,6 @@ body.fever .word-card::before { content: "FEVER x2"; position: absolute; top: -1
 .type-box #typeInput { display: block; width: 100%; color: transparent; caret-color: transparent; }
 .typed { position: absolute; inset: 3px; display: flex; align-items: center; justify-content: center; padding: 0 12px; overflow: hidden; white-space: pre; pointer-events: none; color: var(--ink); font: 800 30px var(--font); }
 .type-box:focus-within .typed::after { content: ""; width: 3px; height: 1.1em; margin-left: 2px; background: var(--yellow); animation: caret-blink 1s steps(1) infinite; }
-.retired-word {
-  display: flex; align-items: center; gap: 8px; width: min(560px, 100%); margin: 0;
-  padding: 6px 10px; border: 1px solid var(--yellow); border-radius: 10px;
-  background: #241939; color: var(--yellow); font-size: 14px; font-weight: 800;
-}
-.retired-word > span { flex: none; }
-.retired-word strong { min-width: 0; flex: 1; color: #fff; font-size: 17px; overflow-wrap: anywhere; }
-.retired-word span:last-child { font-variant-numeric: tabular-nums; }
 @keyframes caret-blink { 50% { opacity: 0; } }
 .chase { margin: 0; min-height: 1.4em; font-weight: 900; color: var(--yellow); font-size: 18px; text-align: center; }
 .mini-board { list-style: none; margin: 0; padding: 12px; border-radius: 22px; background: var(--panel); border: 2px solid var(--line); display: grid; gap: 6px; }
@@ -417,6 +409,8 @@ body[data-screen="race"] img.car-emoji { animation-name: wobble-face; }
 .tile-face.new { animation: popin .45s cubic-bezier(.2, 1.8, .4, 1); }
 .tile-timer { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--pink); transform-origin: left; transform: scaleX(0); }
 .tile-timer[data-on] { animation: tile-timer linear forwards; }
+/* 판에서는 바뀌었지만 내가 치던 낱말: 시간 막대 없이 제자리에 남는다. */
+.tile.held .tile-timer { visibility: hidden; }
 @keyframes tile-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
 @keyframes tick { 40% { transform: scale(1.45); } }
 /* 금빛: 아무도 안 친 낱말. 가장 크게 반짝인다. */

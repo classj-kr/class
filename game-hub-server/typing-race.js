@@ -70,7 +70,8 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
   }
   // ── 낱말판 ── 모두 같은 판을 보고, 아무 낱말이나 골라 친다. 먼저 친 순서대로 1·2·3등.
   // 낱말은 모두가 쳤거나, 첫 사람이 친 뒤 HOLD_MS가 지나면 새 낱말로 바뀐다.
-  // 판에서 바뀐 낱말은 개인이 마저 칠 수 있도록 잠시 더 받는다.
+  // 판에서 바뀐 낱말도 치던 아이는 끝까지 마저 칠 수 있게, 판이 끝날 때까지 받아 준다(그 아이 화면에는 제자리에 남아 있다).
+  // 새 낱말과 앞부분이 겹치지 않게 하는 건 막 바뀐 낱말(REPLACED_WORD_GRACE_MS 안)만 따진다.
   // 다 치는 순간 바로 받아 주므로, 아직 받을 수 있는 낱말(판·막 바뀐 낱말)과 앞부분이 겹치는 낱말은 건너뛴다.
   function slot(r, others = []) {
     let index = r.next++;
@@ -80,11 +81,11 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
   function tick(r) {
     if (r.phase !== 'running' || !r.board) return;
     const t = now(), everyone = students(r).length;
-    r.recent = r.recent.filter((x) => t < x.expiresAt);
+    if (r.recent.length > 300) r.recent = r.recent.slice(-300);
     r.board.forEach((x, i) => {
       if (!x.claims.length || (x.claims.length < everyone && t - x.claims[0].at < Core.HOLD_MS)) return;
       if (x.claims.length < everyone) r.recent.push({ ...x, expiresAt: t + REPLACED_WORD_GRACE_MS });
-      r.board[i] = slot(r, [...r.board.filter((_, j) => j !== i), ...r.recent].map((y) => y.text));
+      r.board[i] = slot(r, [...r.board.filter((_, j) => j !== i), ...r.recent.filter((y) => t < y.expiresAt)].map((y) => y.text));
     });
   }
   const publicSlot = (r, x, p) => ({
@@ -144,7 +145,7 @@ function createTypingRace({ platform, now = Date.now, random = Math.random, pick
       serverNow: now(),
       board: r.phase === 'running' && r.board ? r.board.map((x) => publicSlot(r, x, p)) : null,
       recent: r.phase === 'running' && r.recent ? r.recent
-        .filter((x) => !x.claims.some((c) => c.player === p.id))
+        .filter((x) => now() < x.expiresAt && !x.claims.some((c) => c.player === p.id))
         .map((x) => ({ id: x.id, text: x.text, count: x.claims.length, expiresAt: x.expiresAt })) : null,
       me: { id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null, team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0, rank: mine?.rank || null },
       participants,

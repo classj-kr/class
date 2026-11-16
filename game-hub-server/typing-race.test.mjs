@@ -241,7 +241,10 @@ test('teacher room, shared entry, live scoring, combo, speed guard, and results'
   clock = retiring.expiresAt - 1;
   assert.equal((await type(b.token, w0)).data.order, 2, 'finishing just before the five-second deadline still counts');
   clock++;
-  assert.equal((await type(host, w1, 0)).status, 409, 'a word cannot be claimed once its five-second window expires');
+  assert.ok(!(await req(path, undefined, host)).data.recent.some((x) => x.id === w1.id), 'after five seconds the replaced word is no longer offered');
+  clock += 20000;
+  assert.equal((await type(host, w1, 0)).data.order, 3, 'whoever was still typing a replaced word can finish it any time in the round');
+  assert.equal((await type(host, w1, 0)).status, 409, 'but only once');
   clock += 4000;
   const missed = (await type(a.token, w2, 2)).data;
   assert.equal(missed.combo, 0);
