@@ -113,26 +113,31 @@
             };
         }
 
+        // 설정 목록은 배열이거나, 앞에서 고른 값에 따라 바뀌는 함수(예: 소재마다 단계 목록)다.
+        const optionsOf = (item, chosen) => (typeof item.options === "function" ? item.options(chosen) : item.options) || [];
+
         function renderSettings() {
             const box = document.getElementById("pr-settings");
             if (!box) return;
             const isHost = lobby?.snapshot().role === "host";
             box.replaceChildren(...options.settings.map(item => {
                 const value = settings[item.key];
+                const list = optionsOf(item, settings);
                 if (!isHost) {
-                    const chosen = item.options.find(option => String(option.value) === String(value));
+                    const chosen = list.find(option => String(option.value) === String(value));
                     return el("div", { class: "pr-setting" }, [el("span", { text: item.label }), el("strong", { text: chosen?.label || "" })]);
                 }
                 const select = el("select", { "aria-label": item.label });
-                item.options.forEach(option => {
+                list.forEach(option => {
                     const node = el("option", { value: String(option.value), text: option.label });
                     if (String(option.value) === String(value)) node.selected = true;
                     select.append(node);
                 });
                 select.addEventListener("change", () => {
-                    const chosen = item.options.find(option => String(option.value) === select.value);
-                    settings = { ...settings, [item.key]: chosen ? chosen.value : select.value };
+                    const chosen = list.find(option => String(option.value) === select.value);
+                    settings = cleanSettings({ ...settings, [item.key]: chosen ? chosen.value : select.value });
                     lobby.publishLobbyState();
+                    renderSettings();
                 });
                 return el("label", { class: "pr-setting" }, [el("span", { text: item.label }), select]);
             }));
@@ -141,8 +146,9 @@
         function cleanSettings(raw) {
             const next = {};
             options.settings.forEach(item => {
-                const found = item.options.find(option => String(option.value) === String(raw?.[item.key]));
-                next[item.key] = (found || item.options[0]).value;
+                const list = optionsOf(item, next);
+                const found = list.find(option => String(option.value) === String(raw?.[item.key]));
+                next[item.key] = (found || list[0])?.value;
             });
             return next;
         }

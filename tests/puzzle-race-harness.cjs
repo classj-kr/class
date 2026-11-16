@@ -30,6 +30,7 @@ app.get(/^\/learning\/games\/[^/]+\/([\w-]+\.html)?$/, (req, res, next) => {
   const tag = `<script data-site-identity="true">window.CLASS_PLAYER_NAME=${JSON.stringify(name)};window.CLASS_PLAYER_KIND="guest"</script>`;
   res.type('html').send(fs.readFileSync(file, 'utf8').replace('<head>', '<head>' + tag));
 });
+app.use('/assets/avatars', express.static(path.join(ROOT, 'apps', 'classtools', 'assets', 'avatars')));
 app.use(express.static(ROOT));
 
 const server = http.createServer(app);

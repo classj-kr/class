@@ -1,3 +1,4 @@
+@font-face { font-family: KleeHanja; src: url("../../../assets/fonts/klee-one/KleeOne-SemiBold.ttf") format("truetype"); font-display: swap; }
 :root {
   color-scheme: dark;
   --ink: #fff8e8;
@@ -143,11 +144,15 @@ body.pr-racing #settingsButton, body.pr-racing .actions { display: none; }
   -webkit-touch-callout: none;
 }
 .tile::before { content: ""; position: absolute; inset: 0 0 auto; height: calc(var(--th) * .12); border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; opacity: .9; }
-.tile.en::before { background: linear-gradient(90deg, #2f63c7, #4f8de8); }
-.tile.ko::before { background: linear-gradient(90deg, #c2412d, #e2703a); }
+.tile.a::before { background: linear-gradient(90deg, #2f63c7, #4f8de8); }
+.tile.b::before { background: linear-gradient(90deg, #c2412d, #e2703a); }
 .tile-face { display: block; width: 92%; padding-top: calc(var(--th) * .08); line-height: 1.12; font-weight: 900; text-align: center; word-break: keep-all; pointer-events: none; }
-.tile.en .tile-face { color: var(--en-ink); font-family: "Segoe UI", "Noto Sans KR", system-ui, sans-serif; letter-spacing: -.01em; }
-.tile.ko .tile-face { color: var(--ko-ink); }
+.tile.a .tile-face { color: var(--en-ink); }
+.tile.b .tile-face { color: var(--ko-ink); }
+.tile[data-kind="en"] .tile-face { font-family: "Segoe UI", "Noto Sans KR", system-ui, sans-serif; letter-spacing: -.01em; }
+.tile[data-kind="hanja"] .tile-face { font-family: KleeHanja, "Noto Serif KR", serif; font-weight: 600; line-height: 1; }
+.tile-face.picture { display: grid; place-items: center; width: 100%; height: 100%; padding: calc(var(--th) * .14) 6% 6%; }
+.tile-face.picture img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
 .tile-face small { display: block; font-size: .68em; font-weight: 700; opacity: .75; }
 .tile:hover { transform: translateY(-2px); filter: brightness(1.05); }
 .tile.selected {

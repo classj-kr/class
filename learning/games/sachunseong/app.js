@@ -28,11 +28,29 @@
   };
   const playSfx = name => window.ClassGameSfx?.play(name);
 
-  let words = { labels: {}, levels: {} };
-  try {
-    const response = await fetch('data/english.json?v=20261117-1');
-    if (response.ok) words = await response.json();
-  } catch (_) { /* 아래에서 단계가 비어 시작이 막힌다 */ }
+  // 소재: 앞 패(a)와 뒤 패(b)의 꼴. 'img'는 그림 패, 'hanja'는 한자 글꼴.
+  const SUBJECTS = [
+    { key: 'english', label: '영어 단어', a: 'en', b: 'ko' },
+    { key: 'avatars', label: '아바타 영단어', a: 'img', b: 'en' },
+    { key: 'vocab', label: '교과서 단어', a: 'ko', b: 'en' },
+    { key: 'hanja', label: '한자', a: 'hanja', b: 'ko' },
+    { key: 'idioms', label: '고사성어', a: 'ko', b: 'ko' },
+    { key: 'proverbs', label: '속담', a: 'ko', b: 'ko' },
+    { key: 'elements', label: '원소', a: 'en', b: 'ko' },
+    { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' }
+  ];
+  const DATA_VERSION = '20261117-subjects';
+  const bank = {};
+  await Promise.all(SUBJECTS.map(async subject => {
+    try {
+      const response = await fetch(`data/${subject.key}.json?v=${DATA_VERSION}`);
+      if (response.ok) bank[subject.key] = await response.json();
+    } catch (_) { /* 그 소재만 빠진다 */ }
+  }));
+  const subjects = SUBJECTS.filter(subject => Object.keys(bank[subject.key]?.levels || {}).length);
+  const subjectOf = key => subjects.find(subject => subject.key === key) || subjects[0];
+  const levelKeysOf = key => Object.keys(bank[key]?.levels || {});
+  const levelLabel = (key, level) => bank[key]?.labels?.[level] || level;
 
   const store = await SiteStorage.open('sachunseong');
   const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
@@ -40,8 +58,9 @@
   const isValidPlayerName = value => KOREAN_NAME_PATTERN.test(String(value || ''));
   const finisherBoard = window.ClassroomFinisherBoard.create({ gameId: 'sachunseong', getPlayerName: () => playerName, isValidPlayerName });
 
-  const levelKeys = Object.keys(words.levels).sort((a, b) => Number(a) - Number(b));
-  let levelKey = levelKeys[0] || '1';
+  let subjectKey = subjects[0]?.key || 'english';
+  let levelKey = levelKeysOf(subjectKey)[0] || '1';
+  const playLabel = () => `${subjectOf(subjectKey)?.label || ''} ${levelLabel(subjectKey, levelKey)}`;
   let sizeKey = 'small';
   let size = SIZES.small;
   let activityRound = null;
@@ -121,8 +140,8 @@
 
   /* ---------- 낱말 고르기 ---------- */
   const bare = text => text.replace(/\([^)]*\)\s*/g, '').trim();
-  function pickPairs(level, count, rand) {
-    const pool = L.shuffleInPlace((words.levels[level] || []).slice(), rand);
+  function pickPairs(subject, level, count, rand) {
+    const pool = L.shuffleInPlace((bank[subject]?.levels?.[level] || []).slice(), rand);
     const chosen = [];
     const seenWord = new Set();
     const seenMeaning = new Set();
@@ -137,12 +156,12 @@
     return chosen;
   }
 
-  function createPuzzle(level, key) {
+  function createPuzzle(subject, level, key) {
     const spec = SIZES[key];
     const seed = Math.floor(Math.random() * 2 ** 31) || 7;
     const rand = L.rng(seed);
-    const pairs = pickPairs(level, spec.pairs, rand);
-    return { level, size: key, rows: spec.rows, cols: spec.cols, seed, words: pairs, board: L.shuffleInPlace([...Array(pairs.length * 2).keys(), ...Array(spec.rows * spec.cols - pairs.length * 2).fill(-1)], L.rng(seed + 1)) };
+    const pairs = pickPairs(subject, level, spec.pairs, rand);
+    return { subject, level, size: key, rows: spec.rows, cols: spec.cols, seed, words: pairs, board: L.shuffleInPlace([...Array(pairs.length * 2).keys(), ...Array(spec.rows * spec.cols - pairs.length * 2).fill(-1)], L.rng(seed + 1)) };
   }
 
   /* ---------- 판 그리기 ---------- */
@@ -200,18 +219,30 @@
     tile.style.top = `${y - geometry.tileH / 2}px`;
   }
 
+  const sideKind = t => subjectOf(puzzle.subject || 'english')?.[t & 1 ? 'b' : 'a'] || 'ko';
+  const sideText = t => {
+    const text = puzzle.words[t >> 1][t & 1];
+    return text.startsWith('img:') ? text.slice(text.indexOf('|') + 1) : text;
+  };
   function tileContent(t) {
-    const [en, ko] = puzzle.words[t >> 1];
+    const text = puzzle.words[t >> 1][t & 1];
     const face = document.createElement('span');
     face.className = 'tile-face';
-    if (t & 1) {
-      const lead = ko.match(/^\(([^)]*)\)\s*(.*)$/);
-      if (lead) {
-        const small = document.createElement('small');
-        small.textContent = `(${lead[1]})`;
-        face.append(small, document.createTextNode(lead[2]));
-      } else face.textContent = ko;
-    } else face.textContent = en;
+    if (text.startsWith('img:')) {
+      const [src, name] = text.slice(4).split('|');
+      const img = document.createElement('img');
+      img.src = src; img.alt = ''; img.decoding = 'async'; img.draggable = false;
+      face.classList.add('picture');
+      face.title = name || '';
+      face.append(img);
+      return face;
+    }
+    const lead = text.match(/^\(([^)]*)\)\s*(.*)$/);
+    if (lead) {
+      const small = document.createElement('small');
+      small.textContent = `(${lead[1]})`;
+      face.append(small, document.createTextNode(lead[2]));
+    } else face.textContent = text;
     return face;
   }
 
@@ -221,11 +252,13 @@
       if (t < 0) return null;
       const tile = document.createElement('button');
       tile.type = 'button';
-      tile.className = `tile ${t & 1 ? 'ko' : 'en'}`;
+      const kind = sideKind(t);
+      tile.className = `tile ${t & 1 ? 'b' : 'a'}`;
+      tile.dataset.kind = kind;
       tile.dataset.i = String(i);
       tile.dataset.sfx = 'none';
-      tile.lang = t & 1 ? 'ko' : 'en';
-      tile.setAttribute('aria-label', `${t & 1 ? '뜻' : '낱말'} ${(t & 1 ? puzzle.words[t >> 1][1] : puzzle.words[t >> 1][0])}`);
+      tile.lang = kind === 'en' ? 'en' : kind === 'hanja' ? 'zh-Hant' : 'ko';
+      tile.setAttribute('aria-label', sideText(t));
       tile.append(tileContent(t));
       tile.style.setProperty('--enter', `${Math.round(Math.random() * 260)}ms`);
       boardEl.append(tile);
@@ -237,7 +270,9 @@
     const face = tile.firstChild;
     if (!face) return;
     const { tileW, tileH } = geometry;
-    const isEn = tile.classList.contains('en');
+    const kind = tile.dataset.kind;
+    if (kind === 'img') return;
+    const isEn = kind === 'en';
     const maxH = tileH * 0.88; // 높이에는 위쪽 띠 몫의 안쪽 여백이 들어 있다
     // 글자 칸은 패 폭의 92%로 정해져 있으니, 글자가 그 칸을 넘치는지만 본다.
     const fits = () => face.scrollWidth <= face.clientWidth + 1 && face.scrollHeight <= maxH;
@@ -250,13 +285,36 @@
       }
       return fits();
     };
-    if (isEn) { face.style.whiteSpace = 'nowrap'; shrink(tileH * 0.42, 6); return; }
+    if (kind === 'hanja') { face.style.whiteSpace = 'nowrap'; shrink(tileH * 0.62, 8); return; }
+    if (isEn) {
+      face.style.whiteSpace = 'nowrap';
+      if (shrink(tileH * 0.42, tileH * 0.26)) return;
+      // 두 낱말(rhinoceros beetle)은 띄어쓰기 자리에서 두 줄로.
+      if (/\s/.test(face.textContent.trim())) { face.style.whiteSpace = ''; if (shrink(tileH * 0.34, 6)) return; }
+      face.style.whiteSpace = 'nowrap';
+      shrink(tileH * 0.26, 6);
+      return;
+    }
     // 우리말: 먼저 한 줄로 넉넉한 크기에 들어가는지 보고, 아니면 띄어쓰기 자리에서만 두 줄로 나눈다.
+    face.style.wordBreak = '';
     face.style.whiteSpace = 'nowrap';
     if (shrink(tileH * 0.36, tileH * 0.27)) return;
     face.style.whiteSpace = '';
-    if (/\s/.test(face.lastChild?.textContent || '') && shrink(tileH * 0.32, tileH * 0.2)) return;
+    if (/\s/.test(face.lastChild?.textContent || '') && shrink(tileH * 0.32, tileH * 0.16)) return;
+    // 한 줄로 조금 작게라도 들어가면 낱말을 끊지 않는다.
     face.style.whiteSpace = 'nowrap';
+    if (shrink(tileH * 0.27, tileH * 0.18)) return;
+    // 그래도 안 들어가는 긴 이름(오스트레일리아)만 가운데에서 반으로 나눠 두 줄로 고르게 놓는다
+    // (앞에서부터 꽉 채워 끊으면 끝에 한두 글자만 남는다).
+    const last = face.lastChild;
+    if (last?.nodeType === Node.TEXT_NODE && !/\s/.test(last.textContent) && last.textContent.length >= 4) {
+      const text = last.textContent, half = Math.ceil(text.length / 2);
+      last.textContent = `${text.slice(0, half)}\n${text.slice(half)}`;
+      face.style.whiteSpace = 'pre';
+      if (shrink(tileH * 0.32, 6)) return;
+    }
+    face.style.whiteSpace = '';
+    face.style.wordBreak = 'break-all';
     shrink(tileH * 0.3, 6);
   }
   function fitAllText() { tiles.forEach(tile => tile && fitText(tile)); }
@@ -444,6 +502,7 @@
   /* ---------- 판 시작·끝 ---------- */
   function loadPuzzle(data) {
     puzzle = data;
+    subjectKey = data.subject || 'english';
     levelKey = String(data.level);
     sizeKey = data.size;
     size = SIZES[sizeKey];
@@ -461,7 +520,7 @@
     boardWrap.classList.remove('won');
     linkLayer.replaceChildren();
     fxLayer.replaceChildren();
-    $('modeLabel').textContent = `${words.labels[levelKey] || levelKey} · ${size.cols} × ${size.rows}`;
+    $('modeLabel').textContent = `${playLabel()} · ${size.cols} × ${size.rows}`;
     buildTiles();
     tiles.forEach((tile, i) => { if (tile) tile.dataset.tile = String(board[i]); });
     setStatus('');
@@ -472,9 +531,9 @@
 
   function newPuzzle() {
     if (race.active) return;
-    activityRound = window.LearningActivity?.round('sachunseong', () => `짝 찾기 · ${words.labels[levelKey] || levelKey} · ${size.pairs}쌍`);
+    activityRound = window.LearningActivity?.round('sachunseong', () => `짝 찾기 · ${playLabel()} · ${size.pairs}쌍`);
     activityRound?.reset();
-    loadPuzzle(createPuzzle(levelKey, sizeKey));
+    loadPuzzle(createPuzzle(subjectKey, levelKey, sizeKey));
     window.RaceMusic?.set('race');
     paused = false;
     startClock();
@@ -496,14 +555,14 @@
       race.finish(seconds);
       return;
     }
-    activityRound?.finish(`퍼즐 완료 · ${words.labels[levelKey] || levelKey} · ${size.pairs}쌍`);
+    activityRound?.finish(`퍼즐 완료 · ${playLabel()} · ${size.pairs}쌍`);
     setStatus('ALL CLEAR!', 'success');
-    const bestKey = `best-${levelKey}-${sizeKey}`;
+    const bestKey = `best-${subjectKey}-${levelKey}-${sizeKey}`;
     const previous = store.get(bestKey) || null;
     if (!previous || seconds < previous.time) store.set(bestKey, { time: seconds });
     $('resultSummary').textContent = formatTime(seconds);
     finisherBoard.register({
-      difficulty: `${words.labels[levelKey] || levelKey} · ${size.pairs}쌍`,
+      difficulty: `${playLabel()} · ${size.pairs}쌍`,
       rank: size.rank,
       targetId: 'result-finishers-list'
     });
@@ -539,6 +598,18 @@
     newPuzzle();
   }
 
+  function selectSubject(key) {
+    subjectKey = subjectOf(key)?.key || subjectKey;
+    $('subjectSelect').value = subjectKey;
+    const keys = levelKeysOf(subjectKey);
+    $('levelSelect').replaceChildren(...keys.map(level => {
+      const option = document.createElement('option');
+      option.value = level;
+      option.textContent = levelLabel(subjectKey, level);
+      return option;
+    }));
+    selectLevel(keys.includes(levelKey) ? levelKey : keys[0]);
+  }
   function selectLevel(key) {
     levelKey = key;
     $('levelSelect').value = key;
@@ -571,11 +642,13 @@
     title: '짝 찾기',
     maxPlayers: 8,
     settings: [
-      { key: 'level', label: '단계', options: levelKeys.map(key => ({ value: key, label: words.labels[key] || key })) },
+      { key: 'subject', label: '소재', options: subjects.map(subject => ({ value: subject.key, label: subject.label })) },
+      // 단계 목록은 고른 소재에 따라 바뀐다.
+      { key: 'level', label: '단계', options: chosen => levelKeysOf(chosen.subject).map(level => ({ value: level, label: levelLabel(chosen.subject, level) })) },
       { key: 'size', label: '판 크기', options: Object.keys(SIZES).map(key => ({ value: key, label: sizeLabel(key) })) }
     ],
-    getSettings: () => ({ level: levelKey, size: sizeKey }),
-    createPuzzle: settings => createPuzzle(String(settings.level), settings.size),
+    getSettings: () => ({ subject: subjectKey, level: levelKey, size: sizeKey }),
+    createPuzzle: settings => createPuzzle(settings.subject, String(settings.level), settings.size),
     hideSolo: () => { showStart(); startScreen.hidden = true; },
     start: data => {
       showGame();
@@ -612,27 +685,28 @@
   });
   document.querySelectorAll('[data-size]').forEach(button => button.addEventListener('click', () => selectSize(button.dataset.size)));
   $('levelSelect').addEventListener('change', event => selectLevel(event.target.value));
+  $('subjectSelect').addEventListener('change', event => selectSubject(event.target.value));
   let resizeFrame = 0;
   new ResizeObserver(() => {
     cancelAnimationFrame(resizeFrame);
     resizeFrame = requestAnimationFrame(layout);
   }).observe(boardArea);
 
-  $('levelSelect').replaceChildren(...levelKeys.map(key => {
+  $('subjectSelect').replaceChildren(...subjects.map(subject => {
     const option = document.createElement('option');
-    option.value = key;
-    option.textContent = words.labels[key] || key;
+    option.value = subject.key;
+    option.textContent = subject.label;
     return option;
   }));
   const hasPlayer = isValidPlayerName(playerName);
   const playerLine = $('playerLine');
   playerLine.textContent = hasPlayer ? `PLAYER · ${playerName}` : 'SAVE YOUR NAME ON THE MAIN PAGE';
   if (hasPlayer) window.ClassroomSoloAvatar.show(playerLine);
-  $('startButton').disabled = !hasPlayer || !levelKeys.length;
+  $('startButton').disabled = !hasPlayer || !subjects.length;
   $('startButton').textContent = hasPlayer ? 'Start' : 'GO TO MAIN PAGE';
-  $('raceButton').hidden = !hasPlayer || !levelKeys.length;
+  $('raceButton').hidden = !hasPlayer || !subjects.length;
   finisherBoard.load('today-finishers-list');
-  selectLevel(levelKey);
+  selectSubject(subjectKey);
   selectSize(sizeKey);
   showStart();
 })();

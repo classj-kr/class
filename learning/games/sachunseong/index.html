@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
   <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261117-shisen">
-  <link rel="stylesheet" href="styles.css?v=20261117-2">
+  <link rel="stylesheet" href="styles.css?v=20261117-3">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
   <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
   <script src="/assets/network/single-player-avatar.js?v=2"></script>
   <script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
-  <script src="/assets/network/puzzle-race.js?v=20261117-3"></script>
+  <script src="/assets/network/puzzle-race.js?v=20261117-4"></script>
   <script src="/assets/site-storage.js?v=20261006-1"></script>
   <script src="/assets/sound/race-music.js?v=20261106-1"></script>
   <script src="/assets/sound/music-control.js?v=20261114-safe-controls"></script>
@@ -27,6 +27,10 @@
 
       <p class="player-line" id="playerLine"></p>
 
+      <div class="setting-block">
+        <label class="setting-label" for="subjectSelect">소재</label>
+        <select id="subjectSelect" class="level-select"></select>
+      </div>
       <div class="setting-block">
         <label class="setting-label" for="levelSelect">단계</label>
         <select id="levelSelect" class="level-select"></select>
@@ -118,7 +122,7 @@
           </div>
           <h3>기본 규칙</h3>
           <ol>
-            <li>영어 낱말 패와 그 뜻이 적힌 패가 한 짝입니다. <strong>두 패를 차례로 누르면</strong> 짝이 맞을 때 둘 다 사라집니다.</li>
+            <li>파란 띠 패와 빨간 띠 패가 한 짝입니다(영어 낱말과 뜻, 한자와 훈음, 그림과 영어처럼). <strong>두 패를 차례로 누르면</strong> 짝이 맞을 때 둘 다 사라집니다.</li>
             <li>짝은 판 어디에 있어도 지울 수 있습니다.</li>
             <li>패를 모두 지우면 끝납니다. 걸린 시간이 기록입니다.</li>
           </ol>
@@ -144,6 +148,6 @@
 
   <script src="logic.js?v=20261117-1"></script>
   <script src="/assets/learning-activity.js?v=20261116-2"></script>
-  <script src="app.js?v=20261117-4"></script>
+  <script src="app.js?v=20261117-6"></script>
 </body>
 </html>
