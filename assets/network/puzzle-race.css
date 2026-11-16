@@ -1,13 +1,20 @@
 /* 개인 퍼즐 순위전(puzzle-race.js) — 대기실은 공용 대기실 틀(multiplayer-lobby.css)을 쓰고, 여기에는 경주로·셋둘하나·결과만 둔다. */
-.pr-lobby {
+.pr-shade {
   position: fixed;
   inset: 0;
   z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: safe center;
   overflow: auto;
-  padding: max(60px, env(safe-area-inset-top)) 16px 24px;
-  background: rgba(10, 6, 4, .55);
+  padding: max(56px, env(safe-area-inset-top)) 16px 24px;
+  background: rgba(10, 6, 4, .62);
 }
+.pr-shade:has(> .pr-lobby.hidden) { display: none; }
+.pr-lobby { flex: 0 0 auto; height: auto !important; min-height: 0 !important; margin: 0 !important; }
 .pr-lobby.hidden, .pr-lobby .hidden { display: none !important; }
+/* 퍼즐들의 나무·금빛 틀에 맞춘 대기실 색(공용 대기실 틀은 .panel 색을 읽어 판 전체 색을 정한다). */
+.pr-lobby .panel { background: #24170e; color: #fff8e8; border: 1px solid #a27d4f; }
 .pr-settings { display: grid; gap: 8px; margin-bottom: 12px; }
 .pr-setting { display: grid; grid-template-columns: 6em minmax(0, 1fr); align-items: center; gap: 10px; text-align: left; }
 .pr-setting > span { font-weight: 800; opacity: .85; }

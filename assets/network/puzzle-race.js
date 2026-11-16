@@ -28,7 +28,7 @@
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.dataset.puzzleRaceStyle = "true";
-        link.href = new URL("puzzle-race.css?v=20261117-2", script?.src || location.href).href;
+        link.href = new URL("puzzle-race.css?v=20261117-3", script?.src || location.href).href;
         document.head.appendChild(link);
     }
 
@@ -103,7 +103,8 @@
             ]);
             root = el("section", { class: "pr-lobby hidden mp-lobby-compact mp-lobby-standard", "data-multiplayer-lobby": "" },
                 [el("header", { class: "panel" }, [title, nameLine, tabs]), hostPane, joinPane, players]);
-            document.body.append(root);
+            // 대기실 판은 내용만큼의 크기로 화면 가운데에 띄우고, 뒤(혼자 하기 화면)는 어둡게 덮는다.
+            document.body.append(el("div", { class: "pr-shade" }, [root]));
             return {
                 lobbyScreen: root.id = id("lobby"), savedName: id("savedName"), hostTab: id("hostTab"), joinTab: id("joinTab"),
                 hostPane: id("hostPane"), joinPane: id("joinPane"), roomCode: id("roomCode"), hostStatus: id("hostStatus"),
@@ -149,6 +150,8 @@
         function open() {
             if (!playerName()) return;
             settings = cleanSettings(options.getSettings?.() || {});
+            quietOwnMusic();
+            ensureRaceMusic();
             if (!root) {
                 const ids = buildLobby();
                 window.addEventListener("sitebackrequest", onSiteBack);
@@ -191,8 +194,57 @@
         }
 
         // 학습 앱 순위전과 같은 음악(race-music.js): 대기실·결과는 대기실 곡, 경기 중에는 경기 곡. 방장 기기에서만 기본으로 들린다.
+        let pendingMusic = null;
         function music(kind, role = lobby?.snapshot().role) {
-            window.RaceMusic?.set(kind, { host: role !== "guest" });
+            pendingMusic = [kind, { host: role !== "guest" }];
+            window.RaceMusic?.set(...pendingMusic);
+        }
+
+        // 혼자 하기 화면의 원래 배경 음악(#bgm)은 공용 스피커가 잡고 있다. 그래서 순위전 음악 장치는
+        // 처음부터 같이 부르지 않고(스피커가 그쪽으로 넘어가 원래 음악 조절이 깨진다) 순위전 단추를 누를 때 부른다.
+        // 스피커의 음량·음소거 바뀜(classmusicchange)은 순위전 음악에 그대로 넘겨준다.
+        let raceMusicLoading = null;
+        function ensureRaceMusic() {
+            if (window.RaceMusic) return Promise.resolve();
+            if (raceMusicLoading) return raceMusicLoading;
+            raceMusicLoading = new Promise(resolve => {
+                const tag = document.createElement("script");
+                tag.src = "/assets/sound/race-music.js?v=20261106-1";
+                tag.onload = tag.onerror = () => resolve();
+                document.head.append(tag);
+            }).then(() => {
+                window.addEventListener("classmusicchange", event => {
+                    const detail = event.detail || {};
+                    window.ClassMusicController?.setVolume?.(Number(detail.volume) || 0);
+                    window.ClassMusicController?.setMuted?.(Boolean(detail.muted));
+                });
+                if (pendingMusic) window.RaceMusic?.set(...pendingMusic);
+            });
+            return raceMusicLoading;
+        }
+
+        const ownMusic = () => document.getElementById("bgm");
+        let ownMusicWasPlaying = false;
+        const keepOwnMusicQuiet = () => { if (inRace()) ownMusic()?.pause(); };
+        function inRace() { return !!root; }
+        function quietOwnMusic() {
+            const bgm = ownMusic();
+            if (!bgm) return;
+            ownMusicWasPlaying = ownMusicWasPlaying || !bgm.paused;
+            bgm.pause();
+            // 공용 스피커가 다시 틀지 않게 막고, 게임 코드가 직접 틀어도 곧바로 멈춘다.
+            document.body.dataset.musicPausedForReading = "true";
+            bgm.addEventListener("play", keepOwnMusicQuiet);
+        }
+        function restoreOwnMusic() {
+            const bgm = ownMusic();
+            window.RaceMusic?.set(null);
+            pendingMusic = null;
+            if (!bgm) return;
+            bgm.removeEventListener("play", keepOwnMusicQuiet);
+            delete document.body.dataset.musicPausedForReading;
+            if (ownMusicWasPlaying) bgm.play().catch(() => {});
+            ownMusicWasPlaying = false;
         }
 
         function onSiteBack(event) {
@@ -448,10 +500,11 @@
             stopRace();
             try { lobby?.destroy(); } catch (_) {}
             lobby = null;
-            root?.remove();
+            (root?.closest(".pr-shade") || root)?.remove();
             root = null;
             window.removeEventListener("sitebackrequest", onSiteBack);
             document.body.classList.remove("pr-in-lobby");
+            restoreOwnMusic();
             options.exit?.({ fromResult });
         }
 
