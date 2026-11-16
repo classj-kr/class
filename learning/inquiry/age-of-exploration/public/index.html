@@ -129,7 +129,61 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 #messageWindow{background:rgba(7,27,36,.94);box-shadow:0 4px 18px rgba(0,0,0,.2)}
 @media(max-width:650px){#discoveryCard{padding:20px 17px}#discoveryText{font-size:16px;line-height:1.9}#discoveryText .storyHead{font-size:16px}#bookReader{padding:22px 18px}#bookReader h2{font-size:24px}#bookIntro,#bookSections p{font-size:16px;line-height:1.9}#finalQuizQuestions{padding:12px 10px}.finalQuestion{padding:13px}.finalPassage{font-size:15px!important}.finalPrompt{font-size:15px!important}.finalChoice{font-size:15px!important}}#cityRest{margin-top:5px;font-size:14px;font-weight:700;color:#e9f3d5}#cityArtCaption{display:block;margin-top:3px;font-size:10px;color:#cbd5d3}
 @media(max-width:650px){#cityMenu button{flex:1 1 calc(50% - 8px);max-width:none}}
-#cityVisitors{position:absolute;left:18px;right:18px;bottom:155px;padding:6px 9px;background:#0a212ad9;border:1px solid #c5b48077;border-radius:7px;max-height:160px;overflow:auto;touch-action:pan-y}.cityVisitorsTitle{font-size:11px;color:#f2e2ad}.cityVisitorsList{display:flex;gap:5px;flex-wrap:wrap}.cityVisitor{display:flex;flex-direction:column;align-items:center;width:62px;flex:0 0 62px;font-size:10px;color:#fff;white-space:nowrap}.cityVisitor img{object-fit:contain}.cityVisitor.mine{color:#ffe49a}.cityVisitor>span:last-child{max-width:100%;overflow:hidden;text-overflow:ellipsis}.visitorPlaceholder{display:grid;place-items:center;height:56px;font-size:25px;color:#c3dce3}@media(max-width:650px){#cityVisitors{position:relative;left:auto;right:auto;bottom:auto;margin:6px 8px 0;max-height:153px;flex-shrink:0}#cityCard{width:100%;max-height:calc(100dvh - 140px);overflow:auto}#cityScene{flex-shrink:0;max-height:28vh;object-fit:cover}#cityInfo,#cityMenu{flex-shrink:0}}
+#cityVisitors {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: max-content;
+  max-width: min(45%, 320px);
+  max-height: 84px;
+  overflow: auto;
+  scrollbar-width: thin;
+  touch-action: pan-y;
+}
+#cityVisitors:empty { display: none; }
+.cityVisitorsList {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cityVisitor {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 1px 7px 1px 3px;
+  border-radius: 5px;
+  background: #0a212ae8;
+  color: #f3e7c9;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.cityVisitor.mine { color: #ffe49a; }
+.cityVisitor img, .visitorPlaceholder {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.visitorPlaceholder { display: grid; place-items: center; color: #c3dce3; }
+.cityVisitor > span:last-child { overflow-wrap: anywhere; }
+@media (max-width: 650px) {
+  #cityVisitors {
+    position: static;
+    align-self: flex-end;
+    max-width: calc(100% - 16px);
+    max-height: 56px;
+    margin: 5px 8px 0;
+    flex: 0 0 auto;
+  }
+  #cityCard { width: 100%; max-height: calc(100dvh - 140px); overflow: auto; }
+  #cityScene { flex-shrink: 0; max-height: 28vh; object-fit: cover; }
+  #cityInfo, #cityMenu { flex-shrink: 0; }
+}
 </style>
 <link rel="stylesheet" href="/learn/world-voyage/css/place-study.css?v=2026102101">
 </head>
@@ -170,7 +224,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
     <img id="cityScene" alt="도시 내부">
     <div id="cityShade"></div>
     <div id="cityTitle">도시</div>
-    <section id="cityVisitors" aria-label="같은 도시의 탐험가"></section>
+    <section id="cityVisitors" aria-label="함께 쉬는 탐험가"></section>
     <div id="cityInfo"><div id="cityContext"></div><div id="cityRest"></div><small id="cityArtCaption"></small></div>
     <div id="cityMenu"><button id="storyBtn" hidden>도시 설명</button><button id="landmarkBtn" hidden>명소</button><button id="laterLandmarkBtn" hidden>후대 문화</button><button id="libraryBtn" hidden>도서관</button><button id="departCityBtn" hidden>출항</button><button id="leaveCityBtn">도시 밖으로</button></div>
   </div>
@@ -205,7 +259,7 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <script src="/learn/world-voyage/js/terrain.js?v=2026101902"></script>
 <script src="/learn/world-voyage/js/city-icons.js?v=3"></script>
 <script src="/learn/world-voyage/js/ship-designs.js?v=1"></script>
-<script src="/learn/world-voyage/js/avatar-sprites.js?v=20261112-1"></script>
+<script src="/learn/world-voyage/js/avatar-sprites.js?v=20261116-compact-city"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/view-motion.js?v=1"></script>
 <script src="/learn/world-voyage/js/ice-floes.js?v=1"></script>
