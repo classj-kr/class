@@ -1,7 +1,7 @@
 (function(root){
  'use strict';
  const rad=Math.PI/180;
- const specimens={basalt:{name:'현무암',columns:27,rows:43,seed:3421,fieldMM:6,texture:'세립질',environment:'지표 부근에서 빠르게 냉각'},granite:{name:'화강암',columns:5,rows:6,seed:9134,fieldMM:6,texture:'조립질',environment:'지하 깊은 곳에서 느리게 냉각'}};
+ const specimens={basalt:{name:'현무암',columns:46,rows:46,seed:3421,fieldMM:6,texture:'세립질',environment:'지표 부근에서 빠르게 냉각'},granite:{name:'화강암',columns:5,rows:6,seed:9134,fieldMM:6,texture:'조립질',environment:'지하 깊은 곳에서 느리게 냉각'}};
  const photos=[
   {id:'fine',label:'A',file:'fine.webp',texture:'세립질 조직',scaleMM:1,scaleFraction:28.222/171.5027045,description:'작은 결정들이 촘촘하게 모여 있습니다.',environment:'지표 부근에서 빠르게 냉각되어 결정이 크게 자라지 못했습니다.'},
   {id:'coarse',label:'B',file:'coarse.webp',texture:'조립질 조직',scaleMM:1,scaleFraction:28.223/171.5027045,description:'비교적 큰 결정들이 서로 맞물려 있습니다.',environment:'지하 깊은 곳에서 천천히 냉각되어 결정이 자랄 시간이 길었습니다.'},
@@ -13,7 +13,7 @@
  function grains(key){
   const s=specimens[key];if(!s)throw Error('Unknown specimen');const r=random(s.seed),points=[],W=900,H=900,dx=W/s.columns,dy=H/s.rows;
   for(let y=0;y<s.rows;y++)for(let x=0;x<s.columns;x++)points.push({x:(x+.18+.64*r())*dx-150,y:(y+.18+.64*r())*dy-150,col:x,row:y});
-  return points.map((p,i)=>{let poly=[[-150,-150],[750,-150],[750,750],[-150,750]];
+  const small=points.map((p,i)=>{let poly=[[-150,-150],[750,-150],[750,750],[-150,750]];
    for(const q of points){if(p===q||Math.abs(p.col-q.col)>3||Math.abs(p.row-q.row)>3)continue;poly=clip(poly,q.x-p.x,q.y-p.y,(q.x*q.x+q.y*q.y-p.x*p.x-p.y*p.y)/2);if(!poly.length)break;}
    const v=r(),kind=key==='basalt'?(v<.08?'opaque':v<.17?'glass':v<.76?'feldspar':'pyroxene'):(v<.04?'opaque':v<.39?'quartz':v<.86?'feldspar':'mica');
    // An authored fixed-thickness section: optical colour supports the apparatus,
@@ -21,13 +21,25 @@
    const retardation=kind==='quartz'?155+r()*105:kind==='feldspar'?130+r()*150:kind==='mica'?600+r()*420:kind==='pyroxene'?440+r()*360:0;
    return {...p,id:i,poly,kind,orientation:r()*180,retardation,twin:r()>.5,cleavage:r()>.55};
   });
+  if(key!=='basalt')return small;
+  // 현무암: 잔 알갱이 바탕 위에 먼저 자란 큰 결정(반정) — 사장석 막대, 감람석·휘석 다각형 — 을 얹는다.
+  const q=random(s.seed+77),phenos=[];
+  const spots=[[120,140],[420,110],[300,300],[150,430],[470,420],[300,520],[520,250],[90,290]];
+  spots.forEach(([cx,cy],k)=>{
+   const kind=k%3===0?'olivine':k%3===1?'feldspar':'pyroxene',a=q()*Math.PI,cos=Math.cos(a),sin=Math.sin(a),size=.8+q()*.5;
+   const local=kind==='feldspar'?[[-80,-20],[80,-20],[86,0],[80,20],[-80,20],[-86,0]]:kind==='olivine'?[[-30,-52],[30,-52],[58,0],[30,52],[-30,52],[-58,0]]:[[-40,-48],[40,-48],[56,-14],[56,14],[40,48],[-40,48],[-56,14],[-56,-14]];
+   const poly=local.map(([u,v])=>[cx+(u*cos-v*sin)*size,cy+(u*sin+v*cos)*size]);
+   const retardation=kind==='olivine'?720+q()*260:kind==='feldspar'?150+q()*120:480+q()*300;
+   phenos.push({x:cx,y:cy,col:-1,row:-1,id:small.length+k,poly,kind,orientation:a*180/Math.PI+(kind==='feldspar'?90:0),retardation,twin:kind==='feldspar',cleavage:false,phenocryst:true});
+  });
+  return small.concat(phenos);
  }
  function intensity(g,angle,wavelength=550){if(g.kind==='opaque'||g.kind==='glass')return 0;return Math.sin(2*(angle+g.orientation)*rad)**2*Math.sin(Math.PI*g.retardation/wavelength)**2;}
  function color(g,angle,crossed,light=70){
   if(g.kind==='opaque')return '#080b10';let rgb;
   if(crossed)rgb=[650,530,460].map(w=>Math.pow(intensity(g,angle,w),1/2.2)*230);
   else if(g.kind==='mica'){const f=.7+.3*Math.cos((angle+g.orientation)*rad)**2;rgb=[167*f,112*f,60*f];}
-  else rgb=g.kind==='pyroxene'?[191,207,157]:g.kind==='glass'?[211,207,191]:[232,230,217];
+  else rgb=g.kind==='pyroxene'?[191,207,157]:g.kind==='olivine'?[222,232,200]:g.kind==='glass'?[176,158,122]:[232,230,217];
   return 'rgb('+rgb.map(v=>Math.round(v*light/85)).join(',')+')';
  }
  function ready(s){return s.mounted&&s.light>=30&&Math.abs(s.focus-50)<=5;}

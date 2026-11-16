@@ -11,36 +11,77 @@
  function table(caption,headers,rows){return `<table><caption>${caption}</caption><thead><tr>${headers.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`;}
  const superscript=n=>String(n).split('').map(c=>({'-':'⁻','+':'⁺','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'}[c])).join('');
  const scientific=c=>{const[a,b]=c.toExponential(2).split('e');return a+' × 10'+superscript(b);};
+ // Shared motion helpers for the apparatus drawings below.
+ const soReduce=()=>!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,soEase=t=>t<.5?2*t*t:1-(-2*t+2)**2/2,soCl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),soSeg=(f,a,b)=>soCl((f-a)/(b-a));
+ let soAnim=null,soRaf=0,soPaint=null;
+ function soPlay(kind,dur,extra={}){if(soReduce()){soAnim=null;return;}soAnim={kind,dur,start:performance.now(),...extra};if(!soRaf){const tick=now=>{soRaf=0;if(soPaint)soPaint(now);if(soAnim)soRaf=requestAnimationFrame(tick);};soRaf=requestAnimationFrame(tick);}}
+ function soFrame(now=performance.now()){if(!soAnim)return null;const f=(now-soAnim.start)/soAnim.dur;if(f>=1){soAnim=null;return null;}return {...soAnim,f};}
+ function washBottle(x,y,angle,sq=0){return `<g transform="rotate(${angle.toFixed(1)} ${x} ${y})"><path d="M${x-20+sq*3} ${y}H${x+20-sq*3}Q${x+24} ${y-46} ${x+15} ${y-70}H${x-15}Q${x-24} ${y-46} ${x-20+sq*3} ${y}Z" fill="#eef4f7" stroke="#6f8e9b" stroke-width="2"/><rect x="${x-18}" y="${y-32}" width="36" height="26" fill="#d4e9f2" opacity=".85"/><rect x="${x-8}" y="${y-82}" width="16" height="12" rx="2" fill="#5d87a3"/><path d="M${x} ${y-82}V${y-96}Q${x} ${y-104} ${x-10} ${y-106}L${x-36} ${y-113}" fill="none" stroke="#b8cfd8" stroke-width="5" stroke-linecap="round"/></g>`;}
+ // Nozzle tip of washBottle after rotation.
+ function washTip(x,y,angle){const a=angle*Math.PI/180,dx=-36,dy=-113;return {x:x+dx*Math.cos(a)-dy*Math.sin(a),y:y+dx*Math.sin(a)+dy*Math.cos(a)};}
+ const flowPath=(d,now,w=2.6)=>`<path d="${d}" fill="none" stroke="#7fbdd6" stroke-width="${w}" stroke-linecap="round" stroke-dasharray="7 5" stroke-dashoffset="${(-now/16%12).toFixed(1)}"/>`;
  if(slug==='standard-solution'){
   model=M.standard;
-  render=()=>{steps([['질량',s.weighed],['용해',s.dissolved],['모두 옮김',s.rinses>=3],['정용·혼합',s.mixed]]);
-   const y=185-(s.volume-100)*2,neck='M394 120V263C390 280 346 290 342 335Q340 360 363 364H457Q481 360 478 335C474 290 430 280 426 263V120Z';
-   let b='<ellipse cx="160" cy="367" rx="106" ry="10" fill="#a1b4bd" opacity=".18"/><rect x="55" y="271" width="205" height="83" rx="13" fill="#c1d0d8" stroke="#8099a7"/><path d="M65 277H252L239 262H78Z" fill="url(#soMetal)"/><rect x="105" y="300" width="104" height="37" rx="5" fill="#e0efe3" stroke="#a1b6ae"/>'+text(157,325,fmt(model.display(s))+' g');
-   if(s.pan){b+='<path d="M97 254Q153 281 219 254L210 265H107Z" fill="#eef3ee" stroke="#b1b8b0"/>';if(s.weighed&&!s.dissolved)for(let i=0;i<18;i++)b+=`<circle cx="${135+(i%6)*7}" cy="${251-Math.floor(i/6)*4}" r="2.5" fill="#fff" stroke="#bcccd0"/>`;}
-   b+=text(154,392,s.tared?'영점 조정됨':'질량 접시 '+(s.pan?'포함':'없음'));
-   b+='<path d="M69 105V217Q69 229 80 229H234Q245 229 245 217V105" fill="url(#soGlass)" stroke="#88aab9" stroke-width="2"/>';
-   if(s.dissolved&&!s.transferred)b+='<path d="M72 165H242V216Q242 225 230 225H84Q72 225 72 216Z" fill="url(#soWater)"/>';
-   if(s.transferred&&s.rinses<3)for(const[x,a]of[[77,177],[236,196],[95,218]])b+=`<path d="M${x} ${a}q8 10 0 14q-8-4 0-14" fill="#80b0c0" opacity="${.85-s.rinses*.2}"/>`;
-   b+=text(156,86,s.transferred?(s.rinses>=3?'비커 세척 완료':`세척 ${s.rinses}회 · 남은 용액`):'NaCl과 적당량의 물');
-   b+=`<defs><clipPath id="stFlask"><path d="${neck}"/></clipPath></defs><ellipse cx="410" cy="374" rx="91" ry="12" fill="#9ab5c2" opacity=".18"/><path d="${neck}" fill="url(#soGlass)" stroke="#87a5b5" stroke-width="2"/>`;
-   if(s.transferred)b+=`<g clip-path="url(#stFlask)"><path d="M335 ${y-5}Q410 ${y+5} 485 ${y-5}V365H335Z" fill="url(#soWater)"/><path d="M393 ${y-5}Q410 ${y+5} 427 ${y-5}" fill="none" stroke="#558f9f" stroke-width="2"/></g>`;
-   b+='<path d="M385 185H438" stroke="#ba7140" stroke-width="2"/>'+text(444,191,'100 mL','start');
-   if(s.transferred){const ey=185+{above:-43,level:0,below:43}[s.eye];b+=`<path d="M540 ${ey}L427 ${y}" stroke="#8297a0" stroke-dasharray="5 5"/><path d="M535 ${ey}q14-12 29 0q-15 12-29 0" fill="#fff" stroke="#5e7c8b"/><circle cx="549" cy="${ey}" r="4" fill="#405c6e"/>`;}
-   if(s.mixed)b+='<rect x="390" y="109" width="40" height="14" rx="3" fill="#4b6674"/>';
-   b+=text(410,88,'부피 플라스크');scene(b);
+  const BEN=372,FX=470,MARK=170,stFlask='M456 112V230C456 246 404 268 402 318Q400 370 424 372H516Q540 370 538 318C536 268 484 246 484 230V112Z';
+  const stY=v=>v<=90?BEN-2-v/90*140:Math.max(114,232-(v-90)/10*62),bkY=ml=>BEN-3-ml*.9,pre=50;
+  const cubes=(x,y,n,spread=20,k=0)=>{let g='';for(let i=0;i<n;i++)g+=`<rect x="${(x-spread/2+((i*7+k)%11)/10*spread).toFixed(1)}" y="${(y-Math.floor(i/6)*3.6-((i*5)%3)).toFixed(1)}" width="3.6" height="3.6" fill="#fdfdfb" stroke="#9fb0b8" stroke-width=".6"/>`;return g;};
+  function stBeaker(ml,extra=''){const L=235,R=325,T=272;let g=`<path d="M${L} ${T}V${BEN-10}Q${L} ${BEN} ${L+10} ${BEN}H${R-10}Q${R} ${BEN} ${R} ${BEN-10}V${T}" fill="url(#soGlass)" stroke="#88aab9" stroke-width="2"/>`;
+   if(ml>0)g+=`<path d="M${L+2} ${bkY(ml).toFixed(1)}H${R-2}V${BEN-10}Q${R-2} ${BEN-2} ${R-10} ${BEN-2}H${L+10}Q${L+2} ${BEN-2} ${L+2} ${BEN-10}Z" fill="url(#soWater)"/>`;
+   return g+extra+`<path d="M${R+5} ${T-1}Q${R+2} ${T-5} ${R-2} ${T-1}" fill="none" stroke="#88aab9" stroke-width="2"/>`+[0,1,2].map(i=>`<path d="M${L+6} ${T+24+i*20}h10" stroke="#88aab9"/>`).join('');}
+  function stDish(x,y,angle,n){return `<g transform="rotate(${angle.toFixed(1)} ${x} ${y})"><path d="M${x-34} ${y-6}Q${x} ${y+12} ${x+34} ${y-6}L${x+30} ${y+2}Q${x} ${y+14} ${x-30} ${y+2}Z" fill="#eef3ee" stroke="#9fb0a8" stroke-width="1.4"/>${n?cubes(x,y,n,26):''}</g>`;}
+  function stScene(now=performance.now()){
+   const A=soFrame(now),k=A?A.kind:null,f=A?A.f:1;
+   let dish={x:110,y:316,a:0},dishN=s.pan&&s.weighed&&!s.dissolved?18:0,shown=model.display(s),bk={tx:0,ty:0,a:0},bkMl=s.transferred?0:pre,bkCubes=0,rod=null,vol=s.transferred?s.volume:0,stream='',bottle='',stopper=s.mixed,flaskRot=0,funnel=s.transferred&&!s.premixed;
+   if(!s.pan)dish=null;
+   if(k==='pan'){dish.y=316-60*(1-soEase(f));shown=0;}
+   if(k==='weigh'){const g=soEase(soSeg(f,.15,.85));dishN=Math.round(18*g);shown=A.from+(model.display(s)-A.from)*g;}
+   if(k==='dissolve'){const go=soEase(soSeg(f,0,.22)),back=soEase(soSeg(f,.6,.82)),tilt=soEase(soSeg(f,.22,.36))*(1-soSeg(f,.5,.6));const m=go*(1-back);dish={x:110+(258-110)*m,y:316+(232-316)*m,a:62*tilt};dishN=Math.round(18*(1-soSeg(f,.26,.5)));
+    for(let i=0;i<14;i++){const t0=.27+i*.014,q=(f-t0)/.16;if(q>0&&q<1)stream+=`<rect x="${(282+((i*7)%9)).toFixed(1)}" y="${(246+q*q*(bkY(pre)-246)).toFixed(1)}" width="3.6" height="3.6" fill="#fdfdfb" stroke="#9fb0b8" stroke-width=".6"/>`;}
+    bkCubes=Math.round(16*soSeg(f,.32,.52)*(1-soSeg(f,.58,.96)));if(f>.5)rod=f*28;}
+   const pour=(a,b,move=.25,back=.8)=>{const m=soEase(soSeg(f,0,move))*(1-soEase(soSeg(f,back,1)));bk={tx:(446-325)*m,ty:(74-272)*m,a:45*m};return soSeg(f,move,back);};
+   if(k==='transfer'){const p=pour();bkMl=pre*(1-p);vol=60*soEase(p);if(p>0&&p<1)stream+=flowPath(`M448 76Q462 86 466 98`,now)+flowPath(`M470 116V150L470 ${stY(vol).toFixed(1)}`,now,2);}
+   if(k==='rinse'){const sq=soSeg(f,.02,.3),tip=washTip(370,330,-30);bottle=washBottle(370,330,-30*soSeg(f,0,.06)*(1-soSeg(f,.3,.36)),f<.3?1:0);if(f<.3)stream+=flowPath(`M${tip.x.toFixed(1)} ${tip.y.toFixed(1)}Q300 ${(tip.y-10).toFixed(1)} 290 ${bkY(8).toFixed(1)}`,now);
+    const fq=soSeg(f,.36,1);if(fq>0){const m=soEase(soSeg(fq,0,.25))*(1-soEase(soSeg(fq,.8,1))),p=soSeg(fq,.25,.8);bk={tx:(446-325)*m,ty:(74-272)*m,a:45*m};bkMl=8*(1-p);vol=A.from+(s.volume-A.from)*soEase(p);if(p>0&&p<1)stream+=flowPath(`M448 76Q462 86 466 98`,now)+flowPath(`M470 116V150L470 ${stY(vol).toFixed(1)}`,now,2);}else{bkMl=8*sq;vol=A.from;}}
+   if(k==='premix'){stopper=true;funnel=false;flaskRot=14*Math.sin(f*Math.PI*4)*(1-f);}
+   if(k==='add'){const ang=-38*soSeg(f,0,.15)*(1-soSeg(f,.85,1)),tip=washTip(560,232,ang);bottle=washBottle(560,232,ang,f>.15&&f<.85?1:0);const p=soSeg(f,.18,.82);vol=A.from+(s.volume-A.from)*soEase(p);if(p>0&&p<1)stream=flowPath(`M${tip.x.toFixed(1)} ${tip.y.toFixed(1)}Q${FX+10} ${(tip.y-16).toFixed(1)} ${FX+2} 112`,now)+flowPath(`M${FX} 114V${stY(vol).toFixed(1)}`,now,1.6);}
+   if(k==='mix'){stopper=true;flaskRot=180*(1-Math.cos(4*Math.PI*f))/2;}
+   let b='<rect x="0" y="'+BEN+'" width="600" height="'+(410-BEN)+'" fill="#efe8dc"/><path d="M0 '+BEN+'H600" stroke="#cbbda5" stroke-width="2"/>';
+   // electronic balance with a weighing dish
+   b+='<rect x="30" y="330" width="160" height="42" rx="8" fill="#dbe5ea" stroke="#8099a7" stroke-width="1.6"/><rect x="48" y="322" width="124" height="8" rx="2" fill="url(#soMetal)" stroke="#8099a7"/><rect x="58" y="338" width="104" height="26" rx="4" fill="#e0efe3" stroke="#a1b6ae"/>'+`<text x="154" y="357" text-anchor="end" style="font-family:Consolas,monospace">${fmt(Math.max(0,shown))} g</text>`;
+   if(k==='weigh'){const tap=Math.sin(f*40)*2;b+=`<path d="M190 ${262+tap}L124 ${296+tap}" stroke="#7d8c94" stroke-width="4" stroke-linecap="round"/><path d="M128 ${292+tap}l-12 6" stroke="#a9b6bc" stroke-width="8" stroke-linecap="round"/>`+(f<.85?cubes(120,296+tap,6,10):'');for(let i=0;i<8;i++){const q=((f*6)+i/8)%1;if(f>.12&&f<.86)b+=`<rect x="${(113+i%3*3).toFixed(1)}" y="${(300+q*14).toFixed(1)}" width="3.4" height="3.4" fill="#fdfdfb" stroke="#9fb0b8" stroke-width=".6"/>`;}}
+   if(dish)b+=stDish(dish.x,dish.y,dish.a,dishN);
+   // beaker (moves to pour through the funnel)
+   const bkExtra=(bkCubes?cubes(281,BEN-6,bkCubes,30):'')+(rod!==null?`<path d="M${(272+Math.sin(rod)*20).toFixed(1)} ${BEN-8}L${(300+Math.sin(rod)*6).toFixed(1)} 236" stroke="#8fb3c2" stroke-width="5" stroke-linecap="round" opacity=".85"/>`:'')+(s.transferred&&s.rinses<3&&!k?[[240,320],[318,338],[252,356]].map(([x,y])=>`<path d="M${x} ${y}q5 7 0 10q-5-3 0-10" fill="#80b0c0" opacity="${.85-s.rinses*.2}"/>`).join(''):'');
+   b+=bk.a?`<g transform="translate(${bk.tx.toFixed(1)} ${bk.ty.toFixed(1)}) rotate(${bk.a.toFixed(1)} 325 272)">${stBeaker(0,bkMl>0?`<rect x="${(323-30*Math.min(1,bkMl/pre+.2)).toFixed(1)}" y="276" width="${(30*Math.min(1,bkMl/pre+.2)).toFixed(1)}" height="${(10+80*Math.min(1,bkMl/pre)).toFixed(1)}" fill="url(#soWater)"/>`:'')}</g>`:stBeaker(bkMl,bkExtra);
+   // volumetric flask
+   b+=`<ellipse cx="${FX}" cy="${BEN+2}" rx="70" ry="6" fill="#9ab5c2" opacity=".18"/>`;
+   let fl=`<defs><clipPath id="stFlask"><path d="${stFlask}"/></clipPath></defs><path d="${stFlask}" fill="url(#soGlass)" stroke="#87a5b5" stroke-width="2"/>`;
+   if(vol>0){const y=stY(vol);fl+=`<g clip-path="url(#stFlask)"><path d="M396 ${y}H544V374H396Z" fill="url(#soWater)"/>${y<232?`<path d="M456 ${(y-4).toFixed(1)}Q${FX} ${(y+4).toFixed(1)} 484 ${(y-4).toFixed(1)}" fill="none" stroke="#3f7d91" stroke-width="2"/>`:''}</g>`;}
+   fl+=`<path d="M450 ${MARK}H490" stroke="#ba7140" stroke-width="2"/>`;
+   if(stopper)fl+=`<path d="M458 96H482L479 116H461Z" fill="#4b6674"/>`;
+   b+=flaskRot?`<g transform="rotate(${flaskRot.toFixed(1)} ${FX} 242)">${fl}</g>`:fl;
+   if(!flaskRot)b+=text(444,MARK+5,'100 mL','end');
+   if(funnel)b+=`<path d="M440 78H500L474 112V150H466V112Z" fill="url(#soGlass)" stroke="#87a5b5" stroke-width="1.8"/>`;
+   b+=stream+bottle;
+   if(s.transferred&&!flaskRot){const y=stY(vol),ey=MARK+{above:-43,level:0,below:43}[s.eye];b+=`<path d="M566 ${ey}L486 ${y.toFixed(1)}" stroke="#8297a0" stroke-dasharray="5 5"/><path d="M560 ${ey}q14-12 29 0q-15 12-29 0" fill="#fff" stroke="#5e7c8b"/><circle cx="574" cy="${ey}" r="4" fill="#405c6e"/>`;}
+   b+=text(110,BEN+26,'전자저울')+text(280,BEN+26,'비커')+text(FX,BEN+26,'부피 플라스크');
+   scene(b,410);
+  }
+  soPaint=stScene;
+  render=()=>{steps([['질량',s.weighed],['용해',s.dissolved],['모두 옮김',s.rinses>=3],['정용·혼합',s.mixed]]);stScene();
    setDisabled('stPan',s.pan);setDisabled('stTare',!s.pan||s.weighed);setDisabled('stWeigh',!s.pan||s.weighed);setDisabled('stMass',s.weighed);setDisabled('stDissolve',!s.weighed||s.dissolved);setDisabled('stTransfer',!s.dissolved||s.transferred);setDisabled('stRinse',!s.transferred||s.mixed||s.rinses>=3||s.volume>85);setDisabled('stPremix',!s.transferred||s.premixed||s.mixed);setDisabled('stWater',!s.premixed||s.mixed||s.volume>105);setDisabled('stDrop',!s.premixed||s.mixed||s.volume>=110);setDisabled('stMix',!s.transferred||s.mixed);setDisabled('stEye',!s.transferred);
   };
-  reset=()=>{s=model.create();$('stMass').value=5.85;$('stEye').value='level';$('stResult').textContent='용액을 모두 옮긴 뒤 수면 아래쪽을 표시선에 맞추세요.';say('빈 질량 접시를 올리고 영점을 맞추세요. 목표는 1.00 M·100 mL입니다.');render();};
-  on('stPan',()=>{s.pan=true;say('빈 질량 접시의 무게도 저울에 포함됩니다. NaCl만 재려면 영점을 맞추세요.');render();});
+  reset=()=>{soAnim=null;s=model.create();$('stMass').value=5.85;$('stEye').value='level';$('stResult').textContent='용액을 모두 옮긴 뒤 수면 아래쪽을 표시선에 맞추세요.';say('빈 질량 접시를 올리고 영점을 맞추세요. 목표는 1.00 M·100 mL입니다.');render();};
+  on('stPan',()=>{if(!s.pan)soPlay('pan',700);s.pan=true;say('빈 질량 접시의 무게도 저울에 포함됩니다. NaCl만 재려면 영점을 맞추세요.');render();});
   on('stTare',()=>{s.tared=true;say('빈 접시가 0.00 g이 되었습니다. 필요한 NaCl의 질량을 계산하여 담으세요.');render();});
-  on('stWeigh',()=>{const mass=Number($('stMass').value);if(!(mass>0&&mass<=10))return say('NaCl을 0보다 크고 10 g 이하로 담으세요.');s.mass=mass;s.weighed=true;say(s.tared?'NaCl의 질량을 확인했습니다. 적은 양의 물에 완전히 녹이세요.':'저울 값에는 접시 2.00 g이 포함되어 있습니다. NaCl 질량과 구별하세요.');render();});
-  on('stDissolve',()=>{s.dissolved=true;say('NaCl이 모두 녹았습니다. 깔때기로 용액을 옮기고 비커와 깔때기의 남은 용액도 함께 옮기세요.');render();});
-  on('stTransfer',()=>{s.transferred=true;s.volume=60;say('용액을 옮겼지만 비커 벽에 일부 남아 있습니다. 증류수로 헹구어 함께 넣으세요.');render();});
-  on('stRinse',()=>{model.rinse(s);say(s.rinses>=3?'세척한 물까지 함께 옮겼습니다. 수면이 표시선에 가까워지면 조금씩 채우세요.':'비커와 깔때기를 헹구어 함께 넣었습니다. 남은 용액을 다시 확인하세요.');render();});
-  on('stPremix',()=>{s.premixed=true;say('마개를 닫고 먼저 섞었습니다. 마개를 열고 표시선까지 조금씩 채우세요.');render();});
-  for(const[id,v]of[['stWater',5],['stDrop',.1]])on(id,()=>{model.add(s,v);say(s.volume>100.05?'수면이 표시선을 넘었습니다. 용액 일부를 덜어도 희석된 농도가 회복되지는 않습니다.':'오목한 수면 아래쪽과 표시선을 같은 눈높이에서 비교하세요.');render();});
+  on('stWeigh',()=>{const mass=Number($('stMass').value);if(!(mass>0&&mass<=10))return say('NaCl을 0보다 크고 10 g 이하로 담으세요.');const from=model.display(s);s.mass=mass;s.weighed=true;soPlay('weigh',1600,{from});say(s.tared?'NaCl의 질량을 확인했습니다. 적은 양의 물에 완전히 녹이세요.':'저울 값에는 접시 2.00 g이 포함되어 있습니다. NaCl 질량과 구별하세요.');render();});
+  on('stDissolve',()=>{s.dissolved=true;soPlay('dissolve',2800);say('NaCl이 모두 녹았습니다. 깔때기로 용액을 옮기고 비커와 깔때기의 남은 용액도 함께 옮기세요.');render();});
+  on('stTransfer',()=>{s.transferred=true;s.volume=60;soPlay('transfer',2800);say('용액을 옮겼지만 비커 벽에 일부 남아 있습니다. 증류수로 헹구어 함께 넣으세요.');render();});
+  on('stRinse',()=>{const from=s.volume;if(model.rinse(s))soPlay('rinse',2400,{from});say(s.rinses>=3?'세척한 물까지 함께 옮겼습니다. 수면이 표시선에 가까워지면 조금씩 채우세요.':'비커와 깔때기를 헹구어 함께 넣었습니다. 남은 용액을 다시 확인하세요.');render();});
+  on('stPremix',()=>{s.premixed=true;soPlay('premix',1500);say('마개를 닫고 먼저 섞었습니다. 마개를 열고 표시선까지 조금씩 채우세요.');render();});
+  for(const[id,v]of[['stWater',5],['stDrop',.1]])on(id,()=>{const from=s.volume;if(model.add(s,v))soPlay('add',v>1?1400:900,{from});say(s.volume>100.05?'수면이 표시선을 넘었습니다. 용액 일부를 덜어도 희석된 농도가 회복되지는 않습니다.':'오목한 수면 아래쪽과 표시선을 같은 눈높이에서 비교하세요.');render();});
   on('stEye',()=>{s.eye=$('stEye').value;render();},'change');
-  on('stMix',()=>{if(s.eye!=='level')return say('눈높이를 표시선에 맞추고 수면을 다시 읽으세요.');s.mixed=true;render();const c=model.concentration(s);$('stResult').textContent=c===null?'비커에 남은 용액을 모두 옮기지 않아 처음 잰 NaCl의 양으로 정확한 농도를 계산할 수 없습니다.':`NaCl ${fmt(s.mass)} g ÷ 58.5 g/mol ÷ ${fmt(s.volume/1000,4)} L = ${fmt(c,3)} M. ${Math.abs(c-1)<.003?'목표 농도입니다.':'목표 1.00 M과 비교해 질량과 최종 부피를 확인하세요.'}`;say('마개를 닫고 고르게 섞었습니다. 처음 물의 양과 최종 용액 부피를 구별하세요.');});
+  on('stMix',()=>{if(s.eye!=='level')return say('눈높이를 표시선에 맞추고 수면을 다시 읽으세요.');s.mixed=true;soPlay('mix',1900);render();const c=model.concentration(s);$('stResult').textContent=c===null?'비커에 남은 용액을 모두 옮기지 않아 처음 잰 NaCl의 양으로 정확한 농도를 계산할 수 없습니다.':`NaCl ${fmt(s.mass)} g ÷ 58.5 g/mol ÷ ${fmt(s.volume/1000,4)} L = ${fmt(c,3)} M. ${Math.abs(c-1)<.003?'목표 농도입니다.':'목표 1.00 M과 비교해 질량과 최종 부피를 확인하세요.'}`;say('마개를 닫고 고르게 섞었습니다. 처음 물의 양과 최종 용액 부피를 구별하세요.');});
  }
  if(slug==='serial-dilution'){
   model=M.dilution;
@@ -105,29 +146,62 @@
  if(slug==='vinegar-titration'){
   model=M.vinegar;
   const colorText={clear:'섞은 용액은 무색입니다.',local:'떨어진 곳에만 분홍색이 보입니다. 먼저 고르게 섞으세요.',faint:'섞은 뒤에도 옅은 분홍색이 남았습니다.',strong:'섞은 뒤 진한 분홍색입니다. 종말점을 지나쳤습니다.'};
-  render=()=>{steps([['시료',s.prepared&&s.indicator],['뷰렛 끝 충전',s.tip],['처음 눈금',s.initial!==null],['적정 '+s.trials.length+'/3',s.trials.length===3]]);const read=model.reading(s),y=70+read*4.2,p=model.color(s),level=440-(model.sampleVolume(s)+s.delivered)*.8;
-   let b='<rect x="25" y="444" width="259" height="13" rx="5" fill="#a8bdc6"/><path d="M52 444V52H161" fill="none" stroke="url(#soMetal)" stroke-width="7"/><path d="M157 68V288Q168 300 179 288V68" fill="url(#soGlass)" stroke="#88a9b7" stroke-width="2"/>'+text(169,38,'NaOH 0.100 M');
-   if(s.filled)b+=`<path d="M160 ${y}Q168 ${y+3} 176 ${y}V287Q168 295 160 287Z" fill="url(#soWater)"/>`;
+  const viFlask='M150 345V372L105 428Q98 441 113 444H224Q239 441 232 428L187 372V345Z',colorFill=p=>p==='faint'?'#efb8d1':p==='strong'?'#d64a97':'url(#soWater)';
+  function viScene(now=performance.now()){
+   const A=soFrame(now),k=A?A.kind:null,f=A?A.f:1,p=model.color(s);
+   let read=model.reading(s),sample=s.prepared?model.sampleVolume(s):0,delivered=s.delivered,tipOpen=false,drops='',fillTop=null,spot=p==='local'?1:0,mixK=1,swirl=0,extra='';
+   if(A&&A.fromRead!==undefined){const g=soEase(soSeg(f,.1,.9));read=A.fromRead+(read-A.fromRead)*g;delivered=A.fromDel+(s.delivered-A.fromDel)*g;}
+   const level=440-(sample+delivered)*.8;
+   if(k==='prepare'){sample=model.sampleVolume(s)*soEase(soSeg(f,.2,.85));}
+   const lv=440-(sample+delivered)*.8,y=70+read*4.2;
+   if(k==='add'){tipOpen=f<.9;const n=A.drops;for(let i=0;i<n;i++){const t0=.08+i*(.72/n),q=(f-t0)/.16;if(q>0&&q<1)drops+=`<path d="M168 ${(332+q*q*(lv-334)).toFixed(1)}c-3 5-3 8 0 8s3-3 0-8Z" fill="#cfe6ef" stroke="#7ea6b6" stroke-width=".8"/>`;}
+    if(s.indicator)spot=soSeg(f,.25,.95);}
+   if(k==='mix'){swirl=9*Math.sin(f*Math.PI*5)*(1-f);mixK=soEase(soSeg(f,.15,.9));spot=A.fromLocal?1-mixK:0;}
+   if(k==='fill')fillTop=287-(287-y)*soEase(soSeg(f,.15,.9));
+   if(k==='tip'){tipOpen=f>.15&&f<.75;for(let i=0;i<4;i++){const q=(f-.2-i*.12)/.2;if(q>0&&q<1)drops+=`<path d="M168 ${(332+q*q*30).toFixed(1)}c-3 5-3 8 0 8s3-3 0-8Z" fill="#cfe6ef" stroke="#7ea6b6" stroke-width=".8"/>`;}}
+   let b='<rect x="0" y="457" width="600" height="43" fill="#efe8dc"/><path d="M0 457H600" stroke="#cbbda5" stroke-width="2"/>';
+   // stand, clamp and burette
+   b+='<rect x="22" y="444" width="140" height="13" rx="4" fill="#8fa2ab" stroke="#6f838d"/><rect x="48" y="40" width="8" height="406" rx="3" fill="url(#soMetal)" stroke="#6f838d" stroke-width="1"/>';
+   const top=fillTop!==null?fillTop:y,bur=s.filled||k==='fill';
+   b+='<path d="M157 64V288Q168 300 179 288V64" fill="url(#soGlass)" stroke="#88a9b7" stroke-width="2"/>'+text(232,40,'NaOH 0.100 M','start');
+   if(bur)b+=`<path d="M160 ${top}Q168 ${top+3} 176 ${top}V287Q168 295 160 287Z" fill="url(#soWater)"/><path d="M159 ${(top-1).toFixed(1)}Q168 ${(top+4).toFixed(1)} 177 ${(top-1).toFixed(1)}" fill="none" stroke="#3f7d91" stroke-width="1.6"/>`;
    for(let n=0;n<=50;n+=5){const yy=70+n*4.2;b+=`<path d="M180 ${yy}h${n%10?5:11}" stroke="#73919f"/>`;if(n%10===0)b+=text(207,yy+5,n);}
-   b+='<path d="M168 299V328" stroke="#7296a7" stroke-width="4"/><rect x="144" y="298" width="49" height="7" rx="3" fill="#627f8e"/><path d="M148 299V290" stroke="#546d7c" stroke-width="4"/>';
-   if(s.filled&&!s.tip)b+='<circle cx="168" cy="314" r="3" fill="white" stroke="#7496a6"/>';
-   const flask='M150 345V372L105 428Q98 441 113 444H224Q239 441 232 428L187 372V345Z';b+=`<defs><clipPath id="viFlask"><path d="${flask}"/></clipPath></defs><path d="${flask}" fill="url(#soGlass)" stroke="#88a9b7" stroke-width="2"/>`;
-   if(s.prepared){b+=`<path d="M98 ${level}Q165 ${level+4} 238 ${level}V445H98Z" fill="${p==='faint'?'#efb8d1':p==='strong'?'#d64a97':'url(#soWater)'}" opacity=".8" clip-path="url(#viFlask)"/>`;if(p==='local')b+=`<ellipse cx="168" cy="${level+5}" rx="13" ry="8" fill="#d75c9a" opacity=".8"/>`;}
-   const start=Math.floor(read),zy=126+(read-start)*132;b+='<rect x="361" y="87" width="191" height="242" rx="12" fill="#f5fafb" stroke="#b9d0d9"/>'+text(456,68,'수면을 같은 눈높이에서 읽기');
-   if(s.filled)b+=`<path d="M392 ${zy-4}Q421 ${zy+4} 450 ${zy-4}V312H392Z" fill="url(#soWater)"/>`;
-   for(let n=0;n<=10;n++){const yy=126+n*13.2;b+=`<path d="M450 ${yy}h${n%5?8:15}" stroke="#6d8e9e"/>`;if(n%5===0)b+=text(480,yy+5,fmt(start+n/10,2),'start');}b+=text(454,352,'뷰렛 눈금 (mL)')+text(170,478,s.protocol==='direct'?'원액 3 mL 전량':'원액 2 mL에 해당');scene(b,500);
+   b+='<rect x="52" y="146" width="102" height="9" rx="3" fill="#8fa2ab" stroke="#6f838d"/><rect x="44" y="141" width="16" height="19" rx="3" fill="#55666f"/><rect x="150" y="138" width="10" height="24" rx="3" fill="#55666f"/><rect x="176" y="138" width="10" height="24" rx="3" fill="#55666f"/><path d="M160 140H176M160 160H176" stroke="#55666f" stroke-width="3"/>';
+   b+=`<path d="M168 299V330" stroke="#7296a7" stroke-width="4"/><rect x="146" y="296" width="44" height="9" rx="3" fill="#dfe8ec" stroke="#627f8e"/><rect x="${tipOpen?163:142}" y="${tipOpen?286:297}" width="${tipOpen?10:52}" height="${tipOpen?28:7}" rx="3" fill="#627f8e"/>`;
+   if(bur&&!s.tip&&k!=='fill')b+='<circle cx="168" cy="316" r="3" fill="white" stroke="#7496a6"/>';
+   if(k==='fill')b+=`<path d="M146 22H190L172 46V62H164V46Z" fill="url(#soGlass)" stroke="#88a9b7" stroke-width="1.6"/>`+(f<.9?flowPath('M168 30V62',now)+flowPath(`M168 64V${top.toFixed(1)}`,now,2):'');
+   // flask with sample
+   let fl=`<defs><clipPath id="viFlask"><path d="${viFlask}"/></clipPath></defs><path d="${viFlask}" fill="url(#soGlass)" stroke="#88a9b7" stroke-width="2"/>`;
+   if(sample>0){const finalFill=colorFill(p==='local'?'clear':p);fl+=`<path d="M98 ${lv.toFixed(1)}Q165 ${(lv+4).toFixed(1)} 238 ${lv.toFixed(1)}V445H98Z" fill="url(#soWater)" opacity=".85" clip-path="url(#viFlask)"/>`;
+    if(p==='faint'||p==='strong')fl+=`<path d="M98 ${lv.toFixed(1)}Q165 ${(lv+4).toFixed(1)} 238 ${lv.toFixed(1)}V445H98Z" fill="${finalFill}" opacity="${(.85*mixK).toFixed(2)}" clip-path="url(#viFlask)"/>`;
+    if(spot>0)fl+=`<ellipse cx="168" cy="${(lv+6).toFixed(1)}" rx="${(4+10*spot).toFixed(1)}" ry="${(3+6*spot).toFixed(1)}" fill="#d75c9a" opacity="${(.8*Math.min(1,spot*1.5)).toFixed(2)}" clip-path="url(#viFlask)"/>`;}
+   b+=swirl?`<g transform="rotate(${swirl.toFixed(1)} 168 444)">${fl}</g>`:fl;
+   b+=drops;
+   if(k==='prepare'){const lift=40*(1-soEase(soSeg(f,0,.15)));b+=`<g transform="translate(0 ${(-lift).toFixed(1)}) rotate(24 182 352)"><path d="M182 352V200" stroke="#6f95a4" stroke-width="5" stroke-linecap="round"/><path d="M182 350V200" stroke="#eef7fa" stroke-width="2.5"/><ellipse cx="182" cy="262" rx="9" ry="22" fill="#eef7fa" stroke="#6f95a4" stroke-width="1.6"/><path d="M174 214H190" stroke="#b67547" stroke-width="2"/><ellipse cx="182" cy="182" rx="13" ry="18" fill="#c4443a" stroke="#8c2e27"/></g>`+(f>.2&&f<.85?flowPath(`M182 352V${lv.toFixed(1)}`,now,2):'');}
+   if(k==='indicator'){b+=`<ellipse cx="200" cy="300" rx="10" ry="14" fill="#9a6fb0"/><path d="M195 312H205V336L201 346H199L195 336Z" fill="#eef6f9" stroke="#7b9aa6" stroke-width="1.2"/>`;for(let i=0;i<2;i++){const q=(f-.2-i*.3)/.25;if(q>0&&q<1)b+=`<path d="M200 ${(348+q*q*(lv-350)).toFixed(1)}c-3 5-3 8 0 8s3-3 0-8Z" fill="#f2f2f5" stroke="#8a8aa0" stroke-width=".8"/>`;}}
+   // magnified scale near the meniscus
+   const start=Math.floor(read),zy=140+(read-start)*200;
+   b+=`<path d="M179 ${y.toFixed(1)}L330 112M179 ${y.toFixed(1)}L330 368" stroke="#b9d0d9" stroke-dasharray="5 5"/><rect x="330" y="100" width="230" height="280" rx="12" fill="#f5fafb" stroke="#b9d0d9"/>`+text(445,88,'눈금 확대');
+   b+='<path d="M366 104V376M454 104V376" stroke="#88a9b7" stroke-width="2.4"/>';
+   if(bur&&(k!=='fill'||f>.85))b+=`<path d="M368 ${(zy-9).toFixed(1)}Q410 ${(zy+7).toFixed(1)} 452 ${(zy-9).toFixed(1)}V376H368Z" fill="url(#soWater)"/><path d="M368 ${(zy-9).toFixed(1)}Q410 ${(zy+7).toFixed(1)} 452 ${(zy-9).toFixed(1)}" fill="none" stroke="#2f6f86" stroke-width="2.4"/>`;
+   for(let n=0;n<=10;n++){const yy=140+n*20;b+=`<path d="M454 ${yy}h${n%5?10:18}" stroke="#4f7182" stroke-width="1.4"/>`;if(n%5===0)b+=text(480,yy+5,fmt(start+n/10,2),'start');}
+   b+=text(445,404,'뷰렛 눈금 (mL)')+text(170,486,s.prepared||k==='prepare'?(s.protocol==='direct'?'원액 3 mL 전량':'원액 2 mL에 해당'):'빈 삼각 플라스크');
+   scene(b,500);
+  }
+  soPaint=viScene;
+  render=()=>{steps([['시료',s.prepared&&s.indicator],['뷰렛 끝 충전',s.tip],['처음 눈금',s.initial!==null],['적정 '+s.trials.length+'/3',s.trials.length===3]]);const p=model.color(s);viScene();
    $('viColor').textContent=s.prepared?colorText[p]:'시료와 뷰렛을 준비하세요.';$('viTrials').innerHTML=table('세 차례의 사용량',['회','처음 (mL)','나중 (mL)','사용량 (mL)'],s.trials.map((r,i)=>[i+1,fmt(r.initial),fmt(r.final),fmt(r.used)]));
    setDisabled('viProtocol',s.prepared||s.trials.length>0);setDisabled('viPrepare',s.prepared);setDisabled('viIndicator',!s.prepared||s.indicator);setDisabled('viFill',s.filled);setDisabled('viTip',!s.filled||s.tip);setDisabled('viMark',!s.tip||s.initial!==null);setDisabled('viInitial',s.initial!==null);for(const id of ['viAdd1','viDrop','viMix'])setDisabled(id,!s.prepared||!s.indicator||s.initial===null||s.recorded||s.delivered>=48);setDisabled('viRecord',s.initial===null||s.recorded);setDisabled('viNext',!s.recorded||s.trials.length>=3);setDisabled('viRetry',s.recorded||!s.prepared);setDisabled('viCalculate',s.trials.length!==3);
   };
-  reset=()=>{s=model.create();$('viProtocol').value='direct';for(const id of ['viInitial','viFinal','viMolarity','viMass'])$(id).value=0;$('viResult').textContent='세 번의 사용량 평균으로 계산하세요. 아세트산 몰질량은 60.0 g/mol입니다.';say('시료 조제 방법을 정하세요. 증류수로 묽혀도 전량을 적정하면 아세트산의 양은 같습니다.');render();};
+  reset=()=>{soAnim=null;s=model.create();$('viProtocol').value='direct';for(const id of ['viInitial','viFinal','viMolarity','viMass'])$(id).value=0;$('viResult').textContent='세 번의 사용량 평균으로 계산하세요. 아세트산 몰질량은 60.0 g/mol입니다.';say('시료 조제 방법을 정하세요. 증류수로 묽혀도 전량을 적정하면 아세트산의 양은 같습니다.');render();};
   on('viProtocol',()=>{s.protocol=$('viProtocol').value;render();},'change');
-  on('viPrepare',()=>{s.prepared=true;say(s.protocol==='direct'?'원액 3 mL를 약 30 mL로 묽혀 전량 준비했습니다.':'원액 10 mL를 100 mL로 묽힌 뒤 20 mL를 취했습니다. 원액 2 mL에 해당합니다.');render();});
-  on('viIndicator',()=>{s.indicator=true;say('페놀프탈레인 2방울을 넣었습니다. 원래 시료는 무색입니다.');render();});
-  on('viFill',()=>{s.filled=true;say('뷰렛에 표준 용액을 채웠습니다. 꼭지 아래에도 용액을 채운 뒤 처음 눈금을 읽으세요.');render();});
-  on('viTip',()=>{s.tip=true;say('끝의 공기를 빼고 흘린 용액은 따로 버렸습니다. 확대 눈금의 수면 아래쪽을 읽으세요.');render();});
+  on('viPrepare',()=>{s.prepared=true;soPlay('prepare',1600);say(s.protocol==='direct'?'원액 3 mL를 약 30 mL로 묽혀 전량 준비했습니다.':'원액 10 mL를 100 mL로 묽힌 뒤 20 mL를 취했습니다. 원액 2 mL에 해당합니다.');render();});
+  on('viIndicator',()=>{s.indicator=true;soPlay('indicator',1000);say('페놀프탈레인 2방울을 넣었습니다. 원래 시료는 무색입니다.');render();});
+  on('viFill',()=>{s.filled=true;soPlay('fill',1500);say('뷰렛에 표준 용액을 채웠습니다. 꼭지 아래에도 용액을 채운 뒤 처음 눈금을 읽으세요.');render();});
+  on('viTip',()=>{s.tip=true;soPlay('tip',1200);say('끝의 공기를 빼고 흘린 용액은 따로 버렸습니다. 확대 눈금의 수면 아래쪽을 읽으세요.');render();});
   on('viMark',()=>{const n=Number($('viInitial').value);if(Math.abs(n-model.reading(s))>.025)return say('처음 눈금이 확대 수면 위치와 맞지 않습니다. 0이 아닌 시작 눈금을 다시 읽으세요.');s.initial=n;say('처음 눈금을 표시했습니다. 시료에 표준 용액을 넣고 고르게 섞어 색을 확인하세요.');render();});
-  for(const[id,v]of[['viAdd1',1],['viDrop',.05]])on(id,()=>{model.add(s,v);say('표준 용액을 넣었습니다. 방울 주변의 색만 보고 멈추지 말고 플라스크를 흔들어 섞으세요.');render();});
-  on('viMix',()=>{s.mixed=true;render();say(colorText[model.color(s)]);});
+  for(const[id,v]of[['viAdd1',1],['viDrop',.05]])on(id,()=>{const fromRead=model.reading(s),fromDel=s.delivered;if(model.add(s,v))soPlay('add',v>=1?1300:800,{fromRead,fromDel,drops:v>=1?6:1});say('표준 용액을 넣었습니다. 방울 주변의 색만 보고 멈추지 말고 플라스크를 흔들어 섞으세요.');render();});
+  on('viMix',()=>{const fromLocal=model.color(s)==='local';s.mixed=true;soPlay('mix',1400,{fromLocal});render();say(colorText[model.color(s)]);});
   on('viRecord',()=>{if(s.trials.length>=3)return;const n=Number($('viFinal').value);if(!model.record(s,n))return say(!s.mixed?'먼저 고르게 섞어 전체 시료의 색을 확인하세요.':model.color(s)==='strong'?'종말점을 지나친 시료입니다. 이번 시료를 다시 준비하고 끝에서는 한 방울씩 넣으세요.':model.color(s)!=='faint'?'섞은 뒤 옅은 분홍색이 남는 지점을 먼저 찾으세요.':'나중 눈금이 수면 위치와 맞지 않습니다. 확대 눈금을 다시 읽으세요.');s.recorded=true;say(s.trials.length===3?'세 차례의 사용량이 모였습니다. 평균 부피에서 원액의 농도를 계산하세요.':'이번 눈금을 사용했습니다. 새 시료로 다음 적정을 준비하세요.');render();});
   on('viNext',()=>{const {trials,protocol}=s;s=model.create();Object.assign(s,{trials,protocol});$('viInitial').value=0;$('viFinal').value=0;say('새 시료와 뷰렛으로 다음 적정을 준비하세요. 같은 조제법을 사용합니다.');render();});
   on('viRetry',()=>{const {trials,protocol}=s;s=model.create();Object.assign(s,{trials,protocol});$('viInitial').value=0;$('viFinal').value=0;say('이번 시료만 다시 준비합니다. 앞서 사용한 적정값은 유지됩니다.');render();});

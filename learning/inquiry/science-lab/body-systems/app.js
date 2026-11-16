@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGroup = document.getElementById('mainGroup');
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
+    const bodyStats = document.getElementById('bodyStats');
 
     // Textbook resting and exercising values for a healthy adult.
     const ACTS = {
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const BLOOD_VOLUME = 5;      // litres
     const PLASMA_GLUCOSE = 1;    // mg per mL of blood plasma
     const AIR_O2 = 0.21;
-    const GRAPH = { x0: 116, x1: 424, y0: 158, y1: 24 };
+    const GRAPH = { x0: 116, x1: 424, y0: 158, y1: 24 }; // graph box 460 × 206
 
     let act = 'rest';
     let prediction = null;
@@ -59,69 +60,94 @@ document.addEventListener('DOMContentLoaded', () => {
                `<text class="stat-value" style="fill:${colour}" x="${alignEnd}" y="${y}" text-anchor="end">${value}</text>`;
     }
 
+    let revealed = false;
+    let graphAnim = 0;
+    const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     function renderMain(a) {
-        const CX = 230;
         const beat = 60 / a.d.hr, breath = 60 / a.d.rr;
         let out = '';
-        out += `<text class="organ-label" x="${CX}" y="18" text-anchor="middle">${a.d.label}</text>`;
-        out += `<path class="torso" d="M 230 24 C 236 24 240 28 240 34 C 240 39 236 43 234 44 C 242 46 252 50 258 55 C 263 60 266 72 266 86 C 266 98 264 109 261 112 C 259 115 256 113 255 109 C 253 99 254 82 253 71 C 250 69 248 72 248 79 C 248 95 246 114 245 127 C 245 137 243 154 243 172 C 238 172 237 172 236 172 C 235 159 234 146 231 138 C 229 138 229 138 229 138 C 226 146 225 159 224 172 C 223 172 222 172 217 172 C 217 154 215 137 215 127 C 214 114 212 95 212 79 C 212 72 210 69 207 71 C 206 82 207 99 205 109 C 204 113 201 115 199 112 C 196 109 194 98 194 86 C 194 72 197 60 202 55 C 208 50 218 46 226 44 C 224 43 220 39 220 34 C 220 28 224 24 230 24 Z"/>`;
+        // the body seen from the front, cut at the hips
+        out += `<path class="body-shape" d="M219,78 L241,78 Q245,90 262,93 L298,101 Q317,107 321,127 L331,214 Q335,250 329,262 Q324,269 318,262 L312,226 L303,152 L300,180 Q303,232 297,262 Q300,292 292,334 L168,334 Q160,292 163,262 Q157,232 160,180 L157,152 L148,226 L142,262 Q136,269 131,262 Q125,250 129,214 L139,127 Q143,107 162,101 L198,93 Q215,90 219,78Z"/>`;
+        out += `<ellipse class="body-shape" cx="230" cy="42" rx="26" ry="31"/>`;
+        out += `<path class="body-shape" d="M219,66 L219,84 L241,84 L241,66Z" style="stroke:none"/>`;
 
-        // the blood loop, with cells taking one real lap of the body
-        const path = 'M230,80 C194,86 192,118 200,142 C210,168 250,168 260,142 C268,118 266,86 230,80';
-        out += `<path id="bloodPath" class="vessel" d="${path}"/>`;
-        for (let i = 0; i < 8; i += 1) {
-            out += `<circle class="blood${i % 2 ? ' spent' : ''}" r="3.2">` +
-                   `<animateMotion dur="${a.circTime.toFixed(2)}s" repeatCount="indefinite" ` +
-                   `begin="${(-i * a.circTime / 8).toFixed(2)}s"><mpath href="#bloodPath"/></animateMotion></circle>`;
-        }
-
-        // lungs filling and emptying at the real breathing rate
+        // lungs and windpipe, filling and emptying at the real breathing rate
+        out += `<path class="airway" d="M230,72 L230,112 M230,112 Q222,118 212,126 M230,112 Q238,118 248,126"/>`;
         const lungPaths = [
-            { cx: 206, d: 'M 200 34 C 206 34 220 37 222 51 C 222 65 215 78 206 78 C 195 78 190 69 190 56 C 190 43 194 34 200 34 Z' },
-            { cx: 254, d: 'M 260 34 C 266 34 270 43 270 56 C 270 69 265 78 254 78 C 245 78 238 65 238 51 C 240 37 254 34 260 34 Z' },
+            { cx: 196, d: 'M223,114 C206,104 181,112 173,140 C165,170 167,196 177,205 C191,211 211,205 223,197 Q226,150 223,114 Z' },
+            { cx: 266, d: 'M237,114 C254,104 279,112 287,140 C295,170 293,196 283,205 C272,211 259,207 254,201 C264,188 258,170 241,168 Q236,140 237,114 Z' },
         ];
         lungPaths.forEach(l => {
-            out += `<g style="transform-origin:${l.cx}px 56px">` +
+            out += `<g style="transform-origin:${l.cx}px 160px">` +
                    `<path class="lung" d="${l.d}">` +
-                   `<animateTransform attributeName="transform" type="scale" values="0.95 0.88; 1.05 1.12; 0.95 0.88" dur="${breath.toFixed(2)}s" repeatCount="indefinite"/></path></g>`;
+                   `<animateTransform attributeName="transform" type="scale" values="0.94 0.9; 1.04 1.08; 0.94 0.9" dur="${breath.toFixed(2)}s" repeatCount="indefinite"/></path></g>`;
         });
-        out += `<text class="organ-label" x="186" y="58" text-anchor="end">폐</text>`;
+        for (let i = 0; i < 3; i += 1) {
+            out += `<circle class="air-dot" r="2.6"><animateMotion dur="${breath.toFixed(2)}s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear" begin="${(-i * breath / 6).toFixed(2)}s" path="${i % 2 ? 'M230,60 L230,112 L250,128 L262,150' : 'M230,60 L230,112 L210,128 L198,150'}"/></circle>`;
+        }
+
+        // liver, stomach and the intestines below the diaphragm
+        out += `<path class="diaphragm" d="M168,209 Q230,188 292,209"/>`;
+        out += `<path class="liver" d="M171,213 Q200,199 238,210 Q234,229 207,233 Q181,233 171,213Z"/>`;
+        out += `<path class="stomach" d="M246,214 Q270,203 285,216 Q293,235 277,245 Q262,251 252,241 Q258,230 246,222Z"/>`;
+        out += `<path class="kidney" d="M186,232 C197,232 199,244 193,248 C199,252 197,264 186,264 C176,264 172,256 172,248 C172,240 176,232 186,232Z M274,234 C284,234 288,242 288,250 C288,258 284,266 274,266 C263,266 261,254 267,250 C261,246 263,234 274,234Z"/>`;
+        out += `<path class="large-gut" d="M206,300 L206,250 Q230,240 254,250 L254,300"/>`;
+        out += `<path class="small-gut" d="M212,258 q9,-6 18,0 t18,0 q6,7 -2,11 q-9,6 -18,0 t-16,3 q-6,7 2,11 q9,6 18,0 t16,0 q6,7 -2,11 q-10,6 -20,0 t-12,2"/>`;
+        out += `<path class="ureter" d="M188,264 Q196,292 220,309 M272,266 Q264,292 240,309"/>`;
+        out += `<ellipse class="bladder" cx="230" cy="314" rx="15" ry="10"/>`;
+
+        // the blood loop, with cells taking one real lap of the body
+        const loop = 'M244,202 C262,214 286,232 280,260 C274,292 246,302 230,302 C214,302 186,292 180,260 C174,232 198,214 216,202 Q230,194 244,202';
+        out += `<path id="bloodPath" class="vessel" d="${loop}"/>`;
+        out += `<path id="lungLoop" class="vessel thin" d="M236,176 C214,160 196,150 190,160 C186,172 214,180 236,176"/>`;
+        for (let i = 0; i < 10; i += 1) {
+            out += `<circle class="blood${i % 2 ? ' spent' : ''}" r="3.6">` +
+                   `<animateMotion dur="${a.circTime.toFixed(2)}s" repeatCount="indefinite" ` +
+                   `begin="${(-i * a.circTime / 10).toFixed(2)}s"><mpath href="#bloodPath"/></animateMotion></circle>`;
+        }
+        for (let i = 0; i < 3; i += 1) {
+            out += `<circle class="blood spent" r="3"><animateMotion dur="${(a.circTime / 3).toFixed(2)}s" repeatCount="indefinite" begin="${(-i * a.circTime / 9).toFixed(2)}s"><mpath href="#lungLoop"/></animateMotion></circle>`;
+        }
 
         // the heart, squeezing at the real pulse
-        out += `<g style="transform-origin:${CX}px 96px">` +
-               `<path class="heart" d="M 228 79 C 235 79 245 82 245 91 C 245 102 233 109 226 113 C 221 108 215 100 215 90 C 215 82 222 79 228 79 Z">` +
-               `<animateTransform attributeName="transform" type="scale" values="1;0.85;1" dur="${beat.toFixed(3)}s" repeatCount="indefinite"/></path></g>`;
-        // outside the torso: the right side of the blood loop passes there
-        out += `<text class="organ-label" x="182" y="99" text-anchor="end">심장</text>`;
+        out += `<g style="transform-origin:244px 182px">` +
+               `<path class="heart" d="M238,160 C248,152 266,160 264,176 C262,192 248,202 240,208 C232,200 222,190 224,176 C226,164 232,160 238,160Z">` +
+               `<animateTransform attributeName="transform" type="scale" values="1;0.86;1" dur="${beat.toFixed(3)}s" repeatCount="indefinite"/></path></g>`;
 
-        out += `<path class="gut" d="M204,120 q10,-8 20,0 q10,8 20,0 q10,-8 12,6 q-2,12 -14,10 q-12,-2 -20,4 q-10,6 -18,-2 q-6,-8 0,-18 Z"/>`;
-        out += `<text class="organ-label" x="190" y="149" text-anchor="end">소장</text>`;
+        // drops of urine only once the result is shown, so the drawing does not answer the question first
+        if (revealed) {
+            const drip = Math.max(0.6, 3 / a.ratio);
+            for (let i = 0; i < 4; i += 1) {
+                out += `<circle class="urine-drop" r="2.8"><animateMotion dur="${drip.toFixed(2)}s" repeatCount="indefinite" begin="${(-i * drip / 4).toFixed(2)}s" path="${i % 2 ? 'M272,266 Q264,292 240,309' : 'M188,264 Q196,292 220,309'}"/></circle>`;
+            }
+        }
 
-        out += `<path class="kidney" d="M 214.4 104 C 220.2 104 220.2 112 216.9 118 C 220.2 124 220.2 132 214.4 132 C 206.2 132 200.5 124 200.5 118 C 200.5 112 206.2 104 214.4 104 Z M 245.6 104 C 253.8 104 259.5 112 259.5 118 C 259.5 124 253.8 132 245.6 132 C 239.8 132 239.8 124 243.1 118 C 239.8 112 239.8 104 245.6 104 Z"/>`;
-        out += `<text class="organ-label" x="190" y="122" text-anchor="end">콩팥</text>`;
+        // short names with leader lines, kept outside the body
+        const tags = [
+            ['기관', 'end', 96, 232, 96], ['폐', 'end', 150, 176, 150], ['간', 'end', 220, 182, 220], ['콩팥', 'end', 250, 176, 250], ['작은창자', 'end', 282, 214, 282],
+            ['심장', 'start', 182, 262, 182], ['위', 'start', 228, 286, 228], ['큰창자', 'start', 288, 254, 288], ['방광', 'start', 316, 244, 316],
+        ];
+        tags.forEach(([name, side, y, px, py]) => {
+            const tx = side === 'end' ? 96 : 364;
+            out += `<path class="leader" d="M${px},${py} L${side === 'end' ? tx + 6 : tx - 6},${y}"/>`;
+            out += `<text class="organ-label" x="${tx}" y="${y + 5}" text-anchor="${side}">${name}</text>`;
+        });
+        window.scienceScene.render(mainGroup, out);
+        const svg = mainGroup.ownerSVGElement;
+        if (svg && reducedMotion()) svg.pauseAnimations();
+    }
 
-        // Breathing and pumping on the left, feeding and filtering on the right.
-        // The columns stop short of the body so the organ labels have room.
-        out += `<text class="group-title" style="fill:#8fd0ef" x="14" y="40">호흡</text>`;
-        out += statRow(14, 56, '호흡수', `${a.d.rr} 회/분`, '#0f172a', 144);
-        out += statRow(14, 70, '1회 호흡량', `${a.d.tv} mL`, '#0f172a', 144);
-        out += statRow(14, 84, '분당 환기량', `${fmt(a.ve)} L/분`, '#8fd0ef', 144);
-        out += `<text class="group-title" style="fill:#ff8a8a" x="14" y="106">순환</text>`;
-        out += statRow(14, 122, '심장 박동수', `${a.d.hr} 회/분`, '#0f172a', 144);
-        out += statRow(14, 136, '1회 박출량', `${a.d.sv} mL`, '#0f172a', 144);
-        out += statRow(14, 150, '심박출량', `${fmt(a.co)} L/분`, '#ff8a8a', 144);
-
-        out += `<text class="group-title" style="fill:#d9b070" x="300" y="40">소화·흡수</text>`;
-        out += statRow(300, 56, '쓰는 포도당', `${fmt(a.glucose, 2)} g/분`, '#d9b070', 452);
-        out += statRow(300, 70, '내는 열량', `${fmt(a.kcal, 1)} kcal/분`, '#0f172a', 452);
-        out += `<text class="group-title" style="fill:#c9a6f0" x="300" y="106">배설</text>`;
-        out += statRow(300, 122, '사구체 여과량', `${a.d.gfr} mL/분`, '#0f172a', 452);
-        out += statRow(300, 136, '오줌 양', `${fmt(a.d.urine, 1)} mL/분`, '#c9a6f0', 452);
-        out += statRow(300, 150, '오줌 속 포도당', `0 mg`, '#0f172a', 452);
-
-        out += `<text class="note-text" x="14" y="188">산소 소비량 ${a.d.vo2} mL/분 = 심박출량 ${fmt(a.co)} L × 1 L에서 뽑아 쓴 ${fmt(a.avDiff, 0)} mL</text>`;
-        out += `<text class="note-text" x="14" y="204">표시된 호흡·심장 박동은 예시 자료이며 모든 사람의 측정값이 아닙니다</text>`;
-        window.scienceScene.render(mainGroup,out);
+    function renderStats(a) {
+        if (!bodyStats) return;
+        const hide = v => revealed ? v : '?';
+        const group = (title, cls, rows) => `<section class="stat-group ${cls}"><h3>${title}</h3>` +
+            rows.map(([n, v, strong]) => `<p><span>${n}</span><strong${strong ? ' class="key"' : ''}>${v}</strong></p>`).join('') + '</section>';
+        bodyStats.innerHTML =
+            group('호흡', 'g-breath', [['호흡수', `${a.d.rr} 회/분`], ['1회 호흡량', `${a.d.tv} mL`], ['분당 환기량', `${fmt(a.ve)} L/분`, true]]) +
+            group('순환', 'g-blood', [['심장 박동수', `${a.d.hr} 회/분`], ['1회 박출량', `${a.d.sv} mL`], ['심박출량', `${fmt(a.co)} L/분`, true]]) +
+            group('소화·흡수', 'g-gut', [['쓰는 포도당', `${fmt(a.glucose, 2)} g/분`, true], ['내는 열량', `${fmt(a.kcal, 1)} kcal/분`]]) +
+            group('배설', 'g-kidney', [['사구체 여과량', hide(`${a.d.gfr} mL/분`)], ['오줌 양', hide(`${fmt(a.d.urine, 1)} mL/분`), true], ['오줌 속 포도당', hide('0 mg')]]);
     }
 
     const ROWS = [
@@ -132,10 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: '오줌 양', pick: a => a.d.urine, unit: 'mL/분', colour: '#b8a6f0', digits: 1 },
     ];
 
-    function renderGraph(a) {
+    function renderGraph(a, k = 1) {
         const base = derive('rest');
         const ratios = ROWS.map(r => r.pick(a) / r.pick(base));
-        const max = Math.max(1.3, ...ratios) * 1.12;
+        const max = Math.max(1.3, ...(revealed ? ratios.map(r => 1 + (r - 1) * k) : [1])) * 1.12;
         const gx = v => GRAPH.x0 + (v / max) * (GRAPH.x1 - GRAPH.x0);
         let out = '';
         for (let i = 0; i <= 4; i += 1) {
@@ -145,30 +171,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 30}" text-anchor="middle">앉아 있을 때를 1로 본 배수</text>`;
+        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 36}" text-anchor="middle">앉아 있을 때를 1로 본 배수</text>`;
         out += `<line class="base-line" x1="${gx(1).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(1).toFixed(1)}" y2="${GRAPH.y0}"/>`;
         out += `<text class="base-text" x="${(gx(1) + 4).toFixed(1)}" y="${GRAPH.y1 + 9}">기준 1배</text>`;
 
         ROWS.forEach((row, i) => {
             const y = GRAPH.y1 + 22 + i * 26;
-            const value = row.pick(a), ratio = ratios[i];
-            const colour = ratio > 1.02 ? row.colour : ratio < 0.98 ? '#ea580c' : '#475569';
+            const ratio = ratios[i];
             out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end">${row.name}</text>`;
-            out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 5}" width="${Math.max(2, gx(ratio) - GRAPH.x0).toFixed(1)}" height="13" rx="3" fill="${colour}" opacity=".82"/>`;
+            out += `<rect class="bar-rest" x="${GRAPH.x0}" y="${y - 5}" width="${(gx(1) - GRAPH.x0).toFixed(1)}" height="13" rx="3"/>`;
+            if (!revealed) return;
+            const shown = 1 + (ratio - 1) * k;
+            const colour = ratio > 1.02 ? row.colour : ratio < 0.98 ? '#ea580c' : '#475569';
+            out += `<rect class="bar" x="${GRAPH.x0}" y="${y - 5}" width="${Math.max(2, gx(shown) - GRAPH.x0).toFixed(1)}" height="13" rx="3" fill="${colour}" opacity=".85"/>`;
+            if (k < 1) return;
             const label = `${ratio.toFixed(2)}배`;
             const flip = gx(ratio) > GRAPH.x1 - 110;
-            out += `<text class="bar-text" style="fill:${flip ? '#ffffff' : colour}" x="${(gx(ratio) + (flip ? -6 : 6)).toFixed(1)}" y="${(y + 5).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${label}</text>`;
+            out += `<text class="bar-text" style="fill:${flip ? '#0f172a' : colour}" x="${(gx(ratio) + (flip ? -6 : 6)).toFixed(1)}" y="${(y + 5).toFixed(1)}"${flip ? ' text-anchor="end"' : ''}>${label}</text>`;
         });
         window.scienceScene.render(graphGroup,out);
     }
 
+    function growGraph(a) {
+        cancelAnimationFrame(graphAnim);
+        if (reducedMotion()) { renderGraph(a, 1); return; }
+        renderGraph(a, 0);
+        const t0 = performance.now(), dur = 1100;
+        const step = now => {
+            const t = Math.min(1, (now - t0) / dur), k = 1 - Math.pow(1 - t, 3);
+            renderGraph(a, t >= 1 ? 1 : k);
+            if (t < 1) graphAnim = requestAnimationFrame(step);
+        };
+        graphAnim = requestAnimationFrame(step);
+    }
+
     function render() {
         const a = derive();
+        cancelAnimationFrame(graphAnim);
         renderMain(a);
         renderGraph(a);
+        renderStats(a);
         timeOutput.textContent = `${minutes()} 분`;
         stageBadge.textContent = `${a.d.label} · 심장 ${a.d.hr}회/분`;
         const t = minutes();
+        if (!revealed) { window.scienceScene.render(dataNote, ''); return a; }
         window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">산소 소비량</span><span class="data-val">심박출량 ${fmt(a.co)} L/분 × 1 L당 ${fmt(a.avDiff, 0)} mL = ${a.d.vo2} mL/분</span></div>` +
             `<div class="data-row"><span class="data-name">숨</span><span class="data-val">${a.d.rr} 회 × ${a.d.tv} mL = ${fmt(a.ve)} L/분 · 내쉰 숨의 산소 약 ${fmt(a.feO2 * 100, 1)} % (들숨·날숨 부피를 같게 둔 근사)</span></div>` +
             `<div class="data-row"><span class="data-name">양분</span><span class="data-val">포도당 ${fmt(a.glucose, 2)} g/분 · ${t} 분이면 ${fmt(a.glucose * t, 1)} g (${fmt(a.kcal * t, 0)} kcal)</span></div>` +
@@ -180,7 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const VERDICT = { more: '늘어난다', same: '그대로다', less: '줄어든다' };
 
     function check() {
-        const a = derive();
+        const first = !revealed;
+        revealed = true;
+        const a = render();
+        if (first) growGraph(a);
         const t = minutes();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -211,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         actButtons.forEach(item => item.classList.toggle('selected', item === button));
         resultEmpty.hidden = false;
         resultContent.hidden = true;
+        revealed = false;
         render();
     }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
@@ -222,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeRange.value = '10';
         prediction = null;
         predictionButtons.forEach(item => item.classList.remove('selected'));
-        stageCaption.textContent = '심장과 폐는 실제 빠르기로 뜁니다. 활동을 바꾸면 눈에 띄게 빨라집니다.';
+        stageCaption.textContent = '심장과 폐는 실제 빠르기로 뜁니다. 활동을 바꾸면 눈에 띄게 빨라집니다. 수치는 건강한 어른의 예시 자료입니다.';
         actButtons.find(b => b.dataset.act === 'rest').click();
     });
 

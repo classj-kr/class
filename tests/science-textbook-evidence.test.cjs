@@ -7,7 +7,7 @@ const screenshotWebp=require('./science-screenshot.cjs');
 const root=path.resolve(__dirname,'../learning/inquiry/science-lab');
 const out=path.resolve(process.env.SCIENCE_TEST_ARTIFACTS || 'tmp/science-textbook-tests');
 
-for(const engine of ['chromium','webkit'])test(engine+': textbook causal relationships and every photosynthesis control combination',{timeout:90000},async()=>{
+for(const engine of ['chromium','webkit'])test(engine+': textbook causal relationships and every photosynthesis control combination',{timeout:180000},async()=>{
  const server=http.createServer((req,res)=>{
   let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);
   if(!file.startsWith(root+path.sep))return res.writeHead(403).end();
@@ -51,6 +51,8 @@ for(const engine of ['chromium','webkit'])test(engine+': textbook causal relatio
    await page.evaluate(([L,C,T])=>{__photoModel.setLight(L);__photoModel.setCO2(C);__photoModel.setTemp(T);},[L,C,T]);
    for(const choice of ['light','co2','temp','multiple','none']){
     await page.locator(`[data-prediction="${choice}"]`).tap();await page.locator('#checkBtn').tap();
+    // 「기포 수 세기」는 1.5초 동안 세어 올라간 뒤에 결과를 보인다.
+    await page.waitForFunction(()=>!document.getElementById('resultContent').hidden,null,{timeout:5000});
     assert.equal(/예상이 맞았습니다/.test(await page.locator('#predictionResult').textContent()),choice===expected,`${L}/${C}/${T}/${choice}`);answers++;
    }
   }

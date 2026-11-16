@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     const ease = p => p < 0.5 ? 2 * p * p : 1 - (1 - p) * (1 - p) * 2;
-    const fmtN = (n, d = 0) => (+n.toFixed(d)).toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace('-', '−');
+    const fmtN = (n, d = 0) => ((+n.toFixed(d)) || 0).toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace('-', '−');
     const solve = (f, lo, hi) => { let flo = f(lo); for (let k = 0; k < 60; k += 1) { const m = (lo + hi) / 2, fm = f(m); if ((fm < 0) === (flo < 0)) { lo = m; flo = fm; } else hi = m; } return (lo + hi) / 2; };
 
     /* ------------------------------------------------------------ models */
@@ -224,17 +224,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderRetro(a) {
         const p = state.progress, { pl, W, rows } = a, t = -W + 2 * W * p, day = Math.round(t), row = a.at(t);
-        const CX = 92, CY = 110, s = 66 / Math.max(pl.a, 1);
-        let out = `<circle class="orbit" cx="${CX}" cy="${CY}" r="${s.toFixed(1)}"/><circle class="orbit" cx="${CX}" cy="${CY}" r="${(pl.a * s).toFixed(1)}"/><circle class="sun-dot" cx="${CX}" cy="${CY}" r="4"/>`;
+        const CX = 104, CY = 104, s = 92 / Math.max(pl.a, 1);
+        let out = `<circle class="orbit" cx="${CX}" cy="${CY}" r="${s.toFixed(1)}"/><circle class="orbit" cx="${CX}" cy="${CY}" r="${(pl.a * s).toFixed(1)}"/><circle class="sun-dot" cx="${CX}" cy="${CY}" r="7"/>`;
         const P = r => [CX + r.px * s, CY - r.py * s], E = r => [CX + r.ex * s, CY - r.ey * s];
         // faint sight lines at the two stationary points, the current one bright
         [a.t1, a.t2].forEach(tt => { if (tt === null) return; const r = rows[tt + W], e = E(r), q = P(r); out += `<line class="sight" x1="${e[0].toFixed(1)}" y1="${e[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}"/>`; });
-        const e = E(row), q = P(row), L = Math.hypot(q[0] - e[0], q[1] - e[1]) || 1, ext = Math.min(80, 74 - Math.hypot(q[0] - CX, q[1] - CY));
+        const e = E(row), q = P(row), L = Math.hypot(q[0] - e[0], q[1] - e[1]) || 1, ext = Math.min(100, 98 - Math.hypot(q[0] - CX, q[1] - CY));
         out += `<line class="sight now" x1="${e[0].toFixed(1)}" y1="${e[1].toFixed(1)}" x2="${(q[0] + (q[0] - e[0]) / L * Math.max(0, ext)).toFixed(1)}" y2="${(q[1] + (q[1] - e[1]) / L * Math.max(0, ext)).toFixed(1)}"/>`;
-        out += `<circle class="earth-dot" cx="${e[0].toFixed(1)}" cy="${e[1].toFixed(1)}" r="3.5"/><circle fill="${pl.col}" cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="4"/>`;
-        out += `<text class="small-label" x="${CX}" y="196" text-anchor="middle">위에서 본 궤도 (축척대로) · 파랑 지구 · ${pl.label}</text>`;
+        out += `<circle class="earth-dot" cx="${e[0].toFixed(1)}" cy="${e[1].toFixed(1)}" r="5"/><circle fill="${pl.col}" stroke="#7c2d12" stroke-width=".8" cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="5.5"/>`;
+        out += `<text class="small-label" x="${CX}" y="211" text-anchor="middle">위에서 본 궤도 (축척대로) · 파랑 지구 · ${pl.label}</text>`;
         // sky strip: east on the left, as when facing south
-        const SX0 = 212, SX1 = 446, SY0 = 36, SY1 = 152;
+        const SX0 = 222, SX1 = 452, SY0 = 36, SY1 = 152;
         out += `<rect class="sky" x="${SX0}" y="${SY0}" width="${SX1 - SX0}" height="${SY1 - SY0}" rx="4"/>`;
         stars.forEach(([u, v, r]) => { out += `<circle class="star" cx="${(SX0 + 4 + u * (SX1 - SX0 - 8)).toFixed(1)}" cy="${(SY0 + 4 + v * (SY1 - SY0 - 8)).toFixed(1)}" r="${r.toFixed(1)}"/>`; });
         const lons = rows.map(r => r.lon), lonMin = Math.min(...lons), lonMax = Math.max(...lons), span = Math.max(1e-6, lonMax - lonMin);
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [a.t1, a.t2].forEach(tt => { if (tt !== null && t >= tt) { const r = rows[tt + W]; out += `<circle class="stop-dot" cx="${xOf(r.lon).toFixed(1)}" cy="${yOf(r.beta).toFixed(1)}" r="4"/>`; } });
         out += `<circle fill="${pl.col}" stroke="#fff" stroke-width=".8" cx="${xOf(row.lon).toFixed(1)}" cy="${yOf(row.beta).toFixed(1)}" r="4"/>`;
         out += `<text class="small-label" x="${SX0}" y="${SY0 - 6}">동쪽 ←</text><text class="small-label" x="${(SX0 + SX1) / 2}" y="${SY0 - 6}" text-anchor="middle">남쪽 하늘에 찍힌 ${pl.label}의 자리</text><text class="small-label" x="${SX1}" y="${SY0 - 6}" text-anchor="end">→ 서쪽</text>`;
-        out += `<text class="small-label" style="fill:#e2e8f0" x="${SX0 + 6}" y="${SY1 - 6}">가로 ${fmtN(span, 1)}° · 세로 남북 ${fmtN(betaMax * 2, 1)}° (같은 눈금)</text>`;
+        out += `<text class="small-label" style="fill:#1e3a5f" x="${SX0 + 6}" y="${SY1 - 6}">가로 ${fmtN(span, 1)}° · 세로 남북 ${fmtN(betaMax * 2, 1)}° (같은 눈금)</text>`;
         const ref = pl.inner ? '내합' : '충';
         const inRet = a.t1 !== null && t >= a.t1 && t <= a.t2;
         out += `<text class="trait-text" x="${SX0}" y="170">${day === 0 ? ref : day < 0 ? `${ref} ${-day}일 전` : `${ref} ${day}일 후`} · 지구에서 ${fmtN(row.delta, 2)} AU · 황경 ${row.lon >= 0 ? '+' : ''}${fmtN(row.lon, 1)}°</text>`;
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<text class="axis-title" x="${X0}" y="18">날짜에 따른 ${pl.label}의 황경 — 내려가는 구간이 서쪽으로 되돌아가는 때 (역행)</text>`;
         if (a.t1 !== null) out += `<rect class="retro-band" x="${xOf(a.t1).toFixed(1)}" y="${Y1}" width="${(xOf(a.t2) - xOf(a.t1)).toFixed(1)}" height="${Y0 - Y1}"/>`;
         [-W, -W / 2, 0, W / 2, W].forEach(t => { out += `<line class="grid-line" x1="${xOf(t).toFixed(1)}" y1="${Y1}" x2="${xOf(t).toFixed(1)}" y2="${Y0}"/><text class="axis-text" x="${xOf(t).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${t === 0 ? (pl.inner ? '내합' : '충') : `${t > 0 ? '+' : '−'}${Math.abs(t)}일`}</text>`; });
-        [lonMin, (lonMin + lonMax) / 2, lonMax].forEach(l => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(l).toFixed(1)}" x2="${X1}" y2="${yOf(l).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(l) + 3.5).toFixed(1)}" text-anchor="end">${l >= 0 ? '+' : ''}${fmtN(l, 0)}°</text>`; });
+        [lonMin, (lonMin + lonMax) / 2, lonMax].forEach(l => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(l).toFixed(1)}" x2="${X1}" y2="${yOf(l).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(l) + 3.5).toFixed(1)}" text-anchor="end">${Math.round(l) > 0 ? '+' : ''}${fmtN(l, 0)}°</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         const tNow = -W + 2 * W * state.progress;
         let d = ''; [...rows.filter(r => r.t < tNow), a.at(tNow)].forEach(r => { d += `${d ? 'L' : 'M'}${xOf(r.t).toFixed(1)},${yOf(r.lon).toFixed(1)} `; });
@@ -281,26 +281,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderPhase(a) {
         const p = state.progress, { pl } = a, psi = a.psi - 2 * Math.PI * (1 - ease(p)), g = geom(pl, psi);
-        const CX = 92, CY = 110, s = 66 / Math.max(pl.a, 1);
-        let out = `<circle class="orbit" cx="${CX}" cy="${CY}" r="${s.toFixed(1)}"/><circle class="orbit" cx="${CX}" cy="${CY}" r="${(pl.a * s).toFixed(1)}"/><circle class="sun-dot" cx="${CX}" cy="${CY}" r="6"/>`;
+        const CX = 104, CY = 104, s = 92 / Math.max(pl.a, 1);
+        let out = `<circle class="orbit" cx="${CX}" cy="${CY}" r="${s.toFixed(1)}"/><circle class="orbit" cx="${CX}" cy="${CY}" r="${(pl.a * s).toFixed(1)}"/><circle class="sun-dot" cx="${CX}" cy="${CY}" r="8"/>`;
         const ex = CX + s, ey = CY, px = CX + g.px * s, py = CY - g.py * s;
         out += `<line class="sight" x1="${ex.toFixed(1)}" y1="${ey}" x2="${CX}" y2="${CY}"/><line class="sight now" x1="${ex.toFixed(1)}" y1="${ey}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
         // the planet's sunlit half, seen from above
-        const ang = Math.atan2(-(g.py), g.px), r0 = 5;
+        const ang = Math.atan2(-(g.py), g.px), r0 = 7;
         out += `<circle fill="#1b2733" stroke="rgba(148, 163, 184, 0.40)" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r0}"/>`;
         out += `<path fill="${pl.col}" d="M${(px + r0 * Math.cos(ang + Math.PI / 2)).toFixed(1)},${(py + r0 * Math.sin(ang + Math.PI / 2)).toFixed(1)} A${r0},${r0} 0 0 1 ${(px + r0 * Math.cos(ang - Math.PI / 2)).toFixed(1)},${(py + r0 * Math.sin(ang - Math.PI / 2)).toFixed(1)} Z"/>`;
-        out += `<circle class="earth-dot" cx="${ex.toFixed(1)}" cy="${ey}" r="3.5"/>`;
-        out += `<text class="small-label" x="${CX}" y="196" text-anchor="middle">위에서 본 궤도 (축척대로) · 밝은 쪽이 태양 쪽</text>`;
+        out += `<circle class="earth-dot" cx="${ex.toFixed(1)}" cy="${ey}" r="5"/>`;
+        out += `<text class="small-label" x="${CX}" y="211" text-anchor="middle">위에서 본 궤도 (축척대로) · 밝은 쪽이 태양 쪽</text>`;
         // the disk as seen from Earth
-        const DX = 330, DY = 100, r = 6 + 34 * clamp(g.size / a.sizeMax, 0, 1), litRight = !g.west;
-        out += `<rect class="sky" x="220" y="30" width="224" height="136" rx="10"/>`;
+        const DX = 338, DY = 100, r = 6 + 34 * clamp(g.size / a.sizeMax, 0, 1), litRight = !g.west;
+        out += `<rect class="sky" x="226" y="30" width="224" height="136" rx="10"/>`;
         out += `<circle class="disk-dark" cx="${DX}" cy="${DY}" r="${r.toFixed(1)}"/><path class="disk-lit" fill="${pl.col}" d="${phasePath(DX, DY, r, g.k, litRight)}"/>`;
         // the sunlit limb is outlined so even a hairline crescent stays visible
         out += `<path fill="none" stroke="${pl.col}" stroke-width="1.6" d="M${DX},${(DY - r).toFixed(1)} A${r.toFixed(1)},${r.toFixed(1)} 0 0 ${litRight ? 1 : 0} ${DX},${(DY + r).toFixed(1)}"/>`;
-        out += `<text class="small-label" style="fill:#cbd5e1" x="${DX}" y="${DY - 46}" text-anchor="middle">지구에서 본 ${pl.label} (크기는 가장 클 때에 견준 비율)</text>`;
-        out += `<text class="small-label" style="fill:#94a3b8" x="${DX + (litRight ? 52 : -52)}" y="${DY + 3.5}" text-anchor="${litRight ? 'start' : 'end'}">☀ 태양 쪽</text>`;
-        out += `<text class="trait-text" x="212" y="170">지구에서 ${fmtN(g.delta, 2)} AU · 겉보기 지름 ${fmtN(g.size, 1)}″ · 태양과 ${fmtN(g.e * R2D)}° 벌어짐</text>`;
-        out += `<text class="trait-text" x="212" y="186">밝은 부분 ${fmtN(g.k * 100)} % — ${g.k < 0.25 ? '가는 초승달' : g.k < 0.7 ? '반달쯤' : g.k < 0.97 ? '조금 이지러진 둥근 모양' : '둥근 모양'}</text>`;
+        out += `<text class="small-label" style="fill:#1e3a5f" x="${DX}" y="${DY - 46}" text-anchor="middle">지구에서 본 ${pl.label} (크기는 가장 클 때에 견준 비율)</text>`;
+        out += `<text class="small-label" style="fill:#475569" x="${DX + (litRight ? 52 : -52)}" y="${DY + 3.5}" text-anchor="${litRight ? 'start' : 'end'}">☀ 태양 쪽</text>`;
+        out += `<text class="trait-text" x="222" y="170">지구에서 ${fmtN(g.delta, 2)} AU · 겉보기 지름 ${fmtN(g.size, 1)}″ · 태양과 ${fmtN(g.e * R2D)}° 벌어짐</text>`;
+        out += `<text class="trait-text" x="222" y="186">밝은 부분 ${fmtN(g.k * 100)} % — ${g.k < 0.25 ? '가는 초승달' : g.k < 0.7 ? '반달쯤' : g.k < 0.97 ? '조금 이지러진 둥근 모양' : '둥근 모양'}</text>`;
         const VERD = { crescent: '가는 초승달, 가장 크게', half: '반달쯤', fullFar: '둥글고 가장 작게', fullNear: '둥글고 가장 크게' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${pl.label} ${posTable()[a.posKey].label}: ${VERD[a.verdict]} (${fmtN(a.g.size, 1)}″, ${fmtN(a.g.k * 100)} %)` : `${pl.label} · ${posTable()[a.posKey].label}까지 한 바퀴`}</text>`;
         out += `<text class="note-text" x="20" y="208">겉보기 지름 = 실제 지름 ÷ 거리, 밝은 부분 = (1 + cos 위상각) ÷ 2. 1″은 1°의 3,600분의 1</text>`;
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function graphEclipse(a) {
         const X0 = 70, X1 = 430, xOf = dl => X0 + dl / 25 * (X1 - X0);
-        const COL = { total: '#ff7a59', annular: '#d97706', partial: '#0284c7', penumbral: '#a78bfa', none: '#24343f' };
+        const COL = { total: '#ff7a59', annular: '#d97706', partial: '#0284c7', penumbral: '#a78bfa', none: '#d5dde7' };
         const NAMES = { solar: { total: '개기', annular: '금환', partial: '부분', none: '없음' }, lunar: { total: '개기', partial: '부분', penumbral: '반영', none: '없음' } };
         let out = `<text class="axis-title" x="20" y="18">교점에서 떨어진 각에 따른 식의 종류 — 달까지 ${fmtN(a.d)} km일 때</text>`;
         [['solar', 46], ['lunar', 100]].forEach(([kk, y]) => {
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!cur || cur.type !== type) { cur = { type, from: dl, to: dl }; segs.push(cur); } else cur.to = dl;
             }
             out += `<text class="trait-text" style="fill:${kk === a.kindKey ? '#d97706' : '#334155'}" x="${X0 - 5}" y="${y + 15}" text-anchor="end">${KINDS[kk].label}</text>`;
-            segs.forEach(sg => { const x = xOf(sg.from), w = Math.max(0.5, xOf(sg.to) - x); out += `<rect class="band" fill="${COL[sg.type]}" x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="22"/>`; if (w > 30) out += `<text class="band-text" style="fill:${sg.type === 'none' ? '#cbd5e1' : '#08131a'}" x="${(x + w / 2).toFixed(1)}" y="${y + 15}" text-anchor="middle">${NAMES[kk][sg.type]}</text>`; });
+            segs.forEach(sg => { const x = xOf(sg.from), w = Math.max(0.5, xOf(sg.to) - x); out += `<rect class="band" fill="${COL[sg.type]}" x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="22"/>`; if (w > 30) out += `<text class="band-text" style="fill:${sg.type === 'none' ? '#334155' : '#08131a'}" x="${(x + w / 2).toFixed(1)}" y="${y + 15}" text-anchor="middle">${NAMES[kk][sg.type]}</text>`; });
             segs.forEach((sg, i) => { if (i > 0) out += `<text class="small-label" x="${xOf(sg.from).toFixed(1)}" y="${y + 33}" text-anchor="middle">${fmtN(sg.from, 1)}°</text>`; });
         });
         [0, 5, 10, 15, 20, 25].forEach(dl => { out += `<text class="axis-text" x="${xOf(dl).toFixed(1)}" y="158" text-anchor="middle">${dl}°</text>`; });

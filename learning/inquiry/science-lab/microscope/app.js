@@ -4,10 +4,10 @@
    eyepiece field number. Brightness is illustrative, not a photometric law. */
 
 const SPECIMENS = {
-    onion: { name: '양파 표피', mm: 0.35, wide: 0.09, kind: 'brick', tint: 'rgba(214,226,190,.55)', back: 'rgba(60,72,52,.35)', note: '세포벽이 있어 벽돌처럼 반듯합니다' },
-    cheek: { name: '입안 상피', mm: 0.06, wide: 0.06, kind: 'blob', tint: 'rgba(226,196,214,.5)', back: 'rgba(70,54,66,.35)', note: '세포벽이 없어 둥글고 제각각입니다' },
-    stoma: { name: '잎의 기공', mm: 0.02, wide: 0.02, kind: 'stoma', tint: 'rgba(150,205,150,.5)', back: 'rgba(48,74,52,.4)', note: '숨구멍 둘레의 두 세포가 여닫습니다' },
-    para: { name: '짚신벌레', mm: 0.2, wide: 0.09, kind: 'para', tint: 'rgba(200,220,225,.5)', back: 'rgba(46,66,74,.35)', note: '물속을 헤엄쳐 다니는 한 세포짜리 생물' },
+    onion: { name: '양파 표피', mm: 0.35, wide: 0.09, kind: 'brick', tint: 'rgba(226,232,196,.9)', back: '#f7f3df', note: '세포벽이 있어 벽돌처럼 반듯합니다' },
+    cheek: { name: '입안 상피', mm: 0.06, wide: 0.06, kind: 'blob', tint: 'rgba(236,210,224,.85)', back: '#f8f1f4', note: '세포벽이 없어 둥글고 제각각입니다' },
+    stoma: { name: '잎의 기공', mm: 0.02, wide: 0.02, kind: 'stoma', tint: 'rgba(170,214,160,.9)', back: '#eef6ea', note: '숨구멍 둘레의 두 세포가 여닫습니다' },
+    para: { name: '짚신벌레', mm: 0.2, wide: 0.09, kind: 'para', tint: 'rgba(196,220,228,.9)', back: '#eef5f7', note: '물속을 헤엄쳐 다니는 한 세포짜리 생물' },
 };
 // The field number belongs to the eyepiece: a stronger eyepiece also shows less.
 const EYEPIECES = { 10: { fn: 18 }, 15: { fn: 12 } };
@@ -58,48 +58,55 @@ const FIELD = { cx: 342, cy: 106, r: 76 };
 
 function drawScope(g) {
     const a = analyse();
+    const AX = 101.5;                         // 광축: 접안렌즈·경통·쓰는 대물렌즈가 모두 이 세로선 위에 있다
 
-    g.appendChild(el('rect', { x: 44, y: 178, width: 116, height: 12, rx: 4, class: 'scope-body' }));
-    g.appendChild(el('rect', { x: 132, y: 40, width: 16, height: 140, rx: 5, class: 'scope-body' }));
-    g.appendChild(el('rect', { x: 90.5, y: 26, width: 22, height: 30, rx: 6, class: 'scope-tube' }));
-    g.appendChild(el('rect', { x: 94.5, y: 20, width: 14, height: 10, rx: 3, class: 'lens-barrel on' }));
-    g.appendChild(el('text', { x: 108, y: 28, class: 'tiny-label' }, `접안렌즈 ${state.eye}배`));
-    g.appendChild(el('rect', { x: 88, y: 54, width: 27, height: 42, rx: 6, class: 'scope-tube' }));
+    // 받침(발)과 손잡이(암): 경통과 재물대는 모두 암에 붙어 있다.
+    g.appendChild(el('path', { d: 'M62 194 Q62 186 72 186 L172 186 Q182 186 182 194 L182 200 Q182 204 176 204 L68 204 Q62 204 62 200 Z', class: 'scope-base' }));
+    g.appendChild(el('path', { d: 'M146 186 L170 186 L170 128 C170 86 160 56 136 34 L120 48 C138 66 146 92 146 128 Z', class: 'scope-arm' }));
+    g.appendChild(el('rect', { x: 110, y: 34, width: 30, height: 26, rx: 5, class: 'scope-arm' }));
+    g.appendChild(el('rect', { x: AX - 12, y: 28, width: 24, height: 66, rx: 3, class: 'scope-tube' }));
+    g.appendChild(el('rect', { x: AX - 8, y: 12, width: 16, height: 18, rx: 2, class: 'scope-eyepiece' }));
+    g.appendChild(el('rect', { x: AX - 9, y: 9, width: 18, height: 5, rx: 2, class: 'lens-barrel on' }));
+    g.appendChild(el('text', { x: AX + 14, y: 20, class: 'tiny-label' }, `접안렌즈 ${state.eye}배`));
+    g.appendChild(el('path', { d: `M${AX - 20} 94 L${AX + 20} 94 L${AX + 15} 103 L${AX - 15} 103 Z`, class: 'scope-revolver' }));
 
-    // The three objectives on their turret; the one in use swings under the
-    // tube. Their labels share one line, because staggering them by barrel
-    // length ran the numbers into each other.
+    // 대물렌즈 셋: 쓰는 것은 광축 위에 곧게, 나머지는 회전판에 비스듬히 붙어 있다.
     OBJECTIVES.forEach((o, i) => {
         const on = o === state.obj;
         const slot = (i - OBJECTIVES.indexOf(state.obj) + 1 + OBJECTIVES.length) % OBJECTIVES.length;
-        const bx = 74 + slot * 20, len = 12 + i * 7;
-        g.appendChild(el('rect', { x: bx, y: 96, width: 15, height: len, rx: 3, 'data-objective': o, class: `lens-barrel${on ? ' on' : ''}` }));
-        g.appendChild(el('text', { x: bx + 7.5, y: 131, 'text-anchor': 'middle', class: 'tiny-label', style: on ? 'fill:#059669' : '' }, String(o)));
+        const len = 12 + i * 7;
+        const tilt = (slot - 1) * 28;
+        g.appendChild(el('rect', {
+            x: 94, y: 102, width: 15, height: len, rx: 3, 'data-objective': o,
+            class: `lens-barrel${on ? ' on' : ''}`, transform: `rotate(${-tilt} ${AX} 100)`,
+        }));
     });
-    g.appendChild(el('text', { x: 66, y: 131, 'text-anchor': 'end', class: 'tiny-label' }, '대물'));
+    g.appendChild(el('text', { x: 78, y: 124, 'text-anchor': 'end', class: 'tiny-label' }, `대물렌즈 ${state.obj}배`));
 
-    g.appendChild(el('rect', { x: 52, y: 142, width: 96, height: 7, rx: 2, class: 'stage-plate' }));
-    g.appendChild(el('rect', { x: 72, y: 138, width: 42, height: 5, rx: 1, class: 'slide-glass' }));
-    g.appendChild(el('text', { x: 48, y: 148, 'text-anchor': 'end', class: 'tiny-label' }, '재물대'));
+    g.appendChild(el('rect', { x: 58, y: 140, width: 98, height: 7, rx: 2, class: 'stage-plate' }));
+    g.appendChild(el('rect', { x: 78, y: 136, width: 48, height: 4, rx: 1, class: 'slide-glass' }));
+    g.appendChild(el('path', { d: 'M70 136 L84 136 L84 139 L70 139 Z M120 136 L134 136 L134 139 L120 139 Z', class: 'stage-clip' }));
+    g.appendChild(el('text', { x: 54, y: 148, 'text-anchor': 'end', class: 'tiny-label' }, '재물대'));
 
-    // The focus knob turns while the run is finding focus.
-    const kx = 152, ky = 160;
+    // 조절 나사는 암 옆에 붙어 있고 초점을 맞추는 동안 돈다.
+    const kx = 158, ky = 112;
     const turn = state.running ? state.focus * 900 : 0;
-    g.appendChild(el('circle', { cx: kx, cy: ky, r: 12, class: 'knob' }));
+    g.appendChild(el('circle', { cx: kx, cy: ky, r: 11, class: 'knob' }));
     g.appendChild(el('line', {
-        x1: kx, y1: ky, x2: kx + Math.cos(turn * Math.PI / 180) * 9, y2: ky + Math.sin(turn * Math.PI / 180) * 9,
+        x1: kx, y1: ky, x2: kx + Math.cos(turn * Math.PI / 180) * 8, y2: ky + Math.sin(turn * Math.PI / 180) * 8,
         class: 'knob-mark',
     }));
-    g.appendChild(el('text', { x: kx + 16, y: ky + 3, class: 'tiny-label' }, '조절 나사'));
+    g.appendChild(el('text', { x: kx + 16, y: ky + 4, class: 'tiny-label' }, '조절 나사'));
 
-    g.appendChild(el('path', { d: 'M 88 190 q 12 -12 24 0', class: 'mirror' }));
-    for (let i = 0; i < 3; i += 1) {
-        g.appendChild(el('line', { x1: 92 + i * 8, y1: 186, x2: 92 + i * 8, y2: 149, class: 'light-ray' }));
+    g.appendChild(el('ellipse', { cx: AX, cy: 176, rx: 13, ry: 5, class: 'mirror' }));
+    g.appendChild(el('rect', { x: AX - 2, y: 180, width: 4, height: 6, class: 'scope-arm' }));
+    for (let i = -1; i <= 1; i += 1) {
+        g.appendChild(el('line', { x1: AX + i * 7, y1: 172, x2: AX + i * 5, y2: 148, class: 'light-ray' }));
     }
 
-    g.appendChild(el('text', { x: 20, y: 22, class: 'small-label' }, '배율'));
-    g.appendChild(el('text', { x: 20, y: 44, class: 'big-read' }, `${a.mag}배`));
-    g.appendChild(el('text', { x: 20, y: 62, class: 'tiny-label' }, `${state.eye} × ${state.obj}`));
+    g.appendChild(el('text', { x: 20, y: 44, class: 'small-label' }, '배율'));
+    g.appendChild(el('text', { x: 20, y: 66, class: 'big-read' }, `${a.mag}배`));
+    g.appendChild(el('text', { x: 20, y: 84, class: 'tiny-label' }, `${state.eye} × ${state.obj}`));
 }
 
 function drawField(g) {
@@ -179,7 +186,8 @@ function drawScaleAndLabels(g, a, pxPerMm) {
     const barMm = a.field / 4;
     const barPx = barMm * pxPerMm;
     g.appendChild(el('line', { x1: FIELD.cx - barPx / 2, y1: FIELD.cy + FIELD.r - 12, x2: FIELD.cx + barPx / 2, y2: FIELD.cy + FIELD.r - 12, class: 'scale-bar' }));
-    g.appendChild(el('text', { x: FIELD.cx, y: FIELD.cy + FIELD.r - 17, 'text-anchor': 'middle', class: 'tiny-label', style: 'fill:#d97706' },
+    g.appendChild(el('rect', { x: FIELD.cx - 34, y: FIELD.cy + FIELD.r - 33, width: 68, height: 19, rx: 5, class: 'scale-chip' }));
+    g.appendChild(el('text', { x: FIELD.cx, y: FIELD.cy + FIELD.r - 18, 'text-anchor': 'middle', class: 'tiny-label', style: 'fill:#b45309' },
         barMm >= 1 ? `${fmt(barMm, 2)} mm` : `${Math.round(barMm * 1000)} μm`));
 
     g.appendChild(el('text', { x: 444, y: 22, 'text-anchor': 'end', class: 'small-label' }, a.spec.name));
@@ -195,14 +203,15 @@ function drawGraph(g) {
     const x0 = 54, x1 = 440, yTop = 30, yBot = 146;
     const combos = [];
     [10, 15].forEach(e => OBJECTIVES.forEach(o => combos.push({ e, o })));
-    const top = Math.max(...combos.map(c => fieldMm(c.e, c.o))) * 1.2;
+    combos.sort((p, q) => power(p.e, p.o) - power(q.e, q.o));          // 배율 순서대로
+    const top = Math.ceil(Math.max(...combos.map(c => fieldMm(c.e, c.o))));   // 눈금은 1 mm 단위
     const Y = f => yBot - (f / top) * (yBot - yTop);
     const slot = (x1 - x0) / combos.length;
 
-    for (let i = 0; i <= 4; i += 1) {
-        const f = top * i / 4;
+    for (let i = 0; i <= top; i += 1) {
+        const f = i;
         g.appendChild(el('line', { x1: x0, y1: Y(f), x2: x1, y2: Y(f), class: 'grid-line' }));
-        if (i > 0) g.appendChild(el('text', { x: x0 - 6, y: Y(f) + 3.5, 'text-anchor': 'end', class: 'axis-text' }, `${fmt(f, 1)}`));
+        if (i > 0) g.appendChild(el('text', { x: x0 - 6, y: Y(f) + 3.5, 'text-anchor': 'end', class: 'axis-text' }, `${fmt(f, 0)}`));
     }
     g.appendChild(el('line', { x1: x0, y1: yBot, x2: x1, y2: yBot, class: 'axis' }));
     g.appendChild(el('line', { x1: x0, y1: yTop, x2: x0, y2: yBot, class: 'axis' }));
@@ -216,7 +225,8 @@ function drawGraph(g) {
             x: cx - bw / 2, y: Y(f), width: bw, height: yBot - Y(f), rx: 3, class: 'bar',
             style: `fill:${on ? 'rgba(84,230,193,.65)' : 'rgba(127,212,240,.32)'}`,
         }));
-        g.appendChild(el('text', { x: cx, y: Y(f) - 5, 'text-anchor': 'middle', class: 'bar-text', style: `fill:${on ? '#059669' : '#475569'}` },
+        // 몇 개 들어가는지는 초점을 맞춘 뒤에 보인다(먼저 보이면 예상의 답이 된다).
+        if (state.checked) g.appendChild(el('text', { x: cx, y: Y(f) - 5, 'text-anchor': 'middle', class: 'bar-text', style: `fill:${on ? '#059669' : '#475569'}` },
             `${Math.round(f / SPECIMENS[state.spec].mm)}개`));
         g.appendChild(el('text', { x: cx, y: yBot + 14, 'text-anchor': 'middle', class: 'axis-text', style: on ? 'fill:#059669' : '' }, `${mag}배`));
     });
@@ -244,7 +254,7 @@ function updateReadout() {
         ['배율 계산', `접안 ${state.eye} × 대물 ${state.obj} = ${a.mag}배`, false],
         ['모형의 표본 크기', `${fmt(a.spec.mm, 2)} mm · ${Math.round(a.spec.mm * 1000)} μm`, false],
         ['눈에 보이는 크기', `${fmt(a.apparent, 1)} mm`, false],
-        ['빈틈없이 나란히 놓으면', a.overflows ? '한 개도 다 안 들어옵니다' : `${fmt(a.across, a.across < 10 ? 1 : 0)}개`, false],
+        ['빈틈없이 나란히 놓으면', !state.checked ? '초점을 맞춘 뒤에 셉니다' : a.overflows ? '한 개도 다 안 들어옵니다' : `${fmt(a.across, a.across < 10 ? 1 : 0)}개`, false],
         ['이 표본의 특징', a.spec.note, false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
@@ -271,7 +281,7 @@ function explain(a) {
     s += `이 배율에서 한눈에 들어오는 너비는 ${a.field >= 1 ? `${fmt(a.field, 2)} mm` : `${Math.round(a.field * 1000)} μm`}이므로, `;
     s += a.overflows
         ? `${a.spec.name} 한 개도 다 담기지 않습니다. 너무 크게 본 셈입니다. `
-        : `같은 크기의 표본을 빈틈없이 나란히 놓으면 가로로 ${fmt(a.across, a.across < 10 ? 1 : 0)}개쯤 들어갑니다. 실제로 보이는 개수는 표본 사이 간격에 따라 달라집니다. `;
+        : `같은 크기의 표본을 빈틈없이 나란히 놓으면 가로로 ${fmt(a.across, a.across < 10 ? 1 : 0)}개쯤 들어갑니다. `;
 
     if (v === 'p1') {
         s += `화면을 꽤 차지하므로 모양을 또렷이 살펴볼 수 있습니다. `;
@@ -280,9 +290,7 @@ function explain(a) {
     } else {
         s += `화면에서 차지하는 자리가 너무 작아 무엇이 있는지도 알아보기 어렵습니다. 대물렌즈를 높은 것으로 바꿔야 합니다. `;
     }
-    s += `배율을 올리면 크게 보이지만 그만큼 보이는 범위가 좁아집니다. 대물렌즈를 4배에서 40배로 바꾸면 너비가 정확히 10분의 1이 됩니다. `;
-    s += "실제 밝기는 렌즈와 조명 조건에 따라 달라집니다. 화면이 어두우면 조명과 조리개를 조절합니다. ";
-    s += `그래서 현미경은 늘 낮은 배율로 먼저 찾아 가운데에 놓고, 그다음에 배율을 올립니다. ${a.spec.note}.`;
+    s += `배율을 올리면 크게 보이는 대신 보이는 범위가 좁아지므로, 낮은 배율로 먼저 찾은 뒤 배율을 올립니다.`;
     $('elementaryExplanation').textContent = s;
 }
 

@@ -5,7 +5,7 @@
  let state=M.initial(),timer=null;
  const reagentName=r=>r==='acid'?'염산':'수산화 나트륨';
  const tubes=$('#ecTubes');
- tubes.innerHTML=[0,1,2,3].map(i=>`<button class="ec-tube" data-ec-tube="${i}" aria-pressed="${i===0}"><strong>시험관 ${'ABCD'[i]}</strong><span class="ec-formula">${i%2===0?'K₂Cr₂O₇':'K₂CrO₄'}</span><div class="ec-glass" aria-hidden="true"><div class="ec-liquid"></div><div class="ec-shine"></div></div><i class="ec-drop" aria-hidden="true"></i><span class="ec-before"></span><span class="ec-after"></span></button>`).join('');
+ tubes.innerHTML=[0,1,2,3].map(i=>`<button class="ec-tube" data-ec-tube="${i}" aria-pressed="${i===0}"><strong>시험관 ${'ABCD'[i]}</strong><svg class="ec-dropper" viewBox="0 0 24 70" aria-hidden="true"><g class="ec-dropper-bulb"><path d="M6 20 V9 Q6 1 12 1 Q18 1 18 9 V20 Z" fill="#b4413a" stroke="#7f2a25" stroke-width="1"/><rect x="5" y="19" width="14" height="4" rx="1.5" fill="#8f322c"/></g><path d="M8.5 23 H15.5 V54 L13 66 H11 L8.5 54 Z" fill="#eef6fa" fill-opacity=".85" stroke="#7d97a5" stroke-width="1"/><path d="M9.6 40 H14.4 V54 L12.6 64 H11.4 L9.6 54 Z" fill="#d6e8f2"/><path d="M10 26 V50" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg><div class="ec-glass" aria-hidden="true"><div class="ec-liquid"></div><div class="ec-shine"></div></div><i class="ec-drop" aria-hidden="true"></i><i class="ec-drop ec-drop2" aria-hidden="true"></i><span class="ec-formula">${i%2===0?'K₂Cr₂O₇':'K₂CrO₄'}</span><span class="ec-before"></span><span class="ec-after"></span></button>`).join('');
  function render(){
   const busy=!!state.pending;
   $('.ec-lab').setAttribute('aria-busy',String(busy));
@@ -15,7 +15,7 @@
   all('[data-ec-reagent]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.ecReagent===state.reagent));b.disabled=busy;});
   $('#ecPrepare').disabled=state.prepared||busy;$('#ecAdd').disabled=!state.prepared||!!state.tubes[state.selected]||busy;
   all('[data-ec-tube]').forEach((b,i)=>{const t=state.tubes[i],pending=state.pending?.action==='add'&&state.pending.index===i;
-   b.disabled=busy;b.setAttribute('aria-pressed',String(i===state.selected));b.classList.toggle('is-pouring',pending);
+   b.disabled=busy;b.setAttribute('aria-pressed',String(i===state.selected));b.classList.toggle('is-pouring',pending);b.classList.toggle('is-empty',!state.prepared);
    const colour=pending?(state.pending.reagent==='acid'?'orange':'yellow'):t?.colour||M.initialColour(i);
    b.style.setProperty('--liquid',state.prepared?colours[colour]:'transparent');
    b.querySelector('.ec-before').textContent=state.prepared?'처음 · '+M.colourName[M.initialColour(i)]:'시료를 담기 전';
@@ -26,7 +26,7 @@
   $('#ecFill').disabled=state.cobalt!=='empty'||busy;$('#ecChloride').disabled=state.cobalt==='empty'||!!state.seen.prepared||busy;
   all('[data-ec-bath]').forEach(b=>{b.disabled=!state.seen.prepared||busy||state.bath===b.dataset.ecBath;b.setAttribute('aria-pressed',String(state.bath===b.dataset.ecBath));});
   const target=state.pending?.action==='chloride'?'purple':state.pending?.action==='bath'?(state.bath==='hot'?'blue':'pink'):state.cobalt;
-  $('#ecCobaltTube').dataset.bath=state.bath;$('#ecCobaltTube').style.setProperty('--liquid',colours[target]);
+  $('#ecCobaltTube').dataset.bath=state.bath;$('#ecCobaltTube').classList.toggle('is-empty',state.cobalt==='empty'&&state.pending?.action!=='fill');$('#ecCobaltTube').style.setProperty('--liquid',colours[target]);
   $('#ecTemperatureStatus').textContent=state.pending?.action==='chloride'?'염산을 조금씩 넣어 보라색 용액을 준비하고 있습니다.':state.pending?.action==='bath'?'같은 시험관을 옮겨 색의 변화를 관찰하고 있습니다.':state.cobalt==='empty'?'먼저 시험관에 염화 코발트 수용액을 담으세요.':!state.seen.prepared?'처음 용액은 분홍색입니다. 염산을 넣어 염화 이온을 공급하세요.':state.bath==='bench'?'보라색 용액이 준비되었습니다. 시험관을 물이 담긴 비커로 옮기세요.':`${state.bath==='hot'?'뜨거운 물':'차가운 물'}에서 ${M.colourName[state.cobalt]}으로 관찰됩니다. 반대쪽 비커로 옮겨 비교해 보세요.`;
   $('#ecColourSequence').innerHTML=[['prepared','조제 후'],['hot','뜨거운 물'],['cold','차가운 물']].map(([key,title])=>`<div><b>${title}</b><span>${state.seen[key]?`<i class="ec-sequence-chip" style="--swatch:${colours[state.seen[key]]}" aria-hidden="true"></i>${M.colourName[state.seen[key]]}`:'관찰 전'}</span></div>`).join('');
   const phase=state.pending?.action==='compress'?'compressed':state.pending?.action==='equilibrate'?'equilibrated':state.pressure;

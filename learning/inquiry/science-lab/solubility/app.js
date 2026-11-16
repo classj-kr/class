@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const points = [[0, 35.7], [20, 36], [40, 36.5], [60, 37.3], [80, 38.4], [100, 39.8]];
     let prediction = null;
+    // 한 번 실험해 본 뒤에야 용해도 곡선을 그린다(곡선 위 36 g이 곧 예상의 답이다).
+    let curveShown = false, ranNow = false;
+    const REDUCED = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const T = ms => (REDUCED ? 0 : ms);
 
     function createCrystalPool(count, bounds) {
         const pool = [];
@@ -85,9 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
         dissolvingGroup.innerHTML = '';
         sedimentGroup.innerHTML = '';
 
-        beaker.classList.remove('mixed', 'stirring');
+        beaker.classList.remove('mixed', 'stirring', 'pouring');
         void beaker.offsetWidth;
-        beaker.classList.add('mixed', 'stirring');
+        // ① 숟가락으로 붓기(0~1.1초) → ② 유리 막대로 젓기(1.1~3.6초) → ③ 가라앉은 결정이 줄어든다
+        beaker.classList.add('pouring');
+        dissolveTimers.push(setTimeout(() => { beaker.classList.remove('pouring'); beaker.classList.add('mixed', 'stirring'); }, T(1100)));
 
         // Salt is denser than water, so everything poured in settles into the
         // bottom pile first. Dissolving crystals then shrink away in place
@@ -106,23 +112,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const g = makeCrystalGroup(c);
             dissolvingGroup.appendChild(g);
 
-            const startDelay = isKeep ? Math.random() * .3 : Math.random() * .9;
-            const duration = isKeep ? .5 : .8 + Math.random() * .4;
-            const endScale = isKeep ? .8 : 0;
-            const startMs = 30 + startDelay * 1000;
-
+            // 숟가락 끝(오른쪽 위)에서 떨어져 바닥에 쌓인 뒤 녹는다.
+            const fromX = 150 + (Math.random() - .5) * 26, fromY = 52 + Math.random() * 10;
+            g.style.transform = `translate(${fromX.toFixed(1)}px, ${fromY.toFixed(1)}px) rotate(${c.rot.toFixed(1)}deg) scale(1)`;
+            g.style.opacity = '0';
+            const fallAt = 420 + Math.random() * 560;
             dissolveTimers.push(setTimeout(() => {
-                g.style.transition = `transform ${duration}s ease-in`;
+                g.style.opacity = '1';
+                g.style.transition = `transform ${REDUCED ? 0 : .55}s cubic-bezier(.5,0,1,1)`;
+                g.style.transform = `translate(${c.x.toFixed(1)}px, ${c.y.toFixed(1)}px) rotate(${c.rot.toFixed(1)}deg) scale(1)`;
+            }, T(fallAt)));
+            const startDelay = isKeep ? Math.random() * .4 : Math.random() * 1.2;
+            const duration = isKeep ? .8 : 1 + Math.random() * .6;
+            const endScale = isKeep ? .8 : 0;
+            dissolveTimers.push(setTimeout(() => {
+                g.style.transition = `transform ${REDUCED ? 0 : duration}s ease-in`;
                 g.style.transform = `translate(${c.x.toFixed(1)}px, ${c.y.toFixed(1)}px) rotate(${c.rot.toFixed(1)}deg) scale(${endScale})`;
-            }, startMs));
+            }, T(1300 + startDelay * 1000)));
         });
 
         dissolveTimers.push(setTimeout(() => {
             beaker.classList.remove('stirring');
             dissolvingGroup.innerHTML = '';
             renderCrystals(sedimentGroup, sedimentCrystalPool, finalSedimentFraction);
-        }, 2300));
+            finishRun();
+        }, T(3700)));
     }
+
+    let finishRun = () => {};
 
     function solubilityAt(temperature) {
         return points.find(([pointTemperature]) => pointTemperature === temperature)[1];
@@ -142,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         amountMinLabel.textContent = `${grams(minimum)} g`;
         amountMaxLabel.textContent = `${grams(upper)} g`;
         amountGuide.textContent = `${temperatureRange.value}℃에서 녹는 양의 근처만 조절합니다.`;
-        solubilityBadge.textContent = `최대로 녹는 양 ${grams(maximum)} g`;
+        solubilityBadge.textContent = `물 100 g · ${temperatureRange.value}℃`;
         renderCurve();
         renderData();
     }
@@ -174,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="axis-title" x="${(G.x0 + G.x1) / 2}" y="${G.y0 + 32}" text-anchor="middle">물의 온도 (℃)</text>`;
         out += `<text class="axis-title" x="${G.x0}" y="${G.y1 - 8}">물 100 g에 녹는 소금 (g)</text>`;
 
-        out += `<path class="sol-curve" d="M${points.map(([t, g]) => `${gx(t).toFixed(1)},${gy(g).toFixed(1)}`).join('L')}"/>`;
-        points.forEach(([t, g]) => {
+        if (curveShown) out += `<path class="sol-curve" d="M${points.map(([t, g]) => `${gx(t).toFixed(1)},${gy(g).toFixed(1)}`).join('L')}"/>`;
+        if (curveShown) points.forEach(([t, g]) => {
             out += `<circle class="sol-dot" cx="${gx(t).toFixed(1)}" cy="${gy(g).toFixed(1)}" r="3"/>`;
         });
 
@@ -185,10 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="put-text" x="${G.x1 - 4}" y="${(putY - 5).toFixed(1)}" text-anchor="end">넣은 소금 ${grams(amount)} g</text>`;
 
         const px = gx(temperature), py = gy(maximum);
-        out += `<line class="op-guide" x1="${px.toFixed(1)}" y1="${G.y0}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
-        out += `<circle class="op-point" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
+        if (ranNow) out += `<line class="op-guide" x1="${px.toFixed(1)}" y1="${G.y0}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}"/>`;
+        if (ranNow) out += `<circle class="op-point" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="5"/>`;
         const flip = px > (G.x0 + G.x1) / 2;
-        out += `<text class="op-text" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${Math.min(G.y0 - 4, py + 16).toFixed(1)}"` +
+        if (ranNow) out += `<text class="op-text" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${Math.min(G.y0 - 4, py + 16).toFixed(1)}"` +
                `${flip ? ' text-anchor="end"' : ''}>${temperature}℃에서 ${grams(maximum)} g까지</text>`;
         window.scienceScene.render(graphGroup,out);
     }
@@ -202,18 +219,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const cold = points[0][1], hot = points[points.length - 1][1];
         window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">물의 양</span><span class="data-val">100 g</span></div>` +
             `<div class="data-row"><span class="data-name">물의 온도</span><span class="data-val">${temperature}℃</span></div>` +
-            `<div class="data-row"><span class="data-name">이 온도에서 녹는 양</span><span class="data-val">${grams(maximum)} g</span></div>` +
             `<div class="data-row"><span class="data-name">넣은 소금</span><span class="data-val">${grams(amount)} g</span></div>` +
+            (!ranNow ? '' :
+            `<div class="data-row"><span class="data-name">이 온도에서 녹는 양</span><span class="data-val">${grams(maximum)} g</span></div>` +
             `<div class="data-row${remaining < .05 ? ' match' : ''}"><span class="data-name">녹은 소금</span><span class="data-val">${grams(dissolved)} g</span></div>` +
             `<div class="data-row"><span class="data-name">바닥에 남는 소금</span><span class="data-val">${remaining < .05 ? '없음' : `${grams(amount)} − ${grams(maximum)} = ${grams(remaining)} g`}</span></div>` +
-            `<div class="data-row"><span class="data-name">0℃와 100℃ 차이</span><span class="data-val">${grams(cold)} g → ${grams(hot)} g, ${grams(hot - cold)} g만 더 녹습니다</span></div>`);
+            `<div class="data-row"><span class="data-name">0℃와 100℃ 차이</span><span class="data-val">${grams(cold)} g → ${grams(hot)} g, ${grams(hot - cold)} g만 더 녹습니다</span></div>`));
     }
 
     function clearResult() {
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         clearDissolveTimers();
-        beaker.classList.remove('mixed', 'stirring');
+        ranNow = false;
+        beaker.classList.remove('mixed', 'stirring', 'pouring');
         saltDose.classList.remove('poured');
         sedimentGroup.innerHTML = '';
         dissolvingGroup.innerHTML = '';
@@ -253,22 +272,31 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('massBefore').textContent = `${grams(100 + amount)} g`;
         document.getElementById('massAfter').textContent = `${grams(100 + amount)} g`;
         saltDose.classList.add('poured');
-        animateDissolve(dissolved, remaining);
         dissolvedValue.textContent = `${grams(dissolved)} g`;
         remainingValue.textContent = `${grams(remaining)} g`;
-        resultEmpty.hidden = true;
-        resultContent.hidden = false;
+        resultEmpty.hidden = false;
+        resultContent.hidden = true;
+        stageCaption.textContent = '소금을 넣고 유리 막대로 저어 봅니다…';
+        finishRun = () => {
+            resultEmpty.hidden = true;
+            resultContent.hidden = false;
+            ranNow = true; curveShown = true;
+            renderCurve(); renderData();
+            stageCaption.textContent = captionText;
+        };
 
         predictionResult.textContent = !prediction
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
+        let captionText;
         if (actual === 'all') {
-            stageCaption.textContent = `${temperature}℃의 물 100 g에 소금 ${grams(amount)} g이 모두 녹았습니다.`;
+            captionText = `${temperature}℃의 물 100 g에 소금 ${grams(amount)} g이 모두 녹았습니다.`;
             explanation.textContent = `소금이 녹아 눈에 보이는 소금 결정은 없습니다. 소금이 없어진 것은 아닙니다. 흘리거나 증발하지 않으면 물과 소금을 합한 무게는 녹이기 전후 모두 ${grams(100 + amount)} g입니다.`;
         } else {
-            stageCaption.textContent = `${temperature}℃에서 ${grams(maximum)} g까지 녹고 ${grams(remaining)} g이 바닥에 남았습니다.`;
+            captionText = `${temperature}℃에서 ${grams(maximum)} g까지 녹고 ${grams(remaining)} g이 바닥에 남았습니다.`;
             explanation.textContent = `이 온도에서 녹을 수 있는 양을 넘은 소금은 바닥에 남습니다. 남은 소금까지 포함한 전체 무게는 넣기 전후 모두 ${grams(100 + amount)} g입니다.`;
         }
+        animateDissolve(dissolved, remaining);
     }
 
     temperatureRange.addEventListener('input', () => { syncControls(true); clearResult(); });

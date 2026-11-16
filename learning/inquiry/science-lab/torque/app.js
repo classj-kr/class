@@ -205,12 +205,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<line class="ground" x1="20" y1="${groundY}" x2="440" y2="${groundY}"/>`;
         for (let x = 24; x < 440; x += 16) out += `<line class="ground-hatch" x1="${x}" y1="${groundY}" x2="${x - 6}" y2="${groundY + 7}"/>`;
         out += `<polygon class="pivot" points="${px},${Y} ${px - 12},${groundY} ${px + 12},${groundY}"/>`;
-        const boxW = m => 14 + Math.sqrt(m) * 2.8;
+        const boxW = m => 22 + Math.sqrt(m) * 4;
         const boxes = [{ x: -dA, m: mA, cls: 'box-a', label: `${mA} kg` }, { x: XB, m: MB, cls: 'box-b', label: `${MB} kg` }];
         out += `<g transform="rotate(${deg.toFixed(2)} ${px} ${Y})">`;
         out += `<rect class="board" x="${CX - S * BOARD_L / 2}" y="${Y - 4}" width="${S * BOARD_L}" height="8" rx="2"/>`;
         out += `<circle class="cm-dot" cx="${CX}" cy="${Y}" r="3"/>`;
         boxes.forEach(b => { const w = boxW(b.m); out += `<rect class="${b.cls}" x="${CX + b.x * S - w / 2}" y="${Y - 4 - w}" width="${w}" height="${w}" rx="3"/>`; });
+        // 거리 표시: 받침점에서 각 상자 가운데까지, 판 바로 아래에 판과 함께 기운다.
+        run.parts.filter(o => Math.abs(o.arm) > 0.01).forEach((o, i) => {
+            const x2 = CX + (p + o.arm) * S, yy = Y + 12 + i * 15, col = o.name === '파란 상자' ? '#0369a1' : o.name === '붉은 상자' ? '#b91c1c' : '#7c5a10';
+            out += `<line x1="${px}" y1="${yy}" x2="${x2.toFixed(1)}" y2="${yy}" stroke="${col}" stroke-width="1.4"/><line x1="${x2.toFixed(1)}" y1="${yy - 4}" x2="${x2.toFixed(1)}" y2="${yy + 4}" stroke="${col}" stroke-width="1.4"/><line x1="${px}" y1="${yy - 4}" x2="${px}" y2="${yy + 4}" stroke="${col}" stroke-width="1.4"/>`;
+            out += `<text class="small-label" style="fill:${col}" x="${((px + x2) / 2).toFixed(1)}" y="${yy - 3}" text-anchor="middle">${Math.abs(o.arm).toFixed(1)} m</text>`;
+        });
         out += `</g>`;
         // weights drawn upright at the rotated box centres
         boxes.forEach(b => {
@@ -224,11 +230,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(p) > 0.01) out += arrow(bcx, bcy, bcx, bcy + 18, 'force-w', 'arrow-w');
         // arm labels under the ground
         const arms = run.parts.filter(o => Math.abs(o.arm) > 0.01);
-        arms.forEach((o, i) => { const x = clamp(px + o.arm * S, 40, 420); out += `<line class="ref-line" x1="${px}" y1="${groundY + 14 + i * 12}" x2="${x.toFixed(1)}" y2="${groundY + 14 + i * 12}"/><text class="small-label" x="${((px + x) / 2).toFixed(1)}" y="${groundY + 11 + i * 12}" text-anchor="middle">${o.name} ${Math.abs(o.arm).toFixed(1)} m</text>`; });
+        void arms;
         const left = run.parts.filter(o => o.tau < -1e-6).reduce((s, o) => s - o.tau, 0), right = run.parts.filter(o => o.tau > 1e-6).reduce((s, o) => s + o.tau, 0);
-        out += `<text class="trait-text" style="fill:#0284c7" x="20" y="30">왼쪽으로 돌리는 돌림힘 ${fmt(left)} N·m</text>`;
-        out += `<text class="trait-text" style="fill:#dc2626" x="440" y="30" text-anchor="end">오른쪽으로 돌리는 돌림힘 ${fmt(right)} N·m</text>`;
-        out += `<text class="small-label" x="440" y="${groundY + 11}" text-anchor="end">기울기 ${Math.abs(deg).toFixed(1)}°${Math.abs(phi) >= Math.min(run.maxLeft, run.maxRight) - 1e-6 ? ' — 끝이 땅에 닿음' : ''}</text>`;
+        // 양쪽 돌림힘의 크기는 손을 뗀 뒤에 보인다(놓기 전에는 어느 쪽이 큰지 미리 알려 주지 않음).
+        if (state.progress > 0) {
+            out += `<text class="trait-text" style="fill:#0284c7" x="20" y="30">왼쪽으로 돌리는 돌림힘 ${fmt(left)} N·m</text>`;
+            out += `<text class="trait-text" style="fill:#dc2626" x="440" y="30" text-anchor="end">오른쪽으로 돌리는 돌림힘 ${fmt(right)} N·m</text>`;
+        }
+        out += `<text class="small-label" x="440" y="${groundY + 24}" text-anchor="end">기울기 ${Math.abs(deg).toFixed(1)}°${Math.abs(phi) >= Math.min(run.maxLeft, run.maxRight) - 1e-6 ? ' — 끝이 땅에 닿음' : ''}</text>`;
         const VERD = { left: '왼쪽이 내려감', balance: '평형 — 수평 유지', right: '오른쪽이 내려감' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${MASSES[state.mass].label} · 왼쪽 ${DISTS[state.dist].label} · 받침점 ${PIVOTS[state.pivot].label}: ${VERD[run.verdict]} (${fmt(left)} 대 ${fmt(right)} N·m)` : `${MASSES[state.mass].label} · 왼쪽 ${DISTS[state.dist].label} · 받침점 ${PIVOTS[state.pivot].label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">돌림힘 = 무게 × 받침점까지의 거리. 붉은 상자 20 kg은 오른쪽 1 m 고정, 노란 점은 판(8 kg)의 무게중심</text>`;
@@ -239,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { run } = a, X0 = 230, Y = 44, H = 22, SC = 0.2;
         let out = `<text class="axis-title" x="20" y="18">받침점을 축으로 잰 돌림힘 (N·m) — 왼쪽으로 돌리면 왼쪽으로, 오른쪽으로 돌리면 오른쪽으로 그림</text>`;
         out += `<line class="axis" x1="${X0}" y1="${Y - 8}" x2="${X0}" y2="${Y + 4 * (H + 8)}"/>`;
-        [...run.parts, { name: '합', tau: run.tau, sum: true }].forEach((o, i) => {
+        [...run.parts, ...(state.progress >= 1 ? [{ name: '합', tau: run.tau, sum: true }] : [])].forEach((o, i) => {
             const y = Y + i * (H + 8), w = Math.abs(o.tau) * SC;
             const cls = o.sum ? (Math.abs(o.tau) < 0.5 ? 'band-good' : 'band-bad') : i === 0 ? 'box-a' : i === 1 ? 'board' : 'box-b';
             if (w > 0.5) out += `<rect class="${cls}" x="${(o.tau < 0 ? X0 - w : X0).toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="${H}" rx="3"/>`;
@@ -377,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        if (state.progress < 1) return '';
         if (a.kind === 'seesaw') {
             const { run } = a;
             return run.parts.map(o => `<div class="data-row"><span class="data-name">${o.name}</span><span class="data-val">${o.m} kg × 9.8 × ${Math.abs(o.arm).toFixed(1)} m = ${fmt(Math.abs(o.tau))} N·m${Math.abs(o.tau) < 0.5 ? ' (받침점 바로 위)' : o.tau < 0 ? ' (왼쪽으로 돌림)' : ' (오른쪽으로 돌림)'}</span></div>`).join('') +
@@ -397,6 +407,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         window.scienceScene.render(mainGroup,a.kind === 'seesaw' ? renderSeesaw(a) : a.kind === 'tip' ? renderTip(a) : renderPlank(a));
+        // 돌림힘 막대·문턱 그래프는 손을 뗀 뒤에만(놓기 전에는 크기 비교가 곧 답이므로)
+        graphGroup.ownerSVGElement.style.display = state.progress < 1 ? 'none' : '';
         window.scienceScene.render(graphGroup,a.kind === 'seesaw' ? graphSeesaw(a) : a.kind === 'tip' ? graphTip(a) : graphPlank(a));
         liftProse();
         stageBadge.textContent = a.kind === 'seesaw' ? `받침점 ${PIVOTS[state.pivot].label} · ${MASSES[state.mass].label} · 왼쪽 ${DISTS[state.dist].label}` : a.kind === 'tip' ? `${SHAPES[state.shape].label} · ${FLOORS[state.floor].label} · ${ANGLES[state.angle].label}` : `${LOADS[state.load].label} · ${SPOTS[state.spot].label}`;
@@ -549,3 +561,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

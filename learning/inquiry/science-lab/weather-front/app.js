@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const DP_HPA = 4;             // pressure step between neighbouring isobars
     const CROSS = 25 * Math.PI / 180;  // surface wind crosses isobars by this much
     const MAP_SCALE = 0.25;       // pixels per km on the chart
-    const MAP_CX = 230, MAP_CY = 108;
+    const MAP_CX = 230, MAP_CY = 152, MAP_R = 126;
     const FLOW_PX = 1.2;          // pixels per second of drawn flow, per m/s of wind
     const EXAG = 26;              // fronts are far too shallow to draw truthfully
     const PASS_H = 16;            // hour the front reaches us
@@ -140,7 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const dur = 18 / (a.v * FLOW_PX);
         let body = '';
         const rings = [];
-        for (let k = 1; k * stepPx <= 168; k += 1) rings.push(k * stepPx);
+        // 원이 그림 칸 안에 온전히 들어오는 것만 그린다(위아래가 잘리지 않게, 그림 칸도 키움).
+        const svgEl = mainGroup.ownerSVGElement; svgEl.setAttribute('viewBox', '0 0 460 300');
+        const clipRect = svgEl.querySelector('#mapClip rect'); if (clipRect) { clipRect.setAttribute('y', '20'); clipRect.setAttribute('height', '264'); }
+        for (let k = 1; k * stepPx <= MAP_R; k += 1) rings.push(k * stepPx);
         rings.forEach((r, i) => {
             const hpa = a.low ? 992 + (i + 1) * DP_HPA : 1032 - (i + 1) * DP_HPA;
             body += `<circle class="isobar" cx="${MAP_CX}" cy="${MAP_CY}" r="${r.toFixed(1)}"/>`;
@@ -153,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // circle's top is off the chart and its label would vanish.
             const every = stepPx < 30 ? 2 : 1;
             if (i % every === 0) {
-                body += `<text class="iso-text" x="${(MAP_CX + r).toFixed(1)}" y="${MAP_CY - 5}" text-anchor="middle">${hpa}</text>`;
+                body += `<text class="iso-text" x="${(MAP_CX + r).toFixed(1)}" y="${MAP_CY + 5}" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:5px;stroke-linejoin:round">${hpa}</text>`;
             }
         });
         // arrows so the turning direction is unmistakable
@@ -173,28 +176,30 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<g clip-path="url(#mapClip)">${body}</g>`;
         out += `<text class="centre-mark ${a.low ? 'low' : 'high'}" x="${MAP_CX}" y="${MAP_CY + 8}" text-anchor="middle">${a.low ? '저' : '고'}</text>`;
 
-        // what the rising or sinking air does to the sky
+        // 가운데의 하늘: 저기압은 가운데에서 공기가 올라가 구름·비, 고기압은 내려와 맑음.
+        const cy0 = MAP_CY - 30;
         if (a.low) {
-            out += `<ellipse class="cloud" cx="368" cy="52" rx="26" ry="11"/><ellipse class="cloud" cx="356" cy="46" rx="16" ry="10"/>`;
-            for (let i = 0; i < 4; i += 1) out += `<line class="rain" x1="${350 + i * 12}" y1="64" x2="${347 + i * 12}" y2="74"><animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="${(i * 0.25).toFixed(2)}s" repeatCount="indefinite"/></line>`;
-            out += `<text class="small-label" x="368" y="88" text-anchor="middle">상승 기류 → 흐리고 비</text>`;
+            out += `<path d="M${MAP_CX - 6} ${MAP_CY - 12} V${MAP_CY - 22} M${MAP_CX + 6} ${MAP_CY - 12} V${MAP_CY - 22}" stroke="#0369a1" stroke-width="1.6"/><path d="M${MAP_CX - 9} ${MAP_CY - 19} l3 -5 3 5 M${MAP_CX + 3} ${MAP_CY - 19} l3 -5 3 5" fill="none" stroke="#0369a1" stroke-width="1.6"/>`;
+            out += `<g style="fill:#c9d3dc;stroke:#8a9aa8;stroke-width:1"><ellipse cx="${MAP_CX - 12}" cy="${cy0 - 6}" rx="14" ry="9"/><ellipse cx="${MAP_CX + 10}" cy="${cy0 - 7}" rx="12" ry="8"/><ellipse cx="${MAP_CX}" cy="${cy0}" rx="24" ry="10"/></g>`;
+            for (let i = 0; i < 4; i += 1) out += `<line class="rain" x1="${MAP_CX - 18 + i * 12}" y1="${cy0 + 11}" x2="${MAP_CX - 21 + i * 12}" y2="${cy0 + 19}"><animate attributeName="opacity" values="0;1;0" dur="1.1s" begin="${(i * 0.25).toFixed(2)}s" repeatCount="indefinite"/></line>`;
+            out += `<text class="small-label" x="440" y="292" text-anchor="end">가운데: 상승 기류 · 구름</text>`;
         } else {
-            out += `<circle class="sun" cx="368" cy="52" r="13"/>`;
+            out += `<circle class="sun" cx="${MAP_CX}" cy="${cy0 - 4}" r="11"/>`;
             for (let i = 0; i < 8; i += 1) {
                 const th = (i / 8) * Math.PI * 2;
-                out += `<line class="rain" style="stroke:#d97706" x1="${(368 + 17 * Math.cos(th)).toFixed(1)}" y1="${(52 + 17 * Math.sin(th)).toFixed(1)}" ` +
-                       `x2="${(368 + 22 * Math.cos(th)).toFixed(1)}" y2="${(52 + 22 * Math.sin(th)).toFixed(1)}"/>`;
+                out += `<line class="rain" style="stroke:#d97706" x1="${(MAP_CX + 14 * Math.cos(th)).toFixed(1)}" y1="${(cy0 - 4 + 14 * Math.sin(th)).toFixed(1)}" x2="${(MAP_CX + 19 * Math.cos(th)).toFixed(1)}" y2="${(cy0 - 4 + 19 * Math.sin(th)).toFixed(1)}"/>`;
             }
-            out += `<text class="small-label" x="368" y="88" text-anchor="middle">하강 기류 → 맑음</text>`;
+            out += `<text class="small-label" x="440" y="292" text-anchor="end">가운데: 하강 기류 · 맑음</text>`;
         }
 
         out += `<text class="part-label" x="20" y="20">${a.low ? '저기압' : '고기압'} · 등압선 간격 ${a.spacing} km · 등압선 사이 ${DP_HPA} hPa</text>`;
-        out += `<text class="read-text" x="20" y="200">바람 ${a.v.toFixed(1)} m/s (시속 ${a.kmh.toFixed(0)} km)</text>`;
-        out += `<text class="note-text" x="240" y="200">화면의 흐름 빠르기는 바람 세기에 비례합니다</text>`;
+        out += `<text class="read-text" x="20" y="292">바람 ${a.v.toFixed(1)} m/s (시속 ${a.kmh.toFixed(0)} km)</text>`;
+        out += `<text class="note-text" x="20" y="300">화면의 흐름 빠르기는 바람 세기에 비례합니다</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
     function renderFront(a) {
+        { const svgEl = mainGroup.ownerSVGElement; svgEl.setAttribute('viewBox', '0 0 460 214'); const r = svgEl.querySelector('#mapClip rect'); if (r) { r.setAttribute('y', '26'); r.setAttribute('height', '166'); } }
         const f = a.f, GROUND = 170, X0 = 40, X1 = 420, FX = 230;
         const drawnSlope = f.slope * EXAG;
         let body = '';
@@ -326,12 +331,12 @@ document.addEventListener('DOMContentLoaded', () => {
               `<div class="data-row"><span class="data-name">기압 경도</span><span class="data-val">${(DP_HPA * 100)} Pa ÷ ${(a.spacing * 1000).toLocaleString()} m = ${a.gradient.toFixed(4)} Pa/m</span></div>` +
               `<div class="data-row"><span class="data-name">바람</span><span class="data-val">${a.v.toFixed(1)} m/s · 시속 ${a.kmh.toFixed(0)} km</span></div>` +
               `<div class="data-row"><span class="data-name">부는 방향</span><span class="data-val">${a.low ? '시계 반대 방향으로 불어 들어옴' : '시계 방향으로 불어 나감'}</span></div>` +
-              `<div class="data-row match"><span class="data-name">세기</span><span class="data-val">${STRENGTH[a.strength]}</span></div>`
+              (resultContent.hidden ? '' : `<div class="data-row match"><span class="data-name">세기</span><span class="data-val">${STRENGTH[a.strength]}</span></div>`)
             : `<div class="data-row"><span class="data-name">전선면 기울기</span><span class="data-val">1/${Math.round(1 / a.f.slope)} — ${a.key === 'cold' ? '가파릅니다' : '완만합니다'}</span></div>` +
               `<div class="data-row"><span class="data-name">구름</span><span class="data-val">${a.f.cloud}</span></div>` +
               `<div class="data-row"><span class="data-name">비 오는 구역</span><span class="data-val">폭 ${a.f.rainKm} km ÷ 시속 ${a.f.speed} km = ${a.rainHours.toFixed(1)}시간</span></div>` +
               `<div class="data-row"><span class="data-name">기온</span><span class="data-val">${a.f.before} ℃ → ${a.f.after} ℃ (${a.change > 0 ? '+' : ''}${a.change} ℃)</span></div>` +
-              `<div class="data-row match"><span class="data-name">지나간 뒤</span><span class="data-val">${a.f.afterText}</span></div>`);
+              (resultContent.hidden ? '' : `<div class="data-row match"><span class="data-name">지나간 뒤</span><span class="data-val">${a.f.afterText}</span></div>`));
         return a;
     }
 
@@ -340,9 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const STRENGTH_QUOTE = { strong: '세다고', medium: '보통이라고', weak: '약하다고' };
 
     function check() {
-        const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
+        const a = render();
         if (a.kind === 'wind') {
             labelA.textContent = '바람의 세기'; labelB.textContent = '부는 방향';
             valueA.textContent = `${a.v.toFixed(1)} m/s`;
@@ -554,3 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
     run();
     // The observer sees the app's DOMContentLoaded render; do not run twice.
 })();
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

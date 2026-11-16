@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const state = { mode: 'calendar', event: 'life', extinction: 'perm', forest: 'even', progress: 0, prediction: null };
     let running = false, frameId = 0, lastStamp = 0;
+    // sentences that belong beside the calendar figure (rebuilt every frame)
+    let info = [];
+    const geoInfo = document.getElementById('geoInfo');
 
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     const fmtN = n => Math.round(n).toLocaleString('ko-KR');
@@ -161,65 +164,85 @@ document.addEventListener('DOMContentLoaded', () => {
         const { ev, day } = a;
         const p = state.progress;
         const now = p * day;
-        const X0 = 20, X1 = 440, Y = 70, H = 30;
+        const X0 = 20, X1 = 440, Y = 40, H = 34;
         const xOf = d => X0 + d / 365 * (X1 - X0);
         let out = '';
+        // the year as a long strip, coloured by era
+        out += `<rect x="${X0 - 2}" y="${Y - 2}" width="${X1 - X0 + 4}" height="${H + 4}" rx="4" fill="#e2e8f0"/>`;
         ERAS.forEach(e => {
             const x1 = xOf(dayOf(e.from)), x2 = xOf(dayOf(e.to));
             out += `<rect class="era" fill="${e.color}" x="${x1.toFixed(1)}" y="${Y}" width="${(x2 - x1).toFixed(1)}" height="${H}"/>`;
-            if (x2 - x1 > 60) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 3}" text-anchor="middle">${e.name}</text>`;
+            if (x2 - x1 > 90) out += `<text class="era-text era-text-light" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 5}" text-anchor="middle">${e.name} 시대</text>`;
         });
-        let acc = 0;
-        MONTHS.forEach((len, m) => { const x = xOf(acc); out += `<line class="tick" x1="${x.toFixed(1)}" y1="${Y + H}" x2="${x.toFixed(1)}" y2="${Y + H + 5}"/><text class="axis-text" x="${(xOf(acc + len / 2)).toFixed(1)}" y="${Y + H + 16}" text-anchor="middle">${m + 1}월</text>`; acc += len; });
-        out += `<line class="tick" x1="${X1}" y1="${Y + H}" x2="${X1}" y2="${Y + H + 5}"/>`;
-        out += `<text class="small-label" x="${X0}" y="${Y - 24}">1월 1일 0시: 지구 탄생</text>`;
-        out += `<text class="small-label" x="${X1}" y="${Y - 24}" text-anchor="end">12월 31일 밤 12시: 지금</text>`;
-        out += `<text class="small-label" x="${X1}" y="${Y - 11}" text-anchor="end">초록 고생대(11/18~) · 노랑 중생대(12/12~) · 분홍 신생대(12/26~)</text>`;
-        // the marker walks across the year to the event
+        // the part of the year already passed is lit, the rest waits under a veil
         const mx = xOf(now);
-        out += `<line class="marker" x1="${mx.toFixed(1)}" y1="${Y - 6}" x2="${mx.toFixed(1)}" y2="${Y + H + 6}"/>`;
-        out += `<polygon class="marker-head" points="${mx.toFixed(1)},${Y - 6} ${(mx - 5).toFixed(1)},${Y - 13} ${(mx + 5).toFixed(1)},${Y - 13}"/>`;
-        const passedMa = EARTH_AGE * now / 365;
-        out += `<text class="gen-text" x="20" y="136">${dateText(now, p >= 1 && day > 363)} — 지구 나이 ${fmtAge(EARTH_AGE - passedMa).replace(' 전', '')}${p >= 1 ? '' : ' (넘어가는 중)'}</text>`;
-        out += `<text class="trait-text" x="20" y="154">달력의 하루 = 1,260만 년 · 한 시간 = 52.5만 년 · 1분 = 8,750년</text>`;
+        if (p < 1) out += `<rect x="${mx.toFixed(1)}" y="${Y}" width="${(X1 - mx).toFixed(1)}" height="${H}" fill="#f8fafc" opacity=".55"/>`;
+        let acc = 0;
+        MONTHS.forEach((len, m) => { const x = xOf(acc); out += `<line class="tick" x1="${x.toFixed(1)}" y1="${Y + H}" x2="${x.toFixed(1)}" y2="${Y + H + 6}"/><text class="axis-text" x="${(xOf(acc + len / 2)).toFixed(1)}" y="${Y + H + 21}" text-anchor="middle">${m + 1}월</text>`; acc += len; });
+        out += `<line class="tick" x1="${X1}" y1="${Y + H}" x2="${X1}" y2="${Y + H + 6}"/>`;
+        // ends and a colour key, short names only
+        const LY = Y + H + 50;
+        out += `<text class="small-label" x="${X0}" y="${LY}">◀ 지구 탄생</text>`;
+        out += `<text class="small-label" x="${X1}" y="${LY}" text-anchor="end">지금 ▶</text>`;
+        [['고생대', ERAS[1].color], ['중생대', ERAS[2].color], ['신생대', ERAS[3].color]].forEach(([name, color], i) => {
+            const kx = 138 + i * 66;
+            out += `<rect x="${kx}" y="${LY - 12}" width="13" height="13" rx="2" fill="${color}" stroke="rgba(15,23,42,.35)" stroke-width=".8"/><text class="small-label" x="${kx + 18}" y="${LY}">${name}</text>`;
+        });
+        // the marker walks across the year to the event
+        out += `<line class="marker" x1="${mx.toFixed(1)}" y1="${Y - 8}" x2="${mx.toFixed(1)}" y2="${Y + H + 4}"/>`;
+        out += `<polygon class="marker-head" points="${mx.toFixed(1)},${Y - 6} ${(mx - 6).toFixed(1)},${Y - 15} ${(mx + 6).toFixed(1)},${Y - 15}"/>`;
         if (p >= 1) {
-            out += `<text class="trait-text" style="fill:#d97706" x="20" y="174">${ev.label} (${fmtAge(ev.age)}) — ${ev.what}</text>`;
-            out += `<text class="trait-text" x="20" y="190">${ev.era} · 남은 날: ${(365 - day) < 1 ? `${((365 - day) * 24).toFixed(1)}시간` : `${Math.round(365 - day)}일`}</text>`;
-        } else {
-            out += `<text class="trait-text" x="20" y="174">${eraOf(EARTH_AGE - passedMa).name} 시대를 지나는 중</text>`;
+            const lx = clamp(mx, X0 + 44, X1 - 44);
+            out += `<text class="small-label" style="fill:#b45309" x="${lx.toFixed(1)}" y="${Y - 20}" text-anchor="middle">${ev.label}</text>`;
         }
+        // sentences live beside the figure, not inside it
+        const passedMa = EARTH_AGE * now / 365;
+        info.push([`${dateText(now, p >= 1 && day > 363)} · 지구 나이 ${fmtAge(EARTH_AGE - passedMa).replace(' 전', '')}${p >= 1 ? '' : ' (넘어가는 중)'}`, false]);
+        if (p >= 1) {
+            info.push([`${ev.label} (${fmtAge(ev.age)}): ${ev.what}`, true]);
+            info.push([`${ev.era} · 남은 날: ${(365 - day) < 1 ? `${((365 - day) * 24).toFixed(1)}시간` : `${Math.round(365 - day)}일`}`, false]);
+        } else if (p > 0) {
+            info.push([`${eraOf(EARTH_AGE - passedMa).name} 시대를 지나는 중`, false]);
+        }
+        info.push([`달력의 하루 = 1,260만 년 · 한 시간 = 52.5만 년 · 1분 = 8,750년`, false]);
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${ev.label}: ${dateText(day, day > 363)}` : `${ev.label} (${fmtAge(ev.age)})은 달력의 언제?`}</text>`;
-        out += `<text class="note-text" x="20" y="208">1년 = 46억 년, 1월 1일 0시에 지구가 태어나고 12월 31일 밤 12시가 지금</text>`;
         return out;
     }
 
     // the last 600 million years stretched out
     function graphCalendar(a) {
-        const X0 = 40, X1 = 440, Y = 56, H = 22, PY = 84, PH = 20;
+        const X0 = 30, X1 = 430, Y = 54, H = 24, PY = 80, PH = 22;
         const xOf = age => X0 + (600 - age) / 600 * (X1 - X0);
-        let out = `<text class="axis-title" x="${X0}" y="18">마지막 6억 년만 늘려 보기 — 달력으로는 11월 13일부터 12월 31일까지</text>`;
-        [[600, '선캄브리아 끝', '#4a5a63'], [541, '고생대', '#7fd48a'], [252, '중생대', '#ffb347'], [66, '신생대', '#dc2626']].forEach(([from, name, color], i, arr) => {
+        let out = `<text class="axis-title" x="${X0}" y="18">마지막 6억 년 늘려 보기</text>`;
+        for (let age = 600; age >= 0; age -= 100) {
+            const x = xOf(age);
+            out += `<line class="tick" x1="${x.toFixed(1)}" y1="${Y - 5}" x2="${x.toFixed(1)}" y2="${Y}"/><text class="axis-text" x="${x.toFixed(1)}" y="${Y - 8}" text-anchor="middle">${age === 600 ? '6억 년 전' : age ? `${age / 100}억` : '지금'}</text>`;
+        }
+        [[600, '선캄브리아', '#4a5a63'], [541, '고생대', '#7fd48a'], [252, '중생대', '#ffb347'], [66, '신생대', '#dc2626']].forEach(([from, name, color], i, arr) => {
             const to = arr[i + 1] ? arr[i + 1][0] : 0;
             const x1 = xOf(from), x2 = xOf(to);
             out += `<rect class="era" fill="${color}" x="${x1.toFixed(1)}" y="${Y}" width="${(x2 - x1).toFixed(1)}" height="${H}"/>`;
-            if (x2 - x1 >= name.length * 12 + 4) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 3}" text-anchor="middle">${name}</text>`;
+            if (x2 - x1 >= name.length * 15 + 4) out += `<text class="era-text${i === 0 || i === 3 ? ' era-text-light' : ''}" x="${((x1 + x2) / 2).toFixed(1)}" y="${Y + H / 2 + 5}" text-anchor="middle">${name}</text>`;
         });
-        PERIODS.forEach(([name, from, to, color]) => {
+        // periods: every cell gets its name, written downward under the cell
+        PERIODS.forEach(([name, from, to, color], i) => {
             const x1 = xOf(from), x2 = xOf(to);
-            out += `<rect class="era" fill="${color}" opacity=".7" x="${x1.toFixed(1)}" y="${PY}" width="${(x2 - x1).toFixed(1)}" height="${PH}"/>`;
-            if (x2 - x1 >= name.length * 8) out += `<text class="era-text" x="${((x1 + x2) / 2).toFixed(1)}" y="${PY + PH / 2 + 3}" text-anchor="middle">${name}</text>`;
+            out += `<rect class="era" fill="${color}" opacity=".75" x="${x1.toFixed(1)}" y="${PY}" width="${Math.max(1.5, x2 - x1).toFixed(1)}" height="${PH}"/>`;
+            let cx = (x1 + x2) / 2;
+            if (name === '제4기') { cx = X1 + 14; out += `<path d="M${(x2 - 1).toFixed(1)},${PY + PH} L${(x2 - 1).toFixed(1)},${PY + PH + 5} L${cx.toFixed(1)},${PY + PH + 5}" fill="none" stroke="#64748b" stroke-width="1"/>`; }
+            if (name === '신제3기') cx -= 4;
+            out += `<text class="period-text" x="${cx.toFixed(1)}" y="${PY + PH + 10}">${name}</text>`;
         });
-        for (let age = 600; age >= 0; age -= 100) { out += `<line class="tick" x1="${xOf(age).toFixed(1)}" y1="${PY + PH}" x2="${xOf(age).toFixed(1)}" y2="${PY + PH + 5}"/><text class="axis-text" x="${xOf(age).toFixed(1)}" y="${PY + PH + 17}" text-anchor="middle">${age ? `${age / 100}억 년 전` : '지금'}</text>`; }
         const { ev } = a;
         if (ev.age <= 600) {
             const x = xOf(ev.age);
-            out += `<line class="marker" x1="${x.toFixed(1)}" y1="${Y - 8}" x2="${x.toFixed(1)}" y2="${PY + PH + 4}"/>`;
-            out += `<text class="axis-text" style="fill:#d97706" x="${clamp(x, X0 + 40, X1 - 40).toFixed(1)}" y="${Y - 12}" text-anchor="middle">${ev.label} ${fmtAge(ev.age)}</text>`;
+            out += `<line class="marker" x1="${x.toFixed(1)}" y1="${Y - 2}" x2="${x.toFixed(1)}" y2="${PY + PH + 2}"/>`;
+            out += `<text class="small-label" style="fill:#b45309" x="${clamp(x, X0 + 120, X1 - 60).toFixed(1)}" y="18" text-anchor="${x > X1 - 60 ? 'end' : 'middle'}">${ev.label}</text>`;
         } else {
-            out += `<text class="axis-text" style="fill:#d97706" x="${X0}" y="${Y - 12}">${ev.label}(${fmtAge(ev.age)})은 이 눈금보다 훨씬 앞 — 선캄브리아 시대</text>`;
+            out += `<text class="small-label" style="fill:#b45309" x="${X1}" y="18" text-anchor="end">${ev.label}은 더 앞 ◀</text>`;
+            info.push([`${ev.label}(${fmtAge(ev.age)})은 이 확대 눈금보다 훨씬 앞, 선캄브리아 시대의 일입니다.`, true]);
         }
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${PY + PH + 40}" text-anchor="middle">위 줄은 시대, 아래 줄은 기 — 경계는 대개 많은 생물이 사라진 자리</text>`;
-        out += `<text class="small-label" x="${((X0 + X1) / 2).toFixed(1)}" y="${PY + PH + 56}" text-anchor="middle">에디아카라 · 캄브리아 · 오르도비스 · 실루리아 · 데본 · 석탄 · 페름 · 트라이아스 · 쥐라 · 백악 · 고제3기 · 신제3기 · 제4기</text>`;
+        info.push([`확대 띠의 위 줄은 대(시대), 아래 줄은 기입니다. 경계는 대개 많은 생물이 한꺼번에 사라진 자리입니다. 달력으로는 11월 13일부터 12월 31일까지입니다.`, false]);
         return out;
     }
 
@@ -245,17 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="${GX}" y="${GY + 10 * S + 12}">종 100가지 · 흐린 점은 사라진 종${back ? ' · 초록은 새로 생긴 종' : ''}</text>`;
         // facts
         const IX = 232;
-        const wrap = (txt, n) => txt.match(new RegExp(`.{1,${n}}`, 'g')) || [txt];
         out += `<text class="trait-text" x="${IX}" y="46">${ex.age ? fmtAge(ex.age) : '1500년 이후 ~ 지금'}</text>`;
-        let y = 62;
-        out += `<text class="small-label" x="${IX}" y="${y}">원인</text>`; y += 13;
-        wrap(ex.cause, 20).forEach(ln => { out += `<text class="trait-text" x="${IX}" y="${y}">${ln}</text>`; y += 13; });
-        y += 5;
-        out += `<text class="small-label" x="${IX}" y="${y}">사라진 것</text>`; y += 13;
-        wrap(ex.victims, 20).forEach(ln => { out += `<text class="trait-text" x="${IX}" y="${y}">${ln}</text>`; y += 13; });
-        y += 5;
+        // cause and victims are sentences: they are read in the table under the figure
+        let y = 72;
         if (p >= 0.55) {
-            out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="${y}">사라진 종 ${ex.loss} %${ex.age === 0 ? ' (지금까지)' : ''}</text>`; y += 14;
+            out += `<text class="trait-text" style="fill:#b45309" x="${IX}" y="${y}">사라진 종 ${ex.loss} %</text>`; y += 20;
             if (ex.age) out += `<text class="trait-text" x="${IX}" y="${y}">회복에 ${ex.recovery}</text>`;
             else { out += `<text class="trait-text" style="fill:#ff7a59" x="${IX}" y="${y}">붉은 테두리: 멸종 위기 ${ex.threatened} %</text>`; y += 13; out += `<text class="trait-text" x="${IX}" y="${y}">속도는 ${ex.rate}</text>`; }
         } else if (p > 0) {
@@ -270,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function graphExtinction(a) {
         const X0 = 50, X1 = 430, Y0 = 150, Y1 = 40;
         const xOf = age => X0 + (541 - age) / 541 * (X1 - X0), yOf = v => Y0 - v * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">바다 생물 종류의 변화 — 화석 기록을 단순하게 그린 모양</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">바다 생물 종류의 변화 (화석 기록)</text>`;
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         out += `<text class="axis-text" x="${X0 - 6}" y="${Y1 + 4}" text-anchor="end">많음</text><text class="axis-text" x="${X0 - 6}" y="${Y0 + 4}" text-anchor="end">적음</text>`;
         for (let age = 500; age >= 0; age -= 100) out += `<text class="axis-text" x="${xOf(age).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${age ? `${age / 100}억` : '지금'}</text>`;
@@ -312,13 +329,13 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${IX}" y="46">종 수 ${f.counts.filter(v => v).length}가지</text>`;
         out += `<text class="trait-text" x="${IX}" y="62">${f.counts.map((v, i) => v ? `${SPECIES_NAME[i]} ${v}` : '').filter(Boolean).join(' · ')}</text>`;
         out += `<text class="trait-text" x="${IX}" y="84">다양성 지수 ${a.before.toFixed(2)}</text>`;
-        out += `<text class="small-label" x="${IX}" y="97">(두 개체를 뽑았을 때 다른 종일 확률)</text>`;
+
         if (p > 0) {
-            out += `<text class="trait-text" style="fill:#ff7a59" x="${IX}" y="120">병이 '${SPECIES_NAME[target]}' 종을 덮침 — ${dead}개체 죽음</text>`;
+            out += `<text class="trait-text" style="fill:#c2410c" x="${IX}" y="120">'${SPECIES_NAME[target]}' 종 ${dead}개체 죽음</text>`;
             out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="136">남은 개체 ${100 - dead}개체</text>`;
             if (p >= 0.8) { out += `<text class="trait-text" x="${IX}" y="152">남은 종 ${a.after.filter(v => v).length}가지 · 지수 ${a.afterIdx.toFixed(2)}</text>`; }
         } else {
-            out += `<text class="trait-text" x="${IX}" y="120">가장 많은 종 '${SPECIES_NAME[target]}'을 덮치는 병이 돌면?</text>`;
+            out += `<text class="trait-text" x="${IX}" y="120">병이 노리는 종: '${SPECIES_NAME[target]}'</text>`;
         }
         const VERD = { most: '80 % 남음', half: '절반쯤 남음', gone: '거의 사라짐' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${f.label}: ${a.remaining}개체 남음 → ${VERD[a.verdict]}` : `${f.label} 숲 (${f.hint})`}</text>`;
@@ -331,9 +348,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const X0 = 60, X1 = 430, Y0 = 150, Y1 = 40;
         const yOf = n => Y0 - n / 100 * (Y0 - Y1);
         const p = state.progress, killFrac = clamp(p / 0.8, 0, 1);
-        let out = `<text class="axis-title" x="${X0}" y="18">종마다 몇 개체 — 옅은 막대 처음, 진한 막대 병이 돈 뒤</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">종마다 개체 수</text>`;
         [0, 25, 50, 75, 100].forEach(n => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(n).toFixed(1)}" x2="${X1}" y2="${yOf(n).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(n) + 3.5).toFixed(1)}" text-anchor="end">${n}</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/>`;
+        info.push(['옅은 막대는 처음 개체 수, 진한 막대는 병이 돈 뒤의 개체 수입니다.', false]);
         const step = (X1 - X0) / 5, W = 40;
         f.counts.forEach((n, i) => {
             const x = X0 + i * step + (step - W) / 2;
@@ -352,25 +370,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const { ev, day } = a;
             return `<div class="data-row"><span class="data-name">사건</span><span class="data-val">${ev.label} — ${ev.what} (${ev.era})</span></div>` +
                 `<div class="data-row"><span class="data-name">실제 시간</span><span class="data-val">${fmtAge(ev.age)} · 지구 나이 ${fmtAge(EARTH_AGE - ev.age).replace(' 전', '')}</span></div>` +
-                `<div class="data-row"><span class="data-name">달력으로</span><span class="data-val">365일 × (1 − ${ev.age}/${EARTH_AGE}) = ${day.toFixed(2)}일째 → ${dateText(day, day > 363)}</span></div>` +
-                `<div class="data-row match"><span class="data-name">시대 경계</span><span class="data-val">고생대 11월 18일 · 중생대 12월 12일 · 신생대 12월 26일 · 사람 속 12월 31일 18시 40분</span></div>`;
+                (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">달력으로</span><span class="data-val">365일 × (1 − ${ev.age}/${EARTH_AGE}) = ${day.toFixed(2)}일째 → ${dateText(day, day > 363)}</span></div>` +
+                `<div class="data-row match"><span class="data-name">시대 경계</span><span class="data-val">고생대 11월 18일 · 중생대 12월 12일 · 신생대 12월 26일 · 사람 속 12월 31일 18시 40분</span></div>`);
         }
         if (a.kind === 'extinction') {
             const { ex } = a;
             return `<div class="data-row"><span class="data-name">때</span><span class="data-val">${ex.label} · ${ex.age ? fmtAge(ex.age) : '1500년 이후'}</span></div>` +
                 `<div class="data-row"><span class="data-name">원인</span><span class="data-val">${ex.cause}</span></div>` +
                 `<div class="data-row"><span class="data-name">사라진 것</span><span class="data-val">${ex.victims}</span></div>` +
-                `<div class="data-row match"><span class="data-name">비율</span><span class="data-val">종의 약 ${ex.loss} %${ex.age ? ` · 회복에 ${ex.recovery}` : ` · 멸종 위기 ${ex.threatened} % · 속도 ${ex.rate}`}</span></div>`;
+                (state.progress < 1 ? '' : `<div class="data-row match"><span class="data-name">비율</span><span class="data-val">종의 약 ${ex.loss} %${ex.age ? ` · 회복에 ${ex.recovery}` : ` · 멸종 위기 ${ex.threatened} % · 속도 ${ex.rate}`}</span></div>`);
         }
         const { f } = a;
         return `<div class="data-row"><span class="data-name">숲</span><span class="data-val">${f.label} — ${f.counts.map((v, i) => v ? `${SPECIES_NAME[i]} ${v}개체` : '').filter(Boolean).join(', ')}</span></div>` +
             `<div class="data-row"><span class="data-name">다양성 지수</span><span class="data-val">1 − (각 종 비율)²의 합 = ${a.before.toFixed(2)} (두 개체를 뽑아 다른 종일 확률)</span></div>` +
             `<div class="data-row"><span class="data-name">병</span><span class="data-val">가장 많은 '${SPECIES_NAME[a.target]}' 종 ${f.counts[a.target]}개체를 모두 죽임</span></div>` +
-            `<div class="data-row match"><span class="data-name">남은 것</span><span class="data-val">${a.remaining}개체 · ${a.after.filter(v => v).length}종 · 지수 ${a.afterIdx.toFixed(2)}</span></div>`;
+            (state.progress < 1 ? '' : `<div class="data-row match"><span class="data-name">남은 것</span><span class="data-val">${a.remaining}개체 · ${a.after.filter(v => v).length}종 · 지수 ${a.afterIdx.toFixed(2)}</span></div>`);
     }
 
     function render() {
         const a = analyse();
+        info = [];
+        document.querySelector('.main-svg')?.setAttribute('viewBox', a.kind === 'calendar' ? '0 0 460 134' : '0 0 460 214');
         window.scienceScene.render(mainGroup,a.kind === 'calendar' ? renderCalendar(a) : a.kind === 'extinction' ? renderExtinction(a) : renderDiversity(a));
         window.scienceScene.render(graphGroup,a.kind === 'calendar' ? graphCalendar(a) : a.kind === 'extinction' ? graphExtinction(a) : graphDiversity(a));
         stageBadge.textContent = a.kind === 'calendar' ? `${a.ev.label} · ${fmtAge(a.ev.age)}` : a.kind === 'extinction' ? a.ex.label : `${a.f.label} · ${a.f.hint}`;
@@ -378,6 +398,10 @@ document.addEventListener('DOMContentLoaded', () => {
             : a.kind === 'extinction' ? '지질 시대의 경계는 대개 많은 생물이 한꺼번에 사라진 자리입니다'
                 : '종이 여러 가지로 고루 있을수록 한 가지 재난에 무너지지 않습니다';
         window.scienceScene.render(dataNote,noteFor(a));
+        if (geoInfo) {
+            geoInfo.hidden = !info.length;
+            window.scienceScene.render(geoInfo, info.map(([t, hot]) => `<p${hot ? ' class="hot"' : ''}>${t}</p>`).join(''));
+        }
         return a;
     }
 

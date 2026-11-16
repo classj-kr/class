@@ -28,14 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const BETA = 7.6e-4;      // per psu
     const MEAN_RHO = 1026;    // what we compare against
     const DEEP_T = 4, THERMO_M = 400, MAX_DEPTH = 1000;
-    const SEA = { x0: 20, x1: 250, top: 48, bottom: 190 };
-    const PX_PER_M = (SEA.bottom - SEA.top) / MAX_DEPTH;
+    const SEA = { x0: 64, x1: 244, top: 50, bottom: 206 };
+    // the cut-open column shows the top 600 m so the thin stirred layer is visible
+    const DRAW_DEPTH = 600;
+    const PX_PER_M = (SEA.bottom - SEA.top) / DRAW_DEPTH;
     // depth runs downward, so the temperature axis sits along the top
     const GRAPH = { x0: 74, x1: 424, y0: 172, y1: 52 };
 
     // Whatever the total salinity, the salts keep these proportions.
     const SALTS = [
-        { n: '염화 나트륨', pct: 77.7, c: '#e8ecee' },
+        { n: '염화 나트륨', pct: 77.7, c: '#cbd5e1' },
         { n: '염화 마그네슘', pct: 10.9, c: '#8fd0c0' },
         { n: '황산 마그네슘', pct: 4.7, c: '#7fb8e8' },
         { n: '황산 칼슘', pct: 3.6, c: '#c9a8e0' },
@@ -73,70 +75,100 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const dy = m => SEA.top + m * PX_PER_M;
+    // anim: 0..1 while the wind blows after 결과 보기 (1 = settled), phase: wave/swirl clock
+    const view = { anim: 1, phase: 0, revealed: false, blowing: false };
+    const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+    function wavePath(amp, phase, x0, x1, y, bottom) {
+        let d = `M${x0},${bottom} L${x0},${(y + amp * Math.sin(phase)).toFixed(1)}`;
+        for (let x = x0 + 4; x <= x1; x += 4) d += ` L${x},${(y + amp * Math.sin((x - x0) / 26 * Math.PI * 2 - phase)).toFixed(1)}`;
+        return d + ` L${x1},${bottom} Z`;
+    }
 
     function renderMain(a) {
-        const thermoEnd = Math.min(MAX_DEPTH, a.mixed + THERMO_M);
+        const k = view.anim, ph = view.phase;
+        // while the wind starts to blow the stirred layer deepens from the surface
+        const mixedNow = a.W === 0 ? a.mixed : a.mixed * (k < 1 ? Math.min(1, 0.15 + k * 1.1) : 1);
+        const thermoEnd = Math.min(DRAW_DEPTH, a.mixed + THERMO_M);
+        const amp = a.W === 0 ? 0.4 : 0.8 + a.W * 0.42;
         let out = '';
-        let body = '';
-        body += `<rect class="layer-mixed" x="${SEA.x0}" y="${SEA.top}" width="${SEA.x1 - SEA.x0}" height="${(dy(a.mixed) - SEA.top).toFixed(1)}"/>`;
-        body += `<rect class="layer-thermo" x="${SEA.x0}" y="${dy(a.mixed).toFixed(1)}" width="${SEA.x1 - SEA.x0}" height="${(dy(thermoEnd) - dy(a.mixed)).toFixed(1)}"/>`;
+        // sky
+        out += `<rect x="${SEA.x0}" y="6" width="${SEA.x1 - SEA.x0}" height="${SEA.top - 6}" fill="#e0f2fe"/>`;
+        // water body under a wavy surface, layers drawn as bands inside
+        let body = `<path d="${wavePath(amp, ph, SEA.x0, SEA.x1, SEA.top, SEA.bottom)}" fill="#bfe3f5"/>`;
+        body += `<rect class="layer-thermo" x="${SEA.x0}" y="${dy(mixedNow).toFixed(1)}" width="${SEA.x1 - SEA.x0}" height="${(dy(thermoEnd) - dy(mixedNow)).toFixed(1)}" fill="${a.thermo === 'normal' ? 'url(#seaThermo)' : '#7fa9cf'}"/>`;
         body += `<rect class="layer-deep" x="${SEA.x0}" y="${dy(thermoEnd).toFixed(1)}" width="${SEA.x1 - SEA.x0}" height="${(SEA.bottom - dy(thermoEnd)).toFixed(1)}"/>`;
-        // the wind stirring the top layer
-        for (let i = 0; i < Math.max(1, Math.round(a.W / 2) + 1); i += 1) {
-            const cx = SEA.x0 + 30 + i * 42;
-            if (cx > SEA.x1 - 16) break;
-            const r = Math.max(4, (dy(a.mixed) - SEA.top) * 0.3);
-            body += `<path class="swirl" d="M${cx - r},${(SEA.top + r + 3).toFixed(1)} a${r},${r} 0 1 1 ${r * 0.7},${r * 0.5}">` +
-                    `<animateTransform attributeName="transform" type="rotate" from="0 ${cx} ${(SEA.top + r + 3).toFixed(1)}" ` +
-                    `to="360 ${cx} ${(SEA.top + r + 3).toFixed(1)}" dur="${(6 - a.W * 0.4).toFixed(1)}s" repeatCount="indefinite"/></path>`;
+        // swirls stirring the top layer, turning while the wind blows
+        const mixPx = dy(mixedNow) - SEA.top;
+        if (a.W > 0 && mixPx > 7) {
+            const r = Math.min(15, mixPx * 0.42), n = Math.max(2, Math.min(5, Math.round(a.W / 2) + 1));
+            const gap = (SEA.x1 - SEA.x0) / n;
+            for (let i = 0; i < n; i += 1) {
+                const cx = SEA.x0 + gap * (i + 0.5), cy = SEA.top + mixPx / 2 + 2;
+                const rot = (ph * 70 * (i % 2 ? -1 : 1)) % 360;
+                body += `<g transform="rotate(${rot.toFixed(1)} ${cx.toFixed(1)} ${cy.toFixed(1)})"><path class="swirl" d="M${(cx - r).toFixed(1)},${cy.toFixed(1)} a${r.toFixed(1)},${r.toFixed(1)} 0 1 1 ${(r * 0.8).toFixed(1)},${(r * 0.6).toFixed(1)}"/>` +
+                    `<path class="swirl-head" d="M${(cx - r * 0.2).toFixed(1)},${(cy + r * 0.6).toFixed(1)} l-4,-4 m4,4 l-5,1"/></g>`;
+            }
         }
         out += `<g clip-path="url(#seaClip)">${body}</g>`;
-        out += `<rect class="sea-frame" x="${SEA.x0}" y="${SEA.top}" width="${SEA.x1 - SEA.x0}" height="${SEA.bottom - SEA.top}"/>`;
-        out += `<line class="surface-line" x1="${SEA.x0}" y1="${SEA.top}" x2="${SEA.x1}" y2="${SEA.top}"/>`;
-        [a.mixed, thermoEnd].forEach(m => {
+        out += `<rect class="sea-frame" x="${SEA.x0}" y="6" width="${SEA.x1 - SEA.x0}" height="${SEA.bottom - 6}"/>`;
+        [mixedNow, thermoEnd].forEach(m => {
             out += `<line class="layer-line" x1="${SEA.x0}" y1="${dy(m).toFixed(1)}" x2="${SEA.x1}" y2="${dy(m).toFixed(1)}"/>`;
         });
-        // Thin layers would stack their captions on top of one another, so each
-        // one is pushed at least a line below the last.
-        const l1 = SEA.top + 12;
-        const l2 = Math.max(dy(a.mixed) + 12, l1 + 14);
-        const l3 = Math.min(Math.max(dy(thermoEnd) + 12, l2 + 14), SEA.bottom - 5);
-        out += `<text class="layer-text" x="${SEA.x0 + 6}" y="${l1.toFixed(1)}">혼합층 ${a.mixed} m</text>`;
-        out += `<text class="layer-text" x="${SEA.x0 + 6}" y="${l2.toFixed(1)}">${THERMO_NAME[a.thermo]}</text>`;
-        out += `<text class="layer-text" x="${SEA.x0 + 6}" y="${l3.toFixed(1)}">심해층 ${DEEP_T} ℃</text>`;
-        [0, 500, 1000].forEach(m => {
-            // the deepest label goes above its line, clear of the reading below
-            const ty = m === MAX_DEPTH ? dy(m) - 5 : dy(m) + 3;
-            out += `<text class="depth-text" x="${SEA.x1 + 4}" y="${ty.toFixed(1)}">${m} m</text>`;
+        // depth scale on the left
+        [0, 300, 600].forEach(m => {
+            out += `<line class="tick" x1="${SEA.x0 - 5}" y1="${dy(m).toFixed(1)}" x2="${SEA.x0}" y2="${dy(m).toFixed(1)}"/>`;
+            out += `<text class="depth-text" x="${SEA.x0 - 8}" y="${(dy(m) + 5).toFixed(1)}" text-anchor="end">${m} m</text>`;
         });
-        // wind arrows above the water
-        for (let i = 0; i < Math.max(1, a.W); i += 1) {
-            const y = 34 + (i % 2) * 8, x = SEA.x0 + 10 + Math.floor(i / 2) * 44;
-            if (x + 26 > SEA.x1) break;
-            out += `<line class="wind-arrow" x1="${x}" y1="${y}" x2="${x + 22}" y2="${y}"/>`;
-            out += `<path class="wind-arrow" d="M${x + 16},${y - 4} L${x + 22},${y} L${x + 16},${y + 4}"/>`;
+        // layer names on the right, each with a short leader to the middle of its band
+        const LX = SEA.x1 + 26;
+        const mids = [(SEA.top + dy(mixedNow)) / 2, (dy(mixedNow) + dy(thermoEnd)) / 2, (dy(thermoEnd) + SEA.bottom) / 2];
+        const ys = [];
+        mids.forEach((m, i) => { ys[i] = Math.max(m + 5, i ? ys[i - 1] + 22 : SEA.top + 6); });
+        if (ys[2] > SEA.bottom) { ys[2] = SEA.bottom; ys[1] = Math.min(ys[1], ys[2] - 22); }
+        [`혼합층 ${Math.round(mixedNow)} m`, THERMO_NAME[a.thermo], `심해층 ${DEEP_T} ℃`].forEach((name, i) => {
+            out += `<path class="leader" d="M${SEA.x1 - 6},${mids[i].toFixed(1)} L${SEA.x1 + 8},${mids[i].toFixed(1)} L${LX - 4},${(ys[i] - 5).toFixed(1)}"/>`;
+            out += `<text class="layer-name" x="${LX}" y="${ys[i].toFixed(1)}">${name}</text>`;
+        });
+        // wind over the water: arrows slide along while it blows
+        if (a.W === 0) out += `<text class="small-label" x="${SEA.x0 + 8}" y="30">바람 없음</text>`;
+        else {
+            const rows = a.W > 6 ? 3 : a.W > 2 ? 2 : 1, len = 18 + a.W * 2.2;
+            const shift = view.blowing ? (ph * 22) % 60 : 0;
+            for (let r = 0; r < rows; r += 1) {
+                const y = 18 + r * 11;
+                for (let x = SEA.x0 - 60 + shift + r * 20; x < SEA.x1; x += 60) {
+                    const x1 = Math.max(SEA.x0 + 2, x), x2 = Math.min(SEA.x1 - 4, x + len);
+                    if (x2 - x1 < 8) continue;
+                    out += `<line class="wind-arrow" x1="${x1.toFixed(1)}" y1="${y}" x2="${x2.toFixed(1)}" y2="${y}"/>`;
+                    if (x2 === x + len) out += `<path class="wind-arrow" d="M${(x2 - 6).toFixed(1)},${y - 4} L${x2.toFixed(1)},${y} L${(x2 - 6).toFixed(1)},${y + 4}"/>`;
+                }
+            }
         }
-        if (a.W === 0) out += `<text class="small-label" x="${SEA.x0 + 10}" y="40">바람 없음</text>`;
 
-        // the salts, always in the same proportions
-        const BX = 282, BW = 158, BY = 60;
-        out += `<text class="part-label" x="${BX}" y="${BY - 8}">바닷물 1 kg에 녹은 염류 ${a.S} g</text>`;
-        let cursor = BX;
-        SALTS.forEach(s => {
-            const w = (BW * s.pct) / 100;
-            out += `<rect class="salt-seg" x="${cursor.toFixed(1)}" y="${BY}" width="${w.toFixed(1)}" height="15" fill="${s.c}"/>`;
+        // the salts in 1 kg of this water, on a ruler with the 35 g standard
+        const PX0 = 20, PX1 = 440, BY = 246, gx = g => PX0 + g / 40 * (PX1 - PX0);
+        const fill = view.revealed ? (k < 1 ? Math.min(1, k * 1.25) : 1) : 0;
+        out += `<text class="part-label" x="${PX0}" y="${BY - 14}">바닷물 1 kg에 녹은 염류${view.revealed && fill >= 1 ? ` ${a.S} g` : ''}</text>`;
+        out += `<rect x="${PX0}" y="${BY}" width="${PX1 - PX0}" height="20" rx="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>`;
+        let cursor = PX0;
+        SALTS.forEach((sl, i) => {
+            const w = gx(a.grams[i] * fill) - PX0;
+            if (w > 0.3) out += `<rect class="salt-seg" x="${cursor.toFixed(1)}" y="${BY}" width="${w.toFixed(1)}" height="20" fill="${sl.c}"/>`;
             cursor += w;
         });
-        SALTS.forEach((s, i) => {
-            const y = BY + 32 + i * 14;
-            out += `<rect x="${BX}" y="${y - 8}" width="9" height="9" rx="2" fill="${s.c}"/>`;
-            out += `<text class="salt-text" style="fill:${s.c}" x="${BX + 14}" y="${y}">${s.n} ${s.pct}%</text>`;
-            out += `<text class="salt-text" style="fill:#0f172a" x="448" y="${y}" text-anchor="end">${a.grams[i].toFixed(2)} g</text>`;
+        [0, 10, 20, 30, 40].forEach(g => {
+            out += `<line class="tick" x1="${gx(g).toFixed(1)}" y1="${BY + 20}" x2="${gx(g).toFixed(1)}" y2="${BY + 25}"/><text class="axis-text" x="${gx(g).toFixed(1)}" y="${BY + 38}" text-anchor="middle">${g} g</text>`;
         });
-        out += `<text class="note-text" x="${BX}" y="${BY + 32 + SALTS.length * 14 + 8}">염분이 달라져도 비율은 그대로입니다</text>`;
-
-        out += `<text class="part-label" x="20" y="24">${a.place.label} · 수온 ${a.T} ℃ · 염분 ${a.S} psu</text>`;
-        out += `<text class="read-text" x="20" y="208">바닷물 1 kg의 염류 ${a.S} g</text>`;
+        out += `<line class="standard-line" x1="${gx(35).toFixed(1)}" y1="${BY - 6}" x2="${gx(35).toFixed(1)}" y2="${BY + 26}"/>`;
+        out += `<text class="standard-text" x="${gx(35).toFixed(1)}" y="${BY - 14}" text-anchor="middle">기준 35 g</text>`;
+        // legend: name and share always, grams after the result
+        SALTS.forEach((sl, i) => {
+            const col = i % 2, row = Math.floor(i / 2);
+            const x = PX0 + col * 214, y = BY + 58 + row * 20;
+            out += `<rect x="${x}" y="${y - 11}" width="12" height="12" rx="2" fill="${sl.c}" stroke="rgba(15,23,42,.35)" stroke-width=".8"/>`;
+            out += `<text class="salt-text" x="${x + 18}" y="${y}">${sl.n} ${sl.pct} %${view.revealed && fill >= 1 ? ` · ${a.grams[i].toFixed(2)} g` : ''}</text>`;
+        });
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -191,11 +223,32 @@ document.addEventListener('DOMContentLoaded', () => {
         saltOutput.textContent = `${a.S} psu`;
         windOutput.textContent = `${a.W} 단계`;
         stageBadge.textContent = `${a.place.label} · 염분 ${a.S}`;
-        window.scienceScene.render(dataNote,'<p>바닷물 1 kg에 녹은 염류: '+a.S+' g · 염화 나트륨: '+a.grams[0].toFixed(2)+' g</p><p>염류의 구성 비율은 대체로 일정합니다. 바람에 따른 층 두께는 이 모형의 예시값입니다.</p>');
+        dataNote.hidden = !view.revealed;
+        window.scienceScene.render(dataNote, view.revealed ? '<p>염화 나트륨 '+a.grams[0].toFixed(2)+' g · 염화 마그네슘 '+a.grams[1].toFixed(2)+' g · 나머지 '+(a.S-a.grams[0]-a.grams[1]).toFixed(2)+' g. 바람에 따른 층 두께는 이 모형의 예시값입니다.</p>' : '');
         return a;
     }
 
-    function check() {
+    // the wind blows for a while: waves run, the top layer is stirred deeper, the salts are weighed
+    let frameId = 0;
+    function stopAnim() { if (frameId) cancelAnimationFrame(frameId); frameId = 0; view.blowing = false; }
+    function blow(then) {
+        stopAnim();
+        if (reduceMotion()) { view.anim = 1; then(); return; }
+        const t0 = performance.now(), DUR = 2600;
+        view.anim = 0; view.blowing = true;
+        const step = now => {
+            const t = Math.min(1, (now - t0) / DUR);
+            view.anim = t; view.phase = (now - t0) / 1000 * (1.5 + wind() * 0.35);
+            if (t >= 1) { frameId = 0; view.blowing = false; view.anim = 1; then(); return; }
+            render();
+            frameId = requestAnimationFrame(step);
+        };
+        frameId = requestAnimationFrame(step);
+    }
+
+    function check(animate) {
+        view.revealed = true;
+        if (animate === true) { blow(() => check(false)); return; }
         const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
         valueA.textContent=a.S+' g';valueB.textContent=a.mixed+' m (모형)';
         predictionResult.textContent=!prediction?'다음에는 먼저 예상해 보세요.':prediction===a.verdict?'예상이 맞았습니다.':'예상과 다른 결과입니다.';
@@ -203,13 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function changed() {
+        stopAnim(); view.anim = 1; view.revealed = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();
     }
 
     [tempRange, saltRange, windRange].forEach(el => el.addEventListener('input', () => {
-        render(); if (!resultContent.hidden) check();
+        stopAnim(); view.anim = 1;
+        if (!resultContent.hidden) check(false); else { view.revealed = false; render(); }
     }));
     placeButtons.forEach(button => button.addEventListener('click', () => {
         place = button.dataset.place;
@@ -222,9 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
         prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
+        stopAnim(); view.anim = 1; view.revealed = false; render();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
-    checkBtn.addEventListener('click', check);
+    checkBtn.addEventListener('click', () => check(true));
     resetBtn.addEventListener('click', () => {
         prediction = null;
         predictionButtons.forEach(item => item.classList.remove('selected'));
@@ -268,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.__seaModel = {
         RHO0, T0, S0, ALPHA, BETA, MEAN_RHO, DEEP_T, THERMO_M, MAX_DEPTH, SALTS, PLACES,
-        analyse, tempAt, render, check,
+        analyse, tempAt, render, check: () => check(false),
         setPlace(p) { placeButtons.find(b => b.dataset.place === p).click(); },
         setTemp(v) { tempRange.value = String(v); tempRange.dispatchEvent(new Event('input')); },
         setSalt(v) { saltRange.value = String(v); saltRange.dispatchEvent(new Event('input')); },

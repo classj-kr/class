@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const PX_PER_M = (RAIL_X1 - RAIL_X0) / RAIL_M;
     const GRAPH = { x0: 70, x1: 424, y0: 154, y1: 34 };
 
-    const state = { mode: 'induce', B: 0.5, v: 4, R: 4, r: 2, Rext: 4, prediction: null };
+    const state = { mode: 'induce', B: 0.5, v: 4, R: 4, r: 2, Rext: 4, prediction: null, checked: false, slide: 0, sliding: false, clock: 0 };
+    let slideFrame = 0;
+    const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     /* ------------------------------------------------------------ models */
     // A rod of length L cutting field lines at speed v makes emf = BLv.
@@ -89,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
             state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+            // 예상을 바꾸면 이전 결과와 판정을 지운다(진행 중인 그림도 멈춘다).
+            changed();
         }));
     }
 
@@ -116,31 +120,35 @@ document.addEventListener('DOMContentLoaded', () => {
         body += `<rect class="resistor-box" x="${RAIL_X0 - 13}" y="${(RAIL_TOP + RAIL_BOT) / 2 - 16}" width="26" height="32" rx="3"/>`;
         body += `<text class="resistor-text" x="${RAIL_X0}" y="${(RAIL_TOP + RAIL_BOT) / 2 + 4}" text-anchor="middle">${a.R}Ω</text>`;
 
-        // the rod, sliding at the speed that was set
-        const dur = moving ? (RAIL_M * (travel / (RAIL_X1 - RAIL_X0)) / a.v).toFixed(3) : 0;
-        body += `<g>${moving ? `<animateTransform attributeName="transform" type="translate" from="0 0" to="${travel} 0" dur="${dur}s" repeatCount="indefinite"/>` : ''}` +
-                `<line class="rod" x1="${rodStart}" y1="${RAIL_TOP}" x2="${rodStart}" y2="${RAIL_BOT}"/>` +
-                (moving ? arrow(rodStart + 8, RAIL_TOP - 14, rodStart + 44, RAIL_TOP - 14, 'motion-arrow') : '') +
-                (moving ? arrow(rodStart - 8, RAIL_BOT + 12, rodStart - 44, RAIL_BOT + 12, 'force-arrow') : '') +
-                `</g>`;
+        // the rod: it slides along the rails only while the run is playing
+        const rodX = rodStart + travel * state.slide;
+        body += `<line class="rod" x1="${rodX.toFixed(1)}" y1="${RAIL_TOP - 6}" x2="${rodX.toFixed(1)}" y2="${RAIL_BOT + 6}"/>`;
+        if (moving) {
+            body += arrow(rodX + 8, RAIL_TOP - 14, rodX + 44, RAIL_TOP - 14, 'motion-arrow');
+            body += `<text class="arrow-label motion-label" x="${(rodX + 26).toFixed(1)}" y="${RAIL_TOP - 24}" text-anchor="middle">미는 방향</text>`;
+            if (state.sliding || state.checked) {
+                body += arrow(rodX - 8, RAIL_BOT + 14, rodX - 44, RAIL_BOT + 14, 'force-arrow');
+                body += `<text class="arrow-label force-label" x="${(rodX - 26).toFixed(1)}" y="${RAIL_BOT + 32}" text-anchor="middle">방해하는 힘</text>`;
+            }
+        }
 
-        // current running round the loop, faster when there is more of it
-        if (a.current > 0.001) {
-            const per = Math.max(0.5, 3.2 / a.current);
-            const loop = `M${RAIL_X0},${(RAIL_TOP + RAIL_BOT) / 2} L${RAIL_X0},${RAIL_TOP} L${RAIL_X1 - 30},${RAIL_TOP} ` +
-                         `L${RAIL_X1 - 30},${RAIL_BOT} L${RAIL_X0},${RAIL_BOT} L${RAIL_X0},${(RAIL_TOP + RAIL_BOT) / 2}`;
-            for (let i = 0; i < 6; i += 1) {
-                body += `<circle class="current-dot" r="3.4"><animateMotion dur="${per.toFixed(2)}s" repeatCount="indefinite" ` +
-                        `begin="${(-i * per / 6).toFixed(2)}s" path="${loop}"/></circle>`;
+        // 유도 전류: 넓이가 늘어 들어가는 자기장이 늘면, 그것을 줄이는 쪽(그림에서 시계 반대 방향)으로
+        // 도선 → 위 레일 → 저항 → 아래 레일 순서로 돈다. 움직이는 동안에만 흐른다.
+        if (a.current > 0.001 && state.sliding) {
+            const pts = [[rodX, RAIL_BOT], [rodX, RAIL_TOP], [RAIL_X0, RAIL_TOP], [RAIL_X0, RAIL_BOT], [rodX, RAIL_BOT]];
+            const seg = pts.slice(1).map((p, i) => Math.hypot(p[0] - pts[i][0], p[1] - pts[i][1]));
+            const total = seg.reduce((x, y) => x + y, 0), n = 10, speed = 40 + 60 * Math.min(1, a.current / 0.5);
+            for (let i = 0; i < n; i += 1) {
+                let d = ((state.clock * speed + i * total / n) % total + total) % total, k = 0;
+                while (d > seg[k]) { d -= seg[k]; k += 1; }
+                const f = seg[k] ? d / seg[k] : 0, x = pts[k][0] + (pts[k + 1][0] - pts[k][0]) * f, y = pts[k][1] + (pts[k + 1][1] - pts[k][1]) * f;
+                body += `<circle class="current-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`;
             }
         }
         let out = `<g clip-path="url(#railClip)">${body}</g>`;
         out += `<text class="part-label" x="20" y="20">B = ${a.B} T (지면으로 들어감) · L = ${a.L} m · v = ${a.v} m/s</text>`;
         // one legend row, then the readings, each on its own line
-        out += `<text class="small-label" x="20" y="180"><tspan fill="#059669">초록 = 미는 방향</tspan>` +
-               `<tspan fill="#8fa8b0">  ·  </tspan><tspan fill="#ff7d6b">빨강 = 유도 전류가 만드는 방해하는 힘</tspan></text>`;
-        out += `<text class="read-text" x="20" y="196">ε = ${a.B}×${a.L}×${a.v} = ${a.emf.toFixed(2)} V · I = ${a.current.toFixed(3)} A · F = ${a.force.toFixed(3)} N</text>`;
-        out += `<text class="note-text" x="20" y="209">${moving ? `도선이 실제 속력으로 움직입니다 (${RAIL_M} m 구간)` : '도선이 멈춰 있어 자기장 변화가 없고 전류도 흐르지 않습니다'}</text>`;
+        if (state.checked) out += `<text class="read-text" x="20" y="200">ε = ${a.B}×${a.L}×${a.v} = ${a.emf.toFixed(2)} V · I = ${a.current.toFixed(3)} A · F = ${a.force.toFixed(3)} N</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -174,8 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         let out = `<g clip-path="url(#railClip)">${body}</g>`;
         out += `<text class="part-label" x="20" y="20">기전력 ${a.emf} V · 내부 저항 ${a.r} Ω · 외부 저항 ${a.R} Ω</text>`;
-        out += `<text class="read-text" x="20" y="192">외부 소비 전력 ${a.pExt.toFixed(2)} W (최대 가능 ${a.best.toFixed(2)} W)</text>`;
-        out += `<text class="note-text" x="20" y="208">내부에서 ${a.pInt.toFixed(2)} W가 열로 버려집니다 · 효율 ${a.efficiency.toFixed(0)}%</text>`;
+        if (state.checked) out += `<text class="read-text" x="20" y="200">외부 소비 전력 ${a.pExt.toFixed(2)} W (최대 가능 ${a.best.toFixed(2)} W)</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -205,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="bench-line" x1="${GRAPH.x0}" y1="${gy(EMF_BENCH).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(EMF_BENCH).toFixed(1)}"/>`;
         // at the left end: the curve labels are anchored to the right end
         out += `<text class="bench-text" x="${GRAPH.x0 + 4}" y="${(gy(EMF_BENCH) - 5).toFixed(1)}">${EMF_BENCH} V</text>`;
+        // 곡선과 지금 점은 결과를 본 뒤에 그린다(예상 전에 답이 읽히지 않게).
+        if (!state.checked) { window.scienceScene.render(graphGroup,out); return; }
         [0.2, 0.5, 1].forEach(b => {
             const on = Math.abs(b - a.B) < 1e-9;
             out += `<path class="trace" style="stroke:${on ? '#d97706' : 'rgba(217, 119, 6, .28)'}" ` +
@@ -226,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = frame([0, 5, 10, 15, 20].map(v => [v, gx(v)]),
                         [0, 1, 2, 3].map(i => [((pMax / 3) * i).toFixed(0), gy((pMax / 3) * i)]),
                         '외부 저항 R (Ω)', '외부 소비 전력 (W)');
+        if (!state.checked) { window.scienceScene.render(graphGroup,out); return; }
         const pts = [];
         for (let R = 0.1; R <= rMax + 1e-9; R += 0.1) pts.push(`${gx(R).toFixed(1)},${gy(analyseCircuit(a.r, R).pExt).toFixed(1)}`);
         out += `<path class="trace" d="M${pts.join('L')}"/>`;
@@ -246,10 +256,14 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = state.mode === 'induce'
             ? 'ε = BLv · 유도 전류는 언제나 변화를 방해합니다'
             : '전지 속 저항 때문에 단자 전압이 기전력보다 낮아집니다';
-        stageBadge.textContent = a.kind === 'induce'
+        stageBadge.textContent = !state.checked ? (a.kind === 'induce' ? `B ${a.B} T · v ${a.v} m/s · R ${a.R} Ω` : `r ${a.r} Ω · R ${a.R} Ω`)
+            : a.kind === 'induce'
             ? `ε ${a.emf.toFixed(2)} V · I ${a.current.toFixed(2)} A`
             : `${a.pExt.toFixed(2)} W · ${VERDICT_C[a.verdict]}`;
-        window.scienceScene.render(dataNote,a.kind === 'induce'
+        // 계산 표와 판정은 결과를 본 뒤에만 보여 준다.
+        window.scienceScene.render(dataNote,!state.checked
+            ? `<div class="data-row"><span class="data-name">결과</span><span class="data-val">${state.sliding ? '도선이 움직이는 중…' : '결과 보기를 누르면 여기에 적힙니다'}</span></div>`
+            : a.kind === 'induce'
             ? `<div class="data-row"><span class="data-name">유도 기전력</span><span class="data-val">ε = BLv = ${a.B}×${a.L}×${a.v} = ${a.emf.toFixed(3)} V</span></div>` +
               `<div class="data-row"><span class="data-name">유도 전류</span><span class="data-val">I = ε/R = ${a.emf.toFixed(3)}÷${a.R} = ${a.current.toFixed(3)} A</span></div>` +
               `<div class="data-row"><span class="data-name">방해하는 힘</span><span class="data-val">F = BIL = ${a.force.toFixed(3)} N — 운동 반대쪽</span></div>` +
@@ -266,7 +280,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const VERDICT_I = { more: `${EMF_BENCH} V보다 크다`, near: `${EMF_BENCH} V와 비슷하다`, less: `${EMF_BENCH} V보다 작다` };
     const VERDICT_C = { up: '더 커진다', peak: '이미 최대다', down: '작아진다' };
 
+    function stopSlide() { state.sliding = false; cancelAnimationFrame(slideFrame); slideFrame = 0; }
+    // 결과 보기: 도선이 레일을 따라 실제로 미끄러지는 동안 전류가 돌고, 다 간 뒤에 결과를 적는다.
     function check() {
+        stopSlide();
+        state.checked = false;
+        if (state.mode !== 'induce' || state.v <= 0 || reduceMotion()) { state.slide = state.mode === 'induce' && state.v > 0 ? 1 : 0; return showResult(); }
+        const realSeconds = (RAIL_M * 0.78) / state.v, dur = Math.max(1.4, Math.min(3.6, realSeconds)) * 1000;
+        state.slide = 0; state.sliding = true; state.clock = 0;
+        const t0 = performance.now();
+        let last = t0;
+        const step = now => {
+            state.clock += (now - last) / 1000; last = now;
+            state.slide = Math.min(1, (now - t0) / dur);
+            render();
+            if (state.slide < 1) slideFrame = requestAnimationFrame(step);
+            else { state.sliding = false; showResult(); }
+        };
+        render();
+        slideFrame = requestAnimationFrame(step);
+    }
+
+    function showResult() {
+        state.checked = true;
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -302,6 +338,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function changed() {
+        stopSlide();
+        state.checked = false;
+        state.slide = 0;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();
@@ -320,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     checkBtn.addEventListener('click', check);
     resetBtn.addEventListener('click', () => {
-        Object.assign(state, { B: 0.5, v: 4, R: 4, r: 2, Rext: 4, prediction: null });
+        Object.assign(state, { B: 0.5, v: 4, R: 4, r: 2, Rext: 4, prediction: null, checked: false, slide: 0 });
         modeButtons.find(b => b.dataset.mode === 'induce').click();
     });
 

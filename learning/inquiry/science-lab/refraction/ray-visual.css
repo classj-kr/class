@@ -40,12 +40,17 @@
    travel, so incident light runs toward the boundary and the reflected and
    refracted rays run away from it. */
 @keyframes rayTravel { to { stroke-dashoffset: -32; } }
-.ray { stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-dasharray: 9 7;
+.ray { stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 10 6;
        animation: rayTravel 1s linear infinite; }
+.beam-front { fill: #f59e0b; stroke: #b45309; stroke-width: 1; }
+.laser-body { fill: #475569; stroke: #1e293b; stroke-width: 1; }
+.laser-tip { fill: #94a3b8; stroke: #1e293b; stroke-width: 1; }
+.laser-button { fill: #dc2626; }
+.laser-aperture { fill: #fbbf24; stroke: #92400e; stroke-width: .8; }
 .ray.incident { stroke: #d97706; }
 .ray.reflected { stroke: #0284c7; }
 .ray.refracted { stroke: #16a34a; }
-.ray-label { font-size: 13px; font-weight: 900; }
+.ray-label { font-size: 13.5px; font-weight: 900; }
 .ray-label.incident { fill: #b45309; }
 .ray-label.reflected { fill: #0369a1; }
 .ray-label.refracted { fill: #15803d; }
@@ -54,7 +59,7 @@
 .angle-arc.incident { stroke: #d97706; }
 .angle-arc.reflected { stroke: #0284c7; }
 .angle-arc.refracted { stroke: #16a34a; }
-.angle-text { font-size: 13px; font-weight: 900; }
+.angle-text { font-size: 13.5px; font-weight: 900; }
 
 .critical-note { margin: 6px auto 0; max-width: 520px; color: var(--amber); font-size: 13px; font-weight: 850; text-align: center; min-height: 18px; }
 

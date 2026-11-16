@@ -49,14 +49,16 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.sky-box { fill: #070d1a; stroke: rgba(148, 163, 184, 0.45); stroke-width: 1.2; }
-.far-star { fill: #ffffff; opacity: 0.85; }
-.near-star { stroke: #fff; stroke-width: 1; }
-.orbit { fill: none; stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.2; stroke-dasharray: 4 4; }
-.sun-dot { fill: #c2410c; }
+.sky-box { fill: #eef3f9; stroke: #94a3b8; stroke-width: 1.2; }
+.far-star { fill: #475569; }
+.near-star { stroke: #334155; stroke-width: 1; }
+.orbit { fill: none; stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 4 4; }
+.sun-dot { fill: #f59e0b; stroke: #b45309; stroke-width: 1; }
+.sun-body { fill: #fbbf24; stroke: #b45309; stroke-width: 1.4; }
+.sun-name { fill: #78350f; }
 .earth-dot { fill: #0284c7; stroke: #fff; stroke-width: .9; }
 .sight-line { stroke: #ea580c; stroke-width: 1.5; stroke-dasharray: 4 3; opacity: 0.7; stroke-width: 1; stroke-dasharray: 3 3; }
-.shift-mark { stroke: rgba(255, 138, 138, .8); stroke-width: 1.2; }
+.shift-mark { stroke: #dc2626; stroke-width: 1.2; }
 
 .spec-axis { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.3; }
 .spec-curve { fill: none; stroke-width: 2.4; }
@@ -73,14 +75,15 @@
 .grid-line { stroke: #e2e8f0; stroke-width: 1; stroke-width: 1; }
 .axis-text { fill: #334155; font-size: 13.5px; font-weight: 800; }
 .axis-title { fill: #0f172a; font-size: 14px; font-weight: 900; }
-.main-seq { fill: none; stroke: rgba(127, 212, 240, .75); stroke-width: 8; stroke-linecap: round; opacity: .5; }
+.main-seq { fill: none; stroke: #93c5fd; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
+.main-seq-core { fill: none; stroke: #1d4ed8; stroke-width: 2.2; stroke-linejoin: round; }
 .radius-line { stroke: rgba(217, 119, 6, .4); stroke-width: 1; stroke-dasharray: 5 4; }
 .radius-text { fill: rgba(217, 119, 6, .8); font-size: 13.5px; font-weight: 800; }
 .zone { stroke: none; }
-.zone-giant { fill: rgba(255, 138, 138, .12); }
-.zone-dwarf { fill: rgba(214, 235, 250, .12); }
-.star-dot { stroke: #fff; stroke-width: 1.4; }
-.other-dot { fill: rgba(190, 210, 225, .5); }
+.zone-giant { fill: rgba(248, 113, 113, .22); stroke: #dc2626; stroke-width: 1.2; stroke-dasharray: 5 3; }
+.zone-dwarf { fill: rgba(96, 165, 250, .22); stroke: #2563eb; stroke-width: 1.2; stroke-dasharray: 5 3; }
+.star-dot { stroke: #1e293b; stroke-width: 1.6; }
+.other-dot { fill: #94a3b8; }
 .legend-text { font-size: 13.5px; font-weight: 900; }
 
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }

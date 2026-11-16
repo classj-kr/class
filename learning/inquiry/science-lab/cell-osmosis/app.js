@@ -25,7 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const C_IN0 = 1.0, V0 = 1.0;
     const BURST_V = 1.4;      // red cells haemolyse around 1.4x volume
     const TAU = 4.0;          // minutes
-    const GRAPH = { x0: 54, x1: 420, y0: 146, y1: 22 };
+    const GRAPH = { x0: 54, x1: 420, y0: 140, y1: 30 };
+    const YMAX = 1.6;         // 세로축 160%: 동물세포는 140%에서 터지므로 그 위는 필요 없다
+    // 최종 부피 곡선은 한 번 20분을 다 흘려 본 뒤에야 그린다(그 전에 그리면 답이 된다).
+    let revealed = false;
 
     let cell = 'animal';
     let prediction = null;
@@ -73,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const gx = c => GRAPH.x0 + ((c - 0.2) / 1.8) * (GRAPH.x1 - GRAPH.x0);
-    const gy = v => GRAPH.y0 - (v / 2.2) * (GRAPH.y0 - GRAPH.y1);
+    const gy = v => GRAPH.y0 - (Math.min(YMAX, v) / YMAX) * (GRAPH.y0 - GRAPH.y1);
     // A sphere's radius grows as the cube root of its volume.
     const scaleOf = v => Math.cbrt(v);
 
@@ -109,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                        `<path class="nucleus" d="M 50 28 C 62 28 70 36 70 48 C 70 60 62 68 50 68 C 38 68 30 60 30 48 C 30 36 38 28 50 28 Z"/></g>`;
             }
             out += `<text class="cell-label" x="${CX}" y="30" text-anchor="middle">동물세포 (세포벽 없음)</text>`;
-            out += `<text class="part-label" x="${CX}" y="196" text-anchor="middle">세포막만 있어 부피를 제한하지 못합니다</text>`;
+            out += `<text class="part-label" x="${CX}" y="196" text-anchor="middle">세포막</text>`;
         } else {
             const W = 116, H = 92;                    // the wall never changes size
             const k = scaleOf(s.v);
@@ -127,20 +130,23 @@ document.addEventListener('DOMContentLoaded', () => {
                        `<path class="chloroplast" d="M 50 38 C 60 38 66 44 66 50 C 66 56 60 62 50 62 C 40 62 34 56 34 50 C 34 44 40 38 50 38 Z"/></g>`;
             }
             out += `<text class="cell-label" x="${CX}" y="30" text-anchor="middle">식물세포 (세포벽 있음)</text>`;
-            out += `<text class="part-label" x="${CX}" y="196" text-anchor="middle">${s.v < 0.98 ? '세포막이 세포벽에서 떨어졌습니다' : '세포벽이 더 부풀지 못하게 막습니다'}</text>`;
+            out += `<text class="part-label" x="${CX}" y="196" text-anchor="middle">${s.v < 0.98 ? '세포벽 · 떨어진 세포막' : '세포벽 · 세포막'}</text>`;
         }
 
         // water arrows point the way water actually moves
         const inward = c < 0.98, outward = c > 1.02;
         if (inward || outward) {
             const cls = inward ? 'water-in' : 'water-out';
-            [[-1, 0], [1, 0], [0, -1], [0, 1]].forEach(([dx, dy]) => {
-                const far = 96, near = 60;
+            // 비스듬한 네 방향: 위아래 이름표와 겹치지 않는다.
+            [[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([a, b]) => [a * 0.7071, b * 0.7071]).forEach(([dx, dy]) => {
+                const far = 104, near = 66;
                 const x1 = CX + dx * (inward ? far : near), y1 = CY + dy * (inward ? far : near) * 0.8;
                 const x2 = CX + dx * (inward ? near : far), y2 = CY + dy * (inward ? near : far) * 0.8;
                 out += `<path class="water-arrow ${cls}" d="M${x1.toFixed(1)},${y1.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
-                const ax = x2 - dx * 7, ay = y2 - dy * 7 * 0.8;
-                out += `<path class="water-arrow ${cls}" d="M${(ax - dy * 5).toFixed(1)},${(ay - dx * 5).toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)} L${(ax + dy * 5).toFixed(1)},${(ay + dx * 5).toFixed(1)}"/>`;
+                const ux = (x2 - x1), uy = (y2 - y1), L = Math.hypot(ux, uy) || 1;
+                const nx = ux / L, ny = uy / L;
+                const ax = x2 - nx * 7, ay = y2 - ny * 7;
+                out += `<path class="water-arrow ${cls}" d="M${(ax - ny * 5).toFixed(1)},${(ay + nx * 5).toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)} L${(ax + ny * 5).toFixed(1)},${(ay - nx * 5).toFixed(1)}"/>`;
             });
             out += `<text class="part-label" style="fill:${inward ? '#0284c7' : '#ea580c'}" x="358" y="150">물이 ${inward ? '들어옴' : '빠져나감'}</text>`;
         } else {
@@ -156,37 +162,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderGraph(s) {
         let out = '';
-        for (let v = 0; v <= 2.2; v += 0.55) {
+        for (let v = 0; v <= YMAX + 1e-9; v += 0.4) {
             out += `<line class="grid-line" x1="${GRAPH.x0}" y1="${gy(v).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(v).toFixed(1)}"/>`;
             out += `<text class="axis-text" x="${GRAPH.x0 - 6}" y="${(gy(v) + 3).toFixed(1)}" text-anchor="end">${(v * 100).toFixed(0)}</text>`;
         }
         for (const c of [0.2, 0.6, 1.0, 1.4, 2.0]) {
-            // clear of the y-axis "0", which sits just above the corner
             out += `<text class="axis-text" x="${gx(c).toFixed(1)}" y="${GRAPH.y0 + 16}" text-anchor="middle">${c.toFixed(1)}</text>`;
         }
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${(GRAPH.x0 + GRAPH.x1) / 2}" y="${GRAPH.y0 + 32}" text-anchor="middle">바깥 용액의 농도</text>`;
-        // starts at the plot edge, not over the tick numbers
-        out += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 6}">최종 부피 (%)</text>`;
+        out += `<text class="axis-title" x="${(GRAPH.x0 + GRAPH.x1) / 2}" y="${GRAPH.y0 + 34}" text-anchor="middle">바깥 용액의 농도</text>`;
+        out += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 6}">20분 뒤 부피 (%)</text>`;
         out += `<line class="iso-line" x1="${gx(1).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(1).toFixed(1)}" y2="${GRAPH.y0}"/>`;
-        out += `<text class="zone-text" fill="#059669" x="${(gx(1) + 4).toFixed(1)}" y="${GRAPH.y1 + 10}">등장액</text>`;
+        out += `<text class="zone-text" fill="#059669" x="${(gx(1) + 4).toFixed(1)}" y="${GRAPH.y0 - 6}">등장액</text>`;
         out += `<line class="burst-line" x1="${GRAPH.x0}" y1="${gy(BURST_V).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(BURST_V).toFixed(1)}"/>`;
-        out += `<text class="zone-text" fill="#dc2626" x="${GRAPH.x1 - 4}" y="${(gy(BURST_V) - 5).toFixed(1)}" text-anchor="end">동물세포가 터지는 부피 140%</text>`;
-
-        [['animal', '#ff8a8a'], ['plant', '#6fbf73']].forEach(([kind, col]) => {
-            const pts = [];
-            for (let c = 0.2; c <= 2.001; c += 0.02) {
-                pts.push(`${gx(c).toFixed(1)},${gy(Math.min(2.2, targetVolume(c, kind))).toFixed(1)}`);
-            }
-            out += `<path class="trace${kind === cell ? '' : ' dim'}" style="stroke:${col}" d="M${pts.join('L')}"/>`;
+        out += `<text class="zone-text" fill="#dc2626" x="${GRAPH.x1 - 4}" y="${(gy(BURST_V) - 5).toFixed(1)}" text-anchor="end">터지는 부피 140%</text>`;
+        // 범례는 곡선과 겹치지 않게 축 밖 오른쪽 위에 둔다.
+        [['animal', '#e05656', '동물세포'], ['plant', '#3f9f47', '식물세포']].forEach(([kind, col, name], i) => {
+            const lx = 300 + i * 82;
+            out += `<line x1="${lx}" y1="${GRAPH.y1 - 10}" x2="${lx + 16}" y2="${GRAPH.y1 - 10}" style="stroke:${col};stroke-width:3;stroke-linecap:round"/>`;
+            out += `<text class="zone-text" fill="${col}" x="${lx + 20}" y="${GRAPH.y1 - 6}">${name}</text>`;
         });
-        out += `<text class="zone-text" fill="#6fbf73" x="${gx(0.35).toFixed(1)}" y="${(gy(1) - 8).toFixed(1)}">식물세포 — 처음부터 팽팽한 모형</text>`;
-        out += `<circle class="trace-dot" cx="${gx(conc()).toFixed(1)}" cy="${gy(Math.min(2.2, s.v)).toFixed(1)}" r="5" fill="#d97706"/>`;
+        if (revealed) {
+            [['animal', '#e05656'], ['plant', '#3f9f47']].forEach(([kind, col]) => {
+                const pts = [];
+                for (let c = 0.2; c <= 2.001; c += 0.02) {
+                    const v = targetVolume(c, kind);
+                    if (kind === 'animal' && v > BURST_V) continue;   // 터진 세포는 곡선을 잇지 않는다
+                    pts.push(`${gx(c).toFixed(1)},${gy(v).toFixed(1)}`);
+                }
+                out += `<path class="trace${kind === cell ? '' : ' dim'}" style="stroke:${col}" d="M${pts.join('L')}"/>`;
+            });
+            const cb = (C_IN0 * V0) / BURST_V;
+            out += `<path class="trace${cell === 'animal' ? '' : ' dim'}" style="stroke:#e05656;stroke-dasharray:3 4" d="M${gx(0.2).toFixed(1)},${gy(BURST_V).toFixed(1)}L${gx(cb).toFixed(1)},${gy(BURST_V).toFixed(1)}"/>`;
+        }
+        out += `<circle class="trace-dot" cx="${gx(conc()).toFixed(1)}" cy="${gy(s.v).toFixed(1)}" r="5" fill="#d97706"/>`;
         window.scienceScene.render(graphGroup,out);
     }
 
     function render() {
+        if (elapsed() >= 20) revealed = true;
         const s = renderMain();
         renderGraph(s);
         concOutput.textContent = conc().toFixed(2);
@@ -194,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = `${cell === 'animal' ? '동물세포' : '식물세포'} · ${s.label}`;
         const dir = conc() < 0.98 ? '세포 안으로' : conc() > 1.02 ? '세포 밖으로' : '양쪽이 균형';
         window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">농도 비교</span><span class="data-val">바깥 ${conc().toFixed(2)} vs 처음 세포 속 1.00 → 물이 ${dir}</span></div>` +
-            `<div class="data-row"><span class="data-name">최종 부피</span><span class="data-val">1.00 ÷ ${conc().toFixed(2)} = ${((C_IN0 * V0) / conc()).toFixed(2)}${cell === 'plant' && (C_IN0 * V0) / conc() > 1 ? ' → 세포벽이 1.00으로 제한' : ''}</span></div>` +
+            (elapsed() >= 20 ? `<div class="data-row"><span class="data-name">최종 부피</span><span class="data-val">1.00 ÷ ${conc().toFixed(2)} = ${((C_IN0 * V0) / conc()).toFixed(2)}${cell === 'plant' && (C_IN0 * V0) / conc() > 1 ? ' → 세포벽이 1.00으로 제한' : ''}</span></div>` : '') +
             `<div class="data-row${s.burst ? '' : ' match'}"><span class="data-name">지금 상태</span><span class="data-val">부피 ${(s.v * 100).toFixed(0)}% · ${s.label}</span></div>`);
         if (!resultContent.hidden) showResult();
         return s;

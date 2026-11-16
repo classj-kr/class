@@ -17,22 +17,31 @@
   }
   return `<ellipse rx="${r*1.9}" ry="${r*.58}" transform="rotate(-22)" fill="none" stroke="#bcb29a" stroke-width="${r*.25}"/><circle r="${r}" fill="#d5c5a4"/><path d="M${-r*.8} ${r*.25}Q0 ${r*.5} ${r*.8} ${r*.25}" fill="none" stroke="#b6a180" stroke-width="${r*.2}"/><path d="M${-r*1.83} ${r*.38}Q0 ${r*1.1} ${r*1.83} ${-r*.87}" fill="none" stroke="#d5c8a9" stroke-width="${r*.23}"/>`;
  }
+ // Parts lie on a mat below the stand; each install button carries one part up to its place.
+ const SLOTS={
+  tripod:{lay:[34,405,-90,.72],fit:[180,211,0,1]},
+  mount:{lay:[168,428,-90,.55],fit:[180,211,0,1]},
+  tube:{lay:[236,402,0,.55],fit:[168,132,30,1]},
+  optics:{lay:[222,470,0,.62],fit:[168,132,30,1]}
+ };
+ let anim=null,lastM=null;const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+ function progress(part){if(!state.parts.includes(part))return 0;if(anim&&anim.part===part)return anim.p;return 1;}
+ function place(part,p){const a=SLOTS[part].lay,b=SLOTS[part].fit,e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2,mix=i=>a[i]+(b[i]-a[i])*e,lift=Math.sin(Math.PI*e)*46;return `translate(${mix(0).toFixed(1)} ${(mix(1)-lift).toFixed(1)}) rotate(${mix(2).toFixed(1)}) scale(${mix(3).toFixed(3)})`;}
+ function tripodPart(p){const s=.13+.87*p;return line(`M0 0L${-102*s} 126 M0 0L${98*s} 126 M0 0V127`,'#7d6a52',11)+line(`M0 4L${-98*s} 119 M0 4L${94*s} 119 M0 4V119`,'#a88f6f',4)+line(`M${-51*s} 70H${47*s}`,'#8a99a6',4)+[[-102*s,126],[98*s,126],[0,127]].map(([x,y])=>`<rect x="${x-5}" y="${y-2}" width="10" height="8" rx="2" fill="#3e4c57"/>`).join('')+`<ellipse cx="0" cy="6" rx="26" ry="8" fill="#56636e"/><rect x="-22" y="-2" width="44" height="9" rx="3" fill="#6f7d88"/>`;}
+ function mountPart(){const w=state.balance*9;return line('M3 2L23 -41L-15 -75','#6b7f8e',16)+`<circle cx="19" cy="-37" r="19" fill="url(#scope-metal)" stroke="#526d82" stroke-width="3"/><circle cx="19" cy="-37" r="7" fill="#3f5669"/>`+line('M-10 -72L-65 23','#8394a2',7)+`<g transform="translate(${-55-w*.5} ${w*.85}) rotate(30)"><rect x="-28" y="-9" width="56" height="20" rx="5" fill="url(#scope-metal)" stroke="#587184"/><rect x="-4" y="-13" width="8" height="6" fill="#334d62"/></g>`;}
+ function tubePart(){return `<rect x="-85" y="-29" width="192" height="58" rx="12" fill="url(#scope-tube)" stroke="#78909a" stroke-width="2"/><rect x="-96" y="-32" width="26" height="64" rx="6" fill="#e9eeee" stroke="#78909a" stroke-width="2"/><rect x="-26" y="-31" width="11" height="62" rx="3" fill="#6c8f8e"/><rect x="57" y="-31" width="11" height="62" rx="3" fill="#6c8f8e"/><ellipse cx="-96" cy="0" rx="9" ry="29" fill="#2c4859"/><ellipse cx="-97" cy="0" rx="5" ry="24" fill="url(#scope-lens)"/><rect x="107" y="-15" width="24" height="30" rx="4" fill="#344e64"/><rect x="113" y="15" width="10" height="9" rx="2" fill="#5b6f7f"/>`;}
+ function opticsPart(){return `<path d="M128 0h15v-14" stroke="#344e64" stroke-width="10" fill="none"/><rect x="133" y="-32" width="20" height="22" rx="4" fill="#1f3a4f"/><ellipse cx="143" cy="-32" rx="8" ry="3" fill="#7fa3b5"/><path d="M36 -29v-17M76 -29v-17" stroke="#344e64" stroke-width="5"/><rect x="22" y="-63" width="70" height="19" rx="5" fill="url(#scope-tube)" stroke="#78909a"/><ellipse cx="22" cy="-53.5" rx="4" ry="9" fill="#355c72"/><rect x="90" y="-60" width="8" height="13" rx="2" fill="#344e64"/>`;}
  function apparatus(m){
-  const parts=state.parts,has=p=>parts.includes(p);let s=`<svg viewBox="0 0 360 370" role="img" aria-label="삼각대, 가대, 균형추, 경통, 파인더를 조립하는 모습"><defs><linearGradient id="scope-metal"><stop stop-color="#a1b3c1"/><stop offset=".4" stop-color="#f5f9fb"/><stop offset="1" stop-color="#889dab"/></linearGradient><linearGradient id="scope-tube"><stop stop-color="#f7f6ef"/><stop offset=".55" stop-color="#e1e8e9"/><stop offset="1" stop-color="#bac9cd"/></linearGradient><radialGradient id="scope-lens"><stop stop-color="#61909b"/><stop offset=".75" stop-color="#2b4e62"/><stop offset="1" stop-color="#152e43"/></radialGradient></defs><ellipse cx="180" cy="343" rx="137" ry="15" fill="#b9cbd6" opacity=".3"/>`;
-  if(has('tripod'))s+=line('M180 211L78 337 M180 211L278 337 M180 211V338','#8197a7',11)+line('M180 215L82 330 M180 215L274 330 M180 215V330','#c4d3dc',5)+line('M129 281H226','#94a9b8',4)+`<ellipse cx="180" cy="217" rx="26" ry="8" fill="#567080"/>`;
-  if(has('mount')){
-   const weight=state.balance*9;
-   s+=line('M183 213L203 170L165 136','#7e95a6',16)+`<circle cx="199" cy="174" r="19" fill="url(#scope-metal)" stroke="#526d82" stroke-width="3"/><circle cx="199" cy="174" r="7" fill="#3f5669"/>`+line('M170 139L115 234','#7e95a6',7)+`<g transform="translate(${125-weight*.5} ${211+weight*.85}) rotate(30)"><rect x="-28" y="-8" width="56" height="18" rx="4" fill="url(#scope-metal)" stroke="#587184"/><rect x="-4" y="-12" width="8" height="6" fill="#334d62"/></g>`;
-  }
-  if(has('tube')){
-   s+=`<g transform="translate(168 132) rotate(30)"><rect x="-85" y="-29" width="192" height="58" rx="12" fill="url(#scope-tube)" stroke="#78909a" stroke-width="2"/><rect x="-26" y="-31" width="11" height="62" rx="3" fill="#6c8f8e"/><rect x="57" y="-31" width="11" height="62" rx="3" fill="#6c8f8e"/><ellipse cx="-84" cy="0" rx="10" ry="29" fill="#2c4859"/><ellipse cx="-85" cy="0" rx="6" ry="24" fill="url(#scope-lens)"/><rect x="107" y="-15" width="26" height="30" rx="4" fill="#344e64"/>`;
-   if(has('optics'))s+=`<path d="M126 0h17v-17" stroke="#344e64" stroke-width="10" fill="none"/><rect x="134" y="-30" width="18" height="20" rx="3" fill="#193449"/><path d="M36 -29v-17M76 -29v-17" stroke="#344e64" stroke-width="5"/><rect x="22" y="-63" width="70" height="19" rx="5" fill="url(#scope-tube)" stroke="#78909a"/><ellipse cx="22" cy="-53.5" rx="4" ry="9" fill="#355c72"/>`;
-   s+='</g>';
-  }
-  s+=t(180,363,has('optics')?(m.balanced?'균형이 맞은 장치':'균형추 위치를 조절하세요'):api.labels[api.order[parts.length]]||'',14,'#26485d');
-  if(!has('tripod'))s+=t(180,180,'부품을 골라 설치하세요',17,'#4d6a80');
+  lastM=m;const parts=state.parts,has=p=>parts.includes(p);
+  let s=`<svg viewBox="0 0 360 ${parts.length<api.order.length||anim?490:356}" role="img" aria-label="바닥 깔개에 놓인 망원경 부품을 하나씩 들어 올려 삼각대, 가대, 균형추, 경통, 파인더를 조립하는 모습"><defs><linearGradient id="scope-metal"><stop stop-color="#a1b3c1"/><stop offset=".4" stop-color="#f5f9fb"/><stop offset="1" stop-color="#889dab"/></linearGradient><linearGradient id="scope-tube"><stop stop-color="#f7f6ef"/><stop offset=".55" stop-color="#e1e8e9"/><stop offset="1" stop-color="#bac9cd"/></linearGradient><radialGradient id="scope-lens"><stop stop-color="#61909b"/><stop offset=".75" stop-color="#2b4e62"/><stop offset="1" stop-color="#152e43"/></radialGradient></defs>`;
+  s+=`<path d="M0 340H360" stroke="#c9d6df" stroke-width="2"/><ellipse cx="180" cy="341" rx="128" ry="9" fill="#b9cbd6" opacity=".35"/>`+(parts.length<api.order.length||anim?'<rect x="8" y="370" width="344" height="112" rx="12" fill="#e6edf1" stroke="#c4d2dc"/>':'');
+  const draw={tripod:tripodPart,mount:mountPart,tube:tubePart,optics:opticsPart};
+  const lying=api.order.filter(p=>!has(p)),fixed=parts.slice();
+  for(const p of lying.concat(fixed)){const k=progress(p);s+=`<g transform="${place(p,k)}" data-part-shape="${p}">${draw[p](k)}</g>`;}
+  s+=t(180,26,has('optics')?(m.balanced?'균형이 맞은 장치':'균형추 위치를 조절하세요'):'다음: '+(api.labels[api.order[parts.length]]||''),15,'#26485d');
   return s+'</svg>';
  }
+ function animateInstall(part){if(reduceMotion.matches)return;const t0=performance.now();anim={part,p:0};const step=now=>{if(!anim||anim.part!==part)return;anim.p=Math.min(1,(now-t0)/1100);$('scopeApparatus').innerHTML=apparatus(lastM||api.observe(state));if(anim.p<1)requestAnimationFrame(step);else{anim=null;render();}};requestAnimationFrame(step);}
  function scene(m){
   const eye=state.view==='eye',finder=state.view==='finder',radius=eye?6:finder?3:m.fov/2,px=280+m.dx/radius*138,py=169-m.dy/radius*138;
   let s=`<svg viewBox="0 0 560 356" role="img" aria-label="${eye?'맨눈':finder?'파인더':'접안렌즈'}에서 본 ${m.target.name}" data-visible="${m.visible}" data-detail="${m.details}"><defs><radialGradient id="night-field"><stop stop-color="#142b42"/><stop offset="1" stop-color="#08131f"/></radialGradient><clipPath id="scope-field"><circle cx="280" cy="169" r="138"/></clipPath><filter id="scope-defocus"><feGaussianBlur stdDeviation="${Math.abs(state.focus)*1.15}"/></filter></defs><circle cx="280" cy="169" r="147" fill="#314355"/><circle cx="280" cy="169" r="143" fill="#0e1c2b" stroke="#638091"/><circle cx="280" cy="169" r="138" fill="url(#night-field)"/>`;
@@ -49,7 +58,7 @@
   if(finder&&m.assembled)s+=line('M142 169H260 M300 169H418 M280 31V149 M280 189V307','#93bbb7',1.2)+`<circle cx="280" cy="169" r="9" fill="none" stroke="#93bbb7"/>`;
   if(!eye&&!m.assembled)s+=t(280,169,'장치를 먼저 설치하세요',17);
   if(m.assembled&&!m.visible&&m.available&&!eye)s+=t(280,218,'대상이 시야 밖에 있습니다',15);
-  s+='</g>'+t(280,337,eye?'맨눈 · 대표 모습':finder?'파인더 · 넓은 시야 6°':`접안렌즈 · ${m.mag}배 · 시야 약 ${m.fov.toFixed(2)}°`,16);
+  s+='</g>'+t(280,337,eye?'맨눈 · 대표 모습':finder?'파인더 · 넓은 시야 6°':`접안렌즈 · ${m.mag}배 · 시야 약 ${m.fov.toFixed(2)}°`,16,'#26485d');
   return s+'</svg>';
  }
  function render(message){
@@ -65,8 +74,8 @@
   $('scopeDetail').hidden=!m.details;window.scienceScene.render($('scopeDetail'),m.details?`<svg viewBox="0 0 140 140" role="img" aria-label="${m.target.name}의 대표 특징 확대"><rect width="140" height="140" rx="14" fill="#0a1726"/><g transform="translate(70 70)">${object(state.target,state.target==='moon'||state.target==='venus'?44:29,true,'detail')}</g></svg><div><strong>특징 확대 · ${m.target.name}</strong><p>${m.target.feature}</p></div>`:'');
   $('scopeStatus').textContent=message||m.message;
  }
- function reset(){state=api.initial(school);for(const [id,key]of [['scopeTarget','target'],['scopeSky','sky'],['scopeEyepiece','eyepiece'],['scopeBalance','balance'],['scopeX','x'],['scopeY','y'],['scopeFocus','focus'],['scopeFinder','finderOffset']])$(id).value=state[key];render();}
- for(const b of document.querySelectorAll('[data-part]'))b.onclick=()=>{const r=api.install(state,b.dataset.part);state=r.state;render(r.message);};
+ function reset(){anim=null;state=api.initial(school);for(const [id,key]of [['scopeTarget','target'],['scopeSky','sky'],['scopeEyepiece','eyepiece'],['scopeBalance','balance'],['scopeX','x'],['scopeY','y'],['scopeFocus','focus'],['scopeFinder','finderOffset']])$(id).value=state[key];render();}
+ for(const b of document.querySelectorAll('[data-part]'))b.onclick=()=>{const before=state.parts.length,r=api.install(state,b.dataset.part);state=r.state;if(state.parts.length>before)animateInstall(b.dataset.part);render(r.message);};
  for(const b of document.querySelectorAll('[data-view]'))b.onclick=()=>{state.view=b.dataset.view;render();};
  for(const [id,key]of [['scopeTarget','target'],['scopeSky','sky'],['scopeEyepiece','eyepiece']])$(id).onchange=e=>{state[key]=key==='eyepiece'?Number(e.target.value):e.target.value;if(key==='target'){state.x=state.y=0;$('scopeX').value=$('scopeY').value=0;}render();};
  for(const [id,key]of [['scopeBalance','balance'],['scopeX','x'],['scopeY','y'],['scopeFocus','focus'],['scopeFinder','finderOffset']])$(id).oninput=e=>{state[key]=Number(e.target.value);render();};

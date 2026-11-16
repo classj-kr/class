@@ -35,8 +35,20 @@ const HIDDEN_B = 8.0e8;   // 지층 B, drawn but not offered as a target
 const state = {
     mode: 'decay', iso: 'k40', hl: 2, target: 'C',
     prediction: null, checked: false,
-    running: false, phase: 0, cursor: 0,
+    running: false, phase: 0, cursor: 0, anim: 0,
 };
+const EARTH_AGE = 4.6e9;
+// 지구 나이(약 46억 년)를 넘는 시간은 고를 수 없게 한다.
+const hlMax = () => Math.min(8, Math.floor(EARTH_AGE / ISO[state.iso].half * 4) / 4);
+const axisMax = () => state.iso === 'c14' ? 8 : Math.max(1, Math.ceil(hlMax()));
+// 반감기 모드에서 그림이 보여 주는 시간: 흘려보내기 전에는 처음(0), 흘리는 동안은 애니메이션, 끝나면 고른 값.
+const viewHl = () => state.running ? state.anim : state.checked ? state.hl : 0;
+// 결과 연도는 쓸데없이 잘게 쓰지 않는다: 약 5,730년 · 약 4,000만 년 · 약 25억 년
+function roughYears(y) {
+    if (y < 1e4) return `약 ${(Math.round(y / 10) * 10).toLocaleString('ko-KR')}년`;
+    if (y < 1e8) { const m = y / 1e4; return `약 ${(m >= 100 ? Math.round(m / 10) * 10 : Math.round(m)).toLocaleString('ko-KR')}만 년`; }
+    const e = y / 1e8; return `약 ${e >= 10 ? Math.round(e) : e.toFixed(1)}억 년`;
+}
 
 const $ = id => document.getElementById(id);
 const svgNS = 'http://www.w3.org/2000/svg';
@@ -87,10 +99,10 @@ function sampleProblem(target=state.target,isotope=state.iso) {
 function analyse() {
     const T = iso().half;
     if (state.mode === 'decay') {
-        const f = fracAfter(state.hl);
+        const h = viewHl(), f = fracAfter(h);
         return {
-            frac: f, daughter: 1 - f, ratio: f > 0 ? (1 - f) / f : Infinity,
-            years: state.hl * T, verdict: verdict(),
+            hl: h, frac: f, daughter: 1 - f, ratio: f > 0 ? (1 - f) / f : Infinity,
+            years: h * T, verdict: verdict(),
         };
     }
     const t = TARGETS[state.target];
@@ -147,14 +159,14 @@ function drawAtoms(g) {
     g.appendChild(el('text', { x: 220, y: 144, class: 'small-label' }, '딸원소 ÷ 모원소'));
     g.appendChild(el('text', { x: 220, y: 162, class: 'read-text' },
         a.frac > 0 ? `${fmt(a.ratio, 2)} 배` : '잴 수 없음'));
-    g.appendChild(el('text', { x: 220, y: 188, class: 'small-label' }, `지난 시간 (반감기 ${fmt(state.hl, 2)}번)`));
-    g.appendChild(el('text', { x: 220, y: 206, class: 'read-text' }, koYears(a.years)));
+    g.appendChild(el('text', { x: 220, y: 188, class: 'small-label' }, `지난 시간 (반감기 ${fmt(a.hl, 2)}번)`));
+    g.appendChild(el('text', { x: 220, y: 206, class: 'read-text' }, a.years ? roughYears(a.years) : '0년'));
 }
 
 function drawDecayGraph(g) {
     const a = analyse();
     const x0 = 54, x1 = 440, yTop = 26, yBot = 146;
-    const X = n => x0 + (n / 8) * (x1 - x0);
+    const NM = axisMax(), X = n => x0 + (n / NM) * (x1 - x0);
     const Y = f => yBot - f * (yBot - yTop);
 
     for (let f = 0; f <= 1.0001; f += 0.25) {
@@ -163,14 +175,20 @@ function drawDecayGraph(g) {
     }
     g.appendChild(el('line', { x1: x0, y1: yBot, x2: x1, y2: yBot, class: 'axis' }));
     g.appendChild(el('line', { x1: x0, y1: yTop, x2: x0, y2: yBot, class: 'axis' }));
-    for (let n = 0; n <= 8; n += 1) {
+    const tick = NM <= 1 ? 0.25 : 1;
+    for (let n = 0; n <= NM + 1e-9; n += tick) {
         g.appendChild(el('line', { x1: X(n), y1: yBot, x2: X(n), y2: yBot + 4, class: 'axis' }));
-        g.appendChild(el('text', { x: X(n), y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text' }, String(n)));
+        g.appendChild(el('text', { x: X(n), y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text' }, String(+n.toFixed(2))));
+    }
+    const lim = hlMax();
+    if (lim < NM) {
+        g.appendChild(el('rect', { x: X(lim), y: yTop, width: X(NM) - X(lim), height: yBot - yTop, style: 'fill:#e2e8f0;opacity:.7' }));
+        g.appendChild(el('text', { x: X(NM) - 4, y: yTop + 14, 'text-anchor': 'end', class: 'axis-text' }, '지구 나이 넘음'));
     }
 
     let dp = '', dd = '';
     for (let i = 0; i <= 200; i += 1) {
-        const n = (i / 200) * 8;
+        const n = (i / 200) * Math.min(NM, lim);
         dp += `${i ? 'L' : 'M'} ${fmt(X(n), 2)} ${fmt(Y(fracAfter(n)), 2)} `;
         dd += `${i ? 'L' : 'M'} ${fmt(X(n), 2)} ${fmt(Y(1 - fracAfter(n)), 2)} `;
     }
@@ -178,10 +196,12 @@ function drawDecayGraph(g) {
     g.appendChild(el('path', { d: dp, class: 'parent-line' }));
 
     // The two curves meet at one half-life, where parent and daughter are equal.
-    g.appendChild(el('line', { x1: X(1), y1: Y(0.5), x2: X(1), y2: yBot, class: 'mark-line' }));
-    g.appendChild(el('circle', { cx: X(1), cy: Y(0.5), r: 3.6, style: 'fill:#d97706' }));
-    g.appendChild(el('text', { x: X(1) + 5, y: Y(0.5) - 7, class: 'axis-text' }, '1번 지나면 반반'));
-    g.appendChild(el('circle', { cx: X(state.hl), cy: Y(a.frac), r: 5, class: 'trace-dot', style: 'fill:#0284c7' }));
+    if (NM >= 1) {
+        g.appendChild(el('line', { x1: X(1), y1: Y(0.5), x2: X(1), y2: yBot, class: 'mark-line' }));
+        g.appendChild(el('circle', { cx: X(1), cy: Y(0.5), r: 3.6, style: 'fill:#d97706' }));
+        g.appendChild(el('text', { x: X(1) + (NM > 1 ? 5 : -5), y: Y(0.5) - 7, 'text-anchor': NM > 1 ? 'start' : 'end', class: 'axis-text' }, '1번 지나면 반반'));
+    }
+    g.appendChild(el('circle', { cx: X(a.hl), cy: Y(a.frac), r: 5, class: 'trace-dot', style: 'fill:#0284c7' }));
 
     g.appendChild(el('line', { x1: x0, y1: 172, x2: x0 + 15, y2: 172, style: 'stroke:#0284c7;stroke-width:3' }));
     g.appendChild(el('text', { x: x0 + 20, y: 175.5, class: 'legend-text', style: 'fill:#0284c7' }, `남은 모원소 ${iso().name}`));
@@ -315,8 +335,12 @@ function updateReadout() {
         $('labelA').textContent = '남은 모원소';
         $('valueA').textContent = `${fmt(a.frac * 100, 2)}%`;
         $('labelB').textContent = '지난 시간';
-        $('valueB').textContent = koYears(a.years);
-        const rows = [
+        $('valueB').textContent = roughYears(a.years);
+        const rows = !state.checked || state.running ? [
+            ['반감기', koYears(iso().half), false],
+            ['고른 시간', `반감기 ${fmt(state.hl, 2)}번 = ${roughYears(state.hl * iso().half)}`, false],
+            ['이 원소를 쓰는 곳', iso().use, false],
+        ] : [
             ['반감기', koYears(iso().half), false],
             ['생긴 딸원소', `${iso().daughter} ${fmt(a.daughter * 100, 2)}%`, false],
             ['딸원소 ÷ 모원소', a.frac > 0 ? `${fmt(a.ratio, 3)}배` : '잴 수 없음', false],
@@ -365,10 +389,9 @@ function explain(a) {
     }
 
     if (state.mode === 'decay') {
-        let text = iso().full + '의 반감기는 ' + koYears(iso().half) + '입니다. 반감기가 ' + fmt(state.hl, 2) + '번 지나 처음 모원소의 ' + fmt(a.frac * 100, 2) + '%가 남고 ' + fmt(a.daughter * 100, 2) + '%가 붕괴했습니다. ';
-        text += '그림의 딸원소는 붕괴 생성물의 합계입니다. 초기 딸원소가 없고 외부 출입이 없는 이상적인 계를 가정합니다. 일반적인 지질 조건에서는 반감기를 일정하게 다루지만 가열 등으로 원소가 이동하면 닫힌계 조건이 깨집니다. ';
-        if (state.iso === 'k40') text += '칼륨-40은 아르곤-40과 칼슘-40으로 갈라져 붕괴합니다. 전체 붕괴량을 아르곤 양으로 대입하면 안 되며 실제 K–Ar 연대식은 붕괴 분기를 반영합니다.';
-        if (state.iso === 'c14') text += '실제 탄소 연대 측정은 유기물에 남은 탄소-14와 기준 비율을 비교하고 보정합니다. 시료의 질소-14 전부를 붕괴 생성물로 보지 않습니다.';
+        let text = '반감기가 ' + fmt(state.hl, 2) + '번(' + roughYears(state.hl * iso().half) + ') 지나 처음 모원소의 ' + fmt(a.frac * 100, 1) + '%가 남았습니다. 반감기마다 남은 양이 절반이 됩니다. ';
+        if (state.iso === 'k40') text += '칼륨-40은 아르곤-40과 칼슘-40으로 갈라져 붕괴하므로, 실제 K–Ar 연대식은 이 분기를 반영합니다.';
+        if (state.iso === 'c14') text += '실제 탄소 연대 측정은 남은 탄소-14를 기준 비율과 비교하고 보정합니다.';
         $('elementaryExplanation').textContent = text;
     } else {
         let text = a.target.name + '은 ' + a.target.why + '. ';
@@ -388,10 +411,9 @@ function tick(dt) {
     state.phase += dt;
     if (!state.running) return false;
     if (state.mode === 'decay') {
-        state.hl = Math.min(8, state.hl + dt * 8 / 12);
-        $('hlRange').value = String(Math.round(state.hl * 4) / 4);
-        $('hlOutput').textContent = `${fmt(state.hl, 2)}번`;
-        if (state.hl >= 8) {
+        const dur = Math.max(1.6, Math.min(4, state.hl * 0.9));
+        state.anim = Math.min(state.hl, state.anim + dt * state.hl / dur);
+        if (state.anim >= state.hl) {
             state.running = false;
             $('runBtn').textContent = '시간 흘려보내기';
             state.checked = true;
@@ -414,13 +436,24 @@ function tick(dt) {
     return false;
 }
 
-let last = 0;
+let last = 0, loopId = 0;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
-    tick(dt);
+    const ended = tick(dt);
     render();
-    requestAnimationFrame(frame);
+    if (ended && state.mode === 'decay') explain(analyse());
+    loopId = state.running ? requestAnimationFrame(frame) : 0;
+}
+function startLoop() { if (!loopId) { last = performance.now(); loopId = requestAnimationFrame(frame); } }
+function syncRange() {
+    const r = $('hlRange'), m = hlMax();
+    r.max = String(m);
+    if (state.hl > m) state.hl = m;
+    r.value = String(state.hl);
+    $('hlOutput').textContent = `${fmt(state.hl, 2)}번`;
+    const spans = document.querySelectorAll('#decayControls .range-scale span');
+    if (spans.length === 3) { spans[0].textContent = '0번'; spans[1].textContent = `${+(m / 2).toFixed(2)}번`; spans[2].textContent = `${m}번`; }
 }
 
 // --- wiring -----------------------------------------------------------------
@@ -454,7 +487,9 @@ document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click'
     applyMode();
 }));
 document.querySelectorAll('[data-iso]').forEach(b => b.addEventListener('click', () => {
-    state.iso = b.dataset.iso; markSelected('[data-iso]', 'iso', state.iso); render();
+    state.iso = b.dataset.iso; markSelected('[data-iso]', 'iso', state.iso); syncRange();
+    if (state.mode === 'decay' && !state.running) { state.checked = false; $('resultEmpty').hidden = false; $('resultContent').hidden = true; }
+    render();
 }));
 document.querySelectorAll('[data-target]').forEach(b => b.addEventListener('click', () => {
     state.target = b.dataset.target; markSelected('[data-target]', 'target', state.target); render();
@@ -464,24 +499,30 @@ document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('
 }));
 $('hlRange').addEventListener('input', e => {
     state.hl = Number(e.target.value);
-    state.running = false;
+    state.running = false; state.checked = false;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
     $('runBtn').textContent = '시간 흘려보내기';
     $('hlOutput').textContent = `${fmt(state.hl, 2)}번`;
     render();
 });
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; applyMode(); return; }
-    state.checked = true;
-    if (state.mode === 'decay') { state.hl = 0; $('hlRange').value = '0'; $('hlOutput').textContent = '0.00번'; }
-    else state.cursor = 0;
+    state.checked = false;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (state.mode === 'decay') {
+        state.anim = 0;
+        if (reduce) { state.checked = true; render(); explain(analyse()); return; }
+    } else state.cursor = 0;
     state.running = true;
     $('runBtn').textContent = '멈추기';
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     state.mode = 'decay'; state.iso = 'k40'; state.hl = 2; state.target = 'C';
     state.prediction = null; state.checked = false; state.running = false; state.cursor = 0;
-    $('hlRange').value = '2'; $('hlOutput').textContent = '2.00번';
+    syncRange();
     document.querySelectorAll('[data-prediction]').forEach(x => x.classList.remove('selected'));
     $('resultEmpty').hidden = false; $('resultContent').hidden = true;
     markSelected('[data-iso]', 'iso', 'k40'); markSelected('[data-target]', 'target', 'C');
@@ -503,8 +544,8 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 
 markSelected('[data-iso]', 'iso', state.iso);
 markSelected('[data-target]', 'target', state.target);
+syncRange();
 applyMode();
-requestAnimationFrame(frame);
 
 window.__rockModel = {
     state, analyse, tick, render, fracAfter, fracAtAge, windowFor, datable, koYears,
@@ -519,6 +560,7 @@ window.__rockModel = {
         let steps = 0;
         while (state.running && steps < 20000) { tick(dt); steps += 1; }
         render();
+        if (state.checked) explain(analyse());
         return { steps, hl: state.hl, target: state.target };
     },
 };

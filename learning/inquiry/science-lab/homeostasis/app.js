@@ -240,6 +240,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return arr[i] + (arr[i + 1] - arr[i]) * f;
     };
 
+    // 단순한 기관 실루엣(교과서 그림처럼 모양으로 알아볼 수 있게)
+    const ORGAN_ART = {
+        gut: '<path d="M4 7 C14 2 28 2 36 7 C40 11 32 13 21 12 C10 11 4 15 8 18 C14 21 30 19 36 21 C40 25 30 28 19 27 C9 26 4 28 6 24" fill="none" stroke="#c9845a" stroke-width="4.2" stroke-linecap="round"/><path d="M4 7 C14 2 28 2 36 7 C40 11 32 13 21 12 C10 11 4 15 8 18 C14 21 30 19 36 21 C40 25 30 28 19 27 C9 26 4 28 6 24" fill="none" stroke="#f0c4a2" stroke-width="1.6" stroke-linecap="round"/>',
+        pancreas: '<path d="M2 17 C2 9 10 7 16 10 C22 12 30 9 38 11 C41 13 39 16 34 17 C26 18 20 20 14 22 C8 25 2 24 2 17 Z" fill="#eebc8f" stroke="#b67c52" stroke-width="1.4"/><path d="M8 17 q3 -2 6 0 q3 2 6 0 q3 -2 6 0 q3 2 6 -1" fill="none" stroke="#c99263" stroke-width="1"/>',
+        liver: '<path d="M2 11 C6 3 24 1 40 5 C42 8 37 13 31 17 C23 23 13 27 7 25 C2 21 1 15 2 11 Z" fill="#9b4635" stroke="#6e2c20" stroke-width="1.4"/><path d="M22 4 C21 10 19 16 15 24" fill="none" stroke="#6e2c20" stroke-width="1"/><path d="M8 9 C12 7 16 7 19 8" fill="none" stroke="#c77a68" stroke-width="1.5" stroke-linecap="round"/>',
+        muscle: '<path d="M1 14 C9 4 25 4 33 14 C25 24 9 24 1 14 Z" fill="#c8574e" stroke="#8c3029" stroke-width="1.3"/><path d="M5 11 C13 8 21 8 29 11 M4 14 H30 M5 17 C13 20 21 20 29 17" fill="none" stroke="#e48d84" stroke-width="1"/><circle cx="39" cy="9" r="4.6" fill="#f4dc8e" stroke="#b9963a"/><circle cx="41" cy="19" r="4.2" fill="#f4dc8e" stroke="#b9963a"/>',
+    };
+    function organBox(x, y, w, h, kind, name, tx = 52) {
+        return `<rect class="organ" x="${x}" y="${y}" width="${w}" height="${h}" rx="7"/>` +
+            `<g transform="translate(${x + 5}, ${y + (h - 28) / 2})">${ORGAN_ART[kind]}</g>` +
+            `<text class="organ-text" x="${x + tx}" y="${y + h / 2 + 5}">${name}</text>`;
+    }
+
     function renderGlucose(a) {
         const t = state.progress * G_END;
         const { run } = a, b = BODIES[state.body];
@@ -249,14 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="vessel" x="20" y="92" width="300" height="34" rx="17"/>`;
         const nDots = Math.round(G / 6);
         for (let k = 0; k < nDots; k += 1) { const x = 30 + ((k * 37 + t * 3) % 280), y = 100 + ((k * 13) % 18); out += `<circle class="sugar" cx="${x}" cy="${y}" r="2.6"/>`; }
-        out += `<text class="small-label" x="26" y="86">혈관 — 포도당 ${Math.round(G)} mg/dL</text>`;
-        // organs: gut above, pancreas/liver/muscle below
-        out += `<rect class="organ" x="30" y="30" width="90" height="34" rx="6"/><g transform="translate(32, 28) scale(0.38)"><path d="M 18 36 C 36 34 64 34 82 36 C 88 46 84 64 76 68 C 60 62 40 62 24 68 C 16 62 14 46 18 36 Z" fill="#d9b070" opacity="0.3"/></g><text class="organ-text" x="75" y="52" text-anchor="middle">소장</text><text class="small-label prose" x="0" y="0">소장 — ${Ra > 0.2 ? `흡수 중 ${Ra.toFixed(1)}/분` : '흡수 끝'}</text>`;
-        if (Ra > 0.2) out += `<line class="flow-arrow" style="stroke:#d97706" x1="75" y1="66" x2="75" y2="88"/><polygon fill="#d97706" points="75,92 71,85 79,85"/>`;
-        out += `<rect class="organ" x="130" y="30" width="110" height="34" rx="6"/><g transform="translate(132, 28) scale(0.38)"><path d="M 16 52 C 20 40 38 38 58 42 C 74 46 86 48 88 54 C 88 62 76 66 58 64 C 38 62 20 62 16 52 Z" fill="#059669" opacity="0.3"/></g><text class="organ-text" x="185" y="52" text-anchor="middle">이자</text>`;
+        out += `<text class="small-label" x="98" y="86">혈관 — 포도당 ${Math.round(G)} mg/dL</text>`;
+        // 기관: 위에는 소장·이자, 아래에는 간·근육. 상자 왼쪽에 알아볼 수 있는 기관 모양을 그린다.
+        out += organBox(30, 28, 90, 38, 'gut', '소장') + `<text class="small-label prose" x="0" y="0">소장 — ${Ra > 0.2 ? `흡수 중 ${Ra.toFixed(1)}/분` : '흡수 끝'}</text>`;
+        if (Ra > 0.2) out += `<line class="flow-arrow" style="stroke:#d97706" x1="75" y1="68" x2="75" y2="88"/><polygon fill="#d97706" points="75,92 71,85 79,85"/>`;
+        out += organBox(130, 28, 110, 38, 'pancreas', '이자');
         out += `<text class="small-label prose" style="fill:#059669" x="0" y="0">이자 — 인슐린 ${b.beta === 0 ? '없음' : I < 1 ? '조금' : I < 50 ? '나옴' : '많이'} · 글루카곤 ${G < 88 ? '나옴' : '조금'}</text>`;
-        out += `<rect class="organ" x="30" y="150" width="120" height="36" rx="6"/><g transform="translate(32, 148) scale(0.38)"><path d="M 14 56 C 20 32 46 22 76 26 C 88 28 90 42 86 64 C 82 74 68 78 48 76 C 28 74 14 70 14 56 Z" fill="#dc2626" opacity="0.25"/></g><text class="organ-text" x="90" y="173" text-anchor="middle">간</text><text class="small-label prose" x="0" y="0">간 — ${G > 95 && I > 1 ? '포도당을 글리코젠으로 저장' : G < 88 ? '글리코젠에서 포도당을 꺼냄' : '들고 내기 균형'}</text>`;
-        out += `<rect class="organ" x="170" y="150" width="130" height="36" rx="6"/><g transform="translate(172, 148) scale(0.38)"><path d="M 22 28 C 34 18 50 18 62 26 C 74 18 88 24 88 38 C 94 52 86 66 82 74 C 72 84 56 82 46 76 C 34 84 20 78 16 64 C 12 50 14 36 22 28 Z" fill="#7c3aed" opacity="0.25"/></g><text class="organ-text" x="235" y="173" text-anchor="middle">근육·지방 세포</text><text class="small-label prose" x="0" y="0">근육·지방 세포 — ${b.ex ? '운동으로 포도당 씀' : b.SI * I > 0.3 ? '인슐린 신호로 포도당 들임' : b.beta === 0 ? '인슐린이 없어 못 들임' : b.SI < 0.01 && I > 1 ? '인슐린이 잘 안 들림' : '평소대로'}</text>`;
+        out += organBox(30, 150, 120, 40, 'liver', '간') + `<text class="small-label prose" x="0" y="0">간 — ${G > 95 && I > 1 ? '포도당을 글리코젠으로 저장' : G < 88 ? '글리코젠에서 포도당을 꺼냄' : '들고 내기 균형'}</text>`;
+        out += organBox(160, 150, 162, 40, 'muscle', '근육·지방 세포', 59) + `<text class="small-label prose" x="0" y="0">근육·지방 세포 — ${b.ex ? '운동으로 포도당 씀' : b.SI * I > 0.3 ? '인슐린 신호로 포도당 들임' : b.beta === 0 ? '인슐린이 없어 못 들임' : b.SI < 0.01 && I > 1 ? '인슐린이 잘 안 들림' : '평소대로'}</text>`;
         const upt = b.SI * I * G / 100 + b.ex * G / 100;
         if (upt > 0.3) out += `<line class="flow-arrow" style="stroke:#059669" x1="235" y1="128" x2="235" y2="146"/><polygon fill="#059669" points="235,150 231,143 239,143"/>`;
         if (G < 88) out += `<line class="flow-arrow" style="stroke:#dc2626" x1="90" y1="148" x2="90" y2="130"/><polygon fill="#dc2626" points="90,126 86,133 94,133"/>`;
@@ -272,7 +285,18 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text prose" style="fill:#059669" x="0" y="0">인슐린 ${Math.round(I)} (평소 0)</text>`;
         const VERD = { normal: '낮은 비교 구간', elevated: '중간 비교 구간', high: '높은 비교 구간' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${MEALS[state.meal].label} · ${b.label}: 최고 ${Math.round(run.peak)} → 2시간 뒤 ${a.g120} — ${VERD[a.verdict]}` : `${MEALS[state.meal].label} · ${b.label} (${b.hint})`}</text>`;
-        out += `<text class="note-text" x="20" y="208">가상 모형의 비교 구간이며 진단 기준으로 사용하지 않습니다</text>`;
+        return out;
+    }
+
+    // 그래프 위 범례: 선·띠마다 작은 견본을 붙인다.
+    function legend(items) {
+        let x = 50, out = '';
+        for (const [kind, color, label] of items) {
+            if (kind === 'band') out += `<rect class="band" x="${x}" y="11" width="18" height="10" stroke="#5fae9a" stroke-width=".8"/>`;
+            else out += `<line x1="${x}" y1="16" x2="${x + 18}" y2="16" stroke="${color}" stroke-width="2.4" ${kind === 'dash' ? 'stroke-dasharray="4 3"' : ''}/>`;
+            out += `<text class="small-label" x="${x + 23}" y="20">${label}</text>`;
+            x += 32 + label.length * 12.4;
+        }
         return out;
     }
 
@@ -281,7 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const { run } = a;
         const X0 = 50, X1 = 430, Y0 = 150, Y1 = 40, GMAX = 350;
         const xOf = tt => X0 + tt / G_END * (X1 - X0), yOf = g => Y0 - clamp(g, 0, GMAX) / GMAX * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">혈당–시간 — 초록 띠는 모형의 비교 구간, 점선은 정상 몸이 밥을 먹었을 때</text>`;
+        const doneG = state.progress >= 1;
+        let out = legend([['line', '#d97706', '혈당'], ['line', '#059669', '인슐린(상대값)'], ['band', '', '비교 구간'], ...(doneG ? [['dash', '#475569', '정상 몸·밥']] : [])]);
         out += `<rect class="band" x="${X0}" y="${yOf(140).toFixed(1)}" width="${X1 - X0}" height="${(yOf(70) - yOf(140)).toFixed(1)}"/>`;
         [0, 100, 200, 300].forEach(g => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(g).toFixed(1)}" x2="${X1}" y2="${yOf(g).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(g) + 3.5).toFixed(1)}" text-anchor="end">${g}</text>`; });
         out += `<line class="ref-line" style="stroke:#ff7a59" x1="${X0}" y1="${yOf(200).toFixed(1)}" x2="${X1}" y2="${yOf(200).toFixed(1)}"/>`;
@@ -289,12 +314,12 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="ref-line" x1="${xOf(120).toFixed(1)}" y1="${Y1}" x2="${xOf(120).toFixed(1)}" y2="${Y0}"/><text class="small-label" x="${(xOf(120) + 3).toFixed(1)}" y="${Y1 + 10}">2시간</text>`;
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         const ref = glucoseRun('meal', 'normal');
-        out += `<path class="trace faint" style="stroke:#475569" d="${ref.t.map((tt, i) => `${i ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(ref.G[i]).toFixed(1)}`).join(' ')}"/>`;
+        // 정상 몸의 비교 곡선은 흘려 보기가 끝난 뒤에만(예상의 답이 되므로)
+        if (doneG) out += `<path class="trace faint" style="stroke:#475569" d="${ref.t.map((tt, i) => `${i ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(ref.G[i]).toFixed(1)}`).join(' ')}"/>`;
         let d = ''; run.t.forEach((tt, i) => { if (tt <= t) d += `${d ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(run.G[i]).toFixed(1)} `; });
         out += `<path class="trace" style="stroke:#d97706" d="${d}"/>`;
         let dI = ''; run.t.forEach((tt, i) => { if (tt <= t) dI += `${dI ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(run.I[i] * 0.5).toFixed(1)} `; });
         out += `<path class="trace" style="stroke:#059669;stroke-width:1.4" d="${dI}"/>`;
-        out += `<text class="small-label prose" style="fill:#059669" x="0" y="0">초록 선은 인슐린 (상대값)</text>`;
         out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">먹은 뒤 시간 (분) — 혈당 (mg/dL)</text>`;
         return out;
     }
@@ -338,13 +363,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const { run } = a;
         const X0 = 50, X1 = 430, Y0 = 150, Y1 = 40;
         const xOf = m => X0 + m / (T_HOURS * 60) * (X1 - X0), yOf = tc => Y0 - (clamp(tc, 32, 42) - 32) / 10 * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">체온–시간 — 초록 띠는 모형의 비교 구간, 점선은 정상 몸일 때</text>`;
+        const doneT = state.progress >= 1;
+        let out = legend([['line', '#ff7a59', '체온'], ['band', '', '비교 구간'], ...(doneT ? [['dash', '#475569', '정상 몸']] : [])]);
         out += `<rect class="band" x="${X0}" y="${yOf(37.5).toFixed(1)}" width="${X1 - X0}" height="${(yOf(36) - yOf(37.5)).toFixed(1)}"/>`;
         [32, 34, 36, 38, 40, 42].forEach(tc => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(tc).toFixed(1)}" x2="${X1}" y2="${yOf(tc).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(tc) + 3.5).toFixed(1)}" text-anchor="end">${tc}</text>`; });
         for (let m = 0; m <= 60; m += 10) out += `<text class="axis-text" x="${xOf(m).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${m}</text>`;
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         const ref = heatRun(state.weather, 'normal');
-        out += `<path class="trace faint" style="stroke:#475569" d="${ref.t.map((m, i) => `${i ? 'L' : 'M'}${xOf(m).toFixed(1)},${yOf(ref.T[i]).toFixed(1)}`).join(' ')}"/>`;
+        if (doneT) out += `<path class="trace faint" style="stroke:#475569" d="${ref.t.map((m, i) => `${i ? 'L' : 'M'}${xOf(m).toFixed(1)},${yOf(ref.T[i]).toFixed(1)}`).join(' ')}"/>`;
         let d = ''; run.t.forEach((m, i) => { if (m <= t) d += `${d ? 'L' : 'M'}${xOf(m).toFixed(1)},${yOf(run.T[i]).toFixed(1)} `; });
         out += `<path class="trace" style="stroke:#ff7a59" d="${d}"/>`;
         out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">시간 (분) — 몸속 온도 (℃)</text>`;
@@ -398,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
-        return '<p>수치·시간·비교 구간은 학습을 위한 가상 설정입니다. 실제 검사값·진단·치료 지침이 아닙니다.</p><p>조건을 하나씩 바꾸어 혈당, 체온, 물의 양을 조절하는 음성 되먹임을 비교합니다. 인슐린·글루카곤·항이뇨 호르몬의 역할을 구별하세요.</p>';
+        return '<p>수치·시간·비교 구간은 학습을 위한 가상 값이며 검사·진단 기준이 아닙니다.</p><p>조건을 하나씩 바꾸어 혈당, 체온, 물의 양을 조절하는 음성 되먹임을 비교합니다. 인슐린·글루카곤·항이뇨 호르몬의 역할을 구별하세요.</p>';
     }
 
     function render() {
@@ -444,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
         labelA.textContent='관찰';valueA.textContent=a.kind==='glucose'?'혈당 조절':a.kind==='temp'?'체온 조절':'몸속 조건 조절';
         labelB.textContent='핵심';valueB.textContent='음성 되먹임';
         predictionResult.textContent=!state.prediction?'다음에는 변화를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 모형의 예상이 맞았습니다.':'이 모형의 결과와 다릅니다.';
-        explanation.textContent='일정한 범위를 벗어나는 변화에 반대 방향의 조절 반응이 일어나 항상성 유지에 기여합니다. 조건에 따라 조절이 충분하지 않을 수도 있습니다. 곡선과 수치는 가상 모형이며 질병의 진단·유형 구별이나 치료 결정을 위해 사용하지 않습니다.';
+        explanation.textContent='일정한 범위를 벗어나는 변화에 반대 방향의 조절 반응이 일어나 항상성 유지에 기여합니다. 조건에 따라 조절이 충분하지 않을 수도 있습니다.';
     }
 
     function settingsChanged() {
@@ -527,3 +553,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

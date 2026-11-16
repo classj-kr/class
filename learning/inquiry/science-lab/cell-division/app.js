@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
  'use strict';
  const M=window.DivisionModel,$=id=>document.getElementById(id),svg=$('cdScene'),graph=$('cdGraph');
- let kind='mitosis',twoN=4,index=0,orientation=1,crossover=false,playing=false,timer=0;
+ let kind='mitosis',twoN=4,index=0,orientation=1,crossover=false,playing=false,timer=0,animFrame=0;const chromState=new Map();
  const list=()=>kind==='mitosis'?M.MITOSIS:M.MEIOSIS,analyse=(k=kind,n=twoN,i=index)=>M.analyse(k,n,i,orientation,crossover);
  const fmt=x=>Number.isInteger(x)?String(x):x.toFixed(1),colours=['#b33e55','#216ea0'],ns='http://www.w3.org/2000/svg';
  function stop(){playing=false;clearTimeout(timer);$('cdPlay').textContent='자동 관찰';$('cdPlay').setAttribute('aria-pressed','false');}
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  else{height=stack?620:500;centres=[[width*.25,height*.25],[width*.25,height*.75],[width*.75,height*.25],[width*.75,height*.75]];radius=[Math.min(width*.22,160),stack?125:105];}
  return{width,height,centres,radius};
  }
- function drawScene(a){
+ function drawScene(a,instant){
  const g=geometry(a),[rx,ry]=g.radius,{width,height,centres}=g,lay=a.s.lay;
  svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.style.height=height+'px';svg.setAttribute('aria-label',`${kind==='mitosis'?'체세포 분열':'감수 분열'} ${a.s.name}. ${a.s.cells}개 세포, 세포 하나의 염색체 ${a.chromPer}개.`);
  const polar=/poles|telophase|Poles|Telophase/.test(lay),tel=/telophase|Telophase/.test(lay),inter=lay==='interphase';let shells='',threads='';
@@ -24,26 +24,77 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(!inter&&!tel&&!['daughter','four'].includes(lay))threads+=`<circle class="cd-pole" cx="${cx-rx*.9}" cy="${cy}" r="4"/><circle class="cd-pole" cx="${cx+rx*.9}" cy="${cy}" r="4"/>`;
  if(['equator','equatorPairs','secondEquator'].includes(lay))threads+=`<path class="cd-equator" d="M${cx},${cy-ry*.82} V${cy+ry*.82}"/>`;
  });
- const container=$('cdChromosomes'),active=new Set();
- for(const c of M.chromatids(a)){
- active.add(c.id);let el=container.querySelector(`[data-copy="${c.id}"]`);if(!el){el=document.createElementNS(ns,'g');el.classList.add('cd-chromatid');el.dataset.copy=c.id;container.append(el);}
- const [cx,cy]=centres[c.cell],pairs=a.pairs,rank=c.pair*2+c.origin;let x=cx,y=cy,length=31-c.pair*4;
- const separated=a.k==='mitosis'?a.i>=5:a.i>=9,offset=separated||a.i===0?0:(c.copy===0?-4.5:4.5);
+ const container=$('cdChromosomes'),active=new Set(),targets=[],spindles=[];
+ const size=p=>[1,.74,.56,.44][p]||.4;
+ // 크기가 다른 염색체를 겹치지 않게 위아래로 쌓는다(가운데 기준).
+ const stackY=(cy,lens,gap)=>{const total=lens.reduce((s,l)=>s+2*l,0)+gap*(lens.length-1);let y=cy-total/2;return lens.map(l=>{const c=y+l;y+=2*l+gap;return c;});};
+ const all=M.chromatids(a),separated=a.k==='mitosis'?a.i>=5:a.i>=9;
+ for(const c of all){
+ active.add(c.id);let el=container.querySelector(`[data-copy="${c.id}"]`);
+ if(!el){el=document.createElementNS(ns,'g');el.classList.add('cd-chromatid');el.dataset.copy=c.id;container.append(el);
+ // 복제로 새로 생긴 염색 분체는 짝(0번 사본) 자리에서 갈라져 나온다.
+ const twin=chromState.get(c.id.replace(/-1$/,'-0'));if(twin)chromState.set(c.id,{...twin});}
+ const [cx,cy]=centres[c.cell],pairs=a.pairs,f=size(c.pair);let x=cx,y=cy,length=30*f,coil=0,bend=0;
+ const offset=separated||a.i===0?0:(c.copy===0?-1:1);
  if(a.s.cells===1){
- if(inter||lay==='condense'){x=cx+(c.origin?1:-1)*rx*.27;y=cy+(c.pair-(pairs-1)/2)*50;length=22-c.pair*3;}
- else if(['pairs','equatorPairs'].includes(lay)){x=cx+(c.side?1:-1)*Math.min(24,rx*.2);y=cy+(c.pair-(pairs-1)/2)*59;length=26-c.pair*3;}
- else if(lay==='equator'){x=cx;y=cy+(rank-(twoN-1)/2)*(twoN===8?33:43);length=twoN===8?13-c.pair:18-c.pair*2;}
- else if(polar){const side=a.k==='mitosis'?c.copy:c.side;x=cx+(side?1:-1)*rx*.46;const row=a.k==='mitosis'?rank:c.pair,total=a.k==='mitosis'?twoN:pairs;y=cy+(row-(total-1)/2)*(total===8?31:total===6?40:56);length=total>4?12-c.pair:25-c.pair*3;}
- }else if(a.s.cells===2){
- if(kind==='mitosis'){x=cx+(c.origin?1:-1)*rx*.34;y=cy+(c.pair-(pairs-1)/2)*47;length=21-c.pair*2;}
- else{x=cx+(polar?(c.copy?1:-1)*rx*.46:0);y=cy+(c.pair-(pairs-1)/2)*52;length=23-c.pair*2;}
- }else{y=cy+7+(c.pair-(pairs-1)/2)*39;length=18-c.pair*2;}
- const tx=x+offset,ty=y,coiled=inter||tel||lay==='daughter'||lay==='four';el.style.transform=`translate(${tx}px, ${ty}px)`;el.dataset.cell=String(c.cell);el.dataset.chromosome=c.chromosome;el.dataset.pair=String(c.pair);el.dataset.origin=String(c.origin);el.dataset.distal=String(c.distal);
- const d=coiled?`M0,${-length} C-10,${-length*.65} 12,${-length*.3} 0,0 C-9,${length*.35} 10,${length*.7} 0,${length}`:`M${offset?Math.sign(offset)*4:0},${-length} Q${-Math.sign(offset)*1.5},0 0,0 Q${-Math.sign(offset)*1.5},0 ${offset?Math.sign(offset)*4:0},${length}`;
- el.innerHTML=`${offset&&c.copy===0?'<path d="M0,0 H9" stroke="#506068" stroke-width="3"/>':''}<path class="cd-strand${coiled?' cd-coiled':''}" d="${d}" stroke="${colours[c.origin]}"/>${c.exchanged?`<defs><clipPath id="cdExchange-${c.id}"><rect x="-20" y="${length*.4}" width="40" height="${length}"/></clipPath></defs><path class="cd-strand${coiled?' cd-coiled':''}" d="${d}" stroke="${colours[c.distal]}" clip-path="url(#cdExchange-${c.id})"/>`:''}<circle class="cd-centromere" r="2.8"/>`;
- if(!inter&&!tel&&!['daughter','four'].includes(lay)){const sides=polar?[a.k==='mitosis'||a.i>=9?c.copy:c.side]:a.k==='meiosis'&&a.i<=6?[c.side]:[c.copy];for(const side of sides){const poleX=cx+(side?1:-1)*rx*.9;threads+=`<path class="cd-spindle" data-target="${c.id}" data-pole="${side}" d="M${poleX},${cy} Q${(poleX+tx)/2},${ty} ${tx},${ty}"/>`;}}
+ if(inter||lay==='condense'){
+ // 풀어진 염색사는 핵 안에 가로로 흩어져 있다: 모계 1·2…번, 부계 1·2…번.
+ const slot=c.origin*pairs+c.pair,span=rx*1.25,step=span/twoN;x=cx-span/2+step*(slot+.5);
+ y=cy+[-14,12,-6,16,-12,8,-16,10][slot%8];length=(inter?Math.min(46,ry*.36):Math.min(34,ry*.27))*f;coil=inter?1:.45;
+ }else if(['pairs','equatorPairs'].includes(lay)){
+ const lens=Array.from({length:pairs},(_,p)=>(twoN===8?16:twoN===6?20:27)*size(p));x=cx+(c.side?1:-1)*(lay==='pairs'?13:Math.min(24,rx*.2));y=stackY(cy,lens,twoN===8?12:16)[c.pair];length=lens[c.pair];
+ }else if(lay==='equator'){
+ const order=[];for(let p=0;p<pairs;p++)for(let o=0;o<2;o++)order.push([p,o]);const lens=order.map(([p])=>(twoN===8?13:twoN===6?16:20)*size(p));
+ x=cx;y=stackY(cy,lens,twoN===8?7:10)[c.pair*2+c.origin];length=lens[c.pair*2+c.origin];
+ }else if(polar){
+ const side=a.k==='mitosis'?c.copy:c.side;x=cx+(side?1:-1)*rx*.46;
+ if(a.k==='mitosis'){const order=[];for(let p=0;p<pairs;p++)for(let o=0;o<2;o++)order.push(p);const lens=order.map(p=>(twoN===8?13:twoN===6?16:20)*size(p));y=stackY(cy,lens,twoN===8?9:16)[c.pair*2+c.origin];length=lens[c.pair*2+c.origin];}
+ else{const lens=Array.from({length:pairs},(_,p)=>(twoN===8?16:twoN===6?20:26)*size(p));y=stackY(cy,lens,16)[c.pair];length=lens[c.pair];}
+ if(tel){
+ // 말기: 양극에 모인 염색체가 새 핵 안에서 다시 풀린다.
+ const n=a.k==='mitosis'?twoN:pairs,slot=a.k==='mitosis'?c.origin*pairs+c.pair:c.pair,w=rx*.5,step=w/n;
+ x=x-w/2+step*(slot+.5);y=cy+[-12,10,-5,13,-10,6,-13,8][slot%8];length=Math.min(30,ry*.42)*f;coil=.85;
+ }else bend=(side?-1:1)*2.6;
  }
- for(const el of container.children)if(!active.has(el.dataset.copy))el.remove();$('cdShells').innerHTML=shells;$('cdThreads').innerHTML=threads;
+ }else if(a.s.cells===2){
+ if(kind==='mitosis'){const slot=c.origin*pairs+c.pair,span=rx*1.2,step=span/twoN;x=cx-span/2+step*(slot+.5);y=cy+[-10,9,-5,12,-9,6,-12,8][slot%8];length=Math.min(34,ry*.27)*f;coil=1;}
+ else{const lens=Array.from({length:pairs},(_,p)=>(twoN===8?13:twoN===6?16:21)*size(p));x=cx+(polar?(c.copy?1:-1)*rx*.46:0);y=stackY(cy,lens,10)[c.pair];length=lens[c.pair];if(/Telophase/.test(lay))coil=.55;}
+ }else{const w=rx*1.05,step=w/pairs;x=cx-w/2+step*(c.pair+.5);y=cy+8+[-8,7,-4,9][c.pair%4];length=Math.min(28,ry*.3)*size(c.pair);coil=1;}
+ const tx=x+offset*(coil?4:4.5),ty=y;
+ el.dataset.cell=String(c.cell);el.dataset.chromosome=c.chromosome;el.dataset.pair=String(c.pair);el.dataset.origin=String(c.origin);el.dataset.distal=String(c.distal);
+ targets.push({el,c,state:{x:tx,y:ty,L:length,coil,side:offset,bend}});
+ if(!inter&&!tel&&!['daughter','four'].includes(lay)){const sides=polar?[a.k==='mitosis'||a.i>=9?c.copy:c.side]:a.k==='meiosis'&&a.i<=6?[c.side]:[c.copy];for(const side of sides)spindles.push({id:c.id,pole:side,px:cx+(side?1:-1)*rx*.9,py:cy});}
+ }
+ for(const el of [...container.children])if(!active.has(el.dataset.copy)){chromState.delete(el.dataset.copy);el.remove();}
+ const shellG=$('cdShells');if(!instant&&shellG.dataset.cells&&shellG.dataset.cells!==String(a.s.cells)){shellG.classList.remove('cd-split');void shellG.getBBox();shellG.classList.add('cd-split');}shellG.dataset.cells=String(a.s.cells);shellG.innerHTML=shells;$('cdPoles').innerHTML=threads;
+ animateTo(targets,spindles,instant);
+ }
+ // 염색 분체 하나의 모양: coil 1이면 실처럼 꼬불꼬불 풀린 염색사, 0이면 굵게 응축된 막대.
+ function strandPath(L,coil,side,bend){
+ const n=34,turns=Math.max(1.6,L/13);let d='';
+ for(let k=0;k<=n;k++){const t=k/n,y=-L+2*L*t,u=y/L,x=coil*5.5*Math.sin(t*Math.PI*2*turns)+(1-coil)*(side*4+bend*4)*u*u+coil*side*1.5;d+=(k?'L':'M')+x.toFixed(2)+','+y.toFixed(2);}
+ return d;
+ }
+ function paint(el,c,s){
+ el.style.transform=`translate(${s.x}px, ${s.y}px)`;
+ const d=strandPath(s.L,s.coil,s.side,s.bend||0),w=(3.3+(1-s.coil)*2.9).toFixed(2),style=`stroke-width:${w}px`;
+ el.innerHTML=`${Math.abs(s.side)>.5&&c.copy===0&&s.coil<.5?`<path d="M0,0 H${(8*Math.abs(s.side)).toFixed(1)}" stroke="#506068" stroke-width="3"/>`:''}<path class="cd-strand" d="${d}" stroke="${colours[c.origin]}" style="${style}"/>${c.exchanged?`<defs><clipPath id="cdExchange-${c.id}"><rect x="-20" y="${(s.L*.4).toFixed(1)}" width="40" height="${s.L.toFixed(1)}"/></clipPath></defs><path class="cd-strand" d="${d}" stroke="${colours[c.distal]}" style="${style}" clip-path="url(#cdExchange-${c.id})"/>`:''}<circle class="cd-centromere" r="${(2+(1-s.coil)*1.2).toFixed(2)}"/>`;
+ }
+ function paintThreads(spindles,alpha){
+ $('cdThreads').innerHTML=spindles.map(t=>{const s=chromState.get(t.id);return `<path class="cd-spindle" data-target="${t.id}" data-pole="${t.pole}" style="opacity:${alpha.toFixed(2)}" d="M${t.px.toFixed(1)},${t.py.toFixed(1)} Q${((t.px+s.x)/2).toFixed(1)},${s.y.toFixed(1)} ${s.x.toFixed(1)},${s.y.toFixed(1)}"/>`;}).join('');
+ }
+ function animateTo(targets,spindles,instant){
+ cancelAnimationFrame(animFrame);
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,from=new Map();
+ for(const t of targets)from.set(t.c.id,chromState.get(t.c.id)||t.state);
+ const finish=()=>{for(const t of targets){chromState.set(t.c.id,t.state);paint(t.el,t.c,t.state);}paintThreads(spindles,1);};
+ if(instant||reduce)return finish();
+ const hadThreads=$('cdThreads').childElementCount>0,start=performance.now(),dur=850;
+ const step=now=>{const k=Math.min(1,(now-start)/dur),e=(1-Math.cos(Math.PI*k))/2;
+ for(const t of targets){const a0=from.get(t.c.id),b=t.state,s={};for(const key of ['x','y','L','coil','side','bend'])s[key]=(a0[key]??0)+((b[key]??0)-(a0[key]??0))*e;chromState.set(t.c.id,s);paint(t.el,t.c,s);}
+ paintThreads(spindles,hadThreads?1:e);
+ if(k<1)animFrame=requestAnimationFrame(step);else finish();};
+ animFrame=requestAnimationFrame(step);
  }
  function drawGraph(a){
  const w=Math.max(260,Math.round(graph.clientWidth)),h=265,left=46,right=20,top=25,bottom=59;graph.setAttribute('viewBox',`0 0 ${w} ${h}`);
@@ -71,6 +122,6 @@ document.addEventListener('DOMContentLoaded',()=>{
  $('cdNext').onclick=()=>{stop();advance();};$('cdReset').onclick=()=>setStage(0);$('stageRange').oninput=e=>setStage(e.target.value);
  document.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>{stop();kind=b.dataset.kind;index=0;render();});document.querySelectorAll('[data-chrom]').forEach(b=>b.onclick=()=>{stop();twoN=+b.dataset.chrom;orientation&=(1<<(twoN/2))-1;index=0;render();});
  document.querySelectorAll('[data-cd-pair]').forEach(b=>b.onclick=()=>{stop();orientation^=1<<Number(b.dataset.cdPair);render();});$('cdCross').onchange=e=>{stop();crossover=e.target.checked;render();};document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
- svg.innerHTML='<defs><radialGradient id="cdCellFill"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e5f1f4"/></radialGradient></defs><g id="cdShells"></g><g id="cdThreads"></g><g id="cdChromosomes"></g>';render();let resize=0;new ResizeObserver(()=>{cancelAnimationFrame(resize);resize=requestAnimationFrame(()=>{drawScene(analyse());drawGraph(analyse());});}).observe($('cdLab'));
+ svg.innerHTML='<defs><radialGradient id="cdCellFill"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e5f1f4"/></radialGradient></defs><g id="cdShells"></g><g id="cdThreads"></g><g id="cdPoles"></g><g id="cdChromosomes"></g>';render();let resize=0;new ResizeObserver(()=>{cancelAnimationFrame(resize);resize=requestAnimationFrame(()=>{drawScene(analyse(),true);drawGraph(analyse());});}).observe($('cdLab'));
  window.__divModel={...M,analyse,render,check:render,setKind(k){document.querySelector(`[data-kind=${k}]`).click();},setChrom(n){document.querySelector(`[data-chrom="${n}"]`).click();},setStage,getKind:()=>kind,getChrom:()=>twoN,idx:()=>index,list,runToEnd(){setStage(list().length-1);return{stage:index};},snapshot:()=>({...analyse(),playing,counts:M.counts(analyse())})};
 });

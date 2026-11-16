@@ -85,7 +85,10 @@
 .dir-text { fill: #f8fafc; font-size: 14px; font-weight: 900; }
 .moon-dark { fill: #1e293b; stroke: rgba(148, 163, 184, 0.40); stroke-width: .8; }
 .moon-lit { fill: #fef08a; filter: drop-shadow(0 0 3px rgba(254, 240, 138, 0.6)); }
-.moon-day-text { fill: #cbd5e1; font-size: 12px; font-weight: 850; }
+.moon-day-text { fill: #334155; font-size: 13.5px; font-weight: 850; }
+.month-card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+.month-moon .moon-dark { fill: #94a3b8; stroke: #64748b; }
+.month-moon .moon-lit { fill: #facc15; stroke: #ca8a04; stroke-width: .6; filter: none; }
 .moon-trail { fill: rgba(254, 240, 138, .35); }
 .star { fill: #ffffff; }
 .star.dim { fill: rgba(255, 255, 255, .65); }
@@ -100,3 +103,4 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+.mode-buttons button, .pick-buttons button, .prediction-buttons button { word-break: keep-all; }

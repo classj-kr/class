@@ -3,7 +3,7 @@
  let mode='key',selected=null,links=[],attempts=[],revealed=false;
  const selectionId=(r,i)=>r+':'+i;
  const focusLayer=(r,i)=>document.querySelector('[data-sc-layer="'+selectionId(r,i)+'"]')?.focus({preventScroll:true});
- const boundaryGraphic=gap=>'<svg viewBox="0 0 100 12" aria-hidden="true"><path d="'+(gap?'M0 6 Q5 0 10 6 T30 6 T50 6 T70 6 T90 6 T110 6':'M0 6 H100')+'" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>';
+ const boundaryGraphic=gap=>'<svg viewBox="0 0 100 18" preserveAspectRatio="none" aria-hidden="true"><path d="'+(gap?'M0 9 Q2.5 4 5 9 T10 9 T15 9 T20 9 T25 9 T30 9 T35 9 T40 9 T45 9 T50 9 T55 9 T60 9 T65 9 T70 9 T75 9 T80 9 T85 9 T90 9 T95 9 T100 9':'M0 9 H100')+'" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>';
  function render(){
   const c=model.cases[mode];
   document.querySelectorAll('[data-sc-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scMode===mode)));

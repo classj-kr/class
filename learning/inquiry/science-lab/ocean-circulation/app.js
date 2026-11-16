@@ -80,71 +80,114 @@ function arrow(g, cx, cy, bearing, len, cls, headCls, width) {
     g.appendChild(el('polygon', { points: `${fmt(ex, 1)},${fmt(ey, 1)} ${fmt(bx + px, 1)},${fmt(by + py, 1)} ${fmt(bx - px, 1)},${fmt(by - py, 1)}`, class: headCls }));
 }
 
-const SEA = { cx: 116, cy: 116, r: 70 };
-const HODO = { cx: 344, cy: 114, r: 60 };
+const num = (v, d) => v.toFixed(d);   // 좌표에는 보통 빼기표를 쓴다
+const SEA = { x: 10, y: 26, w: 238, h: 190 };
+const SEA_C = { x: SEA.x + 130, y: SEA.y + 94 };
+const INERTIAL_R = 56;
+const COL = { cx: 374, top: 64, gap: 22, rx: 72, ry: 17, layers: 7 };
+
+// 비스듬히 내려다본 층: 동쪽 성분은 그대로, 북쪽 성분은 납작하게(안쪽으로 들어감)
+const proj = (cx, cy, bearing, len) => ({ x: cx + dx(bearing) * len, y: cy + dy(bearing) * len * (COL.ry / COL.rx) });
+function flatArrow(g, cx, cy, bearing, len, color, width) {
+    const e = proj(cx, cy, bearing, len);
+    const ang = Math.atan2(e.y - cy, e.x - cx), back = 8, wide = 4.5;
+    const bx = e.x - Math.cos(ang) * back, by = e.y - Math.sin(ang) * back;
+    g.appendChild(el('line', { x1: cx, y1: cy, x2: num(bx, 1), y2: num(by, 1), style: `stroke:${color};stroke-width:${width};stroke-linecap:round` }));
+    g.appendChild(el('polygon', { points: `${num(e.x, 1)},${num(e.y, 1)} ${num(bx - Math.sin(ang) * wide, 1)},${num(by + Math.cos(ang) * wide, 1)} ${num(bx + Math.sin(ang) * wide, 1)},${num(by - Math.cos(ang) * wide, 1)}`, style: `fill:${color}` }));
+}
 
 function drawSea(g) {
     const a = analyse();
 
-    g.appendChild(el('circle', { cx: SEA.cx, cy: SEA.cy, r: SEA.r, class: 'sea-disc' }));
-    g.appendChild(el('line', { x1: SEA.cx, y1: SEA.cy - SEA.r, x2: SEA.cx, y2: SEA.cy + SEA.r, class: 'compass-line' }));
-    g.appendChild(el('line', { x1: SEA.cx - SEA.r, y1: SEA.cy, x2: SEA.cx + SEA.r, y2: SEA.cy, class: 'compass-line' }));
-    g.appendChild(el('text', { x: SEA.cx, y: SEA.cy - SEA.r - 5, 'text-anchor': 'middle', class: 'tiny-label' }, '북'));
-    g.appendChild(el('text', { x: SEA.cx + SEA.r + 4, y: SEA.cy + 3, class: 'tiny-label' }, '동'));
-
-    arrow(g, SEA.cx, SEA.cy, a.belt.bearing, 60, 'wind-arrow', 'wind-head');
-    arrow(g, SEA.cx, SEA.cy, a.surfBearing, 44, 'surf-arrow', 'surf-head');
-    arrow(g, SEA.cx, SEA.cy, a.netBearing, 68, 'net-arrow', 'net-head');
-
-    // A parcel let go with the surface current curves round an inertial circle.
-    if (state.running) {
-        const turn = a.turn;
-        const r = 26;
-        const centre = { x: SEA.cx + dx(a.surfBearing + turn * 90) * r, y: SEA.cy + dy(a.surfBearing + turn * 90) * r };
-        const start = (a.surfBearing - turn * 90 + 360) % 360;
+    /* ---- 왼쪽: 위에서 내려다본 바다와 물덩이 ---- */
+    g.appendChild(el('text', { x: SEA.x, y: 17, class: 'small-label' }, '위에서 본 바다'));
+    const defs = el('defs', {});
+    const grad = el('linearGradient', { id: 'ocSea', x1: '0', y1: '0', x2: '0', y2: '1' });
+    grad.appendChild(el('stop', { offset: '0', 'stop-color': '#5fa8d3' }));
+    grad.appendChild(el('stop', { offset: '1', 'stop-color': '#3b82b8' }));
+    defs.appendChild(grad);
+    const clip = el('clipPath', { id: 'ocSeaClip' });
+    clip.appendChild(el('rect', { x: SEA.x, y: SEA.y, width: SEA.w, height: SEA.h, rx: 8 }));
+    defs.appendChild(clip);
+    g.appendChild(defs);
+    g.appendChild(el('rect', { x: SEA.x, y: SEA.y, width: SEA.w, height: SEA.h, rx: 8, fill: 'url(#ocSea)' }));
+    const sea = el('g', { 'clip-path': 'url(#ocSeaClip)' });
+    g.appendChild(sea);
+    // 잔물결
+    for (let j = 0; j < 8; j += 1) for (let i = 0; i < 6; i += 1) {
+        const x = SEA.x + ((i * 46 + j * 19) % (SEA.w + 30)) - 14, y = SEA.y + 14 + j * 24;
+        sea.appendChild(el('path', { d: `M${x},${y} q5,-3 10,0 q5,3 10,0`, class: 'sea-ripple' }));
+    }
+    // 바람: 바다 위를 스치는 줄무늬가 바람 방향으로 흘러간다
+    const flow = (state.phase * 22) % 40;   // 한 칸(60)마다 되풀이
+    for (let k = -3; k <= 3; k += 1) {
+        const ox = SEA_C.x + dx(a.belt.bearing + 90) * k * 40, oy = SEA_C.y + dy(a.belt.bearing + 90) * k * 40;
+        for (let m = -2; m <= 2; m += 1) {
+            const s = m * 60 + flow * 1.5 - 30 + (k % 2) * 28;
+            const x1 = ox + dx(a.belt.bearing) * s, y1 = oy + dy(a.belt.bearing) * s;
+            sea.appendChild(el('line', { x1: num(x1, 1), y1: num(y1, 1), x2: num(x1 + dx(a.belt.bearing) * 16, 1), y2: num(y1 + dy(a.belt.bearing) * 16, 1), class: 'wind-streak' }));
+        }
+    }
+    // 물덩이: 표층 해류 방향으로 출발해 관성 원을 그린다
+    const turn = a.turn, r = INERTIAL_R;
+    const start = (a.surfBearing - turn * 90 + 360) % 360;    // 원 중심에서 본 출발점의 방위
+    const at = ang => ({ x: SEA_C.x + dx(ang) * r, y: SEA_C.y + dy(ang) * r });
+    const span = (state.running || state.checked) ? Math.min(1, state.t) * 360 : 0;
+    if (span > 0) {
         let d = '';
-        const span = Math.min(1, state.t) * 360;
-        for (let k = 0; k <= 90; k += 1) {
-            const ang = start + turn * (span * k / 90);
-            const px = centre.x + dx(ang) * r, py = centre.y + dy(ang) * r;
-            d += `${k ? 'L' : 'M'} ${fmt(px, 1)} ${fmt(py, 1)} `;
-        }
-        g.appendChild(el('path', { d, class: 'inertial-path' }));
-        const ang = start + turn * span;
-        g.appendChild(el('circle', { cx: centre.x + dx(ang) * r, cy: centre.y + dy(ang) * r, r: 5, class: 'parcel-dot' }));
-        g.appendChild(el('text', { x: 14, y: 30, class: 'note-text' },
-            `한 바퀴 ${fmt(a.hours, 1)}시간`));
+        for (let k = 0; k <= 120; k += 1) { const p = at(start + turn * span * k / 120); d += `${k ? 'L' : 'M'} ${num(p.x, 1)} ${num(p.y, 1)} `; }
+        sea.appendChild(el('path', { d, class: 'inertial-path' }));
     }
+    const s0 = at(start);
+    sea.appendChild(el('circle', { cx: num(s0.x, 1), cy: num(s0.y, 1), r: 3, class: 'start-dot' }));
+    const head = at(start + turn * span);
+    const heading = (start + turn * span + turn * 90 + 360) % 360;   // 원을 따라가는 방향
+    const blob = el('g', { transform: `translate(${num(head.x, 1)} ${num(head.y, 1)}) rotate(${num(heading, 1)})` });
+    blob.appendChild(el('ellipse', { cx: 0, cy: 3, rx: 9, ry: 12, class: 'parcel-halo' }));
+    blob.appendChild(el('ellipse', { cx: 0, cy: 1, rx: 6, ry: 8, class: 'parcel-dot' }));
+    blob.appendChild(el('path', { d: 'M0,-14 L4,-8 L-4,-8 Z', class: 'parcel-head' }));
+    sea.appendChild(blob);
+    g.appendChild(el('rect', { x: SEA.x, y: SEA.y, width: SEA.w, height: SEA.h, rx: 8, fill: 'none', stroke: '#2b6d99', 'stroke-width': 1.4 }));
+    // 나침반
+    const nx = SEA.x + SEA.w - 20, ny = SEA.y + SEA.h - 34;
+    g.appendChild(el('path', { d: `M${nx},${ny - 16} L${nx + 6},${ny} L${nx - 6},${ny} Z`, class: 'compass-needle' }));
+    g.appendChild(el('text', { x: nx, y: ny + 15, 'text-anchor': 'middle', class: 'sea-chip-text' }, '북'));
+    // 지난 시간
+    g.appendChild(el('rect', { x: SEA.x + 8, y: SEA.y + 8, width: 112, height: 22, rx: 6, class: 'sea-chip' }));
+    const hoursNow = a.hours * Math.min(1, state.t);
+    g.appendChild(el('text', { x: SEA.x + 64, y: SEA.y + 24, 'text-anchor': 'middle', class: 'small-label' },
+        span > 0 ? (state.t >= 1 ? `한 바퀴 ${num(a.hours, 1)}시간` : `${num(hoursNow, 1)}시간 지남`) : '물덩이 놓기 전'));
+    g.appendChild(el('rect', { x: SEA.x + 8, y: SEA.y + SEA.h - 30, width: 96, height: 22, rx: 6, class: 'sea-chip' }));
+    g.appendChild(el('text', { x: SEA.x + 56, y: SEA.y + SEA.h - 14, 'text-anchor': 'middle', class: 'small-label' }, `${a.belt.wind} ${a.wind} m/s`));
 
-    g.appendChild(el('text', { x: 14, y: 16, class: 'small-label' }, `${a.belt.wind} · ${a.belt.from}에서 붑니다`));
-    g.appendChild(el('text', { x: 14, y: 202, class: 'tiny-label', style: 'fill:#d97706' }, '바람'));
-    g.appendChild(el('text', { x: 62, y: 202, class: 'tiny-label', style: 'fill:#0284c7' }, '표층 45°'));
-    g.appendChild(el('text', { x: 130, y: 202, class: 'tiny-label', style: 'fill:#059669' }, '전체 수송 90°'));
-
-    // The spiral, seen from above: each arrow is the current at one depth.
-    g.appendChild(el('circle', { cx: HODO.cx, cy: HODO.cy, r: HODO.r, class: 'sea-disc' }));
-    g.appendChild(el('text', { x: HODO.cx, y: HODO.cy - HODO.r - 6, 'text-anchor': 'middle', class: 'small-label' }, '깊이별 해류 (위에서 본 것)'));
-    const layers = 9;
-    for (let i = 0; i < layers; i += 1) {
-        const frac = i / (layers - 1);
-        const scale = Math.exp(-Math.PI * frac);
-        const bearing = (a.surfBearing + a.turn * 180 * frac + 360) % 360;
-        const len = HODO.r * 0.92 * scale;
-        const tint = `hsl(${196 - frac * 40}, 70%, ${72 - frac * 26}%)`;
-        if (len > 4) {
-            arrow(g, HODO.cx, HODO.cy, bearing, len, 'spiral-arrow', 'spiral-head', 2.2);
-            const last = g.lastElementChild, line = last.previousElementSibling;
-            line.setAttribute('style', `stroke:${tint};stroke-width:2.2`);
-            last.setAttribute('style', `fill:${tint}`);
-        }
+    /* ---- 오른쪽: 층을 비스듬히 펼친 에크만 나선 ---- */
+    g.appendChild(el('text', { x: 262, y: 17, class: 'small-label' }, '깊이에 따른 해류'));
+    const yOf = i => COL.top + i * COL.gap;
+    // 공기층의 바람
+    const airY = COL.top - 28;
+    g.appendChild(el('ellipse', { cx: COL.cx, cy: airY, rx: COL.rx, ry: COL.ry * 0.8, class: 'air-plane' }));
+    flatArrow(g, COL.cx, airY, a.belt.bearing, 64, '#d97706', 3);
+    // 깊은 층부터 그려 위층이 아래층을 덮게 한다
+    for (let i = COL.layers - 1; i >= 0; i -= 1) {
+        const frac = i / (COL.layers - 1), y = yOf(i);
+        g.appendChild(el('ellipse', { cx: COL.cx, cy: y, rx: COL.rx, ry: COL.ry, class: 'layer-plane', style: `fill-opacity:${num(0.5 - frac * 0.25, 2)}` }));
+        // 깊은 층은 아주 약하지만, 방향이 보이도록 화살표 길이에 바닥을 둔다
+        const len = Math.max(16, COL.rx * 0.86 * Math.exp(-Math.PI * frac));
+        const bearing = (a.surfBearing + turn * 180 * frac + 360) % 360;
+        const tint = `hsl(${200 - frac * 25}, 75%, ${40 + frac * 22}%)`;
+        if (len > 5) flatArrow(g, COL.cx, y, bearing, len, tint, i === 0 ? 3 : 2.4);
+        else g.appendChild(el('circle', { cx: COL.cx, cy: y, r: 2, style: `fill:${tint}` }));
     }
-    g.appendChild(el('text', { x: HODO.cx - HODO.r, y: HODO.cy + HODO.r + 14, class: 'tiny-label' }, '표층'));
-    g.appendChild(el('text', { x: HODO.cx + HODO.r, y: HODO.cy + HODO.r + 36, 'text-anchor': 'end', class: 'tiny-label figure-caption' },
-        `${Math.round(a.depth)} m에서 반대 방향`));
-
-    g.appendChild(el('text', { x: 446, y: 22, 'text-anchor': 'end', class: 'read-text' }, `${a.lat}°${a.hemi === 'N' ? 'N' : 'S'}`));
-    g.appendChild(el('text', { x: 446, y: 202, 'text-anchor': 'end', class: 'note-text' },
-        `수송 ${fmt(a.transport, 2)} m²/s · 표층 ${fmt(a.surf * 100, 1)} cm/s`));
+    flatArrow(g, COL.cx, yOf(0), a.netBearing, COL.rx * 0.95, '#059669', 3);
+    // 깊이 눈금
+    const sx = COL.cx - COL.rx - 12;
+    g.appendChild(el('line', { x1: sx, y1: yOf(0), x2: sx, y2: yOf(COL.layers - 1), class: 'depth-axis' }));
+    g.appendChild(el('text', { x: sx - 4, y: yOf(0) + 4, 'text-anchor': 'end', class: 'tiny-label' }, '0 m'));
+    g.appendChild(el('text', { x: sx - 4, y: yOf(COL.layers - 1) + 4, 'text-anchor': 'end', class: 'tiny-label' }, `${Math.round(a.depth)} m`));
+    // 범례
+    [['바람', '#d97706', 262], ['표층 해류', '#0369a1', 312], ['전체 수송', '#059669', 386]].forEach(([t, c, x]) => {
+        g.appendChild(el('text', { x, y: 236, class: 'tiny-label', style: `fill:${c}` }, t));
+    });
 }
 
 const LAT_LO = 5, LAT_HI = 75;
@@ -231,24 +274,21 @@ function explain(a) {
         $('predictionResult').textContent = '';
         $('predictionResult').className = 'prediction-result';
     }
+    $('predictionResult').hidden = !state.prediction;
 
     const side = a.turn > 0 ? '오른' : '왼';
-    let s = `위도 ${a.lat}°에서 전향 매개 변수는 2 × 지구 자전 각속도 × sin ${a.lat}° = ${fmt(a.f * 1e4, 2)} × 10⁻⁴ /s입니다. `;
-    s += `물덩이를 놓으면 이 값 때문에 ${side}쪽으로 휘어 원을 그리는데, 한 바퀴 도는 데 걸리는 시간은 2π를 이 값으로 나눈 ${fmt(a.hours, 1)}시간입니다. `;
-    s += `이 값은 ${fmt(HALF_DAY_H, 2)}시간을 sin ${a.lat}°로 나눈 것과 정확히 같습니다. ${fmt(HALF_DAY_H, 2)}시간은 지구가 별을 기준으로 한 바퀴 도는 시간의 절반이라, 하루의 절반인 12시간보다 4분쯤 짧습니다. 그래서 위도 30°에서도 딱 24시간이 아니라 ${fmt(inertialHours(30), 1)}시간이 되고, 위도가 낮을수록 급격히 길어집니다. `;
-
-    s += `여기는 ${a.belt.name}라 바람이 ${a.belt.from}에서 붑니다. ${a.wind} m/s로 불면 바닷물을 ${fmt(a.tau, 3)} N/m²의 힘으로 끌고, 표층은 바람의 ${side}쪽 45°인 ${fmt(a.surf * 100, 1)} cm/s로 흐릅니다. `;
-    s += `깊이 들어갈수록 조금씩 더 휘어 ${Math.round(a.depth)} m에서는 표층과 정반대가 되고, 이 층들을 모두 더한 수송은 바람의 ${side}쪽 정확히 90° 방향으로 ${fmt(a.transport, 2)} m²/s입니다. `;
+    let s = `물덩이는 ${side}쪽으로 휘어 원을 그리며, 한 바퀴에 ${fmt(a.hours, 1)}시간이 걸립니다. 이 시간은 ${fmt(HALF_DAY_H, 2)}시간(지구가 별을 기준으로 반 바퀴 도는 시간)을 sin ${a.lat}°로 나눈 값이라, 위도 30°에서는 ${fmt(inertialHours(30), 1)}시간이고 위도가 낮을수록 길어집니다.\n\n`;
+    s += `${a.belt.name}의 바람이 ${a.belt.from}에서 ${a.wind} m/s로 불면 표층은 바람의 ${side}쪽 45°로 ${fmt(a.surf * 100, 1)} cm/s로 흐릅니다. 깊어질수록 더 휘어 ${Math.round(a.depth)} m에서는 표층과 반대가 되고, 층을 모두 더한 수송은 바람의 ${side}쪽 90°입니다.\n\n`;
 
     if (a.lat < 30) {
-        s += `무역풍대의 이 수송은 극 쪽을 향합니다. 한편 위도 30°를 넘으면 편서풍이 반대쪽으로 밀기 때문에, 두 흐름이 30° 부근에서 마주쳐 물이 쌓입니다. 그렇게 볼록해진 해수면이 아열대 환류를 돌립니다.`;
+        s += `무역풍대의 수송은 극 쪽을 향해, 적도 쪽으로 미는 편서풍대의 물과 30° 부근에서 마주쳐 쌓입니다. 볼록해진 해수면이 아열대 환류를 돌립니다.`;
     } else if (a.lat < 60) {
-        s += `편서풍대의 이 수송은 적도 쪽을 향합니다. 위도 30° 아래의 무역풍이 밀어 올린 물과 여기서 마주쳐 30° 부근에 물이 쌓이고, 위도 60° 쪽으로는 극동풍이 반대로 밀어내 물이 갈라지며 아래에서 찬물이 솟아오릅니다.`;
+        s += `편서풍대의 수송은 적도 쪽을 향해 30° 부근에 물을 쌓고, 60° 부근에서는 극동풍대와 서로 반대로 밀어 물이 갈라지며 찬물이 솟아오릅니다.`;
     } else {
-        s += `극동풍대의 이 수송은 다시 극 쪽을 향합니다. 위도 60° 부근에서는 편서풍이 적도 쪽으로, 극동풍이 극 쪽으로 서로 반대로 밀어내므로 표층이 갈라지고, 그 빈자리를 메우러 깊은 곳의 찬물이 솟아오릅니다.`;
+        s += `극동풍대의 수송은 극 쪽을 향합니다. 60° 부근에서는 편서풍대와 서로 반대로 밀어 표층이 갈라지고, 깊은 곳의 찬물이 솟아오릅니다.`;
     }
     if (a.lat <= 10) {
-        s += ` 다만 적도에 가까울수록 전향 매개 변수가 0에 가까워져 수송이 걷잡을 수 없이 커집니다. 이것은 계산이 커지는 것일 뿐 실제로 그렇게 흐른다는 뜻이 아니고, 적도 부근에서는 에크만 이론을 그대로 쓸 수 없다는 신호입니다.`;
+        s += ` 적도 가까이에서는 전향력이 0에 가까워 계산한 수송이 지나치게 커집니다. 여기서는 에크만 이론을 그대로 쓸 수 없습니다.`;
     }
     $('elementaryExplanation').textContent = s;
 }
@@ -267,14 +307,20 @@ function tick(dt) {
     return false;
 }
 
-let last = 0;
+let last = 0, looping = false;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
     tick(dt);
     render();
+    if (state.running) requestAnimationFrame(frame); else looping = false;
+}
+function startLoop() {
+    if (looping) return;
+    looping = true; last = performance.now();
     requestAnimationFrame(frame);
 }
+const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 // --- wiring -----------------------------------------------------------------
 function markSelected(sel, attr, value) {
@@ -282,7 +328,7 @@ function markSelected(sel, attr, value) {
 }
 
 document.querySelectorAll('[data-hemi]').forEach(b => b.addEventListener('click', () => {
-    state.hemi = b.dataset.hemi; markSelected('[data-hemi]', 'hemi', state.hemi);
+    state.hemi = b.dataset.hemi; if (!state.running) state.t = 0; markSelected('[data-hemi]', 'hemi', state.hemi);
     $('latOutput').textContent = `${state.lat}°${state.hemi}`;
     render();
 }));
@@ -291,11 +337,13 @@ document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('
 }));
 $('latRange').addEventListener('input', e => {
     state.lat = Number(e.target.value);
+    if (!state.running) state.t = 0;
     $('latOutput').textContent = `${state.lat}°${state.hemi}`;
     render();
 });
 $('windRange').addEventListener('input', e => {
     state.wind = Number(e.target.value);
+    if (!state.running) state.t = 0;
     $('windOutput').textContent = `${state.wind} m/s`;
     render();
 });
@@ -303,7 +351,9 @@ $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; $('runBtn').textContent = '물덩이 놓아 보기'; return; }
     state.t = 0; state.running = true; state.checked = true;
     $('runBtn').textContent = '멈추기';
+    if (reduceMotion()) { state.t = 1; state.running = false; $('runBtn').textContent = '물덩이 놓아 보기'; render(); return; }
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     state.hemi = 'N'; state.lat = 35; state.wind = 10;
@@ -332,7 +382,6 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 
 markSelected('[data-hemi]', 'hemi', state.hemi);
 render();
-requestAnimationFrame(frame);
 
 window.__oceanModel = {
     state, analyse, tick, render, coriolis, stress, inertialHours, belt,

@@ -147,11 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
             for(let h=3;h<=21;h+=.1){const sun=sunAt(h,se.dec);if(sun.alt>=0){const r=pos(sun.alt,sun.az);pts.push(r.x.toFixed(1)+','+r.y.toFixed(1));}}
             if(pts.length>1)out+='<path class="sun-path'+(k===state.season?'':' other')+'" style="stroke:'+se.colour+'" d="M'+pts.join('L')+'"/>';
             const x=36+i*140;
-            out+='<line x1="'+x+'" y1="47" x2="'+(x+16)+'" y2="47" stroke="'+se.colour+'" stroke-width="3"/><text class="axis-text" x="'+(x+23)+'" y="52" style="fill:'+se.ink+'">'+se.label+' '+Math.round(noonAlt(se.dec))+'°</text>';
+            out+='<line x1="'+x+'" y1="47" x2="'+(x+16)+'" y2="47" stroke="'+se.colour+'" stroke-width="3"/><text class="axis-text" x="'+(x+23)+'" y="52" style="fill:'+se.ink+'">'+se.label+(p>=1?' '+Math.round(noonAlt(se.dec))+'°':'')+'</text>';
         });
         if(q.alt>0){const r=pos(q.alt,q.az);out+='<circle class="sun-glow" cx="'+r.x.toFixed(1)+'" cy="'+r.y.toFixed(1)+'" r="15"/><circle class="sun" cx="'+r.x.toFixed(1)+'" cy="'+r.y.toFixed(1)+'" r="8"/>';}
         out+='<text class="sky-text" x="24" y="289">'+hourText(hour)+' · '+(q.alt>0?'태양 높이 '+Math.round(q.alt)+'°':hour<12?'해 뜨기 전':'해 진 뒤')+'</text>';
         if(q.alt>0){const ratio=1/Math.tan(q.alt*D2R);out+='<text class="alt-text" x="436" y="289" text-anchor="end">그림자 '+(ratio>100?'100배 이상':ratio.toFixed(1)+'배')+'</text>';}
+        // 남중 고도·그림자 값은 하루를 다 흘려 본 뒤에만(예상의 답이므로)
+        if(p<1)return out;
         out+='<text class="verdict-text" x="20" y="18">'+a.season.label+' · 남중 고도 '+Math.round(a.noon)+'° · 낮 '+a.len.toFixed(1)+'시간 ('+hourText(a.rise)+' ~ '+hourText(a.set)+')</text>';
         out+='<text class="note-text" x="20" y="319">1 m 막대의 정오 그림자: '+a.shadow.toFixed(2)+' m · 태양이 높을수록 그림자가 짧습니다</text>';
         return out;
@@ -209,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="alt-text" x="${Math.min(cx + patch / 2 + 26, 436).toFixed(1)}" y="${GY - 8}">${Math.round(a.noon)}°</text>`;
         out += `<text class="axis-text" x="${cx}" y="${GY + 14}" text-anchor="middle">빛이 닿는 땅 ${a.spread.toFixed(1)}배 넓이</text>`;
         const VERD = { summer: '여름', winter: '겨울', none: '계절 차이 없음' };
+        if (p < 1) return out;
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">자전축 ${state.tilt === TILT_REAL ? '23.5' : state.tilt}° · ${a.spot.label} → 서울은 ${VERD[a.verdict]} (남중 고도 ${Math.round(a.noon)}°, 낮 ${a.len.toFixed(1)}시간)</text>`;
         out += `<text class="note-text" x="20" y="208">반대쪽 자리에서는 남중 고도 ${Math.round(a.other)}°, 낮 ${a.otherLen.toFixed(1)}시간 · 노란 선은 자전축, 빨간 점은 서울</text>`;
         return out;
@@ -243,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const gx = h => GRAPH.x0 + ((h - 4) / 16) * (GRAPH.x1 - GRAPH.x0);
         const gy = alt => GRAPH.y0 - (alt / 90) * (GRAPH.y0 - GRAPH.y1);
         let out = graphFrame([4, 8, 12, 16, 20].map(h => [`${h}시`, gx(h)]), [30, 60, 90].map(v => [`${v}°`, gy(v)]), '시각', '태양의 높이');
-        Object.entries(SEASONS).forEach(([k, se]) => {
+        if (state.progress >= 1) Object.entries(SEASONS).forEach(([k, se]) => {
             const pts = [];
             for (let h = 4; h <= 20 + 1e-9; h += 0.25) pts.push(`${gx(h).toFixed(1)},${gy(Math.max(0, sunAt(h, se.dec).alt)).toFixed(1)}`);
             out += `<path class="${k === state.season ? 'trace-done' : 'trace other'}" style="stroke:${se.colour}" d="M${pts.join('L')}"/>`;
@@ -253,8 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (live.length > 1) out += `<path class="trace" style="stroke:${a.season.colour}" d="M${live.join('L')}"/>`;
         const now = Math.max(0, sunAt(hour, a.season.dec).alt);
         out += `<circle class="trace-dot" cx="${gx(hour).toFixed(1)}" cy="${gy(now).toFixed(1)}" r="5" fill="${a.season.colour}"/>`;
-        let lx = GRAPH.x0 + 8;
-        Object.values(SEASONS).forEach(se => { out += `<text class="axis-text" style="fill:${se.ink || se.colour}" x="${lx}" y="${GRAPH.y1 + 14}">— ${se.label}</text>`; lx += 70; });
         return out;
     }
 
@@ -280,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        if (state.progress < 1) return a.kind === 'path' ? `<div class="data-row"><span class="data-name">계절</span><span class="data-val">${a.season.label} (${a.season.hint}) · 서울</span></div>` : `<div class="data-row"><span class="data-name">자전축</span><span class="data-val">${state.tilt === TILT_REAL ? '23.5' : state.tilt}° 기울어진 채 공전</span></div>`;
         if (a.kind === 'path') {
             const hour = pathHour(a, state.progress);
             const q = sunAt(hour, a.season.dec);
@@ -443,3 +445,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

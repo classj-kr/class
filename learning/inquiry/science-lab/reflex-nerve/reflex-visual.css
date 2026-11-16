@@ -2,3 +2,4 @@
 
 #rfLab [data-path][aria-pressed="true"]{background:#23566a;color:#fff;border-color:#23566a}
 #rfLab [data-path]{transition:box-shadow .15s ease}#rfLab .rf-key{background:#f7fafc;padding:8px 10px;border-radius:6px}
+.rf-route-box .rf-results{margin:14px 0 0}.rf-route-box #stageCaption{min-height:0}.rf-route-box .rf-observation{margin-top:12px}

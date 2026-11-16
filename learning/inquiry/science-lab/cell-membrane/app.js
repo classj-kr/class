@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGroup = document.getElementById('mainGroup');
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
+    const stageReadout = document.getElementById('stageReadout');
 
     /* -------------------------------------------------------------- data */
     // Diffusion across a porous membrane: the count difference decays as each
@@ -111,43 +112,82 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
+    // Particles are kept between frames so each one wanders on its own (random walk
+    // inside its chamber). When the model says one more has crossed, a particle near
+    // the membrane is sent through the pore; now and then a pair swaps sides, so the
+    // two-way traffic stays visible even when the counts are equal.
+    const DG = { LX: 18, W: 206, MX: 230, Y: 30, H: 150, GAP0: 88, GAP1: 122 };
+    DG.RX = DG.MX + 2;
+    let particles = [], particleKey = '', swapClock = 0;
+    let seed = 7;
+    const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+    const boxOf = side => side === 'L' ? { x0: DG.LX + 6, x1: DG.MX - 9 } : { x0: DG.RX + 9, x1: DG.RX + DG.W - 6 };
+    function seedParticles(c) {
+        seed = 7; particles = [];
+        const make = (side, n) => { const bx = boxOf(side); for (let i = 0; i < n; i += 1) particles.push({ side, x: bx.x0 + rnd() * (bx.x1 - bx.x0), y: DG.Y + 6 + rnd() * (DG.H - 12), vx: rnd() - 0.5, vy: rnd() - 0.5, cross: null }); };
+        make('L', c.L); make('R', c.R);
+        swapClock = 0;
+    }
+    function sendAcross(pt) {
+        const gy = DG.GAP0 + 6 + rnd() * (DG.GAP1 - DG.GAP0 - 12);
+        pt.cross = { stage: 0, gy, to: pt.side === 'L' ? 'R' : 'L' };
+    }
+    function stepParticles(dt, speed, wantR) {
+        const step = speed * 60 * dt;
+        let haveR = particles.filter(p => (p.cross ? p.cross.to : p.side) === 'R').length;
+        while (haveR < wantR) {
+            const pool = particles.filter(p => p.side === 'L' && !p.cross).sort((m, n) => n.x - m.x);
+            if (!pool.length) break;
+            sendAcross(pool[Math.floor(rnd() * Math.min(4, pool.length))]); haveR += 1;
+        }
+        swapClock += dt;
+        if (swapClock > 1.1) {
+            swapClock = 0;
+            const l = particles.filter(p => p.side === 'L' && !p.cross), r = particles.filter(p => p.side === 'R' && !p.cross);
+            if (l.length && r.length) { sendAcross(l[Math.floor(rnd() * l.length)]); sendAcross(r[Math.floor(rnd() * r.length)]); }
+        }
+        particles.forEach(p => {
+            if (p.cross) {
+                const tx = p.cross.stage === 0 ? DG.MX + (p.side === 'L' ? -12 : 12) : DG.MX + (p.cross.to === 'R' ? 13 : -13);
+                const ty = p.cross.gy;
+                const dx = tx - p.x, dy = ty - p.y, d = Math.hypot(dx, dy), v = step * 1.6 + 0.4;
+                if (d <= v) { p.x = tx; p.y = ty; p.cross.stage += 1; if (p.cross.stage === 2) { p.side = p.cross.to; p.cross = null; } }
+                else { p.x += dx / d * v; p.y += dy / d * v; }
+                return;
+            }
+            p.vx = clamp(p.vx + (rnd() - 0.5) * 0.9, -1.4, 1.4); p.vy = clamp(p.vy + (rnd() - 0.5) * 0.9, -1.4, 1.4);
+            p.x += p.vx * step; p.y += p.vy * step;
+            const bx = boxOf(p.side);
+            if (p.x < bx.x0) { p.x = bx.x0; p.vx = Math.abs(p.vx); } if (p.x > bx.x1) { p.x = bx.x1; p.vx = -Math.abs(p.vx); }
+            if (p.y < DG.Y + 5) { p.y = DG.Y + 5; p.vy = Math.abs(p.vy); } if (p.y > DG.Y + DG.H - 5) { p.y = DG.Y + DG.H - 5; p.vy = -Math.abs(p.vy); }
+        });
+    }
+
     function renderDiffusion(a) {
         const t = state.progress * SIM_T;
-        const { L, R } = countsAt(a.c, a.tmp.k, t);
+        const { L } = countsAt(a.c, a.tmp.k, t);
         const nL = Math.round(L), nR = a.c.L + a.c.R - nL;
-        const LX = 20, RX = 174, W = 150, Y = 40, H = 130, MX = 172;
-        let out = `<rect class="chamber" x="${LX}" y="${Y}" width="${W}" height="${H}" rx="4"/><rect class="chamber" x="${RX}" y="${Y}" width="${W}" height="${H}" rx="4"/>`;
-        out += `<line class="membrane" x1="${MX}" y1="${Y}" x2="${MX}" y2="${Y + H}"/>`;
-        for (let py = Y + 4; py <= Y + H - 4; py += 10) {
-            if (py >= Y + 50 && py <= Y + 76) continue;
-            out += `<circle cx="${MX - 4}" cy="${py}" r="2" fill="#d97706"/>`;
-            out += `<line x1="${MX - 2}" y1="${py - 0.8}" x2="${MX}" y2="${py - 0.8}" stroke="#d97706" stroke-width="0.7"/>`;
-            out += `<line x1="${MX - 2}" y1="${py + 0.8}" x2="${MX}" y2="${py + 0.8}" stroke="#d97706" stroke-width="0.7"/>`;
-            out += `<circle cx="${MX + 4}" cy="${py}" r="2" fill="#d97706"/>`;
-            out += `<line x1="${MX + 2}" y1="${py - 0.8}" x2="${MX}" y2="${py - 0.8}" stroke="#d97706" stroke-width="0.7"/>`;
-            out += `<line x1="${MX + 2}" y1="${py + 0.8}" x2="${MX}" y2="${py + 0.8}" stroke="#d97706" stroke-width="0.7"/>`;
+        if (state.conc !== particleKey || (state.progress === 0 && !running)) { particleKey = state.conc; seedParticles(a.c); }
+        const { LX, RX, W, Y, H, MX, GAP0, GAP1 } = DG;
+        const half = (GAP1 - GAP0) / 2;
+        // water tank with a membrane down the middle
+        let out = `<rect x="${LX - 6}" y="${Y - 6}" width="${RX + W - LX + 12}" height="${H + 12}" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.6"/>`;
+        out += `<rect class="chamber" x="${LX}" y="${Y}" width="${W}" height="${H}" rx="3"/><rect class="chamber" x="${RX}" y="${Y}" width="${W}" height="${H}" rx="3"/>`;
+        // membrane: two rows of lipid heads with tails, and a protein channel in the middle
+        for (let py = Y + 4; py <= Y + H - 3; py += 8) {
+            if (py > GAP0 - 6 && py < GAP1 + 6) continue;
+            out += `<line x1="${MX - 4}" y1="${py}" x2="${MX - 1}" y2="${py}" stroke="#b45309" stroke-width="1"/><line x1="${MX + 1}" y1="${py}" x2="${MX + 4}" y2="${py}" stroke="#b45309" stroke-width="1"/>`;
+            out += `<circle cx="${MX - 5}" cy="${py}" r="3" fill="#f59e0b" stroke="#b45309" stroke-width=".7"/><circle cx="${MX + 5}" cy="${py}" r="3" fill="#f59e0b" stroke="#b45309" stroke-width=".7"/>`;
         }
-        out += `<g transform="translate(${MX - 8}, ${Y + 50}) scale(0.16, 0.28)">` +
-               `<path d="M 24 14 C 36 14 42 28 40 50 C 42 72 36 86 24 86 L 36 86 C 48 86 52 72 50 50 C 52 28 48 14 36 14 Z M 76 14 C 64 14 58 28 60 50 C 58 72 64 86 76 86 L 64 86 C 52 86 48 72 50 50 C 48 28 52 14 64 14 Z" fill="#0284c7"/>` +
-               `</g>`;
-        // molecules jiggle about fixed spots; warmer water, bigger jiggle
-        const amp = a.tmp.k > 0.06 ? 7 : 4;
-        const dot = (x0, i, count) => { for (let n = 0; n < count; n += 1) { const bx = x0 + 12 + ((n * 37) % (W - 24)), by = Y + 12 + ((n * 53) % (H - 24)); const ph = n * 1.7; out += `<circle class="molecule" cx="${(bx + amp * Math.sin(t * (1.3 + (n % 5) * 0.4) + ph)).toFixed(1)}" cy="${(by + amp * Math.cos(t * (1.1 + (n % 7) * 0.3) + ph * 2)).toFixed(1)}" r="3"/>`; } };
-        dot(LX, 0, nL); dot(RX, 1, nR);
-        out += `<text class="gen-text" x="${LX + W / 2}" y="${Y + H + 16}" text-anchor="middle">왼쪽 ${nL}개</text>`;
-        out += `<text class="gen-text" x="${RX + W / 2}" y="${Y + H + 16}" text-anchor="middle">오른쪽 ${nR}개</text>`;
-        // facts
-        const IX = 340;
-        out += `<text class="trait-text" x="${IX}" y="50">물 온도 ${a.tmp.label}</text>`;
-        out += `<text class="trait-text" x="${IX}" y="66">1초에 차이의 ${Math.round(a.tmp.k * 100)} %가 건너감</text>`;
-        out += `<text class="trait-text" x="${IX}" y="90">지난 시간 ${t.toFixed(1)}초</text>`;
-        out += `<text class="trait-text" x="${IX}" y="106">차이 ${Math.max(0, nL - nR)}개</text>`;
-        out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="130">${nR > 0 ? `왼쪽 : 오른쪽 = ${(nL / nR).toFixed(2)} : 1` : '오른쪽은 아직 0개'}</text>`;
-        out += `<text class="trait-text" x="${IX}" y="154">${nL > nR ? '진한 쪽 → 옅은 쪽으로' : '양쪽에서 건너는 수가 같음'}</text>`;
-        out += `<text class="trait-text" x="${IX}" y="168">${nL > nR ? '더 많이 건너감' : '— 수는 변하지 않음'}</text>`;
+        out += `<path d="M ${MX - 10} ${GAP0 - 5} C ${MX - 2} ${GAP0 + 2} ${MX - 2} ${GAP1 - 2} ${MX - 10} ${GAP1 + 5} L ${MX - 5} ${GAP1 + 5} C ${MX + 1} ${GAP1 - 4} ${MX + 1} ${GAP0 + 4} ${MX - 5} ${GAP0 - 5} Z" fill="#38bdf8" stroke="#0369a1" stroke-width=".8"/>`;
+        out += `<path d="M ${MX + 10} ${GAP0 - 5} C ${MX + 2} ${GAP0 + 2} ${MX + 2} ${GAP1 - 2} ${MX + 10} ${GAP1 + 5} L ${MX + 5} ${GAP1 + 5} C ${MX - 1} ${GAP1 - 4} ${MX - 1} ${GAP0 + 4} ${MX + 5} ${GAP0 - 5} Z" fill="#38bdf8" stroke="#0369a1" stroke-width=".8"/>`;
+        particles.forEach(p => { out += `<circle class="molecule" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.4"/>`; });
+        out += `<text class="gen-text" x="${LX + W / 2}" y="${Y + H + 24}" text-anchor="middle">왼쪽 ${nL}개</text>`;
+        out += `<text class="gen-text" x="${RX + W / 2}" y="${Y + H + 24}" text-anchor="middle">오른쪽 ${nR}개</text>`;
+        out += `<text class="small-label" x="${MX}" y="${Y + H + 24}" text-anchor="middle">막</text>`;
         const VERD = { far: '아직 왼쪽에 훨씬 많음', mid: '왼쪽이 조금 더 많음', same: '거의 같아짐' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `20초 뒤 왼쪽 ${Math.round(a.end.L)}개 · 오른쪽 ${Math.round(a.end.R)}개 → ${VERD[a.verdict]}` : `${a.c.label} · ${a.tmp.label} 물`}</text>`;
-        out += `<text class="note-text" x="20" y="208">알갱이는 제멋대로 움직여 어느 쪽으로든 건너지만, 많은 쪽에서 건너오는 수가 더 많습니다</text>`;
+        if (state.progress >= 1) out += `<text class="verdict-text" fill="#b45309" x="${LX - 6}" y="14">20초 뒤 → ${VERD[a.verdict]}</text>`;
+        stageReadout.innerHTML = `<span>물 온도 ${a.tmp.label} · 1초에 차이의 ${Math.round(a.tmp.k * 100)} %가 건너감</span><span>지난 시간 ${t.toFixed(1)}초 · 차이 ${Math.max(0, nL - nR)}개${state.progress > 0 && nR > 0 ? ` · 왼쪽 : 오른쪽 = ${(nL / nR).toFixed(2)} : 1` : ''}</span>`;
         return out;
     }
 
@@ -160,31 +200,84 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let tt = 0; tt <= SIM_T; tt += 5) out += `<text class="axis-text" x="${xOf(tt).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${tt}</text>`;
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         const mean = (a.c.L + a.c.R) / 2;
-        out += `<line class="trace dashed" style="stroke:#475569" x1="${X0}" y1="${yOf(mean).toFixed(1)}" x2="${X1}" y2="${yOf(mean).toFixed(1)}"/><text class="small-label" x="${X1}" y="${(yOf(mean) - 4).toFixed(1)}" text-anchor="end">같아지는 값 ${mean}개</text>`;
+        const done = state.progress >= 1;
+        if (done) out += `<line class="trace dashed" style="stroke:#475569" x1="${X0}" y1="${yOf(mean).toFixed(1)}" x2="${X1}" y2="${yOf(mean).toFixed(1)}"/><text class="small-label" x="${X0 + 8}" y="${(yOf(mean) + 15).toFixed(1)}">같아지는 값 ${mean}개</text>`;
         let dL = '', dR = '';
         for (let tt = 0; tt <= t + 1e-9; tt += 0.2) { const c = countsAt(a.c, a.tmp.k, tt); dL += `${dL ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(c.L).toFixed(1)} `; dR += `${dR ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(c.R).toFixed(1)} `; }
         out += `<path class="trace" style="stroke:#d97706" d="${dL}"/><path class="trace" style="stroke:#0284c7" d="${dR}"/>`;
         // the other temperature, faintly, for comparison
         const other = TEMPS[state.temp === 'cold' ? 'warm' : 'cold'];
         let dO = ''; for (let tt = 0; tt <= SIM_T; tt += 0.5) dO += `${dO ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(countsAt(a.c, other.k, tt).L).toFixed(1)} `;
-        out += `<path class="trace dashed" style="stroke:rgba(217, 119, 6, .45)" d="${dO}"/>`;
-        out += `<text class="small-label" x="${X0 + 4}" y="${Y1 - 6}">점선: ${other.label}일 때의 왼쪽</text>`;
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">시간 (초) — 차이가 줄수록 건너가는 속도도 줄어듭니다</text>`;
+        if (done) {
+            out += `<path class="trace dashed" style="stroke:rgba(217, 119, 6, .45)" d="${dO}"/>`;
+            out += `<text class="small-label" x="${X0 + 4}" y="${Y1 - 6}">점선: ${other.label}일 때의 왼쪽</text>`;
+        }
+        out += `<text class="axis-text" x="${X1 + 4}" y="${Y0 + 4}">초</text>`;
         return out;
     }
 
     function renderOsmosis(a) {
-        const direction=a.verdict==='swell'?'물의 순이동: 안으로':a.verdict==='shrink'?'물의 순이동: 밖으로':'양방향 물 이동량이 평균적으로 같음';
-        const radius=42+state.progress*(a.verdict==='swell'?18:a.verdict==='shrink'?-14:0);
-        return '<rect x="30" y="40" width="250" height="150" rx="8" fill="#dbeaf1"/><circle cx="155" cy="118" r="'+radius+'" fill="#ebb5b8" stroke="#a04f63" stroke-width="3"/><text class="read-text" x="20" y="25">동물 세포의 크기 변화 모형</text><text class="note-text" x="290" y="100">'+a.sol.label+'</text><text class="note-text" x="35" y="210">'+direction+'</text>';
+        const t = state.progress * OSM_T;
+        const vNow = a.bt !== null && t >= a.bt ? BURST : volumeAt(a.sol.osm, t);
+        const burst = a.bt !== null && t >= a.bt;
+        const R = 40 * Math.cbrt(vNow);
+        const cx = 150, cy = 112;
+        // beaker of solution
+        let out = `<path d="M 34 30 L 34 190 Q 34 200 44 200 L 256 200 Q 266 200 266 190 L 266 30" fill="none" stroke="#475569" stroke-width="2.2"/>`;
+        out += `<path d="M 36 44 L 264 44 L 264 190 Q 264 198 256 198 L 44 198 Q 36 198 36 190 Z" fill="#cfe8f6"/>`;
+        out += `<line x1="36" y1="44" x2="264" y2="44" stroke="#7fb4d4" stroke-width="1.2"/>`;
+        // solute particles outside: more when the outside is more concentrated
+        seed = 11;
+        const nOut = Math.round(a.sol.osm * 70);
+        for (let i = 0; i < nOut; i += 1) {
+            const x = 44 + rnd() * 212, y = 52 + rnd() * 140;
+            if (Math.hypot(x - cx, y - cy) < 40 * Math.cbrt(BURST) + 6) continue;
+            out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="#1e3a8a"/>`;
+        }
+        if (burst) {
+            for (let i = 0; i < 9; i += 1) { const ang = i / 9 * Math.PI * 2; out += `<path d="M ${(cx + Math.cos(ang) * R * 0.8).toFixed(1)} ${(cy + Math.sin(ang) * R * 0.8).toFixed(1)} q 6 -4 ${(Math.cos(ang) * 14).toFixed(1)} ${(Math.sin(ang) * 14).toFixed(1)}" fill="none" stroke="#be123c" stroke-width="2"/>`; }
+        } else {
+            out += `<circle cx="${cx}" cy="${cy}" r="${R.toFixed(1)}" fill="#f6c3c6" stroke="#be123c" stroke-width="2.4"/>`;
+            out += `<circle cx="${cx - R * 0.25}" cy="${cy - R * 0.2}" r="${(R * 0.28).toFixed(1)}" fill="#d98a96" stroke="#9f1239" stroke-width="1"/>`;
+            seed = 23;
+            for (let i = 0; i < 12; i += 1) { const ang = rnd() * Math.PI * 2, rr = Math.sqrt(rnd()) * R * 0.8; out += `<circle cx="${(cx + Math.cos(ang) * rr).toFixed(1)}" cy="${(cy + Math.sin(ang) * rr).toFixed(1)}" r="2.6" fill="#1e3a8a"/>`; }
+        }
+        // water arrows crossing the membrane while it runs
+        if (running && !burst) {
+            const dir = a.verdict === 'swell' ? -1 : a.verdict === 'shrink' ? 1 : 0;
+            const phase = (performance.now() / 900) % 1;
+            for (let i = 0; i < 6; i += 1) {
+                const ang = i / 6 * Math.PI * 2 + 0.3;
+                const both = dir === 0;
+                const f = both ? (i % 2 ? phase : 1 - phase) : (dir > 0 ? phase : 1 - phase);
+                const r1 = R - 12 + f * 30;
+                const x = cx + Math.cos(ang) * r1, y = cy + Math.sin(ang) * r1;
+                out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" fill="#0284c7" opacity="${(0.4 + 0.6 * Math.sin(f * Math.PI)).toFixed(2)}"/>`;
+            }
+        }
+        out += `<text class="small-label" x="282" y="70">● 녹은 알갱이</text><text class="small-label" x="282" y="92" style="fill:#0369a1">● 물</text>`;
+        out += `<text class="gen-text" x="282" y="130">세포 크기</text><text class="gen-text" x="282" y="150">${burst ? '터짐' : `처음의 ${(vNow * 100).toFixed(0)} %`}</text>`;
+        return out;
     }
 
     function graphOsmosis(a) {
-        return '<text class="axis-title" x="30" y="35">비교할 조건</text><text class="note-text" x="30" y="75">물: 막을 통과함 / 용질: 통과하지 못함</text><text class="note-text" x="30" y="115">안팎 농도를 비교하여 물의 순이동 예상</text><text class="note-text" x="30" y="155">실제 세포의 크기나 변화 시간을 예측하지 않음</text>';
+        const X0 = 50, X1 = 430, Y0 = 150, Y1 = 30, VMIN = 0.6, VMAX = 1.7;
+        const t = state.progress * OSM_T;
+        const xOf = tt => X0 + tt / OSM_T * (X1 - X0), yOf = v => Y0 - (v - VMIN) / (VMAX - VMIN) * (Y0 - Y1);
+        let out = `<text class="axis-title" x="${X0}" y="18">세포 부피 (처음 = 100 %)</text>`;
+        [0.6, 1, 1.4].forEach(v => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(v).toFixed(1)}" x2="${X1}" y2="${yOf(v).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(v) + 4).toFixed(1)}" text-anchor="end">${Math.round(v * 100)}</text>`; });
+        for (let tt = 0; tt <= OSM_T; tt += 5) out += `<text class="axis-text" x="${xOf(tt).toFixed(1)}" y="${Y0 + 16}" text-anchor="middle">${tt}</text>`;
+        out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
+        let d = '';
+        for (let tt = 0; tt <= t + 1e-9; tt += 0.2) { if (a.bt !== null && tt > a.bt) break; d += `${d ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(volumeAt(a.sol.osm, tt)).toFixed(1)} `; }
+        if (d) out += `<path class="trace" style="stroke:#be123c" d="${d}"/>`;
+        if (a.bt !== null && t >= a.bt) out += `<text class="small-label" x="${(xOf(a.bt) + 6).toFixed(1)}" y="${(yOf(BURST) + 4).toFixed(1)}">터짐</text>`;
+        out += `<text class="axis-text" x="${X1 + 4}" y="${Y0 + 4}">초</text>`;
+        return out;
     }
 
     function noteFor(a) {
-        return '<p>크기·시간·알갱이 수·이동 속도는 비교를 위한 가상 값입니다. 실제 세포 측정 자료나 의료용 용액 지침이 아닙니다.</p><p>'+(a.kind==='diffusion'?'같은 크기의 두 공간 사이로 알갱이가 양방향 이동합니다. 양쪽 농도가 같아져도 움직임은 계속됩니다.':'같은 비투과성 용질을 사용하고, 물은 막을 통과하는 조건입니다. 세포벽이 없는 세포의 크기 변화를 정성적으로 비교합니다.')+'</p>';
+        return '<p>크기·시간·알갱이 수·이동 속도는 비교를 위한 가상 값입니다.</p>';
     }
 
     function render() {
@@ -195,12 +288,17 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = a.kind === 'diffusion' ? '알갱이는 제멋대로 움직이지만, 많은 쪽에서 적은 쪽으로 더 많이 건너갑니다'
             : '물은 통과하고 용질은 통과하지 못하는 막에서 안팎 조건을 비교합니다';
         window.scienceScene.render(dataNote,noteFor(a));
+        if (a.kind !== 'diffusion') stageReadout.innerHTML = '';
         return a;
     }
 
     /* --------------------------------------------------------------- run */
     function tick(dt) {
         state.progress = Math.min(1, state.progress + dt / runSeconds());
+        if (state.mode === 'diffusion') {
+            const a0 = analyse(), c = countsAt(a0.c, a0.tmp.k, state.progress * SIM_T);
+            stepParticles(dt, a0.tmp.k > 0.06 ? 1.6 : 0.9, a0.c.L + a0.c.R - Math.round(c.L));
+        }
         render();
         return state.progress >= 1;
     }
@@ -217,13 +315,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         state.progress = 0;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; render(); finish(); return; }
         running = true;
         lastStamp = performance.now();
         render();
         frameId = requestAnimationFrame(frame);
     }
 
+    function settleParticles() {
+        if (state.mode !== 'diffusion') return;
+        const a0 = analyse(), want = a0.c.L + a0.c.R - Math.round(a0.end.L);
+        particles.forEach(p => { if (p.cross) { p.side = p.cross.to; p.cross = null; const bx = boxOf(p.side); p.x = bx.x0 + rnd() * (bx.x1 - bx.x0); } });
+        let have = particles.filter(p => p.side === 'R').length;
+        particles.filter(p => p.side === 'L').forEach(p => { if (have < want) { p.side = 'R'; const bx = boxOf('R'); p.x = bx.x0 + rnd() * (bx.x1 - bx.x0); have += 1; } });
+    }
+
     function finish() {
+        settleParticles();
         const a=render();resultEmpty.hidden=true;resultContent.hidden=false;
         labelA.textContent='모형의 결과';valueA.textContent=a.kind==='diffusion'?'양쪽 알갱이 수 비교':{swell:'부풀어 오름',same:'거의 같은 크기',shrink:'줄어듦'}[a.verdict];
         labelB.textContent='관찰 조건';valueB.textContent=a.kind==='diffusion'?a.c.label:a.sol.label;
@@ -246,8 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'diffusion' ? '20초 흘려 보기' : '15초 흘려 보기';
-        stageCaption.textContent = state.mode === 'diffusion' ? '가운데 노란 막에는 작은 구멍이 있어 산소 알갱이가 어느 쪽으로든 지나갈 수 있습니다.'
-            : '비커의 흰 점은 녹은 알갱이입니다. 물(파란 화살표)만 세포막을 지나고, 알갱이는 지나지 못합니다.';
+        stageCaption.textContent = state.mode === 'diffusion' ? '가운데 노란 막의 파란 통로로 산소 알갱이가 어느 쪽으로든 지나갈 수 있습니다.'
+            : '짙은 파란 점은 녹은 알갱이입니다. 물(하늘색 점)만 세포막을 지나고, 알갱이는 지나지 못합니다.';
         settingsChanged();
     }));
     checkBtn.addEventListener('click', startRun);

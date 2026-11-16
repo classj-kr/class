@@ -8,7 +8,7 @@
 [data-inquiry="ride-acceleration"] .control-panel label{display:block}
 [data-inquiry="ride-acceleration"] .control-panel input,[data-inquiry="ride-acceleration"] .control-panel select{width:100%}
 [data-inquiry="ride-acceleration"] #measurementSummary{grid-column:1/-1;margin:0}
-[data-inquiry="ride-acceleration"] .ride-legend{font-size:13px;margin:8px 14px 14px;color:#395b6a}
+[data-inquiry="ride-acceleration"] .ride-legend{font-size:14px;margin:8px 14px 14px;color:#395b6a}
 @media(max-width:600px){[data-inquiry="ride-acceleration"] .control-panel{grid-template-columns:1fr;gap:12px}}
 /* Figures drawn by inquiry-labs.js: keep a readable drawing scale on wide and narrow screens. */
 .ix-fig{overflow-x:auto;overflow-y:hidden}
@@ -23,3 +23,39 @@
 [data-inquiry="protein-synthesis"] .protein-controls{margin-top:14px}
 .ix-fig.ix-silver>svg{min-width:380px;max-width:600px}
 .ix-fig.ix-dop>svg{min-width:0}
+/* Choice chips: keep each label on one line (chips wrap as whole buttons). */
+body main .inquiry-lab:not([data-inquiry="ride-acceleration"]) .lab-choice-group>button{flex:0 1 auto;white-space:nowrap}
+/* Antibiotic discs: ruler controls sit right under the plate. */
+.ix-ruler-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px 24px;align-items:end;margin:12px 0 4px;padding:14px 16px;background:#f2f7f8;border:1px solid #cbdde6;border-radius:12px}
+.ix-ruler-row label{display:block;font-size:15px}.ix-ruler-row input[type=range]{width:100%;display:block;margin-top:6px}
+.ix-ruler-row #measure{justify-self:start;min-height:44px}
+@media(max-width:700px){.ix-ruler-row{grid-template-columns:1fr}}
+.inquiry-scene svg text.disc-label{font-size:14px;font-weight:700;fill:#2d3d33}
+.inquiry-scene svg text.plate-time,.inquiry-scene svg text.ruler-read{font-size:15px;font-weight:700}
+.inquiry-scene svg text.ruler-num{font-size:14px}
+/* Insulation */
+.inquiry-scene svg text.ins-name{font-size:15px}.inquiry-scene svg text.ins-temp{font-size:16px;font-weight:800;fill:#8f2a20}
+[data-inquiry="insulation-lab"] #inquiryExtra svg{display:block;width:100%;max-width:660px;height:auto;margin:6px auto}
+[data-inquiry="insulation-lab"] #inquiryExtra svg text{font:14px system-ui,"Malgun Gothic",sans-serif;fill:#173c4c}
+[data-inquiry="insulation-lab"] #inquiryExtra svg text.legend-text{font-weight:700;font-size:15px}
+[data-inquiry="insulation-lab"] .inquiry-scene>svg{max-width:760px;margin:0 auto}
+/* DNA fork */
+.dna-hint{display:none}@media(max-width:700px){.dna-hint{display:block}}
+[data-inquiry="dna-replication"] .dna-attach{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:end}
+[data-inquiry="dna-replication"] .dna-attach .toolbar{margin:0 0 2px}
+.inquiry-scene svg text.note-label{font-size:14px;fill:#7a4f1c;font-weight:700}
+/* Karyotype: big, high-contrast banded chromosomes */
+.karyo-board{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
+.karyo-slot{min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:4px}
+.karyo-pair{display:flex;align-items:flex-end;justify-content:center;gap:4px;min-height:136px}
+.karyo-slot svg{height:132px;width:39px}.karyo-ref{display:inline-flex;background:#eef4f7;border-radius:6px;padding:0 2px}
+.karyo-empty{display:inline-block;width:34px;height:120px;border:2px dashed #c3d3db;border-radius:8px}
+.karyo-slot b{font-size:14px}
+.karyo-card{width:60px;min-height:160px}.karyo-picker .karyo-card{flex:0 0 60px}.karyo-card svg{height:124px;width:37px}.karyo-card span{font-size:14px;font-weight:700}
+@media(max-width:600px){.karyo-board{grid-template-columns:repeat(3,minmax(0,1fr))}.karyo-slot svg{height:112px;width:33px}.karyo-pair{min-height:116px}.karyo-empty{height:100px;width:28px}}
+/* Pedigree: readable allele superscripts */
+body main [data-inquiry="pedigree-lab"] .lab-choice-group>button{font-size:17px!important}
+.g-sup{font-size:14px;font-weight:700;vertical-align:.5em;line-height:0;margin-left:1px}
+[data-inquiry="pedigree-lab"] td.gene-cell{font-size:17px}
+[data-inquiry="pedigree-lab"] .cross-controls .inquiry-readout{margin:14px 0}
+.inquiry-scene svg text.ride-axis{font-weight:800;font-size:15px}

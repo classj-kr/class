@@ -49,15 +49,22 @@
 
 .rod-outline { stroke: #64748b; stroke-width: 1.6; }
 .axis-label { fill: #475569; font-size: 14px; font-weight: 850; }
-.stage-label { fill: var(--muted); font-size: 13px; font-weight: 850; }
+.stage-label { fill: #475569; font-size: 14px; font-weight: 850; }
 
 .probe-line { stroke: rgba(148, 163, 184, 0.35); stroke-width: 1.2; stroke-dasharray: 3 3; }
-.probe-temp { font-size: 13px; font-weight: 900; }
+.probe-temp { font-size: 14px; font-weight: 900; }
 
 .bead { fill: #c9d6da; stroke: rgba(255, 255, 255, .65); stroke-width: 1.1; }
 .wax { fill: #ffe6a8; opacity: .9; }
 
-.burner { fill: #4a5a63; stroke: rgba(190, 235, 242, .4); stroke-width: 1.2; }
+.wick { fill: #e7e0cf; stroke: #a8a29e; stroke-width: .8; }
+.lamp-cap { fill: #94a3b8; stroke: #64748b; stroke-width: 1; }
+.lamp-body { fill: rgba(224, 242, 254, .55); stroke: #7aa6b8; stroke-width: 1.6; }
+.lamp-fuel { fill: rgba(147, 197, 253, .45); }
+.lamp-shine { fill: none; stroke: rgba(255, 255, 255, .9); stroke-width: 3; stroke-linecap: round; }
+.stand-base, .stand-pole { fill: #94a3b8; stroke: #64748b; stroke-width: 1; }
+.stand-clamp { fill: #cbd5e1; stroke: #64748b; stroke-width: 1.2; }
+.stand-screw { fill: #64748b; }
 /* The flame flickers only while it is actually heating; it is hidden entirely
    when the burner is off, so the picture never shows heat with no source. */
 @keyframes flicker {
@@ -79,3 +86,4 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+.prediction-buttons button, .control-panel button { word-break: keep-all; }

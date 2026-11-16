@@ -19,10 +19,15 @@
   // of clipped polygons and twin stripes on every frame.
   grains.forEach((g,i)=>{const poly=g.poly.map(([x,y])=>[x*scale,y*scale]),top=Math.max(0,Math.ceil(Math.min(...poly.map(p=>p[1]))-.5)),bottom=Math.min(W,Math.ceil(Math.max(...poly.map(p=>p[1]))-.5)),a=g.orientation*Math.PI/180,cos=Math.cos(a),sin=Math.sin(a),step=state.sample==='basalt'?6:16;
    for(let y=top;y<bottom;y++){const crossings=[],cy=y+.5;for(let n=0;n<poly.length;n++){const p=poly[n],q=poly[(n+1)%poly.length];if((p[1]>cy)!==(q[1]>cy))crossings.push(p[0]+(cy-p[1])*(q[0]-p[0])/(q[1]-p[1]));}crossings.sort((a,b)=>a-b);
-    for(let n=0;n+1<crossings.length;n+=2)for(let x=Math.max(0,Math.ceil(crossings[n]-.5));x<Math.min(W,Math.ceil(crossings[n+1]-.5));x++){const dx=(x+.5)/scale-g.x,dy=cy/scale-g.y,u=dx*cos+dy*sin,v=-dx*sin+dy*cos,twin=g.kind==='feldspar'&&g.twin&&u>=-130&&u<130&&Math.abs(v)<160&&(u+130)%step<step*.35;ids[y*W+x]=1+i*2+(twin?1:0);}
+    for(let n=0;n+1<crossings.length;n+=2)for(let x=Math.max(0,Math.ceil(crossings[n]-.5));x<Math.min(W,Math.ceil(crossings[n+1]-.5));x++){const dx=(x+.5)/scale-g.x,dy=cy/scale-g.y,u=dx*cos+dy*sin,v=-dx*sin+dy*cos,twin=g.kind==='feldspar'&&g.twin&&(g.phenocryst||state.sample!=='basalt')&&u>=-130&&u<130&&Math.abs(v)<160&&(u+130)%step<step*.35;ids[y*W+x]=1+i*2+(twin?1:0);}
    }
   });
-  for(const crossed of [false,true]){const layer=document.createElement('canvas');layer.width=layer.height=W;const p=layer.getContext('2d');p.scale(scale,scale);for(const g of grains){p.strokeStyle=crossed?'#141b22':'#787b7160';p.lineWidth=.65;p.stroke(g.path);if(g.kind==='mica'&&g.cleavage){p.save();p.clip(g.path);p.translate(g.x,g.y);p.rotate(g.orientation*Math.PI/180);p.strokeStyle='#11191c70';p.lineWidth=.8;p.stroke(g.cleavages);p.restore();}}overlays.push(layer);}
+  for(const crossed of [false,true]){const layer=document.createElement('canvas');layer.width=layer.height=W;const p=layer.getContext('2d');p.scale(scale,scale);for(const g of grains){p.strokeStyle=crossed?'#141b22':'#787b7160';p.lineWidth=.65;p.stroke(g.path);if(g.kind==='mica'&&g.cleavage){p.save();p.clip(g.path);p.translate(g.x,g.y);p.rotate(g.orientation*Math.PI/180);p.strokeStyle='#11191c70';p.lineWidth=.8;p.stroke(g.cleavages);p.restore();}}
+   // 반정(큰 결정) 위로 지나가는 바탕 알갱이 경계는 지우고, 반정의 테두리와 감람석의 불규칙한 금을 그린다.
+   for(const g of grains.filter(g=>g.phenocryst)){p.save();p.globalCompositeOperation='destination-out';p.fill(g.path);p.restore();
+    p.strokeStyle=crossed?'#0d1318':'#5f6656';p.lineWidth=1.6;p.stroke(g.path);
+    if(g.kind==='olivine'){p.save();p.clip(g.path);p.strokeStyle=crossed?'#0d131899':'#6b705f99';p.lineWidth=.9;p.beginPath();for(let k=0;k<4;k++){let x=g.x-45+k*28,y=g.y-50;p.moveTo(x,y);for(let j=0;j<6;j++){x+=((k*7+j*13)%11)-5;y+=20;p.lineTo(x,y);}}p.stroke();p.restore();}}
+   overlays.push(layer);}
   const painted=document.createElement('canvas');painted.width=painted.height=W;
   const result={ids,image,pixels:new Uint32Array(image.data.buffer),palette,overlays,grains,painted};fields.set(key,result);return result;
  }
@@ -47,7 +52,7 @@
   $('tsLightValue').textContent=state.light;$('tsFocusValue').textContent=Math.abs(state.focus-50)<=5?'선명함':'조절 중';
   $('tsAngleValue').textContent=Math.round(state.angle)+'°';$('tsAngle').value=state.angle;
   $('tsPlay').textContent=state.playing?'회전 멈추기':'천천히 회전';$('tsPlay').setAttribute('aria-pressed',String(state.playing));
-  const blocked=!state.mounted||state.light<5;$('tsCover').hidden=!blocked;$('tsCover').textContent=!state.mounted?'박편을 재물대에 올리세요.':'조명을 밝게 조절하세요.';
+  const blocked=!state.mounted||state.light<5;$('tsCover').hidden=!blocked;$('tsCover').textContent=!state.mounted?'박편을 재물대에 올리세요.':'조명을 밝게 조절하세요.';$('tsCover').dataset.tone=!state.mounted&&!state.crossed&&state.light>=5?'bright':'dark';
   progress();draw();document.querySelector('.ts-scale i').style.width=(canvas.clientWidth/6)+'px';
  }
  function stop(){state.playing=false;cancelAnimationFrame(frame);frame=0;last=0;}

@@ -56,7 +56,8 @@ main { width: min(1320px, calc(100% - 32px)); margin: 0 auto; padding: 14px 0 70
 .workspace { display: grid; grid-template-columns: minmax(350px, .86fr) minmax(400px, 1.14fr); gap: 16px; }
 .data-panel, .map-panel { border: 1px solid var(--line); border-radius: 20px; background: var(--panel); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04); padding: 18px; }
 .panel-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; min-height: 44px; margin-bottom: 12px; }
-.panel-heading h2 { margin: 0; font-size: 18.5px; line-height: 1.2; font-weight: 850; color: var(--ink); }
+.panel-heading { flex-wrap: wrap; }
+.panel-heading h2 { margin: 0; white-space: nowrap; font-size: 18.5px; line-height: 1.2; font-weight: 850; color: var(--ink); }
 .panel-heading button { padding: 0 13px; border: 1px solid var(--line); border-radius: 10px; background: #ffffff; color: var(--muted); font-weight: 800; font-size: 13px; transition: all 0.15s ease; }
 .panel-heading button:hover, .panel-heading button:focus-visible { border-color: var(--cyan); color: #0369a1; background: #f0f9ff; }
 
@@ -78,7 +79,7 @@ td:first-child { color: var(--cyan); font-weight: 900; }
 .curve-legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; }
 .curve-legend .p-wave { background: #0284c7; }
 .curve-legend .s-wave { margin-left: 6px; background: #d97706; }
-.travel-curve canvas { width: 100%; height: 160px; aspect-ratio: auto; cursor: default; touch-action: auto; }
+.travel-curve canvas { width: 100%; height: 230px; aspect-ratio: auto; cursor: default; touch-action: auto; }
 .travel-curve p { margin: 6px 0 0; font-size: 13px; line-height: 1.45; }
 
 .distance-controls { display: grid; gap: 14px; margin-top: 16px; }
@@ -122,10 +123,10 @@ canvas:focus-visible { outline: 2px solid var(--cyan); outline-offset: -3px; }
 .result-panel > p:empty { display: none; }
 .result-panel[data-state="correct"] #resultSummary { color: #15803d; font-weight: 900; }
 .result-panel[data-state="incorrect"] #resultSummary { color: #b45309; font-weight: 900; }
-.result-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 9px; }
-.result-grid article { min-width: 0; padding: 8px 10px; border: 1px solid var(--line-subtle); border-radius: 9px; background: #ffffff; }
+.result-grid { display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 9px; }
+.result-grid article { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; min-width: 0; padding: 8px 12px; border: 1px solid var(--line-subtle); border-radius: 9px; background: #ffffff; }
 .result-grid span { display: block; color: var(--muted-light); font-size: 13px; font-weight: 700; }
-.result-grid strong { display: block; margin-top: 3px; color: #15803d; font-size: 13.5px; line-height: 1.35; font-weight: 900; }
+.result-grid strong { display: flex; flex-wrap: wrap; gap: 0 7px; margin-top: 0; color: #15803d; font-size: 13.5px; line-height: 1.35; font-weight: 900; }
 .result-grid strong span { color: inherit; font-size: 14px; font-weight: inherit; white-space: nowrap; }
 
 .answer-result, .answer-explanation { margin: 9px 0 0; font-size: 13px; line-height: 1.55; }
@@ -144,7 +145,7 @@ canvas:focus-visible { outline: 2px solid var(--cyan); outline-offset: -3px; }
     .distance-controls { flex: 1; align-content: center; }
     .map-panel .canvas-wrap { position: relative; flex: 1; min-height: 420px; }
     .map-panel canvas { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
-    .travel-curve canvas { height: 150px; }
+    .travel-curve canvas { height: 220px; }
 }
 
 @media (max-width: 900px) {
@@ -167,7 +168,7 @@ canvas:focus-visible { outline: 2px solid var(--cyan); outline-offset: -3px; }
     .relationship span { padding: 9px 7px; font-size: 13.5px; }
     .panel-heading { align-items: flex-start; }
     .legend { display: grid; justify-items: start; }
-    .travel-curve canvas { height: 170px; }
+    .travel-curve canvas { height: 210px; }
     .distance-control { grid-template-columns: 70px minmax(0, 1fr); gap: 7px; }
     .distance-editor { grid-template-columns: minmax(90px, 1fr) 76px; gap: 7px; }
     .button-row, .result-grid { grid-template-columns: 1fr; }

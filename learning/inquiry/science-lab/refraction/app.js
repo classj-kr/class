@@ -73,6 +73,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return `M${pts.map(p => p.join(',')).join('L')}`;
     }
 
+    // 빛은 [각도 확인하기]를 눌렀을 때 레이저에서 나와 경계까지 간 뒤 반사·굴절한다.
+    let shown = false, beam = 1, beamFrame = 0;
+    const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lerp = (a, b, k) => ({ x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k });
+
+    // 레이저 포인터: 광선 방향을 따라 놓인 원통 몸체와 단추, 빛이 나오는 구멍.
+    function laser(start, ux, uy) {
+        const len = 40, w = 12, ang = deg(Math.atan2(uy, ux));
+        return `<g class="laser" transform="translate(${start.x.toFixed(1)},${start.y.toFixed(1)}) rotate(${ang.toFixed(1)})">` +
+            `<rect class="laser-body" x="${-len}" y="${-w / 2}" width="${len}" height="${w}" rx="3"/>` +
+            `<rect class="laser-tip" x="-7" y="${-w / 2 - 1}" width="7" height="${w + 2}" rx="1.5"/>` +
+            `<rect class="laser-button" x="${-len + 12}" y="${-w / 2 - 3}" width="9" height="3.5" rx="1.2"/>` +
+            `<circle class="laser-aperture" cx="0" cy="0" r="2.2"/></g>`;
+    }
+
+    function labelAt(a, b, text, cls, away, at = 0.7) {
+        // 광선 위 한 자리에서 광선과 수직 방향으로 비켜 이름을 단다(법선·경계에서 먼 쪽).
+        const p = lerp(a, b, at), len = Math.hypot(b.x - a.x, b.y - a.y) || 1, dx = (b.x - a.x) / len, dy = (b.y - a.y) / len;
+        let nx = -dy, ny = dx;
+        if (Math.abs(dx) > Math.abs(dy) ? ny * (p.y - P.y) < 0 : nx * away < 0) { nx = -nx; ny = -ny; }
+        const x = p.x + nx * 16, y = p.y + ny * 16 + 4.5;
+        const anchor = nx > 0.35 ? 'start' : nx < -0.35 ? 'end' : 'middle';
+        return `<text class="ray-label ${cls}" x="${Math.max(6, Math.min(454, x)).toFixed(1)}" y="${clampLabelY(y).toFixed(1)}" text-anchor="${anchor}">${text}</text>`;
+    }
+
     function render() {
         angleRange.max = dir === 'out' ? '40' : '85';
         if (+angleRange.value > +angleRange.max) angleRange.value = angleRange.max;
@@ -87,53 +112,71 @@ document.addEventListener('DOMContentLoaded', () => {
         mediumLabel.textContent = m.name;
         angleOutput.textContent = `${s.theta1}°`;
         stageBadge.textContent = dir === 'in' ? `공기 → ${m.name}` : `${m.name} → 공기`;
-        stageCaption.textContent = s.total ? '전반사가 일어나 굴절 광선은 나오지 않습니다.' : s.theta1 === 0
+        // 확인 전에는 빛이 어디서 어디로 가는지만 말하고, 꺾이는 쪽(답)은 말하지 않는다.
+        stageCaption.textContent = !shown ? (s.theta1 === 0 ? `빛이 경계에 수직으로 들어갑니다. 나아가는 방향이 어떻게 될지 예상한 뒤 [각도 확인하기]를 눌러 보세요.`
+            : `${dir === 'in' ? `공기에서 ${m.name}로 들어가는` : `${m.name}에서 공기로 나가는`} 빛입니다. 굴절각이 입사각보다 클지 작을지 예상한 뒤 [각도 확인하기]를 눌러 보세요.`)
+            : s.total ? '전반사가 일어나 굴절 광선은 나오지 않습니다.' : s.theta1 === 0
             ? '수직으로 입사하면 꺾이지 않고 나아갑니다.'
             : dir === 'in' ? `공기에서 ${m.name}로 들어가며 법선 쪽으로 꺾입니다.` : `${m.name}에서 공기로 나가며 법선에서 멀어집니다.`;
 
         const sinI = Math.sin(rad(s.theta1)), cosI = Math.cos(rad(s.theta1));
-        const start = { x: P.x - L * sinI, y: P.y + inSgn * L * cosI };
+        const LIN = dir === 'in' ? 104 : 94;
+        const start = { x: P.x - LIN * sinI, y: P.y + inSgn * LIN * cosI };
         const refl = { x: P.x + L * sinI, y: P.y + inSgn * L * cosI };
+        const k2 = beam;
 
-        let out = '';
-        // incident ray, drawn from its origin toward the boundary
+        let out = laser(start, (P.x - start.x) / LIN, (P.y - start.y) / LIN);
+        // 레이저에서 경계까지 가는 입사 광선은 처음부터 흐르고(주어진 조건),
+        // 반사·굴절 광선은 [각도 확인하기]를 누르면 경계에서 뻗어 나간다.
         out += `<path class="ray incident" d="M${start.x.toFixed(1)},${start.y.toFixed(1)} L${P.x},${P.y}"/>`;
-        /* Near normal incidence the incident and reflected rays lie almost on
-           top of each other — that is the physics, not a drawing fault — so the
-           two labels are pushed to opposite sides of the ray instead of being
-           left to print over one another. */
-        const nearNormal = Math.abs(refl.x - start.x) < LABEL_W + 20;
-        const incX = nearNormal ? start.x - LABEL_W - 10 : start.x - 4;
-        const reflX = nearNormal ? refl.x + 10 : refl.x - 26;
-        out += `<text class="ray-label incident" x="${clampLabelX(incX).toFixed(1)}" y="${clampLabelY(start.y + (inSgn < 0 ? -6 : 14)).toFixed(1)}">입사 광선</text>`;
-        // reflected ray, drawn away from the boundary on the same side
-        out += `<path class="ray reflected" d="M${P.x},${P.y} L${refl.x.toFixed(1)},${refl.y.toFixed(1)}"/>`;
-        out += `<text class="ray-label reflected" x="${clampLabelX(reflX).toFixed(1)}" y="${clampLabelY(refl.y + (inSgn < 0 ? -6 : 14)).toFixed(1)}">반사 광선</text>`;
-
-        if (!s.total) {
-            const sinT = Math.sin(rad(s.theta2)), cosT = Math.cos(rad(s.theta2));
-            const refr = { x: P.x + L * sinT, y: P.y + outSgn * L * cosT };
-            out += `<path class="ray refracted" d="M${P.x},${P.y} L${refr.x.toFixed(1)},${refr.y.toFixed(1)}"/>`;
-            out += `<text class="ray-label refracted" x="${clampLabelX(refr.x - 20).toFixed(1)}" y="${clampLabelY(refr.y + (outSgn < 0 ? -6 : 16)).toFixed(1)}">굴절 광선</text>`;
+        out += labelAt(start, P, '입사 광선', 'incident', -1, 0.3);
+        if (shown) {
+            if (k2 > 0) {
+                const rEnd = lerp(P, refl, k2);
+                out += `<path class="ray reflected" d="M${P.x},${P.y} L${rEnd.x.toFixed(1)},${rEnd.y.toFixed(1)}"/>`;
+                if (k2 < 1) out += `<circle class="beam-front" cx="${rEnd.x.toFixed(1)}" cy="${rEnd.y.toFixed(1)}" r="3"/>`;
+                if (k2 >= 1) out += labelAt(P, refl, '반사 광선', 'reflected', 1);
+                if (!s.total) {
+                    const sinT = Math.sin(rad(s.theta2)), cosT = Math.cos(rad(s.theta2));
+                    const refr = { x: P.x + L * sinT, y: P.y + outSgn * L * cosT };
+                    const fEnd = lerp(P, refr, k2);
+                    out += `<path class="ray refracted" d="M${P.x},${P.y} L${fEnd.x.toFixed(1)},${fEnd.y.toFixed(1)}"/>`;
+                    if (k2 < 1) out += `<circle class="beam-front" cx="${fEnd.x.toFixed(1)}" cy="${fEnd.y.toFixed(1)}" r="3"/>`;
+                    if (k2 >= 1) out += labelAt(P, refr, '굴절 광선', 'refracted', 1);
+                }
+            }
         }
         rayGroup.innerHTML = out;
 
-        // angle arcs, measured from the normal
+        // angle arcs, measured from the normal; the label sits off the ray
         let arcs = '';
         arcs += `<path class="angle-arc incident" d="${arcPath(0, s.theta1, inSgn, -1)}"/>`;
-        arcs += `<text class="angle-text" fill="#b45309" x="${(P.x - ARC_R * Math.sin(rad(s.theta1 / 2)) - 30).toFixed(1)}" y="${(P.y + inSgn * (ARC_R + 8) * Math.cos(rad(s.theta1 / 2))).toFixed(1)}">${s.theta1}°</text>`;
-        arcs += `<path class="angle-arc reflected" d="${arcPath(0, s.theta1, inSgn, 1)}"/>`;
-        if (!s.total) {
-            arcs += `<path class="angle-arc refracted" d="${arcPath(0, s.theta2, outSgn, 1)}"/>`;
+        const la = s.theta1 >= 26 ? s.theta1 / 2 : s.theta1 + 16, lr = ARC_R + (s.theta1 >= 26 ? 17 : 13);
+        arcs += `<text class="angle-text" fill="#b45309" x="${(P.x - lr * Math.sin(rad(la))).toFixed(1)}" y="${(P.y + inSgn * lr * Math.cos(rad(la)) + 4.5).toFixed(1)}" text-anchor="middle">${s.theta1}°</text>`;
+        if (shown && k2 >= 1) {
+            arcs += `<path class="angle-arc reflected" d="${arcPath(0, s.theta1, inSgn, 1)}"/>`;
+            if (!s.total) arcs += `<path class="angle-arc refracted" d="${arcPath(0, s.theta2, outSgn, 1)}"/>`;
         }
         arcGroup.innerHTML = arcs;
 
         criticalNote.textContent = '입사각과 반사각은 법선을 기준으로 비교합니다.';
     }
 
-    function clearResult() { resultEmpty.hidden = false; resultContent.hidden = true; }
+    function shine() {
+        cancelAnimationFrame(beamFrame);
+        shown = true;
+        if (reduceMotion()) { beam = 1; render(); return; }
+        beam = 0;
+        const t0 = performance.now();
+        const step = now => { beam = Math.min(1, (now - t0) / 1100); render(); if (beam < 1) beamFrame = requestAnimationFrame(step); };
+        render();
+        beamFrame = requestAnimationFrame(step);
+    }
+
+    function clearResult() { resultEmpty.hidden = false; resultContent.hidden = true; if (shown) { cancelAnimationFrame(beamFrame); shown = false; beam = 1; render(); } }
 
     function check() {
+        shine();
         const s = solve();
         const m = MEDIA[medium];
         resultEmpty.hidden = true;

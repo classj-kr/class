@@ -71,36 +71,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* -------------------------------------------------------------- data */
     const TUBES = [
-        { key: 'starch', label: '녹말물', base: '#e2e8f0', nutrient: '녹말', icon: '🥔' },
-        { key: 'sugar', label: '포도당물', base: '#e0f2fe', nutrient: '당분', icon: '🍬' },
-        { key: 'protein', label: '단백질물', base: '#fef3c7', nutrient: '단백질', icon: '🥩' },
-        { key: 'fat', label: '식용유', base: '#fef08a', nutrient: '지방', icon: '🧈' },
+        { key: 'starch', label: '녹말물', base: '#e2e8f0', nutrient: '녹말', icon: '' },
+        { key: 'sugar', label: '포도당물', base: '#e0f2fe', nutrient: '당분', icon: '' },
+        { key: 'protein', label: '단백질물', base: '#fef3c7', nutrient: '단백질', icon: '' },
+        { key: 'fat', label: '식용유', base: '#fef08a', nutrient: '지방', icon: '' },
     ];
     const REAGENTS = {
-        iodine: { label: '아이오딘', hint: '녹말 검출 (청람색)', full: '아이오딘-아이오딘화 칼륨 용액', target: 'starch', color: '#92400e', result: '#172554', resultName: '청람색', tint: 0.35, needsHeat: false, badgeColor: '#b45309', icon: '🍂' },
-        benedict: { label: '베네딕트', hint: '당분 검출 (황적색)', full: '베네딕트 용액', target: 'sugar', color: '#0284c7', result: '#ea580c', resultName: '황적색', tint: 0.55, needsHeat: true, badgeColor: '#0369a1', icon: '🔥' },
-        biuret: { label: '뷰렛', hint: '단백질 검출 (보라색)', full: '뷰렛 용액 (NaOH + CuSO₄)', target: 'protein', color: '#38bdf8', result: '#7e22ce', resultName: '보라색', tint: 0.35, needsHeat: false, badgeColor: '#6b21a8', icon: '💜' },
-        sudan: { label: '수단 Ⅲ', hint: '지방 검출 (선홍색)', full: '수단 Ⅲ 용액', target: 'fat', color: '#dc2626', result: '#e11d48', resultName: '선홍색', tint: 0.15, needsHeat: false, badgeColor: '#b91c1c', icon: '🔴' },
+        iodine: { label: '아이오딘', hint: '아이오딘화 칼륨 용액', full: '아이오딘-아이오딘화 칼륨 용액', target: 'starch', color: '#92400e', result: '#25317a', resultName: '청람색', tint: 0.35, needsHeat: false, badgeColor: '#b45309', icon: '' },
+        benedict: { label: '베네딕트', hint: '푸른색 용액', full: '베네딕트 용액', target: 'sugar', color: '#0284c7', result: '#ea580c', resultName: '황적색', tint: 0.55, needsHeat: true, badgeColor: '#0369a1', icon: '' },
+        biuret: { label: '뷰렛', hint: 'NaOH + CuSO₄', full: '뷰렛 용액 (NaOH + CuSO₄)', target: 'protein', color: '#38bdf8', result: '#7e22ce', resultName: '보라색', tint: 0.35, needsHeat: false, badgeColor: '#6b21a8', icon: '' },
+        sudan: { label: '수단 Ⅲ', hint: '붉은 색소 용액', full: '수단 Ⅲ 용액', target: 'fat', color: '#dc2626', result: '#e11d48', resultName: '선홍색', tint: 0.15, needsHeat: false, badgeColor: '#b91c1c', icon: '' },
     };
     const HEATS = {
-        yes: { label: '가열 (100 ℃)', hint: '끓는 물 중탕', icon: '🔥' },
-        no: { label: '가열 안 함', hint: '실온 (20 ℃)', icon: '❄️' }
+        yes: { label: '가열 (100 ℃)', hint: '끓는 물 중탕', icon: '' },
+        no: { label: '가열 안 함', hint: '실온 (20 ℃)', icon: '' }
     };
     const SAMPLES = {
-        glucose: { label: '포도당물', hint: '단당류 (당분 있음)', sugar: true, name: '포도당', icon: '🍬' },
-        maltose: { label: '엿당물', hint: '이당류 (당분 있음)', sugar: true, name: '엿당', icon: '🍯' },
-        starch: { label: '녹말물', hint: '다당류 (큰 덩어리)', sugar: false, name: '녹말', icon: '🥔' },
-        water: { label: '맹물', hint: '대조군 (무반응)', sugar: false, name: '물', icon: '💧' }
+        glucose: { label: '포도당물', hint: '단당류 (당분 있음)', sugar: true, name: '포도당', icon: '' },
+        maltose: { label: '엿당물', hint: '이당류 (당분 있음)', sugar: true, name: '엿당', icon: '' },
+        starch: { label: '녹말물', hint: '다당류 (큰 덩어리)', sugar: false, name: '녹말', icon: '' },
+        water: { label: '맹물', hint: '대조군 (무반응)', sugar: false, name: '물', icon: '' }
     };
     const CONCS = {
-        thick: { label: '진하게', hint: '당분 많음', icon: '🫗' },
-        thin: { label: '묽게', hint: '당분 적음', icon: '💧' }
+        thick: { label: '진하게', hint: '당분 많음', icon: '' },
+        thin: { label: '묽게', hint: '당분 적음', icon: '' }
     };
     const CONDS = {
-        warm: { label: '아밀레이스 + 37 ℃', hint: '체온 (최적 활성)', enzyme: true, temp: 37, rate: 0.30, icon: '🌡️' },
-        cold: { label: '아밀레이스 + 5 ℃', hint: '저온 (활성 저하)', enzyme: true, temp: 5, rate: 0.045, icon: '🧊' },
-        none: { label: '아밀레이스 없음 (37 ℃)', hint: '대조군 (무반응)', enzyme: false, temp: 37, rate: 0, icon: '🚫' },
-        boiled: { label: '끓인 아밀레이스 (37 ℃)', hint: '열 변성 (효소 파괴)', enzyme: true, temp: 37, rate: 0.002, icon: '♨️' },
+        warm: { label: '아밀레이스 + 37 ℃', hint: '체온 (최적 활성)', enzyme: true, temp: 37, rate: 0.30, icon: '' },
+        cold: { label: '아밀레이스 + 5 ℃', hint: '저온 (활성 저하)', enzyme: true, temp: 5, rate: 0.045, icon: '' },
+        none: { label: '아밀레이스 없음 (37 ℃)', hint: '대조군 (무반응)', enzyme: false, temp: 37, rate: 0, icon: '' },
+        boiled: { label: '끓인 아밀레이스 (37 ℃)', hint: '열 변성 (효소 파괴)', enzyme: true, temp: 37, rate: 0.002, icon: '' },
     };
     const REACT_MIN = 10;
 
@@ -372,8 +372,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (got) {
                 const res = a.results[i];
+                // 실온 반응은 시약 방울이 떨어진 순간부터 그 시험관만 서서히 짙어진다(베네딕트는 가열 뒤).
+                const landed = (i + 0.7) / 4 * 0.6, dev = r.needsHeat ? develop : ease(clamp((p - landed) / 0.38, 0, 1));
                 if (res.reacts) {
-                    color = mix(mix(t.base, r.color, r.tint), r.result, develop);
+                    color = mix(mix(t.base, r.color, r.tint * (1 - dev)), r.result, dev);
                     if (r.target === 'sugar' && a.heated && develop > 0.5) showPpt = true;
                 } else {
                     color = mix(t.base, r.color, state.reagent === 'sudan' ? 0.05 : r.tint);
@@ -429,8 +431,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<circle cx="${RX + 24}" cy="30" r="5" fill="${r.color}"/>`;
         out += `<text class="card-title" x="${RX + 36}" y="35">${r.label} 검출 반응</text>`;
 
-        out += `<text class="card-text" x="${RX + 12}" y="62">검출 대상: <tspan class="card-val" fill="#0f172a">${TUBES.find(t => t.key === r.target).nutrient}</tspan></text>`;
-        out += `<text class="card-text" x="${RX + 12}" y="80">반응 색: <tspan class="card-val" fill="${r.result}">${r.resultName}</tspan></text>`;
+        out += `<text class="card-text" x="${RX + 12}" y="62">검출 대상: <tspan class="card-val" fill="#0f172a">${p >= 1 ? TUBES.find(t => t.key === r.target).nutrient : '?'}</tspan></text>`;
+        out += `<text class="card-text" x="${RX + 12}" y="80">반응 색: <tspan class="card-val" fill="${p >= 1 ? r.result : '#64748b'}">${p >= 1 ? r.resultName : '?'}</tspan></text>`;
         out += `<text class="card-text" x="${RX + 12}" y="98">가열 조건: <tspan class="card-val" fill="${r.needsHeat && !a.heated ? '#dc2626' : '#047857'}">${r.needsHeat ? (a.heated ? '100 ℃ 가열 필수' : '가열 안 함 (무반응)') : '실온 반응 (가열 불필요)'}</tspan></text>`;
 
         out += `<line x1="${RX + 10}" y1="108" x2="${RX + RW - 10}" y2="108" stroke="#e2e8f0" stroke-width="1"/>`;
@@ -461,7 +463,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = SVG_DEFS;
         const X0 = 20, W = 480, H = 194;
         out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
-        out += `<text class="axis-title" x="${X0 + 16}" y="32">📊 중학교 필수 영양소 검출 반응표</text>`;
+        out += `<text class="axis-title" x="${X0 + 16}" y="32">중학교 필수 영양소 검출 반응표</text>`;
+        if (state.progress < 1) return '';
 
         const cw = 76, rh = 28, TX0 = 164, Y0 = 66;
 
@@ -493,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        out += `<text class="note-text" x="${X0 + 16}" y="188">💡 베네딕트 반응은 끓는 물에 가열해야 일어나며, 녹말은 아밀레이스로 엿당이 된 뒤에야 반응합니다.</text>`;
+        out += `<text class="note-text" x="${X0 + 16}" y="188">베네딕트 반응은 끓는 물에 가열해야 일어나며, 녹말은 아밀레이스로 엿당이 된 뒤에야 반응합니다.</text>`;
         return out;
     }
 
@@ -538,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const RX = 246, RW = 254;
         out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<rect x="${RX + 10}" y="16" width="${RW - 20}" height="28" rx="6" fill="#f0f9ff" stroke="#bae6fd"/>`;
-        out += `<text class="card-title" x="${RX + 20}" y="35">🔥 베네딕트 가열 반응 분석</text>`;
+        out += `<text class="card-title" x="${RX + 20}" y="35">베네딕트 가열 반응 분석</text>`;
 
         out += `<text class="card-text" x="${RX + 14}" y="62">시료: <tspan class="card-val">${s.icon} ${s.label} (${s.name})</tspan></text>`;
         out += `<text class="card-text" x="${RX + 14}" y="82">가열 여부: <tspan class="card-val" fill="${a.heated ? '#ea580c' : '#0284c7'}">${HEATS[state.bheat].icon} ${HEATS[state.bheat].label}</tspan></text>`;
@@ -565,7 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect x="${RX + 14}" y="142" width="${RW - 28}" height="28" rx="6" fill="${resColor}15" stroke="${resColor}60"/>`;
         out += `<text class="card-chip" x="${RX + RW / 2}" y="160" fill="${resColor}" text-anchor="middle">${statusText}</text>`;
 
-        out += `<text class="card-text" x="${RX + 14}" y="190" font-size="13">원리: Cu²⁺(청색) + 당 ➔ Cu₂O↓(황적색 앙금)</text>`;
+        out += `<text class="card-text" x="${RX + 14}" y="190" font-size="13">원리: Cu²⁺(청색) + 당 → Cu₂O↓(황적색 앙금)</text>`;
         out += `<text class="card-text" x="${RX + 14}" y="208" font-size="13">※ 가열해야만 구리 이온 환원 반응이 진행됨</text>`;
 
         return out;
@@ -576,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = SVG_DEFS;
         const X0 = 20, W = 480, H = 194;
         out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
-        out += `<text class="axis-title" x="${X0 + 16}" y="32">🌈 베네딕트 반응 색깔 스펙트럼 (당분의 양 비교)</text>`;
+        out += `<text class="axis-title" x="${X0 + 16}" y="32">베네딕트 반응 색깔 스펙트럼 (당분의 양 비교)</text>`;
 
         const stops = [
             ['#0284c7', '청색', '당분 0% (없음)'],
@@ -603,8 +606,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="card-chip" x="${mx}" y="${SY - 20}" fill="#ffffff" text-anchor="middle">${state.progress >= 0.9 ? '결과' : '초기'}</text>`;
 
         out += `<line x1="${X0 + 16}" y1="146" x2="${X0 + W - 16}" y2="146" stroke="#e2e8f0" stroke-width="1"/>`;
-        out += `<text class="note-text" x="${X0 + 16}" y="168">💡 ${a.heated ? '100 ℃ 가열 상태' : '가열하지 않음 → 당분이 있어도 푸른색'} · ${a.s.name}${eun(a.s.name)} ${a.s.sugar ? '베네딕트와 반응하는 당분' : '베네딕트와 반응하지 않는 물질'}</text>`;
-        out += `<text class="note-text" x="${X0 + 16}" y="186">💡 당분이 적으면 녹색~황색에서 멈추고, 많을수록 황적색~적갈색 앙금으로 짙어집니다.</text>`;
+        if (state.progress >= 1) out += `<text class="note-text" x="${X0 + 16}" y="168">${a.heated ? '100 ℃ 가열 상태' : '가열하지 않음 → 당분이 있어도 푸른색'} · ${a.s.name}${eun(a.s.name)} ${a.s.sugar ? '베네딕트와 반응하는 당분' : '베네딕트와 반응하지 않는 물질'}</text>`;
+        out += `<text class="note-text" x="${X0 + 16}" y="186">당분이 적으면 녹색~황색에서 멈추고, 많을수록 황적색~적갈색 앙금으로 짙어집니다.</text>`;
 
         return out;
     }
@@ -688,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const RX = 316, RW = 184;
         out += `<rect x="${RX}" y="8" width="${RW}" height="220" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
         out += `<rect x="${RX + 10}" y="16" width="${RW - 20}" height="28" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/>`;
-        out += `<text class="card-title" x="${RX + 18}" y="35">✂️ 녹말 소화 분석</text>`;
+        out += `<text class="card-title" x="${RX + 18}" y="35">녹말 소화 분석</text>`;
 
         out += `<text class="card-text" x="${RX + 12}" y="62">조건: <tspan class="card-val">${c.label}</tspan></text>`;
         out += `<text class="card-text" x="${RX + 12}" y="82">효소 활성: <tspan class="card-val" fill="${c.rate > 0.1 ? '#15803d' : '#dc2626'}">${c.rate > 0.1 ? '체온 최적 (매우 활발)' : c.rate > 0.01 ? '저온 (매우 느림)' : '비활성 (변성/없음)'}</tspan></text>`;
@@ -700,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="card-text" x="${RX + 12}" y="156">베네딕트: <tspan class="card-val" fill="${a.benedict ? '#ea580c' : '#0284c7'}">${p >= 1 ? (a.benedict ? '황적색 (엿당 생성)' : '푸른색 그대로') : '…'}</tspan></text>`;
 
         out += `<rect x="${RX + 10}" y="172" width="${RW - 20}" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>`;
-        const resVerdict = a.verdict === 'digested' ? '녹말 ➔ 엿당 완전 소화!' : a.verdict === 'partial' ? '일부만 소화됨' : '소화되지 않음';
+        const resVerdict = a.verdict === 'digested' ? '녹말 → 엿당 완전 소화!' : a.verdict === 'partial' ? '일부만 소화됨' : '소화되지 않음';
         out += `<text class="card-chip" x="${RX + RW / 2}" y="192" fill="${a.verdict === 'digested' ? '#15803d' : '#ea580c'}" text-anchor="middle">${p >= 1 ? resVerdict : '소화 반응 중…'}</text>`;
 
         return out;
@@ -711,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = SVG_DEFS;
         const X0 = 20, W = 480, H = 194;
         out += `<rect x="${X0}" y="8" width="${W}" height="${H}" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>`;
-        out += `<text class="axis-title" x="${X0 + 16}" y="30">📈 시간에 따른 녹말과 엿당의 양 — ${a.c.label}</text>`;
+        out += `<text class="axis-title" x="${X0 + 16}" y="30">시간에 따른 녹말과 엿당의 양 — ${a.c.label}</text>`;
 
         const GX0 = 70, GX1 = 460, GY0 = 144, GY1 = 44;
         const xOf = t => GX0 + t / REACT_MIN * (GX1 - GX0);
@@ -754,12 +757,17 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<circle cx="${GX1 - 84}" cy="25" r="4.5" fill="#ea580c"/>`;
         out += `<text class="grid-text" font-size="13" style="fill:#ea580c" x="${GX1 - 74}" y="29.5">엿당 (베네딕트)</text>`;
 
-        out += `<text class="note-text" x="${X0 + 16}" y="186">💡 아밀레이스는 체온(37 ℃)에서 가장 빠르게 녹말을 엿당으로 자르며, 끓이면 열 변성으로 파괴됩니다.</text>`;
+        out += `<text class="note-text" x="${X0 + 16}" y="186">아밀레이스는 체온(37 ℃)에서 가장 빠르게 녹말을 엿당으로 자르며, 끓이면 열 변성으로 파괴됩니다.</text>`;
         return out;
     }
 
     /* -------------------------------------------------------- Notes & Updates */
     function noteFor(a) {
+        // 결과(반응·판정)는 실험이 끝난 뒤에만 적는다.
+        if (state.progress < 1) {
+            const cond = a.kind === 'reagent' ? `${a.r.full}${a.r.needsHeat ? ` (가열 ${a.heated ? '함' : '안 함'})` : ''}` : a.kind === 'benedict' ? `${a.s.label} ${CONCS[state.conc].label} · 베네딕트 용액 · 가열 ${HEATS[state.bheat].label}` : `녹말물 + ${a.c.label}, 10분 반응`;
+            return `<div class="data-row"><span class="data-name">${a.kind === 'reagent' ? '사용한 시약' : '실험 조건'}</span><span class="data-val">${cond}</span></div>`;
+        }
         if (a.kind === 'reagent') {
             return `<div class="data-row"><span class="data-name">사용한 시약</span><span class="data-val">${a.r.full} — ${TUBES.find(t => t.key === a.r.target).nutrient} 검출용${a.r.needsHeat ? ` (가열 ${a.heated ? '함' : '안 함'})` : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">시험관 반응</span><span class="data-val">${a.results.map((res, i) => `${i + 1}번 ${res.tube.label} [${res.reacts ? a.r.resultName : '변화 없음'}]`).join(' · ')}</span></div>` +
@@ -780,6 +788,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         window.scienceScene.render(mainGroup,scopedDefs(a.kind === 'reagent' ? renderReagent(a) : a.kind === 'benedict' ? renderBenedict(a) : renderAmylase(a),'nutrient-main-'));
+        // 반응표(정답표)는 시약을 넣어 본 뒤에만 펼친다.
+        graphGroup.ownerSVGElement.style.display = a.kind === 'reagent' && state.progress < 1 ? 'none' : '';
         window.scienceScene.render(graphGroup,scopedDefs(a.kind === 'reagent' ? graphReagent(a) : a.kind === 'benedict' ? graphBenedict(a) : graphAmylase(a),'nutrient-graph-'));
         liftProse();
         stageBadge.textContent = a.kind === 'reagent'
@@ -857,7 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
-            : state.prediction === a.verdict ? '🎉 예상이 맞았습니다!' : '💡 예상과 다른 결과입니다. 원리를 확인해 보세요.';
+            : state.prediction === a.verdict ? '예상이 맞았습니다!' : '예상과 다른 결과입니다. 원리를 확인해 보세요.';
         explanation.textContent = s;
     }
 
@@ -942,3 +952,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

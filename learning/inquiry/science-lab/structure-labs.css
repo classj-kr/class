@@ -6,3 +6,9 @@ body [data-sensor="mcu-sampling"] .structure-controls>[data-sensor-panel] label.
 body [data-sensor="smart-pot"] .lab-choice-group[data-for="potSensor"]>button,body [data-sensor="smart-pot"] .lab-choice-group[data-for="potRule"]>button{flex:0 1 15rem}
 body [data-sensor="smart-pot"] .structure-controls>label:has(#potSensor),body [data-sensor="smart-pot"] .structure-controls>label:has(#potRule){flex-basis:100%}
 body [data-sensor="mcu-sampling"] .structure-controls>label:has(#sensorMode){flex-basis:100%}
+body [data-structure="protein-folding"] .structure-controls>label:has(#fragment){flex-basis:100%}
+body [data-structure="protein-folding"] .lab-choice-group[data-for="fragment"]{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+body [data-structure="protein-folding"] .protein-actions{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:.7rem;border-top:1px dashed #c8d9e5}
+body [data-structure="fuel-comparison"] .structure-controls>label:has(#fuelBasis){flex:1 1 100%}
+body [data-structure="fuel-comparison"] .lab-choice-group[data-for="fuelBasis"]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:40rem}
+@media(max-width:650px){body [data-structure="protein-folding"] .lab-choice-group[data-for="fragment"]{grid-template-columns:repeat(2,minmax(0,1fr))}}

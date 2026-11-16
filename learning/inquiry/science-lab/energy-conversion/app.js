@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (altDeg > 0) out += `<circle class="sun" cx="${hx(h).toFixed(1)}" cy="${ay(altDeg).toFixed(1)}" r="8" opacity="${cloudy ? 0.45 : 1}"/>`;
         // three panels, bottom edge toward the sun (south), top edge leaning away
         Object.entries(TILTS).forEach(([k, t], n) => {
-            const px = 312 + n * 46, b = t.deg * D2R, L = 40;
+            const px = 306 + n * 48, b = t.deg * D2R, L = 40;
             const tx = px + L * Math.cos(b), ty = 150 - L * Math.sin(b);
             const irr = panelIrradiance(h, state.season, state.weather, t.deg);
             if (altDeg > 0) {
@@ -258,16 +258,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-            if (t.deg > 0) out += `<line class="panel-leg" x1="${tx.toFixed(1)}" y1="${ty.toFixed(1)}" x2="${tx.toFixed(1)}" y2="150"/>`;
-            out += `<line class="panel-line" style="stroke:${t.color}" x1="${px}" y1="150" x2="${tx.toFixed(1)}" y2="${ty.toFixed(1)}"/>`;
+            // 틀이 있는 태양광 판(옆에서 본 모습): 두께가 있는 판 + 칸 나눔 + 받침 다리와 받침대
+            const nx = -Math.sin(b), ny = -Math.cos(b), TH = 6;     // 판 윗면 방향(바깥쪽 법선)
+            const p0 = [px, 147], p1 = [px + L * Math.cos(b), 147 - L * Math.sin(b)];
+            const q0 = [p0[0] + nx * TH, p0[1] + ny * TH], q1 = [p1[0] + nx * TH, p1[1] + ny * TH];
+            if (t.deg > 0) out += `<line class="panel-leg" x1="${(p1[0] - 2).toFixed(1)}" y1="${p1[1].toFixed(1)}" x2="${(p1[0] - 2).toFixed(1)}" y2="150"/>`;
+            out += `<rect class="panel-foot" x="${px - 5}" y="146" width="${Math.max(14, (p1[0] - px) + 8).toFixed(1)}" height="4" rx="1"/>`;
+            out += `<polygon class="panel-body" points="${p0.map(v => v.toFixed(1))} ${p1.map(v => v.toFixed(1))} ${q1.map(v => v.toFixed(1))} ${q0.map(v => v.toFixed(1))}"/>`;
+            for (let c = 1; c < 5; c += 1) {
+                const f = c / 5, ax = p0[0] + (p1[0] - p0[0]) * f, ay2 = p0[1] + (p1[1] - p0[1]) * f;
+                out += `<line class="panel-cell" x1="${ax.toFixed(1)}" y1="${ay2.toFixed(1)}" x2="${(ax + nx * TH).toFixed(1)}" y2="${(ay2 + ny * TH).toFixed(1)}"/>`;
+            }
+            out += `<line class="panel-glass" style="stroke:${t.color}" x1="${q0[0].toFixed(1)}" y1="${q0[1].toFixed(1)}" x2="${q1[0].toFixed(1)}" y2="${q1[1].toFixed(1)}"/>`;
             const watts = day.tilts[k].power[i];
             out += `<text class="trait-text" style="fill:${t.color}" x="${px + 20}" y="168" text-anchor="middle">${t.deg}°</text>`;
             out += `<text class="trait-text" style="fill:${t.color}" x="${px + 20}" y="182" text-anchor="middle">${fmtN(watts)} W</text>`;
         });
         // readouts
-        out += `<text class="gen-text" x="20" y="30">${altDeg > 0 ? `${clock(h)} · 태양 높이 ${Math.round(altDeg)}°${Math.abs(az) > 1e-3 ? ` · ${az < 0 ? '동' : '서'}쪽으로 ${Math.round(Math.abs(az) / D2R)}°` : ' · 정남'}` : `${clock(h)} · ${h < 12 ? '해 뜨기 전' : '해가 진 뒤'}`}</text>`;
-        out += `<text class="trait-text" x="440" y="30" text-anchor="end">판 넓이 ${PANEL_AREA} m² · 빛의 ${Math.round(PANEL_EFF * 100)} %가 전기로</text>`;
-        out += `<text class="trait-text" x="440" y="44" text-anchor="end">나머지 ${Math.round((1 - PANEL_EFF) * 100)} %는 열로 판을 데움</text>`;
+        out += `<text class="gen-text" x="24" y="175">${altDeg > 0 ? `${clock(h)} · 태양 높이 ${Math.round(altDeg)}°${Math.abs(az) > 1e-3 ? ` · ${az < 0 ? '동' : '서'}쪽으로 ${Math.round(Math.abs(az) / D2R)}°` : ' · 정남'}` : `${clock(h)} · ${h < 12 ? '해 뜨기 전' : '해가 진 뒤'}`}</text>`;
         if (state.progress >= 1) {
             const w = TILTS[a.winner];
             out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${SEASONS[state.season].label} ${WEATHERS[state.weather].label} → ${w.label} ${w.deg}° 판이 하루 ${(day.tilts[a.winner].total / 1000).toFixed(2)} kWh로 가장 많이</text>`;
@@ -308,9 +316,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function turbine(cx, r, v, tag, shownW, dead) {
-        const rpx = r * 1.8, hubY = 188 - rpx - 8;
+        const rpx = r * 1.55, hubY = 104;           // 탑 높이는 같고 날개 길이만 다르다
         const theta = (TSR * v / r) * state.progress * RUN_SECONDS;   // real rotation rate: tip speed ≈ 7 × wind speed
-        let out = `<polygon class="tower" points="${cx - 4},188 ${cx + 4},188 ${cx + 2},${hubY.toFixed(1)} ${cx - 2},${hubY.toFixed(1)}"/>`;
+        let out = `<polygon class="tower" points="${cx - 5},188 ${cx + 5},188 ${cx + 2.5},${hubY.toFixed(1)} ${cx - 2.5},${hubY.toFixed(1)}"/>`;
+        out += `<rect class="nacelle" x="${cx - 4}" y="${(hubY - 5).toFixed(1)}" width="16" height="10" rx="3"/>`;
         for (let k = 0; k < 3; k += 1) {
             const ang = theta + k * 2 * Math.PI / 3;
             const pt = (lx, ly) => `${(cx + lx * Math.cos(ang) - ly * Math.sin(ang)).toFixed(1)},${(hubY + lx * Math.sin(ang) + ly * Math.cos(ang)).toFixed(1)}`;
@@ -323,8 +332,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = hubY + s * 16, x1 = cx - rpx - 48, x2 = cx - rpx - 10;
             out += `<line class="streak" x1="${x1.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}"/>`;
         }
-        out += `<text class="gen-text" x="${cx}" y="18" text-anchor="middle">${fmtP(shownW)}</text>`;
-        out += `<text class="trait-text" x="${cx}" y="32" text-anchor="middle">10 W 전등 ${fmtN(shownW / 10)}개</text>`;
+        out += `<text class="gen-text" x="${cx}" y="16" text-anchor="middle">${fmtP(shownW)}</text>`;
+        out += `<text class="trait-text" x="${cx}" y="31" text-anchor="middle">10 W 전등 ${fmtN(shownW / 10)}개</text>`;
         out += `<text class="trait-text" x="${cx}" y="208" text-anchor="middle">${tag} · 풍속 ${v} m/s · 날개 ${r} m</text>`;
         void dead;
         return out;
@@ -487,19 +496,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">판</span><span class="data-val">남쪽을 보는 ${PANEL_AREA} m² 판 세 장 · 위도 ${LAT}° · 빛 → 전기 ${Math.round(PANEL_EFF * 100)} %</span></div>` +
                 `<div class="data-row"><span class="data-name">날</span><span class="data-val">${SEASONS[state.season].label} · ${WEATHERS[state.weather].label} · 한낮 태양 높이 ${Math.round(sunAt(12, SEASONS[state.season].dec).alt / D2R)}°</span></div>` +
                 `<div class="data-row"><span class="data-name">지금까지</span><span class="data-val">${clock(a.day.hours[i])}까지 ${rows}</span></div>` +
-                `<div class="data-row match"><span class="data-name">하루 전체</span><span class="data-val">${a.ranked.map(k => `${TILTS[k].deg}° ${(a.day.tilts[k].total / 1000).toFixed(2)} kWh`).join(' > ')}</span></div>`;
+                `<div class="data-row"><span class="data-name">빛 → 전기·열</span><span class="data-val">판 넓이 ${PANEL_AREA} m² · 빛의 ${Math.round(PANEL_EFF * 100)} %가 전기로, 나머지 ${Math.round((1 - PANEL_EFF) * 100)} %는 판을 데우는 열로</span></div>` +
+                (state.progress >= 1 ? `<div class="data-row match"><span class="data-name">하루 전체</span><span class="data-val">${a.ranked.map(k => `${TILTS[k].deg}° ${(a.day.tilts[k].total / 1000).toFixed(2)} kWh`).join(' > ')}</span></div>` : '');
         }
         if (a.kind === 'wind') {
             const area = r => Math.round(Math.PI * r * r).toLocaleString('ko-KR');
             return `<div class="data-row"><span class="data-name">바람의 힘</span><span class="data-val">½ × 공기 밀도 ${RHO} kg/m³ × 날개가 쓸어 내는 넓이 × 풍속³ 가운데 ${Math.round(CP * 100)} %를 거둠</span></div>` +
                 `<div class="data-row"><span class="data-name">기준 발전기</span><span class="data-val">풍속 ${REF.wind} m/s · 날개 ${REF.blade} m (넓이 ${area(REF.blade)} m²) → ${fmtP(a.Pref)}</span></div>` +
                 `<div class="data-row"><span class="data-name">내 발전기</span><span class="data-val">풍속 ${a.v} m/s · 날개 ${a.r} m (넓이 ${area(a.r)} m²) → ${fmtP(a.P)}</span></div>` +
-                `<div class="data-row match"><span class="data-name">비교</span><span class="data-val">풍속 ${a.v / REF.wind}배 → (${a.v / REF.wind})³ = ${ratioText((a.v / REF.wind) ** 3)} · 날개 ${a.r / REF.blade}배 → (${a.r / REF.blade})² = ${ratioText((a.r / REF.blade) ** 2)} · 모두 ${ratioText(a.ratio)}</span></div>`;
+                (state.progress < 1 ? '' : `<div class="data-row match"><span class="data-name">비교</span><span class="data-val">풍속 ${a.v / REF.wind}배 → (${a.v / REF.wind})³ = ${ratioText((a.v / REF.wind) ** 3)} · 날개 ${a.r / REF.blade}배 → (${a.r / REF.blade})² = ${ratioText((a.r / REF.blade) ** 2)} · 모두 ${ratioText(a.ratio)}</span></div>`);
         }
         return `<div class="data-row"><span class="data-name">공급</span><span class="data-val">${SUPPLY_J} J (${state.plant === 'hydro' ? '높은 곳에 있는 물의 위치 에너지' : '연료의 화학 에너지'})</span></div>` +
             `<div class="data-row"><span class="data-name">발전소</span><span class="data-val">${PLANTS[state.plant].label} 효율 ${Math.round(PLANTS[state.plant].eff * 100)} % → 전기 ${fmtJ(a.elec)} J, 열 ${fmtJ(a.plantHeat)} J (${PLANTS[state.plant].waste})</span></div>` +
             `<div class="data-row"><span class="data-name">송전선</span><span class="data-val">효율 ${Math.round(GRID_EFF * 100)} % → 전기 ${fmtJ(a.delivered)} J, 열 ${fmtJ(a.gridHeat)} J</span></div>` +
-            `<div class="data-row match"><span class="data-name">전등</span><span class="data-val">${LAMPS[state.lamp].label} 효율 ${Math.round(LAMPS[state.lamp].eff * 100)} % → 빛 ${fmtJ(a.lightR)} J, 열 ${fmtJ(a.lampHeat)} J · 전체 효율 ${fmtJ(a.lightR)} %</span></div>`;
+            (state.progress < 1 ? '' : `<div class="data-row match"><span class="data-name">전등</span><span class="data-val">${LAMPS[state.lamp].label} 효율 ${Math.round(LAMPS[state.lamp].eff * 100)} % → 빛 ${fmtJ(a.lightR)} J, 열 ${fmtJ(a.lampHeat)} J · 전체 효율 ${fmtJ(a.lightR)} %</span></div>`);
     }
 
     function render() {

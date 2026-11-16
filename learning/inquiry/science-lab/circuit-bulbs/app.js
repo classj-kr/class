@@ -81,18 +81,78 @@ document.addEventListener('DOMContentLoaded', () => {
         return {svg,left:start-5,right:start+width+5};
     };
 
+    // 초6 교과서 실물 회로: 전구 끼우개에 끼운 전구, 전지 끼우개, 전선, 칼날 스위치.
+    let circuitShown=false,circuitAnim=null,circuitRaf=0;
+    const easeIO=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+    const mixHex=(a,c,f)=>'#'+a.match(/../g).map((v,i)=>Math.round(parseInt(v,16)+(parseInt(c.match(/../g)[i],16)-parseInt(v,16))*f).toString(16).padStart(2,'0')).join('');
+    function realBulb(cx,glow){
+        const b=Math.max(0,glow),hot=b>0.02,f=Math.min(1,b/2);
+        const glass=hot?mixHex('e9eff2','ffe39a',Math.min(1,.35+f*.65)):'#e9eff2';
+        let s='';
+        if(hot)s+=`<circle cx="${cx}" cy="56" r="${(36+26*f).toFixed(1)}" fill="url(#cbHalo)" opacity="${Math.min(1,b*.6).toFixed(2)}"/>`;
+        s+=`<path class="bulb-glass" d="M${cx-13} 92 C${cx-14} 82 ${cx-30} 74 ${cx-30} 54 A30 30 0 1 1 ${cx+30} 54 C${cx+30} 74 ${cx+14} 82 ${cx+13} 92 Z" fill="${glass}" stroke="#8aa3ae" stroke-width="1.8"/>`;
+        s+=`<path d="M${cx-19} 40 A20 20 0 0 1 ${cx-4} 28" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".85"/>`;
+        s+=`<path d="M${cx-6} 92 L${cx-8} 62 M${cx+6} 92 L${cx+8} 62" stroke="#8b989e" stroke-width="1.4" fill="none"/>`;
+        const fil=hot?mixHex('ff9a1f','fff3c0',f):'#6b7479';
+        s+=`<path class="bulb-filament${hot?'':' off'}" style="stroke:${fil};filter:none;stroke-width:2.2" d="M${cx-8} 62 q2 -5 4 0 q2 5 4 0 q2 -5 4 0 q2 5 4 0"/>`;
+        // 꼭지쇠(나사 모양)와 전구 끼우개
+        s+=`<rect class="bulb-base" x="${cx-14}" y="90" width="28" height="18" rx="2" style="fill:#c9ced1;stroke:#7e8a90"/>`;
+        for(let i=0;i<3;i++)s+=`<path d="M${cx-14} ${95+i*5} H${cx+14}" stroke="#8e999e" stroke-width="2"/>`;
+        s+=`<rect x="${cx-46}" y="110" width="92" height="22" rx="4" fill="#d9b98c" stroke="#9c7a4d" stroke-width="1.5"/><rect x="${cx-19}" y="104" width="38" height="9" rx="2" fill="#4f5d64"/>`;
+        s+=`<circle cx="${cx-34}" cy="122" r="5" fill="#c9ced1" stroke="#6e7b81"/><circle cx="${cx+34}" cy="122" r="5" fill="#c9ced1" stroke="#6e7b81"/>`;
+        return s;
+    }
+    // 전지 끼우개: 원통형 건전지가 같은 방향으로 놓이고, 칸 사이는 금속판(battery-jumper)으로 이어진다.
+    function batteryHolder(cx,y,count){
+        const cw=78,gap=10,w=count*cw+(count-1)*gap+20,x0=cx-w/2;
+        let s=`<rect x="${x0}" y="${y-22}" width="${w}" height="44" rx="6" fill="#56656d" stroke="#33414a" stroke-width="1.5"/>`;
+        for(let i=0;i<count;i++){
+            const x=x0+10+i*(cw+gap);
+            if(i)s+=`<path class="battery-jumper" d="M${x-gap-1} ${y} H${x+1}" stroke="#c9ced1" stroke-width="5"/>`;
+            s+=`<g class="battery-cell" data-positive="right"><rect x="${x}" y="${y-14}" width="${cw-6}" height="28" rx="4" fill="url(#cbCell)" stroke="#2c3a40" stroke-width="1.2"/><rect x="${x+cw-30}" y="${y-14}" width="24" height="28" rx="3" fill="#d8a73c" stroke="#2c3a40" stroke-width="1.2"/><rect x="${x+cw-6}" y="${y-5}" width="5" height="10" rx="1.5" fill="#c9ced1" stroke="#6e7b81"/><text class="cell-sign" x="${x+12}" y="${y+5}" text-anchor="middle" style="fill:#ffffff;font-size:15px">−</text><text class="cell-sign" x="${x+cw-18}" y="${y+5}" text-anchor="middle" style="fill:#2a2208;font-size:15px">+</text></g>`;
+        }
+        s+=`<circle cx="${x0-2}" cy="${y}" r="5" fill="#c9ced1" stroke="#6e7b81"/><circle cx="${x0+w+2}" cy="${y}" r="5" fill="#c9ced1" stroke="#6e7b81"/>`;
+        return {svg:s,left:x0-2,right:x0+w+2};
+    }
+    // 칼날 스위치: 왼쪽 축에 달린 날이 내려와 오른쪽 집게에 끼워진다.
+    function knifeSwitch(x1,x2,y,t){
+        const ang=-42*(1-t),len=x2-x1+4,rad=ang*Math.PI/180,ex=x1+len*Math.cos(rad),ey=y+len*Math.sin(rad);
+        const hx=ex+12*Math.cos(rad-1.1),hy=ey+12*Math.sin(rad-1.1);
+        return `<rect x="${x1-16}" y="${y+5}" width="${len+30}" height="15" rx="3" fill="#d9b98c" stroke="#9c7a4d" stroke-width="1.5"/>`+
+            `<rect x="${x1-5}" y="${y-6}" width="10" height="12" rx="2" fill="#9aa5ab" stroke="#5e6b71"/><path d="M${x2-4} ${y+5} V${y-8} M${x2+6} ${y+5} V${y-8}" stroke="#8e999e" stroke-width="3"/>`+
+            `<path class="switch-blade${t>=1?' closed':''}" d="M${x1} ${y} L${ex.toFixed(1)} ${ey.toFixed(1)}" style="stroke:#a9b4ba;stroke-width:5"/>`+
+            `<path d="M${ex.toFixed(1)} ${ey.toFixed(1)} L${hx.toFixed(1)} ${hy.toFixed(1)}" stroke="#2f3b41" stroke-width="8" stroke-linecap="round"/>`+
+            `<circle class="switch-contact" cx="${x1}" cy="${y}" r="3.5"/>`;
+    }
     function renderCircuit() {
-        const state = circuitState(), pack = batterySVG(230,210,state.batteries);
+        const state = circuitState(), pack = batteryHolder(190,238,state.batteries);
         circuitGroup.ownerSVGElement.setAttribute('viewBox','0 0 460 300');
-        const path = `M${pack.left},210 H64 V64 H212 M248,64 H396 V210 H354 M316,210 H${pack.right}`;
-        let out = `<path class="wire${state.closed?'':' dead'}" d="${path}"/>`;
-        if(state.closed) out += `<path class="current" d="${path}"/><path class="switch-blade closed" d="M316,210 H354"/>`;
-        else out += '<path class="switch-blade" d="M316,210 L348,184"/>';
-        out += '<circle class="switch-contact" cx="316" cy="210" r="3"/><circle class="switch-contact" cx="354" cy="210" r="3"/>';
-        out += pack.svg + bulbSVG(230,64,state.lit,state.brightness);
-        out += '<path class="bulb-leads" d="M212,64 H221 L223,67 M237,61 L239,64 H248"/>';
-        out += `<text class="stage-label" x="230" y="116" text-anchor="middle">${state.lit?state.comparison:'꺼짐'}</text><text class="stage-label" x="335" y="251" text-anchor="middle">${state.closed?'스위치 닫힘':'스위치 열림'}</text><text class="battery-label" x="230" y="280" text-anchor="middle">전지 ${state.batteries}개 · ${state.batteries===2?'같은 방향 직렬연결':'비교 기준'}</text>`;
+        // 전지 1개 기준 회로는 처음부터 켜 둔다. 그 밖의 조건은 결과 확인하기를 눌러야 스위치가 닫힌다.
+        const baseline = state.closed && state.batteries === 1;
+        const a = circuitAnim || (circuitShown || baseline ? {sw:1,glow:1} : {sw:0,glow:0});
+        const flowing = state.closed && a.sw >= 1;
+        const glow = state.closed ? state.brightness * a.glow : 0;
+        const sx1=330,sx2=376,y=238;
+        const leftWire = state.closed ? `M${pack.left},${y} H52 V122 H196` : `M${pack.left},${y} H52 V198 M52,160 V122 H196`;
+        const loop = `${leftWire} M264,122 H410 V${y} H${sx2} M${sx1},${y} H${pack.right}`;
+        let out = `<defs><radialGradient id="cbHalo"><stop offset="0" stop-color="#fff2c2" stop-opacity=".9"/><stop offset=".55" stop-color="#ffe08a" stop-opacity=".3"/><stop offset="1" stop-color="#ffe08a" stop-opacity="0"/></radialGradient><linearGradient id="cbCell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a7c85"/><stop offset=".35" stop-color="#3a4a52"/><stop offset="1" stop-color="#222d33"/></linearGradient></defs>`;
+        out += `<path class="wire" d="${loop}" style="stroke:#c2502f;stroke-width:4.5"/>`;
+        if(!state.closed) out += '<path d="M52,198 v-8 M52,160 v8" stroke="#c98a3c" stroke-width="3" stroke-linecap="round"/><circle cx="52" cy="190" r="1.8" fill="#8a5a1f"/><circle cx="52" cy="168" r="1.8" fill="#8a5a1f"/><text class="stage-label" x="64" y="184">끊어진 곳</text>';
+        if(flowing) out += `<path class="current" d="${loop}"/>`;
+        out += knifeSwitch(sx1,sx2,y,a.sw);
+        out += pack.svg + realBulb(230,glow);
+        out += `<text class="stage-label" x="353" y="284" text-anchor="middle">${a.sw>=1?'스위치 닫힘':'스위치 열림'}</text><text class="battery-label" x="190" y="284" text-anchor="middle">전지 ${state.batteries}개${state.batteries===2?' · 같은 방향 직렬':''}</text>`;
+        if((circuitShown||baseline)&&!circuitAnim) out += `<text class="stage-label verdict-text" x="290" y="60">${state.lit?state.comparison:'꺼짐'}</text>`;
         circuitGroup.innerHTML = out;
+    }
+    function playCircuit(){
+        cancelAnimationFrame(circuitRaf);circuitShown=true;
+        if(matchMedia('(prefers-reduced-motion: reduce)').matches){circuitAnim=null;renderCircuit();return;}
+        const t0=performance.now();
+        const step=now=>{const t=Math.min(1,(now-t0)/1500);circuitAnim={sw:easeIO(Math.min(1,t/.35)),glow:easeIO(Math.max(0,Math.min(1,(t-.38)/.5)))};
+            if(t>=1)circuitAnim=null;renderCircuit();if(t<1)circuitRaf=requestAnimationFrame(step);};
+        circuitAnim={sw:0,glow:0};renderCircuit();
+        circuitRaf=requestAnimationFrame(step);
     }
 
     function poleLabel(x, y, pole, active) {
@@ -134,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const state = circuitState();
             renderCircuit();
             predictionLegend.textContent=state.closed?'이어진 회로에서 전지를 1개에서 2개로 늘리면?':'전지 1개의 이어진 회로와 비교하면, 끊어진 회로의 밝기는?';
-            stageCaption.textContent=!state.closed?'회로가 끊어져 전지 수와 관계없이 전구가 꺼집니다.':state.batteries===1?'전지 1개가 비교 기준입니다. 예상한 뒤 전지를 2개로 바꾸어 확인하세요.':'전지 두 개를 같은 방향으로 직렬연결한 결과입니다. 한 개일 때보다 밝습니다.';
+            if(!circuitShown)stageCaption.textContent=!state.closed?'전선 한 곳이 끊어진 회로입니다. 밝기를 예상한 뒤 결과 확인하기를 누르세요.':state.batteries===1?'전지 1개가 비교 기준입니다. 예상한 뒤 전지를 2개로 바꾸어 확인하세요.':'전지 두 개를 같은 방향으로 이었습니다. 밝기를 예상한 뒤 결과 확인하기를 누르세요.';
             stageBadge.textContent = `전지 ${state.batteries}개 · ${state.closed ? '이어짐' : '끊어짐'}`;
         } else {
             const state = magnetState();
@@ -147,6 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearResult() {
         resultEmpty.hidden = false;
         resultContent.hidden = true;
+        if(circuitShown||circuitAnim){cancelAnimationFrame(circuitRaf);circuitShown=false;circuitAnim=null;if(mode==='circuit')render();}
         predictionResult.textContent="";delete predictionResult.dataset.correct;
     }
 
@@ -171,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         const state = circuitState();
+        playCircuit();
         resultLabelA.textContent = '회로 상태';
         resultLabelB.textContent = '전구 밝기';
         resultA.textContent = state.closed ? '이어짐' : '끊어짐';
@@ -182,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!baseline&&prediction)predictionResult.dataset.correct=String(prediction===actual);
         if (!state.closed) {
             explanation.textContent = '전선이 한 곳이라도 끊어지면 전류가 한 바퀴 돌아 전지로 되돌아갈 수 없어 전구가 켜지지 않습니다.';
-            stageCaption.textContent = '스위치가 열려 회로가 끊어졌으므로 전구가 꺼졌습니다.';
+            stageCaption.textContent = '전선 한 곳이 끊어져 있어 스위치를 닫아도 전구가 켜지지 않았습니다.';
         } else if (state.batteries === 1) {
             explanation.textContent = '전지, 전선, 전구가 끊어진 곳 없이 이어져 전구가 켜졌습니다. 이 밝기를 비교의 기준으로 삼습니다.';
             stageCaption.textContent = '전지 한 개를 연결한 회로에서 전구가 기준 밝기로 켜졌습니다.';
@@ -271,6 +333,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!correct) { selected.checked = false; selected.disabled = true; }
         });
     });
+
+    // 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다.
+    (()=>{const m=document.querySelector('.meaning-panel');if(!m)return;const sync=()=>{m.style.display=resultContent.hidden?'none':'';};new MutationObserver(sync).observe(resultContent,{attributes:true,attributeFilter:['hidden']});sync();})();
 
     window.__circuitModel = {
         circuitState, magnetState,

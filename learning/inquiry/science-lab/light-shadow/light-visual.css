@@ -58,54 +58,53 @@
 }
 .side-view { flex: 1 1 auto; min-width: 0; max-width: 620px; }
 .front-view { flex: 0 0 auto; width: min(176px, 30%); display: flex; flex-direction: column; align-items: center; }
-.view-title { margin-bottom: 7px; color: #0f172a; font-size: 13px; font-weight: 900; text-align: center; }
+.view-title { margin-bottom: 7px; color: #0f172a; font-size: 13.5px; font-weight: 900; text-align: center; }
 .side-svg { width: 100%; height: auto; display: block; }
 .front-svg { width: 100%; height: auto; display: block; }
-.front-note { margin: 7px 0 0; color: #475569; font-size: 13px; font-weight: 700; line-height: 1.45; text-align: center; }
+.front-note { margin: 7px 0 0; color: #475569; font-size: 13.5px; font-weight: 700; line-height: 1.45; text-align: center; }
 
 .lamp-bulb { fill: #fef08a; stroke: #d97706; stroke-width: 2.5; }
 @keyframes lampPulse {
     0%, 100% { opacity: .9; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.08); }
 }
-.lamp-glow { transform-box: fill-box; transform-origin: center; animation: lampPulse 2.8s ease-in-out infinite; }
+.lamp-glow { opacity: .9; }
+.lamp-socket { fill: #94a3b8; stroke: #475569; stroke-width: 1; }
+.holder { fill: #94a3b8; stroke: #64748b; stroke-width: 1; }
+.bench { fill: #d6b98c; stroke: #a07d4c; stroke-width: 1; }
+.light-cone { fill: url(#lightWedge); }
+.dark-zone { fill: #94a3b8; opacity: .28; }
+.ghost-card { fill: none; stroke: #0284c7; stroke-width: 1.6; stroke-dasharray: 4 3; }
+.ghost-label { fill: #0369a1; font-size: 13.5px; font-weight: 850; }
 
 @keyframes rayFlow { to { stroke-dashoffset: -36; } }
-.ray, .ray-edge {
-    stroke-linecap: round;
-    stroke-dasharray: 10 8;
-    animation: rayFlow 1.4s linear infinite;
-    transition: x2 .18s linear, y2 .18s linear;
-}
-.ray { stroke: #f59e0b; stroke-width: 1.8; opacity: .7; }
+.ray, .ray-edge { stroke-linecap: round; }
+.ray { stroke: #f59e0b; stroke-width: 2.2; opacity: .85; stroke-dasharray: 6 12; animation: rayFlow 1.2s linear infinite; }
 .ray.blocked { stroke: #d97706; stroke-width: 2.2; opacity: .9; }
 .ray-edge {
     stroke: #ea580c;
     stroke-width: 2.8;
     opacity: 1;
-    filter: drop-shadow(0 1px 3px rgba(234, 88, 12, 0.35));
 }
 
 .screen-face { stroke: #0f172a; stroke-width: 2; }
 .screen-stand { fill: #475569; }
-.shadow-side { fill: #0f172a; opacity: 1; transition: y .18s linear, height .18s linear; }
+.shadow-side { fill: #1e293b; opacity: 1; }
 
 .object-card {
     fill: #0284c7;
     stroke: #0369a1;
     stroke-width: 2;
-    transition: x .18s linear;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
-.stage-label { fill: #0f172a; font-size: 13px; font-weight: 900; }
-.label-chip { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; opacity: .96; transition: x .18s linear; }
+.stage-label { fill: #0f172a; font-size: 13.5px; font-weight: 900; }
+.label-chip { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; opacity: .96; }
 .dim-line, .dim-tick { stroke: #0284c7; stroke-width: 2; }
 .dim-line { stroke-dasharray: 5 4; }
 .dim-label { fill: #0284c7; font-size: 14px; font-weight: 900; }
 
 .front-screen { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05); }
-#frontShadow > * { fill: #0f172a; opacity: 1; filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2)); transition: r .18s linear, x .18s linear, y .18s linear, width .18s linear, height .18s linear; }
+#frontShadow > * { fill: #1e293b; opacity: 1; }
 
 @media (max-width: 900px) {
     .stage-views { flex-direction: column; gap: 16px; }
@@ -135,9 +134,12 @@
 .grid-line { stroke: #e2e8f0; stroke-width: 1; }
 .axis-text { fill: #475569; font-size: 14px; font-weight: 800; font-family: Pretendard, monospace; }
 .axis-title { fill: #0f172a; font-size: 14px; font-weight: 900; }
-.curve { fill: none; stroke: #ea580c; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 2px 4px rgba(234, 88, 12, 0.25)); }
+.curve { fill: none; stroke: #ea580c; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; opacity: .8; }
+.op-old { fill: #fdba74; stroke: #c2410c; stroke-width: 1.5; }
+.point-text { fill: #c2410c; font-size: 14px; font-weight: 900; paint-order: stroke; stroke: #f8fafc; stroke-width: 5px; stroke-linejoin: round; }
+.ref-text { fill: #0369a1; font-size: 13.5px; font-weight: 850; }
 .op-guide { stroke: #ea580c; stroke-width: 1.5; stroke-dasharray: 4 3; opacity: .65; }
-.op-point { fill: #ea580c; stroke: #ffffff; stroke-width: 2.5; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); }
+.op-point { fill: #ea580c; stroke: #ffffff; stroke-width: 2.5; }
 .ref-line { stroke: #0284c7; stroke-width: 1.8; stroke-dasharray: 5 4; }
 
 .data-note { display: grid; gap: 4px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line-subtle); }

@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const GRAPH = { x0: 54, x1: 424, y0: 152, y1: 22 };
 
     let prediction = null;
+    // counted: 「기포 수 세기」를 끝냈다. 그 전에는 기포 수·제한 요인·상한을 적지 않는다(예상의 답이다).
+    // counting: 세는 중이면 지금까지 센 수(0부터 올라간다).
+    let counted = false, counting = null, countRaf = 0;
+    const REDUCED = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
     const light = () => Number(lightRange.value);
     const co2 = () => Number(co2Range.value);
@@ -116,12 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="therm-fill" x="${TX + 2}" y="${(148 - 90 * tf).toFixed(1)}" width="5" height="${(90 * tf + 4).toFixed(1)}" rx="2.5"/>`;
         out += `<text class="part-label" x="${TX + 15}" y="72">${temp()} ℃</text>`;
 
-        out += `<text class="count-text" x="330" y="66">${a.rate.toFixed(0)} 개/분</text>`;
-        out += `<text class="part-label" x="330" y="84">1분 동안 나온 기포</text>`;
-        out += `<text class="limit-badge" fill="${LIMIT_TONE[a.limiter]}" x="330" y="112">제한 요인: ${LIMIT_NAME[a.limiter]}</text>`;
-        out += `<text class="part-label" x="330" y="132">빛이 낼 수 있는 양 ${Math.min(V_MAX, a.byLight).toFixed(0)}</text>`;
-        out += `<text class="part-label" x="330" y="148">CO₂가 낼 수 있는 양 ${Math.min(V_MAX, a.byCO2).toFixed(0)}</text>`;
-        out += `<text class="part-label" x="330" y="164">온도 효율 ${(a.fT * 100).toFixed(0)}%</text>`;
+        const shown = counting !== null ? `${Math.round(counting)} 개` : counted ? `${a.rate.toFixed(0)} 개/분` : '? 개/분';
+        out += `<text class="count-text" x="330" y="96">${shown}</text>`;
+        out += `<text class="part-label" x="330" y="116">${counting !== null ? '세는 중…' : '1분 동안 나온 기포'}</text>`;
         window.scienceScene.render(mainGroup,out);
         return a;
     }
@@ -170,12 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // where the current setting stops being light-limited
         const knee = Math.min(a.byCO2, a.byTemp, V_MAX) / K_LIGHT;
-        if (knee <= 100) {
+        if (counted && knee <= 100) {
             out += `<line class="knee-line" x1="${gx(knee).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(knee).toFixed(1)}" y2="${GRAPH.y0}"/>`;
             const flip = gx(knee) > (GRAPH.x0 + GRAPH.x1) / 2;
-            out += `<text class="knee-text" x="${(gx(knee) + (flip ? -5 : 5)).toFixed(1)}" y="${GRAPH.y1 + 10}"${flip ? ' text-anchor="end"' : ''}>여기부터 빛이 남습니다</text>`;
+            if (counted)
+            out += `<text class="knee-text" x="${(gx(knee) + (flip ? -5 : 5)).toFixed(1)}" y="${GRAPH.y0 - 8}"${flip ? ' text-anchor="end"' : ''}>여기부터 빛이 남습니다</text>`;
         }
-        out += `<circle class="trace-dot" cx="${gx(light()).toFixed(1)}" cy="${gy(a.rate).toFixed(1)}" r="5" fill="#d97706"/>`;
+        if (counted) out += `<circle class="trace-dot" cx="${gx(light()).toFixed(1)}" cy="${gy(a.rate).toFixed(1)}" r="5" fill="#d97706"/>`;
         window.scienceScene.render(graphGroup,out);
     }
 
@@ -185,16 +187,41 @@ document.addEventListener('DOMContentLoaded', () => {
         lightOutput.textContent = String(light());
         co2Output.textContent = String(co2());
         tempOutput.textContent = `${temp()} ℃`;
-        stageBadge.textContent = `${a.rate.toFixed(0)} 개/분 · ${LIMIT_NAME[a.limiter]}`;
+        stageBadge.textContent = counted ? `${a.rate.toFixed(0)} 개/분 · ${LIMIT_NAME[a.limiter]}` : `빛 ${light()} · CO₂ ${co2()} · ${temp()} ℃`;
+        if (!counted) {
+            window.scienceScene.render(dataNote, `<div class="data-row"><span class="data-name">온도 조건</span><span class="data-val">이 모형의 최적 온도 ${T_OPT} ℃ · 실제 최적 온도는 식물과 조건에 따라 다릅니다</span></div>`);
+            return a;
+        }
         window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">모형의 각 조건 상한</span><span class="data-val">빛 ${Math.min(V_MAX, a.byLight).toFixed(1)} · CO₂ ${Math.min(V_MAX, a.byCO2).toFixed(1)} · 온도 ${a.byTemp.toFixed(1)}</span></div>` +
             `<div class="data-row"><span class="data-name">온도 조건</span><span class="data-val">이 모형의 최적 온도 ${T_OPT} ℃ · 실제 최적 온도는 식물과 조건에 따라 다릅니다</span></div>` +
             `<div class="data-row match"><span class="data-name">모형의 기포 수</span><span class="data-val">세 상한 중 가장 작은 값: ${a.rate.toFixed(1)} 개/분</span></div>`);
         return a;
     }
 
-    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
+    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; counted = false; counting = null; cancelAnimationFrame(countRaf); };
+
+    // 「기포 수 세기」: 1.5초 동안 떠오르는 기포를 0부터 세어 올라간 뒤 결과를 보인다.
+    function startCount() {
+        cancelAnimationFrame(countRaf);
+        counted = false;
+        resultEmpty.hidden = false; resultContent.hidden = true;
+        const target = analyse().rate;
+        if (REDUCED || target <= 0) { counting = null; check(); return; }
+        const t0 = performance.now(), D = 1500;
+        const step = now => {
+            const k = Math.min(1, (now - t0) / D);
+            counting = target * k;
+            render();
+            if (k < 1) countRaf = requestAnimationFrame(step);
+            else { counting = null; check(); }
+        };
+        counting = 0; render();
+        countRaf = requestAnimationFrame(step);
+    }
 
     function check() {
+        counted = true; counting = null;
+        render();
         const a = analyse();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -214,13 +241,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     [lightRange, co2Range, tempRange].forEach(el => el.addEventListener('input', () => {
+        if (counting !== null) clearResult();
         render(); if (!resultContent.hidden) check();
     }));
     predictionButtons.forEach(button => button.addEventListener('click', () => {
-        prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
+        prediction = button.dataset.prediction; clearResult(); render(); window.scienceInvalidatePrediction?.();
         predictionButtons.forEach(item => item.classList.toggle('selected', item === button));
     }));
-    checkBtn.addEventListener('click', check);
+    checkBtn.addEventListener('click', startCount);
     resetBtn.addEventListener('click', () => {
         lightRange.value = '60'; co2Range.value = '50'; tempRange.value = '30';
         clearResult();

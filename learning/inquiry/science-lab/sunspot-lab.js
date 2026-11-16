@@ -2,8 +2,10 @@
  'use strict';
  const $=id=>document.getElementById(id),api=window.SunspotModel,data=window.SunspotData;
  if(!$('sunCanvasA')||!api||!data)return;
- const frames=data.frames,images=[],pixels=[],canvases=[$('sunCanvasA'),$('sunCanvasB')],colors=['#7be9ed','#ff9dd3','#a9f380','#c0b4ff','#fff'];
+ const frames=data.frames,images=[],pixels=[],canvases=[$('sunCanvasA'),$('sunCanvasB')],colors=['#0a5f86','#a8245e','#2b6b16','#5236a8','#1d2b36'];
  let selected=0,view='compare',date=0,blend=.5,grid=true,playing=false,timer=null,ready=false,points=Array.from({length:5},()=>[null,null]),cursor=[{x:511,y:512},{x:511,y:512}];
+ let fade=null;const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ function crossfade(from){if(reduce.matches)return;const t0=performance.now();fade={from,t:0};const step=now=>{if(!fade)return;fade.t=Math.min(1,(now-t0)/900);draw();if(fade.t<1)requestAnimationFrame(step);else{fade=null;draw();}};requestAnimationFrame(step);}
  function stop(){playing=false;clearInterval(timer);timer=null;$('sunPlay').textContent='천천히 재생';$('sunPlay').setAttribute('aria-pressed','false');}
  const position=p=>p?`${p.lat<0?'남위':'북위'} ${Math.abs(p.lat).toFixed(1)}° · ${p.lon<0?'동경':'서경'} ${Math.abs(p.lon).toFixed(1)}°`:'흑점의 어두운 중심을 선택하세요.';
  function line(ctx,list){ctx.beginPath();let connected=false;for(const p of list){if(!p){connected=false;continue;}if(connected)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);connected=true;}ctx.stroke();}
@@ -19,14 +21,14 @@
   for(const lon of [-60,-30,30,60]){const p=api.project(0,lon,frame);if(p)label((lon<0?'동 ':'서 ')+Math.abs(lon)+'°',p.x,p.y+25);}
   ctx.restore();
  }
- function marker(ctx,p,label,color){ctx.save();ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.7;ctx.shadowBlur=5;ctx.shadowColor='#061018';ctx.beginPath();ctx.arc(p.x,p.y,13,0,Math.PI*2);ctx.moveTo(p.x-20,p.y);ctx.lineTo(p.x-6,p.y);ctx.moveTo(p.x+6,p.y);ctx.lineTo(p.x+20,p.y);ctx.moveTo(p.x,p.y-20);ctx.lineTo(p.x,p.y-6);ctx.moveTo(p.x,p.y+6);ctx.lineTo(p.x,p.y+20);ctx.stroke();ctx.font='bold '+(14*1024/ctx.canvas.getBoundingClientRect().width)+'px system-ui';ctx.fillText(label,p.x+23,p.y-15);ctx.restore();}
- function magnify(side){const c=$('sunMagnify'+(side?'B':'A')),ctx=c.getContext('2d'),p=points[selected][side]||cursor[side];ctx.fillStyle='#0c1823';ctx.fillRect(0,0,c.width,c.height);if(!ready)return;ctx.imageSmoothingEnabled=false;ctx.drawImage(images[side?2:0],p.x-100,p.y-40,200,80,0,0,600,240);ctx.strokeStyle=colors[selected];ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(300,120,9,0,Math.PI*2);ctx.stroke();const scale=1/Math.min(c.clientWidth/600,c.clientHeight/240);ctx.font=(14*scale)+'px system-ui';ctx.fillStyle='#152c40';ctx.strokeStyle='#fff5dd';ctx.lineJoin='round';ctx.lineWidth=3*scale;ctx.strokeText('선택한 주변 · 3배',14,26);ctx.fillText('선택한 주변 · 3배',14,26);}
+ function marker(ctx,p,label,color){ctx.save();ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.7;ctx.shadowBlur=3;ctx.shadowColor='#3a2a10';ctx.beginPath();ctx.arc(p.x,p.y,13,0,Math.PI*2);ctx.moveTo(p.x-20,p.y);ctx.lineTo(p.x-6,p.y);ctx.moveTo(p.x+6,p.y);ctx.lineTo(p.x+20,p.y);ctx.moveTo(p.x,p.y-20);ctx.lineTo(p.x,p.y-6);ctx.moveTo(p.x,p.y+6);ctx.lineTo(p.x,p.y+20);ctx.stroke();ctx.font='bold '+(14*1024/ctx.canvas.getBoundingClientRect().width)+'px system-ui';ctx.fillText(label,p.x+23,p.y-15);ctx.restore();}
+ function magnify(side){const c=$('sunMagnify'+(side?'B':'A')),ctx=c.getContext('2d'),p=points[selected][side]||cursor[side];ctx.fillStyle='#eef3f6';ctx.fillRect(0,0,c.width,c.height);if(!ready)return;ctx.imageSmoothingEnabled=false;ctx.drawImage(images[side?2:0],p.x-100,p.y-40,200,80,0,0,600,240);ctx.strokeStyle=colors[selected];ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(300,120,9,0,Math.PI*2);ctx.stroke();}
  function draw(){
   if(!ready)return;
-  canvases.forEach((canvas,side)=>{const ctx=canvas.getContext('2d'),idx=side?2:view==='sequence'?date:0;ctx.globalAlpha=1;ctx.drawImage(images[idx],0,0);
+  canvases.forEach((canvas,side)=>{const ctx=canvas.getContext('2d'),idx=side?2:view==='sequence'?date:0;ctx.globalAlpha=1;if(fade&&!side&&view==='sequence'){ctx.drawImage(images[fade.from],0,0);ctx.globalAlpha=fade.t;}ctx.drawImage(images[idx],0,0);ctx.globalAlpha=1;
    if(view==='overlay'&&!side){const a=frames[0],b=frames[2],s=a.radius/b.radius;ctx.globalAlpha=blend;ctx.drawImage(images[2],a.cx-b.cx*s,a.cy-b.cy*s,1024*s,1024*s);ctx.globalAlpha=1;}
    if(grid&&view!=='overlay')drawGrid(ctx,frames[idx]);
-   if(view==='compare'){points.forEach((pair,i)=>{if(pair[side])marker(ctx,pair[side],'ABCDE'[i],colors[i]);});if(document.activeElement===canvas)marker(ctx,cursor[side],'+','#fff');}
+   if(view==='compare'){points.forEach((pair,i)=>{if(pair[side])marker(ctx,pair[side],'ABCDE'[i],colors[i]);});if(document.activeElement===canvas)marker(ctx,cursor[side],'+','#1d2b36');}
   });
   if(view==='compare'){magnify(0);magnify(1);}
  }
@@ -44,7 +46,7 @@
   $('sunMeasurements').innerHTML=points.map((p,i)=>{const r=api.compare(...p,frames[0],frames[2]);return `<tr data-active="${selected===i}"><th>${'ABCDE'[i]}</th>${r.valid?`<td>${r.lat<0?'남위':'북위'} ${Math.abs(r.lat).toFixed(1)}°</td><td>${r.angle.toFixed(1)}°</td><td>${r.days}일</td><td>약 ${r.period.toFixed(1)}일</td>`:'<td>—</td><td>—</td><td>4일</td><td>—</td>'}</tr>`;}).join('');chart();
  }
  function render(){
-  document.querySelector('.sunspot-scenes').classList.toggle('single',view!=='compare');$('sunSecondFigure').hidden=view!=='compare';$('sunMeasurementControls').hidden=view!=='compare';$('sunSequenceControls').hidden=view!=='sequence';$('sunOverlayControls').hidden=view!=='overlay';$('sunMagnifyA').hidden=view!=='compare';$('sunResults').hidden=view!=='compare';$('sunGrid').disabled=view==='overlay';
+  document.querySelector('.sunspot-scenes').classList.toggle('single',view!=='compare');$('sunSecondFigure').hidden=view!=='compare';$('sunMeasurementControls').hidden=view!=='compare';$('sunSequenceControls').hidden=view!=='sequence';$('sunOverlayControls').hidden=view!=='overlay';$('sunMagnifyA').hidden=view!=='compare';for(const l of document.querySelectorAll('.sunspot-magnify-label'))l.hidden=view!=='compare';$('sunResults').hidden=view!=='compare';$('sunGrid').disabled=view==='overlay';
   $('sunFirstTitle').textContent=view==='compare'?'5월 5일':view==='overlay'?'5월 5일 + 5월 9일':'5월 '+(5+date*2)+'일';$('sunDate').value=date;$('sunDateLabel').textContent='5월 '+(5+date*2)+'일';
   for(const b of document.querySelectorAll('[data-sun-view]'))b.setAttribute('aria-pressed',String(b.dataset.sunView===view));for(const b of document.querySelectorAll('[data-sun-track]'))b.setAttribute('aria-pressed',String(+b.dataset.sunTrack===selected));
   canvases[0].setAttribute('aria-label',view==='compare'?'5월 5일 태양 영상. 클릭 또는 방향키와 Enter로 흑점 위치 선택':$('sunFirstTitle').textContent+' 태양 영상');readings();draw();
@@ -63,12 +65,12 @@
  });
  for(const b of document.querySelectorAll('[data-sun-view]'))b.onclick=()=>{stop();view=b.dataset.sunView;render();$('sunStatus').textContent=view==='compare'?'양쪽 영상에서 같은 흑점의 중심을 선택하세요.':view==='sequence'?'2일 간격의 영상을 비교해 같은 흑점을 추적하세요.':'슬라이더를 움직여 두 날짜의 위치 변화를 비교하세요.';};
  for(const b of document.querySelectorAll('[data-sun-track]'))b.onclick=()=>{selected=+b.dataset.sunTrack;render();$('sunStatus').textContent='흑점 '+b.textContent+'의 위치를 두 날짜에서 선택하세요.';};
- $('sunDate').oninput=e=>{stop();date=+e.target.value;render();};$('sunBlend').oninput=e=>{blend=+e.target.value/100;$('sunBlendLabel').textContent=e.target.value+'%';draw();};$('sunGrid').onchange=e=>{grid=e.target.checked;draw();};
- $('sunPlay').onclick=()=>{if(playing){stop();return;}if(!ready)return;if(date>=2){date=0;render();}playing=true;$('sunPlay').textContent='일시 정지';$('sunPlay').setAttribute('aria-pressed','true');timer=setInterval(()=>{date++;if(date>=2)stop();render();},1600);};
+ $('sunDate').oninput=e=>{stop();fade=null;date=+e.target.value;render();};$('sunBlend').oninput=e=>{blend=+e.target.value/100;$('sunBlendLabel').textContent=e.target.value+'%';draw();};$('sunGrid').onchange=e=>{grid=e.target.checked;draw();};
+ $('sunPlay').onclick=()=>{if(playing){stop();return;}if(!ready)return;if(date>=2){date=0;render();}playing=true;$('sunPlay').textContent='일시 정지';$('sunPlay').setAttribute('aria-pressed','true');timer=setInterval(()=>{const from=date;date++;if(date>=2)stop();crossfade(from);render();},1600);};
  $('sunClear').onclick=()=>{points[selected]=[null,null];render();$('sunStatus').textContent='흑점 '+ 'ABCDE'[selected]+'의 선택을 지웠습니다.';};
  $('resetExperiment').onclick=()=>{stop();points=Array.from({length:5},()=>[null,null]);selected=0;date=0;view='compare';blend=.5;grid=true;cursor=[{x:511,y:512},{x:511,y:512}];$('sunBlend').value=50;$('sunBlendLabel').textContent='50%';$('sunGrid').checked=true;render();$('sunStatus').textContent='양쪽 영상에서 같은 흑점의 중심을 선택하세요.';};
  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
  let lastWidth=0;new ResizeObserver(entries=>{const width=entries[0].contentRect.width;if(width===lastWidth)return;lastWidth=width;requestAnimationFrame(()=>{chart();draw();});}).observe(document.querySelector('.sunspot-lab'));
- Promise.all(frames.map((f,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[i]=im;const c=document.createElement('canvas');c.width=c.height=1024;const ctx=c.getContext('2d');ctx.drawImage(im,0,0);pixels[i]=ctx.getImageData(0,0,1024,1024);resolve();};im.onerror=reject;im.src='data/'+f.file;}))).then(()=>{ready=true;render();$('sunStatus').textContent='양쪽 영상에서 같은 흑점의 중심을 선택하세요.';}).catch(()=>{$('sunStatus').textContent='관측 영상을 불러오지 못했습니다. 페이지를 다시 열어 주세요.';});
+ Promise.all(frames.map((f,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=c.height=1024;const ctx=c.getContext('2d');ctx.drawImage(im,0,0);pixels[i]=ctx.getImageData(0,0,1024,1024);ctx.beginPath();ctx.rect(0,0,1024,1024);ctx.arc(f.cx,f.cy,f.radius+.6,0,Math.PI*2);ctx.fillStyle='#eef3f6';ctx.fill('evenodd');images[i]=c;resolve();};im.onerror=reject;im.src='data/'+f.file;}))).then(()=>{ready=true;render();$('sunStatus').textContent='양쪽 영상에서 같은 흑점의 중심을 선택하세요.';}).catch(()=>{$('sunStatus').textContent='관측 영상을 불러오지 못했습니다. 페이지를 다시 열어 주세요.';});
  window.__sunspot={getState:()=>({ready,view,date,selected,playing,points:JSON.parse(JSON.stringify(points))}),getResults:()=>points.map(p=>api.compare(...p,frames[0],frames[2]))};
 })();

@@ -49,23 +49,28 @@
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
 .layer-mixed { fill: rgba(120, 195, 235, .34); }
-.layer-thermo { fill: rgba(80, 140, 195, .34); }
-.layer-deep { fill: rgba(40, 80, 130, .38); }
-.layer-line { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.2; stroke-dasharray: 4 3; }
-.sea-frame { fill: none; stroke: rgba(177, 226, 230, .6); stroke-width: 1.6; }
+.layer-thermo { }
+.layer-deep { fill: #4f7aa8; }
+.layer-line { stroke: rgba(15, 40, 70, .45); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.sea-frame { fill: none; stroke: #64748b; stroke-width: 1.4; }
 .surface-line { stroke: #64748b; stroke-width: 2; }
 .wind-arrow { stroke: #d97706; stroke-width: 2.2; fill: none; stroke-linecap: round; }
-.swirl { fill: none; stroke: rgba(230, 250, 255, .55); stroke-width: 1.6; }
+.swirl, .swirl-head { fill: none; stroke: #0369a1; stroke-width: 2; stroke-linecap: round; opacity: .75; }
 .sink-arrow { stroke: #0284c7; stroke-width: 2.6; fill: none; stroke-linecap: round; }
 .rise-arrow { stroke: #ffb86b; stroke-width: 2.6; fill: none; stroke-linecap: round; }
 .parcel { stroke: rgba(255, 255, 255, .5); stroke-width: 1.2; }
 
 .salt-seg { stroke: rgba(0, 0, 0, .25); stroke-width: .6; }
-.salt-text { font-size: 13.5px; font-weight: 800; }
-.depth-text { fill: #475569; font-size: 13.5px; font-weight: 800; }
+.salt-text { fill: #1e293b; font-size: 14px; font-weight: 800; }
+.layer-name { fill: #1e3a5f; font-size: 14px; font-weight: 850; }
+.leader { fill: none; stroke: #64748b; stroke-width: 1; }
+.tick { stroke: #94a3b8; stroke-width: 1; }
+.standard-line { stroke: #b45309; stroke-width: 2; stroke-dasharray: 4 3; }
+.standard-text { fill: #b45309; font-size: 14px; font-weight: 850; }
+.depth-text { fill: #475569; font-size: 14px; font-weight: 800; }
 .layer-text { fill: #dfe9ed; font-size: 13.5px; font-weight: 900; }
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
-.small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
+.small-label { fill: #475569; font-size: 14px; font-weight: 800; }
 .read-text { fill: var(--mint); font-size: 14px; font-weight: 900; }
 .note-text { fill: #475569; font-size: 14px; font-weight: 800; }
 
@@ -84,7 +89,7 @@
 .stage-verdict:empty { display: none; }
 .stage-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 3px 20px; margin: 8px 0 0; font-size: 14px; font-weight: 800; color: #334155; line-height: 1.5; }
 .stage-readout:empty { display: none; }
-.stage-note { margin: 8px 0 0; font-size: 13px; font-weight: 700; color: #64748b; line-height: 1.5; }
+.stage-note { margin: 8px 0 0; font-size: 14px; font-weight: 700; color: #64748b; line-height: 1.5; }
 .stage-note:empty { display: none; }
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }

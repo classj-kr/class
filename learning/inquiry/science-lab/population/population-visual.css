@@ -58,8 +58,8 @@
 
 .dish { fill: rgba(90, 160, 210, .12); stroke: rgba(177, 226, 230, .7); stroke-width: 2.2; }
 .dish-full { stroke: #ea580c; }
-.critter { fill: #7ff0d6; }
-.critter.crowded { fill: #c2410c; }
+.critter-body { fill: #e8dcb8; stroke: #8a7346; stroke-width: .7; }
+.critter-core { fill: #a08a5a; }
 .meter-frame { fill: none; stroke: rgba(148, 163, 184, 0.40); stroke-width: 1.3; }
 .meter-fill { stroke: none; fill: rgba(255, 157, 107, .55); }
 
@@ -102,3 +102,4 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+.prediction-buttons button, .control-panel button { word-break: keep-all; }

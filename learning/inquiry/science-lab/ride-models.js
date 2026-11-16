@@ -34,9 +34,13 @@
   }else{
    r=base.acceleration(options);x=r.x;z=motion==='elevator'?r.y:0;vx=r.vx;vz=motion==='elevator'?r.vy:0;ax=r.ax;az=r.az;ay=r.ay;
   }
+  // On the turntable the device is fixed to the platform: its x axis points radially outward and turns
+  // with the platform, so horizontal acceleration is read in that rotating frame.
+  let hx=ax,hy=ay;
+  if(motion==='circle'){const phi=Math.atan2(r.y,r.x);hx=ax*Math.cos(phi)+ay*Math.sin(phi);hy=-ax*Math.sin(phi)+ay*Math.cos(phi);}
   const angle=bodyAngle+mount,c=Math.cos(angle),s=Math.sin(angle);
-  const project=(a,b)=>({x:a*c+b*s,z:-a*s+b*c,y:ay});
-  const linear=project(ax,az),raw=project(ax,az+g),values=sensorMode==='raw'?raw:linear;
+  const project=(a,b)=>({x:a*c+b*s,z:-a*s+b*c,y:hy});
+  const linear=project(hx,az),raw=project(hx,az+g),values=sensorMode==='raw'?raw:linear;
   const magnitude=v=>Math.hypot(v.x,v.y,v.z),reading=axis==='magnitude'?magnitude(values):values[axis];
   return{motion,time:Math.min(t,duration),duration,x,z,y:r?.y||0,vx,vz,ax,ay,az,theta,omega,bodyAngle,deviceAngle:angle,length:L,position,linear,raw,reading,
    acceleration:Math.hypot(ax,ay,az),sensor:magnitude(raw),speed:r?.speed??Math.hypot(vx,vz),atEnd:t>=duration};

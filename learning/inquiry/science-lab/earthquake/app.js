@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             travelTimeContext.stroke();
         });
 
-        observations.forEach((item, index) => {
+        // 점과 점선을 먼저 그리고, 이름표는 세로로 서로 떨어뜨려 겹치지 않게 놓는다.
+        const tags = observations.map(item => {
             const x = xFor(item.calculatedDistance);
             const travelTimes = travelTimesAtDistance(item.calculatedDistance);
             const pY = yFor(travelTimes.pTime);
@@ -182,23 +183,36 @@ document.addEventListener('DOMContentLoaded', () => {
             travelTimeContext.stroke();
             travelTimeContext.setLineDash([]);
             travelTimeContext.beginPath();
-            travelTimeContext.arc(x, pY, 3, 0, Math.PI * 2);
-            travelTimeContext.moveTo(x + 3, sY);
-            travelTimeContext.arc(x, sY, 3, 0, Math.PI * 2);
+            travelTimeContext.arc(x, pY, 3.5, 0, Math.PI * 2);
+            travelTimeContext.moveTo(x + 3.5, sY);
+            travelTimeContext.arc(x, sY, 3.5, 0, Math.PI * 2);
             travelTimeContext.fillStyle = item.color;
             travelTimeContext.fill();
-            travelTimeContext.font = '800 14px system-ui';
-            travelTimeContext.textAlign = 'left';
-            const label = `${item.id} ${item.difference}초`;
+            return { item, x, sY, y: sY - 10 };
+        }).sort((a, b) => a.y - b.y);
+        for (let i = 1; i < tags.length; i++) tags[i].y = Math.max(tags[i].y, tags[i - 1].y + 19);
+        const overflow = tags.length ? Math.max(0, tags[tags.length - 1].y - (plot.bottom - 6)) : 0;
+        tags.forEach(tag => { tag.y -= overflow; });
+        const leftmost = Math.min(...tags.map(tag => tag.x));
+        travelTimeContext.font = '800 14px system-ui';
+        tags.forEach(tag => {
+            const label = `${tag.item.id} ${tag.item.difference}초`;
             const labelWidth = travelTimeContext.measureText(label).width;
-            // 오른쪽 끝에 가까우면 왼쪽에 적어 액자를 넘지 않게 한다
-            const labelX = x + 7 + labelWidth > plot.right ? x - 7 - labelWidth : x + 7;
-            const labelY = ((pY + sY) / 2) - (index * 15) + 8;
+            // 이름표는 세 점선보다 왼쪽에 모아 적고, 가는 선으로 제 점과 잇는다.
+            const labelX = Math.max(plot.left + 4, leftmost - 14 - labelWidth);
+            travelTimeContext.strokeStyle = tag.item.color;
+            travelTimeContext.lineWidth = 1;
+            travelTimeContext.beginPath();
+            travelTimeContext.moveTo(labelX + labelWidth + 3, tag.y - 4);
+            travelTimeContext.lineTo(tag.x - 4, tag.sY);
+            travelTimeContext.stroke();
+            travelTimeContext.textAlign = 'left';
             travelTimeContext.strokeStyle = '#ffffff';
             travelTimeContext.lineWidth = 3;
             travelTimeContext.lineJoin = 'round';
-            travelTimeContext.strokeText(label, labelX, labelY);
-            travelTimeContext.fillText(label, labelX, labelY);
+            travelTimeContext.strokeText(label, labelX, tag.y);
+            travelTimeContext.fillStyle = tag.item.color;
+            travelTimeContext.fillText(label, labelX, tag.y);
         });
 
         travelTimeContext.fillStyle = '#334155';
@@ -222,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="distance-editor">
                     <div class="knob-wrap">
                         <input data-knob="${item.id}" type="range" min="${values.min}" max="${values.max}" step="5" value="${values.initial}" aria-label="${item.id} 관측소의 진앙 거리 노브">
-                        <div class="knob-scale" aria-hidden="true"><span>${values.min}</span><span>${values.max}km</span></div>
+                        <div class="knob-scale" aria-hidden="true"><span>${values.min}</span><span>${values.max} km</span></div>
                     </div>
                     <div class="distance-entry">
                         <input id="distance-${item.id}" data-distance="${item.id}" type="number" inputmode="numeric" min="${values.min}" max="${values.max}" step="1" value="${values.initial}" aria-label="${item.id} 관측소의 진앙 거리">
@@ -393,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultGrid.innerHTML = observations.map(item => `
             <article>
                 <span>${item.id} 관측소</span>
-                <strong><span>PS시 ${item.difference}초 →</span><span>주시곡선 약 ${item.calculatedDistance}km</span></strong>
+                <strong><span>PS시 ${item.difference}초</span><span aria-hidden="true">→</span><span>주시곡선에서 약 ${item.calculatedDistance} km</span></strong>
             </article>
         `).join('');
         resultExplanation.textContent = '';
@@ -430,11 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
         revealed = true;
         resultPanel.dataset.state = correct ? 'correct' : 'incorrect';
         resultSummary.textContent = correct
-            ? `내 예측이 맞았습니다. 진앙에서 약 ${error}km 이내입니다.`
+            ? `내 예측이 맞았습니다. 진앙에서 약 ${error} km 이내입니다.`
             : '조금 더 가까이 눌러보세요. 실제 진앙은 빨간 표시입니다.';
         resultExplanation.textContent = correct
             ? '진앙에서 지도 눈금 한 칸(50km) 안이면 맞은 것으로 판정합니다.'
-            : `현재 선택한 곳은 실제 진앙에서 약 ${error}km 떨어져 있습니다. 빨간 원 안을 다시 클릭해 보세요.`;
+            : `현재 선택한 곳은 실제 진앙에서 약 ${error} km 떨어져 있습니다. 빨간 원 안을 다시 클릭해 보세요.`;
         drawMap();
     }
 

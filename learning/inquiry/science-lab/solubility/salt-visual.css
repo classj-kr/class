@@ -5,47 +5,43 @@
     min-width: 112px;
     max-width: 320px;
     color: var(--muted);
-    transition: max-width .4s ease .3s, min-width .4s ease .3s;
-    overflow: hidden;
-}
-.salt-dose.poured {
-    max-width: 0;
-    min-width: 0;
+    order: 2;
 }
 
-.salt-dose strong { font-size: 13px; }
+.salt-dose strong { font-size: 14px; color: #334155; }
 
 .salt-cup-svg {
-    width: max(130px, min(40vw, 260px, calc(30vh * .633)));
+    width: max(110px, min(18vw, 170px));
     aspect-ratio: 100 / 158;
     display: block;
     transition: opacity .35s ease, transform .35s ease;
 }
-.paper-sheet { fill: #a99a72; }
-.paper-outline { stroke: rgba(40, 32, 16, .5); stroke-width: 2; }
-.paper-crease { stroke: rgba(40, 32, 16, .35); stroke-width: 1.2; stroke-dasharray: 2 2; }
+.paper-sheet { fill: #f8fafc; }
+.paper-outline { stroke: #94a3b8; stroke-width: 1.6; }
+.paper-crease { stroke: #cbd5e1; stroke-width: 1; stroke-dasharray: 2 2; }
 #saltCrystalGroup rect { transition: opacity .2s ease; }
 
-.scale-body { fill: #26383d; stroke: rgba(255, 255, 255, .16); stroke-width: 1.5; }
-.scale-screen { fill: #061512; stroke: rgba(84, 230, 193, .3); stroke-width: 1; }
-.scale-readout { fill: var(--mint); font-size: 14px; font-weight: 950; font-family: 'Courier New', monospace; }
+.scale-body { fill: #e2e8f0; stroke: #94a3b8; stroke-width: 1.5; }
+.scale-screen { fill: #dcfce7; stroke: #64748b; stroke-width: 1; }
+.scale-readout { fill: #14532d; font-size: 14px; font-weight: 950; font-family: 'Courier New', monospace; }
 
-.salt-dose.poured .salt-cup-svg { opacity: 0; transform: translateY(20px); }
-.salt-dose.poured strong { color: var(--mint); }
+.salt-dose.poured .salt-cup-svg { opacity: .35; }
+.salt-dose.poured #saltCrystalGroup { opacity: 0; transition: opacity .3s ease .4s; }
+
 
 .beaker {
     position: relative;
-    width: max(210px, min(42vw, 400px, calc(56vh * .75)));
+    width: max(200px, min(32vw, 330px, calc(52vh * .75)));
     aspect-ratio: 240 / 320;
-    filter: drop-shadow(0 16px 20px rgba(0, 0, 0, .22));
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .14));
 }
 .beaker-svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .beaker-glass { stroke: rgba(177, 226, 230, .78); stroke-width: 5; stroke-linejoin: round; }
 .beaker-rim { stroke: rgba(177, 226, 230, .82); stroke-width: 4; }
 .beaker-shine { pointer-events: none; }
 .water-surface { fill: rgba(190, 238, 250, .4); }
-.tick { stroke: rgba(220, 246, 247, .5); stroke-width: 1.5; }
-.tick-label { fill: rgba(220, 246, 247, .72); font-size: 14px; font-weight: 700; text-anchor: end; }
+.tick { stroke: #4b8aa5; stroke-width: 1.5; }
+.tick-label { fill: #1e5068; font-size: 14px; font-weight: 700; text-anchor: end; }
 #sedimentGroup rect { transition: opacity .2s ease; }
 
 @keyframes waterBob {
@@ -105,3 +101,37 @@
 .op-point { fill: #c2410c; stroke: #0d1f27; stroke-width: 1.6; }
 .op-text { fill: #0284c7; font-size: 14px; font-weight: 900; }
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.prediction-buttons button, .control-panel button { word-break: keep-all; }
+
+/* 실험대: 비커를 가운데, 저울을 옆에 놓고 같은 탁자 위에 세운다 */
+.beaker-stage .apparatus { display: flex; align-items: flex-end; justify-content: center; gap: clamp(18px, 4vw, 48px); padding: 54px 8px 0; border-bottom: 7px solid #d9c7a7; border-radius: 0 0 4px 4px; }
+.beaker { order: 1; }
+
+/* 숟가락: 저울 쪽에서 비커 위로 와서 기울여 붓고 물러난다 */
+.salt-spoon { opacity: 0; transform: translate(250px, -30px); }
+.spoon-handle { stroke: #94a3b8; stroke-width: 6; stroke-linecap: round; fill: none; }
+.spoon-bowl { fill: #cbd5e1; stroke: #64748b; stroke-width: 1.4; }
+.spoon-salt { fill: #f8f4e6; stroke: #d6cba8; stroke-width: .8; }
+.beaker.pouring .salt-spoon { animation: spoonPour 1.1s ease-in-out both; }
+.beaker.pouring .spoon-salt { animation: spoonEmpty 1.1s ease-in both; }
+@keyframes spoonPour {
+    0% { opacity: 0; transform: translate(250px, -30px) rotate(0deg); }
+    20% { opacity: 1; transform: translate(160px, 30px) rotate(0deg); }
+    45%, 75% { opacity: 1; transform: translate(150px, 34px) rotate(38deg); }
+    100% { opacity: 0; transform: translate(240px, -20px) rotate(0deg); }
+}
+@keyframes spoonEmpty { 0%, 40% { opacity: 1; } 70%, 100% { opacity: 0; } }
+
+/* 유리 막대: 젓는 동안 비커 안에서 좌우로 원을 그리듯 움직인다 */
+.stir-rod { opacity: 0; transform: translate(120px, 0); }
+.stir-rod rect:first-child { fill: rgba(226, 240, 246, .75); stroke: #7aa6b8; stroke-width: 1.2; }
+.rod-shine { fill: rgba(255, 255, 255, .9); }
+.beaker.stirring .stir-rod { opacity: 1; animation: rodStir .8s ease-in-out infinite; }
+@keyframes rodStir {
+    0%, 100% { transform: translate(84px, 0) rotate(-7deg); }
+    50% { transform: translate(156px, 0) rotate(7deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .beaker.pouring .salt-spoon, .beaker.pouring .spoon-salt, .beaker.stirring .stir-rod { animation: none; }
+}
+.salt-dose strong { order: 2; }

@@ -78,7 +78,7 @@
 
 /* blood sugar */
 .vessel { fill: rgba(255, 122, 89, .18); stroke: #dc2626; stroke-width: 1.4; }
-.sugar { fill: #c2410c; stroke: rgba(0, 0, 0, .35); stroke-width: .5; }
+.sugar { fill: #f5c518; stroke: #8a6a00; stroke-width: .7; }
 .organ { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.2; }
 .organ-text { fill: #0f172a; font-size: 14px; font-weight: 900; }
 .hormone-bar { stroke: rgba(255, 255, 255, .25); stroke-width: .8; }

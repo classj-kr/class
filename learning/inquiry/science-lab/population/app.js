@@ -12,7 +12,7 @@ const TRIALS = 120;
 
 const state = {
     mode: 'growth',
-    model: 'log', K: 500, n0: 10, r: 0.3, day: DAYS,
+    model: 'log', K: 500, n0: 10, r: 0.3, day: 0,
     dist: 'random', quad: 5, sample: [], trials: [],
     prediction: null, checked: false,
     running: false, phase: 0, dirty: true,
@@ -183,11 +183,12 @@ function drawDish(g) {
     for (let i = 0; i < dots; i += 1) {
         const ang = rand() * Math.PI * 2, rr = Math.sqrt(rand()) * (DISH.r - 9);
         const wob = Math.sin(state.phase * 2 + i) * 1.6;
-        g.appendChild(el('ellipse', {
-            cx: DISH.cx + Math.cos(ang) * rr + wob, cy: DISH.cy + Math.sin(ang) * rr,
-            rx: 4.2, ry: 2.6, transform: `rotate(${Math.round(ang * 57.3)} ${fmt(DISH.cx + Math.cos(ang) * rr + wob, 1)} ${fmt(DISH.cy + Math.sin(ang) * rr, 1)})`,
-            class: `critter${fill > 0.85 ? ' crowded' : ''}`,
-        }));
+        // 짚신벌레: 한쪽이 조금 더 뭉툭한 신발 모양 + 가운데 핵. 붐벼도 색은 바뀌지 않는다.
+        const px = DISH.cx + Math.cos(ang) * rr + wob, py = DISH.cy + Math.sin(ang) * rr;
+        const cr = el('g', { transform: `translate(${fmt(px, 1)} ${fmt(py, 1)}) rotate(${Math.round(ang * 57.3)})`, class: 'critter' });
+        cr.appendChild(el('path', { d: 'M-6,0 C-6,-2.6 -2,-3.2 1,-2.6 C4,-2 6.2,-1.6 6.2,0 C6.2,1.8 3.6,2.8 0.4,2.9 C-3,3 -6,2.4 -6,0 Z', class: 'critter-body' }));
+        cr.appendChild(el('ellipse', { cx: 0.6, cy: 0, rx: 1.4, ry: 1, class: 'critter-core' }));
+        g.appendChild(cr);
     }
     g.appendChild(el('text', { x: DISH.cx, y: 212, 'text-anchor': 'middle', class: 'small-label' },
         `${Math.round(state.day)}일째 · 점은 K를 채운 정도`));
@@ -225,28 +226,32 @@ function drawGrowthGraph(g) {
 
     // The gap between the two curves is what the environment took.
     let band = '', de = '', dl = '';
-    for (let i = 0; i <= 160; i += 1) {
-        const t = (i / 160) * DAYS;
+    // 곡선은 키운 날까지만 그린다. 처음 화면에 40일 곡선 전체가 있으면 예상의 답이 된다.
+    const upto = clamp(state.day, 0, DAYS), N = Math.max(1, Math.round(160 * upto / DAYS));
+    for (let i = 0; i <= N; i += 1) {
+        const t = (i / N) * upto;
         de += `${i ? 'L' : 'M'} ${fmt(X(t), 2)} ${fmt(Y(expAt(t)), 2)} `;
         dl += `${i ? 'L' : 'M'} ${fmt(X(t), 2)} ${fmt(Y(logAt(t)), 2)} `;
     }
-    for (let i = 0; i <= 160; i += 1) {
-        const t = (i / 160) * DAYS;
+    for (let i = 0; i <= N; i += 1) {
+        const t = (i / N) * upto;
         band += `${i ? 'L' : 'M'} ${fmt(X(t), 2)} ${fmt(Y(expAt(t)), 2)} `;
     }
-    for (let i = 160; i >= 0; i -= 1) {
-        const t = (i / 160) * DAYS;
+    for (let i = N; i >= 0; i -= 1) {
+        const t = (i / N) * upto;
         band += `L ${fmt(X(t), 2)} ${fmt(Y(logAt(t)), 2)} `;
     }
-    if (state.n0 < state.K) g.appendChild(el('path', { d: band + 'Z', class: 'resist-band' }));
-    g.appendChild(el('path', { d: de, class: 'exp-line' }));
-    g.appendChild(el('path', { d: dl, class: 'log-line' }));
+    if (upto > 0) {
+        if (state.n0 < state.K) g.appendChild(el('path', { d: band + 'Z', class: 'resist-band' }));
+        g.appendChild(el('path', { d: de, class: 'exp-line' }));
+        g.appendChild(el('path', { d: dl, class: 'log-line' }));
+    }
 
     g.appendChild(el('line', { x1: x0, y1: Y(state.K), x2: x1, y2: Y(state.K), class: 'k-line' }));
     g.appendChild(el('text', { x: x1 - 2, y: Y(state.K) - 5, 'text-anchor': 'end', class: 'axis-text', style: 'fill:#ff9d9d' }, `K = ${state.K}`));
 
     const a = analyse();
-    if (a.peakDay !== null && a.peakDay <= DAYS) {
+    if (a.peakDay !== null && a.peakDay <= state.day) {
         g.appendChild(el('line', { x1: X(a.peakDay), y1: Y(state.K / 2), x2: X(a.peakDay), y2: yBot, class: 'mark-line' }));
         g.appendChild(el('circle', { cx: X(a.peakDay), cy: Y(state.K / 2), r: 3.6, style: 'fill:#d97706' }));
         g.appendChild(el('text', { x: X(a.peakDay) + 5, y: yBot - 6, class: 'axis-text' }, `가장 빠른 때 ${fmt(a.peakDay, 1)}일`));
@@ -355,13 +360,17 @@ function updateReadout() {
         $('valueA').textContent = `${koNum(a.N)}마리`;
         $('labelB').textContent = '늘어나는 빠르기';
         $('valueB').textContent = `${koRate(a.slope)}마리/일`;
-        const rows = [
+        const grown = state.checked && !state.running;
+        const rows = grown ? [
             ['40일 뒤', `${koNum(a.final)}마리`, false],
             ['환경 수용력 K', `${state.K}마리`, false],
             ['환경 저항이 깎는 몫', state.model === 'exp' ? '없음' : `${Math.round(clamp(a.resist, 0, 1) * 100)}%`, false],
             ['가장 빠르게 느는 때', a.peakDay === null ? '해당 없음' : `${fmt(a.peakDay, 1)}일 · ${state.K / 2}마리`, false],
             ['그때의 빠르기', a.peakDay === null ? '해당 없음' : `${fmt(state.r * state.K / 4, 1)}마리/일`, false],
             ['같은 날 지수 성장이라면', `${koNum(expAt(state.day))}마리`, false],
+        ] : [
+            ['지난 날수', `${Math.round(state.day)}일`, false],
+            ['환경 수용력 K', `${state.K}마리`, false],
         ];
         $('dataNote').innerHTML = rows.map(([n, v, m]) =>
             `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
@@ -483,6 +492,13 @@ function markSelected(sel, attr, value) {
     document.querySelectorAll(sel).forEach(b => b.classList.toggle('selected', b.dataset[attr] === String(value)));
 }
 function touch() { state.dirty = true; render(); }
+// 조건을 바꾸면 새 접시로 처음(0일)부터 다시 키운다.
+function newCulture() {
+    if (state.mode !== 'growth') return;
+    state.running = false; state.day = 0; state.checked = false;
+    $('runBtn').textContent = '40일 키우기';
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+}
 
 function applyMode() {
     markSelected('[data-mode]', 'mode', state.mode);
@@ -509,13 +525,13 @@ document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click'
     applyMode();
 }));
 document.querySelectorAll('[data-model]').forEach(b => b.addEventListener('click', () => {
-    state.model = b.dataset.model; markSelected('[data-model]', 'model', state.model); touch();
+    state.model = b.dataset.model; markSelected('[data-model]', 'model', state.model); newCulture(); touch();
 }));
 document.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
-    state.K = Number(b.dataset.k); markSelected('[data-k]', 'k', state.K); touch();
+    state.K = Number(b.dataset.k); markSelected('[data-k]', 'k', state.K); newCulture(); touch();
 }));
 document.querySelectorAll('[data-n0]').forEach(b => b.addEventListener('click', () => {
-    state.n0 = Number(b.dataset.n0); markSelected('[data-n0]', 'n0', state.n0); touch();
+    state.n0 = Number(b.dataset.n0); markSelected('[data-n0]', 'n0', state.n0); newCulture(); touch();
 }));
 document.querySelectorAll('[data-dist]').forEach(b => b.addEventListener('click', () => {
     state.dist = b.dataset.dist; state.trials = []; markSelected('[data-dist]', 'dist', state.dist); touch();
@@ -525,6 +541,7 @@ document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('
 }));
 $('rRange').addEventListener('input', e => {
     state.r = Number(e.target.value);
+    newCulture();
     $('rOutput').textContent = `${fmt(state.r, 2)} /일`;
     touch();
 });
@@ -538,13 +555,13 @@ $('quadRange').addEventListener('input', e => {
 });
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; applyMode(); return; }
-    state.checked = true;
-    if (state.mode === 'growth') { state.day = 0; state.running = true; $('runBtn').textContent = '멈추기'; }
+    state.checked = state.mode !== 'growth';      // 성장은 40일이 다 지난 뒤에(tick) 채점한다
+    if (state.mode === 'growth') { state.checked = false; $('resultEmpty').hidden = false; $('resultContent').hidden = true; state.day = 0; state.running = true; $('runBtn').textContent = '멈추기'; }
     else { state.trials = []; state.running = true; $('runBtn').textContent = '멈추기'; }
     touch();
 });
 $('resetBtn').addEventListener('click', () => {
-    state.mode = 'growth'; state.model = 'log'; state.K = 500; state.n0 = 10; state.r = 0.3; state.day = DAYS;
+    state.mode = 'growth'; state.model = 'log'; state.K = 500; state.n0 = 10; state.r = 0.3; state.day = 0;
     state.dist = 'random'; state.quad = 5; state.trials = []; state.running = false;
     state.prediction = null; state.checked = false;
     $('rRange').value = '0.3'; $('rOutput').textContent = '0.30 /일';

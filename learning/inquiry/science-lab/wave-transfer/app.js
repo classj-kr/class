@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mode = 'transverse';
     let prediction = null;
     let capNote = '';        // set when the spring cannot take the amplitude asked for
+    let measure = 0, measureId = 0;   // 0: not measured yet, 0..1 while the ruler bracket is drawn, 1: measured
 
     const speed = () => Number(speedRange.value);      // cm/s, set by the medium alone
     const freq = () => Number(freqRange.value);        // Hz, set by the hand
@@ -72,9 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let x = X0 - lp; x <= X1 + step; x += step) {
             pts.push(`${x.toFixed(2)},${(CY - ampPx * Math.sin(phaseOf(x, lp))).toFixed(2)}`);
         }
-        out += `<g clip-path="url(#mediumClip)"><path class="rope" d="M${pts.join('L')}">` +
+        // the clip sits on an outer group: on the moving group it would slide with the rope and cut it off near the hand
+        out += `<g clip-path="url(#mediumClip)"><g><path class="rope" d="M${pts.join('L')}">` +
                `</path><animateTransform attributeName="transform" type="translate" ` +
-               `from="0 0" to="${lp.toFixed(1)} 0" dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/></g>`;
+               `from="0 0" to="${lp.toFixed(1)} 0" dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/></g></g>`;
         // Beads sit on the rope but are animated on their own: they only ever
         // move up and down, never to the right.
         for (let k = 0; k < 6; k += 1) {
@@ -87,9 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         out += `<line class="guide" x1="${MARK_X}" y1="${CY - 34}" x2="${MARK_X}" y2="${CY + 34}"/>`;
         // the hand, moving with the end of the rope it is holding
-        out += `<rect class="hand" x="34" y="${CY - 7}" width="16" height="14" rx="4">` +
-               `<animate attributeName="y" values="${samples(CY - 7, ampPx, phaseOf(X0, lp), -1)}" ` +
-               `dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/></rect>`;
+        out += `<g><animateTransform attributeName="transform" type="translate" values="${samples(0, ampPx, phaseOf(X0, lp), -1).split(';').map(v => '0 ' + v).join(';')}" dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/>` + fist(CY) + `</g>`;
         return out;
     }
 
@@ -116,10 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
                    `<animate attributeName="x2" values="${samples(x, ampPx, phaseOf(x, lp), 1)}" dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/></line>`;
         });
         out += `<line class="guide" x1="${markRest}" y1="${CY - 26}" x2="${markRest}" y2="${CY + 26}"/>`;
-        out += `<rect class="hand" x="34" y="${CY - 12}" width="16" height="24" rx="4">` +
-               `<animate attributeName="x" values="${samples(34, ampPx, phaseOf(X0, lp), 1)}" ` +
-               `dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/></rect>`;
+        out += `<line x1="44" y1="${CY}" x2="${X0 + 4}" y2="${CY}" stroke="#7c8b96" stroke-width="2"/>`;
+        out += `<g><animateTransform attributeName="transform" type="translate" values="${samples(0, ampPx, phaseOf(X0, lp), 1).split(';').map(v => v + ' 0').join(';')}" dur="${a.period.toFixed(3)}s" repeatCount="indefinite"/>` + fist(CY) + `</g>`;
         return out;
+    }
+
+    // 줄 끝을 쥔 손: 주먹(손가락 마디)과 손목. 줄은 주먹 속으로 들어가 이어진다.
+    function fist(cy) {
+        return `<path d="M8 ${cy - 7} H30 V${cy + 7} H8 Z" fill="#e7b48c" stroke="#b07a52" stroke-width="1"/>` +
+            `<rect x="28" y="${cy - 12}" width="24" height="24" rx="8" fill="#f2c79f" stroke="#b07a52" stroke-width="1.2"/>` +
+            `<path d="M34 ${cy - 12} V${cy + 12} M40 ${cy - 12} V${cy + 12} M46 ${cy - 12} V${cy + 12}" stroke="#c9946a" stroke-width="1"/>` +
+            `<path d="M30 ${cy + 3} Q38 ${cy + 9} 48 ${cy + 4}" fill="none" stroke="#b07a52" stroke-width="1.2"/>`;
     }
 
     function renderMain(a) {
@@ -131,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="296" y="24" text-anchor="end">파동의 진행 방향</text>`;
 
         out += mode === 'transverse' ? renderTransverse(a) : renderLongitudinal(a);
-        out += `<text class="part-label" x="${MARK_X}" y="118" text-anchor="middle">이 점은 제자리</text>`;
+        out += `<text class="part-label" x="${MARK_X}" y="${CY - 40}" text-anchor="middle">이 점은 제자리</text>`;
 
         // ruler along the medium, marked every 5 cm
         out += `<line class="ruler" x1="${X0}" y1="124" x2="${X1}" y2="124"/>`;
@@ -141,23 +148,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (major) out += `<text class="axis-text" x="${x.toFixed(1)}" y="136" text-anchor="middle">${cm}</text>`;
         }
 
-        // one wavelength measured off against that ruler
-        const fits = a.lambdaPx <= X1 - X0;
-        const spanEnd = fits ? X0 + a.lambdaPx : X1;
-        // dropped clear of the ruler numbers, which sit just above
-        out += `<line class="span-arrow" x1="${X0}" y1="158" x2="${spanEnd.toFixed(1)}" y2="158"/>`;
-        out += `<line class="span-arrow" x1="${X0}" y1="152" x2="${X0}" y2="164"/>`;
-        if (fits) out += `<line class="span-arrow" x1="${spanEnd.toFixed(1)}" y1="152" x2="${spanEnd.toFixed(1)}" y2="164"/>`;
-        const spanText = fits ? `파장 ${a.lambda.toFixed(1)} cm` : `파장 ${a.lambda.toFixed(1)} cm — 화면보다 깁니다`;
-        out += `<text class="span-text" x="${((X0 + spanEnd) / 2).toFixed(1)}" y="153" text-anchor="middle">${spanText}</text>`;
-
-        out += `<text class="read-text" x="${X0}" y="178">파동은 진행하지만 매질은 제자리에서 진동합니다</text>`;
-        out += `<text class="note-text" x="${X0}" y="196">진폭을 ${amp().toFixed(1)} cm로 바꿔도 파장과 속력은 그대로입니다.</text>`;
-        const tail = capNote || (mode === 'longitudinal'
-            ? '빽빽한 곳이 밀, 성긴 곳이 소입니다.'
-            : '줄 위의 점은 위아래로만 움직입니다.');
-        out += `<text class="note-text" x="${X0}" y="209">${tail}</text>`;
         window.scienceScene.render(mainGroup,out);
+    }
+
+    function renderMeasure(a) {
+        let m = '';
+        // one wavelength measured off against that ruler — only after 파장 재기, drawn out from the left
+        const fits = a.lambdaPx <= X1 - X0;
+        const spanFull = fits ? X0 + a.lambdaPx : X1;
+        const spanEnd = X0 + (spanFull - X0) * measure;
+        if (measure > 0) {
+        // dropped clear of the ruler numbers, which sit just above
+        m += `<line class="span-arrow" x1="${X0}" y1="158" x2="${spanEnd.toFixed(1)}" y2="158"/>`;
+        m += `<line class="span-arrow" x1="${X0}" y1="152" x2="${X0}" y2="164"/>`;
+        if (fits && measure >= 1) m += `<line class="span-arrow" x1="${spanEnd.toFixed(1)}" y1="152" x2="${spanEnd.toFixed(1)}" y2="164"/>`;
+        const spanText = fits ? `파장 ${a.lambda.toFixed(1)} cm` : `파장 ${a.lambda.toFixed(1)} cm — 화면보다 깁니다`;
+        if (measure >= 1) m += `<text class="span-text" x="${((X0 + spanEnd) / 2).toFixed(1)}" y="178" text-anchor="middle">${spanText}</text>`;
+        }
+        const g = document.getElementById('wtMeasure');
+        if (g) g.innerHTML = m;
     }
 
     const gx = f => GRAPH.x0 + (f / GRAPH.fMax) * (GRAPH.x1 - GRAPH.x0);
@@ -186,14 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let f = 0.5; f <= 2.501; f += 0.02) pts.push(`${gx(f).toFixed(1)},${gy(v / f).toFixed(1)}`);
             const isCurrent = v === speed();
             out += `<path class="trace${isCurrent ? '' : ' dim'}" style="stroke:${col}" d="M${pts.join('L')}"/>`;
-            out += `<text class="curve-tag" fill="${col}" x="${(gx(0.5) + 5).toFixed(1)}" y="${(gy(v / 0.5) - 6).toFixed(1)}">${v} cm/s</text>`;
+            out += `<text class="curve-tag" fill="${col}" x="${(gx(0.5) - 6).toFixed(1)}" y="${(gy(v / 0.5) + 4).toFixed(1)}" text-anchor="end">${v} cm/s</text>`;
         });
         if (![10, 20, 30].includes(speed())) {
             const pts = [];
             for (let f = 0.5; f <= 2.501; f += 0.02) pts.push(`${gx(f).toFixed(1)},${gy(speed() / f).toFixed(1)}`);
             out += `<path class="trace" style="stroke:#d97706" d="M${pts.join('L')}"/>`;
         }
-        out += `<circle class="trace-dot" cx="${gx(a.f).toFixed(1)}" cy="${gy(a.lambda).toFixed(1)}" r="5" fill="#d97706"/>`;
+        if (measure >= 1) out += `<circle class="trace-dot" cx="${gx(a.f).toFixed(1)}" cy="${gy(a.lambda).toFixed(1)}" r="5" fill="#d97706"/>`;
         window.scienceScene.render(graphGroup,out);
     }
 
@@ -202,18 +211,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function render() {
         const a = analyse();
         renderMain(a);
+        renderMeasure(a);
         renderGraph(a);
         speedOutput.textContent = `${a.v} cm/s`;
         freqOutput.textContent = `${a.f.toFixed(2)} Hz`;
         ampOutput.textContent = `${amp().toFixed(1)} cm`;
-        stageBadge.textContent = `${mode === 'transverse' ? '횡파' : '종파'} · 파장 ${a.lambda.toFixed(1)} cm`;
-        window.scienceScene.render(dataNote,'<p>진동수: ' + a.f.toFixed(2) + ' Hz · 진폭: ' + amp().toFixed(1) + ' cm</p><p>소리는 진동수가 클수록 높고, 진폭이 클수록 큽니다.</p>');
+        stageBadge.textContent = `${mode === 'transverse' ? '횡파' : '종파'} · ${measure >= 1 ? `파장 ${a.lambda.toFixed(1)} cm` : `진동수 ${a.f.toFixed(2)} Hz`}`;
+        const tail = capNote || (mode === 'longitudinal' ? '빽빽한 곳이 밀, 성긴 곳이 소입니다.' : '줄 위의 점은 위아래로만 움직입니다.');
+        window.scienceScene.render(dataNote,'<p>파동은 진행하지만 매질은 제자리에서 진동합니다. ' + tail + '</p><p>진동수 ' + a.f.toFixed(2) + ' Hz · 진폭 ' + amp().toFixed(1) + ' cm — 진폭을 바꿔도 파장과 속력은 그대로입니다. 소리는 진동수가 클수록 높고, 진폭이 클수록 큽니다.</p>');
         return a;
     }
 
-    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; };
+    const clearResult = () => { resultEmpty.hidden = false; resultContent.hidden = true; cancelAnimationFrame(measureId); measure = 0; };
+
+    // 파장 재기: 자 위에 한 파장 길이의 괄호를 왼쪽부터 0.9초 동안 그은 뒤 값을 보여 준다.
+    function measureThen(done) {
+        cancelAnimationFrame(measureId);
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { measure = 1; render(); done(); return; }
+        const t0 = performance.now();
+        const step = now => { measure = Math.min(1, (now - t0) / 900); if (measure < 1) renderMeasure(analyse()); else render(); if (measure < 1) measureId = requestAnimationFrame(step); else done(); };
+        measure = 0.001; measureId = requestAnimationFrame(step);
+    }
 
     function check() {
+        if (measure < 1) { measureThen(check); return; }
         const a = analyse();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -227,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     [speedRange, freqRange, ampRange].forEach(el => el.addEventListener('input', () => {
+        if (el !== ampRange) clearResult();
         render(); if (!resultContent.hidden) check();
     }));
     modeButtons.forEach(button => button.addEventListener('click', () => {

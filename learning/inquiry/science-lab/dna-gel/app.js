@@ -18,9 +18,10 @@ const CIRCULAR_APPARENT = 3500;
 
 const state = {
     det: true, salt: true, cold: true, cut: 'eco',
-    time: 40, elapsed: 40,
+    time: 40, elapsed: 0,
     prediction: null, checked: false,
     running: false, phase: 0,
+    started: false, done: false,
 };
 
 const $ = id => document.getElementById(id);
@@ -97,46 +98,82 @@ function el(tag, attrs, text) {
     return n;
 }
 
-const WELL_Y = 46;
-const LANE_X = { ladder: 150, sample: 270 };
-const BAND_W = 76;
+const WELL_Y = 52;
+const LANE_X = { ladder: 192, sample: 286 };
+const BAND_W = 62;
+const GEL = { x: 128, y: 44, w: 212, h: 164 };
+
+// 전기 영동 장치: 완충액이 담긴 수조 안에 젤이 잠겨 있고, 양 끝 전극은 전선으로 전원 장치에 이어진다.
+function drawApparatus(g, a) {
+    g.appendChild(el('rect', { x: 110, y: 30, width: 248, height: 190, rx: 8, fill: '#eef4f7', stroke: '#7d93a0', 'stroke-width': 2 }));
+    g.appendChild(el('rect', { x: 114, y: 38, width: 240, height: 178, rx: 5, fill: '#cfe6f2', opacity: .85 }));
+    g.appendChild(el('rect', { x: GEL.x, y: GEL.y, width: GEL.w, height: GEL.h, rx: 3, class: 'gel-body', style: 'fill:#f3f8fa;opacity:.95' }));
+    g.appendChild(el('rect', { x: 118, y: 40, width: 232, height: 3, rx: 1.5, class: 'electrode-minus', style: 'fill:#334155' }));
+    g.appendChild(el('rect', { x: 118, y: 211, width: 232, height: 3, rx: 1.5, class: 'electrode-plus', style: 'fill:#c2410c' }));
+    // 단자와 전선
+    g.appendChild(el('circle', { cx: 110, cy: 41, r: 5, fill: '#1f2933' }));
+    g.appendChild(el('circle', { cx: 110, cy: 212, r: 5, fill: '#c2410c' }));
+    g.appendChild(el('path', { d: 'M 105 41 C 92 41 92 60 92 80 L 92 236 L 150 236', fill: 'none', stroke: '#1f2933', 'stroke-width': 2.4 }));
+    g.appendChild(el('path', { d: 'M 105 212 C 98 212 98 222 104 228 L 150 228', fill: 'none', stroke: '#c2410c', 'stroke-width': 2.4 }));
+    g.appendChild(el('text', { x: 87, y: 46, 'text-anchor': 'end', class: 'small-label', style: 'fill:#1f2933' }, '(−)'));
+    g.appendChild(el('text', { x: 87, y: 214, 'text-anchor': 'end', class: 'small-label', style: 'fill:#c2410c' }, '(+)'));
+    // 전원 장치
+    g.appendChild(el('rect', { x: 150, y: 222, width: 120, height: 30, rx: 5, fill: '#e7ecef', stroke: '#6b7f8a', 'stroke-width': 1.6 }));
+    g.appendChild(el('rect', { x: 158, y: 228, width: 52, height: 18, rx: 2, fill: state.running || a.minutes > 0 ? '#1f3a2e' : '#3a4650' }));
+    g.appendChild(el('text', { x: 184, y: 242, 'text-anchor': 'middle', class: 'tiny-label', style: `fill:${state.running || a.minutes > 0 ? '#9ff0c4' : '#9aa7b0'}` }, state.running || a.minutes > 0 ? '100 V' : '0 V'));
+    g.appendChild(el('text', { x: 240, y: 242, 'text-anchor': 'middle', class: 'tiny-label' }, '전원'));
+    if (state.running) {
+        // 전극에서 생기는 작은 기포
+        for (let i = 0; i < 9; i += 1) {
+            const x = 126 + i * 26, rise = (state.phase * 22 + i * 7) % 10;
+            g.appendChild(el('circle', { cx: x, cy: 39 - rise * 0.25, r: 1.4, fill: '#ffffff', stroke: '#7d93a0', 'stroke-width': .6 }));
+            g.appendChild(el('circle', { cx: x + 9, cy: 210 - rise * 0.35, r: 1.2, fill: '#ffffff', stroke: '#7d93a0', 'stroke-width': .6 }));
+        }
+    }
+}
 
 function drawStage(g) {
     const a = analyse();
+    const started = state.started;
 
-    // Extraction tube. The thread count is what the reagents earned.
-    g.appendChild(el('text', { x: 50, y: 18, 'text-anchor': 'middle', class: 'small-label' }, '추출 튜브'));
-    g.appendChild(el('rect', { x: 26, y: 122, width: 48, height: 72, class: 'layer-water' }));
-    g.appendChild(el('rect', { x: 26, y: 46, width: 48, height: 76, class: 'layer-etoh' }));
-    g.appendChild(el('path', { d: 'M 26 46 L 26 182 Q 26 194 38 194 L 62 194 Q 74 194 74 182 L 74 46', class: 'tube-glass' }));
-    const threads = Math.round(a.yield * 7);
-    for (let i = 0; i < threads; i += 1) {
-        const bx = 32 + (i % 4) * 11, by = 108 - Math.floor(i / 4) * 16 + Math.sin(state.phase * 1.4 + i) * 2.2;
-        g.appendChild(el('path', { d: `M ${bx} ${by} q 4 -6 8 0 q 4 6 8 0`, class: 'dna-thread' }));
+    // Extraction tube, set apart from the gel. Threads appear once the reagents are actually used.
+    g.appendChild(el('text', { x: 38, y: 24, 'text-anchor': 'middle', class: 'small-label' }, '추출 튜브'));
+    g.appendChild(el('rect', { x: 16, y: 128, width: 44, height: 70, class: 'layer-water' }));
+    g.appendChild(el('rect', { x: 16, y: 56, width: 44, height: 72, class: 'layer-etoh' }));
+    g.appendChild(el('path', { d: 'M 16 42 L 16 186 Q 16 200 30 200 L 46 200 Q 60 200 60 186 L 60 42', class: 'tube-glass' }));
+    g.appendChild(el('rect', { x: 12, y: 36, width: 52, height: 8, rx: 2, fill: '#cfd8dd', stroke: '#64748b' }));
+    if (started) {
+        const threads = Math.round(a.yield * 7);
+        for (let i = 0; i < threads; i += 1) {
+            const bx = 21 + (i % 3) * 11, by = 116 - Math.floor(i / 3) * 16 + Math.sin(state.phase * 1.4 + i) * 2.2;
+            g.appendChild(el('path', { d: `M ${bx} ${by} q 3 -6 6 0 q 3 6 6 0`, class: 'dna-thread' }));
+        }
     }
-    g.appendChild(el('text', { x: 50, y: 208, 'text-anchor': 'middle', class: 'read-text' }, `${Math.round(a.yield * 100)}%`));
+    if (state.done) g.appendChild(el('text', { x: 38, y: 218, 'text-anchor': 'middle', class: 'read-text verdict-text' }, `${Math.round(a.yield * 100)}%`));
 
-    // Gel with its two lanes.
-    g.appendChild(el('rect', { x: 96, y: 30, width: 242, height: 5, rx: 2, class: 'electrode-minus' }));
-    g.appendChild(el('text', { x: 92, y: 36, 'text-anchor': 'end', class: 'small-label', style: 'fill:#0284c7' }, '(−)'));
-    g.appendChild(el('rect', { x: 96, y: 205, width: 242, height: 5, rx: 2, class: 'electrode-plus' }));
-    g.appendChild(el('text', { x: 92, y: 211, 'text-anchor': 'end', class: 'small-label', style: 'fill:#ea580c' }, '(+)'));
-    g.appendChild(el('rect', { x: 96, y: 40, width: 242, height: 160, rx: 6, class: 'gel-body' }));
-    g.appendChild(el('text', { x: LANE_X.ladder, y: 22, 'text-anchor': 'middle', class: 'part-label' }, '표준자'));
-    g.appendChild(el('text', { x: LANE_X.sample, y: 22, 'text-anchor': 'middle', class: 'part-label' }, '시료'));
+    drawApparatus(g, a);
+    g.appendChild(el('text', { x: LANE_X.ladder, y: 24, 'text-anchor': 'middle', class: 'part-label' }, '표준자'));
+    g.appendChild(el('text', { x: LANE_X.sample, y: 24, 'text-anchor': 'middle', class: 'part-label' }, '시료'));
 
     ['ladder', 'sample'].forEach(k => {
         g.appendChild(el('rect', { x: LANE_X[k] - BAND_W / 2, y: WELL_Y - 6, width: BAND_W, height: 6, class: 'well' }));
     });
+    if (!started) {
+        // 홈에 넣은 시료(푸른 추적 색소)만 보이고, 아직 띠는 없다.
+        ['ladder', 'sample'].forEach(k => g.appendChild(el('rect', { x: LANE_X[k] - BAND_W / 2 + 2, y: WELL_Y - 5, width: BAND_W - 4, height: 4, fill: '#5b7bd5', opacity: .75 })));
+        return;
+    }
+    // 추적 색소가 앞장서 내려간다
+    const dyeY = WELL_Y + Math.min(LANE, 1.05 * RATE * a.minutes);
+    ['ladder', 'sample'].forEach(k => g.appendChild(el('rect', { x: LANE_X[k] - BAND_W / 2 + 2, y: dyeY - 1.5, width: BAND_W - 4, height: 3, fill: '#5b7bd5', opacity: .45 })));
 
-    // Early in the run the ladder has not resolved, so most labels would land
-    // on top of each other. Only the ones far enough apart to read get one.
+    // Ladder labels only where they are far enough apart to read.
     let lastLabel = -99;
     LADDER.forEach(bp => {
         const y = WELL_Y + travel(bp, a.minutes);
         g.appendChild(el('rect', { x: LANE_X.ladder - BAND_W / 2, y: y - 2, width: BAND_W, height: 4, rx: 1.5, class: 'band ladder' }));
-        if (y - lastLabel >= 11) {
-            g.appendChild(el('text', { x: LANE_X.ladder - BAND_W / 2 - 4, y: y + 3, 'text-anchor': 'end', class: 'tiny-label' }, String(bp)));
+        if (y - lastLabel >= 15 && a.minutes > 0) {
+            g.appendChild(el('text', { x: LANE_X.ladder - BAND_W / 2 - 4, y: y + 4, 'text-anchor': 'end', class: 'tiny-label' }, String(bp)));
             lastLabel = y;
         }
     });
@@ -149,30 +186,33 @@ function drawStage(g) {
             class: `band ${f.piled ? 'piled' : 'sample'}`, style: `opacity:${fmt(alpha, 3)}`,
         }));
     });
+    if (!state.done) {
+        g.appendChild(el('text', { x: 368, y: 120, class: 'small-label' }, `${Math.round(a.minutes)}분`));
+        return;
+    }
     if (!a.seen.length) {
-        g.appendChild(el('text', { x: LANE_X.sample, y: 120, 'text-anchor': 'middle', class: 'warn-text' }, '띠가 보이지 않음'));
+        g.appendChild(el('text', { x: LANE_X.sample, y: 130, 'text-anchor': 'middle', class: 'warn-text' }, '띠 없음'));
     }
 
-    // Sizes read off the ladder, listed rather than crammed onto the bands.
-    g.appendChild(el('text', { x: 352, y: 22, class: 'small-label' }, '읽은 크기'));
+    // Sizes read off the ladder, listed beside the tank after the run.
+    g.appendChild(el('text', { x: 368, y: 24, class: 'small-label' }, '읽은 크기'));
     a.seen.slice(0, 5).forEach((f, i) => {
-        const ty = 42 + i * 20;
-        g.appendChild(el('rect', { x: 352, y: ty - 7, width: 12, height: 5, rx: 1.5, class: `band ${f.piled ? 'piled' : 'sample'}` }));
-        g.appendChild(el('text', { x: 370, y: ty, class: 'part-label' },
-            f.piled ? '젤 끝' : (f.read === null ? '아직 못 잼' : `${Math.round(f.read / 10) * 10} bp`)));
+        const ty = 48 + i * 22;
+        g.appendChild(el('rect', { x: 368, y: ty - 7, width: 12, height: 5, rx: 1.5, class: `band ${f.piled ? 'piled' : 'sample'}` }));
+        g.appendChild(el('text', { x: 385, y: ty, class: 'part-label' },
+            f.piled ? '젤 끝' : (f.read === null ? '못 잼' : `${Math.round(f.read / 10) * 10} bp`)));
     });
     if (!a.seen.length) {
-        g.appendChild(el('text', { x: 352, y: 150, class: 'warn-text' }, '건진 DNA가'));
-        g.appendChild(el('text', { x: 352, y: 163, class: 'warn-text' }, '너무 적습니다'));
+        g.appendChild(el('text', { x: 368, y: 150, class: 'warn-text' }, '건진 DNA가'));
+        g.appendChild(el('text', { x: 368, y: 168, class: 'warn-text' }, '너무 적음'));
     } else if (a.minutes < 1) {
-        g.appendChild(el('text', { x: 352, y: 150, class: 'warn-text' }, '아직 달리지'));
-        g.appendChild(el('text', { x: 352, y: 163, class: 'warn-text' }, '않았습니다'));
+        g.appendChild(el('text', { x: 368, y: 150, class: 'warn-text' }, '아직 안'));
+        g.appendChild(el('text', { x: 368, y: 168, class: 'warn-text' }, '움직임'));
     } else if (a.seen.some(f => f.piled)) {
-        g.appendChild(el('text', { x: 352, y: 150, class: 'warn-text' }, '젤 끝에 몰려'));
-        g.appendChild(el('text', { x: 352, y: 163, class: 'warn-text' }, '크기를 못 읽음'));
+        g.appendChild(el('text', { x: 368, y: 150, class: 'warn-text' }, '젤 끝에 몰려'));
+        g.appendChild(el('text', { x: 368, y: 168, class: 'warn-text' }, '못 읽음'));
     }
-    g.appendChild(el('text', { x: 352, y: 190, class: 'small-label' }, `${Math.round(a.minutes)}분`));
-    g.appendChild(el('text', { x: 352, y: 203, class: 'tiny-label' }, '100 V'));
+    g.appendChild(el('text', { x: 368, y: 200, class: 'small-label' }, `${Math.round(a.minutes)}분`));
 }
 
 function drawGraph(g) {
@@ -240,9 +280,9 @@ function updateReadout() {
         ['표준자 눈금', a.minutes > 0 ? `10배마다 ${fmt(a.mmPerDecade, 1)} mm` : '아직 달리지 않음', false],
         ['젤 끝에 닿은 띠', a.seen.filter(f => f.piled).length ? `${a.seen.filter(f => f.piled).length}개` : '없음', !a.seen.some(f => f.piled)],
     ];
-    $('dataNote').innerHTML = rows.map(([n, v, m]) =>
+    $('dataNote').innerHTML = !state.done ? '' : rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
-    if (state.checked) explain(a);
+    if (state.checked && state.done) explain(a);
 }
 
 const WORDS = { p1: '거의 다', p2: '절반쯤', p3: '거의 못 건짐' };
@@ -251,6 +291,7 @@ function explain(a) {
     $('resultEmpty').hidden = true;
     $('resultContent').hidden = false;
     const v = a.verdict;
+    $('predictionResult').hidden = !state.prediction;
     if (state.prediction) {
         const ok = state.prediction === v;
         $('predictionResult').textContent = ok ? `예상이 맞았습니다 — ${WORDS[v]}.`
@@ -296,7 +337,7 @@ function tick(dt) {
     if (state.elapsed >= state.time) {
         state.running = false;
         $('runBtn').textContent = '전기 영동 시작';
-        state.checked = true;
+        state.checked = true; state.done = true;
         return true;
     }
     return false;
@@ -306,12 +347,18 @@ let last = 0;
 function frame(now) {
     const dt = Math.min(0.05, (now - last) / 1000 || 0);
     last = now;
-    tick(dt);
-    render();
+    // 달리는 동안에만 다시 그린다(멈춰 있을 때는 그림이 그대로).
+    if (state.running) { tick(dt); render(); }
     requestAnimationFrame(frame);
 }
 
 // --- wiring -----------------------------------------------------------------
+// 조건이 바뀌면 젤을 새로 부은 것처럼 되돌리고, 결과는 다시 달린 뒤에만 보인다.
+function unrun() {
+    state.running = false; state.started = false; state.done = false; state.elapsed = 0; state.checked = false;
+    $('runBtn').textContent = '전기 영동 시작';
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+}
 function markSelected(sel, attr, value) {
     document.querySelectorAll(sel).forEach(b => b.classList.toggle('selected', b.dataset[attr] === String(value)));
 }
@@ -323,37 +370,38 @@ function syncMarks() {
 }
 
 document.querySelectorAll('[data-det]').forEach(b => b.addEventListener('click', () => {
-    state.det = b.dataset.det === '1'; syncMarks(); render();
+    state.det = b.dataset.det === '1'; unrun(); syncMarks(); render();
 }));
 document.querySelectorAll('[data-salt]').forEach(b => b.addEventListener('click', () => {
-    state.salt = b.dataset.salt === '1'; syncMarks(); render();
+    state.salt = b.dataset.salt === '1'; unrun(); syncMarks(); render();
 }));
 document.querySelectorAll('[data-cold]').forEach(b => b.addEventListener('click', () => {
-    state.cold = b.dataset.cold === '1'; syncMarks(); render();
+    state.cold = b.dataset.cold === '1'; unrun(); syncMarks(); render();
 }));
 document.querySelectorAll('[data-cut]').forEach(b => b.addEventListener('click', () => {
-    state.cut = b.dataset.cut; syncMarks(); render();
+    state.cut = b.dataset.cut; unrun(); syncMarks(); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
     state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
 }));
 $('timeRange').addEventListener('input', e => {
     state.time = Number(e.target.value);
-    state.elapsed = state.time;
-    state.running = false;
+    unrun();
     $('runBtn').textContent = '전기 영동 시작';
     $('timeOutput').textContent = `${state.time}분`;
     render();
 });
 $('runBtn').addEventListener('click', () => {
     if (state.running) { state.running = false; $('runBtn').textContent = '전기 영동 시작'; return; }
-    state.elapsed = 0; state.running = true; state.checked = true;
+    state.elapsed = 0; state.running = true; state.checked = true; state.started = true; state.done = false;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { state.elapsed = state.time; state.running = false; state.done = true; render(); return; }
     $('runBtn').textContent = '멈추기';
     render();
 });
 $('resetBtn').addEventListener('click', () => {
     state.det = true; state.salt = true; state.cold = true; state.cut = 'eco';
-    state.time = 40; state.elapsed = 40; state.running = false;
+    state.time = 40; state.elapsed = 0; state.running = false; state.started = false; state.done = false;
     state.prediction = null; state.checked = false;
     $('timeRange').value = '40'; $('timeOutput').textContent = '40분';
     $('runBtn').textContent = '전기 영동 시작';
@@ -389,6 +437,7 @@ window.__gelModel = {
     setTime(v) { const r = $('timeRange'); r.value = String(v); r.dispatchEvent(new Event('input')); },
     check() { state.checked = true; explain(analyse()); },
     runToEnd(dt = 1 / 30) {
+        if (state.running) $('runBtn').click();
         $('runBtn').click();
         let steps = 0;
         while (state.running && steps < 20000) { tick(dt); steps += 1; }
@@ -396,3 +445,6 @@ window.__gelModel = {
         return { steps, elapsed: state.elapsed };
     },
 };
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

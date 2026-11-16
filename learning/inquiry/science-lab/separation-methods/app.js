@@ -218,7 +218,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* -------------------------------------------------------- distillation */
-    function renderDistill(a,p) { return window.ScienceScenes.distill(a,p); }
+    // 증류 장치(이 실험 전용): 둥근바닥 플라스크 → 리비히 냉각기(받침대·집게로 고정) → 받는 용기.
+    // 가열하면 플라스크 목에 김이 오르고, 김이 냉각기를 지나며 식어 끝에서 방울로 떨어져 받는 용기에 모인다.
+    function renderDistill(a, p) {
+        const ink = '#173449', hot = '#c65320', cold = '#1676a5';
+        const T = (x, y, t, c = ink, an = 'middle') => `<text x="${x}" y="${y}" text-anchor="${an}" style="fill:${c};stroke:none;font-size:14px;font-weight:600">${t}</text>`;
+        const P = (d, c, w = 2, extra = '') => `<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${extra}/>`;
+        const arrowTo = (x1, y1, x2, y2, c, w = 3, extra = '') => { const an = Math.atan2(y2 - y1, x2 - x1), co = Math.cos(an), si = Math.sin(an); return `<g ${extra}>${P(`M${x1} ${y1} L${x2 - co * 8} ${y2 - si * 8}`, c, w)}<polygon points="${x2},${y2} ${x2 - 9 * co + 4 * si},${y2 - 9 * si - 4 * co} ${x2 - 9 * co - 4 * si},${y2 - 9 * si + 4 * co}" fill="${c}"/></g>`; };
+        const vapour = p > .2, collected = Math.max(0, (p - .4) / .6), liquidY = 130 + 15 * collected, now = performance.now() / 1000;
+        const flask = 'M72 60 H90 V106 C124 122 127 158 103 171 Q81 185 59 171 C35 157 39 122 72 106 Z';
+        let o = `<defs><clipPath id="sepFlask"><path d="${flask}"/></clipPath></defs>`;
+        o += T(81, 24, '가열') + T(246, 24, '냉각') + T(387, 24, '수집');
+        // retort stand for the flask and a second stand clamping the condenser
+        o += `<rect x="14" y="198" width="60" height="6" rx="2" fill="#5b6f7c"/><rect x="20" y="40" width="5" height="160" rx="2" fill="#8aa0ae"/><path d="M22 92 H62" stroke="#8aa0ae" stroke-width="4"/><rect x="58" y="86" width="10" height="12" rx="3" fill="#3d5566"/>`;
+        o += `<rect x="196" y="198" width="60" height="6" rx="2" fill="#5b6f7c"/><rect x="223" y="104" width="5" height="96" rx="2" fill="#8aa0ae"/><rect x="214" y="96" width="22" height="14" rx="4" fill="#3d5566" transform="rotate(15 225 103)"/>`;
+        o += `<path data-apparatus="flask" d="${flask}" fill="#f2f9fc" stroke="#7799aa" stroke-width="2"/>`;
+        o += `<g clip-path="url(#sepFlask)"><rect data-liquid="remaining" x="35" y="${liquidY}" width="100" height="60" fill="#8bc6dd"/>${P(`M38 ${liquidY} Q65 ${liquidY - 5} 85 ${liquidY} T130 ${liquidY}`, cold, 1.5)}`;
+        if (vapour) for (let i = 0; i < 7; i += 1) { const f = (now * (0.9 + (i % 3) * 0.2) + i * 0.37) % 1; o += `<circle cx="${52 + i * 8}" cy="${(liquidY + 30 - f * 28).toFixed(1)}" r="${(1.6 + f * 1.8).toFixed(1)}" fill="#f6fcff" stroke="#6fa8c2" stroke-width=".7" opacity="${(1 - f * .6).toFixed(2)}"/>`; }
+        if (vapour) for (let i = 0; i < 3; i += 1) { const f = (now * 0.6 + i / 3) % 1; o += `<circle cx="${76 + (i - 1) * 4}" cy="${(108 - f * 40).toFixed(1)}" r="${(3 + f * 2).toFixed(1)}" fill="#ffffff" opacity="${(0.75 * (1 - f)).toFixed(2)}"/>`; }
+        o += `</g>`;
+        o += `<rect x="46" y="177" width="70" height="22" rx="5" fill="#344f60"/>` + P('M53 175 Q81 189 109 175', hot, 5);
+        o += `<circle cx="103" cy="188" r="3" fill="${p > 0 ? '#ffb463' : '#94a3b8'}"/>` + T(77, 193, '전열기', '#ffffff');
+        o += P('M82 58 V88', '#334e60', 3) + `<circle cx="82" cy="91" r="3" fill="${hot}"/>`;
+        o += P('M90 74 H130 L340 130 V150 H379 V159', '#8aa7b6', 8) + P('M90 74 H130 L340 130 V150 H379 V159', '#edf8fc', 5);
+        o += `<path data-apparatus="condenser" d="M143 65 L326 114 L320 139 L137 90 Z" fill="#b6e3ef" fill-opacity=".75" stroke="#6da6bb" stroke-width="1.8"/>`;
+        o += P('M140 78 L324 127', vapour ? '#d99452' : '#8199a5', 3, `data-flow="vapour" stroke-dasharray="6 6" stroke-dashoffset="${(-p * 100 - now * 30).toFixed(1)}"`);
+        o += arrowTo(307, 163, 314, 137, cold, 2.5, 'data-flow="coolant-in"') + T(300, 186, '냉각수 입구');
+        o += arrowTo(151, 64, 158, 40, cold, 2.5, 'data-flow="coolant-out"') + T(179, 51, '출구', cold);
+        o += arrowTo(282, 124, 187, 99, cold, 1.5);
+        o += `<path data-apparatus="receiver" d="M353 154 V195 Q353 199 357 199 H409 Q413 199 413 195 V154" fill="#f5fafc" stroke="#7898aa" stroke-width="2"/>`;
+        o += `<rect data-liquid="collected" x="355" y="${197 - collected * 27}" width="56" height="${collected * 27}" fill="#8bc6dd"/>`;
+        // drops forming at the outlet and falling into the receiver
+        if (collected > 0 && p < 1) for (let i = 0; i < 2; i += 1) { const f = (now * 1.4 + i * .5) % 1, top = 160, bottom = 196 - collected * 27; o += `<path d="M379 ${(top + f * (bottom - top) - 4).toFixed(1)} q3 4 0 7 q-3 -3 0 -7 z" fill="${cold}"/>`; }
+        o += T(386, 140, '받는 용기');
+        return `<g data-scene-refined="true">${o}</g>`;
+    }
 
     /* ----------------------------------------------------- chromatography */
     function renderChroma(a, p) {
@@ -270,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode === 'filter') out += renderFilter(a, p);
         else if (mode === 'distill') out += renderDistill(a, p);
         else out += renderChroma(a, p);
-        out += `<text class="verdict-text" fill="${VERDICT_TONE[a.verdict]}" x="20" y="26">${MODE_NAME[mode]} · ${a.mix.label} → ${VERDICT[a.verdict]}</text>`;
+        if (p >= 1) out += `<text class="verdict-text" fill="${VERDICT_TONE[a.verdict]}" x="20" y="26">${MODE_NAME[mode]} · ${a.mix.label} → ${VERDICT[a.verdict]}</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -314,7 +348,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return out;
     }
 
-    function graphDistill(a) { return window.ScienceScenes.distillGraph(progress()); }
+    function graphDistill(a) {
+        const pr = progress(), collected = Math.max(0, (pr - .4) / .6), ink = '#173449';
+        const steps = ['액체 가열', '기화', '증기 냉각', '응결·수집'];
+        let o = '';
+        steps.forEach((label, i) => {
+            const on = pr > [0, .2, .3, .4][i], x = 18 + i * 111;
+            o += `<rect x="${x}" y="14" width="92" height="40" rx="8" fill="${on ? '#e4f4f4' : '#f1f5f8'}" stroke="${on ? '#6aafa8' : '#d5e1e8'}"/><circle cx="${x + 12}" cy="34" r="4" fill="${on ? '#167858' : '#9db0bd'}"/><text x="${x + 52}" y="39" text-anchor="middle" style="fill:${ink};font-size:14px;font-weight:600">${label}</text>`;
+            if (i < 3) o += `<path d="M${x + 95} 34 H${x + 107}" stroke="#516779" stroke-width="1.8"/><polygon points="${x + 109},34 ${x + 104},31 ${x + 104},37" fill="#516779"/>`;
+        });
+        // how much liquid is where: flask vs receiver (same model as the drawing)
+        const left = 1 - 0.45 * collected, got = collected;
+        const bar = (y, label, v, color) => `<text x="18" y="${y + 15}" style="fill:${ink};font-size:14px;font-weight:600">${label}</text><rect x="150" y="${y}" width="270" height="20" rx="4" fill="#f1f5f8" stroke="#d5e1e8"/><rect x="150" y="${y}" width="${(270 * v).toFixed(1)}" height="20" rx="4" fill="${color}"/>`;
+        o += bar(86, '플라스크에 남은 액체', left, '#8bc6dd') + bar(124, '받는 용기에 모인 액체', got * 0.45, '#1676a5');
+        o += `<text x="150" y="172" style="fill:#516779;font-size:14px;font-weight:600">막대 길이: 처음 플라스크 액체 양에 견준 비율</text>`;
+        return o;
+    }
 
     function graphChroma(a) {
         const gx = rf => GRAPH.x0 + rf * (GRAPH.x1 - GRAPH.x0);
@@ -371,8 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode === 'filter') {
             return `<div class="data-row"><span class="data-name">거름종이 구멍</span><span class="data-val">${PORE_MM} mm</span></div>` +
                 a.mix.parts.map(part =>
-                    `<div class="data-row"><span class="data-name">${part.n}</span><span class="data-val">${part.size} mm ${part.dissolved ? '(물에 녹아 있음)' : ''} → ${a.caught.includes(part) ? '걸러짐' : '통과'}</span></div>`).join('') +
-                `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`;
+                    `<div class="data-row"><span class="data-name">${part.n}</span><span class="data-val">${part.size} mm ${part.dissolved ? '(물에 녹아 있음)' : ''}${progress() >= 1 ? ` → ${a.caught.includes(part) ? '걸러짐' : '통과'}` : ''}</span></div>`).join('') +
+                (progress() >= 1 ? `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>` : '');
         }
         if (mode === 'distill') {
             return '<p>기화와 응결로 성분을 분리하는 정성 모형입니다. 실제 온도·시간·수율은 계산하지 않습니다. 물과 에탄올은 함께 기화하며 한 번의 증류로 순수 에탄올만 얻는 것은 아닙니다. 가열은 교사의 안전 지도 아래 수행합니다.</p>';
@@ -381,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<div class="data-row"><span class="data-name">용매가 간 거리</span><span class="data-val">${rise.toFixed(0)} 칸</span></div>` +
             a.sorted.map(part =>
                 `<div class="data-row"><span class="data-name">${part.n}</span><span class="data-val">${(rise * part.rf).toFixed(0)} 칸 ÷ ${rise.toFixed(0)} 칸 = Rf ${part.rf.toFixed(2)}</span></div>`).join('') +
-            `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>`;
+            (progress() >= 1 ? `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">${VERDICT[a.verdict]}</span></div>` : '');
     }
 
     /* ----------------------------------------------------------- the run */

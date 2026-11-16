@@ -4,11 +4,14 @@
 .solution-buttons button { border: 1px solid var(--line); border-radius: 12px; background: #ffffff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1); color: var(--muted); font-weight: 850; cursor: pointer; padding: 10px 4px; }
 .solution-buttons button.selected { border-color: var(--primary); background: var(--primary-light); box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2); color: #0369a1; }
 
+.apparatus { display: flex; justify-content: center; padding: 4px 0 6px; }
 .beaker {
+    --bw: max(210px, min(36vw, 340px, calc(52vh * .75)));
     position: relative;
-    width: max(210px, min(42vw, 400px, calc(56vh * .75)));
+    width: var(--bw);
+    margin-top: calc(var(--bw) * 1.3333 * .27);
     aspect-ratio: 240 / 320;
-    filter: drop-shadow(0 16px 20px rgba(0, 0, 0, .22));
+    filter: drop-shadow(0 12px 16px rgba(0, 0, 0, .16));
 }
 .beaker-svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .beaker-glass { stroke: rgba(177, 226, 230, .78); stroke-width: 5; stroke-linejoin: round; }
@@ -39,14 +42,14 @@
    positions each strip independently so they never overlap each other. */
 .litmus-wrap {
     position: absolute;
-    top: 4%;
-    bottom: 22%;
+    top: -25%;
+    height: 42%;
     width: auto;
-    aspect-ratio: 20 / 220;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .22));
+    aspect-ratio: 20 / 120;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .18));
 }
-.litmus-red { left: 14%; }
-.litmus-blue { left: 30%; }
+.litmus-red { left: 33%; }
+.litmus-blue { left: 57%; }
 /* Dipping moves the strip further down into the solution, then back up — the
    color change (below) is timed to land partway through this motion. The
    translateY is set inline by app.js (measureDip) on the inner .litmus-svg,
@@ -54,12 +57,15 @@
    visual effect in testing (confirmed with getBoundingClientRect — the div's
    own box stayed still while an identical transform on its child svg moved
    correctly), so the svg carries the motion and this transition. */
-.litmus-svg { width: 100%; height: 100%; display: block; overflow: visible; transition: transform .4s ease-in; }
-.litmus-wrap.dipping .litmus-svg { transition-timing-function: ease-out; }
-.litmus-outline { stroke: rgba(255, 255, 255, .4); stroke-width: 1.5; }
+.litmus-svg { width: 100%; height: 100%; display: block; overflow: visible; transition: transform .9s ease-in-out; }
+.litmus-wrap.dipping .litmus-svg { transition: transform .45s cubic-bezier(.4, 0, .6, 1); }
+
+.litmus-strip-base { stroke: rgba(15, 23, 42, .18); stroke-width: .6; }
+.litmus-fibre { fill: none; stroke: rgba(255, 255, 255, .28); stroke-width: .7; stroke-linecap: round; }
+.tweezer { fill: #94a3b8; stroke: #64748b; stroke-width: .8; }
 /* The colour change spreads up from the wetted bottom edge like real
    capillary action, instead of the whole strip flipping colour at once. */
-#redChangeClipRect, #blueChangeClipRect { transition: y .6s ease-out, height .6s ease-out; }
+#redChangeClipRect, #blueChangeClipRect { transition: y .7s ease-out, height .7s ease-out; }
 
 @media (max-width: 600px) {
     .solution-buttons { grid-template-columns: repeat(2, 1fr); }
@@ -88,3 +94,4 @@
 .stage-readout:empty { display: none; }
 .stage-note { margin: 8px 0 0; font-size: 13px; font-weight: 700; color: #64748b; line-height: 1.5; }
 .stage-note:empty { display: none; }
+.prediction-buttons button, .control-panel button { word-break: keep-all; }

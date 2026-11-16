@@ -83,8 +83,13 @@
 .field.snow { fill: #e2e8f0; }
 .field.soil { fill: #4a3a26; }
 .field.mixed { fill: #8a7a5a; }
-.bird { stroke: rgba(0, 0, 0, .35); stroke-width: .6; }
-.beak { fill: #ffb347; stroke: rgba(0, 0, 0, .35); stroke-width: .5; }
+.bird { fill: #d8c3a5; stroke: #4a3a2a; stroke-width: .8; }
+.bird-wing { fill: #a88a66; stroke: #4a3a2a; stroke-width: .6; }
+.bird-tail { fill: #8a6d4e; stroke: #4a3a2a; stroke-width: .6; }
+.bird-leg { stroke: #4a3a2a; stroke-width: 1; }
+.bird-eye { fill: #1f1a14; }
+.beak { fill: #f0b43c; stroke: #7a4a0c; stroke-width: .7; stroke-linejoin: round; }
+.beak-gape { stroke: #7a4a0c; stroke-width: .6; }
 .seed-small { fill: #e9d57a; }
 .seed-large { fill: #b98a4a; }
 .mouse { stroke: rgba(0, 0, 0, .35); stroke-width: .6; }

@@ -6,6 +6,6 @@
    observations:[['여러 저기압 중 한반도 서쪽의 전선을 동반한 저기압을 찾으세요.','한반도 서쪽의 구름과 그 동쪽 경계를 비교하세요.','강수 구역이 주로 한반도 서쪽에 분포합니다.'],['전선을 동반한 저기압이 한반도 쪽으로 이동했습니다.','구름 띠가 한반도와 동쪽으로 이어집니다.','강수 구역이 한반도에 넓게 분포합니다.'],['전선을 동반한 저기압이 동해 쪽으로 이동했습니다.','구름 띠가 동쪽으로 이동한 모습을 비교하세요.','강수 구역이 동쪽으로 이동했지만 일부 지역에 남아 있습니다.']]}
  };
  const kinds={chart:'지상 일기도',satellite:'적외 위성 영상',radar:'레이더 영상'};
- function snapshot(caseId,index,kind){if(!cases[caseId]||!kinds[kind])throw Error('Unknown weather series');index=Number.isFinite(+index)?Math.min(2,Math.max(0,Math.round(+index))):0;const c=cases[caseId];return{caseId,index,kind,title:c.title,time:c.times[index],iso:c.iso[index],file:'assets/'+caseId+'-'+kind+'-'+index+'.webp',observation:c.observations[index][Object.keys(kinds).indexOf(kind)],baseWidth:kind==='chart'?(caseId==='autumn'?320:index===0?480:385):480};}
+ function snapshot(caseId,index,kind){if(!cases[caseId]||!kinds[kind])throw Error('Unknown weather series');index=Number.isFinite(+index)?Math.min(2,Math.max(0,Math.round(+index))):0;const c=cases[caseId];return{caseId,index,kind,title:c.title,time:c.times[index],iso:c.iso[index],file:'assets/'+caseId+'-'+kind+'-'+index+'.webp',observation:c.observations[index][Object.keys(kinds).indexOf(kind)],baseWidth:kind==='chart'?(caseId==='autumn'?620:index===0?680:545):560};}
  const api={cases,kinds,snapshot};if(typeof module!=='undefined')module.exports=api;else root.WeatherAnalysisModel=api;
 })(typeof window==='undefined'?globalThis:window);

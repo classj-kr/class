@@ -48,11 +48,11 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.beaker { fill: none; stroke: rgba(177, 226, 230, .8); stroke-width: 2.4; }
+.beaker { fill: none; stroke: #7595a5; stroke-width: 2.4; stroke-linejoin: round; }
 .solution { stroke: none; }
 .surface { fill: rgba(255, 255, 255, .3); }
-.crystal { stroke: rgba(255, 255, 255, .4); stroke-width: .7; }
-.crystal.pure { fill: #dfe9ee; }
+.crystal { stroke: #6b8797; stroke-width: .8; }
+.crystal.pure { fill: #f8fbfc; }
 .crystal.dirt { fill: #c8a05a; }
 .dissolved-dot { fill: rgba(220, 240, 250, .55); }
 .dirt-dot { fill: rgba(220, 180, 110, .8); }

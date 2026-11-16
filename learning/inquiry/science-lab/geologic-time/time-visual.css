@@ -60,10 +60,10 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
+.small-label { fill: #475569; font-size: 14px; font-weight: 800; }
 .note-text { fill: #475569; font-size: 14px; font-weight: 800; }
 .verdict-text { font-size: 14px; font-weight: 900; }
-.gen-text { fill: #0f172a; font-size: 13px; font-weight: 900; }
+.gen-text { fill: #0f172a; font-size: 14px; font-weight: 900; }
 .trait-text { fill: #334155; font-size: 14px; font-weight: 800; }
 
 .axis { stroke: #334155; stroke-width: 1.8; stroke-width: 1.6; }
@@ -80,7 +80,9 @@
 .tick { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
 .marker { stroke: #d97706; stroke-width: 2.4; }
 .marker-head { fill: #c2410c; }
-.era-text { font-size: 13.5px; font-weight: 750; fill: #0a1c24; stroke: none; }
+.era-text { font-size: 14px; font-weight: 800; fill: #0a1c24; stroke: none; }
+.era-text.era-text-light { fill: #ffffff; }
+.period-text { font-size: 14px; font-weight: 800; fill: #334155; writing-mode: vertical-rl; text-orientation: upright; letter-spacing: -1px; }
 
 /* a hundred species, a hundred plants */
 .dot { stroke: rgba(0, 0, 0, .35); stroke-width: .6; }
@@ -96,8 +98,12 @@
 .stage-verdict:empty { display: none; }
 .stage-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 3px 20px; margin: 8px 0 0; font-size: 14px; font-weight: 800; color: #334155; line-height: 1.5; }
 .stage-readout:empty { display: none; }
-.stage-note { margin: 8px 0 0; font-size: 13px; font-weight: 700; color: #64748b; line-height: 1.5; }
+.stage-note { margin: 8px 0 0; font-size: 14px; font-weight: 700; color: #64748b; line-height: 1.5; }
 .stage-note:empty { display: none; }
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* sentences that explain the calendar figure sit under it, not inside it */
+.geo-info { margin-top: 6px; }
+.geo-info p.hot { color: #b45309; font-weight: 750 !important; }

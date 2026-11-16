@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     const ease = p => p < 0.5 ? 2 * p * p : 1 - (1 - p) * (1 - p) * 2;
     const fmtN = (n, d = 0) => (+n.toFixed(d)).toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace('-', '−');
-    const rnd = i => (((i * 7919 + 13) * 104729) % 100003) / 100003;
+    // 자리마다 고르게 흩어지는 의사 난수(예전 식은 i에 거의 비례해 운반자가 대각선 한 줄로 늘어섰다).
+    const rnd = i => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
     const gamma = b => 1 / Math.sqrt(1 - b * b);
     const ra = v => /[013678]$/.test(String(v)) ? '이라' : '라';
     const cnt = f => f * 1000 < 0.005 ? '0' : fmtN(f * 1000, f < 0.001 ? 2 : 0);
@@ -172,16 +173,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // loop: battery on the left, resistor on top, diode on the right, ammeter at the bottom
         out += `<path class="wire${on ? '' : ' off'}" d="M${L},${Tt + 42} L${L},${Tt} L${L + 60},${Tt} M${L + 100},${Tt} L${Rr},${Tt} L${Rr},${Tt + 40} M${Rr},${Tt + 72} L${Rr},${Bb} L${(L + Rr) / 2 + 14},${Bb} M${(L + Rr) / 2 - 14},${Bb} L${L},${Bb} L${L},${Tt + 78}"/>`;
         // battery: long plate is +; p side (top of the diode) is + when forward
-        const plates = forward ? [[Tt + 46, 12], [Tt + 56, 6], [Tt + 66, 12], [Tt + 76, 6]] : [[Tt + 46, 6], [Tt + 56, 12], [Tt + 66, 6], [Tt + 76, 12]];
-        plates.forEach(([y, w]) => { out += `<line class="part" x1="${L - w}" y1="${y}" x2="${L + w}" y2="${y}"/>`; });
-        out += `<text class="small-label" x="${L + 18}" y="${Tt + 52}">${forward ? '+' : '−'}</text><text class="small-label" x="${L + 18}" y="${Tt + 80}">${forward ? '−' : '+'}</text>`;
-        out += `<text class="small-label" x="${L - 22}" y="${Tt + 98}" text-anchor="start">전원 ${VOLTS[state.volt].label}</text>`;
+        const plates = forward ? [[Tt + 46, 18], [Tt + 56, 9], [Tt + 66, 18], [Tt + 76, 9]] : [[Tt + 46, 9], [Tt + 56, 18], [Tt + 66, 9], [Tt + 76, 18]];
+        plates.forEach(([y, w]) => { out += `<line class="part plate${w > 10 ? ' long' : ''}" x1="${L - w}" y1="${y}" x2="${L + w}" y2="${y}"/>`; });
+        out += `<text class="small-label sign" x="${L + 24}" y="${Tt + 52}">${forward ? '+' : '−'}</text><text class="small-label sign" x="${L + 24}" y="${Tt + 82}">${forward ? '−' : '+'}</text>`;
+        out += `<text class="small-label" x="${L + 8}" y="${Tt + 106}" text-anchor="start">전원 ${VOLTS[state.volt].label}</text>`;
         // resistor zigzag
         let zz = `M${L + 60},${Tt}`; for (let i = 0; i < 8; i += 1) zz += ` L${L + 62.5 + i * 5},${Tt + (i % 2 ? 6 : -6)}`; zz += ` L${L + 100},${Tt}`;
         out += `<path class="part" d="${zz}"/><text class="small-label" x="${L + 80}" y="${Tt - 12}" text-anchor="middle">저항 100 Ω</text>`;
         // diode symbol: triangle points from p (top) to n (bottom)
-        out += `<polygon class="diode-tri" points="${Rr - 9},${Tt + 42} ${Rr + 9},${Tt + 42} ${Rr},${Tt + 60}"/><line class="part" x1="${Rr - 9}" y1="${Tt + 60}" x2="${Rr + 9}" y2="${Tt + 60}"/><line class="wire${on ? '' : ' off'}" x1="${Rr}" y1="${Tt + 40}" x2="${Rr}" y2="${Tt + 72}"/>`;
-        out += `<text class="small-label" x="${Rr + 13}" y="${Tt + 47}">p</text><text class="small-label" x="${Rr + 13}" y="${Tt + 70}">n</text>`;
+        out += `<line class="wire${on ? '' : ' off'}" x1="${Rr}" y1="${Tt + 36}" x2="${Rr}" y2="${Tt + 78}"/><polygon class="diode-tri" points="${Rr - 14},${Tt + 40} ${Rr + 14},${Tt + 40} ${Rr},${Tt + 64}"/><line class="part diode-bar" x1="${Rr - 14}" y1="${Tt + 64}" x2="${Rr + 14}" y2="${Tt + 64}"/>`;
+        out += `<text class="small-label" x="${Rr + 19}" y="${Tt + 46}">p</text><text class="small-label" x="${Rr + 19}" y="${Tt + 72}">n</text>`;
         // ammeter
         out += `<circle class="meter" cx="${(L + Rr) / 2}" cy="${Bb}" r="14"/><text class="gen-text" x="${(L + Rr) / 2}" y="${Bb + 4}" text-anchor="middle">A</text>`;
         out += `<text class="trait-text" style="fill:#d97706" x="${(L + Rr) / 2}" y="${Bb + 26}" text-anchor="middle">${on ? fmtI(a.I) : '—'}</text>`;
@@ -212,11 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (on && forward && flow > 0.02) out += arrow(mid + 40, JY + JH + 10, mid - 40, JY + JH + 10, 'wind', 'wind-head', 3) + `<text class="small-label" x="${mid}" y="${JY + JH + 24}" text-anchor="middle">전자는 n → p, 양공은 p → n</text>`;
         else out += `<text class="small-label" x="${mid}" y="${JY + JH + 24}" text-anchor="middle">${on ? '공핍층이 두꺼워져 운반자가 못 건넘' : '공핍층: 운반자가 없는 띠'}</text>`;
-        out += `<text class="trait-text" x="${JX}" y="158">양단 ${on ? `${fmtN(a.Vd, 2)} V` : '—'} · 공핍층 ${on ? `${fmtN(wDraw / 14 * 100)} %` : '100 %'} (0 V일 때 기준)</text>`;
-        out += `<text class="trait-text" x="${JX}" y="174">I₀ = ${fmtI(a.I0)} · V_T = kT/q = ${fmtN(a.VT * 1000, 1)} mV (${a.T} K)</text>`;
+        state.deplPct = on ? fmtN(wDraw / 14 * 100) : '100';
         const VERD = { well: '잘 흐름', some: '조금 흐름', none: '거의 안 흐름' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${VOLTS[state.volt].label} ${VOLTS[state.volt].hint} · ${a.T} K: ${fmtI(a.I)} — ${VERD[a.verdict]}` : `${VOLTS[state.volt].label} ${VOLTS[state.volt].hint} · ${TEMPS[state.temp].label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">규소 다이오드, 실온 I₀ = 1 pA (대략) · 뜨거워지면 I₀ ∝ T³e^(−Eg/kT), Eg = 1.12 eV · 노란 점은 전류의 방향</text>`;
         return out;
     }
 
@@ -232,8 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<path class="trace${t.T === a.T ? '' : ' faint'}" style="stroke:${t.T === 300 ? '#0284c7' : '#dc2626'}" d="${d}"/>`;
         });
         out += `<text class="small-label" style="fill:#0284c7" x="${X0 + 8}" y="${Y1 + 12}">파랑 300 K · 주황 400 K</text>`;
-        if (state.progress > 0) out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(clamp(a.Vd, VA, VB)).toFixed(1)}" cy="${yOf(a.I).toFixed(1)}" r="4.5"/><text class="small-label" style="fill:#d97706" x="${(xOf(clamp(a.Vd, VA, VB)) + (a.Vd > 0.4 ? -8 : 8)).toFixed(1)}" y="${(yOf(a.I) - 8).toFixed(1)}" text-anchor="${a.Vd > 0.4 ? 'end' : 'start'}">${fmtN(a.Vd, 2)} V · ${fmtI(a.I)}</text>`;
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">다이오드 양단 전압 — 0.6 V 근처부터 급히 켜지고, 역방향은 pA 수준. 뜨거우면 곡선이 왼쪽으로</text>`;
+        if (state.progress >= 1) out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(clamp(a.Vd, VA, VB)).toFixed(1)}" cy="${yOf(a.I).toFixed(1)}" r="4.5"/><text class="small-label" style="fill:#d97706" x="${(xOf(clamp(a.Vd, VA, VB)) + (a.Vd > 0.4 ? -8 : 8)).toFixed(1)}" y="${(yOf(a.I) - 8).toFixed(1)}" text-anchor="${a.Vd > 0.4 ? 'end' : 'start'}">${fmtN(a.Vd, 2)} V · ${fmtI(a.I)}</text>`;
+        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">다이오드 양단 전압 (V)</text>`;
         return out;
     }
 
@@ -251,7 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function graphEnergy(a) { return '<text x="20" y="50" fill="#334155">속력을 바꾸어 두 길이를 비교하세요.</text><text x="20" y="95" fill="#334155">그림은 측정 길이 모형이며 사진의 모습이 아닙니다.</text>'; }
 
-    function noteFor(a) { return a.kind==='diode' ? '<p>순방향과 역방향에서 전류가 다르게 흐릅니다. 그래프는 소자 특성의 모형값입니다.</p>' : a.kind==='muon' ? '<p>지상 관측자가 잰 움직이는 뮤온의 수명은 고유 수명보다 깁니다.</p>' : '<p>우주선과 함께 측정한 고유 길이와 정지 관측자가 측정한 길이를 비교합니다.</p>'; }
+    // 다이오드 읽은 값은 흩어진 문장 대신 한 표로 모은다. 전류와 관련된 값은 전압을 건 뒤에만 채운다.
+    function diodeTable(a) {
+        const done = state.progress >= 1, row = (n, v) => `<div class="data-row"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`;
+        return row('다이오드 양단 전압', done ? `${fmtN(a.Vd, 2)} V` : '전압을 걸면 적힙니다') +
+            row('공핍층 폭', done ? `0 V일 때의 ${state.deplPct} %` : '0 V일 때를 100 %로 봄') +
+            row('포화 전류 I₀', `${fmtI(a.I0)} (${a.T} K) · V_T = kT/q = ${fmtN(a.VT * 1000, 1)} mV`) +
+            row('곡선 읽기', '0.6 V 근처부터 급히 켜지고 역방향은 pA 수준, 뜨거우면 곡선이 왼쪽으로') +
+            row('모형', '규소 다이오드(Eg = 1.12 eV), I₀ ∝ T³e^(−Eg/kT) · 그림의 점은 전류 방향');
+    }
+    function noteFor(a) { return a.kind==='diode' ? diodeTable(a) : a.kind==='muon' ? '<p>지상 관측자가 잰 움직이는 뮤온의 수명은 고유 수명보다 깁니다.</p>' : '<p>우주선과 함께 측정한 고유 길이와 정지 관측자가 측정한 길이를 비교합니다.</p>'; }
 
     function render() {
         const a = analyse();

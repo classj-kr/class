@@ -22,23 +22,48 @@
  const fxk=kind=>fx&&fx.kind===kind?fx.k:null;
  const ease=t=>t<=0?0:t>=1?1:t*t*(3-2*t),seg=(k,a,b)=>ease((k-a)/(b-a)),lerp=(a,b,t)=>a+(b-a)*t;
  const fig=(body,label,w,h,cls='')=>`<div class="ix-fig ${cls}">${svg(body,label,w,h)}</div>`;
- function stop(){cancelFx();if(timer)cancelAnimationFrame(timer);timer=null;if($('play'))$('play').textContent='움직임 재생';if($('playWave'))$('playWave').textContent='발생판으로 파 만들기';}
- function labels(){host.querySelectorAll('input[type=range]').forEach(el=>{const value=(el.id==='time'?Number(el.value).toFixed(2):el.value)+' '+el.dataset.unit;if($(el.id+'Value').textContent!==value)$(el.id+'Value').textContent=value;});}
- function playTime(max,button,label){if(timer){stop();return;}if(num('time')>=max)$('time').value=0;$('time').step='.001';let time=num('time'),last=0;$(button).textContent=label;function frame(now){if(last)time=Math.min(max,time+Math.min((now-last)/1000,.08));last=now;$('time').value=time;draw();if(time>=max)stop();else timer=requestAnimationFrame(frame);}timer=requestAnimationFrame(frame);}
+ function stop(){cancelFx();if(timer)cancelAnimationFrame(timer);timer=null;if($('play'))$('play').textContent='움직임 재생';if($('playWave'))$('playWave').textContent='발생판으로 파 만들기';if($('playInsul'))$('playInsul').textContent='시간 흐르게 하기';if(slug==='insulation-lab'&&$('step'))$('step').textContent='10분 진행';}
+ function labels(){host.querySelectorAll('input[type=range]').forEach(el=>{const value=(el.id==='time'?Number(el.value).toFixed(slug==='insulation-lab'?0:2):el.value)+' '+el.dataset.unit;if($(el.id+'Value').textContent!==value)$(el.id+'Value').textContent=value;});}
+ // rate: model units per real second; until: stop there (a short "step" run).
+ function playTime(max,button,label,rate=1,until=max){if(timer){stop();return;}if(num('time')>=Math.min(max,until)-1e-6){if(until<max)return;$('time').value=0;}$('time').step='.001';if(reduceMotion()){$('time').value=until;draw();return;}let time=num('time'),last=0;$(button).textContent=label;function frame(now){if(last)time=Math.min(until,time+Math.min((now-last)/1000,.08)*rate);last=now;$('time').value=time;draw();if(time>=until)stop();else timer=requestAnimationFrame(frame);}timer=requestAnimationFrame(frame);}
  function chart(series,{xmin=0,xmax=60,ymin=0,ymax=80,xlabel='시간 (분)',ylabel='온도 (℃)'}={}){
-  const px=x=>55+(x-xmin)/(xmax-xmin)*435,py=y=>225-(y-ymin)/(ymax-ymin)*170;
-  let body='';for(let i=0;i<=4;i++){const y=ymin+(ymax-ymin)*i/4;body+=line(55,py(y),490,py(y),'#d3e2e8')+text(47,py(y)+5,fmt(y,0),'text-anchor="end"');const x=xmin+(xmax-xmin)*i/4;body+=text(px(x),248,fmt(x,0),'text-anchor="middle"');}
-  body+=line(55,55,55,225)+line(55,225,490,225)+text(12,25,ylabel)+text(280,279,xlabel,'text-anchor="middle"');
-  for(const [i,s]of series.entries()){body+=`<polyline points="${s.points.map(([x,y])=>px(x)+','+py(y)).join(' ')}" fill="none" stroke="${colors[i]}" stroke-width="3"/>`+text(85+i*150,305,s.name,`style="fill:${colors[i]}"`);}
-  return svg(body,'시간에 따른 값의 변화 그래프',540,325);
+  const px=x=>55+(x-xmin)/(xmax-xmin)*435,py=y=>215-(y-ymin)/(ymax-ymin)*170;
+  let body='';for(let i=0;i<=4;i++){const y=ymin+(ymax-ymin)*i/4;body+=line(55,py(y),490,py(y),'#d3e2e8')+text(47,py(y)+5,fmt(y,0),'text-anchor="end"');const x=xmin+(xmax-xmin)*i/4;body+=text(px(x),238,fmt(x,0),'text-anchor="middle"');}
+  body+=line(55,45,55,215)+line(55,215,490,215)+text(12,25,ylabel)+text(272,262,xlabel,'text-anchor="middle"');
+  for(const [i,s]of series.entries()){if(s.points.length>1)body+=`<polyline points="${s.points.map(([x,y])=>fmt(px(x),1)+','+fmt(py(y),1)).join(' ')}" fill="none" stroke="${colors[i]}" stroke-width="3" stroke-linejoin="round"/>`;const last=s.points.at(-1);if(last)body+=`<circle cx="${fmt(px(last[0]),1)}" cy="${fmt(py(last[1]),1)}" r="4.5" fill="${colors[i]}"/>`;
+   const lx=95+i*150;body+=`<line x1="${lx}" y1="290" x2="${lx+28}" y2="290" stroke="${colors[i]}" stroke-width="4" stroke-linecap="round"/>`+text(lx+36,295,s.name,`class="legend-text" style="fill:${colors[i]}"`);}
+  return svg(body,'시간에 따른 값의 변화 그래프',540,305);
  }
+ // Cut-away view: a beaker of water packed in cotton / paper / sand, a lid, and a glass thermometer
+ // whose red column follows the model temperature.
+ const INS_DEFS=`<defs><pattern id="insCotton" width="16" height="14" patternUnits="userSpaceOnUse"><rect width="16" height="14" fill="#ecebe5"/><circle cx="4" cy="4" r="4.6" fill="#fbfbf8" stroke="#d6d5cc" stroke-width=".8"/><circle cx="12" cy="10" r="5" fill="#fdfdfb" stroke="#d6d5cc" stroke-width=".8"/><circle cx="13" cy="2" r="3" fill="#f7f7f3" stroke="#dcdbd2" stroke-width=".7"/><circle cx="3" cy="12" r="3.2" fill="#f8f8f4" stroke="#dcdbd2" stroke-width=".7"/></pattern><pattern id="insPaper" width="22" height="9" patternUnits="userSpaceOnUse"><rect width="22" height="9" fill="#efe5cc"/><path d="M0 2.5Q5.5 0 11 2.5T22 2.5" fill="none" stroke="#c4b285" stroke-width="1.1"/><path d="M0 7Q5.5 9.5 11 7T22 7" fill="none" stroke="#d4c6a0" stroke-width="1"/></pattern><pattern id="insSand" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#dcc288"/><circle cx="2" cy="2" r="1.3" fill="#b89a5c"/><circle cx="7" cy="4" r="1.1" fill="#efdcae"/><circle cx="4.5" cy="8" r="1.2" fill="#a98a4f"/><circle cx="8.6" cy="8.6" r=".9" fill="#c9ab6b"/><circle cx="5" cy="4.6" r=".7" fill="#8f733f"/></pattern><linearGradient id="insGlass" x2="1"><stop stop-color="#cfe2ea" stop-opacity=".7"/><stop offset=".3" stop-color="#f6fbfd" stop-opacity=".5"/><stop offset="1" stop-color="#bcd4de" stop-opacity=".7"/></linearGradient></defs>`;
  function insulation(){
-  const options={initial:val('mode')==='hot'?70:5,minutes:num('time'),thickness:num('thickness'),volume:num('volume')},rows=M.insulation(options);
-  let body='';rows.forEach((r,i)=>{const x=45+i*170,top=178-(r.temperature/80)*122;body+=`<rect x="${x}" y="45" width="130" height="155" rx="8" fill="${['#e8ecef','#e4d8bd','#d6b77e'][i]}"/><rect x="${x+32}" y="55" width="65" height="145" fill="#eef7fb" stroke="#628899"/><rect x="${x+34}" y="105" width="61" height="92" fill="#b5dfea"/><rect x="${x+59}" y="35" width="10" height="150" rx="5" fill="white" stroke="#607481"/><rect x="${x+62}" y="${top}" width="4" height="${185-top}" fill="#c35b29"/>`+text(x+65,230,r.name,'text-anchor="middle"')+text(x+65,255,fmt(r.temperature)+' ℃','text-anchor="middle"');});
-  window.scienceScene.render(scene,svg(body,'같은 조건의 단열재 세 종류와 물의 온도',540,275));
+  const t=num('time'),hot=val('mode')==='hot',options={initial:hot?70:5,minutes:t,thickness:num('thickness'),volume:num('volume')},rows=M.insulation(options);
+  const wall=Math.round(7+num('thickness')*5.5),BOT=250,level=BOT-12-num('volume')*.92,ty=T=>214-(T+10)/90*168,now=performance.now()/1000;
+  let body=INS_DEFS;
+  rows.forEach((r,i)=>{const cx=95+i*175,bx0=cx-30,bx1=cx+30,fill=['url(#insCotton)','url(#insPaper)','url(#insSand)'][i],tx=cx+9;
+   // insulation packed around and under the beaker (cut-away)
+   body+=`<rect x="${bx0-wall}" y="112" width="${60+2*wall}" height="${BOT-112+wall}" rx="4" fill="${fill}" stroke="#8b806a" stroke-width="1.5"/>`;
+   body+=`<path d="M${bx0} 116V${BOT-4}Q${bx0} ${BOT} ${bx0+4} ${BOT}H${bx1-4}Q${bx1} ${BOT} ${bx1} ${BOT-4}V116Z" fill="#f1f7f9"/><path d="M${bx0} 116V${BOT-4}Q${bx0} ${BOT} ${bx0+4} ${BOT}H${bx1-4}Q${bx1} ${BOT} ${bx1} ${BOT-4}V116" fill="url(#insGlass)" stroke="#6f8f9c" stroke-width="2"/>`;
+   const warm=hot?Math.min(1,(r.temperature-20)/50):0,cold=hot?0:Math.min(1,(20-r.temperature)/15);
+   const water=`rgb(${Math.round(178-14*cold+14*warm)},${Math.round(218-4*warm)},${Math.round(236-6*warm)})`;
+   body+=`<path d="M${bx0+2} ${fmt(level,1)}H${bx1-2}V${BOT-4}Q${bx1-2} ${BOT-2} ${bx1-4} ${BOT-2}H${bx0+4}Q${bx0+2} ${BOT-2} ${bx0+2} ${BOT-4}Z" fill="${water}" opacity=".9"/><line x1="${bx0+2}" y1="${fmt(level,1)}" x2="${bx1-2}" y2="${fmt(level,1)}" stroke="#6ea3b6" stroke-width="1.2"/>`;
+   // lid with a hole for the thermometer
+   body+=`<rect x="${bx0-wall-3}" y="100" width="${66+2*wall}" height="13" rx="3" fill="#8ea3ad" stroke="#5f7580"/><rect x="${tx-6}" y="99" width="12" height="15" fill="#c9d5db" stroke="#5f7580" stroke-width="1"/>`;
+   // vapour leaving the lid gap while the water is still hot
+   if(hot&&warm>.15)for(let w=0;w<2;w++){const ph=now*1.6+w*1.9+i,o=fmt(.12+.35*warm,2),sx=tx-14+w*8;body+=`<path d="M${sx} 96q${fmt(-5+3*Math.sin(ph),1)} -10 0 -20t${fmt(2*Math.cos(ph),1)} -18" fill="none" stroke="#9db4be" stroke-width="2.2" stroke-linecap="round" opacity="${o}"/>`;}
+   // thermometer: glass tube, scale ticks, bulb in the water, red column
+   body+=`<rect x="${tx-5}" y="30" width="10" height="${BOT-12-30}" rx="5" fill="#f8fbfc" stroke="#6f8590" stroke-width="1.4"/>`;
+   for(let T=-10;T<=80;T+=10){const y=fmt(ty(T),1);body+=`<line x1="${tx-5}" y1="${y}" x2="${tx-(T%50===0?0:2)}" y2="${y}" stroke="#4f6570" stroke-width="${T%50===0?1.4:1}"/>`;}
+   const top=ty(Math.max(-10,Math.min(80,r.temperature)));
+   body+=`<rect x="${tx-1.8}" y="${fmt(top,1)}" width="3.6" height="${fmt(BOT-18-top,1)}" fill="#cf3f2e"/><circle cx="${tx}" cy="${BOT-14}" r="6.5" fill="#d8473a" stroke="#8f2a20" stroke-width="1.2"/>`;
+   body+=text(cx,BOT+wall+26,r.name,'text-anchor="middle" class="ins-name"')+text(cx,BOT+wall+48,fmt(r.temperature)+' ℃','text-anchor="middle" class="ins-temp"');
+  });
+  window.scienceScene.render(scene,svg(body,'솜·종이·마른 모래로 감싼 비커와 온도계',540,BOT+wall+60));
   metrics(rows.map(r=>[r.name,fmt(r.temperature)+' ℃']));
-  window.scienceScene.render(extra,chart(rows.map((r,i)=>({name:r.name,points:Array.from({length:num('time')+1},(_,t)=>[t,M.insulation({...options,minutes:t})[i].temperature])}))));
-  status.textContent=`${num('time')}분 · 실온 20 ℃ · 물 ${num('volume')} mL · 세 장치의 단열층 두께 ${num('thickness')} cm. 조건을 바꾸면 같은 시각의 다른 실험을 비교합니다.`;
+  const pts=[];for(let m=0;m<t;m+=.5)pts.push(m);pts.push(t);
+  window.scienceScene.render(extra,chart(rows.map((r,i)=>({name:r.name,points:pts.map(m=>[m,M.insulation({...options,minutes:m})[i].temperature])})),hot?{}:{ymax:24}));
+  status.textContent=`${Math.round(t)}분 · 실온 20 ℃ · 물 ${num('volume')} mL · 세 장치의 단열층 두께 ${num('thickness')} cm. 조건을 바꾸면 같은 시각의 다른 실험을 비교합니다.`;
  }
  // Doppler: the source really moves and every wavefront is a circle centred where the source was
  // when it was emitted. The source speed is drawn 4 times faster than true scale (stated in the figure).
@@ -81,18 +106,46 @@
   window.scienceScene.render(extra,chart(keys.map(k=>({name:k==='az'?'수직 가속도':k==='ax'?'x 가속도':'y 가속도',points:Array.from({length:121},(_,i)=>[i/10,M.acceleration({...options,time:i/10})[k]])})),{xmax:12,ymin:-Math.max(5,r.a+1),ymax:Math.max(5,r.a+1),xlabel:'시간 (초)',ylabel:'운동 가속도 (m/s²)'}));
   status.textContent=`시각 ${fmt(options.time)}초. ${options.motion==='elevator'?'0~2초 가속, 2~10초 일정 속력, 10~12초 감속합니다.':'속도 벡터의 방향까지 비교하세요.'} 원시 센서와 중력 영향을 제외한 운동 가속도는 다른 값입니다.`;
  }
+ // Replication fork drawn as a Y: on the right the two parental strands are still paired (stem);
+ // to the left of the fork they are pulled apart into two arms, each new strand pairing on the inner side.
  function dna(){
-  const s=state.dna;let body='';const x=i=>90+i*44,cell=(i,y,base,color)=>`<rect x="${x(i)}" y="${y}" width="37" height="32" rx="5" fill="${color}"/>`+text(x(i)+18,y+22,base,'text-anchor="middle" style="font-weight:bold"');
-  body+=text(25,30,'부모 주형 1 · 3′→5′')+text(25,185,'부모 주형 2 · 5′→3′');
-  for(let i=0;i<12;i++){
-   body+=cell(i,42,s.template[i],'#c4d7e1')+cell(i,195,M.complement(s.template[i]),'#c4d7e1');
-   for(const [name,y]of [['leading',85],['lagging',238]]){const v=s[name][i];body+=cell(i,y,v?.base||'·',v?(v.rna?'#cdb8eb':'#a9dfcf'):i<s.fork?'#e5f1f3':'#edf0f2');}
+  const s=state.dna,kf=fxk('dnaFork'),ka=fxk('dnaAdd'),kj=fxk('dnaJoin');
+  const forkF=kf===null?s.fork:lerp(fx.from,s.fork,ease(kf)),fresh=ka!==null?fx.cells:[];
+  const GAP=40,CW=37,CH=30,X=i=>70+i*44,Y={t1:36,lead:72,lag:236,t2:272,s1:136,s2:172};
+  const op=i=>ease(Math.max(0,Math.min(1,(forkF-i)*1.25))),cx=i=>X(i)+GAP*(1-op(i)),y1=i=>lerp(Y.s1,Y.t1,op(i)),y2=i=>lerp(Y.s2,Y.t2,op(i));
+  const PAR='#c4d7e1',NEW='#a9dfcf',RNA='#cdb8eb';
+  const cell=(x,y,base,color,o=1,dash=false)=>`<g opacity="${fmt(o,2)}"><rect x="${fmt(x,1)}" y="${fmt(y,1)}" width="${CW}" height="${CH}" rx="5" fill="${color}" ${dash?'stroke="#9fb8c3" stroke-dasharray="4 3"':'stroke="#7d9aa8" stroke-width="1"'}/>`+(base?text(fmt(x+CW/2,1),fmt(y+21,1),base,'text-anchor="middle" class="base-label"'):'')+'</g>';
+  let body='',back1=[],back2=[];
+  for(let i=0;i<12;i++){back1.push([cx(i)-2,y1(i)-4],[cx(i)+CW+2,y1(i)-4]);back2.push([cx(i)-2,y2(i)+CH+4],[cx(i)+CW+2,y2(i)+CH+4]);}
+  const poly=(pts,color,w=4)=>`<polyline points="${pts.map(([a,b])=>fmt(a,1)+','+fmt(b,1)).join(' ')}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round"/>`;
+  body+=poly(back1,'#5d7f90')+poly(back2,'#5d7f90');
+  // hydrogen-bond ticks between the still-paired stem strands
+  for(let i=0;i<12;i++){const o=Math.max(0,1-op(i)*4);if(o>.05)body+=`<g opacity="${fmt(o,2)}">`+line(cx(i)+12,y1(i)+CH,cx(i)+12,y2(i),'#8aa3ae','stroke-width="1.5"')+line(cx(i)+25,y1(i)+CH,cx(i)+25,y2(i),'#8aa3ae','stroke-width="1.5"')+'</g>';}
+  for(let i=0;i<12;i++)body+=cell(cx(i),y1(i),s.template[i],PAR)+cell(cx(i),y2(i),M.complement(s.template[i]),PAR);
+  // new strands: only in the opened part, next to their template on the inner side of each arm
+  const segs={leading:[],lagging:[]};
+  for(const [name,y,dir]of [['leading',Y.lead,1],['lagging',Y.lag,-1]])for(let i=0;i<12;i++){
+   const o=op(i);if(o<=.02)continue;const v=s[name][i],isNew=fresh.includes(name+i),k=isNew?ease(ka):1,dy=isNew?(1-k)*34*dir:0;
+   if(v){body+=cell(X(i),y+dy,v.base,v.rna?RNA:NEW,k);const ty=name==='leading'?Y.t1+CH:Y.t2;body+=`<g opacity="${fmt(k*o,2)}">`+line(X(i)+12,name==='leading'?ty:y+CH,X(i)+12,name==='leading'?y:ty,'#8aa3ae','stroke-width="1.5"')+line(X(i)+25,name==='leading'?ty:y+CH,X(i)+25,name==='leading'?y:ty,'#8aa3ae','stroke-width="1.5"')+'</g>';if(!isNew||k>.6)segs[name].push(i);}
+   else body+=cell(X(i),y,'','#f4f8f9',o*.9,true);
   }
-  body+=text(58,63,'3′')+text(624,63,'5′')+text(58,105,'5′')+text(624,105,'3′')+text(58,218,'5′')+text(624,218,'3′')+text(58,262,'3′')+text(624,262,'5′');
-  body+=line(95,137,600,137,'#b65d20','marker-end="url(#arrow)"')+text(285,160,' 선도 가닥 · 5′→3′');
-  if(s.joined)body+=line(600,290,95,290,'#b65d20','marker-end="url(#arrow)"');else for(let i=0;i<s.fork/4;i++)body+=line(x(i*4+3)+35,290,x(i*4),290,'#b65d20','marker-end="url(#arrow)"');
-  body+=text(250,319,'지연 가닥 · 각 조각도 5′→3′')+line(x(s.fork)-4,20,x(s.fork)-4,300,'#af7926','stroke-dasharray="5 5"');
-  window.scienceScene.render(scene,'<p class="scroll-hint">작은 화면에서는 가닥을 좌우로 밀어 전체를 확인하세요.</p><div class="sequence-scroll" tabindex="0" role="region" aria-label="DNA 가닥 전체, 좌우로 이동 가능">'+svg(body,'부모 두 주형과 새 DNA의 상보적 염기 및 역평행 방향',680,335)+'</div><div class="dna-legend"><span style="border-color:#a4bfce">부모 DNA</span><span style="border-color:#a9dfcf">새 DNA</span><span style="border-color:#cdb8eb">RNA 프라이머</span></div>');
+  // new-strand backbones: leading is continuous; lagging pieces stay separate until ligase joins them
+  const runs=(list,split)=>{const out=[];for(const i of list){const r=out.at(-1);if(r&&r.at(-1)===i-1&&!(split&&i%4===0))r.push(i);else out.push([i]);}return out;};
+  for(const r of runs(segs.leading,false))body+=poly([[X(r[0])-2,Y.lead+CH+4],[X(r.at(-1))+CW+2,Y.lead+CH+4]],'#2f8f74');
+  const joinO=kj===null?(s.joined?1:0):ease(kj);
+  for(const r of runs(segs.lagging,true))body+=poly([[X(r[0])+1,Y.lag-4],[X(r.at(-1))+CW-1,Y.lag-4]],'#2f8f74');
+  if(joinO>0)for(const i of [4,8])if(segs.lagging.includes(i)&&segs.lagging.includes(i-1))body+=`<g opacity="${fmt(joinO,2)}">${poly([[X(i)-8,Y.lag-4],[X(i)+2,Y.lag-4]],'#2f8f74')}</g>`;
+  // strand-end labels follow each strand
+  body+=text(fmt(cx(0)-8,1),fmt(y1(0)+20,1),'3′','text-anchor="end"')+text(fmt(cx(11)+CW+8,1),fmt(y1(11)+20,1),'5′')+text(fmt(cx(0)-8,1),fmt(y2(0)+20,1),'5′','text-anchor="end"')+text(fmt(cx(11)+CW+8,1),fmt(y2(11)+20,1),'3′');
+  const opened=Math.floor(forkF+1e-6);
+  if(segs.leading.length)body+=text(X(0)-8,Y.lead+20,'5′','text-anchor="end"')+(segs.leading.length===12?text(X(11)+CW+8,Y.lead+20,'3′'):'');
+  if(segs.lagging.length)body+=text(X(0)-8,Y.lag+20,'3′','text-anchor="end"');
+  if(opened>0){const end=X(opened)-10;body+=line(X(0),116,end,116,'#b65d20','marker-end="url(#arrow)" stroke-width="2.5"')+text(X(0),136,'선도 가닥 5′→3′');
+   for(let p=0;p*4<opened;p++){const a=X(p*4),b=X(Math.min(opened,p*4+4))-10;if(s.joined&&p)continue;body+=line(s.joined?X(opened)-10:b,222,a+2,222,'#b65d20','marker-end="url(#arrow)" stroke-width="2.5"');}
+   body+=text(X(0),208,s.joined?'지연 가닥 5′→3′':'지연 가닥 조각 5′→3′');}
+  if(forkF<11.99){const hx=X(forkF)+GAP/2-6;body+=`<ellipse cx="${fmt(hx,1)}" cy="${(Y.s1+Y.s2+CH)/2}" rx="13" ry="34" fill="#f1c487" stroke="#a8722f" stroke-width="1.5" opacity=".92"/>`+text(fmt(hx-6,1),Y.s2+CH+28,'헬리케이스','class="note-label"');}
+  body+=text(20,20,'부모 주형 1 · 3′→5′')+text(20,326,'부모 주형 2 · 5′→3′');
+  window.scienceScene.render(scene,'<p class="scroll-hint dna-hint">가닥을 좌우로 밀어 전체를 확인하세요.</p><div class="sequence-scroll" tabindex="0" role="region" aria-label="DNA 가닥 전체, 좌우로 이동 가능">'+svg(body,'Y자로 벌어지는 복제 분기점: 부모 두 주형과 새 DNA의 상보적 염기 및 역평행 방향',690,338)+'</div><div class="dna-legend"><span style="border-color:#a4bfce">부모 DNA</span><span style="border-color:#a9dfcf">새 DNA</span><span style="border-color:#cdb8eb">RNA 프라이머</span><span style="border-color:#f1c487">헬리케이스</span></div>');
   metrics([['열린 주형',s.fork+' / 12 쌍'],['채운 새 가닥',s.leading.filter(Boolean).length+s.lagging.filter(Boolean).length+' / 24'],['연결 상태',s.joined?'두 딸 DNA 완성':s.replaced?'조각 연결 전':'합성 중']]);status.textContent=s.message;
  }
  const sequences={normal:'AUGUUUGGCUAA',synonymous:'AUGUUCGGCUAA',stop:'AUGUAAGGCUAA',insertion:'AUGCUUUGGCUAA',polyU:'UUUUUUUUUUUU',polyA:'AAAAAAAAAAAA',polyC:'CCCCCCCCCCCC'};
@@ -166,35 +219,64 @@
   for(const p of M.family){const [x,y]=xy[p.id],attrs=`fill="${p.affected?'#276d7b':'white'}" stroke="#1c5265" stroke-width="2"`;body+=p.sex==='M'?`<rect x="${x-17}" y="${y-17}" width="34" height="34" ${attrs}/>`:`<circle cx="${x}" cy="${y}" r="17" ${attrs}/>`;body+=text(x,y+37,p.id,'text-anchor="middle"');}
   window.scienceScene.render(scene,svg(body,'3세대 가계도: I-1과 I-2의 자녀 II-1, II-2. II-2와 II-3의 자녀 III-1, III-2. 형질이 있는 사람은 II-1, II-3, III-1.',540,312));
   window.scienceScene.render(extra,`<div class="person-genotypes">${M.family.map(p=>`<label>${p.id} · ${p.sex==='M'?'남':'여'} · 형질 ${p.affected?'있음':'없음'}<select data-person="${p.id}"><option value="">유전자형 선택</option>${(p.sex==='M'?['RY','rY']:['RR','Rr','rr']).map(g=>`<option value="${g}">${genes[g]}</option>`).join('')}</select></label>`).join('')}</div><button id="checkFamily">가계도 추론 확인</button><div id="familyFeedback" class="pedigree-result" aria-live="polite"></div><section class="cross-controls"><h3>부모 조합을 바꾸어 예측하기</h3><div class="toolbar"><label>어머니 <select id="mother">${['Rr','RR','rr'].map(g=>`<option value="${g}">${genes[g]}</option>`).join('')}</select></label><label>아버지 <select id="father">${['RY','rY'].map(g=>`<option value="${g}">${genes[g]}</option>`).join('')}</select></label></div><div id="crossResult"></div></section>`);
+  // The ratio boxes belong to the parent-combination prediction, not to the pedigree above.
+  extra.querySelector('.cross-controls').insertBefore(readout,$('crossResult'));supGenes();
   extra.querySelectorAll('[data-person]').forEach(el=>el.onchange=()=>{state.answers[el.dataset.person]=el.value;});
   $('checkFamily').onclick=()=>{const result=M.pedigreeCheck(state.answers);$('familyFeedback').innerHTML=result.map(r=>`<p>${r.id}: ${r.ok?'관계와 표현형에 맞습니다.':r.reason}</p>`).join('');status.textContent=`7명 중 ${result.filter(r=>r.ok).length}명의 추론이 가계도의 조건과 일치합니다.`;};
   for(const id of ['mother','father'])$(id).onchange=punnett;
   punnett();status.textContent='부모의 어느 성염색체가 자녀에게 전달되는지 먼저 추적하세요.';
  }
- function punnett(){const r=M.cross(val('mother'),val('father'));$('crossResult').innerHTML=`<table><caption>가능한 네 수정 조합 · 각 1/4</caption><thead><tr><th>조합</th><th>자녀</th><th>유전자형</th><th>형질</th></tr></thead><tbody>${r.children.map((c,i)=>`<tr><td>${i+1}</td><td>${c.male?'아들':'딸'}</td><td>${genes[c.genes]}</td><td>${c.affected?'있음':'없음'}</td></tr>`).join('')}</tbody></table>`;metrics([['전체 자녀 중 형질',r.affected*100+'%'],['아들 중 형질',r.sonsAffected*100+'%'],['딸 중 형질',r.daughtersAffected*100+'%']]);}
- function chromosomeDrawing(c){const len=c.length,top=96-len,cent=top+len*c.centromere;return `<svg viewBox="0 0 28 102" aria-hidden="true"><path d="M8 ${top}Q4 ${top} 5 ${top+8}L10 ${cent}L5 92Q4 98 9 98L14 ${cent+4}L19 98Q24 98 23 92L18 ${cent}L23 ${top+8}Q24 ${top} 20 ${top}L14 ${cent-4}Z" fill="#b2c5cf" stroke="#4b6779"/>${c.bands.map(f=>{const y=top+len*f;return `<path d="M6 ${y}H11M17 ${y}H22" stroke="#526879" stroke-width="3"/>`;}).join('')}<circle cx="14" cy="${cent}" r="2.5" fill="#273d4d"/></svg>`;}
+ // Superscript alleles at a readable size (the Unicode modifier letters render about 9 px).
+ const supHTML=t=>esc(t).replace(/ᴿ/g,'<span class="g-sup">R</span>').replace(/ʳ/g,'<span class="g-sup">r</span>');
+ function supGenes(){extra.querySelectorAll('.lab-choice-group>button').forEach(b=>{if(/[ᴿʳ]/.test(b.textContent))b.innerHTML=supHTML(b.textContent);});}
+ function punnett(){const r=M.cross(val('mother'),val('father'));$('crossResult').innerHTML=`<table><caption>가능한 네 수정 조합 · 각 1/4</caption><thead><tr><th>조합</th><th>자녀</th><th>유전자형</th><th>형질</th></tr></thead><tbody>${r.children.map((c,i)=>`<tr><td>${i+1}</td><td>${c.male?'아들':'딸'}</td><td class="gene-cell">${supHTML(genes[c.genes])}</td><td>${c.affected?'있음':'없음'}</td></tr>`).join('')}</tbody></table>`;metrics([['전체 자녀 중 형질',r.affected*100+'%'],['아들 중 형질',r.sonsAffected*100+'%'],['딸 중 형질',r.daughtersAffected*100+'%']]);}
+ // Sister chromatids joined at the centromere, with a G-band-like pattern that is fixed for each chromosome kind.
+ let chromSerial=0;
+ function chromosomeDrawing(c){
+  const len=c.length,top=99-len,bot=99,cent=top+len*c.centromere,id='kc'+(++chromSerial);
+  const n=c.kind==='X'?9:c.kind==='Y'?23:Number(c.kind),seed=n*977+131;
+  const chromatid=(o,i)=>{const out=o<15?-1:1;return `M${i} ${top+4}Q${i} ${top} ${(o+i)/2} ${top}Q${o} ${top} ${o} ${top+4}L${o} ${cent-5}Q${o} ${cent} ${o-out*2.6} ${cent}Q${o} ${cent} ${o} ${cent+5}L${o} ${bot-4}Q${o} ${bot} ${(o+i)/2} ${bot}Q${i} ${bot} ${i} ${bot-4}L${i} ${cent+4}Q${i} ${cent} ${15-out*.2} ${cent}Q${i} ${cent} ${i} ${cent-4}Z`;};
+  const shapes=chromatid(4.5,14)+chromatid(25.5,16);
+  const bands=[...c.bands.map((f,j)=>[f,2.2+(j%2)*1.6]),...[0,1,2,3].map(j=>[.08+((seed*(j+3))%271)/271*.84,1.4+((seed>>j)%3)*.9])];
+  return `<svg viewBox="0 0 30 102" aria-hidden="true"><defs><clipPath id="${id}"><path d="${shapes}"/></clipPath></defs><path d="${shapes}" fill="#dfe8ed"/><g clip-path="url(#${id})">${bands.map(([f,h])=>`<rect x="0" y="${fmt(top+len*f-h/2,2)}" width="30" height="${fmt(h,2)}" fill="#33495a"/>`).join('')}</g><path d="${shapes}" fill="none" stroke="#3c5868" stroke-width="1.1"/><ellipse cx="15" cy="${fmt(cent,2)}" rx="3" ry="2" fill="#7a3f2c"/></svg>`;
+ }
  function karyotype(){
   const s=state.karyo,placed=Object.values(s.slots).flat(),selected=s.cards.find(c=>c.id===state.selected);
   const letter=id=>String.fromCharCode(65+Number(id.slice(1))),scroll=scene.querySelector('.karyo-pool')?.scrollLeft||0;
   scene.classList.add('karyo-scene');
-  window.scienceScene.render(scene,`<div class="karyo-picker"><p class="selected-card">${selected?'선택: 카드 '+letter(selected.id):'카드 목록을 좌우로 밀어 고르세요.'}</p><div class="karyo-pool" aria-label="염색체 카드">${s.cards.map(c=>`<button class="karyo-card" data-card="${c.id}" aria-pressed="${state.selected===c.id}" aria-label="카드 ${letter(c.id)}${placed.includes(c.id)?', 배치됨':''}">${chromosomeDrawing(c)}<span>${letter(c.id)}${placed.includes(c.id)?' ✓':''}</span></button>`).join('')}</div></div><div class="karyo-board" aria-label="핵형 배열판">${Object.entries(s.slots).map(([kind,ids])=>`<button class="karyo-slot" data-slot="${kind}" aria-label="${kind==='X'?'성염색체':kind+'번'} 칸, 기준 1개와 배치 ${ids.length}개"><b>${kind==='X'?'성염색체':kind+'번'}</b>${chromosomeDrawing(M.chromosome(kind))}${ids.map(id=>chromosomeDrawing(s.cards.find(c=>c.id===id))).join('')}<b>기준 1 + ${ids.length}</b></button>`).join('')}</div>`);
+  window.scienceScene.render(scene,`<div class="karyo-picker"><p class="selected-card">${selected?'선택: 카드 '+letter(selected.id):'카드 목록을 좌우로 밀어 고르세요.'}</p><div class="karyo-pool" aria-label="염색체 카드">${s.cards.map(c=>`<button class="karyo-card" data-card="${c.id}" aria-pressed="${state.selected===c.id}" aria-label="카드 ${letter(c.id)}${placed.includes(c.id)?', 배치됨':''}">${chromosomeDrawing(c)}<span>${letter(c.id)}${placed.includes(c.id)?' ✓':''}</span></button>`).join('')}</div></div><div class="karyo-board" aria-label="핵형 배열판">${Object.entries(s.slots).map(([kind,ids])=>`<button class="karyo-slot" data-slot="${kind}" aria-label="${kind==='X'?'성염색체':kind+'번'} 칸, 기준 염색체 1개와 놓은 카드 ${ids.length}개"><b>${kind==='X'?'성염색체':kind+'번'}</b><span class="karyo-pair"><span class="karyo-ref">${chromosomeDrawing(M.chromosome(kind))}</span>${ids.map(id=>chromosomeDrawing(s.cards.find(c=>c.id===id))).join('')}${ids.length?'':'<span class="karyo-empty" aria-hidden="true"></span>'}</span><b>짝 ${ids.length}/1</b></button>`).join('')}</div>`);
   window.scienceScene.render(extra,'');scene.querySelector('.karyo-pool').scrollLeft=scroll;
   scene.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>{state.selected=b.dataset.card;karyotype();scene.querySelector(`[data-card="${state.selected}"]`).focus({preventScroll:true});});
   scene.querySelectorAll('[data-slot]').forEach(b=>b.onclick=()=>{if(!state.selected){status.textContent='먼저 카드 하나를 고르세요.';return;}const slot=b.dataset.slot;state.karyo=M.placeChromosome(s,state.selected,slot);state.selected=null;karyotype();scene.querySelector(`[data-slot="${slot}"]`).focus();});
   metrics([['기준 염색체',23+'개'],['짝지을 카드',s.cards.length+'개'],['배치한 카드',placed.length+'개']]);if(!status.textContent)status.textContent='카드의 기호는 임의 표시입니다. 염색체의 형태를 비교해 짝을 고르세요.';
  }
+ // Petri dish: clear amber agar, a bacterial lawn that turns the plate cloudy as it grows, and clear rings
+ // where the extract diffused from each paper disc. Incubation plays as a short time-lapse.
+ const AB_DEFS=`<defs><radialGradient id="abAgar" cx=".42" cy=".38" r=".7"><stop stop-color="#f7e7b0"/><stop offset="1" stop-color="#e9d08a"/></radialGradient><pattern id="abLawn" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#d3cdb5"/><circle cx="2" cy="2.2" r="1.2" fill="#bdb69b"/><circle cx="6" cy="5.6" r="1" fill="#c6bfa4"/><circle cx="5.4" cy="1.4" r=".6" fill="#e1dcc8"/><circle cx="1.6" cy="6.4" r=".7" fill="#e0dbc6"/></pattern></defs>`;
  function antibiotic(){
-  const r=M.antibiotic({time:state.time,dose:num('dose'),spacing:val('spacing'),sampleSet:num('sampleSet')}),selected=r.discs[num('disc')];
-  let body=`<circle cx="160" cy="149" r="115" fill="${r.observed?'#a8c495':'#dfdfca'}" stroke="#6e8d83" stroke-width="6"/>`;
-  for(const [i,d]of r.discs.entries()){const x=160+d.x,y=149+d.y;body+=`<circle cx="${x}" cy="${y}" r="${9+3*d.width}" fill="#f5f4df"/><circle cx="${x}" cy="${y}" r="9" fill="#fefefe" stroke="${i===num('disc')?'#c47824':'#9aa69f'}" stroke-width="${i===num('disc')?3:1}"/>`+text(x,y-14,d.label,'text-anchor="middle" style="font-size:13px"');}
-  body+=text(160,290,r.observed?'24시간 후 · 가상 배양 결과':'배양 전','text-anchor="middle"');
-  const plate=svg(body,'배양 접시: 물 대조군과 네 추출액의 생장 억제 구역',320,315);body='';
-  const zx=35,baseY=170,scale=15,boundary=zx+selected.width*scale;
-  body+=`<rect x="${zx}" y="70" width="190" height="100" fill="#a8c495"/><rect x="${zx}" y="70" width="${r.observed?selected.width*scale:190}" height="100" fill="#f5f4df"/>`+line(zx,70,zx,170,'#606c75')+text(30,50,'선택 디스크 바깥 · 확대');
-  for(let i=0;i<=12;i++){body+=line(zx+i*scale,baseY,zx+i*scale,baseY+(i%2?8:13))+ (i%2?'':text(zx+i*scale,202,i,'text-anchor="middle" style="font-size:12px"'));}
-  body+=line(zx,225,zx+num('ruler')*scale,225,'#b65d20','marker-end="url(#arrow)"')+text(30,256,'자 길이 '+fmt(num('ruler'))+' mm');
-  if(r.observed)body+=line(boundary,70,boundary,170,'#768b71');window.scienceScene.render(scene,'<div class="disc-scenes">'+plate+svg(body,'선택 디스크의 가장자리 0에서 바깥 경계까지 측정',260,285)+'</div>');
-  metrics([['가상 시료',num('sampleSet')+1+'회'],['경과 시간',state.time+'시간'],['배치',r.overlap?'구역 겹침':'겹침 없음']]);
+  const opt={dose:num('dose'),spacing:val('spacing'),sampleSet:num('sampleSet')},sel=num('disc');
+  const r=M.antibiotic({time:state.time,...opt}),full=M.antibiotic({time:24,...opt}),selected=r.discs[sel];
+  const k=fxk('incubate'),g=k===null?(r.observed?1:0):k,hours=Math.round(24*g),lawn=seg(g,.06,.8),spread=seg(g,0,.6);
+  const zr=d=>9+3*d.width*spread;
+  let body=AB_DEFS.replace('</defs>',`<mask id="abZones"><rect width="320" height="315" fill="white"/>${full.discs.map(d=>`<circle cx="${160+d.x}" cy="${149+d.y}" r="${fmt(zr(d),1)}" fill="black"/>`).join('')}</mask></defs>`);
+  body+=`<circle cx="160" cy="152" r="124" fill="#9fb2b8" opacity=".25"/><circle cx="160" cy="149" r="122" fill="#eef4f5" stroke="#8fa6ae" stroke-width="3"/><circle cx="160" cy="149" r="113" fill="url(#abAgar)" stroke="#c9b06b" stroke-width="1.2"/>`;
+  if(lawn>0)body+=`<circle cx="160" cy="149" r="112" fill="url(#abLawn)" opacity="${fmt(lawn,2)}" mask="url(#abZones)"/>`+full.discs.map(d=>d.width?`<circle cx="${160+d.x}" cy="${149+d.y}" r="${fmt(zr(d),1)}" fill="none" stroke="#b9ad84" stroke-width="1.2" opacity="${fmt(lawn*.8,2)}"/>`:'').join('');
+  body+=`<path d="M70 82A112 112 0 0 1 150 38" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity=".55"/>`;
+  for(const [i,d]of full.discs.entries()){const x=160+d.x,y=149+d.y,on=i===sel;body+=`<circle cx="${x}" cy="${y}" r="9" fill="#fdfdfb" stroke="${on?'#c2571f':'#9aa69f'}" stroke-width="${on?3:1.2}"/>`+text(x,y-15,d.label,'text-anchor="middle" class="disc-label"');}
+  body+=text(160,300,g>0?hours+'시간 배양':'배양 전','text-anchor="middle" class="plate-time"');
+  const plate=svg(body,'배양 접시: 물 대조군과 네 추출액의 생장 억제 구역',320,315);
+  const zx=35,scale=15,L=num('ruler'),rx=zx+L*scale;
+  body=AB_DEFS.replace('</defs>',`<mask id="abStrip2"><rect width="260" height="285" fill="white"/><rect x="${zx}" y="60" width="${fmt(full.discs[sel].width*15*spread,1)}" height="112" fill="black"/></mask></defs>`)+text(20,40,'선택 디스크 바깥 · 확대');
+  body+=`<rect x="${zx}" y="60" width="200" height="110" fill="url(#abAgar)"/>`;
+  if(lawn>0)body+=`<rect x="${zx}" y="60" width="200" height="110" fill="url(#abLawn)" opacity="${fmt(lawn,2)}" mask="url(#abStrip2)"/>`;
+  body+=`<path d="M${zx} 60H14Q8 115 14 170H${zx}Z" fill="#fdfdfb" stroke="#9aa69f"/><rect x="${zx}" y="60" width="200" height="110" fill="none" stroke="#9aa69f"/>`;
+  // ruler laid along the bottom edge of the zoomed strip; its 0 is the disc edge
+  body+=`<rect x="${zx-6}" y="170" width="212" height="38" rx="3" fill="#f4f7f8" stroke="#8399a3"/>`;
+  for(let i=0;i<=12;i++){body+=line(zx+i*scale,170,zx+i*scale,170+(i%2?8:13),'#4f6672','stroke-width="1.4"')+(i%2?'':text(zx+i*scale,203,i,'text-anchor="middle" class="ruler-num"'));}
+  body+=`<rect x="${zx}" y="167" width="${fmt(L*scale,1)}" height="6" rx="2" fill="#c2571f"/><line x1="${fmt(rx,1)}" y1="56" x2="${fmt(rx,1)}" y2="176" stroke="#c2571f" stroke-width="2.5"/><path d="M${fmt(rx-6,1)} 48h12l-6 9z" fill="#c2571f"/>`;
+  body+=text(20,240,'자 길이 '+fmt(L)+' mm','class="ruler-read"');
+  window.scienceScene.render(scene,'<div class="disc-scenes">'+plate+svg(body,'선택 디스크의 가장자리 0에서 바깥 경계까지 측정',260,260)+'</div>');
+  metrics([['가상 시료',num('sampleSet')+1+'회'],['경과 시간',hours+'시간'],['배치',r.overlap&&(k===null||k>.6)?'구역 겹침':'겹침 없음']]);
   $('incubate').disabled=state.time>=24;$('measure').disabled=!r.observed||r.overlap;
   status.textContent=state.message||(r.overlap?'억제 구역이 겹쳤습니다. 현재 경계로는 각 추출액의 폭을 독립적으로 잴 수 없습니다. 간격을 바꾸어 재실험하세요.':r.observed?'선택 디스크의 가장자리 0에서 바깥 경계까지 자를 늘려 측정하세요.':'배양 전에는 억제 결과를 판정하지 않습니다. A~D는 익명의 가상 자료입니다.');
  }
@@ -347,21 +429,28 @@
  function draw(){labels();({'insulation-lab':insulation,'doppler-lab':doppler,'ride-acceleration':acceleration,'dna-replication':dna,'protein-synthesis':protein,'pedigree-lab':pedigree,'karyotype-lab':karyotype,'antibiotic-disc':antibiotic,'water-wave-tank':waterWaves,'silver-mirror':silverMirror,'nylon-interface':nylon}[slug])();}
  function reset(){stop();for(const el of host.querySelectorAll('.control-panel input'))el.value=el.defaultValue;for(const el of host.querySelectorAll('.control-panel select'))el.selectedIndex=0;
   state={dna:M.dnaStart(),steps:0,transcribed:false,answers:{},karyo:M.karyotypeStart(),selected:null,time:0,message:'',silver:M.silverStart(),silverSaved:{},nylon:M.nylonStart(),nyRope:false,nyStub:false,chain:[]};window.scienceScene.render(extra,'');window.scienceScene.render(readout,'');status.textContent='';draw();if(slug==='doppler-lab')animate('doppler',DOP.T*1000);}
+ if(slug==='pedigree-lab')new MutationObserver(supGenes).observe(extra,{childList:true,subtree:true});
  if(slug==='protein-synthesis'){$('amino').innerHTML=Object.entries(M.aaNames).map(([a,name])=>`<option value="${a}">${a==='*'?'방출 인자 (종결)':name}</option>`).join('');$('codonTable').innerHTML=Object.entries(M.codons).map(([codon,a])=>`<span><b>${codon}</b> ${M.aaNames[a]}</span>`).join('');}
  host.querySelectorAll('.control-panel input,.control-panel select').forEach(el=>el.addEventListener(el.type==='range'?'input':'change',()=>{
   if(slug==='protein-synthesis'&&el.id==='sequence'){state.steps=0;state.transcribed=false;state.message='';}
   if(slug==='karyotype-lab'&&el.id==='sample'){state.karyo=M.karyotypeStart(el.value);state.selected=null;status.textContent='새 시료의 염색체를 배열하세요.';}
-  if(slug==='antibiotic-disc'){state.message='';if(['sampleSet','dose','spacing'].includes(el.id))state.time=0;}
-  if(slug==='ride-acceleration'&&el.id!=='time'){stop();$('time').value=0;}
+  if(slug==='antibiotic-disc'){state.message='';if(['sampleSet','dose','spacing'].includes(el.id)){state.time=0;cancelFx();}}  if(slug==='ride-acceleration'&&el.id!=='time'){stop();$('time').value=0;}
   if(slug==='silver-mirror'&&el.id==='sample'){cancelFx();state.silverSaved[state.silver.sample]=state.silver;state.silver=M.silverStart(el.value);}
   if(slug==='water-wave-tank'&&el.id!=='time'){stop();$('time').value=0;}
   draw();
  }));
- if($('step'))$('step').onclick=()=>{const el=$('time');el.value=Math.min(Number(el.max),Number(el.value)+(slug==='ride-acceleration'?.5:1));draw();};
+ if(slug==='insulation-lab'){
+  $('step').onclick=()=>{if(timer)stop();const to=Math.min(60,num('time')+10);if(num('time')>=60)return;playTime(60,'step','진행 중',15,to);};
+  if($('playInsul'))$('playInsul').onclick=()=>playTime(60,'playInsul','멈추기',8);
+ }
+ else if($('step'))$('step').onclick=()=>{const el=$('time');el.value=Math.min(Number(el.max),Number(el.value)+(slug==='ride-acceleration'?.5:1));draw();};
  if($('play'))$('play').onclick=()=>playTime(12,'play','일시 정지');
  if(slug==='dna-replication'){
-  for(const [id,action]of [['openFork','open'],['primer','prime'],['replace','replace'],['join','join']])$(id).onclick=()=>{state.dna=M.dnaAction(state.dna,action);draw();};
-  host.querySelectorAll('[data-base]').forEach(b=>b.onclick=()=>{state.dna=M.dnaAction(state.dna,val('strand'),b.dataset.base);draw();});
+  const after=before=>{const s=state.dna;if(s.fork!==before.fork){animate('dnaFork',1400,{from:before.fork});return;}
+   const cells=[];for(const n of ['leading','lagging'])s[n].forEach((v,i)=>{if(v&&!before[n][i])cells.push(n+i);});
+   if(cells.length){animate('dnaAdd',520,{cells});return;}if(s.joined&&!before.joined){animate('dnaJoin',900);return;}draw();};
+  for(const [id,action]of [['openFork','open'],['primer','prime'],['replace','replace'],['join','join']])$(id).onclick=()=>{const before=state.dna;state.dna=M.dnaAction(before,action);after(before);};
+  host.querySelectorAll('[data-base]').forEach(b=>b.onclick=()=>{const before=state.dna;state.dna=M.dnaAction(before,val('strand'),b.dataset.base);after(before);});
  }
  if(slug==='protein-synthesis'){
   $('transcribe').onclick=()=>{state.transcribed=true;state.message='';animate('transcribe',2600);};
@@ -376,7 +465,9 @@
   $('removeCard').onclick=()=>{if(!state.selected){status.textContent='꺼낼 카드를 먼저 고르세요.';return;}for(const key of Object.keys(state.karyo.slots))state.karyo.slots[key]=state.karyo.slots[key].filter(id=>id!==state.selected);karyotype();};
  }
  if(slug==='antibiotic-disc'){
-  $('incubate').onclick=()=>{state.time=24;state.message='';draw();};
+  // Keep the ruler next to the drawing it measures.
+  const rulerRow=document.createElement('div');rulerRow.className='ix-ruler-row';rulerRow.append($('disc').closest('label'),$('ruler').closest('label'),$('measure'));scene.after(rulerRow);
+  $('incubate').onclick=()=>{if(state.time>=24)return;state.time=24;state.message='';animate('incubate',3200);};
   $('measure').onclick=()=>{const r=M.antibiotic({time:state.time,dose:num('dose'),spacing:val('spacing'),sampleSet:num('sampleSet')}),d=r.discs[num('disc')];if(r.overlap||!r.observed)return;state.message=Math.abs(num('ruler')-d.width)<=.26?`${d.label}: 가장자리부터 ${fmt(d.width)} mm. 같은 자로 다른 디스크와 반복 시료를 비교하세요.`:'자의 0은 디스크 가장자리입니다. 바깥 구역 경계에 끝을 맞추세요.';draw();};
  }
  if(slug==='water-wave-tank'){

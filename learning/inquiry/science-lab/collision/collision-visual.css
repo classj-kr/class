@@ -49,6 +49,12 @@
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
 .track { stroke: #64748b; stroke-width: 2.4; }
+.rail { fill: #cbd5e1; stroke: #64748b; stroke-width: 1.2; }
+.rail-groove { stroke: #94a3b8; stroke-width: 1; }
+.rail-leg { fill: none; stroke: #64748b; stroke-width: 2; stroke-linejoin: round; }
+.cart-mass { fill: #ffffff; font-size: 14px; font-weight: 900; }
+.cart-name { fill: #334155; font-size: 13.5px; font-weight: 850; }
+.bar-slot { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; stroke-dasharray: 4 3; }
 .track-tick { stroke: rgba(148, 163, 184, 0.38); stroke-width: 1; }
 .cart { stroke: rgba(255, 255, 255, .35); stroke-width: 1.4; }
 .cart.one { fill: #0284c7; }
@@ -62,9 +68,9 @@
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
 .small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
-.read-text { fill: var(--mint); font-size: 13px; font-weight: 900; }
+.read-text { fill: #047857; font-size: 13.5px; font-weight: 900; }
 .note-text { fill: #475569; font-size: 14px; font-weight: 800; }
-.phase-text { font-size: 13px; font-weight: 900; }
+.phase-text { font-size: 13.5px; font-weight: 900; }
 
 .axis { stroke: #334155; stroke-width: 1.8; stroke-width: 1.6; }
 .grid-line { stroke: #e2e8f0; stroke-width: 1; stroke-width: 1; }

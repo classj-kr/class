@@ -127,3 +127,8 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 현상 장면과 기록표 */
+.scene-label { font-size: 14px; font-weight: 800; }
+.sphere-name { fill: #166534; font-size: 17px; font-weight: 900; }
+.table-head { fill: #0f172a; font-size: 14.5px; font-weight: 850; }

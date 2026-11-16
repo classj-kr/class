@@ -320,14 +320,104 @@ document.addEventListener('DOMContentLoaded', () => {
             `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ low: '10배 안', mid: '10~20배', high: '20배 넘게' }[a.verdict]}</span></div>`;
     }
 
+
+    /* ------------------------------------------------- engine drawing (this lab) */
+    // 실린더 위 플라이휠: 피스톤 막대(연결 막대)가 크랭크 핀을 돌리고, 바퀴 축에 감긴 줄이 추를 들어 올린다.
+    // 왼쪽 고온 열원(불꽃 위 뜨거운 판)과 오른쪽 저온 열원(얼음 판)이 실린더 벽에 닿는 화살표로 열을 주고받는다.
+    const EI = '#173449', EHOT = '#c65320', ECOLD = '#1676a5', EGREEN = '#167858';
+    const eText = (x, y, t, c = EI, anchor = 'middle', w = 600) => `<text x="${x}" y="${y}" text-anchor="${anchor}" style="fill:${c};stroke:none;font-size:14px;font-weight:${w}">${t}</text>`;
+    function eArrow(x1, y1, x2, y2, color, op = 1, width = 3) {
+        const an = Math.atan2(y2 - y1, x2 - x1), c = Math.cos(an), sn = Math.sin(an);
+        return `<g opacity="${op}"><path d="M${x1} ${y1} L${(x2 - c * 8).toFixed(1)} ${(y2 - sn * 8).toFixed(1)}" stroke="${color}" stroke-width="${width}" stroke-linecap="round" fill="none"/><polygon points="${x2},${y2} ${(x2 - 10 * c + 5 * sn).toFixed(1)},${(y2 - 10 * sn - 5 * c).toFixed(1)} ${(x2 - 10 * c - 5 * sn).toFixed(1)},${(y2 - 10 * sn + 5 * c).toFixed(1)}" fill="${color}"/></g>`;
+    }
+    function engineScene(a, cycle) {
+        if (a.kind === 'pump') return window.ScienceScenes.engine(a, state, cycle);
+        const invalid = a.kind === 'flow' && a.verdict !== 'ok', p = state.progress, on = p > 0;
+        const leg = a.kind === 'carnot' && on ? cycle.leg : -1;
+        // crank geometry
+        const WX = 230, WY = 42, WR = 30, PR = 20, ROD = 60, CYL0 = 196, CYL1 = 264, CTOP = 74, CBOT = 192;
+        let theta;
+        if (a.kind === 'carnot') {
+            const h = cycle && on ? clamp(Math.log(cycle.V / V1) / Math.log(a.V3 / V1), 0, 1) : 0;
+            const expanding = !on || cycle.leg < 2;
+            theta = expanding ? Math.acos(1 - 2 * h) : 2 * Math.PI - Math.acos(1 - 2 * h);
+        } else theta = invalid ? 0 : p * Math.PI * 8;
+        const pinX = WX + PR * Math.sin(theta), pinY = WY + PR * Math.cos(theta);
+        const pistonY = pinY + Math.sqrt(ROD * ROD - (pinX - WX) ** 2);
+        let o = '';
+        // floor
+        o += `<rect x="8" y="198" width="444" height="6" rx="2" fill="#d5dee4"/>`;
+        // hot reservoir: plate over a burner
+        const hotOn = a.kind !== 'carnot' ? on : leg === 0, coldOn = a.kind !== 'carnot' ? on && !invalid : leg === 2;
+        o += `<rect x="20" y="118" width="118" height="44" rx="6" fill="#f6c3a2" stroke="#c65320" stroke-width="1.6"/>`;
+        o += eText(79, 136, '고온 열원') + eText(79, 154, `${fmtN(a.Th - 273.15)} ℃`, EHOT, 'middle', 800);
+        o += `<rect x="30" y="162" width="98" height="8" fill="#5f6f7a"/><rect x="36" y="186" width="86" height="12" rx="2" fill="#4b5b66"/>`;
+        for (let i = 0; i < 5; i += 1) {
+            const fx = 44 + i * 17, fl = 1 + 0.18 * Math.sin((performance.now() / 140) + i * 1.7) * (on ? 1 : 0);
+            o += `<path d="M${fx - 5} 185 Q${fx - 6} ${(178 - 6 * fl).toFixed(1)} ${fx} ${(172 - 2 * fl).toFixed(1)} Q${fx + 6} ${(178 - 6 * fl).toFixed(1)} ${fx + 5} 185 Z" fill="#f59e0b"/><path d="M${fx - 2.5} 185 Q${fx - 3} ${(181 - 3 * fl).toFixed(1)} ${fx} ${(177 - fl).toFixed(1)} Q${fx + 3} ${(181 - 3 * fl).toFixed(1)} ${fx + 2.5} 185 Z" fill="#dc2626"/>`;
+        }
+        // cold reservoir: plate with ice cubes
+        o += `<rect x="322" y="118" width="118" height="44" rx="6" fill="#cfe6f4" stroke="#1676a5" stroke-width="1.6"/>`;
+        o += eText(381, 136, '저온 열원') + eText(381, 154, `${fmtN(a.Tc - 273.15)} ℃`, ECOLD, 'middle', 800);
+        [[336, 168], [358, 172], [380, 168], [402, 172], [420, 168]].forEach(([x, y], i) => { o += `<rect x="${x}" y="${y}" width="16" height="${26 - (y - 168)}" rx="3" fill="#eef8fd" stroke="#7fb3d1" stroke-width="1.2" transform="rotate(${i % 2 ? 6 : -5} ${x + 8} ${y + 10})"/>`; });
+        // heat arrows touching the cylinder walls
+        o += eArrow(140, 140, CYL0 - 2, 140, EHOT, hotOn ? 1 : 0.25, 4);
+        o += eArrow(CYL1 + 2, 140, 320, 140, ECOLD, invalid ? 0.12 : coldOn ? 1 : 0.25, 4);
+        o += eText(167, 128, '열', EHOT) + eText(292, 128, '열', ECOLD);
+        if (invalid) o += `<path d="M284 132 L300 148 M300 132 L284 148" stroke="#a83b3b" stroke-width="3" stroke-linecap="round"/>`;
+        // cylinder with gas and piston
+        const warm = cycle ? (cycle.T - a.Tc) / Math.max(1, a.Th - a.Tc) : 0.6;
+        const gas = `rgb(${Math.round(244 - 30 * (1 - warm))},${Math.round(196 + 20 * (1 - warm))},${Math.round(130 + 90 * (1 - warm))})`;
+        o += `<rect x="${CYL0 + 2}" y="${(pistonY + 8).toFixed(1)}" width="${CYL1 - CYL0 - 4}" height="${(CBOT - pistonY - 8).toFixed(1)}" fill="${gas}"/>`;
+        for (let i = 0; i < 12; i += 1) {
+            const sp = 1 + warm, gx = CYL0 + 8 + ((i * 41 + p * 900 * sp) % (CYL1 - CYL0 - 16)), gy = pistonY + 14 + ((i * 29 + p * 700 * sp + i * i) % Math.max(6, CBOT - pistonY - 20));
+            o += `<circle cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" r="2.2" fill="#9a4d12" opacity=".7"/>`;
+        }
+        o += `<path d="M${CYL0} ${CTOP} V${CBOT} H${CYL1} V${CTOP}" fill="none" stroke="#5b7383" stroke-width="3"/>`;
+        o += `<rect data-piston="true" x="${CYL0 + 2}" y="${pistonY.toFixed(1)}" width="${CYL1 - CYL0 - 4}" height="9" rx="2" fill="#627d8d"/>`;
+        // connecting rod: straight from the piston pin to the crank pin
+        o += `<line x1="${WX}" y1="${(pistonY + 2).toFixed(1)}" x2="${pinX.toFixed(1)}" y2="${pinY.toFixed(1)}" stroke="#4a6070" stroke-width="5" stroke-linecap="round"/>`;
+        o += `<circle cx="${WX}" cy="${(pistonY + 3).toFixed(1)}" r="3" fill="#2f4250"/>`;
+        // flywheel with spokes, axle stand
+        o += `<path d="M${WX - 14} ${WY} L${WX - 30} 74 M${WX + 14} ${WY} L${WX + 30} 74" stroke="#8aa0ae" stroke-width="4"/>`;
+        o += `<circle cx="${WX}" cy="${WY}" r="${WR}" fill="none" stroke="#5b7383" stroke-width="5"/>`;
+        for (let k = 0; k < 4; k += 1) { const an = theta + k * Math.PI / 2; o += `<line x1="${WX}" y1="${WY}" x2="${(WX + (WR - 2) * Math.sin(an)).toFixed(1)}" y2="${(WY + (WR - 2) * Math.cos(an)).toFixed(1)}" stroke="#8aa0ae" stroke-width="2.5"/>`; }
+        o += `<circle cx="${WX}" cy="${WY}" r="7" fill="#e2e8ec" stroke="#5b7383" stroke-width="2"/><circle cx="${pinX.toFixed(1)}" cy="${pinY.toFixed(1)}" r="4" fill="#2f4250"/>`;
+        // rope from the axle drum over a pulley to the weight: net work lifts it
+        const lift = invalid ? 0 : (p >= 1 ? 1 : ease(p)) * clamp(a.eta, 0, 1) * 40;
+        const PX = 318, PY = 26, wTop = 82 - lift;
+        o += `<path d="M${WX} ${WY - 7} L${PX} ${PY - 7}" stroke="#7c6a4f" stroke-width="1.6"/><circle cx="${PX}" cy="${PY}" r="7" fill="#e2e8ec" stroke="#5b7383" stroke-width="2"/><line x1="${PX}" y1="${PY}" x2="${PX - 18}" y2="12" stroke="#8aa0ae" stroke-width="3"/>`;
+        o += `<line x1="${PX + 7}" y1="${PY}" x2="${PX + 7}" y2="${wTop.toFixed(1)}" stroke="#7c6a4f" stroke-width="1.6"/>`;
+        o += `<path d="M${PX - 6} ${(wTop + 4).toFixed(1)} h26 l4 22 h-34 z" fill="#64748b" stroke="#334155" stroke-width="1.2"/>` + eText(PX + 7, wTop + 21, '추', '#ffffff', 'middle', 800);
+        if (on && !invalid) o += eText(PX + 40, wTop + 21, '들림', EGREEN, 'start');
+        if (invalid) o += eText(PX + 40, wTop + 21, '실현 불가', '#a83b3b', 'start');
+        return `<g data-engine-valid="${!invalid}">${o}</g>`;
+    }
+    function engineBars(a) {
+        if (a.kind === 'pump' && state.progress >= 1) return window.ScienceScenes.engineGraph(a, state);
+        const pump = a.kind === 'pump', invalid = a.kind === 'flow' && a.verdict !== 'ok', done = state.progress >= 1;
+        const fraction = pump ? 1 / a.cop : a.eta, grow = done ? 1 : ease(state.progress), split = 420 * fraction * grow, rest = 420 * (1 - fraction) * grow;
+        const first = pump ? '공급한 일' : '한 일', second = pump ? '바깥에서 가져온 열' : '배출한 열';
+        let o = eText(20, 28, pump ? '실내로 전달한 열을 100으로 놓고 비교' : invalid ? '주장하는 에너지 배분 · 실현 불가' : '고온에서 받은 열을 100으로 놓고 비교', EI, 'start');
+        o += `<rect x="20" y="52" width="420" height="30" fill="#f4f7f9" stroke="#d3dde4"/>`;
+        o += `<rect data-energy="work" data-share="${fraction}" x="20" y="52" width="${split.toFixed(1)}" height="30" fill="${invalid ? '#bb5960' : EGREEN}"/><rect data-energy="heat" data-share="${1 - fraction}" x="${(20 + split).toFixed(1)}" y="52" width="${rest.toFixed(1)}" height="30" fill="${ECOLD}"/>`;
+        o += `<circle cx="24" cy="106" r="4" fill="${invalid ? '#bb5960' : EGREEN}"/>` + eText(35, 111, done ? `${first} ${(fraction * 100).toFixed(1)}` : first, EI, 'start');
+        o += `<circle cx="229" cy="106" r="4" fill="${ECOLD}"/>` + eText(240, 111, done ? `${second} ${((1 - fraction) * 100).toFixed(1)}` : second, EI, 'start');
+        if (a.kind === 'carnot') {
+            const labels = ['열 받음', '팽창', '열 배출', '압축'], phase = state.progress > 0 ? Math.min(3, Math.floor(state.progress * 4)) : -1;
+            labels.forEach((label, i) => { o += `<rect x="${20 + i * 107}" y="144" width="99" height="31" rx="6" fill="${i === phase ? '#e6f1ec' : '#f2f5f7'}" stroke="${i === phase ? '#82a797' : '#dae4ea'}"/>` + eText(69 + i * 107, 165, label); });
+        }
+        return o;
+    }
+
     function render() {
         const a = analyse(), pump = a.kind === 'pump', invalid = a.kind === 'flow' && a.verdict !== 'ok';
         const cycle = a.kind === 'carnot' ? carnotState(a, state.progress >= 1 ? 1 - 1e-9 : state.progress) : null;
-        window.scienceScene.render(mainGroup,window.ScienceScenes.engine(a, state, cycle));
-        window.scienceScene.render(graphGroup,window.ScienceScenes.engineGraph(a, state));
+        window.scienceScene.render(mainGroup,engineScene(a, cycle));
+        window.scienceScene.render(graphGroup,engineBars(a));
         stageBadge.textContent = a.kind === 'carnot' ? HOTS[state.hot].label + ' / ' + COLDS[state.cold].label : pump ? OUTS[state.out].label + ' → ' + INS[state.inn].label : invalid ? '배출 열 없음 · 불가능' : '열의 일부를 일로';
         methodHint.textContent = pump ? '열을 옮기는 데 외부의 일이 필요합니다.' : '받은 열의 일부는 일로, 나머지는 저온 열원으로 이동합니다.';
-        window.scienceScene.render(dataNote,'<p>' + (pump ? '실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일' : invalid ? '하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.' : '고온에서 받은 열 = 한 일 + 저온으로 배출한 열') + '</p><p>' + (pump ? '막대는 선택한 두 온도에서의 이상적 열펌프를 비교한 값입니다. 실제 기기의 성능을 예측한 값이 아닙니다.' : a.kind === 'carnot' ? '막대는 한 주기의 에너지 배분입니다. 고온 열원을 높이거나 저온 열원을 낮추면 한계 효율이 증가합니다.' : '막대는 선택한 기관이 내세우는 에너지 배분입니다. 에너지의 합이 같더라도 모두 실현 가능한 것은 아닙니다.') + '</p>');
+        window.scienceScene.render(dataNote,'<p>' + (pump ? '실내로 전달한 열 = 바깥에서 가져온 열 + 공급한 일' : invalid ? '하나의 열원에서 받은 열을 전부 일로 바꾸는 순환 기관은 만들 수 없습니다.' : '고온에서 받은 열 = 한 일 + 저온으로 배출한 열') + '</p>');
         liftProse();
         return a;
     }
@@ -348,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         state.progress = 0;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         running = true;
         lastStamp = performance.now();
         render();

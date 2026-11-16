@@ -205,8 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="sky-text" x="24" y="66">${!canSee ? '해 가까이 있어 보이지 않음' : Math.abs(ha) < 90 ? `${WHERE[where(ha)]} · 높이 ${Math.round(60 * Math.cos(ha * D2R))}°` : '지평선 아래'}</text>`;
         // The phase key is outside the sky: it is not a second Moon in the west.
         out += `<g data-phase-key><text class="phase-name" style="fill:#334155" x="405" y="27" text-anchor="end">모양: ${a.info.name}</text>${moonShape(430, 24, 9, a.e)}</g>`;
-        out += `<text class="verdict-text" style="fill:#0f172a" x="20" y="16">${a.info.label} · ${a.info.name} → 저녁 7시에 ${WHERE[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="208">${a.rise ? `${hourText(a.rise)}에 떠서 ` : a.visibleAtStart ? '해 질 때 이미 떠 있어 ' : ''}${a.set ? `${hourText(a.set)}에 짐` : a.seen > 0 ? '새벽까지 보임' : '이 밤에는 보이지 않음'} · 밤새 보인 시간 ${a.seen.toFixed(1)}시간</text>`;
+        // 저녁 7시의 자리와 뜨고 지는 시각은 밤을 다 지켜본 뒤에만 적는다(예상의 답이다).
+        const watched = state.progress >= 1;
+        out += `<text class="verdict-text" style="fill:#0f172a" x="20" y="16">${a.info.label} · ${a.info.name}${watched ? ` → 저녁 7시에 ${WHERE[a.verdict]}` : ''}</text>`;
+        if (watched) out += `<text class="note-text" x="20" y="208">${a.rise ? `${hourText(a.rise)}에 떠서 ` : a.visibleAtStart ? '해 질 때 이미 떠 있어 ' : ''}${a.set ? `${hourText(a.set)}에 짐` : a.seen > 0 ? '새벽까지 보임' : '이 밤에는 보이지 않음'} · 밤새 보인 시간 ${a.seen.toFixed(1)}시간</text>`;
         return out;
     }
 
@@ -258,14 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // a month of moons, the chosen day ringed
     function graphMoon(a) {
         let out = `<text class="axis-title" x="20" y="20">한 달 동안 달의 모양 · 삭 이후 경과일</text>`;
-        out += `<rect class="sky" x="12" y="28" width="436" height="152" rx="10"/>`;
+        out += `<rect class="month-card" x="12" y="28" width="436" height="152" rx="10"/>`;
         for (let d = 0; d < 30; d += 1) {
             const col = d % 10, row = Math.floor(d / 10);
             const cx = 39 + col * 42.4, cy = 52 + row * 46;
             const e = elongation(d);
             const chosen = Math.abs(d - state.day) < 0.6;
-            if (chosen) out += `<circle fill="none" stroke="#38bdf8" stroke-width="2" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="16"/>`;
-            out += moonShape(cx, cy, 11, e);
+            if (chosen) out += `<circle fill="none" stroke="#0369a1" stroke-width="2" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="16"/>`;
+            out += `<g class="month-moon">${moonShape(cx, cy, 11, e)}</g>`;
             out += `<text class="moon-day-text" x="${cx.toFixed(1)}" y="${(cy + 22).toFixed(1)}" text-anchor="middle">${d}</text>`;
         }
         out += `<text class="note-text" x="20" y="193">초승달 → 상현달 → 보름달 → 하현달 → 그믐달, 약 30일마다 되풀이됩니다</text>`;
@@ -284,8 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">달의 모습</span><span class="data-val">${a.info.label} · ${a.info.name}</span></div>` +
                 `<div class="data-row"><span class="data-name">밝은 부분</span><span class="data-val">달의 ${Math.round(a.lit * 100)} %${a.e < 180 && a.lit > 0.01 && a.lit < 0.99 ? ' · 오른쪽이 밝음 (커지는 중)' : a.lit > 0.01 && a.lit < 0.99 ? ' · 왼쪽이 밝음 (작아지는 중)' : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${hourText(hour)} · ${a.lit < MIN_LIT ? '보이지 않음' : Math.abs(ha) < 90 ? WHERE[where(ha)] : '지평선 아래'}</span></div>` +
-                `<div class="data-row"><span class="data-name">저녁 7시</span><span class="data-val">${WHERE[a.verdict]}</span></div>` +
-                `<div class="data-row match"><span class="data-name">이 밤</span><span class="data-val">${a.rise ? `${hourText(a.rise)} 뜸` : a.visibleAtStart ? '해 질 때 이미 떠 있음' : '뜨지 않음'}${a.set ? ` · ${hourText(a.set)} 짐` : ''} · 보인 시간 ${a.seen.toFixed(1)}시간</span></div>`;
+                (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">저녁 7시</span><span class="data-val">${WHERE[a.verdict]}</span></div>` +
+                `<div class="data-row match"><span class="data-name">이 밤</span><span class="data-val">${a.rise ? `${hourText(a.rise)} 뜸` : a.visibleAtStart ? '해 질 때 이미 떠 있음' : '뜨지 않음'}${a.set ? ` · ${hourText(a.set)} 짐` : ''} · 보인 시간 ${a.seen.toFixed(1)}시간</span></div>`);
         }
         return '<p>북두칠성의 모양과 북극성의 위치를 비교하세요. 시간·위치는 모형의 예시입니다.</p>';
     }

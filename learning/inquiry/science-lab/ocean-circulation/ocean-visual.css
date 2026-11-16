@@ -86,3 +86,19 @@
 
 .run-row { display: grid; grid-template-columns: 1.8fr 1fr; gap: 8px; align-items: stretch; margin-top: 10px; }
 .run-row .run-button, .run-row .reset-button { width: 100%; margin: 0; }
+
+/* 위에서 본 바다와 층으로 펼친 해류 */
+.sea-ripple { fill: none; stroke: rgba(255, 255, 255, 0.3); stroke-width: 1.1; }
+.wind-streak { stroke: rgba(255, 237, 213, 0.6); stroke-width: 1.8; stroke-linecap: round; }
+.inertial-path { fill: none; stroke: #e11d48; stroke-width: 2.4; stroke-dasharray: 6 4; stroke-linecap: round; }
+.start-dot { fill: #ffffff; stroke: #e11d48; stroke-width: 1.4; }
+.parcel-halo { fill: rgba(244, 63, 94, 0.35); }
+.parcel-dot { fill: #e11d48; stroke: #ffffff; stroke-width: 1.4; }
+.parcel-head { fill: #ffffff; }
+.compass-needle { fill: #ffffff; stroke: #1e3a5f; stroke-width: 1; }
+.sea-chip { fill: rgba(255, 255, 255, 0.92); }
+.sea-chip-text { fill: #ffffff; font-size: 13.5px; font-weight: 900; }
+.air-plane { fill: rgba(254, 243, 199, 0.55); stroke: #f0b866; stroke-width: 1; stroke-dasharray: 4 3; }
+.layer-plane { fill: #7cc0e4; stroke: #3b82b8; stroke-width: 1; }
+.depth-axis { stroke: #64748b; stroke-width: 1.4; }
+#elementaryExplanation { white-space: pre-line; }

@@ -3,3 +3,15 @@
 @media(max-width:580px){.cp-heading,.cp-controls,.cp-view,.cp-footer{padding:16px}.cp-measures{grid-template-columns:1fr 1fr}.cp-triple{grid-template-columns:1fr}.cp-sample{display:grid;grid-template-columns:100px 1fr}.cp-sample svg{grid-row:1/5;grid-column:1}.cp-sample h3,.cp-sample p{grid-column:2}.cp-live{grid-template-columns:1fr}.cp-controls{grid-template-columns:1fr}}
 .cp-tank-values{display:grid;gap:7px;font-size:14px;line-height:1.6}.cp-tank-values>span{display:flex;flex-wrap:wrap;justify-content:space-between;column-gap:8px}.cp-tank-values strong{font-size:16px;font-variant-numeric:tabular-nums}.cp-lab[data-practice=sea-level-causes] .cp-layout{display:block}.cp-lab[data-practice=sea-level-causes] .cp-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-right:0;border-bottom:1px solid #d4e0e5}.cp-lab[data-practice=sea-level-causes] .cp-controls>h3,.cp-lab[data-practice=sea-level-causes] .cp-controls>.cp-note{grid-column:1/-1}.cp-lab[data-practice=sea-level-causes] .cp-sample h3{font-size:16px;min-height:52px}@media(max-width:580px){.cp-lab[data-practice=sea-level-causes] .cp-controls{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.cp-bubble{animation:none}}
+.cp-lab .cp-measures>button{align-self:end;height:auto}
+body main .cp-lab .cp-controls>button:disabled{opacity:.42;background:#f1f4f5;border-style:dashed;color:#5e737c;box-shadow:none}
+body main .cp-lab .cp-controls>button:not(:disabled):not(.primary){border-color:#3d7f8a;box-shadow:inset 0 0 0 1px #3d7f8a;color:#1d5462;font-weight:650}
+.cp-lab:is([data-practice=digestive-enzymes],[data-practice=coastal-inundation],[data-practice=cell-micrometry]) .cp-layout{display:block}
+.cp-lab:is([data-practice=digestive-enzymes],[data-practice=coastal-inundation],[data-practice=cell-micrometry]) .cp-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;border-right:0;border-bottom:1px solid #d4e0e5}
+.cp-lab:is([data-practice=digestive-enzymes],[data-practice=coastal-inundation],[data-practice=cell-micrometry]) .cp-controls>:is(h3,.cp-note){grid-column:1/-1}
+.cp-lab[data-practice=digestive-enzymes] .cp-controls{grid-template-columns:repeat(2,minmax(0,1fr)) repeat(3,minmax(0,1fr))}
+.cp-lab[data-practice=digestive-enzymes] .cp-controls>label{grid-column:span 2}.cp-lab[data-practice=digestive-enzymes] .cp-controls>label+label{grid-column:span 3}
+.cp-lab[data-practice=sea-level-causes] .cp-controls{grid-template-columns:repeat(4,minmax(0,1fr));align-items:start}
+.cp-lab .cp-controls>button{align-self:start}
+@media(max-width:900px){.cp-lab:is([data-practice=digestive-enzymes],[data-practice=coastal-inundation],[data-practice=cell-micrometry],[data-practice=sea-level-causes]) .cp-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.cp-lab[data-practice=digestive-enzymes] .cp-controls>label,.cp-lab[data-practice=digestive-enzymes] .cp-controls>label+label{grid-column:auto}}
+@media(max-width:580px){.cp-lab:is([data-practice=digestive-enzymes],[data-practice=coastal-inundation],[data-practice=cell-micrometry],[data-practice=sea-level-causes]) .cp-controls{grid-template-columns:1fr}}

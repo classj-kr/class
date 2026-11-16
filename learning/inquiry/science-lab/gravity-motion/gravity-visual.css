@@ -76,11 +76,15 @@
 .data-note { display: grid; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 
 /* the cliff */
-.ground { fill: #3a4a3a; stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
+.ground { fill: #a9b48c; stroke: #6f7d55; stroke-width: 1; }
+.building { fill: #d5dde4; stroke: #4b5d6b; stroke-width: 1.2; }
+.roof { fill: #4b5d6b; }
+.floor-line { stroke: #9fb0bd; stroke-width: .8; }
+.window { fill: #6f9fc2; }
 .cliff { fill: #4a5a63; stroke: rgba(190, 235, 242, .45); stroke-width: 1.2; }
-.ball-a { fill: #eef5f8; stroke: rgba(0, 0, 0, .4); stroke-width: .8; }
+.ball-a { fill: #1d4ed8; stroke: #0f2a75; stroke-width: .8; }
 .ball-b { fill: #c2410c; stroke: rgba(0, 0, 0, .4); stroke-width: .8; }
-.trail-a { fill: rgba(238, 245, 248, .55); }
+.trail-a { fill: rgba(29, 78, 216, .55); }
 .trail-b { fill: rgba(217, 119, 6, .6); }
 .scale-bar { stroke: #334155; stroke-width: 1.5; }
 .mark { stroke: #ff7a59; stroke-width: 1.6; }

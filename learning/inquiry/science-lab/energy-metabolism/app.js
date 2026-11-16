@@ -136,7 +136,28 @@ function mix(a, b, f) {
     return `rgb(${Math.round(a[0] + (b[0] - a[0]) * f)},${Math.round(a[1] + (b[1] - a[1]) * f)},${Math.round(a[2] + (b[2] - a[2]) * f)})`;
 }
 
-const NIGHT = [148, 163, 184], DAY = [186, 230, 253];
+const NIGHT = [196, 207, 224], DAY = [222, 241, 253];
+
+// Streams of gas: three on each side so the flow reads as air, not a single bead string.
+const IN_STREAMS = [[22, 96, 110, 104, 190, 132], [18, 140, 108, 146, 188, 150], [26, 184, 118, 178, 198, 166]];
+const OUT_STREAMS = [[278, 132, 360, 104, 442, 92], [278, 150, 360, 142, 444, 138], [268, 166, 356, 180, 440, 184]];
+const STOMATA = [[198, 166], [188, 150], [190, 132], [278, 132], [278, 150], [268, 166], [216, 112], [250, 114]];
+
+function quad(s, p) {
+    const q = 1 - p;
+    return [q * q * s[0] + 2 * q * p * s[2] + p * p * s[4], q * q * s[1] + 2 * q * p * s[3] + p * p * s[5]];
+}
+
+function molecule(g, kind, x, y) {
+    if (kind === 'co2') {
+        g.appendChild(el('circle', { cx: x - 6, cy: y, r: 3, class: 'atom-o' }));
+        g.appendChild(el('circle', { cx: x + 6, cy: y, r: 3, class: 'atom-o' }));
+        g.appendChild(el('circle', { cx: x, cy: y, r: 3.6, class: 'atom-c' }));
+    } else {
+        g.appendChild(el('circle', { cx: x - 3, cy: y, r: 3.2, class: 'atom-o' }));
+        g.appendChild(el('circle', { cx: x + 3, cy: y, r: 3.2, class: 'atom-o' }));
+    }
+}
 
 function drawLeaf(g) {
     const { light: I, co2: c, temp: t } = state;
@@ -144,68 +165,88 @@ function drawLeaf(g) {
     const day = state.running ? (state.dayHour >= 6 && state.dayHour <= 18) : state.light > 0;
     const f = clamp(I / 2000, 0, 1);
 
-    g.appendChild(el('rect', { x: 0, y: 0, width: 460, height: 200, class: 'sky', style: `fill:${mix(NIGHT, DAY, f)}` }));
-    g.appendChild(el('path', { d: 'M 78 200 A 152 152 0 0 1 382 200', class: 'sun-track' }));
-    g.appendChild(el('line', { x1: 8, y1: 200, x2: 452, y2: 200, class: 'horizon' }));
+    const defs = el('defs', {});
+    const grad = el('linearGradient', { id: 'leafFill', x1: 0, y1: 0, x2: 1, y2: 1 });
+    grad.appendChild(el('stop', { offset: 0, 'stop-color': '#8fd394' }));
+    grad.appendChild(el('stop', { offset: 1, 'stop-color': '#4c9f5c' }));
+    defs.appendChild(grad);
+    g.appendChild(defs);
 
-    // The sun sits at the height that would give this much light; during a day
-    // run it swings across the whole arc instead.
+    g.appendChild(el('rect', { x: 0, y: 0, width: 460, height: 214, class: 'sky', style: `fill:${mix(NIGHT, DAY, f)}` }));
+    g.appendChild(el('rect', { x: 0, y: 200, width: 460, height: 14, class: 'soil' }));
+    g.appendChild(el('line', { x1: 0, y1: 200, x2: 460, y2: 200, class: 'horizon' }));
+
+    // The sun stays in the band above the leaf: higher and brighter with more
+    // light, and during a day run it crosses that band from morning to evening.
     let ang;
     if (state.running) ang = Math.PI * clamp((state.dayHour - 6) / 12, 0, 1);
     else ang = Math.PI - Math.asin(clamp(Math.sqrt(f), 0, 1));
     if (day) {
-        const sx = 230 - 152 * Math.cos(ang), sy = 200 - 152 * Math.sin(ang);
+        const sx = 230 - 52 * Math.cos(ang), sy = 70 - 40 * Math.sin(ang);
+        if (f > 0.01) [[200, 112], [232, 100], [264, 112]].forEach(([lx, ly]) => {
+            const dx = lx - sx, dy = ly - sy, d = Math.hypot(dx, dy) || 1;
+            g.appendChild(el('line', { x1: sx + dx / d * 26, y1: sy + dy / d * 26, x2: lx, y2: ly, class: 'light-beam', style: `opacity:${fmt(0.35 + 0.5 * f, 2)}` }));
+        });
+        const len = 5 + 8 * f;
         for (let i = 0; i < 8; i += 1) {
             const a = i * Math.PI / 4;
-            g.appendChild(el('line', {
-                x1: sx + Math.cos(a) * 11, y1: sy + Math.sin(a) * 11,
-                x2: sx + Math.cos(a) * (14 + 3 * Math.sin(state.phase * 2 + i)), y2: sy + Math.sin(a) * (14 + 3 * Math.sin(state.phase * 2 + i)),
-                class: 'sun-ray',
-            }));
+            const r2 = 14 + len + 2 * Math.sin(state.phase * 2 + i);
+            g.appendChild(el('line', { x1: sx + Math.cos(a) * 14, y1: sy + Math.sin(a) * 14, x2: sx + Math.cos(a) * r2, y2: sy + Math.sin(a) * r2, class: 'sun-ray' }));
         }
-        g.appendChild(el('circle', { cx: sx, cy: sy, r: 9, class: 'sun-body' }));
+        g.appendChild(el('circle', { cx: sx, cy: sy, r: 11, class: 'sun-body' }));
     } else {
-        g.appendChild(el('circle', { cx: 388, cy: 52, r: 8, style: 'fill:#cfe0ea' }));
-        g.appendChild(el('circle', { cx: 384, cy: 49, r: 7, style: `fill:${mix(NIGHT, DAY, f)}` }));
+        g.appendChild(el('circle', { cx: 230, cy: 46, r: 11, class: 'moon' }));
+        g.appendChild(el('circle', { cx: 236, cy: 42, r: 10, style: `fill:${mix(NIGHT, DAY, f)}` }));
     }
 
-    g.appendChild(el('line', { x1: 230, y1: 200, x2: 230, y2: 170, class: 'stem' }));
-    g.appendChild(el('path', { d: 'M 230 176 C 178 172 162 138 230 122 C 298 138 282 172 230 176 Z', class: 'leaf-blade' }));
-    g.appendChild(el('path', { d: 'M 230 176 L 230 124 M 230 160 L 200 150 M 230 160 L 260 150 M 230 146 L 206 138 M 230 146 L 254 138', class: 'leaf-vein' }));
+    // the leaf: stalk, blade, midrib, side veins and the stomata on its surface
+    g.appendChild(el('path', { d: 'M 236 200 Q 240 192 233 182', class: 'stem' }));
+    g.appendChild(el('path', { d: 'M 232 184 C 196 178 176 152 180 126 C 184 106 208 92 234 80 C 258 94 282 108 286 128 C 290 154 268 178 232 184 Z', class: 'leaf-blade' }));
+    let veins = 'M 232 184 Q 230 136 234 84';
+    const half = y => 50 * Math.pow(Math.max(0, Math.sin(Math.PI * (y - 80) / 104)), 0.8);
+    for (let k = 0; k < 5; k += 1) {
+        const y = 172 - k * 16, w = 0.78 * half(y - 14);
+        veins += ` M 231 ${y} Q ${fmt(231 - w * 0.5, 1)} ${y - 5} ${fmt(231 - w, 1)} ${y - 14} M 232 ${y} Q ${fmt(232 + w * 0.5, 1)} ${y - 5} ${fmt(232 + w, 1)} ${y - 14}`;
+    }
+    g.appendChild(el('path', { d: veins, class: 'leaf-vein' }));
+    STOMATA.forEach(([x, y]) => {
+        g.appendChild(el('ellipse', { cx: x - 1.6, cy: y, rx: 1.6, ry: 2.7, class: 'guard-cell' }));
+        g.appendChild(el('ellipse', { cx: x + 1.6, cy: y, rx: 1.6, ry: 2.7, class: 'guard-cell' }));
+    });
+    g.appendChild(el('path', { d: 'M 195 169 L 170 188', class: 'leader' }));
+    g.appendChild(el('text', { x: 166, y: 194, 'text-anchor': 'end', class: 'part-label' }, '기공'));
 
-    // Gas streams. The left one always flows in, the right one always flows
+    // Gas streams. The left ones always flow in, the right ones always flow
     // out; which gas each carries flips when respiration wins.
     const inGas = net >= 0 ? 'co2' : 'o2';
     const outGas = net >= 0 ? 'o2' : 'co2';
     const nameOf = k => (k === 'co2' ? 'CO₂' : 'O₂');
-    g.appendChild(el('path', { d: 'M 46 96 Q 118 104 190 140', class: 'flow-guide' }));
-    g.appendChild(el('path', { d: 'M 270 140 Q 342 104 414 96', class: 'flow-guide' }));
+    IN_STREAMS.concat(OUT_STREAMS).forEach(s => g.appendChild(el('path', { d: `M ${s[0]} ${s[1]} Q ${s[2]} ${s[3]} ${s[4]} ${s[5]}`, class: 'flow-guide' })));
 
     const mag = Math.abs(net);
-    const dots = mag < 0.25 ? 0 : clamp(Math.round(mag * 0.7) + 1, 1, 8);
-    const speed = clamp(0.1 + mag * 0.06, 0.1, 0.75);
-    for (let i = 0; i < dots; i += 1) {
-        const p = ((state.phase * speed) + i / dots) % 1;
-        const q = 1 - p;
-        const ax = q * q * 46 + 2 * q * p * 118 + p * p * 190;
-        const ay = q * q * 96 + 2 * q * p * 104 + p * p * 140;
-        const bx = q * q * 270 + 2 * q * p * 342 + p * p * 414;
-        const by = q * q * 140 + 2 * q * p * 104 + p * p * 96;
-        g.appendChild(el('circle', { cx: ax, cy: ay, r: 4, class: `gas-dot ${inGas}` }));
-        g.appendChild(el('circle', { cx: bx, cy: by, r: 4, class: `gas-dot ${outGas}` }));
+    const per = mag < 0.25 ? 0 : clamp(Math.round(mag * 0.25) + 1, 1, 4);
+    const speed = clamp(0.1 + mag * 0.05, 0.1, 0.6);
+    for (let k = 0; k < 3; k += 1) {
+        for (let i = 0; i < per; i += 1) {
+            const p = ((state.phase * speed) + i / per + k * 0.37) % 1;
+            const [ax, ay] = quad(IN_STREAMS[k], p);
+            const [bx, by] = quad(OUT_STREAMS[k], p);
+            molecule(g, inGas, ax, ay);
+            molecule(g, outGas, bx, by);
+        }
     }
 
-    if (dots === 0) {
-        g.appendChild(el('text', { x: 230, y: 100, 'text-anchor': 'middle', class: 'note-text' }, '드나드는 기체가 거의 없습니다'));
+    if (per === 0) {
+        g.appendChild(el('text', { x: 230, y: 76, 'text-anchor': 'middle', class: 'note-text' }, '드나드는 기체가 거의 없습니다'));
     } else {
-        g.appendChild(el('text', { x: 40, y: 82, class: 'part-label' }, nameOf(inGas) + ' 들어감'));
-        g.appendChild(el('text', { x: 420, y: 82, 'text-anchor': 'end', class: 'part-label' }, nameOf(outGas) + ' 나감'));
+        g.appendChild(el('text', { x: 22, y: 82, class: 'part-label' }, nameOf(inGas) + ' 들어감'));
+        g.appendChild(el('text', { x: 440, y: 80, 'text-anchor': 'end', class: 'part-label' }, nameOf(outGas) + ' 나감'));
     }
 
-    g.appendChild(el('text', { x: 22, y: 28, class: 'read-text' }, `빛 ${Math.round(I)}`));
-    g.appendChild(el('text', { x: 22, y: 44, class: 'small-label' }, state.running ? `${String(Math.floor(state.dayHour)).padStart(2, '0')}시 · 하루를 ${DAY_SECONDS}초로` : 'μmol/m²/s'));
-    g.appendChild(el('text', { x: 438, y: 28, 'text-anchor': 'end', class: 'read-text' }, `순광합성 ${fmt(net, 2)}`));
-    g.appendChild(el('text', { x: 438, y: 44, 'text-anchor': 'end', class: 'small-label' }, `${state.temp} ℃ · CO₂ ${state.co2} ppm`));
+    g.appendChild(el('text', { x: 18, y: 26, class: 'read-text' }, `빛 ${Math.round(I)}`));
+    g.appendChild(el('text', { x: 18, y: 43, class: 'small-label' }, state.running ? `${String(Math.floor(state.dayHour)).padStart(2, '0')}시` : 'μmol/m²/s'));
+    g.appendChild(el('text', { x: 442, y: 26, 'text-anchor': 'end', class: 'read-text' }, `순광합성 ${fmt(net, 2)}`));
+    g.appendChild(el('text', { x: 442, y: 43, 'text-anchor': 'end', class: 'small-label' }, `CO₂ ${state.co2} ppm`));
     if (state.running || state.dayNet !== 0) {
         g.appendChild(el('text', { x: 230, y: 212, 'text-anchor': 'middle', class: 'note-text' }, `하루 수지 ${fmt(state.dayNet, 1)} mmol CO₂/m²`));
     }
@@ -247,21 +288,23 @@ function drawLeafGraph(g) {
     if (ic !== null && ic <= 2000) {
         g.appendChild(el('line', { x1: X(ic), y1: Y(0) - 8, x2: X(ic), y2: Y(0) + 8, class: 'mark-line' }));
         g.appendChild(el('line', { x1: X(ic), y1: Y(0) - 8, x2: X(ic), y2: 46, class: 'mark-line', style: 'opacity:.4' }));
-        g.appendChild(el('text', { x: X(ic) + 4, y: 42, class: 'axis-text' }, `광보상점 ${Math.round(ic)}`));
+        g.appendChild(el('text', { x: X(ic) + 4, y: 42, class: 'axis-text halo' }, `광보상점 ${Math.round(ic)}`));
     }
     const sat = saturationPoint(c, t);
     if (sat !== null && sat <= 2000) {
-        g.appendChild(el('line', { x1: X(sat), y1: yBot, x2: X(sat), y2: yBot - 12, class: 'mark-line' }));
-        g.appendChild(el('text', { x: X(sat) - 4, y: yBot - 4, 'text-anchor': 'end', class: 'axis-text' }, `광포화점 ${Math.round(sat)}`));
+        // Label in the open band between the zero line and the curves, clear of the dashed lines.
+        const ly = (Y(0) + Y(netAt(sat, c, t))) / 2 + 5;
+        g.appendChild(el('line', { x1: X(sat), y1: Y(netAt(sat, c, t)) + 4, x2: X(sat), y2: ly + 4, class: 'mark-line', style: 'opacity:.5' }));
+        g.appendChild(el('text', { x: X(sat) - 6, y: ly, 'text-anchor': 'end', class: 'axis-text halo' }, `광포화점 ${Math.round(sat)}`));
     }
     g.appendChild(el('circle', { cx: X(state.light), cy: Y(netAt(state.light, c, t)), r: 5, class: 'trace-dot', style: 'fill:#059669' }));
 
     const keys = [['#d97706', '총광합성'], ['#059669', '순광합성 = 총광합성 − 호흡'], ['#ea580c', '호흡']];
-    let lx = x0;
-    keys.forEach(([col, label]) => {
-        g.appendChild(el('line', { x1: lx, y1: 172, x2: lx + 15, y2: 172, style: `stroke:${col};stroke-width:3` }));
+    const keyX = [x0, x0 + 100, x0 + 318];
+    keys.forEach(([col, label], i) => {
+        const lx = keyX[i];
+        g.appendChild(el('line', { x1: lx, y1: 172, x2: lx + 15, y2: 172, style: `stroke:${col};stroke-width:3${i === 0 ? ';stroke-dasharray:6 4' : i === 2 ? ';stroke-dasharray:4 3' : ''}` }));
         g.appendChild(el('text', { x: lx + 20, y: 175.5, class: 'legend-text', style: `fill:${col}` }, label));
-        lx += 26 + label.length * 8.4;
     });
     g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, '빛 세기 (μmol/m²/s) — 세로는 CO₂ 속도 (μmol/m²/s)'));
 }
@@ -282,8 +325,12 @@ function atpStageAt() {
     return { idx: 0, frac: 0, plan, done: 0 };
 }
 
+// The ATP count is what the student predicts, so it stays hidden until the run starts.
+const atpShown = () => state.running || state.checked;
+
 function drawCell(g) {
     const { idx, frac, plan, done } = atpStageAt();
+    const shown = atpShown();
     const aer = state.o2;
 
     g.appendChild(el('rect', { x: 20, y: 16, width: 420, height: 182, rx: 18, class: 'cell-wall' }));
@@ -299,10 +346,10 @@ function drawCell(g) {
 
     plan.stages.forEach((s, i) => {
         const [bx, by, bw, bh] = boxes[i];
-        const on = i === idx;
+        const on = shown && i === idx;
         g.appendChild(el('rect', { x: bx, y: by, width: bw, height: bh, rx: 10, class: `step-box${on ? ' on' : ''}` }));
         g.appendChild(el('text', { x: bx + bw / 2, y: by + (bh > 40 ? 20 : 16), 'text-anchor': 'middle', class: 'step-text', style: `fill:${on ? '#b45309' : '#0f172a'}` }, s.name));
-        g.appendChild(el('text', { x: bx + bw / 2, y: by + (bh > 40 ? 34 : 28), 'text-anchor': 'middle', class: 'step-sub', style: `fill:${on ? '#92400e' : '#475569'}` }, `ATP ${s.atp} · ${s.made}`));
+        g.appendChild(el('text', { x: bx + bw / 2, y: by + (bh > 40 ? 34 : 28), 'text-anchor': 'middle', class: 'step-sub', style: `fill:${on ? '#92400e' : '#475569'}` }, shown ? `ATP ${s.atp} · ${s.made}` : `ATP ? · ${s.made}`));
     });
 
     g.appendChild(el('text', { x: 109, y: 48, 'text-anchor': 'middle', class: 'part-label' }, '포도당 1분자'));
@@ -329,8 +376,8 @@ function drawCell(g) {
     // ATP made so far, ticking up in step with the stages.
     const showing = state.running ? done : plan.total;
     g.appendChild(el('text', { x: 34, y: 166, class: 'small-label' }, state.running ? '지금까지 만든 ATP' : '포도당 1분자가 만드는 ATP'));
-    g.appendChild(el('text', { x: 34, y: 194, class: 'big-count' }, `${state.running ? Math.floor(showing) : showing}개`));
-    for (let i = 0; i < Math.min(12, Math.round(showing)); i += 1) {
+    g.appendChild(el('text', { x: 34, y: 194, class: 'big-count' }, shown ? `${state.running ? Math.floor(showing) : showing}개` : '?개'));
+    for (let i = 0; i < (shown ? Math.min(12, Math.round(showing)) : 0); i += 1) {
         g.appendChild(el('circle', { cx: 110 + (i % 6) * 13, cy: 178 + Math.floor(i / 6) * 12, r: 4.2, class: 'atp-dot' }));
     }
     if (state.running) {
@@ -357,7 +404,7 @@ function drawCellGraph(g) {
     const pts = [];
     plan.stages.forEach((s, i) => {
         const cx = x0 + slot * (i + 0.5);
-        const live = state.running ? (i < idx ? 1 : (i === idx ? frac : 0)) : 1;
+        const live = state.running ? (i < idx ? 1 : (i === idx ? frac : 0)) : (state.checked ? 1 : 0);
         const h = s.atp * live;
         cum += h;
         pts.push([cx, Y(cum)]);
@@ -378,7 +425,7 @@ function drawCellGraph(g) {
     g.appendChild(el('line', { x1: x0 + 132, y1: 172, x2: x0 + 147, y2: 172, style: 'stroke:#059669;stroke-width:3' }));
     g.appendChild(el('text', { x: x0 + 152, y: 175.5, class: 'legend-text', style: 'fill:#059669' }, '누적 ATP'));
     const eff = plan.total * ATP_KJ / GLUCOSE_KJ;
-    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, `포도당 2870 kJ · ATP 1개 30.5 kJ → 에너지의 ${fmt(eff * 100, 1)}%가 ATP로`));
+    g.appendChild(el('text', { x: (x0 + x1) / 2, y: 191, 'text-anchor': 'middle', class: 'axis-title' }, atpShown() ? `포도당 2870 kJ · ATP 1개 30.5 kJ → 에너지의 ${fmt(eff * 100, 1)}%가 ATP로` : '포도당 2870 kJ · ATP 1개 30.5 kJ'));
 }
 
 function render() {
@@ -386,6 +433,10 @@ function render() {
     if (state.mode === 'leaf') { drawLeaf(main); drawLeafGraph(graph); }
     else { drawCell(main); drawCellGraph(graph); }
     });
+    // Redrawn nodes are reused by position; a label must not inherit the
+    // "moved below the figure" mark that belonged to an earlier note.
+    document.querySelectorAll('#mainGroup text[data-figure-extracted]:not(.note-text), #graphGroup text[data-figure-extracted]:not(.note-text):not(.axis-title)')
+        .forEach(t => t.removeAttribute('data-figure-extracted'));
     updateReadout();
 }
 
@@ -425,8 +476,9 @@ function updateReadout() {
                 ? `${fmt(net * 3600 / 6 * plan.total / 1000, 1)} mmol/m²`
                 : '순광합성이 0 이하라 남는 포도당이 없습니다', net > 0],
         ];
+        const open = atpShown();
         $('dataNote').innerHTML = rows.map(([n, v, m]) =>
-            `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
+            `<div class="data-row${m && open ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${open ? v : '포도당 따라가기 뒤'}</span></div>`).join('');
     }
     if (state.checked) explain(a);
 }
@@ -483,8 +535,9 @@ function explain(a) {
 }
 
 // --- animation --------------------------------------------------------------
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function tick(dt) {
-    state.phase += dt;
+    if (!reducedMotion()) state.phase += dt;
     if (!state.running) return false;
     if (state.mode === 'leaf') {
         const before = state.dayHour;
@@ -560,11 +613,16 @@ document.querySelectorAll('[data-co2]').forEach(b => b.addEventListener('click',
 document.querySelectorAll('[data-temp]').forEach(b => b.addEventListener('click', () => {
     state.temp = Number(b.dataset.temp); markSelected('[data-temp]', 'temp', state.temp); render();
 }));
+function hideAtpResult() {
+    if (state.mode !== 'atp' || state.running) return;
+    state.checked = false; state.atpProgress = 0;
+    $('resultEmpty').hidden = false; $('resultContent').hidden = true;
+}
 document.querySelectorAll('[data-o2]').forEach(b => b.addEventListener('click', () => {
-    state.o2 = b.dataset.o2 === 'yes'; markSelected('[data-o2]', 'o2', state.o2 ? 'yes' : 'no'); render();
+    state.o2 = b.dataset.o2 === 'yes'; markSelected('[data-o2]', 'o2', state.o2 ? 'yes' : 'no'); hideAtpResult(); render();
 }));
 document.querySelectorAll('[data-shuttle]').forEach(b => b.addEventListener('click', () => {
-    state.shuttle = b.dataset.shuttle; markSelected('[data-shuttle]', 'shuttle', state.shuttle); render();
+    state.shuttle = b.dataset.shuttle; markSelected('[data-shuttle]', 'shuttle', state.shuttle); hideAtpResult(); render();
 }));
 document.querySelectorAll('[data-prediction]').forEach(b => b.addEventListener('click', () => {
     state.prediction = b.dataset.prediction; state.checked = false; window.scienceInvalidatePrediction?.(); markSelected('[data-prediction]', 'prediction', state.prediction);
@@ -586,6 +644,8 @@ $('runBtn').addEventListener('click', () => {
         state.atpProgress = 0; state.running = true;
         $('runBtn').textContent = '멈추기';
     }
+    // Reduced motion: go straight to the end of the day or of the ATP books.
+    if (reducedMotion()) { let n = 0; while (state.running && n < 20000) { tick(1 / 30); n += 1; } }
     render();
 });
 $('resetBtn').addEventListener('click', () => {

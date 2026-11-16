@@ -100,16 +100,28 @@ function el(tag, attrs, text) {
 // --- parallax and spectrum --------------------------------------------------
 const SKY = { x: 24, y: 20, w: 200, h: 74 };
 const ORBIT = { cx: 124, cy: 168, rx: 62, ry: 20 };
-const FAR = [[46, 38], [88, 30], [132, 52], [176, 34], [200, 66], [64, 74], [156, 78], [110, 84]];
+const FAR = [[44, 60], [88, 30], [132, 52], [176, 34], [200, 66], [64, 74], [156, 78], [110, 84]];
 
 function drawScene(g) {
     const a = analyse();
     const ang = state.running ? state.year * 2 * Math.PI : 0;
     const swing = Math.sin(ang);
 
+    if (state.parallax > 1000) {
+        // 태양은 지구가 그 둘레를 도는 별이라 먼 별 배경 앞에서 흔들림(연주시차)을 잴 수 없다.
+        g.appendChild(el('ellipse', { cx: ORBIT.cx, cy: ORBIT.cy - 50, rx: ORBIT.rx + 30, ry: ORBIT.ry + 24, class: 'orbit' }));
+        g.appendChild(el('circle', { cx: ORBIT.cx, cy: ORBIT.cy - 50, r: 17, class: 'sun-body' }));
+        g.appendChild(el('text', { x: ORBIT.cx, y: ORBIT.cy - 45, 'text-anchor': 'middle', class: 'small-label sun-name' }, '태양'));
+        const sx = ORBIT.cx + Math.cos(ang) * (ORBIT.rx + 30), sy = ORBIT.cy - 50 + Math.sin(ang) * (ORBIT.ry + 24);
+        g.appendChild(el('circle', { cx: sx, cy: sy, r: 4.5, class: 'earth-dot' }));
+        g.appendChild(el('text', { x: sx, y: sy - 9, 'text-anchor': 'middle', class: 'tiny-label' }, '지구'));
+        g.appendChild(el('text', { x: ORBIT.cx, y: 26, 'text-anchor': 'middle', class: 'small-label', style: 'fill:#b45309' }, '너무 가까워 연주시차를 잴 수 없음'));
+        g.appendChild(el('text', { x: ORBIT.cx, y: ORBIT.cy + 22, 'text-anchor': 'middle', class: 'tiny-label' },
+            state.running ? `${Math.round(state.year * 12)}개월째` : '지구가 태양 둘레를 돎'));
+    } else {
     g.appendChild(el('rect', { x: SKY.x, y: SKY.y, width: SKY.w, height: SKY.h, rx: 5, class: 'sky-box' }));
-    FAR.forEach(([fx, fy]) => g.appendChild(el('circle', { cx: fx, cy: fy, r: 1.6, class: 'far-star' })));
-    g.appendChild(el('text', { x: SKY.x + 6, y: SKY.y + 14, class: 'tiny-label', style: 'fill:#cbd5e1' }, '먼 별들을 배경으로'));
+    FAR.forEach(([fx, fy]) => g.appendChild(el('circle', { cx: fx, cy: fy, r: 1.8, class: 'far-star' })));
+    g.appendChild(el('text', { x: SKY.x + 6, y: SKY.y + 15, class: 'tiny-label' }, '먼 별들을 배경으로'));
 
     const nx = 124 + swing * 15, ny = 58;
     g.appendChild(el('line', { x1: 124 - 15, y1: ny + 12, x2: 124 + 15, y2: ny + 12, class: 'shift-mark' }));
@@ -124,6 +136,7 @@ function drawScene(g) {
     g.appendChild(el('circle', { cx: ex, cy: ey, r: 4, class: 'earth-dot' }));
     g.appendChild(el('text', { x: ORBIT.cx, y: ORBIT.cy + ORBIT.ry + 16, 'text-anchor': 'middle', class: 'tiny-label' },
         state.running ? `${Math.round(state.year * 12)}개월째` : '지구가 한 바퀴 도는 동안'));
+    }
 
     // Spectrum, with the visible band tinted in the star's own colour.
     const SP = { x: 262, y: 34, w: 186, h: 116 };
@@ -184,19 +197,21 @@ function drawGraph(g) {
         if (ly > yTop + 12 && ly < yBot - 6) g.appendChild(el('text', { x: x1 - 4, y: ly - 5, 'text-anchor': 'end', class: 'radius-text' }, label));
     });
 
-    g.appendChild(el('rect', { x: X(5200), y: Y(3000), width: X(3200) - X(5200), height: Y(30) - Y(3000), class: 'zone zone-giant' }));
-    g.appendChild(el('rect', { x: X(30000), y: Y(0.03), width: X(7000) - X(30000), height: Y(0.0005) - Y(0.03), class: 'zone zone-dwarf' }));
+    g.appendChild(el('rect', { x: X(5200), y: Y(3000), width: X(3200) - X(5200), height: Y(30) - Y(3000), rx: 8, class: 'zone zone-giant' }));
+    g.appendChild(el('rect', { x: X(30000), y: Y(0.03), width: X(7000) - X(30000), height: Y(0.0005) - Y(0.03), rx: 8, class: 'zone zone-dwarf' }));
 
     const MS = [[40000, 1.2e5], [20000, 1.6e4], [10000, 60], [7500, 8], [6000, 1.5], [5200, 0.4], [4000, 0.07], [3000, 0.012], [2500, 0.003]];
     let ms = '';
     MS.forEach(([t, l], i) => { ms += `${i ? 'L' : 'M'} ${fmt(X(t), 2)} ${fmt(Y(l), 2)} `; });
     g.appendChild(el('path', { d: ms, class: 'main-seq' }));
+    g.appendChild(el('path', { d: ms, class: 'main-seq-core' }));
 
     Object.entries(STARS).forEach(([k, s]) => {
         if (k === state.star) return;
         g.appendChild(el('circle', { cx: X(s.t), cy: Y(luminosity(s.r, s.t)), r: 3, class: 'other-dot' }));
     });
-    g.appendChild(el('circle', { cx: X(a.temp), cy: Y(a.lum), r: 6, class: 'star-dot', style: `fill:${a.colour}` }));
+    // 고른 별의 자리는 예상의 답이므로 일 년 지켜보기를 마친 뒤에 찍는다.
+    if (state.checked && !state.running) g.appendChild(el('circle', { cx: X(a.temp), cy: Y(a.lum), r: 6.5, class: 'star-dot', style: `fill:${a.colour}` }));
 
     g.appendChild(el('text', { x: X(20000), y: yTop - 4, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#0284c7' }, '주계열'));
     g.appendChild(el('text', { x: X(4100), y: Y(3000) - 4, 'text-anchor': 'middle', class: 'legend-text', style: 'fill:#dc2626' }, '거성'));
@@ -239,7 +254,7 @@ function updateReadout() {
             ? `${fmt(s.mv, 2)}등급 · 차이 ${fmt(Math.abs(s.mv - a.m), 2)}`
             : '값을 바꿔 만든 별이라 견줄 관측값이 없습니다', false],
         ['반지름', `${fmt(a.radius, a.radius < 1 ? 4 : 1)} R☉ · 지구의 ${fmt(a.radius * 109.2, a.radius < 0.1 ? 2 : 0)}배`, false],
-        ['HR도에서의 자리', WORDS[a.verdict], false],
+        ['HR도에서의 자리', state.checked && !state.running ? WORDS[a.verdict] : '일 년 지켜보기를 마치면 적힙니다', false],
     ];
     $('dataNote').innerHTML = rows.map(([n, v, m]) =>
         `<div class="data-row${m ? ' match' : ''}"><span class="data-name">${n}</span><span class="data-val">${v}</span></div>`).join('');
@@ -310,8 +325,11 @@ function frame(now) {
     last = now;
     tick(dt);
     render();
-    requestAnimationFrame(frame);
+    // 움직일 것이 있을 때만 다음 장면을 그린다.
+    if (state.running) requestAnimationFrame(frame); else looping = false;
 }
+let looping = false;
+function startLoop() { if (looping) return; looping = true; last = performance.now(); requestAnimationFrame(frame); }
 
 // --- wiring -----------------------------------------------------------------
 function markSelected(sel, attr, value) {
@@ -348,6 +366,7 @@ $('runBtn').addEventListener('click', () => {
     state.year = 0; state.running = true; state.checked = true;
     $('runBtn').textContent = '멈추기';
     render();
+    startLoop();
 });
 $('resetBtn').addEventListener('click', () => {
     const s = STARS.sun;
@@ -376,7 +395,6 @@ document.querySelectorAll('.quiz-card').forEach(card => {
 markSelected('[data-star]', 'star', state.star);
 syncSliders();
 render();
-requestAnimationFrame(frame);
 
 window.__starModel = {
     state, analyse, tick, render, luminosity, peakNm, absMag, distancePc, appMag,

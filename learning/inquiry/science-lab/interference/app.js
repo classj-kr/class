@@ -20,15 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
 
-    const X0 = 44, X1 = 428, LAM = 96, AMP = 17;
-    const ROW1 = 54, ROW2 = 106, ROW3 = 174;
+    const X0 = 44, X1 = 428, LAM = 96, AMP = 15;
+    const ROW1 = 46, ROW2 = 104, ROW3 = 176;
     const STRING_Y = 96, STRING_A = 40;
     const SAMPLES = 24;
     const SLOW = 200;          // the string is drawn this many times slower than real
     const BENCH = 500;         // the frequency we compare against
     const GRAPH = { x0: 66, x1: 424, y0: 152, y1: 34 };
 
-    const state = { mode: 'superpose', ratio: 0, length: 1.0, speed: 200, mode_n: 1, prediction: null };
+    const state = { mode: 'superpose', ratio: 0, length: 1.0, speed: 200, mode_n: 1, prediction: null, checked: false, t: 0 };
+    let animId = 0;
+    const reduceMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const RUN_T = 4, FILL_T = 1.6, PERIOD = 1.3;
 
     /* ------------------------------------------------------------ models */
     // Two equal waves a path difference apart add to 2A cos(pi x ratio).
@@ -98,6 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
             state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
             predictionArea.querySelectorAll('button').forEach(b => b.classList.toggle('selected', b === button));
+            // 예상을 바꾸면 이전 결과와 판정을 지운다(진행 중인 그림도 멈춘다).
+            changed();
         }));
     }
 
@@ -110,42 +115,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return `M${pts.join('L')}`;
     }
 
+    // Before 결과 보기 the two waves stand still and the sum row is empty. Afterwards both
+    // travel to the right (requestAnimationFrame) and the sum is drawn from the left edge
+    // as the waves are added point by point, then everything settles.
     function renderSuper(a) {
-        const dur = 2.4;
+        const t = state.checked ? state.t : 0, shift = -2 * Math.PI * t / PERIOD;
+        const wave = (row, amp, ph, xEnd = X1 + 2) => { const pts = []; for (let x = X0; x <= xEnd; x += 2) pts.push(`${x.toFixed(1)},${(row - amp * Math.sin((2 * Math.PI * (x - X0)) / LAM + ph + shift)).toFixed(2)}`); return pts.length > 1 ? `M${pts.join('L')}` : ''; };
         let body = '';
-        const rows = [
-            [ROW1, 'wave-a', AMP, 0, '파동 1'],
-            [ROW2, 'wave-b', AMP, a.phase, '파동 2'],
-        ];
-        rows.forEach(([row, cls, amp, ph]) => {
-            body += `<line class="rest-line" x1="${X0}" y1="${row}" x2="${X1}" y2="${row}"/>`;
-            body += `<g><path class="${cls}" d="${travelPath(row, amp, ph)}"/>` +
-                    `<animateTransform attributeName="transform" type="translate" from="0 0" to="${LAM} 0" ` +
-                    `dur="${dur}s" repeatCount="indefinite"/></g>`;
-        });
-        // the sum, built by adding the two displacements at each point
+        body += `<line class="rest-line" x1="${X0}" y1="${ROW1}" x2="${X1}" y2="${ROW1}"/><path class="wave-a" d="${wave(ROW1, AMP, 0)}"/>`;
+        body += `<line class="rest-line" x1="${X0}" y1="${ROW2}" x2="${X1}" y2="${ROW2}"/><path class="wave-b" d="${wave(ROW2, AMP, a.phase)}"/>`;
         body += `<line class="rest-line" x1="${X0}" y1="${ROW3}" x2="${X1}" y2="${ROW3}"/>`;
-        const pts = [];
-        for (let x = X0 - LAM; x <= X1 + 2; x += 2) {
-            const t = (2 * Math.PI * (x - X0)) / LAM;
-            const y = ROW3 - AMP * Math.sin(t) - AMP * Math.sin(t + a.phase);
-            pts.push(`${x.toFixed(1)},${y.toFixed(2)}`);
-        }
-        body += `<g><path class="wave-sum" d="M${pts.join('L')}"/>` +
-                `<animateTransform attributeName="transform" type="translate" from="0 0" to="${LAM} 0" ` +
-                `dur="${dur}s" repeatCount="indefinite"/></g>`;
-        const env = AMP * a.amp;
-        if (env > 0.5) {
-            [-1, 1].forEach(s => {
-                body += `<line class="envelope" x1="${X0}" y1="${(ROW3 + s * env).toFixed(1)}" x2="${X1}" y2="${(ROW3 + s * env).toFixed(1)}"/>`;
-            });
+        if (state.checked) {
+            const front = X0 + (X1 - X0) * Math.min(1, t / FILL_T);
+            const pts = [];
+            for (let x = X0; x <= front + 0.01; x += 2) {
+                const k = (2 * Math.PI * (x - X0)) / LAM + shift;
+                pts.push(`${x.toFixed(1)},${(ROW3 - AMP * Math.sin(k) - AMP * Math.sin(k + a.phase)).toFixed(2)}`);
+            }
+            if (pts.length > 1) body += `<path class="wave-sum" d="M${pts.join('L')}"/>`;
+            if (t < FILL_T) body += `<line x1="${front.toFixed(1)}" y1="${ROW1 - 20}" x2="${front.toFixed(1)}" y2="${ROW3 + 32}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3"/>`;
+            const env = AMP * a.amp;
+            if (t >= FILL_T && env > 0.5) [-1, 1].forEach(sg => { body += `<line class="envelope" x1="${X0}" y1="${(ROW3 + sg * env).toFixed(1)}" x2="${X1}" y2="${(ROW3 + sg * env).toFixed(1)}"/>`; });
         }
         let out = `<g clip-path="url(#waveClip)">${body}</g>`;
-        out += `<text class="small-label" x="${X0}" y="32">파동 1</text>`;
-        out += `<text class="small-label" x="${X0}" y="84">파동 2 — ${a.ratio}λ 만큼 늦게 도착</text>`;
-        out += `<text class="small-label" x="${X0}" y="136">두 파동을 더한 것</text>`;
-        const tone = a.verdict === 'constructive' ? '#059669' : a.verdict === 'destructive' ? '#ea580c' : '#d97706';
-        out += `<text class="verdict-text" fill="${tone}" x="20" y="20">경로차 ${a.ratio}λ · 합성 진폭 ${a.amp.toFixed(2)}A · ${VERDICT[a.verdict]}</text>`;
+        out += `<text class="small-label" x="${X0}" y="24">파동 1</text>`;
+        out += `<text class="small-label" x="${X0}" y="82">파동 2 — ${a.ratio}λ 만큼 늦게 도착</text>`;
+        out += `<text class="small-label" x="${X0}" y="140">두 파동을 더한 것</text>`;
+        if (state.checked && t >= RUN_T) {
+            const tone = a.verdict === 'constructive' ? '#059669' : a.verdict === 'destructive' ? '#ea580c' : '#d97706';
+            out += `<text class="verdict-text" fill="${tone}" x="20" y="20">경로차 ${a.ratio}λ · 합성 진폭 ${a.amp.toFixed(2)}A · ${VERDICT[a.verdict]}</text>`;
+        }
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -191,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" style="fill:#ff7d6b" x="${X0}" y="${STRING_Y + STRING_A + 26}">● 마디 ${a.nodes}개 — 움직이지 않습니다</text>`;
         out += `<text class="small-label" style="fill:#059669" x="${X1}" y="${STRING_Y + STRING_A + 26}" text-anchor="end">┆ 배 ${a.antinodes}개 — 가장 크게 흔들립니다</text>`;
         out += `<text class="part-label" x="20" y="20">${a.n}배 진동 · 줄 ${a.L.toFixed(1)} m · v ${a.v} m/s</text>`;
-        out += `<text class="read-text" x="20" y="190">λ = 2×${a.L.toFixed(1)}÷${a.n} = ${a.lambda.toFixed(2)} m · f = ${a.n}×${a.v}÷(2×${a.L.toFixed(1)}) = ${a.freq.toFixed(0)} Hz</text>`;
+        if (state.checked) out += `<text class="read-text" x="20" y="190">λ = 2×${a.L.toFixed(1)}÷${a.n} = ${a.lambda.toFixed(2)} m · f = ${a.n}×${a.v}÷(2×${a.L.toFixed(1)}) = ${a.freq.toFixed(0)} Hz</text>`;
         out += `<text class="note-text" x="20" y="206">화면의 진동은 실제보다 ${SLOW}배 느리게 보여 줍니다 — 모드끼리의 빠르기 비는 그대로입니다</text>`;
         window.scienceScene.render(mainGroup,out);
     }
@@ -222,12 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
         [0.5, 1.5].forEach(r => {
             out += `<line class="null-line" x1="${gx(r).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(r).toFixed(1)}" y2="${GRAPH.y0}"/>`;
         });
-        out += `<text class="mark-text" x="${(gx(1)).toFixed(1)}" y="${GRAPH.y1 - 6}" text-anchor="middle">정수배 → 보강</text>`;
-        out += `<text class="null-text" x="${(gx(0.5)).toFixed(1)}" y="${GRAPH.y0 - 6}" text-anchor="middle">반파장 홀수배 → 상쇄</text>`;
-        const pts = [];
-        for (let r = 0; r <= 2.0001; r += 0.01) pts.push(`${gx(r).toFixed(1)},${gy(analyseSuper(r).amp).toFixed(1)}`);
-        out += `<path class="trace" d="M${pts.join('L')}"/>`;
-        out += `<circle class="trace-dot" cx="${gx(a.ratio).toFixed(1)}" cy="${gy(a.amp).toFixed(1)}" r="5" fill="#d97706"/>`;
+        if (state.checked && state.t >= RUN_T) {
+            out += `<text class="mark-text" x="${(gx(2)).toFixed(1)}" y="${GRAPH.y1 - 8}" text-anchor="end">정수배 → 보강</text>`;
+            out += `<text class="null-text" x="${(gx(0.5)).toFixed(1)}" y="${GRAPH.y1 - 8}" text-anchor="middle">반파장 홀수배 → 상쇄</text>`;
+        }
+        if (state.checked && state.t >= RUN_T) {
+            const pts = [];
+            for (let r = 0; r <= 2.0001; r += 0.01) pts.push(`${gx(r).toFixed(1)},${gy(analyseSuper(r).amp).toFixed(1)}`);
+            out += `<path class="trace" d="M${pts.join('L')}"/>`;
+            out += `<circle class="trace-dot" cx="${gx(a.ratio).toFixed(1)}" cy="${gy(a.amp).toFixed(1)}" r="5" fill="#d97706"/>`;
+        } else out += `<line x1="${gx(a.ratio).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(a.ratio).toFixed(1)}" y2="${GRAPH.y0}" stroke="#d97706" stroke-width="2"/>`;
         window.scienceScene.render(graphGroup,out);
     }
 
@@ -248,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="axis-title" x="22" y="22">진동 모드</text>`;
         out += `<line class="mark-line" x1="${gx(BENCH).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(BENCH).toFixed(1)}" y2="${GRAPH.y0}"/>`;
         out += `<text class="mark-text" x="${(gx(BENCH) + 4).toFixed(1)}" y="${GRAPH.y1 + 9}">${BENCH} Hz</text>`;
-        all.forEach((row, i) => {
+        if (state.checked) all.forEach((row, i) => {
             const y = GRAPH.y1 + 18 + i * 22;
             const on = row.n === a.n;
             out += `<text class="axis-text" style="fill:${on ? '#0f172a' : '#7f9298'}" x="${GRAPH.x0 - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end">${row.n}배</text>`;
@@ -274,10 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = state.mode === 'superpose'
             ? '두 파동이 겹치면 변위끼리 그대로 더해집니다'
             : '줄 길이가 반파장의 정수배일 때만 정상파가 생깁니다';
+        const shown = state.checked && (a.kind !== 'super' || state.t >= RUN_T);
         stageBadge.textContent = a.kind === 'super'
-            ? `${VERDICT[a.verdict]} · ${a.amp.toFixed(2)}A`
-            : `${a.n}배 진동 · ${a.freq.toFixed(0)} Hz`;
-        window.scienceScene.render(dataNote,a.kind === 'super'
+            ? (shown ? `${VERDICT[a.verdict]} · ${a.amp.toFixed(2)}A` : `경로차 ${a.ratio}λ`)
+            : (shown ? `${a.n}배 진동 · ${a.freq.toFixed(0)} Hz` : `${a.n}배 진동 · 줄 ${a.L.toFixed(1)} m`);
+        window.scienceScene.render(dataNote,!shown ? '' : a.kind === 'super'
             ? `<div class="data-row"><span class="data-name">경로차</span><span class="data-val">${a.ratio}λ → 위상차 ${(a.ratio * 360).toFixed(0)}°</span></div>` +
               `<div class="data-row"><span class="data-name">합성 진폭</span><span class="data-val">2A × |cos(${(a.ratio * 180).toFixed(0)}°)| = ${a.amp.toFixed(3)}A</span></div>` +
               `<div class="data-row"><span class="data-name">보강 조건</span><span class="data-val">경로차 = 0λ, 1λ, 2λ … (정수배)</span></div>` +
@@ -292,6 +296,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function check() {
+        cancelAnimationFrame(animId);
+        state.checked = true;
+        if (state.mode === 'superpose' && !reduceMotion()) {
+            state.t = 0;
+            const t0 = performance.now();
+            checkBtn.disabled = true;
+            const step = now => {
+                state.t = Math.min(RUN_T, (now - t0) / 1000);
+                render();
+                if (state.t < RUN_T) animId = requestAnimationFrame(step);
+                else { checkBtn.disabled = false; showResult(); }
+            };
+            animId = requestAnimationFrame(step);
+            return;
+        }
+        state.t = RUN_T;
+        showResult();
+    }
+
+    function showResult() {
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -325,6 +349,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function changed() {
+        cancelAnimationFrame(animId);
+        checkBtn.disabled = false;
+        state.checked = false;
+        state.t = 0;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();

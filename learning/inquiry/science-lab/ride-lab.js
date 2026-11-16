@@ -12,7 +12,7 @@
  const axisNames={x:'기기 x축',z:'기기 z축',magnitude:'3축 합성 크기'};
  function stop(){if(timer)cancelAnimationFrame(timer);timer=null;$('play').textContent='움직임 재생';}
  function moveApparatus(o,r){
-  let px,py;const angle=o.motion==='circle'?0:r.deviceAngle;
+  let px,py;const angle=o.motion==='circle'?Math.atan2(r.y,r.x):r.deviceAngle;
   if(o.motion==='swing'){px=270+r.x*166/o.length;py=62-r.z*166/o.length;}
   else if(o.motion==='seesaw'){px=270+r.x*76;py=166-r.z*76;}
   else if(o.motion==='slide'){px=90+r.x*46;py=67-r.z*46;}
@@ -24,9 +24,11 @@
   if(rig)rig.setAttribute('transform',o.motion==='swing'?`translate(270 62) rotate(${-r.theta*180/Math.PI})`:o.motion==='seesaw'?`translate(270 166) rotate(${-r.theta*180/Math.PI})`:o.motion==='circle'?`translate(270 166) rotate(${-Math.atan2(r.y,r.x)*180/Math.PI})`:`translate(${px} ${py})`);
   scene.querySelector('[data-ride-rope]')?.setAttribute('d',`M270 52V${py-32}`);
   const vector=(id,x,y)=>{const arrow=scene.querySelector('[data-ride-vector="'+id+'"]');if(!arrow)return;for(const[k,v]of Object.entries({x1:px,y1:py,x2:x,y2:y}))arrow.setAttribute(k,v);};
+  vector('x',px+52*Math.cos(angle),py-52*Math.sin(angle));
+  {const t=scene.querySelector('[data-ride-axis="x"]');t.setAttribute('x',px+60*Math.cos(angle)-4);t.setAttribute('y',py-60*Math.sin(angle)+5);}
   if(o.motion!=='circle'){
-   vector('x',px+52*Math.cos(angle),py-52*Math.sin(angle));vector('z',px-48*Math.sin(angle),py-48*Math.cos(angle));
-   for(const[id,x,y]of [['x',px+58*Math.cos(angle),py-58*Math.sin(angle)],['z',px-56*Math.sin(angle),py-56*Math.cos(angle)]]){const t=scene.querySelector('[data-ride-axis="'+id+'"]');t.setAttribute('x',x);t.setAttribute('y',y);}
+   vector('z',px-48*Math.sin(angle),py-48*Math.cos(angle));
+   const t=scene.querySelector('[data-ride-axis="z"]');t.setAttribute('x',px-56*Math.sin(angle));t.setAttribute('y',py-56*Math.cos(angle));
   }
   const vertical=o.motion==='circle'?r.ay:r.az,a=Math.hypot(r.ax,vertical),arrow=scene.querySelector('[data-ride-vector="a"]');arrow.style.display=a>1e-7?'':'none';if(a>1e-7)vector('a',px+55*r.ax/a,py-55*vertical/a);
  }
@@ -52,7 +54,7 @@
    body+=`<path d="M90 67L${endX} ${endY}" stroke="url(#rideTrack)" stroke-width="17" stroke-linecap="round"/><path d="M90 60L${endX+4} ${endY-7}" stroke="#7799a9" stroke-width="3"/>`;
    body+=text(22,28,'마찰 없는 경사면 · 6 m')+text(22,320,'경사각 '+o.slope+'°');
   }else if(o.motion==='circle'){
-   px=270+r.x*100/o.radius;py=166-r.y*100/o.radius;angle=0;
+   px=270+r.x*100/o.radius;py=166-r.y*100/o.radius;angle=Math.atan2(r.y,r.x);
    body+=`<circle cx="270" cy="166" r="115" fill="#e7f0f2" stroke="#cbdee4"/><circle cx="270" cy="166" r="100" fill="none" stroke="#a1bcc7" stroke-width="2" stroke-dasharray="4 5"/><g data-ride-rig transform="translate(270 166) rotate(${-Math.atan2(r.y,r.x)*180/Math.PI})"><circle r="78" fill="url(#rideTrack)" stroke="#a4bdc7"/>`;
    for(let i=0;i<6;i++)body+=`<path d="M0 0H76" transform="rotate(${i*60})" stroke="#edf6f7" stroke-width="2"/>`;
    body+=`<path d="M0 0H100" stroke="#729aaa" stroke-width="4"/><rect x="84" y="-21" width="30" height="42" rx="9" fill="url(#rideSeat)" stroke="#2b6d72"/></g><circle cx="270" cy="166" r="9" fill="#6b8b98"/><circle cx="270" cy="166" r="4" fill="#e5eff2"/>`;
@@ -70,21 +72,26 @@
    body+=text(22,28,'등속 직선 운동');
   }
   body+=`<g data-ride-device transform="translate(${px},${py}) rotate(${-angle*180/Math.PI})"><rect x="-21" y="-13" width="42" height="26" rx="6" fill="#203c49" stroke="#7895a2"/><rect x="-16" y="-9" width="28" height="18" rx="3" fill="#cce9e2"/><path d="M-13 3h5l3-7 4 10 3-5h6" fill="none" stroke="#4b958c" stroke-width="1.4"/><circle cx="17" cy="0" r="1.6" fill="#c4d9df"/></g>`;
+  body+=line(px,py,px+52*Math.cos(angle),py-52*Math.sin(angle),'#137888','data-ride-vector="x" marker-end="url(#rideX)"')+text(px+60*Math.cos(angle)-4,py-60*Math.sin(angle)+5,'x','data-ride-axis="x" class="ride-axis"');
   if(o.motion!=='circle'){
-   body+=line(px,py,px+52*Math.cos(angle),py-52*Math.sin(angle),'#137888','data-ride-vector="x" marker-end="url(#rideX)"')+text(px+58*Math.cos(angle),py-58*Math.sin(angle),'x','data-ride-axis="x"');
-   body+=line(px,py,px-48*Math.sin(angle),py-48*Math.cos(angle),'#7757a4','data-ride-vector="z" marker-end="url(#rideZ)"')+text(px-56*Math.sin(angle),py-56*Math.cos(angle),'z','data-ride-axis="z"');
+   body+=line(px,py,px-48*Math.sin(angle),py-48*Math.cos(angle),'#7757a4','data-ride-vector="z" marker-end="url(#rideZ)"')+text(px-56*Math.sin(angle),py-56*Math.cos(angle),'z','data-ride-axis="z" class="ride-axis"');
   }
   const vertical=o.motion==='circle'?r.ay:r.az,a=Math.hypot(r.ax,vertical);
   body+=line(px,py,px+55*r.ax/(a||1),py-55*vertical/(a||1),'#bf6426','data-ride-vector="a" marker-end="url(#rideAcceleration)"'+(a>1e-7?'':' style="display:none"'));
-  window.scienceScene.render($('inquiryScene'),svg(body,'놀이기구와 부착한 가상 센서, 기기 축과 운동 가속도 방향',340)+'<p class="ride-legend">주황 화살표: 운동 가속도 방향 · 화살표 길이는 확대 표시'+(o.motion==='circle'?' · z축은 화면에 수직인 위쪽':' · x·z: 센서의 양의 축 방향')+'</p>');
+  window.scienceScene.render($('inquiryScene'),svg(body,'놀이기구와 부착한 가상 센서, 기기 축과 운동 가속도 방향',340)+'<p class="ride-legend">주황 화살표: 운동 가속도 방향 · 화살표 길이는 확대 표시'+(o.motion==='circle'?' · 센서는 회전판에 고정되어 함께 돎 · x축은 늘 바깥쪽, z축은 화면에 수직인 위쪽':' · x·z: 센서의 양의 축 방향')+'</p>');
  }
  function graph(o,r){
   const key=JSON.stringify({...o,time:0,interval:num("interval"),measured:measured?.length||0});
   if(graphKey===key){const x=graphMap(r.time),cursor=$("rideCursor");cursor.setAttribute("x1",x);cursor.setAttribute("x2",x);return;}graphKey=key;
-  const points=measured||M.samples(o,0,num('interval')),values=points.map(p=>p.reading),low=Math.min(0,...values),high=Math.max(0,...values),pad=Math.max(1,(high-low)*.12),min=low-pad,max=high+pad;
+  const points=measured||M.samples(o,0,num('interval')),values=points.map(p=>p.reading),low=Math.min(0,...values),high=Math.max(0,...values);
+  // round axis limits to a clean step (1, 2, 2.5, 5 × 10ⁿ) so every gridline has a tidy value
+  const raw=Math.max(1,(high-low)*1.2)/4,mag=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(m=>m*mag).find(v=>v>=raw-1e-9);
+  let min=Math.floor(low/step+1e-9)*step,max=Math.ceil(high/step-1e-9)*step;if(low-min<step*.15&&low<-1e-9)min-=step;if(max-high<step*.15&&high>1e-9)max+=step;if(max-min<step*2){min-=step;max+=step;}
+  const ticks=Math.round((max-min)/step),dec=Math.abs(step-Math.round(step))<1e-9?0:Math.abs(step*10-Math.round(step*10))<1e-9?1:2;
   const px=t=>65+t/r.duration*450,py=v=>225-(v-min)/(max-min)*165;
   graphMap=px;let body=text(20,24,(o.sensorMode==='raw'?'원시 센서':'중력 보정')+' · '+axisNames[o.axis]+' (m/s²)');
-  for(let i=0;i<=4;i++){const y=min+(max-min)*i/4;body+=line(65,py(y),515,py(y),'#dce5e9','stroke-width="1"')+text(57,py(y)+5,fmt(y,1),'text-anchor="end"')+text(px(r.duration*i/4),247,fmt(r.duration*i/4,1),'text-anchor="middle"');}
+  for(let i=0;i<=ticks;i++){const y=min+step*i;body+=line(65,py(y),515,py(y),Math.abs(y)<1e-9?'#9fb4bd':'#dce5e9','stroke-width="1"')+text(57,py(y)+5,fmt(y,dec),'text-anchor="end"');}
+  for(let i=0;i<=4;i++)body+=text(px(r.duration*i/4),247,fmt(r.duration*i/4,1),'text-anchor="middle"');
   if(measured){body+=`<polyline points="${points.map(p=>px(p.time)+','+py(p.reading)).join(' ')}" fill="none" stroke="#167586" stroke-width="2"/>`+points.map(p=>`<circle cx="${px(p.time)}" cy="${py(p.reading)}" r="2.6" fill="#167586"/>`).join('');}
   body+=line(px(r.time),50,px(r.time),225,'#bf6426','id="rideCursor" stroke-dasharray="4 3"')+text(280,279,'시간 (초)','text-anchor="middle"');
   window.scienceScene.render($('inquiryExtra'),svg(body,'가상 센서 측정값의 시간 그래프',295));

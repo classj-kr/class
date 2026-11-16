@@ -18,7 +18,7 @@
   };
   return `<svg class="fw-specimen" viewBox="0 0 112 80" aria-hidden="true">${drawings[id]}</svg>`;
  }
- $('#fwRoleCards').innerHTML=M.cards.map(c=>`<article class="fw-role-card" data-card="${c.id}">${specimen(c.id)}<h3>${c.name}</h3><p>${c.fact}</p><label>분류<select data-fw-role="${c.id}"><option value="">선택하세요</option>${Object.entries(M.roles).map(([id,name])=>`<option value="${id}">${name}</option>`).join('')}</select></label></article>`).join('');
+ $('#fwRoleCards').innerHTML=M.cards.map(c=>`<article class="fw-role-card" data-card="${c.id}">${specimen(c.id)}<h3>${c.name}</h3><p>${c.fact}</p><label>분류<select data-fw-role="${c.id}"><option value="" hidden>고르지 않음</option>${Object.entries(M.roles).map(([id,name])=>`<option value="${id}">${name}</option>`).join('')}</select></label></article>`).join('');
  $('#fwDietCards').innerHTML=M.cards.filter(c=>c.position&&c.food.length).map(c=>`<div class="fw-diet-card"><strong>${c.name}</strong>${c.fact}</div>`).join('');
  for(const c of M.cards.filter(c=>c.position)){
   const button=document.createElement('button');button.dataset.fwNode=c.id;button.style.gridColumn=c.position[0];button.style.gridRow=c.position[1];button.setAttribute('aria-pressed','false');button.innerHTML=specimen(c.id)+`<span>${c.name}</span>`;$('#fwBoard').append(button);

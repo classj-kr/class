@@ -228,23 +228,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderField(a) {
         const p = state.progress, { qL, qR, x } = a;
-        let out = fieldLines(qL, qR);
+        // a framed observation window: field lines stop at its edge instead of being cut in mid-air
+        let out = `<rect x="8" y="26" width="444" height="174" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>`;
+        out += `<clipPath id="efFrameClip"><rect x="8" y="26" width="444" height="174" rx="6"/></clipPath><g clip-path="url(#efFrameClip)">${fieldLines(qL, qR)}</g>`;
         out += `<line class="axis-line" x1="20" y1="${CY}" x2="440" y2="${CY}"/>`;
         [[CX - X_CH * S_F, qL, LEFTS[state.left].label], [CX + X_CH * S_F, qR, RIGHTS[state.right].label]].forEach(([cx, q, lab]) => {
             out += `<circle class="${q > 0 ? 'charge-pos' : 'charge-neg'}" cx="${cx.toFixed(1)}" cy="${CY}" r="${(8 + 2 * Math.abs(q)).toFixed(1)}"/><text class="charge-text" x="${cx.toFixed(1)}" y="${CY + 5}" text-anchor="middle">${q > 0 ? '+' : '−'}</text>`;
-            out += `<text class="trait-text" x="${cx.toFixed(1)}" y="${CY + 30}" text-anchor="middle">${lab}</text>`;
+            out += `<text class="trait-text" style="paint-order:stroke;stroke:#f8fafc;stroke-width:5px;stroke-linejoin:round" x="${cx.toFixed(1)}" y="${CY + 32}" text-anchor="middle">${lab}</text>`;
         });
         const dir = a.verdict === 'zero' ? 0 : Math.sign(a.E);
         const tx0 = CX + x * S_F, room = dir > 0 ? CX + X_CH * S_F - 18 - tx0 : dir < 0 ? tx0 - (CX - X_CH * S_F + 18) : 0;
         const tx = tx0 + dir * Math.min(46, room) * ease(p), ty = CY;
         if (p > 0 && dir) out += `<line class="trail" x1="${tx0.toFixed(1)}" y1="${ty}" x2="${tx.toFixed(1)}" y2="${ty}"/>`;
         out += `<circle class="test-charge" cx="${tx.toFixed(1)}" cy="${ty}" r="5"/><text class="charge-text" style="font-size:12px;font-weight:900;fill:#3a2a00" x="${tx.toFixed(1)}" y="${ty + 3}" text-anchor="middle">+</text>`;
-        if (dir) { const L = clamp((Math.abs(a.E) / 2e5) * 40, 10, 60); out += arrow(tx, ty - 14, tx + dir * L, ty - 14, 'force force-e', 'arrow-e'); }
-        out += `<text class="small-label" x="${tx0.toFixed(1)}" y="${CY - 22}" text-anchor="middle">시험 전하 ${SPOTS[state.spot].label}</text>`;
-        // readouts
+        if (dir && p > 0) { const L = clamp((Math.abs(a.E) / 2e5) * 40, 10, 60); out += arrow(tx, ty - 14, tx + dir * L, ty - 14, 'force force-e', 'arrow-e'); }
+        // readouts appear only once the test charge has been released
+        if (p > 0) {
         out += `<text class="trait-text figure-caption" style="fill:#dc2626" x="20" y="40">왼쪽 전하가 만드는 전기장 ${fmtE(a.eL)} ${a.eL > 0 ? '→' : '←'}</text>`;
         out += `<text class="trait-text figure-caption" style="fill:#0284c7" x="20" y="56">오른쪽 전하가 만드는 전기장 ${fmtE(a.eR)} ${a.eR > 0 ? '→' : '←'}</text>`;
-        out += `<text class="trait-text figure-caption" style="fill:#d97706" x="20" y="72">합친 전기장 ${a.verdict === 'zero' ? '0' : `${fmtE(a.E)} ${a.E > 0 ? '→' : '←'}`} · +1 nC이 받는 힘 ${a.verdict === 'zero' ? '0' : fmtF(a.F)}</text>`;
+        }
+        if (p >= 1) out += `<text class="trait-text figure-caption" style="fill:#d97706" x="20" y="72">합친 전기장 ${a.verdict === 'zero' ? '0' : `${fmtE(a.E)} ${a.E > 0 ? '→' : '←'}`} · +1 nC이 받는 힘 ${a.verdict === 'zero' ? '0' : fmtF(a.F)}</text>`;
         const VERD = { left: '왼쪽으로 밀림', zero: '두 전기장이 상쇄되어 힘 0', right: '오른쪽으로 밀림' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · ${SPOTS[state.spot].label}: ${VERD[a.verdict]}` : `${LEFTS[state.left].label} · ${RIGHTS[state.right].label} · 시험 전하 ${SPOTS[state.spot].label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">전기장 E = kQ/r² (k = 9.0×10⁹). 선이 빽빽한 곳이 센 곳, + 시험 전하는 화살표 방향으로 힘을 받습니다</text>`;
@@ -261,22 +264,31 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="axis" x1="${X0}" y1="${YM}" x2="${X1}" y2="${YM}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         [[-X_CH, a.qL], [X_CH, a.qR]].forEach(([xm, q]) => { out += `<line class="ref-line" style="stroke:${q > 0 ? '#dc2626' : '#0284c7'}" x1="${xOf(xm).toFixed(1)}" y1="${Y1}" x2="${xOf(xm).toFixed(1)}" y2="${Y0}"/>`; });
         let d = '', pen = false;
-        for (let xm = -0.6; xm <= 0.6 + 1e-9; xm += 0.005) {
+        const reach = -0.6 + 1.2 * state.progress;
+        for (let xm = -0.6; xm <= Math.min(0.6, reach) + 1e-9; xm += 0.005) {
             if (Math.abs(xm + X_CH) < 0.02 || Math.abs(xm - X_CH) < 0.02) { pen = false; continue; }
             const E = fieldOnAxis(xm, a.qL, a.qR).E;
             d += `${pen ? 'L' : 'M'}${xOf(xm).toFixed(1)},${yOf(E).toFixed(1)} `; pen = true;
         }
-        out += `<path class="trace" style="stroke:#d97706" d="${d}"/>`;
+        out += `<clipPath id="efPlotClip"><rect x="${X0}" y="${Y1 - 2}" width="${X1 - X0}" height="${Y0 - Y1 + 4}"/></clipPath>`;
+        if (d) out += `<path class="trace" style="stroke:#d97706" clip-path="url(#efPlotClip)" d="${d}"/>`;
         // zero crossings away from the charges
         const zeros = [];
         for (let xm = -0.6; xm < 0.6; xm += 0.005) {
             if (Math.abs(xm + X_CH) < 0.02 || Math.abs(xm - X_CH) < 0.02 || Math.abs(xm + 0.005 + X_CH) < 0.02 || Math.abs(xm + 0.005 - X_CH) < 0.02) continue;
             const e1 = fieldOnAxis(xm, a.qL, a.qR).E, e2 = fieldOnAxis(xm + 0.005, a.qL, a.qR).E;
-            if (e1 === 0 || (e1 < 0) !== (e2 < 0)) zeros.push(+(xm + (e1 === 0 ? 0 : 0.0025)).toFixed(3));
+            if (e1 === 0 || (e1 < 0) !== (e2 < 0)) {
+                // refine by bisection, then round to the nearest centimetre
+                let lo = xm, hi = xm + 0.005;
+                for (let k = 0; k < 30 && e1 !== 0; k += 1) { const mid = (lo + hi) / 2, em = fieldOnAxis(mid, a.qL, a.qR).E; if ((em < 0) === (e1 < 0)) lo = mid; else hi = mid; }
+                const z = e1 === 0 ? xm : (lo + hi) / 2, zr = Math.round(z * 100) / 100;
+                if (!zeros.includes(zr)) zeros.push(zr === 0 ? 0 : zr);
+            }
         }
-        zeros.forEach(z => { out += `<circle fill="#059669" cx="${xOf(z).toFixed(1)}" cy="${YM}" r="3.5"/>`; });
+        const done = state.progress >= 1;
+        if (done) zeros.forEach(z => { out += `<circle fill="#059669" cx="${xOf(z).toFixed(1)}" cy="${YM}" r="3.5"/>`; });
         out += `<line class="ref-line" style="stroke:#d97706" x1="${xOf(a.x).toFixed(1)}" y1="${Y1}" x2="${xOf(a.x).toFixed(1)}" y2="${Y0}"/><text class="small-label" style="fill:#d97706" x="${xOf(a.x).toFixed(1)}" y="${Y1 - 4}" text-anchor="middle">시험 전하</text>`;
-        out += `<text class="small-label" x="${X1}" y="${Y0 + 30}" text-anchor="end">${zeros.length ? `초록 점: 전기장이 0인 곳 (${zeros.map(z => `${z} m`).join(', ')})` : '이 축 위에는 전기장이 0인 곳이 없습니다 (전하 바로 위 제외)'}</text>`;
+        if (done) out += `<text class="small-label" x="${X1}" y="${Y0 + 30}" text-anchor="end">${zeros.length ? `초록 점: 전기장이 0인 곳 (${zeros.map(z => `${z} m`).join(', ')})` : '이 축 위에는 전기장이 0인 곳이 없습니다 (전하 바로 위 제외)'}</text>`;
         return out;
     }
 
@@ -366,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
         methodHint.textContent = a.kind === 'field' ? '전기장은 + 전하에서 나와 − 전하로 들어가고, 세기는 거리의 제곱에 반비례합니다'
             : a.kind === 'accel' ? '전위차 V를 지난 전하 q는 qV만큼의 운동 에너지를 얻습니다'
                 : '축전기는 에너지를 저장하고 방전할 때 다른 형태로 전환합니다';
-        window.scienceScene.render(dataNote,noteFor(a));
+        window.scienceScene.render(dataNote,a.kind !== 'cap' && state.progress < 1 ? '' : noteFor(a));
         return a;
     }
 
@@ -386,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         state.progress = 0;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         running = true;
         lastStamp = performance.now();
         render();

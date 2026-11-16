@@ -98,7 +98,23 @@ const BODY_DEAD = 'M 88 170 Q 68 130 96 104 Q 118 92 136 106 Q 150 120 166 104 Q
 
 function wedge(cx, cy, cls, scale = 1) {
     const w = 16 * scale, h = 9 * scale;
+    // 기질은 두 조각이 이어진 분자: 가운데 이음줄이 효소가 자를 자리다.
+    if (cls === 'substrate') {
+        const g = el('g', { class: 'substrate-mol' });
+        g.appendChild(el('path', { d: `M ${cx - w} ${cy - h} L ${cx - 1} ${cy - h} L ${cx - 1} ${cy + h * .78} Z`, class: 'substrate' }));
+        g.appendChild(el('path', { d: `M ${cx + 1} ${cy - h} L ${cx + w} ${cy - h} L ${cx + 1} ${cy + h * .78} Z`, class: 'substrate substrate-b' }));
+        g.appendChild(el('line', { x1: cx, y1: cy - h + 1, x2: cx, y2: cy + h * .7, class: 'bond' }));
+        return g;
+    }
     return el('path', { d: `M ${cx - w} ${cy - h} L ${cx + w} ${cy - h} L ${cx} ${cy + h} Z`, class: cls });
+}
+
+// 잘린 생성물 한 벌: 기질의 왼쪽·오른쪽 조각이 떨어져 있다.
+function productPair(cx, cy, gap = 7, scale = 1) {
+    const g = el('g', { class: 'product-pair' }), w = 13 * scale, h = 8 * scale;
+    g.appendChild(el('path', { d: `M ${cx - gap - w} ${cy - h} L ${cx - gap} ${cy - h} L ${cx - gap} ${cy + h * .8} Z`, class: 'product', transform: `rotate(-12 ${cx - gap} ${cy})` }));
+    g.appendChild(el('path', { d: `M ${cx + gap} ${cy - h} L ${cx + gap + w} ${cy - h} L ${cx + gap} ${cy + h * .8} Z`, class: 'product product-b', transform: `rotate(14 ${cx + gap} ${cy})` }));
+    return g;
 }
 
 function drawStage(g) {
@@ -107,6 +123,13 @@ function drawStage(g) {
     const bent = state.inhib === 'non';
 
     g.appendChild(el('path', { d: dead ? BODY_DEAD : (bent ? BODY_BENT : BODY_OK), class: `enzyme-body${dead ? ' cooked' : ''}` }));
+    // 접힌 사슬의 결: 단백질 덩어리로 보이게 하는 몇 가닥.
+    g.appendChild(el('path', { d: dead ? 'M 104 150 Q 126 134 146 152 T 192 146' : 'M 98 136 Q 106 156 120 150', class: 'enzyme-fold' }));
+    g.appendChild(el('path', { d: dead ? 'M 112 168 Q 150 156 196 166' : 'M 108 170 Q 132 160 150 172 Q 170 182 194 166 M 202 134 Q 196 152 182 150', class: 'enzyme-fold' }));
+    if (!dead) {
+        g.appendChild(el('text', { x: 150, y: 134, 'text-anchor': 'middle', class: 'small-label site-label' }, '활성 부위'));
+        g.appendChild(el('text', { x: 150, y: 158, 'text-anchor': 'middle', class: 'part-label enzyme-name' }, '효소'));
+    }
     // Name and heat damage share one line; as two they collided.
     const hurt = dead ? '단백질이 풀려 되돌아오지 않습니다'
         : (a.alive < 0.98 ? `${Math.round((1 - a.alive) * 100)}%가 이미 익었습니다` : '');
@@ -120,8 +143,8 @@ function drawStage(g) {
         const [sx, sy] = S_SLOTS[i];
         g.appendChild(wedge(sx + Math.sin(state.phase * 1.3 + i) * 2.5, sy + Math.cos(state.phase + i * 2) * 2.5, 'substrate', 0.62));
     }
-    g.appendChild(el('text', { x: 150, y: 26, 'text-anchor': 'middle', class: 'small-label' }, `기질 ${fmt(state.sub, 1)} mmol/L`));
-    g.appendChild(el('text', { x: 300, y: 26, 'text-anchor': 'middle', class: 'small-label' }, '생성물'));
+    g.appendChild(el('text', { x: 20, y: 26, class: 'small-label' }, `기질 ${fmt(state.sub, 1)} mmol/L`));
+    g.appendChild(el('text', { x: 292, y: 26, 'text-anchor': 'middle', class: 'small-label' }, '생성물(잘린 조각)'));
 
     const n = Math.floor(state.cyclePos), c = state.cyclePos - n;
     const blocked = isBlocked(n);
@@ -154,24 +177,27 @@ function drawStage(g) {
                 const px = SITE[0] + (tx - SITE[0]) * p + (i ? 9 : -9) * Math.min(1, p * 5);
                 const py = SITE[1] + (ty - SITE[1]) * p;
                 g.appendChild(el('path', {
-                    d: i ? `M ${px} ${py - 8} L ${px + 14} ${py - 8} L ${px} ${py + 8} Z`
-                        : `M ${px - 14} ${py - 8} L ${px} ${py - 8} L ${px} ${py + 8} Z`,
-                    class: 'product',
+                    d: i ? `M ${px} ${py - 8} L ${px + 14} ${py - 8} L ${px} ${py + 6} Z`
+                        : `M ${px - 14} ${py - 8} L ${px} ${py - 8} L ${px} ${py + 6} Z`,
+                    class: i ? 'product product-b' : 'product',
+                    transform: `rotate(${(i ? 1 : -1) * 40 * p} ${px} ${py})`,
                 }));
             });
+            // 자르는 순간 활성 부위에서 이음줄이 끊어지는 표시.
+            if (c < 0.7) g.appendChild(el('path', { d: `M ${SITE[0] - 4} ${SITE[1] - 17} l 4 5 l -3 3 l 5 5`, class: 'cut-mark' }));
         }
     }
 
     if (state.inhib === 'non' && !dead) {
         g.appendChild(el('circle', { cx: 196, cy: 152, r: 9, class: 'inhibitor' }));
-        g.appendChild(el('text', { x: 196, y: 174, 'text-anchor': 'middle', class: 'small-label', style: 'fill:#ff9d9d' }, '다른 자리'));
+        g.appendChild(el('text', { x: 222, y: 157, class: 'small-label', style: 'fill:#b91c1c' }, '억제제'));
     }
 
     // Settled products, standing in for what has already been let go.
     const made = clamp(Math.round(a.v / 14), 0, 8);
     for (let i = 0; i < made; i += 1) {
         const [px, py] = P_SLOTS[i];
-        g.appendChild(el('path', { d: `M ${px - 12} ${py - 7} L ${px + 12} ${py - 7} L ${px} ${py + 7} Z`, class: 'product' }));
+        g.appendChild(productPair(px, py, 6, 0.85));
     }
 
     // Rate meter, always against the same 100 so settings can be compared.
@@ -181,11 +207,9 @@ function drawStage(g) {
     g.appendChild(el('rect', { x: mx + 2, y: mBot - h, width: 26, height: h, rx: 4, class: 'meter-fill', style: `fill:${dead ? 'rgba(125,139,144,.5)' : 'rgba(84,230,193,.5)'}` }));
     const y100 = mBot - (100 / 115) * (mBot - mTop);
     g.appendChild(el('line', { x1: mx - 4, y1: y100, x2: mx + 34, y2: y100, class: 'meter-tick' }));
-    g.appendChild(el('text', { x: 415, y: 38, 'text-anchor': 'middle', class: 'small-label' }, '속도'));
+    g.appendChild(el('text', { x: 415, y: 38, 'text-anchor': 'middle', class: 'small-label' }, `속도 ${fmt(a.v, 1)}`));
     g.appendChild(el('text', { x: 415, y: 204, 'text-anchor': 'middle', class: 'small-label' }, '표준 100'));
 
-    g.appendChild(el('text', { x: 22, y: 26, class: 'read-text' }, `속도 ${fmt(a.v, 1)}`));
-    g.appendChild(el('text', { x: 22, y: 42, class: 'small-label' }, `${state.temp} ℃ · pH ${state.ph}`));
 }
 
 function drawGraph(g) {
@@ -211,10 +235,10 @@ function drawGraph(g) {
         dr += `${i ? 'L' : 'M'} ${fmt(X(S), 2)} ${fmt(Y(VMAX_REF * S / (e.km + S)), 2)} `;
         dn += `${i ? 'L' : 'M'} ${fmt(X(S), 2)} ${fmt(Y(rateAt(S)), 2)} `;
     }
-    g.appendChild(el('path', { d: dr, class: 'ref-line' }));
-
     state.trail.forEach(([S, v]) => g.appendChild(el('circle', { cx: X(S), cy: Y(v), r: 2.6, class: 'trail-dot' })));
     g.appendChild(el('path', { d: dn, class: 'now-line' }));
+    // 표준 곡선은 점선으로 위에 겹쳐 그려 지금 곡선과 같아도 보이게 한다.
+    g.appendChild(el('path', { d: dr, class: 'ref-line' }));
 
     const vm = vmaxEff(), km = kmEff();
     g.appendChild(el('line', { x1: x0, y1: Y(vm), x2: x1, y2: Y(vm), class: 'mark-line' }));
@@ -226,7 +250,7 @@ function drawGraph(g) {
     }
     g.appendChild(el('circle', { cx: X(state.sub), cy: Y(rateAt(state.sub)), r: 5, class: 'trace-dot', style: 'fill:#059669' }));
 
-    g.appendChild(el('line', { x1: x0, y1: 172, x2: x0 + 15, y2: 172, style: 'stroke:rgba(217, 119, 6, .7);stroke-width:3' }));
+    g.appendChild(el('line', { x1: x0, y1: 172, x2: x0 + 15, y2: 172, style: 'stroke:#c2410c;stroke-width:2.4;stroke-dasharray:5 3' }));
     g.appendChild(el('text', { x: x0 + 20, y: 175.5, class: 'legend-text', style: 'fill:#d97706' }, `표준 (37 ℃ · pH ${e.phOpt} · 억제제 없음)`));
     g.appendChild(el('line', { x1: x0 + 246, y1: 172, x2: x0 + 261, y2: 172, style: 'stroke:#059669;stroke-width:3' }));
     g.appendChild(el('text', { x: x0 + 266, y: 175.5, class: 'legend-text', style: 'fill:#059669' }, '지금 조건'));

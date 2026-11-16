@@ -52,14 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
         riverBody.setAttribute('d', `M${left.join('L')}L${right.join('L')}Z`);
 
         // 물이 실제로 흐르는 것이 보이도록, 가운데 선을 따라 물방울을 흘려보냅니다
-        const drops = Math.max(3, Math.round(4 + scale * 3));
+        const drops = running ? Math.max(3, Math.round(4 + scale * 3)) : 0;
+        const seg = COURSE.slice(1).map((p, i) => Math.hypot(p[0] - COURSE[i][0], p[1] - COURSE[i][1])), totalLen = seg.reduce((a, b) => a + b, 0);
+        const clock = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : performance.now() / 1000;
         let out = '';
         for (let i = 0; i < drops; i += 1) {
-            const delay = (i * (2.8 / drops)).toFixed(2);
+            let d = (((clock / 2.8) + i / drops) % 1) * totalLen, k = 0;
+            while (k < seg.length - 1 && d > seg[k]) { d -= seg[k]; k += 1; }
+            const f = Math.min(1, d / seg[k]), x = COURSE[k][0] + (COURSE[k + 1][0] - COURSE[k][0]) * f, y = COURSE[k][1] + (COURSE[k + 1][1] - COURSE[k][1]) * f;
             const r = (1.1 + (i % 3) * 0.5) * Math.min(1.4, scale);
-            out += `<circle class="river-drop" r="${r.toFixed(1)}">` +
-                   `<animateMotion dur="2.8s" begin="-${delay}s" repeatCount="indefinite">` +
-                   `<mpath href="#riverCourse"/></animateMotion></circle>`;
+            out += `<circle class="river-drop" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`;
         }
         riverFlow.innerHTML = out;
     }
@@ -186,29 +188,31 @@ document.addEventListener('DOMContentLoaded', () => {
             `<ellipse class="cloud-puff" cx="${cx}" cy="${cy - 6 * s}" rx="${32 * s}" ry="${20 * s}" opacity="${(0.55 + 0.35 * Math.min(1, s)).toFixed(2)}"/>` +
             `<ellipse class="cloud-puff" cx="${cx + 28 * s}" cy="${cy + 4}" rx="${24 * s}" ry="${14 * s}" opacity="${(0.5 + 0.35 * Math.min(1, s)).toFixed(2)}"/>`;
 
-        // rising vapour: how many wisps reflects how much water is in the air
-        const vaporCount = Math.max(0, Math.min(14, Math.round(R.vapor / 7)));
+        // 바다에서 피어오른 수증기가 위로 올라가며 구름 쪽으로 모인다. 순환하는 동안에만 움직인다.
+        const vaporCount = running ? Math.max(2, Math.min(18, Math.round(R.vapor / 5))) : 0;
         let vout = '';
+        // 화면을 매 장면 새로 그리므로 SMIL 대신 시계로 자리를 계산한다.
+        const clock = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : performance.now() / 1000;
         for (let i = 0; i < vaporCount; i += 1) {
-            const x = 250 + ((i * 37) % 190);
-            const delay = ((i * 0.37) % 2.2).toFixed(2);
-            vout += `<circle class="vapor" cx="${x}" cy="${(seaTop - 6).toFixed(1)}" r="${(2.6 + (i % 3) * 0.7).toFixed(1)}">` +
-                    `<animate attributeName="cy" from="${(seaTop - 6).toFixed(1)}" to="102" dur="2.6s" begin="${delay}s" repeatCount="indefinite"/>` +
-                    `<animate attributeName="opacity" values="0;.85;0" dur="2.6s" begin="${delay}s" repeatCount="indefinite"/></circle>`;
+            const x = 252 + ((i * 41) % 196), y0 = seaTop - 4, tx = cx - 34 + ((i * 23) % 68), ty = cy + 16, wob = (i % 2 ? 12 : -12);
+            const u = ((clock / 2.8) + i * 0.137) % 1, v = 1 - u;
+            const bx = v * v * v * x + 3 * v * v * u * (x + wob) + 3 * v * u * u * (x - wob) + u * u * u * tx;
+            const by = v * v * v * y0 + 3 * v * v * u * (y0 - 40) + 3 * v * u * u * (ty + 50) + u * u * u * ty;
+            const op = u < 0.15 ? u / 0.15 : u > 0.82 ? (1 - u) / 0.18 : 1;
+            vout += `<path class="vapor" opacity="${op.toFixed(2)}" transform="translate(${bx.toFixed(1)},${by.toFixed(1)})" d="M-4,3 q2,-6 4,-3 q2,3 4,-3"/>`;
         }
+        if (running && vaporCount) vout += `<text class="flow-label" x="${Math.min(440, 455)}" y="${(seaTop - 26).toFixed(1)}" text-anchor="end">증발</text>`;
         vaporGroup.innerHTML = vout;
 
         // rain only falls once the cloud is thick enough to precipitate
         const f = currentFlows();
-        const rainCount = f.precip > 0.002 ? Math.max(1, Math.min(12, Math.round(f.precip * 90))) : 0;
+        const rainCount = running && f.precip > 0.002 ? Math.max(1, Math.min(12, Math.round(f.precip * 90))) : 0;
         let rout = '';
         for (let i = 0; i < rainCount; i += 1) {
-            const x = 258 + ((i * 29) % 96);
-            const delay = ((i * 0.21) % 1.1).toFixed(2);
-            rout += `<ellipse class="raindrop" cx="${x}" cy="100" rx="1.9" ry="4">` +
-                    `<animate attributeName="cy" from="100" to="${(seaTop - 4).toFixed(1)}" dur="1.1s" begin="${delay}s" repeatCount="indefinite"/>` +
-                    `<animate attributeName="opacity" values="0;.9;0" dur="1.1s" begin="${delay}s" repeatCount="indefinite"/></ellipse>`;
+            const x = 258 + ((i * 29) % 96), u = ((clock / 1.1) + i * 0.173) % 1, y = 100 + (seaTop - 4 - 100) * u;
+            rout += `<ellipse class="raindrop" cx="${x}" cy="${y.toFixed(1)}" rx="1.9" ry="4" opacity="${(u < 0.1 ? u / 0.1 : u > 0.9 ? (1 - u) / 0.1 : 0.9).toFixed(2)}"/>`;
         }
+        if (rainCount) rout += `<text class="flow-label" x="${cx - 70}" y="${cy + 40}" text-anchor="end">비</text>`;
         rainGroup.innerHTML = rout;
 
         const rows = [
@@ -217,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 나란히 놓이게 되면서 구별이 안 돼, 눈에 안 보이는 수증기 쪽을
             // 뚜렷이 다른 보라로 바꿉니다.
             { key: 'vapor', name: '수증기', color: '#9d8fe0' },
-            { key: 'cloud', name: '구름', color: '#d8e6ee' },
+            { key: 'cloud', name: '구름', color: '#7f97ab' },
             { key: 'land', name: '땅의 물', color: '#6fbf73' },
         ];
         reservoirBars.innerHTML = rows.map(r =>
@@ -261,9 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out.push(`<line class="grid-line" x1="${AX.x0}" y1="${y.toFixed(1)}" x2="${AX.x1}" y2="${y.toFixed(1)}"/>`);
             out.push(`<text class="axis-text" x="${AX.x0 - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end">${v}</text>`);
         }
-        for (let k = 0; k <= 4; k += 1) {
-            const d = (span * k) / 4;
-            out.push(`<text class="axis-text" x="${tx(d, span).toFixed(1)}" y="${box.y0 + 15}" text-anchor="middle">${d.toFixed(0)}</text>`);
+        // 날수 눈금은 1·2·5·10… 가운데 알맞은 간격의 정수로만 찍는다(반올림하면 2가 빠지는 일이 생겼다).
+        const raw = span / 4, mag = 10 ** Math.floor(Math.log10(Math.max(raw, 1e-9))), step = Math.max(1, [1, 2, 5, 10].map(m => m * mag).find(v => v >= raw) || 10 * mag);
+        for (let d = 0; d <= span + 1e-9; d += step) {
+            out.push(`<text class="axis-text" x="${tx(d, span).toFixed(1)}" y="${box.y0 + 15}" text-anchor="middle">${Math.round(d)}</text>`);
         }
         out.push(`<line class="axis" x1="${AX.x0}" y1="${box.y0}" x2="${AX.x1}" y2="${box.y0}"/>`);
         out.push(`<line class="axis" x1="${AX.x0}" y1="${box.y0}" x2="${AX.x0}" y2="${box.y1}"/>`);
@@ -291,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         axisFrame(out, { ...TOP, ty: tyTop }, [0, 500, 1000], span, '전체와 바다의 물의 양');
         const bMax = smallMax();
         axisFrame(out, { ...BOT, ty: v => tyBot(v, bMax) }, [0, bMax / 2, bMax], span,
-            '공기와 땅의 물 — 눈금을 크게 키운 것', '흐른 날수 (일)');
+            '공기와 땅의 물 (양이 적어 크게 그림)', '흐른 날수 (일)');
 
         if (history.length < 2) {
             out.push(`<text class="trend-empty" x="${(AX.x0 + AX.x1) / 2}" y="${((TOP.y0 + TOP.y1) / 2).toFixed(0)}" text-anchor="middle">순환을 시작하면 물이 어디로 옮겨 가는지 그려집니다.</text>`);

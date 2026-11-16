@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const TRACK_X0 = 88, TRACK_X1 = 388, TRACK_M = 11;
     const PX_PER_M = (TRACK_X1 - TRACK_X0) / TRACK_M;
     const PX_PER_N = 2;                       // one scale for every horizontal force
-    const CRATE_W = 26, CRATE_H = 30, GROUND_Y = 126;
+    const CRATE_W = 44, CRATE_H = 40, GROUND_Y = 126;
     const CRATE_TOP = GROUND_Y - CRATE_H, CY = CRATE_TOP + CRATE_H / 2;
     const REST_RUN = 2.5;                     // seconds to watch a crate refuse to move
     const GRAPH = { x0: 54, x1: 424, y0: 152, y1: 22 };
@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let floor = 'wood';
     let prediction = null;
     let simTime = 0, running = false, lastStamp = 0, frameId = 0;
+    // done: 한 번 밀어 보기가 끝났다(결과·평형 문장을 보여도 된다).
+    let done = false;
+    const pushed = () => running || done || simTime > 0;
 
     const push = () => Number(forceRange.value);
     const mass = () => Number(massRange.value);
@@ -125,21 +128,23 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="crate-text" x="${cx.toFixed(1)}" y="${CY + 6}" text-anchor="middle">${a.m} kg</text>`;
 
         // up and down always balance on a flat floor, so they are drawn equal
-        out += arrow(cx, CY, cx, CRATE_TOP - 12, 'arrow-vert');
-        out += arrow(cx, CY, cx, GROUND_Y + 14, 'arrow-vert');
+        // 위아래 화살표는 상자 윗면·아랫면에서 시작해 무게 글자를 덮지 않는다.
+        out += arrow(cx, CRATE_TOP, cx, CRATE_TOP - 14, 'arrow-vert');
+        out += arrow(cx, GROUND_Y, cx, GROUND_Y + 14, 'arrow-vert');
         if (a.F > 0) out += arrow(right, CY, right + a.F * PX_PER_N, CY, 'arrow-push');
-        if (a.friction > 0) out += arrow(left, CY, left - a.friction * PX_PER_N, CY, 'arrow-fric');
+        // 마찰력은 밀기 시작해야 생긴다. 밀기 전에 길이를 보이면 답이 된다.
+        if (pushed() && a.friction > 0) out += arrow(left, CY, left - a.friction * PX_PER_N, CY, 'arrow-fric');
 
         // The arrows carry no text of their own. The crate roams the whole
         // track, so any label pinned to it collides with something sooner or
         // later; this table sits where the crate can never reach.
-        [['미는 힘', a.F, '#0284c7'], ['마찰력', a.friction, '#ea580c'],
-         ['수직항력', a.weight, '#b4d2dc'], ['무게', a.weight, '#b4d2dc']]
+        [['미는 힘', a.F, '#0284c7'], ['마찰력', pushed() ? a.friction : null, '#ea580c'],
+         ['수직항력', a.weight, '#7c9aa6'], ['무게', a.weight, '#7c9aa6']]
             .forEach(([name, value, colour], i) => {
-                const y = 38 + i * 12;
+                const x = 214 + (i % 2) * 104, y = 44 + Math.floor(i / 2) * 18;
                 // inline style, not a fill attribute: the class rule would win
-                out += `<rect x="250" y="${y - 7}" width="8" height="8" rx="2" fill="${colour}"/>`;
-                out += `<text class="vert-text" style="fill:${colour}" x="264" y="${y}">${name} ${fmt(value)} N</text>`;
+                out += `<rect x="${x}" y="${y - 9}" width="9" height="9" rx="2" fill="${colour}"/>`;
+                out += `<text class="vert-text" style="fill:${colour}" x="${x + 14}" y="${y}">${name} ${value === null ? '?' : fmt(value)} N</text>`;
             });
 
         // the distance ruler the crate is measured against
@@ -153,9 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const balanced = Math.abs(a.net) < 1e-9;
         const tone = balanced ? '#059669' : a.net > 0 ? '#0284c7' : '#ea580c';
-        out += `<text class="balance-text" fill="${tone}" x="20" y="190">` +
+        if (pushed()) out += `<text class="balance-text" fill="${tone}" x="20" y="190">` +
                `미는 힘 ${a.F} N ${balanced ? '=' : a.net > 0 ? '>' : '<'} 마찰력 ${fmt(a.friction)} N → 알짜힘 ${fmt(Math.abs(a.net))} N${balanced ? ' (평형)' : ''}</text>`;
-        out += `<text class="note-text" x="20" y="206">${MOTION_NOTE[a.motion]}</text>`;
+        if (done) out += `<text class="note-text" x="20" y="206">${MOTION_NOTE[a.motion]}</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -187,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 30}" text-anchor="middle">시간 (초)</text>`;
+        out += `<text class="axis-name" x="${GRAPH.x1}" y="${GRAPH.y0 + 30}" text-anchor="end">시간 (초)</text>`;
         out += `<text class="axis-title" x="${GRAPH.x0}" y="${GRAPH.y1 - 6}">속력 (m/s)</text>`;
 
         if (a.v0 > 0) {
@@ -203,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return `<path class="${cls}" d="M${pts.join('L')}"/>`;
         };
-        out += line(0, endT, 'trace-done');
+        if (done) out += line(0, endT, 'trace-done');
         if (simTime > 0) out += line(0, Math.min(simTime, endT), 'trace');
         out += `<circle class="trace-dot" cx="${gx(Math.min(simTime, endT)).toFixed(1)}" cy="${gy(st.v).toFixed(1)}" r="5" fill="#d97706"/>`;
         window.scienceScene.render(graphGroup,out);
@@ -217,9 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
         forceOutput.textContent = `${a.F} N`;
         massOutput.textContent = `${a.m} kg`;
         startOutput.textContent = `${a.v0.toFixed(1)} m/s`;
-        stageBadge.textContent = `${a.floorName} · ${MOTION_NAME[a.motion]}`;
-        window.scienceScene.render(dataNote,'<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p>' +
-            '<p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>');
+        stageBadge.textContent = done ? `${a.floorName} · ${MOTION_NAME[a.motion]}` : a.floorName;
+        window.scienceScene.render(dataNote, done
+            ? '<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p><p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>'
+            : '<p>미는 힘: ' + a.F + ' N · 상자 ' + a.m + ' kg · 처음 속력 ' + a.v0.toFixed(1) + ' m/s</p>');
         return { a, st };
     }
 
@@ -247,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startSim() {
         stopSim();
-        simTime = 0;
+        simTime = 0; done = false;
         running = true;
         lastStamp = performance.now();
         render();
@@ -255,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function finish() {
+        done = true;
         const { a, st } = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -271,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function settingsChanged() {
         stopSim();
-        simTime = 0;
+        simTime = 0; done = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();

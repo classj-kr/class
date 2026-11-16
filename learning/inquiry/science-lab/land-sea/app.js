@@ -136,32 +136,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
+    // 지구본(공) 위에 붙임딱지가 떨어져 붙는 모습. 100칸 모형을 보이는 반구에 펼쳐 그린다.
+    const BALL = { cx: 104, cy: 100, r: 80 };
+    function onBall(x, y) {
+        const lon = (x / 10 - 0.5) * 2.7, lat = (0.5 - y / 10) * 2.5;
+        return [BALL.cx + BALL.r * Math.cos(lat) * Math.sin(lon), BALL.cy - BALL.r * Math.sin(lat)];
+    }
+    function cellPath(r, c) {
+        const pts = [];
+        for (let i = 0; i <= 4; i += 1) pts.push(onBall(c + i / 4, r));
+        for (let i = 0; i <= 4; i += 1) pts.push(onBall(c + 1, r + i / 4));
+        for (let i = 0; i <= 4; i += 1) pts.push(onBall(c + 1 - i / 4, r + 1));
+        for (let i = 0; i <= 4; i += 1) pts.push(onBall(c, r + 1 - i / 4));
+        return 'M' + pts.map(([px, py]) => `${px.toFixed(1)},${py.toFixed(1)}`).join('L') + 'Z';
+    }
     function renderArea(a, p) {
-        const k = shownDots();
-        const GX = 24, GY = 34, CELL = 16;
-        let out = '';
-        for (let r = 0; r < 10; r += 1) for (let c = 0; c < 10; c += 1) {
-            out += `<rect class="${LAND.has(`${r},${c}`) ? 'cell-land' : 'cell-sea'}" x="${GX + c * CELL}" y="${GY + r * CELL}" width="${CELL}" height="${CELL}"/>`;
+        const k = shownDots(), n = state.dots, started = p > 0, done = p >= 1;
+        const { cx, cy, r } = BALL;
+        let out = `<defs><radialGradient id="lsSea" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#7fb6e6"/><stop offset=".6" stop-color="#3f7fc0"/><stop offset="1" stop-color="#2a5f97"/></radialGradient><radialGradient id="lsShade" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#0b2540" stop-opacity=".32"/></radialGradient><clipPath id="lsBall"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs>`;
+        // 받침대
+        out += `<path d="M${cx - 34} 205 H${cx + 34} L${cx + 26} 196 H${cx - 26} Z" fill="#b08a5a" stroke="#7d5f3a" stroke-width="1.2"/><rect x="${cx - 4}" y="${cy + r - 2}" width="8" height="16" fill="#9a7a4e"/>`;
+        out += `<path d="M${cx - r - 9} ${cy} A${r + 9} ${r + 9} 0 0 0 ${cx + 4} ${cy + r + 9}" fill="none" stroke="#9a7a4e" stroke-width="4" stroke-linecap="round"/>`;
+        out += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#lsSea)" stroke="#24527f" stroke-width="1.5"/>`;
+        out += `<g clip-path="url(#lsBall)">`;
+        for (let rr = 0; rr < 10; rr += 1) for (let c = 0; c < 10; c += 1) {
+            if (LAND.has(`${rr},${c}`)) out += `<path class="cell-land" d="${cellPath(rr, c)}" style="stroke:#6fa84a;stroke-width:1"/>`;
         }
+        out += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#lsShade)"/></g>`;
+        // 붙은 붙임딱지
+        const sr = n > 100 ? 2.4 : n > 30 ? 3.2 : 4;
         for (let i = 0; i < k; i += 1) {
-            const d = state.drops[i];
-            out += `<circle class="dot ${d.land ? 'land' : 'sea'}" cx="${(GX + d.x * CELL).toFixed(1)}" cy="${(GY + d.y * CELL).toFixed(1)}" r="${state.dots > 100 ? 2 : 3}"/>`;
+            const d = state.drops[i], [px, py] = onBall(d.x, d.y);
+            out += `<circle class="dot ${d.land ? 'land' : 'sea'}" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${sr}"/>`;
+        }
+        // 떨어지는 중인 붙임딱지(위에서 내려와 크기가 줄며 붙는다)
+        if (started && !done && k < n) {
+            const f = Math.min(1, Math.max(0, p * n - k)), d = state.drops[k], [px, py] = onBall(d.x, d.y);
+            const e = f * f, fx = px + (cx - px) * 0.15 * (1 - e), fy = -10 + (py + 10) * e, rad = sr * (1 + 1.6 * (1 - e));
+            out += `<circle class="dot falling" cx="${fx.toFixed(1)}" cy="${fy.toFixed(1)}" r="${rad.toFixed(1)}" fill="#f59e0b" stroke="#fff" stroke-width="1.2" opacity="${(0.5 + 0.5 * e).toFixed(2)}"/>`;
         }
         const t = tallyArea(k);
-        out += `<text class="legend-text" x="${GX}" y="${GY + 10 * CELL + 14}">초록 = 육지 29칸 · 파랑 = 바다 71칸</text>`;
-        // tally on the right
-        const TX = 220;
-        out += `<text class="tally-text" x="${TX}" y="60">떨어진 붙임딱지 ${k} / ${state.dots}장</text>`;
-        out += `<circle class="dot sea" cx="${TX + 6}" cy="86" r="5"/><text class="tally-text" x="${TX + 18}" y="90">바다에 ${t.sea}장${k ? ` (${Math.round(t.sea / k * 100)} %)` : ''}</text>`;
-        out += `<circle class="dot land" cx="${TX + 6}" cy="112" r="5"/><text class="tally-text" x="${TX + 18}" y="116">육지에 ${t.land}장${k ? ` (${Math.round(t.land / k * 100)} %)` : ''}</text>`;
-        // two bars to compare
-        const BW = 200;
-        out += `<rect class="bar" x="${TX}" y="132" width="${BW}" height="12" rx="3" fill="rgba(255,255,255,.08)"/>`;
-        if (k) out += `<rect class="bar" x="${TX}" y="132" width="${(BW * t.sea / k).toFixed(1)}" height="12" rx="3" fill="#d97706" opacity=".9"/>`;
-        out += `<text class="legend-text" x="${TX}" y="158">노란 막대 = 바다 비율 · 점선 = 실제 71 %</text>`;
-        out += `<line class="expect-line" x1="${(TX + BW * (1 - LAND_SHARE)).toFixed(1)}" y1="128" x2="${(TX + BW * (1 - LAND_SHARE)).toFixed(1)}" y2="148"/>`;
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">붙임딱지 ${state.dots}장 → ${a.verdict === 'sea-more' ? '바다에 더 많이' : a.verdict === 'land-more' ? '육지에 더 많이' : '반반에 가까움'}</text>`;
-        out += `<text class="note-text" x="${TX}" y="196">${k < state.dots ? '떨어뜨리는 중' : `다 떨어졌습니다 · 바다 ${a.seaAll}장 : 육지 ${a.landAll}장`}</text>`;
+        // 오른쪽: 센 결과
+        const TX = 222;
+        out += `<text class="tally-text" x="${TX}" y="44">떨어진 붙임딱지 ${k} / ${n}장</text>`;
+        out += `<circle class="dot sea" cx="${TX + 6}" cy="70" r="5"/><text class="tally-text" x="${TX + 18}" y="75">바다에 ${t.sea}장</text>`;
+        out += `<circle class="dot land" cx="${TX + 6}" cy="96" r="5"/><text class="tally-text" x="${TX + 18}" y="101">육지에 ${t.land}장</text>`;
+        const BW = 200, by = 124;
+        out += `<text class="legend-text" x="${TX}" y="${by - 6}">바다에 떨어진 비율</text>`;
+        out += `<rect x="${TX}" y="${by}" width="${BW}" height="14" rx="3" fill="#eef2f5" stroke="#9fb2bf" stroke-width="1"/>`;
+        if (k) out += `<rect x="${TX}" y="${by}" width="${(BW * t.sea / k).toFixed(1)}" height="14" rx="3" fill="#d97706" opacity=".9"/>`;
+        const ex = TX + BW * (1 - LAND_SHARE);
+        out += `<line class="expect-line" x1="${ex.toFixed(1)}" y1="${by - 3}" x2="${ex.toFixed(1)}" y2="${by + 17}"/><text class="legend-text" style="fill:#047857" x="${ex.toFixed(1)}" y="${by + 32}" text-anchor="middle">71 %</text>`;
+        out += `<text class="legend-text" x="${TX}" y="186">초록 = 육지 · 파랑 = 바다</text>`;
+        if (done) out += `<text class="verdict-text" fill="#d97706" x="${TX}" y="208">바다 ${a.seaAll}장 : 육지 ${a.landAll}장 → ${a.verdict === 'sea-more' ? '바다에 더 많이' : a.verdict === 'land-more' ? '육지에 더 많이' : '반반에 가까움'}</text>`;
         return out;
     }
 
@@ -249,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<path class="trace" style="stroke:#d97706" d="M${pts.join('L')}"/>`;
             out += `<circle class="trace-dot" cx="${gx(k).toFixed(1)}" cy="${gy(sea / k).toFixed(1)}" r="5" fill="#d97706"/>`;
         }
-        out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${GRAPH.y1 + 14}">옅은 띠: 우연만으로 보통 벗어나는 범위 — 많이 떨어뜨릴수록 좁아집니다</text>`;
+        out += `<text class="note-text" x="${GRAPH.x0 + 8}" y="${GRAPH.y1 + 14}">옅은 띠: 자주 나오는 범위예요. 많이 떨어뜨릴수록 좁아져요.</text>`;
         return out;
     }
 
@@ -274,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">모형</span><span class="data-val">지구 표면 100칸 = 바다 71칸 + 육지 29칸</span></div>` +
                 `<div class="data-row"><span class="data-name">떨어뜨린 것</span><span class="data-val">${k} / ${state.dots}장 (어디에 떨어질지는 우연)</span></div>` +
                 `<div class="data-row"><span class="data-name">지금까지</span><span class="data-val">바다 ${t.sea}장 · 육지 ${t.land}장${k ? ` → 바다 ${Math.round(t.sea / k * 100)} %` : ''}</span></div>` +
-                `<div class="data-row match"><span class="data-name">다 떨어지면</span><span class="data-val">바다 ${a.seaAll}장 : 육지 ${a.landAll}장 (바다 ${Math.round(a.seaAll / state.dots * 100)} %)</span></div>`;
+                (state.progress >= 1 ? `<div class="data-row match"><span class="data-name">다 떨어진 뒤</span><span class="data-val">바다 ${a.seaAll}장 : 육지 ${a.landAll}장 (바다 ${Math.round(a.seaAll / state.dots * 100)} %)</span></div>` : '');
         }
         const e = evaporated(state.progress);
         return `<div class="data-row"><span class="data-name">물</span><span class="data-val">${a.water.name} ${state.grams} g · 100 g마다 소금 ${a.water.saltPer100} g</span></div>` +
@@ -316,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.mode === 'area') { state.seed = (state.seed + 7919) | 0; state.drops = []; }
         state.progress = 0;
         running = true;
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) { running = false; state.progress = 1; finish(); return; }
         lastStamp = performance.now();
         render();
         frameId = requestAnimationFrame(frame);
@@ -368,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         stageCaption.textContent = state.mode === 'area'
-            ? '지구 표면을 100칸으로 나눈 모형입니다. 눈을 감고 붙임딱지를 떨어뜨리는 것과 같습니다.'
+            ? '지구본에 눈을 감고 붙임딱지를 떨어뜨려, 바다와 육지 중 어디에 더 많이 붙는지 세어 봅니다.'
             : '왼쪽은 고른 물, 오른쪽은 견주기 위한 다른 물입니다. 물이 마르면서 접시에 남는 것을 보세요.';
         settingsChanged();
     }));
@@ -545,3 +573,6 @@ document.addEventListener('DOMContentLoaded', () => {
     run();
     // The observer sees the app's DOMContentLoaded render; do not run twice.
 })();
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

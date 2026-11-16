@@ -7,3 +7,8 @@
 @media(max-width:900px){.air-lab-layout{grid-template-columns:1fr}.air-controls{grid-template-columns:repeat(2,minmax(0,1fr));border-right:0;border-bottom:1px solid #d6e2e7}.air-controls h3,.air-controls fieldset,.air-controls .air-hint{grid-column:1/-1}}
 @media(max-width:500px){.air-lab-heading,.air-controls,.air-observation,.air-comparison{padding:18px}.air-live{grid-template-columns:1fr}.air-live>div{flex-direction:row;justify-content:space-between;gap:10px}.air-result-grid{grid-template-columns:1fr}.air-controls{grid-template-columns:1fr}.air-apparatus svg{min-height:0}}
 @media(prefers-reduced-motion:reduce){.air-particle-flow{animation:none}}
+.air-lab-layout{display:block}.air-controls{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;border-right:0;border-bottom:1px solid #d6e2e7;column-gap:20px}.air-controls>h3{grid-column:1/-1}.air-controls>button{align-self:start}.air-controls .air-actions{align-self:start}
+.air-observation{max-width:900px;margin:0 auto}
+@media(max-width:900px){.air-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.air-controls fieldset,.air-controls .air-hint{grid-column:auto}}
+@media(max-width:500px){.air-controls{grid-template-columns:1fr}}
+.air-parts-key{margin:-8px 0 14px;color:#4d6673;font-size:14px;line-height:1.6}.air-parts-key[hidden]{display:none}

@@ -92,7 +92,7 @@
     background-size: 100% 100%, 24px 24px, 24px 24px;
 }
 .stage-views { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px 0 6px; }
-.circuit-svg { width: 100%; max-width: 560px; height: auto; display: block; }
+.circuit-svg { width: 100%; max-width: 680px; margin: 0 auto; height: auto; display: block; }
 
 .wire { stroke: #7b96a2; stroke-width: 3.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .wire.dead { stroke: #3c484f; }

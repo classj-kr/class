@@ -185,21 +185,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const Y0 = 34, DY = 20, LX = 22, LW = 190, RX = 248, RW = 192, SX = 118, SW = 224;
         let out = `<text class="small-label" x="${LX}" y="28">사람</text><text class="small-label" x="${RX + RW}" y="28" text-anchor="end">${o.label}</text>`;
         for (let i = 0; i < 8; i += 1) {
-            const y = Y0 + i * DY, vis = p === 0 || i < shown;
-            if (!vis) { out += `<text class="rank-name" x="10" y="${y + 13}">${LEVELS[i]}</text>`; continue; }
+            const y = Y0 + i * DY, vis = p > 0 && i < shown;
+            // 내려가기 전(또는 아직 내려오지 않은 줄)은 빈 칸만 보인다 — 어디서 갈라지는지 미리 보이지 않게.
+            if (!vis) { out += `<text class="rank-name" x="10" y="${y + 13}">${LEVELS[i]}</text><rect class="rank-box" x="${LX}" y="${y}" width="${LW}" height="17" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/><rect class="rank-box" x="${RX}" y="${y}" width="${RW}" height="17" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>`; continue; }
             out += `<text class="rank-name" x="10" y="${y + 13}">${LEVELS[i]}</text>`;
             if (i < shared) {
-                out += `<rect class="rank-box shared" x="${SX}" y="${y}" width="${SW}" height="17" rx="3"/><text class="rank-text" x="${SX + SW / 2}" y="${y + 12}" text-anchor="middle">${HUMAN[i]} — ${HUMAN_WHY[i]}</text>`;
+                out += `<rect class="rank-box shared" x="${SX}" y="${y}" width="${SW}" height="17" rx="3"/><text class="rank-text" x="${SX + SW / 2}" y="${y + 12}" text-anchor="middle">${HUMAN[i]}</text>`;
                 if (i < 7 && i + 1 < shared) out += `<line class="ladder-line" x1="${SX + SW / 2}" y1="${y + 17}" x2="${SX + SW / 2}" y2="${y + DY}"/>`;
                 else if (i + 1 === shared && (shown > i + 1 || p >= 1)) out += `<line class="fork-line" x1="${SX + SW / 2}" y1="${y + 17}" x2="${LX + LW / 2}" y2="${y + DY}"/><line class="fork-line" x1="${SX + SW / 2}" y1="${y + 17}" x2="${RX + RW / 2}" y2="${y + DY}"/>`;
             } else {
-                out += `<rect class="rank-box human" x="${LX}" y="${y}" width="${LW}" height="17" rx="3"/><text class="rank-text" x="${LX + LW / 2}" y="${y + 12}" text-anchor="middle">${HUMAN[i]}${i === shared ? ` — ${HUMAN_WHY[i]}` : ''}</text>`;
-                out += `<rect class="rank-box other" x="${RX}" y="${y}" width="${RW}" height="17" rx="3"/><text class="rank-text" x="${RX + RW / 2}" y="${y + 12}" text-anchor="middle">${o.ranks[i]}${i === shared ? ` — ${o.why}` : ''}</text>`;
+                out += `<rect class="rank-box human" x="${LX}" y="${y}" width="${LW}" height="17" rx="3"/><text class="rank-text" x="${LX + LW / 2}" y="${y + 12}" text-anchor="middle">${HUMAN[i]}</text>`;
+                out += `<rect class="rank-box other" x="${RX}" y="${y}" width="${RW}" height="17" rx="3"/><text class="rank-text" x="${RX + RW / 2}" y="${y + 12}" text-anchor="middle">${o.ranks[i]}</text>`;
                 if (i < 7) out += `<line class="ladder-line" x1="${LX + LW / 2}" y1="${y + 17}" x2="${LX + LW / 2}" y2="${y + DY}"/><line class="ladder-line" x1="${RX + RW / 2}" y1="${y + 17}" x2="${RX + RW / 2}" y2="${y + DY}"/>`;
             }
         }
         const VERD = { close: '목 이상까지 같음', mid: '문·강까지 같음', far: '계부터 다름' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${o.label}: ${shared === 0 ? '역부터 다름' : `${LEVELS[shared - 1]}까지 같음`} — ${VERD[a.verdict]}` : `사람과 ${o.label} · ${LEVELS[Math.max(0, Math.min(7, shown - 1))]}까지 내려옴`}</text>`;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${o.label}: ${shared === 0 ? '역부터 다름' : `${LEVELS[shared - 1]}까지 같음`} — ${VERD[a.verdict]}` : p > 0 ? `사람과 ${o.label} · ${LEVELS[Math.max(0, Math.min(7, shown - 1))]}까지 내려옴` : `사람과 ${o.label} · 역부터 내려가 봅니다`}</text>`;
         out += `<text class="note-text" x="20" y="208">초록 = 같은 무리, 노랑 = 사람 쪽, 주황 = ${o.label} 쪽. 학명은 속명 + 종소명 (사람 Homo sapiens)</text>`;
         return out;
     }
@@ -207,15 +208,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function graphRank(a) {
         const keys = Object.keys(ORGS), X0 = 66, X1 = 420, Y0 = 150, Y1 = 40, bw = (X1 - X0) / keys.length, yOf = n => Y0 - n / 7 * (Y0 - Y1);
         let out = `<text class="axis-title" x="20" y="18">사람과 같은 분류 단계의 수 — 많을수록 가까운 친척</text>`;
+        const done = state.progress >= 1;
         [0, 1, 3, 5, 7].forEach(n => { out += `<line class="grid-line" x1="${X0}" y1="${yOf(n).toFixed(1)}" x2="${X1}" y2="${yOf(n).toFixed(1)}"/><text class="axis-text" x="${X0 - 5}" y="${(yOf(n) + 3.5).toFixed(1)}" text-anchor="end">${n === 0 ? '0' : `${LEVELS[n - 1]}까지`}</text>`; });
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/>`;
         keys.forEach((k, i) => {
             const o = ORGS[k], x = X0 + bw * i + bw * 0.2, w = bw * 0.6, on = k === state.org;
-            out += `<rect fill="${on ? 'rgba(217, 119, 6, .6)' : 'rgba(84,230,193,.4)'}" x="${x.toFixed(1)}" y="${yOf(o.split).toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(1, Y0 - yOf(o.split)).toFixed(1)}" rx="2"/>`;
+            if (done) out += `<rect fill="${on ? 'rgba(217, 119, 6, .6)' : 'rgba(84,230,193,.4)'}" x="${x.toFixed(1)}" y="${yOf(o.split).toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(1, Y0 - yOf(o.split)).toFixed(1)}" rx="2"/>`;
             out += `<text class="axis-text" style="${on ? 'fill:#d97706' : ''}" x="${(x + w / 2).toFixed(1)}" y="${Y0 + 14}" text-anchor="middle">${o.label}</text>`;
-            out += `<text class="small-label" x="${(x + w / 2).toFixed(1)}" y="${(yOf(o.split) - 5).toFixed(1)}" text-anchor="middle">${o.split}</text>`;
+            if (done) out += `<text class="small-label" x="${(x + w / 2).toFixed(1)}" y="${(yOf(o.split) - 5).toFixed(1)}" text-anchor="middle">${o.split}</text>`;
         });
-        out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">침팬지는 과까지 같고, 소나무·버섯은 역만 같으며, 대장균은 역부터 다릅니다</text>`;
+        if (done) out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">침팬지는 과까지 같고, 소나무·버섯은 역만 같으며, 대장균은 역부터 다릅니다</text>`;
         return out;
     }
 
@@ -286,9 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="clock-hand" x1="${CX}" y1="${CY}" x2="${(CX + (R - 6) * Math.sin(ang(tNow))).toFixed(1)}" y2="${(CY - (R - 6) * Math.cos(ang(tNow))).toFixed(1)}"/>`;
         out += `<text class="small-label" x="${CX}" y="${CY + R + 14}" text-anchor="middle">한 바퀴 = 2억 년</text>`;
         const TX = 130;
-        out += `<text class="trait-text" x="${TX}" y="132">다른 자리 ${shownDiff}개 / ${AA_TOTAL}개 (모두 ${o.diff}개)</text>`;
+        out += `<text class="trait-text" x="${TX}" y="132">다른 자리 ${shownDiff}개 / ${AA_TOTAL}개</text>`;
         out += `<text class="trait-text" x="${TX}" y="150">눈금: ${cal.label} → 한 차이당 ${fmtN(cal.k * 100)}만 년</text>`;
-        out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="172">어림 ${o.diff} × ${fmtN(cal.k * 100)}만 년 = ${est > 0 ? myr(est) : '0'}</text>`;
+        out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="172">${p >= 1 ? `어림 ${o.diff} × ${fmtN(cal.k * 100)}만 년 = ${est > 0 ? myr(est) : '0'}` : '어림: 다 견준 뒤에 셈'}</text>`;
         out += `<text class="trait-text" style="fill:#0284c7" x="${TX}" y="192">화석 기록: 약 ${myr(o.fossil)} (파란 바늘)</text>`;
         const VERD = { recent: '1천만 년 안', mid: '1천만~1억 년', old: '1억 년 넘게' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `사람–${o.label}: 차이 ${o.diff}개 → 어림 ${est > 0 ? myr(est) : '0'} — ${VERD[a.verdict]}` : `사람–${o.label} 사이토크롬 c 견주는 중`}</text>`;
@@ -314,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        if (state.progress < 1) return '';
         if (a.kind === 'rank') {
             return `<div class="data-row"><span class="data-name">사람</span><span class="data-val">${HUMAN.join(' › ')}</span></div>` +
                 `<div class="data-row"><span class="data-name">${a.o.label}</span><span class="data-val">${a.o.ranks.join(' › ')}</span></div>` +
@@ -486,3 +489,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

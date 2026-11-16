@@ -165,8 +165,248 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ----------------------------------------------------------- visuals */
     const CAT_LABEL = { 'geo-hydro': '지권과 수권', 'geo-atmo': '지권과 기권', 'hydro-atmo': '수권과 기권', bio: '생물권과 다른 권', space: '외권과 다른 권' };
 
-    function renderSpheres(a) { return window.ScienceScenes.earth(a, state, SPHERES, SPHERE_KEYS); }
-    function graphSpheres(a) { return window.ScienceScenes.earthGraph(a, state, SPHERES, SPHERE_KEYS, PHENOMENA); }
+    /* 현상 장면: 왼쪽에 실제로 일어나는 일을 움직여 보이고, 오른쪽 카드는 지켜보는 동안에만 '주는 권 → 받는 권'을 드러낸다 */
+    const n1 = v => (+v).toFixed(1);
+    const lab = (x, y, s, color = '#334155', anchor = 'middle') => `<text class="scene-label" x="${n1(x)}" y="${n1(y)}" text-anchor="${anchor}" style="fill:${color}">${s}</text>`;
+    const chip = (x, y, t) => `<rect x="${n1(x - 4)}" y="${n1(y - 15)}" width="${t.length * 14 + 8}" height="21" rx="6" fill="rgba(255,255,255,.88)"/>` + lab(x, y, t, '#0c4a6e', 'start');
+    const hsh = k => { const v = Math.sin(k * 91.7 + 13.3) * 43758.5453; return v - Math.floor(v); };
+    const easeIO = q => q < 0.5 ? 2 * q * q : 1 - 2 * (1 - q) * (1 - q);
+    const seg = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
+    const SC = { x: 10, y: 24, w: 288, h: 184 };
+    const sky = (top = '#dbeafe', bottom = '#f0f9ff') => `<defs><linearGradient id="esSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${bottom}"/></linearGradient>` +
+        `<linearGradient id="esSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5aa9d6"/><stop offset="1" stop-color="#2d7bb0"/></linearGradient>` +
+        `<clipPath id="esClip"><rect x="${SC.x}" y="${SC.y}" width="${SC.w}" height="${SC.h}" rx="8"/></clipPath></defs>` +
+        `<rect x="${SC.x}" y="${SC.y}" width="${SC.w}" height="${SC.h}" rx="8" fill="url(#esSky)"/>`;
+    const sunAt = (x, y, r = 14) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.5"/>` +
+        [0, 1, 2, 3, 4, 5, 6, 7].map(i => { const a = i * Math.PI / 4; return `<line x1="${n1(x + Math.cos(a) * (r + 4))}" y1="${n1(y + Math.sin(a) * (r + 4))}" x2="${n1(x + Math.cos(a) * (r + 9))}" y2="${n1(y + Math.sin(a) * (r + 9))}" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>`; }).join('');
+    const cloudBlob = (x, y, s, fill = '#ffffff', stroke = '#94a3b8') => `<g><circle cx="${n1(x)}" cy="${n1(y)}" r="${n1(s)}" fill="${fill}" stroke="${stroke}" stroke-width="1"/><circle cx="${n1(x + s * 0.9)}" cy="${n1(y + s * 0.25)}" r="${n1(s * 0.75)}" fill="${fill}" stroke="${stroke}" stroke-width="1"/><circle cx="${n1(x - s * 0.9)}" cy="${n1(y + s * 0.3)}" r="${n1(s * 0.65)}" fill="${fill}" stroke="${stroke}" stroke-width="1"/><rect x="${n1(x - s * 1.4)}" y="${n1(y + s * 0.2)}" width="${n1(s * 2.9)}" height="${n1(s * 0.7)}" fill="${fill}"/></g>`;
+    const seaBand = (y, phase = 0, amp = 2) => {
+        let d = `M${SC.x} ${y}`;
+        for (let x = SC.x; x <= SC.x + SC.w; x += 6) d += ` L${x} ${n1(y + Math.sin(x / 14 + phase) * amp)}`;
+        return `<path d="${d} L${SC.x + SC.w} ${SC.y + SC.h} L${SC.x} ${SC.y + SC.h} Z" fill="url(#esSea)"/>`;
+    };
+    const upArrow = (x, y1, y2, color, w = 2) => `<line x1="${n1(x)}" y1="${n1(y1)}" x2="${n1(x)}" y2="${n1(y2 + 6)}" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/><polygon points="${n1(x)},${n1(y2)} ${n1(x - 4)},${n1(y2 + 7)} ${n1(x + 4)},${n1(y2 + 7)}" fill="${color}"/>`;
+    const lineArrow = (x1, y1, x2, y2, color, w = 2.4) => { const a = Math.atan2(y2 - y1, x2 - x1), c = Math.cos(a), s = Math.sin(a); return `<line x1="${n1(x1)}" y1="${n1(y1)}" x2="${n1(x2 - c * 7)}" y2="${n1(y2 - s * 7)}" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/><polygon points="${n1(x2)},${n1(y2)} ${n1(x2 - 9 * c + 4 * s)},${n1(y2 - 9 * s - 4 * c)} ${n1(x2 - 9 * c - 4 * s)},${n1(y2 - 9 * s + 4 * c)}" fill="${color}"/>`; };
+    const co2 = (x, y, o = 1) => `<g opacity="${o.toFixed(2)}"><circle cx="${n1(x - 6)}" cy="${n1(y)}" r="3.5" fill="#ef4444"/><circle cx="${n1(x + 6)}" cy="${n1(y)}" r="3.5" fill="#ef4444"/><circle cx="${n1(x)}" cy="${n1(y)}" r="4.2" fill="#334155"/></g>`;
+    const o2 = (x, y, o = 1) => `<g opacity="${o.toFixed(2)}"><circle cx="${n1(x - 3.5)}" cy="${n1(y)}" r="3.5" fill="#ef4444"/><circle cx="${n1(x + 3.5)}" cy="${n1(y)}" r="3.5" fill="#ef4444"/></g>`;
+    const thermo = (x, y, level) => `<rect x="${x - 5}" y="${y}" width="10" height="56" rx="5" fill="#ffffff" stroke="#64748b"/><circle cx="${x}" cy="${y + 60}" r="8" fill="#dc2626" stroke="#64748b"/><rect x="${x - 2.5}" y="${n1(y + 52 - 46 * level)}" width="5" height="${n1(46 * level + 6)}" fill="#dc2626"/>`;
+
+    const SCENES = {
+        volcano(p) {
+            let s = sky('#cfe3f6', '#eef6fc');
+            const strat = 86, plume = seg(p, 0.05, 0.55), spread = easeIO(seg(p, 0.35, 0.95));
+            s += `<line x1="${SC.x}" y1="${strat}" x2="${SC.x + SC.w}" y2="${strat}" stroke="#94a3b8" stroke-dasharray="5 4"/>` + lab(SC.x + 8, strat - 6, '성층권', '#475569', 'start');
+            s += sunAt(276, 44, 12);
+            // 햇빛: 퍼진 재 띠에 닿으면 일부가 되튄다
+            const bandL = 160 - 135 * spread, bandR = 160 + 135 * spread;
+            [[250, 0], [205, 1], [120, 2]].forEach(([gx, i]) => {
+                const sx = gx + 36, sy = SC.y + 2, hit = p > 0.35 && gx > bandL && gx < bandR;
+                const ex = hit ? sx + (gx - sx) * ((strat - 4 - sy) / (190 - sy)) : gx, ey = hit ? strat - 4 : 190;
+                s += lineArrow(sx, sy, ex, ey, '#f59e0b', 2);
+                if (hit) s += lineArrow(ex, ey, ex - 16, ey - 22, '#f59e0b', 2);
+            });
+            if (spread > 0) s += `<rect x="${n1(bandL)}" y="${strat - 4}" width="${n1(bandR - bandL)}" height="14" rx="7" fill="#9ca3af" opacity="${n1(0.35 + 0.35 * spread)}"/>`;
+            // 화산과 분출 기둥
+            s += `<path d="M${SC.x} 196 Q80 190 100 192 L148 128 L172 128 L222 192 Q260 190 ${SC.x + SC.w} 194 L${SC.x + SC.w} ${SC.y + SC.h} L${SC.x} ${SC.y + SC.h} Z" fill="#8b7a62" stroke="#6b5b45" stroke-width="1.2"/>`;
+            s += `<path d="M120 192 L148 128 L156 128 L132 192 Z" fill="#a08d72" opacity=".7"/>`;
+            if (p > 0) {
+                s += `<ellipse cx="160" cy="129" rx="12" ry="3.5" fill="#f97316"/>`;
+                for (let i = 0; i < 16; i += 1) {
+                    const life = (p * 5 + hsh(i)) % 1, up = Math.min(life / plume || 0, 1), y = 124 - (124 - strat - 2) * Math.min(1, life * 1.4) * plume;
+                    const x = 160 + Math.sin(i * 1.7 + life * 3) * (4 + 14 * life);
+                    s += `<circle cx="${n1(x)}" cy="${n1(y)}" r="${n1(5 + 7 * life)}" fill="#6b7280" opacity="${n1(0.75 - 0.45 * life + 0 * up)}"/>`;
+                }
+            }
+            s += thermo(36, 124, 0.7 - 0.35 * easeIO(seg(p, 0.55, 1))) + lab(36, 116, '기온');
+            return s;
+        },
+        typhoon(p) {
+            let s = sky('#cfe3f6', '#eef6fc') + sunAt(42, 44, 12);
+            s += seaBand(156, p * 8, 2.5) + chip(SC.x + 14, 198, '따뜻한 바다');
+            for (let i = 0; i < 9; i += 1) {
+                const x = 40 + i * 30, life = (p * 4 + hsh(i)) % 1, y = 150 - life * 70;
+                if (p > 0) s += `<path d="M${x} ${n1(y + 14)} q4 -5 0 -10 q-4 -5 0 -10" fill="none" stroke="#0369a1" stroke-width="1.8" opacity="${n1(1 - life)}"/>`;
+            }
+            const g = easeIO(seg(p, 0.1, 0.9)), top = 120 - 80 * g;
+            const blobs = [];
+            for (let k = 0; k <= 5; k += 1) { const y = 122 - (122 - top) * k / 5, sz = (16 + 4 * Math.sin(k) + 8 * g) * (0.6 + 0.4 * g); if (g > 0 || k === 0) blobs.push([160 + (k % 2 ? 6 : -6), y, sz]); }
+            blobs.forEach(([x, y, r]) => { [[0, 0, 1], [r * 0.85, r * 0.2, 0.75], [-r * 0.85, r * 0.25, 0.7]].forEach(([ox, oy, f]) => { s += `<circle cx="${n1(x + ox)}" cy="${n1(y + oy)}" r="${n1(r * f + 1.3)}" fill="#94a3b8"/>`; }); });
+            blobs.forEach(([x, y, r]) => { [[0, 0, 1], [r * 0.85, r * 0.2, 0.75], [-r * 0.85, r * 0.25, 0.7]].forEach(([ox, oy, f]) => { s += `<circle cx="${n1(x + ox)}" cy="${n1(y + oy)}" r="${n1(r * f)}" fill="#ffffff"/>`; }); });
+            if (g > 0.6) s += `<ellipse cx="160" cy="${n1(top)}" rx="${n1(70 * (g - 0.4))}" ry="10" fill="#ffffff" stroke="#94a3b8"/>`;
+            if (g > 0.3) { const a = p * 12; s += `<ellipse cx="160" cy="140" rx="70" ry="10" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="10 8" stroke-dashoffset="${n1(-a * 10)}"/>`; }
+            s += lab(250, 118, '수증기', '#0369a1');
+            return s;
+        },
+        river(p) {
+            let s = sky();
+            const deep = 22 * easeIO(seg(p, 0, 1)), flow = p * 120;
+            // 산에서 바다로 내려가는 땅, 강이 그 위를 깎는다
+            s += `<path d="M${SC.x} 70 L90 74 L210 160 L232 172 L232 ${SC.y + SC.h} L${SC.x} ${SC.y + SC.h} Z" fill="#a3895f" stroke="#7c6847"/>`;
+            s += `<path d="M30 76 L90 80 L${n1(150)} ${n1(124 + deep * 0.6)} L210 164" fill="none" stroke="#7c6847" stroke-width="1" stroke-dasharray="3 3"/>`;
+            s += `<path d="M${SC.x} 70 L30 64 L60 50 L90 74 Z" fill="#8a9a6a" stroke="#6b7a50"/>`;
+            s += `<path d="M${SC.x} 178 L232 178 L${SC.x + SC.w} 178 L${SC.x + SC.w} ${SC.y + SC.h} L232 ${SC.y + SC.h} Z" fill="url(#esSea)" opacity=".0"/>`;
+            s += `<rect x="226" y="172" width="${SC.x + SC.w - 226}" height="${SC.y + SC.h - 172}" fill="url(#esSea)"/>` + chip(252, 200, '바다');
+            // 강물(깎인 골짜기 속)
+            s += `<path d="M40 ${n1(78 + deep * 0.2)} L90 ${n1(82 + deep * 0.5)} L150 ${n1(126 + deep * 0.6)} L212 166 L232 174" fill="none" stroke="#2f86c4" stroke-width="5" stroke-linecap="round"/>`;
+            s += `<path d="M40 ${n1(78 + deep * 0.2)} L90 ${n1(82 + deep * 0.5)} L150 ${n1(126 + deep * 0.6)} L212 166 L232 174" fill="none" stroke="#bfe3fb" stroke-width="1.6" stroke-dasharray="6 10" stroke-dashoffset="${n1(-flow)}"/>`;
+            // 실려 가는 모래, 바닷가에 쌓이는 삼각주
+            const pts = [[40, 78], [90, 82], [150, 126], [212, 166], [232, 174]];
+            for (let i = 0; i < 8 && p > 0; i += 1) {
+                const u = (p * 3 + hsh(i)) % 1, k = Math.min(3, Math.floor(u * 4)), f = u * 4 - k;
+                const x = pts[k][0] + (pts[k + 1][0] - pts[k][0]) * f, y = pts[k][1] + (pts[k + 1][1] - pts[k][1]) * f + deep * 0.4 - 4;
+                s += `<circle cx="${n1(x)}" cy="${n1(y)}" r="2.6" fill="#92400e"/>`;
+            }
+            const d = 6 + 30 * easeIO(seg(p, 0.2, 1));
+            s += `<path d="M226 172 Q${n1(232 + d)} ${n1(172 + d * 0.15)} ${n1(232 + d * 0.6)} 184 L226 184 Z" fill="#d6b97a" stroke="#a3895f"/>`;
+            s += lab(240, 150, '흙과 모래', '#92400e', 'start');
+            return s;
+        },
+        photo(p) {
+            let s = sky('#dbeafe', '#f0f9ff') + sunAt(44, 46, 13);
+            s += `<rect x="${SC.x}" y="184" width="${SC.w}" height="${SC.y + SC.h - 184}" fill="#a3895f"/><rect x="${SC.x}" y="180" width="${SC.w}" height="6" fill="#7fb069"/>`;
+            s += `<rect x="150" y="120" width="12" height="62" fill="#7c5a3a"/><path d="M156 150 L134 132 M158 140 L180 124" stroke="#7c5a3a" stroke-width="4" stroke-linecap="round"/>`;
+            [[156, 96, 36], [128, 112, 24], [186, 110, 26], [156, 70, 24]].forEach(([x, y, r]) => { s += `<circle cx="${x}" cy="${y}" r="${r}" fill="#4f9a6a" stroke="#3a7a52"/>`; });
+            [[0, 1], [1, 2], [2, 3]].forEach((_, i) => { s += lineArrow(64 + i * 8, 64 + i * 4, 120 + i * 6, 90 + i * 8, '#f59e0b', 1.8); });
+            for (let i = 0; i < 6 && p > 0; i += 1) {
+                const u = (p * 2.5 + i / 6) % 1, sx = 270 - (i % 3) * 14, sy = 60 + i * 18, ex = 172, ey = 100;
+                s += co2(sx + (ex - sx) * u, sy + (ey - sy) * u, u < 0.85 ? 1 : (1 - u) / 0.15);
+            }
+            for (let i = 0; i < 4 && p > 0; i += 1) {
+                const u = (p * 2.5 + i / 4 + 0.1) % 1, sx = 132, sy = 104, ex = 40 + i * 12, ey = 150 - i * 16;
+                s += o2(sx + (ex - sx) * u, sy + (ey - sy) * u, u > 0.15 ? 1 : u / 0.15);
+            }
+            s += lab(266, 46, '이산화 탄소', '#334155') + lab(52, 172, '산소', '#b91c1c');
+            return s;
+        },
+        wind(p) {
+            let s = sky();
+            const g = easeIO(seg(p, 0, 0.9)), amp = 1.5 + 9 * g;
+            s += seaBand(128, -p * 30, amp);
+            for (let k = 0; k < 3; k += 1) {
+                const y = 44 + k * 22;
+                for (let m = 0; m < 4; m += 1) {
+                    const x = SC.x + ((m * 80 + k * 30 + p * 260) % (SC.w + 60)) - 50;
+                    s += lineArrow(x, y, x + 46, y, '#64748b', 2);
+                }
+            }
+            const by = 128 + Math.sin(150 / 14 - p * 30) * amp;
+            s += `<rect x="146" y="${n1(by - 14)}" width="8" height="16" rx="2" fill="#ef4444" stroke="#991b1b"/><line x1="150" y1="${n1(by - 14)}" x2="150" y2="${n1(by - 24)}" stroke="#334155" stroke-width="1.5"/>`;
+            s += lab(SC.x + 10, 34, '바람', '#475569', 'start') + chip(SC.x + 14, 198, '바다');
+            for (let i = 0; i < 4; i += 1) { const x = 40 + i * 70, y = 168; s += lineArrow(x, y, x + 34 * (0.3 + g), y, '#e0f2fe', 2.2); }
+            return s;
+        },
+        cave(p) {
+            let s = sky('#dbeafe', '#f0f9ff');
+            s += `<rect x="${SC.x}" y="70" width="${SC.w}" height="16" fill="#8a6f4b"/><rect x="${SC.x}" y="66" width="${SC.w}" height="5" fill="#7fb069"/>`;
+            s += `<rect x="${SC.x}" y="86" width="${SC.w}" height="${SC.y + SC.h - 86}" fill="#cbd5e1"/>`;
+            for (let r = 0; r < 6; r += 1) for (let c = 0; c < 10; c += 1) s += `<rect x="${SC.x + c * 30 + (r % 2) * 15 - 15}" y="${86 + r * 20}" width="30" height="20" fill="none" stroke="#94a3b8" stroke-width=".8"/>`;
+            s += lab(SC.x + SC.w - 8, 104, '석회암', '#334155', 'end');
+            for (let i = 0; i < 10 && p > 0; i += 1) {
+                const u = (p * 4 + hsh(i)) % 1, x = 30 + i * 26;
+                if (u < 0.4) s += `<path d="M${x} ${n1(28 + u * 90)} q-2 4 0 6 q2 -2 0 -6" fill="#3b82f6"/>`;
+                else s += `<circle cx="${n1(x + Math.sin(i) * 4)}" cy="${n1(66 + (u - 0.4) * 110)}" r="2" fill="#3b82f6" opacity="${n1(1 - u)}"/>`;
+            }
+            const g = easeIO(seg(p, 0.1, 1)), rx = 30 + 70 * g, ry = 12 + 26 * g;
+            s += `<ellipse cx="160" cy="160" rx="${n1(rx)}" ry="${n1(ry)}" fill="#475569"/>`;
+            for (let k = -2; k <= 2; k += 1) { const x = 160 + k * rx * 0.33, top = 160 - ry * Math.sqrt(Math.max(0, 1 - (k * 0.33) ** 2)), L = 4 + 16 * g * (1 - Math.abs(k) * 0.25); s += `<path d="M${n1(x - 4)} ${n1(top)} L${n1(x + 4)} ${n1(top)} L${n1(x)} ${n1(top + L)} Z" fill="#e2e8f0"/>`; }
+            s += lab(SC.x + 10, 46, '빗물', '#1d4ed8', 'start');
+            return s;
+        },
+        coral(p) {
+            let s = sky('#9fd0ec', '#5aa9d6');
+            s += `<rect x="${SC.x}" y="${SC.y}" width="${SC.w}" height="${SC.h}" rx="8" fill="url(#esSea)" opacity=".55"/>`;
+            const g = easeIO(seg(p, 0.1, 1)), layers = 4, th = 6 + 26 * g;
+            for (let k = 0; k < layers; k += 1) s += `<rect x="${SC.x}" y="${n1(SC.y + SC.h - th * (k + 1) / layers)}" width="${SC.w}" height="${n1(th / layers + 0.5)}" fill="${k % 2 ? '#e7dcc4' : '#d9cba8'}"/>`;
+            const bed = SC.y + SC.h - th;
+            [[60, '#f472b6'], [120, '#fb923c'], [190, '#f472b6'], [250, '#fb7185']].forEach(([x, c]) => {
+                s += `<path d="M${x} ${n1(bed)} L${x} ${n1(bed - 26)} M${x} ${n1(bed - 14)} L${x - 10} ${n1(bed - 28)} M${x} ${n1(bed - 18)} L${x + 10} ${n1(bed - 32)}" stroke="${c}" stroke-width="5" stroke-linecap="round" fill="none"/>`;
+            });
+            for (let i = 0; i < 10 && p > 0; i += 1) {
+                const u = (p * 3 + hsh(i)) % 1, x = 30 + i * 26 + Math.sin(u * 6 + i) * 5, y = 40 + u * (bed - 46);
+                s += `<path d="M${n1(x - 5)} ${n1(y)} a5 4 0 0 1 10 0 Z" fill="#fff7ed" stroke="#b45309" stroke-width=".8"/>`;
+            }
+            s += lab(SC.x + SC.w - 8, n1(SC.y + SC.h - 4), '석회암 층', '#334155', 'end') + chip(SC.x + 12, 44, '바다');
+            return s;
+        },
+        sun(p) {
+            let s = sky('#cfe3f6', '#eef6fc') + sunAt(48, 48, 16);
+            s += seaBand(146, p * 6, 2);
+            const warm = easeIO(seg(p, 0, 0.6));
+            s += `<rect x="${SC.x}" y="150" width="${SC.w}" height="${SC.y + SC.h - 150}" fill="#f59e0b" opacity="${n1(0.18 * warm)}"/>`;
+            [[0], [1], [2], [3]].forEach((_, i) => { s += lineArrow(64 + i * 6, 64 + i * 6, 110 + i * 50, 144, '#f59e0b', 2); });
+            for (let i = 0; i < 8 && p > 0; i += 1) {
+                const x = 120 + i * 20, life = (p * 4 + hsh(i)) % 1, y = 142 - life * 72;
+                s += `<path d="M${x} ${n1(y + 14)} q4 -5 0 -10 q-4 -5 0 -10" fill="none" stroke="#0369a1" stroke-width="1.8" opacity="${n1(1 - life)}"/>`;
+            }
+            const c = easeIO(seg(p, 0.3, 1));
+            if (c > 0) s += cloudBlob(200, 52, 10 + 12 * c);
+            s += chip(SC.x + 14, 198, '바다') + lab(262, 104, '수증기', '#0369a1');
+            return s;
+        },
+        seaco2(p) {
+            let s = sky();
+            s += seaBand(110, p * 6, 2) + chip(SC.x + 14, 198, '바다');
+            s += `<path d="M230 110 L236 72 L244 72 L246 60 L254 60 L256 72 L270 72 L276 110 Z" fill="#94a3b8" stroke="#64748b"/>`;
+            for (let i = 0; i < 4 && p > 0; i += 1) { const u = (p * 2 + i / 4) % 1; s += `<circle cx="${n1(250 - u * 20)}" cy="${n1(56 - u * 26)}" r="${n1(5 + 6 * u)}" fill="#9ca3af" opacity="${n1(0.7 - 0.6 * u)}"/>`; }
+            for (let i = 0; i < 9 && p > 0; i += 1) {
+                const u = (p * 2.2 + hsh(i)) % 1, x = 30 + i * 22 + Math.sin(u * 5 + i) * 6;
+                if (u < 0.55) s += co2(x, 40 + u / 0.55 * 66, 1);
+                else s += `<circle cx="${n1(x)}" cy="${n1(116 + (u - 0.55) * 120)}" r="2.6" fill="#e2e8f0" opacity="${n1(1 - (u - 0.55) / 0.45 * 0.6)}"/>`;
+            }
+            s += lab(SC.x + 10, 40, '이산화 탄소', '#334155', 'start');
+            return s;
+        },
+        tide(p) {
+            let s = sky('#e2e8f0', '#f8fafc');
+            s += `<rect x="${SC.x}" y="${SC.y}" width="${SC.w}" height="${SC.h}" rx="8" fill="#1e293b" opacity=".06"/>`;
+            const ex = 92, ey = 112, spin = p * Math.PI * 4;   // 지구가 두 바퀴 돈다
+            s += `<ellipse cx="${ex}" cy="${ey}" rx="60" ry="46" fill="#7cc0e4" stroke="#3b82b8"/>`;
+            s += `<circle cx="${ex}" cy="${ey}" r="42" fill="#6fae7a" stroke="#4a7f55"/>`;
+            const hx = ex + Math.cos(spin) * 46, hy = ey + Math.sin(spin) * 46 * 0.98;
+            s += `<circle cx="${n1(hx)}" cy="${n1(hy)}" r="5" fill="#dc2626" stroke="#ffffff" stroke-width="1.4"/>`;
+            s += `<circle cx="244" cy="${ey}" r="13" fill="#e5e7eb" stroke="#9ca3af"/>` + lab(244, ey + 30, '달');
+            s += lineArrow(226, ey, 166, ey, '#64748b', 1.8);
+            // 바닷가: 빨간 점의 물 높이
+            const level = Math.cos(2 * spin), wy = 186 - 8 * level;
+            s += `<rect x="186" y="150" width="104" height="54" rx="4" fill="#ffffff" stroke="#cbd5e1"/>`;
+            s += `<path d="M186 ${n1(wy)} L290 ${n1(wy)} L290 204 L186 204 Z" fill="#7cc0e4"/><path d="M196 204 L290 166 L290 204 Z" fill="#d6b97a" opacity=".9"/>`;
+            s += lab(238, 166, level > 0.3 ? '밀물' : level < -0.3 ? '썰물' : '', '#334155');
+            return s;
+        },
+    };
+
+    function sphereCard(key, y, shown, role) {
+        if (!shown) return `<rect x="316" y="${y}" width="134" height="58" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="5 4"/>` + lab(383, y + 25, role, '#64748b') + lab(383, y + 46, '?', '#94a3b8');
+        const sp = SPHERES[key];
+        return `<g data-sphere="${key}"><rect x="316" y="${y}" width="134" height="58" rx="10" fill="#f0fdf4" stroke="#4d9a7a" stroke-width="1.6"/>` + lab(383, y + 25, role, '#475569') + `<text class="sphere-name" x="383" y="${y + 47}" text-anchor="middle">${sp.label}</text></g>`;
+    }
+    function renderSpheres(a) {
+        const p = state.progress, ph = a.ph;
+        let s = `<g clip-path="url(#esClip)">${(SCENES[state.phenomenon] || SCENES.volcano)(p)}</g>`;
+        s += `<rect x="${SC.x}" y="${SC.y}" width="${SC.w}" height="${SC.h}" rx="8" fill="none" stroke="#94a3b8" stroke-width="1.2"/>`;
+        s += lab(SC.x, 16, ph.label, '#0f172a', 'start');
+        const showFrom = p >= 0.35, showTo = p >= 0.7;
+        s += sphereCard(ph.from, 30, showFrom, '주는 권') + sphereCard(ph.to, 136, showTo, '받는 권');
+        s += `<line x1="383" y1="92" x2="383" y2="126" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/><polygon points="383,134 377,124 389,124" fill="#c2410c"/>`;
+        if (p > 0.35 && p < 1) s += `<circle cx="383" cy="${n1(94 + ((p * 3) % 1) * 30)}" r="5" fill="#f59e0b" stroke="#ffffff"/>`;
+        return s;
+    }
+    // 기록표: 주는 권(세로) × 받는 권(가로). 확인한 관계에 점을 찍는다
+    function graphSpheres(a) {
+        const x0 = 110, y0 = 40, cw = 68, ch = 29;
+        let s = lab(x0 - 10, 22, '주는↓ 받는→', '#475569', 'end');
+        SPHERE_KEYS.forEach((k, i) => { s += `<text class="table-head" x="${x0 + i * cw + cw / 2 - 2}" y="28" text-anchor="middle">${SPHERES[k].label}</text>`; });
+        SPHERE_KEYS.forEach((from, r) => {
+            s += `<text class="table-head" x="${x0 - 10}" y="${y0 + r * ch + 19}" text-anchor="end">${SPHERES[from].label}</text>`;
+            SPHERE_KEYS.forEach((to, c) => {
+                const count = Object.entries(PHENOMENA).filter(([id, ph]) => ph.from === from && ph.to === to && (state.seen.has(id) || (state.progress >= 1 && id === state.phenomenon))).length;
+                const mine = state.progress >= 1 && a.ph.from === from && a.ph.to === to;
+                s += `<rect x="${x0 + c * cw}" y="${y0 + r * ch}" width="${cw - 4}" height="${ch - 4}" rx="5" fill="${from === to ? '#eef2f6' : count ? '#dcfce7' : '#f8fafc'}" stroke="${mine ? '#c2410c' : '#d5dee6'}" stroke-width="${mine ? 2.2 : 1}"/>`;
+                if (count) s += `<circle cx="${x0 + c * cw + cw / 2 - 2}" cy="${y0 + r * ch + ch / 2 - 2}" r="5.5" fill="#15803d"/>` + (count > 1 ? lab(x0 + c * cw + cw / 2 + 12, y0 + r * ch + 19, String(count), '#15803d') : '');
+            });
+        });
+        return s;
+    }
 
     function renderWater(a) {
         const { r, tau } = a;
@@ -295,10 +535,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const warning = '<p>저장량·유출입량은 고정된 예시입니다. 현재 관측값이나 실제 미래 예측이 아니며, 체류 시간은 평균적 추정치입니다. 탱크는 유입·유출량이 같고 물이 완전히 섞이는 예시로, 평균 체류 시간이 지나도 처음 물의 약 37%가 남습니다. 실제 저장소의 혼합과 이동 경로는 다릅니다.</p>';
         if (a.kind === 'spheres') {
             const { ph } = a;
-            return `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${ph.label} — ${ph.lines.join(' ')}</span></div>` +
+            return `<div class="data-row"><span class="data-name">현상</span><span class="data-val">${state.progress >= 1 ? `${ph.label} — ${ph.lines.join(' ')}` : ph.label}</span></div>` +
                 `<div class="data-row"><span class="data-name">주는 권 → 받는 권</span><span class="data-val">${state.progress > 0 ? `${SPHERES[ph.from].label} → ${SPHERES[ph.to].label}` : '따라가 보면 나옵니다'}</span></div>` +
                 `<div class="data-row"><span class="data-name">옮겨 가는 것</span><span class="data-val">${state.progress > 0 ? ph.carry : '?'}</span></div>` +
-                `<div class="data-row match"><span class="data-name">실제 예</span><span class="data-val">${ph.example.join(' ')}</span></div>`;
+                (state.progress >= 1 ? `<div class="data-row match"><span class="data-name">실제 예</span><span class="data-val">${ph.example.join(' ')}</span></div>` : '');
         }
         if (a.kind === 'water') {
             const { r, tau } = a;
@@ -343,6 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startRun() {
         stopRun();
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         state.progress = 0;
         running = true;
         lastStamp = performance.now();
@@ -406,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'spheres' ? '따라가 보기' : state.mode === 'water' ? '시간 흘려 보기' : '50년 흘려 보기';
-        stageCaption.textContent = state.mode === 'spheres' ? '다섯 권 사이에서 물질이나 에너지가 옮겨 가는 길을 노란 점이 따라갑니다.'
+        stageCaption.textContent = state.mode === 'spheres' ? '왼쪽 장면에서 무엇이 어디에서 어디로 옮겨 가는지 지켜보세요. 아래 기록표에는 확인한 관계에 초록 점이 찍힙니다.'
             : state.mode === 'water' ? '오른쪽 통에서 처음 있던 물(짙은 색)이 빠져나가고 새 물(옅은 색)이 채워지는 데 걸리는 시간을 봅니다.'
                 : '더하는 양(붉은 화살표)과 거두는 양(초록 화살표)의 차이만큼 대기의 탄소가 바뀝니다.';
         settingsChanged();

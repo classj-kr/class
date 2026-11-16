@@ -40,19 +40,25 @@
 .cycle-svg { width: 100%; max-width: 560px; height: auto; display: block; border-radius: 12px; }
 
 .sky { pointer-events: none; }
-.sun-disc { fill: #c2410c; stroke: rgba(255, 240, 200, .8); stroke-width: 2; }
+.sun-disc { fill: #fbbf24; stroke: #d97706; stroke-width: 2; }
 .sun-beam { stroke: rgba(217, 119, 6, .5); stroke-width: 2; stroke-linecap: round; }
-.land { fill: #4a6b45; stroke: rgba(190, 230, 190, .35); stroke-width: 1.2; }
+.land { fill: #7cb36a; stroke: #4d7a40; stroke-width: 1.2; stroke-linejoin: round; }
+.soil { fill: #a98058; stroke: #7a5634; stroke-width: 1; }
+.rock { fill: #9aa3ab; stroke: #5f6b74; stroke-width: 1; stroke-linejoin: round; }
+.tree rect { fill: #7a5634; }
+.tree circle { fill: #4f8f3e; stroke: #33652a; stroke-width: 1; }
+.flow-label { fill: #1e3a5f; font-size: 13.5px; font-weight: 850; }
 /* 강은 굵기 하나짜리 선이 아니라, 상류에서 하류로 갈수록 넓어지는 면입니다.
    그래서 stroke가 아니라 fill로 그립니다. */
 .river { fill: #0284c7; stroke: rgba(148, 163, 184, 0.40); stroke-width: .8; }
-.river-drop { fill: #d6f5fa; opacity: .85; }
+.river-drop { fill: #e0f2fe; opacity: .9; }
 .sea-surface { stroke: #334155; stroke-width: 1.8; stroke-width: 1.6; }
-.stage-label { fill: rgba(230, 245, 250, .7); font-size: 13px; font-weight: 850; }
+.stage-label { fill: #1e3a4a; font-size: 13.5px; font-weight: 850; }
 
-.cloud-puff { fill: #d8e6ee; }
-.vapor { fill: rgba(200, 235, 250, .75); }
-.raindrop { fill: #8fd8f2; }
+.cloud-puff { fill: #f8fafc; }
+#cloudGroup { filter: drop-shadow(0 1px 1.5px rgba(51, 65, 85, .45)); }
+.vapor { fill: none; stroke: #f8fafc; stroke-width: 2.4; stroke-linecap: round; paint-order: stroke; filter: drop-shadow(0 0 .6px #475569); }
+.raindrop { fill: #1d6fb8; }
 
 .reservoir-bars { display: grid; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
 .res-row { display: grid; grid-template-columns: 68px 1fr 56px; gap: 8px; align-items: center; font-size: 13px; font-weight: 850; }

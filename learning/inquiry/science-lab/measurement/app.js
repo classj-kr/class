@@ -201,11 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<polygon class="marker-head" points="${cx.toFixed(1)},${RY - 14} ${(cx - 5).toFixed(1)},${RY - 22} ${(cx + 5).toFixed(1)},${RY - 22}"/>`;
         const steps = Math.floor(Math.abs(lg) * p + 1e-9);
         out += `<text class="big-text" fill="#d97706" x="230" y="40" text-anchor="middle">${steps === 0 && p === 0 ? '×1' : `${lg > 0 ? '×' : '÷'} ${powWords(steps)}`}</text>`;
-        out += `<text class="trait-text" x="230" y="58" text-anchor="middle">${p >= 1 ? `${t.label}: ${fmtSci(t.value)} ${kind.unit} = ${t.words}` : `10배 눈금 ${steps}칸 ${lg > 0 ? '크게' : '작게'} · 지금 ${fmtSci(10 ** curLg)} ${kind.unit}`}</text>`;
+        out += `<text class="trait-text" x="230" y="58" text-anchor="middle">${p >= 1 ? `${t.label}: ${fmtSci(t.value)} ${kind.unit} = ${t.words}` : p === 0 ? `${kind.refLabel}에서 출발` : `${steps}칸째 · 지금 약 ${fmtSci(10 ** curLg)} ${kind.unit}`}</text>`;
         out += `<text class="trait-text" style="fill:#d97706" x="${clamp(tx, X0 + 40, X1 - 40).toFixed(1)}" y="${RY + 40}" text-anchor="middle">${t.label}</text>`;
         const VERD = { near: '1만 배 안', mid: '1만~1억 배', far: '1억 배 넘게' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${t.label}${pEun(t.label)} ${kind.refLabel.split(' ')[0]}의 ${powWords(a.steps)} 배 ${lg > 0 ? '크다' : '작다'} (${a.steps}자리) → ${VERD[a.verdict]}` : `${kind.refLabel}에서 ${t.label}까지`}</text>`;
-        out += `<text class="trait-text" x="20" y="176">10배 눈금으로 재면 ${kind.label}의 세계는 ${kind.eMax - kind.eMin}칸 — 우리가 맨눈으로 보는 것은 그 가운데 두세 칸</text>`;
         out += `<text class="note-text" x="20" y="208">눈금 한 칸 = 10배 · 10${sup(kind.eMin)}부터 10${sup(kind.eMax)} ${kind.unit}까지</text>`;
         return out;
     }
@@ -216,18 +215,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const xOf = v => X0 + (Math.log10(v) - kind.eMin) / (kind.eMax - kind.eMin) * (X1 - X0);
         let out = `<text class="axis-title" x="${X0}" y="18">${kind.label}의 규모 — 눈금 한 칸이 10배</text>`;
         out += `<line class="rail" x1="${X0}" y1="${RY}" x2="${X1}" y2="${RY}"/>`;
-        for (let e = kind.eMin; e <= kind.eMax; e += 1) { const x = xOf(10 ** e); out += `<line class="tick" x1="${x.toFixed(1)}" y1="${RY - 3}" x2="${x.toFixed(1)}" y2="${RY + 3}"/>`; if (e % 5 === 0) out += `<text class="axis-text" x="${x.toFixed(1)}" y="${RY + 44}" text-anchor="middle">10${sup(e)}</text>`; }
-        const items = Object.entries(TARGETS[state.kind]);
-        const ROWS = [[-30, -34], [16, 28], [-46, -50]];     // tick end, label baseline: three rows so names do not collide
-        items.forEach(([k, t], i) => {
-            const x = xOf(t.value), row = ROWS[i % 3], mine = k === state.target;
+        for (let e = kind.eMin; e <= kind.eMax; e += 1) { const x = xOf(10 ** e); out += `<line class="tick" x1="${x.toFixed(1)}" y1="${RY - 3}" x2="${x.toFixed(1)}" y2="${RY + 3}"/>`; if (e % 5 === 0) out += `<text class="axis-text" x="${x.toFixed(1)}" y="${RY + 17}" text-anchor="middle">10${sup(e)}</text>`; }
+        const items = Object.entries(TARGETS[state.kind]).sort((a, b) => a[1].value - b[1].value);
+        // 이름표를 다섯 줄(위 셋·아래 둘) 가운데 비어 있는 줄에 차례로 놓아 서로 겹치지 않게 한다.
+        const ROWS = [-26, -46, -66, 38, 58], taken = ROWS.map(() => []);
+        items.forEach(([k, t]) => {
+            const x = xOf(t.value), mine = k === state.target, w = [...t.short].length * 13.5 + 6;
+            const lx = clamp(x, X0 + w / 2, X1 - w / 2);
+            let r = ROWS.findIndex((_, i) => taken[i].every(([a, b]) => lx + w / 2 < a || lx - w / 2 > b));
+            if (r < 0) r = 0;
+            taken[r].push([lx - w / 2 - 4, lx + w / 2 + 4]);
+            const y = RY + ROWS[r], tipY = ROWS[r] < 0 ? y + 4 : y - 13;
+            out += `<line class="tick leader" x1="${x.toFixed(1)}" y1="${RY}" x2="${lx.toFixed(1)}" y2="${tipY}"/>`;
             out += `<circle class="trace-dot ${mine ? 'chosen' : ''}" fill="${mine ? '#d97706' : '#475569'}" cx="${x.toFixed(1)}" cy="${RY}" r="${mine ? 5 : 3.5}"/>`;
-            out += `<line class="tick" x1="${x.toFixed(1)}" y1="${RY}" x2="${x.toFixed(1)}" y2="${RY + row[0]}"/>`;
-            out += `<text class="axis-text" style="fill:${mine ? '#d97706' : '#475569'};font-size:12px;font-weight:800" x="${clamp(x, X0 + 24, X1 - 24).toFixed(1)}" y="${RY + row[1]}" text-anchor="middle">${t.short}</text>`;
+            out += `<text class="axis-text" style="fill:${mine ? '#b45309' : '#334155'};font-size:13.5px;font-weight:800" x="${lx.toFixed(1)}" y="${y}" text-anchor="middle">${t.short}</text>`;
         });
         const rx = xOf(kind.ref);
-        out += `<line class="ref-mark" x1="${rx.toFixed(1)}" y1="${RY - 62}" x2="${rx.toFixed(1)}" y2="${RY}"/><text class="axis-text" style="fill:#0284c7" x="${rx.toFixed(1)}" y="${RY - 66}" text-anchor="middle">기준</text>`;
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${RY + 70}" text-anchor="middle">${kind.unit === 'm' ? '원자에서 우주까지 38칸 — 사람은 한가운데쯤' : '원자의 진동에서 우주의 나이까지 29칸 — 1초는 아래쪽 3분의 1 자리'}</text>`;
+        out += `<line class="ref-mark" x1="${rx.toFixed(1)}" y1="${RY - 8}" x2="${rx.toFixed(1)}" y2="${RY + 8}"/>`;
+        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${RY + 86}" text-anchor="middle">${kind.unit === 'm' ? '원자에서 우주까지 38칸 — 사람은 한가운데쯤' : '원자의 진동에서 우주의 나이까지 29칸 — 1초는 아래쪽 3분의 1 자리'}</text>`;
         return out;
     }
 
@@ -332,6 +337,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        // 결과 표는 끝까지 가 본 뒤에만 채운다(예상 전에 답이 보이지 않게).
+        if (state.progress < 1) return `<div class="data-row"><span class="data-name">결과</span><span class="data-val">${running ? '가는 중…' : '실행하면 여기에 적힙니다'}</span></div>`;
         if (a.kind === 'scale') {
             const kind = KINDS[state.kind], { t } = a;
             return `<div class="data-row"><span class="data-name">대상</span><span class="data-val">${t.label} = ${fmtSci(t.value)} ${kind.unit} (${t.words})</span></div>` +

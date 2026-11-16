@@ -8,7 +8,7 @@
     <meta name="description" content="빛이 곧게 나아가는 성질과 물체까지의 거리에 따라 그림자 크기가 달라지는 모습을 관찰하는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
-    <link rel="stylesheet" href="light-visual.css?v=b8d30017faad">
+    <link rel="stylesheet" href="light-visual.css?v=ca9bdc98bda7">
     <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
     <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
     <link rel="stylesheet" href="../lab-ui.css?v=44fa7b6abd28">
@@ -89,38 +89,61 @@
                                     <stop offset="0%" stop-color="#ffffff"/>
                                     <stop offset="100%" stop-color="#f1f5f9"/>
                                 </linearGradient>
+                                <linearGradient id="lightWedge" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="#fde68a" stop-opacity=".75"/>
+                                    <stop offset="100%" stop-color="#fef3c7" stop-opacity=".35"/>
+                                </linearGradient>
                             </defs>
 
-                            <!-- screen (fixed): lit face first, shadow painted on top of it -->
-                            <rect class="screen-face" x="436" y="20" width="10" height="260" rx="3" fill="url(#screenFace)"/>
-                            <rect class="screen-stand" x="438" y="280" width="6" height="20"/>
+                            <!-- 실험대 -->
+                            <rect class="bench" x="12" y="296" width="456" height="9" rx="2"/>
 
-                            <!-- rays are created by app.js so blocked/unblocked state can be updated in place -->
-                            <g id="rayGroup"></g>
+                            <!-- 밝은 빛이 퍼지는 곳과, 물체 뒤 빛이 닿지 않는 곳 -->
+                            <g id="rayGroup">
+                                <polygon id="lightCone" class="light-cone" points="36,150 436,20 436,280"/>
+                                <polygon id="darkZone" class="dark-zone" points="236,120 436,90 436,210 236,180"/>
+                            </g>
+
+                            <!-- 스크린(고정) -->
+                            <rect class="screen-face" x="436" y="20" width="10" height="260" rx="3" fill="url(#screenFace)"/>
+                            <rect class="screen-stand" x="438" y="280" width="6" height="16"/>
+                            <rect class="screen-stand" x="426" y="290" width="30" height="6" rx="2"/>
+
+                            <!-- 물체 가장자리를 스치는 빛 두 줄 -->
                             <line id="edgeRayTop" class="ray-edge" x1="36" y1="150" x2="436" y2="90"/>
                             <line id="edgeRayBottom" class="ray-edge" x1="36" y1="150" x2="436" y2="210"/>
 
                             <rect id="shadowSide" class="shadow-side" x="436" y="90" width="10" height="120" rx="3"/>
 
-                            <!-- object: a flat card seen edge-on, so it reads as a vertical bar here -->
-                            <rect id="objectCard" class="object-card" x="236" y="120" width="8" height="60" rx="3"/>
-                            <!-- The light cone widens as the card moves right, so rays cross
-                                 the label's spot at larger distances — this chip sits behind
-                                 the text so it stays readable at every distance. -->
-                            <rect id="objectLabelChip" class="label-chip" x="222" y="92" width="36" height="17" rx="5"/>
-                            <text id="objectLabel" class="stage-label" x="240" y="104" text-anchor="middle">물체</text>
+                            <!-- 옮길 자리(점선) -->
+                            <g id="ghostMark" style="display:none">
+                                <rect id="ghostCard" class="ghost-card" x="236" y="120" width="8" height="60" rx="3"/>
+                                <text id="ghostLabel" class="ghost-label" x="240" y="112" text-anchor="middle">옮길 자리</text>
+                            </g>
 
-                            <!-- lamp -->
-                            <circle class="lamp-glow" cx="36" cy="150" r="30" fill="url(#lampGlow)"/>
-                            <circle class="lamp-bulb" cx="36" cy="150" r="9"/>
-                            <text class="stage-label" x="36" y="192" text-anchor="middle">광원</text>
-                            <text class="stage-label" x="441" y="312" text-anchor="middle">스크린</text>
+                            <!-- 물체: 받침대에 꽂은 판을 옆에서 본 모습 -->
+                            <g id="objectGroup">
+                                <rect id="objectPole" class="holder" x="238" y="180" width="4" height="110"/>
+                                <rect id="objectBase" class="holder" x="226" y="288" width="28" height="8" rx="2"/>
+                                <rect id="objectCard" class="object-card" x="236" y="120" width="8" height="60" rx="3"/>
+                            </g>
+                            <rect id="objectLabelChip" class="label-chip" x="222" y="96" width="36" height="17" rx="5"/>
+                            <text id="objectLabel" class="stage-label" x="240" y="109" text-anchor="middle">물체</text>
 
-                            <!-- distance dimension line -->
-                            <line id="dimLine" class="dim-line" x1="36" y1="265" x2="236" y2="265"/>
-                            <line class="dim-tick" x1="36" y1="258" x2="36" y2="272"/>
-                            <line id="dimTickEnd" class="dim-tick" x1="236" y1="258" x2="236" y2="272"/>
-                            <text id="dimLabel" class="dim-label" x="136" y="255" text-anchor="middle">40 cm</text>
+                            <!-- 전구와 받침대 -->
+                            <rect class="holder" x="33" y="164" width="6" height="126"/>
+                            <rect class="holder" x="20" y="288" width="32" height="8" rx="2"/>
+                            <rect class="lamp-socket" x="29" y="156" width="14" height="12" rx="2"/>
+                            <circle id="lampGlowCircle" class="lamp-glow" cx="36" cy="150" r="30" fill="url(#lampGlow)"/>
+                            <circle class="lamp-bulb" cx="36" cy="148" r="10"/>
+                            <text class="stage-label" x="66" y="186">광원</text>
+                            <text class="stage-label" x="441" y="16" text-anchor="middle">스크린</text>
+
+                            <!-- 광원에서 물체까지의 거리 -->
+                            <line id="dimLine" class="dim-line" x1="36" y1="270" x2="236" y2="270"/>
+                            <line class="dim-tick" x1="36" y1="263" x2="36" y2="277"/>
+                            <line id="dimTickEnd" class="dim-tick" x1="236" y1="263" x2="236" y2="277"/>
+                            <text id="dimLabel" class="dim-label" x="136" y="260" text-anchor="middle">40 cm</text>
                         </svg>
                     </div>
 
@@ -213,7 +236,7 @@
             </div>
         </details>
     </main>
-    <script src="../lab-scene.js?v=9c896dfc3668"></script><script src="app.js?v=939518036a32"></script>
+    <script src="../lab-scene.js?v=9c896dfc3668"></script><script src="app.js?v=9449e9a12cf0"></script>
     <script src="../curriculum-map.js?v=27a8bf8f6a1d"></script>
     <script src="../exam-scope.js?v=006dd7c40733"></script>
     <script src="../lab-ui.js?v=d569ddac8542"></script>

@@ -7,6 +7,29 @@ document.addEventListener('DOMContentLoaded',()=>{'use strict';
  const sample=()=>specimens.find(r=>r.id===s.sample),view=()=>sample().views[s.view],ready=()=>s.mounted&&s.lamp&&Math.abs(s.focus-6)<=1&&$('mbImage').complete&&$('mbImage').naturalWidth>0;
  const asset=id=>'../assets/'+(config?.assetDir||'microbe-observation')+'/'+id+'.webp';
  $('mbSamples').innerHTML=specimens.map(r=>`<button data-mb-sample="${r.id}" aria-pressed="false">${r.name}</button>`).join('');
+ // Microscope drawing beside the controls (microbes page only) and a drawn, swimming paramecium.
+ const scopeHost=$('mbScope'),liveHost=$('mbLive'),reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+ if(scopeHost)scopeHost.innerHTML=`<svg viewBox="0 0 260 250" role="img" aria-label="광학 현미경: 재물대 위 표본, 아래쪽 조명, 옆의 초점 조절 나사"><defs><linearGradient id="mbArm" x2="1"><stop stop-color="#e9eef1"/><stop offset=".5" stop-color="#fdfefe"/><stop offset="1" stop-color="#c9d4da"/></linearGradient></defs>
+  <path d="M0 238H260" stroke="#cdd8de" stroke-width="2"/><path d="M58 236Q60 214 92 212H178Q204 214 206 236Z" fill="url(#mbArm)" stroke="#8ea2ad" stroke-width="2"/>
+  <path d="M156 214C150 170 176 136 168 64L150 58C158 120 128 160 136 214Z" fill="url(#mbArm)" stroke="#8ea2ad" stroke-width="2"/>
+  <g id="mbScopeLight"><ellipse cx="112" cy="198" rx="17" ry="5" fill="#9aa9b0"/><circle cx="112" cy="196" r="8" fill="#c3ccd1" stroke="#7f9099"/></g>
+  <path id="mbScopeBeam" d="M104 192L120 192L116 150L108 150Z" fill="#f6d77a" opacity="0"/>
+  <g id="mbScopeStage"><rect x="62" y="142" width="104" height="9" rx="2" fill="#56656d"/><rect x="74" y="137" width="14" height="5" rx="1" fill="#8b9aa2"/><rect x="138" y="137" width="14" height="5" rx="1" fill="#8b9aa2"/><g id="mbScopeSlide" style="transition:transform .9s ease-in-out"><rect x="80" y="135.5" width="64" height="5" rx="1" fill="#dceef2" stroke="#8fb0bd"/><rect x="104" y="135" width="16" height="5" rx="1" fill="#e2b9a6" opacity=".8"/></g></g>
+  <g id="mbScopeHead" style="transition:transform .35s ease-out"><path d="M118 60H166L168 80H120Z" fill="url(#mbArm)" stroke="#8ea2ad" stroke-width="2"/><rect x="100" y="104" width="24" height="22" rx="3" fill="#c3ccd1" stroke="#7f9099"/><rect x="105" y="124" width="14" height="10" rx="2" fill="#6c7d86"/><path d="M98 104L104 50H122L126 104Z" fill="url(#mbArm)" stroke="#8ea2ad" stroke-width="2"/><path d="M102 50L86 18H106L118 50Z" fill="#dfe6ea" stroke="#8ea2ad" stroke-width="2"/><rect x="84" y="10" width="24" height="10" rx="3" fill="#41525b"/></g>
+  <g transform="translate(166 160)"><circle r="17" fill="#c9d3d8" stroke="#7f9099" stroke-width="2"/><g id="mbScopeKnob" style="transition:transform .3s"><path d="M0 -15V15M-15 0H15M-10.6 -10.6L10.6 10.6M-10.6 10.6L10.6 -10.6" stroke="#8a9aa2" stroke-width="2"/><circle r="5" fill="#6c7d86"/></g></g>
+  <text x="200" y="166" font-size="14" fill="#2f4c5e">초점</text><text x="20" y="150" font-size="14" fill="#2f4c5e">재물대</text><text x="18" y="200" font-size="14" fill="#2f4c5e">조명</text></svg>`;
+ function scope(){if(!scopeHost)return;const lit=s.lamp,sl=$('mbScopeSlide');$('mbScopeBeam').setAttribute('opacity',lit?(.25+s.brightness*.006).toFixed(2):'0');$('mbScopeLight').querySelector('circle').setAttribute('fill',lit?'#f4cf5e':'#c3ccd1');
+  sl.style.transform=s.mounted?'translateX(0)':'translateX(150px)';sl.style.opacity=s.mounted?'1':'0';$('mbScopeKnob').style.transform=`rotate(${s.focus*36}deg)`;$('mbScopeHead').style.transform=`translateY(${(s.focus-5)*1.4}px)`;
+  if(reduceMotion.matches){sl.style.transition='none';$('mbScopeKnob').style.transition='none';$('mbScopeHead').style.transition='none';}}
+ let liveFrame=0,liveT0=0;
+ function cilia(){let p='';for(let i=0;i<22;i++){const a=i/22*Math.PI*2,x=Math.cos(a)*44,y=Math.sin(a)*17;p+=`<path class="mb-cil" data-a="${a.toFixed(3)}" d="M${x} ${y}l0 0" stroke="#6b8f6a" stroke-width="1.3"/>`;}return p;}
+ if(liveHost)liveHost.innerHTML=`<svg viewBox="0 0 300 170" role="img" aria-label="살아 있는 짚신벌레가 섬모를 움직이며 헤엄치는 그림"><defs><clipPath id="mbLiveField"><circle cx="150" cy="85" r="80"/></clipPath><radialGradient id="mbLiveBg"><stop stop-color="#fbfdf6"/><stop offset="1" stop-color="#e7eedd"/></radialGradient></defs><circle cx="150" cy="85" r="82" fill="#cfd8d0"/><circle cx="150" cy="85" r="80" fill="url(#mbLiveBg)"/><g clip-path="url(#mbLiveField)"><circle cx="96" cy="48" r="3" fill="#b8c9a8"/><circle cx="205" cy="128" r="4" fill="#b8c9a8"/><circle cx="190" cy="40" r="2.5" fill="#c4d2b5"/><g id="mbPara"><g id="mbCilia">${cilia()}</g><path d="M-44 0C-44 -14 -22 -18 0 -16C24 -14 46 -12 46 0C46 13 22 17 0 16C-12 15 -20 8 -26 10C-36 13 -44 10 -44 0Z" fill="#dcead2" stroke="#6b8f6a" stroke-width="1.8"/><path d="M-6 -2C-12 6 -20 9 -26 10" fill="none" stroke="#83a37c" stroke-width="2"/><ellipse cx="4" cy="1" rx="11" ry="6" fill="#b9cfa8"/><circle cx="7" cy="1" r="3" fill="#9fb98f"/><circle id="mbVacA" cx="-26" cy="-4" r="4" fill="#eef7f0" stroke="#86a888"/><circle id="mbVacB" cx="30" cy="-3" r="4" fill="#eef7f0" stroke="#86a888"/><circle cx="-10" cy="-8" r="2" fill="#c6d9b6"/><circle cx="18" cy="7" r="2.2" fill="#c6d9b6"/></g></g></svg><figcaption>살아 있는 짚신벌레 (그림)</figcaption>`;
+ function liveStep(now){if(!liveHost||liveHost.hidden){liveFrame=0;return;}const t=(now-liveT0)/1000,x=150+52*Math.sin(t*.45),y=85+26*Math.sin(t*.9),dx=52*.45*Math.cos(t*.45),dy=26*.9*Math.cos(t*.9),ang=Math.atan2(dy,dx)*180/Math.PI;
+  $('mbPara').setAttribute('transform',`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})`);
+  for(const c of liveHost.querySelectorAll('.mb-cil')){const a=+c.dataset.a,bx=Math.cos(a)*44,by=Math.sin(a)*17,len=5,wave=Math.sin(t*14-a*4)*.9,nx=Math.cos(a)*len+Math.sin(a)*len*wave,ny=Math.sin(a)*len-Math.cos(a)*len*wave*.4;c.setAttribute('d',`M${bx.toFixed(1)} ${by.toFixed(1)}l${nx.toFixed(1)} ${ny.toFixed(1)}`);}
+  const pulse=(Math.sin(t*2.4)+1)/2;$('mbVacA').setAttribute('r',(2.5+pulse*2.5).toFixed(2));$('mbVacB').setAttribute('r',(2.5+(1-pulse)*2.5).toFixed(2));
+  liveFrame=reduceMotion.matches?0:requestAnimationFrame(liveStep);}
+ function live(){if(!liveHost)return;const show=s.sample==='paramecium'&&s.mounted&&s.lamp;liveHost.hidden=!show;if(show&&!liveFrame){liveT0=performance.now();liveFrame=requestAnimationFrame(liveStep);}}
  function render(){
   const row=sample(),v=view(),lit=s.mounted&&s.lamp,img=$('mbImage');$('mbViewer').style.touchAction=s.zoom>1?'none':'pan-y';
   for(const b of host.querySelectorAll('[data-mb-sample]'))b.setAttribute('aria-pressed',String(b.dataset.mbSample===s.sample));
@@ -24,6 +47,7 @@ document.addEventListener('DOMContentLoaded',()=>{'use strict';
   $('mbGuide').textContent=!s.mounted?'표본을 올리고 조명과 초점을 조절하세요.':!s.lamp?'조명을 켜서 표본을 밝히세요.':!ready()?'초점을 천천히 움직여 윤곽이 선명한 곳을 찾으세요.':v.detail;
   const completed=Object.keys(s.observed);$('mbComparisons').hidden=!completed.length;$('mbComparisonGrid').innerHTML=specimens.flatMap(r=>r.views.filter(v=>s.observed[v.id]).map(v=>`<figure><img src="${asset(v.id)}" alt="${r.name} ${v.title}"><figcaption><strong>${config?r.name:r.name+' · '+v.title}</strong><span>${v.magnification}배</span></figcaption></figure>`)).join('');
   $('mbComparisonNote').textContent=config?.comparisonNote||'사진마다 관찰 배율이 다릅니다. 화면에 보이는 크기만으로 생물의 실제 크기를 비교하지 마세요.';
+  scope();live();
   window.cellPrep?.update(row,s.preparation.length,s);
  }
  function resetView(){s.mounted=false;s.preparation=[];s.focus=2;s.zoom=1;s.pan={x:0,y:0};$('mbStatus').textContent='';render();}

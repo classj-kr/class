@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const GRAPH = { x0: 66, x1: 424, y0: 156, y1: 34 };
 
     let prediction = null;
-    let sim = null, running = false, frameId = 0, lastStamp = 0;
+    let sim = null, running = false, frameId = 0, lastStamp = 0, started = false, finished = false;
 
     const height = () => Number(heightRange.value);
     const angle = () => Number(angleRange.value);
@@ -83,10 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
         body += `<path class="angle-arc" d="M${(botX - arcR).toFixed(1)},${GROUND_Y} A${arcR.toFixed(1)} ${arcR.toFixed(1)} 0 0 1 ` +
                 `${(botX - arcR * a.cos).toFixed(1)},${(GROUND_Y - arcR * a.sin).toFixed(1)}"/>`;
         // inside the arc, not left of it: a short steep ramp puts the two labels together
-        body += `<text class="small-label" x="${(botX - arcR / 2).toFixed(1)}" y="${GROUND_Y - 6}" text-anchor="middle">${a.deg}°</text>`;
+        body += `<text class="small-label" x="${(botX - arcR / 2).toFixed(1)}" y="${GROUND_Y + 13}" text-anchor="middle">${a.deg}°</text>`;
 
         // the cart, wherever it has slid to
-        const f = a.slope > 0 ? st.d / a.slope : 0;
+        // 수레 바퀴가 빗면 위에 놓이도록 꼭대기 모서리에서 반 칸 들어간 곳에서 출발해 아래 끝 반 칸 앞에서 멈춘다.
+        const rampPx = Math.hypot(botX - RAMP_X0, GROUND_Y - topY), inset = Math.min(16, rampPx * 0.25);
+        const f0 = a.slope > 0 ? st.d / a.slope : 0, f = (inset + f0 * (rampPx - 2 * inset)) / rampPx;
         const cx = RAMP_X0 + (botX - RAMP_X0) * f;
         const cy = topY + (GROUND_Y - topY) * f;
         body += `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)}) rotate(${a.deg})">`;
@@ -106,12 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // The height annotation sits beside the apparatus, outside its crop.
         out += `<text class="small-label" x="${RAMP_X0 - 6}" y="${((topY + GROUND_Y) / 2).toFixed(1)}" text-anchor="end">h ${a.h} m</text>`;
         out += `<text class="part-label" x="20" y="20">h ${a.h} m · θ ${a.deg}° · μ ${a.mu.toFixed(2)} · 빗면 길이 ${a.slope.toFixed(2)} m</text>`;
-        if (a.stuck) {
-            out += `<text class="warn-text figure-caption" x="20" y="196">μ ${a.mu.toFixed(2)}가 tan ${a.deg}° = ${a.tan.toFixed(2)}보다 커서 수레가 미끄러지지 않습니다</text>`;
-        } else {
-            out += `<text class="read-text figure-caption" x="20" y="196">지금 속력 ${st.v.toFixed(2)} m/s · 위치 ${st.pe.toFixed(1)} J · 운동 ${st.ke.toFixed(1)} J · 열 ${st.heat.toFixed(1)} J</text>`;
+        // 놓은 뒤에만 지금 값을 읽어 준다(놓기 전에는 결과를 미리 보이지 않는다).
+        if (started && a.stuck && finished) {
+            out += `<text class="warn-text verdict-text" x="20" y="204">미끄러지지 않음</text>`;
+        } else if (started && !a.stuck) {
+            out += `<text class="read-text" x="20" y="204">속력 ${st.v.toFixed(2)} m/s · 위치 ${st.pe.toFixed(1)} J · 운동 ${st.ke.toFixed(1)} J · 열 ${st.heat.toFixed(1)} J</text>`;
         }
-        out += `<text class="note-text" x="20" y="210">세 값을 더하면 언제나 ${a.total.toFixed(1)} J 입니다</text>`;
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -135,10 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="axis-title" x="22" y="22">에너지 (J)</text>`;
 
         // three bands stacked to a flat top: position, motion, heat
+        // 놓기 전에는 빈 축만, 내려오는 동안에는 지나온 거리까지만 띠를 그린다.
+        const reach = !started ? 0 : finished ? a.slope : Math.min(a.slope, s ? s.d : 0);
+        if (!started || (!finished && a.stuck)) { window.scienceScene.render(graphGroup, out); return; }
         const N = 60;
         const peTop = [], keTop = [];
         for (let i = 0; i <= N; i += 1) {
-            const d = (a.slope * i) / N, e = at(d, a);
+            const d = (Math.max(reach, a.slope * 0.002) * i) / N, e = at(d, a);
             peTop.push([gx(d), gy(e.pe)]);
             keTop.push([gx(d), gy(e.pe + e.ke)]);
         }
@@ -149,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<path class="band-pe" d="${area(peTop, gy(0))}"/>`;
         out += `<path class="band-edge" d="M${keTop.map(p => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join('L')}"/>`;
         out += `<path class="band-edge" d="M${peTop.map(p => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join('L')}"/>`;
-        out += `<line class="total-line" x1="${GRAPH.x0}" y1="${gy(a.total).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(a.total).toFixed(1)}"/>`;
-        out += `<text class="total-text" x="${GRAPH.x0 + 6}" y="${(gy(a.total) - 5).toFixed(1)}">전체 ${a.total.toFixed(1)} J — 어디에서나 같습니다</text>`;
+        out += `<line class="total-line" x1="${GRAPH.x0}" y1="${gy(a.total).toFixed(1)}" x2="${gx(reach).toFixed(1)}" y2="${gy(a.total).toFixed(1)}"/>`;
+        out += `<text class="total-text" x="${GRAPH.x0 + 6}" y="${(gy(a.total) - 5).toFixed(1)}">전체 ${a.total.toFixed(1)} J</text>`;
         if (s && s.d > 0.001) out += `<line class="now-line" x1="${gx(s.d).toFixed(1)}" y1="${GRAPH.y1}" x2="${gx(s.d).toFixed(1)}" y2="${GRAPH.y0}"/>`;
         [['위치', '#0284c7'], ['운동', '#059669'], ['열', '#ff7d6b']].forEach(([n, c], i) => {
             out += `<rect x="${GRAPH.x0 + 150 + i * 74}" y="14" width="9" height="9" rx="2" fill="${c}"/>`;
@@ -167,8 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
         heightOutput.textContent = `${a.h.toFixed(1)} m`;
         angleOutput.textContent = `${a.deg}°`;
         frictionOutput.textContent = a.mu.toFixed(2);
-        stageBadge.textContent = a.stuck ? '미끄러지지 않음' : `바닥 ${a.speed.toFixed(2)} m/s · 열 ${(a.lostFrac * 100).toFixed(0)}%`;
-        window.scienceScene.render(dataNote,a.stuck
+        stageBadge.textContent = !finished ? `h ${a.h} m · θ ${a.deg}° · μ ${a.mu.toFixed(2)}` : a.stuck ? '미끄러지지 않음' : `바닥 ${a.speed.toFixed(2)} m/s · 열 ${(a.lostFrac * 100).toFixed(0)}%`;
+        window.scienceScene.render(dataNote,!finished ? '' : a.stuck
             ? `<div class="data-row"><span class="data-name">미끄러짐 조건</span><span class="data-val">μ ${a.mu.toFixed(2)} > tan ${a.deg}° = ${a.tan.toFixed(3)} → 정지</span></div>` +
               `<div class="data-row"><span class="data-name">빗면 방향 힘</span><span class="data-val">mg sin θ = ${(MASS * G * a.sin).toFixed(2)} N < 최대 마찰력 ${(a.mu * MASS * G * a.cos).toFixed(2)} N</span></div>` +
               `<div class="data-row match"><span class="data-name">결과</span><span class="data-val">움직이지 않아 에너지가 그대로 위치 에너지로 남습니다</span></div>`
@@ -201,13 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         sim = freshSim();
-        running = true;
+        running = true; started = true; finished = false;
+        resultEmpty.hidden = false; resultContent.hidden = true;
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) { running = false; const a = analyse(); while (!step(sim, 0.05, a)); finish(); return; }
         lastStamp = performance.now();
         render();
         frameId = requestAnimationFrame(frame);
     }
 
     function finish() {
+        started = true; finished = true;
         const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
@@ -237,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function changed() {
         stopRun();
-        sim = freshSim();
+        sim = freshSim(); started = false; finished = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         render();
@@ -254,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heightRange.value = '4'; angleRange.value = '30'; frictionRange.value = '0';
         prediction = null;
         predictionButtons.forEach(item => item.classList.remove('selected'));
-        stageCaption.textContent = '세 에너지를 합한 높이는 어디에서나 똑같습니다.';
+        stageCaption.textContent = '수레를 놓고 위치·운동·열 에너지가 어떻게 나뉘는지 보세요.';
         changed();
     });
 
@@ -298,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setAngle(v) { angleRange.value = String(v); changed(); },
         setMu(v) { frictionRange.value = String(v); changed(); },
         runToEnd(dt = 1 / 120, cap = 4000) {
-            stopRun(); sim = freshSim();
+            stopRun(); sim = freshSim(); started = true; finished = false;
             let n = 0; while (!tick(dt) && n < cap) n += 1;
             finish(); return { steps: n, t: sim.t, d: sim.d };
         },
@@ -307,3 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});

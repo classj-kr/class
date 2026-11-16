@@ -166,7 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = a.at(t);
         // true proportions: the drawing is scaled from the real lengths
         const horiz = RAMP_M * Math.cos(a.th) + FLAT_M;
-        const ppm = 400 / horiz;
+        const ppm = 376 / horiz;
+        const CART_L = 36;                             // drawn cart length (px)
         const X0 = 30, GY = 176;                       // left edge, ground line
         const footX = X0 + RAMP_M * Math.cos(a.th) * ppm;
         const topY = GY - RAMP_M * Math.sin(a.th) * ppm;
@@ -174,27 +175,34 @@ document.addEventListener('DOMContentLoaded', () => {
             ? { x: X0 + s * Math.cos(a.th) * ppm, y: GY - (RAMP_M - s) * Math.sin(a.th) * ppm }
             : { x: footX + (s - RAMP_M) * ppm, y: GY });
         let out = '';
-        out += `<path class="track-fill" d="M${X0},${topY.toFixed(1)} L${footX.toFixed(1)},${GY} L${X0},${GY} Z"/>`;
-        out += `<path class="track" d="M${X0},${topY.toFixed(1)} L${footX.toFixed(1)},${GY} L${(X0 + horiz * ppm).toFixed(1)},${GY}"/>`;
-        out += `<line class="ground" x1="10" y1="${GY + 1.5}" x2="450" y2="${GY + 1.5}"/>`;
+        const endX = X0 + horiz * ppm;
+        // 책상 위: 받침대에 걸친 나무 빗면 판과 이어지는 평평한 판
+        out += `<line class="ground" x1="10" y1="${GY + 7}" x2="450" y2="${GY + 7}"/>`;
+        out += `<path class="ramp-under" d="M${X0},${topY.toFixed(1)} L${footX.toFixed(1)},${GY} L${X0},${GY} Z"/>`;
+        out += `<rect class="ramp-stand" x="${X0 - 2}" y="${(topY + 4).toFixed(1)}" width="14" height="${(GY - topY - 4).toFixed(1)}" rx="1.5"/>`;
+        const T = 6;   // board thickness
+        out += `<path class="ramp-board" d="M${X0},${topY.toFixed(1)} L${footX.toFixed(1)},${GY} L${footX.toFixed(1)},${(GY + T).toFixed(1)} L${X0},${(topY + T).toFixed(1)} Z"/>`;
+        out += `<rect class="ramp-board" x="${footX.toFixed(1)}" y="${GY}" width="${(endX - footX + 6).toFixed(1)}" height="${T}"/>`;
+        out += `<rect class="ramp-stopper" x="${(endX + 6).toFixed(1)}" y="${GY - 10}" width="5" height="${T + 10}" rx="1"/>`;
+        out += `<path class="ramp-top" d="M${X0},${topY.toFixed(1)} L${footX.toFixed(1)},${GY} L${(endX + 6).toFixed(1)},${GY}"/>`;
         // the angle at the foot of the ramp
         const arcR = 26;
         out += `<path class="angle-arc" d="M${(footX - arcR).toFixed(1)},${GY} A${arcR},${arcR} 0 0 1 ${(footX - arcR * Math.cos(a.th)).toFixed(1)},${(GY - arcR * Math.sin(a.th)).toFixed(1)}"/>`;
         out += `<text class="angle-text" x="${(footX - arcR - 4).toFixed(1)}" y="${(GY - 6).toFixed(1)}" text-anchor="end">${state.angle}°</text>`;
-        out += `<text class="small-label" x="${(footX + 8).toFixed(1)}" y="${GY + 14}">평평한 곳 ${FLAT_M} m · 마찰 없음</text>`;
-        out += `<text class="small-label" x="${X0 + 46}" y="${GY - 4}">빗면 ${RAMP_M} m</text>`;
+        out += `<text class="small-label" x="${(footX + 8).toFixed(1)}" y="${GY + 24}">평평한 곳 ${FLAT_M} m · 마찰 없음</text>`;
+        out += `<text class="small-label" x="${X0 + 18}" y="${GY + 24}">빗면 ${RAMP_M} m</text>`;
 
         // flashes so far, with the gap between neighbours written underneath
-        const seen = a.flashes.filter(f => f.t <= t + 1e-9);
+        // 점은 빗면 판 위(수레 뒤끝이 있던 자리)에 찍히고, 간격 길이는 판 아래에 적는다
+        const seen = t > 0 ? a.flashes.filter(f => f.t <= t + 1e-9) : [];
         seen.forEach((f, i) => {
             const q = pos(f.s);
-            out += `<circle class="flash-dot" cx="${q.x.toFixed(1)}" cy="${(q.y - 6).toFixed(1)}" r="3.2"/>`;
-            // a gap gets its length written only when there is room for the label
+            out += `<circle class="flash-dot" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="3.4"/>`;
             if (i > 0 && f.onRamp && (f.s - seen[i - 1].s) * ppm >= 30) {
                 const prev = seen[i - 1];
                 const gap = f.s - prev.s;
                 const mid = pos((f.s + prev.s) / 2);
-                out += `<text class="flash-text" x="${(mid.x + 4).toFixed(1)}" y="${(mid.y - 14).toFixed(1)}" text-anchor="middle">${(gap * 100).toFixed(0)} cm</text>`;
+                out += `<text class="flash-text" x="${(mid.x + 6).toFixed(1)}" y="${(mid.y - 34).toFixed(1)}" text-anchor="middle">${(gap * 100).toFixed(0)} cm</text>`;
             }
         });
         // gaps on the level
@@ -202,21 +210,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (level.length >= 2) {
             const gap = level[1].s - level[0].s;
             const q1 = pos(level[0].s), q2 = pos(level[1].s);
-            out += `<line class="gap-line" x1="${q1.x.toFixed(1)}" y1="${GY - 20}" x2="${q2.x.toFixed(1)}" y2="${GY - 20}"/>`;
-            out += `<text class="gap-text" x="${((q1.x + q2.x) / 2).toFixed(1)}" y="${GY - 24}" text-anchor="middle">${(gap * 100).toFixed(0)} cm 씩 같음</text>`;
+            out += `<line class="gap-line" x1="${q1.x.toFixed(1)}" y1="${GY - 34}" x2="${q2.x.toFixed(1)}" y2="${GY - 34}"/>`;
+            out += `<text class="gap-text" x="${((q1.x + q2.x) / 2).toFixed(1)}" y="${GY - 40}" text-anchor="middle">${(gap * 100).toFixed(0)} cm 씩 같음</text>`;
         }
 
         // the cart
         const c = pos(now.s);
         const ang = now.onRamp ? state.angle : 0;
+        // 뒤끝이 기록 위치에 오도록, 판 위에 바퀴를 붙여 그린다(바퀴 아래 = 판 윗면)
         out += `<g transform="translate(${c.x.toFixed(1)} ${c.y.toFixed(1)}) rotate(${ang})">` +
-            window.scienceScene.art.cart(-11,-13,22,9,'#bc713a',c.x*5)+'</g>';
+            window.scienceScene.art.cart(0, -21, CART_L, 13, '#bc713a', (now.s * ppm / 5) * 57.3) + '</g>';
 
         // readouts
         out += `<text class="part-label" x="300" y="40">시간</text><text class="read-text" x="300" y="58">${t.toFixed(2)} 초</text>`;
         out += `<text class="part-label" x="300" y="84">속력</text><text class="read-text" x="300" y="102">${now.v.toFixed(2)} m/s</text>`;
-        out += `<text class="note-text" x="380" y="102">${now.onRamp ? '속력 늘어남' : '속력 그대로'}</text>`;
-        out += `<text class="verdict-text" fill="#0284c7" x="20" y="28">${state.angle}° 빗면 · ${state.flash}초마다 찍음 → ${now.onRamp ? '속력이 증가하는 운동' : '등속 운동'}</text>`;
+        if (t > 0) out += `<text class="note-text" x="380" y="102">${now.onRamp ? '속력 늘어남' : '속력 그대로'}</text>`;
+        out += `<text class="part-label" x="20" y="28">${state.angle}° 빗면 · ${state.flash}초마다 찍음</text>`;
+        if (t > 0) out += `<text class="verdict-text" fill="#0284c7" x="20" y="48">${now.onRamp ? '속력이 증가하는 운동' : '등속 운동'}</text>`;
         return out;
     }
 
@@ -235,8 +245,11 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="${px(2.2).toFixed(1)}" y="${(py(a.h0) - 4).toFixed(1)}">놓은 높이 ${a.h0.toFixed(1)} m</text>`;
         out += `<text class="small-label" x="${px(3).toFixed(1)}" y="${(py(HILL2) - 6).toFixed(1)}" text-anchor="middle">언덕 ${HILL2} m</text>`;
         // the ball
-        out += `<circle class="ball" cx="${px(q.x).toFixed(1)}" cy="${(py(q.y) - 6).toFixed(1)}" r="6"/>`;
-        out += `<text class="note-text" x="${px(q.x).toFixed(1)}" y="${(py(q.y) - 16).toFixed(1)}" text-anchor="middle">${q.v.toFixed(1)} m/s</text>`;
+        // 공은 길의 기울기에 수직인 방향으로 반지름만큼 떨어뜨려 길 위에 얹는다
+        const k = trackSlope(q.x) * ppmY / ppm, nk = Math.hypot(1, k);
+        const bx = px(q.x) - 6 * k / nk, by = py(q.y) - 6 / nk;
+        out += `<circle class="ball" cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="6"/>`;
+        out += `<text class="note-text" x="${bx.toFixed(1)}" y="${(by - 12).toFixed(1)}" text-anchor="middle">${q.v.toFixed(1)} m/s</text>`;
 
         // energy bars at the right
         const BX = 336, BW = 24, BH = 120, BY = 46;
@@ -259,7 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="${BX + 52}" y="${BY + BH + 28}" text-anchor="middle">에너지 (J)</text>`;
 
         const VERD = { pass: '언덕을 넘어간다', stop: '꼭대기에서 멈춘다', back: '되돌아온다' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="28">${a.h0.toFixed(1)} m에서 놓은 ${a.m} kg 공 → ${VERD[a.verdict]}</text>`;
+        out += `<text class="part-label" x="20" y="28">${a.h0.toFixed(1)} m에서 놓은 ${a.m} kg 공</text>`;
+        if (p >= 1) out += `<text class="verdict-text" fill="#d97706" x="20" y="48">${VERD[a.verdict]}</text>`;
         out += `<text class="part-label" x="20" y="208">시간 ${q.t.toFixed(2)} 초 · 높이 ${q.y.toFixed(2)} m · 속력 ${q.v.toFixed(2)} m/s</text>`;
         return out;
     }
@@ -280,7 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x1}" y2="${GRAPH.y0}"/>`;
         out += `<line class="axis" x1="${GRAPH.x0}" y1="${GRAPH.y0}" x2="${GRAPH.x0}" y2="${GRAPH.y1}"/>`;
-        out += `<text class="axis-title" x="${((GRAPH.x0 + GRAPH.x1) / 2).toFixed(1)}" y="${GRAPH.y0 + 30}" text-anchor="middle">${xTitle}</text>`;
+        // 가로축 이름은 축 오른쪽 끝 위에 둔다(아래로 내리면 그림 밖 글로 빠져나간다)
+        out += `<text class="axis-title" x="${GRAPH.x1}" y="${GRAPH.y0 - 8}" text-anchor="end">${xTitle}</text>`;
         out += `<text class="axis-title" x="${GRAPH.x0 + 4}" y="${GRAPH.y1 - 8}">${yTitle}</text>`;
         return out;
     }
@@ -296,7 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
             [0, 1, 2, 3, 4, 5].map(v => [v, gy(v)]),
             '시간 (초)', '속력 (m/s)');
         const path = [`${gx(0)},${gy(0)}`, `${gx(a.tRamp).toFixed(1)},${gy(a.vEnd).toFixed(1)}`, `${gx(a.total).toFixed(1)},${gy(a.vEnd).toFixed(1)}`];
-        out += `<path class="trace-done" d="M${path.join('L')}"/>`;
+        // 미리보기 선은 그리지 않는다(실행하며 그려지는 선만)
+        void path;
         if (t > 0) {
             const live = [`${gx(0)},${gy(0)}`];
             if (t >= a.tRamp) live.push(`${gx(a.tRamp).toFixed(1)},${gy(a.vEnd).toFixed(1)}`);
@@ -307,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
         a.flashes.filter(f => f.t <= t + 1e-9).forEach(f => {
             out += `<circle class="flash-dot" cx="${gx(f.t).toFixed(1)}" cy="${gy(f.v).toFixed(1)}" r="2.6"/>`;
         });
-        out += `<text class="note-text" x="${gx((a.tRamp + a.total) / 2).toFixed(1)}" y="${(gy(a.vEnd) - 10).toFixed(1)}" text-anchor="middle">${a.vEnd.toFixed(2)} m/s 그대로</text>`;
+        if (t >= a.tRamp) out += `<text class="note-text" x="${gx((a.tRamp + a.total) / 2).toFixed(1)}" y="${(gy(a.vEnd) - 10).toFixed(1)}" text-anchor="middle">${a.vEnd.toFixed(2)} m/s 그대로</text>`;
         return out;
     }
 
@@ -364,9 +380,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ? `${state.angle}° · ${state.flash}초 간격`
             : `${a.h0.toFixed(1)} m · ${a.m} kg`;
         methodHint.textContent = state.mode === 'incline'
-            ? '빗면에서는 속력이 일정하게 늘고, 평평한 곳에서는 속력이 그대로입니다'
-            : '위치 에너지와 운동 에너지의 합은 어디서나 같습니다';
-        window.scienceScene.render(dataNote,noteFor(a));
+            ? '마찰이 없는 빗면과 평평한 곳에서 수레를 굴리며 일정한 시간마다 위치를 찍습니다'
+            : '마찰이 없는 언덕 길에서 공을 놓아 굴립니다';
+        window.scienceScene.render(dataNote, state.progress >= 1 ? noteFor(a) : '');
         return a;
     }
 
@@ -388,6 +404,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startRun() {
         stopRun();
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+            state.progress = 1; render(); finish(); return;
+        }
         state.progress = 0;
         running = true;
         lastStamp = performance.now();

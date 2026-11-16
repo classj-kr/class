@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (t > 0 && (lost || gained)) out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="160">전자 ${Math.abs(a.change)}개 ${lost ? '잃음' : '얻음'}</text>`;
         else if (p >= 0.5) out += `<text class="trait-text" style="fill:#d97706" x="${IX}" y="160">${el.why === 'noble' ? '이미 가득 참' : '전자를 함께 씀'}</text>`;
         // the table
-        const TX = 296, TY = 40, CW = 19, CH = 17;
+        const TX = 289, TY = 40, CW = 21, CH = 19;
         GROUPS.forEach((g, c) => { out += `<text class="cell-head" x="${TX + c * CW + CW / 2}" y="${TY - 4}" text-anchor="middle">${g}</text>`; });
         ELEMENTS.forEach(e => {
             const c = GROUPS.indexOf(String(e.group)), r = e.period - 1;
@@ -485,14 +485,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">원소</span><span class="data-val">${el.name} ${el.sym} · 원자 번호 ${el.z} · 전자 ${el.z}개 · ${el.kind}${el.sym === 'Na' ? ' · 소듐이라고도 함' : el.sym === 'K' ? ' · 포타슘이라고도 함' : ''}</span></div>` +
                 `<div class="data-row"><span class="data-name">전자 배치</span><span class="data-val">안쪽부터 ${el.shells.join(' · ')} — 바깥 전자 ${a.v}개</span></div>` +
                 `<div class="data-row"><span class="data-name">같은 족</span><span class="data-val">${sib} — ${el.group === 18 ? '헬륨 2개, 네온·아르곤 8개로 바깥 껍질이 가득 참' : `모두 바깥 전자 ${a.v}개`}</span></div>` +
-                `<div class="data-row match"><span class="data-name">되는 이온</span><span class="data-val">${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${a.change < 0 ? '잃음' : '얻음'}, ${el.ion.noble}과 같은 배치)` : el.why === 'noble' ? '없음 — 이미 가득 참' : el.why === 'h' ? '주로 공유 결합 (산에서는 H⁺)' : '없음 — 전자를 함께 쓰는 공유 결합'}</span></div>` +
+                // 되는 이온은 예상 문제의 답이므로 전자 배치를 끝까지 본 뒤에만 적는다.
+                (state.progress < 1 ? `<div class="data-row"><span class="data-name">되는 이온</span><span class="data-val">${running ? '살펴보는 중…' : '전자 배치 보기를 누르면 적힙니다'}</span></div>` :
+                `<div class="data-row match"><span class="data-name">되는 이온</span><span class="data-val">${el.ion ? `${el.ion.sym} (전자 ${Math.abs(a.change)}개 ${a.change < 0 ? '잃음' : '얻음'}, ${el.ion.noble}과 같은 배치)` : el.why === 'noble' ? '없음 — 이미 가득 참' : el.why === 'h' ? '주로 공유 결합 (산에서는 H⁺)' : '없음 — 전자를 함께 쓰는 공유 결합'}</span></div>`) +
                 `<div class="data-row"><span class="data-name">그림의 움직임</span><span class="data-val">전자 배치 설명용 모형입니다. 원과 회전 속도는 실제 전자의 궤적·속도를 나타내지 않습니다.</span></div>`;
         }
         const { p, A, B } = a;
         return `<div class="data-row"><span class="data-name">만나는 원자</span><span class="data-val">${A.name}(${A.sym}, 바깥 전자 ${valence(A)}개)${p.a === p.b ? ' 둘' : ` + ${B.name}(${B.sym}, 바깥 전자 ${valence(B)}개)`}</span></div>` +
             `<div class="data-row"><span class="data-name">결합</span><span class="data-val">${p.bond === 'ionic' ? `이온 결합 — ${A.name} ${a.na}개가 전자 ${valence(A) * a.na}개를 ${B.name} ${a.nb}개에 넘김` : `공유 결합 — 전자 ${p.bonds.reduce((s, b) => s + b.pairs, 0)}쌍을 함께 씀`}</span></div>` +
             `<div class="data-row"><span class="data-name">${p.formula}</span><span class="data-val">${p.name} · 상온에서 ${p.state} · ${p.sublimes ? '승화점' : '녹는점'} ${meltText(p)}</span></div>` +
-            `<div class="data-row match"><span class="data-name">전기</span><span class="data-val">${p.bond === 'ionic' ? `고체 ✗ · 녹인 액체 ✓${p.aq === 'yes' ? ' · 수용액 ✓' : p.aq === 'insoluble' ? ' · 물에 거의 안 녹음' : ' · 물과 만나면 반응함'}` : '이온이 없어 흐르지 않음'}</span></div>`;
+            (state.progress < 1 ? `<div class="data-row"><span class="data-name">전기</span><span class="data-val">${running ? '살펴보는 중…' : '실행하면 적힙니다'}</span></div>` : `<div class="data-row match"><span class="data-name">전기</span><span class="data-val">${p.bond === 'ionic' ? `고체 ✗ · 녹인 액체 ✓${p.aq === 'yes' ? ' · 수용액 ✓' : p.aq === 'insoluble' ? ' · 물에 거의 안 녹음' : ' · 물과 만나면 반응함'}` : '이온이 없어 흐르지 않음'}</span></div>`);
     }
 
     function render() {

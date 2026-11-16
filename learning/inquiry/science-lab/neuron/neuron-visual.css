@@ -60,11 +60,11 @@
 .stage-views { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 6px 0 2px; }
 .main-svg, .graph-svg { width: 100%; max-width: 560px; margin: 0 auto; height: auto; display: block; }
 
-.small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
+.small-label { fill: #475569; font-size: 14.5px; font-weight: 800; }
 .note-text { fill: #475569; font-size: 14px; font-weight: 800; }
 .verdict-text { font-size: 14px; font-weight: 900; }
-.gen-text { fill: #0f172a; font-size: 13px; font-weight: 900; }
-.trait-text { fill: #334155; font-size: 14px; font-weight: 800; }
+.gen-text { fill: #0f172a; font-size: 16px; font-weight: 900; }
+.trait-text { fill: #334155; font-size: 15px; font-weight: 800; }
 .big-text { font-size: 18px; font-weight: 900; }
 
 .axis { stroke: #334155; stroke-width: 1.8; stroke-width: 1.6; }
@@ -85,8 +85,8 @@
 .channel.na { fill: #0284c7; }
 .channel.k { fill: #ffb347; }
 .ion { stroke: rgba(0, 0, 0, .45); stroke-width: .6; }
-.ion.na { fill: #0284c7; }
-.ion.k { fill: #ffb347; }
+.ion.na { fill: #5fb0e0; }
+.ion.k { fill: #f2b65c; }
 .ion-text { font-size: 13.5px; font-weight: 900; fill: #0a1c24; }
 .electrode { stroke: #ff7a59; stroke-width: 2.4; }
 .meter { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.1; }

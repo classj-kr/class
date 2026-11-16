@@ -192,8 +192,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const s = Math.min(150 / (a.h + a.rise + 1), 320 / (a.range + 2));
         const X = m => LX + m * s, Y = m => GY - m * s;
         let out = `<rect class="ground" x="16" y="${GY}" width="428" height="12" rx="2"/>`;
-        out += `<rect class="cliff" x="30" y="${Y(a.h).toFixed(1)}" width="16" height="${(a.h * s).toFixed(1)}" rx="2"/>`;
-        out += `<text class="trait-text" x="27" y="${(Y(a.h) + 3).toFixed(1)}" text-anchor="end">${a.h} m</text>`;
+        // 층이 보이는 건물: 한 층을 약 3.3 m로 보고 창문 줄을 그린다.
+        const bx = 22, bw = LX - 2 - bx, top = Y(a.h), floors = Math.max(1, Math.round(a.h / 3.33)), fh = (GY - top) / floors;
+        out += `<rect class="building" x="${bx}" y="${top.toFixed(1)}" width="${bw}" height="${(GY - top).toFixed(1)}"/>`;
+        out += `<rect class="roof" x="${bx - 1.5}" y="${(top - 2.5).toFixed(1)}" width="${bw + 3}" height="3"/>`;
+        for (let f = 0; f < floors; f += 1) {
+            const fy = top + f * fh;
+            if (f) out += `<line class="floor-line" x1="${bx}" y1="${fy.toFixed(1)}" x2="${bx + bw}" y2="${fy.toFixed(1)}"/>`;
+            const wh = Math.max(1.6, Math.min(fh * .45, 7));
+            for (const wx of [bx + 4, bx + bw / 2 + 1.5]) out += `<rect class="window" x="${wx.toFixed(1)}" y="${(fy + fh * .28).toFixed(1)}" width="${(bw / 2 - 5.5).toFixed(1)}" height="${wh.toFixed(1)}"/>`;
+        }
+        out += `<text class="trait-text height-label" x="${(bx + bw / 2).toFixed(1)}" y="${(top - 8).toFixed(1)}" text-anchor="middle">${a.h} m</text>`;
         // trails every tenth of a second
         for (let k = 1; k * 0.1 <= Math.min(t, a.tA); k += 1) { const p = posA(a, k * 0.1); out += `<circle class="trail-a" cx="${X(p.x).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="1.8"/>`; }
         for (let k = 1; k * 0.1 <= Math.min(t, a.tB); k += 1) { const p = posB(a, k * 0.1); out += `<circle class="trail-b" cx="${X(p.x).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="1.8"/>`; }
@@ -207,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (t >= a.tB) out += `<line class="mark" x1="${(X(a.range) - 4).toFixed(1)}" y1="${GY - 4}" x2="${(X(a.range) + 4).toFixed(1)}" y2="${GY + 4}"/><line class="mark" x1="${(X(a.range) - 4).toFixed(1)}" y1="${GY + 4}" x2="${(X(a.range) + 4).toFixed(1)}" y2="${GY - 4}"/>`;
         // readouts
         out += `<text class="gen-text" x="450" y="44" text-anchor="end">t = ${Math.min(t, dur).toFixed(2)} s</text>`;
-        out += `<text class="trait-text" x="450" y="60" text-anchor="end">놓은 공 높이 ${pa.y.toFixed(1)} m${t >= a.tA ? ` · ${a.tA.toFixed(2)} s에 닿음` : ''}</text>`;
+        out += `<text class="trait-text" style="fill:#1d4ed8" x="450" y="60" text-anchor="end">놓은 공 높이 ${pa.y.toFixed(1)} m${t >= a.tA ? ` · ${a.tA.toFixed(2)} s에 닿음` : ''}</text>`;
         out += `<text class="trait-text" style="fill:#d97706" x="450" y="76" text-anchor="end">던진 공 높이 ${pb.y.toFixed(1)} m${t >= a.tB ? ` · ${a.tB.toFixed(2)} s에 닿음` : ''}</text>`;
         out += `<text class="trait-text" style="fill:#d97706" x="450" y="92" text-anchor="end">던진 공 옆으로 ${pb.x.toFixed(1)} m</text>`;
         // scale bar
@@ -225,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const X0 = 50, X1 = 430, Y0 = 150, Y1 = 40;
         const tMax = Math.ceil((a.T + 0.2) * 2) / 2, hMax = Math.ceil((a.h + a.rise) / 5) * 5;
         const xOf = tt => X0 + tt / tMax * (X1 - X0), yOf = hh => Y0 - hh / hMax * (Y0 - Y1);
-        let out = `<text class="axis-title" x="${X0}" y="18">높이–시간 — 흰 선: 놓은 공, 노란 점선: 던진 공</text>`;
+        let out = `<text class="axis-title" x="${X0}" y="18">높이–시간 — 파란 선: 놓은 공, 주황 점선: 던진 공</text>`;
         const hStep = hMax > 30 ? 10 : 5;
         for (let hh = 0; hh <= hMax; hh += hStep) { out += `<line class="grid-line" x1="${X0}" y1="${yOf(hh).toFixed(1)}" x2="${X1}" y2="${yOf(hh).toFixed(1)}"/><text class="axis-text" x="${X0 - 6}" y="${(yOf(hh) + 3.5).toFixed(1)}" text-anchor="end">${hh}</text>`; }
         const tStep = tMax > 3 ? 1 : 0.5;
@@ -233,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         out += `<text class="axis-text" x="${X0 + 4}" y="${Y1 - 6}">높이 (m)</text>`;
         const curve = (fn, tEnd) => { let d = ''; for (let tt = 0; tt <= Math.min(t, tEnd) + 1e-9; tt += 0.02) d += `${d ? 'L' : 'M'}${xOf(tt).toFixed(1)},${yOf(fn(tt)).toFixed(1)} `; if (t >= tEnd) d += `L${xOf(tEnd).toFixed(1)},${yOf(0).toFixed(1)}`; return d; };
-        out += `<path class="trace" style="stroke:#eef5f8" d="${curve(tt => posA(a, tt).y, a.tA)}"/>`;
+        out += `<path class="trace" style="stroke:#1d4ed8" d="${curve(tt => posA(a, tt).y, a.tA)}"/>`;
         out += `<path class="trace dashed" style="stroke:#d97706" d="${curve(tt => posB(a, tt).y, a.tB)}"/>`;
         const landing = (tt, txt, color, first) => {
             const x = xOf(tt);
@@ -241,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const room = x + 70 <= X1;
             return `<text class="axis-text" style="fill:${color}" x="${(room ? x + 4 : x - 4).toFixed(1)}" y="${room ? Y0 - 6 : Y0 - 18}" text-anchor="${room ? 'start' : 'end'}">${txt}</text>`;
         };
-        if (t >= a.tA) out += landing(a.tA, `${a.verdict === 'same' ? '둘 다 ' : '놓은 공 '}${a.tA.toFixed(2)} s`, '#eef5f8', a.tA <= a.tB);
+        if (t >= a.tA) out += landing(a.tA, `${a.verdict === 'same' ? '둘 다 ' : '놓은 공 '}${a.tA.toFixed(2)} s`, '#1d4ed8', a.tA <= a.tB);
         if (t >= a.tB && a.verdict !== 'same') out += landing(a.tB, `던진 공 ${a.tB.toFixed(2)} s`, '#d97706', a.tB < a.tA);
         out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">시간 (s) — 세로 운동만 견줍니다</text>`;
         return out;
@@ -362,6 +371,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function noteFor(a) {
+        // 결과 표는 실제로 떨어뜨린 뒤에만 채운다(예상 전에 답이 보이지 않게).
+        if (state.progress < 1) {
+            const cond = a.kind === 'drop' ? `높이 ${a.h} m · ${AIMS[state.aim].label} ${a.v} m/s · 공기 저항 없음`
+                : a.kind === 'orbit' ? `높이 ${ALT / 1000} km 산꼭대기 · 옆으로 ${LAUNCH[state.launch].label} · 공기 없음`
+                    : `달걀 ${EGG_M * 1000} g · ${a.h} m · ${FLOORS[state.floor].label}`;
+            return `<div class="data-row"><span class="data-name">조건</span><span class="data-val">${cond}</span></div>` +
+                `<div class="data-row"><span class="data-name">결과</span><span class="data-val">${running ? '재는 중…' : '실행하면 여기에 적힙니다'}</span></div>`;
+        }
         if (a.kind === 'drop') {
             return `<div class="data-row"><span class="data-name">조건</span><span class="data-val">높이 ${a.h} m · ${AIMS[state.aim].label} ${a.v} m/s (옆 ${fmt1(a.vx)} m/s, 세로 ${fmt1(a.vy0)} m/s) · 공기 저항 없음</span></div>` +
                 `<div class="data-row"><span class="data-name">놓은 공</span><span class="data-val">${a.tA.toFixed(2)} s 뒤 닿음 · 닿는 속력 ${fmt1(Math.sqrt(2 * G * a.h))} m/s</span></div>` +
@@ -479,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'drop' ? '동시에 놓기' : state.mode === 'orbit' ? '대포 쏘기' : '떨어뜨리기';
-        stageCaption.textContent = state.mode === 'drop' ? '흰 공은 가만히 놓고, 노란 공은 같은 순간에 던집니다. 0.1초마다 자리를 점으로 남깁니다 (느리게 재생).'
+        stageCaption.textContent = state.mode === 'drop' ? '파란 공은 가만히 놓고, 주황 공은 같은 순간에 던집니다. 0.1초마다 자리를 점으로 남깁니다 (느리게 재생).'
             : state.mode === 'orbit' ? '공기가 없는 400 km 높이의 산꼭대기에서 옆으로 던집니다. 지구 중력을 1초마다 계산해 길을 그립니다.'
                 : '달걀 60 g을 떨어뜨립니다. 바닥이 들어가는 깊이만큼의 거리에서 일정하게 느려져 멈춘다고 봅니다.';
         settingsChanged();

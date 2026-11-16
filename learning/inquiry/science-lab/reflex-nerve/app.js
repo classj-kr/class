@@ -20,29 +20,49 @@ document.addEventListener('DOMContentLoaded',()=>{
    <path class="rf-signal-track rf-output" id="rfOut" d="M395,308 C329,328 248,314 235,247"/>
    <circle id="rfPulse" r="6" fill="#216e8b" hidden/>
   `:`
+   <clipPath id="rfHeadClip"><path d="M151,64 C147,26 205,14 220,52 Q223,63 226,73 L238,87 Q236,92 228,93 Q230,98 226,101 Q229,106 224,110 Q206,124 180,110 Q155,100 151,64Z"/></clipPath>
    <ellipse cx="273" cy="403" rx="177" ry="12" fill="#dae5e9"/>
    <path d="M137,197 V272 H276 M149,273 V391 M261,274 L272,391" fill="none" stroke="#6d8791" stroke-width="12" stroke-linecap="round"/>
    <path d="M175,109 C154,126 157,164 151,192 L146,245 Q192,266 222,248 L210,158 Q207,119 190,108Z" fill="url(#rfShirt)" stroke="#708f9c" stroke-width="2"/>
    <path d="M171,103 L173,123 Q186,137 194,118 L190,99" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="1.5"/>
-   <path d="M150,61 C148,23 209,15 219,57 L224,77 L239,87 L225,94 L225,105 Q206,126 174,104 Q153,95 150,61Z" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="2"/>
-   <path d="M153,65 Q147,29 181,25 Q213,20 220,57 L208,54 Q202,37 178,43 L164,71Z" fill="#52646d"/>
-   <circle cx="219" cy="76" r="3" fill="#293d49"/><path d="M211,71 L225,71" stroke="#4d5960" stroke-width="2"/>
+   <path d="M151,64 C147,26 205,14 220,52 Q223,63 226,73 L238,87 Q236,92 228,93 Q230,98 226,101 Q229,106 224,110 Q206,124 180,110 Q155,100 151,64Z" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="2"/>
+   <path d="M150,68 Q143,26 184,21 Q218,19 223,54 Q212,42 196,42 Q178,43 172,60 Q168,72 160,76 Q153,74 150,68Z" fill="#5b4a42"/>
+   <ellipse cx="174" cy="77" rx="6" ry="9" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="1.5"/>
+   <path d="M205,60 Q212,56 220,59" fill="none" stroke="#4b3c34" stroke-width="2.2" stroke-linecap="round"/>
+   <path d="M206,68 Q212,63 219,68 Q212,72 206,68Z" fill="#fff" stroke="#6b5a50" stroke-width="1.2"/><circle cx="213.5" cy="67.8" r="2.6" fill="#4a6b78"/><circle cx="213.8" cy="67.8" r="1.2" fill="#18262e"/>
+   <path d="M221,103 Q225,104 228,101" fill="none" stroke="#a46e60" stroke-width="1.6" stroke-linecap="round"/>
+   ${selected==='leg'?'<path d="M150,59 Q188,52 226,59 L227,73 Q188,67 151,74Z" fill="#47606f"/><path d="M152,64 L139,71 M152,69 L141,81" stroke="#47606f" stroke-width="4" stroke-linecap="round"/>':''}
    <path d="M155,240 Q179,263 211,267 L305,284 Q333,276 323,252 L217,229Z" fill="#6d859b" stroke="#485e72" stroke-width="2"/>
    <g id="rfLowerLeg"><path d="M300,267 Q326,261 330,283 L327,372 Q342,379 362,377 Q372,382 365,393 L310,393 Q298,390 303,373 L289,296Z" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="2"/><path d="M305,371 L327,369 Q336,380 361,377 L366,391 Q339,400 306,391Z" fill="#f9fcfe" stroke="#667e8c" stroke-width="2"/></g>
    <path d="M190,136 Q199,130 210,145 L239,195 L222,207 L184,157Z" fill="url(#rfShirt)" stroke="#708f9c" stroke-width="2"/>
    <g id="rfForearm"><path d="M231,197 L278,221 Q294,215 300,228 Q301,239 286,242 L223,215Z" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="2"/></g>
    ${selected==='conscious'?'<path id="rfMuscle" d="M196,149 Q216,153 228,192 Q209,189 196,149Z" fill="#c97578" stroke="#923f50" stroke-width="2"/>':'<path id="rfMuscle" d="M209,244 Q264,230 303,259 Q267,277 211,258Z" fill="#c97578" stroke="#923f50" stroke-width="2"/>'}
-   <path d="M309,258 Q317,267 309,288" fill="none" stroke="#ede8d3" stroke-width="7"/>
-   <g id="rfHammer"><path d="M387,300 L342,287" stroke="#917359" stroke-width="9" stroke-linecap="round"/><path d="M334,273 L348,275 L345,299 L331,296Z" fill="#475f6b"/></g>
-   <g transform="translate(166 58)"><path class="rf-brain" d="M0,0 C-9,-18 15,-30 25,-17 C43,-17 47,5 32,12 C20,22 0,16 0,0Z"/><path class="rf-brain-fold" d="M2,-5 Q13,-17 20,-3 T33,-2 M9,8 Q15,0 23,7"/></g>
-   <path d="M182,77 Q164,103 173,148 L167,229" fill="none" stroke="#b09eb6" stroke-width="12" stroke-linecap="round"/>
-   <path id="rfIn" class="rf-signal-track" d="${selected==='conscious'?'M218,76 Q199,72 188,63':`M264,247 C238,220 191,219 163,225 ${selected==='leg'?'L159,145 Q155,92 184,62':''}`}"/>
-   <path id="rfOut" class="rf-signal-track rf-output" d="${selected==='conscious'?'M188,63 Q173,105 179,145 Q210,158 228,198':selected==='leg'?'M188,63 Q174,97 179,145 L177,230 Q211,252 264,253':'M168,229 Q211,252 264,253'}"/>
-   <circle id="rfCentre" cx="${selected==='knee'?167:188}" cy="${selected==='knee'?227:63}" r="9" fill="#967499"/>
+   <path d="M311,259 Q319,268 312,286" fill="none" stroke="#ede8d3" stroke-width="7" stroke-linecap="round"/>
+   <path d="M182,86 Q180,100 179,114 Q168,136 165,172 L162,236" fill="none" stroke="#e1d6ea" stroke-width="13" stroke-linecap="round" opacity=".6"/>
+   <path d="M182,86 Q180,100 179,114 Q168,136 165,172 L162,236" fill="none" stroke="#8f74ad" stroke-width="5" stroke-linecap="round" opacity=".62"/>
+   <g clip-path="url(#rfHeadClip)" opacity=".82"><path class="rf-brain" d="M158,60 C152,42 166,29 183,31 C197,25 214,34 213,50 C218,60 207,68 196,65 C186,71 166,70 158,60Z"/><path class="rf-brain-fold" d="M166,50 Q175,40 184,49 T202,46 M175,60 Q184,54 193,60 M190,36 Q196,42 205,38"/><path d="M186,64 Q184,76 182,90" fill="none" stroke="#b39cc4" stroke-width="6" stroke-linecap="round"/></g>
+   <path id="rfIn" class="rf-signal-track" d="${selected==='conscious'?'M210,66 Q201,58 190,52':selected==='leg'?'M305,250 C252,238 200,232 162,226 L165,172 Q168,136 179,114 Q181,98 186,62':'M290,252 C246,242 200,236 162,228'}"/>
+   <path id="rfOut" class="rf-signal-track rf-output" d="${selected==='conscious'?'M190,52 Q186,84 184,114 Q174,134 172,150 Q192,156 212,172':selected==='leg'?'M190,52 Q186,84 184,114 Q173,136 170,172 L167,234 Q210,256 286,262':'M162,232 C200,252 244,258 286,262'}"/>
+   <circle id="rfCentre" cx="${selected==='knee'?162:188}" cy="${selected==='knee'?229:51}" r="8" fill="#967499"/>
    <circle id="rfPulse" r="6" fill="#216e8b" hidden/>
-   ${selected==='conscious'?'<rect x="388" y="66" width="69" height="59" rx="12" fill="#526c79"/><circle id="rfLamp" cx="422" cy="96" r="18" fill="#a1b8ae"/>':'<path d="M211,72 L230,77" stroke="#506879" stroke-width="11"/>'}
+   <circle id="rfTap" cx="${selected==='leg'?306:332}" cy="${selected==='leg'?252:291}" r="9" fill="none" stroke="#d58a2c" stroke-width="3" opacity="0"/>
+   ${selected==='knee'?`<g id="rfExaminer"><path d="M398,240 L545,214 L545,264 L404,274Z" fill="#eef3f6" stroke="#9fb2bd" stroke-width="2"/><path d="M404,242 L408,272" stroke="#9fb2bd" stroke-width="2"/>
+   <g id="rfHammer"><path d="M382,262 L346,283" stroke="#7d8c96" stroke-width="5" stroke-linecap="round"/><rect x="-6" y="-15" width="12" height="30" rx="5" transform="translate(341 286) rotate(-29.7)" fill="#c0503c" stroke="#8c3427" stroke-width="1.5"/><path d="M384,250 Q394,242 404,248 L406,268 Q396,276 384,270 Q378,260 384,250Z" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="1.8"/><path d="M387,252 Q380,258 385,265 M392,258 L401,257 M392,264 L401,264" fill="none" stroke="#ad8773" stroke-width="1.5" stroke-linecap="round"/></g></g>`
+   :selected==='leg'?`<g transform="translate(12 6)"><path d="M334,176 L470,118 L490,160 L348,206Z" fill="#eef3f6" stroke="#9fb2bd" stroke-width="2"/>
+   <g id="rfHammer"><path d="M322,204 L297,237" stroke="#cdb48a" stroke-width="4" stroke-linecap="round"/><ellipse cx="295" cy="240" rx="5.5" ry="4.5" fill="#fbfaf5" stroke="#b9b1a0" stroke-width="1.5"/><path d="M322,186 Q334,178 344,186 L344,204 Q334,212 322,206 Q316,196 322,186Z" fill="url(#rfSkin)" stroke="#ad8773" stroke-width="1.8"/></g></g>`
+   :`<path d="M440,128 V398" stroke="#7d929c" stroke-width="7" stroke-linecap="round"/><rect x="408" y="62" width="64" height="70" rx="12" fill="#4f6976"/><circle id="rfLamp" cx="440" cy="97" r="20" fill="#a1b8ae"/>`}
   `);
-  if(selected==='conscious')$('rfIn').setAttribute('d','M218,76 Q199,72 188,63');
+ }
+ function toolPose(a){
+  const h=$('rfHammer'),tap=$('rfTap');if(!h)return;
+  const sign=selected==='leg'?1:-1,p=a.progress,ease=x=>x*x*(3-2*x);let ang=15,ring=0;
+  if(p>=0&&p<1&&!reduced()){
+   if(p<.3)ang=15+20*ease(p/.3);else if(p<.42)ang=35*(1-ease((p-.3)/.12));else if(p<.8)ang=15*ease((p-.42)/.38);
+   if(p>=.4&&p<.75)ring=1-(p-.4)/.35;
+  }else if(reduced()&&p>=0&&p<1)ring=1;
+  h.setAttribute('transform',selected==='knee'?`rotate(${sign*ang} 402 256)`:`rotate(${sign*ang} 338 186)`);
+  const ex=$('rfExaminer');if(ex){const k=reduced()?(p>=1?1:0):p<.8?0:ease(Math.min(1,(p-.8)/.8));ex.setAttribute('transform',`translate(${(80*k).toFixed(1)} 0)`);}
+  if(tap){tap.setAttribute('opacity',ring.toFixed(2));tap.setAttribute('r',String(9+8*(1-ring)));}
  }
  function render(){
   const a=snap(),d=a.path,key=selected+':'+block;
@@ -58,7 +78,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   $('rfCentreValue').textContent=a.centreReached?d.centre:'아직 도달하지 않음';$('rfMotorValue').textContent=a.motorReached?'반응 기관에 도달':a.blocked?'반응 기관에 미도달':'전달 전';
   $('rfProgress').value=String(Math.max(0,a.progress)*20);$('nextBtn').disabled=a.complete;$('rfPause').disabled=a.progress<0||a.complete;$('rfPause').textContent=running?'일시 정지':'계속 관찰';
   const t=reduced()?(a.response>0?1:0):a.response;
-  if($('rfLowerLeg')){$('rfLowerLeg').setAttribute('transform',`rotate(${-44*t} 308 273)`);$('rfForearm').setAttribute('transform',`rotate(${selected==='conscious'?-93*t:0} 231 204)`);if(selected==='conscious')$('rfLowerLeg').removeAttribute('transform');$('rfMuscle').setAttribute('transform',selected==='conscious'?'':`translate(${t*23} ${t*-12}) scale(${1-t*.085} ${1+t*.05})`);$('rfHammer').setAttribute('transform',`translate(${a.progress>=0?-15:15} ${selected==='leg'?-33:0})`);$('rfHammer').style.display=selected==='conscious'||a.progress>1?'none':'';if($('rfLamp'))$('rfLamp').setAttribute('fill',a.progress>=0?'#eac566':'#a1b8ae');}
+  if($('rfLowerLeg')){$('rfLowerLeg').setAttribute('transform',`rotate(${-44*t} 308 273)`);$('rfForearm').setAttribute('transform',`rotate(${selected==='conscious'?-93*t:0} 231 204)`);if(selected==='conscious')$('rfLowerLeg').removeAttribute('transform');$('rfMuscle').setAttribute('transform',selected==='conscious'?'':`translate(${t*23} ${t*-12}) scale(${1-t*.085} ${1+t*.05})`);toolPose(a);if($('rfLamp'))$('rfLamp').setAttribute('fill',a.progress>=0?'#eac566':'#a1b8ae');}
   if($('rfPupil')){$('rfPupil').setAttribute('r',String(43-24*t));$('rfLight').setAttribute('opacity',a.progress>=0?'.48':'.12');}
   $('rfCentre').setAttribute('fill',a.centreReached?'#845393':'#ae9fb3');
   const pulse=$('rfPulse'),travel=a.step===1?'rfIn':a.step===3?'rfOut':null;

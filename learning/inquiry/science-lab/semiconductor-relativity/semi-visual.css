@@ -86,12 +86,16 @@
 .wire { stroke: #0f172a; stroke-width: 1.6; fill: none; }
 .wire.off { stroke: rgba(220, 233, 232, .35); }
 .part { stroke: #0f172a; stroke-width: 1.6; fill: none; }
-.diode-tri { fill: #c2410c; stroke: #d97706; stroke-width: 1; }
+.diode-tri { fill: #c2410c; stroke: #7c2d12; stroke-width: 1.2; }
+.diode-bar { stroke-width: 3; }
+.plate { stroke-width: 2.4; }
+.plate.long { stroke-width: 2; }
+.sign { font-size: 15px; }
 .charge { fill: #c2410c; }
 .p-side { fill: rgba(255, 159, 138, .18); }
 .n-side { fill: rgba(82, 199, 255, .18); }
 .depl { fill: rgba(148, 163, 184, 0.22); stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; stroke-dasharray: 3 3; }
-.hole { fill: none; stroke: #dc2626; stroke-width: 1.2; }
+.hole { fill: #fff; stroke: #dc2626; stroke-width: 1.5; }
 .electron { fill: #0284c7; }
 .meter { fill: #ffffff; stroke: #475569; stroke-width: 1.8; }
 

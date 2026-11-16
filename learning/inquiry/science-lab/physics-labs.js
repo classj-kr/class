@@ -2,7 +2,7 @@
  'use strict';
  const root=document.querySelector('[data-physics]');if(!root)return;
  const slug=root.dataset.physics,M=window.sciencePhysics,$=id=>document.getElementById(id),scene=$('physicsScene'),readout=$('physicsReadout'),status=$('physicsStatus');
- let state={},running=false,elapsed=0,last=0,frame=0,audio=null,oscillator=null,gain=null,audioTimer=0,hits=[],rng=M.random(8123);
+ let state={},running=false,elapsed=0,last=0,frame=0,audio=null,oscillator=null,gain=null,audioTimer=0,hits=[],born=[],pulses=[],rng=M.random(8123);
  const defaults={
   'speaker-lab':{magnet:false,stripped:false,connected:false,playing:false,turns:30,frequency:220},
   'wireless-power':{signal:'ac',distance:1,angle:0,power:false},
@@ -147,16 +147,38 @@
   if(a.landed&&b.landed)stop();
  }
  function drawAmplifier(){
-  const r=M.amplifier(state,elapsed*5),active=state.playing,amp=state.mode==='amplified';
-  let b=rect(30,53,110,70,'#e0ebee','rx="8"')+text(85,84,'입력 신호')+text(85,108,'220 Hz',undefined,16);
-  b+=line(140,88,233,88,'#248795',3,'marker-end="url(#arrow)"');
-  if(amp)b+=rect(233,40,170,100,'#d9eee9','rx="8"')+text(318,75,'트랜지스터')+text(318,106,'증폭 회로')+rect(258,155,120,40,state.power?'#f4d27d':'#d8e0e3','rx="5"')+text(318,182,`${state.supply} V ${state.power?'ON':'OFF'}`,undefined,18)+line(318,140,318,155);
-  else b+=line(233,88,403,88,'#248795',3)+text(318,126,'직접 연결');
-  b+=line(403,88,498,88,'#248795',3,'marker-end="url(#arrow)"')+path(`M508 72H527L${567+(active?r.output*8:0)} 48V132L527 108H508Z`,'#176878',4)+text(545,162,'스피커');
-  b+=text(130,222,'입력 · 파랑',undefined,16)+text(463,222,'출력 · 주황',undefined,16);
-  [40,355].forEach(x=>{b+=rect(x,235,245,92,'#f8fbfc','stroke="#c4d5db"')+line(x,281,x+245,281,'#aac1cd',1);});
-  b+=curve(t=>active?M.amplifier(state,t*Math.PI*4+elapsed*5).input:0,40,281,245,14,'#248795')+curve(t=>active?M.amplifier(state,t*Math.PI*4+elapsed*5).output:0,355,281,245,14,'#bb6b31');
-  svg(b,'입력 신호와 증폭 회로의 전원, 스피커 및 같은 전압 눈금의 입력·출력 파형');
+  const ph=reduced?Math.PI/2:elapsed*5,r=M.amplifier(state,ph),active=state.playing,amp=state.mode==='amplified',powered=amp&&state.power,now=performance.now();
+  const coneOut=active?M.amplifier(state,reduced?Math.PI/2:elapsed*38).output:0,shift=Math.max(-12,Math.min(12,coneOut*5.5)),outAmp=active?(amp?(state.power?Math.min(state.amplitude*10,r.limit):0):state.amplitude):0;
+  const flowing=active&&!reduced,dash=flowing?`stroke-dasharray="8 7" stroke-dashoffset="${(-elapsed*40).toFixed(1)}"`:'';
+  const wire=(d,color,moving)=>path(d,'#2b3a40',6,'stroke-linecap="round" stroke-linejoin="round"')+path(d,color,4,`stroke-linecap="round" stroke-linejoin="round"`)+(moving?path(d,'#ffffff',1.6,`stroke-linecap="round" ${dash} opacity=".85"`):'');
+  let b='';
+  // signal generator
+  b+=rect(18,70,108,80,'#e4ebee','rx="8" stroke="#7d939d" stroke-width="2"')+rect(28,80,62,38,'#f7fbf8','rx="3" stroke="#93aab3"')+curve(t=>Math.sin(t*Math.PI*4+(flowing?elapsed*4:0))*.9,31,99,56,13,'#248795')+`<circle cx="106" cy="92" r="8" fill="#b7c6cc" stroke="#6c838d"/><circle cx="104" cy="132" r="4.5" fill="#c8a43b"/><circle cx="76" cy="132" r="4.5" fill="#333"/>`+label(72,170,'신호 발생기');
+  // breadboard
+  const bb=amp?1:.35;b+=`<g opacity="${bb}">`+rect(150,36,300,150,'#f4efe2','rx="7" stroke="#cfc4a8" stroke-width="2"')+line(160,48,440,48,'#d65a4a',2)+line(160,58,440,58,'#4a74c4',2)+line(160,174,440,174,'#d65a4a',2)+line(160,164,440,164,'#4a74c4',2);
+  for(let x=166;x<440;x+=14){for(const y of [52,170])b+=`<rect x="${x-2}" y="${y-2}" width="4" height="4" fill="#bdb196"/>`;for(let y=76;y<=146;y+=14)b+=`<rect x="${x-2}" y="${y-2}" width="4" height="4" fill="#cdc2a6"/>`;}
+  b+=line(160,111,440,111,'#e5dcc4',6);
+  // resistor (base) and transistor
+  b+=line(222,90,236,90,'#8a8f93',2.5)+line(272,90,286,90,'#8a8f93',2.5)+rect(236,83,36,14,'#e7cf9f','rx="6" stroke="#9c8558"')+[[243,'#7a4a1c'],[250,'#222'],[257,'#c0392b'],[265,'#c9a227']].map(([x,c])=>rect(x,83,3.5,14,c)).join('');
+  b+=`<path d="M300 72h30v20a15 15 0 0 1-30 0Z" fill="#2c3236"/>`+line(305,104,305,132,'#8a8f93',2.5)+line(315,107,315,132,'#8a8f93',2.5)+line(325,104,325,132,'#8a8f93',2.5)+label(315,66,'트랜지스터');
+  b+=`<circle cx="410" cy="90" r="6" fill="${powered?'#3bb36a':'#c9d3cf'}" stroke="#6b7d75"/>`+label(410,78,powered?'ON':'OFF','middle',powered?'#1f7a43':'#6d7f87');
+  b+='</g>';
+  // battery holder: 2 cells for 3 V, 4 cells for 6 V
+  const cells=state.supply===6?4:2,bx=250,by=206;b+=`<g opacity="${bb}">`+rect(bx,by,cells*28+12,30,'#34393d','rx="5"');for(let i=0;i<cells;i++)b+=rect(bx+6+i*28,by+5,24,20,'#d9a441','rx="3"')+rect(bx+6+i*28,by+5,6,20,'#9b9fa3','rx="2"');b+=label(bx+(cells*28+12)/2,by+48,`${state.supply} V 전지`)+'</g>';
+  // speaker: magnet, cone moving with the output, fixed rim
+  const sx=520;b+=rect(sx-34,96,22,48,'#59656c','rx="3"')+rect(sx-14,104,10,32,'#8f9aa0');
+  b+=`<path d="M${sx+60} 56Q${sx+66} 120 ${sx+60} 184" fill="none" stroke="#b9a37c" stroke-width="7" stroke-linecap="round"/><path d="M${sx-4+shift} 106L${sx+60} 62L${sx+60} 178L${sx-4+shift} 134Z" fill="url(#speakerCone)" stroke="#5f8b93" stroke-width="2.5"/><ellipse cx="${sx+4+shift}" cy="120" rx="7" ry="13" fill="#7fa6ad"/>`;
+  b+=path(`M${sx-30} 96V60H${sx+56}`,'#9aa9b0',2)+path(`M${sx-30} 144V180H${sx+56}`,'#9aa9b0',2)+label(sx+18,206,'스피커');
+  if(active&&outAmp>0){const strength=Math.min(1,outAmp/1.2);for(let i=0;i<3;i++){const k=reduced?i/3:((elapsed*1.6+i/3)%1);b+=`<path d="M${sx+76+k*46} ${92-k*14}Q${sx+90+k*52} 120 ${sx+76+k*46} ${148+k*14}" fill="none" stroke="#2a8a9a" stroke-width="2.5" opacity="${((1-k)*(.25+.75*strength)).toFixed(2)}"/>`;}}
+  // wiring
+  if(amp){b+=wire(`M104 132V198H180V164`,'#222f36',false)+wire(`M106 92H140V90H222`,'#e2b93b',active)+wire(`M286 90H292V124H315V132`,'#e2b93b',active)+wire(`M305 132V164`,'#222f36',false)+wire(`M${bx+cells*28+12} 221H400V174`,'#d64b3b',powered)+wire(`M${bx} 221H230V164`,'#222f36',false)+wire(`M325 132V142H436V100H${sx-30}`,'#2f9a63',active&&powered)+wire(`M${sx-30} 140V196H430V174`,'#d64b3b',powered);}
+  else b+=wire(`M106 92H140V20H${sx-40}V100H${sx-30}`,'#e2b93b',active)+wire(`M104 132V230H${sx-40}V140H${sx-30}`,'#222f36',false);
+  // waveforms on the same voltage scale, plus a dotted ×10 view of the input
+  const scale=15,wy=338,panels=[[60,'입력 · 파랑','#248795'],[365,'출력 · 주황','#bb6b31']];
+  for(const [x,name,color] of panels){b+=label(x,278,name,'start','#24434f')+rect(x,288,235,100,'#fbfdfd','stroke="#c4d5db" rx="4"');for(const v of [-2,-1,1,2])b+=line(x,wy-v*scale,x+235,wy-v*scale,'#e3ecef',1);b+=line(x,wy,x+235,wy,'#aac1cd',1)+label(x-6,wy-2*scale+5,'2 V','end','#5d7480')+label(x-6,wy+2*scale+5,'−2 V','end','#5d7480');}
+  b+=curve(t=>active?M.amplifier(state,t*Math.PI*4+ph).input*10:0,60,wy,235,scale,'#9fcbd1').replace('stroke-width="2.5"','stroke-width="2" stroke-dasharray="4 4"')+label(295,278,'점선: 입력 × 10','end','#5d8a92');
+  b+=curve(t=>active?M.amplifier(state,t*Math.PI*4+ph).input:0,60,wy,235,scale,'#248795')+curve(t=>active?M.amplifier(state,t*Math.PI*4+ph).output:0,365,wy,235,scale,'#bb6b31');
+  svg(b,'신호 발생기, 브레드보드 위 트랜지스터·저항·전지 배선, 스피커와 같은 전압 눈금의 입력·출력 파형',404);
   window.scienceScene.render(readout,metric('입력 진폭',active?state.amplitude.toFixed(2)+' V':'0 V')+metric('출력 진폭',active?(amp&&state.power?Math.min(state.amplitude*10,r.limit):amp?0:state.amplitude).toFixed(2)+' V':'0 V')+metric('파형',active&&r.clipped?'위아래가 잘림':active?'관찰 중':'정지'));
   setStatus(!active?'신호를 보내고 직접 연결과 증폭 회로를 비교하세요.':amp&&!state.power?'증폭 회로에 전원이 공급되지 않았습니다.':r.clipped?'출력의 위아래가 평평해졌습니다. 입력 진폭을 줄여 변화를 확인하세요.':amp?'전지의 에너지를 사용하여 같은 주파수의 입력 신호를 더 큰 출력으로 바꿉니다.':'같은 신호를 스피커에 직접 연결한 상태입니다.');
   pressed('power',state.power,'증폭 회로 전원 끄기','증폭 회로 전원 켜기');pressed('playSignal',state.playing,'신호 멈추기','신호 보내기');
@@ -223,16 +245,28 @@
   pressed('filter',state.filter,'편광판 빼기','편광판 넣기');
  }
  function drawElectrons(){
-  let b=rect(32,81,82,60,'#426b7c','rx="8"')+text(73,118,'전자총','white',18)+line(124,110,260,110,'#83a1b2',2,'stroke-dasharray="5 5"');
-  b+=rect(265,34,14,162,'#577a8b')+rect(262,105-(state.slits==='two'?state.spacing*13:0),20,11,'#edf6fa');if(state.slits==='two')b+=rect(262,105+state.spacing*13,20,11,'#edf6fa');
-  b+=text(270,228,state.slits==='two'?'두 슬릿':'한 슬릿',undefined,18)+text(456,37,'검출판 · 정면 확대',undefined,18);
-  b+=rect(332,51,286,176,'#102d3d','rx="5"');
-  for(const p of hits)b+=`<circle cx="${475+p.x*27}" cy="${59+p.y*160}" r="1.3" fill="#78e6cc"/>`;
-  if(state.pathKnown)b+=rect(246,153,51,28,'#efc570','rx="4"')+text(271,173,'측정',undefined,15);
-  const bins=Array(70).fill(0);for(const p of hits)bins[Math.min(69,Math.floor((p.x+5)/10*70))]++;
-  const max=Math.max(1,...bins);b+=text(169,286,'위치별 도착 횟수',undefined,17);bins.forEach((n,i)=>b+=rect(334+i*4,324-n/max*62,3.2,n/max*62,'#176878'));b+=line(332,324,618,324,'#8bacbb',1);
+  const now=performance.now(),two=state.slits==='two',slitYs=two?[110-state.spacing*13,110+state.spacing*13]:[110],sx=203,FLY=reduced?0:850,px=p=>475+p.x*27,py=p=>59+p.y*160;
+  let b=`<defs><linearGradient id="gunMetal" x2="0" y2="1"><stop stop-color="#b9c8d0"/><stop offset=".45" stop-color="#eef3f5"/><stop offset="1" stop-color="#7e95a1"/></linearGradient></defs>`;
+  // electron gun: heated cathode, accelerating anodes, metal tube
+  b+=rect(30,92,86,36,'url(#gunMetal)','rx="6" stroke="#6b8290" stroke-width="2"')+path('M40 110q3-9 6 0t6 0t6 0t6 0','#c76b2a',2.4)+rect(118,90,6,40,'#6b8290')+rect(130,90,6,40,'#6b8290')+rect(118,106,6,8,'#f4f8fa')+rect(130,106,6,8,'#f4f8fa')+line(24,104,30,104,'#6b8290',2)+line(24,116,30,116,'#6b8290',2)+label(80,150,'전자총');
+  // slit plate
+  b+=rect(196,34,14,162,'#6f8c9b','rx="2"');for(const y of slitYs)b+=rect(193,y-5.5,20,11,'#edf6fa');
+  b+=label(203,222,two?'두 슬릿':'한 슬릿')+rect(306,40,9,150,'#c9d6dd','rx="2" stroke="#9fb3bf"')+line(315,51,332,51,'#b5c6cf',1,'stroke-dasharray="3 3"')+line(315,190,332,227,'#b5c6cf',1,'stroke-dasharray="3 3"');
+  // light detector screen with arrival points
+  b+=label(475,40,'검출판 (정면)')+rect(332,51,286,176,'#f4f7f9','rx="5" stroke="#9fb3bf" stroke-width="2"');
+  let arrived=0;const rings=[];
+  for(let i=0;i<hits.length;i++){const t=born[i]??0,age=now-t-FLY;if(age<0)continue;arrived++;const p=hits[i];b+=`<circle cx="${px(p).toFixed(1)}" cy="${py(p).toFixed(1)}" r="1.6" fill="#1d4e6b" opacity=".8"/>`;if(age<380&&!reduced)rings.push([px(p),py(p),age/380]);}
+  for(const [x,y,k] of rings)b+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(3+k*11).toFixed(1)}" fill="none" stroke="#d9822b" stroke-width="2" opacity="${(1-k).toFixed(2)}"/>`;
+  // probability wave: arcs from the gun to the slit plate, then from each open slit to the screen
+  const waves=[];if(!reduced){for(const t of pulses){const k=(now-t)/FLY;if(k>=0&&k<1)waves.push(k);}if(running)for(let i=0;i<3;i++)waves.push((clock*1.2+i/3)%1);}
+  for(const k of waves){if(k<.45){const rr=(k/.45)*(sx-7-136);b+=`<path d="M${136+rr} ${110-Math.min(60,rr*.55)}Q${146+rr} 110 ${136+rr} ${110+Math.min(60,rr*.55)}" fill="none" stroke="#5aa0c8" stroke-width="2" opacity="${(.85-k).toFixed(2)}"/>`;}else{const rr=((k-.45)/.55)*(306-sx-8);for(const y of slitYs)b+=`<path d="M${sx+8+rr} ${y-rr*.9}Q${sx+22+rr*1.25} ${y} ${sx+8+rr} ${y+rr*.9}" fill="none" stroke="#5aa0c8" stroke-width="2" opacity="${(.9-(k-.45)*1.4).toFixed(2)}"/>`;}}
+  b+=line(138,110,193,110,'#a9bfcc',1.5,'stroke-dasharray="4 6"');
+  if(state.pathKnown)b+=rect(222,150,51,28,'#efc570','rx="4"')+label(247,169,'측정');
+  // histogram of arrived points, labelled right at its axis
+  const bins=Array(70).fill(0);for(let i=0;i<hits.length;i++){if(now-(born[i]??0)-FLY<0)continue;const p=hits[i];bins[Math.min(69,Math.floor((p.x+5)/10*70))]++;}
+  const max=Math.max(1,...bins);b+=label(334,256,'위치별 도착 횟수','start')+rect(332,262,286,64,'#f8fbfc','stroke="#d3e0e6"');bins.forEach((n,i)=>{if(n)b+=rect(334+i*4,324-n/max*58,3.2,n/max*58,'#2f6f8f');});b+=line(332,326,618,326,'#5d7a88',1.5);
   svg(b,'전자총과 슬릿, 도착 사건을 누적한 검출판과 위치별 도착 횟수');
-  window.scienceScene.render(readout,metric('누적 검출',hits.length+'개')+metric('통과 경로',state.pathKnown?'측정함':'측정하지 않음')+metric('방출',running?'한 개씩 연속':'대기'));
+  window.scienceScene.render(readout,metric('누적 검출',arrived+'개')+metric('통과 경로',state.pathKnown?'측정함':'측정하지 않음')+metric('방출',running?'한 개씩 연속':'대기'));
   setStatus(hits.length===0?'한 전자를 보내 점 하나를 확인하고, 더 많은 전자를 누적해 보세요.':hits.length<30?'점 하나는 전자 하나의 도착입니다. 아직 전체 분포를 판단하기에는 점이 적습니다.':state.pathKnown?'경로를 측정한 조건입니다. 측정하지 않은 조건과 새 검출판에서 비교하세요.':'같은 조건에서 도착 점을 계속 누적하고 있습니다. 띠 사이와 띠 안의 도착 횟수를 비교하세요.');
   pressed('runElectrons',running,'연속 방출 멈추기','한 개씩 연속 보내기');
   $('singleElectron').disabled=$('manyElectrons').disabled=hits.length>=10000;$('spacing').disabled=state.slits==='one';
@@ -253,8 +287,8 @@
   else elapsed=slug==='soap-film'?Math.min(60,elapsed+dt):elapsed+dt;
   draw();if(elapsed>=60&&slug==='soap-film'){stop();draw();}if(running)frame=requestAnimationFrame(tick);
  }
- function addHits(n){for(let i=0;i<n&&hits.length<10000;i++)hits.push(M.electronHit(rng,state));}
- function clearHits(){hits=[];rng=M.random(8123);elapsed=0;}
+ function addHits(n,burst){const now=performance.now();for(let i=0;i<n&&hits.length<10000;i++){hits.push(M.electronHit(rng,state));born.push(now+(burst&&n>1?i*700/n:0));}if(burst){pulses.push(now);if(pulses.length>6)pulses.shift();wake(n>1?2.1:1.4);}}
+ function clearHits(){hits=[];born=[];pulses=[];rng=M.random(8123);elapsed=0;}
  function bind(id,fn){$(id)?.addEventListener('click',()=>{fn();draw();});}
  function reset(){stop();stopSound();state={...defaults[slug]};elapsed=0;clearHits();fx={};awakeUntil=0;setfx('magnet',0);setfx('filter',0);setfx('jaw',0);setfx('dip',1);root.querySelectorAll('select,input[type=range]').forEach(e=>{e.value=String(state[e.id]);if($(e.id+'Value'))$(e.id+'Value').textContent=e.value+e.dataset.unit;});draw();}
  root.querySelectorAll('select,input[type=range]').forEach(e=>e.addEventListener('input',()=>{
@@ -270,7 +304,7 @@
  bind('playSignal',()=>{state.playing=!state.playing;if(state.playing)start();else{stop();stopSound();}});bind('referenceSound',sound);
  bind('drop',()=>{stop();elapsed=0;state.started=true;setfx('jaw',0);tween('jaw',1,.2);start();});bind('pauseDrop',()=>running?stop():start());
  bind('dip',()=>{stop();state.formed=true;elapsed=0;setfx('dip',0);tween('dip',1,1.6);});bind('drain',()=>running?stop():start());bind('stepFilm',()=>{stop();elapsed=Math.min(60,elapsed+5);});
- bind('singleElectron',()=>addHits(1));bind('manyElectrons',()=>addHits(100));bind('runElectrons',()=>running?stop():start());bind('clearScreen',()=>{stop();clearHits();});bind('resetExperiment',reset);
+ bind('singleElectron',()=>addHits(1,true));bind('manyElectrons',()=>addHits(100,true));bind('runElectrons',()=>{if(running){stop();wake(1.3);}else start();});bind('clearScreen',()=>{stop();clearHits();});bind('resetExperiment',reset);
  document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();stopSound();if('playing'in state)state.playing=false;draw();}});
  window.addEventListener('pagehide',()=>{stop();stopSound();audio?.close();});
  window.__physicsLab={snapshot:()=>({slug,state:{...state},elapsed,running,hits:hits.map(p=>({...p}))})};

@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < 26; i += 1) {
                 const sx = FX + 10 + ((i * 97) % (FW - 20)), sy = FY + 12 + ((i * 61) % (FH - 24));
                 const big = SEEDS[state.seeds].targets.length === 2 ? i % 2 === 0 : SEEDS[state.seeds].targets[0] > 5;
-                const sc = big ? 0.1 : 0.06;
+                const sc = big ? 0.17 : 0.1;
                 out += `<g transform="translate(${sx - 50 * sc}, ${sy - 50 * sc}) scale(${sc})">` +
                        `<path class="${big ? 'seed-large' : 'seed-small'}" d="M 50 32 C 64 32 72 40 72 50 C 72 62 64 68 50 68 C 36 68 28 62 28 50 C 28 40 36 32 50 32 Z"/></g>`;
             }
@@ -200,15 +200,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const order = gen.traits.map((t, i) => i).sort((p, q) => gen.traits[p] - gen.traits[q]);
         order.forEach((i, k) => {
             const col = k % 8, row = Math.floor(k / 8);
-            const cx = FX + 22 + col * 36, cy = FY + 20 + row * 30;
+            const cx = FX + 24 + col * 36, cy = FY + 18 + row * 30;
             const t = gen.traits[i];
             const dead = culled && !gen.alive[i];
             if (a.kind === 'beak') {
+                // 옆에서 본 핀치: 왼쪽을 보는 머리에 원뿔 부리. 부리 크기(1~10)에 따라 길이와 두께가 함께 커진다.
+                const bx = cx + 6, by = cy + 2, hx = bx - 8, hy = by - 5;
+                const len = 3 + t * 1.15, dep = 1.6 + t * 0.42;
                 out += `<g class="${dead ? 'dead' : ''}">` +
-                    `<g transform="translate(${cx - 10}, ${cy - 12}) scale(0.24)">` +
-                    `<path class="bird" fill="#8fb3d9" stroke="#8fb3d9" stroke-width="2" d="M 34 32 C 44 30 54 36 56 46 C 66 46 80 54 88 68 L 76 72 C 66 82 50 82 38 74 C 30 68 28 58 30 48 C 30 40 28 36 34 32 Z M 48 78 L 46 92 M 56 78 L 58 92"/>` +
-                    `</g>` +
-                    `<path class="beak" fill="#d97706" d="M${(cx - 3).toFixed(1)},${(cy - 4 - t * 0.35).toFixed(1)} L${(cx - 3 - 3 - t * 1.2).toFixed(1)},${(cy - 2).toFixed(1)} L${(cx - 3).toFixed(1)},${(cy + t * 0.35).toFixed(1)} Z"/></g>`;
+                    `<path class="bird-tail" d="M${bx + 7},${by - 1} L${bx + 15},${by - 4} L${bx + 14},${by + 2} Z"/>` +
+                    `<line class="bird-leg" x1="${bx - 2}" y1="${by + 5}" x2="${bx - 3}" y2="${by + 10}"/><line class="bird-leg" x1="${bx + 2}" y1="${by + 5}" x2="${bx + 3}" y2="${by + 10}"/>` +
+                    `<ellipse class="bird" cx="${bx}" cy="${by}" rx="9" ry="6.2"/>` +
+                    `<path class="bird-wing" d="M${bx - 3},${by - 3} Q${bx + 6},${by - 5} ${bx + 9},${by + 1} Q${bx + 2},${by + 3} ${bx - 3},${by - 3} Z"/>` +
+                    `<circle class="bird" cx="${hx}" cy="${hy}" r="5.2"/>` +
+                    `<path class="beak" d="M${(hx - 4).toFixed(1)},${(hy - dep * .55).toFixed(1)} L${(hx - 4 - len).toFixed(1)},${(hy + .4).toFixed(1)} L${(hx - 4).toFixed(1)},${(hy + dep * .55 + .8).toFixed(1)} Z"/>` +
+                    `<line class="beak-gape" x1="${(hx - 4).toFixed(1)}" y1="${(hy + .5).toFixed(1)}" x2="${(hx - 4 - len * .85).toFixed(1)}" y2="${(hy + .45).toFixed(1)}"/>` +
+                    `<circle class="bird-eye" cx="${hx - 1.4}" cy="${hy - 1.3}" r="1.1"/></g>`;
             } else {
                 out += `<g class="${dead ? 'dead' : ''}"><ellipse class="mouse" fill="${shadeHex(t)}" cx="${cx}" cy="${cy}" rx="9" ry="6"/><circle class="mouse" fill="${shadeHex(t)}" cx="${cx + 8}" cy="${cy - 3}" r="3.2"/></g>`;
             }
@@ -224,7 +231,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${RX}" y="134">흐려진 개체는</text><text class="trait-text" x="${RX}" y="148">자손을 남기지 못함</text>`;
         const VERD_B = { small: '작은 쪽으로 몰림', large: '큰 쪽으로 몰림', split: '양쪽으로 갈림', same: '거의 그대로' };
         const VERD_C = { light: '밝은 쪽으로', dark: '어두운 쪽으로', mixed: '거의 그대로' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${a.kind === 'beak' ? `${SEEDS[state.seeds].label} → 10세대 뒤 ${VERD_B[a.verdict]}` : `${GROUNDS[state.ground].label}${state.flip === 'flip' ? ` → ${FLIP_GEN}세대 뒤 바뀜` : ''} → 10세대 뒤 ${VERD_C[a.verdict]}`}</text>`;
+        // 결론은 10세대를 다 지난 뒤에만 적는다.
+        const done = state.progress >= 1;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${a.kind === 'beak' ? `${SEEDS[state.seeds].label}${done ? ` → 10세대 뒤 ${VERD_B[a.verdict]}` : ' · 10세대를 지나 보기'}` : `${GROUNDS[state.ground].label}${state.flip === 'flip' ? ` → ${FLIP_GEN}세대 뒤 바뀜` : ''}${done ? ` → 10세대 뒤 ${VERD_C[a.verdict]}` : ' · 10세대를 지나 보기'}`}</text>`;
         out += `<text class="note-text" x="20" y="208">${a.kind === 'beak' ? '부리가 클수록 뾰족한 부분이 큽니다 · 씨앗에 맞는 부리가 잘 먹습니다' : '천적은 배경과 다른 색의 쥐를 먼저 잡습니다'}</text>`;
         return out;
     }
@@ -239,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const count = tr => { const c = new Array(bins).fill(0); tr.forEach(t => { c[Math.min(bins - 1, Math.floor((t - lo) / (hi - lo) * bins))] += 1; }); return c; };
         const c0 = count(first.traits), c1 = count(gen.traits);
         const X0 = 50, X1 = 424, Y0 = 144, Y1 = 30, W = (X1 - X0) / bins, max = Math.max(8, ...c0, ...c1);
-        let out = `<text class="axis-title figure-caption" x="${X0}" y="18">옅은 막대: 처음 · 진한 막대: ${g === 0 ? '처음' : `${g}세대`}</text>`;
+        let out = `<text class="axis-title figure-caption" x="${X0}" y="18">${g === 0 ? '막대: 처음 무리' : `옅은 막대: 처음 · 진한 막대: ${g}세대`}</text>`;
         out += `<text class="axis-text figure-caption" style="fill:#059669" x="${X1}" y="18" text-anchor="end">초록 점선: 환경이 유리하게 하는 값</text>`;
         for (let b = 0; b < bins; b += 1) {
             const x = X0 + b * W;
@@ -265,8 +274,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<div class="data-row"><span class="data-name">무리</span><span class="data-val">${N}마리 · 세대마다 절반이 살아남아 각각 새끼 둘을 남김</span></div>` +
             `<div class="data-row"><span class="data-name">환경</span><span class="data-val">${a.kind === 'beak' ? SEEDS[state.seeds].label : `${GROUNDS[state.ground].label}${state.flip === 'flip' ? ` → ${FLIP_GEN}세대 뒤 ${(state.ground === 'snow' ? GROUNDS.soil : GROUNDS.snow).label}` : ''}`}</span></div>` +
             `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${g === 0 ? '처음 무리' : `${g}세대`} · 평균 ${means[g]}</span></div>` +
-            `<div class="data-row"><span class="data-name">세대별 평균</span><span class="data-val">${means.join(' → ')}</span></div>` +
-            `<div class="data-row match"><span class="data-name">10세대 뒤</span><span class="data-val">평균 ${means[GENS]} (처음 ${means[0]})</span></div>`;
+            `<div class="data-row"><span class="data-name">세대별 평균</span><span class="data-val">${means.slice(0, g + 1).join(' → ')}${g < GENS ? ' → …' : ''}</span></div>` +
+            (state.progress >= 1 ? `<div class="data-row match"><span class="data-name">10세대 뒤</span><span class="data-val">평균 ${means[GENS]} (처음 ${means[0]})</span></div>` : '');
     }
 
     function render() {

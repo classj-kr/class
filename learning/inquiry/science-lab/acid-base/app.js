@@ -29,13 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const solutionSurface = document.getElementById('solutionSurface');
     const solutionRect = document.getElementById('solutionRect');
 
-    const STRIP_TOP = 4, STRIP_BOTTOM = 216, STRIP_HEIGHT = STRIP_BOTTOM - STRIP_TOP;
+    const STRIP_TOP = 4, STRIP_BOTTOM = 116, STRIP_HEIGHT = STRIP_BOTTOM - STRIP_TOP;
     // How much further the strip sinks on "dip", as a fraction of its own
     // height. Applied as a JS-computed px transform (not a CSS percentage —
     // percentage translateY on an aspect-ratio-sized box proved unreliable
     // here) so it stays the single source of truth for both the visual dip
     // motion and the wetted-fraction math below.
-    const DIP_DEPTH = .14;
+    const DIP_DEPTH = 1.4;
+    const REDUCED = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const T = ms => (REDUCED ? 0 : ms);
+    // 시험한 용액만 무리 띠에 올린다. 담가 보기 전에는 어느 무리인지 보이지 않는다.
+    const tested = new Set();
+    let dipped = false;
 
     let dipTimers = [];
     function clearDipTimers() {
@@ -43,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dipTimers = [];
     }
     function resetStripReveal(clipRect) {
-        clipRect.setAttribute('y', '216');
+        clipRect.setAttribute('y', String(STRIP_BOTTOM));
         clipRect.setAttribute('height', '0');
     }
     // Only the part of the strip that actually goes under the liquid should
@@ -112,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
         solutionStopBottom.setAttribute('stop-opacity', data.bottomOpacity);
         solutionBadge.textContent = `${data.label} (${data.appearance})`;
         beaker.classList.add('has-solution');
+        clearResult();
         renderBand();
         renderData();
-        clearResult();
     }
 
     /* --------------------------------- 산성·염기성 분류 띠와 표 */
@@ -129,14 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderBand() {
         const X0 = 18, W = 424, TOP = 30, H = 96;
         const zoneW = W / ZONES.length;
-        let out = `<text class="band-title" x="${X0}" y="18">지시약으로 나누어 본 네 가지 용액</text>`;
+        let out = `<text class="band-title" x="${X0}" y="18">담가 본 용액 나누기 (${tested.size} / 4)</text>`;
         ZONES.forEach((z, i) => {
             const x = X0 + i * zoneW;
             out += `<rect class="zone-band" x="${x}" y="${TOP}" width="${zoneW - 4}" height="${H}" rx="9" fill="${z.fill}"/>`;
             out += `<text class="zone-name" style="fill:${z.text}" x="${x + (zoneW - 4) / 2}" y="${TOP + 18}" text-anchor="middle">${z.name}</text>`;
             out += `<text class="zone-hint" x="${x + (zoneW - 4) / 2}" y="${TOP + 32}" text-anchor="middle">${z.hint}</text>`;
 
-            const members = Object.entries(SOLUTIONS).filter(([, d]) => d.type === z.type);
+            const members = Object.entries(SOLUTIONS).filter(([key, d]) => d.type === z.type && tested.has(key));
             members.forEach(([key, d], k) => {
                 const cy = TOP + 44 + k * 24;
                 const isNow = key === selectedSolution;
@@ -149,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderData() {
-        if (!selectedSolution) {
-            window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">아직 고르지 않았습니다</span></div>` +
+        if (!selectedSolution || !dipped) {
+            window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">고른 용액</span><span class="data-val">${selectedSolution ? SOLUTIONS[selectedSolution].label : '아직 고르지 않았습니다'}</span></div>` +
                 `<div class="data-row"><span class="data-name">알아볼 것</span><span class="data-val">리트머스 종이 두 장이 어떻게 바뀌는지</span></div>` +
                 `<div class="data-row"><span class="data-name">나누는 무리</span><span class="data-val">산성 · 염기성</span></div>`);
             return;
@@ -167,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function clearResult() {
         clearDipTimers();
+        dipped = false;
         resultEmpty.hidden = false;
         resultContent.hidden = true;
         redWrap.classList.remove('dipping');
@@ -216,13 +222,20 @@ document.addEventListener('DOMContentLoaded', () => {
         dipTimers.push(setTimeout(() => {
             if (redChanges) revealStripChange(redChangeClipRect, revealY, revealHeight); else resetStripReveal(redChangeClipRect);
             if (blueChanges) revealStripChange(blueChangeClipRect, revealY, revealHeight); else resetStripReveal(blueChangeClipRect);
-        }, 380));
+        }, T(420)));
 
         dipTimers.push(setTimeout(() => {
             redWrap.classList.remove('dipping');
             blueWrap.classList.remove('dipping');
             redSvg.style.transform = '';
             blueSvg.style.transform = '';
+        }, T(1900)));
+
+        dipTimers.push(setTimeout(() => {
+            dipped = true;
+            tested.add(selectedSolution);
+            renderBand();
+            renderData();
 
             redResult.textContent = redChanges ? '푸르게 변함' : '그대로';
             blueResult.textContent = blueChanges ? '붉게 변함' : '그대로';
@@ -240,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (type === 'base') {
                 explanation.textContent = `${data.label}${particle} 염기성이라 붉은 리트머스 종이가 푸르게 변하고, 푸른 리트머스 종이는 그대로입니다.`;
             }
-        }, 780));
+        }, T(760)));
     }
 
     solutionButtons.forEach(button => button.addEventListener('click', () => selectSolution(button.dataset.solution)));

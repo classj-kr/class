@@ -207,22 +207,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
+    // 세포막 한 조각: 인지질 두 겹(머리·꼬리) 사이에 Na⁺ 통로(파랑)와 K⁺ 통로(주황) 단백질이 박혀 있다.
+    // 통로는 열린 비율만큼 가운데 구멍이 벌어지고, 전류가 흐르는 동안 Na⁺ 이온은 밖→안, K⁺ 이온은 안→밖으로 통로를 지난다.
+    function spikeIonSeed(i) { const x = Math.sin(i * 127.1 + 31.7) * 43758.5453; return x - Math.floor(x); }
     function renderSpike(a) {
         const t = state.progress * T_END;
         const s = sampleAt(a.run, t);
         const stimOn = t >= T_ON && t < T_ON + a.du.ms;
-        const MY = 96, MH = 28, X0 = 20, X1 = 300;
-        let out = `<text class="trait-text" x="${X0}" y="40">세포 밖 — Na⁺ 많음</text><text class="trait-text" x="${X0}" y="190">세포 안 — K⁺ 많음</text>`;
-        out += `<rect class="membrane" x="${X0}" y="${MY}" width="${X1 - X0}" height="${MH}" rx="3"/>`;
-        // channels: the gap opens with the fraction of open gates
-        const draw = (x, cls, open) => { const gap = 2 + 9 * open; out += `<rect class="channel ${cls}" x="${x - 9}" y="${MY - 2}" width="${(9 - gap / 2).toFixed(1)}" height="${MH + 4}" rx="2"/><rect class="channel ${cls}" x="${(x + gap / 2).toFixed(1)}" y="${MY - 2}" width="${(9 - gap / 2).toFixed(1)}" height="${MH + 4}" rx="2"/>`; };
-        for (let k = 0; k < 5; k += 1) draw(44 + k * 52, 'na', s.na / 0.35);
-        for (let k = 0; k < 5; k += 1) draw(70 + k * 52, 'k', s.k / 0.6);
-        // ions on the move: sodium in while its current flows, potassium out
-        const naDots = Math.min(3, Math.floor(Math.abs(s.iNa) / 120)), kDots = Math.min(3, Math.floor(Math.abs(s.iK) / 120));
-        for (let k = 0; k < 5; k += 1) for (let d = 0; d < naDots; d += 1) { const f = ((t * 2.3 + k * 0.29 + d * 0.41) % 1); const y = 66 + f * 88; out += `<circle class="ion na" cx="${44 + k * 52}" cy="${y.toFixed(1)}" r="4"/><text class="ion-text" x="${44 + k * 52}" y="${(y + 2.5).toFixed(1)}" text-anchor="middle">+</text>`; }
-        for (let k = 0; k < 5; k += 1) for (let d = 0; d < kDots; d += 1) { const f = ((t * 1.7 + k * 0.31 + d * 0.43) % 1); const y = 154 - f * 88; out += `<circle class="ion k" cx="${70 + k * 52}" cy="${y.toFixed(1)}" r="4"/><text class="ion-text" x="${70 + k * 52}" y="${(y + 2.5).toFixed(1)}" text-anchor="middle">+</text>`; }
-        if (stimOn) out += `<line class="electrode" x1="160" y1="48" x2="160" y2="${MY - 4}"/><text class="trait-text" style="fill:#ff7a59" x="166" y="60">자극 전류 ${a.st.I} μA/cm²</text>`;
+        const X0 = 14, X1 = 304, MT = 84, MB = 138, MID = (MT + MB) / 2;
+        const NA_X = [74, 202], K_X = [138, 266];
+        const naOpen = clamp(s.na / 0.35, 0, 1), kOpen = clamp(s.k / 0.6, 0, 1);
+        let out = `<rect x="${X0}" y="26" width="${X1 - X0}" height="${MT - 26}" fill="#eef6fb"/><rect x="${X0}" y="${MB}" width="${X1 - X0}" height="${200 - MB}" fill="#fbf3e8"/>`;
+        out += `<text class="trait-text" x="${X0 + 4}" y="42">세포 밖</text><text class="trait-text" x="${X0 + 4}" y="194">세포 안</text>`;
+        // lipid bilayer
+        const chanAt = x => [...NA_X, ...K_X].some(cx => Math.abs(cx - x) < 17);
+        for (let x = X0 + 5; x <= X1 - 4; x += 9) {
+            if (chanAt(x)) continue;
+            out += `<path d="M${x - 1.5} ${MT + 4} V${MID - 2} M${x + 1.5} ${MT + 4} V${MID - 2} M${x - 1.5} ${MB - 4} V${MID + 2} M${x + 1.5} ${MB - 4} V${MID + 2}" stroke="#b08a4c" stroke-width="1.1"/>`;
+            out += `<circle cx="${x}" cy="${MT + 4}" r="4.3" fill="#e4c48a" stroke="#9a7638" stroke-width=".8"/><circle cx="${x}" cy="${MB - 4}" r="4.3" fill="#e4c48a" stroke="#9a7638" stroke-width=".8"/>`;
+        }
+        // channel proteins: two halves that part as the gates open
+        const channel = (x, fill, edge, open) => { const gap = 3 + 11 * open; out += `<rect x="${(x - gap / 2 - 13).toFixed(1)}" y="${MT - 6}" width="13" height="${MB - MT + 12}" rx="6" fill="${fill}" stroke="${edge}" stroke-width="1"/><rect x="${(x + gap / 2).toFixed(1)}" y="${MT - 6}" width="13" height="${MB - MT + 12}" rx="6" fill="${fill}" stroke="${edge}" stroke-width="1"/>`; };
+        NA_X.forEach(x => channel(x, '#3b8fc4', '#1d5f8a', naOpen));
+        K_X.forEach(x => channel(x, '#e8a23c', '#a8661a', kOpen));
+        out += `<text class="small-label" style="fill:#1d5f8a" x="${NA_X[0]}" y="${MT - 12}" text-anchor="middle">Na⁺ 통로</text><text class="small-label" style="fill:#8a520f" x="${K_X[0]}" y="${MB + 22}" text-anchor="middle">K⁺ 통로</text>`;
+        // resting ions: many Na⁺ outside, many K⁺ inside
+        const ion = (x, y, cls) => `<circle class="ion ${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5"/><text class="ion-text" x="${x.toFixed(1)}" y="${(y + 4.5).toFixed(1)}" text-anchor="middle">+</text>`;
+        for (let i = 0; i < 10; i += 1) { const x = 70 + spikeIonSeed(i) * 225, y = 36 + spikeIonSeed(i + 40) * 30; out += ion(x, y, 'na'); }
+        for (let i = 0; i < 2; i += 1) out += ion(100 + i * 130, 186, 'na');
+        for (let i = 0; i < 10; i += 1) { const x = 70 + spikeIonSeed(i + 90) * 225, y = 152 + spikeIonSeed(i + 140) * 34; out += ion(x, y, 'k'); }
+        for (let i = 0; i < 2; i += 1) out += ion(170 + i * 110, 40, 'k');
+        // ions passing through the open channels
+        const naDots = Math.min(3, Math.ceil(Math.max(0, Math.abs(s.iNa) - 20) / 160)), kDots = Math.min(3, Math.ceil(Math.max(0, Math.abs(s.iK) - 20) / 160));
+        NA_X.forEach((x, k) => { for (let d = 0; d < naDots; d += 1) { const f = ((t * 0.9 + k * 0.29 + d / Math.max(1, naDots)) % 1); out += ion(x, 50 + f * 130, 'na'); } });
+        K_X.forEach((x, k) => { for (let d = 0; d < kDots; d += 1) { const f = ((t * 0.7 + k * 0.31 + d / Math.max(1, kDots)) % 1); out += ion(x, 180 - f * 130, 'k'); } });
+        // stimulating electrode (glass pipette) touching the outside of the membrane
+        out += `<path d="M150 22 L156 22 L154.5 ${MT - 8} L151.5 ${MT - 8} Z" fill="#e2eef4" stroke="${stimOn ? '#dc2626' : '#7d97a5'}" stroke-width="1.2"/>`;
+        if (stimOn) out += `<text class="trait-text" style="fill:#c2410c" x="162" y="40">자극</text>`;
         // the meter
         const MX = 330, MTOP = 50, MBOT = 170;
         const yOf = V => MBOT - (V + 90) / 140 * (MBOT - MTOP);
@@ -231,14 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
         [[50, '+50', 3], [0, '0', 3], [-55, '문턱', -6], [-65, '휴지', 6], [-90, '−90', 4]].forEach(([v, lab, dy]) => { out += `<line class="ref-line ${v === -55 ? 'threshold' : ''}" x1="${MX - 4}" y1="${yOf(v).toFixed(1)}" x2="${MX + 26}" y2="${yOf(v).toFixed(1)}"/><text class="small-label" x="${MX - 6}" y="${(yOf(v) + dy).toFixed(1)}" text-anchor="end">${lab}</text>`; });
         out += `<text class="gen-text" x="${MX + 34}" y="60">${s.V >= 0 ? '+' : ''}${s.V.toFixed(0)} mV</text>`;
         out += `<text class="trait-text" style="fill:#0284c7" x="${MX + 34}" y="80">Na⁺ 통로 ${Math.round(s.na / 0.35 * 100)} %</text>`;
-        out += `<text class="trait-text" style="fill:#ffb347" x="${MX + 34}" y="96">K⁺ 통로 ${Math.round(s.k / 0.6 * 100)} %</text>`;
+        out += `<text class="trait-text" style="fill:#a8661a" x="${MX + 34}" y="96">K⁺ 통로 ${Math.round(s.k / 0.6 * 100)} %</text>`;
         out += `<text class="trait-text" x="${MX + 34}" y="120">${t.toFixed(1)} ms</text>`;
         const seen = a.run.spikes.filter(sp => sp.t <= t).length;
         out += `<text class="trait-text" style="fill:#d97706" x="${MX + 34}" y="140">활동 전위 ${seen}번</text>`;
         out += `<text class="small-label" x="${MX + 34}" y="160">${stimOn ? '자극 중' : t < T_ON ? '자극 전' : '자극 뒤'}</text>`;
         const VERD = { none: '생기지 않음', one: '한 번, 정해진 크기', many: '되풀이해 생김' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${a.st.hint} · ${a.du.label}: 활동 전위 ${a.n}번 → ${VERD[a.verdict]}${a.n ? ` (꼭대기 +${Math.round(a.run.spikes[0].peak)} mV)` : ''}` : `${a.st.label} (${a.st.hint}) · ${a.du.label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">통로 그림은 열린 비율(최대 열림 = 100 %) · 이온 알갱이는 전류가 흐를 때만 · 호지킨–헉슬리 방정식으로 계산</text>`;
         return out;
     }
 
@@ -372,9 +392,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function noteFor(a) {
         if (a.kind === 'spike') {
             return `<div class="data-row"><span class="data-name">자극</span><span class="data-val">${a.st.hint}를 5 ms부터 ${a.du.ms} ms 동안</span></div>` +
-                `<div class="data-row"><span class="data-name">활동 전위</span><span class="data-val">${a.n}번${a.n ? ` — ${a.run.spikes.map(s => `${s.t.toFixed(1)} ms에 +${Math.round(s.peak)} mV`).join(', ')}` : ''}</span></div>` +
+                (state.progress >= 1 ? `<div class="data-row"><span class="data-name">활동 전위</span><span class="data-val">${a.n}번${a.n ? ` — ${a.run.spikes.map(s => `${s.t.toFixed(1)} ms에 +${Math.round(s.peak)} mV`).join(', ')}` : ''}</span></div>` : '') +
                 `<div class="data-row"><span class="data-name">모형</span><span class="data-val">호지킨–헉슬리 방정식(오징어 거대 축삭, 6.3 ℃): Na⁺ 통로 120, K⁺ 통로 36, 새는 전류 0.3 mS/cm²</span></div>` +
-                `<div class="data-row match"><span class="data-name">규칙</span><span class="data-val">문턱 −55 mV 아래면 없음 · 넘으면 크기 같음(실무율) · 오래 자극하면 되풀이, 사이 시간은 불응기가 정함</span></div>`;
+                (state.progress >= 1 ? `<div class="data-row match"><span class="data-name">규칙</span><span class="data-val">문턱 −55 mV 아래면 없음 · 넘으면 크기 같음(실무율) · 오래 자극하면 되풀이, 사이 시간은 불응기가 정함</span></div>` : '');
         }
         if (a.kind === 'conduct') {
             return `<div class="data-row"><span class="data-name">축삭</span><span class="data-val">${a.ax.label} — ${a.ax.hint}</span></div>` +
@@ -421,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startRun() {
         stopRun();
         state.progress = 0;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) { state.progress = 1; finish(); return; }
         running = true;
         lastStamp = performance.now();
         render();

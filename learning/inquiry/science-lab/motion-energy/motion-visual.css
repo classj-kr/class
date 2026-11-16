@@ -64,7 +64,7 @@
 
 .part-label { fill: #334155; font-size: 14px; font-weight: 800; }
 .small-label { fill: #475569; font-size: 13.5px; font-weight: 800; }
-.read-text { fill: var(--mint); font-size: 14px; font-weight: 900; }
+.read-text { fill: #047857; font-size: 14px; font-weight: 900; }
 .note-text { fill: #475569; font-size: 14px; font-weight: 800; }
 .verdict-text { font-size: 14px; font-weight: 900; }
 
@@ -80,10 +80,15 @@
 /* ramp and flashes */
 .track { fill: none; stroke: #9fb6bf; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .track-fill { fill: rgba(159, 182, 191, .10); }
-.ground { stroke: rgba(148, 163, 184, 0.40); stroke-width: 1; }
+.ramp-under { fill: #eef2f5; }
+.ramp-board { fill: #d9b47e; stroke: #9a7442; stroke-width: 1; stroke-linejoin: round; }
+.ramp-stand { fill: #94a3b8; stroke: #64748b; stroke-width: 1; }
+.ramp-stopper { fill: #64748b; }
+.ramp-top { fill: none; stroke: #8a6a3c; stroke-width: 1.6; stroke-linejoin: round; }
+.ground { stroke: #94a3b8; stroke-width: 1.2; }
 .cart { fill: #ff9d4d; stroke: #d97706; stroke-width: 1.2; }
 .wheel { fill: #26333c; stroke: #0f172a; stroke-width: 1; }
-.flash-dot { fill: #0284c7; stroke: #fff; stroke-width: .8; }
+.flash-dot { fill: #0369a1; stroke: #fff; stroke-width: 1; }
 .flash-text { fill: #334155; font-size: 13.5px; font-weight: 800; }
 .angle-arc { fill: none; stroke: var(--amber); stroke-width: 1.2; }
 .angle-text { fill: var(--amber); font-size: 14px; font-weight: 900; }

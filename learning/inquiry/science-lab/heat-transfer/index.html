@@ -8,7 +8,7 @@
     <meta name="description" content="막대를 한쪽 끝에서 가열해 물질에 따라 열이 전달되는 빠르기를 비교하는 초등 과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
-    <link rel="stylesheet" href="heat-visual.css?v=eaa00cf90abf">
+    <link rel="stylesheet" href="heat-visual.css?v=2d2cc3df9372">
     <link rel="stylesheet" href="quiz.css?v=e0eee3eb57b2">
     <link rel="stylesheet" href="../exam-scope.css?v=ef97879ff676">
     <link rel="stylesheet" href="../lab-ui.css?v=44fa7b6abd28">
@@ -92,12 +92,22 @@
 
                         <g id="beadGroup"></g>
 
+                        <!-- 막대를 잡아 주는 스탠드(오른쪽 끝) -->
+                        <rect class="stand-base" x="404" y="262" width="62" height="9" rx="3"/>
+                        <rect class="stand-pole" x="440" y="96" width="7" height="168" rx="2"/>
+                        <rect class="stand-clamp" x="408" y="114" width="40" height="38" rx="5"/>
+                        <circle class="stand-screw" cx="443" cy="133" r="4"/>
+                        <!-- 알코올램프: 막대 왼쪽 끝 바로 밑, 불꽃 끝이 막대에 닿는다 -->
                         <g id="flame" class="flame" style="display:none">
-                            <path class="flame-outer" d="M52,196 C36,178 40,162 52,150 C64,162 68,178 52,196 Z"/>
-                            <path class="flame-inner" d="M52,190 C44,178 46,168 52,160 C58,168 60,178 52,190 Z"/>
+                            <path class="flame-outer" d="M80,194 C62,180 62,160 72,146 L88,146 C98,160 98,180 80,194 Z"/>
+                            <path class="flame-inner" d="M80,190 C71,180 72,166 77,156 L83,156 C88,166 89,180 80,190 Z"/>
                         </g>
-                        <rect class="burner" x="34" y="196" width="36" height="9" rx="3"/>
-                        <text class="stage-label" x="52" y="222" text-anchor="middle">알코올램프</text>
+                        <rect class="wick" x="77" y="192" width="6" height="10" rx="1.5"/>
+                        <rect class="lamp-cap" x="66" y="200" width="28" height="10" rx="2"/>
+                        <path class="lamp-body" d="M70,210 L90,210 L90,214 C118,220 122,238 118,256 Q116,266 104,266 L56,266 Q44,266 42,256 C38,238 42,220 70,214 Z"/>
+                        <path class="lamp-fuel" d="M45,236 C47,226 60,221 70,219 L90,219 C100,221 113,226 115,236 L117,250 Q116,262 104,262 L56,262 Q44,262 43,250 Z"/>
+                        <path class="lamp-shine" d="M52,232 C50,240 50,250 53,256"/>
+                        <text class="stage-label" x="80" y="288" text-anchor="middle">알코올램프</text>
                     </svg>
                 </div>
 

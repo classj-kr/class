@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         [60, 37.3], [70, 37.8], [80, 38.4], [90, 39.0], [100, 39.8]] },
     };
     const IMP_S = 12;              // the impurity's own solubility, per 100 g water
-    const BEAKER = { x0: 66, x1: 174, top: 46, bottom: 186 };
+    const BEAKER = { x0: 46, x1: 196, top: 40, bottom: 200 };
     const GRAPH = { x0: 66, x1: 424, y0: 158, y1: 30, tMax: 100, sMax: 260 };
 
     let salt = 'kno3';
@@ -93,57 +93,63 @@ document.addEventListener('DOMContentLoaded', () => {
         return { crystals: c, imp: i };
     }
 
+    // 비커 안의 용액·녹아 있는 입자·바닥에 쌓이는 결정 알갱이, 비커에 꽂은 온도계.
+    const rnd = i => (((i * 7919 + 13) * 104729) % 100003) / 100003;
+    function grainSpot(i) {
+        // 바닥 가운데부터 둔덕 모양으로 쌓는다(층마다 폭이 줄어든다).
+        let layer = 0, left = i;
+        while (left >= 22 - layer * 2 && layer < 9) { left -= 22 - layer * 2; layer += 1; }
+        const cap = Math.max(4, 22 - layer * 2), w = (BEAKER.x1 - BEAKER.x0 - 20) * cap / 22;
+        const cx = (BEAKER.x0 + BEAKER.x1) / 2, x = cx - w / 2 + (left + 0.5) * w / cap + (rnd(i) - 0.5) * 3;
+        return { x, y: BEAKER.bottom - 6 - layer * 5.2 - rnd(i + 3) * 1.5, rot: (rnd(i + 7) - 0.5) * 50 };
+    }
     function renderMain(a, s) {
-        const st = outAt(s.T, a);
+        const st = outAt(s.T, a), started = running || s.t > 0, done = s.done || !resultContent.hidden;
         const inner = BEAKER.x1 - BEAKER.x0 - 8;
-        const liquidTop = BEAKER.top + 26;
+        const liquidTop = BEAKER.top + 30;
         let body = '';
-        // solution, cooler colours as it cools
         const warm = Math.max(0, Math.min(1, (s.T - a.T2) / Math.max(1, a.T1 - a.T2)));
-        const fill = `rgb(${Math.round(70 + 90 * warm)},${Math.round(150 - 20 * warm)},${Math.round(200 - 60 * warm)})`;
-        body += `<rect class="solution" fill="${fill}" opacity=".42" x="${BEAKER.x0 + 4}" y="${liquidTop}" ` +
-                `width="${inner}" height="${BEAKER.bottom - liquidTop - 4}"/>`;
-        body += `<ellipse class="surface" cx="${(BEAKER.x0 + BEAKER.x1) / 2}" cy="${liquidTop}" rx="${inner / 2}" ry="3.5"/>`;
-        // whatever is still dissolved, drifting about
+        const fill = `rgb(${Math.round(176 + 34 * warm)},${Math.round(208 + 20 * warm)},${Math.round(232 + 8 * warm)})`;
+        body += `<rect class="solution" fill="${fill}" opacity=".55" x="${BEAKER.x0}" y="${liquidTop}" width="${BEAKER.x1 - BEAKER.x0}" height="${BEAKER.bottom - liquidTop}"/>`;
+        body += `<ellipse class="surface" cx="${(BEAKER.x0 + BEAKER.x1) / 2}" cy="${liquidTop}" rx="${(BEAKER.x1 - BEAKER.x0) / 2}" ry="3.5"/>`;
         const stillIn = Math.max(0, a.dissolved - st.crystals);
         const dots = Math.min(26, Math.round(stillIn / Math.max(1, a.dissolved / 26)));
         for (let i = 0; i < dots; i += 1) {
-            const x = BEAKER.x0 + 10 + ((i * 29) % (inner - 12));
-            const y = liquidTop + 12 + ((i * 37) % (BEAKER.bottom - liquidTop - 30));
-            body += `<circle class="dissolved-dot" cx="${x}" cy="${y}" r="2.4"/>`;
+            const x = BEAKER.x0 + 10 + ((i * 29) % (inner - 30));
+            const y = liquidTop + 12 + ((i * 37) % (BEAKER.bottom - liquidTop - 44));
+            body += `<circle class="dissolved-dot" cx="${x}" cy="${y}" r="2.2"/>`;
         }
         for (let i = 0; i < Math.min(10, a.imp - st.imp); i += 1) {
-            const x = BEAKER.x0 + 14 + ((i * 41) % (inner - 16));
-            const y = liquidTop + 18 + ((i * 53) % (BEAKER.bottom - liquidTop - 34));
+            const x = BEAKER.x0 + 14 + ((i * 41) % (inner - 30));
+            const y = liquidTop + 18 + ((i * 53) % (BEAKER.bottom - liquidTop - 48));
             body += `<circle class="dirt-dot" cx="${x}" cy="${y}" r="2.2"/>`;
         }
-        // the pile of crystals on the bottom
-        const pileMax = 54;
-        const pileH = a.crystals > 0 ? pileMax * (st.crystals / a.crystals) : 0;
-        const grains = Math.round((st.crystals / Math.max(0.001, a.crystals)) * 30);
-        for (let i = 0; i < grains; i += 1) {
-            const row = Math.floor(i / 6), col = i % 6;
-            const x = BEAKER.x0 + 10 + col * ((inner - 12) / 5);
-            const y = BEAKER.bottom - 8 - row * 9 - ((i % 3) * 1.5);
-            if (y < BEAKER.bottom - pileH - 10) continue;
-            body += `<rect class="crystal pure" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="8" height="7" rx="1.5" transform="rotate(${(i * 37) % 40 - 20} ${x + 4} ${y + 3})"/>`;
+        // 바닥의 결정: 나온 양(g)에 비례하는 알갱이 수. 막 생긴 알갱이는 용액 속에서 가라앉는 중이다.
+        const perGrain = 1.2, made = st.crystals / perGrain, n = Math.min(150, Math.floor(made));
+        for (let i = 0; i < n; i += 1) {
+            const g = grainSpot(i), sinking = i >= n - 4 && !done ? (n - i) / 5 : 0;
+            const y = sinking ? g.y - (g.y - liquidTop - 20) * sinking * (0.6 + 0.4 * rnd(i)) : g.y;
+            body += `<path class="crystal pure" d="M-3.4 0 L-1.7 -3 H1.7 L3.4 0 L1.7 3 H-1.7 Z" transform="translate(${g.x.toFixed(1)} ${y.toFixed(1)}) rotate(${g.rot.toFixed(0)})"/>`;
         }
         for (let i = 0; i < Math.round(st.imp * 2); i += 1) {
-            const x = BEAKER.x0 + 12 + ((i * 31) % (inner - 16));
-            body += `<rect class="crystal dirt" x="${x.toFixed(1)}" y="${(BEAKER.bottom - 10 - (i % 2) * 8).toFixed(1)}" width="6" height="6" rx="1.5"/>`;
+            const x = BEAKER.x0 + 16 + ((i * 31) % (inner - 24));
+            body += `<rect class="crystal dirt" x="${x.toFixed(1)}" y="${(BEAKER.bottom - 9 - (i % 2) * 6).toFixed(1)}" width="5" height="5" rx="1.5"/>`;
         }
         let out = `<g clip-path="url(#beakerClip)">${body}</g>`;
-        out += `<path class="beaker" d="M${BEAKER.x0},${BEAKER.top} L${BEAKER.x0},${BEAKER.bottom} L${BEAKER.x1},${BEAKER.bottom} L${BEAKER.x1},${BEAKER.top}"/>`;
-        // thermometer
-        const TX = 192, TOP = 56, BOT = 176;
-        out += `<rect class="therm-tube" x="${TX}" y="${TOP}" width="10" height="${BOT - TOP}" rx="5"/>`;
+        // 비커: 주둥이와 눈금이 있는 유리 그릇
+        out += `<path class="beaker" d="M${BEAKER.x0 - 8},${BEAKER.top - 4} Q${BEAKER.x0 - 2},${BEAKER.top - 2} ${BEAKER.x0},${BEAKER.top + 4} L${BEAKER.x0},${BEAKER.bottom - 6} Q${BEAKER.x0},${BEAKER.bottom} ${BEAKER.x0 + 6},${BEAKER.bottom} L${BEAKER.x1 - 6},${BEAKER.bottom} Q${BEAKER.x1},${BEAKER.bottom} ${BEAKER.x1},${BEAKER.bottom - 6} L${BEAKER.x1},${BEAKER.top}"/>`;
+        for (let k = 0; k < 4; k += 1) out += `<line x1="${BEAKER.x0 + 6}" x2="${BEAKER.x0 + (k % 2 ? 14 : 22)}" y1="${BEAKER.bottom - 26 - k * 28}" y2="${BEAKER.bottom - 26 - k * 28}" stroke="#7d98a4" stroke-width="1.2"/>`;
+        out += `<path d="M${BEAKER.x0 + 4},${BEAKER.top + 12} V${BEAKER.bottom - 14}" stroke="#fff" stroke-width="3" opacity=".6" stroke-linecap="round"/>`;
+        // 온도계: 비커 속 용액에 꽂혀 있다
+        const TX = BEAKER.x1 - 22, TOP = BEAKER.top - 22, BOT = BEAKER.bottom - 22;
+        out += `<rect class="therm-tube" x="${TX}" y="${TOP}" width="9" height="${BOT - TOP}" rx="4.5"/>`;
+        out += `<circle cx="${TX + 4.5}" cy="${BOT}" r="6.5" fill="#dc2626" stroke="#94a3b8" stroke-width="1.2"/>`;
         const tf = Math.max(0, Math.min(1, s.T / 100));
-        out += `<rect class="therm-fill" x="${TX + 2.5}" y="${(BOT - 5 - (BOT - TOP - 10) * tf).toFixed(1)}" width="5" height="${((BOT - TOP - 10) * tf + 5).toFixed(1)}" rx="2.5"/>`;
-        // under the bulb, clear of the column of numbers to the right
-        out += `<text class="read-text" x="${TX + 5}" y="192" text-anchor="middle">${s.T.toFixed(0)} ℃</text>`;
+        out += `<rect class="therm-fill" x="${TX + 2.2}" y="${(BOT - (BOT - TOP - 12) * tf).toFixed(1)}" width="4.6" height="${((BOT - TOP - 12) * tf).toFixed(1)}" rx="2.3"/>`;
+        out += `<text class="read-text" x="${TX + 14}" y="${TOP + 8}">${s.T.toFixed(0)} ℃</text>`;
         if (s.T > 70) {
             for (let i = 0; i < 3; i += 1) {
-                out += `<path class="steam" d="M${BEAKER.x0 + 24 + i * 28},${BEAKER.top + 16} q6,-10 0,-18">` +
+                out += `<path class="steam" d="M${BEAKER.x0 + 24 + i * 28},${BEAKER.top + 20} q6,-10 0,-18">` +
                        `<animate attributeName="opacity" values="0;.7;0" dur="2s" begin="${(i * 0.5).toFixed(1)}s" repeatCount="indefinite"/></path>`;
             }
         }
@@ -151,11 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="part-label" x="248" y="60">${a.S.name} ${a.S.formula}</text>`;
         out += `<text class="note-text" x="248" y="80">물 ${a.w} g · ${a.T1} ℃ 에서 ${a.dissolved.toFixed(1)} g 녹음</text>`;
         out += `<text class="note-text" x="248" y="98">${a.T2} ℃ 에서는 ${a.canHold.toFixed(1)} g 만 녹을 수 있음</text>`;
-        out += `<text class="note-text" x="248" y="116">지금까지 나온 결정 ${st.crystals.toFixed(1)} g</text>`;
-        out += `<text class="note-text" x="248" y="134">불순물 ${a.imp} g 중 녹아 남는 양 ${Math.min(a.imp, a.impCanHold).toFixed(1)} g</text>`;
-        const tone = a.verdict === 'pure' ? '#059669' : a.verdict === 'slight' ? '#d97706' : '#ea580c';
-        out += `<text class="purity-text" fill="${tone}" x="248" y="160">${VERDICT[a.verdict]}</text>`;
-        out += `<text class="note-text" x="20" y="206">석출량: ${yieldText(a)}</text>`;
+        // 식히기 전에는 나온 양·불순물·순도를 적지 않는다.
+        if (started) out += `<text class="note-text" x="248" y="116">지금까지 나온 결정 ${st.crystals.toFixed(1)} g</text>`;
+        if (done) {
+            out += `<text class="note-text" x="248" y="134">불순물 ${a.imp} g 중 녹아 남는 양 ${Math.min(a.imp, a.impCanHold).toFixed(1)} g</text>`;
+            const tone = a.verdict === 'pure' ? '#059669' : a.verdict === 'slight' ? '#d97706' : '#ea580c';
+            out += `<text class="purity-text verdict-text" fill="${tone}" x="248" y="160">${VERDICT[a.verdict]}</text>`;
+            out += `<text class="note-text" x="248" y="182">석출량 ${yieldText(a)}</text>`;
+        }
         window.scienceScene.render(mainGroup,out);
     }
 
@@ -194,7 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // A solubility decrease is per 100 g water; scale it by the selected water mass.
         out += `<line class="imp-line" x1="${GRAPH.x0}" y1="${gy(IMP_S).toFixed(1)}" x2="${GRAPH.x1}" y2="${gy(IMP_S).toFixed(1)}"/>`;
-        out += `<text class="imp-text" x="${GRAPH.x1 - 4}" y="${(gy(IMP_S) - 5).toFixed(1)}" text-anchor="end">불순물의 용해도 ${IMP_S}</text>`;
+        // 이름표는 선 위가 아니라 그래프 왼쪽 위 빈 곳에 범례로 둔다(염화 나트륨 선과 겹치지 않게).
+        out += `<line class="imp-line" x1="${GRAPH.x0 + 10}" y1="${gy(205).toFixed(1)}" x2="${GRAPH.x0 + 30}" y2="${gy(205).toFixed(1)}"/><text class="imp-text" x="${GRAPH.x0 + 36}" y="${(gy(205) + 4).toFixed(1)}">불순물의 용해도 ${IMP_S}</text>`;
         out += `<line class="drop-line" x1="${gx(a.T2).toFixed(1)}" y1="${gy(a.s2).toFixed(1)}" x2="${gx(a.T1).toFixed(1)}" y2="${gy(a.s1).toFixed(1)}"/>`;
         out += `<line class="drop-line" x1="${gx(a.T2).toFixed(1)}" y1="${gy(a.s1).toFixed(1)}" x2="${gx(a.T1).toFixed(1)}" y2="${gy(a.s1).toFixed(1)}"/>`;
         out += `<line class="drop-line" x1="${gx(a.T2).toFixed(1)}" y1="${gy(a.s1).toFixed(1)}" x2="${gx(a.T2).toFixed(1)}" y2="${gy(a.s2).toFixed(1)}"/>`;
@@ -216,8 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
         hotOutput.textContent = `${hot()} ℃`;
         coldOutput.textContent = `${cold()} ℃`;
         dirtOutput.textContent = `${a.imp} g`;
-        stageBadge.textContent = `${a.crystals.toFixed(1)} g 석출 · ${SHORT[a.verdict]}`;
-        window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">용해도</span><span class="data-val">${a.T1} ℃ 에서 ${a.s1.toFixed(1)} · ${a.T2} ℃ 에서 ${a.s2.toFixed(1)} (물 100 g당)</span></div>` +
+        const shown = (sim && sim.done) || !resultContent.hidden;
+        stageBadge.textContent = shown ? `${a.crystals.toFixed(1)} g 석출 · ${SHORT[a.verdict]}` : `${a.S.formula} · ${a.T1} ℃ → ${a.T2} ℃`;
+        window.scienceScene.render(dataNote,!shown ? `<div class="data-row"><span class="data-name">용해도</span><span class="data-val">${a.T1} ℃ 에서 ${a.s1.toFixed(1)} · ${a.T2} ℃ 에서 ${a.s2.toFixed(1)} (물 100 g당)</span></div>` : `<div class="data-row"><span class="data-name">용해도</span><span class="data-val">${a.T1} ℃ 에서 ${a.s1.toFixed(1)} · ${a.T2} ℃ 에서 ${a.s2.toFixed(1)} (물 100 g당)</span></div>` +
             `<div class="data-row"><span class="data-name">녹아 있던 양</span><span class="data-val">${a.s1.toFixed(1)} × ${a.w} ÷ 100 = ${a.dissolved.toFixed(1)} g</span></div>` +
             `<div class="data-row"><span class="data-name">석출량</span><span class="data-val">${yieldText(a)}</span></div>` +
             `<div class="data-row"><span class="data-name">불순물</span><span class="data-val">${a.imp} g 중 ${a.impCanHold.toFixed(1)} g 까지 녹을 수 있어 ${a.impOut.toFixed(1)} g 석출</span></div>` +
@@ -245,15 +256,16 @@ document.addEventListener('DOMContentLoaded', () => {
         stopRun();
         sim = freshSim();
         running = true;
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) { running = false; const a = analyse(); while (!step(sim, 0.1, a)); finish(); return; }
         lastStamp = performance.now();
         render();
         frameId = requestAnimationFrame(frame);
     }
 
     function finish() {
-        const a = render();
         resultEmpty.hidden = true;
         resultContent.hidden = false;
+        const a = render();
         valueA.textContent = `${a.crystals.toFixed(1)} g`;
         valueB.textContent = a.crystals > 0 ? `${a.purity.toFixed(1)}%` : '—';
         predictionResult.textContent = !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
@@ -358,3 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetBtn.click();
 });
+
+// 「실험 결과의 의미」 해설은 결과를 확인한 뒤에만 펼친다(답이 먼저 보이지 않게).
+document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.meaning-panel'),c=document.getElementById('resultContent');if(!m||!c)return;const sync=()=>{m.style.display=c.hidden?'none':'';};new MutationObserver(sync).observe(c,{attributes:true,attributeFilter:['hidden']});sync();});
