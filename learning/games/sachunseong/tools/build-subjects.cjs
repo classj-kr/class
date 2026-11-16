@@ -122,16 +122,15 @@ function proverbs() {
   write('proverbs', labels, levels);
 }
 
-/* 원소: 기호 ↔ 이름, 원자 번호 차례로. */
+/* 원소: 중·고등 과학에서 외우는 원소만(1~20번 + 생활 속 금속·할로젠). 101~118번 같은 원소는 교과서에 나오지 않는다. */
 function elements() {
   const ctx = runScripts(['learning/inquiry/periodic-table/elements-data.js']);
-  const all = ctx.ELEMENTS_DATA.slice().sort((a, b) => a.number - b.number);
-  const ranges = [[1, 20], [21, 40], [41, 60], [61, 80], [81, 100], [101, 118]];
-  const labels = {}, levels = {};
-  ranges.forEach(([from, to], k) => {
-    labels[k + 1] = `${from}~${to}번`;
-    levels[k + 1] = all.filter(e => e.number >= from && e.number <= to).map(e => [e.symbol, e.name]);
-  });
+  const bySymbol = new Map(ctx.ELEMENTS_DATA.map(e => [e.symbol, e]));
+  const first20 = ctx.ELEMENTS_DATA.filter(e => e.number <= 20).sort((a, b) => a.number - b.number);
+  const everyday = ['Fe', 'Cu', 'Zn', 'Ag', 'Au', 'Pb', 'Hg', 'Sn', 'Ni', 'Pt', 'Mn', 'Cr', 'Br', 'I', 'Ba'].map(s => bySymbol.get(s)).filter(Boolean);
+  const pair = e => [e.symbol, e.name];
+  const labels = { 1: '1~20번', 2: '1~20번과 생활 속 원소' };
+  const levels = { 1: first20.map(pair), 2: [...first20, ...everyday].map(pair) };
   write('elements', labels, levels);
 }
 
