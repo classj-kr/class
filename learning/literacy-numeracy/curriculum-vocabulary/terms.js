@@ -106,7 +106,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=14a98dbd",
+  "words": "words-6-1.js?v=1c3f31a6",
   "figures": [
    "figures/6-1/kor-2.js?v=087c0f26",
    "figures/6-1/kor-3.js?v=b422b14a",
@@ -284,7 +284,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=14a98dbd",
+  "words": "words-6-1.js?v=1c3f31a6",
   "figures": [
    "figures/6-1/kor-2.js?v=087c0f26",
    "figures/6-1/kor-3.js?v=b422b14a",
