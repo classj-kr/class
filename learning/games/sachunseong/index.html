@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1d130d">
+  <title>사천성</title>
+  <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
+  <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+  <link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261117-shisen">
+  <link rel="stylesheet" href="styles.css?v=20261117-1">
+  <script src="../../../assets/network/game-network.js?v=20260821"></script>
+  <script src="../../../assets/network/finisher-api.js"></script>
+  <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
+  <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+  <script src="/assets/network/single-player-avatar.js?v=2"></script>
+  <script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+  <script src="/assets/network/puzzle-race.js?v=20261117-1"></script>
+  <script src="/assets/site-storage.js?v=20261006-1"></script>
+  <script src="/assets/sound/race-music.js?v=20261106-1"></script>
+  <script src="/assets/sound/music-control.js?v=20261114-safe-controls"></script>
+</head>
+<body data-game-navigation="single-player" data-entry-game="sachunseong" data-sfx-feedback="none">
+  <main class="page-shell">
+    <section class="start-screen screen" id="startScreen" data-game-entry aria-labelledby="startTitle">
+      <h1 class="start-title" id="startTitle"><span>SHISEN-SHO</span></h1>
+
+      <p class="player-line" id="playerLine"></p>
+
+      <div class="setting-block">
+        <label class="setting-label" for="levelSelect">단계</label>
+        <select id="levelSelect" class="level-select"></select>
+      </div>
+      <div class="setting-block">
+        <p class="setting-label">판 크기</p>
+        <div class="mode-switch" aria-label="판 크기 선택">
+          <button type="button" data-size="small" aria-pressed="true"><strong>6 × 4</strong><span>12쌍</span></button>
+          <button type="button" data-size="medium" aria-pressed="false"><strong>8 × 5</strong><span>20쌍</span></button>
+          <button type="button" data-size="large" aria-pressed="false"><strong>10 × 6</strong><span>30쌍</span></button>
+        </div>
+      </div>
+
+      <div class="start-actions">
+        <button class="primary start-button" id="startButton" type="button">Start</button>
+        <button class="secondary start-button" id="raceButton" type="button">순위전</button>
+      </div>
+      <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
+
+      <div class="finishers-panel">
+        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-list" id="today-finishers-list"></div>
+      </div>
+    </section>
+
+    <section class="game-panel screen" id="gameScreen" aria-labelledby="gameTitle" hidden>
+      <h1 id="gameTitle" class="visually-hidden">사천성</h1>
+      <div class="board-area" id="boardArea">
+        <div class="board-wrap" id="boardWrap">
+          <div class="tile-board" id="board" role="grid" aria-label="사천성 판"></div>
+          <svg class="link-layer" id="linkLayer" aria-hidden="true"></svg>
+          <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <aside class="side-column">
+        <header class="game-topbar">
+          <button class="text-button" id="settingsButton" type="button" aria-label="설정 화면으로 돌아가기">← SETTINGS</button>
+          <span id="modeLabel"></span>
+        </header>
+
+        <div class="stats" aria-label="게임 기록">
+          <div><span>남은 패</span><strong id="tilesLeft">0</strong></div>
+          <div class="stat-moves"><span>지울 수 있는 짝</span><strong id="movesLeft">0</strong></div>
+          <div><span>TIME</span><strong id="timer">00:00</strong></div>
+        </div>
+
+        <div class="tools" role="group" aria-label="도움 쓰기">
+          <button type="button" id="hintButton" class="tool-button"><span class="tool-key">힌트</span><strong id="hintCount">3</strong></button>
+          <button type="button" id="shuffleButton" class="tool-button"><span class="tool-key">재배치</span><strong id="shuffleCount">2</strong></button>
+        </div>
+
+        <div class="race-standings" id="raceStandings" hidden></div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+
+        <div class="celebration" id="celebration" hidden>
+          <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+            <span class="result-mark" aria-hidden="true">✓</span>
+            <p class="eyebrow">ALL CLEAR</p>
+            <h2 id="resultTitle">CONGRATULATIONS!</h2>
+            <p id="resultSummary"></p>
+            <div class="finishers-panel result-finishers">
+              <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+              <div class="finishers-list" id="result-finishers-list"></div>
+            </div>
+            <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="newGameButton" type="button">NEW PUZZLE</button>
+          <button class="secondary" id="guideButton" type="button" aria-expanded="false" aria-controls="guidePanel">Rules</button>
+        </div>
+      </aside>
+
+      <aside class="guide-panel" id="guidePanel" aria-labelledby="guideTitle" hidden>
+        <header class="guide-header">
+          <h2 id="guideTitle">HOW TO PLAY</h2>
+          <button class="guide-close" id="guideCloseButton" type="button" aria-label="놀이 방법 닫기">×</button>
+        </header>
+        <div class="solve-guide">
+          <div class="guide-demo" aria-hidden="true">
+            <svg viewBox="0 0 220 120">
+              <rect x="6" y="66" width="44" height="34" rx="5" class="g-tile en"/><text x="28" y="84" class="g-en">apple</text>
+              <rect x="88" y="20" width="44" height="34" rx="5" class="g-tile"/><text x="110" y="38" class="g-ko">책</text>
+              <rect x="88" y="66" width="44" height="34" rx="5" class="g-tile"/><text x="110" y="84" class="g-ko">학교</text>
+              <rect x="170" y="66" width="44" height="34" rx="5" class="g-tile ko"/><text x="192" y="84" class="g-ko">사과</text>
+              <polyline points="28,66 28,9 192,9 192,66" class="g-line"/>
+            </svg>
+          </div>
+          <h3>기본 규칙</h3>
+          <ol>
+            <li>영어 낱말 패와 그 뜻이 적힌 패가 한 짝입니다. <strong>두 패를 차례로 누르면</strong> 짝이 맞을 때 둘 다 사라집니다.</li>
+            <li>두 패 사이를 <strong>선으로 이을 수 있어야</strong> 지울 수 있습니다. 선은 빈칸으로만 지나가고, <strong>두 번까지만 꺾일 수 있습니다</strong>(곧은 선 세 토막까지).</li>
+            <li>판 바깥 둘레도 빈 길이라 선이 판 밖으로 돌아 나갈 수 있습니다.</li>
+            <li>패를 모두 지우면 끝납니다. 걸린 시간이 기록입니다.</li>
+          </ol>
+          <h3>시간이 더해지는 일</h3>
+          <ol>
+            <li>짝이 아닌 낱말과 뜻을 고르면 <strong>5초</strong>가 더해집니다. 짝은 맞는데 선이 막혔으면 시간은 그대로입니다.</li>
+            <li>재배치를 다 쓴 뒤 지울 짝이 하나도 없으면 판이 저절로 섞이고 <strong>10초</strong>가 더해집니다.</li>
+          </ol>
+          <h3>콤보와 도움</h3>
+          <ol>
+            <li>앞 짝을 지우고 <strong>4초 안에</strong> 다음 짝을 지우면 콤보가 이어집니다. 콤보가 셋째부터는 짝마다 <strong>1초</strong>가 줄어듭니다.</li>
+            <li><strong>힌트</strong>(판마다 3번)는 지금 지울 수 있는 짝 하나를 반짝여 줍니다.</li>
+            <li><strong>재배치</strong>(판마다 2번)는 남은 패를 지금 자리끼리 섞습니다. 지울 짝이 없으면 저절로 한 번 씁니다.</li>
+          </ol>
+          <h3>순위전</h3>
+          <ol>
+            <li>시작 화면의 <strong>순위전</strong>을 누르면 방이 만들어집니다. 다른 사람은 방 번호를 넣고 들어옵니다.</li>
+            <li>모두 같은 판을 받아 동시에 풀고, 먼저 다 지운 차례대로 순위가 정해집니다. 다른 사람이 얼마나 풀었는지는 옆 경주로에서 보입니다.</li>
+          </ol>
+        </div>
+      </aside>
+      <button class="guide-backdrop" id="guideBackdrop" type="button" aria-label="놀이 방법 닫기" hidden></button>
+    </section>
+  </main>
+
+  <script src="logic.js?v=20261117-1"></script>
+  <script src="/assets/learning-activity.js?v=20261116-2"></script>
+  <script src="app.js?v=20261117-1"></script>
+</body>
+</html>

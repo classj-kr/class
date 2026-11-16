@@ -537,6 +537,7 @@ const MAX_ROOM_PLAYERS = {
   clue: 6,
   codenames: 5,
   dobble: 8,
+  sachunseong: 8,
   circulation: 61,
   digestion: 61,
   respiration: 61,
@@ -575,6 +576,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   clue: "/learning/games/clue/clue",
   codenames: "/learning/games/codenames/codenames",
   dobble: "/learning/games/dobble/dobble",
+  sachunseong: "/learning/games/sachunseong/",
   "solar-system-ufo-flight": "/learning/inquiry/space/solar-system",
   circulation: "/learning/inquiry/human-body/circulation",
   digestion: "/learning/inquiry/human-body/digestion",
@@ -586,7 +588,7 @@ const MULTIPLAYER_CONTENT_PATHS = Object.freeze({
   temperature: "/learning/inquiry/human-body/homeostasis"
 });
 
-const FINISHER_GAMES = new Set(["coinweighing", "hanoitower", "sphinx", "slidingpuzzle", "nonogram", "minesweeper"]);
+const FINISHER_GAMES = new Set(["coinweighing", "hanoitower", "sphinx", "slidingpuzzle", "nonogram", "minesweeper", "sachunseong"]);
 
 // 3학년 분수②는 예전에 /fraction 에 따로 있었다. 옛 주소로 온 사람은 연산 목록 안의 새 자리로 보낸다.
 app.use("/fraction", (req, res) => {

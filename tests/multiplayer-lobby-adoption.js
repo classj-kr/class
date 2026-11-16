@@ -23,6 +23,7 @@ const expectedMultiplayerGames = [
     "expedition",
     "fruitbell",
     "gemguild",
+    "gonu",
     "honeycomb",
     "janggi",
     "kingdom-trails",
@@ -36,7 +37,7 @@ const expectedMultiplayerGames = [
     "traverse",
     "yutnori"
 ];
-const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "minesweeper", "nonogram", "sliding-puzzle", "sphinx"];
+const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "minesweeper", "nonogram", "sachunseong", "sliding-puzzle", "sphinx"];
 
 const ordinaryGames = fs.readdirSync(gamesRoot, { withFileTypes: true })
     .filter(entry => entry.isDirectory())
@@ -49,6 +50,8 @@ const ordinaryGames = fs.readdirSync(gamesRoot, { withFileTypes: true })
 
 const multiplayerGames = ordinaryGames.filter(({ file }) => {
     const html = fs.readFileSync(file, "utf8");
+    // 개인 퍼즐에 순위전을 단 게임(puzzle-race.js)은 혼자 하는 게임이다. 대기실은 그 공용 파일이 만든다.
+    if (html.includes("puzzle-race.js")) return false;
     return html.includes("multiplayer-lobby.js") || html.includes("ClassroomMultiplayerLobby.create") ||
         (/CREATE ROOM/i.test(html) && /JOIN ROOM/i.test(html));
 });

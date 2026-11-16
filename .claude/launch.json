@@ -50,6 +50,15 @@
       ],
       "port": 10000,
       "autoPort": true
+    },
+    {
+      "name": "puzzle-race-harness",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tests/puzzle-race-harness.cjs"
+      ],
+      "env": { "HARNESS_PORT": "4207" },
+      "port": 4207
     }
   ]
 }
