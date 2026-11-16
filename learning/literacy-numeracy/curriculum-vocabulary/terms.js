@@ -1,5 +1,30 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
+ "2-1": {
+  "words": "words-2-1.js?v=85480f60",
+  "figures": [
+   "figures/2-1/kor-2.js?v=4ba5c166",
+   "figures/2-1/kor.js?v=b2ea0d49",
+   "figures/2-1/math-1.js?v=b934d9be",
+   "figures/2-1/math-2.js?v=3a86cd9d",
+   "figures/2-1/math-3.js?v=0d318df5",
+   "figures/2-1/math-4.js?v=130f71de",
+   "figures/2-1/math-5.js?v=04ff8b80",
+   "figures/2-1/math-6.js?v=8cb818d7"
+  ]
+ },
+ "2-2": {
+  "words": "words-2-2.js?v=3dd4f753",
+  "figures": [
+   "figures/2-2/kor.js?v=ee35e800",
+   "figures/2-2/math-1.js?v=e541ec66",
+   "figures/2-2/math-2.js?v=20caac22",
+   "figures/2-2/math-3.js?v=46eeb2c6",
+   "figures/2-2/math-4.js?v=dd6c09b9",
+   "figures/2-2/math-5.js?v=6b177580",
+   "figures/2-2/math-6.js?v=a532c273"
+  ]
+ },
  "3-1": {
   "words": "words-3-1.js?v=bffdf7b3",
   "figures": [
@@ -222,6 +247,31 @@ window.CurriculumTerms = {
 };
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
+ "2-1": {
+  "words": "words-2-1.js?v=85480f60",
+  "figures": [
+   "figures/2-1/kor-2.js?v=4ba5c166",
+   "figures/2-1/kor.js?v=b2ea0d49",
+   "figures/2-1/math-1.js?v=b934d9be",
+   "figures/2-1/math-2.js?v=3a86cd9d",
+   "figures/2-1/math-3.js?v=0d318df5",
+   "figures/2-1/math-4.js?v=130f71de",
+   "figures/2-1/math-5.js?v=04ff8b80",
+   "figures/2-1/math-6.js?v=8cb818d7"
+  ]
+ },
+ "2-2": {
+  "words": "words-2-2.js?v=3dd4f753",
+  "figures": [
+   "figures/2-2/kor.js?v=ee35e800",
+   "figures/2-2/math-1.js?v=e541ec66",
+   "figures/2-2/math-2.js?v=20caac22",
+   "figures/2-2/math-3.js?v=46eeb2c6",
+   "figures/2-2/math-4.js?v=dd6c09b9",
+   "figures/2-2/math-5.js?v=6b177580",
+   "figures/2-2/math-6.js?v=a532c273"
+  ]
+ },
  "3-1": {
   "words": "words-3-1.js?v=bffdf7b3",
   "figures": [
