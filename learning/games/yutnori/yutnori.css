@@ -4,7 +4,7 @@
     background: #142d2e;
 }
 * { box-sizing: border-box; }
-body { margin: 0; padding: 18px; min-height: 100dvh; background: radial-gradient(ellipse at 50% 0, #417a70, transparent 72%), repeating-linear-gradient(115deg, #ffffff03 0 1px, transparent 1px 16px), #142d2e; }
+body { margin: 0; padding: 18px; min-height: 100dvh; background: linear-gradient(#17251d26, #17251d26), url("assets/lobby-courtyard.webp") center / cover no-repeat #947552; }
 body:has(#gameScreen:not(.hidden)) { background: radial-gradient(ellipse at 5% 85%, #f6ffff 0 8%, transparent 26%), radial-gradient(ellipse at 98% 68%, #fffdf2 0 8%, transparent 30%), radial-gradient(ellipse at 40% 110%, #e9ffef 0 20%, transparent 45%), linear-gradient(#5caebe, #b2e1cf 70%, #eef5d9); }
 .shell { width: min(1250px, 100%); margin: auto; }
 .hidden { display: none !important; }
