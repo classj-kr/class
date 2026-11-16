@@ -79,9 +79,9 @@ button.bench-slot:hover, button.bench-slot[aria-pressed="true"] { background: #f
 .board-token, .walking-token { position: absolute; translate: -50% -90%; }
 .board-token .token, .board-token.token, .walking-token.token { --piece-size: clamp(42px, 11cqw, 72px); }
 .board-token b, .walking-token b { min-width: 18px; font-size: 11px; border-width: 2px; }
-.token-group { display: inline-grid; grid-template-columns: repeat(2, auto); gap: 3px; align-items: end; }
-.token-group .token { --piece-size: clamp(28px, 6.5cqw, 42px); }
-.token-group[data-count="3"] > .token:last-child { grid-column: 1 / -1; justify-self: center; }
+.token-group { --group-size: clamp(28px, 6.5cqw, 42px); display: inline-grid; grid-template-columns: repeat(2, calc(var(--group-size) * .64)); grid-auto-rows: calc(var(--group-size) * .86); width: calc(var(--group-size) * 1.64); padding-bottom: calc(var(--group-size) * .14 + 5px); align-items: start; }
+.token-group .token { --piece-size: var(--group-size); }
+.token-group[data-count="3"] > .token:last-child { grid-column: 1 / -1; margin-left: calc(var(--group-size) * .32); }
 .walking-token { z-index: 3; pointer-events: none; }
 .pick-token { border: 0; padding: 0; background: transparent; z-index: 2; }
 .pick-token:hover { filter: brightness(1.15); }

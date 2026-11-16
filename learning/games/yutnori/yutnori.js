@@ -332,6 +332,7 @@
     }
 
     function update(next, animate = true) {
+        window.YutSounds?.cancel();
         animation?.cancel();
         animation = null;
         clearReturns();
@@ -369,6 +370,7 @@
         if (!event || event.kind === "roll") showSticks(event?.roll);
         announce(animate ? null : event);
         if (animate && event?.kind === "roll") {
+            window.YutSounds?.roll(event.roll.steps, reducedMotion() ? .2 : .85);
             if (reducedMotion()) announce(event);
             else {
                 rolling = true;
@@ -395,17 +397,22 @@
             }
             animation = el.animate(frames,
                 {duration: Math.min(1150, 220 * (path.length - 1)), easing:"linear", fill:"forwards"});
+            window.YutSounds?.move(path.length - 1, Math.min(1150, 220 * (path.length - 1)));
             const current = animation;
             current.finished.then(() => {
                 if (animation === current) {
                     animation = null;
                     render();
                     announce(event);
+                    window.YutSounds?.arrive(event, state.winner);
                     returnToBench(captured);
                 }
             })
                 .catch(() => {}).finally(() => el.remove());
-        } else if (event?.kind === "move") announce(event);
+        } else if (event?.kind === "move") {
+            announce(event);
+            if (animate) { window.YutSounds?.move(1, 60); window.YutSounds?.arrive(event, state.winner); }
+        }
         render();
         tickClock();
     }
@@ -432,6 +439,7 @@
     }
 
     function returnToLobby() {
+        window.YutSounds?.cancel();
         clearReturns();
         clearInterval(turnTimer);
         clearTimeout(rollTimer);
@@ -566,6 +574,7 @@
             }
         },
         onAbort:({message}) => {
+            window.YutSounds?.cancel();
             clearInterval(turnTimer);
             $("abortMessage").textContent = message;
             if (!$("abortDialog").open) $("abortDialog").showModal();
