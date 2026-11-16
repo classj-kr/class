@@ -16,6 +16,9 @@
   positionNotes();wide.addEventListener('change',positionNotes);
   $('principle').textContent=principle;
   document.querySelector('.color-options').insertAdjacentHTML('beforebegin',`<fieldset id="badukModes"><legend>대국 방식</legend>${Object.entries(R.MODES).map(([id,m])=>`<label class="option secondary"><input type="radio" name="mode" value="${id}" ${id==='capture'?'checked':''}><span><strong>${m.size}×${m.size} · ${m.name}</strong><small>${m.description}</small></span></label>`).join('')}</fieldset>`);
+  // 힌트·해설이 D4처럼 좌표로 말하니 판에서 찾을 수 있게 '좌표 보기'(장기·오목과 같은 단추).
+  $('undo').insertAdjacentHTML('afterend','<button id="badukCoords" class="secondary" type="button" aria-pressed="false">좌표 보기</button>');
+  let coords=false;try{coords=localStorage.getItem('boardCoachCoords')==='on';}catch{}
   document.body.insertAdjacentHTML('beforeend','<dialog id="badukResignDialog" aria-labelledby="badukResignTitle"><h2 id="badukResignTitle">이번 대국을 기권할까요?</h2><p>기권하면 대국을 마치고 중요한 장면을 복기할 수 있어요.</p><div class="resign-choices"><button id="badukResignCancel" class="secondary" type="button">계속 두기</button><button id="badukResignConfirm" class="primary" type="button">기권하기</button></div></dialog>');
   $('rulesCopy').innerHTML='<p>흑부터 교차점에 하나씩 둡니다. 위·아래·왼쪽·오른쪽으로 이어진 돌은 활로(빈 이웃 자리)를 공유해요. 마지막 활로를 막으면 상대 돌을 잡아요. 상대 돌을 잡지 못하면서 내 활로가 없어지는 수와 이전 판을 되풀이하는 수는 둘 수 없어요.</p><p>돌 따먹기: 7×7에서 돌 3개를 먼저 잡으면 승리해요. 땅 따먹기: 7×7에서 40수 뒤 내 돌과 둘러싼 빈 땅을 합산해요. 두 모드는 사석을 따로 제거하지 않아요. 둘 곳이 없을 때만 패스하며, 둘 다 못 두면 잡은 돌 수(돌 따먹기) 또는 면적(땅 따먹기)으로 끝내요.</p><p>정식 바둑 연습: 9×9, 백 덤 7.5점, 연속 패스 후 사석 확인. 사석을 직접 표시한 뒤 남은 돌과 둘러싼 빈 땅을 합산해요. 흑돌과 백돌 양쪽에 닿은 빈 영역은 어느 쪽 점수에도 넣지 않아요. AI는 사활 전문가가 아니므로 불확실하면 대국을 계속하세요.</p><p>레벨 1~5는 이 연습 AI 안에서의 상대적 수준이에요. 힌트는 상대 레벨과 별도로 더 깊게 계산한 후보이며 최선 수나 정석을 보장하지 않아요. 시간 제한과 순위 기록은 없어요.</p>';
   function reason(label,title,text){$('reasonLabel').textContent=label;$('moveLabel').textContent=title;$('reason').textContent=text;}
@@ -32,17 +35,18 @@
     syncPreparedHint();
     const position=scene?.before||state,mark=scene?scene.feedback?.alternative??scene.index:hint?.index;
     const legal=new Set(R.legal(position)),active=started&&!busy&&!state.ended&&!scene&&state.color===human&&!state.scoring;
-    const board=$('board');board.className='board';board.style.gridTemplateColumns=`repeat(${position.size},1fr)`;
+    const board=$('board');board.className=`board${coords?' show-coords':''}`;board.style.gridTemplateColumns=`repeat(${position.size},1fr)`;
     board.setAttribute('aria-label',`${position.size}줄 바둑판`);
     board.innerHTML=position.board.map((v,i)=>{
       const row=Math.floor(i/position.size),col=i%position.size,dead=position.dead.includes(i),coordinate=R.coord(i,position.size);
       const enabled=!scene&&(state.scoring?!!v:active&&legal.has(i));
-      return `<button type="button" role="gridcell" class="square point${col===0?' edge-left':''}${col===position.size-1?' edge-right':''}${row===0?' edge-top':''}${row===position.size-1?' edge-bottom':''}${mark===i?' suggested':''}${position.last===i?' last':''}${dead?' dead-stone':''}" data-index="${i}" ${enabled?'':'disabled'} title="${coordinate}" aria-label="${coordinate} · ${v===1?'흑돌':v===2?'백돌':legal.has(i)?'둘 수 있는 곳':'둘 수 없는 곳'}${dead?' · 사석 표시':''}${mark===i?' · 추천 자리':''}">${v?`<span class="stone ${v===1?'black':'white'}"></span>`:''}${mark===i?'<span class="hint-ring" aria-hidden="true"></span>':''}</button>`;
+      return `<button type="button" role="gridcell" class="square point${col===0?' edge-left':''}${col===position.size-1?' edge-right':''}${row===0?' edge-top':''}${row===position.size-1?' edge-bottom':''}${mark===i?' suggested':''}${position.last===i?' last':''}${dead?' dead-stone':''}" data-index="${i}" ${enabled?'':'disabled'} title="${coordinate}" aria-label="${coordinate} · ${v===1?'흑돌':v===2?'백돌':legal.has(i)?'둘 수 있는 곳':'둘 수 없는 곳'}${dead?' · 사석 표시':''}${mark===i?' · 추천 자리':''}">${v?`<span class="stone ${v===1?'black':'white'}"></span>`:''}${mark===i?'<span class="hint-ring" aria-hidden="true"></span>':''}${coords&&col===0?`<span class="coord-label coord-rank" aria-hidden="true">${coordinate.slice(1)}</span>`:''}${coords&&row===position.size-1?`<span class="coord-label coord-file" aria-hidden="true">${coordinate[0]}</span>`:''}</button>`;
     }).join('');
     const opponent=started&&!scene&&!state.ended&&!state.scoring?history.at(-1)?.opponent:null;
     BoardCoachUI.showOpponent(opponent,board,position.size);
     $('turn').textContent=scene?`${history.indexOf(scene)+1}수 두기 전 · 복기`:!started?'레벨과 대국 방식을 골라 시작하세요.':state.ended?(state.winner===0?'무승부예요.':state.winner===human?'내가 이겼어요!':'AI가 이겼어요.'):state.scoring?'사석을 확인하세요':busy&&job==='move'?'AI가 생각하고 있어요…':state.color===human?'내 차례':'AI 차례';
     $('score').textContent=`${position.count}수`;
+    $('badukCoords').setAttribute('aria-pressed',String(coords));$('badukCoords').textContent=coords?'좌표 숨기기':'좌표 보기';
     $('title').textContent=R.MODES[position.mode].name;
     $('blackName').textContent=human===1?'나':'AI';$('whiteName').textContent=human===2?'나':'AI';
     $('blackCaptured').textContent=position.captures[0];$('whiteCaptured').textContent=position.captures[1];
@@ -118,7 +122,8 @@
     const button=event.target.closest('[data-index]');if(!button)return;const i=Number(button.dataset.index);
     if(state.scoring&&!scene){state=R.toggleDead(state,i);render();}else humanMove(i);
   });
-  $('hint').addEventListener('click',()=>calculate('hint'));$('retry').addEventListener('click',()=>calculate(job));
+  $('hint').addEventListener('click',()=>calculate('hint'));
+  $('badukCoords').addEventListener('click',()=>{coords=!coords;try{localStorage.setItem('boardCoachCoords',coords?'on':'off');}catch{}render();});$('retry').addEventListener('click',()=>calculate(job));
   $('undo').addEventListener('click',undo);$('rethink').addEventListener('click',undo);$('badukPass').addEventListener('click',()=>humanMove(-1));
   $('rulesButton').addEventListener('click',()=>$('badukRules').showModal());
   $('closeRules').addEventListener('click',()=>$('badukRules').close());

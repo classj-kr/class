@@ -44,3 +44,8 @@ html[data-coach-state="ready"] #coachLoading{display:none}
   .baduk-learning .shell>.coach-notes>section:first-child{border-top:0}
 }
 .baduk-learning #badukFinish{width:100%;margin-top:10px}
+/* 좌표 보기: 판 바깥 여백에 행 숫자(왼쪽, 아래가 1)와 열 글자(아래, I는 건너뜀). */
+.baduk-learning #gameScreen .board-frame:has(.show-coords){padding:8px 8px 28px 30px}
+.baduk-learning #board .coord-label{position:absolute;z-index:6;color:#3b2408;font:700 clamp(10px,2cqw,14px)/1 "Malgun Gothic",sans-serif;pointer-events:none;white-space:nowrap}
+.baduk-learning #board .coord-rank{right:calc(100% + 8px);top:50%;transform:translateY(-50%)}
+.baduk-learning #board .coord-file{top:calc(100% + 8px);left:50%;transform:translateX(-50%)}

@@ -18,6 +18,8 @@
   $("backLink").href = `../${game}/${game}`;
   BoardCoachUI.useOriginalTheme(game);
   BoardCoachUI.mountOpponent();
+  $("zoom").insertAdjacentHTML("afterend",'<button id="coordsButton" type="button" class="quiet" aria-pressed="false">좌표 보기</button>');
+  let coords=false;try{coords=localStorage.getItem("boardCoachCoords")==="on";}catch{}
   if(game==='reversi')document.querySelector('.controls').insertAdjacentHTML('afterend','<section class="panel" aria-label="최근 뒤집기"><p id="lastFlip" class="move-result" aria-live="polite">돌을 놓으면 뒤집힌 개수와 위치를 알려드려요.</p></section>');
   $("principle").textContent = principle;
   $("rulesCopy").innerHTML = `<p>${escape(variant)}</p><p>레벨 1은 처음 배우는 연습 상대입니다. 레벨이 올라갈수록 이어지는 수를 더 깊게 살펴봅니다. 학습 대국은 시간 제한과 순위 기록이 없습니다.</p><p>놓고 싶은 칸을 누르세요. 칸이 작으면 ‘판 확대’를 이용하세요. 금색 점선은 힌트, 돌의 빨간 테두리는 마지막 수입니다.</p><p>기본 원칙 참고: <a href="${game === "omok" ? "https://gomoku.renju.net/rules/" : "https://www.worldothello.org/download_file/view/58058c57-3cc5-409e-8cac-8d1cdb18360b/590"}" target="_blank" rel="noopener">${game === "omok" ? "Renju International Federation의 위협 설명" : "World Othello Federation의 입문 자료"}</a></p>`;
@@ -31,14 +33,14 @@
     moving=false;ClassGameMotion.cancel();
   }
   function drawBoard(position, mark = null) {
-    const board = $("board"); board.className = `${game} board`; board.style.setProperty("--size", position.size);
+    const board = $("board"); board.className = `${game} board${coords ? " show-coords" : ""}`; board.style.setProperty("--size", position.size);
     board.setAttribute("aria-label", `${position.size}줄 ${name}판`);
     const legal = new Set(R.legal(position)), canPlay = started && !busy && !moving && !state.ended && state.color === human && !reviewPosition;
     const line = new Set(position.line);
     board.innerHTML = position.board.map((v, index) => {
       const row = Math.floor(index / position.size), col = index % position.size;
       const star = game === "omok" && [48, 56, 112, 168, 176].includes(index);
-      return `<button type="button" role="gridcell" class="square ${game === "omok" ? "point" : "cell"}${legal.has(index) ? " legal" : ""}${position.last === index ? " last" : ""}${mark === index ? " suggested" : ""}${line.has(index) ? " winning" : ""}" data-index="${index}" data-row="${row}" data-col="${col}" ${canPlay && legal.has(index) ? "" : "disabled"} title="${R.coord(index, position.size)}" aria-label="${R.coord(index, position.size)} · ${v ? (v === 1 ? "흑돌" : "백돌") : legal.has(index) ? "둘 수 있는 곳" : "둘 수 없는 곳"}">${v ? `<span class="stone ${game === "reversi" ? "disc " : ""}${v === 1 ? "black" : "white"}"></span>` : star ? '<span class="starDot"></span>' : game === "reversi" && legal.has(index) ? '<span class="hint"></span>' : ""}${mark === index && game === "omok" ? '<span class="hint-ring" aria-hidden="true"></span>' : ""}</button>`;
+      return `<button type="button" role="gridcell" class="square ${game === "omok" ? "point" : "cell"}${legal.has(index) ? " legal" : ""}${position.last === index ? " last" : ""}${mark === index ? " suggested" : ""}${line.has(index) ? " winning" : ""}" data-index="${index}" data-row="${row}" data-col="${col}" ${canPlay && legal.has(index) ? "" : "disabled"} title="${R.coord(index, position.size)}" aria-label="${R.coord(index, position.size)} · ${v ? (v === 1 ? "흑돌" : "백돌") : legal.has(index) ? "둘 수 있는 곳" : "둘 수 없는 곳"}">${v ? `<span class="stone ${game === "reversi" ? "disc " : ""}${v === 1 ? "black" : "white"}"></span>` : star ? '<span class="starDot"></span>' : game === "reversi" && legal.has(index) ? '<span class="hint"></span>' : ""}${mark === index && game === "omok" ? '<span class="hint-ring" aria-hidden="true"></span>' : ""}${coords && col === 0 ? `<span class="coord-label coord-rank" aria-hidden="true">${R.coord(index, position.size).slice(1)}</span>` : ""}${coords && row === position.size - 1 ? `<span class="coord-label coord-file" aria-hidden="true">${R.coord(index, position.size)[0]}</span>` : ""}</button>`;
     }).join("");
     if(game==='reversi')for(const i of position.flipped||[]) {
       const cell=board.querySelector(`[data-index="${i}"]`);cell.classList.add('flipped');
@@ -61,6 +63,7 @@
     $("undo").disabled = !moves.some(m => m.color === human) || !!reviewPosition;
     $("hint").disabled = !started || busy || moving || state.ended || state.color !== human || !!reviewPosition;
     $('zoom').disabled=moving;
+    $("coordsButton").setAttribute("aria-pressed",String(coords));$("coordsButton").textContent=coords?"좌표 숨기기":"좌표 보기";
     $("feedbackPanel").classList.toggle("hidden", !feedback || !!reviewPosition);
     $("feedback").textContent = feedback?.text || "";
     $("reviewPanel").classList.toggle("hidden", !state.ended || moving);
@@ -147,6 +150,7 @@
   }
   $("board").addEventListener("click", event => { const button = event.target.closest("[data-index]"); if (button) place(Number(button.dataset.index)); });
   $("hint").addEventListener("click", () => startJob("hint"));
+  $("coordsButton").addEventListener("click",()=>{coords=!coords;try{localStorage.setItem("boardCoachCoords",coords?"on":"off");}catch{}render();});
   $("undo").addEventListener("click", undo); $("rethink").addEventListener("click", undo);
   $("retry").addEventListener("click", () => startJob(retryKind));
   $("zoom").addEventListener("click", () => { const on = $("boardViewport").classList.toggle("zoomed"); $("zoom").setAttribute("aria-pressed", String(on)); $("zoom").textContent = on ? "전체 판 보기" : "판 확대"; });

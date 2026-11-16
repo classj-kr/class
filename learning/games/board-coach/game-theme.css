@@ -89,6 +89,12 @@ body.original-coach {
 .original-coach button.primary, .original-coach #hint { background: var(--primary); color: var(--primary-ink); }
 .original-coach #resign { background: #351716; color: #f4c6c0; border-color: #74352e; }
 .original-coach .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+/* 좌표 보기: 판 바깥 여백에 행 숫자(왼쪽)와 열 글자(아래). 판 위 칸은 가리지 않는다. */
+.original-coach .board .coord-label { position: absolute; z-index: 6; color: #f6e2b0; font: 700 clamp(10px, 1.7cqw, 14px)/1 "Malgun Gothic", sans-serif; text-shadow: 0 1px 2px #000c; pointer-events: none; white-space: nowrap; }
+.original-coach .board .coord-rank { right: calc(100% + 7px); top: 50%; transform: translateY(-50%); }
+.original-coach .board .coord-file { top: calc(100% + 6px); left: 50%; transform: translateX(-50%); }
+.original-coach .board-frame:has(.show-coords) { padding: 7px 7px 27px 30px; }
+.original-coach .board.show-coords, .original-coach .board.show-coords .square { overflow: visible; }
 .original-coach .controls > * { justify-content: center; text-align: center; }
 .original-coach dialog { border: 2px solid var(--edge); border-radius: var(--radius); background: var(--panel); color: var(--ink); box-shadow: 0 20px 70px #000; }
 .original-coach dialog::backdrop { background: #000b; }
