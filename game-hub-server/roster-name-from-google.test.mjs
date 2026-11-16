@@ -15,6 +15,8 @@ const {
   pendingStudentName, pendingTeacherName, googleRosterName, fillPendingNamesFromGoogle, namesLookDifferent
 } = require("./roster-names.js");
 
+const { assertAccountRoles, studentAccounts, LOCK_SQL } = createRequire(import.meta.url)("./roster-account-roles.js");
+
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const serverSource = await readFile(new URL("./server.js", import.meta.url), "utf8");
 const schoolRosterHtml = await readFile(new URL("../apps/classtools/school-roster.html", import.meta.url), "utf8");
@@ -38,15 +40,17 @@ class HttpError extends Error {
 const normalizeEmail = (value) => String(value || "").trim().toLowerCase();
 
 const saveStudents = new AsyncFunction(
+  "validateAccountRoles", "ROSTER_ROLE_LOCK", "studentAccounts",
   "req", "res", "requireTeacher", "teacherRegistration", "HttpError", "pool",
   "avatarCapacity", "pickRandomAvailableAvatar", "pendingStudentName", "NAME_SOURCE_PENDING",
   routeBody('router.put("/school/students"')
-);
+).bind(null, assertAccountRoles, LOCK_SQL, studentAccounts);
 const saveTeachers = new AsyncFunction(
+  "validateAccountRoles", "ROSTER_ROLE_LOCK", "studentAccounts",
   "req", "res", "requireTeacher", "teacherRegistration", "HttpError", "normalizeEmail", "pool", "parseTeachingScope",
   "pendingTeacherName", "NAME_SOURCE_PENDING", "NAME_SOURCE_GOOGLE",
   routeBody('router.put("/school/teachers"')
-);
+).bind(null, assertAccountRoles, LOCK_SQL, studentAccounts);
 
 // 운영 스키마의 고유 조건을 그대로 옮긴다(classroom-platform.js 의 CREATE 문).
 const SCHEMA = `
@@ -63,8 +67,8 @@ const SCHEMA = `
     UNIQUE (school_id, academic_year, grade, class_number, student_number)
   );
   CREATE TABLE classroom_students (
-    id BIGSERIAL PRIMARY KEY, class_id BIGINT NOT NULL, student_number TEXT NOT NULL,
-    roster_name TEXT NOT NULL, student_email TEXT, name_source TEXT,
+    id BIGSERIAL PRIMARY KEY, class_id BIGINT NOT NULL, student_number TEXT NOT NULL, user_id BIGINT,
+    roster_name TEXT NOT NULL, student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, name_source TEXT,
     roster_active BOOLEAN NOT NULL DEFAULT TRUE,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     UNIQUE (class_id, student_number)
@@ -295,7 +299,7 @@ test("PUT /school/teachers accepts a blank name with a Google account (placehold
     const body = await putTeachers(pool, [adminRow(), teacherRow("", "New@school.test", 3, 1), teacherRow("김교사", ""), teacherRow("", "", 3, 2)]);
     assert.equal(body.saved, 3);
     assert.deepEqual((await teachers()).map((t) => [t.teacher_name, t.name_source, t.google_email]), [
-      ["학교 관리자", null, "admin@school.test"],
+      ["학교관리자", null, "admin@school.test"],
       ["new@school.test", "pending", "new@school.test"],
       ["김교사", null, null],
     ]);
@@ -399,7 +403,7 @@ test("the school roster editor sends pending rows back with an empty name so the
   assert.match(schoolRosterHtml, /if \(parts\[0\]\.includes\("@"\)\) parts = \["", \.\.\.parts\]/);
   // 붙여넣기는 더하거나 같은 학년·반·번호를 고칠 뿐 아무도 지우지 않고, 저장하면 빠지는 학생은 이름을 보여 주고 확인을 받는다.
   assert.match(schoolRosterHtml, /const addedRows = previewRows\.filter\(\(row\) => !existingKeys\.has\(rosterKeyOf\(row\)\)\)/);
-  assert.match(schoolRosterHtml, /return pasted \? \{ \.\.\.pasted, id: existing\.id, user_id: existing\.user_id \} : existing;/);
+  assert.match(schoolRosterHtml, /return pasted \? mergeIntoExisting\(existing, pasted\) : existing;/);
   assert.match(schoolRosterHtml, /confirmRemoval: removedRows\.length > 0/);
   // 같은 학생구글계정이 두 줄에 있으면 저장을 막고 두 칸을 붉게 표시한다.
   assert.match(schoolRosterHtml, /const accountOwners = new Map\(\)/);
@@ -418,4 +422,26 @@ test("the homeroom class roster editor shows pending names as blank lines and on
   assert.match(classRosterHtml, /while \(names\.length < numbers\.length\) names\.push\(""\)/);
   // 성명 열의 앞쪽 빈 줄을 지우면 이름이 한 줄씩 밀린다.
   assert.match(classRosterHtml, /function splitNameLines/);
+});
+
+
+test("student/guardian overlap in one submitted roster is rolled back, including linked accounts", async () => {
+  await withDb(async ({ pool, students }) => {
+    await putStudents(pool,[student('1','가학생','one@example.test')]);
+    await assert.rejects(putStudents(pool,[
+      student('1','가학생','one@example.test'),
+      student('2','나학생','two@example.test',{guardian1Email:'ONE@example.test'})
+    ]),{code:'ACCOUNT_ROLE_CONFLICT'});
+    assert.equal((await students()).length,1);
+  });
+});
+
+test("student cannot be saved as staff, or staff as student; teacher-parent registration still saves", async () => {
+  await withDb(async ({ pool, students }) => {
+    await putStudents(pool,[student('1','가학생','one@example.test')]);
+    await assert.rejects(putTeachers(pool,[adminRow(),teacherRow('가교사','one@example.test')]),{code:'ACCOUNT_ROLE_CONFLICT'});
+    await assert.rejects(putStudents(pool,[student('1','가학생','admin@school.test')]),{code:'ACCOUNT_ROLE_CONFLICT'});
+    assert.equal((await students())[0].student_email,'one@example.test');
+    await putStudents(pool,[student('1','가학생','one@example.test',{guardian1Email:'admin@school.test'})]);
+  });
 });

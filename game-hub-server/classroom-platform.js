@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const { assertAccountRoles, studentAccounts, LOCK_SQL: ROSTER_ROLE_LOCK } = require("./roster-account-roles");
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -535,6 +536,16 @@ function createClassroomPlatform(options = {}) {
         ADD COLUMN IF NOT EXISTS teacher_type TEXT NOT NULL DEFAULT 'homeroom'`,
       `ALTER TABLE classroom_teachers
         ADD COLUMN IF NOT EXISTS name_source TEXT`,
+      // Canonicalize the default account name in every school's stored roster.
+      // Never merge distinct accounts if an old school already has both spellings.
+      `UPDATE classroom_teachers AS legacy
+       SET teacher_name = '학교관리자', updated_at = NOW()
+       WHERE legacy.teacher_name = '학교 관리자'
+         AND NOT EXISTS (
+           SELECT 1 FROM classroom_teachers AS canonical
+           WHERE canonical.school_id = legacy.school_id
+             AND canonical.teacher_name = '학교관리자' AND canonical.id <> legacy.id
+         )`,
       `ALTER TABLE classroom_teachers
         ADD COLUMN IF NOT EXISTS subject_name TEXT`,
       `ALTER TABLE classroom_teachers
@@ -1477,6 +1488,15 @@ function createClassroomPlatform(options = {}) {
     }
   }
 
+  async function validateAccountRoles(db, emails) {
+    try {
+      await assertAccountRoles(db, emails, new Set([...adminEmails, ...teacherEmails]));
+    } catch (error) {
+      if (error.code === "ACCOUNT_ROLE_CONFLICT") throw new HttpError(409, error.code, error.message);
+      throw error;
+    }
+  }
+
   async function sessionUser(req) {
     if (!databaseReady) return null;
     const token = readCookie(req, SESSION_COOKIE);
@@ -1489,7 +1509,9 @@ function createClassroomPlatform(options = {}) {
        WHERE s.token_hash = $1 AND s.expires_at > NOW()`,
       [hashSessionToken(token)]
     );
-    return result.rows[0] || null;
+    const user = result.rows[0] || null;
+    if (user) await validateAccountRoles(pool, [user.email]);
+    return user;
   }
 
   function requireDatabaseReady() {
@@ -2058,14 +2080,15 @@ function createClassroomPlatform(options = {}) {
   // 화면에 보일 이름. 명단에 있는 학생은 명단 이름, 교직원은 등록 이름, 그 밖의 계정은 구글 이름,
   // 게스트는 입장할 때 적은 이름. 서버가 쪽(HTML)을 내줄 때 박아 넣어 브라우저가 이름을 저장하지 않게 한다.
   async function displayNameFor(req) {
+    const nameOf = value => String(value || "").normalize("NFC").replace(/\s+/g, "");
     const user = await sessionUser(req);
     if (!user) {
       const guest = guestAccess(req);
-      return guest ? { name: guest.name, kind: "guest" } : { name: "", kind: "" };
+      return guest ? { name: nameOf(guest.name), kind: "guest" } : { name: "", kind: "" };
     }
     if (pool && databaseReady) {
       const membership = await studentMembership(user.id);
-      if (membership?.studentName) return { name: membership.studentName, kind: "student", ...schoolDefaults(membership) };
+      if (membership?.studentName) return { name: nameOf(membership.studentName), kind: "student", ...schoolDefaults(membership) };
       const registrations = (await teacherRegistrations(user)).sort((a, b) => Number(b.academic_year || 0) - Number(a.academic_year || 0));
       const registration = registrations[0];
       if (registration?.teacher_name) {
@@ -2073,12 +2096,12 @@ function createClassroomPlatform(options = {}) {
           `SELECT DISTINCT grade FROM school_master_timetable
            WHERE school_id = $1 AND teacher_user_id = $2 AND academic_year = $3 AND subject_name <> ''`,
           [registration.school_id, user.id, Number(registration.academic_year) || new Date().getFullYear()]
-        );
-        return { name: registration.teacher_name, kind: "teacher",
+        ).catch(() => ({ rows: [] }));
+        return { name: nameOf(registration.teacher_name), kind: "teacher",
           ...schoolDefaults({ ...registration, teaching_grades: timetable.rows.map(row => row.grade) }, registrations) };
       }
     }
-    return { name: String(user.name || user.displayName || "").trim(), kind: user.role || "user" };
+    return { name: nameOf(user.display_name || user.name || user.displayName), kind: user.role || "user" };
   }
 
   async function siteAccessIdentity(req) {
@@ -2139,6 +2162,7 @@ function createClassroomPlatform(options = {}) {
   async function gameAccessError(req, contentPath) {
     const { user, allowed } = await siteAccessIdentity(req);
     if (!allowed) return "SITE_ACCESS_REQUIRED";
+    if ((user || guestAccess(req)) && !/^[가-힣]{2,6}$/.test((await displayNameFor(req)).name)) return "PLAYER_NAME_REQUIRED";
     if (user?.role !== "admin" && await isContentGloballyDisabled(contentPath)) return "CONTENT_GLOBALLY_DISABLED";
     const requestPath = normalizeContentPath(contentPath);
     return await isStudentContentLocked(user, contentPath, requestPath) ? "CONTENT_CLASS_LOCKED" : "";
@@ -3139,7 +3163,7 @@ function createClassroomPlatform(options = {}) {
 
     let isGuardian = false;
     let isStudent = false;
-    
+
     // Check Guardian (school_students OR classroom_students)
     const dbGuardianCheck = await pool.query(
       `SELECT id FROM classroom_students WHERE roster_active = TRUE AND (LOWER(guardian1_email) = $1 OR LOWER(guardian2_email) = $1)
@@ -3168,6 +3192,8 @@ function createClassroomPlatform(options = {}) {
     if (!isAdmin && !isTeacher && !isStudent && !isGuardian) {
       throw new HttpError(403, "UNREGISTERED_ACCOUNT", "등록되지 않은 구글 계정입니다. 학교에 문의하세요.");
     }
+
+    await validateAccountRoles(pool, [email]);
 
     const roleToAssign = isAdmin ? 'admin' : (isTeacher ? 'teacher' : (isStudent ? 'student' : (isGuardian ? 'guardian' : null)));
 
@@ -3218,7 +3244,7 @@ function createClassroomPlatform(options = {}) {
         [user.id, email]
       );
     }
-    
+
     if (isStudent) {
       await pool.query(
         "UPDATE school_students SET user_id = $1, updated_at = NOW() WHERE LOWER(student_email) = $2",
@@ -3558,61 +3584,73 @@ function createClassroomPlatform(options = {}) {
       throw new HttpError(400, "INVALID_TEACHER_EMAIL", "올바른 구글 이메일 주소를 입력하세요.");
     }
 
-    const schoolCheck = await pool.query("SELECT 1 FROM classroom_schools WHERE id = $1", [schoolId]);
-    if (schoolCheck.rowCount === 0) {
-      throw new HttpError(404, "SCHOOL_NOT_FOUND", "School not found.");
-    }
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query(ROSTER_ROLE_LOCK);
+      const schoolCheck = await client.query("SELECT 1 FROM classroom_schools WHERE id = $1", [schoolId]);
+      if (schoolCheck.rowCount === 0) {
+        throw new HttpError(404, "SCHOOL_NOT_FOUND", "School not found.");
+      }
 
-    // 학교 관리자 줄은 teacher_type '관리자' 하나뿐이다. 교장·교감 줄은 그 사람의 등록이라
-    // 여기서 이메일을 갈아 끼우면 교장의 줄을 남에게 넘겨주게 된다.
-    const existing = await pool.query(
-      `SELECT id, google_email, user_id FROM classroom_teachers
-       WHERE school_id = $1
-         AND (teacher_type = '관리자' OR teacher_name IN ('학교관리자', '학교 관리자', '관리자'))
-       ORDER BY (teacher_type = '관리자') DESC, id
-       LIMIT 1`,
-      [schoolId]
-    );
-    const current = existing.rows[0];
-
-    const conflict = await pool.query(
-      `SELECT id FROM classroom_teachers WHERE LOWER(google_email) = LOWER($1) AND id != $2`,
-      [email, current?.id || -1]
-    );
-    if (conflict.rows[0]) {
-      throw new HttpError(400, "DUPLICATE_EMAIL", "이미 다른 교사가 사용 중인 이메일입니다.");
-    }
-
-    if (current && normalizeEmail(current.google_email) === email) {
-      // 같은 계정을 다시 적었다. 관리자가 겸임으로 적어 둔 성명·담임 반은 그대로 둔다.
-      await pool.query(
-        "UPDATE classroom_teachers SET teacher_type = '관리자', updated_at = NOW() WHERE id = $1",
-        [current.id]
+      // 학교 관리자 줄은 teacher_type '관리자' 하나뿐이다. 교장·교감 줄은 그 사람의 등록이라
+      // 여기서 이메일을 갈아 끼우면 교장의 줄을 남에게 넘겨주게 된다.
+      const existing = await client.query(
+        `SELECT id, google_email, user_id FROM classroom_teachers
+         WHERE school_id = $1
+           AND (teacher_type = '관리자' OR teacher_name IN ('학교관리자', '학교 관리자', '관리자'))
+         ORDER BY (teacher_type = '관리자') DESC, id
+         LIMIT 1`,
+        [schoolId]
       );
-    } else if (current) {
-      // 관리자가 다른 사람으로 바뀐다. 앞사람이 겸임하던 이름·담임 반·과목과
-      // 로그인 연결은 넘겨주지 않는다. 앞사람이 계속 담임이면 교직원 명단에 새 줄로 적는다.
-      if (current.user_id) {
-        await pool.query(
-          "UPDATE classroom_classes SET teacher_user_id = NULL, updated_at = NOW() WHERE school_id = $1 AND teacher_user_id = $2",
-          [schoolId, current.user_id]
+      const current = existing.rows[0];
+
+      const conflict = await client.query(
+        `SELECT id FROM classroom_teachers WHERE LOWER(google_email) = LOWER($1) AND id != $2`,
+        [email, current?.id || -1]
+      );
+      if (conflict.rows[0]) {
+        throw new HttpError(400, "DUPLICATE_EMAIL", "이미 다른 교사가 사용 중인 이메일입니다.");
+      }
+
+      if (current && normalizeEmail(current.google_email) === email) {
+        // 같은 계정을 다시 적었다. 관리자가 겸임으로 적어 둔 성명·담임 반은 그대로 둔다.
+        await client.query(
+          "UPDATE classroom_teachers SET teacher_type = '관리자', updated_at = NOW() WHERE id = $1",
+          [current.id]
+        );
+      } else if (current) {
+        // 관리자가 다른 사람으로 바뀐다. 앞사람이 겸임하던 이름·담임 반·과목과
+        // 로그인 연결은 넘겨주지 않는다. 앞사람이 계속 담임이면 교직원 명단에 새 줄로 적는다.
+        if (current.user_id) {
+          await client.query(
+            "UPDATE classroom_classes SET teacher_user_id = NULL, updated_at = NOW() WHERE school_id = $1 AND teacher_user_id = $2",
+            [schoolId, current.user_id]
+          );
+        }
+        await client.query(
+          `UPDATE classroom_teachers
+           SET google_email = $1, teacher_type = '관리자', teacher_name = '학교관리자',
+               grade = NULL, class_number = NULL, subject_name = NULL, room_name = NULL,
+               user_id = NULL, updated_at = NOW()
+           WHERE id = $2`,
+          [email, current.id]
+        );
+      } else {
+        await client.query(
+          `INSERT INTO classroom_teachers
+             (school_id, teacher_name, academic_year, grade, class_number, teacher_type, google_email)
+           VALUES ($1, '학교관리자', NULL, NULL, NULL, '관리자', $2)`,
+          [schoolId, email]
         );
       }
-      await pool.query(
-        `UPDATE classroom_teachers
-         SET google_email = $1, teacher_type = '관리자', teacher_name = '학교 관리자',
-             grade = NULL, class_number = NULL, subject_name = NULL, room_name = NULL,
-             user_id = NULL, updated_at = NOW()
-         WHERE id = $2`,
-        [email, current.id]
-      );
-    } else {
-      await pool.query(
-        `INSERT INTO classroom_teachers
-           (school_id, teacher_name, academic_year, grade, class_number, teacher_type, google_email)
-         VALUES ($1, '학교 관리자', NULL, NULL, NULL, '관리자', $2)`,
-        [schoolId, email]
-      );
+      await validateAccountRoles(client, [email]);
+      await client.query("COMMIT");
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
     }
     res.json({ ok: true, email });
   }));
@@ -3626,17 +3664,17 @@ function createClassroomPlatform(options = {}) {
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
-      
+
       // Delete students manually first if cascade isn't guaranteed
       await client.query(`DELETE FROM classroom_students WHERE class_id IN (SELECT id FROM classroom_classes WHERE school_id = $1)`, [schoolId]);
       // Delete classes
       await client.query(`DELETE FROM classroom_classes WHERE school_id = $1`, [schoolId]);
       // Delete teachers
       await client.query(`DELETE FROM classroom_teachers WHERE school_id = $1`, [schoolId]);
-      
+
       const result = await client.query("DELETE FROM classroom_schools WHERE id = $1 RETURNING id", [schoolId]);
       if (!result.rows[0]) throw new HttpError(404, "SCHOOL_NOT_FOUND", "School not found.");
-      
+
       await client.query("COMMIT");
       res.json({ ok: true });
     } catch (error) {
@@ -4195,6 +4233,7 @@ function createClassroomPlatform(options = {}) {
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
+      await client.query(ROSTER_ROLE_LOCK);
       const schoolId = assignment.school_id;
       await client.query(
         `UPDATE classroom_schools
@@ -4352,6 +4391,7 @@ function createClassroomPlatform(options = {}) {
            student.studentEmail || null, student.guardian1Email || null, student.guardian2Email || null, nameSource]
         );
       }
+      await validateAccountRoles(client, studentAccounts(cleanStudents));
       await client.query("COMMIT");
       return res.json({ ok: true, schoolCode, studentCount: cleanStudents.length });
     } catch (error) {
@@ -8156,6 +8196,7 @@ function createClassroomPlatform(options = {}) {
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
+      await client.query(ROSTER_ROLE_LOCK);
 
       // Avatars are assigned once per new student and kept stable afterward
       // (mirrors the classroom_students roster-save assignment below). Usage
@@ -8291,6 +8332,7 @@ function createClassroomPlatform(options = {}) {
         [schoolId, academicYear]
       );
 
+      await validateAccountRoles(client, studentAccounts(clean));
       await client.query("COMMIT");
     } catch (err) {
       await client.query("ROLLBACK");
@@ -8591,6 +8633,7 @@ function createClassroomPlatform(options = {}) {
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
+      await client.query(ROSTER_ROLE_LOCK);
 
       // 줄마다 기존 등록부터 찾는다. 고치기 전에 빠진 줄을 지우고 남는 줄의 학년·반을
       // 비워 둬야, 한 반을 다른 줄로 옮길 때(관리자 겸임 등) 옛 줄에 걸려
@@ -8652,8 +8695,9 @@ function createClassroomPlatform(options = {}) {
       for (const { t, existing, isAdminRow, storedName, nameSource } of plans) {
         if (existing) {
           // 학교 관리자도 담임·교과를 겸할 수 있다. 관리자 줄에서 지키는 것은 계정(이메일)과
-          // 직책뿐이다. 성명을 '학교 관리자' 그대로 두었으면 원래 적힌 모양을 살린다.
-          const finalName = isAdminRow && isPlaceholderAdminName(t.name) ? existing.teacher_name : storedName;
+          // 직책뿐이다. 기본 성명은 공백 없는 '학교관리자'로 저장한다.
+          const finalName = isAdminRow && isPlaceholderAdminName(t.name)
+            ? (existing.teacher_name === "학교 관리자" ? "학교관리자" : existing.teacher_name) : storedName;
           const finalEmail = isAdminRow ? existing.google_email : t.email;
           const finalType = isAdminRow ? "관리자" : t.type;
 
@@ -8696,6 +8740,7 @@ function createClassroomPlatform(options = {}) {
         [schoolId, academicYear]
       );
 
+      await validateAccountRoles(client, cleanTeachers.map(t => t.email));
       await client.query("COMMIT");
     } catch (err) {
       await client.query("ROLLBACK");

@@ -43,8 +43,10 @@ test('student membership chooses the newest enabled school and ignores inactive 
    INSERT INTO classroom_schools VALUES(1,'이전초등학교',true),(2,'현재중학교',true),(3,'폐쇄고등학교',false);
    INSERT INTO school_students VALUES(1,NULL,1,1,'학생',2025,6,1),(NULL,'student@example.invalid',2,1,'학생',2026,1,1),(1,NULL,3,1,'학생',2027,1,1);
    INSERT INTO classroom_classes VALUES(1,1,2028,3,1);
-   INSERT INTO classroom_students VALUES(1,1,1,'옛명단',false);`);
-  const membership=new Function('pool',`${declaration('studentMembership')};return studentMembership;`)({query:(sql,args)=>db.query(sql,args)});
+   INSERT INTO classroom_students VALUES(1,1,1,'옛명단',false);
+   ALTER TABLE school_students ADD COLUMN avatar_key text;
+   ALTER TABLE classroom_students ADD COLUMN avatar_key text;`);
+  const membership=new Function('pool','normalizeAvatarKey',`${declaration('studentMembership')};return studentMembership;`)({query:(sql,args)=>db.query(sql,args)},value=>value||'');
   const result=await membership(1);assert.equal(result.schoolName,'현재중학교');assert.equal(result.grade,1);
  }finally{await db.close();}
 });

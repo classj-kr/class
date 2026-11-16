@@ -5,6 +5,7 @@ import { createRequire } from 'node:module';
 import { PGlite } from '@electric-sql/pglite';
 
 const require = createRequire(import.meta.url);
+const { assertAccountRoles: validateAccountRoles, LOCK_SQL: ROSTER_ROLE_LOCK } = require('./roster-account-roles');
 const { normalizePairs, formatTeachingScope, parseTeachingScope } = require('./teaching-scope.js');
 const { namesLookDifferent, pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE } = require('./roster-names.js');
 const source = await readFile(new URL('./classroom-platform.js', import.meta.url), 'utf8');
@@ -51,6 +52,8 @@ async function withSchool(run) {
       CREATE TABLE classroom_classes (
         school_id BIGINT, teacher_user_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, updated_at TIMESTAMPTZ
       );
+      CREATE TABLE school_students(user_id bigint, student_email text, guardian1_email text, guardian2_email text);
+      CREATE TABLE classroom_students(user_id bigint, student_email text, guardian1_email text, guardian2_email text, roster_active boolean);
       INSERT INTO classroom_schools VALUES (1, '검증학교', TRUE), (2, '다른학교', TRUE);
       INSERT INTO classroom_users (id, email, display_name) VALUES
         (101, 'admin@example.invalid', '가관리자'), (102, 'teacher@example.invalid', '나담임'),
@@ -80,7 +83,7 @@ async function withSchool(run) {
       `${['requireUser', 'teacherRegistrations', 'teacherRegistration', 'requireTeacher'].map(actualFunction).join('\n')}
        return { requireTeacher, teacherRegistration };`
     )(pool, true, normalizeEmail, HttpError, async req => req.user, async () => 'open');
-    const bindings = { pool, HttpError, normalizeEmail, ...auth, normalizePairs, formatTeachingScope, parseTeachingScope,
+    const bindings = { pool, HttpError, normalizeEmail, ...auth, normalizePairs, formatTeachingScope, parseTeachingScope, validateAccountRoles, ROSTER_ROLE_LOCK,
       namesLookDifferent, pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE };
     const get = handler('get', bindings), put = handler('put', bindings);
     const user = async id => (await db.query('SELECT * FROM classroom_users WHERE id = $1', [id])).rows[0];

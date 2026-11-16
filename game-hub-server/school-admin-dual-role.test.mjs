@@ -13,6 +13,8 @@ const { pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE } = createRe
 // 라우트 본문을 그대로 떼어 PGlite 위에서 실행하므로, 순서가 틀려 고유 조건에
 // 걸리는 일이나 조용히 지워지는 줄이 있으면 여기서 드러난다.
 
+const { assertAccountRoles, studentAccounts, LOCK_SQL } = createRequire(import.meta.url)("./roster-account-roles.js");
+
 const source = await readFile(new URL("./classroom-platform.js", import.meta.url), "utf8");
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 
@@ -23,14 +25,16 @@ function routeBody(signature) {
 }
 
 const saveTeachers = new AsyncFunction(
+  "validateAccountRoles", "ROSTER_ROLE_LOCK", "studentAccounts",
   "req", "res", "requireTeacher", "teacherRegistration", "HttpError", "normalizeEmail", "pool", "parseTeachingScope",
   "pendingTeacherName", "NAME_SOURCE_PENDING", "NAME_SOURCE_GOOGLE",
   routeBody('router.put("/school/teachers"')
-);
+).bind(null, assertAccountRoles, LOCK_SQL, studentAccounts);
 const setMasterEmail = new AsyncFunction(
+  "validateAccountRoles", "ROSTER_ROLE_LOCK", "studentAccounts",
   "req", "res", "requireAdmin", "HttpError", "normalizeEmail", "pool",
   routeBody('router.put("/admin/schools/:schoolId/master-email"')
-);
+).bind(null, assertAccountRoles, LOCK_SQL, studentAccounts);
 
 class HttpError extends Error {
   constructor(status, code, message) { super(message); this.status = status; this.code = code; }
@@ -86,6 +90,9 @@ async function withSchool(run) {
   const db = new PGlite();
   try {
     await db.exec(SCHEMA);
+    await db.exec(`CREATE TABLE classroom_users(id bigint, email text);
+      CREATE TABLE school_students(user_id bigint, student_email text, guardian1_email text, guardian2_email text);
+      CREATE TABLE classroom_students(user_id bigint, student_email text, guardian1_email text, guardian2_email text, roster_active boolean);`);
     await db.exec(`
       INSERT INTO classroom_schools (name) VALUES ('시험학교');
       INSERT INTO classroom_teachers (school_id, teacher_name, google_email, user_id, teacher_type)
@@ -193,14 +200,14 @@ test("an admin row cannot take a class while its name is still the placeholder, 
   });
 });
 
-test("an untouched admin row keeps its original '학교 관리자' spelling", async () => {
+test("saving an old school admin row canonicalizes its stored name", async () => {
   await withSchool(async ({ pool, teachers }) => {
     await save(pool, [
       row("학교 관리자", "admin@school.test"),
       row("가교사", "teacher-a@school.test", 6, 2),
       row("나교사", "teacher-b@school.test", 6, 3),
     ]);
-    assert.equal((await teachers())[0].teacher_name, "학교 관리자");
+    assert.equal((await teachers())[0].teacher_name, "학교관리자");
   });
 });
 
@@ -249,7 +256,7 @@ test("교장·교감 rows keep their 분류 across saves, can change their accou
     assert.equal(list[0].teacher_type, "관리자");
 
     await save(pool, [...base, heads[1]]);
-    assert.deepEqual((await teachers()).map((t) => t.teacher_name), ["학교 관리자", "가교사", "나교사", "사교감"]);
+    assert.deepEqual((await teachers()).map((t) => t.teacher_name), ["학교관리자", "가교사", "나교사", "사교감"]);
   });
 });
 
@@ -293,7 +300,7 @@ test("setting the master email never takes over the 교장's own row when the sc
     const principal = list.find((t) => t.teacher_name === "바교장");
     assert.deepEqual([principal.teacher_type, principal.google_email, principal.user_id], ["교장", "principal@school.test", 7]);
     const admin = list.find((t) => t.teacher_type === "관리자");
-    assert.deepEqual([admin.teacher_name, admin.google_email], ["학교 관리자", "new-admin@school.test"]);
+    assert.deepEqual([admin.teacher_name, admin.google_email], ["학교관리자", "new-admin@school.test"]);
   });
 });
 
@@ -308,7 +315,7 @@ test("handing the school admin to another account does not hand over the previou
     await setMaster(pool, "new-admin@school.test");
     const admin = (await teachers())[0];
     assert.deepEqual(admin, {
-      teacher_name: "학교 관리자", google_email: "new-admin@school.test", teacher_type: "관리자",
+      teacher_name: "학교관리자", google_email: "new-admin@school.test", teacher_type: "관리자",
       grade: null, class_number: null, subject_name: null, user_id: null,
     });
     const owners = (await db.query("SELECT grade, class_number, teacher_user_id FROM classroom_classes ORDER BY id")).rows
@@ -342,5 +349,16 @@ test("전담 줄의 담당 학년·과목은 (학년, 교과) 짝으로 저장�
     await assert.rejects(save(pool, [{ type: "전담", name: "바전담", email: null, grade: "3,4", classNumber: null, subjectName: "", roomName: null }]), { code: "INVALID_GRADE_CLASS" });
     await assert.rejects(save(pool, [{ type: "담임", name: "사교사", email: null, grade: "3,4", classNumber: 1, subjectName: "", roomName: null }]), { code: "INVALID_GRADE_CLASS" });
     assert.equal((await teachers()).length, 4, "거절된 저장은 아무것도 바꾸지 않는다");
+  });
+});
+
+
+test("a student cannot become school administrator and the old administrator survives rollback", async () => {
+  await withSchool(async ({db,pool,teachers}) => {
+    await db.exec("INSERT INTO school_students(student_email) VALUES ('child@example.test')");
+    const before=await teachers();
+    await assert.rejects(setMasterEmail({params:{schoolId:'1'},body:{email:'child@example.test'}},
+      {json(){}},async()=>({id:99}),HttpError,normalizeEmail,pool),{code:'ACCOUNT_ROLE_CONFLICT'});
+    assert.deepEqual(await teachers(),before);
   });
 });

@@ -2147,7 +2147,7 @@
                     btn.href = '/classboard/';
                     const schoolLabel = m?.schoolName || state.user?.schoolName || '학급';
                     const gradeClassLabel = (m?.grade && m?.classNumber) ? `${m.grade}학년 ${m.classNumber}반 ${m.studentNumber}번 ` : '';
-                    const studentName = m?.studentName || state.user?.displayName || state.user?.name || '학생';
+                    const studentName = m?.studentName || state.user?.displayName || state.user?.name || '';
 
                     btn.innerHTML = `<span class="profile-title">🎓 ${studentName}</span><span class="profile-desc">${schoolLabel} ${gradeClassLabel}학생 계정</span>`;
                     profileList.appendChild(btn);
@@ -2170,7 +2170,7 @@
 
                 // 5. Guest Player
                 if (state.guest || state.user?.role === 'guest') {
-                    const guestName = state.guestName || state.user?.displayName || state.user?.name || '게스트';
+                    const guestName = state.guestName || state.user?.displayName || state.user?.name || '';
                     authTitle.textContent = 'GUEST PLAYER';
                     const card = document.createElement('div');
                     card.className = 'profile-btn player';
@@ -2194,9 +2194,11 @@
                 }
 
                 await loadClassContentAccess().catch((error) => console.error('loadClassContentAccess failed', error));
-                hubContent.hidden = guardianOnly && teacherProfiles.length === 0 && state.user?.role !== 'admin';
+                hubContent.hidden = !isValidPlayerName(currentPlayerName) || (guardianOnly && teacherProfiles.length === 0 && state.user?.role !== 'admin');
                 const accessNotice = new URLSearchParams(location.search).get('content');
-                setStatus(accessNotice === 'locked' ? '담임 선생님이 이 메뉴를 잠갔습니다.'
+                setStatus(!isValidPlayerName(currentPlayerName) || new URLSearchParams(location.search).get('access') === 'name-required'
+                    ? '게임에 사용할 이름을 확인할 수 없습니다. 계정의 등록 이름을 확인해 주세요.'
+                    : accessNotice === 'locked' ? '담임 선생님이 이 메뉴를 잠갔습니다.'
                     : accessNotice === 'globally-disabled' ? '전체관리자가 이 메뉴의 사용을 중지했습니다.' : '');
             }
 

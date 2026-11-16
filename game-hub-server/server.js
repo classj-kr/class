@@ -384,6 +384,12 @@ function sendSiteHtml(req, res, filepath, next) {
   fs.readFile(filepath, "utf8", (error, source) => {
     if (error) return next(error);
     classroomPlatform.displayNameFor(req).catch(() => ({ name: "", kind: "" })).then((identity) => {
+    // Validate before serving a game, including direct links and solo modes.
+    if (filepath.startsWith(path.join(SITE_ROOT, "learning", "games") + path.sep)
+        && !/^[가-힣]{2,6}$/.test(identity.name || "")) {
+      res.setHeader("Cache-Control", "no-store");
+      return res.redirect(302, "/?access=name-required");
+    }
     // Refresh shared scripts even when an older page still names an old cache version.
     const htmlSource = withSiteIdentity(source, identity).replace(
       /(\/assets\/network\/(?:multiplayer-lobby|single-player-entry)\.css)(?:\?[^"'<>\s]*)?/g,
@@ -2157,6 +2163,7 @@ wss.on("connection", (socket, request) => {
             code,
             message: code === "CONTENT_GLOBALLY_DISABLED" ? "전체관리자가 이 게임의 사용을 중지했습니다."
               : code === "CONTENT_CLASS_LOCKED" ? "담임 선생님이 이 게임을 잠갔습니다."
+              : code === "PLAYER_NAME_REQUIRED" ? "게임에 사용할 이름을 확인할 수 없습니다. 메인 화면에서 계정을 확인해 주세요."
               : "로그인한 뒤 게임을 열어 주세요."
           });
           try { socket.close(4003, code); } catch (_) {}
