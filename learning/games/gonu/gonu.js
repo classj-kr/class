@@ -1,12 +1,13 @@
 (() => {
     "use strict";
 
-    const {boards, initial, legal, play} = window.GonuRules;
+    const {boards, initial, legal, play, flipped} = window.GonuRules;
     const $ = id => document.getElementById(id);
     const namespace = "http://www.w3.org/2000/svg";
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
     const team = ["", "team-one", "team-two"];
     const name = String(window.CLASS_PLAYER_NAME || "").trim();
+    const themes = ["garden", "cherry", "snow", "night"];
     let variant = "well";
     let lobby, match = null, selected = null, pending = false;
     let selectionTimer, animation = null;
@@ -20,14 +21,24 @@
         return node;
     }
 
-    function drawLines(board) {
-        $("lines").replaceChildren(...board.edges.map(([from,to], index) => {
+    // 내 편이 누구인가(1=방장·선공, 2=손님). 사람마다 자기 말이 아래로 오게 판을 돌려 보여 준다.
+    const myTeam = () => match ? match.people.findIndex(person => person.id === lobby.myId) + 1 : 1;
+    const isFlipped = kind => flipped(kind, myTeam());
+    const at = (kind, index) => {
+        const [x,y] = boards[kind].points[index];
+        return isFlipped(kind) ? [100 - x, 100 - y] : [x, y];
+    };
+
+    function drawLines(board, kind) {
+        const group = svg("g", isFlipped(kind) ? {transform:"rotate(180 50 50)"} : {});
+        group.replaceChildren(...board.edges.map(([from,to], index) => {
             const [[x1,y1],[x2,y2]] = [board.points[from],board.points[to]];
             if (index < (board.arcs || 0)) {
                 return svg("path", {d:`M ${x1} ${y1} A 32 32 0 0 1 ${x2} ${y2}`});
             }
             return svg("line", {x1,y1,x2,y2});
         }));
+        $("lines").replaceChildren(group);
     }
 
     function avatar(player) {
@@ -51,7 +62,8 @@
         const board = boards[match?.state.kind || variant];
         $("ruleTitle").textContent = board.name;
         $("ruleText").textContent = board.rule;
-        $("ruleTime").textContent = `한 수를 ${TURN_SECONDS[match?.state.kind || variant]}초 안에 두지 못하면 져요. 남은 시간이 5초가 되면 째깍 소리가 나요.`;
+        $("ruleTime").textContent = `한 수를 ${TURN_SECONDS[match?.state.kind || variant]}초 안에 두지 못하면 져요. 남은 시간이 5초가 되면 째깍 소리가 나요.` +
+            (board.home !== undefined ? " 내 말이 늘 판 아래쪽에 오도록 사람마다 화면이 돌아가 있어요." : "");
         $("help").showModal();
     }
 
@@ -92,7 +104,8 @@
             selected === null ? "움직일 내 말을 고르세요." : "표시된 점에 말을 옮기세요.";
         $("rematch").classList.toggle("hidden",state.winner === null || lobby.role !== "host");
         for (const element of $("players").children) element.classList.toggle("active",element.dataset.id === current.id && state.winner === null);
-        $("cells").replaceChildren(...boards[state.kind].points.map(([x,y],index) => {
+        $("cells").replaceChildren(...boards[state.kind].points.map((_,index) => {
+            const [x,y] = at(state.kind, index);
             const cell = document.createElement("button");
             const owner = state.board[index];
             const available = myTurn && destinations.has(index);
@@ -124,7 +137,7 @@
     // 두 점 사이 길을 따라 찍은 점들(말판 % 좌표). 곡선(원호) 길이면 원을 따라, 아니면 곧게.
     function routeBetween(kind, from, to, steps) {
         const board = boards[kind];
-        const [x0,y0] = board.points[from], [x1,y1] = board.points[to];
+        const [x0,y0] = at(kind, from), [x1,y1] = at(kind, to);
         const arcIndex = board.edges.findIndex(([a,b]) => (a === from && b === to) || (a === to && b === from));
         const onArc = arcIndex >= 0 && arcIndex < (board.arcs || 0);
         const start = Math.atan2(y0 - 50, x0 - 50), radius = Math.hypot(x0 - 50, y0 - 50);
@@ -207,7 +220,7 @@
             return;
         }
         const area = $("cells").getBoundingClientRect();
-        const [tx,ty] = boards[state.kind].points[action.to];
+        const [tx,ty] = at(state.kind, action.to);
         const route = from ? routeBetween(state.kind, action.from, action.to, 16) : null;
         const onArc = route && Math.abs(route[8][0] - (route[0][0] + route[16][0]) / 2) + Math.abs(route[8][1] - (route[0][1] + route[16][1]) / 2) > 1;
         const frames = route ? route.map(([x,y,t]) => ({
@@ -271,12 +284,14 @@
             canStart,
             guideText:role === "host" ? "종류를 고르고 두 명이 모이면 시작하세요." : "방장이 종류를 고르고 시작해요."
         }),
-        rulesButtonIds:["rulesBtnLobby","rulesBtnGame"], onRules:showRules, preserveRulesUi:true,
+        rulesButtonIds:["rulesBtnLobby","rulesBtnGame"], leaveButtonIds:["leaveBtnLobby"], onRules:showRules, preserveRulesUi:true,
         createStartData:({players,myId}) => ({
-            kind:variant, order:[myId,...Object.keys(players).filter(id => id !== myId)]
+            kind:variant, theme:themes[Math.floor(Math.random() * themes.length)],
+            order:[myId,...Object.keys(players).filter(id => id !== myId)]
         }),
         onStarted:({data,players}) => {
             match = {state:initial(data.kind),people:data.order.map(id => ({...players[id],id}))};
+            $("board").dataset.theme = themes.includes(data.theme) ? data.theme : "garden";
             $("variantName").textContent = boards[data.kind].name;
             $("players").replaceChildren(...match.people.map((person,index) => {
                 const row = document.createElement("div");
@@ -285,7 +300,7 @@
                 row.append(avatar(person),document.createTextNode(person.name+(person.id === lobby.myId ? " (나)" : "")));
                 return row;
             }));
-            drawLines(boards[data.kind]);
+            drawLines(boards[data.kind], data.kind);
             $("lobbyScreen").classList.add("hidden");
             $("gameScreen").classList.remove("hidden");
             startClock();

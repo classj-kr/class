@@ -1,6 +1,6 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const {initial,legal,play} = require("../learning/games/gonu/rules.js");
+const {boards,initial,legal,play,flipped} = require("../learning/games/gonu/rules.js");
 
 test("the well opening cannot immediately block the other player", () => {
     const state = initial("well");
@@ -40,4 +40,19 @@ test("taking an opponent's third remaining piece finishes the game", () => {
     state.phase = "take";
     state.board[3] = state.board[4] = state.board[5] = 2;
     assert.equal(play(state,{to:3}).winner,1);
+});
+
+test("each player sees their own stones at the bottom, like Janggi and Chess", () => {
+    for (const kind of ["well","pumpkin"]) {
+        const state = initial(kind);
+        for (const team of [1,2]) {
+            const ys = state.board.flatMap((owner,index) => owner === team ? [boards[kind].points[index][1]] : [])
+                .map(y => flipped(kind,team) ? 100 - y : y);
+            const average = ys.reduce((sum,y) => sum + y,0) / ys.length;
+            assert.ok(average > 50, `${kind} team ${team} is at the bottom of its own view (average y ${average})`);
+        }
+    }
+    // The empty Cham board has no home side, so it is never turned.
+    assert.equal(flipped("cham",1),false);
+    assert.equal(flipped("cham",2),false);
 });

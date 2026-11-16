@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>고누놀이</title>
   <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
-  <link rel="stylesheet" href="gonu.css?v=20261117-garden">
+  <link rel="stylesheet" href="gonu.css?v=20261117-view">
   <script src="/assets/network/game-network.js?v=20260821" defer></script>
   <script src="/assets/network/multiplayer-avatars.js?v=20261114-1" defer></script>
   <script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars" defer></script>
   <script src="music.js?v=1" defer></script>
   <script src="/assets/sound/music-control.js?v=20261115-game-backdrop" defer></script>
-  <script src="rules.js?v=1" defer></script>
-  <script src="gonu.js?v=20261117-garden" defer></script>
+  <script src="rules.js?v=20261117-view" defer></script>
+  <script src="gonu.js?v=20261117-view" defer></script>
 </head>
 <body>
 <audio id="bgm" preload="metadata"></audio>
@@ -23,26 +23,38 @@
   </section>
   <section id="lobbyScreen" class="hidden">
     <div class="panel">
-      <h1>고누놀이</h1><strong id="savedName"></strong>
-      <button id="hostTab" type="button">Create Room</button>
-      <button id="joinTab" type="button">Join Room</button>
+      <h1>고누놀이</h1>
+      <p>PLAYER · <strong id="savedName">-</strong></p>
+      <div class="mp-lobby-tabs">
+        <button id="hostTab" class="primary" type="button">Create Room</button>
+        <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
+      </div>
     </div>
-    <div id="hostPane" class="hidden">
-      <strong id="roomCode"></strong><p id="hostStatus"></p>
-    </div>
-    <div id="joinPane" class="hidden">
-      <div class="mp-lobby-row"><input id="joinCode" inputmode="numeric" maxlength="4"><button id="joinBtn" type="button">Join</button></div>
-      <p id="joinStatus"></p>
-    </div>
+    <section id="hostPane" class="panel mp-lobby-card hidden">
+      <div class="row spread">
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
+      </div>
+      <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
+    </section>
+    <section id="joinPane" class="panel mp-lobby-card hidden">
+      <div class="mp-lobby-row">
+        <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="Room Code">
+        <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
+      </div>
+      <div id="joinStatus" class="mp-lobby-status"></div>
+    </section>
     <section class="panel">
       <fieldset id="gameChoice">
         <legend>고누 종류</legend>
         <div id="variants"></div>
       </fieldset>
-      <div id="lobbyPlayers"></div>
-      <p id="lobbyGuide"></p>
-      <button id="startBtn" type="button" disabled>시작</button>
-      <button id="rulesBtnLobby" type="button">Rules</button>
+      <div id="lobbyPlayers" class="mp-lobby-players"></div>
+      <p id="lobbyGuide" class="mp-lobby-guide"></p>
+      <button id="startBtn" class="primary" type="button" disabled>시작</button>
+      <div class="row" style="margin-top:10px">
+        <button id="rulesBtnLobby" class="secondary" type="button">Rules</button>
+        <button id="leaveBtnLobby" class="secondary" type="button">메인 화면</button>
+      </div>
     </section>
   </section>
   <section id="gameScreen" class="hidden">

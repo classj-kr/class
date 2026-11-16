@@ -10,17 +10,17 @@
     const boards = {
         well: {
             name:"우물고누", description:"말 2개로 상대 길 막기",
-            rule:"선을 따라 빈 점으로 한 칸씩 옮겨요. 상대 말이 하나도 움직일 수 없으면 이겨요. 첫 수에는 왼쪽 말만 가운데로 갈 수 있어요.",
+            rule:"선을 따라 빈 점으로 한 칸씩 옮겨요. 상대 말이 하나도 움직일 수 없으면 이겨요. 첫 수에는 먼저 두는 사람(방장)의 말 중 그 사람 쪽에서 보아 왼쪽 말만 가운데로 갈 수 있어요.",
             points:[[18,50],[50,18],[82,50],[50,82],[50,50]],
             edges:[rim[0],rim[1],rim[3],[0,4],[1,4],[2,4],[3,4]],
-            arcs:3, initial:[1,2,2,1,0]
+            arcs:3, initial:[1,2,2,1,0], home:1
         },
         pumpkin: {
             name:"호박고누", description:"말 3개로 상대 길 막기",
             rule:"선을 따라 빈 점으로 한 칸씩 옮겨요. 원에 들어간 말은 양쪽 진영으로 들어갈 수 없어요. 상대가 움직일 수 없으면 이겨요.",
             points:[[18,50],[50,18],[82,50],[50,82],[50,50],[18,6],[50,6],[82,6],[18,94],[50,94],[82,94]],
             edges:[...rim,[0,4],[1,4],[2,4],[3,4],[5,6],[6,7],[6,1],[8,9],[9,10],[9,3]],
-            arcs:4, initial:[0,0,0,0,0,1,1,1,2,2,2]
+            arcs:4, initial:[0,0,0,0,0,1,1,1,2,2,2], home:2
         },
         cham: {
             name:"참고누", description:"세 말을 이어 상대 말 잡기",
@@ -32,6 +32,13 @@
                 Array.from({length:8},(_,i)=>[i,i+8,i+16]))
         }
     };
+
+    // 화면 방향: 장기·체스처럼 사람마다 자기 말이 아래로 오게 보인다. home은 말판 그림 그대로 보는 편이다.
+    // 우물고누는 방장 말이 왼쪽·아래, 호박고누는 손님 말이 아래에 놓여 있다. 참고누는 빈 판에서 시작하니 돌리지 않는다.
+    function flipped(kind, team) {
+        const home = boards[kind].home;
+        return home !== undefined && team !== home;
+    }
 
     function initial(kind) {
         const board = boards[kind];
@@ -102,7 +109,7 @@
         return next;
     }
 
-    const rules = {boards, initial, legal, play};
+    const rules = {boards, initial, legal, play, flipped};
     if (typeof module === "object" && module.exports) module.exports = rules;
     else root.GonuRules = rules;
 })(globalThis);

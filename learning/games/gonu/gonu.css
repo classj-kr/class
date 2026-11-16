@@ -7,6 +7,12 @@ a { color:#ffe09a; }
 button,input { font:inherit; }
 button { color:inherit; background:#293c32; border:1px solid #b69762; border-radius:8px; padding:8px 12px; cursor:pointer; }
 button:focus-visible { outline:3px solid #ffe986; outline-offset:2px; }
+.row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.spread { justify-content:space-between; }
+.eyebrow { margin:0 0 4px; color:#d8ad6b; font-weight:900; }
+.code { font-weight:900; }
+.primary { background:#f2cb75; border-color:#f2cb75; color:#302113; font-weight:800; }
+.primary:disabled { opacity:.55; }
 button:disabled { cursor:default; }
 .panel,dialog { padding:16px; border:1px solid #b69762; border-radius:13px; background:#202d27; }
 #lobbyScreen h1 { font-family:"Nanum Myeongjo", Georgia, serif; font-size:46px; }
@@ -19,12 +25,15 @@ button:disabled { cursor:default; }
 #gameScreen { min-height:calc(var(--site-game-height, 100dvh) - 16px); display:grid; grid-template-columns:minmax(0,1fr) minmax(190px,235px); align-items:center; gap:12px; max-width:1090px; margin:auto; }
 #boardArea { display:grid; place-items:center; min-width:0; }
 /* 말판 = 풀밭 그림. 점과 선은 풀밭 안쪽(그림의 가로 8~92%, 세로 4~88%)에만 놓는다. */
-#board { position:relative; width:min(100%,calc(var(--site-game-height, 100dvh) - 28px)); aspect-ratio:1; background:url("assets/garden-board.webp") center / 100% 100% no-repeat; filter:drop-shadow(0 16px 22px #0009); color:#4b2f17; }
+#board { --line:#4b2f17; --glow:#fff3b0; position:relative; width:min(100%,calc(var(--site-game-height, 100dvh) - 28px)); aspect-ratio:1; background:url("assets/garden-board.webp") center / 100% 100% no-repeat; filter:drop-shadow(0 16px 22px #0009); color:var(--line); }
+#board[data-theme="cherry"] { --line:#5a2b44; background-image:url("assets/cherry-board.webp"); }
+#board[data-theme="snow"] { --line:#2c4466; background-image:url("assets/snow-board.webp"); }
+#board[data-theme="night"] { --line:#ece9ff; --glow:#ffe9a0; background-image:url("assets/night-board.webp"); }
 #lines,#cells { position:absolute; left:8%; top:4%; width:84%; height:84%; }
 #lines { fill:none; stroke:currentColor; stroke-width:.85; stroke-linecap:round; }
 .cell { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); display:grid; place-items:center; padding:0; width:10.4%; aspect-ratio:1; border:0; border-radius:50%; background:transparent; touch-action:manipulation; }
-.cell::before { content:""; position:absolute; width:22%; aspect-ratio:1; border-radius:50%; background:#4b2f17; }
-.cell.legal::before { width:42%; background:#fff3b0; outline:3px solid #8a5a14; box-shadow:0 0 0 5px #fff3b055; }
+.cell::before { content:""; position:absolute; width:22%; aspect-ratio:1; border-radius:50%; background:var(--line); }
+.cell.legal::before { width:42%; background:var(--glow); outline:3px solid #8a5a14; box-shadow:0 0 0 5px #fff3b077; }
 .cell.selected { outline:3px solid #ffeb5d; }
 .cell.blocked::before { width:36%; background:#785739; }
 .piece { width:100%; height:100%; position:relative; display:grid; place-items:center; border-radius:50%; background:var(--team); color:#fff; font-weight:900; border:2px solid #fff4d2; box-shadow:0 3px 6px #47251189; }
