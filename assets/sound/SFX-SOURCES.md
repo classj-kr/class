@@ -37,3 +37,11 @@ Shared effects in `sfx/` are mono 48 kHz Ogg Vorbis. The three spring sounds are
 - 48 kHz mono
 - Ogg Vorbis quality 5
 - Existing Web Audio recipes remain only as loading-failure fallbacks
+
+## Minesweeper explosion (2026-11-16)
+
+- `sfx/minesweeper-explosion.ogg` restores the site's processed CC0 explosion sample from commit `425a64650`, only for Minesweeper.
+- Author: EZduzziteh; [Explosions](https://opengameart.org/content/explosions-4), CC0 1.0; original `explosion2.ogg`.
+- Original SHA-256: `74de6dfd2c58d23886e14785fee7b876c02ef463fe24bb1e9ccf411d6997e246`.
+- Mono 48 kHz Vorbis quality 5, approximately 0.65 s, 35 Hz high-pass, 8.5 kHz low-pass, 2 ms attack fade, 45 ms tail fade from 0.60 s, gain 0.38. No pitch sweep or added reverberation.
+- Loading-failure fallback is filtered noise plus bass impact, through the shared effects volume/mute controls. Other games' retry sounds are unchanged.

@@ -66,7 +66,7 @@ async function main() {
         const play = HTMLMediaElement.prototype.play;
         HTMLMediaElement.prototype.play = function () {
           const playing = soundProbe.playing;
-          if (this.src.includes('/sfx/')) this.addEventListener('playing', () => playing.push(this.src.split('/').pop()), { once: true });
+          if (this.src.includes('/sfx/')) this.addEventListener('playing', () => playing.push(new URL(this.src).pathname.split('/').pop()), { once: true });
           return play.call(this);
         };
         const oscillator = BaseAudioContext.prototype.createOscillator;
@@ -172,7 +172,7 @@ async function main() {
       const hit = state.mines.findIndex((isMine, i) => isMine && !state.flagged.includes(i));
       assert.ok(hit >= 0);
       await reset(page); await click(cell(page, hit));
-      await check(page, `${input}: mine explosion without generic click`, ['explosion']);
+      await check(page, `${input}: mine explosion without generic click`, ['explosion'], { files: ['minesweeper-explosion'] });
       await page.waitForTimeout(750);
       await reset(page); await click(cell(page, hit));
       await check(page, `${input}: finished board silent`, []);
@@ -199,7 +199,7 @@ async function main() {
         await cell(page, j).focus(); await page.keyboard.press('f');
       }
       await reset(page); await click(cell(page, wrongChord));
-      await check(page, `${input}: wrong chord explodes once`, ['explosion']);
+      await check(page, `${input}: wrong chord explodes once`, ['explosion'], { files: ['minesweeper-explosion'] });
       assert.equal(await page.locator('.mb-cell.hit').count(), 1);
       assert.ok((await cell(page, wrongFlag).getAttribute('class')).includes('wrong'));
       await click(page.locator('#retryButton'));

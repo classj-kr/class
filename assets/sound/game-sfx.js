@@ -25,7 +25,9 @@
     const FILE_SOUND_NAMES = new Set([...SOUND_NAMES].filter(name => name !== "click" && (name !== "capture" || specialCapture)));
     const soundUrls = Object.fromEntries([...FILE_SOUND_NAMES].map(name => [
         name,
-        new URL(boardSounds && (name === "stone" || name === "capture")
+        new URL(pathGame === "minesweeper" && name === "explosion"
+            ? "sfx/minesweeper-explosion.ogg?v=20261116-mine-blast"
+            : boardSounds && (name === "stone" || name === "capture")
             ? `sfx/boards/${boardGame}-${name}.ogg?v=20261116-reversi-contact`
             : `sfx/${name}.ogg${RETRY_SOUNDS.has(name) ? "?v=20261114-boing" : ""}`, scriptUrl).href
     ]));
@@ -232,6 +234,30 @@
         tone(ctx, { start: now + 0.065, from: 1560, to: 1170, duration: 0.18, gain: 0.09 });
     }
 
+    function playExplosion(ctx) {
+        const now = ctx.currentTime;
+        const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * 0.95), ctx.sampleRate);
+        const samples = buffer.getChannelData(0);
+        for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+        for (const [from, to, duration, peak] of [[3600, 650, 0.24, 0.65], [480, 85, 0.88, 0.9]]) {
+            const source = ctx.createBufferSource();
+            const filter = ctx.createBiquadFilter();
+            const gain = makeGain(ctx, now, peak, 0.0001, duration);
+            source.buffer = buffer;
+            filter.type = "lowpass";
+            filter.Q.value = 0.55;
+            filter.frequency.setValueAtTime(from, now);
+            filter.frequency.exponentialRampToValueAtTime(to, now + duration);
+            source.connect(filter);
+            filter.connect(gain);
+            source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
+            source.start(now);
+            source.stop(now + duration + 0.01);
+        }
+        tone(ctx, { start: now, from: 95, to: 38, duration: 0.38, gain: 0.45, type: "sine" });
+    }
+
+
     function playBoing(ctx, pitch, level) {
         const start = ctx.currentTime;
         const duration = 0.34;
@@ -279,7 +305,7 @@
         card: playCard,
         stone: playStone,
         capture: playCapture,
-        explosion: ctx => playBoing(ctx, 290, 0.23),
+        explosion: ctx => pathGame === "minesweeper" ? playExplosion(ctx) : playBoing(ctx, 290, 0.23),
         success: playSuccess,
         error: ctx => playBoing(ctx, 510, 0.19),
         timeout: ctx => playBoing(ctx, 405, 0.17),
