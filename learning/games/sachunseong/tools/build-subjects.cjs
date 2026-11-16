@@ -144,7 +144,8 @@ function capitals() {
   // 오세아니아는 나라가 적어 판이 안 되니 아시아와 묶는다.
   const merge = { oceania: 'asia' };
   if (names.asia && names.oceania) names.asia = `${names.asia}·${names.oceania}`;
-  data.countries.forEach(c => {
+  // 북한은 헌법상 나라로 다루지 않는다(사용자 지적, 2026-11-17).
+  data.countries.filter(c => c.iso !== 'KP').forEach(c => {
     const key = merge[c.continent] || c.continent;
     if (!levels[key]) { levels[key] = []; labels[key] = names[key] || key; }
     levels[key].push([c.country, c.capital]);
