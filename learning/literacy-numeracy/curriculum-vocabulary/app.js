@@ -321,11 +321,12 @@
     const practice = button('연습', () => { mode = 'practice'; showLesson(unit, true); }, 'practice-chip');
     controls.forEach((control, i) => control.setAttribute('aria-pressed', String(i === current)));
     practice.setAttribute('aria-pressed', String(mode === 'practice'));
-    // 순위전: 이 단원이 체크된 채로 열리고, 시험 범위는 순위전 화면에서 단원을 더 체크해 넓힌다.
-    const race = element('a', '🏁 순위전', 'race-chip');
+    // 순위전: 다른 학습 앱처럼 오른쪽 아래에 떠 있는 단추 하나. 지금 단원이 체크된 채로 열린다.
+    let race = document.querySelector('a.race-float');
+    if (!race) { race = element('a', '🏁 순위전', 'race-float'); document.body.append(race); }
     const code = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' }[subject];
     race.href = `../korean-race/?set=textbook&range=${encodeURIComponent(`${term}.${code}.${unit.id}`)}`;
-    chips.append(...controls, practice, race);
+    chips.append(...controls, practice);
     return { chips, controls, practice };
   }
 
