@@ -1,0 +1,175 @@
+{
+ "1": {
+  "내적 갈등": {
+   "en": "internal conflict",
+   "explain": ["쉬운 뜻: 영어로 internal conflict입니다. 내 마음속에서 두 마음이 줄다리기하는 것입니다.", "낱말 나누기: 내적(안쪽의) + 갈등(서로 부딪침)입니다.", "생활 속 예: 숙제를 먼저 할지, 게임을 먼저 할지 망설이는 것도 내적 갈등입니다."],
+   "beats": ["하린이 손에 마지막 남은 과자 하나가 들려 있습니다.", "하린이 머리 위에서 작은 하린이 둘이 줄다리기를 합니다. 하나는 과자를 끌어안고, 하나는 동생을 가리킵니다.", "한 인물의 마음속에서 서로 다른 생각이나 바람이 부딪치는 것이 내적 갈등입니다."],
+   "img": "HARIN sits at a kitchen table holding the last cookie, frowning thoughtfully. Above her head, two tiny versions of HARIN play tug-of-war with a rope: one tiny HARIN hugs a giant cookie, the other points toward a little brother peeking in at the door. No text anywhere.",
+   "imgKo": "하린이가 식탁에 앉아 마지막 과자 하나를 들고 고민한다. 머리 위에서 작은 하린이 둘이 줄다리기를 하는데, 하나는 커다란 과자를 끌어안고 하나는 문틈으로 들여다보는 동생을 가리킨다."
+  },
+  "외적 갈등": {
+   "en": "external conflict",
+   "explain": ["쉬운 뜻: 영어로 external conflict입니다. 인물이 바깥의 누군가나 무엇과 맞붙는 것입니다.", "낱말 나누기: 외적(바깥의) + 갈등(서로 부딪침)입니다.", "생활 속 예: 그네를 두고 두 아이가 서로 먼저 타겠다고 다투는 것입니다."],
+   "beats": ["거센 눈보라가 몰아치는 높은 산길입니다.", "한 등산가가 몸을 숙이고 바람에 맞서 한 걸음씩 나아갑니다.", "인물이 다른 인물이나 사회, 자연 같은 바깥 대상과 맞서는 것이 외적 갈등입니다."],
+   "img": "On a steep, snowy mountain path, a fierce blizzard blows sideways. A lone mountain climber in a red jacket leans forward against the wind, gripping a walking pole and pushing ahead one step at a time. Snow swirls all around. No text.",
+   "imgKo": "가파른 눈 덮인 산길에 거센 눈보라가 옆으로 몰아친다. 빨간 옷을 입은 등산가 한 명이 몸을 앞으로 숙이고 지팡이를 꽉 쥔 채 바람에 맞서 한 걸음씩 나아간다."
+  },
+  "심리": {
+   "explain": ["쉬운 뜻: 마음속 날씨처럼 맑았다 흐렸다 바뀌는 마음의 상태입니다.", "낱말 나누기: 심(마음) + 리(까닭), 마음이 움직이는 까닭이라는 뜻입니다.", "생활 속 예: 시험지를 받기 전 다리를 떤다면 불안한 심리가 드러난 것입니다."],
+   "beats": ["도윤이가 성적표를 쥐고 현관문 앞에서 서성입니다.", "입술을 깨물고, 문손잡이에 손을 댔다 뗐다 합니다.", "이런 행동으로 짐작할 수 있는, 마음이 움직이고 변하는 상태가 심리입니다."],
+   "img": "DOYUN stands in front of his apartment's front door holding a folded report card, biting his lip. One hand hovers near the door handle, as if he has touched it and pulled back again. His shoulders are tense and his eyes look worried. No text on the paper.",
+   "imgKo": "도윤이가 접은 성적표를 쥐고 집 현관문 앞에 서서 입술을 깨문다. 한 손은 문손잡이에 댔다 뗀 듯 그 근처에 머물러 있고, 어깨가 굳어 있고 눈빛이 걱정스럽다."
+  },
+  "희곡": {
+   "en": "play",
+   "explain": ["쉬운 뜻: 영어로 play입니다. 무대 위 연극의 설계도 같은 글입니다.", "해설, 대사, 지문으로 이루어지고, 지문은 괄호 안에 씁니다.", "생활 속 예: 배우들은 희곡을 보며 자기 대사를 외우고 움직임을 익힙니다."]
+  }
+ },
+ "2": {
+  "토의자": {
+   "explain": ["쉬운 뜻: 토의 자리에 앉아 직접 자기 생각을 내놓는 사람입니다.", "낱말 나누기: 토의(함께 의논함) + 자(사람)입니다.", "생활 속 예: 학급 회의에서 쉬는 시간 공 쓰는 차례를 두고 의견을 내는 친구들입니다."],
+   "beats": ["무대 위 긴 탁자에 학생 네 명이 나란히 앉았습니다.", "한 학생이 손짓을 하며 의견을 말하고, 옆 학생은 고개를 끄덕이며 받아 적습니다.", "여럿이 해결 방법을 의논하는 자리에서 직접 의견을 내고 주고받는 사람이 토의자입니다."],
+   "img": "On a school auditorium stage, four students sit side by side at a long table with name cards that have no letters. One student explains her idea with open hand gestures, while the student next to her nods and takes notes. The others listen carefully. No text anywhere.",
+   "imgKo": "학교 강당 무대 위 긴 탁자에 학생 네 명이 나란히 앉아 있다. 한 학생이 손짓하며 자기 생각을 말하고, 옆 학생은 고개를 끄덕이며 받아 적고, 나머지는 귀 기울여 듣는다."
+  },
+  "청중": {
+   "en": "audience",
+   "explain": ["쉬운 뜻: 영어로 audience입니다. 말하는 사람 앞 객석을 채운, 듣는 사람들입니다.", "낱말 나누기: 청(들음) + 중(무리), 듣는 무리라는 뜻입니다.", "생활 속 예: 졸업식에서 축사를 듣는 학생과 부모님이 모두 청중입니다."],
+   "beats": ["강당 의자에 사람들이 빼곡히 앉아 있습니다.", "모두 무대 위 강연자를 바라보며 귀를 기울이고, 앞줄의 한 학생이 손을 듭니다.", "여럿 앞에서 하는 말을 듣기 위해 모인 사람들이 청중입니다."],
+   "img": "A large school auditorium seen from behind the rows of seats. The seats are full of students and parents, all facing a speaker standing on the stage. Everyone listens attentively, and one student in the front row raises a hand to ask a question. No text.",
+   "imgKo": "객석 뒤에서 바라본 커다란 학교 강당에 학생과 부모님이 빼곡히 앉아 무대 위 강연자를 바라본다. 모두 귀 기울여 듣고, 앞줄의 한 학생이 질문하려고 손을 든다."
+  }
+ },
+ "3": {
+  "화자": {
+   "en": "speaker",
+   "explain": ["쉬운 뜻: 영어로 speaker입니다. 대화에서 지금 마이크를 쥔 쪽, 곧 말하는 사람입니다.", "낱말 나누기: 화(말함) + 자(사람), 말하는 사람이라는 뜻입니다.", "생활 속 예: 친구가 '배고프다' 하면 화자의 속뜻은 '같이 먹자'일 수 있습니다."],
+   "beats": ["하린이가 친구들 앞에 서서 이야기를 하고 있습니다.", "도윤이는 하린이의 목소리와 표정을 살피며 귀를 기울입니다.", "대화나 강연에서 말을 하는 사람이 화자입니다."],
+   "img": "In a classroom, HARIN stands in front of a small group of classmates and speaks with lively hand gestures and a bright expression. DOYUN sits in front of her, chin on his hand, watching her face closely and listening. No text or speech bubbles.",
+   "imgKo": "교실에서 하린이가 친구 몇 명 앞에 서서 밝은 얼굴로 손짓하며 이야기한다. 도윤이는 턱을 괴고 하린이의 얼굴을 살피며 귀 기울여 듣는다."
+  },
+  "담화": {
+   "explain": ["쉬운 뜻: 말로 주고받는 이야기 한 판 전체를 묶어 부르는 이름입니다.", "낱말 나누기: 담(이야기) + 화(말함), 주고받는 이야기라는 뜻입니다.", "생활 속 예: 전화로 '여보세요'부터 '끊을게'까지 나눈 말 전체가 담화입니다."]
+  },
+  "맥락": {
+   "en": "context",
+   "explain": ["쉬운 뜻: 영어로 context입니다. 말 한마디를 둘러싼 무대 배경 같은 것입니다.", "낱말 나누기: 맥(줄기) + 락(이음), 앞뒤로 이어진 줄기라는 뜻입니다.", "생활 속 예: '대박!'은 선물을 받았을 때와 숙제를 잃어버렸을 때 뜻이 다릅니다."]
+  },
+  "화제": {
+   "en": "topic",
+   "explain": ["쉬운 뜻: 영어로 topic입니다. 이야기가 무엇에 관한 것인지, 그 '무엇'입니다.", "낱말 나누기: 화(말함) + 제(제목), 이야기의 제목이라는 뜻입니다.", "생활 속 예: 친구들과 어제 내린 첫눈 이야기를 했다면 화제는 '첫눈'입니다."],
+   "beats": ["점심시간, 친구 셋이 머리를 맞대고 이야기를 나눕니다.", "친구들 머리 위로 축구공 그림이 담긴 말풍선이 떠 있습니다.", "말이나 글에서 다루는 이야깃거리가 화제입니다."],
+   "img": "At lunchtime, three friends sit close together on a bench in the schoolyard, talking excitedly. Above their heads floats one big thought cloud containing only a picture of a soccer ball and a goal net. No letters or words in the cloud.",
+   "imgKo": "점심시간, 친구 셋이 학교 마당 의자에 붙어 앉아 신나게 이야기한다. 머리 위로 축구공과 골대 그림만 담긴 커다란 말풍선 하나가 떠 있다."
+  },
+  "준언어적 표현": {
+   "explain": ["쉬운 뜻: 말 자체는 아니지만 말에 꼭 붙어 다니는 목소리의 표정입니다.", "낱말 나누기: 준(비슷함) + 언어적(말의) + 표현, 말에 가까운 표현입니다.", "생활 속 예: '고마워.'를 크고 밝게 하면 기쁨이, 작게 웅얼거리면 마지못함이 느껴집니다."],
+   "beats": ["선생님이 그림책을 소리 내어 읽어 주십니다.", "거인이 말할 때는 크고 느린 목소리로, 생쥐가 말할 때는 작고 빠른 목소리로 바꾸십니다.", "목소리의 크기, 높낮이, 빠르기처럼 말에 실려 뜻을 더하는 것이 준언어적 표현입니다."],
+   "img": "The TEACHER sits on a low chair reading a picture book aloud to children on a rug. From her mouth come two kinds of sound-wave lines: big, slow, heavy waves drifting toward a picture of a giant in the book, and tiny, quick, zigzag waves toward a little mouse. The children's eyes are wide with delight. No text.",
+   "imgKo": "선생님이 낮은 의자에 앉아 깔개 위 아이들에게 그림책을 읽어 준다. 입에서 거인 그림 쪽으로는 크고 느린 소리 물결이, 생쥐 그림 쪽으로는 작고 빠른 지그재그 물결이 나오고, 아이들은 눈을 반짝인다."
+  },
+  "비언어적 표현": {
+   "en": "nonverbal communication",
+   "explain": ["쉬운 뜻: 영어로 nonverbal communication입니다. 입은 다물고 몸으로 하는 말입니다.", "낱말 나누기: 비(아님) + 언어적(말의) + 표현, 말이 아닌 표현입니다.", "생활 속 예: 엄지를 척 들어 올리면 말없이도 '잘했어'가 전해집니다."],
+   "beats": ["달리기를 마친 도윤이가 숨을 몰아쉽니다.", "멀리서 하린이가 엄지를 들어 올리고 활짝 웃어 보입니다.", "말소리 없이 손짓, 몸짓, 표정으로 뜻을 전하는 것이 비언어적 표현입니다."],
+   "img": "On a school sports field, DOYUN has just crossed the finish line and bends over, catching his breath. Across the noisy field, HARIN gives him a big thumbs-up and a bright smile without saying a word. DOYUN looks up and smiles back. No text.",
+   "imgKo": "운동장에서 결승선을 막 통과한 도윤이가 허리를 숙이고 숨을 고른다. 시끄러운 운동장 건너편에서 하린이가 말없이 엄지를 들어 올리며 활짝 웃고, 도윤이도 고개를 들어 웃는다."
+  }
+ },
+ "4": {
+  "형태소": {
+   "en": "morpheme",
+   "explain": ["쉬운 뜻: 영어로 morpheme입니다. 말을 블록처럼 쪼갰을 때 나오는 가장 작은 블록입니다.", "낱말 나누기: 형태(생김새) + 소(바탕), 말을 이루는 바탕 조각입니다.", "생활 속 예: '눈사람'은 '눈'과 '사람' 두 조각, '사람'을 더 쪼개면 뜻이 없어집니다."]
+  },
+  "어근": {
+   "en": "root",
+   "explain": ["쉬운 뜻: 영어로 root입니다. 낱말의 뿌리처럼 진짜 뜻을 품은 가운데 부분입니다.", "낱말 나누기: 어(말) + 근(뿌리), 말의 뿌리라는 뜻입니다.", "생활 속 예: '손등'은 '손'과 '등' 모두 어근이고, '맨손'의 '맨-'은 접사입니다."]
+  },
+  "접사": {
+   "en": "affix",
+   "explain": ["쉬운 뜻: 영어로 affix입니다. 어근에 붙이는 스티커처럼 뜻을 살짝 더해 주는 조각입니다.", "낱말 나누기: 접(붙음) + 사(말), 붙는 말이라는 뜻입니다.", "생활 속 예: '새빨갛다'의 '새-', '울보'의 '-보'가 접사입니다."]
+  },
+  "접두사": {
+   "en": "prefix",
+   "explain": ["쉬운 뜻: 영어로 prefix입니다. 'pre(앞)'와 'fix(붙이다)'가 합쳐진 말로, 앞에 붙는 조각입니다.", "낱말 나누기: 접(붙음) + 두(머리) + 사(말), 머리에 붙는 말입니다.", "생활 속 예: '맨발'의 '맨-', 영어 'unhappy'의 'un-'이 접두사입니다."]
+  },
+  "접미사": {
+   "en": "suffix",
+   "explain": ["쉬운 뜻: 영어로 suffix입니다. 어근 뒤에 꼬리처럼 붙는 조각입니다.", "낱말 나누기: 접(붙음) + 미(꼬리) + 사(말), 꼬리에 붙는 말입니다.", "생활 속 예: '선생님'의 '-님', 영어 'teacher'의 '-er'이 접미사입니다."]
+  },
+  "단일어": {
+   "explain": ["쉬운 뜻: 어근 하나로만 된, 통째로 한 덩어리인 낱말입니다.", "낱말 나누기: 단일(하나) + 어(말)입니다.", "생활 속 예: '나비', '모래', '거울'은 쪼개면 뜻이 사라지는 단일어입니다."]
+  },
+  "복합어": {
+   "explain": ["쉬운 뜻: 블록을 두 개 이상 끼워 만든 낱말을 모두 부르는 이름입니다.", "낱말 나누기: 복합(겹쳐 합침) + 어(말)입니다.", "생활 속 예: '책가방'은 '책'+'가방', '덧니'는 '덧-'+'이'로 된 복합어입니다."]
+  },
+  "합성어": {
+   "en": "compound word",
+   "explain": ["쉬운 뜻: 영어로 compound word입니다. 진짜 뜻을 지닌 어근 둘이 손잡아 만든 낱말입니다.", "낱말 나누기: 합성(합쳐 이룸) + 어(말)입니다.", "생활 속 예: '눈물'은 '눈'+'물', 영어 'rainbow'는 'rain'+'bow'입니다."]
+  },
+  "파생어": {
+   "explain": ["쉬운 뜻: 어근이라는 나무에서 접사라는 새 가지가 뻗어 나온 낱말입니다.", "낱말 나누기: 파생(갈래가 생겨남) + 어(말)입니다.", "생활 속 예: '먹이'는 '먹-'+'-이', '맨손'은 '맨-'+'손'으로 된 파생어입니다."]
+  },
+  "새말": {
+   "explain": ["쉬운 뜻: 새 물건이 태어나면 함께 태어나는, 갓 만든 낱말입니다.", "생활 속 예: '댓글', '누리꾼'은 인터넷이 널리 퍼진 뒤 만들어진 새말입니다."]
+  }
+ },
+ "5": {
+  "양상": {
+   "explain": ["쉬운 뜻: 어떤 일이 어떤 모습으로 펼쳐지는지, 그 생김새입니다.", "낱말 나누기: 양(모양) + 상(모습), 겉으로 보이는 모습이라는 뜻입니다.", "생활 속 예: 할아버지는 '사진기', 우리는 '카메라'라고 하듯 낱말 쓰임이 세대마다 다릅니다."]
+  },
+  "전문어": {
+   "en": "jargon",
+   "explain": ["쉬운 뜻: 영어로 jargon입니다. 한 분야 사람들끼리 쓰는, 그 분야만의 말입니다.", "낱말 나누기: 전문(한 분야를 깊이 앎) + 어(말)입니다.", "생활 속 예: 병원의 '처방', 야구의 '도루', 컴퓨터의 '업데이트'가 전문어입니다."],
+   "beats": ["병원에서 의사 선생님이 엑스레이 사진을 가리키며 설명합니다.", "할머니는 낯선 말에 고개를 갸웃하시고, 하린이가 할머니 손을 꼭 잡아 드립니다.", "어떤 분야 사람들이 개념을 정확하게 나타내려고 주로 쓰는 말이 전문어입니다."],
+   "img": "In a hospital consultation room, a doctor in a white coat points to an X-ray of a knee on a light board while explaining. A grandmother sitting across tilts her head with a puzzled look, and HARIN, sitting beside her, holds her hand. No text on the board or anywhere.",
+   "imgKo": "병원 진료실에서 흰 가운을 입은 의사 선생님이 밝은 판에 붙은 무릎 엑스레이 사진을 가리키며 설명한다. 맞은편 할머니는 알쏭달쏭한 얼굴로 고개를 갸웃하고, 옆에 앉은 하린이가 할머니 손을 잡아 드린다."
+  },
+  "유행어": {
+   "en": "buzzword",
+   "explain": ["쉬운 뜻: 영어로 buzzword입니다. 불꽃놀이처럼 확 퍼졌다가 금방 사라지는 말입니다.", "낱말 나누기: 유행(한때 널리 퍼짐) + 어(말)입니다.", "생활 속 예: 인기 영상의 말투를 다들 따라 하다가 몇 달 뒤 쏙 들어가는 일이 많습니다."],
+   "beats": ["친구 셋이 태블릿 속 개그맨과 똑같은 몸짓을 하며 같은 말을 외칩니다.", "교실 여기저기서 다른 아이들도 같은 몸짓을 따라 하며 깔깔 웃습니다.", "어느 한때 많은 사람이 즐겨 쓰다가 시간이 지나면 잘 쓰지 않게 되는 말이 유행어입니다."],
+   "img": "During break time in a classroom, three friends copy the exact same funny pose of a comedian shown on a tablet screen, shouting together with open mouths and laughing. Around the room, other students are doing the same pose. No text or speech bubbles anywhere.",
+   "imgKo": "쉬는 시간 교실에서 친구 셋이 태블릿 화면 속 개그맨과 똑같은 우스운 몸짓을 하며 입을 크게 벌려 함께 외치고 웃는다. 교실 여기저기서 다른 아이들도 같은 몸짓을 하고 있다."
+  },
+  "관용적": {
+   "en": "tolerant",
+   "explain": ["쉬운 뜻: 영어로 tolerant입니다. 나와 달라도 '그럴 수 있지' 하고 너그럽게 받아 주는 것입니다.", "낱말 나누기: 관용(너그럽게 받아들임) + 적(그러한)입니다.", "생활 속 예: 동생이 쓰는 줄임말을 '이상해!' 하지 않고 무슨 뜻인지 물어봅니다."],
+   "beats": ["새로 전학 온 친구가 칠판 앞에서 낯선 말투로 자기소개를 합니다.", "하린이와 도윤이가 웃으며 손뼉을 치고, 몇몇 친구는 반갑게 손을 흔듭니다.", "나와 다른 사람의 말이나 생각을 너그럽게 받아들이는 것이 관용적인 태도입니다."],
+   "img": "A new transfer student stands at the front of a classroom introducing himself a little nervously. HARIN and DOYUN smile warmly and clap, and a few other classmates wave in welcome. The atmosphere is friendly and open. No text on the board.",
+   "imgKo": "새로 전학 온 남자아이가 교실 앞에서 조금 긴장한 얼굴로 자기소개를 한다. 하린이와 도윤이가 따뜻하게 웃으며 손뼉을 치고, 다른 친구 몇이 반갑게 손을 흔든다."
+  }
+ },
+ "6": {
+  "대중 매체": {
+   "en": "mass media",
+   "explain": ["쉬운 뜻: 영어로 mass media입니다. 한 번에 수많은 사람에게 소식을 퍼뜨리는 큰 확성기입니다.", "낱말 나누기: 대중(수많은 사람) + 매체(전해 주는 수단)입니다.", "생활 속 예: 저녁 뉴스에서 내일 날씨를 알려 주면 온 나라 사람이 한꺼번에 듣습니다."],
+   "beats": ["방송국 스튜디오에서 진행자가 뉴스를 전합니다.", "같은 시각, 여러 집 거실에서 사람들이 같은 뉴스를 보고 있습니다.", "많은 사람에게 한꺼번에 정보를 전하는 수단이 대중 매체입니다."],
+   "img": "In the center, a TV news anchor sits at a desk in a bright broadcasting studio with big cameras. Around the studio, many small windows show different homes where families of all ages watch the same anchor on their TVs at the same moment. No text anywhere.",
+   "imgKo": "가운데 밝은 방송국 스튜디오에서 진행자가 큰 카메라 앞에 앉아 뉴스를 전한다. 둘레의 작은 창마다 여러 집 가족이 같은 시각에 같은 진행자를 텔레비전으로 보고 있다."
+  },
+  "개인 인터넷 방송": {
+   "explain": ["쉬운 뜻: 내 방이 곧 방송국이 되는, 한 사람이 꾸리는 인터넷 방송입니다.", "낱말 나누기: 개인(한 사람) + 인터넷 방송입니다.", "생활 속 예: 혼자 블록 쌓는 모습을 찍어 올리고, 시청자 댓글에 바로 답합니다."],
+   "beats": ["한 대학생이 자기 방 책상에 휴대 전화를 세워 두고 종이접기를 보여 줍니다.", "화면 옆으로 하트와 박수 그림이 줄줄이 떠오릅니다.", "주로 한 사람이 직접 만든 영상을 누리집이나 앱으로 내보내는 매체가 개인 인터넷 방송입니다."],
+   "img": "A young woman college student sits at a desk in her small bedroom, folding a paper crane in front of a smartphone on a tripod with a ring light. Beside her, floating heart and clapping-hands icons rise up like live reactions from viewers. No text, names, or logos anywhere.",
+   "imgKo": "대학생 언니가 자기 작은 방 책상에서 삼각대와 조명에 세운 휴대 전화 앞에 앉아 종이학을 접는다. 옆으로 시청자 반응처럼 하트와 박수 그림이 줄줄이 떠오른다."
+  },
+  "검증": {
+   "en": "fact-check",
+   "explain": ["쉬운 뜻: 영어로 fact-check입니다. '정말일까?' 하고 근거를 찾아 따져 보는 일입니다.", "낱말 나누기: 검(살핌) + 증(증거), 증거를 대어 살핀다는 뜻입니다.", "생활 속 예: '바나나를 먹으면 키가 큰다'는 글을 보고 과학책과 전문가 말을 찾아봅니다."],
+   "beats": ["도윤이가 휴대 전화로 깜짝 놀랄 만한 소식을 봅니다.", "도윤이가 노트북과 두꺼운 책을 펼쳐 그 소식이 맞는지 하나하나 찾아봅니다.", "어떤 내용이 사실인지 근거를 찾아 따져서 확인하는 일이 검증입니다."],
+   "img": "DOYUN sits at his desk with a surprised face, holding a smartphone showing a shocking video thumbnail with no text. In front of him, a laptop and a thick encyclopedia are open, and he compares them carefully, holding a magnifying glass. No readable text anywhere.",
+   "imgKo": "도윤이가 놀란 얼굴로 휴대 전화 속 깜짝 놀랄 영상을 보고 있다. 앞에는 노트북과 두꺼운 백과사전이 펼쳐져 있고, 도윤이가 돋보기를 들고 둘을 꼼꼼히 견주어 본다."
+  }
+ },
+ "7": {
+  "모호하다": {
+   "en": "vague",
+   "explain": ["쉬운 뜻: 영어로 vague입니다. 안개 낀 것처럼 뜻이 흐릿해서 무엇을 말하는지 잡히지 않는 것입니다.", "생활 속 예: '나중에 만나자'는 언제인지 알 수 없어 모호한 약속입니다."]
+  },
+  "명확하다": {
+   "en": "clear",
+   "explain": ["쉬운 뜻: 영어로 clear입니다. 맑은 유리처럼 뜻이 또렷하게 보이는 것입니다.", "낱말 나누기: 명(밝음) + 확(확실함) + 하다, 밝고 확실하다는 뜻입니다.", "생활 속 예: '토요일 오전 10시, 학교 정문에서 만나자'는 약속이 명확합니다."]
+  }
+ }
+}

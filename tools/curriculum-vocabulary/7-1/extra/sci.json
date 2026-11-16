@@ -1,0 +1,673 @@
+{
+ "1": {
+  "문제 인식": {
+   "explain": [
+    "쉬운 뜻: 궁금한 것을 실험으로 따져 볼 수 있는 물음으로 또렷하게 적는 일입니다.",
+    "낱말 나누기: 문제(풀어야 할 물음) + 인식(알아차림), 무엇을 풀지 알아차리는 것입니다.",
+    "생활 속 예: '얼음에 소금을 뿌리면 더 빨리 녹을까?'처럼 물음을 정합니다."
+   ]
+  },
+  "가설": {
+   "en": "hypothesis",
+   "explain": [
+    "쉬운 뜻: 영어로 hypothesis, 실험하기 전에 '아마 이럴 것이다' 하고 세워 보는 답입니다.",
+    "생활 속 예: '소금을 뿌린 얼음이 더 빨리 녹을 것이다.'가 가설입니다.",
+    "결과가 가설과 달라도 실패가 아닙니다. 고쳐서 다시 세웁니다."
+   ]
+  },
+  "탐구 설계": {
+   "explain": [
+    "쉬운 뜻: 실험하기 전에 무엇을 바꾸고 무엇을 똑같이 둘지 미리 짜는 일입니다.",
+    "낱말 나누기: 탐구(파고들어 알아봄) + 설계(미리 짜 놓은 계획)입니다.",
+    "생활 속 예: 같은 크기 얼음 두 개를 두고, 한쪽에만 소금을 뿌리기로 정합니다."
+   ]
+  },
+  "변인": {
+   "en": "variable",
+   "explain": [
+    "쉬운 뜻: 영어로 variable, '바뀔 수 있는 것'이라는 말입니다. 결과를 바꿀 수 있는 조건입니다.",
+    "생활 속 예: 얼음 실험에서는 소금의 양, 얼음 크기, 방 온도가 모두 변인입니다."
+   ]
+  },
+  "자료 해석": {
+   "explain": [
+    "쉬운 뜻: 모은 숫자를 표나 그래프로 정리해 그 속의 규칙을 읽어 내는 일입니다.",
+    "낱말 나누기: 자료(모은 기록) + 해석(뜻을 풀어냄), 기록의 뜻을 풀어내는 것입니다.",
+    "생활 속 예: 해마다 잰 키 그래프를 보고 '몇 살 때 가장 많이 컸구나' 하고 읽습니다."
+   ]
+  },
+  "결론 도출": {
+   "explain": [
+    "쉬운 뜻: 탐구의 끝에서 '그래서 답은 이것이다' 하고 정리하는 일입니다.",
+    "낱말 나누기: 결론(마지막 판단) + 도출(끌어냄), 결과에서 답을 끌어내는 것입니다.",
+    "생활 속 예: '소금을 뿌린 얼음이 더 빨리 녹았다. 가설이 맞았다.'라고 적습니다."
+   ]
+  },
+  "인류 문명": {
+   "en": "civilization",
+   "explain": [
+    "쉬운 뜻: 영어로 civilization, 사람들이 지식과 기술을 쌓아 이룬 삶의 모습 전체입니다.",
+    "낱말 나누기: 인류(모든 사람) + 문명(기술로 발전한 삶), 사람이 일군 발전입니다.",
+    "생활 속 예: 전기와 수돗물, 휴대 전화가 있는 오늘의 생활도 인류 문명입니다."
+   ],
+   "beats": [
+    "박물관 긴 복도에 돌도끼, 수레바퀴, 옛 인쇄기가 차례로 놓여 있습니다.",
+    "복도 끝 진열장에는 전구와 휴대 전화가 놓여 있습니다.",
+    "이렇게 사람이 지식과 기술을 쌓아 이룬 삶의 모습 전체가 인류 문명입니다."
+   ],
+   "img": "A long, bright history museum corridor seen from the side. Glass display cases stand in a row from left to right: a stone axe, a wooden cart wheel, an old wooden printing press, a glowing light bulb and, at the far right end, a modern smartphone. HARIN (girl, yellow headband, mint cardigan) walks along the cases, looking back at the stone axe and ahead toward the smartphone. No labels or text anywhere.",
+   "imgKo": "박물관 복도에 돌도끼, 수레바퀴, 옛 인쇄기, 전구, 휴대 전화 진열장이 차례로 놓여 있고, 하린이가 그 사이를 걸으며 살펴본다."
+  },
+  "증기 기관": {
+   "en": "steam engine",
+   "explain": [
+    "쉬운 뜻: 영어로 steam engine, 물을 끓인 김이 미는 힘으로 바퀴를 돌리는 기계입니다.",
+    "낱말 나누기: 증기(물이 끓어 생긴 김) + 기관(힘을 내는 기계)입니다.",
+    "생활 속 예: 물이 끓을 때 주전자 뚜껑이 달각달각 들썩이는 것도 같은 힘입니다."
+   ]
+  },
+  "산업혁명": {
+   "en": "Industrial Revolution",
+   "explain": [
+    "쉬운 뜻: 영어로 Industrial Revolution, 손으로 하던 일을 기계가 맡게 된 큰 변화입니다.",
+    "낱말 나누기: 산업(물건을 만드는 일) + 혁명(확 뒤바뀜)입니다.",
+    "생활 속 예: 옷과 신발을 공장에서 한꺼번에 많이 만드는 일도 그때 시작되었습니다."
+   ],
+   "beats": [
+    "옛날 영국의 넓은 공장 안에 실 잣는 기계가 길게 줄지어 있습니다.",
+    "기계가 돌아가며 많은 실을 한꺼번에 감고, 창밖 굴뚝에서는 연기가 오릅니다.",
+    "이렇게 손으로 하던 일을 기계가 맡으며 생활이 크게 바뀐 일이 산업혁명입니다."
+   ],
+   "img": "Inside a large brick textile mill in 18th-century England: long rows of spinning machines with many spools turn at once, driven by belts from the ceiling. A few workers in period clothes tend the machines. Through tall windows, factory chimneys release smoke into a gray sky. No text.",
+   "imgKo": "18세기 영국의 벽돌 공장 안에 실 잣는 기계가 줄지어 돌아가고, 창밖으로 굴뚝 연기가 보인다."
+  },
+  "첨단 과학기술": {
+   "explain": [
+    "쉬운 뜻: 지금 맨 앞에서 달리는, 가장 새로운 과학과 기술입니다.",
+    "낱말 나누기: 첨단(뾰족한 끝, 맨 앞) + 과학기술입니다.",
+    "생활 속 예: 드론 택배, 인공지능 스피커, 로봇 청소기가 그 예입니다."
+   ],
+   "beats": [
+    "과학 박람회장 천장 아래에 드론 여러 대가 줄지어 떠 있습니다.",
+    "바닥에서는 사람처럼 걷는 로봇이 하린이에게 손을 흔듭니다.",
+    "이렇게 지금 가장 앞선 새로운 과학과 기술을 첨단 과학기술이라고 합니다."
+   ],
+   "img": "A bright indoor science and technology fair. Several small drones hover in a neat line under the high ceiling. On the floor, a white two-legged walking robot waves one hand at HARIN (girl, yellow headband, mint cardigan), who waves back with a big smile, while DOYUN (boy, round glasses, navy hoodie) looks up at the drones. No signs, screens or text.",
+   "imgKo": "과학 박람회장 천장 아래 드론들이 줄지어 떠 있고, 걷는 로봇이 하린이에게 손을 흔든다. 도윤이는 드론을 올려다본다."
+  },
+  "사물 인터넷": {
+   "en": "Internet of Things (IoT)",
+   "explain": [
+    "쉬운 뜻: 영어로 Internet of Things, 물건들이 인터넷으로 서로 말을 주고받는 기술입니다.",
+    "낱말 나누기: 사물(여러 가지 물건) + 인터넷, 물건에 인터넷이 이어진 것입니다.",
+    "생활 속 예: 스마트 시계가 잰 걸음 수가 휴대 전화로 저절로 넘어갑니다."
+   ],
+   "beats": [
+    "도윤이가 거실 소파에 앉아 휴대 전화 화면을 누릅니다.",
+    "그러자 에어컨이 켜지고 로봇 청소기가 혼자 움직이기 시작합니다.",
+    "이렇게 여러 물건이 인터넷으로 이어져 정보를 주고받는 기술이 사물 인터넷입니다."
+   ],
+   "img": "A cozy Korean apartment living room. DOYUN (boy, round glasses, navy hoodie) sits on the sofa tapping a smartphone whose screen shows only simple blank icons. Across the room a wall air conditioner has just switched on with a soft breeze, and a round robot vacuum glides across the floor. Faint dotted curved lines connect the phone to each appliance. No text.",
+   "imgKo": "거실 소파에서 도윤이가 휴대 전화를 누르자 에어컨이 켜지고 로봇 청소기가 움직인다. 휴대 전화와 물건들 사이에 점선이 이어져 있다."
+  },
+  "빅데이터": {
+   "en": "big data",
+   "explain": [
+    "쉬운 뜻: 영어로 big data, 너무 많아서 사람이 손으로는 다 셀 수 없는 정보 더미입니다.",
+    "낱말 나누기: 빅(아주 큰) + 데이터(자료), 아주 큰 자료라는 뜻입니다.",
+    "생활 속 예: 동영상 앱이 내가 좋아할 만한 영상을 골라 보여 줄 때도 쓰입니다."
+   ],
+   "beats": [
+    "교통 정보 센터의 커다란 화면에 도시 지도가 떠 있습니다.",
+    "지도 위로 버스와 사람들의 움직임이 수많은 빛나는 점이 되어 쉴 새 없이 쌓입니다.",
+    "이렇게 날마다 쏟아지는 아주 많은 양의 정보를 빅데이터라고 합니다."
+   ],
+   "img": "A modern city traffic information center at night. A huge wall screen shows a simple city map covered with thousands of tiny glowing dots and lines that stream along the roads like rivers of light. Two staff members sit at desks watching the screen. No text, numbers or labels on any screen.",
+   "imgKo": "교통 정보 센터의 큰 화면에 도시 지도가 있고, 그 위로 수많은 빛나는 점이 길을 따라 흐른다. 화면에 글자는 없다."
+  },
+  "증강 현실": {
+   "en": "augmented reality (AR)",
+   "explain": [
+    "쉬운 뜻: 영어로 augmented reality, '덧붙여 늘린 현실'이라는 말입니다. 진짜 모습 위에 그림을 겹칩니다.",
+    "낱말 나누기: 증강(더하여 늘림) + 현실(지금 눈앞의 진짜 세상)입니다.",
+    "생활 속 예: 휴대 전화 게임 속 캐릭터가 우리 동네 골목에 서 있는 것처럼 보입니다."
+   ],
+   "beats": [
+    "하린이가 놀이터를 향해 태블릿을 들어 올립니다.",
+    "화면 속 진짜 미끄럼틀 옆에 커다란 공룡이 서 있습니다. 실제 놀이터에는 아무것도 없습니다.",
+    "이렇게 실제 모습 위에 컴퓨터가 만든 그림을 겹쳐 보여 주는 기술이 증강 현실입니다."
+   ],
+   "img": "A sunny school playground. HARIN (girl, yellow headband, mint cardigan) holds up a tablet toward the slide. On the tablet screen we see the same real slide and sandbox, but a big friendly green dinosaur stands next to the slide only on the screen; in the real playground there is no dinosaur. No text.",
+   "imgKo": "하린이가 놀이터를 향해 태블릿을 들고, 화면 속에만 미끄럼틀 옆에 공룡이 서 있다. 실제 놀이터에는 공룡이 없다."
+  },
+  "자율 주행": {
+   "en": "self-driving",
+   "explain": [
+    "쉬운 뜻: 영어로 self-driving, 차가 스스로 보고 판단하며 달리는 것입니다.",
+    "낱말 나누기: 자율(스스로 정함) + 주행(달려감), 스스로 알아서 달린다는 뜻입니다.",
+    "생활 속 예: 로봇 청소기가 가구를 알아보고 피해 다니는 것도 비슷한 기술입니다."
+   ],
+   "beats": [
+    "운전석이 텅 빈 작은 버스가 길을 달려옵니다.",
+    "횡단보도 앞에서 아이들을 알아보고 버스가 스스로 멈춰 섭니다.",
+    "이렇게 사람이 운전하지 않아도 차가 스스로 살피며 달리는 것이 자율 주행입니다."
+   ],
+   "img": "A small modern shuttle bus with large windows stops by itself before a zebra crossing on a quiet city street. Through the front window, the driver's seat is clearly empty and nobody holds the steering wheel. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) cross in front of it. Small sensors sit on the bus roof. No text.",
+   "imgKo": "운전석이 빈 작은 버스가 횡단보도 앞에 스스로 멈추고, 하린이와 도윤이가 그 앞을 건넌다."
+  },
+  "자원 고갈": {
+   "explain": [
+    "쉬운 뜻: 쌀독의 쌀을 꺼내 먹기만 하면 바닥나듯, 자원이 줄어 바닥나 가는 일입니다.",
+    "낱말 나누기: 자원(사람이 쓰는 석유, 광물 같은 것) + 고갈(말라 바닥남)입니다.",
+    "생활 속 예: 다 쓴 휴대 전화를 모아 그 속의 금속을 다시 뽑아 쓰기도 합니다."
+   ]
+  },
+  "지속가능한 삶": {
+   "en": "sustainable living",
+   "explain": [
+    "쉬운 뜻: 영어로 sustainable living, 오늘도 잘 살고 먼 뒷날 아이들도 잘 살게 하는 생활입니다.",
+    "낱말 나누기: 지속(오래 이어 감) + 가능한(할 수 있는) + 삶입니다.",
+    "생활 속 예: 다 먹을 만큼만 덜어 음식물 쓰레기를 남기지 않습니다."
+   ],
+   "beats": [
+    "지붕마다 햇빛 전지판이 놓인 동네 길을 하린이가 자전거로 달립니다.",
+    "자전거에는 텀블러가 꽂혀 있고, 이웃은 장바구니를 들고 걸어갑니다.",
+    "이렇게 다음 세대가 쓸 환경과 자원을 지키며 사는 방식이 지속가능한 삶입니다."
+   ],
+   "img": "A green, sunny residential street where solar panels cover the rooftops of low houses. HARIN (girl, yellow headband, mint cardigan) rides a bicycle with a reusable water bottle in its holder. On the sidewalk, a neighbor walks home carrying a cloth shopping bag full of vegetables, and street trees line the road. No text or logos.",
+   "imgKo": "지붕마다 햇빛 전지판이 있는 동네 길을 하린이가 텀블러를 꽂은 자전거로 달리고, 이웃은 장바구니를 들고 걸어간다."
+  }
+ },
+ "2": {
+  "세포": {
+   "en": "cell",
+   "explain": [
+    "쉬운 뜻: 영어로 cell, '작은 방'이라는 말입니다. 생물의 몸을 이루는 작은 방 같은 단위입니다.",
+    "생활 속 예: 양파 속껍질을 현미경으로 보면 벽돌 같은 칸이 빼곡합니다.",
+    "우리 몸은 수십조 개의 세포로 되어 있습니다."
+   ]
+  },
+  "핵": {
+   "en": "nucleus",
+   "explain": [
+    "쉬운 뜻: 영어로 nucleus, 세포가 하는 일을 지휘하는 본부 같은 곳입니다.",
+    "생활 속 예: 달걀노른자처럼 세포 가운데쯤에 동그랗게 자리 잡고 있습니다."
+   ]
+  },
+  "세포막": {
+   "en": "cell membrane",
+   "explain": [
+    "쉬운 뜻: 영어로 cell membrane, 세포를 감싼 아주 얇은 막으로, 드나드는 것을 가리는 문지기입니다.",
+    "낱말 나누기: 세포 + 막(얇은 껍질), 세포를 싼 얇은 껍질입니다.",
+    "식물 세포는 세포막 바깥을 단단한 세포벽이 한 겹 더 감쌉니다."
+   ]
+  },
+  "세포질": {
+   "en": "cytoplasm",
+   "explain": [
+    "쉬운 뜻: 영어로 cytoplasm, 세포 속에서 핵을 뺀 나머지를 채운 말랑한 부분입니다.",
+    "낱말 나누기: 세포 + 질(바탕 물질), 세포 속을 채운 바탕입니다.",
+    "생활 속 예: 젤리 속에 과일 조각이 박혀 있듯, 여러 구조가 그 안에 들어 있습니다."
+   ]
+  },
+  "마이토콘드리아": {
+   "en": "mitochondria",
+   "explain": [
+    "쉬운 뜻: 영어로 mitochondria, 양분을 써서 살아갈 힘을 만드는 세포 속 발전소입니다.",
+    "생활 속 예: 밥을 먹어야 힘이 나는 것은 이곳에서 양분이 에너지로 바뀌기 때문입니다."
+   ]
+  },
+  "엽록체": {
+   "en": "chloroplast",
+   "explain": [
+    "쉬운 뜻: 영어로 chloroplast, 잎을 초록색으로 보이게 하는 작은 알갱이로, 양분을 만드는 부엌입니다.",
+    "낱말 나누기: 엽록(잎의 초록빛) + 체(알갱이), 잎의 초록 알갱이입니다.",
+    "생활 속 예: 시금치와 상추가 진한 초록색인 것도 엽록체 덕분입니다."
+   ]
+  },
+  "생명활동": {
+   "en": "life processes",
+   "explain": [
+    "쉬운 뜻: 영어로 life processes, 살아 있는 것만 할 수 있는 일들을 통틀어 이르는 말입니다.",
+    "낱말 나누기: 생명(살아 있음) + 활동(움직여 일함)입니다.",
+    "생활 속 예: 잠자는 동안에도 우리는 숨 쉬고 심장이 뛰며 생명활동을 이어 갑니다."
+   ]
+  },
+  "단세포생물": {
+   "en": "single-celled organism",
+   "explain": [
+    "쉬운 뜻: 영어로 single-celled organism, 세포 하나가 곧 몸 전체인 생물입니다.",
+    "낱말 나누기: 단(하나) + 세포 + 생물, 세포 하나로 된 생물입니다.",
+    "생활 속 예: 요구르트를 만드는 젖산균도 세포 하나로 사는 생물입니다."
+   ]
+  },
+  "다세포생물": {
+   "en": "multicellular organism",
+   "explain": [
+    "쉬운 뜻: 영어로 multicellular organism, 많은 세포가 모여 일을 나누어 맡는 생물입니다.",
+    "낱말 나누기: 다(많음) + 세포 + 생물, 세포가 많은 생물입니다.",
+    "생활 속 예: 강아지, 민들레, 버섯, 그리고 우리도 다세포생물입니다."
+   ]
+  },
+  "조직": {
+   "en": "tissue",
+   "explain": [
+    "쉬운 뜻: 영어로 tissue, 같은 일을 하는 세포들이 모여 만든 한 팀입니다.",
+    "생활 속 예: 근육 조직, 신경 조직, 뼈 조직처럼 하는 일을 앞에 붙여 부릅니다.",
+    "세포가 모여 조직이 되고, 조직이 모여 기관이 됩니다."
+   ]
+  },
+  "조직계": {
+   "en": "tissue system",
+   "explain": [
+    "쉬운 뜻: 영어로 tissue system, 식물에서 여러 조직이 몸 전체로 이어져 함께 일하는 묶음입니다.",
+    "낱말 나누기: 조직 + 계(이어진 묶음), 조직들이 이어진 묶음입니다.",
+    "생활 속 예: 셀러리 줄기를 꺾으면 보이는 질긴 실은 관다발 조직계에 속하는 관다발입니다."
+   ]
+  },
+  "기관": {
+   "en": "organ",
+   "explain": [
+    "쉬운 뜻: 영어로 organ, 여러 조직이 모여 한 가지 큰 일을 맡은 몸의 부분입니다.",
+    "생활 속 예: 심장, 위, 폐, 눈은 동물의 기관이고 뿌리, 잎, 꽃은 식물의 기관입니다."
+   ]
+  },
+  "기관계": {
+   "en": "organ system",
+   "explain": [
+    "쉬운 뜻: 영어로 organ system, 관련된 기관들이 한 팀으로 묶여 함께 일하는 것입니다.",
+    "낱말 나누기: 기관 + 계(이어진 묶음), 기관들이 이어진 묶음입니다.",
+    "생활 속 예: 콩팥과 방광은 오줌을 만들어 내보내는 배설계라는 기관계입니다."
+   ]
+  },
+  "개체": {
+   "explain": [
+    "쉬운 뜻: 혼자서 살아갈 수 있는 생물 하나하나를 이르는 말입니다.",
+    "생활 속 예: 어항 속 금붕어 다섯 마리는 금붕어 다섯 개체입니다."
+   ]
+  },
+  "생물다양성": {
+   "en": "biodiversity",
+   "explain": [
+    "쉬운 뜻: 영어로 biodiversity, 한곳에 얼마나 여러 가지 생물이 어울려 사는지를 나타냅니다.",
+    "낱말 나누기: 생물 + 다양성(여러 가지인 정도)입니다.",
+    "생활 속 예: 잔디만 깔린 운동장보다 풀숲과 연못이 있는 공원에 사는 생물이 훨씬 많습니다."
+   ],
+   "beats": [
+    "갈대가 우거진 습지에 왜가리가 서 있고 물속에는 작은 물고기가 헤엄칩니다.",
+    "풀잎에는 잠자리와 메뚜기가, 물가에는 개구리와 게가 보입니다.",
+    "이렇게 한곳에 여러 가지 생물이 어울려 사는 정도를 생물다양성이라고 합니다."
+   ],
+   "img": "A lush Korean wetland on a summer morning, shown partly above and partly below the water line. A gray heron stands among tall reeds, dragonflies and a grasshopper rest on grass blades, a frog sits on a lily pad, small crabs crawl on the muddy bank, and under the water small fish swim between water plants. Many different living things are visible at once. No text.",
+   "imgKo": "여름 습지에 왜가리, 잠자리, 메뚜기, 개구리, 게, 물고기, 물풀이 한데 어울려 산다."
+  },
+  "변이": {
+   "en": "variation",
+   "explain": [
+    "쉬운 뜻: 영어로 variation, 같은 종류끼리도 생김새와 특징이 조금씩 다른 것입니다.",
+    "생활 속 예: 우리 반 친구들도 키, 얼굴 생김새, 목소리가 저마다 다릅니다."
+   ],
+   "beats": [
+    "바구니 안에 한 어미에게서 태어난 새끼 고양이 다섯 마리가 모여 있습니다.",
+    "줄무늬, 얼룩무늬, 새까만 털까지 무늬와 색깔이 저마다 다릅니다.",
+    "이렇게 같은 종류의 생물 사이에서 나타나는 생김새의 차이가 변이입니다."
+   ],
+   "img": "A wicker basket on a living room floor holding five kittens from the same mother cat, who lies beside the basket. The kittens all have different coats: one orange-striped, one gray tabby, one black and white patched, one pure black and one calico. HARIN (girl, yellow headband, mint cardigan) kneels by the basket and gently strokes one kitten. No text.",
+   "imgKo": "어미 고양이 곁 바구니에 무늬와 색깔이 저마다 다른 새끼 고양이 다섯 마리가 있고, 하린이가 쓰다듬는다."
+  },
+  "적응": {
+   "en": "adaptation",
+   "explain": [
+    "쉬운 뜻: 영어로 adaptation, 생물이 오랜 세월에 걸쳐 사는 곳에 꼭 맞는 몸과 습성을 갖게 된 것입니다.",
+    "생활 속 예: 선인장의 가시는 물이 날아가지 않게 잎이 바늘처럼 변한 것입니다.",
+    "한 마리가 살면서 몸을 바꾸는 것이 아니라 여러 세대를 거쳐 생깁니다."
+   ],
+   "beats": [
+    "모래바람이 부는 사막을 낙타가 천천히 걸어갑니다.",
+    "긴 속눈썹이 날리는 모래를 막고, 넓적한 발바닥은 모래에 빠지지 않습니다.",
+    "이렇게 오랜 세월에 걸쳐 사는 곳에 알맞은 몸을 갖게 된 것이 적응입니다."
+   ],
+   "img": "A camel walks slowly across golden sand dunes in a light sandstorm under a hot sun. Its details are clear: long thick eyelashes shielding its eyes from blowing sand, and wide, flat padded feet pressing into the sand without sinking. No people, no text.",
+   "imgKo": "모래바람 부는 사막을 낙타가 걷는다. 긴 속눈썹과 넓적한 발바닥이 잘 보인다."
+  },
+  "종": {
+   "en": "species",
+   "explain": [
+    "쉬운 뜻: 영어로 species, 짝을 지어 낳은 새끼가 다시 새끼를 낳을 수 있는 생물의 무리입니다.",
+    "생활 속 예: 사람은 피부색과 키가 저마다 달라도 모두 한 종입니다."
+   ]
+  },
+  "생물분류": {
+   "en": "classification",
+   "explain": [
+    "쉬운 뜻: 영어로 classification, 생물을 생김새와 특징이 닮은 것끼리 무리 지어 나누는 일입니다.",
+    "낱말 나누기: 생물 + 분류(종류별로 나눔)입니다.",
+    "생활 속 예: 고래는 바다에 살아도 새끼를 낳아 젖을 먹이므로 물고기가 아니라 포유류입니다."
+   ],
+   "beats": [
+    "책상 위에 여러 동물 그림 카드가 흩어져 있습니다.",
+    "하린이와 도윤이가 깃털, 비늘, 젖을 먹이는 특징에 따라 카드를 세 무리로 모읍니다.",
+    "이렇게 생물의 특징을 기준으로 닮은 것끼리 무리 지어 나누는 일이 생물분류입니다."
+   ],
+   "img": "A classroom desk covered with picture cards of animals: a sparrow, an eagle, a goldfish, a shark, a dog, a cat, a bat and a whale (pictures only, no words). HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) slide the cards into three groups: birds with feathers, fish with scales, and mammals including the dog, cat, bat and whale. No text.",
+   "imgKo": "책상 위 동물 그림 카드를 하린이와 도윤이가 새, 물고기, 젖먹이 동물(개, 고양이, 박쥐, 고래) 세 무리로 나눈다."
+  },
+  "분류체계": {
+   "explain": [
+    "쉬운 뜻: 생물을 작은 무리부터 큰 무리까지 일곱 층으로 쌓아 정리한 틀입니다.",
+    "낱말 나누기: 분류(종류별로 나눔) + 체계(차례 있게 짜인 틀)입니다.",
+    "생활 속 예: 주소를 나라, 도, 시, 동으로 점점 좁혀 가는 것과 닮았습니다."
+   ]
+  },
+  "핵막": {
+   "en": "nuclear membrane",
+   "explain": [
+    "쉬운 뜻: 영어로 nuclear membrane, 핵을 감싸 세포질과 나누는 얇은 껍질입니다.",
+    "낱말 나누기: 핵 + 막(얇은 껍질), 핵을 싼 얇은 껍질입니다.",
+    "이 막이 있는지 없는지가 세균과 다른 생물을 가르는 기준입니다."
+   ]
+  },
+  "원핵생물계": {
+   "explain": [
+    "쉬운 뜻: 유전 물질이 막 없이 세포 속에 놓여 있는 세균들의 무리입니다.",
+    "낱말 나누기: 원핵(처음 모습의 핵, 막이 없는 핵) + 생물 + 계(큰 무리)입니다.",
+    "생활 속 예: 김치를 시게 익히는 젖산균, 이를 썩게 하는 충치균이 여기에 속합니다."
+   ]
+  },
+  "원생생물계": {
+   "explain": [
+    "쉬운 뜻: 동물도 식물도 균도 아닌, 핵이 있는 단순한 생물들을 모아 둔 무리입니다.",
+    "낱말 나누기: 원생(처음 생긴 모습) + 생물 + 계(큰 무리)입니다.",
+    "생활 속 예: 김밥을 싸는 김도 원생생물계에 속합니다."
+   ]
+  },
+  "균계": {
+   "en": "fungi",
+   "explain": [
+    "쉬운 뜻: 영어로 fungi, 버섯과 곰팡이처럼 광합성을 못 하고 포자로 퍼지는 생물의 무리입니다.",
+    "생활 속 예: 오래 둔 귤에 핀 푸른 곰팡이도 균계 생물입니다.",
+    "버섯 밑동에 하얀 실처럼 엉킨 것이 균사입니다."
+   ],
+   "beats": [
+    "비 온 뒤 숲속 썩은 나무에 버섯이 무리 지어 돋아 있습니다.",
+    "도윤이가 돋보기로 보니 버섯 밑동에 하얀 실 같은 것이 엉켜 있습니다.",
+    "이렇게 광합성을 하지 못하고 실 같은 균사로 몸을 이루는 생물의 무리가 균계입니다."
+   ],
+   "img": "A damp forest floor after rain. Clusters of brown mushrooms grow out of a rotting fallen log covered in moss. DOYUN (boy, round glasses, navy hoodie) crouches beside the log holding a magnifying glass over the base of the mushrooms, where fine white threadlike strands spread through the wood. No text.",
+   "imgKo": "비 온 뒤 숲에서 썩은 나무에 버섯이 돋아 있고, 도윤이가 돋보기로 밑동의 하얀 실 같은 것을 들여다본다."
+  },
+  "식물계": {
+   "en": "plant kingdom",
+   "explain": [
+    "쉬운 뜻: 영어로 plant kingdom, 엽록체가 있어 햇빛으로 스스로 양분을 만드는 생물의 무리입니다.",
+    "낱말 나누기: 식물 + 계(큰 무리), 식물들을 모은 큰 무리입니다.",
+    "생활 속 예: 벼, 사과나무, 장미, 길가의 이끼까지 모두 식물계입니다."
+   ]
+  },
+  "동물계": {
+   "en": "animal kingdom",
+   "explain": [
+    "쉬운 뜻: 영어로 animal kingdom, 다른 생물을 먹어 양분을 얻는, 여러 세포로 된 생물의 무리입니다.",
+    "낱말 나누기: 동물 + 계(큰 무리)입니다.",
+    "생활 속 예: 개미, 오징어, 참새, 사람이 모두 동물계에 속합니다."
+   ]
+  },
+  "생물다양성보전": {
+   "en": "biodiversity conservation",
+   "explain": [
+    "쉬운 뜻: 영어로 biodiversity conservation, 여러 생물과 그 사는 곳이 사라지지 않게 지키는 일입니다.",
+    "낱말 나누기: 생물다양성(생물이 여러 가지인 정도) + 보전(잘 지켜 이어 감)입니다.",
+    "생활 속 예: 반달가슴곰을 지리산에 풀어 다시 살게 하는 일도 그 예입니다."
+   ],
+   "beats": [
+    "선생님과 아이들이 장갑을 끼고 냇가에서 쓰레기를 주워 담습니다.",
+    "하린이는 물가에 어린 갈대를 심고, 도윤이는 물뿌리개로 물을 줍니다.",
+    "이렇게 여러 생물과 그 사는 곳이 사라지지 않게 지키는 일이 생물다양성보전입니다."
+   ],
+   "img": "A small clear stream on a sunny spring day. The TEACHER (woman in her 30s, beige jacket) and several students wearing gloves pick up plastic litter from the bank into bags. HARIN (girl, yellow headband, mint cardigan) plants young reed seedlings at the water's edge, and DOYUN (boy, round glasses, navy hoodie) gently pours water on them from a watering can. No text.",
+   "imgKo": "봄날 냇가에서 선생님과 아이들이 쓰레기를 줍고, 하린이는 물가에 갈대 모종을 심고 도윤이는 물을 준다."
+  },
+  "서식지 파괴": {
+   "en": "habitat destruction",
+   "explain": [
+    "쉬운 뜻: 영어로 habitat destruction, 생물이 사는 집과 동네가 망가지거나 사라지는 일입니다.",
+    "낱말 나누기: 서식지(생물이 사는 곳) + 파괴(부수어 망가뜨림)입니다.",
+    "생활 속 예: 논이 줄어들면서 개구리와 메뚜기를 보기 어려워졌습니다."
+   ],
+   "beats": [
+    "산자락 숲의 한쪽이 베어지고 굴착기가 흙을 파헤칩니다.",
+    "남은 나무 끝에서 다람쥐와 새가 빈 땅을 바라봅니다.",
+    "이렇게 생물이 살던 곳이 개발로 망가지거나 사라지는 일이 서식지 파괴입니다."
+   ],
+   "img": "The edge of a green hillside forest where a wide strip of trees has been cut down. Stumps and bare brown earth cover the cleared area, and an excavator digs the ground with a half-built apartment frame behind it. At the edge of the remaining trees, a squirrel and a pair of small birds sit on a branch looking at the bare land. No text.",
+   "imgKo": "숲 한쪽이 베어져 굴착기가 흙을 파고 아파트 뼈대가 서 있으며, 남은 나무 끝에서 다람쥐와 새가 빈 땅을 바라본다."
+  },
+  "외래종": {
+   "en": "non-native species",
+   "explain": [
+    "쉬운 뜻: 영어로 non-native species, 사람을 따라 다른 나라에서 들어와 우리 땅에 살게 된 생물입니다.",
+    "생활 속 예: 길가에 흔한 서양민들레도 외래종입니다.",
+    "모두 해로운 것은 아니고, 토박이 생물을 몰아낼 때 문제가 됩니다."
+   ],
+   "beats": [
+    "공원 연못의 넓은 바위를 귀 옆이 빨간 거북 여러 마리가 차지하고 볕을 쬡니다.",
+    "갈색 토박이 거북은 올라갈 자리가 없어 바위 둘레를 맴돕니다.",
+    "이처럼 다른 나라에서 들어와 우리 땅에 퍼져 사는 생물이 외래종입니다."
+   ],
+   "img": "A park pond on a sunny day. On a large flat rock, many red-eared slider turtles, each with a bright red stripe behind the eye, crowd together basking. In the water nearby, a single plain brown native pond turtle swims around the rock with no space to climb up. DOYUN (boy, round glasses, navy hoodie) watches from the wooden railing of the pond. No text.",
+   "imgKo": "공원 연못 바위를 귀 옆이 빨간 거북들이 차지하고, 갈색 토박이 거북은 올라갈 자리 없이 맴돈다. 도윤이가 난간에서 본다."
+  },
+  "생태통로": {
+   "en": "wildlife crossing",
+   "explain": [
+    "쉬운 뜻: 영어로 wildlife crossing, 찻길에 끊긴 동물의 길을 다시 이어 주는 다리나 굴입니다.",
+    "낱말 나누기: 생태(생물이 살아가는 모습) + 통로(지나다니는 길)입니다.",
+    "생활 속 예: 고속 도로를 달리다 보면 풀과 나무로 덮인 넓은 다리가 머리 위로 지나갑니다."
+   ],
+   "beats": [
+    "산을 가로지르는 찻길 위로 흙과 나무로 덮인 넓은 다리가 놓여 있습니다.",
+    "어스름한 저녁, 너구리 가족이 그 다리 위를 줄지어 건너갑니다.",
+    "이렇게 끊긴 동물의 길을 이어 주려고 만든 길이 생태통로입니다."
+   ],
+   "img": "Dusk in a forested mountain area. A wide bridge covered with soil, grass, bushes and small trees arches over a highway with car headlights below. On the green bridge, a family of raccoon dogs walks across in a line from one forest to the other. No people, no signs, no text.",
+   "imgKo": "저녁 무렵 찻길 위로 풀과 나무가 덮인 다리가 놓여 있고, 너구리 가족이 줄지어 건넌다."
+  }
+ },
+ "3": {
+  "온도": {
+   "en": "temperature",
+   "explain": [
+    "쉬운 뜻: 영어로 temperature, 뜨겁고 차가운 정도를 숫자로 나타낸 것입니다.",
+    "손으로 만진 느낌은 사람마다 달라서 온도계로 재어 숫자로 말합니다.",
+    "생활 속 예: 물은 0 ℃에서 얼고 100 ℃에서 끓습니다."
+   ]
+  },
+  "입자": {
+   "en": "particle",
+   "explain": [
+    "쉬운 뜻: 영어로 particle, 모래성이 모래알로 되어 있듯 물질을 이루는 아주 작은 알갱이입니다.",
+    "생활 속 예: 설탕을 물에 녹이면 보이지 않아도 입자가 물속에 그대로 있어 달콤합니다."
+   ]
+  },
+  "열평형": {
+   "en": "thermal equilibrium",
+   "explain": [
+    "쉬운 뜻: 영어로 thermal equilibrium, 맞닿은 두 물체의 온도가 같아져 열이 더 오가지 않는 상태입니다.",
+    "낱말 나누기: 열 + 평형(어느 쪽으로도 기울지 않음)입니다.",
+    "생활 속 예: 식탁에 둔 뜨거운 국과 찬 우유도 오래 두면 방 온도와 같아집니다."
+   ]
+  },
+  "전도": {
+   "en": "conduction",
+   "explain": [
+    "쉬운 뜻: 영어로 conduction, 입자들이 제자리에서 떨림을 옆으로 이어 주며 열을 옮기는 것입니다.",
+    "생활 속 예: 쇠 난간이 나무 난간보다 차갑게 느껴지는 것은 손의 열을 빨리 빼앗기 때문입니다.",
+    "물체끼리 맞닿아 있어야 일어납니다."
+   ]
+  },
+  "대류": {
+   "en": "convection",
+   "explain": [
+    "쉬운 뜻: 영어로 convection, 데워진 액체나 기체가 직접 돌아다니며 열을 나르는 것입니다.",
+    "데워진 쪽은 위로 오르고 찬 쪽은 아래로 내려와 빙빙 돕니다.",
+    "생활 속 예: 난로를 방바닥 가까이 두면 데워진 공기가 올라가 방 전체가 따뜻해집니다."
+   ]
+  },
+  "복사": {
+   "en": "radiation",
+   "explain": [
+    "쉬운 뜻: 영어로 radiation, 열이 아무것도 거치지 않고 빛처럼 곧장 날아가는 것입니다.",
+    "생활 속 예: 전기난로 앞에 서면 공기가 데워지기도 전에 몸이 먼저 따뜻해집니다."
+   ]
+  },
+  "열화상 카메라": {
+   "en": "thermal camera",
+   "explain": [
+    "쉬운 뜻: 영어로 thermal camera, 눈에 안 보이는 열을 찍어 뜨거운 곳과 찬 곳을 다른 색으로 보여 줍니다.",
+    "낱말 나누기: 열화상(열로 그린 그림) + 카메라입니다.",
+    "생활 속 예: 소방관은 연기 속에서도 이 카메라로 사람을 찾아냅니다."
+   ],
+   "beats": [
+    "도윤이가 열화상 카메라를 부엌 쪽으로 향합니다.",
+    "화면 속 끓는 주전자는 빨갛게, 얼음물이 든 컵은 파랗게 보입니다.",
+    "이렇게 물체에서 나오는 열을 읽어 온도를 색으로 보여 주는 기계가 열화상 카메라입니다."
+   ],
+   "img": "A home kitchen. DOYUN (boy, round glasses, navy hoodie) holds a handheld thermal camera pointed at the stove. In the real kitchen a kettle sits on the stove and a glass of ice water stands on the counter. On the camera's screen the same scene appears in false colors: the kettle glows bright red and yellow, the ice water glass is deep blue, and the walls are purple. No numbers or text on the screen.",
+   "imgKo": "부엌에서 도윤이가 열화상 카메라를 들고 있고, 화면에서 주전자는 빨갛게, 얼음물 컵은 파랗게 보인다."
+  },
+  "열량": {
+   "explain": [
+    "쉬운 뜻: 뜨거운 쪽에서 찬 쪽으로 옮겨 간 열이 얼마만큼인지를 나타낸 양입니다.",
+    "낱말 나누기: 열 + 량(양, 얼마만큼), 열의 양이라는 뜻입니다.",
+    "생활 속 예: 과자 봉지에 적힌 '킬로칼로리'도 음식이 몸에 주는 열량입니다."
+   ]
+  },
+  "비열": {
+   "en": "specific heat",
+   "explain": [
+    "쉬운 뜻: 영어로 specific heat, 물질마다 '데우기 어려운 정도'가 얼마인지 나타낸 값입니다.",
+    "낱말 나누기: 비(견줌) + 열, 물질끼리 견주어 본 열이라는 뜻입니다.",
+    "생활 속 예: 물은 비열이 커서 뜨거운 물주머니가 오래도록 따뜻합니다."
+   ]
+  },
+  "열팽창": {
+   "en": "thermal expansion",
+   "explain": [
+    "쉬운 뜻: 영어로 thermal expansion, 물체가 데워지면 조금씩 부풀어 커지는 것입니다.",
+    "낱말 나누기: 열 + 팽창(부풀어 커짐), 열 때문에 부푼다는 뜻입니다.",
+    "생활 속 예: 온도계 속 빨간 액체가 따뜻하면 위로 올라가는 것도 열팽창입니다."
+   ]
+  },
+  "바이메탈": {
+   "en": "bimetallic strip",
+   "explain": [
+    "쉬운 뜻: 영어로 bimetallic strip, 데우면 한쪽으로 휘는 두 겹 금속판입니다.",
+    "낱말 나누기: 바이(둘) + 메탈(금속), 두 금속을 붙였다는 뜻입니다.",
+    "생활 속 예: 전기 주전자가 물이 끓으면 '딸깍' 하고 저절로 꺼지는 데에도 쓰입니다."
+   ]
+  }
+ },
+ "4": {
+  "입자 모형": {
+   "en": "particle model",
+   "explain": [
+    "쉬운 뜻: 영어로 particle model, 눈에 안 보이는 알갱이를 동그라미로 그려 보는 그림입니다.",
+    "낱말 나누기: 입자(아주 작은 알갱이) + 모형(본떠 만든 것)입니다.",
+    "생활 속 예: 고체는 줄 맞춰 선 학생들, 기체는 운동장에서 뛰노는 학생들처럼 그립니다."
+   ]
+  },
+  "확산": {
+   "en": "diffusion",
+   "explain": [
+    "쉬운 뜻: 영어로 diffusion, 입자들이 스스로 움직여 사방으로 퍼져 나가는 것입니다.",
+    "생활 속 예: 따뜻한 물에 티백을 넣으면 젓지 않아도 찻물 빛깔이 번져 나갑니다.",
+    "찬물보다 따뜻한 물에서 더 빨리 퍼집니다."
+   ]
+  },
+  "증발": {
+   "en": "evaporation",
+   "explain": [
+    "쉬운 뜻: 영어로 evaporation, 끓지 않아도 액체 겉에서 조금씩 기체가 되어 날아가는 것입니다.",
+    "생활 속 예: 어항에 물을 가득 채워도 며칠 지나면 물높이가 낮아집니다.",
+    "젖은 머리를 말릴 때 드라이어 바람이 증발을 돕습니다."
+   ]
+  },
+  "상태 변화": {
+   "en": "change of state",
+   "explain": [
+    "쉬운 뜻: 영어로 change of state, 물질이 고체, 액체, 기체 사이를 오가며 모습을 바꾸는 것입니다.",
+    "모습은 바뀌어도 물질은 그대로입니다. 물이 얼어도 여전히 물입니다.",
+    "생활 속 예: 아이스크림이 녹고, 빨래가 마르고, 겨울에 물이 어는 것이 모두 그 예입니다."
+   ]
+  },
+  "융해": {
+   "en": "melting",
+   "explain": [
+    "쉬운 뜻: 영어로 melting, 고체가 열을 받아 녹아서 액체가 되는 것입니다.",
+    "생활 속 예: 버터를 데운 프라이팬에 올리면 금세 녹아 흐릅니다."
+   ]
+  },
+  "응고": {
+   "en": "freezing",
+   "explain": [
+    "쉬운 뜻: 영어로 freezing, 액체가 열을 내놓으며 굳어서 고체가 되는 것입니다.",
+    "생활 속 예: 얼음틀에 물을 부어 냉동실에 넣으면 각얼음이 됩니다.",
+    "물이 얼 때뿐 아니라 촛농이 굳는 것도 응고입니다."
+   ]
+  },
+  "기화": {
+   "en": "vaporization",
+   "explain": [
+    "쉬운 뜻: 영어로 vaporization, 액체가 열을 받아 기체로 바뀌는 것입니다. 증발과 끓음을 함께 이릅니다.",
+    "낱말 나누기: 기(기체) + 화(그렇게 됨), 기체가 된다는 뜻입니다.",
+    "생활 속 예: 손등에 바른 소독용 알코올이 금세 사라지며 시원해집니다."
+   ]
+  },
+  "액화": {
+   "en": "condensation",
+   "explain": [
+    "쉬운 뜻: 영어로 condensation, 기체가 열을 내놓으며 액체로 바뀌는 것입니다.",
+    "낱말 나누기: 액(액체) + 화(그렇게 됨), 액체가 된다는 뜻입니다.",
+    "생활 속 예: 뜨거운 물로 샤워하면 욕실 거울이 뿌옇게 흐려집니다."
+   ]
+  },
+  "승화": {
+   "en": "sublimation",
+   "explain": [
+    "쉬운 뜻: 영어로 sublimation, 고체와 기체가 액체 단계를 건너뛰고 바로 바뀌는 것입니다.",
+    "생활 속 예: 냉동실 얼음이 오래되면 녹지 않았는데도 조금씩 작아집니다.",
+    "거꾸로 기체가 바로 고체가 되는 것도 승화라고 합니다."
+   ]
+  },
+  "동결 건조": {
+   "en": "freeze-drying",
+   "explain": [
+    "쉬운 뜻: 영어로 freeze-drying, 꽁꽁 얼린 뒤 얼음을 녹이지 않고 바로 날려 보내 말리는 방법입니다.",
+    "낱말 나누기: 동결(꽁꽁 얼림) + 건조(물기를 말림)입니다.",
+    "생활 속 예: 물만 부으면 다시 풀어지는 즉석 국 덩어리도 이렇게 만듭니다."
+   ],
+   "beats": [
+    "그릇에 가볍고 바삭한 네모난 국 덩어리가 놓여 있습니다.",
+    "하린이가 뜨거운 물을 붓자 덩어리가 풀리며 미역과 파가 되살아납니다.",
+    "이렇게 얼린 뒤 얼음을 녹이지 않고 바로 날려 보내 말리는 방법이 동결 건조입니다."
+   ],
+   "img": "Two moments on a kitchen table, joined by an arrow. Left: inside a white soup bowl sits a light, dry, square block made of pressed seaweed, green onion and egg flakes. Right: HARIN (girl, yellow headband, mint cardigan) has just poured hot water from a kettle into the bowl, and the block has loosened into a steaming soup with soft seaweed and green onion floating. No text on any packaging.",
+   "imgKo": "그릇 속 바삭한 네모 국 덩어리에 하린이가 뜨거운 물을 붓자, 미역과 파가 되살아나 국이 된다. 두 장면을 화살표로 잇는다."
+  },
+  "열에너지": {
+   "en": "thermal energy",
+   "explain": [
+    "쉬운 뜻: 영어로 thermal energy, 물체를 데우고 녹이고 끓게 하는 열의 힘입니다.",
+    "낱말 나누기: 열 + 에너지(일을 하는 힘)입니다.",
+    "생활 속 예: 얼음을 손에 쥐면 손의 열에너지가 얼음으로 옮겨 가 손이 차가워집니다."
+   ]
+  },
+  "방출": {
+   "en": "release",
+   "explain": [
+    "쉬운 뜻: 영어로 release, 안에 있던 에너지나 물질을 밖으로 내보내는 것입니다.",
+    "생활 속 예: 똑딱이 손난로는 속의 물질이 굳으면서 열을 방출해 손을 데웁니다."
+   ]
+  }
+ }
+}
