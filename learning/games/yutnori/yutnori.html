@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>윷놀이</title>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
-<link rel="stylesheet" href="yutnori.css?v=4">
+<link rel="stylesheet" href="yutnori.css?v=6">
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
 <script src="/assets/sound/music-control.js?v=20261115-game-backdrop" defer></script>
 <script src="rules.js?v=4" defer></script>
-<script src="yutnori.js?v=5" defer></script>
+<script src="yutnori.js?v=6" defer></script>
 </head>
 <body>
 <main class="shell">
@@ -47,7 +47,12 @@
     </section>
 
     <section class="panel">
-      <label id="modeChoice">대결 방식 <select id="mode"><option value="2">1대1</option><option value="4">2대2</option></select></label>
+      <fieldset id="modeChoice">
+        <legend>게임 방식</legend>
+        <div class="mode-buttons"><button type="button" data-mode="2" aria-pressed="true">1 대 1</button><button type="button" data-mode="4" aria-pressed="false">2 대 2 팀전</button></div>
+        <p id="modeDescription">내 아바타 말 4개로 상대와 겨뤄요.</p>
+        <select id="mode" hidden aria-label="대결 방식"><option value="2">1대1</option><option value="4">2대2</option></select>
+      </fieldset>
       <div id="lobbyPlayers" class="mp-lobby-players"></div>
       <p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p>
       <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
@@ -63,8 +68,12 @@
     <div class="match">
       <aside id="teamBench" aria-label="양 팀 윷말"></aside>
       <div id="board" aria-label="윷판">
+        <div class="board-brand" aria-hidden="true"><small>함께 달리는</small><strong>아바타 윷놀이</strong></div>
         <svg viewBox="0 0 100 100" class="tracks" aria-hidden="true"><path d="M12 12H88V88H12ZM12 12L88 88M88 12L12 88"/></svg>
+        <span class="shortcut-label" aria-hidden="true">지름길</span>
         <span class="gate">출발 · 도착</span>
+        <div id="rollStage" hidden aria-hidden="true"><div class="roll-aura"></div><div id="stageSticks" class="sticks"></div><p>두근두근…</p></div>
+        <div id="boardEffects" aria-hidden="true"></div>
         <div id="boardCallout" aria-hidden="true"></div>
       </div>
       <section class="turn-panel" aria-label="내 차례 조작">

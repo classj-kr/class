@@ -19,6 +19,8 @@
         return node;
     });
     let lobby, state, selected, selectedResult = 0, noticeTimer, animation, turnTimer, waiting = false, lastTick;
+    let rollTimer, rolling = false;
+    const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function notice(text) {
         clearTimeout(noticeTimer);
@@ -70,9 +72,10 @@
 
     function announce(event) {
         const callout = $("boardCallout");
+        if (!event) { callout.replaceChildren(); return; }
         let label = "";
         if (state.winner !== null) label = teamName[state.winner] + " 승리!";
-        else if (event?.kind === "roll") label = `${YutRules.names[event.roll.steps]}! ${event.roll.steps}칸`;
+        else if (event?.kind === "roll") label = `${YutRules.names[event.roll.steps]}!`;
         else if (event?.caught) label = `${event.caught}개 잡았다!`;
         else if (event?.stacked) label = "업었다!";
         else if (event?.finished) label = "완주!";
@@ -83,6 +86,44 @@
         badge.className = `team-${event?.kind === "move" ? state.pieces.find(piece => piece.id === event.id).team : state.turn % 2}`;
         if (state.winner !== null) badge.classList.add("victory");
         callout.append(badge);
+        const detail = document.createElement("small");
+        detail.textContent = state.winner !== null ? "네 말 모두 도착!" : event?.kind === "roll"
+            ? `${event.roll.steps}칸 ${event.roll.steps >= 4 ? "· 한 번 더 던져요!" : "· 움직일 말을 골라요"}`
+            : event?.caught ? "출발점으로 돌려보냈어요!" : event?.stacked ? "이제 함께 달려요!" : "도착 성공!";
+        badge.append(detail);
+        if (state.winner !== null) {
+            const winners = document.createElement("span");
+            winners.className = "victory-roster";
+            for (const piece of state.pieces.filter(piece => piece.team === state.winner)) {
+                const avatar = token(piece);
+                avatar.style.setProperty("--celebration-delay", `${piece.id % 4 * 100}ms`);
+                winners.append(avatar);
+            }
+            badge.append(winners);
+        }
+        if (event?.kind === "move") {
+            const end = points[event.path.at(-1)] || points[0];
+            burst(end, state.winner !== null ? 30 : 14);
+        } else if (event?.roll.steps >= 4) burst([50, 50], 20);
+    }
+
+    function burst([x,y], count) {
+        if (reducedMotion()) return;
+        const layer = $("boardEffects");
+        for (let i = 0; i < count; i++) {
+            const spark = document.createElement("i");
+            spark.className = "spark";
+            spark.style.cssText = `left:${x}%;top:${y}%;background:${["#ffd05d", "#fff4b0", "#65d5ef", "#ff8c82"][i%4]}`;
+            layer.append(spark);
+            const angle = i * Math.PI * 2 / count;
+            const radius = 40 + i % 4 * 17;
+            const motion = spark.animate([
+                {transform:"translate(-50%,-50%) scale(.4)", opacity:1},
+                {transform:`translate(${Math.cos(angle)*radius}px,${Math.sin(angle)*radius-20}px) rotate(${i*51}deg)`, opacity:1, offset:.55},
+                {transform:`translate(${Math.cos(angle)*radius*1.2}px,${Math.sin(angle)*radius+50}px) rotate(${i*91}deg) scale(.3)`, opacity:0}
+            ], {duration:800, easing:"ease-out"});
+            motion.finished.then(() => spark.remove(), () => spark.remove());
+        }
     }
 
     function render() {
@@ -105,16 +146,21 @@
             const [x,y] = points[piece.node];
             const el = token(piece);
             el.classList.add("board-token");
+            el.dataset.piece = piece.id;
             el.style.left = `calc(${x}% + ${offset * 7}px)`;
             el.style.top = `calc(${y}% - ${offset * 8}px)`;
             if (myTurn && !state.throwing && piece.team === state.turn % 2) {
                 const pick = document.createElement("button");
                 pick.type = "button";
                 pick.className = "board-token pick-token";
+                pick.classList.toggle("selected", selected === piece.id);
                 pick.style.cssText = el.style.cssText;
                 pick.setAttribute("aria-label", `${piece.id % 4 + 1}번 말 고르기`);
+                pick.disabled = waiting || !!animation || rolling;
                 pick.append(el);
                 el.classList.remove("board-token");
+                el.style.left = "";
+                el.style.top = "";
                 pick.onclick = () => { selected = piece.id; render(); $("moveBtn").focus(); };
                 board.append(pick);
             } else board.append(el);
@@ -135,12 +181,14 @@
             ? [event.caught && `${event.caught}개 잡았다!`, event.stacked && "업었다!", event.finished && "완주!",
                 event.bonus && state.winner === null && "한 번 더!"].filter(Boolean).join(" ") || "이동 완료"
             : "윷을 던져 시작하세요";
-        $("throwBtn").disabled = !myTurn || !state.throwing || waiting || !!animation;
+        $("throwBtn").disabled = !myTurn || !state.throwing || waiting || !!animation || rolling;
+        $("throwBtn").textContent = rolling ? "데굴데굴…" : state.throwing && state.results.length ? "한 번 더 던지기!" : "윷 던지기";
         $("results").replaceChildren(...state.results.map((roll, index) => {
             const button = document.createElement("button");
             button.type = "button";
             button.textContent = `${YutRules.names[roll.steps]} · ${roll.steps}칸`;
-            button.disabled = !myTurn || state.throwing || waiting || !!animation;
+            button.disabled = !myTurn || state.throwing || waiting || !!animation || rolling;
+            button.className = "result-card";
             button.setAttribute("aria-pressed", String(!state.throwing && index === selectedResult));
             button.onclick = () => { selectedResult = index; render(); $("results").children[index]?.focus(); };
             return button;
@@ -151,6 +199,7 @@
             for (const piece of state.pieces.filter(item => item.team === team && !item.finished)) {
                 const button = document.createElement("button");
                 button.type = "button";
+                button.disabled = waiting || !!animation || rolling;
                 button.setAttribute("aria-pressed", String(selected === piece.id));
                 button.append(token(piece), document.createTextNode(piece.node === null ? "출발 전" : "윷판 위"));
                 button.onclick = () => {
@@ -162,7 +211,7 @@
             }
         }
         $("moveBtn").classList.toggle("hidden", !move || !myTurn);
-        $("moveBtn").disabled = waiting || !!animation;
+        $("moveBtn").disabled = waiting || !!animation || rolling;
         $("turnHint").textContent = !myTurn ? "" : state.throwing
             ? state.results.length ? "결과를 모아 뒀어요. 윷을 한 번 더 던져요." : "윷 던지기를 눌러요."
             : move ? "빛나는 칸으로 이 말을 옮겨요."
@@ -200,8 +249,8 @@
         return game;
     }
 
-    function showSticks(roll) {
-        $("sticks").replaceChildren(...Array.from({length:4}, (_, index) => {
+    function showSticks(roll, container = $("sticks"), toss = true) {
+        container.replaceChildren(...Array.from({length:4}, (_, index) => {
             const stick = document.createElement("span");
             if (roll && !roll.sticks[index]) stick.className = "back";
             stick.style.setProperty("--stick", index);
@@ -210,7 +259,7 @@
                 face.className = side;
                 stick.append(face);
             }
-            if (roll) stick.classList.add("toss");
+            if (roll && toss) stick.classList.add("toss");
             return stick;
         }));
     }
@@ -218,26 +267,67 @@
     function update(next, animate = true) {
         animation?.cancel();
         animation = null;
+        clearTimeout(rollTimer);
+        rolling = false;
+        $("rollStage").hidden = true;
+        $("boardEffects").replaceChildren();
         state = next;
         selected = null;
         selectedResult = 0;
         waiting = false;
         const event = state.event;
+        const captured = animate && event?.caught ? [...board.querySelectorAll("[data-piece]")]
+            .filter(el => {
+                const piece = state.pieces.find(item => item.id === Number(el.dataset.piece));
+                return piece && piece.team !== state.pieces[event.id].team && piece.node === null;
+            }).map(el => el.cloneNode(true)) : [];
         if (!event || event.kind === "roll") showSticks(event?.roll);
-        announce(event?.kind === "move" && animate ? null : event);
-        if (animate && event?.kind === "move" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        announce(animate ? null : event);
+        if (animate && event?.kind === "roll") {
+            if (reducedMotion()) announce(event);
+            else {
+                rolling = true;
+                $("rollStage").hidden = false;
+                showSticks(event.roll, $("stageSticks"));
+                rollTimer = setTimeout(() => {
+                    rolling = false;
+                    $("rollStage").hidden = true;
+                    announce(event);
+                    render();
+                }, 850);
+            }
+        }
+        if (animate && event?.kind === "move" && !reducedMotion()) {
             const el = token(state.pieces.find(piece => piece.id === event.id), true);
+            if (event.group.length > 1) el.querySelector("b").textContent = `×${event.group.length}`;
             el.classList.add("walking-token");
             board.append(el);
             const path = [event.from ?? 0, ...event.path];
-            animation = el.animate(path.map(index => ({left:points[index][0]+"%", top:points[index][1]+"%"})),
-                {duration: Math.min(960, 175 * (path.length - 1)), easing:"linear", fill:"forwards"});
+            const frames = [{left:points[path[0]][0]+"%", top:points[path[0]][1]+"%", transform:"translateY(0)"}];
+            for (let step = 1; step < path.length; step++) {
+                const a = points[path[step-1]], b = points[path[step]];
+                frames.push({left:(a[0]+b[0])/2+"%", top:(a[1]+b[1])/2+"%", transform:"translateY(-15px) rotate(-5deg)"},
+                    {left:b[0]+"%", top:b[1]+"%", transform:"translateY(0) rotate(0)"});
+            }
+            animation = el.animate(frames,
+                {duration: Math.min(1150, 220 * (path.length - 1)), easing:"linear", fill:"forwards"});
             const current = animation;
             current.finished.then(() => {
                 if (animation === current) {
                     animation = null;
                     render();
                     announce(event);
+                    for (const ghost of captured) {
+                        ghost.classList.remove("board-token");
+                        ghost.classList.add("returning-token");
+                        board.append(ghost);
+                        const retreat = ghost.animate([
+                            {transform:"rotate(0) scale(1)", opacity:1},
+                            {transform:"translateY(-30px) rotate(-18deg) scale(1.1)", opacity:1, offset:.3},
+                            {transform:"translate(-95px,45px) rotate(-35deg) scale(.2)", opacity:0}
+                        ], {duration:550, easing:"ease-in", fill:"forwards"});
+                        retreat.finished.then(() => ghost.remove(), () => ghost.remove());
+                    }
                 }
             })
                 .catch(() => {}).finally(() => el.remove());
@@ -256,7 +346,7 @@
 
     function submit(kind) {
         const snapshot = lobby.snapshot();
-        if (!isMyTurn() || waiting || animation) return;
+        if (!isMyTurn() || waiting || animation || rolling) return;
         const action = {kind, piece:selected, result:selectedResult, revision:state.revision};
         if (snapshot.role === "host") apply(snapshot.myId, action);
         else if (lobby.send({type:"YUT_ACTION", action})) {
@@ -269,6 +359,9 @@
 
     function returnToLobby() {
         clearInterval(turnTimer);
+        clearTimeout(rollTimer);
+        rolling = false;
+        $("rollStage").hidden = true;
         animation?.cancel();
         animation = null;
         state = null;
@@ -341,14 +434,25 @@
         });
     }
 
+    function syncMode(role) {
+        if (role) $("mode").disabled = role !== "host";
+        document.querySelectorAll("[data-mode]").forEach(button => {
+            button.disabled = $("mode").disabled;
+            button.setAttribute("aria-pressed", String(button.dataset.mode === $("mode").value));
+        });
+        $("modeDescription").textContent = $("mode").value === "4"
+            ? "둘이 한 팀! 각자 아바타 말 2개씩, 함께 4개를 완주해요."
+            : "내 아바타 말 4개로 상대와 겨뤄요.";
+    }
+
     const savedName = String(window.CLASS_PLAYER_NAME || "").trim();
     lobby = ClassroomMultiplayerLobby.create({
         gameId:"yutnori", initialMode:"guest", maxPlayers:4, allowedPlayerCounts:[2,4],
         getPlayerName:() => savedName,
         canStart:({count}) => count === Number($("mode").value),
         getLobbyData:() => ({mode:$("mode").value}),
-        onLobbyData:data => { if (["2","4"].includes(data?.mode)) $("mode").value = data.mode; },
-        onStateChange:({role}) => { $("mode").disabled = role !== "host"; },
+        onLobbyData:data => { if (["2","4"].includes(data?.mode)) $("mode").value = data.mode; syncMode(); },
+        onStateChange:({role}) => syncMode(role),
         getLobbyPresentation:({role, canStart}) => ({
             canStart,
             guideText: role === "host" ? `이 모드는 ${$("mode").value}명이 모이면 시작해요.` : "방장이 시작하면 윷을 던질 수 있어요."
@@ -382,7 +486,14 @@
             if (!$("abortDialog").open) $("abortDialog").showModal();
         }
     }).mount();
-    $("mode").onchange = () => lobby.publishLobbyState();
+    $("mode").onchange = () => { syncMode(); lobby.publishLobbyState(); };
+    document.querySelectorAll("[data-mode]").forEach(button => {
+        button.onclick = () => {
+            if (lobby.snapshot().role !== "host") return;
+            $("mode").value = button.dataset.mode;
+            $("mode").onchange();
+        };
+    });
     $("throwBtn").onclick = () => submit("throw");
     $("moveBtn").onclick = () => submit("move");
     $("reloadBtn").onclick = () => location.reload();
