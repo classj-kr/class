@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>고누놀이</title>
+  <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+  <link rel="stylesheet" href="gonu.css?v=1">
+  <script src="/assets/network/game-network.js?v=20260821" defer></script>
+  <script src="/assets/network/multiplayer-avatars.js?v=20261114-1" defer></script>
+  <script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars" defer></script>
+  <script src="/assets/sound/music-control.js?v=20261115-game-backdrop" defer></script>
+  <script src="rules.js?v=1" defer></script>
+  <script src="gonu.js?v=1" defer></script>
+</head>
+<body>
+<main>
+  <section id="missingScreen" class="panel hidden">
+    <h1>게임에 사용할 이름이 필요합니다</h1>
+    <a href="/">메인 화면</a>
+  </section>
+  <section id="lobbyScreen" class="hidden">
+    <div class="panel">
+      <h1>고누놀이</h1><strong id="savedName"></strong>
+      <button id="hostTab" type="button">Create Room</button>
+      <button id="joinTab" type="button">Join Room</button>
+    </div>
+    <div id="hostPane" class="hidden">
+      <strong id="roomCode"></strong><p id="hostStatus"></p>
+    </div>
+    <div id="joinPane" class="hidden">
+      <div class="mp-lobby-row"><input id="joinCode" inputmode="numeric" maxlength="4"><button id="joinBtn" type="button">Join</button></div>
+      <p id="joinStatus"></p>
+    </div>
+    <section class="panel">
+      <fieldset id="gameChoice">
+        <legend>고누 종류</legend>
+        <div id="variants"></div>
+      </fieldset>
+      <div id="lobbyPlayers"></div>
+      <p id="lobbyGuide"></p>
+      <button id="startBtn" type="button" disabled>시작</button>
+      <button id="rulesBtnLobby" type="button">Rules</button>
+    </section>
+  </section>
+  <section id="gameScreen" class="hidden">
+    <div id="boardArea">
+      <div id="board" role="group" aria-label="고누 말판">
+        <svg id="lines" viewBox="0 0 100 100" aria-hidden="true"></svg>
+        <div id="cells"></div>
+      </div>
+    </div>
+    <aside class="panel match-info">
+      <h1 id="variantName"></h1>
+      <div id="players" aria-label="참가자"></div>
+      <p id="status" role="status"></p>
+      <button id="rulesBtnGame" type="button">Rules</button>
+      <button id="rematch" class="hidden" type="button">대기실로</button>
+    </aside>
+  </section>
+</main>
+<dialog id="help">
+  <h2 id="ruleTitle"></h2>
+  <p id="ruleText"></p>
+  <p>움직이는 단계에서 같은 판과 차례가 세 번 나오면 비겨요.</p>
+  <form method="dialog"><button>닫기</button></form>
+</dialog>
+<dialog id="disconnect">
+  <h2>대국이 끝났어요</h2><p id="notice"></p>
+  <a href="./gonu">대기실로</a>
+</dialog>
+</body>
+</html>

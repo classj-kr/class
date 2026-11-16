@@ -13,10 +13,10 @@ body{background:linear-gradient(rgba(7,10,16,.18),rgba(8,9,13,.24)),url("/learni
 
 body:has(#gameScreen:not(.hidden)){padding:8px}
 body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
-#gameScreen{height:calc(var(--site-game-height, 100dvh) - 16px);min-height:560px}
+#gameScreen{height:calc(var(--site-game-height, 100dvh) - 16px);min-height:0}
 #gameScreen .game-layout{height:100%;margin:0;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:minmax(0,1fr);align-items:stretch;gap:8px}
 #gameScreen .board-panel{display:grid;place-items:center;container-type:size;min-height:0;padding:6px;margin:0}
-#gameScreen .board-frame{width:min(720px,100cqw,calc(100cqh * 500 / 524));aspect-ratio:500/524;padding:0;margin:0}
+#gameScreen .board-frame{width:min(100cqw,100cqh);aspect-ratio:1;padding:0;margin:0}
 #gameScreen .board{display:block;width:100%;height:100%}
 #gameScreen .side{display:flex;flex-direction:column;min-height:0;overflow:auto;gap:8px}
 #gameScreen .side>*{flex-shrink:0}
@@ -24,10 +24,8 @@ body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
 #gameScreen .message{min-height:0}
 #gameScreen .info h2,#gameScreen .info h3{margin-bottom:6px}
 #gameScreen .player-row{padding:6px}
-#gameScreen .side>.info:last-child{min-height:50px;flex:1;overflow:auto}
 #gameScreen .side>.panel{padding:8px;margin:0}
 #gameScreen .info{padding:10px}
-#gameScreen .log{max-height:100px}
 #gameScreen button{min-height:44px}
 @media(max-width:899px) and (orientation:portrait){
  #gameScreen .game-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
@@ -73,7 +71,6 @@ body:has(#gameScreen:not(.hidden)) .shell{width:min(1320px,100%)}
         <section class="info"><h2 id="turnText">게임 준비 중</h2><div id="turnClock" class="turn-clock"><span>TURN TIME</span><span id="turnSeconds" class="turn-clock-label">30초</span><div class="turn-track"><div id="turnTimerBar" class="turn-bar"></div></div></div><div id="message" class="message"></div><div id="resultBox" class="result hidden"></div></section>
         <section class="info"><h3>참가자</h3><div id="playerStatus"></div></section>
         <section class="info"><h3>TURN ACTION</h3><div class="actions"><button id="endJumpBtn" class="primary" type="button" disabled>점프 종료</button><button id="cancelBtn" class="secondary" type="button" disabled>선택 취소</button><button id="rematchBtn" class="primary hidden" type="button">다시 하기</button><button id="returnLobbyBtn" class="secondary hidden" type="button">대기실로</button></div></section>
-        <section class="info"><h3>GAME LOG</h3><div id="gameLog" class="log"></div></section>
       </aside>
     </div>
   </section>
@@ -113,13 +110,13 @@ function canEnterCamp(playerId,x,y){const camp=campAt(x,y),color=colorForPlayer(
 function getStepOptions(playerId,x,y,source=state){if(!source||source.jump)return[];return DIRECTIONS.map(([dx,dy])=>({x:x+dx,y:y+dy,kind:"step"})).filter(p=>CELL_KEYS.has(key(p.x,p.y))&&!pieceAt(p.x,p.y,source)&&canEnterCamp(playerId,p.x,p.y))}
 function getJumpOptions(playerId,x,y,source=state){const visited=new Set(source?.jump?.visited||[]);return DIRECTIONS.map(([dx,dy])=>({mx:x+dx,my:y+dy,x:x+dx*2,y:y+dy*2,kind:"jump"})).filter(p=>CELL_KEYS.has(key(p.x,p.y))&&pieceAt(p.mx,p.my,source)&&!pieceAt(p.x,p.y,source)&&!visited.has(key(p.x,p.y))&&canEnterCamp(playerId,p.x,p.y))}
 function legalMoves(playerId,x,y,source=state){if(String(pieceAt(x,y,source))!==String(playerId))return[];const jumps=getJumpOptions(playerId,x,y,source);return source?.jump?jumps:[...getStepOptions(playerId,x,y,source),...jumps]}
-function createInitialState(snapshot){const order=Object.keys(snapshot.players),pieces={};order.forEach((id,index)=>cellsInCamp(COLORS[index].start).forEach(c=>{pieces[key(c.x,c.y)]=id}));return{order,pieces,turnIndex:0,jump:null,winner:null,moveCount:0,lastMove:null,turnDeadline:Date.now()+TURN_MS,log:[`${snapshot.players[order[0]].name}님이 빨강으로 먼저 시작합니다.`]}}
+function createInitialState(snapshot){const order=Object.keys(snapshot.players),pieces={};order.forEach((id,index)=>cellsInCamp(COLORS[index].start).forEach(c=>{pieces[key(c.x,c.y)]=id}));return{order,pieces,turnIndex:0,jump:null,winner:null,moveCount:0,lastMove:null,turnDeadline:Date.now()+TURN_MS}}
 function cloneState(value){return JSON.parse(JSON.stringify(value))}
 function playerHasWon(playerId,source=state){const color=colorForPlayer(playerId);return Boolean(color&&cellsInCamp(color.goal).every(c=>String(pieceAt(c.x,c.y,source))===String(playerId)))}
 function scheduleHostTurnTimer(){clearTimeout(hostTurnTimer);if(myRole!=="host"||!state||state.winner)return;if(!Number.isFinite(state.turnDeadline)||state.turnDeadline<=0)state.turnDeadline=Date.now()+TURN_MS;const delay=Math.max(0,state.turnDeadline-Date.now());hostTurnTimer=setTimeout(hostTurnExpired,delay+25)}
 function resetTurnClock(duration=TURN_MS){state.turnDeadline=Date.now()+duration;scheduleHostTurnTimer()}
 function extendJumpClock(){state.turnDeadline=Math.max(state.turnDeadline||0,Date.now()+JUMP_GRACE_MS);scheduleHostTurnTimer()}
-function hostTurnExpired(){if(myRole!=="host"||!state||state.winner)return;if(Date.now()+20<(state.turnDeadline||0)){scheduleHostTurnTimer();return}const expiredId=currentPlayerId(),name=players[expiredId]?.name||"플레이어";state=cloneState(state);state.log.unshift(`${name}: 시간 초과 · ${state.jump?"점프 자동 종료":"차례 넘김"}`);advanceTurn();publish()}
+function hostTurnExpired(){if(myRole!=="host"||!state||state.winner)return;if(Date.now()+20<(state.turnDeadline||0)){scheduleHostTurnTimer();return}state=cloneState(state);advanceTurn();publish()}
 function advanceTurn(){state.turnIndex=(state.turnIndex+1)%state.order.length;state.jump=null;selectedKey=null;legalOptions=[];resetTurnClock()}
 function publish(){lobby.broadcast({type:MESSAGE.STATE,state,players});renderAll()}
 function hostMove(sender,x,y,toX,toY){
@@ -129,17 +126,16 @@ function hostMove(sender,x,y,toX,toY){
  const option=legalMoves(sender,x,y).find(p=>p.x===toX&&p.y===toY);if(!option)return;
  const next=cloneState(state),fromKey=key(x,y),toKey=key(toX,toY);delete next.pieces[fromKey];next.pieces[toKey]=sender;state=next;
  state.moveCount+=1;state.lastMove={from:fromKey,to:toKey,kind:option.kind};
- const name=players[sender]?.name||"플레이어";
- if(option.kind==="step"){state.log.unshift(`${name}: 한 칸 이동`);if(playerHasWon(sender)){state.winner=sender;state.turnDeadline=0;clearTimeout(hostTurnTimer);state.log.unshift(`${name}님이 모든 말을 도착시켰습니다.`)}else advanceTurn();publish();return}
+ if(option.kind==="step"){if(playerHasWon(sender)){state.winner=sender;state.turnDeadline=0;clearTimeout(hostTurnTimer);}else advanceTurn();publish();return}
  if(!state.jump)state.jump={pieceKey:toKey,visited:[fromKey,toKey]};else{state.jump.pieceKey=toKey;state.jump.visited.push(toKey)}
- state.log.unshift(`${name}: 점프`);selectedKey=toKey;
- if(playerHasWon(sender)){state.winner=sender;state.jump=null;state.turnDeadline=0;clearTimeout(hostTurnTimer);state.log.unshift(`${name}님이 모든 말을 도착시켰습니다.`);publish();return}
+ selectedKey=toKey;
+ if(playerHasWon(sender)){state.winner=sender;state.jump=null;state.turnDeadline=0;clearTimeout(hostTurnTimer);publish();return}
  if(getJumpOptions(sender,toX,toY).length===0)advanceTurn();else extendJumpClock();publish()
 }
-function hostEndJump(sender){if(myRole!=="host"||!state?.jump||String(sender)!==String(currentPlayerId()))return;if(Date.now()>(state.turnDeadline||0)){hostTurnExpired();return}state=cloneState(state);state.log.unshift(`${players[sender]?.name||"플레이어"}: 점프 종료`);advanceTurn();publish()}
+function hostEndJump(sender){if(myRole!=="host"||!state?.jump||String(sender)!==String(currentPlayerId()))return;if(Date.now()>(state.turnDeadline||0)){hostTurnExpired();return}state=cloneState(state);advanceTurn();publish()}
 function requestMove(x,y,toX,toY){const payload={type:MESSAGE.ACTION,action:"MOVE",x,y,toX,toY};if(myRole==="host")hostMove(myId,x,y,toX,toY);else lobby.send(payload)}
 function requestEndJump(){if(!myTurn()||!state?.jump)return;const payload={type:MESSAGE.ACTION,action:"END_JUMP"};if(myRole==="host")hostEndJump(myId);else lobby.send(payload)}
-function handleGameMessage(sender,payload,snapshot){if(!payload)return;if(payload.type===MESSAGE.ACTION&&snapshot.role==="host"){if(payload.action==="MOVE")hostMove(sender,Number(payload.x),Number(payload.y),Number(payload.toX),Number(payload.toY));else if(payload.action==="END_JUMP")hostEndJump(sender);return}if(payload.type===MESSAGE.STATE){state=payload.state;players=payload.players||players;selectedKey=state.jump?.pieceKey||null;showGame();renderAll();return}if(payload.type===MESSAGE.RETURN_LOBBY){showLobby();lobby.returnToLobby()}}
+function handleGameMessage(sender,payload,snapshot){if(!payload)return;if(payload.type===MESSAGE.ACTION&&snapshot.role==="host"){if(payload.action==="MOVE")hostMove(sender,Number(payload.x),Number(payload.y),Number(payload.toX),Number(payload.toY));else if(payload.action==="END_JUMP")hostEndJump(sender);return}if(payload.type===MESSAGE.STATE&&snapshot.role!=="host"&&sender===lobby.hostId){if(payload.state.moveCount===0){clearTimeout(moveAnimationTimer);moveAnimating=false;animatedMoveCount=0;}state=payload.state;players=payload.players||players;selectedKey=state.jump?.pieceKey||null;showGame();renderAll();return}if(payload.type===MESSAGE.RETURN_LOBBY&&snapshot.role!=="host"&&sender===lobby.hostId){showLobby();lobby.returnToLobby()}}
 
 function chooseCell(x,y){
  if(moveAnimating)return;
@@ -157,15 +153,16 @@ function svgEl(name,attrs={}){const el=document.createElementNS("http://www.w3.o
 function addPieceMovement(piece,move){
  const [fromX,fromY]=move.from.split(",").map(Number),from=point({x:fromX,y:fromY});
  const [toX,toY]=move.to.split(",").map(Number),to=point({x:toX,y:toY});
- const jumping=move.kind==="jump",midX=(from.x+to.x)/2,midY=(from.y+to.y)/2-(jumping?18:0),duration=jumping?430:260;
+ const jumping=move.kind==="jump",midX=(from.x+to.x)/2,midY=(from.y+to.y)/2-(jumping?18:0),duration=jumping?470:305;
  piece.setAttribute("class",piece.getAttribute("class")+` moving ${jumping?"jump":"step"}`);
- piece.appendChild(svgEl("animate",{attributeName:"cx",values:`${from.x};${midX};${to.x}`,keyTimes:"0;0.5;1",dur:`${duration}ms`,fill:"freeze"}));
- piece.appendChild(svgEl("animate",{attributeName:"cy",values:`${from.y};${midY};${to.y}`,keyTimes:"0;0.5;1",dur:`${duration}ms`,fill:"freeze"}));
- if(jumping)piece.appendChild(svgEl("animate",{attributeName:"r",values:"10.2;12.5;10.2",keyTimes:"0;0.5;1",dur:`${duration}ms`,fill:"freeze"}))
+ piece.appendChild(svgEl("animate",{attributeName:"cx",values:`${from.x};${midX};${to.x}`,keyTimes:"0;0.5;1",dur:`${duration}ms`,begin:"indefinite",fill:"freeze"}));
+ piece.appendChild(svgEl("animate",{attributeName:"cy",values:`${from.y};${midY};${to.y}`,keyTimes:"0;0.5;1",dur:`${duration}ms`,begin:"indefinite",fill:"freeze"}));
+ if(jumping)piece.appendChild(svgEl("animate",{attributeName:"r",values:"10.2;12.5;10.2",keyTimes:"0;0.5;1",dur:`${duration}ms`,begin:"indefinite",fill:"freeze"}))
 }
 function renderBoard(){
  const board=$("board"),fragment=document.createDocumentFragment();
- const animateMove=Boolean(state?.lastMove&&state.moveCount!==animatedMoveCount)&&!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+ const newMove=Boolean(state?.lastMove&&state.moveCount!==animatedMoveCount);
+ const animateMove=newMove&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  // The 12 outline vertices come from the same equilateral lattice as the holes.
  const outline=[[0,-8],[4,-4],[12,-4],[8,0],[12,4],[4,4],[0,8],[-4,4],[-12,4],[-8,0],[-12,-4],[-4,-4]];
  const points=outline.map(([x,y])=>{const p=point({x,y});return `${280+(p.x-280)*1.08},${280+(p.y-280)*1.08}`}).join(" ");
@@ -174,7 +171,21 @@ function renderBoard(){
  const holes=svgEl("g");for(const c of CELLS){const p=point(c),camp=campAt(c.x,c.y),circle=svgEl("circle",{class:`hole ${camp!=="center"?"foreign":""}`,cx:p.x,cy:p.y,r:6.1});const campColor=COLORS.find(color=>color.start===camp||color.goal===camp);if(campColor)circle.setAttribute("style",`fill:${campColor.hex}77`);if(legalOptions.some(o=>o.x===c.x&&o.y===c.y)){circle.setAttribute("class","hole legal");circle.removeAttribute("style")}holes.appendChild(circle)}fragment.appendChild(holes);
  const piecesGroup=svgEl("g");for(const c of CELLS){const owner=pieceAt(c.x,c.y);if(!owner)continue;const p=point(c),color=colorForPlayer(owner);const piece=svgEl("circle",{class:`piece ${selectedKey===key(c.x,c.y)?"selected":""}`,cx:p.x,cy:p.y,r:10.2,fill:color?.hex||"#777"});if(animateMove&&state.lastMove.to===key(c.x,c.y))addPieceMovement(piece,state.lastMove);piecesGroup.appendChild(piece)}fragment.appendChild(piecesGroup);
  const hits=svgEl("g");for(const c of CELLS){const p=point(c),hit=svgEl("circle",{class:"cell-hit",cx:p.x,cy:p.y,r:14,tabindex:"0","aria-label":`${c.x}, ${c.y} 칸`});hit.addEventListener("click",()=>chooseCell(c.x,c.y));hit.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();chooseCell(c.x,c.y)}});hits.appendChild(hit)}fragment.appendChild(hits);board.replaceChildren(fragment);
- if(animateMove){animatedMoveCount=state.moveCount;moveAnimating=true;clearTimeout(moveAnimationTimer);moveAnimationTimer=setTimeout(()=>{moveAnimating=false;renderStatus()},state.lastMove.kind==="jump"?440:270)}
+ if(newMove){
+  animatedMoveCount=state.moveCount;
+  clearTimeout(moveAnimationTimer);
+  if(animateMove){
+   board.querySelectorAll(".piece.moving animate").forEach(animation=>animation.beginElement());
+   moveAnimating=true;
+   moveAnimationTimer=setTimeout(finishMovement,state.lastMove.kind==="jump"?470:305);
+  }else finishMovement();
+ }
+}
+function finishMovement(){
+ moveAnimating=false;
+ $("board").querySelector(".piece.moving")?.classList.remove("moving","jump","step");
+ window.ClassGameSfx?.play("stone");
+ renderStatus();
 }
 function renderStatus(){if(!state)return;const current=currentPlayerId(),currentName=players[current]?.name||"플레이어";$("turnText").textContent=state.winner?"GAME COMPLETE":String(current)===String(myId)?"내 차례":`${currentName}님 차례`;if(moveAnimating)$("message").textContent=state.lastMove?.kind==="jump"?"말이 통통 뛰어 이동하는 중입니다.":"말이 이동하는 중입니다.";else if(state.winner)$("message").textContent=`${players[state.winner]?.name||"플레이어"}님이 승리했습니다!`;else if(!myTurn())$("message").textContent="상대방의 이동을 기다리는 중입니다.";else if(state.jump)$("message").textContent="같은 말로 계속 점프하거나 ‘점프 종료’를 누르세요.";else if(selectedKey)$("message").textContent=legalOptions.length?`이동 가능한 칸 ${legalOptions.length}곳을 표시했습니다.`:"이 말은 지금 움직일 수 없습니다.";else $("message").textContent="움직일 자기 말을 선택하세요.";
  $("playerStatus").innerHTML=state.order.map((id,index)=>{const color=COLORS[index],arrived=cellsInCamp(color.goal).filter(c=>String(pieceAt(c.x,c.y))===String(id)).length;return`<div class="player-row ${String(id)===String(current)&&!state.winner?"active":""}"><span class="dot" style="--color:${color.hex}"></span><strong>${lobby?.avatarMarkup(id)||""}${escapeHtml(players[id]?.name||"플레이어")}${String(id)===String(myId)?" (나)":""}</strong><span class="progress">${arrived}/10</span></div>`}).join("");
@@ -193,14 +204,14 @@ function startClientTurnTimer(){
  };
  tick()
 }
-function renderAll(){if(state?.jump)selectedKey=state.jump.pieceKey;refreshLegal();renderBoard();renderStatus();$("gameLog").innerHTML=(state?.log||[]).slice(0,40).map(line=>`<div>• ${escapeHtml(line)}</div>`).join("");startClientTurnTimer()}
+function renderAll(){if(state?.jump)selectedKey=state.jump.pieceKey;refreshLegal();renderBoard();renderStatus();startClientTurnTimer()}
 function showToast(message){clearTimeout(toastTimer);$("toast").textContent=message;$("toast").classList.remove("hidden");toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),2100)}
 function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function showRules(){$("rulesOverlay").classList.remove("hidden")}function hideRules(){$("rulesOverlay").classList.add("hidden")}
 function showGame(){$("lobbyScreen").classList.add("hidden");$("gameScreen").classList.remove("hidden")}
-function showLobby(){clearTimeout(hostTurnTimer);cancelAnimationFrame(clientTimerRaf);state=null;selectedKey=null;legalOptions=[];$("gameScreen").classList.add("hidden");$("lobbyScreen").classList.remove("hidden")}
+function showLobby(){clearTimeout(hostTurnTimer);clearTimeout(moveAnimationTimer);moveAnimating=false;animatedMoveCount=0;cancelAnimationFrame(clientTimerRaf);state=null;selectedKey=null;legalOptions=[];$("gameScreen").classList.add("hidden");$("lobbyScreen").classList.remove("hidden")}
 function syncLobby(snapshot){myId=snapshot.myId;myRole=snapshot.role;players=snapshot.players;$("gameRoomCode").textContent=snapshot.roomCode||"----"}
-function startRematch(){if(myRole!=="host"||!state?.winner)return;state=createInitialState(lobby.snapshot());scheduleHostTurnTimer();publish()}
+function startRematch(){if(myRole!=="host"||!state?.winner)return;clearTimeout(moveAnimationTimer);moveAnimating=false;animatedMoveCount=0;state=createInitialState(lobby.snapshot());scheduleHostTurnTimer();publish()}
 function returnToLobby(){if(myRole!=="host")return;lobby.broadcast({type:MESSAGE.RETURN_LOBBY});showLobby();lobby.returnToLobby()}
 function showAbort({title,message}){clearTimeout(hostTurnTimer);cancelAnimationFrame(clientTimerRaf);$("abortTitle").textContent=title;$("abortMessage").textContent=message;$("abortOverlay").classList.remove("hidden")}
 function playNextBgm(){const bgm=$("bgm");bgmIndex=(bgmIndex+1)%BGM_TRACKS.length;bgm.src=BGM_TRACKS[bgmIndex];bgm.load();bgm.play().catch(()=>{})}
