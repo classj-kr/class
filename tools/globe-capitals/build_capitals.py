@@ -124,10 +124,29 @@ OTHERS = {
  "TZ": ([("다르에스살람", "가장 큰 항구 도시이자 옛 수도", -6.792, 39.208)], "수도는 도도마이고, 옛 수도 다르에스살람이 가장 큰 도시다."),
 }
 
+# 나라 영어 이름: 영어 교과서·공항·뉴스에서 흔히 보는 꼴로 적는다(Korea, USA, UK).
+COUNTRY_EN = {
+ "KR":"Korea","KP":"North Korea","CN":"China","JP":"Japan","MN":"Mongolia","VN":"Vietnam","TH":"Thailand","KH":"Cambodia",
+ "LA":"Laos","MM":"Myanmar","MY":"Malaysia","SG":"Singapore","ID":"Indonesia","PH":"the Philippines","IN":"India","PK":"Pakistan",
+ "BD":"Bangladesh","LK":"Sri Lanka","NP":"Nepal","AF":"Afghanistan","IR":"Iran","IQ":"Iraq","SA":"Saudi Arabia","AE":"UAE",
+ "QA":"Qatar","KW":"Kuwait","OM":"Oman","JO":"Jordan","SY":"Syria","TR":"Türkiye","KZ":"Kazakhstan","UZ":"Uzbekistan",
+ "TM":"Turkmenistan","AZ":"Azerbaijan",
+ "GB":"UK","IE":"Ireland","FR":"France","DE":"Germany","NL":"the Netherlands","BE":"Belgium","CH":"Switzerland","AT":"Austria",
+ "IT":"Italy","ES":"Spain","PT":"Portugal","GR":"Greece","NO":"Norway","SE":"Sweden","FI":"Finland","DK":"Denmark",
+ "IS":"Iceland","PL":"Poland","CZ":"Czech Republic","HU":"Hungary","RO":"Romania","UA":"Ukraine","RU":"Russia",
+ "EG":"Egypt","LY":"Libya","DZ":"Algeria","MA":"Morocco","TN":"Tunisia","SD":"Sudan","SS":"South Sudan","ET":"Ethiopia",
+ "KE":"Kenya","TZ":"Tanzania","NG":"Nigeria","GH":"Ghana","CI":"Côte d'Ivoire","SN":"Senegal","ML":"Mali","NE":"Niger",
+ "TD":"Chad","CD":"DR Congo","AO":"Angola","ZM":"Zambia","ZW":"Zimbabwe","MZ":"Mozambique","ZA":"South Africa","BW":"Botswana",
+ "MG":"Madagascar",
+ "US":"USA","CA":"Canada","MX":"Mexico","CU":"Cuba","PA":"Panama","VE":"Venezuela","CO":"Colombia","EC":"Ecuador",
+ "PE":"Peru","BO":"Bolivia","BR":"Brazil","CL":"Chile","AR":"Argentina","PY":"Paraguay","UY":"Uruguay",
+ "AU":"Australia","NZ":"New Zealand","PG":"Papua New Guinea","FJ":"Fiji",
+}
+
 def build():
     items = []
     for iso, country, cont, cap, lat, lon, big, note in C:
-        it = {"iso": iso, "flag": iso.lower(), "country": country, "continent": cont, "capital": cap, "lat": lat, "lon": lon}
+        it = {"iso": iso, "flag": iso.lower(), "country": country, "countryEn": COUNTRY_EN[iso], "continent": cont, "capital": cap, "lat": lat, "lon": lon}
         if iso in OTHERS:
             others, note = OTHERS[iso]
             it["others"] = [{"name": n, "role": r, "lat": a, "lon": b} for n, r, a, b in others]
@@ -135,7 +154,7 @@ def build():
         if note: it["note"] = note
         items.append(it)
     out = {
-        "about": "수능 세계지리에서 다루는 나라의 수도. capital 이 정답 하나, others 는 수도 구실을 나눠 맡은 다른 도시(오답 보기로 쓰지 않음), bigCity 는 수도로 착각하기 쉬운 가장 큰 도시. country 는 globe/data/shapes.json 의 country:이름, flag 는 data/flags/<flag>.webp 와 같다.",
+        "about": "수능 세계지리에서 다루는 나라의 수도. capital 이 정답 하나, others 는 수도 구실을 나눠 맡은 다른 도시(오답 보기로 쓰지 않음), bigCity 는 수도로 착각하기 쉬운 가장 큰 도시. country 는 globe/data/shapes.json 의 country:이름, countryEn 은 나라 영어 이름, flag 는 data/flags/<flag>.webp 와 같다.",
         "continents": [{"id": i, "name": n} for i, n in CONTINENTS],
         "countries": items,
     }
