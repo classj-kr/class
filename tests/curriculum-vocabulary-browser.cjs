@@ -58,6 +58,8 @@ const clickChoice = (page, label, right) => page.evaluate(([label, right, src]) 
       page.on('pageerror', error => errors.push(error.message));
       await page.route('**/*', route => {
         const uri = new URL(route.request().url());
+        // 학습 기록 서버는 없으니 '로그인 안 한 둘러보기'로 답한다(기록 연결 안내 창이 뜨지 않게).
+        if (uri.pathname.startsWith('/api/learning-records/')) return route.fulfill({ status: 401, contentType: 'application/json', body: '{"error":"LOGIN_REQUIRED"}' });
         const file = path.resolve(root, '.' + decodeURIComponent(uri.pathname) + (uri.pathname.endsWith('/') ? 'index.html' : ''));
         if (uri.hostname !== 'curriculum.test' || !file.startsWith(root + path.sep) || !fs.existsSync(file)) return route.fulfill({ status: 404, body: '' });
         return route.fulfill({ contentType: mime[path.extname(file)] || 'application/octet-stream', body: fs.readFileSync(file) });
