@@ -23,7 +23,9 @@
   };
   const SUBJECTS = { kor: '국어', math: '수학', soc: '사회', sci: '과학' };
   const SUBJECT_CODES = Object.fromEntries(Object.entries(SUBJECTS).map(([code, name]) => [name, code]));
-  const TEXTBOOK_RANGE = /^([3-6]-[12])\.(kor|math|soc|sci)(?:\.([A-Za-z0-9-]{1,12}))?$/;
+  const TEXTBOOK_RANGE = /^([3-9]-[12])\.(kor|math|soc|sci)(?:\.([A-Za-z0-9-]{1,12}))?$/;
+  // 학기 이름: 초 6학년 1학기, 중 1학년 1학기(열쇠 7-1)
+  const termLabel = (term) => (Number(term[0]) >= 7 ? `중 ${term[0] - 6}학년 ${term[2]}학기` : `초 ${term[0]}학년 ${term[2]}학기`);
   const unitLabel = (unit) => (unit === 'reading' ? '독서 단원' : unit === 'media' ? '매체 단원' : `${unit}단원`);
   const DURATIONS = [60, 90, 120, 180];
   const RACERS = ['🐯', '🦊', '🐰', '🐻', '🐼', '🐧', '🦉', '🐸', '🐨', '🦁', '🐳', '🦄', '🐢', '🐙', '🦋', '🐝', '🐬', '🦔', '🐿️', '🦦', '🐤', '🐮', '🐹', '🐺'];
@@ -143,7 +145,7 @@
       }
       let lastTerm = '';
       return [...groups.values()].map(({ term, subject, parts }) => {
-        const head = term === lastTerm ? '' : `초 ${term.replace('-', '학년 ')}학기 `;
+        const head = term === lastTerm ? '' : `${termLabel(term)} `;
         lastTerm = term;
         const numbered = parts.every((part) => /^[0-9-]+$/.test(part || ''));
         const units = parts.includes(null) ? ' 전체' : numbered ? ` ${parts.join('·')}단원` : ' ' + parts.map(unitLabel).join('·');
@@ -158,5 +160,5 @@
     if (!upto || isFirst) return at;
     return spec.name ? `1~${at}` : `처음~${at}`;
   }
-  return { SETS, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  return { SETS, termLabel, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });

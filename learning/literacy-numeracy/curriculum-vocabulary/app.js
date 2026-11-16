@@ -29,8 +29,9 @@
   // 「3분의 2」처럼 글자로 쓴 분수를 위아래로 쌓은 분수로 보여 준다.
   window.FractionText?.watch(lesson);
   const query = new URLSearchParams(location.search);
-  const terms = Array.from({ length: 12 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
-  const termName = (key) => `초 ${key[0]}학년 ${key[2]}학기`;
+  // 학기 열쇠: 초등 1-1 ~ 6-2, 중학교는 7-1(중 1학년 1학기) ~ 9-2.
+  const terms = Array.from({ length: 18 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
+  const termName = (key) => (Number(key[0]) >= 7 ? `중 ${key[0] - 6}학년 ${key[2]}학기` : `초 ${key[0]}학년 ${key[2]}학기`);
   const subjectsFor = (key) => Number(key[0]) <= 2 ? ['국어', '수학'] : ['국어', '수학', '사회', '과학'];
   const ready = Object.keys(manifest);
   const currentTerm = window.LearningDefaults?.mathTerm(window.CLASS_SCHOOL_LEVEL, window.CLASS_SCHOOL_GRADE, ready);
