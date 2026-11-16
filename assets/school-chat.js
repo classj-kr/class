@@ -658,13 +658,14 @@
         if (document.getElementById("sc-setting-style")) return;
         const style = el("style");
         style.id = "sc-setting-style";
+        // Game themes style every button; isolate this control's geometry and colors.
         style.textContent = `
-            .sc-setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;font-size:14px;color:inherit}
-            .sc-switch{position:relative;flex:none;width:46px;height:26px;border-radius:13px;border:1px solid rgba(255,255,255,.35);background:#4a5568;cursor:pointer;padding:0;transition:background .15s,border-color .15s}
-            .sc-switch span{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
-            .sc-switch[aria-checked="true"]{background:#2e9d62;border-color:#2e9d62}
-            .sc-switch[aria-checked="true"] span{transform:translateX(20px)}
-            .sc-switch:focus-visible{outline:2px solid #f0d77c;outline-offset:2px}
+            #classSiteSettings .sc-setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;font-size:14px;color:inherit}
+            #classSiteSettings #settingsChat{all:unset;box-sizing:border-box;display:block;position:relative;flex:0 0 46px;width:46px;min-width:46px;max-width:46px;height:26px;min-height:26px;max-height:26px;border-radius:13px;border:1px solid rgba(255,255,255,.35);background:#4a5568;cursor:pointer;padding:0;transition:background .15s,border-color .15s}
+            #classSiteSettings #settingsChat span{all:unset;box-sizing:border-box;display:block;pointer-events:none;position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+            #classSiteSettings #settingsChat[aria-checked="true"]{background:#2e9d62;border-color:#2e9d62}
+            #classSiteSettings #settingsChat[aria-checked="true"] span{transform:translateX(20px)}
+            #classSiteSettings #settingsChat:focus-visible{outline:2px solid #f0d77c;outline-offset:2px}
         `;
         document.head.appendChild(style);
     }
