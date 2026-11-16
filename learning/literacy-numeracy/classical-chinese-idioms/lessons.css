@@ -310,7 +310,7 @@ body.lesson-active .question-illustration img {
    밑에 차시 도구줄이 깔리지 않게 비켜 준다. 넓은 화면은 양옆 여백으로 이미 비켜 있다. */
 @media (max-width: 1399px) {
     body.lesson-active:has(site-back-navigation) .lesson-toolbar { padding-left: 34px; }
-    body.lesson-active:has(.unified-music-control) :is(.lesson-toolbar, .card-position) { padding-right: 42px; }
+    body.lesson-active:has(:is(.unified-music-control, #classSiteSettings)) :is(.lesson-toolbar, .card-position) { padding-right: 42px; }
 }
 
 body.lesson-active .memory-actions {
@@ -345,8 +345,8 @@ body.lesson-active .memory-actions button { min-height: 44px; }
     .lesson-toolbar button { padding-inline: 11px; }
     .lesson-heading { grid-column: 1 / -1; grid-row: 2; }
     body.lesson-active:has(site-back-navigation) .lesson-toolbar { padding-left: 44px; }
-    body.lesson-active:has(.unified-music-control) .lesson-toolbar { padding-right: 50px; }
-    body.lesson-active:has(.unified-music-control) .card-position { padding-right: 0; }
+    body.lesson-active:has(:is(.unified-music-control, #classSiteSettings)) .lesson-toolbar { padding-right: 50px; }
+    body.lesson-active:has(:is(.unified-music-control, #classSiteSettings)) .card-position { padding-right: 0; }
     body.lesson-active .card-position { grid-template-columns: auto 1fr; }
     body.lesson-active .card-position .card-navigation {
         grid-column: 1 / -1;
@@ -376,6 +376,9 @@ body.lesson-active .memory-actions button { min-height: 44px; }
 }
 .lesson-overview-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-bottom: 10px; }
 .lesson-overview-actions .lesson-quiz-button { min-height: 44px; padding: 0 14px; border: 1px solid var(--green); border-radius: 10px; color: white; background: var(--green); font-weight: 800; cursor: pointer; }
+@media (max-width: 1248px) {
+    .lesson-overview-actions { padding-inline: 44px; }
+}
 @media (max-width: 640px) {
     .lesson-overview-actions { justify-content: space-between; }
 }

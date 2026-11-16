@@ -107,7 +107,9 @@ button { color: inherit; }
     pointer-events: none;
 }
 .site-header > * { pointer-events: auto; }
-body { padding-top: 56px; }
+/* Navigation floats at the corners; it must not reserve an empty header row. */
+body { padding-top: 0; }
+.site-header .header-score { display: none; }
 
 .race-link {
     justify-self: center;
