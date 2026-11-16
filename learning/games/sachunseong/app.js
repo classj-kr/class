@@ -30,9 +30,9 @@
 
   // 소재: 앞 패(a)와 뒤 패(b)의 꼴. 'img'는 그림 패, 'hanja'는 한자 글꼴.
   const SUBJECTS = [
-    { key: 'english', label: '영어 단어', a: 'en', b: 'ko' },
+    { key: 'english', label: '교육부 영단어 3000', a: 'en', b: 'ko' },
     { key: 'avatars', label: '아바타 영단어', a: 'img', b: 'en' },
-    { key: 'vocab', label: '교과서 단어', a: 'ko', b: 'en' },
+    { key: 'vocab', label: '국·수·사·과 영단어', a: 'ko', b: 'en' },
     { key: 'hanja', label: '한자', a: 'hanja', b: 'ko' },
     { key: 'idioms', label: '고사성어', a: 'ko', b: 'ko' },
     { key: 'proverbs', label: '속담', a: 'ko', b: 'ko' },
