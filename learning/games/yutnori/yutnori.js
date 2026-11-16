@@ -18,7 +18,7 @@
         board.append(node);
         return node;
     });
-    let lobby, state, selected, selectedResult = 0, noticeTimer, animation, turnTimer, waiting = false;
+    let lobby, state, selected, selectedResult = 0, noticeTimer, animation, turnTimer, waiting = false, lastTick;
 
     function notice(text) {
         clearTimeout(noticeTimer);
@@ -43,9 +43,52 @@
         return state.winner === null && state.players[state.turn].id === lobby.snapshot().myId;
     }
 
+    function renderBench() {
+        $("teamBench").replaceChildren(...teamName.map((name, team) => {
+            const card = document.createElement("section");
+            card.className = `bench-card team-${team}`;
+            card.classList.toggle("active", state.winner === null && state.turn % 2 === team);
+            const heading = document.createElement("h2");
+            const pieces = state.pieces.filter(piece => piece.team === team);
+            heading.textContent = `${name} · ${pieces.filter(piece => piece.finished).length}/4`;
+            const roster = document.createElement("div");
+            roster.className = "bench-pieces";
+            for (const piece of pieces) {
+                const slot = document.createElement("div");
+                slot.className = "bench-slot";
+                const label = document.createElement("span");
+                label.textContent = state.players[piece.owner].name;
+                const status = document.createElement("small");
+                status.textContent = piece.finished ? "완주" : piece.node === null ? "대기" : "이동 중";
+                slot.append(token(piece), label, status);
+                roster.append(slot);
+            }
+            card.append(heading, roster);
+            return card;
+        }));
+    }
+
+    function announce(event) {
+        const callout = $("boardCallout");
+        let label = "";
+        if (state.winner !== null) label = teamName[state.winner] + " 승리!";
+        else if (event?.kind === "roll") label = `${YutRules.names[event.roll.steps]}! ${event.roll.steps}칸`;
+        else if (event?.caught) label = `${event.caught}개 잡았다!`;
+        else if (event?.stacked) label = "업었다!";
+        else if (event?.finished) label = "완주!";
+        callout.replaceChildren();
+        if (!label) return;
+        const badge = document.createElement("strong");
+        badge.textContent = label;
+        badge.className = `team-${event?.kind === "move" ? state.pieces.find(piece => piece.id === event.id).team : state.turn % 2}`;
+        if (state.winner !== null) badge.classList.add("victory");
+        callout.append(badge);
+    }
+
     function render() {
         if (!state) return;
         const event = state.event;
+        renderBench();
         const myTurn = isMyTurn();
         const move = selected == null ? null : YutRules.preview(state, selected, selectedResult);
         const piecesAtNode = new Map();
@@ -120,17 +163,30 @@
         }
         $("moveBtn").classList.toggle("hidden", !move || !myTurn);
         $("moveBtn").disabled = waiting || !!animation;
+        $("turnHint").textContent = !myTurn ? "" : state.throwing
+            ? state.results.length ? "결과를 모아 뒀어요. 윷을 한 번 더 던져요." : "윷 던지기를 눌러요."
+            : move ? "빛나는 칸으로 이 말을 옮겨요."
+                : state.results.length > 1 ? "쓸 결과를 고르고, 움직일 말을 눌러요." : "움직일 우리 팀 말을 눌러요.";
         $("rematchBtn").classList.toggle("hidden", state.winner === null || lobby.snapshot().role !== "host");
     }
 
     function tickClock() {
         if (!state || state.winner !== null || !state.deadline) {
-            $("turnClock").textContent = "";
+            $("yutClock").textContent = "";
+            $("yutClock").classList.remove("urgent");
             return;
         }
         const remaining = state.deadline - Date.now();
         const label = state.throwing ? "윷 던지기" : "결과와 말 고르기";
-        $("turnClock").textContent = `${label} · ${Math.max(0, Math.ceil(remaining / 1000))}초`;
+        const seconds = Math.max(0, Math.ceil(remaining / 1000));
+        const clock = $("yutClock");
+        const display = `${label} · ${seconds}초`;
+        if (clock.textContent !== display) clock.textContent = display;
+        const urgent = isMyTurn() && seconds > 0 && seconds <= 5;
+        clock.classList.toggle("urgent", urgent);
+        const tick = `${state.revision}:${seconds}`;
+        if (urgent && !state.throwing && tick !== lastTick && !$("rulesDialog").open) window.ClassGameSfx?.play("tick");
+        lastTick = tick;
         if (remaining <= 0 && lobby.snapshot().role === "host") {
             const player = state.players[state.turn];
             const localTurn = isMyTurn();
@@ -149,6 +205,11 @@
             const stick = document.createElement("span");
             if (roll && !roll.sticks[index]) stick.className = "back";
             stick.style.setProperty("--stick", index);
+            for (const side of ["flat", "round"]) {
+                const face = document.createElement("i");
+                face.className = side;
+                stick.append(face);
+            }
             if (roll) stick.classList.add("toss");
             return stick;
         }));
@@ -163,6 +224,7 @@
         waiting = false;
         const event = state.event;
         if (!event || event.kind === "roll") showSticks(event?.roll);
+        announce(event?.kind === "move" && animate ? null : event);
         if (animate && event?.kind === "move" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
             const el = token(state.pieces.find(piece => piece.id === event.id), true);
             el.classList.add("walking-token");
@@ -171,9 +233,15 @@
             animation = el.animate(path.map(index => ({left:points[index][0]+"%", top:points[index][1]+"%"})),
                 {duration: Math.min(960, 175 * (path.length - 1)), easing:"linear", fill:"forwards"});
             const current = animation;
-            current.finished.then(() => { if (animation === current) { animation = null; render(); } })
+            current.finished.then(() => {
+                if (animation === current) {
+                    animation = null;
+                    render();
+                    announce(event);
+                }
+            })
                 .catch(() => {}).finally(() => el.remove());
-        }
+        } else if (event?.kind === "move") announce(event);
         render();
         tickClock();
     }
@@ -209,6 +277,70 @@
         lobby.returnToLobby();
     }
 
+    function showPractice() {
+        const dialog = $("rulesDialog");
+        const available = [];
+        let throws = 0, position = 0, chosen = -1;
+        let avatarKey = lobby.snapshot().players[lobby.snapshot().myId]?.avatarKey;
+        function draw() {
+            const actions = $("practiceActions");
+            const hint = $("practiceHint");
+            actions.replaceChildren();
+            function addButton(text, onClick, pressed) {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = text;
+                button.onclick = onClick;
+                if (pressed !== undefined) button.setAttribute("aria-pressed", String(pressed));
+                actions.append(button);
+            }
+            if (throws < 2) {
+                hint.textContent = throws === 0 ? "윷을 던져 볼까요?" : "모! 5칸을 모아 두고, 한 번 더 던져요.";
+                addButton(throws === 0 ? "윷 던지기" : "한 번 더 던지기", () => {
+                    available.push(throws === 0 ? 5 : 2);
+                    throws++;
+                    draw();
+                    actions.firstElementChild.focus();
+                });
+            } else if (available.length) {
+                hint.textContent = chosen < 0
+                    ? "모아 둔 결과 중 먼저 쓸 것을 골라요."
+                    : `빛나는 칸까지 ${available[chosen]}칸 옮겨요.`;
+                available.forEach((steps, index) => addButton(`${YutRules.names[steps]} · ${steps}칸`, () => {
+                    chosen = index;
+                    draw();
+                    $("practiceMove").focus();
+                }, chosen === index));
+                if (chosen >= 0) {
+                    addButton("말 옮기기", () => {
+                        position += available.splice(chosen, 1)[0];
+                        chosen = -1;
+                        draw();
+                        (actions.firstElementChild || dialog.querySelector("form button")).focus();
+                    });
+                    actions.lastElementChild.id = "practiceMove";
+                }
+            } else hint.textContent = "잘했어요! 모와 개를 골라 말 하나를 두 번 옮겼어요.";
+            const target = chosen < 0 ? -1 : position + available[chosen];
+            $("practiceTrack").replaceChildren(...Array.from({length:8}, (_, index) => {
+                const cell = document.createElement("span");
+                cell.classList.toggle("target", index === target);
+                if (index === position) {
+                    if (avatarKey) cell.append(ClassroomAvatars.create(avatarKey));
+                    else cell.textContent = "●";
+                    cell.setAttribute("aria-label", index === 0 ? "출발 칸의 말" : `${index}번째 칸의 말`);
+                }
+                return cell;
+            }));
+        }
+        draw();
+        dialog.showModal();
+        if (!avatarKey) ClassroomAvatars.loadKey().then(key => {
+            if (!dialog.open || !key) return;
+            avatarKey = key;
+        });
+    }
+
     const savedName = String(window.CLASS_PLAYER_NAME || "").trim();
     lobby = ClassroomMultiplayerLobby.create({
         gameId:"yutnori", initialMode:"guest", maxPlayers:4, allowedPlayerCounts:[2,4],
@@ -223,7 +355,7 @@
         }),
         rulesButtonIds:["rulesBtnLobby","rulesBtnGame"],
         leaveButtonIds:["leaveBtn"],
-        onRules:() => $("rulesDialog").showModal(),
+        onRules:showPractice,
         onLeave:() => { location.href = "/"; },
         onNotice:notice,
         createStartData:({players, myId}) => ({state:setDeadline(YutRules.create(
