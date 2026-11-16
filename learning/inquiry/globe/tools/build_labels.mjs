@@ -776,7 +776,8 @@ const MARINE_SKIP = new Set([
 // 나라 이름은 세계지리 앱 자료를 그대로 쓴다. 나라가 아닌 것은 뺀다.
 const COUNTRY_SKIP = new Set(["남극", "소말릴란드", "북키프로스", "프랑스령 남방"]);
 // 국기를 달지 않는 곳: 영유권 분쟁지(서사하라, 포클랜드 제도)와 쓰는 깃발이 둘인 프랑스령(누벨칼레도니).
-const NO_FLAG = new Set(["EH", "FK", "NC"]);
+// 북한은 헌법(제3조 영토 조항)상 나라로 다루지 않아 국기를 붙이지 않는다(설명 창 윗줄은 info.json 의 kind 로 「지역」).
+const NO_FLAG = new Set(["EH", "FK", "NC", "KP"]);
 
 async function neFile(name) {
   fs.mkdirSync(CACHE, { recursive: true });
