@@ -636,7 +636,7 @@
   const sizeLabel = key => `${SIZES[key].cols} × ${SIZES[key].rows} · ${SIZES[key].pairs}쌍`;
   const race = window.ClassroomPuzzleRace.create({
     gameId: 'sachunseong',
-    title: 'SHISEN-SHO',
+    title: '사천성',
     maxPlayers: 8,
     settings: [
       { key: 'level', label: '단계', options: levelKeys.map(key => ({ value: key, label: words.labels[key] || key })) },
