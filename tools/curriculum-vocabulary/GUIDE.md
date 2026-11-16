@@ -131,4 +131,5 @@
 
 - `node tools/curriculum-vocabulary/build.mjs <학기>` 통과.
 - `node tests/curriculum-vocabulary-browser.cjs` 통과(모든 학기·단원에서 연습 한 판).
+- `node tools/curriculum-vocabulary/check-figures.cjs <학기>` 문제 0곳 — 한 과목 도식 파일은 이름 정렬 차례(kor-2.js → kor.js)로 한 페이지에서 실행되니, 파일마다 IIFE 안에 넣고 맨 바깥 const/let 이나 다른 파일 이름에 기대지 않는다.
 - 공용 git 인덱스: git add·커밋은 메인 세션만 한다. 도우미는 맡은 파일만 고친다.
