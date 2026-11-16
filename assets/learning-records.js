@@ -5,7 +5,7 @@
   const clone = value => JSON.parse(JSON.stringify(value));
   const today = () => new Date(Date.now() + 32400000).toISOString().slice(0, 10);
   const date = value => new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
-  const uid = () => crypto.randomUUID();
+  const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2));
   const el = (tag, text, className) => { const node = document.createElement(tag); if (text != null) node.textContent = text; if (className) node.className = className; return node; };
   const css = `
     :host{display:contents;color:#24364b;font:13px/1.45 system-ui,"Malgun Gothic",sans-serif;color-scheme:light}:host([hidden]){display:none!important}

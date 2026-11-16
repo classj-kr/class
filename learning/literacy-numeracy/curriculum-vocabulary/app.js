@@ -28,6 +28,13 @@
   const lesson = document.getElementById('lesson');
   // 「3분의 2」처럼 글자로 쓴 분수를 위아래로 쌓은 분수로 보여 준다.
   window.FractionText?.watch(lesson);
+  // 다른 학습 앱과 같은 오른쪽 아래 줄: 「🏁 순위전」과 「내 기록」(푼 기록은 LearningActivity 가 서버에 남긴다).
+  if (window.LearningRecords) {
+    const raceLink = element('a', '🏁 순위전', 'race-link');
+    raceLink.href = '../korean-race/?set=textbook';
+    document.body.append(raceLink); // create() 가 이 단추를 기록 줄로 옮긴다
+    window.LearningRecords.create('curriculum-vocabulary', { label: '교과서 단어' });
+  }
   const query = new URLSearchParams(location.search);
   // 학기 열쇠: 초등 1-1 ~ 6-2, 중학교는 7-1(중 1학년 1학기) ~ 9-2.
   const terms = Array.from({ length: 18 }, (_, i) => `${Math.floor(i / 2) + 1}-${i % 2 + 1}`);
@@ -42,7 +49,7 @@
   let leavePractice = null;
   const recordActivity = (unit, event) => window.LearningActivity?.record({
     activity:'curriculum-vocabulary', context:`${term}:${subject}:${unit.id}`,
-    title:`교과 어휘 · ${termName(term)} ${subject} · ${unit.title}`, ...event
+    title:`교과서 단어 · ${termName(term)} ${subject} · ${unit.title}`, ...event
   });
 
   function element(tag, text, className) {
@@ -322,11 +329,9 @@
     const practice = button('연습', () => { mode = 'practice'; showLesson(unit, true); }, 'practice-chip');
     controls.forEach((control, i) => control.setAttribute('aria-pressed', String(i === current)));
     practice.setAttribute('aria-pressed', String(mode === 'practice'));
-    // 순위전: 다른 학습 앱처럼 오른쪽 아래에 떠 있는 단추 하나. 지금 단원이 체크된 채로 열린다.
-    let race = document.querySelector('a.race-float');
-    if (!race) { race = element('a', '🏁 순위전', 'race-float'); document.body.append(race); }
+    // 순위전 단추는 공용 학습 기록 줄(오른쪽 아래 「🏁 순위전 · 내 기록」)에 있다. 누르면 지금 단원이 범위로 넘어간다.
     const code = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci' }[subject];
-    race.href = `../korean-race/?set=textbook&range=${encodeURIComponent(`${term}.${code}.${unit.id}`)}`;
+    window.currentRaceRange = () => `${term}.${code}.${unit.id}`;
     chips.append(...controls, practice);
     return { chips, controls, practice };
   }
