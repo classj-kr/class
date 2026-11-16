@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>윷놀이</title>
+<link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+<link rel="stylesheet" href="yutnori.css?v=2">
+<script src="../../../assets/network/game-network.js?v=20260821"></script>
+<script src="../../../assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+<script src="../../../assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="/assets/sound/music-control.js?v=20261115-game-backdrop" defer></script>
+<script src="rules.js?v=4" defer></script>
+<script src="yutnori.js?v=3" defer></script>
+</head>
+<body>
+<main class="shell">
+  <section id="missingScreen" class="panel hidden">
+    <h1>이름이 없습니다</h1>
+    <p>이름 변경은 메인 화면에서만 가능합니다.</p>
+    <button class="primary" type="button" onclick="location.href='../../../'">메인 화면으로</button>
+  </section>
+
+  <section id="lobbyScreen" class="hidden">
+    <div class="panel">
+      <h1>윷놀이</h1>
+      <p>PLAYER · <strong id="savedName">-</strong></p>
+      <div class="mp-lobby-tabs">
+        <button id="hostTab" class="primary" type="button">Create Room</button>
+        <button id="joinTab" class="secondary" type="button" aria-label="방 번호 입력 방식 선택" role="tab">Join Room</button>
+      </div>
+    </div>
+
+    <section id="hostPane" class="panel mp-lobby-card hidden">
+      <div class="row spread">
+        <div><div class="eyebrow">방 번호</div><div id="roomCode" class="code">----</div></div>
+      </div>
+      <div id="hostStatus" class="mp-lobby-status">방을 만드는 중입니다.</div>
+    </section>
+
+    <section id="joinPane" class="panel mp-lobby-card hidden">
+      <div class="mp-lobby-row">
+        <input id="joinCode" class="mp-lobby-code-input" inputmode="numeric" maxlength="4" placeholder="Room Code">
+        <button id="joinBtn" class="primary" type="button" aria-label="입력한 방 번호로 참가">Join</button>
+      </div>
+      <div id="joinStatus" class="mp-lobby-status"></div>
+    </section>
+
+    <section class="panel">
+      <label id="modeChoice">대결 방식 <select id="mode"><option value="2">1대1</option><option value="4">2대2</option></select></label>
+      <div id="lobbyPlayers" class="mp-lobby-players"></div>
+      <p id="lobbyGuide" class="mp-lobby-guide">참가자를 기다리는 중입니다.</p>
+      <button id="startBtn" class="primary" type="button" disabled>WAITING FOR PLAYERS</button>
+      <div class="row" style="margin-top:10px">
+        <button id="rulesBtnLobby" class="secondary" type="button">Rules</button>
+        <button id="leaveBtn" class="secondary" type="button">메인 화면</button>
+      </div>
+    </section>
+  </section>
+
+  <section id="gameScreen" class="hidden">
+    <header class="match-header"><h1>윷놀이</h1><div id="score"></div><button id="rulesBtnGame" class="secondary" type="button">Rules</button></header>
+    <div class="match">
+      <div id="board" aria-label="윷판">
+        <svg viewBox="0 0 100 100" class="tracks" aria-hidden="true"><path d="M12 12H88V88H12ZM12 12L88 88M88 12L12 88"/></svg>
+        <span class="gate">출발 · 도착</span>
+      </div>
+      <section class="turn-panel" aria-label="내 차례 조작">
+        <p id="turn" aria-live="polite"></p>
+        <p id="turnClock"></p>
+        <div class="sticks" id="sticks" aria-hidden="true"></div>
+        <p id="result" aria-live="polite"></p>
+        <button id="throwBtn" class="primary" type="button">윷 던지기</button>
+        <div id="results" aria-label="모아 둔 윷 결과"></div>
+        <div id="pieces" aria-label="움직일 말"></div>
+        <button id="moveBtn" class="primary hidden" type="button">이 말 움직이기</button>
+        <button id="rematchBtn" class="secondary hidden" type="button">대기실로</button>
+      </section>
+    </div>
+  </section>
+</main>
+<dialog id="rulesDialog">
+  <h2>윷놀이 규칙</h2>
+  <p>1대1과 2대2 모두 팀당 말 네 개를 씁니다. 네 말을 먼저 완주시키면 이깁니다.</p>
+  <p>2대2에서는 입장 순서의 1·3번째와 2·4번째가 각각 한 팀이 됩니다. 팀원 각자의 아바타가 말 두 개씩을 맡습니다.</p>
+  <p>도·개·걸·윷·모는 1~5칸입니다. 윷을 던지고 우리 팀 말 하나를 고르면 도착할 칸이 표시됩니다.</p>
+  <p>참가자마다 16번 던질 때 나오는 도·개·걸·윷·모의 개수는 같고, 순서는 각자 다르게 섞습니다.</p>
+  <p>던지기는 5초, 말 고르기는 10초입니다. 시간이 끝나면 자동으로 던지거나 움직일 수 있는 말을 옮깁니다.</p>
+  <p>모서리나 중앙에 멈추면 다음 이동 때 지름길로 갑니다. 도착점을 지나면 완주합니다. 같은 편 말에 도착하면 업고, 상대편 말은 잡아 출발 전으로 돌려보냅니다.</p>
+  <p>윷이나 모가 나오면 결과를 모아 둔 채 다시 던집니다. 도·개·걸이 나오면 모은 결과를 원하는 순서로 하나씩 쓰세요. 말을 잡으면 남은 결과를 보관하고 한 번 더 던집니다. 이 버전에서는 빽도를 쓰지 않습니다.</p>
+  <form method="dialog"><button class="secondary">닫기</button></form>
+</dialog>
+<dialog id="abortDialog"><h2>게임이 중단되었습니다</h2><p id="abortMessage"></p><button id="reloadBtn" class="primary">처음부터</button></dialog>
+<p id="notice" role="status" hidden></p>
+</body>
+</html>

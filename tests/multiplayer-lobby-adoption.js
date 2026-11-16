@@ -33,7 +33,8 @@ const expectedMultiplayerGames = [
     "reversi",
     "rummikub",
     "setgame",
-    "traverse"
+    "traverse",
+    "yutnori"
 ];
 const expectedSinglePlayerGames = ["coinweighing", "hanoitower", "minesweeper", "nonogram", "sliding-puzzle", "sphinx"];
 
