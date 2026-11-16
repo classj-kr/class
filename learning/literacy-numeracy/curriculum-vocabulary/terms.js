@@ -1,7 +1,7 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
  "3-1": {
-  "words": "words-3-1.js?v=0862654d",
+  "words": "words-3-1.js?v=3a171cbb",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -20,7 +20,7 @@ window.CurriculumTerms = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=f4e7e7b1",
+  "words": "words-3-2.js?v=ceff4a21",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -36,7 +36,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=c6ccc446",
+  "words": "words-4-1.js?v=dd5511a6",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -56,7 +56,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=98e0131f",
+  "words": "words-4-2.js?v=0015cf62",
   "figures": [
    "figures/4-2/kor-2.js?v=6e0a31c4",
    "figures/4-2/kor.js?v=07b958f9",
@@ -72,7 +72,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=467cf265",
+  "words": "words-5-1.js?v=8e52665d",
   "figures": [
    "figures/5-1/kor-2.js?v=da86c805",
    "figures/5-1/kor-3.js?v=cc328cb9",
@@ -93,7 +93,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=2a2b7573",
+  "words": "words-5-2.js?v=908dff86",
   "figures": [
    "figures/5-2/kor.js?v=beaf6e0d",
    "figures/5-2/math-1.js?v=30cd38eb",
@@ -106,7 +106,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=4da0b709",
+  "words": "words-6-1.js?v=14a98dbd",
   "figures": [
    "figures/6-1/kor-2.js?v=087c0f26",
    "figures/6-1/kor-3.js?v=b422b14a",
@@ -127,7 +127,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=e48ec459",
+  "words": "words-6-2.js?v=2719f972",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
@@ -144,7 +144,7 @@ window.CurriculumTerms = {
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
  "3-1": {
-  "words": "words-3-1.js?v=0862654d",
+  "words": "words-3-1.js?v=3a171cbb",
   "figures": [
    "figures/3-1/kor-2.js?v=82f29016",
    "figures/3-1/kor-3.js?v=6b90226c",
@@ -163,7 +163,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=f4e7e7b1",
+  "words": "words-3-2.js?v=ceff4a21",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -179,7 +179,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=c6ccc446",
+  "words": "words-4-1.js?v=dd5511a6",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -199,7 +199,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=98e0131f",
+  "words": "words-4-2.js?v=0015cf62",
   "figures": [
    "figures/4-2/kor-2.js?v=6e0a31c4",
    "figures/4-2/kor.js?v=07b958f9",
@@ -215,7 +215,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=467cf265",
+  "words": "words-5-1.js?v=8e52665d",
   "figures": [
    "figures/5-1/kor-2.js?v=da86c805",
    "figures/5-1/kor-3.js?v=cc328cb9",
@@ -236,7 +236,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=2a2b7573",
+  "words": "words-5-2.js?v=908dff86",
   "figures": [
    "figures/5-2/kor.js?v=beaf6e0d",
    "figures/5-2/math-1.js?v=30cd38eb",
@@ -249,7 +249,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-1": {
-  "words": "words-6-1.js?v=4da0b709",
+  "words": "words-6-1.js?v=14a98dbd",
   "figures": [
    "figures/6-1/kor-2.js?v=087c0f26",
    "figures/6-1/kor-3.js?v=b422b14a",
@@ -270,7 +270,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=e48ec459",
+  "words": "words-6-2.js?v=2719f972",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
@@ -281,6 +281,28 @@ window.CurriculumTermsPreview = {
    "figures/6-2/math-6.js?v=9aa0d91a",
    "figures/6-2/sci.js?v=cde38482",
    "figures/6-2/soc.js?v=f8ebb1d0"
+  ]
+ },
+ "7-1": {
+  "words": "words-7-1.js?v=102ad7db",
+  "figures": [
+   "figures/7-1/kor.js?v=291d7f0b",
+   "figures/7-1/math-1.js?v=c4c0183e",
+   "figures/7-1/math-2.js?v=72ff02e1",
+   "figures/7-1/math-3.js?v=53ee1cad",
+   "figures/7-1/sci.js?v=25729029",
+   "figures/7-1/soc.js?v=8ffa996c"
+  ]
+ },
+ "7-2": {
+  "words": "words-7-2.js?v=a880f304",
+  "figures": [
+   "figures/7-2/math-1.js?v=802cb6cf",
+   "figures/7-2/math-2.js?v=3c352eae",
+   "figures/7-2/math-3.js?v=a1e9d5a7",
+   "figures/7-2/sci-2.js?v=c985329c",
+   "figures/7-2/sci.js?v=ae71ae1e",
+   "figures/7-2/soc.js?v=af5798d0"
   ]
  }
 };
