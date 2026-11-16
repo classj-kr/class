@@ -12,8 +12,8 @@
     <script src="../assets/math.js?v=20261108-2" defer></script>
     <script src="../assets/ui.js?v=20261108-2" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
-    <script src="core.js?v=20261108-2" defer></script>
-    <script src="app.js?v=20261108-3" defer></script>
+    <script src="core.js?v=20261117-rings" defer></script>
+    <script src="app.js?v=20261117-rings" defer></script>
     <script
       src="/assets/sound/music-control.js?v=20261105-settings-panel"
       data-sfx-controls
@@ -71,11 +71,19 @@
           >반지름<input id="radius" type="range" min="1" max="5" /><output
             id="radius-value"
           ></output></label
-        ><select id="sectors" aria-label="원 조각 수" hidden>
+        ><select id="method" aria-label="원의 넓이를 알아보는 방법" hidden>
+          <option value="sectors">부채꼴 조각</option>
+          <option value="rings">고리 펴기</option>
+        </select><select id="sectors" aria-label="원 조각 수" hidden>
           <option value="12">12조각</option>
           <option value="24">24조각</option>
           <option value="48">48조각</option>
           <option value="96">96조각</option>
+        </select><select id="rings" aria-label="고리 수" hidden>
+          <option value="6">고리 6개</option>
+          <option value="12">고리 12개</option>
+          <option value="24">고리 24개</option>
+          <option value="48">고리 48개</option>
         </select>
       </div>
       <div class="controls">
@@ -109,6 +117,11 @@
         <li>
           원의 조각을 번갈아 놓아요. 조각이 많아질수록 가로가 원주의 절반,
           세로가 반지름인 직사각형에 가까워져요.
+        </li>
+        <li>
+          ‘고리 펴기’는 원을 얇은 고리로 나누고 맨 위를 잘라 하나씩 곧게 펴요.
+          펴서 쌓으면 밑변이 원주, 높이가 반지름인 삼각형에 가까워지므로 넓이는
+          원주 × 반지름 ÷ 2 예요. 고리가 얇을수록 계단이 줄어들어요.
         </li>
         <li>
           삼각형의 꼭짓점이 밑변 바깥으로 나가도 높이는 밑변을 포함하는 직선에

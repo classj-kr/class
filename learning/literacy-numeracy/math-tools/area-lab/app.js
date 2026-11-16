@@ -8,6 +8,8 @@
   function render(s) {
     U.value("shape", s.shape);
     U.value("sectors", s.sectors);
+    U.value("method", s.method);
+    U.value("rings", s.rings);
     U.value("progress", Math.round(s.progress * 100));
     for (const key of ["base", "height", "top", "offset", "radius"]) {
       U.value(key, s[key]);
@@ -19,7 +21,10 @@
     $("base-control").hidden = circle;
     $("height-control").hidden = circle;
     $("radius-control").hidden = !circle;
-    $("sectors").hidden = !circle;
+    const rings = circle && s.method === "rings";
+    $("method").hidden = !circle;
+    $("sectors").hidden = !circle || rings;
+    $("rings").hidden = !rings;
     $("top-control").hidden = s.shape !== "trapezoid";
     $("offset-control").hidden = !["triangle", "parallelogram"].includes(
       s.shape,
@@ -49,7 +54,33 @@
         svg += U.line(40, y, 960, y, 'class="grid"');
     }
     svg += `<g transform="translate(${origin.x} ${origin.y}) scale(${scale})">`;
-    C.pieces(s).forEach((part, i) => {
+    if (rings) {
+      // 고리 펴기: 고리마다 맨 위가 잘린 띠로 그리고, 펼수록 곧게 편다.
+      for (let i = 0; i < s.rings; i++) {
+        const g = C.ringShape(s.radius, s.rings, i, s.progress),
+          color = M.colors[i % 2];
+        let d;
+        if (g.flat) d = `M${g.x0} ${g.y0}H${g.x1}V${g.y1}H${g.x0}Z`;
+        else {
+          const f1 = Math.PI / 2 - g.theta / 2,
+            f2 = Math.PI / 2 + g.theta / 2,
+            at = (radius, f) =>
+              `${g.cx + radius * Math.cos(f)} ${g.cy + radius * Math.sin(f)}`,
+            large = g.theta > Math.PI ? 1 : 0;
+          d =
+            `M${at(g.outer, f1)}A${g.outer} ${g.outer} 0 ${large} 1 ${at(g.outer, f2)}` +
+            (g.inner > 0
+              ? `L${at(g.inner, f2)}A${g.inner} ${g.inner} 0 ${large} 0 ${at(g.inner, f1)}Z`
+              : `L${g.cx} ${g.cy}Z`);
+        }
+        svg += `<path d="${d}" fill="${color}" stroke="${color}" stroke-width="${0.5 / scale}" stroke-linejoin="round"/>`;
+      }
+      if (s.progress > 0.95) {
+        // 다 편 띠들이 가까워지는 삼각형: 꼭짓점은 원의 중심, 밑변은 원주(2πr), 높이는 반지름(r).
+        const w = Math.PI * s.radius;
+        svg += `<path d="M0 0L${w} ${s.radius}H${-w}Z" fill="none" stroke="#315f50" stroke-dasharray="${5 / scale} ${4 / scale}" stroke-width="${1.6 / scale}" opacity="${(s.progress - 0.95) / 0.05}"/>`;
+      }
+    } else C.pieces(s).forEach((part, i) => {
       const color = M.colors[i % 6];
       if (part.sector) {
         const alpha = part.alpha,
@@ -78,7 +109,9 @@
     $("stage").innerHTML = svg;
     let formula = "";
     if (s.values) {
-      if (circle) formula = `π × ${s.radius}² ≈ ${M.round(C.area(s), 2)}`;
+      if (rings)
+        formula = `원주 × 반지름 ÷ 2 = 2 × π × ${s.radius} × ${s.radius} ÷ 2 = π × ${s.radius}² ≈ ${M.round(C.area(s), 2)}`;
+      else if (circle) formula = `π × ${s.radius}² ≈ ${M.round(C.area(s), 2)}`;
       else if (s.shape === "trapezoid")
         formula = `(${s.top} + ${s.base}) × ${s.height} ÷ 2 = ${C.area(s)}`;
       else
@@ -88,7 +121,9 @@
     $("context").hidden =
       s.progress === 0 ||
       !["triangle", "trapezoid", "circle"].includes(s.shape);
-    $("context").textContent = circle
+    $("context").textContent = rings
+      ? "고리가 얇을수록 밑변이 원주, 높이가 반지름인 삼각형에 가까워져요."
+      : circle
       ? "조각이 많아질수록 직사각형에 가까워져요."
       : "같은 도형 2개 · 처음 넓이의 2배";
   }
@@ -118,7 +153,14 @@
       stop();
       app.commit((s) => (s[key] = !s[key]), false);
     });
-  for (const key of ["base", "height", "top", "offset", "radius", "sectors"])
+  U.bind("method", "change", () => {
+    stop();
+    app.commit((s) => {
+      s.method = $("method").value;
+      s.progress = 0;
+    });
+  });
+  for (const key of ["base", "height", "top", "offset", "radius", "sectors", "rings"])
     U.bind(key, "input", () => {
       stop();
       app.commit((s) => {

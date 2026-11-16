@@ -16,12 +16,19 @@
     top: 3,
     offset: 2,
     radius: 3,
+    method: "sectors",
     sectors: 24,
+    rings: 12,
     progress: 0,
     grid: true,
     values: false,
   };
-  function validate(s) {
+  function validate(input) {
+    // 고리 펴기를 넣기 전에 저장한 작업에는 method·rings가 없다. 그때는 부채꼴 조각 방식으로 연다.
+    const s =
+      input && typeof input === "object"
+        ? { method: "sectors", rings: 12, ...input }
+        : input;
     if (
       !s ||
       s.version !== 1 ||
@@ -32,6 +39,8 @@
       !M.integer(s.offset, -3, 13) ||
       !M.integer(s.radius, 1, 5) ||
       ![12, 24, 48, 96].includes(s.sectors) ||
+      !["sectors", "rings"].includes(s.method) ||
+      ![6, 12, 24, 48].includes(s.rings) ||
       !M.finite(s.progress, 0, 1) ||
       !["grid", "values"].every((k) => typeof s[k] === "boolean")
     )
@@ -147,6 +156,29 @@
       dy: i % 2 ? height : 0,
     }));
   }
+  // 고리 펴기: 원을 같은 두께의 고리 n개로 나누고, 맨 위를 잘라 하나씩 곧게 편다.
+  // 각 고리의 맨 아래 점은 제자리에 둔 채 굽은 정도만 줄인다(가운데 줄의 길이는 그대로라 넓이도 그대로).
+  // 다 펴면 고리 i는 너비 2π×(가운데 반지름), 두께 r/n인 띠가 되고, 띠들이 쌓여
+  // 밑변이 원주(2πr), 높이가 반지름(r)인 삼각형에 가까운 계단이 된다.
+  function ringShape(r, n, i, t) {
+    const dr = r / n,
+      a = i * dr,
+      b = a + dr,
+      mid = (a + b) / 2;
+    if (t >= 0.999)
+      return { flat: true, x0: -Math.PI * mid, x1: Math.PI * mid, y0: a, y1: b };
+    const theta = Math.min(2 * Math.PI * (1 - t), 2 * Math.PI - 1e-6),
+      rho = mid / (1 - t),
+      outer = rho + dr / 2,
+      inner = Math.max(0, rho - dr / 2);
+    return { flat: false, cx: 0, cy: b - outer, inner, outer, theta };
+  }
+  // 띠(굽은 고리)의 넓이: 부채꼴 띠 θ/2·(바깥² − 안쪽²), 다 펴면 직사각형.
+  function ringArea(shape) {
+    return shape.flat
+      ? (shape.x1 - shape.x0) * (shape.y1 - shape.y0)
+      : (shape.theta / 2) * (shape.outer ** 2 - shape.inner ** 2);
+  }
   function transformed(piece, t) {
     return piece.points.map((point) => {
       const q = M.rotate(
@@ -169,6 +201,18 @@
     );
   }
   function bounds(s) {
+    if (s.shape === "circle" && s.method === "rings") {
+      // 펴는 동안 고리 끝이 원 위로 잠깐 올라간다. 가장 바깥 고리의 끝점을 훑어 그 높이까지 넣는다.
+      const r = s.radius;
+      let top = -r;
+      for (let k = 1; k < 100; k++) {
+        const g = ringShape(r, s.rings, s.rings - 1, k / 100);
+        if (g.flat) continue;
+        for (const radius of [g.inner, g.outer])
+          top = Math.min(top, g.cy + radius * Math.cos(g.theta / 2));
+      }
+      return { minX: -Math.PI * r, maxX: Math.PI * r, minY: top, maxY: r };
+    }
     const points = [];
     for (const part of pieces(s)) {
       if (part.sector) {
@@ -195,5 +239,5 @@
       maxY: Math.max(...points.map((p) => p.y)),
     };
   }
-  return { initial, validate, pieces, transformed, area, bounds };
+  return { initial, validate, pieces, ringShape, ringArea, transformed, area, bounds };
 });

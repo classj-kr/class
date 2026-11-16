@@ -100,6 +100,23 @@ test("area rearrangements preserve each rigid piece and duplicate only triangle/
     24,
   );
   near(A.area({ ...A.initial, shape: "circle", radius: 3 }), Math.PI * 9);
+  // 고리 펴기: 펴는 동안 고리 넓이의 합은 늘 πr², 다 펴면 띠가 빈틈없이 쌓여 높이 r이 된다.
+  for (const n of [6, 12, 24, 48])
+    for (const t of [0, 0.25, 0.5, 0.75, 1]) {
+      const bands = Array.from({ length: n }, (_, i) => A.ringShape(3, n, i, t));
+      assert.ok(Math.abs(bands.reduce((sum, g) => sum + A.ringArea(g), 0) - Math.PI * 9) < 1e-4);
+      if (t === 1) {
+        bands.forEach((g, i) => {
+          near(g.y0, (3 * i) / n);
+          near(g.x1 - g.x0, 2 * Math.PI * ((3 * (i + 0.5)) / n));
+        });
+        near(bands.at(-1).y1, 3);
+      }
+    }
+  const saved = { ...A.initial };
+  delete saved.method;
+  delete saved.rings;
+  assert.equal(A.validate(saved).method, "sectors");
   assert.equal(A.pieces({ ...A.initial, shape: "circle" }).length, 24);
 });
 test("mass equivalence levels the beam and pouring conserves water at empty/full limits", () => {
