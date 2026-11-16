@@ -713,6 +713,9 @@ body{align-items:center;padding:18px}
 <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
+<link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
+<script src="/assets/network/multiplayer-lobby.js?v=20261114-avatars"></script>
+<script src="/assets/network/puzzle-race.js?v=20261117-2"></script>
 
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
@@ -729,7 +732,9 @@ body{align-items:center;padding:18px}
 
     <div class="quiz-container">
         <div class="quiz-title">SPHINX</div>
+        <div class="race-info" id="raceInfo" hidden>TIME <strong id="raceTimer">00:00</strong></div>
         <div id="display-area"></div>
+        <div class="race-standings" id="raceStandings" hidden></div>
 
         <div class="volume-control">
             <span>MUSIC VOLUME</span>
@@ -742,9 +747,17 @@ body{align-items:center;padding:18px}
                 <div class="bar-segment" onclick="setVolume(1.0, 5)"></div>
             </div>
         </div>
-        <button class="quiz-btn" type="button" onclick="location.href='../../../'" style="margin-top:10px;">메인 화면으로</button>
+        <button class="quiz-btn solo-only" type="button" onclick="location.href='../../../'" style="margin-top:10px;">메인 화면으로</button>
     </div>
 </div>
+<style>
+/* 순위전(puzzle-race.js): 풀이 도우미는 틀렸을 때만 열리고, 메인 화면 단추 대신 경주로를 둔다. */
+body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !important; }
+.race-info { margin: 0 0 8px; font-weight: 800; letter-spacing: .08em; text-align: center; }
+.race-info[hidden], .race-standings[hidden] { display: none; }
+.race-standings { margin: 12px auto 0; max-width: 520px; text-align: left; }
+.race-start { margin: 6px 0 0; }
+</style>
 
 <script>
     let currentStage = 0, difficulty = 5, currentAnswer = "";
@@ -814,7 +827,13 @@ body{align-items:center;padding:18px}
     function toggleMute() { bgm.muted = !bgm.muted; }
     setVolume(0.6, 3);
 
-    function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+    // 순위전에서는 방장이 정한 씨앗으로 모두 같은 숫자의 문제를 받는다.
+    let randomSource = Math.random;
+    function seededRandom(seed) {
+        let x = (seed >>> 0) || 1;
+        return () => { x ^= x << 13; x >>>= 0; x ^= x >>> 17; x ^= x << 5; x >>>= 0; return x / 4294967296; };
+    }
+    function getRandomInt(min, max) { return Math.floor(randomSource() * (max - min + 1)) + min; }
 
     function loadQuestion() {
         if (currentStage === 0) {
@@ -828,6 +847,7 @@ body{align-items:center;padding:18px}
                     <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">Start · Beginner</button>
                     <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">Start · Advanced</button>
                     <button data-game-rules class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
+                    <button class="quiz-btn race-start" type="button" onclick="race.open()" ${playerName ? "" : "hidden"}>순위전</button>
                 </div>
                 <div class="finishers-panel">
                     <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
@@ -1021,20 +1041,34 @@ body{align-items:center;padding:18px}
         loadQuestion();
     }
     function check(s, a) {
+        if (racePaused || raceDone) return;
         if (s === a) {
             currentStage++;
+            if (race.active) race.progress(currentStage - 1, 4);
             loadQuestion();
             return;
         }
+        if (race.active) {
+            raceElapsed += RACE_WRONG_PENALTY;
+            document.getElementById('raceTimer').textContent = fmtTime(raceElapsed);
+        }
         const retryBox = document.getElementById("sphinxRetryBox");
         if (retryBox) {
-            retryBox.innerHTML = `<p class="sphinx-retry-notice">앗, <strong>"${escapeFinisherHtml(s)}"</strong>은(는) 정답이 아니에요! 아래 초등 풀이 순서를 보고 다시 골라 보세요.</p>`;
+            retryBox.innerHTML = `<p class="sphinx-retry-notice">앗, <strong>"${escapeFinisherHtml(s)}"</strong>은(는) 정답이 아니에요!${race.active ? ` (+${RACE_WRONG_PENALTY}초)` : ''} 아래 초등 풀이 순서를 보고 다시 골라 보세요.</p>`;
             toggleSphinxHint(true);
             return;
         }
         showResult(false);
     }
     function showResult(win) {
+        if (win && race.active) {
+            raceDone = true;
+            stopRaceTimer();
+            displayArea.innerHTML = `<div class="question-text" style="text-align:center;">&lt;스핑크스&gt; 그대의 예지를 칭송하리라. · ${fmtTime(raceElapsed)}</div>`;
+            window.ClassGameSfx?.play('success');
+            race.finish(raceElapsed);
+            return;
+        }
         displayArea.innerHTML = `
             <div class="question-text" style="text-align:center;">
                 ${win ? "<스핑크스> 그대의 예지를 칭송하리라." : "<스핑크스> 성스러운 땅에 합당치 않은 자여! 물러가라!"}
@@ -1049,6 +1083,49 @@ body{align-items:center;padding:18px}
             registerFinisher(label, difficulty);
         }
     }
+
+    /* 순위전 */
+    const RACE_WRONG_PENALTY = 10;
+    let racePaused = false, raceDone = false, raceElapsed = 0, raceTimerId = null;
+    const fmtTime = t => `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
+    function startRaceTimer() {
+        if (raceTimerId) return;
+        raceTimerId = setInterval(() => { raceElapsed += 1; document.getElementById('raceTimer').textContent = fmtTime(raceElapsed); }, 1000);
+    }
+    function stopRaceTimer() { clearInterval(raceTimerId); raceTimerId = null; }
+    const gameFrame = document.querySelector('.game-frame');
+    const race = ClassroomPuzzleRace.create({
+        gameId: 'sphinx',
+        title: 'SPHINX',
+        settings: [{ key: 'difficulty', label: '난이도', options: [{ value: 5, label: 'Beginner · 1~5마리' }, { value: 10, label: 'Advanced · 1~10마리' }] }],
+        getSettings: () => ({ difficulty }),
+        createPuzzle: settings => ({ difficulty: Number(settings.difficulty), seed: Math.floor(Math.random() * 2 ** 31) + 1 }),
+        hideSolo: () => { gameFrame.style.display = 'none'; },
+        start: data => {
+            gameFrame.style.display = '';
+            difficulty = data.difficulty;
+            randomSource = seededRandom(data.seed);
+            raceDone = false;
+            raceElapsed = 0;
+            document.getElementById('raceTimer').textContent = '00:00';
+            document.getElementById('raceInfo').hidden = false;
+            currentStage = 1;
+            loadQuestion();
+            race.progress(0, 4);
+        },
+        pause: on => { racePaused = on; displayArea.style.visibility = on ? 'hidden' : ''; if (!on && !raceDone) startRaceTimer(); },
+        stop: () => { raceDone = true; stopRaceTimer(); },
+        exit: () => {
+            raceDone = false; racePaused = false;
+            randomSource = Math.random;
+            displayArea.style.visibility = '';
+            document.getElementById('raceInfo').hidden = true;
+            gameFrame.style.display = '';
+            currentStage = 0;
+            loadQuestion();
+        },
+        standingsHost: () => document.getElementById('raceStandings')
+    });
 
     initializePlayerEntry();
     loadQuestion();
