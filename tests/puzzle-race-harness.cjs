@@ -30,8 +30,25 @@ app.get(/^\/learning\/games\/[^/]+\/([\w-]+\.html)?$/, (req, res, next) => {
   const tag = `<script data-site-identity="true">window.CLASS_PLAYER_NAME=${JSON.stringify(name)};window.CLASS_PLAYER_KIND="guest"</script>`;
   res.type('html').send(fs.readFileSync(file, 'utf8').replace('<head>', '<head>' + tag));
 });
+// 학습 앱 순위전(korean-race): 이름은 주소의 ?name= 을 쿠키로 받아 쓴다(실제 서버는 로그인에서).
+const { createKoreanRace } = require('../game-hub-server/korean-race');
+const nameOf = req => decodeURIComponent(/(?:^|;\s*)hn=([^;]+)/.exec(req.headers.cookie || '')?.[1] || '');
+const koreanRace = createKoreanRace({ platform: {
+  configuration: () => ({ enabled: true }), isTeacherRequest: async () => false,
+  displayNameFor: async req => ({ name: nameOf(req) }),
+  roomCodes: { allocate: async () => String(1000 + Math.floor(Math.random() * 9000)) },
+  canBypassGlobalContentLock: async () => true, isContentGloballyDisabled: async () => false,
+} });
+app.use('/api/korean-race', koreanRace.router);
+app.get('/learning/literacy-numeracy/korean-race/', (req, res) => {
+  const name = String(req.query.name || '하나둘').replace(/[^가-힣]/g, '').slice(0, 6);
+  res.cookie('hn', name);
+  const tag = `<script data-site-identity="true">window.CLASS_PLAYER_NAME=${JSON.stringify(name)};window.CLASS_PLAYER_KIND="guest"</script>`;
+  res.type('html').send(fs.readFileSync(path.join(ROOT, 'learning/literacy-numeracy/korean-race/index.html'), 'utf8').replace('<head>', '<head>' + tag));
+});
 app.use('/assets/avatars', express.static(path.join(ROOT, 'apps', 'classtools', 'assets', 'avatars')));
 app.use(express.static(ROOT));
+app.use((error, _req, res, _next) => res.status(error.status || 500).json({ message: error.message }));
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });

@@ -44,6 +44,10 @@
   // 한 팀 인원은 방장이 고른다(기본 6명). TEAM_MAX 는 고를 수 있는 가장 큰 값.
   const TEAM_SIZES = [2, 3, 4, 5, 6, 8, 10];
   const TEAM_SIZE_DEFAULT = 6;
+  // 짝 찾기 방식: 낱말↔뜻처럼 짝이 있는 콘텐츠만. 판은 짝 찾기 앱과 같은 세 크기, 틀린 짝마다 끝낸 시각에 5초를 더한다.
+  const MATCH_SETS = ['hanja', 'idioms', 'proverbs', 'vocabulary', 'textbook'];
+  const MATCH_BOARDS = { small: { rows: 4, cols: 6, pairs: 12, label: '6 × 4 · 12쌍' }, medium: { rows: 5, cols: 8, pairs: 20, label: '8 × 5 · 20쌍' }, large: { rows: 6, cols: 10, pairs: 30, label: '10 × 6 · 30쌍' } };
+  const MATCH_PENALTY = 5;
   const TEAM_MAX = 10;
   const TEAM_COUNTS = [2, 3, 4, 5, 6, 7, 8];
   // 팀 이름은 화면의 팀 색 그대로 부른다(색과 이름을 따로 외우지 않게). 두 팀이면 빨강·파랑.
@@ -160,5 +164,5 @@
     if (!upto || isFirst) return at;
     return spec.name ? `1~${at}` : `처음~${at}`;
   }
-  return { SETS, termLabel, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  return { MATCH_SETS, MATCH_BOARDS, MATCH_PENALTY, SETS, termLabel, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });

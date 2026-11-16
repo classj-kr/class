@@ -16,6 +16,17 @@
   }
   const firstChar = (text) => [...String(text || '').replace(/[^\p{L}\p{N}]/gu, '')][0] || '★';
   // 보기를 섞고 정답 자리를 기억한다.
+  // 짝 찾기: 속담을 가운데에 가장 가까운 띄어쓰기에서 앞부분·뒷부분으로 나눈다(짝 찾기 앱과 같은 규칙).
+  function splitHalves(text) {
+    const words = String(text || '').trim().split(/\s+/);
+    if (words.length < 2) return null;
+    let best = 1, gap = Infinity;
+    for (let k = 1; k < words.length; k++) {
+      const g = Math.abs(words.slice(0, k).join(' ').length - words.slice(k).join(' ').length);
+      if (g < gap) { best = k; gap = g; }
+    }
+    return [words.slice(0, best).join(' '), words.slice(best).join(' ')];
+  }
   function choiceSet(answer, wrong, random) {
     const choices = shuffle([answer, ...wrong], random);
     return { choices, answer: choices.indexOf(answer) };
@@ -63,6 +74,7 @@
       level: idiom.level || 'all',
       lesson: lessonOf.get(idiom.id) || null,
       item: idiom,
+      pair: /^[가-힣]{4}$/.test(idiom.word || '') ? [idiom.word.slice(0, 2), idiom.word.slice(2)] : null,
       make: (random, pool) => {
         const q = core.createQuestion(idiom, pool.length >= 4 ? pool : data, 'meaning', random);
         const labels = q.options.map((o) => o.label);
@@ -85,6 +97,7 @@
       key: 'proverbs:' + item.proverb,
       level: 'all',
       lesson: typeof lessonFor === 'function' ? lessonFor(item, 'ko') + 1 : null,
+      pair: splitHalves(item.proverb),
       make: (random) => {
         const avoid = new Set([item.proverb, ...(item.lookalikes || [])]);
         const wrong = pickOthers(list, 2, (other, picked) => !avoid.has(other.proverb) && !picked.includes(other), random).map((o) => o.proverb);
@@ -167,6 +180,7 @@
       return {
         key: 'vocabulary:' + x.word.word,
         level: stage,
+        pair: [x.word.word, x.meaning],
         ...(place.get(x.word) || {}),
         make: (random) => {
           const deck = byStage.get(stage) || list;
@@ -213,7 +227,7 @@
     }
     return `${before}{{${word}}}${after}`;
   }
-  function hanja(stages, whole) {
+  function hanja(stages, whole, hunMap = {}) {
     const out = [];
     for (const { stage, items } of stages || []) {
       for (const item of items || []) {
@@ -231,6 +245,7 @@
           key: `hanja:${item.target}|${right[0].word}`,
           level: 'all',
           lesson: Number(stage) || null,
+          pair: hunMap[item.target] ? [item.target, hunMap[item.target]] : null,
           make: (random) => ({
             set: 'hanja',
             ask: huneum ? '이 한자의 훈과 음은?' : '밑줄 친 말에 이 한자가 들어가지 않은 것은?',
@@ -290,6 +305,7 @@
   // 아래 낱말·유의어(끝까지)는 둘째 정답이 되므로 보기에서 빼고, 단원 낱말로 채울 때는 위 낱말도 뺀다.
   // 뜻 문제는 두 글자 조각을 나눠 가진 목록 낱말이 있을 때만 내고 그 낱말을 오답에 먼저 넣는다(태양 고도 측정기 ↔ 태양 고도).
   const TEXTBOOK_SUBJECTS = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' };
+  const textbookPair = (word) => (word.w && word.en && word.w.length <= 8 && word.en.length <= 16 ? [word.w, word.en] : null);
   function textbook(books) {
     const out = [];
     const pieces = (name) => {
@@ -334,7 +350,7 @@
               if (!String(blank).includes('{}')) return;
               out.push({
                 key: `textbook:${term}:${subject}:${unit.id}:${word.w}:b${index}`,
-                level: 'all', unit: where,
+                level: 'all', unit: where, pair: textbookPair(word),
                 make: (random) => ({
                   set: 'textbook', ask: '빈칸에 알맞은 낱말은?', text: String(blank).replace('{}', '(　　)'),
                   ...choiceSet(word.w, wrongFor([], random), random), explain, block: firstChar(word.w),
@@ -344,7 +360,7 @@
             if (lookalikes.length && word.mean) {
               out.push({
                 key: `textbook:${term}:${subject}:${unit.id}:${word.w}:m`,
-                level: 'all', unit: where,
+                level: 'all', unit: where, pair: textbookPair(word),
                 make: (random) => ({
                   set: 'textbook', ask: '이 뜻을 가진 낱말은?', text: word.mean,
                   ...choiceSet(word.w, wrongFor(lookalikes, random), random), explain, block: firstChar(word.w),
@@ -364,7 +380,7 @@
       proverbs: proverbs(sources.proverbs, sources.proverbLessonFor),
       expressions: expressions(sources.expressions),
       vocabulary: vocabulary(sources.vocabulary),
-      hanja: hanja(sources.hanja, sources.hanjaWhole),
+      hanja: hanja(sources.hanja, sources.hanjaWhole, sources.hanjaHuneum),
       sentences: sentences(sources.sentences),
       textbook: textbook(sources.textbook),
     };
@@ -407,10 +423,26 @@
       .map((entry) => ({ ...entry.make(random, idiomItems), key: entry.key }))
       .filter((q) => q.choices.length >= 2 && q.answer >= 0 && new Set(q.choices).size === q.choices.length);
   }
+  // 짝 찾기: 범위로 거른 항목에서 앞 패도 뒤 패도 겹치지 않는 짝을 count개까지 뽑는다.
+  // 패 꼴(kinds): 화면이 글꼴을 고른다(en 영어, hanja 한자, ko 우리말).
+  const PAIR_KINDS = { hanja: ['hanja', 'ko'], idioms: ['ko', 'ko'], proverbs: ['ko', 'ko'], vocabulary: ['en', 'ko'], textbook: ['ko', 'en'] };
+  function makePairs(pools, { set, level = 'all', range = null, count, random = Math.random }) {
+    if (!PAIR_KINDS[set]) return [];
+    const bare = (text) => String(text).replace(/\([^)]*\)\s*/g, '').trim().toLowerCase();
+    const seenA = new Set(), seenB = new Set(), out = [];
+    for (const entry of shuffle(poolFor(pools, set, level, range).filter((e) => e.pair), random)) {
+      const [a, b] = entry.pair;
+      if (!a || !b || seenA.has(bare(a)) || seenB.has(bare(b))) continue;
+      seenA.add(bare(a)); seenB.add(bare(b));
+      out.push([a, b]);
+      if (out.length === count) break;
+    }
+    return out;
+  }
   // 화면에는 정답과 풀이를 보내지 않는다.
   // tried: 이 문제에서 이미 골라 틀린 보기(새로고침해도 줄이 그어진 채로 둔다).
   function publicQuestion(q, index, label, tried = []) {
     return { no: index, set: q.set, label, ask: q.ask, text: q.text, choices: q.choices, tried };
   }
-  return { shuffle, shortMeaning, hanjaClip, buildPools, poolFor, makeRound, publicQuestion };
+  return { shuffle, shortMeaning, hanjaClip, splitHalves, buildPools, poolFor, makeRound, makePairs, PAIR_KINDS, publicQuestion };
 });

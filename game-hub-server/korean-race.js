@@ -38,7 +38,11 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     const teamSize = Core.TEAM_SIZES.includes(Number(body?.teamSize)) ? Number(body.teamSize) : previous.teamSize || Core.TEAM_SIZE_DEFAULT;
     // 범위(예: 영단어 Level 1 · 4차시)는 들어온 학습 화면이 정한다. 보내지 않으면 앞의 범위를 이어 쓴다.
     const range = Core.validRange(set, body && 'range' in body ? body.range : set === previous.set ? previous.range : null);
-    return { set, level, range, duration, teamMode, teamCount, teamSize };
+    // 방식: 문제 풀이(quiz) 또는 짝 찾기(match). 짝이 없는 콘텐츠는 늘 문제 풀이.
+    const wanted = body?.mode === 'match' || body?.mode === 'quiz' ? body.mode : previous.mode;
+    const mode = wanted === 'match' && Core.MATCH_SETS.includes(set) ? 'match' : 'quiz';
+    const boardSize = Core.MATCH_BOARDS[body?.board] ? body.board : Core.MATCH_BOARDS[previous.board] ? previous.board : 'small';
+    return { set, level, range, duration, teamMode, teamCount, teamSize, mode, board: boardSize };
   }
   function applyConfig(r, body) {
     r.config = config(body, r.config);
@@ -105,6 +109,42 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     }));
     return Core.rank(rows).map((row, i) => ({ ...row, rank: i + 1 }));
   }
+  // ── 짝 찾기 판 ── 모두 같은 배치를 받는다. 개인전은 저마다, 팀전은 팀마다 판 하나를 함께 쓴다.
+  // 화면에는 패의 글만 보내고 어느 패끼리 짝인지는 서버만 안다(문제 풀이에서 정답을 숨기는 것과 같다).
+  function makeMatch(pairs, spec) {
+    const tiles = pairs.flatMap((pair, i) => [{ pair: i, side: 0, text: pair[0] }, { pair: i, side: 1, text: pair[1] }]);
+    while (tiles.length < spec.rows * spec.cols) tiles.push(null);
+    return { rows: spec.rows, cols: spec.cols, pairs: pairs.length, cells: Questions.shuffle(tiles, random), boards: new Map() };
+  }
+  const matchKey = (r, p) => (r.config.teamMode ? 't' + p.team : 'p' + p.id);
+  function matchBoard(r, key) {
+    if (!r.match.boards.has(key)) r.match.boards.set(key, { cleared: new Set(), penalty: 0, finishedAt: null });
+    return r.match.boards.get(key);
+  }
+  function matchView(r, p) {
+    if (!r.match || r.config.mode !== 'match' || !p.plays) return null;
+    const b = matchBoard(r, matchKey(r, p));
+    const kinds = Questions.PAIR_KINDS[r.config.set] || ['ko', 'ko'];
+    return {
+      rows: r.match.rows, cols: r.match.cols, pairs: r.match.pairs,
+      cells: r.match.cells.map((c) => (c ? { text: c.text, side: c.side, kind: kinds[c.side] } : null)),
+      cleared: [...b.cleared], penalty: b.penalty, finished: Boolean(b.finishedAt),
+    };
+  }
+  // 다 지운 판끼리는 끝낸 시각(틀린 짝 벌칙 포함)으로 가린다.
+  function matchTeams(r, teams) {
+    if (!teams || !r.match || r.config.mode !== 'match') return teams;
+    teams.forEach((t) => {
+      const b = r.match.boards.get('t' + t.index);
+      t.finishedAt = b?.finishedAt ? b.finishedAt + b.penalty * 1000 : null;
+    });
+    const ranked = teams.filter((t) => t.size).sort((a, b) => b.value - a.value || (a.finishedAt ?? Infinity) - (b.finishedAt ?? Infinity) || a.index - b.index);
+    ranked.forEach((t, i) => {
+      const prev = ranked[i - 1];
+      t.rank = prev && prev.value === t.value && prev.finishedAt === t.finishedAt ? prev.rank : i + 1;
+    });
+    return teams;
+  }
   function question(r, p) {
     if (r.phase !== 'running' || !p.plays) return null;
     const q = r.items[p.index];
@@ -127,10 +167,11 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
         id: p.id, host: p.host, plays: Boolean(p.plays), name: p.name, racer: p.racer || '', avatarUrl: p.avatarUrl || null,
         team: r.config.teamMode ? p.team ?? null : null, index: p.index || 0, score: p.score || 0, combo: p.combo || 0,
         correct: p.correct || 0, wrong: p.wrong || 0, blocks: p.blocks || [], words: p.words || [], rank: mine?.rank || null,
-        question: question(r, p),
+        question: r.config.mode === 'match' ? null : question(r, p),
+        match: matchView(r, p),
       },
       participants,
-      teams: r.config.teamMode ? Core.teamBoard(participants, r.config.teamCount) : null,
+      teams: r.config.teamMode ? matchTeams(r, Core.teamBoard(participants, r.config.teamCount)) : null,
     };
   }
   router.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next(); });
@@ -214,9 +255,18 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
         if (students(r).length > 1 && Core.teamBoard(board(r), r.config.teamCount).filter((t) => t.size).length < 2)
           throw fail(409, '두 팀 이상에 학생이 있어야 출발할 수 있어요.');
       }
-      // 빠른 학생도 끝까지 새 문제를 받을 만큼 넉넉히 뽑는다.
-      r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: r.config.duration + 20, random });
-      if (r.items.length < 10) throw fail(503, '문항 자료를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.');
+      r.match = null;
+      if (r.config.mode === 'match') {
+        const spec = Core.MATCH_BOARDS[r.config.board];
+        const pairs = Questions.makePairs(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: spec.pairs, random });
+        if (pairs.length < 6) throw fail(409, '이 범위에는 짝이 모자라요. 범위를 넓히거나 판을 작게 해 주세요.');
+        r.match = makeMatch(pairs, spec);
+        r.items = [];
+      } else {
+        // 빠른 학생도 끝까지 새 문제를 받을 만큼 넉넉히 뽑는다.
+        r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: r.config.duration + 20, random });
+        if (r.items.length < 10) throw fail(503, '문항 자료를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.');
+      }
       r.roundId = crypto.randomUUID();
       r.phase = 'running';
       r.startsAt = now() + COUNTDOWN_MS;
@@ -274,6 +324,48 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
       r.updated = t;
       // 정답과 풀이는 맞힌 뒤에만 보낸다.
       res.json({ correct, gained, combo: p.combo, ...(correct ? { answer: q.answer, explain: q.explain, retried } : { tried: p.tried }), state: state(r, p) });
+    }),
+  );
+  // 짝 찾기: 고른 두 패(판의 칸 번호)를 서버가 판정한다. 팀전이면 팀 판에서 지운다.
+  router.post(
+    '/rooms/:code/match',
+    wrap(async (req, res) => {
+      const { room: r, player: p } = member(req);
+      const t = now();
+      if (!p.plays || req.body?.roundId !== r.roundId || !r.match) throw fail(409, '지금 판의 기록이 아니에요.');
+      if (r.phase !== 'running' || t > r.deadline + GRACE_MS) throw fail(409, '이번 판이 끝났어요.');
+      if (t < r.startsAt) throw fail(409, '출발 신호 뒤에 골라 주세요.');
+      const a = Number(req.body?.a), b = Number(req.body?.b), cells = r.match.cells;
+      if (!Number.isInteger(a) || !Number.isInteger(b) || a === b || !cells[a] || !cells[b]) throw fail(400, '패를 다시 골라 주세요.');
+      const key = matchKey(r, p), board = matchBoard(r, key);
+      if (board.finishedAt) throw fail(409, '판을 다 지웠어요.');
+      // 팀원이 먼저 지운 패면 판만 맞춘다(점수도 벌칙도 없음).
+      if (board.cleared.has(a) || board.cleared.has(b)) return res.json({ gone: true, state: state(r, p) });
+      if (cells[a].side === cells[b].side) throw fail(400, '앞 패와 뒤 패를 하나씩 골라 주세요.');
+      const correct = cells[a].pair === cells[b].pair;
+      if (correct) {
+        board.cleared.add(a);
+        board.cleared.add(b);
+        p.score += 1;
+        p.correct += 1;
+        p.combo += 1;
+        p.bestCombo = Math.max(p.bestCombo, p.combo);
+        p.words = [...(p.words || []), cells[a].side === 0 ? cells[a].text : cells[b].text].slice(-60);
+        p.scoredAt = t + board.penalty * 1000;
+        if (board.cleared.size >= r.match.pairs * 2) {
+          board.finishedAt = t;
+          // 판이 남은 사람(팀)이 없으면 바로 결과로 넘어간다.
+          const keys = r.config.teamMode ? [...new Set(students(r).map((x) => 't' + x.team))] : students(r).map((x) => 'p' + x.id);
+          if (keys.every((k) => r.match.boards.get(k)?.finishedAt)) r.deadline = Math.min(r.deadline, t);
+        }
+      } else {
+        p.wrong += 1;
+        p.combo = 0;
+        board.penalty += Core.MATCH_PENALTY;
+      }
+      p.lastAt = t;
+      r.updated = t;
+      res.json({ correct, combo: p.combo, penalty: board.penalty, state: state(r, p) });
     }),
   );
   // 대기실에서 바꾼 설정은 바로 학생 화면에도 보인다.

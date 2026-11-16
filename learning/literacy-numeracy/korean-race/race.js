@@ -79,7 +79,10 @@
   const fromRange = C.validRange(fromSet, params.get('range'));
   // 들어온 자리(앞의 "~"를 뗀 것): "그 부분만"과 "처음부터 거기까지"를 고를 수 있게 한다.
   const baseRange = fromRange && fromRange.replace('~', '');
-  const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), range: fromRange, duration: 90, teamMode: false, teamCount: 2, teamSize: C.TEAM_SIZE_DEFAULT };
+  // 방식: 문제 풀이 또는 짝 찾기(짝이 있는 콘텐츠만). 짝 찾기 앱에서 넘어오면 ?mode=match.
+  const canMatch = (set) => C.MATCH_SETS.includes(set);
+  const choice = { set: fromSet, level: C.validLevel(fromSet, params.get('level')), range: fromRange, duration: 90, teamMode: false, teamCount: 2, teamSize: C.TEAM_SIZE_DEFAULT,
+    mode: params.get('mode') === 'match' && canMatch(fromSet) ? 'match' : 'quiz', board: C.MATCH_BOARDS[params.get('board')] ? params.get('board') : 'small' };
   // 단계를 순위전 화면에서 바로 고르는 콘텐츠(한자 25단계): 마지막으로 고른 단계. "전체"로 바꿔도 기억해 둔다.
   let pickedStage = 1;
   const syncStage = () => { if (C.RANGE_SETS[choice.set]?.pick && choice.range) pickedStage = Number(String(choice.range).replace('~', '')) || 1; };
@@ -344,6 +347,10 @@
           [null, levels ? '수준별' : '전체'],
         ], choice.range, (range) => change({ range }), true));
       if (levels && !choice.range) box.append(optionRow('수준', levels, choice.level, (level) => change({ level }), true));
+      if (canMatch(choice.set)) {
+        box.append(optionRow('문제 방식', [['quiz', '문제 풀이'], ['match', '짝 찾기']], choice.mode, (mode) => change({ mode })));
+        if (choice.mode === 'match') box.append(optionRow('판 크기', Object.entries(C.MATCH_BOARDS).map(([key, b]) => [key, b.label]), choice.board, (board) => change({ board }), true));
+      }
       box.append(
         optionRow('시간', C.DURATIONS.map((s) => [s, s % 60 === 0 ? `${s / 60}분` : `${s}초`]), choice.duration, (duration) => change({ duration }), true),
         optionRow('경기 방식', [[false, '개인전'], [true, '팀전']], choice.teamMode, (teamMode) => change({ teamMode })),
@@ -610,6 +617,17 @@
     renderTeamBar(s);
     renderTowers(s);
     if (!s.me.plays) return;
+    // 짝 찾기: 문제 카드 대신 판을 그린다(팀전이면 팀 판, 팀원이 지운 패도 여기서 사라진다).
+    const matching = s.config.mode === 'match';
+    document.body.classList.toggle('match-mode', matching);
+    $('matchBoard').hidden = !matching;
+    if (matching) {
+      matchBoard.render(s.me.match, s.roundId);
+      paintMine(s);
+      $('worthNow').textContent = s.me.match?.penalty ? `벌칙 +${s.me.match.penalty}초` : '한 짝 +1';
+      requestAnimationFrame(fitTowers);
+      return;
+    }
     if (!answering && Date.now() >= revealUntil) {
       localScore = s.me.score;
       localCombo = s.me.combo;
@@ -797,6 +815,32 @@
     requestAnimationFrame(fitTowers);
   }
   const racing = () => state?.phase === 'running' && state.me.plays && serverNow() >= state.startsAt && serverNow() <= state.deadline;
+  // 짝 찾기 판: 고른 두 패를 서버가 판정한다.
+  const matchBoard = window.MatchBoard.create($('matchBoard'), {
+    canPick: racing,
+    onPick: (a, b) => {
+      const roundId = state.roundId;
+      return api('/rooms/' + code + '/match', { roundId, a, b }).then((data) => {
+        if (state.roundId !== roundId) return null;
+        state = data.state;
+        localScore = data.state.me.score;
+        localCombo = data.combo ?? localCombo;
+        const box = $('matchBoard').getBoundingClientRect();
+        if (data.correct) {
+          judge(true);
+          burst(box.left + box.width / 2, box.top + box.height / 3, localCombo >= 10 ? 34 : 18, localCombo >= 10 ? 8 : 5);
+          if (localCombo >= 2) floatText(`${localCombo} COMBO`, box.left + box.width / 2, box.top + box.height / 3, localCombo >= 10 ? 'mega' : 'big');
+          if (data.state.me.match?.finished) banner(state.teams ? '🎉 우리 팀 판을 다 지웠어요!' : '🎉 판을 다 지웠어요!');
+        } else if (!data.gone) {
+          judge(false);
+          floatText(`+${C.MATCH_PENALTY}초`, box.left + box.width / 2, box.top + box.height / 3, 'minus');
+        }
+        renderRace(data.state);
+        return data;
+      });
+    },
+    onSound: (kind, n) => (kind === 'good' ? sfx.good(n || 1) : kind === 'bad' ? sfx.bad() : sfx.pick()),
+  });
   function answer(index) {
     if (!racing() || answering || !shown || Date.now() < revealUntil || Date.now() < readyAt) return;
     // 첫 문제는 출발 신호부터 센다.
@@ -1125,7 +1169,7 @@
     const myTeam = mine && s.teams && mine.team !== null ? s.teams[mine.team] : null;
     $('myResult').textContent = !mine ? '' : myTeam
       ? `${myTeam.emoji} 우리 팀 ${myTeam.rank}위${myTeam.rank === 1 ? '! 🎉' : ''} · 나는 ${mine.score}점 (${mine.rank}위)`
-      : `${mine.avatarUrl ? '' : mine.racer + ' '}나는 ${mine.rank}위! ${mine.score}점 · ${mine.correct}문제 맞힘 · 정답률 ${mine.accuracy}%`;
+      : `${mine.avatarUrl ? '' : mine.racer + ' '}나는 ${mine.rank}위! ${s.config.mode === 'match' ? `${mine.correct}짝 지움 · 틀린 짝 ${mine.wrong}개` : `${mine.score}점 · ${mine.correct}문제 맞힘 · 정답률 ${mine.accuracy}%`}`;
   }
 
   // ── 시계 (카운트다운·남은 시간) ─────────────────────

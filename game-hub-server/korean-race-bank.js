@@ -100,6 +100,8 @@ function loadSources() {
     vocabulary: attempt('영단어', () => JSON.parse(read('vocabulary/assets/data/english-vocabulary-3000-v2.json')).words, []),
     hanja: attempt('한자', hanjaStages, []),
     hanjaWhole: attempt('한자 예문 목록', hanjaWhole, new Set()),
+    // 짝 찾기의 한자↔훈음: 한자 앱 원본에서 뽑은 짝 찾기 자료(지금 쓰는 말로 고친 훈)를 함께 쓴다.
+    hanjaHuneum: attempt('한자 훈음', () => Object.fromEntries(Object.values(JSON.parse(fs.readFileSync(path.join(APPS, '../games/sachunseong/data/hanja.json'), 'utf8')).levels).flat()), {}),
     sentences: attempt('문장 고르기', () => browserGlobals(['sentence-building/curriculum.js']).SENTENCE_COURSE, null),
     textbook: attempt('교과서 단어', textbookBooks, {}),
   };

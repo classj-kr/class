@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f6efe1">
   <title>순위전</title>
-  <link rel="stylesheet" href="race.css?v=20261115-word-font">
+  <link rel="stylesheet" href="race.css?v=20261117-match">
 </head>
 <body data-screen="entry">
   <div class="paper" aria-hidden="true">
@@ -91,6 +91,7 @@
             <div id="choices" class="choices"></div>
             <div id="reveal" class="reveal" hidden><b id="revealTitle"></b><p id="revealText"></p></div>
           </article>
+          <div id="matchBoard" class="match-board" hidden></div>
           <p id="chase" class="chase"></p>
         </div>
         <aside class="side">
@@ -133,12 +134,14 @@
     <p>보기를 누르거나 번호 숫자 키로 골라요. 맞히면 +1, 5문제 연속이면 +2, 10문제 연속이면 +3이에요.</p>
     <p>틀릴 때마다 1점이 깎이고, 맞힐 때까지 같은 문제를 다시 골라요. 고른 오답에는 줄이 그어져요.</p>
     <p>팀전은 팀원 모두가 모은 점수의 합계로 겨뤄요.</p>
+    <p>짝 찾기: 짝이 맞는 두 패를 차례로 누르면 지워져요. 먼저 판을 다 지운 사람(팀)이 이기고, 틀린 짝마다 5초가 더해져요. 팀전은 팀원이 판 하나를 함께 지워요.</p>
   </template>
   <script src="/assets/sound/game-sfx.js?v=20261009-explosion-file"></script>
   <script src="/assets/sound/race-music.js?v=20261106-1"></script>
   <script src="/assets/sound/music-control.js?v=20261105-settings-panel" data-settings-help="settingsHelp"></script>
   <script src="/assets/fraction-text.js?v=20261116-var"></script>
-  <script src="korean-race-core.js?v=20261117-grade2"></script>
-  <script src="race.js?v=20261116-middle"></script>
+  <script src="korean-race-core.js?v=20261117-match"></script>
+  <script src="match-board.js?v=20261117-1"></script>
+  <script src="race.js?v=20261117-match"></script>
 </body>
 </html>

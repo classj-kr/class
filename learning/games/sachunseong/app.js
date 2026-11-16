@@ -675,7 +675,19 @@
   $('newGameButton').addEventListener('click', newPuzzle);
   $('playAgainButton').addEventListener('click', newPuzzle);
   $('startButton').addEventListener('click', startGame);
-  $('raceButton').addEventListener('click', () => race.open());
+  // 학습 앱 순위전이 있는 소재는 그 순위전의 「짝 찾기」 방식으로 넘긴다(팀원끼리 판 함께 쓰기도 그쪽에 있다).
+  const APP_RACE = {
+    english: level => `set=vocabulary&range=${level}`,
+    hanja: level => `set=hanja&range=${level}`,
+    idioms: () => 'set=idioms',
+    proverbs: () => 'set=proverbs',
+    vocab: level => `set=textbook&range=${['kor', 'math', 'soc', 'sci', 'his'].map(code => `${level}.${code}`).join(',')}`
+  };
+  $('raceButton').addEventListener('click', () => {
+    const toApp = APP_RACE[subjectKey];
+    if (toApp) location.href = `/learning/literacy-numeracy/korean-race/?${toApp(levelKey)}&mode=match&board=${sizeKey}`;
+    else race.open();
+  });
   $('settingsButton').addEventListener('click', showStart);
   $('guideButton').addEventListener('click', openGuide);
   $('guideCloseButton').addEventListener('click', closeGuide);

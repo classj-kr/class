@@ -730,7 +730,7 @@ app.use('/api/korean-race', classroomPlatform.requireSiteAccess, koreanRace.rout
 // 문해력 순위전도 방번호 입구라 수업 메뉴가 잠겨 있어도 열린다. 음악은 순위전 공용 곡을 쓴다.
 const koreanRaceRoot = path.join(SITE_ROOT, 'learning/literacy-numeracy/korean-race');
 app.get('/learning/literacy-numeracy/korean-race/', (req, res, next) => sendSiteHtml(req, res, path.join(koreanRaceRoot, 'index.html'), next));
-for (const file of ['korean-race-core.js', 'race.js', 'race.css']) {
+for (const file of ['korean-race-core.js', 'match-board.js', 'race.js', 'race.css']) {
   app.get(`/learning/literacy-numeracy/korean-race/${file}`, (_req, res) => res.sendFile(path.join(koreanRaceRoot, file)));
 }
 app.get('/learning/literacy-numeracy/math-tools/stacking-cubes/coop/',(req, res, next) => sendSiteHtml(req, res, path.join(stackingRoot, 'index.html'), next));
