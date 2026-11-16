@@ -15,6 +15,7 @@ const mime = { '.html': 'text/html', '.js': 'application/javascript', '.css': 't
   page.on('pageerror', e => errors.push(e.message));
   await page.route('**/*', route => {
     const u = new URL(route.request().url());
+    if (u.pathname.startsWith('/api/learning-records/')) return route.fulfill({ status: 401, contentType: 'application/json', body: '{"error":"LOGIN_REQUIRED"}' });
     let file = path.join(root, decodeURIComponent(u.pathname));
     if (u.pathname.endsWith('/')) file = path.join(file, 'index.html');
     if (u.hostname !== 'shots.test' || !fs.existsSync(file)) return route.fulfill({ status: 404, body: '' });
