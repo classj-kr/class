@@ -13,6 +13,16 @@
       timer,
       gesture,
       frame;
+    // 저장 칸: 0번은 예전과 같은 "board", 1번부터 "board-2"… (options.slots 개수만큼).
+    const slotKey = (i) => (i ? "board-" + (i + 1) : "board");
+    let slot = 0;
+    // 저장 공간을 못 열었을 때(연결 끊김 등)도 칸을 오가는 동안은 곡을 기억한다.
+    const memory = new Map();
+    const kept = {
+      has: (k) => (store ? store.has(k) : memory.has(k)),
+      get: (k) => (store ? store.get(k) : memory.get(k)),
+      set: (k, v) => (store ? store.set(k, v) : memory.set(k, v)),
+    };
     const past = [],
       future = [];
     function status(text) {
@@ -45,7 +55,7 @@
           queued = false;
           const before = errors;
           status("저장 중");
-          store.set("board", M.copy(state));
+          store.set(slotKey(slot), M.copy(state));
           await store.flush();
           if (!queued && before === errors) status("계정에 자동 저장됨");
         }
@@ -75,6 +85,34 @@
     const api = {
       get state() {
         return state;
+      },
+      get slot() {
+        return slot;
+      },
+      // 저장 칸에 곡이 들어 있는지(지금 칸은 손댔으면 들어 있는 것으로 본다).
+      slotFilled(i) {
+        return (i === slot && edited) || kept.has(slotKey(i));
+      },
+      // 다른 저장 칸으로 바꾼다. 지금 곡은 그 칸에 남겨 두고, 고른 칸의 곡(없으면 새 곡)을 연다.
+      useSlot(i) {
+        if (!options.slots || i === slot || i < 0 || i >= options.slots) return;
+        api.stop();
+        if (gesture) api.end(false, false); // 끌던 조작은 지금 곡에 넣고 넘어간다.
+        if (edited) kept.set(slotKey(slot), M.copy(state));
+        slot = i;
+        edited = false;
+        past.length = 0;
+        future.length = 0;
+        state = M.copy(options.initial);
+        if (kept.has(slotKey(i))) {
+          try { state = options.validate(kept.get(slotKey(i))); } catch (_) { notice("저장한 곡을 읽지 못해서 새로 열었어요."); }
+        }
+        if (store) {
+          store.set("slot", i);
+          if (store.persistent) store.flush().catch(() => {});
+        }
+        options.slotChanged?.(i);
+        render();
       },
       render,
       notice,
@@ -168,9 +206,14 @@
               status("저장 실패");
               notice("저장하지 못했어요. 연결을 확인한 뒤 다시 조작해 주세요.");
             });
-            if (!edited && store.has("board")) {
+            if (options.slots && !edited) {
+              const last = Number(store.get("slot"));
+              if (Number.isInteger(last) && last > 0 && last < options.slots) slot = last;
+              options.slotChanged?.(slot);
+            }
+            if (!edited && store.has(slotKey(slot))) {
               try {
-                state = options.validate(store.get("board"));
+                state = options.validate(store.get(slotKey(slot)));
                 render();
               } catch (_) {
                 notice("저장한 작업을 읽지 못해서 새로 열었어요.");

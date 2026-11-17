@@ -200,6 +200,7 @@
     U.value("bars", s.bars);
     U.value("key", s.key);
     U.value("scale", s.scale);
+    renderSongs();
     renderTracks(s);
     renderEditor(s);
     $("loop").setAttribute("aria-pressed", loopOn);
@@ -208,7 +209,28 @@
     E.sync(s);
   }
 
-  const app = U.app({ name: "beat-maker", initial: B.initial, validate: B.validate, render });
+  // 저장한 곡 다섯 칸. 빈 칸은 「비어 있음」으로 보여 준다.
+  const SONGS = 5;
+  function renderSongs() {
+    const html = Array.from({ length: SONGS }, (_, i) =>
+      `<option value="${i}">${i + 1}번 곡${app.slotFilled(i) ? "" : " (비어 있음)"}</option>`).join("");
+    if ($("song").innerHTML !== html) $("song").innerHTML = html;
+    $("song").value = String(app.slot);
+  }
+  function songChanged() {
+    if (E.playing) { E.stop(); setPlaying(false); }
+    loop = null; loopOn = false; loopDraft = null;
+    picked.clear();
+  }
+  const app = U.app({ name: "beat-maker", initial: B.initial, validate: B.validate, render, slots: SONGS, slotChanged: () => songChanged() });
+  U.bind("song", "change", () => app.useSlot(Number($("song").value)));
+  // 소리 파일(ogg)을 못 풀면 소리 없이 조용히 지나가지 않게 한 번 알려 준다(아이패드는 iPadOS 18.4부터 된다).
+  let soundWarned = false;
+  window.addEventListener("beatsoundfail", () => {
+    if (soundWarned) return;
+    soundWarned = true;
+    app.notice("악기 소리를 불러오지 못했어요. 아이패드는 iPadOS 18.4 이상인지 확인하세요.");
+  });
   const editTrack = (s) => s.tracks.find((t) => t.id === currentTrack(app.state).id);
   const byId = (s, id) => s.tracks.find((t) => t.id === id);
 

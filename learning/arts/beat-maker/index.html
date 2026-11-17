@@ -6,15 +6,15 @@
     <meta name="theme-color" content="#141a24" />
     <title>비트메이커</title>
     <link rel="icon" href="/assets/icons/favicon.webp" />
-    <link rel="stylesheet" href="styles.css?v=20261118-longer-ring" />
+    <link rel="stylesheet" href="styles.css?v=20261118-song-slots" />
     <script src="../../literacy-numeracy/math-tools/assets/math.js?v=20261108-2" defer></script>
-    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261108-2" defer></script>
+    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261118-song-slots" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
     <script src="../instrument-room/korean-percussion-data.js" defer></script>
-    <script src="catalog.js?v=20261118-longer-ring" defer></script>
-    <script src="core.js?v=20261118-longer-ring" defer></script>
-    <script src="engine.js?v=20261118-longer-ring" defer></script>
-    <script src="app.js?v=20261118-longer-ring" defer></script>
+    <script src="catalog.js?v=20261118-song-slots" defer></script>
+    <script src="core.js?v=20261118-song-slots" defer></script>
+    <script src="engine.js?v=20261118-song-slots" defer></script>
+    <script src="app.js?v=20261118-song-slots" defer></script>
     <script src="/assets/sound/music-control.js?v=20261117-movable-gear" data-settings-help="tool-help" defer></script>
   </head>
   <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -33,6 +33,7 @@
         <button id="undo" class="icon" aria-label="되돌리기">↶</button
         ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
       </div>
+      <label class="field">곡 <select id="song" aria-label="저장한 곡"></select></label>
       <button id="reset">초기화</button
       ><button id="export">MP3 저장</button>
     </div>

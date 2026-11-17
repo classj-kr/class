@@ -179,7 +179,7 @@
       g.gain.value = volume;
       g.connect(mix.input);
       voice(audio, mix, g, snd, pitch, audio.currentTime + 0.01, snd.pads ? 0.45 : 0.9);
-    }).catch(() => {});
+    }).catch(() => window.dispatchEvent(new Event("beatsoundfail")));
   }
 
   // ---------- 재생 ----------
