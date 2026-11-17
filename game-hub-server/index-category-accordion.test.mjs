@@ -48,8 +48,20 @@ assert.ok(
   "The room-number box sits at the right end of the profile row.",
 );
 assert.ok(
-  html.includes("body:has(#hubContent:not([hidden])) .hub-room-dock"),
-  "The room-number box appears only when the signed-in menu is shown.",
+  html.includes("body:has(#hubContent:not([hidden]):not(.hub-preview)) .hub-room-dock")
+    && /\.hub-title-link\.hub-room-dock \{\s*display: none;/.test(html),
+  "The room-number box appears only when the signed-in menu is usable.",
+);
+
+// 로그인 전에는 메뉴 이름만 보이고 과목은 펼쳐지지 않는다(2026-11-18).
+assert.ok(
+  html.includes("hubContent.classList.toggle('hub-preview', on);") && html.includes("hubContent.inert = on;"),
+  "Before sign-in the menu names are visible but inert.",
+);
+assert.match(
+  html,
+  /showHubPreview\(true\);\s*toggleGuestMode\.hidden = siteAccess\.mode !== 'open';/,
+  "Only the signed-out landing shows the menu preview.",
 );
 
 const studentButtonCss = html.slice(

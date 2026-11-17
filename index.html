@@ -400,11 +400,15 @@
             margin: 0 auto;
         }
 
-        .hub-room-dock {
+        .hub-title-link.hub-room-dock {
             display: none;
         }
 
-        body:has(#hubContent:not([hidden])) .hub-room-dock {
+        #hubContent.hub-preview .worksheet-group > summary {
+            cursor: default;
+        }
+
+        body:has(#hubContent:not([hidden]):not(.hub-preview)) .hub-room-dock {
             display: block;
             top: auto;
             bottom: 0;
@@ -412,7 +416,7 @@
         }
 
         @media (max-width: 760px) {
-            body:has(#hubContent:not([hidden])) .hub-room-dock {
+            body:has(#hubContent:not([hidden]):not(.hub-preview)) .hub-room-dock {
                 position: static;
                 display: flex;
                 justify-content: flex-end;
@@ -1694,6 +1698,12 @@
             const hubContent = document.getElementById('hubContent');
             const hubLinks = Array.from(hubContent.querySelectorAll('a[href]'));
             ClassroomHubAccordion.create(hubContent);
+            // 로그인 전: 메뉴 이름만 보이고 과목은 펼쳐지지 않는다(방 번호 칸도 숨김). 로그인하면 풀린다.
+            function showHubPreview(on) {
+                hubContent.classList.toggle('hub-preview', on);
+                hubContent.inert = on;
+                if (on) hubContent.hidden = false;
+            }
             const playerLearningLinks = Array.from(document.querySelectorAll('[data-requires-player="true"]'));
             let currentPlayerName = '';
             let isTeacherSignedIn = false;
@@ -2013,6 +2023,8 @@
                 studentProfileLink.hidden = false;
                 signedInName.textContent = playerName;
                 classMembership.textContent = `${membership.schoolName} · G${membership.grade}-${membership.classNumber} · No. ${membership.studentNumber}`;
+                showHubPreview(false);
+
                 hubContent.hidden = false;
                 currentPlayerName = playerName;
                 try { localStorage.removeItem('classPlayerName'); } catch (_) {} // 이름은 서버가 쪽마다 박아 넣는다(window.CLASS_PLAYER_NAME); 브라우저에는 두지 않는다
@@ -2037,6 +2049,8 @@
                 signedInName.textContent = state.user?.name || '학부모님';
                 const childInfo = state.guardianChildren[0];
                 classMembership.textContent = `${childInfo.schoolName} · G${childInfo.grade}-${childInfo.classNumber} · No. ${childInfo.studentNumber} 학부모 계정`;
+
+                showHubPreview(false);
 
                 hubContent.hidden = true;
                 setStatus('');
@@ -2087,6 +2101,8 @@
                     signedInName.textContent = state.user.name;
                     classMembership.textContent = state.user.email || '';
                 }
+                showHubPreview(false);
+
                 hubContent.hidden = true;
                 await loadSchools();
                 joinForm.hidden = false;
@@ -2210,6 +2226,8 @@
                 }
 
                 await loadClassContentAccess().catch((error) => console.error('loadClassContentAccess failed', error));
+                showHubPreview(false);
+
                 hubContent.hidden = !isValidPlayerName(currentPlayerName) || (guardianOnly && teacherProfiles.length === 0 && state.user?.role !== 'admin');
                 const accessNotice = new URLSearchParams(location.search).get('content');
                 setStatus(!isValidPlayerName(currentPlayerName) || new URLSearchParams(location.search).get('access') === 'name-required'
@@ -2441,6 +2459,8 @@
                     try { localStorage.removeItem('classPlayerName'); } catch (_) {}
                     updatePlayerLearningLinks(guest.name);
                     await loadClassContentAccess();
+                    showHubPreview(false);
+
                     hubContent.hidden = false;
                     setStatus('');
                     authTitle.textContent = 'GUEST PLAYER';
@@ -2488,7 +2508,7 @@
                         await routeSignedIn(state);
                         return;
                     }
-                    hubContent.hidden = true;
+                    showHubPreview(true);
                     toggleGuestMode.hidden = siteAccess.mode !== 'open';
                     const config = await api('/api/auth/config');
                     if (!config.enabled) {
