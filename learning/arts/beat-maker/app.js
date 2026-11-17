@@ -133,7 +133,8 @@
         const pc = r.pitch % 12, black = [1, 3, 6, 8, 10].includes(pc), seam = pc === 5 || pc === 0;
         const cls = `label key${black ? " black" : ""}${seam ? " seam" : ""}${r.out ? " out" : ""}`;
         const sol = B.solfege(r.pitch, s.key, s.scale);
-        return `<button class="${cls}" data-pitch="${r.pitch}" tabindex="-1" title="${r.label}${sol ? " · " + sol : ""}"${r.out ? " disabled" : ""}>` +
+        const tint = sol && !r.out ? ` style="--sc:${B.solfegeColor(r.pitch, s.key, s.scale)}"` : "";
+        return `<button class="${cls}${tint ? " sol" : ""}" data-pitch="${r.pitch}" tabindex="-1" title="${r.label}${sol ? " · " + sol : ""}"${r.out ? " disabled" : ""}${tint}>` +
           `${pc === 0 ? `<small>${r.label}</small>` : ""}${sol ? `<b>${sol}</b>` : ""}</button>`;
       }).join("");
     }
@@ -169,7 +170,6 @@
     for (let x = 0; x <= steps; x++)
       out += `<line x1="${colX(x)}" x2="${colX(x)}" y1="0" y2="${H}" class="${x % per === 0 ? "bar" : x % beat === 0 ? "beat" : "step"}"/>`;
     for (let i = 1; i < list.length; i++) out += `<line x1="0" x2="${W}" y1="${i * rh}" y2="${i * rh}" class="hline"/>`;
-    const color = B.COLORS[index];
     for (const n of t.notes) {
       const i = list.findIndex((r) => r.pitch === n.pitch);
       if (i < 0) continue;
@@ -177,6 +177,8 @@
       if (snd.pads)
         out += `<rect x="${colX(n.step) + 3}" y="${i * rh + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit${sel}"/>`;
       else {
+        // 음표는 계이름 색으로 칠한다(조에 없는 음은 회색).
+        const color = B.solfegeColor(n.pitch, s.key, s.scale);
         // 페달을 밟은 동안 이어지는 울림을 옅게 보여 준다.
         const ring = B.soundingSteps(t, n, per);
         const x0 = colX(n.step), x1 = colX(n.step + n.len);

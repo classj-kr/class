@@ -33,6 +33,10 @@
     const doPc = scale === "minor" ? (key + 3) % 12 : key;
     return SOLFEGE[(((midi - doPc) % 12) + 12) % 12] || "";
   }
+  // 계이름 색: 도부터 빨·주·노·초·파·남·보. 조에 없는 음은 회색.
+  const SOLFEGE_COLORS = { 도: "#ef4444", 레: "#f97316", 미: "#facc15", 파: "#22c55e", 솔: "#2f80ed", 라: "#6d5ce8", 시: "#c05ce0" };
+  const OFF_KEY_COLOR = "#8a93a1";
+  const solfegeColor = (midi, key, scale) => SOLFEGE_COLORS[solfege(midi, key, scale)] || OFF_KEY_COLOR;
 
   // 트랙의 악기·주법으로 실제 소리 정보를 만든다.
   const cache = new Map();
@@ -218,5 +222,5 @@
   const anchor = (snd, midi) => Math.max(snd.min, Math.min(snd.max, midi));
 
   return { DRUM_LEVELS: K.DRUM_LEVELS, anchor, CATEGORIES: K.CATEGORIES, MODELS: K.MODELS, SCALES, NOTE_NAMES, KEY_NAMES, STEPS_PER_BAR, METERS, MAX_TRACKS, COLORS,
-    noteName, inKey, solfege, totalSteps, stepsPerBar, beatSteps, swingable, changeMeter, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
+    noteName, inKey, solfege, solfegeColor, totalSteps, stepsPerBar, beatSteps, swingable, changeMeter, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
 });

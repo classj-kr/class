@@ -138,6 +138,8 @@ button.small.wide { width: 44px; }
 .label.key b { position: relative; z-index: 1; color: #263040; font-size: 11px; font-weight: 700; }
 .label.key small { position: relative; z-index: 1; color: #8a93a1; font-size: 9px; }
 .label.key.black::before { content: ""; position: absolute; left: 0; top: 1px; bottom: 1px; width: 62%; border-radius: 0 3px 3px 0; background: linear-gradient(90deg, #12161d, #2a313c); }
+.label.key.sol { background: color-mix(in srgb, var(--sc) 24%, #f4f6f9); }
+.label.key.sol::after { content: ""; position: absolute; right: 0; top: 1px; bottom: 1px; width: 4px; background: var(--sc); }
 .label.key:active:not(:disabled) { background: #cfe9de; }
 .label.key.out { background: #05070a; color: transparent; }
 .label.key.out::before { display: none; }
