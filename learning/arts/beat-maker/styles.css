@@ -37,6 +37,10 @@ button:disabled { opacity: .4; cursor: default; }
 button[aria-pressed="true"] { background: #2d5a4a; border-color: var(--accent); }
 button.primary { background: var(--accent); border-color: var(--accent); color: #0d1a14; font-weight: 700; min-width: 92px; }
 button.primary[aria-pressed="true"] { background: #e7746a; border-color: #e7746a; color: #200c0a; }
+#play { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.key-hint { padding: 1px 6px; border: 1px solid rgba(13, 26, 20, .45); border-bottom-width: 2px; border-radius: 5px; font-family: inherit; font-size: 11px; font-weight: 600; line-height: 1.3; opacity: .8; }
+/* 키보드 없는 터치 기기(아이패드만 쓸 때)에는 감춘다. */
+@media (hover: none) and (pointer: coarse) { .key-hint { display: none; } }
 button.icon { width: 36px; padding: 0; }
 button:focus-visible, select:focus-visible, input:focus-visible, svg:focus-visible { outline: 3px solid #6aa8ff; outline-offset: 2px; }
 

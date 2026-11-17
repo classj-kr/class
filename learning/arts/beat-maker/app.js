@@ -566,7 +566,7 @@
     frame = requestAnimationFrame(tick);
   }
   function setPlaying(on) {
-    $("play").textContent = on ? "■ 정지" : "▶ 재생";
+    $("play-text").textContent = on ? "■ 정지" : "▶ 재생";
     $("play").setAttribute("aria-pressed", on);
     if (!on) {
       cancelAnimationFrame(frame);
@@ -576,7 +576,7 @@
   }
   async function start(fromStep) {
     $("play").disabled = true;
-    $("play").textContent = "불러오는 중…";
+    $("play-text").textContent = "불러오는 중…";
     try {
       await E.play(app.state, fromStep);
       setPlaying(true);
