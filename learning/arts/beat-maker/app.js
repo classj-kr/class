@@ -21,7 +21,7 @@
     const idx = new Map(list.map((r, i) => [r.pitch, i]));
     const bottomOf = (p) => (idx.has(p) ? rowTop[idx.get(p)] + rowH[idx.get(p)] : null);
     const centerOf = (p) => (idx.has(p) ? rowTop[idx.get(p)] + rowH[idx.get(p)] / 2 : null);
-    const octave = 7 * RH + 5 * NARROW; // 어느 조든 한 옥타브에 넓은 줄 일곱·좁은 줄 다섯
+    const octave = 7 * rh + 5 * NARROW; // 어느 조든 한 옥타브에 넓은 줄 일곱·좁은 줄 다섯
     const whiteH = octave / 7, WHITE = [0, 2, 4, 5, 7, 9, 11];
     const hi = list[0].pitch, lo = list[list.length - 1].pitch;
     // 화면에 걸친 옥타브의 C 줄 바닥을 기준으로 흰 건반을 쌓는다(맨 아래 C가 화면 밖이면 위 C에서 거꾸로 잰다).
@@ -175,11 +175,17 @@
     $("octave-up").disabled = snd.pads || narrow(snd) || top(t) >= snd.hi;
     $("octave-down").disabled = snd.pads || narrow(snd) || top(t) - ROWS < snd.lo;
     $("roll").classList.toggle("pads", snd.pads);
-    rh = snd.pads ? Math.max(RH, Math.min(40, Math.floor(($("roll").clientHeight - RULER) / Math.max(1, list.length)))) : RH;
+    // 타악·가락 모두 편집 칸 높이를 채운다. 가락은 좁은 줄(8px)을 빼고 남은 높이를 조의 일곱 음 줄이 나눠 갖는다.
+    const room = $("roll").clientHeight - RULER;
+    if (snd.pads) rh = Math.max(RH, Math.min(40, Math.floor(room / Math.max(1, list.length))));
+    else {
+      const wide = list.filter((r) => B.inKey(r.pitch, s.key, s.scale)).length;
+      rh = Math.max(RH, Math.min(40, Math.floor((room - (list.length - wide) * NARROW) / Math.max(1, wide))));
+    }
     rowH = list.map((r) => (snd.pads || B.inKey(r.pitch, s.key, s.scale) ? rh : NARROW));
     rowTop = [];
     rowH.reduce((y, h, i) => ((rowTop[i] = y), y + h), 0);
-    const lk = [snd.key, snd.pads ? rh : top(t), s.key, s.scale].join("|");
+    const lk = [snd.key, rh, snd.pads ? "" : top(t), s.key, s.scale].join("|");
     if (lk !== labelKey) {
       labelKey = lk;
       if (!snd.pads) $("labels").innerHTML = keyboardSVG(list, s);
