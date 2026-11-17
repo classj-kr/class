@@ -17,7 +17,7 @@ root = Path(__file__).resolve().parents[2]
 src = Path('E:/webprojects/curriculum-images') / term
 dst = root / 'learning/literacy-numeracy/curriculum-vocabulary/images' / term
 dst.mkdir(parents=True, exist_ok=True)
-pattern = re.compile(r'^((?:kor|math|soc|sci)-[0-9a-z-]+?-\d{2})(?:\D|$)')
+pattern = re.compile(r'^((?:kor|math|soc|sci|his)-[0-9a-z-]+?-\d{2})(?:\D|$)')
 done = 0
 for file in sorted(src.glob('*')):
     if file.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'):
