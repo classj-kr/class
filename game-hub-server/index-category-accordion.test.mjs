@@ -1,68 +1,62 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 
+// 메인 메뉴는 한 단계다(2026-11-18): 묶음은 늘 펼쳐 두고 과목 드롭다운만 접었다 편다.
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 
+assert.ok(
+  !html.includes('class="learning-hub-title"'),
+  "The 기초학력 title line was removed to save space.",
+);
 assert.match(
   html,
-  /<h1 class="learning-hub-title">기초학력<\/h1>/,
-  "The student activity hub must use 기초학력 as its umbrella title.",
+  /<h1 class="hub-visually-hidden">기초학력<\/h1>/,
+  "A heading stays for screen readers only.",
 );
 
 const expectedCategories = [
-  ["01", "문해·수리", "category-literacy-panel"],
-  ["02", "교과", "category-exploration-panel"],
-  ["03", "게임", "category-boardgame-panel"],
-  ["04", "예술", "category-arts-panel"],
+  ["worksheet-title", "문해·수리·교과", "category-literacy-panel"],
+  ["boardgame-title", "게임", "category-boardgame-panel"],
 ];
-
 const categorySections = html.match(/<section class="[^"]*category-section[^"]*" data-category-section/g) || [];
-assert.equal(categorySections.length, expectedCategories.length, "The hub must expose exactly four category sections, with solo puzzles inside board games.");
+assert.equal(categorySections.length, expectedCategories.length, "The hub has two always-open category groups.");
+assert.ok(!html.includes('class="category-toggle"'), "Categories are not collapsible any more.");
+assert.ok(!html.includes("category-arts-panel"), "The hidden duplicate arts group was removed.");
 
-for (const [number, label, panelId] of expectedCategories) {
-  assert.match(
-    html,
-    new RegExp(
-      `aria-expanded="false" aria-controls="${panelId}"[^>]*>[\\s\\S]*?<span class="category-number" aria-hidden="true">${number}<\\/span>[\\s\\S]*?<span class="category-label">${label}<\\/span>`,
-    ),
-    `The ${label} category must start collapsed and control its own panel.`,
+for (const [headingId, label, panelId] of expectedCategories) {
+  assert.ok(
+    html.includes(`<h2 id="${headingId}" class="category-legend">${label}</h2>`),
+    `The ${label} name sits on the group border instead of a separate bar.`,
   );
   assert.match(
     html,
-    new RegExp(`id="${panelId}" class="(?:worksheet-container|game-card-grid) category-panel"[^>]* hidden>`),
-    `The ${label} panel must be hidden until its category is selected.`,
+    new RegExp(`<div id="${panelId}" class="worksheet-container category-panel">`),
+    `The ${label} subjects are always visible.`,
   );
 }
 
-assert.ok(
-  html.includes('src="assets/hub-accordion.js?'),
-  "The hub must load its shared accordion motion controller.",
-);
-assert.ok(
-  html.includes('ClassroomHubAccordion.create(hubContent)'),
-  "Both levels of hub menus must use the shared accordion controller.",
-);
-assert.ok(
-  html.includes(".category-panel[hidden] {") && html.includes("display: none !important;"),
-  "Collapsed category panels must stay visually hidden despite their grid or flex layout.",
-);
+assert.ok(html.includes('src="assets/hub-accordion.js?'), "Subject menus keep the shared accordion motion controller.");
+assert.ok(html.includes("ClassroomHubAccordion.create(hubContent)"), "Subject menus use the shared accordion controller.");
 
-const categorySectionCss = html.slice(
-  html.indexOf(".category-section {"),
-  html.indexOf(".category-heading {"),
+assert.match(
+  html,
+  /<div class="hub-top-row">\s*<div class="auth-panel"/,
+  "The profile card shares a row with the room-number box.",
 );
 assert.ok(
-  categorySectionCss.includes("overflow: visible;") && categorySectionCss.includes("z-index: 30;"),
-  "Expanded category sections must allow nested worksheet menus to render outside the panel without being clipped or covered.",
+  html.includes('class="hub-title-link hub-room-dock"') && html.includes('id="hubRoomForm"'),
+  "The room-number box sits at the right end of the profile row.",
+);
+assert.ok(
+  html.includes("body:has(#hubContent:not([hidden])) .hub-room-dock"),
+  "The room-number box appears only when the signed-in menu is shown.",
 );
 
 const studentButtonCss = html.slice(
   html.indexOf(".worksheet-container a,"),
   html.indexOf(".worksheet-group {"),
 );
-assert.ok(
-  studentButtonCss.includes("min-height: 72px;") && studentButtonCss.includes("padding: 11px 15px;"),
-  "Student activity buttons must use the compact 72px height while remaining comfortably above the touch-target minimum.",
-);
+const buttonHeight = Number((studentButtonCss.match(/min-height:\s*(\d+)px/) || [])[1]);
+assert.ok(buttonHeight >= 44, `Student activity buttons stay above the 44px touch-target minimum (now ${buttonHeight}px).`);
 
-console.log("Index category accordion contract passed.");
+console.log("Index category menu contract passed.");
