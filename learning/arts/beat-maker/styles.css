@@ -125,6 +125,8 @@ button.small.wide { width: 44px; }
 .label.pad span { overflow: hidden; text-overflow: ellipsis; }
 .label.pad svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
 .label.pad .swatch { flex: none; width: 10px; height: 10px; border-radius: 3px; }
+.label.pad:not(.minor) { font-weight: 700; }
+.label.pad.minor { background: #141b25; color: #8a93a1; }
 .grid-wrap { position: relative; }
 #grid { display: block; touch-action: none; cursor: crosshair; }
 #grid .row { fill: #202a39; }

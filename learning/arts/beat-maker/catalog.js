@@ -64,17 +64,27 @@
     "guitar-steel": ["guitar-steel", 40, 84, 25, { rev: "20260902-steel-tone-v2" }],
   };
 
-  // 드럼 세트 줄(위→아래). icon은 줄 이름 옆 그림, color는 찍힌 칸 색.
+  // 드럼 세트 줄(위→아래): 심벌 → 하이햇 → 탐(높은 것부터) → 스네어 주법 → 킥.
+  // icon은 줄 이름 옆 그림, color는 찍힌 칸 색. minor 줄은 어둡게 깔아 킥·스네어·닫힌 하이햇이 눈에 띄게 한다.
   const KIT_ROWS = [
-    { id: "crash", name: "크래시", icon: "cymbal", color: "#f2c94c" },
-    { id: "ride", name: "라이드", icon: "cymbal", color: "#e0b43c" },
-    { id: "openhat", name: "열린 하이햇", icon: "openhat", color: "#d8e86a" },
+    { id: "crash", name: "크래시", icon: "cymbal", color: "#f2c94c", minor: true },
+    { id: "ride", name: "라이드", icon: "cymbal", color: "#e0b43c", minor: true },
+    { id: "ridebell", name: "라이드 벨", icon: "cymbal", color: "#efb5ff", minor: true },
+    { id: "openhat", name: "열린 하이햇", icon: "openhat", color: "#d8e86a", minor: true },
     { id: "hat", name: "닫힌 하이햇", icon: "hat", color: "#c4d95a" },
-    { id: "hightom", name: "하이 탐", icon: "tom", color: "#6fb4ff" },
-    { id: "lowtom", name: "플로어 탐", icon: "tom", color: "#4f8fe0" },
+    { id: "pedalhat", name: "페달 하이햇", icon: "hat", color: "#a9bf52", minor: true },
+    { id: "hightom", name: "하이 탐", icon: "tom", color: "#6fb4ff", minor: true },
+    { id: "midtom", name: "미드 탐", icon: "tom", color: "#5fa2f0", minor: true },
+    { id: "lowtom", name: "플로어 탐", icon: "tom", color: "#4f8fe0", minor: true },
+    { id: "rimshot", name: "림샷", icon: "snare", color: "#ff7d66", minor: true },
     { id: "snare", name: "스네어", icon: "snare", color: "#ff9d66" },
+    { id: "ghost", name: "고스트", icon: "snare", color: "#d88a72", minor: true },
+    { id: "sidestick", name: "사이드스틱", icon: "snare", color: "#d8b87a", minor: true },
+    { id: "rimclick", name: "림클릭", icon: "snare", color: "#ffb27a", minor: true },
     { id: "kick", name: "킥", icon: "kick", color: "#4fc39a" },
   ];
+  // 곡 version 2까지 쓰던 8줄 순서. 저장된 곡의 줄 번호를 새 순서로 옮길 때 쓴다.
+  const OLD_KIT_ROW_IDS = ["crash", "ride", "openhat", "hat", "hightom", "lowtom", "snare", "kick"];
   const kit = (id, name, dir, gainDb, boost = {}) => ({ id, name, pads: { dir, gainDb, boost, kit: true, rows: KIT_ROWS } });
   const station = (id, name, dir, rows) => ({ id, name, pads: { dir, gainDb: 0, rows } });
   const one = (id, name, set = id) => ({ id, name, arts: [{ id: "", name: "", set }] });
@@ -172,8 +182,11 @@
   const DECAY = { clavinet: 1.65, "violin-pizz": 2.2, "viola-pizz": 2.2, "cello-pizz": 2.2, "upright-bass-pizz": 2.2, harpsichord: 3.4 };
   // 드럼 세트 조각별 목표 크기(악기실 DRUM_PIECE_LEVELS).
   const DRUM_LEVELS = {
-    kick: [.24, .28], snare: [.18, .20], hightom: [.11, .14], lowtom: [.12, .15],
-    hat: [.045, .055], openhat: [.05, .065], crash: [.08, .095], ride: [.04, .05],
+    kick: [.24, .28], snare: [.18, .20], rimshot: [.19, .22],
+    ghost: [.026, .034], sidestick: [.065, .085], rimclick: [.065, .085],
+    hightom: [.11, .14], midtom: [.11, .14], lowtom: [.12, .15],
+    hat: [.045, .055], pedalhat: [.035, .045], openhat: [.05, .065],
+    crash: [.08, .095], ride: [.04, .05], ridebell: [.045, .055],
   };
 
   // 짧게 끝나는 악기는 음 길이와 상관없이 자연스럽게 울리게 둔다(악기실과 같음).
@@ -184,5 +197,5 @@
   // 같은 악기가 두 대분류에 있으면(콘트라베이스) 키는 "대분류/악기"로 구분한다.
   const MODELS = {};
   for (const cat of CATEGORIES) for (const m of cat.models) MODELS[cat.id + "/" + m.id] = { ...m, cat };
-  return { SETS, CATEGORIES, MODELS, KIT_ROWS, ONE_SHOT, RANGES, HELD, START_AT_ZERO, DECAY, DRUM_LEVELS };
+  return { SETS, CATEGORIES, MODELS, KIT_ROWS, OLD_KIT_ROW_IDS, ONE_SHOT, RANGES, HELD, START_AT_ZERO, DECAY, DRUM_LEVELS };
 });

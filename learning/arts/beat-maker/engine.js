@@ -126,8 +126,8 @@
         ? velocity * Math.pow(10, koreanTargetDb(id) / 20) / peak(buffer)
         : velocity * Math.pow(10, ((snd.gainDb || 0) + (snd.boost[id] || 0)) / 20);
       env.gain.setValueAtTime(drumGain(buffer, requested, velocity, id, snd.kit), at);
-      // 하이햇을 다시 치면 울리던 열린 하이햇은 멈춘다.
-      if (snd.kit && (id === "hat" || id === "openhat")) {
+      // 하이햇을 다시 치거나 페달을 밟으면 울리던 열린 하이햇은 멈춘다.
+      if (snd.kit && (id === "hat" || id === "pedalhat" || id === "openhat")) {
         const prev = m.chokes.get(out);
         if (prev && prev.at < at) prev.env.gain.setTargetAtTime(0.0001, at, 0.008);
         if (id === "openhat") m.chokes.set(out, { env, at });
@@ -204,7 +204,7 @@
   function schedule() {
     const song = player.song, dt = stepSeconds(song), steps = B.totalSteps(song);
     while (player.startAt + player.nextStep * dt < ctx.currentTime + 0.15) {
-      const at = player.startAt + player.nextStep * dt, step = player.nextStep % steps;
+      const step = player.nextStep % steps, at = player.startAt + player.nextStep * dt + B.swingDelay(song, step, dt);
       for (const t of song.tracks) {
         const snd = B.sound(t);
         for (const n of t.notes) if (n.step === step) voice(ctx, mix, trackGain(t), snd, n.pitch, at, B.soundingSteps(t, n) * dt);
@@ -251,7 +251,7 @@
       g.gain.value = t.volume;
       g.connect(m.input);
       const snd = B.sound(t);
-      for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + 0.05, B.soundingSteps(t, n) * dt);
+      for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + B.swingDelay(song, n.step, dt) + 0.05, B.soundingSteps(t, n) * dt);
     }
     return off.startRendering();
   }

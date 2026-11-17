@@ -111,7 +111,7 @@
     if (lk !== labelKey) {
       labelKey = lk;
       $("labels").innerHTML = list.map((r) => {
-        if (r.pad) return `<button class="label pad" data-pitch="${r.pitch}" tabindex="-1" title="${esc(r.pad.title || r.label)}">${padIcon(r.pad)}<span>${esc(r.label)}</span></button>`;
+        if (r.pad) return `<button class="label pad${r.pad.minor ? " minor" : ""}" data-pitch="${r.pitch}" tabindex="-1" title="${esc(r.pad.title || r.label)}">${padIcon(r.pad)}<span>${esc(r.label)}</span></button>`;
         // 세로 피아노 건반: 검은 건반은 짧게 얹고, 흰 건반끼리 맞닿는 곳(E–F, B–C)에만 선을 긋는다.
         // 글자: 조에 맞춘 계이름, C에는 옥타브를 알 수 있게 음이름도 작게.
         const pc = r.pitch % 12, black = [1, 3, 6, 8, 10].includes(pc), seam = pc === 5 || pc === 0;
@@ -127,9 +127,8 @@
     svg.setAttribute("height", H);
     let out = "";
     list.forEach((r, i) => {
-      // 조성 밖의 음 줄은 어둡게, 으뜸음 줄은 살짝 밝게.
-      // 악기 음역 밖은 검게, 조성 밖의 음 줄은 어둡게, 으뜸음 줄은 살짝 밝게.
-      const off = !r.pad && !B.inKey(r.pitch, s.key, s.scale), root = !r.pad && r.pitch % 12 === s.key;
+      // 악기 음역 밖은 검게, 조성 밖의 음 줄과 드럼 세트의 보조 줄은 어둡게, 으뜸음 줄은 살짝 밝게.
+      const off = r.pad ? !!r.pad.minor : !B.inKey(r.pitch, s.key, s.scale), root = !r.pad && r.pitch % 12 === s.key;
       out += `<rect x="0" y="${i * RH}" width="${W}" height="${RH}" class="row${r.out ? " out" : off ? " off" : root ? " root" : ""}"/>`;
     });
     for (let x = 0; x <= steps; x++)
@@ -155,6 +154,7 @@
   function render(s) {
     if (!s.tracks.some((t) => t.id === selected)) selected = s.tracks[0].id;
     U.value("bpm", s.bpm);
+    U.value("swing", s.swing);
     U.value("bars", s.bars);
     U.value("key", s.key);
     U.value("scale", s.scale);
@@ -174,6 +174,11 @@
     if (Number.isInteger(v) && v >= 40 && v <= 200) app.preview((s) => (s.bpm = v));
   });
   U.bind("bpm", "change", () => app.end());
+  U.bind("swing", "input", () => {
+    const v = Number($("swing").value);
+    if (Number.isInteger(v) && v >= 0 && v <= 100) app.preview((s) => (s.swing = v));
+  });
+  U.bind("swing", "change", () => app.end());
   U.bind("bars", "change", () => app.commit((s) => (s.bars = Number($("bars").value))));
   U.bind("key", "change", () => app.commit((s) => (s.key = Number($("key").value)), false));
   U.bind("scale", "change", () => app.commit((s) => (s.scale = $("scale").value), false));

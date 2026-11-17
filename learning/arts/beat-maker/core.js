@@ -67,19 +67,21 @@
     const m = K.MODELS[instrument];
     return { id, instrument, art: art || (m.arts ? m.arts[0].id : ""), volume: 0.8, mute: false, solo: false, pedal: false, notes };
   }
+  const kitRow = (id) => K.KIT_ROWS.findIndex((r) => r.id === id);
   function basicBeat() {
-    const notes = [];
+    const notes = [], kick = kitRow("kick"), snare = kitRow("snare"), hat = kitRow("hat");
     for (let bar = 0; bar < 4; bar++) {
       const o = bar * 16;
-      notes.push({ step: o, pitch: 7, len: 1 }, { step: o + 8, pitch: 7, len: 1 });
-      notes.push({ step: o + 4, pitch: 6, len: 1 }, { step: o + 12, pitch: 6, len: 1 });
-      for (let i = 0; i < 16; i += 2) notes.push({ step: o + i, pitch: 3, len: 1 });
+      notes.push({ step: o, pitch: kick, len: 1 }, { step: o + 8, pitch: kick, len: 1 });
+      notes.push({ step: o + 4, pitch: snare, len: 1 }, { step: o + 12, pitch: snare, len: 1 });
+      for (let i = 0; i < 16; i += 2) notes.push({ step: o + i, pitch: hat, len: 1 });
     }
     return notes;
   }
   const initial = {
-    version: 2,
+    version: 3,
     bpm: 90,
+    swing: 0,
     bars: 4,
     key: 0,
     scale: "major",
@@ -91,10 +93,24 @@
     ],
   };
 
+  // version 2 곡의 드럼 세트는 8줄이었다. 줄 번호를 15줄 순서로 옮긴다.
+  function upgrade(s) {
+    if (s?.version !== 2 || !Array.isArray(s.tracks)) return s;
+    const tracks = s.tracks.map((t) => {
+      if (!K.MODELS[t?.instrument]?.pads?.kit || !Array.isArray(t.notes)) return t;
+      return { ...t, notes: t.notes.map((n) => ({ ...n, pitch: kitRow(K.OLD_KIT_ROW_IDS[n?.pitch]) })) };
+    });
+    return { ...s, version: 3, swing: 0, tracks };
+  }
+  // 스윙: 8분박마다 뒤쪽 16분 칸만 늦춘다. 100%면 셋잇단(칸 길이의 1/3만큼 늦게).
+  const swingDelay = (song, step, stepSeconds) => (step % 2 ? (song.swing / 100) * stepSeconds / 3 : 0);
+
   function validate(s) {
+    s = upgrade(s);
     const ok =
-      s && s.version === 2 &&
+      s && s.version === 3 &&
       Number.isInteger(s.bpm) && s.bpm >= 40 && s.bpm <= 200 &&
+      Number.isInteger(s.swing) && s.swing >= 0 && s.swing <= 100 &&
       [1, 2, 4, 8].includes(s.bars) &&
       Number.isInteger(s.key) && s.key >= 0 && s.key < 12 &&
       Object.hasOwn(SCALES, s.scale) &&
@@ -162,5 +178,5 @@
   const anchor = (snd, midi) => Math.max(snd.min, Math.min(snd.max, midi));
 
   return { DRUM_LEVELS: K.DRUM_LEVELS, anchor, CATEGORIES: K.CATEGORIES, MODELS: K.MODELS, SCALES, NOTE_NAMES, KEY_NAMES, STEPS_PER_BAR, MAX_TRACKS, COLORS,
-    noteName, inKey, solfege, totalSteps, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
+    noteName, inKey, solfege, totalSteps, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
 });

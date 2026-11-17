@@ -6,15 +6,15 @@
     <meta name="theme-color" content="#141a24" />
     <title>비트메이커</title>
     <link rel="icon" href="/assets/icons/favicon.webp" />
-    <link rel="stylesheet" href="styles.css?v=20261117-1" />
+    <link rel="stylesheet" href="styles.css?v=20261117-kit15" />
     <script src="../../literacy-numeracy/math-tools/assets/math.js?v=20261108-2" defer></script>
     <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261108-2" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
     <script src="../instrument-room/korean-percussion-data.js" defer></script>
-    <script src="catalog.js?v=20261117-1" defer></script>
-    <script src="core.js?v=20261117-1" defer></script>
-    <script src="engine.js?v=20261117-1" defer></script>
-    <script src="app.js?v=20261117-1" defer></script>
+    <script src="catalog.js?v=20261117-kit15" defer></script>
+    <script src="core.js?v=20261117-kit15" defer></script>
+    <script src="engine.js?v=20261117-kit15" defer></script>
+    <script src="app.js?v=20261117-kit15" defer></script>
     <script src="/assets/sound/music-control.js?v=20261117-movable-gear" data-settings-help="tool-help" defer></script>
   </head>
   <body>
@@ -23,6 +23,7 @@
       <button id="play" class="primary" aria-pressed="false">▶ 재생</button
       ><button id="rewind" class="icon" aria-label="처음부터">⏮</button>
       <label class="field">빠르기 <input id="bpm" type="number" min="40" max="200" /></label>
+      <label class="field">스윙 <input id="swing" type="number" min="0" max="100" step="5" />%</label>
       <label class="field">마디 <select id="bars"><option>1</option><option>2</option><option>4</option><option>8</option></select></label>
       <label class="field">조 <select id="key"></select><select id="scale"><option value="major">장조</option><option value="minor">단조</option></select></label>
       <div class="history">
