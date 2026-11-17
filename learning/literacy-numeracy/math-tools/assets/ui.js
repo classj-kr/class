@@ -77,7 +77,7 @@
         if (past.length > 60) past.shift();
         future.length = 0;
         save();
-        if (sound) window.ClassGameSfx?.play("tick");
+        if (sound && !options.quiet) window.ClassGameSfx?.play("tick"); // quiet: 소리 내는 앱(비트메이커)은 똑똑 소리를 끈다.
       }
       if (repaint) render();
       return true;

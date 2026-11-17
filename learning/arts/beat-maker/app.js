@@ -280,7 +280,7 @@
     loop = null; loopOn = false; loopDraft = null;
     picked.clear();
   }
-  const app = U.app({ name: "beat-maker", initial: B.initial, validate: B.validate, render, slots: SONGS, slotChanged: () => songChanged() });
+  const app = U.app({ name: "beat-maker", quiet: true, initial: B.initial, validate: B.validate, render, slots: SONGS, slotChanged: () => songChanged() });
   U.bind("song", "change", () => app.useSlot(Number($("song").value)));
   // 소리 파일(ogg)을 못 풀면 소리 없이 조용히 지나가지 않게 한 번 알려 준다(아이패드는 iPadOS 18.4부터 된다).
   let soundWarned = false;
