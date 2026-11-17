@@ -49,6 +49,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, svg:focus-visib
 }
 .field { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); }
 .field input { width: 70px; color: var(--text); }
+.field input[type=number]:not(:focus):not(:disabled) { cursor: ns-resize; touch-action: none; }
 .field select { color: var(--text); }
 .history { display: inline-flex; gap: 4px; }
 

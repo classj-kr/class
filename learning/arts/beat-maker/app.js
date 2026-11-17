@@ -186,6 +186,38 @@
     if (Number.isInteger(v) && v >= 0 && v <= 100) app.preview((s) => (s.swing = v));
   });
   U.bind("swing", "change", () => app.end());
+  // 숫자 칸은 누른 채 위로 끌면 커지고 아래로 끌면 작아진다. 끌지 않고 떼면 바로 입력할 수 있다.
+  function dragNumber(input, pxPerStep = 4) {
+    let start = null;
+    input.addEventListener("pointerdown", (e) => {
+      if (input.disabled || e.button !== 0 || document.activeElement === input) return;
+      e.preventDefault();
+      input.setPointerCapture(e.pointerId);
+      start = { y: e.clientY, value: Number(input.value), moved: false };
+    });
+    input.addEventListener("pointermove", (e) => {
+      if (!start) return;
+      const delta = Math.round((start.y - e.clientY) / pxPerStep);
+      if (!start.moved && Math.abs(start.y - e.clientY) < 4) return;
+      start.moved = true;
+      const step = Number(input.step) || 1, min = Number(input.min), max = Number(input.max);
+      const next = Math.max(min, Math.min(max, start.value + delta * step));
+      if (next === Number(input.value)) return;
+      input.value = String(next);
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    const finish = () => {
+      if (!start) return;
+      const moved = start.moved;
+      start = null;
+      if (moved) input.dispatchEvent(new Event("change", { bubbles: true }));
+      else { input.focus(); input.select(); }
+    };
+    input.addEventListener("pointerup", finish);
+    input.addEventListener("pointercancel", finish);
+  }
+  dragNumber($("bpm"));
+  dragNumber($("swing"), 8);
   U.bind("meter", "change", () => app.commit((s) => B.changeMeter(s, $("meter").value)));
   U.bind("bars", "change", () => app.commit((s) => (s.bars = Number($("bars").value))));
   // 창 크기가 바뀌면 타악 줄 높이를 다시 맞춘다.
