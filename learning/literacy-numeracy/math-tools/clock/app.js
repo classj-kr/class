@@ -134,24 +134,57 @@
         s[name] = !s[name];
       }, false);
     });
-  U.bind("time-form", "submit", (e) => {
-    e.preventDefault();
-    stop();
+  // 시·분·초 칸: 치는 대로 바로 바늘에 반영하고, 칸을 위아래로 끌면 값이 오르내린다.
+  const typedSeconds = () => {
     const h = Number($("hour").value),
       m = Number($("minute").value),
-      sec = Number($("second").value);
-    if (
-      !M.integer(h, 0, 23) ||
-      !M.integer(m, 0, 59) ||
-      !M.integer(sec, 0, 59)
-    ) {
-      app.notice("시·분·초의 범위를 확인해 주세요.");
-      return;
-    }
-    app.commit(
-      (s) => (s.seconds = h * 3600 + m * 60 + (s.secondsHand ? sec : 0)),
-    );
+      sec = Number($("second").value || 0);
+    if (!M.integer(h, 0, 23) || !M.integer(m, 0, 59) || !M.integer(sec, 0, 59)) return null;
+    return h * 3600 + m * 60 + (app.state.secondsHand ? sec : 0);
+  };
+  U.bind("time-form", "submit", (e) => {
+    e.preventDefault();
+    app.end();
   });
+  U.bind("time-form", "input", () => {
+    const next = typedSeconds();
+    if (next !== null) app.preview((s) => (s.seconds = next));
+  });
+  U.bind("time-form", "change", () => app.end());
+  const STEP = { hour: 3600, minute: 60, second: 1 };
+  for (const id of Object.keys(STEP)) {
+    const field = $(id);
+    let drag = null;
+    field.addEventListener("pointerdown", (e) => {
+      if (e.button > 0) return;
+      drag = { id: e.pointerId, y: e.clientY, base: app.state.seconds, moving: false, steps: 0 };
+    });
+    field.addEventListener("pointermove", (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dy = drag.y - e.clientY;
+      if (!drag.moving) {
+        if (Math.abs(dy) < 6) return;
+        drag.moving = true;
+        field.blur();
+        try { field.setPointerCapture(e.pointerId); } catch (_) {}
+        stop();
+        app.begin();
+      }
+      e.preventDefault();
+      const steps = Math.round(dy / 12);
+      if (steps === drag.steps) return;
+      drag.steps = steps;
+      app.preview((s) => (s.seconds = M.mod(drag.base + steps * STEP[id], C.DAY)));
+    });
+    const finish = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const moved = drag.moving;
+      drag = null;
+      if (moved) app.end();
+    };
+    field.addEventListener("pointerup", finish);
+    field.addEventListener("pointercancel", finish);
+  }
   for (const [id, delta] of [
     ["back-five", -300],
     ["forward-five", 300],

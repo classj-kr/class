@@ -126,8 +126,10 @@
     const board=state.board.slice();board[move.to]=board[move.from];board[move.from]=null;return board;
   }
   const POINTS = {R:13,C:7,H:5,E:3,A:3,P:2,K:0};
-  function repeatsForbidden(board, move, history) {
-    if(move.kind || move.capture || !move.piece)return false;
+  // answeringCheck: the mover is in check. Answering a check is never blocked,
+  // so the checking side (who started the loop) is the one that must change.
+  function repeatsForbidden(board, move, history, answeringCheck) {
+    if(answeringCheck || move.kind || move.capture || !move.piece)return false;
     let repeats=0;
     let returning=true;
     for(let i=history.length-1;i>=0;i--){
@@ -145,7 +147,7 @@
     return totals.c>=30||totals.h>=30;
   }
   function blockedMove(state, move) {
-    return repeatsForbidden(state.board,{...move,piece:state.board[move.from],capture:state.board[move.to]},state.history);
+    return repeatsForbidden(state.board,{...move,piece:state.board[move.from],capture:state.board[move.to]},state.history,inCheck(state));
   }
   function boardMoves(state) {
     const out=[],breakFacing=facing(state);

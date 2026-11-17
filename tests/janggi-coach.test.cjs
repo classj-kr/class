@@ -22,6 +22,19 @@ test("third repeated move is blocked at 30 points independent of board repetitio
   assert.equal(R.repeatsForbidden(state.board,request,[{key},{key}]),false);
 });
 
+test("answering a repeated check is never blocked; the checker must change",()=>{
+  const s=fixture([["cK",4,8],["cR",0,9],["cR",1,9],["cC",2,7],["hK",3,0],["hR",8,8]]);
+  assert.equal(R.inCheck(s),true);
+  const step=(from,to)=>({move:{piece:"cK",from,to}});
+  s.history=[step(sq(4,8),sq(4,9)),step(sq(4,9),sq(4,8)),step(sq(4,8),sq(4,9)),step(sq(4,9),sq(4,8))];
+  const answer={piece:"cK",from:sq(4,8),to:sq(4,9)};
+  assert.equal(R.repeatsForbidden(s.board,answer,s.history),true);
+  assert.equal(R.repeatsForbidden(s.board,answer,s.history,true),false);
+  assert.equal(R.play(s,answer).ok,true);
+  const quiet={...s,board:s.board.map(p=>p==="hR"?null:p)};
+  assert.match(R.play(quiet,answer).error,/다른 수/,"without check the loop is still blocked");
+});
+
 test("all sixteen formations have 32 pieces and each side's own orientation",()=>{
   for(const cho of R.FORMS)for(const han of R.FORMS){
     const s=R.initial(cho,han);assert.equal(s.board.filter(Boolean).length,32);

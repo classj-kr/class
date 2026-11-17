@@ -190,22 +190,43 @@
     piece.y += minY < 8 ? 8 - minY : maxY > 592 ? 592 - maxY : 0;
     return piece;
   }
-  function snap(piece, others) {
+  // 칠교 조각은 한 칸 48의 절반(24) 격자라 꼭짓점이 격자 점에 맞는다.
+  const gridStep = (mode) => (mode === "tangram" ? 24 : 25);
+  // grid: 격자 간격(없으면 격자에 붙이지 않음). vertices: 다른 조각 꼭짓점에 붙일지.
+  function snap(piece, others, { grid = 0, vertices = true } = {}) {
     const own = points(piece);
     let delta = null,
+      best = Infinity;
+    const offer = (a, b) => {
+      const distance = M.distance(a, b);
+      if (distance < best) {
+        best = distance;
+        delta = { x: b.x - a.x, y: b.y - a.y };
+      }
+    };
+    // 격자가 켜져 있으면 가장 가까운 꼭짓점을 가장 가까운 격자 점에 착 붙인다.
+    if (grid)
+      for (const a of own)
+        offer(a, { x: Math.round(a.x / grid) * grid, y: Math.round(a.y / grid) * grid });
+    // 격자가 꺼져 있을 때만 다른 조각 꼭짓점에 붙인다(격자 점이 우선).
+    if (vertices && !grid) {
       best = 14;
-    for (const a of own)
-      for (const other of others)
-        for (const b of points(other)) {
-          const distance = M.distance(a, b);
-          if (distance < best) {
-            best = distance;
-            delta = { x: b.x - a.x, y: b.y - a.y };
-          }
-        }
-    return constrain(
-      delta ? { ...piece, x: piece.x + delta.x, y: piece.y + delta.y } : piece,
-    );
+      for (const a of own)
+        for (const other of others)
+          for (const b of points(other)) if (M.distance(a, b) < 14) offer(a, b);
+    }
+    const target = delta ? { ...piece, x: piece.x + delta.x, y: piece.y + delta.y } : { ...piece },
+      kept = constrain({ ...target });
+    // 판 가장자리에서 밀려 들어왔으면 안쪽 격자 점으로 한 번 더 맞춘다.
+    if (grid)
+      for (const axis of ["x", "y"]) {
+        if (kept[axis] === target[axis]) continue;
+        const values = points(kept).map((p) => p[axis]);
+        kept[axis] += kept[axis] > target[axis]
+          ? Math.ceil(Math.min(...values) / grid) * grid - Math.min(...values)
+          : Math.floor(Math.max(...values) / grid) * grid - Math.max(...values);
+      }
+    return kept;
   }
   return {
     shapes,
@@ -216,6 +237,7 @@
     local,
     validate,
     snap,
+    gridStep,
     constrain,
     tangramPieces,
   };

@@ -196,6 +196,12 @@
     background: #4a3620;
 }
 
+/* 톱니를 끌 수 있게 터치 스크롤을 막고, 아래·왼쪽에 있으면 판을 반대쪽으로 연다. */
+#classSiteSettings .unified-audio-menu-toggle { touch-action: none; }
+#classSiteSettings.is-dragging .unified-audio-menu-toggle { cursor: grabbing; transform: scale(1.08); }
+#classSiteSettings.is-bottom .unified-audio-panel { top: auto !important; bottom: 48px; }
+#classSiteSettings.is-left .unified-audio-panel { right: auto; left: 0; }
+
 @keyframes unified-audio-open {
     from { opacity: 0; transform: translateY(-4px) scale(.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }

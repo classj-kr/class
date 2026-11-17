@@ -70,7 +70,7 @@
         const stylesheetUrl = currentScript
             ? new URL("music-control.css", currentScript.src)
             : new URL("../../assets/sound/music-control.css", location.href);
-        stylesheetUrl.searchParams.set("v", "20261114-safe-controls");
+        stylesheetUrl.searchParams.set("v", "20261117-movable-gear");
         stylesheet.href = stylesheetUrl.href;
         document.head.appendChild(stylesheet);
     }
@@ -209,6 +209,115 @@
     control.addEventListener("focusout", event => {
         if (event.relatedTarget && !control.contains(event.relatedTarget)) setPanelOpen(false);
     });
+
+    // 톱니 위치: 화면 버튼과 겹치면 빈 모서리로 비키고, 끌어 옮기면 그 쪽(경로)마다 기억한다.
+    // 쪽이 톱니를 자기 줄 안에 넣어 둔 경우(body 바로 아래가 아님)는 건드리지 않는다.
+    const POSITION_KEY = "classSiteSettingsPosition";
+    const GEAR = 36, EDGE = 10;
+    const positionReset = document.createElement("button");
+    positionReset.type = "button";
+    positionReset.className = "unified-settings-action";
+    positionReset.textContent = "톱니 위치 되돌리기";
+    positionReset.hidden = true;
+    control.querySelector("#settingsFullscreen").after(positionReset);
+    const readPositions = () => {
+        try { return JSON.parse(soundStorage.getItem(POSITION_KEY) || "{}") || {}; } catch (_) { return {}; }
+    };
+    const writePosition = value => {
+        const all = readPositions();
+        if (value) all[location.pathname] = value; else delete all[location.pathname];
+        try { soundStorage.setItem(POSITION_KEY, JSON.stringify(all)); } catch (_) {}
+    };
+    const clampX = x => Math.max(EDGE, Math.min(innerWidth - GEAR - EDGE, x));
+    const clampY = y => Math.max(EDGE, Math.min(innerHeight - GEAR - EDGE, y));
+    function placeGear(x, y) {
+        x = clampX(x); y = clampY(y);
+        for (const [name, value] of [["left", `${x}px`], ["top", `${y}px`], ["right", "auto"], ["bottom", "auto"]]) {
+            control.style.setProperty(name, value, "important");
+        }
+        control.classList.toggle("is-left", x + GEAR / 2 < innerWidth / 2);
+        control.classList.toggle("is-bottom", y + GEAR / 2 > innerHeight / 2);
+    }
+    const INTERACTIVE = "button, a[href], input:not([type=hidden]), select, textarea, summary, label, [role=button], [role=tab], [role=link], [tabindex]:not([tabindex='-1']), [contenteditable=''], [contenteditable=true]";
+    function spotIsFree(x, y) {
+        const pad = 4, left = x - pad, top = y - pad, right = x + GEAR + pad, bottom = y + GEAR + pad;
+        for (const el of document.querySelectorAll(INTERACTIVE)) {
+            if (control.contains(el)) continue;
+            const r = el.getBoundingClientRect();
+            if (!r.width || !r.height || r.right <= left || r.left >= right || r.bottom <= top || r.top >= bottom) continue;
+            if (el.checkVisibility && !el.checkVisibility({ visibilityProperty: true, opacityProperty: true })) continue;
+            return false;
+        }
+        return true;
+    }
+    function layoutGear() {
+        if (control.parentElement !== document.body || dragging || !audioPanel.hidden) return;
+        const saved = readPositions()[location.pathname];
+        positionReset.hidden = !saved;
+        if (saved) return placeGear(saved.rx * innerWidth, saved.ry * innerHeight);
+        const far = innerWidth - GEAR - EDGE, low = innerHeight - GEAR - EDGE;
+        // 오른쪽 위 → 조금 아래 → 오른쪽 아래 → 왼쪽 아래 순서로 빈 곳을 찾는다.
+        const spots = [[far, EDGE], [far, EDGE + 46], [far, EDGE + 92], [far, low], [EDGE, low], [far - 46, low]];
+        control.style.visibility = "hidden";
+        const free = spots.find(([x, y]) => spotIsFree(x, y)) || spots[0];
+        control.style.visibility = "";
+        placeGear(...free);
+    }
+    let layoutTimer = 0;
+    // 애니메이션처럼 계속 바뀌는 쪽에서도 멈추지 않게, 미루지 않고 0.4초에 한 번씩만 본다.
+    const scheduleLayout = () => {
+        if (layoutTimer) return;
+        layoutTimer = setTimeout(() => { layoutTimer = 0; layoutGear(); }, 400);
+    };
+    let dragging = false, dragStart = null, suppressClick = false;
+    menuToggle.addEventListener("pointerdown", event => {
+        if (control.parentElement !== document.body || event.button > 0) return;
+        const r = control.getBoundingClientRect();
+        dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY, left: r.left, top: r.top };
+    });
+    menuToggle.addEventListener("pointermove", event => {
+        if (!dragStart || event.pointerId !== dragStart.id) return;
+        const dx = event.clientX - dragStart.x, dy = event.clientY - dragStart.y;
+        if (!dragging && Math.hypot(dx, dy) < 8) return;
+        if (!dragging) {
+            dragging = true;
+            setPanelOpen(false);
+            try { menuToggle.setPointerCapture(event.pointerId); } catch (_) {}
+            control.classList.add("is-dragging");
+        }
+        placeGear(dragStart.left + dx, dragStart.top + dy);
+    });
+    const endDrag = event => {
+        if (!dragStart || event.pointerId !== dragStart.id) return;
+        dragStart = null;
+        if (!dragging) return;
+        dragging = false;
+        suppressClick = true;
+        control.classList.remove("is-dragging");
+        const r = control.getBoundingClientRect();
+        writePosition({ rx: r.left / innerWidth, ry: r.top / innerHeight });
+        positionReset.hidden = false;
+    };
+    menuToggle.addEventListener("pointerup", endDrag);
+    menuToggle.addEventListener("pointercancel", endDrag);
+    menuToggle.addEventListener("click", event => {
+        if (!suppressClick) return;
+        suppressClick = false;
+        event.stopImmediatePropagation();
+    }, true);
+    positionReset.addEventListener("click", () => {
+        writePosition(null);
+        setPanelOpen(false);
+        layoutGear();
+        menuToggle.focus();
+    });
+    addEventListener("resize", scheduleLayout);
+    addEventListener("load", scheduleLayout);
+    new MutationObserver(records => {
+        if (records.every(record => control.contains(record.target))) return;
+        scheduleLayout();
+    }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class", "hidden", "style", "open"] });
+    layoutGear();
 
     const fullscreenButton = control.querySelector("#settingsFullscreen");
     const settingsStatus = control.querySelector(".unified-settings-status");

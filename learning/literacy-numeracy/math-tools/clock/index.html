@@ -25,6 +25,8 @@
       }
       #time-form input {
         width: 65px;
+        cursor: ns-resize;
+        touch-action: none;
       }
       #digital {
         font-size: 32px;
@@ -45,7 +47,7 @@
     <script src="../assets/ui.js?v=20261108-2" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
     <script src="core.js?v=20261108-2" defer></script>
-    <script src="app.js?v=20261108-3" defer></script>
+    <script src="app.js?v=20261117-live-time" defer></script>
     <script
       src="/assets/sound/music-control.js?v=20261105-settings-panel"
       data-sfx-controls
@@ -100,7 +102,7 @@
             max="59"
             aria-label="초"
             hidden
-          /><span id="second-label" hidden>초</span><button type="submit">맞추기</button>
+          /><span id="second-label" hidden>초</span>
         </form>
         <button id="back-five">−5분</button
         ><button id="forward-five">＋5분</button

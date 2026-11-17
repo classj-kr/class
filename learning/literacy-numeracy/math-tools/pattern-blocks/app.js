@@ -44,17 +44,18 @@
     }
     U.value("selection", selected);
     let svg = "";
+    const step = C.gridStep(s.mode);
     if (s.grid)
-      for (let x = 0; x <= 1000; x += 25)
+      for (let x = 0; x <= 1000; x += step)
         svg += U.line(x, 0, x, 600, 'class="grid"');
     if (s.grid)
-      for (let y = 0; y <= 600; y += 25)
+      for (let y = 0; y <= 600; y += step)
         svg += U.line(0, y, 1000, y, 'class="grid"');
     if (s.axis)
       svg += U.line(500, 10, 500, 590, 'class="guide" stroke-width="2"');
     if (s.mode === "tangram" && s.outline)
       svg +=
-        '<rect x="404" y="204" width="192" height="192" fill="#e9eddf" stroke="#a3b59b" stroke-width="2"/>';
+        '<rect x="408" y="216" width="192" height="192" fill="#e9eddf" stroke="#a3b59b" stroke-width="2"/>';
     for (const p of pieces) {
       const points = C.points(p);
       svg += `<path d="${M.path(points)}" fill="${p.color}" fill-opacity=".78" stroke="${p.id === selected ? "#314d40" : "#fffefa"}" stroke-width="${p.id === selected ? 3 : 2}" stroke-linejoin="round"/>`;
@@ -84,7 +85,15 @@
         const p = s.scenes[s.mode].find((p) => p.id === selected);
         fn(p);
         C.constrain(p);
+        if (s.grid) Object.assign(p, snapped(s, p));
       });
+  }
+  // 놓거나 돌린 조각을 격자 점(격자 켜짐)·다른 조각 꼭짓점(맞붙이기 켜짐)에 붙인다.
+  function snapped(s, p) {
+    return C.snap(p, s.scenes[s.mode].filter((q) => q.id !== p.id), {
+      grid: s.grid ? C.gridStep(s.mode) : 0,
+      vertices: s.snap,
+    });
   }
   function add(type) {
     if (rows().length >= 48) {
@@ -210,14 +219,11 @@
       });
     },
     end() {
-      if (app.state.snap)
+      if (app.state.snap || app.state.grid)
         app.preview((s) => {
           const ps = s.scenes[s.mode],
             i = ps.findIndex((p) => p.id === selected);
-          ps[i] = C.snap(
-            ps[i],
-            ps.filter((_, j) => j !== i),
-          );
+          ps[i] = snapped(s, ps[i]);
         });
       app.end();
     },
@@ -234,9 +240,11 @@
     }[e.key];
     if (d) {
       e.preventDefault();
+      // 격자가 켜져 있으면 한 칸씩 움직여야 격자 점에 다시 붙지 않고 넘어간다.
+      const by = app.state.grid ? C.gridStep(app.state.mode) : e.shiftKey ? 20 : 5;
       change((p) => {
-        p.x = M.clamp(p.x + d[0] * (e.shiftKey ? 20 : 5), 0, 1000);
-        p.y = M.clamp(p.y + d[1] * (e.shiftKey ? 20 : 5), 0, 600);
+        p.x = M.clamp(p.x + d[0] * by, 0, 1000);
+        p.y = M.clamp(p.y + d[1] * by, 0, 600);
       });
     }
     if (e.key === "Delete") $("remove").click();
