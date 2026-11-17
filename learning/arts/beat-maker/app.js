@@ -134,7 +134,7 @@
         const cls = `label key${black ? " black" : ""}${seam ? " seam" : ""}${r.out ? " out" : ""}`;
         const sol = B.solfege(r.pitch, s.key, s.scale);
         const tint = sol && !r.out ? ` style="--sc:${B.solfegeColor(r.pitch, s.key, s.scale)}"` : "";
-        return `<button class="${cls}${tint ? " sol" : ""}" data-pitch="${r.pitch}" tabindex="-1" title="${r.label}${sol ? " · " + sol : ""}"${r.out ? " disabled" : ""}${tint}>` +
+        return `<button class="${cls}${tint ? " sol" : ""}${sol === "미" || sol === "레" ? " light" : ""}" data-pitch="${r.pitch}" tabindex="-1" title="${r.label}${sol ? " · " + sol : ""}"${r.out ? " disabled" : ""}${tint}>` +
           `${pc === 0 ? `<small>${r.label}</small>` : ""}${sol ? `<b>${sol}</b>` : ""}</button>`;
       }).join("");
     }
