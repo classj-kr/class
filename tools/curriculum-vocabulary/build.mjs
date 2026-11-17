@@ -9,7 +9,7 @@ const here = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)
 const dir = path.join(here, term);
 const out = path.resolve(here, '../../learning/literacy-numeracy/curriculum-vocabulary', `words-${term}.js`);
 const order = ['국어', '수학', '사회', '과학', '역사'];
-const after = /^(의|도|만|에서|에게|에|까지|부터|처럼|보다|\(이\)라고|\(이\)라는|\(으\)로|을\/를|이\/가|은\/는|와\/과|인|이다|입니다|한|하고|했|적인|된|되|됩|하|해|씩|쯤)/;
+const after = /^(의|도|만|에서|에게|에|까지|부터|처럼|보다|\(이\)라고|\(이\)라는|\(으\)로|을\/를|이\/가|은\/는|와\/과|인|이다|입니다|한|하고|했|적인|된|되|됩|하|해|합|함|할|고|이었|였|씩|쯤)/;
 const problems = [];
 const data = {};
 const codes = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' };
@@ -79,7 +79,7 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json'))) {
       seen.set(word.w, unit.id);
       if (word.mean.includes(word.w)) problems.push(`${at}: 뜻풀이에 낱말이 들어 있음`);
       // 앱은 '끼어들었습니다'처럼 꼴이 바뀐 말도 줄기('끼어들')로 찾아 칠한다.
-      const stems = /다$/.test(word.w) ? [word.w.slice(0, -1), word.w.slice(0, -2)].filter(stem => stem.length >= 2) : [];
+      const stems = /다$/.test(word.w) ? [word.w.slice(0, -1), word.w.length > 3 ? word.w.slice(0, -2) : ''].filter(Boolean) : [];
       if (!word.use.includes(word.w) && !stems.some(stem => word.use.includes(stem))) problems.push(`${at}: 예문에 낱말이 없음`);
       if (!Array.isArray(word.blanks) || word.blanks.length < 2) problems.push(`${at}: 빈칸 문장이 둘보다 적음`);
       for (const text of word.blanks || []) {

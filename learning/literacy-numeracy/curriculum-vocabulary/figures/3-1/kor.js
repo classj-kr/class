@@ -546,7 +546,7 @@
       .sc-${id} .tr { stroke-dasharray: 1; } .sc-${id} .draw.tr { transition-duration: 1.6s; }`;
     // 칸 2: 사탕을 담으러 돌아다니던 나
     body += at(2, 'fin', panel(360, C.blue) + STOP.map(([x, y]) => candy(360 + x, 24 + y)).join(''));
-    body += at(2, 'pop', tag(406, 50, '지혜', ROLE.s, 18), 0.2);
+    body += at(2, 'pop', tag(406, 50, '아이', ROLE.s, 18), 0.2);
     body += drawLine(pathAt(360, 24), C.blue, 2, { width: 3, delay: 0.5, cls: 'tr' });
     body += `<g class="b2"><g class="mv2">${person(0, 6, C.blue, 11)}</g></g>`;
     css += kf(360, 'walk') + `.sc-${id} .mv2 { transform: translate(400px, 138px); } .on2 .sc-${id} .mv2 { animation: ${id}-walk 1.6s ease-in-out .5s both; }`;

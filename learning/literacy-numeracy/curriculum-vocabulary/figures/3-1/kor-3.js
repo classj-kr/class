@@ -518,12 +518,12 @@
   (function () {
     const id = 't31-k3-inmul';
     let css = base(id);
-    let body = at(1, 'drop', tile(320, 32, '「까망이와 까미」', { size: 20, h: 40, fill: TAN, stroke: C.orange }));
+    let body = at(1, 'drop', tile(320, 32, '「까마귀와 물병」', { size: 20, h: 40, fill: TAN, stroke: C.orange }));
     const book = P('M320 282 Q260 268 136 276 V344 Q260 336 320 352 Z', 'white', C.line, 3) + P('M320 282 Q380 268 504 276 V344 Q380 336 320 352 Z', 'white', C.line, 3)
       + P('M320 282 V352', 'none', C.muted, 3) + [292, 308, 324].map((y) => P(`M160 ${y} Q240 ${y - 6} 300 ${y + 4} M340 ${y + 4} Q400 ${y - 6} 480 ${y}`, 'none', C.line, 2.5)).join('');
     body += at(1, 'pop', book, 0.3);
     // 칸 2: 책에서 까마귀 둘이 나와 말하고 날갯짓한다
-    const crows = [[190, 146, false, '까망이'], [450, 146, true, '까미']];
+    const crows = [[190, 146, false, '까마귀'], [450, 146, true, '까마귀']];
     crows.forEach(([x, y, flip, name], i) => {
       body += `<g class="b2"><g class="cw${i}"><g class="bb${i}">${bird(x, y, { flip, wingCls: 'wg' })}</g></g></g>`;
       css += move(id, `cw${i}`, `translate(${320 - x}px, 150px) scale(.3)`, 2, { dur: 0.9, delay: 0.2 + i * 0.3 }) + bobCss(id, `.bb${i}`, 2, 1.3 + i * 0.2, 2);
@@ -576,18 +576,18 @@
     const S = 22;
     const T = (x, y, s, o = {}) => text(f(x), y, s, { size: S, anchor: 'start', weight: 600, ...o });
     // 칸 1: 할아버지가 잭슨에게(오른쪽)
-    let right = card(334, 66, 288, 232) + T(358, 122, '잭슨에게') + T(358, 192, '여긴 고요하단다.') + T(440, 262, '할아버지로부터');
-    let body = at(1, 'pop', tag(398, 38, '할아버지', ROLE.o, 18), 0.1) + drawArrow(446, 38, 512, 38, C.muted, 1, { width: 3.5, delay: 0.3 }) + at(1, 'pop', tag(554, 38, '잭슨', ROLE.s, 18), 0.5);
+    let right = card(334, 66, 288, 232) + T(358, 122, '손자에게') + T(358, 192, '여긴 고요하단다.') + T(440, 262, '할아버지로부터');
+    let body = at(1, 'pop', tag(398, 38, '할아버지', ROLE.o, 18), 0.1) + drawArrow(446, 38, 512, 38, C.muted, 1, { width: 3.5, delay: 0.3 }) + at(1, 'pop', tag(554, 38, '손자', ROLE.s, 18), 0.5);
     body += `<g class="dim dim4">` + at(1, 'slr', right, 0.6);
     // 오른쪽 글의 끝말에 점선 밑줄(칸 3)
     const ul = (x, y, w, d) => `<g class="b3"><path class="draw draw3" pathLength="1" d="M${f(x)} ${y + 8} H${f(x + w)}" stroke="${C.muted}" stroke-width="3" stroke-linecap="round" style="transition-delay:${d}s"/></g>`;
     body += ul(358 + 2 * S, 122, 2 * S, 1.0) + ul(358 + tw('여긴 고요하', S), 192, 2 * S, 1.2) + ul(440 + 4 * S, 262, 3 * S, 1.4) + '</g>';
     // 칸 2: 잭슨이 웃어른인 할아버지께(왼쪽)
-    body += at(2, 'pop', tag(78, 38, '잭슨', ROLE.s, 18), 0.1) + drawArrow(110, 38, 176, 38, C.muted, 2, { width: 3.5, delay: 0.3 }) + at(2, 'pop', tag(230, 38, '할아버지', ROLE.o, 18), 0.5);
+    body += at(2, 'pop', tag(78, 38, '손자', ROLE.s, 18), 0.1) + drawArrow(110, 38, 176, 38, C.muted, 2, { width: 3.5, delay: 0.3 }) + at(2, 'pop', tag(230, 38, '할아버지', ROLE.o, 18), 0.5);
     const hl = (x, w, y, d) => `<g class="b3"><rect class="flash flash3"${dl(d)} x="${f(x - 3)}" y="${y - 25}" width="${f(w + 6)}" height="34" rx="7" fill="${C.yellow}" opacity=".7"/></g>`;
     let left = card(18, 66, 288, 232);
-    left += hl(42 + 4 * S, S, 122, 0.2) + hl(42 + tw('표지판을 세웠어', S), S, 192, 0.6) + hl(150 + tw('잭슨 ', S), 2 * S, 262, 1.0);
-    left += T(42, 122, '할아버지께') + T(42, 192, '표지판을 세웠어요.') + T(150, 262, '잭슨 올림');
+    left += hl(42 + 4 * S, S, 122, 0.2) + hl(42 + tw('표지판을 세웠어', S), S, 192, 0.6) + hl(150 + tw('손자 ', S), 2 * S, 262, 1.0);
+    left += T(42, 122, '할아버지께') + T(42, 192, '표지판을 세웠어요.') + T(150, 262, '손자 올림');
     body += `<g class="b2"><g class="lc">${g('slide slide2', left, 0.6)}</g></g>`;
     // 칸 4
     body += glowRect(14, 62, 296, 240, 4, C.orange, 0.1, 18) + at(4, 'pop', tag(162, 334, '높임 표현', ROLE.y, 22), 0.5);
@@ -604,7 +604,7 @@
     const side = (y, label, role, n, d, cls = '') => at(n, 'pop', `<g class="${cls}">${tag(548, y, label, role, 20)}</g>`, d) + `<g class="b${n}">${P(`M452 ${y} H${548 - wOf(label, 20) / 2 - 8}`, 'none', C.line, 3, ' stroke-dasharray="5 6"')}</g>`;
     body += side(58, '받는 사람', ROLE.s, 1, 0.5) + side(156, '전하는 말', ROLE.s, 1, 1.3);
     // 칸 2: 쓴 사람
-    body += at(2, 'pop', text(414, 254, '잭슨 올림', { size: 22, anchor: 'end' }), 0.2) + side(248, '쓴 사람', ROLE.s, 2, 0.6);
+    body += at(2, 'pop', text(414, 254, '손자 올림', { size: 22, anchor: 'end' }), 0.2) + side(248, '쓴 사람', ROLE.s, 2, 0.6);
     body += `<g class="b2"><path class="draw draw2" pathLength="1" d="M84 278 H414" stroke="${C.line}" stroke-width="3" style="transition-delay:.9s"/></g>`;
     // 칸 3: 쓴 사람 아래에 덧붙인 말
     const rose = `<path d="M346 324 V306" stroke="${C.green}" stroke-width="3.5" stroke-linecap="round"/><path d="M346 316 q10 -8 16 -2 q-8 8 -16 2 Z" fill="${C.green}"/><circle cx="346" cy="296" r="12" fill="${C.red}"/>`
