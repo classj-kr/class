@@ -1,8 +1,16 @@
 (() => {
   "use strict";
   const B = BeatCore, E = BeatEngine, U = ToolUI, $ = U.$;
-  const CW = 26, RH = 20, ROWS = 25; // 칸 너비·줄 높이, 가락 악기는 두 옥타브(25줄)씩 본다.
+  const RH = 20, ROWS = 25; // 줄 높이, 가락 악기는 두 옥타브(25줄)씩 본다.
+  // 칸 너비(확대 단계). 돋보기로 고른다.
+  const ZOOMS = [10, 14, 19, 26, 34, 44];
+  let zoom = 3, CW = ZOOMS[zoom];
+  const RULER = 24; // 마디 번호 자 높이
   let rh = RH; // 타악 줄은 편집 칸 높이를 채우도록 늘린다(최대 40px).
+  // 스윙만큼 뒤쪽 16분 칸이 늦게 시작하도록 그린다. 소리가 늦는 만큼 칸도 밀려서 재생선과 맞는다.
+  let swingPx = 0;
+  const colX = (step) => step * CW + (step % 2 ? swingPx : 0);
+  const stepAtX = (x) => { const s = Math.floor(x / CW); return s % 2 && x < colX(s) ? s - 1 : s; };
   let selected = "t1";
   const viewTop = {}; // 트랙별로 보고 있는 맨 위 음
   let lastLen = 2;
@@ -123,10 +131,18 @@
           `${pc === 0 ? `<small>${r.label}</small>` : ""}${sol ? `<b>${sol}</b>` : ""}</button>`;
       }).join("");
     }
-    rh = snd.pads ? Math.max(RH, Math.min(40, Math.floor($("roll").clientHeight / Math.max(1, list.length)))) : RH;
+    rh = snd.pads ? Math.max(RH, Math.min(40, Math.floor(($("roll").clientHeight - RULER) / Math.max(1, list.length)))) : RH;
     $("roll").style.setProperty("--rh", rh + "px");
     const per = B.stepsPerBar(s), beat = B.beatSteps(s);
+    swingPx = B.swingable(s) ? (s.swing / 100) * CW / 3 : 0;
     const W = steps * CW, H = Math.max(1, list.length) * rh, svg = $("grid");
+    // 좁게 보면 마디 번호가 겹치지 않게 1·3·5…만 적는다.
+    const label = (b) => (per * CW < 90 && b % 2 ? "" : b + 1);
+    $("ruler").style.width = W + "px";
+    $("ruler").innerHTML = Array.from({ length: s.bars }, (_, b) =>
+      `<button type="button" data-bar="${b}" tabindex="-1" style="width:${per * CW}px" title="${b + 1}마디부터 재생">${label(b)}</button>`).join("");
+    $("zoom-out").disabled = zoom === 0;
+    $("zoom-in").disabled = zoom === ZOOMS.length - 1;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     svg.setAttribute("width", W);
     svg.setAttribute("height", H);
@@ -137,20 +153,21 @@
       out += `<rect x="0" y="${i * rh}" width="${W}" height="${rh}" class="row${r.out ? " out" : off ? " off" : root ? " root" : ""}"/>`;
     });
     for (let x = 0; x <= steps; x++)
-      out += `<line x1="${x * CW}" x2="${x * CW}" y1="0" y2="${H}" class="${x % per === 0 ? "bar" : x % beat === 0 ? "beat" : "step"}"/>`;
+      out += `<line x1="${colX(x)}" x2="${colX(x)}" y1="0" y2="${H}" class="${x % per === 0 ? "bar" : x % beat === 0 ? "beat" : "step"}"/>`;
     for (let i = 1; i < list.length; i++) out += `<line x1="0" x2="${W}" y1="${i * rh}" y2="${i * rh}" class="hline"/>`;
     const color = B.COLORS[index];
     for (const n of t.notes) {
       const i = list.findIndex((r) => r.pitch === n.pitch);
       if (i < 0) continue;
       if (snd.pads)
-        out += `<rect x="${n.step * CW + 3}" y="${i * rh + 3}" width="${CW - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit"/>`;
+        out += `<rect x="${colX(n.step) + 3}" y="${i * rh + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit"/>`;
       else {
         // 페달을 밟은 동안 이어지는 울림을 옅게 보여 준다.
         const ring = B.soundingSteps(t, n, per);
-        if (ring > n.len) out += `<rect x="${(n.step + n.len) * CW}" y="${i * RH + 7}" width="${(ring - n.len) * CW - 2}" height="${RH - 14}" fill="${color}" opacity=".3"/>`;
-        out += `<rect x="${n.step * CW + 1}" y="${i * RH + 2}" width="${n.len * CW - 2}" height="${RH - 4}" rx="4" fill="${color}" class="note"/>` +
-          `<rect x="${(n.step + n.len) * CW - 6}" y="${i * RH + 5}" width="2" height="${RH - 10}" class="grip"/>`;
+        const x0 = colX(n.step), x1 = colX(n.step + n.len);
+        if (ring > n.len) out += `<rect x="${x1}" y="${i * RH + 7}" width="${colX(n.step + ring) - x1 - 2}" height="${RH - 14}" fill="${color}" opacity=".3"/>`;
+        out += `<rect x="${x0 + 1}" y="${i * RH + 2}" width="${x1 - x0 - 2}" height="${RH - 4}" rx="4" fill="${color}" class="note"/>` +
+          `<rect x="${x1 - 6}" y="${i * RH + 5}" width="2" height="${RH - 10}" class="grip"/>`;
       }
     }
     svg.innerHTML = out;
@@ -266,7 +283,7 @@
   // ---------- 칸 찍기 ----------
   function cellAt(p) {
     const list = rows(currentTrack());
-    const step = Math.max(0, Math.min(B.totalSteps(app.state) - 1, Math.floor(p.x / CW)));
+    const step = Math.max(0, Math.min(B.totalSteps(app.state) - 1, stepAtX(p.x)));
     const row = list[Math.max(0, Math.min(list.length - 1, Math.floor(p.y / rh)))];
     const snd = B.sound(currentTrack());
     // 음역 밖 줄로 끌어도 음역 끝에 머문다.
@@ -292,7 +309,7 @@
       }
       const found = live.notes.find((n) => n.pitch === c.pitch && n.step <= c.step && c.step < n.step + n.len);
       if (found) {
-        const nearEnd = p.x > (found.step + found.len) * CW - CW * 0.45;
+        const nearEnd = p.x > colX(found.step + found.len) - CW * 0.45;
         return { note: found, mode: nearEnd ? "resize" : "move", grab: c.step - found.step, moved: false };
       }
       const note = { step: c.step, pitch: c.pitch, len: Math.min(lastLen, B.totalSteps(app.state) - c.step) };
@@ -397,6 +414,23 @@
   U.bind("play", "click", () => {
     if (E.playing) { E.stop(); setPlaying(false); } else start(0);
   });
+  // 마디 번호를 누르면 그 마디부터 재생한다.
+  $("ruler").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-bar]");
+    if (b) start(Number(b.dataset.bar) * B.stepsPerBar(app.state));
+  });
+  // 돋보기: 보고 있던 가운데 칸이 그대로 가운데 오게 칸 너비를 바꾼다.
+  for (const [id, d] of [["zoom-out", -1], ["zoom-in", 1]])
+    U.bind(id, "click", () => {
+      const next = Math.max(0, Math.min(ZOOMS.length - 1, zoom + d));
+      if (next === zoom) return;
+      const roll = $("roll"), lw = $("labels").offsetWidth, view = roll.clientWidth - lw;
+      const center = (roll.scrollLeft + view / 2) / CW;
+      zoom = next;
+      CW = ZOOMS[zoom];
+      renderEditor(app.state);
+      roll.scrollLeft = Math.max(0, center * CW - view / 2);
+    });
   U.bind("rewind", "click", () => {
     $("roll").scrollLeft = 0;
     if (E.playing) start(0);

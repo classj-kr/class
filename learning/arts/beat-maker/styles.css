@@ -103,11 +103,21 @@ button.small.wide { width: 44px; }
   overflow: hidden;
 }
 .editor-head { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 4px 8px 4px 12px; border-bottom: 1px solid var(--line); }
-.octave { margin-left: auto; display: inline-flex; gap: 4px; }
+.zoom { margin-left: auto; display: inline-flex; gap: 4px; }
+.zoom button { width: 44px; min-height: 30px; font-size: 12px; white-space: nowrap; }
+.octave { display: inline-flex; gap: 4px; }
 .octave[hidden] { display: none; }
 .octave button { width: 32px; min-height: 30px; }
 .roll { flex: 1; min-height: 0; overflow: auto; display: grid; grid-template-columns: 64px max-content; align-content: start; }
 .roll.pads { grid-template-columns: 124px max-content; }
+/* 마디 번호 자: 위에 붙어 있고, 누르면 그 마디부터 재생한다. */
+.ruler-corner { position: sticky; left: 0; top: 0; z-index: 4; height: 24px; background: var(--panel); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.ruler { position: sticky; top: 0; z-index: 3; display: flex; height: 24px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.ruler button {
+  flex: none; min-height: 0; height: 24px; padding: 0 0 0 5px; border: 0; border-left: 1.5px solid #5a6b86; border-radius: 0;
+  background: transparent; color: var(--muted); font-size: 11px; font-weight: 700; text-align: left; overflow: hidden;
+}
+.ruler button:hover { background: #26324a; color: var(--text); }
 .labels { position: sticky; left: 0; z-index: 2; display: flex; flex-direction: column; background: var(--panel); border-right: 1px solid var(--line); }
 .label {
   height: var(--rh, 20px); min-height: var(--rh, 20px); padding: 0 6px; border: 0; border-bottom: 1px solid #0f141c; border-radius: 0;
