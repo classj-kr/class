@@ -14,8 +14,8 @@
       <h1 id="pageTitle" lang="en">Room Code</h1>
       <form id="roomForm" novalidate>
         <label class="sr-only" for="roomCode">방번호 숫자 4자리</label>
-        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="one-time-code" placeholder="4 digits" required>
-        <button type="submit">입장</button>
+        <input id="roomCode" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="one-time-code" placeholder="방 번호" required>
+        <button type="submit" aria-label="방에 들어가기">Enter</button>
       </form>
       <p id="status" class="status" role="status"></p>
     </section>
