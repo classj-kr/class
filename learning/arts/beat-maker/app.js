@@ -650,9 +650,13 @@
     if (E.playing) start(0);
   });
   document.addEventListener("keydown", (e) => {
-    if (e.code !== "Space" || e.target.closest("input,select,textarea,button")) return;
+    // 스페이스 바는 어디에 초점이 있든(글 칸·고르는 칸 빼고) 재생·멈춤. 방금 누른 단추가 다시 눌리지 않게 막는다.
+    if (e.code !== "Space" || e.target.closest("input,select,textarea")) return;
     e.preventDefault();
-    $("play").click();
+    if (!e.repeat) $("play").click();
+  });
+  document.addEventListener("keyup", (e) => {
+    if (e.code === "Space" && e.target.closest("button")) e.preventDefault();
   });
   document.addEventListener("visibilitychange", () => { if (document.hidden && E.playing) { E.stop(); setPlaying(false); } });
 
