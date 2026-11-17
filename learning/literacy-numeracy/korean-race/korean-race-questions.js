@@ -333,7 +333,18 @@
             const above = new Set();
             chain(word, 'up', above);
             const free = (name) => name !== word.w && !banned.has(name) && !above.has(name);
-            const lookalikes = all.filter((other) => free(other.w) && looksLike(other.w, word.w)).map((other) => other.w);
+            let lookalikes = all.filter((other) => free(other.w) && looksLike(other.w, word.w)).map((other) => other.w);
+            // 뜻풀이가 낱말 이름의 날짜·조각을 그대로 드러내면(「1919년 3월 1일」 → 3·1 운동) 그 조각을 함께 가진 낱말을
+            // 보기 맨 앞에 넣고, 하나도 없으면 뜻 문제를 내지 않는다(앱 app.js 의 leakOf 와 같은 규칙).
+            const nums = (text) => String(text).match(/\d+/g) || [];
+            const mean = String(word.mean || ''); // 띄어쓰기를 지우면 「분자가 분모」가 「가분」으로 붙어 잘못 잡힌다
+            const leakNums = nums(word.w).length && nums(word.w).every((n) => nums(word.mean).includes(n)) ? nums(word.w) : [];
+            const leakPieces = [...pieces(word.w)].filter((piece) => !/\d/.test(piece) && mean.includes(piece));
+            if (leakNums.length || leakPieces.length) {
+              const safe = lookalikes.filter((name) => leakNums.every((n) => nums(name).includes(n)) && leakPieces.every((piece) => pieces(name).has(piece)));
+              lookalikes = safe.length ? safe : [];
+            }
+
             const where = { term, subject, unit: String(unit.id) };
             const explain = `${word.w}: ${word.mean}`;
             const wrongFor = (first, random) => {
@@ -363,6 +374,7 @@
                 level: 'all', unit: where, pair: textbookPair(word),
                 make: (random) => ({
                   set: 'textbook', ask: '이 뜻을 가진 낱말은?', text: word.mean,
+                  // wrongFor 는 lookalikes 를 먼저 넣는다. 흘림이 있으면 lookalikes 는 그 조각을 함께 가진 낱말뿐이다.
                   ...choiceSet(word.w, wrongFor(lookalikes, random), random), explain, block: firstChar(word.w),
                 }),
               });

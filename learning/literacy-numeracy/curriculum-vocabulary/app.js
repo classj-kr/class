@@ -396,10 +396,27 @@
   const looksLike = (a, b) => { const y = piecesOf(b); return [...piecesOf(a)].some(piece => y.has(piece)); };
   // 뜻 문제는 뜻풀이가 낱말 조각을 우리말로 옮긴 꼴(해가 얼마나 높이 … 재는 기구 = 태양 고도 측정기)이 많아,
   // 오답이 다른 갈래 낱말이면 글자 하나만 보고 고른다. 그래서 조각을 나눠 가진 목록 낱말이 있을 때만 뜻 문제를 낸다.
+  // 뜻풀이가 낱말 이름을 그대로 드러내는 조각(「1919년 3월 1일」 → 3·1 운동, 「생각」 → 중심 생각)이 있으면
+  // 그 조각을 함께 가진 낱말을 보기 맨 앞에 넣는다. 그런 낱말이 하나도 없으면 조각만 보고 고르게 되므로 뜻 문제를 내지 않는다.
+  const numsOf = (text) => String(text).match(/\d+/g) || [];
+  function leakOf(word) {
+    const mean = String(word.mean); // 띄어쓰기를 지우면 「분자가 분모」가 「가분」으로 붙어 잘못 잡힌다
+    const nums = numsOf(word.w);
+    const meanNums = numsOf(word.mean);
+    return {
+      nums: nums.length && nums.every(n => meanNums.includes(n)) ? nums : [],
+      pieces: [...piecesOf(word.w)].filter(piece => !/\d/.test(piece) && mean.includes(piece)),
+    };
+  }
+  const sharesLeak = (leak, name) => leak.nums.every(n => numsOf(name).includes(n)) && leak.pieces.every(piece => piecesOf(name).has(piece));
   function lookalikesOf(word) {
     const subjectWords = books[term][subject].units.flatMap(row => row.words);
     const { banned, above } = relatedOut(word, subjectWords);
-    return subjectWords.filter(row => row !== word && !banned.has(row.w) && !above.has(row.w) && looksLike(row.w, word.w));
+    const rows = subjectWords.filter(row => row !== word && !banned.has(row.w) && !above.has(row.w) && looksLike(row.w, word.w));
+    const leak = leakOf(word);
+    if (!leak.nums.length && !leak.pieces.length) return shuffle(rows);
+    const safe = rows.filter(row => sharesLeak(leak, row.w));
+    return safe.length ? shuffle(safe).concat(shuffle(rows.filter(row => !safe.includes(row)))) : [];
   }
   const kindsOf = (word) => word.blanks.map(text => ({ kind: 'blank', text }))
     .concat(lookalikesOf(word).length ? [{ kind: 'mean', text: word.mean }] : []);
@@ -532,7 +549,7 @@
       // 모자라서 단원 낱말로 채울 때는 위 낱말(공통분모의 분모)도 뺀다. 골라 둔 오답(foils)의 위 낱말은 문장이 막아 두었으므로 그대로 쓴다.
       const { banned, above } = relatedOut(word, subjectWords);
       // 뜻 문제는 조각을 나눠 가진 낱말을 먼저 보기에 넣어, 뜻풀이를 끝까지 읽어야 가려지게 한다.
-      const alike = item.kind === 'mean' ? shuffle(lookalikesOf(word)).slice(0, 3) : [];
+      const alike = item.kind === 'mean' ? lookalikesOf(word).slice(0, 3) : [];
       // 같은 갈래 낱말이 목록에 없을 때는 목록 밖 낱말(야크, 낙타 …)도 오답으로 쓴다. 그때는 틀린 말 풀이가 없다.
       const picked = alike.concat(shuffle((word.foils || []).filter(name => name !== word.w && !banned.has(name) && !alike.some(row => row.w === name)).map(name => subjectWords.find(row => row.w === name) || { w: name }))).slice(0, 3);
       const rest = shuffle(pool.filter(row => row !== word && !picked.includes(row) && !banned.has(row.w) && !above.has(row.w))).slice(0, 3 - picked.length);
