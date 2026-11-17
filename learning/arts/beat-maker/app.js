@@ -327,9 +327,10 @@
   // 게시판에는 결과물(MP3)이 아니라 작곡판 자체를 올린다. 친구가 열면 이 곡이 그대로 열린다.
   window.boardShareWork = {
     noun: "곡",
-    title: () => app.state.title.trim(),
+    // 곡은 제목 없이도 올린다(게시판 글에는 「제목 없는 곡」으로).
+    title: () => app.state.title.trim() || "제목 없는 곡",
     nudge: nudgeTitle,
-    describe: () => `「${app.state.title.trim()}」 곡을 올려요.`,
+    describe: () => (app.state.title.trim() ? `「${app.state.title.trim()}」 곡을 올려요.` : "제목 없는 곡을 올려요."),
     build: async () => new Blob([JSON.stringify({ beatSong: 1, title: app.state.title.trim(), song: app.state })], { type: "application/octet-stream" }),
   };
   // 게시판에서 연 곡(?board=…&song=…): 내 칸에는 저장하지 않고 연다.
