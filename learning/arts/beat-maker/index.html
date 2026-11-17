@@ -6,22 +6,24 @@
     <meta name="theme-color" content="#141a24" />
     <title>비트메이커</title>
     <link rel="icon" href="/assets/icons/favicon.webp" />
-    <link rel="stylesheet" href="styles.css?v=20261117-zoom-ruler" />
+    <link rel="stylesheet" href="styles.css?v=20261117-loop-select" />
     <script src="../../literacy-numeracy/math-tools/assets/math.js?v=20261108-2" defer></script>
     <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261108-2" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
     <script src="../instrument-room/korean-percussion-data.js" defer></script>
-    <script src="catalog.js?v=20261117-zoom-ruler" defer></script>
-    <script src="core.js?v=20261117-zoom-ruler" defer></script>
-    <script src="engine.js?v=20261117-zoom-ruler" defer></script>
-    <script src="app.js?v=20261117-zoom-ruler" defer></script>
+    <script src="catalog.js?v=20261117-loop-select" defer></script>
+    <script src="core.js?v=20261117-loop-select" defer></script>
+    <script src="engine.js?v=20261117-loop-select" defer></script>
+    <script src="app.js?v=20261117-loop-select" defer></script>
     <script src="/assets/sound/music-control.js?v=20261117-movable-gear" data-settings-help="tool-help" defer></script>
   </head>
   <body>
     <h1 class="sr-only">비트메이커</h1>
     <div class="controls" role="toolbar" aria-label="곡 설정">
       <button id="play" class="primary" aria-pressed="false">▶ 재생</button
-      ><button id="rewind" class="icon" aria-label="처음부터">⏮</button>
+      ><button id="rewind" class="icon" aria-label="처음부터">⏮</button
+      ><button id="loop" class="icon" aria-pressed="false" aria-label="반복 구간" title="반복 구간(마디 번호를 끌어 정해요)">🔁</button
+      ><button id="metronome" class="icon" aria-pressed="false" aria-label="메트로놈" title="메트로놈">♩</button>
       <label class="field">빠르기 <input id="bpm" type="number" min="40" max="200" /></label>
       <label class="field">스윙 <input id="swing" type="number" min="0" max="100" step="5" />%</label>
       <label class="field">박자 <select id="meter"><option>4/4</option><option>3/4</option><option>6/8</option><option>12/8</option></select></label>
@@ -42,6 +44,14 @@
       <section class="editor" aria-label="편집">
         <div class="editor-head">
           <strong id="editor-title"></strong>
+          <button id="select-mode" class="tool" aria-pressed="false" title="끌어서 음 고르기">⬚ 고르기</button>
+          <span class="pick-tools" id="pick-tools" hidden>
+            <button id="pick-up" class="icon" aria-label="고른 음 위로">▲</button
+            ><button id="pick-down" class="icon" aria-label="고른 음 아래로">▼</button
+            ><button id="pick-left" class="icon" aria-label="고른 음 왼쪽으로">◀</button
+            ><button id="pick-right" class="icon" aria-label="고른 음 오른쪽으로">▶</button
+            ><button id="pick-delete" class="icon" aria-label="고른 음 지우기">🗑</button>
+          </span>
           <span class="zoom">
             <button id="zoom-out" class="icon" aria-label="작게 보기">🔍−</button
             ><button id="zoom-in" class="icon" aria-label="크게 보기">🔍＋</button>

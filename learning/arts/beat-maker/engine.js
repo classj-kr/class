@@ -183,7 +183,12 @@
 
   // ---------- 재생 ----------
   // 0.15초 앞까지 미리 예약하는 방식이라 화면이 바빠도 박자가 밀리지 않는다.
-  const player = { playing: false, startAt: 0, nextStep: 0, timer: 0, song: null, gains: new Map() };
+  // range: 반복할 칸 [처음, 끝). 비어 있으면 곡 전체. click: 메트로놈.
+  const player = { playing: false, startAt: 0, nextStep: 0, timer: 0, song: null, gains: new Map(), range: null, click: false };
+  function span(song) {
+    const total = B.totalSteps(song), r = player.range;
+    return r && r[0] < r[1] && r[1] <= total ? r : [0, total];
+  }
   const stepSeconds = (song) => 60 / song.bpm / 4;
   function trackGain(t) {
     let g = player.gains.get(t.id);
@@ -201,10 +206,23 @@
     const live = new Set(B.audible(song.tracks).map((t) => t.id));
     for (const t of song.tracks) trackGain(t).gain.setTargetAtTime(live.has(t.id) ? t.volume : 0, ctx.currentTime, 0.02);
   }
+  // 메트로놈: 박마다 짧은 소리, 마디 첫 박은 높게.
+  function tickSound(at, accent) {
+    const osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.frequency.value = accent ? 1760 : 1175;
+    g.gain.setValueAtTime(0.0001, at);
+    g.gain.exponentialRampToValueAtTime(accent ? 0.35 : 0.22, at + 0.002);
+    g.gain.exponentialRampToValueAtTime(0.0001, at + 0.05);
+    osc.connect(g).connect(mix.input);
+    osc.start(at);
+    osc.stop(at + 0.06);
+  }
   function schedule() {
-    const song = player.song, dt = stepSeconds(song), steps = B.totalSteps(song);
+    const song = player.song, dt = stepSeconds(song), [a, b] = span(song);
     while (player.startAt + player.nextStep * dt < ctx.currentTime + 0.15) {
-      const step = player.nextStep % steps, at = player.startAt + player.nextStep * dt + B.swingDelay(song, step, dt);
+      const step = a + (player.nextStep % (b - a)), base = player.startAt + player.nextStep * dt;
+      if (player.click && step % B.beatSteps(song) === 0) tickSound(base, step % B.stepsPerBar(song) === 0);
+      const at = base + B.swingDelay(song, step, dt);
       for (const t of song.tracks) {
         const snd = B.sound(t);
         for (const n of t.notes) if (n.step === step) voice(ctx, mix, trackGain(t), snd, n.pitch, at, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt);
@@ -219,8 +237,10 @@
     await preload(song);
     player.playing = true;
     sync(song);
-    player.nextStep = fromStep;
-    player.startAt = ctx.currentTime + 0.08 - fromStep * stepSeconds(song);
+    // 반복 구간 밖에서 시작하라고 하면 구간 처음부터 튼다.
+    const [a, b] = span(song), from = fromStep >= a && fromStep < b ? fromStep - a : 0;
+    player.nextStep = from;
+    player.startAt = ctx.currentTime + 0.08 - from * stepSeconds(song);
     schedule();
     player.timer = setInterval(schedule, 25);
   }
@@ -233,10 +253,12 @@
   }
   function position() {
     if (!player.playing) return null;
-    const song = player.song, steps = B.totalSteps(song);
+    const song = player.song, [a, b] = span(song);
     const at = (ctx.currentTime - player.startAt) / stepSeconds(song);
-    return at < 0 ? null : at % steps;
+    return at < 0 ? null : a + (at % (b - a));
   }
+  function setRange(range) { player.range = range; }
+  function setClick(on) { player.click = on; }
 
   // ---------- 파일로 내보내기 ----------
   // MP3용으로 한 바퀴를 모노 22kHz로 그린다(작은 파일이면 충분).
@@ -279,5 +301,5 @@
     return new Blob(parts, { type: "audio/mpeg" });
   }
 
-  window.BeatEngine = { preview, play, stop, sync, position, render, mp3, preload, get playing() { return player.playing; } };
+  window.BeatEngine = { preview, play, stop, sync, position, setRange, setClick, render, mp3, preload, get playing() { return player.playing; } };
 })();

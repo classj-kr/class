@@ -14,6 +14,12 @@
   let selected = "t1";
   const viewTop = {}; // 트랙별로 보고 있는 맨 위 음
   let lastLen = 2;
+  // 반복 구간(마디 [처음, 끝)). 곡에 저장하지 않는 보기 설정이다.
+  let loop = null, loopOn = false, loopDraft = null;
+  // 고른 음: 지금 트랙의 "칸:높이" 모음. 고르기 모드에서 끌면 네모 안의 음을 고른다.
+  const picked = new Set();
+  let pickedTrack = "", selectMode = false, band = null;
+  const noteKey = (n) => n.step + ":" + n.pitch;
 
   const currentTrack = (s = app.state) => s.tracks.find((t) => t.id === selected) || s.tracks[0];
   const narrow = (snd) => snd.hi - snd.lo + 1 < ROWS;
@@ -139,8 +145,16 @@
     // 좁게 보면 마디 번호가 겹치지 않게 1·3·5…만 적는다.
     const label = (b) => (per * CW < 90 && b % 2 ? "" : b + 1);
     $("ruler").style.width = W + "px";
+    const shown = loopDraft || (loopOn && loop);
     $("ruler").innerHTML = Array.from({ length: s.bars }, (_, b) =>
-      `<button type="button" data-bar="${b}" tabindex="-1" style="width:${per * CW}px" title="${b + 1}마디부터 재생">${label(b)}</button>`).join("");
+      `<button type="button" data-bar="${b}" tabindex="-1" style="width:${per * CW}px"${shown && b >= shown[0] && b < shown[1] ? ' class="in-loop"' : ""} title="${b + 1}마디부터 재생">${label(b)}</button>`).join("");
+    // 트랙을 바꾸면 고른 음을 놓고, 없어진 음은 고른 목록에서 뺀다.
+    if (pickedTrack !== t.id) { picked.clear(); pickedTrack = t.id; }
+    const keys = new Set(t.notes.map(noteKey));
+    for (const k of [...picked]) if (!keys.has(k)) picked.delete(k);
+    $("pick-tools").hidden = !picked.size;
+    $("select-mode").setAttribute("aria-pressed", selectMode);
+    $("grid").classList.toggle("selecting", selectMode);
     $("zoom-out").disabled = zoom === 0;
     $("zoom-in").disabled = zoom === ZOOMS.length - 1;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
@@ -159,17 +173,19 @@
     for (const n of t.notes) {
       const i = list.findIndex((r) => r.pitch === n.pitch);
       if (i < 0) continue;
+      const sel = picked.has(noteKey(n)) ? " sel" : "";
       if (snd.pads)
-        out += `<rect x="${colX(n.step) + 3}" y="${i * rh + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit"/>`;
+        out += `<rect x="${colX(n.step) + 3}" y="${i * rh + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit${sel}"/>`;
       else {
         // 페달을 밟은 동안 이어지는 울림을 옅게 보여 준다.
         const ring = B.soundingSteps(t, n, per);
         const x0 = colX(n.step), x1 = colX(n.step + n.len);
         if (ring > n.len) out += `<rect x="${x1}" y="${i * RH + 7}" width="${colX(n.step + ring) - x1 - 2}" height="${RH - 14}" fill="${color}" opacity=".3"/>`;
-        out += `<rect x="${x0 + 1}" y="${i * RH + 2}" width="${x1 - x0 - 2}" height="${RH - 4}" rx="4" fill="${color}" class="note"/>` +
+        out += `<rect x="${x0 + 1}" y="${i * RH + 2}" width="${x1 - x0 - 2}" height="${RH - 4}" rx="4" fill="${color}" class="note${sel}"/>` +
           `<rect x="${x1 - 6}" y="${i * RH + 5}" width="2" height="${RH - 10}" class="grip"/>`;
       }
     }
+    if (band) out += `<rect x="${Math.min(band.x0, band.x1)}" y="${Math.min(band.y0, band.y1)}" width="${Math.abs(band.x1 - band.x0)}" height="${Math.abs(band.y1 - band.y0)}" class="band"/>`;
     svg.innerHTML = out;
   }
 
@@ -184,6 +200,9 @@
     U.value("scale", s.scale);
     renderTracks(s);
     renderEditor(s);
+    $("loop").setAttribute("aria-pressed", loopOn);
+    const per = B.stepsPerBar(s);
+    E.setRange(loopOn && loop && loop[0] < s.bars ? [loop[0] * per, Math.min(loop[1], s.bars) * per] : null);
     E.sync(s);
   }
 
@@ -289,10 +308,30 @@
     // 음역 밖 줄로 끌어도 음역 끝에 머문다.
     return { step, pitch: snd.pads ? row.pitch : Math.max(snd.lo, Math.min(snd.hi, row.pitch)), out: !!row.out };
   }
+  // 네모 안에 걸친 음을 고른다(누르기만 하면 그 자리의 음 하나).
+  function pickInBand(b, add) {
+    const t = currentTrack(), list = rows(t), snd = B.sound(t);
+    const x0 = Math.min(b.x0, b.x1), x1 = Math.max(b.x0, b.x1), y0 = Math.min(b.y0, b.y1), y1 = Math.max(b.y0, b.y1);
+    if (!add) picked.clear();
+    for (const n of t.notes) {
+      const i = list.findIndex((r) => r.pitch === n.pitch);
+      if (i < 0) continue;
+      const nx1 = colX(n.step + (snd.pads ? 1 : n.len));
+      if (colX(n.step) <= x1 && nx1 >= x0 && i * rh <= y1 && (i + 1) * rh >= y0) {
+        const k = noteKey(n);
+        if (add && x0 === x1 && picked.has(k)) picked.delete(k); else picked.add(k);
+      }
+    }
+  }
   U.pointer($("grid"), {
-    start(p) {
+    start(p, e) {
       const t = currentTrack(), snd = B.sound(t);
       if (!rows(t).length) return false;
+      if (selectMode || e.shiftKey) {
+        band = { x0: p.x, y0: p.y, x1: p.x, y1: p.y, add: e.shiftKey };
+        return { box: true };
+      }
+      if (picked.size) picked.clear();
       const c = cellAt(p);
       if (c.out) return false;
       app.begin();
@@ -318,6 +357,7 @@
       return { note, mode: "resize", moved: true };
     },
     move(p, d) {
+      if (d.box) { band.x1 = p.x; band.y1 = p.y; renderEditor(app.state); return; }
       const c = cellAt(p), t = currentTrack();
       if (d.pads) {
         const k = c.step + ":" + c.pitch;
@@ -347,6 +387,7 @@
       });
     },
     end(p, d) {
+      if (d.box) { pickInBand(band, band.add); band = null; renderEditor(app.state); return; }
       if (!d.pads) {
         app.preview((s) => {
           const tr = editTrack(s);
@@ -358,7 +399,58 @@
       }
       app.end();
     },
-    cancel() { app.abort(); },
+    cancel() {
+      if (band) { band = null; renderEditor(app.state); } else app.abort();
+    },
+  });
+
+  // 고른 음 옮기기: dStep 칸 옆으로, dRow 줄 위(+)·아래(−)로. 하나라도 칸 밖으로 나가면 옮기지 않는다.
+  function movePicked(dStep, dRow) {
+    if (!picked.size) return;
+    const t = currentTrack(), snd = B.sound(t), steps = B.totalSteps(app.state);
+    // 타악은 줄 번호가 위에서부터 0이라 위로 가면 번호가 작아진다.
+    const dPitch = snd.pads ? -dRow : dRow, lo = snd.pads ? 0 : snd.lo, hi = snd.pads ? snd.rows.length - 1 : snd.hi;
+    const chosen = t.notes.filter((n) => picked.has(noteKey(n)));
+    const moved = chosen.map((n) => ({ ...n, step: n.step + dStep, pitch: n.pitch + dPitch }));
+    if (moved.some((n) => n.step < 0 || n.step + n.len > steps || n.pitch < lo || n.pitch > hi)) return;
+    app.commit((s) => {
+      const tr = editTrack(s);
+      tr.notes = moved.reduce((all, n) => B.placeNote(all, n), tr.notes.filter((n) => !picked.has(noteKey(n))));
+    });
+    picked.clear();
+    for (const n of moved) picked.add(noteKey(n));
+    if (dPitch) E.preview(t, moved[0].pitch, t.volume);
+    renderEditor(app.state);
+  }
+  function deletePicked() {
+    if (!picked.size) return;
+    app.commit((s) => { const tr = editTrack(s); tr.notes = tr.notes.filter((n) => !picked.has(noteKey(n))); });
+    picked.clear();
+    renderEditor(app.state);
+  }
+  // 화면 버튼(아이패드처럼 키보드가 없을 때)과 키보드 화살표가 같은 일을 한다.
+  for (const [id, fn] of [["pick-up", () => movePicked(0, 1)], ["pick-down", () => movePicked(0, -1)],
+    ["pick-left", () => movePicked(-1, 0)], ["pick-right", () => movePicked(1, 0)], ["pick-delete", deletePicked]])
+    U.bind(id, "click", fn);
+  U.bind("select-mode", "click", () => { selectMode = !selectMode; if (!selectMode) picked.clear(); renderEditor(app.state); });
+  $("grid").addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "a") {
+      e.preventDefault();
+      for (const n of currentTrack().notes) picked.add(noteKey(n));
+      renderEditor(app.state);
+      return;
+    }
+    if (!picked.size) return;
+    const per = B.stepsPerBar(app.state), oct = B.sound(currentTrack()).pads ? 1 : 12;
+    const keys = {
+      ArrowUp: () => movePicked(0, e.shiftKey ? oct : 1), ArrowDown: () => movePicked(0, e.shiftKey ? -oct : -1),
+      ArrowLeft: () => movePicked(e.shiftKey ? -per : -1, 0), ArrowRight: () => movePicked(e.shiftKey ? per : 1, 0),
+      Delete: deletePicked, Backspace: deletePicked,
+      Escape: () => { picked.clear(); renderEditor(app.state); },
+    };
+    if (!keys[e.key]) return;
+    e.preventDefault();
+    keys[e.key]();
   });
   $("labels").addEventListener("pointerdown", (e) => {
     const b = e.target.closest(".label");
@@ -414,10 +506,46 @@
   U.bind("play", "click", () => {
     if (E.playing) { E.stop(); setPlaying(false); } else start(0);
   });
-  // 마디 번호를 누르면 그 마디부터 재생한다.
-  $("ruler").addEventListener("click", (e) => {
-    const b = e.target.closest("[data-bar]");
-    if (b) start(Number(b.dataset.bar) * B.stepsPerBar(app.state));
+  // 마디 번호를 누르면 그 마디부터 재생하고, 옆으로 끌면 끈 마디들을 반복 구간으로 정한다.
+  {
+    const ruler = $("ruler");
+    const barAt = (e) => Math.max(0, Math.min(app.state.bars - 1, Math.floor((e.clientX - ruler.getBoundingClientRect().left) / (B.stepsPerBar(app.state) * CW))));
+    let from = null;
+    ruler.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      ruler.setPointerCapture(e.pointerId);
+      from = barAt(e);
+    });
+    ruler.addEventListener("pointermove", (e) => {
+      if (from === null) return;
+      const b = barAt(e);
+      if (b === from && !loopDraft) return;
+      loopDraft = [Math.min(from, b), Math.max(from, b) + 1];
+      renderEditor(app.state);
+    });
+    const finish = (e, cancelled) => {
+      if (from === null) return;
+      const bar = from, draft = loopDraft;
+      from = null;
+      loopDraft = null;
+      if (cancelled) { renderEditor(app.state); return; }
+      if (draft) { loop = draft; loopOn = true; app.render(); start(loop[0] * B.stepsPerBar(app.state)); }
+      else start(bar * B.stepsPerBar(app.state));
+    };
+    ruler.addEventListener("pointerup", (e) => finish(e, false));
+    ruler.addEventListener("pointercancel", (e) => finish(e, true));
+  }
+  U.bind("loop", "click", () => {
+    if (!loop) { app.notice("마디 번호를 옆으로 끌어서 반복할 구간을 고르세요."); return; }
+    loopOn = !loopOn;
+    app.render();
+    if (E.playing) start(loopOn ? loop[0] * B.stepsPerBar(app.state) : 0);
+  });
+  U.bind("metronome", "click", () => {
+    const on = $("metronome").getAttribute("aria-pressed") !== "true";
+    $("metronome").setAttribute("aria-pressed", on);
+    E.setClick(on);
   });
   // 돋보기: 보고 있던 가운데 칸이 그대로 가운데 오게 칸 너비를 바꾼다.
   for (const [id, d] of [["zoom-out", -1], ["zoom-in", 1]])
