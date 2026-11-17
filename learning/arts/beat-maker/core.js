@@ -9,13 +9,24 @@
   const NOTE_NAMES = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"];
   const KEY_NAMES = ["다", "올림다", "라", "올림라", "마", "바", "올림바", "사", "올림사", "가", "올림가", "나"];
   const STEPS_PER_BAR = 16;
+  // 박자: 한 칸은 언제나 16분음표. steps는 한 마디 칸 수, beat는 굵은 박 선 간격(겹박자는 점4분음표 = 6칸).
+  const METERS = {
+    "4/4": { steps: 16, beat: 4 },
+    "3/4": { steps: 12, beat: 4 },
+    "6/8": { steps: 12, beat: 6 },
+    "12/8": { steps: 24, beat: 6 },
+  };
+  const stepsPerBar = (s) => METERS[s.meter]?.steps || STEPS_PER_BAR;
+  const beatSteps = (s) => METERS[s.meter]?.beat || 4;
+  // 겹박자는 이미 셋잇단 느낌이라 스윙을 걸지 않는다.
+  const swingable = (s) => beatSteps(s) === 4;
   const MAX_TRACKS = 5;
   const COLORS = ["#f2b84b", "#ef8354", "#3fbf8f", "#3fb6c8", "#a68cf2"];
   const PAD_COLORS = ["#f2c94c", "#ff9d66", "#6fb4ff", "#4fc39a", "#c9a0ff", "#e8e06a"];
 
   const noteName = (midi) => NOTE_NAMES[midi % 12] + (Math.floor(midi / 12) - 1);
   const inKey = (midi, key, scale) => SCALES[scale].includes((((midi - key) % 12) + 12) % 12);
-  const totalSteps = (s) => s.bars * STEPS_PER_BAR;
+  const totalSteps = (s) => s.bars * stepsPerBar(s);
   // 계이름: 장조는 으뜸음이 도, 단조는 으뜸음이 라(학교 방식). 조에 없는 음은 빈 글자.
   const SOLFEGE = { 0: "도", 2: "레", 4: "미", 5: "파", 7: "솔", 9: "라", 11: "시" };
   function solfege(midi, key, scale) {
@@ -68,20 +79,46 @@
     return { id, instrument, art: art || (m.arts ? m.arts[0].id : ""), volume: 0.8, mute: false, solo: false, pedal: false, notes };
   }
   const kitRow = (id) => K.KIT_ROWS.findIndex((r) => r.id === id);
-  function basicBeat() {
+  // 박자마다 기본 드럼(킥·스네어 칸 위치). 하이햇은 8분음표마다.
+  const BEAT_PATTERNS = {
+    "4/4": { kick: [0, 8], snare: [4, 12] },
+    "3/4": { kick: [0], snare: [4, 8] },
+    "6/8": { kick: [0], snare: [6] },
+    "12/8": { kick: [0, 12], snare: [6, 18] },
+  };
+  function basicBeat(meter = "4/4", bars = 4) {
     const notes = [], kick = kitRow("kick"), snare = kitRow("snare"), hat = kitRow("hat");
-    for (let bar = 0; bar < 4; bar++) {
-      const o = bar * 16;
-      notes.push({ step: o, pitch: kick, len: 1 }, { step: o + 8, pitch: kick, len: 1 });
-      notes.push({ step: o + 4, pitch: snare, len: 1 }, { step: o + 12, pitch: snare, len: 1 });
-      for (let i = 0; i < 16; i += 2) notes.push({ step: o + i, pitch: hat, len: 1 });
+    const per = METERS[meter].steps, p = BEAT_PATTERNS[meter];
+    for (let bar = 0; bar < bars; bar++) {
+      const o = bar * per;
+      for (const i of p.kick) notes.push({ step: o + i, pitch: kick, len: 1 });
+      for (const i of p.snare) notes.push({ step: o + i, pitch: snare, len: 1 });
+      for (let i = 0; i < per; i += 2) notes.push({ step: o + i, pitch: hat, len: 1 });
     }
     return notes;
+  }
+  const noteKey = (notes) => notes.map((n) => `${n.step}:${n.pitch}:${n.len}`).sort().join(",");
+  // 박자를 바꾸면 음을 마디 안 위치 그대로 새 마디에 옮기고, 새 마디에 없는 칸의 음은 버린다.
+  // 기본 드럼을 손대지 않고 그대로 둔 트랙은 새 박자의 기본 드럼으로 바꿔 넣는다.
+  function changeMeter(s, meter) {
+    const from = stepsPerBar(s), to = METERS[meter].steps;
+    const plain = noteKey(basicBeat(s.meter || "4/4", s.bars));
+    for (const t of s.tracks) {
+      if (sound(t).kit && t.notes.length && noteKey(t.notes) === plain) { t.notes = basicBeat(meter, s.bars); continue; }
+      t.notes = t.notes.flatMap((n) => {
+        const bar = Math.floor(n.step / from), at = n.step % from;
+        return at < to ? [{ ...n, step: bar * to + at, len: Math.min(n.len, to - at) }] : [];
+      });
+    }
+    s.meter = meter;
+    if (!swingable(s)) s.swing = 0;
+    return s;
   }
   const initial = {
     version: 3,
     bpm: 90,
     swing: 0,
+    meter: "4/4",
     bars: 4,
     key: 0,
     scale: "major",
@@ -95,6 +132,8 @@
 
   // version 2 곡의 드럼 세트는 8줄이었다. 줄 번호를 15줄 순서로 옮긴다.
   function upgrade(s) {
+    // 박자를 넣기 전에 저장한 곡은 4/4로 연다.
+    if (s && typeof s === "object" && s.meter === undefined) s = { ...s, meter: "4/4" };
     if (s?.version !== 2 || !Array.isArray(s.tracks)) return s;
     const tracks = s.tracks.map((t) => {
       if (!K.MODELS[t?.instrument]?.pads?.kit || !Array.isArray(t.notes)) return t;
@@ -103,7 +142,7 @@
     return { ...s, version: 3, swing: 0, tracks };
   }
   // 스윙: 8분박마다 뒤쪽 16분 칸만 늦춘다. 100%면 셋잇단(칸 길이의 1/3만큼 늦게).
-  const swingDelay = (song, step, stepSeconds) => (step % 2 ? (song.swing / 100) * stepSeconds / 3 : 0);
+  const swingDelay = (song, step, stepSeconds) => (step % 2 && swingable(song) ? (song.swing / 100) * stepSeconds / 3 : 0);
 
   function validate(s) {
     s = upgrade(s);
@@ -111,6 +150,7 @@
       s && s.version === 3 &&
       Number.isInteger(s.bpm) && s.bpm >= 40 && s.bpm <= 200 &&
       Number.isInteger(s.swing) && s.swing >= 0 && s.swing <= 100 &&
+      Object.hasOwn(METERS, s.meter) &&
       [1, 2, 4, 8].includes(s.bars) &&
       Number.isInteger(s.key) && s.key >= 0 && s.key < 12 &&
       Object.hasOwn(SCALES, s.scale) &&
@@ -163,9 +203,9 @@
   }
 
   // 페달을 밟으면 음이 다음 마디 시작까지 울린다(마디마다 페달을 다시 밟는 셈).
-  function soundingSteps(t, n) {
+  function soundingSteps(t, n, perBar = STEPS_PER_BAR) {
     if (!t.pedal) return n.len;
-    const nextBar = (Math.floor(n.step / STEPS_PER_BAR) + 1) * STEPS_PER_BAR;
+    const nextBar = (Math.floor(n.step / perBar) + 1) * perBar;
     return Math.max(n.len, nextBar - n.step);
   }
 
@@ -177,6 +217,6 @@
   // 녹음된 음 가운데 가장 가까운 것(악기실 concertGrandAnchor와 같음).
   const anchor = (snd, midi) => Math.max(snd.min, Math.min(snd.max, midi));
 
-  return { DRUM_LEVELS: K.DRUM_LEVELS, anchor, CATEGORIES: K.CATEGORIES, MODELS: K.MODELS, SCALES, NOTE_NAMES, KEY_NAMES, STEPS_PER_BAR, MAX_TRACKS, COLORS,
-    noteName, inKey, solfege, totalSteps, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
+  return { DRUM_LEVELS: K.DRUM_LEVELS, anchor, CATEGORIES: K.CATEGORIES, MODELS: K.MODELS, SCALES, NOTE_NAMES, KEY_NAMES, STEPS_PER_BAR, METERS, MAX_TRACKS, COLORS,
+    noteName, inKey, solfege, totalSteps, stepsPerBar, beatSteps, swingable, changeMeter, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
 });

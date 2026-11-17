@@ -2,6 +2,7 @@
   "use strict";
   const B = BeatCore, E = BeatEngine, U = ToolUI, $ = U.$;
   const CW = 26, RH = 20, ROWS = 25; // 칸 너비·줄 높이, 가락 악기는 두 옥타브(25줄)씩 본다.
+  let rh = RH; // 타악 줄은 편집 칸 높이를 채우도록 늘린다(최대 40px).
   let selected = "t1";
   const viewTop = {}; // 트랙별로 보고 있는 맨 위 음
   let lastLen = 2;
@@ -85,7 +86,8 @@
       const lane = row.querySelector(".lane");
       lane.setAttribute("viewBox", `0 0 ${steps} 100`);
       let svg = "";
-      for (let bar = 1; bar < s.bars; bar++) svg += `<line x1="${bar * 16}" x2="${bar * 16}" y1="0" y2="100" class="bar"/>`;
+      const per = B.stepsPerBar(s);
+      for (let bar = 1; bar < s.bars; bar++) svg += `<line x1="${bar * per}" x2="${bar * per}" y1="0" y2="100" class="bar"/>`;
       for (const n of t.notes) {
         const y = snd.pads ? (n.pitch / count) * 100 : ((hi - n.pitch) / (hi - lo)) * 100;
         svg += `<rect x="${n.step}" y="${y}" width="${Math.max(0.6, n.len - 0.15)}" height="${snd.pads ? Math.max(3, 100 / count - 2) : 7}"/>`;
@@ -121,7 +123,10 @@
           `${pc === 0 ? `<small>${r.label}</small>` : ""}${sol ? `<b>${sol}</b>` : ""}</button>`;
       }).join("");
     }
-    const W = steps * CW, H = Math.max(1, list.length) * RH, svg = $("grid");
+    rh = snd.pads ? Math.max(RH, Math.min(40, Math.floor($("roll").clientHeight / Math.max(1, list.length)))) : RH;
+    $("roll").style.setProperty("--rh", rh + "px");
+    const per = B.stepsPerBar(s), beat = B.beatSteps(s);
+    const W = steps * CW, H = Math.max(1, list.length) * rh, svg = $("grid");
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     svg.setAttribute("width", W);
     svg.setAttribute("height", H);
@@ -129,20 +134,20 @@
     list.forEach((r, i) => {
       // 악기 음역 밖은 검게, 조성 밖의 음 줄과 드럼 세트의 보조 줄은 어둡게, 으뜸음 줄은 살짝 밝게.
       const off = r.pad ? !!r.pad.minor : !B.inKey(r.pitch, s.key, s.scale), root = !r.pad && r.pitch % 12 === s.key;
-      out += `<rect x="0" y="${i * RH}" width="${W}" height="${RH}" class="row${r.out ? " out" : off ? " off" : root ? " root" : ""}"/>`;
+      out += `<rect x="0" y="${i * rh}" width="${W}" height="${rh}" class="row${r.out ? " out" : off ? " off" : root ? " root" : ""}"/>`;
     });
     for (let x = 0; x <= steps; x++)
-      out += `<line x1="${x * CW}" x2="${x * CW}" y1="0" y2="${H}" class="${x % 16 === 0 ? "bar" : x % 4 === 0 ? "beat" : "step"}"/>`;
-    for (let i = 1; i < list.length; i++) out += `<line x1="0" x2="${W}" y1="${i * RH}" y2="${i * RH}" class="hline"/>`;
+      out += `<line x1="${x * CW}" x2="${x * CW}" y1="0" y2="${H}" class="${x % per === 0 ? "bar" : x % beat === 0 ? "beat" : "step"}"/>`;
+    for (let i = 1; i < list.length; i++) out += `<line x1="0" x2="${W}" y1="${i * rh}" y2="${i * rh}" class="hline"/>`;
     const color = B.COLORS[index];
     for (const n of t.notes) {
       const i = list.findIndex((r) => r.pitch === n.pitch);
       if (i < 0) continue;
       if (snd.pads)
-        out += `<rect x="${n.step * CW + 3}" y="${i * RH + 3}" width="${CW - 6}" height="${RH - 6}" rx="4" fill="${list[i].pad.color}" class="hit"/>`;
+        out += `<rect x="${n.step * CW + 3}" y="${i * rh + 3}" width="${CW - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit"/>`;
       else {
         // 페달을 밟은 동안 이어지는 울림을 옅게 보여 준다.
-        const ring = B.soundingSteps(t, n);
+        const ring = B.soundingSteps(t, n, per);
         if (ring > n.len) out += `<rect x="${(n.step + n.len) * CW}" y="${i * RH + 7}" width="${(ring - n.len) * CW - 2}" height="${RH - 14}" fill="${color}" opacity=".3"/>`;
         out += `<rect x="${n.step * CW + 1}" y="${i * RH + 2}" width="${n.len * CW - 2}" height="${RH - 4}" rx="4" fill="${color}" class="note"/>` +
           `<rect x="${(n.step + n.len) * CW - 6}" y="${i * RH + 5}" width="2" height="${RH - 10}" class="grip"/>`;
@@ -155,6 +160,8 @@
     if (!s.tracks.some((t) => t.id === selected)) selected = s.tracks[0].id;
     U.value("bpm", s.bpm);
     U.value("swing", s.swing);
+    $("swing").disabled = !B.swingable(s);
+    U.value("meter", s.meter);
     U.value("bars", s.bars);
     U.value("key", s.key);
     U.value("scale", s.scale);
@@ -179,7 +186,10 @@
     if (Number.isInteger(v) && v >= 0 && v <= 100) app.preview((s) => (s.swing = v));
   });
   U.bind("swing", "change", () => app.end());
+  U.bind("meter", "change", () => app.commit((s) => B.changeMeter(s, $("meter").value)));
   U.bind("bars", "change", () => app.commit((s) => (s.bars = Number($("bars").value))));
+  // 창 크기가 바뀌면 타악 줄 높이를 다시 맞춘다.
+  window.addEventListener("resize", () => renderEditor(app.state));
   U.bind("key", "change", () => app.commit((s) => (s.key = Number($("key").value)), false));
   U.bind("scale", "change", () => app.commit((s) => (s.scale = $("scale").value), false));
 
@@ -225,7 +235,7 @@
   function cellAt(p) {
     const list = rows(currentTrack());
     const step = Math.max(0, Math.min(B.totalSteps(app.state) - 1, Math.floor(p.x / CW)));
-    const row = list[Math.max(0, Math.min(list.length - 1, Math.floor(p.y / RH)))];
+    const row = list[Math.max(0, Math.min(list.length - 1, Math.floor(p.y / rh)))];
     const snd = B.sound(currentTrack());
     // 음역 밖 줄로 끌어도 음역 끝에 머문다.
     return { step, pitch: snd.pads ? row.pitch : Math.max(snd.lo, Math.min(snd.hi, row.pitch)), out: !!row.out };

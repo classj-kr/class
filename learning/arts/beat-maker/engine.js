@@ -207,7 +207,7 @@
       const step = player.nextStep % steps, at = player.startAt + player.nextStep * dt + B.swingDelay(song, step, dt);
       for (const t of song.tracks) {
         const snd = B.sound(t);
-        for (const n of t.notes) if (n.step === step) voice(ctx, mix, trackGain(t), snd, n.pitch, at, B.soundingSteps(t, n) * dt);
+        for (const n of t.notes) if (n.step === step) voice(ctx, mix, trackGain(t), snd, n.pitch, at, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt);
       }
       player.nextStep++;
     }
@@ -251,7 +251,7 @@
       g.gain.value = t.volume;
       g.connect(m.input);
       const snd = B.sound(t);
-      for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + B.swingDelay(song, n.step, dt) + 0.05, B.soundingSteps(t, n) * dt);
+      for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + B.swingDelay(song, n.step, dt) + 0.05, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt);
     }
     return off.startRendering();
   }

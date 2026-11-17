@@ -109,7 +109,7 @@ button.small.wide { width: 44px; }
 .roll.pads { grid-template-columns: 124px max-content; }
 .labels { position: sticky; left: 0; z-index: 2; display: flex; flex-direction: column; background: var(--panel); border-right: 1px solid var(--line); }
 .label {
-  height: 20px; min-height: 20px; padding: 0 6px; border: 0; border-bottom: 1px solid #0f141c; border-radius: 0;
+  height: var(--rh, 20px); min-height: var(--rh, 20px); padding: 0 6px; border: 0; border-bottom: 1px solid #0f141c; border-radius: 0;
   background: #d9dee6; color: #1b2330; font-size: 11px; text-align: right;
 }
 .label.key { position: relative; border-bottom: 0; background: #f4f6f9; color: #7a8494; font-size: 10px; padding-right: 5px; }
