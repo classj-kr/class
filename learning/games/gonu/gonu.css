@@ -1,6 +1,6 @@
 :root { color-scheme:dark; font:16px system-ui, sans-serif; color:#fff2d2; background:#1d2923; }
 * { box-sizing:border-box; }
-body { margin:0; min-height:100dvh; padding:8px; background:linear-gradient(#112b2140,#101b1bb8), url("assets/lobby-courtyard.webp") center / cover fixed; }
+body { margin:0; min-height:100dvh; padding:8px; background:linear-gradient(#112b2140,#101b1bb8), url("assets/gonu-courtyard.webp") center / cover fixed; }
 .hidden { display:none !important; }
 h1,h2,p { margin:0; }
 a { color:#ffe09a; }
