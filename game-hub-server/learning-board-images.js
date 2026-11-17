@@ -13,6 +13,17 @@ function imageType(data) {
   return null;
 }
 
+// 음악 만들기 곡: 결과물(MP3)이 아니라 작곡판 자체를 올린다. 열면 그 곡이 음악 만들기에 그대로 열린다.
+const SONG_MIME = 'application/vnd.classj.song+json';
+function songType(data) {
+  if (!data.length || data[0] !== 0x7b) return null;
+  try {
+    const value = JSON.parse(data.toString('utf8'));
+    return value && value.beatSong === 1 && value.song && typeof value.song === 'object' ? SONG_MIME : null;
+  } catch (_) { return null; }
+}
+const fileType = (data) => imageType(data) || songType(data);
+
 function installBoardImages({ router, asyncRoute, transaction, fail, pool, board, actor }) {
   const parseRaw = express.raw({ type: () => true, limit: MAX_IMAGE_BYTES });
   // The platform error handler answers non-HttpErrors with a generic 500.
@@ -27,8 +38,8 @@ function installBoardImages({ router, asyncRoute, transaction, fail, pool, board
       if (b.closed && !who.teacher) fail(403, 'BOARD_CLOSED', '글쓰기가 마감되었어요.');
       if (['quiz', 'stacking'].includes(b.layout)) fail(400, 'IMAGES_NOT_ALLOWED', '이 게시판에는 그림을 올릴 수 없어요.');
       const data = Buffer.isBuffer(req.body) ? req.body : null;
-      const mime = data && data.length ? imageType(data) : null;
-      if (!mime) fail(400, 'INVALID_IMAGE', 'PNG·JPG·WebP·GIF 그림만 올릴 수 있어요.');
+      const mime = data && data.length ? fileType(data) : null;
+      if (!mime) fail(400, 'INVALID_IMAGE', 'PNG·JPG·WebP·GIF 그림이나 음악 만들기 곡만 올릴 수 있어요.');
       await db.query("DELETE FROM learning_board_images WHERE board_id=$1 AND post_id IS NULL AND created_at < NOW() - INTERVAL '1 hour'", [b.id]);
       const used = (await db.query('SELECT COALESCE(SUM(size),0)::bigint AS total FROM learning_board_images WHERE board_id=$1', [b.id])).rows[0].total;
       if (Number(used) + data.length > MAX_BOARD_IMAGE_BYTES) fail(409, 'IMAGE_STORAGE_FULL', '게시판 그림 저장 공간이 가득 찼어요. 선생님께 알려 주세요.');
@@ -67,4 +78,4 @@ async function attachBoardImage(db, b, who, postId, imageId, fail) {
   if (!attached.rowCount) fail(409, 'IMAGE_EXPIRED', '그림을 찾지 못했어요. 다시 올려 주세요.');
 }
 
-module.exports = { installBoardImages, attachBoardImage, imageType, MAX_IMAGE_BYTES };
+module.exports = { installBoardImages, attachBoardImage, imageType, songType, SONG_MIME, MAX_IMAGE_BYTES };

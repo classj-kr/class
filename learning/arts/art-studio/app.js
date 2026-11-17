@@ -11,6 +11,11 @@
   const PAPER_COLOR = "#fffdf6";
   const SNAPSHOT_INTERVAL = 20;
   const MIN_POINT_GAP = 1.4;
+  // 계정 자동 저장: 그림 다섯 칸. 칸마다 설명 한 항목 + 레이어(플립북이면 장)마다 그림 한 항목.
+  const SLOTS = 5;
+  const slotKey = i => (i ? `drawing-${i + 1}` : "drawing");
+  const AUTOSAVE_MS = 1500;
+  const MAX_ITEM_CHARS = 1000000;
 
   const $ = id => document.getElementById(id);
 
@@ -249,6 +254,200 @@
       this.renderLayerPanel();
       this.updateHistoryButtons();
       this.composite();
+      this.initStorage();
+    }
+
+    // ---------- 계정 자동 저장·저장 칸 ----------
+    initStorage() {
+      this.slot = 0;
+      this.store = null;
+      this.memory = new Map();
+      this.savedLayers = new Map(); // layer.id → { key, version }
+      this.lastSig = "";
+      this.loading = true;
+      this.touched = false;
+      $("drawingSlot").addEventListener("change", e => { void this.useSlot(Number(e.target.value)); });
+      $("drawingTitle").addEventListener("input", () => this.renderSlots());
+      this.renderSlots();
+      const opening = window.SiteStorage ? SiteStorage.open("art-studio").catch(() => null) : Promise.resolve(null);
+      opening.then(async store => {
+        if (store && store.persistent) {
+          this.store = store;
+          store.onError(() => this.notice("저장하지 못했어요. 연결을 확인해 주세요."));
+        }
+        const last = Number(this.kv.get("slot"));
+        if (Number.isInteger(last) && last >= 0 && last < SLOTS) this.slot = last;
+        if (this.touched) {
+          // 열리기 전에 벌써 그렸으면 빈 칸에 담는다(저장한 그림을 덮지 않게).
+          const empty = Array.from({ length: SLOTS }, (_, i) => i).find(i => !this.kv.has(slotKey(i)));
+          if (empty !== undefined) this.slot = empty;
+        } else {
+          await this.loadSlot(this.slot);
+        }
+        this.loading = false;
+        this.lastSig = this.touched ? "" : this.signature();
+        this.renderSlots();
+        setInterval(() => this.autosave(), AUTOSAVE_MS);
+        window.addEventListener("pagehide", () => this.autosave());
+      });
+    }
+
+    // 계정 저장 공간(로그인 없음이면 이 탭 안에서만 기억하는 칸).
+    get kv() {
+      if (this.store) return this.store;
+      const m = this.memory;
+      return { get: k => m.get(k), has: k => m.has(k), set: (k, v) => m.set(k, v), remove: k => m.delete(k), keys: () => [...m.keys()] };
+    }
+
+    notice(text) {
+      const el = $("studioNotice");
+      el.textContent = text;
+      el.hidden = false;
+      clearTimeout(this.noticeTimer);
+      this.noticeTimer = setTimeout(() => { el.hidden = true; }, 3200);
+    }
+
+    pages() {
+      return this.flipbook ? this.frames.map(frame => frame.layer) : this.layers.slice(1);
+    }
+
+    signature() {
+      const info = l => [l.id, l.version, l.visible, l.opacity, l.name];
+      return JSON.stringify([$("drawingTitle").value, this.viewW, this.viewH, this.flipbook, this.fps,
+        info(this.layers[0]), this.pages().map(info)]);
+    }
+
+    autosave() {
+      if (this.loading || this.activeStroke || this.exporting) return;
+      const sig = this.signature();
+      if (sig === this.lastSig) return;
+      this.saveNow();
+      this.lastSig = sig;
+    }
+
+    encodeLayer(layer) {
+      let data = layer.canvas.toDataURL("image/webp", 1);
+      if (data.length > MAX_ITEM_CHARS) data = layer.canvas.toDataURL("image/webp", 0.9);
+      if (data.length > MAX_ITEM_CHARS) data = layer.canvas.toDataURL("image/webp", 0.75);
+      return data.length > MAX_ITEM_CHARS ? null : data;
+    }
+
+    saveNow() {
+      const base = slotKey(this.slot), kv = this.kv, used = new Set();
+      let tooBig = false;
+      const info = layer => {
+        const key = `${base}-${layer.id}`;
+        const rec = this.savedLayers.get(layer.id);
+        if (!rec || rec.key !== key || rec.version !== layer.version) {
+          const data = this.encodeLayer(layer);
+          if (data) { kv.set(key, data); this.savedLayers.set(layer.id, { key, version: layer.version }); }
+          else tooBig = true;
+        }
+        used.add(key);
+        return { id: layer.id, name: layer.name, visible: layer.visible, opacity: layer.opacity, img: key };
+      };
+      kv.set(base, {
+        v: 1, title: $("drawingTitle").value.slice(0, 20), viewW: this.viewW, viewH: this.viewH,
+        flipbook: this.flipbook, fps: this.fps, frameIndex: this.frameIndex, active: this.activeLayerIndex,
+        background: info(this.layers[0]), layers: this.pages().map(info)
+      });
+      kv.set("slot", this.slot);
+      for (const key of kv.keys()) if (key.startsWith(base + "-") && !used.has(key)) kv.remove(key);
+      if (tooBig) this.notice("그림이 너무 복잡해서 한 장을 저장하지 못했어요.");
+      this.renderSlots();
+    }
+
+    async loadSlot(i) {
+      const meta = this.kv.get(slotKey(i));
+      this.stopPlayback();
+      this.actionLog = [];
+      this.redoLog = [];
+      this.savedLayers.clear();
+      const load = src => new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        img.src = src;
+      });
+      const make = async (info, name) => {
+        const layer = new Layer(info?.name || name);
+        if (!info) return layer;
+        if (typeof info.id === "string") layer.id = info.id;
+        layer.visible = info.visible !== false;
+        layer.opacity = Number.isFinite(info.opacity) ? info.opacity : 1;
+        const src = this.kv.get(info.img);
+        const img = typeof src === "string" ? await load(src) : null;
+        if (img) {
+          layer.ctx.drawImage(img, 0, 0);
+          // 되돌리기가 불러온 그림까지 지우지 않게 처음 모습을 남겨 둔다.
+          layer.snapshots = [{ index: 0, data: layer.ctx.getImageData(0, 0, CANVAS_W, CANVAS_H) }];
+          this.savedLayers.set(layer.id, { key: info.img, version: layer.version });
+        }
+        return layer;
+      };
+      const background = await make(meta?.background, "배경");
+      const pages = await Promise.all((meta?.layers || []).slice(0, meta?.flipbook ? MAX_FRAMES : MAX_LAYERS - 1).map((info, k) => make(info, `레이어 ${k + 2}`)));
+      if (meta?.flipbook && pages.length) {
+        this.flipbook = true;
+        this.frames = pages.map(layer => new Frame(layer));
+        this.frameIndex = Math.max(0, Math.min(pages.length - 1, meta.frameIndex | 0));
+        background.name = "배경 (모든 장)";
+        this.layers = [background, this.frames[this.frameIndex].layer];
+        this.activeLayerIndex = 1;
+        this.syncFrameNames();
+      } else {
+        this.flipbook = false;
+        this.frames = [];
+        this.frameIndex = 0;
+        this.layers = [background, ...pages];
+        this.activeLayerIndex = Math.max(0, Math.min(this.layers.length - 1, meta?.active | 0));
+      }
+      this.fps = Math.max(1, Math.min(12, Number(meta?.fps) || 6));
+      $("fpsSlider").value = this.fps;
+      $("fpsValue").textContent = this.fps;
+      $("drawingTitle").value = typeof meta?.title === "string" ? meta.title : "";
+      this.setViewSize(meta?.viewW || CANVAS_W, meta?.viewH || CANVAS_H);
+      this.applyModeUI();
+    }
+
+    applyModeUI() {
+      $("flipbookBtn").setAttribute("aria-pressed", String(this.flipbook));
+      $("flipStrip").hidden = !this.flipbook;
+      $("addLayerBtn").disabled = this.flipbook;
+      $("saveBtn").textContent = this.flipbook ? "GIF 내려받기" : "그림 내려받기";
+      this.renderLayerPanel();
+      if (this.flipbook) this.renderFrameList();
+      this.updateStageScale();
+      this.updateHistoryButtons();
+      this.composite();
+    }
+
+    async useSlot(i) {
+      if (this.loading || i === this.slot || i < 0 || i >= SLOTS || this.activeStroke) return;
+      this.autosave();
+      this.loading = true;
+      this.slot = i;
+      this.kv.set("slot", i);
+      await this.loadSlot(i);
+      this.touched = false;
+      this.lastSig = this.signature();
+      this.loading = false;
+      this.renderSlots();
+    }
+
+    // 칸 이름은 그림 제목(없으면 「N번 그림」).
+    renderSlots() {
+      const select = $("drawingSlot");
+      const options = Array.from({ length: SLOTS }, (_, i) => {
+        const meta = i === this.slot ? { title: $("drawingTitle").value } : this.kv.get(slotKey(i));
+        const filled = i === this.slot ? this.kv.has(slotKey(i)) || this.touched : Boolean(meta);
+        const title = String(meta?.title || "").trim();
+        const label = `${title ? `${i + 1}. ${title}` : `${i + 1}번 그림`}${filled ? "" : " (비어 있음)"}`;
+        return [String(i), label];
+      });
+      if (select.options.length !== SLOTS) select.replaceChildren(...options.map(([v, t]) => new Option(t, v)));
+      else options.forEach(([, t], i) => { if (select.options[i].textContent !== t) select.options[i].textContent = t; });
+      select.value = String(this.slot);
     }
 
     // ---------- UI wiring ----------
@@ -558,7 +757,7 @@
       $("flipbookBtn").setAttribute("aria-pressed", "true");
       $("flipStrip").hidden = false;
       $("addLayerBtn").disabled = true;
-      $("saveBtn").textContent = "GIF 저장";
+      $("saveBtn").textContent = "GIF 내려받기";
       this.syncFrameNames();
       this.renderLayerPanel();
       this.renderFrameList();
@@ -581,7 +780,7 @@
       $("flipbookBtn").setAttribute("aria-pressed", "false");
       $("flipStrip").hidden = true;
       $("addLayerBtn").disabled = false;
-      $("saveBtn").textContent = "저장";
+      $("saveBtn").textContent = "그림 내려받기";
       this.renderLayerPanel();
       this.updateStageScale();
       this.composite();
@@ -1049,6 +1248,7 @@
       }
 
       layer.version += 1;
+      this.touched = true;
       this.actionLog.push({ layer, stroke });
       this.redoLog = [];
       this.updateHistoryButtons();
@@ -1208,12 +1408,23 @@
       } finally {
         this.exporting = false;
         saveBtn.disabled = false;
-        saveBtn.textContent = this.flipbook ? "GIF 저장" : "저장";
+        saveBtn.textContent = this.flipbook ? "GIF 내려받기" : "그림 내려받기";
       }
     }
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    window.artStudio = new ArtStudio();
+    const studio = window.artStudio = new ArtStudio();
+    // 게시판에 올리기(그림 그리기·음악 만들기 공용 모듈이 부른다).
+    window.boardShareWork = {
+      noun: "그림",
+      title: () => $("drawingTitle").value.trim(),
+      nudge: () => studio.exportBaseName(),
+      describe: () => {
+        const pages = studio.flipbook ? studio.frames.length : 1;
+        return `「${$("drawingTitle").value.trim()}」 ${pages > 1 ? `플립북 ${pages}장을 움직이는 그림(GIF)으로` : "그림을"} 올려요.`;
+      },
+      build: onProgress => studio.buildUploadBlob(onProgress)
+    };
   });
 })();

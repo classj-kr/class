@@ -6,15 +6,16 @@
     <meta name="theme-color" content="#141a24" />
     <title>음악 만들기</title>
     <link rel="icon" href="/assets/icons/favicon.webp" />
-    <link rel="stylesheet" href="styles.css?v=20261118-name" />
+    <link rel="stylesheet" href="styles.css?v=20261118-share" />
     <script src="../../literacy-numeracy/math-tools/assets/math.js?v=20261108-2" defer></script>
-    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261118-name" defer></script>
+    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261118-share" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
     <script src="../instrument-room/korean-percussion-data.js" defer></script>
-    <script src="catalog.js?v=20261118-name" defer></script>
-    <script src="core.js?v=20261118-name" defer></script>
-    <script src="engine.js?v=20261118-name" defer></script>
-    <script src="app.js?v=20261118-name" defer></script>
+    <script src="catalog.js?v=20261118-share" defer></script>
+    <script src="core.js?v=20261118-share" defer></script>
+    <script src="engine.js?v=20261118-share" defer></script>
+    <script src="app.js?v=20261118-share" defer></script>
+    <script src="../shared/board-share.js?v=20261118-song" defer></script>
     <script src="/assets/sound/music-control.js?v=20261117-movable-gear" data-settings-help="tool-help" defer></script>
   </head>
   <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -31,11 +32,14 @@
       <label class="field">조 <select id="key"></select><select id="scale"><option value="major">장조</option><option value="minor">단조</option></select></label>
       <div class="history">
         <button id="undo" class="icon" aria-label="되돌리기">↶</button
-        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button
+        ><button id="reset" class="icon" aria-label="곡 전부 지우기" title="곡 전부 지우기">🗑</button>
       </div>
-      <label class="field">곡 <select id="song" aria-label="저장한 곡"></select></label>
-      <button id="reset">초기화</button
-      ><button id="export">MP3 저장</button>
+      <input id="song-title" class="song-title" type="text" maxlength="20" placeholder="곡 제목" autocomplete="off" aria-label="곡 제목" />
+      <select id="song" aria-label="저장한 곡"></select
+      ><button id="visit-keep" hidden>📥 내 곡에 담기</button>
+      <button id="shareBtn">📤 게시판</button
+      ><button id="export" class="primary-soft">MP3 내려받기</button>
     </div>
     <main class="studio">
       <section class="tracks" aria-label="트랙">
@@ -78,6 +82,20 @@
         </div>
       </section>
     </main>
+    <dialog id="shareDialog" class="share-dialog" aria-labelledby="shareTitle">
+      <form id="shareForm" novalidate>
+        <h2 id="shareTitle">게시판에 올리기</h2>
+        <p id="shareWhat" class="share-note"></p>
+        <label>방번호 <input id="shareCode" type="text" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="선생님이 알려 준 번호" /></label>
+        <label id="shareColumnLabel" hidden>올릴 칸 <select id="shareColumn"></select></label>
+        <p id="shareError" class="share-error" role="alert"></p>
+        <p id="shareDone" class="share-done" hidden>올렸어요! <a id="shareBoardLink" target="_blank" rel="noopener">게시판 보기</a></p>
+        <div class="share-actions">
+          <button id="shareClose" type="button">닫기</button>
+          <button id="shareSubmit" class="primary" type="submit">올리기</button>
+        </div>
+      </form>
+    </dialog>
     <p id="notice" role="status" hidden></p>
     <span id="save-status" class="sr-only" role="status"></span>
     <template id="tool-help"><ul>

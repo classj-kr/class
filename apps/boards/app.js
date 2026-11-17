@@ -290,6 +290,13 @@
       link.append(img); card.append(link);
     }
     card.append(element('p', p.content, 'post-content'));
+    if (p.song) {
+      // 음악 만들기 곡: 작곡판을 그대로 연다(듣고, 고쳐 보고, 내 곡 칸에 담을 수 있다).
+      const open = element('a', '🎵 음악 만들기에서 열기', 'post-song-link');
+      open.href = `/learning/arts/beat-maker/?board=${encodeURIComponent(boardId)}&song=${encodeURIComponent(p.song)}`;
+      open.target = '_blank'; open.rel = 'noopener';
+      card.append(open);
+    }
     if (p.kind !== 'note') {
       const list = element('ol', undefined, 'choice-list'); p.choices.forEach(choice => list.append(element('li', choice))); card.append(list);
       if (p.answer !== undefined) card.append(element('p', `정답: ${p.choices[p.answer]}${p.explanation ? '\n' + p.explanation : ''}`, 'answer-key'));

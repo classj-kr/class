@@ -235,7 +235,7 @@ function installBoardRaces({ router, asyncRoute, transaction, fail, integer, now
       const works = (await db.query(`SELECT p.id AS post_id, p.content, p.title_decoys, i.id AS image_id, m.id AS member_id, m.number, m.name
         FROM learning_board_posts p JOIN learning_board_images i ON i.board_id=p.board_id AND i.post_id=p.id
         JOIN learning_board_members m ON m.board_id=p.board_id AND m.id=p.member_id
-        WHERE p.board_id=$1 AND p.kind='note' AND NOT p.hidden`, [b.id])).rows.map(r => ({ postId: r.post_id, imageId: r.image_id,
+        WHERE p.board_id=$1 AND p.kind='note' AND NOT p.hidden AND i.mime LIKE 'image/%'`, [b.id])).rows.map(r => ({ postId: r.post_id, imageId: r.image_id,
         title: r.content, decoys: r.title_decoys || [], memberId: r.member_id, number: r.number,
         author: b.hide_names ? `${r.number}번` : `${r.number}번 ${r.name}`,
         artistName: b.hide_names ? `${r.number}번` : r.name, numberOnly: b.hide_names }));

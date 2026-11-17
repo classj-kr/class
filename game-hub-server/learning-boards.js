@@ -5,7 +5,7 @@ const path = require('node:path');
 const QRCode = require('qrcode');
 const { installBoardRaces } = require('./learning-board-races');
 const { installBoardComments } = require('./learning-board-comments');
-const { installBoardImages, attachBoardImage } = require('./learning-board-images');
+const { installBoardImages, attachBoardImage, SONG_MIME } = require('./learning-board-images');
 const { installStackingBoards } = require('./stacking-boards');
 
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
@@ -284,7 +284,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       const likes = b.likes_enabled ? (await db.query(`SELECT post_id, COUNT(*)::int AS count, BOOL_OR(actor_key=$2) AS liked
         FROM learning_board_likes WHERE board_id=$1 GROUP BY post_id`, [b.id, who.teacher ? 'teacher' : who.id])).rows : [];
       const comments = b.comments_enabled ? (await db.query('SELECT post_id, COUNT(*)::int AS count FROM learning_board_comments WHERE board_id=$1 GROUP BY post_id', [b.id])).rows : [];
-      const images = (await db.query('SELECT id, post_id FROM learning_board_images WHERE board_id=$1 AND post_id IS NOT NULL', [b.id])).rows;
+      const images = (await db.query('SELECT id, post_id, mime FROM learning_board_images WHERE board_id=$1 AND post_id IS NOT NULL', [b.id])).rows;
       const sets = (await db.query('SELECT id, title, status, jsonb_array_length(questions) AS count FROM learning_board_sets WHERE board_id=$1 ORDER BY created_at DESC', [b.id])).rows;
       const live = (await db.query("SELECT id FROM learning_board_races WHERE board_id=$1 AND NOT finished AND (state->>'phase' <> 'running' OR (state->>'endsAt')::bigint > $2)", [b.id, now()])).rows[0] || null;
       const result = posts.filter(p => who.teacher || (!p.hidden && (p.kind === 'note' || p.member_id === who.id))).map(p => {
@@ -293,7 +293,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         const reaction = likes.find(l => l.post_id === p.id);
         const image = images.find(i => i.post_id === p.id);
         return { id: p.id, kind: p.kind, content: p.content, link: p.link, column: p.column_index, choices: p.choices,
-          ...(image ? { image: image.id } : {}),
+          ...(image ? (image.mime === SONG_MIME ? { song: image.id } : { image: image.id }) : {}),
           author: !m ? '선생님' : b.hide_names && !who.teacher ? `${m.number}번` : `${m.number}번 ${m.name}`,
           number: m?.number ?? null, mine: who.teacher ? p.member_id === null : p.member_id === who.id, hidden: p.hidden, createdAt: p.created_at,
           reviewStatus: p.review_status, revision: p.revision,

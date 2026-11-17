@@ -120,6 +120,7 @@
   }
   const initial = {
     version: 3,
+    title: "",
     bpm: 90,
     swing: 0,
     meter: "4/4",
@@ -160,6 +161,7 @@
       Object.hasOwn(SCALES, s.scale) &&
       Array.isArray(s.tracks) && s.tracks.length >= 1 && s.tracks.length <= MAX_TRACKS;
     if (!ok) throw Error("곡을 읽을 수 없어요.");
+    s.title = typeof s.title === "string" ? s.title.slice(0, 20) : "";
     const ids = new Set();
     for (const t of s.tracks) {
       const m = K.MODELS[t?.instrument];

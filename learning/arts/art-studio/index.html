@@ -6,10 +6,11 @@
 <meta name="theme-color" content="#fef3e2">
 <title>그림 그리기</title>
 <meta name="description" content="연필·크레파스·마카·수채화 브러시로 자유롭게 그리는 그림 도구">
-<link rel="stylesheet" href="styles.css?v=20261108-share-identity">
+<link rel="stylesheet" href="styles.css?v=20261118-slots">
 <script src="gif-encoder.js?v=20261106" defer></script>
-<script src="app.js?v=20261106-share" defer></script>
-<script src="board-share.js?v=20261108-share-identity" defer></script>
+<script src="/assets/site-storage.js?v=20261006-1" defer></script>
+<script src="app.js?v=20261118-slots" defer></script>
+<script src="../shared/board-share.js?v=20261118-song" defer></script>
 </head>
 <body>
 <div class="app-shell">
@@ -41,6 +42,9 @@
       <section class="rail-card title-card toolbar">
         <a class="back-link" href="../../../" aria-label="메인 화면으로 돌아가기">←</a>
         <input id="drawingTitle" type="text" maxlength="20" placeholder="그림 제목" autocomplete="off">
+      </section>
+      <section class="rail-card slot-card">
+        <select id="drawingSlot" aria-label="저장한 그림"></select>
       </section>
 
       <section class="rail-card">
@@ -108,12 +112,12 @@
         <div class="history-row">
           <button id="undoBtn" class="icon-btn" type="button" title="되돌리기" disabled>↶</button>
           <button id="redoBtn" class="icon-btn" type="button" title="다시하기" disabled>↷</button>
-          <button id="clearBtn" class="icon-btn" type="button" title="현재 레이어 지우기">🗑</button>
+          <button id="clearBtn" class="icon-btn" type="button" title="현재 레이어 지우기" aria-label="현재 레이어 지우기">🗑</button>
           <button id="flipbookBtn" class="mode-btn" type="button" aria-pressed="false">🎞 플립북</button>
         </div>
         <div class="save-row">
           <button id="shareBtn" class="mode-btn" type="button">📤 게시판</button>
-          <button id="saveBtn" class="primary-btn" type="button">저장</button>
+          <button id="saveBtn" class="primary-btn" type="button">그림 내려받기</button>
         </div>
       </section>
 
@@ -137,5 +141,6 @@
     </aside>
   </main>
 </div>
+<p id="studioNotice" class="studio-notice" role="status" hidden></p>
 </body>
 </html>

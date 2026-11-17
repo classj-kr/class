@@ -77,6 +77,20 @@ test('board images upload, attach, display and follow post visibility', async ()
     const tpost = await req(base + '/posts', 'POST', { content: '선생님 플립북', image: gif.id }, teacher, 201);
     assert.equal((await image(board.id, gif.id, alice)).headers.get('content-type'), 'image/gif');
 
+    // 음악 만들기 곡(작곡판 JSON): 그림이 아니라 song 으로 내려가고 작품 퀴즈에는 끼지 않는다.
+    const SONG = Buffer.from(JSON.stringify({ beatSong: 1, title: '봄 노래', song: { bpm: 90, tracks: [] } }));
+    await upload(board.id, Buffer.from('{"beatSong":2,"song":{}}'), alice, 400, 'application/octet-stream');
+    await upload(board.id, Buffer.from('{"title":"x"}'), alice, 400, 'application/octet-stream');
+    const song = await upload(board.id, SONG, alice, 201, 'application/octet-stream');
+    const spost = await req(base + '/posts', 'POST', { content: '봄 노래', image: song.id }, alice, 201);
+    const sview = (await req(base, 'GET', undefined, bob)).posts.find(p => p.id === spost.id);
+    assert.equal(sview.song, song.id);
+    assert.equal(sview.image, undefined);
+    const sres = await image(board.id, song.id, bob);
+    assert.equal(sres.headers.get('content-type').split(';')[0], 'application/vnd.classj.song+json');
+    assert.equal(JSON.parse(Buffer.from(await sres.arrayBuffer()).toString()).title, '봄 노래');
+    await req(base + '/posts/' + spost.id, 'DELETE', undefined, alice);
+
     // Editing text keeps the picture; deleting the post removes it.
     await req(base + '/posts/' + post.id, 'PATCH', { content: '우리 동네 지도', revision: 1 }, alice);
     assert.equal((await req(base)).posts.find(p => p.id === post.id).image, up.id);

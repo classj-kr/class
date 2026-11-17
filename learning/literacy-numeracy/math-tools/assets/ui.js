@@ -16,6 +16,8 @@
     // 저장 칸: 0번은 예전과 같은 "board", 1번부터 "board-2"… (options.slots 개수만큼).
     const slotKey = (i) => (i ? "board-" + (i + 1) : "board");
     let slot = 0;
+    // 남의 작품(게시판에서 연 곡 등)을 보는 중: 고쳐 볼 수는 있지만 어느 칸에도 저장하지 않는다.
+    let visiting = false;
     // 저장 공간을 못 열었을 때(연결 끊김 등)도 칸을 오가는 동안은 곡을 기억한다.
     const memory = new Map();
     const kept = {
@@ -42,6 +44,7 @@
     }
     async function save() {
       edited = true;
+      if (visiting) return;
       if (!store) return;
       if (!store.persistent) {
         status("이 탭에서 사용 중");
@@ -91,14 +94,47 @@
       },
       // 저장 칸에 곡이 들어 있는지(지금 칸은 손댔으면 들어 있는 것으로 본다).
       slotFilled(i) {
-        return (i === slot && edited) || kept.has(slotKey(i));
+        return (i === slot && edited && !visiting) || kept.has(slotKey(i));
+      },
+      // 저장 칸에 든 작품(지금 칸은 지금 상태). 빈 칸은 undefined.
+      slotData(i) {
+        if (i === slot && !visiting) return state;
+        return kept.has(slotKey(i)) ? kept.get(slotKey(i)) : undefined;
+      },
+      get visiting() {
+        return visiting;
+      },
+      // 남의 작품을 연다. 지금 작품은 제 칸에 남겨 둔다.
+      visit(data) {
+        api.stop();
+        if (gesture) api.end(false, false);
+        if (edited && !visiting) kept.set(slotKey(slot), M.copy(state));
+        state = options.validate(data);
+        visiting = true;
+        edited = false;
+        past.length = 0;
+        future.length = 0;
+        options.slotChanged?.(slot);
+        render();
+      },
+      // 보던 작품을 i번 칸에 담고, 그 칸으로 옮겨 간다(칸에 있던 것은 덮어쓴다).
+      keepVisit(i) {
+        if (!visiting || !options.slots || i < 0 || i >= options.slots) return;
+        if (gesture) api.end(false, false);
+        visiting = false;
+        slot = i;
+        if (store) store.set("slot", i);
+        options.slotChanged?.(i);
+        save();
+        render();
       },
       // 다른 저장 칸으로 바꾼다. 지금 곡은 그 칸에 남겨 두고, 고른 칸의 곡(없으면 새 곡)을 연다.
       useSlot(i) {
-        if (!options.slots || i === slot || i < 0 || i >= options.slots) return;
+        if (!options.slots || (i === slot && !visiting) || i < 0 || i >= options.slots) return;
         api.stop();
         if (gesture) api.end(false, false); // 끌던 조작은 지금 곡에 넣고 넘어간다.
-        if (edited) kept.set(slotKey(slot), M.copy(state));
+        if (edited && !visiting) kept.set(slotKey(slot), M.copy(state));
+        visiting = false;
         slot = i;
         edited = false;
         past.length = 0;
@@ -206,12 +242,12 @@
               status("저장 실패");
               notice("저장하지 못했어요. 연결을 확인한 뒤 다시 조작해 주세요.");
             });
-            if (options.slots && !edited) {
+            if (options.slots && !edited && !visiting) {
               const last = Number(store.get("slot"));
               if (Number.isInteger(last) && last > 0 && last < options.slots) slot = last;
               options.slotChanged?.(slot);
             }
-            if (!edited && store.has(slotKey(slot))) {
+            if (!edited && !visiting && store.has(slotKey(slot))) {
               try {
                 state = options.validate(store.get(slotKey(slot)));
                 render();
@@ -219,7 +255,8 @@
                 notice("저장한 작업을 읽지 못해서 새로 열었어요.");
               }
             }
-            if (edited) save();
+            if (edited && !visiting) save();
+            else if (visiting) status("저장 안 됨(친구 작품)");
             else
               status(
                 store.persistent ? "계정에 자동 저장" : "이 탭에서 사용 중",

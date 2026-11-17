@@ -284,11 +284,18 @@
 
   // 저장한 곡 다섯 칸. 빈 칸은 「비어 있음」으로 보여 준다.
   const SONGS = 5;
+  // 칸 이름은 곡 제목으로 보인다(제목이 없으면 「N번 곡」). 친구 곡을 여는 중이면 맨 위에 그 곡이 선다.
   function renderSongs() {
-    const html = Array.from({ length: SONGS }, (_, i) =>
-      `<option value="${i}">${i + 1}번 곡${app.slotFilled(i) ? "" : " (비어 있음)"}</option>`).join("");
+    const name = (i) => {
+      const title = app.slotData(i)?.title?.trim();
+      return `${title ? `${i + 1}. ${esc(title)}` : `${i + 1}번 곡`}${app.slotFilled(i) ? "" : " (비어 있음)"}`;
+    };
+    const visit = app.visiting ? `<option value="visit">🎵 ${esc(app.state.title.trim() || "친구 곡")}</option>` : "";
+    const html = visit + Array.from({ length: SONGS }, (_, i) => `<option value="${i}">${name(i)}</option>`).join("");
     if ($("song").innerHTML !== html) $("song").innerHTML = html;
-    $("song").value = String(app.slot);
+    $("song").value = app.visiting ? "visit" : String(app.slot);
+    $("visit-keep").hidden = !app.visiting;
+    U.value("song-title", app.state.title);
   }
   function songChanged() {
     if (E.playing) { E.stop(); setPlaying(false); }
@@ -296,7 +303,46 @@
     picked.clear();
   }
   const app = U.app({ name: "beat-maker", quiet: true, initial: B.initial, validate: B.validate, render, slots: SONGS, slotChanged: () => songChanged() });
-  U.bind("song", "change", () => app.useSlot(Number($("song").value)));
+  U.bind("song", "change", () => { if ($("song").value !== "visit") app.useSlot(Number($("song").value)); });
+  // 곡 제목: 치는 동안은 미리 보기, 다 치면 한 번의 고침으로 남긴다.
+  U.bind("song-title", "input", () => app.preview((s) => { s.title = $("song-title").value.slice(0, 20); }));
+  U.bind("song-title", "change", () => app.end(false));
+  const nudgeTitle = () => {
+    const input = $("song-title");
+    input.focus();
+    input.classList.remove("shake-warning");
+    void input.offsetWidth;
+    input.classList.add("shake-warning");
+  };
+  // 친구 곡을 내 칸에 담는다: 빈 칸이 있으면 첫 빈 칸, 없으면 마지막으로 쓰던 칸에 덮어쓸지 묻는다.
+  U.bind("visit-keep", "click", () => {
+    let i = Array.from({ length: SONGS }, (_, k) => k).find((k) => !app.slotFilled(k));
+    if (i === undefined) {
+      i = app.slot;
+      if (!confirm(`빈 칸이 없어요. ${i + 1}번 곡에 덮어쓸까요?`)) return;
+    }
+    app.keepVisit(i);
+    app.notice(`${i + 1}번 칸에 담았어요.`);
+  });
+  // 게시판에는 결과물(MP3)이 아니라 작곡판 자체를 올린다. 친구가 열면 이 곡이 그대로 열린다.
+  window.boardShareWork = {
+    noun: "곡",
+    title: () => app.state.title.trim(),
+    nudge: nudgeTitle,
+    describe: () => `「${app.state.title.trim()}」 곡을 올려요.`,
+    build: async () => new Blob([JSON.stringify({ beatSong: 1, title: app.state.title.trim(), song: app.state })], { type: "application/octet-stream" }),
+  };
+  // 게시판에서 연 곡(?board=…&song=…): 내 칸에는 저장하지 않고 연다.
+  const params = new URLSearchParams(location.search);
+  if (params.get("board") && params.get("song")) {
+    fetch(`/api/boards/${encodeURIComponent(params.get("board"))}/images/${encodeURIComponent(params.get("song"))}`, { credentials: "same-origin" })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data) => {
+        if (data?.beatSong !== 1) throw 0;
+        app.visit({ ...data.song, title: data.song.title || data.title || "" });
+      })
+      .catch(() => app.notice("게시판의 곡을 열지 못했어요. 게시판에서 다시 눌러 주세요."));
+  }
   // 소리 파일(ogg)을 못 풀면 소리 없이 조용히 지나가지 않게 한 번 알려 준다(아이패드는 iPadOS 18.4부터 된다).
   let soundWarned = false;
   window.addEventListener("beatsoundfail", () => {
@@ -705,14 +751,14 @@
       const blob = await E.mp3(app.state);
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "음악 만들기.mp3";
+      a.download = `${(app.state.title.trim() || "음악 만들기").replace(/[\\/:*?"<>|]/g, "")}.mp3`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 5000);
     } catch (_) {
       app.notice("파일을 만들지 못했어요.");
     } finally {
       $("export").disabled = false;
-      $("export").textContent = "MP3 저장";
+      $("export").textContent = "MP3 내려받기";
     }
   });
 
