@@ -124,11 +124,16 @@
       .replace(/^(이\/가|을\/를|은\/는|와\/과)/, (m) => pairs[m][coda ? 0 : 1]);
   }
 
+  // '끼어들다'가 '끼어들었습니다', '후련하다'가 '후련했습니다'로 바뀌어 있으면 줄기('끼어들', '후련')만 칠한다.
+  const stemsOf = (word) => /다$/.test(word) ? [word.slice(0, -1), word.slice(0, -2)].filter((stem) => stem.length >= 2) : [];
   function sentenceWith(text, word, lead = '') {
     const p = element('p', '', 'word-use');
-    const at = wordAt(text, word);
+    let at = wordAt(text, word), mark = word;
+    for (const stem of at < 0 ? stemsOf(word) : []) {
+      if (text.includes(stem)) { at = text.indexOf(stem); mark = stem; break; }
+    }
     if (at < 0) { p.textContent = lead + text; return p; }
-    p.append(lead + text.slice(0, at), element('mark', word), text.slice(at + word.length));
+    p.append(lead + text.slice(0, at), element('mark', mark), text.slice(at + mark.length));
     return p;
   }
 
@@ -136,7 +141,7 @@
     const card = element('article', '', 'word-card');
     const head = element('div', '', 'word-head');
     head.append(element('h3', word.w));
-    const hanja = hanjaOf(word);
+    const hanja = Number(term[0]) <= 2 ? null : hanjaOf(word);
     if (hanja) head.append(hanja);
     card.append(head, element('p', word.mean, 'word-mean'), sentenceWith(word.use, word.w));
     return card;
@@ -270,8 +275,10 @@
     const page = element('article', '', 'word-page');
     const head = element('header', '', 'word-title');
     head.append(element('h3', word.w));
-    if (word.en) head.append(englishOf(word.en));
-    const hanja = hanjaOf(word);
+    // 2학년은 영어 낱말과 한자를 띄우지 않는다(읽기가 느린 아이에게 방해만 된다).
+    const young = Number(term[0]) <= 2;
+    if (word.en && !young) head.append(englishOf(word.en));
+    const hanja = young ? null : hanjaOf(word);
     if (hanja) head.append(hanja);
     page.append(head);
     const figure = (window.CurriculumFigures || {})[`${term}/${subject}/${unit.id}/${word.w}`];
@@ -316,7 +323,7 @@
         for (const sense of rows) {
           const item = element('li', '', 'meaning');
           const text = element('p', '', 'word-mean');
-          if (sense.hanja) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
+          if (sense.hanja && Number(term[0]) > 2) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
           text.append(sense.mean);
           item.append(text, sentenceWith(sense.use, word.w));
           list.append(item);

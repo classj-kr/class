@@ -155,7 +155,7 @@
     const FX = [372, 424, 476, 528, 580];
     FX.forEach((x, i) => { body += at(2, 'pop', raccoon(x, 134, 20), 0.1 + i * 0.12); });
     body += ring(178, 182, 62, 82, C.green, 2, 0.9) + ring(476, 136, 136, 40, C.green, 2, 1.1);
-    body += at(2, 'pop', tag(178, 326, '또야', ROLE.p, 22), 1.3) + at(2, 'pop', tag(476, 78, '친구 다섯', ROLE.p, 22), 1.4);
+    body += at(2, 'pop', tag(178, 326, '아기 너구리', ROLE.p, 20), 1.3) + at(2, 'pop', tag(476, 78, '친구 다섯', ROLE.p, 22), 1.4);
     // 칸 3: 또야네 엄마가 나와 밤을 하나 준다
     body += at(3, 'pop', rbody(476, 214, 26, true) + raccoon(476, 214, 26), 0.2);
     body += at(3, 'pop', chestnut(522, 262, 1.2), 0.8);

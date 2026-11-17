@@ -1,9 +1,9 @@
 // tools/curriculum-vocabulary/build.mjs 가 만든 학기 목록이다. 직접 고치지 말 것.
 window.CurriculumTerms = {
  "2-1": {
-  "words": "words-2-1.js?v=3ae6a86e",
+  "words": "words-2-1.js?v=ad480437",
   "figures": [
-   "figures/2-1/kor-2.js?v=4ba5c166",
+   "figures/2-1/kor-2.js?v=6351e036",
    "figures/2-1/kor.js?v=b2ea0d49",
    "figures/2-1/math-1.js?v=b934d9be",
    "figures/2-1/math-2.js?v=3a86cd9d",
@@ -14,7 +14,7 @@ window.CurriculumTerms = {
   ]
  },
  "2-2": {
-  "words": "words-2-2.js?v=a31f6ec6",
+  "words": "words-2-2.js?v=bf10d5cd",
   "figures": [
    "figures/2-2/kor.js?v=ee35e800",
    "figures/2-2/math-1.js?v=e541ec66",
@@ -248,9 +248,9 @@ window.CurriculumTerms = {
 // 만드는 중인 학기까지(주소에 ?preview=1 을 붙일 때만 씀)
 window.CurriculumTermsPreview = {
  "2-1": {
-  "words": "words-2-1.js?v=3ae6a86e",
+  "words": "words-2-1.js?v=ad480437",
   "figures": [
-   "figures/2-1/kor-2.js?v=4ba5c166",
+   "figures/2-1/kor-2.js?v=6351e036",
    "figures/2-1/kor.js?v=b2ea0d49",
    "figures/2-1/math-1.js?v=b934d9be",
    "figures/2-1/math-2.js?v=3a86cd9d",
@@ -261,7 +261,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "2-2": {
-  "words": "words-2-2.js?v=a31f6ec6",
+  "words": "words-2-2.js?v=bf10d5cd",
   "figures": [
    "figures/2-2/kor.js?v=ee35e800",
    "figures/2-2/math-1.js?v=e541ec66",
