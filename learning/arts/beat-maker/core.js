@@ -34,7 +34,7 @@
     return SOLFEGE[(((midi - doPc) % 12) + 12) % 12] || "";
   }
   // 계이름 색: 도부터 빨·주·노·초·파·남·보. 조에 없는 음은 회색.
-  const SOLFEGE_COLORS = { 도: "#e53935", 레: "#fb8c00", 미: "#fdd835", 파: "#43a047", 솔: "#1e88e5", 라: "#3949ab", 시: "#8e24aa" };
+  const SOLFEGE_COLORS = { 도: "#e53935", 레: "#fb8c00", 미: "#fdd835", 파: "#43a047", 솔: "#1e88e5", 라: "#2346b0", 시: "#a020f0" };
   const OFF_KEY_COLOR = "#8a93a1";
   const solfegeColor = (midi, key, scale) => SOLFEGE_COLORS[solfege(midi, key, scale)] || OFF_KEY_COLOR;
 
