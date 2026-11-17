@@ -9,6 +9,16 @@
   const params = new URLSearchParams(location.search);
   // 「3분의 2」처럼 글자로 쓴 분수는 위아래로 쌓은 분수로 보인다(교과서 단어·수학 문제).
   window.FractionText?.watch($('raceScreen'));
+  // 우리 반 이름(/assets/classmate-names.js): 교과서 단어 문장의 「한 아이」 자리에 넣는다. 문제마다 한 번 뽑아 둔다.
+  let classList = null;
+  window.ClassmateNames?.ready.then((list) => { classList = list; });
+  const namedText = new Map();
+  const classNamed = (q) => {
+    if (!classList || !window.ClassmateNames) return q.text;
+    const key = `${q.no}|${q.text}`;
+    if (!namedText.has(key)) namedText.set(key, window.ClassmateNames.scene(classList)(q.text));
+    return namedText.get(key);
+  };
   // ── 바탕: 글자 연과 날리는 글자 ─────────────────────
   // 가운데 연은 시상대·문제 카드 뒤에 겹치지 않게 위쪽 오른편으로 비켜 띄운다.
   const KITES = [[8, 22, 4, 7, 5], [26, 12, 214, 9, 6], [60, 8, 146, 8, 5.5], [72, 22, 330, 10, 6.5], [90, 30, 40, 7.5, 5]];
@@ -779,8 +789,10 @@
     $('qAsk').hidden = !q.ask;
     if (q.set === 'hanja') fillHanjaLabel(text, q.text);
     else {
+      // 교과서 단어 문장의 「한 아이」 자리에는 우리 반 친구 이름을 넣는다(같은 문제를 다시 그려도 같은 이름).
+      const shown = q.set === 'textbook' ? classNamed(q) : q.text;
       // 맞춤법 문장의 빈칸(___)은 칸으로 그린다.
-      text.replaceChildren(...String(q.text).split(/_{2,}/).flatMap((part, i) => {
+      text.replaceChildren(...String(shown).split(/_{2,}/).flatMap((part, i) => {
         const nodes = [];
         if (i) { const blank = document.createElement('span'); blank.className = 'blank'; nodes.push(blank); }
         nodes.push(document.createTextNode(part));

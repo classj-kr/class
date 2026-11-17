@@ -21,7 +21,28 @@
   const figuresOf = (key, name) => manifest[key].figures.filter((file) => file.split('/').pop().split(/[-.]/)[0] === subjectCode[name]);
   function loadTerm(key, name = subject) {
     if (!manifest[key]) return Promise.resolve();
-    return Promise.all([manifest[key].words, ...figuresOf(key, name)].map(loadScript));
+    return Promise.all([manifest[key].words, ...figuresOf(key, name)].map(loadScript))
+      .then((done) => (window.ClassmateNames ? window.ClassmateNames.ready : Promise.resolve(null)).then((list) => { nameWords(key, list); return done; }));
+  }
+
+  // 장면 글·예문·빈칸 문제의 「한 아이」 같은 자리에 우리 반 친구 이름을 넣는다(/assets/classmate-names.js).
+  // 낱말 하나가 한 장면이라 그 낱말 안에서는 같은 아이가 같은 이름이다. 학기마다 처음 불러올 때 한 번.
+  const named = new Set();
+  function nameWords(key, list) {
+    if (!list || named.has(key) || !books[key]) return;
+    named.add(key);
+    for (const book of Object.values(books[key])) {
+      for (const unit of book.units || []) {
+        for (const word of unit.words || []) {
+          if (/아이|친구|짝/.test(word.w)) continue;
+          const swap = window.ClassmateNames.scene(list);
+          if (word.beats) word.beats = word.beats.map(swap);
+          if (word.blanks) word.blanks = word.blanks.map(swap);
+          word.use = swap(word.use);
+          for (const sense of word.senses || []) sense.use = swap(sense.use);
+        }
+      }
+    }
   }
   // 화면을 그린 뒤 같은 학기 다른 과목의 도식은 뒤에서 미리 받아 둔다(과목을 바꿀 때 기다리지 않게).
   function prefetchTerm(key) {
@@ -125,7 +146,7 @@
   }
 
   // '끼어들다'가 '끼어들었습니다', '후련하다'가 '후련했습니다'로 바뀌어 있으면 줄기('끼어들', '후련')만 칠한다.
-  const stemsOf = (word) => /다$/.test(word) ? [word.slice(0, -1), word.slice(0, -2)].filter((stem) => stem.length >= 2) : [];
+  const stemsOf = (word) => /다$/.test(word) ? [word.slice(0, -1), word.length > 3 ? word.slice(0, -2) : ''].filter(Boolean) : [];
   function sentenceWith(text, word, lead = '') {
     const p = element('p', '', 'word-use');
     let at = wordAt(text, word), mark = word;
@@ -141,7 +162,7 @@
     const card = element('article', '', 'word-card');
     const head = element('div', '', 'word-head');
     head.append(element('h3', word.w));
-    const hanja = Number(term[0]) <= 2 ? null : hanjaOf(word);
+    const hanja = Number(term[0]) <= 3 ? null : hanjaOf(word);
     if (hanja) head.append(hanja);
     card.append(head, element('p', word.mean, 'word-mean'), sentenceWith(word.use, word.w));
     return card;
@@ -278,10 +299,9 @@
     const page = element('article', '', 'word-page');
     const head = element('header', '', 'word-title');
     head.append(element('h3', word.w));
-    // 2학년은 영어 낱말과 한자를 띄우지 않는다(읽기가 느린 아이에게 방해만 된다).
-    const young = Number(term[0]) <= 2;
-    if (word.en && !young) head.append(englishOf(word.en));
-    const hanja = young ? null : hanjaOf(word);
+    // 2학년은 영어 낱말을, 3학년까지는 한자 글자를 띄우지 않는다(읽기가 느린 아이에게 방해만 된다). 영어는 3학년부터 배운다.
+    if (word.en && Number(term[0]) >= 3) head.append(englishOf(word.en));
+    const hanja = Number(term[0]) <= 3 ? null : hanjaOf(word);
     if (hanja) head.append(hanja);
     page.append(head);
     const figure = (window.CurriculumFigures || {})[`${term}/${subject}/${unit.id}/${word.w}`];
@@ -327,7 +347,7 @@
         for (const sense of rows) {
           const item = element('li', '', 'meaning');
           const text = element('p', '', 'word-mean');
-          if (sense.hanja && Number(term[0]) > 2) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
+          if (sense.hanja && Number(term[0]) > 3) text.append(element('span', sense.hanja, 'hanja-glyph small'), ' ');
           text.append(sense.mean);
           item.append(text, sentenceWith(sense.use, word.w));
           list.append(item);
@@ -659,7 +679,7 @@
       const homonym = target.kind === '동형어';
       note.append(element('b', kindName(homonym ? '동형어' : '다의어'), homonym ? 'k-homonym' : 'k-polysemy'),
         homonym ? ' 소리만 같은 다른 낱말입니다.' : ' 같은 낱말이 다른 뜻으로 쓰였습니다.');
-      if (target.hanja && Number(term[0]) > 2) note.append(' ', element('span', target.hanja, 'hanja-glyph small'));
+      if (target.hanja && Number(term[0]) > 3) note.append(' ', element('span', target.hanja, 'hanja-glyph small'));
       return note;
     }
 

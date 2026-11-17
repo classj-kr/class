@@ -5882,6 +5882,53 @@ function createClassroomPlatform(options = {}) {
     return /^data:image\/(png|jpeg|webp);base64,/.test(s) && s.length <= 200000;
   }
 
+  // 학습 글(교과서 단어 장면·예문)의 「한 아이」 자리에 넣을 우리 반 이름.
+  // 반 명단을 통째로 내주지 않도록 성을 뗀 이름만, 번호·아바타 없이, 섞어서 준다.
+  // 학생은 자기 반, 담임 교사는 맡은 반. 반이 없으면 names 는 비고 self(자기 이름)만 쓴다.
+  router.get("/me/classmates", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    const firstName = (value) => {
+      const name = String(value || "").normalize("NFC").replace(/\s+/g, "");
+      if (/^[가-힣]{3}$/.test(name)) return name.slice(1);
+      if (/^[가-힣]{4}$/.test(name)) return name.slice(2);
+      return name;
+    };
+    let scope = null;
+    let self = "";
+    const membership = await studentMembership(user.id);
+    if (membership) {
+      self = membership.studentName;
+      scope = [membership.schoolId, membership.academicYear, membership.grade, membership.classNumber];
+    } else {
+      const teacher = await teacherRegistration(user);
+      if (teacher) {
+        self = teacher.teacher_name;
+        if (teacher.grade && teacher.class_number) {
+          scope = [teacher.school_id, teacher.academic_year || new Date().getFullYear(), teacher.grade, teacher.class_number];
+        }
+      }
+    }
+    let names = [];
+    if (scope && pool && databaseReady) {
+      const result = await pool.query(
+        `SELECT s.roster_name FROM school_students s
+         JOIN classroom_schools sc ON sc.id = s.school_id
+         WHERE sc.enabled = TRUE AND s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
+         UNION ALL
+         SELECT s.roster_name FROM classroom_students s
+         JOIN classroom_classes c ON c.id = s.class_id
+         WHERE c.school_id = $1 AND c.academic_year = $2 AND c.grade = $3 AND c.class_number = $4 AND s.roster_active = TRUE`,
+        scope
+      ).catch(() => ({ rows: [] }));
+      names = [...new Set(result.rows.map((row) => firstName(row.roster_name)).filter((name) => /^[가-힣]{1,4}$/.test(name)))];
+      for (let i = names.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [names[i], names[j]] = [names[j], names[i]];
+      }
+    }
+    res.json({ self: firstName(self), names });
+  }));
+
   router.get("/me/signature", asyncRoute(async (req, res) => {
     const user = await requireUser(req);
     res.json({ signature: await storedSignature(user.id) || null });
