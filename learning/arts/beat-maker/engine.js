@@ -163,7 +163,8 @@
       env.gain.exponentialRampToValueAtTime(0.0001, at + snd.decay);
       src.stop(at + snd.decay + 0.08);
     } else if (!snd.oneShot) {
-      const stop = at + Math.max(bass ? 0.25 : 0.05, seconds), release = snd.held ? 0.12 : bass ? 0.18 : 0.25;
+      // 피아노처럼 저절로 잦아드는 소리는 손을 뗀 뒤에도 0.6초쯤 울려야 음이 들린다(짧게 끊으면 "똑" 소리만 남는다).
+      const stop = at + Math.max(bass ? 0.25 : 0.05, seconds), release = snd.held ? 0.12 : bass ? 0.18 : 0.6;
       env.gain.setValueAtTime(level, stop);
       env.gain.setTargetAtTime(0.0001, stop, release / 3);
       src.stop(stop + release * 2);
@@ -177,7 +178,7 @@
       const g = audio.createGain();
       g.gain.value = volume;
       g.connect(mix.input);
-      voice(audio, mix, g, snd, pitch, audio.currentTime + 0.01, 0.45);
+      voice(audio, mix, g, snd, pitch, audio.currentTime + 0.01, snd.pads ? 0.45 : 0.9);
     }).catch(() => {});
   }
 
