@@ -114,7 +114,7 @@
 
   // ---------- 한 음 내기 ----------
   // out: 트랙 출력, m: 그 오디오의 믹서, at: 시작 시각, seconds: 울릴 길이
-  function voice(audio, m, out, snd, pitch, at, seconds) {
+  function voice(audio, m, out, snd, pitch, at, seconds, gain = 1) {
     const buffer = buffers.get(keyOf(snd, fileNote(snd, pitch)));
     if (!buffer) return;
     const src = audio.createBufferSource(), env = audio.createGain();
@@ -125,7 +125,7 @@
       const requested = snd.korean
         ? velocity * Math.pow(10, koreanTargetDb(id) / 20) / peak(buffer)
         : velocity * Math.pow(10, ((snd.gainDb || 0) + (snd.boost[id] || 0)) / 20);
-      env.gain.setValueAtTime(drumGain(buffer, requested, velocity, id, snd.kit), at);
+      env.gain.setValueAtTime(drumGain(buffer, requested, velocity, id, snd.kit) * gain, at);
       // 하이햇을 다시 치거나 페달을 밟으면 울리던 열린 하이햇은 멈춘다.
       if (snd.kit && (id === "hat" || id === "pedalhat" || id === "openhat")) {
         const prev = m.chokes.get(out);
@@ -138,7 +138,7 @@
     const a = B.anchor(snd, pitch), velocity = 0.8;
     const high = 1 + Math.max(0, pitch - 60) / 64;
     const perf = Math.max(0.08, Math.min(1.7, Math.pow(velocity, 0.9) * 1.22 * high));
-    const level = upwardGain(buffer, perf * Math.pow(10, (snd.gainDb || 0) / 20), perf);
+    const level = upwardGain(buffer, perf * Math.pow(10, (snd.gainDb || 0) / 20), perf) * gain;
     src.playbackRate.value = Math.pow(2, (pitch - a) / 12);
     if (snd.held && buffer.duration > 1.25) {
       src.loop = true;
@@ -226,7 +226,7 @@
       const at = base + B.swingDelay(song, step, dt);
       for (const t of song.tracks) {
         const snd = B.sound(t);
-        for (const n of t.notes) if (n.step === step) voice(ctx, mix, trackGain(t), snd, n.pitch, at, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt);
+        for (const n of t.notes) if (n.step === step) voice(ctx, mix, trackGain(t), snd, n.pitch, at, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt, B.velGain(n));
       }
       player.nextStep++;
     }
@@ -274,7 +274,7 @@
       g.gain.value = t.volume;
       g.connect(m.input);
       const snd = B.sound(t);
-      for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + B.swingDelay(song, n.step, dt) + 0.05, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt);
+      for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + B.swingDelay(song, n.step, dt) + 0.05, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt, B.velGain(n));
     }
     return off.startRendering();
   }

@@ -66,6 +66,11 @@
   let selected = "t1";
   const viewTop = {}; // 트랙별로 보고 있는 맨 위 음
   let lastLen = 2;
+  // 새로 찍는 음의 세기(1 여리게·2 조금 세게·3 세게). 세기가 다른 음을 누르면 지우지 않고 이 세기로 바꾼다.
+  let brush = 2;
+  const withVel = (n, v = brush) => { if (v === 2) delete n.vel; else n.vel = v; return n; };
+  // 세기는 칸 높이로 보여 준다(여리게는 낮고 옅게).
+  const VEL_H = { 1: 0.5, 2: 0.78, 3: 1 };
   // 반복 구간(마디 [처음, 끝)). 곡에 저장하지 않는 보기 설정이다.
   let loop = null, loopOn = false, loopDraft = null;
   // 고른 음: 지금 트랙의 "칸:높이" 모음. 고르기 모드에서 끌면 네모 안의 음을 고른다.
@@ -237,7 +242,10 @@
       if (i < 0) continue;
       const sel = picked.has(noteKey(n)) ? " sel" : "";
       if (snd.pads)
-        out += `<rect x="${colX(n.step) + 3}" y="${rowTop[i] + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rowH[i] - 6}" rx="4" fill="${list[i].pad.color}" class="hit${sel}"/>`;
+      {
+        const v = B.velOf(n), full = rowH[i] - 6, h = full * VEL_H[v];
+        out += `<rect x="${colX(n.step) + 3}" y="${rowTop[i] + 3 + (full - h) / 2}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${h}" rx="4" fill="${list[i].pad.color}"${v === 1 ? ' opacity=".6"' : ""} class="hit${sel}"/>`;
+      }
       else {
         // 음표는 계이름 색으로 칠한다(조에 없는 음은 회색).
         const color = B.solfegeColor(n.pitch, s.key, s.scale);
@@ -245,9 +253,10 @@
         const ring = B.soundingSteps(t, n, per);
         const x0 = colX(n.step), x1 = colX(n.step + n.len);
         // 좁은 줄의 음표는 줄을 거의 꽉 채워야 보인다.
-        const y = rowTop[i], h = rowH[i], wide = h >= RH, pad = wide ? 2 : 1;
+        const v = B.velOf(n), wide = rowH[i] >= RH, pad = wide ? 2 : 1;
+        const h = wide ? (rowH[i] - 4) * VEL_H[v] + 4 : rowH[i], y = rowTop[i] + (rowH[i] - h) / 2;
         if (ring > n.len) out += `<rect x="${x1}" y="${y + h * 0.35}" width="${colX(n.step + ring) - x1 - 2}" height="${h * 0.3}" fill="${color}" opacity=".3"/>`;
-        out += `<rect x="${x0 + 1}" y="${y + pad}" width="${x1 - x0 - 2}" height="${h - pad * 2}" rx="${wide ? 4 : 2}" fill="${color}" class="note${sel}"/>` +
+        out += `<rect x="${x0 + 1}" y="${y + pad}" width="${x1 - x0 - 2}" height="${h - pad * 2}" rx="${wide ? 4 : 2}" fill="${color}"${v === 1 ? ' opacity=".6"' : ""} class="note${sel}"/>` +
           (wide ? `<rect x="${x1 - 6}" y="${y + 5}" width="2" height="${h - 10}" class="grip"/>` : "");
       }
     }
@@ -426,12 +435,18 @@
       const live = editTrack(app.state);
       if (snd.pads) {
         const hit = live.notes.find((n) => n.step === c.step && n.pitch === c.pitch);
+        // 세기가 다른 칸을 누르면 세기만 바꾸고, 끄는 동안 지나간 칸도 그 세기로 바꾼다.
+        if (hit && B.velOf(hit) !== brush) {
+          app.preview(() => withVel(hit));
+          E.preview(t, c.pitch, live.volume * B.velGain(hit));
+          return { pads: true, restrength: true, seen: new Set([c.step + ":" + c.pitch]) };
+        }
         const paint = !hit;
         app.preview((s) => {
           const tr = editTrack(s);
-          tr.notes = paint ? B.placeNote(tr.notes, { step: c.step, pitch: c.pitch, len: 1 }) : tr.notes.filter((n) => n !== hit);
+          tr.notes = paint ? B.placeNote(tr.notes, withVel({ step: c.step, pitch: c.pitch, len: 1 })) : tr.notes.filter((n) => n !== hit);
         });
-        if (paint) E.preview(t, c.pitch, live.volume);
+        if (paint) E.preview(t, c.pitch, live.volume * B.velGain({ vel: brush }));
         return { pads: true, paint, seen: new Set([c.step + ":" + c.pitch]) };
       }
       const found = live.notes.find((n) => n.pitch === c.pitch && n.step <= c.step && c.step < n.step + n.len);
@@ -439,9 +454,9 @@
         const nearEnd = p.x > colX(found.step + found.len) - CW * 0.45;
         return { note: found, mode: nearEnd ? "resize" : "move", grab: c.step - found.step, moved: false };
       }
-      const note = { step: c.step, pitch: c.pitch, len: Math.min(lastLen, B.totalSteps(app.state) - c.step) };
+      const note = withVel({ step: c.step, pitch: c.pitch, len: Math.min(lastLen, B.totalSteps(app.state) - c.step) });
       app.preview((s) => { const tr = editTrack(s); tr.notes = B.placeNote(tr.notes, note); });
-      E.preview(t, c.pitch, live.volume);
+      E.preview(t, c.pitch, live.volume * B.velGain(note));
       return { note, mode: "resize", moved: true };
     },
     move(p, d) {
@@ -451,12 +466,17 @@
         const k = c.step + ":" + c.pitch;
         if (d.seen.has(k)) return;
         d.seen.add(k);
+        if (d.restrength) {
+          const hit = editTrack(app.state).notes.find((n) => n.step === c.step && n.pitch === c.pitch);
+          if (hit && B.velOf(hit) !== brush) { app.preview(() => withVel(hit)); E.preview(t, c.pitch, t.volume * B.velGain(hit)); }
+          return;
+        }
         app.preview((s) => {
           const tr = editTrack(s);
-          tr.notes = d.paint ? B.placeNote(tr.notes, { step: c.step, pitch: c.pitch, len: 1 })
+          tr.notes = d.paint ? B.placeNote(tr.notes, withVel({ step: c.step, pitch: c.pitch, len: 1 }))
             : tr.notes.filter((n) => !(n.step === c.step && n.pitch === c.pitch));
         });
-        if (d.paint) E.preview(t, c.pitch, t.volume);
+        if (d.paint) E.preview(t, c.pitch, t.volume * B.velGain({ vel: brush }));
         return;
       }
       const steps = B.totalSteps(app.state);
@@ -480,8 +500,10 @@
         app.preview((s) => {
           const tr = editTrack(s);
           const others = tr.notes.filter((n) => n !== d.note);
-          // 옮기지 않고 한 번 누른 음은 지운다.
-          tr.notes = d.mode === "move" && !d.moved ? others : B.placeNote(others, d.note);
+          // 옮기지 않고 한 번 누른 음은 지운다. 세기가 다르면 지우지 않고 고른 세기로 바꾼다.
+          const tapped = d.mode === "move" && !d.moved, erase = tapped && B.velOf(d.note) === brush;
+          if (tapped && !erase) { withVel(d.note); E.preview(currentTrack(), d.note.pitch, currentTrack().volume * B.velGain(d.note)); }
+          tr.notes = erase ? others : B.placeNote(others, d.note);
         });
         if (d.mode === "resize") lastLen = d.note.len;
       }
@@ -520,6 +542,16 @@
   for (const [id, fn] of [["pick-up", () => movePicked(0, 1)], ["pick-down", () => movePicked(0, -1)],
     ["pick-left", () => movePicked(-1, 0)], ["pick-right", () => movePicked(1, 0)], ["pick-delete", deletePicked]])
     U.bind(id, "click", fn);
+  // 세기 단추: 고른 음이 있으면 그 음들의 세기를 바꾸고, 앞으로 찍을 음의 세기도 정한다.
+  function renderVel() { document.querySelectorAll("#vel-tools [data-vel]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.vel) === brush))); }
+  $("vel-tools").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-vel]");
+    if (!b) return;
+    brush = Number(b.dataset.vel);
+    renderVel();
+    if (picked.size) app.commit((s) => { for (const n of editTrack(s).notes) if (picked.has(noteKey(n))) withVel(n); });
+  });
+  renderVel();
   U.bind("select-mode", "click", () => { selectMode = !selectMode; if (!selectMode) picked.clear(); renderEditor(app.state); });
   $("grid").addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "a") {

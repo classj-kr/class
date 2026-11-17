@@ -174,8 +174,10 @@
       t.notes = t.notes.filter((n) => n.step < steps).map((n) => ({ ...n, len: Math.min(n.len, steps - n.step) }));
       for (const n of t.notes) {
         const pitchOk = Number.isInteger(n.pitch) && (snd.pads ? n.pitch >= 0 && n.pitch < Math.max(1, snd.rows.length) : n.pitch >= snd.lo && n.pitch <= snd.hi);
-        if (!Number.isInteger(n.step) || n.step < 0 || !Number.isInteger(n.len) || n.len < 1 || !pitchOk)
+        if (!Number.isInteger(n.step) || n.step < 0 || !Number.isInteger(n.len) || n.len < 1 || !pitchOk ||
+          (n.vel !== undefined && ![1, 2, 3].includes(n.vel)))
           throw Error("음을 읽을 수 없어요.");
+        if (n.vel === 2) delete n.vel; // 조금 세게(보통)는 적지 않는다.
       }
     }
     return JSON.parse(JSON.stringify(s));
@@ -200,6 +202,11 @@
     return t;
   }
 
+  // 음 세기 세 단계: 1 여리게(p), 2 조금 세게(mf, 적지 않음), 3 세게(f). 소리 크기에 곱하는 값.
+  const VEL_GAIN = { 1: 0.4, 2: 1, 3: 1.5 };
+  const velOf = (n) => n.vel || 2;
+  const velGain = (n) => VEL_GAIN[velOf(n)];
+
   // 같은 줄에서 겹치는 음은 새 음이 이긴다.
   function placeNote(notes, note) {
     const end = note.step + note.len;
@@ -222,5 +229,5 @@
   const anchor = (snd, midi) => Math.max(snd.min, Math.min(snd.max, midi));
 
   return { DRUM_LEVELS: K.DRUM_LEVELS, anchor, CATEGORIES: K.CATEGORIES, MODELS: K.MODELS, SCALES, NOTE_NAMES, KEY_NAMES, STEPS_PER_BAR, METERS, MAX_TRACKS, COLORS,
-    noteName, inKey, solfege, solfegeColor, totalSteps, stepsPerBar, beatSteps, swingable, changeMeter, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible };
+    noteName, inKey, solfege, solfegeColor, totalSteps, stepsPerBar, beatSteps, swingable, changeMeter, swingDelay, sound, model, hasPedal, sampleUrl, track, initial, validate, changeInstrument, placeNote, soundingSteps, audible, velOf, velGain };
 });

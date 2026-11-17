@@ -6,15 +6,15 @@
     <meta name="theme-color" content="#141a24" />
     <title>비트메이커</title>
     <link rel="icon" href="/assets/icons/favicon.webp" />
-    <link rel="stylesheet" href="styles.css?v=20261118-space" />
+    <link rel="stylesheet" href="styles.css?v=20261118-vel" />
     <script src="../../literacy-numeracy/math-tools/assets/math.js?v=20261108-2" defer></script>
-    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261118-quiet" defer></script>
+    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261118-vel" defer></script>
     <script src="/assets/site-storage.js?v=20261006-1" defer></script>
     <script src="../instrument-room/korean-percussion-data.js" defer></script>
-    <script src="catalog.js?v=20261118-space" defer></script>
-    <script src="core.js?v=20261118-space" defer></script>
-    <script src="engine.js?v=20261118-space" defer></script>
-    <script src="app.js?v=20261118-fill" defer></script>
+    <script src="catalog.js?v=20261118-vel" defer></script>
+    <script src="core.js?v=20261118-vel" defer></script>
+    <script src="engine.js?v=20261118-vel" defer></script>
+    <script src="app.js?v=20261118-vel" defer></script>
     <script src="/assets/sound/music-control.js?v=20261117-movable-gear" data-settings-help="tool-help" defer></script>
   </head>
   <body data-sfx-clicks="none" data-sfx-feedback="none">
@@ -46,6 +46,11 @@
         <div class="editor-head">
           <strong id="editor-title"></strong>
           <button id="select-mode" class="tool" aria-pressed="false" title="끌어서 음 고르기">⬚ 고르기</button>
+          <span class="vel-tools" id="vel-tools" role="group" aria-label="음 세기">
+            <button class="tool" data-vel="1" aria-pressed="false"><i>p</i> 여리게</button
+            ><button class="tool" data-vel="2" aria-pressed="true"><i>mf</i> 조금 세게</button
+            ><button class="tool" data-vel="3" aria-pressed="false"><i>f</i> 세게</button>
+          </span>
           <span class="pick-tools" id="pick-tools" hidden>
             <button id="pick-up" class="icon" aria-label="고른 음 위로">▲</button
             ><button id="pick-down" class="icon" aria-label="고른 음 아래로">▼</button
