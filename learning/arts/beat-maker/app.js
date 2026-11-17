@@ -705,7 +705,7 @@
       const blob = await E.mp3(app.state);
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "비트메이커.mp3";
+      a.download = "음악 만들기.mp3";
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 5000);
     } catch (_) {
