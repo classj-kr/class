@@ -505,10 +505,10 @@ test('shows actual-size guidance and keeps related instruments at different visu
 
 test('renders a full keyboard and disables notes outside each model range', () => {
   assert.match(app, /DISPLAY_RANGE = \{ start: 21, end: 108 \}/);
-  assert.match(app, /\["KeyO", 13, "O"\]/);
-  assert.match(app, /\["KeyP", 15, "P"\]/);
-  assert.match(app, /\["Semicolon", 16, ";"\]/);
-  assert.match(app, /\["Quote", 17, "'"\]/);
+  // 흰 건반은 가운뎃줄, 검은 건반은 윗줄. 시작음에 따라 자판을 다시 붙인다.
+  assert.match(app, /HOME_ROW_KEYS = \[\["KeyA", "A"\][\s\S]*?\["Quote", "'"\]\]/);
+  assert.match(app, /TOP_ROW_KEYS = \[\["KeyW", "W"\][\s\S]*?\["BracketLeft", "\["\]\]/);
+  assert.match(app, /function computerKeys\(\)/);
   assert.match(app, /key\.disabled = unavailable/);
   assert.match(app, /isPitchPlayable/);
   assert.match(app, /pitched: true, range:/);

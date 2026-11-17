@@ -123,16 +123,33 @@
         "glockenspiel": Object.freeze({ id: "glockenspiel", root: "assets/audio/glockenspiel/", min: 79, max: 95, fileMin: 21, step: 1, gainDb: 33.1 })
     });
     const ONE_SHOT_SAMPLE_SETS = new Set(["timpani", "glockenspiel", "marimba", "vibraphone", "xylophone", "harp", "gayageum", "gayageum-slow-vibrato", "gayageum-fast-vibrato", "gayageum-roll", "gayageum-bend-down", "gayageum-bend-up", "geomungo", "geomungo-light-vibrato", "geomungo-deep-vibrato", "gayageum-25", "yanggeum", "pyeonjong", "pyeongyeong"]);
-    const COMPUTER_KEYS = [
-        ["KeyA", 0, "A"], ["KeyW", 1, "W"], ["KeyS", 2, "S"], ["KeyE", 3, "E"],
-        ["KeyD", 4, "D"], ["KeyF", 5, "F"], ["KeyT", 6, "T"], ["KeyG", 7, "G"],
-        ["KeyY", 8, "Y"], ["KeyH", 9, "H"], ["KeyU", 10, "U"], ["KeyJ", 11, "J"],
-        ["KeyK", 12, "K"], ["KeyO", 13, "O"], ["KeyL", 14, "L"], ["KeyP", 15, "P"],
-        ["Semicolon", 16, ";"], ["Quote", 17, "'"]
-    ];
+    // 자판 배치: 흰 건반은 가운뎃줄, 검은 건반은 그 두 흰 건반 사이 위 윗줄 글자.
+    // 시작음이 C가 아니어도(예: 콘트라베이스 E3) 자판 모양과 건반 모양이 그대로 맞는다.
+    const HOME_ROW_KEYS = [["KeyA", "A"], ["KeyS", "S"], ["KeyD", "D"], ["KeyF", "F"], ["KeyG", "G"], ["KeyH", "H"],
+        ["KeyJ", "J"], ["KeyK", "K"], ["KeyL", "L"], ["Semicolon", ";"], ["Quote", "'"]];
+    const TOP_ROW_KEYS = [["KeyW", "W"], ["KeyE", "E"], ["KeyR", "R"], ["KeyT", "T"], ["KeyY", "Y"], ["KeyU", "U"],
+        ["KeyI", "I"], ["KeyO", "O"], ["KeyP", "P"], ["BracketLeft", "["]];
     const DISPLAY_RANGE = { start: 21, end: 108 };
     const WHITE_PITCH_CLASSES = new Set([0, 2, 4, 5, 7, 9, 11]);
-    const COMPUTER_KEY_SPAN = COMPUTER_KEYS[COMPUTER_KEYS.length - 1][1];
+    const COMPUTER_KEY_SPAN = 17;
+    const computerKeyCache = new Map();
+    // [자판 코드, 시작음에서 떨어진 반음 수, 표시 글자]
+    function computerKeys() {
+        const start = state.keyboardStartMidi;
+        if (computerKeyCache.has(start)) return computerKeyCache.get(start);
+        const keys = [];
+        let midi = start;
+        HOME_ROW_KEYS.forEach(function (home, index) {
+            while (!WHITE_PITCH_CLASSES.has(((midi % 12) + 12) % 12)) midi += 1;
+            keys.push([home[0], midi - start, home[1]]);
+            const top = TOP_ROW_KEYS[index];
+            if (top && !WHITE_PITCH_CLASSES.has((midi + 1) % 12)) keys.push([top[0], midi + 1 - start, top[1]]);
+            midi += 1;
+        });
+        computerKeyCache.set(start, keys);
+        return keys;
+    }
+    const computerKeySpan = function () { const keys = computerKeys(); return keys[keys.length - 1][1]; };
     const PIANO_WHITE_KEY_MM = { width: 23.5, length: 150 };
     const PIANO_BLACK_KEY_MM = { width: 13.7, length: 95 };
     const WHITE_KEY_LENGTH_SCALE = 0.726;
@@ -1045,7 +1062,7 @@
         const config = sampledPianoConfig();
         if (!config) return Promise.resolve([]);
         const first = state.keyboardStartMidi;
-        const last = first + COMPUTER_KEY_SPAN;
+        const last = first + computerKeySpan();
         const anchors = new Set();
         for (let midi = first; midi <= last; midi += 1) anchors.add(concertGrandAnchor(midi, config));
         const ready = Promise.allSettled(Array.from(anchors).map(loadConcertGrandSample));
@@ -2133,12 +2150,12 @@
 
     function updateKeyboardRange() {
         const range = currentPitchRange();
-        const shortcutByMidi = new Map(COMPUTER_KEYS.map(function (entry) { return [state.keyboardStartMidi + entry[1], entry[2]]; }));
+        const shortcutByMidi = new Map(computerKeys().map(function (entry) { return [state.keyboardStartMidi + entry[1], entry[2]]; }));
         elements.keyboard.querySelectorAll(".key").forEach(function (key) {
             const unavailable = key.disabled;
             key.dataset.shortcut = unavailable ? "" : shortcutByMidi.get(Number(key.dataset.midi)) || "";
         });
-        elements.keyboardRangeReadout.textContent = core.noteLabel(state.keyboardStartMidi) + "–" + core.noteLabel(state.keyboardStartMidi + COMPUTER_KEY_SPAN);
+        elements.keyboardRangeReadout.textContent = core.noteLabel(state.keyboardStartMidi) + "–" + core.noteLabel(state.keyboardStartMidi + computerKeySpan());
         const minimum = minimumKeyboardStart();
         const maximum = maximumKeyboardStart();
         elements.whiteKeyDown.disabled = state.keyboardStartMidi <= minimum;
@@ -2163,7 +2180,7 @@
     }
 
     function centerKeyboardOnComputerOctave(smooth) {
-        const centerMidi = Math.round(state.keyboardStartMidi + COMPUTER_KEY_SPAN / 2);
+        const centerMidi = Math.round(state.keyboardStartMidi + computerKeySpan() / 2);
         const target = elements.keyboard.querySelector('[data-midi="' + centerMidi + '"]');
         if (!target) return;
         const desired = target.offsetLeft + target.offsetWidth * .5 - elements.keyboardViewport.clientWidth * .5;
@@ -2636,7 +2653,7 @@
             return;
         }
         if (state.instrument === "guitar" && state.guitarMode === "chords") return;
-        const mapping = COMPUTER_KEYS.find(function (item) { return item[0] === event.code; });
+        const mapping = computerKeys().find(function (item) { return item[0] === event.code; });
         if (!mapping) return;
         event.preventDefault();
         const midi = state.keyboardStartMidi + mapping[1];
