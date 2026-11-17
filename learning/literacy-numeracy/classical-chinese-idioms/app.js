@@ -523,8 +523,7 @@ function renderLessonOverview() {
             button.innerHTML = `
                 <span class="lesson-number">${index + 1}</span>
                 <span class="lesson-card-body">
-                    <span class="lesson-card-top"><strong>${lesson.title}</strong><b>${items.length}개</b></span>
-                    <span class="lesson-description">${lesson.description}</span>
+                    <span class="lesson-card-top"><strong>${lesson.title}</strong></span>
                     <span class="lesson-examples">${items.slice(0, 3).map((item) => item.word).join(" · ")}</span>
                 </span>
                 <span class="lesson-progress">${known === items.length ? "완료" : `${known}/${items.length}`}</span>`;

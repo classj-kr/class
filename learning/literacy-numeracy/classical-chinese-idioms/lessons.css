@@ -1,6 +1,6 @@
 .lesson-overview { padding: 14px 0 40px; }
 
-.lesson-overview-total { flex: none; margin: 0; color: var(--muted); font-size: 12px; }
+.lesson-overview-total { flex: none; margin: 0; color: var(--muted); font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif; font-size: 13px; font-weight: 700; }
 .lesson-overview-total strong { color: var(--green); font-size: 18px; }
 
 .lesson-list { display: grid; gap: 10px; }
@@ -10,7 +10,7 @@
     grid-template-columns: 48px minmax(0, 1fr) auto;
     align-items: center;
     gap: 16px;
-    min-height: 88px;
+    min-height: 72px;
     padding: 12px 16px;
     border: 1px solid var(--line);
     border-radius: 18px 18px 6px 18px;
@@ -30,17 +30,16 @@
     border-radius: 50%;
     background: var(--green);
     color: white;
-    font-family: Georgia, serif;
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
     font-weight: 800;
 }
 
 .lesson-card.complete .lesson-number { background: var(--gold); }
-.lesson-card-body, .lesson-card-top, .lesson-description, .lesson-examples { display: block; }
+.lesson-card-body, .lesson-card-top, .lesson-examples { display: block; }
 .lesson-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.lesson-card-top strong { font-family: "Batang", serif; font-size: 18px; }
-.lesson-card-top b, .lesson-progress { color: var(--green); font-size: 12px; }
-.lesson-description { margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.35; }
-.lesson-examples { margin-top: 5px; color: #76551f; font-size: 11px; }
+.lesson-card-top strong { font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif; font-size: 18px; font-weight: 800; }
+.lesson-progress { color: var(--green); font-size: 13px; }
+.lesson-examples { margin-top: 5px; color: #76551f; font-size: 13px; }
 .lesson-progress { min-width: 42px; text-align: right; font-weight: 900; }
 
 .lesson-toolbar {
@@ -70,10 +69,8 @@
 }
 
 @media (max-width: 640px) {
-    .lesson-card { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; padding: 14px; }
-    .lesson-progress { grid-column: 2; text-align: left; }
-    .lesson-card-top b { display: none; }
-    .lesson-description { font-size: 12px; }
+    .lesson-card { gap: 12px; padding: 12px 14px; }
+    .lesson-card-top strong { font-size: 17px; }
 }
 
 /* 차시 학습 화면: Chromebook·iPad·PC의 첫 화면에 핵심 학습 흐름을 배치 */
