@@ -9,7 +9,7 @@
    ],
    "beats": [
     "아침 식탁에서 할아버지는 신문을 펼칩니다.",
-    "엄마는 라디오를 듣고, 하린이는 태블릿으로 같은 날씨 소식을 봅니다.",
+    "엄마는 라디오를 듣고, 아이는 태블릿으로 같은 날씨 소식을 봅니다.",
     "소식이나 생각을 실어 나르는 수단이 매체입니다."
    ],
    "img": "A cozy Korean family breakfast table in the morning. A grandfather reads a printed newspaper, a mother listens to a small radio on the counter, and HARIN looks at a tablet. The same little sun-and-cloud weather symbol appears on the newspaper page, floats as a soft sound wave from the radio and glows on the tablet screen. No readable letters or numbers.",
@@ -70,7 +70,7 @@
     "생활 속 예: 지난봄에 본 금관을 가을에 가도 그 자리에서 또 봅니다."
    ],
    "beats": [
-    "봄에 하린이가 박물관 전시실에서 반짝이는 금관을 봅니다.",
+    "봄에 한 아이가 박물관 전시실에서 반짝이는 금관을 봅니다.",
     "가을에 다시 찾아가니 금관이 같은 자리에 그대로 있습니다.",
     "기간을 정하지 않고 늘 볼 수 있게 차린 전시가 상설 전시입니다."
    ],
@@ -128,7 +128,7 @@
     "생활 속 예: 향에 불을 붙이면 가는 연기와 함께 좋은 냄새가 퍼집니다."
    ],
    "beats": [
-    "하린이가 박물관에서 백제 금동 대향로를 봅니다.",
+    "한 아이가 박물관에서 백제 금동 대향로를 봅니다.",
     "산 모양 뚜껑 꼭대기에 새가 앉아 있고, 뚜껑에는 작은 구멍이 나 있습니다.",
     "향을 피우면 그 구멍으로 연기가 솔솔 나왔습니다.",
     "향을 피워 좋은 냄새를 내는 그릇이 향로입니다."
@@ -157,7 +157,7 @@
    "explain": [
     "쉬운 뜻: '이 글 누가 썼지?' 할 때 그 사람입니다. 영어 writer도 write(쓰다) + er(사람)로 짜임이 같습니다.",
     "낱말 나누기: 작성(作成, 지어서 만듦) + 자(者, 사람) — 글을 지어 만든 사람입니다.",
-    "생활 속 예: 게시판 글 위의 '작성자: 김하린'은 하린이가 썼다는 뜻입니다."
+    "생활 속 예: 게시판 글 위 '작성자' 칸에 적힌 이름이 그 글을 쓴 사람입니다."
    ]
   },
   "운영": {
@@ -175,7 +175,7 @@
     "생활 속 예: 병을 막는 일을 맡은 질병관리청도 기관입니다."
    ],
    "beats": [
-    "도윤이네 동네에 보건소, 도서관, 주민센터가 있습니다.",
+    "우리 동네에 보건소, 도서관, 주민센터가 있습니다.",
     "저마다 예방 주사 놓기, 책 빌려주기, 주민 돕기 같은 일을 맡아 합니다.",
     "나라나 사회의 일을 맡아 하려고 만든 곳이 기관입니다."
    ],
@@ -220,7 +220,7 @@
    ],
    "beats": [
     "소파 밑에 숨은 고양이가 나오지 않습니다.",
-    "하린이가 깃털 장난감을 살랑살랑 흔듭니다.",
+    "한 아이가 깃털 장난감을 살랑살랑 흔듭니다.",
     "고양이가 깃털을 따라 밖으로 살금살금 나옵니다.",
     "관심을 끌어 이쪽으로 꾀어 오게 하는 것이 유인입니다."
    ],
@@ -234,8 +234,8 @@
     "생활 속 예: 진드기를 막으려고 풀밭에 가기 전에도 뿌립니다."
    ],
    "beats": [
-    "하린이가 산에 오르기 전 팔과 다리에 약을 칙칙 뿌립니다.",
-    "날아오던 모기들이 하린이 곁에서 방향을 돌립니다.",
+    "한 아이가 산에 오르기 전 팔과 다리에 약을 칙칙 뿌립니다.",
+    "날아오던 모기들이 아이 곁에서 방향을 돌립니다.",
     "벌레가 싫어해 가까이 오지 않게 하는 약이 기피제입니다."
    ],
    "img": "At the start of a green forest trail, HARIN sprays a small spray bottle onto her arm, her legs already done. A few mosquitoes flying toward her turn around in the air and fly away, shown with little curved motion lines. No readable letters or numbers.",
@@ -270,8 +270,8 @@
     "생활 속 예: 축구를 할 때는 정강이 보호대를 차고 축구화를 신습니다."
    ],
    "beats": [
-    "도윤이네 가족이 자동차에 탑니다.",
-    "도윤이는 자리에 앉자마자 안전띠를 찰칵 맵니다.",
+    "한 가족이 자동차에 탑니다.",
+    "아이는 자리에 앉자마자 안전띠를 찰칵 맵니다.",
     "옷이나 모자, 안전띠를 몸에 입거나 쓰거나 매는 것이 착용입니다."
    ],
    "img": "Inside a family car, DOYUN sits in the back seat and pulls his seat belt across his chest, clicking it into the buckle with a small spark of motion. His parents in the front seats are fastening their belts too. No readable letters or numbers.",
@@ -285,7 +285,7 @@
     "생활 속 예: 경남 고성 바닷가 바위에는 공룡 발자국이 줄지어 찍혀 있습니다."
    ],
    "beats": [
-    "하린이가 박물관에서 커다란 바위 판을 봅니다.",
+    "한 아이가 박물관에서 커다란 바위 판을 봅니다.",
     "바위에 아주 먼 옛날 물고기의 뼈 모양이 그대로 박혀 있습니다.",
     "옛날 생물의 몸이나 흔적이 돌처럼 굳은 것이 화석입니다."
    ],
@@ -322,7 +322,7 @@
     "생활 속 예: 친구들 블록이 한 상자에 뒤섞여 어느 것이 내 것인지 모르겠습니다."
    ],
    "beats": [
-    "도윤이가 친구 둘에게 도서관 가는 길을 묻습니다.",
+    "한 아이가 친구 둘에게 도서관 가는 길을 묻습니다.",
     "한 친구는 왼쪽을, 다른 친구는 오른쪽을 가리킵니다.",
     "뒤죽박죽 섞여 갈피를 잡을 수 없을 때 혼란스럽다고 합니다."
    ],
@@ -382,8 +382,8 @@
     "생활 속 예: 한여름에 줄넘기를 백 번 하면 이마에 굵은 땀이 맺힙니다."
    ],
    "beats": [
-    "더운 여름날 도윤이가 할아버지와 텃밭에서 감자를 캡니다.",
-    "도윤이 이마에 굵은 땀방울이 동글동글 맺힙니다.",
+    "더운 여름날 한 아이가 할아버지와 텃밭에서 감자를 캡니다.",
+    "아이의 이마에 굵은 땀방울이 동글동글 맺힙니다.",
     "힘들게 일할 때 구슬처럼 맺히는 굵은 땀이 구슬땀입니다."
    ],
    "img": "On a hot summer day in a small vegetable garden, DOYUN and his grandfather dig up potatoes with small hoes. Big round drops of sweat, like shiny beads, sit on DOYUN's forehead as he lifts a bunch of potatoes and smiles. Bright sun. No readable letters or numbers.",
@@ -396,9 +396,9 @@
     "생활 속 예: 빨갛고 반질반질한 딸기를 보면 얼른 하나 집고 싶습니다."
    ],
    "beats": [
-    "하린이가 엄마와 과일 가게 앞을 지나갑니다.",
+    "한 아이가 엄마와 과일 가게 앞을 지나갑니다.",
     "크고 발그레한 복숭아가 소복이 쌓여 반짝입니다.",
-    "하린이는 발걸음을 멈추고 복숭아를 바라봅니다.",
+    "아이는 발걸음을 멈추고 복숭아를 바라봅니다.",
     "보기 좋아서 갖고 싶은 마음이 들 때 탐스럽다고 합니다."
    ],
    "img": "In front of a fruit shop at a traditional market, HARIN stops walking and stares at a pile of big, round, rosy peaches glowing in baskets. Her mother, holding her hand, smiles at her. HARIN's eyes sparkle with wanting. No readable letters or numbers.",
@@ -410,7 +410,7 @@
     "생활 속 예: 세뱃돈을 받고 나니 지갑이 두둑해졌습니다."
    ],
    "beats": [
-    "하린이가 엄마와 시장에서 채소와 과일을 삽니다.",
+    "한 아이가 엄마와 시장에서 채소와 과일을 삽니다.",
     "하나둘 담을 때마다 장바구니가 볼록하게 부풉니다.",
     "넉넉하게 많아서 불룩한 것을 두둑하다고 합니다."
    ],
@@ -447,8 +447,8 @@
     "생활 속 예: '아' 하고 입을 벌리면 선생님이 목 안을 들여다봅니다."
    ],
    "beats": [
-    "하린이가 목이 아파 병원에 갑니다.",
-    "의사 선생님이 작은 불빛으로 하린이 목 안을 살펴봅니다.",
+    "한 아이가 목이 아파 병원에 갑니다.",
+    "의사 선생님이 작은 불빛으로 아이의 목 안을 살펴봅니다.",
     "몸을 살펴보고 어디가 왜 아픈지 알아내는 일이 진찰입니다."
    ],
    "img": "In a children's clinic, HARIN sits on a round stool with her mouth wide open saying 'ah'. A kind doctor in a white coat shines a small penlight into her throat and looks closely. HARIN's mother sits nearby. No readable letters or numbers.",
@@ -461,8 +461,8 @@
     "생활 속 예: 의사 선생님이 목에 걸고 다니는, 줄이 둘로 갈라진 도구입니다."
    ],
    "beats": [
-    "의사 선생님이 두 귀에 줄을 꽂고, 동그란 끝을 도윤이 등에 댑니다.",
-    "도윤이가 숨을 크게 쉬자 몸속 소리가 줄을 타고 선생님 귀에 닿습니다.",
+    "의사 선생님이 두 귀에 줄을 꽂고, 동그란 끝을 한 아이의 등에 댑니다.",
+    "아이가 숨을 크게 쉬자 몸속 소리가 줄을 타고 선생님 귀에 닿습니다.",
     "몸에 대어 숨소리나 심장 소리를 듣는 도구가 청진기입니다."
    ],
    "img": "In a clinic, DOYUN sits with his back to a doctor and takes a deep breath. The doctor wears a stethoscope in both ears and presses its round end on DOYUN's back. Soft wavy lines travel up the tube from DOYUN's back to the doctor's ears. No readable letters or numbers.",
@@ -490,7 +490,7 @@
     "생활 속 예: 화장실 환풍기를 돌리면 냄새가 밖으로 빠져나갑니다."
    ],
    "beats": [
-    "쉬는 시간, 하린이와 친구들이 교실 창문을 활짝 엽니다.",
+    "쉬는 시간, 아이들이 교실 창문을 활짝 엽니다.",
     "답답하던 공기가 빠져나가고 시원한 바람이 들어옵니다.",
     "묵은 공기를 내보내고 맑은 공기를 들이는 것이 환기입니다."
    ],
@@ -585,7 +585,7 @@
    ],
    "beats": [
     "할머니가 거실에서 느린 피아노곡을 칩니다.",
-    "하린이는 소파에 기대어 눈을 감고 가만히 듣습니다.",
+    "손녀는 소파에 기대어 눈을 감고 가만히 듣습니다.",
     "달콤하고 부드러워 기분이 좋을 때 감미롭다고 합니다."
    ],
    "img": "In a warm living room in the evening, HARIN's grandmother plays a slow tune on an upright piano. HARIN leans back on the sofa with her eyes closed and a soft, happy smile. Gentle curved music lines float through the air. No readable letters or numbers.",

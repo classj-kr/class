@@ -2,7 +2,7 @@
  "reading": {
   "주제 중심 독서": {
    "explain": ["쉬운 뜻: 주제 하나를 정해 놓고, 그 주제를 다룬 책을 여러 권 줄줄이 읽는 것입니다.", "낱말 나누기: 주제 + 중심(中心, 한가운데) + 독서(讀書, 책 읽기) — 주제를 한가운데 두고 하는 책 읽기입니다.", "생활 속 예: '공룡'을 정해 공룡 동화, 공룡 도감, 화석 책을 차례로 읽습니다."],
-   "beats": ["하린이가 바다 그림이 있는 책 세 권을 책상에 늘어놓았습니다.", "고래 이야기책, 바다 생물 도감, 바다 쓰레기 책을 한 권씩 차례로 펼칩니다.", "한 주제를 다룬 여러 책을 이어서 깊이 읽는 것이 주제 중심 독서입니다."],
+   "beats": ["한 아이가 바다 그림이 있는 책 세 권을 책상에 늘어놓았습니다.", "고래 이야기책, 바다 생물 도감, 바다 쓰레기 책을 한 권씩 차례로 펼칩니다.", "한 주제를 다룬 여러 책을 이어서 깊이 읽는 것이 주제 중심 독서입니다."],
    "img": "HARIN sits at a library table with three different books spread out in a row, all with ocean-themed covers: a storybook with a smiling whale, a thick picture encyclopedia of sea creatures, and a book showing plastic bottles floating in the sea. She has one open and her finger is moving to the next one. There are no letters on the covers.",
    "imgKo": "도서관 책상에 하린이가 바다를 다룬 책 세 권을 나란히 펼쳐 놓았다. 웃는 고래 이야기책, 두꺼운 바다 생물 도감, 바다에 뜬 플라스틱 병이 그려진 책이고, 한 권을 읽으며 다음 책으로 손을 옮긴다."
   },
@@ -22,7 +22,7 @@
   "서가": {
    "en": "bookshelf",
    "explain": ["쉬운 뜻: 책들이 줄지어 서 있는 집이라고 보면 됩니다. 영어 bookshelf도 book(책) + shelf(선반)입니다.", "낱말 나누기: 서(書, 책) + 가(架, 선반) — 책을 얹는 선반입니다.", "생활 속 예: 반납한 책은 사서 선생님이 제자리 서가에 다시 꽂아 둡니다."],
-   "beats": ["도서관에 키 큰 선반이 줄지어 서 있습니다.", "도윤이가 다 읽은 책을 선반의 빈칸에 꽂습니다.", "책을 꽂아 두는 여러 칸짜리 선반이 서가입니다."],
+   "beats": ["도서관에 키 큰 선반이 줄지어 서 있습니다.", "한 아이가 다 읽은 책을 선반의 빈칸에 꽂습니다.", "책을 꽂아 두는 여러 칸짜리 선반이 서가입니다."],
    "img": "In a bright school library, tall wooden shelves with many levels stand in long rows, full of colorful books. DOYUN stands on tiptoe and slides a finished book into an empty gap on one shelf. The book spines have no letters.",
    "imgKo": "밝은 학교 도서관에 여러 칸짜리 키 큰 나무 선반이 줄지어 서 있고 알록달록한 책이 빼곡하다. 도윤이가 발끝을 들고 다 읽은 책을 선반 빈칸에 밀어 넣는다."
   },
@@ -50,7 +50,7 @@
   "편견": {
    "en": "prejudice",
    "explain": ["쉬운 뜻: 한쪽 색만 보이는 색안경을 끼고 사람을 보는 것입니다. prejudice = pre(미리) + judice(판단), '미리 판단함'입니다.", "낱말 나누기: 편(偏, 치우치다) + 견(見, 보다) — 한쪽으로 치우쳐 봄입니다.", "생활 속 예: '키 작은 아이는 농구를 못해.'라고 미리 정해 버리는 것입니다."],
-   "beats": ["운동장 옆에 선 남자아이 머리 위에 엑스 표시가 된 축구공 생각이 떠 있습니다.", "그런데 하린이가 공을 몰고 수비수들을 가볍게 제칩니다.", "제대로 알아보지 않고 한쪽으로 굳어 버린 생각이 편견입니다."],
+   "beats": ["운동장 옆에 선 남자아이 머리 위에 엑스 표시가 된 축구공 생각이 떠 있습니다.", "그런데 한 여자아이가 공을 몰고 수비수들을 가볍게 제칩니다.", "제대로 알아보지 않고 한쪽으로 굳어 버린 생각이 편견입니다."],
    "img": "On a school field, HARIN dribbles a soccer ball skillfully past two defenders with a confident smile. On the sideline, a boy wearing dark tinted glasses watches with crossed arms; above his head floats a thought bubble showing a soccer ball with a big red X over it.",
    "imgKo": "운동장에서 하린이가 웃으며 수비수 둘을 가볍게 제치고 공을 몬다. 옆에서 짙은 색안경을 낀 남자아이가 팔짱을 끼고 보는데, 머리 위 생각 풍선에 엑스 표시가 된 축구공이 떠 있다."
   },
@@ -62,7 +62,7 @@
   },
   "침해": {
    "explain": ["쉬운 뜻: 남의 땅에 금을 넘어 들어가 제 마음대로 하듯, 남의 권리를 해치는 일입니다.", "낱말 나누기: 침(侵, 쳐들어가다) + 해(害, 해치다) — 쳐들어가서 해칩니다.", "생활 속 예: 친구 사진을 허락 없이 단체 대화방에 올리는 것도 침해입니다."],
-   "beats": ["하린이가 일기를 쓰다가 잠깐 방을 나갔습니다.", "그사이 동생이 살금살금 들어와 일기장을 몰래 펼쳐 봅니다.", "남의 권리를 함부로 넘어 들어가 해를 끼치는 일이 침해입니다."],
+   "beats": ["한 아이가 일기를 쓰다가 잠깐 방을 나갔습니다.", "그사이 동생이 살금살금 들어와 일기장을 몰래 펼쳐 봅니다.", "남의 권리를 함부로 넘어 들어가 해를 끼치는 일이 침해입니다."],
    "img": "HARIN's bedroom door is half open and HARIN is walking away down the hallway. Inside, her little brother tiptoes to her desk and secretly opens her diary, which has a small lock-shaped sticker on it. The diary pages show only grey lines.",
    "imgKo": "하린이가 방문을 반쯤 열어 둔 채 복도로 나간다. 방 안에서 동생이 발끝으로 책상에 다가가 자물쇠 스티커가 붙은 일기장을 몰래 펼친다."
   },
@@ -75,14 +75,14 @@
   },
   "추론": {
    "explain": ["쉬운 뜻: 탐정처럼 작은 단서를 모아 글에 쓰여 있지 않은 것까지 알아내는 것입니다.", "낱말 나누기: 추(推, 미루다) + 론(論, 따지다) — 아는 것에서 미루어 따져 봄입니다.", "생활 속 예: 현관에 젖은 우산이 있으면 밖에 비가 온다고 알아챕니다."],
-   "beats": ["거실 바닥에 흙 묻은 발자국이 소파 뒤까지 이어져 있습니다.", "하린이가 돋보기로 발자국을 따라가며 '강아지가 숨었구나!' 하는 얼굴을 합니다.", "보이는 단서를 바탕으로 쓰여 있지 않은 것을 미루어 짐작하는 일이 추론입니다."],
+   "beats": ["거실 바닥에 흙 묻은 발자국이 소파 뒤까지 이어져 있습니다.", "한 아이가 돋보기로 발자국을 따라가며 '강아지가 숨었구나!' 하는 얼굴을 합니다.", "보이는 단서를 바탕으로 쓰여 있지 않은 것을 미루어 짐작하는 일이 추론입니다."],
    "img": "In a living room, small muddy paw prints lead across the floor and disappear behind the sofa, next to an empty dog bowl. HARIN bends down with a magnifying glass, following the prints with a clever 'I've got it' smile. Only the tip of a wagging tail peeks out from behind the sofa.",
    "imgKo": "거실 바닥에 흙 묻은 작은 발자국이 빈 개밥그릇 옆을 지나 소파 뒤로 사라진다. 하린이가 돋보기를 들고 발자국을 따라가며 알았다는 듯 웃고, 소파 뒤로 꼬리 끝만 살짝 보인다."
   },
   "인상적": {
    "en": "memorable",
    "explain": ["쉬운 뜻: 마음에 콕 찍혀 오래 남는 것입니다. memorable = memory(기억) + able(할 만한), '기억할 만한'입니다.", "낱말 나누기: 인상(印象, 도장 찍힌 모양) + 적 — 마음에 도장을 찍은 듯 남는 것입니다.", "생활 속 예: 처음 본 바다의 파란 빛깔이 잠들기 전까지 눈앞에 아른거립니다."],
-   "beats": ["하린이가 다 읽은 책을 덮었습니다.", "그런데 책 속 장면이 머리 위에 환하게 떠올라 사라지지 않습니다.", "마음에 깊이 새겨져 오래 잊히지 않는 것이 인상적인 것입니다."],
+   "beats": ["한 아이가 다 읽은 책을 덮었습니다.", "그런데 책 속 장면이 머리 위에 환하게 떠올라 사라지지 않습니다.", "마음에 깊이 새겨져 오래 잊히지 않는 것이 인상적인 것입니다."],
    "img": "HARIN sits on her bed and has just closed a book on her lap. Above her head, a glowing scene from the book floats like a bright memory: children from many countries standing arm in arm and smiling together. She gazes up at it with a warm, thoughtful face.",
    "imgKo": "하린이가 침대에 앉아 무릎 위 책을 막 덮었다. 머리 위에 책 속 장면이 환하게 떠 있는데, 여러 나라 아이들이 어깨동무하고 웃는 모습이다. 하린이가 그 장면을 따뜻한 얼굴로 올려다본다."
   },
@@ -103,7 +103,7 @@
   },
   "체계적": {
    "explain": ["쉬운 뜻: 서랍마다 이름표를 붙여 차례대로 정리해 둔 것처럼 짜임이 잘 잡힌 것입니다.", "낱말 나누기: 체(體, 몸) + 계(系, 이어 맴) + 적 — 몸처럼 하나로 이어진 짜임입니다.", "생활 속 예: 국어사전은 낱말을 ㄱ, ㄴ, ㄷ 차례로 실어 금방 찾을 수 있습니다."],
-   "beats": ["도윤이 책상 위에는 연필, 지우개, 클립이 뒤죽박죽 쌓여 있습니다.", "하린이 서랍은 칸마다 그림 이름표가 붙어 물건이 종류별로 들어 있습니다.", "정해진 순서와 짜임에 따라 잘 정리된 것이 체계적인 것입니다."],
+   "beats": ["한 아이 책상 위에는 연필, 지우개, 클립이 뒤죽박죽 쌓여 있습니다.", "짝의 서랍은 칸마다 그림 이름표가 붙어 물건이 종류별로 들어 있습니다.", "정해진 순서와 짜임에 따라 잘 정리된 것이 체계적인 것입니다."],
    "img": "Split scene. Left: DOYUN's desk with pencils, erasers and paper clips piled in a messy heap, and he scratches his head searching for something. Right: HARIN's open drawer with neat compartments, each marked with a small picture label (a pencil, an eraser, a clip), and every item sorted in its own place.",
    "imgKo": "왼쪽은 연필, 지우개, 클립이 뒤죽박죽 쌓인 도윤이 책상이고 도윤이가 머리를 긁으며 무언가를 찾는다. 오른쪽은 칸마다 연필·지우개·클립 그림 이름표가 붙어 물건이 제자리에 든 하린이 서랍이다."
   }
@@ -118,7 +118,7 @@
   },
   "추구": {
    "explain": ["쉬운 뜻: 저 멀리 빛나는 별을 놓치지 않고 계속 따라가듯, 바라는 것을 끝까지 좇는 것입니다.", "낱말 나누기: 추(追, 쫓다) + 구(求, 구하다) — 쫓아가서 얻으려 합니다.", "생활 속 예: 요리사가 꿈인 형은 날마다 새로운 요리를 연습합니다."],
-   "beats": ["하린이가 꼬불꼬불한 산길을 오릅니다.", "산꼭대기 위에서 별 하나가 반짝이고, 하린이는 그 별에서 눈을 떼지 않습니다.", "바라는 것을 얻거나 이루려고 끝까지 좇아 애쓰는 일이 추구입니다."],
+   "beats": ["한 아이가 꼬불꼬불한 산길을 오릅니다.", "산꼭대기 위에서 별 하나가 반짝이고, 아이는 그 별에서 눈을 떼지 않습니다.", "바라는 것을 얻거나 이루려고 끝까지 좇아 애쓰는 일이 추구입니다."],
    "img": "HARIN, wearing a small backpack, climbs a long winding mountain trail at dusk. At the very top of the mountain, a single bright star shines. She keeps her eyes fixed on the star while stepping forward with determination.",
    "imgKo": "해 질 녘 작은 배낭을 멘 하린이가 꼬불꼬불한 산길을 오른다. 산꼭대기 위에 별 하나가 밝게 빛나고, 하린이는 그 별에서 눈을 떼지 않고 힘차게 걸음을 옮긴다."
   },
@@ -128,7 +128,7 @@
   },
   "시대 상황": {
    "explain": ["쉬운 뜻: 인물이 서 있는 무대 뒤에 걸린 그때의 큰 그림이라고 보면 됩니다.", "낱말 나누기: 시대(時代, 그때) + 상황(狀況, 놓인 형편) — 그때 나라와 사회의 형편입니다.", "생활 속 예: 전쟁 중인 이야기라면 인물이 집을 떠나는 까닭이 이해됩니다."],
-   "beats": ["하린이가 옛이야기 책을 펼쳤습니다.", "책 뒤로 흰 한복을 입은 마을 사람들이 걱정스러운 얼굴로 모여 있는 그때 모습이 펼쳐집니다.", "인물이 살던 그때 나라와 사회가 놓인 형편이 시대 상황입니다."],
+   "beats": ["한 아이가 옛이야기 책을 펼쳤습니다.", "책 뒤로 흰 한복을 입은 마을 사람들이 걱정스러운 얼굴로 모여 있는 그때 모습이 펼쳐집니다.", "인물이 살던 그때 나라와 사회가 놓인 형편이 시대 상황입니다."],
    "img": "HARIN sits reading an open storybook. Behind the book rises a large stage-like scene from the late Joseon period: in a mountain village under grey clouds, villagers in white hanbok gather in small groups with worried faces and whisper to each other. A woman in hanbok carries a heavy sack of grain up the path.",
    "imgKo": "하린이가 옛이야기 책을 펼쳐 읽는다. 책 뒤로 조선 말 산골 마을이 무대처럼 펼쳐져, 잿빛 구름 아래 흰 한복 입은 사람들이 걱정스러운 얼굴로 모여 수군거리고 한 여인이 곡식 자루를 지고 산길을 오른다."
   },
@@ -198,13 +198,13 @@
    "imgKo": "조선 시대 전주의 붐비는 거리에 앞이 트인 나무 가게가 있고, 실로 꿰맨 책이 가지런히 높이 쌓여 있다. 한복과 갓 차림의 손님들이 책을 들춰 보고, 어린 점원이 웃는 아주머니에게 책을 건넨다."
   },
   "각수": {
-   "explain": ["쉬운 뜻: 나무에 글자를 새기는 솜씨꾼, 곧 '새김 장인'입니다.", "낱말 나누기: 각(刻, 새기다) + 수(手, 솜씨 있는 사람) — 가수·목수의 '수'와 같습니다.", "봉운이는 각수 어른께 두 달 동안 대패질부터 배웠습니다."],
+   "explain": ["쉬운 뜻: 나무에 글자를 새기는 솜씨꾼, 곧 '새김 장인'입니다.", "낱말 나누기: 각(刻, 새기다) + 수(手, 솜씨 있는 사람) — 가수·목수의 '수'와 같습니다.", "아이는 각수 어른께 두 달 동안 대패질부터 배웠습니다."],
    "beats": ["희끗한 머리의 어른이 작업대 앞에 앉아 망치와 칼을 쥐었습니다.", "곁에서 소년이 눈을 반짝이며 어른의 손놀림을 지켜봅니다.", "나무나 돌에 글자나 그림을 새기는 일을 직업으로 하는 사람이 각수입니다."],
    "img": "In a Joseon woodblock workshop, an elderly master craftsman with grey hair sits at a sturdy workbench, holding a small carving knife and a wooden mallet over a wooden block. Wood shavings are scattered around. A boy apprentice in simple hanbok kneels beside him, watching the master's hands with sparkling eyes.",
    "imgKo": "조선 시대 책판 작업장에서 희끗한 머리의 어른이 튼튼한 작업대에 앉아 나무판 위에 작은 칼과 나무망치를 들었다. 둘레에 나무 부스러기가 흩어져 있고, 수수한 한복의 소년이 곁에 무릎 꿇고 눈을 반짝이며 지켜본다."
   },
   "판각": {
-   "explain": ["쉬운 뜻: 지우개 도장을 파듯, 나무판에 칼로 한 자 한 자 새겨 넣는 일입니다.", "낱말 나누기: 판(板, 나무판) + 각(刻, 새기다) — 나무판에 새깁니다.", "봉운이는 왼손에 칼을, 오른손에 망치를 쥐고 칼등을 때려 글자를 새겼습니다."],
+   "explain": ["쉬운 뜻: 지우개 도장을 파듯, 나무판에 칼로 한 자 한 자 새겨 넣는 일입니다.", "낱말 나누기: 판(板, 나무판) + 각(刻, 새기다) — 나무판에 새깁니다.", "아이는 왼손에 칼을, 오른손에 망치를 쥐고 칼등을 때려 글자를 새겼습니다."],
    "beats": ["등잔불 아래 나무판 위에 칼끝이 닿아 있습니다.", "망치로 칼등을 톡톡 치자 나뭇조각이 떨어지며 무늬가 드러납니다.", "나무판에 글씨나 그림을 새기는 일이 판각입니다."],
    "img": "A close-up at night under a warm oil lamp: one hand holds a slanted carving knife against a wooden block, and the other hand taps the back of the blade with a small wooden mallet. Tiny curls of wood chip away, revealing a raised pattern. No readable letters appear.",
    "imgKo": "밤 등잔불 아래를 가까이서 본 모습이다. 한 손은 비스듬히 쥔 칼을 나무판에 대고, 다른 손은 작은 나무망치로 칼등을 톡톡 친다. 나뭇조각이 돌돌 떨어지며 볼록한 무늬가 드러난다."
@@ -217,7 +217,7 @@
    "imgKo": "왼쪽은 공장의 큰 인쇄기에서 종이가 줄줄이 찍혀 나오는 모습이다. 오른쪽은 같은 표지의 새 책들이 서점 탁자에 쌓여 있고 하린이와 손님들이 반갑게 집어 드는 모습이다."
   },
   "대패질": {
-   "explain": ["쉬운 뜻: 나무 위를 쓱쓱 밀어 얇게 깎아 내 매끈하게 만드는 일입니다.", "낱말 나누기: 대패(나무 깎는 연장) + 질(그 일을 함) — 바느질의 '질'과 같습니다.", "봉운이 손바닥의 굳은살은 두 달 동안 대패질을 한 흔적입니다."],
+   "explain": ["쉬운 뜻: 나무 위를 쓱쓱 밀어 얇게 깎아 내 매끈하게 만드는 일입니다.", "낱말 나누기: 대패(나무 깎는 연장) + 질(그 일을 함) — 바느질의 '질'과 같습니다.", "아이 손바닥의 굳은살은 두 달 동안 대패질을 한 흔적입니다."],
    "beats": ["소년이 거친 나무판 위에 네모난 연장을 올렸습니다.", "앞으로 쭉 밀 때마다 얇은 나무 껍질이 돌돌 말려 나옵니다.", "대패로 나무를 깎아 반반하고 매끄럽게 만드는 일이 대패질입니다."],
    "img": "In a Joseon workshop, a boy apprentice in simple hanbok pushes a wooden hand plane along a rough board with both hands. With each push, a thin curl of wood rolls out of the plane and falls to the floor, where a pile of curly shavings has gathered. The board behind the plane is now smooth and shiny.",
    "imgKo": "조선 시대 작업장에서 수수한 한복의 소년이 두 손으로 대패를 쥐고 거친 나무판 위를 민다. 밀 때마다 얇은 나무 껍질이 돌돌 말려 나와 바닥에 수북이 쌓이고, 대패가 지나간 자리는 매끈하게 빛난다."
@@ -248,7 +248,7 @@
   },
   "탐스럽다": {
    "explain": ["쉬운 뜻: 보는 순간 '와, 갖고 싶다!' 소리가 절로 나오는 모습입니다.", "낱말 나누기: 탐(貪, 탐내다) + 스럽다(그런 느낌이 있다) — 탐이 날 만합니다.", "생활 속 예: 빵집 진열장 속 윤기 나는 딸기 케이크를 보면 군침이 돕니다."],
-   "beats": ["덩굴에 크고 윤기 나는 딸기가 주렁주렁 열렸습니다.", "하린이가 눈을 반짝이며 손을 뻗습니다.", "모양이나 빛깔이 보기 좋아 갖고 싶은 마음이 드는 것을 탐스럽다고 합니다."],
+   "beats": ["덩굴에 크고 윤기 나는 딸기가 주렁주렁 열렸습니다.", "한 아이가 눈을 반짝이며 손을 뻗습니다.", "모양이나 빛깔이 보기 좋아 갖고 싶은 마음이 드는 것을 탐스럽다고 합니다."],
    "img": "In a sunny garden, a green vine hangs heavy with big, plump, glossy red berries that sparkle with dew. HARIN reaches out toward them with shining eyes and a delighted face, licking her lips.",
    "imgKo": "햇살 가득한 텃밭에 초록 덩굴이 이슬 맺힌 크고 통통한 빨간 딸기로 묵직하게 늘어져 있다. 하린이가 눈을 반짝이며 입맛을 다시고 손을 뻗는다."
   },
@@ -261,7 +261,7 @@
   },
   "성찰": {
    "explain": ["쉬운 뜻: 마음속 거울을 꺼내 내 말과 행동을 가만히 비추어 보는 일입니다.", "낱말 나누기: 성(省, 살피다) + 찰(察, 살피다) — 살피고 또 살핍니다.", "생활 속 예: 잠들기 전 '오늘 동생에게 너무 화냈나?' 하고 떠올려 봅니다."],
-   "beats": ["밤에 도윤이가 책상에 앉아 일기장을 폈습니다.", "낮에 친구에게 소리치던 자기 모습이 생각 풍선에 떠오릅니다.", "자기가 한 말과 행동을 깊이 되돌아보며 살피는 일이 성찰입니다."],
+   "beats": ["밤에 한 아이가 책상에 앉아 일기장을 폈습니다.", "낮에 친구에게 소리치던 자기 모습이 생각 풍선에 떠오릅니다.", "자기가 한 말과 행동을 깊이 되돌아보며 살피는 일이 성찰입니다."],
    "img": "At night, DOYUN sits at his desk under a small lamp with an open diary showing only grey lines. Above his head floats a thought bubble showing himself earlier that day, shouting angrily at a friend who looks hurt. DOYUN rests his chin on his hand with a quiet, regretful face.",
    "imgKo": "밤에 도윤이가 작은 등불 아래 책상에 앉아 일기장을 펼쳤다. 머리 위 생각 풍선에 낮에 친구에게 화내며 소리치던 자기 모습과 속상한 친구 얼굴이 떠 있고, 도윤이는 턱을 괴고 뉘우치는 얼굴이다."
   },
@@ -275,7 +275,7 @@
   "적용하다": {
    "en": "apply",
    "explain": ["쉬운 뜻: 배운 것을 꺼내 딱 맞는 곳에 써 보는 것입니다. apply는 '~에 갖다 붙이다'라는 라틴 말에서 왔습니다.", "낱말 나누기: 적(適, 알맞다) + 용(用, 쓰다) + 하다 — 알맞게 갖다 씁니다.", "생활 속 예: 수학에서 배운 나눗셈으로 피자 여덟 조각을 넷이서 똑같이 나눕니다."],
-   "beats": ["도윤이가 줄자로 교실 바닥의 길이를 잽니다.", "공책에 그린 네모 그림을 보며 수학 시간에 배운 방법대로 셈을 합니다.", "배운 방법을 어떤 일에 알맞게 맞추어 쓰는 것을 적용하다라고 합니다."],
+   "beats": ["한 아이가 줄자로 교실 바닥의 길이를 잽니다.", "공책에 그린 네모 그림을 보며 수학 시간에 배운 방법대로 셈을 합니다.", "배운 방법을 어떤 일에 알맞게 맞추어 쓰는 것을 적용하다라고 합니다."],
    "img": "In an empty classroom, DOYUN kneels on the floor stretching a yellow tape measure along one side of the room. Beside him lies an open notebook showing a simple rectangle drawing with arrows on its sides, and he points at it with a pencil, looking pleased. No numbers are written.",
    "imgKo": "빈 교실에서 도윤이가 무릎을 꿇고 노란 줄자를 바닥 한쪽 끝까지 쭉 편다. 옆에 펼친 공책에는 변마다 화살표가 그려진 네모 그림이 있고, 도윤이가 연필로 가리키며 뿌듯해한다."
   },
@@ -333,7 +333,7 @@
   },
   "반영": {
    "explain": ["쉬운 뜻: 거울에 얼굴이 비치듯, 다른 사람의 의견이 내 글에 비쳐 나타나게 하는 것입니다.", "낱말 나누기: 반(反, 되돌리다) + 영(映, 비치다) — 되비쳐 나타납니다.", "생활 속 예: '글씨가 작아요.'라는 말을 듣고 포스터 글씨를 크게 바꿉니다."],
-   "beats": ["하린이 포스터 옆에 친구들이 붙인 쪽지가 여러 장 있습니다.", "쪽지를 읽은 하린이가 포스터에 사진을 붙이고 제목 칸을 크게 고칩니다.", "다른 사람의 의견을 받아들여 일이나 글에 나타나게 하는 것이 반영입니다."],
+   "beats": ["한 아이의 포스터 옆에 친구들이 붙인 쪽지가 여러 장 있습니다.", "쪽지를 읽은 아이가 포스터에 사진을 붙이고 제목 칸을 크게 고칩니다.", "다른 사람의 의견을 받아들여 일이나 글에 나타나게 하는 것이 반영입니다."],
    "img": "Split scene. Left: HARIN reads several sticky notes that classmates have stuck beside her poster; one note shows a camera icon and another shows an upward arrow. Right: HARIN glues a photo onto the poster and redraws the title area much bigger, smiling. No readable letters anywhere.",
    "imgKo": "왼쪽은 하린이가 포스터 옆에 친구들이 붙인 쪽지를 읽는 모습으로, 쪽지에 사진기 그림과 위쪽 화살표가 있다. 오른쪽은 하린이가 포스터에 사진을 붙이고 제목 칸을 크게 다시 그리며 웃는 모습이다."
   },
@@ -353,20 +353,20 @@
   },
   "거창하다": {
    "explain": ["쉬운 뜻: 동네 소풍을 가는데 우주선이라도 띄울 듯 크게 벌이는 모습입니다.", "낱말 나누기: 거(巨, 크다) + 창 + 하다 — 거인(巨人)의 '거'처럼 '크다'는 뜻이 들어 있습니다.", "생활 속 예: 생일 파티에 무대와 불꽃놀이까지 계획하면 너무 거창합니다."],
-   "beats": ["새해 첫날 도윤이 머리 위에 커다란 생각 풍선이 떴습니다.", "풍선 안에는 지구 한 바퀴, 로켓, 하늘까지 쌓인 책 더미가 들어 있습니다.", "일이나 모양이 지나치게 크고 대단한 것을 거창하다고 합니다."],
+   "beats": ["새해 첫날 한 아이 머리 위에 커다란 생각 풍선이 떴습니다.", "풍선 안에는 지구 한 바퀴, 로켓, 하늘까지 쌓인 책 더미가 들어 있습니다.", "일이나 모양이 지나치게 크고 대단한 것을 거창하다고 합니다."],
    "img": "On New Year's Day, DOYUN stands in his room holding a pencil and a blank planner. Above his head floats a gigantic thought bubble filling the whole room: a globe with a dotted path around it, a rocket blasting off and a stack of books reaching the clouds. DOYUN looks tiny and overwhelmed beneath it.",
    "imgKo": "새해 첫날 도윤이가 방에서 연필과 빈 계획표를 들고 섰다. 머리 위로 방을 가득 채운 생각 풍선에 점선이 한 바퀴 두른 지구본, 날아오르는 로켓, 구름까지 쌓인 책 더미가 있고, 그 아래 도윤이는 작고 기가 질려 보인다."
   },
   "섣불리": {
    "explain": ["쉬운 뜻: 잘 알아보지도 않고 '에이, 괜찮겠지.' 하며 덜컥 하는 모습입니다.", "낱말 나누기: '섣부르다(솜씨가 서투르다)'에서 온 말 — 서투르게 함부로입니다.", "생활 속 예: 처음 보는 버섯을 맛있어 보인다고 따 먹으면 큰일 납니다."],
-   "beats": ["살얼음이 낀 연못에 도윤이가 한 발을 내딛으려 합니다.", "하린이가 소매를 붙잡으며 얼음에 난 금을 가리킵니다.", "잘 알아보지도 않고 서투르게 함부로 하는 모양을 섣불리라고 합니다."],
+   "beats": ["살얼음이 낀 연못에 한 아이가 한 발을 내딛으려 합니다.", "친구가 소매를 붙잡으며 얼음에 난 금을 가리킵니다.", "잘 알아보지도 않고 서투르게 함부로 하는 모양을 섣불리라고 합니다."],
    "img": "At the edge of a pond covered with thin, glassy ice, DOYUN lifts one foot to step onto it with a carefree grin. Thin cracks spread across the ice near his foot. HARIN grabs his sleeve from behind and points at the cracks with a worried face.",
    "imgKo": "얇은 얼음이 낀 연못가에서 도윤이가 대수롭지 않게 웃으며 얼음 위로 한 발을 올리려 한다. 발 앞 얼음에 가는 금이 퍼져 있고, 하린이가 뒤에서 소매를 붙잡고 걱정스레 금을 가리킨다."
   },
   "부정적": {
    "en": "negative",
    "explain": ["쉬운 뜻: 무엇을 보든 '안 될 거야.' 하는 먹구름 안경을 쓴 것입니다. negative는 '아니라고 말하다'라는 라틴 말에서 왔습니다.", "낱말 나누기: 부정(否定, 아니라고 정함) + 적 — 아니라고, 나쁘다고 보는 것입니다.", "생활 속 예: 비 오는 날 아침부터 '오늘은 다 망했어.' 하고 투덜댑니다."],
-   "beats": ["하린이와 도윤이 앞에 주스가 반쯤 담긴 똑같은 컵이 놓였습니다.", "도윤이는 머리 위에 먹구름을 띄우고 '반밖에 없네.' 하는 얼굴입니다.", "어떤 것을 나쁘게 보거나 옳지 않다고 여기는 것이 부정적인 것입니다."],
+   "beats": ["두 아이 앞에 주스가 반쯤 담긴 똑같은 컵이 놓였습니다.", "한 아이는 머리 위에 먹구름을 띄우고 '반밖에 없네.' 하는 얼굴입니다.", "어떤 것을 나쁘게 보거나 옳지 않다고 여기는 것이 부정적인 것입니다."],
    "img": "HARIN and DOYUN sit side by side at a table, each with an identical glass half filled with orange juice. DOYUN frowns at his glass with a small dark rain cloud above his head, while HARIN smiles happily at hers with a little sun shining above her head.",
    "imgKo": "하린이와 도윤이가 나란히 앉았고, 앞에 오렌지 주스가 반쯤 담긴 똑같은 컵이 하나씩 있다. 도윤이는 머리 위에 작은 먹구름을 띄우고 컵을 보며 얼굴을 찡그리고, 하린이는 작은 해를 띄우고 웃는다."
   }

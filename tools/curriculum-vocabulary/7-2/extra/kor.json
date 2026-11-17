@@ -3,7 +3,7 @@
   "내적 갈등": {
    "en": "internal conflict",
    "explain": ["쉬운 뜻: 내 마음속에서 두 마음이 줄다리기하는 것입니다. conflict는 con(함께) + flict(치다), 서로 부딪침입니다.", "낱말 나누기: 내적(內的, 안의) + 갈등(葛藤, 칡과 등나무) — 덩굴이 얽히듯 마음속이 엉킴입니다.", "생활 속 예: 숙제를 먼저 할지, 게임을 먼저 할지 망설이는 것도 내적 갈등입니다."],
-   "beats": ["하린이 손에 마지막 남은 과자 하나가 들려 있습니다.", "하린이 머리 위에서 작은 하린이 둘이 줄다리기를 합니다. 하나는 과자를 끌어안고, 하나는 동생을 가리킵니다.", "한 인물의 마음속에서 서로 다른 생각이나 바람이 부딪치는 것이 내적 갈등입니다."],
+   "beats": ["한 아이 손에 마지막 남은 과자 하나가 들려 있습니다.", "머리 위에서 아이를 꼭 닮은 작은 아이 둘이 줄다리기를 합니다. 하나는 과자를 끌어안고, 하나는 동생을 가리킵니다.", "한 인물의 마음속에서 서로 다른 생각이나 바람이 부딪치는 것이 내적 갈등입니다."],
    "img": "HARIN sits at a kitchen table holding the last cookie, frowning thoughtfully. Above her head, two tiny versions of HARIN play tug-of-war with a rope: one tiny HARIN hugs a giant cookie, the other points toward a little brother peeking in at the door. No text anywhere.",
    "imgKo": "하린이가 식탁에 앉아 마지막 과자 하나를 들고 고민한다. 머리 위에서 작은 하린이 둘이 줄다리기를 하는데, 하나는 커다란 과자를 끌어안고 하나는 문틈으로 들여다보는 동생을 가리킨다."
   },
@@ -16,7 +16,7 @@
   },
   "심리": {
    "explain": ["쉬운 뜻: 마음속 날씨처럼 맑았다 흐렸다 바뀌는 마음의 움직임입니다.", "낱말 나누기: 심(心, 마음) + 리(理, 이치) — 마음이 움직이는 이치입니다.", "생활 속 예: 시험지를 받기 전 다리를 떤다면 불안한 심리가 드러난 것입니다."],
-   "beats": ["도윤이가 성적표를 쥐고 현관문 앞에서 서성입니다.", "입술을 깨물고, 문손잡이에 손을 댔다 뗐다 합니다.", "이런 행동으로 짐작할 수 있는, 마음이 움직이고 변하는 상태가 심리입니다."],
+   "beats": ["한 아이가 성적표를 쥐고 현관문 앞에서 서성입니다.", "입술을 깨물고, 문손잡이에 손을 댔다 뗐다 합니다.", "이런 행동으로 짐작할 수 있는, 마음이 움직이고 변하는 상태가 심리입니다."],
    "img": "DOYUN stands in front of his apartment's front door holding a folded report card, biting his lip. One hand hovers near the door handle, as if he has touched it and pulled back again. His shoulders are tense and his eyes look worried. No text on the paper.",
    "imgKo": "도윤이가 접은 성적표를 쥐고 집 현관문 앞에 서서 입술을 깨문다. 한 손은 문손잡이에 댔다 뗀 듯 그 근처에 머물러 있고, 어깨가 굳어 있고 눈빛이 걱정스럽다."
   },
@@ -44,7 +44,7 @@
   "화자": {
    "en": "speaker",
    "explain": ["쉬운 뜻: 대화에서 지금 마이크를 쥔 쪽, 곧 말하는 사람입니다. speaker도 speak(말하다) + er(사람)입니다.", "낱말 나누기: 화(話, 말하다) + 자(者, 사람) — 말하는 사람이라 영어와 똑같습니다.", "생활 속 예: 친구가 '배고프다' 하면 화자의 속뜻은 '같이 먹자'일 수 있습니다."],
-   "beats": ["하린이가 친구들 앞에 서서 이야기를 하고 있습니다.", "도윤이는 하린이의 목소리와 표정을 살피며 귀를 기울입니다.", "대화나 강연에서 말을 하는 사람이 화자입니다."],
+   "beats": ["한 아이가 친구들 앞에 서서 이야기를 하고 있습니다.", "한 친구는 그 목소리와 표정을 살피며 귀를 기울입니다.", "대화나 강연에서 말을 하는 사람이 화자입니다."],
    "img": "In a classroom, HARIN stands in front of a small group of classmates and speaks with lively hand gestures and a bright expression. DOYUN sits in front of her, chin on his hand, watching her face closely and listening. No text or speech bubbles.",
    "imgKo": "교실에서 하린이가 친구 몇 명 앞에 서서 밝은 얼굴로 손짓하며 이야기한다. 도윤이는 턱을 괴고 하린이의 얼굴을 살피며 귀 기울여 듣는다."
   },
@@ -71,7 +71,7 @@
   "비언어적 표현": {
    "en": "nonverbal communication",
    "explain": ["쉬운 뜻: 입은 다물고 몸으로 하는 말입니다. nonverbal은 non(아님) + verbal(말의), 한자말과 똑같이 '말이 아닌'입니다.", "낱말 나누기: 비(非, 아니다) + 언어적(言語的, 말의) + 표현(表現, 겉으로 드러냄) — 말이 아닌 표현입니다.", "생활 속 예: 엄지를 척 들어 올리면 말없이도 '잘했어'가 전해집니다."],
-   "beats": ["달리기를 마친 도윤이가 숨을 몰아쉽니다.", "멀리서 하린이가 엄지를 들어 올리고 활짝 웃어 보입니다.", "말소리 없이 손짓, 몸짓, 표정으로 뜻을 전하는 것이 비언어적 표현입니다."],
+   "beats": ["달리기를 마친 아이가 숨을 몰아쉽니다.", "멀리서 친구가 엄지를 들어 올리고 활짝 웃어 보입니다.", "말소리 없이 손짓, 몸짓, 표정으로 뜻을 전하는 것이 비언어적 표현입니다."],
    "img": "On a school sports field, DOYUN has just crossed the finish line and bends over, catching his breath. Across the noisy field, HARIN gives him a big thumbs-up and a bright smile without saying a word. DOYUN looks up and smiles back. No text.",
    "imgKo": "운동장에서 결승선을 막 통과한 도윤이가 허리를 숙이고 숨을 고른다. 시끄러운 운동장 건너편에서 하린이가 말없이 엄지를 들어 올리며 활짝 웃고, 도윤이도 고개를 들어 웃는다."
   }
@@ -121,7 +121,7 @@
   "전문어": {
    "en": "jargon",
    "explain": ["쉬운 뜻: 한 분야 사람들끼리 쓰는 그 분야만의 말입니다. jargon은 원래 '새가 지저귀는 소리', 밖에서 들으면 못 알아듣는 말입니다.", "낱말 나누기: 전문(專門, 한 문만 오로지 팜) + 어(語, 말) — 한 분야를 깊이 파는 사람들의 말입니다.", "생활 속 예: 병원의 '처방', 야구의 '도루', 컴퓨터의 '업데이트'가 전문어입니다."],
-   "beats": ["병원에서 의사 선생님이 엑스레이 사진을 가리키며 설명합니다.", "할머니는 낯선 말에 고개를 갸웃하시고, 하린이가 할머니 손을 꼭 잡아 드립니다.", "어떤 분야 사람들이 개념을 정확하게 나타내려고 주로 쓰는 말이 전문어입니다."],
+   "beats": ["병원에서 의사 선생님이 엑스레이 사진을 가리키며 설명합니다.", "할머니는 낯선 말에 고개를 갸웃하시고, 손녀가 할머니 손을 꼭 잡아 드립니다.", "어떤 분야 사람들이 개념을 정확하게 나타내려고 주로 쓰는 말이 전문어입니다."],
    "img": "In a hospital consultation room, a doctor in a white coat points to an X-ray of a knee on a light board while explaining. A grandmother sitting across tilts her head with a puzzled look, and HARIN, sitting beside her, holds her hand. No text on the board or anywhere.",
    "imgKo": "병원 진료실에서 흰 가운을 입은 의사 선생님이 밝은 판에 붙은 무릎 엑스레이 사진을 가리키며 설명한다. 맞은편 할머니는 알쏭달쏭한 얼굴로 고개를 갸웃하고, 옆에 앉은 하린이가 할머니 손을 잡아 드린다."
   },
@@ -135,7 +135,7 @@
   "관용적": {
    "en": "tolerant",
    "explain": ["쉬운 뜻: 나와 달라도 '그럴 수 있지' 하고 받아 주는 것입니다. tolerant는 '견디다, 참아 주다'라는 라틴말에서 왔습니다.", "낱말 나누기: 관(寬, 너그럽다) + 용(容, 받아들이다) + 적(的, 그러한) — 너그러이 품어 주는 태도입니다.", "생활 속 예: 동생이 쓰는 줄임말을 '이상해!' 하지 않고 무슨 뜻인지 물어봅니다."],
-   "beats": ["새로 전학 온 친구가 칠판 앞에서 낯선 말투로 자기소개를 합니다.", "하린이와 도윤이가 웃으며 손뼉을 치고, 몇몇 친구는 반갑게 손을 흔듭니다.", "나와 다른 사람의 말이나 생각을 너그럽게 받아들이는 것이 관용적인 태도입니다."],
+   "beats": ["새로 전학 온 친구가 칠판 앞에서 낯선 말투로 자기소개를 합니다.", "두 아이가 웃으며 손뼉을 치고, 몇몇 친구는 반갑게 손을 흔듭니다.", "나와 다른 사람의 말이나 생각을 너그럽게 받아들이는 것이 관용적인 태도입니다."],
    "img": "A new transfer student stands at the front of a classroom introducing himself a little nervously. HARIN and DOYUN smile warmly and clap, and a few other classmates wave in welcome. The atmosphere is friendly and open. No text on the board.",
    "imgKo": "새로 전학 온 남자아이가 교실 앞에서 조금 긴장한 얼굴로 자기소개를 한다. 하린이와 도윤이가 따뜻하게 웃으며 손뼉을 치고, 다른 친구 몇이 반갑게 손을 흔든다."
   }
@@ -157,7 +157,7 @@
   "검증": {
    "en": "fact-check",
    "explain": ["쉬운 뜻: '정말일까?' 하고 근거를 찾아 따져 보는 일입니다. fact-check는 fact(사실) + check(확인), 사실인지 확인함입니다.", "낱말 나누기: 검(檢, 살피다) + 증(證, 증거) — 증거를 대어 살핌입니다.", "생활 속 예: '바나나를 먹으면 키가 큰다'는 글을 보고 과학책과 전문가 말을 찾아봅니다."],
-   "beats": ["도윤이가 휴대 전화로 깜짝 놀랄 만한 소식을 봅니다.", "도윤이가 노트북과 두꺼운 책을 펼쳐 그 소식이 맞는지 하나하나 찾아봅니다.", "어떤 내용이 사실인지 근거를 찾아 따져서 확인하는 일이 검증입니다."],
+   "beats": ["한 아이가 휴대 전화로 깜짝 놀랄 만한 소식을 봅니다.", "노트북과 두꺼운 책을 펼쳐 그 소식이 맞는지 하나하나 찾아봅니다.", "어떤 내용이 사실인지 근거를 찾아 따져서 확인하는 일이 검증입니다."],
    "img": "DOYUN sits at his desk with a surprised face, holding a smartphone showing a shocking video thumbnail with no text. In front of him, a laptop and a thick encyclopedia are open, and he compares them carefully, holding a magnifying glass. No readable text anywhere.",
    "imgKo": "도윤이가 놀란 얼굴로 휴대 전화 속 깜짝 놀랄 영상을 보고 있다. 앞에는 노트북과 두꺼운 백과사전이 펼쳐져 있고, 도윤이가 돋보기를 들고 둘을 꼼꼼히 견주어 본다."
   }

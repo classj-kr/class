@@ -269,9 +269,9 @@
   (function () {
     const id = 't51-k1-saengryak';
     let css = base(id);
-    let body = at(1, 'pop', person(70, 266, C.blue, 18) + tag(70, 322, '규진', ROLE.s, 18));
+    let body = at(1, 'pop', person(70, 266, C.blue, 18) + tag(70, 322, '아이', ROLE.s, 18));
     body += at(1, 'fin', `<path d="M168 136 L94 208 L206 136 Z" fill="white" stroke="${C.line}" stroke-width="3" stroke-linejoin="round"/><rect x="130" y="36" width="484" height="104" rx="24" fill="white" stroke="${C.line}" stroke-width="3"/><path d="M170 133 L204 133 L190 150 Z" fill="white"/>`, 0.2);
-    const r = row(['우민이', '있어?', '선생님이 오래'], { y: 88, cx: 372, size: 26, gap: 14 });
+    const r = row(['반장', '있어?', '선생님이 오래'], { y: 88, cx: 372, size: 26, gap: 14 });
     body += at(1, 'pop', T(r[0], { fill: C.sky, stroke: C.blue }), 0.5) + at(1, 'pop', T(r[1], { fill: C.sky, stroke: C.blue }), 0.7);
     // 빠질 말: 칸 2 에 점선 자리만 남기고 위로 날아간다
     body += at(2, 'fin', `<rect x="${f(r[2].l)}" y="60" width="${r[2].w}" height="56" rx="12" fill="none" stroke="${C.purple}" stroke-width="3" stroke-dasharray="9 7"/>`, 0.2);

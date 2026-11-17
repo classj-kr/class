@@ -13,7 +13,7 @@
     "낱말 나누기: 관(觀, 보다) + 측(測, 재다) — 보고 잼입니다.",
     "생활 속 예: 기상청은 날마다 기온과 비의 양을 관측해 일기 예보를 만듭니다."
    ],
-   "beats": ["깜깜한 밤, 천문대의 둥근 지붕이 열리고 커다란 망원경이 하늘을 향합니다.", "도윤이가 망원경에 눈을 대고 토성의 고리를 살펴봅니다.", "이렇게 기구를 써서 하늘을 살펴보고 재는 일이 관측입니다."],
+   "beats": ["깜깜한 밤, 천문대의 둥근 지붕이 열리고 커다란 망원경이 하늘을 향합니다.", "한 아이가 망원경에 눈을 대고 토성의 고리를 살펴봅니다.", "이렇게 기구를 써서 하늘을 살펴보고 재는 일이 관측입니다."],
    "img": "Night inside a small observatory with its dome roof slid open to a starry sky. A large white telescope points up through the opening, and DOYUN (boy, round glasses, navy hoodie) stands on a small step with one eye at the eyepiece while TEACHER (woman in her 30s, beige jacket) points toward the sky. A small round inset in the upper corner shows what he sees: the planet Saturn with its rings.",
    "imgKo": "천문대 둥근 지붕이 열려 있고, 도윤이가 커다란 망원경에 눈을 대고 선생님이 하늘을 가리킨다. 구석의 작은 동그라미 그림에 고리를 두른 토성이 보인다."
   },
@@ -31,7 +31,7 @@
     "낱말 나누기: 달의 + 바다 — 옛날 사람들이 물이 고인 바다인 줄 알고 붙인 이름입니다.",
     "생활 속 예: 쌍안경으로 보름달을 보면 밝은 곳과 어두운 곳이 또렷이 나뉩니다."
    ],
-   "beats": ["추석 밤, 하린이가 할머니와 마루에 앉아 둥근 보름달을 올려다봅니다.", "달의 밝은 곳 사이사이에 거뭇거뭇한 무늬가 보입니다.", "물은 없지만 어둡게 보여서 바다라고 부르는 이 넓은 곳이 달의 바다입니다."],
+   "beats": ["추석 밤, 한 아이가 할머니와 마루에 앉아 둥근 보름달을 올려다봅니다.", "달의 밝은 곳 사이사이에 거뭇거뭇한 무늬가 보입니다.", "물은 없지만 어둡게 보여서 바다라고 부르는 이 넓은 곳이 달의 바다입니다."],
    "img": "A Chuseok night in the yard of a traditional Korean house. HARIN (girl, yellow headband, mint cardigan) and her grandmother sit side by side on the wooden porch, looking up at a huge bright full moon. The moon is drawn realistically, with its dark grey patches clearly visible against the lighter areas, the patches loosely suggesting a rabbit shape.",
    "imgKo": "추석 밤 한옥 마루에 하린이와 할머니가 나란히 앉아 커다란 보름달을 올려다본다. 달에는 밝은 곳 사이로 어두운 회색 무늬가 또렷하다."
   },
@@ -281,7 +281,7 @@
     "낱말 나누기: 매(煤, 그을음) + 연(煙, 연기) — 검은 그을음이 섞인 연기입니다.",
     "생활 속 예: 큰길가의 흰 벽이 매연에 그을려 거뭇거뭇해지기도 합니다."
    ],
-   "beats": ["낡은 트럭이 출발하면서 꽁무니에서 시커먼 연기를 뿜습니다.", "길을 걷던 하린이와 도윤이가 손으로 코와 입을 막습니다.", "무엇을 태울 때 나오는 검고 해로운 이 연기가 매연입니다."],
+   "beats": ["낡은 트럭이 출발하면서 꽁무니에서 시커먼 연기를 뿜습니다.", "길을 걷던 두 아이가 손으로 코와 입을 막습니다.", "무엇을 태울 때 나오는 검고 해로운 이 연기가 매연입니다."],
    "img": "A city street: an old delivery truck pulls away from the curb, puffing a thick cloud of black smoke from its exhaust pipe. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie), walking on the sidewalk with school bags, cover their noses and mouths with their hands and squint.",
    "imgKo": "낡은 트럭이 출발하며 배기관에서 시커먼 연기를 뿜고, 가방을 멘 하린이와 도윤이가 손으로 코와 입을 막는다."
   },
@@ -324,7 +324,7 @@
         "낱말 나누기: 멸(滅, 없어지다) + 종(種, 종류) — 한 종류가 몽땅 없어짐입니다.",
         "생활 속 예: 도도새는 사람들이 마구 잡고, 데려온 동물이 알을 먹어 멸종했습니다."
       ],
-   "beats": ["박물관 넓은 방에 커다란 공룡 뼈가 서 있습니다.", "하린이와 도윤이가 고개를 한껏 젖혀 올려다봅니다.", "공룡처럼 한 종류의 생물이 지구에서 모두 사라지는 것이 멸종입니다."],
+   "beats": ["박물관 넓은 방에 커다란 공룡 뼈가 서 있습니다.", "두 아이가 고개를 한껏 젖혀 올려다봅니다.", "공룡처럼 한 종류의 생물이 지구에서 모두 사라지는 것이 멸종입니다."],
    "img": "A natural history museum hall with a towering dinosaur skeleton, a long-necked sauropod, standing on a low platform. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie) stand at its feet, tilting their heads far back to look up at it, tiny next to the bones. Soft light falls from high windows.",
    "imgKo": "박물관 넓은 방에 목이 긴 공룡 뼈가 높이 서 있고, 하린이와 도윤이가 그 발치에서 고개를 한껏 젖혀 올려다본다."
   },
@@ -383,7 +383,7 @@
         "낱말 나누기: 영어 piston은 '절굿공이'라는 이탈리아 말에서 왔습니다 — 절구 속을 오르내리는 공이처럼 움직입니다.",
         "생활 속 예: 물총 손잡이를 당겼다 밀면 속에서 피스톤이 움직여 물을 쏩니다."
       ],
-   "beats": ["하린이가 손가락으로 주사기 입구를 꼭 막습니다.", "다른 손으로 막대를 꾹 밀자 조금 들어가다가 더는 잘 들어가지 않습니다.", "통 안을 오가며 속에 든 공기를 누르는 이 막대 부분이 피스톤입니다."],
+   "beats": ["한 아이가 손가락으로 주사기 입구를 꼭 막습니다.", "다른 손으로 막대를 꾹 밀자 조금 들어가다가 더는 잘 들어가지 않습니다.", "통 안을 오가며 속에 든 공기를 누르는 이 막대 부분이 피스톤입니다."],
    "img": "A close-up on a science classroom table: HARIN (girl, yellow headband, mint cardigan) holds a large clear plastic syringe with no needle and no scale numbers. Her fingertip firmly blocks the syringe tip, and her other thumb presses the plunger partway in, squeezing the air inside. DOYUN (boy, round glasses, navy hoodie) watches closely beside her.",
    "imgKo": "과학실 책상에서 하린이가 바늘 없는 커다란 주사기 입구를 손가락으로 막고 엄지로 밀대를 반쯤 밀어 넣는다. 옆에서 도윤이가 지켜본다."
   },
@@ -402,7 +402,7 @@
         "낱말 나누기: 질(窒, 숨 막히다) + 소(素, 바탕) — 이 기체만 들이마시면 숨이 막혀서 붙은 이름입니다.",
         "생활 속 예: 비행기 타이어에도 질소를 채웁니다."
       ],
-   "beats": ["식탁 위에 빵빵하게 부푼 과자 봉지가 놓여 있습니다.", "도윤이가 봉지를 뜯자 '푸쉬' 하고 봉지가 줄어들고, 속 과자는 부서지지 않았습니다.", "과자를 지키려고 봉지 속에 채워 넣는 이 기체가 질소입니다."],
+   "beats": ["식탁 위에 빵빵하게 부푼 과자 봉지가 놓여 있습니다.", "한 아이가 봉지를 뜯자 '푸쉬' 하고 봉지가 줄어들고, 속 과자는 부서지지 않았습니다.", "과자를 지키려고 봉지 속에 채워 넣는 이 기체가 질소입니다."],
    "img": "A home kitchen table: DOYUN (boy, round glasses, navy hoodie) has just opened a puffy, plain-colored snack bag with no printing or letters, and it is deflating slightly with a soft puff. Inside, the chips are whole and unbroken. Two more unopened, fully puffed bags sit beside him.",
    "imgKo": "식탁에서 도윤이가 글자 없는 빵빵한 과자 봉지를 막 뜯자 봉지가 살짝 줄어들고, 속 과자는 부서지지 않고 온전하다. 옆에 뜯지 않은 빵빵한 봉지 두 개가 있다."
   },
@@ -456,7 +456,7 @@
         "낱말 나누기: 설(設, 세우다) + 계(計, 셈하다) — 세우기 전에 미리 셈해 봄입니다.",
         "생활 속 예: 블록으로 성을 쌓기 전에 모양을 그려 보는 것도 설계입니다."
       ],
-   "beats": ["새집을 만들기 전에 도윤이가 큰 종이를 펼칩니다.", "앞모습, 옆모습, 지붕을 그리고, 만드는 차례를 화살표로 잇습니다.", "만들기 전에 모양과 재료, 차례를 미리 그려 보는 것이 설계입니다."],
+   "beats": ["새집을 만들기 전에 한 아이가 큰 종이를 펼칩니다.", "앞모습, 옆모습, 지붕을 그리고, 만드는 차례를 화살표로 잇습니다.", "만들기 전에 모양과 재료, 차례를 미리 그려 보는 것이 설계입니다."],
    "img": "A classroom desk: DOYUN (boy, round glasses, navy hoodie) draws a plan of a small wooden birdhouse on a large sheet of paper, with simple sketches of the front, side and roof and arrows joining the steps, with no words or numbers. Beside the paper lie a ruler, a pencil, a few small wooden boards and a glue bottle waiting to be used. HARIN (girl, yellow headband, mint cardigan) leans over, pointing at the roof sketch.",
    "imgKo": "교실 책상에서 도윤이가 큰 종이에 작은 나무 새집의 앞·옆·지붕 그림과 차례를 잇는 화살표를 그린다(글자 없음). 옆에 자, 연필, 나무판, 풀이 있고 하린이가 지붕 그림을 가리킨다."
   }
@@ -521,7 +521,7 @@
         "낱말 나누기: 한(寒, 차다) + 파(波, 물결) — 추위의 물결로, 영어와 짜임이 꼭 같습니다.",
         "생활 속 예: 한파가 오면 수도꼭지를 조금 틀어 두어 물이 얼지 않게 합니다."
       ],
-   "beats": ["버스 정류장 유리에 성에가 끼고 지붕 끝에 고드름이 달렸습니다.", "두껍게 싸맨 하린이와 도윤이가 하얀 입김을 뿜으며 발을 동동 구릅니다.", "기온이 뚝 떨어져 찾아온 이런 매서운 추위가 한파입니다."],
+   "beats": ["버스 정류장 유리에 성에가 끼고 지붕 끝에 고드름이 달렸습니다.", "두껍게 싸맨 두 아이가 하얀 입김을 뿜으며 발을 동동 구릅니다.", "기온이 뚝 떨어져 찾아온 이런 매서운 추위가 한파입니다."],
    "img": "A freezing winter morning at a bus stop: frost covers the shelter's glass, icicles hang from the roof edge, and the puddles are frozen solid. HARIN (girl, yellow headband, mint cardigan) and DOYUN (boy, round glasses, navy hoodie), bundled in thick padded coats, scarves, hats and mittens, breathe out big white puffs of breath and stamp their feet to keep warm.",
    "imgKo": "몹시 추운 아침 버스 정류장 유리에 성에가 끼고 지붕 끝에 고드름이 달렸다. 두꺼운 외투와 목도리, 장갑으로 싸맨 하린이와 도윤이가 하얀 입김을 뿜으며 발을 구른다."
   },

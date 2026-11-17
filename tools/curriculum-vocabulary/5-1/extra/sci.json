@@ -29,7 +29,7 @@
     "낱말 나누기: 암(巖, 바위) + 석(石, 돌) — 바위와 돌입니다.",
     "생활 속 예: 산의 바위, 바닷가 갯바위, 화단의 큰 돌이 모두 암석입니다."
    ],
-   "beats": ["등산로 옆에 커다란 회색 바위가 우뚝 솟아 있습니다.", "도윤이가 손바닥을 대어 보니 아주 단단하고 차갑습니다.", "이렇게 땅을 이루는 크고 단단한 돌이 암석입니다."],
+   "beats": ["등산로 옆에 커다란 회색 바위가 우뚝 솟아 있습니다.", "한 아이가 손바닥을 대어 보니 아주 단단하고 차갑습니다.", "이렇게 땅을 이루는 크고 단단한 돌이 암석입니다."],
    "img": "A mountain hiking trail in autumn with an enormous gray granite rock face rising right beside the path, patches of green moss on its rough surface and no stripes or layers in it. DOYUN (boy, round glasses, navy hoodie) stops on the trail, presses his palm flat against the huge rock and looks up at it in wonder.",
    "imgKo": "등산로 옆에 이끼 낀 커다란 회색 바위가 솟아 있고, 도윤이가 손바닥을 바위에 대고 올려다본다. 바위에는 줄무늬가 없다."
   },
@@ -89,8 +89,8 @@
     "생활 속 예: 식탁 위 빵 부스러기를 보고 동생이 몰래 빵을 먹었다고 알아냅니다."
    ],
    "beats": [
-    "하린이가 돌에 찍힌 고사리 화석을 돋보기로 들여다봅니다.",
-    "도윤이는 고사리가 우거진 축축한 옛 숲을 떠올립니다.",
+    "한 아이가 돌에 찍힌 고사리 화석을 돋보기로 들여다봅니다.",
+    "친구는 고사리가 우거진 축축한 옛 숲을 떠올립니다.",
     "이처럼 단서를 바탕으로 보지 못한 옛일을 생각해 알아내는 것이 추리입니다."
    ],
    "img": "A science classroom lab table with a gray rock slab showing a clear fern leaf fossil. HARIN (girl, yellow headband, mint cardigan) holds a magnifying glass over the fossil, while DOYUN (boy, round glasses, navy hoodie) beside her looks up thoughtfully. A soft thought bubble above his head shows a warm, damp ancient forest full of tall ferns; the bubble holds only a picture, no words.",
@@ -129,7 +129,7 @@
     "낱말 나누기: 평(平, 판판하다) + 면(面, 겉면) + 거울 — 겉면이 판판한 거울입니다.",
     "생활 속 예: 엘리베이터 벽에 붙은 커다란 거울도 평면거울입니다."
    ],
-   "beats": ["욕실 세면대 위에 판판한 거울이 붙어 있습니다.", "도윤이가 이를 닦는 모습이 크기 그대로 비칩니다.", "이렇게 휘지 않고 판판한 거울이 평면거울입니다."],
+   "beats": ["욕실 세면대 위에 판판한 거울이 붙어 있습니다.", "한 아이가 이를 닦는 모습이 크기 그대로 비칩니다.", "이렇게 휘지 않고 판판한 거울이 평면거울입니다."],
    "img": "A bright, tidy bathroom with a large flat rectangular mirror hung above the sink. DOYUN (boy, round glasses, navy hoodie) brushes his teeth in front of it, and his reflection in the mirror is upright and exactly the same size as he is. The mirror surface is perfectly flat, not curved.",
    "imgKo": "욕실 세면대 위 판판한 큰 거울 앞에서 도윤이가 이를 닦고, 거울 속 모습이 같은 크기로 똑바로 비친다."
   },
@@ -219,7 +219,7 @@
    ],
    "beats": [
     "창가에 크기와 흙이 똑같은 화분 두 개가 있습니다.",
-    "하린이가 두 화분에 똑같은 양의 물을 붓습니다.",
+    "한 아이가 두 화분에 똑같은 양의 물을 붓습니다.",
     "다른 점은 하나뿐, 한 화분만 상자로 덮어 햇빛을 막습니다.",
     "이렇게 실험에서 같게 할 것과 다르게 할 것을 정한 것이 조건입니다."
    ],
@@ -241,9 +241,9 @@
     "생활 속 예: 개미 옆의 생쥐는 크지만, 코끼리 옆의 생쥐는 작습니다."
    ],
    "beats": [
-    "1학년 동생들 옆에 선 도윤이는 키가 큽니다.",
-    "6학년 형들 옆에서는 도윤이가 키가 작습니다.",
-    "도윤이의 키는 그대로인데 누구와 견주느냐에 따라 크다, 작다가 달라집니다.",
+    "1학년 동생들 옆에 선 아이는 키가 큽니다.",
+    "6학년 형들 옆에서는 키가 작습니다.",
+    "아이의 키는 그대로인데 누구와 견주느냐에 따라 크다, 작다가 달라집니다.",
     "이렇게 다른 것과 견주어 보아서 정하는 것이 상대적입니다."
    ],
    "img": "A school hallway with a plain wall. DOYUN (boy, round glasses, navy hoodie) stands in the middle; on his left stand two little first-grade children who reach only up to his shoulders, and on his right stand two tall sixth-grade students who are a whole head taller than him. Everyone faces forward so their heights are easy to compare.",
@@ -307,7 +307,7 @@
    ],
    "beats": [
     "급식판에 밥, 국, 생선, 나물, 우유, 귤이 담겨 있습니다.",
-    "하린이가 가리지 않고 골고루 먹습니다.",
+    "한 아이가 가리지 않고 골고루 먹습니다.",
     "음식마다 들어 있는, 몸이 자라고 움직이는 데 꼭 필요한 성분이 영양소입니다."
    ],
    "img": "A Korean school cafeteria table. A metal lunch tray seen at a slight angle holds a bowl of rice, a bowl of soup, a piece of grilled fish, a small dish of seasoned spinach, a carton of milk and a few tangerine slices. HARIN (girl, yellow headband, mint cardigan) sits at the table with chopsticks, happily eating a bit of everything on her tray.",
@@ -335,7 +335,7 @@
     "생활 속 예: 맛있는 음식 냄새를 맡으면 입안에 침이 고입니다."
    ],
    "beats": [
-    "뜨거운 햇볕 아래에서 도윤이가 달리기를 마쳤습니다.",
+    "뜨거운 햇볕 아래에서 한 아이가 달리기를 마쳤습니다.",
     "이마와 팔에 땀방울이 송골송골 맺혔습니다.",
     "몸이 이렇게 땀 같은 액체를 스스로 만들어 내보내는 것이 분비입니다."
    ],
@@ -457,7 +457,7 @@
     "생활 속 예: 손가락을 목 옆에 살짝 대어도 맥박을 느낄 수 있습니다."
    ],
    "beats": [
-    "줄넘기를 마친 하린이가 숨을 몰아쉬며 의자에 앉았습니다.",
+    "줄넘기를 마친 한 아이가 숨을 몰아쉬며 의자에 앉았습니다.",
     "손목 안쪽에 두 손가락을 대니 톡톡 뛰는 것이 느껴집니다.",
     "심장이 뛸 때마다 혈관에 전해지는 이 떨림이 맥박입니다."
    ],
@@ -471,7 +471,7 @@
     "낱말 나누기: 질(疾, 병) + 병(病, 병) — '병'을 뜻하는 글자 둘을 겹친 말입니다.",
     "생활 속 예: 충치, 배탈, 눈병도 모두 질병입니다."
    ],
-   "beats": ["감기에 걸린 도윤이가 코를 훌쩍이며 병원에 왔습니다.", "의사 선생님이 청진기로 가슴 속 소리를 들어 봅니다.", "이렇게 몸의 기관에 탈이 나서 아픈 상태가 질병입니다."],
+   "beats": ["감기에 걸린 한 아이가 코를 훌쩍이며 병원에 왔습니다.", "의사 선생님이 청진기로 가슴 속 소리를 들어 봅니다.", "이렇게 몸의 기관에 탈이 나서 아픈 상태가 질병입니다."],
    "img": "A small examination room in a children's clinic. DOYUN (boy, round glasses, navy hoodie) sits on a round stool with a red nose and a tissue in his hand, looking tired, while a kind doctor in a white coat listens to his chest with a stethoscope. His mother waits beside him holding his backpack.",
    "imgKo": "소아과 진료실에서 코가 빨개진 도윤이가 휴지를 든 채 앉아 있고, 의사 선생님이 청진기로 가슴 소리를 듣는다. 엄마가 옆에서 기다린다."
   }

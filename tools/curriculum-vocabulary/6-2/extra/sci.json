@@ -348,7 +348,7 @@
    ],
    "beats": [
     "모두 떠난 빈 교실에 불과 선풍기가 그대로 켜져 있습니다.",
-    "마지막에 나가는 도윤이가 불과 선풍기를 끕니다.",
+    "마지막에 나가는 아이가 불과 선풍기를 끕니다.",
     "쓸 때만 써서 전기를 헛되이 버리지 않는 것이 효율적으로 쓰는 것입니다."
    ],
    "img": "An empty classroom at the end of the school day, chairs pushed in. DOYUN, the last to leave with his backpack on, presses the wall light switch so half of the ceiling lights have already gone dark, and the electric fan by the window has stopped. Through the open door, classmates walk away down the hallway.",
@@ -361,7 +361,7 @@
     "낱말 나누기: 안전(安全, 편안하고 탈이 없음) + 수(守, 지키다) + 칙(則, 규칙) — 안전을 위해 지킬 규칙입니다.",
     "생활 속 예: 콘센트 구멍에는 젓가락이나 머리핀을 넣지 않습니다."
    ],
-   "beats": ["플러그를 뺄 때 줄을 잡아당기면 안 됩니다.", "하린이가 수건에 손을 닦고 플러그 머리를 잡아 뽑습니다.", "사고를 막으려고 꼭 지키는 이런 규칙이 안전 수칙입니다."],
+   "beats": ["플러그를 뺄 때 줄을 잡아당기면 안 됩니다.", "한 아이가 수건에 손을 닦고 플러그 머리를 잡아 뽑습니다.", "사고를 막으려고 꼭 지키는 이런 규칙이 안전 수칙입니다."],
    "img": "A living room wall outlet with a lamp plugged in. HARIN, a small towel over her shoulder after drying her hands, pulls the plug out by firmly holding its hard plastic head, not the cord. A small inset in the corner shows a hand yanking a plug by its cord with a simple red X over it.",
    "imgKo": "거실 벽 콘센트. 손을 닦은 하린이(어깨에 작은 수건)가 플러그의 딱딱한 머리를 잡고 뽑는다. 구석 작은 그림엔 줄을 잡아당기는 손 위에 빨간 X."
   }
@@ -374,7 +374,7 @@
     "낱말 나누기: 진(進, 나아가다) + 로(路, 길) — 나아갈 길로, 영어와 생각이 같습니다.",
     "생활 속 예: 과학자가 꿈이라 과학 동아리에 드는 것도 진로 준비입니다."
    ],
-   "beats": ["하린이가 여러 갈래로 나뉜 길 앞에 서 있습니다.", "길 끝마다 실험실, 농장, 병원, 무대가 보입니다.", "내가 앞으로 나아갈 삶의 길이 진로입니다."],
+   "beats": ["한 아이가 여러 갈래로 나뉜 길 앞에 서 있습니다.", "길 끝마다 실험실, 농장, 병원, 무대가 보입니다.", "내가 앞으로 나아갈 삶의 길이 진로입니다."],
    "img": "A bright storybook landscape: HARIN stands at the start of a road that splits into several winding paths across green hills. At the end of each path a small destination is visible: a science lab building with a telescope dome, a greenhouse farm, a hospital and a theater stage. She holds a blank notebook and looks thoughtfully ahead. No signposts or writing anywhere.",
    "imgKo": "푸른 언덕 위로 길이 여러 갈래로 갈라지고, 길 끝마다 망원경 지붕 실험실·비닐 온실 농장·병원·무대가 보인다. 하린이가 빈 공책을 들고 갈림길 앞에서 생각에 잠겨 있다(표지판 글자 없음)."
   },
@@ -410,7 +410,7 @@
     "낱말 나누기: 적(適, 알맞다) + 성(性, 타고난 바탕) — 나에게 알맞은 바탕입니다.",
     "생활 속 예: 블록을 몇 시간씩 꼼꼼히 쌓는 친구는 만드는 일이 적성일 수 있습니다."
    ],
-   "beats": ["도윤이는 고장 난 장난감을 뜯어보는 것이 가장 즐겁습니다.", "작은 나사도 척척 풀고 다시 맞추어 고쳐 냅니다.", "이렇게 어떤 일에 잘 맞는 능력과 성격이 적성입니다."],
+   "beats": ["한 아이는 고장 난 장난감을 뜯어보는 것이 가장 즐겁습니다.", "작은 나사도 척척 풀고 다시 맞추어 고쳐 냅니다.", "이렇게 어떤 일에 잘 맞는 능력과 성격이 적성입니다."],
    "img": "DOYUN sits at a desk covered with the parts of a disassembled toy robot, tiny screws sorted neatly into the cups of a muffin tin. He tightens a screw with a small screwdriver, completely focused and smiling, while outside the window behind him two classmates play ball.",
    "imgKo": "도윤이가 분해한 장난감 로봇 부품을 책상 가득 펼쳐 놓고, 작은 나사는 머핀 틀 칸마다 가지런히 담았다. 작은 드라이버로 나사를 조이며 집중해서 웃고, 창밖에선 친구들이 공놀이를 한다."
   },
@@ -421,7 +421,7 @@
     "낱말 나누기: 탐(探, 더듬어 찾다) + 색(索, 찾다) — 이리저리 찾아봄입니다.",
     "생활 속 예: 처음 간 박물관에서 안내도를 보며 여기저기 둘러보는 것도 탐색입니다."
    ],
-   "beats": ["직업 체험관에 들어선 하린이가 둘레를 둘러봅니다.", "소방관 옷도 입어 보고, 요리사 칸도 기웃거립니다.", "이리저리 찾아보며 살피는 것이 탐색입니다."],
+   "beats": ["직업 체험관에 들어선 아이가 둘레를 둘러봅니다.", "소방관 옷도 입어 보고, 요리사 칸도 기웃거립니다.", "이리저리 찾아보며 살피는 것이 탐색입니다."],
    "img": "A bright children's career experience hall with small booths: a fire station booth with a tiny fire truck, a kitchen booth with chef hats on hooks, and a broadcasting booth with a camera. HARIN, wearing a child-size firefighter jacket, peeks curiously toward the kitchen booth with a folded map leaflet (no writing) in her hand.",
    "imgKo": "어린이 직업 체험관에 소방서·부엌·방송국 칸이 있다. 아이용 소방관 옷을 입은 하린이가 글자 없는 안내도를 들고 부엌 칸 쪽을 궁금한 듯 기웃거린다."
   },
@@ -433,7 +433,7 @@
     "생활 속 예: 휴대 전화, 엘리베이터, 지하철도 공학으로 만들었습니다."
    ],
    "beats": [
-    "도윤이와 하린이가 종이를 접어 다리를 만듭니다.",
+    "두 아이가 종이를 접어 다리를 만듭니다.",
     "다리 가운데에 동전을 하나씩 올리며 얼마나 버티는지 봅니다.",
     "과학을 써서 튼튼하게 만드는 방법을 연구하는 것이 공학입니다."
    ],
@@ -448,7 +448,7 @@
     "생활 속 예: 말을 알아듣는 스피커, 얼굴을 알아보는 휴대 전화에 들어 있습니다."
    ],
    "beats": [
-    "가방을 멘 하린이가 스피커에게 내일 날씨를 묻습니다.",
+    "가방을 멘 아이가 스피커에게 내일 날씨를 묻습니다.",
     "스피커가 알아듣고 작은 화면에 비구름과 우산 그림을 띄웁니다.",
     "사람처럼 배우고 판단하도록 만든 프로그램이 인공지능입니다."
    ],
@@ -463,7 +463,7 @@
     "생활 속 예: 기기를 쓰고 고개를 돌리면 눈앞의 풍경도 따라 돕니다."
    ],
    "beats": [
-    "도윤이가 교실에서 머리에 쓰는 기기를 씁니다.",
+    "한 아이가 교실에서 머리에 쓰는 기기를 씁니다.",
     "눈앞에 회색 달 땅이 펼쳐지고 검은 하늘에 지구가 떠오릅니다.",
     "컴퓨터가 만든 장면을 진짜처럼 겪는 것이 가상 현실입니다."
    ],

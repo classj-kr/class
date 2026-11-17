@@ -22,7 +22,7 @@
         "낱말 나누기: 경(景, 경치) + 관(觀, 보다) — 눈에 보이는 경치입니다.",
         "생활 속 예: 논밭이 펼쳐진 시골과 높은 건물이 빽빽한 도시는 경관이 다릅니다."
       ],
-      "beats": ["하린이와 도윤이가 언덕 위 전망대에 올랐습니다.", "숲이 덮인 산과 강, 논밭과 마을이 한눈에 들어옵니다.", "한눈에 바라보이는 자연이나 마을의 모습이 경관입니다."],
+      "beats": ["두 아이가 언덕 위 전망대에 올랐습니다.", "숲이 덮인 산과 강, 논밭과 마을이 한눈에 들어옵니다.", "한눈에 바라보이는 자연이나 마을의 모습이 경관입니다."],
       "img": "HARIN and DOYUN stand at a wooden lookout deck on a hilltop, seen from behind, gazing out over a wide view: forested mountains, a river curving through rice fields, and a small village with tiled roofs. The whole scenery spreads out below them in soft morning light. No text.",
       "imgKo": "하린이와 도윤이가 언덕 위 전망대에서 뒷모습으로 서서, 숲이 덮인 산과 논 사이로 굽은 강, 지붕이 모인 마을이 펼쳐진 모습을 내려다본다."
     },
@@ -583,7 +583,7 @@
         "낱말 나누기: 이(利, 이로움) + 윤(潤, 불어나다) — 불어난 이익입니다.",
         "생활 속 예: 재료에 3,000원을 쓰고 5,000원어치를 팔면 2,000원이 남습니다."
       ],
-      "beats": ["하린이가 레몬과 설탕을 사서 레모네이드를 만듭니다.", "레모네이드를 팔아 받은 돈에서 재료값만큼 덜어 냅니다.", "번 돈에서 든 비용을 빼고 남은 돈이 이윤입니다."],
+      "beats": ["한 아이가 레몬과 설탕을 사서 레모네이드를 만듭니다.", "레모네이드를 팔아 받은 돈에서 재료값만큼 덜어 냅니다.", "번 돈에서 든 비용을 빼고 남은 돈이 이윤입니다."],
       "img": "HARIN runs a lemonade stand at a school market day. On one side of the table lie the lemons and sugar bag she bought; she hands a cup to a customer, then splits her coin jar into two piles: a bigger pile set aside to cover the ingredient cost, and a smaller leftover pile she smiles at. No text, no numbers.",
       "imgKo": "학교 장터에서 하린이가 레모네이드를 판다. 탁자 한쪽에 사 온 레몬과 설탕이 있고, 동전 통을 재료값으로 덜어 낼 큰 더미와 남은 작은 더미로 나누며 웃는다."
     },
@@ -640,7 +640,7 @@
         "생활 속 예: 블록 쌓기를 몇 시간씩 즐기면 만드는 일이 적성일 수 있습니다."
       ],
       "beats": [
-        "하린이는 그림 그리기를, 도윤이는 고장 난 장난감 고치기를 좋아합니다.",
+        "한 아이는 그림 그리기를, 다른 아이는 고장 난 장난감 고치기를 좋아합니다.",
         "둘 다 좋아하는 일을 할 때 오래 집중하고 솜씨가 좋습니다.",
         "어떤 일을 잘할 수 있는 소질이나 성격이 적성입니다."
       ],

@@ -7,7 +7,7 @@
     "낱말 나누기: 매(媒, 이어 주다) + 체(體, 몸) — 사람 사이를 이어 주는 몸입니다.",
     "생활 속 예: 숙제 소식은 종이 알림장, 문자, 학급 누리집으로 받습니다."
    ],
-   "beats": ["할아버지는 신문으로 소식을 읽고, 도윤이는 라디오로 소식을 듣습니다.", "하린이는 태블릿 영상으로 같은 소식을 봅니다.", "생각과 소식을 실어 나르는 도구가 매체입니다."],
+   "beats": ["할아버지는 신문으로 소식을 읽고, 손자는 라디오로 소식을 듣습니다.", "손녀는 태블릿 영상으로 같은 소식을 봅니다.", "생각과 소식을 실어 나르는 도구가 매체입니다."],
    "img": "A cozy living room with three spots. On the left, a Korean grandfather reads a printed newspaper with a photo of a rainbow over a city; in the middle, DOYUN listens to a small radio with sound-wave lines coming out; on the right, HARIN watches a tablet playing a video of the same rainbow. Thin glowing ribbons run from a small rainbow at the top of the picture to each of the three devices, showing the same news traveling by three different routes. Newspaper text is drawn only as grey lines.",
    "imgKo": "거실에서 할아버지는 무지개 사진이 실린 신문을, 도윤이는 라디오를, 하린이는 태블릿 영상을 본다. 위쪽 작은 무지개에서 빛나는 띠가 세 기기로 이어져 같은 소식이 세 길로 전해진다."
   },
@@ -18,7 +18,7 @@
     "낱말 나누기: 여(餘, 남다) + 가(暇, 틈) — 남는 틈입니다.",
     "생활 속 예: 주말에 배드민턴을 치거나 그림을 그리며 여가를 보냅니다."
    ],
-   "beats": ["숙제를 마친 도윤이가 공책을 덮습니다.", "남은 저녁 시간에 고양이 옆에서 기타를 칩니다.", "할 일을 마치고 남은 자유로운 시간이 여가입니다."],
+   "beats": ["숙제를 마친 아이가 공책을 덮습니다.", "남은 저녁 시간에 고양이 옆에서 기타를 칩니다.", "할 일을 마치고 남은 자유로운 시간이 여가입니다."],
    "img": "Two parts of one picture in DOYUN's bedroom, linked by a gentle curved arrow. Left: DOYUN closes a finished homework notebook at his desk, a wall clock showing early evening. Right: the same evening, DOYUN sits on his bed happily strumming a small acoustic guitar, his cat curled up beside him in warm lamp light.",
    "imgKo": "왼쪽에서 도윤이가 다 한 숙제 공책을 덮고, 오른쪽에서 같은 저녁 침대에 앉아 고양이 옆에서 기타를 치며 웃는다."
   },
@@ -29,7 +29,7 @@
     "낱말 나누기: 중(中, 맞다) + 독(毒, 독) — 독에 맞은 것처럼 몸과 마음이 빠져나오지 못합니다.",
     "생활 속 예: '한 편만 더' 하다가 짧은 영상을 밤늦게까지 넘깁니다."
    ],
-   "beats": ["밤이 깊었는데 도윤이는 짧은 영상을 계속 넘깁니다.", "숙제는 펼쳐진 그대로이고 눈은 빨개졌습니다.", "그만두고 싶어도 멈추지 못하는 상태가 중독입니다."],
+   "beats": ["밤이 깊었는데 한 아이가 짧은 영상을 계속 넘깁니다.", "숙제는 펼쳐진 그대로이고 눈은 빨개졌습니다.", "그만두고 싶어도 멈추지 못하는 상태가 중독입니다."],
    "img": "Late at night in a dark bedroom, DOYUN sits hunched on his bed, his face lit blue by a smartphone, thumb swiping up. A long chain of tiny video thumbnails spirals out of the phone and loops around him like a soft rope. Unfinished homework lies open on the desk, a wall clock shows past midnight, and his eyes are tired and red.",
    "imgKo": "깜깜한 밤 방에서 도윤이가 휴대 전화 화면을 계속 넘기고, 작은 영상 그림들이 사슬처럼 이어져 몸을 휘감는다. 책상 위 숙제는 펼쳐진 그대로이고 시계는 자정을 넘겼다."
   },
@@ -40,7 +40,7 @@
     "낱말 나누기: 일(日, 날) + 지(誌, 적다) — 날마다 적습니다.",
     "생활 속 예: 줄넘기 일지에 날마다 넘은 횟수를 적으면 늘어난 것이 보입니다."
    ],
-   "beats": ["하린이가 공책에 오늘 칸을 채웁니다.", "칸마다 휴대 전화를 쓴 시간이 막대로 쌓였습니다.", "날마다 한 일을 날짜와 함께 적는 기록이 일지입니다."],
+   "beats": ["한 아이가 공책에 오늘 칸을 채웁니다.", "칸마다 휴대 전화를 쓴 시간이 막대로 쌓였습니다.", "날마다 한 일을 날짜와 함께 적는 기록이 일지입니다."],
    "img": "HARIN sits at her desk filling in a notebook page laid out as a seven-column table, one column for each day. Each column has small drawn icons (a phone, a book, a ball) with colored bars showing how long she used each thing, with no letters or numbers. Her pencil adds today's bar, and a wall calendar beside her has the past days marked with small check shapes.",
    "imgKo": "하린이가 이레 칸으로 나뉜 공책에 오늘 칸을 채운다. 칸마다 휴대 전화·책·공 그림과 쓴 시간 막대가 있고, 벽 달력에는 지난 날짜에 표시가 되어 있다."
   },
@@ -51,7 +51,7 @@
     "생활 속 예: 반에서 하루에 버리는 종이컵을 세면 쓰레기 실태가 보입니다."
    ],
    "hanja": [["實", "실제 실"], ["態", "모습 태"]],
-   "beats": ["도윤이네 모둠이 급식 잔반 통을 저울에 올립니다.", "날마다 잰 무게를 막대그래프로 그립니다.", "꾸미지 않은 실제 모습을 알아낸 것이 실태입니다."],
+   "beats": ["한 모둠 아이들이 급식 잔반 통을 저울에 올립니다.", "날마다 잰 무게를 막대그래프로 그립니다.", "꾸미지 않은 실제 모습을 알아낸 것이 실태입니다."],
    "img": "In a school cafeteria after lunch, DOYUN and two classmates lift a food-waste bin onto a large scale while HARIN holds a clipboard. Behind them on a whiteboard is a simple bar graph with five bars of different heights and no numbers or labels. The children look surprised at how heavy the bin is.",
    "imgKo": "급식실에서 도윤이와 친구들이 잔반 통을 저울에 올리고 하린이가 기록판을 든다. 뒤 칠판에는 높이가 다른 막대 다섯 개가 그려져 있다."
   },
@@ -62,7 +62,7 @@
     "낱말 나누기: 성(省, 살피다) + 찰(察, 살피다) — 살피고 또 살핍니다.",
     "생활 속 예: 일기 끝에 오늘 잘한 일과 아쉬운 일을 한 줄씩 적습니다."
    ],
-   "beats": ["잠들기 전 하린이가 거울 앞에 섭니다.", "거울 속에 낮에 친구에게 홱 돌아서던 모습이 비칩니다.", "내 말과 행동을 깊이 돌아보는 것이 성찰입니다."],
+   "beats": ["잠들기 전 한 아이가 거울 앞에 섭니다.", "거울 속에 낮에 친구에게 홱 돌아서던 모습이 비칩니다.", "내 말과 행동을 깊이 돌아보는 것이 성찰입니다."],
    "img": "At night in pajamas, HARIN stands thoughtfully in front of a tall bedroom mirror. Inside the mirror, instead of her reflection, a soft-edged scene from earlier that day appears: HARIN in her mint cardigan turning away from a sad-looking friend in a classroom. HARIN in pajamas touches her chin, looking sorry and thoughtful.",
    "imgKo": "잠옷 차림 하린이가 거울 앞에 서 있는데, 거울 속에 낮에 교실에서 친구에게 홱 돌아서던 자기 모습이 비친다. 하린이는 턱을 괴고 미안한 얼굴로 생각에 잠긴다."
   },
@@ -93,7 +93,7 @@
     "낱말 나누기: 홍(弘, 넓다) + 보(報, 알리다) + 물(物, 물건) — 널리 알리는 물건입니다.",
     "생활 속 예: 학교 앞에 붙은 알뜰 시장 포스터가 홍보물입니다."
    ],
-   "beats": ["도윤이네 모둠이 큰 종이에 그림을 그립니다.", "완성한 포스터를 복도에 붙이자 친구들이 모여듭니다.", "널리 알리려고 꾸민 포스터나 영상이 홍보물입니다."],
+   "beats": ["한 모둠 아이들이 큰 종이에 그림을 그립니다.", "완성한 포스터를 복도에 붙이자 친구들이 모여듭니다.", "널리 알리려고 꾸민 포스터나 영상이 홍보물입니다."],
    "img": "In a classroom, DOYUN and two classmates kneel on the floor coloring a large poster that shows a big smiling smartphone with closed eyes resting on a pillow, in bright colors and simple shapes with no words. In a small inset on the right, the finished poster hangs on the hallway bulletin board and a crowd of students gathers to look at it.",
    "imgKo": "교실 바닥에서 도윤이네 모둠이 눈 감고 베개 베고 쉬는 휴대 전화 그림 포스터를 칠한다. 오른쪽 작은 그림에서는 복도 게시판에 붙은 포스터 앞에 학생들이 모여든다."
   },
@@ -114,7 +114,7 @@
     "낱말 나누기: 초(肖, 닮다) + 상(像, 모양) + 권(權, 권리) — 나를 닮은 모습에 대한 권리입니다.",
     "생활 속 예: 뉴스에서 지나가는 사람 얼굴을 흐리게 가리기도 합니다."
    ],
-   "beats": ["버스 정류장 광고판에 하린이 얼굴이 크게 걸렸습니다.", "하린이는 찍힌 줄도 몰랐고 허락한 적도 없습니다.", "내 얼굴이 허락 없이 쓰이지 않게 지킬 권리가 초상권입니다."],
+   "beats": ["버스 정류장 광고판에 한 아이의 얼굴이 크게 걸렸습니다.", "아이는 찍힌 줄도 몰랐고 허락한 적도 없습니다.", "내 얼굴이 허락 없이 쓰이지 않게 지킬 권리가 초상권입니다."],
    "img": "At a bus stop, HARIN stops in surprise and points at a large advertising board showing a big photo of her own smiling face next to an ice cream cone, with no words on it. Her mouth is open in shock. A friend beside her looks back and forth between HARIN and the board with a puzzled face.",
    "imgKo": "버스 정류장 광고판에 아이스크림과 함께 하린이 얼굴 사진이 크게 걸려 있고, 하린이가 깜짝 놀라 가리킨다. 옆의 친구가 하린이와 광고판을 번갈아 본다."
   },
@@ -125,7 +125,7 @@
     "낱말 나누기: 조(調, 고르다) + 절(節, 알맞게 끊다) — 고르게 맞추고 알맞게 끊습니다.",
     "생활 속 예: 음악 소리가 너무 크면 볼륨을 돌려 줄입니다."
    ],
-   "beats": ["세면대 물이 너무 뜨거워 도윤이가 손을 뗍니다.", "손잡이를 파란 쪽으로 조금 돌립니다.", "알맞은 정도로 맞추는 것이 조절입니다."],
+   "beats": ["세면대 물이 너무 뜨거워 한 아이가 손을 뗍니다.", "손잡이를 파란 쪽으로 조금 돌립니다.", "알맞은 정도로 맞추는 것이 조절입니다."],
    "img": "Three small panels in a row at a bathroom sink. Panel one: steam rises and DOYUN jerks his hands back from very hot water, the tap handle turned far to the red side. Panel two: he turns the handle a little toward the blue side. Panel three: he washes his hands happily in comfortable water, the handle resting in the middle between red and blue.",
    "imgKo": "세 칸 그림이다. 세면대 물이 너무 뜨거워 도윤이가 손을 떼고, 손잡이를 파란 쪽으로 조금 돌린 뒤, 손잡이가 가운데에 온 알맞은 물에 웃으며 손을 씻는다."
   }
@@ -185,7 +185,7 @@
     "생활 속 예: 날마다 보는 동생 키는 몰랐는데 옛 사진과 견주니 훌쩍 컸습니다.",
     "생활 속 예: 저금통에 동전을 넣다 보면 어느새 묵직해집니다."
    ],
-   "beats": ["하린이가 창가에서 책을 펼쳤을 때는 한낮이었습니다.", "책에 빠져 있는 사이 창밖이 노을로 물들었습니다.", "모르는 사이에 조금씩 이루어지는 모양이 시나브로입니다."],
+   "beats": ["한 아이가 창가에서 책을 펼쳤을 때는 한낮이었습니다.", "책에 빠져 있는 사이 창밖이 노을로 물들었습니다.", "모르는 사이에 조금씩 이루어지는 모양이 시나브로입니다."],
    "img": "One wide picture of HARIN reading a book on a window seat, shown four times from left to right like a time-lapse. Outside the window the sky changes little by little from bright noon blue to soft afternoon yellow, to orange sunset, to early dusk, and the shadow of the window frame stretches longer across the floor. HARIN keeps the same absorbed pose in every stage and never looks up.",
    "imgKo": "창가에서 책을 읽는 하린이를 왼쪽에서 오른쪽으로 네 번 그렸다. 하린이는 그대로인데 창밖 하늘이 한낮의 파랑에서 노을, 저녁으로 조금씩 바뀌고 바닥의 그림자가 길어진다."
   },
@@ -234,7 +234,7 @@
     "생활 속 예: 술래가 눈을 감고 숫자를 세는 지금이 숨을 절호의 기회입니다."
    ],
    "hanja": [["絶", "끊을 절"], ["好", "좋을 호"]],
-   "beats": ["긴 줄넘기 줄이 빙글빙글 돌아갑니다.", "줄이 땅을 치고 올라가는 순간 도윤이가 뛰어듭니다.", "무엇을 하기에 더할 수 없이 좋은 때가 절호입니다."],
+   "beats": ["긴 줄넘기 줄이 빙글빙글 돌아갑니다.", "줄이 땅을 치고 올라가는 순간 한 아이가 뛰어듭니다.", "무엇을 하기에 더할 수 없이 좋은 때가 절호입니다."],
    "img": "On a school playground, two children turn a long jump rope while classmates watch. The rope has just slapped the ground and is swinging upward, leaving a wide open gap, and DOYUN leaps into the middle at exactly that moment with a confident grin. A soft glow surrounds the open gap under the rising rope, and motion lines show the rope's swing.",
    "imgKo": "운동장에서 긴 줄넘기 줄이 땅을 치고 위로 올라가 틈이 활짝 열린 순간, 도윤이가 자신 있게 뛰어든다. 줄 아래 열린 틈이 은은하게 빛난다."
   },
@@ -264,7 +264,7 @@
     "흔히 '섣부른 짐작', '섣불리 나서다'처럼 씁니다.",
     "생활 속 예: 첫 장만 읽고 '이 책은 재미없다'고 정하는 것은 섣부릅니다."
    ],
-   "beats": ["도윤이가 설명서를 보지도 않고 서둘러 의자를 조립합니다.", "앉자마자 의자 다리가 휘청 벌어지고 나사가 굴러다닙니다.", "익히지 않고 서둘러 어설프게 하는 것을 섣부르다고 합니다."],
+   "beats": ["한 아이가 설명서를 보지도 않고 서둘러 의자를 조립합니다.", "앉자마자 의자 다리가 휘청 벌어지고 나사가 굴러다닙니다.", "익히지 않고 서둘러 어설프게 하는 것을 섣부르다고 합니다."],
    "img": "In a living room, DOYUN sits on a small wooden stool he has just put together; the unopened instruction booklet lies untouched beside him, and the stool's legs wobble and splay outward as he tilts. Several leftover screws roll on the floor next to a screwdriver. His face shows a surprised 'uh-oh' look.",
    "imgKo": "거실에서 도윤이가 설명서를 펴 보지도 않고 서둘러 조립한 의자에 앉자 다리가 휘청 벌어지고, 남은 나사가 바닥에 굴러다닌다."
   },
@@ -274,7 +274,7 @@
     "낱말 나누기: 손색(遜色, 남보다 뒤지는 빛깔) + 없다 — 뒤지는 데가 없습니다.",
     "생활 속 예: 언니가 만든 케이크는 빵집 케이크와 견주어도 손색없습니다."
    ],
-   "beats": ["빵집 진열대에 근사한 딸기 케이크가 놓여 있습니다.", "옆에 하린이가 만든 케이크를 나란히 놓았습니다.", "견주어 보아도 모자란 데가 없을 때 손색없다고 합니다."],
+   "beats": ["빵집 진열대에 근사한 딸기 케이크가 놓여 있습니다.", "옆에 한 아이가 만든 케이크를 나란히 놓았습니다.", "견주어 보아도 모자란 데가 없을 때 손색없다고 합니다."],
    "img": "Two strawberry cakes sit side by side on a bakery display stand: on the left a fancy professional cake with a small blank tag, on the right a homemade cake that is just as tall, neat and beautiful. HARIN in an apron stands proudly beside her cake, and a baker in a white hat gives her an impressed thumbs-up.",
    "imgKo": "빵집 진열대에 가게 딸기 케이크와 하린이가 만든 딸기 케이크가 나란히 있는데 둘 다 똑같이 근사하다. 앞치마 두른 하린이 옆에서 제빵사가 엄지를 든다."
   }
@@ -320,7 +320,7 @@
     "낱말 나누기: 자(字, 글자) + 막(幕, 막) — 무대 막에 글자를 띄운 것입니다.",
     "생활 속 예: 예능 방송에서 웃긴 장면에 큼직하게 뜨는 글자도 자막입니다."
    ],
-   "beats": ["조용한 도서관에서 하린이가 소리를 끄고 영상을 봅니다.", "화면 아래에 말소리가 글자 줄로 떠오릅니다.", "영상 화면에 함께 나오는 글자가 자막입니다."],
+   "beats": ["조용한 도서관에서 한 아이가 소리를 끄고 영상을 봅니다.", "화면 아래에 말소리가 글자 줄로 떠오릅니다.", "영상 화면에 함께 나오는 글자가 자막입니다."],
    "img": "In a quiet library, HARIN watches a nature video on a tablet with the sound turned off. A narrator stands in a forest on the screen, and along the bottom of the screen runs a dark strip with a line of white dashes standing for subtitle words, not readable letters. Other students read books quietly around her.",
    "imgKo": "조용한 도서관에서 하린이가 소리를 끈 태블릿으로 자연 영상을 보는데, 화면 아래 어두운 띠에 하얀 글줄이 떠 있다. 둘레 친구들은 조용히 책을 읽는다."
   },
@@ -331,7 +331,7 @@
     "낱말 나누기: 독(讀, 읽다) + 자(者, 사람) — 영어와 똑같이 '읽는 사람'입니다.",
     "생활 속 예: 내 일기의 독자는 나뿐이지만 학급 신문의 독자는 반 친구 모두입니다."
    ],
-   "beats": ["도윤이가 다 만든 학급 신문을 나눠 줍니다.", "친구들, 선생님, 집에 계신 할머니까지 신문을 펼쳐 읽습니다.", "책이나 신문, 글을 읽는 사람이 독자입니다."],
+   "beats": ["한 아이가 다 만든 학급 신문을 나눠 줍니다.", "친구들, 선생님, 집에 계신 할머니까지 신문을 펼쳐 읽습니다.", "책이나 신문, 글을 읽는 사람이 독자입니다."],
    "img": "In the center, DOYUN hands out freshly printed class newspapers. Around him, small scenes show different people reading the same newspaper: two classmates at their desks, the TEACHER smiling at the front of the room, and at home a grandmother with glasses reading it on her sofa. The newspaper pages show only grey lines and small pictures.",
    "imgKo": "가운데 도윤이가 학급 신문을 나눠 주고, 둘레에 친구들, 선생님, 집에서 안경 쓴 할머니가 같은 신문을 펼쳐 읽는다."
   },
@@ -342,7 +342,7 @@
     "낱말 나누기: 관심(關心, 마음이 걸림) + 사(事, 일) — 마음이 걸려 있는 일입니다.",
     "생활 속 예: 공룡에 푹 빠진 동생은 도서관에서 공룡 책만 골라 옵니다."
    ],
-   "beats": ["하린이 책상에 로켓 모형과 우주 책이 가득합니다.", "머리 위 생각 풍선에 별과 행성이 떠다닙니다.", "마음이 끌려 알고 싶어 하는 일이 관심사입니다."],
+   "beats": ["한 아이의 책상에 로켓 모형과 우주 책이 가득합니다.", "머리 위 생각 풍선에 별과 행성이 떠다닙니다.", "마음이 끌려 알고 싶어 하는 일이 관심사입니다."],
    "img": "HARIN sits at her desk surrounded by things about space: a rocket model, a small telescope by the window, a poster of planets on the wall and a stack of space books. A large thought bubble above her head is filled with stars, ringed planets and a rocket, and her eyes sparkle with curiosity.",
    "imgKo": "하린이 책상에 로켓 모형, 망원경, 행성 포스터, 우주 책이 가득하고, 머리 위 생각 풍선 속에 별과 행성, 로켓이 떠 있다."
   },
@@ -417,7 +417,7 @@
     "낱말 나누기: 창(創, 처음 만들다) + 작(作, 짓다) — 처음으로 지어냅니다.",
     "생활 속 예: 내가 지은 이야기에 그림을 그려 그림책을 만드는 것도 창작입니다."
    ],
-   "beats": ["하린이 앞에 빈 종이가 놓여 있습니다.", "종이 위로 하린이가 처음 떠올린 고양이와 달 이야기가 피어납니다.", "세상에 없던 작품을 새로 지어내는 것이 창작입니다."],
+   "beats": ["한 아이 앞에 빈 종이가 놓여 있습니다.", "종이 위로 아이가 처음 떠올린 고양이와 달 이야기가 피어납니다.", "세상에 없던 작품을 새로 지어내는 것이 창작입니다."],
    "img": "HARIN sits at her desk with a pencil over a blank sheet of paper. From the paper rises a swirl of her own new imagination: a cat in a little boat sailing across the night sky toward a smiling crescent moon, with stars sparkling around. The lines she is writing are drawn only as grey strokes, and there is no book being copied anywhere nearby.",
    "imgKo": "하린이가 빈 종이에 연필을 대자, 종이 위로 하늘을 나는 쪽배에 탄 고양이가 웃는 초승달로 가는 상상이 피어오른다."
   },
@@ -472,7 +472,7 @@
     "낱말 나누기: 감각(感覺, 눈·귀·코·혀·살갗으로 느낌) + 적(的, ~한) — 느낌이 살아 있는 것입니다.",
     "생활 속 예: '맛있었다' 대신 '혀끝에서 사르르 녹았다'라고 씁니다."
    ],
-   "beats": ["도윤이가 바삭바삭 낙엽을 밟습니다.", "코끝에 군고구마 냄새가, 볼에 찬 바람이 닿습니다.", "보고 듣고 맡고 만지는 느낌이 생생한 것을 감각적이라고 합니다."],
+   "beats": ["한 아이가 바삭바삭 낙엽을 밟습니다.", "코끝에 군고구마 냄새가, 볼에 찬 바람이 닿습니다.", "보고 듣고 맡고 만지는 느낌이 생생한 것을 감각적이라고 합니다."],
    "img": "An autumn street. DOYUN walks on crunchy red and yellow leaves, with small zigzag sound lines rising from under his sneakers. Wavy scent lines drift to his nose from a street vendor's sweet-potato roasting drum, a cool breeze lifts his hair and pinks his cheeks, and he bites a warm roasted sweet potato with steam rising from it. His eyes are closed in enjoyment.",
    "imgKo": "가을 길에서 도윤이가 낙엽을 밟자 발밑에서 바삭 소리 선이 오르고, 군고구마 통에서 냄새 선이 코로 흘러오며, 찬 바람에 볼이 발그레하다. 김 나는 고구마를 한입 문다."
   },
@@ -482,7 +482,7 @@
     "낱말 나누기: 낭(朗, 밝다) + 송(誦, 외다) — 맑은 소리로 외워 읊습니다.",
     "생활 속 예: 졸업식에서 친구가 고마운 마음을 담은 시를 외워 들려줍니다."
    ],
-   "beats": ["교실 앞에 하린이가 시를 들고 섰습니다.", "눈을 반쯤 감고 느낌을 살려 시를 읊습니다.", "시를 느낌을 살려 소리 내어 들려주는 것이 낭송입니다."],
+   "beats": ["교실 앞에 한 아이가 시를 들고 섰습니다.", "눈을 반쯤 감고 느낌을 살려 시를 읊습니다.", "시를 느낌을 살려 소리 내어 들려주는 것이 낭송입니다."],
    "img": "At the front of a classroom in soft autumn light, HARIN stands holding a sheet of paper to her chest, eyes half closed, reciting with feeling. Gentle ribbon-like lines with tiny falling leaves flow out from her voice and drift over her classmates, who listen quietly, some resting their chins on their hands. The TEACHER smiles at the side.",
    "imgKo": "교실 앞에서 하린이가 종이를 가슴에 대고 눈을 반쯤 감은 채 시를 읊는다. 목소리에서 낙엽 섞인 리본 같은 선이 흘러나와 조용히 듣는 친구들 위로 퍼진다."
   },
@@ -513,7 +513,7 @@
     "낱말 나누기: 곤(困, 괴롭다) + 욕(辱, 창피하다) — 괴롭고 창피한 일입니다.",
     "생활 속 예: 생일잔치 날짜를 잘못 알아 하루 늦게 가서 곤욕을 치렀습니다."
    ],
-   "beats": ["학예회 무대에서 도윤이가 노래를 부릅니다.", "높은 음에서 목소리가 삑 갈라지자 객석이 웅성거립니다.", "몹시 창피하거나 견디기 힘든 일을 겪는 것이 곤욕입니다."],
+   "beats": ["학예회 무대에서 한 아이가 노래를 부릅니다.", "높은 음에서 목소리가 삑 갈라지자 객석이 웅성거립니다.", "몹시 창피하거나 견디기 힘든 일을 겪는 것이 곤욕입니다."],
    "img": "On a school stage under a spotlight, DOYUN holds a microphone, his face bright red and sweating, eyes wide with embarrassment, as a broken zigzag sound line cracks out of the microphone. In the audience some students cover their mouths and whisper, and a few parents wince. A sheet of paper slips from his hand.",
    "imgKo": "학예회 무대 조명 아래 도윤이가 마이크를 들고 얼굴이 새빨개진다. 마이크에서 지그재그로 갈라진 소리 선이 나오고 객석은 입을 가리고 웅성거린다."
   },

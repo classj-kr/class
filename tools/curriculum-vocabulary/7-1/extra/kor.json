@@ -33,14 +33,14 @@
   "정서": {
    "en": "emotion",
    "explain": ["쉬운 뜻: 기쁨, 슬픔, 그리움처럼 마음에 피어오르는 느낌입니다. emotion은 e(밖으로) + motion(움직임), 마음이 움직여 나옴입니다.", "낱말 나누기: 정(情, 느낌) + 서(緖, 실마리) — 마음에서 풀려 나오는 느낌의 실마리입니다.", "생활 속 예: 졸업식 날 느끼는 서운함과 설렘도 정서입니다."],
-   "beats": ["이삿날, 하린이가 작은 상자를 안고 텅 빈 방 문가에 섰습니다.", "창밖에서 친구들이 손을 흔들고, 하린이 눈가가 촉촉해집니다.", "아쉬움, 고마움처럼 어떤 일을 겪을 때 마음에 일어나는 감정이 정서입니다."],
+   "beats": ["이삿날, 한 아이가 작은 상자를 안고 텅 빈 방 문가에 섰습니다.", "창밖에서 친구들이 손을 흔들고, 아이 눈가가 촉촉해집니다.", "아쉬움, 고마움처럼 어떤 일을 겪을 때 마음에 일어나는 감정이 정서입니다."],
    "img": "On moving day, HARIN stands in the doorway of an empty room, hugging a small cardboard box. Through the window, two friends outside wave goodbye to her. Her eyes are a little teary, but she smiles softly, showing both sadness and thankfulness. No text anywhere.",
    "imgKo": "이삿날 하린이가 작은 상자를 안고 텅 빈 방 문가에 서 있다. 창밖에서 친구 둘이 손을 흔들고, 하린이는 눈가가 촉촉하지만 살며시 웃는다."
   },
   "진솔하다": {
    "en": "sincere",
    "explain": ["쉬운 뜻: 가면을 벗고 진짜 얼굴을 보여 주듯 마음을 털어놓는 것입니다. sincere는 '섞이지 않은, 깨끗한'이라는 라틴말에서 왔습니다.", "낱말 나누기: 진(眞, 참) + 솔(率, 꾸밈없음) + 하다 — 참되고 꾸밈이 없다는 말입니다.", "생활 속 예: '시험을 망쳐서 속상했다'고 숨김없이 쓴 일기가 진솔합니다."],
-   "beats": ["도윤이가 머리를 긁적이며 하린이 앞에 서 있습니다.", "하린이가 도윤이가 건넨 편지를 읽다가 굳었던 얼굴을 풉니다.", "꾸미거나 부풀리지 않고 마음을 그대로 털어놓은 글이 진솔한 글입니다."],
+   "beats": ["한 아이가 머리를 긁적이며 친구 앞에 서 있습니다.", "친구는 건네받은 편지를 읽다가 굳었던 얼굴을 풉니다.", "꾸미거나 부풀리지 않고 마음을 그대로 털어놓은 글이 진솔한 글입니다."],
    "img": "In a sunny school hallway, DOYUN stands in front of HARIN, scratching the back of his head with an embarrassed but honest face. HARIN holds a handwritten letter from him; her stiff, upset expression is melting into a gentle smile as she reads. The letter shows only wavy lines, no readable letters.",
    "imgKo": "햇살 드는 복도에서 도윤이가 쑥스럽지만 솔직한 얼굴로 머리를 긁적이며 서 있다. 하린이는 도윤이가 쓴 편지를 읽다가 굳었던 얼굴이 부드러운 웃음으로 풀린다."
   },
@@ -50,7 +50,7 @@
   },
   "내면화": {
    "explain": ["쉬운 뜻: 책에서 배운 좋은 생각을 마음속 서랍에 넣어 내 것으로 만드는 일입니다.", "낱말 나누기: 내면(內面, 안쪽 면, 곧 속마음) + 화(化, 되다) — 속마음의 일부가 됨입니다.", "생활 속 예: 정직한 주인공을 읽고, 더 받은 거스름돈을 돌려드립니다."],
-   "beats": ["도윤이 뒤로 어제 읽은 책 속 용감한 기사의 모습이 겹쳐 보입니다.", "도윤이가 떨리는 손을 꼭 쥐었다가 먼저 번쩍 듭니다.", "책에서 얻은 생각을 내 마음과 행동으로 삼는 것이 내면화입니다."],
+   "beats": ["한 아이 뒤로 어제 읽은 책 속 용감한 기사의 모습이 겹쳐 보입니다.", "아이가 떨리는 손을 꼭 쥐었다가 먼저 번쩍 듭니다.", "책에서 얻은 생각을 내 마음과 행동으로 삼는 것이 내면화입니다."],
    "img": "In a classroom, DOYUN raises his hand high, a little nervous but determined. Behind him, a faint glowing silhouette of a brave knight from a storybook appears like a shadow, making the same pose. A few classmates turn to look at him. No text anywhere.",
    "imgKo": "교실에서 도윤이가 조금 떨리지만 굳은 얼굴로 손을 번쩍 든다. 도윤이 뒤로 책 속 용감한 기사의 모습이 희미하게 빛나며 같은 자세로 겹쳐 보인다."
   }
@@ -66,7 +66,7 @@
   "세부": {
    "en": "detail",
    "explain": ["쉬운 뜻: 큰 그림 속에 숨은 작고 자세한 부분입니다. detail은 de + tail(자르다), 잘게 자른 조각이라는 말입니다.", "낱말 나누기: 세(細, 자잘하다) + 부(部, 부분) — 자잘한 부분이라 영어와 같은 생각입니다.", "생활 속 예: 지도를 볼 때 큰길을 먼저 찾고, 골목 같은 세부는 나중에 봅니다."],
-   "beats": ["벽에 커다란 마을 그림이 걸려 있습니다.", "하린이가 돋보기를 대자 지붕 위에 앉은 작은 고양이가 보입니다.", "전체 가운데 잘게 나뉜 작고 자세한 부분이 세부입니다."],
+   "beats": ["벽에 커다란 마을 그림이 걸려 있습니다.", "한 아이가 돋보기를 대자 지붕 위에 앉은 작은 고양이가 보입니다.", "전체 가운데 잘게 나뉜 작고 자세한 부분이 세부입니다."],
    "img": "A large painting of a peaceful village hangs on a museum wall. HARIN leans close and holds a big magnifying glass over one corner of the painting, where a tiny cat sits on a rooftop, visible clearly only through the glass. She looks delighted by the small discovery.",
    "imgKo": "미술관 벽에 평화로운 마을 그림이 크게 걸려 있다. 하린이가 그림 한쪽 구석에 커다란 돋보기를 대자 지붕 위에 앉은 작은 고양이가 또렷이 보이고, 하린이는 신이 난 얼굴이다."
   },
@@ -90,7 +90,7 @@
   "시각 자료": {
    "en": "visual aid",
    "explain": ["쉬운 뜻: 말이나 글 곁에서 눈으로 보여 주는 도우미입니다. visual(눈으로 보는, video와 한 뿌리) + aid(도움)입니다.", "낱말 나누기: 시각(視覺, 보아서 느낌) + 자료(資料, 쓰는 재료) — 눈으로 보는 재료입니다.", "생활 속 예: 요리책의 단계별 사진 덕분에 처음 하는 요리도 따라 할 수 있습니다."],
-   "beats": ["하린이가 친구들 앞에서 분리배출 방법을 발표합니다.", "하린이 옆 화면에 페트병과 캔을 나누어 담는 사진이 크게 떠 있습니다.", "글이나 말의 내용을 눈으로 쉽게 알게 돕는 그림, 사진, 도표가 시각 자료입니다."],
+   "beats": ["한 아이가 친구들 앞에서 분리배출 방법을 발표합니다.", "옆 화면에 페트병과 캔을 나누어 담는 사진이 크게 떠 있습니다.", "글이나 말의 내용을 눈으로 쉽게 알게 돕는 그림, 사진, 도표가 시각 자료입니다."],
    "img": "HARIN gives a presentation at the front of a classroom, pointing to a big screen beside her. The screen shows a large clear photo of hands putting plastic bottles and cans into separate recycling bins. Classmates watch the screen with interest. No text on the screen.",
    "imgKo": "하린이가 교실 앞에서 발표하며 옆의 큰 화면을 가리킨다. 화면에는 페트병과 캔을 서로 다른 분리배출 통에 넣는 손 사진이 크게 떠 있고, 친구들이 관심 있게 바라본다."
   }
@@ -168,27 +168,27 @@
   "상호 작용": {
    "en": "interaction",
    "explain": ["쉬운 뜻: 탁구공처럼 말과 행동이 서로 오가며 영향을 주는 일입니다. interaction은 inter(서로 사이) + action(움직임)입니다.", "낱말 나누기: 상호(相互, 서로서로) + 작용(作用, 힘을 미침) — 서로 힘을 미침이라 영어와 같습니다.", "생활 속 예: 친구가 웃으면 나도 따라 웃고, 그 모습에 친구가 더 신이 납니다."],
-   "beats": ["하린이가 아이들 앞에서 인형극을 하고 있습니다.", "아이들이 '뒤에 늑대가 있어!' 하고 외치자 인형이 깜짝 놀라 뒤를 돌아봅니다.", "말과 행동을 서로 주고받으며 영향을 미치는 것이 상호 작용입니다."],
+   "beats": ["한 아이가 친구들 앞에서 인형극을 하고 있습니다.", "친구들이 '뒤에 늑대가 있어!' 하고 외치자 인형이 깜짝 놀라 뒤를 돌아봅니다.", "말과 행동을 서로 주고받으며 영향을 미치는 것이 상호 작용입니다."],
    "img": "HARIN performs a puppet show behind a small wooden stage, holding a rabbit puppet. Young children sitting on the floor in front point and shout excitedly toward a wolf puppet hiding at the side. The rabbit puppet turns around in surprise, reacting to the children. No text or speech bubbles.",
    "imgKo": "하린이가 작은 나무 무대 뒤에서 토끼 인형으로 인형극을 한다. 앞에 앉은 어린아이들이 옆에 숨은 늑대 인형을 가리키며 소리치고, 토끼 인형이 깜짝 놀라 뒤를 돌아본다."
   },
   "쌍방향": {
    "en": "two-way",
    "explain": ["쉬운 뜻: 양쪽으로 뚫린 길처럼 말이 오고 가는 방식입니다. two-way도 '두(two) 길(way)'이라 한자말과 같은 생각입니다.", "낱말 나누기: 쌍(雙, 둘) + 방향(方向, 가는 쪽) — 두 쪽으로 오감입니다.", "생활 속 예: 전화처럼 서로 묻고 바로 답할 수 있으면 쌍방향입니다."],
-   "beats": ["하린이가 집에서 노트북으로 온라인 수업을 듣습니다.", "하린이가 손을 들자 화면 속 선생님이 하린이를 보며 웃고 대답해 주십니다.", "정보나 의견이 한쪽에서만 가지 않고 양쪽에서 서로 오가는 방식이 쌍방향입니다."],
+   "beats": ["한 아이가 집에서 노트북으로 온라인 수업을 듣습니다.", "손을 들자 화면 속 선생님이 아이를 보며 웃고 대답해 주십니다.", "정보나 의견이 한쪽에서만 가지 않고 양쪽에서 서로 오가는 방식이 쌍방향입니다."],
    "img": "HARIN sits at her desk at home in front of a laptop during an online class. She raises her hand, and on the laptop screen the TEACHER looks right at her, smiling and gesturing as she answers. Small video tiles of other students are at the edge of the screen. No text on the screen.",
    "imgKo": "하린이가 집 책상에서 노트북으로 온라인 수업을 듣는다. 하린이가 손을 들자 화면 속 선생님이 하린이를 보며 웃는 얼굴로 손짓하며 대답하고, 화면 가장자리에 다른 학생들의 작은 화면이 보인다."
   },
   "생산자": {
    "en": "producer",
    "explain": ["쉬운 뜻: 매체에서 글이나 영상을 만들어 세상에 내보내는 쪽입니다. producer는 pro(앞으로) + duce(이끌다), 앞으로 끌어내는 사람입니다.", "낱말 나누기: 생산(生産, 낳아 만듦) + 자(者, 사람) — 만들어 내는 사람입니다.", "생활 속 예: 내가 찍은 요리 영상을 올리면 그 순간 나는 생산자입니다."],
-   "beats": ["하린이가 부엌 식탁에 휴대 전화를 세워 두었습니다.", "하린이가 화면을 보며 쿠키 반죽 빚는 모습을 찍습니다.", "매체에서 글, 영상 같은 정보를 만들어 내보내는 사람이 생산자입니다."],
+   "beats": ["한 아이가 부엌 식탁에 휴대 전화를 세워 두었습니다.", "화면을 보며 쿠키 반죽 빚는 모습을 찍습니다.", "매체에서 글, 영상 같은 정보를 만들어 내보내는 사람이 생산자입니다."],
    "img": "In a cozy kitchen, HARIN has set a smartphone on a small tripod on the table. She shapes cookie dough with her hands while smiling and talking toward the phone camera, as if explaining to viewers. A red recording light glows on the phone. No text anywhere.",
    "imgKo": "아늑한 부엌 식탁 위 작은 삼각대에 휴대 전화가 세워져 있다. 하린이가 쿠키 반죽을 빚으며 카메라를 보고 웃으며 설명하고, 휴대 전화에 빨간 녹화 불빛이 켜져 있다."
   },
   "수용자": {
    "explain": ["쉬운 뜻: 매체라는 우체부가 가져온 소식을 받아 드는 쪽입니다.", "낱말 나누기: 수용(受容, 받아서 담음) + 자(者, 사람) — 받아들이는 사람입니다.", "생활 속 예: 저녁 뉴스를 보는 우리 가족, 웹툰을 읽는 내가 모두 수용자입니다."],
-   "beats": ["도윤이네 가족이 거실 소파에 앉아 텔레비전 뉴스를 봅니다.", "할머니는 고개를 끄덕이시고, 도윤이는 궁금한 듯 화면을 가리킵니다.", "매체가 전하는 정보를 보거나 듣고 받아들이는 사람이 수용자입니다."],
+   "beats": ["한 가족이 거실 소파에 앉아 텔레비전 뉴스를 봅니다.", "할머니는 고개를 끄덕이시고, 아이는 궁금한 듯 화면을 가리킵니다.", "매체가 전하는 정보를 보거나 듣고 받아들이는 사람이 수용자입니다."],
    "img": "DOYUN's family sits together on a living room sofa in the evening, watching the news on a TV. A grandmother nods thoughtfully, a parent holds a cup of tea, and DOYUN points at the screen with a curious face. The TV shows a news anchor and a weather map with no text.",
    "imgKo": "저녁, 도윤이네 가족이 거실 소파에 나란히 앉아 텔레비전 뉴스를 본다. 할머니는 고개를 끄덕이고, 도윤이는 궁금한 얼굴로 화면을 가리킨다."
   }
@@ -204,7 +204,7 @@
   "비하": {
    "en": "belittle",
    "explain": ["쉬운 뜻: 남을 깎아내려 낮추는 것입니다. belittle은 be(만들다) + little(작은), 남을 작게 만든다는 말입니다.", "낱말 나누기: 비(卑, 낮다) + 하(下, 아래) — 아래로 낮춤입니다.", "생활 속 예: '여자는 축구를 못해'처럼 어떤 무리를 통째로 낮추는 말입니다."],
-   "beats": ["운동장에서 하린이가 축구공을 들고 같이 하자고 말합니다.", "한 남자아이가 손을 내저으며 깔보는 얼굴로 고개를 돌립니다.", "어떤 사람이나 무리를 업신여겨 낮추어 말하는 것이 비하입니다."],
+   "beats": ["운동장에서 한 여자아이가 축구공을 들고 같이 하자고 말합니다.", "한 남자아이가 손을 내저으며 깔보는 얼굴로 고개를 돌립니다.", "어떤 사람이나 무리를 업신여겨 낮추어 말하는 것이 비하입니다."],
    "img": "On a school playground, HARIN holds a soccer ball and asks to join a game. An unnamed boy waves his hand dismissively and turns his head away with a scornful smirk, while other boys behind him play on. HARIN looks hurt and surprised. No text.",
    "imgKo": "학교 운동장에서 하린이가 축구공을 들고 같이 하자고 한다. 한 남자아이가 손을 내저으며 깔보는 웃음으로 고개를 돌리고, 하린이는 놀라고 속상한 얼굴이다."
   },

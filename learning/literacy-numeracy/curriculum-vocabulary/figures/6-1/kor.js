@@ -510,7 +510,7 @@
   (function () {
     const id = 't61-k1-seongbun';
     let css = base(id);
-    const words = ['선은', '선물을', '준비했다'], roles = ['s', 'o', 'p'];
+    const words = ['나는', '선물을', '준비했다'], roles = ['s', 'o', 'p'];
     const names = ['주어', '목적어', '서술어'], asks = ['누가', '무엇을', '어찌하다'];
     const R = row(words, { y: 165, size: 30, gap: 44 }), J = row(words, { y: 165, size: 30, gap: 0 });
     let body = '';
@@ -535,7 +535,7 @@
   (function () {
     const id = 't61-k1-jueo';
     let css = base(id);
-    const r1 = row(['선은', '지아와', '단짝이', '되었다'], { y: 120, x0: 140, gap: 16, size: 26 });
+    const r1 = row(['나는', '친구와', '단짝이', '되었다'], { y: 120, x0: 140, gap: 16, size: 26 });
     let body = at(1, 'fin', `<g class="h2">${tile(r1[0].cx, 120, '?', { size: 26, w: r1[0].w, h: 56, dash: '8 6', stroke: C.blue, color: C.blue })}</g>`);
     body += r1.slice(1).map((p, i) => at(1, 'rise', T(p), 0.2 + i * 0.2)).join('');
     body += `<g class="h3">${curve(r1[3].cx, 90, r1[0].cx + 8, 89, 42, C.blue, 1, { delay: 0.9 })}</g>`;
@@ -546,7 +546,7 @@
     body += at(2, 'drop', tag(r1[0].cx, 176, '누가', ROLE.s), 0.9);
     css += `.on2 .sc-${id} .ring2 { animation-name: ${id}-ring2; } @keyframes ${id}-ring2 { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(1.2); } }`;
     // 칸 3: 잎싹이 용감하다
-    const r2 = row(['잎싹이', '용감하다'], { y: 258, x0: 140, gap: 16, size: 26 });
+    const r2 = row(['암탉이', '용감하다'], { y: 258, x0: 140, gap: 16, size: 26 });
     body += r2.map((p, i) => at(3, 'rise', T(p, { cls: `r2${i}` }), i * 0.25)).join('');
     css += paint(id, '.r20', ROLE.s, 3, 0.8);
     body += at(3, 'drop', tag(r2[0].cx, 314, '누가', ROLE.s), 1.1);
@@ -583,7 +583,7 @@
   (function () {
     const id = 't61-k1-seosul';
     let css = base(id);
-    const rows = [[['선은'], '슬퍼한다', '어찌하다'], [['잎싹이'], '용감하다', '어떠하다'], [['선은', '멋진'], '친구이다', '무엇이다']];
+    const rows = [[['나는'], '슬퍼한다', '어찌하다'], [['암탉이'], '용감하다', '어떠하다'], [['나는', '멋진'], '친구이다', '무엇이다']];
     const END = 432, ys = [82, 178, 274];
     let body = `<g class="b4">${g('fin fin4', `<rect x="270" y="44" width="170" height="268" rx="14" fill="none" stroke="${C.green}" stroke-width="3" stroke-dasharray="10 7"/>` + tag(355, 24, '서술어', ROLE.p, 22))}</g>`;
     rows.forEach(([front, pred, q], i) => {

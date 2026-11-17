@@ -93,7 +93,7 @@
   },
   "계기": {
    "explain": ["쉬운 뜻: 생각이나 일이 바뀌기 시작한 출발점이 되는 일입니다.", "낱말 나누기: 계(契, 맺다) + 기(機, 고비가 되는 때) — 바뀜이 맺어진 때입니다.", "생활 속 예: 이가 몹시 아팠던 날 뒤로 단것을 줄이게 되었습니다."],
-   "beats": ["할머니 댁 마당에서 도윤이가 다리를 다친 강아지에게 붕대를 감아 줍니다.", "강아지가 꼬리를 흔들자 도윤이의 눈이 반짝입니다.", "이 일로 동물을 돌보는 꿈이 생겼습니다. 이런 출발점이 계기입니다."],
+   "beats": ["할머니 댁 마당에서 한 아이가 다리를 다친 강아지에게 붕대를 감아 줍니다.", "강아지가 꼬리를 흔들자 아이의 눈이 반짝입니다.", "이 일로 동물을 돌보는 꿈이 생겼습니다. 이런 출발점이 계기입니다."],
    "img": "In the courtyard of a countryside house, DOYUN gently wraps a bandage around a small puppy's front leg while his grandmother watches, smiling. The puppy wags its tail, and a toy stethoscope hangs around DOYUN's neck. No text.",
    "imgKo": "시골집 마당에서 도윤이가 다친 강아지의 앞다리에 붕대를 감아 주고 할머니가 웃으며 지켜본다. 강아지가 꼬리를 흔들고, 도윤이 목에는 장난감 청진기가 걸려 있다."
   },
@@ -124,7 +124,7 @@
   "단서": {
    "en": "clue",
    "explain": ["쉬운 뜻: 수수께끼를 푸는 실마리가 되는 작은 흔적입니다. 영어 clue도 '실타래'를 뜻하던 옛말에서 왔습니다.", "낱말 나누기: 단(端, 끝) + 서(緖, 실마리) — 엉킨 실을 풀 때 잡는 실 끝입니다.", "생활 속 예: 방바닥의 과자 부스러기를 보고 동생이 몰래 먹은 것을 압니다."],
-   "beats": ["아침 교실에 들어온 도윤이가 입을 크게 벌리고 하품을 합니다.", "눈 밑은 거뭇하고 머리는 부스스합니다.", "하린이는 그 모습을 보고 도윤이가 잠을 못 잤다는 것을 알아챕니다.", "무엇을 알아내는 데 도움이 되는 흔적이 단서입니다."],
+   "beats": ["아침 교실에 들어온 한 아이가 입을 크게 벌리고 하품을 합니다.", "눈 밑은 거뭇하고 머리는 부스스합니다.", "짝은 그 모습을 보고 친구가 잠을 못 잤다는 것을 알아챕니다.", "무엇을 알아내는 데 도움이 되는 흔적이 단서입니다."],
    "img": "In a morning classroom, DOYUN yawns widely with sleepy half-closed eyes, messy hair, and dark circles under his eyes. HARIN, sitting next to him, looks at him with a knowing, thoughtful face, one finger on her chin. No text.",
    "imgKo": "아침 교실에서 도윤이가 눈을 반쯤 감고 입을 크게 벌려 하품한다. 머리는 부스스하고 눈 밑이 거뭇하다. 옆자리 하린이가 턱에 손가락을 대고 알겠다는 얼굴로 바라본다."
   },
@@ -172,7 +172,7 @@
   "꿉꿉하다": {
    "en": "damp",
    "explain": ["쉬운 뜻: 장마철 이불처럼 덜 마른 물기가 남아 찜찜한 느낌입니다.", "생활 속 예: 비 온 날 덜 마른 양말을 신으면 발이 축축하고 개운하지 않습니다."],
-   "beats": ["장마철 창가에 빨래가 줄줄이 걸려 있습니다.", "창밖에는 며칠째 비가 내리고, 빨래는 아직 축축합니다.", "하린이가 티셔츠 냄새를 맡고 코를 찡그립니다.", "물기가 배어 조금 축축한 것이 꿉꿉한 것입니다."],
+   "beats": ["장마철 창가에 빨래가 줄줄이 걸려 있습니다.", "창밖에는 며칠째 비가 내리고, 빨래는 아직 축축합니다.", "한 아이가 티셔츠 냄새를 맡고 코를 찡그립니다.", "물기가 배어 조금 축축한 것이 꿉꿉한 것입니다."],
    "img": "During the rainy season, laundry hangs in rows on an indoor drying rack by a window streaked with rain. HARIN holds up a still-damp T-shirt, sniffs it, and wrinkles her nose. No text.",
    "imgKo": "장마철, 빗줄기가 흐르는 창가 빨래 건조대에 빨래가 줄줄이 걸려 있다. 하린이가 아직 축축한 티셔츠 냄새를 맡고 코를 찡그린다."
   },
@@ -204,14 +204,14 @@
   },
   "선뜻": {
    "explain": ["쉬운 뜻: 머뭇거리지 않고 시원스럽게 바로 하는 모양입니다.", "생활 속 예: 무거운 짐을 든 할머니를 보자마자 짐을 들어 드립니다."],
-   "beats": ["선생님이 손을 내밀며 누가 해 볼지 묻습니다.", "모두 눈치만 보는데 하린이가 바로 손을 번쩍 듭니다.", "망설이지 않고 시원스럽게 바로 하는 모양이 선뜻입니다."],
+   "beats": ["선생님이 손을 내밀며 누가 해 볼지 묻습니다.", "모두 눈치만 보는데 한 아이가 바로 손을 번쩍 듭니다.", "망설이지 않고 시원스럽게 바로 하는 모양이 선뜻입니다."],
    "img": "In a classroom, the TEACHER stands at the front with one open hand held out as if asking a question. Most students look down or glance at each other hesitantly, but HARIN raises her hand high right away with a bright, confident face. No text.",
    "imgKo": "교실 앞에서 선생님이 손을 내밀며 묻는다. 아이들 대부분은 고개를 숙이거나 서로 눈치를 보는데, 하린이가 밝은 얼굴로 손을 번쩍 든다."
   },
   "흥미진진하다": {
    "en": "exciting",
    "explain": ["쉬운 뜻: 재미가 넘쳐서 다음 장면이 몹시 궁금한 것입니다. 영어 exciting은 ex(밖으로) + cite(불러내다), 마음을 불러낸다는 말입니다.", "낱말 나누기: 흥미(興味, 재미) + 진진(津津, 넘쳐흐를 만큼 많음) — 재미가 넘쳐흐릅니다.", "생활 속 예: 다음 이야기가 궁금해 만화책 다음 권을 바로 집어 듭니다."],
-   "beats": ["밤늦은 시간, 이불 속이 손전등 불빛으로 환합니다.", "도윤이가 탐정 소설을 넘기며 눈을 동그랗게 뜹니다.", "재미가 넘쳐 다음이 몹시 궁금한 것이 흥미진진한 것입니다."],
+   "beats": ["밤늦은 시간, 이불 속이 손전등 불빛으로 환합니다.", "한 아이가 탐정 소설을 넘기며 눈을 동그랗게 뜹니다.", "재미가 넘쳐 다음이 몹시 궁금한 것이 흥미진진한 것입니다."],
    "img": "Late at night in a dark bedroom, DOYUN hides under a blanket tent lit by a flashlight, eagerly turning the pages of a thick mystery book with wide, excited eyes. No text.",
    "imgKo": "늦은 밤 어두운 방, 도윤이가 이불을 뒤집어쓰고 손전등을 비추며 두꺼운 탐정 소설을 넘긴다. 눈을 동그랗게 뜨고 푹 빠져 있다."
   },
@@ -380,7 +380,7 @@
   },
   "각오": {
    "explain": ["쉬운 뜻: 힘든 일이 닥쳐도 해내겠다고 마음을 단단히 먹는 것입니다.", "낱말 나누기: 각(覺, 깨닫다) + 오(悟, 깨닫다) — 앞일을 미리 깨닫고 마음을 다잡습니다.", "생활 속 예: 달리기에서 넘어져도 끝까지 뛰겠다고 마음먹습니다."],
-   "beats": ["달리기 출발선에 도윤이가 섰습니다.", "주먹을 꽉 쥐고 저 멀리 결승선을 똑바로 바라봅니다.", "앞으로 닥칠 일을 받아들이고 마음을 단단히 먹는 것이 각오입니다."],
+   "beats": ["달리기 출발선에 한 아이가 섰습니다.", "주먹을 꽉 쥐고 저 멀리 결승선을 똑바로 바라봅니다.", "앞으로 닥칠 일을 받아들이고 마음을 단단히 먹는 것이 각오입니다."],
    "img": "On a school running track before a race, DOYUN stands at the starting line, both fists clenched and jaw set, staring straight ahead at the distant finish line with a determined face. No text, no numbers.",
    "imgKo": "학교 달리기 출발선에 선 도윤이가 두 주먹을 꽉 쥐고 입을 앙다문 채 멀리 결승선을 똑바로 바라본다."
   },

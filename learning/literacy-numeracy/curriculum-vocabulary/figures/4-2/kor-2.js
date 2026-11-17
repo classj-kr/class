@@ -326,7 +326,7 @@
     body += at(1, 'fin', text(162, 50, '사랑하는 할머니께', { size: 19, anchor: 'start' }), 0.2);
     body += at(1, 'fin', [78, 98, 118, 138, 158, 178, 198].map((y, i) => bar(i === 0 || i === 4 ? 176 : 162, y, i === 3 ? 200 : (i === 6 ? 150 : (i === 0 || i === 4 ? 302 : 316)))).join(''), 0.5);
     body += at(1, 'fin', text(480, 234, '20○○년 ○○월 ○○일', { size: 18, anchor: 'end', color: C.muted }), 0.8);
-    body += at(1, 'fin', text(480, 266, '손자 지석원 올림', { size: 19, anchor: 'end' }), 1);
+    body += at(1, 'fin', text(480, 266, '손자 올림', { size: 19, anchor: 'end' }), 1);
     body += `<g class="h3">${glowRect(316, 244, 172, 32, 1, C.green, 1.4, 8)}</g>`;
     // 추신 띠
     body += `<g class="b2"><g class="ps"><rect x="152" y="288" width="336" height="46" rx="10" fill="${TAN}" stroke="${C.orange}" stroke-width="2.5"/>`
@@ -360,7 +360,7 @@
     body += at(1, 'fin', [126, 147, 168, 189, 210].map((y, i) => bar(i === 0 ? 60 : 44, y, i === 4 ? 170 : (i === 0 ? 270 : 286))).join(''), 0.6);
     body += at(1, 'fin', text(44, 249, '안녕히 계세요.', { size: 19, anchor: 'start' }), 0.8);
     body += at(1, 'fin', text(336, 285, '20○○년 ○○월 ○○일', { size: 18, anchor: 'end', color: C.muted }), 1);
-    body += at(1, 'fin', text(336, 321, '손자 지석원 올림', { size: 19, anchor: 'end' }), 1.2);
+    body += at(1, 'fin', text(336, 321, '손자 올림', { size: 19, anchor: 'end' }), 1.2);
     // 이름표
     parts.forEach(([label, y, , col], k) => {
       const n = k < 3 ? 2 : 3, d = 0.3 + (k % 3) * 0.6;

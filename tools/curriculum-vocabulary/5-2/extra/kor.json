@@ -2,13 +2,13 @@
  "reading": {
   "전자책": {
    "en": "e-book",
-   "beats": ["도윤이는 무거운 종이책을 한 아름 안았습니다.", "하린이는 얇은 태블릿 하나로 책을 읽습니다.", "기기 화면으로 읽는 책이 전자책입니다."],
+   "beats": ["한 아이는 무거운 종이책을 한 아름 안았습니다.", "다른 아이는 얇은 태블릿 하나로 책을 읽습니다.", "기기 화면으로 읽는 책이 전자책입니다."],
    "img": "Inside a city bus, two children sit side by side. On the left, DOYUN struggles with a tall wobbling stack of thick paper books in his arms and a bulging backpack. On the right, HARIN relaxes holding one thin tablet; the screen shows a book page drawn only as grey lines and a small picture, with a faint stack of tiny book icons floating out of the tablet to show many books inside it.",
    "imgKo": "버스 안에서 도윤이는 두꺼운 종이책 더미를 낑낑 안고 있고, 옆자리 하린이는 얇은 태블릿 하나로 편하게 책을 읽는다. 태블릿에서 작은 책 그림 여러 권이 떠올라 책이 많이 들어 있음을 보여 준다."
   },
   "오디오 북": {
    "en": "audiobook",
-   "beats": ["하린이가 눈을 감고 헤드폰을 썼습니다.", "귀로 들리는 동화가 머릿속에 그림처럼 떠오릅니다.", "귀로 듣도록 만든 책이 오디오 북입니다."],
+   "beats": ["한 아이가 눈을 감고 헤드폰을 썼습니다.", "귀로 들리는 동화가 머릿속에 그림처럼 떠오릅니다.", "귀로 듣도록 만든 책이 오디오 북입니다."],
    "img": "In the back seat of a family car at dusk, HARIN sits with her eyes closed, smiling, wearing headphones connected to a phone on her lap. Soft sound-wave lines flow from the headphones, and above her head a large dreamy cloud shows a fairy-tale scene of a rabbit and a turtle racing. A closed paper book rests unused on the seat beside her.",
    "imgKo": "저녁 무렵 차 뒷자리에서 하린이가 눈을 감고 헤드폰으로 무언가를 들으며 웃는다. 머리 위 꿈 구름 속에 토끼와 거북이 경주 장면이 떠오르고, 옆자리에는 덮어 둔 종이책이 놓여 있다."
   },
@@ -20,18 +20,18 @@
   },
   "대출": {
    "en": "borrow",
-   "beats": ["하린이가 사서 선생님께 도서관 카드를 내밉니다.", "책을 받아 들고 도서관 문밖으로 나갑니다.", "정한 날까지 빌려 가는 일이 대출입니다."],
+   "beats": ["한 아이가 사서 선생님께 도서관 카드를 내밉니다.", "책을 받아 들고 도서관 문밖으로 나갑니다.", "정한 날까지 빌려 가는 일이 대출입니다."],
    "img": "At a bright school library desk, HARIN hands her library card to a smiling Korean librarian, who passes her two books. A big curved arrow runs from the bookshelf behind the desk, through HARIN's arms, toward the open library door. On the desk stands a small calendar with one day circled, with no numbers on it.",
    "imgKo": "학교 도서관 책상에서 하린이가 사서 선생님께 카드를 내밀고 책 두 권을 받는다. 책꽂이에서 하린이를 거쳐 문밖으로 나가는 큰 화살표가 있고, 책상 위 달력에는 하루에 동그라미가 쳐 있다."
   },
   "반납": {
    "en": "return",
-   "beats": ["도윤이가 빌렸던 책을 들고 도서관에 왔습니다.", "책이 반납함을 지나 책꽂이 빈자리로 돌아갑니다.", "빌린 것을 다시 돌려주는 일이 반납입니다."],
+   "beats": ["한 아이가 빌렸던 책을 들고 도서관에 왔습니다.", "책이 반납함을 지나 책꽂이 빈자리로 돌아갑니다.", "빌린 것을 다시 돌려주는 일이 반납입니다."],
    "img": "In front of a school library, DOYUN slides a book into the slot of a book return box. A dotted arrow travels from the box back inside to a bookshelf where one empty gap is being filled by the same book. A few other children wait behind him with books in their hands.",
    "imgKo": "도서관 앞에서 도윤이가 반납함 구멍에 책을 밀어 넣는다. 점선 화살표가 반납함에서 책꽂이의 빈자리로 이어져 그 책이 제자리로 돌아간다."
   },
   "감상문": {
-   "beats": ["하린이가 다 읽은 책을 옆에 덮어 두었습니다.", "책에서 나온 느낌이 공책 위로 흘러갑니다.", "보고 든 생각과 느낌을 적은 글이 감상문입니다."],
+   "beats": ["한 아이가 다 읽은 책을 옆에 덮어 두었습니다.", "책에서 나온 느낌이 공책 위로 흘러갑니다.", "보고 든 생각과 느낌을 적은 글이 감상문입니다."],
    "img": "HARIN sits at her desk at home. A finished book lies closed on the left, and from it flow small floating icons, a red heart, a blue teardrop and a yellow lightbulb, along a curved arrow into an open notebook in front of her. She writes with a pencil; the notebook shows only plain ruled lines, no letters.",
    "imgKo": "하린이가 책상에 앉아 공책에 글을 쓴다. 왼쪽에 덮어 둔 책에서 하트, 눈물방울, 전구가 화살표를 따라 공책으로 흘러 들어간다."
   },
@@ -44,7 +44,7 @@
  "1": {
   "인상적": {
    "en": "memorable",
-   "beats": ["도윤이가 책장을 한 장씩 넘깁니다.", "한 장면에서만 빛이 솟아 도윤이 마음에 남습니다.", "마음에 도장처럼 깊이 남는 장면이 인상적인 장면입니다."],
+   "beats": ["한 아이가 책장을 한 장씩 넘깁니다.", "한 장면에서만 빛이 솟아 아이 마음에 남습니다.", "마음에 도장처럼 깊이 남는 장면이 인상적인 장면입니다."],
    "img": "DOYUN sits on a beanbag reading a thick storybook. Most pages fanning past are pale grey, but from one page a warm golden glow rises, and inside the glow floats a small scene of two children hugging and making up. DOYUN's eyes are wide and his hand rests on his chest.",
    "imgKo": "도윤이가 이야기책을 읽는데, 넘어가는 책장은 모두 흐릿하고 한 쪽에서만 금빛이 솟는다. 그 빛 속에 두 아이가 화해하며 안아 주는 장면이 떠 있고, 도윤이는 가슴에 손을 얹는다."
   },
@@ -54,7 +54,7 @@
    "imgKo": "펼친 시집에 시의 줄이 회색 막대로만 그려져 있고, 네 덩어리로 묶여 사이사이가 비어 있다. 덩어리마다 꽃, 해, 단풍잎, 눈송이가 붙어 있고 하린이가 빈 줄을 가리킨다."
   },
   "낭송": {
-   "beats": ["하린이가 무대에서 종이 없이 시를 읊습니다.", "목소리에 느낌을 담아 친구들에게 들려줍니다.", "시를 느낌 살려 소리 내어 들려주는 일이 낭송입니다."],
+   "beats": ["한 아이가 무대에서 종이 없이 시를 읊습니다.", "목소리에 느낌을 담아 친구들에게 들려줍니다.", "시를 느낌 살려 소리 내어 들려주는 일이 낭송입니다."],
    "img": "On a school stage at a talent show, HARIN stands alone with her hands gently clasped at her chest and no paper in her hands. Soft flowing wave lines and small floating flower petals come from her mouth toward the audience. Classmates sit on the floor in front of the stage, listening quietly with dreamy faces.",
    "imgKo": "학예회 무대에서 하린이가 종이 없이 두 손을 모으고 시를 읊는다. 입에서 물결선과 꽃잎이 흘러나와 객석으로 가고, 친구들이 조용히 듣는다."
   },
@@ -65,7 +65,7 @@
   },
   "공감": {
    "en": "empathy",
-   "beats": ["전학 온 도윤이가 혼자 쓸쓸하게 앉아 있습니다.", "하린이도 비슷했던 날을 떠올리며 곁에 앉습니다.", "남의 마음을 나도 그렇다고 느끼는 것이 공감입니다."],
+   "beats": ["전학 온 한 아이가 혼자 쓸쓸하게 앉아 있습니다.", "같은 반 친구도 비슷했던 날을 떠올리며 곁에 앉습니다.", "남의 마음을 나도 그렇다고 느끼는 것이 공감입니다."],
    "img": "On a school bench, DOYUN sits alone with drooping shoulders, looking down. HARIN sits down beside him with a gentle face, one hand on his shoulder, her expression matching his. Above HARIN's head floats a faded memory bubble showing herself standing alone and shy at the door of a new classroom.",
    "imgKo": "학교 의자에 도윤이가 어깨를 늘어뜨리고 혼자 앉아 있고, 하린이가 곁에 앉아 어깨에 손을 얹는다. 하린이 머리 위에 예전에 낯선 교실 문 앞에 혼자 서 있던 자기 모습이 흐릿하게 떠 있다."
   },
@@ -76,23 +76,23 @@
    "imgKo": "도서관에서 하린이가 두꺼운 책을 읽는다. 책에서 조선 시대 아기, 연장을 다루는 젊은이, 커다란 물시계 옆에 선 어른이 차례로 길처럼 이어져 떠오른다."
   },
   "일제 강점기": {
-   "beats": ["도윤이가 유관순 이야기책을 펼칩니다.", "일본 깃발이 드리운 그늘 아래에서 사람들이 태극기를 흔듭니다.", "일본이 우리나라를 빼앗아 다스리던 때가 일제 강점기입니다."],
+   "beats": ["한 아이가 유관순 이야기책을 펼칩니다.", "일본 깃발이 드리운 그늘 아래에서 사람들이 태극기를 흔듭니다.", "일본이 우리나라를 빼앗아 다스리던 때가 일제 강점기입니다."],
    "img": "DOYUN sits at a desk with an open storybook. Rising from the pages like a large backdrop is a 1919 Korean street: crowds of people in white hanbok raising Korean taegeukgi flags beside old tile-roofed shops, and among them a young woman in a white jeogori and black skirt. Behind the crowd, a tall grey stone government building with a Japanese flag on its roof casts a long dark shadow across the street, while the people keep their flags held high.",
    "imgKo": "도윤이가 펼친 책 위로 1919년 거리가 떠오른다. 흰 한복 차림의 사람들과 흰 저고리 검은 치마의 젊은 여성이 태극기를 들고, 뒤쪽에는 일본 깃발을 단 잿빛 관청 건물이 거리에 긴 그늘을 드리운다."
   },
   "서평": {
    "en": "book review",
-   "beats": ["저울 한쪽엔 좋은 점, 다른 쪽엔 아쉬운 점이 놓였습니다.", "도윤이가 별을 매기고 까닭을 적습니다.", "책을 따져 보고 의견과 까닭을 밝힌 글이 서평입니다."],
+   "beats": ["저울 한쪽엔 좋은 점, 다른 쪽엔 아쉬운 점이 놓였습니다.", "한 아이가 별을 매기고 까닭을 적습니다.", "책을 따져 보고 의견과 까닭을 밝힌 글이 서평입니다."],
    "img": "In the center stands a balance scale with a closed book resting on its middle. On the left pan sits a green thumbs-up icon, on the right pan a small orange wavy-mouth thinking face. Next to the scale, DOYUN writes on a card that shows five star shapes, four of them filled in yellow, and plain lines with no letters.",
    "imgKo": "가운데 저울에 책이 놓여 있고, 한쪽 접시에는 엄지 척 그림, 다른 쪽에는 갸웃한 얼굴 그림이 있다. 옆에서 도윤이가 별 다섯 개 중 넷을 칠한 카드에 글을 쓴다."
   },
   "분배": {
-   "beats": ["도윤이 앞에 색종이가 한 무더기 있습니다.", "친구들 앞에 다섯 장씩 똑같이 놓아 줍니다.", "몫을 정해 나누어 주는 일이 분배입니다."],
+   "beats": ["한 아이 앞에 색종이가 한 무더기 있습니다.", "친구들 앞에 다섯 장씩 똑같이 놓아 줍니다.", "몫을 정해 나누어 주는 일이 분배입니다."],
    "img": "Five children sit around a classroom table. DOYUN stands at the head with one big stack of colorful paper and places a small neat pile of five sheets in front of each friend. Five curved arrows run from the big stack to the five small piles, which are all the same height.",
    "imgKo": "모둠 책상에서 도윤이가 큰 색종이 더미를 들고 친구들 앞에 다섯 장씩 똑같이 놓아 준다. 큰 더미에서 다섯 작은 더미로 화살표가 이어진다."
   },
   "분석": {
-   "beats": ["도윤이가 자명종을 열어 부품을 늘어놓았습니다.", "돋보기로 부품 하나하나를 들여다봅니다.", "나누어 하나하나 자세히 살피는 일이 분석입니다."],
+   "beats": ["한 아이가 자명종을 열어 부품을 늘어놓았습니다.", "돋보기로 부품 하나하나를 들여다봅니다.", "나누어 하나하나 자세히 살피는 일이 분석입니다."],
    "img": "DOYUN sits at a workbench wearing his round glasses, holding a large magnifying glass. In front of him an old alarm clock has been opened, and its parts are laid out neatly in a row: gears, springs, the bell, the clock hands and the case. Dotted lines connect each part back to its place in the open clock.",
    "imgKo": "도윤이가 돋보기를 들고, 앞에 연 자명종의 톱니바퀴, 용수철, 종, 바늘을 한 줄로 늘어놓고 들여다본다. 부품마다 시계 속 제자리와 점선으로 이어져 있다."
   },
@@ -116,13 +116,13 @@
    "imgKo": "마당에서 강아지가 꼬리를 흔들고, 강아지에게만 환한 빛이 비친다. 아래에 강아지, 꼬리, 흔드는 화살표가 그려진 블록 셋이 있고 강아지 블록이 빛난다."
   },
   "서술어": {
-   "beats": ["하늘은 어떠합니까? 파랗습니다.", "도윤이는 어찌하나요? 달립니다.", "주인이 어찌하고 어떠한지 알려 주는 말이 서술어입니다."],
+   "beats": ["하늘은 어떠합니까? 파랗습니다.", "아이는 어찌하나요? 달립니다.", "주인이 어찌하고 어떠한지 알려 주는 말이 서술어입니다."],
    "img": "Two rows fill the picture. In the top row, a big bright blue sky with white clouds, and next to it a strip of two blocks: a sky icon and a glowing blue paint swatch. In the bottom row, DOYUN sprints across a playground with motion lines, and next to him a strip of two blocks: a boy icon and a glowing running-legs icon.",
    "imgKo": "위 줄에는 파란 하늘과 '하늘 그림, 빛나는 파란 물감' 블록이 있고, 아래 줄에는 운동장을 달리는 도윤이와 '아이 그림, 빛나는 달리는 다리' 블록이 있다."
   },
   "목적어": {
    "en": "object",
-   "beats": ["도윤이가 연필을 쥐고 손을 움직입니다.", "연필 끝에서 고양이 그림이 생겨납니다.", "'그림을'처럼 움직임을 받는 말이 목적어입니다."],
+   "beats": ["한 아이가 연필을 쥐고 손을 움직입니다.", "연필 끝에서 고양이 그림이 생겨납니다.", "'그림을'처럼 움직임을 받는 말이 목적어입니다."],
    "img": "DOYUN sits at a desk drawing with a pencil. On the paper, a cute cat drawing glows with a yellow highlight, and a bold arrow goes from his pencil hand to the drawing. Below the scene floats a strip of three colored blocks with icons, a boy, a picture frame and a pencil-drawing motion, and the middle picture-frame block glows.",
    "imgKo": "도윤이가 연필로 그림을 그리고, 종이 위 고양이 그림이 노랗게 빛나며 손에서 그림으로 화살표가 간다. 아래 블록 셋 가운데 액자 그림 블록이 빛난다."
   },
@@ -133,19 +133,19 @@
   },
   "개요": {
    "en": "outline",
-   "beats": ["하린이는 쓸 거리를 처음, 가운데, 끝 칸에 나눠 둡니다.", "칸 없이 쓴 도윤이 종이는 실이 엉킨 듯 뒤죽박죽입니다.", "쓰기 전에 내용을 간추려 짜 둔 것이 개요입니다."],
+   "beats": ["한 아이는 쓸 거리를 처음, 가운데, 끝 칸에 나눠 둡니다.", "칸 없이 쓴 다른 아이의 종이는 실이 엉킨 듯 뒤죽박죽입니다.", "쓰기 전에 내용을 간추려 짜 둔 것이 개요입니다."],
    "img": "Two desks side by side. On the left, HARIN calmly works on a sheet divided into three stacked boxes, each with a small icon (a seed, a growing sprout, a tree with fruit), and arrows carry little idea cards from a pile into the right boxes. On the right, DOYUN frowns at a page covered with a tangled ball of scribbled lines like knotted yarn. The papers show only icons and lines, no letters.",
    "imgKo": "왼쪽 하린이는 씨앗, 새싹, 열매 맺은 나무가 그려진 세 칸에 생각 카드를 차례로 넣는다. 오른쪽 도윤이 종이에는 실타래처럼 엉킨 낙서만 가득해 얼굴을 찌푸린다."
   },
   "매체": {
    "en": "media",
-   "beats": ["하린이가 사진 한 장을 친구들에게 보여 주려 합니다.", "신문, 휴대 전화, 텔레비전, 누리집이 소식을 나릅니다.", "소식이나 생각을 전해 주는 수단이 매체입니다."],
+   "beats": ["한 아이가 사진 한 장을 친구들에게 보여 주려 합니다.", "신문, 휴대 전화, 텔레비전, 누리집이 소식을 나릅니다.", "소식이나 생각을 전해 주는 수단이 매체입니다."],
    "img": "HARIN stands in the center holding up one printed photo of a class picnic. Four arrows spread out from her to four carriers around her: a folded newspaper, a smartphone with a message bubble, a television and a laptop showing a class website, each with the same tiny picnic photo on it. Beyond each carrier, small groups of friends look and smile.",
    "imgKo": "가운데 하린이가 소풍 사진을 들고, 화살표 넷이 신문, 휴대 전화, 텔레비전, 노트북으로 뻗는다. 넷 모두에 같은 사진이 실려 친구들에게 전해진다."
   },
   "전자 우편": {
    "en": "email",
-   "beats": ["종이 편지는 우체부가 먼 길을 오래 나릅니다.", "도윤이 편지는 인터넷을 타고 순식간에 닿습니다.", "인터넷으로 보내는 편지가 전자 우편입니다."],
+   "beats": ["종이 편지는 우체부가 먼 길을 오래 나릅니다.", "아이가 쓴 편지는 인터넷을 타고 순식간에 닿습니다.", "인터넷으로 보내는 편지가 전자 우편입니다."],
    "img": "On the left, a paper letter with a stamp rides in the basket of a mail carrier's bicycle along a long winding road toward a far-away building. On the right, DOYUN taps a laptop, and a glowing envelope icon zips along a straight bright line through the air, already arriving at a magazine office computer. A tiny snail beside the bicycle road shows slowness, and speed lines follow the glowing envelope.",
    "imgKo": "왼쪽에는 우표 붙은 종이 편지가 우체부 자전거에 실려 구불구불한 먼 길을 가고, 오른쪽에는 도윤이 노트북에서 빛나는 봉투가 곧은 선을 타고 잡지사 컴퓨터에 바로 닿는다."
   },
@@ -157,7 +157,7 @@
   },
   "개인 정보": {
    "en": "personal information",
-   "beats": ["모르는 사람이 집과 전화번호를 묻습니다.", "도윤이는 자물쇠를 채우고 손을 내젓습니다.", "누구인지 알 수 있게 하는 내용이 개인 정보입니다."],
+   "beats": ["모르는 사람이 집과 전화번호를 묻습니다.", "아이는 자물쇠를 채우고 손을 내젓습니다.", "누구인지 알 수 있게 하는 내용이 개인 정보입니다."],
    "img": "DOYUN holds a smartphone; on the screen a shadowy figure with a question mark sends message bubbles that contain only a house icon and a phone icon. Around DOYUN floats a transparent protective bubble with a big golden padlock, and inside it are icons of his house, his phone and a blank ID card. DOYUN holds up his other hand in a firm stop gesture.",
    "imgKo": "도윤이의 휴대 전화에 그림자 같은 낯선 사람이 집 그림과 전화기 그림이 든 말풍선을 보낸다. 도윤이 둘레의 투명한 막에 자물쇠가 걸려 있고 그 안에 집, 전화기, 신분증 그림이 있으며, 도윤이는 손바닥을 내밀어 막는다."
   }
@@ -191,12 +191,12 @@
    "imgKo": "거실 한가운데 저울 한쪽에 반짝이는 동전 더미, 다른 쪽에 낡은 손목시계가 있는데 시계 쪽이 더 내려가 있다. 하린이 가족이 둘러서 있고 벽에는 할아버지 사진이 걸려 있다."
   },
   "반영": {
-   "beats": ["하린이가 강가에서 연을 날리는 소풍을 떠올립니다.", "학급 소풍 계획 그림에 그 생각이 그대로 들어갔습니다.", "생각이 다른 것 속에 드러나는 일이 반영입니다."],
+   "beats": ["한 아이가 강가에서 연을 날리는 소풍을 떠올립니다.", "학급 소풍 계획 그림에 그 생각이 그대로 들어갔습니다.", "생각이 다른 것 속에 드러나는 일이 반영입니다."],
    "img": "On the left, HARIN raises her hand in a class meeting, and a thought bubble above her shows a picnic by a river with children flying kites. On the right, the class's big picnic plan poster on the board shows the very same riverside kite scene, drawn in crayon, no words. A soft mirror-like shimmer line connects her thought bubble to the poster.",
    "imgKo": "왼쪽에서 손을 든 하린이 머리 위에 강가에서 연을 날리는 소풍 생각이 떠 있고, 오른쪽 칠판의 학급 소풍 계획 그림에도 똑같은 장면이 그려져 있다. 둘 사이를 거울처럼 반짝이는 선이 잇는다."
   },
   "향토": {
-   "beats": ["도윤이 가족이 할아버지가 자란 시골 마을에 왔습니다.", "마을 어귀 큰 나무와 그 고장 음식이 반깁니다.", "사람이 태어나 자라 온 고장이 향토입니다."],
+   "beats": ["한 가족이 할아버지가 자란 시골 마을에 왔습니다.", "마을 어귀 큰 나무와 그 고장 음식이 반깁니다.", "사람이 태어나 자라 온 고장이 향토입니다."],
    "img": "At the entrance of a Korean countryside village stands a huge old zelkova tree. Under it, a smiling grandfather welcomes DOYUN and his parents stepping out of a car. Behind them stretch rice fields, a small stream and a low mountain, and on a wooden table under the tree sit plates of steamed potato rice cakes and corn.",
    "imgKo": "시골 마을 어귀 큰 느티나무 아래에서 할아버지가 차에서 내린 도윤이 가족을 반긴다. 뒤로 논, 개울, 낮은 산이 펼쳐지고 나무 아래 상에 감자떡과 옥수수가 놓여 있다."
   }
@@ -209,13 +209,13 @@
    "imgKo": "아침에 도윤이가 휴대 전화를 보는데, 화면에 자물쇠 걸린 학교와 폭죽 그림이 있고 구석에서 장난꾸러기 가면이 웃는다. 창밖으로는 아이들이 열린 교문으로 걸어 들어간다."
   },
   "신뢰성": {
-   "beats": ["왼쪽은 박물관 누리집, 오른쪽은 누가 썼는지 모를 글입니다.", "하린이는 박물관 자료를 골라 숙제에 씁니다.", "얼마나 믿을 수 있는지의 정도가 신뢰성입니다."],
+   "beats": ["왼쪽은 박물관 누리집, 오른쪽은 누가 썼는지 모를 글입니다.", "한 아이가 박물관 자료를 골라 숙제에 씁니다.", "얼마나 믿을 수 있는지의 정도가 신뢰성입니다."],
    "img": "HARIN sits at a desk between two screens. The left screen shows a museum building icon, a scientist in a lab coat and a green shield with a check mark, all neat and calm. The right screen shows a masked faceless figure, flashing red exclamation marks and question marks, and a cracked frame. HARIN reaches toward the left screen with a confident smile.",
    "imgKo": "하린이 앞에 화면이 둘 있다. 왼쪽에는 박물관 건물, 실험복 입은 학자, 초록 방패가 단정하게 있고, 오른쪽에는 얼굴 없는 가면과 번쩍이는 느낌표, 금 간 테두리가 있다. 하린이는 왼쪽 화면으로 손을 뻗는다."
   },
   "출처": {
    "en": "source",
-   "beats": ["하린이 발표 자료에 산 사진이 들어 있습니다.", "점선을 따라가면 그 사진을 처음 찍은 사람이 나옵니다.", "정보나 사진, 글이 처음 나온 곳이 출처입니다."],
+   "beats": ["한 아이의 발표 자료에 산 사진이 들어 있습니다.", "점선을 따라가면 그 사진을 처음 찍은 사람이 나옵니다.", "정보나 사진, 글이 처음 나온 곳이 출처입니다."],
    "img": "HARIN stands beside a large presentation screen showing a photo of a green mountain. A long dotted line runs from the photo, across the picture, all the way back to a hiker on a real mountaintop holding a camera at the moment of taking that same photo. At the end of the dotted line near the hiker, a small glowing star marks the starting point.",
    "imgKo": "하린이 옆 발표 화면에 초록 산 사진이 있고, 사진에서 긴 점선이 이어져 실제 산꼭대기에서 그 사진을 찍는 등산객에게 닿는다. 점선 끝에 작은 별이 반짝인다."
   },
@@ -227,7 +227,7 @@
   },
   "근거": {
    "en": "evidence",
-   "beats": ["하린이 발판 아래를 책과 표가 기둥처럼 받칩니다.", "기둥 없는 도윤이 발판은 기우뚱 흔들립니다.", "말이 옳다고 믿게 받쳐 주는 자료가 근거입니다."],
+   "beats": ["한 아이의 발판 아래를 책과 표가 기둥처럼 받칩니다.", "기둥 없는 다른 아이의 발판은 기우뚱 흔들립니다.", "말이 옳다고 믿게 받쳐 주는 자료가 근거입니다."],
    "img": "Two small round platforms stand side by side. HARIN stands firmly on the left one, holding up a speech bubble with a carrot and broccoli icon and a sparkle; underneath, sturdy pillars made of stacked books and a bar chart with colored bars, no numbers, hold it up. DOYUN stands on the right platform, which has no pillars and tilts as he waves his arms for balance.",
    "imgKo": "왼쪽 발판 위 하린이가 채소 그림 말풍선을 들고 있고, 발판 밑을 쌓은 책과 막대그래프가 기둥처럼 받친다. 오른쪽 도윤이 발판은 기둥이 없어 기울어져 도윤이가 팔을 휘젓는다."
   },
@@ -237,7 +237,7 @@
    "imgKo": "도윤이 동생이 팔의 작은 모기 자국을 가리키고, 머리 위 큰 말풍선에는 같은 팔이 주먹만 하게 부어 있고 거대한 모기 괴물이 있다."
   },
   "취재": {
-   "beats": ["운동회 날 도윤이가 이어달리기 선수를 찾아갔습니다.", "녹음기를 내밀어 묻고 수첩에 적습니다.", "기사를 쓰려고 가서 자료를 모으는 일이 취재입니다."],
+   "beats": ["운동회 날 한 아이가 이어달리기 선수를 찾아갔습니다.", "녹음기를 내밀어 묻고 수첩에 적습니다.", "기사를 쓰려고 가서 자료를 모으는 일이 취재입니다."],
    "img": "On a school sports day field, DOYUN wears a student reporter armband and holds out a small voice recorder toward a smiling girl runner with a relay baton and a headband. In his other hand he holds an open notebook with plain lines. Behind them, other children run a relay race past cheering classmates.",
    "imgKo": "운동회 날 완장을 찬 도윤이가 바통을 든 이어달리기 선수에게 녹음기를 내밀고, 다른 손에는 수첩을 들었다. 뒤로 아이들이 이어달리기를 한다."
   },
@@ -272,12 +272,12 @@
    "imgKo": "긴 길 왼쪽 끝에서 하린이가, 오른쪽 끝에서 도윤이가 발자국을 남기며 다가온다. 한가운데 별 모양으로 빛나는 자리에서 둘이 손을 잡고, 머리 위에 청소 당번 돌림판이 떠 있다."
   },
   "절차": {
-   "beats": ["개울에 징검돌이 차례로 놓여 있습니다.", "하린이는 하나씩 밟고, 건너뛴 도윤이는 물에 빠질 뻔합니다.", "일을 해 나갈 때 거쳐야 하는 차례가 절차입니다."],
+   "beats": ["개울에 징검돌이 차례로 놓여 있습니다.", "한 아이는 하나씩 밟고, 건너뛴 다른 아이는 물에 빠질 뻔합니다.", "일을 해 나갈 때 거쳐야 하는 차례가 절차입니다."],
    "img": "Five flat stepping stones cross a clear stream in a row, each with a small icon on top: a question mark, a lightbulb, two speech bubbles, gathering arrows and a check mark. HARIN calmly steps from stone to stone in order. Behind her, DOYUN has tried to leap from the first stone straight to the last; a dashed arc shows his jump, and he wobbles at the water's edge with a splash, safe but surprised.",
    "imgKo": "개울에 물음표, 전구, 말풍선, 모으는 화살표, 체크 표시가 그려진 징검돌 다섯 개가 놓여 있다. 하린이는 차례로 밟아 건너고, 첫 돌에서 끝 돌로 뛰려던 도윤이는 물가에서 첨벙 휘청인다."
   },
   "사회자": {
-   "beats": ["하린이가 앞에 서서 손든 친구를 가리킵니다.", "한 사람이 말하는 동안 나머지는 차례를 기다립니다.", "회의의 차례를 정하고 이끄는 사람이 사회자입니다."],
+   "beats": ["한 아이가 앞에 서서 손든 친구를 가리킵니다.", "한 사람이 말하는 동안 나머지는 차례를 기다립니다.", "회의의 차례를 정하고 이끄는 사람이 사회자입니다."],
    "img": "In a classroom meeting, HARIN stands at the front holding a small microphone in one hand and pointing with an open palm toward one classmate with a raised hand. The other classmates sit quietly in a half circle, some with hands half raised, waiting. Behind HARIN, the board shows three icons stacked in order with no writing: a speech bubble, a lightbulb and a check mark.",
    "imgKo": "학급 회의에서 하린이가 앞에 서서 마이크를 들고 손든 친구를 손바닥으로 가리킨다. 다른 친구들은 반원으로 앉아 차례를 기다리고, 칠판에는 말풍선, 전구, 체크 그림이 차례로 붙어 있다."
   },
@@ -295,7 +295,7 @@
  },
  "5": {
   "추론": {
-   "beats": ["현관에 젖은 우산과 물 묻은 발자국이 있습니다.", "하린이 머릿속에 비 오는 하늘이 떠오릅니다.", "보이는 실마리로 숨은 일을 짐작하는 것이 추론입니다."],
+   "beats": ["현관에 젖은 우산과 물 묻은 발자국이 있습니다.", "한 아이의 머릿속에 비 오는 하늘이 떠오릅니다.", "보이는 실마리로 숨은 일을 짐작하는 것이 추론입니다."],
    "img": "Inside a home entrance with the front door closed, a wet umbrella drips onto the floor, and wet footprints lead from the door into the hallway. HARIN stands looking at them with a lightbulb above her head and a thought bubble showing grey rain clouds and falling raindrops. No window is visible, so the outside cannot be seen.",
    "imgKo": "문이 닫힌 현관에 젖은 우산에서 물이 떨어지고 물 발자국이 복도로 이어진다. 그것을 본 하린이 머리 위에 전구와 비구름 생각 풍선이 떠 있다."
   },
@@ -311,7 +311,7 @@
    "imgKo": "왼쪽 휴대 전화에는 손 흔드는 그림, 해와 구름, 축구공 말풍선이 차례로 있고, 오른쪽 휴대 전화에는 축구공 말풍선만 남았다. 손 흔드는 그림과 해 말풍선은 점선을 따라 흐려지며 빠져나간다."
   },
   "함축": {
-   "beats": ["창밖은 맑은데 하린이 가슴 앞에만 비가 내립니다.", "진짜 비가 아니라 슬픈 마음을 담은 말입니다.", "말이 겉뜻 말고 다른 뜻을 품는 것이 함축입니다."],
+   "beats": ["창밖은 맑은데 한 아이의 가슴 앞에만 비가 내립니다.", "진짜 비가 아니라 슬픈 마음을 담은 말입니다.", "말이 겉뜻 말고 다른 뜻을 품는 것이 함축입니다."],
    "img": "HARIN sits by a big window on a bright sunny day; outside, the sky is clear blue with a smiling sun. Inside, a small dark rain cloud floats right in front of her chest, raining softly onto a small glowing heart. Her face is gently sad as she looks down at the little cloud.",
    "imgKo": "햇살 가득한 창가에 하린이가 앉아 있고 창밖은 맑다. 그런데 하린이 가슴 앞에만 작은 먹구름이 떠서 빛나는 하트 위로 비를 뿌리고, 하린이는 슬픈 얼굴로 내려다본다."
   },
@@ -339,7 +339,7 @@
   },
   "교환": {
    "en": "exchange",
-   "beats": ["하린이와 도윤이가 다 읽은 만화책을 내밉니다.", "두 책이 화살표를 따라 서로의 손으로 건너갑니다.", "내 것을 주고 남의 것을 받는 일이 교환입니다."],
+   "beats": ["두 아이가 다 읽은 만화책을 내밉니다.", "두 책이 화살표를 따라 서로의 손으로 건너갑니다.", "내 것을 주고 남의 것을 받는 일이 교환입니다."],
    "img": "HARIN and DOYUN face each other in a classroom, each holding out a colorful comic book. Two large curved arrows cross in the air between them, showing HARIN's red comic going to DOYUN and DOYUN's blue comic going to HARIN. Both are smiling.",
    "imgKo": "교실에서 하린이와 도윤이가 마주 서서 만화책을 내민다. 두 화살표가 엇갈리며 하린이의 빨간 책은 도윤이에게, 도윤이의 파란 책은 하린이에게 간다."
   },
@@ -385,12 +385,12 @@
    "imgKo": "왼쪽 극본 첫 쪽에 눈송이와 초승달, 작은 시골 기차역, 인물 그림이 세로로 놓여 있다. 큰 화살표를 따라 오른쪽 무대가 눈 내리는 밤 시골 기차역으로 꾸며져 있다."
   },
   "대사": {
-   "beats": ["늑대 옷을 입은 도윤이가 무대에서 말합니다.", "도윤이 손의 극본에는 늑대가 할 말에만 노란 줄이 쳐 있습니다.", "연극에서 인물이 직접 하는 말이 대사입니다."],
+   "beats": ["늑대 옷을 입은 한 아이가 무대에서 말합니다.", "아이가 든 극본에는 늑대가 할 말에만 노란 줄이 쳐 있습니다.", "연극에서 인물이 직접 하는 말이 대사입니다."],
    "img": "On a school stage, DOYUN wears a fluffy grey wolf costume with ears and speaks boldly toward the audience with one paw raised, sound lines coming from his mouth. In his other hand he holds a script whose pages show grey lines, with only some lines highlighted in bright yellow. Classmates in costumes stand behind him on the stage.",
    "imgKo": "학교 무대에서 늑대 옷을 입은 도윤이가 한 손을 들고 관객에게 큰 소리로 말한다. 다른 손의 극본에는 회색 줄 가운데 몇 줄에만 노란 형광 줄이 쳐 있다."
   },
   "지문": {
-   "beats": ["극본의 큰 괄호 안에 문 닫는 그림이 있습니다.", "하린이가 화난 얼굴로 무대의 문을 쾅 닫습니다.", "괄호 안에 표정과 몸짓을 적은 부분이 지문입니다."],
+   "beats": ["극본의 큰 괄호 안에 문 닫는 그림이 있습니다.", "한 아이가 화난 얼굴로 무대의 문을 쾅 닫습니다.", "괄호 안에 표정과 몸짓을 적은 부분이 지문입니다."],
    "img": "At the top of the picture floats a script page with grey lines, where one part is enclosed by a pair of very large round brackets around a small icon of a slamming door with motion lines. Below it, on a classroom stage, HARIN acts out the scene with an angry frown, slamming a prop door with a big bang burst shape. A dotted arrow links the bracketed icon to her action.",
    "imgKo": "위쪽 극본 쪽에 큰 괄호로 둘러싼 쾅 닫히는 문 그림이 있고, 아래 무대에서 하린이가 화난 얼굴로 소품 문을 쾅 닫는다. 괄호 속 그림과 하린이가 점선 화살표로 이어진다."
   },

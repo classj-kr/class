@@ -210,9 +210,8 @@
     for (let i = 0; i <= 10; i++) ticks += `<path d="M${95 + 45 * i} 280 V${i % 5 ? 290 : 294}" stroke="${C.ink}" stroke-width="2"/>`;
     const body = slips
       + `<g class="g3"><g class="s1" ${dl(1.4)}>${T(578, 110, '30표', { size: 24, anchor: 'start' })}</g></g>`
-      + `<g class="g3"><g class="s2" ${dl(.9)}>${T(250, 200, '건우 18표', { size: 24, color: C.orange })}${T(470, 200, '수빈 12표', { size: 24, color: C.blue })}</g></g>`
+      + `<g class="g3"><g class="s2" ${dl(.9)}>${T(250, 200, '18표', { size: 24, color: C.orange })}${T(470, 200, '12표', { size: 24, color: C.blue })}</g></g>`
       + `<g class="s3" ${dl(1.3)}><path d="M95 280 H545" stroke="${C.ink}" stroke-width="3"/>${ticks}${T(95, 316, '0', { size: 20 })}${T(365, 316, '60', { size: 20, color: C.orange })}${T(545, 316, '100 (%)', { size: 20 })}</g>`
-      + `<g class="s3" ${dl(1.6)}>${T(230, 256, '건우', { size: 22 })}${T(455, 256, '수빈', { size: 22 })}</g>`
       + `<g class="s3" ${dl(1.5)}>${T(320, 110, `18 ÷ 30 = 0.6 = ${'<tspan fill="' + C.orange + '">60 %</tspan>'}`, { size: 28 })}</g>`
       + `<g class="s3" ${dl(1.5)}><g class="k4" ${dl(.4)}>${T(230, 214, '60 %', { size: 24, color: C.orange })}${T(455, 214, '40 %', { size: 24, color: C.blue })}</g></g>`
       + `<g class="p4" ${dl(.2)}>${T(48, 256, '득표율', { size: 24, color: C.green })}</g>`;

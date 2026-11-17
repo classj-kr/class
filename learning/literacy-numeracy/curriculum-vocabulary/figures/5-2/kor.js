@@ -182,7 +182,7 @@
   // ── 2단원: 서술어 ──────────────────────────────
   (function () {
     const id = 'k2-seosul';
-    const rows = [['도윤이가', '달린다', '어찌하다'], ['하늘이', '파랗다', '어떠하다'], ['나는', '학생이다', '무엇이다']];
+    const rows = [['아이가', '달린다', '어찌하다'], ['하늘이', '파랗다', '어떠하다'], ['나는', '학생이다', '무엇이다']];
     const END = 425, ys = [85, 180, 275];
     let css = base(id);
     let body = `<g class="b4">${g('fin fin4', `<rect x="263" y="47" width="174" height="266" rx="14" fill="none" stroke="${C.green}" stroke-width="3" stroke-dasharray="10 7"/>` + tag(350, 24, '서술어', ROLE.p, 22))}</g>`;
@@ -316,8 +316,8 @@
   // ── 5단원: 생략 ──────────────────────────────
   (function () {
     const id = 'k5-saengryak';
-    const r1 = row(['하린이가', '빵을', '샀다'], { y: 105, x0: 170, gap: 14 });
-    const r2 = row(['하린이가', '빵을', '먹었다'], { y: 245, x0: 170, gap: 14 });
+    const r1 = row(['아이가', '빵을', '샀다'], { y: 105, x0: 170, gap: 14 });
+    const r2 = row(['아이가', '빵을', '먹었다'], { y: 245, x0: 170, gap: 14 });
     let css = base(id);
     let body = r1.map((p, i) => at(1, 'rise', `<g class="u${i}">${T(p)}</g>`, i * 0.2)).join('');
     body += `<g class="b2">${g('fin fin2', `<rect class="slot" x="${r2[0].l}" y="217" width="${r2[0].w}" height="56" rx="12" fill="white" stroke="${C.purple}" stroke-width="3" stroke-dasharray="9 7"/>`, 0.7)}</g>`;
