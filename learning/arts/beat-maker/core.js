@@ -151,7 +151,7 @@
       Number.isInteger(s.bpm) && s.bpm >= 40 && s.bpm <= 200 &&
       Number.isInteger(s.swing) && s.swing >= 0 && s.swing <= 100 &&
       Object.hasOwn(METERS, s.meter) &&
-      [1, 2, 4, 8].includes(s.bars) &&
+      [1, 2, 4, 8, 16, 32].includes(s.bars) &&
       Number.isInteger(s.key) && s.key >= 0 && s.key < 12 &&
       Object.hasOwn(SCALES, s.scale) &&
       Array.isArray(s.tracks) && s.tracks.length >= 1 && s.tracks.length <= MAX_TRACKS;
@@ -162,7 +162,7 @@
       if (!m || typeof t.id !== "string" || !/^[a-z0-9-]{1,40}$/.test(t.id) || ids.has(t.id) ||
         typeof t.art !== "string" || (m.arts && !m.arts.some((a) => a.id === t.art)) ||
         !(t.volume >= 0 && t.volume <= 1) || typeof t.mute !== "boolean" || typeof t.solo !== "boolean" ||
-        typeof t.pedal !== "boolean" || !Array.isArray(t.notes) || t.notes.length > 2000)
+        typeof t.pedal !== "boolean" || !Array.isArray(t.notes) || t.notes.length > 4000)
         throw Error("트랙을 읽을 수 없어요.");
       ids.add(t.id);
       const steps = totalSteps(s), snd = sound(t);
