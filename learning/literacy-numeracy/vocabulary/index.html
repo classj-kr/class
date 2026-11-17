@@ -6,44 +6,22 @@
     <meta name="description" content="2022 개정 교육과정 영어 단어 3,000개 학습">
     <title>교육부 지정 단어</title>
     <link rel="stylesheet" href="/assets/exam-typography.css?v=20261029-lesson-navigation">
-    <link rel="stylesheet" href="styles.css?v=20261117-band-go">
+    <link rel="stylesheet" href="styles.css?v=20261118-all-levels">
     <script src="vocabulary-core.js?v=20260803a" defer></script>
     <script src="/assets/learning-records.js?v=20261114-my-record"></script>
-    <script src="app.js?v=20261117-meanings" defer></script>
+    <script src="app.js?v=20261118-all-levels" defer></script>
 </head>
 <body>
     <main>
         <section id="levelScreen" class="level-screen" aria-labelledby="pageTitle">
-            <div class="dashboard-heading">
-                <a class="back-link" href="../../../" aria-label="홈으로 돌아가기">← 홈</a>
-                <h1 id="pageTitle" class="sr-only">영단어 학습 단계</h1>
-                <span class="heading-actions">
-                    <a class="race-link" href="../korean-race/?set=vocabulary">🏁 순위전</a>
-                    <details class="source-details"><summary>교육부 고시 확인</summary><p>교육부 고시 제2022-33호 「2022 개정 영어과 교육과정」의 공식 기본 어휘 3,000개입니다.</p></details>
-                </span>
-            </div>
-
-            <div class="overall-card" aria-label="Your learning progress">
-                <div class="study-heading">
-                    <span class="overall-label">내 학습 현황</span>
-                    <strong id="overallPercent">0%</strong>
-                </div>
-                <div class="overall-track" aria-hidden="true"><span id="overallBar"></span></div>
-                <p>외운 단어 <b id="totalKnown">0</b>개 / 3,000개 · 복습 <b id="totalUnknown">0</b>개</p>
-            </div>
-
-            <button id="recommendedLessonButton" class="recommended-lesson" type="button">
-                <span class="recommended-kicker">다음 학습</span>
-                <span class="recommended-copy">
-                    <strong id="recommendedLessonTitle">Level 1 · 1차시</strong>
-                    <small id="recommendedLessonMeta">20단어 · 약 10분</small>
-                </span>
-                <span class="recommended-action">학습 시작 →</span>
-            </button>
-
-            <button id="viewAllWordsButton" class="all-words-button" type="button"><span>3,000개 단어 모두 보기</span><small>A · 레벨&nbsp;&nbsp; B · 영어 단어&nbsp;&nbsp; C · 한글 뜻</small></button>
-
+            <h1 id="pageTitle" class="sr-only">영단어 학습 단계</h1>
             <div id="stageGroups" class="stage-groups" aria-live="polite"></div>
+            <footer class="level-footer">
+                <button id="viewAllWordsButton" class="all-words-button" type="button">전체 단어 3,000개 보기</button>
+                <small>교육부 고시 제2022-33호 · 2022 개정 영어과 교육과정 기본 어휘</small>
+                <a class="back-link" href="../../../" aria-label="홈으로 돌아가기">← 홈</a>
+                <a class="race-link" href="../korean-race/?set=vocabulary">🏁 순위전</a>
+            </footer>
         </section>
 
         <section id="lessonScreen" class="lesson-screen" hidden aria-labelledby="lessonScreenTitle">

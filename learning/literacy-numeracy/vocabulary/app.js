@@ -10,9 +10,9 @@
     const GAME_TIME_LIMIT = 15;
     const LESSON_SIZE = 20;
     const STAGES = [
-        { code: "elementary", name: "Elementary School", description: "800 words · LEVEL 01-04", cardLabel: "Elementary School Word", levels: [1, 2, 3, 4] },
-        { code: "middle_common", name: "Middle & High Common", description: "1,200 words · LEVEL 05-10", cardLabel: "Middle & High Common Word", levels: [5, 6, 7, 8, 9, 10] },
-        { code: "advanced", name: "High School Electives", description: "1,000 words · LEVEL 11-15", cardLabel: "High School Elective Word", levels: [11, 12, 13, 14, 15] },
+        { code: "elementary", name: "Elementary School", cardLabel: "Elementary School Word", levels: [1, 2, 3, 4] },
+        { code: "middle_common", name: "Middle & High Common", cardLabel: "Middle & High Common Word", levels: [5, 6, 7, 8, 9, 10] },
+        { code: "advanced", name: "High School Electives", cardLabel: "High School Elective Word", levels: [11, 12, 13, 14, 15] },
     ];
     const STAGE_CARD_LABELS = Object.fromEntries(STAGES.map((stage) => [stage.code, stage.cardLabel]));
     const POS_NAMES = {
@@ -71,7 +71,7 @@
     const core = window.VocabularyCore;
     const elements = Object.fromEntries([
         "levelScreen", "lessonScreen", "studyScreen", "bandListScreen", "stageGroups", "loadingState", "toast",
-        "totalKnown", "overallPercent", "overallBar", "totalUnknown", "backToLevels",
+        "backToLevels",
         "shuffleButton", "lessonQuizStartButton", "studyStage", "studyTitle", "cardPosition", "levelStatus", "sessionBar",
         "flashcard", "cardBadge", "wordText", "posText", "meaningText", "exampleBlock", "exampleLabel", "exampleText",
         "exampleKo", "relatedBlock", "relatedWords", "answerLayout", "wordImageBlock", "wordImage",
@@ -95,7 +95,6 @@
         "spellingResultBestStreak", "spellingWrongList", "spellingRetryWrongButton", "spellingPlayAgainButton",
         "spellingReviewButton", "spellingStoredWrongCount", "spellingModeLabel", "spellingTitle",
         "viewAllWordsButton", "backFromBandList", "bandListTitle", "bandSearchInput", "bandListCount", "bandListBody",
-        "recommendedLessonButton", "recommendedLessonTitle", "recommendedLessonMeta",
         "backFromLessons", "lessonStage", "lessonScreenTitle", "lessonGrid",
     ].map((id) => [id, document.getElementById(id)]));
     elements.backLink = document.querySelector(".back-link");
@@ -107,7 +106,6 @@
         progress: loadProgress(),
         currentLevel: null,
         currentLesson: 0,
-        recommendedLesson: null,
         currentWords: [],
         currentIndex: 0,
         revealed: false,
@@ -177,16 +175,6 @@
         showToast.timer = setTimeout(() => elements.toast.classList.remove("show"), 1800);
     }
 
-    function renderOverallProgress() {
-        if (!state.data) return;
-        const summary = core.summarizeWords(state.data.words, state.progress);
-        const percent = Math.round((summary.known / state.data.totalWords) * 100);
-        elements.totalKnown.textContent = summary.known.toLocaleString("ko-KR");
-        elements.totalUnknown.textContent = summary.unknown.toLocaleString("ko-KR");
-        elements.overallPercent.textContent = `${percent}%`;
-        elements.overallBar.style.width = `${percent}%`;
-    }
-
     // 차시 번호는 Level을 넘어 이어 센다: 단어 번호가 201번부터면 차시도 11차시부터(전체 3,000단어 = 150차시).
     function lessonNumber(level, lessonIndex) {
         const before = [...state.levels.keys()]
@@ -217,30 +205,14 @@
         return lessonsForLevel(state.currentLevel)[state.currentLesson] || [];
     }
 
-    function findRecommendedLesson(level = null) {
-        const levels = level ? [Number(level)] : STAGES.flatMap((stage) => stage.levels);
-        let reviewFallback = null;
-        for (const candidateLevel of levels) {
-            const lessons = lessonsForLevel(candidateLevel);
-            for (let lessonIndex = 0; lessonIndex < lessons.length; lessonIndex += 1) {
-                const summary = core.summarizeWords(lessons[lessonIndex], state.progress);
-                if (summary.unseen > 0) return { level: candidateLevel, lessonIndex };
-                if (!reviewFallback && summary.unknown > 0) reviewFallback = { level: candidateLevel, lessonIndex };
-            }
+    function recommendedLessonIndex(lessons) {
+        let reviewIndex = -1;
+        for (const [index, words] of lessons.entries()) {
+            const { unseen, unknown } = core.summarizeWords(words, state.progress);
+            if (unseen > 0) return index;
+            if (reviewIndex < 0 && unknown > 0) reviewIndex = index;
         }
-        const lastLevel = levels[levels.length - 1];
-        return reviewFallback || { level: lastLevel, lessonIndex: lessonsForLevel(lastLevel).length - 1 };
-    }
-
-    function renderRecommendedLesson() {
-        state.recommendedLesson = findRecommendedLesson();
-        const { level, lessonIndex } = state.recommendedLesson;
-        const words = lessonsForLevel(level)[lessonIndex] || [];
-        const summary = core.summarizeWords(words, state.progress);
-        elements.recommendedLessonTitle.textContent = `${levelName(level)} · ${lessonNumber(level, lessonIndex)}차시`;
-        elements.recommendedLessonMeta.textContent = summary.unseen > 0
-            ? `${words.length}단어 · 약 10분 · 새 단어 ${summary.unseen}개`
-            : `${words.length}단어 · 복습할 단어 ${summary.unknown}개`;
+        return reviewIndex >= 0 ? reviewIndex : lessons.length - 1;
     }
 
     function createLevelButton(level, words) {
@@ -253,7 +225,6 @@
         button.className = `level-button ${core.stageClass(words[0].stageCode)}`;
         button.setAttribute("aria-label", `${levelName(level)}, ${lessons.length}차시 중 ${completedLessons}차시 완료`);
         button.innerHTML = `
-            <span class="level-number">LEVEL ${String(level).padStart(2, "0")}</span>
             <strong class="level-name">${levelName(level)}</strong>
             <span class="level-plan">${lessonNumber(level, 0)}–${lessonNumber(level, lessons.length - 1)}차시 · 차시당 ${LESSON_SIZE}단어</span>
             <span class="level-progress" aria-hidden="true"><span style="width:${percent}%"></span></span>
@@ -266,29 +237,18 @@
     function renderLevelGroups() {
         elements.stageGroups.replaceChildren();
         STAGES.forEach((stage) => {
-            const section = document.createElement("details");
+            const section = document.createElement("section");
             section.className = "stage-group";
-            section.open = false;
-
-            const heading = document.createElement("summary");
+            const heading = document.createElement("h2");
             heading.className = "stage-heading";
-            heading.innerHTML = `
-                <div class="stage-heading-copy">
-                    <h2>${stage.name}</h2>
-                    <p>${stage.description}</p>
-                </div>
-            `;
+            heading.id = `stage-${stage.code}`;
+            heading.textContent = stage.name;
+            section.setAttribute("aria-labelledby", heading.id);
 
             const grid = document.createElement("div");
             grid.className = "level-grid";
             stage.levels.forEach((level) => grid.appendChild(createLevelButton(level, state.levels.get(level))));
             section.append(heading, grid);
-            section.addEventListener("toggle", () => {
-                if (!section.open) return;
-                elements.stageGroups.querySelectorAll(".stage-group[open]").forEach((other) => {
-                    if (other !== section) other.open = false;
-                });
-            });
             elements.stageGroups.appendChild(section);
         });
     }
@@ -371,7 +331,6 @@
         const studiedId = String(currentWord()?.id || "");
         elements.studyScreen.hidden = true;
         elements.bandListScreen.hidden = false;
-        renderOverallProgress();
         const wrap = elements.bandListBody.closest(".sheet-wrap");
         if (wrap) wrap.scrollTop = state.bandListScrollTop || 0;
         // 마지막으로 본 카드의 줄을 화면 안에 두고 잠깐 밝혀 어디서 돌아왔는지 보여 준다(감췄던 목록이 다시 그려진 뒤에).
@@ -393,7 +352,7 @@
     function renderLessonPicker(level) {
         const words = state.levels.get(Number(level)) || [];
         const lessons = lessonsForLevel(level);
-        const recommended = findRecommendedLesson(level);
+        const recommendedIndex = recommendedLessonIndex(lessons);
         const levelOffset = [...state.levels.keys()]
             .filter((key) => key < Number(level))
             .reduce((sum, key) => sum + state.levels.get(key).length, 0);
@@ -403,7 +362,7 @@
             const summary = core.summarizeWords(lessonWords, state.progress);
             const touched = summary.known + summary.unknown;
             const percent = Math.round((touched / lessonWords.length) * 100);
-            const isRecommended = recommended.lessonIndex === lessonIndex;
+            const isRecommended = recommendedIndex === lessonIndex;
             const card = document.createElement("article");
             card.className = "lesson-card";
             const studyButton = document.createElement("button");
@@ -469,8 +428,6 @@
         elements.lessonScreen.hidden = true;
         elements.levelScreen.hidden = false;
         renderLevelGroups();
-        renderRecommendedLesson();
-        renderOverallProgress();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -834,7 +791,6 @@
                 state.lessonQuizWrongWords.push(state.lessonQuizTarget);
                 state.progress[String(state.lessonQuizTarget.id)] = { status: "unknown", updatedAt: new Date().toISOString() };
                 saveProgress();
-                renderOverallProgress();
             }
             elements.lessonQuizFeedback.textContent = "다시 생각하고 다른 답을 골라보세요.";
             elements.lessonQuizFeedback.className = "game-feedback incorrect";
@@ -855,7 +811,6 @@
         elements.lessonQuizFeedback.textContent = `정답! ${state.lessonQuizTarget.word} — ${targetMeaning}`;
         elements.lessonQuizFeedback.className = "game-feedback correct";
         saveProgress();
-        renderOverallProgress();
         elements.lessonQuizNextButton.disabled = false;
         elements.lessonQuizNextButton.textContent = state.lessonQuizQuestionNumber >= state.lessonQuizPool.length ? "결과 보기" : "다음";
         updateLessonQuizStats();
@@ -908,7 +863,6 @@
         elements.lessonQuizScreen.hidden = true;
         elements.lessonScreen.hidden = false;
         renderLessonPicker(state.currentLevel);
-        renderOverallProgress();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -956,7 +910,6 @@
         elements.studyScreen.hidden = true;
         elements.lessonScreen.hidden = false;
         renderLessonPicker(state.currentLevel);
-        renderOverallProgress();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -1132,7 +1085,6 @@
         elements.gameScreen.hidden = true;
         elements.levelScreen.hidden = false;
         renderLevelGroups();
-        renderOverallProgress();
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -1398,10 +1350,6 @@
     }
 
     function bindEvents() {
-        elements.recommendedLessonButton.addEventListener("click", () => {
-            const lesson = state.recommendedLesson || findRecommendedLesson();
-            openLesson(lesson.level, lesson.lessonIndex);
-        });
         elements.viewAllWordsButton.addEventListener("click", openBandList);
         elements.backFromBandList.addEventListener("click", backFromBandList);
         elements.bandSearchInput.addEventListener("input", () => renderBandList(elements.bandSearchInput.value));
@@ -1590,9 +1538,7 @@
             elements.spellingLevelSelect.disabled = spellingPool.length === 0;
             renderStoredSpellingWrong();
             updateShuffleToggle();
-            renderOverallProgress();
             renderLevelGroups();
-            renderRecommendedLesson();
             await initializeRecords();
             bindEvents();
             elements.loadingState.hidden = true;
@@ -1675,7 +1621,7 @@
             elements.spellingCheckButton.disabled=elements.spellingHintButton.disabled=state.spellingAnswered;
             if(state.spellingAnswered)elements.spellingFeedback.textContent='저장된 답안: '+saved.value+' · 정답: '+state.spellingTarget.word;
         }
-        renderOverallProgress(); renderStoredSpellingWrong();
+         renderStoredSpellingWrong();
     }
     async function recordOperation(run, beginMode) {
         if (recordDepth) return run();
@@ -1694,7 +1640,7 @@
                 if(session.revision>0)restoreRecord(session.checkpoint);
             }
             await records.save({checkpoint:recordCheckpoint(),progress:recordProgress(),events:pendingEvents,complete:completeRequested});
-            if(completeRequested){recordScreens.forEach(k=>{elements[k].hidden=k!=='levelScreen';});renderLevelGroups();renderRecommendedLesson();await records.showResult();}
+            if(completeRequested){recordScreens.forEach(k=>{elements[k].hidden=k!=='levelScreen';});renderLevelGroups();await records.showResult();}
         } finally { recordDepth--;lockRecords(false);if(recordMode==='game'&&!state.gameAnswered&&!elements.gameScreen.hidden&&records.session?.status==='active')startGameTimer(); }
     }
     const finishReading=records.addAction('이번 학습 마치기',()=>recordOperation(()=>{completeRequested=true;}));
@@ -1725,7 +1671,7 @@
                 else if(mode==='spelling'){if(e.correct)delete state.spellingWrongProgress[id];else state.spellingWrongProgress[id]={count:1,lastAnswer:e.response,updatedAt:e.recorded_at};}
             }
         }
-        renderOverallProgress();renderLevelGroups();renderRecommendedLesson();renderStoredSpellingWrong();
+        renderLevelGroups();renderStoredSpellingWrong();
         const key=new URLSearchParams(location.search).get('record')||sessions.find(s=>s.status==='active')?.contentKey;
         if(key){const [mode,level,lesson]=key.split(':');
             if(mode==='study')await openLesson(Number(level),Number(lesson));
