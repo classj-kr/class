@@ -147,6 +147,9 @@
     return card;
   }
 
+  // '다의어'·'동형어'는 국어 4학년 1학기에 처음 배운다. 그 전 학년에는 쉬운 이름으로 보인다.
+  const kindName = (kind) => Number(term[0]) >= 4 ? kind : ({ 다의어: '다른 뜻', 동형어: '소리만 같은 낱말' }[kind] || kind);
+
   // 장면은 칸마다 한 줄씩 열린다. 처음에는 저절로 넘어가고, 아이가 칸을 누르면 멈춘다.
   let sceneTimer = null;
   const stopScene = () => { clearTimeout(sceneTimer); sceneTimer = null; };
@@ -307,6 +310,7 @@
     // 번호는 ①(이 단원 뜻)에 이어 ②, ③…으로 이어 센다.
     if (word.senses) {
       let number = 2;
+      const plain = kindName;
       const groups = [
         ['다의어', 'polysemy'],
         ['동형어', 'homonym']
@@ -316,7 +320,7 @@
         if (!rows.length) continue;
         const group = element('section', '', `sense-group ${cls}`);
         const label = element('p', '', 'sense-kind');
-        label.append(element('b', kind));
+        label.append(element('b', plain(kind)));
         const list = element('ol', '', 'meanings others');
         list.start = number;
         list.style.counterReset = `sense ${number - 1}`;
@@ -653,9 +657,9 @@
       const note = element('p', '', 'sense-answer');
       if (target.kind === '이 단원') { note.append(element('b', '이 단원 뜻', 'k-own'), ' 이 단원에서 배우는 뜻입니다.'); return note; }
       const homonym = target.kind === '동형어';
-      note.append(element('b', homonym ? '동형어' : '다의어', homonym ? 'k-homonym' : 'k-polysemy'),
+      note.append(element('b', kindName(homonym ? '동형어' : '다의어'), homonym ? 'k-homonym' : 'k-polysemy'),
         homonym ? ' 소리만 같은 다른 낱말입니다.' : ' 같은 낱말이 다른 뜻으로 쓰였습니다.');
-      if (target.hanja) note.append(' ', element('span', target.hanja, 'hanja-glyph small'));
+      if (target.hanja && Number(term[0]) > 2) note.append(' ', element('span', target.hanja, 'hanja-glyph small'));
       return note;
     }
 
