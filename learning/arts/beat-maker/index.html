@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#141a24" />
+    <title>비트메이커</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="styles.css?v=20261117-1" />
+    <script src="../../literacy-numeracy/math-tools/assets/math.js?v=20261108-2" defer></script>
+    <script src="../../literacy-numeracy/math-tools/assets/ui.js?v=20261108-2" defer></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="../instrument-room/korean-percussion-data.js" defer></script>
+    <script src="catalog.js?v=20261117-1" defer></script>
+    <script src="core.js?v=20261117-1" defer></script>
+    <script src="engine.js?v=20261117-1" defer></script>
+    <script src="app.js?v=20261117-1" defer></script>
+    <script src="/assets/sound/music-control.js?v=20261117-movable-gear" data-settings-help="tool-help" defer></script>
+  </head>
+  <body>
+    <h1 class="sr-only">비트메이커</h1>
+    <div class="controls" role="toolbar" aria-label="곡 설정">
+      <button id="play" class="primary" aria-pressed="false">▶ 재생</button
+      ><button id="rewind" class="icon" aria-label="처음부터">⏮</button>
+      <label class="field">빠르기 <input id="bpm" type="number" min="40" max="200" /></label>
+      <label class="field">마디 <select id="bars"><option>1</option><option>2</option><option>4</option><option>8</option></select></label>
+      <label class="field">조 <select id="key"></select><select id="scale"><option value="major">장조</option><option value="minor">단조</option></select></label>
+      <div class="history">
+        <button id="undo" class="icon" aria-label="되돌리기">↶</button
+        ><button id="redo" class="icon" aria-label="다시 하기">↷</button>
+      </div>
+      <button id="reset">초기화</button
+      ><button id="export">MP3 저장</button>
+    </div>
+    <main class="studio">
+      <section class="tracks" aria-label="트랙">
+        <div id="tracks"></div>
+        <button id="add-track" class="add">＋ 트랙</button>
+      </section>
+      <section class="editor" aria-label="편집">
+        <div class="editor-head">
+          <strong id="editor-title"></strong>
+          <span class="octave" id="octave">
+            <button id="octave-up" class="icon" aria-label="한 옥타브 위 보기">▲</button
+            ><button id="octave-down" class="icon" aria-label="한 옥타브 아래 보기">▼</button>
+          </span>
+        </div>
+        <div class="roll" id="roll">
+          <div class="labels" id="labels"></div>
+          <div class="grid-wrap">
+            <svg id="grid" tabindex="0" aria-label="음 찍는 칸"></svg>
+            <div class="playhead" id="playhead" hidden></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <p id="notice" role="status" hidden></p>
+    <span id="save-status" class="sr-only" role="status"></span>
+    <template id="tool-help"><ul>
+      <li>트랙을 눌러 고른 뒤 아래 칸에 음을 찍어요. 트랙은 5개까지예요.</li>
+      <li>가락 악기: 빈칸을 누르고 옆으로 끌면 음이 길어져요. 음을 끌면 옮겨지고, 한 번 누르면 지워져요.</li>
+      <li>드럼: 칸을 누르면 찍히고, 끌면 이어서 찍혀요. 찍힌 칸을 누르면 지워져요.</li>
+      <li>조를 고르면 그 조에 없는 음 줄이 어둡게 보여요.</li>
+      <li>M은 끄기, S는 그 트랙만 듣기예요.</li>
+    </ul></template>
+  </body>
+</html>

@@ -30,6 +30,12 @@ test("teacher notice inboxes resolve the class from classroom_teachers directly,
   }
 });
 
+test("the schoolwide attendance board is open to every teacher of the school, not only administrators", () => {
+  const body = handlerBody(serverSource, `router.get("/school-admin/dashboard"`);
+  assert.match(body, /await requireSchoolCurriculum\(req\)/);
+  assert.doesNotMatch(body, /requireSchoolAdmin/);
+});
+
 test("GET /school-admin/dashboard counts approved experiential learning applications alongside absence notices", () => {
   const body = handlerBody(serverSource, `router.get("/school-admin/dashboard"`);
   assert.match(body, /FROM classroom_experiential_apps/);
@@ -107,7 +113,7 @@ test("GET /school-admin/dashboard lists this year's students once and each atten
     `);
     const body = handlerBody(serverSource, 'router.get("/school-admin/dashboard"');
     const fn = new (Object.getPrototypeOf(async function(){}).constructor)(
-      "req", "res", "requireSchoolAdmin", "pool", "HttpError", body.slice(body.indexOf("=> {") + 4)
+      "req", "res", "requireSchoolCurriculum", "pool", "HttpError", body.slice(body.indexOf("=> {") + 4)
     );
     class HttpError extends Error { constructor(status, code) { super(code); this.status = status; } }
     async function run(date) {

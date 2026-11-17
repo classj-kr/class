@@ -12,8 +12,10 @@
     const GRAND_SAMPLE_STEP = 1;
     const KEYBOARD_SAMPLE_CACHE_LIMIT = 112;
     const RANGE_PRELOAD_CONCURRENCY = 3;
-    const BASS_PLUCK_MIN_RING_SECONDS = .9;
-    const BASS_PLUCK_RELEASE_SECONDS = .36;
+    // 짧게 눌러도 스타카토처럼 끊기지 않을 만큼만 울리고, 손을 떼면 빨리 줄인다.
+    // 앞 음이 남아 겹치던 문제는 아래 단선율(한 번에 한 음) 처리로 막는다.
+    const BASS_PLUCK_MIN_RING_SECONDS = .25;
+    const BASS_PLUCK_RELEASE_SECONDS = .18;
     // Each decoded file gets its own onset measurement.
     // Keep a generous lead-in so breath, bow and pick transients are not shaved.
     const SAMPLED_NOTE_ATTACK_LEAD = .012;
@@ -1114,11 +1116,21 @@
         return /^(?:p-bass|j-bass|active-bass|fretless-bass)-(?:finger|pick)$/.test(sampleSet || "");
     }
 
+    // 전기 베이스는 실제 연주처럼 한 번에 한 음만 울린다(새 음이 앞 음을 멈춤).
+    function isElectricBassSample(sampleSet) {
+        return /^(?:p-bass|j-bass|active-bass|fretless-bass)-(?:finger|pick|slap)$/.test(sampleSet || "");
+    }
+
     function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) {
         const context = ensureAudio();
         if (!context || !buffer) return;
         const existing = state.pianoVoices.get(midi);
         if (existing) releasePianoVoice(existing, true);
+        if (isElectricBassSample(sampleSet)) {
+            state.pianoVoices.forEach(function (other) {
+                if (isElectricBassSample(other.sampleSet)) releasePianoVoice(other, true);
+            });
+        }
         const source = context.createBufferSource();
         const gain = context.createGain();
         const now = context.currentTime;

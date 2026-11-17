@@ -7062,8 +7062,9 @@ function createClassroomPlatform(options = {}) {
   // 전교 출결 현황판. 숫자를 누르면 누구인지 나오도록 셈이 아니라 학생 한 명 한 줄로 준다.
   // 셈은 화면이 학생 단위로 한다(한 학생에게 알림과 결석계가 함께 있어도 한 번).
   // 담임 화면(/teacher/class-attendance)과 같은 까닭으로 사유는 보내지 않는다.
+  // 조회만 하므로 관리자뿐 아니라 그 학교 교직원 모두에게 연다.
   router.get("/school-admin/dashboard", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolAdmin(req);
+    const { profile } = await requireSchoolCurriculum(req);
     const date = String(req.query.date || new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(new Date()));
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date))) {
       throw new HttpError(400, "INVALID_DATE", "날짜를 확인해 주세요.");
