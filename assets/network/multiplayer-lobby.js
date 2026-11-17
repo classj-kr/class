@@ -26,6 +26,21 @@
         startButton: "startBtn"
     });
 
+    // 메인 화면 방 번호 칸에서 넘어오면 주소에 ?join=1234 가 붙어 온다. 한 번만 읽고 주소에서 지운다
+    // (새로고침해도 같은 번호로 다시 참가를 시도하지 않게).
+    function takeJoinCode() {
+        try {
+            const url = new URL(location.href);
+            const code = url.searchParams.get("join") || "";
+            if (!/^\d{4}$/.test(code)) return "";
+            url.searchParams.delete("join");
+            history.replaceState(history.state, "", url.pathname + url.search + url.hash);
+            return code;
+        } catch (_) {
+            return "";
+        }
+    }
+
     // 이 사이트에는 학생마다 아바타가 있다. 한 번만 받아 두고 모든 게임이 나눠 쓴다.
     let avatarKey = null;
     let avatarPromise = null;
@@ -178,7 +193,16 @@
             });
             window.addEventListener("beforeunload", this._boundBeforeUnload);
             window.addEventListener("sitebackrequest", this._boundSiteBack);
-            this.setMode(this.options.initialMode === "guest" ? "guest" : "host");
+            const joinCode = takeJoinCode();
+            if (joinCode) {
+                this.setMode("guest");
+                this.joinRoom(joinCode);
+            } else {
+                // 참가하는 사람은 메인 화면 방 번호 칸으로 바로 들어오므로, 게임 메뉴에서 연 사람은 대개 방을 만들려는 사람이다.
+                // 방을 저절로 만들지 않는 게임(autoCreate:false)과 손님으로 다시 들어와야 하는 경우(guestFirst)만 참가 화면으로 연다.
+                const guestFirst = this.options.autoCreate === false || this.options.guestFirst === true;
+                this.setMode(this.options.initialMode === "guest" && guestFirst ? "guest" : "host");
+            }
             return this;
         }
 
@@ -360,6 +384,8 @@
                 gameId: this.gameId,
                 roomCode,
                 name: this.playerName,
+                // 메인 화면 방 번호 칸이 이 방을 찾으면 이 화면으로 보낸다.
+                ...(type === "CREATE_ROOM" ? { entryPath: location.pathname } : {}),
                 // 아바타는 비동기로 늦게 오므로 방을 만드는 시점에는 대개 비어 있다.
                 // 실제 전달은 _attachAvatar 가 players 를 통해 하고, 여기서는 이미 받아 둔 경우만 얹는다.
                 ...(avatarKey ? { avatarKey } : {})
@@ -379,13 +405,13 @@
             this._connect(this._roomRequest("CREATE_ROOM", this.roomCode));
         }
 
-        joinRoom() {
+        joinRoom(preset = "") {
             if (typeof this.options.canJoin === "function" && this.options.canJoin(this.snapshot()) !== true) {
                 this.options.onInvalidJoin?.(this.snapshot());
                 return;
             }
             const input = this.elements.joinCode;
-            const code = String(input?.value || "").replace(/\D/g, "").slice(0, 4);
+            const code = String(preset || input?.value || "").replace(/\D/g, "").slice(0, 4);
             if (input) input.value = code;
             if (code.length !== 4) {
                 this._setStatus("4자리 방 번호를 입력하세요.");

@@ -2923,6 +2923,8 @@
                 if (event.target === overlay) overlay.classList.add('hidden');
             });
 
+            if (/^\d{4}$/.test(new URLSearchParams(location.search).get('join') || '')) overlay.classList.remove('hidden');
+
             if (!window.ClassroomMultiplayerLobby) {
                 var joinStatus = document.getElementById('ufoJoinStatus');
                 if (joinStatus) joinStatus.textContent = '교실 통신 기능을 불러오지 못했습니다.';
@@ -2935,6 +2937,7 @@
                     return ((window.CLASS_PLAYER_NAME || "") || '').trim();
                 },
                 initialMode: 'guest',
+                guestFirst: true,
                 allowedPlayerCounts: Array.from({ length: 40 }, function (_, index) { return index + 1; }),
                 maxPlayers: 40,
                 ids: {

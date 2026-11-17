@@ -625,7 +625,12 @@ app.use("/api/room-entry", classroomPlatform.requireSiteAccess, createRoomEntry(
   handwritingExists: code => handwriting.hasRoomCode(code),
   stackingExists: code => stackingCubes.hasRoomCode(code),
   typingExists: code => typingRace.hasRoomCode(code),
-  koreanExists: code => koreanRace.hasRoomCode(code)
+  koreanExists: code => koreanRace.hasRoomCode(code),
+  gameRoom: (gameId, code) => {
+    const room = rooms.get(roomKey(gameId, code));
+    if (!room) return null;
+    return { entryPath: room.entryPath || `/learning/games/${gameId}/${gameId}` };
+  }
 }));
 // 한능검 기출은 정적 페이지가 되었다. 예전 주소로 온 사람은 새 자리로 보낸다.
 app.use("/hanguksa", (req, res) => res.redirect(301, "/learning/inquiry/korean-history/"));
@@ -2279,11 +2284,14 @@ wss.on("connection", (socket, request) => {
         return;
       }
 
+      // 메인 화면 방 번호 칸이 이 방을 찾으면 보낼 화면. 학습 화면 주소만 받는다.
+      const entryPath = String(message.entryPath || "");
       const room = {
         gameId,
         roomCode,
         hostId: playerId,
-        clients: new Map([[playerId, socket]])
+        clients: new Map([[playerId, socket]]),
+        entryPath: /^\/learning\/[A-Za-z0-9/_.-]{1,150}$/.test(entryPath) && !entryPath.includes("..") ? entryPath : null
       };
       if (gameId === "avalon") {
         room.avalon = {

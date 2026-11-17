@@ -350,6 +350,7 @@
         lobby = window.ClassroomMultiplayerLobby.create({
             gameId: GAME_ID,
             initialMode: savedRoom?.role === "host" ? "host" : "guest",
+            guestFirst: savedRoom?.role === "guest",
             keepRoomOnReload: "all",
             getPreferredRoomCode: () => savedRoom?.roomCode || "",
             getRoomRequestData: () => {

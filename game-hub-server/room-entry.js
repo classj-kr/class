@@ -1,6 +1,6 @@
 const express = require('express');
 
-function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRoomExists = () => false, rhythmExists = () => false, handwritingExists = () => false, stackingExists = () => false, typingExists = () => false, koreanExists = () => false, fetchImpl = fetch }) {
+function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRoomExists = () => false, rhythmExists = () => false, handwritingExists = () => false, stackingExists = () => false, typingExists = () => false, koreanExists = () => false, gameRoom = () => null, fetchImpl = fetch }) {
   const router = express.Router();
   router.get('/resolve/:code', async (req, res) => {
     const code = req.params.code;
@@ -33,8 +33,13 @@ function createRoomEntry({ roomCodes, arithmeticPort, voyagePort, legacyVoyageRo
         return res.json({ type: activity, href: `/learning/arts/music-theory/rhythm-training/?room=${code}&entry=main` });
       }
       if (['legacy', 'vote', 'seating', 'school-election'].includes(activity)) return res.redirect(307, `/api/vote/resolve/${code}`);
-      // Other board games keep their existing app-specific entry screens.
-      // Their numbers are reserved here as well, so they cannot collide with lessons.
+      // 보드게임 방: 방을 만든 화면으로 보내고, 그 화면의 대기실이 ?join= 번호로 바로 참가한다.
+      if (activity.startsWith('game:')) {
+        const room = gameRoom(activity.slice(5), code);
+        if (!room) return res.status(404).json({ message: '해당 방을 찾을 수 없습니다.' });
+        return res.json({ type: 'game', href: `${room.entryPath}?join=${code}` });
+      }
+      // 여기까지 오지 않은 활동은 각 화면에서 입장한다.
       if (!['arithmetic', 'voyage'].includes(activity)) return res.status(404).json({ message: '이 방은 해당 게임에서 입장해 주세요.' });
       const arithmetic = activity === 'arithmetic';
       const target = arithmetic

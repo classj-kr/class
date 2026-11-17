@@ -535,6 +535,8 @@
             toastTimer = setTimeout(() => node.classList.remove("show"), 2400);
         }
 
+        if (/^\d{4}$/.test(new URLSearchParams(location.search).get("join") || "")) setTimeout(open, 0);
+
         return {
             open, progress, finish, settingsKey,
             get active() { return racing; },
