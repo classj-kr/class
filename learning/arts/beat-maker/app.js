@@ -7,6 +7,58 @@
   let zoom = 3, CW = ZOOMS[zoom];
   const RULER = 24; // 마디 번호 자 높이
   let rh = RH; // 타악 줄은 편집 칸 높이를 채우도록 늘린다(최대 40px).
+  // 가락 악기: 조의 일곱 음 줄은 넓게, 나머지 다섯 음 줄은 아주 좁게. rowTop/rowH 가 줄마다 위치·높이다.
+  const NARROW = 8;
+  let rowTop = [], rowH = [];
+  const rowIndexAt = (y) => {
+    for (let i = 0; i < rowH.length; i++) if (y < rowTop[i] + rowH[i]) return i;
+    return rowH.length - 1;
+  };
+  // 세로 피아노 건반(그리드와 따로, 실제 건반 비율): 흰 건반은 한 옥타브를 일곱으로 똑같이 나누고,
+  // 검은 건반은 흰 건반 높이의 0.6만큼 자기 음 줄 가운데에 얹는다. 계이름은 색 딱지로 건반 오른쪽 끝에.
+  function keyboardSVG(list, s) {
+    const W = 64, BW = 38, H = rowTop[list.length - 1] + rowH[list.length - 1];
+    const idx = new Map(list.map((r, i) => [r.pitch, i]));
+    const bottomOf = (p) => (idx.has(p) ? rowTop[idx.get(p)] + rowH[idx.get(p)] : null);
+    const centerOf = (p) => (idx.has(p) ? rowTop[idx.get(p)] + rowH[idx.get(p)] / 2 : null);
+    const octave = 7 * RH + 5 * NARROW; // 어느 조든 한 옥타브에 넓은 줄 일곱·좁은 줄 다섯
+    const whiteH = octave / 7, WHITE = [0, 2, 4, 5, 7, 9, 11];
+    const hi = list[0].pitch, lo = list[list.length - 1].pitch;
+    // 화면에 걸친 옥타브의 C 줄 바닥을 기준으로 흰 건반을 쌓는다(맨 아래 C가 화면 밖이면 위 C에서 거꾸로 잰다).
+    const cBottom = (c) => {
+      const b = bottomOf(c);
+      if (b !== null) return b;
+      const up = bottomOf(c + 12);
+      return up !== null ? up + octave : bottomOf(c - 12) - octave;
+    };
+    const chip = (p, x, y) => {
+      const sol = B.solfege(p, s.key, s.scale);
+      if (!sol) return "";
+      const dark = sol === "미" || sol === "레";
+      return `<rect x="${x - 17}" y="${y - 7}" width="17" height="14" rx="3" fill="${B.solfegeColor(p, s.key, s.scale)}" pointer-events="none"/>` +
+        `<text x="${x - 8.5}" y="${y + 4}" text-anchor="middle" class="sol${dark ? " dark" : ""}" pointer-events="none">${sol}</text>`;
+    };
+    let whites = "", blacks = "", marks = "";
+    for (let c = Math.floor(lo / 12) * 12 - 12; c <= hi + 12; c += 12) {
+      const base = cBottom(c);
+      WHITE.forEach((pc, k) => {
+        const p = c + pc, y1 = base - k * whiteH, y0 = y1 - whiteH;
+        if (y1 < 0 || y0 > H) return;
+        const out = !idx.has(p) || list[idx.get(p)].out;
+        whites += `<rect x="0.5" y="${y0}" width="${W - 1}" height="${whiteH}" rx="2" class="wk${out ? " out" : ""}"${out ? "" : ` data-pitch="${p}"`}/>`;
+        if (out) return;
+        marks += chip(p, W - 4, (y0 + y1) / 2);
+        if (pc === 0) marks += `<text x="4" y="${y1 - 4}" class="cname" pointer-events="none">${B.noteName(p)}</text>`;
+      });
+    }
+    for (const r of list) {
+      if (![1, 3, 6, 8, 10].includes(r.pitch % 12)) continue;
+      const cy = centerOf(r.pitch), h = whiteH * 0.6;
+      blacks += `<rect x="0" y="${cy - h / 2}" width="${BW}" height="${h}" rx="2" class="bk${r.out ? " out" : ""}"${r.out ? "" : ` data-pitch="${r.pitch}"`}/>`;
+      if (!r.out) blacks += chip(r.pitch, BW - 3, cy);
+    }
+    return `<svg class="keyboard" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${whites}${marks}${blacks}</svg>`;
+  }
   // 스윙만큼 뒤쪽 16분 칸이 늦게 시작하도록 그린다. 소리가 늦는 만큼 칸도 밀려서 재생선과 맞는다.
   let swingPx = 0;
   const colX = (step) => step * CW + (step % 2 ? swingPx : 0);
@@ -123,10 +175,15 @@
     $("octave-up").disabled = snd.pads || narrow(snd) || top(t) >= snd.hi;
     $("octave-down").disabled = snd.pads || narrow(snd) || top(t) - ROWS < snd.lo;
     $("roll").classList.toggle("pads", snd.pads);
-    const lk = [snd.key, snd.pads ? "" : top(t), s.key, s.scale].join("|");
+    rh = snd.pads ? Math.max(RH, Math.min(40, Math.floor(($("roll").clientHeight - RULER) / Math.max(1, list.length)))) : RH;
+    rowH = list.map((r) => (snd.pads || B.inKey(r.pitch, s.key, s.scale) ? rh : NARROW));
+    rowTop = [];
+    rowH.reduce((y, h, i) => ((rowTop[i] = y), y + h), 0);
+    const lk = [snd.key, snd.pads ? rh : top(t), s.key, s.scale].join("|");
     if (lk !== labelKey) {
       labelKey = lk;
-      $("labels").innerHTML = list.map((r) => {
+      if (!snd.pads) $("labels").innerHTML = keyboardSVG(list, s);
+      else $("labels").innerHTML = list.map((r) => {
         if (r.pad) return `<button class="label pad${r.pad.minor ? " minor" : ""}" data-pitch="${r.pitch}" tabindex="-1" title="${esc(r.pad.title || r.label)}">${padIcon(r.pad)}<span>${esc(r.label)}</span></button>`;
         // 세로 피아노 건반: 검은 건반은 짧게 얹고, 흰 건반끼리 맞닿는 곳(E–F, B–C)에만 선을 긋는다.
         // 글자: 조에 맞춘 계이름, C에는 옥타브를 알 수 있게 음이름도 작게.
@@ -138,11 +195,10 @@
           `${pc === 0 ? `<small>${r.label}</small>` : ""}${sol ? `<b>${sol}</b>` : ""}</button>`;
       }).join("");
     }
-    rh = snd.pads ? Math.max(RH, Math.min(40, Math.floor(($("roll").clientHeight - RULER) / Math.max(1, list.length)))) : RH;
     $("roll").style.setProperty("--rh", rh + "px");
     const per = B.stepsPerBar(s), beat = B.beatSteps(s);
     swingPx = B.swingable(s) ? (s.swing / 100) * CW / 3 : 0;
-    const W = steps * CW, H = Math.max(1, list.length) * rh, svg = $("grid");
+    const W = steps * CW, H = list.length ? rowTop[list.length - 1] + rowH[list.length - 1] : rh, svg = $("grid");
     // 좁게 보면 마디 번호가 겹치지 않게 1·3·5…만 적는다.
     const label = (b) => (per * CW < 90 && b % 2 ? "" : b + 1);
     $("ruler").style.width = W + "px";
@@ -165,26 +221,28 @@
     list.forEach((r, i) => {
       // 악기 음역 밖은 검게, 조성 밖의 음 줄과 드럼 세트의 보조 줄은 어둡게, 으뜸음 줄은 살짝 밝게.
       const off = r.pad ? !!r.pad.minor : !B.inKey(r.pitch, s.key, s.scale), root = !r.pad && r.pitch % 12 === s.key;
-      out += `<rect x="0" y="${i * rh}" width="${W}" height="${rh}" class="row${r.out ? " out" : off ? " off" : root ? " root" : ""}"/>`;
+      out += `<rect x="0" y="${rowTop[i]}" width="${W}" height="${rowH[i]}" class="row${r.out ? " out" : off ? " off" : root ? " root" : ""}"/>`;
     });
     for (let x = 0; x <= steps; x++)
       out += `<line x1="${colX(x)}" x2="${colX(x)}" y1="0" y2="${H}" class="${x % per === 0 ? "bar" : x % beat === 0 ? "beat" : "step"}"/>`;
-    for (let i = 1; i < list.length; i++) out += `<line x1="0" x2="${W}" y1="${i * rh}" y2="${i * rh}" class="hline"/>`;
+    for (let i = 1; i < list.length; i++) out += `<line x1="0" x2="${W}" y1="${rowTop[i]}" y2="${rowTop[i]}" class="hline"/>`;
     for (const n of t.notes) {
       const i = list.findIndex((r) => r.pitch === n.pitch);
       if (i < 0) continue;
       const sel = picked.has(noteKey(n)) ? " sel" : "";
       if (snd.pads)
-        out += `<rect x="${colX(n.step) + 3}" y="${i * rh + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rh - 6}" rx="4" fill="${list[i].pad.color}" class="hit${sel}"/>`;
+        out += `<rect x="${colX(n.step) + 3}" y="${rowTop[i] + 3}" width="${colX(n.step + 1) - colX(n.step) - 6}" height="${rowH[i] - 6}" rx="4" fill="${list[i].pad.color}" class="hit${sel}"/>`;
       else {
         // 음표는 계이름 색으로 칠한다(조에 없는 음은 회색).
         const color = B.solfegeColor(n.pitch, s.key, s.scale);
         // 페달을 밟은 동안 이어지는 울림을 옅게 보여 준다.
         const ring = B.soundingSteps(t, n, per);
         const x0 = colX(n.step), x1 = colX(n.step + n.len);
-        if (ring > n.len) out += `<rect x="${x1}" y="${i * RH + 7}" width="${colX(n.step + ring) - x1 - 2}" height="${RH - 14}" fill="${color}" opacity=".3"/>`;
-        out += `<rect x="${x0 + 1}" y="${i * RH + 2}" width="${x1 - x0 - 2}" height="${RH - 4}" rx="4" fill="${color}" class="note${sel}"/>` +
-          `<rect x="${x1 - 6}" y="${i * RH + 5}" width="2" height="${RH - 10}" class="grip"/>`;
+        // 좁은 줄의 음표는 줄을 거의 꽉 채워야 보인다.
+        const y = rowTop[i], h = rowH[i], wide = h >= RH, pad = wide ? 2 : 1;
+        if (ring > n.len) out += `<rect x="${x1}" y="${y + h * 0.35}" width="${colX(n.step + ring) - x1 - 2}" height="${h * 0.3}" fill="${color}" opacity=".3"/>`;
+        out += `<rect x="${x0 + 1}" y="${y + pad}" width="${x1 - x0 - 2}" height="${h - pad * 2}" rx="${wide ? 4 : 2}" fill="${color}" class="note${sel}"/>` +
+          (wide ? `<rect x="${x1 - 6}" y="${y + 5}" width="2" height="${h - 10}" class="grip"/>` : "");
       }
     }
     if (band) out += `<rect x="${Math.min(band.x0, band.x1)}" y="${Math.min(band.y0, band.y1)}" width="${Math.abs(band.x1 - band.x0)}" height="${Math.abs(band.y1 - band.y0)}" class="band"/>`;
@@ -327,7 +385,7 @@
   function cellAt(p) {
     const list = rows(currentTrack());
     const step = Math.max(0, Math.min(B.totalSteps(app.state) - 1, stepAtX(p.x)));
-    const row = list[Math.max(0, Math.min(list.length - 1, Math.floor(p.y / rh)))];
+    const row = list[rowIndexAt(p.y)];
     const snd = B.sound(currentTrack());
     // 음역 밖 줄로 끌어도 음역 끝에 머문다.
     return { step, pitch: snd.pads ? row.pitch : Math.max(snd.lo, Math.min(snd.hi, row.pitch)), out: !!row.out };
@@ -341,7 +399,7 @@
       const i = list.findIndex((r) => r.pitch === n.pitch);
       if (i < 0) continue;
       const nx1 = colX(n.step + (snd.pads ? 1 : n.len));
-      if (colX(n.step) <= x1 && nx1 >= x0 && i * rh <= y1 && (i + 1) * rh >= y0) {
+      if (colX(n.step) <= x1 && nx1 >= x0 && rowTop[i] <= y1 && rowTop[i] + rowH[i] >= y0) {
         const k = noteKey(n);
         if (add && x0 === x1 && picked.has(k)) picked.delete(k); else picked.add(k);
       }
@@ -477,8 +535,12 @@
     keys[e.key]();
   });
   $("labels").addEventListener("pointerdown", (e) => {
-    const b = e.target.closest(".label");
-    if (b) E.preview(currentTrack(), Number(b.dataset.pitch), currentTrack().volume);
+    const b = e.target.closest("[data-pitch]");
+    if (!b) return;
+    E.preview(currentTrack(), Number(b.dataset.pitch), currentTrack().volume);
+    // 누른 건반이 잠깐 눌린 빛깔로.
+    b.classList.add("down");
+    setTimeout(() => b.classList.remove("down"), 180);
   });
   for (const [id, d] of [["octave-up", 12], ["octave-down", -12]])
     U.bind(id, "click", () => {

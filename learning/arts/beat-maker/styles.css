@@ -145,6 +145,16 @@ button.small.wide { width: 44px; }
 .label.key:active:not(:disabled) { background: #cfe9de; }
 .label.key.out { background: #05070a; color: transparent; }
 .label.key.out::before { display: none; }
+/* 세로 피아노 건반 */
+.labels .keyboard { display: block; background: #05070a; touch-action: none; }
+.keyboard .wk { fill: #f7f8fa; stroke: #9aa3b0; stroke-width: 1; cursor: pointer; }
+.keyboard .bk { fill: #161a21; stroke: #05070a; stroke-width: 1; cursor: pointer; }
+.keyboard .wk.out, .keyboard .bk.out { fill: #1a1f27; cursor: default; }
+.keyboard .wk.down { fill: #cfe9de; }
+.keyboard .bk.down { fill: #3a4a44; }
+.keyboard .sol { fill: #fff; font-size: 10px; font-weight: 700; }
+.keyboard .sol.dark { fill: #263040; }
+.keyboard .cname { fill: #8a93a1; font-size: 9px; }
 .label.pad { display: flex; align-items: center; gap: 6px; background: var(--panel-2); color: var(--text); text-align: left; font-size: 12px; white-space: nowrap; }
 .label.pad span { overflow: hidden; text-overflow: ellipsis; }
 .label.pad svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
