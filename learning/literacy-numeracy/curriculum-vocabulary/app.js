@@ -36,11 +36,18 @@
   // 「3분의 2」처럼 글자로 쓴 분수를 위아래로 쌓은 분수로 보여 준다.
   window.FractionText?.watch(lesson);
   // 다른 학습 앱과 같은 오른쪽 아래 줄: 「🏁 순위전」과 「내 기록」(푼 기록은 LearningActivity 가 서버에 남긴다).
+  let practiceDock = null, dockUnit = null;
   if (window.LearningRecords) {
     const raceLink = element('a', '🏁 순위전', 'race-link');
     raceLink.href = '../korean-race/?set=textbook';
     document.body.append(raceLink); // create() 가 이 단추를 기록 줄로 옮긴다
-    window.LearningRecords.create('curriculum-vocabulary', { label: '교과서 단어' });
+    const records = window.LearningRecords.create('curriculum-vocabulary', { label: '교과서 단어' });
+    // 연습 단추는 하나만, 순위전 왼쪽에 둔다. 낱말을 볼 때만 보이고, 연습 중에는 낱말 단추로 돌아간다.
+    practiceDock = records.addAction('연습', () => { if (!dockUnit) return; mode = 'practice'; showLesson(dockUnit, true); });
+    practiceDock.className = 'practice-dock';
+    practiceDock.style.cssText = 'background:#22594f;border:1px solid #22594f;color:#fff;font-weight:900';
+    practiceDock.hidden = true;
+    practiceDock.parentNode.prepend(practiceDock);
   }
   const query = new URLSearchParams(location.search);
   // 학기 열쇠: 초등 1-1 ~ 6-2, 중학교는 7-1(중 1학년 1학기) ~ 9-2.
@@ -322,26 +329,22 @@
     const paging = element('nav', '', 'paging');
     paging.setAttribute('aria-label', '다른 낱말');
     if (index > 0) paging.append(button('← ' + unit.words[index - 1].w, () => select(index - 1)));
-    paging.append(index < unit.words.length - 1
-      ? button(unit.words[index + 1].w + ' →', () => select(index + 1), 'next-word')
-      : button('연습하기', () => { mode = 'practice'; showLesson(unit, true); }, 'start'));
+    if (index < unit.words.length - 1) paging.append(button(unit.words[index + 1].w + ' →', () => select(index + 1), 'next-word'));
     page.append(paging);
     return page;
   }
 
-  // 낱말 단추 줄 하나만 둔다. 맨 끝 단추가 연습이다. 연습 중에 낱말을 누르면 그 낱말로 돌아간다.
+  // 낱말 단추 줄 하나만 둔다. 연습 단추는 오른쪽 아래 기록 줄에 있다. 연습 중에 낱말을 누르면 그 낱말로 돌아간다.
   function chipsOf(unit, current, onWord) {
     const chips = element('nav', '', 'chips');
     chips.setAttribute('aria-label', '낱말과 연습');
     const controls = unit.words.map((word, i) => button(word.w, () => onWord(i)));
-    const practice = button('연습', () => { mode = 'practice'; showLesson(unit, true); }, 'practice-chip');
     controls.forEach((control, i) => control.setAttribute('aria-pressed', String(i === current)));
-    practice.setAttribute('aria-pressed', String(mode === 'practice'));
     // 순위전 단추는 공용 학습 기록 줄(오른쪽 아래 「🏁 순위전 · 내 기록」)에 있다. 누르면 지금 단원이 범위로 넘어간다.
     const code = { 국어: 'kor', 수학: 'math', 사회: 'soc', 과학: 'sci', 역사: 'his' }[subject];
     window.currentRaceRange = () => `${term}.${code}.${unit.id}`;
-    chips.append(...controls, practice);
-    return { chips, controls, practice };
+    chips.append(...controls);
+    return { chips, controls };
   }
 
   function wordsViewOf(unit, start = 0) {
@@ -674,6 +677,8 @@
   function showLesson(unit, focus, start = 0) {
     stopScene();
     leavePractice = null;
+    dockUnit = unit;
+    if (practiceDock) practiceDock.hidden = !unit || mode === 'practice';
     lesson.setAttribute('aria-label', unit?.title || '학습 내용');
     if (!unit) {
       lesson.replaceChildren(element('p', '이 학기의 교과서 단어는 준비 중입니다.', 'empty'));

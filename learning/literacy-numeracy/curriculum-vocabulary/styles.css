@@ -123,11 +123,9 @@ button[aria-pressed="true"] { background: var(--green); color: white; border-col
 .explain summary { cursor: pointer; color: var(--green); font-weight: 800; min-height: 40px; display: flex; align-items: center; }
 .explain p { margin: 6px 0; line-height: 1.85; font-family: var(--class-exam-font, inherit); word-break: keep-all; }
 .paging { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); }
-.paging > :only-child { margin-left: auto; }
+.paging > .next-word:only-child { margin-left: auto; }
 .next-word { margin-left: auto; font-weight: 800; }
 
-.chips .practice-chip { margin-left: auto; background: var(--green); border-color: var(--green); color: white; font-weight: 800; padding-inline: 18px; }
-.chips .practice-chip[aria-pressed="true"] { background: #173f38; }
 .units h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 .meanings { margin: 4px 0 0; padding: 0; list-style: none; counter-reset: sense; display: grid; gap: 10px; }
