@@ -266,6 +266,18 @@ const server = http.createServer((req, res) => {
         assert.deepEqual(mainRiff.slice(-2).map(hit => hit.midi), [40,47]);
         assert.ok(Math.abs(mainRiff.at(-1).time - mainRiff[0].time - 15.5 * 60000 / 123) < 250);
       }
+      await page.evaluate(() => window.playbackTest.selectModel('hollow-jazz'));
+      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Breezin’');
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await press('#guitarDemoButton');
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="69"].demo-hit'));
+      assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-hollow');
+      if (!touch) {
+        await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
+        const theme = await page.evaluate(() => window.bassDemoHits);
+        assert.deepEqual(theme.map(hit => hit.midi), [69,71,69,69,71,69,64,66,62,59,57]);
+        assert.ok(Math.abs(theme.at(-1).time - theme[0].time - 8 * 60000 / 84) < 250);
+      }
       await page.evaluate(() => window.playbackTest.selectModel('dreadnought'));
       assert.equal(await page.$eval('#guitarDemoControls', controls => controls.classList.contains('hidden')), true);
       assert.equal(await page.$$('#chordPads button').then(pads => pads.length), 7);

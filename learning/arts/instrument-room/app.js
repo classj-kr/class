@@ -291,9 +291,18 @@
         [15, [42, 49], .88, .22, false, "palm-mute"],
         [15.5, [40, 47], .99, 1.4]
     ];
+    // First statement of the guitar theme, with short upper-note trills
+    // and the grace note before F sharp.
+    const BREEZIN = [
+        [0, 69, .78, .1], [.11, 71, .66, .11], [.25, 69, .8, 1.7],
+        [5, 69, .75, .1], [5.11, 71, .64, .11], [5.25, 69, .79, 1.4],
+        [6.68, 64, .58, .06], [6.75, 66, .8, .29],
+        [7.25, 62, .73, .28], [7.75, 59, .67, .22], [8, 57, .77, 1.65]
+    ].map(function ([beat, midi, velocity, duration]) { return [beat, [midi], velocity, duration]; });
     const GUITAR_DEMOS = {
         "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16, preset: "rock" },
-        "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 }
+        "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
+        "hollow-jazz": { title: "Breezin’", bpm: 84, notes: BREEZIN, endBeat: 10 }
     };
 
     // The official XLN Audio AD2 keymap assigns note 49 to HiHat Closed 1 Tip.
