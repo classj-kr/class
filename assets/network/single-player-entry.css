@@ -20,8 +20,8 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 /* 간판(시작 카드): 화면 센터에 단독 배치되며, 완료자 패널에 맞춰 높이를 늘리지 않고 본래의 콤팩트한 높이를 유지한다. */
 :is(#start-screen,#startScreen) {
   box-sizing: border-box;
-  width: min(var(--solo-entry-width, 480px), 100%);
-  max-width: 100%;
+  width: min(var(--solo-entry-width, 460px), 92vw) !important;
+  max-width: 480px !important;
   min-height: 0 !important;
   height: auto !important;
   margin: auto !important;
@@ -50,11 +50,11 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 }
 
 /* Each solo game keeps the space needed by its own setup controls. */
-body[data-entry-game="hanoitower"] { --solo-entry-width: 480px; }
-body[data-entry-game="coinweighing"] { --solo-entry-width: 520px; }
+body[data-entry-game="hanoitower"] { --solo-entry-width: 450px; }
+body[data-entry-game="coinweighing"] { --solo-entry-width: 500px; }
 body[data-entry-game="nonogram"] { --solo-entry-width: 440px; }
-body[data-entry-game="minesweeper"] { --solo-entry-width: 480px; }
-body[data-entry-game="sachunseong"] { --solo-entry-width: 480px; }
+body[data-entry-game="minesweeper"] { --solo-entry-width: 460px; }
+body[data-entry-game="sachunseong"] { --solo-entry-width: 460px; }
 body[data-entry-game="sliding-puzzle"] { --solo-entry-width: 420px; }
 body[data-entry-game="sphinx"] { --solo-entry-width: 520px; }
 
@@ -69,7 +69,7 @@ body[data-entry-game]:has(.game-frame [data-difficulty-button]) {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 body[data-entry-game] [data-game-entry] {
-  width: min(var(--solo-entry-width, 480px), 100%) !important;
+  width: min(var(--solo-entry-width, 460px), 100%) !important;
   max-width: calc(100vw - 32px) !important;
   margin: auto !important;
   flex: 0 0 auto;
@@ -81,15 +81,21 @@ body[data-entry-game] .game-frame:has([data-difficulty-button]) {
   flex: 0 0 auto;
 }
 
-/* 완주자(FINISHERS) 사이드 패널: 간판과 완전히 따로 분리되어, 데스크톱에서는 센터 간판의 오른쪽에 독립 배치 */
+/* 완주자(FINISHERS) 사이드 패널: 간판과 완전히 따로 분리되어, 독자적인 높이를 가지고 데스크톱에서는 센터 간판의 오른쪽에 독립 배치 */
+.finishers-side-panel {
+  box-sizing: border-box;
+}
+
 @media (min-width: 960px) {
   .finishers-side-panel {
     position: fixed !important;
-    left: calc(50% + (var(--solo-entry-width, 480px) / 2) + 20px) !important;
+    right: max(20px, calc(50% - 590px)) !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    width: min(390px, calc(50vw - (var(--solo-entry-width, 480px) / 2) - 30px)) !important;
-    max-height: min(480px, calc(100dvh - 60px)) !important;
+    width: 380px !important;
+    max-width: calc(50vw - (var(--solo-entry-width, 460px) / 2) - 24px) !important;
+    min-height: 320px !important;
+    max-height: min(500px, calc(100dvh - 60px)) !important;
     margin: 0 !important;
     z-index: 10 !important;
     display: flex !important;
@@ -98,7 +104,7 @@ body[data-entry-game] .game-frame:has([data-difficulty-button]) {
   }
   .finishers-side-panel .finishers-list {
     flex: 1 1 auto;
-    max-height: 400px;
+    max-height: 420px;
   }
 }
 
@@ -106,7 +112,8 @@ body[data-entry-game] .game-frame:has([data-difficulty-button]) {
   .finishers-side-panel {
     position: static !important;
     transform: none !important;
-    width: min(var(--solo-entry-width, 480px), 100%) !important;
+    width: min(var(--solo-entry-width, 460px), 92vw) !important;
+    min-height: 240px !important;
     margin: 20px auto 40px !important;
     box-sizing: border-box !important;
   }

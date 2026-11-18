@@ -36,11 +36,32 @@
         return record.time || "--";
     }
 
+    function deduplicateRecords(records) {
+        if (!Array.isArray(records)) return [];
+        const bestByStudent = new Map();
+        for (const record of records) {
+            const key = playerLabel(record).trim();
+            const existing = bestByStudent.get(key);
+            const rank = Number(record.rank) || 0;
+            if (!existing || rank > (Number(existing.rank) || 0)) {
+                bestByStudent.set(key, record);
+            }
+        }
+        return Array.from(bestByStudent.values()).sort((a, b) => {
+            const ga = Number(a.grade) || 99, gb = Number(b.grade) || 99;
+            if (ga !== gb) return ga - gb;
+            const ca = Number(a.classNumber) || 99, cb = Number(b.classNumber) || 99;
+            if (ca !== cb) return ca - cb;
+            return String(a.name || "").localeCompare(String(b.name || ""), "ko");
+        });
+    }
+
     function recordsHtml(records) {
-        if (!Array.isArray(records) || records.length === 0) {
+        const unique = deduplicateRecords(records);
+        if (unique.length === 0) {
             return '<div class="finisher-empty">아직 완주 기록이 없습니다.</div>';
         }
-        return records.map(record => `
+        return unique.map(record => `
             <div class="finisher-row">
                 <span class="finisher-date finisher-time">${escapeHtml(formatRecordDate(record))}</span>
                 <span class="finisher-name">${escapeHtml(playerLabel(record))}</span>
