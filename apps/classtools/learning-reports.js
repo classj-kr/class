@@ -185,6 +185,9 @@
       if (!work[phase]) continue;
       const grid = node('div', null, 'handwriting-grid');
       body.append(node('h3', label, 'handwriting-heading'), grid);
+      // 한글은 줄 공책(글자가 줄의 45%)에 쓰므로 칸 가운데를 기준으로 키워 그린다. 같은 글은 한 배율이라 글자 크기 차이는 남는다.
+      const reach = Math.max(1, ...work[phase].flat().flatMap(({ points }) => points.map(([x, y]) => Math.max(Math.abs(x - 50), Math.abs(y - 50)))));
+      const zoom = Math.min(1.6, Math.max(1, 46 / reach));
       work[phase].forEach((strokes, index) => {
         const cell = node('div', null, 'handwriting-cell');
         const canvas = node('canvas');
@@ -192,7 +195,9 @@
         canvas.setAttribute('role', 'img');
         canvas.setAttribute('aria-label', `${letters[index] || index + 1} ${strokes.length ? '쓴 글씨' : '빈 칸'}`);
         const pen = canvas.getContext('2d');
-        pen.scale(2, 2);
+        pen.translate(100, 100);
+        pen.scale(2 * zoom, 2 * zoom);
+        pen.translate(-50, -50);
         pen.strokeStyle = pen.fillStyle = '#233c34';
         pen.lineCap = pen.lineJoin = 'round';
         for (const { points, width } of strokes) {

@@ -38,6 +38,20 @@
       b = sample(actual);
     return a.reduce((sum, p, i) => sum + distance(p, b[i]), 0) / a.length;
   }
+  // 획 위 점을 고르게 뽑아 중심과 퍼진 정도(제곱평균 반지름)를 잰다.
+  function spread(paths) {
+    const points = paths.flatMap((p) => sample(p, 24));
+    if (!points.length) return null;
+    const c = [0, 1].map((k) => points.reduce((n, p) => n + p[k], 0) / points.length);
+    return { c, r: Math.max(0.5, Math.sqrt(points.reduce((n, p) => n + distance(p, c) ** 2, 0) / points.length)) };
+  }
+  function align(expected, written) {
+    const t = spread(expected),
+      a = spread(written);
+    if (!t || !a) return written;
+    const k = Math.min(2, Math.max(0.5, t.r / a.r));
+    return written.map((p) => p.map(([x, y]) => [(x - a.c[0]) * k + t.c[0], (y - a.c[1]) * k + t.c[1]]));
+  }
   function judge(char, strokes) {
     const expected = model(char);
     if (!expected)
@@ -49,7 +63,10 @@
         expected: 0,
         actual: strokes?.length || 0,
       };
-    const actual = Array.isArray(strokes) ? strokes.map((s) => s.points || s) : [];
+    const written = Array.isArray(strokes) ? strokes.map((s) => s.points || s) : [];
+    // 획순(순서·방향·길이)은 쓴 글자를 본보기 자리·크기에 맞춰 놓고 본다. 자리와 크기는 모양 점수의 '자리'가 따로 본다.
+    // 맞추지 않으면 글자가 작은 줄 공책에서 조금만 비켜 써도 획순이 틀렸다고 나온다.
+    const actual = align(expected, written);
     let correct = 0;
     expected.forEach((s, i) => {
       const p = actual[i];
@@ -72,7 +89,7 @@
       )
         correct++;
     });
-    const { shape, form, place } = Reference.measure(char, actual);
+    const { shape, form, place } = Reference.measure(char, written);
     const order = actual.length === expected.length && correct === expected.length;
     // 글자 점수: 모양 점수에 획(순서·방향·개수) 점수를 곱한다. 획 하나 틀렸다고 0점이 되지는 않는다.
     // 맞은 획 비율로 40~100%, 획을 더 그었으면 그만큼 더 깎는다.
@@ -89,9 +106,10 @@
       actual: actual.length,
     };
   }
-  // 본보기 글꼴의 획 굵기(약 5.9)에 맞춘 세 단계. 예전 값(1·1.5·2.2)은 같은 단계로 옮긴다.
-  // 글씨체별 가늘게·보통·굵게(경필체 2.9·3.9·5.2, 받아쓰기체 2.4·3.3·4.4)와 예전 값 3.5·5.5·7.5.
-  const PEN_WIDTHS = [2.4, 3.3, 4.4, 2.9, 3.9, 5.2, 3.5, 5.5, 7.5],
+  // 화면에 보이는 본보기 획 굵기에 맞춘 세 단계. 예전 값(1·1.5·2.2)은 같은 단계로 옮긴다.
+  // 줄 공책 한글(경필체 1.9·2.5·3.3, 받아쓰기체 1.5·2.1·2.8), 알파벳 2.4·3.3·4.4,
+  // 네모 칸 시절 경필체 2.9·3.9·5.2와 예전 값 3.5·5.5·7.5.
+  const PEN_WIDTHS = [1.9, 2.5, 3.3, 1.5, 2.1, 2.8, 2.4, 4.4, 2.9, 3.9, 5.2, 3.5, 5.5, 7.5],
     OLD_PEN_WIDTHS = { 1: 3.5, 1.5: 5.5, 2.2: 7.5 };
   function penWidth(w) {
     return PEN_WIDTHS.includes(w) ? w : OLD_PEN_WIDTHS[w] || 5.5;

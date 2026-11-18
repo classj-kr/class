@@ -35,8 +35,10 @@
     const r = Math.sqrt(points.reduce((n, p) => n + (p[0] - c[0]) ** 2 + (p[1] - c[1]) ** 2, 0) / points.length);
     return { c, r: Math.max(r, 0.5) };
   }
-  const SHIFT_FREE = 8, // 칸(100) 안에서 이만큼 비켜 써도 감점 없음
-    SHIFT_ZERO = 20, // 그 뒤로 이만큼 더 비키면 자리 점수 0
+  // 비켜 써도 감점 없는 거리와, 그 뒤로 자리 점수가 0이 되기까지 더 비킬 거리(모형 단위).
+  // 알파벳 네 줄 칸은 글자가 칸의 70%라 8·20. 한글 줄 공책은 글자가 줄의 45%라 모형 단위가 화면에서 작아서
+  // 16·28로 둔다 — 15 mm 줄에서 1.2 mm까지 그대로, 3.3 mm 비키면 0점(네모 칸 시절 0.9 mm·3.2 mm와 비슷하다).
+  const shiftLimits = () => (Font.style() === 'alphabet' ? [8, 20] : [16, 28]),
     SCALE_FREE = Math.log(1.3), // 30% 크거나 작게 써도 감점 없음
     SCALE_ZERO = Math.log(2);
   // 모양 점수(0~100): 글자를 본보기 크기·자리에 맞춰 놓고 획이 얼마나 겹치는지(모양),
@@ -64,8 +66,9 @@
     const form = precision * 0.5 + coverage * 0.5;
     const shift = Math.hypot(a.c[0] - t.c[0], a.c[1] - t.c[1]);
     const sizeOff = Math.abs(Math.log(a.r / t.r));
+    const [shiftFree, shiftZero] = shiftLimits();
     const place = Math.max(0, Math.min(1,
-      1 - Math.max(0, shift - SHIFT_FREE) / SHIFT_ZERO - Math.max(0, sizeOff - SCALE_FREE) / (SCALE_ZERO - SCALE_FREE)));
+      1 - Math.max(0, shift - shiftFree) / shiftZero - Math.max(0, sizeOff - SCALE_FREE) / (SCALE_ZERO - SCALE_FREE)));
     return { shape: Math.round(100 * form * place), form: Math.round(100 * form), place: Math.round(100 * place) };
   }
   const shape = (char, strokes) => measure(char, strokes).shape;

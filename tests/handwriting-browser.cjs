@@ -23,6 +23,9 @@ async function pointer(target, kind, points, { type = 'pen', id = 1, width = 1, 
   await target.evaluate(
     (el, { kind, points, type, id, width, cancel }) => {
       const r = el.getBoundingClientRect();
+      // 글자 캔버스의 좌표는 캔버스 높이에 맞춘 가운데 정사각형이다(줄 공책 캔버스는 높이의 두 배 너비). 입력 확인 칸만 전체.
+      const square = el.classList.contains('write-cell'),
+        at = (p) => (square ? [r.x + r.width / 2 + ((p[0] - 50) / 100) * r.height, r.y + (p[1] / 100) * r.height] : [r.x + (p[0] / 100) * r.width, r.y + (p[1] / 100) * r.height]);
       const emit = (event, p, buttons) =>
         el.dispatchEvent(
           new PointerEvent(event, {
@@ -35,8 +38,8 @@ async function pointer(target, kind, points, { type = 'pen', id = 1, width = 1, 
             buttons,
             width,
             height: width,
-            clientX: r.x + (p[0] / 100) * r.width,
-            clientY: r.y + (p[1] / 100) * r.height,
+            clientX: at(p)[0],
+            clientY: at(p)[1],
           }),
         );
       if (kind === 'stroke') {
@@ -49,7 +52,8 @@ async function pointer(target, kind, points, { type = 'pen', id = 1, width = 1, 
   );
 }
 async function drawLetter(p, char) {
-  for (const s of C.model(char)) await pointer(p.locator('#writingCanvas'), 'stroke', C.sample(s, 35));
+  for (const s of await p.evaluate((c) => HandwritingApp.shownModel(c), char))
+    await pointer(p.locator('#writingCanvas'), 'stroke', C.sample(s, 35));
 }
 const count = () =>
   page.evaluate(
@@ -99,6 +103,8 @@ test.before(async () => {
         '/api/room-entry',
         createRoomEntry({ roomCodes: codes, handwritingExists: (c) => feature.hasRoomCode(c) }),
       );
+      // 학습 기록 띠(learning-records.js)는 이 시험의 대상이 아니다. 응답이 없으면 저장 경고 창이 화면을 덮는다.
+      app.use('/api/learning-records', (_, res) => res.json({}));
       app.get('/api/site/access', (_, res) => res.json({ mode: 'open' }));
       app.get('/api/teacher/profile', (_, res) => res.json({ profiles: [] }));
       app.get('/api/home-content-access', (_, res) =>
@@ -111,7 +117,8 @@ test.before(async () => {
         }),
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
-      for (const f of ['styles.css', 'font-source.js', 'font-engine.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'app.js', 'race.js'])
+      // 서버(server.js)가 순위전 주소 밑으로 내보내는 파일과 같게 둔다.
+      for (const f of ['styles.css', 'font-source.js', 'alphabet-source.js', 'font-engine.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'writing-texts.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });
@@ -142,26 +149,23 @@ test.after(async () => {
 test('menu placement, independent phases, input priority, cancellation, undo and account restore', async () => {
   await context.addCookies([{ name: 'test_user', value: '2', url: h.base }]);
   await page.goto(h.base + '/');
-  await page.locator('#category-literacy-toggle').click();
-  const names = await page
-    .locator('#category-literacy-panel > a, #category-literacy-panel > details > summary')
-    .allTextContents();
-  assert.match(names[0], /읽기·쓰기/);
-  assert.match(names[2], /수리·과학/);
-  assert.equal(await page.locator('#category-literacy-panel a[href*=metacognition]').count(), 1);
-  assert.equal(await page.locator('#category-literacy-toggle .category-label').textContent(), '문해·수리·교과');
-  assert.equal(await page.locator('#category-exploration-toggle').count(), 0, '문해·수리와 교과는 하나로 합쳤다');
-  assert.equal(await page.locator('#category-boardgame-toggle .category-label').textContent(), '게임');
-  await page.locator('[data-access-group="reading-writing"] > summary').click();
+  // 메인 메뉴는 한 단계다: 묶음 이름은 상자 윗선에 얹고, 과목 드롭다운만 접었다 편다.
+  assert.equal(await page.locator('#worksheet-title').textContent(), '문해·수리·교과');
+  assert.equal(await page.locator('#boardgame-title').textContent(), '게임');
+  assert.equal(await page.locator('.category-toggle').count(), 0);
+  assert.match(await page.locator('[data-access-group="writing"] > summary').textContent(), /쓰기/);
+  await page.locator('[data-access-group="writing"] > summary').click();
   await page.locator('a[href="learning/literacy-numeracy/handwriting/"]').click();
   await page.waitForURL('**/handwriting/');
   await ready();
-  const race = page.locator('a.race-link');
+  // 순위전 단추는 학습 기록 띠(learning-records) 안으로 옮겨 간다.
+  const race = page.locator('learning-records a.race');
   assert.equal(await race.textContent(), '🏁 순위전');
   assert.equal(await page.locator('.topbar a[href="race/"]').count(), 0, 'no race link in the top row');
   const raceBox = await race.boundingBox(),
     view = page.viewportSize();
-  assert.ok(view.width - (raceBox.x + raceBox.width) < 30 && view.height - (raceBox.y + raceBox.height) < 30, 'race entry sits in the bottom-right corner');
+  // 오른쪽 아래 띠에서 「내 기록」 바로 왼쪽에 선다.
+  assert.ok(view.width - (raceBox.x + raceBox.width) < 220 && raceBox.x > view.width / 2 && view.height - (raceBox.y + raceBox.height) < 30, 'race entry sits in the bottom-right corner');
   const canvas = page.locator('#writingCanvas');
   assert.equal(await canvas.evaluate((el) => getComputedStyle(el).touchAction), 'none');
   await pointer(
@@ -224,7 +228,7 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   assert.equal(await page.locator('#saveFile, #openFile, #importFile').count(), 0);
   assert.ok((await page.locator('#modelCanvas').boundingBox()).y < 140, 'the sheet starts near the top on a phone');
   await page.evaluate(() => dispatchEvent(new Event('beforeprint')));
-  assert.equal(await page.locator('#printSheet canvas').count(), 28);
+  assert.equal(await page.locator('#printSheet .print-lines canvas').count(), 56, 'two lined blocks: model and writing line for each letter');
   await page.emulateMedia({ media: 'print' });
   assert.equal(await page.locator('#printSheet').isVisible(), true);
   await page.emulateMedia({ media: 'screen' });
@@ -397,11 +401,38 @@ test('older font drafts are preserved before opening a new handwriting sheet', a
     current: HandwritingApp.snapshot(),
     older: HandwritingApp.store.get('legacy-draft-v7'),
   }));
-  assert.equal(state.current.version, 8);
+  assert.equal(state.current.version, 9);
   assert.equal(state.current.cells.trace[0].length, 0);
   assert.equal(state.older.cells.trace[0].length, 3);
 });
-test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, align with the model above, and preserve ink', async () => {
+test('square-cell (version 8) drafts move onto the lined notebook at the new letter size', async () => {
+  await page.goto(h.base + route);
+  await ready();
+  await drawLetter(page, '가');
+  const lined = await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0]);
+  await page.evaluate(async () => {
+    // 8판: 글자가 칸의 70%였고 펜 굵기는 경필체 3.9
+    const older = HandwritingApp.snapshot(),
+      grow = (v) => 50 + ((v - 50) * 70) / 45;
+    older.version = 8;
+    older.width = 3.9;
+    older.cells.trace[0] = older.cells.trace[0].map((s) => ({ points: s.points.map(([x, y]) => [grow(x), grow(y)]), width: 3.9 }));
+    HandwritingApp.store.set('draft', older);
+    await HandwritingApp.store.flush();
+  });
+  await page.reload();
+  await ready();
+  const state = await page.evaluate(() => HandwritingApp.snapshot());
+  assert.equal(state.version, 9);
+  assert.equal(state.width, 2.5);
+  const moved = state.cells.trace[0];
+  assert.equal(moved.length, 3);
+  for (const [i, s] of moved.entries()) {
+    assert.equal(s.width, 2.5);
+    s.points.forEach((p, j) => assert.ok(Math.hypot(p[0] - lined[i].points[j][0], p[1] - lined[i].points[j][1]) < 0.2));
+  }
+});
+test('the lined notebook stays bounded across phone, tablet, Chromebook and desktop, keeps the model line above, and preserves ink', async () => {
   await page.goto(h.base + route);
   await ready();
   await drawLetter(page, '가');
@@ -417,12 +448,15 @@ test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, 
   for (const [name, width, height] of views) {
     await page.setViewportSize({ width, height });
     const cell = await page.locator('#writingCanvas').boundingBox(),
-      model = await page.locator('#modelCanvas').boundingBox();
-    // 칸은 64~104px(테두리 1px씩 제외). 본보기 칸은 같은 크기로 바로 위에 붙는다.
-    assert.ok(cell.width >= 61 && cell.width <= 103, name + ': bounded writing cell ' + cell.width);
-    assert.ok(Math.abs(cell.width - model.width) < 1, name + ': model and writing use the same size');
-    assert.ok(Math.abs(cell.x - model.x) < 1 && model.y < cell.y && cell.y - model.y < cell.height + 3, name + ': model sits right above the writing cell');
-    assert.ok(Math.abs(cell.height - cell.width) < 1, name + ': square writing cell');
+      model = await page.locator('#modelCanvas').boundingBox(),
+      pair = await page.locator('.cell-pair.active').boundingBox();
+    // 줄 높이(캔버스 높이)는 64~104px. 본보기 줄이 바로 위에 붙고, 글자 간격은 줄 높이의 0.52배다.
+    // 글자 캔버스는 줄 높이의 두 배 너비로 옆 자리까지 덮는다(획이 잘리지 않게).
+    assert.ok(cell.height >= 63.5 && cell.height <= 104.5, name + ': bounded line height ' + cell.height);
+    assert.ok(Math.abs(cell.height - model.height) < 1 && Math.abs(cell.x - model.x) < 1, name + ': model and writing use the same size');
+    assert.ok(Math.abs(model.y + model.height - cell.y) < 1, name + ': model line sits right above the writing line');
+    assert.ok(Math.abs(cell.width - cell.height * 2) < 1, name + ': canvas spans two line heights');
+    assert.ok(Math.abs(pair.width - cell.height * 0.52) < 1, name + ': letter pitch is 0.52 line');
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
       true,
@@ -437,7 +471,7 @@ test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, 
   }
   await page.locator('#settingsMenu summary').click();
   await page.selectOption('#cellSize', 'small');
-  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).width - 62) < 1);
+  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).height - 64) < 1);
   await page.evaluate(() => HandwritingApp.store.flush());
   await page.reload();
   await ready();
@@ -445,9 +479,9 @@ test('notebook cells stay bounded across phone, tablet, Chromebook and desktop, 
   assert.deepEqual(await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0]), before);
   await page.locator('#settingsMenu summary').click();
   await page.selectOption('#cellSize', 'large');
-  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).width - 118) < 1);
+  assert.ok(Math.abs((await page.locator('#writingCanvas').boundingBox()).height - 120) < 1);
   await page.selectOption('#cellSize', 'auto');
-  assert.ok((await page.locator('#writingCanvas').boundingBox()).width <= 103);
+  assert.ok((await page.locator('#writingCanvas').boundingBox()).height <= 104.5);
 });
 test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);

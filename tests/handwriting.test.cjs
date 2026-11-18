@@ -244,7 +244,8 @@ test('a manually traced font sample passes without following generated guide art
   const result = C.judge('가', strokes);
   assert.equal(result.order, true);
   assert.ok(result.shape >= 90);
-  const shifted = strokes.map((s) => s.map(([x, y]) => [x + 23, y]));
+  // 한글 줄 공책은 글자가 줄의 45%라 모형 단위가 화면에서 작다. 36은 15 mm 줄에서 약 2.7 mm(네모 칸 시절 23과 같은 거리).
+  const shifted = strokes.map((s) => s.map(([x, y]) => [x + 36, y]));
   assert.ok(C.judge('가', shifted).shape < 60);
   assert.equal(C.judge('가', [strokes[0], strokes[1], [...strokes[2]].reverse()]).order, false);
 });

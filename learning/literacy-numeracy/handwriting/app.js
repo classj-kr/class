@@ -59,15 +59,17 @@
   // 본보기와 획순·채점은 font-engine.js가 선택한 같은 글씨 모형을 쓴다.
   const STYLE_FONTS = { gyeongpil: 'PracticeReference', badasseugi: 'PracticeReferenceBadasseugi' },
     STYLE_WEIGHTS = { gyeongpil: 500, badasseugi: 400 },
-    // 화면에 보이는 본보기 획 굵기(글꼴 획 굵기 × 칸 맞춤 비율)가 '보통'이다.
-    STYLE_PEN = { gyeongpil: [2.9, 3.9, 5.2], badasseugi: [2.4, 3.3, 4.4], alphabet: [2.4, 3.3, 4.4] },
+    // 화면에 보이는 본보기 획 굵기(글꼴 획 굵기 × 글자 맞춤 비율)가 '보통'이다.
+    STYLE_PEN = { gyeongpil: [1.9, 2.5, 3.3], badasseugi: [1.5, 2.1, 2.8], alphabet: [2.4, 3.3, 4.4] },
     STYLES = ['gyeongpil', 'badasseugi', 'alphabet'],
-    OLD_PEN = [3.5, 5.5, 7.5];
+    OLD_PEN = [3.5, 5.5, 7.5],
+    // 한글을 네모 칸(글자 70%)에 쓰던 때(2026-11-18까지)의 굵기 → 줄 공책 굵기
+    CELL_PEN = { 2.9: 1.9, 3.9: 2.5, 5.2: 3.3, 2.4: 1.5, 3.3: 2.1, 4.4: 2.8, 3.5: 1.9, 5.5: 2.5, 7.5: 3.3 };
   let roomStyle = null;
   // 펜 굵기는 단계(가늘게·보통·굵게)를 지키고 값은 지금 글씨체에 맞춘다.
   function syncPen() {
     const list = STYLE_PEN[Font.style()] || STYLE_PEN.gyeongpil,
-      level = [...Object.values(STYLE_PEN), OLD_PEN].map((l) => l.indexOf(doc.width)).find((i) => i >= 0);
+      level = [...Object.values(STYLE_PEN), OLD_PEN, [2.9, 3.9, 5.2]].map((l) => l.indexOf(doc.width)).find((i) => i >= 0);
     doc.width = list[level ?? 1];
     [...$('penWidth').options].forEach((o, i) => (o.value = String(list[i])));
   }
@@ -95,20 +97,26 @@
       return freshDefault();
     }
   }
-  // 교과서 칸 공책처럼 글자 높이가 칸의 70%쯤 되고 칸 한가운데 오게 한다. 글꼴마다 글자의 평균 잉크 상자
-  // (모형 단위: 높이 h, 가운데 cx·cy)를 재 둔 값이다. 쓴 획은 채점 전에 본보기 좌표로 되돌린다.
+  // 한글은 국어 교과서 쓰기 쪽처럼 줄 공책에 쓴다: 줄 높이(100, 기기에서 15 mm) 안에 글자 높이가 45%쯤(약 7 mm)이고
+  // 줄 한가운데 온다(교과서 사진을 재면 47%). 알파벳은 영어 공책 네 줄 칸에 칸의 70%로 쓴다.
+  // 글꼴마다 글자의 평균 잉크 상자(모형 단위: 높이 h, 가운데 cx·cy)를 재 둔 값이다. 쓴 획은 채점 전에 본보기 좌표로 되돌린다.
   const STYLE_FIT = {
       gyeongpil: { h: 90.9, cx: 44.9, cy: 48.7 },
       badasseugi: { h: 85.8, cx: 42, cy: 50 },
       alphabet: { h: 70, cx: 50, cy: 50 }, // 알파벳 모형은 칸 좌표 그대로
     },
-    GLYPH_HEIGHT = 70;
+    GLYPH_HEIGHT = { gyeongpil: 45, badasseugi: 45, alphabet: 70 },
+    CELL_GLYPH = 70; // 네모 칸 시절 한글 글자 높이(옛 연습장 획을 옮길 때와 결과 카드 확대에 쓴다)
+  const glyphHeight = () => GLYPH_HEIGHT[Font.style()] || 45;
+  const lined = () => !alphabetStyle();
   const fit = () => {
     const f = STYLE_FIT[Font.style()] || STYLE_FIT.gyeongpil;
-    return { s: GLYPH_HEIGHT / f.h, cx: f.cx, cy: f.cy };
+    return { s: glyphHeight() / f.h, cx: f.cx, cy: f.cy };
   };
+  // 서버는 모형 좌표 -30~130만 받는다. 줄 공책에서는 줄 끝에 쓴 점이 그 밖으로 나갈 수 있어 가장자리로 붙인다.
+  const unitClamp = (v) => Math.round(Math.max(-30, Math.min(130, v)) * 100) / 100;
   const toShown = ([x, y], f = fit()) => [(x - f.cx) * f.s + 50, (y - f.cy) * f.s + 50];
-  const toModel = ([x, y], f = fit()) => [(x - 50) / f.s + f.cx, (y - 50) / f.s + f.cy];
+  const toModel = ([x, y], f = fit()) => [unitClamp((x - 50) / f.s + f.cx), unitClamp((y - 50) / f.s + f.cy)];
   const shownModel = (char) => (C.model(char) || []).map((path) => path.map((p) => toShown(p)));
   const modelStrokes = (strokes) => strokes.map((s) => ({ ...s, points: (s.points || s).map((p) => toModel(p)) }));
   // 브라우저는 화면의 실제 길이를 모른다. 학교에서 쓰는 아이패드·크롬북은 화면의 실제 픽셀 수로 패널을 알아보고,
@@ -135,13 +143,13 @@
     modelCanvas = null;
   function fresh(text, lesson = 'custom', phase = 'trace') {
     return {
-      version: 8,
+      version: 9,
       text,
       lesson,
       phase,
       index: 0,
       guide: true,
-      width: 3.9,
+      width: 2.5,
       cells: { trace: C.chars(text).map(() => []), solo: C.chars(text).map(() => []) },
     };
   }
@@ -154,7 +162,7 @@
   function normalize(raw) {
     if (
       !raw ||
-      raw.version !== 8 ||
+      (raw.version !== 8 && raw.version !== 9) ||
       typeof raw.text !== 'string' ||
       raw.lesson === 'sentence' ||
       raw.text === '나는 나를 믿어요' ||
@@ -167,6 +175,16 @@
     const next = fresh(raw.text, knownLesson(raw.lesson) && lessonFits(raw.lesson) ? raw.lesson : 'custom', raw.phase === 'solo' ? 'solo' : 'trace');
     next.cells.trace = C.validateCells(raw.text, raw.cells?.trace);
     next.cells.solo = C.validateCells(raw.text, raw.cells?.solo);
+    if (raw.version === 8 && !/[A-Za-z]/.test(raw.text)) {
+      // 8판은 한글을 네모 칸(글자 70%)에 썼다. 줄 공책 글자 크기(45%)로 줄이고 펜 굵기도 같은 단계로 옮긴다.
+      const k = GLYPH_HEIGHT.gyeongpil / CELL_GLYPH,
+        shrink = (v) => Math.round((50 + (v - 50) * k) * 100) / 100;
+      for (const phase of ['trace', 'solo'])
+        next.cells[phase] = next.cells[phase].map((strokes) =>
+          strokes.map((s) => ({ points: s.points.map(([x, y]) => [shrink(x), shrink(y)]), width: CELL_PEN[s.width] || 2.5 })),
+        );
+      raw = { ...raw, width: CELL_PEN[raw.width] || 2.5 };
+    }
     next.index = Math.max(0, Math.min(next.cells.trace.length - 1, Number(raw.index) || 0));
     next.index = Math.floor(next.index);
     next.guide = raw.guide !== false;
@@ -212,6 +230,13 @@
       context.fill();
     } else context.stroke();
   }
+  // 글자 하나의 좌표는 캔버스 높이에 맞춘 가운데 100×100이다. 줄 공책 캔버스는 높이의 두 배 너비라
+  // 옆 글자 자리까지 그려도 획이 잘리지 않는다(캔버스끼리 겹치고 바탕은 투명하다).
+  function unit(context) {
+    const c = context.canvas,
+      k = c.height / 100;
+    context.setTransform(k, 0, 0, k, (c.width - c.height) / 2, 0);
+  }
   function reference(context, char, color) {
     const layout = Reference.layout(char);
     if (!layout) return;
@@ -240,16 +265,19 @@
     paint.scale(4, 4);
     reference(paint, letters()[doc.index], color);
     paint.globalCompositeOperation = 'destination-in';
-    path(paint, points, '#000', 12);
+    path(paint, points, '#000', (12 * glyphHeight()) / CELL_GLYPH);
     context.drawImage(layer, 0, 0, 100, 100);
   }
-  // 칸 하나: 쓰기 칸과 본보기 칸이 같은 크기·같은 보조선을 쓴다.
+  // 글자 하나: 쓰기와 본보기가 같은 크기를 쓴다. 줄 공책의 줄은 연습장 바탕(CSS)이 긋고 캔버스는 투명하다.
   function paper(context, char, strokes, { guide = true, trace = false, next = false } = {}) {
     context.save();
-    context.setTransform(context.canvas.width / 100, 0, 0, context.canvas.height / 100, 0, 0);
-    context.clearRect(0, 0, 100, 100);
-    context.fillStyle = '#fffefa';
-    context.fillRect(0, 0, 100, 100);
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    unit(context);
+    if (!lined()) {
+      context.fillStyle = '#fffefa';
+      context.fillRect(0, 0, 100, 100);
+    }
     if (guide && alphabetStyle()) {
       // 영어 공책 네 줄: 윗줄·아랫줄은 실선, 가운뎃줄은 점선, 바닥줄은 붉은 실선
       const [top, mid, base, bottom] = Font.Alphabet.LINES;
@@ -259,7 +287,7 @@
       context.setLineDash([1.6, 2]);
       path(context, [[0, mid], [100, mid]], '#c9d1c2', 0.6);
       context.setLineDash([]);
-    } else if (guide) {
+    } else if (guide && !lined()) {
       context.setLineDash([1.6, 2]);
       path(context, [[50, 0], [50, 100]], '#d8ded1', 0.5);
       path(context, [[0, 50], [100, 50]], '#d8ded1', 0.5);
@@ -298,7 +326,7 @@
     const m = cell.model.getContext('2d');
     paper(m, letters()[i], [], { guide: doc.guide });
     m.save();
-    m.scale(cell.model.width / 100, cell.model.height / 100);
+    unit(m);
     if (referenceReady) reference(m, letters()[i], color);
     m.restore();
   }
@@ -309,43 +337,55 @@
     $('demoButton').textContent = '획순';
     if (wasPlaying) drawModel();
   }
-  // 글 전체를 낱말 단위로 묶어 칸을 만든다. 띄어쓰기는 칸 사이 간격으로만 보인다.
+  // 글자 하나의 자리: 위는 본보기, 아래는 쓰기. 줄 공책에서는 캔버스가 자리보다 넓다(옆 자리까지 그린다).
+  function makePair(char, i) {
+    const pair = document.createElement('div');
+    pair.className = 'cell-pair';
+    pair.dataset.index = i;
+    const [model, write] = ['model-cell', 'write-cell'].map((name) => {
+      const c = document.createElement('canvas');
+      c.className = name;
+      c.width = CELL_PIXELS * (lined() ? 2 : 1);
+      c.height = CELL_PIXELS;
+      return c;
+    });
+    model.setAttribute('aria-hidden', 'true');
+    pair.append(model, write);
+    return { pair, model, write, char };
+  }
+  // 글 전체를 낱말 단위로 묶는다. 띄어쓰기는 낱말 사이 간격으로만 보인다.
+  function wordsOf(text, each) {
+    let index = 0;
+    return text
+      .trim()
+      .split(/\s+/)
+      .map((word) => {
+        const group = document.createElement('div');
+        group.className = 'word';
+        for (const char of Array.from(word)) group.append(each(char, index++).pair);
+        return group;
+      });
+  }
   function buildSheet() {
-    const key = doc.text + '|' + doc.phase;
+    const key = doc.text + '|' + doc.phase + '|' + (lined() ? 'line' : 'cell');
     if (builtFor === key && cells.length === letters().length) return;
     builtFor = key;
     cancel();
     const sheet = $('sheet');
-    sheet.replaceChildren();
+    sheet.classList.toggle('lined', lined());
     cells = [];
-    let index = 0;
-    for (const word of doc.text.trim().split(/\s+/)) {
-      const group = document.createElement('div');
-      group.className = 'word';
-      for (const char of Array.from(word)) {
-        const i = index++;
-        const pair = document.createElement('div');
-        pair.className = 'cell-pair';
-        pair.dataset.index = i;
-        const model = document.createElement('canvas');
-        model.className = 'model-cell';
-        model.width = model.height = CELL_PIXELS;
-        model.setAttribute('aria-hidden', 'true');
-        const write = document.createElement('canvas');
-        write.className = 'write-cell';
-        write.width = write.height = CELL_PIXELS;
-        write.tabIndex = 0;
-        write.dataset.index = i;
-        bind(write, false);
-        write.addEventListener('focus', () => {
-          if (Number(write.dataset.index) !== doc.index) select(Number(write.dataset.index), { keepHistory: true });
+    sheet.replaceChildren(
+      ...wordsOf(doc.text, (char, i) => {
+        const cell = makePair(char, i);
+        cell.write.tabIndex = 0;
+        cell.write.dataset.index = i;
+        cell.write.addEventListener('focus', () => {
+          if (i !== doc.index) select(i, { keepHistory: true });
         });
-        pair.append(model, write);
-        group.append(pair);
-        cells.push({ pair, model, write, char });
-      }
-      sheet.append(group);
-    }
+        cells.push(cell);
+        return cell;
+      }),
+    );
     marks = [];
   }
   // 지금 칸 표시와 id(쓰기 칸 = writingCanvas, 본보기 = modelCanvas)를 옮긴다.
@@ -380,6 +420,8 @@
     $('anotherText').hidden = inRoom || !isBank(doc.lesson);
     $('strokeCount').textContent = `‘${chars[doc.index]}’ ${model.length}획`;
     $('guideCheck').checked = doc.guide;
+    // 줄 공책에는 보조선이 없다(교과서처럼). 알파벳 네 줄 칸에서만 고른다.
+    $('guideCheck').parentElement.hidden = lined();
     syncPen();
     $('penWidth').value = String(doc.width);
     document.querySelectorAll('[data-phase]').forEach((b) => {
@@ -418,10 +460,10 @@
   }
   function cancel() {
     if (active) {
-      const old = active.canvas;
+      const { surface, id } = active;
       active = null;
       try {
-        old.releasePointerCapture?.(old._pointer);
+        surface.releasePointerCapture?.(id);
       } catch {}
       queueDraw();
     }
@@ -437,12 +479,35 @@
     save();
     changed();
   }
+  // 글자 좌표: 캔버스 높이에 맞춘 가운데 정사각형이 100×100이다(입력 확인 칸만 캔버스 전체).
   function position(e, target) {
-    const r = target.getBoundingClientRect();
-    return [
-      Math.max(-30, Math.min(130, ((e.clientX - r.left) / r.width) * 100)),
-      Math.max(-30, Math.min(130, ((e.clientY - r.top) / r.height) * 100)),
-    ].map((v) => Math.round(v * 100) / 100);
+    const r = target.getBoundingClientRect(),
+      x = target.id === 'testCanvas' ? ((e.clientX - r.left) / r.width) * 100 : 50 + ((e.clientX - (r.left + r.width / 2)) / r.height) * 100;
+    return [x, ((e.clientY - r.top) / r.height) * 100].map((v) => Math.round(Math.max(-30, Math.min(130, v)) * 100) / 100);
+  }
+  // 연습장을 누른 자리 → 글자. 같은 줄에서 가장 가까운 글자 자리를 고른다(낱말 사이 빈자리도 옆 글자로).
+  // 본보기 줄을 누르면 그 글자를 고르기만 한다. 줄 공책은 칸이 보이지 않으므로, 쓰던 글자의 획이 옆 글자 자리에서
+  // 시작해도 그 글자에 붙인다(쓰던 글자가 덜 끝났고, 옆 글자는 아직 안 썼거나 이미 다 쓴 때).
+  function route(e) {
+    let best = null;
+    cells.forEach((cell, index) => {
+      const r = cell.pair.getBoundingClientRect();
+      if (e.clientY < r.top || e.clientY > r.bottom) return;
+      const d = Math.abs(e.clientX - (r.left + r.width / 2));
+      if (!best || d < best.d) best = { d, index, cell, r };
+    });
+    if (!best) return null;
+    const { index, cell, r } = best,
+      onModel = e.clientY < r.top + r.height / 2;
+    if (!lined()) return onModel || best.d > r.width / 2 ? null : { index, canvas: cell.write };
+    if (onModel) return { index, canvas: cell.write, only: true };
+    const i = doc.index,
+      done = (n) => doc.cells[doc.phase][n].length,
+      need = (n) => C.model(letters()[n]).length,
+      sameRow = cells[i] && Math.abs(cells[i].pair.getBoundingClientRect().top - r.top) < 2;
+    if (Math.abs(index - i) === 1 && sameRow && done(i) < need(i) && (done(i) > 0 || done(index) >= need(index)))
+      return { index: i, canvas: cells[i].write };
+    return { index, canvas: cell.write };
   }
   function detect(e, test = false) {
     if (e.pointerType === 'pen') {
@@ -474,8 +539,8 @@
         e.height <= 38)
     );
   }
-  function bind(target, test = false) {
-    target.addEventListener('pointerdown', (e) => {
+  function bind(surface, test = false, resolve = () => ({ canvas: surface })) {
+    surface.addEventListener('pointerdown', (e) => {
       detect(e, test);
       e.preventDefault();
       if (test) {
@@ -487,28 +552,33 @@
               : '마우스로 인식됐어요. PC에서도 연습할 수 있어요.';
       }
       if (((locked || !referenceReady) && !test) || !allowed(e) || active) return;
-      // 다른 칸을 누르면 그 칸이 지금 칸이 된다(되돌리기 기록은 칸마다 남아 있다).
-      if (!test && Number(target.dataset.index) !== doc.index) select(Number(target.dataset.index), { keepHistory: true });
+      const hit = resolve(e);
+      if (!hit) return;
+      // 다른 글자를 누르면 그 글자가 지금 글자가 된다(되돌리기 기록은 글자마다 남아 있다).
+      if (!test && hit.index !== doc.index) select(hit.index, { keepHistory: true });
+      if (hit.only) return;
+      const target = hit.canvas;
       if (!test && current().length >= 64) {
         toast('획이 많아요. 이 칸을 지우고 다시 써 주세요.');
         return;
       }
       active = {
         id: e.pointerId,
+        surface,
         canvas: target,
         stroke: { points: [position(e, target)], width: doc.width },
         test,
       };
-      target._pointer = e.pointerId;
       try {
-        target.setPointerCapture(e.pointerId);
+        surface.setPointerCapture(e.pointerId);
       } catch {}
       if (!test) queueDraw();
     });
-    target.addEventListener('pointermove', (e) => {
+    surface.addEventListener('pointermove', (e) => {
       detect(e, test);
-      if (!active || active.id !== e.pointerId || active.canvas !== target) return;
+      if (!active || active.id !== e.pointerId || active.surface !== surface) return;
       e.preventDefault();
+      const target = active.canvas;
       const events = e.getCoalescedEvents?.() || [e];
       for (const p of events.length ? events : [e]) {
         const pos = position(p, target),
@@ -525,17 +595,17 @@
         t.restore();
       } else queueDraw();
     });
-    target.addEventListener('pointerup', (e) => {
-      if (!active || active.id !== e.pointerId || active.canvas !== target) return;
+    surface.addEventListener('pointerup', (e) => {
+      if (!active || active.id !== e.pointerId || active.surface !== surface) return;
       e.preventDefault();
       const a = active;
-      const end = position(e, target),
+      const end = position(e, a.canvas),
         p = a.stroke.points;
       if (Math.hypot(end[0] - p[p.length - 1][0], end[1] - p[p.length - 1][1]) > 0.1) p.push(end);
       if (p.length > 64) a.stroke.points = C.sample(p, 64);
       active = null;
       try {
-        target.releasePointerCapture(e.pointerId);
+        surface.releasePointerCapture(e.pointerId);
       } catch {}
       if (!test) {
         const total = doc.cells[doc.phase].flat().reduce((n, s) => n + s.points.length, 0);
@@ -559,12 +629,13 @@
       }
     });
     for (const event of ['pointercancel', 'lostpointercapture'])
-      target.addEventListener(event, (e) => {
-        if (active?.id === e.pointerId && active.canvas === target) cancel();
+      surface.addEventListener(event, (e) => {
+        if (active?.id === e.pointerId && active.surface === surface) cancel();
       });
-    target.addEventListener('contextmenu', (e) => e.preventDefault());
+    surface.addEventListener('contextmenu', (e) => e.preventDefault());
   }
   bind($('testCanvas'), true);
+  bind($('sheet'), false, route);
   window.addEventListener('blur', cancel);
   window.addEventListener('resize', cancel);
   document.addEventListener('visibilitychange', () => {
@@ -710,7 +781,7 @@
         index = Math.floor(at);
       drawModel('#d4d9cd');
       m.save();
-      m.scale(modelCanvas.width / 100, modelCanvas.height / 100);
+      unit(m);
       for (let i = 0; i < Math.min(index, paths.length); i++) ink(m, paths[i], '#32664f');
       if (index < paths.length) {
         const s = C.sample(paths[index], 70),
@@ -741,6 +812,26 @@
     for (const phase of ['trace', 'solo']) {
       const title = document.createElement('h2');
       title.textContent = phase === 'trace' ? '01 본보기를 따라 써요' : '02 본보기를 보고 혼자 써요';
+      if (lined()) {
+        // 화면과 같은 줄 공책: 본보기 줄 아래에 따라 쓰는(흐린 글자) 줄이나 빈 줄. 종이에서는 줄 높이 15 mm.
+        const lines = document.createElement('div');
+        lines.className = 'sheet lined print-lines';
+        lines.append(
+          ...wordsOf(doc.text, (char) => {
+            const cell = makePair(char, 0);
+            const m = cell.model.getContext('2d');
+            paper(m, char, [], {});
+            m.save();
+            unit(m);
+            if (referenceReady) reference(m, char, '#27362f');
+            m.restore();
+            paper(cell.write.getContext('2d'), char, [], { trace: phase === 'trace' });
+            return cell;
+          }),
+        );
+        sheet.append(title, lines);
+        continue;
+      }
       const grid = document.createElement('div');
       grid.className = 'print-grid';
       letters().forEach((c, i) => {
@@ -872,6 +963,10 @@
       cancel();
       return snapshot().cells[doc.phase].map(modelStrokes);
     },
+    // 글자 높이가 네모 칸(70%)보다 작으면 결과 카드에서 그만큼 키워 그린다.
+    inkZoom: () => CELL_GLYPH / glyphHeight(),
+    // 화면 좌표의 본보기 획(시험·도구용)
+    shownModel: (char) => shownModel(char),
     // 채운 정도: 글자마다 (쓴 획 수 ÷ 본보기 획 수, 1까지)를 더한 값. 순위전의 먹길 말이 이만큼 나아간다.
     progress() {
       const chars = letters();

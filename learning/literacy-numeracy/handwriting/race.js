@@ -656,8 +656,11 @@
       for (const _ of Array.from(word)) {
         const c = document.createElement('canvas');
         c.width = c.height = 76;
-        const x = c.getContext('2d');
-        x.scale(0.76, 0.76);
+        const x = c.getContext('2d'),
+          zoom = 0.76 * (A.inkZoom?.() || 1); // 줄 공책 글자(줄의 45%)를 카드 칸에 맞게 키운다
+        x.translate(38, 38);
+        x.scale(zoom, zoom);
+        x.translate(-50, -50);
         x.lineCap = x.lineJoin = 'round';
         x.strokeStyle = x.fillStyle = '#23201c';
         for (const s of cells[i] || []) {

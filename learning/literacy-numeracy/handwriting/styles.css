@@ -22,7 +22,8 @@
   --muted: #758078;
   --border: #dce1db;
   --paper: #fffefa;
-  /* 공책 한 칸. 화면에 맞춰 커지되 너무 크지 않게. */
+  --rule: #9cc2e3;
+  /* 한글 줄 공책의 줄 높이(알파벳은 네 줄 칸 한 칸). 화면에 맞춰 커지되 너무 크지 않게. */
   --practice-cell: clamp(64px, 9vw, 104px);
 }
 :root[data-physical]:not([data-cell-size='small']):not([data-cell-size='medium']):not([data-cell-size='large']) {
@@ -310,6 +311,92 @@ summary:focus-visible {
 .cell-pair.active.retry {
   box-shadow: 0 0 0 2px var(--green), inset 0 -4px 0 currentColor;
 }
+/* 한글 줄 공책(국어 교과서 쓰기 쪽): 본보기 줄과 쓰기 줄이 번갈아 이어진 한 상자. 줄 높이는 기기에서 15 mm,
+   글자는 줄의 45%. 글자는 줄 높이의 0.52배 간격으로 붙여 쓰고 낱말 사이만 띄운다. 네모 칸·보조선은 없다.
+   글자 캔버스는 줄 높이의 두 배 너비로 겹쳐 놓아(바탕 투명) 옆 자리까지 쓴 획도 잘리지 않는다. */
+.sheet.lined {
+  --line: var(--practice-cell);
+  --pitch: calc(var(--line) * 0.52);
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  justify-content: flex-start;
+  gap: 0 calc(var(--line) * 0.35);
+  padding: 0 calc(var(--line) * 0.22);
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+  /* 줄 끝 글자의 넓은 캔버스가 상자 밖으로 나가 화면을 넓히지 않게 종이 가장자리에서 자른다. */
+  overflow: hidden;
+  overflow: clip;
+  background: repeating-linear-gradient(to bottom, transparent 0 calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px) var(--line)) var(--paper);
+}
+.sheet.lined .word {
+  justify-content: flex-start;
+  row-gap: 0;
+}
+.sheet.lined .cell-pair,
+.sheet.lined .cell-pair.active,
+.sheet.lined .cell-pair.pass,
+.sheet.lined .cell-pair.retry {
+  position: relative;
+  z-index: auto;
+  display: block;
+  width: var(--pitch);
+  height: calc(var(--line) * 2);
+  margin: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.sheet.lined .cell-pair canvas {
+  position: absolute;
+  left: calc(var(--pitch) / 2 - var(--line));
+  width: calc(var(--line) * 2);
+  height: var(--line);
+  aspect-ratio: auto;
+  border: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+.sheet.lined .model-cell {
+  top: 0;
+}
+.sheet.lined .write-cell {
+  top: var(--line);
+}
+/* 지금 쓰는 글자 자리는 쓰기 줄에 옅은 바탕(획 아래), 확인 뒤에는 그 자리 바닥에 통과(초록)·다시(주황) 줄. */
+.sheet.lined .cell-pair::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--line);
+  height: var(--line);
+  z-index: -1;
+  pointer-events: none;
+}
+.sheet.lined .cell-pair.active::before {
+  background-color: rgba(50, 102, 79, 0.1);
+}
+/* 옆 글자 표시와 이어지지 않게 자리 가운데 70%에만 긋는다. */
+.sheet.lined .cell-pair.pass::before,
+.sheet.lined .cell-pair.retry::before {
+  background-image: linear-gradient(var(--mark), var(--mark));
+  background-size: 70% 3px;
+  background-position: 50% calc(100% - 2px);
+  background-repeat: no-repeat;
+}
+.sheet.lined .cell-pair.pass {
+  --mark: #3f9a62;
+}
+.sheet.lined .cell-pair.retry {
+  --mark: #d58a3c;
+}
+.check[hidden] {
+  display: none;
+}
 .stroke-count,
 .progress-label {
   font-size: 12px;
@@ -532,6 +619,10 @@ body:not(.room-only) .app {
 .room-only .sheet {
   gap: 12px calc(var(--practice-cell) * 0.35);
   padding: 2px 0 4px;
+}
+.room-only .sheet.lined {
+  gap: 0 calc(var(--line) * 0.35);
+  padding: 0 calc(var(--line) * 0.22);
 }
 .room-only .toolbar {
   margin-top: 8px;
@@ -1219,6 +1310,12 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
 .room-only .cell-pair {
   position: relative;
 }
+/* 줄 공책에서는 다 쓴 글자(쓰기 줄의 그 자리) 둘레로 번진다. */
+.sheet.lined .cell-pair.inked-ring::after {
+  inset: var(--line) 0 0 0;
+  border-radius: 4px;
+  animation-name: line-ring;
+}
 
 /* 3·2·1과 끝 */
 .countdown,
@@ -1788,6 +1885,16 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
     inset: -11px;
   }
 }
+@keyframes line-ring {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.45, 1.2);
+  }
+}
 @keyframes count-zoom {
   from {
     opacity: 0;
@@ -2279,6 +2386,13 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
     padding: 12px 0;
     margin-bottom: 15px;
     font-size: 12px;
+  }
+  /* 종이에서도 교과서처럼 줄 높이 15 mm. 줄은 바탕 그림이라 인쇄 때 지우지 않게 한다. */
+  #printSheet .print-lines {
+    --practice-cell: 15mm;
+    margin: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }
 /* 내 아바타 그림은 금빛 둥근 테 대신 그림 둘레에 금빛을 두른다(바탕이 투명하므로). */

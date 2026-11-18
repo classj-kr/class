@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
     <title>글씨 쓰기</title>
-    <link rel="stylesheet" href="styles.css?v=20261112-results-names" />
+    <link rel="stylesheet" href="styles.css?v=20261118-lined" />
   </head>
   <body>
     <main class="app">
@@ -76,7 +76,7 @@
               </select>
               <button id="testInput">펜 입력 확인</button>
               <p id="inputStatus" role="status">펜 또는 마우스</p>
-              <label for="cellSize">쓰기 칸 크기</label>
+              <label for="cellSize">줄 크기</label>
               <select id="cellSize">
                 <option value="auto" selected>자동</option>
                 <option value="small">작게</option>
@@ -85,9 +85,9 @@
               </select>
               <label for="penWidth">펜 굵기</label
               ><select id="penWidth">
-                <option value="2.9">가늘게</option>
-                <option value="3.9" selected>보통</option>
-                <option value="5.2">굵게</option>
+                <option value="1.9">가늘게</option>
+                <option value="2.5" selected>보통</option>
+                <option value="3.3">굵게</option>
               </select>
               <label class="check"><input id="guideCheck" type="checkbox" checked /> 보조선</label
               ><button id="printButton">연습지 인쇄</button>
@@ -159,7 +159,7 @@
           <p id="touchNotice" class="touch-notice" hidden>
             터치 모드에서는 손바닥을 화면에서 떼고 써 주세요.
           </p>
-          <!-- 공책처럼: 글 전체를 칸에 늘어놓고, 칸마다 바로 위에 같은 크기의 본보기 칸을 둔다. -->
+          <!-- 교과서 줄 공책처럼: 글 전체를 본보기 줄과 쓰기 줄에 늘어놓는다(알파벳은 네 줄 칸). -->
           <div class="text-head">
             <p id="textMeaning" class="text-meaning" hidden></p>
             <button id="anotherText" class="another-text" hidden>다른 문구</button>
@@ -207,11 +207,11 @@
     <script src="/assets/fonts/classj-pen-m/source.js?v=2.000"></script>
     <script src="alphabet-source.js?v=20261117-alphabet"></script>
     <script src="font-engine.js?v=20261117-alphabet"></script>
-    <script src="pen-reference.js?v=20261117-alphabet"></script>
-    <script src="core.js?v=20261117-alphabet"></script>
+    <script src="pen-reference.js?v=20261118-lined"></script>
+    <script src="core.js?v=20261118-lined"></script>
     <script src="writing-texts.js?v=20261107-1"></script>
-    <script src="app.js?v=20261117-alphabet"></script>
-    <script src="race.js?v=20261112-results-names"></script>
+    <script src="app.js?v=20261118-lined"></script>
+    <script src="race.js?v=20261118-lined"></script>
     <script src="record-controls.js?v=1"></script>
   </body>
 </html>
