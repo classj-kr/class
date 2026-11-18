@@ -40,7 +40,7 @@
     { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' },
     { key: 'history', label: '한국사', a: 'ko', b: 'ko' }
   ];
-  const DATA_VERSION = '20261117-history';
+  const DATA_VERSION = '20261118-history-pairs';
   const bank = {};
   await Promise.all(SUBJECTS.map(async subject => {
     try {
@@ -146,11 +146,14 @@
     const chosen = [];
     const seenWord = new Set();
     const seenMeaning = new Set();
-    for (const [en, ko] of pool) {
+    const seenGroup = new Set();
+    for (const [en, ko, group] of pool) {
       const w = en.toLowerCase(), m = bare(ko);
       // 같은 뜻이 두 장이면 어느 낱말의 짝인지 가릴 수 없다.
-      if (seenWord.has(w) || seenMeaning.has(m)) continue;
+      // 묶음이 같은 짝(세종↔자격루·장영실↔…)은 서로 엇갈려도 맞는 말이 되니 한 판에 하나만 낸다.
+      if (seenWord.has(w) || seenMeaning.has(m) || (group && seenGroup.has(group))) continue;
       seenWord.add(w); seenMeaning.add(m);
+      if (group) seenGroup.add(group);
       chosen.push([en, ko]);
       if (chosen.length === count) break;
     }
