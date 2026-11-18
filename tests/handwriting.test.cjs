@@ -308,3 +308,30 @@ test('validating saved handwriting is idempotent and preserves small pen movemen
   clean[0][0].points[0][0] = 80;
   assert.equal(cells[0][0].points[0][0], 12.34, 'validated data must be a copy');
 });
+test('sentences carry their punctuation: a dot near its place passes, a dot elsewhere or a long line does not', () => {
+  Font.setStyle('gyeongpil');
+  assert.equal(C.supported('시작이 반이다.'), true);
+  assert.equal(C.supported('정말?'), true);
+  assert.deepEqual(C.chars('반이다. 정말?'), ['반', '이', '다', '.', '정', '말', '?']);
+  const dot = C.model('.')[0];
+  assert.equal(C.judge('.', [{ points: dot }]).score, 100, 'the model dot itself');
+  assert.equal(C.judge('.', [{ points: [[dot[0][0] + 6, dot[0][1] - 4]] }]).score, 100, 'a tap a little off is still the dot');
+  assert.equal(C.judge('.', [{ points: [[40, 30]] }]).score, 0, 'a dot at the top is not a full stop');
+  assert.equal(C.judge('.', [{ points: [[30, 90], [60, 90]] }]).score, 0, 'a long line is not a dot');
+  assert.equal(C.judge('.', []).score, 0, 'not written');
+  assert.equal(C.judge('?', perfect('?')).order, true);
+  assert.ok(C.judge('?', perfect('?').slice(0, 1)).score < 100, 'the dot under the question mark is missing');
+  // 글감: 문장인 속담·관용어는 문장 부호로 끝나고, 문장이 아닌 것과 한자성어는 찍지 않는다.
+  global.window = {};
+  require('../learning/literacy-numeracy/handwriting/writing-texts.js');
+  const T = global.window.HANDWRITING_TEXTS;
+  for (const [text] of [...T.proverbs, ...T.expressions]) {
+    if (/[다라]\.$/.test(text) || /랴\?$/.test(text)) continue;
+    assert.ok(!/[다라랴]$/.test(text), text + ': a sentence must end with its mark');
+  }
+  assert.ok(T.idioms.every(([text]) => !/[.?!,]/.test(text)), 'four-character idioms are words, not sentences');
+  for (const [text] of [...T.proverbs, ...T.expressions, ...T.idioms]) assert.equal(C.supported(text), true, text);
+  Font.setStyle('alphabet');
+  assert.equal(C.supported('cat.'), false, 'punctuation belongs to the Korean notebook only');
+  Font.setStyle('gyeongpil');
+});

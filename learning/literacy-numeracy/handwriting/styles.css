@@ -350,9 +350,13 @@ summary:focus-visible {
   background: none;
   box-shadow: none;
 }
+/* 문장 부호(. , ? !)는 앞 글자 바로 뒤 좁은 자리(교과서처럼 바짝 붙여 찍는다). */
+.sheet.lined .cell-pair.mark {
+  width: calc(var(--pitch) * 0.5);
+}
 .sheet.lined .cell-pair canvas {
   position: absolute;
-  left: calc(var(--pitch) / 2 - var(--line));
+  left: calc(50% - var(--line));
   width: calc(var(--line) * 2);
   height: var(--line);
   aspect-ratio: auto;

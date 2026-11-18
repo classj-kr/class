@@ -18,10 +18,13 @@ function clean(text) {
   const letters = plain.replace(/ /g, '').length;
   return letters >= 2 && letters <= MAX_LETTERS ? plain : null;
 }
-function collect(list) {
+// 문장이면 문장 부호를 찍는다(교과서처럼): 서술어로 끝나면(…다, …라) 마침표, 되묻는 말(…랴)이면 물음표.
+// 문장이 아닌 것(티끌 모아 태산, 그림의 떡)은 그대로 둔다. 한자성어는 낱말이라 찍지 않는다.
+const sentence = (t) => (/[다라]$/.test(t) ? t + '.' : /랴$/.test(t) ? t + '?' : t);
+function collect(list, finish = (t) => t) {
   const seen = new Set(), out = [];
   for (const [text, meaning] of list) {
-    const t = clean(text);
+    const t = clean(text) && finish(clean(text));
     if (!t || seen.has(t)) continue;
     seen.add(t);
     out.push([t, String(meaning || '').trim()]);
@@ -31,9 +34,9 @@ function collect(list) {
 
 const sandbox = { window: {} };
 vm.runInNewContext(read('learning/literacy-numeracy/proverbs/proverbs-data.js'), sandbox, { timeout: 5000 });
-const proverbs = collect((sandbox.window.PROVERB_BANKS?.ko || []).map((p) => [p.proverb, p.meaning]));
+const proverbs = collect((sandbox.window.PROVERB_BANKS?.ko || []).map((p) => [p.proverb, p.meaning]), sentence);
 const idioms = collect(require(path.join(root, 'learning/literacy-numeracy/classical-chinese-idioms/idioms-data.js')).map((p) => [p.word, p.meaning]));
-const expressions = collect(require(path.join(root, 'learning/literacy-numeracy/idiomatic-expressions/idiomatic-expressions-data.js')).map((p) => [p.expression, p.meaning]));
+const expressions = collect(require(path.join(root, 'learning/literacy-numeracy/idiomatic-expressions/idiomatic-expressions-data.js')).map((p) => [p.expression, p.meaning]), sentence);
 
 const data = { proverbs, idioms, expressions };
 const body = `// 자동 생성: node scripts/build-handwriting-texts.cjs (직접 고치지 마세요)

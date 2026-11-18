@@ -41,7 +41,8 @@
   // shiftFree·shiftZero: 글자가 비켜도 감점 없는 거리, 그 뒤로 자리 점수가 0이 되기까지 더 비킬 거리.
   // scaleFree·scaleZero: 이 배율까지 크거나 작아도 그대로, 이 배율이면 자리 점수 0.
   // path·end·dir·alt·long: 획순 검사(core.js) — 경로 평균 거리, 시작·끝 거리, 방향 여유, 다른 획과 헷갈림 여유, 덧칠로 볼 만큼 더 긴 길이.
-  const TOL = { near: 0.06, far: 0.15, full: 0.92, shiftFree: 0.22, shiftZero: 0.4, scaleFree: 1.4, scaleZero: 2.3, path: 0.32, end: 0.4, dir: 0.02, alt: 0.08, long: 0.2 };
+  // mark: 문장 부호는 정한 자리에서 이만큼 안에 찍으면 맞다(15 mm 줄에서 약 2 mm).
+  const TOL = { mark: 0.3, near: 0.06, far: 0.15, full: 0.92, shiftFree: 0.22, shiftZero: 0.4, scaleFree: 1.4, scaleZero: 2.3, path: 0.32, end: 0.4, dir: 0.02, alt: 0.08, long: 0.2 };
   const glyphSize = () => (Font.style() === 'alphabet' ? 70 : 91);
   // 모양 점수(0~100): 글자를 본보기 크기·자리에 맞춰 놓고 획이 얼마나 겹치는지(모양),
   // 그리고 칸 안에서 크기·자리가 너무 벗어나지 않았는지(자리)를 곱한다.
@@ -84,6 +85,7 @@
     model: Font.model,
     shape,
     measure,
+    mark: (char) => Boolean(Font.mark && Font.mark(char)),
     tolerance: TOL,
     glyphSize,
     layout: (char) => (supported(char) ? [100, 0, 80] : null),

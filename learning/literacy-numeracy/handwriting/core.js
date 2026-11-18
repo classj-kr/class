@@ -52,7 +52,24 @@
     const k = Math.min(2, Math.max(0.5, t.r / a.r));
     return written.map((p) => p.map(([x, y]) => [(x - a.c[0]) * k + t.c[0], (y - a.c[1]) * k + t.c[1]]));
   }
+  // 문장 부호: 모양은 볼 것이 없으니, 획마다 정한 자리 근처(TOL.mark)에 찍었고 점은 점으로(너무 길게 끌지 않고)
+  // 그었는지만 본다. 획 수가 다르면 그만큼 깎는다.
+  function judgeMark(char, written) {
+    const expected = model(char),
+      T = Reference.tolerance,
+      G = Reference.glyphSize(),
+      middle = (p) => [0, 1].map((k) => p.reduce((n, q) => n + q[k], 0) / p.length);
+    let correct = 0;
+    expected.forEach((s, i) => {
+      const p = written[i];
+      if (!p || !p.length) return;
+      if (distance(middle(s), middle(p)) <= T.mark * G && length(p) <= Math.max(length(s) * 2.5, length(s) + T.long * G)) correct++;
+    });
+    const score = written.length ? Math.round(((100 * correct) / expected.length) * Math.min(1, expected.length / written.length)) : 0;
+    return { supported: true, mark: true, shape: score, form: score, place: score, score, order: written.length === expected.length && correct === expected.length, correct, expected: expected.length, actual: written.length };
+  }
   function judge(char, strokes) {
+    if (Reference.mark(char)) return judgeMark(char, Array.isArray(strokes) ? strokes.map((s) => s.points || s) : []);
     const expected = model(char);
     if (!expected)
       return {

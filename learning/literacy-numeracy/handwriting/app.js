@@ -106,7 +106,8 @@
       alphabet: { h: 70, cx: 50, cy: 50 }, // 알파벳 모형은 칸 좌표 그대로
     },
     GLYPH_HEIGHT = { gyeongpil: 45, badasseugi: 45, alphabet: 70 },
-    CELL_GLYPH = 70; // 네모 칸 시절 한글 글자 높이(옛 연습장 획을 옮길 때와 결과 카드 확대에 쓴다)
+    CELL_GLYPH = 70, // 네모 칸 시절 한글 글자 높이(옛 연습장 획을 옮길 때와 결과 카드 확대에 쓴다)
+    MARK_PEN = 3.6; // 문장 부호를 그리는 펜(화면 단위, 줄 공책 본보기 획 굵기쯤)
   const glyphHeight = () => GLYPH_HEIGHT[Font.style()] || 45;
   const lined = () => !alphabetStyle();
   const fit = () => {
@@ -252,6 +253,11 @@
       shownModel(char).forEach((p) => path(context, p, color, Font.Alphabet.PEN));
       return;
     }
+    if (Reference.mark(char)) {
+      // 문장 부호도 글꼴 파일에 없으므로 중심선을 둥근 펜으로(본보기 글자 획 굵기쯤).
+      shownModel(char).forEach((p) => path(context, p, color, MARK_PEN));
+      return;
+    }
     context.save();
     const f = fit();
     context.translate(50, 50);
@@ -353,7 +359,7 @@
   // 글자 하나의 자리: 위는 본보기, 아래는 쓰기. 줄 공책에서는 캔버스가 자리보다 넓다(옆 자리까지 그린다).
   function makePair(char, i) {
     const pair = document.createElement('div');
-    pair.className = 'cell-pair';
+    pair.className = 'cell-pair' + (Reference.mark(char) ? ' mark' : '');   // 문장 부호는 좁은 자리
     pair.dataset.index = i;
     const [model, write] = ['model-cell', 'write-cell'].map((name) => {
       const c = document.createElement('canvas');
@@ -685,7 +691,7 @@
     if (!C.supported(text)) {
       toast(alphabetStyle()
         ? '영어 알파벳(A~Z, a~z)으로 된 낱말을 넣어 주세요. 숫자와 문장 부호는 빼 주세요.'
-        : '한글 자모와 한글 낱말·문장을 넣어 주세요. 숫자와 문장 부호는 빼 주세요.');
+        : '한글 자모와 한글 낱말·문장을 넣어 주세요. 문장 부호는 . , ? ! 만 쓸 수 있고 숫자는 빼 주세요.');
       return false;
     }
     if (Array.from(text.replace(/\s/g, '')).length > 48) {
