@@ -257,7 +257,6 @@
         }
 
         .checklist-controls select { min-width: 0; max-width: 100%; }
-        .checklist-status { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
 
         /* 1. Timetable Widget */
         .today-events-banner[hidden],
@@ -479,24 +478,8 @@
             background: rgba(117, 214, 159, 0.12);
             color: var(--accent-green);
             border: 1px solid rgba(117, 214, 159, 0.25);
-            cursor: pointer;
-            user-select: none;
-            transition: background 0.15s ease, border-color 0.15s ease;
             position: relative;
             text-align: center;
-        }
-
-        .num-chip.missing {
-            background: rgba(255, 139, 130, 0.15);
-            color: var(--accent-danger);
-            border-color: rgba(255, 139, 130, 0.35);
-        }
-
-        .num-chip:hover,
-        .num-chip:focus-visible {
-            border-color: var(--accent-green);
-            outline: 2px solid transparent;
-            background: rgba(117, 214, 159, 0.21);
         }
 
         .attendance-tags {
@@ -917,7 +900,6 @@
         .timetable-item,
         .timetable-item.active,
         .num-chip,
-        .num-chip.missing,
         .board-item,
         .board-item.schedule-today,
         .weather-box,
@@ -1388,13 +1370,12 @@
         </section>
 
         <!-- Widget 2: Student Checklist (Linked with Roster) -->
-        <section class="widget-card" id="widget-checklist" draggable="true" aria-label="학생 명단 점검">
+        <section class="widget-card" id="widget-checklist" draggable="true" aria-label="출석부">
             <div class="checklist-controls">
                     <select id="classSwitcherSelect" aria-label="학급 선택" class="icon-btn" style="background: rgba(117,214,159,0.15); border-color: rgba(117,214,159,0.3); color: var(--accent-green); font-weight: 700; cursor: pointer; outline: none; padding: 4px 8px;" hidden>
                         <option value="">학급 선택...</option>
                     </select>
                     <button type="button" id="attendanceSound" class="icon-btn" aria-label="학부모 알림 소리">🔔</button>
-                    <span class="checklist-status" id="missingBadge">미완료: 0명</span>
             </div>
             <div id="attendanceConnectionStatus" role="status" hidden>학부모 알림 연결 중…</div>
             <div id="attendanceArrival" role="status" hidden></div>
@@ -1574,7 +1555,6 @@
         let dashboardStore = null;
         const PREP_DAY_ITEM = { "월": "preps-mon", "화": "preps-tue", "수": "preps-wed", "목": "preps-thu", "금": "preps-fri" };
         const prepItem = (day) => PREP_DAY_ITEM[day] || ("preps-" + day);
-        let missingStudents = new Set();
         let rosterStudents = [];
         let rosterLoadMessage = "";
 
@@ -1601,7 +1581,6 @@
         const currentDayLabel = document.getElementById("currentDayLabel");
 
         const checklistGrid = document.getElementById("checklistGrid");
-        const missingBadge = document.getElementById("missingBadge");
 
         const scheduleList = document.getElementById("scheduleList");
         const scheduleDateInput = document.getElementById("scheduleDateInput");
@@ -1981,8 +1960,6 @@
                     { localKey: "dashboardTimetable", item: "legacy-timetable", parse: () => undefined },
                     { localKey: "dashboardCardOrder", item: "legacy-card-order", parse: () => undefined },
                 ]);
-                missingStudents = new Set(Array.isArray(dashboardStore.get("missing-students")) ? dashboardStore.get("missing-students") : []);
-                renderChecklist();
                 renderTimetable(selectedDayTab);
             } catch (e) {}
             try {
@@ -2243,17 +2220,12 @@
                 notice.style.cssText = "grid-column: 1 / -1; color: var(--muted, #6b7280); font-size: 13px; padding: 8px 4px;";
                 notice.textContent = rosterLoadMessage || "등록된 학생이 없습니다.";
                 checklistGrid.append(notice);
-                missingBadge.textContent = "미완료: " + missingStudents.size + "명";
                 return;
             }
             rosterStudents.forEach((student) => {
                 const num = String(student.number);
-                const chip = document.createElement("button");
-                chip.type = "button";
+                const chip = document.createElement("div");
                 chip.className = "num-chip";
-                const isMissing = missingStudents.has(num);
-                if (isMissing) chip.classList.add("missing");
-                chip.setAttribute("aria-pressed", String(isMissing));
 
                 const alerts = activeRosterClass
                     ? todayQuickAlerts.get(attendanceKey(activeRosterClass.grade, activeRosterClass.classNumber, num)) || []
@@ -2289,25 +2261,8 @@
                     birthday.textContent = "🎂";
                     chip.append(birthday);
                 }
-                chip.setAttribute("aria-label", num + "번 " + (student.name || "")
-                    + (attendanceLabel ? ", " + attendanceLabel : "")
-                    + (isMissing ? ", 미완료" : ", 완료"));
-
-                chip.addEventListener("click", () => {
-                    const nextMissing = !missingStudents.has(num);
-                    if (nextMissing) missingStudents.add(num);
-                    else missingStudents.delete(num);
-                    if (dashboardStore) dashboardStore.set("missing-students", Array.from(missingStudents));
-                    chip.classList.toggle("missing", nextMissing);
-                    chip.setAttribute("aria-pressed", String(nextMissing));
-                    chip.setAttribute("aria-label", num + "번 " + (student.name || "")
-                        + (attendanceLabel ? ", " + attendanceLabel : "")
-                        + (nextMissing ? ", 미완료" : ", 완료"));
-                    missingBadge.textContent = "미완료: " + missingStudents.size + "명";
-                });
                 checklistGrid.append(chip);
             });
-            missingBadge.textContent = "미완료: " + missingStudents.size + "명";
         }
 
         let attendanceArrivalTimer;
