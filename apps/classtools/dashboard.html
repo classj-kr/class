@@ -604,45 +604,49 @@
         }
 
         .calendar-header {
-            gap: 10px;
+            gap: 8px;
+        }
+
+        /* 화살표는 달 이름 양옆에 둔다(달을 넘기는 단추로 읽히게). 9월이든 12월이든 화살표 자리는 그대로다. */
+        .calendar-month {
+            display: flex;
+            align-items: center;
+            flex: 0 1 auto;
+            min-width: 0;
+            gap: 4px;
         }
 
         .calendar-header .widget-title {
+            flex: 0 1 auto;
+            width: 6.2em;
+            min-width: 0;
+            justify-content: center;
             font-size: 1.2rem;
             white-space: nowrap;
             gap: 6px;
         }
 
-        .calendar-nav {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 9px;
-        }
-
-        .calendar-nav .icon-btn {
+        .calendar-header .icon-btn {
             display: grid;
             place-items: center;
-            min-width: 38px;
+            flex-shrink: 0;
             min-height: 40px;
-            padding: 0 9px;
-            border: 0;
-            border-radius: 0;
-            font-size: 1.35rem;
             line-height: 1;
         }
 
-        .calendar-nav .icon-btn + .icon-btn {
-            border-left: 1px solid rgba(255, 255, 255, 0.12);
+        .calendar-month .icon-btn {
+            min-width: 34px;
+            padding: 0 6px;
+            font-size: 1.35rem;
         }
 
-        .calendar-nav #todayMonthBtn {
+        .calendar-header #todayMonthBtn {
+            min-width: 44px;
+            padding: 0 8px;
             font-size: 0.85rem;
         }
 
-        .calendar-nav .icon-btn:focus-visible,
+        .calendar-header .icon-btn:focus-visible,
         .cal-day:focus-visible {
             outline: 2px solid var(--accent-green);
             outline-offset: -2px;
@@ -810,7 +814,7 @@
         .calendar-agenda-date { font-weight: 800; margin-bottom: 5px; }
         .calendar-agenda-item { padding: 3px 0; overflow-wrap: anywhere; }
         .calendar-agenda-kind { color: var(--accent-green); font-size: 0.7rem; margin-right: 6px; }
-        .calendar-agenda-meta { color: var(--text-muted); font-size: 0.74rem; margin-top: 2px; }
+        .calendar-agenda-meta { color: var(--text-muted); font-size: 0.74rem; margin-left: 6px; }
 
         .cal-day.sun, .cal-head.sun { color: var(--accent-danger); }
         .cal-day.sat, .cal-head.sat { color: var(--accent-blue); }
@@ -825,8 +829,7 @@
 
         @media (max-width: 380px) {
             .calendar-header .widget-title { font-size: 1.05rem; }
-            .calendar-header .widget-icon { display: none; }
-            .calendar-nav .icon-btn { min-width: 34px; padding: 0 7px; }
+            .calendar-month .icon-btn { min-width: 34px; padding: 0 7px; }
         }
 
         .dday-item {
@@ -880,6 +883,8 @@
         }
 
         .meal-list > :not(.meal-dish-item) { grid-column: 1 / -1; }
+        .meal-list { border-top: 1px solid var(--card-border); padding-top: 12px; transition: opacity 0.15s; }
+        .meal-list[aria-busy="true"] { opacity: 0.45; }
 
         .meal-dish-item { border: 1px solid rgba(255, 255, 255, 0.08); padding: 7px 10px !important; border-radius: 8px !important; gap: 8px !important;
             padding: 3px 6px;
@@ -1169,6 +1174,23 @@
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
         }
 
+        /* 가장 최근에 뽑힌 학생만 춤춘다. 다음 학생이 뽑히면 멈춘다. */
+        .bubble-card.latest .bubble-avatar {
+            animation: picked-dance 0.9s ease-in-out 0.3s infinite;
+            transform-origin: 50% 90%;
+            will-change: transform;
+        }
+
+        @keyframes picked-dance {
+            0%, 50%, 100% { transform: translateY(0) rotate(0deg) scale(1.08, 0.92); }
+            25% { transform: translateY(-22%) rotate(-9deg) scale(0.97, 1.05); }
+            75% { transform: translateY(-22%) rotate(9deg) scale(0.97, 1.05); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bubble-card.latest .bubble-avatar { animation: none; }
+        }
+
         .bubble-name {
             max-width: 100%;
             font-size: clamp(10px, calc(var(--bubble-size) * 0.14), 20px);
@@ -1272,21 +1294,18 @@
         <!-- Widget 4: Calendar, Weather & Meal -->
         <section class="widget-card" id="widget-info" draggable="true">
             <div class="widget-header calendar-header">
-                <h2 class="widget-title"><span class="widget-icon">🗓</span> <span id="calMonthTitle" aria-live="polite">2026년 5월</span></h2>
-                <div class="calendar-nav">
+                <div class="calendar-month">
                     <button class="icon-btn" id="prevMonthBtn" type="button" aria-label="이전 달">‹</button>
-                    <button class="icon-btn" id="todayMonthBtn" type="button">오늘</button>
+                    <h2 class="widget-title"><span id="calMonthTitle" aria-live="polite">2026년 5월</span></h2>
                     <button class="icon-btn" id="nextMonthBtn" type="button" aria-label="다음 달">›</button>
                 </div>
+                <button class="icon-btn" id="todayMonthBtn" type="button">오늘</button>
             </div>
             <div class="calendar-mini" id="calendarMini"></div>
             <div class="calendar-status" id="calendarStatus" role="status" hidden></div>
             <div class="calendar-agenda" id="calendarAgenda" aria-live="polite" hidden></div>
 
-            <div class="widget-header" style="margin-top: 6px;">
-                <h2 class="widget-title" style="font-size: 1.05rem;"><span class="widget-icon">🍱</span> 오늘의 급식</h2>
-            </div>
-            <div class="meal-list" id="mealList">
+            <div class="meal-list" id="mealList" role="group" aria-label="급식">
                 <div style="color: var(--text-muted); font-size: 0.9rem;">급식 메뉴 불러오는 중...</div>
             </div>
         </section>
@@ -1421,6 +1440,11 @@
         let editingScheduleId = null;
 
         const mealList = document.getElementById("mealList");
+        // 급식은 달력에서 고른 날 것을 보여 준다. 달력이 처음 그려질 때 읽으므로 여기서 먼저 만든다.
+        let mealSchool = null;
+        let mealDate = "";
+        let mealRequestVersion = 0;
+        const mealDishesByDay = new Map();
 
         // 1. Clock & Timetable
         let lastRenderedMin = -1;
@@ -2614,7 +2638,7 @@
                 kind.textContent = entry.kind;
                 row.append(kind, document.createTextNode(entry.title));
                 if (entry.details) {
-                    const detail = document.createElement("div");
+                    const detail = document.createElement("span");
                     detail.className = "calendar-agenda-meta";
                     detail.textContent = entry.details;
                     row.append(detail);
@@ -2630,8 +2654,7 @@
             const year = calendarCursor.getFullYear();
             const month = calendarCursor.getMonth();
 
-            const englishMonthName = new Date(year, month, 1).toLocaleDateString("en-US", { month: "long" });
-            calMonthTitle.textContent = `${year}년 ${month + 1}월 · ${englishMonthName} ${year}`;
+            calMonthTitle.textContent = `${year}년 ${month + 1}월`;
 
             const firstDay = new Date(year, month, 1).getDay();
             const lastDate = new Date(year, month + 1, 0).getDate();
@@ -2723,6 +2746,7 @@
             const trailing = (7 - (firstDay + lastDate) % 7) % 7;
             for (let i = 1; i <= trailing; i++) appendOtherMonthDay(new Date(year, month + 1, i));
             renderCalendarAgenda();
+            showSelectedDayMeals();
         }
         document.getElementById("prevMonthBtn").addEventListener("click", () => {
             calendarCursor.setMonth(calendarCursor.getMonth() - 1);
@@ -2740,8 +2764,34 @@
         });
         renderCalendar();
 
-        // 7. NEIS Meals — use the school attached to the selected classroom.
-        let mealRequestVersion = 0;
+        // 7. NEIS Meals — 학급의 학교에서, 달력에서 고른 날의 급식을 받아 온다(처음엔 오늘).
+        function selectedMealDate() {
+            return scheduleDateInput.value || localDateKey();
+        }
+
+        function showSelectedDayMeals() {
+            if (mealSchool && mealDate !== selectedMealDate()) loadMeals(mealSchool);
+        }
+
+        function showMealDishes(dishes) {
+            mealList.replaceChildren();
+            dishes.forEach((dish) => {
+                const item = document.createElement("div");
+                item.className = "meal-dish-item";
+                const bullet = document.createElement("span");
+                bullet.style.color = "var(--accent-green)";
+                const iconMarkup = getMealDishIcon(dish);
+                if (iconMarkup.startsWith("<svg")) {
+                    bullet.innerHTML = iconMarkup;
+                } else {
+                    bullet.textContent = iconMarkup;
+                }
+                const text = document.createElement("span");
+                text.textContent = dish;
+                item.append(bullet, text);
+                mealList.append(item);
+            });
+        }
 
         function showMealMessage(message, retrySchool = null) {
             const notice = document.createElement("div");
@@ -2760,6 +2810,10 @@
 
         async function loadMeals(school) {
             const requestVersion = ++mealRequestVersion;
+            const dateKey = selectedMealDate();
+            mealSchool = school;
+            mealDate = dateKey;
+            mealList.removeAttribute("aria-busy");
             if (!school) {
                 showMealMessage("학급의 학교 정보를 불러오지 못했습니다.");
                 return;
@@ -2771,44 +2825,38 @@
                 return;
             }
 
-            showMealMessage("급식 메뉴 불러오는 중...");
+            // 한 번 받은 날은 바로 보여 준다. 받는 동안에는 앞 메뉴를 흐리게 두어 칸이 들썩이지 않게 한다.
+            const dayKey = [officeCode, schoolCode, dateKey].join("/");
+            if (mealDishesByDay.has(dayKey)) {
+                showMealDishes(mealDishesByDay.get(dayKey));
+                return;
+            }
+            mealList.setAttribute("aria-busy", "true");
             try {
                 const query = new URLSearchParams({
                     officeCode,
                     schoolCode,
-                    date: localDateKey().replace(/-/g, "")
+                    date: dateKey.replace(/-/g, "")
                 });
                 const mealRes = await fetch("/api/school/meal?" + query.toString());
                 if (!mealRes.ok) throw new Error("Meal request failed");
                 const mealData = await mealRes.json();
                 if (!Array.isArray(mealData.meals)) throw new Error("Invalid meal response");
                 if (requestVersion !== mealRequestVersion) return;
+                mealList.removeAttribute("aria-busy");
 
                 const meal = mealData.meals.find(item => item.mealType === "중식" || item.mealType === "점심")
                     || mealData.meals[0];
                 if (Array.isArray(meal?.dishes) && meal.dishes.length > 0) {
-                    mealList.replaceChildren();
-                    meal.dishes.forEach((dish) => {
-                        const item = document.createElement("div");
-                        item.className = "meal-dish-item";
-                        const bullet = document.createElement("span");
-                        bullet.style.color = "var(--accent-green)";
-                        const iconMarkup = getMealDishIcon(dish);
-                        if (iconMarkup.startsWith("<svg")) {
-                            bullet.innerHTML = iconMarkup;
-                        } else {
-                            bullet.textContent = iconMarkup;
-                        }
-                        const text = document.createElement("span");
-                        text.textContent = dish;
-                        item.append(bullet, text);
-                        mealList.append(item);
-                    });
+                    mealDishesByDay.set(dayKey, meal.dishes);
+                    showMealDishes(meal.dishes);
                 } else {
-                    showMealMessage("오늘 등록된 급식 정보가 없습니다.");
+                    // 아직 안 올라온 날일 수 있으니 기억하지 않는다.
+                    showMealMessage(Number(dateKey.slice(5, 7)) + "월 " + Number(dateKey.slice(8, 10)) + "일에 등록된 급식이 없습니다.");
                 }
             } catch (err) {
                 if (requestVersion !== mealRequestVersion) return;
+                mealList.removeAttribute("aria-busy");
                 showMealMessage("급식 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.", school);
             }
         }
@@ -3150,7 +3198,8 @@
                 card.addEventListener("click", () => {
                     if (card.classList.contains("revealed")) return;
                     playTingSound();
-                    card.classList.add("revealed");
+                    bubblePickerGrid.querySelector(".bubble-card.latest")?.classList.remove("latest");
+                    card.classList.add("revealed", "latest");
                     card.innerHTML = `
                         <div class="bubble-avatar">${avatar.icon}</div>
                         <div class="bubble-name">${student.name}</div>
