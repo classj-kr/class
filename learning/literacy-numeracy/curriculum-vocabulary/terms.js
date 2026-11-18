@@ -81,7 +81,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=f0b36db2",
+  "words": "words-4-2.js?v=6688e370",
   "figures": [
    "figures/4-2/kor-2.js?v=97237242",
    "figures/4-2/kor.js?v=07b958f9",
@@ -328,7 +328,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=f0b36db2",
+  "words": "words-4-2.js?v=6688e370",
   "figures": [
    "figures/4-2/kor-2.js?v=97237242",
    "figures/4-2/kor.js?v=07b958f9",
