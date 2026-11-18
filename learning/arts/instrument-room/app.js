@@ -299,10 +299,30 @@
         [6.68, 64, .58, .06], [6.75, 66, .8, .29],
         [7.25, 62, .73, .28], [7.75, 59, .67, .22], [8, 57, .77, 1.65]
     ].map(function ([beat, midi, velocity, duration]) { return [beat, [midi], velocity, duration]; });
+    // Six-string arrangement of the pickup and the opening Em7–G phrase.
+    // Stagger multi-string strokes so each attack shows on its own key.
+    const WISH_YOU_WERE_HERE = [
+        [0, [45], .82, .24], [.25, [47], .65, .24], [.5, [50], .77, .95],
+        [1.5, [52], .79, .95],
+        [2.5, [52, 55, 62, 67], .65, .8],
+        [3.25, [67, 62, 55, 52], .58, .91],
+        [4.25, [52, 55, 62, 67], .64, .69],
+        [4.5, [55], .75, .48], [5, [52], .69, .46],
+        [5.5, [50], .8, .72], [6.25, [50, 55, 62, 67], .59, .27],
+        [6.5, [43, 47, 50, 55, 62, 67], .67, .59],
+        [7, [67, 62, 55, 50, 47, 43], .57, .72],
+        [7.75, [43, 47, 50, 55, 62, 67], .63, 1.2],
+        [8, [43], .73, .92]
+    ].flatMap(function ([beat, pitches, velocity, duration]) {
+        return pitches.map(function (midi, index) {
+            return [beat + index * .012, [midi], velocity - index * .026, duration];
+        });
+    });
     const GUITAR_DEMOS = {
         "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16, preset: "rock" },
         "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
-        "hollow-jazz": { title: "Breezin’", bpm: 84, notes: BREEZIN, endBeat: 10 }
+        "hollow-jazz": { title: "Breezin’", bpm: 84, notes: BREEZIN, endBeat: 10 },
+        dreadnought: { title: "Wish You Were Here", bpm: 60, notes: WISH_YOU_WERE_HERE, endBeat: 9.2 }
     };
 
     // The official XLN Audio AD2 keymap assigns note 49 to HiHat Closed 1 Tip.
@@ -2533,7 +2553,7 @@
         keyboardDemoRun = null;
         run.timers.forEach(function (timer) { window.clearTimeout(timer); });
         run.voices.forEach(function (voice) { releasePianoVoice(voice, true); });
-        run.keys.forEach(function (key) { key.classList.remove("demo-hit"); });
+        run.keys.forEach(function (_, key) { key.classList.remove("demo-hit"); });
         run.button.setAttribute("aria-pressed", "false");
     }
 
@@ -2575,7 +2595,7 @@
     }
 
     async function playKeyboardDemo(button, bpm, notes, endBeat) {
-        const run = { button, timers: [], keys: new Set(), voices: new Set() };
+        const run = { button, timers: [], keys: new Map(), voices: new Set() };
         keyboardDemoRun = run;
         button.setAttribute("aria-pressed", "true");
         const midis = [...new Set(notes.flatMap(function (note) { return note[1]; }))];
@@ -2625,7 +2645,7 @@
                         viewport.scrollLeft = (left + right - viewport.clientWidth) / 2;
                     }
                     keys.forEach(function (key) {
-                        run.keys.add(key);
+                        run.keys.set(key, voices);
                         key.classList.add("demo-hit");
                     });
                 }
@@ -2634,6 +2654,7 @@
                 else noteActivity(pitches.map(core.noteLabel).join(" + "), velocity);
                 run.timers.push(window.setTimeout(function () {
                     keys.forEach(function (key) {
+                        if (run.keys.get(key) !== voices) return;
                         run.keys.delete(key);
                         key.classList.remove("demo-hit");
                     });
