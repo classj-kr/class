@@ -1065,16 +1065,142 @@
         }
 
         /* Timer */
-        .timer-display {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            text-align: center;
-            color: var(--accent-green);
-            background: rgba(117, 214, 159, 0.1);
-            border-radius: 20px;
-            padding: 10px;
+        /* 타이머: 시간이 흐르는 만큼 로켓이 지구에서 달로 날아간다. */
+        #timerModal .timer-box {
+            position: relative;
+            width: min(96vw, 1060px);
+            max-height: 96vh;
+            max-height: 96dvh;
+            padding: 12px;
+            gap: 12px;
+            overflow: hidden;
+            background: #0b1020;
+            border-color: #3d4d7d;
         }
+
+        .timer-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 3;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+        }
+
+        .timer-stage {
+            position: relative;
+            width: min(100%, calc((96vh - 92px) * 1000 / 540));
+            width: min(100%, calc((96dvh - 92px) * 1000 / 540));
+            aspect-ratio: 1000 / 540;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 14px;
+            background: radial-gradient(circle at 78% 22%, #27305f 0%, #141a3a 42%, #080b1c 100%);
+        }
+
+        .timer-stars {
+            --tile: 240px;
+            position: absolute;
+            inset: 0 calc(var(--tile) * -1) 0 0;
+            background-size: var(--tile) 200px;
+            background-image:
+                radial-gradient(1.5px 1.5px at 24px 36px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 92px 150px, #cfe0ff, transparent),
+                radial-gradient(1px 1px at 150px 74px, #fff, transparent),
+                radial-gradient(1px 1px at 205px 172px, #ffe9b8, transparent);
+            opacity: 0.6;
+            animation: timer-drift 26s linear infinite paused;
+            will-change: transform;
+        }
+
+        .timer-stars.near {
+            --tile: 340px;
+            background-size: var(--tile) 270px;
+            background-image:
+                radial-gradient(2.2px 2.2px at 60px 58px, #fff, transparent),
+                radial-gradient(2px 2px at 210px 196px, #bcd4ff, transparent),
+                radial-gradient(2px 2px at 296px 112px, #fff, transparent);
+            opacity: 0.9;
+            animation-duration: 11s;
+        }
+
+        .timer-stage[data-phase="running"] .timer-stars { animation-play-state: running; }
+        @keyframes timer-drift { to { transform: translateX(calc(var(--tile) * -1)); } }
+
+        .timer-scene, .timer-fx, .timer-flash { position: absolute; inset: 0; width: 100%; height: 100%; }
+        .timer-fx, .timer-flash { pointer-events: none; }
+        .timer-flash { background: #fff; opacity: 0; }
+
+        .timer-route { fill: none; stroke: rgba(255, 255, 255, 0.28); stroke-width: 3; stroke-dasharray: 2 13; stroke-linecap: round; }
+        .timer-trail { fill: none; stroke: #ffb35c; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0.85; }
+
+        .timer-digits {
+            font-family: 'Outfit', sans-serif;
+            font-size: 200px;
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+            text-anchor: middle;
+            fill: #7cf0b0;
+            stroke: #0b1020;
+            stroke-width: 12px;
+            paint-order: stroke;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .timer-stage[data-phase="paused"] .timer-digits { opacity: 0.55; }
+        .timer-stage.final .timer-digits { font-size: 330px; fill: #ffd166; }
+        .timer-stage.urgent .timer-digits { fill: #ff6b5e; }
+        .timer-stage[data-phase="done"] .timer-digits { font-size: 240px; fill: #ffe600; animation: timer-cheer 0.45s ease-in-out infinite alternate; }
+
+        .timer-rocket-body, .timer-moon, .timer-flag, .timer-flame, .timer-shock { transform-box: fill-box; }
+        .timer-rocket-body { transform-origin: center; }
+        .timer-stage[data-phase="idle"] .timer-rocket-body { animation: timer-ready 1.2s ease-in-out infinite alternate; }
+        .timer-stage.final .timer-rocket-body { animation: timer-shake 0.09s linear infinite; }
+        .timer-flame { display: none; transform-origin: 50% 0; animation: timer-flame 0.12s ease-in-out infinite alternate; }
+        .timer-stage[data-phase="running"] .timer-flame { display: inline; }
+        .timer-stage[data-phase="done"] #timerRocket { display: none; }
+
+        .timer-moon { transform-origin: center; }
+        .timer-stage.final .timer-moon { animation: timer-moon 1s ease-in-out infinite; }
+        .timer-stage[data-phase="done"] .timer-moon { animation: timer-hit 0.6s ease-out; }
+
+        .timer-flag { transform-origin: 0 100%; transform: scaleY(0); }
+        .timer-stage[data-phase="done"] .timer-flag { animation: timer-flag 0.45s cubic-bezier(0.2, 1.5, 0.4, 1) 0.3s forwards; }
+        .timer-shock { fill: none; stroke: #fff; stroke-width: 3; opacity: 0; transform-origin: center; }
+        .timer-stage[data-phase="done"] .timer-shock { animation: timer-shock 0.8s ease-out; }
+        .timer-stage[data-phase="done"] .timer-flash { animation: timer-flash 0.55s ease-out; }
+
+        .timer-stage.final::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            box-shadow: inset 0 0 110px rgba(255, 74, 54, 0.75);
+            animation: timer-alarm 1s ease-in-out infinite;
+        }
+
+        @keyframes timer-ready { to { transform: translateY(-3px); } }
+        @keyframes timer-shake { 0% { transform: translate(-1.2px, 0.6px); } 50% { transform: translate(1.2px, -0.6px); } 100% { transform: translate(-0.6px, -0.8px); } }
+        @keyframes timer-flame { from { transform: scale(0.85, 0.8); } to { transform: scale(1.1, 1.2); } }
+        @keyframes timer-moon { 50% { transform: scale(1.1); } }
+        @keyframes timer-hit { 0% { transform: translate(14px, -5px) scale(1.14); } 40% { transform: translate(-6px, 2px) scale(0.97); } 100% { transform: none; } }
+        @keyframes timer-flag { to { transform: scaleY(1); } }
+        @keyframes timer-shock { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(17); } }
+        @keyframes timer-flash { 0% { opacity: 0.85; } 100% { opacity: 0; } }
+        @keyframes timer-alarm { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+        @keyframes timer-cheer { from { transform: translateY(8px) rotate(-3deg) scale(0.97); } to { transform: translateY(-12px) rotate(3deg) scale(1.05); } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .timer-stage *, .timer-stage::after { animation: none !important; }
+            .timer-stage[data-phase="done"] .timer-flag { transform: none; }
+        }
+
+        .timer-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        .timer-presets, .timer-actions { display: flex; gap: 8px; }
+        .timer-presets .tool-btn[aria-pressed="true"] { border-color: #7cf0b0; color: #7cf0b0; }
+        #startTimerBtn { min-width: 116px; }
 
         /* Fit the full class into the available picker area. */
         #multiPickerModal .modal-box {
@@ -1316,7 +1442,7 @@
     <footer class="toolbar">
         <div class="toolbar-group">
             <button class="tool-btn" id="multiPickerModalBtn" style="background: rgba(46, 196, 182, 0.18); border-color: var(--brand-light); color: #7ce4ff; font-weight: 800;">🎯 학생 추첨</button>
-            <button class="tool-btn" id="timerModalBtn">⏱️ 집중 타이머</button>
+            <button class="tool-btn" id="timerModalBtn">⏱️ 타이머</button>
             <a class="tool-btn" id="blackboardLink" href="/classtools/blackboard.html">🖌️ 칠판</a>
             <a class="tool-btn" href="/classboard/">📢 알림장</a>
             <a class="tool-btn" href="seating">🪑 자리 배치</a>
@@ -1365,21 +1491,67 @@
 
     <!-- Modal 3: Focus Timer Modal -->
     <div class="modal-overlay" id="timerModal" hidden>
-        <div class="modal-box">
-            <div class="modal-title">
-                <span>⏱️ 집중 타이머 & 스톱워치</span>
-                <button class="modal-close" id="closeTimerModal">&times;</button>
+        <div class="modal-box timer-box" role="dialog" aria-label="타이머">
+            <button class="modal-close timer-close" id="closeTimerModal" type="button" aria-label="닫기">&times;</button>
+            <div class="timer-stage" id="timerStage" data-phase="idle">
+                <div class="timer-stars"></div>
+                <div class="timer-stars near"></div>
+                <svg class="timer-scene" viewBox="0 0 1000 540" role="timer">
+                    <defs>
+                        <radialGradient id="timerEarthFill" cx="62%" cy="26%" r="80%">
+                            <stop offset="0" stop-color="#6fd0ff"/><stop offset="0.55" stop-color="#2779d8"/><stop offset="1" stop-color="#123a86"/>
+                        </radialGradient>
+                        <radialGradient id="timerMoonFill" cx="36%" cy="30%" r="78%">
+                            <stop offset="0" stop-color="#fff8dc"/><stop offset="0.6" stop-color="#e3d9b4"/><stop offset="1" stop-color="#a99f80"/>
+                        </radialGradient>
+                        <clipPath id="timerEarthClip"><circle cx="90" cy="560" r="190"/></clipPath>
+                    </defs>
+                    <circle cx="90" cy="560" r="206" fill="#4fb0ff" opacity="0.16"/>
+                    <circle cx="90" cy="560" r="190" fill="url(#timerEarthFill)"/>
+                    <g clip-path="url(#timerEarthClip)" fill="#49b56d">
+                        <path d="M-10 420c40-30 90-34 120-14 22 15 12 40-14 48-20 7-16 30-44 34-30 4-40-20-62-24z"/>
+                        <path d="M170 452c26-12 62-4 76 18 12 20 2 44-22 44-22 0-24-18-42-24-20-7-30-28-12-38z"/>
+                    </g>
+                    <path class="timer-flag" d="M860 62V14" stroke="#e8edf7" stroke-width="4" fill="none"/>
+                    <path class="timer-flag" d="M862 14h38l-10 11 10 11h-38z" fill="#ff5a5f"/>
+                    <g class="timer-moon">
+                        <circle cx="860" cy="140" r="96" fill="#fff3c4" opacity="0.13"/>
+                        <circle cx="860" cy="140" r="78" fill="url(#timerMoonFill)"/>
+                        <g fill="#b9ae8c" opacity="0.75">
+                            <circle cx="830" cy="112" r="15"/><circle cx="888" cy="158" r="20"/><circle cx="836" cy="178" r="10"/><circle cx="892" cy="104" r="8"/>
+                        </g>
+                    </g>
+                    <path class="timer-route" id="timerRoute" d="M177 355C215 180 470 50 737 109"/>
+                    <path class="timer-trail" id="timerTrail" d="M177 355C215 180 470 50 737 109" pathLength="1"/>
+                    <circle class="timer-shock" cx="784" cy="121" r="10"/>
+                    <text class="timer-digits" id="timerDisplay" x="570" y="430">05:00</text>
+                    <g id="timerRocket" transform="translate(177 355) scale(1.4)">
+                        <g class="timer-rocket-body">
+                            <g class="timer-flame">
+                                <path d="M-8 23Q0 66 8 23Z" fill="#ff8a2b"/><path d="M-4 23Q0 46 4 23Z" fill="#ffe27a"/>
+                            </g>
+                            <path d="M-12 6-25 25-12 20Z M12 6 25 25 12 20Z" fill="#ff5a5f"/>
+                            <path d="M0-34C13-20 15-2 12 18H-12C-15-2-13-20 0-34Z" fill="#f4f6fb"/>
+                            <path d="M0-34C7-27 10-20 11.5-13H-11.5C-10-20-7-27 0-34Z" fill="#ff5a5f"/>
+                            <circle cy="-3" r="6" fill="#5cc8ff" stroke="#2b4a6b" stroke-width="2.5"/>
+                            <rect x="-7" y="18" width="14" height="5" fill="#8a93a6"/>
+                        </g>
+                    </g>
+                </svg>
+                <canvas class="timer-fx" id="timerFx" aria-hidden="true"></canvas>
+                <div class="timer-flash"></div>
             </div>
-            <div class="timer-display" id="timerDisplay">05:00</div>
-            <div style="display: flex; gap: 8px; justify-content: center;">
-                <button class="tool-btn" onclick="setTimerSec(60)">1분</button>
-                <button class="tool-btn" onclick="setTimerSec(180)">3분</button>
-                <button class="tool-btn" onclick="setTimerSec(300)">5분</button>
-                <button class="tool-btn" onclick="setTimerSec(600)">10분</button>
-            </div>
-            <div style="display: flex; gap: 10px; margin-top: 10px;">
-                <button class="tool-btn active" id="startTimerBtn" style="flex: 1; padding: 12px;">시작</button>
-                <button class="tool-btn" id="resetTimerBtn" style="flex: 1; padding: 12px;">초기화</button>
+            <div class="timer-controls">
+                <div class="timer-presets">
+                    <button class="tool-btn" type="button" data-timer-sec="60">1분</button>
+                    <button class="tool-btn" type="button" data-timer-sec="180">3분</button>
+                    <button class="tool-btn" type="button" data-timer-sec="300">5분</button>
+                    <button class="tool-btn" type="button" data-timer-sec="600">10분</button>
+                </div>
+                <div class="timer-actions">
+                    <button class="tool-btn active" id="startTimerBtn" type="button">시작</button>
+                    <button class="tool-btn" id="resetTimerBtn" type="button">초기화</button>
+                </div>
             </div>
         </div>
     </div>
@@ -3228,64 +3400,263 @@
             renderBubblePicker(false);
         });
 
-        // 9. Focus Timer Modal
+        // 9. 타이머 — 시간이 흐르는 만큼 로켓이 지구에서 달로 날아가고, 끝나면 달에 닿아 불꽃이 터진다.
         const timerModalBtn = document.getElementById("timerModalBtn");
         const timerModal = document.getElementById("timerModal");
         const closeTimerModal = document.getElementById("closeTimerModal");
+        const timerStage = document.getElementById("timerStage");
         const timerDisplay = document.getElementById("timerDisplay");
+        const timerRocket = document.getElementById("timerRocket");
+        const timerRoute = document.getElementById("timerRoute");
+        const timerTrail = document.getElementById("timerTrail");
+        const timerFx = document.getElementById("timerFx");
+        const timerFxContext = timerFx.getContext("2d");
+        const timerPresetButtons = [...document.querySelectorAll("[data-timer-sec]")];
         const startTimerBtn = document.getElementById("startTimerBtn");
         const resetTimerBtn = document.getElementById("resetTimerBtn");
+        const TIMER_FINAL_SECONDS = 10;
+        const TIMER_START_LABEL = { idle: "시작", running: "일시정지", paused: "계속", done: "다시" };
+        const TIMER_SPARK_COLORS = ["255,214,102", "255,107,94", "124,240,176", "120,200,255", "255,150,220"];
 
-        let timerSeconds = 300;
-        let timerInterval = null;
-        let isTimerRunning = false;
+        let timerTotalMs = 300000;
+        let timerLeftMs = timerTotalMs;
+        let timerEndAt = 0;
+        let timerPhase = "idle";
+        let timerShownSecond = 0;
+        let timerClock = 0;
+        let timerFrameId = 0;
+        let timerLastFrame = 0;
+        let timerLastPuff = 0;
+        let timerFireworksUntil = 0;
+        let timerNextBurst = 0;
+        let timerRouteLength = 0;
+        let timerAudio = null;
+        let timerParticles = [];
 
-        function updateTimerDisplay() {
-            const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
-            const s = String(timerSeconds % 60).padStart(2, '0');
-            timerDisplay.textContent = `${m}:${s}`;
+        const timerMotionAllowed = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const timerLeftNow = () => timerPhase === "running" ? Math.max(0, timerEndAt - Date.now()) : timerLeftMs;
+
+        function setTimerPhase(phase) {
+            timerPhase = phase;
+            timerStage.dataset.phase = phase;
+            startTimerBtn.textContent = TIMER_START_LABEL[phase];
         }
 
-        window.setTimerSec = function(sec) {
-            clearInterval(timerInterval);
-            isTimerRunning = false;
-            startTimerBtn.textContent = "시작";
-            timerSeconds = sec;
-            updateTimerDisplay();
-        };
+        function showTimerTime() {
+            const seconds = Math.ceil(timerLeftNow() / 1000);
+            const counting = timerPhase === "running" || timerPhase === "paused";
+            const final = counting && seconds > 0 && seconds <= TIMER_FINAL_SECONDS;
+            timerStage.classList.toggle("final", final);
+            timerStage.classList.toggle("urgent", final && seconds <= 3);
+            timerDisplay.setAttribute("y", timerPhase === "done" ? 445 : final ? 490 : 430);
+            if (timerPhase === "done") {
+                timerDisplay.textContent = "끝!";
+            } else if (final) {
+                timerDisplay.textContent = String(seconds);
+            } else {
+                timerDisplay.textContent = String(Math.floor(seconds / 60)).padStart(2, "0") + ":" + String(seconds % 60).padStart(2, "0");
+            }
+        }
 
-        timerModalBtn.addEventListener("click", () => { timerModal.hidden = false; });
-        closeTimerModal.addEventListener("click", () => { timerModal.hidden = true; });
+        function timerBeep(frequency, delay = 0, length = 0.12, volume = 0.16) {
+            if (!timerAudio) return;
+            const at = timerAudio.currentTime + delay;
+            const osc = timerAudio.createOscillator();
+            const gain = timerAudio.createGain();
+            osc.type = "triangle";
+            osc.frequency.value = frequency;
+            gain.gain.setValueAtTime(0.0001, at);
+            gain.gain.linearRampToValueAtTime(volume, at + 0.012);
+            gain.gain.exponentialRampToValueAtTime(0.0001, at + length);
+            osc.connect(gain);
+            gain.connect(timerAudio.destination);
+            osc.start(at);
+            osc.stop(at + length + 0.02);
+        }
+
+        function addTimerParticle(particle) {
+            if (timerParticles.length < 700) timerParticles.push(particle);
+        }
+
+        function burstTimerFirework(x, y) {
+            const color = TIMER_SPARK_COLORS[Math.floor(Math.random() * TIMER_SPARK_COLORS.length)];
+            for (let i = 0; i < 46; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 70 + Math.random() * 230;
+                const life = 0.8 + Math.random() * 0.7;
+                addTimerParticle({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, gravity: 170, drag: 0.98, life, max: life, size: 2 + Math.random() * 2.5, color });
+            }
+        }
+
+        function dropTimerConfetti() {
+            for (let i = 0; i < 130; i++) {
+                const life = 2.6 + Math.random() * 1.8;
+                addTimerParticle({ x: Math.random() * 1000, y: -20 - Math.random() * 260, vx: -30 + Math.random() * 60, vy: 90 + Math.random() * 120, gravity: 14, drag: 1, life, max: life, size: 5 + Math.random() * 4,
+                    color: TIMER_SPARK_COLORS[i % TIMER_SPARK_COLORS.length], spin: Math.random() * 6, turn: -5 + Math.random() * 10 });
+            }
+        }
+
+        function drawTimerParticles(now, dt) {
+            const width = timerStage.clientWidth;
+            const pixels = Math.round(width * Math.min(window.devicePixelRatio || 1, 2));
+            if (pixels && timerFx.width !== pixels) {
+                timerFx.width = pixels;
+                timerFx.height = Math.round(pixels * 0.54);
+            }
+            if (now < timerFireworksUntil && now >= timerNextBurst) {
+                burstTimerFirework(90 + Math.random() * 820, 50 + Math.random() * 290);
+                timerNextBurst = now + 170 + Math.random() * 230;
+            }
+            const scale = timerFx.width / 1000;
+            timerFxContext.setTransform(scale, 0, 0, scale, 0, 0);
+            timerFxContext.clearRect(0, 0, 1000, 540);
+            timerParticles = timerParticles.filter((item) => (item.life -= dt) > 0 && item.y < 580);
+            timerParticles.forEach((item) => {
+                item.vx *= item.drag;
+                item.vy = item.vy * item.drag + item.gravity * dt;
+                item.x += item.vx * dt;
+                item.y += item.vy * dt;
+                timerFxContext.fillStyle = `rgba(${item.color},${Math.min(1, item.life / item.max * 1.6)})`;
+                if (item.turn === undefined) {
+                    timerFxContext.beginPath();
+                    timerFxContext.arc(item.x, item.y, item.size, 0, Math.PI * 2);
+                    timerFxContext.fill();
+                } else {
+                    item.spin += item.turn * dt;
+                    timerFxContext.save();
+                    timerFxContext.translate(item.x, item.y);
+                    timerFxContext.rotate(item.spin);
+                    timerFxContext.fillRect(-item.size / 2, -item.size / 3, item.size, item.size / 1.5);
+                    timerFxContext.restore();
+                }
+            });
+        }
+
+        function drawTimerScene(now = performance.now()) {
+            timerRouteLength = timerRouteLength || timerRoute.getTotalLength();
+            const progress = Math.min(1, Math.max(0, 1 - timerLeftNow() / timerTotalMs));
+            const at = timerRouteLength * progress;
+            const point = timerRoute.getPointAtLength(at);
+            const back = timerRoute.getPointAtLength(Math.max(0, at - 1));
+            const ahead = timerRoute.getPointAtLength(Math.min(timerRouteLength, at + 1));
+            const angle = Math.atan2(ahead.y - back.y, ahead.x - back.x);
+            timerRocket.setAttribute("transform", `translate(${point.x.toFixed(2)} ${point.y.toFixed(2)}) rotate(${(angle * 180 / Math.PI + 90).toFixed(2)}) scale(1.4)`);
+            timerTrail.style.strokeDashoffset = String(1 - progress);
+            if (timerPhase === "running" && now - timerLastPuff > 70 && timerMotionAllowed()) {
+                timerLastPuff = now;
+                const life = 0.55 + Math.random() * 0.4;
+                addTimerParticle({ x: point.x - Math.cos(angle) * 60, y: point.y - Math.sin(angle) * 60, vx: -Math.cos(angle) * 34 + (Math.random() - 0.5) * 26, vy: -Math.sin(angle) * 34 + (Math.random() - 0.5) * 26,
+                    gravity: 0, drag: 0.99, life, max: life * 1.7, size: 3 + Math.random() * 4, color: Math.random() < 0.5 ? "255,179,92" : "226,232,245" });
+            }
+        }
+
+        function timerFrame(now) {
+            timerFrameId = 0;
+            if (timerModal.hidden) return;
+            const dt = Math.min(0.05, (now - timerLastFrame) / 1000 || 0);
+            timerLastFrame = now;
+            drawTimerScene(now);
+            drawTimerParticles(now, dt);
+            if (timerPhase === "running" || timerParticles.length || now < timerFireworksUntil) requestTimerFrame();
+        }
+
+        function requestTimerFrame() {
+            if (!timerFrameId && !timerModal.hidden) timerFrameId = requestAnimationFrame(timerFrame);
+        }
+
+        function finishTimer() {
+            clearInterval(timerClock);
+            timerLeftMs = 0;
+            setTimerPhase("done");
+            showTimerTime();
+            timerModal.hidden = false;
+            for (let round = 0; round < 3; round++) {
+                [523, 659, 784, 1047].forEach((note, i) => timerBeep(note, round * 0.85 + i * 0.13, i === 3 ? 0.5 : 0.18, 0.2));
+            }
+            if (timerMotionAllowed()) {
+                timerParticles = [];
+                burstTimerFirework(784, 121);
+                dropTimerConfetti();
+                timerFireworksUntil = performance.now() + 5000;
+                timerNextBurst = 0;
+            }
+            drawTimerScene();
+            requestTimerFrame();
+        }
+
+        function runTimerClock() {
+            if (timerPhase !== "running") return;
+            const left = timerLeftNow();
+            const seconds = Math.ceil(left / 1000);
+            if (seconds !== timerShownSecond) {
+                timerShownSecond = seconds;
+                showTimerTime();
+                if (seconds > 0 && seconds <= TIMER_FINAL_SECONDS) {
+                    timerBeep(seconds <= 3 ? 988 : 660);
+                    if (timerMotionAllowed()) {
+                        timerDisplay.animate([{ transform: "scale(1.4)" }, { transform: "scale(1)" }],
+                            { duration: 420, easing: "cubic-bezier(0.2, 1.4, 0.4, 1)" });
+                    }
+                }
+            }
+            if (left <= 0) finishTimer();
+        }
+
+        function setTimerLength(ms) {
+            clearInterval(timerClock);
+            timerTotalMs = ms;
+            timerLeftMs = ms;
+            timerParticles = [];
+            timerFireworksUntil = 0;
+            setTimerPhase("idle");
+            showTimerTime();
+            timerPresetButtons.forEach((button) => button.setAttribute("aria-pressed", String(Number(button.dataset.timerSec) * 1000 === ms)));
+            if (!timerModal.hidden) {
+                drawTimerScene();
+                timerFxContext.clearRect(0, 0, 1000, 540);
+            }
+        }
+
+        timerPresetButtons.forEach((button) => button.addEventListener("click", () => setTimerLength(Number(button.dataset.timerSec) * 1000)));
+        resetTimerBtn.addEventListener("click", () => setTimerLength(timerTotalMs));
 
         startTimerBtn.addEventListener("click", () => {
-            if (isTimerRunning) {
-                clearInterval(timerInterval);
-                isTimerRunning = false;
-                startTimerBtn.textContent = "시작";
-            } else {
-                isTimerRunning = true;
-                startTimerBtn.textContent = "일시정지";
-                timerInterval = setInterval(() => {
-                    if (timerSeconds > 0) {
-                        timerSeconds--;
-                        updateTimerDisplay();
-                    } else {
-                        clearInterval(timerInterval);
-                        isTimerRunning = false;
-                        startTimerBtn.textContent = "시작";
-                        alert("⏰ 타이머 시간이 완료되었습니다!");
-                    }
-                }, 1000);
+            if (timerPhase === "running") {
+                timerLeftMs = timerLeftNow();
+                clearInterval(timerClock);
+                setTimerPhase("paused");
+                showTimerTime();
+                return;
             }
+            if (timerPhase === "done") setTimerLength(timerTotalMs);
+            try {
+                timerAudio = timerAudio || new (window.AudioContext || window.webkitAudioContext)();
+                timerAudio.resume();
+            } catch (err) {
+                timerAudio = null;
+            }
+            timerEndAt = Date.now() + timerLeftMs;
+            setTimerPhase("running");
+            timerShownSecond = Math.ceil(timerLeftMs / 1000);
+            showTimerTime();
+            timerClock = setInterval(runTimerClock, 200);
+            requestTimerFrame();
         });
 
-        resetTimerBtn.addEventListener("click", () => {
-            clearInterval(timerInterval);
-            isTimerRunning = false;
-            startTimerBtn.textContent = "시작";
-            timerSeconds = 300;
-            updateTimerDisplay();
+        timerModalBtn.addEventListener("click", () => {
+            timerModal.hidden = false;
+            showTimerTime();
+            drawTimerScene();
+            requestTimerFrame();
         });
+
+        // 시간이 가는 중에 닫아도 계속 흐르고, 끝나면 창이 다시 열린다.
+        closeTimerModal.addEventListener("click", () => {
+            timerModal.hidden = true;
+            if (timerPhase === "done") setTimerLength(timerTotalMs);
+        });
+
+        setTimerLength(timerTotalMs);
 
         // 10. Drag & Drop Card Reordering
         const grid = document.getElementById("dashboardGrid");
