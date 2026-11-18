@@ -32,6 +32,7 @@ const { CANONICAL_ORIGIN } = require("./canonical-host");
 const { schoolDefaults } = require("./school-affiliation");
 const { classboardItemReadSchema, createClassboardReadState } = require("./classboard-read-state");
 const { classboardAvatars } = require("./classboard-avatars");
+const { createStudentClassDashboard } = require("./student-class-dashboard");
 const { noticeManagementSchema, NOTICE_MANAGE_SQL, registerNoticeManagement } = require("./notice-management");
 
 const SESSION_COOKIE = "class_session";
@@ -1737,6 +1738,12 @@ function createClassroomPlatform(options = {}) {
   const userStorage = createUserStorage({ pool, requireUser, requireDatabase, HttpError, asyncRoute, onSave: learningRecords.captureStorage });
   router.use("/me/storage", userStorage.router);
 
+  // 학생이 보는 학급 대시보드(자기 반, 읽기만).
+  router.use("/student/class-dashboard", createStudentClassDashboard({
+    pool, requireUser, requireDatabase, HttpError, asyncRoute, studentMembership,
+    ensurePublicHolidays: async (schoolId, year) => upsertApiHolidays(schoolId, year, await fetchNagerHolidays(year))
+  }).router);
+
   // 학교 공용 채팅(학교마다 방 하나). 입장권은 박물관 입장권과 같은 서명을 쓰되 종류만 다르다.
   const schoolChat = createSchoolChat({
     pool, requireUser, requireTeacher, requireDatabase, studentMembership, teacherRegistration,
@@ -1976,7 +1983,9 @@ function createClassroomPlatform(options = {}) {
 
   async function readableScheduleClassId(user, requestedClassId) {
     if (user.role === "student") return userClassId(user);
-    if (user.role !== "teacher" && !await teacherRegistration(user)) return null;
+    if (user.role !== "teacher" && !await teacherRegistration(user)) {
+      return await studentMembership(user.id) ? userClassId(user) : null;
+    }
     const requested = Number(requestedClassId);
     const result = await pool.query(
       `SELECT c.id

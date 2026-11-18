@@ -108,7 +108,7 @@ async function withSchool(run) {
       assertAccountRoles, studentAccounts, ROSTER_ROLE_LOCK, adminEmails: [], teacherEmails: [],
       avatarCapacity: () => 10, pickRandomAvailableAvatar: () => 'test.webp'
     };
-    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles'];
+    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles', 'studentMembership', 'readableScheduleClassId'];
     Object.assign(bindings, new Function(...Object.keys(bindings),
       `${functions.map(declaration).join('\n')}\nreturn { ${functions.join(',')} };`)(...Object.values(bindings)));
     const api = {
@@ -184,6 +184,13 @@ test('saving an empty school roster hides old student copies while preserving th
   assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM classroom_students')).rows[0].n, 2);
   assert.deepEqual((await api.classroom()).classroom.students, []);
   assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM preserved_class_posts')).rows[0].n, 2);
+}));
+
+test('a rostered student can read their class schedules even if the account role is still plain; other accounts cannot', () => withSchool(async ({ db, bindings }) => {
+  await db.exec("INSERT INTO classroom_users VALUES (20, 'student@example.invalid', '학생'), (21, 'nobody@example.invalid', '없음')");
+  await db.exec('UPDATE school_students SET user_id = 20 WHERE class_number = 3');
+  assert.equal(String(await bindings.readableScheduleClassId({ id: 20, email: 'student@example.invalid', role: 'user' })), '2');
+  assert.equal(await bindings.readableScheduleClassId({ id: 21, email: 'nobody@example.invalid', role: 'user' }), null);
 }));
 
 test('real portal clears removed cards and saved selection; dashboard state clears the previous class and schedules', () => withSchool(async ({ api, db }) => {
