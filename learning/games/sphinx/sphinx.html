@@ -697,6 +697,34 @@ textarea,
 }
 
 
+@media (min-width: 860px) {
+    .sphinx-start-wrap {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: stretch;
+        justify-content: center;
+        width: 100%;
+        max-width: 880px;
+        margin: 0 auto;
+    }
+    .sphinx-start-wrap > .start-card {
+        flex: 1 1 440px;
+        max-width: 460px;
+    }
+    .sphinx-start-wrap > .finishers-panel {
+        flex: 1 1 380px;
+        max-width: 440px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .sphinx-start-wrap > .finishers-panel .finishers-list {
+        flex: 1 1 auto;
+        max-height: 380px;
+    }
+}
+
 @media (max-width: 760px), (pointer: coarse) {
     .volume-control {
         display: none !important;
@@ -842,20 +870,24 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
     function loadQuestion() {
         if (currentStage === 0) {
             displayArea.innerHTML = `
-                <div class="question-text">${playerName ? `PLAYER · ${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
-                <div class="player-entry">
-                    <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
-                    <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
-                </div>
-                <div class="options-container" data-game-entry>
-                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">Start · Beginner</button>
-                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">Start · Advanced</button>
-                    <button data-game-rules class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
-                    <button class="quiz-btn race-start" type="button" onclick="race.open()" ${playerName ? "" : "hidden"}>순위전</button>
-                </div>
-                <div class="finishers-panel">
-                    <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
-                    <div class="finishers-list" id="today-finishers-list"></div>
+                <div class="sphinx-start-wrap">
+                    <div class="start-card">
+                        <div class="question-text">${playerName ? `PLAYER · ${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
+                        <div class="player-entry">
+                            <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
+                            <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
+                        </div>
+                        <div class="options-container" data-game-entry>
+                            <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">Start · Beginner</button>
+                            <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">Start · Advanced</button>
+                            <button data-game-rules class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
+                            <button class="quiz-btn race-start" type="button" onclick="race.open()" ${playerName ? "" : "hidden"}>순위전</button>
+                        </div>
+                    </div>
+                    <div class="finishers-panel">
+                        <div class="finishers-title">🏆 FINISHERS</div>
+                        <div class="finishers-list" id="today-finishers-list"></div>
+                    </div>
                 </div>`;
             if (playerName) window.ClassroomSoloAvatar.show(displayArea.querySelector(".question-text"));
             const playerEntry = document.querySelector(".player-entry");
@@ -1078,7 +1110,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                 ${win ? "<스핑크스> 그대의 예지를 칭송하리라." : "<스핑크스> 성스러운 땅에 합당치 않은 자여! 물러가라!"}
             </div>
             ${win ? `<div class="finishers-panel result-finishers">
-                <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                <div class="finishers-title">🏆 FINISHERS</div>
                 <div class="finishers-list" id="result-finishers-list"></div>
             </div>` : ""}
             <button class="quiz-btn confirm-btn" onclick="currentStage=0; loadQuestion();">처음으로</button>`;

@@ -49,21 +49,40 @@ async function initializeFinisherIdentity(pool) {
   } finally { client.release(); }
 }
 
-// 오늘 명단은 보는 사람과 같은 학교 기록만 보인다. 학교가 없는 사람(손님)은 학교 없는 기록만 본다.
+// 학년도(3월 1일 ~ 익년 2월 말일) 기준 완주자 명단: 보는 사람과 같은 학교 기록만 보이며,
+// 개인별 최고 기록(rank 기준 최댓값) 1건만 선별하여 학급 오름차순(1-1, 1-2, ... 6-2)으로 정렬한다.
 async function listFinisherRecords(pool, date, gameId, schoolId = null) {
   const year = Number(date.slice(0, 4)) - (Number(date.slice(5, 7)) < 3 ? 1 : 0);
   const result = await pool.query(`WITH roster AS (${ROSTER_SQL}), unique_names AS (
       SELECT roster_name, MIN(grade) AS grade, MIN(class_number) AS class_number, MIN(school_id) AS school_id
-      FROM roster WHERE academic_year = $3 GROUP BY roster_name HAVING COUNT(*) = 1
+      FROM roster WHERE academic_year = $2::int GROUP BY roster_name HAVING COUNT(*) = 1
+    ),
+    ranked_records AS (
+      SELECT r.player_name AS name, r.difficulty, r.rank, r.finished_time AS time,
+        TO_CHAR(r.record_date, 'YYYY-MM-DD') AS date,
+        r.record_date,
+        CASE WHEN r.player_key LIKE 'legacy:%' THEN u.grade ELSE r.grade END AS grade,
+        CASE WHEN r.player_key LIKE 'legacy:%' THEN u.class_number ELSE r.class_number END AS "classNumber",
+        ROW_NUMBER() OVER (
+          PARTITION BY COALESCE(r.player_key, r.player_name)
+          ORDER BY r.rank DESC, r.record_date DESC, r.finished_time DESC
+        ) AS rn
+      FROM game_finisher_records r
+      LEFT JOIN unique_names u ON u.roster_name = r.player_name
+      WHERE r.record_date >= make_date($2::int, 3, 1) AND r.record_date < make_date($2::int + 1, 3, 1)
+        AND r.game_id = $1
+        AND (CASE WHEN r.player_key LIKE 'legacy:%' THEN COALESCE(r.school_id, u.school_id) ELSE r.school_id END) IS NOT DISTINCT FROM $3::bigint
     )
-    SELECT r.player_name AS name, r.difficulty, r.rank, r.finished_time AS time,
-      CASE WHEN r.player_key LIKE 'legacy:%' THEN u.grade ELSE r.grade END AS grade,
-      CASE WHEN r.player_key LIKE 'legacy:%' THEN u.class_number ELSE r.class_number END AS "classNumber"
-    FROM game_finisher_records r
-    LEFT JOIN unique_names u ON u.roster_name = r.player_name
-    WHERE r.record_date = $1::date AND r.game_id = $2
-      AND (CASE WHEN r.player_key LIKE 'legacy:%' THEN COALESCE(r.school_id, u.school_id) ELSE r.school_id END) IS NOT DISTINCT FROM $4::bigint
-    ORDER BY r.finished_time ASC, r.player_name ASC, r.player_key ASC`, [date, gameId, year, schoolId]);
+    SELECT name, difficulty, rank, time, date, grade, "classNumber"
+    FROM ranked_records
+    WHERE rn = 1
+    ORDER BY
+      CASE WHEN grade IS NULL THEN 1 ELSE 0 END,
+      grade ASC,
+      CASE WHEN "classNumber" IS NULL THEN 1 ELSE 0 END,
+      "classNumber" ASC,
+      name ASC,
+      date ASC`, [gameId, year, schoolId]);
   return result.rows.map(row => ({ ...row, rank: Number(row.rank) }));
 }
 
@@ -85,16 +104,34 @@ async function saveFinisherRecord(pool, record) {
         AND NOT EXISTS (SELECT 1 FROM game_finisher_records WHERE record_date = $1::date AND game_id = $2 AND player_key = $3)`,
       [date, gameId, playerKey, name, year, grade, classNumber]);
     }
-    await client.query(`INSERT INTO game_finisher_records
-    (record_date, game_id, player_key, player_name, difficulty, rank, finished_time, grade, class_number, school_id)
-    VALUES ($1::date, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-    ON CONFLICT (record_date, game_id, player_key) DO UPDATE
-    SET player_name = EXCLUDED.player_name, grade = EXCLUDED.grade, class_number = EXCLUDED.class_number, school_id = EXCLUDED.school_id,
-        difficulty = CASE WHEN EXCLUDED.rank > game_finisher_records.rank THEN EXCLUDED.difficulty ELSE game_finisher_records.difficulty END,
-        rank = GREATEST(EXCLUDED.rank, game_finisher_records.rank),
-        finished_time = CASE WHEN EXCLUDED.rank > game_finisher_records.rank THEN EXCLUDED.finished_time ELSE game_finisher_records.finished_time END,
-        updated_at = NOW()`, [date, gameId, playerKey, name, difficulty, rank, time, grade || null, classNumber || null, schoolId]);
-    await client.query("DELETE FROM game_finisher_records WHERE record_date < $1::date - 13", [date]);
+    const academicYear = Number(date.slice(0, 4)) - (Number(date.slice(5, 7)) < 3 ? 1 : 0);
+
+    // 같은 학년도 내 기존 최고 기록 확인: 이전 기록이 새 기록보다 높으면(예: 8개 > 3개) 새 낮은 기록은 반영하지 않고 최고 기록을 유지한다.
+    const existing = await client.query(`SELECT record_date, rank FROM game_finisher_records
+      WHERE record_date >= make_date($1::int, 3, 1) AND record_date < make_date($1::int + 1, 3, 1)
+        AND game_id = $2 AND player_key = $3
+      ORDER BY rank DESC, record_date DESC LIMIT 1`, [academicYear, gameId, playerKey]);
+    const prevBest = existing.rows[0];
+
+    if (!prevBest || rank >= Number(prevBest.rank)) {
+      // 기존 다른 날짜에 더 낮은 기록이 있었다면 정리하여 1인 1 최고기록만 남긴다.
+      if (prevBest && prevBest.record_date && prevBest.record_date !== date) {
+        await client.query(`DELETE FROM game_finisher_records
+          WHERE record_date >= make_date($1::int, 3, 1) AND record_date < make_date($1::int + 1, 3, 1)
+            AND game_id = $2 AND player_key = $3 AND record_date <> $4::date`,
+          [academicYear, gameId, playerKey, date]);
+      }
+
+      await client.query(`INSERT INTO game_finisher_records
+      (record_date, game_id, player_key, player_name, difficulty, rank, finished_time, grade, class_number, school_id)
+      VALUES ($1::date, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      ON CONFLICT (record_date, game_id, player_key) DO UPDATE
+      SET player_name = EXCLUDED.player_name, grade = EXCLUDED.grade, class_number = EXCLUDED.class_number, school_id = EXCLUDED.school_id,
+          difficulty = CASE WHEN EXCLUDED.rank > game_finisher_records.rank THEN EXCLUDED.difficulty ELSE game_finisher_records.difficulty END,
+          rank = GREATEST(EXCLUDED.rank, game_finisher_records.rank),
+          finished_time = CASE WHEN EXCLUDED.rank > game_finisher_records.rank THEN EXCLUDED.finished_time ELSE game_finisher_records.finished_time END,
+          updated_at = NOW()`, [date, gameId, playerKey, name, difficulty, rank, time, grade || null, classNumber || null, schoolId]);
+    }
     await client.query("COMMIT");
   } catch (error) {
     await client.query("ROLLBACK");

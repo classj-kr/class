@@ -1,10 +1,12 @@
 .finishers-panel {
     box-sizing: border-box;
     width: min(560px, 100%);
-    margin: 18px auto 0;
+    margin: 0 auto;
     padding: 13px 15px;
     border: 1px solid rgba(198, 170, 85, 0.38);
-    background: rgba(3, 8, 13, 0.56);
+    background: rgba(3, 8, 13, 0.65);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(0, 0, 0, 0.35);
     color: #e8dfc9;
 }
 
@@ -17,26 +19,54 @@
     text-align: center;
 }
 
-.finishers-list { min-height: 30px; }
+.finishers-list {
+    min-height: 30px;
+    max-height: 380px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(198, 170, 85, 0.4) transparent;
+}
+
+.finishers-list::-webkit-scrollbar {
+    width: 6px;
+}
+.finishers-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.finishers-list::-webkit-scrollbar-thumb {
+    background: rgba(198, 170, 85, 0.4);
+    border-radius: 3px;
+}
 
 .finisher-row {
     display: grid;
-    grid-template-columns: 58px minmax(80px, 1fr) minmax(120px, 1.5fr);
-    gap: 9px;
+    grid-template-columns: minmax(82px, 94px) minmax(76px, 1fr) minmax(100px, 1.3fr);
+    gap: 8px;
     align-items: center;
-    padding: 7px 2px;
+    padding: 6px 2px;
     border-top: 1px solid rgba(255, 255, 255, 0.09);
     font-size: 12px;
 }
 
 .finisher-row:first-child { border-top: 0; }
-.finisher-time { color: #91a0b3; font-family: Consolas, monospace; }
-.finisher-name { color: #fff0b1; font-weight: 900; }
-.finisher-difficulty { color: #d4dce5; text-align: right; }
-.finisher-empty { padding: 7px; color: #aeb9c6; text-align: center; font-size: 12px; }
-.result-finishers { margin-top: 16px; }
+.finisher-date, .finisher-time {
+    color: #91a0b3;
+    font-family: Consolas, "Lucida Console", monospace;
+    font-size: 11px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+}
+.finisher-name { color: #fff0b1; font-weight: 900; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.finisher-difficulty { color: #d4dce5; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.finisher-empty { padding: 12px 7px; color: #aeb9c6; text-align: center; font-size: 12px; }
+.result-finishers { margin-top: 16px; width: 100%; }
 
 @media (max-width: 520px) {
     .finishers-panel { padding: 11px; }
-    .finisher-row { grid-template-columns: 48px minmax(70px, 1fr) minmax(90px, 1.3fr); gap: 6px; font-size: 11px; }
+    .finisher-row {
+        grid-template-columns: 78px minmax(68px, 1fr) minmax(88px, 1.2fr);
+        gap: 6px;
+        font-size: 11px;
+    }
+    .finisher-date, .finisher-time { font-size: 10px; }
 }

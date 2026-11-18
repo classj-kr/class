@@ -56,15 +56,35 @@ const { initializeFinisherIdentity, listFinisherRecords, saveFinisherRecord } = 
     records = await listFinisherRecords(pool, base.date, base.gameId, '1');
     assert.equal(records.find(r => r.classNumber===1).rank, 3);
     assert.equal(records.find(r => r.classNumber===1).time, '14:10');
+
+    // 학년도 누적 및 1인 1 최고기록 테스트:
+    // 다른 날짜에 더 낮은 점수로 클리어해도 이전 최고 점수(3)가 보존된다.
+    await saveFinisherRecord(pool, { ...base, date:'2026-11-20', userId:'10', classNumber:1, difficulty:'쉬움', rank:1, time:'09:00' });
+    records = await listFinisherRecords(pool, '2026-11-20', base.gameId, '1');
+    const student10 = records.filter(r => r.classNumber === 1);
+    assert.equal(student10.length, 1, '1인당 최고 기록 1건만 유지된다');
+    assert.equal(student10[0].rank, 3, '더 낮은 점수는 최고 기록을 덮어쓰지 않는다');
+
+    // 다른 날짜에 더 높은 점수로 클리어하면 최고 기록이 갱신된다.
+    await saveFinisherRecord(pool, { ...base, date:'2026-11-21', userId:'10', classNumber:1, difficulty:'극악', rank:5, time:'15:00' });
+    records = await listFinisherRecords(pool, '2026-11-21', base.gameId, '1');
+    assert.equal(records.find(r => r.classNumber === 1).rank, 5, '더 높은 점수로 최고 기록이 갱신된다');
+    assert.equal(records.length, 2, '여전히 학생당 1건씩만 조회된다');
+
+    // 학급 오름차순 정렬 확인 (6-1 이 6-2 보다 앞에 위치)
+    assert.equal(records[0].classNumber, 1);
+    assert.equal(records[1].classNumber, 2);
+
     const target = { innerHTML:'' }, window = {};
     vm.runInNewContext(fs.readFileSync('assets/network/finisher-board.js','utf8'), {
       window, document:{currentScript:null,querySelector:()=>true,getElementById:()=>target}
     });
     const board = window.ClassroomFinisherBoard.create({gameId:'minesweeper'});
-    board.render('list',[{name:'송화박',grade:6,classNumber:2},{name:'학교관리자'},{name:'<script>',grade:6,classNumber:2}]);
+    board.render('list',[{name:'송화박',grade:6,classNumber:2,date:'2026-03-03'},{name:'학교관리자',date:'2026-11-14'},{name:'<script>',grade:6,classNumber:2}]);
     assert.match(target.innerHTML,/6-2 송화박/);
+    assert.match(target.innerHTML,/2026\. 3\. 3\./);
     assert.match(target.innerHTML,/>학교관리자</);
     assert.ok(!target.innerHTML.includes('<script>'));
-    console.log('finisher-records: migration, legacy names, same-name students, best results and escaped labels pass');
+    console.log('finisher-records: migration, academic year accumulation, 1-per-player best score, class ordering, and escaped labels pass');
   } finally { await db.close(); }
 })().catch(error => { console.error(error); process.exitCode=1; });

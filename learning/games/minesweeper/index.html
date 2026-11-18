@@ -25,27 +25,29 @@
   <audio id="bgm" src="assets/sound/bgm.ogg?v=20261108-focusflow" loop preload="auto"></audio>
   <main class="page-shell">
     <section class="start-screen screen" id="startScreen" data-game-entry aria-labelledby="startTitle">
-      <h1 class="start-title" id="startTitle"><span>MINESWEEPER</span></h1>
+      <div class="start-card">
+        <h1 class="start-title" id="startTitle"><span>MINESWEEPER</span></h1>
 
-      <p class="player-line" id="playerLine"></p>
+        <p class="player-line" id="playerLine"></p>
 
-      <div class="difficulty-container">
-        <p class="setting-label">난이도</p>
-        <div class="mode-switch" aria-label="판 크기 선택">
-          <button type="button" data-level="easy" aria-pressed="true"><strong>8 × 8</strong><span>지뢰 10개</span></button>
-          <button type="button" data-level="normal" aria-pressed="false"><strong>12 × 12</strong><span>지뢰 24개</span></button>
-          <button type="button" data-level="hard" aria-pressed="false"><strong>16 × 16</strong><span>지뢰 50개</span></button>
+        <div class="difficulty-container">
+          <p class="setting-label">난이도</p>
+          <div class="mode-switch" aria-label="판 크기 선택">
+            <button type="button" data-level="easy" aria-pressed="true"><strong>8 × 8</strong><span>지뢰 10개</span></button>
+            <button type="button" data-level="normal" aria-pressed="false"><strong>12 × 12</strong><span>지뢰 24개</span></button>
+            <button type="button" data-level="hard" aria-pressed="false"><strong>16 × 16</strong><span>지뢰 50개</span></button>
+          </div>
         </div>
-      </div>
 
-      <div class="start-actions">
-        <button class="primary start-button" id="startButton" type="button">Start</button>
-        <button class="secondary start-button" id="raceButton" type="button">순위전</button>
+        <div class="start-actions">
+          <button class="primary start-button" id="startButton" type="button">Start</button>
+          <button class="secondary start-button" id="raceButton" type="button">순위전</button>
+        </div>
+        <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
       </div>
-      <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
       <div class="finishers-panel">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-title">🏆 FINISHERS</div>
         <div class="finishers-list" id="today-finishers-list"></div>
       </div>
     </section>
@@ -94,7 +96,7 @@
               <h2 id="resultTitle">CONGRATULATIONS!</h2>
               <p id="resultSummary"></p>
               <div class="finishers-panel result-finishers">
-                <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+                <div class="finishers-title">🏆 FINISHERS</div>
                 <div class="finishers-list" id="result-finishers-list"></div>
               </div>
               <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>

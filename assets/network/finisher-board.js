@@ -21,13 +21,28 @@
             .replace(/'/g, "&#039;");
     }
 
+    function formatRecordDate(record) {
+        if (!record) return "--";
+        if (record.date) {
+            const parts = String(record.date).split("-");
+            if (parts.length === 3) {
+                const y = Number(parts[0]), m = Number(parts[1]), d = Number(parts[2]);
+                if (Number.isInteger(y) && Number.isInteger(m) && Number.isInteger(d)) {
+                    return `${y}. ${m}. ${d}.`;
+                }
+            }
+            return String(record.date);
+        }
+        return record.time || "--";
+    }
+
     function recordsHtml(records) {
         if (!Array.isArray(records) || records.length === 0) {
-            return '<div class="finisher-empty">아직 오늘의 클리어 기록이 없습니다.</div>';
+            return '<div class="finisher-empty">아직 완주 기록이 없습니다.</div>';
         }
         return records.map(record => `
             <div class="finisher-row">
-                <span class="finisher-time">${escapeHtml(record.time || "--:--")}</span>
+                <span class="finisher-date finisher-time">${escapeHtml(formatRecordDate(record))}</span>
                 <span class="finisher-name">${escapeHtml(playerLabel(record))}</span>
                 <span class="finisher-difficulty">${escapeHtml(record.difficulty)}</span>
             </div>

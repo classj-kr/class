@@ -24,35 +24,37 @@
 <body data-game-navigation="single-player" data-entry-game="sachunseong" data-sfx-feedback="none">
   <main class="page-shell">
     <section class="start-screen screen" id="startScreen" data-game-entry aria-labelledby="startTitle">
-      <h1 class="start-title" id="startTitle"><span>짝 찾기</span></h1>
+      <div class="start-card">
+        <h1 class="start-title" id="startTitle"><span>짝 찾기</span></h1>
 
-      <p class="player-line" id="playerLine"></p>
+        <p class="player-line" id="playerLine"></p>
 
-      <div class="setting-block">
-        <label class="setting-label" for="subjectSelect">소재</label>
-        <select id="subjectSelect" class="level-select"></select>
-      </div>
-      <div class="setting-block">
-        <label class="setting-label" for="levelSelect">단계</label>
-        <select id="levelSelect" class="level-select"></select>
-      </div>
-      <div class="setting-block">
-        <p class="setting-label">판 크기</p>
-        <div class="mode-switch" aria-label="판 크기 선택">
-          <button type="button" data-size="small" aria-pressed="true"><strong>6 × 4</strong><span>12쌍</span></button>
-          <button type="button" data-size="medium" aria-pressed="false"><strong>8 × 5</strong><span>20쌍</span></button>
-          <button type="button" data-size="large" aria-pressed="false"><strong>10 × 6</strong><span>30쌍</span></button>
+        <div class="setting-block">
+          <label class="setting-label" for="subjectSelect">소재</label>
+          <select id="subjectSelect" class="level-select"></select>
         </div>
-      </div>
+        <div class="setting-block">
+          <label class="setting-label" for="levelSelect">단계</label>
+          <select id="levelSelect" class="level-select"></select>
+        </div>
+        <div class="setting-block">
+          <p class="setting-label">판 크기</p>
+          <div class="mode-switch" aria-label="판 크기 선택">
+            <button type="button" data-size="small" aria-pressed="true"><strong>6 × 4</strong><span>12쌍</span></button>
+            <button type="button" data-size="medium" aria-pressed="false"><strong>8 × 5</strong><span>20쌍</span></button>
+            <button type="button" data-size="large" aria-pressed="false"><strong>10 × 6</strong><span>30쌍</span></button>
+          </div>
+        </div>
 
-      <div class="start-actions">
-        <button class="primary start-button" id="startButton" type="button">Start</button>
-        <button class="secondary start-button" id="raceButton" type="button">순위전</button>
+        <div class="start-actions">
+          <button class="primary start-button" id="startButton" type="button">Start</button>
+          <button class="secondary start-button" id="raceButton" type="button">순위전</button>
+        </div>
+        <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
       </div>
-      <a class="back-link start-back" href="../../../#puzzle-title">← MAIN MENU</a>
 
       <div class="finishers-panel">
-        <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+        <div class="finishers-title">🏆 FINISHERS</div>
         <div class="finishers-list" id="today-finishers-list"></div>
       </div>
     </section>
@@ -94,7 +96,7 @@
             <h2 id="resultTitle">CONGRATULATIONS!</h2>
             <p id="resultSummary"></p>
             <div class="finishers-panel result-finishers">
-              <div class="finishers-title">🏆 TODAY’S FINISHERS</div>
+              <div class="finishers-title">🏆 FINISHERS</div>
               <div class="finishers-list" id="result-finishers-list"></div>
             </div>
             <button class="primary" id="playAgainButton" type="button">PLAY AGAIN</button>
