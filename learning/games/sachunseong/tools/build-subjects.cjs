@@ -165,8 +165,8 @@ function capitals() {
   const countries = data.countries.filter(c => c.iso !== 'KP');
   const pairsOf = list => list.map(c => [c.country, c.capital]);
   const inGroup = (...ids) => pairsOf(countries.filter(c => ids.includes(c.continent)));
-  const labels = { all: '전체', asia: '아시아', europe: '유럽', rest: '아프리카·아메리카·오세아니아' };
-  const levels = { all: pairsOf(countries), asia: inGroup('asia'), europe: inGroup('europe'), rest: inGroup('africa', 'americas', 'oceania') };
+  const labels = { all: '전체', asia: '아시아·오세아니아', europe: '유럽', rest: '아프리카·아메리카' };
+  const levels = { all: pairsOf(countries), asia: inGroup('asia', 'oceania'), europe: inGroup('europe'), rest: inGroup('africa', 'americas') };
   write('capitals', labels, levels);
 }
 
