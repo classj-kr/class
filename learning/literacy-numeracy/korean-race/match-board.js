@@ -12,13 +12,22 @@
     let selected = -1;
     let busy = false;
     let view = null;
+    let pending = [];        // 서버에 묻는 중인 두 패(답이 오면 내가 지운 모습으로 지운다)
+    const fx = root.MatchFx ? root.MatchFx.create(el) : null;
+    const point = (i) => {
+      const box = el.getBoundingClientRect(), r = tiles[i]?.getBoundingClientRect();
+      return r ? [r.left - box.left - el.clientLeft + r.width / 2, r.top - box.top - el.clientTop + r.height / 2] : null;
+    };
+    const tileSize = (i) => tiles[i]?.getBoundingClientRect().width || 80;
 
     function reset() {
+      fx?.clear();
       el.replaceChildren();
       tiles = [];
       selected = -1;
       busy = false;
       view = null;
+      pending = [];
     }
 
     function fit(tile) {
@@ -109,7 +118,8 @@
 
     function render(match, round) {
       if (!match) { reset(); return; }
-      if (round !== roundId || !view || view.cells.length !== match.cells.length) {
+      const fresh = round !== roundId || !view || view.cells.length !== match.cells.length;
+      if (fresh) {
         roundId = round;
         reset();
         view = match;
@@ -117,8 +127,12 @@
         layout();
       }
       view = match;
-      // 서버 판에서 지워진 패(내가 지웠거나 팀원이 지웠거나)를 지운다.
-      match.cleared.forEach((i) => clearTile(i, false));
+      // 서버 판에서 지워진 패(팀원이 지웠거나 새로고침 전에 지운 패)를 지운다.
+      match.cleared.forEach((i) => {
+        if (pending.includes(i) || !tiles[i] || tiles[i].classList.contains('gone')) return;
+        if (!fresh) fx?.mate(point(i), tileSize(i));
+        clearTile(i, false);
+      });
       el.classList.toggle('finished', Boolean(match.finished));
     }
 
@@ -146,6 +160,7 @@
         return;
       }
       busy = true;
+      pending = [a, i];
       tile.classList.add('selected');
       Promise.resolve(onPick(a, i))
         .then((result) => {
@@ -154,16 +169,27 @@
           selected = -1;
           if (!result) return;
           if (result.correct) {
+            const pa = point(a), pb = point(i);
+            if (pa && pb) {
+              fx?.match(pa, pb, { combo: result.combo || 1, size: tileSize(a) });
+              root.MatchFx?.flyTo(tiles[a], pa, pb);
+              root.MatchFx?.flyTo(tiles[i], pb, pa);
+            }
             clearTile(a, true);
             clearTile(i, true);
             onSound('good', result.combo);
           } else if (!result.gone) {
             nudge(a, 'shake');
             nudge(i, 'shake');
+            fx?.miss(point(a), tileSize(a));
+            fx?.miss(point(i), tileSize(i));
             onSound('bad', result.penalty);
           }
+          pending = [];
+          if (view) view.cleared.forEach((k) => { if ((k === a || k === i) && !tiles[k]?.classList.contains('gone')) clearTile(k, false); });
         })
         .catch(() => {
+          pending = [];
           tiles[a]?.classList.remove('selected');
           tile.classList.remove('selected');
           selected = -1;

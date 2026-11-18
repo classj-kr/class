@@ -106,6 +106,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
       combo: x.combo,
       bestCombo: x.bestCombo,
       scoredAt: x.scoredAt,
+      tilesLeft: tilesLeft(r, matchKey(r, x)),
     }));
     return Core.rank(rows).map((row, i) => ({ ...row, rank: i + 1 }));
   }
@@ -117,6 +118,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     return { rows: spec.rows, cols: spec.cols, pairs: pairs.length, cells: Questions.shuffle(tiles, random), boards: new Map() };
   }
   const matchKey = (r, p) => (r.config.teamMode ? 't' + p.team : 'p' + p.id);
+  // 짝 찾기: 이 사람(팀) 판에 남은 패 수.
+  const tilesLeft = (r, key) => (r.match ? r.match.pairs * 2 - (r.match.boards.get(key)?.cleared.size || 0) : null);
   function matchBoard(r, key) {
     if (!r.match.boards.has(key)) r.match.boards.set(key, { cleared: new Set(), penalty: 0, finishedAt: null });
     return r.match.boards.get(key);
@@ -137,6 +140,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
     teams.forEach((t) => {
       const b = r.match.boards.get('t' + t.index);
       t.finishedAt = b?.finishedAt ? b.finishedAt + b.penalty * 1000 : null;
+      t.tilesLeft = tilesLeft(r, 't' + t.index);
     });
     const ranked = teams.filter((t) => t.size).sort((a, b) => b.value - a.value || (a.finishedAt ?? Infinity) - (b.finishedAt ?? Infinity) || a.index - b.index);
     ranked.forEach((t, i) => {

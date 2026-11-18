@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
   <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
   <link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261117-shisen">
-  <link rel="stylesheet" href="styles.css?v=20261118-fin">
+  <link rel="stylesheet" href="/assets/network/match-fx.css?v=20261118-1">
+  <link rel="stylesheet" href="styles.css?v=20261118-fx">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
   <script src="../../../assets/network/finisher-board.js?v=20261114-class-name"></script>
   <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
   <script src="/assets/network/single-player-avatar.js?v=2"></script>
   <script src="/assets/network/multiplayer-lobby.js?v=20261118-main-join"></script>
-  <script src="/assets/network/puzzle-race.js?v=20261118-podium-music"></script>
+  <script src="/assets/network/puzzle-race.js?v=20261118-pair-rank"></script>
   <script src="/assets/site-storage.js?v=20261006-1"></script>
   <script src="/assets/sound/race-music.js?v=20261106-1"></script>
   <script src="/assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
@@ -61,7 +62,6 @@
       <div class="board-area" id="boardArea">
         <div class="board-wrap" id="boardWrap">
           <div class="tile-board" id="board" role="grid" aria-label="짝 찾기 판"></div>
-          <svg class="link-layer" id="linkLayer" aria-hidden="true"></svg>
           <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
         </div>
       </div>
@@ -76,6 +76,8 @@
           <div><span>남은 패</span><strong id="tilesLeft">0</strong></div>
           <div><span>TIME</span><strong id="timer">00:00</strong></div>
         </div>
+
+        <div class="combo-gauge mfx-t0" id="comboGauge" aria-hidden="true"><span>콤보</span><strong id="comboCount">0</strong><i><b id="comboBar"></b></i></div>
 
         <div class="tools" role="group" aria-label="도움 쓰기">
           <button type="button" id="hintButton" class="tool-button"><span class="tool-key">힌트</span><strong id="hintCount">3</strong></button>
@@ -146,8 +148,9 @@
     </section>
   </main>
 
+  <script src="/assets/network/match-fx.js?v=20261118-1"></script>
   <script src="logic.js?v=20261117-1"></script>
   <script src="/assets/learning-activity.js?v=20261116-2"></script>
-  <script src="app.js?v=20261118-2"></script>
+  <script src="app.js?v=20261118-3"></script>
 </body>
 </html>

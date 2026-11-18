@@ -656,6 +656,12 @@
     const rank = myTeamNow ? myTeamNow.rank : s.me.rank;
     $('rankNow').parentElement.querySelector('span').textContent = myTeamNow ? '우리 팀' : '순위';
     $('rankNow').textContent = rank ? rank + '위' : '-';
+    const big = $('matchRank');
+    big.hidden = s.config.mode !== 'match';
+    if (!big.hidden && big.textContent !== (rank ? rank + '등' : '')) {
+      big.textContent = rank ? rank + '등' : '';
+      retrigger(big, 'pop');
+    }
     if (lastRank && rank && rank !== lastRank) {
       retrigger($('rankNow').parentElement, rank < lastRank ? 'rank-up' : 'rank-down');
       // 앞지르면 알려 준다(연산 순위전처럼).
@@ -840,8 +846,6 @@
         const box = $('matchBoard').getBoundingClientRect();
         if (data.correct) {
           judge(true);
-          burst(box.left + box.width / 2, box.top + box.height / 3, localCombo >= 10 ? 34 : 18, localCombo >= 10 ? 8 : 5);
-          if (localCombo >= 2) floatText(`${localCombo} COMBO`, box.left + box.width / 2, box.top + box.height / 3, localCombo >= 10 ? 'mega' : 'big');
           if (data.state.me.match?.finished) banner(state.teams ? '🎉 우리 팀 판을 다 지웠어요!' : '🎉 판을 다 지웠어요!');
         } else if (!data.gone) {
           judge(false);
@@ -1045,7 +1049,52 @@
     }
     box.querySelectorAll('.tower').forEach((col) => { if (!alive.has(col.dataset.id)) col.remove(); });
   }
+  // 짝 찾기: 경쟁자(팀전이면 팀)마다 아바타·남은 패·콤보를 보인다.
+  function renderRivals(s) {
+    const box = $('miniBoard');
+    const total = (s.me.match?.pairs || 1) * 2;
+    let rows;
+    if (s.teams) {
+      rows = s.teams.filter((t) => t.size).sort((a, b) => a.rank - b.rank).map((t) => {
+        const crew = s.participants.filter((p) => p.team === t.index);
+        return { key: 't' + t.index, rank: t.rank, name: `${t.name}팀`, left: t.tilesLeft, combo: Math.max(0, ...crew.map((p) => p.combo || 0)), mine: s.me.team === t.index, faces: crew.slice(0, 3) };
+      });
+    } else {
+      const top = s.participants.slice(0, 7);
+      const me = s.participants.find((p) => p.id === s.me.id);
+      if (me && !top.includes(me)) top.push(me);
+      rows = top.map((p) => ({ key: 'p' + p.id, rank: p.rank, name: p.name, left: p.tilesLeft, combo: p.combo || 0, mine: p.id === s.me.id, faces: [p] }));
+    }
+    const old = new Map([...box.children].filter((li) => li.dataset.key).map((li) => [li.dataset.key, li]));
+    [...box.children].forEach((li) => { if (!li.dataset.key) li.remove(); });
+    rows.forEach((row) => {
+      let li = old.get(row.key);
+      if (!li) {
+        li = document.createElement('li');
+        li.dataset.key = row.key;
+        li.innerHTML = '<em></em><span class="rv-faces"></span><b></b><strong></strong><i class="rv-bar"><u></u></i><small></small>';
+      }
+      old.delete(row.key);
+      const faceKey = row.faces.map((p) => p.id + (p.avatarUrl || p.racer)).join('|');
+      const faces = li.querySelector('.rv-faces');
+      if (faces.dataset.key !== faceKey) { faces.dataset.key = faceKey; faces.replaceChildren(...row.faces.map((p) => face(p, 'rv-face'))); }
+      li.classList.toggle('mine', row.mine);
+      li.classList.toggle('done', row.left === 0);
+      li.querySelector('em').textContent = row.rank;
+      li.querySelector('b').textContent = row.name;
+      li.querySelector('strong').textContent = row.left === 0 ? '끝' : `${row.left}패`;
+      li.querySelector('u').style.width = `${Math.round(((total - row.left) / total) * 100)}%`;
+      li.querySelector('small').textContent = row.combo >= 2 ? `${row.combo}콤보` : '';
+      if (li.dataset.left && Number(li.dataset.left) > row.left) retrigger(li, 'hit');
+      li.dataset.left = row.left;
+      box.append(li);
+    });
+    old.forEach((li) => li.remove());
+  }
   function renderMini(s) {
+    const rivals = s.config.mode === 'match';
+    $('miniBoard').classList.toggle('rivals', rivals);
+    if (rivals) { renderRivals(s); return; }
     // 팀전이면 작은 순위표도 팀 순위다.
     if (s.teams) {
       const teams = s.teams.filter((t) => t.size).sort((a, b) => a.rank - b.rank);

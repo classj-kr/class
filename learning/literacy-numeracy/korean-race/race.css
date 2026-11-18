@@ -674,8 +674,9 @@ body.match-mode #card { display: none; }
   padding: clamp(8px, 1.2vw, 14px);
   border: 2px solid var(--line);
   border-radius: var(--radius);
-  background: linear-gradient(135deg, #e9dcc2, #f3ead8);
-  box-shadow: var(--shadow);
+  position: relative;
+  background: radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, .06), transparent 65%), linear-gradient(135deg, #3a1f10, #5e3519 55%, #3a1f10);
+  box-shadow: var(--shadow), inset 0 0 30px rgba(0, 0, 0, .55);
   min-height: 260px;
 }
 .mb-tile {
@@ -711,7 +712,7 @@ body.match-mode #card { display: none; }
 .match-board.finished { border-color: var(--gold); box-shadow: var(--shadow), 0 0 0 3px var(--gold); }
 body:not(.match-mode) .match-board { display: none; }
 @keyframes mb-in { from { opacity: 0; transform: translateY(-18px) scale(.6) rotate(-6deg); } to { opacity: 1; transform: none; } }
-@keyframes mb-out { 0% { transform: scale(1.1); filter: brightness(1.4); } 100% { transform: scale(.2) rotate(20deg); opacity: 0; visibility: hidden; } }
+@keyframes mb-out { 0% { transform: scale(1.14); filter: brightness(1.4); } 100% { transform: translate(var(--fly-x, 0), var(--fly-y, 0)) scale(.35) rotate(40deg); opacity: 0; visibility: hidden; } }
 
 /* 대기실 설정: 스크롤은 설정 칸 하나만(단원 목록 안 스크롤 없앰), 넓은 화면에서는 칸을 넓히고 짧은 설정은 두 칸으로 나란히. */
 .lobby-settings .range-units { max-height: none; overflow: visible; }
@@ -727,3 +728,28 @@ body:not(.match-mode) .match-board { display: none; }
   body.is-host .lobby-settings .range-units { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
   body.is-host .lobby-settings .range-unit { padding: 7px 9px; font-size: 14px; }
 }
+
+/* 짝 찾기: 판 옆에 경쟁자(팀)의 아바타·남은 패·콤보. 아래 글자 탑 대신 이 칸을 본다. */
+body.match-mode:not(.spectator) .towers, body.match-mode .my-tower { display: none; }
+.mb-tile.gone { z-index: 4; overflow: visible; }
+.match-rank { margin: 0; padding: 10px; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); font: 900 clamp(2.6rem, 5vw, 3.6rem)/1 "Noto Sans KR", "Malgun Gothic", sans-serif; color: var(--red); text-align: center; text-shadow: 0 3px 0 rgba(120, 40, 20, .25); }
+.match-rank[hidden] { display: none; }
+.match-rank.pop { animation: rank-pop .45s cubic-bezier(.2, .9, .3, 1.4); }
+.mini-board.rivals { gap: 8px; padding: 10px; }
+.mini-board.rivals li { grid-template-columns: 20px auto minmax(0, 1fr) auto auto; grid-template-areas: "rank face name combo left" "rank face bar bar bar"; gap: 3px 6px; padding: 6px 8px; border-radius: 10px; background: rgba(120, 90, 50, .08); }
+.mini-board.rivals li.mine { background: rgba(226, 81, 60, .12); box-shadow: inset 0 0 0 2px var(--red); }
+.mini-board.rivals li.hit { animation: rival-hit .32s ease-out; }
+.mini-board.rivals em { grid-area: rank; font-weight: 900; }
+.rv-faces { grid-area: face; display: flex; }
+.rv-face { width: 38px; height: 38px; font-size: 25px; object-fit: contain; }
+.rv-faces .rv-face + .rv-face { margin-left: -16px; }
+.mini-board.rivals b { grid-area: name; }
+.mini-board.rivals strong { grid-area: left; font-size: 1.1rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+.mini-board.rivals li.done strong { color: #1f9d55; }
+.rv-bar { grid-area: bar; height: 6px; overflow: hidden; border-radius: 3px; background: rgba(90, 60, 30, .16); }
+.rv-bar u { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f59e0b, #e2513c); transition: width .35s ease; }
+.mini-board.rivals small { grid-area: combo; padding: 0 5px; border-radius: 6px; color: #fff; background: #e0389b; font-size: .68rem; font-weight: 900; line-height: 1.4; }
+.mini-board.rivals small:empty { display: none; }
+@keyframes rank-pop { 0% { transform: scale(.5); } 55% { transform: scale(1.3); } 100% { transform: none; } }
+@keyframes rival-hit { 40% { background: rgba(245, 158, 11, .35); } }
+@media (max-width: 860px) { .match-rank { display: none; } }

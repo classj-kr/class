@@ -58,6 +58,12 @@
 .pr-runner.done .pr-walker { animation: pr-hop .6s ease-in-out infinite; }
 @keyframes pr-hop { 50% { transform: translateY(-5px); } }
 
+.pr-my-rank { margin: 0 0 6px; font: 900 2.5rem/1 "Noto Sans KR", "Malgun Gothic", sans-serif; color: #ffe14d; text-align: center; text-shadow: 0 3px 0 #8a5200; }
+.pr-my-rank.pop { animation: pr-rank-pop .45s cubic-bezier(.2, .9, .3, 1.4); }
+.pr-runner.hit { animation: pr-runner-hit .32s ease-out; }
+@keyframes pr-rank-pop { 0% { transform: scale(.5); } 55% { transform: scale(1.3); } 100% { transform: none; } }
+@keyframes pr-runner-hit { 40% { background: rgba(255, 217, 138, .34); } }
+
 .pr-countdown { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; pointer-events: none; }
 .pr-countdown span { font: 900 clamp(5rem, 18vw, 11rem)/1 Georgia, serif; color: #fff; -webkit-text-stroke: 3px #b4530a; text-shadow: 0 6px 0 #7a2e05, 0 0 40px rgba(255, 190, 60, .9); animation: pr-count .8s ease-out both; }
 @keyframes pr-count { 0% { opacity: 0; transform: scale(2.2); } 30% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.8); } }

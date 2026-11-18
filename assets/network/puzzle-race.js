@@ -9,7 +9,9 @@
  *     createPuzzle: settings => data,    // 방장 화면에서 한 번 만들어 모두에게 보낸다
  *     start: (data, settings) => {},     // 모든 화면에서 판을 띄운다(셋·둘·하나 뒤)
  *     exit: () => {},                    // 순위전을 그만두고 혼자 하기 시작 화면으로
- *     standingsHost: () => element       // 경기 중 순위표를 넣을 자리
+ *     standingsHost: () => element,      // 경기 중 순위표를 넣을 자리
+ *     showRank: true,                    // (골라서) 순위표 위에 내 등수를 크게
+ *     progressText: racer => '12패',     // (골라서) % 대신 보일 남은 양
  *   });
  *   race.open();                          // 「순위전」 단추
  *   race.progress(done, total);           // 판을 풀 때마다
@@ -28,7 +30,7 @@
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.dataset.puzzleRaceStyle = "true";
-        link.href = new URL("puzzle-race.css?v=20261118-podium", script?.src || location.href).href;
+        link.href = new URL("puzzle-race.css?v=20261118-pair-rank", script?.src || location.href).href;
         document.head.appendChild(link);
     }
 
@@ -388,6 +390,20 @@
             }
             host.hidden = false;
             const rows = ranked();
+            if (options.showRank) {
+                let big = host.querySelector(".pr-my-rank");
+                if (!big) {
+                    big = el("p", { class: "pr-my-rank" });
+                    host.prepend(big);
+                }
+                const text = `${rows.findIndex(([id]) => id === me()) + 1}등`;
+                if (big.textContent !== text) {
+                    big.textContent = text;
+                    big.classList.remove("pop");
+                    void big.offsetWidth;
+                    big.classList.add("pop");
+                }
+            }
             const existing = new Map([...board.children].map(node => [node.dataset.id, node]));
             rows.forEach(([id, racer], index) => {
                 let row = existing.get(id);
@@ -406,7 +422,15 @@
                 row.classList.toggle("left", !!racer.left);
                 row.querySelector(".pr-rank").textContent = String(index + 1);
                 row.querySelector(".pr-name").textContent = racer.name;
-                row.querySelector(".pr-mark").textContent = racer.time != null ? formatTime(racer.time) : racer.left ? "나감" : `${Math.round(share * 100)}%`;
+                row.querySelector(".pr-mark").textContent = racer.time != null ? formatTime(racer.time) : racer.left ? "나감" : options.progressText ? options.progressText(racer) : `${Math.round(share * 100)}%`;
+                if (row.dataset.done !== String(racer.done)) {
+                    if (row.dataset.done) {
+                        row.classList.remove("hit");
+                        void row.offsetWidth;
+                        row.classList.add("hit");
+                    }
+                    row.dataset.done = String(racer.done);
+                }
                 board.append(row);
             });
             existing.forEach((node, id) => { if (!racers[id]) node.remove(); });
@@ -492,6 +516,7 @@
             options.stop?.();
             const host = typeof options.standingsHost === "function" ? options.standingsHost() : options.standingsHost;
             host?.querySelector(".pr-standings")?.remove();
+            host?.querySelector(".pr-my-rank")?.remove();
             if (host) host.hidden = true;
         }
 

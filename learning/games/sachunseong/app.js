@@ -15,8 +15,8 @@
   const boardEl = $('board');
   const boardWrap = $('boardWrap');
   const boardArea = $('boardArea');
-  const linkLayer = $('linkLayer');
   const fxLayer = $('fxLayer');
+  const fx = window.MatchFx.create(boardWrap);
   const startScreen = $('startScreen');
   const gameScreen = $('gameScreen');
   const statusEl = $('status');
@@ -117,6 +117,8 @@
     const top = Math.min(level, 8);
     for (let i = 0; i < 4; i += 1) tone(note(PENTA[Math.min(top + i, PENTA.length - 1)] + 12), 0.1 + i * 0.05, 0.18, { type: 'square', gain: 0.05 });
   }
+  function soundFly() { tone(260, 0, 0.2, { type: 'sine', gain: 0.07, slide: 4 }); }
+  function soundBoom() { tone(110, 0, 0.4, { type: 'sine', gain: 0.24, slide: 0.45 }); }
   function soundSelect() { tone(880, 0, 0.07, { type: 'sine', gain: 0.1, slide: 1.25 }); }
   function soundHint() { [0, 4, 7, 12].forEach((s, i) => tone(note(s + 12), i * 0.07, 0.25, { type: 'sine', gain: 0.08 })); }
   function soundWin() { [0, 4, 7, 12, 16, 19, 24].forEach((s, i) => tone(note(s), i * 0.09, 0.35, { type: 'triangle', gain: 0.14 })); }
@@ -205,7 +207,6 @@
     boardWrap.style.height = `${height}px`;
     boardWrap.style.setProperty('--tw', `${tileW}px`);
     boardWrap.style.setProperty('--th', `${tileH}px`);
-    linkLayer.setAttribute('viewBox', `0 0 ${width} ${height}`);
     tiles.forEach((tile, i) => tile && placeTile(tile, i));
     fitAllText();
   }
@@ -336,55 +337,15 @@
   }
   function updateCounters() {
     const left = board.filter(t => t >= 0).length;
-    $('tilesLeft').textContent = String(left);
+    if ($('tilesLeft').textContent !== String(left)) {
+      $('tilesLeft').textContent = String(left);
+      bump($('tilesLeft'));
+    }
     $('hintCount').textContent = String(hintsLeft);
     $('hintButton').disabled = finished || hintsLeft <= 0;
   }
 
   /* ---------- 연출 ---------- */
-  function drawLink(path) {
-    const points = path.map(([r, c]) => cellCenter(r, c));
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const group = document.createElementNS(svgNS, 'g');
-    group.setAttribute('class', 'link');
-    const d = points.map(([x, y], k) => `${k ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join(' ');
-    let length = 0;
-    for (let k = 1; k < points.length; k += 1) length += Math.abs(points[k][0] - points[k - 1][0]) + Math.abs(points[k][1] - points[k - 1][1]);
-    ['glow', 'core'].forEach(name => {
-      const line = document.createElementNS(svgNS, 'path');
-      line.setAttribute('d', d);
-      line.setAttribute('class', name);
-      line.style.setProperty('--len', String(Math.ceil(length)));
-      group.append(line);
-    });
-    points.slice(1, -1).forEach(([x, y]) => {
-      const dot = document.createElementNS(svgNS, 'circle');
-      dot.setAttribute('cx', x); dot.setAttribute('cy', y); dot.setAttribute('r', String(Math.max(3, geometry.tileH * 0.07)));
-      dot.setAttribute('class', 'corner');
-      group.append(dot);
-    });
-    linkLayer.append(group);
-    window.setTimeout(() => group.remove(), 560);
-    return points;
-  }
-
-  function burst(x, y, strength = 1, hue = 'gold') {
-    const count = Math.round(10 + strength * 4);
-    for (let k = 0; k < count; k += 1) {
-      const spark = document.createElement('span');
-      spark.className = `spark ${hue}`;
-      const angle = (Math.PI * 2 * k) / count + Math.random() * 0.5;
-      const reach = geometry.tileW * (0.5 + Math.random() * 0.6) * (0.8 + strength * 0.15);
-      spark.style.left = `${x}px`;
-      spark.style.top = `${y}px`;
-      spark.style.setProperty('--dx', `${Math.cos(angle) * reach}px`);
-      spark.style.setProperty('--dy', `${Math.sin(angle) * reach}px`);
-      spark.style.setProperty('--s', `${0.6 + Math.random() * 0.8}`);
-      fxLayer.append(spark);
-      window.setTimeout(() => spark.remove(), 800);
-    }
-  }
-
   function floatText(x, y, text, kind) {
     const node = document.createElement('span');
     node.className = `float-text ${kind}`;
@@ -395,18 +356,25 @@
     window.setTimeout(() => node.remove(), 1100);
   }
 
-  function comboPop(x, y, count) {
-    const node = document.createElement('div');
-    node.className = `combo-pop tier-${Math.min(4, Math.floor(count / 3) + 1)}`;
-    node.innerHTML = `<b>${count}</b><span>COMBO</span>`;
-    const g = geometry;
-    node.style.left = `${Math.min(Math.max(x, g.width * 0.18), g.width * 0.82)}px`;
-    node.style.top = `${Math.min(Math.max(y, g.height * 0.2), g.height * 0.8)}px`;
-    fxLayer.append(node);
-    window.setTimeout(() => node.remove(), 1000);
-    boardWrap.classList.remove('thump');
-    void boardWrap.offsetWidth;
-    boardWrap.classList.add('thump');
+  // 콤보 칸: 다음 짝을 지울 때까지 남은 시간이 줄어든다.
+  let comboTimer = 0;
+  function paintCombo() {
+    const gauge = $('comboGauge');
+    const tier = combo >= 2 ? window.MatchFx.tierOf(combo) : 0;
+    gauge.className = `combo-gauge mfx-t${tier}${combo >= 2 ? ' on' : ''}`;
+    $('comboCount').textContent = String(combo);
+    window.clearTimeout(comboTimer);
+    const bar = $('comboBar');
+    bar.getAnimations?.().forEach(item => item.cancel());
+    if (combo < 1) return;
+    bar.animate?.([{ transform: 'scaleX(1)' }, { transform: 'scaleX(0)' }], { duration: COMBO_WINDOW, easing: 'linear', fill: 'forwards' });
+    bump($('comboCount'));
+    comboTimer = window.setTimeout(() => { combo = 0; paintCombo(); }, COMBO_WINDOW);
+  }
+  function bump(node) {
+    node.classList.remove('bump');
+    void node.offsetWidth;
+    node.classList.add('bump');
   }
 
   function nudge(i, kind) {
@@ -434,15 +402,17 @@
       nudge(a, 'shake'); nudge(i, 'shake');
       const [x, y] = indexCenter(i);
       floatText(x, y, `+${WRONG_PENALTY}초`, 'penalty');
+      fx.miss(indexCenter(a), geometry.tileW);
+      fx.miss([x, y], geometry.tileW);
       playSfx('error');
       combo = 0;
+      paintCombo();
       setSelected(-1);
       setStatus(`짝이 아닙니다 · +${WRONG_PENALTY}초`, 'fail');
       return;
     }
     // 판 어디에 있든 낱말과 뜻이 맞으면 지운다(길을 따지지 않는다 — 뜻을 떠올리는 것이 이 판의 일).
-    const at = k => [Math.floor(k / puzzle.cols) + 1, k % puzzle.cols + 1];
-    removePair(a, i, [at(a), at(i)]);
+    removePair(a, i);
   }
 
   function setSelected(i) {
@@ -451,22 +421,25 @@
     if (i >= 0) tiles[i]?.classList.add('selected');
   }
 
-  function removePair(a, b, path) {
+  function removePair(a, b) {
     busy = true;
     setSelected(-1);
     clearHints();
     const now = performance.now();
     combo = now - lastMatchAt <= COMBO_WINDOW ? combo + 1 : 1;
     lastMatchAt = now;
-    const points = drawLink(path);
+    const pointA = indexCenter(a), pointB = indexCenter(b);
+    const mid = [(pointA[0] + pointB[0]) / 2, (pointA[1] + pointB[1]) / 2];
+    fx.match(pointA, pointB, { combo, size: geometry.tileW });
+    window.MatchFx.flyTo(tiles[a], pointA, pointB);
+    window.MatchFx.flyTo(tiles[b], pointB, pointA);
     tiles[a].classList.add('linked');
     tiles[b].classList.add('linked');
     soundMatch(combo);
-    const mid = points[Math.floor(points.length / 2)];
+    soundFly();
+    paintCombo();
     window.setTimeout(() => {
       [a, b].forEach(i => {
-        const [x, y] = indexCenter(i);
-        burst(x, y, Math.min(combo, 6), (board[i] & 1) ? 'rose' : 'sky');
         tiles[i].classList.remove('shake', 'blocked', 'selected');
         tiles[i].classList.add('gone');
         const node = tiles[i];
@@ -474,10 +447,8 @@
         tiles[i] = null;
         board[i] = -1;
       });
-      if (combo >= 2) {
-        comboPop(mid[0], mid[1], combo);
-        soundCombo(combo);
-      }
+      if (combo >= 2) soundCombo(combo);
+      if (combo >= 5 && combo % 5 === 0) soundBoom();
       if (combo >= 3) {
         bonus += 1;
         floatText(mid[0], mid[1] + geometry.tileH * 0.7, '−1초', 'bonus');
@@ -530,8 +501,9 @@
     celebration.hidden = true;
     boardWrap.classList.remove('won');
     clearRecap();
-    linkLayer.replaceChildren();
     fxLayer.replaceChildren();
+    fx.clear();
+    paintCombo();
     $('modeLabel').textContent = `${playLabel()} · ${size.cols} × ${size.rows}`;
     buildTiles();
     tiles.forEach((tile, i) => { if (tile) tile.dataset.tile = String(board[i]); });
@@ -560,8 +532,8 @@
     soundWin();
     playSfx('success');
     boardWrap.classList.add('won');
-    const g = geometry;
-    for (let k = 0; k < 6; k += 1) window.setTimeout(() => burst(g.width * (0.15 + Math.random() * 0.7), g.height * (0.2 + Math.random() * 0.6), 5, ['gold', 'sky', 'rose'][k % 3]), k * 140);
+    window.clearTimeout(comboTimer);
+    fx.finale(geometry.width, geometry.height);
     revealId = window.setTimeout(showRecap, 700);
     if (race.active) {
       setStatus(`다 지웠습니다 · ${formatTime(seconds)}`, 'success');
@@ -710,7 +682,9 @@
     },
     stop: () => { finished = true; stopClock(); },
     exit: () => { showStart(); },
-    standingsHost: () => $('raceStandings')
+    standingsHost: () => $('raceStandings'),
+    showRank: true,
+    progressText: racer => `${(racer.total - racer.done) * 2}패`
   });
 
   /* ---------- 이벤트 ---------- */
