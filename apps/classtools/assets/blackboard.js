@@ -10,7 +10,10 @@
   // 획과 도구 설정은 계정별 서버 저장 공간에 둔다. 브라우저에는 남기지 않는다.
   const store = await SiteStorage.open('blackboard');
   const boardItem = 'strokes' + (group ? '-group-' + group : '');
-  if (group) $('backLink').search = '?groupId=' + group;
+  const backQuery = new URLSearchParams();
+  if (group) backQuery.set('groupId', group);
+  if (new URLSearchParams(location.search).get('view') === 'student') backQuery.set('view', 'student');
+  $('backLink').search = backQuery.toString();
   let strokes = [], undo = [], redo = [], current = null, activePointer = null;
   let tool = 'pen', color = '#f4f5e9', frame = 0, toastTimer;
   const toolSettingsKey = 'classj-blackboard-tools-v1';

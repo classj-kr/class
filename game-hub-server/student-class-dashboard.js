@@ -42,7 +42,7 @@ function cleanPreps(rows) {
   return preps;
 }
 
-function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpError, asyncRoute, studentMembership, ensurePublicHolidays, groupMemberSql }) {
+function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpError, asyncRoute, studentMembership, ensurePublicHolidays, groupMemberSql, normalizeAvatarKey, avatarUrl }) {
   const router = express.Router();
 
   async function studentClass(req) {
@@ -83,12 +83,12 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
   async function classStudents({ place, classId }) {
     const { rows } = await pool.query(
       `SELECT * FROM (
-         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source,
+         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source, s.avatar_key,
                 NULL::TEXT AS birthday_mmdd, FALSE AS birthday_visible
          FROM school_students s
          WHERE s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
          UNION ALL
-         SELECT s.student_number::TEXT, s.roster_name, s.name_source, s.birthday_mmdd, s.birthday_visible
+         SELECT s.student_number::TEXT, s.roster_name, s.name_source, s.avatar_key, s.birthday_mmdd, s.birthday_visible
          FROM classroom_students s
          WHERE s.class_id = $5 AND s.roster_active = TRUE
            AND NOT EXISTS (
@@ -107,6 +107,8 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
         number: row.student_number,
         // 이름을 기다리는 줄의 임시 이름은 계정 주소에서 나온 것이라 보내지 않는다.
         name: row.name_source === NAME_SOURCE_PENDING ? "" : row.roster_name,
+        avatarKey: normalizeAvatarKey(row.avatar_key),
+        avatarUrl: avatarUrl(row.avatar_key),
         birthdayMmdd: birthdayToday ? today : "",
         birthdayVisible: birthdayToday
       };

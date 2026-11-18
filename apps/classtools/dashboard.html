@@ -910,7 +910,6 @@
 
         /* 학생 보기: 보기만 한다. */
         html.student-view [data-teacher-only] { display: none !important; }
-        html.student-view .widget-card { cursor: default; }
         .prep-note {
             display: flex;
             align-items: center;
@@ -1440,13 +1439,13 @@
     </main>
 
     <!-- Toolbar Footer -->
-    <footer class="toolbar" data-teacher-only>
+    <footer class="toolbar">
         <div class="toolbar-group">
-            <button class="tool-btn" id="multiPickerModalBtn" style="background: rgba(46, 196, 182, 0.18); border-color: var(--brand-light); color: #7ce4ff; font-weight: 800;">🎯 학생 추첨</button>
+            <button class="tool-btn" id="multiPickerModalBtn">🎯 학생 추첨</button>
             <button class="tool-btn" id="timerModalBtn">⏱️ 타이머</button>
             <a class="tool-btn" id="blackboardLink" href="/classtools/blackboard.html">🖌️ 칠판</a>
             <a class="tool-btn" href="/classboard/">📢 알림장</a>
-            <a class="tool-btn" href="seating">🪑 자리 배치</a>
+            <a class="tool-btn" id="seatingLink" href="seating">🪑 자리 배치</a>
             <button class="tool-btn" id="resetBtn">배치 초기화</button>
         </div>
     </footer>
@@ -1575,7 +1574,8 @@
             vacation: year => "/api/teacher/vacation-settings?academicYear=" + year
         };
         let studentDashboardLoaded = false;
-        if (studentView) document.querySelectorAll(".widget-card").forEach(card => { card.draggable = false; });
+        let studentLayoutStore = null; // 학생이 옮긴 카드 순서. 그 학생에게만 적용된다.
+        if (studentView) document.getElementById("seatingLink").search = location.search;
 
         // State & LocalStorage
         let schedules = [];
@@ -1977,7 +1977,11 @@
 
         // ── DB Synchronization Helpers (Server-Side 100% Single Source of Truth) ──
         async function syncDashboardSettingsToDB() {
-            if (studentView) return;
+            if (studentView) {
+                const cards = document.querySelectorAll("#dashboardGrid .widget-card");
+                studentLayoutStore?.set("card-order", Array.from(cards, card => card.id));
+                return;
+            }
             try {
                 const grid = document.getElementById("dashboardGrid");
                 const cardOrder = grid ? Array.from(grid.querySelectorAll(".widget-card")).map(c => c.id) : [];
@@ -1998,12 +2002,24 @@
             dashboardStore = { get: item => preps[item] };
             customTimetable = data.timetable || {};
             studentDashboardLoaded = true;
-            const cards = document.getElementById("dashboardGrid");
-            (data.cardOrder || []).forEach(id => {
-                const card = document.getElementById(id);
-                if (card) cards.appendChild(card);
-            });
+            applyCardOrder(data.cardOrder);
             renderTimetable(selectedDayTab);
+            loadStudentLayout();
+        }
+
+        function applyCardOrder(order) {
+            const cards = document.getElementById("dashboardGrid");
+            (Array.isArray(order) ? order : []).forEach(id => {
+                const card = document.getElementById(id);
+                if (card?.classList.contains("widget-card")) cards.appendChild(card);
+            });
+        }
+
+        async function loadStudentLayout() {
+            try {
+                studentLayoutStore = await SiteStorage.open("dashboard-student");
+                applyCardOrder(studentLayoutStore.get("card-order"));
+            } catch (_) { /* 저장 공간이 없어도 선생님 순서로 볼 수 있다. */ }
         }
 
         async function loadDashboardSettingsFromDB() {
@@ -2044,6 +2060,12 @@
 
         resetBtn.addEventListener("click", async () => {
             if (confirm("대시보드 설정을 초기화하시겠습니까?")) {
+                if (studentView) {
+                    studentLayoutStore?.remove("card-order");
+                    await studentLayoutStore?.flush().catch(() => {});
+                    location.reload();
+                    return;
+                }
                 try {
                     await fetch("/api/teacher/dashboard-settings", {
                         method: "PUT",
@@ -3404,7 +3426,7 @@
                     card.classList.add("revealed", "latest");
                     card.innerHTML = `
                         <div class="bubble-avatar">${avatar.icon}</div>
-                        <div class="bubble-name">${student.name}</div>
+                        <div class="bubble-name">${escHtmlLocal(student.name || student.number + "번")}</div>
                     `;
                 });
 

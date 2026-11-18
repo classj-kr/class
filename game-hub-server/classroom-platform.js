@@ -1742,7 +1742,7 @@ function createClassroomPlatform(options = {}) {
   router.use("/student/class-dashboard", createStudentClassDashboard({
     pool, requireUser, requireDatabase, HttpError, asyncRoute, studentMembership,
     ensurePublicHolidays: async (schoolId, year) => upsertApiHolidays(schoolId, year, await fetchNagerHolidays(year)),
-    groupMemberSql: () => GROUP_MEMBER_SQL
+    groupMemberSql: () => GROUP_MEMBER_SQL, normalizeAvatarKey, avatarUrl
   }).router);
 
   // 학교 공용 채팅(학교마다 방 하나). 입장권은 박물관 입장권과 같은 서명을 쓰되 종류만 다르다.

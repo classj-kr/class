@@ -25,8 +25,8 @@ async function withApi(run) {
     CREATE TABLE classroom_users (id BIGINT PRIMARY KEY, email TEXT);
     CREATE TABLE classroom_classes (id BIGINT PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, teacher_user_id BIGINT);
     CREATE TABLE classroom_teachers (id BIGSERIAL PRIMARY KEY, school_id BIGINT, user_id BIGINT, google_email TEXT, academic_year INTEGER, grade INTEGER, class_number INTEGER, active BOOLEAN);
-    CREATE TABLE school_students (id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, name_source TEXT, student_email TEXT, guardian1_email TEXT, user_id BIGINT, custom_fields JSONB DEFAULT '{}');
-    CREATE TABLE classroom_students (id BIGSERIAL PRIMARY KEY, class_id BIGINT, student_number TEXT, roster_name TEXT, name_source TEXT, birthday_mmdd TEXT, birthday_visible BOOLEAN, roster_active BOOLEAN DEFAULT TRUE, student_email TEXT);
+    CREATE TABLE school_students (id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, name_source TEXT, student_email TEXT, guardian1_email TEXT, user_id BIGINT, custom_fields JSONB DEFAULT '{}', avatar_key TEXT);
+    CREATE TABLE classroom_students (id BIGSERIAL PRIMARY KEY, class_id BIGINT, student_number TEXT, roster_name TEXT, name_source TEXT, birthday_mmdd TEXT, birthday_visible BOOLEAN, roster_active BOOLEAN DEFAULT TRUE, student_email TEXT, avatar_key TEXT);
     CREATE TABLE classroom_teacher_dashboard_settings (user_id BIGINT PRIMARY KEY, timetable JSONB, card_order JSONB);
     CREATE TABLE user_storage (user_id BIGINT, app TEXT, item TEXT, value JSONB);
     CREATE TABLE classroom_absence_notices (school_id BIGINT, grade INTEGER, class_number INTEGER, student_number TEXT, notice_type TEXT, expected_date DATE, reason TEXT);
@@ -94,7 +94,7 @@ async function withApi(run) {
       (3, 1, 51, 2026, '과학 동아리', 'club', NULL, NULL, FALSE),
       (4, 1, 51, 2026, '다른 동아리', 'club', NULL, NULL, FALSE),
       (5, 1, 51, 2026, '6-2', 'homeroom', 6, 2, FALSE);
-    UPDATE school_students SET user_id = 1 WHERE student_number = '1' AND class_number = 2;
+    UPDATE school_students SET user_id = 1, avatar_key = 'animal-cat.webp' WHERE student_number = '1' AND class_number = 2;
     INSERT INTO teacher_group_students SELECT 3, id FROM school_students WHERE student_number = '1' AND class_number = 2;
     INSERT INTO learning_board_audiences VALUES
       ('old', 1), ('new', 1), ('cubes', 1), ('locked', 1), ('ended', 1), ('joined', 1),
@@ -108,7 +108,7 @@ async function withApi(run) {
   };
   let holidayLoads = 0, holidayFailure = false;
   const { router } = createStudentClassDashboard({
-    pool, HttpError, asyncRoute, requireDatabase() {}, groupMemberSql: () => GROUP_MEMBER_SQL,
+    pool, HttpError, asyncRoute, requireDatabase() {}, groupMemberSql: () => GROUP_MEMBER_SQL, normalizeAvatarKey: value => value || '', avatarUrl: value => value ? `/assets/avatars/${value}` : '',
     requireUser: async req => {
       if (!req.get('x-user')) throw new HttpError(401, 'LOGIN_REQUIRED', '로그인');
       return { id: Number(req.get('x-user')) };
@@ -159,8 +159,9 @@ test('the roster exposes only numbers, names and today\'s shared birthday', () =
   const { body } = await get('/');
   const students = body.classroom.students;
   assert.deepEqual(students.map(s => s.number), ['1', '2', '3', '4', '5']);
-  for (const student of students) assert.deepEqual(Object.keys(student).sort(), ['birthdayMmdd', 'birthdayVisible', 'name', 'number']);
+  for (const student of students) assert.deepEqual(Object.keys(student).sort(), ['avatarKey', 'avatarUrl', 'birthdayMmdd', 'birthdayVisible', 'name', 'number']);
   assert.equal(students[0].name, '가학생', 'the school roster line wins over the class copy');
+  assert.equal(students[0].avatarUrl, '/assets/avatars/animal-cat.webp');
   assert.equal(students[1].name, '', 'a placeholder built from an account address is not sent');
   assert.deepEqual(students.filter(s => s.birthdayVisible).map(s => [s.number, s.birthdayMmdd]), [['3', todayMmdd]]);
   assert.equal(students.find(s => s.number === '4').birthdayMmdd, '');

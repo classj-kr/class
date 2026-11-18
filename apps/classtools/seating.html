@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#173f45">
     <title>교실 자리 배치 · Classroom Seating</title>
+    <script>if (new URLSearchParams(location.search).get("view") === "student") document.documentElement.classList.add("student-view");</script>
     <style>
+        html.student-view [data-teacher-only] { display: none !important; }
         :root {
             color-scheme: light;
             --ink: #172033;
@@ -464,10 +466,10 @@
     <main>
         <div class="header-nav">
             <div>
-                <a class="btn" href="./">← 교사 메인으로</a>
+                <a class="btn" id="seating-back" href="./">← 교사 메인으로</a>
             </div>
             <div style="display: flex; gap: 8px; align-items: center;">
-                <select id="class-switcher-select" class="btn" style="background: var(--paper); cursor: pointer; outline: none; font-weight: 700;" hidden>
+                <select id="class-switcher-select" data-teacher-only class="btn" style="background: var(--paper); cursor: pointer; outline: none; font-weight: 700;" hidden>
                     <option value="">학급 선택...</option>
                 </select>
                 <div style="font-weight: 800; color: var(--muted);" id="class-header">
@@ -494,7 +496,7 @@
                     </section>
                     <div class="blackboard" style="margin-top: 4px; margin-bottom: 12px;">칠 판 (앞)</div>
                     <p class="seat-summary" id="seat-summary" aria-live="polite"></p>
-                    <div class="save-feedback" style="display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:0.85rem; color:var(--muted);">
+                    <div class="save-feedback" data-teacher-only style="display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:0.85rem; color:var(--muted);">
                         <span id="save-status" role="status" aria-live="polite">서버에서 자리배치를 불러오는 중…</span>
                         <button class="btn" id="save-retry-btn" type="button" hidden>다시 시도</button>
                     </div>
@@ -505,7 +507,7 @@
                 <aside class="seating-sidebar-panel">
                     <button class="btn btn-primary btn-xl" id="shuffle-btn" type="button" style="width: 100%; font-size: 1.1rem; font-weight: 900; padding: 14px; margin-bottom: 6px; border-radius: 14px; box-shadow: 0 4px 12px rgba(23,63,69,0.3);">🎲 자리 무작위 섞기</button>
 
-                    <div class="sidebar-group" id="live-open-group">
+                    <div class="sidebar-group" id="live-open-group" data-teacher-only>
                         <label class="sidebar-label">학생이 직접 고르기 (선착순)</label>
                         <button class="btn btn-live" id="live-open-btn" type="button" style="width: 100%;">📱 방번호 열어 학생이 고르기</button>
                     </div>
@@ -513,8 +515,8 @@
                     <div class="sidebar-group">
                         <label class="sidebar-label">좌석 설정 모드</label>
                         <button class="btn btn-toggle" id="unused-mode-btn" type="button" aria-pressed="false" style="width: 100%;">✕ 사용 안 함 표시</button>
-                        <button class="btn btn-male" id="male-lock-btn" type="button" aria-pressed="false" style="width: 100%;">🔒 남학생 고정</button>
-                        <button class="btn btn-female" id="female-lock-btn" type="button" aria-pressed="false" style="width: 100%;">🔒 여학생 고정</button>
+                        <button class="btn btn-male" data-teacher-only id="male-lock-btn" type="button" aria-pressed="false" style="width: 100%;">🔒 남학생 고정</button>
+                        <button class="btn btn-female" data-teacher-only id="female-lock-btn" type="button" aria-pressed="false" style="width: 100%;">🔒 여학생 고정</button>
                     </div>
 
                     <div class="sidebar-group">
@@ -557,6 +559,7 @@
         </form>
     </dialog>
 
+    <script src="/assets/site-storage.js?v=20261006-1"></script>
     <script>
         (() => {
             'use strict';
@@ -593,6 +596,14 @@
             const saveStatus = document.getElementById('save-status');
             const saveRetryBtn = document.getElementById('save-retry-btn');
             let settingsReady = false;
+            // 학생 보기: 명단만 받아 혼자 해 본다. 저장은 그 학생 계정에만 되고 선생님 배치는 건드리지 않는다.
+            const studentView = document.documentElement.classList.contains('student-view');
+            let studentSeatStore = null;
+            if (studentView) {
+                const back = document.getElementById('seating-back');
+                back.href = 'dashboard?view=student';
+                back.textContent = '← 교실';
+            }
             let isClassLoading = false;
             let pendingSettings = null;
             let saveTask = null;
@@ -783,6 +794,10 @@
 
             function saveSeatSettings() {
                 if (!settingsReady || !currentClassId) return;
+                if (studentView) {
+                    studentSeatStore?.set('layout', seatSettingsSnapshot());
+                    return;
+                }
                 pendingSettings = { classId: currentClassId, settings: seatSettingsSnapshot() };
                 showSaveStatus('서버에 저장 중…');
                 void flushSeatSettings();
@@ -813,6 +828,12 @@
             }
 
             async function loadSeatSettings() {
+                if (studentView) {
+                    studentSeatStore = await SiteStorage.open('seating-student').catch(() => null);
+                    applySeatSettings(studentSeatStore?.get('layout') || {});
+                    settingsReady = true;
+                    return;
+                }
                 const endpoint = `/api/seating/classes/${encodeURIComponent(currentClassId)}/settings`;
                 let { settings } = await request(endpoint, { cache: 'no-store' });
                 let migratedKey = null;
@@ -1069,7 +1090,7 @@
                 setLiveUi(false);
                 currentClassId = '';
                 try {
-                    const availableRes = await api('/api/teacher/available-classes').catch(() => null);
+                    const availableRes = studentView ? null : await api('/api/teacher/available-classes').catch(() => null);
                     if (availableRes && availableRes.classes && availableRes.classes.length > 0 && classSwitcherSelect) {
                         classSwitcherSelect.hidden = false;
                         const prevVal = classSwitcherSelect.value;
@@ -1093,13 +1114,14 @@
                         else if (prevVal) classSwitcherSelect.value = prevVal;
                     }
 
-                    const fetchUrl = classId ? `/api/teacher/class?classId=${classId}` : '/api/teacher/class';
+                    const fetchUrl = studentView ? '/api/student/class-dashboard'
+                        : classId ? `/api/teacher/class?classId=${classId}` : '/api/teacher/class';
                     const classRes = await api(fetchUrl).catch(() => null);
                     if (classRes && classRes.classroom) {
                         const c = classRes.classroom;
-                        classHeader.textContent = `${c.grade}학년 ${c.classNumber}반 (${c.teacherName} 선생님)`;
-                        currentClassId = c.id ? String(c.id) : '';
-                        students = (c.students || []).map(s => ({ number: String(s.number), name: s.name, gender: s.gender || '남' }));
+                        classHeader.textContent = `${c.grade}학년 ${c.classNumber}반${c.teacherName ? ` (${c.teacherName} 선생님)` : ''}`;
+                        currentClassId = c.id ? String(c.id) : (studentView ? 'student' : '');
+                        students = (c.students || []).map(s => ({ number: String(s.number), name: s.name || `${s.number}번`, gender: s.gender || '남' }));
                         students.forEach((student, index) => {
                             student.avatarKey = c.students[index]?.avatarKey || '';
                             student.avatarUrl = c.students[index]?.avatarUrl || '';
@@ -1114,7 +1136,7 @@
                     updateTeacherViewButton();
                     populateStudentLockOptions();
                     renderDesks();
-                    await resumeLiveRoom(currentClassId);
+                    if (!studentView) await resumeLiveRoom(currentClassId);
                 } catch (error) {
                     settingsReady = false;
                     showSaveStatus('서버에서 자리배치를 불러오지 못했습니다. 다시 시도해 주세요.', () => loadClassroom(classId));
@@ -1351,7 +1373,7 @@
 
             async function init() {
                 const session = await api('/api/auth/me').catch(() => ({ signedIn: false }));
-                if (!session.signedIn || !(session.user?.role === 'teacher' || session.isTeacher)) {
+                if (!session.signedIn || !(studentView ? session.membership : (session.user?.role === 'teacher' || session.isTeacher))) {
                     location.replace('/');
                     return;
                 }
