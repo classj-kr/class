@@ -7,12 +7,12 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20261015-visible-pad-keys">
-    <script src="instrument-core.js?v=20260824-physical-room" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20261118-guitar-keys">
+    <script src="instrument-core.js?v=20261118-guitar-keys" defer></script>
     <script src="instrument-details.js?v=20261015-orchestral-v1" defer></script>
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
     <script src="pad-presentation.js?v=20261015-orchestral-v1" defer></script>
-    <script src="app.js?v=20261117-key-rows" defer></script>
+    <script src="app.js?v=20261118-guitar-keys" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
     <div class="room-glow" aria-hidden="true"></div>
@@ -162,8 +162,17 @@
             </section>
 
             <section id="playSurface" class="play-surface" aria-label="악기 연주 영역">
+                <div id="bassDemoControls" class="bass-demo-controls hidden" role="group" aria-label="베이스 시범 연주">
+                    <button class="key-size-button" type="button" data-bass-demo="finger" aria-pressed="false"><span>핑거</span><b>Billie Jean</b></button>
+                    <button class="key-size-button" type="button" data-bass-demo="slap" aria-pressed="false"><span>슬랩</span><b>Can’t Stop</b></button>
+                </div>
                 <div class="play-toolbar">
                     <small id="noteReadout" class="screen-reader-only" aria-live="polite">준비됨</small>
+                    <div id="jangguDemoControls" class="janggu-demo-controls hidden">
+                        <select id="jangguDemoSelect" aria-label="시범 장단"></select>
+                        <span id="jangguDemoCue"></span>
+                    </div>
+                    <button id="drumDemoButton" class="key-size-button hidden" type="button"><span id="drumDemoLabel">시범 연주</span><b id="drumDemoTempo"></b></button>
                     <div id="rangeLegend" class="range-legend hidden"><i></i><span id="rangeReadout"></span></div>
                     <button id="keySizeButton" class="key-size-button" type="button" aria-haspopup="dialog"><span>건반 크기</span><b id="keySizeReadout">100%</b></button>
                     <div id="keyboardRangeControls" class="keyboard-range-controls" aria-label="컴퓨터 자판 음역 이동">
@@ -178,8 +187,13 @@
                     <div id="keyboard" class="keyboard" role="group" aria-label="연주 건반"></div>
                 </div>
                 <div id="chordSurface" class="chord-surface hidden">
+                    <div class="guitar-chord-settings">
+                        <label>조 <select id="guitarKeySelect"></select></label>
+                        <label><input id="guitarPadPlay" type="checkbox" checked> 코드 누르면 연주</label>
+                    </div>
                     <div id="chordPads" class="chord-pads" role="group" aria-label="기타 코드 선택"></div>
                     <div class="strum-controls">
+                        <div id="guitarStrumZone" class="guitar-strum-zone"><strong id="guitarSelectedChord">C</strong><span>위아래로 쓸어 연주</span></div>
                         <button type="button" data-strum="down"><span aria-hidden="true">↓</span><b>다운 스트로크</b></button>
                         <button type="button" data-strum="up"><span aria-hidden="true">↑</span><b>업 스트로크</b></button>
                     </div>

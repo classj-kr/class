@@ -24,4 +24,16 @@ const mutableChord = core.getGuitarChord("Am");
 mutableChord[0] = 1;
 assert.equal(core.getGuitarChord("Am")[0], 45);
 
+assert.deepEqual(core.getGuitarKeyChords("D", "major").map(chord => chord.name), ["D", "Em", "F♯m", "G", "A", "Bm", "C♯dim"]);
+assert.deepEqual(core.getGuitarKeyChords("A", "minor").map(chord => chord.name), ["Am", "Bdim", "C", "Dm", "Em", "F", "G"]);
+for (const [mode, keys] of Object.entries(core.GUITAR_KEYS)) {
+    for (const key of keys) {
+        for (const chord of core.getGuitarKeyChords(key, mode)) {
+            const offsets = [...new Set(chord.notes.map(midi => (midi - chord.notes[0]) % 12))].sort((a, b) => a - b);
+            const expected = chord.name.endsWith("dim") ? [0, 3, 6] : chord.name.endsWith("m") ? [0, 3, 7] : [0, 4, 7];
+            assert.deepEqual(offsets, expected, key + " " + chord.name);
+        }
+    }
+}
+
 console.log("instrument-room-unit: ok");

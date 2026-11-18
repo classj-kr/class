@@ -9,7 +9,7 @@ const room = '/learning/arts/instrument-room/';
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const hook = `window.playbackTest = {
   state, KEYBOARD_SAMPLE_SETS, DRUM_SAMPLE_SETS, concertGrandSampleFile,
-  balancedDrumGain, volumeOnlyGain, decodedBufferPeak, decodedBufferBodyRms,
+  balancedDrumGain, volumeOnlyGain, decodedBufferPeak, decodedBufferBodyRms, selectModel,
   decodedBufferStartOffset, startConcertGrandSample, releasePianoVoice, ensureAudio, cacheElements
 };`;
 const server = http.createServer((req, res) => {
@@ -21,7 +21,9 @@ const server = http.createServer((req, res) => {
     if (file.endsWith('instrument-room' + path.sep + 'app.js')) {
       const init = 'document.addEventListener("DOMContentLoaded", init);';
       data = data.toString().replace(init, hook + (req.headers.referer?.includes('render-test') ? 'cacheElements();' : init));
-      data = data.replace('function playSampledDrum(id, velocity) {', 'function playSampledDrum(id, velocity) { (window.sampledDrumInputs ||= []).push({id, velocity});');
+      data = data.replace('function playSampledDrum(id, velocity) {', 'function playSampledDrum(id, velocity) { (window.sampledDrumInputs ||= []).push({id, velocity, time:performance.now()});');
+      data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) {',
+        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) { if (window.bassDemoHits) window.bassDemoHits.push({midi, velocity, sampleSet, time:performance.now()});');
     }
     if (path.extname(file) === '.html') data = data.toString().replace('</head>', '<script src="/assets/sound/game-sfx.js" defer></script></head>');
     const type = {'.html':'text/html; charset=utf-8', '.js':'text/javascript', '.css':'text/css', '.ogg':'audio/ogg', '.webp':'image/webp'}[path.extname(file)];
@@ -143,13 +145,107 @@ const server = http.createServer((req, res) => {
         const hit = await check('drum '+piece, () => press('[data-drum="'+piece+'"]'));
         assert.equal(hit.drumInputs[0].velocity,keyHit.drumInputs[0].velocity,'Consistent tap strength across pads');
       }
+      if (!touch) {
+        await page.evaluate(() => {
+          [...document.querySelectorAll('#modelChooser button b')].find(label => label.textContent === 'Funk Kit').closest('button').click();
+          window.sampledDrumInputs = [];
+        });
+        assert.equal(await page.$eval('#drumDemoTempo', element => element.textContent), '104 BPM');
+        await press('#drumDemoButton');
+        await page.waitForFunction(() => document.querySelector('[data-drum="crash"]').classList.contains('demo-hit'));
+        const hits = await page.evaluate(() => window.sampledDrumInputs);
+        assert.deepEqual(hits.slice(0, 2).map(hit => hit.id), ['kick', 'hat']);
+        assert.ok(hits.filter(hit => hit.id === 'ghost' && hit.velocity < .5).length >= 12);
+        assert.deepEqual(hits.slice(-4).map(hit => hit.id), ['kick', 'pedalhat', 'kick', 'crash']);
+        assert.ok(Math.abs(hits.at(-1).time - hits[0].time - 16 * 60000 / 104) < 250);
+        await page.waitForFunction(() => document.querySelector('#drumDemoLabel').textContent === '시범 연주');
+        assert.equal(await page.$$('.demo-hit').then(pads => pads.length), 0);
+        await press('#drumDemoButton');
+        await press('[data-family="korean"]');
+        const stoppedAt = await page.evaluate(() => window.sampledDrumInputs.length);
+        await pause(700);
+        assert.equal(await page.evaluate(() => window.sampledDrumInputs.length), stoppedAt);
+        assert.equal(await page.$eval('#drumDemoButton', button => button.classList.contains('hidden')), true);
+      }
       await press('[data-family="korean"]');
       await press('[data-korean-room="folk"]');
       await check('Korean percussion', () => press('#drumPads button'));
+      const janggu = touch ? 'janggu-samul' : 'janggu-sanjo';
+      await page.evaluate(id => window.playbackTest.selectModel(id), janggu);
+      await page.select('#jangguDemoSelect', touch ? '세마치 · 너영나영' : '굿거리 · 산도깨비');
+      assert.equal(await page.$eval('#drumDemoTempo', element => element.textContent), touch ? '84 BPM' : '72 BPM');
+      await page.evaluate(() => { window.sampledDrumInputs = []; });
+      if (touch) await press('#drumDemoButton');
+      else {
+        await page.focus('#drumDemoButton');
+        await page.keyboard.press('Space');
+      }
+      await page.waitForFunction(() => document.querySelector('#jangguDemoCue').textContent === '덩'
+        && document.querySelector('.drum-pad.demo-hit'));
+      const firstJangguHit = await page.evaluate(() => window.sampledDrumInputs[0].id);
+      assert.equal(firstJangguHit, touch ? 'compound' : 'low-high-open');
+      if (touch) {
+        await page.select('#jangguDemoSelect', '자진모리 · 남생아 놀아라');
+        assert.equal(await page.$eval('#jangguDemoCue', element => element.textContent), '');
+        assert.equal(await page.$eval('#drumDemoTempo', element => element.textContent), '92 BPM');
+      } else {
+        await page.waitForFunction(() => document.querySelector('#drumDemoLabel').textContent === '시범 연주');
+        const strokes = await page.evaluate(() => window.sampledDrumInputs.map(hit => hit.id));
+        assert.equal(strokes.length, 16);
+        assert.equal(strokes.filter(id => id === 'low-high-bounce').length, 3);
+        assert.deepEqual(strokes.slice(-2), ['low-open', 'high-center']);
+      }
       await press('[data-family="guitar"]');
       await press('[data-guitar-mode="chords"]');
       await check('guitar chord', () => press('#chordPads button'));
       await check('guitar strum', () => press('[data-strum="down"]'));
+      await page.select('#guitarKeySelect', 'major:D');
+      assert.deepEqual(await page.$$eval('#chordPads button b', labels => labels.map(label => label.textContent)), ['D','Em','F♯m','G','A','Bm','C♯dim']);
+      await press('#guitarPadPlay');
+      await page.evaluate(() => { audioAudit.instrument = 0; });
+      await press('#chordPads button:nth-child(3)');
+      assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'F♯m');
+      assert.equal(await page.evaluate(() => audioAudit.instrument), 0);
+      await check('selected chord strum', () => press('[data-strum="up"]'));
+      if (!touch) {
+        await page.focus('#chordPads button:nth-child(3)');
+        await page.keyboard.press('5');
+        assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'A');
+        await check('keyboard strum', () => page.keyboard.press('ArrowDown'));
+        const zone = await page.$('#guitarStrumZone');
+        await zone.evaluate(element => element.scrollIntoView({block:'center'}));
+        const box = await zone.boundingBox();
+        await check('upward swipe strum', async () => {
+          await page.mouse.move(box.x + box.width / 2, box.y + box.height - 7);
+          await page.mouse.down();
+          await page.mouse.move(box.x + box.width / 2, box.y + 7, {steps: 12});
+          await page.mouse.up();
+        });
+        assert.match(await page.$eval('#noteReadout', label => label.textContent), /A · 업/);
+      }
+      await press('[data-family="bass"]');
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await press('[data-bass-demo="slap"]');
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="40"].demo-hit'));
+      assert.equal(await page.$eval('#articulationButtons [aria-pressed="true"]', button => button.textContent), '슬랩');
+      if (!touch) {
+        await page.waitForFunction(() => document.querySelector('[data-bass-demo="slap"]').getAttribute('aria-pressed') === 'false');
+        const slap = await page.evaluate(() => window.bassDemoHits);
+        assert.equal(slap.length, 45);
+        assert.deepEqual(slap.slice(0, 3).map(hit => hit.midi), [40, 50, 52]);
+        assert.deepEqual([0, 11, 22, 33, 44].map(index => slap[index].midi), [40, 38, 35, 36, 40]);
+        assert.ok(Math.abs(slap.at(-1).time - slap[0].time - 16 * 60000 / 92) < 250);
+        assert.equal(slap.filter(hit => hit.velocity < .3).length, 12);
+        assert.ok(slap.every(hit => hit.sampleSet.endsWith('-slap')));
+      }
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await press('[data-bass-demo="finger"]');
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="42"].demo-hit'));
+      const finger = await page.evaluate(() => window.bassDemoHits.find(hit => hit.sampleSet.endsWith('-finger')));
+      assert.equal(finger.midi, 42);
+      await press('[data-family="keyboard"]');
+      assert.equal(await page.$eval('#bassDemoControls', controls => controls.classList.contains('hidden')), true);
+      assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       const inputs = await page.evaluate(() => audioAudit.inputs);
       await pause(500);
       assert.equal(await page.evaluate(() => audioAudit.inputs), inputs, 'Animation must not keep adding input listeners');

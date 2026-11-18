@@ -192,6 +192,77 @@
         "linn-machine": AD2_DRUM_ARTICULATIONS
     };
 
+    // Each hit is [beat within the bar, pads, velocity]. Fractional jazz beats swing.
+    const DRUM_DEMOS = {
+        "rock-kit": {
+            bpm: 112,
+            groove: [[0, "kick hat"], [.5, "hat", .56], [1, "snare hat"], [1.5, "hat", .56], [2, "kick hat"], [2.5, "kick hat", .64], [3, "snare hat"], [3.5, "hat", .56]],
+            fill: [[3, "snare"], [3.25, "hightom"], [3.5, "lowtom"], [3.75, "lowtom", .68]]
+        },
+        "pop-kit": {
+            bpm: 100,
+            groove: [[0, "kick hat"], [.5, "hat", .56], [1, "snare hat"], [1.5, "hat", .56], [2, "kick hat"], [2.5, "hat", .56], [3, "snare hat"], [3.5, "hat", .56]],
+            fill: [[3, "snare"], [3.25, "hat", .6], [3.5, "hightom"], [3.75, "kick openhat"]]
+        },
+        "funk-kit": {
+            bpm: 104,
+            groove: [
+                [0, "kick hat"], [.5, "hat", .54], [.75, "kick", .66],
+                [1, "snare hat", .86], [1.25, "ghost", .32], [1.5, "hat", .56], [1.75, "ghost", .43],
+                [2, "hat", .72], [2.5, "kick hat"], [2.75, "ghost", .36],
+                [3, "snare hat", .86], [3.5, "openhat", .62]
+            ],
+            fill: [[3, "snare hat", .86], [3.25, "ghost", .42], [3.5, "openhat", .68], [3.75, "kick pedalhat"]]
+        },
+        "jazz-kit": {
+            bpm: 120,
+            groove: [[0, "ride"], [1, "ride pedalhat"], [1 + 2/3, "ride", .55], [2, "ride"], [3, "ride pedalhat"], [3 + 2/3, "ride", .55]],
+            fill: [[3, "pedalhat snare", .72], [3 + 1/3, "snare", .5], [3 + 2/3, "openhat", .72]]
+        },
+        "metal-kit": {
+            bpm: 124,
+            groove: [[0, "kick"], [1, "snare"], [2, "kick"], [2.5, "kick", .75], [3, "snare"]],
+            fill: [[3, "snare hat"], [3.25, "hightom"], [3.5, "midtom"], [3.75, "lowtom"]]
+        },
+        "drum-808": {
+            bpm: 84,
+            groove: [[0, "kick hat"], [.5, "hat", .56], [1, "hat"], [1.5, "kick hat", .66], [2, "snare hat"], [2.5, "hat", .56], [3, "kick hat"], [3.5, "hat", .56]],
+            fill: [[3, "kick hat"], [3.25, "hat", .52], [3.5, "hat", .66], [3.75, "snare openhat"]]
+        },
+        "linn-machine": {
+            bpm: 110,
+            groove: [[0, "kick hat"], [.5, "hat", .56], [1, "snare hat"], [1.5, "hat", .56], [2, "kick hat"], [2.5, "kick hat", .66], [3, "snare hat"], [3.5, "hat", .56]],
+            fill: [[3, "snare"], [3.25, "hightom"], [3.5, "midtom"], [3.75, "lowtom openhat"]]
+        }
+    };
+
+    // Three subdivisions per beat. Basic patterns follow the National Gugak Center teaching materials.
+    const JANGGU_DEMOS = [
+        { name: "자진모리 · 남생아 놀아라", bpm: 92, beats: 4, strokes: ["덩", "", "", "덩", "", "", "덩", "", "덕", "쿵"] },
+        { name: "세마치 · 너영나영", bpm: 84, beats: 3, strokes: ["덩", "", "", "덩", "", "덕", "쿵", "덕"] },
+        { name: "굿거리 · 산도깨비", bpm: 72, beats: 4, strokes: ["덩", "", "기덕", "쿵", "더러러러", "", "쿵", "", "기덕", "쿵", "더러러러"], closing: "덕" }
+    ];
+
+    const BILLIE_JEAN_BAR = [42, 37, 40, 42, 40, 37, 35, 37].map(function (midi, index) {
+        return [index / 2, midi, index % 2 ? .68 : .8, .38];
+    });
+    // Can’t Stop: use the attack of a slap sample for each muted stroke.
+    function cantStopBar(root, firstPop, secondPop, pickup = root) {
+        return [
+            [0, root, .85, .4], [.5, firstPop, .8, .4], [1, secondPop, .9, .4], [1.5, root, .77, .4],
+            [2, root, .85, .18], [2.25, firstPop, .8, .18], [2.5, root, .26, .04, true],
+            [2.75, secondPop, .9, .18], [3, root, .26, .04, true], [3.25, secondPop, .26, .04, true],
+            [3.5, pickup, .82, .35]
+        ];
+    }
+    const BASS_DEMOS = {
+        finger: { bpm: 117, root: 42, bars: Array(4).fill(BILLIE_JEAN_BAR) },
+        slap: { bpm: 92, root: 40, bars: [
+            cantStopBar(40, 50, 52), cantStopBar(38, 50, 52, 33),
+            cantStopBar(35, 47, 47), cantStopBar(36, 48, 48, 33)
+        ] }
+    };
+
     // The official XLN Audio AD2 keymap assigns note 49 to HiHat Closed 1 Tip.
     // Keep this revision in the URL so a previously cached, mis-mapped hat cannot survive a remap.
     const AUDIO_SAMPLE_REVISION = "20260905-original-timbre-v3";
@@ -422,7 +493,9 @@
     const state = {
         instrument: "piano",
         guitarMode: "keyboard",
-        guitarChord: "C",
+        guitarKey: "C",
+        guitarKeyMode: "major",
+        guitarChordIndex: 0,
         articulation: "finger",
         stringPreset: "clean",
         keyboardStartMidi: 60,
@@ -494,7 +567,7 @@
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
-            "keyboard", "chordSurface", "chordPads", "drumPads", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
+            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "drumDemoTempo", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
     }
@@ -1055,6 +1128,18 @@
             });
         state.keyboardSampleLoads.set(key, task);
         return task;
+    }
+
+    function loadMissingPerformanceSamples(notes, config, samples) {
+        const missing = [...new Set(notes)].filter(function (midi) {
+            const anchor = concertGrandAnchor(midi, config);
+            const buffer = state.keyboardSamples.get(sampledPianoKey(config, anchor));
+            if (buffer) samples.set(midi, { anchor, buffer, sampleSet: config.id });
+            return !buffer;
+        });
+        if (missing.length) {
+            return Promise.all(missing.map(async function (midi) { samples.set(midi, await loadConcertGrandSample(midi)); }));
+        }
     }
 
     // 자판 18개 음을 먼저 받고, 그다음 그 악기 음역 전체를 가운데부터 뒤에서 차례로 받아 둔다.
@@ -2057,6 +2142,9 @@
     }
 
     function allNotesOff() {
+        stopDrumDemo();
+        stopBassDemo();
+        stopGuitarStrums();
         Array.from(state.activeNotes).forEach(noteOff);
         state.activeNotes.clear();
         state.pointerNotes.clear();
@@ -2205,52 +2293,86 @@
         state.keyboardCenterFrame = window.requestAnimationFrame(advance);
     }
 
-    function renderChordPads() {
-        elements.chordPads.innerHTML = "";
-        Object.keys(core.GUITAR_CHORDS).forEach(function (name) {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.textContent = name;
-            button.classList.toggle("active", name === state.guitarChord);
-            button.setAttribute("aria-pressed", String(name === state.guitarChord));
-            button.addEventListener("pointerdown", function (event) {
-                event.preventDefault();
-                state.guitarChord = name;
-                strum("down");
-                renderChordPads();
-            });
-            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
-            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
-            button.addEventListener("contextmenu", function (event) { event.preventDefault(); });
-            elements.chordPads.appendChild(button);
-        });
+    let guitarKeyChords = [];
+    let guitarStrumRequest = 0;
+    const guitarStrumTimers = new Set();
+
+    function stopGuitarStrums() {
+        guitarStrumRequest += 1;
+        guitarStrumTimers.forEach(function (timer) { window.clearTimeout(timer); });
+        guitarStrumTimers.clear();
     }
 
-    function strum(direction) {
+    function selectGuitarChord(index, play) {
+        if (index !== state.guitarChordIndex) guitarStrumRequest += 1;
+        state.guitarChordIndex = index;
+        Array.from(elements.chordPads.children).forEach(function (button, position) {
+            button.classList.toggle("active", position === index);
+            button.setAttribute("aria-pressed", String(position === index));
+        });
+        elements.guitarSelectedChord.textContent = guitarKeyChords[index].name;
+        if (play) strum("down");
+    }
+
+    function renderChordPads() {
+        elements.chordPads.innerHTML = "";
+        guitarKeyChords = core.getGuitarKeyChords(state.guitarKey, state.guitarKeyMode);
+        guitarKeyChords.forEach(function (chord, index) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.innerHTML = "<b>" + chord.name + "</b><span>" + chord.degree + "</span><kbd>" + (index + 1) + "</kbd>";
+            button.addEventListener("click", function () { selectGuitarChord(index, elements.guitarPadPlay.checked); });
+            elements.chordPads.appendChild(button);
+        });
+        selectGuitarChord(state.guitarChordIndex, false);
+    }
+
+    function scheduleGuitarStrum(callback, delay) {
+        const timer = window.setTimeout(function () {
+            guitarStrumTimers.delete(timer);
+            callback();
+        }, delay);
+        guitarStrumTimers.add(timer);
+    }
+
+    async function strum(direction) {
+        if (state.instrument !== "guitar" || state.guitarMode !== "chords") return;
         const context = ensureAudio();
         if (!context) return;
-        const notes = core.getStrumOrder(core.getGuitarChord(state.guitarChord), direction);
-        const sampled = isSampledPiano();
-        const start = context.currentTime;
-        notes.forEach(function (midi, index) {
-            const delay = index * (direction === "down" ? 9 : 8);
-            if (sampled) {
-                window.setTimeout(function () {
-                    state.activeNotes.add(midi);
-                    pianoNoteOn(midi, .7 + index * .035);
-                    window.setTimeout(function () {
-                        state.activeNotes.delete(midi);
-                        pianoNoteOff(midi);
-                    }, 1250);
-                }, delay);
+        const request = ++guitarStrumRequest;
+        const chord = guitarKeyChords[state.guitarChordIndex];
+        const notes = core.getStrumOrder(chord.notes, direction);
+        const config = sampledPianoConfig();
+        const samples = new Map();
+        const loading = config && loadMissingPerformanceSamples(notes, config, samples);
+        if (loading) {
+            try {
+                await loading;
+            } catch (error) {
+                if (request === guitarStrumRequest) showToast("기타 음원을 불러오지 못했어요.");
                 return;
             }
-            const when = start + delay / 1000;
-            state.activeNotes.add(midi);
-            stringNoteOn(midi, .7 + index * .035, when);
-            window.setTimeout(function () { state.activeNotes.delete(midi); }, 1300 + index * 24);
+            if (request !== guitarStrumRequest) return;
+        }
+        const down = direction === "down";
+        notes.forEach(function (midi, index) {
+            function pluck() {
+                const velocity = (down ? .88 : .72) - index * .045;
+                const sample = samples.get(midi);
+                if (sample) {
+                    const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
+                    scheduleGuitarStrum(function () { releasePianoVoice(voice, false); }, 1250);
+                    return;
+                }
+                state.activeNotes.add(midi);
+                stringNoteOn(midi, velocity);
+            }
+            if (index === 0) pluck();
+            else scheduleGuitarStrum(pluck, index * (down ? 12 : 9));
         });
-        noteActivity(state.guitarChord + " · " + (direction === "down" ? "다운" : "업"), .88, notes[0]);
+        elements.noteReadout.textContent = chord.name + (down ? " · 다운" : " · 업");
+        state.visualEnergy = Math.max(state.visualEnergy, down ? .88 : .72);
+        state.visualPitch = notes[0];
     }
 
     const drumPadFlashTimers = new WeakMap();
@@ -2271,12 +2393,177 @@
         drumPadFlashTimers.set(button, timer);
     }
 
+    let drumDemoRun = null;
+
+    function stopDrumDemo() {
+        if (!drumDemoRun) return;
+        drumDemoRun.timers.forEach(function (timer) { window.clearTimeout(timer); });
+        drumDemoRun.pads.forEach(function (pad) { pad.classList.remove("demo-hit"); });
+        drumDemoRun = null;
+        elements.drumDemoLabel.textContent = "시범 연주";
+        elements.jangguDemoCue.textContent = "";
+    }
+
+    function playDrumDemo() {
+        if (window.PAD_PRESENTATION.isJanggu(state.currentModel?.id)) {
+            const demo = JANGGU_DEMOS[elements.jangguDemoSelect.selectedIndex];
+            const pads = new Map(activeDrums().map(function (pad) { return [pad.gueum, pad.id]; }));
+            const hits = [];
+            const cycles = 2;
+            for (let cycle = 0; cycle < cycles; cycle += 1) {
+                demo.strokes.forEach(function (stroke, index) {
+                    if (!stroke) return;
+                    const closing = demo.closing && cycle === cycles - 1 && index === demo.strokes.length - 1;
+                    const cue = closing ? demo.closing : stroke;
+                    hits.push([cycle * demo.beats + index / 3, pads.get(cue), index === 0 ? .86 : .72, cue]);
+                });
+            }
+            return playPadDemo(demo.bpm, hits, cycles * demo.beats);
+        }
+        const demo = DRUM_DEMOS[state.currentModel?.id];
+        if (!demo) return;
+        const hits = [];
+        for (let bar = 0; bar < 4; bar += 1) {
+            const pattern = bar < 3 ? demo.groove : demo.groove.filter(function (hit) {
+                return hit[0] < demo.fill[0][0];
+            }).concat(demo.fill);
+            pattern.forEach(function ([beat, parts, velocity]) { hits.push([bar * 4 + beat, parts, velocity]); });
+        }
+        hits.push([16, "kick crash", .88]);
+        return playPadDemo(demo.bpm, hits, 16);
+    }
+
+    async function playPadDemo(bpm, hits, endBeat) {
+        if (!ensureAudio()) return;
+        stopDrumDemo();
+        const pads = new Map(Array.from(elements.drumPads.querySelectorAll("[data-drum]"), function (pad) {
+            return [pad.dataset.drum, pad];
+        }));
+        const run = { timers: [], pads };
+        drumDemoRun = run;
+
+        const sounds = new Set(hits.flatMap(function (hit) { return hit[1].split(" "); }));
+        const config = drumSampleConfig();
+        const pending = [...sounds].filter(function (id) { return !state.drumSamples.has(config.id + ":" + id); });
+        if (pending.length) {
+            elements.drumDemoLabel.textContent = "시범 준비 중";
+            await Promise.allSettled(pending.map(loadDrumSample));
+            if (drumDemoRun !== run) return;
+        }
+
+        elements.drumDemoLabel.textContent = "처음부터 다시";
+        const beatMs = 60000 / bpm;
+        const flashMs = 95;
+        hits.forEach(function ([beat, parts, velocity = .8, cue]) {
+            function hit() {
+                if (cue) elements.jangguDemoCue.textContent = cue;
+                parts.split(" ").forEach(function (id) {
+                    const pad = pads.get(id);
+                    triggerDrumV2(id, velocity);
+                    pulseInstrumentPart(id);
+                    pad.classList.add("demo-hit");
+                    run.timers.push(window.setTimeout(function () { pad.classList.remove("demo-hit"); }, flashMs));
+                });
+            }
+            const time = beat * beatMs;
+            if (time === 0) hit();
+            else run.timers.push(window.setTimeout(hit, time));
+        });
+        run.timers.push(window.setTimeout(stopDrumDemo, endBeat * beatMs + flashMs + 25));
+    }
+
+    let bassDemoRun = null;
+
+    function stopBassDemo() {
+        if (!bassDemoRun) return;
+        const run = bassDemoRun;
+        bassDemoRun = null;
+        run.timers.forEach(function (timer) { window.clearTimeout(timer); });
+        if (run.voice) releasePianoVoice(run.voice, true);
+        if (run.key) run.key.classList.remove("demo-hit");
+        run.button.setAttribute("aria-pressed", "false");
+    }
+
+    async function playBassDemo(button) {
+        if (state.instrument !== "bass" || !ensureAudio()) return;
+        if (bassDemoRun?.button === button) {
+            stopBassDemo();
+            return;
+        }
+        const articulation = button.dataset.bassDemo;
+        const demo = BASS_DEMOS[articulation];
+        allNotesOff();
+        if (state.articulation !== articulation) {
+            state.articulation = articulation;
+            renderArticulations();
+        }
+        const run = { button, timers: [], key: null, voice: null };
+        bassDemoRun = run;
+        button.setAttribute("aria-pressed", "true");
+        const endingBeat = demo.bars.length * 4;
+        const notes = demo.bars.flatMap(function (bar, index) {
+            return bar.map(function ([beat, ...note]) { return [index * 4 + beat, ...note]; });
+        });
+        notes.push([endingBeat, demo.root, .88, 1]);
+        const midis = [...new Set(notes.map(function (note) { return note[1]; }))];
+        const config = sampledPianoConfig();
+        const samples = new Map();
+        const loading = loadMissingPerformanceSamples(midis, config, samples);
+        if (loading) {
+            try {
+                await loading;
+            } catch (error) {
+                if (bassDemoRun === run) {
+                    stopBassDemo();
+                    showToast("시범 연주 음원을 불러오지 못했어요.");
+                }
+                return;
+            }
+            if (bassDemoRun !== run) return;
+        }
+        const beatMs = 60000 / demo.bpm;
+        const viewport = elements.keyboardViewport;
+        const lowKey = elements.keyboard.querySelector('[data-midi="' + Math.min(...midis) + '"]');
+        const highKey = elements.keyboard.querySelector('[data-midi="' + Math.max(...midis) + '"]');
+        stopKeyboardCentering();
+        viewport.scrollLeft = lowKey.offsetLeft + Math.min(0, (highKey.offsetLeft + highKey.offsetWidth - lowKey.offsetLeft - viewport.clientWidth) / 2);
+
+        notes.forEach(function ([beat, midi, velocity, duration, muted]) {
+            function hit() {
+                const sample = samples.get(midi);
+                const key = muted ? null : elements.keyboard.querySelector('[data-midi="' + midi + '"]');
+                const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
+                run.key = key;
+                run.voice = voice;
+                if (key) {
+                    if (key.offsetLeft < viewport.scrollLeft || key.offsetLeft + key.offsetWidth > viewport.scrollLeft + viewport.clientWidth) {
+                        viewport.scrollLeft = key.offsetLeft - (viewport.clientWidth - key.offsetWidth) / 2;
+                    }
+                    key.classList.add("demo-hit");
+                }
+                if (muted) noteActivity("고스트 노트", velocity);
+                else noteActivity(core.noteLabel(midi), velocity, midi);
+                run.timers.push(window.setTimeout(function () {
+                    key?.classList.remove("demo-hit");
+                    if (voice) releasePianoVoice(voice, muted);
+                }, duration * beatMs));
+            }
+            if (beat === 0) hit();
+            else run.timers.push(window.setTimeout(hit, beat * beatMs));
+        });
+        run.timers.push(window.setTimeout(stopBassDemo, (endingBeat + 1) * beatMs));
+    }
+
     function renderDrumPads() {
         elements.drumPads.innerHTML = "";
         const drums = activeDrums();
         const presentation = window.PAD_PRESENTATION;
         const modelId = state.currentModel && state.currentModel.id;
         const janggu = presentation.isJanggu(modelId);
+        const demo = janggu ? JANGGU_DEMOS[elements.jangguDemoSelect.selectedIndex] : DRUM_DEMOS[modelId];
+        elements.drumDemoButton.classList.toggle("hidden", !demo);
+        elements.jangguDemoControls.classList.toggle("hidden", !janggu);
+        elements.drumDemoTempo.textContent = demo ? demo.bpm + " BPM" : "";
         const kit = Boolean(DRUM_KIT_PARTS[modelId]);
         elements.drumPads.classList.toggle("spatial-pads", janggu || kit);
         elements.drumPads.classList.toggle("janggu-pads", janggu);
@@ -2497,6 +2784,7 @@
         const pitchedPercussion = isPitchedPercussion();
         const chords = state.instrument === "guitar" && state.guitarMode === "chords";
         elements.keyboardViewport.classList.toggle("hidden", drums || chords);
+        elements.bassDemoControls.classList.toggle("hidden", state.instrument !== "bass");
         elements.chordSurface.classList.toggle("hidden", !chords);
         elements.drumPads.classList.toggle("hidden", !drums);
         elements.drumPads.style.display = drums ? "grid" : "";
@@ -2623,6 +2911,16 @@
         const tag = event.target && event.target.tagName;
         const textEntry = tag === "TEXTAREA" || tag === "SELECT" || (tag === "INPUT" && event.target.type !== "range");
         if (textEntry) return;
+        if (event.code === "Space" && event.target === elements.drumDemoButton) return;
+        if (state.instrument === "guitar" && state.guitarMode === "chords" && tag !== "INPUT") {
+            const degree = event.code.match(/^(?:Digit|Numpad)([1-7])$/);
+            if (degree || event.code === "ArrowDown" || event.code === "ArrowUp") {
+                event.preventDefault();
+                if (degree) selectGuitarChord(Number(degree[1]) - 1, elements.guitarPadPlay.checked);
+                else strum(event.code === "ArrowDown" ? "down" : "up");
+                return;
+            }
+        }
         const keyboardDirection = event.code === "ArrowLeft" ? -1 : event.code === "ArrowRight" ? 1 : 0;
         const octaveUnavailable = state.instrument === "drums" && !isPitchedPercussion() || state.instrument === "guitar" && state.guitarMode === "chords";
         if (keyboardDirection && tag !== "INPUT" && !octaveUnavailable && elements.keySizeModal.classList.contains("hidden")) {
@@ -2680,6 +2978,17 @@
     }
 
     function bindEvents() {
+        elements.bassDemoControls.querySelectorAll("[data-bass-demo]").forEach(function (button) {
+            button.addEventListener("click", function () { playBassDemo(button); });
+        });
+        JANGGU_DEMOS.forEach(function (demo) {
+            elements.jangguDemoSelect.add(new Option(demo.name));
+        });
+        elements.jangguDemoSelect.addEventListener("change", function () {
+            stopDrumDemo();
+            elements.drumDemoTempo.textContent = JANGGU_DEMOS[this.selectedIndex].bpm + " BPM";
+        });
+        elements.drumDemoButton.addEventListener("click", playDrumDemo);
         elements.keySizeButton.addEventListener("click", openKeySizeDialog);
         document.querySelectorAll("[data-key-size-close]").forEach(function (button) { button.addEventListener("click", closeKeySizeDialog); });
         elements.calibrationSlider.addEventListener("input", function () { elements.calibrationCard.style.width = elements.calibrationSlider.value + "px"; });
@@ -2717,11 +3026,49 @@
         document.querySelectorAll("[data-guitar-mode]").forEach(function (button) {
             button.addEventListener("click", function () { setGuitarMode(button.dataset.guitarMode); });
         });
-        document.querySelectorAll("[data-strum]").forEach(function (button) {
-            button.addEventListener("pointerdown", function (event) { event.preventDefault(); strum(button.dataset.strum); });
-            button.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
-            button.addEventListener("dragstart", function (event) { event.preventDefault(); });
+        Object.entries({ major: "장조", minor: "단조" }).forEach(function ([mode, label]) {
+            const group = document.createElement("optgroup");
+            group.label = label;
+            core.GUITAR_KEYS[mode].forEach(function (tonic) {
+                group.appendChild(new Option(tonic + " " + label, mode + ":" + tonic));
+            });
+            elements.guitarKeySelect.appendChild(group);
         });
+        elements.guitarKeySelect.addEventListener("change", function () {
+            allNotesOff();
+            [state.guitarKeyMode, state.guitarKey] = this.value.split(":");
+            state.guitarChordIndex = 0;
+            renderChordPads();
+        });
+        document.querySelectorAll("[data-strum]").forEach(function (button) {
+            button.addEventListener("click", function () { strum(button.dataset.strum); });
+        });
+        let strumPointer = null;
+        let strumY = 0;
+        let lastStrumDirection = 0;
+        const zone = elements.guitarStrumZone;
+        zone.addEventListener("pointerdown", function (event) {
+            if (event.button !== 0 || strumPointer !== null) return;
+            ensureAudio();
+            strumPointer = event.pointerId;
+            strumY = event.clientY;
+            lastStrumDirection = 0;
+            zone.setPointerCapture(event.pointerId);
+        });
+        zone.addEventListener("pointermove", function (event) {
+            if (event.pointerId !== strumPointer) return;
+            const distance = event.clientY - strumY;
+            const direction = Math.sign(distance);
+            if (direction === lastStrumDirection) {
+                strumY = event.clientY;
+                return;
+            }
+            if (Math.abs(distance) < 22) return;
+            strum(direction > 0 ? "down" : "up");
+            strumY = event.clientY;
+            lastStrumDirection = direction;
+        });
+        zone.addEventListener("lostpointercapture", function () { strumPointer = null; });
         elements.sustainButton.addEventListener("click", function () { if (supportsPianoSustain()) setSustain(!state.sustain, !state.sustain); });
         [elements.toneSlider, elements.muteSlider, elements.pickSlider, elements.driveSlider, elements.drumResonanceSlider, elements.drumToneSlider]
             .forEach(function (slider) { slider.addEventListener("input", syncRangeOutputs); });
@@ -2745,7 +3092,6 @@
             elements.drumPads.addEventListener("contextmenu", function (event) { event.preventDefault(); });
         }
         if (elements.chordSurface) {
-            elements.chordSurface.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
             elements.chordSurface.addEventListener("dragstart", function (event) { event.preventDefault(); });
             elements.chordSurface.addEventListener("contextmenu", function (event) { event.preventDefault(); });
         }
