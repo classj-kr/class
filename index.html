@@ -104,26 +104,7 @@
 
         @media (min-width: 761px) and (min-aspect-ratio: 9/5) {
             body::before {
-                background: var(--index-background-image) center / contain no-repeat;
-                /* The monthly images are approximately 1.79 times as wide as they are tall. */
-                mask: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent)
-                    center / min(100%, 179dvh) 100% no-repeat;
-            }
-
-            body::after {
-                content: "";
-                position: fixed;
-                inset: 0;
-                z-index: -2;
-                background: var(--index-background-image) center / cover no-repeat;
-                filter: blur(18px) brightness(0.65);
-                pointer-events: none;
-                transition: filter 0.3s ease;
-            }
-
-            body.content-access-editing::after,
-            body.global-content-access-editing::after {
-                filter: blur(18px) brightness(0.2);
+                background-position: center 60%;
             }
         }
 
