@@ -190,23 +190,32 @@ function updatePageTitle() {
     document.title = board?.label || (classes.length === 1 ? classes[0].label : '학급');
 }
 
-function classroomCard(index) {
+function linkCard({ index, key, href, iconName, type, title }) {
     const card = document.createElement('a');
     card.className = `group-card tone-${index % 4}`;
-    card.dataset.boardKey = 'classroom';
-    card.href = '/classtools/dashboard?view=student';
+    card.dataset.boardKey = key;
+    card.href = href;
     const icon = document.createElement('span');
     icon.className = 'material-symbols-outlined group-icon';
     icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = 'dashboard';
-    const type = document.createElement('span');
-    type.className = 'group-type';
-    type.textContent = '학급';
+    icon.textContent = iconName;
+    const label = document.createElement('span');
+    label.className = 'group-type';
+    label.textContent = type;
     const name = document.createElement('strong');
     name.className = 'group-name';
-    name.textContent = '교실';
-    card.append(icon, type, name);
+    name.textContent = title;
+    card.append(icon, label, name);
     return card;
+}
+
+function studentLinkCards() {
+    if (!showClassroomCard) return [];
+    const first = boards.length;
+    return [
+        linkCard({ index: first, key: 'classroom', href: '/classtools/dashboard?view=student', iconName: 'dashboard', type: '학급', title: '교실' }),
+        linkCard({ index: first + 1, key: 'learning-boards', href: '/boards/?mode=student', iconName: 'sticky_note_2', type: '학급', title: '게시판' })
+    ];
 }
 
 function renderGroupList(animate = true) {
@@ -251,7 +260,7 @@ function renderGroupList(animate = true) {
         });
         return card;
     }));
-    if (showClassroomCard) groupListSection.append(classroomCard(boards.length));
+    groupListSection.append(...studentLinkCards());
     if (!groupListSection.children.length) groupListSection.innerHTML = '<div class="loader">소속된 그룹이 없습니다.</div>';
     if (focusedKey) [...groupListSection.children].find(el => el.dataset.boardKey === focusedKey)?.focus({ preventScroll: true });
 }
