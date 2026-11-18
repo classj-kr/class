@@ -253,22 +253,22 @@ function renderGroupList(animate = true) {
     const focusedKey = document.activeElement?.dataset.boardKey;
     groupListSection.replaceChildren(...boards.map((board, index) => {
         const card = document.createElement('a');
-        // 학생에게 반 게시판은 「알림장」이고, 어느 반인지는 위 작은 글자로 보인다.
-        const studentClassBoard = showClassroomCard && board.kind === 'class';
+        // 학생에게 반·그룹 게시판은 모두 「알림장」이고, 어디 것인지는 위 작은 글자로 보인다.
+        const studentPostBoard = showClassroomCard && (board.kind === 'class' || board.kind === 'group');
         card.className = `group-card tone-${(index + (showClassroomCard ? 1 : 0)) % 4}`;
         card.dataset.boardKey = board.key;
         card.href = withView(new URLSearchParams({ board: board.key }));
-        card.setAttribute('aria-label', `${board.label}${studentClassBoard ? ' 알림장' : ''}${board.unreadCount ? `, 안 읽은 글 ${board.unreadCount}개` : ''}`);
+        card.setAttribute('aria-label', `${board.label}${studentPostBoard ? ' 알림장' : ''}${board.unreadCount ? `, 안 읽은 글 ${board.unreadCount}개` : ''}`);
         const icon = document.createElement('span');
         icon.className = 'material-symbols-outlined group-icon';
         icon.setAttribute('aria-hidden', 'true');
         icon.textContent = boardIcon(board);
         const type = document.createElement('span');
         type.className = 'group-type';
-        type.textContent = studentClassBoard ? board.label : board.typeLabel;
+        type.textContent = studentPostBoard ? board.label : board.typeLabel;
         const name = document.createElement('strong');
         name.className = 'group-name';
-        name.textContent = studentClassBoard ? '알림장' : board.label;
+        name.textContent = studentPostBoard ? '알림장' : board.label;
         card.append(icon, type, name);
         if (board.memberCount != null) {
             const members = document.createElement('span');
