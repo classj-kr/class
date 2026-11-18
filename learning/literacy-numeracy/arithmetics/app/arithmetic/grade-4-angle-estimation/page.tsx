@@ -3,8 +3,7 @@
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
 
 import { useEffect, useMemo, useState } from "react";
-import { createAngleEstimationSet } from "../../../lib/angle-estimation";
-import type { AngleEstimationProblem } from "../../../lib/angle-estimation";
+import { ANGLE_ESTIMATION_INSTRUCTION, createAngleEstimationSet, type AngleEstimationProblem } from "../../../lib/angle-estimation";
 
 type PrintMode = "worksheet" | "answers" | "both";
 
@@ -101,6 +100,7 @@ export default function GradeFourAngleEstimationPage() {
               onChange={(event) => updateAnswer(problem.id, event.target.value)}
               onKeyDown={moveOnEnter}
               aria-label={`${index + 1}번 각도 답`}
+              aria-describedby="angle-estimation-instruction"
             />}
           <span className="angle-degree">°</span>
         </div>
@@ -116,6 +116,7 @@ export default function GradeFourAngleEstimationPage() {
           <div className="counting-sheet-title"><span>4학년</span><strong>각도의 어림{answerSheet ? " 정답" : ""}</strong></div>
           <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div>
         </header>
+        {!answerSheet && <p id="angle-estimation-instruction" className="angle-estimation-guide">{ANGLE_ESTIMATION_INSTRUCTION}</p>}
         <div className="angle-estimation-grid">
           {problems.map((problem, index) => renderProblem(problem, index, answerSheet))}
         </div>

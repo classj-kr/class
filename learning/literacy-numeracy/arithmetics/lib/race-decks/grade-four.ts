@@ -1,6 +1,6 @@
 // 4학년 큰 수·각도·곱셈·나눗셈·소수·단위 변환과 5학년 소수의 곱셈 학습지의 카드.
 import { blank, equation, type RaceCard, type RaceDeck, type RacePart } from "../race-card-model.ts";
-import { createAngleEstimationSet } from "../angle-estimation.ts";
+import { ANGLE_ESTIMATION_INSTRUCTION, createAngleEstimationSet } from "../angle-estimation.ts";
 import { createGradeFiveDecimalSet } from "../grade-five-decimals.ts";
 import { createProblemSet as numberReading } from "../race-sets/grade-4-number-reading.ts";
 import { createProblemSet as multiplication } from "../race-sets/grade-4-multiplication.ts";
@@ -28,7 +28,7 @@ export const decks: Record<string, RaceDeck> = {
     ? { prompt: "한자어로 쓰기", parts: [problem.number, "→", blank("a", "text", 12)], answers: { a: [problem.reading] } }
     : { prompt: "숫자로 쓰기", parts: [problem.reading, "→", blank("a", "number", 9)], answers: { a: [problem.number] } }),
   "/arithmetic/grade-4-angle-estimation": (seed) => createAngleEstimationSet(seed).map((problem): RaceCard => ({
-    prompt: "각도 어림하기",
+    prompt: ANGLE_ESTIMATION_INSTRUCTION,
     parts: [{ svg: angleSvg(problem.angle) }, { br: true }, blank(), "°"],
     answers: { a: [String(problem.angle)] },
   })),

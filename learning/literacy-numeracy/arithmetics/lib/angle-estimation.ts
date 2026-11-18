@@ -4,6 +4,7 @@ export type AngleEstimationProblem = {
 };
 
 export const ANGLE_ESTIMATION_VALUES = Array.from({ length: 12 }, (_, index) => (index + 1) * 15);
+export const ANGLE_ESTIMATION_INSTRUCTION = "각도를 어림해 15°, 30°, 45°처럼 15의 배수로만 쓰세요.";
 
 function random(seed: number) {
   let value = seed >>> 0;

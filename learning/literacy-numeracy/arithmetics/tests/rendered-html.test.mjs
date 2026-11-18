@@ -1769,6 +1769,7 @@ test("renders twelve fourth-grade angle estimation questions in fifteen-degree s
   assert.match(html, /각도 어림/);
   assert.match(html, /aria-label="A4 4학년 각도 어림 문제지"/);
   assert.match(html, /aria-label="A4 4학년 각도 어림 전체 답지"/);
+  assert.equal((html.match(/각도를 어림해 15°, 30°, 45°처럼 15의 배수로만 쓰세요\./g) ?? []).length, 1);
   assert.equal((html.match(/data-testid="angle-estimation-question"/g) ?? []).length, 24);
   assert.equal((html.match(/class="angle-answer-input"/g) ?? []).length, 12);
   assert.equal((html.match(/class="angle-static-answer"/g) ?? []).length, 12);
