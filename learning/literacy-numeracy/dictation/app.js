@@ -1,7 +1,7 @@
 // 국어책 받아쓰기(시험판) — 브라우저 목소리로 듣고 칸에 손으로 쓴다.
 // 글씨 점수는 글씨 쓰기 앱의 채점(HandwritingCore.judge)을 그대로 쓴다.
-// 맞춤법: 띄어쓰기·마침표·글자 수는 칸으로 정확히 잰다. 글자가 맞는지는 모양 비교로 가려지지 않아서(받침 하나 차이를
-// 흔들린 글씨와 구분 못 함) 아이가 답과 견주어 고르고, 기기에 글자 알아보기 기능이 있으면 먼저 골라 준다.
+// 맞춤법: 띄어쓰기·마침표·글자 수는 칸으로 정확히 잰다. 글자는 획 단위로 답 글자와 「자모 하나만 다른 글자들」에 견주어,
+// 다른 글자에 뚜렷이 더 가까우면 틀림으로 먼저 표시한다(점 구름 비교는 받침 하나 차이를 못 가린다). 아이가 눌러 고칠 수 있다.
 (function () {
   'use strict';
   const UNIT = {
@@ -20,7 +20,7 @@
 
   let queue = [], at = 0, results = new Map();
   let cells = [], history = [], current = null, lastCell = -1, cellPx = 80;
-  let check = null, penSeen = false, inputType = 'touch';
+  let check = null, penSeen = false;
 
   // ---- 소리 ----
   const synth = window.speechSynthesis;
@@ -40,7 +40,7 @@
   function noVoice() {
     $('notice').textContent = '이 기기에는 한국어 목소리가 없습니다.';
     $('notice').hidden = false;
-    $('play').disabled = $('slow').disabled = true;
+    $('play').disabled = true;
   }
   function speak(rate) {
     if (!synth || !voice) return;
@@ -102,7 +102,7 @@
     }
     return index;
   }
-  const local = (p, index) => { const c = cellAt(index); return [((p.x - c.x) / cellPx) * 100, ((p.y - c.y) / cellPx) * 100, Date.now()]; };
+  const local = (p, index) => { const c = cellAt(index); return [((p.x - c.x) / cellPx) * 100, ((p.y - c.y) / cellPx) * 100]; };
 
   canvas.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'pen') penSeen = true;
@@ -111,7 +111,6 @@
     const p = point(e);
     if (check) { toggle(p); return; }
     if (current) return;
-    inputType = e.pointerType === 'pen' ? 'stylus' : e.pointerType === 'mouse' ? 'mouse' : 'touch';
     const index = pickCell(p);
     const stroke = [local(p, index)];
     cells[index].push(stroke); history.push(index); lastCell = index;
@@ -191,31 +190,88 @@
     return { spell, hand: judged.length ? Math.round(judged.reduce((a, b) => a + b, 0) / judged.length) : 0 };
   }
 
-  // 기기에 글자 알아보기 기능이 있으면(크롬북 등) 답과 다른 글자를 먼저 골라 준다. 없으면 아이가 고른다.
-  let recognizer = null;
-  async function prepareRecognizer() {
-    try {
-      if (!navigator.createHandwritingRecognizer) return;
-      recognizer = await navigator.createHandwritingRecognizer({ languages: ['ko'] });
-    } catch { recognizer = null; }
+  // ---- 글자 가려내기 ----
+  // 획마다 경로를 견주고(순서·방향은 너그럽게, 이어 쓴 획도 받는다), 답 글자보다 자모 하나 다른 글자가 뚜렷이 가까우면 틀림이다.
+  // 흔든 글씨 흉내로 잰 값(MARGIN 0.15): 바른 글씨는 맞는 글자 오판 1%·틀린 글자 놓침 5%쯤, 보통 글씨는 각각 12~15%쯤.
+  // TOO_FAR 0.65: 보통 글씨의 맞는 글자는 99%가 이 안에 들고, 선 하나·획 절반·엉뚱한 글자는 대부분 밖이다.
+  const MARGIN = 0.15, UNMATCHED = 0.7, TOO_FAR = 0.65;
+  const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+  const pathLength = (p) => p.slice(1).reduce((n, q, i) => n + dist(p[i], q), 0);
+  function normalise(strokes) {
+    const points = strokes.flatMap((s) => Core.sample(s, 16));
+    const x = points.reduce((n, p) => n + p[0], 0) / points.length, y = points.reduce((n, p) => n + p[1], 0) / points.length;
+    const r = Math.max(0.5, Math.sqrt(points.reduce((n, p) => n + (p[0] - x) ** 2 + (p[1] - y) ** 2, 0) / points.length));
+    return strokes.map((s) => {
+      const q = s.map((p) => [((p[0] - x) * 30) / r, ((p[1] - y) * 30) / r]);
+      return { points: Core.sample(q, 12), length: pathLength(q) };
+    });
   }
-  async function autoMark(c) {
-    if (!recognizer || !window.HandwritingStroke) return false;
-    try {
-      await Promise.race([Promise.all(c.pairs.map(async (cell, i) => {
-        if (cell === null) return;
-        const drawing = recognizer.startDrawing({ recognitionType: 'text', inputType, alternatives: 3 });
-        for (const s of cells[cell]) {
-          const stroke = new window.HandwritingStroke(), t0 = s[0][2];
-          for (const [x, y, t] of s) stroke.addPoint({ x, y, t: t - t0 });
-          drawing.addStroke(stroke);
-        }
-        const found = await drawing.getPrediction();
-        drawing.clear?.();
-        if (found.length && !found.some((f) => f.text.trim() === c.letters[i])) c.wrong.add(cell);
-      })), new Promise((_, no) => setTimeout(() => no(new Error('timeout')), 3000))]);
-      return true;
-    } catch { return false; }
+  const shapes = new Map();
+  // 이어 쓰기 쉬운 획(끝과 다음 시작이 붙은 획)은 붙인 꼴도 본보기로 둔다.
+  function shapesOf(char) {
+    if (shapes.has(char)) return shapes.get(char);
+    const model = Core.model(char), joins = [];
+    for (let i = 0; i < model.length - 1 && joins.length < 3; i++) {
+      if (dist(model[i][model[i].length - 1], model[i + 1][0]) < 11) joins.push(i);
+    }
+    const out = [];
+    for (let bits = 0; bits < 1 << joins.length; bits++) {
+      const strokes = [];
+      model.forEach((s, i) => {
+        const at = joins.indexOf(i - 1);
+        if (at >= 0 && (bits >> at) & 1) strokes[strokes.length - 1] = strokes[strokes.length - 1].concat(s);
+        else strokes.push(s);
+      });
+      out.push(normalise(strokes));
+    }
+    shapes.set(char, out);
+    return out;
+  }
+  function strokeCost(a, b) {
+    let forward = 0, backward = 0;
+    const n = a.points.length;
+    for (let i = 0; i < n; i++) { forward += dist(a.points[i], b.points[i]); backward += dist(a.points[i], b.points[n - 1 - i]); }
+    return Math.min(forward, backward + n) / n / 30 + (0.25 * Math.abs(a.length - b.length)) / Math.max(a.length, b.length, 1);
+  }
+  function shapeCost(written, model) {
+    const pairs = [];
+    written.forEach((w, i) => model.forEach((m, j) => pairs.push([strokeCost(w, m), i, j])));
+    pairs.sort((a, b) => a[0] - b[0]);
+    const usedW = new Set(), usedM = new Set();
+    let total = 0;
+    for (const [cost, i, j] of pairs) {
+      if (usedW.has(i) || usedM.has(j)) continue;
+      usedW.add(i); usedM.add(j); total += cost * (written[i].length + model[j].length);
+    }
+    written.forEach((s, i) => { if (!usedW.has(i)) total += UNMATCHED * s.length; });
+    model.forEach((s, j) => { if (!usedM.has(j)) total += UNMATCHED * s.length; });
+    return total / Math.max(1, written.reduce((n, s) => n + s.length, 0) + model.reduce((n, s) => n + s.length, 0));
+  }
+  const costOf = (written, char) => Math.min(...shapesOf(char).map((model) => shapeCost(written, model)));
+  function neighbours(char) {
+    const n = char.codePointAt(0) - 0xac00;
+    if (n < 0 || n > 11171) return [];
+    const a = Math.floor(n / 588), b = Math.floor((n % 588) / 28), d = n % 28, out = new Set();
+    const make = (x, y, z) => String.fromCodePoint(0xac00 + x * 588 + y * 28 + z);
+    for (let i = 0; i < 19; i++) out.add(make(i, b, d));
+    for (let i = 0; i < 21; i++) out.add(make(a, i, d));
+    for (let i = 0; i < 28; i++) out.add(make(a, b, i));
+    out.delete(char);
+    return [...out];
+  }
+  function looksWrong(char, strokes) {
+    const others = neighbours(char);
+    if (!others.length || !strokes.length) return false;
+    // 획이 너무 적으면(선 하나만 그은 칸) 글자로 치지 않는다. 이어 쓴 획은 본보기의 붙인 꼴 수로 센다.
+    if (strokes.length < Math.ceil(Math.min(...shapesOf(char).map((m) => m.length)) * 0.6)) return true;
+    const written = normalise(strokes), own = costOf(written, char);
+    if (own > TOO_FAR) return true;
+    let best = Infinity;
+    for (const other of others) best = Math.min(best, costOf(written, other));
+    return (own - best) / Math.max(own, 0.02) > MARGIN;
+  }
+  function autoMark(c) {
+    c.pairs.forEach((cell, i) => { if (cell !== null && looksWrong(c.letters[i], c.strokesOf(cell))) c.wrong.add(cell); });
   }
 
   // ---- 진행 ----
@@ -253,15 +309,15 @@
     if (check.wrong.has(index)) check.wrong.delete(index); else check.wrong.add(index);
     renderMarks(); draw();
   }
-  async function submit() {
+  function submit() {
     if (!cells.some((s) => s.length) || check) return;
     synth?.cancel();
     check = analyse(queue[at]);
-    const auto = await autoMark(check);
+    autoMark(check);
     $('sheet').classList.add('checking');
     $('answer').textContent = queue[at]; $('answer').hidden = false;
     $('writeTools').hidden = true; $('checkTools').hidden = false;
-    $('hint').textContent = auto ? '기기가 고른 글자입니다. 다르면 눌러서 고쳐요.' : '답과 다른 글자를 눌러요.';
+    $('hint').textContent = '답과 견주어 보고, 표시가 다르면 글자를 눌러 고쳐요.';
     renderMarks(); draw();
   }
   function count(el, value) {
@@ -287,7 +343,6 @@
   }
 
   $('play').onclick = () => speak(0.85);
-  $('slow').onclick = () => speak(0.55);
   $('undo').onclick = () => {
     const index = history.pop();
     if (index === undefined) return;
@@ -315,6 +370,5 @@
     synth.addEventListener?.('voiceschanged', loadVoices);
     setTimeout(() => { if (!voices.length) noVoice(); }, 2000);
   } else noVoice();
-  prepareRecognizer();
   start(UNIT.sentences.slice());
 })();

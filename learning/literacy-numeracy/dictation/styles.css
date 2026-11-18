@@ -51,12 +51,12 @@ body, body .sheet button, body .sheet select, body .sheet p {
 .speaking .play .w2 { animation-delay: .18s; }
 @keyframes pulse { 50% { transform: scale(1.07); } }
 @keyframes wave { 50% { opacity: .25; } }
-.play:disabled, .slow:disabled { background: #b9c2cc; box-shadow: none; cursor: default; }
+.play:disabled { background: #b9c2cc; box-shadow: none; cursor: default; }
 
-.slow, .soft, .main {
+.soft, .main {
   min-height: 46px; padding: 0 18px; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer;
 }
-.slow, .soft { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.soft { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
 .main { background: var(--ink); color: #fff; border: 0; }
 .notice { margin: 0 0 10px; text-align: center; color: var(--red); font-size: 16px; }
 
