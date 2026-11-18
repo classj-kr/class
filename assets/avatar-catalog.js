@@ -510,13 +510,6 @@ const items=Object.freeze([
     "group": "fruit"
   },
   {
-    "key": "fruit-strawberry.webp",
-    "name": "딸기",
-    "answer": "strawberry",
-    "category": "food",
-    "group": "fruit"
-  },
-  {
     "key": "fruit-cherry.webp",
     "name": "체리",
     "answer": "cherry",
@@ -559,37 +552,9 @@ const items=Object.freeze([
     "group": "fruit"
   },
   {
-    "key": "fruit-banana.webp",
-    "name": "바나나",
-    "answer": "banana",
-    "category": "food",
-    "group": "fruit"
-  },
-  {
     "key": "fruit-mango.webp",
     "name": "망고",
     "answer": "mango",
-    "category": "food",
-    "group": "fruit"
-  },
-  {
-    "key": "fruit-pineapple.webp",
-    "name": "파인애플",
-    "answer": "pineapple",
-    "category": "food",
-    "group": "fruit"
-  },
-  {
-    "key": "fruit-watermelon.webp",
-    "name": "수박",
-    "answer": "watermelon",
-    "category": "food",
-    "group": "fruit"
-  },
-  {
-    "key": "fruit-melon.webp",
-    "name": "멜론",
-    "answer": "melon",
     "category": "food",
     "group": "fruit"
   },
@@ -599,6 +564,41 @@ const items=Object.freeze([
     "answer": "avocado",
     "category": "food",
     "group": "fruit"
+  },
+  {
+    "key": "fruit-strawberry.webp",
+    "name": "딸기",
+    "answer": "strawberry",
+    "category": "food",
+    "group": "vegetables"
+  },
+  {
+    "key": "fruit-banana.webp",
+    "name": "바나나",
+    "answer": "banana",
+    "category": "food",
+    "group": "vegetables"
+  },
+  {
+    "key": "fruit-pineapple.webp",
+    "name": "파인애플",
+    "answer": "pineapple",
+    "category": "food",
+    "group": "vegetables"
+  },
+  {
+    "key": "fruit-watermelon.webp",
+    "name": "수박",
+    "answer": "watermelon",
+    "category": "food",
+    "group": "vegetables"
+  },
+  {
+    "key": "fruit-melon.webp",
+    "name": "멜론",
+    "answer": "melon",
+    "category": "food",
+    "group": "vegetables"
   },
   {
     "key": "vegetable-carrot.webp",

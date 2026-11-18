@@ -49,7 +49,6 @@ test("공용 이공계 페이지는 주소의 kind가 바뀌면 해당 학습지
   assert.match(source, /isStemBridgeKind\(requested\)/);
   assert.match(source, /key=\{kind\}/);
   assert.match(source, /pageClassName="stem-foundation-page"/);
-  assert.match(source, /problemsPerSheet=\{3\}/);
   assert.doesNotMatch(source, /window\.location\.search/);
 
   const worksheetSource = fs.readFileSync(

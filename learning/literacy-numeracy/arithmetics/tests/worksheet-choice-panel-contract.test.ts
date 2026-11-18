@@ -38,13 +38,13 @@ test("공통 객관식 패널은 선택 상태와 패널 내부 채점 버튼을
   assert.match(source, /problem\.latex/);
 });
 
-test("shared choice panel is a centered multi-column modal with visible grading states", () => {
+test("shared choice panel is a centered single-column modal with visible grading states", () => {
   const css = fs.readFileSync(
     path.join(process.cwd(), "app", "arithmetic", "high-school", "high-school.css"),
     "utf8",
   );
   assert.match(css, /\.trig-derivative-answer-panel-backdrop\s*\{[\s\S]*?align-items:\s*center;[\s\S]*?justify-content:\s*center/);
-  assert.match(css, /\.worksheet-choice-modal \.trig-derivative-answer-list\s*\{[\s\S]*?repeat\(auto-fit,\s*minmax\(330px,\s*1fr\)\)/);
+  assert.match(css, /\.worksheet-choice-modal \.trig-derivative-answer-list\s*\{[\s\S]*?minmax\(0,\s*1fr\)/);
   assert.match(css, /\.trig-derivative-choice\.is-correct-answer[\s\S]*?\{/);
   assert.match(css, /\.trig-derivative-choice\.is-wrong-answer[\s\S]*?\{/);
 });

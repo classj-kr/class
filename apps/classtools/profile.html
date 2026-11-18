@@ -65,6 +65,11 @@
         .secondary-button { color:var(--green); background:transparent; }
         .picker-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
         #avatarStatus { color:var(--muted); font-size:.84rem; font-weight:700; }
+        .avatar-floating-bar { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:1000; display:flex; align-items:center; gap:14px; padding:10px 18px; border:2px solid var(--green); border-radius:999px; background:rgba(18,39,30,.96); backdrop-filter:blur(8px); box-shadow:0 12px 36px rgba(0,0,0,.5); color:var(--ink); }
+        .avatar-floating-bar strong { font-size:.92rem; color:var(--green); }
+        .avatar-floating-bar button { min-height:38px; padding:6px 18px; border-radius:999px; }
+        .avatar-top-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:12px 0; padding:10px 14px; border-radius:12px; background:var(--inset); border:1px solid #2b4336; }
+        .avatar-top-actions strong { color:var(--green); font-size:.9rem; }
         [hidden] { display:none !important; }
         .card a { color:var(--green); }
         .ai-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
@@ -98,21 +103,27 @@
                 <input id="avatarSearch" type="search" placeholder="이름으로 찾기" aria-label="아바타 이름 검색">
             </div>
             <p class="hint">선택 가능한 아바타만 보여요. 비슷한 종류끼리 모아 두었어요.</p>
+            <div id="avatarTopActions" class="avatar-top-actions" hidden>
+                <span>선택한 아바타: <strong id="selectedAvatarNameTop"></strong></span>
+                <button id="saveAvatarTop" type="button" disabled>이 아바타로 확정</button>
+            </div>
             <div id="allAvatars" class="avatar-grid"></div>
-            <div class="picker-actions"><span id="avatarStatus" role="status" aria-live="polite"></span><button id="saveAvatar" type="button" disabled>&#51060; &#50500;&#48148;&#53440;&#47196; &#54869;&#51221;</button></div>
+            <div class="picker-actions"><span id="avatarStatus" role="status" aria-live="polite"></span><button id="saveAvatar" type="button" disabled>이 아바타로 확정</button></div>
+        </div>
+        <div id="avatarFloatingBar" class="avatar-floating-bar" hidden>
+            <span>선택: <strong id="selectedAvatarNameFloating"></strong></span>
+            <button id="saveAvatarFloating" type="button">이 아바타로 확정</button>
         </div>
     </section>
     <form id="profileForm" class="card" hidden>
         <h2>생일과 공개 여부</h2>
-        <label id="birthdayFieldsLabel">생일 월일</label>
-        <div class="birthday-fields" role="group" aria-labelledby="birthdayFieldsLabel" aria-describedby="birthdayHint">
+        <label id="birthdayFieldsLabel">생일</label>
+        <div class="birthday-fields" role="group" aria-labelledby="birthdayFieldsLabel">
             <select id="birthdayMonth" aria-label="생일 월"><option value="">월</option></select>
             <select id="birthdayDay" aria-label="생일 일"><option value="">일</option></select>
         </div>
-        <p id="birthdayHint" class="hint">태어난 해는 받지 않아요. 월과 일만 저장합니다.</p>
-        <label class="choice" for="birthdayVisible"><input id="birthdayVisible" type="checkbox"><span><strong>학급 대시보드에 내 생일 공개</strong><small id="birthdaySharingHint">켜면 학급 구성원에게 ‘○○ 생일’ 일정이 보여요. 언제든 다시 끌 수 있어요.</small></span></label>
+        <label class="choice" for="birthdayVisible" style="margin-top:14px"><input id="birthdayVisible" type="checkbox"><span><strong>학급 대시보드에 내 생일 공개</strong><small id="birthdaySharingHint">켜면 학급 구성원에게 ‘○○ 생일’ 일정이 보여요. 언제든 다시 끌 수 있어요.</small></span></label>
         <p id="preview" class="preview">현재 생일은 공개되지 않습니다.</p>
-        <p id="studentBirthdayHint" class="hint warning">친구의 생일이나 다른 개인정보는 입력하지 마세요.</p>
         <div class="actions"><span id="status" role="status" aria-live="polite"></span><button id="saveButton" type="submit">설정 저장</button></div>
     </form>
     
@@ -150,20 +161,29 @@ populateDayOptions('');
 function currentMmdd(){const m=birthdayMonth.value,d=birthdayDay.value;return m&&d?String(m).padStart(2,'0')+String(d).padStart(2,'0'):''}
 function setBirthdaySelects(mmdd){const value=String(mmdd||'');const month=value.length===4?String(Number(value.slice(0,2))):'';const day=value.length===4?String(Number(value.slice(2))):'';birthdayMonth.value=month;populateDayOptions(month,day)}
 async function api(path,options={}){const response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.message||'요청을 처리하지 못했습니다.');return data}
-const avatarCard=document.querySelector('#avatarCard'),currentAvatarImage=document.querySelector('#currentAvatarImage'),currentAvatarName=document.querySelector('#currentAvatarName'),avatarPolicy=document.querySelector('#avatarPolicy'),openAvatarPicker=document.querySelector('#openAvatarPicker'),avatarPicker=document.querySelector('#avatarPicker'),allAvatars=document.querySelector('#allAvatars'),avatarStatus=document.querySelector('#avatarStatus'),saveAvatar=document.querySelector('#saveAvatar');
+const avatarCard=document.querySelector('#avatarCard'),currentAvatarImage=document.querySelector('#currentAvatarImage'),currentAvatarName=document.querySelector('#currentAvatarName'),avatarPolicy=document.querySelector('#avatarPolicy'),openAvatarPicker=document.querySelector('#openAvatarPicker'),avatarPicker=document.querySelector('#avatarPicker'),allAvatars=document.querySelector('#allAvatars'),avatarStatus=document.querySelector('#avatarStatus'),saveAvatar=document.querySelector('#saveAvatar'),avatarTopActions=document.querySelector('#avatarTopActions'),saveAvatarTop=document.querySelector('#saveAvatarTop'),selectedAvatarNameTop=document.querySelector('#selectedAvatarNameTop'),avatarFloatingBar=document.querySelector('#avatarFloatingBar'),selectedAvatarNameFloating=document.querySelector('#selectedAvatarNameFloating'),saveAvatarFloating=document.querySelector('#saveAvatarFloating');
 let currentAvatarProfile=null,selectedAvatarKey='',avatarCategory='all',availableAvatars=[];
 const avatarCatalog=window.ClassAvatarCatalog;
 function avatarDisplayName(key){return avatarCatalog.get(key)?.name||String(key||'').replace(/\.(?:png|webp)$/i,'').replace(/^(animal|food|fruit|vegetable|object|vehicle|theme|sport|award|drink|game)-/,'').replace(/-/g,' ')}
 
 function updateAvatarSelection(){
     document.querySelectorAll('[data-avatar-key]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.avatarKey===selectedAvatarKey)));
-    saveAvatar.disabled=!selectedAvatarKey||selectedAvatarKey===currentAvatarProfile?.key;
+    const canSave=Boolean(selectedAvatarKey&&selectedAvatarKey!==currentAvatarProfile?.key);
+    saveAvatar.disabled=!canSave;
+    if(saveAvatarTop)saveAvatarTop.disabled=!canSave;
+    if(saveAvatarFloating)saveAvatarFloating.disabled=!canSave;
+    const name=selectedAvatarKey?avatarDisplayName(selectedAvatarKey):'';
+    if(selectedAvatarNameTop)selectedAvatarNameTop.textContent=name;
+    if(selectedAvatarNameFloating)selectedAvatarNameFloating.textContent=name;
+    if(avatarTopActions)avatarTopActions.hidden=!canSave||avatarPicker.hidden;
+    if(avatarFloatingBar)avatarFloatingBar.hidden=!canSave||avatarPicker.hidden;
 }
 function createAvatarButton(option){
-    const button=document.createElement('button');button.type='button';button.className='avatar-option';button.dataset.avatarKey=option.key;button.setAttribute('aria-label',`${avatarDisplayName(option.key)} \uc544\ubc14\ud0c0 \uc120\ud0dd`);button.setAttribute('aria-pressed','false');
+    const button=document.createElement('button');button.type='button';button.className='avatar-option';button.dataset.avatarKey=option.key;button.setAttribute('aria-label',`${avatarDisplayName(option.key)} 아바타 선택`);button.setAttribute('aria-pressed','false');
     const image=document.createElement('img');image.src=option.url;image.alt='';image.loading='lazy';button.append(image);
     const label=document.createElement('span');label.textContent=avatarDisplayName(option.key);button.append(label);
-    button.addEventListener('click',()=>{selectedAvatarKey=option.key;avatarStatus.textContent='\uc120\ud0dd\ud55c \uc544\ubc14\ud0c0\ub97c \ud655\uc778\ud55c \ub4a4 \ud655\uc815\ud574 \uc8fc\uc138\uc694.';updateAvatarSelection()});
+    button.addEventListener('click',()=>{selectedAvatarKey=option.key;avatarStatus.textContent='선택한 아바타를 확인한 뒤 확정해 주세요.';updateAvatarSelection()});
+    button.addEventListener('dblclick',handleSaveAvatar);
     return button;
 }
 function renderAvatarGrid(container,options){
@@ -180,26 +200,54 @@ document.querySelector('#avatarSearch').addEventListener('input',()=>renderAvata
 document.querySelectorAll('[data-avatar-category]').forEach(button=>button.addEventListener('click',()=>{avatarCategory=button.dataset.avatarCategory;renderAvatarGrid(allAvatars,availableAvatars)}));
 function renderAvatar(avatar){
     currentAvatarProfile=avatar||{key:'',url:'',options:[],canChange:false};selectedAvatarKey='';avatarPicker.hidden=true;avatarStatus.textContent='';
+    if(avatarFloatingBar)avatarFloatingBar.hidden=true;
+    if(avatarTopActions)avatarTopActions.hidden=true;
+    openAvatarPicker.textContent='아바타 바꾸기';
     document.querySelector('#avatarPlaceholder').hidden=Boolean(currentAvatarProfile.url);
-    if(currentAvatarProfile.url){currentAvatarImage.src=currentAvatarProfile.url;currentAvatarImage.hidden=false;currentAvatarName.textContent=avatarDisplayName(currentAvatarProfile.key)}else{currentAvatarImage.removeAttribute('src');currentAvatarImage.hidden=true;currentAvatarName.textContent='\uc544\uc9c1 \ubc30\uc815\ub418\uc9c0 \uc54a\uc74c'}
+    if(currentAvatarProfile.url){currentAvatarImage.src=currentAvatarProfile.url;currentAvatarImage.hidden=false;currentAvatarName.textContent=avatarDisplayName(currentAvatarProfile.key)}else{currentAvatarImage.removeAttribute('src');currentAvatarImage.hidden=true;currentAvatarName.textContent='아직 배정되지 않음'}
     if(isTeacherProfile)avatarPolicy.textContent='원하는 아바타를 선택하고 언제든 바꿀 수 있습니다.';
-    else if(!currentAvatarProfile.key)avatarPolicy.textContent='\ub2f4\uc784 \uc120\uc0dd\ub2d8\uc774 \uba85\ub2e8\uc744 \uc800\uc7a5\ud558\uba74 \uc544\ubc14\ud0c0\uac00 \uc790\ub3d9\uc73c\ub85c \ubc30\uc815\ub429\ub2c8\ub2e4.';
-    else if(currentAvatarProfile.canChange)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} \ubcc0\uacbd \uae30\ud68c\uac00 1\ud68c \ub0a8\uc544 \uc788\uc2b5\ub2c8\ub2e4.`;
-    else if(currentAvatarProfile.changeUsed)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} \ubcc0\uacbd \uae30\ud68c\ub97c \uc774\ubbf8 \uc0ac\uc6a9\ud588\uc2b5\ub2c8\ub2e4.`;
-    else avatarPolicy.textContent='1~2\uc6d4\uc5d0\ub294 \uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.';
+    else if(!currentAvatarProfile.key)avatarPolicy.textContent='담임 선생님이 명단을 저장하면 아바타가 자동으로 배정됩니다.';
+    else if(currentAvatarProfile.canChange)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} 변경 기회가 1회 남아 있습니다.`;
+    else if(currentAvatarProfile.changeUsed)avatarPolicy.textContent=`${currentAvatarProfile.changePeriodLabel} 변경 기회를 이미 사용했습니다.`;
+    else avatarPolicy.textContent='1~2월에는 아바타를 변경할 수 없습니다.';
     openAvatarPicker.disabled=!currentAvatarProfile.canChange;
     availableAvatars=(currentAvatarProfile.options||[]).filter(option=>option.available&&option.key!==currentAvatarProfile.key);
     avatarCategory='all';document.querySelector('#avatarSearch').value='';renderAvatarGrid(allAvatars,availableAvatars);
 }
-openAvatarPicker.addEventListener('click',()=>{avatarPicker.hidden=!avatarPicker.hidden;if(!avatarPicker.hidden)allAvatars.querySelector('button')?.focus()});
-
-saveAvatar.addEventListener('click',async()=>{
-    if(!selectedAvatarKey||selectedAvatarKey===currentAvatarProfile?.key)return;
-    if(!isTeacherProfile&&!confirm('\uc774 \uc544\ubc14\ud0c0\ub85c \ud655\uc815\ud560\uae4c\uc694? \ud655\uc815\ud558\uba74 \uc774\ubc88 \uae30\uac04\uc758 \ubcc0\uacbd \uae30\ud68c 1\ud68c\ub97c \uc0ac\uc6a9\ud569\ub2c8\ub2e4.'))return;
-    saveAvatar.disabled=true;avatarStatus.textContent='\uc544\ubc14\ud0c0 \ubcc0\uacbd \uc911\u2026';
-    try{await api(isTeacherProfile?'/api/teacher/avatar':'/api/student/avatar',{method:'PATCH',body:JSON.stringify({avatarKey:selectedAvatarKey})});const refreshed=await api(profilePath());renderAvatar(refreshed.profile.avatar);avatarStatus.textContent='\uc544\ubc14\ud0c0\ub97c \ubcc0\uacbd\ud588\uc2b5\ub2c8\ub2e4.'}
-    catch(error){avatarStatus.textContent=error.message;saveAvatar.disabled=false}
+openAvatarPicker.addEventListener('click',()=>{
+    avatarPicker.hidden=!avatarPicker.hidden;
+    openAvatarPicker.textContent=avatarPicker.hidden?'아바타 바꾸기':'선택 창 닫기';
+    if(avatarPicker.hidden){
+        if(avatarFloatingBar)avatarFloatingBar.hidden=true;
+        if(avatarTopActions)avatarTopActions.hidden=true;
+    }else{
+        updateAvatarSelection();
+        allAvatars.querySelector('button')?.focus();
+    }
 });
+
+async function handleSaveAvatar(){
+    if(!selectedAvatarKey||selectedAvatarKey===currentAvatarProfile?.key)return;
+    if(!isTeacherProfile&&!confirm('이 아바타로 확정할까요? 확정하면 이번 기간의 변경 기회 1회를 사용합니다.'))return;
+    saveAvatar.disabled=true;
+    if(saveAvatarTop)saveAvatarTop.disabled=true;
+    if(saveAvatarFloating)saveAvatarFloating.disabled=true;
+    avatarStatus.textContent='아바타 변경 중…';
+    try{
+        await api(isTeacherProfile?'/api/teacher/avatar':'/api/student/avatar',{method:'PATCH',body:JSON.stringify({avatarKey:selectedAvatarKey})});
+        const refreshed=await api(profilePath());
+        renderAvatar(refreshed.profile.avatar);
+        avatarStatus.textContent='아바타를 변경했습니다.';
+    }catch(error){
+        avatarStatus.textContent=error.message;
+        saveAvatar.disabled=false;
+        if(saveAvatarTop)saveAvatarTop.disabled=false;
+        if(saveAvatarFloating)saveAvatarFloating.disabled=false;
+    }
+}
+saveAvatar.addEventListener('click',handleSaveAvatar);
+if(saveAvatarTop)saveAvatarTop.addEventListener('click',handleSaveAvatar);
+if(saveAvatarFloating)saveAvatarFloating.addEventListener('click',handleSaveAvatar);
 function renderPreview(){const value=currentMmdd();if(visible.checked&&value){preview.textContent=`${Number(value.slice(0,2))}월 ${Number(value.slice(2))}일에 ‘내 생일’ 일정이 학급에 공개됩니다.`;preview.classList.remove('warning')}else{preview.textContent='현재 생일은 공개되지 않습니다.';preview.classList.toggle('warning',visible.checked)}}
 birthdayMonth.addEventListener('change',()=>{populateDayOptions(birthdayMonth.value);renderPreview()});
 birthdayDay.addEventListener('change',renderPreview);
@@ -218,7 +266,7 @@ async function start(){
         document.querySelector('#identityRole').textContent='교사';
         document.querySelector('#affiliationLabel').textContent='소속';
         document.querySelector('#studentName').textContent=me.user.name;
-        document.querySelector('#studentBirthdayHint').hidden=true;
+        const studentBirthdayHint=document.querySelector('#studentBirthdayHint');if(studentBirthdayHint)studentBirthdayHint.hidden=true;
         document.querySelector('#avatarChangeHint').hidden=true;
         document.querySelector('#birthdaySharingHint').textContent='켜면 담임으로 등록된 학급 대시보드에 ‘○○ 선생님 생일’이 표시됩니다. 월·일만 공개하며 언제든 끌 수 있습니다.';
         const registrations=await api('/api/teacher/profile');
