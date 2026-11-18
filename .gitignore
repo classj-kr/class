@@ -3,6 +3,7 @@
 
 # Conversation attachments can contain personal information; keep them local.
 /.codex-remote-attachments/
+/.codex-attachments/
 
 # Dependency and package-manager caches
 node_modules/
