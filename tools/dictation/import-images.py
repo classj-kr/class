@@ -37,8 +37,8 @@ def lines(dark, length, count):
 def split(image):
     gray = image.convert('L').point(lambda v: 255 if v < 110 else 0)
     w, h = gray.size
-    columns = [v / 255 / h for v in gray.resize((w, 1), Image.BOX).tobytes()]
-    rows = [v / 255 / w for v in gray.resize((1, h), Image.BOX).tobytes()]
+    columns = [v / 255 for v in gray.resize((w, 1), Image.BOX).tobytes()]
+    rows = [v / 255 for v in gray.resize((1, h), Image.BOX).tobytes()]
     xs, ys = lines(columns, w, COLS), lines(rows, h, ROWS)
     for r in range(ROWS):
         for c in range(COLS):
