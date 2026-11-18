@@ -505,7 +505,7 @@
     return [x, ((e.clientY - r.top) / r.height) * 100].map((v) => Math.round(Math.max(-30, Math.min(130, v)) * 100) / 100);
   }
   // 연습장을 누른 자리 → 글자. 같은 줄에서 가장 가까운 글자 자리를 고른다(낱말 사이 빈자리도 옆 글자로).
-  // 본보기 줄을 누르면 그 글자를 고르기만 한다. 줄 공책은 칸이 보이지 않으므로, 쓰던 글자의 획이 옆 글자 자리에서
+  // 본보기 줄을 누르면 그 글자를 고르고 획순을 바로 보여 준다. 줄 공책은 칸이 보이지 않으므로, 쓰던 글자의 획이 옆 글자 자리에서
   // 시작해도 그 글자에 붙인다(쓰던 글자가 덜 끝났고, 옆 글자는 아직 안 썼거나 이미 다 쓴 때).
   function route(e) {
     let best = null;
@@ -584,7 +584,10 @@
       if (!hit) return;
       // 다른 글자를 누르면 그 글자가 지금 글자가 된다(되돌리기 기록은 글자마다 남아 있다).
       if (!test && hit.index !== doc.index) select(hit.index, { keepHistory: true });
-      if (hit.only) return;
+      if (hit.only) {
+        $('demoButton').click();
+        return;
+      }
       const target = hit.canvas;
       if (!test && current().length >= 64) {
         toast('획이 많아요. 이 칸을 지우고 다시 써 주세요.');
