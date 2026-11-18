@@ -204,7 +204,7 @@ function classroomCard(index) {
     type.textContent = '학급';
     const name = document.createElement('strong');
     name.className = 'group-name';
-    name.textContent = '우리 교실';
+    name.textContent = '교실';
     card.append(icon, type, name);
     return card;
 }
