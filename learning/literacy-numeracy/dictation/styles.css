@@ -36,7 +36,7 @@ body, body .sheet button, body .sheet select, body .sheet p {
 .dots i.ok { background: var(--green); }
 .dots i.miss { background: var(--red); }
 .count { font-size: 16px; font-variant-numeric: tabular-nums; }
-.voice { max-width: 190px; height: 40px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); font-size: 14px; padding: 0 6px; }
+.voice { min-width: 0; max-width: 240px; height: 40px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); font-size: 14px; padding: 0 6px; }
 
 .listen { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 10px 0 12px; }
 .play {

@@ -34,7 +34,9 @@
     voice = voices.find((v) => v.name === stored()) || voices[0] || null;
     const box = $('voice');
     box.hidden = voices.length < 2;
-    box.replaceChildren(...voices.map((v) => new Option(v.name, v.name, false, v === voice)));
+    // 「Microsoft Heami - Korean (Korean)」처럼 붙은 언어 이름은 떼고 보여 준다.
+    const label = (v, i) => `목소리 ${i + 1}: ${v.name.replace(/\s*[-–]\s*Korean.*$/i, '').replace(/\s*\(Korean.*\)$/i, '').trim()}`;
+    box.replaceChildren(...voices.map((v, i) => new Option(label(v, i), v.name, false, v === voice)));
     if (voice) $('notice').hidden = true;
   }
   function noVoice() {
