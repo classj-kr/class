@@ -213,7 +213,7 @@ h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp
 .result-card { width: min(100%, 400px); border: 1px solid var(--gold); border-radius: 22px; padding: 34px; text-align: center; background: linear-gradient(145deg, #4e2b17, #21140d); box-shadow: 0 25px 70px #000; }
 .result-card h2 { margin: 4px 0 10px; font-size: 2rem; }
 .result-card p:not(.eyebrow) { color: var(--muted); }
-.result-card .finishers-panel { max-height: 190px; overflow: auto; }
+.result-card .finishers-panel { max-height: clamp(190px, 40dvh, 340px); overflow: auto; }
 .result-card .primary { margin-top: 16px; }
 .result-mark { display: grid; place-items: center; width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; color: #2a170b; background: var(--gold-bright); font-size: 2rem; font-weight: 900; }
 

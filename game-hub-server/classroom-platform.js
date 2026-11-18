@@ -1522,9 +1522,19 @@ function createClassroomPlatform(options = {}) {
     }
   }
 
-  async function listFinisherRecords(date, gameId) {
+  // 완주 명단은 학교별: 학생은 명단 학교, 교사·보호자는 그 학교. 손님은 null.
+  async function finisherSchoolId(user, membership) {
+    if (!user) return null;
+    if (membership?.schoolId) return membership.schoolId;
+    const school = await travelSchoolForUser(user).catch(() => null);
+    return school ? String(school.school_id) : null;
+  }
+
+  async function listFinisherRecords(date, gameId, request) {
     requireDatabaseReady();
-    return finisherRecords.listFinisherRecords(pool, date, gameId);
+    const user = request ? await sessionUser(request) : null;
+    const schoolId = user ? await finisherSchoolId(user, await studentMembership(user.id)) : null;
+    return finisherRecords.listFinisherRecords(pool, date, gameId, schoolId);
   }
 
   async function saveFinisherRecord({ request, date, gameId, name, difficulty, rank, time }) {
@@ -1536,7 +1546,8 @@ function createClassroomPlatform(options = {}) {
       name: membership?.studentName || (user ? (await displayNameFor(request)).name : name),
       userId: user?.id,
       grade: membership?.grade,
-      classNumber: membership?.classNumber
+      classNumber: membership?.classNumber,
+      schoolId: await finisherSchoolId(user, membership)
     });
   }
 

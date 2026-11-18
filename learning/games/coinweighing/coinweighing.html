@@ -698,6 +698,10 @@ textarea,
 .finishers-list {
     max-height: 92px;
 }
+/* 처음 화면의 오늘 명단은 화면에 남는 높이만큼 길게 보인다(세 줄에서 끊지 않는다). */
+.finishers-panel:not(.result-finishers) .finishers-list {
+    max-height: clamp(92px, calc(100dvh - 460px), 420px);
+}
 .finisher-row {
     grid-template-columns: 42px minmax(48px, .7fr) minmax(96px, 1.35fr);
     gap: 6px;

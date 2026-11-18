@@ -21,7 +21,17 @@ async function initializeFinisherIdentity(pool) {
     await client.query(`ALTER TABLE game_finisher_records
       ADD COLUMN IF NOT EXISTS player_key TEXT,
       ADD COLUMN IF NOT EXISTS grade INTEGER,
-      ADD COLUMN IF NOT EXISTS class_number INTEGER`);
+      ADD COLUMN IF NOT EXISTS class_number INTEGER,
+      ADD COLUMN IF NOT EXISTS school_id BIGINT`);
+    // 학교를 적기 전에 로그인해서 남긴 기록은 그 계정의 명단 학교로 채운다.
+    await client.query(`UPDATE game_finisher_records r SET school_id = m.school_id
+      FROM (
+        SELECT s.user_id, s.school_id FROM school_students s WHERE s.user_id IS NOT NULL
+        UNION ALL
+        SELECT s.user_id, c.school_id FROM classroom_students s JOIN classroom_classes c ON c.id = s.class_id
+        WHERE s.user_id IS NOT NULL AND s.roster_active = TRUE
+      ) m
+      WHERE r.school_id IS NULL AND r.player_key = 'user:' || m.user_id::text`);
     await client.query("UPDATE game_finisher_records SET player_key = 'legacy:' || player_name WHERE player_key IS NULL");
     await client.query("ALTER TABLE game_finisher_records ALTER COLUMN player_key SET NOT NULL");
     await client.query(`DO $$ BEGIN
@@ -39,10 +49,11 @@ async function initializeFinisherIdentity(pool) {
   } finally { client.release(); }
 }
 
-async function listFinisherRecords(pool, date, gameId) {
+// 오늘 명단은 보는 사람과 같은 학교 기록만 보인다. 학교가 없는 사람(손님)은 학교 없는 기록만 본다.
+async function listFinisherRecords(pool, date, gameId, schoolId = null) {
   const year = Number(date.slice(0, 4)) - (Number(date.slice(5, 7)) < 3 ? 1 : 0);
   const result = await pool.query(`WITH roster AS (${ROSTER_SQL}), unique_names AS (
-      SELECT roster_name, MIN(grade) AS grade, MIN(class_number) AS class_number
+      SELECT roster_name, MIN(grade) AS grade, MIN(class_number) AS class_number, MIN(school_id) AS school_id
       FROM roster WHERE academic_year = $3 GROUP BY roster_name HAVING COUNT(*) = 1
     )
     SELECT r.player_name AS name, r.difficulty, r.rank, r.finished_time AS time,
@@ -51,12 +62,13 @@ async function listFinisherRecords(pool, date, gameId) {
     FROM game_finisher_records r
     LEFT JOIN unique_names u ON u.roster_name = r.player_name
     WHERE r.record_date = $1::date AND r.game_id = $2
-    ORDER BY r.finished_time ASC, r.player_name ASC, r.player_key ASC`, [date, gameId, year]);
+      AND (CASE WHEN r.player_key LIKE 'legacy:%' THEN COALESCE(r.school_id, u.school_id) ELSE r.school_id END) IS NOT DISTINCT FROM $4::bigint
+    ORDER BY r.finished_time ASC, r.player_name ASC, r.player_key ASC`, [date, gameId, year, schoolId]);
   return result.rows.map(row => ({ ...row, rank: Number(row.rank) }));
 }
 
 async function saveFinisherRecord(pool, record) {
-  const { date, gameId, name, difficulty, rank, time, userId, grade, classNumber } = record;
+  const { date, gameId, name, difficulty, rank, time, userId, grade, classNumber, schoolId = null } = record;
   const playerKey = userId ? `user:${userId}` : `legacy:${name}`;
   const client = await pool.connect();
   try {
@@ -74,21 +86,21 @@ async function saveFinisherRecord(pool, record) {
       [date, gameId, playerKey, name, year, grade, classNumber]);
     }
     await client.query(`INSERT INTO game_finisher_records
-    (record_date, game_id, player_key, player_name, difficulty, rank, finished_time, grade, class_number)
-    VALUES ($1::date, $2, $3, $4, $5, $6, $7, $8, $9)
+    (record_date, game_id, player_key, player_name, difficulty, rank, finished_time, grade, class_number, school_id)
+    VALUES ($1::date, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     ON CONFLICT (record_date, game_id, player_key) DO UPDATE
-    SET player_name = EXCLUDED.player_name, grade = EXCLUDED.grade, class_number = EXCLUDED.class_number,
+    SET player_name = EXCLUDED.player_name, grade = EXCLUDED.grade, class_number = EXCLUDED.class_number, school_id = EXCLUDED.school_id,
         difficulty = CASE WHEN EXCLUDED.rank > game_finisher_records.rank THEN EXCLUDED.difficulty ELSE game_finisher_records.difficulty END,
         rank = GREATEST(EXCLUDED.rank, game_finisher_records.rank),
         finished_time = CASE WHEN EXCLUDED.rank > game_finisher_records.rank THEN EXCLUDED.finished_time ELSE game_finisher_records.finished_time END,
-        updated_at = NOW()`, [date, gameId, playerKey, name, difficulty, rank, time, grade || null, classNumber || null]);
+        updated_at = NOW()`, [date, gameId, playerKey, name, difficulty, rank, time, grade || null, classNumber || null, schoolId]);
     await client.query("DELETE FROM game_finisher_records WHERE record_date < $1::date - 13", [date]);
     await client.query("COMMIT");
   } catch (error) {
     await client.query("ROLLBACK");
     throw error;
   } finally { client.release(); }
-  return listFinisherRecords(pool, date, gameId);
+  return listFinisherRecords(pool, date, gameId, schoolId);
 }
 
 module.exports = { initializeFinisherIdentity, listFinisherRecords, saveFinisherRecord };

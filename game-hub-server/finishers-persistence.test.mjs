@@ -14,7 +14,7 @@ test("finisher records are persisted in PostgreSQL instead of the local filesyst
 });
 
 test("finisher API waits for database reads and writes", () => {
-  assert.match(serverSource, /await classroomPlatform\.listFinisherRecords\(date, gameId\)/);
+  assert.match(serverSource, /await classroomPlatform\.listFinisherRecords\(date, gameId, req\)/);
   assert.match(serverSource, /await classroomPlatform\.saveFinisherRecord\(/);
   assert.match(serverSource, /FINISHER_STORAGE_UNAVAILABLE/);
 });

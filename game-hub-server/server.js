@@ -2067,7 +2067,7 @@ app.get("/api/finishers", async (req, res) => {
 
   const { date } = getKoreaDateParts();
   try {
-    const records = await classroomPlatform.listFinisherRecords(date, gameId);
+    const records = await classroomPlatform.listFinisherRecords(date, gameId, req);
     return res.json({ date, gameId, records });
   } catch (error) {
     console.error("Failed to read finisher records:", error);
