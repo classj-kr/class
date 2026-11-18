@@ -518,8 +518,9 @@
     if (!best) return null;
     const { index, cell, r } = best,
       onModel = e.clientY < r.top + r.height / 2;
-    if (!lined()) return onModel || best.d > r.width / 2 ? null : { index, canvas: cell.write };
+    if (!lined() && best.d > r.width / 2) return null;
     if (onModel) return { index, canvas: cell.write, only: true };
+    if (!lined()) return { index, canvas: cell.write };
     const i = doc.index,
       done = (n) => doc.cells[doc.phase][n].length,
       need = (n) => C.model(letters()[n]).length,
@@ -557,6 +558,14 @@
         e.width <= 38 &&
         e.height <= 38)
     );
+  }
+  // 글자를 고르려고 살짝 누른 것은 획이 아니다. 지금 차례가 점(i·j의 점, 문장 부호)일 때만 누른 자리를 획으로 받는다.
+  const pathLength = (p) => p.slice(1).reduce((n, q, i) => n + Math.hypot(q[0] - p[i][0], q[1] - p[i][1]), 0);
+  function strayTap(points) {
+    if (pathLength(points) >= 3) return false;
+    const char = letters()[doc.index],
+      want = C.model(char)?.[current().length];
+    return !want || !(Reference.mark(char) || pathLength(want) <= 5);
   }
   function bind(surface, test = false, resolve = () => ({ canvas: surface })) {
     surface.addEventListener('pointerdown', (e) => {
@@ -627,6 +636,10 @@
         surface.releasePointerCapture(e.pointerId);
       } catch {}
       if (!test) {
+        if (strayTap(a.stroke.points)) {
+          draw();
+          return;
+        }
         const total = doc.cells[doc.phase].flat().reduce((n, s) => n + s.points.length, 0);
         if (total + a.stroke.points.length > 24000) {
           draw();
