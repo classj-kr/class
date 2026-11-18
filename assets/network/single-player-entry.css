@@ -81,50 +81,88 @@ body[data-entry-game] .game-frame:has([data-difficulty-button]) {
   flex: 0 0 auto;
 }
 
-/* 완주자(FINISHERS) 사이드 패널: 간판과 완전히 따로 분리되어, 독자적인 높이를 가지고 데스크톱에서는 센터 간판의 오른쪽에 독립 배치 */
-.finishers-side-panel {
+/* 간판은 화면 한가운데, 현 학년도 완주자 명단은 그 오른쪽의 세로로 긴 창. */
+.finishers-panel.finishers-side-panel {
   box-sizing: border-box;
+  padding: 18px 16px;
+  border: 3px solid #a27d4f;
+  border-radius: 16px;
+  background: linear-gradient(rgba(26, 19, 13, .96), rgba(14, 10, 7, .98));
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .6);
 }
+.finishers-side-panel .finisher-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-areas: "name date" "level level";
+  gap: 2px 8px !important;
+  padding: 8px 4px !important;
+}
+.finishers-side-panel .finisher-name { grid-area: name; font-size: 13px; }
+.finishers-side-panel .finisher-date { grid-area: date; font-size: 11px; }
+.finishers-side-panel .finisher-difficulty { grid-area: level; font-size: 11px; text-align: left; white-space: normal; overflow-wrap: anywhere; opacity: .85; }
 
-@media (min-width: 960px) {
+@media (min-width: 860px) and (max-width: 1099px) {
+  body[data-entry-game] { --solo-entry-width: 420px !important; }
+}
+@media (min-width: 860px) {
   .finishers-side-panel {
     position: fixed !important;
-    right: max(20px, calc(50% - 590px)) !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 380px !important;
-    max-width: calc(50vw - (var(--solo-entry-width, 460px) / 2) - 24px) !important;
-    min-height: 320px !important;
-    max-height: min(500px, calc(100dvh - 60px)) !important;
+    top: 60px !important;
+    bottom: 16px !important;
+    left: calc(50% + var(--solo-entry-width, 460px) / 2 + 20px) !important;
+    right: auto !important;
+    transform: none !important;
+    width: min(380px, calc(50vw - var(--solo-entry-width, 460px) / 2 - 36px)) !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0 !important;
     z-index: 10 !important;
     display: flex !important;
     flex-direction: column !important;
-    box-sizing: border-box !important;
   }
-  .finishers-side-panel .finishers-list {
-    flex: 1 1 auto;
-    max-height: 420px;
-  }
+  .finishers-side-panel .finishers-list { flex: 1 1 auto; min-height: 0; max-height: none !important; }
 }
-
-@media (max-width: 959px) {
+@media (min-width: 1400px) {
+  .finishers-side-panel { top: 16px !important; }
+}
+@media (max-width: 859px) {
+  body[data-entry-game], body[data-entry-game] > .page-shell { justify-content: flex-start !important; }
   .finishers-side-panel {
     position: static !important;
     transform: none !important;
-    width: min(var(--solo-entry-width, 460px), 92vw) !important;
-    min-height: 240px !important;
-    margin: 20px auto 40px !important;
-    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 auto;
+    width: min(var(--solo-entry-width, 460px), calc(100vw - 32px)) !important;
+    height: min(60dvh, 420px) !important;
+    max-height: none !important;
+    margin: 16px auto 24px !important;
   }
+  .finishers-side-panel .finishers-list { flex: 1 1 auto; min-height: 0; max-height: none !important; }
 }
 
-/* 게임 플레이 중 완료자 패널 숨김 */
+/* 첫 화면 글자와 단추 */
+:is(#start-screen,#startScreen) .start-title { font-size: clamp(28px, calc(var(--solo-entry-width, 460px) * .09), 44px) !important; letter-spacing: .03em !important; }
+:is(#start-screen,#startScreen) .start-subtitle:empty { display: none; }
+:is(#start-screen,#startScreen) .start-actions { display: flex; flex-wrap: nowrap; align-items: stretch; gap: 8px; width: 100%; }
+:is(#start-screen,#startScreen) .start-actions .start-button { flex: 1 1 0; min-width: 0; padding-inline: 8px; white-space: nowrap; }
+:is(#start-screen,#startScreen) .start-actions [data-game-rules] { flex: 0 0 auto; width: auto; align-self: center; }
+@media (max-width: 600px) {
+  :is(#start-screen,#startScreen) .start-title { font-size: clamp(24px, 7vw, 36px) !important; }
+}
+
+/* 첫 화면 Rules 창 */
+.solo-rules-dialog { box-sizing: border-box; width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); padding: 0; overflow: auto; border: 0; border-radius: 14px; background: #17120e; color: #e8dfc9; }
+.solo-rules-dialog::backdrop { background: rgba(8, 5, 3, .62); }
+.solo-rules-dialog .guide-panel { position: static !important; inset: auto !important; display: block !important; width: auto !important; max-width: none !important; height: auto !important; max-height: none !important; overflow: visible !important; }
+
+/* 게임 중에는 명단을 숨긴다. :has 안에 :has 를 넣으면 규칙 전체가 무시되므로 나눠 쓴다. */
 body:has(#start-screen[style*="none"]) .finishers-side-panel,
 body:has(#startScreen[hidden]) .finishers-side-panel,
-body:has(.game-frame:not(:has([data-difficulty-button]))) .finishers-side-panel,
-body:not(:has(#start-screen:not([style*="none"]))):not(:has(#startScreen:not([hidden]))):not(:has(.game-frame [data-difficulty-button])) .finishers-side-panel,
-body.in-game .finishers-side-panel {
+body:has(#startScreen.hidden) .finishers-side-panel,
+body.in-game .finishers-side-panel,
+.finishers-side-panel[style*="none"] {
   display: none !important;
 }
 body[data-entry-game]:has(> [data-game-entry]:not([hidden]):not([style*="none"])) { padding: 16px !important; }

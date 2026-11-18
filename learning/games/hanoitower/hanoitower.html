@@ -800,7 +800,7 @@ body{justify-content:flex-start;padding:8px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
-<script src="../../../assets/network/finisher-board.js?v=20261118-singlebest"></script>
+<script src="../../../assets/network/finisher-board.js?v=20261119-panel"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
@@ -859,7 +859,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
 .race-standings { width: 100%; margin: 10px 0 0; text-align: left; }
 .race-standings[hidden] { display: none; }
 #race-time[hidden] { display: none; }
-</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261118-center">
+</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261119-panel">
 </head>
 <body data-game-navigation="single-player" data-entry-game="hanoitower">
 <audio id="bgm" src="/learning/games/hanoitower/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -868,7 +868,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
 
 <div class="start-screen" id="start-screen" data-game-entry>
     <div class="start-title">TOWER OF HANOI</div>
-    <div class="start-subtitle">Antique Tower of Hanoi</div>
+    <div class="start-subtitle"></div>
 
     <div class="player-entry">
         <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
@@ -1006,7 +1006,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         if (playerName && entry) {
             entry.style.display = "none";
             const subtitle = document.querySelector(".start-subtitle");
-            if (subtitle) subtitle.textContent = `PLAYER · ${playerName} · TOWER OF HANOI`;
+            if (subtitle) subtitle.textContent = `PLAYER · ${playerName}`;
             window.ClassroomSoloAvatar.show(subtitle);
         }
 
