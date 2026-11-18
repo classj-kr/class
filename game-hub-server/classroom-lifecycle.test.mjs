@@ -7,6 +7,7 @@ import { PGlite } from '@electric-sql/pglite';
 
 const require = createRequire(import.meta.url);
 const names = require('./roster-names.js');
+const { assertAccountRoles, studentAccounts, LOCK_SQL: ROSTER_ROLE_LOCK } = require('./roster-account-roles.js');
 const source = await readFile(new URL('./classroom-platform.js', import.meta.url), 'utf8');
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 let GROUP_VISIBLE_SQL = 'TRUE';
@@ -104,9 +105,10 @@ async function withSchool(run) {
       makeJoinCode: () => `TEST${++nextCode}`, requireUser: async () => user,
       normalizeAvatarKey: value => value || '', avatarUrl: () => '',
       readRosterColumns: async () => [], ...names,
+      assertAccountRoles, studentAccounts, ROSTER_ROLE_LOCK, adminEmails: [], teacherEmails: [],
       avatarCapacity: () => 10, pickRandomAvailableAvatar: () => 'test.webp'
     };
-    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName'];
+    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles'];
     Object.assign(bindings, new Function(...Object.keys(bindings),
       `${functions.map(declaration).join('\n')}\nreturn { ${functions.join(',')} };`)(...Object.values(bindings)));
     const api = {

@@ -2,23 +2,65 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const fs = require('node:fs/promises');
-const { pathToFileURL } = require('node:url');
+const http = require('node:http');
 const { chromium } = require('../game-hub-server/node_modules/playwright');
-let browser;
-const url = pathToFileURL(path.resolve(__dirname, '../apps/classtools/blackboard.html')).href;
-const output = path.resolve(__dirname, '../outputs/blackboard');
+let browser, server, url;
+const root = path.resolve(__dirname, '..');
+const output = path.resolve(root, 'outputs/blackboard');
+const contentTypes = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'};
+// 칠판은 /assets/site-storage.js 를 사이트 뿌리에서 받으므로 file:// 로는 뜨지 않는다.
 test.before(async () => {
+  server = http.createServer(async (req,res)=>{
+    const file = path.join(root, decodeURIComponent(new URL(req.url,'http://local').pathname));
+    if(path.relative(root,file).startsWith('..')){res.writeHead(403);return res.end();}
+    try{
+      const body = await fs.readFile(file);
+      res.writeHead(200,{'content-type':contentTypes[path.extname(file)]||'application/octet-stream'});res.end(body);
+    }catch{res.writeHead(404);res.end();}
+  });
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  url = `http://127.0.0.1:${server.address().port}/apps/classtools/blackboard.html`;
   browser = await chromium.launch({headless:true, ...(process.platform === 'win32' ? {channel:'msedge'} : {})});
   await fs.mkdir(output,{recursive:true});
 });
-test.after(async () => { await browser?.close(); });
+test.after(async () => { await browser?.close(); await new Promise(resolve=>server?.close(resolve)); });
+// 로그인한 계정의 서버 저장 공간(/api/me/storage)을 흉내 낸다. 새로 고침해도 남는다.
+async function mockAccountStorage(context) {
+  const items = {};
+  await context.route(/\/api\/me\/storage\//, route=>{
+    const request = route.request(), [,item] = new URL(request.url()).pathname.split('/api/me/storage/')[1].split('/');
+    if(request.method()==='GET') return route.fulfill({json:{items}});
+    if(request.method()==='PUT') items[item] = request.postDataJSON().value;
+    else delete items[item];
+    return route.fulfill({json:{ok:true}});
+  });
+}
+const boardReady = page=>page.waitForFunction(()=>document.querySelector('#board').width > 500 && window.ClassJBrush);
 async function setup() {
   const context = await browser.newContext({viewport:{width:1280,height:900},acceptDownloads:true});
+  await mockAccountStorage(context);
   const page = await context.newPage(), errors = [];
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto(url);
-  await page.waitForFunction(()=>document.querySelector('#board').width > 500 && window.ClassJBrush);
+  await boardReady(page);
   return {context,page,errors};
+}
+// 모아 둔 저장을 서버까지 보낸 뒤 새로 고친다.
+async function reloadBoard(page) {
+  await page.evaluate(async()=>(await SiteStorage.open('blackboard')).flush());
+  await page.reload();
+  await boardReady(page);
+}
+const savedStrokes=page=>page.evaluate(async()=>(await SiteStorage.open('blackboard')).get('strokes')||[]);
+// 브라우저 캡처는 PNG뿐이라 페이지 안에서 무손실 WebP로 바꿔 저장한다.
+async function saveWebp(page,name,pngBase64) {
+  const webp=await page.evaluate(async png=>{
+    const image=new Image();image.src='data:image/png;base64,'+png;await image.decode();
+    const c=document.createElement('canvas');c.width=image.naturalWidth;c.height=image.naturalHeight;
+    c.getContext('2d').drawImage(image,0,0);
+    return c.toDataURL('image/webp',1).split(',')[1];
+  },pngBase64);
+  await fs.writeFile(path.join(output,name),Buffer.from(webp,'base64'));
 }
 async function menuAction(page,id) {
   await page.locator('#'+id).click();
@@ -85,10 +127,13 @@ test('real mouse, eraser, undo clear, reload, export and narrow layout',async()=
   page.on('dialog',d=>d.accept());
   await menuAction(page,'clearBtn');await page.locator('#undoBtn').click();
   assert.equal(await page.locator('#board').evaluate(c=>c.toDataURL()),drawn);
-  await page.reload();await page.waitForFunction(()=>document.querySelector('#board').width>500);
+  await reloadBoard(page);
   assert.equal(await page.locator('#board').evaluate(c=>c.toDataURL()),drawn);
   const downloadPromise=page.waitForEvent('download');await menuAction(page,'saveBtn');
-  await (await downloadPromise).saveAs(path.join(output,'export.png'));
+  const download=await downloadPromise;
+  assert.match(download.suggestedFilename(),/^칠판-.*\.png$/);
+  const exported=await fs.readFile(await download.path());
+  assert.equal(exported.subarray(1,4).toString(),'PNG');
   await page.setViewportSize({width:390,height:844});
   await page.waitForFunction(()=>document.querySelector('#board').width<500);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
@@ -114,9 +159,9 @@ test('brush handwriting visual specimen',async()=>{
     }
     await simulate(page,'mouse',points);
   }
-  await page.screenshot({path:path.join(output,'brush-handwriting.png')});
-  const comparison=await page.evaluate(()=>{
-    const strokes=JSON.parse(localStorage.getItem('classj-blackboard-v1'));
+  await saveWebp(page,'brush-handwriting.webp',(await page.screenshot()).toString('base64'));
+  const strokes=await savedStrokes(page);
+  const comparison=await page.evaluate(strokes=>{
     const board=document.querySelector('#board').getBoundingClientRect();
     const c=document.createElement('canvas');c.width=1100;c.height=720;
     const ctx=c.getContext('2d');ctx.fillStyle='#f5f4f0';ctx.fillRect(0,0,c.width,c.height);
@@ -128,9 +173,9 @@ test('brush handwriting visual specimen',async()=>{
       for(const stroke of strokes) ClassJBrush.draw(ctx,{...stroke,color:'#232925',correction},board.width,board.height);
       ctx.restore();
     }
-    return c.toDataURL('image/png').split(',')[1];
-  });
-  await fs.writeFile(path.join(output,'correction-comparison.png'),Buffer.from(comparison,'base64'));
+    return c.toDataURL('image/webp',1).split(',')[1];
+  },strokes);
+  await fs.writeFile(path.join(output,'correction-comparison.webp'),Buffer.from(comparison,'base64'));
   assert.deepEqual(errors,[]);await context.close();
 });
 
@@ -154,10 +199,10 @@ test('pen and eraser sizes stay independent across drawing, switching and reload
   assert.equal(await slider.getAttribute('max'),'40');
   assert.equal(await page.locator('#eraserCursor').isVisible(),false);
   await simulate(page,'touch',[[200,300,1000],[240,300,1020]]);
-  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('classj-blackboard-v1')));
+  const saved=await savedStrokes(page);
   assert.equal(saved[0].eraserDiameter,96);
   assert.equal(saved[1].width,6);
-  await page.reload();await page.waitForFunction(()=>document.querySelector('#board').width>500);
+  await reloadBoard(page);
   assert.equal(await slider.inputValue(),'6');
   await page.locator('#eraserBtn').click();
   assert.equal(await slider.inputValue(),'96');
@@ -189,8 +234,8 @@ test('correction switch affects new strokes only and survives reload',async()=>{
   assert.equal(await toggle.getAttribute('aria-pressed'),'false');
   await simulate(page,'mouse',points);
   assert.notEqual(await page.locator('#board').evaluate(c=>c.toDataURL()),corrected);
-  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('classj-blackboard-v1'))[0].correction),false);
-  await page.reload();await page.waitForFunction(()=>document.querySelector('#board').width>500);
+  assert.equal((await savedStrokes(page))[0].correction,false);
+  await reloadBoard(page);
   assert.equal(await toggle.getAttribute('aria-pressed'),'false');
   const before=await page.locator('#board').evaluate(c=>c.toDataURL());
   await toggle.click();
@@ -211,7 +256,6 @@ async function dispatchContacts(page, events) {
     return new Promise(resolve=>requestAnimationFrame(resolve));
   },events);
 }
-const savedStrokes=page=>page.evaluate(()=>JSON.parse(localStorage.getItem('classj-blackboard-v1')||'[]'));
 const inkImage=page=>page.locator('#board').evaluate(c=>c.toDataURL());
 test('palm erases while pen stays selected; one undo restores the gesture and pen resumes',async()=>{
   const {context,page,errors}=await setup();
