@@ -75,6 +75,17 @@ function textbookCatalog() {
   }));
   return catalogCache;
 }
+// 영어 단어 앱의 다듬은 뜻과 유의어(낱말 id별). 짝 찾기에서 서로 맞는 말이 되는 낱말을 가르는 데 쓴다.
+function vocabularyDetails() {
+  const dir = path.join(APPS, 'vocabulary/assets/data/details');
+  const out = {};
+  for (const name of fs.readdirSync(dir).filter((file) => /^level-.*\.json$/.test(file))) {
+    for (const [id, entry] of Object.entries(JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')).entries || {})) {
+      out[id] = { meanings: entry.meanings || [], synonyms: (entry.together || []).filter((row) => row.type === '유의어').map((row) => row.word) };
+    }
+  }
+  return out;
+}
 function attempt(label, load, fallback) {
   try { return load(); }
   catch (error) {
@@ -98,6 +109,7 @@ function loadSources() {
     proverbLessonFor: proverbBanks ? attempt('속담 차시', () => proverbLessonFor(proverbBanks), null) : null,
     expressions: attempt('관용어', () => require(path.join(APPS, 'idiomatic-expressions/idiomatic-expressions-data.js')), []),
     vocabulary: attempt('영단어', () => JSON.parse(read('vocabulary/assets/data/english-vocabulary-3000-v2.json')).words, []),
+    vocabularyDetails: attempt('영단어 뜻풀이', vocabularyDetails, {}),
     hanja: attempt('한자', hanjaStages, []),
     hanjaWhole: attempt('한자 예문 목록', hanjaWhole, new Set()),
     // 짝 찾기의 한자↔훈음: 한자 앱 원본에서 뽑은 짝 찾기 자료(지금 쓰는 말로 고친 훈)를 함께 쓴다.

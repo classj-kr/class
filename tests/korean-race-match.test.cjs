@@ -38,6 +38,13 @@ app.use((error, _req, res, _next) => res.status(error.status || 500).json({ erro
   const bank = require('../game-hub-server/korean-race-bank');
   const Q = require('../learning/literacy-numeracy/korean-race/korean-race-questions');
   const pools = bank.load();
+  // 비슷한 말은 엇갈려도 맞는 말이 되니 한 판에 함께 나오지 않는다.
+  for (let i = 0; i < 300; i++) {
+    const words = new Set(Q.makePairs(pools, { set: 'vocabulary', level: 'all', count: 30 }).map(([word]) => word));
+    assert.equal(words.size, 30, '영어 30쌍');
+    assert.ok(!(words.has('big') && words.has('large')), 'big·large 같은 판 금지');
+    assert.ok(!(words.has('consist') && words.has('compose')), '구성되다·구성하다 같은 판 금지');
+  }
   // 은행의 모든 짝(겹치는 앞 패 포함)을 두고, 판 위에서 짝이 되는 패를 찾는다(판은 앞·뒤 패가 겹치지 않게 뽑힌다).
   const known = new Set(pools.idioms.filter((e) => e.pair).map((e) => e.pair.join('|')));
   const partnerOf = (cells, i) => {

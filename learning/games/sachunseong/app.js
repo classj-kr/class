@@ -40,7 +40,7 @@
     { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' },
     { key: 'history', label: '한국사', a: 'ko', b: 'ko' }
   ];
-  const DATA_VERSION = '20261118-history-pairs';
+  const DATA_VERSION = '20261118-avoid-synonyms';
   const bank = {};
   await Promise.all(SUBJECTS.map(async subject => {
     try {
@@ -147,13 +147,19 @@
     const seenWord = new Set();
     const seenMeaning = new Set();
     const seenGroup = new Set();
-    for (const [en, ko, group] of pool) {
+    const blocked = new Set();
+    for (const [en, ko, extra] of pool) {
       const w = en.toLowerCase(), m = bare(ko);
+      // 세 번째 칸: 글자면 묶음 이름, 목록이면 같은 판에 함께 못 나오는 앞 패(big↔large).
+      const group = typeof extra === 'string' ? extra : '';
+      const avoid = Array.isArray(extra) ? extra.map(name => name.toLowerCase()) : [];
       // 같은 뜻이 두 장이면 어느 낱말의 짝인지 가릴 수 없다.
       // 묶음이 같은 짝(세종↔자격루·장영실↔…)은 서로 엇갈려도 맞는 말이 되니 한 판에 하나만 낸다.
       if (seenWord.has(w) || seenMeaning.has(m) || (group && seenGroup.has(group))) continue;
+      if (blocked.has(w) || avoid.some(name => seenWord.has(name))) continue;
       seenWord.add(w); seenMeaning.add(m);
       if (group) seenGroup.add(group);
+      avoid.forEach(name => blocked.add(name));
       chosen.push([en, ko]);
       if (chosen.length === count) break;
     }

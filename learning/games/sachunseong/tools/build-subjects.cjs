@@ -66,23 +66,47 @@ function vocab() {
   const base = 'learning/literacy-numeracy/curriculum-vocabulary';
   const terms = runScripts([`${base}/terms.js`]).CurriculumTerms;
   const labels = {}, levels = {};
-  let skipped = 0;
+  let skipped = 0, clashes = 0;
+  // 유의어와 위·아래 낱말(동물↔포유류)은 엇갈려도 맞는 말이 되니 한 판에 함께 내지 않는다. 관계는 학기를 넘어 모은다.
+  const clash = new Map();
+  const link = (a, b) => {
+    if (a === b) return;
+    [[a, b], [b, a]].forEach(([x, y]) => { if (!clash.has(x)) clash.set(x, new Set()); clash.get(x).add(y); });
+  };
   Object.keys(terms).forEach(term => {
     const data = runScripts([`${base}/words-${term}.js`]).CurriculumWords?.[term];
     const list = [];
     const seen = new Set();
-    Object.values(data || {}).forEach(subject => (subject.units || []).forEach(unit => (unit.words || []).forEach(word => {
-      const w = String(word.w || '').trim(), en = String(word.en || '').trim();
-      if (!w || !en || seen.has(w)) return;
-      if (w.length > 8 || en.length > 16) { skipped += 1; return; }
-      seen.add(w);
-      list.push([w, en]);
-    })));
+    Object.values(data || {}).forEach(subject => {
+      const words = (subject.units || []).flatMap(unit => unit.words || []);
+      const byName = new Map(words.map(word => [word.w, word]));
+      const climb = (word, key, into) => (word?.rel?.[key] || []).forEach(row => {
+        if (into.has(row.w)) return;
+        into.add(row.w);
+        climb(byName.get(row.w), key, into);
+      });
+      words.forEach(word => {
+        const near = new Set((word.rel?.syn || []).map(row => row.w));
+        climb(word, 'up', near);
+        climb(word, 'down', near);
+        near.forEach(name => link(word.w, name));
+        const w = String(word.w || '').trim(), en = String(word.en || '').trim();
+        if (!w || !en || seen.has(w)) return;
+        if (w.length > 8 || en.length > 16) { skipped += 1; return; }
+        seen.add(w);
+        list.push([w, en]);
+      });
+    });
     const [grade, half] = term.split('-');
     labels[term] = Number(grade) <= 6 ? `초${grade} ${half}학기` : `중${Number(grade) - 6} ${half}학기`;
     levels[term] = list;
   });
-  write('vocab', labels, levels, `긴 것 ${skipped}개 뺌`);
+  // 세 번째 칸: 같은 판에 함께 나오면 안 되는 앞선 낱말(뽑을 때 양쪽을 다 본다).
+  Object.values(levels).forEach(list => list.forEach((pair, i) => {
+    const avoid = list.slice(0, i).map(other => other[0]).filter(name => clash.get(pair[0])?.has(name));
+    if (avoid.length) { pair.push(avoid); clashes += avoid.length; }
+  }));
+  write('vocab', labels, levels, `긴 것 ${skipped}개 뺌, 같이 못 나오는 쌍 ${clashes}개`);
 }
 
 /* 고사성어: 배움 차례(차시 묶음)대로 앞 두 글자 ↔ 뒤 두 글자. */

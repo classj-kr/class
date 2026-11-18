@@ -152,7 +152,13 @@
     const text = parts.slice(0, 2).join(', ');
     return text.length > 14 ? parts[0] || '' : text;
   }
-  function vocabulary(words) {
+  // 뜻풀이를 쉼표·마침표로 나눈 토막들(괄호 풀이는 걷어 낸다).
+  function meaningPieces(text) {
+    return String(text || '').replace(/«[^»]*»|\([^)]*\)|\[[^\]]*\]/g, ' ').split(/[,;/.]/)
+      .map((piece) => piece.replace(/\s+/g, ' ').replace(/^[\s~]+|[\s~]+$/g, '')).filter(Boolean);
+  }
+  // details: { 낱말 id: { meanings, synonyms } } — 영어 단어 앱의 다듬은 뜻과 함께 쓰는 유의어.
+  function vocabulary(words, details = {}) {
     // 학습 화면과 같은 차례(같은 Level 안에서 order 순, 20단어씩 한 차시)로 자리를 매겨 둔다.
     const place = new Map();
     const byLevel = new Map();
@@ -175,12 +181,36 @@
       if (!byStage.has(stage)) byStage.set(stage, []);
       byStage.get(stage).push(x);
     }
+    // 짝 찾기: 유의어(big·large)이거나 이 뜻 패가 다른 낱말의 뜻이기도 하면 엇갈려도 맞으니 한 판에 함께 내지 않는다.
+    const synonyms = new Map(), owners = new Map();
+    const add = (map, key, value) => { if (!map.has(key)) map.set(key, new Set()); map.get(key).add(value); };
+    for (const w of words || []) {
+      if (!w?.word) continue;
+      const key = w.word.toLowerCase(), extra = details[w.id] || {};
+      const related = (w.relatedWords || []).filter((r) => r.type === '유의어').map((r) => r.word).concat(extra.synonyms || []);
+      for (const name of related) { add(synonyms, key, name.toLowerCase()); add(synonyms, name.toLowerCase(), key); }
+      for (const meaning of [...(w.meanings || []), ...(extra.meanings || [])]) for (const piece of meaningPieces(meaning)) add(owners, piece, key);
+    }
+    // 뜻 패의 줄기(구성되다·구성하다 → 구성). 한쪽 줄기가 다른 쪽으로 시작하면(막대·막대기) 뜻이 가깝다.
+    const stemsOf = (x) => meaningPieces(x.meaning).map((piece) => piece.replace(/(하다|되다|시키다|하는|적인|한|된|의|다)$/, '').trim()).filter((stem) => stem.length >= 2);
+    const stemOwners = new Map();
+    for (const x of list) for (const stem of stemsOf(x)) add(stemOwners, stem, x.word.word.toLowerCase());
+    const avoidOf = (x) => {
+      const key = x.word.word.toLowerCase();
+      const out = new Set(synonyms.get(key) || []);
+      for (const piece of meaningPieces(x.meaning)) for (const owner of owners.get(piece) || []) out.add(owner);
+      // 이 줄기의 앞부분이 곧 다른 패의 줄기인 경우만 적어도 된다. 뽑을 때 양쪽을 다 본다.
+      for (const stem of stemsOf(x)) for (let n = 2; n <= stem.length; n++) for (const owner of stemOwners.get(stem.slice(0, n)) || []) out.add(owner);
+      out.delete(key);
+      return [...out];
+    };
     return list.map((x) => {
       const stage = x.word.stageCode || 'elementary';
       return {
         key: 'vocabulary:' + x.word.word,
         level: stage,
         pair: [x.word.word, x.meaning],
+        avoid: avoidOf(x),
         ...(place.get(x.word) || {}),
         make: (random) => {
           const deck = byStage.get(stage) || list;
@@ -333,6 +363,8 @@
             const above = new Set();
             chain(word, 'up', above);
             const free = (name) => name !== word.w && !banned.has(name) && !above.has(name);
+            // 짝 찾기: 유의어·위아래 낱말은 엇갈려도 맞는 말이 되니 한 판에 함께 내지 않는다.
+            const avoid = [...banned, ...above];
             let lookalikes = all.filter((other) => free(other.w) && looksLike(other.w, word.w)).map((other) => other.w);
             // 뜻풀이가 낱말 이름의 날짜·조각을 그대로 드러내면(「1919년 3월 1일」 → 3·1 운동) 그 조각을 함께 가진 낱말을
             // 보기 맨 앞에 넣고, 하나도 없으면 뜻 문제를 내지 않는다(앱 app.js 의 leakOf 와 같은 규칙).
@@ -361,7 +393,7 @@
               if (!String(blank).includes('{}')) return;
               out.push({
                 key: `textbook:${term}:${subject}:${unit.id}:${word.w}:b${index}`,
-                level: 'all', unit: where, pair: textbookPair(word),
+                level: 'all', unit: where, pair: textbookPair(word), avoid,
                 make: (random) => ({
                   set: 'textbook', ask: '빈칸에 알맞은 낱말은?', text: String(blank).replace('{}', '(　　)'),
                   ...choiceSet(word.w, wrongFor([], random), random), explain, block: firstChar(word.w),
@@ -371,7 +403,7 @@
             if (lookalikes.length && word.mean) {
               out.push({
                 key: `textbook:${term}:${subject}:${unit.id}:${word.w}:m`,
-                level: 'all', unit: where, pair: textbookPair(word),
+                level: 'all', unit: where, pair: textbookPair(word), avoid,
                 make: (random) => ({
                   set: 'textbook', ask: '이 뜻을 가진 낱말은?', text: word.mean,
                   // wrongFor 는 lookalikes 를 먼저 넣는다. 흘림이 있으면 lookalikes 는 그 조각을 함께 가진 낱말뿐이다.
@@ -383,6 +415,13 @@
         }
       }
     }
+    // 같은 낱말이 여러 학기·과목에 나오면 관계도 합친다(어느 항목이 뽑혀도 같은 규칙이 되게).
+    const merged = new Map();
+    for (const entry of out) {
+      if (!merged.has(entry.pair?.[0])) merged.set(entry.pair?.[0], new Set());
+      entry.avoid.forEach((name) => merged.get(entry.pair?.[0]).add(name));
+    }
+    for (const entry of out) entry.avoid = [...merged.get(entry.pair?.[0])];
     return out;
   }
   function buildPools(sources = {}) {
@@ -391,7 +430,7 @@
       idioms: idioms(sources.idioms?.data, sources.idioms?.core, sources.idioms?.lessons),
       proverbs: proverbs(sources.proverbs, sources.proverbLessonFor),
       expressions: expressions(sources.expressions),
-      vocabulary: vocabulary(sources.vocabulary),
+      vocabulary: vocabulary(sources.vocabulary, sources.vocabularyDetails),
       hanja: hanja(sources.hanja, sources.hanjaWhole, sources.hanjaHuneum),
       sentences: sentences(sources.sentences),
       textbook: textbook(sources.textbook),
@@ -436,16 +475,20 @@
       .filter((q) => q.choices.length >= 2 && q.answer >= 0 && new Set(q.choices).size === q.choices.length);
   }
   // 짝 찾기: 범위로 거른 항목에서 앞 패도 뒤 패도 겹치지 않는 짝을 count개까지 뽑는다.
+  // avoid 에 적힌 앞 패(유의어 등)는 어느 쪽이 먼저 뽑혔든 같은 판에 함께 내지 않는다.
   // 패 꼴(kinds): 화면이 글꼴을 고른다(en 영어, hanja 한자, ko 우리말).
   const PAIR_KINDS = { hanja: ['hanja', 'ko'], idioms: ['ko', 'ko'], proverbs: ['ko', 'ko'], vocabulary: ['en', 'ko'], textbook: ['ko', 'en'] };
   function makePairs(pools, { set, level = 'all', range = null, count, random = Math.random }) {
     if (!PAIR_KINDS[set]) return [];
     const bare = (text) => String(text).replace(/\([^)]*\)\s*/g, '').trim().toLowerCase();
-    const seenA = new Set(), seenB = new Set(), out = [];
+    const seenA = new Set(), seenB = new Set(), blocked = new Set(), out = [];
     for (const entry of shuffle(poolFor(pools, set, level, range).filter((e) => e.pair), random)) {
       const [a, b] = entry.pair;
       if (!a || !b || seenA.has(bare(a)) || seenB.has(bare(b))) continue;
+      const avoid = (entry.avoid || []).map(bare);
+      if (blocked.has(bare(a)) || avoid.some((name) => seenA.has(name))) continue;
       seenA.add(bare(a)); seenB.add(bare(b));
+      avoid.forEach((name) => blocked.add(name));
       out.push([a, b]);
       if (out.length === count) break;
     }

@@ -5,6 +5,9 @@
   details/level-XX.json            (다듬은 뜻)
 결과: learning/games/sachunseong/data/english.json
 
+짝의 세 번째 칸은 같은 판에 함께 나오면 안 되는 앞 패 목록이다(같은 단계 안, 앞선 낱말만 적는다).
+big·large처럼 유의어이거나, 한쪽의 뜻 패가 다른 낱말의 뜻이기도 하면 엇갈려도 맞는 말이 되기 때문이다.
+
 영어 단어 앱의 뜻을 고치면 이 도구를 다시 돌린다.
     python learning/games/sachunseong/tools/build-english.py
 """
@@ -59,12 +62,61 @@ def visible_length(text):
     return len(re.sub(r"\([^)]*\)\s*", "", text))
 
 
+def meaning_pieces(text):
+    """뜻풀이를 쉼표·마침표로 나눈 토막들. 괄호 풀이는 걷어 낸다."""
+    clean = re.sub(r"\([^)]*\)|\[[^\]]*\]|«[^»]*»", " ", str(text or ""))
+    pieces = (re.sub(r"\s+", " ", piece).strip(" ~") for piece in re.split(r"[,;/.]", clean))
+    return {piece for piece in pieces if piece}
+
+
+def card_stems(pieces):
+    """뜻 패의 줄기(구성되다·구성하다 → 구성). 한 글자만 남으면 쓰지 않는다."""
+    stems = (re.sub(r"(하다|되다|시키다|하는|적인|한|된|의|다)$", "", piece).strip() for piece in pieces)
+    return {stem for stem in stems if len(stem) >= 2}
+
+
+def stems_touch(left, right):
+    """한쪽 줄기가 다른 쪽 줄기로 시작하면(막대·막대기, 여자·여자아이) 뜻이 가깝다."""
+    return any(a.startswith(b) or b.startswith(a) for a in left for b in right)
+
+
+def add_avoid_lists(items, synonyms, pieces):
+    """items: [낱말, 뜻 패]. 서로 맞는 말이 되는 앞선 낱말을 세 번째 칸에 붙인다."""
+    keys = [item[0].lower() for item in items]
+    cards = [meaning_pieces(item[1]) for item in items]
+    stems = [card_stems(card) for card in cards]
+    clashes = 0
+    for i, item in enumerate(items):
+        a = keys[i]
+        avoid = [
+            items[j][0] for j in range(i)
+            if keys[j] in synonyms.get(a, ()) or a in synonyms.get(keys[j], ())
+            or cards[i] & pieces.get(keys[j], set()) or cards[j] & pieces.get(a, set())
+            or stems_touch(stems[i], stems[j])
+        ]
+        if avoid:
+            item.append(avoid)
+            clashes += len(avoid)
+    return clashes
+
+
 def main():
     words = json.loads((SRC / "english-vocabulary-3000-v2.json").read_text(encoding="utf-8"))["words"]
     details = {}
     for path in sorted(glob.glob(str(SRC / "details/level-*.json"))):
         for key, entry in json.loads(Path(path).read_text(encoding="utf-8"))["entries"].items():
             details[int(key)] = entry
+
+    synonyms, pieces = {}, {}
+    for word in words:
+        key = word["word"].lower()
+        detail = details.get(word["id"], {})
+        related = [r["word"] for r in word.get("relatedWords") or [] if r.get("type") == "유의어"]
+        related += [r["word"] for r in detail.get("together") or [] if r.get("type") == "유의어"]
+        synonyms.setdefault(key, set()).update(name.lower() for name in related)
+        bag = pieces.setdefault(key, set())
+        for meaning in list(word.get("meanings") or []) + list(detail.get("meanings") or []):
+            bag |= meaning_pieces(meaning)
 
     levels, labels, skipped = {}, {}, []
     for word in sorted(words, key=lambda w: (w["globalLevel"], w["order"])):
@@ -76,6 +128,9 @@ def main():
             skipped.append((word["word"], meaning))
             continue
         levels.setdefault(level, []).append([word["word"], meaning])
+
+    clashes = sum(add_avoid_lists(items, synonyms, pieces) for items in levels.values())
+    print(f"같이 못 나오는 낱말 쌍 {clashes}개")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"labels": labels, "levels": levels}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
