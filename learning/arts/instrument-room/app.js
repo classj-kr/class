@@ -377,7 +377,7 @@
     const KOREAN_PERCUSSION_PADS = window.KOREAN_PERCUSSION_DATA ? window.KOREAN_PERCUSSION_DATA.pads : Object.freeze({});
     const KOREAN_PERCUSSION_SAMPLE_SETS = window.KOREAN_PERCUSSION_DATA ? window.KOREAN_PERCUSSION_DATA.samples : Object.freeze({});
     const STATION_SAMPLE_SETS = Object.freeze({
-        "ritual-signals": Object.freeze({ id: "korean-ritual-signals", root: "assets/audio/ritual-signals/", available: Object.freeze(["bak", "chuk", "eo"]) }),
+        "ritual-signals": Object.freeze({ id: "korean-ritual-signals", root: "assets/audio/ritual-signals/", available: Object.freeze(["bak", "chuk", "eo", "eo-strike", "eo-scrape"]) }),
         "daechwita-station": Object.freeze({ id: "korean-daechwita", root: "assets/audio/daechwita/", available: Object.freeze(["nabal", "nagak", "yonggo", "jabara", "jing"]) })
     });
 
@@ -392,7 +392,9 @@
         "ritual-signals": [
             { id: "bak", name: "박", family: "나무판", key: "A", code: "KeyA", color: "#ff9d66" },
             { id: "chuk", name: "축", family: "나무 상자", key: "S", code: "KeyS", color: "#8ef0c6" },
-            { id: "eo", name: "어", family: "호랑이 모양 나무 악기", key: "D", code: "KeyD", color: "#e5ff75" }
+            { id: "eo-strike", part: "eo", name: "어 (머리 치기)", sound: "eo-strike", family: "호랑이 모양 나무 악기", key: "D", code: "KeyD", color: "#e5ff75" },
+            { id: "eo-scrape", part: "eo", name: "어 (등 긁기)", sound: "eo-scrape", family: "호랑이 모양 나무 악기", key: "F", code: "KeyF", color: "#f3c86a" },
+            { id: "eo", part: "eo", name: "어 (마침 전곡)", sound: "eo", family: "호랑이 모양 나무 악기", key: "G", code: "KeyG", color: "#c0a8ff" }
         ],
         "daechwita-station": [
             { id: "nabal", name: "나발", family: "금속 나팔", key: "A", code: "KeyA", color: "#ffcf5c" },
@@ -591,6 +593,7 @@
         drumSampleLoads: new Map(),
         openHatVoices: new Set(),
         koreanMetalVoices: new Map(),
+        daechwitaBrassVoices: new Set(),
         sustain: false,
         sustainLatched: false,
         stringNode: null,
@@ -1628,12 +1631,28 @@
         voices.clear();
     }
 
+    function chokeDaechwitaBrass() {
+        if (!state.audioContext) return;
+        const voices = state.daechwitaBrassVoices;
+        if (!voices || !voices.size) return;
+        const now = state.audioContext.currentTime;
+        voices.forEach(function (voice) {
+            voice.gain.gain.cancelScheduledValues(now);
+            voice.gain.gain.setValueAtTime(Math.max(.0001, voice.gain.gain.value), now);
+            voice.gain.gain.exponentialRampToValueAtTime(.0001, now + .025);
+            try { voice.source.stop(now + .03); } catch (error) { /* already stopped */ }
+        });
+        voices.clear();
+    }
+
     function playSampledDrum(id, velocity) {
         const selected = drumSampleConfig();
         if (!selected || selected.available && !selected.available.includes(id)) return false;
         if (["hat", "pedalhat", "openhat"].includes(id)) chokeOpenHat();
         const koreanMetal = selected.id === "korean-kkwaenggwari" || selected.id === "korean-jing";
         if (koreanMetal && (id === "damp" || id === "mute")) chokeKoreanMetal(selected.id);
+        const daechwitaBrass = selected.id === "korean-daechwita" && (id === "nabal" || id === "nagak");
+        if (daechwitaBrass) chokeDaechwitaBrass();
         loadDrumSample(id).then(function (sample) {
             const current = drumSampleConfig();
             if (!current || current.id !== sample.sampleSet) return;
@@ -1664,6 +1683,15 @@
                 const previousOnEnded = source.onended;
                 source.onended = function () {
                     voices.delete(voice);
+                    if (previousOnEnded) previousOnEnded();
+                };
+            }
+            if (daechwitaBrass) {
+                const voice = { source, gain };
+                state.daechwitaBrassVoices.add(voice);
+                const previousOnEnded = source.onended;
+                source.onended = function () {
+                    state.daechwitaBrassVoices.delete(voice);
                     if (previousOnEnded) previousOnEnded();
                 };
             }
@@ -2207,12 +2235,13 @@
     function allNotesOff() {
         stopDrumDemo();
         stopKeyboardDemo();
-        stopGuitarStrums();
+        stopGuitarStrums(true);
         Array.from(state.activeNotes).forEach(noteOff);
         state.activeNotes.clear();
         state.pointerNotes.clear();
         state.pressedCodes.clear();
         chokeOpenHat();
+        chokeDaechwitaBrass();
         Array.from(state.koreanMetalVoices.keys()).forEach(chokeKoreanMetal);
         state.pianoVoices.forEach(function (voice) { releasePianoVoice(voice, true); });
         if (state.stringNode) state.stringNode.port.postMessage({ type: "allOff" });
@@ -2359,16 +2388,32 @@
     let guitarKeyChords = [];
     let guitarStrumRequest = 0;
     const guitarStrumTimers = new Set();
+    const activeGuitarVoices = new Set();
     const POWER_CHORD_FLOORS = { "s-style": 40, "metal-seven": 35 };
 
-    function stopGuitarStrums() {
+    function stopGuitarStrums(releaseActiveVoices) {
         guitarStrumRequest += 1;
         guitarStrumTimers.forEach(function (timer) { window.clearTimeout(timer); });
         guitarStrumTimers.clear();
+        if (releaseActiveVoices) {
+            activeGuitarVoices.forEach(function (voice) {
+                releasePianoVoice(voice, true);
+            });
+            activeGuitarVoices.clear();
+            if (state.activeNotes.size > 0) {
+                state.activeNotes.forEach(function (midi) {
+                    if (state.stringNode) stringNoteOff(midi);
+                });
+                state.activeNotes.clear();
+            }
+        }
     }
 
     function selectGuitarChord(index, play) {
-        if (index !== state.guitarChordIndex) guitarStrumRequest += 1;
+        const chordChanged = index !== state.guitarChordIndex;
+        if (chordChanged) {
+            stopGuitarStrums(true);
+        }
         state.guitarChordIndex = index;
         Array.from(elements.chordPads.children).forEach(function (button, position) {
             button.classList.toggle("active", position === index);
@@ -2434,7 +2479,13 @@
                 const sample = samples.get(midi);
                 if (sample) {
                     const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
-                    scheduleGuitarStrum(function () { releasePianoVoice(voice, false); }, 1250);
+                    if (voice) {
+                        activeGuitarVoices.add(voice);
+                        scheduleGuitarStrum(function () {
+                            releasePianoVoice(voice, false);
+                            activeGuitarVoices.delete(voice);
+                        }, 1250);
+                    }
                     return;
                 }
                 state.activeNotes.add(midi);
@@ -2741,7 +2792,7 @@
                 const play = function (velocity) {
                     setDrumPadActive(button, true);
                     triggerDrumV2(drum.sound || drum.id, velocity);
-                    pulseInstrumentPart(drum.id);
+                    pulseInstrumentPart(drum.part || drum.id);
                 };
                 button.addEventListener("pointerdown", function (event) {
                     if (event.button !== 0) return;
@@ -3066,7 +3117,7 @@
             if (!drum) return;
             event.preventDefault();
             triggerDrumV2(drum.sound || drum.id, .82);
-            pulseInstrumentPart(drum.id);
+            pulseInstrumentPart(drum.part || drum.id);
             const pad = elements.drumPads.querySelector('[data-drum="' + drum.id + '"]');
             if (pad) setDrumPadActive(pad, true);
             state.pressedCodes.set(event.code, drum.id);

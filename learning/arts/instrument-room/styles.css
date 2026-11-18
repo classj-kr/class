@@ -198,15 +198,16 @@ main { display: grid; gap: 12px; padding-top: 12px; }
 }
 
 .instrument-console { position: relative; border: 1px solid var(--line); border-radius: 18px; background: rgba(16,24,27,.9); overflow: hidden; box-shadow: 0 18px 45px rgba(0,0,0,.25); }
-.console-head { position: relative; z-index: 12; min-height: 0; padding: 0; border: 0; display: grid; gap: 8px; margin-bottom: 10px; pointer-events: auto; }
+.console-head { position: relative; z-index: 12; min-height: 0; padding: 0; border: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; pointer-events: auto; }
+.console-head .instrument-info-button { margin-left: auto; }
 .console-head h1 { margin: 2px 0 2px; font-size: clamp(20px, 2.4vw, 28px); line-height: 1; letter-spacing: -.04em; }
 .console-head p { margin: 0; color: var(--muted); font-size: 12px; }
 .model-badge { color: var(--accent); font-size: 8px; font-weight: 900; letter-spacing: .14em; }
-.mode-switch { width: 100%; min-width: 0; padding: 4px; border: 1px solid var(--line); border-radius: 11px; display: grid; grid-template-columns: 1fr 1fr; background: #0b1214; pointer-events: auto; }
-.mode-switch button { min-height: 42px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); font-weight: 800; cursor: pointer; }
+.mode-switch { width: auto; min-width: 0; padding: 2px; border: 1px solid var(--line); border-radius: 9px; display: grid; grid-template-columns: 1fr 1fr; background: #0b1214; pointer-events: auto; }
+.mode-switch button { min-height: 32px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 800; cursor: pointer; }
 .mode-switch button.active { background: var(--accent); color: #092016; }
-.console-body { min-height: 205px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(270px, .72fr); }
-.instrument-visual { position: relative; min-height: 205px; overflow: hidden; background: radial-gradient(circle at 60% 45%, rgba(142,240,198,.12), transparent 36%), linear-gradient(135deg, #131e21, #0b1113); }
+.console-body { height: 190px; min-height: 190px; max-height: 190px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(270px, .72fr); }
+.instrument-visual { position: relative; height: 100%; min-height: 0; overflow: hidden; background: radial-gradient(circle at 60% 45%, rgba(142,240,198,.12), transparent 36%), linear-gradient(135deg, #131e21, #0b1113); }
 .instrument-visual::after { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(255,255,255,.035); border-radius: 50%; transform: scaleX(1.55); }
 .visual-label { position: absolute; z-index: 2; left: 20px; top: 18px; display: grid; }
 .visual-label span { color: #6f807b; font-size: 8px; font-weight: 900; letter-spacing: .18em; }
@@ -221,17 +222,17 @@ main { display: grid; gap: 12px; padding-top: 12px; }
 .signal-meter i { width: 4px; height: 6px; border-radius: 3px; background: #33433f; transition: height .08s, background .08s; }
 .signal-meter i.live { background: var(--accent-2); }
 
-.control-panel { padding: 14px 16px; border-left: 1px solid var(--line); background: rgba(8,14,16,.55); display: grid; grid-template-rows: auto minmax(0,1fr); }
-.control-set { min-height: 0; display: grid; align-content: center; gap: 10px; }
-.sustain-button { min-height: 64px; border: 1px solid rgba(142,240,198,.38); border-radius: 13px; padding: 0 15px; display: flex; align-items: center; justify-content: space-between; background: rgba(142,240,198,.07); cursor: pointer; }
-.sustain-button span { font-size: 15px; font-weight: 900; }.sustain-button b { padding: 7px 9px; border-radius: 7px; background: rgba(255,255,255,.08); color: var(--muted); font-size: 9px; }
+.control-panel { height: 100%; min-height: 0; padding: 10px 14px; border-left: 1px solid var(--line); background: rgba(8,14,16,.55); display: grid; grid-template-rows: auto minmax(0,1fr); overflow-y: auto; scrollbar-width: thin; }
+.control-set { min-height: 0; display: grid; align-content: start; gap: 6px; }
+.sustain-button { min-height: 54px; border: 1px solid rgba(142,240,198,.38); border-radius: 12px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; background: rgba(142,240,198,.07); cursor: pointer; }
+.sustain-button span { font-size: 14px; font-weight: 900; }.sustain-button b { padding: 6px 8px; border-radius: 7px; background: rgba(255,255,255,.08); color: var(--muted); font-size: 9px; }
 .sustain-button.active { background: var(--accent); color: #082017; }.sustain-button.active b { background: rgba(0,0,0,.14); color: #082017; }
 .control-set > p { margin: 0; color: var(--muted); font-size: 11px; }
-.technique-card { padding: 11px; border: 1px solid rgba(255,255,255,.085); border-radius: 11px; display: grid; gap: 8px; background: rgba(255,255,255,.022); }
+.technique-card { padding: 6px 10px; border: 1px solid rgba(255,255,255,.085); border-radius: 10px; display: grid; gap: 4px; background: rgba(255,255,255,.022); }
 .control-eyebrow { color: #9df3ce; font-size: 9px; font-weight: 900; letter-spacing: .11em; }
-.technique-hint { min-height: 32px; margin: 0; color: #aab8b4; font-size: 11px; line-height: 1.45; word-break: keep-all; }
-.articulation-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(72px, 1fr)); gap: 6px; }
-.articulation-buttons button { min-height: 44px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.03); color: var(--muted); font-size: 11px; font-weight: 900; cursor: pointer; }
+.technique-hint { min-height: 0; margin: 0; color: #aab8b4; font-size: 10.5px; line-height: 1.35; word-break: keep-all; }
+.articulation-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); gap: 5px; }
+.articulation-buttons button { min-height: 32px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 7px; background: rgba(255,255,255,.03); color: var(--muted); font-size: 11px; font-weight: 900; cursor: pointer; }
 .articulation-buttons button.active { background: var(--accent); border-color: var(--accent); color: #082017; }
 .articulation-buttons button:disabled { opacity: 1; cursor: default; }
 .tone-preset-buttons button.active { background: var(--orange); border-color: var(--orange); color: #211006; }
@@ -258,7 +259,7 @@ input[type="range"] { width: 100%; height: 20px; margin: 0; accent-color: var(--
 .range-legend span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9px; }
 .key-size-button { min-height: 34px; margin-left: auto; padding: 4px 11px; display: flex; align-items: center; gap: 7px; border: 1px solid rgba(142,240,198,.32); border-radius: 999px; background: rgba(142,240,198,.06); color: var(--muted); cursor: pointer; white-space: nowrap; }
 .key-size-button span { font-size: 9px; font-weight: 800; }.key-size-button b { color: var(--accent); font-size: 10px; }
-.keyboard-demo-controls { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+.keyboard-demo-controls { display: flex; align-items: center; gap: 6px; }
 .keyboard-demo-controls button { margin-left: 0; }
 .keyboard-demo-controls button[aria-pressed="true"] { background: rgba(142,240,198,.2); border-color: var(--accent); }
 .keyboard-range-controls { display: flex; align-items: center; gap: 3px; }
@@ -569,7 +570,7 @@ body.key-size-open { overflow: hidden; }
 }
 
 /* Chromebook, iPad & compact height viewports: keeps all play pads visible on a single screen without scrolling */
-@media (max-height: 850px), (max-width: 1120px) and (max-height: 920px) {
+@media (max-height: 680px) {
     .app-shell { padding: 0 10px 8px; }
     main { gap: 5px; padding-top: 4px; }
     .topbar { position: relative; top: 0; left: 0; right: 0; margin-bottom: 2px; }
@@ -590,8 +591,8 @@ body.key-size-open { overflow: hidden; }
     .korean-room-switch button { min-height: 32px; min-width: 66px; font-size: 9px; padding: 2px 5px; }
 
     .instrument-console { border-radius: 10px; }
-    .console-body { min-height: 95px; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .7fr); }
-    .instrument-visual { min-height: 95px; grid-template-rows: minmax(0, 1fr) 24px; }
+    .console-body { height: 120px; min-height: 120px; max-height: 120px; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .7fr); }
+    .instrument-visual { height: 100%; min-height: 0; grid-template-rows: minmax(0, 1fr) 24px; }
     .studio-stage { min-height: 75px; }
     .instrument-artwork { inset: 4px 2.5% 2px; height: calc(100% - 6px); max-height: 70px; }
     .visual-label { top: 4px; left: 8px; }

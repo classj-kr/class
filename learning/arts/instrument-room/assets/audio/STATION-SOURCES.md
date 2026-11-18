@@ -9,9 +9,11 @@ Ogg Vorbis로 변환해 악기별 패드에 연결했다. 원음의 길이와 �
 | --- | --- | --- | ---: |
 | `ritual-signals/bak.ogg` | 박 | Bak_1.wav | 2258 |
 | `ritual-signals/chuk.ogg` | 축 | Chuk_1.wav | 2312 |
-| `ritual-signals/eo.ogg` | 어 | Eo.wav | 2270 |
+| `ritual-signals/eo.ogg` | 어 (마침 전곡) | Eo.wav | 2270 |
+| `ritual-signals/eo-strike.ogg` | 어 (머리 치기) | Eo.wav (머리 타격 1회 분리) | 2270 |
+| `ritual-signals/eo-scrape.ogg` | 어 (등 긁기) | Eo.wav (등 톱니 긁음 분리) | 2270 |
 | `daechwita/nabal.ogg` | 나발 | Nabal_1.wav | 2332 |
-| `daechwita/nagak.ogg` | 나각 | Nagak_1.wav | 2330 |
+| `daechwita/nagak.ogg` | 나각 (C4 피치 조율) | Nagak_1.wav | 2330 |
 | `daechwita/yonggo.ogg` | 용고 | Yonggo_1.wav | 2276 |
 | `daechwita/jabara.ogg` | 자바라(바라) | Bara_1.wav | 2254 |
 | `daechwita/jing.ogg` | 징 | Jing_1.wav | 2334 |

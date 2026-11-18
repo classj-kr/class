@@ -52,6 +52,7 @@
             tool = "소리 듣기";
             if (id === "bak") drawing = '<path d="M9 7 20 5 24 40 13 42ZM24 6 35 5 36 40 25 41ZM39 7 51 10 47 41 37 40ZM53 11 63 15 55 43 48 41Z"/>';
             else if (id === "chuk") drawing = '<path d="M11 14 36 7 60 14 36 21ZM11 14v26l25 5V21m24-7v26l-24 5M15 8 33 2m-4 2 4 30"/>';
+            else if (id === "eo-scrape") drawing = '<path d="M5 33 13 21 22 25 29 11 39 18 46 8 55 15 64 9v25H5Z M8 34q25 11 53 0M14 43h43"/><path d="m14 18 36 10" stroke-width="2"/>';
             else drawing = '<path d="M5 33 13 21 22 25 29 11 39 18 46 8 55 15 64 9v25H5Z M8 34q25 11 53 0M14 43h43"/><circle cx="50" cy="21" r="2" fill="currentColor"/>';
         } else if (modelId === "daechwita-station") {
             tool = "소리 듣기";
