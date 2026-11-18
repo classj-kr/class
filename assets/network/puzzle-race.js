@@ -194,7 +194,57 @@
             renderSettings();
         }
 
-        // 음악은 건드리지 않는다: 순위전 중에도 그 게임의 원래 배경 음악이 그대로 흐른다.
+        // 음악: 대기실·경기 중에는 그 게임의 원래 배경 음악이 그대로 흐르고, 시상대가 나올 때만
+        // 순위전 음악(race-music.js의 대기실 곡)으로 바꾼다. 시상대를 떠나면 원래 음악으로 돌아간다.
+        // 순위전 음악 장치는 시상대가 처음 나올 때 부른다(먼저 부르면 공용 스피커가 그쪽으로 넘어간다).
+        let raceMusicLoading = null;
+        function ensureRaceMusic() {
+            if (window.RaceMusic) return Promise.resolve();
+            if (raceMusicLoading) return raceMusicLoading;
+            raceMusicLoading = new Promise(resolve => {
+                const tag = document.createElement("script");
+                tag.src = "/assets/sound/race-music.js?v=20261106-1";
+                tag.onload = tag.onerror = () => resolve();
+                document.head.append(tag);
+            }).then(() => {
+                window.addEventListener("classmusicchange", event => {
+                    const detail = event.detail || {};
+                    window.ClassMusicController?.setVolume?.(Number(detail.volume) || 0);
+                    window.ClassMusicController?.setMuted?.(Boolean(detail.muted));
+                });
+            });
+            return raceMusicLoading;
+        }
+
+        const ownMusic = () => document.getElementById("bgm");
+        let podiumMusic = false, ownMusicWasPlaying = false;
+        const keepOwnMusicQuiet = () => { if (podiumMusic) ownMusic()?.pause(); };
+        function startPodiumMusic() {
+            if (podiumMusic) return;
+            podiumMusic = true;
+            const bgm = ownMusic();
+            if (bgm) {
+                ownMusicWasPlaying = !bgm.paused;
+                bgm.pause();
+                // 공용 스피커가 다시 틀지 않게 막고, 게임 코드가 직접 틀어도 곧바로 멈춘다.
+                document.body.dataset.musicPausedForReading = "true";
+                bgm.addEventListener("play", keepOwnMusicQuiet);
+            }
+            const host = lobby?.snapshot().role !== "guest";
+            ensureRaceMusic().then(() => { if (podiumMusic) window.RaceMusic?.set("lobby", { host }); });
+        }
+        function stopPodiumMusic() {
+            if (!podiumMusic) return;
+            podiumMusic = false;
+            const bgm = ownMusic();
+            // 원래 음악이 race-music 인 게임(짝 찾기)은 그 게임이 제 곡을 다시 정한다.
+            if (!bgm) return;
+            window.RaceMusic?.set(null);
+            bgm.removeEventListener("play", keepOwnMusicQuiet);
+            delete document.body.dataset.musicPausedForReading;
+            if (ownMusicWasPlaying) bgm.play().catch(() => {});
+            ownMusicWasPlaying = false;
+        }
 
         function onSiteBack(event) {
             if (!root || root.classList.contains("hidden") && !racing && !overlay) return;
@@ -394,6 +444,7 @@
 
         function showResults() {
             closeOverlay();
+            startPodiumMusic();
             const rows = ranked().filter(([, racer]) => racer.time != null);
             const podium = el("ol", { class: "pr-podium" }, rows.map(([id, racer], index) => {
                 const item = el("li", { class: `pr-step pr-step-${Math.min(index + 1, 4)}${id === me() ? " me" : ""}` }, [
@@ -435,6 +486,7 @@
             document.querySelector(".pr-countdown")?.remove();
             racing = false;
             iFinished = false;
+            stopPodiumMusic();
             document.body.classList.remove("pr-racing");
             closeOverlay();
             options.stop?.();
