@@ -45,7 +45,7 @@ window.CurriculumTerms = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=e66a0580",
+  "words": "words-3-2.js?v=ddcf3c7d",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -61,7 +61,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=6748c1cf",
+  "words": "words-4-1.js?v=5623ca1a",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -81,7 +81,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=15f33104",
+  "words": "words-4-2.js?v=f0b36db2",
   "figures": [
    "figures/4-2/kor-2.js?v=97237242",
    "figures/4-2/kor.js?v=07b958f9",
@@ -292,7 +292,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=e66a0580",
+  "words": "words-3-2.js?v=ddcf3c7d",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -308,7 +308,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=6748c1cf",
+  "words": "words-4-1.js?v=5623ca1a",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -328,7 +328,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-2": {
-  "words": "words-4-2.js?v=15f33104",
+  "words": "words-4-2.js?v=f0b36db2",
   "figures": [
    "figures/4-2/kor-2.js?v=97237242",
    "figures/4-2/kor.js?v=07b958f9",
