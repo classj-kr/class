@@ -28,7 +28,7 @@
         const link = document.createElement("link");
         link.rel = "stylesheet";
         link.dataset.puzzleRaceStyle = "true";
-        link.href = new URL("puzzle-race.css?v=20261117-3", script?.src || location.href).href;
+        link.href = new URL("puzzle-race.css?v=20261118-podium", script?.src || location.href).href;
         document.head.appendChild(link);
     }
 
@@ -374,10 +374,13 @@
             }
         }
 
+        // 다 푼 사람은 기록(벌칙 시간까지 더한 시간)이 짧은 순서. 먼저 끝냈다고 이기지 않는다.
+        // 기록이 같으면 먼저 끝낸 사람이 앞선다.
         function ranked() {
             return Object.entries(racers).sort(([a, x], [b, y]) => {
-                const fa = finishOrder.indexOf(a), fb = finishOrder.indexOf(b);
-                if (fa >= 0 || fb >= 0) return (fa < 0 ? 1e9 : fa) - (fb < 0 ? 1e9 : fb);
+                const doneA = x.time != null, doneB = y.time != null;
+                if (doneA !== doneB) return doneA ? -1 : 1;
+                if (doneA) return x.time - y.time || finishOrder.indexOf(a) - finishOrder.indexOf(b);
                 if (x.left !== y.left) return x.left ? 1 : -1;
                 return y.done / y.total - x.done / x.total;
             });
@@ -415,6 +418,16 @@
                 board.append(row);
             });
             existing.forEach((node, id) => { if (!racers[id]) node.remove(); });
+            updateWaitingPlace();
+        }
+
+        // 기다리는 동안의 등수: 지금까지 끝낸 사람 가운데 내 기록 자리. 뒤에 더 빠른 기록이 오면 바뀐다.
+        function currentPlace() {
+            return ranked().filter(([, racer]) => racer.time != null).findIndex(([id]) => id === me()) + 1;
+        }
+        function updateWaitingPlace() {
+            const node = overlay?.classList.contains("pr-waiting") ? overlay.querySelector(".pr-place") : null;
+            if (node) node.textContent = `지금 ${currentPlace()}등`;
         }
 
         function checkAllDone() {
@@ -428,10 +441,9 @@
         }
 
         function showWaiting() {
-            const place = finishOrder.indexOf(me()) + 1;
             overlay = el("div", { class: "pr-result pr-waiting", role: "status" }, [
                 el("div", { class: "pr-result-card" }, [
-                    el("strong", { class: "pr-place", text: `${place}등` }),
+                    el("strong", { class: "pr-place", text: `지금 ${currentPlace()}등` }),
                     el("span", { text: formatTime(racers[me()]?.time || 0) })
                 ])
             ]);
@@ -444,7 +456,7 @@
             const rows = ranked().filter(([, racer]) => racer.time != null);
             const podium = el("ol", { class: "pr-podium" }, rows.map(([id, racer], index) => {
                 const item = el("li", { class: `pr-step pr-step-${Math.min(index + 1, 4)}${id === me() ? " me" : ""}` }, [
-                    window.ClassroomAvatars?.create(racer.avatarKey, { walking: index === 0 }) || el("span"),
+                    el("span", { class: "pr-step-avatar" }, [window.ClassroomAvatars?.create(racer.avatarKey, { walking: true }) || el("span")]),
                     el("span", { class: "pr-step-block" }, [
                         el("strong", { text: `${index + 1}` }),
                         el("span", { class: "pr-step-name", text: racer.name }),
