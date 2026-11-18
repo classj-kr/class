@@ -91,14 +91,14 @@ body[data-entry-game] .game-frame:has([data-difficulty-button]) {
   box-shadow: 0 15px 40px rgba(0, 0, 0, .6);
 }
 .finishers-side-panel .finisher-row {
-  grid-template-columns: minmax(0, 1fr) auto !important;
-  grid-template-areas: "name date" "level level";
-  gap: 2px 8px !important;
-  padding: 8px 4px !important;
+  grid-template-columns: 46px minmax(0, auto) minmax(0, 1fr) !important;
+  gap: 8px !important;
+  padding: 7px 2px !important;
+  font-size: 12px !important;
 }
-.finishers-side-panel .finisher-name { grid-area: name; font-size: 13px; }
-.finishers-side-panel .finisher-date { grid-area: date; font-size: 11px; }
-.finishers-side-panel .finisher-difficulty { grid-area: level; font-size: 11px; text-align: left; white-space: normal; overflow-wrap: anywhere; opacity: .85; }
+.finishers-side-panel .finisher-date { font-size: 11px; }
+.finishers-side-panel .finisher-name { font-size: 13px; }
+.finishers-side-panel .finisher-difficulty { font-size: 12px; text-align: right; }
 
 @media (min-width: 860px) and (max-width: 1099px) {
   body[data-entry-game] { --solo-entry-width: 420px !important; }

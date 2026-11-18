@@ -7,8 +7,8 @@
         stylesheet.rel = "stylesheet";
         stylesheet.dataset.classFinisherStyle = "true";
         stylesheet.href = currentScript
-            ? new URL("finisher-board.css?v=20261119-order", currentScript.src).href
-            : "../../assets/network/finisher-board.css?v=20261119-order";
+            ? new URL("finisher-board.css?v=20261119-row", currentScript.src).href
+            : "../../assets/network/finisher-board.css?v=20261119-row";
         document.head.appendChild(stylesheet);
     }
 
@@ -56,13 +56,17 @@
         if (unique.length === 0) {
             return '<div class="finisher-empty">아직 완주 기록이 없습니다.</div>';
         }
-        return unique.map(record => `
+        // 한 줄에 담으려고 날짜는 월·일만 보이고, 전체 날짜와 긴 난이도는 올려 보면 나온다.
+        return unique.map(record => {
+            const fullDate = formatRecordDate(record);
+            const shortDate = fullDate.replace(/^\d{4}\.\s*/, "");
+            return `
             <div class="finisher-row">
-                <span class="finisher-date finisher-time">${escapeHtml(formatRecordDate(record))}</span>
+                <span class="finisher-date finisher-time" title="${escapeHtml(fullDate)}">${escapeHtml(shortDate)}</span>
                 <span class="finisher-name">${escapeHtml(playerLabel(record))}</span>
-                <span class="finisher-difficulty">${escapeHtml(record.difficulty)}</span>
-            </div>
-        `).join("");
+                <span class="finisher-difficulty" title="${escapeHtml(record.difficulty)}">${escapeHtml(record.difficulty)}</span>
+            </div>`;
+        }).join("");
     }
 
     function playerLabel(record) {
