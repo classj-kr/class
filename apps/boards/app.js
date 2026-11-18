@@ -154,7 +154,10 @@
       finally { submit.disabled = false; }
     });
   }
-  function navigateBoard(id) { location.href = `?id=${encodeURIComponent(id)}`; }
+  function navigateBoard(id, replace = false) {
+    const target = `?id=${encodeURIComponent(id)}`;
+    if (replace) location.replace(target); else location.href = target;
+  }
   function navigateRace(id) { location.href = `live.html?id=${encodeURIComponent(boardId)}&game=${encodeURIComponent(id)}`; }
   let raceSetId = null;
   function openRaceSetup(set = null) {
@@ -190,16 +193,37 @@
     }).catch(error => { identityReady = null; throw error; });
     return identityReady;
   }
-  async function joinBoard() {
+  async function joinBoard(replace = false) {
     const recognized = await prepareEntry();
     if (!$('joinForm').reportValidity()) return;
     const body = { code: $('joinCode').value };
     if (!recognized) { body.number = Number($('joinNumber').value); body.name = $('joinName').value; }
     const result = await api('/join', 'POST', body);
-    navigateBoard(result.board.id);
+    navigateBoard(result.board.id, replace);
   }
-  handleForm('joinForm', joinBoard);
+  handleForm('joinForm', () => joinBoard());
 
+  // 선생님이 내 학급·그룹에 공개한 게시판. 누르면 방번호 없이 들어간다.
+  async function studentHome() {
+    show('teacherHome');
+    $('newBoard').closest('.section-head').hidden = true;
+    $('boardList').replaceChildren();
+    try {
+      const res = await fetch('/api/student/class-dashboard/boards', { credentials: 'same-origin', cache: 'no-store' });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(result.message || '게시판을 불러오지 못했어요.');
+      const boards = result.boards || [];
+      if (!boards.length) $('boardList').append(element('p', '게시판 없음', 'empty'));
+      boards.forEach(b => {
+        const tile = button('', () => { location.href = b.href; }, 'board-tile');
+        tile.append(element('h2', b.title));
+        $('boardList').append(tile);
+      });
+    } catch (error) {
+      $('teacherError').hidden = false;
+      $('teacherError').replaceChildren(element('p', error.message));
+    }
+  }
   async function teacherHome() {
     show('teacherHome');
     try {
@@ -238,13 +262,39 @@
       const login = element('a', '수업 포털에서 로그인'); login.href = '/'; $('teacherError').append(login);
     }
   }
-  $('newBoard').addEventListener('click', () => openDialog('createDialog'));
+  // 공개 대상은 선생님 첫 화면의 학급·그룹 카드와 같은 목록이다.
+  let audienceOptions;
+  function loadAudienceOptions() {
+    audienceOptions ||= fetch('/api/teacher/groups', { credentials: 'same-origin', cache: 'no-store' })
+      .then(res => { if (!res.ok) throw new Error('groups'); return res.json(); })
+      .then(result => result.groups || [])
+      .catch(() => { audienceOptions = null; return []; });
+    return audienceOptions;
+  }
+  const audienceLabel = g => g.group_type === 'homeroom' && g.grade && g.class_number ? `${g.grade}학년 ${g.class_number}반` : g.group_name;
+  async function showAudience(id, isChosen) {
+    const groups = await loadAudienceOptions();
+    $(id).querySelector('.audience-list').replaceChildren(...groups.map(group => {
+      const input = document.createElement('input');
+      input.type = 'checkbox'; input.value = String(group.id); input.checked = isChosen(group);
+      const label = element('label', undefined, 'check');
+      label.append(input, document.createTextNode(audienceLabel(group)));
+      return label;
+    }));
+    $(id).hidden = groups.length === 0;
+  }
+  // 목록을 못 받았으면 보내지 않아 저장된 대상을 지우지 않는다.
+  const chosenAudience = id => $(id).hidden ? undefined : [...$(id).querySelectorAll('input:checked')].map(input => input.value);
+  $('newBoard').addEventListener('click', () => run(async () => {
+    await showAudience('createAudience', group => group.auto_homeroom === true);
+    openDialog('createDialog');
+  }));
   const selectedLayout = () => document.querySelector('input[name=layout]:checked').value;
   function updateLayout() { $('columnsLabel').hidden = selectedLayout() !== 'columns'; }
   document.querySelectorAll('input[name=layout]').forEach(n => n.addEventListener('change', updateLayout));
   handleForm('createForm', async () => {
     const result = await api('/', 'POST', { title: $('createTitle').value, description: $('createDescription').value,
-      layout: selectedLayout(), columns: $('createColumns').value.split('\n').map(s => s.trim()).filter(Boolean) });
+      layout: selectedLayout(), columns: $('createColumns').value.split('\n').map(s => s.trim()).filter(Boolean), audience: chosenAudience('createAudience') });
     navigateBoard(result.board.id);
   });
 
@@ -527,42 +577,26 @@
     try { await navigator.clipboard.writeText($('shareLink').value); toast('참여 링크를 복사했어요.'); }
     catch (_) { $('shareLink').select(); toast('링크를 선택했어요. 복사해 주세요.'); }
   }));
-  $('settingsBoard').addEventListener('click', () => {
+  $('settingsBoard').addEventListener('click', () => run(async () => {
     const b = data.board; $('settingsTitle').value = b.title; $('settingsDescription').value = b.description;
     $('settingsLocked').checked = b.locked; $('settingsClosed').checked = b.closed; $('settingsNames').checked = b.hideNames;
+    // 없앤 설정이다. 예전에 켜 둔 게시판만 끌 수 있게 보여 준다.
+    $('settingsLockedLabel').hidden = !b.locked; $('settingsNamesLabel').hidden = !b.hideNames;
     $('settingsLikes').checked = b.likesEnabled; $('settingsLikesLabel').hidden = b.layout === 'quiz';
     $('settingsComments').checked = b.commentsEnabled; $('settingsCommentsLabel').hidden = b.layout === 'quiz';
     $('settingsTheme').value = b.theme || 'default';
-    $('recoveryLink').replaceChildren(); openDialog('settingsDialog');
-  });
+    const audience = data.audience || [];
+    await showAudience('settingsAudience', group => audience.includes(String(group.id)));
+    openDialog('settingsDialog');
+  }));
   handleForm('settingsForm', async () => {
-    await api(`/${boardId}`, 'PATCH', { title: $('settingsTitle').value, description: $('settingsDescription').value,
+    await api(`/${boardId}`, 'PATCH', { title: $('settingsTitle').value, description: $('settingsDescription').value, audience: chosenAudience('settingsAudience'),
       locked: $('settingsLocked').checked, closed: $('settingsClosed').checked, hideNames: $('settingsNames').checked, likesEnabled: $('settingsLikes').checked, commentsEnabled: $('settingsComments').checked, theme: $('settingsTheme').value });
     $('settingsDialog').close(); await refresh(true);
   });
-  $('rotateCode').addEventListener('click', () => run(async () => {
-    if (!confirm('방번호를 바꾸면 이전 링크와 QR로 새로 입장할 수 없어요. 바꿀까요?')) return;
-    await api(`/${boardId}/rotate-code`, 'POST'); await refresh(true); toast(`새 방번호는 ${data.board.code}입니다.`);
-  }));
-  $('recoverMember').addEventListener('click', () => run(async () => {
-    const value = prompt('기기를 바꿀 학생 번호를 입력하세요. 기존 기기의 접속 권한은 해제됩니다.');
-    if (value === null) return;
-    const result = await api(`/${boardId}/reclaim`, 'POST', { number: Number(value) });
-    const link = element('a', `${result.number}번 학생 재입장 링크`);
-    link.href = `${location.origin}/boards/#reclaim=${result.ticket}`;
-    $('recoveryLink').replaceChildren(element('span', '이 링크를 해당 학생에게만 전달하세요. 한 번만 쓸 수 있습니다. '), link);
-  }));
   $('deleteBoard').addEventListener('click', () => run(async () => {
     if (!confirm('이 게시판와 학생 글, 문제 세트, 답안을 모두 삭제할까요? 되돌릴 수 없어요.')) return;
     await api(`/${boardId}`, 'DELETE'); location.href = '?mode=teacher';
-  }));
-  $('exportBoard').addEventListener('click', () => run(async () => {
-    const latest = await api(`/${boardId}`);
-    const sets = [];
-    for (const s of latest.sets) sets.push(await api(`/${boardId}/sets/${s.id}`));
-    const blob = new Blob([JSON.stringify({ ...latest, sets }, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob); const a = element('a'); a.href = url; a.download = `게시판-${latest.board.code}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-    toast('게시판 기록과 문제별 응답 집계를 내려받았어요.');
   }));
   $('buildSet').addEventListener('click', () => {
     approved = data.posts.filter(p => p.kind !== 'note' && p.reviewStatus === 'approved' && !p.hidden);
@@ -626,10 +660,11 @@
       catch (error) { $('joinError').textContent = error.message; }
     } else if (boardId) await refresh(true);
     else if (params.get('mode') === 'teacher') await teacherHome();
+    else if (params.get('mode') === 'student') await studentHome();
     else {
       try {
         const recognized = await prepareEntry();
-        if (recognized && /^(?:\d{4}|\d{6})$/.test($('joinCode').value)) await joinBoard();
+        if (recognized && /^(?:\d{4}|\d{6})$/.test($('joinCode').value)) await joinBoard(true);
       } catch (error) { $('joinError').textContent = error.message; }
     }
   }
