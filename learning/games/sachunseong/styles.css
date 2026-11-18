@@ -260,7 +260,7 @@ body.pr-racing #settingsButton, body.pr-racing .actions { display: none; }
   animation: recap-in .35s ease-out both;
 }
 .recap li {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 14px;
   min-height: 44px; padding: 6px 12px;
   border-radius: 10px;
   background: linear-gradient(170deg, #fffaf0, #f2e4c4);
@@ -268,7 +268,6 @@ body.pr-racing #settingsButton, body.pr-racing .actions { display: none; }
   animation: recap-card .45s cubic-bezier(.2, .9, .3, 1.3) both;
   animation-delay: var(--delay, 0ms);
 }
-.recap li > i { color: #b4530a; font-style: normal; font-weight: 900; }
 .recap-face { min-width: 0; font-weight: 900; line-height: 1.2; word-break: keep-all; overflow-wrap: anywhere; font-size: clamp(.9rem, 1.4vw, 1.15rem); }
 .recap-face.a { color: var(--en-ink); text-align: right; }
 .recap-face.b { color: var(--ko-ink); text-align: left; }

@@ -581,10 +581,7 @@
     puzzle.words.forEach(([a, b], k) => {
       const item = document.createElement('li');
       item.style.setProperty('--delay', `${Math.min(k * 45, 1200)}ms`);
-      const link = document.createElement('i');
-      link.setAttribute('aria-hidden', 'true');
-      link.textContent = '↔';
-      item.append(pairFace(a, `a ${subject?.a || 'ko'}`), link, pairFace(b, `b ${subject?.b || 'ko'}`));
+      item.append(pairFace(a, `a ${subject?.a || 'ko'}`), pairFace(b, `b ${subject?.b || 'ko'}`));
       list.append(item);
     });
     boardArea.append(list);
