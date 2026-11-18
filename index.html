@@ -959,6 +959,9 @@
         .profile-btn:hover { background: rgba(255, 255, 255, 0.12); }
         .profile-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
         .profile-desc { font-size: 0.85rem; color: #aaa; }
+        .profile-copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+        .profile-btn.has-avatar { flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; }
+        .profile-avatar { flex: none; width: 52px; height: 52px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55)); }
         .profile-btn.teacher .profile-title { color: #f4b400; }
         .profile-btn.school-admin .profile-title { color: #8b5cf6; }
         .profile-btn.student .profile-title { color: #38bdf8; }
@@ -2114,6 +2117,38 @@
                 schoolInput.focus();
             }
 
+            // 정해진 아바타가 있으면 그림을 쓰고, 없거나 못 불러오면 그림 문자를 이름 앞에 둔다.
+            function fillProfileCard(card, { avatarKey, icon, name, desc }) {
+                const title = document.createElement('span');
+                title.className = 'profile-title';
+                const detail = document.createElement('span');
+                detail.className = 'profile-desc';
+                detail.textContent = desc;
+                const copy = document.createElement('span');
+                copy.className = 'profile-copy';
+                copy.append(title, detail);
+                card.replaceChildren(copy);
+                const showIcon = () => { title.textContent = `${icon} ${name}`; };
+                if (!/^[a-z0-9-]+\.webp$/i.test(String(avatarKey || ''))) {
+                    showIcon();
+                    return;
+                }
+                title.textContent = name;
+                const image = new Image(52, 52);
+                image.className = 'profile-avatar';
+                image.alt = '';
+                image.decoding = 'async';
+                image.draggable = false;
+                image.onerror = () => {
+                    image.remove();
+                    card.classList.remove('has-avatar');
+                    showIcon();
+                };
+                image.src = `/assets/avatars/${avatarKey}`;
+                card.classList.add('has-avatar');
+                card.prepend(image);
+            }
+
             async function routeSignedIn(state) {
                 authTitle.textContent = 'PROFILES';
                 authMessage.hidden = true;
@@ -2162,7 +2197,10 @@
                         ? (hasHomeroom ? `학교 관리자 · ${teacherProfileData.grade}학년 ${teacherProfileData.classNumber}반 담임` : '학교 관리자 계정')
                         : '교직원 계정';
                     const icon = isSchoolAdmin ? '🏫' : '👨‍🏫';
-                    btn.innerHTML = `<span class="profile-title">${icon} ${teacherProfileData.name}</span><span class="profile-desc">${teacherProfileData.schoolName} · ${roleLabel}</span>`;
+                    fillProfileCard(btn, {
+                        avatarKey: teacherProfileData.avatarKey, icon, name: teacherProfileData.name,
+                        desc: `${teacherProfileData.schoolName} · ${roleLabel}`
+                    });
                     profileList.appendChild(btn);
 
                     // Also set up logic that showTeacherHome used to do
@@ -2186,7 +2224,10 @@
                     const gradeClassLabel = (m?.grade && m?.classNumber) ? `${m.grade}학년 ${m.classNumber}반 ${m.studentNumber}번 ` : '';
                     const studentName = m?.studentName || state.user?.displayName || state.user?.name || '';
 
-                    btn.innerHTML = `<span class="profile-title">🎓 ${studentName}</span><span class="profile-desc">${schoolLabel} ${gradeClassLabel}학생 계정</span>`;
+                    fillProfileCard(btn, {
+                        avatarKey: m?.avatarKey, icon: '🎓', name: studentName,
+                        desc: `${schoolLabel} ${gradeClassLabel}학생 계정`
+                    });
                     profileList.appendChild(btn);
 
                     setPlayerIdentity(studentName, m);
@@ -2200,7 +2241,10 @@
                         // 교사에게 교사 메인이 있듯 학부모는 학부모 메인으로. 교사이면서
                         // 학부모인 사람도 거기서는 학부모로 본다.
                         btn.href = '/parent/';
-                        btn.innerHTML = `<span class="profile-title">📱 ${child.studentName}</span><span class="profile-desc">${child.schoolName} · 보호자 계정</span>`;
+                        fillProfileCard(btn, {
+                            avatarKey: child.avatarKey, icon: '📱', name: child.studentName,
+                            desc: `${child.schoolName} · 보호자 계정`
+                        });
                         profileList.appendChild(btn);
                     });
                 }
