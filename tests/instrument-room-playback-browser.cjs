@@ -22,8 +22,8 @@ const server = http.createServer((req, res) => {
       const init = 'document.addEventListener("DOMContentLoaded", init);';
       data = data.toString().replace(init, hook + (req.headers.referer?.includes('render-test') ? 'cacheElements();' : init));
       data = data.replace('function playSampledDrum(id, velocity) {', 'function playSampledDrum(id, velocity) { (window.sampledDrumInputs ||= []).push({id, velocity, time:performance.now()});');
-      data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) {',
-        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) { if (window.bassDemoHits) window.bassDemoHits.push({midi, velocity, sampleSet, time:performance.now()});');
+      data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {',
+        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { if (window.bassDemoHits) window.bassDemoHits.push({midi, velocity, sampleSet, when, time:performance.now()});');
     }
     if (path.extname(file) === '.html') data = data.toString().replace('</head>', '<script src="/assets/sound/game-sfx.js" defer></script></head>');
     const type = {'.html':'text/html; charset=utf-8', '.js':'text/javascript', '.css':'text/css', '.ogg':'audio/ogg', '.webp':'image/webp'}[path.extname(file)];
@@ -222,6 +222,25 @@ const server = http.createServer((req, res) => {
           await page.mouse.up();
         });
         assert.match(await page.$eval('#noteReadout', label => label.textContent), /A · 업/);
+      }
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await press('#guitarDemoButton');
+      await page.waitForFunction(() => [50,55].every(midi => document.querySelector('.key[data-midi="' + midi + '"].demo-hit')));
+      assert.equal(await page.$eval('#soundPresetButtons [aria-pressed="true"]', button => button.textContent), '록');
+      assert.equal(await page.$eval('#keyboardViewport', viewport => viewport.classList.contains('hidden')), false);
+      const firstDyad = await page.evaluate(() => window.bassDemoHits.slice(0, 2));
+      assert.deepEqual(firstDyad.map(hit => hit.midi), [50,55]);
+      assert.ok(firstDyad.every(hit => hit.sampleSet === 'guitar-s-rock'));
+      assert.ok(Number.isFinite(firstDyad[0].when));
+      assert.equal(firstDyad[0].when, firstDyad[1].when);
+      if (touch) {
+        await press('#guitarDemoButton');
+        assert.equal(await page.$eval('#guitarDemoButton', button => button.getAttribute('aria-pressed')), 'false');
+      } else {
+        await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
+        const dyads = await page.evaluate(() => window.bassDemoHits.map(hit => hit.midi));
+        assert.equal(dyads.length, 24);
+        assert.deepEqual(dyads.slice(-2), [50,55]);
       }
       await press('[data-family="bass"]');
       await page.evaluate(() => { window.bassDemoHits = []; });

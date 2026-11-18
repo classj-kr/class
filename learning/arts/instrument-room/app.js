@@ -262,6 +262,14 @@
             cantStopBar(35, 47, 47), cantStopBar(36, 48, 48, 33)
         ] }
     };
+    // The opening riff uses two strings a fourth apart. Beat positions
+    // include the pickup into the second measure and the final G dyad.
+    const SMOKE_ON_THE_WATER = [
+        [0, 0, .4], [1, 3, .4], [2, 5, .83], [3.5, 0, .45],
+        [4.5, 3, .4], [5.5, 6, .4], [6, 5, .83],
+        [8, 0, .4], [9, 3, .4], [10, 5, .83], [11.5, 3, .45],
+        [12.5, 0, 1.5]
+    ].map(function ([beat, fret, duration]) { return [beat, [50 + fret, 55 + fret], .82, duration]; });
 
     // The official XLN Audio AD2 keymap assigns note 49 to HiHat Closed 1 Tip.
     // Keep this revision in the URL so a previously cached, mis-mapped hat cannot survive a remap.
@@ -567,7 +575,7 @@
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
-            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "drumDemoTempo", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
+            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "drumDemoTempo", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "guitarDemoControls", "guitarDemoButton", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
     }
@@ -1223,7 +1231,7 @@
         return /^(?:p-bass|j-bass|active-bass|fretless-bass)-(?:finger|pick|slap)$/.test(sampleSet || "");
     }
 
-    function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet) {
+    function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {
         const context = ensureAudio();
         if (!context || !buffer) return;
         const existing = state.pianoVoices.get(midi);
@@ -1235,7 +1243,7 @@
         }
         const source = context.createBufferSource();
         const gain = context.createGain();
-        const now = context.currentTime;
+        const now = when ?? context.currentTime;
         const highNoteCompensation = 1 + Math.max(0, midi - 60) / 64;
         const sampleConfig = KEYBOARD_SAMPLE_SETS[sampleSet];
         const calibratedGain = Math.pow(10, ((sampleConfig && sampleConfig.gainDb) || 0) / 20);
@@ -2143,7 +2151,7 @@
 
     function allNotesOff() {
         stopDrumDemo();
-        stopBassDemo();
+        stopKeyboardDemo();
         stopGuitarStrums();
         Array.from(state.activeNotes).forEach(noteOff);
         state.activeNotes.clear();
@@ -2472,22 +2480,22 @@
         run.timers.push(window.setTimeout(stopDrumDemo, endBeat * beatMs + flashMs + 25));
     }
 
-    let bassDemoRun = null;
+    let keyboardDemoRun = null;
 
-    function stopBassDemo() {
-        if (!bassDemoRun) return;
-        const run = bassDemoRun;
-        bassDemoRun = null;
+    function stopKeyboardDemo() {
+        if (!keyboardDemoRun) return;
+        const run = keyboardDemoRun;
+        keyboardDemoRun = null;
         run.timers.forEach(function (timer) { window.clearTimeout(timer); });
-        if (run.voice) releasePianoVoice(run.voice, true);
-        if (run.key) run.key.classList.remove("demo-hit");
+        run.voices.forEach(function (voice) { releasePianoVoice(voice, true); });
+        run.keys.forEach(function (key) { key.classList.remove("demo-hit"); });
         run.button.setAttribute("aria-pressed", "false");
     }
 
-    async function playBassDemo(button) {
+    function playBassDemo(button) {
         if (state.instrument !== "bass" || !ensureAudio()) return;
-        if (bassDemoRun?.button === button) {
-            stopBassDemo();
+        if (keyboardDemoRun?.button === button) {
+            stopKeyboardDemo();
             return;
         }
         const articulation = button.dataset.bassDemo;
@@ -2497,15 +2505,34 @@
             state.articulation = articulation;
             renderArticulations();
         }
-        const run = { button, timers: [], key: null, voice: null };
-        bassDemoRun = run;
-        button.setAttribute("aria-pressed", "true");
         const endingBeat = demo.bars.length * 4;
         const notes = demo.bars.flatMap(function (bar, index) {
-            return bar.map(function ([beat, ...note]) { return [index * 4 + beat, ...note]; });
+            return bar.map(function ([beat, midi, ...note]) { return [index * 4 + beat, [midi], ...note]; });
         });
-        notes.push([endingBeat, demo.root, .88, 1]);
-        const midis = [...new Set(notes.map(function (note) { return note[1]; }))];
+        notes.push([endingBeat, [demo.root], .88, 1]);
+        return playKeyboardDemo(button, demo.bpm, notes, endingBeat + 1);
+    }
+
+    function playRockGuitarDemo() {
+        const button = elements.guitarDemoButton;
+        if (state.currentModel?.id !== "s-style" || !ensureAudio()) return;
+        if (keyboardDemoRun?.button === button) {
+            stopKeyboardDemo();
+            return;
+        }
+        setGuitarMode("keyboard");
+        if (state.stringPreset !== "rock") {
+            state.stringPreset = "rock";
+            renderSoundPresets();
+        }
+        return playKeyboardDemo(button, 112, SMOKE_ON_THE_WATER, 16);
+    }
+
+    async function playKeyboardDemo(button, bpm, notes, endBeat) {
+        const run = { button, timers: [], keys: new Set(), voices: new Set() };
+        keyboardDemoRun = run;
+        button.setAttribute("aria-pressed", "true");
+        const midis = [...new Set(notes.flatMap(function (note) { return note[1]; }))];
         const config = sampledPianoConfig();
         const samples = new Map();
         const loading = loadMissingPerformanceSamples(midis, config, samples);
@@ -2513,45 +2540,62 @@
             try {
                 await loading;
             } catch (error) {
-                if (bassDemoRun === run) {
-                    stopBassDemo();
+                if (keyboardDemoRun === run) {
+                    stopKeyboardDemo();
                     showToast("시범 연주 음원을 불러오지 못했어요.");
                 }
                 return;
             }
-            if (bassDemoRun !== run) return;
+            if (keyboardDemoRun !== run) return;
         }
-        const beatMs = 60000 / demo.bpm;
+        const beatMs = 60000 / bpm;
         const viewport = elements.keyboardViewport;
         const lowKey = elements.keyboard.querySelector('[data-midi="' + Math.min(...midis) + '"]');
         const highKey = elements.keyboard.querySelector('[data-midi="' + Math.max(...midis) + '"]');
         stopKeyboardCentering();
         viewport.scrollLeft = lowKey.offsetLeft + Math.min(0, (highKey.offsetLeft + highKey.offsetWidth - lowKey.offsetLeft - viewport.clientWidth) / 2);
 
-        notes.forEach(function ([beat, midi, velocity, duration, muted]) {
+        notes.forEach(function ([beat, pitches, velocity, duration, muted]) {
             function hit() {
-                const sample = samples.get(midi);
-                const key = muted ? null : elements.keyboard.querySelector('[data-midi="' + midi + '"]');
-                const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
-                run.key = key;
-                run.voice = voice;
-                if (key) {
-                    if (key.offsetLeft < viewport.scrollLeft || key.offsetLeft + key.offsetWidth > viewport.scrollLeft + viewport.clientWidth) {
-                        viewport.scrollLeft = key.offsetLeft - (viewport.clientWidth - key.offsetWidth) / 2;
+                const when = pitches.length > 1 ? state.audioContext.currentTime + .008 : undefined;
+                const voices = pitches.map(function (midi) {
+                    const sample = samples.get(midi);
+                    const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet, when);
+                    run.voices.add(voice);
+                    return voice;
+                });
+                const keys = muted ? [] : pitches.map(function (midi) {
+                    return elements.keyboard.querySelector('[data-midi="' + midi + '"]');
+                });
+                if (keys.length) {
+                    const left = keys[0].offsetLeft;
+                    const right = keys.at(-1).offsetLeft + keys.at(-1).offsetWidth;
+                    if (left < viewport.scrollLeft || right > viewport.scrollLeft + viewport.clientWidth) {
+                        viewport.scrollLeft = (left + right - viewport.clientWidth) / 2;
                     }
-                    key.classList.add("demo-hit");
+                    keys.forEach(function (key) {
+                        run.keys.add(key);
+                        key.classList.add("demo-hit");
+                    });
                 }
                 if (muted) noteActivity("고스트 노트", velocity);
-                else noteActivity(core.noteLabel(midi), velocity, midi);
+                else if (pitches.length === 1) noteActivity(core.noteLabel(pitches[0]), velocity, pitches[0]);
+                else noteActivity(pitches.map(core.noteLabel).join(" + "), velocity);
                 run.timers.push(window.setTimeout(function () {
-                    key?.classList.remove("demo-hit");
-                    if (voice) releasePianoVoice(voice, muted);
+                    keys.forEach(function (key) {
+                        run.keys.delete(key);
+                        key.classList.remove("demo-hit");
+                    });
+                    voices.forEach(function (voice) {
+                        run.voices.delete(voice);
+                        releasePianoVoice(voice, muted);
+                    });
                 }, duration * beatMs));
             }
             if (beat === 0) hit();
             else run.timers.push(window.setTimeout(hit, beat * beatMs));
         });
-        run.timers.push(window.setTimeout(stopBassDemo, (endingBeat + 1) * beatMs));
+        run.timers.push(window.setTimeout(stopKeyboardDemo, endBeat * beatMs));
     }
 
     function renderDrumPads() {
@@ -2785,6 +2829,7 @@
         const chords = state.instrument === "guitar" && state.guitarMode === "chords";
         elements.keyboardViewport.classList.toggle("hidden", drums || chords);
         elements.bassDemoControls.classList.toggle("hidden", state.instrument !== "bass");
+        elements.guitarDemoControls.classList.toggle("hidden", state.currentModel?.id !== "s-style");
         elements.chordSurface.classList.toggle("hidden", !chords);
         elements.drumPads.classList.toggle("hidden", !drums);
         elements.drumPads.style.display = drums ? "grid" : "";
@@ -2978,6 +3023,7 @@
     }
 
     function bindEvents() {
+        elements.guitarDemoButton.addEventListener("click", playRockGuitarDemo);
         elements.bassDemoControls.querySelectorAll("[data-bass-demo]").forEach(function (button) {
             button.addEventListener("click", function () { playBassDemo(button); });
         });
