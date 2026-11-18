@@ -1,16 +1,16 @@
 // 나라와 수도: 목록에서 익히기, 나라 보고 수도 고르기, 수도 보고 지도에서 나라 누르기.
 // 자료는 data/capitals.json(앱 코드와 떼어 둔 파일, 짝 잇기 게임도 같은 파일을 읽는다).
-const DATA_URL = new URL('./data/capitals.json?v=20261118-everyday', import.meta.url);
+const DATA_URL = new URL('./data/capitals.json?v=20261118-groups', import.meta.url);
 const FLAG = (code) => new URL(`./data/flags/${code}.webp?v=2`, import.meta.url).href;
 const NONE = { type: 'FeatureCollection', features: [] };
-// 지도에서 찾기를 시작할 때 화면에 들어오게 할 대륙의 범위(서경·남위는 음수). 전체는 지구 전체.
-const BOUNDS = {
-  asia: [[25, -11], [150, 56]],
-  europe: [[-24, 35], [45, 70]],
-  africa: [[-18, -35], [52, 37]],
-  americas: [[-125, -56], [-34, 60]],
-  oceania: [[112, -47], [180, -5]],
-};
+// 대륙 묶음(짝 찾기와 같다). 나라가 적은 대륙은 한데 묶는다.
+// 지도에서 찾기를 시작할 때 bounds 는 그 범위에 맞추고, center 는 지구 전체 배율로 그쪽을 보여 준다.
+const GROUPS = [
+  { id: 'all', name: '전체' },
+  { id: 'asia', name: '아시아·오세아니아', of: ['asia', 'oceania'], center: [105, 10] },
+  { id: 'europe', name: '유럽', of: ['europe'], bounds: [[-24, 35], [45, 70]] },
+  { id: 'rest', name: '아프리카·아메리카', of: ['africa', 'americas'], center: [-36, 5] },
+];
 // 작은 나라(싱가포르·카타르 등)는 모양이 손가락보다 작다. 수도 점에서 이만큼(화면 픽셀) 안을 누르면 그 나라로 본다.
 const TOUCH_PX = 22;
 
@@ -64,7 +64,8 @@ export function createCapitals(api) {
       .catch((e) => { loading = null; throw e; });
     return loading;
   }
-  const list = () => data.countries.filter((c) => continent === 'all' || c.continent === continent);
+  const groupOf = (id) => GROUPS.find((g) => g.id === id);
+  const list = () => data.countries.filter((c) => continent === 'all' || groupOf(continent).of.includes(c.continent));
 
   // ── 지도의 「수도」 표시 ─────────────────────────────────
   function pointFeatures() {
@@ -100,7 +101,7 @@ export function createCapitals(api) {
   function renderPane() {
     const box = document.querySelector('.capital-continents');
     if (!box) return;
-    box.innerHTML = [{ id: 'all', name: '전체' }, ...data.continents].map((k) =>
+    box.innerHTML = GROUPS.map((k) =>
       `<button type="button" data-continent="${k.id}" aria-pressed="${k.id === continent}">${esc(k.name)}</button>`).join('');
     box.querySelectorAll('button').forEach((b) => (b.onclick = () => { continent = b.dataset.continent; renderPane(); }));
     const ul = document.querySelector('.capital-list');
@@ -183,8 +184,9 @@ export function createCapitals(api) {
     quiz = { mode, items: items || shuffle(list()), at: 0, wrong: [], firstWrong: new Set(), answered: false, continent };
     ask();
     if (mode === 'find') {
-      const bounds = BOUNDS[quiz.continent];
-      if (bounds) map.fitBounds(bounds, { padding: pad(), duration: 900 });
+      const group = groupOf(quiz.continent);
+      if (group.bounds) map.fitBounds(group.bounds, { padding: pad(), duration: 900 });
+      else if (group.center) map.easeTo({ center: group.center, zoom: map.getMinZoom(), padding: pad(), duration: 900 });
       else api.wholeGlobe();
     }
   }

@@ -6,7 +6,7 @@ import { createAtlas } from "./atlas-study.mjs?v=20261117-capitals";
 import { animateProjection } from "./projection-morph.mjs?v=20260920-29";
 
 import { createAxisView } from "./axis-view.mjs?v=20260920-31";
-import { createCapitals } from "./capitals.mjs?v=20261118-everyday";
+import { createCapitals } from "./capitals.mjs?v=20261118-groups";
 
 const data = window.GLOBE_DATA;
 // 자료 파일이 옛 판일 수 있다(배포 중 화면 코드와 자료가 어긋나는 때). 없는 갈래는 빈 것으로 둔다.
