@@ -1150,8 +1150,7 @@
         }
 
         .timer-stage[data-phase="paused"] .timer-digits { opacity: 0.55; }
-        .timer-stage.final .timer-digits { font-size: 330px; fill: #ffd166; }
-        .timer-stage.urgent .timer-digits { fill: #ff6b5e; }
+        .timer-stage.final .timer-digits { font-size: 330px; fill: #ff4f43; }
         .timer-stage[data-phase="done"] .timer-digits { font-size: 240px; fill: #ffe600; animation: timer-cheer 0.45s ease-in-out infinite alternate; }
 
         .timer-rocket-body, .timer-moon, .timer-flag, .timer-flame, .timer-shock { transform-box: fill-box; }
@@ -1177,9 +1176,12 @@
             position: absolute;
             inset: 0;
             pointer-events: none;
-            box-shadow: inset 0 0 110px rgba(255, 74, 54, 0.75);
-            animation: timer-alarm 1s ease-in-out infinite;
+            background: radial-gradient(ellipse at center, rgba(255, 40, 28, 0.06) 35%, rgba(255, 40, 28, 0.55) 100%);
+            box-shadow: inset 0 0 110px rgba(255, 54, 40, 0.9);
+            opacity: 0.4;
         }
+
+        .timer-stage.urgent::after { box-shadow: inset 0 0 180px rgb(255, 40, 28); }
 
         @keyframes timer-ready { to { transform: translateY(-3px); } }
         @keyframes timer-shake { 0% { transform: translate(-1.2px, 0.6px); } 50% { transform: translate(1.2px, -0.6px); } 100% { transform: translate(-0.6px, -0.8px); } }
@@ -1189,7 +1191,6 @@
         @keyframes timer-flag { to { transform: scaleY(1); } }
         @keyframes timer-shock { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(17); } }
         @keyframes timer-flash { 0% { opacity: 0.85; } 100% { opacity: 0; } }
-        @keyframes timer-alarm { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
         @keyframes timer-cheer { from { transform: translateY(8px) rotate(-3deg) scale(0.97); } to { transform: translateY(-12px) rotate(3deg) scale(1.05); } }
 
         @media (prefers-reduced-motion: reduce) {
@@ -3480,6 +3481,27 @@
             osc.stop(at + length + 0.02);
         }
 
+        // 째·깍이 번갈아 나도록 짧은 잡음을 두 높이로 걸러 낸다. 마지막 3초는 더 크게.
+        function timerTick(seconds) {
+            if (!timerAudio) return;
+            const rate = timerAudio.sampleRate;
+            const buffer = timerAudio.createBuffer(1, Math.ceil(rate * 0.05), rate);
+            const samples = buffer.getChannelData(0);
+            for (let i = 0; i < samples.length; i++) samples[i] = (Math.random() * 2 - 1) * (1 - i / samples.length) ** 4;
+            const click = timerAudio.createBufferSource();
+            const tone = timerAudio.createBiquadFilter();
+            const gain = timerAudio.createGain();
+            click.buffer = buffer;
+            tone.type = "bandpass";
+            tone.frequency.value = seconds % 2 ? 2300 : 3400;
+            tone.Q.value = 5;
+            gain.gain.value = (seconds <= 3 ? 1.5 : 1) * (seconds % 2 ? 1.6 : 1.1);
+            click.connect(tone);
+            tone.connect(gain);
+            gain.connect(timerAudio.destination);
+            click.start();
+        }
+
         function addTimerParticle(particle) {
             if (timerParticles.length < 700) timerParticles.push(particle);
         }
@@ -3598,10 +3620,12 @@
                 timerShownSecond = seconds;
                 showTimerTime();
                 if (seconds > 0 && seconds <= TIMER_FINAL_SECONDS) {
-                    timerBeep(seconds <= 3 ? 988 : 660);
+                    timerTick(seconds);
                     if (timerMotionAllowed()) {
                         timerDisplay.animate([{ transform: "scale(1.4)" }, { transform: "scale(1)" }],
                             { duration: 420, easing: "cubic-bezier(0.2, 1.4, 0.4, 1)" });
+                        timerStage.animate([{ opacity: 1 }, { opacity: 0.4 }],
+                            { pseudoElement: "::after", duration: 800, easing: "ease-out" });
                     }
                 }
             }
