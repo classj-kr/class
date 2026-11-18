@@ -435,7 +435,11 @@ function createSchoolChat({ pool, requireUser, requireTeacher, requireDatabase, 
         return;
       }
       calls.set(key, call);
-      call.members.set(member.userId, socket);   // 같은 계정이 다른 창에서 들어오면 새 창이 이어받는다
+      // 같은 계정이 다른 창에서 들어오면 새 창이 이어받는다. 먼저 있던 창에는 알려서 연결을 끊고 빠지게 한다
+      // (그대로 두면 상태 소식을 못 받은 채 친구들과의 연결이 남아 소리가 엉킨다).
+      const previous = call.members.get(member.userId);
+      if (previous && previous !== socket) send(previous, { type: 'SCHOOLCHAT_CALL_TAKEN', channel });
+      call.members.set(member.userId, socket);
       broadcastCall(key, channel);
       return;
     }

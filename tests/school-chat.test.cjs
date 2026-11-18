@@ -273,6 +273,11 @@ async function main() {
   const beforeDeltas = deltas(sockets[202], 'school').length;
   await chat.handleSocketMessage(windowB, { type: 'SCHOOLCHAT_JOIN', ticket: 't201' }, verifyTicket);
   assert.equal(deltas(sockets[202], 'school').length, beforeDeltas, '같은 계정의 두 번째 창은 접속자를 늘리지 않는다');
+  // 같은 계정의 두 번째 창이 통화에 들어오면 먼저 있던 창은 '이어받음' 소식을 받고 빠진다.
+  await chat.handleSocketMessage(windowB, { type: 'SCHOOLCHAT_CALL_JOIN', channel: CALL }, verifyTicket);
+  assert.deepEqual(last(sockets[201], 'SCHOOLCHAT_CALL_TAKEN'), { type: 'SCHOOLCHAT_CALL_TAKEN', channel: CALL }, '먼저 있던 창은 통화를 넘겨준다');
+  assert.equal(last(windowB, 'SCHOOLCHAT_CALL_TAKEN'), undefined, '새 창은 이어받음 소식을 받지 않는다');
+  assert.equal(last(sockets[202], 'SCHOOLCHAT_CALL_STATE').members.filter((m) => m.userId === '201').length, 1, '통화에는 한 계정이 한 번만');
   assert.equal(joinedPacket(windowB).presence.school.filter((u) => u.userId === '201').length, 1, '한 사람은 한 번만 보인다');
   chat.leave(sockets[201]);
   assert.equal(deltas(sockets[202], 'school').length, beforeDeltas, '한 창이 닫혀도 다른 창이 있으면 나간 것이 아니다');

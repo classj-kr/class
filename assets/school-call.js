@@ -126,7 +126,7 @@
             closeAllPeers();
             if (audioTrack) { audioTrack.stop(); audioTrack = null; }
             stopVideo();
-            channel = null; members = []; cams = new Set(); micOn = false; wantCam = false; status = "";
+            channel = null; members = []; cams = new Set(); micOn = false; holding = false; wantCam = false; status = "";
             changed();
         }
 
@@ -143,30 +143,41 @@
                 : `${label}를 쓰려면 허락 창에서 '허용'을 눌러 주세요.`;
         }
 
-        async function toggleMic() {
+        // 마이크는 단추를 누르고 있는 동안만 켠다(무전기처럼). 한 교실에서 여러 대가 통화하면 켜 둔 마이크마다
+        // 옆 사람 목소리가 들어가 0.1~0.3초 늦게 모두에게(말한 사람 자신에게도) 되돌아가 울린다. 반향 제거는 자기
+        // 기기 스피커 소리만 지울 수 있어 이건 못 지운다. 말하는 사람 마이크만 켜져 있으면 되돌아갈 소리가 없다.
+        // 처음 누를 때 한 번만 마이크를 열고(허락 창), 그 뒤로는 소리를 켰다 껐다만 한다.
+        let holding = false;
+        let opening = null;
+        async function talk(on) {
             if (!channel) return;
-            if (!micOn) {
-                if (!audioTrack) {
-                    try {
-                        const media = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
-                        audioTrack = media.getAudioTracks()[0];
-                    } catch (_) { return setStatus(await permissionHelp("microphone", "마이크")); }
-                    for (const peer of peers.values()) if (peer.audioTransceiver) peer.audioTransceiver.sender.replaceTrack(audioTrack).catch(() => {});
+            holding = Boolean(on);
+            if (holding && !audioTrack) {
+                if (!opening) {
+                    opening = navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } })
+                        .then(media => media.getAudioTracks()[0])
+                        .catch(() => null);
                 }
-                audioTrack.enabled = true;
-                micOn = true;
-            } else {
-                audioTrack.enabled = false;
-                micOn = false;
+                const track = await opening;
+                opening = null;
+                if (!track) { holding = false; micOn = false; return setStatus(await permissionHelp("microphone", "마이크")); }
+                if (!channel) { track.stop(); return; }
+                if (!audioTrack) {
+                    audioTrack = track;
+                    audioTrack.enabled = holding;   // 허락 창이 떠 있는 동안 손을 뗐으면 꺼 둔 채로 붙인다
+                    for (const peer of peers.values()) if (peer.audioTransceiver) peer.audioTransceiver.sender.replaceTrack(audioTrack).catch(() => {});
+                } else if (track !== audioTrack) track.stop();
             }
+            if (audioTrack) audioTrack.enabled = holding;
+            micOn = Boolean(audioTrack && holding);
             setStatus("");
         }
 
-        // 쪽을 넘기면 화면이 새로 열려서 마이크·카메라가 꺼진다. 이미 허락해 둔 경우에만, 넘기기 전에 켜 둔 것을
+        // 쪽을 넘기면 화면이 새로 열려서 카메라가 꺼진다. 이미 허락해 둔 경우에만, 넘기기 전에 켜 둔 카메라를
         // 사용자 조작 없이 다시 켠다(허락이 없으면 아무것도 하지 않아서 허락 창이 갑자기 뜨는 일이 없다).
+        // 마이크는 누르고 있을 때만 켜지므로 이어 켜지 않는다.
         async function resumeMedia(saved) {
             if (!saved || !channel) return;
-            if (saved.mic && !micOn && await permissionState("microphone") === "granted") await toggleMic();
             if (saved.cam && !wantCam && await permissionState("camera") === "granted") await toggleCam();
         }
 
@@ -243,6 +254,11 @@
         function handle(packet) {
             if (packet.type === "SCHOOLCHAT_CALL_STATE") { onState(packet); return true; }
             if (packet.type === "SCHOOLCHAT_SIGNAL") { onSignal(packet); return true; }
+            // 같은 계정이 다른 창·기기에서 이 통화에 들어왔다. 이 창은 연결을 모두 끊고 빠진다(남아 있으면 소리가 엉킨다).
+            if (packet.type === "SCHOOLCHAT_CALL_TAKEN") {
+                if (packet.channel === channel) leave();
+                return true;
+            }
             if (packet.type === "SCHOOLCHAT_CALL_FULL") {
                 if (packet.channel === channel) { channel = null; setStatus(`통화는 ${limits.call}명까지 할 수 있어요.`); }
                 return true;
@@ -267,7 +283,9 @@
             };
         }
 
-        return { join, rejoin, leave, toggleMic, toggleCam, resumeMedia, handle, view, inCall: () => Boolean(channel) };
+        // 하루 동안 캐시에 남은 옛 채팅 화면이 부르는 이름(눌렀다 다시 누르면 꺼진다).
+        const toggleMic = () => talk(!holding);
+        return { join, rejoin, leave, talk, toggleMic, toggleCam, resumeMedia, handle, view, inCall: () => Boolean(channel) };
     }
 
     window.SchoolCall = Object.freeze({ create, supported });
