@@ -158,23 +158,15 @@ function elements() {
   write('elements', labels, levels);
 }
 
-/* 나라와 수도: 대륙마다 나라 ↔ 수도. */
+/* 나라와 수도: 전체 한 단계와 대륙 묶음 셋. 나라가 적은 대륙은 한데 묶는다. */
 function capitals() {
   const data = JSON.parse(read('learning/inquiry/globe/data/capitals.json'));
-  const names = {};
-  (Array.isArray(data.continents) ? data.continents : Object.entries(data.continents || {}).map(([id, v]) => ({ id, ...(typeof v === 'string' ? { name: v } : v) })))
-    .forEach(c => { names[c.id || c.key] = c.name || c.label || c.ko || c.id; });
-  const labels = {}, levels = {};
-  // 나라가 적은 대륙은 판이 안 되니 묶는다(오세아니아→아시아, 아프리카→아메리카).
-  const merge = { oceania: 'asia', africa: 'americas' };
-  if (names.asia && names.oceania) names.asia = `${names.asia}·${names.oceania}`;
-  if (names.americas && names.africa) names.americas = `${names.americas}·${names.africa}`;
   // 북한은 헌법상 나라로 다루지 않는다(사용자 지적, 2026-11-17).
-  data.countries.filter(c => c.iso !== 'KP').forEach(c => {
-    const key = merge[c.continent] || c.continent;
-    if (!levels[key]) { levels[key] = []; labels[key] = names[key] || key; }
-    levels[key].push([c.country, c.capital]);
-  });
+  const countries = data.countries.filter(c => c.iso !== 'KP');
+  const pairsOf = list => list.map(c => [c.country, c.capital]);
+  const inGroup = (...ids) => pairsOf(countries.filter(c => ids.includes(c.continent)));
+  const labels = { all: '전체', asia: '아시아', europe: '유럽', rest: '아프리카·아메리카·오세아니아' };
+  const levels = { all: pairsOf(countries), asia: inGroup('asia'), europe: inGroup('europe'), rest: inGroup('africa', 'americas', 'oceania') };
   write('capitals', labels, levels);
 }
 
