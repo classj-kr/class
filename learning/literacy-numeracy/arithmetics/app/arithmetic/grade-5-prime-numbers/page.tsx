@@ -97,7 +97,7 @@ export default function GradeFivePrimeNumbersPage() {
     return (
       <div className="a4-sheet counting-sheet prime-number-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
-          <div className="counting-sheet-title"><span>5학년</span><strong>소수(素數) 찾기{answerSheet ? " 정답" : ""}</strong></div>
+          <div className="counting-sheet-title is-advanced"><span>5학년</span><strong>소수(素數) 찾기{answerSheet ? " 정답" : ""}</strong></div>
           <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>1~100</small></div>
         </header>
         <p className="prime-number-guide">약수가 2개(1과 자기 자신)인 수</p>

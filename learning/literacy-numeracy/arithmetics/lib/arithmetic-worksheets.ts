@@ -1,4 +1,4 @@
-export type WorksheetBadge = "암산" | "암기" | "심화";
+export type WorksheetBadge = "암산" | "암기" | "응용";
 
 export type ArithmeticWorksheet = {
   name: string;
@@ -130,7 +130,7 @@ const elementaryTitles: Record<string, string> = {
   "2구구단③": "구구단(6·7단)",
   "2구구단④": "구구단(8·9단)",
   "2구구단⑤": "구구단(종합)",
-  "2시계": "시각 읽기와 쓰기",
+  "2시계": "시계 읽기",
   "3덧셈뺄셈": "세 자리 수의 덧셈·뺄셈",
   "3덧셈뺄셈빈칸": "덧셈·뺄셈 빈칸",
   "3보수뺄셈100": "보수 뺄셈(100)",
@@ -176,7 +176,7 @@ const elementaryTitles: Record<string, string> = {
   "6비례식": "비례식·비례배분",
   "6원": "원의 둘레와 넓이",
   "6직육면체": "직육면체의 겉넓이·부피",
-  "6쌓기나무": "쌓기나무의 개수와 세 방향 모양",
+  "6쌓기나무": "쌓기나무",
 };
 
 // 자동 분류를 그만두고, 사용자가 지정하는 학습지만 하나씩 추가한다.
@@ -193,15 +193,15 @@ const elementaryHorizontalMentalMathWorksheets = new Set<string>([
   "5분수③",
   "6소수①",
 ]);
-const elementaryMemorizationWorksheets = new Set<string>(["제곱수"]);
+const elementaryMemorizationWorksheets = new Set<string>(["제곱수", "4각도어림"]);
 // 심화: 교과 과정 너머까지 다루는 학습지. 하나씩 지정한다.
-const elementaryAdvancedWorksheets = new Set<string>(["제곱수", "19단", "3분수③", "단위변환"]);
+const elementaryAdvancedWorksheets = new Set<string>(["제곱수", "19단", "3분수③", "단위변환", "프라임넘버", "4큰수곱셈"]);
 
 function badgesFor(name: string) {
   const badges: WorksheetBadge[] = [];
   if (elementaryHorizontalMentalMathWorksheets.has(name)) badges.push("암산");
   if (elementaryMemorizationWorksheets.has(name)) badges.push("암기");
-  if (elementaryAdvancedWorksheets.has(name)) badges.push("심화");
+  if (elementaryAdvancedWorksheets.has(name)) badges.push("응용");
   return badges.length ? badges : undefined;
 }
 

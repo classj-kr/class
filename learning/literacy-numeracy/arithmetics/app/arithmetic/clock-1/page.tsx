@@ -139,7 +139,7 @@ export default function ClockOnePage() {
     return (
       <div className="a4-sheet counting-sheet clock-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
-          <div className="counting-sheet-title"><span>2학년</span><strong>시각 읽기와 쓰기{answerSheet ? " 정답" : ""}</strong></div>
+          <div className="counting-sheet-title"><span>2학년</span><strong>시계 읽기{answerSheet ? " 정답" : ""}</strong></div>
           <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span></div>
         </header>
         <div className="clock-grid">{questionSet.problems.map((problem, index) => renderProblem(problem, index, answerSheet))}</div>

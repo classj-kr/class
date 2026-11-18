@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { learningWorksheetCatalog } from "../../lib/arithmetic-worksheets";
 import InlineMathText from "../components/inline-math-text";
 
@@ -21,8 +21,42 @@ function worksheetStage(grade: string): LearningStage {
   return "high";
 }
 
+const VALID_STAGES = new Set<CatalogStage>(["elementary", "middle", "high", "stem", "all"]);
+
 export default function ArithmeticCatalog({ initialStage }: { initialStage: CatalogStage }) {
   const [selectedStage, setSelectedStage] = useState(initialStage);
+
+  useEffect(() => {
+    try {
+      const urlStage = new URLSearchParams(window.location.search).get("stage");
+      if (urlStage && VALID_STAGES.has(urlStage as CatalogStage)) {
+        setSelectedStage(urlStage as CatalogStage);
+        sessionStorage.setItem("arithmetic-catalog-stage", urlStage);
+        return;
+      }
+      const saved = sessionStorage.getItem("arithmetic-catalog-stage");
+      if (saved && VALID_STAGES.has(saved as CatalogStage)) {
+        setSelectedStage(saved as CatalogStage);
+      }
+    } catch {}
+  }, []);
+
+  function handleSelectStage(stage: CatalogStage) {
+    setSelectedStage(stage);
+    try {
+      sessionStorage.setItem("arithmetic-catalog-stage", stage);
+      const url = new URL(window.location.href);
+      url.searchParams.set("stage", stage);
+      window.history.replaceState(null, "", url.toString());
+    } catch {}
+  }
+
+  function handleCardClick(stage: LearningStage) {
+    try {
+      sessionStorage.setItem("arithmetic-catalog-stage", stage);
+    } catch {}
+  }
+
   const availableStages = new Set(learningWorksheetCatalog.map(({ grade }) => worksheetStage(grade)));
   const visibleWorksheets = learningWorksheetCatalog
     .map((worksheet, index) => ({ ...worksheet, index, stage: worksheetStage(worksheet.grade) }))
@@ -43,10 +77,10 @@ export default function ArithmeticCatalog({ initialStage }: { initialStage: Cata
                   const meta = stageMeta[stage];
                   const isAvailable = availableStages.has(stage);
                   return isAvailable
-                    ? <button key={stage} className={`catalog-stage-link stage-${stage}`} type="button" aria-pressed={selectedStage === stage} aria-controls="worksheet-catalog" onClick={() => setSelectedStage(stage)}>{meta.label}</button>
+                    ? <button key={stage} className={`catalog-stage-link stage-${stage}`} type="button" aria-pressed={selectedStage === stage} aria-controls="worksheet-catalog" onClick={() => handleSelectStage(stage)}>{meta.label}</button>
                     : <span key={stage} className={`catalog-stage-link stage-${stage} is-upcoming`} aria-disabled="true">{meta.label}<small>준비 중</small></span>;
                 })}
-                <button className="catalog-stage-link stage-all" type="button" aria-pressed={selectedStage === "all"} aria-controls="worksheet-catalog" onClick={() => setSelectedStage("all")}>전체</button>
+                <button className="catalog-stage-link stage-all" type="button" aria-pressed={selectedStage === "all"} aria-controls="worksheet-catalog" onClick={() => handleSelectStage("all")}>전체</button>
             </nav>
           </div>
         </header>
@@ -73,7 +107,7 @@ export default function ArithmeticCatalog({ initialStage }: { initialStage: Cata
                 )}
                 <li>
                   {route
-                    ? <a className={`worksheet-choice is-ready stage-${stage}`} href={route} data-stage={stage} data-testid="worksheet-choice">{content}</a>
+                    ? <a className={`worksheet-choice is-ready stage-${stage}`} href={route} data-stage={stage} data-testid="worksheet-choice" onClick={() => handleCardClick(stage)}>{content}</a>
                     : <div className={`worksheet-choice stage-${stage}`} data-stage={stage} data-testid="worksheet-choice">{content}</div>}
                 </li>
               </Fragment>

@@ -69,8 +69,8 @@ test("암산과 암기 표시는 사용자가 지정한 학습지에만 붙인�
     arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암산")).map(({ name }) => name),
     ["2덧셈·뺄셈 빈칸", "3보수뺄셈100", "3보수뺄셈1000", "3덧셈뺄셈②", "3곱셈②", "19단", "3나눗셈③", "4큰수곱셈", "5약수,배수", "5분수③", "6소수①"],
   );
-  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암기")).map(({ name }) => name), ["제곱수"]);
-  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("심화")).map(({ name }) => name), ["19단", "제곱수", "3분수③", "단위변환"]);
+  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("암기")).map(({ name }) => name), ["제곱수", "4각도어림"]);
+  assert.deepEqual(arithmeticWorksheetCatalog.filter(({ badges }) => badges?.includes("응용")).map(({ name }) => name), ["19단", "제곱수", "3분수③", "4큰수곱셈", "단위변환", "프라임넘버"]);
 });
 
 test("초등 문제지 제목은 중·고등 문제지와 같은 23px 제목 규격을 쓴다", () => {
@@ -96,9 +96,9 @@ test("목록의 모든 암산 학습지는 실제 문제지 제목에도 암산 
   assert.match(css, /\.mental-math-sheet :where\([\s\S]*?\.multiplication-question,[\s\S]*?\.digit-equation,[\s\S]*?\.complement-row,[\s\S]*?input,[\s\S]*?button[\s\S]*?\)\s*\{[\s\S]*?font-family:\s*"Suneung Math", "STIX Two Math"[\s\S]*?font-synthesis:\s*none;[\s\S]*?font-weight:\s*400;/);
 });
 
-test("제곱수 학습지는 '같은 수의 곱셈' 제목과 암기·심화 딱지, 2·5제곱수 입력칸을 쓴다", () => {
+test("제곱수 학습지는 '같은 수의 곱셈' 제목과 암기·응용 딱지, 2·5제곱수 입력칸을 쓴다", () => {
   const worksheet = arithmeticWorksheetCatalog.find(({ name }) => name === "제곱수");
-  assert.deepEqual(worksheet?.badges, ["암기", "심화"]);
+  assert.deepEqual(worksheet?.badges, ["암기", "응용"]);
   assert.equal(worksheet?.title, "같은 수의 곱셈");
   const source = readFileSync(new URL("../app/arithmetic/square-numbers/page.tsx", import.meta.url), "utf8");
   const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
@@ -106,7 +106,7 @@ test("제곱수 학습지는 '같은 수의 곱셈' 제목과 암기·심화 딱
   assert.equal(source.includes('data-testid="square-memory-input"'), true);
   assert.equal(source.includes("<small>/41 정답</small>"), true);
   assert.equal(css.includes('content: "암기";'), true);
-  assert.equal(css.includes('content: "심화";'), true);
+  assert.equal(css.includes('content: "응용";'), true);
   assert.equal(source.includes('className="counting-sheet-title is-advanced"'), true);
 });
 test("초등 목록 버튼과 실제 학습지 제목은 같은 유형명을 쓴다", () => {
@@ -159,7 +159,7 @@ test("주고받기 문제는 동물 친구 이름과 어린이 눈높이 표현�
 });
 test("초4~6 제목은 번호표나 포괄어 대신 실제 훈련 유형을 설명한다", () => {
   const upperElementary = arithmeticWorksheetCatalog.filter(({ grade }) => ["초4", "초5", "초6"].includes(grade));
-  const vagueTitles = new Set(["곱셈", "나눗셈", "분수", "소수", "원기둥", "쌓기나무"]);
+  const vagueTitles = new Set(["곱셈", "나눗셈", "분수", "소수", "원기둥"]);
   for (const worksheet of upperElementary) {
     assert.equal(/[①②③④⑤]/u.test(worksheet.title), false, worksheet.title);
     assert.equal(vagueTitles.has(worksheet.title), false, worksheet.title);
@@ -177,7 +177,7 @@ test("초4~6 제목은 번호표나 포괄어 대신 실제 훈련 유형을 설
     ["6소수③", "소수의 나눗셈과 몫·나머지"],
     ["6비례식", "비례식·비례배분"],
     ["6직육면체", "직육면체의 겉넓이·부피"],
-    ["6쌓기나무", "쌓기나무의 개수와 세 방향 모양"],
+    ["6쌓기나무", "쌓기나무"],
   ]);
   for (const [name, title] of expectedTitles) {
     assert.equal(upperElementary.find((worksheet) => worksheet.name === name)?.title, title, name);

@@ -980,7 +980,7 @@
 }
 
 .trig-derivative-answer-panel.worksheet-choice-modal {
-  width: min(1240px, calc(100vw - 40px));
+  width: min(880px, calc(100vw - 40px));
 }
 
 .trig-derivative-answer-panel > header {
@@ -1034,7 +1034,8 @@
 }
 
 .worksheet-choice-modal .trig-derivative-answer-list {
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
 }
 
 .trig-derivative-answer-item {
@@ -1124,11 +1125,18 @@
 }
 
 .trig-derivative-answer-panel .trig-derivative-choices {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
 }
 
 .trig-derivative-answer-panel .trig-derivative-choice {
-  min-height: 48px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 8px 16px;
+  white-space: nowrap;
 }
 
 .trig-derivative-answer-panel .math-formula .katex .mathnormal {

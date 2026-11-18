@@ -1694,10 +1694,11 @@ img.card-race-avatar { border-radius: 0; background: transparent; box-shadow: no
 
 .division-bracket {
   display: inline-grid;
+  grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto;
   align-items: center;
   justify-items: end;
-  row-gap: 4px;
+  row-gap: 3px;
   column-gap: 4px;
 }
 
@@ -1707,48 +1708,94 @@ img.card-race-avatar { border-radius: 0; background: transparent; box-shadow: no
 }
 
 .division-bracket-divisor {
-  padding-right: 6px;
-  font-size: 20px;
+  padding-right: 5px;
+  font-size: 22px;
   font-weight: 800;
   text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 .division-bracket-dividend-group {
-  width: 56px;
   display: flex;
   align-items: stretch;
 }
 
 .division-bracket .division-remainder-input:not(.division-remainder-input-small),
 .division-bracket .division-remainder-static:not(.division-remainder-static-small) {
-  width: 56px;
+  width: 38px;
+  height: 33px;
+  border: 1.5px solid #94a3b8;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #17233c;
+  font-size: 21px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.division-bracket .division-remainder-input-small,
+.division-bracket .division-remainder-static-small {
+  width: 44px;
+  height: 33px;
+  border: 1.5px solid #94a3b8;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #17233c;
+  font-size: 21px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.division-bracket input:focus {
+  border-color: #258f86;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 2.5px rgba(37, 143, 134, 0.2);
+}
+
+.division-bracket .division-remainder-static {
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .division-bracket-curve {
-  width: 11px;
+  width: 10px;
   box-sizing: border-box;
-  border: 2px solid #17233c;
+  border: 2.2px solid #17233c;
   border-top: 0;
   border-left: 0;
   border-bottom: 0;
   border-radius: 0 100% 100% 0;
-  margin-right: -2px;
+  margin-right: -1px;
 }
 
 .division-bracket-dividend {
-  min-width: 40px;
+  min-width: 44px;
   box-sizing: border-box;
-  padding: 2px 6px 5px 4px;
-  border-top: 2px solid #17233c;
-  font-size: 20px;
+  padding: 3px 6px 3px 6px;
+  border-top: 2.2px solid #17233c;
+  font-size: 22px;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
   text-align: right;
 }
 
 .division-bracket-ellipsis {
-  padding: 0 5px;
+  padding: 0 3px;
   font-size: 16px;
   font-weight: 700;
+  color: #64748b;
+  text-align: center;
 }
 
 /* 3나눗셈③ */
@@ -2239,8 +2286,12 @@ img.card-race-avatar { border-radius: 0; background: transparent; box-shadow: no
 
 .unit-fraction-unit,
 .unit-fraction-converted-unit {
+  font-family: var(--elementary-math-font);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  letter-spacing: 0;
 }
 
 .unit-fraction-input,
@@ -3237,30 +3288,24 @@ img.card-race-avatar { border-radius: 0; background: transparent; box-shadow: no
 }
 
 .grade-six-decimal-one-operation {
-  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   justify-self: center;
-  display: grid;
-  grid-template-columns: 44px 96px;
-  grid-template-areas:
-    ". quotient"
-    "bracket bracket";
-  align-items: center;
-  row-gap: 4px;
+  row-gap: 3px;
 }
 
 .grade-six-decimal-one-quotient {
-  grid-area: quotient;
   display: flex;
-  justify-content: stretch;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .grade-six-decimal-one-bracket {
-  grid-area: bracket;
-  display: grid;
-  grid-template-columns: 44px 96px;
-  align-items: center;
-  font-size: 24px;
-  font-weight: 900;
+  display: flex;
+  align-items: stretch;
+  font-size: 22px;
+  font-weight: 800;
   text-align: center;
 }
 
@@ -3269,10 +3314,30 @@ img.card-race-avatar { border-radius: 0; background: transparent; box-shadow: no
   font: inherit;
 }
 
+.grade-six-decimal-one-bracket strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 32px;
+  padding-right: 5px;
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
 .grade-six-decimal-one-bracket b {
   position: relative;
-  padding: 7px 5px 2px 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  padding: 4px 10px 2px 12px;
   border-top: 2px solid #17233c;
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
 }
 
 .grade-six-decimal-one-bracket b::before {
@@ -3281,41 +3346,49 @@ img.card-race-avatar { border-radius: 0; background: transparent; box-shadow: no
   top: -2px;
   bottom: 0;
   left: 0;
-  width: 10px;
-  border-right: 2px solid #17233c;
+  width: 9px;
+  border-right: 2.2px solid #17233c;
   border-radius: 0 100% 100% 0;
 }
 
 .grade-six-decimal-one-input,
 .grade-six-decimal-one-static-answer {
-  width: 96px;
-  min-width: 96px;
-  height: 42px;
-  border-radius: 7px;
-  background: white;
+  width: 72px;
+  min-width: 72px;
+  height: 33px;
+  border-radius: 6px;
+  background: #f8fafc;
   color: #17233c;
   font-family: inherit;
-  font-size: 19px;
-  font-weight: 900;
+  font-size: 21px;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
-  text-align: right;
-  padding: 0 10px;
+  text-align: center;
+  padding: 0 4px;
   box-sizing: border-box;
 }
 
 .grade-six-decimal-one-input {
-  border: 1.5px solid #968f85;
+  border: 1.5px solid #94a3b8;
   outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .grade-six-decimal-one-static-answer {
+  border: none;
+  background: transparent;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .grade-six-decimal-one-input:focus {
   border-color: #258f86;
+  background: white;
+  box-shadow: 0 0 0 2.5px rgba(37, 143, 134, 0.2);
+}
   box-shadow: 0 0 0 3px rgba(49, 168, 157, 0.2);
 }
 
@@ -9523,7 +9596,9 @@ main {
   .unit-conversion-static-answer small,
   .unit-conversion-answer small,
   .large-unit-name,
-  .large-unit-result-unit
+  .large-unit-result-unit,
+  .unit-fraction-unit,
+  .unit-fraction-converted-unit
 ) {
   font-family: var(--elementary-math-font);
   font-synthesis: none;
@@ -9596,7 +9671,7 @@ main {
   content: "암기";
 }
 
-/* 심화 딱지는 제목 뒤, 암기·암산 딱지 다음에 붙는다. */
+/* 응용 딱지는 제목 뒤, 암기·암산 딱지 다음에 붙는다. */
 .counting-sheet-title.is-advanced::before {
   order: 9;
   display: inline-flex;
@@ -9607,7 +9682,7 @@ main {
   padding: 1px 7px 0;
   color: #8c2277;
   background: #ffe4f6;
-  content: "심화";
+  content: "응용";
   font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
   font-size: 10px;
   font-weight: 900;
@@ -10510,50 +10585,58 @@ main {
 }
 
 .geometry-sheet-choices {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 3px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 20px;
+  row-gap: 4px;
+  flex-wrap: wrap;
   width: 100%;
-  margin-top: 4px;
+  margin-top: 5px;
   color: #17233c;
-  font-size: 12px;
-  line-height: 1.15;
+  font-size: 14.5px;
+  line-height: 1.25;
 }
 
 .geometry-sheet-choices > div {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   min-width: 0;
-  gap: 4px;
+  gap: 5px;
+  white-space: nowrap;
 }
 
 .geometry-sheet-choices > div > span:first-child {
   flex: 0 0 auto;
   font-family: "Noto Sans KR", "Pretendard", sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .geometry-sheet-choices .math-formula {
   min-width: 0;
+  font-size: 14.5px;
 }
 
 .geometry-sheet-choices .is-answer {
   color: #1f6b4f;
   font-weight: 700;
 }
-.space-geometry-projections-page .geometry-choice-sheet.polynomial-sheet-8 .polynomial-problem-grid {
+.geometry-choice-sheet.polynomial-sheet-8 .polynomial-problem-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(4, minmax(0, 1fr));
+  row-gap: 6px;
+  column-gap: 16px;
 }
 
-.space-geometry-projections-page .geometry-choice-sheet.polynomial-sheet-8 .geometry-choice-question {
-  padding: 7px 10px 7px 34px;
+.geometry-choice-sheet.polynomial-sheet-8 .geometry-choice-question {
+  padding: 6px 10px 6px 32px;
 }
 
-.space-geometry-projections-page .geometry-choice-sheet.polynomial-sheet-8 .polynomial-question-number {
+.geometry-choice-sheet.polynomial-sheet-8 .polynomial-question-number {
   left: 10px;
-  top: 10px;
+  top: 8px;
 }
 
 .space-geometry-projections-page .geometry-choice-sheet.polynomial-sheet-8 .middle-curriculum-visual {
