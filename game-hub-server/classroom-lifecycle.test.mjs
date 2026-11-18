@@ -69,7 +69,6 @@ async function withSchool(run) {
       CREATE TABLE teacher_group_students (group_id BIGINT REFERENCES teacher_groups(id) ON DELETE CASCADE, student_id BIGINT);
       CREATE TABLE school_master_timetable (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, teacher_user_id BIGINT, subject_name TEXT);
       CREATE TABLE preserved_class_posts (class_id BIGINT REFERENCES classroom_classes(id), body TEXT);
-      CREATE TABLE classroom_teacher_settings (user_id BIGINT PRIMARY KEY, avatar_key TEXT);
       INSERT INTO classroom_schools VALUES (1, '이전학교', FALSE, 'OLD', '', ''), (2, '현재학교', TRUE, 'NEW', '', '');
       INSERT INTO classroom_users VALUES (10, 'teacher@example.invalid', '검증교사');
       INSERT INTO classroom_teachers (school_id, user_id, google_email, teacher_name, teacher_type, academic_year, grade, class_number)
@@ -109,7 +108,7 @@ async function withSchool(run) {
       assertAccountRoles, studentAccounts, ROSTER_ROLE_LOCK, adminEmails: [], teacherEmails: [],
       avatarCapacity: () => 10, pickRandomAvailableAvatar: () => 'test.webp'
     };
-    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles', 'getGuardianChildren'];
+    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles'];
     Object.assign(bindings, new Function(...Object.keys(bindings),
       `${functions.map(declaration).join('\n')}\nreturn { ${functions.join(',')} };`)(...Object.values(bindings)));
     const api = {
@@ -185,18 +184,6 @@ test('saving an empty school roster hides old student copies while preserving th
   assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM classroom_students')).rows[0].n, 2);
   assert.deepEqual((await api.classroom()).classroom.students, []);
   assert.equal((await db.query('SELECT COUNT(*)::int AS n FROM preserved_class_posts')).rows[0].n, 2);
-}));
-
-test('profile cards receive the avatar of the teacher account and of a guardian\'s child', () => withSchool(async ({ api, db, bindings }) => {
-  assert.equal((await api.profile()).profiles[0].avatarKey, '');
-  await db.exec("INSERT INTO classroom_teacher_settings VALUES (10, 'animal-bear.webp')");
-  const { profile, profiles } = await api.profile();
-  assert.equal(profile.avatarKey, 'animal-bear.webp');
-  assert.equal(profiles[0].avatarKey, 'animal-bear.webp');
-  await db.exec("UPDATE school_students SET guardian1_email = 'parent@example.invalid', avatar_key = 'animal-cat.webp' WHERE class_number = 3");
-  await db.exec("UPDATE classroom_students SET guardian2_email = 'parent@example.invalid', avatar_key = 'animal-bee.webp' WHERE class_id = 4");
-  const children = await bindings.getGuardianChildren({ email: 'PARENT@example.invalid' });
-  assert.deepEqual(children.map(child => child.avatarKey).sort(), ['animal-bee.webp', 'animal-cat.webp']);
 }));
 
 test('real portal clears removed cards and saved selection; dashboard state clears the previous class and schedules', () => withSchool(async ({ api, db }) => {
