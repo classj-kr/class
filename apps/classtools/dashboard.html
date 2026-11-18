@@ -906,8 +906,8 @@
             text-align: center;
         }
         .meal-dish-item > span:first-child svg {
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 1.55rem;
+            height: 1.55rem;
             display: block;
             margin: auto;
         }
@@ -1557,6 +1557,7 @@
     </div>
 
     <script src="./avatar-assignment.js"></script>
+    <script src="./meal-icons.js?v=20261118-1"></script>
     <script src="./dashboard-attendance-live.js"></script>
     <script src="/assets/site-storage.js?v=20261006-1"></script>
     <script>
@@ -1671,6 +1672,9 @@
 
 
         function getMealDishIcon(dish = "") {
+            // 깍두기·꿔바로우·샤인머스캣·국 색깔처럼 그림 문자로 안 되는 것은 직접 그린 그림을 먼저 쓴다.
+            const drawn = window.MealIcons?.forDish(dish);
+            if (drawn) return drawn;
             const name = String(dish).replace(/\s+/g, "");
             const rules = [
                 // 유제품·음료·디저트·간식·분식
@@ -3019,9 +3023,11 @@
 
                 const meal = mealData.meals.find(item => item.mealType === "중식" || item.mealType === "점심")
                     || mealData.meals[0];
-                if (Array.isArray(meal?.dishes) && meal.dishes.length > 0) {
-                    mealDishesByDay.set(dayKey, meal.dishes);
-                    showMealDishes(meal.dishes);
+                // 흰 우유는 날마다 나오므로 메뉴에 적지 않는다.
+                const dishes = (Array.isArray(meal?.dishes) ? meal.dishes : []).filter((dish) => !window.MealIcons?.isDailyMilk(dish));
+                if (dishes.length > 0) {
+                    mealDishesByDay.set(dayKey, dishes);
+                    showMealDishes(dishes);
                 } else {
                     // 아직 안 올라온 날일 수 있으니 기억하지 않는다.
                     showMealMessage(Number(dateKey.slice(5, 7)) + "월 " + Number(dateKey.slice(8, 10)) + "일에 등록된 급식이 없습니다.");
