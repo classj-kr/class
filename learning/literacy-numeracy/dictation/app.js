@@ -1,26 +1,20 @@
-// 국어책 받아쓰기(시험판) — 브라우저 목소리로 듣고 칸에 손으로 쓴다.
+// 국어책 받아쓰기 — 브라우저 목소리로 듣고 한 줄 원고지 띠에 손으로 쓴다.
+// 줄이 바뀌지 않으므로 띄어쓰기는 언제나 빈칸 하나, 마침표·물음표는 글자 다음 칸이다.
 // 글씨 점수는 글씨 쓰기 앱의 채점(HandwritingCore.judge)을 그대로 쓴다.
 // 맞춤법: 띄어쓰기·마침표·글자 수는 칸으로 정확히 잰다. 글자는 획 단위로 답 글자와 「자모 하나만 다른 글자들」에 견주어,
 // 다른 글자에 뚜렷이 더 가까우면 틀림으로 먼저 표시한다(점 구름 비교는 받침 하나 차이를 못 가린다). 아이가 눌러 고칠 수 있다.
 (function () {
   'use strict';
-  const UNIT = {
-    id: '1-1-6',
-    sentences: [
-      '새가 날아갑니다.', '물이 시원합니다.', '개미가 기어갑니다.', '아기가 웃습니다.',
-      '하늘이 파랗습니다.', '강아지가 뛰어갑니다.', '얼음이 물이 되었습니다.', '동생이 국수를 먹습니다.',
-      '친구들이 줄넘기를 합니다.', '누나가 수영을 합니다.', '원숭이가 자리에 앉습니다.', '하마가 그네를 탑니다.',
-    ],
-  };
-  const COLS = 10, ROWS = 2, CELLS = COLS * ROWS;
+  const TERMS = window.DICTATION_TERMS, SET_SIZE = 10, SLOTS = 80;
   const FIT = { s: 70 / 90.9, cx: 44.9, cy: 48.7 };
   const Core = window.HandwritingCore, Reference = window.HandwritingReference;
   const $ = (id) => document.getElementById(id);
   const canvas = $('pad'), ctx = canvas.getContext('2d');
 
-  let queue = [], at = 0, results = new Map();
+  let term = TERMS[0], set = null, queue = [], at = 0, results = new Map();
   let cells = [], history = [], current = null, lastCell = -1, cellPx = 80;
   let check = null, penSeen = false;
+  let stripCells = 13, visible = 10, first = 0, slideTimer = 0;
 
   // ---- 소리 ----
   const synth = window.speechSynthesis;
@@ -57,15 +51,45 @@
   // ---- 칸 ----
   const toModel = ([x, y]) => [(x - 50) / FIT.s + FIT.cx, (y - 50) / FIT.s + FIT.cy].map((v) => Math.max(-30, Math.min(130, v)));
   const modelStrokes = (strokes) => strokes.map((s) => s.map(toModel));
-  const cellAt = (index) => ({ x: (index % COLS) * cellPx, y: Math.floor(index / COLS) * cellPx });
+  const cellAt = (index) => ({ x: index * cellPx, y: 0 });
+  const lengthOf = (text) => Array.from(text).length;
+  const lastUsed = () => cells.reduce((n, s, i) => (s.length ? i : n), -1);
+  // 쓸 때는 큰 칸을 띠로 밀고, 답을 볼 때는 문장 전체가 한눈에 들어오게 칸을 줄인다.
   function resize() {
+    if (!set) return;
     const room = Math.min(window.innerWidth - 32, 960);
-    cellPx = Math.max(30, Math.min(92, Math.floor(room / COLS), Math.floor((window.innerHeight - 300) / ROWS)));
+    if (check) {
+      stripCells = Math.max(lengthOf(queue[at]), lastUsed() + 1);
+      cellPx = Math.max(36, Math.min(88, Math.floor(room / stripCells)));
+    } else {
+      stripCells = Math.max(...set.items.map(lengthOf)) + 3;
+      cellPx = Math.max(56, Math.min(88, Math.floor(room / 5)));
+    }
+    visible = Math.max(1, Math.floor(room / cellPx));
     const ratio = window.devicePixelRatio || 1;
-    canvas.width = cellPx * COLS * ratio; canvas.height = cellPx * ROWS * ratio;
-    canvas.style.width = cellPx * COLS + 'px'; canvas.style.height = cellPx * ROWS + 'px';
+    canvas.width = cellPx * stripCells * ratio; canvas.height = cellPx * ratio;
+    canvas.style.width = cellPx * stripCells + 'px'; canvas.style.height = cellPx + 'px';
+    $('strip').style.width = Math.min(visible, stripCells) * cellPx + 'px';
+    $('strip').style.height = cellPx + 'px';
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    canvas.style.transition = 'none'; // 칸 크기가 바뀔 때는 미끄러지지 않게 한다.
+    slideTo(first);
     draw();
+    void canvas.offsetWidth;
+    canvas.style.transition = '';
+  }
+  function slideTo(index) {
+    const last = Math.max(0, stripCells - visible);
+    first = Math.max(0, Math.min(last, index));
+    canvas.style.transform = `translateX(${-first * cellPx}px)`;
+    $('stripNav').hidden = !last;
+    $('left').disabled = first === 0; $('right').disabled = first === last;
+  }
+  // 끝 칸 가까이 쓰고 펜을 잠시 멈추면 띠를 민다. 쓰는 도중에는 움직이지 않는다.
+  function slideSoon() {
+    clearTimeout(slideTimer);
+    if (check || lastCell < first + visible - 2 || first + visible >= stripCells) return;
+    slideTimer = setTimeout(() => { if (!current) slideTo(lastCell - 2); }, 800);
   }
   function line(points, color, width) {
     ctx.strokeStyle = color; ctx.lineWidth = width; ctx.lineCap = ctx.lineJoin = 'round';
@@ -74,11 +98,11 @@
     ctx.stroke();
   }
   function draw() {
-    const w = cellPx * COLS, h = cellPx * ROWS;
+    const w = cellPx * stripCells, h = cellPx;
     ctx.clearRect(0, 0, w, h);
     if (check) for (const i of check.wrong) { const c = cellAt(i); ctx.fillStyle = '#fde7e3'; ctx.fillRect(c.x, c.y, cellPx, cellPx); }
-    for (let x = 0; x <= COLS; x++) line([[Math.min(x * cellPx, w - 0.5) + 0.5 * !x, 0], [Math.min(x * cellPx, w - 0.5) + 0.5 * !x, h]], '#c9d4de', 1);
-    for (let y = 0; y <= ROWS; y++) line([[0, Math.min(y * cellPx, h - 0.5) + 0.5 * !y], [w, Math.min(y * cellPx, h - 0.5) + 0.5 * !y]], '#c9d4de', 1);
+    for (let x = 0; x <= stripCells; x++) { const at = Math.max(0.5, Math.min(x * cellPx, w - 0.5)); line([[at, 0], [at, h]], '#c9d4de', 1); }
+    for (const y of [0.5, h - 0.5]) line([[0, y], [w, y]], '#c9d4de', 1);
     const pen = Math.max(2.2, cellPx * 0.042);
     cells.forEach((strokes, i) => {
       const c = cellAt(i), bad = check && check.wrong.has(i);
@@ -94,13 +118,11 @@
     return { x: e.clientX - box.left, y: e.clientY - box.top };
   }
   function pickCell(p) {
-    const col = Math.max(0, Math.min(COLS - 1, Math.floor(p.x / cellPx)));
-    const row = Math.max(0, Math.min(ROWS - 1, Math.floor(p.y / cellPx)));
-    let index = row * COLS + col;
+    let index = Math.max(0, Math.min(stripCells - 1, Math.floor(p.x / cellPx)));
     // 칸 경계를 살짝 넘겨 시작한 획은 방금 쓰던 글자의 획으로 본다.
     if (lastCell >= 0 && index !== lastCell && !cells[index].length) {
       const c = cellAt(lastCell), edge = cellPx * 0.06;
-      if (p.x > c.x - edge && p.x < c.x + cellPx + edge && p.y > c.y - edge && p.y < c.y + cellPx + edge) index = lastCell;
+      if (p.x > c.x - edge && p.x < c.x + cellPx + edge) index = lastCell;
     }
     return index;
   }
@@ -113,6 +135,7 @@
     const p = point(e);
     if (check) { toggle(p); return; }
     if (current) return;
+    clearTimeout(slideTimer);
     const index = pickCell(p);
     const stroke = [local(p, index)];
     cells[index].push(stroke); history.push(index); lastCell = index;
@@ -125,7 +148,7 @@
     for (const ev of e.getCoalescedEvents?.() || [e]) current.stroke.push(local(point(ev), current.index));
     draw();
   });
-  const finish = (e) => { if (current && current.id === e.pointerId) current = null; };
+  const finish = (e) => { if (current && current.id === e.pointerId) { current = null; slideSoon(); } };
   canvas.addEventListener('pointerup', finish);
   canvas.addEventListener('pointercancel', finish);
 
@@ -156,18 +179,26 @@
     }
     return out;
   }
+  function isQuestionMark(strokes, lastLetter) {
+    if (strokes.length > 3 || !lastLetter) return false;
+    const written = normalise(modelStrokes(strokes));
+    return costOf(written, '?') < costOf(written, lastLetter);
+  }
   function analyse(text) {
-    const letters = Array.from(text.replace(/[\s.]/g, ''));
+    const mark = /[.?]$/.test(text) ? text.slice(-1) : '';
+    const body = text.replace(/[.?]$/, '');
+    const letters = Array.from(body.replace(/\s/g, ''));
     const spaceAfter = new Set();
-    Array.from(text.replace(/\./g, '')).reduce((n, c) => { if (c === ' ') spaceAfter.add(n - 1); else n++; return n; }, 0);
+    Array.from(body).reduce((n, c) => { if (c === ' ') spaceAfter.add(n - 1); else n++; return n; }, 0);
     const strokes = cells.map((s) => s.map((p) => p));
     let used = strokes.flatMap((s, i) => (s.length ? [i] : []));
-    let period = false;
+    let written = '';
     const tail = used[used.length - 1];
-    if (tail !== undefined && used.length > 1 && isDot(strokes[tail])) { period = true; used = used.slice(0, -1); }
+    if (tail !== undefined && used.length > 1 && isDot(strokes[tail])) { written = '.'; used = used.slice(0, -1); }
+    else if (tail !== undefined && used.length > 1 && mark === '?' && isQuestionMark(strokes[tail], letters[letters.length - 1])) { written = '?'; used = used.slice(0, -1); }
     else if (tail !== undefined && strokes[tail].length > 1) {
       const last = strokes[tail][strokes[tail].length - 1], b = box([last]);
-      if (b.w < 16 && b.h < 16 && b.cx > 66 && b.cy > 66) { period = true; strokes[tail] = strokes[tail].slice(0, -1); }
+      if (b.w < 16 && b.h < 16 && b.cx > 66 && b.cy > 66) { written = '.'; strokes[tail] = strokes[tail].slice(0, -1); }
     }
     const strokesOf = (i) => modelStrokes(strokes[i].map((s) => s.map((p) => [p[0], p[1]])));
     const pairs = align(letters, used, strokesOf);
@@ -178,15 +209,13 @@
     pairs.forEach((a, i) => {
       const b = pairs[i + 1];
       if (a === null || b === null || b === undefined) return;
-      const wrapped = a % COLS === COLS - 1 && b === a + 1;
-      if (wrapped) return; // 줄 끝에서는 띄어 쓴 칸이 없어도 된다.
       if ((b - a > 1) !== spaceAfter.has(i)) { spaceErrors++; gaps.add(a); }
     });
-    return { letters, pairs, used, wrong, missing, gaps, spaceErrors, period, spaces: spaceAfter.size, strokesOf };
+    return { letters, pairs, used, wrong, missing, gaps, spaceErrors, mark, markOk: !mark || written === mark, spaces: spaceAfter.size, strokesOf };
   }
   function scores(c) {
-    const items = c.letters.length + c.spaces + 1;
-    const lost = c.wrong.size + c.missing + c.spaceErrors + (c.period ? 0 : 1);
+    const items = c.letters.length + c.spaces + (c.mark ? 1 : 0);
+    const lost = c.wrong.size + c.missing + c.spaceErrors + (c.markOk ? 0 : 1);
     const spell = Math.max(0, Math.round(100 * (1 - lost / items)));
     const judged = c.pairs.flatMap((cell, i) => (cell === null || c.wrong.has(cell) ? [] : [Core.judge(c.letters[i], c.strokesOf(cell)).score]));
     return { spell, hand: judged.length ? Math.round(judged.reduce((a, b) => a + b, 0) / judged.length) : 0 };
@@ -286,17 +315,18 @@
     $('count').textContent = `${at + 1}/${queue.length}`;
   }
   function showSentence(auto) {
-    cells = Array.from({ length: CELLS }, () => []); history = []; lastCell = -1; check = null; current = null;
+    cells = Array.from({ length: SLOTS }, () => []); history = []; lastCell = -1; check = null; current = null;
+    clearTimeout(slideTimer); first = 0;
     $('sheet').classList.remove('checking');
     $('answer').hidden = $('marks').hidden = true;
     $('writeTools').hidden = false; $('checkTools').hidden = true;
-    renderDots(); draw();
+    renderDots(); resize();
     if (auto) speak(0.85);
   }
   function renderMarks() {
     const s = scores(check), items = [[`맞춤법 ${s.spell}`, s.spell < 100], [`글씨 ${s.hand}`, false]];
     if (check.spaceErrors) items.push([`띄어쓰기 ${check.spaceErrors}곳`, true]);
-    if (!check.period) items.push(['마침표', true]);
+    if (!check.markOk) items.push([check.mark === '?' ? '물음표' : '마침표', true]);
     if (check.missing) items.push([`빠진 글자 ${check.missing}`, true]);
     $('marks').replaceChildren(...items.map(([text, warn]) => {
       const tag = document.createElement('span');
@@ -306,7 +336,7 @@
     $('marks').hidden = false;
   }
   function toggle(p) {
-    const index = Math.floor(p.y / cellPx) * COLS + Math.floor(p.x / cellPx);
+    const index = Math.floor(p.x / cellPx);
     if (!cells[index]?.length || !check.pairs.includes(index)) return;
     if (check.wrong.has(index)) check.wrong.delete(index); else check.wrong.add(index);
     renderMarks(); draw();
@@ -314,13 +344,15 @@
   function submit() {
     if (!cells.some((s) => s.length) || check) return;
     synth?.cancel();
+    clearTimeout(slideTimer);
     check = analyse(queue[at]);
     autoMark(check);
     $('sheet').classList.add('checking');
     $('answer').textContent = queue[at]; $('answer').hidden = false;
     $('writeTools').hidden = true; $('checkTools').hidden = false;
     $('hint').textContent = '답과 견주어 보고, 표시가 다르면 글자를 눌러 고쳐요.';
-    renderMarks(); draw();
+    first = 0;
+    renderMarks(); resize();
   }
   function count(el, value) {
     const start = performance.now();
@@ -337,26 +369,78 @@
     $('dots').replaceChildren(); $('count').textContent = '';
     count($('spellTotal'), mean('spell')); count($('handTotal'), mean('hand'));
     $('retry').hidden = !all.some((r) => r.spell < 100);
+    $('nextSet').hidden = set.index + 1 >= setsOf(set.unit).length;
   }
   function start(list) {
     queue = list; at = 0;
-    $('end').hidden = true; $('work').hidden = false;
-    showSentence(false); resize();
+    $('home').hidden = $('end').hidden = true; $('work').hidden = false;
+    showSentence(true);
   }
+
+  // ---- 단원 고르기 ----
+  function setsOf(unit) {
+    const out = [];
+    for (let i = 0; i < unit.items.length; i += SET_SIZE) out.push(unit.items.slice(i, i + SET_SIZE));
+    if (out.length > 1 && out[out.length - 1].length <= 3) { const tail = out.pop(); out[out.length - 1] = out[out.length - 1].concat(tail); }
+    return out;
+  }
+  function openSet(unit, index) {
+    const items = setsOf(unit)[index];
+    set = { unit, index, items }; results = new Map();
+    start(items.slice());
+  }
+  function button(text, className, onClick, label) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = className; b.textContent = text; b.onclick = onClick;
+    if (label) b.setAttribute('aria-label', label);
+    return b;
+  }
+  function renderHome() {
+    $('terms').replaceChildren(...TERMS.map((t) => {
+      const b = button(t.label, t === term ? 'term on' : 'term', () => { term = t; renderHome(); });
+      b.setAttribute('aria-pressed', String(t === term));
+      return b;
+    }));
+    $('units').replaceChildren(...term.units.map((unit) => {
+      const row = document.createElement('div'), name = document.createElement('span'), sets = document.createElement('span');
+      const title = unit.no ? `${unit.no}. ${unit.title}` : unit.title;
+      row.className = 'unit'; name.className = 'unit-name'; sets.className = 'sets';
+      name.textContent = title;
+      sets.replaceChildren(...setsOf(unit).map((_, i) => button(`${i + 1}회`, 'set', () => openSet(unit, i), `${title} ${i + 1}회`)));
+      row.append(name, sets);
+      return row;
+    }));
+  }
+  function showHome() {
+    synth?.cancel(); clearTimeout(slideTimer);
+    set = null; check = null;
+    $('sheet').classList.remove('checking', 'speaking');
+    $('work').hidden = $('end').hidden = true; $('home').hidden = false;
+    $('dots').replaceChildren(); $('count').textContent = '';
+    renderHome();
+  }
+  const leave = (e) => { if (set) { e.preventDefault(); showHome(); } };
+  window.addEventListener('sitebackrequest', leave);
+  $('back').addEventListener('click', leave);
 
   $('play').onclick = () => speak(0.85);
   $('undo').onclick = () => {
     const index = history.pop();
     if (index === undefined) return;
-    cells[index].pop(); lastCell = history.length ? history[history.length - 1] : -1; draw();
+    cells[index].pop(); lastCell = history.length ? history[history.length - 1] : -1;
+    if (index < first || index >= first + visible) slideTo(index - 2);
+    draw();
   };
-  $('clear').onclick = () => { cells = cells.map(() => []); history = []; lastCell = -1; draw(); };
+  $('clear').onclick = () => { cells = cells.map(() => []); history = []; lastCell = -1; slideTo(0); draw(); };
+  $('left').onclick = () => slideTo(first - Math.max(1, visible - 2));
+  $('right').onclick = () => slideTo(first + Math.max(1, visible - 2));
   $('done').onclick = submit;
   $('next').onclick = () => {
     results.set(queue[at], scores(check));
     if (++at < queue.length) showSentence(true); else showEnd();
   };
-  $('again').onclick = () => { results = new Map(); start(UNIT.sentences.slice()); };
+  $('again').onclick = () => { results = new Map(); start(set.items.slice()); };
+  $('nextSet').onclick = () => openSet(set.unit, set.index + 1);
   $('retry').onclick = () => {
     start([...results].filter(([, r]) => r.spell < 100).map(([text]) => text));
   };
@@ -372,5 +456,5 @@
     synth.addEventListener?.('voiceschanged', loadVoices);
     setTimeout(() => { if (!voices.length) noVoice(); }, 2000);
   } else noVoice();
-  start(UNIT.sentences.slice());
+  showHome();
 })();

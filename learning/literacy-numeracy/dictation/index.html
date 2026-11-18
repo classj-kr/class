@@ -6,18 +6,23 @@
   <meta name="theme-color" content="#f6f3ea">
   <meta name="robots" content="noindex">
   <title>받아쓰기</title>
-  <link rel="stylesheet" href="styles.css?v=20261118-3">
+  <link rel="stylesheet" href="styles.css?v=20261119-1">
 </head>
 <body>
   <main class="sheet" id="sheet">
     <nav class="bar" aria-label="페이지 기능">
-      <a class="back" href="/" aria-label="메인 화면으로 돌아가기">←</a>
+      <a class="back" id="back" href="/" aria-label="메인 화면으로 돌아가기">←</a>
       <div class="dots" id="dots" aria-hidden="true"></div>
       <strong class="count" id="count"></strong>
       <select class="voice" id="voice" aria-label="목소리 고르기" hidden></select>
     </nav>
 
-    <section class="work" id="work">
+    <section class="home" id="home" hidden>
+      <div class="terms" id="terms"></div>
+      <div class="units" id="units"></div>
+    </section>
+
+    <section class="work" id="work" hidden>
       <div class="listen">
         <button type="button" class="play" id="play" aria-label="문장 듣기">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7"/><path class="wave w2" d="M18.6 6a8.6 8.6 0 0 1 0 12"/></svg>
@@ -25,7 +30,11 @@
       </div>
       <p class="notice" id="notice" hidden></p>
 
-      <div class="pad-wrap"><canvas class="pad" id="pad" aria-label="받아쓰기 칸"></canvas></div>
+      <div class="pad-wrap"><div class="strip" id="strip"><canvas class="pad" id="pad" aria-label="받아쓰기 칸"></canvas></div></div>
+      <div class="strip-nav" id="stripNav" hidden>
+        <button type="button" class="nudge" id="left" aria-label="앞 칸 보기">‹</button>
+        <button type="button" class="nudge" id="right" aria-label="뒤 칸 보기">›</button>
+      </div>
 
       <div class="answer" id="answer" hidden></div>
       <div class="marks" id="marks" hidden></div>
@@ -48,7 +57,8 @@
       </div>
       <div class="tools">
         <button type="button" class="soft" id="again">처음부터</button>
-        <button type="button" class="main" id="retry">틀린 문장 다시</button>
+        <button type="button" class="soft" id="retry">틀린 문장 다시</button>
+        <button type="button" class="main" id="nextSet">다음 회</button>
       </div>
     </section>
   </main>
@@ -60,6 +70,7 @@
   <script src="../handwriting/font-engine.js?v=20261118-marks"></script>
   <script src="../handwriting/pen-reference.js?v=20261118-marks"></script>
   <script src="../handwriting/core.js?v=20261118-marks"></script>
-  <script src="app.js?v=20261118-5"></script>
+  <script src="data.js?v=20261119-1"></script>
+  <script src="app.js?v=20261119-1"></script>
 </body>
 </html>

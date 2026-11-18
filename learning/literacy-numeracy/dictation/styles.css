@@ -61,7 +61,11 @@ body, body .sheet button, body .sheet select, body .sheet p {
 .notice { margin: 0 0 10px; text-align: center; color: var(--red); font-size: 16px; }
 
 .pad-wrap { display: flex; justify-content: center; }
-.pad { display: block; background: var(--card); border-radius: 6px; touch-action: none; cursor: crosshair; }
+.strip { overflow: hidden; border-radius: 6px; background: var(--card); touch-action: none; }
+.pad { display: block; max-width: none; background: var(--card); touch-action: none; cursor: crosshair; transition: transform .22s ease-out; }
+.strip-nav { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
+.nudge { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: var(--card); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
+.nudge:disabled { opacity: .35; cursor: default; }
 .checking .pad { cursor: pointer; }
 
 .answer {
@@ -84,6 +88,22 @@ body, body .sheet button, body .sheet select, body .sheet p {
 .total span { font-size: 20px; color: var(--muted); font-weight: 700; }
 @keyframes pop { from { opacity: 0; transform: scale(.6); } }
 .end .tools { margin-top: 36px; }
+
+.home { padding-top: 14px; }
+.terms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.term { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font-size: 16px; font-weight: 700; cursor: pointer; }
+.term.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.unit { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+.unit-name { flex: 1 1 220px; font-size: 18px; font-weight: 700; }
+.sets { display: flex; flex-wrap: wrap; gap: 6px; }
+.set { min-width: 52px; min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); font-size: 16px; cursor: pointer; }
+.set:hover, .term:hover { border-color: var(--green); }
+
+@media (max-width: 560px) {
+  .bar { flex-wrap: wrap; }
+  .dots { order: 3; flex: 1 0 100%; }
+  .voice { flex: 1; }
+}
 
 [hidden] { display: none !important; }
 
