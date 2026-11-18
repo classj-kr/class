@@ -1888,14 +1888,14 @@ function createClassroomPlatform(options = {}) {
     try {
       const gRes = await pool.query(
         `SELECT s.id AS student_id, s.student_number::TEXT AS student_number, s.roster_name AS student_name,
-                s.academic_year, s.grade, s.class_number,
+                s.avatar_key, s.academic_year, s.grade, s.class_number,
                 sc.id AS school_id, sc.name AS school_name
          FROM school_students s
          JOIN classroom_schools sc ON sc.id = s.school_id
          WHERE LOWER(s.guardian1_email) = LOWER($1) OR LOWER(s.guardian2_email) = LOWER($1)
          UNION ALL
          SELECT s.id AS student_id, s.student_number::TEXT AS student_number, s.roster_name AS student_name,
-                c.academic_year, c.grade, c.class_number,
+                s.avatar_key, c.academic_year, c.grade, c.class_number,
                 sc.id AS school_id, sc.name AS school_name
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
@@ -1912,7 +1912,8 @@ function createClassroomPlatform(options = {}) {
         grade: r.grade,
         classNumber: r.class_number,
         studentNumber: r.student_number,
-        studentName: r.student_name
+        studentName: r.student_name,
+        avatarKey: normalizeAvatarKey(r.avatar_key)
       }));
     } catch (err) {
       console.error("guardianChildren error:", err.message);
@@ -3727,9 +3728,16 @@ function createClassroomPlatform(options = {}) {
         [user.id, unlinked.id]
       ).catch(() => {});
     }
+    // 아바타는 등록(학교)마다가 아니라 계정에 하나다.
+    const avatarResult = await pool.query(
+      "SELECT avatar_key FROM classroom_teacher_settings WHERE user_id = $1",
+      [user.id]
+    );
+    const avatarKey = normalizeAvatarKey(avatarResult.rows[0]?.avatar_key);
     const toProfile = (row) => ({
       id: String(row.id),
       name: row.teacher_name,
+      avatarKey,
       schoolId: String(row.school_id),
       schoolName: row.school_name,
       academicYear: row.academic_year,
