@@ -53,6 +53,9 @@ body, body .sheet button, body .sheet select, body .sheet p {
 @keyframes wave { 50% { opacity: .25; } }
 .play:disabled { background: #b9c2cc; box-shadow: none; cursor: default; }
 
+.picture { flex: none; width: 152px; height: 114px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); overflow: hidden; }
+.picture img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
 .soft, .main {
   min-height: 46px; padding: 0 18px; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer;
 }

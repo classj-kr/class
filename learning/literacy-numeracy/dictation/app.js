@@ -305,6 +305,15 @@
     c.pairs.forEach((cell, i) => { if (cell !== null && looksWrong(c.letters[i], c.strokesOf(cell))) c.wrong.add(cell); });
   }
 
+  // ---- 그림 ----
+  const pictureUrl = (text) => { const file = window.DICTATION_PICS?.[text]; return file ? `pics/${file}` : ''; };
+  function showPicture(text) {
+    const url = pictureUrl(text), next = pictureUrl(queue[at + 1] || '');
+    $('picture').hidden = !url;
+    if (url) { const img = new Image(); img.alt = ''; img.src = url; $('picture').replaceChildren(img); } else $('picture').replaceChildren();
+    if (next) new Image().src = next; // 다음 그림은 미리 받아 둔다.
+  }
+
   // ---- 진행 ----
   function renderDots() {
     $('dots').replaceChildren(...queue.map((text, i) => {
@@ -320,7 +329,7 @@
     $('sheet').classList.remove('checking');
     $('answer').hidden = $('marks').hidden = true;
     $('writeTools').hidden = false; $('checkTools').hidden = true;
-    renderDots(); resize();
+    renderDots(); showPicture(queue[at]); resize();
     if (auto) speak(0.85);
   }
   function renderMarks() {
