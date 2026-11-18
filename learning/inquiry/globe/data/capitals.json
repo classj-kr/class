@@ -1,5 +1,5 @@
 {
- "about": "수능 세계지리에서 다루는 나라의 수도. capital 이 정답 하나, others 는 수도 구실을 나눠 맡은 다른 도시(오답 보기로 쓰지 않음), bigCity 는 수도로 착각하기 쉬운 가장 큰 도시. country 는 globe/data/shapes.json 의 country:이름, countryEn 은 나라 영어 이름, flag 는 data/flags/<flag>.webp 와 같다.",
+ "about": "뉴스나 일상에서 들어 볼 만한 나라의 수도. capital 이 정답 하나, others 는 수도 구실을 나눠 맡은 다른 도시(오답 보기로 쓰지 않음), bigCity 는 수도로 착각하기 쉬운 가장 큰 도시. country 는 globe/data/shapes.json 의 country:이름, countryEn 은 나라 영어 이름, flag 는 data/flags/<flag>.webp 와 같다.",
  "continents": [
   {
    "id": "asia",
@@ -202,25 +202,6 @@
    "lon": 90.413
   },
   {
-   "iso": "LK",
-   "flag": "lk",
-   "country": "스리랑카",
-   "countryEn": "Sri Lanka",
-   "continent": "asia",
-   "capital": "스리자야와르데네푸라코테",
-   "lat": 6.89,
-   "lon": 79.918,
-   "others": [
-    {
-     "name": "콜롬보",
-     "role": "가장 큰 도시이자 옛 수도",
-     "lat": 6.927,
-     "lon": 79.862
-    }
-   ],
-   "note": "수도는 의회가 있는 스리자야와르데네푸라코테이고, 가장 큰 도시는 바로 옆의 콜롬보다."
-  },
-  {
    "iso": "NP",
    "flag": "np",
    "country": "네팔",
@@ -303,26 +284,6 @@
    "note": "나라 이름과 수도 이름이 같다."
   },
   {
-   "iso": "OM",
-   "flag": "om",
-   "country": "오만",
-   "countryEn": "Oman",
-   "continent": "asia",
-   "capital": "무스카트",
-   "lat": 23.588,
-   "lon": 58.383
-  },
-  {
-   "iso": "JO",
-   "flag": "jo",
-   "country": "요르단",
-   "countryEn": "Jordan",
-   "continent": "asia",
-   "capital": "암만",
-   "lat": 31.954,
-   "lon": 35.911
-  },
-  {
    "iso": "SY",
    "flag": "sy",
    "country": "시리아",
@@ -364,26 +325,6 @@
    "capital": "타슈켄트",
    "lat": 41.299,
    "lon": 69.24
-  },
-  {
-   "iso": "TM",
-   "flag": "tm",
-   "country": "투르크메니스탄",
-   "countryEn": "Turkmenistan",
-   "continent": "asia",
-   "capital": "아시가바트",
-   "lat": 37.96,
-   "lon": 58.326
-  },
-  {
-   "iso": "AZ",
-   "flag": "az",
-   "country": "아제르바이잔",
-   "countryEn": "Azerbaijan",
-   "continent": "asia",
-   "capital": "바쿠",
-   "lat": 40.409,
-   "lon": 49.867
   },
   {
    "iso": "GB",
@@ -556,16 +497,6 @@
    "lon": 12.568
   },
   {
-   "iso": "IS",
-   "flag": "is",
-   "country": "아이슬란드",
-   "countryEn": "Iceland",
-   "continent": "europe",
-   "capital": "레이캬비크",
-   "lat": 64.147,
-   "lon": -21.942
-  },
-  {
    "iso": "PL",
    "flag": "pl",
    "country": "폴란드",
@@ -594,16 +525,6 @@
    "capital": "부다페스트",
    "lat": 47.498,
    "lon": 19.04
-  },
-  {
-   "iso": "RO",
-   "flag": "ro",
-   "country": "루마니아",
-   "countryEn": "Romania",
-   "continent": "europe",
-   "capital": "부쿠레슈티",
-   "lat": 44.427,
-   "lon": 26.103
   },
   {
    "iso": "UA",
@@ -636,26 +557,6 @@
    "lon": 31.236
   },
   {
-   "iso": "LY",
-   "flag": "ly",
-   "country": "리비아",
-   "countryEn": "Libya",
-   "continent": "africa",
-   "capital": "트리폴리",
-   "lat": 32.887,
-   "lon": 13.191
-  },
-  {
-   "iso": "DZ",
-   "flag": "dz",
-   "country": "알제리",
-   "countryEn": "Algeria",
-   "continent": "africa",
-   "capital": "알제",
-   "lat": 36.754,
-   "lon": 3.059
-  },
-  {
    "iso": "MA",
    "flag": "ma",
    "country": "모로코",
@@ -665,36 +566,6 @@
    "lat": 34.021,
    "lon": -6.841,
    "bigCity": "카사블랑카"
-  },
-  {
-   "iso": "TN",
-   "flag": "tn",
-   "country": "튀니지",
-   "countryEn": "Tunisia",
-   "continent": "africa",
-   "capital": "튀니스",
-   "lat": 36.806,
-   "lon": 10.181
-  },
-  {
-   "iso": "SD",
-   "flag": "sd",
-   "country": "수단",
-   "countryEn": "Sudan",
-   "continent": "africa",
-   "capital": "하르툼",
-   "lat": 15.501,
-   "lon": 32.56
-  },
-  {
-   "iso": "SS",
-   "flag": "ss",
-   "country": "남수단",
-   "countryEn": "South Sudan",
-   "continent": "africa",
-   "capital": "주바",
-   "lat": 4.859,
-   "lon": 31.571
   },
   {
    "iso": "ET",
@@ -717,25 +588,6 @@
    "lon": 36.822
   },
   {
-   "iso": "TZ",
-   "flag": "tz",
-   "country": "탄자니아",
-   "countryEn": "Tanzania",
-   "continent": "africa",
-   "capital": "도도마",
-   "lat": -6.163,
-   "lon": 35.752,
-   "others": [
-    {
-     "name": "다르에스살람",
-     "role": "가장 큰 항구 도시이자 옛 수도",
-     "lat": -6.792,
-     "lon": 39.208
-    }
-   ],
-   "note": "수도는 도도마이고, 옛 수도 다르에스살람이 가장 큰 도시다."
-  },
-  {
    "iso": "NG",
    "flag": "ng",
    "country": "나이지리아",
@@ -746,125 +598,6 @@
    "lon": 7.399,
    "bigCity": "라고스",
    "note": "1991년에 라고스에서 아부자로 수도를 옮겼다."
-  },
-  {
-   "iso": "GH",
-   "flag": "gh",
-   "country": "가나",
-   "countryEn": "Ghana",
-   "continent": "africa",
-   "capital": "아크라",
-   "lat": 5.604,
-   "lon": -0.187
-  },
-  {
-   "iso": "CI",
-   "flag": "ci",
-   "country": "코트디부아르",
-   "countryEn": "Côte d'Ivoire",
-   "continent": "africa",
-   "capital": "야무수크로",
-   "lat": 6.827,
-   "lon": -5.289,
-   "others": [
-    {
-     "name": "아비장",
-     "role": "가장 큰 도시이자 옛 수도",
-     "lat": 5.36,
-     "lon": -4.008
-    }
-   ],
-   "note": "공식 수도는 야무수크로이고, 정부 기관 대부분과 경제 중심은 아비장에 있다."
-  },
-  {
-   "iso": "SN",
-   "flag": "sn",
-   "country": "세네갈",
-   "countryEn": "Senegal",
-   "continent": "africa",
-   "capital": "다카르",
-   "lat": 14.716,
-   "lon": -17.467
-  },
-  {
-   "iso": "ML",
-   "flag": "ml",
-   "country": "말리",
-   "countryEn": "Mali",
-   "continent": "africa",
-   "capital": "바마코",
-   "lat": 12.639,
-   "lon": -8.003
-  },
-  {
-   "iso": "NE",
-   "flag": "ne",
-   "country": "니제르",
-   "countryEn": "Niger",
-   "continent": "africa",
-   "capital": "니아메",
-   "lat": 13.512,
-   "lon": 2.113
-  },
-  {
-   "iso": "TD",
-   "flag": "td",
-   "country": "차드",
-   "countryEn": "Chad",
-   "continent": "africa",
-   "capital": "은자메나",
-   "lat": 12.134,
-   "lon": 15.056
-  },
-  {
-   "iso": "CD",
-   "flag": "cd",
-   "country": "콩고민주공화국",
-   "countryEn": "DR Congo",
-   "continent": "africa",
-   "capital": "킨샤사",
-   "lat": -4.441,
-   "lon": 15.266
-  },
-  {
-   "iso": "AO",
-   "flag": "ao",
-   "country": "앙골라",
-   "countryEn": "Angola",
-   "continent": "africa",
-   "capital": "루안다",
-   "lat": -8.839,
-   "lon": 13.289
-  },
-  {
-   "iso": "ZM",
-   "flag": "zm",
-   "country": "잠비아",
-   "countryEn": "Zambia",
-   "continent": "africa",
-   "capital": "루사카",
-   "lat": -15.387,
-   "lon": 28.323
-  },
-  {
-   "iso": "ZW",
-   "flag": "zw",
-   "country": "짐바브웨",
-   "countryEn": "Zimbabwe",
-   "continent": "africa",
-   "capital": "하라레",
-   "lat": -17.825,
-   "lon": 31.034
-  },
-  {
-   "iso": "MZ",
-   "flag": "mz",
-   "country": "모잠비크",
-   "countryEn": "Mozambique",
-   "continent": "africa",
-   "capital": "마푸투",
-   "lat": -25.969,
-   "lon": 32.573
   },
   {
    "iso": "ZA",
@@ -891,26 +624,6 @@
    ],
    "bigCity": "요하네스버그",
    "note": "정부는 프리토리아, 의회는 케이프타운, 대법원은 블룸폰테인에 있어 수도가 셋이다."
-  },
-  {
-   "iso": "BW",
-   "flag": "bw",
-   "country": "보츠와나",
-   "countryEn": "Botswana",
-   "continent": "africa",
-   "capital": "가보로네",
-   "lat": -24.628,
-   "lon": 25.923
-  },
-  {
-   "iso": "MG",
-   "flag": "mg",
-   "country": "마다가스카르",
-   "countryEn": "Madagascar",
-   "continent": "africa",
-   "capital": "안타나나리보",
-   "lat": -18.879,
-   "lon": 47.508
   },
   {
    "iso": "US",
@@ -985,17 +698,6 @@
    "lon": -74.072
   },
   {
-   "iso": "EC",
-   "flag": "ec",
-   "country": "에콰도르",
-   "countryEn": "Ecuador",
-   "continent": "americas",
-   "capital": "키토",
-   "lat": -0.18,
-   "lon": -78.468,
-   "bigCity": "과야킬"
-  },
-  {
    "iso": "PE",
    "flag": "pe",
    "country": "페루",
@@ -1004,25 +706,6 @@
    "capital": "리마",
    "lat": -12.046,
    "lon": -77.043
-  },
-  {
-   "iso": "BO",
-   "flag": "bo",
-   "country": "볼리비아",
-   "countryEn": "Bolivia",
-   "continent": "americas",
-   "capital": "수크레",
-   "lat": -19.036,
-   "lon": -65.259,
-   "others": [
-    {
-     "name": "라파스",
-     "role": "정부가 있는 행정 수도",
-     "lat": -16.49,
-     "lon": -68.119
-    }
-   ],
-   "note": "헌법에 적힌 수도는 수크레이고, 정부와 의회는 라파스에 있다."
   },
   {
    "iso": "BR",
@@ -1057,26 +740,6 @@
    "lon": -58.382
   },
   {
-   "iso": "PY",
-   "flag": "py",
-   "country": "파라과이",
-   "countryEn": "Paraguay",
-   "continent": "americas",
-   "capital": "아순시온",
-   "lat": -25.264,
-   "lon": -57.576
-  },
-  {
-   "iso": "UY",
-   "flag": "uy",
-   "country": "우루과이",
-   "countryEn": "Uruguay",
-   "continent": "americas",
-   "capital": "몬테비데오",
-   "lat": -34.901,
-   "lon": -56.165
-  },
-  {
    "iso": "AU",
    "flag": "au",
    "country": "오스트레일리아",
@@ -1098,26 +761,6 @@
    "lat": -41.287,
    "lon": 174.776,
    "bigCity": "오클랜드"
-  },
-  {
-   "iso": "PG",
-   "flag": "pg",
-   "country": "파푸아뉴기니",
-   "countryEn": "Papua New Guinea",
-   "continent": "oceania",
-   "capital": "포트모르즈비",
-   "lat": -9.443,
-   "lon": 147.18
-  },
-  {
-   "iso": "FJ",
-   "flag": "fj",
-   "country": "피지",
-   "countryEn": "Fiji",
-   "continent": "oceania",
-   "capital": "수바",
-   "lat": -18.124,
-   "lon": 178.45
   }
  ]
 }

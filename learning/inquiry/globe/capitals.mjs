@@ -1,6 +1,6 @@
 // 나라와 수도: 목록에서 익히기, 나라 보고 수도 고르기, 수도 보고 지도에서 나라 누르기.
 // 자료는 data/capitals.json(앱 코드와 떼어 둔 파일, 짝 잇기 게임도 같은 파일을 읽는다).
-const DATA_URL = new URL('./data/capitals.json?v=20261117-2', import.meta.url);
+const DATA_URL = new URL('./data/capitals.json?v=20261118-everyday', import.meta.url);
 const FLAG = (code) => new URL(`./data/flags/${code}.webp?v=2`, import.meta.url).href;
 const NONE = { type: 'FeatureCollection', features: [] };
 // 지도에서 찾기를 시작할 때 화면에 들어오게 할 대륙의 범위(서경·남위는 음수). 전체는 지구 전체.
@@ -226,7 +226,10 @@ export function createCapitals(api) {
   // 보기: 같은 대륙 수도 셋(가까운 나라부터 섞어서), 수도로 착각하기 쉬운 가장 큰 도시가 있으면 그것 하나.
   // 수도 구실을 나눠 맡은 도시(others)는 정답이기도 해서 보기에 넣지 않는다.
   function distractors(c) {
-    const pool = data.countries.filter((x) => x !== c && x.continent === c.continent);
+    const others = data.countries.filter((x) => x !== c);
+    const same = others.filter((x) => x.continent === c.continent);
+    // 나라가 적은 대륙(오세아니아)은 다른 대륙 수도로 보기를 채운다.
+    const pool = same.length >= 5 ? same : others;
     const near = pool.sort((a, b) => dist(a, c) - dist(b, c)).slice(0, 8);
     const picks = shuffle(near).slice(0, c.bigCity ? 2 : 3).map((x) => x.capital);
     if (c.bigCity) picks.push(c.bigCity);

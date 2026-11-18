@@ -40,7 +40,7 @@
     { key: 'capitals', label: '나라와 수도', a: 'ko', b: 'ko' },
     { key: 'history', label: '한국사', a: 'ko', b: 'ko' }
   ];
-  const DATA_VERSION = '20261118-avoid-synonyms';
+  const DATA_VERSION = '20261118-everyday';
   const bank = {};
   await Promise.all(SUBJECTS.map(async subject => {
     try {
