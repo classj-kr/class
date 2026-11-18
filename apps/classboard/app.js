@@ -55,6 +55,7 @@ let loadedNotices = [];
 // 'student' | 'guardian' | 'teacher'. 무엇을 누를 수 있는지가 여기서 갈린다.
 let viewerRole = 'student';
 let showClassroomCard = false;
+let teacherBoards = [];
 
 // Utility: Autolink URL conversion
 function linkify(text) {
@@ -139,13 +140,28 @@ async function initApp() {
 }
 
 // No automatic selection: even one group gets its own card on the first page.
+// 선생님이 내 학급·그룹에 공개한 게시판. 못 받아도 알림장은 그대로 쓸 수 있다.
+async function fetchTeacherBoards() {
+    if (!showClassroomCard) return [];
+    try {
+        const res = await fetch(`${API_BASE}/student/class-dashboard/boards`, { cache: 'no-store' });
+        return res.ok ? (await res.json()).boards || [] : teacherBoards;
+    } catch (_) {
+        return teacherBoards;
+    }
+}
+
 async function loadBoards() {
     const request = ++boardRequest;
-    const res = await fetch(`${API_BASE}/classboard/boards${withView(new URLSearchParams())}`, { cache: 'no-store' });
+    const [res, nextTeacherBoards] = await Promise.all([
+        fetch(`${API_BASE}/classboard/boards${withView(new URLSearchParams())}`, { cache: 'no-store' }),
+        fetchTeacherBoards()
+    ]);
     if (!res.ok) throw new Error('그룹을 불러오지 못했습니다.');
     const data = await res.json();
     if (request !== boardRequest) return;
     boards = data.boards || [];
+    teacherBoards = nextTeacherBoards;
     currentUser.avatar = data.viewerAvatar || '';
     renderAvatar(profileAvatarEl, currentUser.avatar);
     if (activeBoardKey && !boards.some(b => b.key === activeBoardKey)) activeBoardKey = null;
@@ -153,11 +169,11 @@ async function loadBoards() {
 
 async function refreshBoards() {
     try {
-        const before = JSON.stringify(boards);
+        const before = JSON.stringify([boards, teacherBoards]);
         const previousBoard = activeBoardKey;
         await loadBoards();
         if (previousBoard && !activeBoardKey) showBoardView();
-        else if (!activeBoardKey && before !== JSON.stringify(boards)) renderGroupList(false);
+        else if (!activeBoardKey && before !== JSON.stringify([boards, teacherBoards])) renderGroupList(false);
     } catch (error) { console.error('그룹 새로고침 실패', error); }
 }
 
@@ -211,11 +227,25 @@ function linkCard({ index, key, href, iconName, type, title }) {
 
 function studentLinkCards() {
     if (!showClassroomCard) return [];
-    const first = boards.length;
-    return [
-        linkCard({ index: first, key: 'classroom', href: '/classtools/dashboard?view=student', iconName: 'dashboard', type: '학급', title: '교실' }),
-        linkCard({ index: first + 1, key: 'learning-boards', href: '/boards/?mode=student', iconName: 'sticky_note_2', type: '학급', title: '게시판' })
-    ];
+    const cards = [linkCard({ index: boards.length, key: 'classroom', href: '/classtools/dashboard?view=student', iconName: 'dashboard', type: '학급', title: '교실' })];
+    if (teacherBoards.length) {
+        const list = document.createElement('nav');
+        list.className = 'teacher-board-list';
+        list.setAttribute('aria-label', '게시판');
+        list.append(...teacherBoards.map(board => {
+            const card = document.createElement('a');
+            card.className = 'teacher-board-card';
+            card.dataset.boardKey = `teacher-board:${board.href}`;
+            card.href = board.href;
+            card.title = board.title;
+            const name = document.createElement('span');
+            name.textContent = board.title;
+            card.append(name);
+            return card;
+        }));
+        cards.push(list);
+    }
+    return cards;
 }
 
 function renderGroupList(animate = true) {
@@ -262,7 +292,7 @@ function renderGroupList(animate = true) {
     }));
     groupListSection.append(...studentLinkCards());
     if (!groupListSection.children.length) groupListSection.innerHTML = '<div class="loader">소속된 그룹이 없습니다.</div>';
-    if (focusedKey) [...groupListSection.children].find(el => el.dataset.boardKey === focusedKey)?.focus({ preventScroll: true });
+    if (focusedKey) [...groupListSection.querySelectorAll('[data-board-key]')].find(el => el.dataset.boardKey === focusedKey)?.focus({ preventScroll: true });
 }
 
 function navigateBoard(key, push = true) {

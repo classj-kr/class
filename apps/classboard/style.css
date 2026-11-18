@@ -555,6 +555,11 @@ body {
 .group-card.tone-3 { --card-dark: #534834; --card-light: #796b4e; }
 .group-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px #153a3024; }
 .group-card:focus-visible { outline: 3px solid #186a57; outline-offset: 5px; }
+.teacher-board-list { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.teacher-board-card { display: flex; align-items: center; min-width: 0; min-height: 54px; padding: 9px 14px; border: 1px solid #cdded6; border-radius: 12px; background: #ffffffd9; color: #274438; font-size: .95rem; font-weight: 700; line-height: 1.35; text-decoration: none; box-shadow: 0 3px 12px #153a3012; transition: transform .15s ease, box-shadow .15s ease; }
+.teacher-board-card span { display: -webkit-box; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.teacher-board-card:hover { transform: translateY(-2px); box-shadow: 0 7px 18px #153a301f; }
+.teacher-board-card:focus-visible { outline: 3px solid #186a57; outline-offset: 3px; }
 .group-card .group-icon { position: absolute; top: 19px; left: 22px; font-size: 19px; opacity: .8; }
 .group-type { padding-left: 26px; color: #e1ece6; font-size: .8rem; font-weight: 600; }
 .group-name { display: block; margin-top: 10px; padding-right: 14px; font-size: 1.25rem; line-height: 1.35; overflow-wrap: anywhere; letter-spacing: -.03em; }

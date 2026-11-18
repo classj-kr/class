@@ -203,27 +203,6 @@
   }
   handleForm('joinForm', () => joinBoard());
 
-  // 선생님이 내 학급·그룹에 공개한 게시판. 누르면 방번호 없이 들어간다.
-  async function studentHome() {
-    show('teacherHome');
-    $('newBoard').closest('.section-head').hidden = true;
-    $('boardList').replaceChildren();
-    try {
-      const res = await fetch('/api/student/class-dashboard/boards', { credentials: 'same-origin', cache: 'no-store' });
-      const result = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(result.message || '게시판을 불러오지 못했어요.');
-      const boards = result.boards || [];
-      if (!boards.length) $('boardList').append(element('p', '게시판 없음', 'empty'));
-      boards.forEach(b => {
-        const tile = button('', () => { location.href = b.href; }, 'board-tile');
-        tile.append(element('h2', b.title));
-        $('boardList').append(tile);
-      });
-    } catch (error) {
-      $('teacherError').hidden = false;
-      $('teacherError').replaceChildren(element('p', error.message));
-    }
-  }
   async function teacherHome() {
     show('teacherHome');
     try {
@@ -660,7 +639,6 @@
       catch (error) { $('joinError').textContent = error.message; }
     } else if (boardId) await refresh(true);
     else if (params.get('mode') === 'teacher') await teacherHome();
-    else if (params.get('mode') === 'student') await studentHome();
     else {
       try {
         const recognized = await prepareEntry();
