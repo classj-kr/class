@@ -84,6 +84,17 @@ const { initializeFinisherIdentity, listFinisherRecords, saveFinisherRecord } = 
     assert.equal(hsong.length, 1, '한송이는 무조건 1명만 표시된다');
     assert.equal(hsong[0].rank, 6, '더 높은 최고 기록(원판 6개)만 남는다');
 
+    // 학급 순서, 학급 안에서는 이름이 아니라 명단 번호 순서(2번이 10번보다 앞). 번호를 못 찾으면 그 반 맨 뒤.
+    await db.exec(`INSERT INTO school_students(user_id,school_id,academic_year,grade,class_number,student_number,roster_name) VALUES
+      (101,1,2026,4,2,'10','가나다'),(102,1,2026,4,2,'2','하하하'),(103,1,2026,4,2,'51','나다라'),
+      (104,1,2026,4,1,'30','파파파'),(105,1,2026,4,2,'7','바뀐이름');`);
+    for (const [userId, name, grade, classNumber] of [[101,'가나다',4,2],[102,'하하하',4,2],[103,'나다라',4,2],[104,'파파파',4,1],[105,'예전이름',4,2],[106,'명단없음',4,2]]) {
+      await saveFinisherRecord(pool, { date:'2026-11-18', gameId:'sphinx', name, userId:String(userId), grade, classNumber, schoolId:'1', difficulty:'고급', rank:1, time:'10:00' });
+    }
+    assert.deepEqual((await listFinisherRecords(pool, '2026-11-18', 'sphinx', '1')).map(r => r.name),
+      ['파파파','하하하','예전이름','가나다','나다라','명단없음'], '학급, 그다음 번호 순서');
+    assert.ok((await listFinisherRecords(pool, '2026-11-18', 'sphinx', '1')).every(r => !('studentNumber' in r) && !('user_id' in r)), '번호와 계정은 화면으로 보내지 않는다');
+
     const target = { innerHTML:'' }, window = {};
     vm.runInNewContext(fs.readFileSync('assets/network/finisher-board.js','utf8'), {
       window, document:{currentScript:null,querySelector:()=>true,getElementById:()=>target}
@@ -94,6 +105,8 @@ const { initializeFinisherIdentity, listFinisherRecords, saveFinisherRecord } = 
     assert.match(target.innerHTML,/2026\. 3\. 3\./);
     assert.match(target.innerHTML,/>학교관리자</);
     assert.ok(!target.innerHTML.includes('<script>'));
+    board.render('list',[{name:'하하',grade:4,classNumber:2},{name:'가가',grade:4,classNumber:2}]);
+    assert.ok(target.innerHTML.indexOf('하하') < target.innerHTML.indexOf('가가'), '화면이 서버 순서를 다시 뒤섞지 않는다');
     console.log('finisher-records: migration, academic year accumulation, 1-per-player best score, class ordering, and escaped labels pass');
   } finally { await db.close(); }
 })().catch(error => { console.error(error); process.exitCode=1; });

@@ -7,8 +7,8 @@
         stylesheet.rel = "stylesheet";
         stylesheet.dataset.classFinisherStyle = "true";
         stylesheet.href = currentScript
-            ? new URL("finisher-board.css?v=20261119-panel", currentScript.src).href
-            : "../../assets/network/finisher-board.css?v=20261119-panel";
+            ? new URL("finisher-board.css?v=20261119-order", currentScript.src).href
+            : "../../assets/network/finisher-board.css?v=20261119-order";
         document.head.appendChild(stylesheet);
     }
 
@@ -47,13 +47,8 @@
                 bestByStudent.set(key, record);
             }
         }
-        return Array.from(bestByStudent.values()).sort((a, b) => {
-            const ga = Number(a.grade) || 99, gb = Number(b.grade) || 99;
-            if (ga !== gb) return ga - gb;
-            const ca = Number(a.classNumber) || 99, cb = Number(b.classNumber) || 99;
-            if (ca !== cb) return ca - cb;
-            return String(a.name || "").localeCompare(String(b.name || ""), "ko");
-        });
+        // 순서는 서버가 정한다(학급, 학급 안에서는 번호).
+        return Array.from(bestByStudent.values());
     }
 
     function recordsHtml(records) {

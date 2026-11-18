@@ -14,6 +14,17 @@ const ROSTER_SQL = `
   JOIN classroom_schools sc ON sc.id = c.school_id
   WHERE s.roster_active = TRUE AND sc.enabled = TRUE`;
 
+// 명단의 번호를 찾을 때 쓴다. 같은 학생이 두 명단에 있어도 계정으로 찾을 수 있게 줄을 합치지 않는다.
+const ROSTER_NUMBER_SQL = `
+  SELECT s.school_id, s.academic_year, s.grade, s.class_number,
+         s.student_number::text AS student_number, s.roster_name, s.user_id
+  FROM school_students s
+  UNION ALL
+  SELECT c.school_id, c.academic_year, c.grade, c.class_number,
+         s.student_number::text, s.roster_name, s.user_id
+  FROM classroom_students s JOIN classroom_classes c ON c.id = s.class_id
+  WHERE s.roster_active = TRUE`;
+
 async function initializeFinisherIdentity(pool) {
   const client = await pool.connect();
   try {
@@ -50,10 +61,10 @@ async function initializeFinisherIdentity(pool) {
 }
 
 // 학년도(3월 1일 ~ 익년 2월 말일) 기준 완주자 명단: 보는 사람과 같은 학교 기록만 보이며,
-// 개인별 최고 기록(rank 기준 최댓값) 1건만 선별하여 학급 오름차순(1-1, 1-2, ... 6-2)으로 정렬한다.
+// 개인별 최고 기록(rank 기준 최댓값) 1건만 선별하여 학급 순서(1-1, 1-2, ... 6-2), 학급 안에서는 번호 순서로 정렬한다.
 async function listFinisherRecords(pool, date, gameId, schoolId = null) {
   const year = Number(date.slice(0, 4)) - (Number(date.slice(5, 7)) < 3 ? 1 : 0);
-  const result = await pool.query(`WITH roster AS (${ROSTER_SQL}), unique_names AS (
+  const result = await pool.query(`WITH roster AS (${ROSTER_SQL}), roster_numbers AS (${ROSTER_NUMBER_SQL}), unique_names AS (
       SELECT roster_name, MIN(grade) AS grade, MIN(class_number) AS class_number, MIN(school_id) AS school_id
       FROM roster WHERE academic_year = $2::int GROUP BY roster_name HAVING COUNT(*) = 1
     ),
@@ -61,6 +72,8 @@ async function listFinisherRecords(pool, date, gameId, schoolId = null) {
       SELECT r.player_name AS name, r.difficulty, r.rank, r.finished_time AS time,
         TO_CHAR(r.record_date, 'YYYY-MM-DD') AS date,
         r.record_date,
+        CASE WHEN r.player_key ~ '^user:[0-9]+$' THEN SUBSTRING(r.player_key FROM 6)::bigint END AS user_id,
+        CASE WHEN r.player_key LIKE 'legacy:%' THEN COALESCE(r.school_id, u.school_id) ELSE r.school_id END AS school_id,
         CASE WHEN r.player_key LIKE 'legacy:%' THEN u.grade ELSE r.grade END AS grade,
         CASE WHEN r.player_key LIKE 'legacy:%' THEN u.class_number ELSE r.class_number END AS "classNumber",
         ROW_NUMBER() OVER (
@@ -76,16 +89,21 @@ async function listFinisherRecords(pool, date, gameId, schoolId = null) {
         AND r.game_id = $1
         AND (CASE WHEN r.player_key LIKE 'legacy:%' THEN COALESCE(r.school_id, u.school_id) ELSE r.school_id END) IS NOT DISTINCT FROM $3::bigint
     )
-    SELECT name, difficulty, rank, time, date, grade, "classNumber"
-    FROM ranked_records
-    WHERE rn = 1
-    ORDER BY
-      CASE WHEN grade IS NULL THEN 1 ELSE 0 END,
-      grade ASC,
-      CASE WHEN "classNumber" IS NULL THEN 1 ELSE 0 END,
-      "classNumber" ASC,
-      name ASC,
-      date ASC`, [gameId, year, schoolId]);
+    SELECT b.name, b.difficulty, b.rank, b.time, b.date, b.grade, b."classNumber"
+    FROM ranked_records b
+    LEFT JOIN LATERAL (
+      SELECT n.student_number::int AS student_number
+      FROM roster_numbers n
+      WHERE n.academic_year = $2::int AND n.grade = b.grade AND n.class_number = b."classNumber"
+        AND n.student_number ~ '^[0-9]{1,9}$'
+        AND (b.school_id IS NULL OR n.school_id = b.school_id)
+        AND (n.user_id = b.user_id OR n.roster_name = b.name)
+      ORDER BY (n.user_id IS NOT DISTINCT FROM b.user_id) DESC, n.student_number::int
+      LIMIT 1
+    ) number_row ON TRUE
+    WHERE b.rn = 1
+    ORDER BY b.grade ASC NULLS LAST, b."classNumber" ASC NULLS LAST,
+      number_row.student_number ASC NULLS LAST, b.name ASC, b.date ASC`, [gameId, year, schoolId]);
   return result.rows.map(row => ({ ...row, rank: Number(row.rank) }));
 }
 
