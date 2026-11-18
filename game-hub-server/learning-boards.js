@@ -51,6 +51,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '021-learning-board-comments.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '022-stacking-boards.sql'), 'utf8'));
       await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '023-learning-board-images.sql'), 'utf8'));
+      await db.query(fs.readFileSync(path.join(__dirname, 'migrations', '028-learning-board-audiences.sql'), 'utf8'));
       // 게시판 배경: 기본(default) 또는 별이 반짝이는 우주(space).
       await db.query("ALTER TABLE learning_boards ADD COLUMN IF NOT EXISTS theme TEXT NOT NULL DEFAULT 'default'");
       await db.query('ALTER TABLE learning_boards DROP CONSTRAINT IF EXISTS learning_boards_theme_check');
@@ -111,6 +112,19 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       return result;
     } catch (error) { await db.query('ROLLBACK'); throw error; }
     finally { db.release(); }
+  }
+  // 공개 대상은 게시판을 만든 선생님의 학급·그룹 카드 중에서만 고른다.
+  async function saveAudience(db, boardId, ownerId, value) {
+    if (value === undefined) return;
+    if (!Array.isArray(value) || value.length > 200) fail(400, 'INVALID_AUDIENCE', '공개 대상을 다시 골라 주세요.');
+    const ids = [...new Set(value.map(String))];
+    if (ids.some(groupId => !/^\d{1,18}$/.test(groupId))) fail(400, 'INVALID_AUDIENCE', '공개 대상을 다시 골라 주세요.');
+    if (ids.length) {
+      const owned = await db.query('SELECT id FROM teacher_groups WHERE teacher_user_id=$1 AND id = ANY($2::BIGINT[])', [ownerId, ids]);
+      if (owned.rows.length !== ids.length) fail(400, 'INVALID_AUDIENCE', '공개 대상을 다시 골라 주세요.');
+    }
+    await db.query('DELETE FROM learning_board_audiences WHERE board_id=$1', [boardId]);
+    if (ids.length) await db.query('INSERT INTO learning_board_audiences(board_id, group_id) SELECT $1, UNNEST($2::BIGINT[])', [boardId, ids]);
   }
   const publicBoard = b => ({ id: b.id, code: b.code, title: b.title, description: b.description, layout: b.layout,
     columns: b.columns, slots: b.slots, locked: b.locked, closed: b.closed, hideNames: b.hide_names, likesEnabled: b.likes_enabled, commentsEnabled: b.comments_enabled, theme: b.theme || 'default' });
@@ -201,6 +215,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         [id(), user.id, code, title, description, body.layout, JSON.stringify(labels), slots, theme])).rows[0];
       }
       if (!created) fail(503, 'CODE_BUSY', '방번호를 만들지 못했어요. 다시 시도해 주세요.');
+      await saveAudience(db, created.id, user.id, body.audience);
       await db.query('COMMIT');
       res.status(201).json({ board: publicBoard(created) });
     } catch (error) { await db.query('ROLLBACK'); throw error; }
@@ -256,7 +271,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
         const token = crypto.randomBytes(32).toString('hex');
         const added = await db.query(`INSERT INTO learning_board_members(id, board_id, number, name, token_hash, user_id)
           VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(board_id, number) DO NOTHING RETURNING id`, [id(), b.id, number, name, hash(token), identity && user ? user.id : null]);
-        if (!added.rowCount) fail(409, 'NUMBER_TAKEN', '이미 참여한 번호예요. 원래 기기로 접속하거나 선생님께 참여 초기화를 요청해 주세요.');
+        if (!added.rowCount) fail(409, 'NUMBER_TAKEN', '이미 참여한 번호예요. 번호를 확인해 주세요.');
         // The cookie covers /join as well, allowing re-entry from the same browser.
         res.cookie(`board_${b.id}`, token, { httpOnly: true, sameSite: 'strict', secure: req.secure, path: '/api/boards', maxAge: 1000 * 60 * 60 * 24 * 180 });
       }
@@ -301,8 +316,11 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
           ...(b.comments_enabled && p.kind === 'note' && !p.hidden ? { commentCount: comments.find(c => c.post_id === p.id)?.count ?? 0 } : {}),
           ...(own ? { answer: p.answer, explanation: p.explanation, feedback: p.feedback, decoys: p.title_decoys || [] } : {}) };
       });
+      const audience = who.teacher
+        ? (await db.query('SELECT group_id::TEXT AS id FROM learning_board_audiences WHERE board_id=$1 ORDER BY group_id', [b.id])).rows.map(row => row.id)
+        : undefined;
       await db.query('COMMIT');
-      res.json({ board: publicBoard(b), me: { teacher: who.teacher, number: who.number, name: who.name }, posts: result, sets: who.teacher ? sets : [], live,
+      res.json({ board: publicBoard(b), audience, me: { teacher: who.teacher, number: who.number, name: who.name }, posts: result, sets: who.teacher ? sets : [], live,
         members: members.map(m => ({ number: m.number, name: b.hide_names && !who.teacher ? '' : m.name,
           posted: posts.some(p => p.member_id === m.id && !p.hidden) })) });
     } catch (error) { await db.query('ROLLBACK'); throw error; }
@@ -320,6 +338,7 @@ function createLearningBoards({ pool, sessionUser, requireTeacher, requireDataba
       await db.query(`UPDATE learning_boards SET title=$2, description=$3, locked=$4, closed=$5, hide_names=$6, likes_enabled=$7, comments_enabled=$8, theme=$9 WHERE id=$1`,
         [b.id, body.title === undefined ? b.title : text(body.title, 80, true), body.description === undefined ? b.description : text(body.description, 1000),
           values.locked, values.closed, values.hide_names, values.likes_enabled, values.comments_enabled, body.theme ?? b.theme ?? 'default']);
+      await saveAudience(db, b.id, b.owner_id, body.audience);
     }, true);
     res.json({ ok: true });
   }));

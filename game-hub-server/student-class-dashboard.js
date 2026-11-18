@@ -4,9 +4,11 @@
 // 전자 우편·보호자·결석 사유 같은 것은 응답에 넣지 않는다.
 const express = require("express");
 const { NAME_SOURCE_PENDING } = require("./roster-names");
+const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 
 const SCHOOL_DAYS = ["월", "화", "수", "목", "금"];
 const PREP_ITEMS = ["preps-mon", "preps-tue", "preps-wed", "preps-thu", "preps-fri"];
+const STACKING_BOARD_PATH = "/learning/literacy-numeracy/math-tools/stacking-cubes/coop/";
 
 function koreanMonthDay(now = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", month: "2-digit", day: "2-digit" }).formatToParts(now);
@@ -40,7 +42,7 @@ function cleanPreps(rows) {
   return preps;
 }
 
-function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpError, asyncRoute, studentMembership, ensurePublicHolidays }) {
+function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpError, asyncRoute, studentMembership, ensurePublicHolidays, groupMemberSql }) {
   const router = express.Router();
 
   async function studentClass(req) {
@@ -59,7 +61,7 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
       place
     );
     if (!rows[0]) throw new HttpError(403, "STUDENT_CLASS_REQUIRED", "학생 명단에 등록된 계정만 볼 수 있습니다.");
-    return { member, place, row: rows[0], classId: rows[0].class_id == null ? null : String(rows[0].class_id) };
+    return { user, member, place, row: rows[0], classId: rows[0].class_id == null ? null : String(rows[0].class_id) };
   }
 
   // 지금 담임으로 등록된 사람. 등록이 없으면 학급을 맡아 둔 계정을 쓴다.
@@ -138,6 +140,45 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
       timetable: cleanTimetable(settings.rows[0]?.timetable),
       cardOrder: Array.isArray(cardOrder) ? cardOrder.filter(id => /^widget-[a-z-]+$/.test(String(id))) : [],
       preps: cleanPreps(preps.rows)
+    });
+  }));
+
+  // 선생님이 공개 대상으로 고른 학급·그룹에 이 학생이 들어 있는 게시판.
+  // 새 입장이 막힌 게시판은 이미 참여한 학생에게만 보인다.
+  router.get("/boards", asyncRoute(async (req, res) => {
+    const { user, place } = await studentClass(req);
+    const { rows } = await pool.query(
+      `SELECT b.code, b.title, b.layout
+       FROM learning_boards b
+       WHERE EXISTS (
+           SELECT 1
+           FROM learning_board_audiences a
+           JOIN teacher_groups g ON g.id = a.group_id
+           WHERE a.board_id = b.id AND g.school_id = $1::BIGINT AND g.academic_year = $2::INTEGER
+             AND (${GROUP_VISIBLE_SQL})
+             AND (
+               (g.group_type = 'homeroom' AND g.grade = $3::INTEGER AND g.class_number = $4::INTEGER)
+               OR EXISTS (
+                 SELECT 1 FROM school_students ss
+                 WHERE ss.school_id = g.school_id AND ss.academic_year = g.academic_year
+                   AND (ss.user_id = $5::BIGINT OR (ss.student_email IS NOT NULL
+                     AND LOWER(ss.student_email) = (SELECT LOWER(email) FROM classroom_users WHERE id = $5::BIGINT)))
+                   AND (${groupMemberSql()})
+               )
+             )
+         )
+         AND ((NOT b.locked AND NOT b.closed) OR EXISTS (
+           SELECT 1 FROM learning_board_members m WHERE m.board_id = b.id AND m.user_id = $5::BIGINT
+         ))
+       ORDER BY b.created_at DESC, b.id`,
+      [...place, user.id]
+    );
+    res.set("Cache-Control", "no-store");
+    res.json({
+      boards: rows.map(row => ({
+        title: row.title,
+        href: (row.layout === "stacking" ? STACKING_BOARD_PATH : "/boards/") + "?code=" + encodeURIComponent(row.code)
+      }))
     });
   }));
 

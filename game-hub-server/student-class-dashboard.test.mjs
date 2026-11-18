@@ -6,6 +6,8 @@ import { PGlite } from '@electric-sql/pglite';
 const require = createRequire(import.meta.url);
 const express = require('express');
 const { createStudentClassDashboard } = require('./student-class-dashboard.js');
+const GROUP_MEMBER_SQL = `(g.group_type = 'homeroom' AND g.grade = ss.grade AND g.class_number = ss.class_number)
+  OR EXISTS (SELECT 1 FROM teacher_group_students gs WHERE gs.group_id = g.id AND gs.student_id = ss.id)`;
 
 class HttpError extends Error {
   constructor(status, code, message) { super(message); this.status = status; this.code = code; }
@@ -23,7 +25,7 @@ async function withApi(run) {
     CREATE TABLE classroom_users (id BIGINT PRIMARY KEY, email TEXT);
     CREATE TABLE classroom_classes (id BIGINT PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, teacher_user_id BIGINT);
     CREATE TABLE classroom_teachers (id BIGSERIAL PRIMARY KEY, school_id BIGINT, user_id BIGINT, google_email TEXT, academic_year INTEGER, grade INTEGER, class_number INTEGER, active BOOLEAN);
-    CREATE TABLE school_students (id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, name_source TEXT, student_email TEXT, guardian1_email TEXT);
+    CREATE TABLE school_students (id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, name_source TEXT, student_email TEXT, guardian1_email TEXT, user_id BIGINT, custom_fields JSONB DEFAULT '{}');
     CREATE TABLE classroom_students (id BIGSERIAL PRIMARY KEY, class_id BIGINT, student_number TEXT, roster_name TEXT, name_source TEXT, birthday_mmdd TEXT, birthday_visible BOOLEAN, roster_active BOOLEAN DEFAULT TRUE, student_email TEXT);
     CREATE TABLE classroom_teacher_dashboard_settings (user_id BIGINT PRIMARY KEY, timetable JSONB, card_order JSONB);
     CREATE TABLE user_storage (user_id BIGINT, app TEXT, item TEXT, value JSONB);
@@ -34,8 +36,14 @@ async function withApi(run) {
     CREATE TABLE school_public_holidays_cache (school_id BIGINT, year INTEGER, holiday_date DATE, name TEXT, excluded BOOLEAN DEFAULT FALSE);
     CREATE TABLE school_vacation_settings (school_id BIGINT, academic_year INTEGER, is_integrated BOOLEAN, summer_start DATE, summer_end DATE, winter_start DATE, winter_end DATE, spring_start DATE, spring_end DATE, entrance_ceremony_date DATE, graduation_ceremony_date DATE);
 
+    CREATE TABLE learning_boards (id TEXT PRIMARY KEY, owner_id BIGINT, code TEXT, title TEXT, layout TEXT, locked BOOLEAN DEFAULT FALSE, closed BOOLEAN DEFAULT FALSE, created_at TIMESTAMPTZ);
+    CREATE TABLE learning_board_members (id TEXT PRIMARY KEY, board_id TEXT, user_id BIGINT);
+    CREATE TABLE learning_board_audiences (board_id TEXT, group_id BIGINT);
+    CREATE TABLE teacher_groups (id BIGINT PRIMARY KEY, school_id BIGINT, teacher_user_id BIGINT, academic_year INTEGER, group_name TEXT, group_type TEXT, grade INTEGER, class_number INTEGER, auto_homeroom BOOLEAN DEFAULT FALSE);
+    CREATE TABLE teacher_group_students (group_id BIGINT, student_id BIGINT);
+
     INSERT INTO classroom_schools VALUES (1, '시험학교', TRUE, 'S1', 'B10', '시험시');
-    INSERT INTO classroom_users VALUES (50, 'homeroom@example.invalid'), (51, 'other@example.invalid');
+    INSERT INTO classroom_users VALUES (1, 'a@example.invalid'), (50, 'homeroom@example.invalid'), (51, 'other@example.invalid');
     INSERT INTO classroom_classes VALUES (100, 1, 2026, 6, 2, 51), (101, 1, 2026, 6, 3, 51);
     INSERT INTO classroom_teachers (school_id, user_id, google_email, academic_year, grade, class_number, active)
       VALUES (1, NULL, 'homeroom@example.invalid', 2026, 6, 2, TRUE), (1, 51, 'other@example.invalid', 2026, 6, 3, TRUE);
@@ -68,6 +76,29 @@ async function withApi(run) {
       (1, '${today}', '6학년 행사', 'GRADE', '{6}', '담당자', 50),
       (1, '${today}', '3학년 행사', 'GRADE', '{3}', '담당자', 50),
       (1, '${today}', '한 반 행사', 'CLASS', '{}', '담당자', 50);
+    INSERT INTO learning_boards (id, owner_id, code, title, layout, locked, closed, created_at) VALUES
+      ('old', 50, '1111', '오래된 게시판', 'wall', FALSE, FALSE, '2026-01-01'),
+      ('new', 50, '2222', '새 게시판', 'quiz', FALSE, FALSE, '2026-02-01'),
+      ('cubes', 50, '3333', '쌓기 게시판', 'stacking', FALSE, FALSE, '2026-03-01'),
+      ('locked', 50, '4444', '닫힌 게시판', 'wall', TRUE, FALSE, '2026-04-01'),
+      ('ended', 50, '5555', '끝난 게시판', 'wall', FALSE, TRUE, '2026-05-01'),
+      ('joined', 50, '6666', '참여한 닫힌 게시판', 'wall', TRUE, FALSE, '2026-06-01'),
+      ('other', 51, '7777', '옆반 게시판', 'wall', FALSE, FALSE, '2026-07-01'),
+      ('club', 51, '8888', '동아리 게시판', 'wall', FALSE, FALSE, '2026-08-01'),
+      ('private', 50, '9999', '공개 안 한 게시판', 'wall', FALSE, FALSE, '2026-09-01'),
+      ('gone', 50, '1212', '지운 카드의 게시판', 'wall', FALSE, FALSE, '2026-10-01');
+    INSERT INTO learning_board_members VALUES ('m1', 'joined', 1), ('m2', 'locked', 2);
+    INSERT INTO teacher_groups VALUES
+      (1, 1, 50, 2026, '6-2', 'homeroom', 6, 2, TRUE),
+      (2, 1, 51, 2026, '6-3', 'homeroom', 6, 3, TRUE),
+      (3, 1, 51, 2026, '과학 동아리', 'club', NULL, NULL, FALSE),
+      (4, 1, 51, 2026, '다른 동아리', 'club', NULL, NULL, FALSE),
+      (5, 1, 51, 2026, '6-2', 'homeroom', 6, 2, FALSE);
+    UPDATE school_students SET user_id = 1 WHERE student_number = '1' AND class_number = 2;
+    INSERT INTO teacher_group_students SELECT 3, id FROM school_students WHERE student_number = '1' AND class_number = 2;
+    INSERT INTO learning_board_audiences VALUES
+      ('old', 1), ('new', 1), ('cubes', 1), ('locked', 1), ('ended', 1), ('joined', 1),
+      ('other', 2), ('club', 3), ('club', 4), ('gone', 77);
     INSERT INTO school_vacation_settings (school_id, academic_year, is_integrated, summer_start) VALUES (1, 2026, TRUE, '2026-07-20');
   `);
   const pool = { query: async (sql, params) => { const r = await db.query(sql, params); return { rows: r.rows, rowCount: r.rows.length }; } };
@@ -77,7 +108,7 @@ async function withApi(run) {
   };
   let holidayLoads = 0, holidayFailure = false;
   const { router } = createStudentClassDashboard({
-    pool, HttpError, asyncRoute, requireDatabase() {},
+    pool, HttpError, asyncRoute, requireDatabase() {}, groupMemberSql: () => GROUP_MEMBER_SQL,
     requireUser: async req => {
       if (!req.get('x-user')) throw new HttpError(401, 'LOGIN_REQUIRED', '로그인');
       return { id: Number(req.get('x-user')) };
@@ -173,4 +204,20 @@ test('a class that no teacher has opened yet still answers with an empty dashboa
   assert.deepEqual(body.timetable, {});
   assert.deepEqual(body.preps, {});
   assert.deepEqual((await get('/attendance', 2)).body.alerts, []);
+}));
+
+test('only boards opened to the student\'s class or group appear; closed ones stay visible to students already inside', () => withApi(async ({ get, db }) => {
+  assert.equal((await get('/boards', 0)).status, 401);
+  assert.equal((await get('/boards', 50)).status, 403);
+  assert.deepEqual((await get('/boards')).body.boards, [
+    { title: '동아리 게시판', href: '/boards/?code=8888' },
+    { title: '참여한 닫힌 게시판', href: '/boards/?code=6666' },
+    { title: '쌓기 게시판', href: '/learning/literacy-numeracy/math-tools/stacking-cubes/coop/?code=3333' },
+    { title: '새 게시판', href: '/boards/?code=2222' },
+    { title: '오래된 게시판', href: '/boards/?code=1111' }
+  ]);
+  assert.deepEqual((await get('/boards', 2)).body.boards, [], 'another class sees none of them');
+  await db.exec("INSERT INTO learning_board_audiences VALUES ('other', 5)");
+  assert.equal((await get('/boards')).body.boards[0].title, '동아리 게시판');
+  assert.ok((await get('/boards')).body.boards.some(b => b.title === '옆반 게시판'), 'a teacher can open a board to a class card imported from the roster');
 }));

@@ -59,8 +59,7 @@ const { createHarness } = require('./learning-boards-harness.cjs');
     await alice.locator('.comment-form .error').filter({ hasText: '입력 내용을 확인' }).waitFor();
     assert.equal(await draft.inputValue(), '  ', 'failed submissions retain input');
     await draft.fill('');
-    await teacher.locator('#settingsBoard').click(); await teacher.locator('#settingsNames').check();
-    await teacher.locator('#settingsForm button[type=submit]').click();
+    await teacher.evaluate(() => fetch('/api/boards/' + new URLSearchParams(location.search).get('id'), { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ hideNames: true }) }));
     await bob.locator('.comment-meta').first().getByText('1번', { exact: true }).waitFor();
     const output = path.resolve('outputs/learning-board-comments'); fs.mkdirSync(output, { recursive: true });
     async function capture(page, name) {

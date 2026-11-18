@@ -116,3 +116,33 @@ test('existing six-digit board invitations survive restart and rotate to four di
     await request('/join', { code: rotated.code, number: 2, name: '학생둘' }, false);
   } finally { await h.close(); }
 });
+
+test('a board audience is chosen from the owner\'s class cards and only the owner can read it', async () => {
+  const h = await createHarness();
+  async function request(path, method = 'GET', body, cookie = 'test_teacher=1', expected = 200) {
+    const response = await fetch(h.base + '/api/boards' + path, { method, headers: { 'Content-Type': 'application/json', Cookie: cookie }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const payload = await response.json();
+    assert.equal(response.status, expected, `${method} ${path}: ${JSON.stringify(payload)}`);
+    return { ...payload, cookie: response.headers.get('set-cookie')?.split(';')[0] };
+  }
+  try {
+    await h.db.exec('CREATE TABLE teacher_groups(id BIGINT PRIMARY KEY, teacher_user_id BIGINT); INSERT INTO teacher_groups VALUES (10, 1), (11, 1), (20, 2);');
+    const before = (await request('/mine')).boards.length;
+    await request('/', 'POST', { title: '남의 반', layout: 'wall', audience: ['20'] }, undefined, 400);
+    assert.equal((await request('/mine')).boards.length, before, 'a refused audience does not leave a board behind');
+    const { board } = await request('/', 'POST', { title: '우리 반', layout: 'wall', audience: ['10', 10] }, undefined, 201);
+    const route = '/' + board.id;
+    assert.deepEqual((await request(route)).audience, ['10']);
+    await request(route, 'PATCH', { audience: ['11', '20'] }, undefined, 400);
+    assert.deepEqual((await request(route)).audience, ['10'], 'a refused change keeps the old audience');
+    await request(route, 'PATCH', { title: '제목만' });
+    assert.deepEqual((await request(route)).audience, ['10'], 'other settings leave the audience alone');
+    await request(route, 'PATCH', { audience: ['11'] });
+    assert.deepEqual((await request(route)).audience, ['11']);
+    await request(route, 'PATCH', { audience: ['nope'] }, undefined, 400);
+    await request('/join', 'POST', { code: board.code }, 'test_student=3');
+    assert.equal('audience' in await request(route, 'GET', undefined, 'test_student=3'), false);
+    await request(route, 'PATCH', { audience: [] });
+    assert.deepEqual((await request(route)).audience, []);
+  } finally { await h.close(); }
+});
