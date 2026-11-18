@@ -11,6 +11,15 @@
     ];
     const VIDEO = { width: { ideal: 320 }, height: { ideal: 240 }, frameRate: { ideal: 15, max: 15 } };
     const VIDEO_MAX_BITRATE = 250000;
+    // 같은 교실 알아보기. 한 교실의 여러 기기가 서로의 소리를 스피커로 틀면, 그 소리가 다른 기기 마이크로 들어가
+    // 0.1~0.3초 늦게 돌고 돌며(말한 사람에게도) 울린다. 반향 제거는 자기 스피커 소리만 지워서 이건 못 막는다.
+    // 그래서 기기끼리 마이크 소리 크기(데시벨)와 잰 시각을 0.025초마다 주고받고, 핑으로 두 기기의 시계 차이를 맞춘다.
+    // 음절이 시작하고 끝나는 순간(크기가 커지고 작아진 양)이 내 마이크와 친구 마이크에서 같은 때(±0.05초)에 겹치면 같은
+    // 교실이다 — 소리가 공기로 바로 가기 때문이다. 내 목소리가 인터넷으로 가서 친구 스피커로 나온 뒤 친구 마이크에 남은 것
+    // (반향 찌꺼기)은 소리를 줄이고 보내고 다시 트는 데 0.1초 넘게 걸려 같은 때에 겹치지 않으므로 같은 교실로 보지 않는다.
+    // 같은 교실 친구 소리는 틀지 않고(교실에서 직접 들린다), 그 친구가 나보다 크게 말하는 동안에는 내 마이크도 보내지
+    // 않는다(멀리 있는 친구에게 같은 목소리가 겹쳐 가지 않게).
+    const NEAR = { tick: 25, fft: 1024, keep: 3500, window: 3000, spread: 50, match: 0.45, release: 0.15, keepAvg: 0.6, clip: 12, theirRange: 15, myRange: 8, speech: -50, louder: 3, recent: 300, hold: 400, ping: 2000 };
 
     const supported = typeof RTCPeerConnection === "function" && !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 
@@ -54,8 +63,29 @@
             const audioEl = document.createElement("audio");
             audioEl.autoplay = true;
             audioHost.appendChild(audioEl);
-            const peer = { pc, audioTransceiver, videoTransceiver, stream, audioEl };
+            const peer = { pc, audioTransceiver, videoTransceiver, stream, audioEl, dc: null, levels: [], avg: 0, near: false, syncs: [], sync: null, pingAt: 0 };
             peers.set(userId, peer);
+            // 소리 크기 통로: 양쪽이 같은 번호로 미리 만들어 두면 다시 협상하지 않아도 열린다(옛 화면과도 연결은 된다).
+            try {
+                peer.dc = pc.createDataChannel("level", { negotiated: true, id: 7, ordered: false, maxRetransmits: 0 });
+                peer.dc.onmessage = event => {
+                    const text = String(event.data);
+                    // 핑: "p내시각"을 받으면 "q그시각,친구시각"으로 돌려준다. 돌아온 것으로 왕복 시간과 시계 차이를 잰다
+                    // (왕복이 가장 짧았던 것이 가장 정확하다).
+                    if (text[0] === "p") { try { peer.dc.send("q" + text.slice(1) + "," + performance.now().toFixed(1)); } catch (_) {} return; }
+                    if (text[0] === "q") {
+                        const [sent, theirs] = text.slice(1).split(",").map(Number), rtt = performance.now() - sent;
+                        if (!(rtt >= 0 && rtt < 5000) || !Number.isFinite(theirs)) return;
+                        peer.syncs.push({ rtt, offset: theirs - (sent + rtt / 2) });
+                        if (peer.syncs.length > 8) peer.syncs.shift();
+                        peer.sync = peer.syncs.reduce((a, b) => (b.rtt < a.rtt ? b : a));
+                        return;
+                    }
+                    // 소리 크기: "데시벨@친구시각". 시계 차이를 알기 전에는 쓰지 않는다.
+                    const [db, at] = text.split("@").map(Number);
+                    if (peer.sync && Number.isFinite(db) && Number.isFinite(at)) remember(peer.levels, { t: at - peer.sync.offset, db: Math.max(-90, Math.min(0, db)) });
+                };
+            } catch (_) {}
 
             pc.ontrack = event => {
                 stream.addTrack(event.track);
@@ -124,9 +154,10 @@
         function leave() {
             if (channel) send({ type: "SCHOOLCHAT_CALL_LEAVE", channel });
             closeAllPeers();
+            stopMeter();
             if (audioTrack) { audioTrack.stop(); audioTrack = null; }
             stopVideo();
-            channel = null; members = []; cams = new Set(); micOn = false; holding = false; wantCam = false; status = "";
+            channel = null; members = []; cams = new Set(); micOn = false; wantCam = false; status = ""; quietUntil = 0;
             changed();
         }
 
@@ -143,41 +174,147 @@
                 : `${label}를 쓰려면 허락 창에서 '허용'을 눌러 주세요.`;
         }
 
-        // 마이크는 단추를 누르고 있는 동안만 켠다(무전기처럼). 한 교실에서 여러 대가 통화하면 켜 둔 마이크마다
-        // 옆 사람 목소리가 들어가 0.1~0.3초 늦게 모두에게(말한 사람 자신에게도) 되돌아가 울린다. 반향 제거는 자기
-        // 기기 스피커 소리만 지울 수 있어 이건 못 지운다. 말하는 사람 마이크만 켜져 있으면 되돌아갈 소리가 없다.
-        // 처음 누를 때 한 번만 마이크를 열고(허락 창), 그 뒤로는 소리를 켰다 껐다만 한다.
-        let holding = false;
-        let opening = null;
-        async function talk(on) {
+        async function toggleMic() {
             if (!channel) return;
-            holding = Boolean(on);
-            if (holding && !audioTrack) {
-                if (!opening) {
-                    opening = navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } })
-                        .then(media => media.getAudioTracks()[0])
-                        .catch(() => null);
-                }
-                const track = await opening;
-                opening = null;
-                if (!track) { holding = false; micOn = false; return setStatus(await permissionHelp("microphone", "마이크")); }
-                if (!channel) { track.stop(); return; }
+            if (!micOn) {
                 if (!audioTrack) {
-                    audioTrack = track;
-                    audioTrack.enabled = holding;   // 허락 창이 떠 있는 동안 손을 뗐으면 꺼 둔 채로 붙인다
+                    try {
+                        const media = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+                        audioTrack = media.getAudioTracks()[0];
+                    } catch (_) { return setStatus(await permissionHelp("microphone", "마이크")); }
                     for (const peer of peers.values()) if (peer.audioTransceiver) peer.audioTransceiver.sender.replaceTrack(audioTrack).catch(() => {});
-                } else if (track !== audioTrack) track.stop();
+                }
+                micOn = true;
+                startMeter();
+            } else {
+                micOn = false;
             }
-            if (audioTrack) audioTrack.enabled = holding;
-            micOn = Boolean(audioTrack && holding);
+            audioTrack.enabled = micOn;
             setStatus("");
         }
 
-        // 쪽을 넘기면 화면이 새로 열려서 카메라가 꺼진다. 이미 허락해 둔 경우에만, 넘기기 전에 켜 둔 카메라를
+        // ---- 같은 교실 알아보기(위 NEAR 설명) ----
+        const myLevels = [];
+        let meter = null;
+        let judgedAt = 0;
+        let quietUntil = 0;
+        // 시각 순서대로 쌓는다. 친구 소식은 순서 없이 올 수 있어(빨리 보내려고 다시 보내기·순서 맞추기를 끔) 제자리에 끼운다.
+        function remember(list, sample) {
+            let i = list.length;
+            while (i > 0 && list[i - 1].t > sample.t) i--;
+            list.splice(i, 0, sample);
+            const last = list[list.length - 1].t;
+            while (list.length && last - list[0].t > NEAR.keep) list.shift();
+        }
+        // 소리 크기는 보내는 마이크와 따로 복제한 마이크에서 잰다(보내기를 잠시 멈춰도 계속 잴 수 있게).
+        function startMeter() {
+            if (meter || !audioTrack) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const copy = audioTrack.clone();
+                copy.enabled = true;
+                const analyser = ctx.createAnalyser();
+                analyser.fftSize = NEAR.fft;
+                ctx.createMediaStreamSource(new MediaStream([copy])).connect(analyser);
+                meter = { ctx, copy, analyser, samples: new Float32Array(analyser.fftSize), timer: setInterval(tickMeter, NEAR.tick) };
+                // 소리 재생 허락 전이면(쪽을 넘긴 직후) 처음 누를 때 깨운다.
+                if (ctx.state === "suspended") {
+                    ctx.resume().catch(() => {});
+                    document.addEventListener("pointerdown", () => ctx.resume().catch(() => {}), { once: true, capture: true });
+                }
+            } catch (_) { meter = null; }
+        }
+        function stopMeter() {
+            if (!meter) return;
+            clearInterval(meter.timer);
+            meter.copy.stop();
+            meter.ctx.close().catch(() => {});
+            meter = null;
+            myLevels.length = 0;
+        }
+        function tickMeter() {
+            const now = performance.now();
+            meter.analyser.getFloatTimeDomainData(meter.samples);
+            let sum = 0;
+            for (const v of meter.samples) sum += v * v;
+            const db = Math.max(-90, 10 * Math.log10(sum / meter.samples.length + 1e-12));
+            remember(myLevels, { t: now, db });
+            // 마이크를 켠 사람만 소리 크기를 알린다(끈 사람은 아무것도 내보내지 않는다). 핑은 2초마다.
+            for (const peer of peers.values()) {
+                if (!peer.dc || peer.dc.readyState !== "open") continue;
+                try {
+                    if (micOn) peer.dc.send(Math.round(db) + "@" + now.toFixed(0));
+                    if (now - peer.pingAt >= NEAR.ping) { peer.pingAt = now; peer.dc.send("p" + now.toFixed(1)); }
+                } catch (_) {}
+            }
+            if (now - judgedAt >= 500) { judgedAt = now; judgeNearby(); }
+            // 같은 교실 친구가 내 최근 0.3초 가장 큰 소리보다 크게 말하는 동안(그리고 0.4초 더) 내 마이크는 보내지 않는다.
+            // (지금 한 칸과 견주면 내 음절이 끝나는 순간 늦게 온 친구 소식이 더 커 보여 내 말까지 끊긴다.)
+            let mine = -90;
+            for (let i = myLevels.length - 1; i >= 0 && now - myLevels[i].t <= NEAR.recent; i--) mine = Math.max(mine, myLevels[i].db);
+            for (const peer of peers.values()) {
+                if (!peer.near) continue;
+                const last = peer.levels[peer.levels.length - 1];
+                if (last && now - last.t < 250 && last.db > NEAR.speech && last.db > mine + NEAR.louder) quietUntil = now + NEAR.hold;
+            }
+            if (audioTrack) audioTrack.enabled = micOn && now >= quietUntil;
+        }
+        // 내 마이크와 친구 마이크의 소리 크기가 같은 때에 같이 오르내리는 정도(피어슨 상관, -1~1). 두 시계를 맞춘 뒤
+        // ±0.05초(왕복이 길면 조금 더) 안에서 가장 큰 값을 본다. 둘 다 오르내림이 있어야(누군가 말했어야) 판단한다.
+        // 판단할 것이 없으면 null.
+        function likeness(mine, theirs, sync) {
+            if (!sync) return null;
+            const from = performance.now() - NEAR.window;
+            const own = mine.filter(sample => sample.t >= from);
+            if (own.length < 60 || theirs.length < 60) return null;
+            const spread = NEAR.spread + Math.min(100, Math.round(sync.rtt / 4 / NEAR.tick) * NEAR.tick);
+            let best = null;
+            for (let lag = -spread; lag <= spread; lag += NEAR.tick) {
+                const pairs = [];
+                let j = 0;
+                for (const sample of own) {
+                    const want = sample.t + lag;
+                    while (j + 1 < theirs.length && Math.abs(theirs[j + 1].t - want) <= Math.abs(theirs[j].t - want)) j++;
+                    if (Math.abs(theirs[j].t - want) <= NEAR.tick / 2) pairs.push([sample.db, theirs[j].db]);
+                }
+                if (pairs.length < 60) continue;
+                const range = k => Math.max(...pairs.map(p => p[k])) - Math.min(...pairs.map(p => p[k]));
+                if (range(1) < NEAR.theirRange || range(0) < NEAR.myRange) continue;
+                // 크기 자체가 아니라 한 칸마다 커지고 작아진 양(음절이 시작하고 끝나는 순간)끼리 견준다. 크기 자체는
+                // 말하는 덩어리·음절이 길어서, 멀리 있는 두 사람이 우연히 같이 말할 때나 조금 늦은 반향도 비슷해 보인다.
+                let sab = 0, saa = 0, sbb = 0;
+                for (let i = 1; i < pairs.length; i++) {
+                    // 한 칸 변화는 12 dB까지만 센다(내 목소리처럼 아주 큰 오르내림이 맞음 정도를 휘두르지 않게).
+                    const clip = v => Math.max(-NEAR.clip, Math.min(NEAR.clip, v));
+                    const a = clip(pairs[i][0] - pairs[i - 1][0]), b = clip(pairs[i][1] - pairs[i - 1][1]);
+                    sab += a * b; saa += a * a; sbb += b * b;
+                }
+                const r = saa && sbb ? sab / Math.sqrt(saa * sbb) : 0;
+                if (best === null || r > best) best = r;
+            }
+            return best;
+        }
+        // 0.5초마다 맞음 정도를 고르게 쌓아(한 번 우연히 맞은 것에 흔들리지 않게) 같은 교실인지 정한다. 교실은 쉽게
+        // 바뀌지 않으므로 한번 같은 교실로 본 뒤에는 맞음 정도가 아주 낮아져야(0.15 아래) 놓는다.
+        function judgeNearby() {
+            for (const peer of peers.values()) {
+                const r = likeness(myLevels, peer.levels, peer.sync);
+                if (r === null) continue;
+                peer.avg = NEAR.keepAvg * peer.avg + (1 - NEAR.keepAvg) * r;
+                const near = peer.avg >= NEAR.match ? true : peer.avg <= NEAR.release ? false : peer.near;
+                if (near !== peer.near) {
+                    peer.near = near;
+                    peer.audioEl.muted = near;   // 같은 교실이면 그 친구 소리는 틀지 않는다
+                    changed();
+                }
+            }
+        }
+
+        // 쪽을 넘기면 화면이 새로 열려서 마이크·카메라가 꺼진다. 이미 허락해 둔 경우에만, 넘기기 전에 켜 둔 것을
         // 사용자 조작 없이 다시 켠다(허락이 없으면 아무것도 하지 않아서 허락 창이 갑자기 뜨는 일이 없다).
-        // 마이크는 누르고 있을 때만 켜지므로 이어 켜지 않는다.
         async function resumeMedia(saved) {
             if (!saved || !channel) return;
+            if (saved.mic && !micOn && await permissionState("microphone") === "granted") await toggleMic();
             if (saved.cam && !wantCam && await permissionState("camera") === "granted") await toggleCam();
         }
 
@@ -278,14 +415,13 @@
                 linked: [...peers.values()].filter(peer => peer.pc.connectionState === "connected").length,
                 members: members.map(member => ({
                     userId: member.userId, name: member.name, me: member.userId === myId, cam: cams.has(member.userId),
+                    near: Boolean(peers.get(member.userId)?.near),
                     stream: member.userId === myId ? localStream : (peers.get(member.userId)?.stream || null)
                 }))
             };
         }
 
-        // 하루 동안 캐시에 남은 옛 채팅 화면이 부르는 이름(눌렀다 다시 누르면 꺼진다).
-        const toggleMic = () => talk(!holding);
-        return { join, rejoin, leave, talk, toggleMic, toggleCam, resumeMedia, handle, view, inCall: () => Boolean(channel) };
+        return { join, rejoin, leave, toggleMic, toggleCam, resumeMedia, handle, view, inCall: () => Boolean(channel) };
     }
 
     window.SchoolCall = Object.freeze({ create, supported });

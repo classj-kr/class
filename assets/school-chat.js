@@ -73,10 +73,6 @@
             #schoolChatPanel .sc-call .bar button.off{background:#4a2320;border-color:#7a3630}
             #schoolChatPanel .sc-call .bar button.off::after{content:"";position:absolute;left:15%;right:15%;top:50%;height:2px;background:#f0847c;transform:rotate(-30deg)}
             #schoolChatPanel .sc-call .bar button.wait{opacity:.6}
-            #schoolChatPanel .sc-call .bar{flex-wrap:wrap}
-            #schoolChatPanel .sc-call .bar .info{flex:1 0 100%}
-            #schoolChatPanel .sc-call .bar button.talk{flex:1;width:auto;padding:0 10px;font-size:12px;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
-            #schoolChatPanel .sc-call .bar button.talk.talking{background:#1f7a4d;border-color:#5fd39a}
             #schoolChatPanel .sc-call .bar .end{width:auto;padding:0 8px;font-size:12px}
             #schoolChatPanel .sc-call .note{min-height:0;color:#f0a39c;font-size:12px;margin-top:4px}
             #schoolChatPanel .sc-call .note:empty{display:none}
@@ -308,7 +304,7 @@
         if (!callScript) {
             callScript = new Promise(resolve => {
                 const script = document.createElement("script");
-                script.src = "/assets/school-call.js?v=20261118-hold-to-talk";
+                script.src = "/assets/school-call.js?v=20261118-same-room";
                 script.onload = () => resolve(Boolean(window.SchoolCall));
                 script.onerror = () => resolve(false);
                 document.head.appendChild(script);
@@ -351,9 +347,10 @@
         try { sessionStorage.setItem(CALL_MEDIA_KEY, JSON.stringify({ mic: view.micOn, cam: view.camWanted })); } catch (_) {}
         const info = channelInfo(callChannelId);
         const camCount = view.members.filter(member => member.cam).length;
-        ui.callInfo.textContent = `${info ? info.name : "방"} 통화 ${view.members.length}/${view.limits.call}명 · 카메라 ${camCount}/${view.limits.cams}`;
-        ui.micButton.classList.toggle("talking", view.micOn);
-        ui.micButton.textContent = view.micOn ? "🎤 말하는 중" : "🎤 누르고 말하기";
+        // 같은 교실로 알아본 친구(그 친구 소리는 기기로 틀지 않는다) 수
+        const nearCount = view.members.filter(member => member.near).length;
+        ui.callInfo.textContent = `${info ? info.name : "방"} 통화 ${view.members.length}/${view.limits.call}명 · 카메라 ${camCount}/${view.limits.cams}` + (nearCount ? ` · 같은 교실 ${nearCount}명` : "");
+        ui.micButton.classList.toggle("off", !view.micOn);
         ui.camButton.classList.toggle("off", !view.camOn);
         ui.camButton.classList.toggle("wait", view.camWanted && !view.camOn);
         ui.callNote.textContent = view.status;
@@ -578,26 +575,10 @@
         ui.callBox = el("div", "sc-call");
         const callBar = el("div", "bar");
         ui.callInfo = el("span", "info");
-        // 마이크는 누르고 있는 동안만 켜진다(한 교실에서 켜 둔 마이크끼리 목소리를 되돌려 울리는 것을 막는다).
-        ui.micButton = el("button", "talk", "🎤 누르고 말하기");
+        ui.micButton = el("button", "off", "🎤");
         ui.micButton.type = "button";
-        ui.micButton.setAttribute("aria-label", "누르고 있는 동안 말하기");
-        const talk = on => { if (call) call.talk(on); };
-        ui.micButton.addEventListener("pointerdown", event => {
-            if (event.button !== 0) return;
-            event.preventDefault();
-            try { ui.micButton.setPointerCapture(event.pointerId); } catch (_) {}
-            talk(true);
-        });
-        for (const type of ["pointerup", "pointercancel", "lostpointercapture"]) ui.micButton.addEventListener(type, () => talk(false));
-        ui.micButton.addEventListener("contextmenu", event => event.preventDefault());   // 길게 눌러도 메뉴가 뜨지 않게
-        ui.micButton.addEventListener("keydown", event => {
-            if ((event.key === " " || event.key === "Enter") && !event.repeat) { event.preventDefault(); talk(true); }
-        });
-        ui.micButton.addEventListener("keyup", event => { if (event.key === " " || event.key === "Enter") talk(false); });
-        ui.micButton.addEventListener("blur", () => talk(false));
-        window.addEventListener("blur", () => talk(false));
-        document.addEventListener("visibilitychange", () => { if (document.hidden) talk(false); });
+        ui.micButton.setAttribute("aria-label", "마이크 켜기/끄기");
+        ui.micButton.addEventListener("click", () => call && call.toggleMic());
         ui.camButton = el("button", "off", "📷");
         ui.camButton.type = "button";
         ui.camButton.setAttribute("aria-label", "카메라 켜기/끄기");
