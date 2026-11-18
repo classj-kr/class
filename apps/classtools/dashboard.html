@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학급</title>
+    <script>if (new URLSearchParams(location.search).get("view") === "student") document.documentElement.classList.add("student-view");</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
@@ -907,6 +908,24 @@
             background: #050505;
         }
 
+        /* 학생 보기: 보기만 한다. */
+        html.student-view [data-teacher-only] { display: none !important; }
+        html.student-view .widget-card { cursor: default; }
+        .prep-note {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 5px 8px;
+            border: 1px solid rgba(255, 77, 77, 0.45);
+            border-radius: 8px;
+            background: rgba(255, 77, 77, 0.10);
+            color: #7ce4ff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+        .timetable-empty { padding: 16px 4px; color: var(--text-muted); font-size: 0.9rem; }
+
         /* Toolbar Bottom */
         footer.toolbar {
             background: var(--card-bg);
@@ -1366,12 +1385,12 @@
             <div class="timetable-list" id="timetableList">
                 <!-- 1 ~ 8 periods loaded by JS -->
             </div>
-            <button class="widget-edit" id="editTimetableBtn" type="button">시간표 수정</button>
+            <button class="widget-edit" data-teacher-only id="editTimetableBtn" type="button">시간표 수정</button>
         </section>
 
         <!-- Widget 2: Student Checklist (Linked with Roster) -->
         <section class="widget-card" id="widget-checklist" draggable="true" aria-label="출석부">
-            <div class="checklist-controls">
+            <div class="checklist-controls" data-teacher-only>
                     <select id="classSwitcherSelect" aria-label="학급 선택" class="icon-btn" style="background: rgba(117,214,159,0.15); border-color: rgba(117,214,159,0.3); color: var(--accent-green); font-weight: 700; cursor: pointer; outline: none; padding: 4px 8px;" hidden>
                         <option value="">학급 선택...</option>
                     </select>
@@ -1421,7 +1440,7 @@
     </main>
 
     <!-- Toolbar Footer -->
-    <footer class="toolbar">
+    <footer class="toolbar" data-teacher-only>
         <div class="toolbar-group">
             <button class="tool-btn" id="multiPickerModalBtn" style="background: rgba(46, 196, 182, 0.18); border-color: var(--brand-light); color: #7ce4ff; font-weight: 800;">🎯 학생 추첨</button>
             <button class="tool-btn" id="timerModalBtn">⏱️ 타이머</button>
@@ -1543,6 +1562,21 @@
     <script src="./dashboard-attendance-live.js"></script>
     <script src="/assets/site-storage.js?v=20261006-1"></script>
     <script>
+        // 학생 보기(?view=student): 자기 반 것을 읽기만 한다. 권한은 서버가 따로 확인한다.
+        const studentView = document.documentElement.classList.contains("student-view");
+        const STUDENT_API = "/api/student/class-dashboard";
+        const schoolApi = studentView ? {
+            events: month => STUDENT_API + "/events?month=" + month,
+            holidays: year => STUDENT_API + "/holidays?year=" + year,
+            vacation: year => STUDENT_API + "/vacation?academicYear=" + year
+        } : {
+            events: month => "/api/teacher/general-events?month=" + month,
+            holidays: year => "/api/teacher/public-holidays?year=" + year,
+            vacation: year => "/api/teacher/vacation-settings?academicYear=" + year
+        };
+        let studentDashboardLoaded = false;
+        if (studentView) document.querySelectorAll(".widget-card").forEach(card => { card.draggable = false; });
+
         // State & LocalStorage
         let schedules = [];
         let schoolSchedules = [];
@@ -1566,7 +1600,7 @@
             "목": [ {p:1, sub:"과학", place:"과학실", s:"09:00", e:"09:40"}, {p:2, sub:"과학", place:"과학실", s:"09:50", e:"10:30"}, {p:3, sub:"체육", place:"강당", s:"10:40", e:"11:20"}, {p:4, sub:"영어", place:"영어실", s:"11:30", e:"12:10"}, {p:5, sub:"수학", place:"교실", s:"13:10", e:"13:50"}, {p:6, sub:"실과", place:"실과실", s:"14:00", e:"14:40"} ],
             "금": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"수학", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"도덕", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"음악", place:"음악실", s:"11:30", e:"12:10"}, {p:5, sub:"실과", place:"실과실", s:"13:10", e:"13:50"}, {p:6, sub:"자율", place:"교실", s:"14:00", e:"14:40"} ]
         };
-        let customTimetable = JSON.parse(JSON.stringify(defaultTimetable));
+        let customTimetable = studentView ? {} : JSON.parse(JSON.stringify(defaultTimetable));
         let selectedDayTab = "목";
 
         // Elements
@@ -1779,7 +1813,7 @@
             if (!listEl) return;
             listEl.replaceChildren();
 
-            const periods = customTimetable[dayName] || defaultTimetable["월"];
+            const periods = customTimetable[dayName] || (studentView ? [] : defaultTimetable["월"]);
             const currentMins = now.getHours() * 60 + now.getMinutes();
 
             // 요일별 저장된 그날만의 준비물 데이터
@@ -1801,7 +1835,7 @@
                 let placeTag = '';
                 if (item.place) {
                     const isNormalClassroom = (item.place === '교실' || item.place === '우리교실');
-                    placeTag = `<span class="period-place ${isNormalClassroom ? 'default' : 'highlight'}">${item.place}</span>`;
+                    placeTag = `<span class="period-place ${isNormalClassroom ? 'default' : 'highlight'}">${escHtmlLocal(item.place)}</span>`;
                 }
                 const prepVal = savedPreps[item.p] || "";
                 const hasVal = prepVal.trim().length > 0;
@@ -1809,29 +1843,37 @@
 
                 div.innerHTML = `
                     <div class="period-col-left">
-                        <span class="period-label">${item.p}교시</span>
+                        <span class="period-label">${escHtmlLocal(item.p)}교시</span>
                         <div class="period-time-stack">
-                            <span>${item.s || ""}</span>
+                            <span>${escHtmlLocal(item.s || "")}</span>
                             <span class="wave">~</span>
-                            <span>${item.e || ""}</span>
+                            <span>${escHtmlLocal(item.e || "")}</span>
                         </div>
                     </div>
                     <div class="period-col-center">
                         <div class="period-subject-copy">
                             <div class="period-subject-row">
-                                <span class="period-subject">${item.sub || "과목"}</span>
+                                <span class="period-subject">${escHtmlLocal(item.sub || "과목")}</span>
                                 ${getSubjectIcon(item.sub)}
                             </div>
                             ${placeTag}
                         </div>
                     </div>
                     <div class="period-col-right">
-                        ${prepBadge}
-                        <input class="prep-input${hasVal ? ' has-value' : ''}" data-day="${dayName}" data-p="${item.p}" value="${prepVal}" placeholder="준비물 입력..." draggable="false" autocomplete="off">
+                        ${studentView
+                            ? (hasVal ? `<div class="prep-note">${escHtmlLocal(prepVal)}</div>` : "")
+                            : `${prepBadge}<input class="prep-input${hasVal ? ' has-value' : ''}" data-day="${dayName}" data-p="${item.p}" value="${prepVal}" placeholder="준비물 입력..." draggable="false" autocomplete="off">`}
                     </div>
                 `;
                 listEl.append(div);
             });
+
+            if (studentView && studentDashboardLoaded && periods.length === 0) {
+                const empty = document.createElement("div");
+                empty.className = "timetable-empty";
+                empty.textContent = "시간표가 아직 없습니다.";
+                listEl.append(empty);
+            }
 
             // 준비물 입력 및 드래그 간섭 방지 이벤트 리스너
             listEl.querySelectorAll(".prep-input").forEach(input => {
@@ -1935,6 +1977,7 @@
 
         // ── DB Synchronization Helpers (Server-Side 100% Single Source of Truth) ──
         async function syncDashboardSettingsToDB() {
+            if (studentView) return;
             try {
                 const grid = document.getElementById("dashboardGrid");
                 const cardOrder = grid ? Array.from(grid.querySelectorAll(".widget-card")).map(c => c.id) : [];
@@ -1950,7 +1993,21 @@
             } catch (e) {}
         }
 
+        function applyStudentDashboard(data) {
+            const preps = data.preps || {};
+            dashboardStore = { get: item => preps[item] };
+            customTimetable = data.timetable || {};
+            studentDashboardLoaded = true;
+            const cards = document.getElementById("dashboardGrid");
+            (data.cardOrder || []).forEach(id => {
+                const card = document.getElementById(id);
+                if (card) cards.appendChild(card);
+            });
+            renderTimetable(selectedDayTab);
+        }
+
         async function loadDashboardSettingsFromDB() {
+            if (studentView) return;
             try {
                 dashboardStore = await SiteStorage.open("dashboard");
                 // 예전에 브라우저에 두던 것을 한 번 옮기고 지운다. 시간표·카드 순서는 서버 설정이 이미 맡는다.
@@ -2020,7 +2077,7 @@
                 const now = new Date();
                 const month = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
                 const todayStr = `${month}-${String(now.getDate()).padStart(2, "0")}`;
-                const res = await fetch(`/api/teacher/general-events?month=${month}`);
+                const res = await fetch(schoolApi.events(month));
                 const data = await res.json();
                 const events = (data.events || []).filter(ev => {
                     const inRange = ev.event_date <= todayStr && (ev.end_date || ev.event_date) >= todayStr;
@@ -2056,7 +2113,9 @@
                 const classSwitcherSelect = document.getElementById("classSwitcherSelect");
                 
                 // Fetch available classes for switcher
-                const availableRes = await fetch("/api/teacher/available-classes");
+                const availableRes = studentView
+                    ? { ok: true, json: async () => ({ classes: [] }) }
+                    : await fetch("/api/teacher/available-classes");
                 const availableData = await availableRes.json();
                 if (version !== rosterLoadVersion) return;
                 if (!availableRes.ok) throw new Error(availableData.message || "학급 목록을 불러오지 못했습니다.");
@@ -2096,13 +2155,15 @@
                     else classSwitcherSelect.value = "";
                 }
 
-                const fetchUrl = classId ? `/api/teacher/class?classId=${classId}` : "/api/teacher/class";
+                const fetchUrl = studentView ? STUDENT_API
+                    : classId ? `/api/teacher/class?classId=${classId}` : "/api/teacher/class";
                 const res = await fetch(fetchUrl);
                 const data = await res.json();
                 if (version !== rosterLoadVersion) return;
                 if (!res.ok) {
                     throw new Error(data?.message || "학급 정보를 불러오지 못했습니다.");
                 }
+                if (studentView) applyStudentDashboard(data);
                 if (data?.classroom) {
                     fetchRealtimeWeatherAndAirQuality(data.classroom.schoolName, data.classroom.locationName);
                     rosterStudents = data.classroom.students || [];
@@ -2181,9 +2242,11 @@
             }
             attendanceLoadFailed = false;
             renderChecklist();
-            if (!classroom?.id) return;
+            if (!classroom?.id && !(studentView && classroom)) return;
             try {
-                const res = await fetch("/api/teacher/class-attendance?classId=" + encodeURIComponent(classroom.id), {
+                const attendanceUrl = studentView ? STUDENT_API + "/attendance"
+                    : "/api/teacher/class-attendance?classId=" + encodeURIComponent(classroom.id);
+                const res = await fetch(attendanceUrl, {
                     cache: "no-store",
                     signal: AbortSignal.timeout(10000)
                 });
@@ -2230,7 +2293,7 @@
                 const alerts = activeRosterClass
                     ? todayQuickAlerts.get(attendanceKey(activeRosterClass.grade, activeRosterClass.classNumber, num)) || []
                     : [];
-                const attendanceLabel = alerts.map(alert => alert.source + " " + alert.noticeType).join(", ");
+                const attendanceLabel = alerts.map(alert => [alert.source, alert.noticeType].filter(Boolean).join(" ")).join(", ");
                 const name = document.createElement("span");
                 name.className = "roster-student-copy";
                 const numberLabel = document.createElement("span");
@@ -2266,7 +2329,7 @@
         }
 
         let attendanceArrivalTimer;
-        const attendanceLive = createDashboardAttendanceLive({
+        const attendanceLive = studentView ? { selectClass() {} } : createDashboardAttendanceLive({
             soundButton: document.getElementById("attendanceSound"),
             onChange: fetchQuickAlertsForDashboard,
             onConnectionChange: failed => {
@@ -2294,6 +2357,11 @@
             }, Math.max(1000, nextMidnight - Date.now() + 100));
         }
         scheduleAttendanceRollover();
+        if (studentView) {
+            // 학생 화면은 실시간 연결 없이 가끔 새로 받는다.
+            setInterval(() => { if (!document.hidden) fetchQuickAlertsForDashboard(); }, 5 * 60 * 1000);
+            document.addEventListener("visibilitychange", () => { if (!document.hidden) fetchQuickAlertsForDashboard(); });
+        }
         document.addEventListener("visibilitychange", () => {
             if (!document.hidden && attendanceSnapshotKey
                 && !attendanceSnapshotKey.endsWith(":" + koreanWeatherClock().date)) {
@@ -2347,9 +2415,9 @@
             const academicYears = [...new Set(months.map(month =>
                 Number(month.slice(0, 4)) - (Number(month.slice(5, 7)) < 3 ? 1 : 0)))];
             const sources = [
-                ...months.map(month => ({ kind: "events", label: "학교 행사", path: "/api/teacher/general-events?month=" + month })),
-                ...years.map(year => ({ kind: "holidays", label: "공휴일", path: "/api/teacher/public-holidays?year=" + year })),
-                ...academicYears.map(year => ({ kind: "vacation", label: "방학·학사일정", path: "/api/teacher/vacation-settings?academicYear=" + year }))
+                ...months.map(month => ({ kind: "events", label: "학교 행사", path: schoolApi.events(month) })),
+                ...years.map(year => ({ kind: "holidays", label: "공휴일", path: schoolApi.holidays(year) })),
+                ...academicYears.map(year => ({ kind: "vacation", label: "방학·학사일정", path: schoolApi.vacation(year) }))
             ];
             const results = await Promise.allSettled(sources.map(source => scheduleApi(source.path)));
             const items = [];
@@ -2683,7 +2751,7 @@
             renderCalendar();
             if (!activeRosterClass) {
                 status.hidden = false;
-                status.textContent = "학급을 선택하면 학교 일정이 표시됩니다.";
+                status.textContent = studentView ? "학교 일정을 불러오지 못했습니다." : "학급을 선택하면 학교 일정이 표시됩니다.";
                 return;
             }
             status.hidden = false;
@@ -2695,9 +2763,9 @@
             const classId = activeRosterClass.id;
             const results = await Promise.allSettled([
                 scheduleApi("/api/class/schedules?" + new URLSearchParams({ classId, month })),
-                scheduleApi("/api/teacher/general-events?month=" + month),
-                scheduleApi("/api/teacher/public-holidays?year=" + year),
-                scheduleApi("/api/teacher/vacation-settings?academicYear=" + academicYear)
+                scheduleApi(schoolApi.events(month)),
+                scheduleApi(schoolApi.holidays(year)),
+                scheduleApi(schoolApi.vacation(academicYear))
             ]);
             if (version !== calendarRequestVersion) return;
             const values = results.map(result => result.status === "fulfilled" ? result.value : {});

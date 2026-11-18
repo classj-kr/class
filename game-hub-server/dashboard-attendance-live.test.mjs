@@ -14,6 +14,7 @@ test("parent arrival updates badges and sounds once; initial/reconnected snapsho
   const before=`
     const checklistGrid=document.getElementById("checklistGrid");
     const rosterLoadMessage="";
+    const studentView=false, STUDENT_API="";
     let dashboardStore=null;   // 준비물 표시는 계정 저장소에 남는데, 이 검사에선 로그인 전처럼 없는 것으로 둔다.
     const rosterStudents=Array.from({length:24},(_,i)=>({number:i+1,name:"학생"+(i+1)}));
     function isTodayBirthday(){return false;}
