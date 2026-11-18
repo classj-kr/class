@@ -483,6 +483,25 @@ test('the lined notebook stays bounded across phone, tablet, Chromebook and desk
   await page.selectOption('#cellSize', 'auto');
   assert.ok((await page.locator('#writingCanvas').boundingBox()).height <= 104.5);
 });
+test('a Chromebook line stays 15 mm at 100%, with a larger display size and with Chrome page zoom', async () => {
+  // [화면 배율, 크롬 확대인가] — 크롬은 확대를 devicePixelRatio에만 넣고 screen 크기와 창 바깥 너비는 그대로 둔다.
+  for (const [scale, zoom] of [[1, false], [1.1, false], [1.25, true], [0.9, true]]) {
+    const wide = Math.round(1366 / scale), tall = Math.round(768 / scale);
+    const c = await browser.newContext({ viewport: { width: wide, height: Math.round(620 / scale) }, screen: zoom ? { width: 1366, height: 768 } : { width: wide, height: tall }, deviceScaleFactor: scale });
+    try {
+      await c.addCookies([{ name: 'test_user', value: '1', url: h.base }]);
+      const p = await c.newPage();
+      if (zoom) await p.addInitScript(() => Object.defineProperty(window, 'outerWidth', { get: () => 1366 }));
+      await p.goto(h.base + route);
+      await p.waitForFunction(() => document.querySelector('#writingCanvas'));
+      const line = (await p.locator('#writingCanvas').boundingBox()).height;
+      // 11.6인치 1366×768 = 135 ppi
+      assert.ok(Math.abs((line * scale) / 135 * 25.4 - 15) < 0.1, `scale ${scale}${zoom ? ' zoom' : ''}: line ${line}px`);
+    } finally {
+      await c.close();
+    }
+  }
+});
 test('the original pen font matches the designed outlines and the editor remains compact', async () => {
   await page.goto(h.base + route);
   await ready();

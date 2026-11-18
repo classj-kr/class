@@ -67,6 +67,8 @@
     // 획순(순서·방향·길이)은 쓴 글자를 본보기 자리·크기에 맞춰 놓고 본다. 자리와 크기는 모양 점수의 '자리'가 따로 본다.
     // 맞추지 않으면 글자가 작은 줄 공책에서 조금만 비켜 써도 획순이 틀렸다고 나온다.
     const actual = align(expected, written);
+    const T = Reference.tolerance,
+      G = Reference.glyphSize();
     let correct = 0;
     expected.forEach((s, i) => {
       const p = actual[i];
@@ -77,15 +79,15 @@
         ...expected.filter((_, j) => j !== i).map((t) => strokeError(t, p)),
         Infinity,
       );
-      // Count, indexed path, direction, coverage and endpoints all matter.
+      // Count, indexed path, direction, coverage and endpoints all matter. 거리는 글자 높이에 대한 비율(pen-reference.js의 TOL).
       if (
-        forward <= 17 &&
-        forward <= reverse + 1 &&
-        forward <= alternative + 1.5 &&
-        distance(s[0], p[0]) <= 22 &&
-        distance(s[s.length - 1], p[p.length - 1]) <= 22 &&
+        forward <= T.path * G &&
+        forward <= reverse + T.dir * G &&
+        forward <= alternative + T.alt * G &&
+        distance(s[0], p[0]) <= T.end * G &&
+        distance(s[s.length - 1], p[p.length - 1]) <= T.end * G &&
         length(p) >= length(s) * 0.55 &&
-        length(p) <= Math.max(length(s) * 1.8, length(s) + 6) // i·j의 점처럼 아주 짧은 획은 조금 끌어도 받는다
+        length(p) <= Math.max(length(s) * 2.2, length(s) + T.long * G) // 덧칠은 막되, 짧은 획(i·j의 점, 짧은 삐침)은 조금 끌어도 받는다
       )
         correct++;
     });

@@ -366,34 +366,7 @@ summary:focus-visible {
 .sheet.lined .write-cell {
   top: var(--line);
 }
-/* 지금 쓰는 글자 자리는 쓰기 줄에 옅은 바탕(획 아래), 확인 뒤에는 그 자리 바닥에 통과(초록)·다시(주황) 줄. */
-.sheet.lined .cell-pair::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: var(--line);
-  height: var(--line);
-  z-index: -1;
-  pointer-events: none;
-}
-.sheet.lined .cell-pair.active::before {
-  background-color: rgba(50, 102, 79, 0.1);
-}
-/* 옆 글자 표시와 이어지지 않게 자리 가운데 70%에만 긋는다. */
-.sheet.lined .cell-pair.pass::before,
-.sheet.lined .cell-pair.retry::before {
-  background-image: linear-gradient(var(--mark), var(--mark));
-  background-size: 70% 3px;
-  background-position: 50% calc(100% - 2px);
-  background-repeat: no-repeat;
-}
-.sheet.lined .cell-pair.pass {
-  --mark: #3f9a62;
-}
-.sheet.lined .cell-pair.retry {
-  --mark: #d58a3c;
-}
+/* 글자마다 칸·바탕·밑줄을 두지 않는다. 지금 글자는 본보기 글자가 파랗고, 확인 결과는 쓴 글씨 색이다(app.js). */
 .check[hidden] {
   display: none;
 }
@@ -1310,10 +1283,14 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
 .room-only .cell-pair {
   position: relative;
 }
-/* 줄 공책에서는 다 쓴 글자(쓰기 줄의 그 자리) 둘레로 번진다. */
+/* 줄 공책에서는 다 쓴 글자 둘레로 둥근 먹 물결이 번진다(네모 칸을 그리지 않는다). */
 .sheet.lined .cell-pair.inked-ring::after {
-  inset: var(--line) 0 0 0;
-  border-radius: 4px;
+  inset: auto;
+  left: 50%;
+  top: calc(var(--line) * 1.5);
+  width: calc(var(--line) * 0.6);
+  height: calc(var(--line) * 0.6);
+  border-radius: 50%;
   animation-name: line-ring;
 }
 
@@ -1888,11 +1865,11 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
 @keyframes line-ring {
   from {
     opacity: 0.9;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
   to {
     opacity: 0;
-    transform: scale(1.45, 1.2);
+    transform: translate(-50%, -50%) scale(1.7);
   }
 }
 @keyframes count-zoom {

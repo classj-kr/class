@@ -121,10 +121,12 @@
   const modelStrokes = (strokes) => strokes.map((s) => ({ ...s, points: (s.points || s).map((p) => toModel(p)) }));
   // 브라우저는 화면의 실제 길이를 모른다. 학교에서 쓰는 아이패드·크롬북은 화면의 실제 픽셀 수로 패널을 알아보고,
   // 그 패널의 인치당 픽셀 수로 1cm가 CSS 몇 px인지 구한다. 모르는 기기는 그대로 둔다.
+  // 크롬은 브라우저 확대(Ctrl +)를 devicePixelRatio에만 넣고 screen 크기는 그대로 둔다. 그래서 창 바깥 너비 ÷ 안 너비로
+  // 확대 배율을 어림해(크롬 확대 단계 중 가장 가까운 것) 빼 본다. 줄 길이는 확대까지 든 배율로 계산하므로 확대해도 15 mm다.
   (function () {
     const ratio = window.devicePixelRatio || 1,
-      long = Math.max(screen.width, screen.height) * ratio,
-      short = Math.min(screen.width, screen.height) * ratio;
+      seen = window.outerWidth && window.innerWidth ? window.outerWidth / window.innerWidth : 1,
+      zoom = [0.25, 0.33, 0.5, 0.67, 0.75, 0.8, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4, 5].reduce((a, b) => (Math.abs(b - seen) < Math.abs(a - seen) ? b : a));
     const panels = [
       [2160, 1620, 264],
       [2360, 1640, 264],
@@ -133,7 +135,12 @@
       [2266, 1488, 326],
       [1366, 768, 135],
     ];
-    const hit = panels.find(([w, h]) => Math.abs(long - w) <= 2 && Math.abs(short - h) <= 2);
+    const match = (scale) => {
+      const long = Math.max(screen.width, screen.height) * scale,
+        short = Math.min(screen.width, screen.height) * scale;
+      return panels.find(([w, h]) => Math.abs(long - w) <= 2 && Math.abs(short - h) <= 2);
+    };
+    const hit = match(ratio) || match(ratio / zoom);
     if (!hit) return;
     document.documentElement.style.setProperty('--px-per-cm', String(hit[2] / 2.54 / ratio));
     document.documentElement.dataset.physical = '1';
@@ -269,7 +276,7 @@
     context.drawImage(layer, 0, 0, 100, 100);
   }
   // 글자 하나: 쓰기와 본보기가 같은 크기를 쓴다. 줄 공책의 줄은 연습장 바탕(CSS)이 긋고 캔버스는 투명하다.
-  function paper(context, char, strokes, { guide = true, trace = false, next = false } = {}) {
+  function paper(context, char, strokes, { guide = true, trace = false, next = false, ink = '#233c34' } = {}) {
     context.save();
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
@@ -295,7 +302,7 @@
     }
     const paths = shownModel(char);
     if (trace && referenceReady) reference(context, char, '#cdd3c7');
-    strokes.forEach((s) => path(context, s.points, '#233c34', s.width || doc.width));
+    strokes.forEach((s) => path(context, s.points, ink, s.width || doc.width));
     if (next && trace && strokes.length < paths.length) {
       const s = paths[strokes.length];
       context.fillStyle = '#cb763f';
@@ -315,14 +322,20 @@
       guide: doc.guide,
       trace: doc.phase === 'trace',
       next: i === doc.index,
+      // 줄 공책은 글자마다 칸·표시를 두지 않는다(교과서처럼). 확인 결과는 쓴 글씨 색으로: 통과 초록, 다시 주황.
+      ink: lined() ? INK[marks[i]] || INK.plain : INK.plain,
     });
   }
+  const INK = { plain: '#233c34', pass: '#2b8a55', retry: '#cf6a1d' },
+    MODEL_INK = '#27362f',
+    CURRENT_MODEL_INK = '#2563a8'; // 줄 공책에서 지금 쓰는 글자는 본보기 글자를 파랗게 해서 알린다
   function queueDraw() {
     if (!frame) frame = requestAnimationFrame(() => draw());
   }
-  function drawModel(color = '#27362f', i = doc.index) {
+  function drawModel(color, i = doc.index) {
     const cell = cells[i];
     if (!cell) return;
+    color = color || (lined() && i === doc.index ? CURRENT_MODEL_INK : MODEL_INK);
     const m = cell.model.getContext('2d');
     paper(m, letters()[i], [], { guide: doc.guide });
     m.save();
