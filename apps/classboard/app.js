@@ -248,21 +248,15 @@ function teacherBoardList() {
     return list;
 }
 
-// 학생 첫 화면에서는 반 게시판이 알림장임을 이름으로 알려 준다.
-function boardCardName(board) {
-    return showClassroomCard && board.kind === 'class' ? `${board.label} 알림장` : board.label;
-}
-
 function renderGroupList(animate = true) {
     updatePageTitle();
     const focusedKey = document.activeElement?.dataset.boardKey;
     groupListSection.replaceChildren(...boards.map((board, index) => {
         const card = document.createElement('a');
-        const cardName = boardCardName(board);
         card.className = `group-card tone-${(index + (showClassroomCard ? 1 : 0)) % 4}`;
         card.dataset.boardKey = board.key;
         card.href = withView(new URLSearchParams({ board: board.key }));
-        card.setAttribute('aria-label', `${cardName}${board.unreadCount ? `, 안 읽은 글 ${board.unreadCount}개` : ''}`);
+        card.setAttribute('aria-label', `${board.label}${board.unreadCount ? `, 안 읽은 글 ${board.unreadCount}개` : ''}`);
         const icon = document.createElement('span');
         icon.className = 'material-symbols-outlined group-icon';
         icon.setAttribute('aria-hidden', 'true');
@@ -272,7 +266,7 @@ function renderGroupList(animate = true) {
         type.textContent = board.typeLabel;
         const name = document.createElement('strong');
         name.className = 'group-name';
-        name.textContent = cardName;
+        name.textContent = board.label;
         card.append(icon, type, name);
         if (board.memberCount != null) {
             const members = document.createElement('span');
