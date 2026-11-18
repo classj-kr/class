@@ -35,24 +35,20 @@
 
         /* 스타트 화면 스타일 */
         .start-screen {
-            width: min(940px, 100%);
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .start-card {
             background:
                 linear-gradient(rgba(43,26,14,.82), rgba(21,13,7,.90)),
                 url('../../../assets/images/mainbg2.webp') center / cover;
             border: 3px solid #a27d4f;
             box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.6);
             border-radius: 16px;
-            padding: 36px 30px;
+            width: min(450px, 92vw);
+            padding: 32px 28px;
             text-align: center;
             box-sizing: border-box;
+            margin: auto;
         }
 
-        .start-screen .finishers-panel {
+        .finishers-side-panel {
             background:
                 linear-gradient(rgba(32,19,10,.86), rgba(18,10,5,.92)),
                 url('../../../assets/images/mainbg2.webp') center / cover;
@@ -735,7 +731,7 @@ textarea,
         align-items: flex-start;
     }
 
-    .start-card {
+    .start-screen {
         width: 100%;
         max-width: 450px;
         margin-top: 8px;
@@ -871,25 +867,24 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
 
 
 <div class="start-screen" id="start-screen" data-game-entry>
-    <div class="start-card">
-        <div class="start-title">TOWER OF HANOI</div>
-        <div class="start-subtitle">Antique Tower of Hanoi</div>
+    <div class="start-title">TOWER OF HANOI</div>
+    <div class="start-subtitle">Antique Tower of Hanoi</div>
 
-        <div class="player-entry">
-            <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
-            <button class="action-btn btn-start-action" type="button" onclick="location.href='../../../'">메인 화면으로</button>
-        </div>
-        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>Start</button>
-            <button class="action-btn btn-start-action" id="race-button" type="button" hidden>순위전</button>
-            <button data-game-rules class="action-btn btn-start-action" type="button" onclick="showRules()">Rules</button>
-        </div>
+    <div class="player-entry">
+        <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
+        <button class="action-btn btn-start-action" type="button" onclick="location.href='../../../'">메인 화면으로</button>
     </div>
-    <div class="finishers-panel">
-        <div class="finishers-title">🏆 FINISHERS</div>
-        <div class="finishers-list" id="today-finishers-list"></div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="action-btn btn-start-action" id="start-game-button" onclick="startGameEnvironment()" disabled>Start</button>
+        <button class="action-btn btn-start-action" id="race-button" type="button" hidden>순위전</button>
+        <button data-game-rules class="action-btn btn-start-action" type="button" onclick="showRules()">Rules</button>
     </div>
 </div>
+
+<aside class="finishers-panel finishers-side-panel" id="today-finishers-panel">
+    <div class="finishers-title">🏆 FINISHERS</div>
+    <div class="finishers-list" id="today-finishers-list"></div>
+</aside>
 
 <div class="game-container" id="game-container">
     <div class="controls">
@@ -1054,6 +1049,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         bgm.play().catch(e => console.log("배경음악 재생 차단: 파일 경로를 확인하세요."));
 
         document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('today-finishers-panel')?.style.setProperty('display', 'none');
         document.getElementById('game-container').style.display = 'flex';
 
         setVolume(0.6);

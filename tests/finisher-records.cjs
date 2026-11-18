@@ -75,6 +75,15 @@ const { initializeFinisherIdentity, listFinisherRecords, saveFinisherRecord } = 
     assert.equal(records[0].classNumber, 1);
     assert.equal(records[1].classNumber, 2);
 
+    // 한 학생이 legacy 키와 user 키 등 서로 다른 방식으로 남긴 기록이 있어도
+    // 화면에 동일인(6-2 한송이)으로 표기되면 무조건 최고 기록 1건만 표시된다.
+    await saveFinisherRecord(pool, { date:'2026-11-06', gameId:'hanoitower', name:'한송이', difficulty:'원판 4개 · NORMAL', rank:4, time:'10:00' });
+    await saveFinisherRecord(pool, { date:'2026-11-18', gameId:'hanoitower', name:'한송이', userId:'99', grade:6, classNumber:2, schoolId:'1', difficulty:'원판 6개 · NORMAL', rank:6, time:'11:00' });
+    records = await listFinisherRecords(pool, '2026-11-18', 'hanoitower', '1');
+    const hsong = records.filter(r => r.name === '한송이');
+    assert.equal(hsong.length, 1, '한송이는 무조건 1명만 표시된다');
+    assert.equal(hsong[0].rank, 6, '더 높은 최고 기록(원판 6개)만 남는다');
+
     const target = { innerHTML:'' }, window = {};
     vm.runInNewContext(fs.readFileSync('assets/network/finisher-board.js','utf8'), {
       window, document:{currentScript:null,querySelector:()=>true,getElementById:()=>target}

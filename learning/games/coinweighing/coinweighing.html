@@ -48,18 +48,13 @@
 
         /* 스타트 화면 스타일 */
         .start-screen {
-            width: min(940px, 100%);
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .start-card {
             background:
                 linear-gradient(rgba(5,11,17,.62), rgba(5,11,17,.78)),
                 url('../../../assets/images/mainbg2.webp') center / cover no-repeat;
             border: 6px solid #bda85d;
             box-shadow: 0 0 0 4px #4a3c18, inset 0 0 30px rgba(0,0,0,0.9);
             border-radius: 16px;
+            width: min(520px, 92vw);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -67,15 +62,16 @@
             box-sizing: border-box;
             color: #bda85d;
             text-align: center;
-            padding: 32px 24px;
+            padding: 28px 24px;
+            margin: auto;
         }
 
-        .start-screen .finishers-panel {
+        .finishers-side-panel {
             background:
                 linear-gradient(rgba(5,11,17,.75), rgba(5,11,17,.88)),
                 url('../../../assets/images/mainbg2.webp') center / cover no-repeat;
-            border: 6px solid #bda85d;
-            box-shadow: 0 0 0 4px #4a3c18, inset 0 0 30px rgba(0,0,0,0.9);
+            border: 5px solid #bda85d;
+            box-shadow: 0 0 0 3px #4a3c18, inset 0 0 30px rgba(0,0,0,0.9);
             border-radius: 16px;
             padding: 20px 18px;
         }
@@ -1211,55 +1207,52 @@ body.pr-racing .ingame-difficulty-panel, body.pr-racing .cw-hint-btn, body.pr-ra
 <audio id="bgm" src="/learning/games/coinweighing/assets/sound/bgm.ogg" loop></audio>
 
 <div class="start-screen" id="start-screen" data-game-entry>
-    <div class="start-card">
-        <div class="start-title">COIN WEIGHING</div>
-        <div class="start-subtitle">COIN WEIGHING GAME</div>
+    <div class="start-title">COIN WEIGHING</div>
+    <div class="start-subtitle">COIN WEIGHING GAME</div>
 
-        <div class="player-entry">
-            <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
-            <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
-        </div>
+    <div class="player-entry">
+        <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
+        <button class="action-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
+    </div>
 
-        <div class="difficulty-container">
-            <div class="difficulty-label">SELECT COINS COUNT</div>
-            <div class="diff-btn-group">
-                <button class="diff-btn" onclick="setGlobalDifficulty(8, true)">8</button>
-                <button class="diff-btn" onclick="setGlobalDifficulty(9, true)">9</button>
-                <button class="diff-btn" onclick="setGlobalDifficulty(10, true)">10</button>
-                <button class="diff-btn" onclick="setGlobalDifficulty(11, true)">11</button>
-                <button class="diff-btn active" onclick="setGlobalDifficulty(12, true)">12</button>
-                <button class="diff-btn" onclick="setGlobalDifficulty(13, true)">13</button>
-            </div>
-        </div>
-
-        <div class="volume-container">
-            <div class="volume-label">MUSIC VOLUME</div>
-            <div class="volume-interface">
-                <button class="vol-mute-btn" id="startMuteBtn" onclick="setVolume(0)">MUTE</button>
-                <div class="volume-bar-container">
-                    <div class="vol-block start-vb-1" id="start-vb-1" onclick="setVolume(0.2)"></div>
-                    <div class="vol-block start-vb-2" id="start-vb-2" onclick="setVolume(0.4)"></div>
-                    <div class="vol-block start-vb-3" id="start-vb-3" onclick="setVolume(0.6)"></div>
-                    <div class="vol-block start-vb-4" id="start-vb-4" onclick="setVolume(0.8)"></div>
-                    <div class="vol-block start-vb-5" id="start-vb-5" onclick="setVolume(1.0)"></div>
-                </div>
-            </div>
-        </div>
-
-
-        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>Start</button>
-            <button class="action-btn" id="race-button" type="button" hidden>순위전</button>
-            <button data-game-rules class="action-btn" type="button" onclick="openRules()">Rules</button>
+    <div class="difficulty-container">
+        <div class="difficulty-label">SELECT COINS COUNT</div>
+        <div class="diff-btn-group">
+            <button class="diff-btn" onclick="setGlobalDifficulty(8, true)">8</button>
+            <button class="diff-btn" onclick="setGlobalDifficulty(9, true)">9</button>
+            <button class="diff-btn" onclick="setGlobalDifficulty(10, true)">10</button>
+            <button class="diff-btn" onclick="setGlobalDifficulty(11, true)">11</button>
+            <button class="diff-btn active" onclick="setGlobalDifficulty(12, true)">12</button>
+            <button class="diff-btn" onclick="setGlobalDifficulty(13, true)">13</button>
         </div>
     </div>
 
-    <div class="finishers-panel">
-        <div class="finishers-title">🏆 FINISHERS</div>
-        <div class="finishers-list" id="today-finishers-list"></div>
+    <div class="volume-container">
+        <div class="volume-label">MUSIC VOLUME</div>
+        <div class="volume-interface">
+            <button class="vol-mute-btn" id="startMuteBtn" onclick="setVolume(0)">MUTE</button>
+            <div class="volume-bar-container">
+                <div class="vol-block start-vb-1" id="start-vb-1" onclick="setVolume(0.2)"></div>
+                <div class="vol-block start-vb-2" id="start-vb-2" onclick="setVolume(0.4)"></div>
+                <div class="vol-block start-vb-3" id="start-vb-3" onclick="setVolume(0.6)"></div>
+                <div class="vol-block start-vb-4" id="start-vb-4" onclick="setVolume(0.8)"></div>
+                <div class="vol-block start-vb-5" id="start-vb-5" onclick="setVolume(1.0)"></div>
+            </div>
+        </div>
     </div>
 
+
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="action-btn" id="start-game-button" onclick="startGame()" disabled>Start</button>
+        <button class="action-btn" id="race-button" type="button" hidden>순위전</button>
+        <button data-game-rules class="action-btn" type="button" onclick="openRules()">Rules</button>
+    </div>
 </div>
+
+<aside class="finishers-panel finishers-side-panel" id="today-finishers-panel">
+    <div class="finishers-title">🏆 FINISHERS</div>
+    <div class="finishers-list" id="today-finishers-list"></div>
+</aside>
 
 <div class="game-board" id="game-board">
 
@@ -1479,6 +1472,7 @@ body.pr-racing .ingame-difficulty-panel, body.pr-racing .cw-hint-btn, body.pr-ra
         window.ClassGameSfx?.unlock();
 
         document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('today-finishers-panel')?.style.setProperty('display', 'none');
         document.getElementById('game-board').style.display = 'block';
         initGame();
     }

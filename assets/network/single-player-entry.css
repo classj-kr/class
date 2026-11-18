@@ -16,75 +16,24 @@
 html { box-sizing: border-box; }
 body { box-sizing: border-box; }
 body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden])) { height: auto; min-height: 100dvh; }
-:is(#start-screen,#startScreen) { box-sizing: border-box; width: min(560px,100%); max-width: 100%; min-height: 0 !important; height: auto !important; margin: 40px auto 24px; padding: 0; }
+
+/* 간판(시작 카드): 화면 센터에 단독 배치되며, 완료자 패널에 맞춰 높이를 늘리지 않고 본래의 콤팩트한 높이를 유지한다. */
+:is(#start-screen,#startScreen) {
+  box-sizing: border-box;
+  width: min(var(--solo-entry-width, 480px), 100%);
+  max-width: 100%;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: auto !important;
+}
 :is(#start-screen,#startScreen) .start-title { margin: 0 0 12px; }
 :is(#start-screen,#startScreen) button { min-height: 44px; }
-:is(#start-screen,#startScreen) .finishers-panel { margin-top: 16px; }
 :is(#start-screen,#startScreen) .start-subtitle { margin-bottom: 20px; }
 :is(#start-screen,#startScreen) .diff-btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
 :is(#start-screen,#startScreen) .diff-btn { min-width: 40px; }
 
-/* 데스크톱(860px 이상): 시작 카드(좌측)와 완주자 패널(우측)을 독립된 2열 사이드 패널로 나란히 배치 */
-@media (min-width: 860px) {
-  body:is(:has([data-game-entry]:not([hidden]):not(.hidden):not([style*="display: none"]):not([style*="display:none"])), :has(.game-frame [data-difficulty-button])) {
-    padding: 24px !important;
-  }
-  :is(#start-screen,#startScreen, [data-game-entry]):not(.game-frame) {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important;
-    justify-content: center !important;
-    gap: 22px !important;
-    width: min(940px, calc(100vw - 32px)) !important;
-    max-width: 940px !important;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
-  :is(#start-screen,#startScreen, [data-game-entry]) > .start-card {
-    flex: 1 1 var(--solo-entry-width, 460px);
-    max-width: 500px;
-    box-sizing: border-box;
-  }
-  :is(#start-screen,#startScreen, [data-game-entry]) > .finishers-panel {
-    flex: 1 1 400px;
-    max-width: 460px;
-    margin: 0 !important;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-  :is(#start-screen,#startScreen, [data-game-entry]) > .finishers-panel .finishers-list {
-    flex: 1 1 auto;
-    max-height: 420px;
-  }
-}
-
-@media (max-width: 859px) {
-  :is(#start-screen,#startScreen, [data-game-entry]) {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 16px !important;
-    width: min(var(--solo-entry-width), 100%) !important;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
-  :is(#start-screen,#startScreen, [data-game-entry]) > .start-card {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  :is(#start-screen,#startScreen, [data-game-entry]) > .finishers-panel {
-    width: 100%;
-    margin: 0 !important;
-    box-sizing: border-box;
-  }
-}
-/* Sphinx entry uses a compact illustration instead of reserving a game-sized column. */
-.game-frame:has([data-difficulty-button]) { display: block; width: min(560px,100%); min-height: 0; margin: 64px auto 24px; padding: 20px; border-radius: 16px; }
+/* Sphinx entry */
+.game-frame:has([data-difficulty-button]) { display: block; width: min(520px,100%); min-height: 0; margin: auto !important; padding: 20px; border-radius: 16px; height: auto !important; max-height: none !important; }
 .game-frame:has([data-difficulty-button]) .sphinx-panel { min-height: 0; padding: 0 0 12px; border: 0; background: none; }
 .game-frame:has([data-difficulty-button]) .sphinx-panel::before,
 .game-frame:has([data-difficulty-button]) .sphinx-name { display: none; }
@@ -94,7 +43,6 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 .game-frame:has([data-difficulty-button]) #display-area { min-height: 0; padding: 16px; }
 .game-frame:has([data-difficulty-button]) .question-text { min-height: 0; margin: 0 0 16px; }
 .game-frame:has([data-difficulty-button]) .quiz-btn { min-height: 44px; }
-.game-frame:has([data-difficulty-button]) { height: auto !important; max-height: none !important; }
 
 :is(#start-screen,#startScreen) .start-title { max-width: 100%; overflow-wrap: normal; }
 @media (max-width: 600px) {
@@ -103,41 +51,73 @@ body:has(#start-screen:not([style*="none"])), body:has(#startScreen:not([hidden]
 
 /* Each solo game keeps the space needed by its own setup controls. */
 body[data-entry-game="hanoitower"] { --solo-entry-width: 480px; }
-body[data-entry-game="coinweighing"] { --solo-entry-width: 480px; }
+body[data-entry-game="coinweighing"] { --solo-entry-width: 520px; }
 body[data-entry-game="nonogram"] { --solo-entry-width: 440px; }
 body[data-entry-game="minesweeper"] { --solo-entry-width: 480px; }
 body[data-entry-game="sachunseong"] { --solo-entry-width: 480px; }
 body[data-entry-game="sliding-puzzle"] { --solo-entry-width: 420px; }
-body[data-entry-game="sphinx"] { --solo-entry-width: 500px; }
+body[data-entry-game="sphinx"] { --solo-entry-width: 520px; }
 
 body:is(:has([data-game-entry]:not([hidden]):not(.hidden):not([style*="display: none"]):not([style*="display:none"])), :has(.game-frame [data-difficulty-button])) {
-  min-height: 100dvh; height: auto !important; margin: 0; padding: 0 !important;
-  display: flex; flex-direction: column; align-items: center; justify-content: safe center;
+  min-height: 100dvh; height: auto !important; margin: 0; padding: 16px !important;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 body > .page-shell:has(> [data-game-entry]:not([hidden]):not(.hidden)),
 body[data-entry-game]:has(.game-frame [data-difficulty-button]) {
   min-height: var(--site-game-height, 100dvh); height: auto !important; width: 100%; max-width: none;
   box-sizing: border-box; padding: 16px !important; margin: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: safe center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-@media (min-width: 860px) {
-  body[data-entry-game] [data-game-entry] {
-    width: min(940px, calc(100vw - 32px)) !important;
-    max-width: 940px !important;
-    margin: 0 auto !important;
-    flex: 0 0 auto;
-  }
-}
-@media (max-width: 859px) {
-  body[data-entry-game] [data-game-entry] {
-    width: min(var(--solo-entry-width), 100%) !important;
-    max-width: calc(100vw - 32px) !important;
-    margin: 0 auto !important;
-    flex: 0 0 auto;
-  }
+body[data-entry-game] [data-game-entry] {
+  width: min(var(--solo-entry-width, 480px), 100%) !important;
+  max-width: calc(100vw - 32px) !important;
+  margin: auto !important;
+  flex: 0 0 auto;
 }
 body[data-entry-game] .game-frame:has([data-difficulty-button]) {
-  width: min(var(--solo-entry-width), 100%) !important; max-width: calc(100vw - 32px) !important;
-  margin: 0 auto !important; flex: 0 0 auto;
+  width: min(var(--solo-entry-width, 520px), 100%) !important;
+  max-width: calc(100vw - 32px) !important;
+  margin: auto !important;
+  flex: 0 0 auto;
+}
+
+/* 완주자(FINISHERS) 사이드 패널: 간판과 완전히 따로 분리되어, 데스크톱에서는 센터 간판의 오른쪽에 독립 배치 */
+@media (min-width: 960px) {
+  .finishers-side-panel {
+    position: fixed !important;
+    left: calc(50% + (var(--solo-entry-width, 480px) / 2) + 20px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: min(390px, calc(50vw - (var(--solo-entry-width, 480px) / 2) - 30px)) !important;
+    max-height: min(480px, calc(100dvh - 60px)) !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+  .finishers-side-panel .finishers-list {
+    flex: 1 1 auto;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 959px) {
+  .finishers-side-panel {
+    position: static !important;
+    transform: none !important;
+    width: min(var(--solo-entry-width, 480px), 100%) !important;
+    margin: 20px auto 40px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* 게임 플레이 중 완료자 패널 숨김 */
+body:has(#start-screen[style*="none"]) .finishers-side-panel,
+body:has(#startScreen[hidden]) .finishers-side-panel,
+body:has(.game-frame:not(:has([data-difficulty-button]))) .finishers-side-panel,
+body:not(:has(#start-screen:not([style*="none"]))):not(:has(#startScreen:not([hidden]))):not(:has(.game-frame [data-difficulty-button])) .finishers-side-panel,
+body.in-game .finishers-side-panel {
+  display: none !important;
 }
 body[data-entry-game]:has(> [data-game-entry]:not([hidden]):not([style*="none"])) { padding: 16px !important; }

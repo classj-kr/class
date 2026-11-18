@@ -697,32 +697,14 @@ textarea,
 }
 
 
-@media (min-width: 860px) {
-    .sphinx-start-wrap {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        align-items: stretch;
-        justify-content: center;
-        width: 100%;
-        max-width: 880px;
-        margin: 0 auto;
-    }
-    .sphinx-start-wrap > .start-card {
-        flex: 1 1 440px;
-        max-width: 460px;
-    }
-    .sphinx-start-wrap > .finishers-panel {
-        flex: 1 1 380px;
-        max-width: 440px;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
-    .sphinx-start-wrap > .finishers-panel .finishers-list {
-        flex: 1 1 auto;
-        max-height: 380px;
-    }
+.finishers-side-panel {
+    background:
+        linear-gradient(rgba(24, 12, 6, .90), rgba(12, 6, 3, .94)),
+        url('../../../assets/images/mainbg2.webp') center / cover;
+    border: 3px solid #bba16b;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,0.6);
+    border-radius: 16px;
+    padding: 20px 18px;
 }
 
 @media (max-width: 760px), (pointer: coarse) {
@@ -782,6 +764,11 @@ body{align-items:center;padding:18px}
         <button class="quiz-btn solo-only" type="button" onclick="location.href='../../../'" style="margin-top:10px;">메인 화면으로</button>
     </div>
 </div>
+
+<aside class="finishers-panel finishers-side-panel" id="today-finishers-panel">
+    <div class="finishers-title">🏆 FINISHERS</div>
+    <div class="finishers-list" id="today-finishers-list"></div>
+</aside>
 <style>
 /* 순위전(puzzle-race.js): 풀이 도우미는 틀렸을 때만 열리고, 메인 화면 단추 대신 경주로를 둔다. */
 body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !important; }
@@ -869,25 +856,18 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
 
     function loadQuestion() {
         if (currentStage === 0) {
+            document.getElementById('today-finishers-panel')?.style.removeProperty('display');
             displayArea.innerHTML = `
-                <div class="sphinx-start-wrap">
-                    <div class="start-card">
-                        <div class="question-text">${playerName ? `PLAYER · ${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
-                        <div class="player-entry">
-                            <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
-                            <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
-                        </div>
-                        <div class="options-container" data-game-entry>
-                            <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">Start · Beginner</button>
-                            <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">Start · Advanced</button>
-                            <button data-game-rules class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
-                            <button class="quiz-btn race-start" type="button" onclick="race.open()" ${playerName ? "" : "hidden"}>순위전</button>
-                        </div>
-                    </div>
-                    <div class="finishers-panel">
-                        <div class="finishers-title">🏆 FINISHERS</div>
-                        <div class="finishers-list" id="today-finishers-list"></div>
-                    </div>
+                <div class="question-text">${playerName ? `PLAYER · ${escapeFinisherHtml(playerName)}` : "<스핑크스> 도전할 자는 이름과 실력을 밝혀라."}</div>
+                <div class="player-entry">
+                    <div class="player-name-help" id="player-name-help">이름이 없습니다. 메인 화면에서 이름을 먼저 저장해 주세요.</div>
+                    <button class="quiz-btn" type="button" onclick="location.href='../../../'">메인 화면으로</button>
+                </div>
+                <div class="options-container" data-game-entry>
+                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(5)">Start · Beginner</button>
+                    <button class="quiz-btn" data-difficulty-button onclick="setDiff(10)">Start · Advanced</button>
+                    <button data-game-rules class="quiz-btn" type="button" onclick="showSphinxRules()">Rules</button>
+                    <button class="quiz-btn race-start" type="button" onclick="race.open()" ${playerName ? "" : "hidden"}>순위전</button>
                 </div>`;
             if (playerName) window.ClassroomSoloAvatar.show(displayArea.querySelector(".question-text"));
             const playerEntry = document.querySelector(".player-entry");
@@ -900,6 +880,8 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
             loadTodayFinishers();
             return;
         }
+
+        document.getElementById('today-finishers-panel')?.style.setProperty('display', 'none');
 
         const standardOptions = Array.from({length: difficulty}, (_, i) => `${i + 1}마리`);
         let qText = "", ans = "", coachHtml = "";

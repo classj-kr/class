@@ -64,7 +64,10 @@ async function listFinisherRecords(pool, date, gameId, schoolId = null) {
         CASE WHEN r.player_key LIKE 'legacy:%' THEN u.grade ELSE r.grade END AS grade,
         CASE WHEN r.player_key LIKE 'legacy:%' THEN u.class_number ELSE r.class_number END AS "classNumber",
         ROW_NUMBER() OVER (
-          PARTITION BY COALESCE(r.player_key, r.player_name)
+          PARTITION BY
+            COALESCE(CASE WHEN r.player_key LIKE 'legacy:%' THEN u.grade ELSE r.grade END, 0),
+            COALESCE(CASE WHEN r.player_key LIKE 'legacy:%' THEN u.class_number ELSE r.class_number END, 0),
+            r.player_name
           ORDER BY r.rank DESC, r.record_date DESC, r.finished_time DESC
         ) AS rn
       FROM game_finisher_records r
@@ -106,21 +109,23 @@ async function saveFinisherRecord(pool, record) {
     }
     const academicYear = Number(date.slice(0, 4)) - (Number(date.slice(5, 7)) < 3 ? 1 : 0);
 
-    // 같은 학년도 내 기존 최고 기록 확인: 이전 기록이 새 기록보다 높으면(예: 8개 > 3개) 새 낮은 기록은 반영하지 않고 최고 기록을 유지한다.
-    const existing = await client.query(`SELECT record_date, rank FROM game_finisher_records
+    // 같은 학년도 내 동일인(키 또는 학년/반/이름)의 기존 최고 기록 확인:
+    // 이전 기록이 새 기록보다 높으면(예: 8개 > 3개) 새 낮은 기록은 반영하지 않고 최고 기록을 유지한다.
+    const existing = await client.query(`SELECT record_date, rank, player_key FROM game_finisher_records
       WHERE record_date >= make_date($1::int, 3, 1) AND record_date < make_date($1::int + 1, 3, 1)
-        AND game_id = $2 AND player_key = $3
-      ORDER BY rank DESC, record_date DESC LIMIT 1`, [academicYear, gameId, playerKey]);
+        AND game_id = $2
+        AND (player_key = $3 OR (player_name = $4 AND grade IS NOT DISTINCT FROM $5 AND class_number IS NOT DISTINCT FROM $6))
+      ORDER BY rank DESC, record_date DESC LIMIT 1`, [academicYear, gameId, playerKey, name, grade || null, classNumber || null]);
     const prevBest = existing.rows[0];
 
     if (!prevBest || rank >= Number(prevBest.rank)) {
-      // 기존 다른 날짜에 더 낮은 기록이 있었다면 정리하여 1인 1 최고기록만 남긴다.
-      if (prevBest && prevBest.record_date && prevBest.record_date !== date) {
-        await client.query(`DELETE FROM game_finisher_records
-          WHERE record_date >= make_date($1::int, 3, 1) AND record_date < make_date($1::int + 1, 3, 1)
-            AND game_id = $2 AND player_key = $3 AND record_date <> $4::date`,
-          [academicYear, gameId, playerKey, date]);
-      }
+      // 기존 동일인의 다른 낮은 기록들이 있었다면 정리하여 1인 1 최고기록만 남긴다.
+      await client.query(`DELETE FROM game_finisher_records
+        WHERE record_date >= make_date($1::int, 3, 1) AND record_date < make_date($1::int + 1, 3, 1)
+          AND game_id = $2
+          AND (player_key = $3 OR (player_name = $4 AND grade IS NOT DISTINCT FROM $5 AND class_number IS NOT DISTINCT FROM $6))
+          AND (record_date <> $7::date OR player_key <> $3)`,
+        [academicYear, gameId, playerKey, name, grade || null, classNumber || null, date]);
 
       await client.query(`INSERT INTO game_finisher_records
       (record_date, game_id, player_key, player_name, difficulty, rank, finished_time, grade, class_number, school_id)
