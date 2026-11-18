@@ -54,6 +54,7 @@ let loadedPosts = [];
 let loadedNotices = [];
 // 'student' | 'guardian' | 'teacher'. 무엇을 누를 수 있는지가 여기서 갈린다.
 let viewerRole = 'student';
+let showClassroomCard = false;
 
 // Utility: Autolink URL conversion
 function linkify(text) {
@@ -98,6 +99,7 @@ async function initApp() {
 
         // Setup Header
         userInfoEl.textContent = '';
+        showClassroomCard = viewerRole === 'student' && Boolean(data.membership);
         const roleLabel = { teacher: '교사', guardian: '학부모', student: '학생' }[viewerRole];
         profileAvatarEl = document.createElement('span');
         profileAvatarEl.className = 'avatar profile-avatar';
@@ -181,7 +183,34 @@ function boardIcon(board) {
     return /오케스트라|합주|합창|음악/.test(board.label) ? 'music_note' : 'groups';
 }
 
+// 탭 이름: 게시판 안이면 그 게시판, 첫 화면이면 우리 반.
+function updatePageTitle() {
+    const board = boards.find(b => b.key === activeBoardKey);
+    const classes = boards.filter(b => b.kind === 'class');
+    document.title = board?.label || (classes.length === 1 ? classes[0].label : '학급');
+}
+
+function classroomCard(index) {
+    const card = document.createElement('a');
+    card.className = `group-card tone-${index % 4}`;
+    card.dataset.boardKey = 'classroom';
+    card.href = '/classtools/dashboard?view=student';
+    const icon = document.createElement('span');
+    icon.className = 'material-symbols-outlined group-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = 'dashboard';
+    const type = document.createElement('span');
+    type.className = 'group-type';
+    type.textContent = '학급';
+    const name = document.createElement('strong');
+    name.className = 'group-name';
+    name.textContent = '우리 교실';
+    card.append(icon, type, name);
+    return card;
+}
+
 function renderGroupList(animate = true) {
+    updatePageTitle();
     const focusedKey = document.activeElement?.dataset.boardKey;
     groupListSection.replaceChildren(...boards.map((board, index) => {
         const card = document.createElement('a');
@@ -222,7 +251,8 @@ function renderGroupList(animate = true) {
         });
         return card;
     }));
-    if (!boards.length) groupListSection.innerHTML = '<div class="loader">소속된 그룹이 없습니다.</div>';
+    if (showClassroomCard) groupListSection.append(classroomCard(boards.length));
+    if (!groupListSection.children.length) groupListSection.innerHTML = '<div class="loader">소속된 그룹이 없습니다.</div>';
     if (focusedKey) [...groupListSection.children].find(el => el.dataset.boardKey === focusedKey)?.focus({ preventScroll: true });
 }
 
@@ -245,6 +275,7 @@ function showBoardView() {
     feedRequest += 1;
     readTracker?.disconnect();
     const inBoard = Boolean(activeBoardKey);
+    updatePageTitle();
     containerEl.classList.toggle('group-home', !inBoard);
     groupListSection.classList.toggle('hidden', inBoard);
     feedSection.classList.toggle('hidden', !inBoard);
