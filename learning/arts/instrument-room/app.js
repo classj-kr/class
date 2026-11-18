@@ -270,6 +270,31 @@
         [8, 0, .4], [9, 3, .4], [10, 5, .83], [11.5, 3, .45],
         [12.5, 0, 1.5]
     ].map(function ([beat, fret, duration]) { return [beat, [50 + fret, 55 + fret], .82, duration]; });
+    const SANDMAN_PHRASE = [
+        [.5, [40, 47], .92, .35], [1, [52], .88, .35, false, "slide"],
+        [1.5, [46], .84, .35], [2, [45], .86, .83],
+        [3, [40], .78, .2, false, "palm-mute"]
+    ];
+    const ENTER_SANDMAN = [
+        [0, [40, 47], .95, .35],
+        ...[0, 4, 8].flatMap(function (bar) {
+            const lastChord = bar === 8 ? [43, 50] : [40, 47];
+            return [...SANDMAN_PHRASE, [3.5, lastChord, .96, .85]].map(function ([beat, ...note]) {
+                return [bar + beat, ...note];
+            });
+        }),
+        [12.5, [40], .78, .2, false, "palm-mute"],
+        [13, [42, 49], .88, .2, false, "palm-mute"],
+        [13.5, [40], .78, .2, false, "palm-mute"],
+        [14, [42, 49], .88, .2, false, "palm-mute"],
+        [14.5, [43, 50], .92, .22, false, "palm-mute"],
+        [15, [42, 49], .88, .22, false, "palm-mute"],
+        [15.5, [40, 47], .99, 1.4]
+    ];
+    const GUITAR_DEMOS = {
+        "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16, preset: "rock" },
+        "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 }
+    };
 
     // The official XLN Audio AD2 keymap assigns note 49 to HiHat Closed 1 Tip.
     // Keep this revision in the URL so a previously cached, mis-mapped hat cannot survive a remap.
@@ -575,7 +600,7 @@
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
-            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "drumDemoTempo", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "guitarDemoControls", "guitarDemoButton", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
+            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "drumDemoTempo", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
     }
@@ -2524,19 +2549,20 @@
         return playKeyboardDemo(button, demo.bpm, notes, endingBeat + 1);
     }
 
-    function playRockGuitarDemo() {
+    function playGuitarDemo() {
         const button = elements.guitarDemoButton;
-        if (state.currentModel?.id !== "s-style" || !ensureAudio()) return;
+        const demo = GUITAR_DEMOS[state.currentModel?.id];
+        if (!demo || !ensureAudio()) return;
         if (keyboardDemoRun?.button === button) {
             stopKeyboardDemo();
             return;
         }
         setGuitarMode("keyboard");
-        if (state.stringPreset !== "rock") {
-            state.stringPreset = "rock";
+        if (demo.preset && state.stringPreset !== demo.preset) {
+            state.stringPreset = demo.preset;
             renderSoundPresets();
         }
-        return playKeyboardDemo(button, 112, SMOKE_ON_THE_WATER, 16);
+        return playKeyboardDemo(button, demo.bpm, demo.notes, demo.endBeat);
     }
 
     async function playKeyboardDemo(button, bpm, notes, endBeat) {
@@ -2566,12 +2592,17 @@
         stopKeyboardCentering();
         viewport.scrollLeft = lowKey.offsetLeft + Math.min(0, (highKey.offsetLeft + highKey.offsetWidth - lowKey.offsetLeft - viewport.clientWidth) / 2);
 
-        notes.forEach(function ([beat, pitches, velocity, duration, muted]) {
+        notes.forEach(function ([beat, pitches, velocity, duration, muted, attack]) {
             function hit() {
                 const when = pitches.length > 1 ? state.audioContext.currentTime + .008 : undefined;
                 const voices = pitches.map(function (midi) {
                     const sample = samples.get(midi);
                     const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet, when);
+                    if (attack === "slide" && voice) {
+                        const rate = Math.pow(2, (midi - sample.anchor) / 12);
+                        voice.source.playbackRate.setValueAtTime(rate * Math.pow(2, -2 / 12), voice.startedAt);
+                        voice.source.playbackRate.exponentialRampToValueAtTime(rate, voice.startedAt + .045);
+                    }
                     run.voices.add(voice);
                     return voice;
                 });
@@ -2599,7 +2630,7 @@
                     });
                     voices.forEach(function (voice) {
                         run.voices.delete(voice);
-                        releasePianoVoice(voice, muted);
+                        releasePianoVoice(voice, muted || attack === "palm-mute");
                     });
                 }, duration * beatMs));
             }
@@ -2840,7 +2871,9 @@
         const chords = state.instrument === "guitar" && state.guitarMode === "chords";
         elements.keyboardViewport.classList.toggle("hidden", drums || chords);
         elements.bassDemoControls.classList.toggle("hidden", state.instrument !== "bass");
-        elements.guitarDemoControls.classList.toggle("hidden", state.currentModel?.id !== "s-style");
+        const guitarDemo = GUITAR_DEMOS[state.currentModel?.id];
+        elements.guitarDemoControls.classList.toggle("hidden", !guitarDemo);
+        elements.guitarDemoTitle.textContent = guitarDemo?.title || "";
         elements.chordSurface.classList.toggle("hidden", !chords);
         elements.drumPads.classList.toggle("hidden", !drums);
         elements.drumPads.style.display = drums ? "grid" : "";
@@ -3037,7 +3070,7 @@
     }
 
     function bindEvents() {
-        elements.guitarDemoButton.addEventListener("click", playRockGuitarDemo);
+        elements.guitarDemoButton.addEventListener("click", playGuitarDemo);
         elements.bassDemoControls.querySelectorAll("[data-bass-demo]").forEach(function (button) {
             button.addEventListener("click", function () { playBassDemo(button); });
         });

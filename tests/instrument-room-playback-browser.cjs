@@ -251,7 +251,23 @@ const server = http.createServer((req, res) => {
       await page.evaluate(() => { window.bassDemoHits = []; });
       await check('seven-string B5', () => press('[data-strum="down"]'));
       assert.deepEqual(await page.evaluate(() => window.bassDemoHits.map(hit => hit.midi)), [35,42,47]);
+      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Enter Sandman');
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await press('#guitarDemoButton');
+      await page.waitForFunction(() => [40,47].every(midi => document.querySelector('.key[data-midi="' + midi + '"].demo-hit')));
+      const opening = await page.evaluate(() => window.bassDemoHits.slice(0, 2));
+      assert.deepEqual(opening.map(hit => hit.midi), [40,47]);
+      assert.ok(opening.every(hit => hit.sampleSet === 'guitar-superstrat'));
+      assert.equal(opening[0].when, opening[1].when);
+      if (!touch) {
+        await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
+        const mainRiff = await page.evaluate(() => window.bassDemoHits);
+        assert.equal(mainRiff.length, 38);
+        assert.deepEqual(mainRiff.slice(-2).map(hit => hit.midi), [40,47]);
+        assert.ok(Math.abs(mainRiff.at(-1).time - mainRiff[0].time - 15.5 * 60000 / 123) < 250);
+      }
       await page.evaluate(() => window.playbackTest.selectModel('dreadnought'));
+      assert.equal(await page.$eval('#guitarDemoControls', controls => controls.classList.contains('hidden')), true);
       assert.equal(await page.$$('#chordPads button').then(pads => pads.length), 7);
       await press('[data-family="bass"]');
       await page.evaluate(() => { window.bassDemoHits = []; });
