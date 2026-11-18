@@ -2065,6 +2065,7 @@
         if (!model.guitar) state.guitarMode = "keyboard";
         state.modelId = model.id;
         selectInstrument(model.engine);
+        if (model.guitar) renderChordPads();
         elements.modelBadge.textContent = model.badge;
         elements.instrumentName.textContent = model.name;
         elements.instrumentDescription.textContent = model.description;
@@ -2304,6 +2305,7 @@
     let guitarKeyChords = [];
     let guitarStrumRequest = 0;
     const guitarStrumTimers = new Set();
+    const POWER_CHORD_FLOORS = { "s-style": 40, "metal-seven": 35 };
 
     function stopGuitarStrums() {
         guitarStrumRequest += 1;
@@ -2324,15 +2326,23 @@
 
     function renderChordPads() {
         elements.chordPads.innerHTML = "";
-        guitarKeyChords = core.getGuitarKeyChords(state.guitarKey, state.guitarKeyMode);
+        const floor = POWER_CHORD_FLOORS[state.currentModel?.id];
+        const power = Number.isInteger(floor);
+        const previousChord = guitarKeyChords[state.guitarChordIndex];
+        guitarKeyChords = core.getGuitarKeyChords(state.guitarKey, state.guitarKeyMode, floor);
+        const index = guitarKeyChords.findIndex(function (chord) { return chord.degree === previousChord?.degree; });
+        elements.chordPads.setAttribute("aria-label", power ? "기타 파워 코드 선택" : "기타 코드 선택");
+        document.querySelector('[data-guitar-mode="chords"]').textContent = power ? "파워 코드" : "코드패드";
+        elements.chordPads.classList.toggle("power-chords", power);
         guitarKeyChords.forEach(function (chord, index) {
             const button = document.createElement("button");
             button.type = "button";
-            button.innerHTML = "<b>" + chord.name + "</b><span>" + chord.degree + "</span><kbd>" + (index + 1) + "</kbd>";
+            const degree = power ? chord.degree.toUpperCase() : chord.degree;
+            button.innerHTML = "<b>" + chord.name + "</b><span>" + degree + "</span><kbd>" + (index + 1) + "</kbd>";
             button.addEventListener("click", function () { selectGuitarChord(index, elements.guitarPadPlay.checked); });
             elements.chordPads.appendChild(button);
         });
-        selectGuitarChord(state.guitarChordIndex, false);
+        selectGuitarChord(Math.max(0, index), false);
     }
 
     function scheduleGuitarStrum(callback, delay) {
@@ -2349,6 +2359,7 @@
         if (!context) return;
         const request = ++guitarStrumRequest;
         const chord = guitarKeyChords[state.guitarChordIndex];
+        const power = Number.isInteger(POWER_CHORD_FLOORS[state.currentModel?.id]);
         const notes = core.getStrumOrder(chord.notes, direction);
         const config = sampledPianoConfig();
         const samples = new Map();
@@ -2376,7 +2387,7 @@
                 stringNoteOn(midi, velocity);
             }
             if (index === 0) pluck();
-            else scheduleGuitarStrum(pluck, index * (down ? 12 : 9));
+            else scheduleGuitarStrum(pluck, index * (power ? 6 : down ? 12 : 9));
         });
         elements.noteReadout.textContent = chord.name + (down ? " · 다운" : " · 업");
         state.visualEnergy = Math.max(state.visualEnergy, down ? .88 : .72);
@@ -2961,7 +2972,10 @@
             const degree = event.code.match(/^(?:Digit|Numpad)([1-7])$/);
             if (degree || event.code === "ArrowDown" || event.code === "ArrowUp") {
                 event.preventDefault();
-                if (degree) selectGuitarChord(Number(degree[1]) - 1, elements.guitarPadPlay.checked);
+                if (degree) {
+                    const index = Number(degree[1]) - 1;
+                    if (index < guitarKeyChords.length) selectGuitarChord(index, elements.guitarPadPlay.checked);
+                }
                 else strum(event.code === "ArrowDown" ? "down" : "up");
                 return;
             }
@@ -3084,6 +3098,7 @@
             allNotesOff();
             [state.guitarKeyMode, state.guitarKey] = this.value.split(":");
             state.guitarChordIndex = 0;
+            guitarKeyChords = [];
             renderChordPads();
         });
         document.querySelectorAll("[data-strum]").forEach(function (button) {

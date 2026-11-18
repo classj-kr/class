@@ -68,7 +68,7 @@
         return (GUITAR_CHORDS[name] || GUITAR_CHORDS.C).slice();
     }
 
-    function getGuitarKeyChords(tonic, mode) {
+    function getGuitarKeyChords(tonic, mode, powerChordFloor) {
         const scale = GUITAR_SCALES[mode];
         const root = GUITAR_KEYS[mode].indexOf(tonic);
         const firstLetter = LETTERS.indexOf(tonic[0]);
@@ -76,7 +76,12 @@
             const pitch = (root + offset) % 12;
             const letter = (firstLetter + index) % 7;
             const accidental = (pitch - NATURAL_PITCHES[letter] + 18) % 12 - 6;
-            const name = LETTERS[letter] + (accidental === 1 ? "♯" : accidental === -1 ? "♭" : "") + quality;
+            const noteName = LETTERS[letter] + (accidental === 1 ? "♯" : accidental === -1 ? "♭" : "");
+            if (Number.isInteger(powerChordFloor)) {
+                const lowestRoot = powerChordFloor + (pitch - powerChordFloor % 12 + 12) % 12;
+                return { name: noteName + "5", degree, notes: [lowestRoot, lowestRoot + 7, lowestRoot + 12] };
+            }
+            const name = noteName + quality;
             const open = GUITAR_CHORDS[name];
             if (open) return { name, degree, notes: open.slice() };
             const eFret = (pitch - 4 + 12) % 12;
@@ -89,6 +94,8 @@
             return { name, degree, notes: shape.map(function (relativeFret, string) {
                 return GUITAR_STRINGS[string + Number(useA)] + fret + relativeFret;
             }) };
+        }).filter(function (chord) {
+            return !Number.isInteger(powerChordFloor) || !chord.degree.endsWith("°");
         });
     }
 

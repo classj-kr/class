@@ -26,12 +26,23 @@ assert.equal(core.getGuitarChord("Am")[0], 45);
 
 assert.deepEqual(core.getGuitarKeyChords("D", "major").map(chord => chord.name), ["D", "Em", "F♯m", "G", "A", "Bm", "C♯dim"]);
 assert.deepEqual(core.getGuitarKeyChords("A", "minor").map(chord => chord.name), ["Am", "Bdim", "C", "Dm", "Em", "F", "G"]);
+assert.deepEqual(core.getGuitarKeyChords("D", "major", 40).map(chord => chord.name), ["D5", "E5", "F♯5", "G5", "A5", "B5"]);
+assert.deepEqual(core.getGuitarKeyChords("B", "minor", 35)[0].notes, [35, 42, 47]);
 for (const [mode, keys] of Object.entries(core.GUITAR_KEYS)) {
     for (const key of keys) {
         for (const chord of core.getGuitarKeyChords(key, mode)) {
             const offsets = [...new Set(chord.notes.map(midi => (midi - chord.notes[0]) % 12))].sort((a, b) => a - b);
             const expected = chord.name.endsWith("dim") ? [0, 3, 6] : chord.name.endsWith("m") ? [0, 3, 7] : [0, 4, 7];
             assert.deepEqual(offsets, expected, key + " " + chord.name);
+        }
+        for (const floor of [35, 40]) {
+            const chords = core.getGuitarKeyChords(key, mode, floor);
+            assert.equal(chords.length, 6);
+            for (const chord of chords) {
+                const root = chord.notes[0];
+                assert.ok(root >= floor && root < floor + 12);
+                assert.deepEqual(chord.notes, [root, root + 7, root + 12]);
+            }
         }
     }
 }

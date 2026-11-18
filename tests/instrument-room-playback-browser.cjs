@@ -197,20 +197,22 @@ const server = http.createServer((req, res) => {
       }
       await press('[data-family="guitar"]');
       await press('[data-guitar-mode="chords"]');
+      await page.evaluate(() => { window.bassDemoHits = []; });
       await check('guitar chord', () => press('#chordPads button'));
+      assert.deepEqual(await page.evaluate(() => window.bassDemoHits.map(hit => hit.midi)), [48,55,60]);
       await check('guitar strum', () => press('[data-strum="down"]'));
       await page.select('#guitarKeySelect', 'major:D');
-      assert.deepEqual(await page.$$eval('#chordPads button b', labels => labels.map(label => label.textContent)), ['D','Em','F♯m','G','A','Bm','C♯dim']);
+      assert.deepEqual(await page.$$eval('#chordPads button b', labels => labels.map(label => label.textContent)), ['D5','E5','F♯5','G5','A5','B5']);
       await press('#guitarPadPlay');
       await page.evaluate(() => { audioAudit.instrument = 0; });
       await press('#chordPads button:nth-child(3)');
-      assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'F♯m');
+      assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'F♯5');
       assert.equal(await page.evaluate(() => audioAudit.instrument), 0);
       await check('selected chord strum', () => press('[data-strum="up"]'));
       if (!touch) {
         await page.focus('#chordPads button:nth-child(3)');
         await page.keyboard.press('5');
-        assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'A');
+        assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'A5');
         await check('keyboard strum', () => page.keyboard.press('ArrowDown'));
         const zone = await page.$('#guitarStrumZone');
         await zone.evaluate(element => element.scrollIntoView({block:'center'}));
@@ -221,7 +223,7 @@ const server = http.createServer((req, res) => {
           await page.mouse.move(box.x + box.width / 2, box.y + 7, {steps: 12});
           await page.mouse.up();
         });
-        assert.match(await page.$eval('#noteReadout', label => label.textContent), /A · 업/);
+        assert.match(await page.$eval('#noteReadout', label => label.textContent), /A5 · 업/);
       }
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
@@ -242,6 +244,15 @@ const server = http.createServer((req, res) => {
         assert.equal(dyads.length, 24);
         assert.deepEqual(dyads.slice(-2), [50,55]);
       }
+      await page.evaluate(() => window.playbackTest.selectModel('metal-seven'));
+      await press('[data-guitar-mode="chords"]');
+      await page.select('#guitarKeySelect', 'minor:B');
+      assert.equal(await page.$eval('#guitarSelectedChord', label => label.textContent), 'B5');
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await check('seven-string B5', () => press('[data-strum="down"]'));
+      assert.deepEqual(await page.evaluate(() => window.bassDemoHits.map(hit => hit.midi)), [35,42,47]);
+      await page.evaluate(() => window.playbackTest.selectModel('dreadnought'));
+      assert.equal(await page.$$('#chordPads button').then(pads => pads.length), 7);
       await press('[data-family="bass"]');
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('[data-bass-demo="slap"]');
