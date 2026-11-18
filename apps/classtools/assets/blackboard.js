@@ -355,7 +355,6 @@
   });
   function setToolsVisible(visible) {
     finish();
-    $('moreMenu').open = false;
     $('toolbar').hidden = !visible;
     $('showToolsBtn').hidden = visible;
     $('showToolsBtn').setAttribute('aria-expanded', visible);
@@ -363,18 +362,6 @@
   }
   $('hideToolsBtn').onclick = () => setToolsVisible(false);
   $('showToolsBtn').onclick = () => setToolsVisible(true);
-  $('moreMenu').addEventListener('click', e => {
-    if (e.target.closest('button')) $('moreMenu').open = false;
-  });
-  document.addEventListener('pointerdown', e => {
-    if (!$('moreMenu').contains(e.target)) $('moreMenu').open = false;
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && $('moreMenu').open) {
-      $('moreMenu').open = false;
-      $('moreBtn').focus();
-    }
-  });
   $('fullscreenBtn').onclick = async () => {
     finish();
     try {
@@ -384,7 +371,10 @@
     } catch (_) { notice('전체 화면으로 전환하지 못했습니다.'); }
   };
   document.addEventListener('fullscreenchange', () => {
-    $('fullscreenLabel').textContent = document.fullscreenElement ? '전체 화면 종료' : '전체 화면';
+    const label = document.fullscreenElement ? '전체 화면 종료' : '전체 화면';
+    $('fullscreenBtn').setAttribute('aria-label', label);
+    $('fullscreenBtn').title = label;
+    $('fullscreenIcon').setAttribute('href', document.fullscreenElement ? '#i-fullscreen-exit' : '#i-fullscreen');
   });
   updateSizeControl();
   updateCorrectionControl();

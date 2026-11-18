@@ -23,8 +23,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible {
 .toolbar { position:fixed; z-index:5; bottom:max(12px,env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:5px; padding:6px; max-width:calc(100% - 24px); background:#12261fee; border:1px solid #496154; border-radius:16px; box-shadow:0 4px 16px #0003; }
 .toolstrip { display:flex; align-items:center; gap:4px; min-width:0; overflow-x:auto; scrollbar-width:none; }
 .toolstrip::-webkit-scrollbar { display:none; }
-.tool,.back,.menu-toggle,.show-tools { display:inline-flex; align-items:center; justify-content:center; flex:none; width:40px; height:40px; padding:0; border:0; border-radius:10px; background:transparent; color:var(--ink); text-decoration:none; cursor:pointer; }
-.tool:hover,.back:hover,.menu-toggle:hover { background:#ffffff12; }
+.tool,.back,.show-tools { display:inline-flex; align-items:center; justify-content:center; flex:none; width:40px; height:40px; padding:0; border:0; border-radius:10px; background:transparent; color:var(--ink); text-decoration:none; cursor:pointer; }
+.tool:hover,.back:hover { background:#ffffff12; }
+.tool.danger { color:#ffb8ad; }
 .tool[aria-pressed="true"] { color:#153723; background:var(--mint); }
 .tool:disabled { opacity:.35; cursor:default; }
 .icon { width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
@@ -37,13 +38,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible {
 .size-control input { width:88px; accent-color:var(--mint); }
 #sizeValue { min-width:25px; color:var(--ink); font-size:12px; text-align:center; font-variant-numeric:tabular-nums; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
-.more-menu { position:relative; flex:none; }
-.menu-toggle { list-style:none; }
-.menu-toggle::-webkit-details-marker { display:none; }
-.menu-panel { position:absolute; bottom:52px; right:0; min-width:164px; padding:6px; border:1px solid #496154; border-radius:12px; background:#12261f; box-shadow:0 4px 20px #0003; }
-.menu-action { width:100%; display:flex; align-items:center; gap:10px; min-height:44px; padding:9px 12px; background:transparent; color:var(--ink); border:0; border-radius:8px; text-align:left; font-size:14px; white-space:nowrap; }
-.menu-action:hover { background:#ffffff12; }
-.menu-action.danger { color:#ffb8ad; }
 .show-tools { position:fixed; z-index:5; right:max(12px,env(safe-area-inset-right)); bottom:max(12px,env(safe-area-inset-bottom)); width:46px; height:46px; background:#12261fee; border:1px solid #496154; border-radius:14px; }
 .toast { position:fixed; z-index:6; bottom:82px; left:50%; transform:translateX(-50%); background:#e0f4e6; color:#13271a; border-radius:10px; padding:10px 16px; font-size:14px; opacity:0; transition:opacity .2s; pointer-events:none; }
 .toast.show { opacity:1; }
@@ -57,10 +51,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible {
   <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m4 12 9-9 8 8-9 9H8l-4-4a3 3 0 0 1 0-4ZM9 7l8 8M12 20h9"/></symbol>
   <symbol id="i-undo" viewBox="0 0 24 24"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14" transform="translate(0 -2)"/></symbol>
   <symbol id="i-redo" viewBox="0 0 24 24"><path d="m16 4 5 5-5 5M21 9H11a7 7 0 0 0 0 14" transform="translate(0 -2)"/></symbol>
-  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
   <symbol id="i-hide" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-save" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
   <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></symbol>
+  <symbol id="i-fullscreen-exit" viewBox="0 0 24 24"><path d="M9 3v6H3m12-6v6h6M3 15h6v6m12-6h-6v6"/></symbol>
   <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
 </svg>
 <main class="workspace" aria-label="칠판">
@@ -88,15 +82,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible {
     <span class="divider"></span>
     <button class="tool" id="undoBtn" type="button" aria-label="되돌리기" title="되돌리기 (Ctrl+Z)"><svg class="icon"><use href="#i-undo"/></svg></button>
     <button class="tool" id="redoBtn" type="button" aria-label="다시하기" title="다시하기 (Ctrl+Y)"><svg class="icon"><use href="#i-redo"/></svg></button>
+    <span class="divider"></span>
+    <button class="tool" id="fullscreenBtn" type="button" aria-label="전체 화면" title="전체 화면"><svg class="icon"><use id="fullscreenIcon" href="#i-fullscreen"/></svg></button>
+    <button class="tool" id="saveBtn" type="button" aria-label="PNG 저장" title="PNG 저장"><svg class="icon"><use href="#i-save"/></svg></button>
+    <button class="tool danger" id="clearBtn" type="button" aria-label="전체 지우기" title="전체 지우기"><svg class="icon"><use href="#i-trash"/></svg></button>
   </div>
-  <details class="more-menu" id="moreMenu">
-    <summary class="menu-toggle" id="moreBtn" aria-label="추가 도구" title="추가 도구"><svg class="icon"><use href="#i-more"/></svg></summary>
-    <div class="menu-panel">
-      <button class="menu-action" id="fullscreenBtn" type="button"><svg class="icon"><use href="#i-fullscreen"/></svg><span id="fullscreenLabel">전체 화면</span></button>
-      <button class="menu-action" id="saveBtn" type="button"><svg class="icon"><use href="#i-save"/></svg>PNG 저장</button>
-      <button class="menu-action danger" id="clearBtn" type="button"><svg class="icon"><use href="#i-trash"/></svg>전체 지우기</button>
-    </div>
-  </details>
   <button class="tool" id="hideToolsBtn" type="button" aria-label="도구 접기" title="도구 접기"><svg class="icon"><use href="#i-hide"/></svg></button>
 </div>
 <button class="show-tools" id="showToolsBtn" type="button" aria-label="도구 펼치기" aria-controls="toolbar" aria-expanded="false" title="도구 펼치기" hidden><svg class="icon"><use href="#i-pen"/></svg></button>
@@ -104,6 +94,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible {
 <script src="assets/vendor/perfect-freehand.js"></script>
 <script src="assets/blackboard-brush.js"></script>
 <script src="/assets/site-storage.js?v=20261006-1"></script>
-<script src="assets/blackboard.js?v=20261006-server-store"></script>
+<script src="assets/blackboard.js?v=20261118-one-row"></script>
 </body>
 </html>

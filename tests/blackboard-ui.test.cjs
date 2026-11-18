@@ -21,7 +21,6 @@ async function setup() {
   return {context,page,errors};
 }
 async function menuAction(page,id) {
-  if (!(await page.locator('#moreMenu').evaluate(el=>el.open))) await page.locator('#moreBtn').click();
   await page.locator('#'+id).click();
 }
 async function simulate(page, pointerType, points, pressure=0.5) {
@@ -367,11 +366,8 @@ test('canvas fills desktop and mobile viewports; floating tools collapse without
     await page.locator('#showToolsBtn').click();
     assert.equal(await page.locator('#toolbar').isVisible(),true);
     assert.equal(await inkImage(page),ink);
-    await page.locator('#moreBtn').click();
-    const menu=await page.locator('.menu-panel').boundingBox();
-    assert.ok(menu.x>=0&&menu.y>=0&&menu.x+menu.width<=size.width);
-    await page.keyboard.press('Escape');
-    assert.equal(await page.locator('.menu-panel').isVisible(),false);
+    const bar=await page.locator('#toolbar').boundingBox();
+    assert.ok(bar.x>=0&&bar.y>=0&&bar.x+bar.width<=size.width);
   }
   await page.setViewportSize({width:1280,height:900});
   await menuAction(page,'fullscreenBtn');
