@@ -60,7 +60,7 @@
     const room = Math.min(window.innerWidth - 32, 960);
     if (check) {
       stripCells = Math.max(lengthOf(queue[at]), lastUsed() + 1);
-      cellPx = Math.max(36, Math.min(88, Math.floor(room / stripCells)));
+      cellPx = Math.max(26, Math.min(88, Math.floor(room / stripCells)));
     } else {
       stripCells = Math.max(...set.items.map(lengthOf)) + 3;
       cellPx = Math.max(56, Math.min(88, Math.floor(room / 5)));

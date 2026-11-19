@@ -73,6 +73,7 @@ body, body .sheet button, body .sheet select, body .sheet p {
 
 .answer {
   margin: 12px 0 0; text-align: center; font: 400 clamp(26px, 4.4vw, 40px)/1.3 DictationPen, serif;
+  word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance;
   animation: rise .25s ease-out;
 }
 .marks { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
