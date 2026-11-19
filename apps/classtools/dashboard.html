@@ -46,8 +46,19 @@
         .clock-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
         .weather-card { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
         .weather-condition { font-size: 0.95rem; color: var(--accent-amber); font-weight: 700; }
-        #weatherHumidity { font-size: 0.85rem; color: #7ce4ff; }
-        #dustBadge { align-self: flex-start; font-size: 0.72rem; padding: 3px 7px; border-radius: 5px; }
+        /* 습도·미세먼지·초미세먼지: 이름은 회색, 숫자는 흰색, 등급만 환경부 색(좋음 파랑·보통 초록·나쁨 노랑·매우나쁨 빨강). */
+        .air-list { display: grid; gap: 3px; margin-top: 2px; }
+        .air-row { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; font-size: 0.8rem; line-height: 1.35; white-space: nowrap; }
+        .air-row dt { color: var(--text-muted); }
+        .air-row dd { display: flex; align-items: baseline; gap: 5px; color: var(--text-main); }
+        .air-value { font-weight: 800; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+        .air-unit { color: var(--text-muted); font-size: 0.68rem; margin-left: -3px; }
+        .air-grade { font-weight: 800; }
+        .air-grade[data-grade="good"] { color: #7cc4ff; }
+        .air-grade[data-grade="normal"] { color: #75d69f; }
+        .air-grade[data-grade="bad"] { color: #f0bd64; }
+        .air-grade[data-grade="worst"] { color: #ff8b82; }
+        .air-empty { color: var(--text-sub); }
         .forecast-card { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
         .hourly-forecast { display: grid; grid-template-columns: repeat(var(--forecast-columns, 1), minmax(0, 1fr)); gap: 2px; min-width: 0; }
         .forecast-hour { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px 1px; min-width: 0; border-radius: 7px; }
@@ -841,18 +852,6 @@
             color: #fff;
         }
 
-        .dust-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(117, 214, 159, 0.2);
-            color: var(--accent-green);
-            font-weight: 700;
-            font-size: 0.85rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
         /* 2열로 붙여 세로 길이를 줄인다(한 화면에 스크롤 없이). */
         .meal-list { gap: 6px !important; font-size: 1.05rem !important; font-weight: 700; color: #ffffff !important; letter-spacing: -0.01em;
             display: grid;
@@ -1347,6 +1346,10 @@
             .clock-month-day { font-size: 0.82rem; }
             .weather-card .weather-temp { font-size: 1.35rem; }
             .weather-condition { font-size: 0.8rem; }
+            .air-row { font-size: 0.74rem; gap: 4px; }
+            .air-row dd { gap: 4px; }
+            .air-value { font-size: 0.84rem; }
+            .air-unit.dust-unit { display: none; }
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
@@ -1365,8 +1368,11 @@
         </div>
         <div class="weather-card" aria-label="현재 날씨">
             <div class="weather-temp" id="weatherTemp">--°</div>
-            <div id="weatherHumidity">습도 --%</div>
-            <div id="dustBadge" class="dust-pill">미세먼지 불러오는 중</div>
+            <dl class="air-list">
+                <div class="air-row"><dt>습도</dt><dd id="weatherHumidity"><span class="air-empty">--</span></dd></div>
+                <div class="air-row"><dt>미세먼지</dt><dd id="pm10Value"><span class="air-empty">--</span></dd></div>
+                <div class="air-row"><dt>초미세먼지</dt><dd id="pm25Value"><span class="air-empty">--</span></dd></div>
+            </dl>
         </div>
         <div class="forecast-card" id="forecastCard" aria-label="시간대별 일기예보">
             <div class="hourly-forecast" id="hourlyForecast"><span class="forecast-message">시간대별 예보 불러오는 중...</span></div>
@@ -3297,12 +3303,8 @@
             hourlyWeather = [];
             showForecastMessage("시간대별 예보 불러오는 중...");
             document.getElementById("weatherTemp").textContent = "--°";
-            document.getElementById("weatherHumidity").textContent = "습도 --%";
-            const dust = document.getElementById("dustBadge");
-            dust.textContent = "미세먼지 불러오는 중";
-            dust.style.background = "";
-            dust.style.color = "";
-            const airQuery = new URLSearchParams({ latitude: lat, longitude: lon, current: "pm10" });
+            for (const id of ["weatherHumidity", "pm10Value", "pm25Value"]) showAirValue(id, null);
+            const airQuery = new URLSearchParams({ latitude: lat, longitude: lon, current: "pm10,pm2_5" });
             const results = await Promise.allSettled([
                 loadKmaWeather(lat, lon).catch(() => loadOpenMeteoWeather(lat, lon)),
                 weatherJson("https://air-quality-api.open-meteo.com/v1/air-quality?" + airQuery)
@@ -3318,8 +3320,7 @@
                 conditionText.className = "weather-condition";
                 conditionText.textContent = condition.icon + " " + condition.name + (isEstimated ? " (위치 추정)" : "");
                 temp.append(conditionText);
-                const humidity = current.humidity;
-                document.getElementById("weatherHumidity").textContent = "습도 " + (Number.isFinite(humidity) ? Math.round(humidity) + "%" : "--%");
+                showAirValue("weatherHumidity", current.humidity, "%");
                 forecastDate = koreanWeatherClock().date;
                 hourlyWeather = hourly;
                 if (hourlyWeather.length) {
@@ -3328,15 +3329,32 @@
                 } else showForecastMessage("시간대별 예보를 불러오지 못했습니다.", true);
             } else showForecastMessage("일기예보를 불러오지 못했습니다.", true);
 
-            const pm10 = results[1].status === "fulfilled" ? results[1].value.current?.pm10 : null;
-            if (Number.isFinite(pm10)) {
-                const value = Math.round(pm10);
-                const [label, color] = value > 150 ? ["매우나쁨", "#ff8b82"]
-                    : value > 80 ? ["나쁨", "#f0bd64"] : value > 30 ? ["보통", "#75d69f"] : ["좋음", "#7ce4ff"];
-                dust.textContent = "미세먼지 " + label + " " + value + "㎍/㎥";
-                dust.style.background = "rgba(255,255,255,0.05)";
-                dust.style.color = color;
-            } else dust.textContent = "미세먼지 조회 실패";
+            const air = results[1].status === "fulfilled" ? results[1].value.current : null;
+            showAirValue("pm10Value", air?.pm10, "㎍/㎥", [30, 80, 150]);
+            showAirValue("pm25Value", air?.pm2_5, "㎍/㎥", [15, 35, 75]);
+        }
+
+        // 등급 경계는 환경부 기준: 미세먼지 30·80·150, 초미세먼지 15·35·75 ㎍/㎥ 이하.
+        const AIR_GRADES = [["good", "좋음"], ["normal", "보통"], ["bad", "나쁨"], ["worst", "매우나쁨"]];
+        function showAirValue(id, raw, unit = "", limits = null) {
+            const box = document.getElementById(id);
+            box.replaceChildren();
+            if (!Number.isFinite(raw)) {
+                box.append(Object.assign(document.createElement("span"), { className: "air-empty", textContent: "--" }));
+                return;
+            }
+            const value = Math.round(raw);
+            if (limits) {
+                const index = limits.findIndex(limit => value <= limit);
+                const [grade, label] = AIR_GRADES[index < 0 ? 3 : index];
+                const tag = Object.assign(document.createElement("span"), { className: "air-grade", textContent: label });
+                tag.dataset.grade = grade;
+                box.append(tag);
+            }
+            box.append(
+                Object.assign(document.createElement("span"), { className: "air-value", textContent: value }),
+                Object.assign(document.createElement("span"), { className: limits ? "air-unit dust-unit" : "air-unit", textContent: unit })
+            );
         }
 
         function refreshWeather() {
