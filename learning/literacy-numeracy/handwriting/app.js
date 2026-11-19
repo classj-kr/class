@@ -328,12 +328,9 @@
       guide: doc.guide,
       trace: doc.phase === 'trace',
       next: i === doc.index,
-      // 줄 공책은 글자마다 칸·표시를 두지 않는다(교과서처럼). 확인 결과는 쓴 글씨 색으로: 통과 초록, 다시 주황.
-      ink: lined() ? INK[marks[i]] || INK.plain : INK.plain,
     });
   }
-  const INK = { plain: '#233c34', pass: '#2b8a55', retry: '#cf6a1d' },
-    MODEL_INK = '#27362f',
+  const MODEL_INK = '#27362f',
     CURRENT_MODEL_INK = '#2563a8'; // 줄 공책에서 지금 쓰는 글자는 본보기 글자를 파랗게 해서 알린다
   function queueDraw() {
     if (!frame) frame = requestAnimationFrame(() => draw());
@@ -450,8 +447,6 @@
     const written = doc.cells[doc.phase].filter((c) => c.length).length;
     $('progressLabel').textContent = `${written} / ${chars.length}글자`;
     $('strokeStatus').textContent = strokes.length ? `${strokes.length} / ${model.length}획` : '';
-    $('feedback').textContent = '';
-    $('feedback').hidden = true;
     const cannotWrite = locked || !referenceReady;
     $('undoButton').disabled = !undo.length || cannotWrite;
     $('redoButton').disabled = !redo.length || cannotWrite;
@@ -460,11 +455,15 @@
       cell.write.setAttribute('aria-disabled', String(cannotWrite));
       cell.write.setAttribute('aria-label', `${i + 1}번째 글자 ${cell.char} 쓰는 칸. ${C.model(cell.char).length}획.`);
       cell.pair.classList.toggle('done', doc.cells[doc.phase][i].length > 0);
-      cell.pair.classList.toggle('pass', marks[i] === 'pass');
-      cell.pair.classList.toggle('retry', marks[i] === 'retry');
       draw(i);
       drawModel(undefined, i);
     });
+    // 채점 표시는 글자가 그대로일 때만 남는다. 표시가 없으면 점수 줄도 닫는다.
+    review.sync();
+    if (!review.showing()) {
+      $('feedback').textContent = '';
+      $('feedback').hidden = true;
+    }
   }
   function select(i, { keepHistory = false } = {}) {
     if (i < 0 || i >= letters().length) return;
@@ -484,6 +483,7 @@
       try {
         surface.releasePointerCapture?.(id);
       } catch {}
+      review.penUp();
       queueDraw();
     }
   }
@@ -567,6 +567,25 @@
       want = C.model(char)?.[current().length];
     return !want || !(Reference.mark(char) || pathLength(want) <= 5);
   }
+  // 혼자 연습의 채점 장면(review.js). 순위전 방 안에서는 시작하지 않는다.
+  const review = window.HandwritingReview.create({
+    C,
+    Reference,
+    cell: (i) => cells[i],
+    letters,
+    marks: () => marks,
+    strokesAt: (i) => doc.cells[doc.phase][i],
+    modelStrokes,
+    shownModel,
+    toShown: (p) => toShown(p),
+    glyphHeight,
+    reference,
+    path,
+    rewrite(i) {
+      select(i, { keepHistory: true });
+      $('clearButton').click();
+    },
+  });
   function bind(surface, test = false, resolve = () => ({ canvas: surface })) {
     surface.addEventListener('pointerdown', (e) => {
       detect(e, test);
@@ -582,6 +601,7 @@
       if (((locked || !referenceReady) && !test) || !allowed(e) || active) return;
       const hit = resolve(e);
       if (!hit) return;
+      if (!test) review.interrupt();
       // 다른 글자를 누르면 그 글자가 지금 글자가 된다(되돌리기 기록은 글자마다 남아 있다).
       if (!test && hit.index !== doc.index) select(hit.index, { keepHistory: true });
       if (hit.only) {
@@ -599,6 +619,7 @@
         canvas: target,
         stroke: { points: [position(e, target)], width: doc.width },
         test,
+        movedAt: e.timeStamp,
       };
       try {
         surface.setPointerCapture(e.pointerId);
@@ -611,12 +632,22 @@
       e.preventDefault();
       const target = active.canvas;
       const events = e.getCoalescedEvents?.() || [e];
+      let moved = 0;
       for (const p of events.length ? events : [e]) {
         const pos = position(p, target),
           pts = active.stroke.points,
-          previous = pts[pts.length - 1];
-        if (Math.hypot(pos[0] - previous[0], pos[1] - previous[1]) > 0.25) pts.push(pos);
+          previous = pts[pts.length - 1],
+          step = Math.hypot(pos[0] - previous[0], pos[1] - previous[1]);
+        if (step > 0.25) {
+          pts.push(pos);
+          moved += step;
+        }
         if (pts.length > 240) active.stroke.points = C.sample(pts, 120);
+      }
+      // 연필 소리: 빨리 그을수록 조금 커진다.
+      if (!test && !inRoom && moved) {
+        review.penMove(moved / Math.max(4, e.timeStamp - active.movedAt));
+        active.movedAt = e.timeStamp;
       }
       if (test) {
         const t = target.getContext('2d');
@@ -635,12 +666,15 @@
       if (Math.hypot(end[0] - p[p.length - 1][0], end[1] - p[p.length - 1][1]) > 0.1) p.push(end);
       if (p.length > 64) a.stroke.points = C.sample(p, 64);
       active = null;
+      review.penUp();
       try {
         surface.releasePointerCapture(e.pointerId);
       } catch {}
       if (!test) {
         if (strayTap(a.stroke.points)) {
           draw();
+          // 세모 글자를 살짝 누르면 고칠 곳을 보여 준다.
+          if (!inRoom) review.tapped(doc.index);
           return;
         }
         const total = doc.cells[doc.phase].flat().reduce((n, s) => n + s.points.length, 0);
@@ -656,6 +690,7 @@
         const result = C.judge(letters()[doc.index], modelStrokes(after));
         if (after.length === result.expected) {
           changed({ complete: doc.index });
+          if (!inRoom) review.letterDone(doc.index, result.order);
           $('strokeStatus').textContent = result.order ? '획순과 방향을 잘 지켰어요.' : '획순 보기와 비교해 보세요.';
           // 다 쓰면 다음 빈 칸으로 넘어간다.
           const nextEmpty = doc.cells[doc.phase].findIndex((c, i) => i > doc.index && !c.length);
@@ -784,26 +819,32 @@
     doc.cells[doc.phase][doc.index] = [];
     record(before, []);
   };
-  // 확인: 쓴 칸을 모두 채점해 칸마다 통과(초록)·다시(주황)를 표시한다.
+  // 확인: 쓴 글자를 모두 채점한다. 혼자 연습에서는 색연필이 표시하고, 순위전 방에서는 점수만 글로 알린다.
   $('checkButton').onclick = () => {
     cancel();
-    const results = letters().map((c, i) => (doc.cells[doc.phase][i].length ? C.judge(c, modelStrokes(doc.cells[doc.phase][i])) : null));
-    const written = results.filter(Boolean);
-    marks = results.map((r) => (r ? (r.order ? 'pass' : 'retry') : undefined));
-    render();
-    $('feedback').hidden = false;
-    if (!written.length) {
-      $('feedback').textContent = '먼저 글자를 써 보세요.';
+    if (review.running()) {
+      review.finish();
       return;
     }
-    const shape = Math.round(written.reduce((s, r) => s + r.shape, 0) / written.length);
+    const results = letters().map((c, i) => (doc.cells[doc.phase][i].length ? C.judge(c, modelStrokes(doc.cells[doc.phase][i])) : null));
+    const written = results.filter(Boolean);
+    if (!written.length) {
+      toast('먼저 글자를 써 보세요.');
+      return;
+    }
     // 점수: 순위전과 같은 계산(글자마다 모양 × 획순, 안 쓴 글자는 0점)
     const score = Math.round(results.reduce((s, r) => s + (r ? r.score : 0), 0) / results.length);
-    const passed = written.filter((r) => r.order).length;
-    const here = results[doc.index];
-    $('feedback').textContent =
-      `점수 ${score}점 · ${written.length}/${letters().length}글자 · 평균 모양 일치도 ${shape}% · 획순 통과 ${passed}글자` +
-      (here ? ` (지금 칸 ‘${letters()[doc.index]}’ ${here.score}점, 모양 ${here.shape}%${here.order ? '' : ` · ${here.actual}/${here.expected}획, 획순을 다시 살펴보세요`})` : '');
+    if (inRoom) {
+      const shape = Math.round(written.reduce((s, r) => s + r.shape, 0) / written.length);
+      $('feedback').hidden = false;
+      $('feedback').textContent = `점수 ${score}점 · ${written.length}/${letters().length}글자 · 평균 모양 일치도 ${shape}% · 획순 통과 ${written.filter((r) => r.order).length}글자`;
+      return;
+    }
+    // 이미 표시한 글자는 그대로 두고, 새로 쓴 글자만 색연필이 간다.
+    const fresh = results.map((r, i) => Boolean(r && !marks[i]));
+    marks = results.map((r) => (r ? 'checked' : undefined));
+    render();
+    review.start({ results, score, fresh });
   };
   $('demoButton').onclick = () => {
     stopDemo();

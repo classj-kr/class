@@ -68,6 +68,85 @@
     const score = written.length ? Math.round(((100 * correct) / expected.length) * Math.min(1, expected.length / written.length)) : 0;
     return { supported: true, mark: true, shape: score, form: score, place: score, score, order: written.length === expected.length && correct === expected.length, correct, expected: expected.length, actual: written.length };
   }
+  // 쓴 획 하나(본보기 자리에 맞춘 것)가 i번째 본보기 획과 맞는지 본다. 채점과 「고칠 곳 보여 주기」가 같은 잣대를 쓴다.
+  function checkStroke(expected, i, p) {
+    const s = expected[i],
+      T = Reference.tolerance,
+      G = Reference.glyphSize(),
+      forward = strokeError(s, p),
+      reverse = strokeError(s, [...p].reverse()),
+      alternative = Math.min(
+        ...expected.filter((_, j) => j !== i).map((t) => strokeError(t, p)),
+        Infinity,
+      );
+    // Count, indexed path, direction, coverage and endpoints all matter. 거리는 글자 높이에 대한 비율(pen-reference.js의 TOL).
+    const pass =
+      forward <= T.path * G &&
+      forward <= reverse + T.dir * G &&
+      forward <= alternative + T.alt * G &&
+      distance(s[0], p[0]) <= T.end * G &&
+      distance(s[s.length - 1], p[p.length - 1]) <= T.end * G &&
+      length(p) >= length(s) * 0.55 &&
+      length(p) <= Math.max(length(s) * 2.2, length(s) + T.long * G); // 덧칠은 막되, 짧은 획(i·j의 점, 짧은 삐침)은 조금 끌어도 받는다
+    return { pass, forward, reverse, alternative };
+  }
+  // 글자에서 고칠 곳: 글자 전체의 크기·자리, 그리고 본보기 획마다 무엇이 어긋났는지.
+  function review(char, strokes) {
+    const expected = model(char);
+    if (!expected) return null;
+    const written = strokes.map((s) => s.points || s),
+      mark = Reference.mark(char),
+      aligned = mark ? written : align(expected, written),
+      T = Reference.tolerance,
+      G = Reference.glyphSize(),
+      middle = (p) => [0, 1].map((k) => p.reduce((n, q) => n + q[k], 0) / p.length),
+      want = spread(expected),
+      have = spread(written),
+      scale = want && have ? want.r / have.r : 1,
+      shift = want && have ? [want.c[0] - have.c[0], want.c[1] - have.c[1]] : [0, 0];
+    let weakest = 0,
+      worst = -1;
+    const results = expected.map((s, i) => {
+      const p = aligned[i];
+      if (!p) return { status: 'missing', ratio: 0, move: [0, 0], error: Infinity };
+      const check = checkStroke(expected, i, p),
+        ratio = length(p) / Math.max(length(s), 0.001),
+        from = middle(p),
+        to = middle(s),
+        move = [to[0] - from[0], to[1] - from[1]];
+      if (check.forward > worst) {
+        worst = check.forward;
+        weakest = i;
+      }
+      const result = { status: 'ok', ratio, move, error: check.forward };
+      if (mark ? distance(to, from) <= T.mark * G : check.pass) return result;
+      if (check.reverse <= T.path * G && check.reverse + T.dir * G < check.forward) return { ...result, status: 'reversed' };
+      let belongs = -1,
+        nearest = Infinity;
+      expected.forEach((t, j) => {
+        const e = j === i ? Infinity : strokeError(t, p);
+        if (e < nearest) {
+          nearest = e;
+          belongs = j;
+        }
+      });
+      if (nearest <= T.path * G && nearest + T.alt * G < check.forward) return { ...result, status: 'order', belongs };
+      if (ratio < 0.55) return { ...result, status: 'short' };
+      if (length(p) > Math.max(length(s) * 2.2, length(s) + T.long * G)) return { ...result, status: 'long' };
+      return { ...result, status: 'off' };
+    });
+    return {
+      expected,
+      aligned,
+      strokes: results,
+      weakest,
+      extra: Math.max(0, written.length - expected.length),
+      glyph: G,
+      shift,
+      moved: !mark && Math.hypot(shift[0], shift[1]) > 0.15 * G,
+      size: mark ? null : scale > 1.25 ? 'small' : scale < 0.8 ? 'big' : null,
+    };
+  }
   function judge(char, strokes) {
     if (Reference.mark(char)) return judgeMark(char, Array.isArray(strokes) ? strokes.map((s) => s.points || s) : []);
     const expected = model(char);
@@ -84,29 +163,9 @@
     // 획순(순서·방향·길이)은 쓴 글자를 본보기 자리·크기에 맞춰 놓고 본다. 자리와 크기는 모양 점수의 '자리'가 따로 본다.
     // 맞추지 않으면 글자가 작은 줄 공책에서 조금만 비켜 써도 획순이 틀렸다고 나온다.
     const actual = align(expected, written);
-    const T = Reference.tolerance,
-      G = Reference.glyphSize();
     let correct = 0;
-    expected.forEach((s, i) => {
-      const p = actual[i];
-      if (!p) return;
-      const forward = strokeError(s, p),
-        reverse = strokeError(s, [...p].reverse());
-      const alternative = Math.min(
-        ...expected.filter((_, j) => j !== i).map((t) => strokeError(t, p)),
-        Infinity,
-      );
-      // Count, indexed path, direction, coverage and endpoints all matter. 거리는 글자 높이에 대한 비율(pen-reference.js의 TOL).
-      if (
-        forward <= T.path * G &&
-        forward <= reverse + T.dir * G &&
-        forward <= alternative + T.alt * G &&
-        distance(s[0], p[0]) <= T.end * G &&
-        distance(s[s.length - 1], p[p.length - 1]) <= T.end * G &&
-        length(p) >= length(s) * 0.55 &&
-        length(p) <= Math.max(length(s) * 2.2, length(s) + T.long * G) // 덧칠은 막되, 짧은 획(i·j의 점, 짧은 삐침)은 조금 끌어도 받는다
-      )
-        correct++;
+    expected.forEach((_, i) => {
+      if (actual[i] && checkStroke(expected, i, actual[i]).pass) correct++;
     });
     const { shape, form, place } = Reference.measure(char, written);
     const order = actual.length === expected.length && correct === expected.length;
@@ -181,6 +240,7 @@
     chars,
     supported,
     judge,
+    review,
     judgeText,
     validateCells,
     penWidth,

@@ -211,6 +211,7 @@ summary:focus-visible {
   min-width: 0;
 }
 .practice-panel {
+  position: relative;
   min-width: 0;
   max-width: 1180px;
   margin-inline: auto;
@@ -299,18 +300,6 @@ summary:focus-visible {
   border-color: var(--green);
   box-shadow: 0 0 0 2px var(--green);
 }
-.cell-pair.pass {
-  border-color: #3f9a62;
-  box-shadow: inset 0 -4px 0 #3f9a62;
-}
-.cell-pair.retry {
-  border-color: #d58a3c;
-  box-shadow: inset 0 -4px 0 #d58a3c;
-}
-.cell-pair.active.pass,
-.cell-pair.active.retry {
-  box-shadow: 0 0 0 2px var(--green), inset 0 -4px 0 currentColor;
-}
 /* 한글 줄 공책(국어 교과서 쓰기 쪽): 본보기 줄과 쓰기 줄이 번갈아 이어진 한 상자. 줄 높이는 기기에서 15 mm,
    글자는 줄의 45%. 글자는 줄 높이의 0.52배 간격으로 붙여 쓰고 낱말 사이만 띄운다. 네모 칸·보조선은 없다.
    글자 캔버스는 줄 높이의 두 배 너비로 겹쳐 놓아(바탕 투명) 옆 자리까지 쓴 획도 잘리지 않는다. */
@@ -337,9 +326,7 @@ summary:focus-visible {
   row-gap: 0;
 }
 .sheet.lined .cell-pair,
-.sheet.lined .cell-pair.active,
-.sheet.lined .cell-pair.pass,
-.sheet.lined .cell-pair.retry {
+.sheet.lined .cell-pair.active {
   position: relative;
   z-index: auto;
   display: block;
@@ -410,6 +397,171 @@ summary:focus-visible {
   background: #f2f5ee;
   font-size: 12px;
   line-height: 1.6;
+}
+/* 채점 장면: 색연필 표시는 연습장 위 투명한 판에 그린다. */
+.review-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.review-pencil {
+  position: absolute;
+  left: 0;
+  top: -11px;
+  z-index: 6;
+  width: 120px;
+  height: 22px;
+  pointer-events: none;
+  transform-origin: 0 11px;
+  filter: drop-shadow(2px 5px 3px #2b1a1433);
+  will-change: transform;
+}
+.review-pencil[hidden] {
+  display: none;
+}
+.review-slip {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 74px;
+  margin-top: 8px;
+  padding: 0 4px;
+  background: none;
+}
+.review-slip[hidden] {
+  display: none;
+}
+.review-score {
+  flex: none;
+  position: relative;
+  height: 68px;
+  min-width: 40px;
+}
+.review-tally {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #27362f;
+  font-size: 16px;
+}
+.review-tally span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.review-tally b {
+  color: #d2302a;
+  font-size: 19px;
+  font-weight: 700;
+}
+.review-tally i {
+  min-width: 1.2em;
+  font-style: normal;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.review-stamp {
+  flex: none;
+  width: 86px;
+  height: 86px;
+  margin-left: auto;
+  transform: rotate(-12deg);
+  mix-blend-mode: multiply;
+}
+.review-stamp[hidden] {
+  display: none;
+}
+.review-stamp svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 560px) {
+  .review-slip {
+    gap: 12px;
+  }
+  .review-tally {
+    gap: 9px;
+    font-size: 14px;
+  }
+  .review-stamp {
+    width: 62px;
+    height: 62px;
+  }
+}
+.cell-pair.inked-ring {
+  position: relative;
+}
+/* 돋보기 */
+.review-lens {
+  position: fixed;
+  z-index: 200;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+.review-lens[hidden] {
+  display: none;
+}
+.lens-glass {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 9px solid #39424a;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fff 0 42%, #fbfaf4 100%);
+  box-shadow: 0 0 0 2px #c9ced2 inset, 0 12px 28px #1f2a2440;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.lens-glass::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 84%;
+  top: 84%;
+  width: 30%;
+  height: 14px;
+  margin-top: -7px;
+  border-radius: 7px;
+  background: #39424a;
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+.lens-glass canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.lens-note {
+  min-height: 22px;
+  margin: 0;
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: #fffefa;
+  box-shadow: 0 3px 12px #1f2a2426;
+  color: #27362f;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  word-break: keep-all;
+}
+.lens-note:empty {
+  visibility: hidden;
+}
+.lens-redo {
+  min-height: 38px;
+  padding: 7px 18px;
+  font-size: 14px;
+}
+.lens-redo[hidden] {
+  display: none;
 }
 .letter-navigation {
   display: flex;
@@ -2323,6 +2475,7 @@ img.face { border-radius: 0; overflow: visible; object-fit: contain; background:
   .app,
   dialog,
   .toast,
+  .review-lens,
   .race-link,
   .race-scene,
   .race-fx,

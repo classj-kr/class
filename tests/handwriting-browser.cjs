@@ -118,7 +118,7 @@ test.before(async () => {
       );
       app.get(route + 'race/', (_, res) => res.sendFile(path.join(root, route, 'index.html')));
       // 서버(server.js)가 순위전 주소 밑으로 내보내는 파일과 같게 둔다.
-      for (const f of ['styles.css', 'font-source.js', 'alphabet-source.js', 'font-engine.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'writing-texts.js', 'app.js', 'race.js'])
+      for (const f of ['styles.css', 'font-source.js', 'alphabet-source.js', 'font-engine.js', 'style-badasseugi.js', 'pen-reference.js', 'core.js', 'writing-texts.js', 'review.js', 'app.js', 'race.js'])
         app.get(route + 'race/' + f, (_, res) => res.sendFile(path.join(root, route, f)));
     },
   });
@@ -145,6 +145,49 @@ test.afterEach(async () => {
 test.after(async () => {
   await browser?.close();
   await h?.close();
+});
+test('solo check: red pencil marks, written score, stamp, and showing how to fix a triangle letter', async () => {
+  await page.goto(h.base + route);
+  await ready();
+  await page.evaluate(() => {
+    document.querySelector('#lessonSelect').value = 'custom';
+    document.querySelector('#lessonSelect').dispatchEvent(new Event('change'));
+    document.querySelector('#customText').value = '가나';
+    document.querySelector('#customForm').requestSubmit();
+  });
+  await page.waitForFunction(() => HandwritingApp.snapshot().text === '가나');
+  const write = async (char, change = (s) => s) => {
+    const strokes = change(await page.evaluate((c) => HandwritingApp.shownModel(c), char));
+    for (const s of strokes) await pointer(page.locator('#writingCanvas'), 'stroke', C.sample(s, 35));
+    await page.waitForTimeout(420);
+  };
+  const tally = (kind) => page.locator(`.tally-${kind} i`).textContent();
+  const result = page.locator('#feedback [data-result]');
+  await write('가');
+  await write('나', (s) => [s[0], [...s[1]].reverse(), s[2]]);
+  await page.locator('#checkButton').click();
+  assert.equal(await page.locator('.review-pencil').isVisible(), true, 'the pencil walks over the sheet');
+  assert.equal(await result.textContent(), '', 'the score waits for the pencil');
+  await page.waitForFunction(() => document.querySelector('#feedback [data-result]').textContent);
+  assert.equal(await page.locator('.review-pencil').isVisible(), false);
+  assert.deepEqual([await tally('double'), await tally('circle'), await tally('tri')], ['1', '0', '1']);
+  assert.equal(await page.locator('.review-stamp').isVisible(), false, 'no stamp while a letter needs fixing');
+  // 세모 글자는 돋보기가 저절로 열려 어긋난 획을 말해 준다.
+  await page.locator('.lens-redo').waitFor({ state: 'visible', timeout: 15000 });
+  assert.match(await page.locator('.lens-note').textContent(), /^2번째 획은 반대쪽에서 시작해요$/);
+  await page.locator('.lens-redo').click();
+  assert.equal(await page.locator('.review-lens').isVisible(), false);
+  assert.equal(await page.evaluate(() => HandwritingApp.snapshot().cells.trace[1].length), 0, 'rewrite clears only that letter');
+  assert.equal(await page.evaluate(() => HandwritingApp.snapshot().cells.trace[0].length), 3);
+  assert.equal(await page.locator('#feedback').isVisible(), false, 'an old score does not stay over changed writing');
+  await write('나');
+  await page.locator('#checkButton').click();
+  await page.waitForFunction(() => document.querySelector('#feedback [data-result]')?.textContent);
+  assert.match(await result.textContent(), /^100점\. 겹동그라미 2개, 동그라미 0개, 세모 0개\.$/);
+  await page.locator('.review-stamp').waitFor({ state: 'visible' });
+  // 다시 쓰기 시작하면 표시가 바로 물러나고 글씨를 막지 않는다.
+  await page.locator('#undoButton').click();
+  assert.equal(await page.locator('#feedback').isVisible(), false);
 });
 test('menu placement, independent phases, input priority, cancellation, undo and account restore', async () => {
   await context.addCookies([{ name: 'test_user', value: '2', url: h.base }]);
@@ -208,7 +251,9 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   await page.locator('#clearButton').click();
   await drawLetter(page, '가');
   await page.locator('#checkButton').click();
-  assert.match(await page.locator('#feedback').textContent(), /일치도 (?:9[8-9]|100)%.*획순/);
+  // 채점 장면은 「확인」을 한 번 더 누르면 끝 상태로 건너뛴다.
+  await page.locator('#checkButton').click();
+  assert.match(await page.locator('#feedback [data-result]').textContent(), /^\d+점\. 겹동그라미 1개, 동그라미 0개, 세모 0개, 안 쓴 글자 13개\.$/);
   await page.locator('[data-phase=solo]').click();
   assert.equal(await count(), 0);
   await page.locator('[data-phase=trace]').click();
