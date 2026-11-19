@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f3ea">
+  <meta name="robots" content="noindex">
+  <title>국어 교과서 문법</title>
+  <link rel="stylesheet" href="styles.css?v=20261119-1">
+</head>
+<body>
+  <main class="sheet" id="sheet">
+    <nav class="bar" aria-label="페이지 기능">
+      <a class="back" id="back" href="/" aria-label="메인 화면으로 돌아가기">←</a>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <strong class="count" id="count"></strong>
+    </nav>
+
+    <section class="home" id="home" hidden>
+      <div class="terms" id="terms"></div>
+      <div class="units" id="units"></div>
+    </section>
+
+    <section class="rule" id="rule" hidden>
+      <h1 id="ruleName"></h1>
+      <div class="rule-lines" id="ruleLines"></div>
+      <div class="examples" id="examples"></div>
+      <button type="button" class="main" id="start">문제 풀기</button>
+    </section>
+
+    <section class="quiz" id="quiz" hidden>
+      <p class="prompt" id="prompt"></p>
+      <div class="question" id="question"></div>
+      <div class="choices" id="choices"></div>
+      <div class="match" id="match" hidden>
+        <div class="match-col" id="matchLeft"></div>
+        <div class="match-col" id="matchRight"></div>
+        <svg class="match-lines" id="matchLines" aria-hidden="true"></svg>
+      </div>
+      <div class="board" id="board" hidden>
+        <div class="zones" id="zones"></div>
+        <div class="pool" id="pool"></div>
+      </div>
+      <div class="spot" id="spot" hidden></div>
+      <div class="spacing" id="spacing" hidden></div>
+      <button type="button" class="main check-match" id="checkMatch" hidden>확인</button>
+      <div class="answer-note" id="note" hidden>
+        <p id="why"></p>
+        <button type="button" class="main" id="next">다음</button>
+      </div>
+    </section>
+
+    <section class="end" id="end" hidden>
+      <div class="score"><b id="score"></b><span id="scoreOf"></span></div>
+      <div class="end-actions">
+        <button type="button" class="soft" id="reread">규칙 다시 보기</button>
+        <button type="button" class="soft" id="retry">틀린 문제 다시</button>
+        <button type="button" class="main" id="nextTopic">다음 규칙</button>
+      </div>
+    </section>
+  </main>
+  <script src="data.js?v=20261119-1"></script>
+  <script src="app.js?v=20261119-1"></script>
+</body>
+</html>

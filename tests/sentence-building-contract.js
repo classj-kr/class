@@ -155,7 +155,7 @@ assert.ok(finalWriting.criteria.length >= 8);
 assert.doesNotMatch(`${finalWriting.prompt} ${finalWriting.scene}`, /그림|[🌳🧺👨‍👩‍👧‍👦☀️🥪🍎🐕]/u);
 
 assert.match(hub, /data-access-group="writing"/);
-assert.match(hub, /<strong>쓰기<\/strong><small>\(Writing\)<\/small>/);
+assert.match(hub, /<strong>쓰기·문법<\/strong><small>\(Writing &amp; Grammar\)<\/small>/);
 assert.match(hub, /learning\/literacy-numeracy\/spelling\//);
 assert.match(hub, /learning\/literacy-numeracy\/sentence-building\//);
 assert.match(hub, /<strong>바른 문장 고르기<\/strong><small>\(Sentence Choice\)<\/small>/);
