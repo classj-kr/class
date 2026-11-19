@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-dark: #0b0f0c;
-            --card-bg: rgba(21, 28, 24, 0.88);
+            --card-bg: rgba(4, 6, 5, 0.5);
             --card-border: rgba(117, 214, 159, 0.18);
             --card-hover-border: rgba(117, 214, 159, 0.4);
             --accent-green: #75d69f;
@@ -38,6 +38,20 @@
             flex-direction: column;
             gap: 20px;
             overflow-x: hidden;
+        }
+
+        /* 요일 그림은 화면 전체 바탕이다. 화면에 붙여 두어 길게 내려도 끝까지 깔리고, 카드는 그 위에 비친다. */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-color: #050505;
+            background-image: var(--weekday-panel-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Clock, current weather, and today's forecast. */
@@ -131,24 +145,12 @@
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 22px;
-            backdrop-filter: blur(16px);
             box-shadow: var(--glass-shadow);
             display: flex;
             flex-direction: column;
             gap: 16px;
             position: relative;
             transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .clock-card,
-        .widget-card {
-            background-color: #101010;
-            background-image:
-                linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.34)),
-                var(--weekday-panel-image);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
         }
 
         .widget-card.dragging {
@@ -935,7 +937,6 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
-            backdrop-filter: blur(16px);
         }
 
         .toolbar-group {
@@ -1653,9 +1654,10 @@
             const day = date.getDay();
             if (day === lastPanelThemeDay) return;
             lastPanelThemeDay = day;
+            // 주말 그림은 따로 없으니 색이 없는 월요일 회색 나무를 깐다.
             document.documentElement.style.setProperty(
                 "--weekday-panel-image",
-                weekdayPanelImages[day] || "none"
+                weekdayPanelImages[day] || weekdayPanelImages[1]
             );
         }
 
