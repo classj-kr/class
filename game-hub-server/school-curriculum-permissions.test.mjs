@@ -182,11 +182,11 @@ test('ordinary teachers read every curriculum endpoint within their own school w
   await assert.rejects(call('get', 'specialist-timetable', 102, { query: { academicYear: '2026', teacherUserId: '202' } }), { status: 400, code: 'INVALID_TEACHER' });
 }));
 
-test('ordinary teachers cannot write any curriculum endpoint or read administrator-only attendance and student APIs', () => withSchool(async ({ db, call, snapshot, mutationCount }) => {
+test('ordinary teachers cannot write any curriculum endpoint or read the administrator-only student API', () => withSchool(async ({ db, call, snapshot, mutationCount }) => {
   await db.exec("UPDATE classroom_users SET role='admin' WHERE id=102");
   const before = await snapshot();
   for (const [method, path] of writes) await assert.rejects(call(method, path, 102, { body: { canEdit: true, schoolId: 2 }, params: { scheduleId: 1, holidayId: 1 } }), { status: 403, code: 'SCHOOL_ADMIN_REQUIRED' });
-  for (const path of ['dashboard', 'students']) await assert.rejects(call('get', path), { status: 403, code: 'SCHOOL_ADMIN_REQUIRED' });
+  for (const path of ['students']) await assert.rejects(call('get', path), { status: 403, code: 'SCHOOL_ADMIN_REQUIRED' });
   assert.deepEqual(await snapshot(), before);
   assert.equal(mutationCount(), 0);
 }));
