@@ -383,19 +383,21 @@ test('browser: a cell in the daily table can be changed for one date, the whole 
   await page.locator('#annualCellEditorSubject').selectOption('창체(자율)');
   await page.locator('#annualCellEditorWholeDay').check();
   await page.locator('#annualCellEditorSave').click();
-  await page.waitForFunction(() => document.querySelector('.annual-cell-btn[data-date="2028-05-09"][data-period="4"]')?.textContent === '창체(자율)');
-  assert.equal(await cell('2028-05-09', 1).innerText(), '창체(자율)');
-  assert.equal(await cell('2028-05-10', 1).innerText(), '국어', 'the next day keeps the master timetable');
+  await page.waitForFunction(() => document.querySelector('.annual-cell-btn[data-date="2028-05-09"][data-period="4"]')?.textContent === '자');
+  assert.equal(await cell('2028-05-09', 1).innerText(), '자');
+  assert.equal(await cell('2028-05-09', 1).getAttribute('data-subject'), '창체(자율)');
+  assert.equal(await cell('2028-05-10', 1).innerText(), '국', 'the next day keeps the master timetable');
   assert.equal(await korean(), before - 4);
   assert.match(await cell('2028-05-09', 1).evaluate(b => b.parentElement.className), /annual-changed/);
-  assert.equal(await cell('2028-05-09', 1).evaluate(b => b.parentElement.title), '기초시간표: 국어');
+  assert.equal(await cell('2028-05-09', 1).evaluate(b => b.parentElement.title), '창체(자율) · 기초시간표: 국어');
+  assert.equal(await cell('2028-05-10', 1).evaluate(b => b.parentElement.title), '국어');
   const activity = page.locator('#annualSubjectTableBody tr', { hasText: '창체(자율)' });
   assert.equal(await activity.locator('td').nth(14).innerText(), '4');
   // 한 칸만 기초시간표대로 되돌린다.
   await cell('2028-05-09', 3).click();
   await page.locator('#annualCellEditorSubject').selectOption('__base__');
   await page.locator('#annualCellEditorSave').click();
-  await page.waitForFunction(() => document.querySelector('.annual-cell-btn[data-date="2028-05-09"][data-period="3"]')?.textContent === '국어');
+  await page.waitForFunction(() => document.querySelector('.annual-cell-btn[data-date="2028-05-09"][data-period="3"]')?.textContent === '국');
   assert.equal(await korean(), before - 3);
   assert.equal(await page.locator('#annualCellEditor').isVisible(), false);
   assert.deepEqual(errors, []);
@@ -432,7 +434,7 @@ test('browser: the annual table covers the real school year, removes days off an
   assert.deepEqual(days.at(-1).cells.slice(0, 2), ['2.28', '수'], 'the last day is the end of February');
   // 날짜마다 그 요일의 과목이 교시 칸에 들어간다.
   const may9 = days.find(r => r.cells[0] === '5.9');
-  assert.deepEqual(may9.cells.slice(2, 9), ['국어', '국어', '국어', '국어', '', '', '4']);
+  assert.deepEqual(may9.cells.slice(2, 9), ['국', '국', '국', '국', '', '', '4'], 'a cell shows one letter');
   const may8 = days.find(r => r.cells[0] === '5.8');
   assert.equal(may8.cells[2], '재량휴업', 'a day off shows why instead of lessons');
   assert.ok(may8.cells.at(-1).includes('학부모 상담'));

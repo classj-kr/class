@@ -1599,7 +1599,8 @@ document.addEventListener('DOMContentLoaded', () => {
         '바른 생활': ['바', 'social'], '바른생활': ['바', 'social'],
         '슬기로운 생활': ['슬', 'science'], '슬기로운생활': ['슬', 'science'],
         '즐거운 생활': ['즐', 'arts'], '즐거운생활': ['즐', 'arts'],
-        '창체': ['창', 'activity'], '자율': ['자', 'activity'], '동아리': ['동', 'activity']
+        '창체': ['창', 'activity'], '자율': ['자', 'activity'], '동아리': ['동', 'activity'],
+        '창체(자율)': ['자', 'activity'], '창체(동아리)': ['동', 'activity'], '창체(봉사)': ['봉', 'activity'], '창체(진로)': ['진', 'activity']
     };
     const schoolSubjectStyle = name => Object.hasOwn(schoolSubjects, name) ? schoolSubjects[name] :
         (name.startsWith('창체') ? ['창', 'activity'] : [name, 'other']);
@@ -2430,6 +2431,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let annualState = null;
     let annualTeachersLoaded = false;
+    // 연간시간표 칸의 한 글자. 줄임말 목록에 없는 과목은 첫 글자로 쓴다.
+    const annualShortName = (subject, short) => (short && short !== subject ? short : subject.replace(/^창체\(?/, '').charAt(0) || subject.charAt(0));
 
     // 학년부장: 학교 관리자만 고르고, 다른 교직원은 누구인지만 본다.
     async function renderAnnualGradeHead(head, grade) {
@@ -2689,12 +2692,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         const changeKey = `${dateStr}_${p}`;
                         const changed = dayChanges.has(changeKey) && dayChanges.get(changeKey) !== base;
                         const subject = dayChanges.has(changeKey) ? dayChanges.get(changeKey) : base;
-                        const [, color] = subject ? schoolSubjectStyle(subject) : ['', 'other'];
+                        const [short, color] = subject ? schoolSubjectStyle(subject) : ['', 'other'];
                         const classes = [subject ? `school-subject-${color}` : '', changed ? 'annual-changed' : ''].filter(Boolean).join(' ');
-                        const title = changed ? ` title="기초시간표: ${escapeHtml(base || '수업 없음')}"` : '';
-                        const label = escapeHtml(subject);
+                        // 칸에는 한 글자만. 전체 이름은 마우스를 올리면 보이고, 교과별 시수표에 다 있다.
+                        const fullName = escapeHtml(subject || '수업 없음');
+                        const title = ` title="${subject ? fullName : ''}${changed ? `${subject ? ' · ' : ''}기초시간표: ${escapeHtml(base || '수업 없음')}` : ''}"`;
+                        const label = escapeHtml(subject ? annualShortName(subject, short) : '');
                         const content = canEditDays
-                            ? `<button type="button" class="annual-cell-btn" data-date="${dateStr}" data-period="${p}" aria-label="${dayDate.getMonth() + 1}월 ${dayDate.getDate()}일 ${p}교시 ${label || '수업 없음'} 바꾸기">${label}</button>`
+                            ? `<button type="button" class="annual-cell-btn" data-date="${dateStr}" data-period="${p}" data-subject="${escapeHtml(subject)}" aria-label="${dayDate.getMonth() + 1}월 ${dayDate.getDate()}일 ${p}교시 ${fullName} 바꾸기">${label}</button>`
                             : label;
                         cells += `<td class="${classes}"${title}>${content}</td>`;
                         if (!subject) continue;
