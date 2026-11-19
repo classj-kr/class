@@ -109,7 +109,7 @@ async function main() {
     });
     assert.equal(savedWriting.status, 200);
     await page.reload();
-    await page.locator('.record-card').filter({ hasText: '글씨 쓰기 · 가나' }).locator('.detail-button').click();
+    await page.locator('.record-card').filter({ hasText: '손글씨 · 가나' }).locator('.detail-button').click();
     const ink = page.getByRole('img', { name: '가 쓴 글씨', exact: true });
     assert.ok(await ink.evaluate(canvas => canvas.getContext('2d').getImageData(0, 0, 200, 200).data.some(value => value > 0)));
     assert.equal(await page.getByRole('img', { name: '나 빈 칸', exact: true }).count(), 1);

@@ -21,7 +21,7 @@
     ['csat-math', '수리', '수능 수학', 'csat-math/'],
     ['metacognition', '학습 점검', '학습 점검', 'metacognition/'],
     ['curriculum-vocabulary', '어휘', '교과서 단어', 'curriculum-vocabulary/'],
-    ['handwriting', '쓰기', '글씨 쓰기', 'handwriting/'],
+    ['handwriting', '쓰기', '손글씨', 'handwriting/'],
     ['typing', '정보', '타자', '/learning/inquiry/information-computing/typing/'],
     ['computer-literacy', '정보', '컴퓨터 이론', '/learning/inquiry/information-computing/computer-fundamentals/'],
     ['korean-history', '역사·지리', '한국사', '/learning/inquiry/korean-history/'],
