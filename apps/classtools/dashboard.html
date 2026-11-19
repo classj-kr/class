@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-dark: #0b0f0c;
-            --card-bg: rgba(4, 6, 5, 0.5);
+            --card-bg: #060606;
             --card-border: rgba(117, 214, 159, 0.18);
             --card-hover-border: rgba(117, 214, 159, 0.4);
             --accent-green: #75d69f;
@@ -40,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* 요일 그림은 화면 전체 바탕이다. 화면에 붙여 두어 길게 내려도 끝까지 깔리고, 카드는 그 위에 비친다. */
+        /* 요일 그림은 화면 전체 바탕이다. 화면에 붙여 두어 길게 내려도 끝까지 깔리고, 그 위에 검은 카드가 놓인다. */
         body::before {
             content: "";
             position: fixed;
@@ -129,7 +129,7 @@
         /* Main Dashboard Grid */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             /* Grid rows default to stretch, so a card with light content
                (e.g. no upcoming events) was forced to match its tallest
                sibling (the period timetable) and ended up as mostly empty
@@ -221,7 +221,7 @@
         }
 
         .roster-student-number {
-            color: var(--text-sub);
+            color: #b3bfb8;
             font-size: 0.68rem;
             font-weight: 700;
         }
@@ -308,7 +308,7 @@
 
         .timetable-item {
             display: grid;
-            grid-template-columns: 60px minmax(110px, 1.1fr) 1fr;
+            grid-template-columns: 60px minmax(110px, 1.1fr) minmax(0, 1fr);
             gap: 8px;
             align-items: center;
             padding: 4px 10px;
@@ -321,7 +321,6 @@
         .timetable-item.active {
             background: linear-gradient(135deg, rgba(240, 189, 100, 0.25) 0%, rgba(240, 189, 100, 0.05) 100%);
             border-color: var(--accent-amber);
-            transform: scale(1.01);
             box-shadow: 0 4px 15px rgba(240, 189, 100, 0.15);
         }
 
@@ -342,7 +341,7 @@
             flex-direction: column;
             align-items: center;
             font-size: 0.7rem;
-            color: var(--text-sub);
+            color: #b3bfb8;
             line-height: 1.1;
             margin-top: 1px;
         }
@@ -662,13 +661,19 @@
 
         .schedule-editor {
             display: grid;
-            grid-template-columns: 132px minmax(200px, 1fr) 52px max-content;
+            grid-template-columns: 132px minmax(0, 1fr) 52px max-content;
             gap: 8px;
             margin-top: 10px;
         }
 
         .schedule-editor[hidden] {
             display: none;
+        }
+
+        /* 휴대폰처럼 좁은 카드에서는 날짜 칸을 한 줄 위로 올려 일정 칸이 넉넉하게 남게 한다. */
+        @media (max-width: 520px) {
+            .schedule-editor { grid-template-columns: minmax(0, 1fr) 52px max-content; }
+            .schedule-date-input { grid-column: 1 / -1; }
         }
 
         .schedule-date-input {
@@ -898,7 +903,7 @@
         }
         .meal-dish-item > span:last-child { min-width: 0; }
 
-        /* Opaque notice items stay separate from the textured board. */
+        /* 글씨 상자는 검은 카드에 뚫린 창처럼 바탕 나무결을 그대로 보여 준다(바탕과 같은 그림을 화면에 붙여 깐다). */
         .timetable-item,
         .timetable-item.active,
         .num-chip,
@@ -906,8 +911,15 @@
         .board-item.schedule-today,
         .weather-box,
         .meal-dish-item { border: 1px solid rgba(255, 255, 255, 0.08); padding: 7px 10px !important; border-radius: 8px !important; gap: 8px !important;
-            background: #050505;
+            background-color: #1b1b1b;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--weekday-panel-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
+        /* 지금 교시는 호박색 테두리로 띄운다(위 공통 테두리가 덮지 않게 뒤에 둔다). 키우는 효과는 나무결 창을 어긋나게 해서 쓰지 않는다. */
+        .timetable-item.active { border-color: var(--accent-amber); }
 
         /* 학생 보기: 보기만 한다. */
         html.student-view [data-teacher-only] { display: none !important; }
@@ -1333,7 +1345,7 @@
 
         @media (max-width: 1280px) {
             .dashboard-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
@@ -1352,7 +1364,7 @@
             .air-value { font-size: 0.84rem; }
             .air-unit.dust-unit { display: none; }
             .dashboard-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
         }
     </style>
