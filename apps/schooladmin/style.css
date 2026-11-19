@@ -560,3 +560,19 @@ body[data-curriculum-access="read"] :is(input, select):disabled { opacity: 1; co
 .textbook-plan { overflow-x: auto; max-height: 420px; }
 .textbook-plan table { min-width: 700px; margin-top: 12px; }
 .textbook-plan td { white-space: pre-line; text-align: left; }
+/* 학급별 연간시간표: 교과별 월·학기 시수와 날짜×교시 과목표. 줄이 많아 칸을 좁게 잡는다. */
+.annual-table th, .annual-table td { padding: 4px 6px; font-size: .82rem; border: 1px solid var(--border-color); white-space: nowrap; }
+.annual-table thead th { position: sticky; top: 0; background: #f1f5f9; color: var(--text-main); z-index: 1; }
+.annual-subject-table tbody th { text-align: left; font-weight: 700; }
+.annual-subject-table .annual-sum-row { background: #f8fafc; font-weight: 800; }
+.annual-short { color: var(--danger, #dc2626); font-weight: 800; }
+.annual-daily-table td { font-weight: 600; }
+.annual-daily-table .annual-week { font-weight: 800; background: #f8fafc; }
+.annual-daily-table .annual-week-start > td { border-top: 2px solid #94a3b8; }
+.annual-daily-table .annual-off { color: #b91c1c; font-weight: 700; background: #fef2f2; }
+.annual-daily-table .annual-note { text-align: left; white-space: normal; min-width: 120px; color: var(--text-muted); font-weight: 500; }
+.annual-daily-table .annual-gap-row td { background: #f1f5f9; color: var(--text-muted); font-weight: 700; }
+@media print {
+    #annualTimetableTab .annual-table th, #annualTimetableTab .annual-table td { padding: 1px 3px !important; font-size: 7.5pt !important; position: static; }
+    #annualTimetableTab .annual-table tr { break-inside: avoid; }
+}

@@ -30,7 +30,7 @@ test("renderAnnualTimetable34Weeks counts only actual class weeks, not raw calen
   // matching the "weekly hours * actual class weeks" annual-hours rule used elsewhere
   // (curriculum hours auto-calc).
   assert.match(body, /if \(weekSchoolDays > 0\) \{/);
-  assert.match(body, /if \(weekSchoolDays > 0\) \{[\s\S]*?annualTimetableTableBody\.appendChild\(tr\);\s*weekIndex\+\+;\s*\}/);
+  assert.match(body, /if \(weekSchoolDays > 0\) \{[\s\S]*?annualTimetableTableBody\.appendChild\(tr\);\s*\}\);\s*weekIndex\+\+;\s*\}/);
 
   // The table reports the number of class weeks it actually counted instead of a fixed 34.
   assert.match(body, /const totalClassWeeks = weekIndex - 1;/);

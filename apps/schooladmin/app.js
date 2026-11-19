@@ -2422,12 +2422,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return month >= 3 && month <= 7 ? 1 : 2;
     }
 
+    // 날짜 하나하나에 그 요일의 기초시간표를 깔아 일자별 시간표를 만들고, 같은 칸을 세어
+    // 교과별 월·학기 시수를 낸다. 쉬는 날(공휴일·방학·재량휴업)은 수업도 시수도 없다.
+    // 행사가 있는 날도 지금은 기초시간표 과목대로 센다(행사명은 옆 칸에 적는다).
+    const ANNUAL_MONTHS = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+    const annualDiffText = diff => diff === null ? '-' : diff > 0 ? `+${diff}` : String(diff);
+
     async function renderAnnualTimetable34Weeks() {
         if (!annualTimetableTableBody) return;
         // 탭 전환과 학년·학급 변경이 겹쳐도 마지막 요청만 표를 그린다.
         const request = ++annualTimetableRequest;
         const academicYear = selectedAcademicYear;
         const grade = Number(annualTimetableGradeSelect ? annualTimetableGradeSelect.value : 5);
+        const subjectHead = document.getElementById('annualSubjectTableHead');
+        const subjectBody = document.getElementById('annualSubjectTableBody');
+        const dailyHead = document.getElementById('annualTimetableTableHead');
 
         try {
             await fetchRegisteredClasses();
@@ -2442,16 +2451,42 @@ document.addEventListener('DOMContentLoaded', () => {
             if (request !== annualTimetableRequest) return;
             annualTimetableTableBody.innerHTML = '';
             renderAnnualBellSchedule(grade);
-            const dailyPeriodsMap = synthData.dailyPeriodsMap || {};
+            const lessonsByDay = synthData.lessons || {};
             const schedList = synthData.schedules || [];
             const generalEventList = synthData.generalEvents || [];
+            const lastPeriod = Math.max(0, ...Object.values(lessonsByDay).flat().map(l => Number(l.period) || 0));
+            const periodCount = Math.max(lastPeriod, 6);
+
+            dailyHead.innerHTML = `<tr><th>주</th><th>날짜</th><th>요일</th>${
+                Array.from({ length: periodCount }, (_, i) => `<th>${i + 1}교시</th>`).join('')}<th>시수</th><th>행사</th></tr>`;
 
             const activeHolidays = Object.keys(dynamicPublicHolidays).length > 0 ? dynamicPublicHolidays : KOREAN_NATIONAL_HOLIDAYS;
+            // 교과 → 월별(3월~2월)·학기별 시수
+            const tally = new Map();
+            const countLesson = (subject, monthIndex, semester) => {
+                if (!tally.has(subject)) tally.set(subject, { months: Array(12).fill(0), sem: [0, 0] });
+                const t = tally.get(subject);
+                t.months[monthIndex]++;
+                t.sem[semester - 1]++;
+            };
 
             let cumulativeHours = 0;
             let totalSchoolDays1 = 0;
             let totalSchoolDays2 = 0;
             let weekIndex = 1;
+            // 수업일이 하루도 없는 주(방학)는 한 줄로 접는다.
+            let gap = null;
+            const flushGap = () => {
+                if (!gap) return;
+                const tr = document.createElement('tr');
+                tr.className = 'annual-gap-row';
+                const td = document.createElement('td');
+                td.colSpan = periodCount + 5;
+                td.textContent = `${gap.label || '쉬는 기간'} (${gap.from.getMonth() + 1}.${gap.from.getDate()}~${gap.to.getMonth() + 1}.${gap.to.getDate()})`;
+                tr.appendChild(td);
+                annualTimetableTableBody.appendChild(tr);
+                gap = null;
+            };
 
             // 3월 1일이 든 주부터 본다. 첫 월요일부터 세면 3월 2·3일 같은 앞쪽 수업일이 빠진다.
             const startDate = new Date(academicYear, 2, 1);
@@ -2462,20 +2497,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             while (currMon <= endDate) {
                 let weekSchoolDays = 0;
-                let weekSemester = null;
-                let firstDay = null;
-                let lastDay = null;
-                const weekLabels = [];
-                const dayHours = [];
+                const weekRows = [];
+                let weekFirst = null;
+                let weekLast = null;
+                let weekOffLabel = '';
 
                 for (let dayOffset = 0; dayOffset < 5; dayOffset++) {
                     const dayDate = new Date(currMon);
                     dayDate.setDate(dayDate.getDate() + dayOffset);
-                    dayHours[dayOffset] = null;
                     // 앞뒤 학년도에 걸친 날은 이 학년도의 수업일이 아니다.
                     if (dayDate < startDate || dayDate > endDate) continue;
-                    firstDay = firstDay || dayDate;
-                    lastDay = dayDate;
+                    weekFirst = weekFirst || dayDate;
+                    weekLast = dayDate;
                     const dateStr = annualDateKey(dayDate);
 
                     const natHoliday = activeHolidays[dateStr];
@@ -2483,55 +2516,63 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 서버가 이미 이 학년에 해당되는 항목만 내려준다 (target_scope='ALL' 이거나
                     // target_grades에 이 학년이 포함된 것만).
                     const dayEvents = schedList.filter(e => e.event_date === dateStr);
-                    const isDayOff = dayEvents.some(e => e.category === 'HOLIDAY' || e.category === 'DISCRETIONARY');
-
-                    if (natHoliday) weekLabels.push(`🔴 ${natHoliday}`);
-                    else if (vacType) weekLabels.push(`🏖️ ${vacType}`);
-                    else dayEvents.forEach(e => weekLabels.push(`🏫 ${e.title}`));
-
-                    if (!natHoliday && !vacType && !isDayOff) {
-                        const semester = annualSemesterOf(dayDate, dateStr);
-                        weekSemester = weekSemester || semester;
-                        weekSchoolDays++;
-                        if (semester === 1) totalSchoolDays1++;
-                        else totalSchoolDays2++;
-                        dayHours[dayOffset] = Number(dailyPeriodsMap[dayOffset + 1]) || 0;
-                    }
-
-                    // 일반 행사는 기존 시간표/등교일수 계산에는 영향을 주지 않고, 딱지(요약 텍스트)만 덧붙인다.
+                    const offEvent = dayEvents.find(e => e.category === 'HOLIDAY' || e.category === 'DISCRETIONARY');
+                    const offLabel = natHoliday || vacType || offEvent?.title || '';
+                    weekOffLabel = weekOffLabel || offLabel;
+                    const notes = natHoliday || vacType ? [] : dayEvents.filter(e => e !== offEvent).map(e => e.title);
+                    // 일반 행사는 수업일·시수를 바꾸지 않고 행사 칸에만 적는다.
                     generalEventList
                         .filter(e => e.event_date <= dateStr && (e.end_date || e.event_date) >= dateStr)
-                        .forEach(e => weekLabels.push(`📌 ${e.title}`));
+                        .forEach(e => notes.push(e.title));
+                    const noteCell = `<td class="annual-note">${escapeHtml([...new Set(notes)].join(', '))}</td>`;
+
+                    const dateCells = `<td>${dayDate.getMonth() + 1}.${dayDate.getDate()}</td><td>${schoolDays[dayOffset]}</td>`;
+                    if (offLabel) {
+                        weekRows.push(`${dateCells}<td colspan="${periodCount}" class="annual-off">${escapeHtml(offLabel)}</td><td>-</td>${noteCell}`);
+                        continue;
+                    }
+                    const semester = annualSemesterOf(dayDate, dateStr);
+                    const monthIndex = ANNUAL_MONTHS.indexOf(dayDate.getMonth() + 1);
+                    weekSchoolDays++;
+                    if (semester === 1) totalSchoolDays1++;
+                    else totalSchoolDays2++;
+                    const bySlot = new Map((lessonsByDay[dayOffset + 1] || []).map(l => [Number(l.period), l.subject]));
+                    let dayHours = 0;
+                    let cells = '';
+                    for (let p = 1; p <= periodCount; p++) {
+                        const subject = bySlot.get(p);
+                        if (!subject) { cells += '<td></td>'; continue; }
+                        dayHours++;
+                        countLesson(subject, monthIndex, semester);
+                        const [, color] = schoolSubjectStyle(subject);
+                        cells += `<td class="school-subject-${color}">${escapeHtml(subject)}</td>`;
+                    }
+                    cumulativeHours += dayHours;
+                    weekRows.push(`${dateCells}${cells}<td>${dayHours}</td>${noteCell}`);
                 }
 
                 // 주차는 실제 등교(수업)한 주만 센다 -- 방학처럼 등교일이 하루도 없는 주는
-                // 행을 만들지도, 주차 번호를 소모하지도 않는다. 연간 필요 시수도 34주 고정이
-                // 아니라 실제 수업 주수로 따지므로(schoolWeeksForGrade) 이 표의 주수와 맞아야 한다.
+                // 주차 번호를 소모하지 않는다. 연간 필요 시수도 34주 고정이 아니라 실제
+                // 수업 주수로 따지므로(schoolWeeksForGrade) 이 표의 주수와 맞아야 한다.
                 if (weekSchoolDays > 0) {
-                    const weeklyHours = dayHours.reduce((sum, hours) => sum + (hours || 0), 0);
-                    cumulativeHours += weeklyHours;
-
-                    const periodStr = `${firstDay.getMonth() + 1}.${firstDay.getDate()}~${lastDay.getMonth() + 1}.${lastDay.getDate()}`;
-                    const eventSummary = weekLabels.length > 0 ? Array.from(new Set(weekLabels)).join(', ') : '정상 수업';
-                    const hourCells = dayHours.map(hours => `<td>${hours === null ? '-' : `${hours}h`}</td>`).join('');
-
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td><span class="badge ${weekSemester === 1 ? 'category-event' : 'category-trip'}">${weekSemester}학기</span></td>
-                        <td style="font-weight:700;">${weekIndex}주차</td>
-                        <td>${periodStr}</td>
-                        <td style="font-weight:700;">${weekSchoolDays}일</td>
-                        ${hourCells}
-                        <td style="font-weight:800; color:var(--primary);">${weeklyHours}시간</td>
-                        <td style="font-weight:800;">${cumulativeHours}시간</td>
-                        <td style="font-size:0.88rem; color:var(--text-muted);">${escapeHtml(eventSummary)}</td>
-                    `;
-                    annualTimetableTableBody.appendChild(tr);
+                    flushGap();
+                    weekRows.forEach((cellsHtml, i) => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = i === 0
+                            ? `<td class="annual-week" rowspan="${weekRows.length}">${weekIndex}</td>${cellsHtml}`
+                            : cellsHtml;
+                        if (i === 0) tr.className = 'annual-week-start';
+                        annualTimetableTableBody.appendChild(tr);
+                    });
                     weekIndex++;
+                } else if (weekFirst) {
+                    if (!gap) gap = { from: weekFirst, label: weekOffLabel };
+                    gap.to = weekLast;
                 }
 
                 currMon.setDate(currMon.getDate() + 7);
             }
+            flushGap();
 
             const totalClassWeeks = weekIndex - 1;
             if (annualTotalHoursVal) annualTotalHoursVal.textContent = `${cumulativeHours.toLocaleString()}시간`;
@@ -2540,25 +2581,41 @@ document.addEventListener('DOMContentLoaded', () => {
             if (semesterDaysVal) semesterDaysVal.textContent = `${totalSchoolDays1}일 / ${totalSchoolDays2}일 (총 ${totalSchoolDays1 + totalSchoolDays2}일)`;
 
             const requiredHours = curriculumHoursTotals[grade]?.annual || 0;
-            const settlement = synthData.hasTimetable === false ? '⚠️ 기초시간표 미입력'
+            const settlement = synthData.hasTimetable === false ? '기초시간표 미입력'
                 : !requiredHours ? '시수편성 미입력'
-                    : cumulativeHours >= requiredHours ? '✅ 편성 시수 충족'
-                        : `⚠️ ${(requiredHours - cumulativeHours).toLocaleString()}시간 부족`;
-            annualTimetableTableFoot.innerHTML = `
-                <tr>
-                    <td colspan="3">연간 ${totalClassWeeks}주 총계</td>
-                    <td>${totalSchoolDays1 + totalSchoolDays2}일</td>
-                    <td colspan="5">월~금 기초시간표 배정 교시 연산 정산</td>
-                    <td>-</td>
-                    <td style="font-weight:900; color:var(--primary); font-size:1.1rem;">${cumulativeHours.toLocaleString()}시간</td>
-                    <td>${settlement}</td>
-                </tr>
-            `;
+                    : cumulativeHours >= requiredHours ? '편성 시수 충족'
+                        : `${(requiredHours - cumulativeHours).toLocaleString()}시간 부족`;
+            annualTimetableTableFoot.innerHTML = `<tr><td colspan="3">연간 ${totalClassWeeks}주 총계</td><td colspan="${periodCount}">수업일 ${totalSchoolDays1 + totalSchoolDays2}일</td><td>${cumulativeHours.toLocaleString()}</td><td>${settlement}</td></tr>`;
+
+            // 교과별 시수: 시수편성 순서대로, 편성에 없는데 시간표에만 있는 과목은 뒤에 붙인다.
+            const curriculum = synthData.curriculum || [];
+            const planned = new Map(curriculum.map(c => [c.subject, c.annual]));
+            const order = [...planned.keys(), ...[...tally.keys()].filter(s => !planned.has(s))];
+            subjectHead.innerHTML = `<tr><th>교과</th>${ANNUAL_MONTHS.map(m => `<th>${m}월</th>`).join('')}<th>1학기</th><th>2학기</th><th>계</th><th>편성</th><th>차이</th></tr>`;
+            const sum = { months: Array(12).fill(0), sem: [0, 0], planned: 0 };
+            const subjectRow = (label, t, plan, extraClass = '') => {
+                const total = t.sem[0] + t.sem[1];
+                const diff = plan ? total - plan : null;
+                return `<tr class="${extraClass}"><th>${label}</th>${t.months.map(n => `<td>${n || ''}</td>`).join('')}<td>${t.sem[0]}</td><td>${t.sem[1]}</td><td><b>${total}</b></td><td>${plan || '-'}</td><td class="${diff < 0 ? 'annual-short' : ''}">${annualDiffText(diff)}</td></tr>`;
+            };
+            let subjectRows = order.map(subject => {
+                const t = tally.get(subject) || { months: Array(12).fill(0), sem: [0, 0] };
+                const plan = planned.get(subject) || 0;
+                t.months.forEach((n, i) => { sum.months[i] += n; });
+                sum.sem[0] += t.sem[0];
+                sum.sem[1] += t.sem[1];
+                sum.planned += plan;
+                const [, color] = schoolSubjectStyle(subject);
+                return subjectRow(`<span class="school-subject-${color}">${escapeHtml(subject)}</span>`, t, plan);
+            }).join('');
+            if (order.length) subjectRows += subjectRow('계', sum, sum.planned, 'annual-sum-row');
+            subjectBody.innerHTML = subjectRows || `<tr><td colspan="18">기초시간표와 시수편성이 아직 없습니다.</td></tr>`;
         } catch (err) {
             if (request !== annualTimetableRequest) return;
-            console.error('Failed to render 34-week annual timetable:', err);
+            console.error('Failed to render annual timetable:', err);
             annualTimetableTableBody.innerHTML = `<tr><td colspan="12">연간시간표를 불러오지 못했습니다. ${escapeHtml(err.message)}</td></tr>`;
             annualTimetableTableFoot.innerHTML = '';
+            if (subjectBody) subjectBody.innerHTML = '';
             if (annualTotalHoursVal) annualTotalHoursVal.textContent = '-';
             if (semesterDaysVal) semesterDaysVal.textContent = '-';
             const annualTotalWeeksVal = document.getElementById('annualTotalWeeksVal');

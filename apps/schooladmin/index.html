@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>학사일정·교육과정</title>
-    <link rel="stylesheet" href="style.css?v=20261021-curriculum-layout">
+    <link rel="stylesheet" href="style.css?v=20261119-annual-daily">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 </head>
 <body>
@@ -563,7 +563,7 @@
             <div class="audit-summary-banner margin-top">
                 <div class="audit-card highlight">
                     <span class="audit-label">선택 학급 연간 시수 합계</span>
-                    <span class="audit-value" id="annualTotalHoursVal">1,088시간</span>
+                    <span class="audit-value" id="annualTotalHoursVal">-</span>
                 </div>
                 <div class="audit-card">
                     <span class="audit-label">총 연간 수업 주차</span>
@@ -571,7 +571,7 @@
                 </div>
                 <div class="audit-card">
                     <span class="audit-label">1학기 / 2학기 수업일수</span>
-                    <span class="audit-value" id="semesterDaysVal">93일 / 98일</span>
+                    <span class="audit-value" id="semesterDaysVal">-</span>
                 </div>
             </div>
 
@@ -588,36 +588,30 @@
                 </div>
             </div>
 
-            <div class="table-container margin-top">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>학기</th>
-                            <th>주차</th>
-                            <th>기간 (월.일~월.일)</th>
-                            <th>수업일수</th>
-                            <th>월</th>
-                            <th>화</th>
-                            <th>수</th>
-                            <th>목</th>
-                            <th>금</th>
-                            <th>주별시수</th>
-                            <th>누적진도시수</th>
-                            <th>행사 / 메모 라벨</th>
-                        </tr>
-                    </thead>
-                    <tbody id="annualTimetableTableBody">
-                        <!-- Injected via JS -->
-                    </tbody>
-                    <tfoot id="annualTimetableTableFoot">
-                        <!-- Totals injected via JS -->
-                    </tfoot>
-                </table>
+            <div class="schedule-editor-panel margin-top">
+                <h3>교과별 시수</h3>
+                <div class="table-container">
+                    <table class="data-table annual-table annual-subject-table">
+                        <thead id="annualSubjectTableHead"></thead>
+                        <tbody id="annualSubjectTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="schedule-editor-panel margin-top">
+                <h3>일자별 시간표</h3>
+                <div class="table-container">
+                    <table class="data-table annual-table annual-daily-table">
+                        <thead id="annualTimetableTableHead"></thead>
+                        <tbody id="annualTimetableTableBody"></tbody>
+                        <tfoot id="annualTimetableTableFoot"></tfoot>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
 
     <script src="textbooks.js?v=20261008-1"></script>
-    <script src="app.js?v=20261119-subject-short"></script>
+    <script src="app.js?v=20261119-annual-daily"></script>
 </body>
 </html>

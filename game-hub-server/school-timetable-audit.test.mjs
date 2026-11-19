@@ -46,6 +46,12 @@ async function withSchool(run) {
         school_id BIGINT, event_date DATE, end_date DATE, title TEXT, event_time TEXT, period TEXT, location TEXT,
         target_scope TEXT DEFAULT 'ALL', target_grades INTEGER[] DEFAULT '{}'
       );
+      CREATE TABLE school_curriculum_hours (
+        id SERIAL, school_id BIGINT, academic_year INTEGER, grade INTEGER,
+        subject_name TEXT, weekly_hours NUMERIC, annual_required_hours INTEGER, category TEXT
+      );
+      INSERT INTO school_curriculum_hours (school_id, academic_year, grade, subject_name, weekly_hours, annual_required_hours, category)
+        VALUES (1, 2028, 3, '국어', 6, 204, 'SUBJECT'), (1, 2028, 3, '수학', 4, 136, 'SUBJECT');
       INSERT INTO classroom_schools VALUES (1);
       INSERT INTO classroom_users VALUES (101, 'home@example.invalid'), (102, 'subject@example.invalid');
       INSERT INTO classroom_teachers (school_id, academic_year, grade, class_number, user_id, teacher_type) VALUES
@@ -329,15 +335,34 @@ test('browser: the annual table covers the real school year, removes days off an
   await page.locator('#annualTimetableGradeSelect').selectOption('3');
   await page.waitForFunction(() => document.querySelectorAll('#annualTimetableTableBody tr').length > 20);
   await page.waitForTimeout(700);
-  const rows = await page.locator('#annualTimetableTableBody tr').evaluateAll(trs => trs.map(tr => [...tr.cells].map(td => td.textContent.trim())));
-  assert.equal(new Set(rows.map(r => r[1])).size, rows.length, 'each week appears once');
-  assert.deepEqual(rows[0].slice(2, 4), ['3.1~3.3', '2일'], 'March 2 and 3 count even though the first Monday is March 6');
-  assert.deepEqual(rows.at(-1).slice(2, 4), ['2.26~2.28', '3일'], 'the last week stops at the end of February');
-  const holidayWeek = rows.find(r => r[2].startsWith('5.8~'));
-  assert.equal(holidayWeek[3], '4일');
-  assert.equal(holidayWeek[9], '16시간');
-  const total = rows.reduce((sum, r) => sum + Number(r[9].replace('시간', '')), 0);
+  const rows = await page.locator('#annualTimetableTableBody tr').evaluateAll(trs => trs.map(tr => ({
+    week: tr.classList.contains('annual-week-start') ? tr.cells[0].textContent.trim() : null,
+    cells: [...tr.cells].map(td => td.textContent.trim()).slice(tr.classList.contains('annual-week-start') ? 1 : 0),
+    gap: tr.classList.contains('annual-gap-row')
+  })));
+  const weeks = rows.filter(r => r.week).map(r => r.week);
+  assert.equal(new Set(weeks).size, weeks.length, 'each week appears once');
+  const days = rows.filter(r => !r.gap);
+  assert.deepEqual(days[0].cells.slice(0, 2), ['3.1', '수'], 'the year starts on March 1 even though the first Monday is March 6');
+  assert.deepEqual(days.at(-1).cells.slice(0, 2), ['2.28', '수'], 'the last day is the end of February');
+  // 날짜마다 그 요일의 과목이 교시 칸에 들어간다.
+  const may9 = days.find(r => r.cells[0] === '5.9');
+  assert.deepEqual(may9.cells.slice(2, 9), ['국어', '국어', '국어', '국어', '', '', '4']);
+  const may8 = days.find(r => r.cells[0] === '5.8');
+  assert.equal(may8.cells[2], '재량휴업', 'a day off shows why instead of lessons');
+  assert.ok(may8.cells.at(-1).includes('학부모 상담'));
+  assert.ok(rows.some(r => r.gap && r.cells[0].startsWith('여름방학')), 'a vacation folds into one line');
+  const total = days.reduce((sum, r) => sum + (Number(r.cells[2 + 6]) || 0), 0);
   assert.equal(Number((await page.locator('#annualTotalHoursVal').innerText()).replace(/\D/g, '')), total);
+  // 교과별 시수: 국어는 수업일마다 4시간, 수학은 편성만 있고 시간표에 없다.
+  const subjects = await page.locator('#annualSubjectTableBody tr').evaluateAll(trs => trs.map(tr => [...tr.cells].map(td => td.textContent.trim())));
+  const korean = subjects.find(r => r[0] === '국어');
+  assert.equal(Number(korean[15]), total);
+  assert.equal(korean[16], '204');
+  assert.equal(korean[17], String(total - 204 > 0 ? '+' + (total - 204) : total - 204));
+  const math = subjects.find(r => r[0] === '수학');
+  assert.deepEqual(math.slice(15), ['0', '136', '-136']);
+  assert.equal(subjects.at(-1)[0], '계');
   assert.ok(!(await page.locator('#annualTimetableTableFoot').innerText()).includes('DB 실제 데이터 정산 충족'));
   assert.equal(state.annualDelay, 0);
   assert.deepEqual(errors, []);

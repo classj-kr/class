@@ -8187,7 +8187,7 @@ function createClassroomPlatform(options = {}) {
     const academicYearEnd = new Date(Date.UTC(year + 1, 2, 0)).toISOString().slice(0, 10); // Feb 28/29 of next year
 
     // Fetch DB Data
-    const [vacRes, schedRes, ttRes, genEvRes] = await Promise.all([
+    const [vacRes, schedRes, ttRes, genEvRes, hoursRes] = await Promise.all([
       pool.query(`SELECT * FROM school_vacation_settings WHERE school_id = $1 AND academic_year = $2`, [profile.school_id, year]),
       // 재량휴업일은 특정 학년에만 적용될 수 있으므로, 이 반의 학년에 실제로 해당되는
       // 항목만 가져온다 (다른 학년만 쉬는 날을 이 학년도 쉬는 것처럼 잘못 표시하지 않도록).
@@ -8205,6 +8205,11 @@ function createClassroomPlatform(options = {}) {
          WHERE school_id = $1 AND event_date <= $2 AND COALESCE(end_date, event_date) >= $3
            AND (target_scope = 'ALL' OR $4 = ANY(target_grades))`,
         [profile.school_id, academicYearEnd, academicYearStart, grade]
+      ),
+      pool.query(
+        `SELECT subject_name, annual_required_hours, category FROM school_curriculum_hours
+         WHERE school_id = $1 AND academic_year = $2 AND grade = $3 ORDER BY category, id`,
+        [profile.school_id, year, grade]
       )
     ]);
 
@@ -8216,8 +8221,20 @@ function createClassroomPlatform(options = {}) {
     // 요일별로 실제 배치한 수업 칸만 센다. 시간표가 없으면 지어낸 값 대신 없다고 알린다.
     const dailyPeriodsMap = timetableRules.dailyLessonCounts(ttList);
     const hasTimetable = Object.values(dailyPeriodsMap).some(count => count > 0);
+    // 요일 → 교시별 과목. 날짜마다 이 요일 시간표를 깔아 일자별 시간표와 교과별 시수를 만든다.
+    const lessons = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+    for (const row of ttList) {
+      if (!timetableRules.isLesson(row) || !lessons[row.day_of_week]) continue;
+      lessons[row.day_of_week].push({ period: Number(row.period), subject: timetableRules.cleanSubject(row.subject_name) || "과목 미입력" });
+    }
+    for (const list of Object.values(lessons)) list.sort((a, b) => a.period - b.period);
+    const curriculum = hoursRes.rows.map(row => ({
+      subject: row.subject_name, annual: Number(row.annual_required_hours) || 0, category: row.category
+    }));
 
     res.json({
+      lessons,
+      curriculum,
       academicYear: year,
       grade,
       classNumber: classNum,
