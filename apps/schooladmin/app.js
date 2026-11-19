@@ -1594,7 +1594,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const schoolDays = ['월', '화', '수', '목', '금'];
     const schoolSubjects = {
         '국어': ['국', 'language'], '수학': ['수', 'math'], '사회': ['사', 'social'],
-        '과학': ['과', 'science'], '도덕': ['도', 'social'], '체육': ['체', 'pe'],
+        '과학': ['과', 'science'], '실과': ['실', 'science'], '도덕': ['도', 'social'], '체육': ['체', 'pe'],
         '음악': ['음', 'arts'], '미술': ['미', 'arts'], '영어': ['영', 'english'],
         '바른 생활': ['바', 'social'], '바른생활': ['바', 'social'],
         '슬기로운 생활': ['슬', 'science'], '슬기로운생활': ['슬', 'science'],
