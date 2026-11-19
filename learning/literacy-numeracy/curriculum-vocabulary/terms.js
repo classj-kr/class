@@ -26,7 +26,7 @@ window.CurriculumTerms = {
   ]
  },
  "3-1": {
-  "words": "words-3-1.js?v=842cd224",
+  "words": "words-3-1.js?v=9adbc9bb",
   "figures": [
    "figures/3-1/kor-2.js?v=9b8624c1",
    "figures/3-1/kor-3.js?v=a00c4137",
@@ -45,7 +45,7 @@ window.CurriculumTerms = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=ddcf3c7d",
+  "words": "words-3-2.js?v=fa5b8764",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -61,7 +61,7 @@ window.CurriculumTerms = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=5623ca1a",
+  "words": "words-4-1.js?v=54fec4ec",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -97,7 +97,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=df7f8eba",
+  "words": "words-5-1.js?v=f3b31d36",
   "figures": [
    "figures/5-1/kor-2.js?v=da86c805",
    "figures/5-1/kor-3.js?v=cc328cb9",
@@ -118,7 +118,7 @@ window.CurriculumTerms = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=b7f70598",
+  "words": "words-5-2.js?v=e7fc16b8",
   "figures": [
    "figures/5-2/kor.js?v=5878168e",
    "figures/5-2/math-1.js?v=30cd38eb",
@@ -273,7 +273,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "3-1": {
-  "words": "words-3-1.js?v=842cd224",
+  "words": "words-3-1.js?v=9adbc9bb",
   "figures": [
    "figures/3-1/kor-2.js?v=9b8624c1",
    "figures/3-1/kor-3.js?v=a00c4137",
@@ -292,7 +292,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "3-2": {
-  "words": "words-3-2.js?v=ddcf3c7d",
+  "words": "words-3-2.js?v=fa5b8764",
   "figures": [
    "figures/3-2/kor-2.js?v=6335ce2a",
    "figures/3-2/kor-3.js?v=3cdf7055",
@@ -308,7 +308,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "4-1": {
-  "words": "words-4-1.js?v=5623ca1a",
+  "words": "words-4-1.js?v=54fec4ec",
   "figures": [
    "figures/4-1/kor-2.js?v=e40a3db6",
    "figures/4-1/kor-3.js?v=63605738",
@@ -344,7 +344,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-1": {
-  "words": "words-5-1.js?v=df7f8eba",
+  "words": "words-5-1.js?v=f3b31d36",
   "figures": [
    "figures/5-1/kor-2.js?v=da86c805",
    "figures/5-1/kor-3.js?v=cc328cb9",
@@ -365,7 +365,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "5-2": {
-  "words": "words-5-2.js?v=b7f70598",
+  "words": "words-5-2.js?v=e7fc16b8",
   "figures": [
    "figures/5-2/kor.js?v=5878168e",
    "figures/5-2/math-1.js?v=30cd38eb",

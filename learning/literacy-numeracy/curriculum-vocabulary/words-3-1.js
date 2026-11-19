@@ -163,7 +163,7 @@
        "존중",
        "만족"
       ],
-      "pic": "kor-reading-04.webp?v=1jqqtonuv4"
+      "pic": "kor-reading-04.webp?v=1jqqtoru52"
      },
      {
       "w": "짐작",
@@ -249,7 +249,7 @@
        "존중",
        "상황"
       ],
-      "pic": "kor-reading-06.webp?v=1rktonuv4"
+      "pic": "kor-reading-06.webp?v=1rktoru52"
      },
      {
       "w": "비결",
@@ -284,7 +284,7 @@
        "성분",
        "속내"
       ],
-      "pic": "kor-reading-07.webp?v=7j2tonuv4"
+      "pic": "kor-reading-07.webp?v=7j2toru52"
      },
      {
       "w": "재물",
@@ -317,7 +317,7 @@
        "가치",
        "용돈"
       ],
-      "pic": "kor-reading-08.webp?v=1cditonuv5"
+      "pic": "kor-reading-08.webp?v=1cditoru52"
      },
      {
       "w": "근근이",
@@ -352,7 +352,7 @@
        "수북이",
        "주섬주섬"
       ],
-      "pic": "kor-reading-09.webp?v=1du8tonuv5"
+      "pic": "kor-reading-09.webp?v=1du8toru53"
      },
      {
       "w": "사공",
@@ -388,7 +388,7 @@
        "어부",
        "나무꾼"
       ],
-      "pic": "kor-reading-10.webp?v=1jsgtonuv5"
+      "pic": "kor-reading-10.webp?v=1jsgtoru53"
      },
      {
       "w": "가락지",
@@ -420,7 +420,7 @@
        "노리개",
        "꽃신"
       ],
-      "pic": "kor-reading-11.webp?v=gm8tonuv5"
+      "pic": "kor-reading-11.webp?v=gm8toru53"
      },
      {
       "w": "곁눈질",
@@ -453,7 +453,7 @@
        "짐작",
        "함박웃음"
       ],
-      "pic": "kor-reading-12.webp?v=1nbqtonuv6"
+      "pic": "kor-reading-12.webp?v=1nbqtoru53"
      },
      {
       "w": "너그럽다",
@@ -488,7 +488,7 @@
        "진지하다",
        "성급하다"
       ],
-      "pic": "kor-reading-13.webp?v=1oswtonuv6"
+      "pic": "kor-reading-13.webp?v=1oswtoru54"
      },
      {
       "w": "적극적",
@@ -521,7 +521,7 @@
        "부정적",
        "평화적"
       ],
-      "pic": "kor-reading-14.webp?v=c5ctonuv6"
+      "pic": "kor-reading-14.webp?v=c5ctoru54"
      }
     ]
    },
@@ -597,7 +597,7 @@
        "적절하다",
        "진지하다"
       ],
-      "pic": "kor-1-02.webp?v=123itonuua"
+      "pic": "kor-1-02.webp?v=123itoru47"
      },
      {
       "w": "행",
@@ -709,7 +709,7 @@
        "강조",
        "진열"
       ],
-      "pic": "kor-1-05.webp?v=25ytonuua"
+      "pic": "kor-1-05.webp?v=25ytoru47"
      },
      {
       "w": "낭송",
@@ -735,7 +735,7 @@
        "강조",
        "비교"
       ],
-      "pic": "kor-1-06.webp?v=llstonuub"
+      "pic": "kor-1-06.webp?v=llstoru47"
      },
      {
       "w": "꽃봉오리",
@@ -770,7 +770,7 @@
        "꽃잎",
        "새싹"
       ],
-      "pic": "kor-1-07.webp?v=20tktonuub"
+      "pic": "kor-1-07.webp?v=20tktoru47"
      },
      {
       "w": "봉긋봉긋",
@@ -805,7 +805,7 @@
        "절레절레",
        "사뿐사뿐"
       ],
-      "pic": "kor-1-08.webp?v=1vl2tonuub"
+      "pic": "kor-1-08.webp?v=1vl2toru48"
      },
      {
       "w": "사뿐사뿐",
@@ -840,7 +840,7 @@
        "쭈뼛쭈뼛",
        "주섬주섬"
       ],
-      "pic": "kor-1-09.webp?v=mg0tonuub"
+      "pic": "kor-1-09.webp?v=mg0toru48"
      },
      {
       "w": "한나절",
@@ -909,7 +909,7 @@
        "주섬주섬",
        "절레절레"
       ],
-      "pic": "kor-1-11.webp?v=21egtonuub"
+      "pic": "kor-1-11.webp?v=21egtoru48"
      },
      {
       "w": "지저귀다",
@@ -944,7 +944,7 @@
        "퍼덕이다",
        "쪼다"
       ],
-      "pic": "kor-1-12.webp?v=1lkktonuuc"
+      "pic": "kor-1-12.webp?v=1lkktoru48"
      },
      {
       "w": "돌림 노래",
@@ -1048,7 +1048,7 @@
        "성질",
        "정체"
       ],
-      "pic": "kor-1-15.webp?v=e9itonuuc"
+      "pic": "kor-1-15.webp?v=e9itoru48"
      },
      {
       "w": "분위기",
@@ -1074,7 +1074,7 @@
        "기온",
        "인상"
       ],
-      "pic": "kor-1-16.webp?v=14katonuuc"
+      "pic": "kor-1-16.webp?v=14katoru49"
      },
      {
       "w": "강조",
@@ -1143,7 +1143,7 @@
        "든든하다",
        "신비하다"
       ],
-      "pic": "kor-1-18.webp?v=350tonuuc"
+      "pic": "kor-1-18.webp?v=350toru49"
      },
      {
       "w": "제안",
@@ -1178,7 +1178,7 @@
        "결심",
        "조언"
       ],
-      "pic": "kor-1-19.webp?v=emutonuuc"
+      "pic": "kor-1-19.webp?v=emutoru49"
      },
      {
       "w": "간절하다",
@@ -1218,7 +1218,7 @@
        "억울하다",
        "뭉클하다"
       ],
-      "pic": "kor-1-20.webp?v=210stonuud"
+      "pic": "kor-1-20.webp?v=210storu49"
      },
      {
       "w": "난생처음",
@@ -1244,7 +1244,7 @@
        "세 번째",
        "마지막"
       ],
-      "pic": "kor-1-21.webp?v=wgetonuud"
+      "pic": "kor-1-21.webp?v=wgetoru4a"
      },
      {
       "w": "한달음",
@@ -1279,7 +1279,7 @@
        "한마디",
        "난생처음"
       ],
-      "pic": "kor-1-22.webp?v=xvmtonuud"
+      "pic": "kor-1-22.webp?v=xvmtoru4a"
      },
      {
       "w": "조심스레",
@@ -1315,7 +1315,7 @@
        "근근이",
        "주섬주섬"
       ],
-      "pic": "kor-1-23.webp?v=o6utonuud"
+      "pic": "kor-1-23.webp?v=o6utoru4a"
      },
      {
       "w": "신비하다",
@@ -1350,7 +1350,7 @@
        "든든하다",
        "생생하다"
       ],
-      "pic": "kor-1-24.webp?v=19zutonuud"
+      "pic": "kor-1-24.webp?v=19zutoru4a"
      },
      {
       "w": "인내",
@@ -1401,7 +1401,7 @@
        "흥미",
        "배려"
       ],
-      "pic": "kor-1-25.webp?v=fs4tonuue"
+      "pic": "kor-1-25.webp?v=fs4toru4a"
      },
      {
       "w": "겸용",
@@ -1435,7 +1435,7 @@
        "공유",
        "인공"
       ],
-      "pic": "kor-1-26.webp?v=1kcgtonuue"
+      "pic": "kor-1-26.webp?v=1kcgtoru4b"
      },
      {
       "w": "차도",
@@ -1469,7 +1469,7 @@
        "산책로",
        "장터"
       ],
-      "pic": "kor-1-27.webp?v=l4mtonuue"
+      "pic": "kor-1-27.webp?v=l4mtoru4b"
      }
     ]
    },
@@ -1501,7 +1501,7 @@
        "활기차다",
        "세밀하다"
       ],
-      "pic": "kor-2-01.webp?v=nectonuue"
+      "pic": "kor-2-01.webp?v=nectoru4b"
      },
      {
       "w": "분명하다",
@@ -1535,7 +1535,7 @@
        "일정하다",
        "신비하다"
       ],
-      "pic": "kor-2-02.webp?v=12dctonuuf"
+      "pic": "kor-2-02.webp?v=12dctoru4b"
      },
      {
       "w": "띄어 읽기",
@@ -1748,7 +1748,7 @@
        "조언",
        "변명"
       ],
-      "pic": "kor-2-08.webp?v=18x8tonuuf"
+      "pic": "kor-2-08.webp?v=18x8toru4c"
      },
      {
       "w": "단오",
@@ -1822,7 +1822,7 @@
        "또래",
        "이웃"
       ],
-      "pic": "kor-2-10.webp?v=1z30tonuuf"
+      "pic": "kor-2-10.webp?v=1z30toru4c"
      },
      {
       "w": "모내기",
@@ -1889,7 +1889,7 @@
        "기념",
        "일상생활"
       ],
-      "pic": "kor-2-12.webp?v=1r42tonuuf"
+      "pic": "kor-2-12.webp?v=1r42toru4c"
      },
      {
       "w": "음력",
@@ -1945,7 +1945,7 @@
        "볏짚",
        "연꽃"
       ],
-      "pic": "kor-2-14.webp?v=hsetonuuf"
+      "pic": "kor-2-14.webp?v=hsetoru4c"
      },
      {
       "w": "기운",
@@ -2012,7 +2012,7 @@
        "늦가을",
        "한겨울"
       ],
-      "pic": "kor-2-16.webp?v=1flgtonuug"
+      "pic": "kor-2-16.webp?v=1flgtoru4d"
      },
      {
       "w": "화채",
@@ -2037,7 +2037,7 @@
        "주스",
        "우유"
       ],
-      "pic": "kor-2-17.webp?v=1dzotonuug"
+      "pic": "kor-2-17.webp?v=1dzotoru4d"
      },
      {
       "w": "천하장사",
@@ -2070,7 +2070,7 @@
        "광대",
        "이발사"
       ],
-      "pic": "kor-2-18.webp?v=bfwtonuug"
+      "pic": "kor-2-18.webp?v=bfwtoru4d"
      },
      {
       "w": "지혜",
@@ -2103,7 +2103,7 @@
        "끈기",
        "용기"
       ],
-      "pic": "kor-2-19.webp?v=o5stonuug"
+      "pic": "kor-2-19.webp?v=o5storu4d"
      },
      {
       "w": "광대",
@@ -2127,7 +2127,7 @@
        "이발사",
        "사공"
       ],
-      "pic": "kor-2-20.webp?v=rb8tonuuh"
+      "pic": "kor-2-20.webp?v=rb8toru4e"
      },
      {
       "w": "널뛰기",
@@ -2160,7 +2160,7 @@
        "연날리기",
        "줄다리기"
       ],
-      "pic": "kor-2-21.webp?v=1bkqtonuuh"
+      "pic": "kor-2-21.webp?v=1bkqtoru4e"
      },
      {
       "w": "진지하다",
@@ -2187,7 +2187,7 @@
        "활기차다",
        "정직하다"
       ],
-      "pic": "kor-2-22.webp?v=23gatonuuh"
+      "pic": "kor-2-22.webp?v=23gatoru4e"
      },
      {
       "w": "공평하다",
@@ -2220,7 +2220,7 @@
        "솔직하다",
        "일정하다"
       ],
-      "pic": "kor-2-23.webp?v=q88tonuuh"
+      "pic": "kor-2-23.webp?v=q88toru4e"
      },
      {
       "w": "존중",
@@ -2259,7 +2259,7 @@
        "강조",
        "오해"
       ],
-      "pic": "kor-2-24.webp?v=hautonuuh"
+      "pic": "kor-2-24.webp?v=hautoru4e"
      },
      {
       "w": "만족",
@@ -2291,7 +2291,7 @@
        "결심",
        "존중"
       ],
-      "pic": "kor-2-25.webp?v=gz0tonuui"
+      "pic": "kor-2-25.webp?v=gz0toru4f"
      },
      {
       "w": "문장 부호",
@@ -2429,7 +2429,7 @@
        "수정",
        "진열"
       ],
-      "pic": "kor-2-29.webp?v=13r6tonuui"
+      "pic": "kor-2-29.webp?v=13r6toru4f"
      },
      {
       "w": "기념",
@@ -2462,7 +2462,7 @@
        "전달",
        "주최"
       ],
-      "pic": "kor-2-30.webp?v=idgtonuui"
+      "pic": "kor-2-30.webp?v=idgtoru4f"
      },
      {
       "w": "이발사",
@@ -2496,7 +2496,7 @@
        "정원사",
        "사진사"
       ],
-      "pic": "kor-2-31.webp?v=10egtonuui"
+      "pic": "kor-2-31.webp?v=10egtoru4f"
      },
      {
       "w": "의상",
@@ -2523,7 +2523,7 @@
        "앞치마",
        "우비"
       ],
-      "pic": "kor-2-32.webp?v=1mdctonuuj"
+      "pic": "kor-2-32.webp?v=1mdctoru4g"
      },
      {
       "w": "느긋하다",
@@ -2556,7 +2556,7 @@
        "혼란스럽다",
        "억울하다"
       ],
-      "pic": "kor-2-33.webp?v=1t56tonuuj"
+      "pic": "kor-2-33.webp?v=1t56toru4g"
      },
      {
       "w": "쌀쌀하다",
@@ -2588,7 +2588,7 @@
        "든든하다",
        "일정하다"
       ],
-      "pic": "kor-2-34.webp?v=16lmtonuuj"
+      "pic": "kor-2-34.webp?v=16lmtoru4g"
      },
      {
       "w": "든든하다",
@@ -2620,7 +2620,7 @@
        "활기차다",
        "억울하다"
       ],
-      "pic": "kor-2-35.webp?v=kmetonuuj"
+      "pic": "kor-2-35.webp?v=kmetoru4g"
      },
      {
       "w": "백야",
@@ -2847,7 +2847,7 @@
        "오해",
        "흥미"
       ],
-      "pic": "kor-3-05.webp?v=2twtonuuj"
+      "pic": "kor-3-05.webp?v=2twtoru4g"
      },
      {
       "w": "처마",
@@ -2906,7 +2906,7 @@
        "진행",
        "저장"
       ],
-      "pic": "kor-3-07.webp?v=hmotonuuk"
+      "pic": "kor-3-07.webp?v=hmotoru4h"
      },
      {
       "w": "인공",
@@ -2945,7 +2945,7 @@
        "천연",
        "야생"
       ],
-      "pic": "kor-3-08.webp?v=7j6tonuuk"
+      "pic": "kor-3-08.webp?v=7j6toru4h"
      },
      {
       "w": "오염",
@@ -3136,7 +3136,7 @@
        "뻗다",
        "젖히다"
       ],
-      "pic": "kor-3-14.webp?v=z1itonuuk"
+      "pic": "kor-3-14.webp?v=z1itoru4h"
      },
      {
       "w": "수상하다",
@@ -3179,7 +3179,7 @@
        "뭉클하다",
        "느긋하다"
       ],
-      "pic": "kor-3-15.webp?v=m6ktonuuk"
+      "pic": "kor-3-15.webp?v=m6ktoru4h"
      },
      {
       "w": "장터",
@@ -3212,7 +3212,7 @@
        "놀이터",
        "정류장"
       ],
-      "pic": "kor-3-16.webp?v=14m2tonuul"
+      "pic": "kor-3-16.webp?v=14m2toru4i"
      },
      {
       "w": "현수막",
@@ -3238,7 +3238,7 @@
        "돗자리",
        "게시판"
       ],
-      "pic": "kor-3-17.webp?v=1qb6tonuul"
+      "pic": "kor-3-17.webp?v=1qb6toru4i"
      },
      {
       "w": "주최",
@@ -3300,7 +3300,7 @@
        "인물",
        "너나들이"
       ],
-      "pic": "kor-3-19.webp?v=5atonuul"
+      "pic": "kor-3-19.webp?v=5atoru4i"
      },
      {
       "w": "천막",
@@ -3333,7 +3333,7 @@
        "돗자리",
        "처마"
       ],
-      "pic": "kor-3-20.webp?v=1b32tonuul"
+      "pic": "kor-3-20.webp?v=1b32toru4i"
      },
      {
       "w": "진열",
@@ -3401,7 +3401,7 @@
        "우편물",
        "재활용품"
       ],
-      "pic": "kor-3-22.webp?v=1etmtonuul"
+      "pic": "kor-3-22.webp?v=1etmtoru4j"
      },
      {
       "w": "수익금",
@@ -3499,7 +3499,7 @@
        "뭉클하다",
        "느긋하다"
       ],
-      "pic": "kor-3-26.webp?v=d8atonuum"
+      "pic": "kor-3-26.webp?v=d8atoru4j"
      },
      {
       "w": "들뜨다",
@@ -3539,7 +3539,7 @@
        "휘둥그레지다",
        "북적이다"
       ],
-      "pic": "kor-3-27.webp?v=128itonuum"
+      "pic": "kor-3-27.webp?v=128itoru4j"
      },
      {
       "w": "북적이다",
@@ -3573,7 +3573,7 @@
        "웅크리다",
        "지저귀다"
       ],
-      "pic": "kor-3-28.webp?v=1aa2tonuum"
+      "pic": "kor-3-28.webp?v=1aa2toru4j"
      },
      {
       "w": "딴청",
@@ -3605,7 +3605,7 @@
        "속내",
        "오해"
       ],
-      "pic": "kor-3-29.webp?v=pfktonuum"
+      "pic": "kor-3-29.webp?v=pfktoru4k"
      },
      {
       "w": "함박웃음",
@@ -3638,7 +3638,7 @@
        "울상",
        "딴청"
       ],
-      "pic": "kor-3-30.webp?v=tautonuun"
+      "pic": "kor-3-30.webp?v=tautoru4k"
      },
      {
       "w": "뭉클하다",
@@ -3672,7 +3672,7 @@
        "느긋하다",
        "수상하다"
       ],
-      "pic": "kor-3-31.webp?v=1deutonuun"
+      "pic": "kor-3-31.webp?v=1deutoru4k"
      },
      {
       "w": "범벅",
@@ -3705,7 +3705,7 @@
        "거품",
        "무더기"
       ],
-      "pic": "kor-3-32.webp?v=1dnktonuun"
+      "pic": "kor-3-32.webp?v=1dnktoru4k"
      },
      {
       "w": "서운하다",
@@ -3737,7 +3737,7 @@
        "든든하다",
        "느긋하다"
       ],
-      "pic": "kor-3-33.webp?v=ydgtonuun"
+      "pic": "kor-3-33.webp?v=ydgtoru4k"
      },
      {
       "w": "휘둥그레지다",
@@ -3763,7 +3763,7 @@
        "북적이다",
        "감기다"
       ],
-      "pic": "kor-3-34.webp?v=uvytonuun"
+      "pic": "kor-3-34.webp?v=uvytoru4l"
      },
      {
       "w": "물려받다",
@@ -3795,7 +3795,7 @@
        "덧붙이다",
        "곱씹다"
       ],
-      "pic": "kor-3-35.webp?v=17titonuuo"
+      "pic": "kor-3-35.webp?v=17titoru4l"
      }
     ]
    },
@@ -3918,7 +3918,7 @@
        "기념",
        "진행"
       ],
-      "pic": "kor-4-03.webp?v=um4tonuuo"
+      "pic": "kor-4-03.webp?v=um4toru4l"
      },
      {
       "w": "유적지",
@@ -3967,7 +3967,7 @@
        "박물관",
        "놀이공원"
       ],
-      "pic": "kor-4-04.webp?v=3kitonuuo"
+      "pic": "kor-4-04.webp?v=3kitoru4l"
      },
      {
       "w": "액체",
@@ -4076,7 +4076,7 @@
        "비결",
        "인상"
       ],
-      "pic": "kor-4-07.webp?v=y26tonuuo"
+      "pic": "kor-4-07.webp?v=y26toru4m"
      },
      {
       "w": "수칙",
@@ -4159,7 +4159,7 @@
        "진행",
        "근무"
       ],
-      "pic": "kor-4-09.webp?v=1b9mtonuup"
+      "pic": "kor-4-09.webp?v=1b9mtoru4m"
      },
      {
       "w": "가치",
@@ -4602,7 +4602,7 @@
        "상자",
        "봉지"
       ],
-      "pic": "kor-4-23.webp?v=1pugtonuup"
+      "pic": "kor-4-23.webp?v=1pugtoru4m"
      },
      {
       "w": "빚다",
@@ -4627,7 +4627,7 @@
        "덧붙이다",
        "물려받다"
       ],
-      "pic": "kor-4-24.webp?v=1jgetonuup"
+      "pic": "kor-4-24.webp?v=1jgetoru4m"
      },
      {
       "w": "꾸덕꾸덕하다",
@@ -4652,7 +4652,7 @@
        "쌀쌀하다",
        "세밀하다"
       ],
-      "pic": "kor-4-25.webp?v=24sqtonuup"
+      "pic": "kor-4-25.webp?v=24sqtoru4n"
      },
      {
       "w": "이랑",
@@ -4733,7 +4733,7 @@
        "차도",
        "장터"
       ],
-      "pic": "kor-4-27.webp?v=1e9mtonuuq"
+      "pic": "kor-4-27.webp?v=1e9mtoru4n"
      },
      {
       "w": "골",
@@ -4780,7 +4780,7 @@
        "겁",
        "딴청"
       ],
-      "pic": "kor-4-28.webp?v=bwmtonuuq"
+      "pic": "kor-4-28.webp?v=bwmtoru4n"
      },
      {
       "w": "뙤약볕",
@@ -4814,7 +4814,7 @@
        "그늘",
        "소나기"
       ],
-      "pic": "kor-4-29.webp?v=219itonuuq"
+      "pic": "kor-4-29.webp?v=219itoru4n"
      },
      {
       "w": "절레절레",
@@ -4847,7 +4847,7 @@
        "사뿐사뿐",
        "꼬불꼬불"
       ],
-      "pic": "kor-4-30.webp?v=rqytonuuq"
+      "pic": "kor-4-30.webp?v=rqytoru4o"
      },
      {
       "w": "꼬불꼬불",
@@ -4881,7 +4881,7 @@
        "포슬포슬",
        "절레절레"
       ],
-      "pic": "kor-4-31.webp?v=llwtonuur"
+      "pic": "kor-4-31.webp?v=llwtoru4o"
      },
      {
       "w": "포슬포슬",
@@ -4906,7 +4906,7 @@
        "꼬불꼬불",
        "쫀득쫀득"
       ],
-      "pic": "kor-4-32.webp?v=s6qtonuur"
+      "pic": "kor-4-32.webp?v=s6qtoru4o"
      },
      {
       "w": "주렁주렁",
@@ -4931,7 +4931,7 @@
        "꼬불꼬불",
        "사뿐사뿐"
       ],
-      "pic": "kor-4-33.webp?v=1yo4tonuur"
+      "pic": "kor-4-33.webp?v=1yo4toru4o"
      },
      {
       "w": "아름드리",
@@ -4997,7 +4997,7 @@
        "너나들이",
        "천적"
       ],
-      "pic": "kor-4-35.webp?v=187stonuur"
+      "pic": "kor-4-35.webp?v=187storu4o"
      },
      {
       "w": "수북이",
@@ -5031,7 +5031,7 @@
        "쉬엄쉬엄",
        "포슬포슬"
       ],
-      "pic": "kor-4-36.webp?v=24mitonuur"
+      "pic": "kor-4-36.webp?v=24mitoru4p"
      },
      {
       "w": "자줏빛",
@@ -5065,7 +5065,7 @@
        "하늘빛",
        "잿빛"
       ],
-      "pic": "kor-4-37.webp?v=7j2tonuus"
+      "pic": "kor-4-37.webp?v=7j2toru4p"
      },
      {
       "w": "호미",
@@ -5099,7 +5099,7 @@
        "빗자루",
        "바가지"
       ],
-      "pic": "kor-4-38.webp?v=376tonuus"
+      "pic": "kor-4-38.webp?v=376toru4p"
      },
      {
       "w": "태도",
@@ -5251,7 +5251,7 @@
        "흥미",
        "만족"
       ],
-      "pic": "kor-5-03.webp?v=147ytonuus"
+      "pic": "kor-5-03.webp?v=147ytoru4p"
      },
      {
       "w": "실망",
@@ -5285,7 +5285,7 @@
        "감동",
        "오해"
       ],
-      "pic": "kor-5-04.webp?v=w18tonuus"
+      "pic": "kor-5-04.webp?v=w18toru4q"
      },
      {
       "w": "절망",
@@ -5354,7 +5354,7 @@
        "기념",
        "소화"
       ],
-      "pic": "kor-5-06.webp?v=11stonuut"
+      "pic": "kor-5-06.webp?v=11storu4q"
      },
      {
       "w": "보금자리",
@@ -5388,7 +5388,7 @@
        "처마",
        "유적지"
       ],
-      "pic": "kor-5-07.webp?v=1gtotonuut"
+      "pic": "kor-5-07.webp?v=1gtotoru4q"
      },
      {
       "w": "억울하다",
@@ -5426,7 +5426,7 @@
        "들뜨다",
        "느긋하다"
       ],
-      "pic": "kor-5-08.webp?v=lzitonuut"
+      "pic": "kor-5-08.webp?v=lzitoru4q"
      },
      {
       "w": "운명",
@@ -5509,7 +5509,7 @@
        "꽃봉오리",
        "화채"
       ],
-      "pic": "kor-5-11.webp?v=o0etonuut"
+      "pic": "kor-5-11.webp?v=o0etoru4r"
      },
      {
       "w": "천재",
@@ -5595,7 +5595,7 @@
        "분명하다",
        "성급하다"
       ],
-      "pic": "kor-5-14.webp?v=r1mtonuuu"
+      "pic": "kor-5-14.webp?v=r1mtoru4r"
      },
      {
       "w": "애타다",
@@ -5629,7 +5629,7 @@
        "든든하다",
        "억울하다"
       ],
-      "pic": "kor-5-15.webp?v=fegtonuuu"
+      "pic": "kor-5-15.webp?v=fegtoru4r"
      },
      {
       "w": "들것",
@@ -5656,7 +5656,7 @@
        "휠체어",
        "유모차"
       ],
-      "pic": "kor-5-16.webp?v=1g8wtonuuu"
+      "pic": "kor-5-16.webp?v=1g8wtoru4r"
      },
      {
       "w": "온기",
@@ -5700,7 +5700,7 @@
        "성분",
        "폭염"
       ],
-      "pic": "kor-5-17.webp?v=vbgtonuuu"
+      "pic": "kor-5-17.webp?v=vbgtoru4s"
      },
      {
       "w": "시도",
@@ -5733,7 +5733,7 @@
        "강조",
        "제안"
       ],
-      "pic": "kor-5-18.webp?v=imotonuuu"
+      "pic": "kor-5-18.webp?v=imotoru4s"
      },
      {
       "w": "무사하다",
@@ -5760,7 +5760,7 @@
        "분명하다",
        "소용없다"
       ],
-      "pic": "kor-5-19.webp?v=xrctonuuv"
+      "pic": "kor-5-19.webp?v=xrctoru4s"
      },
      {
       "w": "가지치기",
@@ -5794,7 +5794,7 @@
        "널뛰기",
        "진열"
       ],
-      "pic": "kor-5-20.webp?v=6pytonuuv"
+      "pic": "kor-5-20.webp?v=6pytoru4s"
      },
      {
       "w": "정직하다",
@@ -5829,7 +5829,7 @@
        "공평하다",
        "무사하다"
       ],
-      "pic": "kor-5-21.webp?v=scatonuuv"
+      "pic": "kor-5-21.webp?v=scatoru4s"
      },
      {
       "w": "솔직하다",
@@ -5863,7 +5863,7 @@
        "어설프다",
        "느긋하다"
       ],
-      "pic": "kor-5-22.webp?v=lhytonuuv"
+      "pic": "kor-5-22.webp?v=lhytoru4t"
      },
      {
       "w": "본받다",
@@ -5896,7 +5896,7 @@
        "곱씹다",
        "덧붙이다"
       ],
-      "pic": "kor-5-23.webp?v=z3gtonuuv"
+      "pic": "kor-5-23.webp?v=z3gtoru4t"
      },
      {
       "w": "추신",
@@ -5967,7 +5967,7 @@
        "혼란스럽다",
        "든든하다"
       ],
-      "pic": "kor-5-25.webp?v=17s2tonuuw"
+      "pic": "kor-5-25.webp?v=17s2toru4t"
      },
      {
       "w": "성급하다",
@@ -6001,7 +6001,7 @@
        "너그럽다",
        "활기차다"
       ],
-      "pic": "kor-5-26.webp?v=oz0tonuuw"
+      "pic": "kor-5-26.webp?v=oz0toru4t"
      },
      {
       "w": "구체적",
@@ -6340,7 +6340,7 @@
        "함박웃음",
        "딴청"
       ],
-      "pic": "kor-6-05.webp?v=1616tonuuw"
+      "pic": "kor-6-05.webp?v=1616toru4u"
      },
      {
       "w": "소화",
@@ -6427,7 +6427,7 @@
        "현수막",
        "기호"
       ],
-      "pic": "kor-6-07.webp?v=1bhutonuuw"
+      "pic": "kor-6-07.webp?v=1bhutoru4u"
      },
      {
       "w": "유지",
@@ -6633,7 +6633,7 @@
        "진행",
        "시도"
       ],
-      "pic": "kor-6-14.webp?v=nmotonuux"
+      "pic": "kor-6-14.webp?v=nmotoru4u"
      },
      {
       "w": "인공 지능",
@@ -6705,7 +6705,7 @@
        "탐방",
        "참고"
       ],
-      "pic": "kor-6-16.webp?v=123atonuux"
+      "pic": "kor-6-16.webp?v=123atoru4u"
      },
      {
       "w": "세밀하다",
@@ -6742,7 +6742,7 @@
        "일정하다",
        "적절하다"
       ],
-      "pic": "kor-6-17.webp?v=vuctonuux"
+      "pic": "kor-6-17.webp?v=vuctoru4u"
      },
      {
       "w": "발전",
@@ -6776,7 +6776,7 @@
        "시도",
        "오염"
       ],
-      "pic": "kor-6-18.webp?v=rystonuux"
+      "pic": "kor-6-18.webp?v=rystoru4v"
      },
      {
       "w": "다양하다",
@@ -6803,7 +6803,7 @@
        "활기차다",
        "공평하다"
       ],
-      "pic": "kor-6-19.webp?v=1hv4tonuux"
+      "pic": "kor-6-19.webp?v=1hv4toru4v"
      },
      {
       "w": "진행",
@@ -6857,7 +6857,7 @@
        "풍습",
        "과거"
       ],
-      "pic": "kor-6-21.webp?v=1loitonuuy"
+      "pic": "kor-6-21.webp?v=1loitoru4v"
      },
      {
       "w": "기사",
@@ -6942,7 +6942,7 @@
        "인정",
        "조언"
       ],
-      "pic": "kor-6-23.webp?v=jgitonuuy"
+      "pic": "kor-6-23.webp?v=jgitoru4v"
      },
      {
       "w": "조언",
@@ -6995,7 +6995,7 @@
        "칭찬",
        "오해"
       ],
-      "pic": "kor-6-24.webp?v=1cv6tonuuy"
+      "pic": "kor-6-24.webp?v=1cv6toru4w"
      },
      {
       "w": "변명",
@@ -7034,7 +7034,7 @@
        "칭찬",
        "오해"
       ],
-      "pic": "kor-6-25.webp?v=p9ctonuuy"
+      "pic": "kor-6-25.webp?v=p9ctoru4w"
      },
      {
       "w": "웅성웅성",
@@ -7071,7 +7071,7 @@
        "쭈뼛쭈뼛",
        "훌쩍훌쩍"
       ],
-      "pic": "kor-6-26.webp?v=1ez6tonuuy"
+      "pic": "kor-6-26.webp?v=1ez6toru4w"
      },
      {
       "w": "어설프다",
@@ -7104,7 +7104,7 @@
        "성급하다",
        "진지하다"
       ],
-      "pic": "kor-6-27.webp?v=l84tonuuz"
+      "pic": "kor-6-27.webp?v=l84toru4w"
      },
      {
       "w": "쭈뼛쭈뼛",
@@ -7141,7 +7141,7 @@
        "절레절레",
        "쉬엄쉬엄"
       ],
-      "pic": "kor-6-28.webp?v=jyutonuuz"
+      "pic": "kor-6-28.webp?v=jyutoru4w"
      },
      {
       "w": "주섬주섬",
@@ -7174,7 +7174,7 @@
        "사뿐사뿐",
        "봉긋봉긋"
       ],
-      "pic": "kor-6-29.webp?v=ew2tonuuz"
+      "pic": "kor-6-29.webp?v=ew2toru4x"
      },
      {
       "w": "잽싸다",
@@ -7210,7 +7210,7 @@
        "어설프다",
        "유창하다"
       ],
-      "pic": "kor-6-30.webp?v=nqetonuuz"
+      "pic": "kor-6-30.webp?v=nqetoru4x"
      },
      {
       "w": "속내",
@@ -7241,7 +7241,7 @@
        "결심",
        "인상"
       ],
-      "pic": "kor-6-31.webp?v=1z5qtonuuz"
+      "pic": "kor-6-31.webp?v=1z5qtoru4x"
      },
      {
       "w": "목표",
@@ -7377,7 +7377,7 @@
        "단체",
        "조상"
       ],
-      "pic": "kor-6-35.webp?v=17ketonuv0"
+      "pic": "kor-6-35.webp?v=17ketoru4x"
      },
      {
       "w": "그루잠",
@@ -7604,7 +7604,7 @@
        "결심",
        "제안"
       ],
-      "pic": "kor-6-41.webp?v=gcytonuv0"
+      "pic": "kor-6-41.webp?v=gcytoru4x"
      }
     ]
    },
@@ -7692,7 +7692,7 @@
        "인정",
        "참고"
       ],
-      "pic": "kor-media-02.webp?v=1gcwtonuv0"
+      "pic": "kor-media-02.webp?v=1gcwtoru4y"
      },
      {
       "w": "정보",
@@ -7719,7 +7719,7 @@
        "저작권",
        "서명"
       ],
-      "pic": "kor-media-03.webp?v=xjktonuv0"
+      "pic": "kor-media-03.webp?v=xjktoru4y"
      },
      {
       "w": "배려",
@@ -7752,7 +7752,7 @@
        "수정",
        "저장"
       ],
-      "pic": "kor-media-04.webp?v=19fktonuv0"
+      "pic": "kor-media-04.webp?v=19fktoru4y"
      },
      {
       "w": "저작권",
@@ -7943,7 +7943,7 @@
        "실망",
        "참고"
       ],
-      "pic": "kor-media-10.webp?v=kvytonuv1"
+      "pic": "kor-media-10.webp?v=kvytoru4y"
      },
      {
       "w": "수정",
@@ -7984,7 +7984,7 @@
        "비교",
        "참고"
       ],
-      "pic": "kor-media-11.webp?v=eewtonuv1"
+      "pic": "kor-media-11.webp?v=eewtoru4z"
      },
      {
       "w": "인정",
@@ -8018,7 +8018,7 @@
        "강조",
        "수정"
       ],
-      "pic": "kor-media-12.webp?v=jeutonuv1"
+      "pic": "kor-media-12.webp?v=jeutoru4z"
      },
      {
       "w": "참고",
@@ -8044,7 +8044,7 @@
        "적용",
        "공유"
       ],
-      "pic": "kor-media-13.webp?v=qzutonuv1"
+      "pic": "kor-media-13.webp?v=qzutoru4z"
      },
      {
       "w": "공유",
@@ -8071,7 +8071,7 @@
        "수정",
        "서명"
       ],
-      "pic": "kor-media-14.webp?v=10pmtonuv2"
+      "pic": "kor-media-14.webp?v=10pmtoru4z"
      },
      {
       "w": "향신료",
@@ -8107,7 +8107,7 @@
        "숯",
        "볏짚"
       ],
-      "pic": "kor-media-15.webp?v=16tytonuv2"
+      "pic": "kor-media-15.webp?v=16tytoru4z"
      },
      {
       "w": "식감",
@@ -8143,7 +8143,7 @@
        "분위기",
        "기운"
       ],
-      "pic": "kor-media-16.webp?v=gpwtonuv2"
+      "pic": "kor-media-16.webp?v=gpwtoru50"
      },
      {
       "w": "폭염",
@@ -8189,7 +8189,7 @@
        "한파",
        "장마"
       ],
-      "pic": "kor-media-17.webp?v=14pqtonuv2"
+      "pic": "kor-media-17.webp?v=14pqtoru50"
      },
      {
       "w": "일기 예보",
@@ -8217,7 +8217,7 @@
        "게시판",
        "줄임말"
       ],
-      "pic": "kor-media-18.webp?v=m0utonuv2"
+      "pic": "kor-media-18.webp?v=m0utoru50"
      },
      {
       "w": "국가유산",
@@ -8243,7 +8243,7 @@
        "시설",
        "단체"
       ],
-      "pic": "kor-media-19.webp?v=hl8tonuv3"
+      "pic": "kor-media-19.webp?v=hl8toru50"
      },
      {
       "w": "흥미진진하다",
@@ -8279,7 +8279,7 @@
        "서운하다",
        "쌀쌀하다"
       ],
-      "pic": "kor-media-20.webp?v=1ifutonuv3"
+      "pic": "kor-media-20.webp?v=1ifutoru50"
      },
      {
       "w": "상영",
@@ -8314,7 +8314,7 @@
        "녹음",
        "전시"
       ],
-      "pic": "kor-media-21.webp?v=wvktonuv3"
+      "pic": "kor-media-21.webp?v=wvktoru51"
      },
      {
       "w": "방방곡곡",
@@ -8348,7 +8348,7 @@
        "이랑",
        "시설"
       ],
-      "pic": "kor-media-22.webp?v=6potonuv3"
+      "pic": "kor-media-22.webp?v=6potoru51"
      },
      {
       "w": "서명",
@@ -8382,7 +8382,7 @@
        "기호",
        "출처"
       ],
-      "pic": "kor-media-23.webp?v=ogotonuv3"
+      "pic": "kor-media-23.webp?v=ogotoru51"
      },
      {
       "w": "적용",
@@ -8409,7 +8409,7 @@
        "비교",
        "탐방"
       ],
-      "pic": "kor-media-24.webp?v=12nitonuv4"
+      "pic": "kor-media-24.webp?v=12nitoru51"
      },
      {
       "w": "오해",
@@ -8444,7 +8444,7 @@
        "인정",
        "실망"
       ],
-      "pic": "kor-media-25.webp?v=1d0stonuv4"
+      "pic": "kor-media-25.webp?v=1d0storu52"
      }
     ]
    }
@@ -10448,7 +10448,8 @@
        "건축물",
        "지명",
        "누리집"
-      ]
+      ],
+      "pic": "soc-1-1-01.webp?v=1x7atoru57"
      },
      {
       "w": "경험",
@@ -10481,7 +10482,8 @@
        "짐작",
        "표현",
        "증언"
-      ]
+      ],
+      "pic": "soc-1-1-02.webp?v=myitoru57"
      },
      {
       "w": "표현",
@@ -10525,7 +10527,8 @@
        "검색",
        "짐작",
        "증언"
-      ]
+      ],
+      "pic": "soc-1-1-03.webp?v=guatoru58"
      },
      {
       "w": "존중",
@@ -10569,7 +10572,8 @@
        "경험",
        "증언",
        "검색"
-      ]
+      ],
+      "pic": "soc-1-1-04.webp?v=jp2toru58"
      }
     ]
    },
@@ -10611,7 +10615,8 @@
        "봉사 활동",
        "검색",
        "복원"
-      ]
+      ],
+      "pic": "soc-1-2-01.webp?v=hhotoru58"
      },
      {
       "w": "보건소",
@@ -10667,7 +10672,8 @@
        "소방서",
        "경찰서",
        "우체국"
-      ]
+      ],
+      "pic": "soc-1-2-02.webp?v=wowtoru58"
      },
      {
       "w": "공공 기관",
@@ -10931,7 +10937,8 @@
        "보건소",
        "우체국",
        "경찰서"
-      ]
+      ],
+      "pic": "soc-1-2-09.webp?v=abytoru58"
      },
      {
       "w": "답사",
@@ -10983,7 +10990,8 @@
        "복원",
        "증언",
        "예방"
-      ]
+      ],
+      "pic": "soc-1-2-10.webp?v=1kymtoru59"
      },
      {
       "w": "예방",
@@ -11026,7 +11034,8 @@
        "치료",
        "짐작",
        "복원"
-      ]
+      ],
+      "pic": "soc-1-2-11.webp?v=1046toru59"
      },
      {
       "w": "시설",
@@ -11058,7 +11067,8 @@
        "누리집",
        "타임캡슐",
        "애장품"
-      ]
+      ],
+      "pic": "soc-1-2-12.webp?v=txwtoru59"
      },
      {
       "w": "보고서",
@@ -11106,7 +11116,8 @@
        "디지털 영상 지도",
        "타임캡슐",
        "증언"
-      ]
+      ],
+      "pic": "soc-1-2-13.webp?v=qt8toru59"
      }
     ]
    },
@@ -11148,7 +11159,8 @@
        "특징",
        "연표",
        "흔적"
-      ]
+      ],
+      "pic": "soc-2-1-01.webp?v=1avytoru5a"
      },
      {
       "w": "과거",
@@ -11576,7 +11588,8 @@
        "경험",
        "검색",
        "존중"
-      ]
+      ],
+      "pic": "soc-2-2-03.webp?v=15mktoru5a"
      },
      {
       "w": "애장품",
@@ -11615,7 +11628,8 @@
        "흔적",
        "문헌",
        "일회용품"
-      ]
+      ],
+      "pic": "soc-2-2-04.webp?v=1f82toru5a"
      },
      {
       "w": "증언",
@@ -11658,7 +11672,8 @@
        "검색",
        "특징",
        "지명"
-      ]
+      ],
+      "pic": "soc-2-2-05.webp?v=i4atoru5a"
      },
      {
       "w": "건축물",
@@ -11704,7 +11719,8 @@
        "타임캡슐",
        "공공 기관",
        "문헌"
-      ]
+      ],
+      "pic": "soc-2-2-06.webp?v=xp2toru5b"
      },
      {
       "w": "복원",
@@ -11875,7 +11891,8 @@
        "문헌",
        "특징",
        "연표"
-      ]
+      ],
+      "pic": "soc-2-3-03.webp?v=252storu5b"
      },
      {
       "w": "지명",
@@ -11951,7 +11968,8 @@
        "타임캡슐",
        "신문",
        "누리집"
-      ]
+      ],
+      "pic": "soc-2-3-05.webp?v=1b6toru5b"
      },
      {
       "w": "특징",
@@ -11977,7 +11995,8 @@
        "지명",
        "역사",
        "흔적"
-      ]
+      ],
+      "pic": "soc-2-3-06.webp?v=10ootoru5b"
      },
      {
       "w": "해설사",
@@ -12003,7 +12022,8 @@
        "요리사",
        "기자",
        "운전기사"
-      ]
+      ],
+      "pic": "soc-2-3-07.webp?v=23m6toru5b"
      }
     ]
    }
@@ -12267,7 +12287,8 @@
        "관찰",
        "예상",
        "분류"
-      ]
+      ],
+      "pic": "sci-1-06.webp?v=i0ctoru54"
      },
      {
       "w": "영점",
@@ -12477,7 +12498,8 @@
        "채집",
        "분류",
        "예상"
-      ]
+      ],
+      "pic": "sci-2-01.webp?v=17qitoru54"
      },
      {
       "w": "특징",
@@ -12519,7 +12541,8 @@
        "차이점",
        "환경",
        "기준"
-      ]
+      ],
+      "pic": "sci-2-02.webp?v=12aitoru54"
      },
      {
       "w": "분류",
@@ -12682,7 +12705,8 @@
        "극지방",
        "생활 방식",
        "공통점"
-      ]
+      ],
+      "pic": "sci-2-06.webp?v=dfwtoru55"
      },
      {
       "w": "생활 방식",
@@ -12718,7 +12742,8 @@
        "공통점",
        "차이점",
        "기준"
-      ]
+      ],
+      "pic": "sci-2-07.webp?v=r1atoru55"
      },
      {
       "w": "지느러미",
@@ -12834,7 +12859,8 @@
        "사막",
        "갯벌",
        "밀림"
-      ]
+      ],
+      "pic": "sci-2-10.webp?v=1zuctoru55"
      },
      {
       "w": "건조",
@@ -12884,7 +12910,8 @@
        "적당",
        "적합",
        "복잡"
-      ]
+      ],
+      "pic": "sci-2-11.webp?v=1y5qtoru55"
      },
      {
       "w": "설계",
@@ -12917,7 +12944,8 @@
        "분류",
        "측정",
        "채집"
-      ]
+      ],
+      "pic": "sci-2-12.webp?v=1azwtoru55"
      }
     ]
    },
@@ -13170,7 +13198,8 @@
        "사육",
        "저장",
        "측정"
-      ]
+      ],
+      "pic": "sci-3-06.webp?v=1tu8toru56"
      },
      {
       "w": "저장",
@@ -13226,7 +13255,8 @@
        "채집",
        "분류",
        "사육"
-      ]
+      ],
+      "pic": "sci-3-07.webp?v=hautoru56"
      },
      {
       "w": "생활용품",
@@ -13258,7 +13288,8 @@
        "설계",
        "생물",
        "자연물"
-      ]
+      ],
+      "pic": "sci-3-08.webp?v=xk6toru56"
      }
     ]
    },
@@ -13317,7 +13348,8 @@
        "무생물",
        "식물",
        "동물"
-      ]
+      ],
+      "pic": "sci-4-01.webp?v=tiotoru56"
      },
      {
       "w": "한살이",
@@ -13450,7 +13482,8 @@
        "분류",
        "저장",
        "채집"
-      ]
+      ],
+      "pic": "sci-4-04.webp?v=zwmtoru57"
      },
      {
       "w": "애벌레",
@@ -13762,7 +13795,8 @@
        "관찰",
        "측정",
        "설계"
-      ]
+      ],
+      "pic": "sci-4-12.webp?v=41gtoru57"
      },
      {
       "w": "적당",
@@ -13817,7 +13851,8 @@
        "건조",
        "조건",
        "복잡"
-      ]
+      ],
+      "pic": "sci-4-13.webp?v=h6wtoru57"
      },
      {
       "w": "한해살이식물",
