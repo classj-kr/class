@@ -15,6 +15,7 @@ const { createUserStorage } = require("./user-storage");
 const { createSchoolChat } = require("./school-chat");
 const { createAssessmentPlans } = require("./assessment-plans");
 const { createSchoolTextbooks } = require("./school-textbooks");
+const timetableRules = require("./school-timetable-rules");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 const { createLearningBoards } = require("./learning-boards");
@@ -7608,13 +7609,15 @@ function createClassroomPlatform(options = {}) {
 
   router.post("/school-admin/weekly-period-allocation", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
-    const year = Number(req.body?.academicYear || new Date().getFullYear());
+    const year = timetableRules.parseYear(req.body?.academicYear);
+    if (year === null) throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
     const allocations = Array.isArray(req.body?.allocations) ? req.body.allocations : [];
 
     for (const item of allocations) {
       const grade = Number(item.grade);
       const dayOfWeek = Number(item.dayOfWeek);
-      const periodCount = Math.min(8, Math.max(0, Number(item.periodCount || 0)));
+      const requested = Number(item.periodCount);
+      const periodCount = Number.isFinite(requested) ? Math.min(8, Math.max(0, Math.round(requested))) : 0;
       if (!Number.isInteger(grade) || grade < 1 || grade > 12) continue;
       if (!Number.isInteger(dayOfWeek) || dayOfWeek < 1 || dayOfWeek > 5) continue;
 
@@ -7680,11 +7683,8 @@ function createClassroomPlatform(options = {}) {
   // ── Master Timetable Grid APIs ──
   router.get("/school-admin/school-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolCurriculum(req);
-    const now = new Date();
-    const year = Number(req.query.academicYear || (now.getFullYear() - (now.getMonth() < 2 ? 1 : 0)));
-    if (!Number.isInteger(year) || year < 2000 || year > 2200) {
-      throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
-    }
+    const year = timetableRules.parseYear(req.query.academicYear);
+    if (year === null) throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
     // All views read the same saved cells. Include registered classes with no
     // timetable yet, but never return student records or another school's data.
     const [timetable, classes, allocations] = await Promise.all([
@@ -7695,7 +7695,9 @@ function createClassroomPlatform(options = {}) {
          ORDER BY grade, class_number, day_of_week, period`, [profile.school_id, year]),
       pool.query(
         `SELECT grade, class_number FROM (
-           SELECT grade, class_number FROM school_master_timetable WHERE school_id = $1 AND academic_year = $2
+           SELECT grade, class_number FROM school_master_timetable
+           WHERE school_id = $1 AND academic_year = $2
+             AND (BTRIM(subject_name) NOT IN ('', '-', '수업없음') OR teacher_user_id IS NOT NULL OR room_name IS NOT NULL)
            UNION
            SELECT grade, class_number FROM classroom_teachers WHERE school_id = $1 AND academic_year = $2 AND active = TRUE
            UNION
@@ -7716,15 +7718,15 @@ function createClassroomPlatform(options = {}) {
 
   router.get("/school-admin/master-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolCurriculum(req);
-    const year = Number(req.query.academicYear || new Date().getFullYear());
-    const grade = Number(req.query.grade || 1);
-    const classNum = Number(req.query.classNumber || 0);
+    const year = timetableRules.parseYear(req.query.academicYear);
+    const target = timetableRules.parseClass(req.query.grade, req.query.classNumber);
+    if (year === null || !target) throw new HttpError(400, "INVALID_CLASS", "학년도와 학년·반을 확인하세요.");
 
     const result = await pool.query(
       `SELECT day_of_week, period, subject_name, teacher_user_id, room_name
        FROM school_master_timetable
        WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4`,
-      [profile.school_id, year, grade, classNum]
+      [profile.school_id, year, target.grade, target.classNumber]
     );
     res.json({ timetable: result.rows });
   }));
@@ -7734,40 +7736,72 @@ function createClassroomPlatform(options = {}) {
   // (never assign) a claimed cell -- creation happens only through
   // PUT /school-admin/specialist-timetable and /room-timetable, which is the
   // single source of truth that keeps a teacher/room from double-booking.
+  // 한 문장으로 저장하므로 일부 칸만 들어가는 일이 없고, 빈 칸은 행을 새로 만들지 않는다.
   router.post("/school-admin/master-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
-    const year = Number(req.body?.academicYear || new Date().getFullYear());
-    const grade = Number(req.body?.grade || 1);
-    const classNum = Number(req.body?.classNumber || 0);
+    const year = timetableRules.parseYear(req.body?.academicYear);
+    const target = timetableRules.parseClass(req.body?.grade, req.body?.classNumber);
+    if (year === null || !target) throw new HttpError(400, "INVALID_CLASS", "학년도와 학년·반을 확인하세요.");
     const cells = Array.isArray(req.body?.cells) ? req.body.cells : [];
 
+    const slots = new Map();
     for (const cell of cells) {
-      const dayOfWeek = Number(cell.dayOfWeek);
-      const period = Number(cell.period);
-      const subjectName = String(cell.subjectName || "").trim();
-      const clearSpecialist = Boolean(cell.clearSpecialist);
-
-      if (dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8) {
-        if (clearSpecialist) {
-          await pool.query(
-            `UPDATE school_master_timetable
-             SET subject_name = '', teacher_user_id = NULL, room_name = NULL, updated_at = NOW()
-             WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4 AND day_of_week = $5 AND period = $6`,
-            [profile.school_id, year, grade, classNum, dayOfWeek, period]
-          );
-          continue;
-        }
-        await pool.query(
-          `INSERT INTO school_master_timetable (school_id, academic_year, grade, class_number, day_of_week, period, subject_name)
-           VALUES ($1, $2, $3, $4, $5, $6, $7)
-           ON CONFLICT (school_id, academic_year, grade, class_number, day_of_week, period) DO UPDATE
-           SET subject_name = EXCLUDED.subject_name, updated_at = NOW()
-           WHERE school_master_timetable.teacher_user_id IS NULL AND school_master_timetable.room_name IS NULL`,
-          [profile.school_id, year, grade, classNum, dayOfWeek, period, subjectName]
-        );
-      }
+      const slot = timetableRules.parseSlot(cell);
+      if (!slot) throw new HttpError(400, "INVALID_CELL", "요일은 월~금, 교시는 1~8교시만 저장할 수 있습니다.");
+      slots.set(`${slot.dayOfWeek}_${slot.period}`, {
+        ...slot,
+        subjectName: timetableRules.cleanSubject(cell.subjectName),
+        clearSpecialist: Boolean(cell.clearSpecialist)
+      });
     }
-    res.json({ ok: true });
+    const rows = [...slots.values()];
+    if (!rows.length) return res.json({ ok: true, skippedLocked: 0 });
+
+    const result = await pool.query(
+      `WITH input AS (
+         SELECT * FROM unnest($5::int[], $6::int[], $7::text[], $8::boolean[])
+           AS t(day_of_week, period, subject_name, clear_specialist)
+       ), skipped AS (
+         SELECT COUNT(*)::int AS n
+         FROM input i JOIN school_master_timetable m
+           ON m.school_id = $1::bigint AND m.academic_year = $2::int AND m.grade = $3::int AND m.class_number = $4::int
+          AND m.day_of_week = i.day_of_week AND m.period = i.period
+         WHERE NOT i.clear_specialist AND (m.teacher_user_id IS NOT NULL OR m.room_name IS NOT NULL)
+           AND m.subject_name <> i.subject_name
+       ), cleared AS (
+         UPDATE school_master_timetable
+         SET subject_name = CASE WHEN school_master_timetable.teacher_user_id IS NULL THEN school_master_timetable.subject_name ELSE '' END,
+             teacher_user_id = NULL, room_name = NULL, updated_at = NOW()
+         FROM input i
+         WHERE i.clear_specialist AND school_id = $1::bigint AND academic_year = $2::int AND grade = $3::int AND class_number = $4::int
+           AND school_master_timetable.day_of_week = i.day_of_week AND school_master_timetable.period = i.period
+         RETURNING 1
+       ), blanked AS (
+         UPDATE school_master_timetable
+         SET subject_name = '', updated_at = NOW()
+         FROM input i
+         WHERE NOT i.clear_specialist AND i.subject_name = ''
+           AND school_id = $1::bigint AND academic_year = $2::int AND grade = $3::int AND class_number = $4::int
+           AND school_master_timetable.day_of_week = i.day_of_week AND school_master_timetable.period = i.period
+           AND school_master_timetable.subject_name <> ''
+           AND teacher_user_id IS NULL AND room_name IS NULL
+         RETURNING 1
+       ), written AS (
+         INSERT INTO school_master_timetable (school_id, academic_year, grade, class_number, day_of_week, period, subject_name)
+         SELECT $1::bigint, $2::int, $3::int, $4::int, i.day_of_week, i.period, i.subject_name
+         FROM input i WHERE NOT i.clear_specialist AND i.subject_name <> ''
+         ON CONFLICT (school_id, academic_year, grade, class_number, day_of_week, period) DO UPDATE
+         SET subject_name = EXCLUDED.subject_name, updated_at = NOW()
+         WHERE school_master_timetable.teacher_user_id IS NULL AND school_master_timetable.room_name IS NULL
+         RETURNING 1
+       )
+       SELECT n AS skipped_locked, (SELECT COUNT(*) FROM cleared) AS cleared,
+              (SELECT COUNT(*) FROM blanked) AS blanked, (SELECT COUNT(*) FROM written) AS written
+       FROM skipped`,
+      [profile.school_id, year, target.grade, target.classNumber,
+        rows.map(r => r.dayOfWeek), rows.map(r => r.period), rows.map(r => r.subjectName), rows.map(r => r.clearSpecialist)]
+    );
+    res.json({ ok: true, skippedLocked: Number(result.rows[0]?.skipped_locked || 0) });
   }));
 
   async function schoolTimetableTeacher(schoolId, teacherUserId) {
@@ -7825,7 +7859,8 @@ function createClassroomPlatform(options = {}) {
 
   router.get("/school-admin/specialist-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolCurriculum(req);
-    const year = Number(req.query.academicYear || new Date().getFullYear());
+    const year = timetableRules.parseYear(req.query.academicYear);
+    if (year === null) throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
     const teacherUserId = Number(req.query.teacherUserId);
     if (!Number.isInteger(teacherUserId) || teacherUserId < 1) {
       throw new HttpError(400, "INVALID_TEACHER", "교사를 선택하세요.");
@@ -7839,7 +7874,7 @@ function createClassroomPlatform(options = {}) {
        WHERE m.school_id = $1 AND m.academic_year = $2
          AND (m.teacher_user_id = $3 OR (
            m.teacher_user_id IS NULL AND m.grade = $4 AND m.class_number = $5
-           AND BTRIM(m.subject_name) NOT IN ('', '수업없음')
+           AND BTRIM(m.subject_name) NOT IN ('', '-', '수업없음')
            AND NOT EXISTS (
              SELECT 1 FROM school_master_timetable assigned
              WHERE assigned.school_id = m.school_id AND assigned.academic_year = m.academic_year
@@ -7854,29 +7889,31 @@ function createClassroomPlatform(options = {}) {
 
   router.put("/school-admin/specialist-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
-    const year = Number(req.body?.academicYear || new Date().getFullYear());
+    const year = timetableRules.parseYear(req.body?.academicYear);
+    if (year === null) throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
     const teacherUserId = Number(req.body?.teacherUserId);
     if (!Number.isInteger(teacherUserId) || teacherUserId < 1) {
       throw new HttpError(400, "INVALID_TEACHER", "교사를 선택하세요.");
     }
-    await schoolTimetableTeacher(profile.school_id, teacherUserId);
+    const registration = await schoolTimetableTeacher(profile.school_id, teacherUserId);
     const cells = Array.isArray(req.body?.cells) ? req.body.cells : [];
+    const warnings = [];
 
     for (const cell of cells) {
-      const grade = Number(cell.grade);
-      const classNumber = Number(cell.classNumber);
-      const dayOfWeek = Number(cell.dayOfWeek);
-      const period = Number(cell.period);
+      const target = timetableRules.parseClass(cell.grade, cell.classNumber);
+      const slot = timetableRules.parseSlot(cell);
       // 잘못 입력한 칸을 조용히 건너뛰면 아무 말 없이 표가 그대로라 왜 안 들어갔는지
       // 알 길이 없다. 무엇이 틀렸는지 알려 주고 멈춘다.
-      if (!(grade >= 1 && grade <= 12 && classNumber >= 1 && classNumber <= 30 && dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8)) {
+      if (!target || !slot) {
         throw new HttpError(400, "INVALID_CELL", "학년과 반은 숫자로 입력하세요. (학년 1~12, 반 1~30)");
       }
+      const { grade, classNumber } = target;
+      const { dayOfWeek, period } = slot;
 
       if (cell.clear) {
         await pool.query(
           `UPDATE school_master_timetable
-           SET teacher_user_id = NULL, subject_name = ''
+           SET teacher_user_id = NULL, subject_name = '', updated_at = NOW()
            WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4
              AND day_of_week = $5 AND period = $6 AND teacher_user_id = $7`,
           [profile.school_id, year, grade, classNumber, dayOfWeek, period, teacherUserId]
@@ -7884,14 +7921,15 @@ function createClassroomPlatform(options = {}) {
         continue;
       }
 
-      const subjectName = String(cell.subjectName || "").trim();
+      const subjectName = timetableRules.cleanSubject(cell.subjectName);
       let conflictResult;
       try {
         conflictResult = await pool.query(
           `INSERT INTO school_master_timetable (school_id, academic_year, grade, class_number, day_of_week, period, subject_name, teacher_user_id)
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
            ON CONFLICT (school_id, academic_year, grade, class_number, day_of_week, period) DO UPDATE
-           SET subject_name = EXCLUDED.subject_name, teacher_user_id = EXCLUDED.teacher_user_id, updated_at = NOW()
+           SET subject_name = COALESCE(NULLIF(EXCLUDED.subject_name, ''), school_master_timetable.subject_name),
+               teacher_user_id = EXCLUDED.teacher_user_id, updated_at = NOW()
            WHERE school_master_timetable.teacher_user_id IS NULL OR school_master_timetable.teacher_user_id = EXCLUDED.teacher_user_id
            RETURNING id`,
           [profile.school_id, year, grade, classNumber, dayOfWeek, period, subjectName, teacherUserId]
@@ -7908,8 +7946,24 @@ function createClassroomPlatform(options = {}) {
       if (conflictResult.rowCount === 0) {
         throw new HttpError(409, "SLOT_ALREADY_TAKEN", `${grade}학년 ${classNumber}반의 이 시간은 이미 다른 전담교사가 배정되어 있습니다.`);
       }
+
+      // 담임이 자기 반 수업이 있는 시간에 다른 반을 맡으면 표에서는 겹침이 가려진다. 전담이
+      // 들어오는 날을 맞바꾼 경우일 수 있어 막지는 않되, 저장한 사람에게 알려 준다.
+      const homeroomThisYear = registration.academic_year == null || Number(registration.academic_year) === year;
+      if (homeroomThisYear && registration.grade != null && registration.class_number != null
+          && (Number(registration.grade) !== grade || Number(registration.class_number) !== classNumber)) {
+        const own = await pool.query(
+          `SELECT subject_name FROM school_master_timetable
+           WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4
+             AND day_of_week = $5 AND period = $6 AND teacher_user_id IS NULL`,
+          [profile.school_id, year, registration.grade, registration.class_number, dayOfWeek, period]
+        );
+        if (own.rows.some(row => timetableRules.isLesson({ subject_name: row.subject_name }))) {
+          warnings.push(`이 교사가 담임인 ${registration.grade}학년 ${registration.class_number}반에도 같은 시간에 수업이 있습니다.`);
+        }
+      }
     }
-    res.json({ ok: true });
+    res.json({ ok: true, warnings });
   }));
 
   // 특별실 하나 = 그리드 하나. 같은 방을 같은 요일/교시에 다른 반이 또 배정하면
@@ -7917,7 +7971,8 @@ function createClassroomPlatform(options = {}) {
   // 않으므로 전담교사가 이미 배정된 칸에 방만 추가로 지정할 수 있다.
   router.get("/school-admin/room-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolCurriculum(req);
-    const year = Number(req.query.academicYear || new Date().getFullYear());
+    const year = timetableRules.parseYear(req.query.academicYear);
+    if (year === null) throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
     const roomName = String(req.query.room || "").trim();
     if (!roomName) throw new HttpError(400, "INVALID_ROOM", "특별실 이름을 입력하세요.");
     const result = await pool.query(
@@ -7942,26 +7997,27 @@ function createClassroomPlatform(options = {}) {
 
   router.put("/school-admin/room-timetable", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolAdmin(req);
-    const year = Number(req.body?.academicYear || new Date().getFullYear());
+    const year = timetableRules.parseYear(req.body?.academicYear);
+    if (year === null) throw new HttpError(400, "INVALID_YEAR", "올바른 학년도를 선택하세요.");
     const roomName = String(req.body?.room || "").trim();
     if (!roomName) throw new HttpError(400, "INVALID_ROOM", "특별실 이름을 입력하세요.");
     const cells = Array.isArray(req.body?.cells) ? req.body.cells : [];
 
     for (const cell of cells) {
-      const grade = Number(cell.grade);
-      const classNumber = Number(cell.classNumber);
-      const dayOfWeek = Number(cell.dayOfWeek);
-      const period = Number(cell.period);
+      const target = timetableRules.parseClass(cell.grade, cell.classNumber);
+      const slot = timetableRules.parseSlot(cell);
       // 잘못 입력한 칸을 조용히 건너뛰면 아무 말 없이 표가 그대로라 왜 안 들어갔는지
       // 알 길이 없다. 무엇이 틀렸는지 알려 주고 멈춘다.
-      if (!(grade >= 1 && grade <= 12 && classNumber >= 1 && classNumber <= 30 && dayOfWeek >= 1 && dayOfWeek <= 5 && period >= 1 && period <= 8)) {
+      if (!target || !slot) {
         throw new HttpError(400, "INVALID_CELL", "학년과 반은 숫자로 입력하세요. (학년 1~12, 반 1~30)");
       }
+      const { grade, classNumber } = target;
+      const { dayOfWeek, period } = slot;
 
       if (cell.clear) {
         await pool.query(
           `UPDATE school_master_timetable
-           SET room_name = NULL
+           SET room_name = NULL, updated_at = NOW()
            WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4
              AND day_of_week = $5 AND period = $6 AND room_name = $7`,
           [profile.school_id, year, grade, classNumber, dayOfWeek, period, roomName]
@@ -7969,7 +8025,7 @@ function createClassroomPlatform(options = {}) {
         continue;
       }
 
-      const subjectName = String(cell.subjectName || "").trim();
+      const subjectName = timetableRules.cleanSubject(cell.subjectName);
       let conflictResult;
       try {
         conflictResult = await pool.query(
@@ -8047,12 +8103,13 @@ function createClassroomPlatform(options = {}) {
   // ── Step 5: Annual 34-Week Timetable Synthesis API ──
   router.get("/school-admin/annual-timetable-34weeks", asyncRoute(async (req, res) => {
     const { profile } = await requireSchoolCurriculum(req);
-    const year = Number(req.query.academicYear || new Date().getFullYear());
-    const grade = Number(req.query.grade || 5);
-    const classNum = Number(req.query.classNumber || 1);
+    const year = timetableRules.parseYear(req.query.academicYear);
+    const target = timetableRules.parseClass(req.query.grade, req.query.classNumber);
+    if (year === null || !target) throw new HttpError(400, "INVALID_CLASS", "학년도와 학년·반을 확인하세요.");
+    const { grade, classNumber: classNum } = target;
 
     const academicYearStart = `${year}-03-01`;
-    const academicYearEnd = new Date(year + 1, 2, 0).toISOString().slice(0, 10); // Feb 28/29 of next year
+    const academicYearEnd = new Date(Date.UTC(year + 1, 2, 0)).toISOString().slice(0, 10); // Feb 28/29 of next year
 
     // Fetch DB Data
     const [vacRes, schedRes, ttRes, genEvRes] = await Promise.all([
@@ -8065,7 +8122,7 @@ function createClassroomPlatform(options = {}) {
          WHERE school_id = $1 AND academic_year = $2 AND (target_scope = 'ALL' OR $3 = ANY(target_grades))`,
         [profile.school_id, year, grade]
       ),
-      pool.query(`SELECT day_of_week, period, subject_name FROM school_master_timetable WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4`, [profile.school_id, year, grade, classNum]),
+      pool.query(`SELECT day_of_week, period, subject_name, teacher_user_id, room_name FROM school_master_timetable WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4`, [profile.school_id, year, grade, classNum]),
       // 등교여부와 무관한 일반 행사 — 시간표 과목은 바꾸지 않고 딱지(요약 텍스트)로만 덧붙인다.
       pool.query(
         `SELECT event_date::TEXT AS event_date, end_date::TEXT AS end_date, title, event_time, period, location
@@ -8081,20 +8138,9 @@ function createClassroomPlatform(options = {}) {
     const ttList = ttRes.rows || [];
     const generalEvents = genEvRes.rows || [];
 
-    // Calculate daily period count per day_of_week (1..5) from actual class master timetable
-    const dailyPeriodsMap = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-    ttList.forEach(cell => {
-      if (cell.subject_name && cell.subject_name !== '-' && cell.subject_name !== '수업없음') {
-        dailyPeriodsMap[cell.day_of_week] = Math.max(dailyPeriodsMap[cell.day_of_week], cell.period);
-      }
-    });
-
-    // Fallback default periods per day if no timetable configured yet
-    if (Object.values(dailyPeriodsMap).every(v => v === 0)) {
-      if (grade <= 2) { dailyPeriodsMap[1] = 4; dailyPeriodsMap[2] = 5; dailyPeriodsMap[3] = 5; dailyPeriodsMap[4] = 5; dailyPeriodsMap[5] = 4; }
-      else if (grade <= 4) { dailyPeriodsMap[1] = 5; dailyPeriodsMap[2] = 5; dailyPeriodsMap[3] = 5; dailyPeriodsMap[4] = 6; dailyPeriodsMap[5] = 5; }
-      else { dailyPeriodsMap[1] = 6; dailyPeriodsMap[2] = 6; dailyPeriodsMap[3] = 5; dailyPeriodsMap[4] = 6; dailyPeriodsMap[5] = 6; }
-    }
+    // 요일별로 실제 배치한 수업 칸만 센다. 시간표가 없으면 지어낸 값 대신 없다고 알린다.
+    const dailyPeriodsMap = timetableRules.dailyLessonCounts(ttList);
+    const hasTimetable = Object.values(dailyPeriodsMap).some(count => count > 0);
 
     res.json({
       academicYear: year,
@@ -8103,7 +8149,8 @@ function createClassroomPlatform(options = {}) {
       vacationSettings: vacSettings,
       schedules: schedList,
       generalEvents,
-      dailyPeriodsMap
+      dailyPeriodsMap,
+      hasTimetable
     });
   }));
 

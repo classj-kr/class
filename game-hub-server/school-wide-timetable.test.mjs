@@ -5,7 +5,9 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { PGlite } from '@electric-sql/pglite';
 import { chromium } from 'playwright';
+import { createRequire } from 'node:module';
 
+const timetableRules = createRequire(import.meta.url)('./school-timetable-rules.js');
 const source = await readFile(new URL('./classroom-platform.js', import.meta.url), 'utf8');
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 class HttpError extends Error {
@@ -64,7 +66,7 @@ async function withSchool(run) {
       const r = await db.query(sql, params);
       return { rows: r.rows, rowCount: r.affectedRows ?? r.rows.length };
     } };
-    const bindings = { pool, HttpError,
+    const bindings = { pool, HttpError, timetableRules,
       requireSchoolCurriculum: async () => ({ profile: { school_id: 1 } }),
       requireSchoolAdmin: async () => ({ profile: { school_id: 1 } })
     };
@@ -152,6 +154,7 @@ test('browser: overview, filters, fresh data, class links, print, mobile, safe l
         else if (url.pathname.endsWith('/curriculum-access')) data = { canEdit: false };
         else if (url.pathname.endsWith('/weekly-period-allocation')) data = { allocations: (await overview(req)).allocations };
         else if (url.pathname.endsWith('/curriculum-hours-summary')) data = { grades: [] };
+        else if (url.pathname.endsWith('/curriculum-hours')) data = { hours: [], previousYear: null };
         else if (url.pathname.endsWith('/bell-schedule')) data = { schedules: [] };
         else if (url.pathname.endsWith('/vacation-settings')) data = { settings: {} };
         else if (url.pathname.endsWith('/annual-schedules')) data = { schedules: [] };

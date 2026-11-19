@@ -8,6 +8,8 @@ import { PGlite } from '@electric-sql/pglite';
 const require = createRequire(import.meta.url);
 const { normalizePairs, formatTeachingScope, parseTeachingScope } = require('./teaching-scope.js');
 const { namesLookDifferent, pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE } = require('./roster-names.js');
+const timetableRules = require('./school-timetable-rules.js');
+const { assertAccountRoles, studentAccounts, LOCK_SQL } = require('./roster-account-roles.js');
 const source = await readFile(new URL('./classroom-platform.js', import.meta.url), 'utf8');
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 class HttpError extends Error {
@@ -43,6 +45,8 @@ async function withSchool(run) {
       CREATE UNIQUE INDEX classroom_teachers_class_assignment_idx
         ON classroom_teachers (school_id, academic_year, grade, class_number)
         WHERE academic_year IS NOT NULL AND grade IS NOT NULL AND class_number IS NOT NULL;
+      CREATE TABLE school_students (school_id BIGINT, academic_year INTEGER, student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, user_id BIGINT);
+      CREATE TABLE classroom_students (student_email TEXT, guardian1_email TEXT, guardian2_email TEXT, user_id BIGINT, roster_active BOOLEAN DEFAULT TRUE, class_id BIGINT);
       CREATE TABLE classroom_classes (
         school_id BIGINT, teacher_user_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, updated_at TIMESTAMPTZ
       );
@@ -86,7 +90,7 @@ async function withSchool(run) {
     };
     const pool = { query, connect: async () => ({ query, release() {} }) };
     const bindings = {
-      pool, HttpError, normalizePairs, formatTeachingScope, parseTeachingScope, namesLookDifferent,
+      pool, HttpError, timetableRules, validateAccountRoles: assertAccountRoles, ROSTER_ROLE_LOCK: LOCK_SQL, studentAccounts, normalizePairs, formatTeachingScope, parseTeachingScope, namesLookDifferent,
       pendingTeacherName, NAME_SOURCE_PENDING, NAME_SOURCE_GOOGLE,
       normalizeEmail: value => String(value || '').trim().toLowerCase(),
       requireSchoolAdmin: async () => ({ profile: { school_id: 1 }, user: { id: 101 } }),
@@ -208,7 +212,7 @@ test('browser renders real API/database results, unlinked guidance, roster chang
       else throw new Error(`Unexpected API: ${url.pathname}`);
       return route.fulfill({ json: data });
     }
-    const file = { '/schooladmin/': 'index.html', '/schooladmin/app.js': 'app.js', '/schooladmin/style.css': 'style.css' }[url.pathname];
+    const file = { '/schooladmin/': 'index.html', '/schooladmin/app.js': 'app.js', '/schooladmin/style.css': 'style.css', '/schooladmin/textbooks.js': 'textbooks.js' }[url.pathname.split('?')[0]];
     if (!file) return route.fulfill({ status: 404 });
     return route.fulfill({ body: await readFile(new URL(`../apps/schooladmin/${file}`, import.meta.url)), contentType: file.endsWith('.js') ? 'text/javascript' : file.endsWith('.css') ? 'text/css' : 'text/html' });
   });

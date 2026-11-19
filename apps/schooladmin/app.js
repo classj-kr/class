@@ -154,6 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // view may only clear these, never assign new ones (single source of truth).
     // { "day_period": { teacherUserId, roomName } }
     let timetableMatrixLocks = {};
+    // 지금 표에 실제로 불러온 학급. 저장은 선택 상자가 아니라 이 값을 따른다.
+    let timetableLoadedTarget = null;
+    let timetableDirty = false;
+    let timetableLoadRequest = 0;
+    let timetableSubjectTargets = [];
+    let registeredClassMaxByGrade = {};
+    let registeredClassKeys = new Set();
+    let weeklyAllocationLoadFailed = false;
+    let curriculumHoursLoadFailed = false;
 
     // --- Initialization ---
     async function init() {
@@ -211,6 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nextMonthBtn) nextMonthBtn.addEventListener('click', () => changeMonth(1));
         if (annualYearSelect) {
             annualYearSelect.addEventListener('change', async (e) => {
+                if (!confirmDiscardTimetableEdits()) {
+                    e.target.value = String(selectedAcademicYear);
+                    return;
+                }
                 selectedAcademicYear = Number(e.target.value);
                 schoolTimetableYearSelect.value = String(selectedAcademicYear);
                 ++schoolTimetableRequest;
@@ -245,6 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Timetable Grid Listeners
         if (timetableGradeSelect) {
             timetableGradeSelect.addEventListener('change', () => {
+                if (!confirmDiscardTimetableEdits()) {
+                    restoreTimetableSelection();
+                    return;
+                }
                 renderSubjectPalette();
                 loadMasterTimetable();
             });
@@ -1466,15 +1483,18 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await api(`/api/school-admin/weekly-period-allocation?academicYear=${selectedAcademicYear}`);
             weeklyAllocationData = res.allocations || [];
+            weeklyAllocationLoadFailed = false;
         } catch (err) {
             console.error('Failed to load weekly period allocation:', err);
             weeklyAllocationData = [];
+            weeklyAllocationLoadFailed = true;
         }
     }
 
     async function fetchCurriculumHoursTotals() {
         try {
             const res = await api(`/api/school-admin/curriculum-hours-summary?academicYear=${selectedAcademicYear}`);
+            curriculumHoursLoadFailed = false;
             curriculumHoursTotals = {};
             (res.totals || []).forEach(t => {
                 curriculumHoursTotals[t.grade] = {
@@ -1485,6 +1505,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
             console.error('Failed to load curriculum hours summary:', err);
             curriculumHoursTotals = {};
+            curriculumHoursLoadFailed = true;
         }
     }
 
@@ -1550,7 +1571,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const timetableAuditStatusBadge = document.getElementById('timetableAuditStatusBadge');
 
     if (timetableClassSelect) {
-        timetableClassSelect.addEventListener('change', loadMasterTimetable);
+        timetableClassSelect.addEventListener('change', () => {
+            if (!confirmDiscardTimetableEdits()) {
+                restoreTimetableSelection();
+                return;
+            }
+            loadMasterTimetable();
+        });
     }
 
     // --- School-wide timetable: a read-only view of the existing saved cells ---
@@ -1668,6 +1695,7 @@ document.addEventListener('DOMContentLoaded', () => {
     schoolTimetableBody.addEventListener('click', event => {
         const link = event.target.closest('.school-class-link');
         if (link) {
+            if (!confirmDiscardTimetableEdits()) return;
             timetableGradeSelect.value = link.dataset.grade;
             if (![...timetableGradeSelect.options].some(o => o.value === link.dataset.grade)) {
                 timetableGradeSelect.add(new Option(`${link.dataset.grade}학년`, link.dataset.grade, true, true));
@@ -1686,10 +1714,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     schoolTimetableGradeSelect.addEventListener('change', renderSchoolTimetable);
     schoolTimetableYearSelect.addEventListener('change', () => {
+        if (!confirmDiscardTimetableEdits()) {
+            schoolTimetableYearSelect.value = String(selectedAcademicYear);
+            return;
+        }
         selectedAcademicYear = Number(schoolTimetableYearSelect.value);
         annualYearSelect.value = String(selectedAcademicYear);
         currentCalYear = selectedAcademicYear;
         currentCalMonth = 3;
+        loadVacationDates();
+        loadAnnualSchedules();
         loadSchoolTimetable();
     });
     document.getElementById('refreshSchoolTimetableBtn').addEventListener('click', loadSchoolTimetable);
@@ -1854,11 +1888,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!grade) return;
         const classNumber = prompt('반을 입력하세요:');
         if (!classNumber) return;
+        if (!await confirmRegisteredClass(grade, classNumber)) return;
         const subjectName = prompt('과목명을 입력하세요:', '');
         if (subjectName === null) return;
 
         try {
-            await api('/api/school-admin/specialist-timetable', {
+            const result = await api('/api/school-admin/specialist-timetable', {
                 method: 'PUT',
                 body: JSON.stringify({
                     academicYear: selectedAcademicYear,
@@ -1867,6 +1902,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
             await loadSpecialistTimetable();
+            if (result.warnings?.length) alert(result.warnings.join('\n'));
         } catch (error) {
             alert(error.message || '배정하지 못했습니다.');
         }
@@ -1883,6 +1919,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const roomTimetableMatrixBody = document.getElementById('roomTimetableMatrixBody');
     let roomTimetableData = {};
     let currentRoomName = '';
+    let roomTimetableRequest = 0;
 
     // 고를 수 있는 건 학교 설정에 등록한 특별실뿐이다. 첫 칸을 바로 띄워 주므로
     // 따로 누를 단추가 없다.
@@ -1923,8 +1960,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         currentRoomName = roomName;
+        const request = ++roomTimetableRequest;
         try {
             const res = await api(`/api/school-admin/room-timetable?academicYear=${selectedAcademicYear}&room=${encodeURIComponent(roomName)}`);
+            if (request !== roomTimetableRequest) return;
             roomTimetableData = {};
             (res.timetable || []).forEach(row => {
                 roomTimetableData[`${row.day_of_week}_${row.period}`] = {
@@ -1935,6 +1974,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (roomTimetableContent) roomTimetableContent.hidden = false;
             renderGridMatrix(roomTimetableMatrixBody, roomTimetableData, handleRoomCellClick);
         } catch (error) {
+            if (request !== roomTimetableRequest) return;
             if (roomTimetableEmpty) {
                 roomTimetableEmpty.hidden = false;
                 roomTimetableEmpty.textContent = error.message;
@@ -1971,6 +2011,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!grade) return;
         const classNumber = prompt('반을 입력하세요:');
         if (!classNumber) return;
+        if (!await confirmRegisteredClass(grade, classNumber)) return;
         const subjectName = prompt('과목명을 입력하세요 (선택 사항):', '') || '';
 
         try {
@@ -1997,50 +2038,142 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 기초시간표(요일×교시 과목배치)는 "시수편성 → 주간 수업 배당표"가 그 학년에 대해
-    // 완전히 끝난 뒤에만 열린다 — 배당 합계가 시수편성 목표와 정확히 같아야 통과.
+    // 끝난 뒤에만 열린다. 판단은 배당표 화면의 ✅ 충족과 똑같이 연간 시수로 한다.
+    // 주당 합계끼리 견주면 국가 기준 주당 시수가 26.5처럼 끝나는 학년은 교시 수가
+    // 정수라서 영원히 같아질 수 없다.
+    function plannedAnnualHoursForGrade(grade) {
+        return Math.round(getWeeklyAllocationTotal(grade) * schoolWeeksForGrade(grade));
+    }
+
     function isWeeklyAllocationCompleteForGrade(grade) {
-        const target = curriculumHoursTotals[grade]?.weekly;
+        const target = curriculumHoursTotals[grade]?.annual;
         if (target === undefined || target <= 0) return false;
-        return getWeeklyAllocationTotal(grade) === target;
+        return plannedAnnualHoursForGrade(grade) >= target;
+    }
+
+    function confirmDiscardTimetableEdits() {
+        if (!timetableDirty) return true;
+        if (!confirm('저장하지 않은 시간표 변경이 있습니다. 버리고 이동할까요?')) return false;
+        timetableDirty = false;
+        return true;
+    }
+
+    function restoreTimetableSelection() {
+        if (!timetableLoadedTarget) return;
+        timetableGradeSelect.value = String(timetableLoadedTarget.grade);
+        timetableClassSelect.value = String(timetableLoadedTarget.classNumber);
+    }
+
+    // 학교마다 학급 수가 다르다. 등록된 마지막 반까지는 언제나 고를 수 있게 한다.
+    async function fetchRegisteredClasses() {
+        try {
+            const res = await api(`/api/school-admin/school-timetable?academicYear=${selectedAcademicYear}`);
+            registeredClassMaxByGrade = {};
+            registeredClassKeys = new Set();
+            (res.classes || []).forEach(c => {
+                const grade = Number(c.grade), classNumber = Number(c.class_number);
+                registeredClassKeys.add(`${grade}_${classNumber}`);
+                registeredClassMaxByGrade[grade] = Math.max(registeredClassMaxByGrade[grade] || 0, classNumber);
+            });
+        } catch (err) {
+            console.error('Failed to load registered classes:', err);
+        }
+    }
+
+    function renderClassOptions(select, grade) {
+        if (!select) return;
+        const count = Math.max(5, registeredClassMaxByGrade[grade] || 0);
+        const previous = Number(select.value) || 1;
+        select.replaceChildren(...Array.from({ length: count }, (_, i) => new Option(`${i + 1}반`, String(i + 1))));
+        select.value = String(previous <= count ? previous : 1);
+    }
+
+    async function confirmRegisteredClass(grade, classNumber) {
+        await fetchRegisteredClasses();
+        if (!registeredClassKeys.size || registeredClassKeys.has(`${Number(grade)}_${Number(classNumber)}`)) return true;
+        return confirm(`${Number(grade)}학년 ${Number(classNumber)}반은 등록된 학급이 아닙니다. 그래도 배정할까요?`);
+    }
+
+    // 과목별 목표는 그 학년의 저장된 시수편성을 실제 수업 주수로 나눈 값이다.
+    async function fetchTimetableSubjectTargets(grade) {
+        const defaults = GRADE_SUBJECT_BASE_HOURS[grade] || GRADE_SUBJECT_BASE_HOURS[5];
+        const annualByName = new Map(defaults.map(def => [def.name, def.base]));
+        try {
+            const res = await api(`/api/school-admin/curriculum-hours?academicYear=${selectedAcademicYear}&grade=${grade}`);
+            (res.hours || []).forEach(h => annualByName.set(h.subject_name, Number(h.annual_required_hours) || 0));
+        } catch (err) {
+            console.error('Failed to load subject hours:', err);
+        }
+        const weeks = schoolWeeksForGrade(grade);
+        timetableSubjectTargets = [...annualByName].map(([name, annual]) => ({ name, perWeek: annual / weeks }));
+    }
+
+    function showTimetableBlocked(message) {
+        timetableMatrixData = {};
+        timetableMatrixLocks = {};
+        if (timetableLockedBanner) {
+            timetableLockedBanner.hidden = false;
+            timetableLockedBanner.textContent = message;
+        }
+        if (timetableUnlockedContent) timetableUnlockedContent.hidden = true;
     }
 
     async function loadMasterTimetable() {
         if (!timetableMatrixBody) return;
+        const year = selectedAcademicYear;
         const grade = Number(timetableGradeSelect.value);
-        const classNum = timetableClassSelect ? timetableClassSelect.value : 1;
-
-        await Promise.all([fetchBellScheduleByGrade(), fetchWeeklyAllocationData(), fetchCurriculumHoursTotals()]);
-
-        if (curriculumCanEdit && !isWeeklyAllocationCompleteForGrade(grade)) {
-            const target = curriculumHoursTotals[grade]?.weekly;
-            if (timetableLockedBanner) {
-                timetableLockedBanner.hidden = false;
-                timetableLockedBanner.textContent = target === undefined || target <= 0
-                    ? `${grade}학년의 시수편성이 아직 입력되지 않았습니다. "시수편성" 탭에서 먼저 학년별 주당 시수를 정하세요.`
-                    : `${grade}학년의 주간 수업 배당표가 시수편성 목표(${target}시간)와 아직 일치하지 않습니다. (현재 배당 합계: ${getWeeklyAllocationTotal(grade)}시간) "시정표 & 주간 수업 배당" 탭에서 먼저 맞춰주세요.`;
-            }
-            if (timetableUnlockedContent) timetableUnlockedContent.hidden = true;
+        const shown = timetableLoadedTarget;
+        // 다른 탭에 다녀와도 저장하지 않은 칸은 그대로 둔다.
+        if (timetableDirty && shown && shown.year === year && shown.grade === grade
+            && shown.classNumber === Number(timetableClassSelect.value)) {
+            renderTimetableMatrix();
             return;
         }
-        if (timetableLockedBanner) timetableLockedBanner.hidden = true;
-        if (timetableUnlockedContent) timetableUnlockedContent.hidden = false;
+
+        const request = ++timetableLoadRequest;
+        timetableLoadedTarget = null;
+        timetableDirty = false;
+        if (saveTimetableBtn) saveTimetableBtn.disabled = true;
+
+        await Promise.all([fetchBellScheduleByGrade(), fetchWeeklyAllocationData(), fetchCurriculumHoursTotals(),
+            fetchRegisteredClasses(), fetchTimetableSubjectTargets(grade)]);
+        if (request !== timetableLoadRequest) return;
+        renderClassOptions(timetableClassSelect, grade);
+        const classNumber = Number(timetableClassSelect.value);
+
+        if (curriculumCanEdit && (weeklyAllocationLoadFailed || curriculumHoursLoadFailed)) {
+            showTimetableBlocked('시수편성이나 주간 수업 배당을 불러오지 못했습니다. 잠시 뒤 탭을 다시 열어 주세요.');
+            return;
+        }
+        if (curriculumCanEdit && !isWeeklyAllocationCompleteForGrade(grade)) {
+            const target = curriculumHoursTotals[grade]?.annual;
+            showTimetableBlocked(target === undefined || target <= 0
+                ? `${grade}학년의 시수편성이 아직 입력되지 않았습니다. "시수편성" 탭에서 먼저 학년별 시수를 정하세요.`
+                : `${grade}학년의 주간 수업 배당이 연간 편성 시수(${target}시간)에 ${target - plannedAnnualHoursForGrade(grade)}시간 모자랍니다. "시정표 & 주간 수업 배당" 탭에서 먼저 맞춰 주세요.`);
+            return;
+        }
 
         try {
-            const res = await api(`/api/school-admin/master-timetable?academicYear=${selectedAcademicYear}&grade=${grade}&classNumber=${classNum}`);
+            const res = await api(`/api/school-admin/master-timetable?academicYear=${year}&grade=${grade}&classNumber=${classNumber}`);
+            if (request !== timetableLoadRequest) return;
             timetableMatrixData = {};
             timetableMatrixLocks = {};
             (res.timetable || []).forEach(cell => {
                 const key = `${cell.day_of_week}_${cell.period}`;
-                timetableMatrixData[key] = cell.subject_name;
+                if (cell.subject_name) timetableMatrixData[key] = cell.subject_name;
                 if (cell.teacher_user_id || cell.room_name) {
                     timetableMatrixLocks[key] = { teacherUserId: cell.teacher_user_id, roomName: cell.room_name };
                 }
             });
+            timetableLoadedTarget = { year, grade, classNumber };
+            if (timetableLockedBanner) timetableLockedBanner.hidden = true;
+            if (timetableUnlockedContent) timetableUnlockedContent.hidden = false;
+            if (saveTimetableBtn) saveTimetableBtn.disabled = false;
             renderTimetableMatrix();
         } catch (error) {
-            timetableMatrixData = {};
-            timetableMatrixLocks = {};
-            renderTimetableMatrix();
+            if (request !== timetableLoadRequest) return;
+            // 빈 표를 보여 주면 그대로 저장해 그 반 시간표를 지울 수 있다.
+            showTimetableBlocked(`시간표를 불러오지 못했습니다. ${error.message}`);
         }
     }
 
@@ -2049,44 +2182,59 @@ document.addEventListener('DOMContentLoaded', () => {
         return found ? found.period_count : null; // null = 배당표 미설정 (제한 없음)
     }
 
+    const isTimetableSubject = sub => Boolean(sub) && sub !== '-' && sub !== '수업없음';
+
     function auditTimetableGradeHours() {
         if (!timetableHoursAuditBar) return;
 
         const grade = Number(timetableGradeSelect ? timetableGradeSelect.value : 5);
-        const gradeDefaults = GRADE_SUBJECT_BASE_HOURS[grade] || GRADE_SUBJECT_BASE_HOURS[5];
-
-        // Count placed hours per subject in matrix
         const placedMap = new Map();
-        Object.values(timetableMatrixData).forEach(sub => {
-            if (sub && sub !== '-' && sub !== '수업없음') {
-                placedMap.set(sub, (placedMap.get(sub) || 0) + 1);
+        let blankCells = 0;
+        let overflowCells = 0;
+        for (let day = 1; day <= 5; day++) {
+            const allocated = getAllocatedPeriodCount(grade, day);
+            for (let period = 1; period <= 8; period++) {
+                const sub = timetableMatrixData[`${day}_${period}`];
+                const over = allocated !== null && period > allocated;
+                if (over) {
+                    if (isTimetableSubject(sub)) overflowCells++;
+                } else if (isTimetableSubject(sub)) {
+                    placedMap.set(sub, (placedMap.get(sub) || 0) + 1);
+                } else if (allocated !== null && !sub) {
+                    blankCells++;
+                }
             }
-        });
+        }
 
+        const chip = (text, ok) => `<span style="background:rgba(0,0,0,0.03); padding:4px 10px; border-radius:6px; border:1px solid rgba(0,0,0,0.08); color:${ok ? 'var(--success)' : 'var(--danger)'}; font-weight:700;">${escapeHtml(text)} ${ok ? '✅' : '⚠️'}</span>`;
         let allMatched = true;
         let auditChipsHtml = '';
-
-        gradeDefaults.forEach(def => {
-            const placed = placedMap.get(def.name) || 0;
-            const target = def.weekly;
-            const isOk = placed === target;
+        // 주당 목표가 5.4처럼 나오면 고정 시간표로는 5나 6만 가능하므로 둘 다 맞는 값으로 본다.
+        timetableSubjectTargets.forEach(target => {
+            const placed = placedMap.get(target.name) || 0;
+            const isOk = placed >= Math.floor(target.perWeek) && placed <= Math.ceil(target.perWeek);
             if (!isOk) allMatched = false;
-
-            const chipColor = isOk ? 'var(--success)' : 'var(--danger)';
-            const statusIcon = isOk ? '✅' : '⚠️';
-            auditChipsHtml += `<span style="background:rgba(0,0,0,0.03); padding:4px 10px; border-radius:6px; border:1px solid rgba(0,0,0,0.08); color:${chipColor}; font-weight:700;">${def.name}: ${placed}/${target}시간 ${statusIcon}</span>`;
+            auditChipsHtml += chip(`${target.name}: ${placed}/${Math.round(target.perWeek * 10) / 10}시간`, isOk);
+            placedMap.delete(target.name);
         });
+        placedMap.forEach((placed, name) => {
+            allMatched = false;
+            auditChipsHtml += chip(`${name}: ${placed}시간 (시수편성에 없음)`, false);
+        });
+        if (blankCells) {
+            allMatched = false;
+            auditChipsHtml += chip(`빈 칸 ${blankCells}개`, false);
+        }
+        if (overflowCells) {
+            allMatched = false;
+            auditChipsHtml += chip(`배당 초과 ${overflowCells}칸`, false);
+        }
 
         timetableHoursAuditBar.innerHTML = auditChipsHtml;
 
         if (timetableAuditStatusBadge) {
-            if (allMatched) {
-                timetableAuditStatusBadge.textContent = '✅ 학년 공통 주당 기준시수 100% 일치';
-                timetableAuditStatusBadge.className = 'audit-status status-ok';
-            } else {
-                timetableAuditStatusBadge.textContent = '⚠️ 과목별 주당 목표시수 불일치 확인 필요';
-                timetableAuditStatusBadge.className = 'audit-status status-warn';
-            }
+            timetableAuditStatusBadge.textContent = allMatched ? '✅ 과목별 주당 시수 일치' : '⚠️ 과목별 주당 시수 확인 필요';
+            timetableAuditStatusBadge.className = `audit-status ${allMatched ? 'status-ok' : 'status-warn'}`;
         }
     }
 
@@ -2112,8 +2260,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sub = timetableMatrixData[`${day}_${period}`] || '-';
                 const lock = timetableMatrixLocks[`${day}_${period}`];
                 const lockBadge = lock ? `<div style="font-size:0.68rem; color:var(--primary);">${lock.teacherUserId ? '🎯교과' : ''}${lock.teacherUserId && lock.roomName ? ' · ' : ''}${lock.roomName ? `🚪${escapeHtml(lock.roomName)}` : ''}</div>` : '';
-                const tagHtml = (sub !== '-' && sub !== '수업없음' ? `<span class="cell-subject-tag">${escapeHtml(sub)}</span>` : `<span style="color:var(--text-muted);">${sub}</span>`) + lockBadge;
-                const inactiveAttrs = isInactive ? ' style="opacity:0.3; pointer-events:none;" title="이 요일의 배당 교시수를 초과했습니다"' : '';
+                const tagHtml = (sub !== '-' && sub !== '수업없음' ? `<span class="cell-subject-tag">${escapeHtml(sub)}</span>` : `<span style="color:var(--text-muted);">${escapeHtml(sub)}</span>`) + lockBadge;
+                // 배당을 줄이기 전에 넣은 수업은 지울 수 있어야 한다.
+                const inactiveAttrs = !isInactive ? ''
+                    : sub === '-' && !lock ? ' style="opacity:0.3; pointer-events:none;" title="이 요일의 배당 교시수를 초과했습니다"'
+                        : ' data-over="true" style="opacity:0.55;" title="이 요일의 배당 교시수를 초과했습니다 - 클릭하면 지웁니다"';
                 const lockAttrs = lock ? ` data-locked="true" title="교사별/특별실별 시간표에서 배정됨${curriculumCanEdit ? ' - 클릭하면 지울 수 있습니다' : ''}"` : '';
                 cellsHtml += `<td class="timetable-cell" data-day="${day}" data-period="${period}"${inactiveAttrs}${lockAttrs}>${tagHtml}</td>`;
             }
@@ -2127,7 +2278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cell click handler
         timetableMatrixBody.querySelectorAll('.timetable-cell').forEach(cell => {
             cell.addEventListener('click', () => {
-                if (!curriculumCanEdit) return;
+                if (!curriculumCanEdit || !timetableLoadedTarget) return;
                 const day = cell.dataset.day;
                 const period = cell.dataset.period;
                 const key = `${day}_${period}`;
@@ -2135,37 +2286,46 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearLockedTimetableCell(Number(day), Number(period));
                     return;
                 }
-                timetableMatrixData[key] = activePaletteSubject;
+                // 같은 과목을 다시 누르면 지운다. 배당을 넘은 칸은 지우기만 된다.
+                if (cell.dataset.over === 'true' || timetableMatrixData[key] === activePaletteSubject) {
+                    delete timetableMatrixData[key];
+                } else {
+                    timetableMatrixData[key] = activePaletteSubject;
+                }
+                timetableDirty = true;
                 renderTimetableMatrix();
             });
         });
     }
 
     async function clearLockedTimetableCell(day, period) {
-        if (!curriculumCanEdit) return;
+        const target = timetableLoadedTarget;
+        if (!curriculumCanEdit || !target) return;
         if (!confirm('이 시간은 교사별/특별실별 시간표에서 배정되었습니다. 여기서 지우면 그쪽 배정도 함께 사라집니다. 지울까요?')) return;
-        const grade = timetableGradeSelect.value;
-        const classNum = timetableClassSelect ? timetableClassSelect.value : 1;
         try {
             await api('/api/school-admin/master-timetable', {
                 method: 'POST',
                 body: JSON.stringify({
-                    academicYear: selectedAcademicYear,
-                    grade,
-                    classNumber: classNum,
+                    academicYear: target.year,
+                    grade: target.grade,
+                    classNumber: target.classNumber,
                     cells: [{ dayOfWeek: day, period, clearSpecialist: true }]
                 })
             });
-            await loadMasterTimetable();
+            if (timetableLoadedTarget !== target) return;
+            // 다른 칸의 저장 전 변경을 잃지 않도록 이 칸만 화면에서 고친다.
+            const key = `${day}_${period}`;
+            if (timetableMatrixLocks[key]?.teacherUserId) delete timetableMatrixData[key];
+            delete timetableMatrixLocks[key];
+            renderTimetableMatrix();
         } catch (error) {
             alert(error.message || '지우지 못했습니다.');
         }
     }
 
     async function saveMasterTimetable() {
-        if (!curriculumCanEdit) return;
-        const grade = timetableGradeSelect.value;
-        const classNum = timetableClassSelect ? timetableClassSelect.value : 1;
+        const target = timetableLoadedTarget;
+        if (!curriculumCanEdit || !target) return;
         const cells = [];
         for (let day = 1; day <= 5; day++) {
             for (let period = 1; period <= 8; period++) {
@@ -2174,20 +2334,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        saveTimetableBtn.disabled = true;
         try {
-            await api('/api/school-admin/master-timetable', {
+            const result = await api('/api/school-admin/master-timetable', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    academicYear: selectedAcademicYear,
-                    grade,
-                    classNumber: classNum,
+                    academicYear: target.year,
+                    grade: target.grade,
+                    classNumber: target.classNumber,
                     cells
                 })
             });
-            alert(`${grade}학년 ${classNum}반 기초시간표 매트릭스가 성공적으로 저장되었습니다!`);
+            if (timetableLoadedTarget === target) timetableDirty = false;
+            const skipped = Number(result.skippedLocked || 0);
+            alert(`${target.grade}학년 ${target.classNumber}반 시간표를 저장했습니다.${skipped ? ` 교사별/특별실별 시간표에서 배정된 ${skipped}칸은 그대로 두었습니다.` : ''}`);
+            if (timetableLoadedTarget === target) await loadMasterTimetable();
         } catch (error) {
             alert(error.message || '시간표를 저장하지 못했습니다.');
+        } finally {
+            if (timetableLoadedTarget) saveTimetableBtn.disabled = false;
         }
     }
 
@@ -2241,20 +2407,42 @@ document.addEventListener('DOMContentLoaded', () => {
         tbody.innerHTML = rows || `<tr><td colspan="4" style="color:var(--text-muted);">교시별 시각이 입력되지 않았습니다.</td></tr>`;
     }
 
+    let annualTimetableRequest = 0;
+
+    function annualDateKey(date) {
+        const m = date.getMonth() + 1, d = date.getDate();
+        return `${date.getFullYear()}-${m < 10 ? '0' + m : m}-${d < 10 ? '0' + d : d}`;
+    }
+
+    // 2학기는 여름방학이 끝난 다음부터다. 방학 날짜가 없으면 달력 화면과 같이 8월부터로 본다.
+    function annualSemesterOf(date, dateStr) {
+        const summerEnd = summerVacationEnd?.value;
+        if (summerEnd) return dateStr > summerEnd ? 2 : 1;
+        const month = date.getMonth() + 1;
+        return month >= 3 && month <= 7 ? 1 : 2;
+    }
+
     async function renderAnnualTimetable34Weeks() {
         if (!annualTimetableTableBody) return;
-        annualTimetableTableBody.innerHTML = '';
-
+        // 탭 전환과 학년·학급 변경이 겹쳐도 마지막 요청만 표를 그린다.
+        const request = ++annualTimetableRequest;
+        const academicYear = selectedAcademicYear;
         const grade = Number(annualTimetableGradeSelect ? annualTimetableGradeSelect.value : 5);
-        const classNum = Number(annualTimetableClassSelect ? annualTimetableClassSelect.value : 1);
 
         try {
+            await fetchRegisteredClasses();
+            if (request !== annualTimetableRequest) return;
+            renderClassOptions(annualTimetableClassSelect, grade);
+            const classNum = Number(annualTimetableClassSelect ? annualTimetableClassSelect.value : 1);
             const [synthData] = await Promise.all([
-                api(`/api/school-admin/annual-timetable-34weeks?academicYear=${selectedAcademicYear}&grade=${grade}&classNumber=${classNum}`),
-                fetchBellScheduleByGrade()
+                api(`/api/school-admin/annual-timetable-34weeks?academicYear=${academicYear}&grade=${grade}&classNumber=${classNum}`),
+                fetchBellScheduleByGrade(),
+                fetchCurriculumHoursTotals()
             ]);
+            if (request !== annualTimetableRequest) return;
+            annualTimetableTableBody.innerHTML = '';
             renderAnnualBellSchedule(grade);
-            const dailyPeriodsMap = synthData.dailyPeriodsMap || { 1: 6, 2: 6, 3: 5, 4: 6, 5: 6 };
+            const dailyPeriodsMap = synthData.dailyPeriodsMap || {};
             const schedList = synthData.schedules || [];
             const generalEventList = synthData.generalEvents || [];
 
@@ -2265,60 +2453,49 @@ document.addEventListener('DOMContentLoaded', () => {
             let totalSchoolDays2 = 0;
             let weekIndex = 1;
 
-            let currMon = new Date(selectedAcademicYear, 2, 1);
-            while (currMon.getDay() !== 1) {
-                currMon.setDate(currMon.getDate() + 1);
-            }
+            // 3월 1일이 든 주부터 본다. 첫 월요일부터 세면 3월 2·3일 같은 앞쪽 수업일이 빠진다.
+            const startDate = new Date(academicYear, 2, 1);
+            let currMon = new Date(startDate);
+            currMon.setDate(currMon.getDate() - ((currMon.getDay() + 6) % 7));
 
-            const endDate = new Date(selectedAcademicYear + 1, 2, 0); // Last day of February (28 or 29)
+            const endDate = new Date(academicYear + 1, 2, 0); // Last day of February (28 or 29)
 
             while (currMon <= endDate) {
-                const currFri = new Date(currMon);
-                currFri.setDate(currFri.getDate() + 4);
-
-                const mStart = currMon.getMonth() + 1;
-                const dStart = currMon.getDate();
-                const mEnd = currFri.getMonth() + 1;
-                const dEnd = currFri.getDate();
-                const periodStr = `${mStart}.${dStart}~${mEnd}.${dEnd}`;
-
-                const semesterNum = mStart >= 3 && mStart <= 8 ? 1 : 2;
-                const semesterLabel = `${semesterNum}학기`;
-
-                const monP = dailyPeriodsMap[1] || 0;
-                const tueP = dailyPeriodsMap[2] || 0;
-                const wedP = dailyPeriodsMap[3] || 0;
-                const thuP = dailyPeriodsMap[4] || 0;
-                const friP = dailyPeriodsMap[5] || 0;
-
                 let weekSchoolDays = 0;
-                let weekLabels = [];
+                let weekSemester = null;
+                let firstDay = null;
+                let lastDay = null;
+                const weekLabels = [];
+                const dayHours = [];
 
                 for (let dayOffset = 0; dayOffset < 5; dayOffset++) {
                     const dayDate = new Date(currMon);
                     dayDate.setDate(dayDate.getDate() + dayOffset);
-                    const year = dayDate.getFullYear();
-                    const m = dayDate.getMonth() + 1;
-                    const d = dayDate.getDate();
-                    const dateStr = `${year}-${m < 10 ? '0' + m : m}-${d < 10 ? '0' + d : d}`;
+                    dayHours[dayOffset] = null;
+                    // 앞뒤 학년도에 걸친 날은 이 학년도의 수업일이 아니다.
+                    if (dayDate < startDate || dayDate > endDate) continue;
+                    firstDay = firstDay || dayDate;
+                    lastDay = dayDate;
+                    const dateStr = annualDateKey(dayDate);
 
                     const natHoliday = activeHolidays[dateStr];
                     const vacType = getVacationType(dateStr);
                     // 서버가 이미 이 학년에 해당되는 항목만 내려준다 (target_scope='ALL' 이거나
                     // target_grades에 이 학년이 포함된 것만).
-                    const customEvt = schedList.find(e => e.event_date === dateStr);
+                    const dayEvents = schedList.filter(e => e.event_date === dateStr);
+                    const isDayOff = dayEvents.some(e => e.category === 'HOLIDAY' || e.category === 'DISCRETIONARY');
 
-                    if (natHoliday) {
-                        weekLabels.push(`🔴 ${natHoliday}`);
-                    } else if (vacType) {
-                        weekLabels.push(`🏖️ ${vacType}`);
-                    } else if (customEvt) {
-                        weekLabels.push(`🏫 ${customEvt.title}`);
-                        if (customEvt.category !== 'HOLIDAY' && customEvt.category !== 'DISCRETIONARY') {
-                            weekSchoolDays++;
-                        }
-                    } else {
+                    if (natHoliday) weekLabels.push(`🔴 ${natHoliday}`);
+                    else if (vacType) weekLabels.push(`🏖️ ${vacType}`);
+                    else dayEvents.forEach(e => weekLabels.push(`🏫 ${e.title}`));
+
+                    if (!natHoliday && !vacType && !isDayOff) {
+                        const semester = annualSemesterOf(dayDate, dateStr);
+                        weekSemester = weekSemester || semester;
                         weekSchoolDays++;
+                        if (semester === 1) totalSchoolDays1++;
+                        else totalSchoolDays2++;
+                        dayHours[dayOffset] = Number(dailyPeriodsMap[dayOffset + 1]) || 0;
                     }
 
                     // 일반 행사는 기존 시간표/등교일수 계산에는 영향을 주지 않고, 딱지(요약 텍스트)만 덧붙인다.
@@ -2327,32 +2504,27 @@ document.addEventListener('DOMContentLoaded', () => {
                         .forEach(e => weekLabels.push(`📌 ${e.title}`));
                 }
 
-                if (semesterNum === 1) totalSchoolDays1 += weekSchoolDays;
-                else totalSchoolDays2 += weekSchoolDays;
-
                 // 주차는 실제 등교(수업)한 주만 센다 -- 방학처럼 등교일이 하루도 없는 주는
                 // 행을 만들지도, 주차 번호를 소모하지도 않는다. 연간 필요 시수도 34주 고정이
                 // 아니라 실제 수업 주수로 따지므로(schoolWeeksForGrade) 이 표의 주수와 맞아야 한다.
                 if (weekSchoolDays > 0) {
-                    const weeklyHours = monP + tueP + wedP + thuP + friP;
+                    const weeklyHours = dayHours.reduce((sum, hours) => sum + (hours || 0), 0);
                     cumulativeHours += weeklyHours;
 
+                    const periodStr = `${firstDay.getMonth() + 1}.${firstDay.getDate()}~${lastDay.getMonth() + 1}.${lastDay.getDate()}`;
                     const eventSummary = weekLabels.length > 0 ? Array.from(new Set(weekLabels)).join(', ') : '정상 수업';
+                    const hourCells = dayHours.map(hours => `<td>${hours === null ? '-' : `${hours}h`}</td>`).join('');
 
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td><span class="badge ${semesterNum === 1 ? 'category-event' : 'category-trip'}">${semesterLabel}</span></td>
+                        <td><span class="badge ${weekSemester === 1 ? 'category-event' : 'category-trip'}">${weekSemester}학기</span></td>
                         <td style="font-weight:700;">${weekIndex}주차</td>
                         <td>${periodStr}</td>
                         <td style="font-weight:700;">${weekSchoolDays}일</td>
-                        <td>${monP}h</td>
-                        <td>${tueP}h</td>
-                        <td>${wedP}h</td>
-                        <td>${thuP}h</td>
-                        <td>${friP}h</td>
+                        ${hourCells}
                         <td style="font-weight:800; color:var(--primary);">${weeklyHours}시간</td>
                         <td style="font-weight:800;">${cumulativeHours}시간</td>
-                        <td style="font-size:0.88rem; color:var(--text-muted);">${eventSummary}</td>
+                        <td style="font-size:0.88rem; color:var(--text-muted);">${escapeHtml(eventSummary)}</td>
                     `;
                     annualTimetableTableBody.appendChild(tr);
                     weekIndex++;
@@ -2367,6 +2539,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (annualTotalWeeksVal) annualTotalWeeksVal.textContent = `${totalClassWeeks}주`;
             if (semesterDaysVal) semesterDaysVal.textContent = `${totalSchoolDays1}일 / ${totalSchoolDays2}일 (총 ${totalSchoolDays1 + totalSchoolDays2}일)`;
 
+            const requiredHours = curriculumHoursTotals[grade]?.annual || 0;
+            const settlement = synthData.hasTimetable === false ? '⚠️ 기초시간표 미입력'
+                : !requiredHours ? '시수편성 미입력'
+                    : cumulativeHours >= requiredHours ? '✅ 편성 시수 충족'
+                        : `⚠️ ${(requiredHours - cumulativeHours).toLocaleString()}시간 부족`;
             annualTimetableTableFoot.innerHTML = `
                 <tr>
                     <td colspan="3">연간 ${totalClassWeeks}주 총계</td>
@@ -2374,22 +2551,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td colspan="5">월~금 기초시간표 배정 교시 연산 정산</td>
                     <td>-</td>
                     <td style="font-weight:900; color:var(--primary); font-size:1.1rem;">${cumulativeHours.toLocaleString()}시간</td>
-                    <td>✅ DB 실제 데이터 정산 충족</td>
+                    <td>${settlement}</td>
                 </tr>
             `;
         } catch (err) {
+            if (request !== annualTimetableRequest) return;
             console.error('Failed to render 34-week annual timetable:', err);
+            annualTimetableTableBody.innerHTML = `<tr><td colspan="12">연간시간표를 불러오지 못했습니다. ${escapeHtml(err.message)}</td></tr>`;
+            annualTimetableTableFoot.innerHTML = '';
+            if (annualTotalHoursVal) annualTotalHoursVal.textContent = '-';
+            if (semesterDaysVal) semesterDaysVal.textContent = '-';
+            const annualTotalWeeksVal = document.getElementById('annualTotalWeeksVal');
+            if (annualTotalWeeksVal) annualTotalWeeksVal.textContent = '-';
         }
     }
 
-    // Call initial load on tab switch
-    document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (btn.dataset.tab === 'annualTimetable') {
-                renderAnnualTimetable34Weeks();
-            }
-        });
-    });
+    // Call initial load on tab switch: switchTab이 방학 설정을 읽은 뒤 표를 그린다.
 
     // --- Roster Logic ---
     async function loadRoster() {

@@ -10,6 +10,7 @@ const require = createRequire(import.meta.url);
 const express = require('express');
 const { chromium } = require('playwright');
 const { normalizePairs } = require('./teaching-scope.js');
+const timetableRules = require('./school-timetable-rules.js');
 const baseline = process.env.CURRICULUM_BASELINE === '1';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const readSource = path => baseline
@@ -61,7 +62,7 @@ async function withSchool(run) {
         subject_name TEXT, room_name TEXT, teaching_scope JSONB, name_source TEXT
       );
       CREATE TABLE classroom_classes (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER);
-      CREATE TABLE school_students (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER);
+      CREATE TABLE school_students (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT);
       INSERT INTO classroom_schools VALUES (1, '검증학교', TRUE), (2, '타교학교', TRUE);
       INSERT INTO classroom_users (id, email, display_name, role) VALUES
         (101, 'admin@example.invalid', '검증관리자', 'teacher'), (102, 'teacher@example.invalid', '검증교사', 'teacher'),
@@ -111,7 +112,7 @@ async function withSchool(run) {
       return { rows: r.rows, rowCount: r.rows.length || r.affectedRows || 0 };
     };
     const pool = { query };
-    const bindings = { pool, databaseReady: true, HttpError, normalizePairs,
+    const bindings = { pool, databaseReady: true, HttpError, normalizePairs, timetableRules,
       normalizeEmail: value => String(value || '').trim().toLowerCase(),
       sessionUser: async req => req.user, getSiteAccessMode: async () => 'open',
       fetchNagerHolidays: async year => [{ date: `${year}-01-01`, name: '검증신정' }],
@@ -146,8 +147,8 @@ async function withSchool(run) {
         const [method, path] = key.split(' ');
         app[method](`/api${path}`, (req, res, next) => Promise.resolve(fn(req, res)).catch(next));
       }
-      for (const file of ['index.html', 'app.js', 'style.css']) app.get(file === 'index.html' ? '/schooladmin/' : `/schooladmin/${file}`,
-        async (_req, res) => res.type(file.endsWith('.js') ? 'js' : file.endsWith('.css') ? 'css' : 'html').send(await readSource(`schooladmin/${file}`)));
+      for (const file of ['index.html', 'app.js', 'style.css', 'textbooks.js']) app.get(file === 'index.html' ? '/schooladmin/' : `/schooladmin/${file}`,
+        async (_req, res) => res.type(file.endsWith('.js') ? 'js' : file.endsWith('.css') ? 'css' : 'html').send(await readSource(`apps/schooladmin/${file}`)));
       app.use((error, _req, res, _next) => res.status(error.status || 500).json({ message: error.message, code: error.code }));
       server = await new Promise(resolve => { const s = app.listen(0, '127.0.0.1', () => resolve(s)); });
       browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
@@ -275,6 +276,7 @@ test('browser: ordinary teacher can browse all seven tabs, filter, read incomple
 }));
 
 test('browser: administrator can save and edit a complete timetable; demotion closes editing on a rejected save', () => withSchool(async ({ db, openBrowser, call }) => {
+  await db.exec('UPDATE school_weekly_period_allocation SET period_count = 2 WHERE school_id = 1');
   const { page, state } = await openBrowser(101);
   await page.locator('[data-tab="bellSchedule"]').click();
   await page.locator('.weekly-count-input[data-grade="5"]').first().waitFor();
