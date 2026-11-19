@@ -68,6 +68,10 @@ async function withSchool(run) {
       );
       CREATE TABLE teacher_group_students (group_id BIGINT REFERENCES teacher_groups(id) ON DELETE CASCADE, student_id BIGINT);
       CREATE TABLE school_master_timetable (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, teacher_user_id BIGINT, subject_name TEXT);
+      ALTER TABLE school_master_timetable ADD COLUMN day_of_week INTEGER, ADD COLUMN period INTEGER, ADD COLUMN room_name TEXT;
+      CREATE TABLE school_bell_schedule (school_id BIGINT, academic_year INTEGER, grade INTEGER, period_times JSONB);
+      CREATE TABLE classroom_teacher_dashboard_settings (user_id BIGINT PRIMARY KEY, timetable JSONB);
+      CREATE TABLE classroom_class_timetable_overrides (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, overrides JSONB);
       CREATE TABLE preserved_class_posts (class_id BIGINT REFERENCES classroom_classes(id), body TEXT);
       INSERT INTO classroom_schools VALUES (1, '이전학교', FALSE, 'OLD', '', ''), (2, '현재학교', TRUE, 'NEW', '', '');
       INSERT INTO classroom_users VALUES (10, 'teacher@example.invalid', '검증교사');
@@ -106,9 +110,11 @@ async function withSchool(run) {
       normalizeAvatarKey: value => value || '', avatarUrl: () => '',
       readRosterColumns: async () => [], ...names,
       assertAccountRoles, studentAccounts, ROSTER_ROLE_LOCK, adminEmails: [], teacherEmails: [],
-      avatarCapacity: () => 10, pickRandomAvailableAvatar: () => 'test.webp'
+      avatarCapacity: () => 10, pickRandomAvailableAvatar: () => 'test.webp',
+      classTimetable: require('./class-timetable.js'), timetableRules: require('./school-timetable-rules.js'),
+      findHomeroomTeacher: require('./seating.js').homeroomTeacherId
     };
-    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles', 'studentMembership', 'readableScheduleClassId'];
+    const functions = ['teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'userClassId', 'rosterGroupName', 'validateAccountRoles', 'studentMembership', 'readableScheduleClassId', 'classTimetablePlace', 'personalTimetable'];
     Object.assign(bindings, new Function(...Object.keys(bindings),
       `${functions.map(declaration).join('\n')}\nreturn { ${functions.join(',')} };`)(...Object.values(bindings)));
     const api = {
@@ -247,6 +253,7 @@ test('real portal clears removed cards and saved selection; dashboard state clea
         const scheduleApi = async url => { calls.push(url); return { classId: 99, schedules: ['wrong'] }; };
         const loadUpcomingSchoolSchedules = async () => ({ items: [], errors: [] });
         const migrateLocalSchedules = noop;
+        const studentView = false, STUDENT_API = '', applyStudentDashboard = noop, applyTimetableData = noop;
         ${scheduleLoader}
         ${rosterLoader}
         return fetchRosterAndRenderChecklist().then(() => ({ activeRosterClass, activeScheduleClassId, canEditSchedules, schedules, calls }));
