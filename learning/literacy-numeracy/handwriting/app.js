@@ -324,11 +324,17 @@
     if (!cell) return;
     const strokes = [...doc.cells[doc.phase][i]];
     if (active && active.canvas === cell.write) strokes.push(active.stroke);
-    paper(cell.write.getContext('2d'), letters()[i], strokes, {
+    const write = cell.write.getContext('2d');
+    paper(write, letters()[i], strokes, {
       guide: doc.guide,
       trace: doc.phase === 'trace',
       next: i === doc.index,
     });
+    // 확인한 글자는 쓴 글씨에 결과 색이 입혀진다(review.js).
+    write.save();
+    unit(write);
+    review.tint(i, write, doc.cells[doc.phase][i]);
+    write.restore();
   }
   const MODEL_INK = '#27362f',
     CURRENT_MODEL_INK = '#2563a8'; // 줄 공책에서 지금 쓰는 글자는 본보기 글자를 파랗게 해서 알린다
@@ -451,6 +457,8 @@
     $('undoButton').disabled = !undo.length || cannotWrite;
     $('redoButton').disabled = !redo.length || cannotWrite;
     for (const id of ['clearButton', 'checkButton', 'demoButton']) $(id).disabled = cannotWrite;
+    // 글자가 바뀌었으면 그 결과 색과 점수를 먼저 내린다.
+    review.sync();
     cells.forEach((cell, i) => {
       cell.write.setAttribute('aria-disabled', String(cannotWrite));
       cell.write.setAttribute('aria-label', `${i + 1}번째 글자 ${cell.char} 쓰는 칸. ${C.model(cell.char).length}획.`);
@@ -458,8 +466,6 @@
       draw(i);
       drawModel(undefined, i);
     });
-    // 채점 표시는 글자가 그대로일 때만 남는다. 표시가 없으면 점수 줄도 닫는다.
-    review.sync();
     if (!review.showing()) {
       $('feedback').textContent = '';
       $('feedback').hidden = true;
@@ -573,6 +579,7 @@
     Reference,
     cell: (i) => cells[i],
     letters,
+    redraw: (i) => draw(i),
     marks: () => marks,
     strokesAt: (i) => doc.cells[doc.phase][i],
     modelStrokes,
@@ -673,7 +680,7 @@
       if (!test) {
         if (strayTap(a.stroke.points)) {
           draw();
-          // 세모 글자를 살짝 누르면 고칠 곳을 보여 준다.
+          // 다듬을 글자를 살짝 누르면 고칠 곳을 보여 준다.
           if (!inRoom) review.tapped(doc.index);
           return;
         }
@@ -819,7 +826,7 @@
     doc.cells[doc.phase][doc.index] = [];
     record(before, []);
   };
-  // 확인: 쓴 글자를 모두 채점한다. 혼자 연습에서는 색연필이 표시하고, 순위전 방에서는 점수만 글로 알린다.
+  // 확인: 쓴 글자를 모두 채점한다. 혼자 연습에서는 글씨에 색이 흐르고, 순위전 방에서는 점수만 글로 알린다.
   $('checkButton').onclick = () => {
     cancel();
     if (review.running()) {
@@ -840,7 +847,7 @@
       $('feedback').textContent = `점수 ${score}점 · ${written.length}/${letters().length}글자 · 평균 모양 일치도 ${shape}% · 획순 통과 ${written.filter((r) => r.order).length}글자`;
       return;
     }
-    // 이미 표시한 글자는 그대로 두고, 새로 쓴 글자만 색연필이 간다.
+    // 이미 확인한 글자는 그대로 두고, 새로 쓴 글자에만 색이 흐른다.
     const fresh = results.map((r, i) => Boolean(r && !marks[i]));
     marks = results.map((r) => (r ? 'checked' : undefined));
     render();

@@ -398,7 +398,7 @@ summary:focus-visible {
   font-size: 12px;
   line-height: 1.6;
 }
-/* 채점 장면: 색연필 표시는 연습장 위 투명한 판에 그린다. */
+/* 채점 장면: 점수와 반짝임은 연습장 위 투명한 판에 그린다. */
 .review-layer {
   position: absolute;
   inset: 0;
@@ -406,22 +406,6 @@ summary:focus-visible {
   height: 100%;
   z-index: 5;
   pointer-events: none;
-  mix-blend-mode: multiply;
-}
-.review-pencil {
-  position: absolute;
-  left: 0;
-  top: -11px;
-  z-index: 6;
-  width: 120px;
-  height: 22px;
-  pointer-events: none;
-  transform-origin: 0 11px;
-  filter: drop-shadow(2px 5px 3px #2b1a1433);
-  will-change: transform;
-}
-.review-pencil[hidden] {
-  display: none;
 }
 .review-slip {
   display: flex;
@@ -443,55 +427,32 @@ summary:focus-visible {
 }
 .review-tally {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
-  color: #27362f;
-  font-size: 16px;
+  gap: 6px 18px;
+  color: #4b5a52;
+  font-size: 14px;
 }
 .review-tally span {
   display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
-}
-.review-tally b {
-  color: #d2302a;
-  font-size: 19px;
-  font-weight: 700;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 .review-tally i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #23897b;
+}
+.review-tally .tally-fix i {
+  background: #c9822b;
+}
+.review-tally b {
   min-width: 1.2em;
-  font-style: normal;
-  font-weight: 700;
+  color: #27362f;
+  font-size: 16px;
   font-variant-numeric: tabular-nums;
-}
-.review-stamp {
-  flex: none;
-  width: 86px;
-  height: 86px;
-  margin-left: auto;
-  transform: rotate(-12deg);
-  mix-blend-mode: multiply;
-}
-.review-stamp[hidden] {
-  display: none;
-}
-.review-stamp svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-@media (max-width: 560px) {
-  .review-slip {
-    gap: 12px;
-  }
-  .review-tally {
-    gap: 9px;
-    font-size: 14px;
-  }
-  .review-stamp {
-    width: 62px;
-    height: 62px;
-  }
 }
 .cell-pair.inked-ring {
   position: relative;

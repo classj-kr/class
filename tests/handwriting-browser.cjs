@@ -146,7 +146,7 @@ test.after(async () => {
   await browser?.close();
   await h?.close();
 });
-test('solo check: red pencil marks, written score, stamp, and showing how to fix a triangle letter', async () => {
+test('solo check: result color flows through the writing, the score is written, and a letter to fix is shown in the lens', async () => {
   await page.goto(h.base + route);
   await ready();
   await page.evaluate(() => {
@@ -161,18 +161,24 @@ test('solo check: red pencil marks, written score, stamp, and showing how to fix
     for (const s of strokes) await pointer(page.locator('#writingCanvas'), 'stroke', C.sample(s, 35));
     await page.waitForTimeout(420);
   };
-  const tally = (kind) => page.locator(`.tally-${kind} i`).textContent();
+  const tally = (kind) => page.locator(`[data-count=${kind}]`).textContent();
+  // 글자 캔버스에 그 색 글씨가 칠해졌는지 본다.
+  const hasColor = (i, rgb) => page.evaluate(([i, rgb]) => {
+    const c = document.querySelectorAll('.write-cell')[i], d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+    for (let n = 0; n < d.length; n += 4) if (d[n + 3] > 240 && Math.abs(d[n] - rgb[0]) + Math.abs(d[n + 1] - rgb[1]) + Math.abs(d[n + 2] - rgb[2]) < 12) return true;
+    return false;
+  }, [i, rgb]);
+  const TEAL = [35, 137, 123], AMBER = [201, 130, 43];
   const result = page.locator('#feedback [data-result]');
   await write('가');
   await write('나', (s) => [s[0], [...s[1]].reverse(), s[2]]);
   await page.locator('#checkButton').click();
-  assert.equal(await page.locator('.review-pencil').isVisible(), true, 'the pencil walks over the sheet');
   assert.equal(await result.textContent(), '', 'the score waits for the pencil');
   await page.waitForFunction(() => document.querySelector('#feedback [data-result]').textContent);
-  assert.equal(await page.locator('.review-pencil').isVisible(), false);
-  assert.deepEqual([await tally('double'), await tally('circle'), await tally('tri')], ['1', '0', '1']);
-  assert.equal(await page.locator('.review-stamp').isVisible(), false, 'no stamp while a letter needs fixing');
-  // 세모 글자는 돋보기가 저절로 열려 어긋난 획을 말해 준다.
+  assert.deepEqual([await tally('good'), await tally('fix')], ['1', '1']);
+  assert.equal(await hasColor(0, TEAL), true, 'a good letter turns teal');
+  assert.equal(await hasColor(1, AMBER), true, 'a letter to fix turns amber');
+  // 다듬을 글자는 돋보기가 저절로 열려 어긋난 획을 말해 준다.
   await page.locator('.lens-redo').waitFor({ state: 'visible', timeout: 15000 });
   assert.match(await page.locator('.lens-note').textContent(), /^2번째 획은 반대쪽에서 시작해요$/);
   await page.locator('.lens-redo').click();
@@ -183,11 +189,12 @@ test('solo check: red pencil marks, written score, stamp, and showing how to fix
   await write('나');
   await page.locator('#checkButton').click();
   await page.waitForFunction(() => document.querySelector('#feedback [data-result]')?.textContent);
-  assert.match(await result.textContent(), /^100점\. 겹동그라미 2개, 동그라미 0개, 세모 0개\.$/);
-  await page.locator('.review-stamp').waitFor({ state: 'visible' });
-  // 다시 쓰기 시작하면 표시가 바로 물러나고 글씨를 막지 않는다.
+  assert.match(await result.textContent(), /^100점\. 잘 쓴 글자 2개, 다듬을 글자 0개\.$/);
+  assert.equal(await hasColor(1, TEAL), true);
+  // 글씨를 고치면 결과가 바로 물러난다.
   await page.locator('#undoButton').click();
   assert.equal(await page.locator('#feedback').isVisible(), false);
+  assert.equal(await hasColor(0, TEAL), true, 'other letters keep their result');
 });
 test('menu placement, independent phases, input priority, cancellation, undo and account restore', async () => {
   await context.addCookies([{ name: 'test_user', value: '2', url: h.base }]);
@@ -253,7 +260,7 @@ test('menu placement, independent phases, input priority, cancellation, undo and
   await page.locator('#checkButton').click();
   // 채점 장면은 「확인」을 한 번 더 누르면 끝 상태로 건너뛴다.
   await page.locator('#checkButton').click();
-  assert.match(await page.locator('#feedback [data-result]').textContent(), /^\d+점\. 겹동그라미 1개, 동그라미 0개, 세모 0개, 안 쓴 글자 13개\.$/);
+  assert.match(await page.locator('#feedback [data-result]').textContent(), /^\d+점\. 잘 쓴 글자 1개, 다듬을 글자 0개, 안 쓴 글자 13개\.$/);
   await page.locator('[data-phase=solo]').click();
   assert.equal(await count(), 0);
   await page.locator('[data-phase=trace]').click();

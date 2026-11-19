@@ -1,27 +1,17 @@
-// 혼자 연습의 채점 장면. 「확인」을 누르면 빨간 색연필이 글자마다 동그라미를 치고 점수를 쓰고,
-// 세모 글자는 돋보기 안에서 어긋난 획이 제자리로 옮겨 가는 모습을 보여 준다. 순위전에서는 쓰지 않는다.
+// 혼자 연습의 채점 장면. 「확인」을 누르면 쓴 글씨에 쓴 순서대로 색이 흘러 결과를 알려 주고,
+// 다듬을 글자는 돋보기 안에서 어긋난 획이 제자리로 옮겨 가는 모습을 보여 준다. 순위전에서는 쓰지 않는다.
 (function () {
   'use strict';
-  const RED = '#d2302a',
+  const FIX = '#c9822b', // 다듬을 글자: 따뜻한 황토색
     INK = '#233c34',
-    GOOD = '#2b8a55',
+    GOOD = '#23897b', // 잘 쓴 글자: 차분한 청록색
+    SCORE = '#1f6f66',
+    PARTY = ['#7fc8b8', '#a8d8ea', '#f2d48f', '#f3b8a6', '#b9dcae'],
     FAINT = '#d6dcd2',
     SAMPLES = 40;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v)),
     ease = (t) => t * t * (3 - 2 * t),
     mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
-  const PENCIL =
-    '<svg viewBox="0 0 120 22" width="120" height="22" aria-hidden="true">' +
-    '<path d="M0 11 20 3v16z" fill="#ecca9d"/><path d="M0 11 8 8v6z" fill="#d2302a"/>' +
-    '<path d="M20 3h94v16H20z" fill="#d2302a"/><path d="M20 3h94v5H20z" fill="#e4574f"/><path d="M20 14h94v5H20z" fill="#ad231e"/>' +
-    '<path d="M114 3h6v16h-6z" fill="#f4efe4"/></svg>';
-  const STAMP =
-    '<svg viewBox="0 0 100 100" aria-hidden="true"><defs><filter id="reviewInk" x="0" y="0" width="100%" height="100%">' +
-    '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/>' +
-    '<feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 2.25"/><feComposite in="SourceGraphic" operator="in"/></filter></defs>' +
-    '<g filter="url(#reviewInk)" fill="none" stroke="#c9281f"><circle cx="50" cy="50" r="45" stroke-width="4.5"/><circle cx="50" cy="50" r="38.5" stroke-width="1.5"/>' +
-    '<g fill="#c9281f" stroke="none" text-anchor="middle" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-weight="800">' +
-    '<text x="50" y="39" font-size="19">참</text><text x="50" y="64" font-size="19.5">잘했어요</text></g></g></svg>';
   // 손으로 쓴 숫자의 뼈대(가로 0~1, 세로 0~1).
   const DIGITS = {
     0: [[0.55, 0.02], [0.2, 0.15], [0.08, 0.5], [0.2, 0.86], [0.5, 1], [0.8, 0.85], [0.92, 0.48], [0.8, 0.13], [0.5, 0], [0.4, 0.04]],
@@ -56,37 +46,6 @@
       }
     }
     out.push(points[points.length - 1]);
-    return out;
-  }
-  // 반지름 1로 그린 표시. 선생님 손처럼 조금씩 삐뚤고, 글자마다 모양이 다르다.
-  function markPath(kind, seed) {
-    const r = random(seed),
-      phase = r() * 6,
-      wobble = 0.035 + r() * 0.03,
-      out = [];
-    if (kind === 'tri') {
-      const corners = [[0.02, -1.04], [-0.94, 0.74], [0.96, 0.7], [0.08, -1.12]].map(([x, y]) => [x + (r() - 0.5) * 0.08, y + (r() - 0.5) * 0.08]);
-      for (let c = 0; c < 3; c++) {
-        const lean = (r() - 0.5) * 0.1; // 변마다 한쪽으로만 살짝 휜다
-        for (let k = 0; k < 11; k++) {
-          const t = k / 11,
-            bow = Math.sin(t * Math.PI) * lean,
-            p = mix(corners[c], corners[c + 1], t);
-          out.push([p[0] + bow, p[1] - bow]);
-        }
-      }
-      out.push(corners[3]);
-      return out;
-    }
-    const turns = kind === 'double' ? 2.08 : 1.1,
-      n = Math.round(turns * 34);
-    for (let k = 0; k <= n; k++) {
-      const t = (k / n) * turns,
-        angle = -1.9 - t * Math.PI * 2,
-        inner = kind === 'double' ? 0.15 * ease(clamp(t - 0.9, 0, 1)) : 0,
-        radius = 1 + wobble * Math.sin(angle * 2 + phase) + 0.04 * (t / turns - 0.5) - inner;
-      out.push([Math.cos(angle) * radius, Math.sin(angle) * radius * 0.97]);
-    }
     return out;
   }
   // 차례로 이어지는 장면을 돌린다. stop(true)면 남은 장면을 소리 없이 끝 상태로 맞춘다.
@@ -239,20 +198,20 @@
         tone([523, 587, 659, 784, 880, 1047, 1175, 1319, 1568, 1760][i % 10], 0.13, 'triangle', 0.055);
       },
       miss: () => tone(196, 0.1, 'sine', 0.05),
-      mark(kind) {
-        if (kind === 'double') {
-          tone(1568, 0.14, 'triangle', 0.05);
-          tone(2093, 0.16, 'triangle', 0.04, 0.05);
-        } else if (kind === 'circle') tone(1319, 0.1, 'triangle', 0.04);
-        else tone(294, 0.09, 'triangle', 0.04);
+      // 글자에 색이 번질 때: 잘 쓴 글자는 차례로 올라가는 음, 다듬을 글자는 낮고 부드러운 음.
+      flow(n, kind) {
+        if (kind === 'fix') tone(262, 0.16, 'sine', 0.04);
+        else {
+          tone([523, 587, 659, 784, 880, 1047, 1175, 1319, 1568, 1760][n % 10], 0.2, 'sine', 0.05);
+          if (kind === 'great') tone(2093, 0.14, 'sine', 0.018, 0.04);
+        }
       },
       total(score) {
-        const notes = score >= 85 ? [784, 988, 1175, 1568] : score >= 60 ? [784, 988] : [523];
-        notes.forEach((n, i) => tone(n, 0.2, 'triangle', 0.06, i * 0.09));
+        const notes = score >= 60 ? [659, 988] : [523];
+        notes.forEach((n, i) => tone(n, 0.24, 'sine', 0.05, i * 0.09));
       },
-      stamp() {
-        tone(150, 0.2, 'sine', 0.3, 0, 60);
-        scratch(0.05, 0.12, 900);
+      cheer() {
+        [784, 988, 1175, 1568].forEach((n, i) => tone(n, 0.42, 'sine', 0.05, i * 0.07));
       },
       fix: () => scratch(0.5, 0.04, 2600),
       good: () => tone(1175, 0.08, 'triangle', 0.035),
@@ -270,72 +229,89 @@
       return n;
     };
     const layer = el('canvas', 'review-layer'),
-      pencil = el('div', 'review-pencil'),
       g = layer.getContext('2d');
     layer.setAttribute('aria-hidden', 'true');
-    pencil.innerHTML = PENCIL;
-    pencil.hidden = true;
-    panel.append(layer, pencil);
+    panel.append(layer);
     let items = new Map(),
       score = null, // { value, paths, h }
       run = null,
+      rushing = false, // 건너뛸 때는 소리·움직임 없이 끝 상태로 간다
       autoLens = 0,
       painted = false,
-      tip = [0, 0],
-      counts = { double: 0, circle: 0, tri: 0 };
+      bits = [],
+      counts = { good: 0, fix: 0 };
     const motionOff = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-
-    // ── 연습장 위에 그리기 ──
-    function letterBox(i, base) {
-      const cell = app.cell(i);
-      if (!cell) return null;
-      const r = cell.write.getBoundingClientRect(),
-        u = r.height / 100,
-        char = app.letters()[i];
-      let cx = 50,
-        cy = 50,
-        radius = app.glyphHeight() * 0.54;
-      if (Reference.mark(char)) {
-        // 문장 부호는 글자 가운데가 아니라 찍는 자리에 작게 표시한다.
-        const all = app.shownModel(char).flat();
-        cx = all.reduce((n, p) => n + p[0], 0) / all.length;
-        cy = all.reduce((n, p) => n + p[1], 0) / all.length;
-        radius = 9;
-      }
-      return { x: r.left - base.left + r.width / 2 + (cx - 50) * u, y: r.top - base.top + cy * u, radius: radius * u, u };
-    }
+    const tallyOf = (kind) => (kind === 'fix' ? 'fix' : 'good');
     const part = (points, p) => {
       if (p >= 1) return points;
       const at = p * (points.length - 1),
         n = Math.floor(at);
       return [...points.slice(0, n + 1), mix(points[n], points[n + 1] || points[n], at - n)];
     };
-    function crayon(points, width) {
+
+    // ── 글씨에 색이 흐른다: 쓴 획 차례대로 물든다 ──
+    function tint(i, context, strokes) {
+      const it = items.get(i);
+      if (!it?.p || !strokes.length) return;
+      const color = it.kind === 'fix' ? FIX : GOOD;
+      strokes.forEach((s, k) => {
+        const local = clamp(it.p * strokes.length - k, 0, 1);
+        if (local > 0) app.path(context, part(s.points, local), color, (s.width || 2.5) + 0.12);
+      });
+    }
+    function letterBox(i, base) {
+      const cell = app.cell(i);
+      if (!cell) return null;
+      const r = cell.write.getBoundingClientRect(),
+        u = r.height / 100;
+      return { x: r.left - base.left + r.width / 2, y: r.top - base.top + 50 * u, u };
+    }
+    function inkLine(points, width, color) {
       if (points.length < 2) return;
-      const trace = (shift) => {
-        g.beginPath();
-        points.forEach((p, i) => (i ? g.lineTo(p[0] + shift, p[1] - shift) : g.moveTo(p[0] + shift, p[1] - shift)));
-        g.stroke();
-      };
       g.lineCap = 'round';
       g.lineJoin = 'round';
-      g.strokeStyle = RED;
-      g.globalAlpha = 0.2;
-      g.lineWidth = width * 1.7;
-      trace(0.3);
-      g.globalAlpha = 0.82;
+      g.strokeStyle = color;
       g.lineWidth = width;
-      trace(0);
-      g.globalAlpha = 1;
+      g.beginPath();
+      points.forEach((p, i) => (i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])));
+      g.stroke();
     }
-    const markPoints = (it, box) => it.path.map(([x, y]) => [box.x + x * box.radius, box.y + y * box.radius]);
+    function drawBit(b, now) {
+      const age = now - b.born,
+        t = age / b.life;
+      if (t < 0 || t >= 1) return;
+      g.save();
+      g.fillStyle = b.color;
+      if (b.spark) {
+        const s = b.size * Math.sin(t * Math.PI);
+        g.translate(b.x, b.y);
+        g.rotate(t * 1.1);
+        g.beginPath();
+        for (let k = 0; k < 8; k++) {
+          const r = k % 2 ? s * 0.28 : s,
+            a = (k / 8) * Math.PI * 2;
+          g[k ? 'lineTo' : 'moveTo'](Math.cos(a) * r, Math.sin(a) * r);
+        }
+        g.closePath();
+        g.fill();
+      } else {
+        const sec = age / 1000;
+        g.globalAlpha = 1 - t * t;
+        g.translate(b.x + b.vx * sec, b.y + b.vy * sec + 300 * sec * sec);
+        g.rotate(b.spin * sec);
+        g.fillRect(-b.size / 2, -b.size / 3, b.size, (b.size * 2) / 3);
+      }
+      g.restore();
+    }
     const scoreBox = (base) => {
       const r = slip.querySelector('.review-score')?.getBoundingClientRect();
-      return r && { x: r.left - base.left + 2, y: r.top - base.top + 2 };
+      return r && { x: r.left - base.left + 2, y: r.top - base.top + 6 };
     };
     const scorePoints = (path, box) => path.points.map(([x, y]) => [box.x + x * score.h, box.y + y * score.h]);
     function paint() {
-      const empty = !items.size && !score;
+      const now = performance.now();
+      bits = bits.filter((b) => now - b.born < b.life);
+      const empty = !score && !bits.length;
       if (empty && !painted) return;
       const base = panel.getBoundingClientRect(),
         ratio = Math.min(2, window.devicePixelRatio || 1),
@@ -348,21 +324,13 @@
       g.setTransform(ratio, 0, 0, ratio, 0, 0);
       g.clearRect(0, 0, base.width, base.height);
       painted = !empty;
-      items.forEach((it, i) => {
-        if (!it.p) return;
-        const box = letterBox(i, base);
-        if (box) crayon(part(markPoints(it, box), it.p), clamp(box.u * 1.7, 1.3, 2.3));
-      });
       const box = score && scoreBox(base);
-      if (box) score.paths.forEach((path) => path.p && crayon(part(scorePoints(path, box), path.p), 2.6));
+      if (box) score.paths.forEach((path) => path.p && inkLine(part(scorePoints(path, box), path.p), 3, SCORE));
+      bits.forEach((b) => drawBit(b, now));
     }
     new ResizeObserver(() => paint()).observe(panel);
-    function movePencil(p) {
-      tip = p;
-      pencil.style.transform = `translate(${p[0]}px, ${p[1]}px) rotate(-52deg)`;
-    }
 
-    // ── 점수 쪽지 ──
+    // ── 점수 줄 ──
     function buildScore(value) {
       const paths = [];
       let x = 0;
@@ -383,18 +351,14 @@
         model.forEach((s) => paths.push({ p: 0, points: s.map((p) => [dx + (p[0] - left) * k, 0.4 + (p[1] - top) * k]) }));
         x = dx + (Math.max(...all.map((p) => p[0])) - left) * k;
       }
-      paths.push({ p: 0, points: smooth([[-0.04, 1.2], [x * 0.5, 1.15], [x + 0.06, 1.12]]) });
-      if (value >= 85) paths.push({ p: 0, points: smooth([[x * 0.08, 1.33], [x * 0.5, 1.29], [x * 0.96, 1.26]]) });
       return { value, paths, width: x + 0.14 };
     }
     function showSlip() {
-      const tally = (kind, sign, name) =>
-        `<span class="tally-${kind}" title="${name}"><b>${sign}</b><i data-count="${kind}">${counts[kind]}</i></span>`;
+      const tally = (kind, name) => `<span class="tally-${kind}"><i></i>${name} <b data-count="${kind}">${counts[kind]}</b></span>`;
       slip.className = 'feedback review-slip';
       slip.innerHTML =
         '<span class="review-score"><span class="sr-only" data-result></span></span>' +
-        `<span class="review-tally" aria-hidden="true">${tally('double', '◎', '겹동그라미')}${tally('circle', '○', '동그라미')}${tally('tri', '△', '세모')}</span>` +
-        `<span class="review-stamp" hidden>${STAMP}</span>`;
+        `<span class="review-tally" aria-hidden="true">${tally('good', '잘 쓴 글자')}${tally('fix', '다듬을 글자')}</span>`;
       slip.hidden = false;
       const h = 44,
         spot = slip.querySelector('.review-score');
@@ -412,161 +376,144 @@
     };
     function resultText() {
       const missing = app.letters().length - items.size;
-      return `${score.value}점. 겹동그라미 ${counts.double}개, 동그라미 ${counts.circle}개, 세모 ${counts.tri}개${missing ? `, 안 쓴 글자 ${missing}개` : ''}.`;
+      return `${score.value}점. 잘 쓴 글자 ${counts.good}개, 다듬을 글자 ${counts.fix}개${missing ? `, 안 쓴 글자 ${missing}개` : ''}.`;
     }
 
     // ── 채점 ──
-    const gradeOf = (r) => (!r.order || r.score < 60 ? 'tri' : r.score >= 90 ? 'double' : 'circle');
+    const gradeOf = (r) => (!r.order || r.score < 60 ? 'fix' : r.score >= 90 ? 'great' : 'good');
+    function hop(i, delay = 0) {
+      app.cell(i)?.write.animate([{ transform: 'translateY(0) scale(1)' }, { transform: 'translateY(-7%) scale(1.14)', offset: 0.4 }, { transform: 'translateY(0) scale(1)' }], { duration: 300, delay, easing: 'ease-out' });
+    }
+    function land(i, it) {
+      if (it.kind === 'fix') {
+        app.cell(i)?.write.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-2.5%)' }, { transform: 'translateX(2%)' }, { transform: 'translateX(0)' }], { duration: 260 });
+        return;
+      }
+      hop(i);
+      if (it.kind !== 'great') return;
+      const box = letterBox(i, panel.getBoundingClientRect()),
+        now = performance.now();
+      if (box)
+        [[17, -19, 7], [-20, -9, 5], [21, 12, 4]].forEach(([x, y, size], k) =>
+          bits.push({ spark: true, x: box.x + x * box.u, y: box.y + y * box.u, size: size * clamp(box.u, 0.8, 1.3), color: '#e7b94f', born: now + k * 70, life: 520 }),
+        );
+    }
+    function confetti() {
+      const base = panel.getBoundingClientRect(),
+        sheet = app.cell(0)?.pair.closest('.sheet')?.getBoundingClientRect(),
+        now = performance.now();
+      if (!sheet) return;
+      for (let k = 0; k < 54; k++)
+        bits.push({
+          x: sheet.left - base.left + Math.random() * sheet.width,
+          y: sheet.bottom - base.top - Math.random() * 30,
+          vx: (Math.random() - 0.5) * 170,
+          vy: -130 - Math.random() * 230,
+          spin: (Math.random() - 0.5) * 12,
+          size: 6 + Math.random() * 5,
+          color: PARTY[k % PARTY.length],
+          born: now + Math.random() * 180,
+          life: 1050 + Math.random() * 300,
+        });
+    }
     function start({ results, score: value, fresh }) {
       finish();
       closeLens();
       clearTimeout(autoLens);
-      counts = { double: 0, circle: 0, tri: 0 };
+      counts = { good: 0, fix: 0 };
       const next = new Map(),
         queue = [];
       results.forEach((r, i) => {
         if (!r) return;
-        const kind = gradeOf(r),
-          it = { kind, path: markPath(kind, i * 7 + app.letters()[i].charCodeAt(0)), p: fresh[i] ? 0 : 1 };
-        next.set(i, it);
+        const kind = gradeOf(r);
+        next.set(i, { kind, p: fresh[i] ? 0 : 1 });
         if (fresh[i]) queue.push(i);
-        else counts[kind]++;
+        else counts[tallyOf(kind)]++;
       });
       const same = !queue.length && score?.value === value;
       items = next;
-      if (same) return paint();
+      results.forEach((_, i) => app.redraw(i));
+      if (same) return;
       const all = [...next.values()],
-        stampIt = all.length === results.length && value >= 85 && !all.some((it) => it.kind === 'tri');
+        cheer = all.length === results.length && value >= 85 && !all.some((it) => it.kind === 'fix');
       score = { ...buildScore(value), h: 44 };
       showSlip();
-      const stamp = slip.querySelector('.review-stamp'),
-        drawTime = clamp(3600 / Math.max(1, queue.length) - 50, 90, 320),
+      const FLOW = 430,
+        gap = clamp(2200 / Math.max(1, queue.length), 35, 130),
+        total = queue.length ? gap * (queue.length - 1) + FLOW : 0,
+        begun = new Set(),
+        ended = new Set(),
         steps = [];
-      const base = () => panel.getBoundingClientRect();
-      const go = (to, dur, before) => {
-        let from;
-        steps.push({
-          dur,
-          start(quiet) {
-            from = tip;
-            if (!quiet) before?.();
-          },
-          run: (p) => {
-            const target = to();
-            if (target) movePencil(mix(from, target, ease(p)));
-          },
-        });
-      };
-      queue.forEach((i) => {
-        const it = next.get(i),
-          dur = drawTime * (it.kind === 'double' ? 1.4 : 1);
-        go(
-          () => {
-            const box = letterBox(i, base());
-            return box && markPoints(it, box)[0];
-          },
-          55,
-          () => {
-            const r = app.cell(i)?.pair.getBoundingClientRect();
-            if (r && (r.top < 0 || r.bottom > innerHeight)) app.cell(i).pair.scrollIntoView({ block: 'center', behavior: 'smooth' });
-          },
-        );
-        steps.push({
-          dur,
-          start: (quiet) => quiet || sound.scratch(dur / 1000),
-          run(p) {
-            it.p = p;
-            const box = letterBox(i, base());
-            if (box) {
-              const line = part(markPoints(it, box), p);
-              movePencil(line[line.length - 1]);
+      // 왼쪽 글자부터 물결처럼 겹쳐 가며 물든다.
+      const flowTo = (time) =>
+        queue.forEach((i, n) => {
+          const it = next.get(i),
+            local = clamp((time - n * gap) / FLOW, 0, 1);
+          if (local > 0 && !begun.has(i)) {
+            begun.add(i);
+            if (!rushing) {
+              sound.flow(n, it.kind);
+              const r = app.cell(i)?.pair.getBoundingClientRect();
+              if (r && (r.top < 0 || r.bottom > innerHeight)) app.cell(i).pair.scrollIntoView({ block: 'center', behavior: 'smooth' });
             }
-          },
-          end(quiet) {
-            counts[it.kind]++;
-            setCount(it.kind);
-            if (!quiet) sound.mark(it.kind);
-          },
+          }
+          if (local !== it.p) {
+            it.p = local;
+            app.redraw(i);
+          }
+          if (local >= 1 && !ended.has(i)) {
+            ended.add(i);
+            counts[tallyOf(it.kind)]++;
+            setCount(tallyOf(it.kind));
+            if (!rushing) land(i, it);
+          }
         });
-      });
-      score.paths.forEach((path, n) => {
-        const b = () => scoreBox(base());
-        go(
-          () => {
-            const box = b();
-            return box && scorePoints(path, box)[0];
-          },
-          n ? 45 : 130,
-          n ? null : () => slip.scrollIntoView({ block: 'nearest', behavior: 'smooth' }),
-        );
+      if (total) steps.push({ dur: total, run: (p) => flowTo(p * total) });
+      steps.push({ dur: 120, start: () => rushing || slip.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) });
+      score.paths.forEach((path) => {
         const dur = path.points.length > 8 ? 170 : 90;
         steps.push({
           dur,
-          start: (quiet) => quiet || sound.scratch(dur / 1000, 0.05),
+          start: () => rushing || sound.scratch(dur / 1000, 0.03),
           run(p) {
             path.p = p;
-            const box = b();
-            if (box) {
-              const line = part(scorePoints(path, box), p);
-              movePencil(line[line.length - 1]);
+          },
+        });
+      });
+      steps.push({ dur: 0, end: () => rushing || sound.total(value) });
+      steps.push(
+        cheer
+          ? {
+              dur: 1250,
+              start() {
+                if (rushing) return;
+                sound.cheer();
+                confetti();
+                [...next.keys()].forEach((i, n) => hop(i, n * 28));
+              },
             }
-          },
-        });
-      });
-      steps.push({
-        dur: 0,
-        end(quiet) {
-          pencil.hidden = true;
-          if (!quiet) sound.total(value);
-        },
-      });
-      if (stampIt) {
-        steps.push({ dur: 260 });
-        steps.push({
-          dur: 170,
-          start(quiet) {
-            stamp.hidden = false;
-            if (quiet) return;
-            stamp.animate(
-              [
-                { transform: 'rotate(-12deg) scale(3)', opacity: 0 },
-                { transform: 'rotate(-12deg) scale(0.92)', opacity: 1, offset: 0.85 },
-                { transform: 'rotate(-12deg) scale(1)', opacity: 1 },
-              ],
-              { duration: 170, easing: 'ease-in' },
-            );
-          },
-          end(quiet) {
-            if (quiet) return;
-            sound.stamp();
-            slip.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(4px)' }, { transform: 'translateY(-1px)' }, { transform: 'translateY(0)' }], { duration: 180 });
-          },
-        });
-      }
+          : { dur: 520 },
+      );
       const done = (natural) => {
         run = null;
-        pencil.hidden = true;
+        bits = [];
+        paint();
         const result = slip.querySelector('[data-result]');
         if (result) result.textContent = resultText();
         if (!natural) return;
-        const first = [...items].find(([, it]) => it.kind === 'tri');
-        if (first) autoLens = setTimeout(() => openLens(first[0]), 480);
+        const first = [...items].find(([, it]) => it.kind === 'fix');
+        if (first) autoLens = setTimeout(() => openLens(first[0]), 300);
       };
-      const first = queue.length ? letterBox(queue[0], base()) : scoreBox(base());
-      if (first) movePencil([(first.x || 0) + 40, (first.y || 0) - 30]);
-      if (motionOff() || document.hidden) {
-        run = player(steps, paint, done);
-        run.stop(true);
-        return;
-      }
-      pencil.hidden = false;
       run = player(steps, paint, done);
+      if (motionOff() || document.hidden) finish();
     }
     function finish() {
+      rushing = true;
       run?.stop(true);
+      rushing = false;
       run = null;
     }
-    // 고친 글자가 생기면 그 표시와 점수를 내린다(점수가 지금 글씨와 달라지므로).
+    // 고친 글자가 생기면 그 글자의 색과 점수를 내린다(점수가 지금 글씨와 달라지므로).
     function sync() {
       const marks = app.marks();
       let dropped = false;
@@ -577,15 +524,13 @@
         }
       });
       if (dropped) {
-        const rest = items;
         run?.stop(false);
         run = null;
         clearTimeout(autoLens);
         closeLens();
         score = null;
-        pencil.hidden = true;
+        bits = [];
         hideSlip();
-        items = rest;
       }
       paint();
     }
@@ -686,7 +631,7 @@
         target = d.expected.map(shown),
         aligned = d.aligned.map(shown),
         lines = written.map((s) => ({ points: C.sample(s.points, SAMPLES), color: INK, alpha: 1, width: s.width || 2.5 }));
-      target.slice(lines.length).forEach(() => lines.push({ points: [], color: RED, alpha: 1, width: written[0].width || 2.5 }));
+      target.slice(lines.length).forEach(() => lines.push({ points: [], color: FIX, alpha: 1, width: written[0].width || 2.5 }));
       let badge = null,
         dot = null;
       const say = [];
@@ -708,7 +653,7 @@
           c.globalAlpha = 1;
         });
         if (dot) {
-          c.fillStyle = RED;
+          c.fillStyle = FIX;
           c.beginPath();
           c.arc(dot[0], dot[1], 6 / zoom, 0, Math.PI * 2);
           c.fill();
@@ -784,8 +729,8 @@
           dur: s.fix === 'missing' ? 500 : 640,
           start() {
             speak(words);
-            badge = { at: badgeAt(k), n: k + 1, color: RED };
-            line.color = RED;
+            badge = { at: badgeAt(k), n: k + 1, color: FIX };
+            line.color = FIX;
           },
         });
         if (s.fix === 'missing') {
@@ -824,7 +769,7 @@
           start() {
             speak(words);
             badge = null;
-            lines.slice(target.length).forEach((l) => (l.color = RED));
+            lines.slice(target.length).forEach((l) => (l.color = FIX));
           },
           run(p) {
             lines.slice(target.length).forEach((l) => (l.alpha = p < 0.5 ? 1 : 2 - p * 2));
@@ -858,6 +803,7 @@
     return {
       start,
       sync,
+      tint,
       running: () => Boolean(run),
       showing: () => !slip.hidden && slip.classList.contains('review-slip'),
       finish,
@@ -867,7 +813,7 @@
         finish();
       },
       tapped(i) {
-        if (!run && items.get(i)?.kind === 'tri') openLens(i);
+        if (!run && items.get(i)?.kind === 'fix') openLens(i);
       },
       letterDone(i, right) {
         const cell = app.cell(i);
