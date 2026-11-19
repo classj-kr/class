@@ -27,6 +27,9 @@ async function withApi(run) {
     CREATE TABLE classroom_teachers (id BIGSERIAL PRIMARY KEY, school_id BIGINT, user_id BIGINT, google_email TEXT, academic_year INTEGER, grade INTEGER, class_number INTEGER, active BOOLEAN);
     CREATE TABLE school_students (id BIGSERIAL PRIMARY KEY, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, student_number TEXT, roster_name TEXT, name_source TEXT, student_email TEXT, guardian1_email TEXT, user_id BIGINT, custom_fields JSONB DEFAULT '{}', avatar_key TEXT);
     CREATE TABLE classroom_students (id BIGSERIAL PRIMARY KEY, class_id BIGINT, student_number TEXT, roster_name TEXT, name_source TEXT, birthday_mmdd TEXT, birthday_visible BOOLEAN, roster_active BOOLEAN DEFAULT TRUE, student_email TEXT, avatar_key TEXT);
+    ALTER TABLE school_students ADD COLUMN IF NOT EXISTS gender TEXT;
+    ALTER TABLE classroom_students ADD COLUMN IF NOT EXISTS gender TEXT;
+    CREATE TABLE seating_settings (creator_user_id BIGINT, class_id BIGINT, settings JSONB);
     CREATE TABLE classroom_teacher_dashboard_settings (user_id BIGINT PRIMARY KEY, timetable JSONB, card_order JSONB);
     CREATE TABLE user_storage (user_id BIGINT, app TEXT, item TEXT, value JSONB);
     CREATE TABLE classroom_absence_notices (school_id BIGINT, grade INTEGER, class_number INTEGER, student_number TEXT, notice_type TEXT, expected_date DATE, reason TEXT);
@@ -205,6 +208,26 @@ test('a class that no teacher has opened yet still answers with an empty dashboa
   assert.deepEqual(body.timetable, {});
   assert.deepEqual(body.preps, {});
   assert.deepEqual((await get('/attendance', 2)).body.alerts, []);
+}));
+
+test('the seating chart is the homeroom teacher\'s saved one, read-only, with seats and numbers only', () => withApi(async ({ get, db }) => {
+  assert.deepEqual((await get('/seating')).body, { arranged: false, seats: [], unavailableSeats: [] }, 'nothing saved yet');
+  assert.equal((await get('/seating', 0)).status, 401);
+  const { rows: [room] } = await db.query('SELECT id, teacher_user_id FROM classroom_classes WHERE school_id = 1 AND academic_year = 2026 AND grade = 6 AND class_number = 2');
+  const { rows: [homeroom] } = await db.query('SELECT COALESCE(t.user_id, u.id) AS user_id FROM classroom_teachers t LEFT JOIN classroom_users u ON t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email) WHERE t.school_id = 1 AND t.grade = 6 AND t.class_number = 2 AND t.active = TRUE AND COALESCE(t.user_id, u.id) IS NOT NULL ORDER BY t.user_id IS NULL, t.id LIMIT 1');
+  const { rows: roster } = await db.query("SELECT student_number FROM school_students WHERE school_id = 1 AND academic_year = 2026 AND grade = 6 AND class_number = 2 ORDER BY student_number");
+  const number = roster[0].student_number;
+  await db.query('INSERT INTO seating_settings VALUES ($1, $2, $3::jsonb), ($4, $2, $5::jsonb)', [
+    homeroom?.user_id ?? room.teacher_user_id, room.id, JSON.stringify({ unavailableSeats: [0], manualAssignments: { 7: number }, genderLocks: { 1: '여' }, studentOrder: [number] }),
+    987654, JSON.stringify({ manualAssignments: { 20: number } })
+  ]);
+  const { status, body } = await get('/seating');
+  assert.equal(status, 200);
+  assert.equal(body.arranged, true);
+  assert.deepEqual(body.unavailableSeats, [0]);
+  assert.equal(body.seats.find(item => item.number === number).seat, 7, 'another teacher\'s copy is ignored');
+  assert.deepEqual(Object.keys(body).sort(), ['arranged', 'seats', 'unavailableSeats']);
+  assert.ok(body.seats.every(item => Object.keys(item).sort().join() === 'number,seat'), 'no gender or lock data leaves the server');
 }));
 
 test('only boards opened to the student\'s class or group appear; closed ones stay visible to students already inside', () => withApi(async ({ get, db }) => {

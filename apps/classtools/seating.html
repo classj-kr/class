@@ -8,6 +8,9 @@
     <script>if (new URLSearchParams(location.search).get("view") === "student") document.documentElement.classList.add("student-view");</script>
     <style>
         html.student-view [data-teacher-only] { display: none !important; }
+        html.student-view .seating-container { grid-template-columns: 1fr; }
+        html.student-view .desk { cursor: default; }
+        html.student-view .desk:hover { transform: none; border-color: var(--line); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); }
         :root {
             color-scheme: light;
             --ink: #172033;
@@ -504,7 +507,7 @@
                 </div>
 
                 <!-- 우측 사이드바 제어 패널 -->
-                <aside class="seating-sidebar-panel">
+                <aside class="seating-sidebar-panel" data-teacher-only>
                     <button class="btn btn-primary btn-xl" id="shuffle-btn" type="button" style="width: 100%; font-size: 1.1rem; font-weight: 900; padding: 14px; margin-bottom: 6px; border-radius: 14px; box-shadow: 0 4px 12px rgba(23,63,69,0.3);">🎲 자리 무작위 섞기</button>
 
                     <div class="sidebar-group" id="live-open-group" data-teacher-only>
@@ -559,7 +562,7 @@
         </form>
     </dialog>
 
-    <script src="/assets/site-storage.js?v=20261006-1"></script>
+    <script src="/assets/seat-assignments.js?v=20261119-1"></script>
     <script>
         (() => {
             'use strict';
@@ -596,9 +599,9 @@
             const saveStatus = document.getElementById('save-status');
             const saveRetryBtn = document.getElementById('save-retry-btn');
             let settingsReady = false;
-            // 학생 보기: 명단만 받아 혼자 해 본다. 저장은 그 학생 계정에만 되고 선생님 배치는 건드리지 않는다.
+            // 학생 보기: 담임이 정한 자리표를 보기만 한다. 바꾸는 단추도, 저장도 없다.
             const studentView = document.documentElement.classList.contains('student-view');
-            let studentSeatStore = null;
+            let publishedSeats = null;
             if (studentView) {
                 const back = document.getElementById('seating-back');
                 back.href = 'dashboard?view=student';
@@ -680,7 +683,7 @@
                 seatingGrid.innerHTML = '';
                 const availableSeats = Array.from({ length: TOTAL_DESKS }, (_, index) => index)
                     .filter((index) => !unavailableSeats.has(index));
-                const assignedSeats = buildAssignments(availableSeats);
+                const assignedSeats = studentView ? publishedAssignments() : buildAssignments(availableSeats);
                 currentAssignments = assignedSeats;
 
                 const visualSeatIndexes = Array.from({ length: TOTAL_DESKS }, (_, index) => index);
@@ -692,15 +695,15 @@
                     const studentLockNumber = studentLocks.get(i);
                     const lockedStudent = students.find((candidate) => candidate.number === studentLockNumber);
                     const student = assignedSeats.get(i);
-                    const desk = document.createElement('button');
-                    desk.type = 'button';
+                    const desk = document.createElement(studentView ? 'div' : 'button');
+                    if (!studentView) desk.type = 'button';
                     desk.className = `desk${student ? ' is-occupied' : ''}${isUnused ? ' is-unused' : ''}${genderLock === '남' ? ' is-gender-male' : ''}${genderLock === '여' ? ' is-gender-female' : ''}${!student && !isUnused ? ' is-empty' : ''}`;
                     
                     const coordStr = getExcelCoord(i);
-                    desk.setAttribute('aria-label', isUnused
+                    if (!studentView) desk.setAttribute('aria-label', isUnused
                         ? `${coordStr} 좌석, 사용 안 함. 클릭하여 사용으로 전환`
                         : `${coordStr} 좌석, ${student ? student.name : '빈자리'}${genderLock ? `, ${genderLock}학생 고정` : ''}${lockedStudent ? `, ${lockedStudent.name} 자리 고정` : ''}${isUnusedMode ? '. 클릭하여 사용 안 함으로 표시' : genderLockMode ? `. 클릭하여 ${genderLockMode}학생 고정` : isStudentLockMode ? '. 클릭하여 선택 학생 자리로 고정' : ''}`);
-                    desk.title = isUnusedMode ? '클릭하여 사용 안 함(X) 표시를 전환합니다.' : genderLockMode ? `클릭하여 ${genderLockMode}학생 고정을 전환합니다.` : isStudentLockMode ? '클릭하여 선택한 학생을 이 자리에 고정합니다.' : 'X 표시, 성별 고정 또는 학생 자리 고정 버튼을 눌러 좌석을 설정할 수 있습니다.';
+                    if (!studentView) desk.title = isUnusedMode ? '클릭하여 사용 안 함(X) 표시를 전환합니다.' : genderLockMode ? `클릭하여 ${genderLockMode}학생 고정을 전환합니다.` : isStudentLockMode ? '클릭하여 선택한 학생을 이 자리에 고정합니다.' : 'X 표시, 성별 고정 또는 학생 자리 고정 버튼을 눌러 좌석을 설정할 수 있습니다.';
                     const avatarUrl = student ? getAssignedAvatarUrl(student) : '';
                     const avatarBadge = avatarUrl
                         ? `<span class="desk-avatar"><img class="desk-avatar-image" src="${avatarUrl}" alt=""></span>`
@@ -719,10 +722,15 @@
                             <span class="desk-name">${isUnused ? '사용 안 함' : (student ? student.name : '빈자리')}</span>
                         </div>
                     `;
-                    desk.addEventListener('click', () => handleDeskClick(i));
+                    if (!studentView) desk.addEventListener('click', () => handleDeskClick(i));
                     seatingGrid.appendChild(desk);
                 }
 
+                if (studentView) {
+                    seatSummary.hidden = Boolean(publishedSeats?.arranged);
+                    seatSummary.textContent = publishedSeats?.arranged ? '' : '선생님이 아직 자리를 정하지 않았어요.';
+                    return;
+                }
                 const activeDeskCount = TOTAL_DESKS - unavailableSeats.size;
                 const unassignedCount = Math.max(0, students.length - activeDeskCount);
                 const maleLocks = [...genderLocks.values()].filter((gender) => gender === '남').length;
@@ -739,35 +747,18 @@
             }
 
             function buildAssignments(availableSeats) {
-                const assignedSeats = new Map();
-                const assignedStudents = new Set();
-                const assignStudent = (seatIndex, studentNumber) => {
-                    const student = students.find((candidate) => candidate.number === studentNumber);
-                    if (!student || assignedStudents.has(student) || unassignedStudents.has(student.number)) return;
-                    assignedSeats.set(seatIndex, student);
-                    assignedStudents.add(student);
-                };
-                for (const seatIndex of availableSeats.filter((seat) => !manualVacantSeats.has(seat) && studentLocks.has(seat))) {
-                    assignStudent(seatIndex, studentLocks.get(seatIndex));
+                return SeatAssignments.assign({
+                    students, seats: availableSeats, manualVacantSeats, studentLocks, manualAssignments, genderLocks, unassignedStudents
+                });
+            }
+
+            function publishedAssignments() {
+                const seats = new Map();
+                for (const { seat, number } of publishedSeats?.seats || []) {
+                    const student = students.find((candidate) => candidate.number === String(number));
+                    if (student) seats.set(seat, student);
                 }
-                for (const seatIndex of availableSeats.filter((seat) => !manualVacantSeats.has(seat) && !studentLocks.has(seat) && manualAssignments.has(seat))) {
-                    assignStudent(seatIndex, manualAssignments.get(seatIndex));
-                }
-                for (const gender of ['남', '여']) {
-                    const matchingStudents = students.filter((student) => student.gender === gender && !unassignedStudents.has(student.number));
-                    for (const seatIndex of availableSeats.filter((seat) => !manualVacantSeats.has(seat) && !studentLocks.has(seat) && !manualAssignments.has(seat) && genderLocks.get(seat) === gender)) {
-                        const student = matchingStudents.find((candidate) => !assignedStudents.has(candidate));
-                        if (!student) continue;
-                        assignedSeats.set(seatIndex, student);
-                        assignedStudents.add(student);
-                    }
-                }
-                const remainingStudents = students.filter((student) => !assignedStudents.has(student) && !unassignedStudents.has(student.number));
-                for (const seatIndex of availableSeats.filter((seat) => !manualVacantSeats.has(seat) && !genderLocks.has(seat) && !studentLocks.has(seat) && !manualAssignments.has(seat))) {
-                    const student = remainingStudents.shift();
-                    if (student) assignedSeats.set(seatIndex, student);
-                }
-                return assignedSeats;
+                return seats;
             }
 
             function seatSettingsSnapshot() {
@@ -793,11 +784,7 @@
             }
 
             function saveSeatSettings() {
-                if (!settingsReady || !currentClassId) return;
-                if (studentView) {
-                    studentSeatStore?.set('layout', seatSettingsSnapshot());
-                    return;
-                }
+                if (studentView || !settingsReady || !currentClassId) return;
                 pendingSettings = { classId: currentClassId, settings: seatSettingsSnapshot() };
                 showSaveStatus('서버에 저장 중…');
                 void flushSeatSettings();
@@ -829,8 +816,8 @@
 
             async function loadSeatSettings() {
                 if (studentView) {
-                    studentSeatStore = await SiteStorage.open('seating-student').catch(() => null);
-                    applySeatSettings(studentSeatStore?.get('layout') || {});
+                    publishedSeats = await request('/api/student/class-dashboard/seating', { cache: 'no-store' });
+                    unavailableSeats = new Set(publishedSeats.unavailableSeats || []);
                     settingsReady = true;
                     return;
                 }
@@ -888,9 +875,7 @@
                     const savedUnassignedStudents = Array.isArray(saved) ? [] : saved.unassignedStudents;
                     unassignedStudents = new Set((savedUnassignedStudents || []).map(String).filter((studentNumber) => students.some((student) => student.number === studentNumber)));
                     isTeacherView = !Array.isArray(saved) && saved.teacherView === true;
-                    const order = Array.isArray(saved.studentOrder) ? saved.studentOrder.map(String) : [];
-                    const ranks = new Map(order.map((number, index) => [number, index]));
-                    students.sort((a, b) => (ranks.get(a.number) ?? order.length) - (ranks.get(b.number) ?? order.length));
+                    SeatAssignments.order(students, saved.studentOrder);
                 } catch (_) {
                     unavailableSeats = new Set();
                     genderLocks = new Map();
@@ -1140,6 +1125,10 @@
                 } catch (error) {
                     settingsReady = false;
                     showSaveStatus('서버에서 자리배치를 불러오지 못했습니다. 다시 시도해 주세요.', () => loadClassroom(classId));
+                    if (studentView) {
+                        seatSummary.hidden = false;
+                        seatSummary.textContent = '자리표를 불러오지 못했어요. 화면을 다시 열어 주세요.';
+                    }
                 } finally {
                     isClassLoading = false;
                     syncControls();
@@ -1541,6 +1530,8 @@
             liveCancelBtn.addEventListener('click', cancelLiveRoom);
             document.addEventListener('visibilitychange', () => {
                 if (!document.hidden && liveRoom) pollLiveRoom();
+                // 선생님이 자리를 바꿨을 수 있으니 학생 화면으로 돌아오면 다시 받는다.
+                if (!document.hidden && studentView && currentClassId) loadSeatSettings().then(renderDesks).catch(() => {});
             });
             syncControls();
             init();

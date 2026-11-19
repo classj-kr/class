@@ -5,6 +5,7 @@
 // 빈자리 가운데 하나를 선착순으로 고른다. 한 번 고른 자리는 그 방 안에서는
 // 바꿀 수 없다. 담임이 마감하면 고른 자리가 배치도로 확정된다.
 const express = require("express");
+const SeatAssignments = require("../assets/seat-assignments");
 
 const ROOM_CODE_LENGTH = 4;
 const TOTAL_DESKS = 36;
@@ -88,6 +89,27 @@ function normalizeSeatSettings(raw, rosterNumbers = null) {
     unassignedStudents: [...unassigned],
     studentOrder: numbers(source.studentOrder),
     teacherView: source.teacherView === true
+  };
+}
+
+// 담임이 저장한 배치를 실제 자리표로 푼다. 선생님 화면이 보여 주는 것과 같은 계산이고,
+// 학생에게는 자리와 번호만 내준다(성별 고정·학생 고정 같은 조건은 보내지 않는다).
+function publishedSeatMap(raw, roster) {
+  const settings = normalizeSeatSettings(raw, new Set(roster.map((student) => student.number)));
+  const unavailable = new Set(settings.unavailableSeats);
+  const seatMap = (value) => new Map(Object.entries(value).map(([seat, item]) => [Number(seat), item]));
+  const assigned = SeatAssignments.assign({
+    students: SeatAssignments.order([...roster], settings.studentOrder),
+    seats: Array.from({ length: TOTAL_DESKS }, (_, seat) => seat).filter((seat) => !unavailable.has(seat)),
+    manualVacantSeats: new Set(settings.manualVacantSeats),
+    studentLocks: seatMap(settings.studentLocks),
+    manualAssignments: seatMap(settings.manualAssignments),
+    genderLocks: seatMap(settings.genderLocks),
+    unassignedStudents: new Set(settings.unassignedStudents)
+  });
+  return {
+    unavailableSeats: settings.unavailableSeats,
+    seats: [...assigned].map(([seat, student]) => ({ seat, number: student.number })).sort((a, b) => a.seat - b.seat)
   };
 }
 
@@ -585,6 +607,7 @@ module.exports = {
   createSeating,
   normalizeLayout,
   normalizeSeatSettings,
+  publishedSeatMap,
   pickRejection,
   seatIndexOf,
   TOTAL_DESKS,

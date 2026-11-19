@@ -5,6 +5,7 @@
 const express = require("express");
 const { NAME_SOURCE_PENDING } = require("./roster-names");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
+const { publishedSeatMap } = require("./seating");
 
 const SCHOOL_DAYS = ["월", "화", "수", "목", "금"];
 const PREP_ITEMS = ["preps-mon", "preps-tue", "preps-wed", "preps-thu", "preps-fri"];
@@ -80,15 +81,16 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
     return rows[0]?.user_id ?? row.teacher_user_id ?? null;
   }
 
-  async function classStudents({ place, classId }) {
+  // 자리표 계산에 쓰는 성별까지 읽는다. 성별은 응답으로 내보내지 않는다.
+  async function rosterRows({ place, classId }) {
     const { rows } = await pool.query(
       `SELECT * FROM (
          SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source, s.avatar_key,
-                NULL::TEXT AS birthday_mmdd, FALSE AS birthday_visible
+                COALESCE(s.gender, '여') AS gender, NULL::TEXT AS birthday_mmdd, FALSE AS birthday_visible
          FROM school_students s
          WHERE s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
          UNION ALL
-         SELECT s.student_number::TEXT, s.roster_name, s.name_source, s.avatar_key, s.birthday_mmdd, s.birthday_visible
+         SELECT s.student_number::TEXT, s.roster_name, s.name_source, s.avatar_key, COALESCE(s.gender, '남'), s.birthday_mmdd, s.birthday_visible
          FROM classroom_students s
          WHERE s.class_id = $5 AND s.roster_active = TRUE
            AND NOT EXISTS (
@@ -100,6 +102,11 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
        ORDER BY CASE WHEN student_number ~ '^[0-9]+$' THEN student_number::INTEGER END, student_number`,
       [...place, classId]
     );
+    return rows;
+  }
+
+  async function classStudents(context) {
+    const rows = await rosterRows(context);
     const today = koreanMonthDay();
     return rows.map(row => {
       const birthdayToday = row.birthday_visible === true && row.birthday_mmdd === today;
@@ -143,6 +150,19 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
       cardOrder: Array.isArray(cardOrder) ? cardOrder.filter(id => /^widget-[a-z-]+$/.test(String(id))) : [],
       preps: cleanPreps(preps.rows)
     });
+  }));
+
+  // 담임이 정해 저장한 자리표. 학생은 보기만 하고 바꾸는 주소는 없다.
+  router.get("/seating", asyncRoute(async (req, res) => {
+    const context = await studentClass(req);
+    const teacherId = await homeroomTeacherId(context);
+    const saved = teacherId && context.classId
+      ? (await pool.query("SELECT settings FROM seating_settings WHERE creator_user_id = $1 AND class_id = $2", [teacherId, context.classId])).rows[0]
+      : null;
+    res.set("Cache-Control", "no-store");
+    if (!saved) return res.json({ arranged: false, seats: [], unavailableSeats: [] });
+    const roster = (await rosterRows(context)).map(row => ({ number: row.student_number, gender: row.gender === "여" ? "여" : "남" }));
+    res.json({ arranged: true, ...publishedSeatMap(saved.settings, roster) });
   }));
 
   // 선생님이 공개 대상으로 고른 학급·그룹에 이 학생이 들어 있는 게시판.

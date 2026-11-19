@@ -130,3 +130,26 @@ test("seatIndexOf accepts only the 36 desk indexes", () => {
   assert.equal(seatIndexOf([]), null);
   assert.equal(seatIndexOf(" 12 "), 12);
 });
+
+test("published seat map follows the same rules as the teacher screen", async () => {
+  const { publishedSeatMap } = await import("./seating.js").then((m) => m.default || m);
+  const roster = [{ number: "1", gender: "남" }, { number: "2", gender: "여" }, { number: "3", gender: "남" }, { number: "4", gender: "여" }];
+  const map = publishedSeatMap({
+    unavailableSeats: [0],
+    studentLocks: { 5: "4" },
+    manualAssignments: { 9: "3" },
+    genderLocks: { 1: "여" },
+    manualVacantSeats: [2],
+    unassignedStudents: ["1"],
+    studentOrder: ["3", "2", "1", "4"]
+  }, roster);
+  assert.deepEqual(map.unavailableSeats, [0]);
+  assert.deepEqual(map.seats, [{ seat: 1, number: "2" }, { seat: 5, number: "4" }, { seat: 9, number: "3" }]);
+});
+
+test("the student seating page only shows the chart", () => {
+  assert.match(teacherPage, /<aside class="seating-sidebar-panel" data-teacher-only>/);
+  assert.match(teacherPage, /\/api\/student\/class-dashboard\/seating/);
+  assert.match(teacherPage, /if \(studentView \|\| !settingsReady \|\| !currentClassId\) return;/);
+  assert.match(teacherPage, /document\.createElement\(studentView \? 'div' : 'button'\)/);
+});
