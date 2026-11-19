@@ -32,6 +32,9 @@ async function withApi(run) {
     CREATE TABLE seating_settings (creator_user_id BIGINT, class_id BIGINT, settings JSONB);
     CREATE TABLE classroom_teacher_dashboard_settings (user_id BIGINT PRIMARY KEY, timetable JSONB, card_order JSONB);
     CREATE TABLE user_storage (user_id BIGINT, app TEXT, item TEXT, value JSONB);
+    CREATE TABLE school_master_timetable (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, day_of_week INTEGER, period INTEGER, subject_name TEXT, teacher_user_id BIGINT, room_name TEXT);
+    CREATE TABLE school_bell_schedule (school_id BIGINT, academic_year INTEGER, grade INTEGER, period_times JSONB);
+    CREATE TABLE classroom_class_timetable_overrides (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER, overrides JSONB);
     CREATE TABLE classroom_absence_notices (school_id BIGINT, grade INTEGER, class_number INTEGER, student_number TEXT, notice_type TEXT, expected_date DATE, reason TEXT);
     CREATE TABLE classroom_absence_notes (school_id BIGINT, grade INTEGER, class_number INTEGER, student_number TEXT, reason_type TEXT, reason_detail TEXT, status TEXT, start_date DATE, end_date DATE);
     CREATE TABLE classroom_experiential_apps (school_id BIGINT, grade INTEGER, class_number INTEGER, student_number TEXT, status TEXT, start_date DATE, end_date DATE);

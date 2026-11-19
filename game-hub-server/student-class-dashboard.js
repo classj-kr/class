@@ -6,31 +6,14 @@ const express = require("express");
 const { NAME_SOURCE_PENDING } = require("./roster-names");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 const { publishedSeatMap, homeroomTeacherId: findHomeroomTeacher } = require("./seating");
+const { loadClassTimetable } = require("./class-timetable");
 
-const SCHOOL_DAYS = ["월", "화", "수", "목", "금"];
 const PREP_ITEMS = ["preps-mon", "preps-tue", "preps-wed", "preps-thu", "preps-fri"];
 const STACKING_BOARD_PATH = "/learning/literacy-numeracy/math-tools/stacking-cubes/coop/";
 
 function koreanMonthDay(now = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", month: "2-digit", day: "2-digit" }).formatToParts(now);
   return parts.find(part => part.type === "month").value + parts.find(part => part.type === "day").value;
-}
-
-function cleanTimetable(value) {
-  const timetable = {};
-  for (const day of SCHOOL_DAYS) {
-    if (!Array.isArray(value?.[day])) continue;
-    timetable[day] = value[day]
-      .map(item => ({
-        p: Number(item?.p) || 0,
-        sub: String(item?.sub || ""),
-        place: String(item?.place || ""),
-        s: String(item?.s || ""),
-        e: String(item?.e || "")
-      }))
-      .filter(item => item.p > 0);
-  }
-  return timetable;
 }
 
 function cleanPreps(rows) {
@@ -115,9 +98,12 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
     const teacherId = await homeroomTeacherId(context);
     const [students, settings, preps] = await Promise.all([
       classStudents(context),
-      teacherId ? pool.query("SELECT timetable, card_order FROM classroom_teacher_dashboard_settings WHERE user_id = $1", [teacherId]) : { rows: [] },
+      teacherId ? pool.query("SELECT card_order FROM classroom_teacher_dashboard_settings WHERE user_id = $1", [teacherId]) : { rows: [] },
       teacherId ? pool.query("SELECT item, value FROM user_storage WHERE user_id = $1 AND app = 'dashboard' AND item = ANY($2::TEXT[])", [teacherId, PREP_ITEMS]) : { rows: [] }
     ]);
+    // 담임 대시보드와 똑같은 반 시간표: 학교 기초시간표 + 담임이 바꾼 칸, 없으면 담임 시간표.
+    const [schoolId, academicYear, grade, classNumber] = context.place;
+    const shown = await loadClassTimetable(pool, { schoolId, year: Number(academicYear), grade: Number(grade), classNumber: Number(classNumber), legacyUserId: teacherId });
     const cardOrder = settings.rows[0]?.card_order;
     res.set("Cache-Control", "no-store");
     res.json({
@@ -133,7 +119,7 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
         isReadOnly: true,
         students
       },
-      timetable: cleanTimetable(settings.rows[0]?.timetable),
+      timetable: shown.timetable,
       cardOrder: Array.isArray(cardOrder) ? cardOrder.filter(id => /^widget-[a-z-]+$/.test(String(id))) : [],
       preps: cleanPreps(preps.rows)
     });

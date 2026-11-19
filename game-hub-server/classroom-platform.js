@@ -16,6 +16,8 @@ const { createSchoolChat } = require("./school-chat");
 const { createAssessmentPlans } = require("./assessment-plans");
 const { createSchoolTextbooks } = require("./school-textbooks");
 const timetableRules = require("./school-timetable-rules");
+const classTimetable = require("./class-timetable");
+const { homeroomTeacherId: findHomeroomTeacher } = require("./seating");
 const { parseTeachingScope, formatTeachingScope, normalizePairs } = require("./teaching-scope");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
 const { createLearningBoards } = require("./learning-boards");
@@ -1437,6 +1439,17 @@ function createClassroomPlatform(options = {}) {
         slogan_font_size INTEGER DEFAULT 42,
         card_order JSONB DEFAULT '[]'::jsonb,
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )`,
+      // 학교 기초시간표와 다르게 담임이 바꾼 칸. 반·학년도마다 요일 → 교시 → 바뀐 내용.
+      `CREATE TABLE IF NOT EXISTS classroom_class_timetable_overrides (
+        school_id BIGINT NOT NULL REFERENCES classroom_schools(id) ON DELETE CASCADE,
+        academic_year INTEGER NOT NULL,
+        grade INTEGER NOT NULL,
+        class_number INTEGER NOT NULL,
+        overrides JSONB NOT NULL DEFAULT '{}'::jsonb,
+        updated_by BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (school_id, academic_year, grade, class_number)
       )`
     ];
 
@@ -4100,8 +4113,10 @@ function createClassroomPlatform(options = {}) {
     }
 
     if (requestedClassId && !classroom) throw new HttpError(404, "CLASS_NOT_AVAILABLE", "현재 담당하거나 가져온 학급이 아닙니다. 학급 목록을 다시 확인해 주세요.");
-    if (!classroom) return res.json({ classroom: null, isReadOnly: true });
+    if (!classroom) return res.json({ classroom: null, isReadOnly: true, ...await personalTimetable(teacher, teacherInfo) });
     const isReadOnly = String(classroom.id) !== String(ownClassId);
+    const timetablePlace = await classTimetablePlace(classroom);
+    const shownTimetable = await classTimetable.loadClassTimetable(pool, timetablePlace);
 
     const studentsResult = await pool.query(
       `SELECT * FROM (
@@ -4168,8 +4183,66 @@ function createClassroomPlatform(options = {}) {
           guardian1Linked: student.guardian1_linked,
           guardian2Linked: student.guardian2_linked
         }))
-      }
+      },
+      timetable: shownTimetable.timetable,
+      timetableSource: shownTimetable.source,
+      timetableEditable: !isReadOnly
     });
+  }));
+
+  // 반 시간표가 학교 기초시간표가 없을 때 쓰는 담임 시간표의 주인.
+  async function classTimetablePlace(classroom) {
+    const place = [classroom.school_id, Number(classroom.academic_year), Number(classroom.grade), Number(classroom.class_number)];
+    return {
+      schoolId: place[0], year: place[1], grade: place[2], classNumber: place[3],
+      legacyUserId: await findHomeroomTeacher(pool, place, classroom.teacher_user_id)
+    };
+  }
+
+  // 맡은 반이 없으면 교사별 시간표에 배정된 수업을, 그것도 없으면 자기 시간표를 보여 준다.
+  async function personalTimetable(teacher, registration) {
+    if (registration?.school_id) {
+      const lessons = await classTimetable.assignedLessons(pool, {
+        schoolId: registration.school_id,
+        year: Number(registration.academic_year) || timetableRules.currentAcademicYear(),
+        userId: teacher.id
+      });
+      if (Object.keys(lessons).length) return { timetable: lessons, timetableSource: "assigned", timetableEditable: false };
+    }
+    return { timetable: await classTimetable.teacherTimetable(pool, teacher.id), timetableSource: "personal", timetableEditable: true };
+  }
+
+  // 대시보드의 시간표 고치기. 담임 학급만 바꿀 수 있고, 학교 기초시간표는 건드리지 않는다.
+  router.put("/teacher/class-timetable", asyncRoute(async (req, res) => {
+    const teacher = await requireTeacher(req);
+    const teacherInfo = await teacherRegistration(teacher);
+    const day = String(req.body?.day || "");
+    const reset = Boolean(req.body?.reset);
+    const periods = reset ? [] : req.body?.periods;
+    if (!classTimetable.DAYS.includes(day) || !Array.isArray(periods) || periods.length > 8) {
+      throw new HttpError(400, "INVALID_TIMETABLE", "요일과 1~8교시 시간표를 확인하세요.");
+    }
+    const classId = req.body?.classId;
+    if (classId) {
+      const ownClassId = await userClassId(teacher);
+      if (!ownClassId || String(ownClassId) !== String(classId)) {
+        throw new HttpError(403, "CLASS_TIMETABLE_READ_ONLY", "담임 학급의 시간표만 바꿀 수 있습니다.");
+      }
+      const classroom = (await pool.query(
+        "SELECT school_id, academic_year, grade, class_number, teacher_user_id FROM classroom_classes WHERE id = $1", [ownClassId]
+      )).rows[0];
+      if (!classroom) throw new HttpError(404, "CLASS_NOT_AVAILABLE", "담임 학급을 찾지 못했습니다.");
+      const place = await classTimetablePlace(classroom);
+      await classTimetable.saveClassDay(pool, place, { day, periods, reset, userId: teacher.id });
+      const saved = await classTimetable.loadClassTimetable(pool, place);
+      return res.json({ timetable: saved.timetable, timetableSource: saved.source, timetableEditable: true });
+    }
+    const current = await personalTimetable(teacher, teacherInfo);
+    if (!current.timetableEditable) {
+      throw new HttpError(409, "ASSIGNED_TIMETABLE", "교사별 시간표에 배정된 수업은 학교 관리자 화면에서 바꿉니다.");
+    }
+    await classTimetable.saveTeacherDay(pool, teacher.id, day, periods);
+    res.json(await personalTimetable(teacher, teacherInfo));
   }));
 
   router.put("/teacher/class", asyncRoute(async (req, res) => {
@@ -7658,24 +7731,26 @@ function createClassroomPlatform(options = {}) {
 
   router.put("/teacher/dashboard-settings", asyncRoute(async (req, res) => {
     const user = await requireUser(req);
-    const timetable = req.body?.timetable || {};
-    const sloganText = String(req.body?.sloganText || "");
-    const sloganAlign = String(req.body?.sloganAlign || "center");
-    const sloganFontSize = Number(req.body?.sloganFontSize || 42);
-    const cardOrder = Array.isArray(req.body?.cardOrder) ? req.body.cardOrder : [];
+    // 보낸 값만 바꾼다. 카드 순서만 저장하면서 시간표·구호를 기본값으로 덮던 것을 막는다.
+    const has = key => req.body && Object.prototype.hasOwnProperty.call(req.body, key);
+    const timetable = has("timetable") ? JSON.stringify(classTimetable.cleanDays(req.body.timetable)) : null;
+    const sloganText = has("sloganText") ? String(req.body.sloganText || "") : null;
+    const sloganAlign = has("sloganAlign") ? String(req.body.sloganAlign || "center") : null;
+    const sloganFontSize = has("sloganFontSize") ? Number(req.body.sloganFontSize || 42) : null;
+    const cardOrder = has("cardOrder") ? JSON.stringify(Array.isArray(req.body.cardOrder) ? req.body.cardOrder : []) : null;
 
     await pool.query(
       `INSERT INTO classroom_teacher_dashboard_settings
          (user_id, timetable, slogan_text, slogan_align, slogan_font_size, card_order, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, NOW())
+       VALUES ($1, COALESCE($2::jsonb, '{}'::jsonb), COALESCE($3, ''), COALESCE($4, 'center'), COALESCE($5::int, 42), COALESCE($6::jsonb, '[]'::jsonb), NOW())
        ON CONFLICT (user_id) DO UPDATE SET
-         timetable = EXCLUDED.timetable,
-         slogan_text = EXCLUDED.slogan_text,
-         slogan_align = EXCLUDED.slogan_align,
-         slogan_font_size = EXCLUDED.slogan_font_size,
-         card_order = EXCLUDED.card_order,
+         timetable = COALESCE($2::jsonb, classroom_teacher_dashboard_settings.timetable),
+         slogan_text = COALESCE($3, classroom_teacher_dashboard_settings.slogan_text),
+         slogan_align = COALESCE($4, classroom_teacher_dashboard_settings.slogan_align),
+         slogan_font_size = COALESCE($5::int, classroom_teacher_dashboard_settings.slogan_font_size),
+         card_order = COALESCE($6::jsonb, classroom_teacher_dashboard_settings.card_order),
          updated_at = NOW()`,
-      [user.id, JSON.stringify(timetable), sloganText, sloganAlign, sloganFontSize, JSON.stringify(cardOrder)]
+      [user.id, timetable, sloganText, sloganAlign, sloganFontSize, cardOrder]
     );
     res.json({ ok: true });
   }));

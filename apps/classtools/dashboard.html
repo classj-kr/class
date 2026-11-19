@@ -1384,7 +1384,7 @@
             <div class="timetable-list" id="timetableList">
                 <!-- 1 ~ 8 periods loaded by JS -->
             </div>
-            <button class="widget-edit" data-teacher-only id="editTimetableBtn" type="button">시간표 수정</button>
+            <button class="widget-edit" data-teacher-only id="editTimetableBtn" type="button" hidden>시간표 수정</button>
         </section>
 
         <!-- Widget 2: Student Checklist (Linked with Roster) -->
@@ -1467,6 +1467,7 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px;" id="periodEditForm"></div>
             <div style="margin-top: 16px; text-align: right;">
+                <button class="btn" id="resetTimetableDayBtn" type="button" style="width: 100%; padding: 10px; margin-bottom: 8px;" hidden>이 요일을 학교 시간표대로 되돌리기</button>
                 <button class="btn btn-primary" id="saveTimetableBtn" style="width: 100%; padding: 12px; font-weight: 800;">시간표 저장하기</button>
             </div>
         </div>
@@ -1592,15 +1593,11 @@
         let rosterStudents = [];
         let rosterLoadMessage = "";
 
-        // Timetable Default Data (월~금, 1~8교시)
-        const defaultTimetable = {
-            "월": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"수학", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"사회", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"과학", place:"과학실", s:"11:30", e:"12:10"}, {p:5, sub:"음악", place:"음악실", s:"13:10", e:"13:50"}, {p:6, sub:"체육", place:"운동장", s:"14:00", e:"14:40"} ],
-            "화": [ {p:1, sub:"수학", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"국어", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"영어", place:"영어실", s:"10:40", e:"11:20"}, {p:4, sub:"미술", place:"미술실", s:"11:30", e:"12:10"}, {p:5, sub:"미술", place:"미술실", s:"13:10", e:"13:50"}, {p:6, sub:"창체", place:"교실", s:"14:00", e:"14:40"} ],
-            "수": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"사회", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"수학", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"체육", place:"강당", s:"11:30", e:"12:10"}, {p:5, sub:"동아리", place:"교실", s:"13:10", e:"13:50"} ],
-            "목": [ {p:1, sub:"과학", place:"과학실", s:"09:00", e:"09:40"}, {p:2, sub:"과학", place:"과학실", s:"09:50", e:"10:30"}, {p:3, sub:"체육", place:"강당", s:"10:40", e:"11:20"}, {p:4, sub:"영어", place:"영어실", s:"11:30", e:"12:10"}, {p:5, sub:"수학", place:"교실", s:"13:10", e:"13:50"}, {p:6, sub:"실과", place:"실과실", s:"14:00", e:"14:40"} ],
-            "금": [ {p:1, sub:"국어", place:"교실", s:"09:00", e:"09:40"}, {p:2, sub:"수학", place:"교실", s:"09:50", e:"10:30"}, {p:3, sub:"도덕", place:"교실", s:"10:40", e:"11:20"}, {p:4, sub:"음악", place:"음악실", s:"11:30", e:"12:10"}, {p:5, sub:"실과", place:"실과실", s:"13:10", e:"13:50"}, {p:6, sub:"자율", place:"교실", s:"14:00", e:"14:40"} ]
-        };
-        let customTimetable = studentView ? {} : JSON.parse(JSON.stringify(defaultTimetable));
+        // 반 시간표는 학교 기초시간표 + 담임이 바꾼 칸이다(서버가 합쳐서 준다). 없으면 비워 둔다.
+        let customTimetable = {};
+        let timetableLoaded = false;
+        let timetableEditable = false;
+        let timetableSource = "none";
         let selectedDayTab = "목";
 
         // Elements
@@ -1813,7 +1810,7 @@
             if (!listEl) return;
             listEl.replaceChildren();
 
-            const periods = customTimetable[dayName] || (studentView ? [] : defaultTimetable["월"]);
+            const periods = customTimetable[dayName] || [];
             const currentMins = now.getHours() * 60 + now.getMinutes();
 
             // 요일별 저장된 그날만의 준비물 데이터
@@ -1857,6 +1854,7 @@
                                 ${getSubjectIcon(item.sub)}
                             </div>
                             ${placeTag}
+                            ${item.changed ? '<span class="period-place highlight" title="학교 기초시간표와 다르게 바꾼 시간">학급 변경</span>' : ''}
                         </div>
                     </div>
                     <div class="period-col-right">
@@ -1868,7 +1866,7 @@
                 listEl.append(div);
             });
 
-            if (studentView && studentDashboardLoaded && periods.length === 0) {
+            if ((studentView ? studentDashboardLoaded : timetableLoaded) && periods.length === 0) {
                 const empty = document.createElement("div");
                 empty.className = "timetable-empty";
                 empty.textContent = "시간표가 아직 없습니다.";
@@ -1906,6 +1904,39 @@
         const dayTabs = document.getElementById("dayTabs");
         const periodEditForm = document.getElementById("periodEditForm");
         const saveTimetableBtn = document.getElementById("saveTimetableBtn");
+        const resetTimetableDayBtn = document.getElementById("resetTimetableDayBtn");
+
+        function applyTimetableData(data) {
+            customTimetable = data?.timetable || {};
+            timetableSource = data?.timetableSource || "none";
+            timetableEditable = !studentView && data?.timetableEditable === true;
+            timetableLoaded = true;
+            editTimetableBtn.hidden = !timetableEditable;
+            if (!timetableEditable) timetableModal.hidden = true;
+            renderTimetable(selectedDayTab);
+        }
+
+        async function saveTimetableDay(body) {
+            saveTimetableBtn.disabled = true;
+            resetTimetableDayBtn.disabled = true;
+            try {
+                const res = await fetch("/api/teacher/class-timetable", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: "include",
+                    body: JSON.stringify({ classId: activeRosterClass?.id || null, day: modalActiveDay, ...body })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(data.message || "시간표를 저장하지 못했습니다.");
+                applyTimetableData(data);
+                timetableModal.hidden = true;
+            } catch (err) {
+                alert(err.message || "시간표를 저장하지 못했습니다.");
+            } finally {
+                saveTimetableBtn.disabled = false;
+                resetTimetableDayBtn.disabled = false;
+            }
+        }
 
         let modalActiveDay = "월";
 
@@ -1937,6 +1968,8 @@
         }
 
         editTimetableBtn.addEventListener("click", () => {
+            if (!timetableEditable) return;
+            resetTimetableDayBtn.hidden = timetableSource !== "school";
             timetableModal.hidden = false;
             renderTimetableEditForm(selectedDayTab);
         });
@@ -1969,10 +2002,11 @@
                 }
             });
 
-            customTimetable[modalActiveDay] = newPeriods;
-            timetableModal.hidden = true;
-            renderTimetable(selectedDayTab);
-            syncDashboardSettingsToDB();
+            saveTimetableDay({ periods: newPeriods });
+        });
+
+        resetTimetableDayBtn.addEventListener("click", () => {
+            if (confirm(modalActiveDay + "요일에 바꾼 시간을 지우고 학교 시간표대로 되돌릴까요?")) saveTimetableDay({ reset: true });
         });
 
         // ── DB Synchronization Helpers (Server-Side 100% Single Source of Truth) ──
@@ -1988,10 +2022,7 @@
                 await fetch("/api/teacher/dashboard-settings", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        timetable: customTimetable,
-                        cardOrder: cardOrder
-                    }),
+                    body: JSON.stringify({ cardOrder }),
                     credentials: "include"
                 });
             } catch (e) {}
@@ -2040,9 +2071,7 @@
                 const data = await res.json().catch(() => ({}));
                 if (data.settings) {
                     const s = data.settings;
-                    if (s.timetable && Object.keys(s.timetable).length > 0) {
-                        customTimetable = s.timetable;
-                    }
+                    // 시간표는 학급 정보와 함께 온다(fetchRosterAndRenderChecklist).
                     if (Array.isArray(s.cardOrder) && s.cardOrder.length > 0) {
                         const grid = document.getElementById("dashboardGrid");
                         if (grid) {
@@ -2052,7 +2081,6 @@
                             });
                         }
                     }
-                    renderTimetable(selectedDayTab);
                 }
             } catch (e) {}
         }
@@ -2070,10 +2098,7 @@
                     await fetch("/api/teacher/dashboard-settings", {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            timetable: {},
-                            cardOrder: []
-                        }),
+                        body: JSON.stringify({ cardOrder: [] }),
                         credentials: "include"
                     });
                 } catch (e) {}
@@ -2186,6 +2211,7 @@
                     throw new Error(data?.message || "학급 정보를 불러오지 못했습니다.");
                 }
                 if (studentView) applyStudentDashboard(data);
+                else applyTimetableData(data);
                 if (data?.classroom) {
                     fetchRealtimeWeatherAndAirQuality(data.classroom.schoolName, data.classroom.locationName);
                     rosterStudents = data.classroom.students || [];
@@ -2208,6 +2234,7 @@
             } catch (err) {
                 if (version !== rosterLoadVersion) return;
                 console.error("/api/teacher/class request threw:", err);
+                if (!studentView) applyTimetableData(null);
                 const select = document.getElementById("classSwitcherSelect");
                 if (select) { select.replaceChildren(); select.hidden = true; }
                 rosterStudents = [];
