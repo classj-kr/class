@@ -6,6 +6,7 @@
 // 바꿀 수 없다. 담임이 마감하면 고른 자리가 배치도로 확정된다.
 const express = require("express");
 const SeatAssignments = require("../assets/seat-assignments");
+const { NAME_SOURCE_PENDING } = require("./roster-names");
 
 const ROOM_CODE_LENGTH = 4;
 const TOTAL_DESKS = 36;
@@ -92,6 +93,22 @@ function normalizeSeatSettings(raw, rosterNumbers = null) {
   };
 }
 
+// 지금 그 반 담임으로 등록된 사람. 등록이 없으면 학급을 맡아 둔 계정을 쓴다.
+async function homeroomTeacherId(db, [schoolId, academicYear, grade, classNumber], fallback = null) {
+  const { rows } = await db.query(
+    `SELECT COALESCE(t.user_id, u.id) AS user_id
+     FROM classroom_teachers t
+     LEFT JOIN classroom_users u ON t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email)
+     WHERE t.school_id = $1 AND COALESCE(t.academic_year, $2) = $2
+       AND t.grade = $3 AND t.class_number = $4 AND t.active = TRUE
+       AND COALESCE(t.user_id, u.id) IS NOT NULL
+     ORDER BY t.user_id IS NULL, t.id
+     LIMIT 1`,
+    [schoolId, academicYear, grade, classNumber]
+  );
+  return rows[0]?.user_id ?? fallback ?? null;
+}
+
 // 담임이 저장한 배치를 실제 자리표로 푼다. 선생님 화면이 보여 주는 것과 같은 계산이고,
 // 학생에게는 자리와 번호만 내준다(성별 고정·학생 고정 같은 조건은 보내지 않는다).
 function publishedSeatMap(raw, roster) {
@@ -157,6 +174,14 @@ function createSeating({
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         PRIMARY KEY (creator_user_id, class_id)
       )`,
+      // 담임이 자리 바꾸기를 맡긴 학생. 그 반 안에서 담임의 자리 배치와 자리 고르기 방을 대신 다룬다.
+      `CREATE TABLE IF NOT EXISTS seating_managers (
+        class_id BIGINT NOT NULL REFERENCES classroom_classes(id) ON DELETE CASCADE,
+        student_number TEXT NOT NULL,
+        granted_by BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL,
+        granted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (class_id, student_number)
+      )`,
       `CREATE TABLE IF NOT EXISTS seating_rooms (
         id BIGSERIAL PRIMARY KEY,
         room_code CHAR(4) NOT NULL UNIQUE,
@@ -194,6 +219,39 @@ function createSeating({
     return Number.isSafeInteger(id) && id > 0 ? id : null;
   };
   const roomLayout = (room) => normalizeLayout(room?.layout);
+
+  // 이 사람이 담임에게 자리 바꾸기를 맡은 학생이면 그 반과 담임을 돌려준다. 요청마다 다시 보므로 해제하면 바로 막힌다.
+  async function managerAccess(user) {
+    const scope = await studentScope(user);
+    if (!scope) return null;
+    const place = [scope.school_id, scope.academic_year, scope.grade, scope.class_number];
+    const classroom = (await pool.query(
+      `SELECT id, school_id, academic_year, grade, class_number, teacher_user_id FROM classroom_classes
+       WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4`,
+      place
+    )).rows[0];
+    if (!classroom) return null;
+    const granted = await pool.query(
+      "SELECT 1 FROM seating_managers WHERE class_id = $1 AND student_number = $2",
+      [classroom.id, String(scope.student_number)]
+    );
+    if (!granted.rowCount) return null;
+    const ownerId = await homeroomTeacherId(pool, place, classroom.teacher_user_id);
+    return ownerId ? { classroom, classId: String(classroom.id), ownerId } : null;
+  }
+
+  // 선생님이면 그대로, 선생님이 아니면 자리를 맡은 학생인지 본다. 둘 다 아니면 원래의 거절을 돌려준다.
+  async function teacherOrManager(req) {
+    try {
+      return { user: await requireTeacher(req), manager: null };
+    } catch (error) {
+      if (error?.status !== 403) throw error;
+      const user = await sessionUser(req);
+      const manager = user ? await managerAccess(user) : null;
+      if (!manager) throw error;
+      return { user, manager };
+    }
+  }
 
   async function seatingActor(req) {
     const user = await sessionUser(req);
@@ -270,12 +328,12 @@ function createSeating({
   async function classRoster(room) {
     const result = await pool.query(
       `SELECT * FROM (
-         SELECT s.student_number::TEXT AS student_number, s.roster_name, COALESCE(s.gender, '여') AS gender,
+         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source, COALESCE(s.gender, '여') AS gender,
                 s.avatar_key, 'school:' || s.id::TEXT AS student_key
          FROM school_students s
          WHERE s.school_id = $1 AND s.academic_year = $2 AND s.grade = $3 AND s.class_number = $4
          UNION ALL
-         SELECT s.student_number::TEXT AS student_number, s.roster_name, COALESCE(s.gender, '남') AS gender,
+         SELECT s.student_number::TEXT AS student_number, s.roster_name, s.name_source, COALESCE(s.gender, '남') AS gender,
                 s.avatar_key, 'classroom:' || s.id::TEXT AS student_key
          FROM classroom_students s
          JOIN classroom_classes c ON c.id = s.class_id
@@ -293,6 +351,8 @@ function createSeating({
       key: row.student_key,
       number: String(row.student_number),
       name: row.roster_name,
+      // 이름을 기다리는 줄의 임시 이름은 계정 주소에서 나온 것이라 학생에게 보이지 않는다.
+      nameForStudents: row.name_source === NAME_SOURCE_PENDING ? "" : row.roster_name,
       gender: row.gender === "여" ? "여" : "남",
       avatarUrl: typeof avatarUrl === "function" ? avatarUrl(row.avatar_key) : ""
     }));
@@ -342,7 +402,7 @@ function createSeating({
     }));
   }
 
-  async function serializeRoom(room, { isOwner = false, student = null } = {}) {
+  async function serializeRoom(room, { isOwner = false, student = null, forManager = false } = {}) {
     const layout = roomLayout(room);
     const roster = await classRoster(room);
     const rosterByNumber = new Map(roster.map((entry) => [entry.number, entry]));
@@ -359,7 +419,7 @@ function createSeating({
     const studentLocks = Object.entries(layout.studentLocks).map(([seat, number]) => ({
       seatIndex: Number(seat),
       number,
-      name: rosterByNumber.get(number)?.name || "",
+      name: (isOwner && !forManager ? rosterByNumber.get(number)?.name : rosterByNumber.get(number)?.nameForStudents) || "",
       gender: rosterByNumber.get(number)?.gender || "",
       avatarUrl: rosterByNumber.get(number)?.avatarUrl || ""
     }));
@@ -367,7 +427,7 @@ function createSeating({
     const pickedNumbers = new Set(picks.map((pick) => pick.number));
     const pending = roster
       .filter((entry) => !lockedNumbers.has(entry.number) && !pickedNumbers.has(entry.number))
-      .map((entry) => ({ number: entry.number, name: entry.name }));
+      .map((entry) => ({ number: entry.number, name: forManager ? entry.nameForStudents : entry.name }));
     const myPick = student ? picks.find((pick) => pick.mine) || null : null;
     const myLock = student ? studentLocks.find((lock) => lock.number === student.number) || null : null;
     return {
@@ -398,12 +458,18 @@ function createSeating({
     };
   }
 
+  // 자리를 맡은 학생은 자기 반에서 담임의 배치를 다룬다(ownerId가 담임). 선생님은 자기 배치를 다룬다.
   async function settingsScope(req) {
     requireDatabase();
-    const user = await requireTeacher(req);
-    const registration = await teacherRegistration(user);
+    const { user, manager } = await teacherOrManager(req);
     const classId = parseId(req.params.classId);
     if (!classId) throw new HttpError(400, "CLASS_REQUIRED", "자리배치를 저장할 학급을 선택해 주세요.");
+    if (manager) {
+      if (manager.classId !== String(classId)) throw new HttpError(403, "SEATING_MANAGER_CLASS", "우리 반 자리만 바꿀 수 있어요.");
+      const roster = await classRoster(manager.classroom);
+      return { ownerId: manager.ownerId, classId, roster, rosterNumbers: new Set(roster.map((student) => student.number)) };
+    }
+    const registration = await teacherRegistration(user);
     const result = await pool.query(
       `SELECT id, school_id, academic_year, grade, class_number FROM classroom_classes WHERE id = $1 AND school_id = $2`,
       [classId, registration?.school_id]
@@ -411,14 +477,69 @@ function createSeating({
     const classroom = result.rows[0];
     if (!classroom) throw new HttpError(404, "CLASS_NOT_FOUND", "학급 정보를 찾을 수 없습니다.");
     const roster = await classRoster(classroom);
-    return { user, classId, rosterNumbers: new Set(roster.map((student) => student.number)) };
+    return { ownerId: user.id, classroom, classId, roster, rosterNumbers: new Set(roster.map((student) => student.number)) };
   }
 
+  // 담임만 맡길 학생을 정한다.
+  async function homeroomScope(req) {
+    const scope = await settingsScope(req);
+    const user = await requireTeacher(req);
+    const fallback = (await pool.query("SELECT teacher_user_id FROM classroom_classes WHERE id = $1", [scope.classId])).rows[0]?.teacher_user_id;
+    const { school_id: schoolId, academic_year: year, grade, class_number: classNumber } = scope.classroom;
+    const homeroomId = await homeroomTeacherId(pool, [schoolId, year, grade, classNumber], fallback);
+    return { ...scope, user, isHomeroom: String(homeroomId) === String(user.id) };
+  }
+  const managerNumbers = async (classId, roster) => {
+    const present = new Set(roster.map((student) => student.number));
+    const { rows } = await pool.query("SELECT student_number FROM seating_managers WHERE class_id = $1", [classId]);
+    return rows.map((row) => String(row.student_number)).filter((number) => present.has(number));
+  };
+
+  router.get("/access", asyncRoute(async (req, res) => {
+    requireDatabase();
+    const user = await sessionUser(req);
+    const manager = user ? await managerAccess(user) : null;
+    res.set("Cache-Control", "no-store").json({ canManage: Boolean(manager), classId: manager?.classId || null });
+  }));
+
+  router.get("/classes/:classId/managers", asyncRoute(async (req, res) => {
+    const { classId, roster, isHomeroom } = await homeroomScope(req);
+    res.set("Cache-Control", "no-store").json({ canGrant: isHomeroom, managers: isHomeroom ? await managerNumbers(classId, roster) : [] });
+  }));
+
+  router.put("/classes/:classId/managers", asyncRoute(async (req, res) => {
+    const { user, classId, roster, rosterNumbers, isHomeroom } = await homeroomScope(req);
+    if (!isHomeroom) throw new HttpError(403, "HOMEROOM_REQUIRED", "담임 선생님만 정할 수 있습니다.");
+    const numbers = [...new Set((Array.isArray(req.body?.numbers) ? req.body.numbers : []).map(cleanStudentNumber))]
+      .filter((number) => rosterNumbers.has(number));
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query("DELETE FROM seating_managers WHERE class_id = $1", [classId]);
+      for (const number of numbers) {
+        await client.query("INSERT INTO seating_managers (class_id, student_number, granted_by) VALUES ($1, $2, $3)", [classId, number, user.id]);
+      }
+      await client.query("COMMIT");
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+    res.json({ canGrant: true, managers: await managerNumbers(classId, roster) });
+  }));
+
+  // 자리를 맡은 학생 화면에는 남녀 고정에 필요한 성별만 준다.
+  router.get("/classes/:classId/genders", asyncRoute(async (req, res) => {
+    const { roster } = await settingsScope(req);
+    res.set("Cache-Control", "no-store").json({ students: roster.map(({ number, gender }) => ({ number, gender })) });
+  }));
+
   router.get("/classes/:classId/settings", asyncRoute(async (req, res) => {
-    const { user, classId, rosterNumbers } = await settingsScope(req);
+    const { ownerId, classId, rosterNumbers } = await settingsScope(req);
     const result = await pool.query(
       "SELECT settings, updated_at FROM seating_settings WHERE creator_user_id = $1 AND class_id = $2",
-      [user.id, classId]
+      [ownerId, classId]
     );
     const saved = result.rows[0];
     res.set("Cache-Control", "no-store").json({
@@ -428,7 +549,7 @@ function createSeating({
   }));
 
   router.put("/classes/:classId/settings", asyncRoute(async (req, res) => {
-    const { user, classId, rosterNumbers } = await settingsScope(req);
+    const { ownerId, classId, rosterNumbers } = await settingsScope(req);
     const raw = req.body?.settings;
     if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
       throw new HttpError(400, "INVALID_SEAT_SETTINGS", "저장할 자리배치가 올바르지 않습니다.");
@@ -443,12 +564,12 @@ function createSeating({
        VALUES ($1, $2, $3::jsonb)
        ON CONFLICT (creator_user_id, class_id) ${conflict}
        RETURNING settings, updated_at`,
-      [user.id, classId, JSON.stringify(settings)]
+      [ownerId, classId, JSON.stringify(settings)]
     );
     if (!result.rowCount) {
       result = await pool.query(
         "SELECT settings, updated_at FROM seating_settings WHERE creator_user_id = $1 AND class_id = $2",
-        [user.id, classId]
+        [ownerId, classId]
       );
     }
     res.set("Cache-Control", "no-store").json({
@@ -459,30 +580,36 @@ function createSeating({
 
   router.get("/rooms/active", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireTeacher(req);
-    const classId = parseId(req.query?.classId);
+    const { user, manager } = await teacherOrManager(req);
+    const classId = manager ? manager.classId : parseId(req.query?.classId);
     const result = await pool.query(
       `SELECT * FROM seating_rooms
        WHERE creator_user_id = $1 AND status = 'open' AND ($2::BIGINT IS NULL OR class_id = $2)
        ORDER BY created_at DESC LIMIT 1`,
-      [user.id, classId]
+      [manager ? manager.ownerId : user.id, classId]
     );
     const room = result.rows[0];
-    res.json({ room: room ? await serializeRoom(room, { isOwner: true }) : null });
+    res.json({ room: room ? await serializeRoom(room, { isOwner: true, forManager: Boolean(manager) }) : null });
   }));
 
   router.post("/rooms", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireTeacher(req);
-    const registration = await teacherRegistration(user);
+    const { user, manager } = await teacherOrManager(req);
     const classId = parseId(req.body?.classId);
     if (!classId) throw new HttpError(400, "CLASS_REQUIRED", "자리를 고를 학급을 먼저 불러와 주세요.");
-    const classResult = await pool.query(
-      `SELECT id, school_id, academic_year, grade, class_number FROM classroom_classes WHERE id = $1 AND school_id = $2`,
-      [classId, registration.school_id]
-    );
-    const classroom = classResult.rows[0];
+    if (manager && manager.classId !== String(classId)) throw new HttpError(403, "SEATING_MANAGER_CLASS", "우리 반 자리만 바꿀 수 있어요.");
+    let classroom = manager?.classroom;
+    if (!manager) {
+      const registration = await teacherRegistration(user);
+      const classResult = await pool.query(
+        `SELECT id, school_id, academic_year, grade, class_number FROM classroom_classes WHERE id = $1 AND school_id = $2`,
+        [classId, registration.school_id]
+      );
+      classroom = classResult.rows[0];
+    }
     if (!classroom) throw new HttpError(404, "CLASS_NOT_FOUND", "학급 정보를 찾을 수 없습니다.");
+    // 맡은 학생이 연 방도 담임의 방이다. 담임 화면에서 그대로 이어서 마감할 수 있다.
+    const ownerId = manager ? manager.ownerId : user.id;
     const roster = await classRoster(classroom);
     if (!roster.length) throw new HttpError(409, "ROSTER_EMPTY", "학생 명단이 비어 있어 방을 열 수 없습니다.");
     const layout = normalizeLayout(req.body?.layout, new Set(roster.map((entry) => entry.number)));
@@ -495,7 +622,7 @@ function createSeating({
       await client.query(
         `UPDATE seating_rooms SET status = 'closed', closed_at = COALESCE(closed_at, NOW())
          WHERE creator_user_id = $1 AND class_id = $2 AND status = 'open'`,
-        [user.id, classroom.id]
+        [ownerId, classroom.id]
       );
       let room = null;
       for (let attempt = 0; attempt < 20 && !room; attempt += 1) {
@@ -505,13 +632,13 @@ function createSeating({
           `INSERT INTO seating_rooms (room_code, school_id, class_id, academic_year, grade, class_number, creator_user_id, layout)
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8::jsonb)
            ON CONFLICT (room_code) DO NOTHING RETURNING *`,
-          [code, classroom.school_id, classroom.id, classroom.academic_year, classroom.grade, classroom.class_number, user.id, JSON.stringify(layout)]
+          [code, classroom.school_id, classroom.id, classroom.academic_year, classroom.grade, classroom.class_number, ownerId, JSON.stringify(layout)]
         );
         room = inserted.rows[0] || null;
       }
       if (!room) throw new HttpError(503, "ROOM_CODE_UNAVAILABLE", "방번호를 만들지 못했습니다. 다시 시도해 주세요.");
       await client.query("COMMIT");
-      res.status(201).json({ room: await serializeRoom(room, { isOwner: true }) });
+      res.status(201).json({ room: await serializeRoom(room, { isOwner: true, forManager: Boolean(manager) }) });
     } catch (error) {
       await client.query("ROLLBACK");
       throw error;
@@ -529,6 +656,13 @@ function createSeating({
     if (!room) throw new HttpError(404, "SEATING_ROOM_NOT_FOUND", "해당 방을 찾을 수 없습니다.");
     const isOwner = Boolean(actor.user) && String(room.creator_user_id) === String(actor.user.id);
     if (isOwner) return res.json({ room: await serializeRoom(room, { isOwner: true }), isOwner: true });
+    // 자리를 맡은 학생도 자리 고르기에서는 보통 학생이다. 관리 화면이 요청할 때만 관리용으로 보여 준다.
+    if (req.query?.manage && actor.user) {
+      const manager = await managerAccess(actor.user);
+      if (manager && manager.classId === String(room.class_id) && String(manager.ownerId) === String(room.creator_user_id)) {
+        return res.json({ room: await serializeRoom(room, { isOwner: true, forManager: true }), isOwner: true });
+      }
+    }
     const student = await studentInRoom(actor, room);
     res.json({ room: await serializeRoom(room, { student }), isOwner: false });
   }));
@@ -577,26 +711,35 @@ function createSeating({
     }
   }));
 
+  // 방을 닫을 수 있는 사람의 기준 계정. 맡은 학생은 자기 반 방만 다룬다.
+  async function roomOperator(req, roomId) {
+    const { user, manager } = await teacherOrManager(req);
+    if (!manager) return { ownerId: user.id, manager };
+    const room = roomId ? await findOwnRoom({ id: manager.ownerId }, roomId) : null;
+    if (!room || String(room.class_id) !== manager.classId) throw new HttpError(404, "SEATING_ROOM_NOT_FOUND", "우리 반 자리 고르기 방을 찾을 수 없습니다.");
+    return { ownerId: manager.ownerId, manager };
+  }
+
   router.post("/rooms/:roomId/close", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireTeacher(req);
     const roomId = parseId(req.params.roomId);
+    const { ownerId, manager } = await roomOperator(req, roomId);
     const result = roomId && await pool.query(
       `UPDATE seating_rooms SET status = 'closed', closed_at = COALESCE(closed_at, NOW())
        WHERE id = $1 AND creator_user_id = $2 RETURNING *`,
-      [roomId, user.id]
+      [roomId, ownerId]
     );
     if (!result?.rowCount) throw new HttpError(404, "SEATING_ROOM_NOT_FOUND", "내가 연 자리 고르기 방을 찾을 수 없습니다.");
-    res.json({ ok: true, room: await serializeRoom(result.rows[0], { isOwner: true }) });
+    res.json({ ok: true, room: await serializeRoom(result.rows[0], { isOwner: true, forManager: Boolean(manager) }) });
   }));
 
   router.delete("/rooms/:roomId", asyncRoute(async (req, res) => {
     requireDatabase();
-    const user = await requireTeacher(req);
     const roomId = parseId(req.params.roomId);
-    const room = roomId ? await findOwnRoom(user, roomId) : null;
+    const { ownerId } = await roomOperator(req, roomId);
+    const room = roomId ? await findOwnRoom({ id: ownerId }, roomId) : null;
     if (!room) throw new HttpError(404, "SEATING_ROOM_NOT_FOUND", "내가 연 자리 고르기 방을 찾을 수 없습니다.");
-    await pool.query(`DELETE FROM seating_rooms WHERE id = $1 AND creator_user_id = $2`, [roomId, user.id]);
+    await pool.query(`DELETE FROM seating_rooms WHERE id = $1 AND creator_user_id = $2`, [roomId, ownerId]);
     res.json({ ok: true, code: room.room_code.trim() });
   }));
 
@@ -608,6 +751,7 @@ module.exports = {
   normalizeLayout,
   normalizeSeatSettings,
   publishedSeatMap,
+  homeroomTeacherId,
   pickRejection,
   seatIndexOf,
   TOTAL_DESKS,

@@ -68,6 +68,8 @@ class FakePool {
     this.picks = [];
     this.nextId = 1;
     this.statements = [];
+    this.managers = [];
+    this.settings = new Map();
   }
 
   async connect() {
@@ -80,6 +82,34 @@ class FakePool {
     const rows = (list) => ({ rows: list, rowCount: list.length });
     if (/^(BEGIN|COMMIT|ROLLBACK|CREATE TABLE|CREATE INDEX)/.test(text)) return rows([]);
     if (text.startsWith("DELETE FROM seating_rooms WHERE created_at <")) return rows([]);
+    if (text.startsWith("SELECT id, school_id, academic_year, grade, class_number, teacher_user_id FROM classroom_classes")) {
+      return rows([CLASS, OTHER_CLASS].filter((cls) => inClass({ cls }, params)).map((cls) => ({ ...cls, teacher_user_id: 7 })));
+    }
+    if (text.startsWith("SELECT teacher_user_id FROM classroom_classes")) return rows([{ teacher_user_id: 7 }]);
+    if (text.includes("FROM classroom_teachers t")) return rows([{ user_id: 7 }]);
+    if (text.startsWith("SELECT 1 FROM seating_managers")) {
+      return rows(this.managers.filter((row) => String(row.class_id) === String(params[0]) && row.number === String(params[1])));
+    }
+    if (text.startsWith("SELECT student_number FROM seating_managers")) {
+      return rows(this.managers.filter((row) => String(row.class_id) === String(params[0])).map((row) => ({ student_number: row.number })));
+    }
+    if (text.startsWith("DELETE FROM seating_managers")) {
+      this.managers = this.managers.filter((row) => String(row.class_id) !== String(params[0]));
+      return rows([]);
+    }
+    if (text.startsWith("INSERT INTO seating_managers")) {
+      this.managers.push({ class_id: params[0], number: params[1] });
+      return rows([]);
+    }
+    if (text.startsWith("SELECT settings, updated_at FROM seating_settings")) {
+      const saved = this.settings.get(`${params[0]}:${params[1]}`);
+      return rows(saved ? [saved] : []);
+    }
+    if (text.startsWith("INSERT INTO seating_settings")) {
+      const saved = { settings: JSON.parse(params[2]), updated_at: new Date() };
+      this.settings.set(`${params[0]}:${params[1]}`, saved);
+      return rows([saved]);
+    }
 
     if (text.includes("memberships ORDER BY priority")) {
       const student = ROSTER.find((entry) => String(entry.user_id) === String(params[0]));
@@ -342,4 +372,42 @@ test("closing freezes the room; a new room for the class closes the old one; can
   assert.equal(await seating.hasRoomCode(third.body.room.code), false);
   assert.deepEqual(await seating.resolveCode(room.code), { type: "seating", href: `/room/seat?room=${room.code}` });
   assert.equal(await seating.resolveCode("0000"), null);
+});
+
+test("the homeroom teacher can hand seating to chosen students, and take it back", async () => {
+  const classPath = `/api/seating/classes/${CLASS.id}`;
+  const layout = { unavailableSeats: [1] };
+  // 맡기 전에는 학생은 아무것도 못 바꾼다.
+  assert.equal((await call("GET", "/api/seating/access", { user: 23 })).body.canManage, false);
+  assert.equal((await call("PUT", `${classPath}/settings`, { user: 23, body: { settings: layout } })).status, 403);
+  assert.equal((await call("POST", "/api/seating/rooms", { user: 23, body: { classId: CLASS.id, layout } })).status, 403);
+  // 담임만 정한다.
+  assert.equal((await call("PUT", `${classPath}/managers`, { user: 8, body: { numbers: ["3"] } })).status, 403);
+  assert.equal((await call("PUT", `${classPath}/managers`, { user: 23, body: { numbers: ["3"] } })).status, 403);
+  const granted = await call("PUT", `${classPath}/managers`, { user: 7, body: { numbers: ["3", "999"] } });
+  assert.deepEqual(granted.body, { canGrant: true, managers: ["3"] }, "numbers off the roster are dropped");
+  assert.deepEqual((await call("GET", `${classPath}/managers`, { user: 8 })).body, { canGrant: false, managers: [] });
+  assert.deepEqual((await call("GET", "/api/seating/access", { user: 23 })).body, { canManage: true, classId: String(CLASS.id) });
+  // 맡은 학생의 저장은 담임의 배치가 되고, 다른 학생과 옆 반에는 힘이 없다.
+  assert.equal((await call("PUT", `${classPath}/settings`, { user: 23, body: { settings: { manualAssignments: { 9: "1" } } } })).status, 200);
+  assert.equal((await call("GET", `${classPath}/settings`, { user: 7 })).body.settings.manualAssignments[9], "1");
+  assert.equal((await call("PUT", `${classPath}/settings`, { user: 22, body: { settings: layout } })).status, 403);
+  assert.equal((await call("PUT", `/api/seating/classes/${OTHER_CLASS.id}/settings`, { user: 23, body: { settings: layout } })).status, 403);
+  assert.deepEqual((await call("GET", `${classPath}/genders`, { user: 23 })).body.students[1], { number: "2", gender: "여" });
+  assert.equal((await call("GET", `${classPath}/genders`, { user: 22 })).status, 403);
+  // 맡은 학생이 연 방은 담임의 방이고, 학생은 관리 화면에서 마감할 수 있다.
+  const opened = await call("POST", "/api/seating/rooms", { user: 23, body: { classId: CLASS.id, layout } });
+  assert.equal(opened.status, 201);
+  const { id, code } = opened.body.room;
+  assert.equal((await call("GET", `/api/seating/rooms/active?classId=${CLASS.id}`, { user: 7 })).body.room.id, id);
+  assert.equal((await call("GET", `/api/seating/rooms/${code}?manage=1`, { user: 23 })).body.isOwner, true);
+  assert.equal((await call("GET", `/api/seating/rooms/${code}`, { user: 23 })).body.isOwner, false, "they still pick like any student");
+  assert.equal((await call("GET", `/api/seating/rooms/${code}?manage=1`, { user: 22 })).body.isOwner, false);
+  assert.equal((await call("POST", `/api/seating/rooms/${id}/close`, { user: 22 })).status, 403);
+  assert.equal((await call("POST", `/api/seating/rooms/${id}/close`, { user: 23 })).status, 200);
+  // 해제하면 바로 막힌다.
+  await call("PUT", `${classPath}/managers`, { user: 7, body: { numbers: [] } });
+  assert.equal((await call("GET", "/api/seating/access", { user: 23 })).body.canManage, false);
+  assert.equal((await call("PUT", `${classPath}/settings`, { user: 23, body: { settings: layout } })).status, 403);
+  assert.equal((await call("DELETE", `/api/seating/rooms/${id}`, { user: 23 })).status, 403);
 });

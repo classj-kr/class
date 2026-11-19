@@ -5,7 +5,7 @@
 const express = require("express");
 const { NAME_SOURCE_PENDING } = require("./roster-names");
 const { GROUP_VISIBLE_SQL } = require("./teacher-group-visibility");
-const { publishedSeatMap } = require("./seating");
+const { publishedSeatMap, homeroomTeacherId: findHomeroomTeacher } = require("./seating");
 
 const SCHOOL_DAYS = ["월", "화", "수", "목", "금"];
 const PREP_ITEMS = ["preps-mon", "preps-tue", "preps-wed", "preps-thu", "preps-fri"];
@@ -66,20 +66,7 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
   }
 
   // 지금 담임으로 등록된 사람. 등록이 없으면 학급을 맡아 둔 계정을 쓴다.
-  async function homeroomTeacherId({ place, row }) {
-    const { rows } = await pool.query(
-      `SELECT COALESCE(t.user_id, u.id) AS user_id
-       FROM classroom_teachers t
-       LEFT JOIN classroom_users u ON t.user_id IS NULL AND LOWER(u.email) = LOWER(t.google_email)
-       WHERE t.school_id = $1 AND COALESCE(t.academic_year, $2) = $2
-         AND t.grade = $3 AND t.class_number = $4 AND t.active = TRUE
-         AND COALESCE(t.user_id, u.id) IS NOT NULL
-       ORDER BY t.user_id IS NULL, t.id
-       LIMIT 1`,
-      place
-    );
-    return rows[0]?.user_id ?? row.teacher_user_id ?? null;
-  }
+  const homeroomTeacherId = ({ place, row }) => findHomeroomTeacher(pool, place, row.teacher_user_id);
 
   // 자리표 계산에 쓰는 성별까지 읽는다. 성별은 응답으로 내보내지 않는다.
   async function rosterRows({ place, classId }) {

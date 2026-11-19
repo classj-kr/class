@@ -150,6 +150,6 @@ test("published seat map follows the same rules as the teacher screen", async ()
 test("the student seating page only shows the chart", () => {
   assert.match(teacherPage, /<aside class="seating-sidebar-panel" data-teacher-only>/);
   assert.match(teacherPage, /\/api\/student\/class-dashboard\/seating/);
-  assert.match(teacherPage, /if \(studentView \|\| !settingsReady \|\| !currentClassId\) return;/);
-  assert.match(teacherPage, /document\.createElement\(studentView \? 'div' : 'button'\)/);
+  assert.match(teacherPage, /if \(readOnly \|\| !settingsReady \|\| !currentClassId\) return;/);
+  assert.match(teacherPage, /document\.createElement\(readOnly \? 'div' : 'button'\)/);
 });
