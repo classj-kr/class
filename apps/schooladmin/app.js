@@ -2424,9 +2424,140 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 날짜 하나하나에 그 요일의 기초시간표를 깔아 일자별 시간표를 만들고, 같은 칸을 세어
     // 교과별 월·학기 시수를 낸다. 쉬는 날(공휴일·방학·재량휴업)은 수업도 시수도 없다.
-    // 행사가 있는 날도 지금은 기초시간표 과목대로 센다(행사명은 옆 칸에 적는다).
+    // 행사 날처럼 과목이 달라지는 날은 담임·학년부장·관리자가 그 날짜의 칸을 바꾼다(school_class_day_timetable).
     const ANNUAL_MONTHS = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
     const annualDiffText = diff => diff === null ? '-' : diff > 0 ? `+${diff}` : String(diff);
+
+    let annualState = null;
+    let annualTeachersLoaded = false;
+
+    // 학년부장: 학교 관리자만 고르고, 다른 교직원은 누구인지만 본다.
+    async function renderAnnualGradeHead(head, grade) {
+        const select = document.getElementById('annualGradeHeadSelect');
+        if (!select) return;
+        select.disabled = true;
+        const current = head ? String(head.id) : '';
+        if (curriculumCanEdit && !annualTeachersLoaded) {
+            try {
+                const res = await api('/api/school-admin/specialist-teachers');
+                select.replaceChildren(new Option('지정 안 함', ''), ...(res.teachers || []).map(t =>
+                    new Option(`${t.name}${t.homeroomGrade ? ` (${t.homeroomGrade}-${t.homeroomClassNumber})` : ''}`, t.registrationId)));
+                annualTeachersLoaded = true;
+            } catch (err) {
+                select.replaceChildren(new Option('교사 목록을 불러오지 못했습니다', ''));
+                return;
+            }
+        }
+        if (!curriculumCanEdit) select.replaceChildren(new Option(head ? head.name : '지정 안 함', current));
+        else if (head && ![...select.options].some(o => o.value === current)) select.add(new Option(head.name, current));
+        select.value = current;
+        select.dataset.grade = String(grade);
+        select.disabled = !curriculumCanEdit;
+    }
+
+    const annualGradeHeadSelect = document.getElementById('annualGradeHeadSelect');
+    if (annualGradeHeadSelect) {
+        annualGradeHeadSelect.addEventListener('change', async () => {
+            const grade = Number(annualGradeHeadSelect.dataset.grade);
+            annualGradeHeadSelect.disabled = true;
+            try {
+                await api('/api/school-admin/grade-head', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ academicYear: selectedAcademicYear, grade, teacherId: annualGradeHeadSelect.value || null })
+                });
+            } catch (err) {
+                alert(err.message || '학년부장을 저장하지 못했습니다.');
+            }
+            renderAnnualTimetable34Weeks();
+        });
+    }
+
+    // 일자별 시간표의 칸 바꾸기. 기초시간표는 그대로 두고 그 날짜·교시만 덮는다.
+    const annualCellEditor = document.getElementById('annualCellEditor');
+    let annualEditing = null;
+    function closeAnnualCellEditor() {
+        if (annualCellEditor) annualCellEditor.hidden = true;
+        annualEditing?.button?.focus();
+        annualEditing = null;
+    }
+    function openAnnualCellEditor(button) {
+        if (!annualState?.canEditDays || !annualCellEditor) return;
+        const { date } = button.dataset;
+        const period = Number(button.dataset.period);
+        const weekday = (new Date(`${date}T00:00:00`).getDay() + 6) % 7 + 1;
+        const base = (annualState.lessonsByDay[weekday] || []).find(l => Number(l.period) === period)?.subject || '';
+        const key = `${date}_${period}`;
+        const current = annualState.dayChanges.has(key) ? annualState.dayChanges.get(key) : null;
+        annualEditing = { button, date, period, weekday };
+        const [, m, d] = date.split('-').map(Number);
+        document.getElementById('annualCellEditorTitle').textContent = `${m}.${d}(${schoolDays[weekday - 1]}) ${period}교시`;
+        const select = document.getElementById('annualCellEditorSubject');
+        select.replaceChildren(
+            new Option(`기초시간표대로${base ? ` (${base})` : ' (수업 없음)'}`, '__base__'),
+            ...annualState.subjects.map(sub => new Option(sub, sub)),
+            new Option('수업 없음', '__none__'));
+        select.value = current === null ? '__base__' : current === '' ? '__none__'
+            : annualState.subjects.includes(current) ? current : (select.add(new Option(current, current)), current);
+        document.getElementById('annualCellEditorWholeDay').checked = false;
+        // 조회 전용 교직원도 담임·학년부장이면 고친다. 화면 권한 처리가 잠근 칸을 여기서 연다.
+        select.disabled = false;
+        document.getElementById('annualCellEditorWholeDay').disabled = false;
+        annualCellEditor.hidden = false;
+        const rect = button.getBoundingClientRect();
+        const width = annualCellEditor.offsetWidth;
+        annualCellEditor.style.left = `${Math.max(8, Math.min(window.innerWidth - width - 8, rect.left))}px`;
+        const below = rect.bottom + 6;
+        annualCellEditor.style.top = `${below + annualCellEditor.offsetHeight > window.innerHeight ? Math.max(8, rect.top - annualCellEditor.offsetHeight - 6) : below}px`;
+        select.focus();
+    }
+    async function saveAnnualCellEditor() {
+        if (!annualEditing || !annualState) return;
+        const { date, period, weekday } = annualEditing;
+        const value = document.getElementById('annualCellEditorSubject').value;
+        const subject = value === '__base__' ? null : value === '__none__' ? '' : value;
+        let periods = [period];
+        if (document.getElementById('annualCellEditorWholeDay').checked) {
+            // 하루 전체: 그날 수업이 있는 교시(기초시간표나 바꾼 칸) 모두.
+            const lessonPeriods = (annualState.lessonsByDay[weekday] || []).map(l => Number(l.period));
+            const changedPeriods = [...annualState.dayChanges.keys()].filter(k => k.startsWith(`${date}_`)).map(k => Number(k.split('_')[1]));
+            periods = [...new Set([period, ...lessonPeriods, ...changedPeriods])].filter(p => p >= 1 && p <= 8).sort((a, b) => a - b);
+        }
+        const saveBtn = document.getElementById('annualCellEditorSave');
+        saveBtn.disabled = true;
+        try {
+            await api('/api/school-admin/class-day-timetable', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    academicYear: annualState.year, grade: annualState.grade, classNumber: annualState.classNum,
+                    date, changes: periods.map(p => ({ period: p, subject }))
+                })
+            });
+            annualCellEditor.hidden = true;
+            annualEditing = null;
+            await renderAnnualTimetable34Weeks();
+            document.querySelector(`.annual-cell-btn[data-date="${date}"][data-period="${period}"]`)?.focus();
+        } catch (err) {
+            alert(err.message || '시간표를 저장하지 못했습니다.');
+        } finally {
+            saveBtn.disabled = false;
+        }
+    }
+    if (annualTimetableTableBody) {
+        annualTimetableTableBody.addEventListener('click', event => {
+            const button = event.target.closest('.annual-cell-btn');
+            if (button) openAnnualCellEditor(button);
+        });
+    }
+    if (annualCellEditor) {
+        document.getElementById('annualCellEditorSave').addEventListener('click', saveAnnualCellEditor);
+        document.getElementById('annualCellEditorCancel').addEventListener('click', closeAnnualCellEditor);
+        annualCellEditor.addEventListener('keydown', event => { if (event.key === 'Escape') closeAnnualCellEditor(); });
+        document.addEventListener('mousedown', event => {
+            if (!annualCellEditor.hidden && !annualCellEditor.contains(event.target) && !event.target.closest('.annual-cell-btn')) closeAnnualCellEditor();
+        });
+    }
 
     async function renderAnnualTimetable34Weeks() {
         if (!annualTimetableTableBody) return;
@@ -2434,6 +2565,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const request = ++annualTimetableRequest;
         const academicYear = selectedAcademicYear;
         const grade = Number(annualTimetableGradeSelect ? annualTimetableGradeSelect.value : 5);
+        if (annualCellEditor && annualEditing) { annualCellEditor.hidden = true; annualEditing = null; }
         const subjectHead = document.getElementById('annualSubjectTableHead');
         const subjectBody = document.getElementById('annualSubjectTableBody');
         const dailyHead = document.getElementById('annualTimetableTableHead');
@@ -2454,8 +2586,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const lessonsByDay = synthData.lessons || {};
             const schedList = synthData.schedules || [];
             const generalEventList = synthData.generalEvents || [];
-            const lastPeriod = Math.max(0, ...Object.values(lessonsByDay).flat().map(l => Number(l.period) || 0));
+            // 날짜별로 바꾼 칸: "날짜_교시" → 과목('' 이면 수업 없음)
+            const dayChanges = new Map((synthData.dayChanges || []).map(c => [`${c.date}_${c.period}`, c.subject]));
+            const lastPeriod = Math.max(0, ...Object.values(lessonsByDay).flat().map(l => Number(l.period) || 0),
+                ...(synthData.dayChanges || []).filter(c => c.subject).map(c => Number(c.period) || 0));
             const periodCount = Math.max(lastPeriod, 6);
+            const canEditDays = synthData.canEditDays === true;
+            const curriculumSubjects = (synthData.curriculum || []).map(c => c.subject);
+            annualState = {
+                year: academicYear, grade, classNum, canEditDays, periodCount, lessonsByDay, dayChanges,
+                subjects: [...new Set([...curriculumSubjects, ...Object.values(lessonsByDay).flat().map(l => l.subject),
+                    '창체(자율)', '창체(동아리)', '창체(봉사)', '창체(진로)'])]
+            };
+            renderAnnualGradeHead(synthData.gradeHead, grade);
+            const editNote = document.getElementById('annualEditNote');
+            if (editNote) editNote.hidden = !canEditDays;
 
             dailyHead.innerHTML = `<tr><th>주</th><th>날짜</th><th>요일</th>${
                 Array.from({ length: periodCount }, (_, i) => `<th>${i + 1}교시</th>`).join('')}<th>시수</th><th>행사</th></tr>`;
@@ -2540,12 +2685,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     let dayHours = 0;
                     let cells = '';
                     for (let p = 1; p <= periodCount; p++) {
-                        const subject = bySlot.get(p);
-                        if (!subject) { cells += '<td></td>'; continue; }
+                        const base = bySlot.get(p) || '';
+                        const changeKey = `${dateStr}_${p}`;
+                        const changed = dayChanges.has(changeKey) && dayChanges.get(changeKey) !== base;
+                        const subject = dayChanges.has(changeKey) ? dayChanges.get(changeKey) : base;
+                        const [, color] = subject ? schoolSubjectStyle(subject) : ['', 'other'];
+                        const classes = [subject ? `school-subject-${color}` : '', changed ? 'annual-changed' : ''].filter(Boolean).join(' ');
+                        const title = changed ? ` title="기초시간표: ${escapeHtml(base || '수업 없음')}"` : '';
+                        const label = escapeHtml(subject);
+                        const content = canEditDays
+                            ? `<button type="button" class="annual-cell-btn" data-date="${dateStr}" data-period="${p}" aria-label="${dayDate.getMonth() + 1}월 ${dayDate.getDate()}일 ${p}교시 ${label || '수업 없음'} 바꾸기">${label}</button>`
+                            : label;
+                        cells += `<td class="${classes}"${title}>${content}</td>`;
+                        if (!subject) continue;
                         dayHours++;
                         countLesson(subject, monthIndex, semester);
-                        const [, color] = schoolSubjectStyle(subject);
-                        cells += `<td class="school-subject-${color}">${escapeHtml(subject)}</td>`;
                     }
                     cumulativeHours += dayHours;
                     weekRows.push(`${dateCells}${cells}<td>${dayHours}</td>${noteCell}`);

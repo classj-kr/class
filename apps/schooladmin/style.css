@@ -576,3 +576,18 @@ body[data-curriculum-access="read"] :is(input, select):disabled { opacity: 1; co
     #annualTimetableTab .annual-table th, #annualTimetableTab .annual-table td { padding: 1px 3px !important; font-size: 7.5pt !important; position: static; }
     #annualTimetableTab .annual-table tr { break-inside: avoid; }
 }
+.annual-edit-note { color: var(--text-muted); font-size: .85rem; margin: -4px 0 10px; }
+.annual-cell-btn { all: unset; box-sizing: border-box; display: block; width: 100%; min-height: 22px; cursor: pointer; border-radius: 4px; color: inherit; font-weight: inherit; text-align: center; }
+.annual-cell-btn:hover { background: #ede9fe; }
+.annual-cell-btn:focus-visible { outline: 2px solid #7c3aed; outline-offset: -1px; }
+.annual-daily-table .annual-changed { background: #fffbeb; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.annual-cell-editor { position: fixed; z-index: 50; width: 240px; display: grid; gap: 10px; padding: 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 10px; box-shadow: 0 10px 30px rgba(15, 23, 42, .18); }
+.annual-cell-editor[hidden] { display: none; }
+.annual-cell-editor-check { display: flex; align-items: center; gap: 6px; font-size: .88rem; }
+.annual-cell-editor-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.annual-cell-editor-actions .primary-button { min-height: 36px; padding: 6px 14px; }
+@media print {
+    #annualTimetableTab .annual-cell-btn { display: block !important; }
+    #annualTimetableTab .annual-cell-editor, #annualTimetableTab .annual-edit-note { display: none !important; }
+    #annualTimetableTab .annual-changed { background: #fff !important; }
+}

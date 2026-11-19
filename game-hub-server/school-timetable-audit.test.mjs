@@ -32,7 +32,7 @@ async function withSchool(run) {
       CREATE TABLE classroom_schools (id BIGINT PRIMARY KEY);
       CREATE TABLE classroom_users (id BIGINT PRIMARY KEY, email TEXT);
       CREATE TABLE classroom_teachers (
-        school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER,
+        id SERIAL PRIMARY KEY, teacher_name TEXT, school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER,
         user_id BIGINT, google_email TEXT, teacher_type TEXT, active BOOLEAN DEFAULT TRUE
       );
       CREATE TABLE school_students (school_id BIGINT, academic_year INTEGER, grade INTEGER, class_number INTEGER);
@@ -53,12 +53,12 @@ async function withSchool(run) {
       INSERT INTO school_curriculum_hours (school_id, academic_year, grade, subject_name, weekly_hours, annual_required_hours, category)
         VALUES (1, 2028, 3, '국어', 6, 204, 'SUBJECT'), (1, 2028, 3, '수학', 4, 136, 'SUBJECT');
       INSERT INTO classroom_schools VALUES (1);
-      INSERT INTO classroom_users VALUES (101, 'home@example.invalid'), (102, 'subject@example.invalid');
+      INSERT INTO classroom_users VALUES (101, 'home@example.invalid'), (102, 'subject@example.invalid'), (103, 'next@example.invalid'), (900, 'admin@example.invalid');
       INSERT INTO classroom_teachers (school_id, academic_year, grade, class_number, user_id, teacher_type) VALUES
         (1, 2028, 3, 1, 101, '담임'), (1, 2028, NULL, NULL, 102, '전담'),
         (1, 2028, 3, 2, NULL, '담임'), (1, 2028, 3, 3, NULL, '담임'), (1, 2028, 5, 7, NULL, '담임');
     `);
-    for (const table of ['school_master_timetable', 'school_weekly_period_allocation']) {
+    for (const table of ['school_master_timetable', 'school_weekly_period_allocation', 'school_class_day_timetable', 'school_grade_heads']) {
       const start = source.indexOf(`CREATE TABLE IF NOT EXISTS ${table} (`);
       await db.exec(source.slice(start, source.indexOf('`', start)));
     }
@@ -75,15 +75,27 @@ async function withSchool(run) {
       const r = await db.query(sql, params);
       return { rows: r.rows, rowCount: r.affectedRows || r.rows.length };
     };
-    const pool = { query };
+    const pool = { query, connect: async () => ({ query, release() {} }) };
+    // 누가 요청하는지. 기본은 학교 관리자이고, 검사마다 담임·학년부장으로 바꾼다.
+    const who = { user: { id: 900 }, profile: { school_id: 1, teacher_type: '관리자' }, registrations: [] };
+    const teacherRegistrations = async () => who.registrations;
     const bindings = { pool, HttpError, timetableRules,
-      requireSchoolCurriculum: async () => ({ profile: { school_id: 1 } }),
-      requireSchoolAdmin: async () => ({ profile: { school_id: 1 } }) };
+      requireSchoolCurriculum: async () => ({ user: who.user, profile: who.profile }),
+      requireSchoolAdmin: async () => {
+        if (!['관리자', '교장', '교감'].includes(who.profile.teacher_type)) throw new HttpError(403, 'SCHOOL_ADMIN_REQUIRED', 'admin');
+        return { user: who.user, profile: who.profile };
+      } };
+    const canEditStart = source.indexOf('  async function canEditClassDays(');
+    bindings.canEditClassDays = new Function('pool', 'teacherRegistrations',
+      `${source.slice(canEditStart, source.indexOf('\n  }', canEditStart) + 4)}; return canEditClassDays;`)(pool, teacherRegistrations);
     const resolverStart = source.indexOf('  async function schoolTimetableTeacher(');
     bindings.schoolTimetableTeacher = new Function('pool', 'HttpError',
       `${source.slice(resolverStart, source.indexOf('\n  }', resolverStart) + 4)}; return schoolTimetableTeacher;`)(pool, HttpError);
     await run({
       db,
+      who,
+      day: handler('put', 'class-day-timetable', bindings),
+      gradeHead: handler('put', 'grade-head', bindings),
       cell: async (grade, classNumber, day, period) => (await db.query(
         `SELECT subject_name, teacher_user_id, room_name FROM school_master_timetable
          WHERE school_id=1 AND academic_year=2028 AND grade=$1 AND class_number=$2 AND day_of_week=$3 AND period=$4`,
@@ -167,6 +179,44 @@ test('annual hours count the lessons actually placed and never invent a timetabl
   assert.equal(empty.hasTimetable, false);
 }));
 
+test('only an administrator, the grade head and the homeroom teacher change a class day, and the master timetable stays as it was', () => withSchool(async ({ db, who, day, gradeHead, annual }) => {
+  const asTeacher = (userId, registrations) => {
+    who.user = { id: userId };
+    who.profile = { school_id: 1, teacher_type: registrations[0]?.teacher_type || '담임', ...registrations[0] };
+    who.registrations = registrations;
+  };
+  const change = (date, changes, classNumber = 1) => day({ body: { academicYear: year, grade: 3, classNumber, date, changes } });
+  // 3학년 2반 담임(등록 3번)은 1반을 못 바꾼다.
+  asTeacher(103, [{ id: 3, school_id: 1, academic_year: 2028, grade: 3, class_number: 2, teacher_type: '담임' }]);
+  await assert.rejects(change('2028-05-09', [{ period: 1, subject: '창체(자율)' }]), { status: 403 });
+  assert.equal((await annual({ query: { academicYear: year, grade: 3, classNumber: 1 } })).canEditDays, false);
+  await assert.rejects(gradeHead({ body: { academicYear: year, grade: 3, teacherId: '3' } }), { status: 403 });
+  // 관리자가 그를 3학년 부장으로 정하면 1반도 바꿀 수 있다.
+  asTeacher(900, [{ teacher_type: '관리자' }]);
+  assert.equal((await gradeHead({ body: { academicYear: year, grade: 3, teacherId: '3' } })).gradeHead.id, '3');
+  await assert.rejects(gradeHead({ body: { academicYear: year, grade: 3, teacherId: '999' } }), { status: 400 });
+  asTeacher(103, [{ id: 3, school_id: 1, academic_year: 2028, grade: 3, class_number: 2, teacher_type: '담임' }]);
+  const head = await annual({ query: { academicYear: year, grade: 3, classNumber: 1 } });
+  assert.equal(head.canEditDays, true);
+  assert.equal(head.gradeHead.id, '3');
+  await change('2028-05-09', [{ period: 1, subject: '창체(자율)' }, { period: 2, subject: '' }]);
+  // 4학년 부장은 아니다.
+  assert.equal((await annual({ query: { academicYear: year, grade: 4, classNumber: 1 } })).canEditDays, false);
+  // 1반 담임(등록 1번)은 자기 반을 바꾸고, 기초시간표대로 되돌릴 수도 있다.
+  asTeacher(101, [{ id: 1, school_id: 1, academic_year: 2028, grade: 3, class_number: 1, teacher_type: '담임' }]);
+  const saved = await change('2028-05-09', [{ period: 2, subject: null }, { period: 5, subject: '체육' }]);
+  assert.deepEqual(saved.changes.map(c => [c.period, c.subject]), [[1, '창체(자율)'], [5, '체육']]);
+  const shown = await annual({ query: { academicYear: year, grade: 3, classNumber: 1 } });
+  assert.deepEqual(shown.dayChanges, [{ date: '2028-05-09', period: 1, subject: '창체(자율)' }, { date: '2028-05-09', period: 5, subject: '체육' }]);
+  assert.equal((await db.query(`SELECT subject_name FROM school_master_timetable WHERE grade = 3 AND class_number = 1 AND day_of_week = 1 AND period = 1`)).rows[0].subject_name, '국어');
+  // 학년도 밖, 주말, 없는 날짜, 같은 교시 두 번, 9교시는 받지 않는다.
+  for (const [date, changes] of [
+    ['2029-03-02', [{ period: 1, subject: '국어' }]], ['2028-05-13', [{ period: 1, subject: '국어' }]],
+    ['2028-02-30', [{ period: 1, subject: '국어' }]], ['2028-05-10', [{ period: 1, subject: '국어' }, { period: 1, subject: '수학' }]],
+    ['2028-05-10', [{ period: 9, subject: '국어' }]], ['2028-05-10', []]
+  ]) await assert.rejects(change(date, changes), { status: 400 }, date);
+}));
+
 async function openAdmin(browser, api, options = {}) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await page.clock.install({ time: new Date('2028-03-10T03:00:00Z') });
@@ -199,6 +249,7 @@ async function openAdmin(browser, api, options = {}) {
             await new Promise(resolve => { state.release = resolve; });
           }
         } else if (name === 'school-timetable') data = await api.overview({ query });
+        else if (name === 'class-day-timetable') data = await api.day({ body: request.postDataJSON() });
         else if (name === 'annual-timetable-34weeks') {
           data = await api.annual({ query });
           const delay = state.annualDelay;
@@ -314,6 +365,40 @@ test('browser: a lesson beyond the daily allocation can be removed and every reg
   await page.waitForFunction(() => [...document.querySelector('#timetableClassSelect').options].some(o => o.value === '7'));
   await page.locator('[data-tab="annualTimetable"]').click();
   await page.waitForFunction(() => [...document.querySelector('#annualTimetableClassSelect').options].some(o => o.value === '7'));
+}));
+
+test('browser: a cell in the daily table can be changed for one date, the whole day at once, and set back', () => withBrowser(async (browser, api) => {
+  const cells = [];
+  for (let day = 1; day <= 5; day++) for (let period = 1; period <= 4; period++) cells.push(at(day, period, '국어'));
+  await api.save({ body: { academicYear: year, grade: 3, classNumber: 1, cells } });
+  const { page, errors } = await openAdmin(browser, api);
+  await page.locator('[data-tab="annualTimetable"]').click();
+  await page.locator('#annualTimetableGradeSelect').selectOption('3');
+  const cell = (date, period) => page.locator(`.annual-cell-btn[data-date="${date}"][data-period="${period}"]`);
+  await cell('2028-05-09', 2).waitFor();
+  const korean = async () => Number((await page.locator('#annualSubjectTableBody tr', { hasText: '국어' }).first().locator('td').nth(14).innerText()));
+  const before = await korean();
+  // 하루 전체를 창체(자율)로.
+  await cell('2028-05-09', 2).click();
+  await page.locator('#annualCellEditorSubject').selectOption('창체(자율)');
+  await page.locator('#annualCellEditorWholeDay').check();
+  await page.locator('#annualCellEditorSave').click();
+  await page.waitForFunction(() => document.querySelector('.annual-cell-btn[data-date="2028-05-09"][data-period="4"]')?.textContent === '창체(자율)');
+  assert.equal(await cell('2028-05-09', 1).innerText(), '창체(자율)');
+  assert.equal(await cell('2028-05-10', 1).innerText(), '국어', 'the next day keeps the master timetable');
+  assert.equal(await korean(), before - 4);
+  assert.match(await cell('2028-05-09', 1).evaluate(b => b.parentElement.className), /annual-changed/);
+  assert.equal(await cell('2028-05-09', 1).evaluate(b => b.parentElement.title), '기초시간표: 국어');
+  const activity = page.locator('#annualSubjectTableBody tr', { hasText: '창체(자율)' });
+  assert.equal(await activity.locator('td').nth(14).innerText(), '4');
+  // 한 칸만 기초시간표대로 되돌린다.
+  await cell('2028-05-09', 3).click();
+  await page.locator('#annualCellEditorSubject').selectOption('__base__');
+  await page.locator('#annualCellEditorSave').click();
+  await page.waitForFunction(() => document.querySelector('.annual-cell-btn[data-date="2028-05-09"][data-period="3"]')?.textContent === '국어');
+  assert.equal(await korean(), before - 3);
+  assert.equal(await page.locator('#annualCellEditor').isVisible(), false);
+  assert.deepEqual(errors, []);
 }));
 
 test('browser: the annual table covers the real school year, removes days off and does not double its rows', () => withBrowser(async (browser, api) => {

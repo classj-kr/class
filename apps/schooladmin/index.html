@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>학사일정·교육과정</title>
-    <link rel="stylesheet" href="style.css?v=20261119-annual-daily">
+    <link rel="stylesheet" href="style.css?v=20261119-annual-edit">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 </head>
 <body>
@@ -553,6 +553,11 @@
                             <option value="5">5반</option>
                         </select>
                     </label>
+                    <label>학년부장:
+                        <select id="annualGradeHeadSelect" class="form-select" disabled>
+                            <option value="">지정 안 함</option>
+                        </select>
+                    </label>
                     <button type="button" id="printOfficialDocBtn" class="primary-button" style="background:#2563eb;">
                         <span class="material-symbols-outlined">print</span> 서류 인쇄 / PDF
                     </button>
@@ -600,6 +605,7 @@
 
             <div class="schedule-editor-panel margin-top">
                 <h3>일자별 시간표</h3>
+                <p class="annual-edit-note" id="annualEditNote" hidden>칸을 누르면 그 날짜의 과목만 바꿉니다. 기초시간표는 그대로이고, 바꾼 칸은 밑줄로 표시됩니다.</p>
                 <div class="table-container">
                     <table class="data-table annual-table annual-daily-table">
                         <thead id="annualTimetableTableHead"></thead>
@@ -608,10 +614,19 @@
                     </table>
                 </div>
             </div>
+            <div class="annual-cell-editor" id="annualCellEditor" role="dialog" aria-labelledby="annualCellEditorTitle" hidden>
+                <strong id="annualCellEditorTitle"></strong>
+                <select id="annualCellEditorSubject" class="form-select" aria-label="과목"></select>
+                <label class="annual-cell-editor-check"><input type="checkbox" id="annualCellEditorWholeDay"> 이 날 수업 교시 모두</label>
+                <div class="annual-cell-editor-actions">
+                    <button type="button" id="annualCellEditorCancel" class="primary-button secondary">닫기</button>
+                    <button type="button" id="annualCellEditorSave" class="primary-button">저장</button>
+                </div>
+            </div>
         </section>
     </main>
 
     <script src="textbooks.js?v=20261008-1"></script>
-    <script src="app.js?v=20261119-annual-daily"></script>
+    <script src="app.js?v=20261119-annual-edit"></script>
 </body>
 </html>

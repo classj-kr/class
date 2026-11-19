@@ -1389,6 +1389,28 @@ function createClassroomPlatform(options = {}) {
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         UNIQUE (school_id, academic_year, grade, class_number, day_of_week, period)
       )`,
+      // 연간시간표에서 날짜 하나의 교시를 바꾼 것(행사 날 창체로 돌리기 등). 기초시간표는 그대로 두고
+      // 이 날짜·교시만 덮는다. subject_name 이 '' 이면 그 교시는 수업이 없다.
+      `CREATE TABLE IF NOT EXISTS school_class_day_timetable (
+        school_id BIGINT NOT NULL REFERENCES classroom_schools(id) ON DELETE CASCADE,
+        academic_year INTEGER NOT NULL,
+        grade INTEGER NOT NULL,
+        class_number INTEGER NOT NULL,
+        lesson_date DATE NOT NULL,
+        period INTEGER NOT NULL CHECK (period BETWEEN 1 AND 8),
+        subject_name TEXT NOT NULL DEFAULT '',
+        updated_by BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (school_id, academic_year, grade, class_number, lesson_date, period)
+      )`,
+      // 학년부장. 교직원 분류는 한 사람에 하나라(담임이면서 학년부장) 학년마다 따로 둔다.
+      `CREATE TABLE IF NOT EXISTS school_grade_heads (
+        school_id BIGINT NOT NULL REFERENCES classroom_schools(id) ON DELETE CASCADE,
+        academic_year INTEGER NOT NULL,
+        grade INTEGER NOT NULL,
+        teacher_id BIGINT NOT NULL REFERENCES classroom_teachers(id) ON DELETE CASCADE,
+        PRIMARY KEY (school_id, academic_year, grade)
+      )`,
       `ALTER TABLE school_master_timetable
         ADD COLUMN IF NOT EXISTS teacher_user_id BIGINT REFERENCES classroom_users(id) ON DELETE SET NULL`,
       `ALTER TABLE school_master_timetable
@@ -8177,7 +8199,7 @@ function createClassroomPlatform(options = {}) {
 
   // ── Step 5: Annual 34-Week Timetable Synthesis API ──
   router.get("/school-admin/annual-timetable-34weeks", asyncRoute(async (req, res) => {
-    const { profile } = await requireSchoolCurriculum(req);
+    const { user, profile } = await requireSchoolCurriculum(req);
     const year = timetableRules.parseYear(req.query.academicYear);
     const target = timetableRules.parseClass(req.query.grade, req.query.classNumber);
     if (year === null || !target) throw new HttpError(400, "INVALID_CLASS", "학년도와 학년·반을 확인하세요.");
@@ -8231,10 +8253,24 @@ function createClassroomPlatform(options = {}) {
     const curriculum = hoursRes.rows.map(row => ({
       subject: row.subject_name, annual: Number(row.annual_required_hours) || 0, category: row.category
     }));
+    const [dayRows, headRows, canEditDays] = await Promise.all([
+      pool.query(
+        `SELECT lesson_date::TEXT AS date, period, subject_name AS subject FROM school_class_day_timetable
+         WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4 ORDER BY lesson_date, period`,
+        [profile.school_id, year, grade, classNum]),
+      pool.query(
+        `SELECT t.id, t.teacher_name FROM school_grade_heads h JOIN classroom_teachers t ON t.id = h.teacher_id
+         WHERE h.school_id = $1 AND h.academic_year = $2 AND h.grade = $3`,
+        [profile.school_id, year, grade]),
+      canEditClassDays(user, profile, year, grade, classNum)
+    ]);
 
     res.json({
       lessons,
       curriculum,
+      dayChanges: dayRows.rows.map(row => ({ date: row.date, period: Number(row.period), subject: row.subject })),
+      gradeHead: headRows.rows[0] ? { id: String(headRows.rows[0].id), name: headRows.rows[0].teacher_name } : null,
+      canEditDays,
       academicYear: year,
       grade,
       classNumber: classNum,
@@ -8244,6 +8280,94 @@ function createClassroomPlatform(options = {}) {
       dailyPeriodsMap,
       hasTimetable
     });
+  }));
+
+  // 연간시간표의 날짜별 칸을 바꿀 수 있는 사람: 학교 관리자, 그 학년의 학년부장, 그 반 담임.
+  async function canEditClassDays(user, profile, year, grade, classNumber) {
+    if (["관리자", "교장", "교감"].includes(profile.teacher_type)) return true;
+    const mine = (await teacherRegistrations(user)).filter(r => String(r.school_id) === String(profile.school_id));
+    const sameYear = r => r.academic_year == null || Number(r.academic_year) === year;
+    if (mine.some(r => sameYear(r) && Number(r.grade) === grade && Number(r.class_number) === classNumber && r.teacher_type !== "전담")) return true;
+    if (!mine.length) return false;
+    const head = await pool.query(
+      `SELECT 1 FROM school_grade_heads WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND teacher_id = ANY($4::bigint[])`,
+      [profile.school_id, year, grade, mine.map(r => r.id)]);
+    return head.rows.length > 0;
+  }
+
+  // 날짜 하나의 교시들을 바꾼다. subject 가 null 이면 기초시간표대로 되돌리고, '' 이면 그 교시는 수업이 없다.
+  router.put("/school-admin/class-day-timetable", asyncRoute(async (req, res) => {
+    const { user, profile } = await requireSchoolCurriculum(req);
+    const year = timetableRules.parseYear(req.body?.academicYear);
+    const target = timetableRules.parseClass(req.body?.grade, req.body?.classNumber);
+    const date = String(req.body?.date || "");
+    const changes = req.body?.changes;
+    const day = /^\d{4}-\d{2}-\d{2}$/.test(date) ? new Date(`${date}T00:00:00Z`) : null;
+    const inYear = day && !Number.isNaN(day.getTime()) && day.toISOString().slice(0, 10) === date
+      && date >= `${year}-03-01` && date < `${year + 1}-03-01` && day.getUTCDay() >= 1 && day.getUTCDay() <= 5;
+    const valid = Array.isArray(changes) && changes.length >= 1 && changes.length <= 8 && changes.every(c =>
+      Number.isInteger(c?.period) && c.period >= 1 && c.period <= 8
+      && (c.subject === null || (typeof c.subject === "string" && c.subject.trim().length <= 50)));
+    if (year === null || !target || !inYear || !valid || new Set(changes.map(c => c.period)).size !== changes.length) {
+      throw new HttpError(400, "INVALID_DAY_TIMETABLE", "학년도 안의 평일 날짜와 1~8교시 과목을 확인하세요.");
+    }
+    if (!await canEditClassDays(user, profile, year, target.grade, target.classNumber)) {
+      throw new HttpError(403, "DAY_TIMETABLE_FORBIDDEN", "이 반의 연간시간표는 담임·학년부장·학교 관리자만 바꿀 수 있습니다.");
+    }
+    const key = [profile.school_id, year, target.grade, target.classNumber, date];
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      for (const change of changes) {
+        if (change.subject === null) {
+          await client.query(
+            `DELETE FROM school_class_day_timetable WHERE school_id = $1 AND academic_year = $2 AND grade = $3
+               AND class_number = $4 AND lesson_date = $5 AND period = $6`, [...key, change.period]);
+        } else {
+          await client.query(
+            `INSERT INTO school_class_day_timetable (school_id, academic_year, grade, class_number, lesson_date, period, subject_name, updated_by)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+             ON CONFLICT (school_id, academic_year, grade, class_number, lesson_date, period)
+             DO UPDATE SET subject_name = EXCLUDED.subject_name, updated_by = EXCLUDED.updated_by, updated_at = NOW()`,
+            [...key, change.period, timetableRules.cleanSubject(change.subject), user.id]);
+        }
+      }
+      await client.query("COMMIT");
+    } catch (error) {
+      await client.query("ROLLBACK").catch(() => {});
+      throw error;
+    } finally {
+      client.release();
+    }
+    const saved = await pool.query(
+      `SELECT period, subject_name AS subject FROM school_class_day_timetable
+       WHERE school_id = $1 AND academic_year = $2 AND grade = $3 AND class_number = $4 AND lesson_date = $5 ORDER BY period`, key);
+    res.json({ date, changes: saved.rows.map(row => ({ date, period: Number(row.period), subject: row.subject })) });
+  }));
+
+  // 학년부장 지정은 학교 관리자만 한다. teacherId 가 비면 지정을 지운다.
+  router.put("/school-admin/grade-head", asyncRoute(async (req, res) => {
+    const { profile } = await requireSchoolAdmin(req);
+    const year = timetableRules.parseYear(req.body?.academicYear);
+    const grade = Number(req.body?.grade);
+    if (year === null || !Number.isInteger(grade) || grade < 1 || grade > 6) {
+      throw new HttpError(400, "INVALID_GRADE", "학년도와 학년을 확인하세요.");
+    }
+    const teacherId = req.body?.teacherId ? String(req.body.teacherId) : "";
+    if (!teacherId) {
+      await pool.query("DELETE FROM school_grade_heads WHERE school_id = $1 AND academic_year = $2 AND grade = $3", [profile.school_id, year, grade]);
+      return res.json({ gradeHead: null });
+    }
+    const teacher = (await pool.query(
+      `SELECT id, teacher_name FROM classroom_teachers
+       WHERE id = $1 AND school_id = $2 AND active = TRUE AND teacher_type NOT IN ('일반직', '행정실장')`,
+      [/^\d+$/.test(teacherId) ? teacherId : "0", profile.school_id])).rows[0];
+    if (!teacher) throw new HttpError(400, "INVALID_TEACHER", "이 학교의 교사를 고르세요.");
+    await pool.query(
+      `INSERT INTO school_grade_heads (school_id, academic_year, grade, teacher_id) VALUES ($1, $2, $3, $4)
+       ON CONFLICT (school_id, academic_year, grade) DO UPDATE SET teacher_id = EXCLUDED.teacher_id`,
+      [profile.school_id, year, grade, teacher.id]);
+    res.json({ gradeHead: { id: String(teacher.id), name: teacher.teacher_name } });
   }));
 
 

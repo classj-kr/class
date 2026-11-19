@@ -23,7 +23,8 @@ class HttpError extends Error {
 }
 const tables = ['school_special_rooms', 'school_annual_schedules', 'school_general_events',
   'school_vacation_settings', 'school_public_holidays_cache', 'school_curriculum_hours',
-  'school_bell_schedule', 'school_weekly_period_allocation', 'school_master_timetable'];
+  'school_bell_schedule', 'school_weekly_period_allocation', 'school_master_timetable',
+  'school_class_day_timetable', 'school_grade_heads'];
 const reads = [
   ['annual-schedules', { academicYear: '2026' }], ['curriculum-access', {}],
   ['public-holidays', { year: '2026' }], ['curriculum-hours', { academicYear: '2026', grade: '5' }],
@@ -118,7 +119,7 @@ async function withSchool(run) {
       fetchNagerHolidays: async year => [{ date: `${year}-01-01`, name: '검증신정' }],
       CURRICULUM_CATEGORIES: new Set(['SUBJECT', 'CHANGTAE']) };
     const names = ['requireUser', 'teacherRegistrations', 'teacherRegistration', 'requireTeacher', 'requireSchoolAdmin',
-      'requireSchoolCurriculum', 'schoolTimetableTeacher', 'parseCurriculumGrade', 'upsertApiHolidays'];
+      'requireSchoolCurriculum', 'schoolTimetableTeacher', 'parseCurriculumGrade', 'upsertApiHolidays', 'canEditClassDays'];
     Object.assign(bindings, new Function(...Object.keys(bindings), `${names.map(actualFunction).join('\n')}
       return { ${names.filter(n => !baseline || n !== 'requireSchoolCurriculum').join(', ')} };`)(...Object.values(bindings)));
     const routes = new Map();
@@ -137,7 +138,7 @@ async function withSchool(run) {
       await fn({ user: await actor(id), query: {}, body: {}, params: {}, ...args }, res);
       return { status, data };
     };
-    const snapshot = async () => Object.fromEntries(await Promise.all(tables.map(async t => [t, (await db.query(`SELECT * FROM ${t} ORDER BY id`)).rows])));
+    const snapshot = async () => Object.fromEntries(await Promise.all(tables.map(async t => [t, (await db.query(`SELECT * FROM ${t} ORDER BY 1, 2, 3, 4`)).rows])));
     const openBrowser = async (id = 102) => {
       const state = { requests: [], errors: [], dialogs: [], actorId: id };
       const app = express();
