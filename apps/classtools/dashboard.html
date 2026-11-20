@@ -943,6 +943,10 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        /* 예보 칸과 지금 날씨 칸은 낮·밤을 물들여 가른다. 나무결은 그대로 보이게 옅은 하늘빛·어둠만 덮는다
+           (하늘색·검은색으로 꽉 채우면 글씨 상자의 나무결이 사라지고 24칸이 두 덩어리로 갈라져 눈에 세다). */
+        .forecast-hour.is-day, .weather-card .weather-temp.is-day { background-image: linear-gradient(rgba(95, 175, 255, 0.24), rgba(95, 175, 255, 0.24)), var(--weekday-box-image); }
+        .forecast-hour.is-night, .weather-card .weather-temp.is-night { background-image: linear-gradient(rgba(0, 0, 18, 0.6), rgba(0, 0, 18, 0.6)), var(--weekday-box-image); }
         /* 지금 교시는 호박색 테두리로 띄운다(위 공통 테두리가 덮지 않게 뒤에 둔다). 키우는 효과는 나무결 창을 어긋나게 해서 쓰지 않는다. */
         .timetable-item.active { border-color: var(--accent-amber); }
 
@@ -1852,11 +1856,13 @@
                 { name: "중국어", icon: "🏮" },
                 { name: "컴퓨터", icon: "💻" },
                 { name: "자치", icon: "🗣️" },
-                { name: "창체", icon: "✨" },
-                { name: "도덕", icon: "💗" },
-                { name: "실과", icon: "🛠️" },
+                { name: "자율", icon: "🧭" },
                 { name: "동아리", icon: "👥" },
-                { name: "자율", icon: "🧭" }
+                { name: "봉사", icon: "🤝" },
+                { name: "진로", icon: "🎓" },
+                { name: "창체", icon: "🧩" },
+                { name: "도덕", icon: "💗" },
+                { name: "실과", icon: "🛠️" }
             ];
             const match = icons.find(({ name }) => subject.includes(name));
             return '<span class="period-subject-icon" aria-hidden="true">' + (match?.icon || "📘") + '</span>';
@@ -1877,13 +1883,12 @@
                 const div = document.createElement("div");
                 div.className = "timetable-item";
                 
-                const [sH, sM] = (item.s || "09:00").split(":").map(Number);
-                const [eH, eM] = (item.e || "09:40").split(":").map(Number);
-                const startMins = sH * 60 + sM;
-                const endMins = eH * 60 + eM;
-
-                if (currentMins >= startMins && currentMins <= endMins) {
-                    div.classList.add("active");
+                // 시각은 학교 일과 시간에서 온다. 비어 있으면 지금 교시를 가리지 않는다.
+                const hasTimes = /^\d{1,2}:\d{2}$/.test(item.s || "") && /^\d{1,2}:\d{2}$/.test(item.e || "");
+                if (hasTimes) {
+                    const [sH, sM] = item.s.split(":").map(Number);
+                    const [eH, eM] = item.e.split(":").map(Number);
+                    if (currentMins >= sH * 60 + sM && currentMins <= eH * 60 + eM) div.classList.add("active");
                 }
 
                 let placeTag = '';
@@ -1898,11 +1903,11 @@
                 div.innerHTML = `
                     <div class="period-col-left">
                         <span class="period-label">${escHtmlLocal(item.p)}교시</span>
-                        <div class="period-time-stack">
+                        ${item.s || item.e ? `<div class="period-time-stack">
                             <span>${escHtmlLocal(item.s || "")}</span>
                             <span class="wave">~</span>
                             <span>${escHtmlLocal(item.e || "")}</span>
-                        </div>
+                        </div>` : ""}
                     </div>
                     <div class="period-col-center">
                         <div class="period-subject-copy">
@@ -3260,6 +3265,7 @@
                 const condition = describeWeatherItem(item);
                 const cell = document.createElement("div");
                 cell.className = "forecast-hour";
+                if (item.isDay === 1 || item.isDay === 0) cell.classList.add(item.isDay ? "is-day" : "is-night");
                 if (index === 0) cell.classList.add("is-current");
                 const isNextDay = !item.time.startsWith(now.date);
                 if (isNextDay && !markedNextDay) {
@@ -3342,6 +3348,8 @@
             document.getElementById("forecastCard").title = "자료: " + (source === "kma" ? "기상청" : "Open-Meteo");
             const condition = describeWeatherItem(current);
             const temp = document.getElementById("weatherTemp");
+            temp.classList.toggle("is-day", current.isDay === 1);
+            temp.classList.toggle("is-night", current.isDay === 0);
             temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
             const conditionText = document.createElement("span");
             conditionText.className = "weather-condition";
