@@ -37,6 +37,10 @@ function probe(){const bad=[],roll=[];
     await new Promise(r=>setTimeout(r,140));
     try{
      if(lang==='en'&&!frame.contentWindow.eval('HAS_EN')){has=false;break;}
+     // 책은 이제 저장된 말을 읽지 않고 늘 우리말로 열린다(2026-10 저장 정책). 그래서 영어는 말 바꾸기 단추를 눌러서 잰다.
+     // 이 줄이 없던 동안 영어 칸은 우리말을 두 번 잰 것이었다(2026-11-21 알아챔).
+     if(lang==='en'){frame.contentWindow.eval("if(LANG!=='en'){document.getElementById('langLink').click();}");await new Promise(r=>setTimeout(r,200));
+      if(frame.contentWindow.eval('LANG')!=='en'){res.push('  [en] 영어로 못 바꿈');continue;}}
      const v=frame.contentWindow.eval('('+probe.toString()+')()');
      v.bad.forEach(x=>res.push('  ['+lang+' '+w+'x'+h+'] '+x));
      if(v.roll.length) roll.push('  ['+lang+' '+w+'x'+h+'] 굴려서 보는 칸 '+v.roll.length+'곳');}
