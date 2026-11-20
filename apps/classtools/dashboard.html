@@ -943,10 +943,14 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
-        /* 예보 칸과 지금 날씨 칸은 낮·밤을 물들여 가른다. 나무결은 그대로 보이게 옅은 하늘빛·어둠만 덮는다
-           (하늘색·검은색으로 꽉 채우면 글씨 상자의 나무결이 사라지고 24칸이 두 덩어리로 갈라져 눈에 세다). */
-        .forecast-hour.is-day, .weather-card .weather-temp.is-day { background-image: linear-gradient(rgba(95, 175, 255, 0.24), rgba(95, 175, 255, 0.24)), var(--weekday-box-image); }
-        .forecast-hour.is-night, .weather-card .weather-temp.is-night { background-image: linear-gradient(rgba(0, 0, 18, 0.6), rgba(0, 0, 18, 0.6)), var(--weekday-box-image); }
+        /* 예보 칸과 지금 날씨 칸은 하늘처럼 낮은 하늘색, 밤은 밤하늘색으로 채운다(나무결 대신 하늘).
+           하늘색 칸에서는 하늘색 강수 글씨와 60% 파란 바탕이 묻히므로 글씨는 희게, 60%는 흰 바탕에 파란 숫자로(낮 칸이 어두워지지 않게). */
+        .forecast-hour.is-day, .weather-card .weather-temp.is-day { background: linear-gradient(180deg, #4b9fe0, #2f7fc4); }
+        .forecast-hour.is-night, .weather-card .weather-temp.is-night { background: linear-gradient(180deg, #131d3a, #0a1022); }
+        .forecast-hour.is-day .forecast-rain { color: #eef6ff; }
+        .forecast-hour.is-day .forecast-rain.rain-some { color: #ffffff; }
+        .forecast-hour.is-day .forecast-rain.rain-high .rain-value { background: #ffffff; color: #1565c0; }
+        .weather-card .weather-temp.is-day .weather-condition { color: #fff4c2; }
         /* 지금 교시는 호박색 테두리로 띄운다(위 공통 테두리가 덮지 않게 뒤에 둔다). 키우는 효과는 나무결 창을 어긋나게 해서 쓰지 않는다. */
         .timetable-item.active { border-color: var(--accent-amber); }
 
