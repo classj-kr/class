@@ -116,7 +116,7 @@
       }));
       lobbyTeams.replaceChildren();
       if (host) {
-        for (const size of [1, 2, 3, 4]) {
+        for (const size of [1, 2, 3, 4, 5, 6, 8, 10]) {
           const b = el('button', size === s.teamSize ? 'on' : '', size === 1 ? '개인전' : `${size}명 팀`); b.type = 'button'; b.dataset.sfx = 'click';
           b.setAttribute('aria-pressed', String(size === s.teamSize));
           b.addEventListener('click', () => send({ type: 'MUSEUM_RACE_TEAM', size }));
