@@ -38,7 +38,6 @@ test.afterEach(async()=>{try{assert.deepEqual(errors,[]);}finally{await context?
 test.after(async()=>{await browser?.close();await h?.close();});
 test('main menu reaches geoboard and shared settings expose only the effects channel',async()=>{
   await page.goto(h.base+'/');
-  await page.locator('#category-literacy-toggle').click();
   await page.locator('[data-access-group="numeracy"] > summary').click();
   await page.locator('a[href="learning/literacy-numeracy/math-tools/"]').click();
   await page.locator(`a[href="${url}"]`).click();await ready(page);

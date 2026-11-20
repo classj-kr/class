@@ -53,12 +53,14 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     const sibling = page.locator('a[href="learning/games/gemguild/gemguild"]');
     const economyGroup = page.locator('[data-game-category="resource-economy"]');
     const games = page.locator('#category-boardgame-panel');
-    const enterGameGroup = async () => { await toggle('#category-boardgame-toggle'); await economyGroup.locator('summary').click(); };
+    // 첫 화면은 과목·게임 묶음이 늘 펼쳐져 있다(바깥 묶음 단추 없음).
+    const enterGameGroup = async () => { await economyGroup.locator('summary').click(); };
     for (const accessMode of ['open', 'restricted']) {
       mode = accessMode;
       await Promise.all([page.waitForResponse(response => response.url().endsWith('/api/auth/config')), go()]);
-      assert.equal(await page.locator('#hubContent').isVisible(), false);
-      assert.equal(await page.locator('.category-toggle:visible').count(), 0);
+      // 로그인 전: 메뉴 이름만 보이고(미리보기) 눌러도 열리지 않는다.
+      await page.locator('#hubContent.hub-preview').waitFor({ state: 'visible' });
+      assert.equal(await page.locator('#hubContent').evaluate(node => node.inert), true, 'signed-out preview cannot be opened');
     }
 
     role = 'subject';
@@ -83,7 +85,6 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
       role = editor;
       await go();
       await toggle(button);
-      await toggle('#category-boardgame-toggle');
       const groups = await games.locator('[data-game-category]').all();
       assert.equal(groups.length, 7);
       const startingWrites = writes.length;
@@ -118,7 +119,6 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
     role = 'homeroom';
     await go();
     await toggle('#contentAccessButton');
-    await toggle('#category-literacy-toggle');
     const science = page.locator('[data-access-group="science-computing"]');
     await science.locator('summary').click();
     const lab = science.locator('a[href="learning/inquiry/science-lab/"]');

@@ -45,7 +45,6 @@ test('the math tools catalog reaches the number model on desktop and phone', asy
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await page.goto(h.base + '/');
-    await page.locator('#category-literacy-toggle').click();
     await page.locator('[data-access-group="numeracy"] > summary').click();
     await page.locator('a[href="learning/literacy-numeracy/math-tools/"]').click();
     await page.locator(`a[href="${url}"]`).click();
@@ -220,6 +219,9 @@ test('multiple numbers align, edit independently, undo and restore from the acco
   await page.locator('[data-mode=whole]').click(); assert.deepEqual(await values(), ['124', '234', '345']);
   for (const [width, height] of [[1920,1080], [1366,768], [1024,768], [390,844], [320,800]]) {
     await page.setViewportSize({ width, height });
+    // 크기가 바뀌면 모형이 새 배율로 부드럽게 옮겨 간다: 움직임이 다 끝난 뒤에 잰다.
+    await page.waitForTimeout(150);
+    await page.evaluate(async () => { await Promise.all(document.getAnimations().map(a => a.finished.catch(() => {}))); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
     const layout = await page.evaluate(() => {
       const rows = [...document.querySelectorAll('.model-row')];
       const scales = [...document.querySelectorAll('.block svg')].map(svg => svg.getBoundingClientRect().width / Number(svg.getAttribute('width')));

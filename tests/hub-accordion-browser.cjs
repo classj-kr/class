@@ -116,27 +116,26 @@ async function captureWebp(page, name) {
       await page.setViewportSize({ width, height: 844 });
       await page.goto(origin, { waitUntil: 'networkidle' });
       await page.locator('#signedInArea').waitFor({ state: 'visible' });
-      const games = '#category-boardgame-toggle';
-      await page.locator(games).scrollIntoViewIfNeeded();
-      const opening = await sampleClick(page, games, '.boardgame-section');
-      gradual(opening, 'height', `category opening at ${width}`);
+      // 첫 화면은 한 단계: 게임 묶음 단추들이 바깥 단추 없이 늘 펼쳐져 있다.
       assert.equal(await page.locator('#category-boardgame-panel').isVisible(), true);
-      await lastButtonVisible(page, '#category-boardgame-panel');
+      assert.equal(await page.locator('.category-toggle').count(), 0, 'no outer category toggle');
 
       const first = '[data-game-category="visual-response"] > summary';
       await page.locator(first).scrollIntoViewIfNeeded();
-      const nested = await sampleClick(page, first, width <= 600 ? '[data-game-category="visual-response"]' : '[data-game-category="visual-response"] > .worksheet-group-options');
+      // 하위 메뉴는 어느 너비에서나 단추 위에 떠서 위부터 서서히 드러난다.
+      const nested = await sampleClick(page, first, '[data-game-category="visual-response"] > .worksheet-group-options');
       fs.writeFileSync(path.join(output, `submenu-${width}.json`), JSON.stringify(nested, null, 2));
-      gradual(nested, width <= 600 ? 'height' : 'visibleHeight', `submenu opening at ${width}`);
+      gradual(nested, 'visibleHeight', `submenu opening at ${width}`);
       await lastButtonVisible(page, '[data-game-category="visual-response"] > .worksheet-group-options');
 
       if (width <= 600) {
         const last = '[data-game-category="solo-puzzles"] > summary';
         await page.locator(last).scrollIntoViewIfNeeded();
-        const switching = await sampleClick(page, last, '[data-game-category="visual-response"]');
+        const switching = await sampleClick(page, last, '[data-game-category="solo-puzzles"] > .worksheet-group-options');
         fs.writeFileSync(path.join(output, 'mobile-switch.json'), JSON.stringify(switching, null, 2));
-        gradual(switching, 'height', 'closing an earlier mobile submenu');
-        gradual(switching, 'scroll', 'anchored mobile submenu switch');
+        gradual(switching, 'visibleHeight', 'opening another mobile submenu');
+        await settled(page);
+        assert.equal(await page.locator('[data-game-category="visual-response"]').evaluate(node => node.open), false, 'the earlier mobile submenu closes');
         await lastButtonVisible(page, '[data-game-category="solo-puzzles"] > .worksheet-group-options');
         await captureWebp(page, `expanded-${width}.webp`);
         results.push({ width, mobileSwitchRevealsLastButton: true });
@@ -163,33 +162,26 @@ async function captureWebp(page, name) {
         results.push({ width, popoverScroll: positions });
       }
 
-      await page.locator(games).scrollIntoViewIfNeeded();
-      const closing = await sampleClick(page, games, '.boardgame-section');
-      gradual(closing, 'height', `category closing at ${width}`);
-      assert.equal(await page.locator('#category-boardgame-panel').isVisible(), false);
+      // 열린 하위 메뉴를 닫아 두고 시작한다.
+      for (const open of await page.locator('#category-boardgame-panel details[open] > summary').all()) { await open.click(); await settled(page); }
       assert.equal(await page.locator('#category-boardgame-panel details[open]').count(), 0);
 
-      // Retarget interrupted parent and child transitions, including a child
-      // opened before the parent has reached its original target height.
+      // 움직이는 도중에 다시 누르고 다른 메뉴로 옮겨도 마지막으로 누른 메뉴 하나만 열린 채 끝난다.
       await page.evaluate(async () => {
         const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         const click = (selector) => document.querySelector(selector).click();
-        click('#category-boardgame-toggle');
-        await wait(65);
         click('[data-game-category="spatial-placement"] > summary');
         await wait(65);
         click('[data-game-category="spatial-placement"] > summary');
         await wait(55);
         click('[data-game-category="math-operations"] > summary');
-        await wait(55);
-        click('#category-literacy-toggle');
-        await wait(60);
-        click('#category-boardgame-toggle');
       });
       await settled(page);
-      assert.equal(await page.locator('.category-toggle[aria-expanded="true"]').count(), 1);
-      assert.equal(await page.locator(games).getAttribute('aria-expanded'), 'true');
+      assert.equal(await page.locator('[data-game-category="math-operations"]').evaluate(node => node.open), true);
+      assert.equal(await page.locator('[data-game-category="spatial-placement"]').evaluate(node => node.open), false);
       assert.equal(await page.locator('.hub-accordion-clipping').count(), 0);
+      await page.locator('[data-game-category="math-operations"] > summary').click();
+      await settled(page);
       assert.equal(await page.locator('[data-category-section][style*="height"], .worksheet-group[style*="height"]').count(), 0);
 
       const keyboard = page.locator('[data-game-category="resource-economy"] > summary');
@@ -205,8 +197,6 @@ async function captureWebp(page, name) {
     // Editing still opens the accordion. Only an individual link writes a lock.
     await page.locator('#contentAccessButton').click();
     await settled(page);
-    await page.locator('#category-literacy-toggle').click();
-    await settled(page);
     const story = page.locator('[data-access-group="reading-writing"]');
     await story.locator('summary').click();
     await settled(page);
@@ -218,15 +208,12 @@ async function captureWebp(page, name) {
     await page.locator('#contentAccessButton').click();
 
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.locator('#category-boardgame-toggle').click();
-    await settled(page);
-    assert.equal(await page.locator('#category-boardgame-toggle').getAttribute('aria-expanded'), 'true');
     await page.locator('[data-game-category="math-operations"] > summary').click();
     await settled(page);
     await lastButtonVisible(page, '[data-game-category="math-operations"] > .worksheet-group-options');
-    await page.locator('#category-boardgame-toggle').click();
+    await page.locator('[data-game-category="math-operations"] > summary').click();
     await settled(page);
-    assert.equal(await page.locator('#category-boardgame-panel').isVisible(), false);
+    assert.equal(await page.locator('[data-game-category="math-operations"]').evaluate(node => node.open), false);
     assert.equal(await page.locator('.hub-accordion-clipping').count(), 0);
     assert.deepEqual(errors, []);
     fs.writeFileSync(path.join(output, 'report.json'), JSON.stringify(results, null, 2));

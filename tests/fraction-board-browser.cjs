@@ -47,7 +47,6 @@ test('the math tools catalog opens the fraction board on desktop and phone', asy
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await page.goto(h.base + '/');
-    await page.locator('#category-literacy-toggle').click();
     await page.locator('[data-access-group="numeracy"] > summary').click();
     await page.locator('a[href="learning/literacy-numeracy/math-tools/"]').click();
     await page.locator(`a[href="${url}"]`).click();

@@ -13,7 +13,8 @@
     const columns = $('columns');
     if (!columns) return;
     if (C.rows(state).length > 1 || innerWidth <= 900) {
-      columns.style.removeProperty('--model-zoom');
+      // 줄이 여럿이면 모든 줄이 같은 배율(CSS 값)을 쓴다: 한 줄일 때 붙여 둔 배율이 처음 줄에 남지 않게 전부 뗀다.
+      document.querySelectorAll('.columns').forEach(c => c.style.removeProperty('--model-zoom'));
       return;
     }
     const clouds = [...columns.querySelectorAll('.block-cloud')];
