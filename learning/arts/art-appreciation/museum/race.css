@@ -1,4 +1,4 @@
-/* 전시실 순위전: 미술관과 같은 검정·금빛 판 */
+/* 전시실 순위전 「작품 찾아 달리기」: 미술관과 같은 검정·금빛 판 */
 .race-launch{position:fixed;z-index:9;right:26px;bottom:27px;min-width:164px;padding:11px 18px 10px;border:1px solid rgba(201,166,90,.55);border-radius:4px;background:linear-gradient(180deg,rgba(64,47,20,.92),rgba(17,14,10,.92));color:#f6e3b0;text-align:left;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:transform .2s,border-color .2s}
 .race-launch:hover:not(:disabled){transform:translateY(-2px);border-color:#e3c278}
 .race-launch:disabled{cursor:default;opacity:.72}
@@ -7,11 +7,11 @@
 .race-launch.waiting{animation:raceCall 1.6s ease-in-out infinite}
 @keyframes raceCall{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 0 rgba(240,206,120,.55)}50%{box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 9px rgba(240,206,120,0)}}
 
-.race-lobby,.race-results{position:fixed;z-index:9;right:26px;bottom:96px;width:min(330px,calc(100vw - 24px));max-height:calc(100vh - 220px);overflow:auto;padding:18px 18px 16px;border:1px solid #806735;border-radius:4px;background:rgba(16,13,10,.94);color:#eee2cb;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.race-lobby,.race-results{position:fixed;z-index:9;right:26px;bottom:96px;width:min(340px,calc(100vw - 24px));max-height:calc(100vh - 220px);overflow:auto;padding:18px 18px 16px;border:1px solid #806735;border-radius:4px;background:rgba(16,13,10,.94);color:#eee2cb;box-shadow:0 24px 60px rgba(0,0,0,.6)}
 .race-lobby.nudge{animation:raceNudge .45s ease}
 @keyframes raceNudge{30%{transform:translateX(-7px)}60%{transform:translateX(5px)}}
 .race-kicker{margin:0;color:#c9a65a;font:700 11px/1.3 Georgia,serif;letter-spacing:.14em}
-.race-lobby h3,.race-results h3{margin:4px 0 12px;font:700 19px/1.35 'Noto Serif KR',serif;color:#f6e7c2}
+.race-lobby h3,.race-results h3{margin:4px 0 12px;font:700 18px/1.4 'Noto Serif KR',serif;color:#f6e7c2;word-break:keep-all}
 .race-results h3 small{font:500 13px/1.4 'Noto Sans KR',sans-serif;color:#c7ad78}
 .race-people{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:0;list-style:none}
 .race-people li{display:flex;align-items:center;gap:7px;padding:4px 10px 4px 4px;border:1px solid rgba(201,166,90,.25);border-radius:999px;background:rgba(40,33,24,.8);font-size:14px}
@@ -24,6 +24,12 @@
 .race-teams button{padding:7px 11px;border:1px solid rgba(201,166,90,.35);border-radius:3px;background:rgba(30,25,19,.9);color:#d9c7a1;font-size:13px;cursor:pointer}
 .race-teams button.on{border-color:#e3c278;background:#5a4319;color:#fff3d0}
 .race-mode{color:#d9c7a1;font-size:14px}
+.race-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;margin:-4px 0 14px}
+.race-pick[hidden]{display:none}
+.race-pick button{display:grid;gap:2px;padding:7px 9px;border:1px solid rgba(201,166,90,.25);border-left:5px solid var(--team);border-radius:3px;background:rgba(30,25,19,.9);color:#eadcc0;text-align:left;cursor:pointer}
+.race-pick button b{font-size:13px}
+.race-pick button small{overflow:hidden;color:#a99270;font-size:12px;text-overflow:ellipsis;white-space:nowrap}
+.race-pick button.mine{border-color:var(--team);background:rgba(70,53,22,.85);box-shadow:0 0 0 1px var(--team)}
 .race-actions{display:flex;gap:8px}
 .race-primary,.race-secondary{padding:10px 16px;border-radius:3px;font-size:14px;font-weight:700;cursor:pointer}
 .race-primary{flex:1;border:1px solid #e3c278;background:linear-gradient(180deg,#c99d46,#8d6a2c);color:#1a130a}
@@ -32,41 +38,35 @@
 .race-note{margin:10px 0 0;color:#a99270;font-size:13px}
 .race-results .race-secondary{margin-top:12px;width:100%}
 
-.race-modal{width:min(780px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:22px 30px 28px;border:1px solid #806735;border-radius:4px;background:radial-gradient(circle at 50% 0,rgba(113,78,29,.2),transparent 45%),#15120f;color:#eee2cb;box-shadow:0 35px 100px #000;overflow:auto}
-.race-modal::backdrop{background:rgba(5,4,3,.82)}
-.race-head{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:14px;margin-bottom:12px}
-.race-step{color:#9d855a;font:700 13px/1 Georgia,serif;letter-spacing:.12em}
-.race-score{display:flex;align-items:center;gap:8px;color:#f1dca6;font-weight:700;font-size:15px}
-.race-team-chip{padding:3px 9px;border-radius:999px;color:#17110a;font-size:12px}
-.race-quit{width:34px;height:34px;border:1px solid rgba(201,166,90,.35);border-radius:50%;background:transparent;color:#cdb98f;font-size:20px;line-height:1;cursor:pointer}
-.race-timer{height:4px;margin-bottom:18px;background:#30281d;overflow:hidden}
+/* 경기 중: 전시실은 가리지 않는다. 단서 판은 아래 가운데, 순위는 오른쪽(방 고르기 자리). */
+body.racing .room-tabs,body.racing .hud{display:none}
+.race-hud{position:fixed;z-index:9;left:28px;bottom:27px;width:min(520px,calc(100vw - 400px));padding:13px 18px 12px;border:1px solid #806735;border-radius:4px;background:rgba(14,12,9,.9);color:#eee2cb;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.race-hud-head{display:flex;align-items:center;gap:12px}
+.race-hud-head .race-kicker{flex:1}
+.race-score{display:flex;align-items:center;gap:8px;color:#f1dca6;font-weight:700;font-size:14px}
+.race-team-chip{padding:2px 9px;border-radius:999px;color:#17110a;font-size:12px}
+.race-quit{width:30px;height:30px;border:1px solid rgba(201,166,90,.35);border-radius:50%;background:transparent;color:#cdb98f;font-size:18px;line-height:1;cursor:pointer}
+.race-clue{margin:8px 0 10px;font:600 18px/1.55 'Noto Serif KR',serif;color:#f6ead2;word-break:keep-all}
+.race-timer{height:4px;background:#30281d;overflow:hidden}
 .race-timer i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f0d89c,#c9a65a)}
-.race-ready{display:grid;place-items:center;gap:6px;min-height:280px;text-align:center}
-.race-ready b{font:700 88px/1 Georgia,serif;color:#f0d89c;animation:raceBeat .9s ease infinite}
-.race-ready span{color:#c7ad78;font-size:17px}
-@keyframes raceBeat{0%{transform:scale(.8);opacity:.4}40%{transform:scale(1.06);opacity:1}100%{transform:scale(1)}}
-.race-question[hidden],.race-ready[hidden],.race-reveal[hidden],.race-figure[hidden]{display:none}
-.race-figure{height:min(260px,30vh);margin:0 0 16px;display:grid;place-items:center;background:#0d0b09;border:1px solid rgba(201,166,90,.2)}
-.race-figure img{max-width:100%;max-height:100%;object-fit:contain}
-.race-q{margin:0 0 16px;font:600 19px/1.6 'Noto Serif KR',serif;color:#f3e8d2;word-break:keep-all}
-.race-options{display:grid;gap:9px}
-.race-option{position:relative;padding:13px 16px 13px 48px;border:1px solid rgba(201,166,90,.28);border-radius:3px;background:rgba(31,26,20,.85);color:#eadcc0;font-size:16px;line-height:1.5;text-align:left;cursor:pointer;word-break:keep-all;transition:border-color .15s,background .15s,transform .15s}
-.race-option:before{content:attr(data-letter);position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#c9a65a;font:700 14px Georgia,serif}
-.race-option:hover:not(:disabled){border-color:#e3c278;transform:translateX(3px)}
-.race-option:disabled{cursor:default}
-.race-option.chosen{border-color:#e3c278;background:rgba(90,67,25,.75)}
-.race-option.right{border-color:#f0d89c;background:linear-gradient(90deg,rgba(150,112,40,.6),rgba(60,46,20,.8));color:#fff6dc;box-shadow:0 0 18px rgba(240,216,156,.25)}
-.race-option.missed{border-style:dashed;border-color:#6d6252;background:rgba(30,27,23,.85);color:#a2967f}
-.race-status{min-height:20px;margin:12px 0 0;color:#a99270;font-size:13px}
-.race-reveal{margin-top:14px;padding-top:14px;border-top:1px solid rgba(201,166,90,.2)}
-.race-result{margin:0 0 6px;font:700 18px/1.4 'Noto Serif KR',serif}
-.race-result.good{color:#f0d89c;animation:raceIn .35s ease}
-.race-result.plain{color:#c9bca2}
-.race-explain{margin:0 0 14px;color:#cdbf9f;font-size:14px;line-height:1.6;word-break:keep-all}
+.race-status{min-height:20px;margin:9px 0 0;color:#c9b993;font-size:14px}
+.race-status.good{color:#f0d89c;font-weight:700}
+.race-status.frozen{color:#a8a296}
+.race-status.reveal{color:#e8dcc0}
+.race-answer{font:700 16px 'Noto Serif KR',serif;color:#f6e3b0}
+.race-hud.solved{border-color:#e3c278;box-shadow:0 0 0 1px rgba(240,216,156,.3),0 18px 50px rgba(0,0,0,.55)}
+.race-hud.shake{animation:raceShake .4s ease}
+@keyframes raceShake{20%{transform:translateX(-9px)}45%{transform:translateX(7px)}70%{transform:translateX(-4px)}}
+.race-count{position:fixed;z-index:8;left:50%;top:38%;transform:translate(-50%,-50%);color:#f6e3b0;font:700 120px/1 Georgia,serif;text-shadow:0 6px 30px rgba(0,0,0,.7);pointer-events:none}
+.race-count.beat{animation:raceBeat .9s ease}
+@keyframes raceBeat{0%{transform:translate(-50%,-50%) scale(.6);opacity:.2}35%{transform:translate(-50%,-50%) scale(1.08);opacity:1}100%{transform:translate(-50%,-50%) scale(1)}}
+.race-live{position:fixed;z-index:9;right:26px;top:112px;width:300px;max-height:calc(100vh - 260px);overflow:auto;padding:10px;border:1px solid rgba(201,166,90,.3);border-radius:4px;background:rgba(14,12,9,.82)}
 
 .race-board{display:grid;gap:6px;margin:0;padding:0;list-style:none}
-.race-board li{display:grid;grid-template-columns:22px 30px minmax(0,7em) 1fr 44px;align-items:center;gap:8px;padding:5px 8px;border-radius:3px;background:rgba(36,30,22,.7);font-size:14px}
+.race-board li{position:relative;display:grid;grid-template-columns:22px 30px minmax(0,6.5em) 1fr 44px;align-items:center;gap:8px;padding:5px 8px;border-radius:3px;background:rgba(36,30,22,.7);font-size:14px;transition:background .3s}
 .race-board li.mine{outline:1px solid rgba(240,216,156,.6);background:rgba(70,53,22,.75)}
+.race-board li.done{background:linear-gradient(90deg,rgba(120,92,36,.65),rgba(36,30,22,.7))}
+.race-board li.done .race-rank{color:#fff3d0}
 .race-rank{color:#c9a65a;font:700 14px Georgia,serif;text-align:center}
 .race-swatch{width:22px;height:22px;margin:0 4px;border-radius:50%}
 .race-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#efe3c8}
@@ -75,5 +75,12 @@
 .race-bar i{display:block;height:100%;background:linear-gradient(90deg,#c9a65a,#f0d89c);border-radius:4px;transition:width .6s ease}
 .race-points{color:#f6e3b0;text-align:right;font-variant-numeric:tabular-nums}
 
-@media(max-width:900px){.race-launch{right:12px;bottom:max(16px,env(safe-area-inset-bottom));min-width:0}.race-lobby,.race-results{right:12px;bottom:128px;max-height:calc(100vh - 330px)}}
-@media(max-width:620px){.race-modal{padding:16px 16px 20px}.race-head{grid-template-columns:1fr auto auto;gap:8px}.race-head .race-kicker{display:none}.race-q{font-size:17px}.race-option{font-size:15px;padding:11px 12px 11px 40px}.race-option:before{left:12px}.race-board li{grid-template-columns:20px 28px minmax(0,6em) 1fr 40px;font-size:13px}}
+@media(max-width:900px){
+  .race-launch{right:12px;bottom:max(16px,env(safe-area-inset-bottom));min-width:0}
+  .race-lobby,.race-results{right:12px;bottom:128px;max-height:calc(100vh - 330px)}
+  .race-hud{left:12px;top:76px;bottom:auto;width:calc(100vw - 24px)}
+  .race-clue{font-size:16px}
+  .race-live{top:auto;right:12px;bottom:max(16px,env(safe-area-inset-bottom));width:min(250px,calc(100vw - 140px));max-height:none;padding:6px}
+  .race-live li{grid-template-columns:18px 24px minmax(0,4.5em) 1fr 36px;gap:5px;padding:3px 6px;font-size:12px}
+  .race-live .race-face{width:24px;height:24px}
+}

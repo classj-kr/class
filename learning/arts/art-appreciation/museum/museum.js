@@ -148,7 +148,7 @@
   function updateRemoteAvatars(dt) {
     for (const entry of remotePeople.values()) {
       const visible = entry.room === rooms[activeRoom].id;
-      entry.group.visible = visible && !modal.open && !finaleModal.open && !race.modal.open;
+      entry.group.visible = visible && !modal.open && !finaleModal.open;
       const key = visible ? entry.avatarKey : '';
       if (entry.actor.key !== key) void entry.actor.assign(key);
       const gap = Math.hypot(entry.x-entry.group.position.x,entry.z-entry.group.position.z);
@@ -520,15 +520,13 @@
       const randomizedChoices=shuffledCopy(choices);
       return {...item,options:randomizedChoices.map(choice=>choice.label),answer:randomizedChoices.findIndex(choice=>choice.correct)};
     }));
-    document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · GALLERY CHECK`;
-    document.getElementById('finale-title').textContent=`${room.title} · 확인 문제`;
+    finaleModal.setAttribute('aria-label',`${room.title} 확인 문제`);
     renderFinaleQuestion();
   }
 
   function showFinale(room) {
     window.ClassGameSfx?.play('card');keysClear();
-    document.getElementById('finale-kicker').textContent=`GALLERY ${room.number} · GALLERY CHECK`;
-    document.getElementById('finale-title').textContent=`${room.title} · 확인 문제`;
+    finaleModal.setAttribute('aria-label',`${room.title} 확인 문제`);
     finaleQuizRoom=room;
     if(readFinaleProgress()[room.id])showFinaleCompletion(room);
     else startFinaleQuiz(room);
@@ -790,6 +788,13 @@
     if(race.hidesFocus()){nearest=null;prompt.hidden=true;return;}
     raycaster.setFromCamera(centerPointer,camera);const hits=raycaster.intersectObjects(clickable,false);const hit=hits.find(h=>h.distance<8.5);
     nearest=hit?hit.object:null;prompt.hidden=!nearest;
+    // 작품 찾아 달리기 중에는 작품을 누르면 그 작품을 고른다(감상 창·확인 문제는 열지 않는다).
+    if(race.inRace()){
+      if(nearest?.userData.finaleRoom)nearest=null;
+      prompt.hidden=!nearest||!race.hunting();
+      if(!prompt.hidden){promptKicker.textContent='작품 찾기';promptTitle.textContent=nearest.userData.work.title;promptAction.textContent='클릭해서 이 작품 고르기';}
+      return;
+    }
     if(nearest){
       const finaleRoom=nearest.userData.finaleRoom;
       promptKicker.textContent=finaleRoom?'전시실 확인':'작품 가까이';
@@ -807,13 +812,13 @@
     selfAvatar.position.y+=race.floorAt(playerPosition.x,playerPosition.z);
     selfAvatar.rotation.y=avatarHeading;
     selfActor.moving=actualSpeed>.03;selfActor.speed=actualSpeed;
-    selfAvatar.visible=follow.distance>.85&&!avatarReview&&!nearest&&!modal.open&&!finaleModal.open&&!race.modal.open;
+    selfAvatar.visible=follow.distance>.85&&!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
   }
 
   function animate(){
     requestAnimationFrame(animate);
     const now=performance.now(),gap=now-lastLoopTime;lastLoopTime=now;
-    const modalOpen=modal.open||finaleModal.open||race.modal.open,hidden=document.hidden;
+    const modalOpen=modal.open||finaleModal.open,hidden=document.hidden;
     const active=raceActive||dragging||velocity.lengthSq()>.0009||Object.values(keys).some(Boolean)||[...remotePeople.values()].some(p=>p.room===rooms[activeRoom].id&&p.moving&&now-p.received<700);
     const loadingRoom=!loading.classList.contains('done');
     const scale=resolutionBudget.sample(gap,!hidden&&!modalOpen&&active&&!loadingRoom);
@@ -826,13 +831,13 @@
     renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);
   }
 
-  addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open&&!race.modal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
+  addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open){if(race.inRace())race.claim(nearest.userData.work);else if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
   addEventListener('keyup',e=>{keys[e.code]=false;});
   addEventListener('blur',keysClear);
   document.addEventListener('visibilitychange',()=>{if(document.hidden){keysClear();sendPresence();}});
   canvas.addEventListener('pointerdown',e=>{dragging=true;pointerDown={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,time:performance.now()};canvas.classList.add('dragging');canvas.setPointerCapture(e.pointerId);});
   canvas.addEventListener('pointermove',e=>{if(!dragging||!pointerDown)return;const dx=e.clientX-pointerDown.lastX,dy=e.clientY-pointerDown.lastY;pointerDown.lastX=e.clientX;pointerDown.lastY=e.clientY;yaw-=dx*.0032;pitch=clamp(pitch-dy*.0025,-1.15,1.15);});
-  canvas.addEventListener('pointerup',e=>{dragging=false;canvas.classList.remove('dragging');if(!pointerDown)return;const moved=Math.hypot(e.clientX-pointerDown.x,e.clientY-pointerDown.y);if(moved<8&&performance.now()-pointerDown.time<550){pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false).find(x=>x.distance<10);if(hit){if(hit.object.userData.finaleRoom)showFinale(hit.object.userData.finaleRoom);else showWork(hit.object.userData.work,hit.object.userData.room);}}pointerDown=null;});
+  canvas.addEventListener('pointerup',e=>{dragging=false;canvas.classList.remove('dragging');if(!pointerDown)return;const moved=Math.hypot(e.clientX-pointerDown.x,e.clientY-pointerDown.y);if(moved<8&&performance.now()-pointerDown.time<550){pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(clickable,false).find(x=>x.distance<10);if(hit){if(race.inRace())race.claim(hit.object.userData.work);else if(hit.object.userData.finaleRoom)showFinale(hit.object.userData.finaleRoom);else showWork(hit.object.userData.work,hit.object.userData.room);}}pointerDown=null;});
   canvas.addEventListener('pointercancel',()=>{dragging=false;pointerDown=null;canvas.classList.remove('dragging');});
   addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO)*resolutionScale);framePolicy.invalidate();});
   document.getElementById('modal-close').addEventListener('click',()=>modal.close());document.getElementById('finale-close').addEventListener('click',()=>finaleModal.close());

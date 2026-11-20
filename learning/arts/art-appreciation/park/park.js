@@ -670,7 +670,7 @@
     document.getElementById('finale-progress').style.width = '100%';
     document.getElementById('finale-stamp-number').textContent = '★';
     document.getElementById('finale-complete-title').textContent = alreadyHad ? '이미 획득한 큐레이터 도장이에요' : '관찰의 눈을 얻었어요';
-    document.getElementById('finale-complete-copy').textContent = '다섯 문제를 모두 맞혔어요. 이제 이 테마파크의 어린이 큐레이터입니다.';
+    document.getElementById('finale-complete-copy').textContent = '다섯 문제를 모두 맞혔어요. 이제 야외 조각 공원의 어린이 큐레이터입니다.';
   }
   function showQuizRetry() {
     const total = quizQuestions.length;
