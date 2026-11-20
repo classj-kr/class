@@ -363,21 +363,15 @@
             showToast("이 단계에는 삽화 문제가 없습니다.");
             return;
         }
-        // 보기는 같은 차시 성어끼리 헷갈리게 고른다. 네 개뿐인 차시는 늘 같은 네 개라 마지막 문제가 저절로 풀리므로,
-        // 뜻이 가장 비슷한 바깥 성어 하나를 후보에 더한다.
-        const ask = (idiom) => {
-            if (quizPool.length >= 5) return core.createQuestion(idiom, quizPool, selectedQuizMode);
-            const near = core.selectDistractors(idiom, data.filter((item) => !quizPool.includes(item)), "meaning")[0];
-            return core.createQuestion(idiom, near ? [...quizPool, near] : quizPool, selectedQuizMode);
-        };
         quizIsMistakeRetry = Array.isArray(mistakeIds);
         if (quizIsMistakeRetry) {
             const mistakeSet = new Set(mistakeIds);
             quiz = core.shuffle(quizPool.filter((idiom) => mistakeSet.has(idiom.id)))
-                .map(ask);
+                .map((idiom) => core.createQuestion(idiom, quizPool, selectedQuizMode, Math.random, false));
             if (!quiz.length) return;
         } else {
-            quiz = core.shuffle(quizPool).slice(0, Math.min(10, quizPool.length)).map(ask);
+            // 보기는 이 차시 성어에서만 고른다(헷갈리는 짝을 빼고 모자라면 보기가 셋이 된다).
+            quiz = core.buildQuiz(quizPool, Math.min(10, quizPool.length), selectedQuizMode, Math.random, false);
         }
         quizIndex = 0;
         quizScore = 0;

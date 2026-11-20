@@ -133,11 +133,11 @@
             .map((item) => item.candidate);
     }
 
-    function selectDistractors(idiom, data, type, random = Math.random) {
+    function selectDistractors(idiom, data, type, random = Math.random, fill = true) {
         const usable = (item) => item.id !== idiom.id && !hasAmbiguousMeaning(idiom.id, item.id);
         const picked = rankDistractors(idiom, data.filter(usable), type, random).slice(0, 3);
-        if (picked.length < 3) {
-            // 차시가 작아 헷갈리는 짝을 빼면 보기가 모자랄 때는 전체 목록에서 채운다.
+        if (picked.length < 3 && fill) {
+            // fill 이 참이면(순위전 등) 모자란 보기를 전체 목록에서 채운다. 차시 문제는 채우지 않는다 — 다른 차시 성어가 끼면 「이 차시에 없던 말」로 지워져 뜻을 몰라도 풀린다.
             const allData = Array.isArray(globalThis.IDIOM_DATA) ? globalThis.IDIOM_DATA : [];
             const pickedIds = new Set(picked.map((item) => item.id));
             const extra = allData.filter((item) => usable(item) && !pickedIds.has(item.id));
@@ -146,11 +146,11 @@
         return picked;
     }
 
-    function createQuestion(idiom, data, type, random = Math.random) {
+    function createQuestion(idiom, data, type, random = Math.random, fill = true) {
         const promptType = type === "mixed"
             ? (random() < 0.5 ? "meaning" : "story")
             : type;
-        const wrong = selectDistractors(idiom, data, promptType, random);
+        const wrong = selectDistractors(idiom, data, promptType, random, fill);
         const options = shuffle([idiom, ...wrong], random).map((item) => ({
             id: item.id,
             label: `${item.word} · ${item.hanja}`
@@ -169,11 +169,11 @@
         };
     }
 
-    function buildQuiz(data, count = 10, type = "mixed", random = Math.random) {
+    function buildQuiz(data, count = 10, type = "mixed", random = Math.random, fill = true) {
         const normalizedType = ["meaning", "story", "image", "mixed"].includes(type) ? type : "mixed";
         return shuffle(data, random)
             .slice(0, Math.min(Math.max(1, count), data.length))
-            .map((idiom) => createQuestion(idiom, data, normalizedType, random));
+            .map((idiom) => createQuestion(idiom, data, normalizedType, random, fill));
     }
 
     return { shuffle, normalizeProgress, summarize, filterDeck, hasAmbiguousMeaning, selectDistractors, createQuestion, buildQuiz };

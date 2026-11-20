@@ -64,10 +64,13 @@ assert.ok(
 );
 assert.ok(core.hasAmbiguousMeaning("jaeopjadeuk", "ingwaeungbo"), "자업자득과 인과응보는 서로의 오답이 되면 안 됩니다.");
 
-// 네 개뿐인 차시에서 헷갈리는 짝을 빼도 보기는 네 개가 되어야 한다(모자라면 전체에서 채움).
+// 차시 문제는 보기를 그 차시에서만 고른다. 헷갈리는 짝을 빼서 모자라면 보기가 줄어들 뿐, 다른 차시 성어로 채우지 않는다.
 const smallLesson = ["myeonggyeongjisu", "dumunbulchul", "anhamuin", "huanmuchi"].map((id) => data.find((item) => item.id === id));
-const anhamuin = core.createQuestion(smallLesson[2], smallLesson, "meaning", () => 0.42);
-assert.strictEqual(new Set(anhamuin.options.map((option) => option.id)).size, 4);
+const anhamuin = core.createQuestion(smallLesson[2], smallLesson, "meaning", () => 0.42, false);
+assert.strictEqual(anhamuin.options.length, 3);
+assert.ok(anhamuin.options.every((option) => smallLesson.some((item) => item.id === option.id)), "차시 밖 성어가 보기에 나오면 안 됩니다.");
 assert.ok(!anhamuin.options.some((option) => option.id === "huanmuchi"), "안하무인 문제에 후안무치가 오답으로 나오면 안 됩니다.");
+// 순위전처럼 채우기를 켜면 네 개가 된다.
+assert.strictEqual(new Set(core.createQuestion(smallLesson[2], smallLesson, "meaning", () => 0.42).options.map((option) => option.id)).size, 4);
 
 console.log(`idioms core unit tests: ok (${data.length} entries)`);
