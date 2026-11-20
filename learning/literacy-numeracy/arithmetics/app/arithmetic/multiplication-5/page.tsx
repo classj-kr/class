@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { createMultiplicationFiveProblemSet, type MultiplicationFiveProblem } from "../../../lib/multiplication-five";
@@ -81,7 +82,7 @@ export default function MultiplicationFivePage() {
       <div className="a4-sheet counting-sheet multiplication-sheet multiplication-five-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>2학년</span><strong>구구단(종합){answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="multiplication-columns multiplication-five-columns">
           {questionSet.columns.map((column, columnIndex) => <div className="multiplication-column multiplication-five-column" key={columnIndex}>{column.map((problem) => renderProblem(problem, answerSheet))}</div>)}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { createNumericChoices, uniqueFormattedChoices } from "../../../../lib/worksheet-choice-utils";
@@ -117,7 +118,7 @@ export default function NumericChoiceWorksheet({ initialSeed, subject, title, in
       <div className={`a4-sheet counting-sheet polynomial-sheet logarithm-sheet polynomial-sheet-${problems.length}`} style={{ transform: `scale(${scale})` }}>
         <header className="counting-sheet-header polynomial-sheet-header">
           <div className="counting-sheet-title"><span>{subject}</span><strong>{title}{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {set.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         {formulaGuide && (showFormulaGuide || answerSheet) && (
           <div className="numeric-formula-guide" data-testid="numeric-formula-guide">{formulaGuide}</div>

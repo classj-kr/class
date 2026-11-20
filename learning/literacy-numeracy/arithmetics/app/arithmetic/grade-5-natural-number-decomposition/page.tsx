@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { createNaturalNumberDecompositionSet, isPrimeFactorizationAnswer } from "../../../lib/natural-number-decomposition";
@@ -91,7 +92,7 @@ export default function GradeFiveNaturalNumberDecompositionPage() {
       <div className="a4-sheet counting-sheet natural-decomposition-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>5학년</span><strong>자연수를 소수의 곱으로 나타내기{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <p className="natural-decomposition-guide">곱셈은 *로 입력하세요.</p>
         <div className="natural-decomposition-grid">

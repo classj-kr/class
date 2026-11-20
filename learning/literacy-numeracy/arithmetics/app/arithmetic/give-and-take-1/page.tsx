@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { Friend, Counts, FRIENDS, random, createProblemSet, fieldId, emptyAnswers } from "@/lib/race-sets/give-and-take-1";
@@ -109,8 +110,7 @@ export default function GiveAndTakeOnePage() {
           </div>
           <div className="counting-sheet-info">
             <span>이름 <i /></span>
-            <span>날짜 <i /></span>
-            <small>문제지 {questionSet.seed}</small>
+            <WorksheetDate />
           </div>
         </header>
 

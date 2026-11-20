@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { Problem, random, createProblemSet } from "@/lib/race-sets/grade-3-multiplication-2";
@@ -82,7 +83,7 @@ export default function GradeThreeMultiplicationTwoPage() {
       <div className="a4-sheet counting-sheet mental-math-sheet multiplication-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>3학년</span><strong>두 자리 수 × 한 자리 수{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="multiplication-columns grade-three-multiplication-two-columns">
           {questionSet.columns.map((column, columnIndex) => (

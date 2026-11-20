@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { createProblemSet, normalizeKorean, normalizeNumber, type Problem } from "@/lib/race-sets/grade-4-number-reading";
@@ -105,7 +106,7 @@ export default function GradeFourNumberReadingPage() {
       <div className="a4-sheet counting-sheet large-number-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>4학년</span><strong>큰 수 읽기·쓰기{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="large-number-columns">
           <section className="large-number-column write" aria-label="한자어로 쓰기">

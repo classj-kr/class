@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -102,7 +103,7 @@ export default function GradeFiveDecimalsPage() {
       <div className="a4-sheet counting-sheet grade-four-decimal-sheet grade-five-decimal-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>5학년</span><strong>소수의 곱셈{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="grade-four-decimal-grid grade-five-decimal-grid">
           {problems.map((problem, index) => renderProblem(problem, index, answerSheet))}

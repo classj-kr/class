@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
@@ -173,7 +174,7 @@ export default function PolynomialAdditionSubtractionPage() {
       <div className={`a4-sheet counting-sheet polynomial-sheet polynomial-sheet-${problems.length}`} style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header polynomial-sheet-header">
           <div className="counting-sheet-title"><span>공통수학 1</span><strong>다항식의 덧셈·뺄셈{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="polynomial-instruction"><b>식을 전개하고 빈 공간에 정리 과정을 쓰세요.</b><span>답안 입력에서 4지선다 채점</span></div>
         <div className="polynomial-problem-grid">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { createGradeSixCircleSet, normalizeCircleAnswer } from "../../../lib/grade-six-circle";
@@ -74,7 +75,7 @@ export default function GradeSixCirclePage() {
     const graded = perimeterResult !== undefined && areaResult !== undefined;
     return <article className={"circle-question" + (graded ? perimeterResult && areaResult ? " is-correct" : " is-wrong" : "")} key={problem.id} data-testid="grade-six-circle-question"><span className="circle-index">{index + 1}</span><CircleCompositeDiagram problem={problem} instance={key ? "answers" : "worksheet"} /><div className="circle-answer-pair">{answerField(problem, "perimeter", key)}{answerField(problem, "area", key)}</div></article>;
   };
-  const sheet = (key: boolean) => <div className="a4-sheet counting-sheet circle-sheet" style={{ transform: "scale(" + scale + ")" }}><header className="counting-sheet-header"><div className="counting-sheet-title"><span>6학년</span><strong>원의 둘레와 넓이{key ? " 정답" : ""}</strong></div><div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div></header><p className="circle-guide">원주율 3.14 · 색칠한 부분의 둘레와 넓이를 구하고, 소수 셋째 자리에서 반올림하세요.</p><div className="circle-grid">{problems.map((problem, index) => question(problem, index, key))}</div></div>;
+  const sheet = (key: boolean) => <div className="a4-sheet counting-sheet circle-sheet" style={{ transform: "scale(" + scale + ")" }}><header className="counting-sheet-header"><div className="counting-sheet-title"><span>6학년</span><strong>원의 둘레와 넓이{key ? " 정답" : ""}</strong></div><div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div></header><p className="circle-guide">원주율 3.14 · 색칠한 부분의 둘레와 넓이를 구하고, 소수 셋째 자리에서 반올림하세요.</p><div className="circle-grid">{problems.map((problem, index) => question(problem, index, key))}</div></div>;
 
   useRecordQuestions("arithmetic/grade-6-circle/page", { problems });
 

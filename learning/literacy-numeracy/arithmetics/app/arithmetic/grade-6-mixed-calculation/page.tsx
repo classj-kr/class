@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
@@ -174,7 +175,7 @@ export default function GradeSixMixedCalculationPage() {
 
   function sheet(answerSheet: boolean) {
     return <div className="a4-sheet counting-sheet mixed-calculation-sheet grade-six-mixed-calculation-sheet" style={{ transform: `scale(${sheetScale})` }}>
-      <header className="counting-sheet-header"><div className="counting-sheet-title"><span>6학년</span><strong>분수·소수 혼합 계산{answerSheet ? " 정답" : ""}</strong></div><div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div></header>
+      <header className="counting-sheet-header"><div className="counting-sheet-title"><span>6학년</span><strong>분수·소수 혼합 계산{answerSheet ? " 정답" : ""}</strong></div><div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div></header>
       <div className="mixed-calculation-grid grade-six-mixed-calculation-grid">{problems.map((problem, index) => renderProblem(problem, index, answerSheet))}</div>
     </div>;
   }

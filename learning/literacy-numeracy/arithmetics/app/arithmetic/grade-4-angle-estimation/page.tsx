@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { ANGLE_ESTIMATION_INSTRUCTION, createAngleEstimationSet, type AngleEstimationProblem } from "../../../lib/angle-estimation";
@@ -114,7 +115,7 @@ export default function GradeFourAngleEstimationPage() {
       <div className="a4-sheet counting-sheet memory-math-sheet angle-estimation-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>4학년</span><strong>각도의 어림{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         {!answerSheet && <p id="angle-estimation-instruction" className="angle-estimation-guide">{ANGLE_ESTIMATION_INSTRUCTION}</p>}
         <div className="angle-estimation-grid">

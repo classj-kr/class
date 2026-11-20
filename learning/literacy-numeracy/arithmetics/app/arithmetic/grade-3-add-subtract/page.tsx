@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { createProblemSet, type VerticalProblem } from "@/lib/race-sets/grade-3-add-subtract";
@@ -88,7 +89,7 @@ export default function GradeThreeAdditionSubtractionPage() {
       <div className="a4-sheet counting-sheet vertical-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>3학년</span><strong>세 자리 수의 덧셈·뺄셈{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="vertical-grid">{questionSet.problems.map((problem) => renderProblem(problem, answerSheet))}</div>
       </div>

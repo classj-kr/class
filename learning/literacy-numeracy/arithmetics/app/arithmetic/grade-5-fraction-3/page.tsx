@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
@@ -133,7 +134,7 @@ export default function GradeFiveFractionThreePage() {
       <div className="a4-sheet counting-sheet mental-math-sheet grade-five-fraction-one-sheet grade-five-fraction-three-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>5학년</span><strong>분수의 크기 비교{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="grade-five-fraction-one-columns grade-five-fraction-three-columns">
           {[problems.slice(0, 5), problems.slice(5)].map((column, columnIndex) => (

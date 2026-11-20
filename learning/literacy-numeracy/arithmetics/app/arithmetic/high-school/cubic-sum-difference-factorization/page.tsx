@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import MathFormula from "../../../components/math-formula";
@@ -113,7 +114,7 @@ export default function CubicSumDifferenceFactorizationPage() {
             <strong>세제곱의 합·차 인수분해{answerSheet ? " 정답" : ""}</strong>
           </div>
           <div className="counting-sheet-info">
-            <span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {problemSet.seed}</small>
+            <span>이름 <i /></span><WorksheetDate />
           </div>
         </header>
         <div className="polynomial-instruction">

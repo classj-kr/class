@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
@@ -167,7 +168,7 @@ export default function GradeThreeFractionOnePage() {
       <div className="a4-sheet counting-sheet grade-three-fraction-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>3학년</span><strong>분수만큼 구하기{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="grade-three-fraction-content">
           <div className="grade-three-fraction-value-grid">{questionSet.valueProblems.map((problem, index) => renderValueProblem(problem, index, answerSheet))}</div>

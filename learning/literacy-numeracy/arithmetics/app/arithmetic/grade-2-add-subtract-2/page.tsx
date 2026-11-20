@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { DigitField, DigitProblem, random, digits, createProblemSet, answerId } from "@/lib/race-sets/grade-2-add-subtract-2";
@@ -123,8 +124,7 @@ export default function GradeTwoAdditionSubtractionTwoPage() {
           </div>
           <div className="counting-sheet-info">
             <span>이름 <i /></span>
-            <span>날짜 <i /></span>
-            <small>문제지 {questionSet.seed}</small>
+            <WorksheetDate />
           </div>
         </header>
         <div className="digit-grid">{questionSet.problems.map((problem) => renderProblem(problem, answerSheet))}</div>

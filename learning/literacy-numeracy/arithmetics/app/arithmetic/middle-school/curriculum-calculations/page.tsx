@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -167,8 +168,7 @@ export default function MiddleCurriculumCalculationsPage() {
           </div>
           <div className="counting-sheet-info">
             <span>이름 <i /></span>
-            <span>날짜 <i /></span>
-            <small>문제지 {problemSet.seed}</small>
+            <WorksheetDate />
           </div>
         </header>
         <div className="polynomial-instruction">

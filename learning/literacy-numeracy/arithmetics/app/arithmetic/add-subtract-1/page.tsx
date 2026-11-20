@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { Field, Equation, AdditionSubtractionVariant, random, createProblemSet, answerId, expectedEntries } from "@/lib/race-sets/add-subtract-1";
@@ -139,8 +140,7 @@ export function AdditionSubtractionWorksheet({ variant, mentalMath = false }: { 
           </div>
           <div className="counting-sheet-info">
             <span>이름 <i /></span>
-            <span>날짜 <i /></span>
-            <small>문제지 {questionSet.seed}</small>
+            <WorksheetDate />
           </div>
         </header>
 

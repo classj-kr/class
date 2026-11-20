@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState } from "react";
 import { createProblemSet, expectedField, type Answer, type Problem, type Quantity } from "@/lib/race-sets/grade-3-measurement";
@@ -106,7 +107,7 @@ export default function GradeThreeMeasurementPage() {
       <div className="a4-sheet counting-sheet measurement-sheet" style={{ transform: `scale(${sheetScale})` }}>
         <header className="counting-sheet-header">
           <div className="counting-sheet-title"><span>3학년</span><strong>무게와 들이의 계산{answerSheet ? " 정답" : ""}</strong></div>
-          <div className="counting-sheet-info"><span>이름 <i /></span><span>날짜 <i /></span><small>문제지 {questionSet.seed}</small></div>
+          <div className="counting-sheet-info"><span>이름 <i /></span><WorksheetDate /></div>
         </header>
         <div className="measurement-grid">{questionSet.problems.map((problem, index) => renderProblem(problem, index, answerSheet))}</div>
       </div>

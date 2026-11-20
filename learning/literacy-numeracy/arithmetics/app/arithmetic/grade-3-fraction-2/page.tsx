@@ -1,6 +1,7 @@
 "use client";
 
 import { useRecordedState, useRecordQuestions } from "@/app/components/learning-record-state";
+import { WorksheetDate } from "@/app/components/worksheet-date";
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
@@ -567,8 +568,7 @@ export default function Home() {
             </div>
             <div className="sheet-info">
               <span>이름 <i aria-hidden="true" /></span>
-              <span>날짜 <i aria-hidden="true" /></span>
-              <small>문제지 {questionSet.seed}</small>
+              <WorksheetDate />
             </div>
           </header>
 
