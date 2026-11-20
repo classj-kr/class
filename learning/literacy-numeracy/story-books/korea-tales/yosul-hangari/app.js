@@ -128,7 +128,7 @@ const CHAPTERS = [
                     "그래도 아버지는 궁금해서 견딜 수가 없었지요."
                 ],
                 right: [
-                    "아버지가 문고리를 잡아당겼어요. 까치발을 들고 항아리 속을 들여다보았지요.",
+                    "아버지가 문고리를 확 당기자 잠근 문이 열렸어요. 까치발을 들고 항아리 속을 들여다보았지요.",
                     "몸을 더 기울인 순간이었어요.",
                     "쿵!",
                     "그만 항아리 속으로 빠지고 말았습니다.",
@@ -346,7 +346,7 @@ const EN = {
                         "But the old man could not stand not knowing."
                     ],
                     right: [
-                        "He pulled the door open and stood on tiptoe to look into the jar.",
+                        "He pulled so hard that the bolted door came open, and he stood on tiptoe to look into the jar.",
                         "He leaned in a little further—",
                         "Thump!",
                         "And in he went, right into the jar.",
@@ -694,7 +694,7 @@ const WORDS_KO = {
     ],
     "07-father.webp": [
         { w: "문틈", k: "문의 벌어진 사이.", s: "늙은 아버지가 문틈으로 안을 기웃거렸어요." },
-        { w: "문고리", k: "문을 여닫을 때 잡는 고리.", s: "아버지가 문고리를 잡아당겼어요." },
+        { w: "문고리", k: "문을 여닫을 때 잡는 고리.", s: "아버지가 문고리를 확 당기자 잠근 문이 열렸어요." },
         { w: "까치발", k: "발끝만으로 서는 것.", s: "까치발을 들고 항아리 속을 들여다보았지요." },
         { w: "허공", k: "텅 빈 공중.", s: "아버지의 다리가 허공에서 버둥거렸지요." },
         { w: "버둥거리다", k: "팔다리를 마구 놀리다.", s: "아버지의 다리가 허공에서 버둥거렸지요." }

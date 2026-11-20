@@ -149,7 +149,7 @@ const CHAPTERS = [
                 art: "09-horse.webp",
                 emoji: "🐴",
                 left: [
-                    "이튿날 공주가 팔찌를 모두 내주며 말했어요. 금팔찌 몇 개가 공주가 가진 것 전부였지요.",
+                    "이튿날에야 어머니와 온달이 공주를 집에 들였어요. 공주는 가진 것 전부인 금팔찌를 내주며 말했지요.",
                     "\"장에 가서 말을 한 필 사 오세요.\"",
                     "온달이 눈을 껌뻑껌뻑했습니다.",
                     "말을 사 본 적이 있어야 말이지요.",
@@ -281,7 +281,7 @@ const CHAPTERS = [
                 right: [
                     "\"공주가 말을 잘 골라 준 덕이지요.\"",
                     "공주가 고개를 저었어요.",
-                    "\"말은 당신이 키운 겁니다.\"",
+                    "\"말을 탄 건 당신입니다.\"",
                     "온달은 그 말에 한참을 웃었답니다. 둘의 웃음소리가 마당을 채웠지요.",
                     "매여 있던 말이 귀를 쫑긋 세웠답니다."
                 ]
@@ -483,7 +483,7 @@ const EN = {
                     art: "09-horse.webp",
                     emoji: "🐴",
                     left: [
-                        "Next day the princess held out all her bracelets.",
+                        "Next day Ondal and his mother let her in at last, and the princess held out all her bracelets.",
                         "A few gold bracelets were everything she had.",
                         { t: "\"Go to the market and buy a horse.\"", v: "woman" },
                         "Ondal blinked at her.",
@@ -628,7 +628,7 @@ const EN = {
                     right: [
                         { t: "\"Thanks to your choosing the horse well.\"", v: "man" },
                         "The princess shook her head.",
-                        { t: "\"You are the one who raised the horse.\"", v: "woman" },
+                        { t: "\"You are the one who rode the horse.\"", v: "woman" },
                         "Ondal laughed a long while at that.",
                         "Their laughing filled the yard, and the tied horse pricked its ears."
                     ]
@@ -750,7 +750,7 @@ const EN = {
             { w: "porch", k: "마루", s: "That night the princess slept on the floor of the porch." }
         ],
         "09-horse.webp": [
-            { w: "held out (hold)", k: "내주었다", s: "Next day the princess held out all her bracelets." },
+            { w: "held out (hold)", k: "내주었다", s: "Next day Ondal and his mother let her in at last, and the princess held out all her bracelets." },
             { w: "everything she had", k: "가진 것 전부", s: "A few gold bracelets were everything she had." },
             { w: "blinked at ~", k: "껌뻑껌뻑했다", s: "Ondal blinked at her." },
             { w: "in his life", k: "살면서", s: "He had never bought a horse in his life." },
@@ -832,7 +832,7 @@ const EN = {
             { w: "armour", k: "갑옷", s: "The princess took his armour off for him." },
             { w: "settled (settle)", k: "뽀얗게 앉은", s: "There was white dust settled all over it." },
             { w: "Thanks to ~", k: "~ 덕분에", s: "Thanks to your choosing the horse well." },
-            { w: "the one who ~", k: "~한 사람", s: "You are the one who raised the horse." },
+            { w: "the one who ~", k: "~한 사람", s: "You are the one who rode the horse." },
             { w: "pricked its ears", k: "귀를 쫑긋 세웠다", s: "the tied horse pricked its ears" }
         ],
         "after": [

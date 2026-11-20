@@ -49,7 +49,7 @@ const CHAPTERS = [
                     "\"저는 용왕의 아들입니다. 낮에 살려 주셔서 고맙습니다.\"",
                     "젊은이가 넙죽 절을 했어요. 그러고는 푸른 구슬 하나를 내밀었지요.",
                     "손바닥만 한 구슬이 은은하게 빛났습니다.",
-                    "\"무엇이든 원하는 것을 말해 보십시오.\""
+                    "\"이 구슬에 무엇이든 원하는 것을 말해 보십시오.\""
                 ]
             },
             {
@@ -208,7 +208,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "\"야, 구슬 잘 있냐니까! 대답을 해 봐!\"",
-                    "개가 헤엄을 치면서 뒤를 돌아보며 자꾸만 채근했어요. 참다못한 고양이가 그만 입을 열고 말았지요.",
+                    "개가 헤엄을 치면서 자꾸만 채근했어요. 참다못한 고양이가 그만 입을 열고 말았지요.",
                     "\"있다니까—\"",
                     "퐁당.",
                     "구슬이 캄캄한 강물 속으로 가라앉았답니다."
@@ -508,7 +508,7 @@ const EN = {
                     ],
                     right: [
                         { t: "\"I said, is the bead all right! Answer me!\"", v: "man" },
-                        "He kept on at her, turning his head as he swam.",
+                        "He kept on at her as he swam.",
                         "The cat could bear it no longer and opened her mouth.",
                         { t: "\"I said it is —\"", v: "woman" },
                         "Plop.",
@@ -711,7 +711,7 @@ const EN = {
             { w: "kept worrying (keep)", k: "자꾸 걱정되었다", s: "But he kept worrying about the bead behind him." },
             { w: "all right", k: "잘 있는", s: "Is the bead all right?" },
             { w: "kept her mouth shut (keep)", k: "입을 꼭 다물었다", s: "The cat kept her mouth shut and only nodded." },
-            { w: "kept on at her (keep)", k: "자꾸 채근했다", s: "He kept on at her, turning his head as he swam." },
+            { w: "kept on at her (keep)", k: "자꾸 채근했다", s: "He kept on at her as he swam." },
             { w: "bear it no longer", k: "참다못했다", s: "The cat could bear it no longer and opened her mouth." },
             { w: "Plop", k: "퐁당", s: "Plop." },
             { w: "sank (sink)", k: "가라앉았다", s: "The bead sank into the black river water." }
@@ -899,7 +899,7 @@ const WORDS_KO = {
         { w: "쏜살같이", k: "쏜 화살처럼 아주 빠르게.", s: "고양이는 구슬을 입에 물고 쏜살같이 달렸어요." }
     ],
     "12-drop.webp": [
-        { w: "채근하다", k: "자꾸 다그쳐 묻다.", s: "개가 헤엄을 치면서 뒤를 돌아보며 자꾸만 채근했어요." },
+        { w: "채근하다", k: "자꾸 다그쳐 묻다.", s: "개가 헤엄을 치면서 자꾸만 채근했어요." },
         { w: "참다못하다", k: "더는 참을 수 없게 되다.", s: "참다못한 고양이가 그만 입을 열고 말았지요." },
         { w: "가라앉다", k: "물속으로 내려가다.", s: "구슬이 캄캄한 강물 속으로 가라앉았답니다." }
     ],

@@ -48,8 +48,7 @@ const CHAPTERS = [
                 right: [
                     "\"보름달 뜨는 밤에 산꼭대기 연못에 가 보세요.\"",
                     "사슴이 고개를 들어 산꼭대기 쪽을 가리켰어요.",
-                    "\"하늘에서 선녀들이 내려와 목욕을 한답니다.\"",
-                    "\"그런데 부탁이 하나 있습니다.\"",
+                    "\"하늘에서 선녀들이 내려와 목욕을 한답니다. 그런데 부탁이 하나 있습니다.\"",
                     "사슴의 목소리가 갑자기 아주 진지해졌지요."
                 ]
             },
@@ -57,8 +56,7 @@ const CHAPTERS = [
                 art: "04-pond.webp",
                 emoji: "💧",
                 left: [
-                    "\"무엇이든 절대로 감추지 마세요.\"",
-                    "\"하늘 것을 감추면 반드시 탈이 납니다.\"",
+                    "\"무엇이든 절대로 감추지 마세요. 하늘 것을 감추면 반드시 탈이 납니다.\"",
                     "사슴은 그 말을 두 번이나 되풀이하고는 숲속으로 뛰어 들어갔어요.",
                     "나무꾼은 그러겠노라고 몇 번이나 고개를 끄덕였지요. 그 말을 잊지 않으려 했답니다."
                 ],
@@ -81,7 +79,7 @@ const CHAPTERS = [
                 right: [
                     "나무꾼은 손등에서 피가 나는 줄도 모르고 옷을 꺼냈어요. 옷은 깃털처럼 가볍고 손안에서 미끄러웠지요.",
                     "\"이건 임자에게 돌려줘야겠구나.\"",
-                    "나무꾼은 그것을 바위 위에 곱게 개어 두었습니다.",
+                    "나무꾼은 그것을 숨어 있던 바위 위에 곱게 개어 두었습니다.",
                     "그러고는 다시 바위 뒤로 물러났지요."
                 ]
             }
@@ -102,7 +100,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "\"내 옷이 없어졌어… 이제 어떡하지.\"",
-                    "선녀는 무릎에 얼굴을 묻고 울었지요. 나무꾼이 조심조심 다가갔어요.",
+                    "선녀는 무릎에 얼굴을 묻고 울었지요. 나무꾼이 옷을 들고 조심조심 다가갔어요.",
                     "선녀는 누가 온 줄도 모르고 울기만 했답니다.",
                     "나무꾼은 뭐라 말을 붙여야 할지 몰라 우두커니 서 있었지요."
                 ]
@@ -204,7 +202,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "\"…어머니가 보고 싶어요.\"",
-                    "어느 밤 아내의 목소리가 아주 작게 들렸어요. 나무꾼은 한참 만에 자리에서 일어났지요.",
+                    "어느 보름날 밤 아내의 목소리가 아주 작게 들렸어요. 나무꾼은 한참 만에 자리에서 일어났지요.",
                     "그러고는 궤 뚜껑을 열었습니다.",
                     "\"다녀오시오. 아이들도 데리고 가시오.\"",
                     "궤 속에는 날개옷이 그대로 있었답니다."
@@ -255,8 +253,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "아내가 하늘 말 한 마리를 내주었습니다. 그러고는 걱정스러운 얼굴로 당부했지요.",
-                    "\"땅에 발을 딛으면 다시는 못 올라와요.\"",
-                    "\"말 위에서만 뵙고 오세요. 꼭이요.\"",
+                    "\"땅에 발을 딛으면 다시는 못 올라와요. 말 위에서만 뵙고 오세요. 꼭이요.\"",
                     "나무꾼은 여러 번 고개를 끄덕였답니다."
                 ]
             },
@@ -399,7 +396,7 @@ const EN = {
                         "He got the robe out without noticing his hand was bleeding.",
                         "It was light as a feather and slid in his hands.",
                         { t: "\"This must go back to whoever owns it.\"", v: "man" },
-                        "The woodcutter folded it neatly and laid it on the rock.",
+                        "The woodcutter folded it neatly and laid it on the rock he had hidden behind.",
                         "Then he drew back behind the rock."
                     ]
                 }
@@ -422,7 +419,7 @@ const EN = {
                     right: [
                         { t: "\"My robe is gone... what am I to do?\"", v: "woman" },
                         "The fairy put her face on her knees and cried.",
-                        "The woodcutter came carefully over.",
+                        "The woodcutter came carefully over with the robe.",
                         "She did not know anybody had come, and only cried.",
                         "The woodcutter stood there not knowing what to say."
                     ]
@@ -534,7 +531,7 @@ const EN = {
                     ],
                     right: [
                         { t: "\"...I want to see my mother.\"", v: "woman" },
-                        "One night her voice came very small.",
+                        "One full-moon night her voice came very small.",
                         "After a long moment the woodcutter got up.",
                         "And he opened the lid of the chest.",
                         { t: "\"Go and see her. Take the children too.\"", v: "man" },
@@ -701,7 +698,7 @@ const EN = {
             { w: "without noticing", k: "~인 줄도 모르고", s: "He got the robe out without noticing his hand was bleeding." },
             { w: "light as a feather", k: "깃털처럼 가벼운", s: "It was light as a feather and slid in his hands." },
             { w: "whoever owns it", k: "임자", s: "This must go back to whoever owns it." },
-            { w: "folded ~ neatly", k: "곱게 개었다", s: "The woodcutter folded it neatly and laid it on the rock." }
+            { w: "folded ~ neatly", k: "곱게 개었다", s: "The woodcutter folded it neatly and laid it on the rock he had hidden behind." }
         ],
         "06-left.webp": [
             { w: "At daybreak", k: "동이 트자", s: "At daybreak the fairies went up into the sky, one by one." },
@@ -710,7 +707,7 @@ const EN = {
             { w: "shoulders shaking", k: "어깨를 들썩이며", s: "her shoulders shaking" },
             { w: "Look as she might", k: "아무리 찾아도", s: "Look for her robe as she might, it was not there." },
             { w: "put her face on ~", k: "얼굴을 묻었다", s: "The fairy put her face on her knees and cried." },
-            { w: "came carefully over", k: "조심조심 다가갔다", s: "The woodcutter came carefully over." },
+            { w: "came carefully over", k: "조심조심 다가갔다", s: "The woodcutter came carefully over with the robe." },
             { w: "not knowing what to say", k: "뭐라 할지 몰라", s: "The woodcutter stood there not knowing what to say." }
         ],
         "07-give.webp": [
@@ -771,7 +768,7 @@ const EN = {
             { w: "the way ~ were going", k: "흘러가는 쪽", s: "She looked a long time at the way the clouds were going." },
             { w: "Hanging out the washing", k: "빨래를 널다가", s: "Hanging out the washing, eating a meal, her hands would stop." },
             { w: "said nothing", k: "모른 척했다", s: "The woodcutter saw it and said nothing." },
-            { w: "came very small", k: "아주 작게 들렸다", s: "One night her voice came very small." },
+            { w: "came very small", k: "아주 작게 들렸다", s: "One full-moon night her voice came very small." },
             { w: "After a long moment", k: "한참 만에", s: "After a long moment the woodcutter got up." },
             { w: "lid", k: "뚜껑", s: "And he opened the lid of the chest." },
             { w: "just as it was", k: "그대로", s: "The feather robe was there in the chest, just as it was." }
@@ -941,7 +938,7 @@ const WORDS_KO = {
         { w: "파닥거리다", k: "가볍게 자꾸 흔들리다.", s: "옷은 저만치 가시덤불에 걸려 파닥거렸습니다." },
         { w: "사정없이", k: "봐주는 것 없이 마구.", s: "가시가 팔뚝을 사정없이 긁었답니다." },
         { w: "임자", k: "물건의 주인.", s: "이건 임자에게 돌려줘야겠구나." },
-        { w: "개다", k: "옷을 반듯하게 접다.", s: "나무꾼은 그것을 바위 위에 곱게 개어 두었습니다." }
+        { w: "개다", k: "옷을 반듯하게 접다.", s: "나무꾼은 그것을 숨어 있던 바위 위에 곱게 개어 두었습니다." }
     ],
     "06-left.webp": [
         { w: "동이 트다", k: "날이 밝아 오다.", s: "동이 트자 선녀들이 하나둘 하늘로 올라갔어요." },

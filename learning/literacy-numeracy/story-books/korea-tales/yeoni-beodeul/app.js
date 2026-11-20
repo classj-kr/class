@@ -106,7 +106,7 @@ const CHAPTERS = [
                 right: [
                     "\"고마워. 그런데 여긴 대체 어디야?\"",
                     "연이가 사방을 둘러보며 물었어요. 버들 도령은 대답 대신 씩 웃기만 했지요.",
-                    "\"추우면 또 와. 문은 늘 열어 둘게.\"",
+                    "\"추우면 또 와. 문은 늘 열어 둘게. 대신 비밀이야.\"",
                     "연이는 그 말을 마음에 꼭 새겼답니다.",
                     "산을 내려오는 발걸음이 가벼웠어요."
                 ]
@@ -204,7 +204,7 @@ const CHAPTERS = [
                 art: "12-flowers.webp",
                 emoji: "🌺",
                 left: [
-                    "뒤늦게 달려온 연이가 버들 도령을 흔들었어요. 버들 도령은 눈을 감은 채 꼼짝도 하지 않았지요.",
+                    "뒤늦게 달려온 연이 앞에서 바위 문이 다시 열렸어요. 연이가 흔들어도 버들 도령은 꼼짝도 하지 않았지요.",
                     "\"일어나! 눈 좀 떠 봐!\"",
                     "연이의 눈물이 풀밭에 뚝뚝 떨어졌습니다.",
                     "아무리 흔들고 불러도 소용이 없었어요."
@@ -399,7 +399,7 @@ const EN = {
                         { t: "\"Thank you. But what is this place?\"", v: "girl" },
                         "Yeoni asked it, looking all round her.",
                         "Instead of answering, the Willow Boy only grinned.",
-                        { t: "\"Come again when you are cold. I will keep the door open.\"", v: "boy" },
+                        { t: "\"Come again when you are cold. I will keep the door open. But it is our secret.\"", v: "boy" },
                         "Yeoni kept those words in her heart, and went down the hill lightly."
                     ]
                 },
@@ -505,8 +505,8 @@ const EN = {
                     art: "12-flowers.webp",
                     emoji: "🌺",
                     left: [
-                        "Yeoni came running late and shook the Willow Boy.",
-                        "His eyes were shut and he did not stir at all.",
+                        "Yeoni came running late, and the rock door opened again for her.",
+                        "She shook the Willow Boy, but his eyes were shut and he did not stir at all.",
                         { t: "\"Get up! Open your eyes!\"", v: "girl" },
                         "Yeoni's tears fell on the grass in big drops.",
                         "Shake him and call him as she might, it was no use."
@@ -710,8 +710,8 @@ const EN = {
             { w: "would not even say", k: "입에 올리지도 않았다", s: "She would not even say its name." }
         ],
         "12-flowers.webp": [
-            { w: "came running late", k: "뒤늦게 달려왔다", s: "Yeoni came running late and shook the Willow Boy." },
-            { w: "did not stir", k: "꼼짝하지 않았다", s: "His eyes were shut and he did not stir at all." },
+            { w: "came running late", k: "뒤늦게 달려왔다", s: "Yeoni came running late, and the rock door opened again for her." },
+            { w: "did not stir", k: "꼼짝하지 않았다", s: "She shook the Willow Boy, but his eyes were shut and he did not stir at all." },
             { w: "in big drops", k: "뚝뚝", s: "Yeoni's tears fell on the grass in big drops." },
             { w: "Shake ~ as she might", k: "아무리 흔들어도", s: "Shake him and call him as she might, it was no use." },
             { w: "she had never seen (see)", k: "못 보던", s: "three flowers she had never seen stood by the stream" },
@@ -905,7 +905,7 @@ const WORDS_KO = {
         { w: "입에 올리다", k: "말로 꺼내어 이야기하다.", s: "산 이름조차 입에 올리지 않았답니다." }
     ],
     "12-flowers.webp": [
-        { w: "뒤늦게", k: "때가 좀 지난 뒤에.", s: "뒤늦게 달려온 연이가 버들 도령을 흔들었어요." },
+        { w: "뒤늦게", k: "때가 좀 지난 뒤에.", s: "뒤늦게 달려온 연이 앞에서 바위 문이 다시 열렸어요." },
         { w: "발그레하다", k: "발갛게 물든 모양.", s: "새하얀 꽃, 발그레한 꽃, 새빨간 꽃." },
         { w: "꺾다", k: "줄기를 끊어 따다.", s: "연이는 세 송이를 조심조심 꺾었지요." }
     ],

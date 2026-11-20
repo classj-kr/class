@@ -139,7 +139,7 @@ const CHAPTERS = [
                     "호랑이가 앞발로 땅을 치며 목청을 높였어요.",
                     "\"구덩이요? 어느 구덩이요?\"",
                     "\"바로 이 구덩이 말이다!\"",
-                    "토끼가 눈을 껌뻑껌뻑하며 구덩이를 들여다보았지요."
+                    "구덩이까지 따라온 토끼가 눈을 껌뻑껌뻑하며 안을 들여다보았지요."
                 ],
                 right: [
                     "\"아하. 그럼 나그네님이 구덩이 안에 계셨고요?\"",
@@ -357,7 +357,7 @@ const EN = {
                         "The tiger struck the ground with a paw and raised his voice.",
                         { t: "\"A pit? Which pit?\"", v: "girl" },
                         { t: "\"This pit, right here!\"", v: "beast" },
-                        "The rabbit blinked and looked down into the pit."
+                        "The rabbit, who had followed him to the pit, blinked and looked down into it."
                     ],
                     right: [
                         { t: "\"Ah. So the gentleman was inside the pit?\"", v: "girl" },
@@ -536,7 +536,7 @@ const EN = {
             { w: "raised his voice", k: "목청을 높였다", s: "and raised his voice" },
             { w: "Which pit?", k: "어느 구덩이요?", s: "A pit? Which pit?" },
             { w: "right here", k: "바로 여기", s: "This pit, right here!" },
-            { w: "blinked (blink)", k: "눈을 껌뻑였다", s: "The rabbit blinked and looked down into the pit." },
+            { w: "blinked (blink)", k: "눈을 껌뻑였다", s: "The rabbit, who had followed him to the pit, blinked and looked down into it." },
             { w: "So ~ was inside?", k: "그럼 ~이 안에 있었고요?", s: "So the gentleman was inside the pit?" },
             { w: "I tell you", k: "~라니까", s: "No! I was inside, I tell you!" },
             { w: "stamped (stamp)", k: "발을 동동 굴렀다", s: "The tiger stamped with impatience." },
@@ -711,7 +711,7 @@ const WORDS_KO = {
     ],
     "08-confused.webp": [
         { w: "목청을 높이다", k: "목소리를 크게 하다.", s: "호랑이가 앞발로 땅을 치며 목청을 높였어요." },
-        { w: "껌뻑껌뻑", k: "눈을 자꾸 감았다 뜨는 모양.", s: "토끼가 눈을 껌뻑껌뻑하며 구덩이를 들여다보았지요." },
+        { w: "껌뻑껌뻑", k: "눈을 자꾸 감았다 뜨는 모양.", s: "구덩이까지 따라온 토끼가 눈을 껌뻑껌뻑하며 안을 들여다보았지요." },
         { w: "발을 구르다", k: "급하고 답답해 발을 쿵쿵 치다.", s: "호랑이는 답답해서 발을 동동 굴렀어요." },
         { w: "속", k: "겉으로 드러내지 않은 생각.", s: "나그네는 그제야 토끼의 속을 알아채고 입을 다물었답니다." }
     ],

@@ -15,7 +15,7 @@ const CHAPTERS = [
                 right: [
                     "\"오늘은 미역이 많이 붙었겠소.\"",
                     "연오랑이 바구니를 메고 나섰어요.",
-                    "\"멀리 가지 마세요. 파도가 높아요.\"",
+                    "\"멀리 가지 마세요. 파도가 높아질지 몰라요.\"",
                     "세오녀가 문 앞까지 나와 손을 흔들었지요.",
                     "그날따라 바다가 유난히 잔잔했답니다. 해가 물 위에서 반짝였어요."
                 ]
@@ -111,8 +111,7 @@ const CHAPTERS = [
                 right: [
                     "임금이 하늘의 뜻을 아는 신하를 불렀어요.",
                     "신하가 한참 별을 살피더니 말했지요.",
-                    "\"해와 달의 기운을 지닌 두 사람이 바다 건너로 가 버렸습니다.\"",
-                    "\"연오랑과 세오녀입니다. 그래서 빛이 따라간 것입니다.\"",
+                    "\"해와 달의 기운을 지닌 두 사람이 바다 건너로 가 버렸습니다. 연오랑과 세오녀입니다. 그래서 빛이 따라간 것입니다.\"",
                     "임금이 자리에서 일어났답니다."
                 ]
             }
@@ -135,8 +134,7 @@ const CHAPTERS = [
                     "\"내가 이곳에 온 것은 하늘의 뜻이오. 돌아갈 수는 없소.\"",
                     "사신의 얼굴이 하얘졌어요.",
                     "그때 세오녀가 비단 한 필을 들고 나왔지요.",
-                    "\"이것을 가져가세요. 제가 이곳에서 짠 비단입니다.\"",
-                    "\"이것으로 하늘에 제사를 지내면 빛이 돌아올 거예요.\""
+                    "\"이것을 가져가세요. 제가 이곳에서 짠 비단입니다. 이것으로 하늘에 제사를 지내면 빛이 돌아올 거예요.\""
                 ]
             },
             {
@@ -241,7 +239,7 @@ const EN = {
                     right: [
                         { t: "\"There'll be plenty of seaweed today.\"", v: "man" },
                         "Yeono set off with his basket on his back.",
-                        { t: "\"Don't go far. The waves are high.\"", v: "woman" },
+                        { t: "\"Don't go far. The waves may get high.\"", v: "woman" },
                         "Seo came to the door and waved.",
                         "The sea was unusually calm that day, and the sun glittered on the water."
                     ]
@@ -462,7 +460,7 @@ const EN = {
             { w: "famous for ~", k: "~으로 이름난", s: "The silk she wove was famous along that coast for its beauty." },
             { w: "plenty of ~", k: "많은", s: "There'll be plenty of seaweed today." },
             { w: "set off (set)", k: "나섰다", s: "Yeono set off with his basket on his back." },
-            { w: "waves", k: "파도", s: "Don't go far. The waves are high." },
+            { w: "waves", k: "파도", s: "Don't go far. The waves may get high." },
             { w: "waved (wave)", k: "손을 흔들었다", s: "Seo came to the door and waved." },
             { w: "unusually calm", k: "유난히 잔잔한", s: "The sea was unusually calm that day" },
             { w: "glittered (glitter)", k: "반짝였다", s: "the sun glittered on the water" }
