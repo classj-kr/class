@@ -14,7 +14,12 @@ function pieceSvg(piece, extraClass = "", decorative = false) {
     K: '<path class="piece-detail" d="M32 4v15M25 11h14"/><path class="piece-body" d="M24 19h16l5 10-6 8 6 10H19l6-10-6-8zM14 47h36l4 9H10z"/><path class="piece-detail" d="M21 28h22M20 45h24M15 52h34"/>'
   };
   const accessibility=decorative?'aria-hidden="true"':`role="img" aria-label="${label}"`;
-  return `<svg class="piece-svg ${color} ${extraClass}" viewBox="0 0 64 64" ${accessibility}>${shapes[type]}</svg>`;
+  // 왼쪽 위에서 빛을 받은 명암. 말마다 같은 id 라 첫 정의를 함께 쓴다(board.css 의 --piece-fill 이 가리킨다).
+  const shade = color === "white"
+    ? '<stop offset="0" stop-color="#ffffff"/><stop offset=".42" stop-color="#f3e9cc"/><stop offset="1" stop-color="#b9a479"/>'
+    : '<stop offset="0" stop-color="#6a7a92"/><stop offset=".42" stop-color="#2c384b"/><stop offset="1" stop-color="#0c1119"/>';
+  const defs = `<defs><linearGradient id="chess-shade-${color}" gradientUnits="userSpaceOnUse" x1="14" y1="6" x2="50" y2="60">${shade}</linearGradient></defs>`;
+  return `<svg class="piece-svg ${color} ${extraClass}" viewBox="0 0 64 64" ${accessibility}>${defs}${shapes[type]}</svg>`;
 }
 
 window.ClassChessPieces={svg:pieceSvg};

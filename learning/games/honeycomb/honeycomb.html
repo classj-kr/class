@@ -267,6 +267,28 @@ function myId() { return lobby?.snapshot().myId || ""; }
 function isMyTurn() { return gameState?.phase === "playing" && gameState.activePlayerId === myId(); }
 function activePlayer() { return gameState?.players.find(player => player.id === gameState.activePlayerId) || null; }
 function colorValue(color) { return COLORS[color]?.value || "#7b8794"; }
+// 놓인 조각은 왼쪽 위에서 빛을 받은 타일처럼 칠한다(밝은 쪽 → 제 색 → 짙은 쪽). 그러데이션은 한 번만 만들어 모두 함께 쓴다.
+function mixHex(hex, target, amount) { const c = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)); const [a, b] = [c(hex), c(target)]; return "#" + a.map((v, i) => Math.round(v + (b[i] - v) * amount).toString(16).padStart(2, "0")).join(""); }
+function ensureShadeDefs() {
+  if (document.getElementById("hc-shade-defs")) return;
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.id = "hc-shade-defs"; svg.setAttribute("aria-hidden", "true"); svg.setAttribute("width", "0"); svg.setAttribute("height", "0");
+  svg.style.cssText = "position:absolute;width:0;height:0;overflow:hidden";
+  const defs = document.createElementNS(SVG_NS, "defs");
+  for (const [id, info] of Object.entries(COLORS)) {
+    const gradient = document.createElementNS(SVG_NS, "linearGradient");
+    gradient.id = `hc-shade-${id}`;
+    Object.entries({ x1: "0.2", y1: "0", x2: "0.8", y2: "1" }).forEach(([k, v]) => gradient.setAttribute(k, v));
+    [[0, mixHex(info.value, "#ffffff", 0.5)], [0.45, info.value], [1, mixHex(info.value, "#000000", 0.38)]].forEach(([offset, color]) => {
+      const stop = document.createElementNS(SVG_NS, "stop");
+      stop.setAttribute("offset", String(offset)); stop.setAttribute("stop-color", color); gradient.appendChild(stop);
+    });
+    defs.appendChild(gradient);
+  }
+  svg.appendChild(defs);
+  document.body.appendChild(svg);
+}
+function shadedFill(color) { ensureShadeDefs(); return COLORS[color] ? `url(#hc-shade-${color}) ${colorValue(color)}` : colorValue(color); }
 
 // ---- Hex grid math (axial q,r; cube rotation formulas) ----
 function inBoard(cell) {
@@ -379,6 +401,7 @@ function makeHexGraphic(shape, size, boxSize, color) {
     const poly = document.createElementNS(SVG_NS, "polygon");
     poly.setAttribute("points", hexPoints(p.x, p.y, hexR));
     poly.setAttribute("class", "piece-hex");
+    poly.style.fill = shadedFill(color);
     svg.appendChild(poly);
   });
   return svg;
@@ -556,7 +579,7 @@ function renderBoard() {
       if (!cell) continue;
       cell.classList.add("occupied");
       if (placement.order === latestOrder) cell.classList.add("last");
-      cell.style.fill = colorValue(placement.color);
+      cell.style.fill = shadedFill(placement.color);
     }
   }
   const preview = absolutePreview();

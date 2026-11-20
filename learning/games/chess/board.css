@@ -14,10 +14,10 @@
 :where(.chess-surface) .coord.rank{left:3px;top:2px}
 :where(.chess-surface) .light .coord{color:#5d7742}
 :where(.chess-surface) .dark .coord{color:#f4f1d5}
-:where(.chess-surface) .piece-svg{position:relative;z-index:3;width:82%;height:82%;overflow:visible;filter:drop-shadow(0 4px 2px #0007);transition:transform .12s ease}
+:where(.chess-surface) .piece-svg{position:relative;z-index:3;width:82%;height:82%;overflow:visible;filter:drop-shadow(0 2px 1px #0006) drop-shadow(0 6px 5px #0007);transition:transform .12s ease}
 :where(.chess-surface) .square:hover .piece-svg{transform:translateY(-2px)}
-:where(.chess-surface) .piece-svg.white{--piece-fill:#f8f1da;--piece-edge:#352d25;--piece-detail:#917a58}
-:where(.chess-surface) .piece-svg.black{--piece-fill:#273242;--piece-edge:#090d13;--piece-detail:#b9c4d0}
+:where(.chess-surface) .piece-svg.white{--piece-fill:url(#chess-shade-white) #f8f1da;--piece-edge:#352d25;--piece-detail:#917a58}
+:where(.chess-surface) .piece-svg.black{--piece-fill:url(#chess-shade-black) #273242;--piece-edge:#090d13;--piece-detail:#b9c4d0}
 :where(.chess-surface) .piece-body{fill:var(--piece-fill);stroke:var(--piece-edge);stroke-width:2.2;stroke-linejoin:round}
 :where(.chess-surface) .piece-detail{fill:none;stroke:var(--piece-detail);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 :where(.chess-surface) #board .square.piece-moving{z-index:10}
