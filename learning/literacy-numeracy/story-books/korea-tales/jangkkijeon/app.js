@@ -119,7 +119,7 @@ const CHAPTERS = [
                     "\"아버지! 아버지!\"",
                     "해가 기울자 까투리가 눈물을 닦고 일어섰어요.",
                     "\"이대로 둘 수는 없다. 아버지를 묻어 드리자.\"",
-                    "아이들이 발로 눈을 파기 시작했답니다."
+                    "온 식구가 한꺼번에 덫의 쇠 손잡이를 밟아 누르자 그제야 덫이 입을 벌렸답니다."
                 ],
                 right: [
                     "양지바른 언덕에 장끼를 눕히고 눈을 덮었어요. 그 위에 그 콩을 놓았지요.",
@@ -387,8 +387,7 @@ const EN = {
                         { t: "\"We cannot leave him so. Let us bury your father.\"", v: "woman" }
                     ],
                     right: [
-                        "They laid Jangkki on a sunny slope and covered him with snow.",
-                        "On top of it they set that bean.",
+                        "They all stepped on the trap's iron handle at once, and at last it opened. They laid Jangkki on a sunny slope and covered him with snow. On top of it they set that bean.",
                         { t: "\"This bean took you, so take the bean with you.\"", v: "woman" },
                         "Katuri's voice was steady.",
                         "The children crept under her wings, and she did not sleep all night."
