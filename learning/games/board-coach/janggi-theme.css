@@ -151,9 +151,9 @@ body.janggi-coach {
 .janggi-coach .capture-trays h3 span { color: #f0d77c; }
 .janggi-coach .capture-tokens { display: flex; flex-wrap: wrap; gap: 5px; }
 .janggi-coach .capture-token { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #eee6d2; }
-.janggi-coach .capture-token b { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #6a3b18; border-radius: 50%; background: #d7a25b; font: 900 16px Batang,serif; }
-.janggi-coach .capture-token .cho { color: #114e91; }
-.janggi-coach .capture-token .han { color: #a51f19; }
+.janggi-coach .capture-token b { display: grid; place-items: center; width: 25px; height: 25px; clip-path: polygon(29.3% 0,70.7% 0,100% 29.3%,100% 70.7%,70.7% 100%,29.3% 100%,0 70.7%,0 29.3%); background: radial-gradient(circle at 35% 28%, #fff, #efe9dc 60%, #cfc5b1); font: 900 16px Batang,serif; }
+.janggi-coach .capture-token .cho { color: #0f2f7a; }
+.janggi-coach .capture-token .han { color: #b3140c; }
 .janggi-coach .capture-empty { color: #8c9aad; font-size: 12px; }
 .janggi-coach .sidebar .feedback { border-color: #ad8840; }
 .janggi-coach .rules a { color: #c7ddf5; }

@@ -10,24 +10,29 @@
 .janggi-board .point{position:absolute;width:11.11%;height:10%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .janggi-board .point.move::after{content:"";width:22%;aspect-ratio:1;border-radius:50%;background:rgba(29,105,179,.78);box-shadow:0 0 0 4px rgba(255,255,255,.35)}
 .janggi-board .point.capture::after{content:"";position:absolute;width:72%;aspect-ratio:1;border:4px solid #d8352d;border-radius:50%;box-shadow:0 0 12px #d8352d}
-.janggi-board .piece{width:74%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Batang","Noto Serif KR",serif;font-weight:900;font-size:clamp(20px,4vw,38px);background:radial-gradient(circle at 35% 28%,#f6ddb0,#c98d42 62%,#744118);box-shadow:inset 0 0 0 3px rgba(255,242,199,.45),0 4px 7px rgba(0,0,0,.55);border:3px solid #6a3b18;user-select:none}
-.janggi-board .piece.king{width:82%;font-size:clamp(23px,4.4vw,42px);border-width:4px}
+.janggi-board .piece{width:74%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Batang","Noto Serif KR",serif;font-weight:900;font-size:clamp(20px,4vw,38px);position:relative;background:none;border:0;box-shadow:none;filter:drop-shadow(0 2px 1.5px rgba(0,0,0,.35)) drop-shadow(0 5px 5px rgba(0,0,0,.28));-webkit-text-stroke:.6px currentColor;paint-order:stroke fill;user-select:none}
+/* 우리 장기말은 팔각형(동그란 말은 중국 장기). 테두리와 얼굴을 팔각형으로 자르고 그림자·빛 표시는 filter 로 팔각형을 따른다. */
+.janggi-board .piece::before,.janggi-board .piece::after{content:"";position:absolute;z-index:-1;clip-path:polygon(29.3% 0,70.7% 0,100% 29.3%,100% 70.7%,70.7% 100%,29.3% 100%,0 70.7%,0 29.3%);pointer-events:none}
+.janggi-board .piece::before{inset:0;background:linear-gradient(160deg,#d3cab8,#9d927c)}
+.janggi-board .piece::after{inset:3px;background:radial-gradient(circle at 35% 28%,#ffffff 0%,#f8f5ee 46%,#e2dbcc 82%,#c9bfab 100%)}
+.janggi-board .piece.king{width:82%;font-size:clamp(23px,4.4vw,42px)}.janggi-board .piece.king::after{inset:4px}
 .janggi-board .piece.guard,.janggi-board .piece.soldier{width:66%;font-size:clamp(17px,3.4vw,32px)}
-.janggi-board .piece.cho{color:#114e91}
-.janggi-board .piece.han{color:#a51f19}
-.janggi-board .piece.selected{transform:translateY(-4px);box-shadow:0 0 0 5px #ffe16f,0 8px 16px #000}
+/* 실제 장기말처럼 흰 상아색 바탕에 짙은 글씨: 초는 짙은 남색, 한은 짙은 다홍(2026-11-21). */
+.janggi-board .piece.cho{color:#0f2f7a}
+.janggi-board .piece.han{color:#b3140c}
+.janggi-board .piece.selected{transform:translateY(-4px);filter:drop-shadow(0 0 3px #ffe16f) drop-shadow(0 0 7px #ffd23f) drop-shadow(0 8px 7px rgba(0,0,0,.5))}.janggi-board .piece.selected::before{background:#ffe16f}
 .janggi-board .point.last-from::before,.janggi-board .point.last-to::before{content:"";position:absolute;inset:8%;border-radius:50%;pointer-events:none;z-index:-1}
 .janggi-board .point.last-from::before{background:rgba(255,226,105,.32);box-shadow:0 0 0 3px rgba(255,226,105,.8),0 0 16px rgba(255,226,105,.55)}
 .janggi-board .point.last-to::before{background:rgba(255,146,61,.34);box-shadow:0 0 0 4px #ff9a3d,0 0 20px rgba(255,123,35,.78)}
-.janggi-board .piece.last-moved{animation:lastmove .9s ease-in-out infinite alternate;box-shadow:inset 0 0 0 3px rgba(255,242,199,.45),0 0 0 5px #ffcf5a,0 0 18px rgba(255,151,47,.85)}
+.janggi-board .piece.last-moved{animation:lastmove .9s ease-in-out infinite alternate;filter:drop-shadow(0 0 4px #ffcf5a) drop-shadow(0 0 10px rgba(255,151,47,.85)) drop-shadow(0 4px 4px rgba(0,0,0,.35))}.janggi-board .piece.last-moved::before{background:#ffcf5a}
 .janggi-board .piece.path-moving{animation:none!important;z-index:8}
 .janggi-board .motion-cell{z-index:10}
 .janggi-board .piece.capture-ghost{position:absolute;z-index:9;pointer-events:none;animation:none!important;transform:none;outline:none}
 .janggi-board .capture-impact{inset:8%}
-@keyframes lastmove{to{transform:translateY(-3px);filter:brightness(1.12)}
+@keyframes lastmove{to{transform:translateY(-3px);filter:brightness(1.12) drop-shadow(0 0 4px #ffcf5a) drop-shadow(0 0 10px rgba(255,151,47,.85)) drop-shadow(0 4px 4px rgba(0,0,0,.35))}
 }
-.janggi-board .piece.check{animation:checkpulse .7s infinite alternate}
-@keyframes checkpulse{to{box-shadow:0 0 0 6px #e33731,0 0 20px #e33731}
+.janggi-board .piece.check{animation:checkpulse .7s infinite alternate;filter:drop-shadow(0 0 3px #e33731) drop-shadow(0 2px 1.5px rgba(0,0,0,.35)) drop-shadow(0 5px 5px rgba(0,0,0,.28))}.janggi-board .piece.check::before{background:#e33731}
+@keyframes checkpulse{to{filter:drop-shadow(0 0 5px #e33731) drop-shadow(0 0 14px #e33731) drop-shadow(0 2px 1.5px rgba(0,0,0,.35)) drop-shadow(0 5px 5px rgba(0,0,0,.28))}
 }
 @media(prefers-reduced-motion:reduce){.janggi-board .piece.last-moved,.janggi-board .piece.check{animation:none}}
 
