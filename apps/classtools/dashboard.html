@@ -23,6 +23,7 @@
             --text-sub: #6c7d73;
             --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
             --weekday-panel-image: none;
+            --weekday-box-image: none;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,10 +66,10 @@
         /* 습도·미세먼지·초미세먼지: 이름은 회색, 숫자는 흰색, 등급만 환경부 색(좋음 파랑·보통 초록·나쁨 노랑·매우나쁨 빨강). */
         .air-list { display: grid; gap: 3px; margin-top: 2px; }
         .air-row { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; font-size: 0.8rem; line-height: 1.35; white-space: nowrap; }
-        .air-row dt { color: var(--text-muted); }
+        .air-row dt { color: #d6e0da; }
         .air-row dd { display: flex; align-items: baseline; gap: 5px; color: var(--text-main); }
         .air-value { font-weight: 800; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
-        .air-unit { color: var(--text-muted); font-size: 0.68rem; margin-left: -3px; }
+        .air-unit { color: #b9c6bf; font-size: 0.68rem; margin-left: -3px; }
         .air-grade { font-weight: 800; }
         .air-grade[data-grade="good"] { color: #7cc4ff; }
         .air-grade[data-grade="normal"] { color: #75d69f; }
@@ -79,14 +80,19 @@
         .hourly-forecast { display: grid; grid-template-columns: repeat(var(--forecast-columns, 1), minmax(0, 1fr)); gap: 3px; min-width: 0; }
         .forecast-hour { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 5px 1px; min-width: 0; border-radius: 7px; }
         .forecast-hour.is-current { border-color: rgba(117,214,159,0.55); box-shadow: inset 0 0 0 99px rgba(117,214,159,0.12); }
-        .forecast-time { color: var(--text-muted); font-size: 0.73rem; }
+        .forecast-time { color: #e3ebe6; font-size: 0.78rem; font-weight: 600; }
         .forecast-icon { font-size: 1.25rem; line-height: 1.2; }
         .forecast-temperature { font-size: 1.05rem; font-weight: 800; }
-        /* 강수확률은 높을수록 진하게: 30% 미만은 흐리게, 60% 이상은 파란 바탕으로 띄운다. */
-        .forecast-rain { color: var(--text-sub); font-size: 0.7rem; white-space: nowrap; padding: 1px 5px; border-radius: 6px; }
+        /* 강수확률: 0%는 숫자만, 확률이 있으면 💧(눈이면 ❄️)를 붙이고 30% 이상은 하늘색, 60% 이상은 파란 바탕으로 띄운다. */
+        .forecast-rain { color: #c4d1c9; font-size: 0.74rem; white-space: nowrap; padding: 1px 5px; border-radius: 6px; }
         .forecast-rain.rain-some { color: #7ce4ff; font-weight: 700; }
-        .forecast-rain.rain-high { color: #04141c; background: #4fc3f7; font-weight: 800; }
+        .forecast-rain.rain-high { color: #04141c; font-weight: 800; padding: 0; }
+        /* 파란 바탕은 숫자에만 깐다. 아이콘까지 덮으면 하늘색 ❄️가 바탕에 묻힌다. */
+        .forecast-rain.rain-high .rain-value { background: #4fc3f7; padding: 1px 4px; border-radius: 6px; }
+        .forecast-rain .rain-icon { margin-right: 1px; }
         .forecast-hour.next-day { margin-left: 5px; }
+        /* 나무결 위 작은 글씨가 무늬에 묻히지 않게 그림자를 깐다. */
+        .forecast-time, .forecast-temperature, .forecast-rain:not(.rain-high), .air-row { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9); }
         .forecast-message { grid-column: 1 / -1; padding: 18px 0; font-size: 0.85rem; color: var(--text-muted); }
         #forecastRetry { align-self: flex-start; color: var(--accent-green); border: 0; background: none; font: inherit; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
 
@@ -913,7 +919,9 @@
         .board-item.schedule-today,
         .weather-box,
         .meal-dish-item { padding: 7px 10px !important; border-radius: 8px !important; gap: 8px !important; }
-        /* 머리 줄(시계·날씨·예보)과 달력 날짜, 아래 도구 단추도 글씨 상자라 같은 창으로 뚫는다. */
+        /* 머리 줄(시계·날씨·예보)과 달력 날짜, 아래 도구 단추도 글씨 상자라 같은 창으로 뚫는다.
+           요일 그림은 오른쪽 아래로 갈수록 거의 검어서 그 자리 상자(달력·급식)는 무늬가 묻혔다. 상자는 어둑한
+           가장자리를 걷어 내 나무결이 어디서나 같은 진하기로 보이는 상자용 그림(<요일>-box.webp)을 비춘다. */
         .timetable-item,
         .timetable-item.active,
         .num-chip,
@@ -928,7 +936,7 @@
         .cal-day,
         .toolbar .tool-btn { border: 1px solid rgba(255, 255, 255, 0.08);
             background-color: #1b1b1b;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--weekday-panel-image);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--weekday-box-image);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -1483,7 +1491,9 @@
             <a class="tool-btn" id="blackboardLink" href="/classtools/blackboard.html">🖌️ 칠판</a>
             <a class="tool-btn" href="/classboard/">📢 알림장</a>
             <a class="tool-btn" id="seatingLink" href="seating">🪑 자리 배치</a>
-            <button class="tool-btn" id="resetBtn" type="button">🔄 카드 순서 되돌리기</button>
+        </div>
+        <div class="toolbar-group">
+            <button class="tool-btn" id="resetBtn" type="button" title="옮겨 놓은 카드를 처음 순서로">🔄 초기화</button>
         </div>
     </footer>
     <script>document.getElementById("blackboardLink").search = location.search;</script>
@@ -1679,6 +1689,13 @@
             4: "url('./assets/dashboard-panels/thursday.webp')",
             5: "url('./assets/dashboard-panels/friday.webp')"
         };
+        const weekdayBoxImages = {
+            1: "url('./assets/dashboard-panels/monday-box.webp')",
+            2: "url('./assets/dashboard-panels/tuesday-box.webp')",
+            3: "url('./assets/dashboard-panels/wednesday-box.webp')",
+            4: "url('./assets/dashboard-panels/thursday-box.webp')",
+            5: "url('./assets/dashboard-panels/friday-box.webp')"
+        };
 
         function applyWeekdayPanelTheme(date) {
             const day = date.getDay();
@@ -1689,6 +1706,7 @@
                 "--weekday-panel-image",
                 weekdayPanelImages[day] || weekdayPanelImages[1]
             );
+            document.documentElement.style.setProperty("--weekday-box-image", weekdayBoxImages[day] || weekdayBoxImages[1]);
         }
 
         function updateClock() {
@@ -3250,14 +3268,19 @@
                 const temperature = Number.isFinite(item.temperature) ? Math.round(item.temperature) + "°" : "--°";
                 const rain = Number.isFinite(item.rain) ? Math.round(item.rain) : null;
                 const probability = rain === null ? "--%" : rain + "%";
-                cell.title = (isNextDay ? "내일 " : "") + item.hour + "시 · " + condition.name + " · " + temperature + " · 강수확률 " + probability;
+                cell.title = (isNextDay ? "내일 " : "") + item.hour + "시 · " + condition.name + " · " + temperature + " · " + (rain > 0 && isSnowHour(item) ? "눈 올 확률 " : "강수확률 ") + probability;
                 cell.setAttribute("aria-label", cell.title);
                 const rainClass = rain >= 60 ? " rain-high" : rain >= 30 ? " rain-some" : "";
+                const rainIcon = rain > 0 ? (isSnowHour(item) ? "❄️" : "💧") : "";
                 [["forecast-time", String(item.hour).padStart(2, "0") + "시"], ["forecast-icon", condition.icon],
-                 ["forecast-temperature", temperature], ["forecast-rain" + rainClass, (rain >= 30 ? "💧" : "") + probability]].forEach(([className, value]) => {
+                 ["forecast-temperature", temperature], ["forecast-rain" + rainClass, [rainIcon, probability]]].forEach(([className, value]) => {
                     const span = document.createElement("span");
                     span.className = className;
-                    span.textContent = value;
+                    if (Array.isArray(value)) {
+                        const [icon, number] = value;
+                        if (icon) span.append(Object.assign(document.createElement("span"), { className: "rain-icon", textContent: icon }));
+                        span.append(Object.assign(document.createElement("span"), { className: "rain-value", textContent: number }));
+                    } else span.textContent = value;
                     cell.append(span);
                 });
                 grid.append(cell);
@@ -3267,9 +3290,25 @@
         const forecastResizeObserver = new ResizeObserver(renderHourlyForecast);
         forecastResizeObserver.observe(document.getElementById("hourlyForecast"));
 
+        // 눈: 기상청 강수형태가 눈·비/눈이면 눈, 강수형태가 없으면(확률만 있으면) 0도 이하일 때 눈으로 본다.
+        const SNOW_CODES = [56, 66, 71, 73, 75, 77, 85, 86];
+        const RAIN_CODES = [51, 53, 55, 57, 61, 63, 65, 67, 80, 81, 82, 95, 96, 97, 99];
+        function isSnowHour(item) {
+            if (SNOW_CODES.includes(item.code)) return true;
+            if (RAIN_CODES.includes(item.code)) return false;
+            return Number.isFinite(item.temperature) && item.temperature <= 0;
+        }
+
+        // 맑은 밤: 달이 떠 있으면 그날 모양으로, 졌거나 그믐 무렵이면 별을 그린다.
+        // 달이 떠 있는지와 모양(위상 0 삭·0.25 상현·0.5 보름·0.75 하현)은 서버가 학교 자리에서 계산해 준다.
+        const MOON_PHASE_ICONS = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"];
         function describeWeatherItem(item) {
             const condition = describeWeather(item.code, item.isDay);
             if (item.label) condition.name = item.label;
+            if (item.code === 0 && !item.isDay && item.moon) {
+                const visible = item.moon.up && item.moon.fraction >= 0.03;
+                condition.icon = visible ? MOON_PHASE_ICONS[Math.round(item.moon.phase * 8) % 8] : "✨";
+            }
             return condition;
         }
 

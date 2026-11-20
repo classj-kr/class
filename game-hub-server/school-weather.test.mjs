@@ -53,8 +53,11 @@ test("기상청이 안 되면 Open-Meteo 예보로 대신한다", async () => {
   const service = createSchoolWeather({ kma, fetchImpl: fakeFetch(calls) });
   const result = await service.get(37.66, 127.06);
   assert.equal(result.source, "open-meteo");
-  assert.deepEqual(result.current, { temperature: 3.2, humidity: 40, code: 2, isDay: 1 });
-  assert.deepEqual(result.hourly[1], { time: "2026-11-20T11:00", hour: 11, temperature: 4, humidity: 38, rain: 10, code: 3, isDay: 1 });
+  const { moon: currentMoon, ...current } = result.current;
+  const { moon: hourMoon, ...hour } = result.hourly[1];
+  assert.deepEqual(current, { temperature: 3.2, humidity: 40, code: 2, isDay: 1 });
+  assert.deepEqual(hour, { time: "2026-11-20T11:00", hour: 11, temperature: 4, humidity: 38, rain: 10, code: 3, isDay: 1 });
+  assert.ok(currentMoon && hourMoon);
 });
 
 test("기상청 인증키가 없으면 기상청을 부르지 않는다", async () => {
@@ -95,4 +98,32 @@ test("같은 동네(약 1km)는 30분 동안 다시 묻지 않는다", async () 
   assert.equal(calls.length, 2); // 예보 한 번 + 미세먼지 한 번
   await service.get(35.1, 129.0);
   assert.equal(calls.length, 4);
+});
+
+test("달 모양: 2026년 11월 삭·상현·보름·하현", () => {
+  const { moonAt } = schoolWeather;
+  const at = (iso) => moonAt(new Date(iso), 37.65, 127.06);
+  assert.ok(at("2026-11-09T12:00+09:00").fraction < 0.03);
+  const quarter = at("2026-11-17T20:00+09:00");
+  assert.ok(Math.abs(quarter.phase - 0.25) < 0.02 && Math.abs(quarter.fraction - 0.5) < 0.05);
+  assert.ok(at("2026-11-24T21:00+09:00").fraction > 0.97);
+  assert.ok(Math.abs(at("2026-12-01T06:00+09:00").phase - 0.75) < 0.02);
+});
+
+test("달이 진 새벽은 떠 있지 않다고 알린다(11월 20일 달은 21일 새벽 3시 무렵 진다)", () => {
+  const { moonAt } = schoolWeather;
+  const at = (iso) => moonAt(new Date(iso), 37.65, 127.06);
+  assert.equal(at("2026-11-20T21:30+09:00").up, true);
+  assert.equal(at("2026-11-21T02:30+09:00").up, true);
+  assert.equal(at("2026-11-21T04:30+09:00").up, false);
+  assert.equal(at("2026-11-21T10:30+09:00").up, false);
+});
+
+test("예보 시간마다 달 정보를 붙이되 캐시한 예보는 고치지 않는다", async () => {
+  const kma = { configured: true, getWeather: async () => structuredClone(kmaResult) };
+  const service = createSchoolWeather({ kma, fetchImpl: fakeFetch([]) });
+  const result = await service.get(37.66, 127.06);
+  assert.equal(typeof result.hourly[0].moon.up, "boolean");
+  assert.ok(Number.isFinite(result.hourly[0].moon.phase));
+  assert.equal(typeof result.current.moon.up, "boolean");
 });

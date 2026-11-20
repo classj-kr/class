@@ -18,6 +18,52 @@ function finite(value) {
   return value === null || value === undefined || !Number.isFinite(number) ? null : number;
 }
 
+// 달: 그 시각 학교 자리에서 달이 떠 있는지와 모양. 대시보드가 맑은 밤에 그날 달(졌으면 별)을 그린다.
+// 아이콘용이라 저정밀 공식(aa.quae.nl 의 천문 계산 안내, 오차 몇 분)으로 충분하다.
+const RAD = Math.PI / 180;
+const OBLIQUITY = RAD * 23.4397;
+const SUN_DISTANCE_KM = 149598000;
+
+function equatorial(longitude, latitude) {
+  return {
+    ra: Math.atan2(Math.sin(longitude) * Math.cos(OBLIQUITY) - Math.tan(latitude) * Math.sin(OBLIQUITY), Math.cos(longitude)),
+    dec: Math.asin(Math.sin(latitude) * Math.cos(OBLIQUITY) + Math.cos(latitude) * Math.sin(OBLIQUITY) * Math.sin(longitude))
+  };
+}
+
+function moonAt(date, lat, lon) {
+  const d = date.getTime() / 86400000 - 10957.5; // 2000-01-01 12:00 UTC 부터 지난 날수
+  const L = RAD * (218.316 + 13.176396 * d);
+  const M = RAD * (134.963 + 13.064993 * d);
+  const F = RAD * (93.272 + 13.22935 * d);
+  const moon = { ...equatorial(L + RAD * 6.289 * Math.sin(M), RAD * 5.128 * Math.sin(F)), distance: 385001 - 20905 * Math.cos(M) };
+  const hourAngle = RAD * (280.16 + 360.9856235 * d) + RAD * lon - moon.ra;
+  const phi = RAD * lat;
+  const altitude = Math.asin(Math.sin(phi) * Math.sin(moon.dec) + Math.cos(phi) * Math.cos(moon.dec) * Math.cos(hourAngle));
+  const sunAnomaly = RAD * (357.5291 + 0.98560028 * d);
+  const center = RAD * (1.9148 * Math.sin(sunAnomaly) + 0.02 * Math.sin(2 * sunAnomaly) + 0.0003 * Math.sin(3 * sunAnomaly));
+  const sun = equatorial(sunAnomaly + center + RAD * 102.9372 + Math.PI, 0);
+  const elongation = Math.acos(Math.sin(sun.dec) * Math.sin(moon.dec) + Math.cos(sun.dec) * Math.cos(moon.dec) * Math.cos(sun.ra - moon.ra));
+  const inclination = Math.atan2(SUN_DISTANCE_KM * Math.sin(elongation), moon.distance - SUN_DISTANCE_KM * Math.cos(elongation));
+  const side = Math.atan2(Math.cos(sun.dec) * Math.sin(sun.ra - moon.ra),
+    Math.sin(sun.dec) * Math.cos(moon.dec) - Math.cos(sun.dec) * Math.sin(moon.dec) * Math.cos(sun.ra - moon.ra));
+  return {
+    // 지평선 기준은 달이 뜨고 지는 순간(시차·대기 굴절·달 크기를 더한 0.133°)
+    up: altitude > RAD * 0.133,
+    fraction: Math.round(((1 + Math.cos(inclination)) / 2) * 100) / 100, // 밝은 부분 비율
+    phase: Math.round((0.5 + (0.5 * inclination * (side < 0 ? -1 : 1)) / Math.PI) * 1000) / 1000 // 0 삭·0.25 상현·0.5 보름·0.75 하현
+  };
+}
+
+// 예보 시간 칸은 그 시간의 가운데(30분)로 본다. time 은 한국 시각 "2026-11-20T21:00".
+function withMoon(forecast, lat, lon, now = new Date()) {
+  return {
+    ...forecast,
+    current: { ...forecast.current, moon: moonAt(now, lat, lon) },
+    hourly: (forecast.hourly || []).map((item) => ({ ...item, moon: moonAt(new Date(`${String(item.time).slice(0, 13)}:30:00+09:00`), lat, lon) }))
+  };
+}
+
 function createSchoolWeather({ kma, fetchImpl = fetch } = {}) {
   const cache = new Map();
 
@@ -91,10 +137,10 @@ function createSchoolWeather({ kma, fetchImpl = fetch } = {}) {
     ]);
     if (forecast.status !== "fulfilled") throw forecast.reason;
     if (airQuality.status !== "fulfilled") console.warn("Air quality failed:", airQuality.reason?.message);
-    return { ...forecast.value, air: airQuality.status === "fulfilled" ? airQuality.value : null };
+    return { ...withMoon(forecast.value, lat, lon), air: airQuality.status === "fulfilled" ? airQuality.value : null };
   }
 
   return { get };
 }
 
-module.exports = { createSchoolWeather, inKorea };
+module.exports = { createSchoolWeather, inKorea, moonAt };
