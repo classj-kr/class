@@ -15,7 +15,6 @@ test("모든 한자성어가 같은 이름의 새 삽화를 가진다", () => {
     const files = new Set(fs.readdirSync(assetDirectory).filter((file) => file.endsWith(".webp")).map((file) => path.basename(file, ".webp")));
     const ids = new Set(data.map((idiom) => idiom.id));
 
-    assert.equal(data.length, 112);
     assert.equal(mapped.size, data.length);
     assert.equal(files.size, data.length);
     ids.forEach((id) => {

@@ -11,7 +11,7 @@
         { title: "권력과 사람", description: "권세를 빌리고 휘두르는 모습, 인재를 얻고 버리는 태도를 읽어요.", ids: ["hogahowi", "jirokwima", "garyeomjugu", "samilcheonha", "munjeonseongsi", "tosagupaeng", "samgochoryeo"] },
         { title: "재능과 기회", description: "뛰어난 능력이 드러나고 좋은 기회를 만나는 순간을 배워요.", ids: ["gungyeilhak", "baekmi", "nangjungjichu", "mosujacheon", "baekbalbaekjung", "myeongbulheojeon", "deungyongmun", "cheonjaeilu"] },
         { title: "싸움의 형세", description: "싸움과 경쟁에서 밀고 밀리는 형세를 나타내는 말을 익혀요.", ids: ["pajukjise", "maksangmakha", "baesujin", "samyeonchoga"] },
-        { title: "따져 보고 판단하기", description: "겉의 차이에 흔들리지 않고 두루 따져 바르게 판단하는 지혜를 길러요.", ids: ["gakjuguggeom", "josammosa", "gwayubulgeup", "giu", "mosun", "gyereuk", "osipbobaekbo", "daedongsoi", "iljangildan", "sipjungpalgu", "bulmungaji", "dongseonambuk"] },
+        { title: "따져 보고 판단하기", description: "겉의 차이에 흔들리지 않고 두루 따져 바르게 판단하는 지혜를 길러요.", ids: ["gakjuguggeom", "josammosa", "gwayubulgeup", "giu", "mosun", "gyereuk", "osipbobaekbo", "daedongsoi", "iljangildan", "sipjungpalgu", "bulmungaji"] },
         { title: "미리 준비하고 맞춰 대처하기", description: "앞일을 내다보고 준비하며, 형편에 맞게 대처하는 지혜를 배워요.", ids: ["yubimuhwan", "seongyeonjimyeong", "imgibyeon", "iyeolchyeol"] },
         { title: "좋은 것이 더해질 때", description: "좋은 것에 좋은 것이 더해지거나 마지막 한 가지로 완성되는 일을 배워요.", ids: ["geumsangcheomhwa", "hwaryongjeomjeong", "ilseogijo", "dadaikseon"] },
         { title: "잘못된 방법과 헛된 겉치레", description: "목적과 방법이 어긋나거나 실속을 잃는 행동을 경계해요.", ids: ["yeonmokgueo", "gyogaksaru", "taksanggongnon", "yumyeongmusil", "yongdusami", "sajok"] },
