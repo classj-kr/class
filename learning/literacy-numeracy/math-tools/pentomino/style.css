@@ -1,0 +1,70 @@
+.pento { gap: 12px; }
+.ladder { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 760px; }
+.ladder button { min-width: 42px; min-height: 38px; padding: 4px 8px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ladder button.cleared { background: #d9ece1; border-color: #8cbca2; color: #24513f; }
+.ladder button[aria-current="true"] { background: #305f50; border-color: #305f50; color: #fff; }
+
+.board { display: block; margin: 0 auto; width: 100%; max-height: calc(100dvh - 330px); min-height: 200px; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.cell { fill: #fffefa; stroke: #c9d4cb; stroke-width: .03; }
+.frame-edge { fill: none; stroke: #6f8a7d; stroke-width: .07; stroke-linejoin: round; }
+.anchor-hint { fill: #305f5033; stroke: #305f50; stroke-width: .05; pointer-events: none; }
+.ghost { opacity: .45; pointer-events: none; }
+.bad { fill: #e0574a; opacity: .55; pointer-events: none; animation: bad-flash .6s ease-out forwards; }
+@keyframes bad-flash { 0% { opacity: .75; } 100% { opacity: 0; } }
+.hit { fill: transparent; cursor: pointer; }
+
+/* 조각: 플라스틱 조각처럼 위쪽 밝은 테·아래쪽 그늘 */
+.tile { stroke: #00000038; stroke-width: .035; }
+.tile-light { pointer-events: none; }
+.piece-outline { fill: none; stroke: #1f2d2780; stroke-width: .06; stroke-linejoin: round; pointer-events: none; }
+.placed { cursor: pointer; transform-box: fill-box; transform-origin: center; }
+.placed.drop { animation: drop .28s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes drop { 0% { transform: scale(1.18); filter: drop-shadow(0 .25px .2px #0005); } 100% { transform: scale(1); } }
+.placed.cheer { animation: cheer .5s ease-in-out; }
+@keyframes cheer { 0%, 100% { transform: translateY(0) scale(1); } 40% { transform: translateY(-.35px) scale(1.06); } }
+.anchor-dot { fill: #1f2d27; opacity: .55; pointer-events: none; }
+
+.desk { display: flex; gap: 14px; align-items: stretch; justify-content: center; flex-wrap: wrap; width: min(1100px, 100%); }
+.hand { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; gap: 4px 10px; align-items: center; padding: 8px 12px; border: 1px solid #cfd9d0; border-radius: 16px; background: #fffefa; }
+.hand.shake { animation: shake .35s; }
+@keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+.hand-svg { grid-row: 1 / span 2; width: 132px; height: 132px; }
+.hand-svg .spin-r { animation: spin-r .25s ease-out; transform-origin: 0 0; }
+.hand-svg .spin-l { animation: spin-l .25s ease-out; transform-origin: 0 0; }
+.hand-svg .flip-in { animation: flip-in .25s ease-out; transform-origin: 0 0; }
+@keyframes spin-r { from { transform: rotate(-90deg); } }
+@keyframes spin-l { from { transform: rotate(90deg); } }
+@keyframes flip-in { from { transform: scaleX(-1); } }
+.hand-note { margin: 0; min-height: 1.4em; font-size: 15px; font-weight: 700; color: #305f50; max-width: 210px; }
+.hand-tools { display: flex; gap: 6px; }
+.empty-hand { fill: none; stroke: #c9d4cb; stroke-width: .06; stroke-dasharray: .2 .15; }
+
+.tray { display: flex; flex-wrap: wrap; gap: 6px; align-content: center; justify-content: center; max-width: 640px; padding: 8px; border: 1px dashed #cfd9d0; border-radius: 16px; min-height: 80px; }
+.tray button { width: 74px; height: 74px; padding: 4px; border-radius: 12px; }
+.tray button[aria-pressed="true"] { border-color: #305f50; border-width: 2px; background: #e1eee5; }
+.tray svg { width: 100%; height: 100%; }
+.tray .tray-empty { align-self: center; color: #7d8f86; font-size: 14px; }
+
+.meter { margin: 0; font-size: 14px; color: #5d7268; font-variant-numeric: tabular-nums; }
+
+.done { position: fixed; inset: 0; display: grid; place-items: center; background: #f6f4ee99; z-index: 30; }
+.done-card { padding: 22px 28px; border-radius: 18px; background: #fffefa; border: 1px solid #cfd9d0; box-shadow: 0 18px 50px #304a4133; text-align: center; animation: pop .35s cubic-bezier(.3, 1.5, .5, 1); }
+.done-card h2 { margin: 0 0 6px; font-size: 26px; }
+.done-card p { margin: 0 0 14px; }
+@keyframes pop { from { transform: scale(.7); opacity: 0; } }
+
+#notice { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); padding: 9px 16px; border-radius: 12px; background: #304a41; color: #fff; z-index: 40; }
+
+.race-standings { width: min(760px, 100%); }
+body.pr-racing #ladder, body.pr-racing #stage, body.pr-racing #seen, body.pr-racing #restart, body.pr-racing #race-open { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .placed, .hand, .hand-svg *, .done-card { animation: none !important; } }
+@media (max-width: 640px) { .hand-svg { width: 104px; height: 104px; } .tray button { width: 60px; height: 60px; } }
+
+/* 순위표: 공용 경주로는 어두운 게임 화면용이라 밝은 교구 화면 색으로 */
+.race-standings .pr-runner { grid-template-columns: 1.6em minmax(0, 4.6em) minmax(0, 1fr) 4.8em; border-color: #cfd9d0; background: #fffefa; color: #304a41; }
+.race-standings .pr-runner.me { border-color: #d9a441; background: #fdf3dc; }
+.race-standings .pr-rank { color: #b7791f; }
+.race-standings .pr-fill { background: #304a411a; }
+.race-standings .pr-runner.done .pr-mark { color: #15803d; }
+.race-standings .pr-mark { white-space: nowrap; }

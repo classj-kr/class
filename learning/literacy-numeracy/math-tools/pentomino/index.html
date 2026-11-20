@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>펜토미노 · 수학 교구</title>
+    <link rel="icon" href="/assets/icons/favicon.webp" />
+    <link rel="stylesheet" href="../assets/ui.css?v=20261108-2" />
+    <link rel="stylesheet" href="style.css?v=20261121-2" />
+    <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars" />
+    <script src="/assets/network/game-network.js?v=20260821"></script>
+    <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
+    <script src="/assets/network/multiplayer-lobby.js?v=20261118-main-join"></script>
+    <script src="/assets/network/puzzle-race.js?v=20261118-podium-music"></script>
+    <script src="/assets/site-storage.js?v=20261006-1" defer></script>
+    <script src="puzzles.js?v=20261121-1" defer></script>
+    <script src="app.js?v=20261121-2" defer></script>
+    <script
+      src="/assets/sound/music-control.js?v=20261105-settings-panel"
+      data-sfx-controls
+      data-settings-help="tool-help"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1 class="sr-only">펜토미노</h1>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="pento-light" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity=".42" />
+          <stop offset=".45" stop-color="#fff" stop-opacity="0" />
+          <stop offset="1" stop-color="#000" stop-opacity=".16" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="toolbar">
+      <select id="stage" aria-label="조각 수"></select>
+      <button id="seen" aria-pressed="false">돌린 모양 보기</button>
+      <button id="restart">다시</button>
+      <button id="race-open">순위전</button>
+    </div>
+    <main class="workspace pento">
+      <div id="ladder" class="ladder" role="group" aria-label="판 고르기"></div>
+      <div class="race-standings" id="race-standings" hidden></div>
+      <div class="stage-wrap">
+        <svg id="board" class="board" role="grid" aria-label="조각으로 채울 틀"></svg>
+      </div>
+      <div class="desk">
+        <div class="hand" id="hand-box">
+          <svg id="hand" class="hand-svg" viewBox="-3 -3 6 6" aria-label="손에 든 조각"></svg>
+          <p id="hand-note" class="hand-note"></p>
+          <div class="hand-tools">
+            <button id="rot-left" class="icon" aria-label="왼쪽으로 90° 돌리기">↺</button>
+            <button id="rot-right" class="icon" aria-label="오른쪽으로 90° 돌리기">↻</button>
+            <button id="flip" aria-label="뒤집기">⇋ 뒤집기</button>
+          </div>
+        </div>
+        <div id="tray" class="tray" role="group" aria-label="남은 조각"></div>
+      </div>
+      <p class="meter"><span id="clock">0:00</span> · <span id="turns">돌리기·뒤집기 0번</span></p>
+    </main>
+    <div id="done" class="done" hidden>
+      <div class="done-card" role="dialog" aria-labelledby="done-title">
+        <h2 id="done-title">다 채웠다!</h2>
+        <p id="done-text"></p>
+        <button id="next" class="primary">다음 판</button>
+      </div>
+    </div>
+    <p id="notice" role="status" hidden></p>
+    <template id="tool-help"
+      ><ul>
+        <li>아래 상자에서 조각을 누르면 손에 들어요. 틀의 칸을 누르면 조각의 <b>점 찍힌 칸</b>이 그 칸에 놓여요.</li>
+        <li>↺ ↻ 는 점 찍힌 칸을 중심으로 90°씩 돌리고, 뒤집기는 왼쪽과 오른쪽을 바꿔요.</li>
+        <li>처음에는 돌리거나 뒤집은 모양이 보이지 않아요. 머릿속으로 돌려 보고 놓아 보세요. 「돌린 모양 보기」를 켜면 보여요.</li>
+        <li>놓인 조각을 누르면 다시 손에 들어요. 모든 조각으로 틀을 빈틈없이 채우면 끝나요.</li>
+        <li>키보드: R 오른쪽 돌리기, E 왼쪽 돌리기, F 뒤집기.</li>
+      </ul></template
+    >
+  </body>
+</html>
