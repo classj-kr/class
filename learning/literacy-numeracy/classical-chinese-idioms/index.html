@@ -20,7 +20,7 @@
     <script src="idioms-lessons-data.js?v=20261120-no-dongseo" defer></script>
     <script src="idioms-core.js?v=20261120-lesson-only" defer></script>
     <script src="/assets/learning-records.js?v=20261114-my-record" defer></script>
-    <script src="app.js?v=20261120-lesson-only" defer></script>
+    <script src="app.js?v=20261120-no-self-mark" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#mainContent">본문으로 바로가기</a>
@@ -97,7 +97,7 @@
 
             <div id="emptyDeck" class="empty-state" hidden>
                 <strong>복습 목록이 비어 있습니다.</strong>
-                <p>카드에서 ‘복습 필요’를 선택하면 목록에 추가됩니다.</p>
+                <p>문제에서 처음에 틀린 성어가 여기에 모입니다.</p>
                 <button id="showAllButton" type="button">전체 카드 보기</button>
             </div>
 
@@ -140,15 +140,6 @@
                         </div>
                     </div>
                 </article>
-
-
-                <div id="memoryActions" class="memory-actions" hidden aria-label="암기 상태 선택">
-                    <p>학습 상태</p>
-                    <div>
-                        <button id="markReview" class="review-action" type="button"><span>↺</span> 복습 필요 <kbd>R</kbd></button>
-                        <button id="markKnown" class="known-action" type="button"><span>✓</span> 암기 완료 <kbd>K</kbd></button>
-                    </div>
-                </div>
             </div>
         </section>
 

@@ -141,7 +141,7 @@
         idiomHanjaExpl: byId("idiomHanjaExpl"), idiomMeaning: byId("idiomMeaning"), idiomStory: byId("idiomStory"),
         idiomIllustration: byId("idiomIllustration"), idiomIllustrationImage: byId("idiomIllustrationImage"),
         previousCard: byId("previousCard"), nextCard: byId("nextCard"),
-        memoryActions: byId("memoryActions"), markReview: byId("markReview"), markKnown: byId("markKnown"),
+       
         gameIntro: byId("gameIntro"), quizStage: byId("quizStage"), quizResult: byId("quizResult"),
         bestScore: byId("bestScore"), startQuiz: byId("startQuiz"), quizPosition: byId("quizPosition"),
         quizStreak: byId("quizStreak"), quizScore: byId("quizScore"), quizBar: byId("quizBar"),
@@ -246,15 +246,6 @@
         revealed = true;
         elements.idiomCard.classList.add("revealed");
         elements.cardDetails.hidden = false;
-        elements.memoryActions.hidden = false;
-    }
-
-    function renderMemoryStatus(idiom) {
-        const status = progress[idiom.id]?.status || "";
-        elements.markKnown.classList.toggle("selected", status === "known");
-        elements.markReview.classList.toggle("selected", status === "review");
-        elements.markKnown.setAttribute("aria-pressed", String(status === "known"));
-        elements.markReview.setAttribute("aria-pressed", String(status === "review"));
     }
 
     function renderHanjaExpl(container, text) {
@@ -308,7 +299,6 @@
         }
         elements.previousCard.disabled = deck.length < 2;
         elements.nextCard.disabled = deck.length < 2;
-        renderMemoryStatus(idiom);
         setRevealed(revealed);
     }
 
@@ -319,25 +309,6 @@
         revealed = true;
         renderCard(); saveProgress();
         elements.idiomCard.focus({ preventScroll: true });
-    }
-
-    async function markCurrent(status) {
-        if(recordBusy)return;
-        const idiom = currentIdiom();
-        if (!idiom) return;
-        progress[idiom.id] = { status, updatedAt: new Date().toISOString() };
-        recordBusy=true;elements.learningShell.inert=true;
-        await saveProgress([{kind:'self-assessment',questionKey:idiom.id,response:status,snapshot:{title:idiom.word}}]);recordBusy=false;elements.learningShell.inert=false;
-        renderSummary();
-        renderLessonOverview();
-        showToast(`${idiom.word}: ${status === "known" ? "암기 완료" : "복습 필요"}`);
-
-        if (reviewOnly && status === "known") {
-            buildDeck();
-        } else {
-            renderMemoryStatus(idiom);
-            setTimeout(() => moveCard(1), 320);
-        }
     }
 
     function switchView(viewName) {
@@ -475,7 +446,11 @@
         elements.answerFeedback.hidden = false;
         elements.nextQuestion.textContent = quizIndex === quiz.length - 1 ? "결과 보기 →" : "다음 문제 →";
         elements.nextQuestion.disabled=false;
-        await saveProgress([event]);recordBusy=false;elements.learningShell.inert=false;
+        // 외움·복습은 스스로 고르지 않고 문제 결과로 정한다: 처음에 맞히면 외움, 한 번이라도 틀렸으면 복습.
+        const status = quizQuestionHadWrong ? "review" : "known";
+        progress[answerIdiom.id] = { status, updatedAt: new Date().toISOString() };
+        await saveProgress([event, { kind: 'self-assessment', questionKey: answerIdiom.id, response: status, snapshot: { title: answerIdiom.word } }]);recordBusy=false;elements.learningShell.inert=false;
+        renderSummary(); renderLessonOverview();
         elements.nextQuestion.focus();
     }
 
@@ -699,8 +674,6 @@ function renderLessonOverview() {
     elements.previousCard.addEventListener("click", () => moveCard(-1));
     elements.nextCard.addEventListener("click", () => moveCard(1));
 
-    elements.markKnown.addEventListener("click", () => markCurrent("known"));
-    elements.markReview.addEventListener("click", () => markCurrent("review"));
 
     document.querySelectorAll(".quiz-mode").forEach((button) => {
         button.addEventListener("click", () => {
@@ -726,8 +699,6 @@ function renderLessonOverview() {
         if (learnVisible) {
             if (event.key === "ArrowLeft") moveCard(-1);
             else if (event.key === "ArrowRight") moveCard(1);
-            else if (revealed && event.key.toLocaleLowerCase() === "k") markCurrent("known");
-            else if (revealed && event.key.toLocaleLowerCase() === "r") markCurrent("review");
         } else if (quizVisible && !quizAnswered && /^[1-4]$/.test(event.key)) {
             const option = quiz[quizIndex]?.options[Number(event.key) - 1];
             if (option) chooseAnswer(option.id);
