@@ -79,8 +79,7 @@ const CHAPTERS = [
                 emoji: "⚡",
                 left: [
                     "마침내 옥황상제가 노했습니다. 옥황상제가 두 사람을 불러 세웠어요.",
-                    "\"내가 너희를 맺어 준 것은 서로 게을러지라는 뜻이 아니었다!\"",
-                    "\"하늘이 며칠째 잿빛인 것을 보아라!\"",
+                    "\"내가 너희를 맺어 준 것은 서로 게을러지라는 뜻이 아니었다! 하늘이 며칠째 잿빛인 것을 보아라!\"",
                     "옥황상제의 수염이 부르르 떨렸지요."
                 ],
                 right: [
@@ -96,8 +95,7 @@ const CHAPTERS = [
                 left: [
                     "\"오늘부터 은하수 양쪽에서 따로 살아라.\"",
                     "옥황상제의 목소리가 아주 무거웠어요.",
-                    "\"만나는 것은 일 년에 단 하루, 칠월 칠일 칠석날뿐이다.\"",
-                    "\"일 년에 하루라도 만나게 해 주는 것이 나의 마지막 정이다.\""
+                    "\"만나는 것은 일 년에 단 하루, 칠월 칠일 칠석날뿐이다. 일 년에 하루라도 만나게 해 주는 것이 나의 마지막 정이다.\""
                 ],
                 right: [
                     "두 사람은 은하수 이쪽과 저쪽으로 갈라졌습니다. 손을 뻗어도 서로에게 닿지 않았어요.",
@@ -151,7 +149,7 @@ const CHAPTERS = [
                 emoji: "🐦",
                 left: [
                     "그 울음소리가 하늘을 넘어 땅에까지 들렸어요.",
-                    "아주 슬프고 긴 울음소리였지요. 밤새 그치지 않았어요.",
+                    "아주 슬프고 긴 울음소리였지요. 좀처럼 그치지 않았어요.",
                     "까치와 까마귀들이 고개를 갸웃했습니다.",
                     "\"저게 무슨 소리지?\"",
                     "새들이 일제히 하늘을 올려다보았어요."
@@ -397,7 +395,7 @@ const EN = {
                     emoji: "🐦",
                     left: [
                         "The sound of that crying passed the sky and reached the earth.",
-                        "It was a long, sad sound, and it did not stop all night.",
+                        "It was a long, sad sound, and it went on and on.",
                         "Magpies and crows tilted their heads.",
                         { t: "\"What is that noise?\"", v: "boy" },
                         "All together the birds looked up at the sky."
@@ -581,7 +579,7 @@ const EN = {
         ],
         "09-birds.webp": [
             { w: "reached (reach)", k: "닿았다", s: "The sound of that crying passed the sky and reached the earth." },
-            { w: "all night", k: "밤새", s: "it did not stop all night" },
+            { w: "went on and on (go on)", k: "그치지 않고 이어졌다", s: "it went on and on" },
             { w: "Magpies", k: "까치", s: "Magpies and crows tilted their heads." },
             { w: "crows", k: "까마귀", s: "Magpies and crows tilted their heads." },
             { w: "tilted their heads", k: "고개를 갸웃했다", s: "Magpies and crows tilted their heads." },

@@ -13,8 +13,7 @@ const CHAPTERS = [
                     "곳간은 텅 비고 밥그릇은 바닥이 보였답니다."
                 ],
                 right: [
-                    "\"밥그릇아, 너는 어째 늘 비어 있느냐.\"",
-                    "\"허, 대답도 없구나.\"",
+                    "\"밥그릇아, 너는 어째 늘 비어 있느냐. 허, 대답도 없구나.\"",
                     "돌쇠는 빈 그릇한테 말을 거는 사람이었답니다. 혼자 사는 집이 하도 조용해서 그러는 것이었지요.",
                     "그래도 돌쇠는 이튿날이면 또 새벽별을 보며 일어났답니다."
                 ]
@@ -104,7 +103,7 @@ const CHAPTERS = [
                     "돌쇠는 숨이 멎는 줄 알았어요. 손만 뻗으면 닿는 자리였거든요.",
                     "\"으라차차!\"",
                     "도깨비들이 엉겨 붙어 흙먼지가 풀풀 일었지요.",
-                    "씨름에 정신이 팔려 아무도 그것을 보지 못했답니다."
+                    "씨름에 정신이 팔려 아무도 바위 쪽을 보지 않았답니다."
                 ]
             },
             {
@@ -147,8 +146,7 @@ const CHAPTERS = [
                 left: [
                     "처음에는 그저 재미났어요. 돌쇠는 감투를 쓰고 마을을 한 바퀴 돌았지요.",
                     "빨랫줄을 툭 건드리면 이 서방이 하늘만 올려다보았지요.",
-                    "\"바람도 없는데 왜 흔들려?\"",
-                    "\"거참 이상하네.\"",
+                    "\"바람도 없는데 왜 흔들려? 거참 이상하네.\"",
                     "돌쇠는 담 밑에서 배를 잡고 웃었어요."
                 ],
                 right: [
@@ -433,7 +431,7 @@ const EN = {
                         "It was near enough to reach out and touch.",
                         { t: "\"Heave!\"", v: "beast" },
                         "The goblins locked together and the dust flew up.",
-                        "They were so taken up with it that nobody saw."
+                        "So taken up with it, nobody looked at the rock."
                     ]
                 },
                 {
@@ -724,7 +722,7 @@ const EN = {
             { w: "the very one", k: "바로 그것", s: "That rock was the very one Dolsoe was lying behind." },
             { w: "reach out and touch", k: "손만 뻗으면 닿다", s: "It was near enough to reach out and touch." },
             { w: "locked together", k: "엉겨 붙었다", s: "The goblins locked together and the dust flew up." },
-            { w: "taken up with ~", k: "정신이 팔린", s: "They were so taken up with it that nobody saw." }
+            { w: "taken up with ~", k: "정신이 팔린", s: "So taken up with it, nobody looked at the rock." }
         ],
         "07-steal.webp": [
             { w: "banging (bang)", k: "쿵쾅거리는", s: "Dolsoe's heart was banging." },
@@ -955,7 +953,7 @@ const WORDS_KO = {
         { w: "걷어붙이다", k: "소매나 바짓단을 말아 올리다.", s: "제일 큰 도깨비가 소매를 걷어붙였지요." },
         { w: "넓적하다", k: "펀펀하고 넓다.", s: "도깨비들이 감투를 넓적한 바위에 툭툭 던졌습니다." },
         { w: "엉겨 붙다", k: "서로 뒤엉키다.", s: "도깨비들이 엉겨 붙어 흙먼지가 풀풀 일었지요." },
-        { w: "정신이 팔리다", k: "다른 데 마음을 다 빼앗기다.", s: "씨름에 정신이 팔려 아무도 그것을 보지 못했답니다." }
+        { w: "정신이 팔리다", k: "다른 데 마음을 다 빼앗기다.", s: "씨름에 정신이 팔려 아무도 바위 쪽을 보지 않았답니다." }
     ],
     "07-steal.webp": [
         { w: "쿵쾅쿵쾅", k: "가슴이 몹시 뛰는 모양.", s: "돌쇠의 심장이 쿵쾅쿵쾅 뛰었지요." },

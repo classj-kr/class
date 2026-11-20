@@ -71,8 +71,7 @@ const CHAPTERS = [
                 left: [
                     "엄마는 밤마다 한숨을 쉬었어요. 달빛이 개울물에 잘게 부서지는 밤이면 더 그랬지요.",
                     "엄마는 잠을 이루지 못했어요.",
-                    "\"내가 무슨 말을 해도 반대로만 하니…\"",
-                    "\"저 애를 어쩌면 좋을까.\"",
+                    "\"내가 무슨 말을 해도 반대로만 하니… 저 애를 어쩌면 좋을까.\"",
                     "아들 걱정뿐이었지요."
                 ],
                 right: [
@@ -109,15 +108,13 @@ const CHAPTERS = [
                 left: [
                     "엄마는 가만히 천장을 올려다보며 생각했어요.",
                     "숨소리가 자꾸 가빠졌어요.",
-                    "'나는 아무래도 오래 못 살 것 같구나.'",
-                    "'저 아이는 무슨 말이든 반대로 하니…'",
+                    "'나는 아무래도 오래 못 살 것 같구나. 저 아이는 무슨 말이든 반대로 하니…'",
                     "엄마는 눈을 감고 곰곰 헤아려 보았어요."
                 ],
                 right: [
-                    "'산에 묻어 달라 하면 개울가에 묻을 테고,'",
-                    "'개울가에 묻어 달라 하면 산에 묻겠지.'",
+                    "'산에 묻어 달라 하면 개울가에 묻을 테고, 개울가에 묻어 달라 하면 산에 묻겠지.'",
                     "엄마는 속으로 몇 번이나 되뇌었어요.",
-                    "한참을 뒤척이던 엄마가 마침내 마음을 정했습니다.",
+                    "산에 묻히고 싶어 한참을 뒤척이던 엄마가 마침내 마음을 정했습니다.",
                     "그러고는 아들을 가까이 불렀어요.",
                     "목소리에 힘이 하나도 없었답니다."
                 ]
@@ -152,8 +149,7 @@ const CHAPTERS = [
                 emoji: "😢",
                 left: [
                     "청개구리는 그제야 개울가에 주저앉아 목놓아 울었습니다.",
-                    "\"엄마…\"",
-                    "\"엄마 말을 한 번도 안 들었는데…\"",
+                    "\"엄마… 엄마 말을 한 번도 안 들었는데…\"",
                     "울음소리가 개울 건너까지 퍼졌어요.",
                     "아무리 불러도 대답이 없었지요."
                 ],
@@ -352,7 +348,7 @@ const EN = {
                         { t: "'Ask for the mountain and he'll bury me by the stream,'", v: "mother" },
                         { t: "'ask for the stream and he'll bury me on the mountain.'", v: "mother" },
                         "She went over it again and again.",
-                        "At last she made up her mind, and called her son close.",
+                        "She wanted the mountain. At last she made up her mind, and called her son close.",
                         "There was no strength at all in her voice."
                     ]
                 },

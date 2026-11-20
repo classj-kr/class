@@ -41,7 +41,7 @@ const CHAPTERS = [
                 emoji: "🏚️",
                 left: [
                     "나무를 하다 보니 나뭇짐이 제법 묵직해졌어요.",
-                    "어느새 해가 넘어가고 산속이 캄캄해졌습니다. 별빛 하나 없는 밤이었지요.",
+                    "어느새 해가 넘어가고 산속이 캄캄해졌습니다. 가느다란 달만 떠 있는 밤이었지요.",
                     "길이 어디로 났는지도 보이지 않았어요.",
                     "다행히 골짜기에 낡은 빈 집이 하나 있었지요."
                 ],
@@ -293,7 +293,7 @@ const EN = {
                     emoji: "🏚️",
                     left: [
                         "By the time his bundle of wood was heavy,",
-                        "the sun had gone and the mountain was black. There was not a star out.",
+                        "the sun had gone and the mountain was black. Only a thin moon was out.",
                         "He could not see where the path went.",
                         "Luckily there was an empty old house in the valley."
                     ],
@@ -533,7 +533,7 @@ const EN = {
         ],
         "03-house.webp": [
             { w: "By the time ~", k: "~할 무렵", s: "By the time his bundle of wood was heavy" },
-            { w: "not a star out", k: "별빛 하나 없는", s: "There was not a star out." },
+            { w: "a thin moon", k: "가느다란 달", s: "Only a thin moon was out." },
             { w: "where the path went (go)", k: "길이 어디로 났는지", s: "He could not see where the path went." },
             { w: "Luckily", k: "다행히", s: "Luckily there was an empty old house in the valley." },
             { w: "valley", k: "골짜기", s: "an empty old house in the valley" },

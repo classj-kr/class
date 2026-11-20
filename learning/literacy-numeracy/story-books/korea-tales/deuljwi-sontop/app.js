@@ -33,7 +33,7 @@ const CHAPTERS = [
                     "\"저러다 언젠가 큰코다치지.\"",
                     "그러나 덕구는 벌써 대문 밖이었지요.",
                     "마당에는 하얀 손톱 조각만 흩어져 있었어요.",
-                    "그날 밤이었어요. 달도 없는 캄캄한 밤이었지요."
+                    "그날 밤이었어요. 달빛이 환한 조용한 밤이었지요."
                 ]
             },
             {
@@ -175,8 +175,7 @@ const CHAPTERS = [
                     "\"우리 집 고양이를 데려가 보렴.\""
                 ],
                 right: [
-                    "\"사람 눈은 속여도 짐승 코는 못 속인단다.\"",
-                    "\"짐승이 짐승을 못 알아보겠느냐.\"",
+                    "\"사람 눈은 속여도 짐승 코는 못 속인단다. 짐승이 짐승을 못 알아보겠느냐.\"",
                     "덕구는 그 고양이를 품에 안고 집으로 향했지요. 고양이는 얌전히 안겨 골골거렸답니다.",
                     "덕구의 가슴이 쿵쿵 뛰었어요."
                 ]
@@ -282,7 +281,7 @@ const EN = {
                         { t: "\"He'll come badly unstuck one of these days.\"", v: "mother" },
                         "But Deokgu was already out of the gate.",
                         "Only the white clippings were left, scattered in the yard.",
-                        "That night the sky was black and there was no moon."
+                        "That night was still, and the moon was bright."
                     ]
                 },
                 {

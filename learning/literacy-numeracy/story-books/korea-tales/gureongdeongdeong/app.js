@@ -104,8 +104,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "떠나기 전날 밤, 신선비가 허물을 곱게 접어 건넸어요. 신선비의 얼굴이 몹시 진지했어요.",
-                    "\"이것을 아무도 못 보게 지켜 주시오.\"",
-                    "\"불에 닿으면 나는 돌아오지 못하오.\"",
+                    "\"이것을 아무도 못 보게 지켜 주시오. 불에 닿으면 나는 돌아오지 못하오.\"",
                     "아내는 허물을 궤 깊숙이 넣고 자물쇠를 채웠답니다."
                 ]
             },
@@ -119,7 +118,7 @@ const CHAPTERS = [
                     "둘은 밤새 머리를 맞대고 궁리했지요."
                 ],
                 right: [
-                    "이튿날 둘은 동생이 물을 길으러 간 사이에 궤를 열었어요. 허물이 밑바닥에 곱게 접혀 있었어요.",
+                    "이튿날 둘은 동생이 물을 길으러 간 사이에 자물쇠를 부수고 궤를 열었어요. 허물이 밑바닥에 곱게 접혀 있었어요.",
                     "그것을 아궁이에 던지자 파아란 불꽃이 확 솟았습니다.",
                     "매캐한 연기가 굴뚝으로 꾸역꾸역 올랐어요.",
                     "언니들은 얼른 부엌을 빠져나갔답니다."
@@ -192,9 +191,8 @@ const CHAPTERS = [
                 right: [
                     "할머니가 아내의 발을 보고 혀를 찼어요.",
                     "\"신이 다 닳도록 어딜 가는 길이냐.\"",
-                    "빨래를 다 밟아 주자 할머니가 입을 열었습니다.",
-                    "\"저 고개만 넘으면 큰 기와집이 있다.\"",
-                    "\"오늘이 그 집 혼인날이라더구나.\"",
+                    "신선비를 찾는다며 빨래를 다 밟아 주자 할머니가 입을 열었습니다.",
+                    "\"저 고개만 넘으면 큰 기와집이 있다. 오늘이 그 집 혼인날이라더구나.\"",
                     "아내의 다리에 힘이 솟았답니다."
                 ]
             },
@@ -377,7 +375,7 @@ const EN = {
                         "All night the two schemed together."
                     ],
                     right: [
-                        "Next day, while their sister was away drawing water, they opened the chest.",
+                        "Next day, while their sister was away drawing water, they broke the lock and opened the chest.",
                         "The skin lay folded neatly at the bottom.",
                         "They threw it into the kitchen fire, and a blue flame shot up.",
                         "Bitter smoke went crowding up the chimney.",
@@ -455,7 +453,7 @@ const EN = {
                     right: [
                         "The old woman looked at her feet and clicked her tongue.",
                         { t: "\"Where are you going, to wear your shoes through?\"", v: "granny" },
-                        "When the washing was done, the old woman spoke.",
+                        "She said she was looking for Shinseonbi, and when the washing was done the old woman spoke.",
                         { t: "\"Over that hill there is a big tiled house.\"", v: "granny" },
                         { t: "\"They say today is the wedding there.\"", v: "granny" },
                         "Strength came back into the wife's legs."
@@ -593,7 +591,7 @@ const EN = {
             { w: "slipped out (slip)", k: "빠져나갔다", s: "The sisters slipped out of the kitchen at once." }
         ],
         "08-gone.webp": [
-            { w: "long come and gone", k: "이미 지났다", s: "The time he should have returned had long come and gone." },
+            { w: "long come and gone (go)", k: "이미 지났다", s: "The time he should have returned had long come and gone" },
             { w: "day after day", k: "하루하루", s: "Day after day went by like that." },
             { w: "a single letter", k: "편지 한 장", s: "Then in the empty room she found a single letter." },
             { w: "on top of ~", k: "~ 위에", s: "It lay on top of the chest that had held the skin." },
@@ -788,7 +786,7 @@ const WORDS_KO = {
     "07-burn.webp": [
         { w: "배가 아프다", k: "남이 잘되는 것이 샘나다.", s: "언니들은 셋째가 잘사는 것이 늘 배가 아팠거든요." },
         { w: "머리를 맞대다", k: "함께 모여 궁리하다.", s: "둘은 밤새 머리를 맞대고 궁리했지요." },
-        { w: "긷다", k: "우물이나 냇물에서 물을 떠 오다.", s: "이튿날 둘은 동생이 물을 길으러 간 사이에 궤를 열었어요." },
+        { w: "긷다", k: "우물이나 냇물에서 물을 떠 오다.", s: "이튿날 둘은 동생이 물을 길으러 간 사이에 자물쇠를 부수고 궤를 열었어요." },
         { w: "아궁이", k: "불을 때는 구멍.", s: "그것을 아궁이에 던지자 파아란 불꽃이 확 솟았습니다." },
         { w: "매캐하다", k: "연기 냄새가 맵고 텁텁하다.", s: "매캐한 연기가 굴뚝으로 꾸역꾸역 올랐어요." },
         { w: "꾸역꾸역", k: "자꾸 밀려 나오는 모양.", s: "매캐한 연기가 굴뚝으로 꾸역꾸역 올랐어요." }

@@ -40,8 +40,7 @@ const CHAPTERS = [
                 emoji: "👑",
                 left: [
                     "임금님은 왕관 만드는 이를 몰래 불렀어요. 아무도 모르게 뒷문으로 들였지요.",
-                    "\"귀가 다 덮이도록 크고 높은 왕관을 만들어라.\"",
-                    "\"오늘 본 것은 죽을 때까지 입 밖에 내지 마라.\"",
+                    "\"귀가 다 덮이도록 크고 높은 왕관을 만들어라. 오늘 본 것은 죽을 때까지 입 밖에 내지 마라.\"",
                     "임금님의 목소리가 몹시 낮았어요."
                 ],
                 right: [
@@ -96,9 +95,7 @@ const CHAPTERS = [
                 left: [
                     "그러더니 여우가 갑자기 배를 잡고 웃기 시작하는 것이었어요.",
                     "앞발로 나무를 탁탁 치면서 깔깔댔지요.",
-                    "\"으하하하! 저 왕관 좀 봐!\"",
-                    "\"머리에 저런 걸 이고 다니다니!\"",
-                    "\"무겁지도 않은가! 목이 부러지겠네!\""
+                    "\"으하하하! 저 왕관 좀 봐! 머리에 저런 걸 이고 다니다니! 무겁지도 않은가! 목이 부러지겠네!\""
                 ],
                 right: [
                     "여우는 아예 나무에 기대 발까지 구르며 웃었습니다. 임금님이 그만 활을 땅에 내던졌어요.",
@@ -217,9 +214,8 @@ const CHAPTERS = [
                 art: "13-report.webp",
                 emoji: "😤",
                 left: [
-                    "그날 저녁, 신하가 임금님 앞에 나와 아뢰었어요. 임금님은 시치미를 뚝 떼고 앉아 있었지요.",
-                    "\"전하! 오늘 아주 괴상한 짐승을 보았습니다!\"",
-                    "\"귀가 이만큼이나 큰 놈이었지 뭡니까!\"",
+                    "그날 저녁, 신하가 임금님 앞에 나와 아뢰었어요. 임금님은 왕관을 찾아 쓰고 시치미를 뚝 떼고 있었지요.",
+                    "\"전하! 오늘 아주 괴상한 짐승을 보았습니다! 귀가 이만큼이나 큰 놈이었지 뭡니까!\"",
                     "신하가 두 팔을 크게 벌렸어요."
                 ],
                 right: [
@@ -551,7 +547,7 @@ const EN = {
                     emoji: "😤",
                     left: [
                         "That evening the official came before the king to report.",
-                        "The king sat there keeping a perfectly straight face.",
+                        "With his crown found and back on his head, the king sat there keeping a perfectly straight face.",
                         { t: "\"Sire! Today I saw a most peculiar beast!\"", v: "man" },
                         { t: "\"It had ears out to about here!\"", v: "man" },
                         "The official spread both arms out wide."
@@ -780,7 +776,7 @@ const EN = {
         ],
         "13-report.webp": [
             { w: "came before ~ to report", k: "나와 아뢰었다", s: "the official came before the king to report" },
-            { w: "a straight face", k: "시치미 뗀 얼굴", s: "The king sat there keeping a perfectly straight face." },
+            { w: "a straight face", k: "시치미 뗀 얼굴", s: "the king sat there keeping a perfectly straight face" },
             { w: "peculiar", k: "괴상한", s: "Sire! Today I saw a most peculiar beast!" },
             { w: "out to about here", k: "이만큼이나", s: "It had ears out to about here!" },
             { w: "spread ~ out wide", k: "크게 벌렸다", s: "The official spread both arms out wide." },
@@ -989,7 +985,7 @@ const WORDS_KO = {
         { w: "스르륵", k: "부드럽게 미끄러지는 모양.", s: "눈앞으로 무언가 스르륵 다가왔지요." }
     ],
     "13-report.webp": [
-        { w: "시치미를 떼다", k: "알고도 모르는 척하다.", s: "임금님은 시치미를 뚝 떼고 앉아 있었지요." },
+        { w: "시치미를 떼다", k: "알고도 모르는 척하다.", s: "임금님은 왕관을 찾아 쓰고 시치미를 뚝 떼고 있었지요." },
         { w: "괴상하다", k: "이상하고 별나다.", s: "오늘 아주 괴상한 짐승을 보았습니다!" },
         { w: "파르르", k: "가늘게 떠는 모양.", s: "왕관 속에서 임금님의 귀가 파르르 떨렸지요." },
         { w: "헛기침", k: "일부러 하는 기침.", s: "임금님은 헛기침만 했답니다." }

@@ -121,7 +121,7 @@ const CHAPTERS = [
                 art: "07-reunion.webp",
                 emoji: "👑",
                 left: [
-                    "바리데기는 궁으로 갔어요.",
+                    "바리데기는 신하의 말을 듣고 궁으로 갔어요.",
                     "병상에 누운 임금과 왕비가 딸을 바라보았지요.",
                     "\"네가… 일곱째냐.\"",
                     "왕비가 떨리는 손으로 바리데기의 얼굴을 만졌어요.",
@@ -280,13 +280,11 @@ const CHAPTERS = [
                     "\"무엇이든 말해라. 이 나라의 반이라도 주마.\"",
                     "임금이 말했어요.",
                     "바리데기는 고개를 저었지요.",
-                    "\"저는 검은 강을 건너며 우는 이들을 보았습니다. 길을 몰라 우는 이들이었어요.\"",
-                    "\"저는 그 길을 알려 주는 사람이 되겠습니다.\""
+                    "\"저는 검은 강을 건너며 우는 이들을 보았습니다. 길을 몰라 우는 이들이었어요. 저는 그 길을 알려 주는 사람이 되겠습니다.\""
                 ],
                 right: [
                     "\"죽은 이들을 돌보겠다는 말이냐.\"",
-                    "\"예. 아무도 그 일을 하려 하지 않으니까요.\"",
-                    "\"제가 갈 곳은 그곳입니다.\"",
+                    "\"예. 아무도 그 일을 하려 하지 않으니까요. 제가 갈 곳은 그곳입니다.\"",
                     "임금도 왕비도 딸을 말리지 못했어요.",
                     "바리데기는 다시 서쪽으로 갔습니다.",
                     "이번에는 뒤를 돌아보지 않았답니다."
@@ -468,7 +466,7 @@ const EN = {
                     art: "07-reunion.webp",
                     emoji: "👑",
                     left: [
-                        "Barideggi went to the palace.",
+                        "Barideggi heard the officer out and went to the palace.",
                         "The king and queen looked at her from their beds.",
                         { t: "\"Are you... the seventh?\"", v: "old" },
                         "The queen touched Barideggi's face with a shaking hand.",

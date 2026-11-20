@@ -24,8 +24,7 @@ const CHAPTERS = [
                 emoji: "💰",
                 left: [
                     "그날은 장이 아주 잘됐어요. 해가 지기도 전에 봇짐이 텅 비도록 물건이 다 팔렸지요.",
-                    "\"허허, 오늘은 운수가 좋구먼.\"",
-                    "\"바둑아, 오늘은 고기라도 사 먹자꾸나.\"",
+                    "\"허허, 오늘은 운수가 좋구먼. 바둑아, 오늘은 고기라도 사 먹자꾸나.\"",
                     "바둑이가 알아듣는다는 듯 컹 하고 짖었습니다."
                 ],
                 right: [
@@ -99,8 +98,7 @@ const CHAPTERS = [
                     "나뭇가지에 얼굴만 잔뜩 긁혔답니다."
                 ],
                 right: [
-                    "\"한 해를 벌어 모은 돈인데…\"",
-                    "\"이걸 어떻게 집에 가서 말한담.\"",
+                    "\"한 해를 벌어 모은 돈인데… 이걸 어떻게 집에 가서 말한담.\"",
                     "장수는 그만 길바닥에 털썩 주저앉았어요. 눈앞이 캄캄했지요.",
                     "바둑이가 그 곁에서 땅에 코를 대고 킁킁거렸답니다."
                 ]
@@ -156,7 +154,7 @@ const CHAPTERS = [
                     "바둑이가 힘껏 달려들어 바짓자락을 꽉 물고 늘어졌어요.",
                     "사내는 이제 달아날 엄두도 내지 못했지요.",
                     "떼어 내려고 아무리 발을 굴러도 소용이 없었습니다.",
-                    "그때 개 짖는 소리를 듣고 나무하러 온 사람들이 여기저기에서 달려왔답니다."
+                    "그때 개 짖는 소리를 듣고 장수도, 나무하러 온 사람들도 달려왔답니다."
                 ]
             },
             {
@@ -366,7 +364,7 @@ const EN = {
                         "Baduk went straight for him and got a good hold of his trouser leg.",
                         "Now the man could not even think of running.",
                         "He stamped and stamped to shake the dog off, and none of it did any good.",
-                        "Then woodcutters heard the barking and came running from here and there."
+                        "Then the pedlar heard the barking and came running, and so did some woodcutters."
                     ]
                 },
                 {
@@ -533,7 +531,7 @@ const EN = {
             { w: "got a good hold of ~", k: "꽉 물고 늘어졌다", s: "got a good hold of his trouser leg" },
             { w: "trouser leg", k: "바짓자락", s: "got a good hold of his trouser leg" },
             { w: "shake ~ off", k: "떼어 내다", s: "He stamped and stamped to shake the dog off" },
-            { w: "woodcutters", k: "나무하는 사람들", s: "Then woodcutters heard the barking and came running from here and there." }
+            { w: "woodcutters", k: "나무하는 사람들", s: "Then the pedlar heard the barking and came running, and so did some woodcutters." }
         ],
         "10-return.webp": [
             { w: "on the spot", k: "그 자리에서", s: "The man was caught on the spot." },
@@ -702,7 +700,7 @@ const WORDS_KO = {
         { w: "바짓자락", k: "바지의 아래 끝부분.", s: "바둑이가 힘껏 달려들어 바짓자락을 꽉 물고 늘어졌어요." },
         { w: "물고 늘어지다", k: "꽉 물고 놓지 않다.", s: "바짓자락을 꽉 물고 늘어졌어요." },
         { w: "엄두", k: "감히 해 보려는 마음.", s: "사내는 이제 달아날 엄두도 내지 못했지요." },
-        { w: "나무하다", k: "불 땔 나뭇가지를 산에서 베어 모으다.", s: "그때 개 짖는 소리를 듣고 나무하러 온 사람들이 여기저기에서 달려왔답니다." }
+        { w: "나무하다", k: "불 땔 나뭇가지를 산에서 베어 모으다.", s: "그때 개 짖는 소리를 듣고 장수도, 나무하러 온 사람들도 달려왔답니다." }
     ],
     "10-return.webp": [
         { w: "푼", k: "아주 적은 돈을 이르는 말.", s: "돈은 한 푼도 없어지지 않고 고스란히 돌아왔지요." },

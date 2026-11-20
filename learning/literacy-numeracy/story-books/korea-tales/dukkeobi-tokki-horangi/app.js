@@ -68,15 +68,13 @@ const CHAPTERS = [
                 emoji: "💡",
                 left: [
                     "그러다 두꺼비가 슬며시 입을 열었습니다. 두꺼비의 목소리가 아주 태연했어요.",
-                    "\"이렇게 다투기만 해서는 끝이 안 납니다.\"",
-                    "\"공평하게 내기를 하는 게 어떨까요?\"",
+                    "\"이렇게 다투기만 해서는 끝이 안 납니다. 공평하게 내기를 하는 게 어떨까요?\"",
                     "다투던 둘이 딱 멈추고 두꺼비를 돌아보았지요."
                 ],
                 right: [
                     "\"내기? 무슨 내기?\"",
                     "호랑이가 눈을 크게 떴어요.",
-                    "\"이 시루를 언덕 아래로 굴리는 거예요.\"",
-                    "\"먼저 잡는 이가 다 먹기로 하고요.\"",
+                    "\"이 시루를 언덕 아래로 굴리는 거예요. 먼저 잡는 이가 다 먹기로 하고요.\"",
                     "두꺼비는 언덕 아래를 턱으로 가리켰습니다. 언덕은 길고 비탈이 제법 가팔랐답니다."
                 ]
             },
@@ -145,7 +143,7 @@ const CHAPTERS = [
                     "\"어이쿠, 이건 참 잘 익었네.\"",
                     "우물우물, 냠냠.",
                     "떡은 아직 따뜻했지요.",
-                    "언덕 위에서 갓 쪄 낸 그 떡이었으니까요."
+                    "언덕 위에서 김이 나던 그 떡이었으니까요."
                 ],
                 right: [
                     "떡은 주워도 주워도 자꾸자꾸 나왔어요. 몇 걸음마다 한 조각씩 흩어져 있었으니까요.",
@@ -177,7 +175,7 @@ const CHAPTERS = [
                 emoji: "🐸",
                 left: [
                     "둘은 부랴부랴 언덕을 도로 기어 올라갔습니다. 떡이 어디로 갔는지 알아야 했거든요.",
-                    "언덕 위에서는 두꺼비가 느긋하게 앉아 있었지요.",
+                    "비탈 가운데쯤에 두꺼비가 느긋하게 앉아 있었지요.",
                     "볼록해진 배를 두드리면서요.",
                     "\"아이고 배불러. 잘 먹었습니다.\""
                 ],
@@ -368,7 +366,7 @@ const EN = {
                         { t: "\"My word, that's well steamed.\"", v: "man" },
                         "Munch, munch, chew.",
                         "The cake was still warm.",
-                        "It had come out of the steam up on that hill, after all."
+                        "It had been steaming up on that hill, after all."
                     ],
                     right: [
                         "However much he picked up, more kept coming. There was a piece every few steps.",
@@ -400,7 +398,7 @@ const EN = {
                     emoji: "🐸",
                     left: [
                         "They scrambled back up the hill. They had to know where the cake had gone.",
-                        "At the top the toad was sitting comfortably.",
+                        "Halfway up, the toad was sitting comfortably.",
                         "Patting his round belly.",
                         { t: "\"My, I'm full. That was very good.\"", v: "man" }
                     ],
@@ -540,7 +538,7 @@ const EN = {
             { w: "My word", k: "어이쿠", s: "My word, that's well steamed." },
             { w: "well steamed", k: "잘 익은", s: "My word, that's well steamed." },
             { w: "Munch, munch", k: "우물우물", s: "Munch, munch, chew." },
-            { w: "after all", k: "~이었으니까", s: "It had come out of the steam up on that hill, after all." },
+            { w: "after all", k: "~이었으니까", s: "It had been steaming up on that hill, after all." },
             { w: "However much ~", k: "주워도 주워도", s: "However much he picked up, more kept coming." },
             { w: "every few steps", k: "몇 걸음마다", s: "There was a piece every few steps." },
             { w: "rounder and rounder", k: "점점 볼록해지는", s: "The toad's belly grew rounder and rounder." },
@@ -562,7 +560,7 @@ const EN = {
         "10-belly.webp": [
             { w: "scrambled (scramble)", k: "부랴부랴 기어올랐다", s: "They scrambled back up the hill." },
             { w: "had to know", k: "알아야 했다", s: "They had to know where the cake had gone." },
-            { w: "comfortably", k: "느긋하게", s: "At the top the toad was sitting comfortably." },
+            { w: "comfortably", k: "느긋하게", s: "Halfway up, the toad was sitting comfortably." },
             { w: "round belly", k: "볼록한 배", s: "Patting his round belly." },
             { w: "I'm full", k: "배부르다", s: "My, I'm full. That was very good." },
             { w: "pointed at ~ (point)", k: "가리켰다", s: "The rabbit pointed at the toad's round belly." },

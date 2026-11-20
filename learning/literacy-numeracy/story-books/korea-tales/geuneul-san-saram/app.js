@@ -169,7 +169,7 @@ const CHAPTERS = [
                 left: [
                     "마침내 부자가 나그네를 찾아왔어요. 며칠을 벼르다 겨우 입을 뗐지요.",
                     "\"이보시오. 돈을 곱절로 돌려줄 테니 무릅시다.\"",
-                    "목소리에 힘이 하나도 없었어요.",
+                    "힘없이 말하며 엽전 꾸러미를 쥐여 주었지요.",
                     "\"이 집이 내 집인지 저잣거리인지 알 수가 없구려.\""
                 ],
                 right: [
@@ -194,8 +194,7 @@ const CHAPTERS = [
                 right: [
                     "\"이 그늘은 이제 제 것이니, 제 뜻대로 하겠습니다.\"",
                     "나그네가 마당에 모인 사람들을 둘러보았어요.",
-                    "\"오늘부터 이 그늘은 마을 사람 모두의 것입니다.\"",
-                    "\"그늘은 본디 그런 것이니까요.\"",
+                    "\"오늘부터 이 그늘은 마을 사람 모두의 것입니다. 그늘은 본디 그런 것이니까요.\"",
                     "부자의 얼굴이 붉어졌답니다."
                 ]
             },
@@ -420,7 +419,7 @@ const EN = {
                     left: [
                         "At last the rich man came to the traveller. He had been working up to it for days.",
                         { t: "\"Look here. I'll give you double. Let us undo it.\"", v: "old" },
-                        "There was no strength in his voice.",
+                        "He pressed a string of coins into the traveller's hand. There was no strength in his voice.",
                         { t: "\"I cannot tell whether this house is mine or a marketplace.\"", v: "old" }
                     ],
                     right: [

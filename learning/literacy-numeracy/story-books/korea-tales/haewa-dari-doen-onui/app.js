@@ -59,8 +59,7 @@ const CHAPTERS = [
                 emoji: "🌫️",
                 left: [
                     "마지막 고개에 이르자 광주리가 텅 비었습니다. 어머니는 광주리를 뒤집어 보이며 사정했지요.",
-                    "\"떡은 다 드렸잖습니까. 제발 보내 주세요.\"",
-                    "\"이제 정말 아무것도 없다.\"",
+                    "\"떡은 다 드렸잖습니까. 제발 보내 주세요. 이제 정말 아무것도 없습니다.\"",
                     "호랑이가 눈을 번뜩였어요.",
                     "하지만 호랑이는 길을 비켜 주지 않았답니다."
                 ],
@@ -68,8 +67,7 @@ const CHAPTERS = [
                     "그날 밤, 어머니는 끝내 집에 돌아오지 못했답니다.",
                     "호랑이는 어머니 옷을 입고 산을 내려왔지요.",
                     "오누이는 등잔불을 켜 놓고 문만 바라보았어요.",
-                    "\"오빠, 어머니가 왜 안 오시지?\"",
-                    "\"오빠, 무서워.\"",
+                    "\"오빠, 어머니가 왜 안 오시지? 오빠, 무서워.\"",
                     "오빠는 말없이 누이의 손을 꼭 잡아 주었답니다."
                 ]
             }
@@ -85,7 +83,7 @@ const CHAPTERS = [
                 left: [
                     "그때 밖에서 문 두드리는 소리가 났습니다.",
                     "\"얘들아, 엄마다. 문 열어라.\"",
-                    "오누이는 서로 마주 보았어요. 기다리던 어머니 목소리였거든요.",
+                    "오누이는 서로 마주 보았어요. 기다리던 어머니가 온 줄 알았거든요.",
                     "\"어머니!\"",
                     "오누이가 반가워서 벌떡 일어섰어요."
                 ],
@@ -169,8 +167,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "호랑이가 번쩍 고개를 들었어요. 나무 위에 오누이가 매달려 있는 것이 그제야 보였지요.",
-                    "\"거기 있었구나! 어떻게 올라갔느냐?\"",
-                    "\"어서 내려오지 못하겠느냐!\"",
+                    "\"거기 있었구나! 어떻게 올라갔느냐? 어서 내려오지 못하겠느냐!\"",
                     "호랑이가 나무 밑동을 앞발로 툭툭 쳤답니다.",
                     "오빠의 머릿속이 바쁘게 돌아갔어요."
                 ]
@@ -214,8 +211,7 @@ const CHAPTERS = [
                 emoji: "🌞",
                 left: [
                     "오누이가 동아줄을 타고 올라가자 호랑이도 두 손을 모으고 빌었어요.",
-                    "\"저 아이들만 갈 수는 없지!\"",
-                    "\"나도 동아줄을 내려 주시오!\"",
+                    "\"저 아이들만 갈 수는 없지! 나도 동아줄을 내려 주시오!\"",
                     "그런데 호랑이에게는 낡고 썩은 동아줄이 내려왔습니다.",
                     "호랑이는 그것도 모르고 신이 나서 줄을 탔지요."
                 ],
@@ -350,7 +346,7 @@ const EN = {
                         "Then came a knocking at the door outside.",
                         { t: "\"Children, it is Mother. Open the door.\"", v: "beast" },
                         "The two looked at each other.",
-                        "It was the voice they had been waiting for.",
+                        "They thought it was the mother they had been waiting for.",
                         { t: "\"Mother!\"", v: "girl" },
                         "They jumped up, glad to hear it."
                     ],
@@ -575,7 +571,7 @@ const EN = {
         ],
         "05-knock.webp": [
             { w: "knocking (knock)", k: "문 두드리는 소리", s: "Then came a knocking at the door outside." },
-            { w: "had been waiting for", k: "기다리던", s: "It was the voice they had been waiting for." },
+            { w: "had been waiting for", k: "기다리던", s: "They thought it was the mother they had been waiting for." },
             { w: "jumped up", k: "벌떡 일어섰다", s: "They jumped up, glad to hear it." },
             { w: "caught ~ sleeve (catch)", k: "소매를 붙잡았다", s: "But the brother suddenly caught his sister's sleeve." },
             { w: "not right", k: "이상한", s: "Something was not right." },
