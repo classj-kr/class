@@ -138,6 +138,14 @@ test('team mode: nobody fixes team size, children pick their own team (1 vs 2 is
   assert.deepEqual(h.last(a1).race.players.map(p => p.team), [0, 1, 1], 'uneven teams are allowed');
   h.act(a3, 'PICK', { team: 5 });
   assert.equal(h.last(a1).race.players[2].team, 1, 'a team that does not exist cannot be picked');
+  h.act(a2, 'ASSIGN', { userId: 'a1', team: 1 });
+  assert.equal(h.last(a1).race.players[0].team, 0, 'only the host moves other children');
+  h.act(a1, 'ASSIGN', { userId: 'a3', team: 0 });
+  assert.equal(h.last(a1).race.players[2].team, 0, 'the host can move a child to another team');
+  h.act(a1, 'SHUFFLE');
+  const shuffled = h.last(a1).race.players.map(p => p.team);
+  assert.ok(shuffled.every(t => t === 0 || t === 1) && new Set(shuffled).size === 2, 'random split uses both teams');
+  h.act(a1, 'PICK', { team: 0 }); h.act(a2, 'PICK', { team: 1 }); h.act(a3, 'PICK', { team: 1 });
   h.act(a1, 'START'); h.advance(3000);
   const rounds = h.current().rounds;
   h.walkTo(a1, rounds[0].workId); h.act(a1, 'CLAIM', { index: 0, workId: rounds[0].workId });

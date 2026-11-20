@@ -23,6 +23,9 @@
 .race-teams{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .race-teams button{padding:7px 11px;border:1px solid rgba(201,166,90,.35);border-radius:3px;background:rgba(30,25,19,.9);color:#d9c7a1;font-size:13px;cursor:pointer}
 .race-teams button.on{border-color:#e3c278;background:#5a4319;color:#fff3d0}
+.race-teams .race-shuffle{margin-left:auto;border-style:dashed}
+.race-people li.movable{cursor:pointer}
+.race-people li.movable:hover,.race-people li.movable:focus-visible{background:rgba(70,53,22,.85);outline:none}
 .race-mode{color:#d9c7a1;font-size:14px}
 .race-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;margin:-4px 0 14px}
 .race-pick[hidden]{display:none}

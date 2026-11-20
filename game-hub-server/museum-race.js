@@ -244,6 +244,17 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
       if (count === 0 || (Number.isInteger(count) && count >= 2 && count <= TEAMS.length)) { race.teamCount = count; placeUnteamed(race); broadcast(race); }
       return true;
     }
+    // 다른 순위전처럼 연 사람은 학생을 다른 팀으로 옮기거나 한꺼번에 섞을 수 있다.
+    if (type === "MUSEUM_RACE_ASSIGN" && race.phase === "lobby" && race.teamCount && race.hostId === visitor.userId) {
+      const target = race.players.get(String(message.userId || "")), team = Number(message.team);
+      if (target && Number.isInteger(team) && team >= 0 && team < race.teamCount) { target.team = team; broadcast(race); }
+      return true;
+    }
+    if (type === "MUSEUM_RACE_SHUFFLE" && race.phase === "lobby" && race.teamCount && race.hostId === visitor.userId) {
+      shuffle([...race.players.values()], random).forEach((p, i) => { p.team = i % race.teamCount; });
+      broadcast(race);
+      return true;
+    }
     if (type === "MUSEUM_RACE_PICK" && race.phase === "lobby" && race.teamCount) {
       const team = Number(message.team);
       if (Number.isInteger(team) && team >= 0 && team < race.teamCount) { race.players.get(visitor.userId).team = team; broadcast(race); }

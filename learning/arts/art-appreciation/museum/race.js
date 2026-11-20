@@ -120,6 +120,13 @@
         }
         li.classList.toggle('host', p.userId === s.hostId);
         li.style.borderColor = Number.isInteger(p.team) && s.teamCount ? s.teams[p.team].color : '';
+        // 연 사람은 이름을 눌러 그 학생을 다음 팀으로 옮긴다.
+        const movable = host && s.teamCount > 0;
+        li.classList.toggle('movable', movable);
+        li.title = movable ? '눌러서 다음 팀으로' : '';
+        li.tabIndex = movable ? 0 : -1;
+        li.onclick = movable ? () => send({ type: 'MUSEUM_RACE_ASSIGN', userId: p.userId, team: ((Number.isInteger(p.team) ? p.team : -1) + 1) % s.teamCount }) : null;
+        li.onkeydown = movable ? event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); li.onclick(); } } : null;
         return li;
       }));
       // 연 사람은 개인전이나 팀 수를 고른다. 팀 인원은 정하지 않는다(1명 대 10명도 된다).
@@ -130,6 +137,11 @@
           b.setAttribute('aria-pressed', String(n === s.teamCount));
           b.addEventListener('click', () => send({ type: 'MUSEUM_RACE_TEAMS', count: n }));
           lobbyTeams.append(b);
+        }
+        if (s.teamCount) {
+          const mix = button('race-shuffle', '랜덤 배정');
+          mix.addEventListener('click', () => send({ type: 'MUSEUM_RACE_SHUFFLE' }));
+          lobbyTeams.append(mix);
         }
       } else lobbyTeams.append(el('span', 'race-mode', s.teamCount ? `${s.teamCount}팀 대항` : '개인전'));
       // 팀전이면 누구나 팀 색을 눌러 자기 팀을 고른다.
