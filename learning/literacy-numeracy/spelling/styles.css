@@ -1115,3 +1115,5 @@ a.mode-card span,
 a.mode-card small {
     text-decoration: none;
 }
+/* 진도 줄은 문항을 못 불러왔을 때만 쓴다. 비어 있으면 자리도 차지하지 않는다. */
+.lesson-progress-line:empty { display: none; }

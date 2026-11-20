@@ -439,10 +439,7 @@
     const saved = loadState();
     const total = data.lessons.length;
     const completed = saved.done.length;
-    const percent = Math.round((completed / total) * 100);
-    $("progressText").textContent = `${completed} / ${total} 차시`;
-    $("progressPercent").textContent = `${percent}%`;
-    $("progressBar").style.width = `${percent}%`;
+    // 진도 숫자·막대(0% · 0/128 차시, 단계마다 0/8 완료)와 끝낸 차시의 ✓ 는 두지 않는다 — 필요 없는 말(2026-11-21).
     $("masteryCount").textContent = completed;
     $("streakCount").textContent = saved.streak;
     $("starsCount").textContent = saved.stars;
@@ -452,12 +449,9 @@
 
     $("stageList").innerHTML = data.stages.map((stage) => {
       const lessons = data.lessons.filter((lesson) => lesson.stageId === stage.id);
-      const doneCount = lessons.filter((lesson) => saved.done.includes(lesson.id)).length;
-      const stagePercent = Math.round(doneCount / lessons.length * 100);
       return `<article class="stage-card ${stage.color}">
-        <div class="stage-summary"><span class="stage-number">${String(stage.order).padStart(2, "0")}</span><div class="stage-copy"><h3>${escapeHtml(stage.title)}</h3><span>${escapeHtml(stage.subtitle)}</span></div><div class="stage-score"><b>${doneCount}/${lessons.length}</b><span>완료</span></div></div>
-        <div class="mini-progress"><i style="width:${stagePercent}%"></i></div>
-        <div class="lesson-list">${lessons.map((lesson) => `<button type="button" data-lesson="${lesson.id}" class="${saved.done.includes(lesson.id) ? "done" : ""}"><span>${saved.done.includes(lesson.id) ? "✓" : lesson.stageOrder}</span><div><b>${escapeHtml(lesson.title)}</b></div>${Object.hasOwn(saved.soundScores, lesson.id) ? `<em>${saved.soundScores[lesson.id]}/${lesson.questionCount}</em>` : ""}</button>`).join("")}</div>
+        <div class="stage-summary"><span class="stage-number">${String(stage.order).padStart(2, "0")}</span><div class="stage-copy"><h3>${escapeHtml(stage.title)}</h3><span>${escapeHtml(stage.subtitle)}</span></div></div>
+        <div class="lesson-list">${lessons.map((lesson) => `<button type="button" data-lesson="${lesson.id}" ><span>${lesson.stageOrder}</span><div><b>${escapeHtml(lesson.title)}</b></div>${Object.hasOwn(saved.soundScores, lesson.id) ? `<em>${saved.soundScores[lesson.id]}/${lesson.questionCount}</em>` : ""}</button>`).join("")}</div>
       </article>`;
     }).join("");
     $("stageList").querySelectorAll("[data-lesson]").forEach((button) => button.addEventListener("click", () => openLesson(button.dataset.lesson)));

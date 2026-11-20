@@ -90,3 +90,5 @@ dialog{border:0;border-radius:24px;padding:0;box-shadow:0 24px 80px rgba(24,16,4
 main{width:min(1100px,calc(100% - 112px));padding-inline:0}
 .lesson-progress{top:0}
 @media(max-width:540px){.topbar{top:auto;right:auto;bottom:16px}main{width:auto;padding-inline:12px}.progress-reset{font-size:11px}}
+/* 진도 막대를 뺐더니 「N차시 시작」 단추 하나가 한 줄을 통째로 차지해 띠째 감춘다 — 바로 아래 차시 목록에서 고른다(2026-11-21). */
+.progress-strip{display:none}

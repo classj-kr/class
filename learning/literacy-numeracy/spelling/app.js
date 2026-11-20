@@ -159,19 +159,15 @@
     }
 
     function renderLessonList() {
-        const progress = readLessonProgress();
-        const completedCount = lessons.filter((lesson) => progress[lesson.id]).length;
-        elements.lessonProgressSummary.textContent = `${lessons.length}차시 중 ${completedCount}차시를 끝냈어요. 차시를 골라 문제를 풀어요.`;
+        // 진도 숫자(「34차시 중 0차시를 끝냈어요」)와 차시마다 「완료」는 두지 않는다 — 필요 없는 말(2026-11-21).
+        elements.lessonProgressSummary.textContent = "";
         elements.lessonList.replaceChildren(buildRandomCard(), ...lessons.map((lesson, index) => {
-            const record = progress[lesson.id];
             return buildLessonCard({
                 numberText: `${index + 1}차시`,
                 title: lesson.title,
                 note: lesson.note,
-                metaText: record
-                    ? '완료'
-                    : `${lesson.ids.length}문제`,
-                isDone: Boolean(record),
+                metaText: `${lesson.ids.length}문제`,
+                isDone: false,
                 isPerfect: false,
                 onClick: () => startLesson(index)
             });
