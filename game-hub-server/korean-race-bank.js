@@ -75,6 +75,28 @@ function textbookCatalog() {
   }));
   return catalogCache;
 }
+// 국어 교과서 문법: 학습 화면이 쓰는 data.js(window.TEXTBOOK_GRAMMAR)를 그대로 읽는다.
+function grammarTerms() {
+  return browserGlobals(['textbook-grammar/data.js']).TEXTBOOK_GRAMMAR || [];
+}
+// 범위 고르기 화면에 띄울 단원 목록(학기 → 단원 번호·이름·순위전 문제 수). 문제 수는 실제로 만든 문항으로 센다.
+let grammarCatalogCache = null;
+function grammarCatalog() {
+  if (grammarCatalogCache) return grammarCatalogCache;
+  const terms = attempt('국어 교과서 문법 단원 목록', grammarTerms, []);
+  const counts = new Map();
+  for (const entry of load().grammar || []) {
+    const key = `${entry.unit.term}.${entry.unit.no}`;
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  grammarCatalogCache = terms.filter((term) => term && term.term).map((term) => ({
+    term: term.term,
+    label: term.label || '',
+    units: (term.units || []).map((unit) => ({ no: Number(unit.no), title: unit.title || '', count: counts.get(`${term.term}.${Number(unit.no)}`) || 0 }))
+      .filter((unit) => unit.count > 0),
+  })).filter((term) => term.units.length);
+  return grammarCatalogCache;
+}
 // 영어 단어 앱의 다듬은 뜻과 유의어(낱말 id별). 짝 찾기에서 서로 맞는 말이 되는 낱말을 가르는 데 쓴다.
 function vocabularyDetails() {
   const dir = path.join(APPS, 'vocabulary/assets/data/details');
@@ -116,6 +138,7 @@ function loadSources() {
     hanjaHuneum: attempt('한자 훈음', () => Object.fromEntries(Object.values(JSON.parse(fs.readFileSync(path.join(APPS, '../games/sachunseong/data/hanja.json'), 'utf8')).levels).flat()), {}),
     sentences: attempt('문장 고르기', () => browserGlobals(['sentence-building/curriculum.js']).SENTENCE_COURSE, null),
     textbook: attempt('교과서 단어', textbookBooks, {}),
+    grammar: attempt('국어 교과서 문법', grammarTerms, []),
   };
 }
 
@@ -125,4 +148,4 @@ function load() {
   return pools;
 }
 
-module.exports = { load, loadSources, textbookCatalog };
+module.exports = { load, loadSources, textbookCatalog, grammarCatalog };

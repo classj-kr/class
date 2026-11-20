@@ -102,6 +102,8 @@ body, body .sheet button, body .sheet select, body .sheet p {
 .sets { display: flex; flex-wrap: wrap; gap: 6px; }
 .set { min-width: 52px; min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); font-size: 16px; cursor: pointer; }
 .set:hover, .term:hover { border-color: var(--green); }
+.set.done { border-color: #a9d3bf; background: #dff1e8; color: #14553f; }
+.set.done::after { content: ' ✓'; font-weight: 700; }
 
 @media (max-width: 560px) {
   .bar { flex-wrap: wrap; }

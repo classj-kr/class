@@ -12,6 +12,28 @@
   const canvas = $('pad'), ctx = canvas.getContext('2d');
 
   let term = TERMS[0], set = null, queue = [], at = 0, results = new Map();
+
+  // 학습 기록: 한 회가 기록 한 건. 문장마다 맞춤법·글씨 점수가 「내 기록」과 선생님 학습 보고서에 남는다.
+  const records = window.LearningRecords?.create('dictation', { label: '받아쓰기' }) || null;
+  const finished = new Set();
+  const setKey = (unit, index) => `${term.term}:${unit.no}:${index + 1}`;
+  let recording = null;
+  function record(text, s, c) {
+    if (!records || !recording) return;
+    recording.answered.add(text);
+    const complete = recording.answered.size >= recording.total && !recording.completed;
+    if (complete) { recording.completed = true; finished.add(recording.key); }
+    const notes = [`맞춤법 ${s.spell}`, `글씨 ${s.hand}`];
+    if (c.wrong.size) notes.push(`틀린 글자 ${c.wrong.size}`);
+    if (c.missing) notes.push(`빠진 글자 ${c.missing}`);
+    if (c.spaceErrors) notes.push(`띄어쓰기 ${c.spaceErrors}곳`);
+    if (!c.markOk) notes.push(c.mark === '?' ? '물음표 빠짐' : '마침표 빠짐');
+    records.save({
+      checkpoint: { term: term.term, unit: set.unit.no, set: set.index + 1 }, complete,
+      progress: { current: Math.min(recording.answered.size, recording.total), total: recording.total },
+      events: [{ kind: 'answer', questionKey: text, correct: s.spell === 100, response: notes.join(' · '), snapshot: { prompt: text, title: recording.title } }],
+    }).catch(() => {});
+  }
   let cells = [], history = [], current = null, lastCell = -1, cellPx = 80;
   let check = null, penSeen = false;
   let stripCells = 13, visible = 10, first = 0, slideTimer = 0;
@@ -20,7 +42,9 @@
   const synth = window.speechSynthesis;
   let voices = [], voice = null;
   const RANK = /google|natural|online|neural|sunhi|injoon|yuna|sora/i;
-  const stored = () => { try { return localStorage.getItem('dictation-voice') || ''; } catch { return ''; } };
+  // 고른 목소리는 계정 저장 공간에 둔다(게스트는 이 탭에서만 기억).
+  let prefs = null;
+  const stored = () => prefs?.get('voice') || '';
   function loadVoices() {
     if (!synth) return;
     voices = synth.getVoices().filter((v) => /^ko([-_]|$)/i.test(v.lang))
@@ -396,6 +420,11 @@
   function openSet(unit, index) {
     const items = setsOf(unit)[index];
     set = { unit, index, items }; results = new Map();
+    if (records) {
+      const key = setKey(unit, index), title = `${term.label} · ${unit.no ? unit.no + '. ' : ''}${unit.title} ${index + 1}회`;
+      recording = { key, title, total: items.length, answered: new Set(), completed: false };
+      records.start({ contentKey: key, title, version: '20261120', checkpoint: { term: term.term, unit: unit.no, set: index + 1 } }).catch(() => {});
+    }
     start(items.slice());
   }
   function button(text, className, onClick, label) {
@@ -415,7 +444,10 @@
       const title = unit.no ? `${unit.no}. ${unit.title}` : unit.title;
       row.className = 'unit'; name.className = 'unit-name'; sets.className = 'sets';
       name.textContent = title;
-      sets.replaceChildren(...setsOf(unit).map((_, i) => button(`${i + 1}회`, 'set', () => openSet(unit, i), `${title} ${i + 1}회`)));
+      sets.replaceChildren(...setsOf(unit).map((_, i) => {
+        const doneSet = finished.has(setKey(unit, i));
+        return button(`${i + 1}회`, doneSet ? 'set done' : 'set', () => openSet(unit, i), `${title} ${i + 1}회${doneSet ? ', 다 썼음' : ''}`);
+      }));
       row.append(name, sets);
       return row;
     }));
@@ -446,6 +478,7 @@
   $('done').onclick = submit;
   $('next').onclick = () => {
     results.set(queue[at], scores(check));
+    record(queue[at], results.get(queue[at]), check);
     if (++at < queue.length) showSentence(true); else showEnd();
   };
   $('again').onclick = () => { results = new Map(); start(set.items.slice()); };
@@ -455,15 +488,28 @@
   };
   $('voice').onchange = (e) => {
     voice = voices.find((v) => v.name === e.target.value) || voice;
-    try { localStorage.setItem('dictation-voice', voice.name); } catch { /* 기기 취향이라 못 남겨도 된다 */ }
+    prefs?.set('voice', voice.name);
     speak(0.85);
   };
   window.addEventListener('resize', resize);
 
+  window.SiteStorage?.open('dictation').then((store) => { prefs = store; if (stored()) loadVoices(); }).catch(() => {});
   if (synth) {
     loadVoices();
     synth.addEventListener?.('voiceschanged', loadVoices);
     setTimeout(() => { if (!voices.length) noVoice(); }, 2000);
   } else noVoice();
   showHome();
+  // 다 쓴 회는 목록에 표시한다(기록은 서버에 있다).
+  if (records) (async () => {
+    try {
+      let offset = 0;
+      do {
+        const page = await records.history(`&offset=${offset}`);
+        page.sessions.forEach((row) => { if (row.status === 'completed') finished.add(row.contentKey); });
+        offset = page.nextOffset;
+      } while (offset != null);
+      if (!set) renderHome();
+    } catch { /* 표시만 빠진다. */ }
+  })();
 })();

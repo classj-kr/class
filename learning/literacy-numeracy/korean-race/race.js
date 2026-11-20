@@ -285,6 +285,7 @@
     proverbs: '📜',
     expressions: '<svg viewBox="0 0 24 24"><path fill="#42a5f5" d="M3 4.5A2.5 2.5 0 0 1 5.5 2h13A2.5 2.5 0 0 1 21 4.5v11a2.5 2.5 0 0 1-2.5 2.5H11l-5.5 4v-4A2.5 2.5 0 0 1 3 15.5v-11z"/><path fill="#fff3d0" d="M6.5 7h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8H6.5V7zm7 0h4v3.2c0 2.1-1.2 3.5-3.5 4.3l-.8-1.7c1.1-.4 1.7-1 1.9-1.8h-1.6V7z"/></svg>',
     textbook: '📗',
+    grammar: '📘',
     sentences: '🧩',
     hanja: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#d32f2f"/><rect x="5" y="5" width="14" height="14" rx="2" fill="#fff"/><text x="12" y="16" font-size="12" font-weight="bold" fill="#d32f2f" text-anchor="middle" font-family="serif">漢</text></svg>',
     vocabulary: '<svg viewBox="0 0 24 24"><rect x="5.5" y="3" width="15.5" height="18" rx="2.5" fill="#e0e7ff" stroke="#818cf8" stroke-width="0.9"/><rect x="3" y="5" width="15.5" height="18" rx="2.5" fill="#ffffff" stroke="#4f46e5" stroke-width="1.1"/><circle cx="6" cy="8.5" r="1.3" fill="#f8fafc" stroke="#64748b" stroke-width="0.8"/><path d="M4 8.5a2.5 2.5 0 0 1 4 0" fill="none" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/><rect x="8.5" y="8" width="8" height="1.8" rx="0.9" fill="#0284c7"/><text x="10.8" y="15" font-size="4.2" font-weight="900" fill="#1e293b" text-anchor="middle" font-family="\'Segoe UI\', sans-serif" letter-spacing="0.4">VOCAB</text><circle cx="14.8" cy="18.2" r="2.2" fill="#10b981"/><path d="M13.8 18.2l0.7 0.7 1.4-1.4" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -339,6 +340,7 @@
       box.innerHTML = '';
       // 문제 종류는 들어온 학습 앱이 정한다. 여러 앱을 고르거나 섞는 줄은 두지 않는다.
       if (choice.set === 'textbook') box.append(textbookField());
+      if (choice.set === 'grammar') box.append(grammarField());
       const levels = C.levelsOf(choice.set);
       // 한자처럼 단계를 여기서 고르는 콘텐츠는 단계 줄을 늘 보인다. 고른 단계가 범위 줄의 기준이 된다.
       const stages = C.RANGE_SETS[choice.set]?.pick ? C.RANGE_SETS[choice.set].lessons : 0;
@@ -350,7 +352,7 @@
         box.append(row);
       }
       // 문장 고르기처럼 한 차시의 문제가 너무 적은 콘텐츠는 "그 차시만" 없이 "처음부터 거기까지"와 "전체"만.
-      if (base && choice.set !== 'textbook')
+      if (base && !C.PICK_RANGE_SETS.includes(choice.set))
         box.append(optionRow('범위', [
           ...(C.RANGE_SETS[choice.set]?.uptoOnly ? [] : [[base, C.rangeLabel(choice.set, base) + '만']]),
           ...(C.rangeLabel(choice.set, '~' + base) === C.rangeLabel(choice.set, base) ? [] : [['~' + base, C.rangeLabel(choice.set, '~' + base)]]),
@@ -392,7 +394,8 @@
     const [term, code, unit] = piece.split('.');
     return sum + (tbUnits(term, code).find((u) => u.id === unit)?.count || 0);
   }, 0);
-  const tbStartReady = () => choice.set !== 'textbook' || Boolean(choice.range);
+  // 교과서 단어·국어 교과서 문법은 단원을 하나 이상 골라야 출발한다.
+  const tbStartReady = () => !C.PICK_RANGE_SETS.includes(choice.set) || Boolean(choice.range);
   function tbWarn() {
     document.querySelectorAll('.range-summary').forEach((p) => { p.classList.remove('shake'); void p.offsetWidth; p.classList.add('shake'); });
   }
@@ -474,6 +477,90 @@
         catalog = data?.terms || [];
         if (!catalog.some((t) => t.term === tbTerm)) tbTerm = catalog[0]?.term || '';
         if (choice.range) choice.range = tbExpand().join(',') || null;
+        paintSettings();
+      })
+      .catch(() => {});
+  }
+  // ── 국어 교과서 문법 범위: 학기를 골라 단원을 체크한다 ─────────
+  // 다른 학기에서 고른 단원도 그대로 남는다. "3-1"(학기 전체)은 단원 목록을 받은 뒤 단원 하나하나로 펼친다.
+  let grammarCatalog = [], grTerm = '';
+  const grPieces = () => (choice.range ? String(choice.range).split(',') : []);
+  const grUnits = (term) => grammarCatalog.find((t) => t.term === term)?.units || [];
+  function grExpand() {
+    const out = [];
+    for (const piece of grPieces()) {
+      const [term, no] = piece.split('.');
+      if (no !== undefined) out.push(piece);
+      else grUnits(term).forEach((u) => out.push(`${term}.${u.no}`));
+    }
+    return out;
+  }
+  const grCount = (pieces) => pieces.reduce((sum, piece) => {
+    const [term, no] = piece.split('.');
+    return sum + (grUnits(term).find((u) => String(u.no) === no)?.count || 0);
+  }, 0);
+  function grammarField() {
+    const field = document.createElement('fieldset');
+    field.className = 'setting-field exam-range';
+    const legend = document.createElement('legend');
+    legend.textContent = '범위';
+    const summary = document.createElement('p');
+    summary.className = 'range-summary';
+    field.append(legend);
+    if (!grammarCatalog.length) {
+      summary.textContent = choice.range ? C.rangeLabel('grammar', choice.range) : '단원 목록을 불러오는 중…';
+      field.append(summary);
+      return field;
+    }
+    const picked = new Set(grExpand());
+    const head = document.createElement('div');
+    head.className = 'range-head';
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', '학년과 학기');
+    for (const t of grammarCatalog) {
+      const n = t.units.filter((u) => picked.has(`${t.term}.${u.no}`)).length;
+      select.append(new Option(`${t.label || C.grammarTermLabel(t.term)}${n ? ` (${n})` : ''}`, t.term, false, t.term === grTerm));
+    }
+    select.onchange = () => { grTerm = select.value; paintSettings(); };
+    head.append(select);
+    const units = grUnits(grTerm);
+    const keyOf = (u) => `${grTerm}.${u.no}`;
+    const list = document.createElement('div');
+    list.className = 'range-units';
+    for (const u of units) {
+      const key = keyOf(u), on = picked.has(key);
+      const b = smallButton('', () => { if (on) picked.delete(key); else picked.add(key); tbSet([...picked]); }, 'range-unit' + (on ? ' on' : ''));
+      b.setAttribute('aria-pressed', String(on));
+      const title = document.createElement('span');
+      title.textContent = u.no ? `${u.no}. ${u.title}` : u.title || C.rangeLabel('grammar', key);
+      const count = document.createElement('small');
+      count.textContent = `${u.count}문제`;
+      b.append(title, count);
+      list.append(b);
+    }
+    const allOn = units.length > 0 && units.every((u) => picked.has(keyOf(u)));
+    const tools = document.createElement('div');
+    tools.className = 'range-tools';
+    const all = smallButton(allOn ? '이 학기 모두 빼기' : '이 학기 모두 넣기', () => {
+      units.forEach((u) => (allOn ? picked.delete(keyOf(u)) : picked.add(keyOf(u))));
+      tbSet([...picked]);
+    });
+    const clear = smallButton('모두 지우기', () => tbSet([]));
+    clear.disabled = !picked.size;
+    tools.append(all, clear);
+    summary.classList.toggle('empty', !picked.size);
+    summary.textContent = picked.size ? `${C.rangeLabel('grammar', [...picked].join(','))} · ${grCount([...picked])}문제` : '단원을 하나 이상 골라 주세요.';
+    field.append(head, list, tools, summary);
+    return field;
+  }
+  if (fromSet === 'grammar') {
+    grTerm = String(fromRange || '').split(',')[0].split('.')[0];
+    fetch('/api/korean-race/grammar-units', { cache: 'no-store', credentials: 'same-origin' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        grammarCatalog = data?.terms || [];
+        if (!grammarCatalog.some((t) => t.term === grTerm)) grTerm = grammarCatalog[0]?.term || '';
+        if (choice.range) choice.range = grExpand().join(',') || null;
         paintSettings();
       })
       .catch(() => {});

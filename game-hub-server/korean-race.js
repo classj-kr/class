@@ -12,7 +12,7 @@ const RETRY_LOCK_MS = Core.RETRY_LOCK_MS - 150;
 
 // 타자 순위전처럼 한 수업 동안만 쓰는 방이라 서버 메모리에 둔다.
 // 정답은 서버만 안다. 화면은 지금 풀 문제(보기)만 받는다.
-function createKoreanRace({ platform, now = Date.now, random = Math.random, pools = bank.load, catalog = bank.textbookCatalog }) {
+function createKoreanRace({ platform, now = Date.now, random = Math.random, pools = bank.load, catalog = bank.textbookCatalog, grammarCatalog = bank.grammarCatalog }) {
   const router = express.Router(),
     rooms = new Map(),
     TTL = 2 * 60 * 60 * 1000;
@@ -182,6 +182,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
   router.get('/session', wrap(async (req, res) => res.json({ isTeacher: await teacher(req) })));
   // 교과서 단어 시험 범위 고르기: 학생 화면에 올린 학기의 단원 목록.
   router.get('/textbook-units', wrap(async (_req, res) => res.json({ terms: catalog() })));
+  // 국어 교과서 문법 범위 고르기: 학기마다 단원 번호·이름·문제 수.
+  router.get('/grammar-units', wrap(async (_req, res) => res.json({ terms: grammarCatalog() })));
   router.post(
     '/rooms',
     wrap(async (req, res) => {
@@ -249,6 +251,7 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
       applyConfig(r, req.body);
       await assertOpen(req, r.config.set);
       if (r.config.set === 'textbook' && !r.config.range) throw fail(409, '시험 범위를 하나 이상 골라 주세요.');
+      if (r.config.set === 'grammar' && !r.config.range) throw fail(409, '단원을 하나 이상 골라 주세요.');
       if (r.config.teamMode) {
         // 연산 순위전처럼 팀을 고르지 않은 사람은 가장 작은 팀에 넣고 출발한다.
         for (const s of students(r).filter((x) => x.team === null)) {
@@ -268,6 +271,8 @@ function createKoreanRace({ platform, now = Date.now, random = Math.random, pool
         r.items = [];
       } else {
         // 빠른 학생도 끝까지 새 문제를 받을 만큼 넉넉히 뽑는다.
+        if (Core.PICK_RANGE_SETS.includes(r.config.set) && Questions.poolFor(pools(), r.config.set, r.config.level, r.config.range).length < 4)
+          throw fail(409, '이 범위에는 문제가 모자라요. 단원을 더 골라 주세요.');
         r.items = Questions.makeRound(pools(), { set: r.config.set, level: r.config.level, range: r.config.range, count: r.config.duration + 20, random });
         if (r.items.length < 10) throw fail(503, '문항 자료를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.');
       }

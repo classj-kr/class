@@ -1,4 +1,4 @@
-// 순위전(맞춤법·한자성어·속담·관용어·영단어·한자·문장 고르기·교과서 단어): 서버와 화면이 같은 규칙으로 점수·순위·팀 점수를 센다.
+// 순위전(맞춤법·한자성어·속담·관용어·영단어·한자·문장 고르기·교과서 단어·국어 교과서 문법): 서버와 화면이 같은 규칙으로 점수·순위·팀 점수를 센다.
 // 엔진은 하나지만 화면은 들어온 학습 앱의 순위전이다(「맞춤법 순위전」). 여러 앱을 섞는 경기는 두지 않는다.
 (function (root, factory) {
   const api = factory();
@@ -20,12 +20,18 @@
     // 교과서 단어는 선생님이 시험 범위처럼 단원을 골라 체크한다.
     // 범위 = 단원 자리를 쉼표로 이은 것("6-2.sci.1,6-2.sci.2,6-2.kor.3"). "6-2.sci" 처럼 단원을 빼면 그 과목 전체.
     textbook: { label: '교과서 단어', emoji: '📗', app: '/learning/literacy-numeracy/curriculum-vocabulary', choices: 4 },
+    // 국어 교과서 문법도 선생님이 학기·단원을 골라 체크한다. 범위 = "3-1.4,3-1.5"(학기.단원 번호), "3-1"은 그 학기 전체.
+    // 보기 수는 문항마다 다르다(안/않 같은 짝은 둘, 선 잇기는 그 문항의 짝 수만큼). choices 는 가장 흔한 수다.
+    grammar: { label: '국어 교과서 문법', emoji: '📘', app: '/learning/literacy-numeracy/textbook-grammar', choices: 4 },
   };
   const SUBJECTS = { kor: '국어', math: '수학', soc: '사회', sci: '과학', his: '역사' };
   const SUBJECT_CODES = Object.fromEntries(Object.entries(SUBJECTS).map(([code, name]) => [name, code]));
   const TEXTBOOK_RANGE = /^([1-9]-[12])\.(kor|math|soc|sci|his)(?:\.([A-Za-z0-9-]{1,12}))?$/;
   // 학기 이름: 초 6학년 1학기, 중 1학년 1학기(열쇠 7-1)
   const termLabel = (term) => (Number(term[0]) >= 7 ? `중 ${term[0] - 6}학년 ${term[2]}학기` : `초 ${term[0]}학년 ${term[2]}학기`);
+  // 국어 교과서 문법 범위: 학기("3-1") 또는 학기.단원 번호("3-1.4"). 단원 번호 0 은 독서 단원.
+  const GRAMMAR_RANGE = /^([1-9]-[12])(?:\.(\d{1,2}))?$/;
+  const grammarTermLabel = (term) => `${term[0]}학년 ${term[2]}학기`;
   const unitLabel = (unit) => (unit === 'reading' ? '독서 단원' : unit === 'media' ? '매체 단원' : `${unit}단원`);
   const DURATIONS = [60, 90, 120, 180];
   const RACERS = ['🐯', '🦊', '🐰', '🐻', '🐼', '🐧', '🦉', '🐸', '🐨', '🦁', '🐳', '🦄', '🐢', '🐙', '🦋', '🐝', '🐬', '🦔', '🐿️', '🦦', '🐤', '🐮', '🐹', '🐺'];
@@ -108,9 +114,10 @@
   // 문장 고르기는 한 차시에 고르기 문제가 셋뿐이라 "처음부터 거기까지"만 낸다(uptoOnly). 1차시까지면 전체로 낸다.
   const RANGE_SETS = { vocabulary: { units: 15, lessons: 10 }, spelling: { lessons: 99 }, idioms: { lessons: 99 }, proverbs: { lessons: 99 }, expressions: { lessons: 99 }, hanja: { lessons: 25, name: '단계', pick: true }, sentences: { lessons: 24, uptoOnly: true } };
   function validRange(set, value) {
-    if (set === 'textbook') {
+    if (set === 'textbook' || set === 'grammar') {
+      const pattern = set === 'textbook' ? TEXTBOOK_RANGE : GRAMMAR_RANGE;
       const parts = [...new Set(String(value ?? '').split(',').map((part) => part.trim()).filter(Boolean))];
-      return parts.length && parts.length <= 60 && parts.every((part) => TEXTBOOK_RANGE.test(part)) ? parts.join(',') : null;
+      return parts.length && parts.length <= 60 && parts.every((part) => pattern.test(part)) ? parts.join(',') : null;
     }
     const spec = RANGE_SETS[set];
     const match = spec && /^(~?)(\d{1,2})(?:-(\d{1,2}))?$/.exec(String(value ?? ''));
@@ -128,6 +135,12 @@
       return Boolean(unit) && String(range).split(',').some((piece) => {
         const [term, subject, part] = piece.split('.');
         return unit.term === term && unit.subject === subject && (!part || unit.unit === part);
+      });
+    }
+    if (set === 'grammar') {
+      return Boolean(unit) && String(range).split(',').some((piece) => {
+        const [term, no] = piece.split('.');
+        return unit.term === term && (no === undefined || Number(unit.no) === Number(no));
       });
     }
     const text = String(range), upto = text.startsWith('~');
@@ -156,6 +169,21 @@
         return head + (SUBJECTS[subject] || '') + units;
       }).join(', ');
     }
+    if (set === 'grammar') {
+      // 학기별로 묶어 적는다: "3학년 1학기 4·5단원, 3학년 2학기 전체"
+      const groups = new Map();
+      for (const piece of String(range).split(',')) {
+        const [term, no] = piece.split('.');
+        if (!groups.has(term)) groups.set(term, []);
+        groups.get(term).push(no === undefined ? null : Number(no));
+      }
+      return [...groups.entries()].map(([term, nos]) => {
+        if (nos.includes(null)) return `${grammarTermLabel(term)} 전체`;
+        const numbered = nos.filter((no) => no > 0).sort((a, b) => a - b);
+        const parts = [numbered.length ? `${numbered.join('·')}단원` : '', nos.includes(0) ? '독서 단원' : ''].filter(Boolean);
+        return `${grammarTermLabel(term)} ${parts.join('·')}`;
+      }).join(', ');
+    }
     const text = String(range), upto = text.startsWith('~');
     const [first, second] = text.replace('~', '').split('-').map(Number);
     const spec = RANGE_SETS[set] || {}, units = spec.units;
@@ -164,5 +192,7 @@
     if (!upto || isFirst) return at;
     return spec.name ? `1~${at}` : `처음~${at}`;
   }
-  return { MATCH_SETS, MATCH_BOARDS, MATCH_PENALTY, SETS, termLabel, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
+  // 단원을 골라야 출발할 수 있는 콘텐츠(범위 없이 전체를 내지 않는다).
+  const PICK_RANGE_SETS = ['textbook', 'grammar'];
+  return { MATCH_SETS, MATCH_BOARDS, MATCH_PENALTY, SETS, termLabel, grammarTermLabel, PICK_RANGE_SETS, SUBJECTS, SUBJECT_CODES, RANGE_SETS, validRange, inRange, rangeLabel, DURATIONS, RACERS, COMBO_STEPS, WRONG_PENALTY, RETRY_LOCK_MS, MIN_ANSWER_MS, REVEAL_MS, TEAM_MAX, TEAM_SIZES, TEAM_SIZE_DEFAULT, TEAM_COUNTS, TEAMS, FLOOR, points, accuracy, rank, teamBoard, levelsOf, validLevel };
 });

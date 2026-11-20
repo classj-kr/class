@@ -46,6 +46,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid #6b9bd1; outline-offs
   background: var(--card); font-size: 16px; text-align: left;
 }
 .topic:hover, .choice:hover:not(:disabled) { border-color: var(--green); }
+.topic.done { border-color: #a9d3bf; background: var(--green-soft); color: #14553f; }
+.topic.done::after { content: ' ✓'; font-weight: 700; }
 
 .rule { max-width: 720px; margin: 32px auto 0; animation: rise .22s ease-out; }
 .rule h1 { margin: 0 0 18px; font-size: clamp(28px, 5vw, 38px); line-height: 1.25; }

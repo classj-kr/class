@@ -30,7 +30,7 @@ test('combo worth, accuracy, ranking and team ties follow the shared rules', () 
 
 test('every set builds questions from the real learning data', () => {
   const pools = bank.load();
-  const expectMin = { spelling: 300, idioms: 100, proverbs: 100, expressions: 100, vocabulary: 2000, hanja: 900, sentences: 72, textbook: 5000 };
+  const expectMin = { spelling: 300, idioms: 100, proverbs: 100, expressions: 100, vocabulary: 2000, hanja: 900, sentences: 72, textbook: 5000, grammar: 300 };
   for (const [set, min] of Object.entries(expectMin)) assert.ok(pools[set].length >= min, `${set}: ${pools[set].length}`);
   let seed = 7;
   const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
@@ -42,11 +42,14 @@ test('every set builds questions from the real learning data', () => {
         const want = Core.SETS[q.set].choices;
         // 문장 고르기의 ①~⑤ 문장 번호 고르기는 보기가 다섯이다.
         const numbered = q.set === 'sentences' && q.choices.every((c) => /^[①-⑤]$/.test(c));
-        assert.equal(q.choices.length, numbered ? 5 : want, `${q.key} has ${want} choices`);
+        // 국어 교과서 문법은 문항마다 보기 수가 다르다(안/않 같은 짝은 둘, 선 잇기는 그 문항의 짝 수만큼).
+        if (q.set === 'grammar') assert.ok(q.choices.length >= 2 && q.choices.length <= 5, `${q.key} has ${q.choices.length} choices`);
+        else assert.equal(q.choices.length, numbered ? 5 : want, `${q.key} has ${want} choices`);
         assert.equal(new Set(q.choices).size, q.choices.length, `${q.key} choices are distinct`);
         assert.ok(q.answer >= 0 && q.answer < q.choices.length, q.key);
         // 상황 글이 없는 문장 고르기 문제는 지시문을 글자리에 크게 두고 작은 지시 줄은 비운다.
-        assert.ok(q.text && (q.ask || q.set === 'sentences'), q.key);
+        // 국어 교과서 문법의 선 잇기·띄어쓰기는 묻는 말 전체를 글자리에 둔다.
+        assert.ok(q.text && (q.ask || q.set === 'sentences' || q.set === 'grammar'), q.key);
         assert.equal(q.set, set);
       }
       for (let i = 1; i < items.length; i++) assert.notEqual(items[i].key, items[i - 1].key, 'no question twice in a row');
@@ -354,4 +357,143 @@ test('the textbook race asks only the checked units', async (t) => {
   assert.equal((await req(path + '/start', {}, made.token, 'teacher')).status, 409, 'a textbook race needs an exam range');
   const started = (await req(path + '/start', { range: '6-2.sci.1' }, made.token, 'teacher')).data;
   assert.equal(started.phase, 'running');
+});
+
+// 국어 교과서 문법: 학습 앱 자료(TEXTBOOK_GRAMMAR)의 꼴만 보고 만든다. 자료는 통째로 바뀔 수 있으니 내용이 아니라 규칙을 본다.
+function grammarData() {
+  const vm = require('node:vm'), fs = require('node:fs');
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(fs.readFileSync(require.resolve('../learning/literacy-numeracy/textbook-grammar/data.js'), 'utf8'), context);
+  return context.window.TEXTBOOK_GRAMMAR;
+}
+const grammarHash = (item) => {
+  const text = JSON.stringify({ ...item, why: undefined });
+  let h = 5381;
+  for (let i = 0; i < text.length; i += 1) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+};
+
+test('every grammar question has one right choice, no repeated choices and follows its item', () => {
+  const terms = grammarData();
+  const pools = bank.load();
+  const items = terms.flatMap((term) => term.units.flatMap((unit) => unit.topics.flatMap((topic) => topic.items.map((item) => ({ term: term.term, no: unit.no, item })))));
+  // 차례 맞추기·나누기는 순위전 꼴이 아니라 뺀다.
+  const usable = items.filter(({ item }) => !item.order && !item.groups);
+  assert.ok(pools.grammar.length >= usable.length, `${pools.grammar.length} questions from ${usable.length} items`);
+  assert.equal(new Set(pools.grammar.map((e) => e.key)).size, pools.grammar.length, 'keys are unique');
+  let seed = 5;
+  const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const clean = (text) => String(text).trim().replace(/^[‘“'"(]+|[.,!?’”'")]+$/g, '').trim();
+  const kinds = { choice: 0, fill: 0, match: 0, spot: 0, space: 0 };
+  for (const entry of pools.grammar) {
+    const [, term, no, kind] = entry.key.split(':');
+    kinds[kind] += 1;
+    assert.deepEqual(entry.unit, { term, no: Number(no) }, entry.key);
+    for (let round = 0; round < 3; round++) {
+      const q = entry.make(random);
+      assert.equal(q.set, 'grammar');
+      assert.ok(q.choices.length >= 2 && q.choices.length <= 5, `${entry.key}: ${q.choices.length} choices`);
+      assert.equal(new Set(q.choices).size, q.choices.length, `${entry.key}: choices are distinct ${q.choices}`);
+      assert.ok(q.choices.every((c) => String(c).trim()), entry.key);
+      assert.ok(Number.isInteger(q.answer) && q.answer >= 0 && q.answer < q.choices.length, entry.key);
+      assert.ok(q.text && !/_{2,}/.test(q.text) && !/_{2,}/.test(q.ask), `${entry.key}: blanks are drawn as (　　)`);
+      const right = q.choices[q.answer];
+      if (kind === 'space') {
+        const gap = (text) => text.replace(/ /g, '');
+        assert.ok(q.choices.every((c) => gap(c) === gap(right)), `${entry.key}: only the spacing differs`);
+        assert.ok(q.choices.every((c) => c === right || c.split(' ').length === right.split(' ').length - 1), `${entry.key}: each wrong one joins one gap`);
+      }
+      if (kind === 'fill') assert.equal((q.text.match(/\(　　\)/g) || []).length, 1, `${entry.key}: one blank at a time`);
+    }
+  }
+  for (const [kind, n] of Object.entries(kinds)) assert.ok(n > 0, `${kind}: ${n}`);
+  // 꼴마다 원래 항목과 맞춰 본다: 정답이 자료의 정답이고, 오답은 같은 항목 안에서만 온다.
+  const byKey = new Map(pools.grammar.map((e) => [e.key, e]));
+  const traced = new Set();
+  for (const { term, no, item } of usable) {
+    const base = `grammar:${term}:${no}`;
+    const look = (suffix) => {
+      const entry = byKey.get(`${base}:${suffix}`);
+      if (entry) traced.add(entry.key);
+      return entry?.make(random);
+    };
+    if (item.pairs) {
+      const rights = item.pairs.map((p) => p[1].trim());
+      item.pairs.forEach(([left, right]) => {
+        const q = look(`match:${grammarHash(item)}:${left.trim()}`);
+        if (!q) return;
+        assert.equal(q.choices[q.answer], right.trim());
+        assert.ok(q.text.includes(`‘${left.trim().replace(/___/g, '(　　)')}’`), q.text);
+        assert.ok(q.choices.every((c) => rights.includes(c)), 'choices come from the same item');
+      });
+    } else if (item.words) {
+      const q = look(`spot:${grammarHash(item)}`);
+      if (!q) continue;
+      assert.equal(q.choices[q.answer], clean(item.words[item.wrong]));
+      assert.ok(q.choices.every((c) => item.words.map(clean).includes(c)));
+      assert.equal(q.collect, clean(item.fix), 'the collected word is the right spelling');
+    } else if (item.fill) {
+      item.fill.forEach((answer, i) => {
+        const q = look(`fill:${grammarHash(item)}:b${i}`);
+        if (!q) return;
+        assert.equal(q.choices[q.answer], answer.trim());
+        assert.ok(q.choices.every((c) => [...item.fill, ...(item.x || [])].map((t) => t.trim()).includes(c)));
+        // 다른 빈칸은 정답으로 채워 보인다.
+        assert.equal(q.text.replace('(　　)', answer.trim()), item.q.split('___').map((part, k) => part + (item.fill[k] ?? '')).join(''));
+      });
+    } else if (item.s) {
+      const q = look(`space:${grammarHash(item)}`);
+      if (!q) continue;
+      assert.equal(q.choices[q.answer], item.s.trim());
+    } else {
+      const q = look(`choice:${grammarHash(item)}`);
+      if (!q) continue;
+      assert.equal(q.choices[q.answer], String(item.a).trim());
+      assert.ok(q.choices.every((c) => [item.a, ...item.x].map((t) => String(t).trim()).includes(c)));
+    }
+  }
+  assert.equal(traced.size, pools.grammar.length, 'every question traced back to its item');
+  assert.equal(Questions.spotAsk('잘못 쓴 낱말을 누르세요.'), '잘못 쓴 낱말은?');
+  assert.equal(Questions.spotAsk(undefined), '틀리게 쓴 낱말은?');
+  assert.equal(Questions.pairAsk('낱말과 바른 소리를 이으세요.', '읽어'), '‘읽어’의 바른 소리는?');
+  assert.equal(Questions.pairAsk('뜻이 비슷한 낱말끼리 이으세요.', '크다'), '‘크다’와 뜻이 비슷한 낱말은?');
+});
+
+test('the grammar race asks only the checked units and needs a range', async (t) => {
+  assert.equal(Core.validRange('grammar', '3-1.4,3-1.5'), '3-1.4,3-1.5');
+  assert.equal(Core.validRange('grammar', '3-1'), '3-1');
+  assert.equal(Core.validRange('grammar', '3-1.0'), '3-1.0');
+  assert.equal(Core.validRange('grammar', '3-1.sci'), null);
+  assert.equal(Core.validRange('grammar', '6-2.sci.1'), null);
+  assert.equal(Core.validRange('textbook', '3-1.4'), null, 'the textbook range keeps its own form');
+  assert.equal(Core.rangeLabel('grammar', '3-1.4,3-1.5'), '3학년 1학기 4·5단원');
+  assert.equal(Core.rangeLabel('grammar', '3-1.5,3-1.4,4-2'), '3학년 1학기 4·5단원, 4학년 2학기 전체');
+  assert.equal(Core.rangeLabel('grammar', '3-1.0,3-1.2'), '3학년 1학기 2단원·독서 단원');
+  assert.ok(Core.inRange('grammar', '3-1', { term: '3-1', no: 2 }));
+  assert.ok(!Core.inRange('grammar', '3-1.4', { term: '3-1', no: 5 }));
+  const pools = bank.load();
+  const catalog = bank.grammarCatalog();
+  assert.ok(catalog.length >= 1 && catalog.every((term) => term.units.length && term.units.every((u) => u.count > 0)));
+  // 고른 단원 둘에서만 나온다.
+  const [first] = catalog;
+  const picked = first.units.slice(0, 2);
+  const two = picked.map((u) => `${first.term}.${u.no}`).join(',');
+  assert.equal(Questions.poolFor(pools, 'grammar', 'all', two).length, picked.reduce((n, u) => n + u.count, 0), 'the catalog counts match the pool');
+  const round = Questions.makeRound(pools, { set: 'grammar', range: two, count: 110, random: Math.random });
+  assert.equal(round.length, 110);
+  const prefixes = picked.map((u) => `grammar:${first.term}:${u.no}:`);
+  for (const q of round) assert.ok(prefixes.some((prefix) => q.key.startsWith(prefix)), q.key);
+  for (let i = 1; i < round.length; i++) assert.notEqual(round[i].key, round[i - 1].key);
+  // 학기 전체는 그 학기 단원을 모두 합친 것.
+  assert.equal(Questions.poolFor(pools, 'grammar', 'all', first.term).length, first.units.reduce((n, u) => n + u.count, 0));
+  const { req } = await serve(t, { pools: bank.load });
+  const made = (await req('/rooms', { set: 'grammar' }, '', 'teacher')).data;
+  assert.equal(made.state.config.set, 'grammar');
+  const path = '/rooms/' + made.state.code;
+  await req(path + '/join', {}, '', '', '가');
+  assert.equal((await req(path + '/start', {}, made.token, 'teacher')).status, 409, 'a grammar race needs a range');
+  const started = (await req(path + '/start', { range: two }, made.token, 'teacher')).data;
+  assert.equal(started.phase, 'running');
+  assert.equal(started.config.range, two);
+  assert.deepEqual((await req('/grammar-units')).data.terms, JSON.parse(JSON.stringify(catalog)));
 });

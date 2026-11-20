@@ -9,6 +9,40 @@
   const kindOf = (item) => (item.pairs ? 'match' : item.order ? 'order' : item.fill ? 'fill' : item.groups ? 'sort' : item.words ? 'spot' : item.s ? 'space' : 'choice');
   let term = TERMS[0], topic = null, queue = [], at = 0, results = [], screen = 'home';
 
+  // 학습 기록: 규칙 하나가 기록 한 건. 문제마다 처음 풀이·다시 풀이가 남아 「내 기록」과 선생님 학습 보고서에 같이 보인다.
+  const records = window.LearningRecords?.create('textbook-grammar', { label: '국어 교과서 문법' }) || null;
+  const done = new Set();
+  const topicKey = (t, tp) => `${t.term}:${t.units.find((u) => u.topics.includes(tp))?.no ?? 0}:${tp.name}`;
+  const itemKey = (item) => {
+    const text = JSON.stringify({ ...item, why: undefined });
+    let h = 5381;
+    for (let i = 0; i < text.length; i += 1) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
+    return `${kindOf(item)}:${h.toString(36)}`;
+  };
+  const itemText = (item) => {
+    const kind = kindOf(item);
+    if (kind === 'choice' || kind === 'fill') return item.q;
+    if (kind === 'spot') return item.words.join(' ');
+    if (kind === 'space') return item.s.replace(/ /g, '');
+    if (kind === 'match') return item.pairs.map((p) => p[0]).join(' · ');
+    if (kind === 'order') return item.q || item.order.slice().sort().join(' · ');
+    return item.groups.map((g) => g.name).join(' · ');
+  };
+  let recording = null;
+  async function record(item, ok, response) {
+    if (!records || !recording) return;
+    recording.answered.add(itemKey(item));
+    const complete = recording.answered.size >= recording.total && !recording.completed;
+    if (complete) { recording.completed = true; done.add(recording.key); }
+    try {
+      await records.save({
+        checkpoint: { term: term.term, topic: topic.name }, progress: { current: Math.min(recording.answered.size, recording.total), total: recording.total }, complete,
+        events: [{ kind: 'answer', questionKey: itemKey(item), correct: ok, response: String(response).slice(0, 300),
+          snapshot: { prompt: `${item.p || PROMPTS[kindOf(item)]} ${itemText(item)}`.slice(0, 300), title: topic.name } }],
+      });
+    } catch { /* 기록 화면이 다시 시도를 안내한다. */ }
+  }
+
   const show = (name) => {
     screen = name;
     SCREENS.forEach((id) => { $(id).hidden = id !== name; });
@@ -28,6 +62,11 @@
     return out;
   };
   const topicsOf = (t) => t.units.flatMap((unit) => unit.topics);
+  // 「🏁 순위전」은 지금 보는 범위를 넘겨받는다: 규칙·문제 화면이면 그 학기.단원, 목록이면 고른 학기 전체.
+  window.currentRaceRange = () => {
+    const unit = topic && screen !== 'home' ? term.units.find((u) => u.topics.includes(topic)) : null;
+    return unit ? `${term.term}.${unit.no}` : term.term;
+  };
 
   function renderHome() {
     $('dots').replaceChildren(); $('count').textContent = '';
@@ -40,7 +79,11 @@
       const row = document.createElement('div'), name = document.createElement('span'), list = document.createElement('div');
       row.className = 'unit'; name.className = 'unit-name'; list.className = 'topics';
       name.textContent = unit.no ? `${unit.no}. ${unit.title}` : unit.title;
-      list.replaceChildren(...unit.topics.map((t) => button(t.name, 'topic', () => openTopic(t))));
+      list.replaceChildren(...unit.topics.map((t) => {
+        const b = button(t.name, done.has(topicKey(term, t)) ? 'topic done' : 'topic', () => openTopic(t));
+        if (done.has(topicKey(term, t))) b.setAttribute('aria-label', `${t.name}, 다 풀었음`);
+        return b;
+      }));
       row.append(name, list);
       return row;
     }));
@@ -61,8 +104,13 @@
     show('rule');
   }
 
-  function start(items) {
+  function start(items, again = false) {
     queue = items.slice(); at = 0; results = [];
+    if (records && !again) {
+      const key = topicKey(term, topic);
+      recording = { key, total: topic.items.length, answered: new Set(), completed: false };
+      records.start({ contentKey: key, title: `${term.label} · ${topic.name}`, version: '20261120', checkpoint: { term: term.term, topic: topic.name } }).catch(() => {});
+    }
     show('quiz');
     drawQuestion();
   }
@@ -207,6 +255,9 @@
   }
   function checkBoard() {
     const item = board.item;
+    const answerOf = board.kind === 'sort'
+      ? board.zones.map((z) => `${z.el.querySelector('b').textContent}: ${board.chips.filter((c) => c.zone === z).map((c) => c.text).join(', ')}`).join(' / ')
+      : board.zones.map((z) => board.chips.find((c) => c.zone === z)?.text || '□').join(board.kind === 'order' ? ' ' : ' / ');
     board.done = true;
     board.chips.forEach((c) => { c.ok = c.zone ? c.zone.wants.includes(c.text) : null; });
     results[at] = board.chips.every((c) => c.ok !== false) && board.chips.filter((c) => c.ok).length === (board.kind === 'fill' ? item.fill.length : board.chips.length);
@@ -220,6 +271,7 @@
       if (c.ok === false || (c.ok === null && home)) c.el.classList.add('wrong');
     });
     $('pool').hidden = !$('pool').children.length;
+    record(item, results[at], answerOf);
     showNote(item);
   }
 
@@ -229,6 +281,7 @@
       results[at] = ok;
       [...$('spot').children].forEach((b) => { b.disabled = true; });
       if (!ok) e.currentTarget.classList.add('wrong');
+      record(item, ok, text);
       target.textContent = item.fix;
       target.classList.add('right');
       showNote(item);
@@ -261,6 +314,7 @@
         if (!on && needed) { gap.classList.add('missed'); ok = false; }
       });
       results[at] = ok;
+      record(item, ok, chars.map((ch, i) => ch + (gaps.get(i)?.classList.contains('right') || gaps.get(i)?.classList.contains('wrong') ? ' ' : '')).join(''));
       showNote(item);
     };
   }
@@ -352,6 +406,7 @@
     const item = queue[at];
     match.done = true; match.picked = null;
     results[at] = [...match.partner].every(([l, r]) => match.links.get(l) === r);
+    record(item, results[at], [...match.links].map(([l, r]) => `${l}→${r}`).join(', '));
     ['left', 'right'].forEach((side) => match.nodes[side].forEach((node) => { node.disabled = true; }));
     drawLines();
     showNote(item);
@@ -367,6 +422,7 @@
   function choose(picked, text) {
     const item = queue[at], ok = text === item.a;
     results[at] = ok;
+    record(item, ok, text);
     [...$('choices').children].forEach((b) => {
       b.disabled = true;
       if (b.textContent === item.a) b.classList.add('right');
@@ -386,7 +442,7 @@
     $('score').textContent = right;
     $('scoreOf').textContent = `/ ${queue.length}`;
     $('retry').hidden = !missed.length;
-    $('retry').onclick = () => start(missed);
+    $('retry').onclick = () => start(missed, true);
     const all = topicsOf(term), following = all[all.indexOf(topic) + 1];
     $('nextTopic').hidden = !following;
     $('nextTopic').onclick = () => openTopic(following);
@@ -409,4 +465,16 @@
   window.addEventListener('sitebackrequest', stepBack);
 
   renderHome();
+  // 다 푼 규칙은 목록에 표시한다(기록은 서버에 있다).
+  if (records) (async () => {
+    try {
+      let offset = 0;
+      do {
+        const page = await records.history(`&offset=${offset}`);
+        page.sessions.forEach((row) => { if (row.status === 'completed') done.add(row.contentKey); });
+        offset = page.nextOffset;
+      } while (offset != null);
+      if (screen === 'home') renderHome();
+    } catch { /* 표시만 빠진다. */ }
+  })();
 })();

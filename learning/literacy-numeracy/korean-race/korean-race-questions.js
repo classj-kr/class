@@ -424,6 +424,197 @@
     for (const entry of out) entry.avoid = [...merged.get(entry.pair?.[0])];
     return out;
   }
+  // 국어 교과서 문법: 학기 → 단원 → 규칙 → 문제(TEXTBOOK_GRAMMAR). 문제 꼴은 항목에 있는 열쇠로 갈린다.
+  // 순위전은 누르는 보기 고르기라 꼴마다 이렇게 바꾼다. 보기는 늘 같은 문제 안에서만 가져온다.
+  //   고르기 { q, a, x }        → 그대로(___ 는 (　　))
+  //   틀린 곳 찾기 { words, wrong, fix } → 문장을 보이고 틀린 조각 + 다른 조각 셋까지
+  //   빈칸에 옮기기 { q, fill, x } → 빈칸마다 한 문제(다른 빈칸은 정답으로 채움), 보기 = 그 빈칸 정답 + 다른 빈칸 정답 + 남는 조각
+  //   선 잇기 { pairs }          → 짝마다 한 문제, 보기 = 같은 문제의 오른쪽들
+  //   띄어쓰기 { s }             → 바른 문장 + 띄어 쓴 자리 하나를 붙여 쓴 문장 셋까지
+  //   차례 맞추기 { order }·나누기 { groups } → 순위전 꼴이 아니라 뺀다
+  // 문항 열쇠는 문제 내용(풀이 why 를 뺀 것)에서 만든다. 학습 앱(app.js itemKey)과 같은 셈이다.
+  const BLANK = '(　　)';
+  function grammarHash(item) {
+    const text = JSON.stringify({ ...item, why: undefined });
+    let h = 5381;
+    for (let i = 0; i < text.length; i += 1) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
+    return h.toString(36);
+  }
+  // 받침 있는 말 뒤의 조사(은/는, 을/를, 과/와). 괄호·따옴표·문장 부호는 건너뛰고 마지막 글자를 본다.
+  function hasBatchim(text) {
+    const chars = [...String(text || '')].reverse();
+    for (const ch of chars) {
+      const code = ch.codePointAt(0);
+      if (code >= 0xac00 && code <= 0xd7a3) return (code - 0xac00) % 28 !== 0;
+      if (code >= 0x3131 && code <= 0x314e) return true; // 자음자 이름(기역, 니은…)은 받침으로 끝난다
+      if (code >= 0x314f && code <= 0x3163) return false; // 모음자
+      if (/[0-9]/.test(ch)) return '013678'.includes(ch);
+      if (/[A-Za-z]/.test(ch)) return false;
+    }
+    return false;
+  }
+  const josa = (text, withBatchim, without) => text + (hasBatchim(text) ? withBatchim : without);
+  const plain = (text) => String(text || '').trim();
+  // 틀린 곳 찾기 조각을 보기로 쓸 때는 끝의 문장 부호를 뗀다("있어요." → "있어요").
+  const pieceLabel = (text) => plain(text).replace(/^[‘“'"(]+|[.,!?’”'")]+$/g, '').trim();
+  // 틀린 곳 찾기의 묻는 말: "잘못 쓴 낱말을 누르세요." → "잘못 쓴 낱말은?"
+  function spotAsk(p) {
+    const text = plain(p);
+    if (!text) return '틀리게 쓴 낱말은?';
+    const m = /^(.+?)(을|를)\s*(?:찾아\s*)?(?:누르세요|고르세요)\.?$/.exec(text);
+    return m ? josa(m[1], '은?', '는?') : text;
+  }
+  // 빈칸에 옮기기의 묻는 말: 조각 옮기기 안내 말은 고르기 말로 바꾼다.
+  function fillAsk(p) {
+    const text = plain(p);
+    if (!text || /^조각을/.test(text)) return '빈칸에 알맞은 말을 고르세요.';
+    const turned = text.replace(/(?:빈칸으로\s*)?옮기세요\.?$/, '고르세요.');
+    return turned === text ? '빈칸에 알맞은 말을 고르세요.' : turned;
+  }
+  // 선 잇기 한 짝의 묻는 말: p 「낱말과 바른 소리를 이으세요.」, 왼쪽 「읽어」 → 「‘읽어’의 바른 소리는?」
+  function pairAsk(p, left) {
+    const text = plain(p).replace(/\.$/, '');
+    const q = `‘${left}’`;
+    const ask = (b) => josa(b, '은?', '는?');
+    const tail = (b) => {
+      // 「그 안에 드는 말」, 「그때 먹는 음식」처럼 왼쪽을 다시 가리키는 말은 조사로 잇는다.
+      if (/^그때\s/.test(b)) return `${q}에 ${ask(b.replace(/^그때\s+/, ''))}`;
+      if (/^그\s/.test(b)) return `${q} ${ask(b.replace(/^그\s+/, ''))}`;
+      if (/^낱말에\s/.test(b)) return `${q}에 ${ask(b.replace(/^낱말에\s+/, ''))}`;
+      if (/^(어울리는|맞장구치는|맞는|쓰인)\s/.test(b)) return `${q}에 ${ask(b)}`;
+      // 「둘 다 표준어인 짝」은 짝 하나만 떼어 물으면 다른 짝도 맞는 말이 되므로 짝을 이루는 말을 묻는다.
+      if (/짝$/.test(b)) return `${josa(q, '과', '와')} 짝을 이루는 말은?`;
+      return `${q}의 ${ask(b)}`;
+    };
+    const how = '(?:바르게\\s*|알맞게\\s*)?(?:찾아\\s*)?';
+    let m = new RegExp(`^(.+?)(?:과|와)\\s+(.+?)(?:을|를)\\s*${how}이으세요$`).exec(text);
+    if (m) return tail(m[2]);
+    m = new RegExp(`^(.+?)끼리\\s*${how}이으세요$`).exec(text);
+    if (m && /^뜻에\s/.test(m[1])) return `${q}에 ${ask(m[1].replace(/^뜻에\s+/, ''))}`;
+    if (m) return `${josa(q, '과', '와')} ${ask(m[1].replace(/^서로\s+/, ''))}`;
+    if (/^앞과 뒤를 이어/.test(text)) return `${q} 뒤에 이어 낱말이 되는 것은?`;
+    m = new RegExp(`^(.+?)(?:과|와)\\s*${how}이으세요$`).exec(text);
+    if (m) return tail(m[1]);
+    m = new RegExp(`^(.+?)(?:을|를)\\s*${how}이으세요$`).exec(text);
+    if (m) return tail(m[1]);
+    m = /^(.+?)(?:으로|로)\s*고쳐\s*이으세요$/.exec(text);
+    if (m) return `${josa(q, '을', '를')} ${m[1]}로 고친 것은?`;
+    return `${josa(q, '과', '와')} 짝인 것은?`;
+  }
+  // 띄어쓰기: 붙여 써도 되는 자리(보조 용언, 「-ㄹ 듯하다」 꼴, 숫자 뒤 단위)와 문장 부호 둘레는 붙여 쓴 오답으로 쓰지 않는다.
+  const AUX_START = /^(보|봐|봤|봅|주|줘|줬|줍|버리|버려|버렸|놓|놔|놨|두|둬|뒀|둡|가|갔|갑|와|왔|오|옵|있|계|지|져|졌|집|대|댔|내|냈|드리|드려|드렸|싶|쌓|치우|치워|빠지|빠져)/;
+  const OPEN_VOWEL_END = /[가-힣]$/;
+  function mergeIsWrong(before, after) {
+    if (/[.,!?…·:;’”'")\]]$/.test(before) || /^[‘“'"(\[]/.test(after)) return false;
+    if (/[0-9]$/.test(before)) return false;
+    if (/^(듯하|듯싶|만하|법하|성싶|척하|체하|양하|뻔하)/.test(after)) return false;
+    const last = before.slice(-1).codePointAt(0);
+    if (OPEN_VOWEL_END.test(before) && (last - 0xac00) % 28 === 0) {
+      // 받침 없이 아/어/여 소리로 끝나는 말 뒤(먹어 보다, 해 주다)는 붙여 써도 된다.
+      const vowel = Math.floor(((last - 0xac00) % 588) / 28);
+      const AEO = [0, 1, 4, 5, 6, 9, 10, 14, 15]; // ㅏ ㅐ ㅓ ㅔ ㅕ ㅘ ㅙ ㅝ ㅞ
+      if (AEO.includes(vowel) && AUX_START.test(after)) return false;
+    }
+    return true;
+  }
+  function grammar(terms) {
+    const out = [];
+    const seen = new Set();
+    const add = (entry) => { if (!seen.has(entry.key)) { seen.add(entry.key); out.push(entry); } };
+    // 보기: 정답 + 오답(겹치거나 정답과 같은 글은 뺀다). 오답이 하나도 없으면 문제를 내지 않는다.
+    const distinct = (answer, wrong) => {
+      const pickedSet = new Set([answer]), out2 = [];
+      for (const text of wrong) {
+        const label = plain(text);
+        if (!label || pickedSet.has(label)) continue;
+        pickedSet.add(label);
+        out2.push(label);
+      }
+      return out2;
+    };
+    for (const term of terms || []) {
+      if (!term || !/^[1-9]-[12]$/.test(term.term || '')) continue;
+      for (const unit of term.units || []) {
+        const no = Number(unit?.no);
+        if (!Number.isInteger(no)) continue;
+        const where = { term: term.term, no };
+        for (const topic of unit.topics || []) {
+          for (const item of topic.items || []) {
+            if (!item || typeof item !== 'object' || item.order || item.groups) continue;
+            const why = plain(item.why);
+            const base = `grammar:${term.term}:${no}`;
+            const entry = (key, build) => add({ key, level: 'all', unit: where, make: build });
+            if (Array.isArray(item.pairs)) {
+              const rights = item.pairs.map((pair) => plain(pair?.[1]));
+              item.pairs.forEach((pair, index) => {
+                const raw = plain(pair?.[0]), left = raw.replace(/___/g, BLANK), right = rights[index];
+                if (!left || !right) return;
+                const wrong = distinct(right, rights.filter((_, i) => i !== index));
+                if (!wrong.length) return;
+                entry(`${base}:match:${grammarHash(item)}:${raw}`, (random) => ({
+                  set: 'grammar', ask: '', text: pairAsk(item.p, left),
+                  ...choiceSet(right, wrong.slice(0, 4), random),
+                  explain: why ? `${left} — ${right}. ${why}` : `${left} — ${right}`, block: firstChar(right),
+                }));
+              });
+            } else if (Array.isArray(item.words)) {
+              const labels = item.words.map(pieceLabel);
+              const answer = labels[item.wrong];
+              if (!Number.isInteger(item.wrong) || !answer) continue;
+              const others = distinct(answer, labels.filter((_, i) => i !== item.wrong));
+              if (!others.length) continue;
+              const fix = plain(item.fix);
+              entry(`${base}:spot:${grammarHash(item)}`, (random) => ({
+                set: 'grammar', ask: spotAsk(item.p), text: item.words.map(plain).join(' '),
+                ...choiceSet(answer, shuffle(others, random).slice(0, 3), random),
+                explain: [fix ? `${answer} → ${pieceLabel(fix) || fix}` : '', why].filter(Boolean).join('. '),
+                // 맞힌 말 모음에는 틀린 말 대신 바른 말을 모은다.
+                block: firstChar(fix || answer), collect: pieceLabel(fix) || answer,
+              }));
+            } else if (Array.isArray(item.fill)) {
+              const parts = String(item.q || '').split('___');
+              const fills = item.fill.map(plain);
+              if (parts.length - 1 !== fills.length || fills.some((f) => !f)) continue;
+              fills.forEach((answer, index) => {
+                const text = parts.map((part, i) => part + (i < fills.length ? (i === index ? BLANK : fills[i]) : '')).join('');
+                // 다른 빈칸의 정답이 먼저(헷갈리는 짝인 때가 많다), 그다음 남는 조각.
+                const wrong = distinct(answer, [...fills.filter((_, i) => i !== index), ...(item.x || [])]);
+                if (!wrong.length) return;
+                entry(`${base}:fill:${grammarHash(item)}:b${index}`, (random) => ({
+                  set: 'grammar', ask: fillAsk(item.p), text,
+                  ...choiceSet(answer, wrong.slice(0, 4), random), explain: why, block: firstChar(answer),
+                }));
+              });
+            } else if (typeof item.s === 'string') {
+              const right = plain(item.s).replace(/\s+/g, ' ');
+              const words = right.split(' ');
+              const wrong = distinct(right, words.slice(0, -1).flatMap((word, i) => (mergeIsWrong(word, words[i + 1])
+                ? [[...words.slice(0, i), word + words[i + 1], ...words.slice(i + 2)].join(' ')] : [])));
+              if (!wrong.length) continue;
+              const p = plain(item.p);
+              const ask = /뜻이 되게 띄우세요\.?$/.test(p) ? p.replace(/띄우세요\.?$/, '띄어 쓴 것은?') : '바르게 띄어 쓴 것은?';
+              entry(`${base}:space:${grammarHash(item)}`, (random) => ({
+                set: 'grammar', ask: '', text: ask,
+                ...choiceSet(right, shuffle(wrong, random).slice(0, 3), random), explain: why, block: firstChar(right),
+              }));
+            } else if (item.a !== undefined && Array.isArray(item.x)) {
+              const answer = plain(item.a);
+              const wrong = distinct(answer, item.x);
+              if (!answer || !wrong.length) continue;
+              const q = plain(item.q);
+              entry(`${base}:choice:${grammarHash(item)}`, (random) => ({
+                set: 'grammar',
+                ask: q ? plain(item.p) || '알맞은 말을 고르세요.' : '',
+                text: q ? q.replace(/_{2,}/g, BLANK) : plain(item.p) || '알맞은 말을 고르세요.',
+                ...choiceSet(answer, wrong.slice(0, 4), random), explain: why, block: firstChar(answer),
+              }));
+            }
+          }
+        }
+      }
+    }
+    return out;
+  }
   function buildPools(sources = {}) {
     return {
       spelling: spelling(sources.spelling, sources.spellingLessons),
@@ -434,10 +625,16 @@
       hanja: hanja(sources.hanja, sources.hanjaWhole, sources.hanjaHuneum),
       sentences: sentences(sources.sentences),
       textbook: textbook(sources.textbook),
+      grammar: grammar(sources.grammar),
     };
   }
   function poolFor(pools, set, level, range) {
     const entries = pools[set] || [];
+    if (set === 'grammar') {
+      if (!range) return entries;
+      const pieces = String(range).split(',').map((piece) => piece.split('.'));
+      return entries.filter((e) => pieces.some(([term, no]) => e.unit.term === term && (no === undefined || e.unit.no === Number(no))));
+    }
     if (set === 'textbook') {
       if (!range) return entries;
       const pieces = String(range).split(',').map((piece) => piece.split('.'));
@@ -499,5 +696,5 @@
   function publicQuestion(q, index, label, tried = []) {
     return { no: index, set: q.set, label, ask: q.ask, text: q.text, choices: q.choices, tried };
   }
-  return { shuffle, shortMeaning, hanjaClip, splitHalves, buildPools, poolFor, makeRound, makePairs, PAIR_KINDS, publicQuestion };
+  return { shuffle, shortMeaning, hanjaClip, splitHalves, pairAsk, spotAsk, buildPools, poolFor, makeRound, makePairs, PAIR_KINDS, publicQuestion };
 });
