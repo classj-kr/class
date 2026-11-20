@@ -1,4 +1,6 @@
 /* Shared by the online Janggi board and AI lessons. */
+/* 장기말 글씨: 붓으로 힘 있게 쓴 해서(Yuji Syuku, OFL — assets/fonts/OFL.txt). 말에 쓰는 아홉 글자(漢楚車馬象士包兵卒)만 담은 5 KB 글꼴. */
+@font-face{font-family:"Janggi Brush";src:url(assets/fonts/janggi-yuji-syuku.woff2?v=1) format("woff2");font-display:block}
 /* 장기판은 바둑판과 같은 밝은 곧은결 나무(scripts/build-board-wood.py). 짙게 하면 말과 글씨가 묻혀 보여 밝게 둔다. */
 .janggi-board{position:relative;width:min(600px,92vw);aspect-ratio:9/10;background:#d5a458 url(../assets/wood/goban.webp?v=2) center/cover;border:10px ridge #6c3e1c;box-shadow:inset 0 0 25px rgba(65,31,7,.45),0 15px 35px #000}
 
@@ -10,7 +12,7 @@
 .janggi-board .point{position:absolute;width:11.11%;height:10%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .janggi-board .point.move::after{content:"";width:22%;aspect-ratio:1;border-radius:50%;background:rgba(29,105,179,.78);box-shadow:0 0 0 4px rgba(255,255,255,.35)}
 .janggi-board .point.capture::after{content:"";position:absolute;width:72%;aspect-ratio:1;border:4px solid #d8352d;border-radius:50%;box-shadow:0 0 12px #d8352d}
-.janggi-board .piece{width:74%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Batang","Noto Serif KR",serif;font-weight:900;font-size:clamp(20px,4vw,38px);position:relative;background:none;border:0;box-shadow:none;filter:drop-shadow(0 2px 1.5px rgba(0,0,0,.35)) drop-shadow(0 5px 5px rgba(0,0,0,.28));-webkit-text-stroke:.6px currentColor;paint-order:stroke fill;user-select:none}
+.janggi-board .piece{width:74%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Janggi Brush","Batang","Noto Serif KR",serif;font-weight:400;font-size:clamp(21px,4.2vw,40px);position:relative;background:none;border:0;box-shadow:none;filter:drop-shadow(0 2px 1.5px rgba(0,0,0,.35)) drop-shadow(0 5px 5px rgba(0,0,0,.28));user-select:none}
 /* 우리 장기말은 팔각형(동그란 말은 중국 장기). 테두리와 얼굴을 팔각형으로 자르고 그림자·빛 표시는 filter 로 팔각형을 따른다. */
 .janggi-board .piece::before,.janggi-board .piece::after{content:"";position:absolute;z-index:-1;clip-path:polygon(29.3% 0,70.7% 0,100% 29.3%,100% 70.7%,70.7% 100%,29.3% 100%,0 70.7%,0 29.3%);pointer-events:none}
 .janggi-board .piece::before{inset:0;background:linear-gradient(160deg,#d3cab8,#9d927c)}
