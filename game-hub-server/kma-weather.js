@@ -233,7 +233,7 @@ function createKmaWeather({ serviceKey, fetchImpl = fetch, now = () => new Date(
     }
   }
 
-  return { getWeather, handler };
+  return { configured: Boolean(key), getWeather, handler };
 }
 
 module.exports = { createKmaWeather, latLonToGrid, nowcastBase, forecastBase, toWeatherCode, isDaytime };

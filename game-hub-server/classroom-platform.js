@@ -36,6 +36,7 @@ const { schoolDefaults } = require("./school-affiliation");
 const { classboardItemReadSchema, createClassboardReadState } = require("./classboard-read-state");
 const { classboardAvatars } = require("./classboard-avatars");
 const { createStudentClassDashboard } = require("./student-class-dashboard");
+const { inKorea } = require("./school-weather");
 const { noticeManagementSchema, NOTICE_MANAGE_SQL, registerNoticeManagement } = require("./notice-management");
 
 const SESSION_COOKIE = "class_session";
@@ -344,6 +345,8 @@ function createClassroomPlatform(options = {}) {
   let databaseReady = false;
   let initializationError = null;
   const travelSchoolCoordinateCache = new Map();
+  // 위치를 못 찾은 학교는 대시보드가 열릴 때마다 다시 묻지 않게 잠시 기억한다.
+  const weatherLocationMisses = new Map();
   const travelRouteCache = new Map();
   let travelGeocodeQueue = Promise.resolve();
   let travelLastGeocodeAt = 0;
@@ -2430,6 +2433,40 @@ function createClassroomPlatform(options = {}) {
     travelSchoolCoordinateCache.set(cacheKey, { value, expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000) });
     return value;
   }
+
+  // 학급 대시보드 날씨: 브라우저는 좌표도 바깥 주소도 모르고 이 통로만 부른다.
+  // 학교 위치는 여행 지도와 같은 방법(NEIS 주소 → 위치 찾기, 서버끼리)으로 찾고,
+  // 학교가 없거나 못 찾으면 기기가 보낸 좌표(국내만)를 쓴다.
+  router.get("/school-weather", asyncRoute(async (req, res) => {
+    const user = await requireUser(req);
+    if (!options.schoolWeather) throw new HttpError(503, "WEATHER_UNAVAILABLE", "날씨를 불러올 수 없습니다.");
+    let coordinates = null;
+    const school = await travelSchoolForUser(user);
+    const missKey = school ? String(school.school_id) : "";
+    if (school && !(weatherLocationMisses.get(missKey) > Date.now())) {
+      try {
+        const { latitude, longitude } = await travelSchoolCoordinates(school);
+        coordinates = { lat: latitude, lon: longitude };
+      } catch (error) {
+        console.warn("School weather location failed:", error.message);
+        weatherLocationMisses.set(missKey, Date.now() + 6 * 60 * 60 * 1000);
+      }
+    }
+    let located = "school";
+    if (!coordinates) {
+      const lat = Number(req.query.lat);
+      const lon = Number(req.query.lon);
+      if (!inKorea(lat, lon)) throw new HttpError(404, "SCHOOL_LOCATION_UNKNOWN", "학교 위치를 찾지 못했습니다.");
+      coordinates = { lat, lon };
+      located = "device";
+    }
+    try {
+      res.json({ ...(await options.schoolWeather.get(coordinates.lat, coordinates.lon)), located });
+    } catch (error) {
+      console.error("School weather failed:", error.message);
+      throw new HttpError(502, "WEATHER_UNAVAILABLE", "날씨를 불러오지 못했습니다.");
+    }
+  }));
 
   router.get("/travel/route", asyncRoute(async (req, res) => {
     const user = await requireUser(req);

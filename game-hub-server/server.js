@@ -37,6 +37,7 @@ const { GAME_PAGE_ALIASES } = require("./home-content-paths");
 const { redirectLegacyHosts } = require("./canonical-host");
 const { hideUnpublishedLessons } = require("./unpublished-lessons");
 const { createKmaWeather } = require("./kma-weather");
+const { createSchoolWeather } = require("./school-weather");
 const { registerSiteIcons } = require("./site-icons");
 const { APP_DIRECTORIES, SITE_PAGES, resolveSitePath } = require("./site-paths");
 const {
@@ -52,8 +53,12 @@ const server = http.createServer(app);
 const wss = new WebSocketServer({ noServer: true });
 const rooms = new Map();
 const voyageAvatarSecret = crypto.randomBytes(32).toString('hex');
+// 학급 대시보드 날씨는 학교 좌표로 서버가 받아 묶어 준다(/api/school-weather).
+const kmaWeather = createKmaWeather({ serviceKey: process.env.KMA_API_KEY });
+const schoolWeather = createSchoolWeather({ kma: kmaWeather });
 const classroomPlatform = createClassroomPlatform({
   voyageAvatarSecret,
+  schoolWeather,
   databaseUrl: process.env.DATABASE_URL,
   googleClientId: process.env.GOOGLE_CLIENT_ID,
   teacherEmails: process.env.TEACHER_EMAILS,
@@ -63,7 +68,6 @@ const classroomPlatform = createClassroomPlatform({
   isLiveRaceRequest: (url) => isLiveArithmeticRaceRequest(url),
   isLegacyRoomCodeTaken: (code) => [...rooms.values()].some(room => room.roomCode === code) || legacyVoyageRoomExists(code)
 });
-const kmaWeather = createKmaWeather({ serviceKey: process.env.KMA_API_KEY });
 
 const PORT = Number(process.env.PORT) || 10000;
 const ARITHMETIC_PORT = Number(process.env.ARITHMETIC_PORT) || 10001;
@@ -701,7 +705,6 @@ app.post('/internal/room-codes', async (req, res) => {
   try { res.json({ code: await classroomPlatform.roomCodes.allocate(req.body.activity) }); }
   catch { res.status(503).json({ message: '방번호를 만들지 못했습니다.' }); }
 });
-app.get("/api/weather", kmaWeather.handler);
 app.use("/api", (_req, res, next) => {
   res.setHeader("Cache-Control", "no-store");
   next();

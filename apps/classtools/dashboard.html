@@ -2252,7 +2252,7 @@
                 if (studentView) applyStudentDashboard(data);
                 else applyTimetableData(data);
                 if (data?.classroom) {
-                    fetchRealtimeWeatherAndAirQuality(data.classroom.schoolName, data.classroom.locationName);
+                    fetchRealtimeWeatherAndAirQuality();
                     rosterStudents = data.classroom.students || [];
                     activeRosterClass = data.classroom;
                     loadMeals(data.classroom);
@@ -3151,61 +3151,42 @@
             }
         }
 
-        // 7-2. Realtime Weather, Humidity & Air Quality (PM10) Dynamic Geocoding Integration
-        //
-        // open-meteo's own /v1/search geocoder barely matches Korean-language
-        // queries at all (confirmed: even "서울" and "강남구" return zero
-        // results there, while the English "Seoul" works) -- it's an
-        // English/romanized gazetteer, not a Korean address geocoder. Use
-        // OSM Nominatim instead, which indexes Korean school names directly
-        // (e.g. "계상초등학교" resolves to the exact real campus) and only
-        // fetch the weather itself from open-meteo once we have real coords.
-        async function geocode(query) {
-            const cleaned = String(query || "").trim();
-            if (cleaned.length < 2) return null;
-            try {
-                const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cleaned)}&format=json&limit=1&accept-language=ko&countrycodes=kr`);
-                const geoData = await geoRes.json();
-                const first = geoData?.[0];
-                if (first?.lat && first?.lon) return { lat: Number(first.lat), lon: Number(first.lon) };
-            } catch (_) {}
-            return null;
+        // 7-2. 날씨·습도·미세먼지: 우리 서버(/api/school-weather)가 학교 위치로 받아 묶어 준다.
+        // 브라우저는 바깥 서버를 부르지 않고 학교 이름도 밖으로 보내지 않는다.
+        // 서버가 학교 위치를 모를 때만 이 기기 위치를 물어 넘기고, 그것도 안 되면 서울 둘레로 추정한다.
+        let weatherDevicePlace = null;
+        let weatherStarted = false;
+
+        function askDevicePlace() {
+            return new Promise((resolve) => {
+                const guess = () => resolve({ lat: 37.65, lon: 127.06, isEstimated: true });
+                if (!navigator.geolocation) return guess();
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude, isEstimated: false }),
+                    guess,
+                    { timeout: 3000 }
+                );
+            });
         }
 
-        async function fetchRealtimeWeatherAndAirQuality(schoolName = "", locationName = "") {
-            try {
-                let lat = 37.65;
-                let lon = 127.06;
-                let geoFound = false;
+        async function schoolWeatherJson(place) {
+            const query = place ? "?" + new URLSearchParams({ lat: place.lat, lon: place.lon }) : "";
+            const response = await fetch("/api/school-weather" + query, { credentials: "include", signal: AbortSignal.timeout(20000) });
+            const data = await response.json().catch(() => ({}));
+            if (response.status === 404 && data.error === "SCHOOL_LOCATION_UNKNOWN") return null;
+            if (!response.ok) throw new Error(data.message || "Weather request failed");
+            return data;
+        }
 
-                // The school's own name is the most precise query (an exact
-                // campus, not just a city); fall back to the broader
-                // location/district name if that specific lookup finds
-                // nothing.
-                const match = (await geocode(schoolName)) || (await geocode(locationName));
-                if (match) {
-                    ({ lat, lon } = match);
-                    geoFound = true;
-                }
-
-                if (!geoFound && navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (pos) => fetchWeatherWithCoords(pos.coords.latitude, pos.coords.longitude, false),
-                        () => fetchWeatherWithCoords(lat, lon, true),
-                        { timeout: 3000 }
-                    );
-                    return;
-                }
-
-                fetchWeatherWithCoords(lat, lon, !geoFound);
-            } catch (err) {
-                console.error("날씨/미세먼지 API 호출 오류:", err);
-            }
+        // 학급을 바꿔도 학교는 그대로라 처음 한 번만 부르고, 이후는 30분마다 새로 받는다.
+        function fetchRealtimeWeatherAndAirQuality() {
+            if (weatherStarted) return;
+            weatherStarted = true;
+            refreshWeather();
         }
 
         let hourlyWeather = [];
         let forecastDate = "";
-        let latestWeatherCoordinates = null;
         let forecastRequestVersion = 0;
         let weatherLastRequestedAt = 0;
 
@@ -3287,84 +3268,55 @@
         const forecastResizeObserver = new ResizeObserver(renderHourlyForecast);
         forecastResizeObserver.observe(document.getElementById("hourlyForecast"));
 
-        async function weatherJson(url) {
-            const response = await fetch(url, { signal: AbortSignal.timeout(10000) });
-            if (!response.ok) throw new Error("Weather request failed");
-            return response.json();
-        }
-
-        // 기상청 자료(서버의 /api/weather)가 네이버 등과 같은 값이라 우선 쓰고,
-        // 서버에 인증키가 없거나 기상청이 응답하지 않으면 Open-Meteo로 대신한다.
-        async function loadKmaWeather(lat, lon) {
-            const data = await weatherJson("/api/weather?" + new URLSearchParams({ lat, lon }));
-            return { source: "kma", current: data.current || {}, hourly: data.hourly || [] };
-        }
-
-        async function loadOpenMeteoWeather(lat, lon) {
-            const query = new URLSearchParams({
-                latitude: lat, longitude: lon, timezone: "Asia/Seoul", forecast_days: "2",
-                current: "temperature_2m,relative_humidity_2m,weather_code,is_day",
-                hourly: "temperature_2m,relative_humidity_2m,precipitation_probability,weather_code,is_day"
-            });
-            const data = await weatherJson("https://api.open-meteo.com/v1/forecast?" + query);
-            const current = data.current || {};
-            const hourly = data.hourly || {};
-            return {
-                source: "open-meteo",
-                current: {
-                    temperature: current.temperature_2m, humidity: current.relative_humidity_2m,
-                    code: current.weather_code, isDay: current.is_day
-                },
-                hourly: (hourly.time || []).map((time, index) => ({
-                    time, hour: Number(time.slice(11, 13)), temperature: hourly.temperature_2m?.[index],
-                    rain: hourly.precipitation_probability?.[index], code: hourly.weather_code?.[index], isDay: hourly.is_day?.[index]
-                }))
-            };
-        }
-
         function describeWeatherItem(item) {
             const condition = describeWeather(item.code, item.isDay);
             if (item.label) condition.name = item.label;
             return condition;
         }
 
-        // Reuse the same coordinates and providers as the current-weather request.
-        async function fetchWeatherWithCoords(lat, lon, isEstimated = false) {
+        async function refreshWeather() {
             const version = ++forecastRequestVersion;
-            latestWeatherCoordinates = { lat, lon, isEstimated };
             weatherLastRequestedAt = Date.now();
             hourlyWeather = [];
             showForecastMessage("시간대별 예보 불러오는 중...");
             document.getElementById("weatherTemp").textContent = "--°";
             for (const id of ["weatherHumidity", "pm10Value", "pm25Value"]) showAirValue(id, null);
-            const airQuery = new URLSearchParams({ latitude: lat, longitude: lon, current: "pm10,pm2_5" });
-            const results = await Promise.allSettled([
-                loadKmaWeather(lat, lon).catch(() => loadOpenMeteoWeather(lat, lon)),
-                weatherJson("https://air-quality-api.open-meteo.com/v1/air-quality?" + airQuery)
-            ]);
+            let data = null;
+            try {
+                data = await schoolWeatherJson(weatherDevicePlace);
+                if (!data && !weatherDevicePlace) {
+                    weatherDevicePlace = await askDevicePlace();
+                    if (version !== forecastRequestVersion) return;
+                    data = await schoolWeatherJson(weatherDevicePlace);
+                }
+            } catch (err) {
+                console.error("날씨 불러오기 오류:", err);
+                data = null;
+            }
             if (version !== forecastRequestVersion) return;
-            if (results[0].status === "fulfilled") {
-                const { source, current, hourly } = results[0].value;
-                document.getElementById("forecastCard").title = "자료: " + (source === "kma" ? "기상청" : "Open-Meteo");
-                const condition = describeWeatherItem(current);
-                const temp = document.getElementById("weatherTemp");
-                temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
-                const conditionText = document.createElement("span");
-                conditionText.className = "weather-condition";
-                conditionText.textContent = condition.icon + " " + condition.name + (isEstimated ? " (위치 추정)" : "");
-                temp.append(conditionText);
-                showAirValue("weatherHumidity", current.humidity, "%");
-                forecastDate = koreanWeatherClock().date;
-                hourlyWeather = hourly;
-                if (hourlyWeather.length) {
-                    document.getElementById("forecastRetry").hidden = true;
-                    renderHourlyForecast();
-                } else showForecastMessage("시간대별 예보를 불러오지 못했습니다.", true);
-            } else showForecastMessage("일기예보를 불러오지 못했습니다.", true);
-
-            const air = results[1].status === "fulfilled" ? results[1].value.current : null;
+            if (!data) {
+                showForecastMessage("일기예보를 불러오지 못했습니다.", true);
+                return;
+            }
+            const { source, current = {}, hourly = [], air } = data;
+            const isEstimated = data.located === "device" && weatherDevicePlace?.isEstimated;
+            document.getElementById("forecastCard").title = "자료: " + (source === "kma" ? "기상청" : "Open-Meteo");
+            const condition = describeWeatherItem(current);
+            const temp = document.getElementById("weatherTemp");
+            temp.textContent = Number.isFinite(current.temperature) ? Math.round(current.temperature) + "° " : "--° ";
+            const conditionText = document.createElement("span");
+            conditionText.className = "weather-condition";
+            conditionText.textContent = condition.icon + " " + condition.name + (isEstimated ? " (위치 추정)" : "");
+            temp.append(conditionText);
+            showAirValue("weatherHumidity", current.humidity, "%");
+            forecastDate = koreanWeatherClock().date;
+            hourlyWeather = hourly;
+            if (hourlyWeather.length) {
+                document.getElementById("forecastRetry").hidden = true;
+                renderHourlyForecast();
+            } else showForecastMessage("시간대별 예보를 불러오지 못했습니다.", true);
             showAirValue("pm10Value", air?.pm10, "㎍/㎥", [30, 80, 150]);
-            showAirValue("pm25Value", air?.pm2_5, "㎍/㎥", [15, 35, 75]);
+            showAirValue("pm25Value", air?.pm25, "㎍/㎥", [15, 35, 75]);
         }
 
         // 등급 경계는 환경부 기준: 미세먼지 30·80·150, 초미세먼지 15·35·75 ㎍/㎥ 이하.
@@ -3390,14 +3342,9 @@
             );
         }
 
-        function refreshWeather() {
-            if (!latestWeatherCoordinates) return;
-            const { lat, lon, isEstimated } = latestWeatherCoordinates;
-            fetchWeatherWithCoords(lat, lon, isEstimated);
-        }
         document.getElementById("forecastRetry").addEventListener("click", refreshWeather);
         setInterval(() => {
-            if (!latestWeatherCoordinates) return;
+            if (!weatherStarted) return;
             if (Date.now() - weatherLastRequestedAt >= 30 * 60 * 1000
                 || (forecastDate && forecastDate !== koreanWeatherClock().date)) refreshWeather();
             else renderHourlyForecast();
