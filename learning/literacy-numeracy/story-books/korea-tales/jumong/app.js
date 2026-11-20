@@ -148,7 +148,7 @@ const CHAPTERS = [
                     "왕자들이 서로 좋은 말을 먼저 골라 가겠다고 다투었어요."
                 ],
                 right: [
-                    "그러고는 구석에 선 비쩍 마른 말을 가리켰지요.",
+                    "금와왕은 구석에 선 비쩍 마른 말을 가리켰지요.",
                     "\"저건 네가 가져라.\"",
                     "뼈만 앙상하게 남은 그 말이었어요. 주몽은 고개를 숙여 공손히 절했습니다.",
                     "'됐다!'",
@@ -182,8 +182,7 @@ const CHAPTERS = [
                 emoji: "🌫️",
                 left: [
                     "어느 밤 어머니 유화가 주몽을 흔들어 깨웠어요. 유화의 얼굴이 하얗게 질려 있었지요.",
-                    "\"오늘 밤 저들이 너를 해치려 한다.\"",
-                    "\"멀리 가서 네 나라를 세우거라.\"",
+                    "\"오늘 밤 왕자들이 너를 해치려 한다. 멀리 가서 네 나라를 세우거라.\"",
                     "유화가 곡식 씨앗 주머니를 품에 안겨 주었습니다.",
                     "보리와 콩과 조가 든 주머니였지요."
                 ],
@@ -199,15 +198,14 @@ const CHAPTERS = [
                 art: "12-river.webp",
                 emoji: "🐟",
                 left: [
-                    "주몽은 벗 셋을 데리고 성을 빠져나갔어요. 오이와 마리와 협보라는 벗들이었지요.",
+                    "주몽은 그 빠른 말을 타고 벗 셋과 성을 빠져나갔어요. 오이와 마리와 협보라는 벗들이었지요.",
                     "새벽녘, 앞을 커다란 강이 떡 가로막았습니다.",
                     "물살이 사납고 건널 배 한 척 없었어요.",
                     "뒤에서는 말발굽 소리가 점점 가까워졌답니다."
                 ],
                 right: [
                     "이제 더는 물러설 데가 없었어요. 주몽이 두 팔을 들고 강물을 향해 크게 외쳤습니다.",
-                    "\"나는 하늘의 손자요, 하백의 외손이다!\"",
-                    "\"부디 길을 열어 다오!\"",
+                    "\"나는 하늘의 손자요, 하백의 외손이다! 부디 길을 열어 다오!\"",
                     "주몽의 목소리가 강 건너까지 쩌렁쩌렁 울렸답니다."
                 ]
             },
@@ -231,7 +229,7 @@ const CHAPTERS = [
                 art: "14-jolbon.webp",
                 emoji: "🏕️",
                 left: [
-                    "여러 날을 걸어 주몽은 졸본이라는 땅에 닿았어요.",
+                    "여러 날을 달려 주몽은 졸본이라는 땅에 닿았어요.",
                     "산이 험하고 물이 맑은 곳이었지요.",
                     "널찍한 들이 강을 따라 펼쳐져 있었습니다.",
                     "곡식을 심으면 아주 잘 자랄 것 같았어요. 주몽이 흙을 한 줌 쥐어 보았답니다."
@@ -521,7 +519,7 @@ const EN = {
                     left: [
                         "One night his mother Yuhwa shook Jumong awake.",
                         "Yuhwa's face was white.",
-                        { t: "\"Tonight they mean to do you harm.\"", v: "woman" },
+                        { t: "\"Tonight the princes mean to do you harm.\"", v: "woman" },
                         { t: "\"Go far away and make a country of your own.\"", v: "woman" },
                         "She put a bag of seed grain into his arms.",
                         "Barley and beans and millet were in it."
@@ -539,7 +537,7 @@ const EN = {
                     art: "12-river.webp",
                     emoji: "🐟",
                     left: [
-                        "Jumong left the fortress with three friends.",
+                        "On that horse Jumong left the fortress with three friends.",
                         "They were Oi and Mari and Hyeopbo.",
                         "Near dawn a great river blocked the way in front of them.",
                         "The water ran hard and there was not one boat.",
@@ -575,7 +573,7 @@ const EN = {
                     art: "14-jolbon.webp",
                     emoji: "🏕️",
                     left: [
-                        "After many days' walking Jumong came to a land called Jolbon.",
+                        "After many days' riding Jumong came to a land called Jolbon.",
                         "The hills were steep and the water was clear.",
                         "A wide plain lay open along the river.",
                         "Grain would grow well there, it looked.",
@@ -771,7 +769,7 @@ const EN = {
         ],
         "11-flee.webp": [
             { w: "shook ~ awake (shake)", k: "흔들어 깨웠다", s: "his mother Yuhwa shook Jumong awake" },
-            { w: "do you harm", k: "너를 해치다", s: "Tonight they mean to do you harm." },
+            { w: "do you harm", k: "너를 해치다", s: "Tonight the princes mean to do you harm." },
             { w: "of your own", k: "네 나라", s: "Go far away and make a country of your own." },
             { w: "seed grain", k: "곡식 씨앗", s: "She put a bag of seed grain into his arms." },
             { w: "millet", k: "조", s: "Barley and beans and millet were in it." },
@@ -803,7 +801,7 @@ const EN = {
             { w: "stamped (stamp)", k: "발을 굴렀다", s: "The soldiers who had chased them stamped on the bank." }
         ],
         "14-jolbon.webp": [
-            { w: "many days' walking", k: "여러 날 걷기", s: "After many days' walking Jumong came to a land called Jolbon." },
+            { w: "many days' riding", k: "여러 날 말을 달림", s: "After many days' riding Jumong came to a land called Jolbon." },
             { w: "steep", k: "험한", s: "The hills were steep and the water was clear." },
             { w: "lay open (lie)", k: "펼쳐져 있었다", s: "A wide plain lay open along the river." },
             { w: "it looked (look)", k: "~ 같았다", s: "Grain would grow well there, it looked." },
@@ -989,13 +987,13 @@ const WORDS_KO = {
     ],
     "11-flee.webp": [
         { w: "질리다", k: "놀라 얼굴빛이 하얗게 변하다.", s: "유화의 얼굴이 하얗게 질려 있었지요." },
-        { w: "해치다", k: "다치게 하거나 죽이려 하다.", s: "오늘 밤 저들이 너를 해치려 한다." },
+        { w: "해치다", k: "다치게 하거나 죽이려 하다.", s: "오늘 밤 왕자들이 너를 해치려 한다." },
         { w: "씨앗", k: "심어서 싹이 나게 하는 알.", s: "유화가 곡식 씨앗 주머니를 품에 안겨 주었습니다." },
         { w: "조", k: "알이 아주 작은 곡식.", s: "보리와 콩과 조가 든 주머니였지요." },
         { w: "꺾다", k: "부러뜨리다.", s: "주몽은 차고 있던 칼을 반으로 꺾었습니다." }
     ],
     "12-river.webp": [
-        { w: "벗", k: "친구.", s: "주몽은 벗 셋을 데리고 성을 빠져나갔어요." },
+        { w: "벗", k: "친구.", s: "주몽은 그 빠른 말을 타고 벗 셋과 성을 빠져나갔어요." },
         { w: "새벽녘", k: "새벽 무렵.", s: "새벽녘, 앞을 커다란 강이 떡 가로막았습니다." },
         { w: "가로막다", k: "앞을 막아서다.", s: "앞을 커다란 강이 떡 가로막았습니다." },
         { w: "물살", k: "물이 흐르는 힘.", s: "물살이 사납고 건널 배 한 척 없었어요." },

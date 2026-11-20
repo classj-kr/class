@@ -220,8 +220,7 @@ const CHAPTERS = [
                 emoji: "🍚",
                 left: [
                     "사람들이 서로 눈치만 보았어요. 그러다 한 사람이 더듬더듬 물었지요.",
-                    "\"어, 어르신… 이걸 다 내주시면…\"",
-                    "\"곳간이 텅 빌 텐데요.\"",
+                    "\"어, 어르신… 이걸 다 내주시면… 곳간이 텅 빌 텐데요.\"",
                     "자린고비가 대문 기둥에 기대 빙긋 웃었어요.",
                     "삼십 년 만에 처음 보는 웃음이었지요."
                 ],
@@ -619,7 +618,7 @@ const EN = {
             { w: "the middle of summer", k: "한여름", s: "It was the middle of summer." },
             { w: "in a line", k: "줄줄", s: "Sweat ran in a line down his back." },
             { w: "fan", k: "부채", s: "The Jaringobi opened a fan wide" },
-            { w: "opened wide", k: "활짝", s: "The Jaringobi opened a fan wide and sat in the room." },
+            { w: "opened wide (open)", k: "활짝", s: "The Jaringobi opened a fan wide and sat in the room." },
             { w: "from side to side", k: "좌우로", s: "Instead he waved his own head from side to side." },
             { w: "what sort of ~", k: "그게 무슨 ~이오", s: "Husband, what sort of fanning is that?" },
             { w: "wears out (wear)", k: "닳는다", s: "Fan the fan and the fan wears out." },

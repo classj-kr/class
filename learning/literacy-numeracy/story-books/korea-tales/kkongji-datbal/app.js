@@ -118,9 +118,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "할머니가 무릎을 탁 쳤어요.",
-                    "\"그놈이라면 저 서쪽 끝 벼랑에 산다.\"",
-                    "\"해 지기 전에는 절대로 다가가지 마라.\"",
-                    "\"그때는 그놈이 둥지에 있느니라.\"",
+                    "\"그놈이라면 저 서쪽 끝 벼랑에 산다. 해가 진 뒤에는 절대로 다가가지 마라. 그때는 그놈이 둥지에 있느니라.\"",
                     "아들은 그 말을 마음에 단단히 새기고 길을 떠났답니다."
                 ]
             },
@@ -407,8 +405,8 @@ const EN = {
                     right: [
                         "The old woman slapped her knee.",
                         { t: "\"That thing lives on the cliff at the western end.\"", v: "granny" },
-                        { t: "\"Never go near it before the sun goes down.\"", v: "granny" },
-                        { t: "\"After that it is in the nest.\"", v: "granny" },
+                        { t: "\"Never go near it after the sun goes down.\"", v: "granny" },
+                        { t: "\"By then it is in the nest.\"", v: "granny" },
                         "The son set those words firmly in his mind and went on."
                     ]
                 },
@@ -650,7 +648,7 @@ const EN = {
             { w: "as round as plates", k: "접시만 해진", s: "The old woman's eyes went as round as plates." },
             { w: "washing club", k: "빨래 방망이", s: "She dropped her washing club." },
             { w: "the western end", k: "서쪽 끝", s: "That thing lives on the cliff at the western end." },
-            { w: "Never go near ~", k: "절대로 다가가지 마라", s: "Never go near it before the sun goes down." }
+            { w: "Never go near ~", k: "절대로 다가가지 마라", s: "Never go near it after the sun goes down." }
         ],
         "08-field.webp": [
             { w: "weeding (weed)", k: "밭을 매는", s: "Next day he met an old man weeding a field." },

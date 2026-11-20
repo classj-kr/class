@@ -65,7 +65,7 @@ const CHAPTERS = [
                 art: "04-loss.webp",
                 emoji: "🍂",
                 left: [
-                    "어느 겨울, 열 살 난 큰아이가 앓아누웠어요.",
+                    "어느 겨울, 열다섯 살 난 큰아이가 앓아누웠어요.",
                     "약을 지을 돈이 없었지요.",
                     "아이는 며칠 앓다가 부모 품에서 조용히 눈을 감았습니다.",
                     "조신은 해현이라는 고갯길 옆에 아이를 묻었어요.",
@@ -84,9 +84,7 @@ const CHAPTERS = [
                 emoji: "🌫️",
                 left: [
                     "어느 날 밤, 아내가 조신 앞에 앉았어요.",
-                    "\"우리 헤어집시다.\"",
-                    "\"처음 만났을 때 나는 고운 얼굴이었고 당신은 젊었지요.\"",
-                    "\"이제는 서로가 서로의 짐입니다. 아이들을 둘씩 나누어 데려갑시다.\"",
+                    "\"우리 헤어집시다. 처음 만났을 때 나는 고운 얼굴이었고 당신은 젊었지요. 이제는 서로가 서로의 짐입니다. 아이들을 둘씩 나누어 데려갑시다.\"",
                     "아내의 목소리는 차분했어요."
                 ],
                 right: [
@@ -292,7 +290,7 @@ const EN = {
                     art: "04-loss.webp",
                     emoji: "🍂",
                     left: [
-                        "One winter the eldest child, ten years old, fell ill.",
+                        "One winter the eldest child, fifteen years old, fell ill.",
                         "There was no money for medicine.",
                         "After a few days the child closed his eyes quietly in his parents' arms.",
                         "Josin buried him beside a pass called Haehyeon.",
@@ -493,7 +491,7 @@ const EN = {
             { w: "begged (beg)", k: "얻어먹었다", s: "They begged from village to village." }
         ],
         "04-loss.webp": [
-            { w: "fell ill (fall)", k: "앓아누웠다", s: "the eldest child, ten years old, fell ill" },
+            { w: "fell ill (fall)", k: "앓아누웠다", s: "the eldest child, fifteen years old, fell ill" },
             { w: "medicine", k: "약", s: "There was no money for medicine." },
             { w: "closed his eyes", k: "눈을 감았다", s: "the child closed his eyes quietly in his parents' arms" },
             { w: "buried (bury)", k: "묻었다", s: "Josin buried him beside a pass called Haehyeon." },
@@ -678,7 +676,7 @@ const WORDS_KO = {
         { w: "이다", k: "물건을 머리 위에 얹다.", s: "일곱 식구는 보따리를 이고 길을 나섰지요." }
     ],
     "04-loss.webp": [
-        { w: "앓아눕다", k: "아파서 자리에 눕다.", s: "열 살 난 큰아이가 앓아누웠어요." },
+        { w: "앓아눕다", k: "아파서 자리에 눕다.", s: "열다섯 살 난 큰아이가 앓아누웠어요." },
         { w: "눈을 감다", k: "세상을 떠나다.", s: "아이는 며칠 앓다가 부모 품에서 조용히 눈을 감았습니다." },
         { w: "고갯길", k: "고개를 넘어가는 길.", s: "조신은 해현이라는 고갯길 옆에 아이를 묻었어요." },
         { w: "굶기다", k: "먹지 못하게 두다.", s: "내가 이 사람들을 다 굶기고 있구나." }

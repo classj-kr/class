@@ -87,8 +87,7 @@ const CHAPTERS = [
                 ],
                 right: [
                     "구슬은 밤톨만 했어요. 겉이 반들반들해서 빛이 미끄러졌지요.",
-                    "\"이 구슬 속 구멍은 아홉 번이나 굽어 있소.\"",
-                    "\"여기에 실을 꿰어 보시오.\"",
+                    "\"이 구슬 속 구멍은 아홉 번이나 굽어 있소. 여기에 실을 꿰어 보시오.\"",
                     "사신이 실 한 오라기를 내밀었어요.",
                     "실은 머리카락처럼 가늘었답니다."
                 ]
@@ -137,7 +136,7 @@ const CHAPTERS = [
                 right: [
                     "마당이 쥐 죽은 듯 조용해졌어요. 다들 구슬만 보았지요.",
                     "개미가 굽이를 하나 지나고, 둘 지나고, 셋 지났어요.",
-                    "그때 반대쪽 구멍에서 까만 더듬이가 쏙 나왔습니다.",
+                    "마침내 꿀을 바른 구멍에서 까만 더듬이가 쏙 나왔습니다.",
                     "\"나왔다! 나왔어!\"",
                     "구슬에 실이 꿰여 있었답니다."
                 ]
@@ -176,8 +175,7 @@ const CHAPTERS = [
                 right: [
                     "한참 뒤, 나무 한쪽이 슬며시 기울기 시작했어요.",
                     "천천히, 아주 천천히 기울었지요.",
-                    "\"뿌리 쪽이 더 촘촘하고 무겁습니다.\"",
-                    "\"가라앉는 쪽이 아래입니다.\"",
+                    "\"뿌리 쪽이 더 촘촘하고 무겁습니다. 가라앉는 쪽이 아래입니다.\"",
                     "소년이 그쪽을 손으로 가리켰어요. 사신의 입이 딱 벌어졌답니다."
                 ]
             },
@@ -389,7 +387,7 @@ const EN = {
                     right: [
                         "The yard went dead quiet. Everyone watched the bead.",
                         "The ant passed one bend, and two, and three.",
-                        "Then a black feeler poked out of the hole on the other side.",
+                        "At last a black feeler poked out of the hole with the honey.",
                         { t: "\"It's out! It's out!\"", v: "man" },
                         "The thread was through the bead."
                     ]
@@ -585,7 +583,7 @@ const EN = {
             { w: "counted on his fingers", k: "손가락으로 헤아렸다", s: "the boy counted on his fingers" },
             { w: "dead quiet", k: "쥐 죽은 듯 조용한", s: "The yard went dead quiet." },
             { w: "bend", k: "굽이", s: "The ant passed one bend, and two, and three." },
-            { w: "feeler", k: "더듬이", s: "Then a black feeler poked out of the hole" },
+            { w: "feeler", k: "더듬이", s: "At last a black feeler poked out of the hole" },
             { w: "was through ~", k: "꿰여 있었다", s: "The thread was through the bead." }
         ],
         "09-third.webp": [
@@ -772,7 +770,7 @@ const WORDS_KO = {
         { w: "솔솔", k: "냄새나 바람이 가늘게 퍼지는 모양.", s: "꿀 냄새가 구멍 속으로 솔솔 퍼졌어요." },
         { w: "헤아리다", k: "수를 세다.", s: "소년이 손가락으로 헤아렸지요." },
         { w: "쥐 죽은 듯", k: "아무 소리도 없이 아주 조용한 모양.", s: "마당이 쥐 죽은 듯 조용해졌어요." },
-        { w: "더듬이", k: "벌레의 머리에 난 가느다란 뿔.", s: "반대쪽 구멍에서 까만 더듬이가 쏙 나왔습니다." }
+        { w: "더듬이", k: "벌레의 머리에 난 가느다란 뿔.", s: "꿀을 바른 구멍에서 까만 더듬이가 쏙 나왔습니다." }
     ],
     "09-third.webp": [
         { w: "말끔히", k: "아주 깨끗하게.", s: "사신이 껍질을 말끔히 벗긴 통나무 하나를 내놓았습니다." },
