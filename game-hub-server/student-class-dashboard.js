@@ -172,6 +172,7 @@ function createStudentClassDashboard({ pool, requireUser, requireDatabase, HttpE
     res.json({
       boards: rows.map(row => ({
         title: row.title,
+        layout: row.layout,
         href: (row.layout === "stacking" ? STACKING_BOARD_PATH : "/boards/") + "?code=" + encodeURIComponent(row.code)
       }))
     });

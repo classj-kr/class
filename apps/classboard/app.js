@@ -229,6 +229,9 @@ function classroomCard() {
     return linkCard({ index: 0, key: 'classroom', href: '/classtools/dashboard?view=student', iconName: 'dashboard', type: '학급', title: '교실' });
 }
 
+// 게시판 종류마다 아이콘이 달라서 학생이 무슨 활동인지 제목 앞에서 알아본다.
+const TEACHER_BOARD_ICONS = { wall: 'sticky_note_2', columns: 'view_column', roster: 'format_list_numbered', quiz: 'quiz', stacking: 'deployed_code' };
+
 function teacherBoardList() {
     if (!teacherBoards.length) return null;
     const list = document.createElement('nav');
@@ -240,9 +243,14 @@ function teacherBoardList() {
         card.dataset.boardKey = `teacher-board:${board.href}`;
         card.href = board.href;
         card.title = board.title;
+        const icon = document.createElement('span');
+        icon.className = 'material-symbols-outlined teacher-board-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = TEACHER_BOARD_ICONS[board.layout] || TEACHER_BOARD_ICONS.wall;
         const name = document.createElement('span');
+        name.className = 'teacher-board-name';
         name.textContent = board.title;
-        card.append(name);
+        card.append(icon, name);
         return card;
     }));
     return list;
