@@ -83,7 +83,8 @@
         .forecast-time { color: #e3ebe6; font-size: 0.78rem; font-weight: 600; }
         .forecast-icon { font-size: 1.25rem; line-height: 1.2; }
         .forecast-temperature { font-size: 1.05rem; font-weight: 800; }
-        /* 강수확률: 0%는 숫자만, 확률이 있으면 💧(눈이면 ❄️)를 붙이고 30% 이상은 하늘색, 60% 이상은 파란 바탕으로 띄운다. */
+        /* 강수확률: 30% 미만은 숫자만, 30% 이상은 우산 ☔(눈이면 ❄️)를 붙여 하늘색으로, 60% 이상은 숫자에 파란 바탕을 깐다.
+           물방울은 습도처럼 보여서 쓰지 않는다. */
         .forecast-rain { color: #c4d1c9; font-size: 0.74rem; white-space: nowrap; padding: 1px 5px; border-radius: 6px; }
         .forecast-rain.rain-some { color: #7ce4ff; font-weight: 700; }
         .forecast-rain.rain-high { color: #04141c; font-weight: 800; padding: 0; }
@@ -3268,10 +3269,10 @@
                 const temperature = Number.isFinite(item.temperature) ? Math.round(item.temperature) + "°" : "--°";
                 const rain = Number.isFinite(item.rain) ? Math.round(item.rain) : null;
                 const probability = rain === null ? "--%" : rain + "%";
-                cell.title = (isNextDay ? "내일 " : "") + item.hour + "시 · " + condition.name + " · " + temperature + " · " + (rain > 0 && isSnowHour(item) ? "눈 올 확률 " : "강수확률 ") + probability;
+                cell.title = (isNextDay ? "내일 " : "") + item.hour + "시 · " + condition.name + " · " + temperature + " · " + (rain >= 30 && isSnowHour(item) ? "눈 올 확률 " : "강수확률 ") + probability;
                 cell.setAttribute("aria-label", cell.title);
                 const rainClass = rain >= 60 ? " rain-high" : rain >= 30 ? " rain-some" : "";
-                const rainIcon = rain > 0 ? (isSnowHour(item) ? "❄️" : "💧") : "";
+                const rainIcon = rain >= 30 ? (isSnowHour(item) ? "❄️" : "☔") : "";
                 [["forecast-time", String(item.hour).padStart(2, "0") + "시"], ["forecast-icon", condition.icon],
                  ["forecast-temperature", temperature], ["forecast-rain" + rainClass, [rainIcon, probability]]].forEach(([className, value]) => {
                     const span = document.createElement("span");
