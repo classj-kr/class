@@ -192,7 +192,7 @@
         return records.save({checkpoint:checkpoint(),events,complete,progress:{current:recordMode==='game'?Math.min(quiz.length,quizIndex+(quizAnswered?1:0)):currentIndex,total:recordMode==='game'?quiz.length:null}});
     }
     async function beginRecord(){
-        const session=await records.start({contentKey:quizScope==='all'?'all':String(currentLessonIndex),title:quizScope==='all'?'한자성어 · 전체 문제':'한자성어 · '+lessons[currentLessonIndex].title,version:'20261002',checkpoint:checkpoint()});
+        const session=await records.start({contentKey:quizScope==='all'?'all':String(currentLessonIndex),title:quizScope==='all'?'한자성어 · 전체 문제':'한자성어 · '+lessons[currentLessonIndex].title,version:'20261120',checkpoint:checkpoint()});
         const cp=session.checkpoint;currentLessonIndex=cp.currentLessonIndex;quizScope=cp.quizScope;deck=cp.deck.map(id=>data.find(i=>i.id===id)).filter(Boolean);currentIndex=cp.currentIndex;reviewOnly=cp.reviewOnly;selectedTheme=cp.selectedTheme;selectedQuizMode=cp.selectedQuizMode;quiz=cp.quiz;quizIndex=cp.quizIndex;quizScore=cp.quizScore;quizStreak=cp.quizStreak;quizAnswered=cp.quizAnswered;quizQuestionHadWrong=cp.quizQuestionHadWrong;quizMistakes=cp.quizMistakes;quizIsMistakeRetry=cp.quizIsMistakeRetry;recordMode=cp.mode;
         if(recordMode==='game' && quiz.length){elements.gameIntro.hidden=true;elements.quizResult.hidden=true;elements.quizStage.hidden=false;renderQuestion();}else renderCard();
         switchView(recordMode);
