@@ -1309,7 +1309,7 @@ body.pr-racing .ingame-difficulty-panel, body.pr-racing .cw-hint-btn, body.pr-ra
 
     <div class="bottom-section-wrapper">
         <div class="cw-coach-bar" id="cw-coach-bar" aria-live="polite">
-            <span class="cw-coach-text" id="cw-coach-text">💡 동전을 <strong>3묶음</strong>으로 똑같이 나누어 양쪽 접시에 올리고 <strong>WEIGH</strong>를 눌러 보세요!</span>
+            <span class="cw-coach-text" id="cw-coach-text">🎯 저울을 <strong>세 번</strong>까지 써서 무게가 다른 <strong>가짜 동전</strong> 하나를 찾아보세요.</span>
             <button type="button" class="cw-hint-btn" onclick="showCwHint()">💡 한 수 힌트</button>
         </div>
         <div class="button-section">
@@ -1857,32 +1857,31 @@ body.pr-racing .ingame-difficulty-panel, body.pr-racing .cw-hint-btn, body.pr-ra
         return { possible, suspects: Array.from(suspectSet).sort((a, b) => a - b) };
     }
 
+    // 안내 줄은 목표와 저울이 기운 결과만 알린다. 첫 수·남은 후보·진짜 동전 초록 표시는 「한 수 힌트」를 눌렀을 때만
+    // (힌트를 안 눌렀는데 1~4번과 5~8번을 올리라거나 후보 번호를 다 알려 주면 따져 볼 일이 없다, 2026-11-21).
+    function markRealCoins(show) {
+        const { suspects } = analyzeCandidates();
+        for (let i = 0; i < coinCount; i++) {
+            document.getElementById(`coin-${i}`)?.classList.toggle('coin-real', show && weighHistory.length > 0 && !suspects.includes(i));
+        }
+    }
+
     function updateCwCoach() {
         const coachEl = document.getElementById('cw-coach-text');
         if (!coachEl) return;
-        const { possible, suspects } = analyzeCandidates();
-        for (let i = 0; i < coinCount; i++) {
-            const coinEl = document.getElementById(`coin-${i}`);
-            if (coinEl) {
-                coinEl.classList.toggle('coin-real', weighHistory.length > 0 && !suspects.includes(i));
-            }
-        }
+        markRealCoins(false);
         if (weighHistory.length === 0) {
-            const k = Math.floor(coinCount / 3);
-            coachEl.innerHTML = `💡 <strong>1단계:</strong> 동전 ${coinCount}개를 3묶음으로 나누어 보세요! 양쪽 접시에 <strong>${k}개씩</strong>(예: 1~${k}번과 ${k + 1}~${2 * k}번) 올리고 <strong>WEIGH</strong>를 눌러 볼까요?`;
+            coachEl.innerHTML = `🎯 저울을 <strong>세 번</strong>까지 써서 무게가 다른 <strong>가짜 동전</strong> 하나를 찾아보세요.`;
             return;
         }
         const last = weighHistory[weighHistory.length - 1];
-        const suspectNames = suspects.map(i => `${i + 1}번`).join(', ');
-        if (suspects.length === 1) {
-            coachEl.innerHTML = `🎯 <strong>찾았어요!</strong> 진짜 동전(초록색)을 모두 빼고 나니 가짜 후보는 <strong>[${suspects[0] + 1}번 동전]</strong> 딱 하나뿐이에요! <strong>DECIDE</strong>를 누르고 ${suspects[0] + 1}번을 골라 보세요!`;
-            return;
-        }
+        const left = Math.max(0, 3 - weighHistory.length);
+        const rest = left ? `저울은 <strong>${left}번</strong> 더 쓸 수 있어요.` : `저울을 다 썼어요. <strong>DECIDE</strong>로 가짜 동전을 골라 보세요.`;
         if (last.symbol === '=') {
-            coachEl.innerHTML = `⚖️ <strong>저울이 수평(=)이에요!</strong> 방금 저울에 올렸던 동전들은 모두 <strong>진짜(초록색)</strong>예요. 남은 후보: <strong>${suspectNames}</strong> (${suspects.length}개)`;
+            coachEl.innerHTML = `⚖️ <strong>수평(=)</strong>이에요. ${rest}`;
         } else {
             const heavySide = last.symbol === '>' ? '왼쪽 접시' : '오른쪽 접시';
-            coachEl.innerHTML = `⚖️ <strong>${heavySide}가 더 무겁게 기울었어요(${last.symbol})!</strong> 저울 밖에 있던 동전들은 모두 <strong>진짜(초록색)</strong>예요. 남은 후보: <strong>${suspectNames}</strong> (${suspects.length}개)`;
+            coachEl.innerHTML = `⚖️ <strong>${heavySide}</strong>가 더 무거워요(${last.symbol}). ${rest}`;
         }
     }
 
@@ -1890,6 +1889,7 @@ body.pr-racing .ingame-difficulty-panel, body.pr-racing .cw-hint-btn, body.pr-ra
         const coachEl = document.getElementById('cw-coach-text');
         if (!coachEl) return;
         const { suspects } = analyzeCandidates();
+        markRealCoins(true);
         if (weighHistory.length === 0) {
             const k = Math.floor(coinCount / 3);
             coachEl.innerHTML = `💡 <strong>한 수 힌트:</strong> 먼저 왼쪽 접시에 <strong>1~${k}번</strong> 동전을, 오른쪽 접시에 <strong>${k + 1}~${2 * k}번</strong> 동전을 올린 뒤 <strong>WEIGH</strong>를 눌러 보세요!`;
