@@ -80,7 +80,7 @@
         .hourly-forecast { display: grid; grid-template-columns: repeat(var(--forecast-columns, 1), minmax(0, 1fr)); gap: 3px; min-width: 0; }
         .forecast-hour { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 5px 1px; min-width: 0; border-radius: 7px; }
         .forecast-hour.is-current { border-color: rgba(117,214,159,0.55); box-shadow: inset 0 0 0 99px rgba(117,214,159,0.12); }
-        .forecast-time { color: #e3ebe6; font-size: 0.78rem; font-weight: 600; }
+        .forecast-time { color: #e3ebe6; font-size: 0.92rem; font-weight: 700; line-height: 1.15; }
         .forecast-icon { font-size: 1.25rem; line-height: 1.2; }
         .forecast-temperature { font-size: 1.05rem; font-weight: 800; }
         /* 강수확률: 30% 미만은 숫자만, 30% 이상은 우산 ☔(눈이면 ❄️)를 붙여 하늘색으로, 60% 이상은 숫자에 파란 바탕을 깐다.
@@ -945,9 +945,11 @@
         }
         /* 예보 칸과 지금 날씨 칸은 하늘처럼 낮은 하늘색, 밤은 밤하늘색으로 채운다(나무결 대신 하늘).
            하늘색 칸에서는 하늘색 강수 글씨와 60% 파란 바탕이 묻히므로 글씨는 희게, 60%는 흰 바탕에 파란 숫자로(낮 칸이 어두워지지 않게). */
-        .forecast-hour.is-day, .weather-card .weather-temp.is-day { background: linear-gradient(180deg, #4b9fe0, #2f7fc4); }
-        .forecast-hour.is-night, .weather-card .weather-temp.is-night { background: linear-gradient(180deg, #131d3a, #0a1022); }
-        .forecast-hour.is-day .forecast-rain { color: #eef6ff; }
+        .forecast-hour.is-day, .weather-card .weather-temp.is-day { background: #5aa7e0; }
+        .forecast-hour.is-night, .weather-card .weather-temp.is-night { background: #0d1529; }
+        /* 하늘 위 글씨는 회색으로 쓰지 않는다(하늘색에서 탁해 보인다). 밤의 30% 이상 하늘색 글씨·60% 바탕은 그대로. */
+        .forecast-hour.is-day .forecast-time, .forecast-hour.is-night .forecast-time, .forecast-hour.is-day .forecast-rain { color: #ffffff; }
+        .forecast-hour.is-night .forecast-rain:not(.rain-some):not(.rain-high) { color: #ffffff; }
         .forecast-hour.is-day .forecast-rain.rain-some { color: #ffffff; }
         .forecast-hour.is-day .forecast-rain.rain-high .rain-value { background: #ffffff; color: #1565c0; }
         .weather-card .weather-temp.is-day .weather-condition { color: #fff4c2; }
