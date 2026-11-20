@@ -4,11 +4,15 @@
 .ladder button.cleared { background: #d9ece1; border-color: #8cbca2; color: #24513f; }
 .ladder button[aria-current="true"] { background: #305f50; border-color: #305f50; color: #fff; }
 
-.board { display: block; margin: 0 auto; width: 100%; max-height: calc(100dvh - 330px); min-height: 200px; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.board { display: block; margin: 0 auto; overflow: visible; width: 100%; max-height: calc(100dvh - 330px); min-height: 200px; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 .cell { fill: #fffefa; stroke: #c9d4cb; stroke-width: .03; }
 .frame-edge { fill: none; stroke: #6f8a7d; stroke-width: .07; stroke-linejoin: round; }
 .anchor-hint { fill: #305f5033; stroke: #305f50; stroke-width: .05; pointer-events: none; }
-.ghost { opacity: .45; pointer-events: none; }
+.ghost { opacity: .5; pointer-events: none; }
+.ghost-edge { fill: none; stroke-width: .1; stroke-linejoin: round; pointer-events: none; }
+.ghost-edge.ok { stroke: #16a34a; }
+.ghost-edge.no { stroke: #dc2626; stroke-dasharray: .18 .12; }
+.floating { position: fixed; z-index: 50; pointer-events: none; filter: drop-shadow(0 6px 6px #0004); }
 .bad { fill: #e0574a; opacity: .55; pointer-events: none; animation: bad-flash .6s ease-out forwards; }
 @keyframes bad-flash { 0% { opacity: .75; } 100% { opacity: 0; } }
 .hit { fill: transparent; cursor: pointer; }
@@ -28,7 +32,7 @@
 .hand { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; gap: 4px 10px; align-items: center; padding: 8px 12px; border: 1px solid #cfd9d0; border-radius: 16px; background: #fffefa; }
 .hand.shake { animation: shake .35s; }
 @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
-.hand-svg { grid-row: 1 / span 2; width: 132px; height: 132px; }
+.hand-svg { grid-row: 1 / span 2; width: 132px; height: 132px; touch-action: none; cursor: grab; }
 .hand-svg .spin-r { animation: spin-r .25s ease-out; transform-origin: 0 0; }
 .hand-svg .spin-l { animation: spin-l .25s ease-out; transform-origin: 0 0; }
 .hand-svg .flip-in { animation: flip-in .25s ease-out; transform-origin: 0 0; }
@@ -40,7 +44,7 @@
 .empty-hand { fill: none; stroke: #c9d4cb; stroke-width: .06; stroke-dasharray: .2 .15; }
 
 .tray { display: flex; flex-wrap: wrap; gap: 6px; align-content: center; justify-content: center; max-width: 640px; padding: 8px; border: 1px dashed #cfd9d0; border-radius: 16px; min-height: 80px; }
-.tray button { width: 74px; height: 74px; padding: 4px; border-radius: 12px; }
+.tray button { width: 74px; height: 74px; padding: 4px; border-radius: 12px; touch-action: none; cursor: grab; }
 .tray button[aria-pressed="true"] { border-color: #305f50; border-width: 2px; background: #e1eee5; }
 .tray svg { width: 100%; height: 100%; }
 .tray .tray-empty { align-self: center; color: #7d8f86; font-size: 14px; }

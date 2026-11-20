@@ -99,7 +99,13 @@
     // 판 위 미리보기(마우스): 보기를 켰으면 놓일 모양, 아니면 점 찍힌 칸 자리만.
     if (hand && lastHover && !solved) {
       const [hx, hy] = lastHover;
-      if (seen) { const ghost = pieceGroup(hand, shape(hand, orient[hand]).map(([x, y]) => [x + hx, y + hy]), 'ghost'); svg.append(ghost); }
+      if (seen) {
+        // 들어가는 자리면 초록 테, 안 되는 자리면 빨간 테.
+        const occ = occupied(), cellsHere = shape(hand, orient[hand]).map(([x, y]) => [x + hx, y + hy]);
+        const ok = cellsHere.every(([x, y]) => frame.has(k(x, y)) && !occ.has(k(x, y)));
+        svg.append(pieceGroup(hand, cellsHere, 'ghost'));
+        svg.append(el('path', { class: 'ghost-edge ' + (ok ? 'ok' : 'no'), d: outlinePath(cellsHere) }));
+      }
       else svg.append(el('rect', { class: 'anchor-hint', x: hx + .12, y: hy + .12, width: .76, height: .76, rx: .2 }));
     }
     for (const [l, p] of Object.entries(placed)) {
@@ -144,7 +150,7 @@
     const o = orient[hand];
     if (seen) drawShape(svg, hand, shape(hand, o), true, handAnim);
     else drawShape(svg, hand, REL[hand], true, '');
-    $('hand-note').textContent = seen ? '' : orientNote(o);
+    $('hand-note').textContent = seen ? '판으로 끌어다 놓아요' : orientNote(o);
     handAnim = '';
   }
   function renderTray() {
@@ -160,7 +166,8 @@
       drawShape(svg, l, REL[l], false);
       b.append(svg);
       b.disabled = solved || paused;
-      b.addEventListener('click', () => pick(l));
+      b.addEventListener('click', () => { if (!dragJustEnded) pick(l); });
+      b.addEventListener('pointerdown', e => beginDrag(e, l));
       tray.append(b);
     }
     if (!left.length) { const s = document.createElement('span'); s.className = 'tray-empty'; s.textContent = solved ? '' : '모든 조각을 놓았어요'; tray.append(s); }
@@ -181,6 +188,60 @@
       box.append(b);
     });
   }
+
+  /* ---------- 끌어다 놓기: 손 상자나 남은 조각 상자에서 판으로. 손가락(마우스) 자리가 조각의 점 찍힌 칸 ---------- */
+  let drag = null, floating = null, dragJustEnded = false;
+  function beginDrag(e, letter) {
+    if (solved || paused || !letter || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, letter, moved: false };
+  }
+  function cellAt(e) {
+    const svg = $('board'), m = svg.getScreenCTM();
+    if (!m) return null;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+    const x = Math.floor(p.x), y = Math.floor(p.y);
+    return frame.has(k(x, y)) ? [x, y] : null;
+  }
+  function showFloating(e, overBoard) {
+    if (!floating) {
+      floating = el('svg', { class: 'floating', viewBox: '-3 -3 6 6', 'aria-hidden': 'true' });
+      document.body.append(floating);
+    }
+    const cell = $('board').getBoundingClientRect().width / (puzzle.w + .6);
+    floating.style.width = floating.style.height = `${cell * 6}px`;
+    floating.style.left = `${e.clientX - cell * 3}px`;
+    floating.style.top = `${e.clientY - cell * 3}px`;
+    floating.style.visibility = overBoard ? 'hidden' : 'visible';
+    // 감추기일 때는 돌린 모양을 들키지 않게 점 찍힌 칸 자리만 따라다닌다.
+    if (seen) drawShape(floating, hand, shape(hand, orient[hand]), true);
+    else floating.replaceChildren(el('circle', { class: 'anchor-dot', cx: 0, cy: 0, r: .3 }));
+  }
+  document.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (!drag.moved) {
+      if (Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) < 8) return;
+      drag.moved = true;
+      if (hand !== drag.letter) { hand = drag.letter; orient[hand] = { rot: 0, flip: false, ops: [] }; sfx('select'); render(); }
+    }
+    e.preventDefault();
+    const c = cellAt(e);
+    showFloating(e, Boolean(c));
+    const before = lastHover ? lastHover.join() : '', after = c ? c.join() : '';
+    if (before !== after) { lastHover = c; renderBoardSoon(); }
+  });
+  function endDrag(e, cancel) {
+    if (!drag || e.pointerId !== drag.id) return;
+    const d = drag;
+    drag = null;
+    floating?.remove(); floating = null;
+    if (!d.moved) return;
+    dragJustEnded = true; setTimeout(() => (dragJustEnded = false), 0);
+    const c = cancel ? null : cellAt(e);
+    lastHover = null;
+    if (c) placeAt(c[0], c[1]); else renderBoard();
+  }
+  document.addEventListener('pointerup', e => endDrag(e, false));
+  document.addEventListener('pointercancel', e => endDrag(e, true));
 
   /* ---------- 조작 ---------- */
   function pick(l) {
@@ -220,6 +281,10 @@
       return;
     }
     if (!hand) { notice('상자에서 조각을 먼저 고르세요'); return; }
+    placeAt(x, y, occ);
+  }
+  function placeAt(x, y, occ = occupied()) {
+    if (!hand || solved || paused) return;
     start();
     const o = orient[hand];
     const cells = shape(hand, o).map(([dx, dy]) => [x + dx, y + dy]);
@@ -306,6 +371,7 @@
   $('rot-right').addEventListener('click', () => turn('right'));
   $('flip').addEventListener('click', () => turn('flip'));
   $('race-open').addEventListener('click', () => race.open());
+  $('hand').addEventListener('pointerdown', e => beginDrag(e, hand));
   $('board').addEventListener('pointerleave', () => { lastHover = null; renderBoardSoon(); });
   document.addEventListener('keydown', e => {
     if (e.target.closest('input,select,textarea')) return;
