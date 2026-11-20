@@ -358,13 +358,15 @@
         .plate-strings line.back { stroke: #8a6a2c; }
         .plate-strings circle { fill: #e9cf7e; stroke: #5a4012; stroke-width: 1; }
 
+        /* 접시는 놋쇠 그릇: 빛나는 가장자리 테, 우묵하게 그늘진 안쪽(금빛 동전이 묻히지 않게 짙은 구릿빛), 아래로 보이는 그릇 몸통. */
         .plate {
+            position: relative;
             width: 160px;
             height: 55px;
-            background: radial-gradient(ellipse at center, #8498a8 0%, #2f4152 100%);
+            background: radial-gradient(ellipse at 50% 38%, #b48a3e 0%, #85612a 48%, #5a3f16 82%, #3f2b0e 100%);
             border-radius: 50%;
-            border: 2px solid #a3b6c4;
-            box-shadow: inset 0 -10px 15px rgba(0,0,0,0.8), 0 10px 10px rgba(0,0,0,0.5);
+            border: 3px solid #e9c96f;
+            box-shadow: inset 0 6px 10px rgba(30, 18, 2, 0.75), inset 0 -2px 3px rgba(255, 230, 160, 0.35), 0 0 0 1px #6b4a12;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -372,6 +374,21 @@
             gap: 2px;
             margin-top: -20px;
             z-index: 10;
+        }
+        /* 그릇 몸통: 접시 뒤에 두어(접시 z-index 10) 접시 아래로 내민 부분만 보인다. 줄 105px − 겹침 20px + 접시 반쯤 = 112px 에서 시작. */
+        .plate-wrapper::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 112px;
+            width: 116px;
+            height: 44px;
+            transform: translateX(-50%);
+            z-index: 1;
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+            background: linear-gradient(to right, #6b4a14, #d5ab52 35%, #a07428 60%, #5a3d10);
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.45);
+            pointer-events: none;
         }
 
         /* 접시 위 동전은 접시보다 크게 떠 보이지 않게 작게 줄이고 서로 조금씩 겹쳐 쌓는다. */
