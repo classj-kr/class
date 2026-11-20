@@ -72,18 +72,39 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
         }
         await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       };
+      // 높이가 바뀌면 카메라 크기가 몇 프레임에 걸쳐 따라간다(부드러운 카메라): 멈춘 뒤에 잰다.
+      const settledEdge = async selector => {
+        let last = -1;
+        for (let i = 0; i < 80; i++) {
+          const edge = await cubeEdgeHeight(selector);
+          if (Math.abs(edge - last) < .01) return edge;
+          last = edge;
+          await page.waitForTimeout(30);
+        }
+        return last;
+      };
+      const settledFront = async selector => {
+        let last = null;
+        for (let i = 0; i < 80; i++) {
+          const now = await frontPosition(selector);
+          if (last && Math.abs(now.x - last.x) < .05 && Math.abs(now.y - last.y) < .05) return now;
+          last = now;
+          await page.waitForTimeout(30);
+        }
+        return last;
+      };
       const checkDragDirections = async selector => {
-        const start = await frontPosition(selector);
-        const edge = await cubeEdgeHeight(selector);
+        const edge = await settledEdge(selector);
+        const start = await settledFront(selector);
         await dragSurface(selector, 40, 0);
-        assert.ok((await frontPosition(selector)).x > start.x + 1, `${selector}: the front of the model follows a rightward drag`);
-        assert.ok(Math.abs(await cubeEdgeHeight(selector) - edge) < .1, `${selector}: horizontal rotation keeps cube scale stable`);
+        assert.ok((await settledFront(selector)).x > start.x + 1, `${selector}: the front of the model follows a rightward drag`);
+        assert.ok(Math.abs(await settledEdge(selector) - edge) < .1, `${selector}: horizontal rotation keeps cube scale stable`);
         await dragSurface(selector, -40, 0);
-        assert.ok(Math.abs((await frontPosition(selector)).x - start.x) < 1, `${selector}: reversing the drag restores the heading`);
+        assert.ok(Math.abs((await settledFront(selector)).x - start.x) < 1, `${selector}: reversing the drag restores the heading`);
         await dragSurface(selector, 0, 25);
-        assert.ok((await frontPosition(selector)).y > start.y + 1, `${selector}: the front follows a downward drag`);
+        assert.ok((await settledFront(selector)).y > start.y + 1, `${selector}: the front follows a downward drag`);
         await dragSurface(selector, 0, -25);
-        assert.ok(Math.abs((await frontPosition(selector)).y - start.y) < 1, `${selector}: reversing the drag restores the tilt`);
+        assert.ok(Math.abs((await settledFront(selector)).y - start.y) < 1, `${selector}: reversing the drag restores the tilt`);
       };
       const fill = async heights => {
         await page.locator('#scene').focus();
@@ -100,8 +121,8 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       };
 
       await page.goto(base + '/');
-      await page.locator('#category-literacy-toggle').waitFor({ state: 'visible' });
-      await activate(page.locator('#category-literacy-toggle'));
+      // 첫 화면은 과목 단추가 늘 펼쳐져 있다(바깥 묶음 단추 없음): 바로 「수리」 단추부터.
+      await page.locator('[data-access-group="numeracy"] > summary').waitFor({ state: 'visible' });
       await activate(page.locator('[data-access-group="numeracy"] > summary'));
       await activate(page.locator('a[href="learning/literacy-numeracy/math-tools/"]'));
       await activate(page.locator('a[href="/learning/literacy-numeracy/math-tools/stacking-cubes/"]'));
@@ -237,7 +258,7 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#check-shape'));
       assert.equal(await page.locator('#celebration').isVisible(), false, 'next problem clears celebration immediately');
       assert.equal(await page.locator('.confetti-piece').count(), 0);
-      assert.match(await page.locator('#challenge-title').textContent(), /2\/6/);
+      assert.match(await page.locator('#challenge-title').textContent(), new RegExp(`2/${activities.questions('copy').length}$`));
       await total(0);
       // The rear column of the second copy task is occluded in its initial view.
       // Learners can inspect the goal itself without placing or erasing any cubes.
@@ -278,8 +299,9 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await page.keyboard.press('Home');
       await page.locator('#show-heights').uncheck();
       await activate(page.locator('[data-target-view="top"]'));
-      await page.waitForFunction(() => !document.querySelector('#target-scene[aria-busy="true"]') && document.querySelectorAll('#target-scene .cell-number').length === 4);
-      assert.deepEqual(await goal.locator('.cell-number').allTextContents(), ['1', '2', '2', '1'], 'all goal heights are available, including the hidden rear cell');
+      const secondGoal = activities.questions('copy')[1].filter(Boolean).map(String);
+      await page.waitForFunction(n => !document.querySelector('#target-scene[aria-busy="true"]') && document.querySelectorAll('#target-scene .cell-number').length === n, secondGoal.length);
+      assert.deepEqual(await goal.locator('.cell-number').allTextContents(), secondGoal, 'all goal heights are available, including hidden rear cells');
       assert.equal(await goal.getAttribute('tabindex'), '-1');
       for (const number of await goal.locator('.cell-number').all()) assert.ok(await number.evaluate(node => parseFloat(getComputedStyle(node).fontSize)) >= 12, 'goal heights stay legible');
       for (const button of await page.locator('#target-views button:visible').all()) {
