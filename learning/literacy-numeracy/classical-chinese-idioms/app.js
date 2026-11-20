@@ -671,7 +671,6 @@ function renderLessonOverview() {
     elements.backLink?.addEventListener("click", (event) => {
         if (!elements.learningShell.hidden) { event.preventDefault(); showLessonOverview(); }
     });
-    elements.allQuizButton.addEventListener("click", openAllQuiz);
     elements.currentLessonQuiz.addEventListener("click", () => {
         const gameVisible = !byId("gameView").hidden;
         switchView(gameVisible ? "learn" : "game");

@@ -330,8 +330,10 @@ test('a race opened from a lesson asks only that lesson, or everything up to it'
     assert.equal(round.length, 110, `${stage}단계 한 판`);
     for (let i = 1; i < round.length; i++) assert.notEqual(round[i].key, round[i - 1].key);
   }
-  // 한자성어 2차시는 네 개뿐이라 보기를 전체에서 고른다(늘 같은 네 개가 되지 않게).
-  const round = Questions.makeRound(pools, { set: 'idioms', range: '2', count: 40, random: Math.random });
+  // 한자성어 차시가 네 개뿐이어도 보기를 전체에서 고른다(늘 같은 네 개가 되지 않게).
+  const small = [...new Set(pools.idioms.map((e) => e.lesson))].find((n) => pools.idioms.filter((e) => e.lesson === n).length === 4);
+  assert.ok(small, '네 개짜리 차시가 있다');
+  const round = Questions.makeRound(pools, { set: 'idioms', range: String(small), count: 40, random: Math.random });
   assert.ok(new Set(round.map((q) => q.text)).size <= 4);
   assert.ok(new Set(round.flatMap((q) => q.choices)).size > 4);
 });
