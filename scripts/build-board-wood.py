@@ -1,7 +1,7 @@
 """판 게임 나무판 그림을 만든다(learning/games/assets/wood/*.webp).
 
-- goban: 바둑·오목·육목. 비자나무처럼 옅은 노란빛에 곧은결(세로). 판 선이 묻히지 않게 무늬는 옅게.
-- janggi: 장기. 같은 곧은결에 조금 짙고 붉은 빛.
+- goban: 바둑·오목·육목·장기. 비자나무처럼 옅은 노란빛에 곧은결(세로). 판 선이 묻히지 않게 무늬는 옅게.
+  장기판을 짙게 했다가 "밝아야 보기 좋다"고 해서 같은 그림으로 맞췄다(2026-11-21).
 다이아몬드 게임은 원래 플라스틱 판이라 나무로 하지 않는다. 판 하나를 그림 한 장으로 덮는다(background-size: cover). 체스 칸 그림은 scripts/build-chess-wood.py.
 
     python scripts/build-board-wood.py
@@ -37,7 +37,6 @@ def straight_grain(seed, dark, light, bands, strength):
 os.makedirs(OUT, exist_ok=True)
 boards = {
     "goban": straight_grain(3, (196, 145, 72), (233, 189, 115), 26, 0.42),
-    "janggi": straight_grain(5, (182, 124, 58), (226, 172, 100), 22, 0.46),
 }
 for name, image in boards.items():
     path = os.path.join(OUT, name + ".webp")
