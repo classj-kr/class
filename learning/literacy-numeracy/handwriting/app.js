@@ -489,7 +489,6 @@
       try {
         surface.releasePointerCapture?.(id);
       } catch {}
-      review.penUp();
       queueDraw();
     }
   }
@@ -626,7 +625,6 @@
         canvas: target,
         stroke: { points: [position(e, target)], width: doc.width },
         test,
-        movedAt: e.timeStamp,
       };
       try {
         surface.setPointerCapture(e.pointerId);
@@ -639,7 +637,6 @@
       e.preventDefault();
       const target = active.canvas;
       const events = e.getCoalescedEvents?.() || [e];
-      let moved = 0;
       for (const p of events.length ? events : [e]) {
         const pos = position(p, target),
           pts = active.stroke.points,
@@ -647,14 +644,8 @@
           step = Math.hypot(pos[0] - previous[0], pos[1] - previous[1]);
         if (step > 0.25) {
           pts.push(pos);
-          moved += step;
         }
         if (pts.length > 240) active.stroke.points = C.sample(pts, 120);
-      }
-      // 연필 소리: 빨리 그을수록 조금 커진다.
-      if (!test && !inRoom && moved) {
-        review.penMove(moved / Math.max(4, e.timeStamp - active.movedAt));
-        active.movedAt = e.timeStamp;
       }
       if (test) {
         const t = target.getContext('2d');
@@ -673,7 +664,6 @@
       if (Math.hypot(end[0] - p[p.length - 1][0], end[1] - p[p.length - 1][1]) > 0.1) p.push(end);
       if (p.length > 64) a.stroke.points = C.sample(p, 64);
       active = null;
-      review.penUp();
       try {
         surface.releasePointerCapture(e.pointerId);
       } catch {}

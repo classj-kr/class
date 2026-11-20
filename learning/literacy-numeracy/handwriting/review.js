@@ -100,17 +100,6 @@
   // 사이트 효과음의 크기·끄기를 그대로 따른다.
   function createSound() {
     const bus = () => window.ClassGameSfx?.getAudioBus?.() || null;
-    let buffer = null,
-      pen = null,
-      penStop = 0;
-    function noiseBuffer(a) {
-      if (!buffer || buffer.sampleRate !== a.sampleRate) {
-        buffer = a.createBuffer(1, a.sampleRate * 1.5, a.sampleRate);
-        const d = buffer.getChannelData(0);
-        for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-      }
-      return buffer;
-    }
     function tone(freq, length, type = 'sine', volume = 0.06, delay = 0, slideTo = 0) {
       const b = bus();
       if (!b) return;
@@ -128,72 +117,9 @@
       o.start(t);
       o.stop(t + length + 0.05);
     }
-    // 종이를 긁는 소리. 사각사각 끊어지도록 크기를 몇 번 흔든다.
-    function scratch(length, volume = 0.055, freq = 3400) {
-      const b = bus();
-      if (!b) return;
-      const a = b.context,
-        t = a.currentTime,
-        src = a.createBufferSource(),
-        band = a.createBiquadFilter(),
-        v = a.createGain(),
-        beats = Math.max(2, Math.round(length / 0.06));
-      src.buffer = noiseBuffer(a);
-      src.loop = true;
-      band.type = 'bandpass';
-      band.frequency.value = freq;
-      band.Q.value = 0.7;
-      v.gain.setValueAtTime(0.0001, t);
-      for (let i = 0; i < beats; i++) {
-        const at = t + (length * i) / beats;
-        v.gain.linearRampToValueAtTime(volume * (0.65 + Math.random() * 0.35), at + 0.012);
-        v.gain.linearRampToValueAtTime(volume * 0.22, at + (length / beats) * 0.9);
-      }
-      v.gain.linearRampToValueAtTime(0.0001, t + length + 0.02);
-      src.connect(band).connect(v).connect(b.output);
-      src.start(t, Math.random());
-      src.stop(t + length + 0.05);
-    }
-    function penStopNow() {
-      clearTimeout(penStop);
-      if (!pen) return;
-      try {
-        pen.src.stop();
-      } catch {}
-      pen = null;
-    }
+    // 연필 긁는 소리(사각사각)는 쓰지 않는다: 쓰는 동안도, 획을 다시 그려 보일 때도. 진짜 연필처럼 들리지 않아 거슬린다(2026-11-21).
     return {
       tone,
-      scratch,
-      penMove(speed) {
-        const b = bus();
-        if (!b) return penStopNow();
-        const a = b.context;
-        if (!pen) {
-          const src = a.createBufferSource(),
-            band = a.createBiquadFilter(),
-            v = a.createGain();
-          src.buffer = noiseBuffer(a);
-          src.loop = true;
-          band.type = 'bandpass';
-          band.Q.value = 0.8;
-          band.frequency.value = 3600;
-          v.gain.value = 0;
-          src.connect(band).connect(v).connect(b.output);
-          src.start();
-          pen = { src, band, v };
-        }
-        clearTimeout(penStop);
-        pen.band.frequency.setTargetAtTime(3000 + Math.random() * 1500, a.currentTime, 0.02);
-        pen.v.gain.setTargetAtTime(clamp(speed / 0.28, 0, 1) * 0.05, a.currentTime, 0.025);
-      },
-      penUp() {
-        if (!pen) return;
-        const a = pen.src.context;
-        pen.v.gain.setTargetAtTime(0, a.currentTime, 0.03);
-        clearTimeout(penStop);
-        penStop = setTimeout(penStopNow, 500);
-      },
       letter(i) {
         tone([523, 587, 659, 784, 880, 1047, 1175, 1319, 1568, 1760][i % 10], 0.13, 'triangle', 0.055);
       },
@@ -213,7 +139,6 @@
       cheer() {
         [784, 988, 1175, 1568].forEach((n, i) => tone(n, 0.42, 'sine', 0.05, i * 0.07));
       },
-      fix: () => scratch(0.5, 0.04, 2600),
       good: () => tone(1175, 0.08, 'triangle', 0.035),
     };
   }
@@ -474,7 +399,6 @@
         const dur = path.points.length > 8 ? 170 : 90;
         steps.push({
           dur,
-          start: () => rushing || sound.scratch(dur / 1000, 0.03),
           run(p) {
             path.p = p;
           },
@@ -697,7 +621,6 @@
         start: (silent) => {
           if (!quiet && !silent) {
             speak(whole);
-            sound.fix();
           }
         },
         run: (p) => {
@@ -736,7 +659,6 @@
         if (s.fix === 'missing') {
           steps.push({
             dur: 560,
-            start: (quiet) => quiet || sound.fix(),
             run(p) {
               line.points = part(to, p);
               dot = line.points[line.points.length - 1];
@@ -744,7 +666,7 @@
           });
         } else {
           const from = aligned[k];
-          steps.push({ ...morph(k, from, to, 640), start: (quiet) => quiet || sound.fix() });
+          steps.push(morph(k, from, to, 640));
           steps.push({
             dur: 380,
             run(p) {
@@ -825,8 +747,6 @@
         cell.pair.classList.add('inked-ring');
         setTimeout(() => cell.pair.classList.remove('inked-ring'), 620);
       },
-      penMove: sound.penMove,
-      penUp: sound.penUp,
     };
   }
   window.HandwritingReview = { create };
