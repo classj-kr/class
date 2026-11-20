@@ -60,7 +60,7 @@ const CHAPTERS = [
             "용왕이 물었습니다.<br>\"그래, 무엇이 필요하냐. 군사를 붙여 주랴? 보물을 지워 주랴?\"",
             "\"군사는 소용없습니다. 여럿이 가면 토끼가 먼저 달아납니다. 보물도 무겁기만 합니다.\"<br>\"그러면 무엇이 필요하냐.\"<br>\"토끼의 생김새를 그린 그림 한 장이면 됩니다.\" 자라가 잠시 생각하더니 대답했습니다.",
             "\"그림이라?\"<br>\"신은 평생 바닷속에서만 살아 토끼라는 것을 본 적이 없습니다. 산에 올라가서 아무나 붙들고 물을 수도 없는 노릇이니, 눈으로 알아볼 수 있어야 합니다.\"",
-            "용왕이 무릎을 쳤습니다.<br>\"과연 생각이 깊구나. 화공<span class=\"gloss\">(그림 그리는 사람)</span>을 부르라.\" 그날로 수궁에서 제일가는 화공이 불려 왔습니다.",
+            "용왕이 무릎을 쳤습니다.<br>\"과연 생각이 깊구나. 화공<span class=\"gloss\">(그림 그리는 사람)</span>을 부르라.\" 신하 하나가 화공을 부르러 달려 나갔습니다.",
             "그날 밤 자라는 제 집으로 돌아가 늙은 어머니에게 절을 올렸습니다.<br>\"먼 길을 다녀오겠습니다.\"<br>어머니 자라가 아들의 등딱지를 오래 쓰다듬었습니다.<br>\"몸조심하여라. 그리고 무슨 일이 있어도 거짓말은 하지 마라.\"<br>자라는 그 말에 얼른 대답하지 못했습니다. 어머니는 눈이 어두워 아들의 얼굴을 손으로 더듬었습니다."
         ]
     },
@@ -111,7 +111,7 @@ const CHAPTERS = [
             "그 말에 토끼의 얼굴이 대번에 어두워졌습니다.<br>\"말도 마시오. 봄에는 굶주린 짐승들이 눈에 불을 켜고 다니고, 여름에는 뱀이 들끓고, 가을에는 사냥꾼이 덫을 놓고, 겨울에는 먹을 것이 없어 나무껍질을 갉아 먹소. 하루도 마음 놓고 잠들어 본 적이 없소.\" 말하는 동안 토끼의 목소리가 떨렸습니다.",
             "\"그럴 것이오.\" 자라가 고개를 끄덕였습니다. \"그러니 수궁 이야기를 좀 들어 보시오.\"",
             "자라가 목소리를 낮추었습니다.<br>\"수궁에는 사냥꾼이 없소. 덫도 없고 독수리도 없소. 궁궐은 수정으로 지어 기둥이 산호요 지붕이 자개라, 물살이 지날 때마다 무지개가 이오. 상에는 진주가 굴러다니고, 먹을 것은 사철 넘치오.\" 토끼가 저도 모르게 몸을 앞으로 기울였습니다.",
-            "토끼의 붉은 눈이 점점 커졌습니다.<br>\"게다가 대왕께서 그대에게 벼슬을 내리겠다 하셨소. 관<span class=\"gloss\">(벼슬아치가 쓰는 모자)</span>을 쓰고 옥대<span class=\"gloss\">(옥으로 꾸민 허리띠)</span>를 두르고 높은 자리에 앉게 되는 것이오.\"",
+            "토끼의 붉은 눈이 점점 커졌습니다. 자라가 말을 이었습니다.<br>\"게다가 대왕께서 그대에게 벼슬을 내리겠다 하셨소. 관<span class=\"gloss\">(벼슬아치가 쓰는 모자)</span>을 쓰고 옥대<span class=\"gloss\">(옥으로 꾸민 허리띠)</span>를 두르고 높은 자리에 앉게 되는 것이오.\"",
             "\"벼, 벼슬을…….\" 토끼가 침을 꿀꺽 삼켰습니다. 산에서 벼슬이라는 말을 들어 본 적이 없었습니다.<br>\"어떻소, 나와 함께 가지 않겠소?\"",
             "토끼는 얼른 대답하지 못했습니다. 그러나 두 귀는 이미 자라 쪽으로 바짝 기울어 있었습니다. 가슴이 두근거려 말이 나오지 않았습니다.",
             "그때 머리 위 소나무 가지에서 까마귀 한 마리가 깍 하고 울었습니다.<br>\"토끼야, 가지 마라.\" 온 산이 울릴 만큼 큰 소리였습니다.",
@@ -926,7 +926,7 @@ const EN = {
                 "The Dragon King asked,<br>\"Well then, what do you need? Shall I send soldiers with you? Shall I load you with treasure?\"",
                 "\"Soldiers are no use. If we go in numbers the rabbit runs first. Treasure is only heavy.\"<br>\"Then what do you need?\"<br>\"One picture with the rabbit's likeness drawn on it will do.\" The turtle thought a moment and then answered.",
                 "\"A picture?\"<br>\"Your servant has lived his whole life in the sea and has never seen the thing called a rabbit. I can hardly climb the hills and stop the first passer-by to ask. I must be able to know it by my eyes.\"",
-                "The Dragon King struck his knee.<br>\"Deeply thought indeed. Send for a painter.\" That same day the best painter in the sea palace was called in.",
+                "The Dragon King struck his knee.<br>\"Deeply thought indeed. Send for a painter.\" A servant hurried out to fetch him.",
                 "That night the turtle went home and bowed to his old mother.<br>\"I am going a long way.\"<br>The mother turtle stroked her son's shell for a long time.<br>\"Take care of yourself. And whatever happens, tell no lies.\"<br>The turtle could not answer that at once. His mother's eyes were dim, and she felt over her son's face with her hands."
             ]
         },
@@ -977,7 +977,7 @@ const EN = {
                 "At that the rabbit's face darkened at once.<br>\"Don't speak of it. In spring the hungry beasts go about with their eyes alight, in summer the snakes swarm, in autumn the hunters set their traps, and in winter there is nothing to eat and we gnaw the bark off trees. I have never once slept easy in my life.\" As he spoke the rabbit's voice shook.",
                 "\"I dare say.\" The turtle nodded. \"So let me tell you something about the sea palace.\"",
                 "The turtle lowered his voice.<br>\"There are no hunters in the sea palace. No traps and no eagles. The palace is built of crystal, the pillars are coral and the roof is mother-of-pearl, so that a rainbow rises whenever a current goes by. Pearls roll about on the tables, and there is food to spare in all four seasons.\" Without knowing it the rabbit leaned forward.",
-                "The rabbit's red eyes got bigger and bigger.<br>\"And what is more, His Majesty has said he will give you an office. You would wear a cap and a jade belt and sit in a high place.\"",
+                "The rabbit's red eyes got bigger and bigger. The turtle went on.<br>\"And what is more, His Majesty has said he will give you an office. You would wear a cap and a jade belt and sit in a high place.\"",
                 "\"An... an office...\" The rabbit swallowed hard. In the hills he had never heard the word office spoken.<br>\"Well? Will you not come with me?\"",
                 "The rabbit did not answer at once. But both ears were already leaning right over toward the turtle. His heart was going so that no words came.",
                 "Just then a crow on a pine branch overhead gave a caw.<br>\"Rabbit, don't go.\" It was loud enough to ring round the whole hill.",

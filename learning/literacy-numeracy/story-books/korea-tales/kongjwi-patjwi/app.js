@@ -82,7 +82,7 @@ const CHAPTERS = [
             "개울 한복판에 이르렀을 때였습니다. 저쪽 길에서 요란한 소리가 났습니다.<br>\"물렀거라! 감사<span class=\"gloss\">(한 도를 다스리던 가장 높은 벼슬)</span> 나리 행차시다!\" 말발굽 소리가 땅을 울렸습니다.",
             "말을 탄 행렬이 다가왔습니다. 징 소리가 귀를 울렸습니다. 콩쥐는 놀라서 서두르다가 그만 발을 헛디뎠습니다.",
             "첨벙— 하고 한쪽 발이 물에 빠졌습니다. 그 바람에 꽃신 한 짝이 발에서 벗겨져 물살에 떠내려갔습니다. 잡으려 손을 뻗었지만 이미 늦었습니다.",
-            "콩쥐는 급히 개울을 건너 길가 나무 뒤에 몸을 숨겼습니다. 한 짝만 신은 발이 부끄러워 치마를 끌어당겼습니다.",
+            "콩쥐는 급히 개울을 건너 길가 나무 뒤에 몸을 숨겼습니다. 한 짝만 신은 발이 부끄러워 치마를 끌어당겼습니다. 이 꼴로는 잔칫집에도 갈 수 없었습니다.",
             "행렬이 개울가에 이르렀을 때, 감사가 말을 세웠습니다. 물가 풀숲에 무언가 걸려 있었기 때문입니다. 햇빛에 무언가 반짝였습니다.",
             "하인이 건져 올린 것은 수를 놓은 꽃신 한 짝이었습니다. 감사는 그것을 한참 들여다보았습니다.<br>\"이런 신을 지을 사람이 이 고을에 있었더냐.\"<br>그러고는 하인에게 일렀습니다.<br>\"이 신의 임자를 찾아라.\" 수가 어찌나 고운지 손이 다 떨렸습니다.",
             "이튿날부터 고을에 방<span class=\"gloss\">(사람들에게 알리려고 써 붙인 글)</span>이 붙었습니다. 꽃신 한 짝의 임자를 찾는다는 것이었습니다. 장터에도 우물가에도 같은 방이 붙었습니다.",
@@ -127,7 +127,7 @@ const CHAPTERS = [
             "\"언니, 저기 봐. 연꽃이 폈어.\"<br>콩쥐가 팥쥐가 가리키는 쪽으로 고개를 돌렸습니다. 연잎 사이로 아무것도 보이지 않았습니다.",
             "바로 그 순간이었습니다. 등 뒤에서 두 손이 콩쥐를 힘껏 밀었습니다.",
             "첨벙— 하는 소리가 났습니다. 물결이 몇 번 크게 일었다가 이내 잔잔해졌습니다. 연잎 몇 장이 뒤집혔다가 다시 가라앉았습니다.",
-            "팥쥐는 한참 동안 연못을 내려다보았습니다. 그러고는 콩쥐가 벗어 놓은 옷을 주워 입고, 콩쥐의 방으로 들어가 문을 걸어 잠갔습니다. 손끝이 잘게 떨렸습니다. 콩쥐의 신 한 켤레가 연못가에 그대로 놓여 있었습니다.",
+            "팥쥐는 한참 동안 연못을 내려다보았습니다. 그러고는 콩쥐의 방으로 들어가 콩쥐의 옷을 꺼내 입고 문을 걸어 잠갔습니다. 손끝이 잘게 떨렸습니다. 콩쥐의 신 한 켤레가 연못가에 그대로 놓여 있었습니다.",
             "그날 밤 연못가에서는 두꺼비 한 마리가 물가를 오래도록 맴돌았습니다. 그리고 지붕에서는 참새들이 밤새 잠들지 못하고 짹짹거렸습니다. 아무도 그 뜻을 알지 못했습니다."
         ]
     },
@@ -169,7 +169,7 @@ const CHAPTERS = [
         art: ["story-06-a.webp", "story-06-b.webp", "story-06-c.webp"],
         artAt: ["뒤뜰 연못의 물을 다 퍼내라", "팥쥐와 배 씨가 마당에 끌려 나왔습니다", "검고 늙은 소였습니다"],
         paras: [
-            "이튿날 새벽, 감사는 하인들을 모두 불러 모았습니다.<br>\"뒤뜰 연못의 물을 다 퍼내라.\" 아직 해도 뜨지 않은 때였습니다.",
+            "붉은 구슬은 연못에서 있었던 일을 감사에게 다 들려주었습니다. 이튿날 새벽, 감사는 하인들을 모두 불러 모았습니다.<br>\"뒤뜰 연못의 물을 다 퍼내라.\" 아직 해도 뜨지 않은 때였습니다.",
             "두레박<span class=\"gloss\">(줄을 매어 물을 퍼 올리는 그릇)</span>과 물통이 총동원되었습니다. 반나절이 지나자 연못 바닥이 드러났습니다. 물이 줄어들수록 하인들의 손이 빨라졌습니다.",
             "진흙 속에 무언가 있었습니다. 하인들이 조심조심 진흙을 걷어 냈습니다. 아무도 숨을 쉬지 못했습니다. 진흙이 무릎까지 왔습니다.",
             "콩쥐가 잠든 듯이 누워 있었습니다. 그런데 얼굴빛이 산 사람과 다르지 않았고, 몸이 조금도 상하지 않았습니다. 몇 달 동안 두꺼비가 그 곁을 지킨 것이었습니다. 옷자락에 진흙이 묻었을 뿐 얼굴은 잠든 사람 같았습니다.",
@@ -949,7 +949,7 @@ const EN = {
                 "She was in the middle of the stream when it happened. There was a great noise on the road ahead.<br>\"Make way! The governor<span class=\"gloss\">(the highest official in charge of a whole province)</span> is passing!\" The hooves shook the ground.",
                 "A mounted procession came up. The gongs rang in her ears. Kongjwi was startled and hurried, and her foot slipped.",
                 "There was a splash, and one foot went into the water. With that, one of the flower shoes came off and was carried away by the current. She put out a hand to catch it but it was already too late.",
-                "Kongjwi crossed the stream quickly and hid herself behind a tree by the road. She was ashamed of the foot with only one shoe on it and pulled her skirt down over it.",
+                "Kongjwi crossed the stream quickly and hid herself behind a tree by the road. She was ashamed of the foot with only one shoe on it and pulled her skirt down over it. She could not go to the feast like this.",
                 "When the procession reached the stream the governor stopped his horse. Something was caught in the grass at the water's edge. Something had flashed in the sun.",
                 "What the servant fished out was one embroidered flower shoe. The governor looked at it a long while.<br>\"Is there anyone in this town who could make a shoe like this?\"<br>Then he told his servant,<br>\"Find whoever owns this shoe.\" The embroidery was so fine that his hand shook.",
                 "From the next day notices went up round the town. They were looking for the owner of one flower shoe. The same notice was up in the market and at the well.",
@@ -994,7 +994,7 @@ const EN = {
                 "\"Sister, look over there. A lotus has opened.\"<br>Kongjwi turned her head the way Patjwi was pointing. There was nothing to be seen among the lotus leaves.",
                 "That was the moment. From behind her, two hands pushed Kongjwi hard.",
                 "There was a splash. The water heaved a few times and then went smooth again. A few lotus leaves turned over and settled back.",
-                "Patjwi stood looking down into the pond for a long while. Then she picked up the clothes Kongjwi had taken off and put them on, and went into Kongjwi's room and barred the door. Her fingertips shook a little. Kongjwi's pair of shoes still lay at the edge of the pond.",
+                "Patjwi stood looking down into the pond for a long while. Then she went into Kongjwi's room, put on Kongjwi's clothes and barred the door. Her fingertips shook a little. Kongjwi's pair of shoes still lay at the edge of the pond.",
                 "That night a toad went round and round the water's edge for a long time. And on the roof the sparrows could not sleep and chirped all night. Nobody knew what it meant."
             ]
         },
@@ -1036,7 +1036,7 @@ const EN = {
             art: ["story-06-a.webp", "story-06-b.webp", "story-06-c.webp"],
             artAt: ["Bail out every drop", "were dragged out into the yard", "It was a black ox, and an old one"],
             paras: [
-                "At dawn the next day the governor called all the servants together.<br>\"Bail out every drop of water in the pond in the back garden.\" The sun was not up yet.",
+                "The red bead told the governor everything that had happened at the pond. At dawn the next day the governor called all the servants together.<br>\"Bail out every drop of water in the pond in the back garden.\" The sun was not up yet.",
                 "Every bucket and pail in the house was brought out. By midday the bottom of the pond showed. The lower the water went, the faster the servants' hands worked.",
                 "There was something in the mud. The servants lifted the mud away very carefully. Nobody could breathe. The mud came up to their knees.",
                 "Kongjwi lay there as if asleep. And the colour of her face was no different from a living person's, and her body was not harmed at all. They said a toad had kept watch beside her for months. There was mud on the hem of her clothes and her face was like a sleeper's.",
@@ -1172,7 +1172,7 @@ const EN = {
             { w: "fished out (fish out)", k: "건져 올렸다", s: "What the servant fished out was one embroidered flower shoe" },
             { w: "notice", k: "방", s: "From the next day notices went up round the town" },
             { w: "fitted nobody (fit)", k: "아무에게도 맞지 않았다", s: "But it fitted nobody" },
-            { w: "being forced in (force)", k: "억지로 밀어 넣어서", s: "Big feet split the toe of it being forced in" },
+            { w: "being forced in (force)", k: "억지로 밀어 넣어서", s: "Big feet nearly split the toe of it being forced in" },
             { w: "dragged (drag)", k: "끌고 갔다", s: "she dragged Patjwi into the inner room" },
             { w: "a chance from heaven", k: "하늘이 준 기회", s: "This is a chance from heaven" },
             { w: "dropped her voice (drop)", k: "목소리를 낮췄다", s: "She shut the door and dropped her voice" },
@@ -1216,7 +1216,7 @@ const EN = {
             { w: "pushed ~ hard (push)", k: "힘껏 밀었다", s: "two hands pushed Kongjwi hard" },
             { w: "heaved (heave)", k: "크게 일었다", s: "The water heaved a few times" },
             { w: "went smooth (go smooth)", k: "잔잔해졌다", s: "and then went smooth again" },
-            { w: "barred the door (bar)", k: "문을 걸어 잠갔다", s: "went into Kongjwi's room and barred the door" },
+            { w: "barred the door (bar)", k: "문을 걸어 잠갔다", s: "put on Kongjwi's clothes and barred the door" },
             { w: "could not sleep (sleep)", k: "잠들지 못했다", s: "the sparrows could not sleep and chirped all night" }
         ],
         "ch5": [
