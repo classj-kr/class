@@ -364,10 +364,11 @@ const convert = "import io,sys;from PIL import Image;im=Image.open(io.BytesIO(sy
       await activate(page.locator('#activity-button'));
       assert.equal(await page.locator('#saved-section').isVisible(), false);
       assert.equal(await page.locator('#activity-dialog').getByText(/저장·공유|기기에 저장|링크 복사|파일로 저장|파일 열기/).count(), 0);
-      await page.evaluate(() => localStorage.setItem('classj.stacking-cubes.saved.v1', JSON.stringify([
-        { id: 'legacy', title: '<b>내 성</b>', heights: [2,1,2,1,1,1,1,1,1] }
-      ])));
+      // 저장한 모양은 계정 저장 공간(/api/me/storage/stacking-cubes)의 'saved' 항목에서 온다.
+      await page.route(/\/api\/me\/storage\/stacking-cubes(\/|$)/, route => route.fulfill({ contentType: 'application/json', body: JSON.stringify(route.request().method() === 'GET'
+        ? { items: { saved: [{ id: 'legacy', title: '<b>내 성</b>', heights: [2,1,2,1,1,1,1,1,1] }] } } : { ok: true }) }));
       await activate(page.locator('#close-activities'));
+      await page.reload();
       await activate(page.locator('#activity-button'));
       await activate(page.locator('#saved-section summary'));
       assert.equal(await page.locator('.saved-open span').textContent(), '<b>내 성</b>');

@@ -7,18 +7,27 @@
     const $ = id => document.getElementById(id);
     let saved = [], deleted = null;
     const status = message => { $('library-status').textContent = message; };
+    // 계정별 저장 공간(SiteStorage)의 'saved' 항목. 예전에 브라우저에 두던 목록은 처음 열 때 한 번 옮기고 브라우저에서는 지운다.
+    let store = null;
+    const ready = window.SiteStorage ? window.SiteStorage.open('stacking-cubes').then(opened => {
+      store = opened;
+      store.adopt([{ localKey: KEY, item: 'saved' }]);
+      store.onError(() => status('저장한 모양을 계정에 저장하지 못했어요.'));
+      return store;
+    }).catch(() => null) : Promise.resolve(null);
     function read() {
       try {
-        const value = localStorage.getItem(KEY);
-        if (!value) return [];
-        const data = JSON.parse(value);
+        const data = store?.get('saved');
+        if (data == null) return [];
         if (!Array.isArray(data) || data.length > LIMIT || !data.every(item => item && typeof item.id === 'string' && typeof item.title === 'string' && item.title.length <= 32 && validBoard(item.heights))) throw new Error('Invalid library');
         return data;
       } catch (_) { status('저장한 모양을 읽지 못했어요.'); return null; }
     }
     function persist(next) {
-      try { localStorage.setItem(KEY, JSON.stringify(next)); saved = next; return true; }
-      catch (_) { status('이 기기에서 목록을 바꿀 수 없어요.'); return false; }
+      if (!store) { status('지금은 목록을 바꿀 수 없어요.'); return false; }
+      if (next.length) store.set('saved', next); else store.remove('saved');
+      saved = next;
+      return true;
     }
     function render() {
       const list = $('saved-list');
@@ -49,7 +58,8 @@
       deleted = null; render(); status('삭제한 모양을 되돌렸어요.'); sound('undo');
     });
     return { refresh() {
-      status(''); saved = read(); render();
+      status('');
+      ready.then(() => { saved = read(); render(); });
     } };
   };
 })();
