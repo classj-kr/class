@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap');
+@import url("../../../assets/fonts/google/noto-serif-kr-400-600-700.css?v=20261120");
 
 /* Match the CSAT maths reading face; retain sans-serif for controls and readouts. */
 :root{--science-reading-font:'Noto Serif KR','KoPubWorld Batang','Batang','AppleMyungjo',serif}
