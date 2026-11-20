@@ -47,95 +47,7 @@
     if (wasPlaying) bgm.play().catch(() => {});
   }
 
-  const ROOM_QUIZZES = {
-    portrait:{
-      questions:[
-        {q:'〈진주 귀걸이를 한 소녀〉의 얼굴을 비추는 빛은 어느 쪽에서 들어올까요?',options:['화면 왼쪽 위','화면 오른쪽 위','소녀의 머리 바로 위'],answer:0,explain:'화면 왼쪽 위에서 들어온 빛이 이마와 뺨, 입술과 진주를 밝히고, 반대쪽 얼굴에는 부드러운 그림자가 져요.'},
-        {q:'윤두서의 〈자화상〉에서 거의 그려지지 않은 부분은 어디일까요?',options:['귀와 몸통','수염 한 올 한 올','두 눈동자'],answer:0,explain:'수염은 한 올까지 세밀하게 그렸지만 귀와 몸통은 거의 보이지 않아요. 그래서 정면을 바라보는 얼굴과 눈빛에 눈길이 모여요.'},
-        {q:'〈모나리자〉의 두 손은 어떤 모습일까요?',options:['오른손을 왼손 위에 가볍게 포갰다','두 손으로 작은 책을 펼쳐 들었다','한 손으로 턱을 괴었다'],answer:0,explain:'오른손을 왼손 위에 포개 의자 팔걸이에 얹었어요. 아래쪽 두 손에서 머리까지 이어지는 삼각형이 인물을 안정감 있게 받쳐 줘요.'},
-        {q:'뭉크의 〈절규〉에서 곧은 직선으로 그려진 것은 무엇일까요?',options:['비스듬히 뻗은 다리와 난간','붉게 물든 하늘','바닷가와 언덕'],answer:0,explain:'다리와 난간만 곧은 대각선으로 뻗고, 하늘과 바다, 언덕은 구불구불 휘돌아요. 곧은 선과 휘도는 선이 부딪치며 불안한 느낌이 커져요.'},
-        {q:'페르메이르의 〈우유를 따르는 여인〉에서 부엌을 밝히는 빛은 어디에서 들어올까요?',options:['왼쪽 벽의 창문','오른쪽 뒤의 열린 문','탁자 위의 촛불'],answer:0,explain:'왼쪽 창문으로 들어온 빛이 여인의 얼굴과 팔, 빵과 우유 항아리를 차례로 비춰요.'},
-        {q:'마네의 〈피리 부는 소년〉 뒤의 배경은 어떤 모습일까요?',options:['바닥과 벽의 경계도 흐린 평평한 회색','커튼과 기둥이 있는 화려한 방','해 질 녘 들판이 펼쳐진 풍경'],answer:0,explain:'바닥과 벽의 경계조차 거의 없는 평평한 회색 배경이라, 검정·빨강·흰색 제복과 소년의 윤곽이 또렷하게 떠올라요.'},
-        {q:'신윤복의 〈미인도〉 속 여인의 머리 모양은 어떤가요?',options:['땋은 머리를 크고 풍성하게 얹었다','뒤로 곱게 빗어 비녀를 꽂았다','길게 땋아 등 뒤로 늘였다'],answer:0,explain:'땋은 머리(가체)를 머리 위에 크고 풍성하게 얹었어요. 짧게 붙는 저고리, 넓게 부푼 치마와 함께 조선 후기에 유행한 차림이에요.'},
-        {q:'고흐의 〈회색 펠트모자를 쓴 자화상〉에서 얼굴과 배경은 어떻게 칠했을까요?',options:['짧은 붓질을 여러 방향으로 쌓았다','물감을 얇게 펴 발라 붓자국을 지웠다','굵은 검은 윤곽선 안을 한 색으로 채웠다'],answer:0,explain:'짧은 붓질이 얼굴과 옷, 배경에서 서로 다른 방향으로 쌓여 떨리는 듯한 생동감을 만들어요.'},
-        {q:'클림트의 〈키스〉에서 검고 흰 네모 무늬는 어디에 모여 있을까요?',options:['남자의 옷','여자의 옷','두 사람 발밑의 꽃밭'],answer:0,explain:'남자의 옷에는 곧은 네모 무늬가, 여자의 옷에는 동그란 꽃무늬가 모여 있어요. 서로 다른 무늬가 커다란 금빛 옷 안에서 하나로 포개져요.'},
-        {q:'밀레의 〈이삭 줍는 사람들〉에서 세 사람 뒤 먼 곳에 보이는 것은?',options:['높이 쌓인 곡식 더미와 일꾼들','뾰족한 교회 탑이 선 마을','물레방아가 도는 냇가'],answer:0,explain:'멀리에는 거둬들인 곡식이 높이 쌓여 있고 일꾼들이 바쁘게 움직여요. 앞쪽 세 사람은 수확이 끝난 들판에서 남은 이삭을 줍고 있어요.'},
-        {q:'드가의 〈흔들리는 무희〉가 사진으로 찍은 한순간처럼 느껴지는 까닭은?',options:['위에서 비스듬히 보며 가장자리 인물을 잘라서','객석 한가운데서 무대를 똑바로 봐서','인물 둘레를 굵은 선으로 또렷이 그려서'],answer:0,explain:'위에서 비스듬히 내려다본 시점과 화면 가장자리에서 잘린 무희들이 사진기로 막 찍은 듯한 순간을 만들어요.'},
-        {q:'피카소의 〈우는 여인〉이 입가에 대고 움켜쥔 것은 무엇일까요?',options:['손수건','꽃 한 송이','편지 한 장'],answer:0,explain:'여인은 손수건을 입가에 대고 움켜쥐었어요. 뾰족하게 쪼개진 얼굴과 손가락, 손수건의 각진 선이 슬픔을 날카롭게 전해요.'}
-      ]
-    },
-    nature:{
-      questions:[
-        {q:'반 고흐의 〈별이 빛나는 밤〉 왼쪽 앞에 불꽃처럼 하늘로 솟은 것은?',options:['사이프러스 나무','교회의 뾰족한 탑','마을의 풍차'],answer:0,explain:'왼쪽 앞의 사이프러스 나무가 불꽃처럼 솟아 조용한 마을과 소용돌이치는 하늘을 이어 줘요.'},
-        {q:'모네의 〈수련〉 화면에서 찾을 수 없는 것은?',options:['하늘과 물이 만나는 수평선','물 위에 비친 하늘빛','물에 떠 있는 수련 잎'],answer:0,explain:'수평선도 연못가도 없이 물 위만 가득 그려, 물에 비친 하늘과 수련이 한데 어우러져요.'},
-        {q:'정선의 〈인왕제색도〉는 어떤 날의 인왕산을 그렸을까요?',options:['비가 그치고 안개가 피어오르는 날','눈이 소복이 쌓인 겨울날','단풍이 붉게 물든 가을날'],answer:0,explain:'여름 장맛비가 그친 뒤의 인왕산이에요. 비에 젖은 바위는 짙은 먹으로, 피어오르는 안개는 비워 둔 종이로 나타냈어요.'},
-        {q:'고흐의 〈해바라기〉 화병에는 어떤 꽃들이 꽂혀 있을까요?',options:['활짝 핀 꽃과 시들어 가는 꽃','아직 피지 않은 꽃봉오리들','노랑·빨강·흰색의 여러 가지 꽃'],answer:0,explain:'활짝 핀 해바라기부터 꽃잎이 말라 가는 해바라기까지 한 화병에 담아, 꽃이 피고 지는 시간을 보여 줘요.'},
-        {q:'모네의 〈인상, 해돋이〉는 어떤 곳의 아침일까요?',options:['안개 낀 항구','눈 덮인 산골 마을','꽃이 핀 정원 연못'],answer:0,explain:'르아브르 항구의 아침 안개 속에 배와 굴뚝이 흐릿하게 보이고, 작은 주황빛 해가 물 위에 비쳐요.'},
-        {q:'〈호작도〉의 호랑이는 어떤 모습으로 그려졌을까요?',options:['눈을 동그랗게 뜬 익살스러운 모습','먹이를 덮치는 사나운 모습','바위 위에 엎드려 잠든 모습'],answer:0,explain:'무서워야 할 호랑이를 동그란 눈의 익살스러운 모습으로, 까치는 당당하게 그렸어요. 나쁜 기운은 막고 반가운 소식은 부르려는 마음이 담겨 있어요.'},
-        {q:'〈초충도(수박과 들쥐)〉에서 들쥐들은 무엇을 하고 있을까요?',options:['수박 속을 파먹고 있다','나비를 쫓아 뛰고 있다','풀숲에 숨어 잠들어 있다'],answer:0,explain:'들쥐 두 마리가 수박 속을 파먹고, 위로는 나비가 날고 옆에는 패랭이꽃이 피어 있어요. 작은 생명들이 한 화면에 어우러져요.'},
-        {q:'이중섭의 〈흰 소〉에서 소는 어떤 자세일까요?',options:['머리를 낮추고 힘껏 한 발 내딛는 자세','다리를 접고 편히 엎드린 자세','고개를 쳐들고 크게 우는 자세'],answer:0,explain:'머리를 낮추고 한 발을 힘껏 내딛는 소를 굵고 거친 선으로 그려, 버티며 나아가려는 힘이 느껴져요.'},
-        {q:'김홍도의 〈황묘농접도〉 속 고양이와 나비에 담긴 바람은 무엇일까요?',options:['오래오래 사는 것','과거 시험에 붙는 것','자식을 많이 두는 것'],answer:0,explain:'고양이와 나비를 가리키는 한자가 일흔 살·여든 살 노인을 뜻하는 한자와 소리가 비슷해요. 그래서 오래 살기를 바라는 마음을 담았어요.'},
-        {q:'아르침볼도의 〈여름〉에서 사람의 코는 무엇으로 되어 있을까요?',options:['오이','가지','옥수수'],answer:0,explain:'코는 오이, 뺨은 복숭아, 턱은 배, 귀는 옥수수예요. 여름에 나는 열매와 채소로 사람의 옆얼굴을 만들었어요.'},
-        {q:'모네의 〈양산을 든 여인〉은 여인을 어디에서 바라본 모습일까요?',options:['언덕 아래에서 올려다본 모습','높은 곳에서 내려다본 모습','바로 옆 같은 높이에서 본 모습'],answer:0,explain:'언덕 아래에서 올려다보아 여인이 하늘을 배경으로 서 있어요. 옷자락과 풀, 구름이 바람 따라 한쪽으로 흘러요.'},
-        {q:'루소의 〈꿈〉에서 정글 속 여인은 어디에 있을까요?',options:['소파에 비스듬히 누워 있다','나무 위 오두막에 앉아 있다','작은 배를 타고 있다'],answer:0,explain:'실내에 있어야 할 소파가 울창한 정글 한가운데 놓여 있고, 여인이 그 위에 기대 누워 있어요. 현실과 꿈이 뒤섞인 낯선 장면이에요.'}
-      ]
-    },
-    story:{
-      questions:[
-        {q:'신윤복의 〈단오풍정〉에 담긴 단옷날 풍습은 무엇일까요?',options:['그네 타기와 냇가에서 머리 감기','연날리기와 윷놀이','송편 빚기와 강강술래'],answer:0,explain:'단옷날에는 그네를 타고 창포 삶은 물에 머리를 감았어요. 그네 타는 여인과 냇가에서 머리 감는 여인들이 여러 무리로 나뉘어 담겨 있어요.'},
-        {q:'〈아담의 창조〉는 원래 어디에 그려진 그림일까요?',options:['성당의 천장','성당 제단 뒤의 벽','궁전 연회장의 벽'],answer:0,explain:'시스티나 성당 천장에 그린 벽화예요. 미켈란젤로는 1508년부터 4년 동안 높은 발판에 올라 천장 전체를 그렸어요.'},
-        {q:'김정희가 〈세한도〉를 그릴 때 어떤 처지였을까요?',options:['제주도에 유배되어 있었다','청나라에 사신으로 가 있었다','궁궐에서 그림 그리는 일을 맡고 있었다'],answer:0,explain:'제주도에 유배된 김정희에게 제자 이상적이 귀한 책을 보내 주었어요. 그 고마움을 겨울에도 푸른 소나무와 잣나무에 담아 그려 보냈어요.'},
-        {q:'김홍도의 〈서당〉에서 훈장님 바로 앞에 앉은 아이는 무엇을 하고 있을까요?',options:['돌아앉아 눈물을 닦고 있다','무릎 꿇고 절을 올리고 있다','책을 펴 들고 소리 내어 읽고 있다'],answer:0,explain:'글을 외우지 못해 꾸중을 들은 아이가 돌아앉아 눈물을 닦고, 둘러앉은 친구들은 웃음을 참고 있어요.'},
-        {q:'보티첼리의 〈봄〉은 어느 쪽에서 시작해 어느 쪽으로 이야기가 이어질까요?',options:['오른쪽의 바람에서 왼쪽으로','왼쪽의 수호신에서 오른쪽으로','가운데 여신에서 양쪽으로'],answer:0,explain:'오른쪽 끝의 서풍이 요정을 붙잡자 요정이 꽃의 여신으로 바뀌고, 가운데 비너스를 지나 왼쪽 끝의 수호신이 구름을 걷어 내며 봄의 이야기가 이어져요.'},
-        {q:'밀레의 〈만종〉에서 두 농부가 일손을 멈추고 고개를 숙인 까닭은?',options:['저녁 기도를 알리는 종이 울려서','해가 져서 일을 더 할 수 없어서','바구니 속 감자를 세어 보려고'],answer:0,explain:'멀리 교회에서 저녁 기도 종이 울리자 부부가 감자 캐던 손을 멈추고 기도해요. 밝은 하늘 앞의 어두운 두 사람이 조용한 순간을 만들어요.'},
-        {q:'르누아르의 〈물랭 드 라 갈레트의 무도회〉에서 사람들을 비추는 빛은?',options:['나뭇잎 사이로 얼룩덜룩 비치는 햇빛','무대 위를 비추는 밝은 조명','해 질 녘 붉게 물든 노을빛'],answer:0,explain:'나뭇잎 사이로 들어온 햇빛이 옷과 얼굴에 작은 얼룩처럼 흩어져, 북적이는 무도회에 즐거운 리듬을 만들어요.'},
-        {q:'보티첼리의 〈비너스의 탄생〉에서 비너스를 해안으로 밀어 보내는 바람은 어디에서 불어올까요?',options:['왼쪽의 날개 달린 바람의 신','오른쪽 해안에 선 여신','비너스 뒤쪽 먼바다'],answer:0,explain:'왼쪽에서 날개 달린 바람의 신이 입김을 불어 비너스를 오른쪽 해안으로 보내고, 해안의 계절의 여신이 옷을 펼쳐 맞이해요.'},
-        {q:'프라고나르의 〈그네〉에서 그네를 타던 여인에게서 공중으로 날아간 것은?',options:['분홍 신발 한 짝','챙 넓은 모자','작은 부채'],answer:0,explain:'여인이 발을 차올리는 순간 분홍 신발 한 짝이 공중으로 날아가요. 날아간 신발과 세 인물의 시선을 따라가면 장면의 앞뒤 이야기가 보여요.'},
-        {q:'안견의 〈몽유도원도〉에서 꿈속 여행은 어느 방향으로 이어질까요?',options:['왼쪽 현실에서 오른쪽 도원으로','오른쪽 현실에서 왼쪽 도원으로','가운데 도원에서 양쪽 현실로'],answer:0,explain:'두루마리 그림은 보통 오른쪽에서 왼쪽으로 읽지만, 〈몽유도원도〉는 왼쪽 아래 현실의 낮은 언덕에서 시작해 오른쪽의 기이한 산과 복숭아꽃 마을로 이어져요.'},
-        {q:'이중섭의 〈길 떠나는 가족〉에서 가족은 어떻게 길을 떠나고 있을까요?',options:['소가 끄는 달구지를 타고','돛단배를 타고 바다를 건너','모두 걸어서 산길을 넘어'],answer:0,explain:'아버지가 앞에서 소를 끌고, 달구지에는 어머니와 두 아이가 꽃과 새와 함께 타고 있어요. 헤어진 가족과 다시 함께 살고 싶었던 작가의 바람이 담겨 있어요.'},
-        {q:'김홍도의 〈빨래터〉에서 바위 뒤에 숨어 빨래터를 엿보는 사람은?',options:['부채로 얼굴을 가린 선비','물동이를 인 아이','지게를 진 나무꾼'],answer:0,explain:'오른쪽 위 바위 뒤에서 갓 쓴 선비가 부채로 얼굴을 가리고 몰래 내려다봐요. 빨래하는 사람들의 일상에 익살스러운 작은 사건이 더해져요.'}
-      ]
-    },
-    shape:{
-      questions:[
-        {q:'몬드리안의 〈빨강, 파랑, 노랑의 구성 II〉에서 가장 넓은 면을 차지한 색은?',options:['빨강','파랑','노랑'],answer:0,explain:'오른쪽 위의 커다란 빨간 사각형이 화면을 크게 차지하고, 왼쪽 아래 파랑과 오른쪽 아래의 아주 작은 노랑이 무게를 나눠 맞춰요.'},
-        {q:'쇠라의 〈그랑드 자트 섬의 일요일 오후〉를 아주 가까이에서 보면 무엇이 보일까요?',options:['서로 다른 색의 작은 점들','여러 방향으로 휘도는 굵은 붓질','얇게 펴 바른 매끈한 색면'],answer:0,explain:'서로 다른 순수한 색점을 나란히 찍었어요. 멀리 물러나면 점들이 눈 안에서 섞여 하나의 색처럼 보여요.'},
-        {q:'마그리트가 〈이미지의 배반〉에 “이것은 파이프가 아니다”라고 쓴 까닭은?',options:['그림 속 파이프는 쓸 수 없는 그림일 뿐이라서','사실은 파이프를 닮은 다른 물건이라서','일부러 틀린 말을 적어 웃음을 주려고'],answer:0,explain:'그림 속 파이프는 손에 쥐거나 쓸 수 없어요. 실제 물건이 아니라 파이프의 모습을 그린 이미지라는 점을 일깨워요.'},
-        {q:'칸딘스키는 〈구성 VIII〉의 원과 선, 삼각형을 무엇처럼 여겼을까요?',options:['서로 어울리는 음악의 음','지도 위의 도시와 길','밤하늘의 별자리'],answer:0,explain:'크기와 방향이 다른 원·선·삼각형이 음악의 음처럼 서로 밀고 당기며 긴장과 리듬을 만들어요.'},
-        {q:'말레비치의 〈검은 사각형〉을 가까이에서 보면 어떤 모습일까요?',options:['가장자리가 조금 삐뚤고 표면에 잔금이 갔다','자를 대고 그린 듯 완벽한 정사각형이다','반짝이는 검은 돌판을 붙여 만들었다'],answer:0,explain:'완벽한 정사각형처럼 보이지만 가장자리가 조금씩 기울고, 오래된 물감에는 잔금이 가 있어요. 대상을 그리지 않고 검은 면 하나로 새로운 그림을 선언했어요.'},
-        {q:'달리의 〈기억의 지속〉은 실제로 얼마나 큰 그림일까요?',options:['공책을 펼친 정도','교실 칠판만 한 크기','건물 벽을 덮는 크기'],answer:0,explain:'가로 33cm, 세로 24cm의 아주 작은 그림이에요. 작은 화면 속에서 단단해야 할 시계가 천처럼 늘어져 시간에 대한 낯선 상상을 만들어요.'},
-        {q:'세잔의 〈사과와 오렌지〉 속 접시와 탁자는 어떻게 그려졌을까요?',options:['여러 방향에서 본 모습을 한 화면에 섞었다','한 점에서 본 정확한 원근법을 따랐다','윤곽을 지우고 색을 흐리게 번지게 했다'],answer:0,explain:'접시와 탁자, 천을 여러 위치에서 본 모습으로 섞어 조금씩 기울어 보이지만, 과일과 천이 묵직한 덩어리로 쌓여 화면이 단단해져요.'},
-        {q:'마티스의 〈춤〉에서 둥글게 춤추는 다섯 사람의 손은 어떻게 이어져 있을까요?',options:['앞쪽 두 사람의 손이 닿을 듯 떨어져 있다','다섯 손이 빈틈없이 한 바퀴로 이어져 있다','두 사람씩 짝을 지어 손을 잡았다'],answer:0,explain:'앞쪽 두 사람의 손이 닿을 듯 말 듯 떨어져 있어요. 이 작은 틈 때문에 원이 멈추지 않고 계속 돌아갈 것 같은 긴장이 생겨요.'},
-        {q:'김홍도의 〈씨름〉에서 혼자 씨름판을 등지고 있는 사람은 누구일까요?',options:['엿을 파는 아이','부채를 든 선비','갓을 벗어 둔 구경꾼'],answer:0,explain:'모두가 가운데 씨름꾼을 바라보는데, 엿판을 멘 아이만 딴 곳을 보고 있어요. 둥글게 둘러앉은 구경꾼들 덕분에 시선이 가운데로 모여요.'},
-        {q:'김홍도의 〈무동〉에서 둥글게 앉아 연주하는 악사는 몇 명일까요?',options:['여섯 명','네 명','여덟 명'],answer:0,explain:'북·장구·피리 둘·대금·해금을 든 악사 여섯이 둥글게 앉아 연주하고, 그 가운데서 아이가 소매를 휘날리며 춤춰요.'},
-        {q:'고흐의 〈아를의 침실〉에서 침대는 어떤 색으로 칠했을까요?',options:['노란 나무틀에 빨간 이불','흰 쇠틀에 파란 이불','검은 나무틀에 초록 이불'],answer:0,explain:'노란 침대와 빨간 이불, 파란 벽처럼 넓고 선명한 색면으로 방을 채웠어요. 선이 한 점으로 모이지 않아 방이 조금 기울어 보여요.'},
-        {q:'마그리트의 〈골콩드〉에서 도시 하늘에 줄지어 떠 있는 것은?',options:['중절모를 쓴 신사들','초록 사과들','하얀 비둘기 떼'],answer:0,explain:'중절모를 쓴 비슷한 신사들이 일정한 간격으로 하늘에 떠 있어, 익숙한 도시가 낯선 무늬처럼 바뀌어요.'}
-      ]
-    },
-    space:{
-      questions:[
-        {q:'〈최후의 만찬〉에서 벽과 천장의 선을 이어 보면 어디에서 만날까요?',options:['가운데 앉은 예수의 머리','맨 왼쪽 제자의 손끝','식탁 아래 바닥 한가운데'],answer:0,explain:'벽과 천장의 선이 모두 예수의 머리로 모여요. 그래서 눈길이 자연스럽게 가운데 예수에게 머물고 깊이도 함께 생겨요.'},
-        {q:'렘브란트의 〈야경〉은 원래 어떤 그림으로 주문받았을까요?',options:['민병대원들의 단체 초상화','왕의 전쟁 승리를 기록한 그림','성당에 걸 성경 이야기 그림'],answer:0,explain:'도시를 지키던 민병대원들이 함께 주문한 단체 초상화예요. 렘브란트는 모두를 나란히 세우지 않고 출발 직전의 소란한 장면으로 바꾸어, 빛으로 주인공을 골라냈어요.'},
-        {q:'벨라스케스의 〈시녀들〉 뒤쪽 거울에 비친 사람들은 누구일까요?',options:['공주의 부모인 왕과 왕비','캔버스 앞에 선 화가 자신','문간에 선 궁정 신하'],answer:0,explain:'뒤쪽 거울에 공주의 부모인 왕과 왕비가 비쳐요. 두 사람은 그림 밖, 바로 우리가 서 있는 자리에 있는 셈이에요.'},
-        {q:'베로네세의 〈가나의 혼인잔치〉 앞쪽 한가운데에 모여 있는 사람들은?',options:['악기를 연주하는 악사들','음식을 나르는 하인들','춤추는 신랑과 신부'],answer:0,explain:'앞쪽 한가운데에서 악사들이 연주하고, 그 뒤로 식탁과 하객, 위쪽 테라스와 하늘까지 층층이 이어져 무대 같은 깊이가 생겨요.'},
-        {q:'피카소의 〈아비뇽의 아가씨들〉에서 오른쪽 두 인물의 얼굴은 어떻게 그려졌을까요?',options:['가면처럼 거칠고 각진 얼굴','부드럽게 웃는 둥근 얼굴','옆모습만 보이는 작은 얼굴'],answer:0,explain:'오른쪽 두 인물은 가면처럼 거칠게 깎은 얼굴이에요. 아래쪽 인물은 등을 보이고 앉았는데 얼굴은 우리를 향해, 여러 시점이 한 몸에 섞여 있어요.'},
-        {q:'샤갈의 〈나와 마을〉 위쪽 마을에서 볼 수 있는 낯선 모습은?',options:['거꾸로 서 있는 집과 사람','하늘을 나는 기차','물 위에 떠 있는 교회'],answer:0,explain:'위쪽 마을에는 집 몇 채와 여인이 거꾸로 서 있어요. 크기와 방향을 자유롭게 바꾸어 고향의 기억을 한 화면에 모았어요.'},
-        {q:'라파엘로의 〈아테네 학당〉 한가운데 두 철학자의 손짓은 어떤 모습일까요?',options:['한 사람은 하늘을, 한 사람은 땅을 가리킨다','두 사람이 마주 보며 악수한다','두 사람 모두 두 팔을 넓게 벌렸다'],answer:0,explain:'가운데 플라톤은 하늘을, 아리스토텔레스는 땅을 향해 손을 내밀어요. 바닥과 아치의 원근선이 두 사람에게 모여 웅장한 공간의 중심이 돼요.'},
-        {q:'〈아르놀피니 부부의 초상〉 뒤 볼록거울에는 부부 말고 몇 사람이 더 비칠까요?',options:['두 사람','한 사람','세 사람'],answer:0,explain:'거울에는 부부의 뒷모습과 함께 문간에 들어선 두 사람이 비쳐요. 그중 한 명은 화가 자신으로 여겨지고, 거울 위 벽에는 “얀 반 에이크가 여기 있었다”라는 글이 쓰여 있어요.'},
-        {q:'정선의 〈금강전도〉에서 왼쪽 흙산과 오른쪽 바위산은 어떻게 다르게 그렸을까요?',options:['흙산은 먹점으로 부드럽게, 바위산은 날카로운 선으로','흙산은 날카로운 선으로, 바위산은 먹점으로 부드럽게','둘 다 진한 먹을 넓게 칠해 똑같이'],answer:0,explain:'왼쪽 흙산은 둥근 먹점을 찍어 부드럽게, 오른쪽 바위산은 뾰족하게 내리긋는 선으로 그렸어요. 하늘 높이에서 내려다보듯 봉우리 전체를 한 화면에 담았어요.'},
-        {q:'카날레토의 〈베네치아 대운하〉가 실제처럼 깊어 보이는 까닭은?',options:['건물 벽의 선들이 멀리 한 점으로 모여서','먼 건물일수록 더 크고 진하게 그려서','건물의 선을 모두 나란히 평행하게 그어서'],answer:0,explain:'창문과 다리 난간까지 자를 대고 그린 듯한 선들이 멀리 한 점으로 모여, 운하가 화면 안쪽으로 깊게 뻗어 나가요.'},
-        {q:'카라바조의 〈엠마오의 저녁 식사〉에서 식탁 끝에 아슬아슬하게 걸쳐 있는 것은?',options:['과일 바구니','포도주 병','빵 한 덩이'],answer:0,explain:'과일 바구니가 식탁 끝에 걸쳐 금방이라도 떨어질 듯해요. 놀라 팔을 벌린 제자처럼, 그림이 우리 쪽으로 튀어나오는 느낌을 만들어요.'}
-      ]
-    }
-  };
-
-  const OBSERVATION_WORK_IDS = {
-    portrait:['p03','p01','p02','p05','p08','p12','p04','p06','p07','p09','p10','p11'],
-    nature:['n01','n02','n03','n04','n10','n05','n06','n07','n08','c12','n11','n12'],
-    story:['s01','s09','s07','s03','d09','s12','c11','s05','c10','s08','s10','s11'],
-    shape:['c01','c06','c09','c02','c03','c04','c07','c08','s02','s06','n09','c05'],
-    space:['s04','d07','d08','d14','d10','d11','d12','d15','d16','d17','d18']
-  };
+  const {ROOM_QUIZZES,OBSERVATION_WORK_IDS}=window.MUSEUM_QUIZ;
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x191613);
@@ -201,6 +113,18 @@
   const clamp = (n,min,max) => Math.max(min,Math.min(max,n));
   const GALLERY_START = 8;
   const GALLERY_END = -30;
+  const race = window.createMuseumRaceClient({ THREE, scene, rooms, galleryEnd: GALLERY_END,
+    send: message => { if (presenceSocket?.readyState === WebSocket.OPEN) presenceSocket.send(JSON.stringify(message)); },
+    roomId: () => rooms[activeRoom].id, selfId: () => localPresenceId, teleport: teleportPlayer,
+    sfx: name => window.ClassGameSfx?.play(name) });
+  let raceActive = false;
+  // 순위전 시상식 자리로 옮겨 선다(서버에는 평소처럼 위치를 보낸다).
+  function teleportPlayer({ x, z, yaw: nextYaw, heading }) {
+    keysClear();
+    playerPosition.set(x, .002, z); yaw = nextYaw; pitch = -.12; avatarHeading = heading;
+    camera.rotation.set(pitch, yaw, 0); updateSelfAvatar();
+    lastPresence = null; presenceTimer = 0; sendPresence(); framePolicy.invalidate();
+  }
   function updatePeople(visitors) {
     const visible = visitors.filter(v => v.userId !== localPresenceId);
     const ids = new Set(visible.map(v => v.userId));
@@ -224,12 +148,13 @@
   function updateRemoteAvatars(dt) {
     for (const entry of remotePeople.values()) {
       const visible = entry.room === rooms[activeRoom].id;
-      entry.group.visible = visible && !modal.open && !finaleModal.open;
+      entry.group.visible = visible && !modal.open && !finaleModal.open && !race.modal.open;
       const key = visible ? entry.avatarKey : '';
       if (entry.actor.key !== key) void entry.actor.assign(key);
       const gap = Math.hypot(entry.x-entry.group.position.x,entry.z-entry.group.position.z);
       if (gap > 4) entry.group.position.set(entry.x,.002,entry.z);
       else { const blend=1-Math.exp(-dt*14); entry.group.position.x+=(entry.x-entry.group.position.x)*blend;entry.group.position.z+=(entry.z-entry.group.position.z)*blend; }
+      entry.group.position.y=.002+race.floorAt(entry.group.position.x,entry.group.position.z);
       const angle=Math.atan2(Math.sin(entry.yaw-entry.group.rotation.y),Math.cos(entry.yaw-entry.group.rotation.y));
       entry.group.rotation.y+=angle*(1-Math.exp(-dt*14));
       entry.actor.moving = visible && entry.moving && performance.now()-entry.received < 700;
@@ -253,8 +178,9 @@
           if(!localPresenceId&&Number.isFinite(msg.position?.x)&&Number.isFinite(msg.position?.z)) {
             spawnX=msg.position.x;playerPosition.set(spawnX,.002,msg.position.z);updateSelfAvatar();
           }
-          localPresenceId=msg.userId;void selfActor.assign(msg.avatarKey);presenceTimer=0;lastPresence=null;sendPresence();
+          localPresenceId=msg.userId;void selfActor.assign(msg.avatarKey);presenceTimer=0;lastPresence=null;sendPresence();race.setConnected(true);
         }
+        if(msg.type==='MUSEUM_RACE'){race.handle(msg);framePolicy.invalidate();}
         if(msg.type==='MUSEUM_STATE'){
           presenceScope=msg.scope||presenceScope;updatePeople(msg.visitors);
           const here=msg.visitors.filter(v=>v.room===rooms[activeRoom].id).length;
@@ -263,7 +189,7 @@
       });
       socket.addEventListener('close',event=>{
         if (presenceSocket !== socket) return;
-        presenceSocket=null;updatePeople([]);presenceEl.textContent='함께 관람 연결이 끊겼어요.';presenceEl.hidden=false;
+        presenceSocket=null;updatePeople([]);race.setConnected(false);presenceEl.textContent='함께 관람 연결이 끊겼어요.';presenceEl.hidden=false;
         if(!closing && event.code!==4003) reconnectTimer=setTimeout(connectClassPresence,2000);
       });
     } catch(error) { if(!closing) reconnectTimer=setTimeout(connectClassPresence,3000); }
@@ -567,97 +493,7 @@
     return result;
   }
 
-  // 그림 보고 제목 맞히기: 제목이 그림 내용을 말해 주는 작품이 많아서, 보기를 딴 방 작품에서 뽑으면
-  // 정답만 그림에 어울려 안 보고도 풀린다. 작품마다 그 그림에도 어울리는 제목(대개 같은 작가·같은 소재의
-  // 실제 작품)을 따로 둔다.
-  const TITLE_DECOYS={
-    p01:['송시열 초상','강세황 자화상','이재 초상'],
-    p02:['지네브라 데 벤치','라 벨 페로니에르','마달레나 도니의 초상'],
-    p03:['진주 목걸이를 한 여인','어깨 너머로 돌아보는 소녀','노란 옷을 입은 소녀'],
-    p04:['연당의 여인','여속도','노리개를 쥔 여인'],
-    p05:['불안','절망','다리 위의 소녀들'],
-    p06:['밀짚모자를 쓴 자화상','검은 펠트모자를 쓴 자화상','파란 옷을 입은 자화상'],
-    p07:['포옹','성취','사랑'],
-    p08:['물 주전자를 든 젊은 여인','빵을 자르는 여인','창가의 하녀'],
-    p09:['감자 심는 사람들','추수하는 여인들','들판의 세 여인'],
-    p10:['무대 위의 무희','파란 옷의 무희들','발레 수업'],
-    p11:['도라 마르의 초상','모자를 쓴 여인','손수건을 든 여인'],
-    p12:['비눗방울을 부는 소년','군악대 소년','빨간 바지를 입은 소년'],
-    n01:['론강의 별이 빛나는 밤','사이프러스와 별이 있는 길','소용돌이치는 밤하늘'],
-    n02:['녹색 반영','구름','아침의 연못'],
-    n03:['청풍계도','만폭동도','인곡유거도'],
-    n04:['꽃병의 해바라기 세 송이','잘린 해바라기 네 송이','노란 꽃다발'],
-    n05:['맹호도','송하맹호도','영모도'],
-    n06:['화조도','화훼도','영모도'],
-    n07:['황소','싸우는 소','소와 어린이'],
-    n08:['묘작도','화접도','야묘도추'],
-    c12:['가을','봄','베르툼누스'],
-    n10:['의회당, 해 질 녘','워털루 다리','안개 낀 항구의 아침'],
-    n11:['양귀비 들판','정원의 여인들','언덕 위의 여인'],
-    n12:['뱀을 부리는 여인','놀란 호랑이','적도의 정글'],
-    s01:['계변가화','상춘야흥','연소답청'],
-    c11:['뱃놀이 일행의 점심','부지발의 무도회','시골의 무도회'],
-    s03:['서화감상','고누놀이','글 읽는 아이들'],
-    d09:['삼미신','꽃의 여신','오렌지 숲의 잔치'],
-    s05:['바다에서 나오는 비너스','비너스와 마르스','조개 위의 여신'],
-    c10:['시소','눈먼 술래잡기','날아간 신발'],
-    s07:['설송도','송하한거도','초옥도'],
-    s08:['사시팔경도','소상팔경도','적벽도'],
-    s09:['이브의 창조','해와 달의 창조','빛과 어둠의 분리'],
-    s10:['서귀포의 환상','춤추는 가족','소달구지'],
-    s11:['우물가','계변가화','고기잡이'],
-    s12:['감자 심는 사람들','이삭 줍는 사람들','석양'],
-    c01:['빨강, 노랑, 파랑, 검정의 구성','큰 빨간 면이 있는 구성','노랑과 파랑의 구성'],
-    c02:['원 속의 원','노랑, 빨강, 파랑','여러 개의 원'],
-    c03:['절대주의 구성','무제','어둠'],
-    c07:['사과 바구니','커튼, 물병, 과일 그릇','사과와 비스킷'],
-    c06:['아니에르의 물놀이','강가의 일요일','공원의 산책'],
-    c08:['음악','삶의 기쁨','강가의 목욕하는 사람들'],
-    s02:['대쾌도','활쏘기','고누놀이'],
-    s06:['씨름','탈춤','사당패 놀이'],
-    n09:['고갱의 의자','빈센트의 의자','밤의 카페'],
-    c04:['잠','나르시스의 변형','불타는 기린'],
-    c05:['사람의 아들','데칼코마니','빛의 제국'],
-    c09:['두 개의 신비','꿈의 열쇠','말의 사용'],
-    d14:['레위 가의 잔치','시몬의 집에서의 만찬','궁전의 연회'],
-    d07:['포목상 조합의 이사들','튈프 박사의 해부학 강의','어둠 속의 행렬'],
-    d08:['마르가리타 공주','베 짜는 여인들','궁정 화가의 작업실'],
-    s04:['엠마오의 저녁 식사','가나의 혼인잔치','레위 가의 잔치'],
-    d10:['세 여인','목욕하는 여인들','다섯 여인'],
-    d11:['마을 위에서','바이올린 연주자','생일'],
-    d12:['성체 논의','파르나소스','보르고의 화재'],
-    d15:['대금업자와 그의 아내','롤랭 재상의 성모','거울 앞의 부부'],
-    d16:['단발령망금강산도','만폭동도','인왕제색도'],
-    d17:['석공의 작업장','산마르코 광장','템스 강'],
-    d18:['성 마태오의 소명','카드 사기꾼','최후의 만찬']
-  };
-  // 작가 맞히기: 그림 느낌이 비슷한 시대·갈래의 작가끼리만 보기로 쓴다.
-  const ARTIST_GROUPS=[
-    ['윤두서','신윤복','정선','김홍도','김정희','안견','신사임당 전칭'],
-    ['이중섭','박수근','김환기','장욱진'],
-    ['레오나르도 다 빈치','요하네스 페르메이르','산드로 보티첼리','미켈란젤로','렘브란트 판 레인','디에고 벨라스케스','라파엘로','얀 반 에이크','파올로 베로네세','카날레토','미켈란젤로 메리시 다 카라바조','주세페 아르침볼도','장오노레 프라고나르'],
-    ['장프랑수아 밀레','에두아르 마네','에드가 드가','클로드 모네','오귀스트 르누아르','빈센트 반 고흐','폴 세잔','조르주 쇠라','에드바르 뭉크','구스타프 클림트','앙리 루소'],
-    ['파블로 피카소','피트 몬드리안','바실리 칸딘스키','카지미르 말레비치','앙리 마티스','살바도르 달리','르네 마그리트','마르크 샤갈']
-  ];
-  const optionTitle=title=>title.replace(/\s*\(.*\)$/,'');
-  const optionArtist=name=>name.replace(/ 전칭$/,'');
-  // 받침에 따라 조사를 고른다: 〈우는 여인〉을, 렘브란트 판 레인이에요.
-  const josa=(word,withFinal,withoutFinal)=>{const last=[...String(word)].reverse().find(ch=>ch>='가'&&ch<='힣');return last&&(last.charCodeAt(0)-0xAC00)%28?withFinal:withoutFinal;};
-
-  function buildImageQuestion(room,mode,target) {
-    const config={
-      title:{key:'title',question:'이 작품의 제목은 무엇일까요?'},
-      artist:{key:'artist',question:'이 작품을 만든 작가는 누구일까요?'}
-    }[mode];
-    const correct=mode==='title'?optionTitle(target.title):optionArtist(target.artist);
-    const pool=mode==='title'?TITLE_DECOYS[target.id]:ARTIST_GROUPS.find(group=>group.includes(target.artist)).filter(name=>name!==target.artist).map(optionArtist);
-    const distractors=shuffledCopy(pool.filter(value=>value!==correct)).slice(0,3);
-    const explanations={
-      title:`이 작품은 ${target.artist}의 〈${target.title}〉${josa(target.title,'이에요','예요')}.`,
-      artist:`〈${target.title}〉${josa(target.title,'을','를')} 만든 작가는 ${target.artist}${josa(target.artist,'이에요','예요')}.`
-    };
-    return {kind:`image-${mode}`,image:target.image,q:config.question,options:[correct,...distractors],answer:0,explain:explanations[mode]};
-  }
+  const buildImageQuestion=(room,mode,target)=>window.MUSEUM_QUIZ.imageQuestion(mode,target,shuffledCopy);
 
   function startFinaleQuiz(room) {
     finaleQuizRoom=room;finaleQuizIndex=0;finaleQuizCorrect=0;
@@ -854,7 +690,7 @@
     setRoomMusic(index);
     activeRoom=index;clickable.length=0;sculptureObstacles.length=0;nearest=null;prompt.hidden=true;loadDone=0;loadTotal=rooms[index].works.length;
     loading.classList.remove('done');loadingBar.style.width='0';loadingText.textContent='0%';
-    finaleSurface=null;resetArtLights();
+    finaleSurface=null;resetArtLights();race.roomChanged();
     if(gallery){scene.remove(gallery);MuseumPerformance.disposeRoom(gallery,sharedMaterials,new Set(textureCache.values()));}
     MuseumPerformance.retainRoomTextures(textureCache,rooms[index].works.map(w=>w.image));
     gallery=new THREE.Group();scene.add(gallery);const roomGallery=gallery,shell=buildShell(rooms[index]);
@@ -871,7 +707,7 @@
     if(instant)loading.classList.add('done');
   }
 
-  function buildTabs(){rooms.forEach((room,i)=>{const b=document.createElement('button');b.type='button';b.className='room-tab';b.dataset.sfx='click';b.innerHTML=`<b>${room.number}. ${room.title}</b>`;b.addEventListener('click',()=>{if(i!==activeRoom)setRoom(i);});roomTabs.appendChild(b);});
+  function buildTabs(){rooms.forEach((room,i)=>{const b=document.createElement('button');b.type='button';b.className='room-tab';b.dataset.sfx='click';b.innerHTML=`<b>${room.number}. ${room.title}</b>`;b.addEventListener('click',()=>{if(i!==activeRoom){race.leave();setRoom(i);}});roomTabs.appendChild(b);});
     const parkTab=document.createElement('button');parkTab.type='button';parkTab.className='room-tab room-tab-park';parkTab.dataset.sfx='click';parkTab.innerHTML='<b>06. 입체·공간</b>';parkTab.addEventListener('click',()=>{location.href='../park/';});roomTabs.appendChild(parkTab);}
 
   function formatSize(work){if(work.size.label)return work.size.label;const parts=[];if(work.size.h)parts.push(`높이 ${work.size.h}cm`);if(work.size.w)parts.push(`너비 ${work.size.w}cm`);if(work.size.d)parts.push(`깊이 ${work.size.d}cm`);return parts.join(' × ');}
@@ -934,7 +770,7 @@
 
   function updateMovement(dt){
     actualSpeed=0;
-    if(modal.open||finaleModal.open)return;
+    if(modal.open||finaleModal.open||race.blocksMovement()){camera.position.y=1.68+race.floorAt(playerPosition.x,playerPosition.z);return;}
     let f=(keys.KeyW||keys.ArrowUp?1:0)-(keys.KeyS||keys.ArrowDown?1:0),s=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0);
     tmpDirection.set(-Math.sin(yaw),0,-Math.cos(yaw));tmpRight.set(Math.cos(yaw),0,-Math.sin(yaw));
     wish.set(0,0,0).addScaledVector(tmpDirection,f).addScaledVector(tmpRight,s);if(wish.lengthSq()>0)wish.normalize();
@@ -946,11 +782,12 @@
     const movedX=playerPosition.x-oldX,movedZ=playerPosition.z-oldZ;
     actualSpeed=Math.hypot(movedX,movedZ)/Math.max(dt,.001);
     if(actualSpeed>.03)avatarHeading=Math.atan2(movedX,movedZ);
-    camera.position.y=1.68+Math.sin(performance.now()*.009)*Math.min(velocity.length()*.012,.025);camera.rotation.set(pitch,yaw,0);
+    camera.position.y=1.68+race.floorAt(playerPosition.x,playerPosition.z)+Math.sin(performance.now()*.009)*Math.min(velocity.length()*.012,.025);camera.rotation.set(pitch,yaw,0);
     progressEl.style.width=clamp((6.5-playerPosition.z)/(6.5-(GALLERY_END+1.4))*100,0,100)+'%';
   }
 
   function updateFocus(){
+    if(race.hidesFocus()){nearest=null;prompt.hidden=true;return;}
     raycaster.setFromCamera(centerPointer,camera);const hits=raycaster.intersectObjects(clickable,false);const hit=hits.find(h=>h.distance<8.5);
     nearest=hit?hit.object:null;prompt.hidden=!nearest;
     if(nearest){
@@ -967,26 +804,29 @@
     camera.position.x=follow.x;
     camera.position.z=follow.z;
     selfAvatar.position.copy(playerPosition);
+    selfAvatar.position.y+=race.floorAt(playerPosition.x,playerPosition.z);
     selfAvatar.rotation.y=avatarHeading;
     selfActor.moving=actualSpeed>.03;selfActor.speed=actualSpeed;
-    selfAvatar.visible=follow.distance>.85&&!avatarReview&&!nearest&&!modal.open&&!finaleModal.open;
+    selfAvatar.visible=follow.distance>.85&&!avatarReview&&!nearest&&!modal.open&&!finaleModal.open&&!race.modal.open;
   }
 
   function animate(){
     requestAnimationFrame(animate);
     const now=performance.now(),gap=now-lastLoopTime;lastLoopTime=now;
-    const modalOpen=modal.open||finaleModal.open,hidden=document.hidden;
-    const active=dragging||velocity.lengthSq()>.0009||Object.values(keys).some(Boolean)||[...remotePeople.values()].some(p=>p.room===rooms[activeRoom].id&&p.moving&&now-p.received<700);
+    const modalOpen=modal.open||finaleModal.open||race.modal.open,hidden=document.hidden;
+    const active=raceActive||dragging||velocity.lengthSq()>.0009||Object.values(keys).some(Boolean)||[...remotePeople.values()].some(p=>p.room===rooms[activeRoom].id&&p.moving&&now-p.received<700);
     const loadingRoom=!loading.classList.contains('done');
     const scale=resolutionBudget.sample(gap,!hidden&&!modalOpen&&active&&!loadingRoom);
     if(scale!==resolutionScale){resolutionScale=scale;renderer.setPixelRatio(Math.min(devicePixelRatio,MAX_PIXEL_RATIO)*scale);}
     sendPresence();
     if(!framePolicy.draw(now,{hidden,modal:modalOpen,active,avatars:selfActor.state==='ready'||[...remotePeople.values()].some(p=>p.group.visible)||!!avatarReview,loading:loadingRoom}))return;
     const frameStart=avatarReview?performance.now():0,dt=Math.min(clock.getDelta(),.05);
-    updateMovement(dt);updateSelfAvatar();updateArtLights(dt);updateFocus();updateRemoteAvatars(dt);assignedAvatars.update(dt);avatarReview?.update(dt);sendPresence();renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);
+    updateMovement(dt);updateSelfAvatar();updateArtLights(dt);updateFocus();raceActive=race.update(dt);updateRemoteAvatars(dt);assignedAvatars.update(dt);avatarReview?.update(dt);sendPresence();
+    const ceremonyShot=race.ceremonyCamera(camera.aspect);if(ceremonyShot){camera.position.set(ceremonyShot.x,ceremonyShot.y,ceremonyShot.z);camera.lookAt(ceremonyShot.tx,ceremonyShot.ty,ceremonyShot.tz);}
+    renderer.render(scene,camera);avatarReview?.sampleFrame(frameStart);
   }
 
-  addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
+  addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','Space'].includes(e.code))e.preventDefault();keys[e.code]=true;if(e.code==='Escape'){if(finaleModal.open){window.ClassGameSfx?.play('click');finaleModal.close();}else if(modal.open){window.ClassGameSfx?.play('click');modal.close();}}if(e.code==='Enter'&&nearest&&!modal.open&&!finaleModal.open&&!race.modal.open){if(nearest.userData.finaleRoom)showFinale(nearest.userData.finaleRoom);else showWork(nearest.userData.work,nearest.userData.room);}});
   addEventListener('keyup',e=>{keys[e.code]=false;});
   addEventListener('blur',keysClear);
   document.addEventListener('visibilitychange',()=>{if(document.hidden){keysClear();sendPresence();}});

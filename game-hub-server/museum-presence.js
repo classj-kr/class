@@ -3,9 +3,12 @@
 // The signed ticket, never a movement packet, supplies the roster avatar and class.
 function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send, prefix = 'MUSEUM',
   initialRoom = 'portrait', roomIds = ['portrait', 'nature', 'story', 'shape', 'space'],
-  constrainPosition, spawnZ = 3.75 }) {
+  constrainPosition, spawnZ = 3.75, race = null }) {
   const visitorKey = prefix === 'PARK' ? 'parkVisitor' : 'museumVisitor';
   const classes = new Map();
+  // 전시실 순위전은 같은 학교 접속자 목록을 그대로 쓴다.
+  race?.attach(schoolKey => [...(classes.get(schoolKey)?.values() || [])]
+    .map(socket => ({ socket, visitor: socket.meta[visitorKey] })).filter(entry => entry.visitor));
   const dirty = new Set();
   let broadcastTimer;
   function flush() {
@@ -43,6 +46,7 @@ function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send, prefix =
   function leave(socket) {
     const visitor = socket.meta[visitorKey];
     if (!visitor) return;
+    race?.left(visitor);
     const clients = classes.get(visitor.schoolKey);
     if (clients?.get(visitor.userId) === socket) {
       clients.delete(visitor.userId);
@@ -52,6 +56,7 @@ function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send, prefix =
     socket.meta[visitorKey] = null;
   }
   function handle(socket, message) {
+    if (race && String(message.type || "").startsWith(`${prefix}_RACE_`)) return race.handle(socket, socket.meta[visitorKey], message);
     if (message.type === `${prefix}_JOIN`) {
       const identity = verifyTicket(String(message.ticket || "").slice(0, 2048));
       if (!identity) { send(socket, { type: `${prefix}_AUTH_REQUIRED` }); return true; }
@@ -74,6 +79,7 @@ function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send, prefix =
       clients.set(identity.userId, socket);
       send(socket, { type: `${prefix}_JOINED`, userId: identity.userId, avatarKey, position: spawn });
       broadcast(schoolKey);
+      race?.joined(socket, socket.meta[visitorKey]);
       return true;
     }
     if (message.type === `${prefix}_MOVE`) {
@@ -85,9 +91,11 @@ function createMuseumPresence({ verifyTicket, normalizeAvatarKey, send, prefix =
       const moving = visitor.room === room && moved && message.moving === true;
       const yaw = Number.isFinite(message.yaw) ? Math.max(-6.4, Math.min(6.4, message.yaw)) : visitor.yaw;
       const changed = moved || room !== visitor.room || moving !== visitor.moving || Math.abs(yaw-visitor.yaw)>.003;
+      const previousRoom = visitor.room;
       visitor.moving = moving;
       Object.assign(visitor, next, { room });
       visitor.yaw = yaw;
+      if (race && room !== previousRoom) race.moved(socket, visitor, previousRoom);
       if(changed)queueBroadcast(visitor.schoolKey);
       return true;
     }

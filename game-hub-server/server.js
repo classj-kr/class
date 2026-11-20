@@ -31,6 +31,7 @@ const { createRoomEntry } = require("./room-entry");
 const { createClassroomPlatform, normalizeAvatarKey } = require("./classroom-platform");
 const { createGameActivityRecorder } = require('./game-activity-records');
 const { createMuseumPresence } = require("./museum-presence");
+const { createMuseumRace } = require("./museum-race");
 const { createParkPresence } = require("./park-presence");
 const { GAME_PAGE_ALIASES } = require("./home-content-paths");
 const { redirectLegacyHosts } = require("./canonical-host");
@@ -859,9 +860,13 @@ for (const directory of [...APP_DIRECTORIES, "css", "js", "learning"]) {
   app.use(`/${directory}`, express.static(resolveSitePath(SITE_ROOT, `/${directory}`), staticAssetOptions));
 }
 
+// 전시실 순위전은 미술관 문제 파일을 읽어야 한다. 못 읽으면 순위전만 끄고 함께 관람은 그대로 둔다.
+let museumRace = null;
+try { museumRace = createMuseumRace({ send: safeSend }); }
+catch (error) { console.error("Museum race unavailable:", error.message); }
 const museumPresence = createMuseumPresence({
   verifyTicket: ticket => classroomPlatform.verifyMuseumPresenceTicket(ticket),
-  normalizeAvatarKey, send: safeSend
+  normalizeAvatarKey, send: safeSend, race: museumRace
 });
 const parkPresence = createParkPresence({verifyTicket: ticket => classroomPlatform.verifyMuseumPresenceTicket(ticket), normalizeAvatarKey, send: safeSend});
 const roomSnapshotFingerprints = new Map();
