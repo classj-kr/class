@@ -17,7 +17,8 @@
 /* 우리 장기말은 팔각형(동그란 말은 중국 장기). 테두리와 얼굴을 팔각형으로 자르고 그림자·빛 표시는 filter 로 팔각형을 따른다. */
 .janggi-board .piece::before,.janggi-board .piece::after{content:"";position:absolute;z-index:-1;clip-path:polygon(29.3% 0,70.7% 0,100% 29.3%,100% 70.7%,70.7% 100%,29.3% 100%,0 70.7%,0 29.3%);pointer-events:none}
 .janggi-board .piece::before{inset:0;background:linear-gradient(160deg,#d3cab8,#9d927c)}
-.janggi-board .piece::after{inset:3px;background:radial-gradient(circle at 35% 28%,#ffffff 0%,#f8f5ee 46%,#e2dbcc 82%,#c9bfab 100%)}
+/* 얼굴은 순백이 아니라 상아색: 새하야면 밝은 나무판 위에서 눈이 부시다(2026-11-21). */
+.janggi-board .piece::after{inset:3px;background:radial-gradient(circle at 35% 28%,#f9f3e4 0%,#efe6d1 46%,#dccfb2 82%,#c5b593 100%)}
 .janggi-board .piece.king{width:82%;font-size:clamp(23px,4.4vw,42px)}.janggi-board .piece.king::after{inset:4px}
 .janggi-board .piece.guard,.janggi-board .piece.soldier{width:66%;font-size:clamp(17px,3.4vw,32px)}
 /* 실제 장기말처럼 흰 상아색 바탕에 짙은 글씨: 초는 짙은 남색, 한은 짙은 다홍(2026-11-21). */
