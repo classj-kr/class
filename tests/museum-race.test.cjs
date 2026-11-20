@@ -171,13 +171,17 @@ test('leaving: the host hands over, moving rooms drops you, the last one out clo
   assert.equal(h.race.races.size, 0, 'disconnecting leaves the race');
 });
 
-test('a running race cannot be joined, and nobody can start alone', () => {
+test('one race per room: a second opener joins the same lobby, a running race cannot be joined, nobody starts alone', () => {
   const h = harness();
   const [a1, a2, a3] = ['a1', 'a2', 'a3'].map(h.connect);
   h.act(a1, 'OPEN'); h.act(a1, 'START');
   assert.equal(h.last(a1).race.phase, 'lobby', 'two players are needed');
-  h.act(a2, 'OPEN'); h.act(a1, 'START');
+  h.act(a2, 'OPEN');
+  assert.equal(h.race.races.size, 1, 'pressing the button again joins the lobby instead of opening another');
+  assert.equal(h.last(a2).race.hostId, 'a1');
+  h.act(a1, 'START');
   h.act(a3, 'OPEN');
+  assert.equal(h.race.races.size, 1, 'no second race while one is running in the room');
   assert.equal(h.last(a3).race.joined, false);
   assert.equal(h.last(a3).race.phase, 'ready');
   assert.equal(h.last(a3).race.me, undefined);
