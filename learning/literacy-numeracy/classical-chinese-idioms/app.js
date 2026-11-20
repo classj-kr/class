@@ -524,7 +524,7 @@ function renderLessonOverview() {
                 <span class="lesson-number">${index + 1}</span>
                 <span class="lesson-card-body">
                     <span class="lesson-card-top"><strong>${lesson.title}</strong></span>
-                    <span class="lesson-examples">${items.slice(0, 3).map((item) => item.word).join(" · ")}</span>
+                    <span class="lesson-examples">${items.map((item) => item.word).join(" · ")}</span>
                 </span>
                 <span class="lesson-progress">${known === items.length ? "완료" : `${known}/${items.length}`}</span>`;
             button.addEventListener("click", () => openLesson(index));

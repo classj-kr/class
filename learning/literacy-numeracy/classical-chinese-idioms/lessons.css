@@ -39,7 +39,7 @@
 .lesson-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .lesson-card-top strong { font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif; font-size: 18px; font-weight: 800; }
 .lesson-progress { color: var(--green); font-size: 13px; }
-.lesson-examples { margin-top: 5px; color: #76551f; font-size: 13px; }
+.lesson-examples { margin-top: 5px; color: #76551f; font-size: 13px; line-height: 1.5; word-break: keep-all; }
 .lesson-progress { min-width: 42px; text-align: right; font-weight: 900; }
 
 .lesson-toolbar {
