@@ -1,5 +1,5 @@
-const PDFJS_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
-const PDFJS_WORKER_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+const PDFJS_URL = '/assets/vendor/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+const PDFJS_WORKER_URL = '/assets/vendor/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
 export const A4 = [595.28, 841.89];
 export const MM_TO_PT = 72 / 25.4;
 

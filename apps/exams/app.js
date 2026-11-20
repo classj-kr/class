@@ -88,8 +88,8 @@
     if (!response.ok) throw new Error(data.message || '음원을 올리지 못했습니다.');
   }
   // 그림: 사이트의 PDF 도구와 같은 pdf.js로 쪽을 그려 AI가 알려 준 영역을 잘라 낸다.
-  const PDFJS_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
-  const PDFJS_WORKER_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+  const PDFJS_URL = '/assets/vendor/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+  const PDFJS_WORKER_URL = '/assets/vendor/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
   let pdfjsPromise;
   function loadPdfjs() {
     pdfjsPromise ||= import(PDFJS_URL).then(pdfjs => { pdfjs.GlobalWorkerOptions.workerSrc = PDFJS_WORKER_URL; return pdfjs; }).catch(error => { pdfjsPromise = null; throw error; });
@@ -137,7 +137,7 @@
     return failed;
   }
   // 정답지: 엑셀은 브라우저에서 읽고, 표 모양을 모르겠거나 PDF면 AI에게 읽힌다.
-  const SHEETJS_URL = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+  const SHEETJS_URL = '/assets/vendor/xlsx@0.18.5/xlsx.full.min.js';
   let sheetjsPromise;
   function loadSheetjs() {
     sheetjsPromise ||= new Promise((resolve, reject) => {

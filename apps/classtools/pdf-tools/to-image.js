@@ -2,7 +2,7 @@ import {
   $, setStatus, openPdfjsDocument, renderPage, isPdf, baseName, formatSize, downloadBlob, setupDropZone, parseRange
 } from './common.js?v=20260929-pdf-tools';
 
-const JSZIP_URL = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm';
+const JSZIP_URL = '/assets/vendor/jszip@3.10.1/jszip.esm.js';
 const THUMB_SIZE = 240;
 const MAX_SIDE = 7000;
 

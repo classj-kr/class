@@ -1,5 +1,5 @@
 /* 시험 대비 단주기 주기율표 Style */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('../../../assets/vendor/pretendard@1.3.9/static/pretendard.css');
 
 :root {
     --bg-dark: #0f141d;
