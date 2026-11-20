@@ -43,9 +43,125 @@
     } catch { /* 기록 화면이 다시 시도를 안내한다. */ }
   }
 
+  // ── 소리: 사이트 공용 효과음 출력(음량·끄기 설정을 따른다)에 짧은 음을 만든다.
+  function tone(freq, length, type = 'triangle', volume = 0.14, delay = 0, slideTo = 0) {
+    const bus = window.ClassGameSfx?.getAudioBus?.();
+    if (!bus) return;
+    const a = bus.context, t = a.currentTime + delay, o = a.createOscillator(), g = a.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, t);
+    if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, t + length);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(volume, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + length);
+    o.connect(g).connect(bus.output);
+    o.start(t); o.stop(t + length + 0.03);
+  }
+  const sfx = {
+    // 연속으로 맞힐수록 한 음씩 올라간다. 다섯 번째마다 반짝이는 소리를 더 얹는다.
+    good(n) {
+      const base = 587 * Math.pow(2, Math.min(n - 1, 9) * 2 / 12);
+      tone(base, 0.12, 'triangle', 0.15);
+      tone(base * 1.5, 0.2, 'triangle', 0.12, 0.07);
+      if (n >= 5 && n % 5 === 0) [2, 2.5, 3, 4].forEach((m, i) => tone(base * m, 0.12, 'sine', 0.05, 0.16 + i * 0.05));
+    },
+    bad: () => window.ClassGameSfx?.play?.('error'),
+    pick: () => tone(820, 0.05, 'triangle', 0.07),
+    drop: () => { tone(520, 0.06, 'triangle', 0.08); tone(390, 0.08, 'sine', 0.06, 0.03); },
+    swish: () => tone(330, 0.14, 'sine', 0.035, 0, 700),
+    star: (i) => { const f = [659, 784, 988][i]; tone(f, 0.28, 'triangle', 0.13); tone(f * 2, 0.22, 'sine', 0.04, 0.02); },
+    tick: () => tone(1180, 0.025, 'square', 0.025),
+    fanfare() {
+      [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.18, 'triangle', 0.12, i * 0.09));
+      [523, 659, 784].forEach((f) => tone(f, 0.7, 'triangle', 0.07, 0.4));
+      tone(1047, 0.7, 'sine', 0.06, 0.4);
+    },
+  };
+
+  // ── 움직임: 맞힌 자리에서 반짝이가 튀고, 끝 화면에는 꽃가루가 내린다.
+  const calm = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  const fx = { canvas: $('fx'), ctx: null, parts: [], running: false };
+  fx.ctx = fx.canvas.getContext('2d');
+  function sizeFx() {
+    const r = window.devicePixelRatio || 1;
+    fx.canvas.width = innerWidth * r; fx.canvas.height = innerHeight * r;
+    fx.ctx.setTransform(r, 0, 0, r, 0, 0);
+  }
+  sizeFx();
+  window.addEventListener('resize', sizeFx);
+  const GOOD = ['#1f7a5c', '#3fb27f', '#f2b705', '#ffd75e', '#7cc6a4'];
+  const PARTY = ['#e85d4a', '#f2b705', '#3fb27f', '#4f8fd6', '#a66ad8', '#ff9f43'];
+  function runFx() {
+    if (fx.running) return;
+    fx.running = true;
+    const step = () => {
+      const c = fx.ctx;
+      c.clearRect(0, 0, innerWidth, innerHeight);
+      fx.parts = fx.parts.filter((p) => p.life > 0 && p.y < innerHeight + 40);
+      fx.parts.forEach((p) => {
+        p.vy += p.g; p.vx *= p.drag; p.vy *= p.drag;
+        p.x += p.vx; p.y += p.vy; p.spin += p.vs; p.life -= p.decay;
+        c.save();
+        c.globalAlpha = Math.max(0, Math.min(1, p.life * 1.6));
+        c.translate(p.x, p.y); c.rotate(p.spin); c.fillStyle = p.color;
+        if (p.shape === 'star') {
+          c.beginPath();
+          for (let i = 0; i < 10; i += 1) {
+            const r = i % 2 ? p.size * 0.45 : p.size, a = (i * Math.PI) / 5;
+            c.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+          }
+          c.fill();
+        } else if (p.shape === 'paper') c.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2 * (0.4 + Math.abs(Math.sin(p.spin * 2))));
+        else { c.beginPath(); c.arc(0, 0, p.size / 2, 0, Math.PI * 2); c.fill(); }
+        c.restore();
+      });
+      if (fx.parts.length) requestAnimationFrame(step);
+      else { fx.running = false; c.clearRect(0, 0, innerWidth, innerHeight); }
+    };
+    requestAnimationFrame(step);
+  }
+  function burst(el, big = false) {
+    if (calm?.matches || !el) return;
+    const r = el.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const n = big ? 34 : 20;
+    for (let i = 0; i < n; i += 1) {
+      const a = Math.random() * Math.PI * 2, v = (big ? 4 : 3) + Math.random() * (big ? 6 : 4);
+      fx.parts.push({
+        x: x + (Math.random() - 0.5) * Math.min(r.width, 160), y: y + (Math.random() - 0.5) * Math.min(r.height, 40),
+        vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2, g: 0.16, drag: 0.97,
+        size: 6 + Math.random() * 7, color: GOOD[i % GOOD.length], shape: i % 3 ? 'dot' : 'star',
+        spin: Math.random() * 6, vs: (Math.random() - 0.5) * 0.3, life: 1, decay: 0.018 + Math.random() * 0.012,
+      });
+    }
+    runFx();
+  }
+  function confetti(n = 140) {
+    if (calm?.matches) return;
+    for (let i = 0; i < n; i += 1) {
+      fx.parts.push({
+        x: Math.random() * innerWidth, y: -20 - Math.random() * innerHeight * 0.6,
+        vx: (Math.random() - 0.5) * 2.4, vy: 1.5 + Math.random() * 2.5, g: 0.04, drag: 0.995,
+        size: 9 + Math.random() * 8, color: PARTY[i % PARTY.length], shape: i % 5 ? 'paper' : 'star',
+        spin: Math.random() * 6, vs: (Math.random() - 0.5) * 0.25, life: 1.6, decay: 0.0035,
+      });
+    }
+    runFx();
+  }
+  const replay = (el, className) => { if (!el) return; el.classList.remove(className); void el.offsetWidth; el.classList.add(className); };
+  let streak = 0;
+  function react(ok, spot) {
+    streak = ok ? streak + 1 : 0;
+    if (ok) { sfx.good(streak); burst(spot, streak >= 5 && streak % 5 === 0); }
+    else { sfx.bad(); replay(spot, 'jolt'); }
+    const s = $('streak');
+    s.hidden = streak < 2;
+    if (streak >= 2) { s.textContent = `🔥 ${streak}`; replay(s, 'bump'); }
+  }
+
   const show = (name) => {
     screen = name;
     SCREENS.forEach((id) => { $(id).hidden = id !== name; });
+    $('streak').hidden = name !== 'quiz' || streak < 2;
     window.scrollTo(0, 0);
   };
   const button = (text, className, onClick) => {
@@ -99,13 +215,14 @@
     }));
     $('examples').replaceChildren(...(topic.ex || []).map((text) => {
       const s = document.createElement('span'); s.textContent = text; return s;
+    }).map((s, i) => { s.style.animationDelay = `${0.12 + i * 0.07}s`; return s;
     }));
     $('examples').hidden = !(topic.ex || []).length;
     show('rule');
   }
 
   function start(items, again = false) {
-    queue = items.slice(); at = 0; results = [];
+    queue = items.slice(); at = 0; results = []; streak = 0; $('streak').hidden = true;
     if (records && !again) {
       const key = topicKey(term, topic);
       recording = { key, total: topic.items.length, answered: new Set(), completed: false };
@@ -201,8 +318,9 @@
     }));
     checkCurrent = checkBoard;
   }
-  function placeChip(chip, zone) {
-    if (zone && zone.cap === 1) board.chips.filter((c) => c.zone === zone && c !== chip).forEach((c) => placeChip(c, null));
+  function placeChip(chip, zone, quiet = false) {
+    if (!quiet) (zone ? sfx.drop : sfx.pick)();
+    if (zone && zone.cap === 1) board.chips.filter((c) => c.zone === zone && c !== chip).forEach((c) => placeChip(c, null, true));
     chip.zone = zone;
     (zone ? zone.body : $('pool')).append(chip.el);
     board.picked = null;
@@ -216,6 +334,7 @@
     const empty = board.zones.filter((z) => z.cap === 1 && !board.chips.some((c) => c.zone === z));
     if (board.kind === 'order' || (board.kind === 'fill' && empty.length === 1)) { placeChip(chip, empty[0]); return; }
     board.picked = board.picked === chip ? null : chip;
+    if (board.picked) sfx.pick();
     board.chips.forEach((c) => c.el.classList.toggle('picked', c === board.picked));
   }
   function tapZone(zone) {
@@ -271,6 +390,7 @@
       if (c.ok === false || (c.ok === null && home)) c.el.classList.add('wrong');
     });
     $('pool').hidden = !$('pool').children.length;
+    react(results[at], $('zones'));
     record(item, results[at], answerOf);
     showNote(item);
   }
@@ -281,9 +401,10 @@
       results[at] = ok;
       [...$('spot').children].forEach((b) => { b.disabled = true; });
       if (!ok) e.currentTarget.classList.add('wrong');
+      react(ok, ok ? target : e.currentTarget);
       record(item, ok, text);
       target.textContent = item.fix;
-      target.classList.add('right');
+      target.classList.add('right', 'flip');
       showNote(item);
     })));
   }
@@ -297,7 +418,7 @@
       cell.className = 'letter-cell'; letter.className = 'letter'; letter.textContent = ch;
       cell.append(letter);
       if (i < chars.length - 1 && !/[.,?!]/.test(chars[i + 1])) {
-        const gap = button('', 'gap', () => gap.classList.toggle('on'));
+        const gap = button('', 'gap', () => { gap.classList.toggle('on'); sfx.pick(); });
         gap.setAttribute('aria-label', `${ch} 뒤 띄우기`);
         gaps.set(i, gap); cell.append(gap);
       }
@@ -314,6 +435,7 @@
         if (!on && needed) { gap.classList.add('missed'); ok = false; }
       });
       results[at] = ok;
+      react(ok, $('spacing'));
       record(item, ok, chars.map((ch, i) => ch + (gaps.get(i)?.classList.contains('right') || gaps.get(i)?.classList.contains('wrong') ? ' ' : '')).join(''));
       showNote(item);
     };
@@ -347,6 +469,7 @@
     line.setAttribute('x1', from.x); line.setAttribute('y1', from.y);
     line.setAttribute('x2', to.x); line.setAttribute('y2', to.y);
     if (className) line.setAttribute('class', className);
+    if (className === 'right' && match?.fresh) line.style.setProperty('--len', Math.ceil(Math.hypot(to.x - from.x, to.y - from.y)));
     $('matchLines').append(line);
   };
   function drawLines() {
@@ -369,13 +492,14 @@
     match.links.forEach((value, key) => { if (key === l || value === r) match.links.delete(key); });
     match.links.set(l, r);
     match.picked = null;
+    sfx.drop();
     $('checkMatch').hidden = match.links.size !== match.partner.size;
   }
   function tapNode(side, text) {
     if (match.done) return;
     const now = { side, text }, picked = match.picked;
     if (picked && picked.side !== side) connect(picked, now);
-    else match.picked = picked && picked.text === text ? null : now;
+    else { match.picked = picked && picked.text === text ? null : now; if (match.picked) sfx.pick(); }
     drawLines();
   }
   function startDrag(e, side, text) {
@@ -408,7 +532,8 @@
     results[at] = [...match.partner].every(([l, r]) => match.links.get(l) === r);
     record(item, results[at], [...match.links].map(([l, r]) => `${l}→${r}`).join(', '));
     ['left', 'right'].forEach((side) => match.nodes[side].forEach((node) => { node.disabled = true; }));
-    drawLines();
+    match.fresh = true; drawLines(); match.fresh = false;
+    react(results[at], $('match'));
     showNote(item);
   }
   function showNote(item) {
@@ -417,11 +542,13 @@
     $('next').textContent = at + 1 < queue.length ? '다음' : '결과 보기';
     $('note').hidden = false;
     drawDots();
+    replay($('dots').children[at], 'pop');
     $('next').focus({ preventScroll: true });
   }
   function choose(picked, text) {
     const item = queue[at], ok = text === item.a;
     results[at] = ok;
+    react(ok, picked);
     record(item, ok, text);
     [...$('choices').children].forEach((b) => {
       b.disabled = true;
@@ -429,18 +556,53 @@
     });
     if (!ok) picked.classList.add('wrong');
     const blank = $('blank');
-    if (blank) { blank.textContent = item.a; blank.classList.add('filled'); }
+    if (blank) { blank.textContent = item.a; blank.classList.add('filled'); if (!ok) blank.classList.add('late'); }
     showNote(item);
   }
+  // 다음 문제는 왼쪽으로 밀려 나가고 새 문제가 오른쪽에서 들어온다.
+  let moving = false;
   function next() {
+    if (moving) return;
     at += 1;
-    if (at < queue.length) drawQuestion(); else finish();
+    if (at >= queue.length) { finish(); return; }
+    if (calm?.matches) { drawQuestion(); return; }
+    moving = true;
+    sfx.swish();
+    $('quiz').classList.remove('enter');
+    $('quiz').classList.add('leave');
+    setTimeout(() => {
+      $('quiz').classList.remove('leave');
+      drawQuestion();
+      replay($('quiz'), 'enter');
+      moving = false;
+    }, 170);
   }
+  let climb = 0;
   function finish() {
     const right = results.filter(Boolean).length, missed = queue.filter((_, i) => !results[i]);
     $('dots').replaceChildren(); $('count').textContent = '';
-    $('score').textContent = right;
     $('scoreOf').textContent = `/ ${queue.length}`;
+    // 점수는 0부터 올라가고, 별은 하나씩 떨어진다. 다 맞히면 꽃가루.
+    const total = queue.length, ratio = right / total;
+    const stars = right === total ? 3 : ratio >= 0.7 ? 2 : ratio >= 0.4 ? 1 : 0;
+    $('stars').replaceChildren(...[0, 1, 2].map(() => { const s = document.createElement('i'); s.textContent = '★'; return s; }));
+    $('stars').setAttribute('aria-label', `별 ${stars}개`);
+    let shown = 0;
+    $('score').textContent = calm?.matches ? right : 0;
+    clearInterval(climb); climb = setInterval(() => {
+      if (screen !== 'end') { clearInterval(climb); return; }
+      if (calm?.matches || shown >= right) {
+        clearInterval(climb);
+        $('score').textContent = right;
+        [...$('stars').children].slice(0, stars).forEach((s, i) => setTimeout(() => {
+          if (screen !== 'end') return;
+          s.classList.add('on'); sfx.star(i);
+          if (i === 2) setTimeout(() => { sfx.fanfare(); confetti(); }, 250);
+        }, 200 + i * 330));
+        return;
+      }
+      shown += 1; $('score').textContent = shown; sfx.tick();
+    }, Math.max(40, Math.min(110, 900 / Math.max(right, 1))));
     $('retry').hidden = !missed.length;
     $('retry').onclick = () => start(missed, true);
     const all = topicsOf(term), following = all[all.indexOf(topic) + 1];

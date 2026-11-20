@@ -160,3 +160,34 @@ button:focus-visible, a:focus-visible { outline: 3px solid #6b9bd1; outline-offs
   .end-actions button { flex: 1 1 100%; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* 소리·움직임 */
+.fx { position: fixed; inset: 0; z-index: 50; width: 100vw; height: 100vh; pointer-events: none; }
+.streak { flex: none; padding: 3px 10px; border-radius: 999px; background: #fff1cc; color: #8a4b00; font-size: 16px; font-variant-numeric: tabular-nums; }
+.streak.bump { animation: bump .38s cubic-bezier(.3, 1.6, .5, 1); }
+.dots i.pop { animation: dotpop .42s cubic-bezier(.3, 1.8, .5, 1); }
+.quiz.leave { animation: leave .17s ease-in forwards; }
+.quiz.enter { animation: enter .26s cubic-bezier(.2, .9, .3, 1.1); }
+.choice.right:not(.wrong), .word.right, .chip.right { animation: pop .34s cubic-bezier(.3, 1.7, .5, 1); }
+.jolt { animation: shake .3s ease-out; }
+.blank.filled { animation: drop .42s cubic-bezier(.3, 1.6, .5, 1); }
+.blank.late { animation-delay: .25s; animation-fill-mode: backwards; }
+.word.flip { animation: flip .5s ease-out; }
+.match-lines line.right { stroke-dasharray: var(--len) var(--len); stroke-dashoffset: var(--len); animation: draw .4s ease-out forwards; }
+.match-lines line.right:not([style]) { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+.examples span { animation: pop .34s cubic-bezier(.3, 1.7, .5, 1) backwards; }
+.stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 18px; }
+.stars i { font-style: normal; font-size: 58px; line-height: 1; color: #ddd6c4; }
+.stars i.on { color: #f2b705; text-shadow: 0 3px 0 #c98f00; animation: starfall .5s cubic-bezier(.3, 1.6, .5, 1); }
+.score b { display: inline-block; min-width: 1.2em; font-variant-numeric: tabular-nums; }
+
+@keyframes bump { 0% { transform: scale(.6); } 60% { transform: scale(1.25); } 100% { transform: none; } }
+@keyframes dotpop { 0% { transform: scale(.4); } 60% { transform: scale(1.7); } 100% { transform: none; } }
+@keyframes leave { to { opacity: 0; transform: translateX(-40px); } }
+@keyframes enter { from { opacity: 0; transform: translateX(46px); } to { opacity: 1; transform: none; } }
+@keyframes drop { 0% { transform: translateY(-26px) scale(.8); opacity: 0; } 70% { transform: translateY(3px) scale(1.06); opacity: 1; } 100% { transform: none; } }
+@keyframes flip { 0% { transform: rotateX(90deg); } 60% { transform: rotateX(-12deg); } 100% { transform: none; } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes starfall { 0% { transform: translateY(-60px) scale(.4) rotate(-40deg); opacity: 0; } 70% { transform: translateY(4px) scale(1.2) rotate(8deg); opacity: 1; } 100% { transform: none; } }
+@media (max-width: 560px) { .stars i { font-size: 48px; } }
+@media (prefers-reduced-motion: reduce) { .match-lines line.right { stroke-dasharray: none; stroke-dashoffset: 0; } }
