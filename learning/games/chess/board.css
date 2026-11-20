@@ -1,11 +1,9 @@
 /* Board and piece artwork shared by online and AI games. */
 :where(.chess-surface) .chessboard{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:min(70dvh,calc(100dvw - 350px));max-width:720px;aspect-ratio:1;border:9px ridge #65401f;box-shadow:0 14px 34px #000,inset 0 0 0 1px #000;user-select:none;touch-action:manipulation}
 :where(.chess-surface) .square{position:relative;display:grid;place-items:center;min-width:0;padding:0;border:0;cursor:pointer;color:#1b1b1b}
-/* 칸은 나뭇결: 밝은 칸은 단풍나무(결 가로), 짙은 칸은 호두나무(결 세로). 그림의 4분의 1만 보이고 칸마다 자리를 달리한다(scripts/build-chess-wood.py). */
-:where(.chess-surface) .square.light{background:#e7c996 url(assets/images/wood-maple.webp?v=1) 0 0/400% auto no-repeat}
-:where(.chess-surface) .square.dark{background:#9a6a3f url(assets/images/wood-walnut.webp?v=2) 0 0/400% auto no-repeat}
-:where(.chess-surface) .square:nth-child(3n+1){background-position-x:8%}:where(.chess-surface) .square:nth-child(3n+2){background-position-x:47%}:where(.chess-surface) .square:nth-child(3n){background-position-x:88%}
-:where(.chess-surface) .square:nth-child(4n+1){background-position-y:12%}:where(.chess-surface) .square:nth-child(4n+2){background-position-y:63%}:where(.chess-surface) .square:nth-child(4n+3){background-position-y:36%}:where(.chess-surface) .square:nth-child(4n){background-position-y:90%}
+/* 체스판은 대회용 비닐 판처럼 크림·초록(장기·바둑은 나무판). 나뭇결로 바꿨다가 초록 판이 낫다고 해 되돌림(2026-11-21). */
+:where(.chess-surface) .square.light{background:var(--light)}
+:where(.chess-surface) .square.dark{background:var(--dark)}
 :where(.chess-surface) .square:focus-visible{outline:4px solid #65b9ff;outline-offset:-4px;z-index:8}
 :where(.chess-surface) .square.selected::before{content:"";position:absolute;inset:5%;border:4px solid #ffd950;background:#ffdf543f;z-index:1}
 :where(.chess-surface) .square.last::before{content:"";position:absolute;inset:0;background:#f6e75c66;z-index:0}
@@ -15,8 +13,8 @@
 :where(.chess-surface) .coord{position:absolute;z-index:4;font:800 clamp(8px,1.1vw,12px) Consolas,monospace;opacity:.8;pointer-events:none}
 :where(.chess-surface) .coord.file{right:3px;bottom:2px}
 :where(.chess-surface) .coord.rank{left:3px;top:2px}
-:where(.chess-surface) .light .coord{color:#76491f}
-:where(.chess-surface) .dark .coord{color:#f7e5c4}
+:where(.chess-surface) .light .coord{color:#5d7742}
+:where(.chess-surface) .dark .coord{color:#f4f1d5}
 :where(.chess-surface) .piece-svg{position:relative;z-index:3;width:82%;height:82%;overflow:visible;filter:drop-shadow(0 2px 1px #0006) drop-shadow(0 6px 5px #0007);transition:transform .12s ease}
 :where(.chess-surface) .square:hover .piece-svg{transform:translateY(-2px)}
 :where(.chess-surface) .piece-svg.white{--piece-fill:url(#chess-shade-white) #f8f1da;--piece-edge:#352d25;--piece-detail:#917a58}
