@@ -71,6 +71,8 @@ test('a hunt runs end to end: standing at the painting is checked, wrong picks f
   assert.equal(h.last(a3).race.players.length, 1, 'a student from another class in the same school sees the lobby');
   assert.equal(h.last(b1).race, null, 'another school never hears about it');
   h.act(a2, 'OPEN'); h.act(a3, 'OPEN');
+  assert.equal(h.last(a1).race.duration, 90, 'the default time limit matches the other races');
+  h.act(a1, 'TIME', { seconds: 180 });
   h.act(a2, 'START');
   assert.equal(h.last(a1).race.phase, 'lobby', 'only the host starts');
   h.act(a1, 'START');
@@ -113,8 +115,7 @@ test('a hunt runs end to end: standing at the painting is checked, wrong picks f
   for (let i = 1; i < rounds.length; i++) {
     h.advance(4000 + 3000);
     assert.equal(h.last(a1).race.index, i);
-    h.walkTo(a1, rounds[i].workId); h.act(a1, 'CLAIM', { index: i, workId: rounds[i].workId });
-    h.advance(35000);
+    for (const s of [a1, a2, a3]) { h.walkTo(s, rounds[i].workId); h.act(s, 'CLAIM', { index: i, workId: rounds[i].workId }); }
   }
   h.advance(4000);
   view = h.last(a1).race;
@@ -154,6 +155,26 @@ test('team mode: nobody fixes team size, children pick their own team (1 vs 2 is
   const red = view.teamStandings.find(t => t.index === 0), blue = view.teamStandings.find(t => t.index === 1);
   assert.equal(red.score, scores.a1, 'a team of one scores its member');
   assert.equal(blue.score, Math.round((scores.a2 + scores.a3) / 2), 'a bigger team scores the average, not the sum');
+});
+
+test('the race ends when the chosen time runs out, even with paintings left', () => {
+  const h = harness();
+  const [a1, a2] = ['a1', 'a2'].map(h.connect);
+  h.act(a1, 'OPEN'); h.act(a2, 'OPEN');
+  h.act(a2, 'TIME', { seconds: 120 });
+  assert.equal(h.last(a1).race.duration, 90, 'only the host chooses the time');
+  h.act(a1, 'TIME', { seconds: 45 });
+  assert.equal(h.last(a1).race.duration, 90, 'only the offered times can be chosen');
+  h.act(a1, 'TIME', { seconds: 60 });
+  h.act(a1, 'START'); h.advance(3000);
+  assert.equal(h.last(a1).race.raceLeftMs, 60000, 'the clock starts with the first hunt');
+  h.advance(35000 + 4000 + 3000);
+  assert.equal(h.last(a1).race.phaseMs, 18000, 'the last hunt is cut to the time that is left');
+  h.advance(18000 + 4000);
+  const view = h.last(a1).race;
+  assert.equal(view.phase, 'podium');
+  assert.equal(view.total, 2, 'only the paintings actually played count');
+  assert.ok(h.current().rounds.length > 2);
 });
 
 test('leaving: the host hands over, moving rooms drops you, the last one out closes the lobby', () => {

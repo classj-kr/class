@@ -34,16 +34,17 @@
     launch.append(launchTitle, launchSub);
     const lobby = el('section', 'race-lobby'); lobby.hidden = true; lobby.setAttribute('aria-label', '순위전 대기실');
     const lobbyKicker = el('p', 'race-kicker'), lobbyTitle = el('h3'), lobbyPeople = el('ul', 'race-people');
-    const lobbyTeams = el('div', 'race-teams'), lobbyPick = el('div', 'race-pick'), lobbyActions = el('div', 'race-actions');
+    const lobbyTeams = el('div', 'race-teams'), lobbyPick = el('div', 'race-pick'), lobbyTimes = el('div', 'race-teams race-times'), lobbyActions = el('div', 'race-actions');
+    const timeLabel = seconds => seconds % 60 ? `${seconds}초` : `${seconds / 60}분`;
     const startButton = button('race-primary', '시작'), leaveButton = button('race-secondary', '나가기');
     const lobbyNote = el('p', 'race-note');
     lobbyActions.append(startButton, leaveButton);
-    lobby.append(lobbyKicker, lobbyTitle, lobbyPeople, lobbyTeams, lobbyPick, lobbyActions, lobbyNote);
+    lobby.append(lobbyKicker, lobbyTitle, lobbyPeople, lobbyTeams, lobbyPick, lobbyTimes, lobbyActions, lobbyNote);
 
     const hud = el('section', 'race-hud'); hud.hidden = true; hud.setAttribute('aria-live', 'polite');
-    const hudHead = el('div', 'race-hud-head'), hudStep = el('span', 'race-kicker'), hudScore = el('span', 'race-score');
+    const hudHead = el('div', 'race-hud-head'), hudStep = el('span', 'race-kicker'), hudClock = el('span', 'race-clock'), hudScore = el('span', 'race-score');
     const quit = button('race-quit', '×', '순위전 그만하기');
-    hudHead.append(hudStep, hudScore, quit);
+    hudHead.append(hudStep, hudClock, hudScore, quit);
     const clue = el('p', 'race-clue'), timer = el('div', 'race-timer'), timerBar = el('i'), status = el('p', 'race-status');
     timer.append(timerBar);
     hud.append(hudHead, clue, timer, status);
@@ -57,6 +58,13 @@
     app.append(launch, lobby, live, hud, count, results);
 
     let state = null, connected = false, podium = null, ceremonyStart = 0, ceremonyUntil = 0, timerKey = '', resultsTimer = 0;
+    let clockEnd = 0, clockRunning = false;
+    function paintClock() {
+      const left = Math.max(0, clockRunning ? clockEnd - performance.now() : clockEnd - performance.now() + 0), sec = Math.ceil(left / 1000);
+      hudClock.textContent = `남은 시간 ${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+      hudClock.classList.toggle('low', clockRunning && sec <= 10);
+    }
+    setInterval(() => { if (!hud.hidden && clockRunning) paintClock(); }, 250);
     let frozenUntil = 0, lastClaimSeq = 0, highlight = null, burst = null, countTimer = 0, frozenTimer = 0, pendingClaim = '';
 
     function setTimer(remainingMs, totalMs) {
@@ -143,7 +151,16 @@
           mix.addEventListener('click', () => send({ type: 'MUSEUM_RACE_SHUFFLE' }));
           lobbyTeams.append(mix);
         }
-      } else lobbyTeams.append(el('span', 'race-mode', s.teamCount ? `${s.teamCount}팀 대항` : '개인전'));
+      } else lobbyTeams.append(el('span', 'race-mode', `${s.teamCount ? `${s.teamCount}팀 대항` : '개인전'} · ${timeLabel(s.duration)}`));
+      // 제한시간은 다른 순위전과 같이 고른다.
+      lobbyTimes.replaceChildren();
+      lobbyTimes.hidden = !host;
+      if (host) for (const seconds of s.durations || []) {
+        const b = button(seconds === s.duration ? 'on' : '', timeLabel(seconds));
+        b.setAttribute('aria-pressed', String(seconds === s.duration));
+        b.addEventListener('click', () => send({ type: 'MUSEUM_RACE_TIME', seconds }));
+        lobbyTimes.append(b);
+      }
       // 팀전이면 누구나 팀 색을 눌러 자기 팀을 고른다.
       lobbyPick.replaceChildren();
       lobbyPick.hidden = !s.teamCount;
@@ -190,7 +207,10 @@
       if (!racing) { timerKey = ''; return; }
       if (s.phase === 'ready' && s.index === 0 && (!prev || prev.phase === 'lobby')) { teleport(startSpot(s)); sfx('bell'); }
       const team = teamOf(s, selfId()), me = s.me || {};
-      hudStep.textContent = `작품 찾기 ${String(s.index + 1).padStart(2, '0')} / ${String(s.total).padStart(2, '0')}`;
+      hudStep.textContent = `작품 찾기 ${String(s.index + 1).padStart(2, '0')}`;
+      // 전체 남은 시간: 첫 단서를 찾기 시작할 때부터 줄어든다.
+      clockEnd = performance.now() + s.raceLeftMs; clockRunning = !(s.phase === 'ready' && s.index === 0);
+      paintClock();
       hudScore.replaceChildren(el('span', '', `내 점수 ${me.score ?? 0}`));
       if (team) { const chip = el('span', 'race-team-chip', team.name); chip.style.background = team.color; hudScore.prepend(chip); }
       clue.textContent = s.clue;

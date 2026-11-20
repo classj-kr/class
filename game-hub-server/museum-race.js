@@ -13,6 +13,9 @@ const TEAMS = [
 ];
 const MAX_PLAYERS = 40;
 const ORDER_BONUS = [60, 40, 20];
+// 다른 순위전과 같은 제한시간(초). 시간이 다 되거나 그 방 작품을 다 찾으면 끝난다.
+const DURATIONS = [60, 90, 120, 180];
+const DEFAULT_DURATION = 90;
 
 // 작품 자리: museum.js addFramedWork 와 같은 규칙(짝수째 왼쪽 벽, 홀수째 오른쪽 벽, 5.15 간격).
 function workSlot(room, workId) {
@@ -93,18 +96,19 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
     const time = now();
     const player = race.players.get(userId);
     const base = {
-      mode: "hunt", roomId: race.roomId, phase: race.phase, hostId: race.hostId, teamCount: race.teamCount, joined: !!player,
+      mode: "hunt", roomId: race.roomId, phase: race.phase, hostId: race.hostId, teamCount: race.teamCount, duration: race.duration, durations: DURATIONS, joined: !!player,
       players: [...race.players.values()].map(p => ({ userId: p.userId, name: p.name, avatarKey: p.avatarKey, team: p.team })),
       teams: TEAMS.map(([name, color]) => ({ name, color }))
     };
     if (race.phase === "lobby") return base;
     if (race.phase === "podium") {
       return { ...base, remainingMs: Math.max(0, race.podiumUntil - time), standings: race.final.standings, teamStandings: race.final.teams,
-        total: race.rounds.length, ...(player ? { me: { score: player.score, correct: player.correctCount } } : {}) };
+        total: race.played || 0, ...(player ? { me: { score: player.score, correct: player.correctCount } } : {}) };
     }
     const round = race.rounds[race.index];
     const out = { ...base, index: race.index, total: race.rounds.length, clue: round.clue,
-      remainingMs: Math.max(0, race.phaseEndsAt - time), phaseMs: race.phase === "ready" ? readyMs : race.phase === "hunt" ? huntMs : revealMs,
+      remainingMs: Math.max(0, race.phaseEndsAt - time), phaseMs: race.phase === "ready" ? readyMs : race.phase === "hunt" ? race.huntWindow : revealMs,
+      raceLeftMs: race.endsAt ? Math.max(0, race.endsAt - time) : race.duration * 1000,
       found: [...race.found].map(([id, f]) => ({ userId: id, order: f.order })),
       standings: standings(race), teamStandings: teamStandings(race) };
     if (race.phase === "reveal") out.answer = { workId: round.workId, title: round.title, artist: round.artist };
@@ -140,14 +144,20 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
     race.phaseEndsAt = now() + ms;
     race.timer = setTimer(fn, ms);
   }
+  const timeLeft = race => race.endsAt ? race.endsAt - now() : Infinity;
   function startRound(race) {
     race.phase = "ready";
     race.found = new Map();
     for (const p of race.players.values()) { p.frozenUntil = 0; p.claim = null; }
     schedule(race, readyMs, () => {
+      // 제한시간은 첫 단서를 찾기 시작할 때부터 잰다.
+      if (!race.endsAt) race.endsAt = now() + race.duration * 1000;
+      const span = Math.min(huntMs, timeLeft(race));
+      if (span <= 0) { finish(race); return; }
       race.phase = "hunt";
       race.huntStartedAt = now();
-      schedule(race, huntMs, () => reveal(race));
+      race.huntWindow = span;
+      schedule(race, span, () => reveal(race));
       broadcast(race);
     });
     broadcast(race);
@@ -155,9 +165,11 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
   function reveal(race) {
     if (race.phase !== "hunt") return;
     race.phase = "reveal";
+    race.played = race.index + 1;
     schedule(race, revealMs, () => {
       race.index++;
-      if (race.index >= race.rounds.length) finish(race);
+      // 남은 시간으로는 다음 단서를 찾을 틈이 없으면 여기서 끝낸다.
+      if (race.index >= race.rounds.length || timeLeft(race) < readyMs + 3000) finish(race);
       else startRound(race);
     });
     broadcast(race);
@@ -223,7 +235,7 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
       if (race && race.phase === "podium") { close(race); race = null; }
       if (!race) {
         race = { key: keyOf(visitor.schoolKey, visitor.room), schoolKey: visitor.schoolKey, roomId: visitor.room, phase: "lobby",
-          hostId: visitor.userId, teamCount: 0, players: new Map(), rounds: [], index: -1, found: new Map(), seq: 0 };
+          hostId: visitor.userId, teamCount: 0, duration: DEFAULT_DURATION, players: new Map(), rounds: [], index: -1, found: new Map(), seq: 0 };
         races.set(race.key, race);
       }
       if (race.phase !== "lobby") { send(socket, { type: "MUSEUM_RACE", roomId: race.roomId, race: project(race, visitor.userId) }); return true; }
@@ -242,6 +254,11 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
     if (type === "MUSEUM_RACE_TEAMS" && race.phase === "lobby" && race.hostId === visitor.userId) {
       const count = Number(message.count);
       if (count === 0 || (Number.isInteger(count) && count >= 2 && count <= TEAMS.length)) { race.teamCount = count; placeUnteamed(race); broadcast(race); }
+      return true;
+    }
+    if (type === "MUSEUM_RACE_TIME" && race.phase === "lobby" && race.hostId === visitor.userId) {
+      const seconds = Number(message.seconds);
+      if (DURATIONS.includes(seconds)) { race.duration = seconds; broadcast(race); }
       return true;
     }
     // 다른 순위전처럼 연 사람은 학생을 다른 팀으로 옮기거나 한꺼번에 섞을 수 있다.
@@ -288,4 +305,4 @@ function createMuseumRace({ send, content = loadMuseumContent(), now = Date.now,
   return { handle, moved, left, joined: moved, attach(fn) { sockets = fn; }, races };
 }
 
-module.exports = { createMuseumRace, buildRounds, loadMuseumContent, workSlot, standsAt, huntPoints, TEAMS };
+module.exports = { createMuseumRace, buildRounds, loadMuseumContent, workSlot, standsAt, huntPoints, TEAMS, DURATIONS };

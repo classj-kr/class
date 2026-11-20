@@ -46,6 +46,10 @@ body.racing .room-tabs,body.racing .hud{display:none}
 .race-hud{position:fixed;z-index:9;left:28px;bottom:27px;width:min(520px,calc(100vw - 400px));padding:13px 18px 12px;border:1px solid #806735;border-radius:4px;background:rgba(14,12,9,.9);color:#eee2cb;box-shadow:0 18px 50px rgba(0,0,0,.55)}
 .race-hud-head{display:flex;align-items:center;gap:12px}
 .race-hud-head .race-kicker{flex:1}
+.race-clock{color:#f1dca6;font:700 14px/1 Georgia,'Noto Sans KR',sans-serif;font-variant-numeric:tabular-nums}
+.race-clock.low{color:#ffcf6e;animation:raceTick 1s ease-in-out infinite}
+@keyframes raceTick{50%{opacity:.55}}
+.race-times[hidden]{display:none}
 .race-score{display:flex;align-items:center;gap:8px;color:#f1dca6;font-weight:700;font-size:14px}
 .race-team-chip{padding:2px 9px;border-radius:999px;color:#17110a;font-size:12px}
 .race-quit{width:30px;height:30px;border:1px solid rgba(201,166,90,.35);border-radius:50%;background:transparent;color:#cdb98f;font-size:18px;line-height:1;cursor:pointer}
