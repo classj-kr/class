@@ -362,9 +362,12 @@ const SITE_MUSIC_CONTROL_TAG = `<script data-class-music-control="true" src="/as
 const SITE_EXAM_TYPOGRAPHY_TAG = '<link rel="stylesheet" href="/assets/exam-typography.css?v=20261029-lesson-navigation">';
 // 학교 공용 채팅 위젯: 메인 화면과 보드게임 쪽에만 끼운다. 학교 학생·교사가 아니면 위젯이 스스로 안 뜬다.
 const SITE_SCHOOL_CHAT_TAG = '<script data-school-chat="true" src="/assets/school-chat.js?v=20261118-same-room" defer></script>';
+// 채팅이 붙는 쪽에 들어와 있는 학생이 첫 화면 접속자 줄에 보인다. 그림 그리기도 놀이처럼 흩어져 하는 활동이라
+// 같이 붙인다(2026-11-20).
 function wantsSchoolChat(filepath) {
   return filepath === path.join(SITE_ROOT, "index.html")
-    || filepath.startsWith(path.join(SITE_ROOT, "learning", "games") + path.sep);
+    || filepath.startsWith(path.join(SITE_ROOT, "learning", "games") + path.sep)
+    || filepath.startsWith(path.join(SITE_ROOT, "learning", "arts", "art-studio") + path.sep);
 }
 
 // 쪽마다 로그인(또는 게스트 입장)에서 나온 이름을 맨 앞에 박아 넣는다. 게임·학습 화면은 이 값을
