@@ -3,7 +3,7 @@
 :where(.chess-surface) .square{position:relative;display:grid;place-items:center;min-width:0;padding:0;border:0;cursor:pointer;color:#1b1b1b}
 /* 칸은 나뭇결: 밝은 칸은 단풍나무(결 가로), 짙은 칸은 호두나무(결 세로). 그림의 4분의 1만 보이고 칸마다 자리를 달리한다(scripts/build-chess-wood.py). */
 :where(.chess-surface) .square.light{background:#e7c996 url(assets/images/wood-maple.webp?v=1) 0 0/400% auto no-repeat}
-:where(.chess-surface) .square.dark{background:#7d5131 url(assets/images/wood-walnut.webp?v=1) 0 0/400% auto no-repeat}
+:where(.chess-surface) .square.dark{background:#9a6a3f url(assets/images/wood-walnut.webp?v=2) 0 0/400% auto no-repeat}
 :where(.chess-surface) .square:nth-child(3n+1){background-position-x:8%}:where(.chess-surface) .square:nth-child(3n+2){background-position-x:47%}:where(.chess-surface) .square:nth-child(3n){background-position-x:88%}
 :where(.chess-surface) .square:nth-child(4n+1){background-position-y:12%}:where(.chess-surface) .square:nth-child(4n+2){background-position-y:63%}:where(.chess-surface) .square:nth-child(4n+3){background-position-y:36%}:where(.chess-surface) .square:nth-child(4n){background-position-y:90%}
 :where(.chess-surface) .square:focus-visible{outline:4px solid #65b9ff;outline-offset:-4px;z-index:8}

@@ -33,7 +33,8 @@ def grain(seed, dark, light, bands):
 
 os.makedirs(OUT, exist_ok=True)
 maple = grain(7, (201, 154, 98), (241, 216, 172), 9)
-walnut = grain(11, (92, 58, 31), (156, 107, 64), 8).transpose(Image.Transpose.ROTATE_90)
+# 호두나무는 검은 말(짙은 남색)이 묻히지 않게 한 단계 밝게(2026-11-21, 평균 밝기 90 → 약 115).
+walnut = grain(11, (120, 80, 45), (186, 134, 86), 8).transpose(Image.Transpose.ROTATE_90)
 for name, image in (("wood-maple", maple), ("wood-walnut", walnut)):
     path = os.path.join(OUT, name + ".webp")
     image.save(path, format="WEBP", quality=84, method=6)
