@@ -374,6 +374,10 @@
             z-index: 10;
         }
 
+        /* 접시 위 동전은 접시보다 크게 떠 보이지 않게 작게 줄이고 서로 조금씩 겹쳐 쌓는다. */
+        #game-board .plate { gap: 0; padding: 0 10px; }
+        #game-board .plate .coin { width: 34px; height: 34px; font-size: 16px; margin: -4px -5px; box-shadow: inset 0 0 0 1.5px rgba(240, 200, 90, 0.9), inset -1px -2px 3px rgba(60, 35, 0, 0.35), 1px 2px 3px rgba(0,0,0,0.6); }
+
         .coin-pool-container {
             width: 260px; 
             border: 2px solid #728aa0;
@@ -401,11 +405,15 @@
             width: 52px;
             height: 52px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #fcec99, #dcb036, #a17812);
-            border: 2px solid #85610d;
-            box-shadow: inset 2px 2px 5px rgba(255,255,255,0.7), 2px 3px 5px rgba(0,0,0,0.6);
-            color: #fff9e6;
-            text-shadow: 1px 1px 2px #543d03;
+            /* 가장자리 턱(안쪽 고리) + 왼쪽 위에서 빛을 받은 금빛 */
+            background:
+                radial-gradient(circle, transparent 0 60%, rgba(110, 72, 8, 0.55) 61% 63%, rgba(255, 238, 170, 0.75) 64% 66%, transparent 67%),
+                radial-gradient(circle at 30% 28%, #fff4bc 0%, #f1ca4f 34%, #c9951f 70%, #8a6210 100%);
+            border: 2px solid #6e4f0a;
+            box-shadow: inset 0 0 0 2px rgba(240, 200, 90, 0.9), inset -2px -3px 5px rgba(60, 35, 0, 0.35), 2px 3px 5px rgba(0,0,0,0.6);
+            color: #6b4706;
+            text-shadow: 0 1px 0 rgba(255, 246, 205, 0.85), 0 -1px 0 rgba(70, 44, 0, 0.45);
+            font-family: Georgia, "Times New Roman", serif;
             font-size: 24px;
             font-weight: bold;
             display: flex;
