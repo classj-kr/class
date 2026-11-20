@@ -3,6 +3,8 @@
 // 서버가 학교 좌표로 기상청 단기예보(kma-weather.js)를 받고, 기상청이 안 되면
 // Open-Meteo 예보로 대신한다. 미세먼지는 Open-Meteo 대기질 자료를 서버가 받는다.
 // 바깥 서비스는 모두 서버끼리 부르고, 좌표 둘레(약 1km)마다 캐시해 호출 수를 줄인다.
+const { isDaytime } = require("./kma-weather");
+
 const OPEN_METEO_FORECAST = "https://api.open-meteo.com/v1/forecast";
 const OPEN_METEO_AIR = "https://air-quality-api.open-meteo.com/v1/air-quality";
 const FORECAST_TTL_MS = 30 * 60 * 1000;
@@ -56,15 +58,17 @@ function moonAt(date, lat, lon) {
 }
 
 // 예보 시간 칸은 그 시간의 가운데(30분)로 본다. time 은 한국 시각 "2026-11-20T21:00".
+// 지금 날씨 칸의 낮·밤은 예보를 받아 둔 시각(최대 30분 캐시)이 아니라 부를 때마다 새로 가른다.
+// 그러지 않으면 해 뜰 무렵·질 무렵에 칸 색(하늘색·밤하늘색)과 해·달 아이콘이 늦게 바뀐다.
 function withMoon(forecast, lat, lon, now = new Date()) {
   return {
     ...forecast,
-    current: { ...forecast.current, moon: moonAt(now, lat, lon) },
+    current: { ...forecast.current, isDay: isDaytime(now, lat, lon), moon: moonAt(now, lat, lon) },
     hourly: (forecast.hourly || []).map((item) => ({ ...item, moon: moonAt(new Date(`${String(item.time).slice(0, 13)}:30:00+09:00`), lat, lon) }))
   };
 }
 
-function createSchoolWeather({ kma, fetchImpl = fetch } = {}) {
+function createSchoolWeather({ kma, fetchImpl = fetch, clock = () => new Date() } = {}) {
   const cache = new Map();
 
   function cached(key, ttl, load) {
@@ -137,7 +141,7 @@ function createSchoolWeather({ kma, fetchImpl = fetch } = {}) {
     ]);
     if (forecast.status !== "fulfilled") throw forecast.reason;
     if (airQuality.status !== "fulfilled") console.warn("Air quality failed:", airQuality.reason?.message);
-    return { ...withMoon(forecast.value, lat, lon), air: airQuality.status === "fulfilled" ? airQuality.value : null };
+    return { ...withMoon(forecast.value, lat, lon, clock()), air: airQuality.status === "fulfilled" ? airQuality.value : null };
   }
 
   return { get };

@@ -55,7 +55,9 @@ test("기상청이 안 되면 Open-Meteo 예보로 대신한다", async () => {
   assert.equal(result.source, "open-meteo");
   const { moon: currentMoon, ...current } = result.current;
   const { moon: hourMoon, ...hour } = result.hourly[1];
-  assert.deepEqual(current, { temperature: 3.2, humidity: 40, code: 2, isDay: 1 });
+  const { isDay, ...rest } = current;
+  assert.deepEqual(rest, { temperature: 3.2, humidity: 40, code: 2 });
+  assert.ok(isDay === 0 || isDay === 1);
   assert.deepEqual(hour, { time: "2026-11-20T11:00", hour: 11, temperature: 4, humidity: 38, rain: 10, code: 3, isDay: 1 });
   assert.ok(currentMoon && hourMoon);
 });
@@ -126,4 +128,17 @@ test("예보 시간마다 달 정보를 붙이되 캐시한 예보는 고치지 
   assert.equal(typeof result.hourly[0].moon.up, "boolean");
   assert.ok(Number.isFinite(result.hourly[0].moon.phase));
   assert.equal(typeof result.current.moon.up, "boolean");
+});
+
+test("지금 날씨 칸의 낮·밤은 받아 둔 예보가 아니라 부른 시각으로 가른다", async () => {
+  const kma = { configured: true, getWeather: async () => ({ ...structuredClone(kmaResult), current: { ...kmaResult.current, isDay: 1 } }) };
+  let now = new Date("2026-11-21T01:30:00+09:00");
+  const service = createSchoolWeather({ kma, fetchImpl: fakeFetch([]), clock: () => now });
+  assert.equal((await service.get(37.66, 127.06)).current.isDay, 0);
+  now = new Date("2026-11-21T12:00:00+09:00");
+  assert.equal((await service.get(37.66, 127.06)).current.isDay, 1);
+  now = new Date("2026-11-21T07:00:00+09:00"); // 해 뜨기 전
+  assert.equal((await service.get(37.66, 127.06)).current.isDay, 0);
+  now = new Date("2026-11-21T07:40:00+09:00"); // 해 뜬 뒤
+  assert.equal((await service.get(37.66, 127.06)).current.isDay, 1);
 });
