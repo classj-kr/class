@@ -36,7 +36,9 @@ def straight_grain(seed, dark, light, bands, strength):
 
 os.makedirs(OUT, exist_ok=True)
 boards = {
-    "goban": straight_grain(3, (196, 145, 72), (233, 189, 115), 26, 0.42),
+    # 결이 판 선과 같은 세로라 진하거나 가늘면 선 사이사이가 또 다른 선처럼 보여 "정신 사납다"(2026-11-21).
+    # 색 폭을 좁히고 띠를 넓게, 결의 세기를 절반 아래로 낮춰 판 선만 또렷하게 한다.
+    "goban": straight_grain(3, (206, 157, 84), (228, 182, 108), 12, 0.2),
 }
 for name, image in boards.items():
     path = os.path.join(OUT, name + ".webp")

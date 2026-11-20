@@ -1,6 +1,6 @@
 /* Shared by the online Janggi board and AI lessons. */
 /* 장기판은 바둑판과 같은 밝은 곧은결 나무(scripts/build-board-wood.py). 짙게 하면 말과 글씨가 묻혀 보여 밝게 둔다. */
-.janggi-board{position:relative;width:min(600px,92vw);aspect-ratio:9/10;background:#d5a458 url(../assets/wood/goban.webp?v=1) center/cover;border:10px ridge #6c3e1c;box-shadow:inset 0 0 25px rgba(65,31,7,.45),0 15px 35px #000}
+.janggi-board{position:relative;width:min(600px,92vw);aspect-ratio:9/10;background:#d5a458 url(../assets/wood/goban.webp?v=2) center/cover;border:10px ridge #6c3e1c;box-shadow:inset 0 0 25px rgba(65,31,7,.45),0 15px 35px #000}
 
 .janggi-board .gridline{position:absolute;background:var(--line,#3f2412);pointer-events:none}
 .janggi-board .vline{top:5%;bottom:5%;width:2px}
