@@ -156,7 +156,7 @@
         libraryGrid: byId("libraryGrid"), libraryEmpty: byId("libraryEmpty"), toast: byId("toast"),
         playerGreeting: byId("playerGreeting"),
         lessonOverview: byId("lessonOverview"), learningShell: byId("learningShell"), lessonList: byId("lessonList"),
-        lessonKnownTotal: byId("lessonKnownTotal"), lessonItemTotal: byId("lessonItemTotal"),
+       
         backLink: document.querySelector(".back-link"),
         backToLessons: byId("backToLessons"), currentLessonNumber: byId("currentLessonNumber"),
         currentLessonTitle: byId("currentLessonTitle"), currentLessonQuiz: byId("currentLessonQuiz"),
@@ -446,11 +446,7 @@
         elements.answerFeedback.hidden = false;
         elements.nextQuestion.textContent = quizIndex === quiz.length - 1 ? "결과 보기 →" : "다음 문제 →";
         elements.nextQuestion.disabled=false;
-        // 외움·복습은 스스로 고르지 않고 문제 결과로 정한다: 처음에 맞히면 외움, 한 번이라도 틀렸으면 복습.
-        const status = quizQuestionHadWrong ? "review" : "known";
-        progress[answerIdiom.id] = { status, updatedAt: new Date().toISOString() };
-        await saveProgress([event, { kind: 'self-assessment', questionKey: answerIdiom.id, response: status, snapshot: { title: answerIdiom.word } }]);recordBusy=false;elements.learningShell.inert=false;
-        renderSummary(); renderLessonOverview();
+        await saveProgress([event]);recordBusy=false;elements.learningShell.inert=false;
         elements.nextQuestion.focus();
     }
 
@@ -484,24 +480,19 @@
     }
 
 function renderLessonOverview() {
-        const knownTotal = data.filter((idiom) => progress[idiom.id]?.status === "known").length;
-        elements.lessonKnownTotal.textContent = knownTotal;
-        elements.lessonItemTotal.textContent = data.length;
         elements.lessonList.replaceChildren();
 
         lessons.forEach((lesson, index) => {
             const items = lesson.ids.map((id) => data.find((idiom) => idiom.id === id)).filter(Boolean);
-            const known = items.filter((idiom) => progress[idiom.id]?.status === "known").length;
             const button = document.createElement("button");
             button.type = "button";
-            button.className = `lesson-card${known === items.length ? " complete" : ""}`;
+            button.className = "lesson-card";
             button.innerHTML = `
                 <span class="lesson-number">${index + 1}</span>
                 <span class="lesson-card-body">
                     <span class="lesson-card-top"><strong>${lesson.title}</strong></span>
                     <span class="lesson-examples">${items.map((item) => item.word).join(" · ")}</span>
-                </span>
-                <span class="lesson-progress">${known === items.length ? "완료" : `${known}/${items.length}`}</span>`;
+                </span>`;
             button.addEventListener("click", () => openLesson(index));
             elements.lessonList.append(button);
         });

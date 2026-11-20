@@ -371,7 +371,7 @@ body.lesson-active .memory-actions button { min-height: 44px; }
         gap: 8px 14px;
     }
 }
-.lesson-overview-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-bottom: 10px; }
+.lesson-overview-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; min-height: 44px; margin-bottom: 10px; }
 .lesson-overview-actions .lesson-quiz-button { min-height: 44px; padding: 0 14px; border: 1px solid var(--green); border-radius: 10px; color: white; background: var(--green); font-weight: 800; cursor: pointer; }
 @media (max-width: 1248px) {
     .lesson-overview-actions { padding-inline: 44px; }
