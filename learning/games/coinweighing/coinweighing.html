@@ -261,28 +261,55 @@
             justify-content: center;
         }
 
+        /* 기둥은 둥근 놋쇠(왼쪽에서 빛을 받은 원기둥 명암), 위아래에 고리. 받침은 짙은 나무 두 단에 놋쇠 테. */
         .scale-pillar {
             position: absolute;
-            bottom: 20px;
-            width: 40px;
-            height: 210px;
-            background: linear-gradient(to right, #3e2714, #664124, #3e2714);
-            border: 2px solid #201308;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+            bottom: 26px;
+            width: 22px;
+            height: 206px;
+            background: linear-gradient(to right, #5a3d10 0%, #b8892f 22%, #f6e3a6 40%, #d9b257 58%, #8a6420 82%, #4a3410 100%);
+            border: 1px solid #3d2a0a;
+            border-radius: 3px;
+            box-shadow: 6px 6px 14px rgba(0,0,0,0.5);
             z-index: 2;
         }
+        .scale-pillar::before, .scale-pillar::after {
+            content: "";
+            position: absolute;
+            left: -7px;
+            right: -7px;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #5a3d10, #d1a54a 30%, #fff0b8 45%, #c9983c 65%, #5a3d10);
+            border: 1px solid #3d2a0a;
+        }
+        .scale-pillar::before { top: 18px; }
+        .scale-pillar::after { bottom: -2px; }
         .scale-base {
             position: absolute;
             bottom: 0;
-            width: 100px;
-            height: 30px;
-            background: linear-gradient(to right, #503117, #754b2a, #503117);
-            border: 2px solid #201308;
-            border-bottom: none;
-            z-index: 3;
+            width: 150px;
+            height: 22px;
             left: 50%;
             transform: translateX(-50%);
-            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            border-radius: 6px 6px 3px 3px;
+            background: linear-gradient(to bottom, #7a4d26 0%, #4f2f15 55%, #2e1b0a 100%);
+            border: 1px solid #1d1006;
+            box-shadow: inset 0 3px 0 #d1a54a, inset 0 -2px 3px rgba(0,0,0,0.5), 0 8px 12px rgba(0,0,0,0.5);
+            z-index: 3;
+        }
+        .scale-base::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -11px;
+            width: 86px;
+            height: 12px;
+            transform: translateX(-50%);
+            border-radius: 5px 5px 2px 2px;
+            background: linear-gradient(to bottom, #6b4423, #3d2410);
+            border: 1px solid #1d1006;
+            box-shadow: inset 0 2px 0 #d1a54a;
         }
 
         .scale-beam-container {
