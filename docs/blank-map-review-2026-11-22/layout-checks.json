@@ -1,0 +1,216 @@
+{
+  "desktop": [
+    {
+      "id": "kr-cities",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 2,
+      "pins": 5,
+      "title": "우리나라의 수도 서울을 찾아보세요."
+    },
+    {
+      "id": "kr-land",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 2,
+      "pins": 5,
+      "title": "백두산의 위치를 찾아보세요."
+    },
+    {
+      "id": "world-continents",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 178,
+      "pins": 7,
+      "title": "우리나라가 속한 아시아를 찾아보세요."
+    },
+    {
+      "id": "world-neighbors",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 178,
+      "pins": 4,
+      "title": "대한민국의 위치를 찾아보세요."
+    },
+    {
+      "id": "kr-rivers",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 8,
+      "pins": 4,
+      "title": "수도권을 지나 황해로 흐르는 하천을 고르세요."
+    },
+    {
+      "id": "kr-capitals",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 4,
+      "pins": 6,
+      "title": "427년 장수왕이 천도한 곳을 고르세요."
+    },
+    {
+      "id": "world-mountains",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 182,
+      "pins": 4,
+      "title": "인도판과 유라시아판이 충돌하여 높아진 산맥을 고르세요."
+    },
+    {
+      "id": "world-rivers",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 187,
+      "pins": 5,
+      "title": "아프리카에서 북쪽의 지중해로 흐르는 강을 고르세요."
+    },
+    {
+      "id": "history-civilizations",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 183,
+      "pins": 4,
+      "title": "나일강의 범람을 이용하고 피라미드를 세운 문명 지역을 고르세요."
+    },
+    {
+      "id": "kr-high-land",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 2,
+      "pins": 4,
+      "title": "자료에 해당하는 지역을 지도에서 고르세요."
+    },
+    {
+      "id": "kr-high-industry",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 4,
+      "pins": 4,
+      "title": "산업 구성이 자료와 일치하는 도시를 고르세요."
+    },
+    {
+      "id": "world-high-climate",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 180,
+      "pins": 5,
+      "title": "그래프의 기후가 나타나기 가장 적합한 지점을 고르세요."
+    },
+    {
+      "id": "world-high-seaways",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 178,
+      "pins": 5,
+      "title": "이 항로에서 통과하는 운하를 고르세요."
+    },
+    {
+      "id": "history-high-voyages",
+      "inside": true,
+      "leakedLabels": 0,
+      "overlap": false,
+      "paths": 178,
+      "pins": 6,
+      "title": "리스본에서 출발한 바스쿠 다 가마의 항로에서 경유지와 도착지를 순서대로 고르세요."
+    }
+  ],
+  "mobile": [
+    {
+      "id": "kr-cities",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "kr-land",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "world-continents",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "world-neighbors",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "kr-rivers",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "kr-capitals",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "world-mountains",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "world-rivers",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "history-civilizations",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "kr-high-land",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "kr-high-industry",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "world-high-climate",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "world-high-seaways",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    },
+    {
+      "id": "history-high-voyages",
+      "inside": true,
+      "overflow": false,
+      "overlap": false
+    }
+  ]
+}

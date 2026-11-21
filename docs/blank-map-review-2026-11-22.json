@@ -1,0 +1,134 @@
+{
+  "date": "2026-11-22",
+  "scope": "백지도 활동 14묶음·55과제. 수집된 전체 교과서나 평가문항의 전수 분석 완료를 뜻하지 않음.",
+  "authorship": "문항은 새로 작성. 원본 교과서 사진/PDF를 사이트에 재배포하지 않음.",
+  "curriculum": "references/moe/2022-revised-curriculum/extracted/07-social-studies.txt; 4사05-02, 6사01-01, 6사09-02. 고등은 2015 한국지리·세계지리·세계사 및 2022 한국지리탐구의 공통 주제를 참고; 특정 수능 연도 전체 범위로 표시하지 않음.",
+  "sources": {
+    "elementary-atlas": {
+      "path": "references/textbooks/초등/아이스크림/사회과부도/사회과부도 5~6 (한춘희)_2022/사회과부도 교과서.pdf",
+      "pdfPages": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "reviewedFor": "우리나라 주요 도시·지형, 지도에서 위치 찾기; 3–4학년 범위는 2022 사회과 교육과정 4사05-02와 대조",
+      "sha256": "efe41e3258a93ce761106400b771690db5ecf5721b85d3352c5e74820204a722"
+    },
+    "elementary-world": {
+      "path": "references/textbooks/초등/천재/사회과부도/사회과 부도(김정인)_5-6_2022/백지도_5학년_내용/131쪽_세계 지도 백지도__00d2b45154.jpg",
+      "pdfPages": [],
+      "reviewedFor": "세계 백지도 자료의 수집 확인; 대륙·대양 범위는 초등 사회과부도 차례와 6사09-02 대조",
+      "sha256": "c70952cbdd31f321f6b3f6627bdc91b1b14dd8f84505789b6c8d75d4a807d96e"
+    },
+    "korea-workbook": {
+      "path": "references/textbooks/중고등/T셀파/고등/사회/한국지리탐구(조대헌)/한지탐(천재)_백지도 활동 워크북__00c6ef86db.pdf",
+      "pdfPages": [
+        1,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "reviewedFor": "행정구역·지형·인구·공업 지역을 지도에서 찾고 자료와 연결하는 활동 구조",
+      "sha256": "403a97bc16f6d097a7e68d4c9b8fc8b65663d31a61fb5a2b87b8334909250347"
+    },
+    "middle-landforms": {
+      "path": "references/textbooks/중고등/미래엔/중학/사회/사회1 (김진수)_2015/사회과부도_워크북_3_자연으로떠나는여행__5af2218c72.pdf",
+      "pdfPages": [
+        1,
+        2
+      ],
+      "reviewedFor": "4개 산맥의 위치·판 경계 관계; 지도와 자료의 연결",
+      "sha256": "6c7e079f2a0cf376d6df39559a33451a58011e1009cd9ff6b5a5a7f6f8b52108"
+    },
+    "middle-history": {
+      "path": "references/textbooks/중고등/미래엔/중학/사회/역사부도_이종대_2022/[교과서PDF]중등 역사부도.pdf",
+      "pdfPages": [
+        18,
+        62
+      ],
+      "reviewedFor": "평양 천도 427, 백제 한성-웅진-사비 이동 475·538",
+      "sha256": "fc19754b09badac3bb0b13155c1600fb0f4a6a64c09646241b79dbf83d7aa5a3"
+    },
+    "middle-history-blank": {
+      "path": "references/textbooks/중고등/미래엔/중학/사회/역사부도_이종대_2022/백지도 활용하기.pdf",
+      "pdfPages": [
+        1,
+        2
+      ],
+      "reviewedFor": "4·5·6세기 및 남북국·고려·조선의 지도 구분. 이번 구현은 수도 위치만 표시",
+      "sha256": "35d58dfd4dc1baeff5e009c7d45a70433f28ac9f91c9f329db4d7c6eca5e3519"
+    },
+    "world-civilizations": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/세계사 (최준채)_2015/교과서/세계사_교과서PDF_1_인류의_출현과_문명의_발생.pdf",
+      "pdfPages": [
+        13
+      ],
+      "reviewedFor": "나일·티그리스와 유프라테스·인더스·황허 유역의 위치",
+      "sha256": "908218574754838d9385160ab430a8c3e25efe1c01f26fdb305a53e4a851b23f"
+    },
+    "high-climate": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/세계지리 (박철웅)_2015/교과서/세계지리_교과서_Ⅱ.pdf",
+      "pdfPages": [
+        7,
+        11
+      ],
+      "reviewedFor": "기온·강수량과 위치를 연결; 서안 해양성·지중해성 기후 비교",
+      "sha256": "f83364175577c9d12b36dcda3188048bb7d59445e482de1e940ff4f77bbf04f5"
+    },
+    "high-seaways": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/세계지리 (박철웅)_2015/교과서/세계지리_교과서_Ⅰ.pdf",
+      "pdfPages": [
+        13,
+        15
+      ],
+      "reviewedFor": "수에즈·파나마 운하의 위치와 대륙 사이의 연결",
+      "sha256": "ff751d7a451b712c11df51320f1b66c2b650e06f1f8484c5961311a0dbd0125e"
+    },
+    "high-seaways-persian": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/세계지리 (박철웅)_2015/교과서/세계지리_교과서_Ⅴ.pdf",
+      "pdfPages": [
+        4,
+        19,
+        20
+      ],
+      "reviewedFor": "호르무즈 해협, 홍해·지중해·수에즈의 공간 관계",
+      "sha256": "ad6e17dbfc1b910beab98a7386ab76a442e4178adcb4247a8c4c0561cde5b1eb"
+    },
+    "world-voyages": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/세계사 (최준채)_2015/교과서/세계사_교과서PDF_4_유럽_아메리카_지역의_역사.pdf",
+      "pdfPages": [
+        33
+      ],
+      "reviewedFor": "희망봉-캘리컷, 대서양-서인도 제도, 마젤란 항해의 경유지",
+      "sha256": "c5beddb475f00ea8bea70d0ed4f9f4b67e124a348bab21672d5fc437f376c093"
+    },
+    "high-korea": {
+      "path": "references/textbooks/중고등/미래엔/고등/사회/한국지리 (박철웅)_2015/교과서/한국지리 (박철웅)_2015_한국지리 교과서 전체.pdf",
+      "pdfPages": [
+        41,
+        42,
+        43,
+        51,
+        128,
+        129
+      ],
+      "reviewedFor": "해안 지형 및 공업 도시의 위치·산업 구성",
+      "sha256": "b283ea4e87ef673792f9d861ae890b80e075990f867097081ac6558da994f5b8"
+    }
+  },
+  "geography": {
+    "world": "사이트의 Natural Earth 국가 도형. 역사 활동은 현대 국경선을 끄고 육지 면만 사용.",
+    "korea": "Natural Earth 10m KOR/PRK, tmp/history-boundary-review/ne_10m_admin_0_countries.geojson에서 추출.",
+    "rivers": "Natural Earth + 기존 major-rivers.geojson의 OSM 하천 중심선. 원래 출처 표기를 유지.",
+    "projection": "세계는 경위도 평면, 국내는 메르카토르. 면적·거리 계산 과제에는 사용하지 않음.",
+    "historic": "시대별 영토를 새로 추정하지 않고 확인한 수도·유적·항로 지점만 사용. 핀을 벌린 경우 원래 위치와 연결선 표시."
+  },
+  "charts": "실측 통계가 아닌 학습용 모형이며 그래프 아래 표시. 실제 도시의 월별 관측값으로 제시하지 않음.",
+  "validation": {
+    "stateTests": "node --test tests/blank-map.test.mjs: 7 passed; 55 keyed answers, reversed routes, incomplete responses, first-attempt scoring, retry sets, geography layers, menu-lock ownership. Source IDs match reviewed source records.",
+    "browser": "1280×720 및 390×844에서 14개 묶음의 첫 과제 지도·핀 표시, 겹침·잘림·가로 넘침 없음. 초등 한 묶음 끝까지 풀이·오답 재시도·첫 응답 점수·오답만 재학습, 고등 순서 정오답, 3개 기존 지도 진입과 원래 주제 복귀 확인. 세계사 초등 선택 비활성."
+  }
+}

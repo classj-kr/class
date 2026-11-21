@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#edf3ee">
+  <title>백지도 활동</title>
+  <link rel="stylesheet" href="/learning/inquiry/blank-map/vendor/leaflet.css">
+  <link rel="stylesheet" href="/assets/exam-typography.css">
+  <link rel="stylesheet" href="/learning/inquiry/blank-map/styles.css?v=20261122-1">
+</head>
+<body>
+  <main class="workspace">
+    <section class="map-stage" aria-label="백지도에서 답 고르기">
+      <div id="map" aria-label="백지도"></div>
+      <div class="map-tools"><a id="returnMap" href="../korea-map/">← 지도</a><button id="fitMap" type="button">전체 보기</button></div>
+      <span class="north" aria-label="위쪽은 북쪽">북 ↑</span>
+      <p class="map-caption" id="mapCaption"></p>
+    </section>
+    <aside class="activity" aria-label="백지도 활동">
+      <div class="activity-top"><h1>백지도</h1><div id="levels" class="segmented" role="group" aria-label="학교급"></div></div>
+      <div id="areas" class="area-tabs" role="group" aria-label="지도 범위"></div>
+      <label class="set-label" for="activitySet">활동</label><select id="activitySet"></select>
+      <div class="task-meta"><span id="band"></span><span id="progress"></span></div>
+      <section id="task" aria-labelledby="questionTitle">
+        <h2 id="questionTitle" tabindex="-1"></h2>
+        <div id="stimulus"></div>
+        <p id="instruction" class="instruction"></p>
+        <div id="selection" class="selection" aria-label="선택한 기호"></div>
+        <p id="feedback" class="feedback" role="status"></p>
+        <div class="actions"><button id="hintButton" type="button">힌트</button><button id="checkButton" class="primary" type="button">확인</button><button id="nextButton" class="primary" type="button" hidden>다음</button></div>
+        <p id="hint" class="hint" hidden></p>
+      </section>
+      <section id="result" hidden aria-labelledby="resultTitle"></section>
+    </aside>
+  </main>
+  <script src="/learning/inquiry/blank-map/vendor/leaflet.js"></script>
+  <script type="module" src="/learning/inquiry/blank-map/app.mjs?v=20261122-1"></script>
+</body>
+</html>
