@@ -116,16 +116,16 @@
         "fretless-bass-finger": Object.freeze({ id: "fretless-bass-finger", root: "assets/audio/fretless-bass-finger/", min: 28, max: 63, fileMin: 21, step: 1, gainDb: 4.0, revision: "20260901-fretless-finger-v3" }),
         "fretless-bass-pick": Object.freeze({ id: "fretless-bass-pick", root: "assets/audio/fretless-bass-pick/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 2.5 }),
         "fretless-bass-slap": Object.freeze({ id: "fretless-bass-slap", root: "assets/audio/fretless-bass-slap/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 10.0 }),
-        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
-        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
-        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", naturalDecay: true, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", naturalDecay: true, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-lossless-v2", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
+        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", naturalDecay: true, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", naturalDecay: true, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", naturalDecay: true, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
         "harp": Object.freeze({ id: "harp", root: "assets/audio/harp/", min: 25, max: 102, fileMin: 21, step: 1, gainDb: 14.0, revision: "20261121-complete-release" }),
         "piccolo-trumpet": Object.freeze({ id: "piccolo-trumpet", root: "assets/audio/piccolo-trumpet/", min: 52, max: 100, fileMin: 21, step: 1, gainDb: 1.5 }),
         "glockenspiel": Object.freeze({ id: "glockenspiel", root: "assets/audio/glockenspiel/", min: 79, max: 95, fileMin: 21, step: 1, gainDb: 33.1 })
     });
-    const ONE_SHOT_SAMPLE_SETS = new Set(["timpani", "glockenspiel", "marimba", "vibraphone", "xylophone", "harp", "gayageum", "gayageum-slow-vibrato", "gayageum-fast-vibrato", "gayageum-roll", "gayageum-bend-down", "gayageum-bend-up", "geomungo", "geomungo-light-vibrato", "geomungo-deep-vibrato", "gayageum-25", "yanggeum", "pyeonjong", "pyeongyeong"]);
+    const ONE_SHOT_SAMPLE_SETS = new Set(["timpani", "glockenspiel", "marimba", "vibraphone", "xylophone", "violin-pizz", "viola-pizz", "cello-pizz", "upright-bass-pizz", "harp", "gayageum", "gayageum-slow-vibrato", "gayageum-fast-vibrato", "gayageum-roll", "gayageum-bend-down", "gayageum-bend-up", "geomungo", "geomungo-light-vibrato", "geomungo-deep-vibrato", "gayageum-25", "yanggeum", "pyeonjong", "pyeongyeong"]);
     // 자판 배치: 흰 건반은 가운뎃줄, 검은 건반은 그 두 흰 건반 사이 위 윗줄 글자.
     // 시작음이 C가 아니어도(예: 콘트라베이스 E3) 자판 모양과 건반 모양이 그대로 맞는다.
     const HOME_ROW_KEYS = [["KeyA", "A"], ["KeyS", "S"], ["KeyD", "D"], ["KeyF", "F"], ["KeyG", "G"], ["KeyH", "H"],
@@ -506,11 +506,11 @@
             { id: "active-bass", name: "Modern Active 5", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-active-five.webp", badge: "FINGER · PICK · SLAP", model: "MODERN ACTIVE 5", range: [23, 72], size: "전체 길이 약 118 cm", visualScale: .84, scalePercent: 66, description: "5현 액티브 베이스의 핑거·피크·슬랩 원음을 낮은 B음부터 연주해요." },
             { id: "fretless-bass", name: "Fretless 4", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-fretless.webp", badge: "FINGER · PICK · SLAP", model: "FRETLESS 4", range: [28, 67], size: "전체 길이 약 116 cm", visualScale: .82, scalePercent: 64, description: "프렛리스 베이스의 핑거·피크·슬랩 원음을 주법별로 바꾸어 연주해요." },
             { id: "upright-bass", name: "콘트라베이스", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/double-bass-expressive.webp", badge: "57-NOTE SUSTAIN · 57-NOTE PIZZ", model: "DOUBLE BASS", range: [28, 84], size: "전체 높이 약 180 cm", visualScale: 1, scalePercent: 100, expression: "보우 압력", description: "콘트라베이스 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
-            { id: "s-style", name: "Rock S-Style", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-s-style.webp", badge: "47-NOTE CHROMATIC", model: "ROCK S-STYLE", range: [40, 86], size: "전체 길이 약 100 cm", visualScale: .7, scalePercent: 56, guitar: true, description: "S-Style 기타의 E2–D6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
-            { id: "metal-seven", name: "Hellrazer Metal", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-metal-seven.webp", badge: "64-NOTE CHROMATIC", model: "HELLRAZER METAL", range: [25, 88], size: "전체 길이 약 103 cm", visualScale: .72, scalePercent: 57, guitar: true, description: "Hellrazer의 C♯1–E6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
-            { id: "hollow-jazz", name: "Semi-Hollow Jazz", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-hollowbody-jazz.webp", badge: "47-NOTE CHROMATIC", model: "SEMI-HOLLOW", range: [40, 86], size: "전체 길이 약 105 cm", visualScale: .73, scalePercent: 58, guitar: true, description: "세미 할로우 기타의 E2–D6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
-            { id: "dreadnought", name: "Dreadnought", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-dreadnought.webp", badge: "45-NOTE CHROMATIC", model: "ACOUSTIC STEEL", range: [40, 84], size: "전체 길이 약 104 cm", visualScale: .72, scalePercent: 58, guitar: true, description: "스틸현 통기타의 E2–C6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
-            { id: "classical-guitar", name: "Classical Nylon", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-classical-nylon.webp", badge: "45-NOTE CHROMATIC", model: "CLASSICAL NYLON", range: [40, 84], size: "전체 길이 약 99 cm", visualScale: .69, scalePercent: 55, guitar: true, description: "나일론 기타의 E2–C6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "s-style", name: "Rock", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-s-style.webp", badge: "47-NOTE CHROMATIC", model: "ROCK", range: [40, 86], size: "전체 길이 약 100 cm", visualScale: .7, scalePercent: 56, guitar: true, description: "록 기타의 E2–D6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "metal-seven", name: "Metal", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-metal-seven.webp", badge: "64-NOTE CHROMATIC", model: "METAL", range: [25, 88], size: "전체 길이 약 103 cm", visualScale: .72, scalePercent: 57, guitar: true, description: "메탈 기타의 C♯1–E6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "hollow-jazz", name: "Jazz", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-hollowbody-jazz.webp", badge: "47-NOTE CHROMATIC", model: "JAZZ", range: [40, 86], size: "전체 길이 약 105 cm", visualScale: .73, scalePercent: 58, guitar: true, description: "세미 할로우 기타의 E2–D6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "dreadnought", name: "Acoustic Steel", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-dreadnought.webp", badge: "45-NOTE CHROMATIC", model: "ACOUSTIC STEEL", range: [40, 84], size: "전체 길이 약 104 cm", visualScale: .72, scalePercent: 58, guitar: true, description: "스틸현 통기타의 E2–C6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "classical-guitar", name: "Classic Nylon", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-classical-nylon.webp", badge: "45-NOTE CHROMATIC", model: "CLASSIC NYLON", range: [40, 84], size: "전체 길이 약 99 cm", visualScale: .69, scalePercent: 55, guitar: true, description: "나일론 기타의 E2–C6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
             { id: "violin", name: "바이올린", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/violin-expressive-v2.webp", badge: "54-NOTE SUSTAIN · 46-NOTE PIZZ", model: "VIOLIN", range: [55, 108], size: "전체 길이 약 59 cm", visualScale: .48, scalePercent: 33, expression: "보우 압력", description: "바이올린 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
             { id: "viola", name: "비올라", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/viola-expressive-v2.webp", badge: "61-NOTE SUSTAIN · 42-NOTE PIZZ", model: "VIOLA", range: [48, 108], size: "전체 길이 약 66 cm", visualScale: .53, scalePercent: 37, expression: "보우 압력", description: "비올라 서스테인과 피치카토를 주법 버튼으로 바꾸어 실제 샘플로 연주해요." },
             { id: "cello", name: "첼로", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/cello-expressive.webp", badge: "61-NOTE SUSTAIN · 26-NOTE PIZZ", model: "CELLO", range: [36, 96], size: "전체 높이 약 121 cm", visualScale: .78, scalePercent: 67, expression: "보우 압력", description: "첼로 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
@@ -1178,10 +1178,11 @@
             loadConcertGrandSample(midi).then(function (sample) {
                 if (!sampledPianoConfig() || sampledPianoConfig().id !== sample.sampleSet) return;
                 const bassPluck = isElectricBassPluckSample(sample.sampleSet);
-                if (!state.activeNotes.has(midi) && !state.sustain && !bassPluck) return;
+                const ringOut = bassPluck || KEYBOARD_SAMPLE_SETS[sample.sampleSet]?.naturalDecay;
+                if (!state.activeNotes.has(midi) && !state.sustain && !ringOut) return;
                 const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
                 if (voice && !state.activeNotes.has(midi)) {
-                    if (bassPluck) pianoNoteOff(midi);
+                    if (ringOut) pianoNoteOff(midi);
                     else voice.held = true;
                 }
             }).catch(function () { showToast("건반 음색을 불러오지 못했어요. iPadOS 18.4 이상인지 확인하세요."); });
@@ -1195,7 +1196,8 @@
     function pianoNoteOff(midi) {
         const voice = state.pianoVoices.get(midi);
         if (!voice) return;
-        if (ONE_SHOT_SAMPLE_SETS.has(voice.sampleSet)) return;
+        // A key release is not a palm mute: let recorded plucks and their FX ring.
+        if (ONE_SHOT_SAMPLE_SETS.has(voice.sampleSet) || KEYBOARD_SAMPLE_SETS[voice.sampleSet]?.naturalDecay) return;
         if (isElectricBassPluckSample(voice.sampleSet)) {
             const remaining = Math.max(0, voice.startedAt + BASS_PLUCK_MIN_RING_SECONDS - state.audioContext.currentTime);
             if (voice.pendingReleaseTimer) window.clearTimeout(voice.pendingReleaseTimer);
@@ -1293,7 +1295,7 @@
         const fileMidi = anchor + (sampleConfig.fileMidiOffset || 0);
         const index = String(fileMidi - (sampleConfig.fileMin || sampleConfig.min) + 1).padStart(3, "0");
         const note = core.noteLabel(fileMidi).toLowerCase().replace("♯", "s");
-        return index + "_" + note + ".ogg";
+        return index + "_" + note + "." + (sampleConfig.fileExtension || "ogg");
     }
 
     function rememberConcertGrandSample(config, anchor, buffer) {
@@ -1326,8 +1328,15 @@
         const revision = "?v=" + encodeURIComponent(
             [AUDIO_SAMPLE_REVISION, config.revision].filter(Boolean).join("-")
         );
-        const task = fetchSampleData(config.root + concertGrandSampleFile(anchor, config) + revision)
+        const file = concertGrandSampleFile(anchor, config);
+        const task = fetchSampleData(config.root + file + revision)
             .then(function (data) { return context.decodeAudioData(data); })
+            .catch(function (error) {
+                if (!config.fallbackExtension) throw error;
+                const fallback = file.replace(/\.[^.]+$/, "." + config.fallbackExtension);
+                return fetchSampleData(config.root + fallback + revision)
+                    .then(function (data) { return context.decodeAudioData(data); });
+            })
             .then(function (buffer) {
                 decodedBufferActiveRms(buffer);
                 decodedBufferStartOffset(buffer);
@@ -1423,7 +1432,6 @@
 
     function pluckedKeyboardDecay(sampleSet) {
         if (sampleSet === "clavinet") return 1.65;
-        if (["violin-pizz", "viola-pizz", "cello-pizz", "upright-bass-pizz"].includes(sampleSet)) return 2.2;
         if (sampleSet === "harpsichord") return 3.4;
         return 0;
     }
@@ -1442,7 +1450,7 @@
         if (!context || !buffer) return;
         const heldTone = sampleSet === "hammond-organ" || sampleSet === "pipe-organ" || ["flute", "oboe", "trumpet", "piccolo-trumpet", "clarinet", "bass-clarinet", "piccolo-flute", "french-horn", "english-horn", "soprano-sax", "saxophone", "tenor-sax", "baritone-sax", "bassoon", "contrabassoon", "flugelhorn", "alto-trombone", "trombone", "bass-trombone", "euphonium", "tuba", "violin", "viola", "cello", "upright-bass", "haegeum", "haegeum-vibrato", "daegeum", "daegeum-vibrato", "hyangpiri", "hyangpiri-vibrato", "taepyeongso", "yanggeum-tremolo", "ajaeng", "ajaeng-vibrato", "sogeum", "danso", "danso-vibrato", "hun", "ocarina", "recorder-piccolo", "recorder-soprano", "recorder-alto", "recorder-tenor"].includes(sampleSet);
         const existing = state.pianoVoices.get(midi);
-        if (existing) releasePianoVoice(existing, !existing.heldTone);
+        if (existing) releasePianoVoice(existing, !existing.heldTone && !ONE_SHOT_SAMPLE_SETS.has(existing.sampleSet));
         if (isElectricBassSample(sampleSet)) {
             state.pianoVoices.forEach(function (other) {
                 if (isElectricBassSample(other.sampleSet)) releasePianoVoice(other, true);
@@ -1451,8 +1459,8 @@
         const source = context.createBufferSource();
         const gain = context.createGain();
         const now = when ?? context.currentTime;
-        const highNoteCompensation = 1 + Math.max(0, midi - 60) / 64;
         const sampleConfig = KEYBOARD_SAMPLE_SETS[sampleSet];
+        const highNoteCompensation = sampleConfig?.preserveRecordedTone ? 1 : 1 + Math.max(0, midi - 60) / 64;
         const calibratedGain = Math.pow(10, ((sampleConfig && sampleConfig.gainDb) || 0) / 20);
         const velocityGain = Math.max(.08, Math.min(1.7, Math.pow(velocity, .9) * 1.22 * highNoteCompensation));
         const peak = sampleSet.startsWith("guitar-cubase-")
@@ -1475,13 +1483,14 @@
             gain.gain.exponentialRampToValueAtTime(.0001, now + decay);
         }
         source.connect(gain);
-        // Preserve the dry sample's level and tone, add the original short room,
-        // and leave only peak protection after the upward-only calibration.
-        connectFastToMix(gain, heldTone ? .16 : .035);
+        // Guitar files already contain the player's effects. Keep those intact;
+        // other sampled instruments retain their existing room sends.
+        connectFastToMix(gain, sampleConfig?.roomSend ?? (heldTone ? .16 : .035));
         const voice = { source, gain, anchor, sampleSet, heldTone, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, released: false, held: false, percussiveDecay: decay, startedAt: now, pendingReleaseTimer: 0 };
         state.pianoVoices.set(midi, voice);
         source.onended = function () {
             state.pianoReleaseVoices.delete(voice);
+            activeGuitarVoices.delete(voice);
             if (state.pianoVoices.get(midi) === voice) state.pianoVoices.delete(midi);
         };
         const configuredOffset = sampleConfig && Number.isFinite(sampleConfig.startOffset) ? Math.max(0, sampleConfig.startOffset) : null;
@@ -2632,7 +2641,7 @@
                     const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet);
                     if (voice) {
                         activeGuitarVoices.add(voice);
-                        scheduleGuitarStrum(function () {
+                        if (!config.naturalDecay) scheduleGuitarStrum(function () {
                             releasePianoVoice(voice, false);
                             activeGuitarVoices.delete(voice);
                         }, 1250);

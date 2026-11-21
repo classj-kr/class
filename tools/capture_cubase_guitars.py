@@ -3,6 +3,7 @@
 Each note is held for four seconds, followed by six seconds for its release.
 Input: full-{SC,Hellrazer,L,SH,T}.wav, 48 kHz stereo floating point.
 The original renders stay untouched. No pitch shifting or per-note normalization.
+The primary files use lossless 24-bit FLAC; existing Ogg files are left untouched.
 """
 from __future__ import annotations
 
@@ -51,7 +52,7 @@ def write_midi(path):
 
 
 def filename(midi):
-    return f"{midi - 20:03d}_{NAMES[midi % 12]}{midi // 12 - 1}.ogg"
+    return f"{midi - 20:03d}_{NAMES[midi % 12]}{midi // 12 - 1}.flac"
 
 
 def decode(path):
@@ -105,19 +106,10 @@ def build(model, source, destination, report_dir):
         audio[:fade_in] *= np.linspace(0, 1, fade_in)[:, None]
         audio[-fade_out:] *= np.linspace(1, 0, fade_out)[:, None]
         target = folder / filename(midi)
-        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "f32le", "-ar", str(RATE), "-ac", "2", "-i", "pipe:0", "-c:a", "libvorbis", "-q:a", "7", str(target)], input=audio.astype(np.float32).tobytes(), check=True)
+        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "f32le", "-ar", str(RATE), "-ac", "2", "-i", "pipe:0", "-c:a", "flac", "-sample_fmt", "s32", "-compression_level", "8", str(target)], input=audio.astype(np.float32).tobytes(), check=True)
         delivered = decode(target)
-        delivered_env = np.max(np.abs(delivered), axis=1)
-        delivered_onset = int(np.flatnonzero(delivered_env >= delivered_env.max() * .02)[0])
-        if delivered_onset > .027 * RATE:
-            # Vorbis can discard a tiny early pick noise. Align to the decoded
-            # attack, then encode again from PCM rather than recompressing Ogg.
-            extra = delivered_onset - int(.003 * RATE)
-            audio = audio[extra:].copy()
-            audio[:fade_in] *= np.linspace(0, 1, fade_in)[:, None]
-            trim += extra
-            subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "f32le", "-ar", str(RATE), "-ac", "2", "-i", "pipe:0", "-c:a", "libvorbis", "-q:a", "7", str(target)], input=audio.astype(np.float32).tobytes(), check=True)
-            delivered = decode(target)
+        quantization_error = float(np.max(np.abs(delivered - audio)))
+        assert quantization_error <= 2 ** -23, f"{model}/{midi}: lossy conversion"
         partials = pitch_partials(delivered, midi)
         matched = [p for p in partials if abs(p["cents"]) < 40 and p["relativeAmplitude"] > .025]
         env = np.max(np.abs(delivered), axis=1)
@@ -137,7 +129,7 @@ def build(model, source, destination, report_dir):
             issues.append("peak-review")
         if ending > .0001:
             issues.append("tail-review")
-        rows.append(dict(midi=midi, file=target.name, rawOnsetMs=round(onset / RATE * 1000, 3), removedLeadingMs=round(trim / RATE * 1000, 3), onsetMs=round(decoded_onset * 1000, 3), durationSeconds=round(len(delivered) / RATE, 4), peak=round(decoded_peak, 6), endingRms=round(ending, 8), partials=partials, issues=issues, sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
+        rows.append(dict(midi=midi, file=target.name, rawOnsetMs=round(onset / RATE * 1000, 3), removedLeadingMs=round(trim / RATE * 1000, 3), onsetMs=round(decoded_onset * 1000, 3), durationSeconds=round(len(delivered) / RATE, 4), peak=round(decoded_peak, 6), endingRms=round(ending, 8), partials=partials, issues=issues, quantizationError=quantization_error, sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
     result = dict(model=model, sourceFile=path.name, sourceSha256=hashlib.sha256(path.read_bytes()).hexdigest(), minMidi=lo, maxMidi=hi, notes=len(rows), sourceDurationSeconds=duration, sourcePeak=raw_peak, instrumentGain=gain, holdSeconds=4, tailSeconds=6, velocity=96, sampleRate=RATE, channels=2, pitchShiftedNotes=0, rows=rows)
     report_dir.mkdir(parents=True, exist_ok=True)
     (report_dir / f"{model}.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -162,5 +154,5 @@ if __name__ == "__main__":
         if any(row["issues"] for result in results for row in result["rows"]):
             raise SystemExit("Audio review required; see the per-instrument reports")
         if set(args.models) == set(MODELS):
-            manifest = dict(captureDate="2026-11-21", tempoBpm=120, slotSeconds=10, totalNotes=sum(result["notes"] for result in results), pitchShiftedNotes=0, format="48 kHz stereo Ogg Vorbis q7", instruments=results)
+            manifest = dict(captureDate="2026-11-21", tempoBpm=120, slotSeconds=10, totalNotes=sum(result["notes"] for result in results), pitchShiftedNotes=0, format="48 kHz stereo 24-bit FLAC; original Ogg retained as compatibility fallback", instruments=results)
             (args.destination / "guitar-cubase-capture.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")

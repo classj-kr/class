@@ -20,7 +20,7 @@ const server = http.createServer((request, response) => {
       sourceFiles[path.relative(root,file).split(path.sep).join('/')]={size:stat.size,mtimeMs:stat.mtimeMs};
     }
     if (file.endsWith('instrument-room' + path.sep + 'app.js')) data = data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
-      'window.audit={state,KEYBOARD_SAMPLE_SETS,concertGrandSampleFile,loadConcertGrandSample,decodedBufferSustainLoop,startConcertGrandSample,preloadRemainingRange,modelById,allNotesOff};cacheElements();');
+      'window.audit={state,KEYBOARD_SAMPLE_SETS,concertGrandSampleFile,loadConcertGrandSample,decodedBufferSustainLoop,startConcertGrandSample,pianoNoteOff,preloadRemainingRange,modelById,selectFamily,selectModel,openInstrumentDetail,closeInstrumentDetail,allNotesOff};cacheElements();');
     response.writeHead(200, {'Content-Type': ({'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.ogg':'audio/ogg'})[path.extname(file)] || 'application/octet-stream'}).end(data);
   });
 });
@@ -32,10 +32,19 @@ const server = http.createServer((request, response) => {
     const page = await browser.newPage();
     await page.goto('http://127.0.0.1:' + server.address().port + '/learning/arts/instrument-room/');
     const result = await page.evaluate(async held => {
-      const a = audit, decoder = new OfflineAudioContext(2,48000,48000), routes = [], loops = [], overlaps = [];
+      const a = audit, decoder = new OfflineAudioContext(2,48000,48000), routes = [], loops = [], overlaps = [], plucks = [], details = [];
       const Native = window.AudioContext;
       for (const id of ['baritone-sax','bass-clarinet','bass-trombone','contrabassoon','euphonium','french-horn','tenor-sax','trombone','tuba','upright-bass','upright-bass-pizz','xylophone','cello']) {
         const context = new OfflineAudioContext(2,48000*7,48000);
+        const roomSends = [], createGain = context.createGain.bind(context);
+        context.createGain = function () {
+          const node = createGain(), connect = node.connect.bind(node);
+          node.connect = function (target, ...args) {
+            if (target === a.state.reverb) roomSends.push(node.gain.value);
+            return connect(target, ...args);
+          };
+          return node;
+        };
         context.resume = () => Promise.resolve();
         window.AudioContext = function () { return context; };
         a.state.audioContext = null;
@@ -62,7 +71,7 @@ const server = http.createServer((request, response) => {
         for(let i=48000*6;i<48000*7;i++)late+=output[i]*output[i];
         const config=a.KEYBOARD_SAMPLE_SETS[id],model=a.modelById(id==='upright-bass-pizz'?'upright-bass':id);
         if(model.range[0]!==Math.max(21,config.min)||model.range[1]!==config.max)throw new Error(id+': displayed range must match sounding range');
-        routes.push({id,range:model.range,correlation:correlation(period),halfPeriod:correlation(period/2),rate:voice.source.playbackRate.value,held:voice.source.loop,lateRatio:Math.sqrt(late/Math.max(body,1e-20))});
+        routes.push({id,range:model.range,correlation:correlation(period),halfPeriod:correlation(period/2),rate:voice.source.playbackRate.value,held:voice.source.loop,roomSends,lateRatio:Math.sqrt(late/Math.max(body,1e-20))});
         a.state.pianoVoices.clear();
       }
       // An older instrument finishing preload must not cancel the new range.
@@ -87,6 +96,21 @@ const server = http.createServer((request, response) => {
         const rendered=await rendering;
         function rms(channel,start,end) {const data=rendered.getChannelData(channel);let e=0;for(let i=Math.round(start*48000);i<Math.round(end*48000);i++)e+=data[i]*data[i];return Math.sqrt(e/((end-start)*48000));}
         overlaps.push({id,tailRatio:rms(0,.95,.99)/rms(0,.7,.85),newAttack:rms(1,.95,.99),afterStop:rms(0,1.3,1.5)+rms(1,1.3,1.5)});
+      }
+      for(const id of ['violin','viola','cello','upright-bass']) {
+        const context=new OfflineAudioContext(2,48000,48000);
+        context.resume=()=>Promise.resolve();window.AudioContext=function(){return context;};
+        a.state.audioContext=null;a.state.currentModel={id};a.state.articulation='pizzicato';
+        const sample=await a.loadConcertGrandSample(60);window.AudioContext=Native;
+        const voice=a.startConcertGrandSample(60,.8,sample.anchor,sample.buffer,sample.sampleSet);
+        const paused=context.suspend(.1),rendering=context.startRendering();await paused;
+        a.pianoNoteOff(60);
+        if(voice.released||voice.percussiveDecay)throw new Error(id+': recorded pizzicato was choked or given an artificial decay');
+        await OfflineAudioContext.prototype.resume.call(context);
+        const output=await rendering;let energy=0;
+        for(let i=12000;i<28800;i++)energy+=output.getChannelData(0)[i]**2;
+        plucks.push({id,rmsAfterKeyRelease:Math.sqrt(energy/16800)});
+        a.state.pianoVoices.clear();
       }
       const jobs=[];
       for(const config of Object.values(a.KEYBOARD_SAMPLE_SETS).filter(config=>held.includes(config.id))) {
@@ -116,7 +140,16 @@ const server = http.createServer((request, response) => {
         }
       }
       await Promise.all(Array.from({length:4},next));
-      return {routes,loops,overlaps};
+      for(const [family,id] of [['strings','violin'],['strings','upright-bass'],['brass','trumpet'],['brass','trombone']]) {
+        a.selectFamily(family);a.selectModel(id);a.openInstrumentDetail();
+        const model=a.modelById(id),facts=[...document.querySelectorAll('#detailFacts > div')];
+        const size=facts.find(fact=>fact.querySelector('dt').textContent==='실제 크기')?.querySelector('dd').textContent;
+        if(size!==model.size)throw new Error(id+': actual size missing from details');
+        const scale=Number(document.querySelector('#instrumentVisual').style.getPropertyValue('--object-scale'));
+        if(scale!==model.visualScale)throw new Error(id+': relative artwork scale not applied');
+        details.push({id,size,scale});a.closeInstrumentDetail();
+      }
+      return {routes,loops,overlaps,plucks,details};
     }, held);
     const output=path.join(root,'outputs/qa/instrument-full-audit');
     fs.mkdirSync(output,{recursive:true});
@@ -126,6 +159,8 @@ const server = http.createServer((request, response) => {
     for(const route of result.routes) {
       console.log('C4 route',JSON.stringify(route));
       assert.equal(route.rate,1,route.id+': use the correctly recorded note without octave-speed changes');
+      assert.equal(route.roomSends.length, 1, route.id + ': one room connection');
+      assert.ok(Math.abs(route.roomSends[0] - (route.held ? .16 : .035)) < 1e-7, route.id + ': real Web Audio room level');
       assert.ok(route.correlation>.65 && route.correlation>route.halfPeriod+.03,route.id+': decoded concert C4, not an octave alias');
       if(route.held)assert.ok(route.lateRatio>.15,route.id+': held note remains audible after six seconds');
     }
@@ -136,6 +171,8 @@ const server = http.createServer((request, response) => {
       assert.ok(overlap.afterStop<.00001,overlap.id+': explicit stop also clears fading voices');
       console.log('Repeated note resonance',JSON.stringify(overlap));
     }
+    for(const pluck of result.plucks) assert.ok(pluck.rmsAfterKeyRelease>.00001, pluck.id+': pizzicato resonance survives a short tap');
+    assert.equal(result.details.length,4);
     console.log(result.loops.length+' real sustained samples: sounding loop boundaries passed');
   } finally {
     if(browser)await browser.close();

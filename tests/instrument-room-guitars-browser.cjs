@@ -11,6 +11,7 @@ const room = '/learning/arts/instrument-room/';
 const audioRoot = path.join(root, room, 'assets/audio');
 const manifest = JSON.parse(fs.readFileSync(path.join(audioRoot, 'guitar-cubase-capture.json')));
 const models = [['s-style','sc'], ['metal-seven','hellrazer'], ['hollow-jazz','sh'], ['dreadnought','t'], ['classical-guitar','l']];
+const guitarNames = ['Rock', 'Metal', 'Jazz', 'Acoustic Steel', 'Classic Nylon'];
 assert.equal(manifest.totalNotes, 248);
 assert.equal(manifest.instruments.reduce((n, item) => n + item.notes, 0), 248);
 for (const item of manifest.instruments) {
@@ -20,6 +21,7 @@ for (const item of manifest.instruments) {
   for (const row of item.rows) {
     assert.deepEqual(row.issues, [], item.model + '/' + row.midi);
     assert.ok(row.onsetMs < 27 && row.endingRms < .0001, JSON.stringify(row));
+    assert.ok(row.quantizationError <= 2 ** -23, '24-bit lossless conversion');
     const file = fs.readFileSync(path.join(audioRoot, 'guitar-cubase-' + item.model.toLowerCase(), row.file));
     assert.equal(crypto.createHash('sha256').update(file).digest('hex'), row.sha256);
   }
@@ -32,9 +34,9 @@ const server = http.createServer((req, res) => {
     if (error) return res.writeHead(404).end();
     if (file.endsWith('instrument-room' + path.sep + 'app.js')) {
       data = data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
-        'window.guitarTest = {state, KEYBOARD_SAMPLE_SETS, selectModel, sampledPianoConfig, concertGrandAnchor, concertGrandSampleFile, startConcertGrandSample, releasePianoVoice, ensureAudio}; document.addEventListener("DOMContentLoaded", init);');
+        'window.guitarTest = {state, KEYBOARD_SAMPLE_SETS, selectModel, sampledPianoConfig, concertGrandAnchor, concertGrandSampleFile, loadConcertGrandSample, startConcertGrandSample, releasePianoVoice, pianoNoteOff, ensureAudio}; document.addEventListener("DOMContentLoaded", init);');
     }
-    res.writeHead(200, {'Content-Type': {'.js':'text/javascript', '.html':'text/html; charset=utf-8', '.css':'text/css', '.ogg':'audio/ogg', '.webp':'image/webp'}[path.extname(file)] || 'application/octet-stream'}).end(data);
+    res.writeHead(200, {'Content-Type': {'.js':'text/javascript', '.html':'text/html; charset=utf-8', '.css':'text/css', '.ogg':'audio/ogg', '.flac':'audio/flac', '.webp':'image/webp'}[path.extname(file)] || 'application/octet-stream'}).end(data);
   });
 });
 (async () => {
@@ -47,6 +49,7 @@ const server = http.createServer((req, res) => {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('http://127.0.0.1:' + server.address().port + room, {waitUntil:'networkidle0'});
     await page.click('[data-family="guitar"]');
+    assert.deepEqual(await page.$$eval('#modelChooser b', labels => labels.map(label => label.textContent)), guitarNames);
     const results = await page.evaluate(async (models) => {
       const a = window.guitarTest;
       const decoder = new OfflineAudioContext(2, 48000, 48000);
@@ -57,7 +60,7 @@ const server = http.createServer((req, res) => {
         if (config.id !== 'guitar-cubase-' + suffix) throw new Error('Wrong bank: ' + model);
         if (document.querySelector('#soundPresetButtons')) throw new Error('Legacy preset UI remains');
         if (a.state.currentModel.range[0] !== config.min || a.state.currentModel.range[1] !== config.max) throw new Error('Unrecorded range: ' + model);
-        const row = {model, decoded:0, renders:[]};
+        const row = {model, decoded:0, renders:[], tapTailRatio:null};
         for (let midi = config.min; midi <= config.max; midi++) {
           const anchor = a.concertGrandAnchor(midi, config);
           if (anchor !== midi) throw new Error('Transposed substitute: ' + model + '/' + midi);
@@ -93,6 +96,29 @@ const server = http.createServer((req, res) => {
             if (i < 9600) energy += values[i] ** 2;
           }
           row.renders.push({midi,peak,rms:Math.sqrt(energy / 9600)});
+          if (midi === 55) {
+            const natural = new OfflineAudioContext(2, 96000, 48000);
+            window.AudioContext = function () { return natural; };
+            natural.resume = () => Promise.resolve();
+            a.state.audioContext = null;
+            a.state.pianoVoices.clear();
+            a.state.pianoReleaseVoices.clear();
+            a.ensureAudio();
+            window.AudioContext = NativeContext;
+            const voice = a.startConcertGrandSample(midi, .8, midi, buffer, config.id);
+            const paused = natural.suspend(.25), playing = natural.startRendering();
+            await paused;
+            a.pianoNoteOff(midi);
+            if (voice.released) throw new Error(model + ': a short tap choked the recorded pluck');
+            await OfflineAudioContext.prototype.resume.call(natural);
+            const output = await playing;
+            let actual = 0, reference = 0;
+            for (let i=24000;i<72000;i++) {
+              actual += output.getChannelData(0)[i] ** 2;
+              reference += buffer.getChannelData(0)[i] ** 2;
+            }
+            row.tapTailRatio = Math.sqrt(actual / reference);
+          }
         }
         results.push(row);
       }
@@ -102,7 +128,31 @@ const server = http.createServer((req, res) => {
     for (const row of results) for (const render of row.renders) {
       assert.ok(render.peak < .99 && render.rms > .001, JSON.stringify({model:row.model,...render}));
     }
+    for (const row of results) assert.ok(row.tapTailRatio > .3, row.model + ': original resonance after a short tap');
     assert.deepEqual(errors, []);
+    // An unsupported lossless decoder must use the supplied Ogg fallback.
+    const fallbackPage = await browser.newPage();
+    await fallbackPage.evaluateOnNewDocument(() => {
+      const decode = AudioContext.prototype.decodeAudioData;
+      window.flacRejections = 0;
+      AudioContext.prototype.decodeAudioData = function (data, ...args) {
+        const bytes = new Uint8Array(data);
+        if (bytes[0] === 102 && bytes[1] === 76 && bytes[2] === 97 && bytes[3] === 67) {
+          window.flacRejections++;
+          return Promise.reject(new Error('Simulated unsupported FLAC decoder'));
+        }
+        return decode.call(this, data, ...args);
+      };
+    });
+    await fallbackPage.goto('http://127.0.0.1:' + server.address().port + room, {waitUntil:'networkidle0'});
+    await fallbackPage.click('[data-family="guitar"]');
+    const fallback = await fallbackPage.evaluate(async () => {
+      const sample = await guitarTest.loadConcertGrandSample(40);
+      return {rejections:flacRejections, id:sample.sampleSet, duration:sample.buffer.duration};
+    });
+    assert.ok(fallback.rejections > 0 && fallback.duration > 4);
+    assert.equal(fallback.id, 'guitar-cubase-sc');
+    await fallbackPage.close();
     console.log(JSON.stringify({passed:true,decoded:248,models:results},null,2));
   } finally {
     await browser?.close();

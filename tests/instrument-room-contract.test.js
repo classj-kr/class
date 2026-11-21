@@ -19,6 +19,30 @@ const koreanContext = { window: {} };
 require('node:vm').createContext(koreanContext);
 require('node:vm').runInContext(koreanPercussionSource, koreanContext);
 const koreanPercussion = koreanContext.window.KOREAN_PERCUSSION_DATA;
+// Inspect the same model/config objects used by the app. Descriptive labels
+// and object-property ordering must not determine whether a recording works.
+const appContext = { window: { InstrumentRoomCore: require('../learning/arts/instrument-room/instrument-core.js') } };
+require('node:vm').runInNewContext(app.replace('document.addEventListener("DOMContentLoaded", init);',
+  'window.contract = {modelById, KEYBOARD_SAMPLE_SETS, DRUM_SAMPLE_SETS, STATION_DRUMS, state, sampledPianoConfig};'), appContext);
+const runtime = appContext.window.contract;
+
+function assertRecordedModel(id, range, articulations) {
+  const model = runtime.modelById(id);
+  assert.ok(model, id + ': model exists');
+  assert.deepEqual(Array.from(model.range), range, id + ': playable range');
+  assert.ok(model.badge.trim(), id + ': descriptive label');
+  runtime.state.currentModel = model;
+  articulations.forEach((articulation, index) => {
+    runtime.state.articulation = articulation;
+    const config = runtime.sampledPianoConfig();
+    assert.ok(config, id + '/' + articulation + ': sample routing');
+    assert.equal(config.step, 1);
+    assert.ok(config.min >= range[0] && config.max <= range[1], id + '/' + articulation + ': recorded range');
+    if (index === 0) assert.deepEqual([config.min, config.max], range, id + ': full basic recording');
+    const sampleRoot = path.join(root, config.root);
+    assert.ok(fs.existsSync(sampleRoot), id + '/' + articulation + ': recorded files');
+  });
+}
 
 test('corrects guitar and bass artwork orientation in the stage and detail views', () => {
   assert.match(css, /\.stage-bass \.instrument-artwork, \.stage-guitar \.instrument-artwork \{[^}]*scale: -1 1;/);
@@ -90,7 +114,10 @@ test('keyboard models use compact per-note Ogg multisamples with recorded range 
     assert.equal(samples.length, count, folder);
     assert.equal(samples[0], first, folder);
     assert.equal(samples.at(-1), last, folder);
-    assert.ok(totalBytes < 6 * 1024 * 1024, folder);
+    // The organ bank now retains complete releases (~10 seconds per note).
+    // Keep a bank budget without requiring the earlier truncated files.
+    const budgetMiB = folder === 'pipe-organ' ? 16 : 6;
+    assert.ok(totalBytes < budgetMiB * 1024 * 1024, folder + ': encoded bank budget');
   }
   assert.match(app, /fileMin: 21/);
   assert.match(app, /GRAND_SAMPLE_STEP = 1/);
@@ -118,7 +145,7 @@ test('haegeum uses the exact 25-note recorded range without synthetic extension'
   assert.match(app, /"haegeum": Object\.freeze\(\{ id: "haegeum", root: "assets\/audio\/haegeum\/", min: 55, max: 79/);
   assert.match(app, /gainDb: -1\.46, startOffset: 0, loopStart: 1\.1, loopEnd: 3\.85/);
   assert.match(app, /Number\.isFinite\(sampleConfig\.startOffset\)/);
-  assert.match(app, /id: "haegeum"[\s\S]*?range: \[55, 79\][\s\S]*?badge: "2 ARTICULATIONS"/);
+  assertRecordedModel('haegeum', [55, 79], ['sustain', 'vibrato']);
   assert.match(app, /state\.articulation === "vibrato" \? "haegeum-vibrato" : "haegeum"/);
 });
 test('daegeum switches between complete basic and vibrato multisample sets', () => {
@@ -134,7 +161,7 @@ test('daegeum switches between complete basic and vibrato multisample sets', () 
   assert.match(app, /"daegeum": Object\.freeze\(\{ id: "daegeum", root: "assets\/audio\/daegeum\/", min: 59, max: 89/);
   assert.match(app, /"daegeum-vibrato": Object\.freeze\(\{ id: "daegeum-vibrato", root: "assets\/audio\/daegeum-vibrato\/", min: 59, max: 89/);
   assert.match(app, /state\.articulation === "vibrato" \? "daegeum-vibrato" : "daegeum"/);
-  assert.match(app, /id: "daegeum"[\s\S]*?range: \[59, 89\][\s\S]*?badge: "31-NOTE · 2 ARTICULATIONS"/);
+  assertRecordedModel('daegeum', [59, 89], ['sustain', 'vibrato']);
   assert.match(app, /\[\["sustain", "기본음"\], \["vibrato", "비브라토"\]\]/);
   assert.match(app, /"haegeum", "haegeum-vibrato", "daegeum", "daegeum-vibrato"/);
 });
@@ -161,8 +188,8 @@ test('new Korean melodic recordings expose their exact ranges and techniques', (
   }
   assert.match(app, /state\.currentModel\.id === "gayageum"/);
   assert.match(app, /\[\["pluck", "기본 뜯기"\],[\s\S]*?\["bend-up", "추성"\]\]/);
-  assert.match(app, /id: "hyangpiri"[\s\S]*?range: \[59, 77\][\s\S]*?badge: "19-NOTE · 2 ARTICULATIONS"/);
-  assert.match(app, /id: "taepyeongso"[\s\S]*?range: \[68, 89\][\s\S]*?badge: "22-NOTE OGG"/);
+  assertRecordedModel('hyangpiri', [59, 77], ['sustain', 'vibrato']);
+  assertRecordedModel('taepyeongso', [68, 89], ['sustain']);
   assert.match(app, /state\.family === "korean"[\s\S]*?sampleConfig\.min[\s\S]*?sampleConfig\.max/);
   assert.match(app, /"hyangpiri", "hyangpiri-vibrato", "taepyeongso"/);
 });
@@ -193,7 +220,7 @@ test('new Korean, ocarina, court chime, and tam-tam sources use their recorded r
     assert.equal(samples.at(-1), last, folder);
     assert.ok(totalBytes < 6 * 1024 * 1024, folder);
   }
-  assert.match(app, /id: "geomungo"[\s\S]*?range: \[46, 77\][\s\S]*?badge: "32-NOTE · 3 ARTICULATIONS"/);
+  assertRecordedModel('geomungo', [46, 77], ['pluck', 'light-vibrato', 'deep-vibrato']);
   assert.match(app, /state\.currentModel\.id === "geomungo"[\s\S]*?"geomungo-" \+ state\.articulation/);
   assert.match(app, /\[\["pluck", "기본 뜯기"\], \["light-vibrato", "잔농현"\], \["deep-vibrato", "깊은 농현"\]\]/);
   for (const asset of [
@@ -208,10 +235,12 @@ test('new Korean, ocarina, court chime, and tam-tam sources use their recorded r
   assert.match(app, /state\.currentModel\.id === "danso"[\s\S]*?"danso-vibrato"/);
   assert.match(app, /id: "pyeongyeong"[\s\S]*?range: \[72, 87\]/);
   assert.match(app, /id: "ocarina"[\s\S]*?range: \[60, 86\]/);
-  const tamTam = path.join(root, 'assets', 'audio', 'orchestral-percussion', 'ride.ogg');
+  const percussion = runtime.DRUM_SAMPLE_SETS['orchestral-percussion'];
+  const tamTam = path.join(root, percussion.root, 'orchestral-tamtam.ogg');
   assert.equal(fs.existsSync(tamTam), true);
   assert.ok(fs.statSync(tamTam).size > 32 * 1024);
-  assert.match(app, /"orchestral-percussion": Object\.freeze\(\{ id: "orchestral-percussion"[\s\S]*?ride: 3/);
+  assert.ok(percussion.available.includes('orchestral-tamtam'));
+  assert.ok(runtime.STATION_DRUMS['orchestral-percussion'].some(pad => pad.id === 'orchestral-tamtam'));
 });
 
 test('completed orchestral renders use compact note-grid Ogg samples', () => {
@@ -265,16 +294,17 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
     ['fretless-bass-finger', 36, '008_e1.ogg', '043_ds4.ogg'],
     ['fretless-bass-pick', 35, '008_e1.ogg', '042_d4.ogg'],
     ['fretless-bass-slap', 35, '008_e1.ogg', '042_d4.ogg'],
-    ['guitar-cubase-sc', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-cubase-hellrazer', 64, '005_cs1.ogg', '068_e6.ogg'],
-    ['guitar-cubase-sh', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-cubase-l', 45, '020_e2.ogg', '064_c6.ogg'],
-    ['guitar-cubase-t', 45, '020_e2.ogg', '064_c6.ogg'],
+    ['guitar-cubase-sc', 47, '020_e2.flac', '066_d6.flac'],
+    ['guitar-cubase-hellrazer', 64, '005_cs1.flac', '068_e6.flac'],
+    ['guitar-cubase-sh', 47, '020_e2.flac', '066_d6.flac'],
+    ['guitar-cubase-l', 45, '020_e2.flac', '064_c6.flac'],
+    ['guitar-cubase-t', 45, '020_e2.flac', '064_c6.flac'],
     ['harp', 78, '005_cs1.ogg', '082_fs7.ogg'],
     ['piccolo-trumpet', 49, '032_e3.ogg', '080_e7.ogg']
   ]) {
     const sampleRoot = path.join(root, 'assets', 'audio', folder);
-    const samples = fs.readdirSync(sampleRoot).filter((name) => name.endsWith('.ogg')).sort();
+    const extension = folder.startsWith('guitar-cubase-') ? '.flac' : '.ogg';
+    const samples = fs.readdirSync(sampleRoot).filter((name) => name.endsWith(extension)).sort();
     assert.equal(samples.length, count, folder);
     assert.equal(samples[0], first, folder);
     assert.equal(samples.at(-1), last, folder);
@@ -301,7 +331,7 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
   assert.match(app, /const safeGain = \.92 \/ decodedBufferPeak\(buffer\)/);
   assert.match(app, /source\.connect\(state\.limiter\)/, 'every dry voice must retain shared peak protection');
   assert.doesNotMatch(app, /source\.connect\(state\.masterGain\)/);
-  assert.match(app, /connectFastToMix\(gain, \.035\)/, 'sampled instruments must retain the original room send');
+  assert.match(app, /connectFastToMix\(gain, sampleConfig\?\.roomSend \?\? \(heldTone \? \.16 : \.035\)\)/, 'sustained and plucked samples retain their room sends');
   assert.doesNotMatch(app, /Recorded samples already contain their own body and room tone/);
   assert.match(app, /const calibratedGain = Math\.pow/);
   assert.match(app, /gainDb: -5\.68/);
@@ -321,7 +351,7 @@ test('guitar sample maps contain every supplied MIDI note exactly once', () => {
   ]) {
     const sampleRoot = path.join(root, 'assets', 'audio', folder);
     const expectedMidi = fs.readdirSync(sampleRoot)
-      .filter((name) => name.endsWith('.ogg'))
+      .filter((name) => name.endsWith('.flac'))
       .sort()
       .map((name) => Number(name.slice(0, 3)) + 20);
     const escapedFolder = folder.replaceAll('-', '\\-');
@@ -488,14 +518,16 @@ test('range controls keep computer-keyboard performance available', () => {
   assert.match(app, /id: "viola"[\s\S]*?viola-expressive-v2\.webp/);
 });
 
-test('shows actual-size guidance and keeps related instruments at different visual scales', () => {
-  assert.match(html, /id="scaleGuide"/);
-  assert.match(html, /id="scaleValue"/);
+test('shows actual-size guidance in details and keeps related instruments at different visual scales', () => {
+  assert.match(html, /id="detailFacts"/);
+  assert.match(app, /facts\.push\(\["실제 크기", parent\.size\]\)/);
   assert.match(css, /--object-scale/);
-  assert.match(app, /전체 높이 약 180 cm/);
-  assert.match(app, /전체 길이 약 59 cm/);
-  assert.match(app, /외형 길이 약 48 cm/);
-  assert.match(app, /슬라이드 닫힘 약 114 cm/);
+  for (const [id, size] of [['upright-bass', '전체 높이 약 180 cm'], ['violin', '전체 길이 약 59 cm'], ['trumpet', '외형 길이 약 48 cm'], ['trombone', '슬라이드 닫힘 약 114 cm']]) {
+    assert.equal(runtime.modelById(id).size, size, id + ': physical dimensions');
+  }
+  for (const [smaller, larger] of [['violin', 'cello'], ['viola', 'upright-bass'], ['soprano-sax', 'baritone-sax']]) {
+    assert.ok(runtime.modelById(smaller).visualScale < runtime.modelById(larger).visualScale, smaller + '/' + larger + ': relative display sizes');
+  }
 });
 
 test('renders a full keyboard and disables notes outside each model range', () => {
