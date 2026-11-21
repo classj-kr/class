@@ -401,3 +401,5 @@ html body li.mb-group.mb-group, html body p.mb-round-title.mb-round-title, html 
 .mb-hat.is-low > svg { top: 0.02em; }
 /* 확률분포표·표준정규분포표 */
 .mb-table.mb-dist th, .mb-table.mb-dist td, .mb-table.mb-ztab th, .mb-table.mb-ztab td { padding: 4px 9px; }
+/* 학기를 바꿔 문제 파일을 받는 동안 보이는 한 줄 */
+.mb-loading { margin: 24px 0; text-align: center; color: #5b6475; font-size: 15px; font-weight: 700; }

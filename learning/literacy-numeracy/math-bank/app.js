@@ -155,7 +155,16 @@
     // 맨 밑의 「평가원·수능 기출」은 따로 있는 기출 화면으로 간다. 뒤로 돌아왔을 때 드롭다운이 기출에 머물러 있지 않게 먼저 되돌려 둔다.
     if (termSelect.value === T.PAST.value) { termSelect.value = termOf(unit); location.href = PAST_URL; return; }
     setBusy(true);
+    // 고르는 순간 옛 단원 목록을 지우고 「불러오는 중」을 보인다. 그 학기 문제 파일(1 MB 안팎)을 받는 1~2초 동안 옛 학기 단원이
+    // 그대로 남아 있으면 「미적분 I」 밑에 1학년 단원이 보여 망가진 것처럼 보였다(2026-11-21). 받지 못하면 원래 학기로 되돌린다.
+    unitSelect.replaceChildren(new Option('불러오는 중…', ''));
+    main.replaceChildren(el('p', 'mb-loading', '문제를 불러오는 중…'));
     try { await loadTerm(termSelect.value); fillUnits(); await loadFinished(); showGroups(); }
+    catch (error) {
+      console.error(error);
+      termSelect.value = termOf(unit); fillUnits(); showGroups();
+      main.prepend(el('p', 'mb-loading', '문제를 불러오지 못했습니다. 잠시 뒤 다시 골라 주세요.'));
+    }
     finally { setBusy(false); }
   });
   unitSelect.addEventListener('change', async () => {
