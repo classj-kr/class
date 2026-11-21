@@ -116,14 +116,11 @@
         "fretless-bass-finger": Object.freeze({ id: "fretless-bass-finger", root: "assets/audio/fretless-bass-finger/", min: 28, max: 63, fileMin: 21, step: 1, gainDb: 4.0, revision: "20260901-fretless-finger-v3" }),
         "fretless-bass-pick": Object.freeze({ id: "fretless-bass-pick", root: "assets/audio/fretless-bass-pick/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 2.5 }),
         "fretless-bass-slap": Object.freeze({ id: "fretless-bass-slap", root: "assets/audio/fretless-bass-slap/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 10.0 }),
-        "guitar-s-clean": Object.freeze({ id: "guitar-s-clean", root: "assets/audio/guitar-s-clean/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 5.5, startOffset: 0, revision: "20260902-clean-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-s-blues": Object.freeze({ id: "guitar-s-blues", root: "assets/audio/guitar-s-blues/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 4.0, startOffset: 0, revision: "20260902-blues-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-s-funk": Object.freeze({ id: "guitar-s-funk", root: "assets/audio/guitar-s-funk/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 25.1, startOffset: 0, revision: "20260902-funk-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-s-rock": Object.freeze({ id: "guitar-s-rock", root: "assets/audio/guitar-s-rock/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 2.0, startOffset: 0, revision: "20260902-rock-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-superstrat": Object.freeze({ id: "guitar-superstrat", root: "assets/audio/guitar-superstrat/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: -1.5, startOffset: 0, revision: "20260902-superstrat-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
-        "guitar-hollow": Object.freeze({ id: "guitar-hollow", root: "assets/audio/guitar-hollow/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 13.0, startOffset: 0, revision: "20260902-hollow-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-nylon": Object.freeze({ id: "guitar-nylon", root: "assets/audio/guitar-nylon/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 16.5, startOffset: 0, revision: "20260902-nylon-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
-        "guitar-steel": Object.freeze({ id: "guitar-steel", root: "assets/audio/guitar-steel/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 25.0, startOffset: 0, revision: "20260902-steel-tone-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
+        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, releaseSeconds: .28, retriggerReleaseSeconds: .12, revision: "20261121-full-chromatic-v1", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
         "harp": Object.freeze({ id: "harp", root: "assets/audio/harp/", min: 25, max: 102, fileMin: 21, step: 1, gainDb: 14.0, revision: "20261121-complete-release" }),
         "piccolo-trumpet": Object.freeze({ id: "piccolo-trumpet", root: "assets/audio/piccolo-trumpet/", min: 52, max: 100, fileMin: 21, step: 1, gainDb: 1.5 }),
         "glockenspiel": Object.freeze({ id: "glockenspiel", root: "assets/audio/glockenspiel/", min: 79, max: 95, fileMin: 21, step: 1, gainDb: 33.1 })
@@ -392,7 +389,7 @@
         ]
     };
     const GUITAR_DEMOS = {
-        "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16, preset: "rock" },
+        "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16 },
         "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
         "hollow-jazz": { title: "Breezin’", bpm: 84, notes: BREEZIN, endBeat: 10 },
         dreadnought: { title: "Wish You Were Here", bpm: 60, notes: WISH_YOU_WERE_HERE, endBeat: 9.2 }
@@ -509,11 +506,11 @@
             { id: "active-bass", name: "Modern Active 5", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-active-five.webp", badge: "FINGER · PICK · SLAP", model: "MODERN ACTIVE 5", range: [23, 72], size: "전체 길이 약 118 cm", visualScale: .84, scalePercent: 66, description: "5현 액티브 베이스의 핑거·피크·슬랩 원음을 낮은 B음부터 연주해요." },
             { id: "fretless-bass", name: "Fretless 4", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-fretless.webp", badge: "FINGER · PICK · SLAP", model: "FRETLESS 4", range: [28, 67], size: "전체 길이 약 116 cm", visualScale: .82, scalePercent: 64, description: "프렛리스 베이스의 핑거·피크·슬랩 원음을 주법별로 바꾸어 연주해요." },
             { id: "upright-bass", name: "콘트라베이스", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/double-bass-expressive.webp", badge: "57-NOTE SUSTAIN · 57-NOTE PIZZ", model: "DOUBLE BASS", range: [28, 84], size: "전체 높이 약 180 cm", visualScale: 1, scalePercent: 100, expression: "보우 압력", description: "콘트라베이스 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
-            { id: "s-style", name: "Rock S-Style", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-s-style.webp", badge: "4 × 47-NOTE OGG · EXTENDED", model: "ROCK S-STYLE", range: [40, 88], size: "전체 길이 약 100 cm", visualScale: .7, scalePercent: 56, guitar: true, description: "S-Style 기타의 클린·블루스·펑크·록 원음 47개씩을 E2–D6에 정확히 대응하고 위 음역만 확장해 연주해요." },
-            { id: "metal-seven", name: "Modern Metal 7", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-metal-seven.webp", badge: "45-NOTE OGG · EXTENDED", model: "MODERN METAL 7", range: [35, 88], size: "전체 길이 약 103 cm", visualScale: .72, scalePercent: 57, guitar: true, description: "Superstrat 원음 45개를 E2–C6에 정확히 대응하고 7현 기타의 연주 음역까지 확장해 연주해요." },
-            { id: "hollow-jazz", name: "Hollowbody Jazz", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-hollowbody-jazz.webp", badge: "47-NOTE OGG · EXTENDED", model: "JAZZ ARCHTOP", range: [40, 88], size: "전체 길이 약 105 cm", visualScale: .73, scalePercent: 58, guitar: true, description: "할로우바디 원음 47개를 E2–D6에 정확히 대응하고 높은 음역만 확장해 연주해요." },
-            { id: "dreadnought", name: "Dreadnought", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-dreadnought.webp", badge: "45-NOTE STEEL OGG · EXTENDED", model: "DREADNOUGHT", range: [40, 88], size: "전체 길이 약 104 cm", visualScale: .72, scalePercent: 58, guitar: true, description: "스틸 스트링 통기타 원음 45개를 E2–C6에 정확히 대응하고 높은 음역만 확장해 연주해요." },
-            { id: "classical-guitar", name: "Classical Nylon", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-classical-nylon.webp", badge: "45-NOTE OGG · EXTENDED", model: "CLASSICAL", range: [40, 88], size: "전체 길이 약 99 cm", visualScale: .69, scalePercent: 55, guitar: true, description: "나일론 기타 원음 45개를 E2–C6에 정확히 대응하고 높은 음역만 확장해 연주해요." },
+            { id: "s-style", name: "Rock S-Style", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-s-style.webp", badge: "47-NOTE CHROMATIC", model: "ROCK S-STYLE", range: [40, 86], size: "전체 길이 약 100 cm", visualScale: .7, scalePercent: 56, guitar: true, description: "S-Style 기타의 E2–D6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "metal-seven", name: "Hellrazer Metal", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-metal-seven.webp", badge: "64-NOTE CHROMATIC", model: "HELLRAZER METAL", range: [25, 88], size: "전체 길이 약 103 cm", visualScale: .72, scalePercent: 57, guitar: true, description: "Hellrazer의 C♯1–E6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "hollow-jazz", name: "Semi-Hollow Jazz", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-hollowbody-jazz.webp", badge: "47-NOTE CHROMATIC", model: "SEMI-HOLLOW", range: [40, 86], size: "전체 길이 약 105 cm", visualScale: .73, scalePercent: 58, guitar: true, description: "세미 할로우 기타의 E2–D6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "dreadnought", name: "Dreadnought", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-dreadnought.webp", badge: "45-NOTE CHROMATIC", model: "ACOUSTIC STEEL", range: [40, 84], size: "전체 길이 약 104 cm", visualScale: .72, scalePercent: 58, guitar: true, description: "스틸현 통기타의 E2–C6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
+            { id: "classical-guitar", name: "Classical Nylon", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-classical-nylon.webp", badge: "45-NOTE CHROMATIC", model: "CLASSICAL NYLON", range: [40, 84], size: "전체 길이 약 99 cm", visualScale: .69, scalePercent: 55, guitar: true, description: "나일론 기타의 E2–C6 전체 음역을 반음마다 따로 녹음한 소리로 연주해요." },
             { id: "violin", name: "바이올린", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/violin-expressive-v2.webp", badge: "54-NOTE SUSTAIN · 46-NOTE PIZZ", model: "VIOLIN", range: [55, 108], size: "전체 길이 약 59 cm", visualScale: .48, scalePercent: 33, expression: "보우 압력", description: "바이올린 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
             { id: "viola", name: "비올라", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/viola-expressive-v2.webp", badge: "61-NOTE SUSTAIN · 42-NOTE PIZZ", model: "VIOLA", range: [48, 108], size: "전체 길이 약 66 cm", visualScale: .53, scalePercent: 37, expression: "보우 압력", description: "비올라 서스테인과 피치카토를 주법 버튼으로 바꾸어 실제 샘플로 연주해요." },
             { id: "cello", name: "첼로", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/cello-expressive.webp", badge: "61-NOTE SUSTAIN · 26-NOTE PIZZ", model: "CELLO", range: [36, 96], size: "전체 높이 약 121 cm", visualScale: .78, scalePercent: 67, expression: "보우 압력", description: "첼로 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
@@ -623,7 +620,6 @@
         guitarKeyMode: "major",
         guitarChordIndex: 0,
         articulation: "finger",
-        stringPreset: "clean",
         keyboardStartMidi: 60,
         keyboardCenterFrame: 0,
         keyboardScale: 1,
@@ -693,7 +689,7 @@
         [
             "audioButton", "modelBadge", "instrumentName", "instrumentDescription", "guitarModeSwitch", "instrumentVisual", "familyEyebrow", "familyName", "modelChooser", "koreanRoomSwitch", "stationSource", "orchestralSource",
             "visualFamily", "visualModel", "studioStage", "instrumentArtwork", "instrumentLayers", "classicalRender", "machineDeck", "malletRender", "stringCanvas", "pianoControls", "keyboardPatchControls", "stringControls", "classicalControls", "classicalArticulationButtons", "classicalArticulationHint", "guitarFxControls", "drumControls", "drumSystemLabel", "drumSystemDescription", "drumResonanceLabel", "drumToneLabel", "sustainButton",
-            "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
+            "articulationButtons", "articulationHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
             "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "melodyDemoControls", "melodyDemoButton", "melodyDemoSelect", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
@@ -1099,10 +1095,11 @@
             voice.pendingReleaseTimer = 0;
         }
         const now = state.audioContext.currentTime;
-        const release = quick ? (voice.sampledPiano ? .035 : .08)
-            : isElectricBassPluckSample(voice.sampleSet) ? BASS_PLUCK_RELEASE_SECONDS
+        const sampleConfig = KEYBOARD_SAMPLE_SETS[voice.sampleSet];
+        const release = quick ? (sampleConfig?.retriggerReleaseSeconds ?? (voice.sampledPiano ? .035 : .08))
+            : sampleConfig?.releaseSeconds ?? (isElectricBassPluckSample(voice.sampleSet) ? BASS_PLUCK_RELEASE_SECONDS
             : voice.heldTone ? .32
-            : (voice.sampledPiano ? .16 : .86);
+            : (voice.sampledPiano ? .16 : .86));
         if (typeof voice.gain.gain.cancelAndHoldAtTime === "function") voice.gain.gain.cancelAndHoldAtTime(now);
         else voice.gain.gain.cancelScheduledValues(now);
         voice.gain.gain.setTargetAtTime(.0001, now, release / 5);
@@ -1254,11 +1251,11 @@
         if (["p-bass", "j-bass", "active-bass", "fretless-bass"].includes(state.currentModel.id)) {
             return KEYBOARD_SAMPLE_SETS[state.currentModel.id + "-" + state.articulation] || null;
         }
-        if (state.currentModel.id === "s-style") return KEYBOARD_SAMPLE_SETS["guitar-s-" + state.stringPreset] || null;
-        if (state.currentModel.id === "metal-seven") return KEYBOARD_SAMPLE_SETS["guitar-superstrat"];
-        if (state.currentModel.id === "hollow-jazz") return KEYBOARD_SAMPLE_SETS["guitar-hollow"];
-        if (state.currentModel.id === "dreadnought") return KEYBOARD_SAMPLE_SETS["guitar-steel"];
-        if (state.currentModel.id === "classical-guitar") return KEYBOARD_SAMPLE_SETS["guitar-nylon"];
+        if (state.currentModel.id === "s-style") return KEYBOARD_SAMPLE_SETS["guitar-cubase-sc"];
+        if (state.currentModel.id === "metal-seven") return KEYBOARD_SAMPLE_SETS["guitar-cubase-hellrazer"];
+        if (state.currentModel.id === "hollow-jazz") return KEYBOARD_SAMPLE_SETS["guitar-cubase-sh"];
+        if (state.currentModel.id === "dreadnought") return KEYBOARD_SAMPLE_SETS["guitar-cubase-t"];
+        if (state.currentModel.id === "classical-guitar") return KEYBOARD_SAMPLE_SETS["guitar-cubase-l"];
         if (state.currentModel.id === "gayageum") return KEYBOARD_SAMPLE_SETS[state.articulation === "pluck" ? "gayageum" : "gayageum-" + state.articulation];
         if (state.currentModel.id === "geomungo") return KEYBOARD_SAMPLE_SETS[state.articulation === "pluck" ? "geomungo" : "geomungo-" + state.articulation];
         if (state.currentModel.id === "haegeum") return KEYBOARD_SAMPLE_SETS[state.articulation === "vibrato" ? "haegeum-vibrato" : "haegeum"];
@@ -1458,7 +1455,9 @@
         const sampleConfig = KEYBOARD_SAMPLE_SETS[sampleSet];
         const calibratedGain = Math.pow(10, ((sampleConfig && sampleConfig.gainDb) || 0) / 20);
         const velocityGain = Math.max(.08, Math.min(1.7, Math.pow(velocity, .9) * 1.22 * highNoteCompensation));
-        const peak = upwardBalancedGain(buffer, velocityGain * calibratedGain, velocityGain);
+        const peak = sampleSet.startsWith("guitar-cubase-")
+            ? volumeOnlyGain(buffer, velocityGain * calibratedGain)
+            : upwardBalancedGain(buffer, velocityGain * calibratedGain, velocityGain);
         const decay = pluckedKeyboardDecay(sampleSet);
         source.buffer = buffer;
         const tuningCents = Number(sampleConfig?.anchorTuningCents?.[anchor] || 0);
@@ -2790,10 +2789,6 @@
             return;
         }
         setGuitarMode("keyboard");
-        if (demo.preset && state.stringPreset !== demo.preset) {
-            state.stringPreset = demo.preset;
-            renderSoundPresets();
-        }
         return playKeyboardDemo(button, demo.bpm, demo.notes, demo.endBeat);
     }
 
@@ -3065,30 +3060,6 @@
         box.classList.remove("hidden");
     }
 
-    function renderSoundPresets() {
-        const sStyle = Boolean(state.currentModel && state.currentModel.id === "s-style");
-        elements.soundPresetGroup.classList.toggle("hidden", !sStyle);
-        elements.soundPresetButtons.innerHTML = "";
-        if (!sStyle) return;
-        const presets = [["clean", "클린"], ["blues", "블루스"], ["funk", "펑크"], ["rock", "록"]];
-        if (!presets.some(function (item) { return item[0] === state.stringPreset; })) state.stringPreset = "clean";
-        presets.forEach(function (preset) {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.textContent = preset[1];
-            button.classList.toggle("active", preset[0] === state.stringPreset);
-            button.setAttribute("aria-pressed", String(preset[0] === state.stringPreset));
-            button.addEventListener("click", function () {
-                allNotesOff();
-                state.stringPreset = preset[0];
-                renderSoundPresets();
-                preloadConcertGrandRange();
-            });
-            elements.soundPresetButtons.appendChild(button);
-        });
-        elements.soundPresetHint.textContent = "같은 기타를 서로 다르게 녹음한 실제 음색 세트입니다. 주법과 구분해 선택합니다.";
-    }
-
     function renderArticulations() {
         const modelId = state.currentModel && state.currentModel.id;
         const sampledGuitar = ["s-style", "metal-seven", "hollow-jazz", "dreadnought", "classical-guitar"].includes(modelId);
@@ -3122,7 +3093,6 @@
         });
         elements.articulationHint.textContent = state.instrument === "bass" ? hints.bass : sampledGuitar ? hints.sampled : hints.physical;
         elements.physicalStringControls.classList.toggle("hidden", !physicalGuitar);
-        renderSoundPresets();
     }
 
     function updatePlaySurface() {
@@ -3163,7 +3133,6 @@
         } else if (instrument === "guitar") {
             state.keyboardStartMidi = 48;
             state.articulation = "pick";
-            state.stringPreset = "clean";
             elements.toneSlider.value = 69; elements.muteSlider.value = 5; elements.pickSlider.value = 24; elements.driveSlider.value = 12;
         } else if (instrument === "piano") state.keyboardStartMidi = 60;
         if (state.family === "keyboard") {

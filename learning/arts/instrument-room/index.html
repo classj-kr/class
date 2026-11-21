@@ -7,12 +7,12 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20261121-glockenspiel-demos">
+    <link rel="stylesheet" href="styles.css?v=20261121-cubase-guitars-v1">
     <script src="instrument-core.js?v=20261118-power-chords" defer></script>
-    <script src="instrument-details.js?v=20261015-orchestral-v1" defer></script>
+    <script src="instrument-details.js?v=20261121-cubase-guitars-v1" defer></script>
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
     <script src="pad-presentation.js?v=20261015-orchestral-v1" defer></script>
-    <script src="app.js?v=20261121-reviewed-pizz-pitch" defer></script>
+    <script src="app.js?v=20261121-cubase-guitars-v1" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
     <div class="room-glow" aria-hidden="true"></div>
@@ -131,11 +131,6 @@
                                 <span id="stringTechniqueLabel" class="control-eyebrow">연주 주법</span>
                                 <div id="articulationButtons" class="articulation-buttons" aria-label="주법 선택"></div>
                                 <p id="articulationHint" class="technique-hint"></p>
-                            </section>
-                            <section id="soundPresetGroup" class="technique-card hidden" aria-labelledby="soundPresetLabel">
-                                <span id="soundPresetLabel" class="control-eyebrow">음색 프리셋</span>
-                                <div id="soundPresetButtons" class="articulation-buttons tone-preset-buttons" aria-label="음색 프리셋 선택"></div>
-                                <p id="soundPresetHint" class="technique-hint"></p>
                             </section>
                             <div id="physicalStringControls" class="physical-string-controls">
                                 <label><span>톤 <output id="toneOutput">64</output></span><input id="toneSlider" type="range" min="10" max="95" value="64"></label>

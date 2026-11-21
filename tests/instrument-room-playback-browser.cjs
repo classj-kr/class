@@ -234,11 +234,11 @@ const server = http.createServer((req, res) => {
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
       await page.waitForFunction(() => [50,55].every(midi => document.querySelector('.key[data-midi="' + midi + '"].demo-hit')));
-      assert.equal(await page.$eval('#soundPresetButtons [aria-pressed="true"]', button => button.textContent), '록');
+      assert.equal(await page.$('#soundPresetButtons'), null);
       assert.equal(await page.$eval('#keyboardViewport', viewport => viewport.classList.contains('hidden')), false);
       const firstDyad = await page.evaluate(() => window.bassDemoHits.slice(0, 2));
       assert.deepEqual(firstDyad.map(hit => hit.midi), [50,55]);
-      assert.ok(firstDyad.every(hit => hit.sampleSet === 'guitar-s-rock'));
+      assert.ok(firstDyad.every(hit => hit.sampleSet === 'guitar-cubase-sc'));
       assert.ok(Number.isFinite(firstDyad[0].when));
       assert.equal(firstDyad[0].when, firstDyad[1].when);
       if (touch) {
@@ -263,7 +263,7 @@ const server = http.createServer((req, res) => {
       await page.waitForFunction(() => [40,47].every(midi => document.querySelector('.key[data-midi="' + midi + '"].demo-hit')));
       const opening = await page.evaluate(() => window.bassDemoHits.slice(0, 2));
       assert.deepEqual(opening.map(hit => hit.midi), [40,47]);
-      assert.ok(opening.every(hit => hit.sampleSet === 'guitar-superstrat'));
+      assert.ok(opening.every(hit => hit.sampleSet === 'guitar-cubase-hellrazer'));
       assert.equal(opening[0].when, opening[1].when);
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
@@ -277,7 +277,7 @@ const server = http.createServer((req, res) => {
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
       await page.waitForFunction(() => document.querySelector('.key[data-midi="69"].demo-hit'));
-      assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-hollow');
+      assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-cubase-sh');
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
         const theme = await page.evaluate(() => window.bassDemoHits);
@@ -292,7 +292,7 @@ const server = http.createServer((req, res) => {
       await page.waitForFunction(() => window.bassDemoHits.length >= 3 && document.querySelector('.key[data-midi="50"].demo-hit'));
       const pickup = await page.evaluate(() => window.bassDemoHits.slice(0, 3));
       assert.deepEqual(pickup.map(hit => hit.midi), [45,47,50]);
-      assert.ok(pickup.every(hit => hit.sampleSet === 'guitar-steel'));
+      assert.ok(pickup.every(hit => hit.sampleSet === 'guitar-cubase-t'));
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
         const acoustic = await page.evaluate(() => window.bassDemoHits);

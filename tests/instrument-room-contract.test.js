@@ -265,14 +265,11 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
     ['fretless-bass-finger', 36, '008_e1.ogg', '043_ds4.ogg'],
     ['fretless-bass-pick', 35, '008_e1.ogg', '042_d4.ogg'],
     ['fretless-bass-slap', 35, '008_e1.ogg', '042_d4.ogg'],
-    ['guitar-s-clean', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-s-blues', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-s-funk', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-s-rock', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-superstrat', 45, '020_e2.ogg', '064_c6.ogg'],
-    ['guitar-hollow', 47, '020_e2.ogg', '066_d6.ogg'],
-    ['guitar-nylon', 45, '020_e2.ogg', '064_c6.ogg'],
-    ['guitar-steel', 45, '020_e2.ogg', '064_c6.ogg'],
+    ['guitar-cubase-sc', 47, '020_e2.ogg', '066_d6.ogg'],
+    ['guitar-cubase-hellrazer', 64, '005_cs1.ogg', '068_e6.ogg'],
+    ['guitar-cubase-sh', 47, '020_e2.ogg', '066_d6.ogg'],
+    ['guitar-cubase-l', 45, '020_e2.ogg', '064_c6.ogg'],
+    ['guitar-cubase-t', 45, '020_e2.ogg', '064_c6.ogg'],
     ['harp', 78, '005_cs1.ogg', '082_fs7.ogg'],
     ['piccolo-trumpet', 49, '032_e3.ogg', '080_e7.ogg']
   ]) {
@@ -297,7 +294,7 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
   assert.match(app, /sampleSet === "hammond-organ"[\s\S]*?"tuba"/);
   assert.match(app, /"contrabassoon"[\s\S]*?"flugelhorn"[\s\S]*?"euphonium"/);
   assert.match(app, /ONE_SHOT_SAMPLE_SETS = new Set\(\[[^\]]*"harp"[^\]]*"geomungo"[^\]]*"pyeongyeong"\]\)/);
-  assert.match(app, /const peak = upwardBalancedGain\(buffer, velocityGain \* calibratedGain, velocityGain\)/);
+  assert.match(app, /upwardBalancedGain\(buffer, velocityGain \* calibratedGain, velocityGain\)/);
   assert.match(app, /function decodedBufferPeak\(buffer\)/);
   assert.match(app, /function decodedBufferActiveRms\(buffer\)/);
   assert.match(app, /Math\.max\(requestedGain, quietSampleFloor\)/, 'quiet samples must be raised without lowering louder samples');
@@ -312,8 +309,6 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
   assert.match(app, /id: "ocarina"[^\n]*gainDb: -4\.5/, 'ocarina must retain its perceptual loudness lift');
   assert.match(app, /id: "gayageum-25"[^\n]*gainDb: 18\.6/);
   assert.match(app, /id: "ajaeng-vibrato"[^\n]*gainDb: 17\.1/);
-  assert.match(app, /id: "guitar-s-funk"[^\n]*gainDb: 25\.1/);
-  assert.match(app, /id: "guitar-steel"[^\n]*gainDb: 25\.0/);
   assert.match(app, /id: "glockenspiel"[^\n]*gainDb: 33\.1/);
   assert.match(app, /\["violin", "viola", "cello", "upright-bass"\]\.includes\(state\.currentModel\.id\) && state\.articulation === "pizzicato"/);
   assert.match(app, /\[\["sustain", "활긋기"\], \["pizzicato", "피치카토"\]\]/);
@@ -321,8 +316,8 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
 
 test('guitar sample maps contain every supplied MIDI note exactly once', () => {
   for (const folder of [
-    'guitar-s-clean', 'guitar-s-blues', 'guitar-s-funk', 'guitar-s-rock',
-    'guitar-superstrat', 'guitar-hollow', 'guitar-nylon', 'guitar-steel'
+    'guitar-cubase-sc', 'guitar-cubase-hellrazer', 'guitar-cubase-sh',
+    'guitar-cubase-l', 'guitar-cubase-t'
   ]) {
     const sampleRoot = path.join(root, 'assets', 'audio', folder);
     const expectedMidi = fs.readdirSync(sampleRoot)
@@ -447,7 +442,7 @@ test('Korean folk percussion exposes each instrument and official articulation a
 });
 test('keeps the recorded bass finger articulation active on first model selection', () => {
   const start = app.indexOf('function renderClassicalArticulations(model)');
-  const end = app.indexOf('function renderSoundPresets()', start);
+  const end = app.indexOf('function renderArticulations()', start);
   const articulationRenderer = app.slice(start, end);
   assert.ok(start >= 0 && end > start);
   assert.match(articulationRenderer, /const expressive = Boolean\(model\.expressive\)/);
@@ -470,13 +465,13 @@ test('string and expressive families expose virtual-instrument presentation', ()
   }
   assert.match(html, /id="classicalControls"/);
   assert.match(html, /id="guitarFxControls"/);
-  assert.match(html, /id="soundPresetGroup"/);
+  assert.doesNotMatch(html, /id="soundPresetGroup"/);
   assert.match(html, /id="physicalStringControls"/);
   assert.doesNotMatch(html, /expression-tabs|expression-actions/);
   assert.match(app, /\[\["finger", "핑거"\], \["pick", "피크"\], \["slap", "슬랩"\]\]/);
-  assert.match(app, /\[\["clean", "클린"\], \["blues", "블루스"\], \["funk", "펑크"\], \["rock", "록"\]\]/);
-  assert.match(app, /"guitar-steel": Object\.freeze/);
-  assert.match(app, /id === "dreadnought"\) return KEYBOARD_SAMPLE_SETS\["guitar-steel"\]/);
+  assert.doesNotMatch(app, /stringPreset|renderSoundPresets/);
+  assert.match(app, /"guitar-cubase-t": Object\.freeze/);
+  assert.match(app, /id === "dreadnought"\) return KEYBOARD_SAMPLE_SETS\["guitar-cubase-t"\]/);
   assert.match(app, /anchors: Object\.freeze\(\[40,/);
   assert.match(css, /\.classical-render/);
   assert.match(css, /\.machine-deck/);
