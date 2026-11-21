@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
       data = data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
         'window.audit = {state, MODEL_LIBRARY, MELODY_DEMOS, selectFamily, selectModel, sampledPianoConfig}; document.addEventListener("DOMContentLoaded", init);');
       data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {',
-        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.hits.push({midi,anchor,sampleSet,time:performance.now()});');
+        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.hits.push({midi,anchor,sampleSet,time:(when ?? state.audioContext.currentTime)*1000});');
     }
     res.writeHead(200, {'Content-Type':{'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.ogg':'audio/ogg','.flac':'audio/flac','.webp':'image/webp'}[path.extname(file)] || 'application/octet-stream'}).end(data);
   });
@@ -42,9 +42,11 @@ const server = http.createServer((req, res) => {
           const family = Object.keys(audit.MODEL_LIBRARY).find(f => audit.MODEL_LIBRARY[f].some(m => m.id === id));
           audit.selectFamily(family); audit.selectModel(id);
           const config = audit.sampledPianoConfig();
+          const card=document.querySelector('#classicalControls');
+          if(card.getClientRects().length && card.querySelectorAll('button').length<2)throw new Error(id+': useless single-choice card');
           for (const [index,demo] of demos.entries()) {
             const closing = demo.notes.at(-1);
-            if (closing[0] !== (id.includes('bassoon') ? 6 : index === 1 ? 12 : 16)) throw new Error(id + ': wrong closing beat');
+            if (closing[0]+closing[3] > demo.endBeat+1e-8) throw new Error(id + ': clipped final note');
             for (const [beat,midis,velocity,duration] of demo.notes) {
               if (beat < 0 || duration <= 0 || duration > demo.endBeat || velocity <= 0 || velocity > 1) throw new Error(id + ': invalid event');
               for (const midi of midis) if (midi < config.min || midi > config.max || !Number.isInteger(midi)) throw new Error(id + ': outside recorded range: ' + midi);
@@ -54,7 +56,7 @@ const server = http.createServer((req, res) => {
         }
         return list;
       });
-      assert.equal(cases.length,13);
+      assert.equal(cases.length,18);
       for (const row of cases) {
         await page.evaluate(({family,id}) => { audit.selectFamily(family);audit.selectModel(id);window.hits=[]; },row);
         const selector = '[data-melody-demo="' + row.index + '"]';
@@ -64,12 +66,12 @@ const server = http.createServer((req, res) => {
         const first = await page.evaluate(() => hits[0]);
         assert.equal(first.midi,row.first); assert.equal(first.anchor,row.first); assert.equal(first.sampleSet,row.id);
         if (width === 1366 && ['clavinet','oboe','english-horn','bassoon'].includes(row.id)) {
-          await page.waitForFunction(() => !document.querySelector('#melodyDemoButtons [aria-pressed="true"]'),{timeout:30000});
+          await page.waitForFunction(() => !document.querySelector('#melodyDemoButtons [aria-pressed="true"]'),{timeout:60000});
           const hits = await page.evaluate(() => window.hits);
           assert.equal(hits.length,row.count,row.id);
           assert.equal(hits.at(-1).midi,row.last);
           assert.ok(hits.every(hit => hit.sampleSet === row.id && hit.anchor === hit.midi));
-          assert.ok(Math.abs(hits.at(-1).time - hits[0].time - row.closingBeat*60000/row.bpm) < 200,row.id+': fifth-bar downbeat');
+          assert.ok(Math.abs(hits.at(-1).time - hits[0].time - row.closingBeat*60000/row.bpm) < 1,row.id+': score timing');
         } else await page.click(selector);
         assert.equal(await page.$$eval('.key.demo-hit',keys=>keys.length),0);
       }
@@ -89,6 +91,15 @@ const server = http.createServer((req, res) => {
         return bad;
       });
       assert.deepEqual(bad,[]);
+      const korean=await page.evaluate(()=>{
+        audit.selectFamily('korean');audit.state.koreanRoom='melody';audit.selectModel('gayageum');
+        const gayageum=[...document.querySelectorAll('#classicalArticulationButtons button')].map(e=>e.textContent);
+        audit.selectModel('yanggeum');const yanggeum=[...document.querySelectorAll('#classicalArticulationButtons button')].map(e=>e.textContent);
+        audit.selectModel('gayageum-25');const singleVisible=!!document.querySelector('#classicalControls').getClientRects().length;
+        return {gayageum,yanggeum,singleVisible};
+      });
+      assert.ok(korean.gayageum.includes('연튕김'));assert.ok(!korean.gayageum.includes('트레몰로'));
+      assert.deepEqual(korean.yanggeum,['채로 치기','트레몰로']);assert.equal(korean.singleVisible,false);
       await page.evaluate(() => {audit.selectFamily('percussion');audit.selectModel('timpani');});
       await screenshotWebp(page,{path:path.join(output,'timpani-controls-'+width+'.webp')});
       await page.evaluate(() => {audit.selectFamily('woodwind');audit.selectModel('recorder-soprano');});
@@ -97,7 +108,7 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$$('#melodyDemoControls select').then(x=>x.length),0);
       await screenshotWebp(page,{path:path.join(output,'recorder-buttons-'+width+'.webp')});
       assert.deepEqual(errors,[]);
-      console.log(width+'px: 13 added demos use native samples; four primary excerpts finish on bar five; inactive sound sliders removed');
+      console.log(width+'px: all 18 demos use native samples, final notes complete, inactive sound sliders removed');
       await page.close();
     }
   } finally {

@@ -72,7 +72,7 @@
         "clarinet": Object.freeze({ id: "clarinet", root: "assets/audio/clarinet/", min: 50, max: 88, fileMin: 21, step: 1, gainDb: 2.89 }),
         "bass-clarinet": Object.freeze({ id: "bass-clarinet", root: "assets/audio/bass-clarinet/", min: 32, max: 83, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: 0.05 }),
         "piccolo-flute": Object.freeze({ id: "piccolo-flute", root: "assets/audio/piccolo-flute/", min: 72, max: 108, fileMin: 21, step: 1, gainDb: 9.0 }),
-        "french-horn": Object.freeze({ id: "french-horn", root: "assets/audio/french-horn/", min: 35, max: 81, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -2.93 }),
+        "french-horn": Object.freeze({ id: "french-horn", root: "assets/audio/french-horn/", min: 35, max: 81, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: 1, startOffset: 0 }),
         "english-horn": Object.freeze({ id: "english-horn", root: "assets/audio/english-horn/", min: 52, max: 83, fileMin: 21, step: 1, gainDb: 4.38 }),
         "soprano-sax": Object.freeze({ id: "soprano-sax", root: "assets/audio/soprano-sax/", min: 53, max: 94, fileMin: 21, step: 1, gainDb: -1.38 }),
         "saxophone": Object.freeze({ id: "saxophone", root: "assets/audio/alto-sax/", min: 46, max: 92, fileMin: 21, step: 1, gainDb: -0.11 }),
@@ -309,18 +309,27 @@
         [15, [42, 49], .88, .22, false, "palm-mute"],
         [15.5, [40, 47], .99, 1.4]
     ];
-    // Short identifying excerpts: jazz melody, steel-string picking and the
+    // Identifying phrases: jazz melody, steel-string picking and the
     // nylon-string sixths from the Leon theme. Voices retain their individual
     // durations so a bass note does not cut off a ringing treble string.
+    // Kosma's complete A phrase in E minor, pickup through the minor cadence.
+    // New Real Book lead sheet, transposed from G minor; chord melody voicings.
     const AUTUMN_LEAVES = [
-        [0, [64], 2/3], [2/3, [66], 1/3], [1, [67], .5],
-        [1.5, [72, 45, 55, 60], 1.45], [3, [71, 50, 54, 60], .9],
-        [4, [62], 2/3], [4 + 2/3, [64], 1/3], [5, [66], .5],
-        [5.5, [71, 43, 54, 59], 1.45], [7, [69, 48, 59, 64], .9]
+        [0,[59],.92],[1,[61],.92],[2,[62],.92],
+        [3,[67,45,55,60],5],[8,[57],.92],[9,[59],.92],[10,[60],.92],
+        [11,[66,43,54,59],3],[14,[66],2],[16,[55],.92],[17,[57],.92],[18,[59],.92],
+        [19,[64,42,52,57],5],[24,[54],.92],[25,[56],.92],[26,[58],.92],
+        [27,[59,40,55,62],4]
     ].map(function ([beat, pitches, length]) { return [beat, pitches, .7, length]; });
     const HOTEL_CALIFORNIA = [
         [47, 54, 59, 62, 66, 62, 59, 54],
-        [42, 49, 58, 61, 64, 61, 58, 49]
+        [42, 49, 58, 61, 64, 61, 58, 49],
+        [45, 52, 57, 61, 64, 61, 57, 52],
+        [40, 47, 56, 59, 64, 59, 56, 47],
+        [43, 50, 55, 59, 62, 59, 55, 50],
+        [50, 57, 62, 66, 69, 66, 62, 57],
+        [40, 47, 55, 59, 64, 59, 55, 47],
+        [42, 49, 58, 61, 66, 61, 58, 49]
     ].flatMap(function (pitches, bar) {
         return pitches.map(function (midi, index) {
             return [bar * 4 + index * .5, [midi], index === 0 ? .8 : .69, index === 0 ? 3.7 : 1.15];
@@ -371,40 +380,45 @@
     });
     // Saint-Saëns, Le Cygne: first four melodic measures in concert G.
     // The Durand violin/flute transcription preserves the line one octave
-    // above the cello. The last low G is the demonstration's closing note.
+    // above the cello. Stop after its scored G and rests, without an extra G3.
     const THE_SWAN = [
         [0, 67, 1], [1, 66, 1], [2, 59, 1], [3, 64, 1], [4, 62, 1], [5, 55, 1],
         [6, 57, 2.5], [8.5, 59, .5], [9, 60, 2],
         [12, 52, 2], [14, 54, .5], [14.5, 55, .5], [15, 57, .5], [15.5, 59, .5],
         [16, 60, .5], [16.5, 62, .5], [17, 64, .5], [17.5, 66, .5],
-        [18, 67, 3.5], [24, 55, 1]
+        [18, 67, 3.5]
     ].map(function ([beat, midi, length]) {
         return [beat, [midi], .7, length];
     });
-    // Bach, BWV 1068 Air: first four measures, transposed from D to C
-    // and down an octave for the violin G-string register (G3–G4).
-    // Public-domain melody source: Mutopia-2008/10/28-1534.
-    // Give the grace notes a notated 32nd-note slot; a 40 ms bowed sample
-    // cannot speak clearly. Keep the following strong beats in place.
-    const AIR_ON_G_STRING = [
-        [0, 64, 4.5],
-        [4.5, 69, .25], [4.75, 65, .125], [4.875, 64, .125],
-        [5, 62, .25], [5.25, 60, .25], [5.5, 59, .25], [5.75, 60, .25],
-        [6, 59, .875], [6.875, 57, .125], [7, 55, 1],
-        [8, 67, 2.25], [10.25, 64, .25], [10.5, 58, .25], [10.75, 57, .25],
-        [11, 62, .25], [11.25, 61, .25], [11.5, 67, .25], [11.75, 65, .25],
-        [12, 65, 2.25], [14.25, 62, .25], [14.5, 57, .25], [14.75, 55, .25],
-        [15, 60, .25], [15.25, 59, .25], [15.5, 65, .25], [15.75, 64, .25],
-        [16, 60, 1]
+    // Vivaldi RV269/I, opening ritornello through the E-major cadence, m.13.
+    // Pickup and printed rests retained, including the final E and quarter rest.
+    // Malipiero violin I part, IMSLP651150, quarter = 110.
+    // Cross-check: Mutopia-2010/02/08-301, Anonymous, CC BY-SA 3.0,
+    // https://www.mutopiaproject.org/ftp/VivaldiA/O8/spring/spring1a.ly
+    const SPRING_THEME = [
+        [0,76,0.5],[0.5,80,0.5],[1.0,80,0.5],[1.5,80,0.5],[2.0,78,0.25],[2.25,76,0.25],[2.5,83,1.5],
+        [4.0,83,0.25],[4.25,81,0.25],[4.5,80,0.5],[5.0,80,0.5],[5.5,80,0.5],[6.0,78,0.25],[6.25,76,0.25],
+        [6.5,83,1.5],[8.0,83,0.25],[8.25,81,0.25],[8.5,80,0.5],[9.0,81,0.25],[9.25,83,0.25],[9.5,81,0.5],
+        [10.0,80,0.5],[10.5,78,0.5],[11.0,75,0.5],[11.5,71,0.5],[12.0,76,0.5],[12.5,80,0.5],[13.0,80,0.5],
+        [13.5,80,0.5],[14.0,78,0.25],[14.25,76,0.25],[14.5,83,1.5],[16.0,83,0.25],[16.25,81,0.25],[16.5,80,0.5],
+        [17.0,80,0.5],[17.5,80,0.5],[18.0,78,0.25],[18.25,76,0.25],[18.5,83,1.5],[20.0,83,0.25],[20.25,81,0.25],
+        [20.5,80,0.5],[21.0,81,0.25],[21.25,83,0.25],[21.5,81,0.5],[22.0,80,0.5],[22.5,78,1],[24.0,76,0.5],
+        [24.5,83,0.5],[25.0,81,0.25],[25.25,80,0.25],[25.5,81,0.5],[26.0,83,0.5],[26.5,85,0.5],[27.0,83,1],
+        [28.0,76,0.5],[28.5,83,0.5],[29.0,81,0.25],[29.25,80,0.25],[29.5,81,0.5],[30.0,83,0.5],[30.5,85,0.5],
+        [31.0,83,1],[32.0,76,0.5],[32.5,85,0.5],[33.0,83,1],[34.0,81,0.5],[34.5,80,0.5],[35.0,78,0.25],
+        [35.25,76,0.25],[35.5,78,1],[36.5,76,1],[38.0,76,0.5],[38.5,83,0.5],[39.0,81,0.25],[39.25,80,0.25],
+        [39.5,81,0.5],[40.0,83,0.5],[40.5,85,0.5],[41.0,83,1],[42.0,76,0.5],[42.5,83,0.5],[43.0,81,0.25],
+        [43.25,80,0.25],[43.5,81,0.5],[44.0,83,0.5],[44.5,85,0.5],[45.0,83,1],[46.0,76,0.5],[46.5,85,0.5],
+        [47.0,83,1],[48.0,81,0.5],[48.5,80,0.5],[49.0,78,0.25],[49.25,76,0.25],[49.5,78,1],[50.5,76,1]
     ].map(function ([beat, midi, length]) {
-        return [beat, [midi], .68, length];
+        return [beat, [midi], beat >= 12 && beat < 24 ? .54 : .75, length * .94, false, "detached"];
     });
     const MELODY_DEMOS = {
         cello: [
-            { title: "백조", bpm: 80, notes: THE_SWAN, endBeat: 25, articulation: "sustain" }
+            { title: "백조", bpm: 80, notes: THE_SWAN, endBeat: 24, articulation: "sustain" }
         ],
         violin: [
-            { title: "G선상의 아리아", bpm: 48, notes: AIR_ON_G_STRING, endBeat: 17, articulation: "sustain" }
+            { title: "비발디 사계 · 봄", bpm: 110, notes: SPRING_THEME, endBeat: 52.5, articulation: "sustain" }
         ],
         ...window.INSTRUMENT_MELODY_DEMOS,
         glockenspiel: [
@@ -415,8 +429,8 @@
     const GUITAR_DEMOS = {
         "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16 },
         "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
-        "hollow-jazz": { title: "Autumn Leaves", bpm: 112, notes: AUTUMN_LEAVES, endBeat: 8 },
-        dreadnought: { title: "Hotel California", bpm: 75, notes: HOTEL_CALIFORNIA, endBeat: 8.5 },
+        "hollow-jazz": { title: "Autumn Leaves", bpm: 112, notes: AUTUMN_LEAVES, endBeat: 31.5 },
+        dreadnought: { title: "Hotel California", bpm: 75, notes: HOTEL_CALIFORNIA, endBeat: 32.75 },
         "classical-guitar": { title: "Shape of My Heart · 레옹", bpm: 84, notes: SHAPE_OF_MY_HEART, endBeat: 17 }
     };
 
@@ -2319,7 +2333,7 @@
         elements.visualModel.textContent = model.model;
         const expressive = Boolean(model.expressive) || model.stage === "classical" || model.stage === "wind" || model.stage === "brass";
         elements.pianoControls.classList.toggle("hidden", model.engine !== "piano");
-        elements.stringControls.classList.toggle("hidden", expressive || model.engine !== "bass" && model.engine !== "guitar");
+        elements.stringControls.classList.toggle("hidden", expressive || Boolean(model.guitar) || model.engine !== "bass" && model.engine !== "guitar");
         elements.classicalControls.classList.toggle("hidden", !expressive);
         elements.drumControls.classList.toggle("hidden", model.engine !== "drums");
         elements.guitarModeSwitch.classList.toggle("hidden", !model.guitar);
@@ -3034,6 +3048,7 @@
         const expressive = Boolean(model.expressive) || ["classical", "wind", "brass"].includes(model.stage);
         if (!expressive) {
             elements.classicalArticulationHint.textContent = "";
+            elements.classicalControls.classList.add("hidden");
             return;
         }
         const bowed = ["violin", "viola", "cello", "upright-bass"].includes(model.id);
@@ -3047,9 +3062,9 @@
         const danso = model.id === "danso";
         const wind = model.stage === "wind" || model.stage === "brass" || model.stage === "korean-wind";
         const options = bowed ? [["sustain", "활긋기"], ["pizzicato", "피치카토"]]
-            : gayageum ? [["pluck", "기본 뜯기"], ["slow-vibrato", "느린 농현"], ["fast-vibrato", "빠른 농현"], ["roll", "트레몰로"], ["bend-down", "퇴성"], ["bend-up", "추성"]]
+            : gayageum ? [["pluck", "뜯기"], ["slow-vibrato", "느린 농현"], ["fast-vibrato", "빠른 농현"], ["roll", "연튕김"], ["bend-down", "퇴성"], ["bend-up", "추성"]]
             : geomungo ? [["pluck", "기본 뜯기"], ["light-vibrato", "잔농현"], ["deep-vibrato", "깊은 농현"]]
-            : yanggeum ? [["pluck", "기본 타현"], ["tremolo", "트레몰로"]]
+            : yanggeum ? [["pluck", "채로 치기"], ["tremolo", "트레몰로"]]
             : plucked ? [["pluck", "뜯기"]]
             : model.id === "haegeum" ? [["sustain", "기본 활긋기"], ["vibrato", "비브라토"]]
             : model.id === "ajaeng" ? [["sustain", "기본 활긋기"], ["vibrato", "비브라토"]]
@@ -3057,10 +3072,10 @@
             : daegeum ? [["sustain", "기본음"], ["vibrato", "비브라토"]]
             : hyangpiri ? [["sustain", "기본음"], ["vibrato", "비브라토"]]
             : danso ? [["sustain", "기본음"], ["vibrato", "비브라토"]]
-            : wind ? [["sustain", "지속음"]]
+            : wind ? [["sustain", "불기"]]
             : [["sustain", "기본 주법"]];
         const hint = bowed ? "활로 긋는 지속음과 손가락으로 뜯는 피치카토 원음을 바꿉니다."
-            : gayageum ? "뜯기와 농현의 빠르기, 트레몰로, 음을 흘려 내리거나 밀어 올리는 주법 원음을 바꿉니다."
+            : gayageum ? "뜯기·농현·연튕김·퇴성·추성을 골라 연주해 보세요."
             : geomungo ? "술대로 튕기는 기본음과 폭이 다른 두 농현 원음을 주법별로 바꿉니다."
             : yanggeum ? "채로 한 번 치는 기본 타현과 빠르게 되풀이하는 트레몰로 원음을 바꿉니다."
             : plucked ? "현을 뜯거나 쳐 낸 뒤 자연스럽게 줄어드는 실제 악기 특성을 따릅니다."
@@ -3073,6 +3088,11 @@
             : wind ? "한 번의 호흡으로 음을 이어 내는 기본 지속음입니다."
             : "현재 제공되는 기본 주법입니다.";
         if (!options.some(function (item) { return item[0] === state.articulation; })) state.articulation = options[0][0];
+        elements.classicalControls.classList.toggle("hidden", options.length < 2);
+        if (options.length < 2) {
+            elements.classicalArticulationHint.textContent = "";
+            return;
+        }
         options.forEach(function (option) {
             const button = document.createElement("button");
             button.type = "button";

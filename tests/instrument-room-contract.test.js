@@ -184,7 +184,7 @@ test('new Korean melodic recordings expose their exact ranges and techniques', (
     assert.ok(totalBytes < 6 * 1024 * 1024, folder);
   }
   assert.match(app, /state\.currentModel\.id === "gayageum"/);
-  assert.match(app, /\[\["pluck", "기본 뜯기"\],[\s\S]*?\["bend-up", "추성"\]\]/);
+  assert.match(app, /\[\["pluck", "뜯기"\],[\s\S]*?\["bend-up", "추성"\]\]/);
   assertRecordedModel('hyangpiri', [59, 77], ['sustain', 'vibrato']);
   assertRecordedModel('taepyeongso', [68, 89], ['sustain']);
   assert.match(app, /state\.family === "korean"[\s\S]*?sampleConfig\.min[\s\S]*?sampleConfig\.max/);

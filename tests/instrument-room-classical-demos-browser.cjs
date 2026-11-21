@@ -1,12 +1,16 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http');
 const puppeteer=require('puppeteer-core');
+const screenshotWebp=require('./screenshot-webp.cjs');
 const root=path.resolve(__dirname,'..'),room='/learning/arts/instrument-room/';
 const fixtures=require('./fixtures/instrument-classical-excerpts.json');
 const plans={
  'french-horn':{family:'brass',source:'horn',bpm:171,end:24.5,first:[58,63,63]},
  clarinet:{family:'woodwind',source:'clarinet',bpm:57,end:24,first:[69,74,78]},
  trumpet:{family:'brass',source:'trumpet',bpm:130,end:24,first:[70,75,72]},
- flute:{family:'woodwind',source:'flute',bpm:120,end:17,first:[83,86,83]},
+ flute:{family:'woodwind',source:'flute',bpm:120,end:32.5,first:[83,86,83]},
+ violin:{family:'strings',source:'violin',bpm:110,end:52.5,first:[76,80,80]},
+ oboe:{family:'woodwind',bpm:72,end:48,first:[69,71,69]},
+ 'recorder-soprano':{family:'woodwind',bpm:104,end:48,index:1,first:[86,79,81]},
  'pipe-organ':{family:'keyboard',bpm:60,end:25.5,first:[69,81,67,79,69,81]},
  clavinet:{family:'keyboard',bpm:100,end:17,first:[39,51,49]}
 };
@@ -28,12 +32,17 @@ function wave(pcm){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(pcm.
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
  try{
   browser=await puppeteer.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'});
-  for(const width of [1366,390])await Promise.all(Object.entries(plans).filter(([id])=>!process.env.CLASSICAL_MODEL||id===process.env.CLASSICAL_MODEL).map(async([id,plan])=>{
+  const selected=Object.entries(plans).filter(([id])=>!process.env.CLASSICAL_MODEL||process.env.CLASSICAL_MODEL.split(',').includes(id));
+  // Limit live decoders: nine simultaneous full-range banks can exhaust Chrome.
+  for(const width of [1366,390])for(let offset=0;offset<selected.length;offset+=2)await Promise.all(selected.slice(offset,offset+2).map(async([id,plan])=>{
    const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.setViewport({width,height:900,isMobile:width<500,hasTouch:width<500});
    await page.goto('http://127.0.0.1:'+server.address().port+room,{waitUntil:'networkidle0'});
    await page.click('[data-family="'+plan.family+'"]');await page.evaluate(id=>classicalTest.selectModel(id),id);
-   const selector='#melodyDemoButtons button';await page.waitForSelector(selector,{visible:true});
+   const choices=await page.evaluate(()=>({visible:!!document.querySelector('#classicalControls').getClientRects().length,labels:[...document.querySelectorAll('#classicalArticulationButtons button')].map(e=>e.textContent)}));
+   assert.equal(choices.visible,id==='violin',id+': only show actual technique choices');
+   if(id==='violin')assert.deepEqual(choices.labels,['활긋기','피치카토']);
+   const selector='#melodyDemoButtons button[data-melody-demo="'+(plan.index||0)+'"]';await page.waitForSelector(selector,{visible:true});
    await page.$eval(selector,e=>e.scrollIntoView({block:'center',inline:'center'}));
    await page.evaluate(()=>window.classicalHits=[]);
    if(width<500)await page.tap(selector);else await page.click(selector);
@@ -49,17 +58,27 @@ function wave(pcm){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(pcm.
     assert.equal(hits.length,60);assert.equal(hits.filter(n=>n.midi===38&&n.when-hits[0].when>=18-1e-8).length,1);for(const time of [0,4.5,9,13.5])assert.ok(hits.some(n=>Math.abs(n.when-hits[0].when-time)<1e-8));
     assert.ok(Math.abs(hits.at(-1).when-hits[0].when-22)<1e-8);
    }
-   await page.waitForFunction(()=>document.querySelector('#melodyDemoButtons button').getAttribute('aria-pressed')==='false',{timeout:35000});
+   if(id==='oboe'){
+    assert.ok(Math.abs(hits.at(-1).when-hits[0].when-40*60/72)<1/48000);
+    assert.equal(hits.at(-1).midi,81);
+    assert.ok(hits.some(n=>n.midi===83));
+   }
+   if(id==='recorder-soprano'){
+    assert.equal(hits.at(-1).midi,79);
+    assert.ok(Math.abs(hits.at(-1).when-hits[0].when-45*60/104)<1/48000);
+   }
+   await page.waitForFunction(selector=>document.querySelector(selector).getAttribute('aria-pressed')==='false',{timeout:60000},selector);
    assert.equal(await page.$$('.key.demo-hit').then(e=>e.length),0);assert.deepEqual(errors,[]);
+   if(id==='oboe'||id==='violin')await screenshotWebp(page,{path:path.join(root,'outputs/instrument-demo-review/'+id+'-controls-'+width+'.webp')});
    if(width===1366){
-    const encoded=await page.evaluate(async id=>{
-     const a=classicalTest,Native=window.AudioContext,demo=a.MELODY_DEMOS[id][0],context=new OfflineAudioContext(2,Math.ceil((demo.endBeat*60/demo.bpm+.7)*48000),48000);context.resume=()=>Promise.resolve();
+    const encoded=await page.evaluate(async ({id,index,selector})=>{
+     const a=classicalTest,Native=window.AudioContext,demo=a.MELODY_DEMOS[id][index],context=new OfflineAudioContext(2,Math.ceil((demo.endBeat*60/demo.bpm+.7)*48000),48000);context.resume=()=>Promise.resolve();
      window.AudioContext=function(){return context;};a.state.audioContext=null;a.state.pianoVoices.clear();a.state.pianoReleaseVoices.clear();a.ensureAudio();window.AudioContext=Native;
-     await a.playKeyboardDemo(document.querySelector('#melodyDemoButtons button'),demo.bpm,demo.notes,demo.endBeat);
+     await a.playKeyboardDemo(document.querySelector(selector),demo.bpm,demo.notes,demo.endBeat);
      const rendered=await context.startRendering();a.stopKeyboardDemo();const pcm=new Float32Array(rendered.length*2);
      for(let i=0;i<rendered.length;i++){pcm[i*2]=rendered.getChannelData(0)[i];pcm[i*2+1]=rendered.getChannelData(1)[i];}
      const bytes=new Uint8Array(pcm.buffer);let s='';for(let i=0;i<bytes.length;i+=32768)s+=String.fromCharCode(...bytes.subarray(i,i+32768));return btoa(s);
-    },id);
+    },{id,index:plan.index||0,selector});
     fs.mkdirSync(path.join(root,'outputs/instrument-demo-review'),{recursive:true});fs.writeFileSync(path.join(root,'outputs/instrument-demo-review/'+id+'-demo.wav'),wave(Buffer.from(encoded,'base64')));
    }
    console.log(JSON.stringify({id,width,notes:hits.length,seconds:plan.end*60/plan.bpm,passed:true}));await page.close();

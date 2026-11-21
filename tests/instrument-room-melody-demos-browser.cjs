@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
       data = data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
         'window.demoTest = { state, selectModel, loadConcertGrandSample }; document.addEventListener("DOMContentLoaded", init);');
       data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {',
-        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.demoHits.push({midi, anchor, sampleSet, time:performance.now()});');
+        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.demoHits.push({midi, anchor, sampleSet, time:(when ?? state.audioContext.currentTime)*1000});');
     }
     const type = { '.js': 'text/javascript', '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.ogg': 'audio/ogg', '.webp': 'image/webp' }[path.extname(file)];
     res.writeHead(200, { 'Content-Type': type || 'application/octet-stream' }).end(data);
@@ -128,8 +128,8 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$eval('#melodyDemoControls', controls => controls.classList.contains('hidden')), true);
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       for (const [model, title, firstNote, lastNote, count, length] of [
-        ['cello', '백조', 67, 55, 20, 24 * 60000 / 80],
-        ['violin', 'G선상의 아리아', 64, 60, 28, 16 * 60000 / 48]
+        ['cello', '백조', 67, 67, 19, 18 * 60000 / 80],
+        ['violin', '비발디 사계 · 봄', 76, 76, 98, 50.5 * 60000 / 110]
       ]) {
         await page.evaluate(id => {
           document.querySelector('[data-family="strings"]').click();
@@ -145,7 +145,7 @@ const server = http.createServer((req, res) => {
         assert.equal(await page.evaluate(() => demoHits[0].sampleSet), model);
         await new Promise(resolve => setTimeout(resolve, 1400));
         const sustained = await page.evaluate(id => {
-          const voice = [...demoTest.state.pianoVoices.values()].find(voice => voice.sampleSet === id && !voice.released);
+          const voice = [...demoTest.state.pianoReleaseVoices].find(voice => voice.sampleSet === id && voice.heldTone);
           return Boolean(voice && voice.source.loop && voice.source.loopEnd <= 3.805 && voice.source.loopEnd > voice.source.loopStart + .25 && document.querySelector('.key.demo-hit'));
         }, model);
         assert.ok(sustained, title + ' holds a recorded bowed note');
@@ -157,10 +157,8 @@ const server = http.createServer((req, res) => {
           assert.ok(hits.every(hit => hit.sampleSet === model && hit.anchor === hit.midi));
           assert.ok(Math.abs(hits.at(-1).time - hits[0].time - length) < 250);
           if (model === 'violin') {
-            const beats = [0, 4.5, 4.75, 4.875, 5, 5.25, 5.5, 5.75, 6, 6.875, 7,
-              8, 10.25, 10.5, 10.75, 11, 11.25, 11.5, 11.75,
-              12, 14.25, 14.5, 14.75, 15, 15.25, 15.5, 15.75, 16];
-            hits.forEach((hit, index) => assert.ok(Math.abs(hit.time - hits[0].time - beats[index] * 1250) < 100));
+            const score = require('./fixtures/instrument-classical-excerpts.json').violin;
+            hits.forEach((hit, index) => assert.ok(Math.abs(hit.time - hits[0].time - score[index][0] * 60000 / 110) < 1));
           }
         } else {
           await page.evaluate(() => document.querySelector('#melodyDemoButtons button').click());

@@ -279,13 +279,14 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Autumn Leaves');
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
-      await page.waitForFunction(() => document.querySelector('.key[data-midi="64"].demo-hit'));
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="59"].demo-hit'));
       assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-cubase-sh');
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
         const theme = await page.evaluate(() => window.bassDemoHits);
-        assert.deepEqual(theme.map(hit => hit.midi), [64,66,67,72,45,55,60,71,50,54,60,62,64,66,71,43,54,59,69,48,59,64]);
-        assert.ok(Math.abs(theme.at(-1).time - theme[0].time - 7 * 60000 / 112) < 250);
+        assert.deepEqual(theme.slice(0,7).map(hit => hit.midi), [59,61,62,67,45,55,60]);
+        assert.deepEqual(theme.slice(-4).map(hit => hit.midi), [59,40,55,62]);
+        assert.ok(Math.abs(theme.at(-1).time - theme[0].time - 27 * 60000 / 112) < 250);
       }
       await page.evaluate(() => window.playbackTest.selectModel('dreadnought'));
       assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Hotel California');
@@ -301,7 +302,8 @@ const server = http.createServer((req, res) => {
         const acoustic = await page.evaluate(() => window.bassDemoHits);
         assert.deepEqual(acoustic.slice(4, 8).map(hit => hit.midi), [66,62,59,54]);
         assert.ok(acoustic[4].time < acoustic[7].time);
-        assert.equal(acoustic.at(-1).midi, 49);
+        assert.equal(acoustic.length,64);
+        assert.equal(acoustic.at(-1).midi,49);
       }
       await page.evaluate(() => window.playbackTest.selectModel('classical-guitar'));
       assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Shape of My Heart · 레옹');
