@@ -159,6 +159,20 @@ body[data-entry-game]:has(> .page-shell > [data-game-entry]:not([hidden]):not(.h
 .solo-rules-dialog { box-sizing: border-box; width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); padding: 0; overflow: auto; border: 0; border-radius: 14px; background: #17120e; color: #e8dfc9; }
 .solo-rules-dialog::backdrop { background: rgba(8, 5, 3, .62); }
 .solo-rules-dialog .guide-panel { position: static !important; inset: auto !important; display: block !important; width: auto !important; max-width: none !important; height: auto !important; max-height: none !important; overflow: visible !important; }
+body[data-entry-game] #rulesModal .antique-modal,
+body[data-entry-game] #rules-overlay .popup-box {
+  box-sizing: border-box;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+}
+
+/* 규칙을 읽는 동안 완주자 명단이 설명을 덮지 않게 한다. */
+body:has(.solo-rules-dialog[open]) .finishers-side-panel,
+body:has(#rulesModal.show) .finishers-side-panel,
+body:has(#rules-overlay[style*="display: flex"]) .finishers-side-panel {
+  display: none !important;
+}
 
 /* 게임 중에는 명단을 숨긴다. :has 안에 :has 를 넣으면 규칙 전체가 무시되므로 나눠 쓴다. */
 body:has(#start-screen[style*="none"]) .finishers-side-panel,

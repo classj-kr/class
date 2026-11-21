@@ -346,6 +346,21 @@
             color: #5a2d0c;
         }
 
+        .solo-rules-dialog.sphinx-rules-dialog {
+            padding: 24px;
+            color: #2b1c0e;
+            border: 2px solid #906832;
+            background: #ecdba7 url('/learning/games/sphinx/assets/images/papyrus.webp') center / cover;
+            font-family: 'Malgun Gothic', sans-serif;
+        }
+
+        .sphinx-rules-dialog .question-text {
+            min-height: 0;
+            margin: 0 0 16px;
+            padding: 0;
+            text-align: center;
+        }
+
         .volume-control {
             margin-top: 15px;
             padding: 10px 12px;
@@ -733,7 +748,7 @@ body{align-items:center;padding:18px}
 
 <script src="../../../assets/sound/music-control.js?v=20261114-safe-controls" defer></script>
 <link rel="stylesheet" href="../../../assets/device-game.css?v=20260921c">
-<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:var(--site-game-height, 100dvh)}.game-frame{height:calc(var(--site-game-height, 100dvh) - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261119-fit">
+<style>@media(min-width:700px){body{box-sizing:border-box;padding:12px;min-height:var(--site-game-height, 100dvh)}.game-frame{height:calc(var(--site-game-height, 100dvh) - 24px);min-height:0}.quiz-container{min-height:0;padding:14px;overflow:auto}#display-area{min-height:250px;padding:14px}}</style><link rel="stylesheet" href="../../../assets/network/single-player-entry.css?v=20261121-rules">
 </head>
 <body data-game-navigation="single-player" data-entry-game="sphinx">
 <audio id="bgm" src="/learning/games/sphinx/assets/sound/bgm.ogg" loop preload="auto"></audio>
@@ -1019,8 +1034,11 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
     }
 
     function showSphinxRules() {
-        displayArea.innerHTML = `
-            <div class="question-text">HOW TO PLAY</div>
+        const dialog = document.createElement('dialog');
+        dialog.className = 'solo-rules-dialog sphinx-rules-dialog';
+        dialog.setAttribute('aria-label', 'HOW TO PLAY');
+        dialog.innerHTML = `
+            <h2 class="question-text" tabindex="-1" autofocus>HOW TO PLAY</h2>
             <div style="text-align:left;line-height:1.65;margin:10px auto;max-width:640px">
                 <p style="margin:0 0 8px;">스핑크스의 질문은 글이 길지만, <strong>방정식(x, y) 없이 초등학생 방법(다리 묶기)</strong>으로 아주 쉽게 풀 수 있어요!</p>
                 <div class="sphinx-rule-card">
@@ -1047,7 +1065,12 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                     이 퍼즐은 고전 게임 <strong>《대항해시대 III》</strong>의 스핑크스 이벤트에서 착안해 교육용으로 재구성했습니다.
                 </div>
             </div>
-            <div class="options-container"><button class="quiz-btn" type="button" onclick="loadQuestion()">BACK</button></div>`;
+            <div class="options-container"><button class="quiz-btn" type="button" data-rules-close>확인</button></div>`;
+        dialog.querySelector('[data-rules-close]').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+        dialog.addEventListener('close', () => dialog.remove(), { once: true });
+        document.body.append(dialog);
+        dialog.showModal();
     }
 
     function setDiff(d) {
