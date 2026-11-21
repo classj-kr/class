@@ -343,7 +343,41 @@
     ].map(function ([beat, midi, length]) {
         return [beat, [midi], .68, beat === 17 ? length : length * .72];
     });
+    // Saint-Saëns, Le Cygne: first four melodic measures in concert G.
+    // The Durand violin/flute transcription preserves the line one octave
+    // above the cello. The last low G is the demonstration's closing note.
+    const THE_SWAN = [
+        [0, 67, 1], [1, 66, 1], [2, 59, 1], [3, 64, 1], [4, 62, 1], [5, 55, 1],
+        [6, 57, 2.5], [8.5, 59, .5], [9, 60, 2],
+        [12, 52, 2], [14, 54, .5], [14.5, 55, .5], [15, 57, .5], [15.5, 59, .5],
+        [16, 60, .5], [16.5, 62, .5], [17, 64, .5], [17.5, 66, .5],
+        [18, 67, 3.5], [24, 55, 1]
+    ].map(function ([beat, midi, length]) {
+        return [beat, [midi], .7, length];
+    });
+    // Bach, BWV 1068 Air: first four measures, transposed from D to C
+    // and down an octave for the violin G-string register (G3–G4).
+    // Public-domain melody source: Mutopia-2008/10/28-1534.
+    const AIR_ON_G_STRING = [
+        [0, 64, 4.5],
+        [4.5, 69, .25], [4.75, 65, .21], [4.96, 64, .04],
+        [5, 62, .25], [5.25, 60, .25], [5.5, 59, .25], [5.75, 60, .25],
+        [6, 59, .94], [6.94, 57, .06], [7, 55, 1],
+        [8, 67, 2.25], [10.25, 64, .25], [10.5, 58, .25], [10.75, 57, .25],
+        [11, 62, .25], [11.25, 61, .25], [11.5, 67, .25], [11.75, 65, .25],
+        [12, 65, 2.25], [14.25, 62, .25], [14.5, 57, .25], [14.75, 55, .25],
+        [15, 60, .25], [15.25, 59, .25], [15.5, 65, .25], [15.75, 64, .25],
+        [16, 60, 1]
+    ].map(function ([beat, midi, length]) {
+        return [beat, [midi], .68, length];
+    });
     const MELODY_DEMOS = {
+        cello: [
+            { title: "백조", bpm: 80, notes: THE_SWAN, endBeat: 25, articulation: "sustain" }
+        ],
+        violin: [
+            { title: "G선상의 아리아", bpm: 64, notes: AIR_ON_G_STRING, endBeat: 17, articulation: "sustain" }
+        ],
         glockenspiel: [
             { title: "사탕요정의 춤", bpm: 88, notes: SUGAR_PLUM_FAIRY, endBeat: 8.5 },
             { title: "마술피리 · 마법의 종", bpm: 100, notes: MAGIC_BELLS, endBeat: 18 }
@@ -2697,6 +2731,10 @@
             return;
         }
         allNotesOff();
+        if (demo.articulation && state.articulation !== demo.articulation) {
+            state.articulation = demo.articulation;
+            renderClassicalArticulations(state.currentModel);
+        }
         return playKeyboardDemo(elements.melodyDemoButton, demo.bpm, demo.notes, demo.endBeat);
     }
 

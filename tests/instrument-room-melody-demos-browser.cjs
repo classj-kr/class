@@ -74,8 +74,42 @@ const server = http.createServer((req, res) => {
       await page.evaluate(() => document.querySelector('[data-family="keyboard"]').click());
       assert.equal(await page.$eval('#melodyDemoControls', controls => controls.classList.contains('hidden')), true);
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
+      for (const [model, title, firstNote, lastNote, count, length] of [
+        ['cello', '백조', 67, 55, 20, 24 * 60000 / 80],
+        ['violin', 'G선상의 아리아', 64, 60, 28, 16 * 60000 / 64]
+      ]) {
+        await page.evaluate(id => {
+          document.querySelector('[data-family="strings"]').click();
+          demoTest.selectModel(id);
+          [...document.querySelectorAll('#classicalArticulationButtons button')]
+            .find(button => button.textContent === '피치카토').click();
+          window.demoHits = [];
+        }, model);
+        assert.equal(await page.$eval('#melodyDemoSelect option', option => option.textContent), title);
+        await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
+        await page.waitForFunction(midi => document.querySelector('.key[data-midi="' + midi + '"].demo-hit'), {}, firstNote);
+        assert.equal(await page.$eval('#classicalArticulationButtons [aria-pressed="true"]', button => button.textContent), '활긋기');
+        assert.equal(await page.evaluate(() => demoHits[0].sampleSet), model);
+        await new Promise(resolve => setTimeout(resolve, 1400));
+        const sustained = await page.evaluate(id => {
+          const voice = [...demoTest.state.pianoVoices.values()].find(voice => voice.sampleSet === id && !voice.released);
+          return Boolean(voice && voice.source.loop && document.querySelector('.key.demo-hit'));
+        }, model);
+        assert.ok(sustained, title + ' holds a recorded bowed note');
+        if (width > 500) {
+          await page.waitForFunction(() => document.querySelector('#melodyDemoButton').getAttribute('aria-pressed') === 'false');
+          const hits = await page.evaluate(() => demoHits);
+          assert.equal(hits.length, count);
+          assert.equal(hits.at(-1).midi, lastNote);
+          assert.ok(hits.every(hit => hit.sampleSet === model && hit.anchor === hit.midi));
+          assert.ok(Math.abs(hits.at(-1).time - hits[0].time - length) < 250);
+        } else {
+          await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
+        }
+        assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
+      }
       assert.deepEqual(errors, []);
-      console.log(width + 'px: two melodies, recorded pitches, left alignment, switching and cleanup passed');
+      console.log(width + 'px: glockenspiel and bowed melodies, recorded pitches, left alignment, switching and cleanup passed');
       await page.close();
     }
   } finally {
