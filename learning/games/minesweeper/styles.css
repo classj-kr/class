@@ -29,7 +29,7 @@ body {
   font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
   background:
     linear-gradient(rgba(21, 13, 8, .22), rgba(18, 10, 6, .42)),
-    url('../nonogram/assets/images/background.webp') center / cover fixed,
+    url('assets/images/expedition-field.webp') center / cover fixed,
     #17100c;
   user-select: none;
   -webkit-user-select: none;
