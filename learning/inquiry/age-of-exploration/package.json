@@ -78,6 +78,7 @@
     "test:ship-designs:smoke": "node tests/ship-designs-smoke.js",
     "test:view-motion": "node tests/view-motion-unit.js",
     "test:ice-visual": "node tests/ice-visual-unit.js",
+    "test:ice:browser": "node tests/permissive-ice-browser.cjs",
     "test:interactions:smoke": "node tests/connection-recovery-ui.js && node tests/interaction-recovery-smoke.js",
     "test:discovery-learning:browser": "node tests/discovery-learning-browser.cjs",
     "test:textbook-sites": "node tests/textbook-sites-unit.js && node tests/textbook-sites-smoke.js && node tests/discovery-learning-migration-smoke.cjs",

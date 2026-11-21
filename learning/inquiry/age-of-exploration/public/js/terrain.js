@@ -278,55 +278,73 @@
     return neighbors.some(([dx, dy]) => !isLandAt(world, cx + dx, cy + dy));
   }
 
-  // 1520년의 나무배는 북극·남극의 얼음 바다를 지날 수 없었다(북동 항로는 1878년, 북서 항로는 1906년에야 뚫렸다).
-  // 지형에 'ice'로 박아 두는 곳은 한여름에도 얼어 있는 곳이고, 그 바깥은 계절에 따라 얼었다 녹는다.
-  // 여름에도 북극을 가로지르는 길(타이미르반도 앞 77.7도, 캐나다 북쪽 섬 사이)은 막힌 채로 둔다.
-  // 남극은 북극만큼 경도에 따라 다르지 않아 한 값으로 둔다(혼곶 56도·드레이크 해협 58도는 지난다). 땅은 80도부터 얼음이다.
-  const ICE = Object.freeze({ south: -65, landNorth: 80 });
-  // 겨울에 가장 많이 어는 때의 남극 경계와, 얼음이 가장 많은 날·가장 적은 날(북극은 3월 중순·9월 중순, 남극은 그 반대).
-  const ICE_WINTER = Object.freeze({ south: -60 });
-  const ICE_DAYS = Object.freeze({ northMaxIce: 74, southMaxIce: 263 });
+  // 해빙의 분포와 통항 제한은 구분한다. 해안의 계절성 유빙은 느리게 지나갈 수 있고,
+  // 항해를 막는 곳은 극지 중심의 밀집 해빙뿐이다. 특정 연도의 실측 재현이 아닌 학습용 근사다.
+  // 근거와 허용적인 통항 정책: ../../docs/sea-ice-model.md
+  const ICE = Object.freeze({ south: -78, landNorth: 80 });
+  const ICE_WINTER = Object.freeze({ south: -75 });
+  const ICE_DAYS = Object.freeze({ northMaxIce: 74, northMinIce: 256, southMaxIce: 263, southMinIce: 51 });
 
-  // 북극 얼음 경계는 위도 하나로 그을 수 없다. 해류가 정한다.
-  // 따뜻한 물이 올라오는 노르웨이 앞바다는 한겨울에도 북위 78도까지 열려 있고(함메르페스트는 얼지 않는 항구다),
-  // 찬 물이 얼음을 실어 내리는 동그린란드·래브라도 앞바다는 겨울에 북위 50~65도까지 언다.
-  // [경도, 한겨울(3월) 경계, 한여름(9월) 경계]. 사이 경도는 부드럽게 이어 붙인다.
+  // 북극해 본체의 해빙 가장자리 [경도, 3월, 9월]. 동그린란드·래브라도의 남하 유빙은
+  // 아래의 해안 띠로 따로 그려 남서그린란드와 북대서양 전체를 얼리지 않는다.
   const ICE_EDGE = Object.freeze([
-    [-180, 58, 71], [-160, 60, 71.5], [-140, 69, 72], [-120, 70, 72], [-100, 68, 71],
-    [-80, 57, 70], [-60, 50, 70], [-45, 58, 70], [-30, 65, 72], [-15, 70, 76],
-    [0, 75, 80], [15, 78, 81], [30, 75, 80], [45, 73, 78], [60, 70, 76],
-    [90, 70, 76], [120, 70, 74], [150, 66, 72], [170, 60, 71], [180, 58, 71]
+    [-180, 60, 73], [-160, 61, 74], [-140, 70, 75], [-120, 71, 75], [-100, 70, 75],
+    [-80, 68, 77], [-60, 69, 80], [-45, 77, 84], [-30, 78, 84], [-15, 80, 83],
+    [0, 81, 83], [15, 81, 83], [30, 76, 81], [45, 73, 80], [60, 71, 79],
+    [90, 71, 78], [120, 71, 77], [150, 68, 75], [170, 61, 74], [180, 60, 73]
   ]);
-  const ICE_EDGE_MIN = Object.freeze({ winter: Math.min(...ICE_EDGE.map((e) => e[1])), summer: Math.min(...ICE_EDGE.map((e) => e[2])) });
+  // 통항 제한은 해안과 주요 섬을 충분히 지난 극지 안쪽으로 물린다.
+  const ICE_CORE_EDGE = Object.freeze([
+    [-180, 81, 84], [-120, 80, 83], [-60, 81, 84], [-30, 83, 85],
+    [15, 83, 85], [60, 81, 84], [120, 80, 83], [180, 81, 84]
+  ]);
+  const ICE_SOUTH_EDGE = Object.freeze([
+    [-180, -65, -74], [-140, -65, -73], [-100, -64, -71], [-60, -61, -69],
+    [-30, -59.5, -70], [0, -62, -70], [60, -64, -69], [120, -64, -70], [180, -65, -74]
+  ]);
+  const ICE_EDGE_MIN = Object.freeze({ winter: 44, summer: 44 });
 
-  function iceEdgeAt(lon, column) {
+  // 해안에 따른 중심선 [경도, 위도, 겨울 반폭km, 여름 반폭km].
+  // 같은 위도라도 먼바다는 열리고 해안 가까이에만 유빙이 남는다. 그림에는 육지 마스크도 적용한다.
+  const ICE_COASTS = [
+    [[-18,81,180,100],[-18.5,78,180,70],[-20,75,160,50],[-23,72,140,35],[-26.5,69,120,20],[-31,66.5,100,8],[-35.5,64.5,85,0],[-40,62.5,70,0],[-43,60,55,0],[-46,60.5,35,0],[-48,62,20,0]],
+    [[-69,77,140,35],[-59,74,120,15],[-55,71,100,0],[-54,69,80,0],[-53.5,67.5,35,0]],
+    [[-63,66,160,0],[-62,63,150,0],[-61.5,60,140,0],[-59,57,120,0],[-56,54,95,0],[-54,51,50,0]],
+    [[-91,59,260,0],[-88,62,280,0],[-82,64,220,0],[-77,61,130,0],[-80,56,100,0]],
+    [[20,65.5,110,0],[22,63.5,75,0],[25,60,55,0],[29,60,55,0]],
+    [[40,66,100,0],[37.5,65,90,0]],
+    [[142,49,130,0],[144,54,280,0],[150,58,270,0],[157,60,140,0]]
+  ].map(path => ({ path, minLat: Math.min(...path.map(p => p[1])) - 3,
+    maxLat: Math.max(...path.map(p => p[1])) + 3,
+    minLon: Math.min(...path.map(p => p[0])) - 12, maxLon: Math.max(...path.map(p => p[0])) + 12 }));
+
+  function iceEdgeAt(lon, column, edges = ICE_EDGE) {
     let l = ((Number(lon) || 0) + 180) % 360;
     if (l < 0) l += 360;
     l -= 180;
-    for (let i = 1; i < ICE_EDGE.length; i += 1) {
-      const a = ICE_EDGE[i - 1];
-      const b = ICE_EDGE[i];
+    for (let i = 1; i < edges.length; i += 1) {
+      const a = edges[i - 1];
+      const b = edges[i];
       if (l <= b[0]) {
         const t = (l - a[0]) / (b[0] - a[0]);
         return a[column] + (b[column] - a[column]) * t;
       }
     }
-    return ICE_EDGE[ICE_EDGE.length - 1][column];
+    return edges[edges.length - 1][column];
   }
 
   // 얼음 가장자리는 자로 그은 줄이 아니라 들쭉날쭉하다. 경도에 따라 ±0.8도 안에서 부드럽게 흔든다.
-  // 가장 많이 물러나도 북위 71도라, 72도가 넘는 벨로트 해협·타이미르반도 앞바다(북서·북동 항로)는 그대로 막힌다.
   function iceWobble(lon) {
     const r = lon * Math.PI / 180;
     return 0.5 * Math.sin(r * 7) + 0.3 * Math.sin(r * 23 + 1.1);
   }
 
   function iceLimitNorth(lon) {
-    return iceEdgeAt(lon, 2) + iceWobble(lon);
+    return iceEdgeAt(lon, 2, ICE_CORE_EDGE) + iceWobble(lon) * 0.25;
   }
 
   function iceLimitSouth(lon) {
-    return ICE.south - iceWobble(lon + 40);
+    return ICE.south - iceWobble(lon + 40) * 0.25;
   }
 
   function isIceAt(lon, lat, sea) {
@@ -341,41 +359,81 @@
   }
 
   // 얼음이 가장 많은 날 0, 가장 적은 날 1. 봄가을에는 그 사이 값으로 천천히 움직인다.
-  function seasonOpenness(day, maxIceDay) {
+  function seasonOpenness(day, maxIceDay, minIceDay = maxIceDay + 365 / 2) {
     const t = (((Number(day) || 0) - maxIceDay) % 365 + 365) % 365;
-    return (1 - Math.cos(2 * Math.PI * t / 365)) / 2;
+    const meltDays = ((minIceDay - maxIceDay) % 365 + 365) % 365;
+    return t <= meltDays ? (1 - Math.cos(Math.PI * t / meltDays)) / 2
+      : (1 + Math.cos(Math.PI * (t - meltDays) / (365 - meltDays))) / 2;
   }
 
   function iceLimitNorthAt(lon, day) {
     if (!Number.isFinite(day)) return iceLimitNorth(lon);
-    const winter = iceEdgeAt(lon, 1);
-    const summer = iceEdgeAt(lon, 2);
-    return winter + (summer - winter) * seasonOpenness(day, ICE_DAYS.northMaxIce) + iceWobble(lon);
+    const winter = iceEdgeAt(lon, 1, ICE_CORE_EDGE);
+    const summer = iceEdgeAt(lon, 2, ICE_CORE_EDGE);
+    return winter + (summer - winter) * seasonOpenness(day, ICE_DAYS.northMaxIce, ICE_DAYS.northMinIce) + iceWobble(lon) * 0.25;
   }
 
   function iceLimitSouthAt(lon, day) {
     if (!Number.isFinite(day)) return iceLimitSouth(lon);
-    const open = seasonOpenness(day, ICE_DAYS.southMaxIce);
-    return ICE_WINTER.south + (ICE.south - ICE_WINTER.south) * open - iceWobble(lon + 40);
+    const open = seasonOpenness(day, ICE_DAYS.southMaxIce, ICE_DAYS.southMinIce);
+    return ICE_WINTER.south + (ICE.south - ICE_WINTER.south) * open - iceWobble(lon + 40) * 0.25;
   }
 
-  // 그날 그 자리가 얼어 있는가. 뭍은 계절과 상관없이 80도부터 얼음이다.
+  // 그날 통항을 제한하는 극지 중심 해빙인가. 해안의 계절성 유빙은 이 판정에 넣지 않는다.
   function isIceAtDay(lon, lat, sea, day) {
     if (!sea) return lat >= ICE.landNorth || lat <= iceLimitSouthAt(lon, day);
     return lat >= iceLimitNorthAt(lon, day) || lat <= iceLimitSouthAt(lon, day);
   }
 
-  // 얼음 가장자리 앞 5도는 떠다니는 얼음덩이 구역이다. 벽에 부딪히듯 갑자기 멈추지 않고
-  // 여기서부터 배가 천천히 느려지다가 얼음 앞에서 더 못 가게 된다.
-  const ICE_SLOW = Object.freeze({ degrees: 5, floor: 0.34 });
+  function smoothstep(low, high, value) {
+    const t = Math.max(0, Math.min(1, (value - low) / (high - low)));
+    return t * t * (3 - 2 * t);
+  }
 
-  // 1이면 제 속도, 0.34면 얼음을 헤치고 겨우 나아가는 속도. 얼음 안에서도 0이 되지는 않는다.
+  function coastalIceAt(lon, lat, open) {
+    let concentration = 0;
+    const scaleX = 111.2 * Math.max(0.08, Math.cos(lat * Math.PI / 180));
+    for (const coast of ICE_COASTS) {
+      if (lat < coast.minLat || lat > coast.maxLat || lon < coast.minLon || lon > coast.maxLon) continue;
+      for (let i = 1; i < coast.path.length; i += 1) {
+        const a = coast.path[i - 1], b = coast.path[i];
+        const ax = (a[0] - lon) * scaleX, ay = (a[1] - lat) * 111.2;
+        const dx = (b[0] - a[0]) * scaleX, dy = (b[1] - a[1]) * 111.2;
+        const t = Math.max(0, Math.min(1, -(ax * dx + ay * dy) / (dx * dx + dy * dy)));
+        const winter = a[2] + (b[2] - a[2]) * t, summer = a[3] + (b[3] - a[3]) * t;
+        const radius = winter + (summer - winter) * open;
+        if (radius < 2) continue;
+        const distance = Math.hypot(ax + dx * t, ay + dy * t);
+        // 여름에 폭이 거의 0이 되는 남부는 농도도 낮춰 가늘고 빽빽한 얼음 선이 남지 않게 한다.
+        const strength = 0.86 * Math.min(1, radius / Math.max(15, winter * 0.4));
+        concentration = Math.max(concentration, strength * (1 - smoothstep(radius * 0.15, radius, distance)));
+      }
+    }
+    return concentration;
+  }
+
+  // 그림·감속·안내가 공유하는 농도. 바다 여부는 호출하는 쪽의 지형 마스크로 판정한다.
+  function seaIceConcentrationAt(lon, lat, day) {
+    if (!Number.isFinite(lon) || !Number.isFinite(lat) || lat < -90 || lat > 90) return 0;
+    lon = ((lon + 180) % 360 + 360) % 360 - 180;
+    if (lat > -58 && lat < ICE_EDGE_MIN.winter) return 0;
+    const open = Number.isFinite(day) ? seasonOpenness(day, ICE_DAYS.northMaxIce, ICE_DAYS.northMinIce) : 1;
+    if (lat >= 0) {
+      const edge = iceEdgeAt(lon, 1) + (iceEdgeAt(lon, 2) - iceEdgeAt(lon, 1)) * open + iceWobble(lon) * 0.35;
+      return Math.max(smoothstep(edge - 0.25, edge + 2, lat), coastalIceAt(lon, lat, open));
+    }
+    const southOpen = Number.isFinite(day) ? seasonOpenness(day, ICE_DAYS.southMaxIce, ICE_DAYS.southMinIce) : 1;
+    const edge = iceEdgeAt(lon, 1, ICE_SOUTH_EDGE) + (iceEdgeAt(lon, 2, ICE_SOUTH_EDGE) - iceEdgeAt(lon, 1, ICE_SOUTH_EDGE)) * southOpen;
+    return smoothstep(-edge - 0.25, -edge + 1.75, -lat);
+  }
+
+  const ICE_SLOW = Object.freeze({ degrees: 0.75, floor: 0.72 });
+
+  // 해안의 유빙은 통과할 수 있다. 얼음이 많은 곳에서도 평소의 72% 이상 속도로 나아간다.
   function iceSlowdownAt(lon, lat, sea, day) {
-    const north = sea ? iceLimitNorthAt(lon, day) : ICE.landNorth;
-    const gap = Math.min(north - lat, lat - iceLimitSouthAt(lon, day));
-    if (gap >= ICE_SLOW.degrees) return 1;
-    if (gap <= 0) return ICE_SLOW.floor;
-    return ICE_SLOW.floor + (1 - ICE_SLOW.floor) * (gap / ICE_SLOW.degrees);
+    const concentration = sea ? seaIceConcentrationAt(lon, lat, day)
+      : smoothstep(ICE.landNorth - ICE_SLOW.degrees, ICE.landNorth, lat);
+    return 1 - (1 - ICE_SLOW.floor) * smoothstep(0.12, 1, concentration);
   }
 
   // 지구본 지도의 배율. 지도 라이브러리는 화면 가운데 배율을 평면지도(메르카토르)와 같게 맞추는데,
@@ -421,6 +479,6 @@
 
   return Object.freeze({
     WORLD_W, WORLD_H, TILE, WORLD_PIXEL_W, WORLD_PIXEL_H,
-    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_EDGE, ICE_EDGE_MIN, ICE_SLOW, iceSlowdownAt, globeMapZoom, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
+    SPEED, LABEL, ICE, ICE_WINTER, ICE_DAYS, ICE_EDGE, ICE_EDGE_MIN, ICE_SLOW, seaIceConcentrationAt, iceSlowdownAt, globeMapZoom, HIGH_MOUNTAIN_FAMILIES, NAVIGABLE_SEA_CORRIDORS, iceLimitNorth, iceLimitSouth, isIceAt, iceLimitNorthAt, iceLimitSouthAt, isIceAtDay, dayOfYear, seasonOpenness, wrapCellX, wrapPixelX, cellValue, setNaturalEarthLandMask, navigableSeaCorridorAtCell, terrainAtCell, terrainAtPixel, lonLat
   });
 }));

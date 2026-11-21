@@ -3227,7 +3227,7 @@ function movePlayer(p, dt) {
   vy /= len;
   const currentTerrain = terrainAtPixel(p.x, p.y);
   p.terrain = p.mode === 'sea' ? (currentTerrain.type === 'ice' ? 'ice' : 'sea') : currentTerrain.type;
-  // 얼음 가장자리에서는 벽처럼 딱 멈추지 않고 5도 앞에서부터 천천히 느려진다.
+  // 해안의 유빙은 통과할 수 있고, 실제로 얼음이 있는 자리에서만 조금 느려진다.
   const multiplier = flying ? TERRAIN_SPEED.sea : (p.mode === 'sea' ? TERRAIN_SPEED.sea : currentTerrain.multiplier) * iceSlowdownFor(p);
   const baseSpeed = flying || p.mode === 'sea' ? SEA_BASE_SPEED : LAND_BASE_SPEED;
   const fatigueMultiplier = Fatigue.speedMultiplier(p.fatigue);
@@ -3390,8 +3390,8 @@ function movePlayer(p, dt) {
   }
 }
 
-// 계절에 따라 얼었다 녹는 바다. 여름에는 스발바르 앞바다(북위 80도)까지 열리고, 겨울에는 베링 해협까지 언다.
-// 지형(terrain)에 박아 둔 얼음은 한여름에도 얼어 있는 곳이라, 그 사이 바다를 여기서 날짜로 가른다.
+// 계절에 따라 넓이가 달라지는 극지 중심의 밀집 해빙만 막는다.
+// 그린란드 해안·베링 해협 등 계절성 유빙이 있는 바다는 감속해서 통과할 수 있다.
 function seasonDayFor(p) {
   return Terrain.dayOfYear(classGameMinutes(p.roomCode));
 }
@@ -3402,24 +3402,20 @@ function seasonalIceAt(x, y, day) {
   return Terrain.isIceAtDay(lon, lat, true, day) ? lat : null;
 }
 
-// 얼음 가장자리 앞 5도에서는 떠다니는 얼음 때문에 배가 느려진다.
+// 화면의 유빙 분포와 같은 농도로 감속한다. 먼바다를 넓은 위도 띠로 느리게 만들지 않는다.
 function iceSlowdownFor(p) {
   const lat = 90 - (p.y / WORLD_PIXEL_H) * 180;
   const lon = (wrapX(p.x) / WORLD_PIXEL_W) * 360 - 180;
   return Terrain.iceSlowdownAt(lon, lat, p.mode === 'sea', seasonDayFor(p));
 }
 
-// 얼음 바다 앞에서 미리 알린다. 막힌 뒤에야 알면 아이들은 왜 멈췄는지 모른다.
+// 지나갈 수 있는 유빙과 통과할 수 없는 극지 중심 해빙을 구별해 알린다.
 function warnNearIce(p) {
   const lat = 90 - (p.y / WORLD_PIXEL_H) * 180;
   const lon = (wrapX(p.x) / WORLD_PIXEL_W) * 360 - 180;
   const day = seasonDayFor(p);
-  const north = Terrain.iceLimitNorthAt(lon, day);
-  const south = Terrain.iceLimitSouthAt(lon, day);
-  if (lat >= north) setNotice(p, '얼음 바다 - 항해가 어려움');
-  else if (lat <= south) setNotice(p, '얼음 바다 - 항해가 어려움');
-  else if (lat >= north - Terrain.ICE_SLOW.degrees) setNotice(p, '얼음 바다 - 항해가 어려움');
-  else if (lat <= south + Terrain.ICE_SLOW.degrees) setNotice(p, '얼음 바다 - 항해가 어려움');
+  if (Terrain.isIceAtDay(lon, lat, true, day)) setNotice(p, '얼음 바다 - 항해가 어려움');
+  else if (Terrain.seaIceConcentrationAt(lon, lat, day) >= 0.2) setNotice(p, '유빙 구역 - 천천히 항해하세요');
 }
 
 setInterval(() => {

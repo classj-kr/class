@@ -17,6 +17,13 @@ for(const [lat,lon] of [[78.97,33.22],[82,0],[-68,-40],[75,179.7],[75,-179.7]]){
 assert.equal(Floes.build(options(38.7,-9.1)).length,0,'Lisbon must not have sea ice');
 const winter=Floes.build(options(76,40,74)),summer=Floes.build(options(76,40,256));
 assert.ok(winter.length>summer.length,'seasonal ice extent must change with the navigation rules');
+const eastWinter=Floes.build(options(66,-33,105)),eastSummer=Floes.build(options(66,-33,256));
+assert.ok(eastWinter.length>eastSummer.length+10,'east Greenland drift ice retreats towards the coast in summer');
+for(const [lat,lon] of [[64,-53],[66,-26]]){
+  const opts=options(lat,lon,74),x=(lon+180)/360*span,y=(90-lat)/180*height;
+  opts.bounds={left:x-60,right:x+60,top:y-60,bottom:y+60};
+  assert.equal(Floes.build(opts).length,0,'southwest Greenland and Denmark Strait offshore remain clear');
+}
 const html=fs.readFileSync(path.join(root,'public/index.html'),'utf8'),server=fs.readFileSync(path.join(root,'server.js'),'utf8');
 for(const source of [html,server]){assert.ok(source.includes('얼음 바다 - 항해가 어려움'));assert.doesNotMatch(source,/1520년의 배로는 갈 수 없음|1520년의 나무배로는 얼음을 뚫고|얼음이 녹는 여름을 기다리세요/);}
 assert.ok(html.includes('VoyageIceFloes.build'));

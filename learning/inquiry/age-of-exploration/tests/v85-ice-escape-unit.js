@@ -51,7 +51,7 @@ const page = fs.readFileSync(path.join(__dirname, '..', 'public', 'index.html'),
 assert.match(page, /Object\.assign\(self,serverSelf\)/, '학생 화면은 서버의 비껴가기와 얼음 감속 결과를 따라야 함');
 assert.doesNotMatch(page, /function movePrediction\(/, '서로 다른 비껴가기를 중복 계산하면 안 됨');
 
-// 얼음 앞에서 느려지는 폭: 다 와서도 3분의 1은 남아야 빠져나올 수 있다.
-assert.ok(Terrain.ICE_SLOW.floor >= 0.25 && Terrain.ICE_SLOW.floor < 0.5, '얼음 속 속도는 3분의 1쯤이어야 함');
+// 계절성 유빙은 통과 가능하며, 감속도 탐험을 방해하지 않도록 가볍게 적용한다.
+assert.ok(Terrain.ICE_SLOW.floor >= 0.7 && Terrain.ICE_SLOW.floor < 1, '유빙 속에서도 평소의 70% 이상으로 움직여야 함');
 
 console.log(`v85 ice escape unit ok · 비껴가기 ${angles.length}방향 · 얼음 속 속도 ${Terrain.ICE_SLOW.floor}`);

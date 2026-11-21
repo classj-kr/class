@@ -1,6 +1,6 @@
 'use strict';
-// 실제로 배를 몰아 얼음까지 가 본다. 얼음 앞에서 천천히 느려지고, 그 자리에 갇히지 않고,
-// 뱃머리를 돌리면 남쪽으로 빠져나올 수 있어야 한다.
+// 실제 북쪽 항로를 항해하고, 뱃머리를 돌리면 남쪽으로 돌아올 수 있어야 한다.
+// 해안 유빙의 통과와 극지 중심 충돌은 permissive-ice-browser.cjs에서 따로 검증한다.
 const { io } = require('socket.io-client');
 const assert = require('node:assert/strict');
 const Terrain = require('../public/js/terrain.js');
@@ -35,7 +35,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   let you = (await once(ship, 'snapshot')).you;
   ship.on('snapshot', (s) => { you = s.you; });
 
-  // 노르웨이 앞바다 북위 74도로 길을 잡는다. 한여름이 아니면 이 위도가 곧 얼음 앞이다.
+  // 노르웨이 앞바다 북위 74도로 길을 잡는다. 계절성 유빙이 있어도 통과할 수 있다.
   const goal = pointOf(74, 15);
   ship.emit('setTarget', goal);
   const sailStart = Date.now();
@@ -60,10 +60,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const limit = Terrain.iceLimitNorthAt(lonOf(you.x), Terrain.dayOfYear(you.classGameMinutes ?? 0));
 
   // 얼음을 뚫고 들어가지 못한다.
-  assert.ok(top <= 80.5, `얼음을 뚫고 올라가면 안 됨(가장 북쪽 ${top.toFixed(1)}도)`);
-  // 얼음 앞에서는 제 속도가 나오지 않는다.
+  assert.ok(top <= limit + .5, `극지 중심 해빙을 뚫고 올라가면 안 됨(가장 북쪽 ${top.toFixed(1)}도)`);
+  // 일반 항로에서 배가 유빙 때문에 정지하지 않는다.
   const fastest = Math.max(...last.map((s) => s.speed));
-  assert.ok(fastest < 9, `얼음 앞에서는 느려져야 함(마지막 구간 최고 ${fastest.toFixed(1)}km/h)`);
+  assert.ok(fastest > 0, '유빙이 있는 일반 항로에서도 계속 움직여야 함');
 
   // 갇히지 않는다: 뱃머리를 남쪽으로 돌리면 빠져나온다.
   const stuckLat = latOf(you.y);

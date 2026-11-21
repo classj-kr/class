@@ -256,13 +256,13 @@ button,input{font:inherit}button{border:1px solid var(--line);background:#17313b
 <div id="discoveryView"><div id="discoveryCard"><h2 id="discoveryName">발견!</h2><div id="discoveryKind"></div><div id="discoveryPhoto" class="photoFigure"><img id="discoveryImage" alt="" hidden><span id="discoveryImageLabel" class="imageKindLabel" hidden>위치 지도</span></div><div id="discoveryText"></div><div id="discoveryCount"></div><div id="discoveryButtons"><button id="discoveryNext" type="button" hidden>다음 명소</button><button id="discoveryClose" type="button">계속 탐험하기</button></div></div></div><div id="hostBar" class="panel" hidden><span>방번호 <b id="hostCode"></b></span><button id="hostStartBtn" type="button">모두 출발</button></div><div id="transitionOverlay"><div id="transitionCard"><div id="transitionLabel">입항 준비 중</div><div id="transitionBar"><div id="transitionFill"></div></div></div></div><div id="pauseOverlay"><div id="lockTitle">방장이 게임을 잠시 멈췄습니다.</div><span id="lockDetail" style="font-size:14px;font-weight:400">설명을 듣고 다시 시작할 때까지 기다리세요.</span><div id="suggestBox" hidden><label for="suggestInput">가고 싶은 장소 건의 · 2곳까지</label><input id="suggestInput" type="search" maxlength="20" autocomplete="off" placeholder="장소 이름을 쳐 보세요"><div id="suggestResults" aria-live="polite"></div><div id="suggestMine"></div></div></div>
 <div id="messageWindow" class="panel" aria-live="polite"><div id="messageHeader">항해 안내</div><div id="messageLines"><div class="guideLine system">서버에 접속한 뒤 안내 메시지가 여기에 표시됩니다.</div></div></div>
 <script src="/learn/world-voyage/socket.io/socket.io.js"></script>
-<script src="/learn/world-voyage/js/terrain.js?v=2026101902"></script>
+<script src="/learn/world-voyage/js/terrain.js?v=2026112101"></script>
 <script src="/learn/world-voyage/js/city-icons.js?v=3"></script>
 <script src="/learn/world-voyage/js/ship-designs.js?v=1"></script>
 <script src="/learn/world-voyage/js/avatar-sprites.js?v=20261116-compact-city"></script>
 <script src="/learn/world-voyage/js/geo-motion.js?v=75"></script>
 <script src="/learn/world-voyage/js/view-motion.js?v=1"></script>
-<script src="/learn/world-voyage/js/ice-floes.js?v=1"></script>
+<script src="/learn/world-voyage/js/ice-floes.js?v=2026112101"></script>
 <script src="/learn/world-voyage/js/ocean-current.js"></script>
 <script src="/learn/world-voyage/js/wind.js?v=77"></script>
 <script src="/learn/world-voyage/js/bgm.js?v=72"></script>
@@ -1041,11 +1041,11 @@ function drawIceLayer(cw,ch,left,top){
     const shade=Math.round(floe.tint*15);ctx.fillStyle='rgb('+(218+shade)+','+(233+shade)+',248)';ctx.strokeStyle='rgba(130,183,208,.8)';
     ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fill();ctx.stroke();visible++;
   }
-  if(visible&&!serverSelf?.missionCompleted){
-    const view=viewPosition(),lon=mapLonAt(view.x),edgeY=lat=>screenPoint(view.x,(90-lat)/180*MAP_H,cw,ch).y;
-    const edgeN=edgeY(UW3Terrain.iceLimitNorthAt(lon,day)),edgeS=edgeY(UW3Terrain.iceLimitSouthAt(lon,day));
-    ctx.font='bold 14px "Malgun Gothic"';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='rgba(240,247,250,.9)';ctx.fillStyle='#35566b';const label='얼음 바다 - 항해가 어려움';
-    const y=view.y<MAP_H/2?Math.max(110,Math.min(ch-40,edgeN/2)):Math.max(110,Math.min(ch-40,(edgeS+ch)/2));
+  const view=viewPosition(),viewIce=UW3Terrain.seaIceConcentrationAt(mapLonAt(view.x),90-view.y/MAP_H*180,day);
+  if(visible&&viewIce>=.2&&!serverSelf?.missionCompleted){
+    ctx.font='bold 14px "Malgun Gothic"';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='rgba(240,247,250,.9)';ctx.fillStyle='#35566b';
+    const label=frozenNow(view.x,view.y,day)?'얼음 바다 - 항해가 어려움':'유빙 구역 - 천천히 항해하세요';
+    const y=Math.max(110,Math.min(ch-40,ch*.22));
     ctx.strokeText(label,cw/2,y);ctx.fillText(label,cw/2,y);
   }
   ctx.restore();
