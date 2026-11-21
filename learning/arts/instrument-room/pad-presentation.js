@@ -24,7 +24,7 @@
         jing: { open: "징 치기", mute: "울림 막기" }
     };
     function studentPads(modelId, pads, kit) {
-        const ids = STUDENT_PADS[modelId] || (kit ? ["kick", "snare", "hat", "openhat", "hightom", "lowtom", "crash", "ride"] : null);
+        const ids = STUDENT_PADS[modelId] || null;
         if (!ids) return pads;
         return ids.map(id => pads.find(pad => pad.id === id)).filter(Boolean).map(function (pad, index) {
             if (modelId === "ritual-signals" && pad.id === "eo") return Object.assign({}, pad, { name: "어", key: "D", code: "KeyD" });
@@ -57,9 +57,10 @@
         if (kit) {
             const pick = ids => ids.map(id => pads.find(p => p.id === id)).filter(Boolean);
             return [
-                { id: "cymbals", title: "하이햇 · 심벌", pads: pick(["hat", "openhat", "crash", "ride"]) },
-                { id: "toms", title: "탐", pads: pick(["hightom", "lowtom"]) },
+                { id: "cymbals", title: "하이햇 · 심벌", pads: pick(["hat", "openhat", "pedalhat", "crash", "ride", "ridebell"]) },
+                { id: "toms", title: "탐", pads: pick(["hightom", "midtom", "lowtom"]) },
                 { id: "core", title: "킥 · 스네어", pads: pick(["kick", "snare"]) },
+                { id: "techniques", title: "스네어 주법", pads: pick(["ghost", "rimshot", "sidestick", "rimclick"]) },
             ];
         }
         return [{ id: "all", title: "", pads: pads }];

@@ -851,6 +851,8 @@ body.detail-open { overflow: hidden; }
 .hand-pads .pad-group-right { grid-column: 2; }
 .hand-pads .pad-group-grid { grid-template-columns: 1fr; }
 .korean-articulations:not(.janggu-pads) .pad-gueum { font-size: 18px; }
+.drum-pads.kit-pads .drum-pad b { font-size: 16px; line-height: 1.25; }
+.kit-pads .pad-group-techniques .pad-group-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .kit-readout { display: none; }
 .korean-room-switch button { font-size: 14px; min-height: 44px; }
 .articulation-buttons button, .mode-switch button { font-size: 16px; min-height: 44px; }

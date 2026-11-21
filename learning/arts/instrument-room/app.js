@@ -254,22 +254,31 @@
     const BILLIE_JEAN_BAR = [42, 37, 40, 42, 40, 37, 35, 37].map(function (midi, index) {
         return [index / 2, midi, index % 2 ? .68 : .8, .38];
     });
-    // Rio Funk: the opening two-bar slap theme, repeated once. The low G,
-    // thumbed F/G, popped Bb/C and chromatic B–Bb turn use native samples.
-    // https://www.didatticadelbassoelettrico.it/wp-content/uploads/2024/08/Rio-Funk-Bass-Tabs.pdf
-    const RIO_FUNK_A = [
-        [0,43,.86,.36],[.5,53,.72,.34],[1,55,.8,.34],[1.5,53,.72,.34],
-        [2,58,.88,.16],[2.25,60,.66,.32],[2.75,58,.82,.15],
-        [3.25,60,.86,.15],[3.75,58,.8,.16]
+    // Can't Stop: the four-bar verse slap riff, original E minor, quarter 91.
+    // Bass tablature sounds an octave below its staff notation: A-string 7
+    // is E2 (40), and G-string 9 is E3 (52), not E4.
+    // Roberto De Rosa, Passione Strumenti transcription, verse mm.1–4.
+    const CANT_STOP_A = [
+        [0,40,.84,.32],[.5,50,.78,.32],[1,52,.87,.32],
+        [1.5,40,.18,.07,true],[1.75,50,.16,.07,true],
+        [2,40,.8,.16],[2.25,50,.75,.16],[2.5,40,.17,.07,true],
+        [2.75,52,.87,.16],[3,40,.17,.07,true],[3.25,50,.16,.07,true],[3.5,40,.78,.32]
     ];
-    const RIO_FUNK_B = [
-        [0,59,.65,.16],[.25,58,.7,.16],[.5,53,.8,.36],[1,55,.79,.36],[1.5,53,.73,.36],
-        [2,58,.85,.16],[2.25,59,.63,.16],[2.5,58,.69,.16],[2.75,55,.8,.16],
-        [3.5,41,.76,.16],[3.75,41,.8,.16]
+    const CANT_STOP_B = CANT_STOP_A.map(function (note) {
+        const [beat,midi,...rest] = note;
+        return [beat,beat===3.5?33:midi===40?38:midi,...rest];
+    });
+    const CANT_STOP_C = [
+        [0,35,.82,.32],[.5,47,.83,.32],[1,47,.8,.32],[1.5,35,.77,.32],
+        [2,35,.8,.16],[2.25,47,.82,.16],[2.5,35,.77,.16],[2.75,47,.84,.16],
+        [3,35,.17,.07,true],[3.25,47,.16,.07,true],[3.5,35,.78,.32]
     ];
+    const CANT_STOP_D = CANT_STOP_C.map(function ([beat,midi,...rest]) {
+        return [beat,beat===3.5?38:midi+1,...rest];
+    });
     const BASS_DEMOS = {
         finger: { bpm: 117, root: 42, bars: Array(4).fill(BILLIE_JEAN_BAR) },
-        slap: { bpm: 110, root: 43, bars: [RIO_FUNK_A, RIO_FUNK_B, RIO_FUNK_A, RIO_FUNK_B] }
+        slap: { bpm: 91, root: 40, bars: [CANT_STOP_A, CANT_STOP_B, CANT_STOP_C, CANT_STOP_D] }
     };
     // The opening riff uses two strings a fourth apart. Beat positions
     // include the pickup into the second measure and the final G dyad.
@@ -2892,7 +2901,7 @@
                 }
                 run.voices.add(voice);
                 voice.source.addEventListener("ended", function () { run.voices.delete(voice); });
-                releasePianoVoice(voice, Number.isInteger(string) || muted || attack === "palm-mute", off);
+                releasePianoVoice(voice, Number.isInteger(string) || muted || attack === "palm-mute" || attack === "detached", off);
                 return voice;
             });
             const keys = muted ? [] : pitches.map(function (midi) {

@@ -58,7 +58,7 @@ async function shot(page, name) {
       const selector = organ ? '#melodyDemoButtons button' : '[data-bass-demo="slap"]';
       await page.waitForSelector(selector, { visible: true });
       await page.$eval(selector, button => button.scrollIntoView({ block: 'center', inline: 'center' }));
-      assert.match(await page.$eval(selector, button => button.textContent), organ ? /토카타.*BWV 565/ : /Rio Funk/);
+      assert.match(await page.$eval(selector, button => button.textContent), organ ? /토카타.*BWV 565/ : /Can't Stop/);
       if (!organ) await page.evaluate(() => {
         const a = signatureTest;
         for (const id of ['p-bass', 'j-bass', 'active-bass', 'fretless-bass']) {
@@ -74,12 +74,12 @@ async function shot(page, name) {
       await page.waitForFunction(() => signatureHits.length > 0 && document.querySelector('.key.demo-hit'));
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       await shot(page, kind + '-' + width);
-      await page.waitForFunction(selector => document.querySelector(selector).getAttribute('aria-pressed') === 'false', { timeout: 20000 }, selector);
+      await page.waitForFunction(selector => document.querySelector(selector).getAttribute('aria-pressed') === 'false', { timeout: 35000 }, selector);
       const hits = await page.evaluate(() => signatureHits);
       assert.ok(hits.every(hit => hit.midi === hit.anchor && (organ ? hit.sampleSet === 'pipe-organ' : hit.sampleSet.endsWith('-slap'))), JSON.stringify({ kind, width, unexpected: hits.filter(hit => hit.midi !== hit.anchor || (organ ? hit.sampleSet !== 'pipe-organ' : !hit.sampleSet.endsWith('-slap'))) }));
-      assert.deepEqual(hits.slice(0, organ ? 6 : 3).map(hit => hit.midi), organ ? [69,81,67,79,69,81] : [43,53,55]);
+      assert.deepEqual(hits.slice(0, organ ? 6 : 3).map(hit => hit.midi), organ ? [69,81,67,79,69,81] : [40,50,52]);
       if (organ) assert.deepEqual(hits.slice(-4).map(hit => hit.midi), [38,50,57,62]);
-      else { assert.equal(hits.length, 41); assert.equal(hits.at(-1).midi, 43); }
+      else { assert.equal(hits.length, 47); assert.equal(hits.at(-1).midi, 40); }
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       // A second click stops; selecting another family must also stop a run.
       await press(selector);

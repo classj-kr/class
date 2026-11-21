@@ -313,18 +313,18 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       await press('[data-family="bass"]');
       await page.evaluate(() => { window.bassDemoHits = []; });
-      assert.equal(await page.$eval('[data-bass-demo="slap"] b', label => label.textContent), 'Rio Funk');
+      assert.equal(await page.$eval('[data-bass-demo="slap"] b', label => label.textContent), "Can't Stop");
       await press('[data-bass-demo="slap"]');
-      await page.waitForFunction(() => document.querySelector('.key[data-midi="43"].demo-hit'));
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="40"].demo-hit'));
       assert.equal(await page.$eval('#articulationButtons [aria-pressed="true"]', button => button.textContent), '슬랩');
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('[data-bass-demo="slap"]').getAttribute('aria-pressed') === 'false');
         const slap = await page.evaluate(() => window.bassDemoHits);
-        assert.equal(slap.length, 41);
-        assert.deepEqual(slap.slice(0, 3).map(hit => hit.midi), [43, 53, 55]);
-        assert.deepEqual([0, 9, 20, 29, 40].map(index => slap[index].midi), [43, 59, 43, 59, 43]);
-        assert.ok(Math.abs(slap.at(-1).time - slap[0].time - 16 * 60000 / 110) < 250);
-        assert.ok(slap.every(hit => hit.midi >= 41 && hit.midi <= 60));
+        assert.equal(slap.length, 47);
+        assert.deepEqual(slap.slice(0, 3).map(hit => hit.midi), [40, 50, 52]);
+        assert.deepEqual([0, 12, 24, 35, 46].map(index => slap[index].midi), [40, 38, 35, 36, 40]);
+        assert.ok(Math.abs(slap.at(-1).time - slap[0].time - 16 * 60000 / 91) < 250);
+        assert.ok(slap.every(hit => hit.midi >= 33 && hit.midi <= 52));
         assert.ok(slap.every(hit => hit.sampleSet.endsWith('-slap')));
       }
       await page.evaluate(() => { window.bassDemoHits = []; });

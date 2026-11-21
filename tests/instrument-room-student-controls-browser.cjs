@@ -94,7 +94,8 @@ async function shot(page, name) {
   await press('[data-family="drums"]');
   const intervals={};
   for(const model of ['rock-kit','metal-kit']){
-   await page.evaluate(model=>signatureTest.selectModel(model),model);assert.equal(await page.$$('#drumPads .drum-pad').then(x=>x.length),8);
+   await page.evaluate(model=>signatureTest.selectModel(model),model);assert.equal(await page.$$('#drumPads .drum-pad').then(x=>x.length),15);
+   for(const id of ['openhat','pedalhat','ghost','rimshot','sidestick','rimclick'])assert.ok(await page.$('#drumPads [data-drum="'+id+'"]'),model+'/'+id);
    await page.evaluate(()=>window.studentHits=[]);await press('#drumDemoButton');await page.waitForFunction(()=>studentHits.length>=10);
    intervals[model]=await page.evaluate(()=>{const times=studentHits.map(x=>x.time).filter((time,index,all)=>index===0||time-all[index-1]>20);return times[1]-times[0]});
    await page.evaluate(()=>document.querySelector('[data-family="korean"]').click());await press('[data-family="drums"]');
@@ -102,8 +103,10 @@ async function shot(page, name) {
   assert.ok(intervals['metal-kit']<intervals['rock-kit']*.6,JSON.stringify(intervals));
   const plans=await page.evaluate(()=>Object.fromEntries(['rock-kit','metal-kit'].map(id=>[id,signatureTest.DRUM_DEMOS[id].groove.filter(x=>x[1].split(' ').includes('kick')).length])));
   assert.ok(plans['metal-kit']>=plans['rock-kit']*4);assert.deepEqual(errors,[]);
+  assert.ok(await page.$eval('#drumPads .drum-pad b',e=>parseFloat(getComputedStyle(e).fontSize)>=16));
+  await shot(page,'student-drums-'+width);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-  console.log(JSON.stringify({width,jangguPads:5,jangdanButtons:3,gutgeoriHits:hits.length,ritualPads:3,drumPads:8,intervals,passed:true}));await page.close();
+  console.log(JSON.stringify({width,jangguPads:5,jangdanButtons:3,gutgeoriHits:hits.length,ritualPads:3,drumPads:15,intervals,passed:true}));await page.close();
  }
  }finally{await browser?.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);process.exitCode=1});
