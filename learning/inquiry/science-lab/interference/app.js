@@ -38,7 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function analyseSuper(ratio = state.ratio) {
         const phase = 2 * Math.PI * ratio;
         const amp = 2 * Math.abs(Math.cos(Math.PI * ratio));
-        const verdict = amp > 1.8 ? 'constructive' : amp < 0.2 ? 'destructive' : 'partial';
+        // Only an exact whole-wavelength (or odd half-wavelength) path difference is
+        // full constructive (destructive) interference; 0.125λ gives 1.85A, which is
+        // not "마루와 마루가 딱 겹쳐 2배".
+        const verdict = amp > 1.999 ? 'constructive' : amp < 0.001 ? 'destructive' : 'partial';
         const nearest = Math.round(ratio * 2) / 2;
         return { kind: 'super', ratio, phase, amp, verdict, nearest };
     }
@@ -195,7 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scienceScene.render(mainGroup,out);
     }
 
-    const VERDICT = { constructive: '보강 간섭', destructive: '상쇄 간섭', partial: '부분 보강' };
+    // 경로차 0.375λ(합성 진폭 0.77A)처럼 한 파동보다 작아지는 경우도 있어 '부분 보강'이라 부르지 않는다.
+    const VERDICT = { constructive: '보강 간섭', destructive: '상쇄 간섭', partial: '보강과 상쇄의 중간' };
     const FREQ_WORD = { high: '높다', near: '비슷하다', low: '낮다' };
 
     /* ------------------------------------------------------------ graphs */
@@ -338,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         valueB.textContent = `${a.lambda.toFixed(2)} m`;
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
-        const twice = analyseStanding(Math.min(2, a.L * 2), a.v, a.n);
+        const twice = analyseStanding(a.L * 2 <= 2 ? a.L * 2 : a.L / 2, a.v, a.n);
         explanation.textContent =
             `양 끝이 고정되어 있으므로 줄 길이 ${a.L.toFixed(1)} m 안에 반파장이 ${a.n}개 들어갑니다. ` +
             `그래서 파장은 2×${a.L.toFixed(1)}÷${a.n} = ${a.lambda.toFixed(2)} m 이고, ` +

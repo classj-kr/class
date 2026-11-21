@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css?v=20261119-fit">
   <script src="../../../assets/network/game-network.js?v=20260821"></script>
   <script src="../../../assets/network/finisher-api.js"></script>
-  <script src="../../../assets/network/finisher-board.js?v=20261119-row"></script>
+  <script src="../../../assets/network/finisher-board.js?v=20261121-hints"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
@@ -77,7 +77,7 @@
             <p class="status" id="status" role="status" aria-live="polite">READY</p>
             <div class="coach-card" id="coachCard" aria-live="polite">
               <p class="coach-text" id="coachText">👆 <strong>가장 큰 숫자</strong>나 <strong>0</strong>이 적힌 줄부터 찾아 칠해 보세요!</p>
-              <button class="coach-hint-btn" id="hintButton" type="button" data-sfx="none">💡 한 수 힌트</button>
+              <button class="coach-hint-btn" id="hintButton" type="button" data-sfx="none">💡 힌트</button>
             </div>
           </div>
 
@@ -149,7 +149,7 @@
 
             <h3>기본 규칙</h3>
             <ol>
-              <li>가로·세로 줄의 숫자 힌트를 보고 칸을 칠해 <strong>숨은 그림을 완성</strong>합니다.</li>
+              <li>가로·세로 줄의 숫자를 보고 칸을 칠해 <strong>숨은 그림을 완성</strong>합니다.</li>
               <li>줄마다 적힌 숫자는 그 줄에서 <strong>이어서 칠해야 하는 칸의 개수</strong>입니다.</li>
               <li>숫자가 2개 이상이면, 숫자 사이를 <strong>최소 한 칸 이상 띄워서(✕)</strong> 순서대로 칠해야 합니다.</li>
               <li>줄의 숫자 조건에 맞게 칠하면 숫자 색이 초록빛으로 바뀌며, 혹시 숫자보다 많이 칠하면 빨간색으로 알려 줍니다.</li>
@@ -157,7 +157,7 @@
             <h3>조작 방법과 힌트</h3>
             <ol>
               <li><strong>🖊 칠하기</strong>로 색을 칠하고, 절대 칠하면 안 되는 빈칸은 <strong>✕ 표시</strong>로 표시해 두세요.</li>
-              <li>막힐 때는 아래의 <strong>💡 한 수 힌트</strong> 단추를 눌러 보세요! 잘못 칠한 칸이나 지금 바로 칠할 수 있는 칸을 콕 집어 알려 줍니다.</li>
+              <li>막힐 때는 아래의 <strong>💡 힌트</strong> 단추를 눌러 보세요! 잘못 칠한 칸이나 지금 바로 칠할 수 있는 칸을 콕 집어 알려 줍니다.</li>
             </ol>
             <p class="solve-tip"><strong>초등 꿀팁:</strong> 가로줄을 먼저 칠한 뒤 세로줄 숫자를 다시 보면, 빈칸(✕)과 칠할 칸이 저절로 보인답니다!</p>
           </div>
@@ -168,7 +168,7 @@
   </main>
 
   <script src="/assets/learning-activity.js?v=20261116-2"></script>
-  <script src="app.js?v=20261117-race"></script>
+  <script src="app.js?v=20261121-hints"></script>
   <script src="../../../assets/network/single-player-rules.js?v=20261119-1"></script>
 </body>
 </html>

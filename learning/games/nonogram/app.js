@@ -185,6 +185,7 @@
   let completionRevealId = null;
   let started = false;
   let completed = false;
+  let usedHint = false;
   let playerName = '';
   let currentPuzzle = null;
   let paused = false; // 순위전 셋둘하나 동안
@@ -341,14 +342,15 @@
     const totalToFill = solution.flat().filter(Boolean).length;
     const currentFilled = filled.flat().filter(Boolean).length;
     if (currentFilled === 0) {
-      setCoach(`👆 <strong>${n}</strong>이나 <strong>0</strong>처럼 가장 쉬운 숫자가 적힌 줄부터 찾아 칠해 보세요! 막히면 <strong>💡 한 수 힌트</strong>를 누르세요.`);
+      setCoach(`👆 <strong>${n}</strong>이나 <strong>0</strong>처럼 가장 쉬운 숫자가 적힌 줄부터 찾아 칠해 보세요! 막히면 <strong>💡 힌트</strong>를 누르세요.`);
     } else {
-      setCoach(`🎨 잘하고 있어요! 초록빛으로 바뀐 숫자는 조건에 맞게 채운 줄이에요. 막히면 <strong>💡 한 수 힌트</strong>를 눌러 보세요!`);
+      setCoach(`🎨 잘하고 있어요! 초록빛으로 바뀐 숫자는 조건에 맞게 채운 줄이에요. 막히면 <strong>💡 힌트</strong>를 눌러 보세요!`);
     }
   }
 
   function giveHint() {
-    if (completed) return;
+    if (completed || race.active) return;
+    usedHint = true;
     // 1) 잘못 칠한 칸(빈칸인데 칠한 칸)이 있는지 먼저 확인
     for (let r = 0; r < n; r += 1) {
       for (let c = 0; c < n; c += 1) {
@@ -578,7 +580,7 @@
     finisherBoard.register({
       difficulty: `${n}×${n}`,
       rank: n,
-      targetId: 'result-finishers-list'
+      usedHint
     });
     completionRevealId = window.setTimeout(() => {
       completionRevealId = null;
@@ -628,6 +630,7 @@
   }
 
   function newPuzzle() {
+    usedHint = false;
     currentPuzzle = pickPuzzle(n);
     solution = parseGrid(currentPuzzle.rows);
     buildClues();

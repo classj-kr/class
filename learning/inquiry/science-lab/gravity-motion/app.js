@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* -------------------------------------------------------------- data */
     // Two balls from a cliff: one let go, one thrown.
-    const HEIGHTS = { '10': { label: '10 m', hint: '3층 높이' }, '20': { label: '20 m', hint: '6층 높이' }, '45': { label: '45 m', hint: '15층 높이' } };
+    const HEIGHTS = { '10': { label: '10 m', hint: '3층 높이', floors: 3 }, '20': { label: '20 m', hint: '6층 높이', floors: 6 }, '45': { label: '45 m', hint: '15층 높이', floors: 15 } };
     const SPEEDS = { '5': { label: '5 m/s', hint: '살짝' }, '10': { label: '10 m/s', hint: '힘껏' }, '15': { label: '15 m/s', hint: '아주 세게' } };
     const AIMS = { level: { label: '옆으로 (수평)', phrase: '옆으로', deg: 0 }, up: { label: '조금 위로 30°', phrase: '30° 위로', deg: 30 }, down: { label: '조금 아래로 30°', phrase: '30° 아래로', deg: -30 } };
 
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const s = Math.min(150 / (a.h + a.rise + 1), 320 / (a.range + 2));
         const X = m => LX + m * s, Y = m => GY - m * s;
         let out = `<rect class="ground" x="16" y="${GY}" width="428" height="12" rx="2"/>`;
-        // 층이 보이는 건물: 한 층을 약 3.3 m로 보고 창문 줄을 그린다.
-        const bx = 22, bw = LX - 2 - bx, top = Y(a.h), floors = Math.max(1, Math.round(a.h / 3.33)), fh = (GY - top) / floors;
+        // 층이 보이는 건물: 단추에 적힌 층수(약 3 m 한 층)만큼 창문 줄을 그린다.
+        const bx = 22, bw = LX - 2 - bx, top = Y(a.h), floors = HEIGHTS[state.height]?.floors || Math.max(1, Math.round(a.h / 3.2)), fh = (GY - top) / floors;
         out += `<rect class="building" x="${bx}" y="${top.toFixed(1)}" width="${bw}" height="${(GY - top).toFixed(1)}"/>`;
         out += `<rect class="roof" x="${bx - 1.5}" y="${(top - 2.5).toFixed(1)}" width="${bw + 3}" height="3"/>`;
         for (let f = 0; f < floors; f += 1) {
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="scale-bar" x1="${(440 - bar).toFixed(1)}" y1="166" x2="440" y2="166"/><text class="small-label" x="${(440 - bar / 2).toFixed(1)}" y="160" text-anchor="middle">10 m</text>`;
         const VERD = { same: '동시에 닿음', 'drop-first': '놓은 공이 먼저', 'throw-first': '던진 공이 먼저' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `놓은 공 ${a.tA.toFixed(2)} s · 던진 공 ${a.tB.toFixed(2)} s → ${VERD[a.verdict]}` : `높이 ${a.h} m · ${AIMS[state.aim].phrase} ${a.v} m/s로 던짐`}</text>`;
-        out += `<text class="note-text" x="20" y="208">공기 저항 없음 · 두 공 모두 아래 방향 속력이 1초마다 9.8 m/s씩 늘어남 · 옆 방향 속력은 그대로</text>`;
+        out += `<text class="note-text" x="20" y="208">공기 저항 없음 · 두 공 모두 세로 속도가 1초마다 아래쪽으로 9.8 m/s씩 바뀜 · 옆 방향 속력은 그대로</text>`;
         return out;
     }
 
@@ -364,9 +364,9 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="bar" fill="${f.broken ? '#ff7a59' : '#0284c7'}" opacity="${mine ? 1 : 0.45}" stroke="${mine ? '#0284c7' : 'rgba(2,132,199,.2)'}" stroke-width="${mine ? 2 : .8}" x="${x}" y="${(Y0 - h).toFixed(1)}" width="${w}" height="${h.toFixed(1)}" rx="2"/>`;
             if (shown) out += `<text class="axis-text" style="fill:${mine ? '#0f172a' : '#475569'};font-weight:${mine ? '900' : '750'}" x="${x + w / 2}" y="${(top - 4).toFixed(1)}" text-anchor="middle">${f.ratio < 100 ? fmt1(f.ratio) : fmtN(f.ratio)}배</text>`;
             out += `<text class="axis-text" style="fill:${mine ? '#0f172a' : '#475569'};font-weight:${mine ? '900' : '750'}" x="${x + w / 2}" y="${Y0 + 14}" text-anchor="middle">${FLOORS[f.key].label}</text>`;
-            out += `<text class="small-label" x="${x + w / 2}" y="${Y0 + 26}" text-anchor="middle">${shown ? `${f.dt * 1000 < 10 ? (f.dt * 1000).toFixed(1) : fmtN(f.dt * 1000)} ms 만에 멈춤` : ''}</text>`;
+            out += `<text class="small-label" x="${x + w / 2}" y="${Y0 + 26}" text-anchor="middle">${shown ? `${f.dt * 1000 < 10 ? (f.dt * 1000).toFixed(1) : fmtN(f.dt * 1000)} ms` : ''}</text>`;
         });
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 40}" text-anchor="middle">${shown ? `네 바닥 모두 알짜힘의 충격량은 ${fmt2(a.p)} N·s로 같고, 멈추는 시간이 길수록 힘이 작다` : '같은 높이에서 떨어진 달걀을 네 바닥이 멈출 때'}</text>`;
+        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${Y0 + 40}" text-anchor="middle">${shown ? `네 바닥 모두 알짜힘의 충격량은 ${fmt2(a.p)} N·s로 같고, 멈추는 시간(막대 아래 ms)이 길수록 힘이 작다` : '같은 높이에서 떨어진 달걀을 네 바닥이 멈출 때'}</text>`;
         return out;
     }
 

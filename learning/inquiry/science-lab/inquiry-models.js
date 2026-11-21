@@ -86,7 +86,10 @@
  function pedigreeCheck(answers){
   return family.map(p=>({id:p.id,ok:answers[p.id]===p.answer,reason:!answers[p.id]?'유전자형을 아직 선택하지 않았습니다.':p.sex==='M'?'남자의 X는 어머니에게서, Y는 아버지에게서 옵니다.':p.id==='I-2'?'형질이 나타난 아들의 X와 이 사람의 표현형을 함께 보세요.':p.id==='II-2'?'형질이 나타난 딸은 부모 양쪽에서 r을 하나씩 받아야 합니다.':'표현형과 부모에게 받을 수 있는 대립유전자를 함께 보세요.'}));
  }
- function chromosome(kind){const n=kind==='X'?9:kind==='Y'?23:Number(kind);return {kind,length:92-n*2.45,centromere:kind==='X'?.43:kind==='Y'?.27:[.46,.35,.25,.40][n%4],bands:[.12+(n%3)*.025,.30+(n%4)*.022,.60+(n%5)*.025,.87]};}
+ // Approximate human metaphase data (ISCN-style relative length % and centromere index):
+ // 13·14·15·21·22·Y are acrocentric, 1·3·16·19·20 metacentric, the rest submetacentric.
+ const chromosomeData={1:[8.44,.48],2:[8.02,.39],3:[6.83,.47],4:[6.30,.29],5:[6.08,.29],6:[5.90,.39],7:[5.36,.39],8:[4.93,.34],9:[4.80,.35],10:[4.59,.33],11:[4.61,.40],12:[4.66,.30],13:[3.74,.17],14:[3.56,.18],15:[3.46,.19],16:[3.36,.41],17:[3.25,.34],18:[2.93,.31],19:[2.67,.47],20:[2.56,.45],21:[1.90,.27],22:[2.04,.27],X:[5.12,.40],Y:[2.15,.27]};
+ function chromosome(kind){const n=kind==='X'?24:kind==='Y'?23:Number(kind),[rel,ci]=chromosomeData[kind],length=24+66*rel/8.44;return {kind,length,centromere:Math.max(ci,10/length),bands:[.12+(n%3)*.025,.30+(n%4)*.022,.60+(n%5)*.025,.87]};}
  function karyotypeStart(sample='XX'){
   const kinds=[...Array.from({length:22},(_,i)=>String(i+1)),sample==='XY'?'Y':'X'];
   if(sample==='trisomy')kinds.push('21');

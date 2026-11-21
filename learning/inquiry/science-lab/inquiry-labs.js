@@ -234,7 +234,7 @@
  let chromSerial=0;
  function chromosomeDrawing(c){
   const len=c.length,top=99-len,bot=99,cent=top+len*c.centromere,id='kc'+(++chromSerial);
-  const n=c.kind==='X'?9:c.kind==='Y'?23:Number(c.kind),seed=n*977+131;
+  const n=c.kind==='X'?24:c.kind==='Y'?23:Number(c.kind),seed=n*977+131;
   const chromatid=(o,i)=>{const out=o<15?-1:1;return `M${i} ${top+4}Q${i} ${top} ${(o+i)/2} ${top}Q${o} ${top} ${o} ${top+4}L${o} ${cent-5}Q${o} ${cent} ${o-out*2.6} ${cent}Q${o} ${cent} ${o} ${cent+5}L${o} ${bot-4}Q${o} ${bot} ${(o+i)/2} ${bot}Q${i} ${bot} ${i} ${bot-4}L${i} ${cent+4}Q${i} ${cent} ${15-out*.2} ${cent}Q${i} ${cent} ${i} ${cent-4}Z`;};
   const shapes=chromatid(4.5,14)+chromatid(25.5,16);
   const bands=[...c.bands.map((f,j)=>[f,2.2+(j%2)*1.6]),...[0,1,2,3].map(j=>[.08+((seed*(j+3))%271)/271*.84,1.4+((seed>>j)%3)*.9])];

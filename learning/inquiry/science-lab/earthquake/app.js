@@ -26,14 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         { epicenter: { x: 255, y: 205 }, origin: 36930 },
         { epicenter: { x: 170, y: 215 }, origin: 40140 }
     ];
+    // 지각을 지나는 P파 약 6~8 km/s, S파 약 3.4~4.4 km/s(속력비 약 1.73).
+    // 멀리 갈수록 깊고 빠른 층을 지나므로 주시곡선은 기울기가 줄어드는 모양이다.
     const travelTimeCurve = [
         { distance: 0, pTime: 0, sTime: 0 },
-        { distance: 40, pTime: 6, sTime: 12 },
-        { distance: 80, pTime: 11, sTime: 23 },
-        { distance: 120, pTime: 16, sTime: 35 },
-        { distance: 160, pTime: 21, sTime: 48 },
-        { distance: 200, pTime: 26, sTime: 61 },
-        { distance: 240, pTime: 31, sTime: 75 }
+        { distance: 40, pTime: 7, sTime: 12 },
+        { distance: 80, pTime: 13, sTime: 23 },
+        { distance: 120, pTime: 19, sTime: 33 },
+        { distance: 160, pTime: 24, sTime: 42 },
+        { distance: 200, pTime: 29, sTime: 51 },
+        { distance: 240, pTime: 34, sTime: 60 }
     ];
 
     let scenarioIndex = 0;

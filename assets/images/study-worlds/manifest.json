@@ -1,0 +1,43 @@
+{
+  "version": "20261121-2",
+  "generator": "built-in image_gen",
+  "format": "lossless WebP; RGB pixels verified against generated source",
+  "design": "Static illustrated rooms at the outer edges; strongly reduced saturation and opacity, a quiet center, opaque reading surfaces and no animation.",
+  "worlds": {
+    "language": [
+      "literacy-numeracy/handwriting",
+      "literacy-numeracy/dictation",
+      "literacy-numeracy/textbook-grammar",
+      "literacy-numeracy/curriculum-vocabulary",
+      "literacy-numeracy/sentence-building"
+    ],
+    "math": [
+      "literacy-numeracy/math-bank",
+      "literacy-numeracy/math-tools/fraction-board",
+      "literacy-numeracy/math-tools/geoboard",
+      "literacy-numeracy/math-tools/number-models",
+      "literacy-numeracy/math-tools/stacking-cubes",
+      "literacy-numeracy/math-tools/pentomino",
+      "literacy-numeracy/math-tools/clock",
+      "literacy-numeracy/math-tools/area-lab",
+      "literacy-numeracy/math-tools/probability",
+      "literacy-numeracy/math-tools/cuisenaire-rods",
+      "literacy-numeracy/math-tools/geometry-tools",
+      "literacy-numeracy/math-tools/data-graphs",
+      "literacy-numeracy/math-tools/measure-lab",
+      "literacy-numeracy/math-tools/number-line",
+      "literacy-numeracy/math-tools/pattern-blocks",
+      "literacy-numeracy/math-tools/solid-nets"
+    ],
+    "music": [
+      "arts/instrument-room",
+      "arts/beat-maker",
+      "arts/music-theory/ear-training",
+      "arts/music-theory/rhythm-training",
+      "arts/music-theory/piano-skills"
+    ],
+    "science": [
+      "inquiry/periodic-table"
+    ]
+  }
+}

@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : a.cross.label;
         methodHint.textContent = state.mode === 'one'
             ? '생식세포가 만들어질 때 한 쌍의 유전자는 갈라져 하나씩 들어갑니다'
-            : '서로 다른 형질의 유전자는 서로 상관없이 따로 갈라집니다';
+            : '서로 다른 염색체에 있는 두 형질의 유전자는 서로 상관없이 따로 갈라집니다';
         window.scienceScene.render(dataNote,noteFor(a));
         return a;
     }
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         stageCaption.textContent = state.mode === 'one'
-            ? '왼쪽 표는 기대, 오른쪽 씨앗은 실제로 뿌려 나온 결과입니다.'
+            ? '왼쪽 표는 기대, 오른쪽 씨앗은 무작위 추출로 만든 모의 결과입니다.'
             : '두 형질이 따로 갈라지면 표의 16칸이 9 : 3 : 3 : 1로 나뉩니다.';
         settingsChanged();
     }));

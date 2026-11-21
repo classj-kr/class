@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const LY = 220, LY2 = 240;
         out += germShape(26, LY - 5, 0) + `<text class="legend-text" x="36" y="${LY}">병원체</text>`;
         out += yShape(96, LY - 5, 'ab', 4) + `<text class="legend-text" x="106" y="${LY}">항체</text>`;
-        out += cellAt('cell-mac', 158, LY - 5, 8) + `<text class="legend-text" x="170" y="${LY}">큰포식세포</text>`;
+        out += cellAt('cell-mac', 158, LY - 5, 8) + `<text class="legend-text" x="170" y="${LY}">대식세포</text>`;
         out += cellAt('cell-b', 262, LY - 5, 7) + `<text class="legend-text" x="273" y="${LY}">B 림프구</text>`;
         out += cellAt('cell-t', 352, LY - 5, 7) + `<text class="legend-text" x="363" y="${LY}">T 림프구</text>`;
         out += cellAt('cell-plasma', 26, LY2 - 5, 7) + `<text class="legend-text" x="37" y="${LY2}">형질 세포</text>`;
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
         labelA.textContent='열이 난 기간';valueA.textContent=run.sick<0.05?'열 없음':`${run.sick.toFixed(1)}일`;
         labelB.textContent='병원체가 사라진 때';valueB.textContent=run.clearDay===null?'3주 안에 못 치움':run.clearDay-since<0.5?'반나절 안':`들어온 뒤 ${fmtDay(run.clearDay-since)}일째`;
         predictionResult.textContent=!state.prediction?'다음에는 모형의 결과를 먼저 예상해 보세요.':state.prediction===a.verdict?'이 가상 모형의 예상이 맞았습니다.':'이 가상 모형의 결과와 다릅니다.';
-        const why=a.kind==='infect'?({first:'처음 만난 병원체라 B 림프구가 알아보고 형질 세포가 항체를 내기까지 닷새쯤 걸렸고, 그동안 병원체가 늘었습니다. 이번 감염으로 기억 세포가 새로 생겼습니다. ',same:'두 달 전에 생긴 기억 세포가 하루 반 만에 깨어나 항체를 빨리, 많이 만들었습니다. ',other:'기억 세포는 있지만 다른 병원체용이라 이번 병원체에는 처음처럼 닷새쯤 걸렸습니다. ',nolymph:'림프구가 없어 항체가 나오지 않았고, 큰포식세포만으로는 늘어나는 병원체를 다 치우지 못했습니다. '})[state.infect]
+        const why=a.kind==='infect'?({first:'처음 만난 병원체라 B 림프구가 알아보고 형질 세포가 항체를 내기까지 닷새쯤 걸렸고, 그동안 병원체가 늘었습니다. 이번 감염으로 기억 세포가 새로 생겼습니다. ',same:'두 달 전에 생긴 기억 세포가 하루 반 만에 깨어나 항체를 빨리, 많이 만들었습니다. ',other:'기억 세포는 있지만 다른 병원체용이라 이번 병원체에는 처음처럼 닷새쯤 걸렸습니다. ',nolymph:'림프구가 없어 항체가 나오지 않았고, 대식세포만으로는 늘어나는 병원체를 다 치우지 못했습니다. '})[state.infect]
             :a.n?'백신으로 생긴 기억 세포와 남은 항체 덕분에 진짜 병원체가 들어오자 곧바로 항체가 늘었습니다. ':'백신을 맞지 않아 처음 걸린 것과 같이 닷새쯤 뒤에야 항체가 나왔습니다. ';
         explanation.textContent=why+'특정 항원에 대한 면역 기억은 같은 항원에 다시 노출될 때 더 빠르고 강한 반응에 기여할 수 있습니다. B 림프구가 형질 세포로 분화하면 항체를 분비합니다. 그림의 수치·기간은 가상 조건이며 실제 감염, 접종 일정, 수혈이나 치료 결정을 위한 자료가 아닙니다.';
     }

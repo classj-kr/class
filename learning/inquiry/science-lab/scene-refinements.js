@@ -173,7 +173,7 @@
         const pump = a.kind === 'pump', invalid = a.kind === 'flow' && a.verdict !== 'ok';
         const fraction = pump ? 1 / a.cop : a.eta, split = 420 * fraction;
         const first = pump ? '공급한 일' : '한 일', second = pump ? '바깥에서 가져온 열' : '배출한 열';
-        let s = text(20, 28, pump ? '실내로 전달한 열을 100으로 놓고 비교' : invalid ? '주장하는 에너지 배분 · 실현 불가' : '고온에서 받은 열을 100으로 놓고 비교', ink, 'start');
+        let s = text(20, 28, pump ? '이상적인(가역) 열펌프 · 실내로 보낸 열을 100으로' : invalid ? '주장하는 에너지 배분 · 실현 불가' : '고온에서 받은 열을 100으로 놓고 비교', ink, 'start');
         s += `<rect data-energy="work" data-share="${fraction}" x="20" y="52" width="${split}" height="30" fill="${invalid ? '#bb5960' : green}"/><rect data-energy="heat" data-share="${1 - fraction}" x="${20 + split}" y="52" width="${420 - split}" height="30" fill="${cold}"/>`;
         s += dot(24, 106, 4, invalid ? '#bb5960' : green) + text(35, 111, `${first} ${(fraction * 100).toFixed(1)}`, ink, 'start');
         s += dot(229, 106, 4, cold) + text(240, 111, `${second} ${((1 - fraction) * 100).toFixed(1)}`, ink, 'start');

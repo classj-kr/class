@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="trait-text" x="${PX}" y="118">${p.sublimes ? '승화점' : '녹는점'}: ${shown ? meltText(p) : '?'}</text>`;
         out += `<text class="trait-text" x="${PX}" y="134">전기: ${shown ? (ionic ? '고체 ✗ · 녹인 액체 ✓' : '흐르지 않음') : '?'}</text>`;
         if (shown && ionic) out += `<text class="trait-text" x="${PX}" y="150">${p.aq === 'yes' ? '물에 풀면 ✓' : p.aq === 'insoluble' ? '물에 거의 안 녹음' : '물과 만나면 반응'}</text>`;
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${shown ? (a.same ? `${a.A.name} 원자 2개 → ${p.formulaHtml} (공유 결합, 전자 ${a.pairs}쌍 함께 씀)` : `${a.A.name} ${a.na}개 : ${a.B.name} ${a.nb}개 → ${p.formulaHtml} (${ionic ? '이온 결합' : '공유 결합'})`) : `${a.A.name}(${a.A.sym})${a.same ? ' 원자 둘이' : `${pWa(a.A.name)} ${a.B.name}(${a.B.sym})${pIga(a.B.name)}`} 만난다`}</text>`;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${shown ? (a.same ? `${a.A.name} 원자 2개 → ${p.formula} (공유 결합, 전자 ${a.pairs}쌍 함께 씀)` : `${a.A.name} ${a.na}개 : ${a.B.name} ${a.nb}개 → ${p.formula} (${ionic ? '이온 결합' : '공유 결합'})`) : `${a.A.name}(${a.A.sym})${a.same ? ' 원자 둘이' : `${pWa(a.A.name)} ${a.B.name}(${a.B.sym})${pIga(a.B.name)}`} 만난다`}</text>`;
         out += `<text class="note-text" x="20" y="208">안쪽 껍질의 전자는 그리지 않았습니다 · ${ionic ? '금속은 전자를 내주고 비금속은 받습니다' : '비금속끼리는 전자쌍을 함께 씁니다'}</text>`;
         return out;
     }

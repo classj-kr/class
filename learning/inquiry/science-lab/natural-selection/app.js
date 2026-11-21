@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
     // digits are read aloud (영 일 이 삼 사 오 육 칠 팔 구), so the particle follows the reading
     const numIga = txt => { const d = String(txt).trim().slice(-1); return txt + ('013678'.includes(d) ? '이' : '가'); };
+    // 영·삼·육은 받침이 ㄹ이 아닌 받침이라 '으로', 나머지(일·칠·팔의 ㄹ 받침, 받침 없음)는 '로'
+    const numRo = txt => { const d = String(txt).trim().slice(-1); return txt + ('036'.includes(d) ? '으로' : '로'); };
 
     /* ------------------------------------------------------------ models */
     // fitness of a trait under the environment of generation g
@@ -343,8 +345,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const m5 = a.gens[FLIP_GEN].mean;
             const backHome = g1.shade < 0.5 ? l < 0.35 : l > 0.65;
             s = `처음 무리의 털 색 평균은 ${f.toFixed(2)}(0이 흰색, 1이 검은색)이었습니다. `;
-            if (state.flip === 'none') s += `${g0.label} 위에서는 ${g0.shade < 0.5 ? '밝은' : '어두운'} 쥐가 천적 눈에 덜 띄어 더 많이 살아남았고, 10세대 뒤 평균이 ${l.toFixed(2)}로 ${g0.shade < 0.5 ? '밝은' : '어두운'} 쪽으로 옮겨 갔습니다. `;
-            else s += `${g0.label}에서 ${FLIP_GEN}세대 동안 ${g0.shade < 0.5 ? '밝은' : '어두운'} 쥐가 늘어 평균이 ${m5.toFixed(2)}가 되었지만, 배경이 ${g1.label}으로 바뀌자 이번에는 ${g1.shade < 0.5 ? '밝은' : '어두운'} 쥐가 살아남아 10세대 뒤 ${l.toFixed(2)}${backHome ? '로 되돌아갔습니다' : '까지 되돌아가는 중입니다. 세대를 더 넘기면 더 옮겨 갑니다'}. 어떤 털 색이 유리한지는 환경이 정합니다. `;
+            if (state.flip === 'none') s += `${g0.label} 위에서는 ${g0.shade < 0.5 ? '밝은' : '어두운'} 쥐가 천적 눈에 덜 띄어 더 많이 살아남았고, 10세대 뒤 평균이 ${numRo(l.toFixed(2))} ${g0.shade < 0.5 ? '밝은' : '어두운'} 쪽으로 옮겨 갔습니다. `;
+            else s += `${g0.label}에서 ${FLIP_GEN}세대 동안 ${g0.shade < 0.5 ? '밝은' : '어두운'} 쥐가 늘어 평균이 ${numIga(m5.toFixed(2))} 되었지만, 배경이 ${g1.label}으로 바뀌자 이번에는 ${g1.shade < 0.5 ? '밝은' : '어두운'} 쥐가 살아남아 10세대 뒤 ${backHome ? `${numRo(l.toFixed(2))} 되돌아갔습니다` : `${l.toFixed(2)}까지 되돌아가는 중입니다. 세대를 더 넘기면 더 옮겨 갑니다`}. 어떤 털 색이 유리한지는 환경이 정합니다. `;
             s += `쥐가 털 색을 바꾼 것이 아니라, 무리 안에 원래 있던 여러 색 가운데 살아남는 쪽이 달라진 것입니다.`;
         }
         explanation.textContent = s;

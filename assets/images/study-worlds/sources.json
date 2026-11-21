@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "assets": {
+    "language": {
+      "path": "language.webp",
+      "prompt": "Handcrafted miniature paper village at the edges of a pale sage and ivory desk; houses built from open books, paper trees, pencil bridge, paper boat and folded bird. Quiet empty center for learning UI; no text."
+    },
+    "math": {
+      "path": "math.webp",
+      "prompt": "Miniature geometry workshop made of painted wooden blocks; arch bridge, cube staircase, compass, set square, solid mobile, abacus and pattern blocks. Powder blue, sage, ochre and coral; empty center for learning UI; no text."
+    },
+    "music": {
+      "path": "music.webp",
+      "prompt": "Miniature recording studio at evening with amber desk lamp, acoustic panel, tape reel, headphones, vinyl shelves, plant, guitar and percussion at the edges. Dark petrol teal center for music learning UI; no text."
+    },
+    "science": {
+      "path": "science-illustrated.webp",
+      "prompt": "Replace the attached image's photographic rendering with a distinctly HAND-DRAWN 2D EDITORIAL ILLUSTRATION. For a science learning website background. The user rejected both childish magical toy art AND photorealistic art. Make this sophisticated illustrated graphic art, unmistakably flat drawn and painted, suitable for a well-designed science magazine or museum exhibition identity. NOT PHOTO, NOT 3D, NOT RENDER, NOT realistic glass or realistic surface texture. Draw with simplified confident ink contours, broad flat matte gouache shapes, mild paper grain and limited palette of ink navy, muted dusty blue, sage, warm ochre and ivory. Side framing composition: left outer 16 percent a clearly illustrated microscope with off-white flat shapes, a fossil spiral as a simple hand-drawn line, one illustrated desk lamp. Right outer 16 percent a drawn botanical specimen branch, a few angular geological sample shapes and a line-drawn clear flask with NO COLORED LIQUID. Use slightly playful balanced geometry and beautiful sophisticated drawing, no smiley faces, no childlike toy proportions, no fantasy, no glowing potions, no sparkles. All objects use simple expressive graphic silhouettes and visible drawn marks, not shading that resembles photographs. Huge central 68 percent width and upper middle EMPTY matte navy (#152737 approximately), a smooth understated painterly field where a learning UI will overlay. Across bottom a minimal horizontal illustrated workbench line with a few tiny scientific sketch marks at corners, no text, no letters, no numbers, no UI. Landscape 3:2. Think serious but approachable modern editorial illustration, reserved scientific curiosity, not cinematic realism."
+    }
+  }
+}

@@ -87,8 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
         bismuth: { label: '비스무트', hint: '반자성', chi: -1.66e-4, kind: 'dia' },
     };
     const VOL = 1e-6, B_MAG = 0.5, GRAD_B = 50; // 1 cm³ sample, field and gradient near a strong magnet pole (대략)
-    const FERROS = { fe: { label: '철', hint: '퀴리 770 ℃', Tc: 770 }, ni: { label: '니켈', hint: '퀴리 358 ℃', Tc: 358 }, co: { label: '코발트', hint: '퀴리 1,115 ℃', Tc: 1115 } };
-    const HEATS = { t20: { label: '20 ℃', hint: '실온', T: 20 }, t400: { label: '400 ℃', hint: '검붉게 달굼', T: 400 }, t700: { label: '700 ℃', hint: '벌겋게 달굼', T: 700 }, t900: { label: '900 ℃', hint: '주황빛', T: 900 } };
+    // s, p: 실측 자기화 곡선에 맞춘 쿠즈민 식의 모양 값(Kuz'min, PRL 94, 107204, 2005)
+    const FERROS = { fe: { label: '철', hint: '퀴리 770 ℃', Tc: 770, s: 0.35, p: 4 }, ni: { label: '니켈', hint: '퀴리 358 ℃', Tc: 358, s: 0.15, p: 2.5 }, co: { label: '코발트', hint: '퀴리 1,115 ℃', Tc: 1115, s: 0.11, p: 2.5 } };
+    // 자발 자기화 M/M₀ = [1 − s·t^1.5 − (1 − s)·t^p]^⅓, t = T/Tc(K). 실온에서 철 0.98·니켈 0.94·코발트 0.99로 거의 다 남고 퀴리 온도 가까이에서 급히 0이 된다.
+    const mOf = (f, T) => { const t = (T + 273) / (f.Tc + 273); return t >= 1 ? 0 : Math.cbrt(Math.max(0, 1 - f.s * t ** 1.5 - (1 - f.s) * t ** f.p)); };
+    const HEATS = { t20: { label: '20 ℃', hint: '실온', T: 20 }, t400: { label: '400 ℃', hint: '아직 빛나지 않음', T: 400 }, t700: { label: '700 ℃', hint: '벌겋게 달굼', T: 700 }, t900: { label: '900 ℃', hint: '주황빛', T: 900 } };
 
     const state = { mode: 'motor', current: 'i1', turns: 'n10', comm: 'yes', material: 'iron', ferro: 'fe', heat: 't20', progress: 0, prediction: null };
     let running = false, frameId = 0, lastStamp = 0;
@@ -98,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fmtN = (n, d = 0) => (+n.toFixed(d)).toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d }).replace('-', '−');
     const rnd = i => (((i * 7919 + 13) * 104729) % 100003) / 100003;
     const fmtF = f => { const x = Math.abs(f), s = f < 0 ? '−' : ''; if (x >= 1) return `${s}${fmtN(x, 1)} N`; if (x >= 1e-3) return `${s}${fmtN(x * 1e3, 2)} mN`; return `${s}${fmtN(x * 1e6, 0)} μN`; };
-    const fmtTau = t => { const x = Math.abs(t), s = t < 0 ? '−' : ''; return x >= 1 ? `${s}${fmtN(x, 2)} N·m` : `${s}${fmtN(x * 1000, x >= 0.01 ? 1 : 2)} mN·m`; };
+    const fmtTau = t => { const x = Math.abs(t), s = t < 0 && x >= 5e-6 ? '−' : ''; return x >= 1 ? `${s}${fmtN(x, 2)} N·m` : `${s}${fmtN(x * 1000, x >= 0.01 ? 1 : 2)} mN·m`; };
 
     /* ------------------------------------------------------------ models */
     function motorModel() {
@@ -108,8 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const dt = 0.001, steps = Math.round(SIM_T / dt), samples = [];
         let phi = Math.PI / 2, w = 0, turns = 0;
         for (let k = 0; k <= steps; k += 1) {
-            const s = Math.sin(phi), tau = !moves ? 0 : comm ? -tauMax * Math.abs(s) : -tauMax * s;
-            if (k % 10 === 0) samples.push([k * dt, phi, w, tau]);
+            // 자기력이 만드는 돌림힘은 코일이 멈춰 있어도 있다(정지 마찰이 버틸 뿐) — 그래프·읽기는 이 값을 쓴다
+            const s = Math.sin(phi), tauMag = comm ? -tauMax * Math.abs(s) : -tauMax * s, tau = moves ? tauMag : 0;
+            if (k % 10 === 0) samples.push([k * dt, phi, w, tauMag]);
             const acc = (tau - B_FRICTION * w - C_FRICTION * w * Math.abs(w)) / J_INERTIA;
             w += acc * dt; phi += w * dt;
         }
@@ -123,8 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return { kind: 'material', m, F, verdict: F > 0.1 ? 'strong' : F > 0 ? 'weak' : 'repel' };
     }
     function curieModel() {
-        const f = FERROS[state.ferro], T = HEATS[state.heat].T, tK = T + 273, tcK = f.Tc + 273;
-        const ratio = T >= f.Tc ? 0 : Math.pow(1 - tK / tcK, 1 / 3); // M/M₀ ≈ (1 − T/Tc)^⅓, 대략
+        const f = FERROS[state.ferro], T = HEATS[state.heat].T;
+        const ratio = T >= f.Tc ? 0 : mOf(f, T);
         return { kind: 'curie', f, T, ratio, verdict: ratio >= 0.6 ? 'strong' : ratio > 0 ? 'weak' : 'none' };
     }
     function analyse() {
@@ -218,9 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
         out += poly([P(o1[0], o1[1], -LZ), P(o1[0], o1[1], LZ), P(o2[0], o2[1], LZ), P(o2[0], o2[1], -LZ)], `fill="#f4b46a" fill-opacity="${shade.toFixed(2)}" stroke="none"`);
         // 여러 번 감은 도선(두 가닥으로 나타냄)
         [0, 1].forEach(k => { const m = 1 - k * 0.07, zz = LZ * (1 - k * 0.05); out += poly([P(o1[0] * m, o1[1] * m, -zz), P(o1[0] * m, o1[1] * m, zz), P(o2[0] * m, o2[1] * m, zz), P(o2[0] * m, o2[1] * m, -zz)], `fill="none" stroke="${k ? '#c2701f' : '#9a4a0c'}" stroke-width="${k ? 3 : 5}" stroke-linejoin="round"`); });
-        // 전류 방향: 정류자가 있으면 반 바퀴마다 뒤집힘
-        const half = Math.floor((Math.PI / 2 - phi) / Math.PI + 1e-9), flip = a.comm && on ? (half % 2 === 0 ? 1 : -1) : 1;
-        const cur1 = on && a.moves ? flip : on ? 1 : 0; // +1 = 도선 1에서 앞쪽(+z)으로
+        // 전류 방향: 오른쪽 브러시가 전지 (+)극. 정류자 반쪽 0(도선 1)이 (+) 브러시에 닿는 동안(sinφ > 0)
+        // 전류는 도선 1의 앞끝으로 들어가 뒤쪽(−z)으로 흐른다. 정류자는 코일 면이 자기장과 수직(φ = 0, π)일 때 뒤집는다.
+        const flip = a.comm && a.moves && on ? (Math.sin(phi) >= 0 ? 1 : -1) : 1;
+        const cur1 = on ? -flip : 0; // +1 = 도선 1에서 앞쪽(+z)으로
         const L = Math.hypot(D[0], D[1]), ux = D[0] / L, uy = D[1] / L;
         const chevron = (o, z, dir) => { const q = P(o[0], o[1], z), vx = ux * dir, vy = uy * dir; return `<path d="M${(q[0] - vx * 6 - vy * 5).toFixed(1)},${(q[1] - vy * 6 + vx * 5).toFixed(1)} L${(q[0] + vx * 5).toFixed(1)},${(q[1] + vy * 5).toFixed(1)} L${(q[0] - vx * 6 + vy * 5).toFixed(1)},${(q[1] - vy * 6 - vx * 5).toFixed(1)}" fill="none" stroke="#7c2d12" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`; };
         if (cur1) [[o1, cur1], [o2, -cur1]].forEach(([o, c]) => { [-26, 0, 26].forEach(z => { out += chevron(o, z, c); }); });
@@ -248,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="262" y="22" text-anchor="middle">자기장 B →</text>`;
         // 수치 읽기(그림 밖 HTML로 옮겨짐)
         out += `<text class="trait-text prose" x="20" y="40">τ 최대 = ${fmtTau(a.tauMax)} (코일 ${a.N}번 × ${a.I} A × 12 cm² × 0.5 T)</text>`;
-        if (on) out += `<text class="trait-text prose" x="20" y="60">각 θ = ${fmtN(((phi * 180 / Math.PI) % 360 + 360) % 360)}° · τ = ${fmtTau(tau)} · ${fmtN(Math.abs(w), 1)} rad/s (${fmtN(Math.abs(w) / (2 * Math.PI) * 60)} rpm) · ${fmtN(Math.abs(phi - Math.PI / 2) / (2 * Math.PI), 2)}바퀴 · ${fmtN(t, 1)} s</text>`;
+        if (on) out += `<text class="trait-text prose" x="20" y="60">각 θ = ${fmtN(((phi * 180 / Math.PI) % 360 + 360) % 360)}° · τ = ${fmtTau(-tau)} · ${fmtN(Math.abs(w), 1)} rad/s (${fmtN(Math.abs(w) / (2 * Math.PI) * 60)} rpm) · ${fmtN(Math.abs(phi - Math.PI / 2) / (2 * Math.PI), 2)}바퀴 · ${fmtN(t, 1)} s</text>`;
         const VERD = { spin: '계속 돎', wobble: '흔들리다 멈춤', still: '거의 안 움직임' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${a.N}번 · ${a.I} A · 정류자 ${COMMS[state.comm].label}: ${VERD[a.verdict]} (6 s 동안 ${fmtN(a.turns, 1)}바퀴)` : `${a.N}번 감은 코일 · ${a.I} A · 정류자 ${COMMS[state.comm].label}`}</text>`;
         out += `<text class="note-text" x="20" y="208">돌림힘 τ = NIAB sinθ (θ는 코일 법선과 B의 각). 관성과 마찰은 작은 모형 전동기 값(대략). 초록 화살은 도선이 받는 힘 F = BIL, 갈색 꺾쇠는 전류 방향입니다.</text>`;
@@ -269,24 +274,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return out;
     }
 
+    // 저울 위의 시료에 자석을 위에서 내려 댄다(N극이 아래). 연직 방향 힘만 저울 눈금을 바꾸므로 자석은 시료 바로 위에 있어야 한다.
     function renderMaterial(a) {
-        const p = state.progress, { m, F } = a, e = ease(p), MX = 70 + 50 * e, SX = 204, SY = 96, SW = 56, SH = 44;
-        const shift = m.kind === 'ferro' ? -26 * e : (F > 0 ? -5 : 5) * e, sx = SX + shift;
-        let out = `<rect class="magnet-s" x="${(MX - 60).toFixed(1)}" y="86" width="60" height="42" rx="3"/><rect class="magnet-n" x="${MX.toFixed(1)}" y="86" width="60" height="42" rx="3"/>`;
-        out += `<text class="pole-text" x="${(MX - 30).toFixed(1)}" y="112" text-anchor="middle">S</text><text class="pole-text" x="${(MX + 30).toFixed(1)}" y="112" text-anchor="middle">N</text>`;
-        for (let k = 0; k < 3; k += 1) out += arrow(MX + 64, 96 + k * 12, MX + 64 + 14 + 12 * e, 96 + k * 12, 'field', 'field-head', 2.5);
+        const p = state.progress, { m, F } = a, e = ease(p), SX = 204, SY = 124, SW = 56, SH = 40, CXs = SX + SW / 2;
+        const MW = 40, MP = 28, MY = 2 + 22 * e, MB = MY + 2 * MP, MB_END = 2 + 22 + 2 * MP; // 자석 윗끝·아랫끝(N극 면)
+        // 강자성체는 자석에 끌려 저울에서 들려 붙는다; 상자성·반자성체는 저울 위에 그대로 있고 눈금만 바뀐다
+        const shift = m.kind === 'ferro' ? -(SY - MB_END) * e : 0, sy = SY + shift;
+        let out = `<rect class="magnet-s" x="${CXs - MW / 2}" y="${MY.toFixed(1)}" width="${MW}" height="${MP}" rx="3"/><rect class="magnet-n" x="${CXs - MW / 2}" y="${(MY + MP).toFixed(1)}" width="${MW}" height="${MP}" rx="3"/>`;
+        out += `<text class="pole-text" x="${CXs}" y="${(MY + MP / 2 + 5).toFixed(1)}" text-anchor="middle">S</text><text class="pole-text" x="${CXs}" y="${(MY + MP * 1.5 + 5).toFixed(1)}" text-anchor="middle">N</text>`;
+        if (m.kind !== 'ferro' || e < 0.75) for (let k = -1; k <= 1; k += 1) out += arrow(CXs + k * 12, MB + 4, CXs + k * 12, MB + 14 + 10 * e, 'field', 'field-head', 2.5);
         // balance pan and post
-        out += `<path class="balance" d="M${(SX - 12)},${SY + SH + 4} L${(SX + SW + 12)},${SY + SH + 4} M${SX + SW / 2},${SY + SH + 4} L${SX + SW / 2},${SY + SH + 26} M${SX + SW / 2 - 24},${SY + SH + 26} L${SX + SW / 2 + 24},${SY + SH + 26}"/>`;
-        out += `<rect class="sample${m.kind === 'ferro' ? ' ferro' : ''}" x="${sx.toFixed(1)}" y="${SY}" width="${SW}" height="${SH}" rx="3"/>`;
-        // atomic dipoles: ferro fully aligned, para slightly, dia slightly reversed
+        out += `<path class="balance" d="M${(SX - 12)},${SY + SH + 4} L${(SX + SW + 12)},${SY + SH + 4} M${CXs},${SY + SH + 4} L${CXs},${SY + SH + 22} M${CXs - 24},${SY + SH + 22} L${CXs + 24},${SY + SH + 22}"/>`;
+        out += `<rect class="sample${m.kind === 'ferro' ? ' ferro' : ''}" x="${SX}" y="${sy.toFixed(1)}" width="${SW}" height="${SH}" rx="3"/>`;
+        // atomic dipoles: ferro fully aligned, para slightly, dia slightly reversed — 자기장은 N극에서 아래로 나온다
         const align = m.kind === 'ferro' ? e : m.kind === 'para' ? 0.35 * e : -0.35 * e;
         for (let i = 0; i < 12; i += 1) {
-            const cx = sx + 8 + (i % 4) * 14, cy = SY + 9 + Math.floor(i / 4) * 13, base = (rnd(i) - 0.5) * Math.PI * 2 * (1 - Math.abs(align)), ang = align >= 0 ? base * (1 - Math.abs(align)) : Math.PI + base * (1 - Math.abs(align)), len = m.kind === 'ferro' ? 5.5 : 4;
+            const cx = SX + 8 + (i % 4) * 14, cy = sy + 7 + Math.floor(i / 4) * 13, base = (rnd(i) - 0.5) * Math.PI * 2 * (1 - Math.abs(align)), ang = Math.PI / 2 + (align >= 0 ? base * (1 - Math.abs(align)) : Math.PI + base * (1 - Math.abs(align))), len = m.kind === 'ferro' ? 5.5 : 4;
             out += arrow(cx - len * Math.cos(ang), cy - len * Math.sin(ang), cx + len * Math.cos(ang), cy + len * Math.sin(ang), `dipole${m.kind === 'dia' ? ' dia' : ''}`, `dipole-head${m.kind === 'dia' ? ' dia' : ''}`, 2);
         }
-        if (p > 0.05) { const fl = 12 + 22 * clamp(Math.log10(Math.abs(F) / 1e-5) / 7, 0, 1); out += arrow(sx + SW / 2, SY - 12, sx + SW / 2 + (F > 0 ? -fl : fl), SY - 12, F > 0 ? 'pull' : 'push', F > 0 ? 'pull-head' : 'push-head', 3); }
-        out += `<text class="small-label" x="${SX + SW / 2}" y="${SY + SH + 42}" text-anchor="middle">저울 눈금 변화 ${p > 0.05 ? `${F > 0 ? '−' : '+'}${fmtN(Math.abs(F) / 9.8 * 1000 * e, Math.abs(F) < 1e-3 ? 2 : Math.abs(F) < 1 ? 1 : 0)} g` : '없음'}</text>`;
-        out += `<text class="small-label" x="${SX + SW / 2}" y="${SY - 24}" text-anchor="middle">${m.label} 1 cm³ (${m.hint})</text>`;
+        if (p > 0.05) { const fl = 12 + 22 * clamp(Math.log10(Math.abs(F) / 1e-5) / 7, 0, 1), ax = SX + SW + 16, ay = sy + SH / 2; out += arrow(ax, ay, ax, ay + (F > 0 ? -fl : fl), F > 0 ? 'pull' : 'push', F > 0 ? 'pull-head' : 'push-head', 3); }
+        const reading = p <= 0.05 ? '저울 눈금 변화 없음' : m.kind === 'ferro' ? '시료가 들려 자석에 붙음 · 저울 눈금 0 g'
+            : `저울 눈금 변화 ${F > 0 ? '−' : '+'}${fmtN(Math.abs(F) / 9.8 * 1000 * e, Math.abs(F) < 1e-3 ? 2 : 1)} g`;
+        out += `<text class="small-label" x="${CXs}" y="${SY + SH + 38}" text-anchor="middle">${reading}</text>`;
+        out += `<text class="small-label" x="${SX - 12}" y="${(sy + SH / 2 + 4).toFixed(1)}" text-anchor="end">${m.label} 1 cm³ (${m.hint})</text>`;
         const TX = 302;
         out += `<text class="trait-text" x="${TX}" y="48">χ = ${m.kind === 'ferro' ? '수천 (강자성)' : `${fmtN(m.chi * 1e6, m.kind === 'dia' && Math.abs(m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶`}</text>`;
         out += `<text class="trait-text" x="${TX}" y="64">${m.kind === 'ferro' ? '포화 M = 1.7 × 10⁶ A/m' : 'B = 0.5 T · dB/dx = 50 T/m'}</text>`;
@@ -320,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCurie(a) {
         const p = state.progress, { f, T, ratio } = a, heatP = clamp(p / 0.5, 0, 1), magP = clamp((p - 0.5) / 0.5, 0, 1), Tnow = 20 + (T - 20) * ease(heatP);
         const BX = 214, BY = 80, BW = 88, BH = 60, align = ratio * ease(magP), bx = BX - 12 * align;
-        const hue = Tnow < 400 ? '#7d8b96' : Tnow < 700 ? '#a33d2c' : Tnow < 900 ? '#e0442d' : '#ffa64a';
+        const hue = Tnow < 525 ? '#7d8b96' : Tnow < 700 ? '#a33d2c' : Tnow < 900 ? '#e0442d' : '#ffa64a';
         let out = `<rect class="block" fill="${hue}" fill-opacity=".45" x="${bx.toFixed(1)}" y="${BY}" width="${BW}" height="${BH}" rx="4"/>`;
         // domains: thermal disorder grows with T/Tc; the magnet aligns what is left
         const disorder = T >= f.Tc ? 1 : clamp(((Tnow + 273) / (f.Tc + 273)) ** 3, 0, 1);
@@ -341,14 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="${BX + BW / 2}" y="${BY + BH + 44}" text-anchor="middle">${p < 0.5 ? (T > 20 ? '가열하는 중 — 열운동이 정렬을 흔듦' : '실온 그대로') : '자석을 가까이 대는 중'}</text>`;
         const TX = 330;
         out += `<text class="trait-text" x="${TX}" y="52">퀴리 온도 ${fmtN(f.Tc)} ℃ (${fmtN(f.Tc + 273)} K)</text>`;
-        out += `<text class="trait-text" x="${TX}" y="70">가열 온도 ${T} ℃ (${T + 273} K)</text>`;
+        out += `<text class="trait-text" x="${TX}" y="70">가열 온도 ${T} ℃ (${fmtN(T + 273)} K)</text>`;
         out += `<text class="trait-text" x="${TX}" y="88">T/Tc = ${fmtN((T + 273) / (f.Tc + 273), 2)}</text>`;
         if (p > 0) out += `<text class="gen-text" style="fill:#d97706" x="${TX}" y="110">자발 자기화 M/M₀ = ${fmtN(ratio, 2)}</text>`;
-        if (p > 0) out += `<text class="small-label" x="${TX}" y="130">${T >= f.Tc ? '퀴리 온도 위 — 자기 구역 사라짐' : 'M/M₀ ≈ (1 − T/Tc)^⅓ (대략)'}</text>`;
-        if (p > 0) out += `<text class="small-label" x="${TX}" y="144">${T >= f.Tc ? '상자성체처럼 아주 약하게만 끌림' : `자발 자기화는 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %`}</text>`;
+        if (p > 0) out += `<text class="small-label" x="${TX}" y="130">${T >= f.Tc ? '퀴리 온도 위 — 자기 구역 사라짐' : 'M/M₀: 실측에 맞춘 어림식'}</text>`;
+        if (p > 0) out += `<text class="small-label" x="${TX}" y="144">${T >= f.Tc ? '상자성체처럼 아주 약하게만 끌림' : `자발 자기화는 실온의 ${fmtN(ratio / mOf(f, 20) * 100)} %`}</text>`;
         const VERD = { strong: '세게 붙음', weak: '약하게 붙음', none: '안 붙음' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${T} ℃의 ${f.label}: M/M₀ = ${fmtN(ratio, 2)} — ${VERD[a.verdict]}` : `${f.label} · ${T} ℃로 달구고 자석 대기`}</text>`;
-        out += `<text class="note-text" x="20" y="208">노란 화살은 자기 구역의 방향. 자기화 곡선은 퀴리 온도 근처의 어림식이고, 식으면 다시 강자성체가 됩니다</text>`;
+        out += `<text class="note-text" x="20" y="208">노란 화살은 자기 구역의 방향. 자기화 곡선은 실측값에 맞춘 어림식이고, 식으면 다시 강자성체가 됩니다</text>`;
         return out;
     }
 
@@ -360,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="axis" x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}"/><line class="axis" x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}"/>`;
         const cols = { fe: '#dc2626', ni: '#97dad3', co: '#0284c7' };
         Object.entries(FERROS).forEach(([k, f]) => {
-            let d = ''; for (let T = 0; T <= TM; T += 5) { const r = T >= f.Tc ? 0 : Math.pow(1 - (T + 273) / (f.Tc + 273), 1 / 3); d += `${d ? 'L' : 'M'}${xOf(T).toFixed(1)},${yOf(r).toFixed(1)} `; }
+            let d = ''; for (let T = 0; T <= TM; T += 5) { const r = T >= f.Tc ? 0 : mOf(f, T); d += `${d ? 'L' : 'M'}${xOf(T).toFixed(1)},${yOf(r).toFixed(1)} `; }
             out += `<path class="trace${k === state.ferro ? '' : ' faint'}" style="stroke:${cols[k]}" d="${d}"/>`;
             out += `<text class="small-label" style="fill:${cols[k]}" x="${(xOf(f.Tc) + (k === 'co' ? -6 : 6)).toFixed(1)}" y="${Y1 + 12 + { fe: 0, ni: 14, co: 28 }[k]}" text-anchor="${k === 'co' ? 'end' : 'start'}">${f.label} ${f.Tc} ℃</text>`;
         });
@@ -379,11 +389,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'material') {
             return `<div class="data-row"><span class="data-name">시료</span><span class="data-val">${a.m.label} 1 cm³ — ${a.m.kind === 'ferro' ? '강자성체, 포화 자기화 1.7 × 10⁶ A/m' : `${a.m.kind === 'para' ? '상자성체' : '반자성체'}, 자화율 ${fmtN(a.m.chi * 1e6, Math.abs(a.m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶`}</span></div>` +
                 `<div class="data-row"><span class="data-name">힘</span><span class="data-val">${a.m.kind === 'ferro' ? 'M V dB/dx = 1.7 × 10⁶ × 10⁻⁶ × 50' : `χ V B (dB/dx) / μ₀ = ${fmtN(a.m.chi * 1e6, 1)} × 10⁻⁶ × 10⁻⁶ × 0.5 × 50 ÷ (4π × 10⁻⁷)`} = ${fmtF(a.F)}</span></div>` +
-                `<div class="data-row"><span class="data-name">저울</span><span class="data-val">${fmtN(Math.abs(a.F) / 9.8 * 1000, Math.abs(a.F) < 1e-3 ? 3 : Math.abs(a.F) < 1 ? 1 : 0)} g만큼 ${a.F > 0 ? '가벼워짐 (자석 쪽으로 끌림)' : '무거워짐 (자석에서 밀림)'}</span></div>` +
+                `<div class="data-row"><span class="data-name">저울</span><span class="data-val">${a.m.kind === 'ferro' ? '자석이 끄는 힘이 시료 무게 0.08 N의 천 배가 넘어 시료가 들려 자석에 붙음 → 저울 눈금 0 g' : `${fmtN(Math.abs(a.F) / 9.8 * 1000, Math.abs(a.F) < 1e-3 ? 3 : Math.abs(a.F) < 1 ? 1 : 0)} g만큼 ${a.F > 0 ? '가벼워짐 (자석 쪽으로 끌림)' : '무거워짐 (자석에서 밀림)'}`}</span></div>` +
                 `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ strong: '세게 끌림', weak: '아주 약하게 끌림', repel: '아주 약하게 밀림' }[a.verdict]}</span></div>`;
         }
-        return `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${a.T + 273} K, ${a.f.label}의 퀴리 온도 ${fmtN(a.f.Tc)} ℃ = ${fmtN(a.f.Tc + 273)} K → T/Tc = ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)}</span></div>` +
-            `<div class="data-row"><span class="data-name">자기화</span><span class="data-val">${a.T >= a.f.Tc ? '자발 자기화 0 · 외부 장에 대한 상자성 반응은 남음' : `(1 − ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)})^⅓ = ${fmtN(a.ratio, 2)} (실온 ${fmtN(Math.pow(1 - 293 / (a.f.Tc + 273), 1 / 3), 2)})`}</span></div>` +
+        return `<div class="data-row"><span class="data-name">온도</span><span class="data-val">${a.T} ℃ = ${fmtN(a.T + 273)} K, ${a.f.label}의 퀴리 온도 ${fmtN(a.f.Tc)} ℃ = ${fmtN(a.f.Tc + 273)} K → T/Tc = ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)}</span></div>` +
+            `<div class="data-row"><span class="data-name">자기화</span><span class="data-val">${a.T >= a.f.Tc ? '자발 자기화 0 · 외부 장에 대한 상자성 반응은 남음' : `T/Tc = ${fmtN((a.T + 273) / (a.f.Tc + 273), 2)} → M/M₀ ≈ ${fmtN(a.ratio, 2)} (실온 ${fmtN(mOf(a.f, 20), 2)}, 실측에 맞춘 어림식)`}</span></div>` +
             `<div class="data-row"><span class="data-name">자석에</span><span class="data-val">${a.verdict === 'strong' ? '자기 구역이 정렬해 세게 붙음' : a.verdict === 'weak' ? '정렬이 많이 흐트러져 약하게 붙음' : '상자성체처럼 아주 약하게만 끌려 붙지 않음'}</span></div>` +
             `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${{ strong: '세게 붙음', weak: '약하게 붙음', none: '안 붙음' }[a.verdict]}</span></div>`;
     }
@@ -443,15 +453,15 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '자화율'; valueB.textContent = m.kind === 'ferro' ? '수천' : `${fmtN(m.chi * 1e6, Math.abs(m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶`;
             if (m.kind === 'ferro') s = `철은 강자성체라 원자 자석들이 자기 구역이라는 덩어리로 이미 같은 방향을 향하고 있고, 자석을 대면 이 구역들이 통째로 자기장 쪽으로 정렬해 포화 자기화 1.7 × 10⁶ A/m에 이릅니다. 1 cm³가 자기장 기울기 50 T/m 속에서 받는 힘은 F = MV(dB/dx) = ${fmtF(F)}로, 시료 무게 7.9 g(0.08 N)의 천 배가 넘어 자석에 달라붙습니다.`;
             else if (m.kind === 'para') s = `${m.label}은 상자성체라 원자 자석이 자기장 쪽으로 아주 조금만 정렬합니다. 자화율 ${fmtN(m.chi * 1e6)} × 10⁻⁶으로 힘은 F = χVB(dB/dx)/μ₀ = ${fmtF(F)}, 저울 눈금이 ${fmtN(F / 9.8 * 1000, 2)} g 가벼워지는 정도입니다. 손으로는 못 느끼지만 민감한 저울이나 실에 매달아 보면 자석 쪽으로 끌리는 것을 알 수 있습니다.`;
-            else s = `${m.label}는 반자성체라 자기장을 걸면 반대 방향으로 자기화됩니다. 자화율 ${fmtN(m.chi * 1e6, Math.abs(m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶으로 힘은 ${fmtF(F)}, 곧 자석에서 밀려나며 저울 눈금이 ${fmtN(-F / 9.8 * 1000, 2)} g 무거워집니다. 물도 반자성체라 아주 센 자석(16 T) 위에서는 물이 많은 개구리가 떠오릅니다.`;
+            else s = `${m.label}는 반자성체라 자기장을 걸면 반대 방향으로 자기화됩니다. 자화율 ${fmtN(m.chi * 1e6, Math.abs(m.chi) < 1e-5 ? 1 : 0)} × 10⁻⁶으로 힘은 ${fmtF(F)}, 곧 자석에서 밀려나며 저울 눈금이 ${fmtN(-F / 9.8 * 1000, 2)} g 무거워집니다. 물도 반자성체라 아주 센 자석(16 T)의 구멍 속에서는 물이 많은 개구리가 떠오릅니다.`;
         } else {
             const { f, T, ratio } = a;
             labelA.textContent = '자발 자기화 M/M₀'; valueA.textContent = fmtN(ratio, 2);
             labelB.textContent = '퀴리 온도'; valueB.textContent = `${fmtN(f.Tc)} ℃`;
             s = `${f.label}의 퀴리 온도는 ${fmtN(f.Tc)} ℃입니다. ${T} ℃로 달구면 T/Tc = ${fmtN((T + 273) / (f.Tc + 273), 2)}이고, `;
             if (a.verdict === 'none') s += `퀴리 온도를 넘어 열운동이 원자 자석의 정렬을 완전히 흐트러뜨려 자기 구역이 사라집니다. 자석을 대도 약한 상자성 반응은 남습니다. 그림은 이 작은 반응을 생략한 모형이며, 실제 붙는지는 장의 세기·기울기와 지지 조건에 달려 있습니다. 식혀서 퀴리 온도 아래로 내려오면 자기 구역이 다시 생겨 강자성체로 돌아옵니다.`;
-            else if (a.verdict === 'weak') s += `퀴리 온도에 가까워 자기화가 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %로 줄었습니다. 자기 구역은 남아 있지만 열운동에 많이 흐트러져 자석에 약하게만 붙고, 조금 더 데우면 떨어집니다.`;
-            else s += `아직 퀴리 온도에서 멀어 자기화가 실온의 ${fmtN(ratio / Math.pow(1 - 293 / (f.Tc + 273), 1 / 3) * 100)} %로 자기 구역이 잘 정렬합니다. 자석을 대면 세게 붙습니다.${T > 20 ? ` ${T} ℃로 달궈도 ${f.label}의 자성은 아직 남아 있습니다.` : ''}`;
+            else if (a.verdict === 'weak') s += `퀴리 온도에 가까워 자기화가 실온의 ${fmtN(ratio / mOf(f, 20) * 100)} %로 줄었습니다. 자기 구역은 남아 있지만 열운동에 많이 흐트러져 자석에 약하게만 붙고, 조금 더 데우면 떨어집니다.`;
+            else s += `아직 퀴리 온도에서 멀어 자기화가 실온의 ${fmtN(ratio / mOf(f, 20) * 100)} %로 자기 구역이 잘 정렬합니다. 자석을 대면 세게 붙습니다.${T > 20 ? ` ${T} ℃로 달궈도 ${f.label}의 자성은 아직 남아 있습니다.` : ''}`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
@@ -474,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildPrediction();
         checkBtn.textContent = state.mode === 'motor' ? '전류 흘리기' : state.mode === 'material' ? '자석 가까이 대기' : '달구고 자석 대기';
         stageCaption.textContent = state.mode === 'motor' ? '비스듬히 내려다본 전동기입니다. 갈색 꺾쇠는 코일에 흐르는 전류의 방향, 초록 화살은 도선이 받는 힘입니다.'
-            : state.mode === 'material' ? '저울 위의 시료 1 cm³에 자석의 N극을 가까이 댑니다. 시료 속 노란 화살은 원자 자석의 방향, 위 화살은 시료가 받는 힘입니다.'
+            : state.mode === 'material' ? '저울 위의 시료 1 cm³에 위에서 자석의 N극을 가까이 댑니다. 시료 속 노란 화살은 원자 자석의 방향, 옆 화살은 시료가 받는 힘입니다.'
                 : '먼저 덩이를 달구고(앞 절반), 그 다음 자석을 가까이 댑니다(뒤 절반). 노란 화살이 자기 구역의 방향입니다.';
         settingsChanged();
     }));

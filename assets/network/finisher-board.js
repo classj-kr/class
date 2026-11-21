@@ -84,30 +84,32 @@
             return document.getElementById(targetId);
         }
 
-        function showMessage(targetId, message) {
+        function showMessage(targetId, message, notice = "") {
             const target = targetFor(targetId);
-            if (target) target.innerHTML = `<div class="finisher-empty">${escapeHtml(message)}</div>`;
+            if (target) target.innerHTML = notice + `<div class="finisher-empty">${escapeHtml(message)}</div>`;
         }
 
-        function render(targetId, records) {
+        function render(targetId, records, notice = "") {
             const target = targetFor(targetId);
-            if (target) target.innerHTML = recordsHtml(records);
+            if (target) target.innerHTML = notice + recordsHtml(records);
         }
 
-        async function load(targetId = "today-finishers-list") {
-            showMessage(targetId, "명단을 불러오는 중...");
+        async function load(targetId = "today-finishers-list", { usedHint = false } = {}) {
+            const notice = usedHint ? '<div class="finisher-empty">힌트를 본 판은 FINISHERS에 등록되지 않습니다.</div>' : "";
+            showMessage(targetId, "명단을 불러오는 중...", notice);
             try {
                 const data = await window.ClassroomFinishers.list(gameId);
                 const records = data.records || [];
-                render(targetId, records);
+                render(targetId, records, notice);
                 return records;
             } catch (_) {
-                showMessage(targetId, "명단 서버에 연결하지 못했습니다.");
+                showMessage(targetId, "명단 서버에 연결하지 못했습니다.", notice);
                 return [];
             }
         }
 
-        async function register({ difficulty, rank, targetId = "result-finishers-list" }) {
+        async function register({ difficulty, rank, targetId = "result-finishers-list", usedHint = false }) {
+            if (usedHint) return load(targetId, { usedHint });
             const name = String(getPlayerName?.() || "").trim();
             if (isValidPlayerName && !isValidPlayerName(name)) return load(targetId);
 

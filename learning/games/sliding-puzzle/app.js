@@ -20,7 +20,7 @@
   const guideBackdrop = document.getElementById('guideBackdrop');
   const coachText = document.getElementById('coachText');
   const hintButton = document.getElementById('hintButton');
-  let showFocusHighlight = false;
+  let usedHint = false;
 
   let size = new URLSearchParams(location.search).get('size') === '4' ? 4 : 3;
   let tiles = [];
@@ -171,8 +171,10 @@
   }
 
   function render() {
-    const stepInfo = analyzeSlidingStep();
-    if (coachText && !isSolved()) coachText.innerHTML = stepInfo.text;
+    const stepInfo = usedHint && !race.active ? analyzeSlidingStep() : null;
+    if (coachText && !isSolved()) {
+      coachText.innerHTML = stepInfo?.text ?? '숫자 타일을 순서대로 맞춰 보세요. 막히면 <strong>💡 힌트</strong>를 눌러 보세요!';
+    }
     const previousRects = new Map([...boardElement.querySelectorAll('.tile[data-tile]')].map(tile => [tile.dataset.tile, tile.getBoundingClientRect()]));
     boardElement.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     boardElement.setAttribute('aria-label', `${size === 3 ? '8' : '15'} 퍼즐 게임판`);
@@ -187,8 +189,8 @@
       }
       const button = document.createElement('button');
       button.type = 'button';
-      const isLocked = stepInfo.locked.includes(value);
-      const isFocus = showFocusHighlight && stepInfo.focus.includes(value);
+      const isLocked = stepInfo?.locked.includes(value);
+      const isFocus = stepInfo?.focus.includes(value);
       button.className = `tile${value === index + 1 ? ' correct' : ''}${isLocked ? ' tile-locked' : ''}${isFocus ? ' tile-focus' : ''}`;
       button.textContent = value;
       button.setAttribute('role', 'gridcell');
@@ -253,7 +255,7 @@
     finisherBoard.register({
       difficulty: `${size === 3 ? '8 PUZZLE' : '15 PUZZLE'} · ${moves} MOVES`,
       rank: size === 3 ? 8 : 15,
-      targetId: 'result-finishers-list'
+      usedHint
     });
     window.setTimeout(() => {
       celebration.hidden = false;
@@ -303,6 +305,7 @@
   }
 
   function newGame() {
+    usedHint = false;
     initialTiles = shuffledSolvableTiles();
     resetRound(initialTiles);
   }
@@ -398,7 +401,8 @@
   document.getElementById('settingsButton').addEventListener('click', showSettings);
   guideButton.addEventListener('click', openGuide);
   hintButton?.addEventListener('click', () => {
-    showFocusHighlight = true;
+    if (race.active || isSolved()) return;
+    usedHint = true;
     render();
   });
   document.getElementById('guideCloseButton').addEventListener('click', closeGuide);

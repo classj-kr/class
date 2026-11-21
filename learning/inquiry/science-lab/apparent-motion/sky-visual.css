@@ -31,7 +31,7 @@
     flex-direction: column;
     min-width: 0;
 }
-.stage-views { flex: 1; display: flex; align-items: center; justify-content: center; padding: 6px 0 2px; }
+.stage-views { flex: 1; display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; padding: 6px 0 2px; }
 .sky-svg { width: 100%; max-width: 600px; height: auto; display: block; border-radius: 14px; border: 1px solid #c9d6e6; }
 .sky-model-note { margin: 6px 0 0; color: #64748b; font-size: 13.5px; text-align: center; }
 
@@ -70,3 +70,13 @@
 /* 공용 규칙이 예전의 검은 판에 맞춘 밝은 글자색을 덮어쓰므로 되돌린다 */
 main .panel.sky-stage .rate-name { color: #475569; }
 main .panel.sky-stage .rate-value { color: #0f172a; }
+
+/* 남쪽 하늘 칸: 달이 동쪽에서 떠 남쪽 하늘을 지나 서쪽으로 지는 길 */
+.south-svg { width: 100%; max-width: 600px; height: auto; display: block; border-radius: 14px; border: 1px solid #c9d6e6; }
+.south-svg[hidden], .sky-model-note[hidden] { display: none; }
+.south-ground { fill: #6f8a6f; }
+.south-path { stroke: #b45309; stroke-width: 1.6; stroke-dasharray: 4 4; fill: none; }
+.moon-dark { fill: #4b5563; stroke: #6b6440; stroke-width: 1.2; }
+.moon-lit { fill: #fbf6dc; }
+.moon-ghost { opacity: .45; }
+.south-note { fill: #1e293b; font-size: 14px; font-weight: 850; }

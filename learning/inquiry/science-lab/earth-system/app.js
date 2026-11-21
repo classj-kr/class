@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const PHENOMENA = {
         volcano: { label: '화산 폭발과 기온', short: '화산과 기온', from: 'geo', to: 'atmo', carry: '화산재·이산화 황 (물질)', cat: 'geo-atmo', lines: ['성층권의 이산화황에서', '황산염 에어로졸이 생성됨', '햇빛 일부를 반사하여', '일시적 냉각에 기여함'], example: ['1815년 탐보라 화산 →', '1816년 여름이 없던 해'] },
         typhoon: { label: '태풍의 발달', short: '태풍', from: 'hydro', to: 'atmo', carry: '수증기와 열 (물질·에너지)', cat: 'hydro-atmo', lines: ['따뜻한 바다에서 증발한', '수증기가 구름이 되며 열을', '내놓아 태풍이 힘을 얻음'], example: ['바다 표면 26.5 ℃ 넘는', '곳에서 태풍이 생김'] },
-        river: { label: '강이 깎은 계곡', short: '강과 계곡', from: 'hydro', to: 'geo', carry: '흙과 모래 (물질)', cat: 'geo-hydro', lines: ['강물이 바위를 깎아', '계곡을 만들고 흙과 모래를', '하류와 바다로 옮김'], example: ['그랜드 캐니언,', '한강 하류의 삼각주'] },
+        river: { label: '강이 깎은 계곡', short: '강과 계곡', from: 'hydro', to: 'geo', carry: '흙과 모래 (물질)', cat: 'geo-hydro', lines: ['강물이 바위를 깎아', '계곡을 만들고 흙과 모래를', '하류와 바다로 옮김'], example: ['그랜드 캐니언,', '낙동강 하구의 삼각주'] },
         photo: { label: '식물의 광합성', short: '광합성', from: 'atmo', to: 'bio', carry: '이산화 탄소 (물질)', cat: 'bio', lines: ['식물이 공기 속 이산화', '탄소를 빨아들여 양분을', '만들고 산소를 내놓음'], example: ['한 해 약 1,200억 t의', '탄소가 공기에서 식물로'] },
         wind: { label: '바람과 파도', short: '바람과 파도', from: 'atmo', to: 'hydro', carry: '운동 에너지', cat: 'hydro-atmo', lines: ['바람이 바다 표면을 밀어', '파도와 표층 해류를', '일으킴'], example: ['무역풍이 적도의 바닷물을', '서쪽으로 밈'] },
         cave: { label: '석회 동굴', short: '석회 동굴', from: 'hydro', to: 'geo', carry: '녹은 석회 성분 (물질)', cat: 'geo-hydro', lines: ['이산화 탄소가 녹은 빗물이', '석회암을 조금씩 녹여', '동굴과 종유석을 만듦'], example: ['단양 고수동굴,', '삼척 환선굴'] },
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // (thousand km³; Oki & Kanae 2006). Where a store has no single outflow,
     // a representative residence time is given instead.
     const RESERVOIRS = {
-        atmo: { label: '대기', volume: 12.7, out: 486, how: '비와 눈이 되어', note: '비와 눈으로 내림', cat: 'days' },
+        atmo: { label: '대기', volume: 12.7, out: 502, how: '비와 눈이 되어', note: '비와 눈으로 내림', cat: 'days' },
         river: { label: '강', volume: 2.12, out: 45.5, how: '바다로 흘러', note: '바다로 흘러 나감', cat: 'days' },
         soil: { label: '토양 수분', volume: 17, out: 65.5, how: '증발하거나 식물에 빨려', note: '증발하거나 식물이 빨아올림', cat: 'years' },
         lake: { label: '호수', volume: 176, tau: 10, how: '강으로 흘러', note: '강으로 흘러 나감 (호수마다 크게 다름)', cat: 'years' },

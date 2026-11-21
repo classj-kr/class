@@ -271,10 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="trait-text" x="${RX}" y="82">${m.center} 둘레: 결합 1쌍 · 비공유 ${m.lonePairs}쌍</text>`;
         } else {
             out += `<text class="trait-text" x="${RX}" y="66">중심 원자 ${m.center} 둘레의 전자쌍</text>`;
-            out += `<text class="trait-text" style="fill:#1e3a8a" x="${RX}" y="82">결합 전자쌍 ${m.bondPairs}${m.order === 2 ? ' (이중 결합 1개로 셈)' : ''}</text>`;
+            out += `<text class="trait-text" style="fill:#1e3a8a" x="${RX}" y="82">${m.order === 2 ? `결합 영역 ${m.bondPairs} (이중 결합 하나를 한 영역으로 셈)` : `결합 전자쌍 ${m.bondPairs}`}</text>`;
             out += `<text class="trait-text" style="fill:#a78bfa" x="${RX}" y="98">비공유 전자쌍 ${m.lonePairs}</text>`;
             const total = m.bondPairs + m.lonePairs;
-            out += `<text class="trait-text" style="fill:#d97706" x="${RX}" y="118">모두 ${total}쌍 → ${total === 2 ? '직선 배치 180°' : total === 3 ? '평면 삼각 배치 120°' : '정사면체 배치 109.5°'}</text>`;
+            out += `<text class="trait-text" style="fill:#d97706" x="${RX}" y="118">모두 ${total}${m.order === 2 ? '영역' : '쌍'} → ${total === 2 ? '직선 배치 180°' : total === 3 ? '평면 삼각 배치 120°' : '정사면체 배치 109.5°'}</text>`;
             if (p >= 1) out += `<text class="trait-text" style="fill:#b45309" x="${RX}" y="138">→ ${m.shape} ${m.angle}°</text>`;
         }
         const VERD = { linear: '직선형', trigonal: '평면 삼각형', tetra: '정사면체형', lone: `${m.shape} — 비공유 전자쌍이 밀어냄` };
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="${m.lonePairs ? 'bar-c' : 'bar-a'}" style="opacity:${k === state.mol ? 1 : 0.5}" x="${X0}" y="${y}" width="${w.toFixed(1)}" height="${BH}" rx="3"/>`;
             if (k === state.mol) out += `<rect class="bar-now" x="${X0}" y="${y}" width="${w.toFixed(1)}" height="${BH}" rx="3"/>`;
             out += `<text class="trait-text" x="${X0 - 6}" y="${y + BH / 2 + 4}" text-anchor="end">${m.formula} ${m.shape}</text>`;
-            out += `<text class="small-label" x="${(X0 + w + 6).toFixed(1)}" y="${y + BH / 2 + 4}">${m.angle}° · 전자쌍 ${m.bondPairs + m.lonePairs}${m.lonePairs ? ` (비공유 ${m.lonePairs})` : ''}</text>`;
+            out += `<text class="small-label" x="${(X0 + w + 6).toFixed(1)}" y="${y + BH / 2 + 4}">${m.angle}° · ${m.order === 2 ? '전자 영역' : '전자쌍'} ${m.bondPairs + m.lonePairs}${m.lonePairs ? ` (비공유 ${m.lonePairs})` : ''}</text>`;
         });
         out += `<text class="small-label" x="20" y="${Y + 5 * (BH + 6) + 32}">전자쌍 4개는 109.5°가 기준. 비공유 전자쌍이 하나면 107°, 둘이면 104.5°로 좁아집니다.</text>`;
         return out;
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const { m } = a;
             return `<div class="data-row"><span class="data-name">분자</span><span class="data-val">${m.name} ${m.formula} — 중심 원자 ${m.diatomic ? '없음(두 원자)' : m.center}</span></div>` +
                 `<div class="data-row"><span class="data-name">전자쌍</span><span class="data-val">결합 영역 ${m.bondPairs}개 · 비공유 전자쌍 ${m.lonePairs}쌍${m.order === 2 ? ' (이중 결합도 한 영역)' : ''}</span></div>` +
-                `<div class="data-row"><span class="data-name">배치</span><span class="data-val">${m.diatomic ? '두 점은 언제나 한 직선' : `${m.bondPairs + m.lonePairs}쌍 → ${m.bondPairs + m.lonePairs === 2 ? '직선' : m.bondPairs + m.lonePairs === 3 ? '평면 삼각' : '정사면체'} 배치`}</span></div>` +
+                `<div class="data-row"><span class="data-name">배치</span><span class="data-val">${m.diatomic ? '두 점은 언제나 한 직선' : `${m.bondPairs + m.lonePairs}${m.order === 2 ? '영역' : '쌍'} → ${m.bondPairs + m.lonePairs === 2 ? '직선' : m.bondPairs + m.lonePairs === 3 ? '평면 삼각' : '정사면체'} 배치`}</span></div>` +
                 `<div class="data-row match"><span class="data-name">모양·결합각</span><span class="data-val">${m.shape}${m.angle !== null ? ` · ${m.angle}°` : ''}</span></div>`;
         }
         if (a.kind === 'polar') {
@@ -462,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const { m } = a, total = m.bondPairs + m.lonePairs;
             labelA.textContent = '모양'; valueA.textContent = m.shape;
             labelB.textContent = '결합각'; valueB.textContent = m.angle !== null ? `${m.angle}°` : '없음 (두 원자)';
-            if (m.diatomic) s = `${m.name} ${m.formula}${eunF(m.formula)} 원자가 둘뿐입니다. 두 점은 언제나 한 직선 위에 있으므로 모양은 직선형이고 결합각은 따로 없습니다. 전자쌍 반발은 중심 원자에 셋 이상의 전자쌍이 있을 때 모양을 정합니다.`;
+            if (m.diatomic) s = `${m.name} ${m.formula}${eunF(m.formula)} 원자가 둘뿐입니다. 두 점은 언제나 한 직선 위에 있으므로 모양은 직선형이고 결합각은 따로 없습니다. 전자쌍 반발로 모양을 따지는 것은 중심 원자에 원자가 둘 이상 결합한 분자입니다.`;
             else {
                 s = `${m.name} ${m.formula}의 중심 원자 ${m.center} 둘레에는 결합 영역 ${m.bondPairs}개${m.order === 2 ? '(이중 결합은 한 자리로 셉니다)' : ''}과 비공유 전자쌍 ${m.lonePairs}쌍, 모두 ${total}개의 전자 영역이 있습니다. 전자쌍은 서로 밀어내므로 ${total === 2 ? '정반대 방향으로 벌어져 직선(180°)' : total === 3 ? '평면에서 120°씩 벌어진 삼각형' : '정사면체 꼭짓점 방향(109.5°)'}으로 배치됩니다. `;
                 s += m.lonePairs ? `그 가운데 ${m.lonePairs}자리를 비공유 전자쌍이 차지합니다. 비공유 전자쌍은 한 원자에만 붙어 있어 더 넓게 퍼지므로 결합 전자쌍을 조금 더 밀어내고, 원자만 보면 ${m.shape}이 되며 결합각은 ${m.angle}°로 109.5°보다 좁습니다.` : `모두 결합 전자쌍이라 원자들도 그 방향에 놓여 ${m.shape}, 결합각 ${m.angle}°입니다.`;

@@ -800,7 +800,7 @@ body{justify-content:flex-start;padding:8px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
-<script src="../../../assets/network/finisher-board.js?v=20261119-row"></script>
+<script src="../../../assets/network/finisher-board.js?v=20261121-hints"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
@@ -916,8 +916,8 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
                 </div>
             </div>
         </div>
-        <button onclick="showHanoiHint()" style="margin-top: 5px; border-color: #ffd98a; color: #ffd98a;">💡 한 수 힌트</button>
-        <button onclick="initGame()" style="margin-top: 5px;">RESET GAME</button>
+        <button onclick="showHanoiHint()" style="margin-top: 5px; border-color: #ffd98a; color: #ffd98a;">💡 힌트</button>
+        <button onclick="initGame(mode === 'normal')" style="margin-top: 5px;">RESET GAME</button>
         <button data-game-rules onclick="showRules()" style="margin-top: 5px;">Rules</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
         <div class="race-standings" id="raceStandings" hidden></div>
@@ -956,6 +956,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
     let poles = [[], [], []];
     let initialPoles = [];
     let moveCount = 0;
+    let usedSoloHint = false;
     let totalDisks = 3;
     let mode = 'normal';
     let selectedPoleIndex = null;
@@ -994,8 +995,8 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         isValidPlayerName: isValidKoreanName
     });
     function loadTodayFinishers(targetId = "today-finishers-list") { return finisherBoard.load(targetId); }
-    function registerFinisher(difficulty, rank, targetId = "result-finishers-list") {
-        return finisherBoard.register({ difficulty, rank, targetId });
+    function registerFinisher(difficulty, rank) {
+        return finisherBoard.register({ difficulty, rank, usedHint: usedSoloHint });
     }
 
     function initializePlayerEntry() {
@@ -1113,7 +1114,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
             "3. <strong>큰 원판은 작은 원판 위에 올릴 수 없습니다.</strong>",
             "<div class='hanoi-rule-tip'><strong>🌟 초등 비결 1 (이사 비결):</strong> 가장 큰 원판을 가운데 기둥으로 옮기려면, 그 위의 작은 원판들을 먼저 <strong>오른쪽 빈 기둥으로 피신</strong>시켜야 해요!</div>",
             "<div class='hanoi-rule-tip'><strong>🌟 초등 비결 2 (첫 수 비결):</strong> 원판이 <strong>홀수 개(3·5·7개)</strong>면 첫 1번 원판을 <strong>가운데 기둥</strong>으로, <strong>짝수 개(2·4·6개)</strong>면 <strong>오른쪽 기둥</strong>으로 먼저 옮기면 딱 맞아요!</div>",
-            "<div class='hanoi-rule-tip'><strong>💡 막힐 때:</strong> <strong>[💡 한 수 힌트]</strong> 단추를 누르면 다음에 옮길 원판과 기둥을 초록색 불빛으로 알려 줍니다!</div>"
+            "<div class='hanoi-rule-tip'><strong>💡 막힐 때:</strong> <strong>[💡 힌트]</strong> 단추를 누르면 다음에 옮길 원판과 기둥을 초록색 불빛으로 알려 줍니다!</div>"
         ]);
     }
 
@@ -1133,9 +1134,11 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
     }
 
     function showHanoiHint() {
+        if (race.active) return;
         const poleNames = ['왼쪽 기둥', '가운데 기둥', '오른쪽 기둥'];
         const nextMove = findNextBestMove(poles, totalDisks, 1);
         if (!nextMove) return;
+        usedSoloHint = true;
 
         let bigDisk = totalDisks;
         while (bigDisk > 1 && poles[1].includes(bigDisk)) bigDisk--;
@@ -1171,7 +1174,8 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         initGame();
     }
 
-    function initGame() {
+    function initGame(keepHint = false) {
+        if (!keepHint) usedSoloHint = false;
         poles = [[], [], []];
         selectedPoleIndex = null;
         moveCount = 0;
@@ -1274,7 +1278,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
             guide.textContent = message;
         } else if (selectedPoleIndex === null) {
             const minLeft = calculateMinMoves(poles, totalDisks, 1);
-            guide.textContent = `맨 위 원판을 톡 누른 뒤 옮길 기둥을 누르세요. (남은 최소 이동: ${minLeft}회${document.body.classList.contains('pr-racing') ? '' : ' · 막히면 💡한 수 힌트!'})`;
+            guide.textContent = `맨 위 원판을 톡 누른 뒤 옮길 기둥을 누르세요. (남은 최소 이동: ${minLeft}회${document.body.classList.contains('pr-racing') ? '' : ' · 막히면 💡 힌트!'})`;
         } else {
             const diskSize = poles[selectedPoleIndex][poles[selectedPoleIndex].length - 1];
             guide.textContent = `${diskSize}번 원판 선택됨 · 옮길 기둥을 톡 누르세요.`;
@@ -1389,8 +1393,11 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
             return;
         }
         if (poles[1].length === totalDisks) {
+            const finishedPoles = poles;
+            const finishedMoves = moveCount;
             const minMoves = calculateMinMoves(initialPoles, totalDisks, 1);
             setTimeout(() => {
+                if (poles !== finishedPoles || moveCount !== finishedMoves || race.active) return;
                 showCustomAlert("祝賀 ! (CONGRATULATIONS)", [
                     `축하합니다! 하노이의 탑을 완성하셨습니다.`,
                     `현재 이동 횟수: ${moveCount}회`,

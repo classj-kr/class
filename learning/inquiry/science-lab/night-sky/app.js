@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const litOf = day => (1 - Math.cos(elongation(day) * D2R)) / 2;
     const where = ha => (Math.abs(ha) >= 90 ? 'hidden' : Math.abs(ha) < 30 ? 'south' : ha < 0 ? 'east' : 'west');
     const WHERE = { east: '동쪽 하늘', south: '남쪽 하늘', west: '서쪽 하늘', hidden: '보이지 않음' };
+    // 모형의 달은 천구의 적도 위에 있으므로 위도 37.5°에서 남중 고도는 90 − 37.5 = 52.5°이다.
+    const moonAlt = ha => Math.asin(Math.cos(37.5 * D2R) * Math.cos(ha * D2R)) / D2R;
 
     /* -------------------------------------------------------- star data */
     // Right ascension (hours) and declination (degrees) of the Big Dipper and
@@ -93,16 +95,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const lit = (1 - Math.cos(e * D2R)) / 2;
         const haAsk = moonHA(s.day, ASK_HOUR);
         const verdict = lit < MIN_LIT ? 'hidden' : where(haAsk);
-        // when it rises and sets, to the nearest quarter hour, within the night
+        // 뜨는 때(시간각 −90°)와 지는 때(+90°)를 바로 셈한다. 15분 눈금으로 훑으면
+        // 해 질 때(저녁 6시) 뜨는 보름달이 6시 15분에 뜨는 것처럼 적혀 어긋난다.
         let rise = null, set = null, seen = 0;
-        for (let h = NIGHT_START; h <= NIGHT_END + 1e-9; h += 0.25) {
-            const vis = lit >= MIN_LIT && Math.abs(moonHA(s.day, h)) < 90;
-            if (vis) seen += 0.25;
-            const prev = lit >= MIN_LIT && Math.abs(moonHA(s.day, h - 0.25)) < 90;
-            if (vis && !prev && h > NIGHT_START) rise = h;
-            if (!vis && prev && h > NIGHT_START) set = h;
+        if (lit >= MIN_LIT) {
+            const inNight = h => { let x = h; while (x < NIGHT_START - 1e-9) x += 24; while (x > NIGHT_START + 24 - 1e-9) x -= 24; return x; };
+            const r = inNight(12 + (e - 90) / 15);
+            if (r < NIGHT_END - 1e-9) rise = r;
+            const st = inNight(12 + (e + 90) / 15);
+            if (st > NIGHT_START + 1e-9 && st <= NIGHT_END + 1e-9) set = st;
+            // 떠 있는 12시간(적도 위의 달)과 밤(저녁 6시~아침 6시)이 겹치는 시간
+            for (const start of [r - 24, r]) seen += Math.max(0, Math.min(start + 12, NIGHT_END) - Math.max(start, NIGHT_START));
         }
-        const visibleAtStart = lit >= MIN_LIT && Math.abs(moonHA(s.day, NIGHT_START)) < 90;
+        const visibleAtStart = lit >= MIN_LIT && Math.abs(moonHA(s.day, NIGHT_START)) < 90 - 1e-9;
         return { kind: 'moon', info, e, lit, haAsk, verdict, rise, set, seen, visibleAtStart };
     }
     const moonHour = p => NIGHT_START + (NIGHT_END - NIGHT_START) * p;
@@ -159,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
-    const hourText = h => { const hh = ((h % 24) + 24) % 24; const m = Math.round((hh % 1) * 60); return `${hh < 12 ? (hh < 5 ? '새벽' : '아침') : hh < 18 ? '오후' : '저녁'} ${Math.floor(hh) % 12 === 0 ? 12 : Math.floor(hh) % 12}시${m ? ` ${String(m).padStart(2, '0')}분` : ''}`; };
+    const hourText = h => { const t = Math.round((((h % 24) + 24) % 24) * 60) % 1440, hh = Math.floor(t / 60), m = t % 60; return `${hh < 1 ? '밤' : hh < 5 ? '새벽' : hh < 12 ? '아침' : hh < 18 ? '오후' : '저녁'} ${hh % 12 === 0 ? 12 : hh % 12}시${m ? ` ${String(m).padStart(2, '0')}분` : ''}`; };
 
     // the lit part of the moon for an angle e east of the sun: right side lit while waxing
     function moonShape(cx, cy, R, e) {
@@ -202,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<g data-moon-position>${moonShape(q.x, q.y, 16, a.e)}</g>`;
         }
         out += `<text class="sky-text" x="24" y="52">${hourText(hour)}</text>`;
-        out += `<text class="sky-text" x="24" y="66">${!canSee ? '해 가까이 있어 보이지 않음' : Math.abs(ha) < 90 ? `${WHERE[where(ha)]} · 높이 ${Math.round(60 * Math.cos(ha * D2R))}°` : '지평선 아래'}</text>`;
+        out += `<text class="sky-text" x="24" y="66">${!canSee ? '해 가까이 있어 보이지 않음' : Math.abs(ha) < 90 ? `${WHERE[where(ha)]} · 높이 ${Math.round(moonAlt(ha))}°` : '지평선 아래'}</text>`;
         // The phase key is outside the sky: it is not a second Moon in the west.
         out += `<g data-phase-key><text class="phase-name" style="fill:#334155" x="405" y="27" text-anchor="end">모양: ${a.info.name}</text>${moonShape(430, 24, 9, a.e)}</g>`;
         // 저녁 7시의 자리와 뜨고 지는 시각은 밤을 다 지켜본 뒤에만 적는다(예상의 답이다).
@@ -346,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (state.day === SYNODIC / 2) s = `보름달은 해가 질 때 동쪽에서 떠서 한밤에 남쪽 하늘 가장 높이 있고 새벽에 서쪽으로 집니다. 해와 반대쪽에 있어 밤새 ${a.seen.toFixed(1)}시간 동안 보입니다.`;
             else if (state.day === SYNODIC * 3 / 4) s = `하현달은 ${hourText(a.rise)}쯤에야 동쪽에서 떠서 새벽에 남쪽 하늘에 있습니다. 저녁에는 아직 뜨지 않아 보이지 않고, 왼쪽 반이 밝습니다.`;
             else s = `그믐달은 해보다 조금 먼저 뜨므로 ${hourText(a.rise)}쯤 동쪽 하늘에 가늘게 보이다가 곧 해가 떠 사라집니다. 저녁에는 보이지 않습니다.`;
-            explanation.textContent = s + " 이 시각은 대표적인 모형값입니다. 실제 출몰 시각과 보이는 방향은 날짜·계절·관측 장소에 따라 달라집니다.";
+            explanation.textContent = s + " 이 시각은 해가 저녁 6시에 지고 아침 6시에 뜨며 낮 12시에 남중한다고 놓고 셈한 모형값입니다. 서울에서는 태양이 낮 12시 반쯤 남중해 실제로는 30분쯤 늦어지고, 계절과 달이 뜨는 높이에 따라서도 달라집니다.";
             return;
         }
         labelA.textContent = '저녁 9시'; labelB.textContent = '새벽 3시';

@@ -13,15 +13,17 @@
 
  function model(s) {
   const melt = s.kind === 'melt', point = melt ? (s.sample === 'A' ? 20 : 40) : (s.sample === 'A' ? 80 : 100);
-  const plateau = s.amount === 'two' ? 100 : 50;
-  return { melt, point, plateau, stage: { before: 0, during: 1, after: 2 }[s.step] ?? 0 };
+  // 같은 세기로 가열하면 양이 두 배일 때 온도가 오르는 구간도, 상태가 변하는 구간도 모두 두 배로 길다
+  // (필요한 열량이 질량에 비례). 두 양의 그래프는 같은 시간 눈금으로 그린다.
+  const k = s.amount === 'two' ? 2 : 1;
+  return { melt, point, rise: 40 * k, plateau: 50 * k, stage: { before: 0, during: 1, after: 2 }[s.step] ?? 0 };
  }
  // Curve parameter p (0..3): 0→1 rising, 1→2 plateau, 2→3 rising again.
  const STAGE_POS = [0.5, 1.5, 2.5];
  function tempAt(m, p) { return p <= 1 ? m.point - 40 + 40 * p : p <= 2 ? m.point : m.point + 40 * (p - 2); }
  function graphXY(m, p) {
-  const total = 60 + m.plateau + 60, scale = 186 / 220;
-  const t = p <= 1 ? 60 * p : p <= 2 ? 60 + m.plateau * (p - 1) : 60 + m.plateau + 60 * (p - 2);
+  const scale = 186 / 260;   // 두 배 양의 전체 시간(80 + 100 + 80)이 그래프 폭에 맞음
+  const t = p <= 1 ? m.rise * p : p <= 2 ? m.rise + m.plateau * (p - 1) : m.rise + m.plateau + m.rise * (p - 2);
   return [252 + t * scale, 252 - (tempAt(m, p) - (m.point - 40)) * (190 / 80)];
  }
 
@@ -73,7 +75,7 @@
   s += `<rect x="${TH.x - 1.6}" y="${f(colY)}" width="3.2" height="${f(TH.bulb - colY)}" fill="#d43c3c"/><circle cx="${TH.x}" cy="${TH.bulb}" r="5.5" fill="#d43c3c" stroke="#9e2a2a" stroke-width="1"/>`;
   for (let v = 0; v <= 140; v += 20) { const y = TH.bulb - 8 - (v - lo) / (hi - lo) * (TH.bulb - 8 - TH.top - 10); s += `<path d="M${TH.x + 4} ${f(y)} h4" stroke="#7d97a4" stroke-width="1"/>`; }
   // 읽은 값
-  s += `<rect x="140" y="28" width="66" height="28" rx="5" fill="#fff" stroke="#b9cbd3"/><text x="173" y="47" text-anchor="middle" class="ph-read">${Math.round(T)} °C</text><path d="M140 42 L${TH.x + 6} ${f(Math.max(colY, 40))}" stroke="#b9cbd3" stroke-width="1"/>`;
+  s += `<rect x="140" y="28" width="66" height="28" rx="5" fill="#fff" stroke="#b9cbd3"/><text x="173" y="47" text-anchor="middle" class="ph-read">${Math.round(T)} ℃</text><path d="M140 42 L${TH.x + 6} ${f(Math.max(colY, 40))}" stroke="#b9cbd3" stroke-width="1"/>`;
   return s;
  }
 
@@ -87,7 +89,7 @@
    if (k) s += `<path d="M${x0} ${f(y)} H440" stroke="#e2e8f0" stroke-width="1"/>`;
    s += `<text x="${x0 - 7}" y="${f(y + 4.5)}" text-anchor="end" class="ph-tick">${v}</text>`;
   }
-  s += `<text x="${x0 + 6}" y="44" class="ph-axis">온도 (°C)</text><text x="446" y="${y0 + 20}" text-anchor="end" class="ph-axis">가열 시간 →</text>`;
+  s += `<text x="${x0 + 6}" y="44" class="ph-axis">온도 (℃)</text><text x="446" y="${y0 + 20}" text-anchor="end" class="ph-axis">가열 시간 →</text>`;
   // whole curve faint, the part already heated in colour
   const pts = n => { const a = []; for (let i = 0; i <= n; i++) a.push(graphXY(m, 3 * i / n)); return a; };
   const all = pts(60).map(([x, y]) => `${f(x)} ${f(y)}`).join(' L');

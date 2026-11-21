@@ -116,11 +116,11 @@
         "fretless-bass-finger": Object.freeze({ id: "fretless-bass-finger", root: "assets/audio/fretless-bass-finger/", min: 28, max: 63, fileMin: 21, step: 1, gainDb: 4.0, revision: "20260901-fretless-finger-v3" }),
         "fretless-bass-pick": Object.freeze({ id: "fretless-bass-pick", root: "assets/audio/fretless-bass-pick/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 2.5 }),
         "fretless-bass-slap": Object.freeze({ id: "fretless-bass-slap", root: "assets/audio/fretless-bass-slap/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 10.0 }),
-        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, releaseTailStart: 4.3, releaseTailSeconds: .45, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .22, retriggerReleaseSeconds: .07, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, releaseTailStart: 4.3, releaseTailSeconds: .32, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .14, retriggerReleaseSeconds: .045, revision: "20261121-lossless-v2", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
-        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, releaseTailStart: 4.3, releaseTailSeconds: .5, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .32, retriggerReleaseSeconds: .10, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
-        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, releaseTailStart: 4.3, releaseTailSeconds: .5, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .26, retriggerReleaseSeconds: .08, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, releaseTailStart: 4.3, releaseTailSeconds: .55, preserveRecordedTone: true, roomSend: 0, releaseSeconds: .36, retriggerReleaseSeconds: .10, revision: "20261121-lossless-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, minBodySeconds: 0.28, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.3, retriggerReleaseSeconds: .07, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, minBodySeconds: 0.22, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.22, retriggerReleaseSeconds: .045, revision: "20261121-body-release-v3", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
+        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, minBodySeconds: 0.4, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.44, retriggerReleaseSeconds: .10, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, minBodySeconds: 0.32, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.36, retriggerReleaseSeconds: .08, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "flac", fallbackExtension: "ogg", recordedPluck: true, minBodySeconds: 0.4, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.46, retriggerReleaseSeconds: .10, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
         "harp": Object.freeze({ id: "harp", root: "assets/audio/harp/", min: 25, max: 102, fileMin: 21, step: 1, gainDb: 14.0, revision: "20261121-complete-release" }),
         "piccolo-trumpet": Object.freeze({ id: "piccolo-trumpet", root: "assets/audio/piccolo-trumpet/", min: 52, max: 100, fileMin: 21, step: 1, gainDb: 1.5 }),
         "glockenspiel": Object.freeze({ id: "glockenspiel", root: "assets/audio/glockenspiel/", min: 79, max: 95, fileMin: 21, step: 1, gainDb: 33.1 })
@@ -294,33 +294,31 @@
         [15, [42, 49], .88, .22, false, "palm-mute"],
         [15.5, [40, 47], .99, 1.4]
     ];
-    // First statement of the guitar theme, with short upper-note trills
-    // and the grace note before F sharp.
-    const BREEZIN = [
-        [0, 69, .78, .1], [.11, 71, .66, .11], [.25, 69, .8, 1.7],
-        [5, 69, .75, .1], [5.11, 71, .64, .11], [5.25, 69, .79, 1.4],
-        [6.68, 64, .58, .06], [6.75, 66, .8, .29],
-        [7.25, 62, .73, .28], [7.75, 59, .67, .22], [8, 57, .77, 1.65]
-    ].map(function ([beat, midi, velocity, duration]) { return [beat, [midi], velocity, duration]; });
-    // Six-string arrangement of the pickup and the opening Em7–G phrase.
-    // Stagger multi-string strokes so each attack shows on its own key.
-    const WISH_YOU_WERE_HERE = [
-        [0, [45], .82, .24], [.25, [47], .65, .24], [.5, [50], .77, .95],
-        [1.5, [52], .79, .95],
-        [2.5, [52, 55, 62, 67], .65, .8],
-        [3.25, [67, 62, 55, 52], .58, .91],
-        [4.25, [52, 55, 62, 67], .64, .69],
-        [4.5, [55], .75, .48], [5, [52], .69, .46],
-        [5.5, [50], .8, .72], [6.25, [50, 55, 62, 67], .59, .27],
-        [6.5, [43, 47, 50, 55, 62, 67], .67, .59],
-        [7, [67, 62, 55, 50, 47, 43], .57, .72],
-        [7.75, [43, 47, 50, 55, 62, 67], .63, 1.2],
-        [8, [43], .73, .92]
-    ].flatMap(function ([beat, pitches, velocity, duration]) {
+    // Short identifying excerpts: jazz melody, steel-string picking and the
+    // nylon-string sixths from the Leon theme. Voices retain their individual
+    // durations so a bass note does not cut off a ringing treble string.
+    const AUTUMN_LEAVES = [
+        [0, [64], 2/3], [2/3, [66], 1/3], [1, [67], .5],
+        [1.5, [72, 45, 55, 60], 1.45], [3, [71, 50, 54, 60], .9],
+        [4, [62], 2/3], [4 + 2/3, [64], 1/3], [5, [66], .5],
+        [5.5, [71, 43, 54, 59], 1.45], [7, [69, 48, 59, 64], .9]
+    ].map(function ([beat, pitches, length]) { return [beat, pitches, .7, length]; });
+    const HOTEL_CALIFORNIA = [
+        [47, 54, 59, 62, 66, 62, 59, 54],
+        [42, 49, 58, 61, 64, 61, 58, 49]
+    ].flatMap(function (pitches, bar) {
         return pitches.map(function (midi, index) {
-            return [beat + index * .012, [midi], velocity - index * .026, duration];
+            return [bar * 4 + index * .5, [midi], index === 0 ? .8 : .69, index === 0 ? 3.7 : 1.15];
         });
     });
+    // Opening four measures, sounding guitar pitches (guitar notation is 8va).
+    // https://guitardownunder.com/_scores/shape-of-my-heart.pdf
+    const SHAPE_OF_MY_HEART = [
+        [0, 69, 2.5], [1, 54, .5], [1.5, 61, 2], [2.5, 69, 1.5], [3.5, 52, 1.5],
+        [4, 68, 2.5], [5, 52, .5], [5.5, 61, 2], [6.5, 68, 1.5], [7.5, 50, 1.5],
+        [8, 66, 2.5], [9, 50, .5], [9.5, 59, 2], [10.5, 66, 1.5], [11.5, 50, .5],
+        [12, 49, 4], [12, 66, 2], [13, 59, 1], [14, 65, 2], [15, 59, 1]
+    ].map(function ([beat, midi, length]) { return [beat, [midi], midi < 59 ? .77 : .72, length]; });
     // Upper melody of Tchaikovsky's Op. 71a, No. 2b, first four theme
     // measures. Read from the Jurgenson full score, pp. 46–47.
     // https://s9.imslp.org/files/imglnks/usimg/c/c5/IMSLP03208-Tchaikovsky-Op71aFS.pdf
@@ -392,8 +390,9 @@
     const GUITAR_DEMOS = {
         "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16 },
         "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
-        "hollow-jazz": { title: "Breezin’", bpm: 84, notes: BREEZIN, endBeat: 10 },
-        dreadnought: { title: "Wish You Were Here", bpm: 60, notes: WISH_YOU_WERE_HERE, endBeat: 9.2 }
+        "hollow-jazz": { title: "Autumn Leaves", bpm: 112, notes: AUTUMN_LEAVES, endBeat: 8 },
+        dreadnought: { title: "Hotel California", bpm: 75, notes: HOTEL_CALIFORNIA, endBeat: 8.5 },
+        "classical-guitar": { title: "Shape of My Heart · 레옹", bpm: 84, notes: SHAPE_OF_MY_HEART, endBeat: 17 }
     };
 
     // The official XLN Audio AD2 keymap assigns note 49 to HiHat Closed 1 Tip.
@@ -1088,29 +1087,6 @@
         }, PIANO_SAMPLES[0]);
     }
 
-    function playRecordedGuitarRelease(voice, config) {
-        const context = state.audioContext;
-        const offset = config.releaseTailStart;
-        const buffer = voice.source.buffer;
-        if (!buffer || context.currentTime - voice.startedAt >= offset || buffer.duration <= offset + .03) return;
-        const duration = Math.min(config.releaseTailSeconds, buffer.duration - offset);
-        const source = context.createBufferSource();
-        const gain = context.createGain();
-        const now = context.currentTime;
-        source.buffer = buffer;
-        source.playbackRate.value = voice.source.playbackRate.value;
-        gain.gain.setValueAtTime(.0001, now);
-        gain.gain.exponentialRampToValueAtTime(Math.max(.0001, voice.recordedGain * .5), now + .012);
-        gain.gain.exponentialRampToValueAtTime(.0001, now + duration);
-        source.connect(gain);
-        connectFastToMix(gain, 0);
-        const tail = { source, gain, sampleSet: voice.sampleSet, sampledPiano: true, released: true, releaseTail: true };
-        state.pianoReleaseVoices.add(tail);
-        source.onended = function () { state.pianoReleaseVoices.delete(tail); };
-        source.start(now, offset);
-        source.stop(now + duration + .01);
-    }
-
     function releasePianoVoice(voice, quick) {
         if (!voice || (voice.released && !quick) || !state.audioContext) return;
         voice.released = true;
@@ -1120,16 +1096,22 @@
         }
         const now = state.audioContext.currentTime;
         const sampleConfig = KEYBOARD_SAMPLE_SETS[voice.sampleSet];
-        if (!quick && !voice.releaseTail && sampleConfig?.releaseTailStart) playRecordedGuitarRelease(voice, sampleConfig);
+        // A brief key tap must retain the recorded pluck's body. Damp that same
+        // continuous recording afterwards; splicing in its four-second tail
+        // removed the body and attached an unrelated, already-decayed sound.
+        // Retriggers, palm mutes and explicit stops still damp immediately.
+        const releaseAt = !quick && sampleConfig?.recordedPluck
+            ? Math.max(now, voice.startedAt + sampleConfig.minBodySeconds)
+            : now;
         const release = quick ? (sampleConfig?.retriggerReleaseSeconds ?? (voice.sampledPiano ? .035 : .08))
             : sampleConfig?.releaseSeconds ?? (isElectricBassPluckSample(voice.sampleSet) ? BASS_PLUCK_RELEASE_SECONDS
             : voice.heldTone ? .32
             : (voice.sampledPiano ? .16 : .86));
-        if (typeof voice.gain.gain.cancelAndHoldAtTime === "function") voice.gain.gain.cancelAndHoldAtTime(now);
-        else voice.gain.gain.cancelScheduledValues(now);
-        voice.gain.gain.setTargetAtTime(.0001, now, release / 5);
+        if (typeof voice.gain.gain.cancelAndHoldAtTime === "function") voice.gain.gain.cancelAndHoldAtTime(releaseAt);
+        else voice.gain.gain.cancelScheduledValues(releaseAt);
+        voice.gain.gain.setTargetAtTime(.0001, releaseAt, release / 5);
         state.pianoReleaseVoices.add(voice);
-        try { voice.source.stop(now + release * 1.2); } catch (error) {}
+        try { voice.source.stop(releaseAt + release * 1.2); } catch (error) {}
     }
 
     function samplePianoNoteOn(midi, velocity) {

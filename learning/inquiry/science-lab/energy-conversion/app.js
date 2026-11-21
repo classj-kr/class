@@ -83,9 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const fmtJ = v => (Math.round(v * 10) / 10).toString();
 
     /* ------------------------------------------------------------ models */
-    // where the sun is: altitude and azimuth (from south, west positive)
+    // 서울(동경 127°)은 한국 표준시 기준선(동경 135°)보다 서쪽이라 태양이 낮 12시 반쯤 남중한다
+    // (하지 12시 34분, 동지 12시 30분, 춘분·추분 평균 12시 32분 — 균시차 포함). 화면의 시각은 모두 한국 표준시.
+    const noonClock = decDeg => decDeg > 1 ? 12 + 34 / 60 : decDeg < -1 ? 12 + 30 / 60 : 12 + 32 / 60;
+    // where the sun is at a KST clock hour: altitude and azimuth (from south, west positive)
     function sunAt(hour, decDeg) {
-        const lat = LAT * D2R, dec = decDeg * D2R, H = (hour - 12) * 15 * D2R;
+        const lat = LAT * D2R, dec = decDeg * D2R, H = (hour - noonClock(decDeg)) * 15 * D2R;
         const sinAlt = Math.sin(lat) * Math.sin(dec) + Math.cos(lat) * Math.cos(dec) * Math.cos(H);
         const alt = Math.asin(clamp(sinAlt, -1, 1));
         const cosAz = clamp((sinAlt * Math.sin(lat) - Math.sin(dec)) / Math.max(1e-9, Math.cos(alt) * Math.cos(lat)), -1, 1);
@@ -275,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="trait-text" style="fill:${t.color}" x="${px + 20}" y="182" text-anchor="middle">${fmtN(watts)} W</text>`;
         });
         // readouts
-        out += `<text class="gen-text" x="24" y="175">${altDeg > 0 ? `${clock(h)} · 태양 높이 ${Math.round(altDeg)}°${Math.abs(az) > 1e-3 ? ` · ${az < 0 ? '동' : '서'}쪽으로 ${Math.round(Math.abs(az) / D2R)}°` : ' · 정남'}` : `${clock(h)} · ${h < 12 ? '해 뜨기 전' : '해가 진 뒤'}`}</text>`;
+        out += `<text class="gen-text" x="24" y="175">${altDeg > 0 ? `${clock(h)} · 태양 높이 ${Math.round(altDeg)}°${Math.round(Math.abs(az) / D2R) >= 1 ? ` · 정남에서 ${az < 0 ? '동' : '서'}쪽 ${Math.round(Math.abs(az) / D2R)}°` : ' · 정남'}` : `${clock(h)} · ${h < 12 ? '해 뜨기 전' : '해가 진 뒤'}`}</text>`;
         if (state.progress >= 1) {
             const w = TILTS[a.winner];
             out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${SEASONS[state.season].label} ${WEATHERS[state.weather].label} → ${w.label} ${w.deg}° 판이 하루 ${(day.tilts[a.winner].total / 1000).toFixed(2)} kWh로 가장 많이</text>`;
@@ -450,7 +453,9 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${PLANTS[state.plant].label} → ${LAMPS[state.lamp].label}: 빛이 된 에너지 ${fmtJ(a.lightR)} J (효율 ${fmtJ(a.lightR)} %)` : `${PLANTS[state.plant].label} → 송전선 → ${LAMPS[state.lamp].label}`}</text>`;
         out += `<text class="trait-text" x="20" y="166">${state.progress >= 1 ? `열로 흩어진 것 ${fmtJ(a.plantHeat)} + ${fmtJ(a.gridHeat)} + ${fmtJ(a.lampHeat)} = ${fmtJ(a.plantHeat + a.gridHeat + a.lampHeat)} J, 빛 ${fmtJ(a.lightR)} J, 합 ${SUPPLY_J} J` : '띠의 두께가 남은 에너지의 양입니다'}</text>`;
         out += `<text class="trait-text" x="20" y="182">${state.progress >= 1 ? '에너지는 사라지지 않았지만 열로 흩어진 몫은 다시 쓰기 어렵습니다' : '단계마다 일부가 열로 빠져나갑니다'}</text>`;
-        out += `<text class="note-text" x="20" y="208">${state.plant === 'hydro' ? '수력은 물의 위치 에너지가 곧바로 터빈을 돌려 열로 잃는 몫이 작습니다' : '화력은 연료의 열로 증기를 만들어 터빈을 돌리므로 열의 절반 넘게를 내보내야 합니다'}</text>`;
+        out += `<text class="note-text" x="20" y="208">${state.plant === 'hydro' ? '수력은 물의 위치 에너지가 곧바로 터빈을 돌려 열로 잃는 몫이 작습니다'
+            : state.plant === 'gas' ? '가스 복합 화력은 가스 터빈에서 나온 뜨거운 배기가스로 증기 터빈을 한 번 더 돌려 열로 내보내는 몫을 절반 아래로 줄입니다'
+                : '석탄 화력은 연료의 열로 증기를 만들어 터빈을 돌리므로 열의 절반 넘게를 내보내야 합니다'}</text>`;
         return out;
     }
 
@@ -494,14 +499,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const i = stepNow();
             const rows = Object.entries(TILTS).map(([k, t]) => `${t.label} ${t.deg}° ${(a.day.tilts[k].energy[i] / 1000).toFixed(2)} kWh`).join(' · ');
             return `<div class="data-row"><span class="data-name">판</span><span class="data-val">남쪽을 보는 ${PANEL_AREA} m² 판 세 장 · 위도 ${LAT}° · 빛 → 전기 ${Math.round(PANEL_EFF * 100)} %</span></div>` +
-                `<div class="data-row"><span class="data-name">날</span><span class="data-val">${SEASONS[state.season].label} · ${WEATHERS[state.weather].label} · 한낮 태양 높이 ${Math.round(sunAt(12, SEASONS[state.season].dec).alt / D2R)}°</span></div>` +
+                `<div class="data-row"><span class="data-name">날</span><span class="data-val">${SEASONS[state.season].label} · ${WEATHERS[state.weather].label} · 남중 고도 ${Math.round(sunAt(noonClock(SEASONS[state.season].dec), SEASONS[state.season].dec).alt / D2R)}° (${clock(noonClock(SEASONS[state.season].dec))})</span></div>` +
                 `<div class="data-row"><span class="data-name">지금까지</span><span class="data-val">${clock(a.day.hours[i])}까지 ${rows}</span></div>` +
                 `<div class="data-row"><span class="data-name">빛 → 전기·열</span><span class="data-val">판 넓이 ${PANEL_AREA} m² · 빛의 ${Math.round(PANEL_EFF * 100)} %가 전기로, 나머지 ${Math.round((1 - PANEL_EFF) * 100)} %는 판을 데우는 열로</span></div>` +
                 (state.progress >= 1 ? `<div class="data-row match"><span class="data-name">하루 전체</span><span class="data-val">${a.ranked.map(k => `${TILTS[k].deg}° ${(a.day.tilts[k].total / 1000).toFixed(2)} kWh`).join(' > ')}</span></div>` : '');
         }
         if (a.kind === 'wind') {
             const area = r => Math.round(Math.PI * r * r).toLocaleString('ko-KR');
-            return `<div class="data-row"><span class="data-name">바람의 힘</span><span class="data-val">½ × 공기 밀도 ${RHO} kg/m³ × 날개가 쓸어 내는 넓이 × 풍속³ 가운데 ${Math.round(CP * 100)} %를 거둠</span></div>` +
+            return `<div class="data-row"><span class="data-name">바람에서 얻는 전력</span><span class="data-val">½ × 공기 밀도 ${RHO} kg/m³ × 날개가 쓸어 내는 넓이 × 풍속³ 가운데 ${Math.round(CP * 100)} %를 거둠</span></div>` +
                 `<div class="data-row"><span class="data-name">기준 발전기</span><span class="data-val">풍속 ${REF.wind} m/s · 날개 ${REF.blade} m (넓이 ${area(REF.blade)} m²) → ${fmtP(a.Pref)}</span></div>` +
                 `<div class="data-row"><span class="data-name">내 발전기</span><span class="data-val">풍속 ${a.v} m/s · 날개 ${a.r} m (넓이 ${area(a.r)} m²) → ${fmtP(a.P)}</span></div>` +
                 (state.progress < 1 ? '' : `<div class="data-row match"><span class="data-name">비교</span><span class="data-val">풍속 ${a.v / REF.wind}배 → (${a.v / REF.wind})³ = ${ratioText((a.v / REF.wind) ** 3)} · 날개 ${a.r / REF.blade}배 → (${a.r / REF.blade})² = ${ratioText((a.r / REF.blade) ** 2)} · 모두 ${ratioText(a.ratio)}</span></div>`);
@@ -558,10 +563,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'solar') {
             const w = TILTS[a.winner], l = TILTS[a.loser], mid = TILTS[a.ranked[1]];
             const kwh = k => (a.day.tilts[k].total / 1000).toFixed(2);
-            const noon = Math.round(sunAt(12, SEASONS[state.season].dec).alt / D2R);
+            const noonH = noonClock(SEASONS[state.season].dec), noon = Math.round(sunAt(noonH, SEASONS[state.season].dec).alt / D2R);
             labelA.textContent = '가장 많이 만든 판'; valueA.textContent = `${w.deg}° · ${kwh(a.winner)} kWh`;
             labelB.textContent = '가장 적게 만든 판'; valueB.textContent = `${l.deg}° · ${kwh(a.loser)} kWh`;
-            s = `${SEASONS[state.season].short} ${state.weather === 'clear' ? '맑은 날' : '흐린 날'} 태양은 한낮에 ${noon}°까지 올라옵니다. 하루 동안 ${w.label} ${w.deg}° 판이 ${kwh(a.winner)} kWh로 가장 많이, ${mid.deg}° 판이 ${kwh(a.ranked[1])} kWh, ${l.label} ${l.deg}° 판이 ${kwh(a.loser)} kWh로 가장 적게 만들었습니다. `;
+            s = `${SEASONS[state.season].short} ${state.weather === 'clear' ? '맑은 날' : '흐린 날'} 태양은 ${clock(noonH)}쯤 남중하며 ${noon}°까지 올라옵니다. 하루 동안 ${w.label} ${w.deg}° 판이 ${kwh(a.winner)} kWh로 가장 많이, ${mid.deg}° 판이 ${kwh(a.ranked[1])} kWh, ${l.label} ${l.deg}° 판이 ${kwh(a.loser)} kWh로 가장 적게 만들었습니다. `;
             if (state.weather === 'cloudy') {
                 s += `구름 낀 날은 햇빛이 구름 속에서 흩어져 하늘 전체에서 고르게 내려옵니다. 곧게 오는 빛이 없으니 방향을 맞출 것도 없고, 하늘을 가장 넓게 바라보는 눕힌 판이 어느 계절이든 가장 많이 받습니다. 다만 전체 양은 맑은 날의 3분의 1쯤입니다. `;
             } else if (state.season === 'summer') {

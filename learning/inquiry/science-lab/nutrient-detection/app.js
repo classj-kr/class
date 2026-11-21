@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         thin: { label: '묽게', hint: '당분 적음', icon: '' }
     };
     const CONDS = {
-        warm: { label: '아밀레이스 + 37 ℃', hint: '체온 (최적 활성)', enzyme: true, temp: 37, rate: 0.30, icon: '' },
+        warm: { label: '아밀레이스 + 37 ℃', hint: '체온 (최적 활성)', enzyme: true, temp: 37, rate: 0.6, icon: '' },
         cold: { label: '아밀레이스 + 5 ℃', hint: '저온 (활성 저하)', enzyme: true, temp: 5, rate: 0.045, icon: '' },
         none: { label: '아밀레이스 없음 (37 ℃)', hint: '대조군 (무반응)', enzyme: false, temp: 37, rate: 0, icon: '' },
         boiled: { label: '끓인 아밀레이스 (37 ℃)', hint: '열 변성 (효소 파괴)', enzyme: true, temp: 37, rate: 0.002, icon: '' },
@@ -130,7 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function amylaseModel() {
         const c = CONDS[state.cond], remainAt = t => Math.exp(-c.rate * t), remain = remainAt(REACT_MIN), maltose = 1 - remain;
         const iodine = remain >= 0.15, benedict = maltose >= 0.15;
-        return { kind: 'amylase', c, remainAt, remain, maltose, iodine, benedict, verdict: !iodine && benedict ? 'digested' : iodine && benedict ? 'partial' : 'none' };
+        // 엿당이 적으면 베네딕트 색은 녹색~황색에서 멈춘다(베네딕트와 가열 실험의 색 눈금과 같은 기준).
+        const benName = maltose < 0.7 ? '녹색~황색' : '황적색';
+        return { kind: 'amylase', c, remainAt, remain, maltose, iodine, benedict, benName, verdict: !iodine && benedict ? 'digested' : iodine && benedict ? 'partial' : 'none' };
     }
     function analyse() {
         if (state.mode === 'reagent') return reagentModel();
@@ -629,12 +631,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Molecular particles in beaker
         for (let i = 0; i < 20; i++) {
             const isStarch = rnd(i) > maltose;
-            const px = BX + 12 + rnd(i * 11 + 7) * (BW - 24);
+            const px = BX + 12 + rnd(i * 11 + 7) * (BW - 36);
             const py = BY + 38 + rnd(i * 19 + 3) * (BH - 52);
             if (isStarch) {
-                // Starch polymer bead chain (회색 녹말 덩어리)
-                out += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.8" fill="#64748b"/>`;
-                out += `<circle cx="${(px + 4).toFixed(1)}" cy="${py.toFixed(1)}" r="2.8" fill="#64748b"/>`;
+                // 녹말은 포도당이 길게 이어진 사슬이라, 두 알갱이인 엿당보다 긴 구슬 줄로 그린다.
+                for (let b = 0; b < 4; b += 1) out += `<circle cx="${(px + b * 3.6).toFixed(1)}" cy="${(py + (b % 2 ? -1.2 : 0)).toFixed(1)}" r="2.4" fill="#64748b"/>`;
             } else {
                 // Maltose disaccharide pairs (주황색 엿당 쌍)
                 out += `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.2" fill="#ea580c"/>`;
@@ -677,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Render Tube B (Benedict)
         out += renderTestTube(XB, TOP, TW, BOT, LIQ_TOP, ph3 > 0 ? benColor : '#e0f2fe', 0.88, a.benedict && ph3 >= 1);
         out += `<text class="tube-label" x="${XB + TW / 2}" y="196" text-anchor="middle">베네딕트 (가열)</text>`;
-        out += `<text class="tube-sub" x="${XB + TW / 2}" y="211" text-anchor="middle">${ph3 >= 1 ? (a.benedict ? '황적색 (엿당 생성)' : '푸른색 그대로') : '엿당 생성 검사'}</text>`;
+        out += `<text class="tube-sub" x="${XB + TW / 2}" y="211" text-anchor="middle">${ph3 >= 1 ? (a.benedict ? `${a.benName} (엿당 생성)` : '푸른색 그대로') : '엿당 생성 검사'}</text>`;
 
         // Animated Droppers
         if (ph2 > 0 && ph2 < 1) {
@@ -700,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="card-title" x="${RX + 12}" y="114" font-size="13">10분 뒤 검출 결과:</text>`;
 
         out += `<text class="card-text" x="${RX + 12}" y="136">아이오딘: <tspan class="card-val" fill="${a.iodine ? '#172554' : '#64748b'}">${p >= 0.75 ? (a.iodine ? '청람색 (녹말 잔류)' : '반응 없음 (분해)') : '…'}</tspan></text>`;
-        out += `<text class="card-text" x="${RX + 12}" y="156">베네딕트: <tspan class="card-val" fill="${a.benedict ? '#ea580c' : '#0284c7'}">${p >= 1 ? (a.benedict ? '황적색 (엿당 생성)' : '푸른색 그대로') : '…'}</tspan></text>`;
+        out += `<text class="card-text" x="${RX + 12}" y="156">베네딕트: <tspan class="card-val" fill="${a.benedict ? (a.maltose < 0.7 ? '#a16207' : '#ea580c') : '#0284c7'}">${p >= 1 ? (a.benedict ? `${a.benName} (엿당 생성)` : '푸른색 그대로') : '…'}</tspan></text>`;
 
         out += `<rect x="${RX + 10}" y="172" width="${RW - 20}" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>`;
         const resVerdict = a.verdict === 'digested' ? '녹말 → 엿당 완전 소화!' : a.verdict === 'partial' ? '일부만 소화됨' : '소화되지 않음';
@@ -739,8 +740,9 @@ document.addEventListener('DOMContentLoaded', () => {
             dS += `${dS ? 'L' : 'M'}${xOf(t).toFixed(1)},${yOf(r).toFixed(1)} `;
             dM += `${dM ? 'L' : 'M'}${xOf(t).toFixed(1)},${yOf(1 - r).toFixed(1)} `;
         }
-        out += `<path class="trace" stroke="#64748b" stroke-width="2.5" d="${dS}"/>`;
-        out += `<path class="trace" stroke="#ea580c" stroke-width="2.5" d="${dM}"/>`;
+        // .trace 의 CSS 색이 stroke 속성을 이기므로 범례와 같은 색을 style 로 준다.
+        out += `<path class="trace" style="stroke:#64748b" stroke-width="2.5" d="${dS}"/>`;
+        out += `<path class="trace" style="stroke:#ea580c" stroke-width="2.5" d="${dM}"/>`;
 
         // Threshold line at 15%
         out += `<line class="thresh" x1="${GX0}" y1="${yOf(0.15).toFixed(1)}" x2="${GX1}" y2="${yOf(0.15).toFixed(1)}"/>`;
@@ -781,7 +783,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return `<div class="data-row"><span class="data-name">실험 조건</span><span class="data-val">녹말물 + ${a.c.label}, 10분 반응</span></div>` +
             `<div class="data-row"><span class="data-name">성분 변화율</span><span class="data-val">남은 녹말: ${fmtN(a.remain * 100)} % ｜ 생성된 엿당: ${fmtN(a.maltose * 100)} %</span></div>` +
-            `<div class="data-row"><span class="data-name">검출 결과</span><span class="data-val">아이오딘 [${a.iodine ? '청람색 (녹말 잔류)' : '반응 없음 (분해 완료)'}] ｜ 베네딕트 [${a.benedict ? '황적색 (엿당 확인)' : '푸른색 그대로'}]</span></div>` +
+            `<div class="data-row"><span class="data-name">검출 결과</span><span class="data-val">아이오딘 [${a.iodine ? '청람색 (녹말 잔류)' : '반응 없음 (분해 완료)'}] ｜ 베네딕트 [${a.benedict ? `${a.benName} (엿당 확인)` : '푸른색 그대로'}]</span></div>` +
             `<div class="data-row match"><span class="data-name">최종 판정</span><span class="data-val">${PRED_A.find(o => o.value === a.verdict).label}</span></div>`;
     }
 
@@ -855,13 +857,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             const { c } = a;
-            labelA.textContent = '아이오딘 · 베네딕트'; valueA.textContent = `${a.iodine ? '청람색' : '반응 없음'} · ${a.benedict ? '황적색' : '푸른색'}`;
+            labelA.textContent = '아이오딘 · 베네딕트'; valueA.textContent = `${a.iodine ? '청람색' : '반응 없음'} · ${a.benedict ? a.benName : '푸른색'}`;
             labelB.textContent = '남은 녹말'; valueB.textContent = `${fmtN(a.remain * 100)} %`;
-            s = `녹말물에 ${c.label}로 10분 두었더니 녹말이 ${fmtN(a.remain * 100)} % 남고 엿당이 ${fmtN(a.maltose * 100)} % 생겼습니다. 아이오딘 검사는 ${a.iodine ? '청람색 (녹말이 남아 있음)' : '변하지 않음 (녹말이 다 없어짐)'}, 베네딕트 검사는 가열한 뒤 ${a.benedict ? '황적색 (엿당이 생김)' : '푸른색 그대로 (엿당이 없음)'}입니다. `;
+            s = `녹말물에 ${c.label}로 10분 두었더니 녹말이 ${fmtN(a.remain * 100)} % 남고 엿당이 ${fmtN(a.maltose * 100)} % 생겼습니다. 아이오딘 검사는 ${a.iodine ? '청람색 (녹말이 남아 있음)' : '변하지 않음 (녹말이 다 없어짐)'}, 베네딕트 검사는 가열한 뒤 ${a.benedict ? `${a.benName} (엿당이 생김)` : '푸른색 그대로 (엿당이 없음)'}입니다. `;
             if (a.verdict === 'digested') {
                 s += `처음 녹말물은 아이오딘에는 반응하고 베네딕트에는 반응하지 않았는데, 결과가 정반대로 뒤집혔습니다. 아밀레이스가 체온에서 녹말을 엿당으로 다 잘랐다는 뜻이고, 입에서 밥을 오래 씹으면 단맛이 나는 까닭이 바로 이것입니다.`;
             } else if (a.verdict === 'partial') {
-                s += `차가우면 효소가 느리게 일해 10분 동안 일부만 엿당으로 바뀝니다. 그래서 녹말도 남아 있고(아이오딘 청람색) 엿당도 조금 생겨(베네딕트 황적색) 두 검사가 다 나타납니다.`;
+                s += `차가우면 효소가 느리게 일해 10분 동안 일부만 엿당으로 바뀝니다. 그래서 녹말도 남아 있고(아이오딘 청람색) 엿당도 조금 생겨(베네딕트 ${a.benName}) 두 검사가 다 나타납니다. 엿당이 적어 황적색까지 가지 않고 녹색이나 황색에서 멈춥니다.`;
             } else {
                 s += c.enzyme ? `끓인 아밀레이스는 모양이 망가져 다시는 일하지 못하므로 녹말이 그대로입니다. 효소는 열에 약합니다.` : `아밀레이스를 넣지 않은 대조군이라 녹말이 그대로입니다. 녹말은 베네딕트 용액에 반응하지 않으므로 가열해도 푸른색이고, 효소가 있어야만 결과가 바뀝니다.`;
             }

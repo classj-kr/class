@@ -94,6 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = 178 + rr * Math.cos(a) * 0.92;
             const y = 108 + rr * Math.sin(a) * 0.62;
             if (x < 24 || x > 334 || y < 24 || y > 194) continue;
+            // 바깥 용액의 용질이므로 세포막 안쪽에는 찍지 않는다(세포벽과 떨어진 세포막 사이에는 바깥 용액이 들어온다).
+            const k = scaleOf(s.v);
+            if (cell === 'animal' ? Math.hypot(x - CX, y - CY) < 47 * (s.burst ? 0 : k)
+                : Math.abs(x - CX) < 58 * k + 3 && Math.abs(y - CY) < 46 * k + 3) continue;
             out += `<circle class="solution-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.4"/>`;
         }
 
@@ -109,7 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 out += `<g transform="translate(${(CX - 50 * sc).toFixed(1)}, ${(CY - 50 * sc).toFixed(1)}) scale(${sc})">` +
                        `<path class="animal-cell membrane" d="M 50 8 C 76 6 94 24 92 50 C 90 74 76 94 50 92 C 24 90 6 76 8 50 C 10 24 24 10 50 8 Z"/>` +
-                       `<path class="nucleus" d="M 50 28 C 62 28 70 36 70 48 C 70 60 62 68 50 68 C 38 68 30 60 30 48 C 30 36 38 28 50 28 Z"/></g>`;
+                       // 성숙한 사람 적혈구에는 핵이 없다. 가운데가 오목해 옅게 보이는 부분만 그린다.
+                       `<circle class="rbc-centre" cx="50" cy="50" r="${s.v > 1.15 ? 8 : 18}" fill="rgba(255, 255, 255, ${s.v > 1.15 ? 0.12 : 0.28})"/></g>`;
             }
             out += `<text class="cell-label" x="${CX}" y="30" text-anchor="middle">동물세포 (세포벽 없음)</text>`;
             out += `<text class="part-label" x="${CX}" y="196" text-anchor="middle">세포막</text>`;
@@ -120,15 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<rect class="gap-fill" x="${CX - W / 2}" y="${CY - H / 2}" width="${W}" height="${H}" rx="6"/>`;
             out += `<g transform="translate(${(CX - 50 * k).toFixed(1)}, ${(CY - 50 * k).toFixed(1)}) scale(${k.toFixed(3)})">` +
                    `<rect class="protoplast membrane" x="${50 - W / 2}" y="${50 - H / 2}" width="${W}" height="${H}" rx="6"/>` +
-                   `<path class="vacuole" d="M 38 28 C 64 26 76 34 76 56 C 76 76 58 80 38 78 C 24 76 22 62 24 48 C 26 34 32 30 38 28 Z"/>` +
-                   `<path class="nucleus" d="M 74 66 C 80 66 84 70 84 76 C 84 82 80 86 74 86 C 68 86 64 82 64 76 C 64 70 68 66 74 66 Z"/></g>`;
+                   // 양파 표피 세포는 큰 액포가 세포 안 대부분을 차지하고, 비늘잎 표피라 엽록체가 없다.
+                   `<rect class="vacuole" x="-1" y="11" width="84" height="78" rx="12"/>` +
+                   `<path class="nucleus" d="M 96 70 C 101 70 104 74 104 79 C 104 84 101 88 96 88 C 91 88 88 84 88 79 C 88 74 91 70 96 70 Z"/></g>`;
             out += `<rect class="wall" x="${CX - W / 2}" y="${CY - H / 2}" width="${W}" height="${H}" rx="6"/>`;
-            for (let i = 0; i < 6; i += 1) {
-                const a = (i * 61) * Math.PI / 180;
-                const chx = (CX + 38 * k * Math.cos(a)).toFixed(1), chy = (CY + 28 * k * Math.sin(a)).toFixed(1);
-                out += `<g transform="translate(${chx - 5}, ${chy - 3.5}) scale(0.1)">` +
-                       `<path class="chloroplast" d="M 50 38 C 60 38 66 44 66 50 C 66 56 60 62 50 62 C 40 62 34 56 34 50 C 34 44 40 38 50 38 Z"/></g>`;
-            }
             out += `<text class="cell-label" x="${CX}" y="30" text-anchor="middle">식물세포 (세포벽 있음)</text>`;
             out += `<text class="part-label" x="${CX}" y="196" text-anchor="middle">${s.v < 0.98 ? '세포벽 · 떨어진 세포막' : '세포벽 · 세포막'}</text>`;
         }

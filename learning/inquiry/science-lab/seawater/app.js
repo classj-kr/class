@@ -45,8 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     const PLACES = {
         equator: { label: '적도', temp: 28, salt: 34, wind: 3, why: '비가 많이 내려 염분이 조금 낮습니다' },
-        middle: { label: '중위도', temp: 18, salt: 36, wind: 5, why: '증발이 활발해 염분이 높습니다' },
-        polar: { label: '극지방', temp: 1, salt: 33, wind: 7, why: '얼음이 녹아 염분이 낮지만 아주 차갑습니다' },
+        // 바람은 중위도(편서풍)가 가장 세서 혼합층이 가장 두껍고, 극지방은 표층과
+        // 심해의 수온 차가 작아 층상 구조가 뚜렷하지 않다(교과서의 위도별 연직 구조).
+        middle: { label: '중위도', temp: 18, salt: 36, wind: 7, why: '증발이 활발해 염분이 높습니다' },
+        polar: { label: '극지방', temp: 2, salt: 33, wind: 5, why: '얼음이 녹아 염분이 낮지만 아주 차갑습니다' },
     };
 
     let place = 'middle';

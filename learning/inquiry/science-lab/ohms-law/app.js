@@ -46,8 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const i1 = v / r1, i2 = v / r2;
         return { R, I: i1 + i2, v1: v, v2: v, i1, i2 };
     }
+    // Currents go down to 0.015 A (1.5 V, 100 Ω): below 1 A show three decimals so a
+    // reading such as 0.015 A is not printed as 0.01 A (which would give R = 150 Ω).
+    const amp = i => i.toFixed(i < 1 ? 3 : 2);
 
-    const NICE = [0.25, 0.5, 1, 2, 3, 5];
+    // Axis maxima whose quarter ticks are exact at two decimals (0.5 gave a "0.13" label at 0.125).
+    const NICE = [0.2, 0.4, 0.8, 1, 2, 3, 4, 5, 6];
     const niceMax = i => NICE.find(n => n >= i * 1.05) ?? Math.ceil(i);
 
     const gx = v => GRAPH.x0 + (v / V_MAX) * (GRAPH.x1 - GRAPH.x0);
@@ -217,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <rect x="${cx - w / 2 + 8}" y="${cy - h / 2 + 6}" width="${w - 16}" height="${h - 12}" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
             <rect x="${cx - w / 2 + 10}" y="${cy - h / 2 + 8}" width="${w - 20}" height="${h - 16}" rx="3" fill="url(#dmmLcd)"/>
             <text x="${cx}" y="${cy - h / 2 - 9}" text-anchor="middle" fill="#245265" font-size="14" font-weight="700" font-family="system-ui, sans-serif">전류계</text>
-            <text x="${cx}" y="${cy + 6}" text-anchor="middle" fill="#4ade80" font-size="14.5" font-weight="900" font-family="system-ui, monospace" class="meter-value" data-full="${currentVal.toFixed(2)}">${measured ? (currentVal * readFrac).toFixed(2) + ' A' : '— A'}</text>
+            <text x="${cx}" y="${cy + 6}" text-anchor="middle" fill="#4ade80" font-size="14.5" font-weight="900" font-family="system-ui, monospace" class="meter-value" data-full="${currentVal}">${measured ? amp(currentVal * readFrac) + ' A' : '— A'}</text>
             ${isH ? `
             <!-- Binding Terminal Jacks -->
             <circle cx="${cx - w / 2}" cy="${cy}" r="3" fill="#dc2626"/>
@@ -261,8 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const loop = `M${L},64 L${L},${T} L${R},${T} L${R},${B} L${L},${B} L${L},172`;
             out += renderWire(loop, a.I, dur(a.I));
             out += batterySymbol(L, 120);
-            out += resistorSymbol(180, T, `R₁ ${R1()} Ω`, shown ? `${a.v1.toFixed(2)} V · ${a.i1.toFixed(2)} A` : '— V · — A', R1());
-            out += resistorSymbol(300, T, `R₂ ${R2()} Ω`, shown ? `${a.v2.toFixed(2)} V · ${a.i2.toFixed(2)} A` : '— V · — A', R2());
+            out += resistorSymbol(180, T, `R₁ ${R1()} Ω`, shown ? `${a.v1.toFixed(2)} V · ${amp(a.i1)} A` : '— V · — A', R1());
+            out += resistorSymbol(300, T, `R₂ ${R2()} Ω`, shown ? `${a.v2.toFixed(2)} V · ${amp(a.i2)} A` : '— V · — A', R2());
             out += meterSymbol(235, B, a.I, 'h');
         } else {
             const L = 65, LR = 165, RR = 350, T = 62, B = 176;
@@ -289,8 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
             out += brassNode(RR, 119);
 
             out += batterySymbol(L, 120);
-            out += resistorSymbol(257, T, `R₁ ${R1()} Ω`, shown ? `${a.v1.toFixed(2)} V · ${a.i1.toFixed(2)} A` : '— V · — A', R1());
-            out += resistorSymbol(257, B, `R₂ ${R2()} Ω`, shown ? `${a.v2.toFixed(2)} V · ${a.i2.toFixed(2)} A` : '— V · — A', R2());
+            out += resistorSymbol(257, T, `R₁ ${R1()} Ω`, shown ? `${a.v1.toFixed(2)} V · ${amp(a.i1)} A` : '— V · — A', R1());
+            out += resistorSymbol(257, B, `R₂ ${R2()} Ω`, shown ? `${a.v2.toFixed(2)} V · ${amp(a.i2)} A` : '— V · — A', R2());
             out += meterSymbol(405, 119, a.I, 'h');
         }
         window.scienceScene.render(circuitGroup,out);
@@ -366,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `
         <g transform="translate(${bx.toFixed(1)}, ${by.toFixed(1)})" filter="url(#compDrop)">
             <rect width="${bw}" height="${bh}" rx="11" fill="#fff7ed" stroke="#f97316" stroke-width="1.2"/>
-            <text x="${bw / 2}" y="15" text-anchor="middle" fill="#c2410c" font-size="12.5" font-weight="900" font-family="Pretendard, monospace">${V().toFixed(1)} V, ${a.I.toFixed(2)} A</text>
+            <text x="${bw / 2}" y="15" text-anchor="middle" fill="#c2410c" font-size="12.5" font-weight="900" font-family="Pretendard, monospace">${V().toFixed(1)} V, ${amp(a.I)} A</text>
         </g>`;
         }
 
@@ -393,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const t0 = performance.now();
             const step = now => {
                 readFrac = Math.min(1, (now - t0) / 1100);
-                for (const t of circuitGroup.querySelectorAll('.meter-value')) t.textContent = (Number(t.dataset.full) * (1 - Math.pow(1 - readFrac, 3))).toFixed(2) + ' A';
+                for (const t of circuitGroup.querySelectorAll('.meter-value')) t.textContent = amp(Number(t.dataset.full) * (1 - Math.pow(1 - readFrac, 3))) + ' A';
                 if (readFrac < 1) readFrame = requestAnimationFrame(step); else { readFrame = 0; renderCircuit(); }
             };
             readFrame = requestAnimationFrame(step);
@@ -401,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.hidden = true;
         resultContent.hidden = false;
         resultR.textContent = wiring === 'series' ? 'R₁보다 큼' : 'R₁보다 작음';
-        resultI.textContent = `${a.I.toFixed(2)} A`;
+        resultI.textContent = `${amp(a.I)} A`;
 
         const actual = a.R > R1() ? 'bigger' : a.R < R1() ? 'smaller' : 'same';
         predictionResult.textContent = !prediction
@@ -409,11 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
 
         if (wiring === 'series') {
-            stageCaption.textContent = `직렬연결에서는 전체 저항이 각 저항보다 커집니다. 전체 전류는 ${a.I.toFixed(2)} A입니다.`;
-            explanation.textContent = `직렬연결에서는 전류가 흐를 길이 하나뿐이라 두 저항에 같은 ${a.I.toFixed(2)} A가 흐르고, 전압은 저항에 비례해 ${a.v1.toFixed(2)} V와 ${a.v2.toFixed(2)} V로 나뉩니다. 두 전압을 더하면 전원 전압 ${V().toFixed(1)} V가 됩니다.`;
+            stageCaption.textContent = `직렬연결에서는 전체 저항이 각 저항보다 커집니다. 전체 전류는 ${amp(a.I)} A입니다.`;
+            explanation.textContent = `직렬연결에서는 전류가 흐를 길이 하나뿐이라 두 저항에 같은 ${amp(a.I)} A가 흐르고, 전압은 저항에 비례해 ${a.v1.toFixed(2)} V와 ${a.v2.toFixed(2)} V로 나뉩니다. 두 전압을 더하면 전원 전압 ${V().toFixed(1)} V가 됩니다.`;
         } else {
-            stageCaption.textContent = `병렬연결에서는 전체 저항이 각 저항보다 작아집니다. 전체 전류는 ${a.I.toFixed(2)} A입니다.`;
-            explanation.textContent = `병렬연결에서는 두 저항에 같은 ${V().toFixed(1)} V가 걸리고, 전류는 ${a.i1.toFixed(2)} A와 ${a.i2.toFixed(2)} A로 나뉘어 흐른 뒤 합쳐집니다. 길이 늘어난 셈이므로 합성 저항은 가장 작은 저항보다도 작아집니다.`;
+            stageCaption.textContent = `병렬연결에서는 전체 저항이 각 저항보다 작아집니다. 전체 전류는 ${amp(a.I)} A입니다.`;
+            explanation.textContent = `병렬연결에서는 두 저항에 같은 ${V().toFixed(1)} V가 걸리고, 전류는 ${amp(a.i1)} A와 ${amp(a.i2)} A로 나뉘어 흐른 뒤 합쳐집니다. 길이 늘어난 셈이므로 합성 저항은 가장 작은 저항보다도 작아집니다.`;
         }
     }
 

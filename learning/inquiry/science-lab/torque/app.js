@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const DISTS = { d05: { label: '0.5 m', hint: '가운데에서 왼쪽으로', d: 0.5 }, d10: { label: '1 m', hint: '가운데에서 왼쪽으로', d: 1 }, d15: { label: '1.5 m', hint: '가운데에서 왼쪽으로', d: 1.5 } };
     // box on a tilting board
     const SHAPES = { wide: { label: '넓적한 상자', hint: '폭 0.6 m · 높이 0.3 m', w: 0.6, h: 0.3 }, cube: { label: '정육면체', hint: '0.4 m', w: 0.4, h: 0.4 }, tall: { label: '높은 병', hint: '폭 0.2 m · 높이 0.6 m', w: 0.2, h: 0.6 } };
-    const FLOORS = { rough: { label: '거친 바닥', hint: '마찰 계수 1.2 (고무)', mu: 1.2 }, smooth: { label: '매끄러운 바닥', hint: '마찰 계수 0.3 (얼음)', mu: 0.3 } };
+    const FLOORS = { rough: { label: '거친 바닥', hint: '마찰 계수 1.2 (고무)', mu: 1.2 }, smooth: { label: '매끄러운 바닥', hint: '마찰 계수 0.3 (매끈한 나무판)', mu: 0.3 } };
     const ANGLES = { a15: { label: '15°', deg: 15 }, a35: { label: '35°', deg: 35 }, a55: { label: '55°', deg: 55 } };
     // plank on two stands: 2 m, 4 kg; stands at 0.3 m and 1.3 m from the left end
     const PL_L = 2, PL_M = 4, S1 = 0.3, S2 = 1.3;
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="440" y="${groundY + 24}" text-anchor="end">기울기 ${Math.abs(deg).toFixed(1)}°${Math.abs(phi) >= Math.min(run.maxLeft, run.maxRight) - 1e-6 ? ' — 끝이 땅에 닿음' : ''}</text>`;
         const VERD = { left: '왼쪽이 내려감', balance: '평형 — 수평 유지', right: '오른쪽이 내려감' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${MASSES[state.mass].label} · 왼쪽 ${DISTS[state.dist].label} · 받침점 ${PIVOTS[state.pivot].label}: ${VERD[run.verdict]} (${fmt(left)} 대 ${fmt(right)} N·m)` : `${MASSES[state.mass].label} · 왼쪽 ${DISTS[state.dist].label} · 받침점 ${PIVOTS[state.pivot].label}`}</text>`;
-        out += `<text class="note-text" x="20" y="208">돌림힘 = 무게 × 받침점까지의 거리. 붉은 상자 20 kg은 오른쪽 1 m 고정, 노란 점은 판(8 kg)의 무게중심</text>`;
+        out += `<text class="note-text" x="20" y="208">돌림힘 = 무게 × 받침점까지의 거리. 붉은 상자 20 kg은 오른쪽 1 m 고정, 주황 점은 판(8 kg)의 무게중심</text>`;
         return out;
     }
 
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<text class="small-label" x="20" y="104">${inside ? '무게중심 수직선이 바닥면 안 — 되돌리는 쪽' : '무게중심 수직선이 모서리 밖 — 넘기는 쪽'}</text>`;
         const VERD = { stay: '그대로 버팀', slide: '미끄러져 내려감', tip: '넘어짐' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${state.progress >= 1 ? `${SHAPES[state.shape].label} · ${FLOORS[state.floor].label} · ${deg}°: ${VERD[verdict]}` : `${SHAPES[state.shape].label} · ${FLOORS[state.floor].label} · ${deg}°`}</text>`;
-        out += `<text class="note-text" x="20" y="208">초록 화살표 수직 항력, 보라 마찰력, 붉은 무게. 노란 점이 무게중심, 점선이 그 수직선입니다</text>`;
+        out += `<text class="note-text" x="20" y="208">초록 화살표 수직 항력, 보라 마찰력, 붉은 무게. 주황 점이 무게중심, 점선이 그 수직선입니다</text>`;
         return out;
     }
 
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (a.verdict === 'slide') s += a.deg > a.tipAt
                 ? `${a.deg}°는 두 문턱을 다 넘었지만, 바닥을 천천히 세우는 동안 미끄러짐 문턱(${a.slideAt.toFixed(0)}°)에 먼저 이르러 넘어지기 전에 미끄러져 내려갑니다. 마찰력이 무게의 빗면 성분을 붙잡지 못하기 때문입니다.`
                 : `${a.deg}°는 미끄러짐 문턱은 넘었지만 넘어짐 문턱(${a.tipAt.toFixed(0)}°)에는 못 미쳐 미끄러져 내려갑니다. 마찰력이 무게의 빗면 성분보다 작아 붙잡지 못하지만, 무게중심의 수직선은 바닥면 안에 있어 넘어지지는 않습니다.`;
-            else s += `${a.deg}°에서 무게중심의 수직선이 아래쪽 모서리 밖으로 나가 무게가 물체를 넘기는 쪽으로 돌립니다. 마찰 계수 ${a.mu}가 폭÷높이 ${a.ratio.toFixed(2)}보다 커서 미끄러지기 전에 넘어집니다. 같은 병이라도 얼음 위에서는 미끄러지고 고무판 위에서는 넘어지는 까닭입니다.`;
+            else s += `${a.deg}°에서 무게중심의 수직선이 아래쪽 모서리 밖으로 나가 무게가 물체를 넘기는 쪽으로 돌립니다. 마찰 계수 ${a.mu}가 폭÷높이 ${a.ratio.toFixed(2)}보다 커서 미끄러지기 전에 넘어집니다. 같은 병이라도 매끄러운 바닥에서는 미끄러지고 고무판 위에서는 넘어지는 까닭입니다.`;
         } else {
             const { m, x, N1, N2 } = a;
             labelA.textContent = '왼쪽 받침'; valueA.textContent = `${fmt(N1)} N`;
@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildPrediction();
         checkBtn.textContent = state.mode === 'seesaw' ? '손 떼기' : state.mode === 'tip' ? '바닥 기울이기' : '물건 놓기';
         stageCaption.textContent = state.mode === 'seesaw' ? '4 m 판이 받침점 위에 놓여 있습니다. 파란 상자가 고를 수 있는 물체, 붉은 상자는 20 kg으로 가운데에서 오른쪽 1 m에 고정입니다.'
-            : state.mode === 'tip' ? '오른쪽 끝을 축으로 바닥이 천천히 올라갑니다. 노란 점이 무게중심, 점선이 무게중심에서 내린 수직선입니다.'
+            : state.mode === 'tip' ? '오른쪽 끝을 축으로 바닥이 천천히 올라갑니다. 주황 점이 무게중심, 점선이 무게중심에서 내린 수직선입니다.'
                 : '2 m 판이 두 받침대 위에 놓여 있습니다. 초록 화살표가 받침대가 미는 힘, 붉은 화살표가 무게입니다.';
         settingsChanged();
     }));

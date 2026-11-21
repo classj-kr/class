@@ -58,7 +58,7 @@
   let pos=at(onScale(state)),connected=state.collected&&!state.after,collectF=state.collected?1:0,flow=false,settled=true;
   if(F&&F.kind==='gasMove'){const t=ease(seg(F.f,0,F.moveEnd)),a=at(F.from),c=at(F.to);pos={x:a.x+(c.x-a.x)*t,b:a.b+(c.b-a.b)*t-Math.sin(Math.PI*t)*44};connected=false;settled=t>=1;
    if(F.collect){collectF=0;if(F.f>F.moveEnd){connected=true;collectF=ease(seg(F.f,F.moveEnd+.06,.97));flow=collectF<1;}}}
-  const head=F&&F.kind==='head'?F.from*(1-ease(F.f)):state.head,vol=M.gas(state.sample,head).volume*1000,inside=g.surface-head*3,top=inside-vol*g.k,bottom=top+g.len;
+  const head=F&&F.kind==='head'?F.from*(1-ease(F.f)):state.head,vol=M.gas(state.sample,head).volume*1000,inside=g.surface-head*3,top=inside-vol*g.k-5,bottom=top+g.len;
   const waterTop=top+5+(inside-(top+5))*collectF,cx=g.cx,L=cx-g.cw/2,R=cx+g.cw/2;
   let b='<defs><linearGradient id="gasCan"><stop stop-color="#8aa3ae"/><stop offset=".45" stop-color="#e3ecef"/><stop offset="1" stop-color="#93aab4"/></linearGradient></defs>';
   b+=rect(0,g.bench,640,40,'#efe8dc')+line(0,g.bench,640,g.bench,'#cbbda5',2);

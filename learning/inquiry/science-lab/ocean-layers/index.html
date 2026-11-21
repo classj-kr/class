@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f1f5f9">
     <title>과학 실험실</title>
-    <meta name="description" content="저위도·중위도·고위도 바다의 여름과 겨울에 깊이에 따른 수온 곡선을 그려 혼합층·수온약층·심해층이 어디에 생기는지 확인하고, 증발·강수·강물·결빙·해빙이 염분을 어떻게 바꾸는지 소금 알갱이 수로 보며 염분비 일정의 법칙을 확인하고, 수온과 염분으로 바닷물의 밀도를 실제 식으로 계산해 어느 물이 가라앉는지 확인하는 고등학교 지구과학 모의실험">
+    <meta name="description" content="저위도·중위도·고위도 바다의 여름과 겨울에 깊이에 따른 수온 곡선을 그려 혼합층·수온 약층·심해층이 어디에 생기는지 확인하고, 증발·강수·강물·결빙·빙하 녹은 물이 염분을 어떻게 바꾸는지 소금 알갱이 수로 보며 염분비 일정의 법칙을 확인하고, 수온과 염분으로 바닷물의 밀도를 실제 식으로 계산해 어느 물이 가라앉는지 확인하는 고등학교 지구과학 모의실험">
     <link rel="stylesheet" as="style" crossorigin href="../../../../assets/vendor/pretendard@1.3.9/static/pretendard.css?v=ecb7b937ef5b">
     <link rel="stylesheet" href="styles.css?v=1a839ae2d0e7">
     <link rel="stylesheet" href="layers-visual.css?v=bf93ff7756a6">
@@ -32,7 +32,7 @@
                 <fieldset class="mode-field">
                     <legend>실험 종류</legend>
                     <div class="mode-buttons three">
-                        <button type="button" data-mode="profile">깊이와 수온<small>수온약층은 어디에</small></button>
+                        <button type="button" data-mode="profile">깊이와 수온<small>수온 약층은 어디에</small></button>
                         <button type="button" data-mode="salinity">염분의 변화<small>짜질까 싱거워질까</small></button>
                         <button type="button" data-mode="density">밀도와 층<small>어느 물이 가라앉나</small></button>
                     </div>
@@ -75,7 +75,7 @@
 
                 <div class="stage-readout" id="stageReadout"></div>
                 <p class="stage-note" id="stageNote"></p>
-                <p class="stage-caption" id="stageCaption">왼쪽 물기둥의 색이 수온입니다. 주황 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온약층입니다.</p>
+                <p class="stage-caption" id="stageCaption">왼쪽 물기둥의 색이 수온입니다. 주황 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온 약층입니다.</p>
                 <div class="data-note" id="dataNote"></div>
             </section>
         </div>
@@ -83,7 +83,7 @@
         <section class="panel meaning-panel">
             <h2>실험 결과의 의미</h2>
             <div class="meaning-body">
-                <p><strong>해수의 층 구조</strong> 햇볕은 바다의 겉 몇십 m만 데우고, 바람이 그 열을 아래로 섞어 수온이 고른 혼합층을 만듭니다. 그 아래에는 깊이에 따라 수온이 급히 내려가는 수온약층이 있고, 더 아래 심해층은 대체로 차갑고 수온 변화가 작지만 해역에 따라 차이가 있습니다. 햇볕이 센 저위도와 여름철에는 표층이 뜨거워 수온약층이 얕고 뚜렷하고, 겨울 중위도에서는 표층이 식고 바람이 세서 혼합층이 100 m 넘게 깊어지며, 극지방은 위아래가 다 차서 수온약층이 거의 없습니다. 수온약층은 물이 위아래로 잘 섞이지 않게 막는 뚜껑이라 영양분과 산소의 오르내림을 가로막습니다.</p>
+                <p><strong>해수의 층 구조</strong> 햇볕은 바다의 겉 몇십 m만 데우고, 바람이 그 열을 아래로 섞어 수온이 고른 혼합층을 만듭니다. 그 아래에는 깊이에 따라 수온이 급히 내려가는 수온 약층이 있고, 더 아래 심해층은 대체로 차갑고 수온 변화가 작지만 해역에 따라 차이가 있습니다. 햇볕이 센 저위도와 여름철에는 표층이 뜨거워 수온 약층이 얕고 뚜렷하고, 겨울 중위도에서는 표층이 식고 바람이 세서 혼합층이 100 m 넘게 깊어지며, 극지방은 위아래가 다 차서 수온 약층이 거의 없습니다. 수온 약층은 물이 위아래로 잘 섞이지 않게 막는 뚜껑이라 영양분과 산소의 오르내림을 가로막습니다.</p>
                 <p><strong>염분과 그 변화</strong> 바닷물 1 kg에 녹은 염류의 g 수가 염분(‰, 퍼밀)이고 평균 35 ‰입니다. 증발이 많거나 바닷물이 얼면(얼음은 거의 순수한 물) 남은 물이 짜지고, 비·강물·빙하 녹은 물이 들어오면 싱거워집니다. 그래서 증발이 센 아열대 바다와 지중해·홍해가 짜고, 강물이 많이 드는 발트해나 우리나라 서해가 싱겁습니다.</p>
                 <p><strong>염분비 일정의 법칙</strong> 염분이 아무리 달라져도 녹아 있는 이온들끼리의 비율(염화 이온 55 %, 나트륨 이온 31 %, 황산 이온 8 %, 마그네슘 이온 4 % …)은 일반적인 대양 해수에서 거의 일정합니다. 바닷물이 수천 년에 걸쳐 온 지구를 돌며 고루 섞이기 때문입니다. 덕분에 염화 이온 하나만 재면 염분 전체를 알 수 있습니다.</p>
                 <p><strong>밀도와 심층 순환</strong> 바닷물은 차고 짤수록 무겁습니다. 밀도는 대략 1,020~1,030 kg/m³로 차이가 1 %도 안 되지만, 그 작은 차이가 무거운 물을 가라앉히고 가벼운 물을 띄워 층을 만듭니다. 극지방에서 바닷물이 얼며 남은 차고 짠 물이 가장 무거워 심해로 가라앉고, 이것이 지구를 한 바퀴 도는 데 천 년이 걸리는 심층 순환의 출발점입니다.</p>
@@ -96,9 +96,9 @@
                 <article class="quiz-card" data-answer="b">
 <h3>여름에 햇빛은 강하고 바람은 약했다. 표층과 깊은 물 사이에서 발달하기 쉬운 구조는?</h3>
 <div class="quiz-options">
-<label><input type="radio" name="q1" value="a"> 깊은 혼합층 · 뚜렷한 수온약층</label>
-<label><input type="radio" name="q1" value="b"> 얕은 혼합층 · 뚜렷한 수온약층</label>
-<label><input type="radio" name="q1" value="c"> 깊은 혼합층 · 약한 수온약층</label>
+<label><input type="radio" name="q1" value="a"> 깊은 혼합층 · 뚜렷한 수온 약층</label>
+<label><input type="radio" name="q1" value="b"> 얕은 혼합층 · 뚜렷한 수온 약층</label>
+<label><input type="radio" name="q1" value="c"> 깊은 혼합층 · 약한 수온 약층</label>
 </div>
 <button class="answer-button" type="button">정답 확인</button>
 <p class="answer-result" aria-live="polite"></p>
@@ -130,7 +130,7 @@
 </article>
 
                 <article class="quiz-card" data-answer="c">
-<h3>같은 압력의 해수 A는 2℃·35‰, B는 20℃·35‰, C는 20℃·33‰이다. 깊이 가라앉기 가장 쉬운 해수는?</h3>
+<h3>같은 압력의 해수 A는 2 ℃·35‰, B는 20 ℃·35‰, C는 20 ℃·33‰이다. 깊이 가라앉기 가장 쉬운 해수는?</h3>
 <div class="quiz-options">
 <label><input type="radio" name="q4" value="a"> B</label>
 <label><input type="radio" name="q4" value="b"> C</label>

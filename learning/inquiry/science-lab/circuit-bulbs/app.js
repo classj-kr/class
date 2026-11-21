@@ -138,7 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let out = `<defs><radialGradient id="cbHalo"><stop offset="0" stop-color="#fff2c2" stop-opacity=".9"/><stop offset=".55" stop-color="#ffe08a" stop-opacity=".3"/><stop offset="1" stop-color="#ffe08a" stop-opacity="0"/></radialGradient><linearGradient id="cbCell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a7c85"/><stop offset=".35" stop-color="#3a4a52"/><stop offset="1" stop-color="#222d33"/></linearGradient></defs>`;
         out += `<path class="wire" d="${loop}" style="stroke:#c2502f;stroke-width:4.5"/>`;
         if(!state.closed) out += '<path d="M52,198 v-8 M52,160 v8" stroke="#c98a3c" stroke-width="3" stroke-linecap="round"/><circle cx="52" cy="190" r="1.8" fill="#8a5a1f"/><circle cx="52" cy="168" r="1.8" fill="#8a5a1f"/><text class="stage-label" x="64" y="184">끊어진 곳</text>';
-        if(flowing) out += `<path class="current" d="${loop}"/>`;
+        // 경로는 전지의 (−)쪽(왼쪽)에서 시작한다. 전류는 (+)극에서 나와 (−)극으로 들어가므로 거꾸로 흐르게 한다.
+        if(flowing) out += `<path class="current" style="animation-direction:reverse" d="${loop}"/>`;
         out += knifeSwitch(sx1,sx2,y,a.sw);
         out += pack.svg + realBulb(230,glow);
         out += `<text class="stage-label" x="353" y="284" text-anchor="middle">${a.sw>=1?'스위치 닫힘':'스위치 열림'}</text><text class="battery-label" x="190" y="284" text-anchor="middle">전지 ${state.batteries}개${state.batteries===2?' · 같은 방향 직렬':''}</text>`;

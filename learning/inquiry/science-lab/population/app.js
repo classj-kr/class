@@ -423,9 +423,11 @@ function explain(a) {
         } else {
             s += `늘어나는 빠르기는 개체 수와 남은 자리를 곱한 만큼입니다. 지금은 그릇의 ${Math.round(clamp(a.resist, 0, 1) * 100)}%가 찼으므로 그만큼이 환경 저항으로 깎였습니다. `;
             if (a.peakDay !== null) {
-                s += `가장 빠르게 늘어나는 때는 개체 수가 K의 절반인 ${state.K / 2}마리일 때, 곧 ${fmt(a.peakDay, 1)}일째이고 그때 하루 ${fmt(state.r * state.K / 4, 1)}마리가 늘어납니다. `;
+                s += `가장 빠르게 늘어나는 때는 개체 수가 K의 절반인 ${state.K / 2}마리일 때, 곧 ${fmt(a.peakDay, 1)}일째${a.peakDay > DAYS ? `(${DAYS}일보다 뒤)` : ''}이고 그때 하루 ${fmt(state.r * state.K / 4, 1)}마리가 늘어납니다. `;
             }
-            s += `그 뒤로는 남은 자리가 줄어 곡선이 눕고, 개체 수는 ${state.K}마리에 다가가 멈춥니다. 같은 날 지수 성장이었다면 ${koNum(expAt(state.day))}마리였을 테니, 그 차이가 환경 저항이 가져간 몫입니다.`;
+            s += `그 뒤로는 남은 자리가 줄어 곡선이 눕고, 개체 수는 ${state.K}마리에 다가가 멈춥니다. `;
+            if (a.final < state.K * 0.95) s += `다만 증식률이 낮아 ${DAYS}일째에는 아직 ${koNum(a.final)}마리로 K에 이르지 못했고, 더 오래 키워야 K에 다가갑니다. `;
+            s += `같은 날 지수 성장이었다면 ${koNum(expAt(state.day))}마리였을 테니, 그 차이가 환경 저항이 가져간 몫입니다.`;
         }
         $('elementaryExplanation').textContent = s;
     } else {

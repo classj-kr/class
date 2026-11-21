@@ -229,11 +229,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function graphCircuit(a) {
         const rMax = 20;
-        const pMax = a.best * 1.18;
+        // 눈금 값과 눈금 자리가 어긋나지 않도록 깔끔한 간격(1·2·3·5·8·10…)으로 나눈다.
+        const rough = a.best * 1.12 / 3, mag = 10 ** Math.floor(Math.log10(rough));
+        const step = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map(k => k * mag).find(s => s >= rough);
+        const pMax = Math.ceil(a.best * 1.12 / step) * step;
         const gx = R => GRAPH.x0 + (R / rMax) * (GRAPH.x1 - GRAPH.x0);
         const gy = p => GRAPH.y0 - (p / pMax) * (GRAPH.y0 - GRAPH.y1);
+        const yTicks = [];
+        for (let p = 0; p <= pMax + 1e-9; p += step) yTicks.push([+p.toFixed(2), gy(p)]);
         let out = frame([0, 5, 10, 15, 20].map(v => [v, gx(v)]),
-                        [0, 1, 2, 3].map(i => [((pMax / 3) * i).toFixed(0), gy((pMax / 3) * i)]),
+                        yTicks,
                         '외부 저항 R (Ω)', '외부 소비 전력 (W)');
         if (!state.checked) { window.scienceScene.render(graphGroup,out); return; }
         const pts = [];
@@ -314,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             let s = `길이 ${a.L} m 인 도선이 ${a.B} T 의 자기장 속을 ${a.v} m/s로 지나므로 ε = BLv = ${a.emf.toFixed(2)} V 입니다. `;
             if (a.v === 0) {
-                s = `도선이 멈춰 있으면 자기장이 변하지 않습니다. 자기장이 아무리 세도 ε = BLv = 0 이므로 전류가 흐르지 않습니다. 유도 전류를 만드는 것은 자기장이 아니라 자기장의 변화입니다.`;
+                s = `도선이 멈춰 있으면 회로의 넓이가 그대로라 회로를 지나는 자기 선속이 변하지 않습니다. 자기장이 아무리 세도 ε = BLv = 0 이므로 전류가 흐르지 않습니다. 유도 전류를 만드는 것은 자기장 자체가 아니라 회로를 지나는 자기 선속의 변화입니다.`;
             } else {
                 s += `${a.R} Ω 회로에 I = ε/R = ${a.current.toFixed(3)} A가 흐르고, 이 전류가 자기장 속에서 F = BIL = ${a.force.toFixed(3)} N 의 힘을 받습니다. `;
                 s += `이 힘은 렌츠 법칙에 따라 언제나 운동을 방해하는 쪽입니다. 도선을 계속 밀려면 이 힘을 이겨야 하고, 그때 한 일 Fv = ${(a.force * a.v).toFixed(3)} W가 그대로 전기 에너지 εI = ${a.power.toFixed(3)} W가 됩니다. `;

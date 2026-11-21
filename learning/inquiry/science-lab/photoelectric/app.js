@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lines.forEach(l => { const now = state.progress >= 1 && l.nf === a.nf && l.ni === a.ni; out += `<line class="line-mark" style="stroke:${now ? '#d97706' : '#64748b'};stroke-width:${now ? 3 : 1.2}" x1="${xOf(l.lam).toFixed(1)}" y1="${Y1 + (now ? -4 : 2)}" x2="${xOf(l.lam).toFixed(1)}" y2="${Y0 + (now ? 4 : -2)}"/>`; });
         [[1, '라이먼 (n=1로)', 121.6], [2, '발머 (n=2로)', 656], [3, '파셴 (n=3으로)', 1875]].forEach(([nf, lab, nm]) => { out += `<text class="small-label" style="fill:${state.progress >= 1 && a.nf === nf ? '#d97706' : '#475569'}" x="${xOf(nm).toFixed(1)}" y="${Y0 + 30}" text-anchor="middle">${lab}</text>`; });
         if (a.lam && state.progress >= 1) out += `<text class="trait-text" style="fill:#d97706" x="${clamp(xOf(a.lam), 70, 400).toFixed(1)}" y="${Y1 - 20}" text-anchor="middle">지금 ${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm</text>`;
-        out += `<text class="small-label" x="${X0}" y="${Y0 + 48}">발머 계열 656·486·434·410 nm가 수소 방전관의 붉은빛과 푸른 선입니다. 흰 선은 n = 7까지의 모든 전이.</text>`;
+        out += `<text class="small-label" x="${X0}" y="${Y0 + 48}">발머 계열 656·486·434·410 nm가 수소 방전관의 붉은빛과 푸른 선입니다. 회색 선은 n = 7까지의 모든 전이.</text>`;
         return out;
     }
 
@@ -470,14 +470,14 @@ document.addEventListener('DOMContentLoaded', () => {
             labelA.textContent = '나오는 빛'; valueA.textContent = a.verdict === 'none' ? '없음' : `${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm`;
             labelB.textContent = '광자 에너지'; valueB.textContent = a.verdict === 'none' ? '—' : `${fmtN(a.dE, 2)} eV`;
             if (a.verdict === 'none') s = a.ni === a.nf ? `처음과 나중이 같은 준위라 아무 일도 일어나지 않습니다. 빛은 전자가 다른 준위로 옮겨 갈 때만 나옵니다.` : `n = ${a.ni}(${fmtN(a.Ei, 2)} eV)에서 n = ${a.nf}(${fmtN(a.Ef, 2)} eV)로는 올라가는 것이라 에너지가 ${fmtN(a.dE, 2)} eV 더 필요합니다. 꼭 그 에너지의 광자를 흡수해야 올라갈 수 있고, 빛이 나오는 것은 높은 준위에서 낮은 준위로 내려올 때뿐입니다. 이것이 흡수 스펙트럼의 검은 선이 됩니다.`;
-            else s = `전자가 n = ${a.ni}(${fmtN(a.Ei, 2)} eV)에서 n = ${a.nf}(${fmtN(a.Ef, 2)} eV)로 내려오며 두 준위의 차이 ${fmtN(a.dE, 2)} eV를 광자 하나로 내놓았습니다. 파장은 λ = 1240 ÷ ${fmtN(a.dE, 2)} = ${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm로 ${a.region === 'visible' ? `눈에 보이는 ${a.lam > 620 ? '빨간' : a.lam > 495 ? '청록' : '보랏빛 도는 파란'}빛` : a.region === 'uv' ? '자외선이라 눈에 보이지 않습니다' : '적외선이라 눈에 보이지 않습니다'}${a.region === 'visible' ? '입니다' : ''}. n = ${a.nf}로 내려오는 전이들을 ${a.series} 계열이라 부르고, ${a.nf === 2 ? '이 계열만 눈에 보여 수소 방전관의 붉은빛(656 nm)과 푸른 선들이 됩니다' : a.nf === 1 ? '바닥 준위로 떨어지는 만큼 에너지가 커서 모두 자외선입니다' : '에너지 차이가 작아 모두 적외선입니다'}. 준위가 띄엄띄엄이라 특정 파장만 나오는 것이 선 스펙트럼입니다.`;
+            else s = `전자가 n = ${a.ni}(${fmtN(a.Ei, 2)} eV)에서 n = ${a.nf}(${fmtN(a.Ef, 2)} eV)로 내려오며 두 준위의 차이 ${fmtN(a.dE, 2)} eV를 광자 하나로 내놓았습니다. 파장은 λ = 1240 ÷ ${fmtN(a.dE, 2)} = ${fmtN(a.lam, a.lam < 200 ? 1 : 0)} nm로 ${a.region === 'visible' ? `눈에 보이는 ${a.lam > 620 ? '빨간' : a.lam > 470 ? '청록' : a.lam > 425 ? '파란' : '보랏'}빛` : a.region === 'uv' ? '자외선이라 눈에 보이지 않습니다' : '적외선이라 눈에 보이지 않습니다'}${a.region === 'visible' ? '입니다' : ''}. n = ${a.nf}로 내려오는 전이들을 ${a.series} 계열이라 부르고, ${a.nf === 2 ? '이 계열만 눈에 보여 수소 방전관의 붉은빛(656 nm)과 푸른 선들이 됩니다' : a.nf === 1 ? '바닥 준위로 떨어지는 만큼 에너지가 커서 모두 자외선입니다' : '에너지 차이가 작아 모두 적외선입니다'}. 준위가 띄엄띄엄이라 특정 파장만 나오는 것이 선 스펙트럼입니다.`;
         } else {
             const { o } = a;
             labelA.textContent = '물질파 파장'; valueA.textContent = fmtLam(a.lam);
             labelB.textContent = '원자 지름과 견주면'; valueB.textContent = a.ratio >= 0.01 ? `${fmtN(a.ratio, a.ratio < 1 ? 2 : 1)}배` : `${fmtSci(a.ratio, 0)}배`;
             s = `${o.name}${o.v ? `(145 g, ${fmtSpeed(a.v)})의` : `는 ${fmtSpeed(a.v)}로 움직이고`} 운동량은 p = mv = ${fmtSci(a.p, 2)} kg·m/s입니다. 드브로이 파장은 λ = h/p = ${fmtLam(a.lam)}입니다. `;
             s += a.verdict === 'big' ? `원자 지름 0.1 nm의 ${fmtN(a.ratio)}배나 되어 이 전자로는 원자 하나하나를 구별할 수 없습니다. 느린 전자는 파동성이 크게 드러납니다.`
-                : a.verdict === 'atom' ? `원자 크기와 비슷하거나 더 짧아, 결정의 원자 배열에서 회절하고(데이비슨·저머 실험) 전자 현미경에서 원자 배열을 볼 수 있습니다. 파장이 500 nm쯤인 빛으로는 그 ${fmtN(5e-7 / a.lam)}분의 1 크기까지 보는 셈입니다.`
+                : a.verdict === 'atom' ? `원자 크기와 비슷하거나 더 짧아, 결정의 원자 배열에서 회절하고(데이비슨·저머 실험) 전자 현미경에서 원자 배열을 볼 수 있습니다. 파장이 500 nm쯤인 빛으로 구별할 수 있는 크기의 ${fmtN(5e-7 / a.lam)}분의 1까지 구별할 수 있는 셈입니다.`
                     : `${fmtSci(a.lam)} m는 원자핵(10⁻¹⁵ m)보다도 10¹⁹배나 짧아 어떤 실험으로도 파동성이 드러나지 않습니다. 그래서 일상의 물체는 그냥 알갱이로만 보입니다. 물질파는 전자처럼 가벼운 것에서만 뚜렷합니다.`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'

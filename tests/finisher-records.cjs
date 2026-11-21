@@ -107,6 +107,20 @@ const { initializeFinisherIdentity, listFinisherRecords, saveFinisherRecord } = 
     assert.ok(!target.innerHTML.includes('<script>'));
     board.render('list',[{name:'하하',grade:4,classNumber:2},{name:'가가',grade:4,classNumber:2}]);
     assert.ok(target.innerHTML.indexOf('하하') < target.innerHTML.indexOf('가가'), '화면이 서버 순서를 다시 뒤섞지 않는다');
+    const requests = [];
+    window.ClassroomFinishers = {
+      list: async gameId => { requests.push(['list', gameId]); return { records: [{ name: '기록학생' }] }; },
+      save: async record => { requests.push(['save', record.gameId]); return { records: [record] }; }
+    };
+    const soloBoard = window.ClassroomFinisherBoard.create({ gameId: 'minesweeper', getPlayerName: () => '도전학생' });
+    await soloBoard.register({ difficulty: '8×8', rank: 1, usedHint: true });
+    assert.deepEqual(requests, [['list', 'minesweeper']]);
+    assert.match(target.innerHTML, /힌트를 본 판은 FINISHERS에 등록되지 않습니다/);
+    assert.match(target.innerHTML, /기록학생/);
+    await soloBoard.register({ difficulty: '8×8', rank: 1 });
+    assert.deepEqual(requests[1], ['save', 'minesweeper']);
+    assert.match(target.innerHTML, /도전학생/);
+    assert.doesNotMatch(target.innerHTML, /힌트를 본 판/);
     console.log('finisher-records: migration, academic year accumulation, 1-per-player best score, class ordering, and escaped labels pass');
   } finally { await db.close(); }
 })().catch(error => { console.error(error); process.exitCode=1; });

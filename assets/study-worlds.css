@@ -1,0 +1,89 @@
+/* Illustrated learning rooms. Only explicitly selected pages opt in. */
+body[data-study-world] {
+  --world-image: url('/assets/images/study-worlds/language.webp');
+  --world-ground: #f7f7ef;
+  --world-strength: .3;
+  --world-saturation: .32;
+  min-height: 100svh;
+  isolation: isolate;
+  background-color: var(--world-ground);
+  background-image: none;
+}
+body[data-study-world='math'] {
+  --world-image: url('/assets/images/study-worlds/math.webp');
+  --world-ground: #e9f2f5;
+  --world-strength: .25;
+}
+body[data-study-world='music'] {
+  --world-image: url('/assets/images/study-worlds/music.webp');
+  --world-ground: #0b2325;
+  --world-strength: .3;
+}
+body[data-study-world='science'] {
+  --world-image: url('/assets/images/study-worlds/science-illustrated.webp');
+  --world-ground: #0b1325;
+  --world-strength: .2;
+  --world-saturation: .18;
+}
+/* Desaturate only the illustration; task colors and teaching diagrams retain
+   their original colors. The fixed layer cannot receive pointer events. */
+body[data-study-world]::before {
+  content: '';
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--world-image) center top / cover no-repeat;
+  opacity: var(--world-strength);
+  filter: saturate(var(--world-saturation));
+  mask-image: linear-gradient(90deg, #000 0 9%, rgba(0, 0, 0, .12) 31% 69%, #000 91%);
+}
+/* The old desk outlines, room silhouettes and abstract textures no longer
+   sit over the new illustrations. These selectors do not affect dialogs. */
+body[data-study-world]::after,
+body[data-study-world] .room-glow,
+body[data-study-world] > .noise {
+  display: none;
+}
+/* Text lists have a solid reading surface even beside an illustrated edge. */
+body[data-study-world='language'] > .sheet {
+  min-height: 100svh;
+  background: rgba(255, 253, 247, .96);
+  box-shadow: 0 0 70px 35px rgba(255, 253, 247, .5);
+}
+body[data-study-world='science'] .matter-nav {
+  background: #101e2b;
+  border: 1px solid #253444;
+  border-radius: 12px;
+  padding: 12px;
+}
+/* Cubes need an uncluttered manipulable floor, not pictures behind the cubes. */
+body[data-study-world='math'] > .workspace {
+  background: transparent;
+}
+/* A narrow screen has no spare side margins: keep a hint of the room at the
+   bottom, and let an opaque wash protect controls and learning materials. */
+@media (max-width: 900px) {
+  body[data-study-world]::before {
+    background-position: center bottom;
+    opacity: calc(var(--world-strength) * .65);
+    mask-image: linear-gradient(transparent 0% 60%, #000 100%);
+  }
+  body[data-study-world='language'] > .sheet {
+    box-shadow: none;
+  }
+}
+@media print {
+  body[data-study-world]::before {
+    display: none;
+  }
+  body[data-study-world],
+  body[data-study-world='math'] > .workspace {
+    background: white !important;
+  }
+  body[data-study-world='language'] > .sheet {
+    background: white;
+    box-shadow: none;
+  }
+}

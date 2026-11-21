@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const MAP_SCALE = 0.25;       // pixels per km on the chart
     const MAP_CX = 230, MAP_CY = 152, MAP_R = 126;
     const FLOW_PX = 1.2;          // pixels per second of drawn flow, per m/s of wind
-    const EXAG = 26;              // fronts are far too shallow to draw truthfully
+    const EXAG = 104;             // fronts are far too shallow to draw truthfully: heights drawn this many times taller
     const PASS_H = 16;            // hour the front reaches us
     const GRAPH = { x0: 64, x1: 424, y0: 150, y1: 30 };
 
@@ -147,10 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
         rings.forEach((r, i) => {
             const hpa = a.low ? 992 + (i + 1) * DP_HPA : 1032 - (i + 1) * DP_HPA;
             body += `<circle class="isobar" cx="${MAP_CX}" cy="${MAP_CY}" r="${r.toFixed(1)}"/>`;
-            // the same circle again, dashed and flowing, so the wind speed is visible
+            // the same circle again, dashed and flowing, so the wind speed is visible.
+            // A circle's path runs clockwise on screen from 3 o'clock; a growing dash
+            // offset moves the dashes backwards, i.e. counter-clockwise (the low).
             body += `<circle class="isoflow${a.low ? '' : ' high'}" cx="${MAP_CX}" cy="${MAP_CY}" r="${r.toFixed(1)}" ` +
                     `stroke-dasharray="10 8" opacity=".8">` +
-                    `<animate attributeName="stroke-dashoffset" from="${a.low ? 18 : 0}" to="${a.low ? 0 : 18}" ` +
+                    `<animate attributeName="stroke-dashoffset" from="${a.low ? 0 : 18}" to="${a.low ? 18 : 0}" ` +
                     `dur="${dur.toFixed(3)}s" repeatCount="indefinite"/></circle>`;
             // On a line out to the right, not at the top of each circle: a wide
             // circle's top is off the chart and its label would vanish.
@@ -201,12 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderFront(a) {
         { const svgEl = mainGroup.ownerSVGElement; svgEl.setAttribute('viewBox', '0 0 460 214'); const r = svgEl.querySelector('#mapClip rect'); if (r) { r.setAttribute('y', '26'); r.setAttribute('height', '166'); } }
         const f = a.f, GROUND = 170, X0 = 40, X1 = 420, FX = 230;
-        const drawnSlope = f.slope * EXAG;
+        const drawnSlope = f.slope * EXAG;   // 그린 기울기 = 실제 기울기 × EXAG
         let body = '';
         body += `<rect class="warm-air" x="${X0}" y="30" width="${X1 - X0}" height="${GROUND - 30}"/>`;
         if (a.key === 'cold') {
             // cold air pushes in from the left and wedges under the warm air
-            const rise = (FX - X0) * drawnSlope * 4;
+            const rise = (FX - X0) * drawnSlope;
             body += `<path class="cold-air" d="M${X0},${GROUND} L${FX},${GROUND} L${X0},${(GROUND - rise).toFixed(1)} Z"/>`;
             body += `<path class="front-line cold" d="M${FX},${GROUND} L${X0},${(GROUND - rise).toFixed(1)}"/>`;
             for (let i = 0; i < 4; i += 1) {
@@ -224,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // warm air slides up over the cold air that is already here
-            const rise = (X1 - FX) * drawnSlope * 4;
+            const rise = (X1 - FX) * drawnSlope;
             body += `<path class="cold-air" d="M${X1},${GROUND} L${FX},${GROUND} L${X1},${(GROUND - rise).toFixed(1)} Z"/>`;
             body += `<path class="front-line warm" d="M${FX},${GROUND} L${X1},${(GROUND - rise).toFixed(1)}"/>`;
             for (let i = 0; i < 4; i += 1) {

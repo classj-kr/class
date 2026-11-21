@@ -7,7 +7,7 @@
    luminosity into the brightness we actually see. */
 
 const T_SUN = 5772;        // K
-const M_SUN = 4.83;        // absolute bolometric magnitude of the Sun
+const M_SUN = 4.74;        // absolute bolometric magnitude of the Sun (IAU 2015; 4.83 is the visual-band value)
 const WIEN_NM = 2.897771955e6;   // nm·K
 const SIGMA = 5.670374419e-8, R_SUN_M = 6.957e8, L_SUN_W = 3.828e26;
 
@@ -105,7 +105,6 @@ const FAR = [[44, 60], [88, 30], [132, 52], [176, 34], [200, 66], [64, 74], [156
 function drawScene(g) {
     const a = analyse();
     const ang = state.running ? state.year * 2 * Math.PI : 0;
-    const swing = Math.sin(ang);
 
     if (state.parallax > 1000) {
         // 태양은 지구가 그 둘레를 도는 별이라 먼 별 배경 앞에서 흔들림(연주시차)을 잴 수 없다.
@@ -123,7 +122,8 @@ function drawScene(g) {
     FAR.forEach(([fx, fy]) => g.appendChild(el('circle', { cx: fx, cy: fy, r: 1.8, class: 'far-star' })));
     g.appendChild(el('text', { x: SKY.x + 6, y: SKY.y + 15, class: 'tiny-label' }, '먼 별들을 배경으로'));
 
-    const nx = 124 + swing * 15, ny = 58;
+    // 가까운 별은 지구가 있는 쪽의 반대쪽으로 밀려 보인다(지구가 오른쪽 끝이면 별은 왼쪽 끝).
+    const nx = 124 - Math.cos(ang) * 15, ny = 58;
     g.appendChild(el('line', { x1: 124 - 15, y1: ny + 12, x2: 124 + 15, y2: ny + 12, class: 'shift-mark' }));
     g.appendChild(el('line', { x1: 124 - 15, y1: ny + 8, x2: 124 - 15, y2: ny + 16, class: 'shift-mark' }));
     g.appendChild(el('line', { x1: 124 + 15, y1: ny + 8, x2: 124 + 15, y2: ny + 16, class: 'shift-mark' }));
@@ -186,7 +186,7 @@ function drawGraph(g) {
     g.appendChild(el('line', { x1: x0, y1: yTop, x2: x0, y2: yBot, class: 'axis' }));
     [30000, 10000, 6000, 3000].forEach(t => {
         g.appendChild(el('line', { x1: X(t), y1: yBot, x2: X(t), y2: yBot + 4, class: 'axis' }));
-        g.appendChild(el('text', { x: X(t), y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text' }, `${t / 1000}천`));
+        g.appendChild(el('text', { x: X(t), y: yBot + 15, 'text-anchor': 'middle', class: 'axis-text' }, String(t)));
     });
 
     // Lines of constant radius: log L = 2 log R + 4 log(T/T_sun).
@@ -200,7 +200,8 @@ function drawGraph(g) {
     g.appendChild(el('rect', { x: X(5200), y: Y(3000), width: X(3200) - X(5200), height: Y(30) - Y(3000), rx: 8, class: 'zone zone-giant' }));
     g.appendChild(el('rect', { x: X(30000), y: Y(0.03), width: X(7000) - X(30000), height: Y(0.0005) - Y(0.03), rx: 8, class: 'zone zone-dwarf' }));
 
-    const MS = [[40000, 1.2e5], [20000, 1.6e4], [10000, 60], [7500, 8], [6000, 1.5], [5200, 0.4], [4000, 0.07], [3000, 0.012], [2500, 0.003]];
+    // 주계열 별의 온도·광도(분광형 O6V·B0V·B2V·B5V·A0V·A9V·G0V·K0V·K7V·M2V·M5V·M8V 무렵의 값)
+    const MS = [[40000, 1.5e5], [30000, 3e4], [20000, 2.5e3], [15000, 500], [10000, 40], [7500, 6], [6000, 1.5], [5200, 0.42], [4000, 0.09], [3500, 0.03], [3000, 0.003], [2500, 0.0006]];
     let ms = '';
     MS.forEach(([t, l], i) => { ms += `${i ? 'L' : 'M'} ${fmt(X(t), 2)} ${fmt(Y(l), 2)} `; });
     g.appendChild(el('path', { d: ms, class: 'main-seq' }));
@@ -282,9 +283,15 @@ function explain(a) {
     } else {
         out += `연주시차가 ${fmt(state.parallax, 4)}초이므로 거리는 그 역수인 ${fmt(a.d, 2)} 파섹, 곧 ${fmt(a.ly, 1)}광년입니다. `;
     }
-    out += `스펙트럼의 봉우리는 ${Math.round(a.peak).toLocaleString('ko-KR')} nm에 있습니다. 봉우리 파장과 온도를 곱하면 어떤 별이든 같은 값이 나오므로, 이 봉우리만으로 표면 온도가 ${Math.round(a.temp).toLocaleString('ko-KR')} K임을 알 수 있고 분광형은 ${a.cls}형입니다. `;
-    out += a.peak < 380 ? `봉우리가 눈에 보이는 빛보다 짧은 자외선 쪽에 있어 푸르게 보입니다. `
-        : (a.peak > 750 ? `봉우리가 적외선 쪽에 있어 붉게 보입니다. ` : `봉우리가 눈에 보이는 빛의 한가운데에 있습니다. `);
+    out += `스펙트럼의 봉우리는 ${Math.round(a.peak).toLocaleString('ko-KR')} nm에 있습니다. 봉우리 파장과 온도를 곱하면 어떤 별이든 같은 값이 나오므로, 이 봉우리만으로 표면 온도가 ${Math.round(a.temp).toLocaleString('ko-KR')} K임을 알 수 있고 `;
+    // 백색왜성은 온도로는 O~M 가운데 한 칸에 들지만 분광형은 따로 D형으로 적는다(시리우스 B는 DA형).
+    out += a.verdict === 'p3' ? `온도로는 ${a.cls}형 별과 같은 자리에 놓입니다(백색왜성의 분광형은 따로 D형으로 적습니다). ` : `분광형은 ${a.cls}형입니다. `;
+    // 별의 색: A형(7500~10000 K)은 흰색, B·O형은 청백색~청색
+    out += a.peak < 380 ? `봉우리가 눈에 보이는 빛보다 짧은 자외선 쪽에 있습니다. ${a.temp < 10000 ? '눈에 보이는 여러 색의 빛이 고르게 섞여 흰색으로' : a.temp < 30000 ? '파란 빛이 붉은 빛보다 많아 청백색으로' : '파란 빛이 훨씬 많아 청색으로'} 보입니다. `
+        : a.peak > 750 ? `봉우리가 적외선 쪽에 있어 붉게 보입니다. `
+        : a.peak > 650 ? `봉우리가 눈에 보이는 빛 가운데 붉은 쪽 끝에 있어 주황빛으로 보입니다. `
+        : a.peak < 450 ? `봉우리가 눈에 보이는 빛 가운데 파란 쪽 끝에 있습니다. `
+        : `봉우리가 눈에 보이는 빛의 가운데쯤에 있습니다. `;
 
     out += `광도는 표면적과 온도의 네제곱을 곱한 만큼이라, 반지름 ${fmt(a.radius, a.radius < 1 ? 4 : 1)}배와 온도비 ${fmt(a.temp / T_SUN, 2)}배를 넣으면 태양의 ${a.lum >= 1000 ? Math.round(a.lum).toLocaleString('ko-KR') : fmt(a.lum, a.lum < 0.01 ? 5 : 2)}배가 됩니다. `;
 
@@ -298,7 +305,7 @@ function explain(a) {
     if (v === 'p1') {
         out += `온도에 걸맞은 광도라서 HR도의 주계열 띠 위에 놓입니다. 별의 대부분은 일생의 거의 전부를 여기서 보냅니다.`;
     } else if (v === 'p2') {
-        out += `온도는 태양보다 낮은데 광도는 훨씬 큽니다. 온도만으로는 이렇게 밝을 수 없으니 남는 설명은 덩치뿐이고, 실제로 반지름이 태양의 ${fmt(a.radius, 0)}배나 됩니다. 그래서 주계열 위쪽 오른편, 거성 자리에 놓입니다.`;
+        out += `온도는 태양보다 낮은데 광도는 훨씬 큽니다. 온도만으로는 이렇게 밝을 수 없으니 남는 설명은 덩치뿐이고, 실제로 반지름이 태양의 ${fmt(a.radius, 0)}배나 됩니다. 그래서 주계열 위쪽 오른편, ${a.radius >= 100 ? '거성보다도 더 위쪽의 초거성' : '거성'} 자리에 놓입니다.`;
     } else {
         out += `온도는 태양보다 훨씬 높은데도 광도는 오히려 작습니다. 뜨거운 만큼 단위 넓이에서는 세게 내뿜지만 반지름이 태양의 ${fmt(a.radius, 4)}배, 지구만 해서 내보낼 표면이 거의 없기 때문입니다. 그래서 HR도의 왼쪽 아래, 백색왜성 자리에 놓입니다.`;
     }

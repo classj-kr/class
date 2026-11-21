@@ -111,6 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         [['r1', R.r1], ['r2', R.r2], ['r3', R.r3]].forEach(([cls, r], i) => {
             const u = clamp01((drawn * 4 - i) / 1);            // 이 광선의 진행 0→1
             if (u <= 0) return;
+            // 물체가 초점에 있으면 물체 끝과 초점을 잇는 선이 광축에 수직이라 렌즈에 닿지 않으므로 광선 3은 그을 수 없다
+            if (cls === 'r3' && a.parallel) return;
             const inY = cls === 'r1' ? R.yo : r.y;
             const u1 = clamp01(u * 2), u2 = clamp01(u * 2 - 1);
             body += `<path class="ray ${cls}" d="${part(R.xo, R.yo, LENS_X, inY, u1)}"/>`;
@@ -175,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stageBadge.textContent = !done ? `${lens === 'convex' ? '볼록' : '오목'} 렌즈 · a = ${a.a} cm` : a.parallel ? '상이 생기지 않음' : `${a.kind === 'real' ? '실상' : '허상'}`;
         window.scienceScene.render(dataNote, !done ? '<p>작도해 보기를 누르면 세 광선을 차례로 긋습니다.</p>'
             : a.parallel ? '<p>a = f 이면 렌즈를 지난 광선이 나란히 나아갑니다.</p>'
-            : `<p>a = ${a.a} cm, b = ${sf(+a.b.toFixed(1))} cm, 배율 ${Math.abs(a.m).toFixed(2)}배 (b ÷ a)</p>`);
+            : `<p>a = ${a.a} cm, b = ${sf(+a.b.toFixed(1))} cm, 배율 ${Math.abs(a.m).toFixed(2)}배 (|b| ÷ a)</p>`);
         return a;
     }
 

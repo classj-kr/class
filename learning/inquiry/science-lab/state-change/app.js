@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bubbleGroup = document.getElementById('bubbleGroup');
 
     let prediction = null;
-    // 확인하기 전에는 처음 상태(20℃ 물)만 보인다. 누르면 온도계와 물이 정한 온도로 바뀌어 간다.
-    // 0℃는 '가열하여 녹인 비율'이므로 -10℃ 얼음에서 데우기 시작하고, 나머지는 20℃ 물에서 식히거나 데운다
+    // 확인하기 전에는 처음 상태(20 ℃ 물)만 보인다. 누르면 온도계와 물이 정한 온도로 바뀌어 간다.
+    // 0 ℃는 '가열하여 녹인 비율'이므로 -10 ℃ 얼음에서 데우기 시작하고, 나머지는 20 ℃ 물에서 식히거나 데운다
     const startTemp = () => Number(temperatureRange.value) === 0 ? -10 : 20;
     let revealed = false, animId = 0, shownTemp = 20, phaseQ = 0;
     const iceGrowRect = document.getElementById('iceGrowRect');
@@ -139,10 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const meltMin = T2 - T1, boilMin = T4 - T3;
         window.scienceScene.render(dataNote,`<div class="data-row"><span class="data-name">지금 온도</span><span class="data-val">${temp}℃</span></div>` +
             (revealed && phaseQ >= 1 ? `<div class="data-row match"><span class="data-name">지금 상태</span><span class="data-val">${STATE_LABEL[state]}</span></div>` : '') +
-            `<div class="data-row"><span class="data-name">녹는점 · 어는점</span><span class="data-val">0℃ — 얼음과 물이 함께 있는 온도</span></div>` +
-            `<div class="data-row"><span class="data-name">끓는점</span><span class="data-val">100℃ — 물과 수증기가 함께 있는 온도</span></div>` +
-            `<div class="data-row"><span class="data-name">모형에서 녹는 시간</span><span class="data-val">${meltMin.toFixed(1)}분 (온도는 0℃ 그대로)</span></div>` +
-            `<div class="data-row"><span class="data-name">모형에서 끓는 시간</span><span class="data-val">${boilMin.toFixed(1)}분 (온도는 100℃ 그대로)</span></div>` +
+            `<div class="data-row"><span class="data-name">녹는점 · 어는점</span><span class="data-val">0 ℃ — 얼음과 물이 함께 있는 온도</span></div>` +
+            `<div class="data-row"><span class="data-name">끓는점</span><span class="data-val">100 ℃ — 물과 수증기가 함께 있는 온도</span></div>` +
+            `<div class="data-row"><span class="data-name">모형에서 녹는 시간</span><span class="data-val">${meltMin.toFixed(1)}분 (온도는 0 ℃ 그대로)</span></div>` +
+            `<div class="data-row"><span class="data-name">모형에서 끓는 시간</span><span class="data-val">${boilMin.toFixed(1)}분 (온도는 100 ℃ 그대로)</span></div>` +
             `<div class="data-row"><span class="data-name">이 모형의 비교</span><span class="data-val">끓는 데 ${(boilMin / meltMin).toFixed(1)}배 더 오래 걸립니다</span></div>`);
     }
 
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const step = now => {
             const e = now - t0;
             const first = Math.min(1, e / t1);
-            // 0℃·100℃ 아래위로 넘어가는 동안에는 상태가 바뀌는 사이(2단계) 온도가 그 자리에 머문다
+            // 0 ℃·100 ℃ 아래위로 넘어가는 동안에는 상태가 바뀌는 사이(2단계) 온도가 그 자리에 머문다
             const hold = target < 0 ? 0 : target > 100 ? 100 : target;
             if (e < t1) { shownTemp = S0 + (hold - S0) * ease(first); phaseQ = 0; }
             else if (e < t1 + t2) { shownTemp = hold; phaseQ = (e - t1) / t2; }
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultEmpty.textContent = '예상한 뒤 확인해 보세요.';
         resultEmpty.hidden = false;
         resultContent.hidden = true;
-        stageCaption.textContent = '각 온도에서 별도 시료를 비교합니다. 0℃·100℃에서는 가열에 따른 변화 비율도 정하세요.';
+        stageCaption.textContent = '각 온도에서 별도 시료를 비교합니다. 0 ℃·100 ℃에서는 가열에 따른 변화 비율도 정하세요.';
     }
 
     function checkState() {
@@ -215,11 +215,11 @@ document.addEventListener('DOMContentLoaded', () => {
             : prediction === state ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
 
         if (temp === 0) {
-            stageCaption.textContent = '0℃는 물의 어는점(녹는점)입니다. 얼음과 물이 함께 있을 수 있는 온도입니다.';
-            explanation.textContent = '녹는 동안에는 열을 받아도 온도가 0℃에 머무릅니다. 온도만으로 얼음과 물의 비율을 정할 수 없으며, 이 그림은 선택한 변화 비율을 나타냅니다.';
+            stageCaption.textContent = '0 ℃는 물의 어는점(녹는점)입니다. 얼음과 물이 함께 있을 수 있는 온도입니다.';
+            explanation.textContent = '녹는 동안에는 열을 받아도 온도가 0 ℃에 머무릅니다. 온도만으로 얼음과 물의 비율을 정할 수 없으며, 이 그림은 선택한 변화 비율을 나타냅니다.';
         } else if (temp === 100) {
-            stageCaption.textContent = '100℃는 물의 끓는점입니다. 물이 기체(수증기)로 바뀌기 시작합니다.';
-            explanation.textContent = '끓는 동안에는 열을 받아도 온도가 100℃에 머무릅니다. 물과 수증기가 함께 있을 수 있으며, 모두 기화한 뒤에 수증기의 온도가 더 올라갑니다. 비율은 온도만으로 결정되지 않습니다.';
+            stageCaption.textContent = '100 ℃는 물의 끓는점입니다. 물속에서도 기포가 생기며 물이 수증기로 바뀝니다.';
+            explanation.textContent = '끓는 동안에는 열을 받아도 온도가 100 ℃에 머무릅니다. 물과 수증기가 함께 있을 수 있으며, 모두 기화한 뒤에 수증기의 온도가 더 올라갑니다. 비율은 온도만으로 결정되지 않습니다.';
         } else if (state === 'solid') {
             stageCaption.textContent = `${temp}℃에서 물은 고체인 얼음 상태입니다.`;
             explanation.textContent = '물은 얼어 단단한 얼음이 됩니다. 얼음은 액체인 물과 달리 담는 그릇에 따라 모양이 쉽게 달라지지 않습니다.';
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             explanation.textContent = '수증기는 눈에 보이지 않는 기체입니다. 끓는 물 위에서 보이는 흰 김은 작은 물방울입니다. 물은 끓지 않을 때에도 표면에서 수증기로 변할 수 있습니다.';
         } else {
             stageCaption.textContent = `${temp}℃에서 물은 액체 상태입니다.`;
-            explanation.textContent = '0℃와 100℃ 사이에서 물은 흐르는 액체이며, 담는 그릇에 따라 모양이 바뀝니다.';
+            explanation.textContent = '0 ℃와 100 ℃ 사이에서 물은 흐르는 액체이며, 담는 그릇에 따라 모양이 바뀝니다.';
         }
     }
 

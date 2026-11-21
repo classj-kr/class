@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   for(const b of lab.querySelectorAll('[data-tf-contact]')){b.disabled=!state.held;b.setAttribute('aria-pressed',String(b.dataset.tfContact===state.contact));}
   $('tfHold').disabled=state.held;$('tfHold').textContent=state.held?'손잡이를 잡았습니다':'손잡이 잡기';
   $('tfStageTitle').textContent=state.amplitude?'떨리는 소리굽쇠':state.strikes?'떨림이 멈춘 소리굽쇠':'치기 전';
-  $('tfComparisons').innerHTML=M.comparisons(state).map(r=>`<article><h3>${labels[r.kind]}로 확인</h3><p data-seen="${r.still}">${r.still?'✓':'○'} 떨림 없음: ${r.still?text[r.kind][0]:'아직 비교하지 않았습니다.'}</p><p data-seen="${r.moving}">${r.moving?'✓':'○'} 떨림 있음: ${r.moving?text[r.kind][1]:'아직 비교하지 않았습니다.'}</p></article>`).join('');
+  $('tfComparisons').innerHTML=M.comparisons(state).map(r=>`<article><h3>${labels[r.kind]}${r.kind==='paper'?'로':'으로'} 확인</h3><p data-seen="${r.still}">${r.still?'✓':'○'} 떨림 없음: ${r.still?text[r.kind][0]:'아직 비교하지 않았습니다.'}</p><p data-seen="${r.moving}">${r.moving?'✓':'○'} 떨림 있음: ${r.moving?text[r.kind][1]:'아직 비교하지 않았습니다.'}</p></article>`).join('');
   scene();
  }
  function loop(time){const dt=lastTime===null?0:Math.min((time-lastTime)/1000,.1);lastTime=time;state=M.step(state,'tick',dt);scene();syncAudio();if(state.amplitude&&mode==='fork'&&!document.hidden)frameId=requestAnimationFrame(loop);else{frameId=null;lastTime=null;if(state.contact!=='hand')$('tfStatus').textContent='떨림이 잦아들어 멈췄습니다. 닿은 물체를 떼고 다시 쳐 보세요.';render();}}

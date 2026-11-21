@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const LATS = { l0: { label: '적도 (0°)', hint: '전향력 없음', lat: 0 }, l15: { label: '북위 15°', hint: '필리핀 동쪽', lat: 15 }, l30: { label: '북위 30°', hint: '제주 남쪽', lat: 30 } };
     const SST_MIN = 26.5, LAT_MIN = 5, OMEGA = 7.292e-5;
     // grades by maximum wind (m/s), the Korea Meteorological Administration scale
-    const GRADES = [[54, '초강력'], [44, '매우강'], [33, '강'], [25, '중'], [17, '열대 폭풍 (태풍 등급 아래)'], [0, '열대 저압부']];
+    const GRADES = [[54, '초강력'], [44, '매우강'], [33, '강'], [25, '중'], [17, '태풍 (강도 등급 없음)'], [0, '열대 저압부']];
     // the map: local coordinates inside a 280 × 178 box
     const LAND = {
         china: [[0, 0], [120, 0], [128, 44], [112, 74], [124, 112], [100, 148], [60, 178], [0, 178]],
@@ -175,12 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const bx = x2 - ux * 6, by = y2 - uy * 6;
         return `<line class="${cls}" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${bx.toFixed(1)}" y2="${by.toFixed(1)}"/><polygon class="${head}" points="${x2.toFixed(1)},${y2.toFixed(1)} ${(bx - uy * w).toFixed(1)},${(by + ux * w).toFixed(1)} ${(bx + uy * w).toFixed(1)},${(by - ux * w).toFixed(1)}"/>`;
     };
-    // a counter-clockwise spiral of three arms
+    // a northern-hemisphere storm: it turns counter-clockwise (rot grows), and each
+    // of the three arms trails behind, winding clockwise as it goes outward
     function spiral(cx, cy, R, rot, cls = 'spiral', width = null) {
         let out = '';
         for (let k = 0; k < 3; k += 1) {
             let d = '';
-            for (let r = R * 0.18; r <= R; r += 2) { const th = -(rot + k * 2.094 + r * 0.11); d += `${d ? 'L' : 'M'}${(cx + r * Math.cos(th)).toFixed(1)},${(cy + r * Math.sin(th) * 0.85).toFixed(1)} `; }
+            for (let r = R * 0.18; r <= R; r += 2) { const th = -(rot + k * 2.094) + r * 0.11; d += `${d ? 'L' : 'M'}${(cx + r * Math.cos(th)).toFixed(1)},${(cy + r * Math.sin(th) * 0.85).toFixed(1)} `; }
             out += `<path class="${cls}" ${width ? `style="stroke-width:${width}"` : ''} d="${d}"/>`;
         }
         return out + `<circle class="eye" cx="${cx}" cy="${cy}" r="${(R * 0.12).toFixed(1)}"/>`;
@@ -370,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<polygon class="warm-layer" points="${X0},${(SY - dz).toFixed(1)} ${X1},${(SY + dz * 0.4).toFixed(1)} ${X1},${(yTh(thE)).toFixed(1)} ${X0},${(yTh(thW)).toFixed(1)}"/>`;
         out += `<line class="surface" x1="${X0}" y1="${(SY - dz).toFixed(1)}" x2="${X1}" y2="${(SY + dz * 0.4).toFixed(1)}"/>`;
         out += `<line class="thermocline" x1="${X0}" y1="${(yTh(thW)).toFixed(1)}" x2="${X1}" y2="${(yTh(thE)).toFixed(1)}"/>`;
-        out += `<text class="small-label" style="fill:#fff" x="${X1 - 6}" y="${(yTh(thE) + 13).toFixed(1)}" text-anchor="end">수온약층 ${fmtN(thE)} m</text><text class="small-label" style="fill:#fff" x="${X0 + 6}" y="${(yTh(thW) + 11).toFixed(1)}">${fmtN(thW)} m</text>`;
+        out += `<text class="small-label" style="fill:#fff" x="${X1 - 6}" y="${(yTh(thE) + 13).toFixed(1)}" text-anchor="end">수온 약층 ${fmtN(thE)} m</text><text class="small-label" style="fill:#fff" x="${X0 + 6}" y="${(yTh(thW) + 11).toFixed(1)}">${fmtN(thW)} m</text>`;
         // trade wind
         const len = 40 + 30 * (1 + t);
         out += arrow(230 + len / 2, 40, 230 - len / 2, 40, 'trade', 'trade-head', 4);
@@ -428,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const { e } = a;
         return `<div class="data-row"><span class="data-name">무역풍</span><span class="data-val">${TRADES[state.trade].label} — ${a.k < 0 ? '따뜻한 표층수가 동쪽으로 되돌아옴' : a.k > 0 ? '따뜻한 표층수를 서쪽에 더 많이 쌓음' : '따뜻한 물은 서쪽에, 동쪽은 용승'}</span></div>` +
-            `<div class="data-row"><span class="data-name">수온</span><span class="data-val">동태평양(페루) ${sgn(e.east)} ℃ · 서태평양(인도네시아) ${sgn(e.west)} ℃ · 동쪽 수온약층 ${e.thE} m</span></div>` +
+            `<div class="data-row"><span class="data-name">수온</span><span class="data-val">동태평양(페루) ${sgn(e.east)} ℃ · 서태평양(인도네시아) ${sgn(e.west)} ℃ · 동쪽 수온 약층 ${e.thE} m</span></div>` +
             `<div class="data-row"><span class="data-name">비와 어장</span><span class="data-val">페루 강수 평소의 ${e.rainE}배 · 인도네시아 ${e.rainW}배 · 용승 ${e.up < 0.5 ? '멎어 어획 급감' : e.up > 1.2 ? '강해 어획 풍성' : '보통'}</span></div>` +
             `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${e.name}</span></div>`;
     }
@@ -479,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '중심 기압'; valueB.textContent = a.vmax ? `${fmtN(a.p)} hPa` : '—';
             if (!a.heat) s = `해수면이 ${a.sst} ℃로 26.5 ℃에 못 미칩니다. 증발이 적어(포화 수증기압 ${a.es.toFixed(0)} hPa) 상승 공기가 응결하며 내놓는 잠열이 모자라고, 구름은 조금 생겨도 소용돌이를 키울 연료가 없어 태풍이 되지 못합니다. 태풍이 여름과 초가을에만, 열대 바다에서만 생기는 까닭입니다.`;
             else if (!a.cor) s = `바다는 ${a.sst} ℃로 충분히 따뜻해 수증기가 넉넉하지만 위도가 0°라 전향력 f = 2Ω sin φ가 0입니다. 저기압 중심으로 모여드는 공기를 옆으로 꺾어 회전시킬 힘이 없어 커다란 적란운 무리는 생겨도 소용돌이로 감기지 못합니다. 태풍은 위도 5° 밖에서 생깁니다.`;
-            else s = `해수면 ${a.sst} ℃의 수증기(포화 수증기압 ${a.es.toFixed(0)} hPa)가 올라가 응결하며 잠열을 내놓고, 위도 ${a.lat}°의 전향력(${fmtExp(a.f)} /s)이 모여드는 공기를 반시계 방향으로 감았습니다. 이 바다에서 이론상 가능한 최대 풍속은 ${fmtN(a.PI)} m/s이고, ${a.lat <= 20 ? '실제 태풍은 대개 그 8할쯤인' : '위도가 높아 상층 바람이 어긋나고 바다가 얕게 따뜻해 6~7할쯤인'} ${fmtN(a.vmax)} m/s에 이르러 중심 기압은 ${fmtN(a.p)} hPa, ${a.grade} 등급입니다. ${a.sst >= 30 ? '바다가 3 ℃ 더 따뜻할 뿐인데 풍속이 훨씬 커지는 것은 수증기가 온도에 따라 가파르게 늘기 때문입니다.' : '바다가 30 ℃면 같은 위도에서 초강력까지 자랄 수 있습니다.'}`;
+            else s = `해수면 ${a.sst} ℃의 수증기(포화 수증기압 ${a.es.toFixed(0)} hPa)가 올라가 응결하며 잠열을 내놓고, 위도 ${a.lat}°의 전향력(${fmtExp(a.f)} /s)이 모여드는 공기를 반시계 방향으로 감았습니다. 이 바다에서 이론상 가능한 최대 풍속은 ${fmtN(a.PI)} m/s이고, ${a.lat <= 20 ? '실제 태풍은 대개 그 8할쯤인' : '위도가 높아 상층 바람이 어긋나고 바다가 얕게 따뜻해 6~7할쯤인'} ${fmtN(a.vmax)} m/s에 이르러 중심 기압은 ${fmtN(a.p)} hPa, ${a.grade} 등급입니다. ${a.sst >= 30 ? '바다가 3 ℃ 더 따뜻할 뿐인데 풍속이 훨씬 커지는 것은 수증기가 온도에 따라 가파르게 늘기 때문입니다.' : `바다가 30 ℃면 같은 위도에서 ${a.lat <= 20 ? '초강력' : '매우강'}까지 자랄 수 있습니다.`}`;
         } else if (a.kind === 'track') {
             const { h } = a;
             labelA.textContent = '진로'; valueA.textContent = a.verdict === 'china' ? '중국 쪽' : a.verdict === 'korea' ? '한반도 관통' : '일본 쪽';
@@ -489,10 +490,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const { e } = a;
             labelA.textContent = '동태평양 수온'; valueA.textContent = `${sgn(e.east)} ℃`;
-            labelB.textContent = '동쪽 수온약층'; valueB.textContent = `${e.thE} m`;
-            if (a.k === 0) s = `무역풍이 평소대로 동쪽에서 서쪽으로 불면 따뜻한 표층수가 서태평양에 쌓여 수온약층이 서쪽 ${e.thW} m, 동쪽 ${e.thE} m로 기울고, 페루 앞바다에서는 깊은 찬물이 올라와(용승) 영양분이 풍부한 어장을 만듭니다. 비는 따뜻한 서태평양 위에 많이 내리고, 그 공기가 상층에서 동쪽으로 되돌아 내려오는 워커 순환이 돕니다.`;
-            else if (a.k < 0) s = `무역풍이 약해지자 서쪽에 쌓여 있던 따뜻한 물이 동쪽으로 되돌아왔습니다. 동태평양 수온이 평소보다 ${sgn(e.east)} ℃ 오르고 수온약층이 ${e.thE} m로 깊어져 용승이 멎으니 영양분이 오르지 않아 멸치 어장이 무너집니다. 따뜻한 바다 위로 비구름이 옮겨 가 페루에는 평소의 ${e.rainE}배 큰비가, 인도네시아·호주에는 가뭄이 듭니다. 이것이 엘니뇨이고, 2~7년마다 되풀이됩니다.`;
-            else s = `무역풍이 강해지자 따뜻한 물이 서쪽에 더 두껍게 쌓이고(수온약층 ${e.thW} m) 동태평양에서는 용승이 세져 수온이 평소보다 ${fmtN(Math.abs(e.east), 1)} ℃ 더 내려갑니다. 서태평양 위의 비구름이 더 커져 인도네시아에는 평소의 ${e.rainW}배 비가 오고 페루는 가뭅니다. 이것이 라니냐이며, 엘니뇨와 번갈아 나타납니다.`;
+            labelB.textContent = '동쪽 수온 약층'; valueB.textContent = `${e.thE} m`;
+            if (a.k === 0) s = `무역풍이 평소대로 동쪽에서 서쪽으로 불면 따뜻한 표층수가 서태평양에 쌓여 수온 약층이 서쪽 ${e.thW} m, 동쪽 ${e.thE} m로 기울고, 페루 앞바다에서는 깊은 찬물이 올라와(용승) 영양분이 풍부한 어장을 만듭니다. 비는 따뜻한 서태평양 위에 많이 내리고, 그 공기가 상층에서 동쪽으로 되돌아 내려오는 워커 순환이 돕니다.`;
+            else if (a.k < 0) s = `무역풍이 약해지자 서쪽에 쌓여 있던 따뜻한 물이 동쪽으로 되돌아왔습니다. 동태평양 수온이 평소보다 ${sgn(e.east)} ℃ 오르고 수온 약층이 ${e.thE} m로 깊어져 용승이 멎으니 영양분이 오르지 않아 멸치 어장이 무너집니다. 따뜻한 바다 위로 비구름이 옮겨 가 페루에는 평소의 ${e.rainE}배 큰비가, 인도네시아·호주에는 가뭄이 듭니다. 이것이 엘니뇨이고, 2~7년마다 되풀이됩니다.`;
+            else s = `무역풍이 강해지자 따뜻한 물이 서쪽에 더 두껍게 쌓이고(수온 약층 ${e.thW} m) 동태평양에서는 용승이 세져 수온이 평소보다 ${fmtN(Math.abs(e.east), 1)} ℃ 더 내려갑니다. 서태평양 위의 비구름이 더 커져 인도네시아에는 평소의 ${e.rainW}배 비가 오고 페루는 가뭅니다. 이것이 라니냐이며, 엘니뇨와 번갈아 나타납니다.`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';

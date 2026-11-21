@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'count') {
             return `<div class="data-row"><span class="data-name">물질</span><span class="data-val">${a.sub.label} ${a.sub.formula} — 화학식량 ${fmtN(a.sub.M, 2)} → 몰 질량 ${fmtN(a.sub.M, 2)} g/mol</span></div>` +
                 `<div class="data-row"><span class="data-name">몰수</span><span class="data-val">${fmtG(a.g)} ÷ ${fmtN(a.sub.M, 2)} g/mol = ${fmtMol(a.n)} mol</span></div>` +
-                `<div class="data-row"><span class="data-name">입자 수</span><span class="data-val">${fmtMol(a.n)} × 6.022×10²³ = ${fmtSci(a.N)}개의 ${a.sub.per}</span></div>` +
+                `<div class="data-row"><span class="data-name">입자 수</span><span class="data-val">${fmtMol(a.n)} × 6.02×10²³ = ${fmtSci(a.N)}개의 ${a.sub.per}</span></div>` +
                 `<div class="data-row match"><span class="data-name">${a.V !== null ? '기체 부피' : '판정'}</span><span class="data-val">${a.V !== null ? `0 ℃ 1기압에서 ${fmtMol(a.n)} × 22.4 L = ${a.V >= 1000 ? `${fmtN(a.V / 1000, 2)} m³` : `${fmtN(a.V, 1)} L`}` : a.verdict === 'less' ? '1몰보다 적음' : a.verdict === 'one' ? '거의 1몰' : '1몰보다 많음'}</span></div>`;
         }
         if (a.kind === 'react') {

@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         swapClock = 0;
     }
     function sendAcross(pt) {
-        const gy = DG.GAP0 + 6 + rnd() * (DG.GAP1 - DG.GAP0 - 12);
+        const gy = DG.Y + 10 + rnd() * (DG.H - 20);   // oxygen slips through the lipid bilayer itself, anywhere along it
         pt.cross = { stage: 0, gy, to: pt.side === 'L' ? 'R' : 'L' };
     }
     function stepParticles(dt, speed, wantR) {
@@ -173,14 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // water tank with a membrane down the middle
         let out = `<rect x="${LX - 6}" y="${Y - 6}" width="${RX + W - LX + 12}" height="${H + 12}" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.6"/>`;
         out += `<rect class="chamber" x="${LX}" y="${Y}" width="${W}" height="${H}" rx="3"/><rect class="chamber" x="${RX}" y="${Y}" width="${W}" height="${H}" rx="3"/>`;
-        // membrane: two rows of lipid heads with tails, and a protein channel in the middle
+        // membrane: two rows of lipid heads with tails (oxygen crosses the bilayer directly, no channel needed)
         for (let py = Y + 4; py <= Y + H - 3; py += 8) {
-            if (py > GAP0 - 6 && py < GAP1 + 6) continue;
             out += `<line x1="${MX - 4}" y1="${py}" x2="${MX - 1}" y2="${py}" stroke="#b45309" stroke-width="1"/><line x1="${MX + 1}" y1="${py}" x2="${MX + 4}" y2="${py}" stroke="#b45309" stroke-width="1"/>`;
             out += `<circle cx="${MX - 5}" cy="${py}" r="3" fill="#f59e0b" stroke="#b45309" stroke-width=".7"/><circle cx="${MX + 5}" cy="${py}" r="3" fill="#f59e0b" stroke="#b45309" stroke-width=".7"/>`;
         }
-        out += `<path d="M ${MX - 10} ${GAP0 - 5} C ${MX - 2} ${GAP0 + 2} ${MX - 2} ${GAP1 - 2} ${MX - 10} ${GAP1 + 5} L ${MX - 5} ${GAP1 + 5} C ${MX + 1} ${GAP1 - 4} ${MX + 1} ${GAP0 + 4} ${MX - 5} ${GAP0 - 5} Z" fill="#38bdf8" stroke="#0369a1" stroke-width=".8"/>`;
-        out += `<path d="M ${MX + 10} ${GAP0 - 5} C ${MX + 2} ${GAP0 + 2} ${MX + 2} ${GAP1 - 2} ${MX + 10} ${GAP1 + 5} L ${MX + 5} ${GAP1 + 5} C ${MX - 1} ${GAP1 - 4} ${MX - 1} ${GAP0 + 4} ${MX + 5} ${GAP0 - 5} Z" fill="#38bdf8" stroke="#0369a1" stroke-width=".8"/>`;
         particles.forEach(p => { out += `<circle class="molecule" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.4"/>`; });
         out += `<text class="gen-text" x="${LX + W / 2}" y="${Y + H + 24}" text-anchor="middle">왼쪽 ${nL}개</text>`;
         out += `<text class="gen-text" x="${RX + W / 2}" y="${Y + H + 24}" text-anchor="middle">오른쪽 ${nR}개</text>`;
@@ -354,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'diffusion' ? '20초 흘려 보기' : '15초 흘려 보기';
-        stageCaption.textContent = state.mode === 'diffusion' ? '가운데 노란 막의 파란 통로로 산소 알갱이가 어느 쪽으로든 지나갈 수 있습니다.'
+        stageCaption.textContent = state.mode === 'diffusion' ? '산소 알갱이는 가운데 노란 막(인지질 2중층)을 그대로 뚫고 어느 쪽으로든 지나갈 수 있습니다.'
             : '짙은 파란 점은 녹은 알갱이입니다. 물(하늘색 점)만 세포막을 지나고, 알갱이는 지나지 못합니다.';
         settingsChanged();
     }));

@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         void cosAlt;
         return { alt, az };
     }
+    // 낮의 길이도 일출·일몰과 같은 기준(태양 윗가장자리, 대기 굴절 포함 고도 −0.833°)으로 잰다.
+    // 그래야 「공전하는 지구」의 낮 길이가 「하루 동안 태양의 길」의 일출~일몰과 같은 값이 된다.
     const dayLength = (dec, lat = LAT) => {
-        const c = -Math.tan(lat * D2R) * Math.tan(dec * D2R);
+        const c = (Math.sin(-0.833 * D2R) - Math.sin(lat * D2R) * Math.sin(dec * D2R)) / (Math.cos(lat * D2R) * Math.cos(dec * D2R));
         if (c <= -1) return 24; if (c >= 1) return 0;
         return 2 * Math.acos(c) * R2D / 15;
     };
@@ -73,8 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function analysePath(s = state) {
         const season = SEASONS[s.season];
         // 일출·일몰은 태양 윗가장자리가 지평선에 닿는 때(대기 굴절 포함, 고도 −0.83°)
-        const c = (Math.sin(-0.833 * D2R) - Math.sin(LAT * D2R) * Math.sin(season.dec * D2R)) / (Math.cos(LAT * D2R) * Math.cos(season.dec * D2R));
-        const len = 2 * Math.acos(Math.max(-1, Math.min(1, c))) * R2D / 15;
+        const len = dayLength(season.dec);
         const rise = noonClock(season.dec) - len / 2, set = noonClock(season.dec) + len / 2;
         const noon = noonAlt(season.dec);
         const verdict = noon >= 70 ? 'high' : noon >= 45 ? 'mid' : 'low';
@@ -364,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         let s = '';
-        if (state.tilt === 0) s = `자전축이 기울지 않으면 지구가 어느 자리에 있어도 서울의 남중 고도는 ${Math.round(a.noon)}°, 낮은 12시간으로 늘 같습니다. 계절이 생기지 않습니다. 계절은 태양과의 거리가 아니라 자전축의 기울기 때문에 생기는 것입니다.`;
+        if (state.tilt === 0) s = `자전축이 기울지 않으면 지구가 어느 자리에 있어도 서울의 남중 고도는 ${Math.round(a.noon)}°, 낮은 약 ${a.len.toFixed(1)}시간으로 늘 같습니다. 계절이 생기지 않습니다. 계절은 태양과의 거리가 아니라 자전축의 기울기 때문에 생기는 것입니다.`;
         else if (a.verdict === 'summer') s = `${a.spot.label}에서는 북반구가 태양 쪽으로 기울어져 서울의 남중 고도가 ${Math.round(a.noon)}°까지 오르고 낮이 ${a.len.toFixed(1)}시간입니다. 햇빛이 곧게 비쳐 한 곳이 받는 빛이 많고 낮도 길어 여름이 됩니다. 반대쪽 자리에서는 ${Math.round(a.other)}°, ${a.otherLen.toFixed(1)}시간으로 겨울입니다.`;
         else s = `${a.spot.label}에서는 북반구가 태양 반대쪽으로 기울어져 서울의 남중 고도가 ${Math.round(a.noon)}°밖에 안 되고 낮이 ${a.len.toFixed(1)}시간입니다. 같은 햇빛이 ${a.spread.toFixed(1)}배 넓은 땅에 퍼져 한 곳이 받는 빛이 적고 낮도 짧아 겨울이 됩니다. 반대쪽 자리에서는 ${Math.round(a.other)}°, ${a.otherLen.toFixed(1)}시간으로 여름입니다.`;
         if (state.tilt === 45) s += ` 기울기를 45°로 키우면 두 자리의 차이가 훨씬 커져 계절 차이도 더 심해집니다.`;

@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<rect class="meter" x="${MX}" y="${MTOP}" width="22" height="${MBOT - MTOP}" rx="3"/>`;
         out += `<rect class="meter-fill" x="${MX + 3}" y="${Math.min(yOf(s.V), yOf(REST)).toFixed(1)}" width="16" height="${Math.abs(yOf(s.V) - yOf(REST)).toFixed(1)}"/>`;
         [[50, '+50', 3], [0, '0', 3], [-55, '문턱', -6], [-65, '휴지', 6], [-90, '−90', 4]].forEach(([v, lab, dy]) => { out += `<line class="ref-line ${v === -55 ? 'threshold' : ''}" x1="${MX - 4}" y1="${yOf(v).toFixed(1)}" x2="${MX + 26}" y2="${yOf(v).toFixed(1)}"/><text class="small-label" x="${MX - 6}" y="${(yOf(v) + dy).toFixed(1)}" text-anchor="end">${lab}</text>`; });
-        out += `<text class="gen-text" x="${MX + 34}" y="60">${s.V >= 0 ? '+' : ''}${s.V.toFixed(0)} mV</text>`;
+        out += `<text class="gen-text" x="${MX + 34}" y="60">${s.V >= 0 ? '+' : ''}${s.V.toFixed(0).replace('-', '−')} mV</text>`;
         out += `<text class="trait-text" style="fill:#0284c7" x="${MX + 34}" y="80">Na⁺ 통로 ${Math.round(s.na / 0.35 * 100)} %</text>`;
         out += `<text class="trait-text" style="fill:#a8661a" x="${MX + 34}" y="96">K⁺ 통로 ${Math.round(s.k / 0.6 * 100)} %</text>`;
         out += `<text class="trait-text" x="${MX + 34}" y="120">${t.toFixed(1)} ms</text>`;
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else {
                 s += `막전위가 문턱을 넘자 Na⁺ 통로가 한꺼번에 열려 Na⁺가 쏟아져 들어와 +${Math.round(a.run.spikes[0].peak)} mV까지 뒤집혔고, 곧 Na⁺ 통로가 닫히고 K⁺ 통로가 열려 K⁺가 빠져나가 다시 내려왔습니다. `;
                 if (a.n === 1) s += `자극이 짧아 활동 전위는 한 번 생겼고, 크기는 자극 세기가 아니라 이온 통로가 정하므로 더 세게 주어도 같은 +40 mV쯤입니다(실무율). `;
-                else s += `자극이 이어지자 활동 전위가 ${a.n}번 되풀이되었습니다. 첫 번째는 +${Math.round(a.run.spikes[0].peak)} mV였고, 뒤따르는 것은 앞 활동 전위의 여파가 채 가시기 전에 생겨 +${Math.round(a.run.spikes[1].peak)} mV로 조금 낮았습니다. 그래도 자극을 더 세게 준다고 커지지는 않습니다(실무율). 사이 간격(${(a.run.spikes[1].t - a.run.spikes[0].t).toFixed(1)} ms)은 Na⁺ 통로가 다시 열릴 수 있게 되는 불응기가 정하며, 자극이 셀수록 문턱에 빨리 다시 이르러 더 자주 생기지만 1초에 수백 번을 넘지는 못합니다. `;
+                else s += `자극이 이어지자 활동 전위가 ${a.n}번 되풀이되었습니다. 첫 번째는 +${Math.round(a.run.spikes[0].peak)} mV였고, 뒤따르는 것은 앞 활동 전위 뒤 Na⁺ 통로가 다 회복되기 전(상대 불응기)에 생겨 +${Math.round(a.run.spikes[1].peak)} mV로 낮았습니다. 그래도 자극을 더 세게 준다고 커지지는 않습니다(실무율). 사이 간격(${(a.run.spikes[1].t - a.run.spikes[0].t).toFixed(1)} ms)은 Na⁺ 통로가 다시 열릴 수 있게 되는 불응기가 정하며, 자극이 셀수록 문턱에 빨리 다시 이르러 더 자주 생기지만 1초에 수백 번을 넘지는 못합니다. `;
             }
             s += `이 곡선은 호지킨과 헉슬리가 오징어 거대 축삭에서 잰 이온 통로의 성질을 그대로 방정식으로 옮겨 계산한 것입니다.`;
         } else if (a.kind === 'conduct') {
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (state.drug === 'normal') s += `전달 물질이 다음 세포의 수용체에 붙어 막전위가 +${run.peak.toFixed(1)} mV 올랐고, 재흡수 펌프와 분해 효소가 절반씩 치워 ${(Math.LN2 / 1.0).toFixed(1)} ms마다 반으로 줄어 ${run.duration.toFixed(1)} ms 만에 신호가 끝났습니다. 그래서 신경 신호는 짧고 또렷합니다. `;
             else if (state.drug === 'blocker') s += `전달 물질은 평소처럼 나왔지만 수용체가 막혀 붙지 못해 다음 세포는 전혀 반응하지 않았습니다. 쿠라레가 근육의 수용체를 이렇게 막아 몸을 움직이지 못하게 하고, 수술 때 근육 이완제로도 쓰입니다. `;
             else if (state.drug === 'reuptake') s += `앞 세포가 전달 물질을 되가져가는 펌프가 막혀 치우는 속도가 절반이 되었고, 전달 물질이 틈에 두 배 오래 남아 다음 세포의 반응이 ${run.duration.toFixed(1)} ms(정상 ${normal.duration.toFixed(1)} ms)로 길어졌습니다. 세로토닌 재흡수를 막는 우울증 치료약이 이 원리로 신호를 키웁니다. `;
-            else s += `전달 물질을 분해하는 효소가 억제되어 치우는 속도가 절반이 되었고, 다음 세포가 ${run.duration.toFixed(1)} ms(정상 ${normal.duration.toFixed(1)} ms) 동안 계속 자극되었습니다. 유기인계 살충제와 신경 가스가 아세틜콜린 분해 효소를 이렇게 막아 근육이 떨리고 굳게 하며, 같은 원리를 약하게 쓴 약은 근무력증 치료에 쓰입니다. `;
+            else s += `전달 물질을 분해하는 효소가 억제되어 치우는 속도가 절반이 되었고, 다음 세포가 ${run.duration.toFixed(1)} ms(정상 ${normal.duration.toFixed(1)} ms) 동안 계속 자극되었습니다. 유기인계 살충제와 신경 가스가 아세틸콜린 분해 효소를 이렇게 막아 근육이 떨리고 굳게 하며, 같은 원리를 약하게 쓴 약은 근무력증 치료에 쓰입니다. `;
             s += `전달 물질은 앞 세포에서만 나오고 수용체는 뒤 세포에만 있으므로 신호는 한쪽으로만 건너갑니다.`;
         }
         predictionResult.textContent = !state.prediction ? '다음에는 결과를 먼저 예상해 보세요.'

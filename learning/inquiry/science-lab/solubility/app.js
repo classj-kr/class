@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ------------------------------------------- 용해도 곡선과 측정값 표 */
-    /* 곡선은 위의 points 표를 그대로 씁니다. 0℃에서 35.7 g, 100℃에서 39.8 g —
+    /* 곡선은 위의 points 표를 그대로 씁니다. 0 ℃에서 35.7 g, 100 ℃에서 39.8 g —
        온도를 100도나 올려도 4.1 g밖에 더 녹지 않는다는 것이 이 실험에서
        보여 주려는 사실입니다. */
     const G = { x0: 52, x1: 424, y0: 140, y1: 26 };
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `<div class="data-row"><span class="data-name">이 온도에서 녹는 양</span><span class="data-val">${grams(maximum)} g</span></div>` +
             `<div class="data-row${remaining < .05 ? ' match' : ''}"><span class="data-name">녹은 소금</span><span class="data-val">${grams(dissolved)} g</span></div>` +
             `<div class="data-row"><span class="data-name">바닥에 남는 소금</span><span class="data-val">${remaining < .05 ? '없음' : `${grams(amount)} − ${grams(maximum)} = ${grams(remaining)} g`}</span></div>` +
-            `<div class="data-row"><span class="data-name">0℃와 100℃ 차이</span><span class="data-val">${grams(cold)} g → ${grams(hot)} g, ${grams(hot - cold)} g만 더 녹습니다</span></div>`));
+            `<div class="data-row"><span class="data-name">0 ℃와 100 ℃ 차이</span><span class="data-val">${grams(cold)} g → ${grams(hot)} g, ${grams(hot - cold)} g만 더 녹습니다</span></div>`));
     }
 
     function clearResult() {
@@ -251,9 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const cupFraction = Math.max(.5, Math.min(1, Number(amountRange.value) / 43));
         renderCrystals(saltCrystalGroup, cupCrystalPool, cupFraction, .85 + .3 * cupFraction);
         const temperature = Number(temperatureRange.value);
-        const mercuryHeight = 4 + (temperature / 100) * 164;
-        mercuryRect.setAttribute('y', String(180 - mercuryHeight));
-        mercuryRect.setAttribute('height', String(mercuryHeight));
+        // 눈금: y 180이 0 ℃, y 12가 100 ℃(20 ℃마다 33.6). 기둥 끝이 눈금과 맞고 아래는 구부까지 잇는다.
+        const mercuryTop = 180 - (temperature / 100) * 168;
+        mercuryRect.setAttribute('y', String(mercuryTop));
+        mercuryRect.setAttribute('height', String(190 - mercuryTop));
         renderCurve();
         renderData();
         const warmth = temperature / 100;

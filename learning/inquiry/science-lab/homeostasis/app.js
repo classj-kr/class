@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<line class="flow-arrow" style="stroke:#7c3aed" x1="170" y1="130" x2="200" y2="130"/><polygon fill="#7c3aed" points="204,130 197,126 197,134"/>`;
         // kidney and bladder
         out += `<path class="kidney" d="M230,96 C205,100 205,150 230,156 C250,160 262,140 258,126 C255,110 250,92 230,96 Z"/><text class="organ-text" x="232" y="130" text-anchor="middle">콩팥</text>`;
-        out += `<text class="small-label" x="232" y="172" text-anchor="middle">물 다시 빨아들임 ${Math.round(adh * 100)} %</text>`;
+        out += `<text class="small-label" x="232" y="172" text-anchor="middle">항이뇨 호르몬 작용 ${Math.round(adh * 100)} %</text>`;
         const BX = 300, BY = 90, BW = 60, BH = 90, fill = clamp(bladder / 700, 0, 1);
         out += `<rect class="bladder" x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="14"/>`;
         out += `<rect class="urine" style="opacity:${(0.35 + 0.65 * adh).toFixed(2)}" x="${BX + 2}" y="${(BY + 2 + (BH - 4) * (1 - fill)).toFixed(1)}" width="${BW - 4}" height="${((BH - 4) * fill).toFixed(1)}" rx="12"/>`;
@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkBtn.textContent = state.mode === 'glucose' ? '3시간 흘려 보기' : state.mode === 'temp' ? '1시간 흘려 보기' : '3시간 흘려 보기';
         stageCaption.textContent = state.mode === 'glucose' ? '혈관 속 노란 점이 포도당입니다. 이자가 인슐린과 글루카곤을 내어 간·근육이 포도당을 넣고 꺼냅니다.'
             : state.mode === 'temp' ? '피부색이 혈관의 넓이, 파란 점이 땀, 왼쪽 물결이 떨림입니다. 오른쪽에 만드는 열과 내보내는 열이 있습니다.'
-                : '몸속 물의 진하기를 뇌하수체가 재어 항이뇨 호르몬을 내면, 콩팥이 물을 얼마나 되돌릴지 정합니다.';
+                : '몸속 물의 진하기를 시상 하부가 감지해 뇌하수체 후엽에서 항이뇨 호르몬이 나오면, 콩팥이 물을 얼마나 되돌릴지 정합니다.';
         settingsChanged();
     }));
     checkBtn.addEventListener('click', startRun);

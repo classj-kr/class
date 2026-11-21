@@ -273,33 +273,41 @@ const server = http.createServer((req, res) => {
         assert.ok(Math.abs(mainRiff.at(-1).time - mainRiff[0].time - 15.5 * 60000 / 123) < 250);
       }
       await page.evaluate(() => window.playbackTest.selectModel('hollow-jazz'));
-      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Breezin’');
+      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Autumn Leaves');
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
-      await page.waitForFunction(() => document.querySelector('.key[data-midi="69"].demo-hit'));
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="64"].demo-hit'));
       assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-cubase-sh');
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
         const theme = await page.evaluate(() => window.bassDemoHits);
-        assert.deepEqual(theme.map(hit => hit.midi), [69,71,69,69,71,69,64,66,62,59,57]);
-        assert.ok(Math.abs(theme.at(-1).time - theme[0].time - 8 * 60000 / 84) < 250);
+        assert.deepEqual(theme.map(hit => hit.midi), [64,66,67,72,45,55,60,71,50,54,60,62,64,66,71,43,54,59,69,48,59,64]);
+        assert.ok(Math.abs(theme.at(-1).time - theme[0].time - 7 * 60000 / 112) < 250);
       }
       await page.evaluate(() => window.playbackTest.selectModel('dreadnought'));
-      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Wish You Were Here');
+      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Hotel California');
       assert.equal(await page.$$('#chordPads button').then(pads => pads.length), 7);
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
-      await page.waitForFunction(() => window.bassDemoHits.length >= 3 && document.querySelector('.key[data-midi="50"].demo-hit'));
+      await page.waitForFunction(() => window.bassDemoHits.length >= 3 && document.querySelector('.key[data-midi="59"].demo-hit'));
       const pickup = await page.evaluate(() => window.bassDemoHits.slice(0, 3));
-      assert.deepEqual(pickup.map(hit => hit.midi), [45,47,50]);
+      assert.deepEqual(pickup.map(hit => hit.midi), [47,54,59]);
       assert.ok(pickup.every(hit => hit.sampleSet === 'guitar-cubase-t'));
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
         const acoustic = await page.evaluate(() => window.bassDemoHits);
-        assert.deepEqual(acoustic.slice(4, 8).map(hit => hit.midi), [52,55,62,67]);
+        assert.deepEqual(acoustic.slice(4, 8).map(hit => hit.midi), [66,62,59,54]);
         assert.ok(acoustic[4].time < acoustic[7].time);
-        assert.equal(acoustic.at(-1).midi, 43);
+        assert.equal(acoustic.at(-1).midi, 49);
       }
+      await page.evaluate(() => window.playbackTest.selectModel('classical-guitar'));
+      assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Shape of My Heart · 레옹');
+      await page.evaluate(() => { window.bassDemoHits = []; });
+      await press('#guitarDemoButton');
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="69"].demo-hit'));
+      assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-cubase-l');
+      await press('#guitarDemoButton');
+      assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       await press('[data-family="bass"]');
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('[data-bass-demo="slap"]');

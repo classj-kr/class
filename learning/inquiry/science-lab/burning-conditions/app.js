@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const eun = w => w + (batchim(w) ? '은' : '는');
 
-    // Both fuels are carbon and hydrogen, so both burn to carbon dioxide and water.
+    // Both fuels contain carbon and hydrogen, so both burn to carbon dioxide and water.
     const FUELS = {
         none: { label: '없음', hint: '탈 물질 없음', ignite: null },
         candle: { label: '양초', hint: '발화점 190 ℃', ignite: 190 },
         paper: { label: '종이', hint: '발화점 450 ℃', ignite: 450 },
     };
-    const PRODUCTS = '이산화탄소와 물';
+    const PRODUCTS = '이산화 탄소와 물';
 
     const state = { fuel: 'candle', temp: 300, oxygen: 'open', jar: 500, progress: 0, prediction: null };
     let running = false, frameId = 0, lastStamp = 0;
@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildControls() {
         controlArea.innerHTML =
             pickRow('탈 물질', 'fuel', Object.entries(FUELS).map(([k, v]) => ({ value: k, label: v.label, hint: v.hint })), state.fuel, 3) +
-            sliderRow('tempRange', '가열 온도', 0, 500, 10, state.temp, ['0℃', '250℃', '500℃']) +
+            sliderRow('tempRange', '가열 온도', 0, 500, 10, state.temp, ['0 ℃', '250 ℃', '500 ℃']) +
             pickRow('산소', 'oxygen', [{ value: 'open', label: '열어 둠', hint: '공기가 계속 들어옴' },
                                       { value: 'closed', label: '유리병으로 덮음', hint: '산소가 갇힘' }], state.oxygen, 2) +
-            sliderRow('jarRange', '덮은 유리병의 크기', 250, 1000, 250, state.jar, ['250mL', '625mL', '1000mL']);
+            sliderRow('jarRange', '덮은 유리병의 크기', 250, 1000, 250, state.jar, ['250 mL', '625 mL', '1000 mL']);
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
                 state[group.dataset.pick] = button.dataset.value;

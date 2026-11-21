@@ -20,14 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const graphGroup = document.getElementById('graphGroup');
     const dataNote = document.getElementById('dataNote');
 
-    // Measured solubilities in g per 100 g of water, at 0/20/40/60/80/100 ℃.
-    // Potassium nitrate climbs steeply while table salt barely moves, which is
-    // the contrast the whole experiment turns on.
+    // Measured solubilities in g per 100 g of water, every 10 ℃ from 0 to
+    // 100 ℃ (standard handbook values). Potassium nitrate climbs steeply while
+    // table salt barely moves, which is the contrast the whole experiment
+    // turns on. Points only 20 ℃ apart made the straight-line reading between
+    // them miss the real curve by up to 2 g (KNO₃ at 30 ℃ read 47.8 g, the
+    // measured value is 45.8 g), so every 10 ℃ point is kept.
     const SOLUTES = {
-        kno3: { name: '질산칼륨', formula: 'KNO₃', color: '#059669', data: [13.3, 31.6, 63.9, 110.0, 169.0, 246.0] },
-        kcl:  { name: '염화칼륨', formula: 'KCl',  color: '#d97706', data: [28.1, 34.2, 40.1, 45.8, 51.3, 56.3] },
-        nacl: { name: '염화나트륨', formula: 'NaCl', color: '#0284c7', data: [35.7, 36.0, 36.6, 37.3, 38.4, 39.8] },
+        kno3: { name: '질산칼륨', formula: 'KNO₃', color: '#059669', data: [13.3, 20.9, 31.6, 45.8, 63.9, 85.5, 110.0, 138.0, 169.0, 202.0, 246.0] },
+        kcl:  { name: '염화칼륨', formula: 'KCl',  color: '#d97706', data: [28.0, 31.2, 34.2, 37.2, 40.1, 42.6, 45.8, 48.3, 51.3, 53.9, 56.3] },
+        nacl: { name: '염화나트륨', formula: 'NaCl', color: '#0284c7', data: [35.7, 35.8, 36.0, 36.3, 36.6, 37.0, 37.3, 37.8, 38.4, 39.0, 39.8] },
     };
+    // Temperatures of the data points above, and the coarser ticks drawn on the graph axis.
+    const DATA_TEMPS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
     const TEMPS = [0, 20, 40, 60, 80, 100];
     const WATER_G = 100;
     const S_MAX = 260;
@@ -44,11 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // points — the same thing a student does with a ruler on the printed graph.
     function solubility(key, t) {
         const d = SOLUTES[key].data;
-        if (t <= TEMPS[0]) return d[0];
-        if (t >= TEMPS[TEMPS.length - 1]) return d[d.length - 1];
-        const i = Math.min(TEMPS.length - 2, Math.floor(t / 20));
-        const span = TEMPS[i + 1] - TEMPS[i];
-        return d[i] + ((d[i + 1] - d[i]) * (t - TEMPS[i])) / span;
+        const T = DATA_TEMPS;
+        if (t <= T[0]) return d[0];
+        if (t >= T[T.length - 1]) return d[d.length - 1];
+        const i = Math.min(T.length - 2, Math.floor(t / 10));
+        const span = T[i + 1] - T[i];
+        return d[i] + ((d[i + 1] - d[i]) * (t - T[i])) / span;
     }
 
     // Only as much as the curve allows can dissolve; the rest sits on the
@@ -262,9 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === actual ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         explanation.textContent =
-            `${temp()} ℃ 에서 ${S.name}의 용해도는 ${a.s1.toFixed(1)} g 이므로 물 100 g 에 최대 ${a.max1.toFixed(1)} g 까지 녹습니다. ` +
+            `${temp()} ℃에서 ${S.name}의 용해도는 ${a.s1.toFixed(1)} g이므로 물 100 g에 최대 ${a.max1.toFixed(1)} g까지 녹습니다. ` +
             (a.undissolved > 1e-9
-                ? `넣은 ${added()} g 중 ${a.dissolved.toFixed(1)} g 만 녹고 ${a.undissolved.toFixed(1)} g이 바닥에 남아 포화 용액이 됩니다. `
+                ? `넣은 ${added()} g 중 ${a.dissolved.toFixed(1)} g만 녹고 ${a.undissolved.toFixed(1)} g이 바닥에 남아 포화 용액이 됩니다. `
                 : `넣은 ${added()} g이 모두 녹아 ${a.saturated ? '꼭 포화' : '불포화'} 용액입니다. `) +
             (a.heating
                 ? `이 상태에서 ${coolTemp()} ℃로 데우면 용해도가 ${a.s2.toFixed(1)} g으로 늘어나 ` +
@@ -326,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.__curveModel = {
-        SOLUTES, TEMPS, WATER_G, solubility, analyse,
+        SOLUTES, TEMPS, DATA_TEMPS, WATER_G, solubility, analyse,
         setSolute(s) { document.querySelector(`[data-solute="${s}"]`).click(); },
         setAdded(v) { addedRange.value = String(v); addedRange.dispatchEvent(new Event('input')); },
         setTemp(v) { tempRange.value = String(v); tempRange.dispatchEvent(new Event('input')); },

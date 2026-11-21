@@ -85,7 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // opacity blocks it (milky/opaque).
     const SOLUTIONS = {
         vinegar: { label: '식초', type: 'acid', appearance: '무색 · 투명',
-            top: '#6ec8eb', topOpacity: .5, bottom: '#3c96c3', bottomOpacity: .62 },
+            // 무색 · 투명: drawn like plain water on the white page — only a faint
+            // glassy tint, so it does not read as a blue liquid next to the
+            // genuinely blue glass cleaner.
+            top: '#e3f0f4', topOpacity: .45, bottom: '#c7dde5', bottomOpacity: .55 },
         lemon: { label: '레몬즙', type: 'acid', appearance: '노란색 · 불투명',
             top: '#f2d64e', topOpacity: .86, bottom: '#dfb636', bottomOpacity: .92 },
         soap: { label: '비눗물', type: 'base', appearance: '흰색 · 불투명',

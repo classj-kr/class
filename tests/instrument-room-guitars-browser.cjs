@@ -110,7 +110,7 @@ const server = http.createServer((req, res) => {
             await paused;
             a.pianoNoteOff(midi);
             if (!voice.released) throw new Error(model + ': key-up left the guitar sustaining');
-            if (![...a.state.pianoReleaseVoices].some(tail => tail.releaseTail)) throw new Error(model + ': missing recorded release tail');
+            if ([...a.state.pianoReleaseVoices].some(tail => tail.releaseTail)) throw new Error(model + ': spliced an unrelated release fragment');
             await OfflineAudioContext.prototype.resume.call(natural);
             const output = await playing;
             let actual = 0, reference = 0;
@@ -119,6 +119,39 @@ const server = http.createServer((req, res) => {
               reference += buffer.getChannelData(0)[i] ** 2;
             }
             row.tapTailRatio = Math.sqrt(actual / reference);
+
+            async function renderShortTap(release, quick = false) {
+              const ctx = new OfflineAudioContext(2, 72000, 48000);
+              window.AudioContext = function () { return ctx; };
+              ctx.resume = () => Promise.resolve();
+              a.state.audioContext = null;
+              a.state.pianoVoices.clear();
+              a.state.pianoReleaseVoices.clear();
+              a.ensureAudio();
+              window.AudioContext = NativeContext;
+              const note = a.startConcertGrandSample(55, .8, 55, buffer, config.id);
+              if (note.source.loop) throw new Error(model + ': plucked sample loops');
+              if (release == null) return ctx.startRendering();
+              const suspended = ctx.suspend(release), rendering = ctx.startRendering();
+              await suspended;
+              if (quick) a.releasePianoVoice(note, true);
+              else a.pianoNoteOff(55);
+              await OfflineAudioContext.prototype.resume.call(ctx);
+              return rendering;
+            }
+            const held = await renderShortTap(null);
+            const short = await renderShortTap(.04);
+            const muted = await renderShortTap(.04, true);
+            let heldBody = 0, tapBody = 0, muteBody = 0, tail = 0;
+            for (let i = 4800; i < 8640; i++) {
+              heldBody += held.getChannelData(0)[i] ** 2;
+              tapBody += short.getChannelData(0)[i] ** 2;
+              muteBody += muted.getChannelData(0)[i] ** 2;
+            }
+            for (let i = 57600; i < 72000; i++) tail += short.getChannelData(0)[i] ** 2;
+            row.shortTapBodyRatio = Math.sqrt(tapBody / heldBody);
+            row.explicitMuteRatio = Math.sqrt(muteBody / heldBody);
+            row.shortTapLateRms = Math.sqrt(tail / 14400);
           }
         }
         results.push(row);
@@ -130,6 +163,11 @@ const server = http.createServer((req, res) => {
       assert.ok(render.peak < .99 && render.rms > .001, JSON.stringify({model:row.model,...render}));
     }
     for (const row of results) assert.ok(row.tapTailRatio < .015, row.model + ': key-up damps the note after its short recorded release');
+    for (const row of results) {
+      assert.ok(row.shortTapBodyRatio > .98, row.model + ': quick key-up removed the original pluck body');
+      assert.ok(row.explicitMuteRatio < .15, row.model + ': explicit damping must bypass the pluck body protection');
+      assert.ok(row.shortTapLateRms < .00001, row.model + ': short taps must not hang like a sustain pedal');
+    }
     assert.deepEqual(errors, []);
     // An unsupported lossless decoder must use the supplied Ogg fallback.
     const fallbackPage = await browser.newPage();

@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pump = a.kind === 'pump', invalid = a.kind === 'flow' && a.verdict !== 'ok', done = state.progress >= 1;
         const fraction = pump ? 1 / a.cop : a.eta, grow = done ? 1 : ease(state.progress), split = 420 * fraction * grow, rest = 420 * (1 - fraction) * grow;
         const first = pump ? '공급한 일' : '한 일', second = pump ? '바깥에서 가져온 열' : '배출한 열';
-        let o = eText(20, 28, pump ? '실내로 전달한 열을 100으로 놓고 비교' : invalid ? '주장하는 에너지 배분 · 실현 불가' : '고온에서 받은 열을 100으로 놓고 비교', EI, 'start');
+        let o = eText(20, 28, pump ? '이상적인(가역) 열펌프 · 실내로 보낸 열을 100으로' : invalid ? '주장하는 에너지 배분 · 실현 불가' : '고온에서 받은 열을 100으로 놓고 비교', EI, 'start');
         o += `<rect x="20" y="52" width="420" height="30" fill="#f4f7f9" stroke="#d3dde4"/>`;
         o += `<rect data-energy="work" data-share="${fraction}" x="20" y="52" width="${split.toFixed(1)}" height="30" fill="${invalid ? '#bb5960' : EGREEN}"/><rect data-energy="heat" data-share="${1 - fraction}" x="${(20 + split).toFixed(1)}" y="52" width="${rest.toFixed(1)}" height="30" fill="${ECOLD}"/>`;
         o += `<circle cx="24" cy="106" r="4" fill="${invalid ? '#bb5960' : EGREEN}"/>` + eText(35, 111, done ? `${first} ${(fraction * 100).toFixed(1)}` : first, EI, 'start');
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildPrediction();
         checkBtn.textContent = state.mode === 'carnot' ? '한 바퀴 돌리기' : state.mode === 'flow' ? '열 흘려보내기' : '열펌프 돌리기';
         stageCaption.textContent = state.mode === 'carnot' ? '실린더 속 기체가 뜨거운 곳에서 열을 받아 팽창하고, 단열 팽창으로 식은 뒤, 차가운 곳에 열을 버리며 압축되고, 단열 압축으로 다시 더워지는 네 과정입니다.'
-            : state.mode === 'flow' ? '위에서 받은 열이 기관에서 오른쪽의 일과 아래로 버리는 열로 갈라집니다. 화살표는 에너지의 이동 방향을 나타냅니다.'
+            : state.mode === 'flow' ? '왼쪽 고온 열원에서 받은 열이 기관에서 추를 들어 올리는 일과 오른쪽 저온 열원으로 버리는 열로 갈라집니다. 화살표는 에너지의 이동 방향을 나타냅니다.'
                 : '왼쪽 바깥에서 열을 퍼 올려 오른쪽 집 안에 보냅니다. 외부에서 일을 공급하여 열을 옮깁니다.';
         settingsChanged();
     }));

@@ -311,14 +311,14 @@ function explain(a) {
     } else if (a.alive < 0.98) {
         s += `높은 온도를 거치며 효소의 ${Math.round((1 - a.alive) * 100)}%가 이미 익었고, 이 몫은 온도를 낮춰도 되살아나지 않습니다. `;
     } else if (a.ph < 0.2) {
-        s += `pH ${numEun(String(state.ph))} ${e.name}에게 너무 벗어난 값이라 활성 부위 모양이 흐트러졌습니다. 다만 이 변화는 pH를 ${e.phOpt} 가까이 되돌리면 다시 회복됩니다. `;
+        s += `pH ${numEun(String(state.ph))} ${e.name}에게 너무 벗어난 값이라 활성 부위 모양이 흐트러졌습니다. 이 모형은 pH를 ${e.phOpt} 가까이 되돌리면 활성이 돌아오게 나타내지만, 실제 효소는 pH가 크게 벗어나면 되돌아오지 않을 수도 있습니다. `;
     }
     if (v === 'p1') {
         s += `경쟁적 억제제는 기질과 똑같은 자리를 노리므로 지금 ${Math.round(a.blocked * 100)}%의 차례를 가로챕니다. 하지만 기질을 늘릴수록 밀려나기 때문에 아무리 방해해도 최고 속도 ${numEun(fmt(a.vmax, 1))} 억제제가 없을 때와 같고, 대신 절반 속도에 이르는 데 필요한 농도가 ${fmt(a.kmClean, 1)}에서 ${numRo(fmt(a.km, 1))} 늘어납니다.`;
     } else if (v === 'p2') {
         s += `비경쟁적 억제제는 활성 부위가 아닌 다른 자리에 붙어 효소 모양을 바꿉니다. 기질과 다투는 것이 아니므로 기질을 아무리 넣어도 막힌 ${Math.round(a.blocked * 100)}%는 그대로 놀고, 최고 속도가 ${fmt(a.vmaxClean, 1)}에서 ${numRo(fmt(a.vmax, 1))} 내려갑니다. 붙잡는 힘은 그대로여서 Km은 ${fmt(a.km, 1)}에 머뭅니다.`;
     } else {
-        s += `억제제가 없으므로 Vmax ${numGwa(fmt(a.vmax, 1))} Km ${fmt(a.km, 1)}이 지금 조건에서 효소가 가진 값 그대로입니다. Km은 온도나 pH를 바꿔도 달라지지 않습니다. 붙잡는 힘이 아니라 일하는 빠르기만 달라지기 때문입니다.`;
+        s += `억제제가 없으므로 Vmax ${numGwa(fmt(a.vmax, 1))} Km ${fmt(a.km, 1)}이 지금 조건에서 효소가 가진 값 그대로입니다. 이 모형은 온도와 pH가 Vmax만 바꾸고 Km은 그대로 두도록 단순화했습니다. 실제 효소의 Km은 온도나 pH에 따라 달라질 수 있습니다.`;
     }
     $('elementaryExplanation').textContent = s;
 }

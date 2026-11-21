@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rain: { label: '비', hint: '민물 200 g 들어옴', water: 200, when: '비가 오면', how: '비로 민물 200 g이 들어오면' },
         river: { label: '강물 유입', hint: '민물 300 g 들어옴', water: 300, when: '강물이 들어오면', how: '강물로 민물 300 g이 들어오면' },
         freeze: { label: '결빙', hint: '물 200 g이 얼음이 됨', water: -200, ice: 'form', when: '결빙이 일어나면', how: '결빙으로 물 200 g이 얼음이 되어 빠져나가면(얼음 결정에는 염류가 거의 끼지 못합니다)' },
-        melt: { label: '해빙', hint: '빙하 200 g 녹아 들어옴', water: 200, ice: 'melt', when: '해빙이 일어나면', how: '해빙으로 빙하 녹은 민물 200 g이 들어오면' },
+        melt: { label: '빙하 녹음', hint: '빙하 200 g 녹아 들어옴', water: 200, ice: 'melt', when: '빙하가 녹으면', how: '빙하가 녹아 민물 200 g이 들어오면' },
         stir: { label: '바람이 섞음', hint: '물만 오르내림', water: 0, when: '바람이 섞기만 하면', how: '바람이 물을 위아래로 섞기만 하면' },
     };
     const IONS = [['염화 이온 Cl⁻', 55.0, '#4ade80'], ['나트륨 이온 Na⁺', 30.6, '#e5e7eb'], ['황산 이온 SO₄²⁻', 7.7, '#d97706'], ['마그네슘 이온 Mg²⁺', 3.7, '#a78bfa'], ['칼슘·칼륨 등', 3.0, '#dc2626']];
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const PRED_P = [{ value: 'shallow', label: '얕고 뚜렷한 수온약층 (100 m 안쪽)' }, { value: 'deep', label: '깊고 완만한 수온약층 (100 m 너머)' }, { value: 'none', label: '수온약층이 거의 없음' }];
+    const PRED_P = [{ value: 'shallow', label: '얕고 뚜렷한 수온 약층 (100 m 안쪽)' }, { value: 'deep', label: '깊고 완만한 수온 약층 (100 m 너머)' }, { value: 'none', label: '수온 약층이 거의 없음' }];
     const PRED_S = [{ value: 'up', label: '염분이 오름 (짜짐)' }, { value: 'same', label: '그대로' }, { value: 'down', label: '염분이 내림 (싱거워짐)' }];
     const PRED_D = [{ value: 'sink', label: '가라앉음 (더 무거움)' }, { value: 'same', label: '그 자리 (같음)' }, { value: 'float', label: '떠오름 (더 가벼움)' }];
 
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.prediction = null;
         window.scienceInvalidatePrediction?.();
         const list = state.mode === 'profile' ? PRED_P : state.mode === 'salinity' ? PRED_S : PRED_D;
-        predictionLegend.textContent = state.mode === 'profile' ? `${REGIONS[state.region].label} ${SEASONS[state.season].label} 바다의 수온약층은?`
+        predictionLegend.textContent = state.mode === 'profile' ? `${REGIONS[state.region].label} ${SEASONS[state.season].label} 바다의 수온 약층은?`
             : state.mode === 'salinity' ? `바닷물 1 kg(35 ‰)에 ${EVENTS[state.event].when} 염분은?`
                 : `${TEMPS[state.temp].label}·${SALTS[state.salt].label} 물덩이를 15 ℃·35 ‰ 바닷물 속에 놓으면?`;
         predictionArea.className = 'prediction-buttons three';
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (p > 0) out += `<text class="small-label probe-read" x="${(px + (flip ? -9 : 9)).toFixed(1)}" y="${(py + (zNow < 60 ? 16 : 4.5)).toFixed(1)}" text-anchor="${flip ? 'end' : 'start'}">${fmtN(Tn, 1)} ℃</text>`;
         // layer names: only after the whole column has been measured
         if (measured) {
-            const layers = a.verdict === 'none' ? [[0, 1000, '층 없음', '#475569']] : [[0, a.mld, '혼합층', '#047857'], [a.mld, a.thermoEnd, '수온약층', '#b45309'], [a.thermoEnd, 1000, '심해층', '#0369a1']];
+            const layers = a.verdict === 'none' ? [[0, 1000, '층 없음', '#475569']] : [[0, a.mld, '혼합층', '#047857'], [a.mld, a.thermoEnd, '수온 약층', '#b45309'], [a.thermoEnd, 1000, '심해층', '#0369a1']];
             let lastY = Y0 - 4;
             layers.forEach(([z0, z1, lab, col]) => {
                 const y0 = yOf(z0), y1 = yOf(z1), ly = clamp((y0 + y1) / 2 + 4.5, Math.max(Y0 + 12, lastY + 16), Y1 - 2);
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 out += `<text class="layer-label" style="fill:${col}" x="${(SX0 + SX1) / 2}" y="${ly.toFixed(1)}" text-anchor="middle">${lab}</text>`;
             });
         }
-        const VERD = { shallow: `얕고 뚜렷한 수온약층 (${a.mld} m 아래)`, deep: `깊고 완만한 수온약층 (${a.mld} m 아래)`, none: '수온약층이 거의 없음' };
+        const VERD = { shallow: `얕고 뚜렷한 수온 약층 (${a.mld} m 아래)`, deep: `깊고 완만한 수온 약층 (${a.mld} m 아래)`, none: '수온 약층이 거의 없음' };
         out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${measured ? `${REGIONS[state.region].label} ${SEASONS[state.season].label}: ${VERD[a.verdict]}` : `${REGIONS[state.region].label} · ${SEASONS[state.season].label}`}</text>`;
         return out;
     }
@@ -349,8 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'profile') {
             return `<div class="data-row"><span class="data-name">바다</span><span class="data-val">${REGIONS[state.region].label} ${SEASONS[state.season].label} — 표층 ${fmtN(a.sst, 1)} ℃, 심해 ${a.deep} ℃ (차이 ${fmtN(Math.abs(a.dT), 1)} ℃)</span></div>` +
                 (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">혼합층</span><span class="data-val">0~${a.mld} m — 바람이 섞어 수온이 고름</span></div>` +
-                `<div class="data-row"><span class="data-name">수온약층</span><span class="data-val">${a.verdict === 'none' ? '뚜렷하지 않음 (위아래 차이 3 ℃ 미만)' : `${a.mld}~${a.thermoEnd} m — 가장 급한 곳 ${fmtN((a.sst - a.deep) / a.L * 100, 1)} ℃/100 m`}</span></div>` +
-                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'shallow' ? '얕고 뚜렷한 수온약층' : a.verdict === 'deep' ? '깊고 완만한 수온약층' : '수온약층이 거의 없음'}</span></div>`);
+                `<div class="data-row"><span class="data-name">수온 약층</span><span class="data-val">${a.verdict === 'none' ? '뚜렷하지 않음 (위아래 차이 3 ℃ 미만)' : `${a.mld}~${a.thermoEnd} m — 가장 급한 곳 ${fmtN((a.sst - a.deep) / a.L * 100, 1)} ℃/100 m`}</span></div>` +
+                `<div class="data-row match"><span class="data-name">판정</span><span class="data-val">${a.verdict === 'shallow' ? '얕고 뚜렷한 수온 약층' : a.verdict === 'deep' ? '깊고 완만한 수온 약층' : '수온 약층이 거의 없음'}</span></div>`);
         }
         if (a.kind === 'salinity') {
             return `<div class="data-row"><span class="data-name">처음</span><span class="data-val">물 965 g + 염류 35 g = 1,000 g → 35 ÷ 1,000 × 1000 = 35.0 ‰</span></div>` +
@@ -411,8 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '표층과 심해 차이'; valueB.textContent = `${fmtN(Math.abs(a.dT), 1)} ℃`;
             s = `${r.label} ${se.label} 바다는 표층이 ${fmtN(a.sst, 1)} ℃, 심해가 ${a.deep} ℃입니다. ${se.label === '여름' ? '햇볕이 세서 겉물이 데워지고 바람이 약해' : '햇볕이 약해 겉물이 식고 바람이 세서'} 혼합층은 ${a.mld} m까지입니다. `;
             if (a.verdict === 'none') s += `표층과 심해의 온도 차이가 ${fmtN(Math.abs(a.dT), 1)} ℃뿐이라 아래로 갈수록 급히 식는 층이 생기지 않습니다. 극지방 바다는 위아래가 다 차서 층이 없고, 그래서 표층수가 식거나 얼며 짜지면 곧장 심해로 가라앉을 수 있습니다.`;
-            else if (a.verdict === 'shallow') s += `그 바로 아래 ${a.mld}~${a.thermoEnd} m에서 수온이 ${fmtN(a.dT, 1)} ℃나 급히 떨어지는 얕고 뚜렷한 수온약층이 생깁니다. 이 층은 위아래 물이 섞이는 것을 막는 뚜껑이라, 표층의 산소가 아래로, 심해의 영양분이 위로 오르내리기 어렵습니다.`;
-            else s += `겨울에는 식은 표층수가 무거워져 가라앉고 센 바람이 깊이 휘저어 혼합층이 ${a.mld} m로 깊어지며, 수온약층은 그 아래 ${a.mld}~${a.thermoEnd} m에서 완만하게 나타납니다. 이때 위아래가 잘 섞여 표층에 영양분이 올라오고, 봄에 플랑크톤이 크게 늘어나는 바탕이 됩니다.`;
+            else if (a.verdict === 'shallow') s += `그 바로 아래 ${a.mld}~${a.thermoEnd} m에서 수온이 ${fmtN(a.dT, 1)} ℃나 급히 떨어지는 얕고 뚜렷한 수온 약층이 생깁니다. 이 층은 위아래 물이 섞이는 것을 막는 뚜껑이라, 표층의 산소가 아래로, 심해의 영양분이 위로 오르내리기 어렵습니다.`;
+            else s += `겨울에는 식은 표층수가 무거워져 가라앉고 센 바람이 깊이 휘저어 혼합층이 ${a.mld} m로 깊어지며, 수온 약층은 그 아래 ${a.mld}~${a.thermoEnd} m에서 완만하게 나타납니다. 이때 위아래가 잘 섞여 표층에 영양분이 올라오고, 봄에 플랑크톤이 크게 늘어나는 바탕이 됩니다.`;
         } else if (a.kind === 'salinity') {
             const { ev } = a;
             labelA.textContent = '염분'; valueA.textContent = `35.0 → ${fmtN(a.S2, 1)} ‰`;
@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
         buildControls();
         buildPrediction();
         checkBtn.textContent = state.mode === 'profile' ? '수온 재기' : state.mode === 'salinity' ? '일어나게 하기' : '물덩이 놓기';
-        stageCaption.textContent = state.mode === 'profile' ? '왼쪽 물기둥의 색이 수온입니다. 주황 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온약층입니다.'
+        stageCaption.textContent = state.mode === 'profile' ? '왼쪽 물기둥의 색이 수온입니다. 주황 곡선이 깊이에 따른 수온이고, 급하게 꺾이는 곳이 수온 약층입니다.'
             : state.mode === 'salinity' ? '비커 속 흰 알갱이 35개가 염류입니다. 물이 늘거나 줄면 알갱이 사이가 벌어지거나 좁아집니다.'
                 : '가운데 물덩이가 둘레 바닷물보다 무거우면 가라앉고 가벼우면 떠오릅니다. 색은 수온입니다.';
         settingsChanged();

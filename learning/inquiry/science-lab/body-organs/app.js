@@ -37,6 +37,9 @@ const SYSTEMS = {
             { n: '큰창자', x: 124, y: 196, note: '물을 빨아들이고 찌꺼기를 모읍니다', stay: '16시간',
               art: (c, k) => { const d = 'M150 216 C136 218 126 220 124 212 L124 176 C124 168 128 166 136 166 L166 166 C174 166 177 170 177 178 L177 212 C177 222 168 224 158 224 C152 224 150 228 150 238'; return `<path d="${d}" fill="none" stroke="${k}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${c}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>`; },
               route: [[150, 216], [126, 214], [124, 176], [132, 166], [168, 166], [177, 178], [177, 214], [158, 224], [150, 238]] },
+            { n: '항문', x: 150, y: 244, note: '소화되지 않은 찌꺼기를 대변으로 몸 밖에 내보냅니다', stay: '배출할 때',
+              art: (c, k) => `<path d="M150 236 L150 246" stroke="${k}" stroke-width="5" stroke-linecap="round"/><ellipse cx="150" cy="248" rx="4" ry="2" fill="${c}" stroke="${k}" stroke-width="1.4"/>`,
+              route: [[150, 238], [150, 250]] },
         ],
     },
     resp: {
@@ -76,13 +79,13 @@ const SYSTEMS = {
         ],
     },
     excr: {
-        name: '배설 기관', mover: '찌꺼기', colour: '#e0a07a', dark: '#8a4a26', unit: 'L/일',
+        name: '배설 기관', mover: '노폐물', colour: '#e0a07a', dark: '#8a4a26', unit: 'L/일',
         label: '하루에 거르는 피',
         organs: [
-            { n: '콩팥', x: 132, y: 172, note: '피 속 찌꺼기를 걸러 냅니다', stay: '늘',
+            { n: '콩팥', x: 132, y: 172, note: '피 속 노폐물을 걸러 오줌을 만듭니다', stay: '늘',
               art: (c, k) => `<path d="M131 160 C122 160 118 170 120 180 C122 190 132 194 137 188 C140 184 136 180 138 176 C140 172 142 168 140 164 C138 161 134 160 131 160 Z M169 156 C178 156 182 166 180 176 C178 186 168 190 163 184 C160 180 164 176 162 172 C160 168 158 164 160 160 C162 157 166 156 169 156 Z" fill="${c}" stroke="${k}" stroke-width="1.6"/><path d="M150 150 L150 214 M138 174 L150 172 M162 170 L150 168" stroke="#c43a48" stroke-width="2" opacity=".55"/>`,
               route: [[150, 168], [138, 174], [130, 178], [136, 184]] },
-            { n: '오줌관', x: 140, y: 202, note: '콩팥에서 방광까지 내려갑니다', stay: '몇 초',
+            { n: '오줌관', x: 140, y: 202, note: '콩팥에서 만든 오줌이 방광까지 내려갑니다', stay: '몇 초',
               art: (c, k) => `<path d="M136 184 C138 196 142 206 146 218 M164 180 C162 194 158 206 154 218" fill="none" stroke="${k}" stroke-width="3" stroke-linecap="round"/>`,
               route: [[136, 184], [140, 200], [146, 218]] },
             { n: '방광', x: 150, y: 224, note: '오줌을 모아 두었다가 내보냅니다', stay: '몇 시간',
@@ -110,6 +113,12 @@ function eun(w) {
     const ch = w.charCodeAt(w.length - 1);
     const jong = ch >= 0xac00 && ch <= 0xd7a3 && (ch - 0xac00) % 28 !== 0;
     return w + (jong ? '은' : '는');
+}
+// 음식이, 공기가
+function iga(w) {
+    const ch = w.charCodeAt(w.length - 1);
+    const jong = ch >= 0xac00 && ch <= 0xd7a3 && (ch - 0xac00) % 28 !== 0;
+    return w + (jong ? '이' : '가');
 }
 
 // What this system gets through, in its own units. Digestion and excretion do
@@ -198,7 +207,7 @@ function drawBody(g) {
     }
 
     // Names stand beside the body, joined to each organ by a thin line.
-    g.appendChild(el('text', { x: 236, y: 26, class: 'small-label' }, `${sys.mover}가 지나는 차례`));
+    g.appendChild(el('text', { x: 236, y: 26, class: 'small-label' }, `${iga(sys.mover)} 지나는 차례`));
     const gap = Math.min(52, 250 / organs.length);
     organs.forEach((o, i) => {
         const here = i === stepAt, y = 56 + i * gap;
@@ -222,7 +231,7 @@ function render() {
     updateReadout();
 }
 
-const WORDS = {p1:'소화와 영양소 흡수',p2:'산소 공급과 이산화 탄소 배출',p3:'피를 온몸으로 운반',p4:'노폐물을 오줌으로 배출'};
+const WORDS = {p1:'음식을 소화하고 영양소를 흡수하는 것',p2:'산소를 받아들이고 이산화 탄소를 내보내는 것',p3:'피를 온몸으로 운반하는 것',p4:'노폐물을 걸러 오줌으로 내보내는 것'};
 
 function updateReadout() {
     const a=analyse();$('stageBadge').textContent=a.sys.name+' · '+a.act.name;

@@ -549,7 +549,7 @@
     finisherBoard.register({
       difficulty: `${playLabel()} · ${size.pairs}쌍`,
       rank: size.rank,
-      targetId: 'result-finishers-list'
+      usedHint: hintsLeft < HINTS
     });
     window.setTimeout(() => {
       if (!finished || !puzzle || board.some(t => t >= 0)) return; // 그사이 새 판을 열었으면 띄우지 않는다

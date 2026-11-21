@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     // The two red flames are told apart by their lines, so each names the other.
     const LOOKALIKE = { li: 'sr', sr: 'li' };
+    // 물에 거의 녹지 않는 염(앙금이 되는 것)은 수용액이 아니라 가루를 백금선에 묻힌다.
+    // 탄산 칼슘 0.0013, 탄산 스트론튬 0.001, 황산 스트론튬 0.013, 황산 칼슘 0.2 g/물 100 g(20 ℃),
+    // 탄산 구리는 물에 녹지 않는 초록색 가루(염기성 탄산 구리).
+    const INSOLUBLE = new Set(['ca-co3', 'ca-so4', 'sr-co3', 'sr-so4', 'cu-co3']);
 
     const SUB = '₀₁₂₃₄₅₆₇₈₉';
     const sub = n => (n === 1 ? '' : String(n).split('').map(d => SUB[Number(d)]).join(''));
@@ -95,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const metal = METALS[s.metal], anion = ANIONS[s.anion];
         const c = compound(metal, anion);
         const brightest = [...metal.lines].sort((a, b) => b[1] - a[1]).slice(0, 2).map(l => l[0]);
-        return { kind: 'flame', metal, anion, compound: c, colour: metal.colour, lookalike: LOOKALIKE[s.metal] ? METALS[LOOKALIKE[s.metal]] : null, brightest };
+        return { kind: 'flame', metal, anion, compound: c, colour: metal.colour, lookalike: LOOKALIKE[s.metal] ? METALS[LOOKALIKE[s.metal]] : null, brightest, powder: INSOLUBLE.has(`${s.metal}-${s.anion}`) };
     }
 
     // how strongly the flame is coloured at progress p: the wire goes in, the
@@ -111,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const sample = IONS[s.sample];
         const field = s.volts / STRIP_M;                                   // V/m
         const speed = PAPER_FACTOR * sample.mobility * field;              // m/s
-        const diffusion = PAPER_FACTOR * sample.mobility * KT_OVER_E;      // m²/s
+        // Einstein relation D = u·kT/(|z|e): a doubly charged ion with the same mobility diffuses half as fast.
+        const diffusion = PAPER_FACTOR * sample.mobility * KT_OVER_E / Math.abs(sample.charge);   // m²/s
         const seconds = RUN_MINUTES * 60;
         const travelMm = Math.min(speed * seconds * 1000, STRIP_M * 500 - CRYSTAL_MM);
         const spreadMm = Math.sqrt(2 * diffusion * seconds) * 1000;        // one standard deviation
@@ -231,15 +236,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // the beaker of sample solution (구리 화합물만 푸르고, 나머지는 색이 없는 수용액)
         const BX = 84, BY = 116;
-        const sol = a.metal.symbol === 'Cu' ? '#3b82f6' : '#93c5fd';
-        out += `<rect fill="${sol}" opacity="${a.metal.symbol === 'Cu' ? '.45' : '.25'}" x="${BX - 25}" y="${BY + 14}" width="50" height="41" rx="3"/>`;
-        out += `<path class="glass" d="M${BX - 26},${BY - 10} L${BX - 26},${BY + 48} Q${BX - 26},${BY + 56} ${BX - 18},${BY + 56} L${BX + 18},${BY + 56} Q${BX + 26},${BY + 56} ${BX + 26},${BY + 48} L${BX + 26},${BY - 10}"/>`;
+        if (a.powder) {
+            // 물에 거의 녹지 않는 염: 시계 접시 위의 가루 (탄산 구리만 초록색, 나머지는 흰 가루)
+            const pc = a.metal.symbol === 'Cu' ? '#5fa88a' : '#f3f0e8';
+            out += `<path data-sample-form="powder" fill="${pc}" stroke="#a8a29e" stroke-width="1" d="M${BX - 18},${BY + 47} Q${BX - 6},${BY + 30} ${BX},${BY + 31} Q${BX + 8},${BY + 31} ${BX + 18},${BY + 47} Z"/>`;
+            out += `<path class="glass" d="M${BX - 32},${BY + 40} Q${BX},${BY + 60} ${BX + 32},${BY + 40}"/>`;
+        } else {
+            const sol = a.metal.symbol === 'Cu' ? '#3b82f6' : '#93c5fd';
+            out += `<rect data-sample-form="solution" fill="${sol}" opacity="${a.metal.symbol === 'Cu' ? '.45' : '.25'}" x="${BX - 25}" y="${BY + 14}" width="50" height="41" rx="3"/>`;
+            out += `<path class="glass" d="M${BX - 26},${BY - 10} L${BX - 26},${BY + 48} Q${BX - 26},${BY + 56} ${BX - 18},${BY + 56} L${BX + 18},${BY + 56} Q${BX + 26},${BY + 56} ${BX + 26},${BY + 48} L${BX + 26},${BY - 10}"/>`;
+        }
         out += `<text class="part-label" x="${BX}" y="${BY + 76}" text-anchor="middle">${a.compound.name}</text>`;
-        out += `<text class="small-label" x="${BX}" y="${BY + 90}" text-anchor="middle">${a.compound.formula} 수용액</text>`;
+        out += `<text class="small-label" x="${BX}" y="${BY + 90}" text-anchor="middle">${a.compound.formula} ${a.powder ? '가루' : '수용액'}</text>`;
 
-        // 백금선: 수용액에 담갔다가 들어 올려 겉불꽃 가장자리에 댄다
+        // 백금선: 수용액에 담그거나 가루에 묻혔다가 들어 올려 겉불꽃 가장자리에 댄다
         const lift = Math.min(1, Math.max(0, (p - 0.18) / 0.14)), arc = Math.sin(Math.PI * lift) * 36;
-        const lx = BX + (CX - 8 - BX) * lift, ly = (BY + 30) + ((TOP - 30) - (BY + 30)) * lift - arc;
+        const y0 = a.powder ? BY + 32 : BY + 30;
+        const lx = BX + (CX - 8 - BX) * lift, ly = y0 + ((TOP - 30) - y0) * lift - arc;
         out += `<line class="wire" x1="${(lx - 70).toFixed(1)}" y1="${(ly - 60).toFixed(1)}" x2="${lx.toFixed(1)}" y2="${ly.toFixed(1)}"/>`;
         out += `<circle class="wire-loop" cx="${lx.toFixed(1)}" cy="${(ly + 4).toFixed(1)}" r="4.5"/>`;
         out += `<rect class="handle" x="${(lx - 84).toFixed(1)}" y="${(ly - 72).toFixed(1)}" width="18" height="16" rx="3" transform="rotate(41 ${(lx - 75).toFixed(1)} ${(ly - 64).toFixed(1)})"/>`;

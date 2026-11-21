@@ -724,7 +724,7 @@ body{align-items:center;padding:18px}
 </style>
 <script src="../../../assets/network/game-network.js?v=20260821"></script>
 <script src="../../../assets/network/finisher-api.js"></script>
-<script src="../../../assets/network/finisher-board.js?v=20261119-row"></script>
+<script src="../../../assets/network/finisher-board.js?v=20261121-hints"></script>
 <script src="/assets/network/multiplayer-avatars.js?v=20261114-1"></script>
 <script src="/assets/network/single-player-avatar.js?v=2"></script>
 <link rel="stylesheet" href="/assets/network/multiplayer-lobby.css?v=20261114-avatars">
@@ -770,7 +770,7 @@ body{align-items:center;padding:18px}
     <div class="finishers-list" id="today-finishers-list"></div>
 </aside>
 <style>
-/* 순위전(puzzle-race.js): 풀이 도우미는 틀렸을 때만 열리고, 메인 화면 단추 대신 경주로를 둔다. */
+/* 순위전(puzzle-race.js): 힌트는 틀렸을 때만 열리고, 메인 화면 단추 대신 경주로를 둔다. */
 body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !important; }
 .race-info { margin: 0 0 8px; font-weight: 800; letter-spacing: .08em; text-align: center; }
 .race-info[hidden], .race-standings[hidden] { display: none; }
@@ -786,6 +786,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
     const FINISHER_GAME_ID = "sphinx";
     const KOREAN_NAME_PATTERN = /^[가-힣]{2,6}$/;
     let playerName = "";
+    let usedSoloHint = false;
 
     function escapeFinisherHtml(value) {
         return String(value ?? "")
@@ -823,8 +824,8 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
         isValidPlayerName: isValidKoreanName
     });
     function loadTodayFinishers(targetId = "today-finishers-list") { return finisherBoard.load(targetId); }
-    function registerFinisher(difficulty, rank, targetId = "result-finishers-list") {
-        return finisherBoard.register({ difficulty, rank, targetId });
+    function registerFinisher(difficulty, rank) {
+        return finisherBoard.register({ difficulty, rank, usedHint: usedSoloHint });
     }
 
     function initializePlayerEntry() {
@@ -896,11 +897,11 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                             <span class="sphinx-badge">☀️ 낮 = 다리 2개</span>
                             <span class="sphinx-badge">🌙 밤 = 다리 3개</span>
                         </div>
-                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 쉽게 풀기 도우미</button>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 힌트</button>
                     </div>
                     <div id="sphinxRetryBox"></div>
                     <div class="sphinx-steps" id="sphinxSteps" hidden>
-                        <strong>🧒 초등학생 눈높이 힌트</strong>
+                        <strong>🧒 힌트</strong>
                         <ol>
                             <li><strong>아침(아기 때):</strong> 네 발(손과 무릎 <strong>4개</strong>)로 기어 다녀요.</li>
                             <li><strong>낮(어른이 되면):</strong> 두 발(<strong>2개</strong>)로 걸어 다녀요.</li>
@@ -929,7 +930,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                             <span class="sphinx-badge">🦵 전체 다리: ${legs}개</span>
                             <span class="sphinx-badge">❓ 다리 4개 괴물 = 몇 마리?</span>
                         </div>
-                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 초등 풀이 도우미</button>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 힌트</button>
                     </div>
                     <div id="sphinxRetryBox"></div>
                     <div class="sphinx-steps" id="sphinxSteps" hidden>
@@ -958,7 +959,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                             <span class="sphinx-badge">나중 다리: ${laterLegs}개</span>
                             <span class="sphinx-badge">변화: 4발→2발, 2마리는 2발→3발(+2개)</span>
                         </div>
-                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 초등 풀이 도우미</button>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 힌트</button>
                     </div>
                     <div id="sphinxRetryBox"></div>
                     <div class="sphinx-steps" id="sphinxSteps" hidden>
@@ -987,7 +988,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                             <span class="sphinx-badge">나중 다리: ${laterLegs}개</span>
                             <span class="sphinx-badge">4마리 다리 +4개 / 4발 1마리당 아기 4발 2마리 탄생</span>
                         </div>
-                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 초등 풀이 도우미</button>
+                        <button type="button" class="sphinx-hint-toggle" id="sphinxHintBtn" onclick="toggleSphinxHint()">💡 힌트</button>
                     </div>
                     <div id="sphinxRetryBox"></div>
                     <div class="sphinx-steps" id="sphinxSteps" hidden>
@@ -1012,8 +1013,9 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
         const btn = document.getElementById("sphinxHintBtn");
         if (!steps) return;
         const nextHidden = forceOpen ? false : !steps.hidden;
+        if (!nextHidden && !race.active) usedSoloHint = true;
         steps.hidden = nextHidden;
-        if (btn) btn.textContent = nextHidden ? "💡 초등 풀이 도우미" : "▲ 풀이 도우미 접기";
+        if (btn) btn.textContent = nextHidden ? "💡 힌트" : "▲ 힌트 접기";
     }
 
     function showSphinxRules() {
@@ -1041,7 +1043,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
                     👉 <strong>(나중 다리 − 4 − 처음 다리) ÷ 6</strong> = 처음 4발 괴물 수!
                 </div>
                 <div style="margin-top:10px; padding-top:8px; border-top:1px solid rgba(147,103,45,.35); color:rgba(87,63,35,.72); font-size:12px; line-height:1.5; text-align:center;">
-                    문제 화면의 <strong>「💡 초등 풀이 도우미」</strong> 버튼을 누르면 그 문제의 숫자로 한 걸음씩 계산 순서를 보여줍니다.<br>
+                    문제 화면의 <strong>「💡 힌트」</strong> 버튼을 누르면 그 문제의 숫자로 한 걸음씩 계산 순서를 보여줍니다.<br>
                     이 퍼즐은 고전 게임 <strong>《대항해시대 III》</strong>의 스핑크스 이벤트에서 착안해 교육용으로 재구성했습니다.
                 </div>
             </div>
@@ -1055,6 +1057,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
             return;
         }
         difficulty = d;
+        usedSoloHint = false;
         currentStage = 1;
         loadQuestion();
     }
@@ -1072,7 +1075,7 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
         }
         const retryBox = document.getElementById("sphinxRetryBox");
         if (retryBox) {
-            retryBox.innerHTML = `<p class="sphinx-retry-notice">앗, <strong>"${escapeFinisherHtml(s)}"</strong>은(는) 정답이 아니에요!${race.active ? ` (+${RACE_WRONG_PENALTY}초)` : ''} 아래 초등 풀이 순서를 보고 다시 골라 보세요.</p>`;
+            retryBox.innerHTML = `<p class="sphinx-retry-notice">앗, <strong>"${escapeFinisherHtml(s)}"</strong>은(는) 정답이 아니에요!${race.active ? ` (+${RACE_WRONG_PENALTY}초)` : ''} 아래 힌트를 보고 다시 골라 보세요.</p>`;
             toggleSphinxHint(true);
             return;
         }

@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
               `<button type="button" data-value="off" class="${state.cat === 'off' ? 'selected' : ''}">없음<small>Ea 50 kJ/mol</small></button>` +
               `<button type="button" data-value="on" class="${state.cat === 'on' ? 'selected' : ''}">넣음<small>Ea 30 kJ/mol</small></button>` +
               `</div></fieldset>` +
-              slider('tRange', '온도', 0, 100, 5, state.T, ['0℃', '50℃', '100℃'])
-            : slider('teRange', '온도', 0, 100, 5, state.Teq, ['0℃', '50℃', '100℃']) +
+              slider('tRange', '온도', 0, 100, 5, state.T, ['0 ℃', '50 ℃', '100 ℃'])
+            : slider('teRange', '온도', 0, 100, 5, state.Teq, ['0 ℃', '50 ℃', '100 ℃']) +
               slider('vRange', '용기의 부피', 0.5, 2, 0.1, state.V, ['0.5L', '1.25L', '2L']);
         controlArea.querySelectorAll('[data-pick]').forEach(group => {
             group.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {

@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out += `<text class="small-label" style="fill:#b45309" x="${X1}" y="18" text-anchor="end">${ev.label}은 더 앞 ◀</text>`;
             info.push([`${ev.label}(${fmtAge(ev.age)})은 이 확대 눈금보다 훨씬 앞, 선캄브리아 시대의 일입니다.`, true]);
         }
-        info.push([`확대 띠의 위 줄은 대(시대), 아래 줄은 기입니다. 경계는 대개 많은 생물이 한꺼번에 사라진 자리입니다. 달력으로는 11월 13일부터 12월 31일까지입니다.`, false]);
+        info.push([`확대 띠의 위 줄은 대(시대), 아래 줄은 기입니다. 경계는 대개 많은 생물이 한꺼번에 사라진 자리입니다. 달력으로는 11월 14일부터 12월 31일까지입니다.`, false]);
         return out;
     }
 
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `<div class="data-row"><span class="data-name">사건</span><span class="data-val">${ev.label} — ${ev.what} (${ev.era})</span></div>` +
                 `<div class="data-row"><span class="data-name">실제 시간</span><span class="data-val">${fmtAge(ev.age)} · 지구 나이 ${fmtAge(EARTH_AGE - ev.age).replace(' 전', '')}</span></div>` +
                 (state.progress < 1 ? '' : `<div class="data-row"><span class="data-name">달력으로</span><span class="data-val">365일 × (1 − ${ev.age}/${EARTH_AGE}) = ${day.toFixed(2)}일째 → ${dateText(day, day > 363)}</span></div>` +
-                `<div class="data-row match"><span class="data-name">시대 경계</span><span class="data-val">고생대 11월 18일 · 중생대 12월 12일 · 신생대 12월 26일 · 사람 속 12월 31일 18시 40분</span></div>`);
+                `<div class="data-row match"><span class="data-name">시대 경계</span><span class="data-val">고생대 11월 19일 · 중생대 12월 12일 · 신생대 12월 26일 · 사람 속 12월 31일 18시 40분</span></div>`);
         }
         if (a.kind === 'extinction') {
             const { ex } = a;
@@ -441,8 +441,8 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '1년 달력으로'; valueB.textContent = dateText(day, day > 363);
             s = `${ev.label}${pEun(ev.label)} ${fmtAge(ev.age)}의 일입니다. 46억 년을 1년으로 줄이면 하루가 1,260만 년, 한 시간이 52.5만 년이므로 이 일은 ${dateText(day, day > 363)}에 놓입니다. `;
             if (a.verdict === 'early' || a.verdict === 'mid') s += `달력의 앞 열 달 반, 곧 지구 역사의 대부분인 선캄브리아 시대에는 오랫동안 미생물이 주를 이루었지만 후기에 다세포 생물도 나타났습니다. 산소가 늘고 핵 있는 세포가 생기는 데만 수십억 년이 걸렸습니다. `;
-            else if (a.verdict === 'late') s += `껍데기와 뼈를 가진 동물이 갑자기 늘어난 고생대의 시작이 11월 18일, 공룡의 중생대 시작이 12월 12일입니다. 우리가 아는 큰 생물들의 역사는 달력의 마지막 한 달 반에 몰려 있습니다. `;
-            else s += `공룡이 사라진 신생대의 시작이 12월 26일이고, 사람 속은 12월 31일 저녁 6시 40분, 호모 사피엔스는 밤 11시 26분에야 나타납니다. 사람의 역사는 지구 역사의 마지막 한 시간도 되지 않습니다. `;
+            else if (a.verdict === 'late') s += `껍데기와 뼈를 가진 동물이 갑자기 늘어난 고생대의 시작이 11월 19일, 공룡의 중생대 시작이 12월 12일입니다. 우리가 아는 큰 생물들의 역사는 달력의 마지막 한 달 반에 몰려 있습니다. `;
+            else s += `공룡이 사라진 신생대의 시작이 12월 26일이고, 사람 속은 12월 31일 저녁 6시 40분, 호모 사피엔스는 밤 11시 25분에야 나타납니다. 사람의 역사는 지구 역사의 마지막 한 시간도 되지 않습니다. `;
             s += `${ev.what}. 지질 시대는 이렇게 화석에 남은 생물의 큰 변화를 기준으로 나눕니다.`;
         } else if (a.kind === 'extinction') {
             const { ex } = a;

@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const ke = stuck ? 0 : total - heat;
         const speed = Math.sqrt(Math.max(0, (2 * ke) / MASS));
         const fall = stuck ? Infinity : Math.sqrt((2 * slope) / accel);
-        const verdict = stuck ? 'most' : lostFrac < 0.2 ? 'little' : lostFrac < 0.6 ? 'half' : 'most';
+        // 미끄러지지 않으면 바닥에 닿지 않고 열도 생기지 않는다(세 보기 어느 것도 아님).
+        const verdict = stuck ? null : lostFrac < 0.2 ? 'little' : lostFrac < 0.6 ? 'half' : 'most';
         return { h, deg, mu: m, th, sin, cos, tan, slope, total, accel, stuck,
                  lostFrac, heat, ke, speed, fall, verdict };
     }
@@ -221,7 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContent.hidden = false;
         valueA.textContent = a.stuck ? '0 m/s (정지)' : `${a.speed.toFixed(2)} m/s`;
         valueB.textContent = a.stuck ? '움직이지 않음' : `${(a.lostFrac * 100).toFixed(0)}%`;
-        predictionResult.textContent = !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
+        predictionResult.textContent = a.stuck ? '수레가 미끄러지지 않아 바닥에 닿지 않았습니다. 열로 바뀐 에너지는 0 J입니다.'
+            : !prediction ? '다음에는 결과를 먼저 예상해 보세요.'
             : prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
         if (a.stuck) {
             explanation.textContent =

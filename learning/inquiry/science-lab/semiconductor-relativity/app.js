@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let d = ''; for (let v = VA; v <= VB + 1e-9; v += 0.01) { const i = I0 * (Math.exp(v / VT) - 1); if (i > IM * 1.05) break; d += `${d ? 'L' : 'M'}${xOf(v).toFixed(1)},${yOf(i).toFixed(1)} `; }
             out += `<path class="trace${t.T === a.T ? '' : ' faint'}" style="stroke:${t.T === 300 ? '#0284c7' : '#dc2626'}" d="${d}"/>`;
         });
-        out += `<text class="small-label" style="fill:#0284c7" x="${X0 + 8}" y="${Y1 + 12}">파랑 300 K · 주황 400 K</text>`;
+        out += `<text class="small-label" style="fill:#0284c7" x="${X0 + 8}" y="${Y1 + 12}">파랑 300 K · 빨강 400 K</text>`;
         if (state.progress >= 1) out += `<circle fill="#d97706" stroke="#fff" cx="${xOf(clamp(a.Vd, VA, VB)).toFixed(1)}" cy="${yOf(a.I).toFixed(1)}" r="4.5"/><text class="small-label" style="fill:#d97706" x="${(xOf(clamp(a.Vd, VA, VB)) + (a.Vd > 0.4 ? -8 : 8)).toFixed(1)}" y="${(yOf(a.I) - 8).toFixed(1)}" text-anchor="${a.Vd > 0.4 ? 'end' : 'start'}">${fmtN(a.Vd, 2)} V · ${fmtI(a.I)}</text>`;
         out += `<text class="axis-title" x="${(X0 + X1) / 2}" y="${Y0 + 30}" text-anchor="middle">다이오드 양단 전압 (V)</text>`;
         return out;
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return row('다이오드 양단 전압', done ? `${fmtN(a.Vd, 2)} V` : '전압을 걸면 적힙니다') +
             row('공핍층 폭', done ? `0 V일 때의 ${state.deplPct} %` : '0 V일 때를 100 %로 봄') +
             row('포화 전류 I₀', `${fmtI(a.I0)} (${a.T} K) · V_T = kT/q = ${fmtN(a.VT * 1000, 1)} mV`) +
-            row('곡선 읽기', '0.6 V 근처부터 급히 켜지고 역방향은 pA 수준, 뜨거우면 곡선이 왼쪽으로') +
+            row('곡선 읽기', `0.6 V 근처부터 급히 켜지고 역방향은 I₀(${fmtI(a.I0)}) 정도로 아주 작음, 뜨거우면 곡선이 왼쪽으로`) +
             row('모형', '규소 다이오드(Eg = 1.12 eV), I₀ ∝ T³e^(−Eg/kT) · 그림의 점은 전류 방향');
     }
     function noteFor(a) { return a.kind==='diode' ? diodeTable(a) : a.kind==='muon' ? '<p>지상 관측자가 잰 움직이는 뮤온의 수명은 고유 수명보다 깁니다.</p>' : '<p>우주선과 함께 측정한 고유 길이와 정지 관측자가 측정한 길이를 비교합니다.</p>'; }
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scienceScene.render(mainGroup,a.kind === 'diode' ? renderDiode(a) : a.kind === 'muon' ? renderMuon(a) : renderEnergy(a));
         window.scienceScene.render(graphGroup,a.kind === 'diode' ? graphDiode(a) : a.kind === 'muon' ? graphMuon(a) : graphEnergy(a));
         liftProse();
-        stageBadge.textContent = a.kind === 'diode' ? `${VOLTS[state.volt].label} · ${TEMPS[state.temp].label}` : a.kind === 'muon' ? `${SPEEDS_M[state.mspeed].label} · ${HEIGHTS[state.height].label}` : `${SPEEDS_E[state.espeed].label} · ${BODIES[state.body].label}`;
+        stageBadge.textContent = a.kind === 'diode' ? `${VOLTS[state.volt].label} · ${TEMPS[state.temp].label}` : a.kind === 'muon' ? `${SPEEDS_M[state.mspeed].label} · ${HEIGHTS[state.height].label}` : `${SPEEDS_E[state.espeed].label} · ${SPEEDS_E[state.espeed].hint}`;
         methodHint.textContent = a.kind === 'diode' ? '순방향 전압은 공핍층을 얇게 해 전류를 흘리고, 역방향은 두껍게 해 막습니다'
             : a.kind === 'muon' ? '지상에서 잰 뮤온의 수명은 고유 수명보다 깁니다'
                 : '운동 방향의 길이는 고유 길이보다 짧게 측정됩니다';

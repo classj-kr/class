@@ -13,7 +13,7 @@ const CALM = 0.5;                  // ℃ difference below which nothing stirs
 
 const SKIES = {
     clear: { name: '맑음', damp: 1.0, cover: 1, puffs: 1 },
-    part: { name: '구름 조금', damp: 0.6, cover: 5, puffs: 3 },
+    part: { name: '구름 많음', damp: 0.6, cover: 7, puffs: 3 },
     cloud: { name: '흐림', damp: 0.3, cover: 9, puffs: 6 },
 };
 
@@ -210,7 +210,7 @@ function explain(a) {
     if (a.wind.dir === 'sea') s += `땅이 더 더워 땅 위 공기가 올라가고, 그 자리로 바다 공기가 밀려와 바다에서 땅으로 해풍이 붑니다. `;
     else if (a.wind.dir === 'land') s += `밤새 땅이 더 빨리 식어 이번에는 바다 위 공기가 올라가고, 땅에서 바다로 육풍이 붑니다. `;
     else s += `땅과 바다의 온도가 거의 같아 바람이 거의 멎습니다. 바람 방향이 바뀌기 직전입니다. `;
-    s += state.sky === 'clear' ? `맑은 날이라 일교차가 ${fmt(a.range, 1)} ℃로 큽니다.` : `${a.sky.name}이라 구름이 이불처럼 덮어 일교차가 ${fmt(a.range, 1)} ℃로 작습니다.`;
+    s += state.sky === 'clear' ? `맑은 날이라 일교차가 ${fmt(a.range, 1)} ℃로 큽니다.` : `${state.sky === 'part' ? '구름이 많은 날' : '흐린 날'}이라 구름이 이불처럼 덮어 일교차가 ${fmt(a.range, 1)} ℃로 작습니다.`;
     $('elementaryExplanation').textContent = s;
 }
 

@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? metalRow('a') + metalRow('b')
             : `<fieldset class="pick-field"><legend>전기 분해할 것</legend><div class="pick-buttons cols3" data-pick="bath">` +
               Object.entries(BATHS).map(([k, b]) =>
-                  `<button type="button" data-value="${k}" class="${state.bath === k ? 'selected' : ''}">${b.sym}<small>${b.n}가</small></button>`).join('') +
+                  `<button type="button" data-value="${k}" class="${state.bath === k ? 'selected' : ''}">${b.sym}<small>${b.gas ? `e⁻ ${b.n}개` : `${b.n}가`}</small></button>`).join('') +
               `</div></fieldset>` +
               `<div class="range-heading"><label for="iRange">전류</label><output id="iRangeOut" for="iRange"></output></div>` +
               `<input id="iRange" type="range" min="0.5" max="5" step="0.5" value="${state.I}">` +
@@ -275,8 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const rows = [
             ['구리 Cu (2가)', (a.eMol / 2) * 63.5, '#b8642d'],
             ['은 Ag (1가)', (a.eMol / 1) * 107.9, '#94a3b8'],
-            ['수소 H₂ (2가)', (a.eMol / 2) * 2.02, '#0284c7'],
-            ['산소 O₂ (4가)', (a.eMol / 4) * 32.0, '#059669'],
+            ['수소 H₂ (e⁻ 2개)', (a.eMol / 2) * 2.02, '#0284c7'],
+            ['산소 O₂ (e⁻ 4개)', (a.eMol / 4) * 32.0, '#059669'],
         ];
         const L = 150, R = 420, Y0 = GRAPH.y0, Y1 = GRAPH.y1;
         const raw = Math.max(...rows.map(r => r[1])) * 1.12 || 1;

@@ -49,6 +49,7 @@
   let timerId = null;
   let revealId = null;
   let finished = false;
+  let usedHint = false;
   let playerName = '';
   let paused = false;          // 순위전 셋둘하나 동안
   const RACE_MINE_PENALTY = 10; // 순위전에서 지뢰를 밟으면 판을 잃지 않고 시간만 더한다
@@ -139,11 +140,12 @@
         return;
       }
     }
-    setCoach('🔍 열린 숫자 주변의 닫힌 칸 수를 세어 보세요. 어디를 열지 모르겠으면 <strong>💡 한 수 힌트</strong>를 눌러 보세요!');
+    setCoach('🔍 열린 숫자 주변의 닫힌 칸 수를 세어 보세요. 어디를 열지 모르겠으면 <strong>💡 힌트</strong>를 눌러 보세요!');
   }
 
   function giveHint() {
-    if (finished) return;
+    if (finished || race.active) return;
+    usedHint = true;
     clearHintHighlights();
     boardWrap.classList.add('show-coordinates');
 
@@ -350,6 +352,7 @@
   }
 
   function newPuzzle() {
+    usedHint = false;
     mines = null;
     counts = null;
     startCell = -1;
@@ -462,7 +465,7 @@
     finisherBoard.register({
       difficulty: `${level.rows}×${level.cols}`,
       rank: level.rank,
-      targetId: 'result-finishers-list'
+      usedHint
     });
     revealId = window.setTimeout(() => {
       revealId = null;

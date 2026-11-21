@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labelB.textContent = '+1 nC이 받는 힘'; valueB.textContent = a.verdict === 'zero' ? '0' : `${fmtF(a.F)} ${a.E > 0 ? '→' : '←'}`;
             const rL = Math.abs(a.x + X_CH), rR = Math.abs(a.x - X_CH);
             s = `왼쪽 ${LEFTS[state.left].label}은 시험 전하에서 ${rL.toFixed(2)} m 떨어져 ${fmtE(a.eL)}의 전기장을 ${a.eL > 0 ? '오른쪽' : '왼쪽'}으로 만들고(${a.qL > 0 ? '+ 전하에서 멀어지는 쪽' : '− 전하로 향하는 쪽'}), 오른쪽 ${RIGHTS[state.right].label}은 ${rR.toFixed(2)} m 떨어져 ${fmtE(a.eR)}을 ${a.eR > 0 ? '오른쪽' : '왼쪽'}으로 만듭니다. `;
-            if (a.verdict === 'zero') s += `두 전기장은 크기가 같고 방향이 반대라 화살표를 더하면 0이 되어, 시험 전하는 힘을 받지 않고 그 자리에 머뭅니다. 다만 조금만 한쪽으로 치우쳐도 가까운 전하 쪽 전기장이 이겨 바깥으로 밀려나므로 불안정한 자리입니다.`;
+            if (a.verdict === 'zero') s += `두 전기장은 크기가 같고 방향이 반대라 화살표를 더하면 0이 되어, 시험 전하는 힘을 받지 않고 그 자리에 머뭅니다. ${a.qL > 0 ? '다만 두 + 전하를 잇는 축을 따라 조금 치우치면 가까운 전하가 더 세게 밀어 가운데로 되돌아오지만, 축과 수직으로 조금만 벗어나도 두 전하가 함께 밀어내 바깥으로 빠져나가므로 불안정한 자리입니다.' : '다만 축을 따라 조금만 치우쳐도 가까운 − 전하가 더 세게 끌어당겨 그쪽으로 끌려가므로 불안정한 자리입니다.'}`;
             else s += `${(a.eL > 0) === (a.eR > 0) ? '두 전기장이 같은 쪽을 향해 더해져' : `방향이 반대라 빼면 ${Math.abs(a.eL) > Math.abs(a.eR) ? '왼쪽' : '오른쪽'} 전하 쪽이 이겨`} 합친 전기장은 ${fmtE(a.E)}, ${a.E > 0 ? '오른쪽' : '왼쪽'} 방향입니다. + 시험 전하 1 nC은 F = qE = ${fmtF(a.F)}의 힘을 받아 그쪽으로 밀립니다. 거리가 절반이면 전기장은 네 배가 되므로 가까운 전하가 훨씬 크게 작용합니다.`;
         } else if (a.kind === 'accel') {
             const { pt, V } = a;

@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* -------------------------------------------------------------- data */
     const C = 299792, MPC_LY = 3.262e6, AGE_K = 977.8; // km/s, light-years per Mpc, 1/H₀ in Gyr when H₀ is in km/s/Mpc
-    const ARMS = { none: { label: '없음', hint: '매끈함' }, tight: { label: '촘촘히 감김', hint: '팔 사이 각 12°' }, loose: { label: '느슨하게 감김', hint: '팔 사이 각 28°' } };
+    const ARMS = { none: { label: '없음', hint: '매끈함' }, tight: { label: '촘촘히 감김', hint: '감긴 각 12°' }, loose: { label: '느슨하게 감김', hint: '감긴 각 28°' } };
     const BULGES = { big: { label: '크고 둥긂', hint: '가운데 뭉침 큼' }, small: { label: '작고 납작함', hint: '가운데 뭉침 작음' }, none: { label: '없음', hint: '한가운데가 없음' } };
     const BARS = { no: { label: '없음', hint: '' }, yes: { label: '있음', hint: '가운데 막대' } };
     // real objects: redshift z, kind of spectrum, distance in millions of light-years (대략)
@@ -84,12 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     // rest wavelengths (nm); galaxies show absorption lines, quasars emission lines
     const LINES = {
-        galaxy: [['Ca H·K', 393.4, false], ['Ca H', 396.8, false], ['Hβ', 486.1, false], ['Mg', 517.3, false], ['Na', 589.3, false], ['Hα', 656.3, true]],
+        galaxy: [['Ca K', 393.4, false], ['Ca H', 396.8, false], ['Hβ', 486.1, false], ['Mg', 517.3, false], ['Na', 589.3, false], ['Hα', 656.3, true]],
         quasar: [['Mg II', 279.8, false], ['Hγ', 434.0, false], ['Hβ', 486.1, true], ['Hα', 656.3, false]],
     };
     // real galaxies and clusters: distance (Mpc), radial velocity (km/s)
     const SAMPLES = {
-        near: { label: '가까운 은하 6개', hint: '1,000만 광년 안쪽', list: [['안드로메다 M31', 0.78, -300], ['삼각형자리 M33', 0.84, -179], ['큰곰자리 M81', 3.6, -34], ['바람개비 M101', 6.4, 241], ['소용돌이 M51', 8.6, 463], ['바다뱀자리 M83', 4.6, 513]] },
+        near: { label: '가까운 은하 6개', hint: '3,000만 광년 안쪽', list: [['안드로메다 M31', 0.78, -300], ['삼각형자리 M33', 0.84, -179], ['큰곰자리 M81', 3.6, -34], ['바람개비 M101', 6.4, 241], ['소용돌이 M51', 8.6, 463], ['바다뱀자리 M83', 4.6, 513]] },
         far: { label: '먼 은하단까지 6개', hint: '3억 광년까지', list: [['바람개비 M101', 6.4, 241], ['처녀자리 M87', 16.5, 1284], ['센타우루스자리 은하단', 45, 3420], ['바다뱀자리 은하단', 50, 3780], ['페르세우스자리 은하단', 73, 5264], ['머리털자리 은하단', 99, 6930]] },
     };
     const SCALES = { today: { label: '오늘날 눈금', hint: '세페이드 밝기 바로잡음', f: 1 }, h1929: { label: '허블 1929년 눈금', hint: '거리를 7분의 1로 잼', f: 1 / 7 } };
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         out += `<circle class="old-star" cx="${RX + 6}" cy="166" r="4.5" stroke="#64748b" stroke-width=".9"/><text class="small-label" x="${RX + 16}" y="171">늙은 별</text><circle class="young-star" cx="${RX + 86}" cy="166" r="4.5" stroke="#64748b" stroke-width=".9"/><text class="small-label" x="${RX + 96}" y="171">젊은 별</text>`;
         out += `<circle class="hii" cx="${RX + 6}" cy="190" r="4.5" stroke="#64748b" stroke-width=".9"/><text class="small-label" x="${RX + 16}" y="195">별이 태어나는 가스 구름</text>`;
         out += `<text class="verdict-text" fill="#0f172a" x="20" y="16">${p >= 1 ? `${NAMES[a.cls]} (${a.code})` : '고른 특징으로 은하를 그리는 중'}</text>`;
-        out += `<text class="note-text" x="20" y="208">소리굽쇠 표는 생김새의 정리이지 진화 순서가 아닙니다. 팔 사이 각(피치각)은 실제 은하의 값 범위</text>`;
+        out += `<text class="note-text" x="20" y="208">소리굽쇠 표는 생김새의 정리이지 진화 순서가 아닙니다. 나선팔이 감긴 각(피치각)은 실제 은하의 값 범위</text>`;
         return out;
     }
 

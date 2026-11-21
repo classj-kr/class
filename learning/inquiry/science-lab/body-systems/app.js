@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeRange.value = '10';
         prediction = null;
         predictionButtons.forEach(item => item.classList.remove('selected'));
-        stageCaption.textContent = '심장과 폐는 실제 빠르기로 뜁니다. 활동을 바꾸면 눈에 띄게 빨라집니다. 수치는 건강한 어른의 예시 자료입니다.';
+        stageCaption.textContent = '심장 박동과 숨쉬기는 실제 빠르기로 나타냈습니다. 활동을 바꾸면 눈에 띄게 빨라집니다. 수치는 건강한 어른의 예시 자료입니다.';
         actButtons.find(b => b.dataset.act === 'rest').click();
     });
 

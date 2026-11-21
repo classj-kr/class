@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------------------------------------------- data */
     // Sizes and durations, in metres and seconds, against a person and a heartbeat.
     const KINDS = {
-        length: { label: '길이', unit: 'm', ref: 1.7, refLabel: '사람 키 1.7 m', eMin: -11, eMax: 27 },
-        time: { label: '시간', unit: 's', ref: 1, refLabel: '심장 한 번 1초', eMin: -11, eMax: 18 },
+        length: { label: '길이', unit: 'm', ref: 1.7, refLabel: '사람 키 1.7 m', refShort: '사람 키', more: ['크다', '큽니다'], less: ['작다', '작습니다'], eMin: -11, eMax: 27 },
+        // 시간은 '크다·작다'가 아니라 '길다·짧다', 견주는 대상도 심장이 아니라 1초다.
+        time: { label: '시간', unit: 's', ref: 1, refLabel: '심장 한 번 1초', refShort: '1초', more: ['길다', '깁니다'], less: ['짧다', '짧습니다'], eMin: -11, eMax: 18 },
     };
     const TARGETS = {
         length: {
@@ -58,10 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // What each base unit has been tied to, and roughly how well it could be reproduced (digits).
     const UNITS = { m: { label: '미터 (길이)' }, kg: { label: '킬로그램 (질량)' }, s: { label: '초 (시간)' }, K: { label: '켈빈 (온도)' } };
-    const ERAS = { old: { label: '1800년대', hint: '처음 정할 때' }, mid: { label: '1900년대', hint: '원기의 시절' }, now: { label: '지금', hint: '2019년 뒤' } };
+    // 초기 기준은 1742~1800년, 그다음 기준은 1889~1956년에 정해졌다. '1800년대'·'1900년대'라고 하면 1742년·1889년과 어긋난다.
+    const ERAS = { old: { label: '초기', hint: '처음 정할 때' }, mid: { label: '중기', hint: '1889~1956년' }, now: { label: '지금', hint: '2019년 뒤' } };
     const DEFS = {
         m: {
-            old: { year: 1793, text: '지구 둘레(북극에서 적도까지)의 1천만분의 1', cat: 'nature', digits: 4 },
+            old: { year: 1793, text: '북극에서 적도까지 거리(지구 둘레의 4분의 1)의 1천만분의 1', cat: 'nature', digits: 4 },
             mid: { year: 1889, text: '파리에 보관한 백금-이리듐 막대에 새긴 두 금 사이', cat: 'artifact', digits: 7 },
             now: { year: 1983, text: '빛이 진공에서 1/299,792,458초 동안 가는 거리', cat: 'constant', digits: 11 },
         },
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             now: { year: 1967, text: '세슘-133 원자가 내는 빛이 9,192,631,770번 진동하는 시간', cat: 'constant', digits: 16 },
         },
         K: {
-            old: { year: 1742, text: '물의 어는점 0, 끓는점 100으로 나눈 눈금(섭씨)', cat: 'nature', digits: 3 },
+            old: { year: 1742, text: '물의 어는점과 끓는점 사이를 100등분한 눈금(섭씨)', cat: 'nature', digits: 3 },
             mid: { year: 1954, text: '물의 삼중점(얼음·물·수증기가 함께 있는 온도)의 1/273.16', cat: 'nature', digits: 6 },
             now: { year: 2019, text: '볼츠만 상수(온도와 알갱이 운동 에너지의 비)에 맞춤', cat: 'constant', digits: 6 },
         },
@@ -87,7 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const RULERS = {
         cm: { label: '1 cm 눈금 자', div: 10, est: 1, hint: 'mm 자리를 어림' },
         mm: { label: '1 mm 눈금 자', div: 1, est: 0.1, hint: '0.1 mm 자리를 어림' },
-        vernier: { label: '0.1 mm 눈금 (버니어)', div: 0.1, est: 0.01, hint: '0.01 mm 자리를 어림' },
+        // 버니어 캘리퍼스는 아들자 눈금이 맞는 곳을 읽을 뿐 그 아래 자리를 어림하지 않는다.
+        // 여기는 눈금 사이를 열 등분해 어림하는 자이므로 '0.1 mm 눈금 자'로 부른다.
+        vernier: { label: '0.1 mm 눈금 자', div: 0.1, est: 0.01, hint: '0.01 mm 자리를 어림' },
     };
     const TRUE_MM = 123.46, READS = 10;
 
@@ -99,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sup = n => String(n).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
     const fmtSci = v => { const e = Math.floor(Math.log10(v)); const m = v / 10 ** e; return `${m.toFixed(1)} × 10${sup(e)}`; };
     const powWords = k => k <= 18 ? POW_WORDS[k] : `10${sup(k)}`;
+    // 한 칸이 안 되는 차이(눈 깜빡임 0.3초 = 1초의 3.3분의 1)를 '10배'로 반올림해 말하지 않는다.
+    const timesWords = a => a.k < 1.5 ? (10 ** a.k).toFixed(1) : powWords(a.steps);
     const decimals = est => est >= 1 ? 0 : est >= 0.1 ? 1 : 2;
     const DIGIT_JONG = { 0: 1, 1: 1, 2: 0, 3: 1, 4: 0, 5: 0, 6: 1, 7: 1, 8: 1, 9: 0 };   // read aloud: 영 일 이 삼 사 오 육 칠 팔 구
     const hasJong = txt => { const w = txt.replace(/[)\s]+$/, ''); const ch = w.slice(-1); if (/\d/.test(ch)) return DIGIT_JONG[ch] === 1; const c = ch.charCodeAt(0); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 > 0; };
@@ -169,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.prediction = null;
         window.scienceInvalidatePrediction?.();
         const list = state.mode === 'scale' ? PRED_SCALE : state.mode === 'units' ? PRED_UNITS : PRED_MEASURE;
-        predictionLegend.textContent = state.mode === 'scale' ? `${TARGETS[state.kind][state.target].label}${pEun(TARGETS[state.kind][state.target].label)} ${KINDS[state.kind].refLabel}와 견주면 몇 배 크거나 작을까요?`
+        predictionLegend.textContent = state.mode === 'scale' ? `${TARGETS[state.kind][state.target].label}${pEun(TARGETS[state.kind][state.target].label)} ${KINDS[state.kind].refLabel}와 견주면 몇 배 ${state.kind === 'time' ? '길거나 짧을까요' : '크거나 작을까요'}?`
             : state.mode === 'units' ? `${ERAS[state.era].label}의 ${UNITS[state.unit].label} 기준은 무엇에 맞추었을까요?`
                 : `${RULERS[state.ruler].label}로 재면 어느 자리까지 믿을 수 있을까요?`;
         predictionArea.className = 'prediction-buttons three';
@@ -199,12 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const curLg = Math.log10(kind.ref) + lg * p, cx = xOf(10 ** curLg);
         out += `<line class="marker" x1="${cx.toFixed(1)}" y1="${RY - 14}" x2="${cx.toFixed(1)}" y2="${RY + 14}"/>`;
         out += `<polygon class="marker-head" points="${cx.toFixed(1)},${RY - 14} ${(cx - 5).toFixed(1)},${RY - 22} ${(cx + 5).toFixed(1)},${RY - 22}"/>`;
-        const steps = Math.floor(Math.abs(lg) * p + 1e-9);
-        out += `<text class="big-text" fill="#d97706" x="230" y="40" text-anchor="middle">${steps === 0 && p === 0 ? '×1' : `${lg > 0 ? '×' : '÷'} ${powWords(steps)}`}</text>`;
+        // 끝에 닿으면 결과 줄과 같은 반올림 자릿수(a.steps)를 보인다. 6.9칸을 내림해 ×100만으로 두면 '1,000만 배'와 어긋난다.
+        const steps = p >= 1 ? a.steps : Math.floor(Math.abs(lg) * p + 1e-9);
+        out += `<text class="big-text" fill="#d97706" x="230" y="40" text-anchor="middle">${steps === 0 && p === 0 ? '×1' : `${lg > 0 ? '×' : '÷'} ${p >= 1 ? timesWords(a) : powWords(steps)}`}</text>`;
         out += `<text class="trait-text" x="230" y="58" text-anchor="middle">${p >= 1 ? `${t.label}: ${fmtSci(t.value)} ${kind.unit} = ${t.words}` : p === 0 ? `${kind.refLabel}에서 출발` : `${steps}칸째 · 지금 약 ${fmtSci(10 ** curLg)} ${kind.unit}`}</text>`;
         out += `<text class="trait-text" style="fill:#d97706" x="${clamp(tx, X0 + 40, X1 - 40).toFixed(1)}" y="${RY + 40}" text-anchor="middle">${t.label}</text>`;
         const VERD = { near: '1만 배 안', mid: '1만~1억 배', far: '1억 배 넘게' };
-        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${t.label}${pEun(t.label)} ${kind.refLabel.split(' ')[0]}의 ${powWords(a.steps)} 배 ${lg > 0 ? '크다' : '작다'} (${a.steps}자리) → ${VERD[a.verdict]}` : `${kind.refLabel}에서 ${t.label}까지`}</text>`;
+        out += `<text class="verdict-text" fill="#d97706" x="20" y="16">${p >= 1 ? `${t.label}${pEun(t.label)} ${kind.refShort}의 ${timesWords(a)} 배 ${lg > 0 ? kind.more[0] : kind.less[0]} (${a.steps}자리) → ${VERD[a.verdict]}` : `${kind.refLabel}에서 ${t.label}까지`}</text>`;
         out += `<text class="note-text" x="20" y="208">눈금 한 칸 = 10배 · 10${sup(kind.eMin)}부터 10${sup(kind.eMax)} ${kind.unit}까지</text>`;
         return out;
     }
@@ -232,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const rx = xOf(kind.ref);
         out += `<line class="ref-mark" x1="${rx.toFixed(1)}" y1="${RY - 8}" x2="${rx.toFixed(1)}" y2="${RY + 8}"/>`;
-        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${RY + 86}" text-anchor="middle">${kind.unit === 'm' ? '원자에서 우주까지 38칸 — 사람은 한가운데쯤' : '원자의 진동에서 우주의 나이까지 29칸 — 1초는 아래쪽 3분의 1 자리'}</text>`;
+        out += `<text class="axis-title" x="${((X0 + X1) / 2).toFixed(1)}" y="${RY + 86}" text-anchor="middle">${kind.unit === 'm' ? '원자에서 우주까지 38칸 — 사람은 왼쪽에서 3분의 1쯤' : '원자의 진동에서 우주의 나이까지 29칸 — 1초는 왼쪽에서 3분의 1쯤'}</text>`;
         return out;
     }
 
@@ -405,18 +412,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.kind === 'scale') {
             const kind = KINDS[state.kind], { t } = a;
             labelA.textContent = t.label; valueA.textContent = `${fmtSci(t.value)} ${kind.unit}`;
-            labelB.textContent = '기준과 견주면'; valueB.textContent = `${powWords(a.steps)} 배 ${a.lg > 0 ? '크다' : '작다'} (${a.steps}자리)`;
-            s = `${t.label}${pEun(t.label)} ${fmtSci(t.value)} ${kind.unit}, 곧 ${t.words}입니다. ${kind.refLabel}와 견주면 10배 눈금으로 ${a.k.toFixed(1)}칸, 약 ${powWords(a.steps)} 배 ${a.lg > 0 ? '큽니다' : '작습니다'}. `;
-            s += `10배씩 뛰는 눈금으로 재면 ${kind.label}의 세계는 10${sup(kind.eMin)}에서 10${sup(kind.eMax)} ${kind.unit}까지 ${kind.eMax - kind.eMin}칸이나 되고, 우리가 맨눈과 몸으로 겪는 것은 그 가운데 두세 칸뿐입니다. `;
+            labelB.textContent = '기준과 견주면'; valueB.textContent = `${timesWords(a)} 배 ${a.lg > 0 ? kind.more[0] : kind.less[0]} (${a.steps}자리)`;
+            s = `${t.label}${pEun(t.label)} ${fmtSci(t.value)} ${kind.unit}, 곧 ${t.words}입니다. ${kind.refLabel}와 견주면 10배 눈금으로 ${a.k.toFixed(1)}칸, 약 ${timesWords(a)} 배 ${a.lg > 0 ? kind.more[1] : kind.less[1]}. `;
+            s += `10배씩 뛰는 눈금으로 재면 ${kind.label}의 세계는 10${sup(kind.eMin)}에서 10${sup(kind.eMax)} ${kind.unit}까지 ${kind.eMax - kind.eMin}칸이나 되고, 우리가 맨눈과 몸으로 겪는 범위는 그 가운데 일부입니다. `;
             s += `이렇게 다른 크기를 한눈에 견주려면 10의 몇 제곱이라는 표기가 필요하고, 자릿수(몇 칸)만 맞아도 어림은 쓸 만합니다.`;
         } else if (a.kind === 'units') {
             const { d } = a, defs = DEFS[state.unit];
             labelA.textContent = `${ERAS[state.era].label}의 기준`; valueA.textContent = CAT_LABEL[d.cat];
             labelB.textContent = '되살릴 수 있는 정확도'; valueB.textContent = `10${sup(-d.digits)} (약 ${d.digits}자리)`;
-            s = `${ERAS[state.era].label}(${d.year}년) ${UNITS[state.unit].label}의 기준은 '${d.text}'${hasJong(d.text) ? '이었습니다' : '였습니다'} — ${CAT_LABEL[d.cat]}에 맞춘 것입니다. `;
+            s = `${ERAS[state.era].label}(${d.year}년) ${UNITS[state.unit].label}의 기준은 '${d.text}'${state.era === 'now' ? '입니다' : hasJong(d.text) ? '이었습니다' : '였습니다'} — ${CAT_LABEL[d.cat]}에 맞춘 것입니다. `;
             if (d.cat === 'nature') s += `지구나 물처럼 손에 닿는 자연물은 누구나 떠올릴 수 있지만, 정확히 재기 어렵고 재는 조건에 따라 달라져 ${d.digits}자리쯤밖에 믿을 수 없었습니다. `;
             else if (d.cat === 'artifact') s += `정밀하게 만든 물건을 보관하면 자연물보다 훨씬 정확하지만, 닳고 오염되고 변합니다. 킬로그램 원기는 100년 동안 복제품들과 50 μg쯤 어긋났고, 무엇이 변한 것인지조차 알 수 없었습니다. `;
-            else s += `빛의 속력, 세슘 원자의 진동, 플랑크 상수는 우주 어디서나 같으므로 어느 실험실이든 스스로 같은 기준을 되살릴 수 있고, ${d.digits}자리까지 믿을 수 있습니다. `;
+            else s += `빛의 속력, 세슘 원자의 진동, 플랑크 상수, 볼츠만 상수 같은 자연 상수는 우주 어디서나 같으므로 어느 실험실이든 스스로 같은 기준을 되살릴 수 있고, ${d.digits}자리까지 믿을 수 있습니다. `;
             s += `기준은 이렇게 자연물(${defs.old.year}년) → ${defs.mid.cat === 'artifact' ? '원기' : '더 정밀한 자연물'}(${defs.mid.year}년) → 자연 상수(${defs.now.year}년)로 옮겨 왔고, 2019년에 일곱 기본 단위가 모두 자연 상수에 묶였습니다.`;
         } else {
             const { r, reads } = a;
