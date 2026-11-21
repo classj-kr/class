@@ -542,11 +542,11 @@ body.key-size-open { overflow: hidden; }
     .model-browser { grid-template-columns: 1fr; gap: 4px; padding: 4px 8px; min-height: 44px; }.browser-title { display: none; }
     .model-browser.korean-open { grid-template-columns: auto minmax(0,1fr); }
     .korean-room-switch button { min-width: 78px; min-height: 36px; font-size: 9.5px; }
-    .console-body { grid-template-columns: 1fr; }
+    .console-body { height: auto; min-height: 0; max-height: none; grid-template-columns: 1fr; }
     .instrument-visual { min-height: 120px; }
     .studio-stage { min-height: 96px; }
     .instrument-artwork { inset: 8px 2.5% 4px; height: calc(100% - 12px); max-height: 85px; }
-    .control-panel { max-height: none; padding: 6px 10px; }
+    .control-panel { height: auto; max-height: none; padding: 6px 10px; grid-template-rows: none; grid-auto-rows: max-content; align-content: start; }
     .control-set { min-height: 0; }
     .drum-pads.extended { grid-template-columns: repeat(3, 1fr); overflow-x: visible; }
 }

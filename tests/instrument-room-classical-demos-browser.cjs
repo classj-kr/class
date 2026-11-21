@@ -34,14 +34,16 @@ function wave(pcm){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(pcm.
   browser=await puppeteer.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'});
   const selected=Object.entries(plans).filter(([id])=>!process.env.CLASSICAL_MODEL||process.env.CLASSICAL_MODEL.split(',').includes(id));
   // Limit live decoders: nine simultaneous full-range banks can exhaust Chrome.
-  for(const width of [1366,390])for(let offset=0;offset<selected.length;offset+=2)await Promise.all(selected.slice(offset,offset+2).map(async([id,plan])=>{
+  for(const width of [1366,390].filter(w=>!process.env.CLASSICAL_WIDTH||w===Number(process.env.CLASSICAL_WIDTH)))for(let offset=0;offset<selected.length;offset+=2)await Promise.all(selected.slice(offset,offset+2).map(async([id,plan])=>{
    const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.setViewport({width,height:900,isMobile:width<500,hasTouch:width<500});
    await page.goto('http://127.0.0.1:'+server.address().port+room,{waitUntil:'networkidle0'});
    await page.click('[data-family="'+plan.family+'"]');await page.evaluate(id=>classicalTest.selectModel(id),id);
-   const choices=await page.evaluate(()=>({visible:!!document.querySelector('#classicalControls').getClientRects().length,labels:[...document.querySelectorAll('#classicalArticulationButtons button')].map(e=>e.textContent)}));
+   const choices=await page.evaluate(()=>({visible:document.querySelector('#classicalControls').getBoundingClientRect().height>0,labels:[...document.querySelectorAll('#classicalArticulationButtons button')].map(e=>e.textContent),buttonHeights:[...document.querySelectorAll('#classicalArticulationButtons button')].map(e=>e.getBoundingClientRect().height)}));
    assert.equal(choices.visible,id==='violin',id+': only show actual technique choices');
-   if(id==='violin')assert.deepEqual(choices.labels,['활긋기','피치카토']);
+   if(id==='violin'){assert.deepEqual(choices.labels,['활긋기','피치카토']);assert.ok(choices.buttonHeights.every(h=>h>=32));}
+   if(id==='violin')assert.ok(await page.evaluate(()=>{const panel=document.querySelector('.control-panel').getBoundingClientRect();return [...document.querySelectorAll('#classicalArticulationButtons button')].every(e=>{const r=e.getBoundingClientRect();return r.top>=panel.top&&r.bottom<=panel.bottom;});}),'technique choices must fit inside the visible panel');
+   if(process.env.CLASSICAL_LAYOUT_ONLY){await screenshotWebp(page,{path:path.join(root,'outputs/instrument-demo-review/'+id+'-controls-'+width+'.webp')});console.log(JSON.stringify({id,width,layoutPassed:true}));await page.close();return;}
    const selector='#melodyDemoButtons button[data-melody-demo="'+(plan.index||0)+'"]';await page.waitForSelector(selector,{visible:true});
    await page.$eval(selector,e=>e.scrollIntoView({block:'center',inline:'center'}));
    await page.evaluate(()=>window.classicalHits=[]);
