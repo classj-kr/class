@@ -5,7 +5,7 @@ const { gameMenuForAssetRoot, homeMenuForRequest, isMenuDisabled } = require('..
 
 // Execute the production access middleware, replacing only database/session inputs.
 // No real account cookies or classroom data are used by this test harness.
-function createAccessGate({ role = 'student', member = true, mode = 'restricted', disabled = [], classDisabled = [], onContentQuery = () => {}, isLiveRaceRequest } = {}) {
+function createAccessGate({ role = 'student', member = true, mode = 'restricted', disabled = [], classDisabled = [], onContentQuery = () => {}, onSessionQuery = () => {}, isLiveRaceRequest } = {}) {
   const source = fs.readFileSync(path.join(__dirname, '../game-hub-server/classroom-platform.js'), 'utf8');
   const start = source.indexOf('  function normalizeContentPath(value)');
   const end = source.indexOf('  function signMuseumPresence', start);
@@ -14,9 +14,12 @@ function createAccessGate({ role = 'student', member = true, mode = 'restricted'
     asyncRoute: fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next),
     getGloballyDisabledContentPaths: async () => disabled,
     getSiteAccessMode: async () => mode,
-    sessionUser: async () => role ? { id: 1, role } : null,
+    sessionUser: async () => { onSessionQuery(); return role ? { id: 1, role } : null; },
     studentMembership: async () => member ? { classId: 10 } : null,
     guestAccess: () => null,
+    readCookie: (req, name) => (String(req.headers?.cookie || '').match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`)) || [])[1] || '',
+    SESSION_COOKIE: 'class_session',
+    hashSessionToken: token => `hash:${token}`,
     userClassId: async () => 10,
     pool: { async query(_sql, [id, menuPath]) {
       assert.equal(id, 10);

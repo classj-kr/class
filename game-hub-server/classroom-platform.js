@@ -2173,6 +2173,37 @@ function createClassroomPlatform(options = {}) {
     return { user, allowed };
   }
 
+  // 정적 파일(js·css·그림)은 같은 세션이면 30초 동안 앞선 출입 확인을 다시 쓴다. 파일마다 세션 질의와 역할 검사(학생 명단을
+  // 통째로 훑는 UNION)를 새로 하면, 문제 파일 스무 개를 한꺼번에 받는 쪽이 연결 다섯 개짜리 풀 앞에 줄을 서서 파일마다
+  // 0.1~0.7초씩 늦어졌다(2026-11-21 수학 문제 학기 바꾸기). 쪽(HTML)과 API 는 지금처럼 매번 확인하고, 들어가도 된다는
+  // 결과만 기억한다(서버가 막 뜰 때처럼 막힌 결과는 다음 요청에서 다시 묻는다). 로그아웃·출입 방식 바꾸기 때 지운다.
+  const STATIC_ACCESS_TTL_MS = 30 * 1000;
+  const staticAccessCache = new Map();
+
+  function forgetStaticAccess(token) {
+    if (token) staticAccessCache.delete(hashSessionToken(token));
+    else staticAccessCache.clear();
+  }
+
+  function staticSiteAccessIdentity(req) {
+    const token = readCookie(req, SESSION_COOKIE);
+    if (!token) return siteAccessIdentity(req);
+    const key = hashSessionToken(token);
+    const now = Date.now();
+    const hit = staticAccessCache.get(key);
+    if (hit && hit.expiresAt > now) return hit.identity;
+    if (staticAccessCache.size >= 2000) {
+      for (const [entryKey, entry] of staticAccessCache) if (entry.expiresAt <= now) staticAccessCache.delete(entryKey);
+      if (staticAccessCache.size >= 2000) staticAccessCache.clear();
+    }
+    const identity = siteAccessIdentity(req);
+    const entry = { identity, expiresAt: now + STATIC_ACCESS_TTL_MS };
+    const drop = () => { if (staticAccessCache.get(key) === entry) staticAccessCache.delete(key); };
+    staticAccessCache.set(key, entry);
+    identity.then(result => { if (!result.allowed) drop(); }, drop);
+    return identity;
+  }
+
   async function isStudentContentLocked(user, originalUrl, requestPath) {
     if (user?.role !== "student") return false;
     const menuPath = homeMenuForRequest(requestPath);
@@ -2229,15 +2260,15 @@ function createClassroomPlatform(options = {}) {
   }
 
   const requireSiteAccess = asyncRoute(async (req, res, next) => {
-    const { user, allowed } = await siteAccessIdentity(req);
+    const requestPath = normalizeContentPath(req.originalUrl);
+    const assetRootPath = requestPath ? contentRootForStaticAsset(requestPath) : "";
+    const { user, allowed } = await (assetRootPath ? staticSiteAccessIdentity(req) : siteAccessIdentity(req));
     if (!allowed) {
       if (req.method === "GET") return res.redirect(302, "/?access=required");
       throw new HttpError(403, "SITE_ACCESS_REQUIRED", "Complete site sign-in before opening this page.");
     }
 
-    const requestPath = normalizeContentPath(req.originalUrl);
     if (!requestPath) throw new HttpError(400, "INVALID_CONTENT_PATH", "This content path is invalid.");
-    const assetRootPath = contentRootForStaticAsset(requestPath);
     const globallyDisabledPaths = await getGloballyDisabledContentPaths();
     if (user?.role !== "admin" && requestPath && isGloballyDisabledContent(requestPath, assetRootPath, globallyDisabledPaths)) {
       if (req.method === "GET") return res.redirect(302, "/?content=globally-disabled");
@@ -3375,6 +3406,7 @@ function createClassroomPlatform(options = {}) {
     if (pool && databaseReady && token) {
       await pool.query("DELETE FROM classroom_sessions WHERE token_hash = $1", [hashSessionToken(token)]);
     }
+    forgetStaticAccess(token);
     clearSessionCookie(res);
     clearGuestAccessCookie(res);
     res.json({ ok: true });
@@ -3402,6 +3434,7 @@ function createClassroomPlatform(options = {}) {
       [mode, admin.id]
     );
     invalidateSiteAccessModeCache();
+    forgetStaticAccess();
     res.json({ ok: true, mode });
   }));
 
