@@ -818,7 +818,7 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
 #game-container .btn-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
 #game-container .controls button { min-width: 44px; min-height: 44px; padding: 6px 12px; font: 600 15px/1.3 "Malgun Gothic", system-ui, sans-serif; }
 #game-container .legacy-music-control { display: none; }
-#game-container .board-wrapper { width: 100%; height: auto; flex: none; box-sizing: border-box; margin: 8px 0 0; padding: 8px; gap: 12px; overflow: visible; }
+#game-container .board-wrapper { position: relative; width: 100%; height: auto; flex: none; box-sizing: border-box; margin: 8px 0 0; padding: 8px; gap: 12px; overflow: visible; }
 #game-container .pole { flex: 1 1 0; width: auto; min-width: 0; height: 380px; max-height: none; border-bottom-width: 20px; }
 #game-container .pole::before { height: 350px; }
 #game-container #info { position: static; margin: 8px 0 0; font-size: 20px; letter-spacing: 0; }
@@ -844,6 +844,22 @@ body:has(#game-container[style*="flex"]) { height: auto; min-height: var(--site-
 #game-container .pole.hint-pole {
   background: rgba(74, 222, 128, .14) !important;
   box-shadow: inset 0 0 0 2px rgba(74, 222, 128, .75), 0 0 16px rgba(74, 222, 128, .35) !important;
+}
+#game-container .disk.hint-goal-disk { background: linear-gradient(#ffe7a7, #bd8420) !important; color: #2b1a05; text-shadow: none; }
+#game-container .disk.hint-blocker-disk { background: linear-gradient(#a8e3ff, #4c9ac2) !important; color: #092638; text-shadow: none; }
+#game-container .pole.hint-goal-pole { box-shadow: inset 0 0 0 2px #ffe29a; }
+#game-container .pole.hint-staging-pole { box-shadow: inset 0 0 0 2px #9bdbff; }
+#game-container .pole[data-hint-label]::after { content: attr(data-hint-label); position: absolute; top: 7px; z-index: 20; max-width: 95%; padding: 4px 6px; background: #10212e; color: #fff4d4; font: 600 12px/1.4 'Malgun Gothic', sans-serif; text-align: center; }
+.hanoi-hint-arrow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 30; overflow: visible; }
+.hanoi-hint-arrow[hidden], .hanoi-coach[hidden], #hanoi-next-move[hidden] { display: none; }
+.hanoi-coach { width: 100%; margin-top: 10px; padding: 12px 14px; border: 1px solid #a27d4f; border-radius: 8px; background: #10212e; color: #fff4d4; font: 14px/1.65 'Malgun Gothic', sans-serif; text-align: left; }
+.hanoi-coach p { margin: 0 0 6px; }
+.hanoi-coach summary { cursor: pointer; color: #ffe29a; font-weight: 700; }
+.hanoi-coach ol { margin: 8px 0; padding-left: 22px; }
+.hanoi-coach li + li { margin-top: 6px; }
+.hanoi-coach button { margin: 6px 0; padding: 8px 12px; font: inherit; }
+@media (min-width: 900px) and (max-height: 700px) {
+  #game-container .hanoi-coach { grid-column: 2; }
 }
 .hanoi-rule-tip {
   margin-top: 8px;
@@ -916,7 +932,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
                 </div>
             </div>
         </div>
-        <button onclick="showHanoiHint()" style="margin-top: 5px; border-color: #ffd98a; color: #ffd98a;">💡 힌트</button>
+        <button id="hanoi-hint-button" onclick="showHanoiHint()" aria-controls="hanoi-coach" aria-expanded="false" style="margin-top: 5px; border-color: #ffd98a; color: #ffd98a;">💡 힌트</button>
         <button onclick="initGame(mode === 'normal')" style="margin-top: 5px;">RESET GAME</button>
         <button data-game-rules onclick="showRules()" style="margin-top: 5px;">Rules</button>
         <button type="button" style="margin-top: 5px;" onclick="location.href='../../../'">메인 화면으로</button>
@@ -927,9 +943,24 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         <div class="pole" id="pole0" onclick="handlePoleTap(0)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="pole" id="pole1" onclick="handlePoleTap(1)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         <div class="pole" id="pole2" onclick="handlePoleTap(2)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <svg class="hanoi-hint-arrow" id="hanoi-hint-arrow" aria-hidden="true" hidden>
+            <defs><marker id="hanoi-arrowhead" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#4ade80" stroke-width="3" stroke-linejoin="round" /></marker></defs>
+            <path id="hanoi-arrow-outline" fill="none" stroke="#10212e" stroke-width="9" stroke-linecap="round" />
+            <path id="hanoi-arrow-line" fill="none" stroke="#4ade80" stroke-width="4" stroke-linecap="round" marker-end="url(#hanoi-arrowhead)" />
+        </svg>
     </div>
 
     <div id="info"><span id="race-time" hidden>TIME: <span id="raceTimer">00:00</span> · </span>MOVES: <span id="moveCount">0</span></div>
+    <section class="hanoi-coach" id="hanoi-coach" aria-label="하노이 생각 힌트" hidden>
+        <p id="hanoi-goal" aria-live="polite"></p>
+        <p id="hanoi-question"></p>
+        <details id="hanoi-subgoals" ontoggle="renderHanoiCoach()">
+            <summary>작은 목표로 나눠 보기</summary>
+            <ol id="hanoi-plan"></ol>
+            <button type="button" onclick="revealHanoiMove()">다음 한 수 확인</button>
+            <p id="hanoi-next-move" hidden></p>
+        </details>
+    </section>
     <div class="tap-guide" id="tap-guide">맨 위 원판을 톡 누른 뒤, 옮길 기둥 영역을 톡 누르세요.</div>
 </div>
 
@@ -960,6 +991,8 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
     let totalDisks = 3;
     let mode = 'normal';
     let selectedPoleIndex = null;
+    let hanoiHintOpen = false;
+    let hanoiMoveRevealed = false;
 
     const bgm = document.getElementById('bgm');
 
@@ -1135,29 +1168,109 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
 
     function showHanoiHint() {
         if (race.active) return;
-        const poleNames = ['왼쪽 기둥', '가운데 기둥', '오른쪽 기둥'];
-        const nextMove = findNextBestMove(poles, totalDisks, 1);
-        if (!nextMove) return;
-        usedSoloHint = true;
-
-        let bigDisk = totalDisks;
-        while (bigDisk > 1 && poles[1].includes(bigDisk)) bigDisk--;
-
-        const minLeft = calculateMinMoves(poles, totalDisks, 1);
-        selectedPoleIndex = nextMove.from;
+        if (!findNextBestMove(poles, totalDisks, 1)) return;
+        hanoiHintOpen = !hanoiHintOpen;
+        hanoiMoveRevealed = false;
+        document.getElementById('hanoi-subgoals').open = false;
+        if (hanoiHintOpen) usedSoloHint = true;
         render();
-
-        const fromPoleEl = document.getElementById('pole' + nextMove.from);
-        const toPoleEl = document.getElementById('pole' + nextMove.to);
-        const topDiskEl = fromPoleEl ? fromPoleEl.lastElementChild : null;
-        if (topDiskEl) topDiskEl.classList.add('hint-disk');
-        if (toPoleEl) toPoleEl.classList.add('hint-pole');
-
-        const reason = nextMove.disk === bigDisk
-            ? `드디어 ${bigDisk}번 원판이 갈 길이 열렸어요!`
-            : `${bigDisk}번 원판을 옮길 길을 비워 주기 위해`;
-        updateTapGuide(`💡 힌트 (${reason}): [${poleNames[nextMove.from]}]의 [${nextMove.disk}번 원판]을 [${poleNames[nextMove.to]}]으로 옮기세요! (남은 최소 ${minLeft}회)`);
     }
+
+    function buildHanoiHintPlan(currentPoles, disk, targetPole) {
+        if (disk === 0) return [];
+        const from = currentPoles.findIndex(stack => stack.includes(disk));
+        if (from === targetPole) return buildHanoiHintPlan(currentPoles, disk - 1, targetPole);
+        const spare = 3 - from - targetPole;
+        const blockers = currentPoles.flatMap((stack, index) => index === spare ? [] : stack.filter(size => size < disk)).sort((a, b) => a - b);
+        return [{ disk, from, to: targetPole, spare, blockers }, ...buildHanoiHintPlan(currentPoles, disk - 1, spare)];
+    }
+
+    function renderHanoiCoach() {
+        const coach = document.getElementById('hanoi-coach');
+        const button = document.getElementById('hanoi-hint-button');
+        const subgoals = document.getElementById('hanoi-subgoals');
+        const arrow = document.getElementById('hanoi-hint-arrow');
+        const plan = hanoiHintOpen && !race.active ? buildHanoiHintPlan(poles, totalDisks, 1) : [];
+        const active = plan.length > 0;
+        coach.hidden = !active;
+        button.setAttribute('aria-expanded', String(active));
+        button.textContent = active ? '💡 힌트 닫기' : '💡 힌트';
+        arrow.setAttribute('hidden', '');
+        document.querySelectorAll('.pole').forEach(pole => {
+            pole.classList.remove('hint-pole', 'hint-goal-pole', 'hint-staging-pole');
+            delete pole.dataset.hintLabel;
+        });
+        document.querySelectorAll('.disk').forEach(disk => disk.classList.remove('hint-disk', 'hint-goal-disk', 'hint-blocker-disk'));
+        if (!active) return;
+
+        const names = ['왼쪽 기둥', '가운데 기둥', '오른쪽 기둥'];
+        const goal = plan[0];
+        document.querySelector(`.disk[data-size="${goal.disk}"]`)?.classList.add('hint-goal-disk');
+        document.getElementById('pole' + goal.to).classList.add('hint-goal-pole');
+        document.querySelectorAll('.pole').forEach((pole, index) => {
+            pole.dataset.hintLabel = names[index] + (index === goal.to ? ' · 목표' : '');
+        });
+        goal.blockers.forEach(size => document.querySelector(`.disk[data-size="${size}"]`)?.classList.add('hint-blocker-disk'));
+        document.getElementById('hanoi-goal').textContent = `이번 목표 · 금색 ${goal.disk}번 원판을 ${names[goal.to]}으로 옮기기`;
+        document.getElementById('hanoi-question').textContent = goal.blockers.length
+            ? `파란색 ${goal.blockers.join('·')}번 원판이 길을 막고 있어요. 이 작은 원판들을 어디에 모으면 ${goal.disk}번 위와 ${names[goal.to]}을 함께 비울 수 있을까요?`
+            : `${goal.disk}번 위와 목적지에 더 작은 원판이 없어요. 지금 옮겨도 규칙에 맞을까요? 목적지의 맨 위 원판과 크기를 비교해 보세요.`;
+
+        const steps = plan.filter(step => step.blockers.length);
+        document.getElementById('hanoi-plan').replaceChildren(...steps.map(step => {
+            const item = document.createElement('li');
+            item.textContent = `${step.disk}번을 ${names[step.to]}으로 옮기려면 더 작은 원판들을 ${names[step.spare]}에 모으는 작은 목표부터 해결해요. 큰 원판을 움직인 뒤에는 그 위로 작은 탑을 다시 모아요.`;
+            return item;
+        }));
+        if (!steps.length) {
+            const item = document.createElement('li');
+            item.textContent = '목표 원판 위가 비어 있고, 목적지도 비어 있거나 더 큰 원판만 있어요. 작은 원판 위에 큰 원판을 놓지 않는다는 규칙으로 이동할 수 있는지 판단해 보세요.';
+            document.getElementById('hanoi-plan').append(item);
+        }
+        if (subgoals.open && goal.blockers.length) {
+            const stagingPole = document.getElementById('pole' + goal.spare);
+            stagingPole.classList.add('hint-staging-pole');
+            stagingPole.dataset.hintLabel = names[goal.spare] + ' · 잠시 모을 곳';
+        }
+        if (!subgoals.open) hanoiMoveRevealed = false;
+        const nextLine = document.getElementById('hanoi-next-move');
+        nextLine.hidden = !hanoiMoveRevealed;
+        if (hanoiMoveRevealed) {
+            const nextMove = findNextBestMove(poles, totalDisks, 1);
+            nextLine.textContent = `${nextMove.disk}번을 ${names[nextMove.from]}에서 ${names[nextMove.to]}으로 옮겨요. ${nextMove.disk === goal.disk ? '큰 목표를 실행할 차례예요.' : `${goal.disk}번의 길을 비우는 작은 목표를 위한 한 수예요.`}`;
+            document.querySelector(`.disk[data-size="${nextMove.disk}"]`)?.classList.add('hint-disk');
+            document.getElementById('pole' + nextMove.to).classList.add('hint-pole');
+            arrow.removeAttribute('hidden');
+            drawHanoiHintArrow();
+        }
+    }
+
+    function revealHanoiMove() {
+        if (!hanoiHintOpen || race.active) return;
+        hanoiMoveRevealed = true;
+        renderHanoiCoach();
+    }
+
+    function drawHanoiHintArrow() {
+        const arrow = document.getElementById('hanoi-hint-arrow');
+        if (arrow.hasAttribute('hidden')) return;
+        const move = findNextBestMove(poles, totalDisks, 1);
+        if (!move) return;
+        const board = arrow.parentElement.getBoundingClientRect();
+        const source = document.querySelector(`#pole${move.from} .disk[data-size="${move.disk}"]`).getBoundingClientRect();
+        const targetPole = document.getElementById('pole' + move.to);
+        const target = targetPole.lastElementChild?.getBoundingClientRect() || targetPole.getBoundingClientRect();
+        const x1 = source.left + source.width / 2 - board.left;
+        const y1 = source.top + source.height / 2 - board.top;
+        const x2 = target.left + target.width / 2 - board.left;
+        const y2 = (targetPole.lastElementChild ? target.top - 12 : target.bottom - 34) - board.top;
+        const lift = Math.max(42, Math.min(y1, y2) - 95);
+        const curve = `M ${x1} ${y1} C ${x1} ${lift}, ${x2} ${lift}, ${x2} ${y2}`;
+        arrow.setAttribute('viewBox', `0 0 ${board.width} ${board.height}`);
+        document.getElementById('hanoi-arrow-outline').setAttribute('d', curve);
+        document.getElementById('hanoi-arrow-line').setAttribute('d', curve);
+    }
+    window.addEventListener('resize', drawHanoiHintArrow);
 
     function setDisk(n) {
         totalDisks = n;
@@ -1176,6 +1289,9 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
 
     function initGame(keepHint = false) {
         if (!keepHint) usedSoloHint = false;
+        hanoiHintOpen = false;
+        hanoiMoveRevealed = false;
+        document.getElementById('hanoi-subgoals').open = false;
         poles = [[], [], []];
         selectedPoleIndex = null;
         moveCount = 0;
@@ -1268,6 +1384,7 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         }
 
         updateTapGuide();
+        renderHanoiCoach();
     }
 
     function updateTapGuide(message = "") {
@@ -1330,6 +1447,8 @@ body.pr-racing #game-container .controls > :not(.legacy-music-control):not(.race
         const beforeRect = movingDisk?.getBoundingClientRect();
         poles[toPoleIdx].push(poles[fromPoleIdx].pop());
         selectedPoleIndex = null;
+        hanoiMoveRevealed = false;
+        document.getElementById('hanoi-subgoals').open = false;
         moveCount++;
         document.getElementById('moveCount').textContent = moveCount;
 
