@@ -26,7 +26,7 @@ p { line-height: 1.65; }
 #turn { font-size: 18px; }
 #score { font-size: 16px; white-space: nowrap; }
 .board-viewport { min-height: 0; min-width: 0; display: grid; place-items: center; overflow: auto; container-type: size; border-radius: 10px; }
-.board-frame { width: min(700px, 100cqw, 100cqh); aspect-ratio: 1; padding: 21px 8px 8px 23px; }
+.board-frame { width: min(100cqw, 100cqh); aspect-ratio: 1; padding: 21px 8px 8px 23px; }
 #board { --size: 8; position: relative; display: grid; grid-template-columns: repeat(var(--size), minmax(0,1fr)); width: 100%; height: 100%; box-shadow: 0 3px 12px #162b2529; }
 .move-arrow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
 .move-arrow path, .move-arrow polyline { fill: none; stroke-linecap: round; stroke-linejoin: round; }

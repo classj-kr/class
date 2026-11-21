@@ -20,11 +20,11 @@ body{min-height:var(--site-game-height, 100dvh);display:flex;align-items:center;
 
 /* Keep the board, clocks and match actions inside tablet/laptop viewports. */
 body:has(.game-screen:not(.hidden)){--match-inset:8px;align-items:flex-start;height:auto;min-height:var(--site-game-height, 100dvh);overflow:visible;padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
-body:has(.game-screen:not(.hidden)) .shell{width:100%;max-width:1200px;min-height:0;height:calc(var(--site-game-height, 100dvh) - max(8px,env(safe-area-inset-top)) - max(8px,env(safe-area-inset-bottom)));min-height:560px;padding:8px;overflow:visible}
+body:has(.game-screen:not(.hidden)) .shell{width:100%;max-width:1400px;min-height:0;height:calc(var(--site-game-height, 100dvh) - max(8px,env(safe-area-inset-top)) - max(8px,env(safe-area-inset-bottom)));min-height:560px;padding:8px;overflow:visible}
 #gameScreen{height:100%;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:minmax(0,1fr);gap:10px}
 #gameScreen .board-column{min-height:0}
 #gameScreen .board-wrap{container-type:size;min-width:0}
-#gameScreen .chessboard{width:min(720px,100cqw,100cqh);max-width:720px}
+#gameScreen .chessboard{width:min(100cqw,100cqh);max-width:none}
 #gameScreen .player-bar{width:100%;max-width:none;min-width:0}
 #gameScreen .game-side{width:100%;min-width:0;margin:0;overflow:auto}
 #gameScreen .game-side>*{flex-shrink:0}
@@ -71,3 +71,4 @@ body:has(.game-screen:not(.hidden)) .shell{width:100%;max-width:1200px;min-heigh
 #board .moving-ghost,#board .capture-ghost{position:absolute;left:9%;top:9%;pointer-events:none}
 #board .capture-ghost{z-index:2}
 @media(prefers-reduced-motion:reduce){.piece-svg{transition:none}.square:hover .piece-svg{transform:none}.player-clock.urgent{animation:none}}
+

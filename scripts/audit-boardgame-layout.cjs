@@ -11,9 +11,7 @@ const seeded = new Set(["baduk", "omok", "connect6", "chess", "traverse", "diamo
 const output = path.resolve(process.argv[2] || path.join(root, "docs/qa/boardgame-layout-20260921/boardgame-layout-audit.json"));
 const fixtures = require("./lib/boardgame-fixtures.cjs");
 const read = file => fs.readFileSync(file, "utf8");
-// Natural dimensions before the viewport-filling change. These are upper bounds,
-// not sizes to force onto a smaller screen.
-const naturalBoardWidths={baduk:680,omok:720,connect6:720,chess:720,janggi:600,reversi:760,diamondgame:720,traverse:690};
+// 판은 화면에 남는 자리만큼 커진다(2026-11-21 상한을 풂). 너무 커서 넘치는지는 pageOverflow·buttonsOutside 가 본다.
 
 
 async function main() {
@@ -60,13 +58,13 @@ async function main() {
       await page.addScriptTag({content:read(path.join(root,"assets/game-motion.js"))});
       await page.evaluate(()=>Object.defineProperty(window,"localStorage",{configurable:true,value:{getItem:()=>null,setItem:()=>{},removeItem:()=>{}}}));
       if (seeded.has(game)) {
-        if (game === "chess") await page.addScriptTag({content:read(path.join(path.dirname(file),"chess-rules.js"))});
+        if (game === "chess") for (const extra of ["chess-rules.js","pieces.js","motion.js"]) await page.addScriptTag({content:read(path.join(path.dirname(file),extra))});
         const source = game === "baduk" ? read(path.join(path.dirname(file),"baduk.js")) : game === "chess" ? read(path.join(path.dirname(file),"chess-ui.js")) : [...original.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)[1];
         await page.addScriptTag({content:source.replace(/const savedName\s*=.*?;/, 'const savedName="박화승";')});
         let serverState=null;
         if(game==="honeycomb") {const engine=require(path.join(root,"game-hub-server/honeycomb.js"));const match=engine.createGame("a","박화승");engine.addPlayer(match,"b","김테스트");if(process.env.AUDIT_MAX_PLAYERS==="1")for(const id of ["c","d","e","f"])engine.addPlayer(match,id,"참가자"+id);engine.startGame(match);serverState=engine.stateFor(match,"a");}
         await page.evaluate(({game,serverState,maxPlayers}) => {
-          lobby = {snapshot:()=>({players:{a:{name:"박화승"},b:{name:"김테스트"}},myId:"a",role:"host",roomCode:"7199"}),broadcast:()=>{},sendServer:()=>true};
+          lobby = {snapshot:()=>({players:{a:{name:"박화승"},b:{name:"김테스트"}},myId:"a",role:"host",roomCode:"7199"}),broadcast:()=>{},sendServer:()=>true,decorateName:(id,name)=>name,avatarMarkup:()=>""};
           if(maxPlayers && (game==="traverse"||game==="diamondgame")){const snapshot=lobby.snapshot();snapshot.players.c={name:"이하늘"};if(game==="traverse")snapshot.players.d={name:"최바다"};lobby.snapshot=()=>snapshot;}
           if (game === "honeycomb") {createBoard();installState(serverState);return;}
           if (game === "traverse" || game === "diamondgame") {
@@ -125,9 +123,7 @@ async function main() {
             const imageReview=[...area.querySelectorAll('img')].filter(visible).filter(el=>el.naturalWidth&&getComputedStyle(el).objectFit==='cover'&&Math.abs(el.clientWidth/el.clientHeight-el.naturalWidth/el.naturalHeight)>.06).map(el=>({src:el.getAttribute('src'),alt:el.alt,width:el.clientWidth,height:el.clientHeight}));
             return {textReview,imageReview,visibleRoomCodes,pageOverflow:document.documentElement.scrollHeight>innerHeight+1||document.documentElement.scrollWidth>innerWidth+1,boards,buttonsOutside,scrollableButtons};
           },screen);
-          const boardLimit=naturalBoardWidths[game];
-          const enlargedBoards=boardLimit?metrics.boards.filter(board=>board.width>boardLimit+2).map(board=>board.selector):[];
-          result.checks.push({width,height,state,...metrics,enlargedBoards});
+          result.checks.push({width,height,state,...metrics});
         }
       }
       results.push(result);
@@ -137,12 +133,13 @@ async function main() {
         await page.screenshot({path:path.join(path.dirname(output),game+"-portrait-check.png")});
         await page.setViewport({width:1024,height:768,hasTouch:true});
         await page.screenshot({path:path.join(path.dirname(output),game+"-layout-check.png")});
+        if(process.env.AUDIT_LARGE_SCREENS==="1"){await page.setViewport({width:1920,height:1080,hasTouch:true});await page.screenshot({path:path.join(path.dirname(output),game+"-large-check.png")});}
       }
-      console.log(game+": "+result.coverage+"; "+result.checks.filter(c=>c.pageOverflow||c.enlargedBoards.length||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length).length+" flagged checks");
+      console.log(game+": "+result.coverage+"; "+result.checks.filter(c=>c.pageOverflow||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length).length+" flagged checks");
       await page.close();
     }
   } finally {Math.random=random;await browser.close();server.close();}
   fs.writeFileSync(output,JSON.stringify({generatedAt:new Date().toISOString(),playerMode:process.env.AUDIT_MAX_PLAYERS==="1"?"maximum configured":"minimum configured",note:"Static shells are triage, not gameplay certification. Match fixtures use local render functions with mocked network state. No real iPad/Safari or multiplayer session was tested.",results},null,2));
-  if(results.some(r=>r.fixtureError||r.errors.length||r.checks.some(c=>c.pageOverflow||c.enlargedBoards.length||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length))) process.exitCode=1;
+  if(results.some(r=>r.fixtureError||r.errors.length||r.checks.some(c=>c.pageOverflow||c.boards.some(b=>b.outside||b.collapsed||b.clipped)||c.buttonsOutside.length))) process.exitCode=1;
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

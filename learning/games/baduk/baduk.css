@@ -4,7 +4,7 @@
 
 /* Reserve space for game controls before sizing the square board. */
 body{--game-inset:12px;padding:max(var(--game-inset),env(safe-area-inset-top)) max(var(--game-inset),env(safe-area-inset-right)) max(var(--game-inset),env(safe-area-inset-bottom)) max(var(--game-inset),env(safe-area-inset-left))}
-.shell:has(#gameScreen:not(.hidden)){width:min(1200px,100%)}
+.shell:has(#gameScreen:not(.hidden)){width:min(1400px,100%)}
 #gameScreen{height:calc(var(--site-game-height, 100dvh) - 2 * var(--game-inset));height:calc(var(--site-game-height, 100dvh) - max(var(--game-inset),env(safe-area-inset-top)) - max(var(--game-inset),env(safe-area-inset-bottom)));min-height:480px;display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px}
 #gameScreen>.panel{margin:0;min-width:0;padding:12px}
 #gameScreen .players{grid-template-columns:repeat(2,minmax(0,1fr));margin:8px 0;gap:8px}
@@ -14,7 +14,7 @@ body{--game-inset:12px;padding:max(var(--game-inset),env(safe-area-inset-top)) m
 #gameScreen button:not(.point){min-height:44px}
 #gameScreen .play-panel{display:grid;grid-template-rows:minmax(0,1fr);gap:8px;min-height:0}
 .board-stage{container-type:size;display:grid;place-items:center;min-width:0;min-height:0}
-#gameScreen .board-frame{width:min(680px,100cqw,100cqh);aspect-ratio:1;margin:0;padding:clamp(5px,1.5cqw,12px)}
+#gameScreen .board-frame{width:min(100cqw,100cqh);aspect-ratio:1;margin:0;padding:clamp(5px,1.5cqw,12px)}
 #gameScreen .game-status{margin:0;overflow-wrap:anywhere}
 #resultActions:not(.hidden){display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 @media(min-width:900px) and (orientation:landscape){
