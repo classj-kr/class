@@ -10,6 +10,8 @@ const plans={
  flute:{family:'woodwind',source:'flute',bpm:120,end:32.5,first:[83,86,83]},
  violin:{family:'strings',source:'violin',bpm:110,end:52.5,first:[76,80,80]},
  oboe:{family:'woodwind',bpm:72,end:48,first:[69,71,69]},
+ bassoon:{family:'woodwind',bpm:96,end:42,first:[53,60,48]},
+ contrabassoon:{family:'woodwind',bpm:96,end:42,first:[41,48,36]},
  'recorder-soprano':{family:'woodwind',bpm:104,end:48,index:1,first:[86,79,81]},
  'pipe-organ':{family:'keyboard',bpm:60,end:25.5,first:[69,81,67,79,69,81]},
  clavinet:{family:'keyboard',bpm:100,end:17,first:[39,51,49]}
@@ -68,6 +70,10 @@ function wave(pcm){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(pcm.
    if(id==='recorder-soprano'){
     assert.equal(hits.at(-1).midi,79);
     assert.ok(Math.abs(hits.at(-1).when-hits[0].when-45*60/104)<1/48000);
+   }
+   if(id==='bassoon'||id==='contrabassoon'){
+    assert.equal(hits.at(-1).midi,id==='bassoon'?36:24);
+    assert.ok(Math.abs(hits.at(-1).when-hits[0].when-40.5*60/96)<1/48000);
    }
    await page.waitForFunction(selector=>document.querySelector(selector).getAttribute('aria-pressed')==='false',{timeout:60000},selector);
    assert.equal(await page.$$('.key.demo-hit').then(e=>e.length),0);assert.deepEqual(errors,[]);

@@ -36,10 +36,33 @@
         [32,79,.5],[32.5,78,.5],[33,78,2],[35,74,.5],[35.5,83,.5],
         [36,83,3],[39,83,.5],[39.5,81,.5],[40,81,7]
     ];
-    // Dukas, The Sorcerer's Apprentice, rehearsal 7, first four 3/8 bars.
+    // Dukas, The Sorcerer's Apprentice, full first bassoon theme, [7] to [8].
+    // Three eighth-note slots per bar; null preserves a printed eighth rest.
     // https://www.orchestralbassoon.com/dukas-apprentice-part-1
-    const apprentice = [[0,53,1],[1.5,60,1],[3,48,.5],[3.5,50,.5],[4,52,.5],
-        [4.5,53,.5],[5.5,56,.5],[6,53,1]];
+    const apprenticeBars = [
+        [[53,1],[null,.5]],[[60,1],[null,.5]],
+        [[48,.5],[50,.5],[52,.5]],[[53,.5],[null,.5],[56,.5]],
+        [[53,.5],[null,.5],[56,.5]],[[55,.5],[53,.5],[52,.5]],
+        [[53,.5],[null,.5],[56,.5]],[[53,.5],[null,.5],[56,.5]],
+        [[55,.5],[53,.5],[52,.5]],[[53,.5],[null,.5],[56,.5]],
+        [[53,.5],[56,.5],[55,.5]],[[53,.5],[55,.5],[56,.5]],
+        [[55,.5],[58,.5],[56,.5]],[[55,.5],[null,.5],[59,.5]],
+        [[53,.5],[null,.5],[56,.5]],[[55,.5],[58,.5],[56,.5]],
+        [[55,.5],[null,.5],[59,.5]],[[53,.5],[null,.5],[56,.5]],
+        [[55,.5],[56,.5],[58,.5]],[[60,.5],[60,.5],[60,.5]],
+        [[60,.5],[60,.5],[60,.5]],[[60,.5],[58,.5],[56,.5]],
+        [[55,.5],[58,.5],[56,.5]],[[55,.5],[53,.5],[51,.5]],
+        [[51,.5],[50,.5],[48,.5]],[[46,.5],[44,.5],[43,.5]],
+        [[41,.5],[39,.5],[38,.5]],[[36,.5],[null,1]]
+    ];
+    const apprentice = apprenticeBars.flatMap((bar,index) => {
+        let beat = index * 1.5;
+        return bar.flatMap(([midi,length]) => {
+            const note = midi === null ? [] : [[beat,midi,length]];
+            beat += length;
+            return note;
+        });
+    });
     // Beethoven, Ode to Joy: complete antecedent + consequent in C.
     // https://www.carnegiehall.org/Education/Programs/Link-Up/National-Program/The-Orchestra-Sings/Ode-to-Joy
     const joy = [[0,64,1],[1,64,1],[2,65,1],[3,67,1],[4,67,1],[5,65,1],[6,64,1],[7,62,1],
@@ -130,8 +153,8 @@
         clavinet: [{title:"Superstition · 스티비 원더",bpm:100,notes:superstition,endBeat:17}],
         oboe: [{title:"가브리엘의 오보에",bpm:72,notes:melody(gabriel,.99),endBeat:48,articulation:"sustain"}],
         "english-horn": [{title:"신세계 교향곡 · 라르고",bpm:56,notes:melody(largo),endBeat:16,articulation:"sustain"}],
-        bassoon: [{title:"마법사의 제자",bpm:96,notes:melody(apprentice,.7),endBeat:7,articulation:"sustain"}],
-        contrabassoon: [{title:"마법사의 제자",bpm:96,notes:melody(apprentice,.7,-12),endBeat:7,articulation:"sustain"}]
+        bassoon: [{title:"마법사의 제자",bpm:96,notes:solo(apprentice,.7,.7),endBeat:42,articulation:"sustain"}],
+        contrabassoon: [{title:"마법사의 제자",bpm:96,notes:solo(apprentice.map(([beat,midi,length])=>[beat,midi-12,length]),.7,.7),endBeat:42,articulation:"sustain"}]
     };
     for (const [model, transpose] of [["recorder-piccolo",24],["recorder-soprano",12],["recorder-alto",12],["recorder-tenor",0]]) {
         const minuetTranspose = transpose === 0 ? 0 : transpose === 24 ? 12 : model === "recorder-alto" ? 0 : 12;
