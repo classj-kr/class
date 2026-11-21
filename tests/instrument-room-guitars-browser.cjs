@@ -53,7 +53,7 @@ const server = http.createServer((req, res) => {
     await page.goto('http://127.0.0.1:' + server.address().port + room, {waitUntil:'networkidle0'});
     await page.click('[data-family="guitar"]');
     assert.deepEqual(await page.$$eval('#modelChooser b', labels => labels.map(label => label.textContent)), guitarNames);
-    const results = await page.evaluate(async (models) => {
+    const results = await page.evaluate(async ({models,manifestGains}) => {
       const a = window.guitarTest;
       const decoder = new OfflineAudioContext(2, 48000, 48000);
       const results = [];
@@ -83,6 +83,7 @@ const server = http.createServer((req, res) => {
           a.ensureAudio();
           window.AudioContext = NativeContext;
           const first = a.startConcertGrandSample(midi, .8, anchor, buffer, config.id);
+          if(midi===55)row.originalCaptureLevelRatio=first.recordedGain * manifestGains[suffix];
           if (first.source.playbackRate.value !== 1) throw new Error('Native note pitch changed');
           const suspended = context.suspend(.2), rendering = context.startRendering();
           await suspended;
@@ -197,7 +198,7 @@ const server = http.createServer((req, res) => {
         results.push(row);
       }
       return results;
-    }, models);
+    }, {models,manifestGains:Object.fromEntries(manifest.instruments.map(bank=>[bank.model.toLowerCase(),bank.instrumentGain]))});
     assert.equal(results.reduce((n,r) => n+r.decoded,0), 248);
     for (const row of results) for (const render of row.renders) {
       assert.ok(render.peak < .99 && render.rms > .001, JSON.stringify({model:row.model,...render}));
@@ -205,6 +206,7 @@ const server = http.createServer((req, res) => {
     }
     for (const row of results) assert.ok(row.tapTailRatio < .015, row.model + ': key-up damps the note after its short recorded release');
     for (const row of results) {
+      assert.ok(Math.abs(row.originalCaptureLevelRatio-1)<.01,row.model+': native capture level was attenuated');
       assert.ok(row.shortTapBodyRatio > .98, row.model + ': quick key-up removed the original pluck body');
       assert.ok(row.explicitMuteRatio < .15, row.model + ': explicit damping must bypass the pluck body protection');
       assert.ok(row.shortTapLateRms < .00001, row.model + ': short taps must not hang like a sustain pedal');
