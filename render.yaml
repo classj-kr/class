@@ -82,6 +82,10 @@ services:
         - learning/**/*.webp
         - learning/**/*.woff
         - learning/**/*.woff2
+    routes:
+      - type: rewrite
+        source: /learning/inquiry/age-of-exploration/public/*
+        destination: /learn/world-voyage/*
     headers:
       - path: /*
         name: Access-Control-Allow-Origin

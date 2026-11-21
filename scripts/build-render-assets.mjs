@@ -35,12 +35,12 @@ export function assetDestinations(relativePath) {
   }
   if (!normalized.startsWith("learning/")) return [];
 
-  const destinations = [normalized];
   const voyagePublic = "learning/inquiry/age-of-exploration/public/";
   if (normalized.startsWith(voyagePublic)) {
-    destinations.push(`learn/world-voyage/${normalized.slice(voyagePublic.length)}`);
+    // render.yaml serves the legacy path from this same asset.
+    return [`learn/world-voyage/${normalized.slice(voyagePublic.length)}`];
   }
-  return destinations;
+  return [normalized];
 }
 
 export function buildRenderAssets({ repositoryRoot = REPOSITORY_ROOT, outputDirectory = DEFAULT_OUTPUT, trackedFiles } = {}) {

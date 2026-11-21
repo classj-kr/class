@@ -10,10 +10,7 @@ test("asset routing includes runtime media and excludes source originals", () =>
   assert.deepEqual(assetDestinations("apps/classtools/assets/avatars/cat.webp"), ["assets/avatars/cat.webp"]);
   assert.deepEqual(
     assetDestinations("learning/inquiry/age-of-exploration/public/assets/city.webp"),
-    [
-      "learning/inquiry/age-of-exploration/public/assets/city.webp",
-      "learn/world-voyage/assets/city.webp",
-    ],
+    ["learn/world-voyage/assets/city.webp"],
   );
   assert.deepEqual(
     assetDestinations("learning/inquiry/information-computing/computer-fundamentals/assets/source/original.png"),
@@ -29,21 +26,25 @@ test("asset routing includes runtime media and excludes source originals", () =>
   ]) assert.deepEqual(assetDestinations(file), [], file);
 });
 
-test("asset build preserves public paths and writes a deployment manifest", () => {
+test("asset build copies voyage media once and writes the deployment manifest", () => {
   const root = mkdtempSync(path.join(os.tmpdir(), "render-assets-"));
   const output = path.join(root, "output");
   try {
     const runtimeAsset = "learning/books/images/page.webp";
     const avatar = "apps/classtools/assets/avatars/cat.webp";
-    for (const file of [runtimeAsset, avatar]) {
+    const voyageTile = "learning/inquiry/age-of-exploration/public/assets/maps/tiles/tile_0_0.webp";
+    const trackedFiles = [runtimeAsset, avatar, voyageTile];
+    for (const file of trackedFiles) {
       const absolute = path.join(root, file);
       mkdirSync(path.dirname(absolute), { recursive: true });
       writeFileSync(absolute, file);
     }
-    const manifest = buildRenderAssets({ repositoryRoot: root, outputDirectory: output, trackedFiles: [runtimeAsset, avatar] });
-    assert.equal(manifest.fileCount, 2);
+    const manifest = buildRenderAssets({ repositoryRoot: root, outputDirectory: output, trackedFiles });
+    assert.equal(manifest.fileCount, 3);
     assert.equal(existsSync(path.join(output, runtimeAsset)), true);
     assert.equal(existsSync(path.join(output, "assets", "avatars", "cat.webp")), true);
+    assert.equal(readFileSync(path.join(output, "learn/world-voyage/assets/maps/tiles/tile_0_0.webp"), "utf8"), voyageTile);
+    assert.equal(existsSync(path.join(output, voyageTile)), false);
     assert.equal(JSON.parse(readFileSync(path.join(output, "__asset-manifest.json"), "utf8")).commit, "local");
   } finally {
     rmSync(root, { recursive: true, force: true });
