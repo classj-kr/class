@@ -1,0 +1,31 @@
+{
+  "originalCandidates": [
+    {"group":"gayageum-25","midi":57,"resolution":"verify-harmonics"},
+    {"group":"guitar-steel","midi":42,"resolution":"verify-harmonics"},
+    {"group":"guitar-steel","midi":47,"resolution":"verify-harmonics"},
+    {"group":"guitar-steel","midi":63,"resolution":"verify-harmonics"},
+    {"group":"guitar-steel","midi":72,"resolution":"verify-harmonics"},
+    {"group":"upright-bass-pizz","midi":42,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":66,"resolution":"verify-harmonics"},
+    {"group":"upright-bass-pizz","midi":67,"resolution":"verify-harmonics"},
+    {"group":"upright-bass-pizz","midi":68,"resolution":"verify-harmonics"},
+    {"group":"upright-bass-pizz","midi":69,"resolution":"verify-harmonics"},
+    {"group":"upright-bass-pizz","midi":70,"resolution":"verify-harmonics"},
+    {"group":"upright-bass-pizz","midi":71,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":73,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":74,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":75,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":78,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":80,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":82,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":83,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":84,"resolution":"use-stable-anchor"}
+  ],
+  "additionalRelatedCases": [
+    {"group":"upright-bass-pizz","midi":65,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":76,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":77,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":79,"resolution":"use-stable-anchor"},
+    {"group":"upright-bass-pizz","midi":81,"resolution":"use-stable-anchor"}
+  ]
+}

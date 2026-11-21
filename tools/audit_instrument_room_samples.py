@@ -199,6 +199,11 @@ def main() -> None:
     cache=json.loads(cache_file.read_text()) if cache_file.exists() else {}
     browser_file=args.output/"browser.json"
     browser=json.loads(browser_file.read_text()) if browser_file.exists() else {}
+    deep_file=ROOT/"outputs/qa/instrument-pitch-review/review.json"
+    deep=json.loads(deep_file.read_text()) if deep_file.exists() else {}
+    deep_rows={}
+    if deep.get("passed") and deep.get("sourceSha256")==hashlib.sha256((ROOM/"app.js").read_bytes()).hexdigest():
+        deep_rows={row["file"]:row for row in deep["rows"]}
     browser_loops={}
     if browser.get("sourceSha256")==hashlib.sha256((ROOM/"app.js").read_bytes()).hexdigest():
         valid=bool(browser.get("overlaps")) and all(x["end"]>x["start"]+.25 and x["startLevel"]>.05 and x["endLevel"]>.1 for x in browser["loops"])
@@ -268,6 +273,13 @@ def main() -> None:
             if any(part in config["id"] for part in ["vibrato","bend","roll"]):status="expressive_articulation"
             if status:
                 row["pitch_status"]=status
+                flags[:]=[flag for flag in flags if flag not in ["pitch_review","pitch_uncertain"]]
+        reviewed=deep_rows.get(row["file"].replace("\\","/"))
+        if reviewed and hashlib.sha256(path.read_bytes()).hexdigest()==reviewed["rawSourceSha256"]:
+            render_source=ROOM/reviewed["renderSampleFile"]
+            if hashlib.sha256(render_source.read_bytes()).hexdigest()==reviewed["renderSampleSha256"]:
+                row["pitch_status"]=reviewed["status"]
+                row["pitch_validation"]="original segment correlation, stereo harmonic consensus and actual app output"
                 flags[:]=[flag for flag in flags if flag not in ["pitch_review","pitch_uncertain"]]
         return row
     with ThreadPoolExecutor(max_workers=args.workers) as pool:

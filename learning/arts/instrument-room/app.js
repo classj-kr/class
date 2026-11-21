@@ -96,7 +96,10 @@
         "cello": Object.freeze({ id: "cello", root: "assets/audio/cello/", min: 36, max: 96, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -3.85, loopEnd: 3.8 }),
         "cello-pizz": Object.freeze({ id: "cello-pizz", root: "assets/audio/cello-pizz/", min: 48, max: 73, fileMin: 21, step: 1, gainDb: 9.0 }),
         "upright-bass": Object.freeze({ id: "upright-bass", root: "assets/audio/upright-bass/", min: 28, max: 84, fileMin: 21, fileMidiOffset: 24, step: 1, gainDb: -4.1 }),
-        "upright-bass-pizz": Object.freeze({ id: "upright-bass-pizz", root: "assets/audio/upright-bass-pizz/", min: 28, max: 84, fileMin: 21, fileMidiOffset: 24, step: 1, gainDb: 1.16 }),
+        // Prefer the verified C5 anchor in a tie. These native recordings have
+        // flat/unstable dominant modes: F#2, F4, B4 and C#5–C6. Neighboring
+        // verified recordings cover those keys without changing the play range.
+        "upright-bass-pizz": Object.freeze({ id: "upright-bass-pizz", root: "assets/audio/upright-bass-pizz/", min: 28, max: 84, fileMin: 21, fileMidiOffset: 24, step: 1, gainDb: 1.16, anchorTuningCents: Object.freeze({ 72: 21 }), anchors: Object.freeze([72, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70]) }),
         "timpani": Object.freeze({ id: "timpani", root: "assets/audio/timpani/", min: 36, max: 53, fileMin: 21, step: 1, gainDb: 6.5 }),
         "marimba": Object.freeze({ id: "marimba", root: "assets/audio/marimba/", min: 36, max: 96, fileMin: 21, step: 1, gainDb: 7.0 }),
         "vibraphone": Object.freeze({ id: "vibraphone", root: "assets/audio/vibraphone/", min: 53, max: 89, fileMin: 21, step: 1, gainDb: 5.5 }),
@@ -1458,7 +1461,8 @@
         const peak = upwardBalancedGain(buffer, velocityGain * calibratedGain, velocityGain);
         const decay = pluckedKeyboardDecay(sampleSet);
         source.buffer = buffer;
-        source.playbackRate.value = Math.pow(2, (midi - anchor) / 12);
+        const tuningCents = Number(sampleConfig?.anchorTuningCents?.[anchor] || 0);
+        source.playbackRate.value = Math.pow(2, (midi - anchor + tuningCents / 100) / 12);
         if (heldTone && buffer.duration > 1.25) {
             const region = decodedBufferSustainLoop(buffer, sampleConfig || {});
             source.loop = true;
