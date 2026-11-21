@@ -99,7 +99,8 @@ def build(model, source, destination, report_dir, archive_dir):
         peak = float(envelope.max())
         assert peak > .001, f"{model}/{midi}: silent note"
         onset = int(np.flatnonzero(envelope >= peak * .02)[0])
-        trim = max(0, onset - int(.003 * RATE)) if onset > .025 * RATE else 0
+        # Preserve quiet initial pick signals as well as the visible transient.
+        trim = 0
         audio = slot[trim:].copy() * gain
         # Keep the full release; remove only inaudible trailing space.
         audible = np.flatnonzero(np.max(np.abs(audio), axis=1) > 10 ** (-85 / 20))
@@ -141,7 +142,7 @@ def build(model, source, destination, report_dir, archive_dir):
         fundamental = partials[0]["relativeAmplitude"] > .025 and abs(partials[0]["cents"]) < 40
         if not (consensus or (fundamental and len(matched) >= 2)):
             issues.append("pitch-review")
-        if decoded_onset > .027:
+        if abs(decoded_onset - onset / RATE) > 1.01 / RATE:
             issues.append("onset-review")
         if decoded_peak >= .98:
             issues.append("peak-review")

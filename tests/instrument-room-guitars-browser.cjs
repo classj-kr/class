@@ -20,7 +20,8 @@ for (const item of manifest.instruments) {
   assert.equal(item.holdSeconds + item.tailSeconds, 10);
   for (const row of item.rows) {
     assert.deepEqual(row.issues, [], item.model + '/' + row.midi);
-    assert.ok(row.onsetMs < 27 && row.endingRms < .0001, JSON.stringify(row));
+    assert.equal(row.removedLeadingMs,0,'Keep the full recorded pick lead-in');
+    assert.ok(Math.abs(row.onsetMs-row.rawOnsetMs)<.002 && row.endingRms < .0001, JSON.stringify(row));
     assert.ok(row.quantizationError <= 2 ** -23, '24-bit lossless conversion');
     assert.ok(row.attackMaxAbsError <= 2 ** -23, item.model + '/' + row.midi + ': original attack changed during capture');
     const file = fs.readFileSync(path.join(audioRoot, 'guitar-cubase-' + item.model.toLowerCase(), row.file));
@@ -96,13 +97,14 @@ const server = http.createServer((req, res) => {
             peak = Math.max(peak, Math.abs(values[i]));
             if (i < 9600) energy += values[i] ** 2;
           }
-          // Compare the very first 40 ms against the decoded recording, not
+          // Include the recorded lead-in and first 120 ms, not only the near-
+          // silent prefix of an untrimmed jazz-guitar recording.
           // just its later body. This catches a compressor's startup envelope
           // even when the steady-state waveform is almost identical.
           let onsetEnergy = 0, onsetError = 0;
           for (let channel = 0; channel < 2; channel++) {
             const original = buffer.getChannelData(channel), actual = output.getChannelData(channel);
-            for (let i = 0; i < 1920; i++) {
+            for (let i = 0; i < 5760; i++) {
               const expected = original[i] * first.recordedGain;
               onsetEnergy += expected ** 2;
               onsetError += (actual[i] - expected) ** 2;
@@ -161,7 +163,7 @@ const server = http.createServer((req, res) => {
             const short = await renderShortTap(.04);
             const muted = await renderShortTap(.04, true);
             let heldBody = 0, tapBody = 0, muteBody = 0, tail = 0;
-            for (let i = 4800; i < 8640; i++) {
+            for (let i = 14400; i < 28800; i++) {
               heldBody += held.getChannelData(0)[i] ** 2;
               tapBody += short.getChannelData(0)[i] ** 2;
               muteBody += muted.getChannelData(0)[i] ** 2;
@@ -170,6 +172,20 @@ const server = http.createServer((req, res) => {
             row.shortTapBodyRatio = Math.sqrt(tapBody / heldBody);
             row.explicitMuteRatio = Math.sqrt(muteBody / heldBody);
             row.shortTapLateRms = Math.sqrt(tail / 14400);
+            // Preserve a pluck's body without letting released keys accumulate.
+            const nextContext=new OfflineAudioContext(2,96000,48000);
+            nextContext.resume=()=>Promise.resolve();window.AudioContext=function(){return nextContext;};
+            a.state.audioContext=null;a.state.pianoVoices.clear();a.state.pianoReleaseVoices.clear();a.ensureAudio();window.AudioContext=NativeContext;
+            const previous=a.startConcertGrandSample(55,.8,55,buffer,config.id);
+            const keyUp=nextContext.suspend(.04),nextKey=nextContext.suspend(.2),nextRender=nextContext.startRendering();
+            await keyUp;a.pianoNoteOff(55);await OfflineAudioContext.prototype.resume.call(nextContext);
+            await nextKey;
+            const heldChord=a.startConcertGrandSample(56,.8,56,buffer,config.id);
+            if(previous.stopAt>nextContext.currentTime+.13)throw new Error(model+': released pluck overlaps the next manual note');
+            a.startConcertGrandSample(57,.8,57,buffer,config.id);
+            if(heldChord.released)throw new Error(model+': held chord key was incorrectly damped');
+            row.releasedKeyChoked=true;row.heldChordPreserved=true;
+            await OfflineAudioContext.prototype.resume.call(nextContext);await nextRender;
             const chord = await renderShortTap(null, false, 8);
             row.overlapPeak = 0;
             for (let channel = 0; channel < 2; channel++) for (const value of chord.getChannelData(channel)) {
@@ -184,7 +200,7 @@ const server = http.createServer((req, res) => {
     assert.equal(results.reduce((n,r) => n+r.decoded,0), 248);
     for (const row of results) for (const render of row.renders) {
       assert.ok(render.peak < .99 && render.rms > .001, JSON.stringify({model:row.model,...render}));
-      assert.ok(render.onsetRelativeError < .00001, row.model + '/' + render.midi + ': altered the original first 40 ms');
+      assert.ok(render.onsetRelativeError < .00001, row.model + '/' + render.midi + ': altered the recorded attack and lead-in');
     }
     for (const row of results) assert.ok(row.tapTailRatio < .015, row.model + ': key-up damps the note after its short recorded release');
     for (const row of results) {
