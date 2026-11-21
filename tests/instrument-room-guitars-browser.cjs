@@ -37,6 +37,7 @@ const server = http.createServer((req, res) => {
     if (file.endsWith('instrument-room' + path.sep + 'app.js')) {
       data = data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
         'window.guitarTest = {state, KEYBOARD_SAMPLE_SETS, selectModel, sampledPianoConfig, concertGrandAnchor, concertGrandSampleFile, loadConcertGrandSample, startConcertGrandSample, releasePianoVoice, pianoNoteOff, ensureAudio}; document.addEventListener("DOMContentLoaded", init);');
+      data=data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {','function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { (window.guitarInputs ||= []).push({midi,velocity,sampleSet});');
     }
     res.writeHead(200, {'Content-Type': {'.js':'text/javascript', '.html':'text/html; charset=utf-8', '.css':'text/css', '.ogg':'audio/ogg', '.flac':'audio/flac', '.webp':'image/webp'}[path.extname(file)] || 'application/octet-stream'}).end(data);
   });
@@ -233,6 +234,21 @@ const server = http.createServer((req, res) => {
     assert.equal(fallback.rejections, 0, "FLAC must never be requested or decoded");
     assert.ok(fallback.duration > 4);
     assert.equal(fallback.id, 'guitar-cubase-sc');
+    for(const [model,suffix] of models){
+      await fallbackPage.evaluate(async id=>{guitarTest.selectModel(id);await guitarTest.loadConcertGrandSample(55);window.guitarInputs=[];},model);
+      const key='.key[data-midi="55"]';await fallbackPage.$eval(key,e=>e.scrollIntoView({block:'center',inline:'center'}));
+      await fallbackPage.click(key);await fallbackPage.waitForFunction(()=>guitarInputs.length>0);
+      assert.equal(await fallbackPage.evaluate(()=>guitarInputs.at(-1).velocity),.8,model+': mouse pressure is not measured force');
+      await fallbackPage.keyboard.press('a');
+      assert.equal(await fallbackPage.evaluate(()=>guitarInputs.at(-1).velocity),.78,model+': keyboard level');
+    }
+    await fallbackPage.setViewport({width:390,height:900,isMobile:true,hasTouch:true});
+    await fallbackPage.click('[data-family="guitar"]');
+    await fallbackPage.evaluate(async()=>{guitarTest.selectModel('classical-guitar');await guitarTest.loadConcertGrandSample(55);window.guitarInputs=[];});
+    await fallbackPage.$eval('.key[data-midi="55"]',e=>e.scrollIntoView({block:'center',inline:'center'}));
+    await fallbackPage.tap('.key[data-midi="55"]');
+    await fallbackPage.waitForFunction(()=>guitarInputs.length>0);
+    assert.equal(await fallbackPage.evaluate(()=>guitarInputs.at(-1).velocity),.8,'touch without measured force');
     await fallbackPage.close();
     console.log(JSON.stringify({passed:true,decoded:248,models:results},null,2));
   } finally {

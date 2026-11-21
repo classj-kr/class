@@ -2434,6 +2434,10 @@
     }
 
     function pointerVelocity(event, key) {
+        if (sampledPianoConfig()?.recordedPluck) {
+            return event.pointerType === "pen" && event.pressure > .05
+                ? Math.max(.38, event.pressure) : .8;
+        }
         const rect = key.getBoundingClientRect();
         const relativeY = (event.clientY - rect.top) / Math.max(1, rect.height);
         return event.pressure > .05 ? Math.max(.38, event.pressure) : core.pointerVelocity(relativeY);
