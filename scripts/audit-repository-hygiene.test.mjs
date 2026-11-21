@@ -25,15 +25,22 @@ test("repository audit distinguishes local residue from runtime assets and linke
     put("learning/literacy-numeracy/arithmetics/.openai/hosting.json", "{}");
     put("learning/task/node_modules/library/package.json", "{}");
     put(".codex-remote-attachments/photo.jpg");
-    const { findings } = auditRepository({ root, trackedFiles: [".codex-remote-attachments/photo.jpg", "outputs/already-deleted.png"] });
+    put(".tmp/old-cache.json");
+    put("references/audio/take.flac");
+    const { findings } = auditRepository({ root, trackedFiles: [
+      ".codex-remote-attachments/photo.jpg", ".tmp/old-cache.json",
+      "references/audio/take.flac", "outputs/already-deleted.png",
+    ] });
     assert.deepEqual(findings.map(item => item.path).sort(), [
       ".codex-remote-attachments/photo.jpg",
+      ".tmp/old-cache.json",
       "learning/duplicate/.git",
       "learning/duplicate/package.json",
       "learning/task/original.jpg",
       "learning/task/sound.wav",
       "learning/task/tools/scratch",
       "learning/task/unused.zip",
+      "references/audio/take.flac",
     ].sort());
   } finally {
     rmSync(root, { recursive: true, force: true });

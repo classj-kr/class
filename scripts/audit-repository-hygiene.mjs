@@ -62,7 +62,7 @@ export function auditRepository({ root = ROOT, trackedFiles } = {}) {
   }).split("\0").filter(Boolean);
   for (const file of tracked) {
     if (!existsSync(path.join(root, file))) continue; // Pending deletions are already handled.
-    if (/^(?:\.codex-remote-attachments|outputs|output|tmp)\//.test(file) || /\.tsbuildinfo$/.test(file)) {
+    if (/^(?:\.codex-attachments|\.codex-remote-attachments|\.tmp|outputs|output|tmp)\//.test(file) || /\.(?:tsbuildinfo|flac)$/i.test(file)) {
       report(file, "로컬 전용 파일이 Git 추적에 포함되어 있음");
     }
   }

@@ -12,7 +12,7 @@ const ack=(s,event,payload={})=>new Promise((resolve,reject)=>s.timeout(7000).em
 function once(s,event,predicate=()=>true){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{s.off(event,listener);reject(Error('timeout '+event))},8000);function listener(value){if(!predicate(value))return;clearTimeout(timer);s.off(event,listener);resolve(value)}s.on(event,listener)})}
 (async()=>{
   const project=path.join(__dirname,'..');
-  const scratch=path.resolve(project,'../../../.tmp/ship-design-review');fs.mkdirSync(scratch,{recursive:true});
+  const scratch=path.resolve(project,'../../../tmp/ship-design-review');fs.mkdirSync(scratch,{recursive:true});
   const dataDir=fs.mkdtempSync(path.join(scratch,'race-'));
   const port=await new Promise(resolve=>{const probe=net.createServer();probe.listen(0,'127.0.0.1',()=>{const p=probe.address().port;probe.close(()=>resolve(p))})});
   const url='http://127.0.0.1:'+port;let server,log='';const sockets=[];

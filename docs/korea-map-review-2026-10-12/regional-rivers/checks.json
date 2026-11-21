@@ -13,7 +13,7 @@
     "source": "Natural Earth v5.1.2 1:10m rivers and lake centerlines",
     "url": "https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/",
     "generator": "scripts/build-korea-regional-rivers.mjs",
-    "rebuild": "node scripts/build-korea-regional-rivers.mjs .tmp/regional-rivers",
+    "rebuild": "node scripts/build-korea-regional-rivers.mjs tmp/regional-rivers",
     "processing": "Source segments retained separately; coordinates rounded to five decimals. Labels snap to source vertices. No straight bridges between detached source lines.",
     "yangtzeEstuary": "Natural Earth cuts off at 119.606°E. OSM relation 9392345 downstream runs east of 119.59°E supply the estuary to 122.368°E. OSM ODbL attribution and source hashes are embedded in the asset.",
     "songhua": "Includes Songhua and upper Di’er Songhua rivernum 646. Excludes rivernum 967, the differently named continuation of the Nen tributary.",

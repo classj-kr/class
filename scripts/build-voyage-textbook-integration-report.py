@@ -8,7 +8,7 @@ from urllib.parse import quote
 
 ROOT=Path(__file__).resolve().parents[1]
 APP=ROOT/'learning/inquiry/age-of-exploration'
-OUT=ROOT/'output/voyage-textbook-audit'
+OUT=ROOT/'outputs/voyage-textbook-audit'
 AUDIT=APP/'docs/textbook-level-audit-2026-11-02.json'
 
 

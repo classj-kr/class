@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'output/voyage-textbook-audit'
+OUT=ROOT/'outputs/voyage-textbook-audit'
 RAW=json.loads((OUT/'자동대조후보.json').read_text(encoding='utf8'))
 
 

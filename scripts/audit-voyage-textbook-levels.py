@@ -15,7 +15,7 @@ import pymupdf
 ROOT = Path(__file__).resolve().parents[1]
 BOOK_BASE = ROOT / 'references/textbooks'
 WORK = ROOT / 'tmp/voyage-textbook-audit'
-OUT = ROOT / 'output/voyage-textbook-audit'
+OUT = ROOT / 'outputs/voyage-textbook-audit'
 WORK.mkdir(parents=True, exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)
 

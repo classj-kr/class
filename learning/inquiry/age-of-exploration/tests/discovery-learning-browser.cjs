@@ -12,7 +12,7 @@ const place=payload=>new Promise((resolve,reject)=>{
   server.on('message',listener);server.send({request,name:'검증학생',...payload});
 });
 async function capture(page,name){
-  const target=process.env.VOYAGE_LEARNING_CAPTURE||(process.argv.includes('--capture')?path.resolve(__dirname,'../../../../output/discovery-learning-browser'):null);
+  const target=process.env.VOYAGE_LEARNING_CAPTURE||(process.argv.includes('--capture')?path.resolve(__dirname,'../../../../outputs/discovery-learning-browser'):null);
   if(!target)return;
   const dir=path.resolve(target);fs.mkdirSync(dir,{recursive:true});
   execFileSync('python',['-c','import sys,io; from PIL import Image; im=Image.open(io.BytesIO(sys.stdin.buffer.read())); im.save(sys.argv[1], "WEBP", lossless=True); check=Image.open(sys.argv[1]); check.load(); assert check.size==im.size and check.convert("RGBA").tobytes()==im.convert("RGBA").tobytes()',path.join(dir,name+'.webp')],{input:await page.screenshot({fullPage:true}),windowsHide:true});

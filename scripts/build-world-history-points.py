@@ -20,7 +20,7 @@ OVERRIDES={
 }
 def build():
  scenes=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {SCENES} from './learning/inquiry/globe/history/content.mjs'; console.log(JSON.stringify(SCENES));"],cwd=ROOT,encoding='utf-8'))
- metadata={r['id']:r for r in json.loads((ROOT/'.tmp/world-history/figure-labels.json').read_text(encoding='utf-8'))}
+ metadata={r['id']:r for r in json.loads((ROOT/'tmp/world-history/figure-labels.json').read_text(encoding='utf-8'))}
  needs={};cities={}
  def include(fid,places):
   needs.setdefault(fid,set()).update(p['point'] for p in places)

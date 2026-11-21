@@ -26,6 +26,7 @@ class/
 ├─ tools/                      배포와 무관한 분석 도구
 ├─ references/                 수집 원본·교과서·지도·이미지 학습 자료
 ├─ outputs/                    검수·보고서·내보내기 등 로컬 산출물
+├─ tmp/                        재생성할 수 있는 중간 파일·빌드 캐시
 ├─ docs/                       프로젝트 문서와 연구 근거 자료
 └─ render.yaml                 운영 서버 배포 설정
 ```
@@ -44,14 +45,16 @@ class/
 기존 `/classtools/`, `/schooladmin/`, `/boards/` 등의 주소를 새 파일 위치에 연결하므로
 화면 메뉴·공유 링크·서비스 워커의 주소는 유지됩니다.
 
-수집 원본은 `references/`에, 임시 산출물은 `outputs/`에 모읍니다.
+수집 원본은 `references/`, 보고서·캡처·내보내기 결과는 `outputs/`,
+실행 중 필요한 중간 파일과 빌드 캐시는 `tmp/`에 모읍니다.
 교과서는 `references/textbooks/`, 지도 원본은 `references/geography/`,
 이미지 학습 자료는 `references/image-training/`을 사용합니다.
 수능 문제지 원본은 `references/exams/`, 동화 스캔 원본은
 `references/story-books/`, 사용하지 않는 그림 원본은 `references/game-art/`에 둡니다.
-음원 원본은 `references/audio/`에 보존하고, 파닉스 재생 파일은 OGG를 사용합니다.
+음원 원본은 `references/audio/`에 보존합니다. 기타 재채집 FLAC은
+`references/audio/cubase-guitars/`에 두고, 사이트 재생에는 OGG를 사용합니다.
 로컬 연구 문서는 `docs/research/`, 과거 수정 스크립트는 `scripts/archive/`에 보관합니다.
-이 로컬 자료와 `tools/.cache/`는 운영 배포 대상에 포함하지 않습니다.
+이 로컬 자료와 `tmp/`, `tools/.cache/`는 운영 배포 대상에 포함하지 않습니다.
 
 구조 점검은 `npm run audit:repository`로 실행합니다. 중복 배포 프로젝트,
 서비스 폴더의 임시 파일·WAV·대용량 PNG/JPG, Git에 남은 로컬 첨부파일을 찾아냅니다.

@@ -32,4 +32,4 @@
 
 `public/js/ship-designs.js`는 서버와 브라우저가 공유하는 배정/외형 모듈이다. 저장된 출발 도시에서 매번 선종을 도출하므로 별도의 선박 저장 데이터가 필요 없다. 선체를 8방향으로 투영하되 돛대는 수직으로 유지하고, 선종과 방향별 이미지를 캐시한다.
 
-`npm run test:ship-designs`는 122개 배정과 자료 연결·모드별 선택·방문 항구 독립성을 검사한다. `npm run test:ship-designs:smoke`는 임시 서버에서 출발 선택, 주변 참가자 동기화, 새 경기 초기화, 재접속과 서버 재시작 복원을 검사한다. 테스트가 만든 데이터는 저장소의 `.tmp/ship-design-review`에만 둔다.
+`npm run test:ship-designs`는 122개 배정과 자료 연결·모드별 선택·방문 항구 독립성을 검사한다. `npm run test:ship-designs:smoke`는 임시 서버에서 출발 선택, 주변 참가자 동기화, 새 경기 초기화, 재접속과 서버 재시작 복원을 검사한다. 테스트가 만든 데이터는 저장소의 `tmp/ship-design-review`에만 둔다.

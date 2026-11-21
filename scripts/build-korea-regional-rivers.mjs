@@ -1,5 +1,5 @@
 // Rebuild from pinned Natural Earth source and the cached OSM Yangtze relation.
-// node scripts/build-korea-regional-rivers.mjs .tmp/regional-rivers
+// node scripts/build-korea-regional-rivers.mjs tmp/regional-rivers
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';

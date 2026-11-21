@@ -20,12 +20,13 @@ dist/
 __pycache__/
 *.py[cod]
 
-# Locally generated reports and previews
-/.tmp/
-/output/
-/.render-assets/
+# Local reports and temporary working files
 /outputs/
 /tmp/
+/.render-assets/
+# Older revisions and local tools may still emit these paths.
+/.tmp/
+/output/
 /game-hub-server/.runtime/
 /scratch/
 /.tmp-audio-source/

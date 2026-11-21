@@ -164,7 +164,7 @@ if __name__ == "__main__":
     parser.add_argument("--models", nargs="+", choices=list(MODELS), default=list(MODELS))
     parser.add_argument("--destination", type=Path, default=ROOT / "learning/arts/instrument-room/assets/audio")
     parser.add_argument("--report-dir", type=Path, default=ROOT / "outputs/qa/cubase-guitars")
-    parser.add_argument("--archive-dir", type=Path, default=ROOT / "outputs/audio-masters/cubase-guitars")
+    parser.add_argument("--archive-dir", type=Path, default=ROOT / "references/audio/cubase-guitars")
     args = parser.parse_args()
     if args.write_midi:
         write_midi(args.write_midi)

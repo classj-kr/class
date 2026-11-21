@@ -130,7 +130,7 @@ def build():
  report=[];metadata=[]
  selected=set(sys.argv[1:])
  old_report={r['id']:r for r in json.loads((ROOT/'docs/world-history-map-sources.json').read_text(encoding='utf-8'))} if (ROOT/'docs/world-history-map-sources.json').exists() else {}
- old_meta={r['id']:r for r in json.loads((ROOT/'.tmp/world-history/figure-labels.json').read_text(encoding='utf-8'))} if (ROOT/'.tmp/world-history/figure-labels.json').exists() else {}
+ old_meta={r['id']:r for r in json.loads((ROOT/'tmp/world-history/figure-labels.json').read_text(encoding='utf-8'))} if (ROOT/'tmp/world-history/figure-labels.json').exists() else {}
  for spec in config:
   if selected and spec['id'] not in selected and spec['id'] in old_report and spec['id'] in old_meta:
    report.append(old_report[spec['id']]);metadata.append(old_meta[spec['id']]);continue
@@ -151,7 +151,7 @@ def build():
    for line in block['lines']:
     for span in line['spans']:page.add_redact_annot(span['bbox'],fill=None,cross_out=False)
   page.apply_redactions(images=0,graphics=0,text=0)
-  svg,removed_city_paths=cleaned_svg(page,clip,spec);temp=ROOT/'.tmp/world-history'/f'{spec["id"]}-clean.svg';temp.parent.mkdir(parents=True,exist_ok=True);temp.write_bytes(svg)
+  svg,removed_city_paths=cleaned_svg(page,clip,spec);temp=ROOT/'tmp/world-history'/f'{spec["id"]}-clean.svg';temp.parent.mkdir(parents=True,exist_ok=True);temp.write_bytes(svg)
   dest=OUT/f'{spec["id"]}.webp'
   result=subprocess.run(['node',str(ROOT/'scripts/render-world-history-svg.cjs'),str(temp),str(dest)],capture_output=True,text=True)
   if result.returncode:raise RuntimeError(f"{spec['id']}: {result.stderr or result.stdout}")
@@ -162,7 +162,7 @@ def build():
   report.append({'id':spec['id'],'source':spec['source'],'page':spec['page'],'crop':spec['crop'],'sourceSha256':hashlib.sha256(path.read_bytes()).hexdigest(),'imageSha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'pixels':pixels,'losslessDecodedEqual':True,'removedCitySymbolPaths':removed_city_paths})
   source.close();doc.close()
   print(spec['id'],pixels,flush=True)
- (ROOT/'.tmp/world-history/figure-labels.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8')
+ (ROOT/'tmp/world-history/figure-labels.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8')
  (ROOT/'docs/world-history-map-sources.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
  print(f'{len(report)} lossless map crops; originals preserved; pixel round trips verified')
 if __name__=='__main__':build()

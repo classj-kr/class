@@ -12,7 +12,7 @@
 
 검증: `npm run check`, `npm run test:place-study`, `npm run test:textbook-sites`. 새 16곳 모두 실제 서버에서 접근·사진 HTTP 로딩·문항 3개 완료·중복 집계 방지·원격 접근 거절을 확인했다. 서버 재시작 후 별칭·학년 정보만 바뀐 미션·문항이 바뀐 미션의 기록 보존도 확인했다. 전체 단위 검사는 71개 중 65개 통과했고, 실패 6개는 아래 기존 검토의 실패 목록과 같다. Work 설정에서 로컬 브라우저 사용이 꺼져 있어 이번 브라우저 UI 조작 검증은 실행하지 않았다. 새 WebP 사진 16장은 로컬 이미지로 직접 확인했다.
 
-근거·결과는 [반영 결과 JSON](docs/textbook-integration-2026-11-02.json), [변경 전 교과서 대조](docs/textbook-level-audit-2026-11-02.json), 로컬 `output/voyage-textbook-audit/반영결과.html`에 기록했다. 확보한 2022 초6 사회 10책, 중학 사회 6책·역사① 3책을 중심으로 확인했으며, 미수집 출판사까지 전부 대조했다는 뜻은 아니다.
+근거·결과는 [반영 결과 JSON](docs/textbook-integration-2026-11-02.json), [변경 전 교과서 대조](docs/textbook-level-audit-2026-11-02.json), 로컬 `outputs/voyage-textbook-audit/반영결과.html`에 기록했다. 확보한 2022 초6 사회 10책, 중학 사회 6책·역사① 3책을 중심으로 확인했으며, 미수집 출판사까지 전부 대조했다는 뜻은 아니다.
 
 ## 2026년 10월 21일 반영 기록
 
@@ -47,7 +47,7 @@
 - 서버 재시작 시 이전 ID·발견 기록·완료 시각·순위·연속 정답 2개를 유지하면서 문항이 갱신됐다.
 - 전체 단위 검사 70개 중 64개가 통과했다. 실패 6개는 수정 전 HEAD 코드에서도 같은 지점에서 실패했다. 교사 안내 문구 2건, 이전 입장·최종 문제 UI 검사 3건, `grand-banks-cod` 사진·위치도 분류 검사 1건이다. 이번 장소 학습 전용 단위·복구·통합 검사와 새 브라우저·이전 기록 검사는 통과했다.
 
-실행 명령은 `npm run check`, `npm run test:place-study`, `node tests/discovery-learning-browser.cjs --capture`, `node tests/discovery-learning-migration-smoke.cjs`다. 화면 캡처는 [검증 폴더](E:/webprojects/class/output/discovery-learning-browser)에 무손실 WebP로 저장하고 크기·디코딩 결과를 확인했다.
+실행 명령은 `npm run check`, `npm run test:place-study`, `node tests/discovery-learning-browser.cjs --capture`, `node tests/discovery-learning-migration-smoke.cjs`다. 화면 캡처는 [검증 폴더](E:/webprojects/class/outputs/discovery-learning-browser)에 무손실 WebP로 저장하고 크기·디코딩 결과를 확인했다.
 
 아래 판정표와 오류 사례는 **수정 전 검토의 근거 기록**이다. 모든 세부 사실·사진·좌표의 검증, 학교급별 문항 분기, 모든 비교 자료의 수동 출제를 완료했다는 뜻은 아니다.
 
