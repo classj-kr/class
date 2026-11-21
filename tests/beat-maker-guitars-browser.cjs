@@ -34,13 +34,24 @@ const server = http.createServer((req, res) => {
     await page.goto(`http://127.0.0.1:${server.address().port}${game}`, { waitUntil: 'networkidle0' });
     const actual = await page.$$eval('#tracks .inst optgroup[label="기타"] option', (options) => options.slice(0, 5).map((o) => o.textContent));
     assert.deepEqual(actual, ['Rock', 'Metal', 'Jazz', 'Acoustic Steel', 'Classic Nylon']);
-    for (const width of [1366, 390]) {
+    for (const width of [1366, 390, 320]) {
       await page.setViewport({ width, height: 900 });
       await page.select('#tracks .track:first-child .inst', 'guitar/s-style');
       await page.waitForFunction(() => document.querySelector('#tracks .track:first-child .track-icon use')?.getAttribute('href').endsWith('#guitar'));
       await page.waitForFunction(() => [...document.querySelectorAll('#tracks .track-icon use')].every((icon) => icon.getBBox().width > 0));
       assert.equal(await page.$eval('#tracks .track:first-child .art', () => true).catch(() => false), false);
       assert.equal(await page.$eval('#tracks', (tracks) => tracks.querySelectorAll('.track-icon').length), 4);
+      const clipped = await page.$$eval('#tracks .track', (rows) => rows.flatMap((row) => {
+        const bounds = row.getBoundingClientRect();
+        return [...row.querySelector('.track-controls').children]
+          .filter((control) => {
+            if (!control.getClientRects().length) return false;
+            const rect = control.getBoundingClientRect();
+            return rect.width === 0 || rect.left < bounds.left || rect.right > bounds.right;
+          })
+          .map((control) => control.getAttribute('aria-label') ?? control.className);
+      }));
+      assert.deepEqual(clipped, [], `Track controls clipped at ${width}px`);
     }
     const results = await page.evaluate(async () => {
       const decoder = new OfflineAudioContext(2, 1, 48000);

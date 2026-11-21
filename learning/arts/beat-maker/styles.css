@@ -97,13 +97,13 @@ button.primary-soft { border-color: var(--accent); color: var(--accent); font-we
   cursor: pointer;
 }
 .track.selected { background: var(--panel-2); border-color: var(--c); }
-.track-controls { display: flex; align-items: center; gap: 4px; padding: 0 6px; }
+.track-controls { display: flex; align-items: center; min-width: 0; gap: 4px; padding: 0 6px; }
 .track-icon { flex: 0 0 22px; display: grid; place-items: center; color: var(--c); }
 .track-icon svg { display: block; width: 20px; height: 20px; }
 .inst { flex: 1; min-width: 0; min-height: 32px; padding: 4px 6px; }
-button.small { width: 30px; min-height: 30px; padding: 0; font-size: 12px; font-weight: 700; }
+button.small { flex-shrink: 0; width: 30px; min-height: 30px; padding: 0; font-size: 12px; font-weight: 700; }
 button.small.wide { width: 44px; }
-.art { width: 88px; min-height: 32px; padding: 4px 6px; }
+.art { width: 88px; min-width: 0; min-height: 32px; padding: 4px 6px; }
 .solo[aria-pressed="true"] { background: #5a4a1e; border-color: #e3b341; }
 .mute[aria-pressed="true"] { background: #5a2626; border-color: #e7746a; }
 .vol { width: 64px; accent-color: var(--c); }
@@ -206,9 +206,8 @@ button.small.wide { width: 44px; }
 
 @media (max-width: 760px) {
   /* 좁은 화면: 트랙 줄은 조작만 보이고 미리 보기 띠는 숨긴다. */
-  .track { grid-template-columns: 1fr; }
+  .track { grid-template-columns: minmax(0, 1fr); }
   .lane, .lane-head { display: none; }
-  .inst { min-width: 110px; }
   body { padding: 8px 8px 8px 52px; }
   .vol, .remove { display: none; }
   .field { font-size: 13px; }
