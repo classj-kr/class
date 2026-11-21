@@ -4,7 +4,7 @@
   "slotSeconds": 10,
   "totalNotes": 248,
   "pitchShiftedNotes": 0,
-  "format": "48 kHz stereo Ogg Vorbis; lossless masters local-only; capture metrics measured before encoding",
+  "format": "48 kHz stereo Ogg Vorbis q8; lossless masters local-only; capture metrics measured before encoding",
   "instruments": [
     {
       "model": "SC",
@@ -66,9 +66,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "44d056c56a784aa82bba2f8be44247909ec7643cb3bcd8e123f81ae58ebeee37",
+          "attackMaxAbsError": 1.189691829495132e-07,
+          "sha256": "1235d2fd8ba949e97ba49b61f0ba094e16039cfd2c1e4c9cc2e35ca7452ad232",
           "losslessFile": "020_e2.flac",
-          "losslessSha256": "97f996c53b52a2469a3e8d1f3e703af9ee04735743cbbedd1cb8a7cbe4bb49ff"
+          "losslessSha256": "d14bb6837a5bfd25560752ff5dfca15ced06ac57190baca319cc49d76ef1134f"
         },
         {
           "midi": 41,
@@ -113,9 +114,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "ff09d7244d32be1919f92734fa0baf53e6bf7a8b06431c633324b3c3a871b7d2",
+          "attackMaxAbsError": 1.1840893421322107e-07,
+          "sha256": "56d60338d0b0f9e05776727a97b7840d05305a492c68922d3775f1b425723aed",
           "losslessFile": "021_f2.flac",
-          "losslessSha256": "24aa9aeda301a549f4984dfe16126729706196b41c71e3b96c745e54d6053ac1"
+          "losslessSha256": "2b95f1b0bf25aa963a5728b3e62475048f43d072fb195a1113878c2273185dee"
         },
         {
           "midi": 42,
@@ -160,9 +162,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "492924304f768a24833db68dc9e0a2acf00acb0cbe41cd87134c385c74c45632",
+          "attackMaxAbsError": 1.1879966166361555e-07,
+          "sha256": "9b3a758d95daf0fa9324e65a2c8f73a2bf63fb87828cb4b558b9b9514221f184",
           "losslessFile": "022_fs2.flac",
-          "losslessSha256": "0483261a2ddbc03b353a9bd2f1c3ca11eae37a14a19b7dd0f51b9e432acaae31"
+          "losslessSha256": "082fb75ca51e06f1e8b1b81d076e5d07321385a338ddef10a2b6863f2bb608d9"
         },
         {
           "midi": 43,
@@ -207,9 +210,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "339b75f018ebb717ec51025d71281b0aceef1a11fb4b91c465ad53d0240e8bb6",
+          "attackMaxAbsError": 1.183070708066225e-07,
+          "sha256": "f4c9029ccf99dd34a948fef8d78adbc0c46911f55d27cc3963ed6fa4d2cd5a84",
           "losslessFile": "023_g2.flac",
-          "losslessSha256": "9531f2f1c15049dfb94178282a287ac2448bc715828604e778db083b3ed97794"
+          "losslessSha256": "d6c4f21e45e6683bedfeb7f8ae8227ac8f654352fe2046210306e3620737b7ca"
         },
         {
           "midi": 44,
@@ -254,9 +258,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "569de0b178907bf32d7bf809b386b7a4768684d9dc42351e01a013af808a2944",
+          "attackMaxAbsError": 1.1854217518703081e-07,
+          "sha256": "91ecf467cf95738bb640e76a5cef30e3fd002f95fb26e04a94b124fac5cbb9e4",
           "losslessFile": "024_gs2.flac",
-          "losslessSha256": "73fb6a83931e23625e09f58b67d57af049812ad76cdfede6b0fd114006eba0b4"
+          "losslessSha256": "439af73a80fe7eb58a119effcb92b0ceed048b497e9b5f47811e682085b17eca"
         },
         {
           "midi": 45,
@@ -301,9 +306,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "a0c23cb67ab798ec70d3117acc64e519e2ef6f458457f8ee8bf3dfaebe638de6",
+          "attackMaxAbsError": 1.1836527846753597e-07,
+          "sha256": "3953e6759e26298ab68cc159b9f32733eb1d42865b3d07a915182ad5c2d941ec",
           "losslessFile": "025_a2.flac",
-          "losslessSha256": "a7fc999f2961e76f5913d3e390f93b9c3a504089c9b40b93c5a26545fdf0d6dc"
+          "losslessSha256": "88560c05b912b533ed53898def64cce3ff946ad493667197ea87fab2580caa81"
         },
         {
           "midi": 46,
@@ -348,9 +354,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "321b200827ea1fbb55b30b877a741006b6df874701645d9ed4508a617b2b914b",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "579f9e7ba02c42eedea8538e429e44df1270d9bf61dca072b1676deaf0c507e3",
           "losslessFile": "026_as2.flac",
-          "losslessSha256": "d676c28426b80d5227b2d127dfac6f12434e0e7b4c0c2e1b16ed967abf9738eb"
+          "losslessSha256": "d199a80eaf9492f8d754d1158f6b334d75a2c143a78d3059dca412857b3a33b1"
         },
         {
           "midi": 47,
@@ -395,9 +402,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "5e9507264e36f7b24616b1f6bb8bbc123428b41d1c8d3be85af2339ba9507e5f",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "4a02f03285ba10a9992e821578540170902be6e36214355354c13a0776c901f3",
           "losslessFile": "027_b2.flac",
-          "losslessSha256": "6c7f62883ad2ca2e9118cd90eaf033f6dadd07dc310ff02afa13b6c7d3323f41"
+          "losslessSha256": "be672a4b29c920e8353810951477248337897156e8faee5d58f11bf943271b61"
         },
         {
           "midi": 48,
@@ -442,9 +450,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "b9439a78a0171e9f25d76a7897f607109e1578ec5fdb112eb12d2414ed63066c",
+          "attackMaxAbsError": 1.1734664440155029e-07,
+          "sha256": "fd6935bcea28faf7524c61861995045dfa6628079f60ddcfd1d776b007654c4d",
           "losslessFile": "028_c3.flac",
-          "losslessSha256": "5862ba4b5380ea60c33207a1514666ff84a4098b09fdff6645617c331fd0aa97"
+          "losslessSha256": "9385fafbdc40aed73112267235bef89b5987e5fa94732e4a62b3f164cc720087"
         },
         {
           "midi": 49,
@@ -489,9 +498,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "afbb2176d5516bda70704a52f04cd1e2648d3ee494f75c3a9eab4f60cc773ecf",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "92b26b06047a0b19ac8e5868d8c8bd9f7fee92364a56299b1311b0ddf897529b",
           "losslessFile": "029_cs3.flac",
-          "losslessSha256": "52c776e23c1646e7c140f321677a244963e7030ae9dfe688f2baafa0e474464d"
+          "losslessSha256": "e7a36a91cb8db68d6bcc1d4af0ba32ece1f7039a95cf00b2e470eaa6893d2329"
         },
         {
           "midi": 50,
@@ -536,9 +546,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "ec88c11bd519a2a01b0cf25e31c46680d7b8acf918bb8e071f19daa41371f08a",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "9038be20506a667c34dafb9c4f65157e9ff4851aff3c7a023fecc42f30a19aab",
           "losslessFile": "030_d3.flac",
-          "losslessSha256": "661680ba50d08e19cdc685e92e8eee8d02ae9f37a2124558dcc358d4302e2643"
+          "losslessSha256": "86ed8d41ed657ea1e9b5a3f14e3c9a73408db45936bf5a9a97b4a191b5542e8f"
         },
         {
           "midi": 51,
@@ -583,9 +594,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "1c21787a8437a0a7df1271f46265ea47ea4cea1a951f68fa28f278fae98d37e0",
+          "attackMaxAbsError": 1.1897054719156586e-07,
+          "sha256": "58a58c81dec2c31605d7cae714fdfd9c155c3e48614b73c98d75cc7f2db511b8",
           "losslessFile": "031_ds3.flac",
-          "losslessSha256": "faa19c897077e161950fd88cbe416dbca978b01a168822919f88e259c947e93d"
+          "losslessSha256": "c4754f2053f07ff4b660b90234aa952405b0095453f805acaed21803558dfb64"
         },
         {
           "midi": 52,
@@ -630,9 +642,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "53570940a9e79939f66a27f3aebb3ecc98032df3fe36565fa8540f8b571a8281",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "276c589f3542926bf35d683c0dfbbabb3aa3fcbe7e8387edc02de495472f18cc",
           "losslessFile": "032_e3.flac",
-          "losslessSha256": "4c4212b8bfc315741d4111133d8e1fd5519bc02ce89bf7cb309d8b6df1e96622"
+          "losslessSha256": "cd0568831e02daf9a3fdb4309927566635e0d575181a1c833ba0d9317394e151"
         },
         {
           "midi": 53,
@@ -677,9 +690,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "0006176c3abc97db037bca1e013eaef692194ad5d40dd2726b37f4c82938bdea",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "c92d7b9e904265a8f22336888fc5982e3f59fee92f4940becc74ba4c64010920",
           "losslessFile": "033_f3.flac",
-          "losslessSha256": "71dab37b2b92391c13330b1417ce6e9a6d16a382e4f71166979929bdd305a2f3"
+          "losslessSha256": "84c7b83874bbd101c66b7772f20e3a9afea8a94112c49a5cf5fe4d80288809f2"
         },
         {
           "midi": 54,
@@ -724,9 +738,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897560625584447e-07,
-          "sha256": "2364cc3589a0e402ae2f85acef4a522ca2e316e5514fe305a09abc291b1d386c",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "36518a0b859f9d83fd8cc52bc9f78f397eb962859de82f3580b8526cbc3f46bb",
           "losslessFile": "034_fs3.flac",
-          "losslessSha256": "d025dd1a858eeec45fbf3a5bc9f9b276e9a50ff9f042eafd1487e66e792f145b"
+          "losslessSha256": "2dbea859d9240737661d280fb888daa34b38f55d875810b18a556dcc31e74572"
         },
         {
           "midi": 55,
@@ -771,9 +786,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "57d825a1a16279e389d185c4cfcb3e4753e90d9ef6cd9a033c3fb88d298332b8",
+          "attackMaxAbsError": 1.1878444183821557e-07,
+          "sha256": "c79dba4e2ed49e93223bb6dc1deda5f443dc2335cf42c6361230ee9b946ac121",
           "losslessFile": "035_g3.flac",
-          "losslessSha256": "0bfae87f31ac1ff873d7ad317192e2fabfedbc295b4938966bcfa5da3aa8135c"
+          "losslessSha256": "4e0540c02711fe765a9b16a40ecd69498fa891bc109b6fc489849460eecea842"
         },
         {
           "midi": 56,
@@ -818,9 +834,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897327567567118e-07,
-          "sha256": "9ffdaa201de70af55c64a3a401a6cdea7f8d03da80f343dc6294a31cdb39be15",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "0fafb6706e5d9d742bc91a9dfa8316e409e946eb1e9334a0f92acb9a0ad72e50",
           "losslessFile": "036_gs3.flac",
-          "losslessSha256": "c024e0dd864db5baa81c284dbb768317d0e656754a01306335b78f3520128caa"
+          "losslessSha256": "0e7756f9f8f3d12f5e1bd8a60dc4c42756a121722ac09bf7a699a28d14afacbb"
         },
         {
           "midi": 57,
@@ -865,9 +882,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897623153345194e-07,
-          "sha256": "7292773f424dea8d3d52fb6f8f695015241471494e78f55c21feec08b09ba38f",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "374821762556d107409ba7030c86b9f7122a28159f9d36c7fe50822ec5ef8362",
           "losslessFile": "037_a3.flac",
-          "losslessSha256": "4e357755aff5702c8cd7de9bf210ba612a60d68baed5f5ad24ce6304b7c33378"
+          "losslessSha256": "c9b1dd277e8ee9e4f0f21d4ff96b425285f0a0a3a7b5ba1e73ef7969a5ab7e16"
         },
         {
           "midi": 58,
@@ -912,9 +930,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "9b066cdbd8ee8cd72f79271d58917528d40b3bdb8ccc27986a84ab05569facc5",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "98414068598bd3a15bcd25a5d57719897ed4e37383cd7edecb3315eb929fdb16",
           "losslessFile": "038_as3.flac",
-          "losslessSha256": "43f92c3c18fb53a7e9458dacd96efa91243e54b932475521bb2559d93831f05f"
+          "losslessSha256": "fc0d7b7cb61fd74a37927c67dc9b6667c32888f4ce9417438fa840d05aef49e2"
         },
         {
           "midi": 59,
@@ -959,9 +978,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "70bb96f6bff044c8b0abcc94e0766b306edbf8da3fb0b8bf6cf87856b9b8275e",
+          "attackMaxAbsError": 1.1863232884934405e-07,
+          "sha256": "1a42ba612914135413e1e775537d81d70d171b049de0c082b57fbcf032218aab",
           "losslessFile": "039_b3.flac",
-          "losslessSha256": "953e1188e9dc19769ffb1e21f301b9134bbed1f761594d80e9598fbf883b4ff8"
+          "losslessSha256": "3a7701b22f9559d18adedece535234c103a0bbc0c3474b59e0cd055228d75a08"
         },
         {
           "midi": 60,
@@ -1006,9 +1026,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897344620592776e-07,
-          "sha256": "7696ea75222b3d4e21576870fb2729f7c6bb46a6ec712fbb26c7f4fa65b929c9",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "5727ac79e023f4f4dcaf520c237f6e750a713dce21d49c558690976dc527ba5b",
           "losslessFile": "040_c4.flac",
-          "losslessSha256": "a3eca5b63bbe3812b7d2c09ed14db0391e001c179525e79a47b54795e7a950c8"
+          "losslessSha256": "5fb182c9827d463f87c4e13f869d9e8d58b774f9fc080c479f6bcd149ba6bba9"
         },
         {
           "midi": 61,
@@ -1053,9 +1074,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "bffc831f1cc4ddb339545e0fc27b1cbd8fed834bf734cea0365285a2a309d9f1",
+          "attackMaxAbsError": 1.1889838447132206e-07,
+          "sha256": "9edab17a980d956dd3cdf7219aae0f1b17c120f2c68caa17683107f8132301ca",
           "losslessFile": "041_cs4.flac",
-          "losslessSha256": "6831ee1b51ceb48a5adc356d7fff27c687fe80af4ee7924eafd151de281da0a8"
+          "losslessSha256": "0f362e3f908ed3e3da6817107373c29957fcc3b39a23ff0bdf88d236a32c90a5"
         },
         {
           "midi": 62,
@@ -1100,9 +1122,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "2855e8525430e274a442671e1c5a15442c393f0fe4ffbf4d8a74adf34b287c6d",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "50cffd5e26fa5c2d3c2a80f45cc34ad116c7e225524df57827546571a2175062",
           "losslessFile": "042_d4.flac",
-          "losslessSha256": "865a5bfbe175f1cee85204f3b5e3473f3a11d1c4b7782d6a671216deff73d459"
+          "losslessSha256": "3724d3a44e784ae7c900600ad8b848132ad3ae0674c402f7b553cce954f40744"
         },
         {
           "midi": 63,
@@ -1147,9 +1170,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "8c427b6c76a43f8892aead42047d1af13e9bbc7a589cb60f793192cad67fb58d",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "070c5248b2103f2ecf4266b3e9679eaeb20c2c07bf30510f0ccbafc3ee5e04db",
           "losslessFile": "043_ds4.flac",
-          "losslessSha256": "70ba475c20e65f44189cfccef219da9f3c0daf2a69df9a550132d4ea6169689f"
+          "losslessSha256": "0de441a79e7698e170bcb0b44d3f24441ea3f7a25f9d593a7490e649e0dd0902"
         },
         {
           "midi": 64,
@@ -1194,9 +1218,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "4524088475f4c5a9fbf7bdb1ded41334bc4dbccca13f01bfe18df90310ad7c1a",
+          "attackMaxAbsError": 1.1861141047120327e-07,
+          "sha256": "c3110d3775e42994f4bcee967990f49be2de910247cb38f65c5dd54bf5ac64d9",
           "losslessFile": "044_e4.flac",
-          "losslessSha256": "f24cc2d6231b78b696792a1988aa1deed2fd78d5a444ff1a9cbb58c036018e75"
+          "losslessSha256": "ace36ef44b52ea55fde27108c8bc9c4b1e68d67fd553b566ac1c856db5549c15"
         },
         {
           "midi": 65,
@@ -1241,9 +1266,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "0207d85980addf706044b51ec489de4272809a3e2ec1d9ec256afa34232adef2",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "9b9d76ff7e20459613afcb7a8095198cfdc839c85a6989be58075e2c0efbd4c2",
           "losslessFile": "045_f4.flac",
-          "losslessSha256": "105fd016353b452d0cefe3efe90863bb4eb7cec8cc286928ef6b0facc8365bcf"
+          "losslessSha256": "b1c2958df7042dad7871c095bae327819cc59032b7152f339cf505a832347ae5"
         },
         {
           "midi": 66,
@@ -1288,9 +1314,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "f94a4398f9e055a92a1fef919a209d582f468b4dd79eb40c029025be09b31a2d",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "2797842bbbc87838f627c09c398e1e08d54eda8b24d9c433b4b9b87f4e91fea4",
           "losslessFile": "046_fs4.flac",
-          "losslessSha256": "24ff6a43f8a8019c2c78a341280b7d33f080046af1643e336ebe44f75f01d727"
+          "losslessSha256": "806247ea31fbe65c9def99ec46cbb62a41348682e5ff9028795250142af5ad8f"
         },
         {
           "midi": 67,
@@ -1335,9 +1362,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "ed68ec00a6bcbd566ee9aedae0c4d4d9f6bd87ea83a7d8a0304a735af67bab09",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "b33fc721870de17d2e4ffecc11e4b5ee288f8f197702608038d7964e27b6b33a",
           "losslessFile": "047_g4.flac",
-          "losslessSha256": "f5fab80aae3a9c95aa2b852e8b66c570ae672ac596940a4d4f1f300cb2dcf26f"
+          "losslessSha256": "79fd9f8e65e68aced88dde1f8089004f472be058244d12d00adc51d8ce08bfe3"
         },
         {
           "midi": 68,
@@ -1382,9 +1410,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "f712fa168be83136675843d6b049de62d4b233df54821d4efde7ede0bc66f9c0",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "fa8853cd42b238e48fb4f90ded625a3a8504ca214f9e7277e37b4f6baafac598",
           "losslessFile": "048_gs4.flac",
-          "losslessSha256": "5cab35c0aa94d9cda6f6366c9ff9170cb7e9415711d4ee12d18e9babadf05867"
+          "losslessSha256": "90dfbabe125fbababe87da194c63f3965af98d67cb06a4de7648ff8d203ecfef"
         },
         {
           "midi": 69,
@@ -1429,9 +1458,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "c0b6f4b2b557026fa55b58b662cd60817d4e22145f9c11e1cbd1d85ba03936fc",
+          "attackMaxAbsError": 1.1896156593138585e-07,
+          "sha256": "2086c79ca9354618f537889d07d8613ed89be9b8b7efb3abf897e5adc4b414a8",
           "losslessFile": "049_a4.flac",
-          "losslessSha256": "43997f1df47a6dba2298b7565a14f5735e3ea93f39406600e87f17b1925c6fae"
+          "losslessSha256": "13abae74e4942bbee96322d3bf8bc465834529ac16c5f9e803b1a083ab454fe6"
         },
         {
           "midi": 70,
@@ -1476,9 +1506,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897623153345194e-07,
-          "sha256": "e94cb05bec56a1ad72a07c0fe116845f89d2b6fcc047a972ecced15fb39009fd",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "50f34ff6ffc220169d520a561d5a72a4bd0d6e5f143f55eda40e2eef979d8c06",
           "losslessFile": "050_as4.flac",
-          "losslessSha256": "85e1262d1662e8ace4b7fcc19a71cb7b332fae650e93491b9f93aca6f2a16317"
+          "losslessSha256": "50313133899cbbe76848376fe5bd32f93ccc56657d531c966b0f9946e2e3940e"
         },
         {
           "midi": 71,
@@ -1523,9 +1554,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "1ff135dfe731796925224aa50b9cf7f2cc61ea7e225451f687880655b49f5697",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "b48924cb5599c8dc702f41ba4ee132246d672c8c4d1be577ec17d2958d868261",
           "losslessFile": "051_b4.flac",
-          "losslessSha256": "ed249d589c385adf9af157c0f840b7df953f9a43406f5842b118373f168bbd2f"
+          "losslessSha256": "0c793d1bcdaf5781d2f1b46e4630875ef0b2ec21a3a0c2f4a93b6cd153582abe"
         },
         {
           "midi": 72,
@@ -1570,9 +1602,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "e460f44bc525ada7043d7fc4e7d4590997f2723b71eec4d1f84774aed72d4700",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "a2d6d6d9fbda7efcff7a62d12c4efc45ea73cabb86aff89ba174402d54992d5d",
           "losslessFile": "052_c5.flac",
-          "losslessSha256": "bd5e567e0edfb6a3a47b7f5df50dd1400f1f347d76f5b3ccc2a9c0f7e1e839d0"
+          "losslessSha256": "368ccb4e0dc0035e18b919aca8d2f103772dd9f947f1f7913a305bf516ce65d7"
         },
         {
           "midi": 73,
@@ -1617,9 +1650,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897418517037295e-07,
-          "sha256": "4125ec59c2b778e3e4352e1bcfdd6b4357f95aac25e919cb0e1d4fee7f691b47",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "5a345301ca5b8801649944841c3774b95ada8d900f985f48cd2f6169e7b6df7b",
           "losslessFile": "053_cs5.flac",
-          "losslessSha256": "7f851093b925171d15ef84453d5e28b0d28d8e1eaad904900279489bd0369c62"
+          "losslessSha256": "5a1a63a47ede8b2974434ed89967362f1cf3172875f3e12c8ad02509eca9f21e"
         },
         {
           "midi": 74,
@@ -1664,9 +1698,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189739577966975e-07,
-          "sha256": "f9f6090c54a246c19ce9d996b19bc371158fb7fea39110c7d42f606bd643ba92",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "8149c8ecdd0f895b159e16e9b13249d75d7f270646f97a49c00c4cf7cc661c4b",
           "losslessFile": "054_d5.flac",
-          "losslessSha256": "790cf8ec233e421f6cbd8c43b4c63a237645729e14ba61e3e9798887c3fd3997"
+          "losslessSha256": "ec961051301968323b7ea83efbd9a287006eab624f27552cd60d725f9a615fba"
         },
         {
           "midi": 75,
@@ -1711,9 +1746,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "153b4b9860b5f8097511847c32ed7dd4858888deda22be027aeb0f9506419c49",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "1154340874cf7244a5e5bb2f92290b17e5fdf812c5eedcedae4db200a32c5c1b",
           "losslessFile": "055_ds5.flac",
-          "losslessSha256": "e96134357e461a5ba323508b482525a0ea5d21d85d69313939930e7aa8adadbe"
+          "losslessSha256": "1518b83f44a4e944c0529a6743a576d6fb031644b9bd58ebf86234cb7c871213"
         },
         {
           "midi": 76,
@@ -1758,9 +1794,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "25b5ec19e18c9bda19922947d27c48dcbb51a07f1b1f7cf1976e9d344933454b",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "0347ad0603a8d1d50c91ab846068b12b2981922c6f10a71d37cc5a95d8b226f0",
           "losslessFile": "056_e5.flac",
-          "losslessSha256": "24aed6476458799ec3199b4b0c32a829c070486a925dfa13e9d75755b0cd72c4"
+          "losslessSha256": "22d90e6f2166367e9a0053fddc84318c9db795c817cd3fb9f6856c9d65033086"
         },
         {
           "midi": 77,
@@ -1805,9 +1842,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "d4a57f10f1fcb83c1cf4b4221408c4e5d8a74c668149ab175da03a7420489637",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "da69b698c4c121e66cff02b4ae2259beb8f1fba8b0dc1a2455e803e98a583cde",
           "losslessFile": "057_f5.flac",
-          "losslessSha256": "627571aa1e55255757441aec55e5037ae7e3086d19e5fc03d2151a73801120f5"
+          "losslessSha256": "52c02620c36b7e92ebdc9bcf327509aac97125b8038f3924baa8849810408091"
         },
         {
           "midi": 78,
@@ -1852,9 +1890,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "f793b69ad0114a359ccb894fc0285d0b7836db871dfab1c90c72c120d56ce843",
+          "attackMaxAbsError": 1.1896190699189901e-07,
+          "sha256": "2966e4c28f2405cb432cd1be63286064f5aaf7afb9124bec014dfd40be9e41c6",
           "losslessFile": "058_fs5.flac",
-          "losslessSha256": "a0c7b576ab29bc07829f46a3b14f14eb5ca0ceb5c8266a84a250659f38e9bafd"
+          "losslessSha256": "1a3ae35091b202025e5ecf26bf8499680f9dca53e10bbd5bc6d7c900d7ece2a2"
         },
         {
           "midi": 79,
@@ -1899,9 +1938,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "170af538ff7180b835a433dc399e63ec7449988a4fa925583e330f4849eec04f",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "39cb6ad132af304834018957e501db5bde8ae491e86e92a7199a4217646f8c38",
           "losslessFile": "059_g5.flac",
-          "losslessSha256": "43d39e7fe589de4ef69862c276ecd26f4afb61bcb3a1ea4dcc736a36bb5efb31"
+          "losslessSha256": "63e52e4d9c1b099be8ef26001bb3421174c49f72890de39f9ea5f7aaa2c9695a"
         },
         {
           "midi": 80,
@@ -1946,9 +1986,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "eed12a62773568cb649c50b8f75d30597b13dc392e7da2df36ee431573c9b290",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "8075d69e188adc9ceff4983b961fe3cf4706edfed71619a4131fc091bc407af4",
           "losslessFile": "060_gs5.flac",
-          "losslessSha256": "10736baf54fc640be637e5ef6c73d7db8adfd073c38e4ac24376702c5ff5c379"
+          "losslessSha256": "d698ffcf325f20b2cc864e392ce6f7640b62cfcecf432f6b2bceeefd9d15c720"
         },
         {
           "midi": 81,
@@ -1993,9 +2034,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "1dda096f80b3e4c6db0d39b54213c694c0bf41150a1d58c3a18ee51cd71ca54c",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "626849328bf6d819a9b8d9c985efd8d50e609ff63b397d98bd5fab26f1e1c50d",
           "losslessFile": "061_a5.flac",
-          "losslessSha256": "244bbe61a154ffa177f0c9fba3e0de7f714451742b7344891fafd9083cac27ce"
+          "losslessSha256": "69b6e7fade12ffdc7ba3cec1ba21d2f07898f111b5e2a7865731b9654e32d40a"
         },
         {
           "midi": 82,
@@ -2040,9 +2082,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "73ddd26d4e782ae25a078e9b125088dd3c531398c98c6e4ac35c1121eef85403",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "c2bf2f670d111670cac36ca7a70d129a56cc652972e085ad54dce69c54c895a1",
           "losslessFile": "062_as5.flac",
-          "losslessSha256": "9384cf612003d2d2cbf406d82a2ce183d7ec1c7bd9d8dbca189da1aba31fc2f6"
+          "losslessSha256": "af595cdcad085fa56c50761ad8cfe1dc2ac5be6331b28f436978891762bc9fa3"
         },
         {
           "midi": 83,
@@ -2087,9 +2130,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "fbd5cbb01279c99a725b2823cb138aa65cdf8d6aeaf54c7218e7153d6a5c3495",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "7be41a03b6f42e2ff68320abe6438e584449822f83573c16217204a5aec2fff4",
           "losslessFile": "063_b5.flac",
-          "losslessSha256": "f681eed0233e670849e6465102d05e633804334cd3ba79944cf7ea4eea66e5d2"
+          "losslessSha256": "dce065e7e86094d581b8dc8e6a44f761c21f1b69d8518b14892fcf10e4e2c969"
         },
         {
           "midi": 84,
@@ -2134,9 +2178,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897418517037295e-07,
-          "sha256": "a6a46fa73f1fb1b0abbda5d90c25ab100a27e8f610d2cf8d77cf91e54f5eb36c",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "8021c4130d04576e434c58d41fe7f0654f46f65385cb1dbd347c2b30caee95bc",
           "losslessFile": "064_c6.flac",
-          "losslessSha256": "79a3f7a38f7efe1de93f555523f78879ca43eab17f9a16804439b557a6ef7034"
+          "losslessSha256": "746f90c346ba9df609f0f743ea50939cb0a73fc2cbab4143b8d0f474c0da2ee9"
         },
         {
           "midi": 85,
@@ -2181,9 +2226,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "1c0316ea071920eba648d8d5495922690630cdc5180ef4c39034f665a816980c",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "2c1070b870292cad0c2353d2ac1fecbf219c79e5ac6397c86a883bff112efc79",
           "losslessFile": "065_cs6.flac",
-          "losslessSha256": "d822d5c225723588121d337f1884bf23b920434761b1e7d4390ab4294f6f44f5"
+          "losslessSha256": "0cebb69232f0aa50445048cf20802150b6730dd23a36562a6d34a1374c172c28"
         },
         {
           "midi": 86,
@@ -2228,9 +2274,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "e7738798e758c9b762c8444cd16e7e508887f1da673fe8d82500c17d80453661",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "b0b7d24b0c0cf914b2692e24669cae8c20d78e6259efc225568a6737f12b023e",
           "losslessFile": "066_d6.flac",
-          "losslessSha256": "22e204de106154f586b6b4c554ce95bb5063974fda309ca8205a6d90ed19e40e"
+          "losslessSha256": "11a76ecc39e2afa6601bc727b7a42f4108822c5269cd9c6ad2bae48c3e3caa31"
         }
       ]
     },
@@ -2294,9 +2341,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "e9ad05c1a2271d2e0d0f534f198f47bbfc3ad309db2ba2ab70816e783f7f14ae",
+          "attackMaxAbsError": 1.1856900528073311e-07,
+          "sha256": "8c934f7a920d7feed811590f44d739db7a1be1fce907f903bbdd67527b74ceff",
           "losslessFile": "005_cs1.flac",
-          "losslessSha256": "0524a302444d66093c89e69356c42633a8df0484dc0abe5257debc4957684f09"
+          "losslessSha256": "3729dfa3ca82156f383817e1e85457f4f7ecfea766760eb72bf855b68dca0669"
         },
         {
           "midi": 26,
@@ -2341,9 +2389,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "085ec0c946418e8e6e16c5e2311958606668ee8998d6002e45b3b46d87f2d1fa",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "cf4f14e071eb6157bc87e1e95f949572770031fcbfac929b368851cc7704189f",
           "losslessFile": "006_d1.flac",
-          "losslessSha256": "85969bd95611ee10b7c249331c1e453c6262934e527f7f28c73311a8269527bb"
+          "losslessSha256": "f6bfe04427833f32e4e2f3e6a216173e4eb44c62341072aa65688a17c36472fe"
         },
         {
           "midi": 27,
@@ -2388,9 +2437,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "d68c21f721a13211bdffd0df18d3e56f8390dc39e2775edf98603e18ad8641a1",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "3a980b6148e8bc4374317e15d07eb4cef7a335dc4a0aa84a91282cfcac4a593c",
           "losslessFile": "007_ds1.flac",
-          "losslessSha256": "3c7e82b67f2c33b807b17342308e020f3fd4c24c05c2bc47f59858e36b0671f6"
+          "losslessSha256": "d12e457328ed57ad5f6a32de5b08fca6b4cfb8c511265d36f4bfcbe5094ec39b"
         },
         {
           "midi": 28,
@@ -2435,9 +2485,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "6e50ee06864c12ecb96e6cbcbe6469d262bfb7251685e43a6b52efaa21372752",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "f9d3673609086055ff01b2c2bccc70594c2e8710ce99a1f20d7bbf4c1d4b0378",
           "losslessFile": "008_e1.flac",
-          "losslessSha256": "1111f4869a6c14edd5803b93d5898aa37eb718d0717647349987420d9fadd240"
+          "losslessSha256": "5db40d67b598e8ce9ed084196b4729fe1608be9150c5f6d62da26f920733b5c8"
         },
         {
           "midi": 29,
@@ -2482,9 +2533,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "c9f3a7a0f604cf9004a17bc623279c97dcc31e161704df321d2d74ba5e33d960",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "d34a76653a71c78ef126393d7234bf3d0e0e8e2f4c228a2e7cafec49279a1fda",
           "losslessFile": "009_f1.flac",
-          "losslessSha256": "bf47ce4c25f6c79b8cdad28e679b7d60edf51649bf7c4b00426d69b9777b53f4"
+          "losslessSha256": "ff54d48013f248c84f9907de95b3b5a4076673add5a0ba553df1b2276809d986"
         },
         {
           "midi": 30,
@@ -2529,9 +2581,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "94e74ae495f1f8b392c75792e70919d15a0ad3196d48a051ab3dbf690bfff183",
+          "attackMaxAbsError": 1.1893143891938962e-07,
+          "sha256": "d0ce2a6bba98de393853f2ba53e2839bdcced3f0b4ece3d528ee6856cf932e96",
           "losslessFile": "010_fs1.flac",
-          "losslessSha256": "9cc9ed2e1a26df051270fbdc947e418a3703a275d0e9d637661b3207b77de156"
+          "losslessSha256": "af95d6bc2053a3444a352b133e2eeeae3de4d695f9385b5d45ffe9e43f130038"
         },
         {
           "midi": 31,
@@ -2576,9 +2629,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "6bf3a3f44017bd63c2b4502feb6e332d818005f7a0d4d6325d2d99db3f522e31",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "650bffbf51e17083729320a96229fe859de9a2998773b256e63003a93068b69e",
           "losslessFile": "011_g1.flac",
-          "losslessSha256": "5277229628d33dd0e7429e9031415e52bdd8b09e8a0e2dd5c25cfa5c6614a3cc"
+          "losslessSha256": "31f4c678af2086a555c9d75723a0257053e469171e0cee1ccbd28167e161957e"
         },
         {
           "midi": 32,
@@ -2623,9 +2677,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "1558305946399146b3cd419d53fb1569ec734d4964972f6d72cf17d676198ef8",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "d9651cbc62613edb90bbe95472027ed4d5f3724216a33e724f22356c5b200525",
           "losslessFile": "012_gs1.flac",
-          "losslessSha256": "fe01a58ce88b7f3f6671f2cd64b816edf87568b89396af7726875f9d49c6b360"
+          "losslessSha256": "8a8112aff8218cb381a0a32652eae782f1681909fe91c42479d076a1841ae81c"
         },
         {
           "midi": 33,
@@ -2670,9 +2725,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "fe42f612e42a5801fab2f4af045048e86bfc5c097d1646ea3e71e66c65685bfd",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "31ba5decd347ed5cf3db52e9562105ec6f291f28c4372442a18e8197538c9122",
           "losslessFile": "013_a1.flac",
-          "losslessSha256": "4577b2897871bd2f98f7658b354654c28e508570a28386935ddcbf1b607bc48c"
+          "losslessSha256": "a97407422ec1c33132c2123a04f269882aa0bae6a0c613dea1f4189e07ecc967"
         },
         {
           "midi": 34,
@@ -2717,9 +2773,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "3aa3376ace8f605a9f61989043bf4f6830a4b5778c0c776066575c367b295ac0",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "af9c3db2ecc8c33fc3bf02cc4f19915556b09c42662c180ae2749548b55bfe59",
           "losslessFile": "014_as1.flac",
-          "losslessSha256": "fc305dcac6b6905ec024cdad35c2216bfdd1f0fac90af80bc6cadf28470fe0d5"
+          "losslessSha256": "bc306c5958d00964ec05078014e0f2ec134d52425e7de9218606733455f64d81"
         },
         {
           "midi": 35,
@@ -2764,9 +2821,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "fd22bf8145e18fd4fff6c2117bfa4d2c17ebb8bdfc2f22f7606a7131833074b8",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "be0165dbacd4fe793e9bc72c57c82cc1dd5a67f9aa5deb53d4afa4b8bfc1b7a9",
           "losslessFile": "015_b1.flac",
-          "losslessSha256": "48558bec6fc1fc126a2fccdbcf8764bf26b8d582edd7cfa4c217f2e38184b72c"
+          "losslessSha256": "117ec5f87aa0b8cd14963b61e3b54d94f04815f584f60ca31d2e7db4231af65e"
         },
         {
           "midi": 36,
@@ -2811,9 +2869,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897560625584447e-07,
-          "sha256": "210da3afbe53bb58e6ca283a8a136bf68de9879881f0f61a50dccb423c3ce38f",
+          "attackMaxAbsError": 1.1844531400129199e-07,
+          "sha256": "0b1bd221997d0abb95dafabf7b7750d39e44c839fa4599a10e11e5b32a061bc4",
           "losslessFile": "016_c2.flac",
-          "losslessSha256": "a7f73edae68821db41c6032583acbe5eb2f3c042f3c07b5d62373dbc0ea83b19"
+          "losslessSha256": "90959a242511475c0e92ac829dedf2cbb59c1f2478ac40ddeb62ac874f3c7b77"
         },
         {
           "midi": 37,
@@ -2858,9 +2917,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897350304934662e-07,
-          "sha256": "a4d41c1e1cb1d8c407f7373be50340527ef9e26001e47db5faa48be2b4e4b108",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "8fad0db44ac17f5f2c94e8f68a12d1618930d61de0d2c026291a0d98ec45cd22",
           "losslessFile": "017_cs2.flac",
-          "losslessSha256": "57d243e9074702ea488a5f4f6cf8f0b69b84d6347c2cf830e7572badb5dbcf33"
+          "losslessSha256": "adfacab8d77de7cc53a419c72ae610c73f3c6f5691be2bd870a8b4eb6d9410e6"
         },
         {
           "midi": 38,
@@ -2905,9 +2965,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897384410985978e-07,
-          "sha256": "c7a720350ea73fe043099e368132023a3dbdf6db974816dcfd6eeebb17186731",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "3a7df8e692260970d9ac679e4ffddd3bb82c1c81eddccac53ff1b3a1aba8d56a",
           "losslessFile": "018_d2.flac",
-          "losslessSha256": "96aad892f0393652f08ac8b54211a182ffcba183849c22c9b0903e7210049a22"
+          "losslessSha256": "dfee7f8c4b7bde2d43c77f5662343453f72d5fb0be0c4e169686d628018142b1"
         },
         {
           "midi": 39,
@@ -2952,9 +3013,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "573d1c74c9abcd5f158e8d4645fb3659ad0a9011d80683d2e801abf8f9655302",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "2c8d07ff610d517baf708898f907deadddf65e7cd47b01828123c6e2e45896c3",
           "losslessFile": "019_ds2.flac",
-          "losslessSha256": "09b2b40a445abf4f9347b166ccf1441e0285739b00a01fbee6ac3124caa70d84"
+          "losslessSha256": "e6d0e2e011caab7f75eb7cf6848d0e6bb38287c0a8331797869bd32918c44614"
         },
         {
           "midi": 40,
@@ -2999,9 +3061,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "7631fa9124c723cf06ff2cdeee2939c2ff78e9b32301874bf342abf0a7630cfd",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "b41c6935e22bcc3602e97117d0b389c093a606fb7d91c12a98dc85dca609786a",
           "losslessFile": "020_e2.flac",
-          "losslessSha256": "7350dbc49f9160eaf57f4ce90fd349ded446019de9b7815a71b8158d3325f1e6"
+          "losslessSha256": "f9f6a37d8daf854654dacd5835ae2d7556eafcbe87fa0a80902268f24e86c0a4"
         },
         {
           "midi": 41,
@@ -3046,9 +3109,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "e12f924d77a25a617bd6293a4525128f5268e83b0e0b22190d4e903f058d9523",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "fa0fe4dc8092ebfd710b2117b8371d0aab4c2bedf1fb5f19b50df7d6323d6fc8",
           "losslessFile": "021_f2.flac",
-          "losslessSha256": "99a3082767d122e126ff435333cec4e449adba50cb1735b0c3431600f2448d17"
+          "losslessSha256": "bc6bbd851337b99cf89247cfc3389d8638523674aaceacbfa9b432b0d54b750f"
         },
         {
           "midi": 42,
@@ -3093,9 +3157,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "b5a090b55cf56a8f272dfeb65eff210865813383cb7490ee56a739d3014eff14",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "84a9183d22a77137d6d11a0c1d4297be468f707c34688930b4010f1f6d5970fb",
           "losslessFile": "022_fs2.flac",
-          "losslessSha256": "2e8d504b663b48964f1a8148fe9c9fb48d56f9dff6f95a73fba7304363b24f72"
+          "losslessSha256": "84c867bf7669ca5b75d89f2aaf46286820aa9ba8321d74e942e0f2cb9f829b8f"
         },
         {
           "midi": 43,
@@ -3140,9 +3205,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "138bec1141fdce169ea7425481640eb64bcce6131e7f35ed92b9bf72ecbb34cc",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "bb4d2aadddf724b6bcb3f6d14d6d036da2839e48b51d5e5eba10bf0e359dff9d",
           "losslessFile": "023_g2.flac",
-          "losslessSha256": "ebfb3e8ae56f20e955879b8082861bbdeccad96f5b9df96f0433ace27e1d0ed6"
+          "losslessSha256": "e7ed7c91a623b85c928003071997a7ec264ef1109d4b62b9d96a1e4b59101fb9"
         },
         {
           "midi": 44,
@@ -3187,9 +3253,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "2dbda1d3411a2085b70cbe3aede4fdfa6b1bf7839a4178a55decd471fa09ef12",
+          "attackMaxAbsError": 1.1890369933098555e-07,
+          "sha256": "3c1f77e1dd2f86a1951129c334e96c38d5f938c24ce8384604aa43e2844d516a",
           "losslessFile": "024_gs2.flac",
-          "losslessSha256": "4801df83749e590ce3db6471be362657f55ccd70bbbeab27763b03f521282681"
+          "losslessSha256": "ac708fcf30f310d42258dfc28676f93585d5724a62431bd75ccd717e77c75e3f"
         },
         {
           "midi": 45,
@@ -3234,9 +3301,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "a78fc109392f9cd20bcf484d21d995dafbdbbcb1f876a67b5e7162d11697e405",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "383daba6362fc0388fc50b41e8ef154b9fb797d0c4e38b0783034f9c87bd5f33",
           "losslessFile": "025_a2.flac",
-          "losslessSha256": "ba55c59e876b27172d3178fb7eed8d5dbcb780766955731b690a5135ec57730c"
+          "losslessSha256": "0675feda85054eba441ba9ab0ce9a455e65a39328debd230492936643b1da75c"
         },
         {
           "midi": 46,
@@ -3281,9 +3349,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897623153345194e-07,
-          "sha256": "ad03b49f3857fd303393413089e2446ff1d284b28adaa2c7b9858df2a996db29",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "3daceed6d6d3188bfd2aa44d98bfa945708b9dbdb929d2c63d9b5dbbe672d92b",
           "losslessFile": "026_as2.flac",
-          "losslessSha256": "449e83b9416a9d72b01abb879bffb40de5f7c00333897932904c73c2bc611de7"
+          "losslessSha256": "9624a3d0fc4573bc02718b196271d9e3198c4f97ec08ae07d97d2f725e9115c4"
         },
         {
           "midi": 47,
@@ -3328,9 +3397,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "7c88a104fb818bcabce7d8cabc34f1cd5232e2751c397fcddaaec05fe385b933",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "6d73e2172728b0a4f43facc5b2af7609cb1cd03b62039e8a40120300624cbed0",
           "losslessFile": "027_b2.flac",
-          "losslessSha256": "7229003c05437c58f953c91ee9b8bff63969f98d83e47964e05fd23d4f74dbc5"
+          "losslessSha256": "ffd87d2d322a8693ef6f386148d883a5b2486d900adc2c5afa5eb4953e8bcadd"
         },
         {
           "midi": 48,
@@ -3375,9 +3445,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "26106cfa78858047f123a1470d07426b7fcca2a048066a4b7f0c06ecb3bd4d47",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "aa5946d47ac479461be29ff5515acb8ce5ef66e218dc1c1b80fee9162f7db92b",
           "losslessFile": "028_c3.flac",
-          "losslessSha256": "33a63223cbfa8118fdd51bd2047bc66043b4be729404e00b4e4ef51353e9be64"
+          "losslessSha256": "ad5347439464d374b819ac7e48714deaf9168b6e9075f02a93636e3d9815dda4"
         },
         {
           "midi": 49,
@@ -3422,9 +3493,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "1eb7e696626d8f333485ac54d7ba3c3a9701dbaa270ce1a5c69e0d6512bb1632",
+          "attackMaxAbsError": 1.1862721294164658e-07,
+          "sha256": "0d2639f25b53394786dff6f695041c834ba2e65d89e135c93a628c5122a73ffb",
           "losslessFile": "029_cs3.flac",
-          "losslessSha256": "e2f8da5efcb63cd72cff2182b3c21172681a6d235f77f58f84f40bb9ea0e626b"
+          "losslessSha256": "b0bd49a6721b79e8495d7bdca6cfe22aa6e825fb86fc69a8bf611ad67e4e4c9d"
         },
         {
           "midi": 50,
@@ -3469,9 +3541,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "10ba11ddcd35df89579f39a7222546e1606b10ef019ba1d4d2369cf9948e2f34",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "b0fd4222db476728e6044d1df6b0f13fe5a6fb93549bc396ede93fa56a14cd19",
           "losslessFile": "030_d3.flac",
-          "losslessSha256": "8a93aeee43bcbbec7bf0e247f3c90dc36fcedf83d07547d2584b9ddaa762fa2c"
+          "losslessSha256": "b45a654f1b4c150c84eccce326546a9e854ec92a17e0a4197dd8a51579a9d79b"
         },
         {
           "midi": 51,
@@ -3516,9 +3589,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "7bd75157c49a1b98a853b6ac3d76bd02c0e410894af28156f2073480835123a0",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "bcdfb294e64836f6d93c992ea6a56699c5afe2642ec2f990deb44ef64d438627",
           "losslessFile": "031_ds3.flac",
-          "losslessSha256": "279268c50cb7fd34655699aa280203b05ed84ae27e0bcf93212f29734469a6b2"
+          "losslessSha256": "44846199430952e0c724ce96f671ff9e5cbb8cac291a67e3a33824fea3d9bc7f"
         },
         {
           "midi": 52,
@@ -3563,9 +3637,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "221cc4fab2172b2790f2fcbfa85b093eae24f99af8c2b3d23bbcf747731bd26e",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "f8740a81ec377b3eff281acc4e663ac0a77ff7b004f076d310816c6cd9f5142c",
           "losslessFile": "032_e3.flac",
-          "losslessSha256": "488b41fc681b8667575c69a31d32d427968c38ca8bc59e290349da501d093c1e"
+          "losslessSha256": "9d4500061b8a445899847c40c9c657a390a4c4894148837db7ff97237d627247"
         },
         {
           "midi": 53,
@@ -3610,9 +3685,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "71ff9d7b90248c087b010259145f3ba44b46040189e301042d428b85e900af51",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "a62356c220623a5f7c1230ab51e71af8864fdd2da16fff286184315e3fb9e145",
           "losslessFile": "033_f3.flac",
-          "losslessSha256": "cdfb883b3410eb8c5457c868702ac039db1496d30240c03f87c3a88732831e09"
+          "losslessSha256": "2e6c67f0c339e31ca5309e02ed979414b0f5cb30769f006e8cdab36c991a9e8b"
         },
         {
           "midi": 54,
@@ -3657,9 +3733,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "492681beed65e4c18edc9b167a3adcd4acae6242e603e5c9e963a7019be82e35",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "ea9fefeefe4700e4f50b24491789276c1e4bae9d05ef4ec38f037ec87531ced6",
           "losslessFile": "034_fs3.flac",
-          "losslessSha256": "0186a70da2fde0fe7ec76d2e4b59ec9e63b59a1507b1731ff343442fc6c021c7"
+          "losslessSha256": "c7f0a1d6acff67774d22ae995a981accb970c752481cdb714b5d9ae4c0a437b3"
         },
         {
           "midi": 55,
@@ -3704,9 +3781,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897532203875016e-07,
-          "sha256": "929a4f26ebfdbc25ba9fbd3cf7fc56c99f119fc5f112b816ffe87b6718101f5c",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "fde630105ca2929cd1ef536b101ab0aadbadd122ce0f9faabcfbcb178fd522b7",
           "losslessFile": "035_g3.flac",
-          "losslessSha256": "1cade06e9788cd3db0b7d4c4e8ddbcba05036d5482cb61d0257b1f79fc5fe456"
+          "losslessSha256": "b768d16646ac4ff2cd8e8bb1a0b901165e6b331054ff361fba26dd5eddea07a1"
         },
         {
           "midi": 56,
@@ -3751,9 +3829,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "662c9d48aa62b04d1309f3abb2edd62a9154efa552b312859061a2bba5828a32",
+          "attackMaxAbsError": 1.1873873972945148e-07,
+          "sha256": "48a9e88fd155a833373654c20896e153b71e4f56b77605a4e26739c8246ab35a",
           "losslessFile": "036_gs3.flac",
-          "losslessSha256": "822f105254f46b2df2c57770a57bdde514ac388ffcc2be7649c62b12a480ac8e"
+          "losslessSha256": "4a10a05933bf4fe750b489d859fb3440e225298484359fcb42d90c06e5908180"
         },
         {
           "midi": 57,
@@ -3798,9 +3877,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "b533dc7975578d58782e68fcd4c2fab047f7dc41bdbc079760da1ef661304f48",
+          "attackMaxAbsError": 1.1874544725287706e-07,
+          "sha256": "5e57092731185ac7f1d3f3a02d4dea3e672198548f6671a10241dadfa84983e4",
           "losslessFile": "037_a3.flac",
-          "losslessSha256": "1b8c06224fd39b77003d9004b9997e98f846bd9f7ede782b209e78380049aa66"
+          "losslessSha256": "3d292ef5cc4ac02cd069fa606168097c7d83e969333a3a14a9ef7f87a46736fc"
         },
         {
           "midi": 58,
@@ -3845,9 +3925,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "427a0a0f0c8a384dffd14971728ed6c4a904b5d8e4745ac1b7db6d3fbf85756b",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "ada4f01fd16e601a9542b2bcfb2fc73c91c4234b49f89db1e62c9a87cb9baf35",
           "losslessFile": "038_as3.flac",
-          "losslessSha256": "708814e9dfeec1794b6265a6afa33d04713b0a56e5bf41e83d1b9990de934ad8"
+          "losslessSha256": "2efa59031a1e7b4ea0e5137836658079f25ecbb252772aadeff6897165356871"
         },
         {
           "midi": 59,
@@ -3892,9 +3973,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "edcb927427c25787fe2f086dbd2faf07e27d6d02f382dfdf3548181436ab3f41",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "7af0c0154feb7bcec67df8af87bcd99086ae76054a577162954c9e6732ac4115",
           "losslessFile": "039_b3.flac",
-          "losslessSha256": "38c475c283ab78e4991939f74de0b6eb5d67ce7b712a69620116ad35539b5451"
+          "losslessSha256": "8f41fc35234214c403d3cfecf561809ff48033e1ef825bce2b331f340bea5cc4"
         },
         {
           "midi": 60,
@@ -3939,9 +4021,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "1ba1c2aa3201ebfadfd2a7ee84f6f82b535c0760367a1af10bd9bb60b4d6199f",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "5d7dfcf98d185595f6ce90aa623e9381ce7127a1e31d3ef5bec168a33fb645f9",
           "losslessFile": "040_c4.flac",
-          "losslessSha256": "661b74bdecd1e63e0a9819e7df2fc97815ee84b00b59fa24359b073fc1566177"
+          "losslessSha256": "6a9d9611ff19482e046af3d4f5646e344ddc73a1233b7667be9ca92669f776f9"
         },
         {
           "midi": 61,
@@ -3986,9 +4069,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "2dbae96ef70e46fd51cb59be71fb7c4c92093a91e6af3951b08dc30164db4616",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "ce2bf0783b42db9d28750cf31df54bfd5adb3062568e7021e6324791295602a6",
           "losslessFile": "041_cs4.flac",
-          "losslessSha256": "41ca412567993793f17f1841a6e7ccc875ef28f2856a5586fdcbd3d7c1aa2c38"
+          "losslessSha256": "c0b904be25b3a7e66d0dc2b9a1a2393cdb462a117f458bd000ff7fb63e995955"
         },
         {
           "midi": 62,
@@ -4033,9 +4117,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "6e0ca062bbedd3ef5cf7d3e8796ed1e53d886e779afd345f600d150980666598",
+          "attackMaxAbsError": 1.1879961903105141e-07,
+          "sha256": "c9c91b7b04e3c8b721e02e2c138557a84e831ada778e36c22fe5aa794610ac51",
           "losslessFile": "042_d4.flac",
-          "losslessSha256": "4b723a1ad9bbc88dda11905ca4513029492cd6ccfa51e52fc572261ca7493896"
+          "losslessSha256": "e69db65891e2220b2d2ae5970f1d557911a93c17ce5db3af643ce9f776f92a9e"
         },
         {
           "midi": 63,
@@ -4080,9 +4165,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "40719ce3a664c1d6713220876668517a315f8586683be218ff900907853658c3",
+          "attackMaxAbsError": 1.1877273209393024e-07,
+          "sha256": "628b00a6fd1a15b00cb5cce4f44eac07486b713650e9c4472d884a2f75acf3b9",
           "losslessFile": "043_ds4.flac",
-          "losslessSha256": "e8004887b871a42787b7cd00ffd3c9e39f553342fcb64c44d769f0028ac60bcf"
+          "losslessSha256": "465e0988be105a816f37cba9861253b440c51a9c1f4e7cc79426924b4b7efba9"
         },
         {
           "midi": 64,
@@ -4127,9 +4213,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "ebfdec4eec337c0e9f08cc871ca7ad28980e18b3ff6cbc639aa4ab5347472fb0",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "0cb4c353aeac7f101fe84ba549ace438a127fe72f2366811bc6e2367787e5d31",
           "losslessFile": "044_e4.flac",
-          "losslessSha256": "d20f7603296e73eeda6471b473237efcb89139c84a5d5e4523b1675edd6f08f5"
+          "losslessSha256": "721014bc1cc6aabb91fca062dfe1aa0a4c33be064bb9eb80bd01383daafd6001"
         },
         {
           "midi": 65,
@@ -4174,9 +4261,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "956a4d74004ab64c28530e7cde73ab3fa0f8dcaf617db62d102c63aaa545c476",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "3d454828dafbdd0ab238ac84c1b6b86bb71d52948382053bb67c7dfc70399d3a",
           "losslessFile": "045_f4.flac",
-          "losslessSha256": "1b21e07ac3c2b9a8d1b68df4d7b3ea1b6e645f4c2e57aa956286ea9931913da5"
+          "losslessSha256": "d27dddcf9b24174fa06cac1b5e2ea4ced2f40332906bcd5ba0952fc3c816db46"
         },
         {
           "midi": 66,
@@ -4221,9 +4309,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "494cb33d2b6a8c2e2cf2f3dc91110ab56daf405fcd861babf2e4176e7bc6559b",
+          "attackMaxAbsError": 1.183943822979927e-07,
+          "sha256": "b4e4e93244dfc87be2790155f342788acd537bc41287a06ab631b1024b494921",
           "losslessFile": "046_fs4.flac",
-          "losslessSha256": "1d0b08305bd744d04f53ed5642d7868c4c3c58509eeaa6c9c404bb56fba1225b"
+          "losslessSha256": "b1fc028872e2001ea78dd3bf51532fe97100e67cb76ed0c18e33b09ea81da3ac"
         },
         {
           "midi": 67,
@@ -4268,9 +4357,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "8bc16acaa2ae97efdf542ab68ba0b71afa0f9ea9baba3a94ded459cd40b30917",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "3c6f5c3797ecb913f091e9f74f990746ef7b0aa9b272b2ecb94064053473380c",
           "losslessFile": "047_g4.flac",
-          "losslessSha256": "2411f9e145775104d252d652a05ef5892f239a0ee19052c7ac7aa4bb07b535b9"
+          "losslessSha256": "f2d31dbf09ad348dbe7d7e174e09935adcdc58047cf0c124c776b99a23b86160"
         },
         {
           "midi": 68,
@@ -4315,9 +4405,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "ed680ca82dff868a6161113f661b3eabf5d04878df96d4df4ec20fbb054e3824",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "54c565f69aeefae38a3d82e84540b550a70ce46de30ddd1231c2c71b19affa2f",
           "losslessFile": "048_gs4.flac",
-          "losslessSha256": "304be0678f7d74746f70943e38f0e4442075bfc7cd677bf16ac77d21d51caf39"
+          "losslessSha256": "40532fe823ca33dd0bd1d7dee4eac43a527a6e2ac095b3efcf9dcc1fea428d91"
         },
         {
           "midi": 69,
@@ -4362,9 +4453,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "bf5eb1242e59c1fd92dfae61697f39a496c59b9e8c862a12ea39e888fe895539",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "56f0de8ef43ac4a01b617bc40138b59b2817ae11bce375b31b239f3e0e94fa4b",
           "losslessFile": "049_a4.flac",
-          "losslessSha256": "ccb0fe303d1c0d1926c51c33fa2821a09c009dc9f1774cf666e1c6f062e634f0"
+          "losslessSha256": "888c7284b2d4633208b54f9681c4d543d10c53c3f632e419cbb93fffb084cab7"
         },
         {
           "midi": 70,
@@ -4409,9 +4501,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "7385a281ac7d9f7dfa4c0e1b72decc48ed5f5042fc1c957038ed92c8e7004815",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "614642f81a6bc5d7182af7505903ec1ee7224d25b0673c302452aa535cab245d",
           "losslessFile": "050_as4.flac",
-          "losslessSha256": "0ba7cf38f65f1497a6fa5dbd826735d8cbfcda19b3d5bc94237817b9a1648be2"
+          "losslessSha256": "40628751a56ee02d41d6b415c4d2e1ae46bff8706a4eeb8a693d7229c66de77f"
         },
         {
           "midi": 71,
@@ -4456,9 +4549,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "1afe208e649c3ee3b7a577bee785d566e29363363e6a5c86db27a0734d699690",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "6726aec1e958fba6fd56ff1c5f7609e6cebd55b68ceee75ac375ff17bf4bdf3e",
           "losslessFile": "051_b4.flac",
-          "losslessSha256": "5a4433581858a1d3138df45f6da670cc85dec5c6ca15cdcd8108b6c0e0d7d768"
+          "losslessSha256": "da748f6006bb07742fc43727ec924e2c5de36f33e4703dfb5325bbd4d317c8da"
         },
         {
           "midi": 72,
@@ -4503,9 +4597,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "29dc96cb88335fca9fe49a1aadc5410576c9d4be4b2aaa31c53bf332208031b6",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "e1cf38034be4f8c04898c05b7b4fb02ab50a6b0c32830efb771b23ac09c8f847",
           "losslessFile": "052_c5.flac",
-          "losslessSha256": "4abd801818df7855a4573eed324a452a164d08f8a38ac9cb69b701e5cc69e0aa"
+          "losslessSha256": "bff576a30219649210f37d0a523a3473db0785d513620d5cae52d7d5652fc4a5"
         },
         {
           "midi": 73,
@@ -4550,9 +4645,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "5637b832d0486eb645d393a82edc6bb38c309317d680a3cf5a5d9bcffb27cf40",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "96be433570fc61d3cd0108df4dc8c63cc748039285778b91920e0b2663615c9c",
           "losslessFile": "053_cs5.flac",
-          "losslessSha256": "6a0cad8612eeb7c36489fd66ef1d30298462437aec67db651f93687501c553ee"
+          "losslessSha256": "2ff3544ba2ff5e863e4df2b87eb6abee92a13ac4fee271f07ab4f3293d3dbf4f"
         },
         {
           "midi": 74,
@@ -4597,9 +4693,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "27b091eb31ed6a88d860efa8ac089d835be9ba64e4bfb711b94901507d9614f3",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "b353b7b27c2c57a6feaae3f1c3d12f5f56e638cfdc66ef6e5ec3ff008a67fd10",
           "losslessFile": "054_d5.flac",
-          "losslessSha256": "79f13fc9b5555dec1b2bd83cb2906fe33726114298e7811fabed851b793408d8"
+          "losslessSha256": "3bf2b1cda6548280cde95b8743b68c711c247d1f636b9ce09aa9aed291bcbc50"
         },
         {
           "midi": 75,
@@ -4644,9 +4741,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "98e58cd5cc40c95cc5d902e66827c4382eb31fb6c58c6d22e4e3bf52d91a53a7",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "94b28f386866618026885a939eb0395b9688e438817f0c1e93d39d6cd55c7b35",
           "losslessFile": "055_ds5.flac",
-          "losslessSha256": "3906f0750d8e6f3db3c43e12c6d7d00f1a56584ad7df53bc4e9207cc098b4bf2"
+          "losslessSha256": "393f411e8f3b9f49a19e500cd3146c0239ba64c967b64894af3d1de91516af79"
         },
         {
           "midi": 76,
@@ -4691,9 +4789,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "714aa0f4acf983fedd52b136dfacbbb7b5668807f5b3cd1ce550e858269d5533",
+          "attackMaxAbsError": 1.1888914741575718e-07,
+          "sha256": "24f076a3c61fb602b53e4838222b0b9bcba751d91e06105ba3b13c568390c768",
           "losslessFile": "056_e5.flac",
-          "losslessSha256": "5f968bb89430382f81fb65f3488f769b5ccad682f25f8a1c7337a2f8b531482a"
+          "losslessSha256": "1db458440bc9b0c7ddde142ea77d2c4157a716cd1febb953747feac556189168"
         },
         {
           "midi": 77,
@@ -4738,9 +4837,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "6470d895a98ab2bb5c9ce9c0b593f0c9431fe7d2943e6b256ae5e7783982f874",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "8579914db47f903e567e97a9e6291724cf82caec8f0c69285df9ab44dd1f237c",
           "losslessFile": "057_f5.flac",
-          "losslessSha256": "dc49d9461a1e70df81875865f392d8b78df40d22cd71e8686f9a02597927b050"
+          "losslessSha256": "208bf06c33052c4d8ae635588fad68fcd95d9a3aecb896fa32a43de033efc039"
         },
         {
           "midi": 78,
@@ -4785,9 +4885,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "a344c1f8c83e1bea659b193f130fcbd45f7990b843df12405d7ff7bf2be7fe8f",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "82b091c99f0eb711bc4983169a026070c9c6d9c00f6622239543e3274849485b",
           "losslessFile": "058_fs5.flac",
-          "losslessSha256": "49ad32ff57a3ff622bbcaaf78e23a55130ef07323d461b0b39e7479c8c2b91ab"
+          "losslessSha256": "b6e0b692e36d4c1a0c87ad1f922acbe360bdacdb9dab2a7c13b85e88208fe4ec"
         },
         {
           "midi": 79,
@@ -4832,9 +4933,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "772f201c0a7273653aef933b61d5c3f5218a13ea8f9189ea11ffbffdf5026ada",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "505801b4a77527351c0caff2decca9c7da8158c4496be071e7259b7355b97d1f",
           "losslessFile": "059_g5.flac",
-          "losslessSha256": "325a322916bae146b9a7f7dca4bfacdb6ec59819d66fbcf16d2fabd560dc1ec7"
+          "losslessSha256": "3fc2044de1f58166bd32e0ada09365ff0969367e22e5d4c267b317296ddc230c"
         },
         {
           "midi": 80,
@@ -4879,9 +4981,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "0496b553bcf72456247edc9bd18b375e09e1de3552767858326360714180c7e3",
+          "attackMaxAbsError": 1.1833338930955506e-07,
+          "sha256": "72af095eb0982f764e3238063e764c01f7747bd8fcb46b0cd401af0d204e91ae",
           "losslessFile": "060_gs5.flac",
-          "losslessSha256": "cfdfda22658d5ccb44843994eb6cdea12ce85bfcb6675848876057a1b78b3405"
+          "losslessSha256": "9a7812b41601e14229ca0dcf05fd2332db46bc30fd8f11da6aa2c6854aaa5d31"
         },
         {
           "midi": 81,
@@ -4926,9 +5029,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "0932788f9d74e18354e28885120c4994dcdb083455b34ba058ed5f8c4c15df02",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "38f585d156d1812f48bab5b6eb30df523fbe284faff9f07113c4bd4944bde3fb",
           "losslessFile": "061_a5.flac",
-          "losslessSha256": "3008bb3394232e7940fc936bf625c4dc1047bae9c1db932686d8eec154d61e07"
+          "losslessSha256": "61d431666cd0cb3650ee814e6070cb440c7303bfe12ccbdcb7f82cc149281491"
         },
         {
           "midi": 82,
@@ -4973,9 +5077,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "12631d9c6e92b9bbcd6d88d54b6e00c8b2ba75d334224599dc731b3d27d1e371",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "b484154dd6d2348bb4d6c3bc1c0c9f8dc31d0a4121d51e9618496020f5921ce3",
           "losslessFile": "062_as5.flac",
-          "losslessSha256": "2d5290568282f9e974272685406e8b6dde6908299c05c89c765af3f1f949f6cb"
+          "losslessSha256": "ef131fd5127aa966f65ecd8065cad2f6a4fdbad5876346531cedccba93be0959"
         },
         {
           "midi": 83,
@@ -5020,9 +5125,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "486b7310b0879528d6f319e78d513a4cf1c6bc09123721b93f674116c1b1a063",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "9558b89fdabd4b36dfe03cf9c0e7a8486c17823f8d4e3e0591e8f31d2bc69c2a",
           "losslessFile": "063_b5.flac",
-          "losslessSha256": "5d08ad33a729c28729f38d788084a1c6a9224cf62325e0b15ea65e770a2891d9"
+          "losslessSha256": "d529cde3af9fce438e79c6b8b525b99ef10da36f884fa279e149eb06fe219fd5"
         },
         {
           "midi": 84,
@@ -5067,9 +5173,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "b09f563f94773aa6f9fe45a8dcb5662e75bf19301d0a4912aafabebaad72baaf",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "07c890bb710f35997a55008de74fee17ae8d8b1b165474f0a48004c85ede893f",
           "losslessFile": "064_c6.flac",
-          "losslessSha256": "46b293c3a5b038609a779068afe3b2a291085bf98a4c716c03aa980685ec3479"
+          "losslessSha256": "d2b0f4d4e4ea7fbffd496bdab760b52bfcb30135d18ff79317248accd2e41614"
         },
         {
           "midi": 85,
@@ -5114,9 +5221,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897543572558789e-07,
-          "sha256": "e3add72eec36f8b367e873a567bc7616ece18488743174253a182e7ef26a00a8",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "016a217a64b77e578d838be4779235ef8321072fc50c59099a38dd02dbb31dee",
           "losslessFile": "065_cs6.flac",
-          "losslessSha256": "afa2ea6ebdeed91fe2257b2ad186f0d3389fc583585266803bc28e7601053884"
+          "losslessSha256": "dafbf53d612912572f4ed23a9bfadab2ad75f65f05b6d61f2b02417e146765ee"
         },
         {
           "midi": 86,
@@ -5161,9 +5269,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189739577966975e-07,
-          "sha256": "3e570415f1cb02cd60ea7769424d371a60ff35a8137d19f109d20043cb244a88",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "d6b62a850e4dd0c23a1a5a90dd44d169b2f3d79f2e9d8183603a91eb46523b6b",
           "losslessFile": "066_d6.flac",
-          "losslessSha256": "8abb91d95e575e5a630e503cddd2b891553f9caab436ee48a06baac44aebe13f"
+          "losslessSha256": "2c70a1508db77bcb8512115c4ef24d0dd02a4c10c9b2aa802a5acf35f70d3fd0"
         },
         {
           "midi": 87,
@@ -5208,9 +5317,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "bafbbea21d18bf672d8fbee9991da4178c3354421604c3ac31ec06e373758390",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "8484010bba5bc61bd42edabd778d3121d3e50f0e5a6a72a029c9552b5feb4162",
           "losslessFile": "067_ds6.flac",
-          "losslessSha256": "db25aaad87bfd823e8979a167ed87431893943160b739187ed528bf879dc2e9a"
+          "losslessSha256": "60df6e982aac23f26bbdcccc5d44464123c92406c0a4390ab66bc0397e764ebd"
         },
         {
           "midi": 88,
@@ -5255,9 +5365,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "cb85d8a2426932447c4e3a97494601c9a6f814b91e1a118472ef78bb157d05d2",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "14e09b25b3be97f8ebdffc1c39566d7125e843c53a1c573ddfe81a4c5235a50d",
           "losslessFile": "068_e6.flac",
-          "losslessSha256": "222ede57221ebca3fb3987a57f8d149fe97975dbd58f6c94de5d36970afb7e31"
+          "losslessSha256": "a60d9ce5ea75d88cc8ee019ca18792d50edc7856e514683ad8f72160e368f5ac"
         }
       ]
     },
@@ -5321,9 +5432,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "281f0690a3946c9c3b995598cb6fe8031c05ba7c3604da60b68c27c0262237c2",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "9ef514b1641c71d229370cb5a38a350316747267f4752156cbd29bae7459f0ae",
           "losslessFile": "020_e2.flac",
-          "losslessSha256": "47e8aa58e5180862a4e0b2e2086b00835b7731bb4b2535b28286aafc98d7aa60"
+          "losslessSha256": "e0f243fdf416065298cce1b61e6cac98902d3872f0eb587f2b849dd7a0484384"
         },
         {
           "midi": 41,
@@ -5368,9 +5480,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189655449707061e-07,
-          "sha256": "23b792deea4e32408e1cc654c4c12ca9f7b59adf82bcb53790bc3179d342641a",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "576882def2235bc6febfb235654199f693c42db58fef250abe5f20809b78ab50",
           "losslessFile": "021_f2.flac",
-          "losslessSha256": "421a598c9c77afda328115219b9e127779dda54ea31d5be529e5d8f3efdf3f7f"
+          "losslessSha256": "db2aa7d5c2da17bf7012e1e8e9573433311b7f87773a03240242cf381d1eb1e3"
         },
         {
           "midi": 42,
@@ -5415,9 +5528,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "b11231550f14b4691f4d9b31788f3f3bb269e9c275b9c5b28655dbf9ab9507be",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "4529b97077d136d56a894a248b98568342f4700c9f6151ba353158fdb38f4fdb",
           "losslessFile": "022_fs2.flac",
-          "losslessSha256": "23306b1c3d307da294e09cb6d02e961ea24bbad26ddc1ad13746264c0c439356"
+          "losslessSha256": "7e1f109e6b8fb2d501b4293fef69397dffdea846bb0c8f770001d8c38f8d547c"
         },
         {
           "midi": 43,
@@ -5462,9 +5576,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189723661809694e-07,
-          "sha256": "9d114a81da6a0cb4447d1e92d21d5e8ff8151665b1b83288725b15046ab51919",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "c322923a1f0e46da7b6dd4f561f2ab7c880b8ad78f5d4ff8422dac35c33ba66f",
           "losslessFile": "023_g2.flac",
-          "losslessSha256": "6493af783a83936427883c82c1a40142778187f5efd5bfab1e6fc13d2dbf630e"
+          "losslessSha256": "f8c6093e27e7840d37b65ed6e9ecbd3af5c2062cd9e75fb523d4526ba5f841cf"
         },
         {
           "midi": 44,
@@ -5509,9 +5624,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "5c818d6e8fee66a628c1614abbf720d77df53442e9c92dcc6a709374f944eed9",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "35f51397ef99c0934f90ca0fb97625f8512732021e6d2cb068ca92a32981588e",
           "losslessFile": "024_gs2.flac",
-          "losslessSha256": "d14670b28063fc9e63b1a375650aa12bea910bbfb318bd571a93f2a2f1fa0abc"
+          "losslessSha256": "dc170f858423d8fa274da7bad820a8429a477e3ba24f46da096173e969c23c4c"
         },
         {
           "midi": 45,
@@ -5556,9 +5672,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "5438dc6b24a7998a2184d2fd41fad5af1bcee07eeac0647847f6189ebf0b6586",
+          "attackMaxAbsError": 1.1873316907440312e-07,
+          "sha256": "8358c025ad36e263e6ebd4f7f8f102d69ea1545f8cb6f21e85ae541f1f7f9078",
           "losslessFile": "025_a2.flac",
-          "losslessSha256": "05b136b5a6f1ad0ec23dfb7c159f01aa47b174a121fd55611b0011eada29553b"
+          "losslessSha256": "3107cdc913406065f6e5dd25cf32e7cf4598caeca54d9a707093e05f893f2c5d"
         },
         {
           "midi": 46,
@@ -5603,9 +5720,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "54448b9833d7f03699b3da1f4a036b32d56f380ca6a723169992f5a4010b24a8",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "1103d191d39896361298bfdff9a86b5feae89539aa9c3ccedce087128e731022",
           "losslessFile": "026_as2.flac",
-          "losslessSha256": "207c8cb19727687704a28968aef14255f1e4c5c04e4a2dcfe2e3e9f36faf7f91"
+          "losslessSha256": "222cce0049ec088be1d488a606b2ab040c5edb40106c9f75dc711af2cf5a9c73"
         },
         {
           "midi": 47,
@@ -5650,9 +5768,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897407148353523e-07,
-          "sha256": "f4ea3404dd83685e77dcb3c0ddef02b7d1492ad6ab1adf10346720c838bc7e6e",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "21ba0e25d1c1a8c1c7379959517324944735823302693293607b4ea93850ab7d",
           "losslessFile": "027_b2.flac",
-          "losslessSha256": "1ee3d46645a80d6fb1167adb3a26dad461630465c869039e3dc516b496fea6ad"
+          "losslessSha256": "fc93250e6c079b976fb706b389dd03fb2cdcb3f29d04aca058cad465267c7b40"
         },
         {
           "midi": 48,
@@ -5697,9 +5816,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "ce752ff6e65774d9fac76f84f8c7e55a9c9ba05d881d17fba3d58003dbf82f6c",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "2dc7257593ce84363ecffaf29622cd527e109f7f8c91a7ec062bfe0aac244708",
           "losslessFile": "028_c3.flac",
-          "losslessSha256": "2869673f3eb5df81d937016e77712d4b4919e2b5b46d60d1f73a526632208bf0"
+          "losslessSha256": "98b618398651e79c47a6d01d64a1904fe448a8dbd40e98aa4a4fa9e38f19b33e"
         },
         {
           "midi": 49,
@@ -5744,9 +5864,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "344954a335576ed24886e51fd9faa8434d28a8042f63b355bfcc56be1685aa09",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "f6b93222a8feba2655be623386e379a38c3e1b97383323f966e2f5789ab4d51d",
           "losslessFile": "029_cs3.flac",
-          "losslessSha256": "03bb5f844c2673255943694e00a2f1086877c507ed85c81067f3976ac42132b4"
+          "losslessSha256": "dd8d17f1081f3f60f948c2db857d93f600dd515a270123e8131a04b793f86dde"
         },
         {
           "midi": 50,
@@ -5791,16 +5912,17 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "0620a2ff8f58a863e35a92f2bf8eeabfb60f726b4dcc29fd013f7b23aeb19ba9",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "c0fa3c60a68489deedbfed7caa3a324c6245bdc171fe36a499710c7c74286f6b",
           "losslessFile": "030_d3.flac",
-          "losslessSha256": "39fb89d6e878487b0beddf8b9b64109f492d939bb3b7ff89c6cba307b23c2e09"
+          "losslessSha256": "9370607972f58709de76791412ffbe1c9a2ba246a7ea313c98057a8d13f15f48"
         },
         {
           "midi": 51,
           "file": "031_ds3.ogg",
           "rawOnsetMs": 0.104,
           "removedLeadingMs": 0.0,
-          "onsetMs": 0.271,
+          "onsetMs": 0.104,
           "durationSeconds": 5.6065,
           "peak": 0.333007,
           "endingRms": 1e-08,
@@ -5838,9 +5960,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "7ef56de2c5795c76a11441ae909868cae71b9ab8983f3e2b5cb93d8d30c1eeae",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "406f4a1d0b3b82400184b0721927e02c1ffc9fa50b59fac81d71598a12519de5",
           "losslessFile": "031_ds3.flac",
-          "losslessSha256": "8ef4fd52ef3bb006653f56ed10dbba100c32ea8afea05f54c9ab0a0f2181da5e"
+          "losslessSha256": "1a0090c6caa98e583a66921c7ebb3c82ddbfe1323c001c1cce0e4a36e5adac13"
         },
         {
           "midi": 52,
@@ -5885,9 +6008,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "b2c5f132bf11d7bf3aaf11d57005ac6dcd2840d93ed999754766594ff02e20de",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "0e9cc27421a6a0669d51ec762cfb569b98721bfed67e33a93974ae215438e56b",
           "losslessFile": "032_e3.flac",
-          "losslessSha256": "1bdbd8e811e5ea90849ace65777ae883cfb1739af643a1ea37e01a80af4aed83"
+          "losslessSha256": "dc5951e453931830c7e2785dd7fd415bd18fea65106e31f1351883ae67551364"
         },
         {
           "midi": 53,
@@ -5932,9 +6056,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "fadb642b1208dbf94750308599ef4dccdc82274d7509391f82c857f8145257e3",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "785922b1049322301d9c1333cf25976096b3af154694c0f5b1fd845c7b9874bb",
           "losslessFile": "033_f3.flac",
-          "losslessSha256": "66bf170b15a346a20f20e1321d8e826f7d650b1d258cb13a9e58cf8f67a3291d"
+          "losslessSha256": "cca05226207dc55d965dfc256ae6b33aa0151011b926d363907c099d2d2927a6"
         },
         {
           "midi": 54,
@@ -5979,16 +6104,17 @@
           ],
           "issues": [],
           "quantizationError": 1.1897566309926333e-07,
-          "sha256": "1a8f60aa0c8e5fd6be3cf8df1556052b28e03f85f15a5e14682f53ec86e10a93",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "a380e753d038422b16b224fedb7d5f6443f48ee385bbd8d9a1c200797f4ee522",
           "losslessFile": "034_fs3.flac",
-          "losslessSha256": "5c05e369a9ee97a1f42046a9a7b0d39a9205e74e91da075a4cf2d4e36fce7ea3"
+          "losslessSha256": "cfde4c7aa98bbe9819b8c83b0b90cafe3fb430518e554cf0f3711c9f302ce677"
         },
         {
           "midi": 55,
           "file": "035_g3.ogg",
           "rawOnsetMs": 0.229,
           "removedLeadingMs": 0.0,
-          "onsetMs": 0.375,
+          "onsetMs": 0.229,
           "durationSeconds": 5.3075,
           "peak": 0.465242,
           "endingRms": 1e-08,
@@ -6026,16 +6152,17 @@
           ],
           "issues": [],
           "quantizationError": 1.1897495255652757e-07,
-          "sha256": "662ad0841a8f2f3b2bbefa52454e2ffe57e803ea3589871421d0c3a4b7306c59",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "e67bac18d301000be0c0e620e2ec9f6019931b9dc621f4c715dc91f79274ce12",
           "losslessFile": "035_g3.flac",
-          "losslessSha256": "4421eaf129bf9e64ddc7d1429bfb99129fe0806ad2cbf84563ebcda3e7d94d50"
+          "losslessSha256": "e867c95c09610e4695064e8688764ea1e74a135c3af71c2ed0a0118ec9e9e2dd"
         },
         {
           "midi": 56,
           "file": "036_gs3.ogg",
           "rawOnsetMs": 0.167,
           "removedLeadingMs": 0.0,
-          "onsetMs": 0.312,
+          "onsetMs": 0.167,
           "durationSeconds": 5.6283,
           "peak": 0.303426,
           "endingRms": 1e-08,
@@ -6073,9 +6200,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "d5ec026236dea0d7e5819906ccc3e722a764e87400bff2d26ad282ac77884aa9",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "c867a1953a5376e7bcae6f0b05f7cfdeddce6f21f58dcb681f7559e08b785cfc",
           "losslessFile": "036_gs3.flac",
-          "losslessSha256": "f53ad72bf4b75b56bbe25a7bd8192f86752174fc2b5c792a190bb7a80ed10354"
+          "losslessSha256": "6a77397ded1b42d5470d515eb95a9a175e1e5802703e46ad1ba60032c988ca76"
         },
         {
           "midi": 57,
@@ -6120,16 +6248,17 @@
           ],
           "issues": [],
           "quantizationError": 1.189691829495132e-07,
-          "sha256": "d3cd82e8cee72a90b6cb16e3616037585328b50eb28fb66fe2746f20c90d91bd",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "9c6989764f40e65b59455ff20f6494a687fb521d6dbfb0ec1d72432f8a0e7153",
           "losslessFile": "037_a3.flac",
-          "losslessSha256": "dfdf4300dca3ccd2194aca9f1e733e08a9944c317dfd66c0e58d4a2372be950f"
+          "losslessSha256": "7bdde87c018c396ca69d2c0493d82a871f90157eb40382f907fe2ee3a677cd16"
         },
         {
           "midi": 58,
           "file": "038_as3.ogg",
           "rawOnsetMs": 0.354,
           "removedLeadingMs": 0.0,
-          "onsetMs": 0.396,
+          "onsetMs": 0.354,
           "durationSeconds": 5.4855,
           "peak": 0.275103,
           "endingRms": 1e-08,
@@ -6167,9 +6296,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "437fe605f2bc094c46882a27dce7b5c1b954758f45bde8a6c93010903ae6fd02",
+          "attackMaxAbsError": 1.1868542060256004e-07,
+          "sha256": "fd4c0b3bab112c30e430655b7280c1672fcfc69968888f0b8b2239a92555b10e",
           "losslessFile": "038_as3.flac",
-          "losslessSha256": "5adcf27d0cd185c6b85a85d3b9c5eb5d3756a19213b26c960533f66277fe2b86"
+          "losslessSha256": "ea9d1e905b9192bff84133144f82bba279ca2689629f5365a85eb92c99d1b965"
         },
         {
           "midi": 59,
@@ -6214,9 +6344,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "4f77fc3f787a683fe9e10db7fce9dfad906ee0ec547ac8759e60b396604a0c6f",
+          "attackMaxAbsError": 1.1883093975484371e-07,
+          "sha256": "bc83a5d3289541a0180d4668632916bf15631fe34828fba2016c6929137d4e54",
           "losslessFile": "039_b3.flac",
-          "losslessSha256": "a00b13a0c0d26fed10535cd18d0f4cb84392527fc1397ac0209dcc641dcccc0a"
+          "losslessSha256": "0f65b851476056be053c4ca6f3b1b7477494af38c061079008c0451d924e13c1"
         },
         {
           "midi": 60,
@@ -6261,9 +6392,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "f71da83a92dfe0b62953a93acac747a428767d5abccb76b52895785011640f3f",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "9de0a0fdafb5f3373b1f9caa3c86c4cad6512ce189ecbeaf84a07fade6ec8db1",
           "losslessFile": "040_c4.flac",
-          "losslessSha256": "f76fdc4d2991b98667d97b29f6938dca88b8c9d21192cf9fb0bdebe6f801dad1"
+          "losslessSha256": "72967b51225e2ad3d8b070c670c53ada4fd20898d23d58db64aa07d33f4a1a52"
         },
         {
           "midi": 61,
@@ -6308,9 +6440,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897009244421497e-07,
-          "sha256": "010df648ebe364ada7c47f15cae6d902adf4c20f8c34893d52340eb9e4cd7730",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "b702b1a63fdc4cb7e7b96f2424d9ddc5ec90249f8fc7d290d95007996016b8ac",
           "losslessFile": "041_cs4.flac",
-          "losslessSha256": "fe476524831f8de0e39494165d815fcdf696f7cb1b316de3933980acd77be904"
+          "losslessSha256": "976f8f4288afcc3c811c871f92110f40f55dbbd2ea0c3be33a663049ed7a8843"
         },
         {
           "midi": 62,
@@ -6355,9 +6488,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "c1eeadd14e8436a083618ab55624ab7f101a7b2c9f0b998f8c4237d14127ebe0",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "da84b23c7c896015a9f5d5ebdf931aaabea66988c0a03fe63ec2b0c9e98c364d",
           "losslessFile": "042_d4.flac",
-          "losslessSha256": "f1fa0bd4c4a30548bac26178327e986380ea76a4ec355818799708f65e95db7d"
+          "losslessSha256": "eb866d3567b9f29d1199d4c039f967c1f0089eb6c219450be68183e3366a3a7b"
         },
         {
           "midi": 63,
@@ -6402,9 +6536,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "47ee2996855005177c228c19e11d831f3ab50504be18721e6458c6db5924be0c",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "415e4a02c5c2dff06f2745cfa61b643ece80692db0ccae2272f4c49533b8234b",
           "losslessFile": "043_ds4.flac",
-          "losslessSha256": "ba72691c9630a682151734cfe6638572a5ebb156dc61cfad3838cafc03f447e8"
+          "losslessSha256": "21df0ab1614cca020f1c1e13ba99d9d79e1f764e4332b450e6adf6cdad03bf9e"
         },
         {
           "midi": 64,
@@ -6449,9 +6584,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189691829495132e-07,
-          "sha256": "b4becacc8c6a007574e8ad6c027d80718f6db03beab39663811f386f7337babe",
+          "attackMaxAbsError": 1.1884549167007208e-07,
+          "sha256": "18af3b1c2adab829da0a2b4225ac7f8f9c9e0cbafe4c2b3d67b698a8fcb10396",
           "losslessFile": "044_e4.flac",
-          "losslessSha256": "8b38a3f6057bcddff00331f56f74773f54b912639abe8a1a028635d15e729762"
+          "losslessSha256": "8b6a7bba47f0f996f55ecf60ec34af4cc2707e7ac72ea725ca62f2fe4581ec5b"
         },
         {
           "midi": 65,
@@ -6496,9 +6632,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "2d1c1b752076d08f98268233dff39fa807bcbe08ed762c3732b1ceae1afac74b",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "b590e35dc4a1c65fd811aa1381a1b51e4ceaa35efbb99f6c1cb64bce458c54b8",
           "losslessFile": "045_f4.flac",
-          "losslessSha256": "fc9ed88bda7cd2580caf1cb66309462034090e3865fc8ac1d8612423c273b915"
+          "losslessSha256": "f04b4a95e1844f76d576d1386417373bd9d1b05779f0c22458cd9bbd4a5186fd"
         },
         {
           "midi": 66,
@@ -6543,9 +6680,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "5209676873667ec68d49c459a6f229099a7e2d0adec38df5f8079ff9028dc2bd",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "e500f576d6cc88e4d7c4fae0a27d5fe69ca616000f38069f7edb8d3f48a89080",
           "losslessFile": "046_fs4.flac",
-          "losslessSha256": "5bcc956275be768614509a74ca92714b6512b5183b45f9c978348cadbdf1682d"
+          "losslessSha256": "0b2814373485bee7524d33ab496115d1cf6a64032cc91a963562b07b8ca9dff1"
         },
         {
           "midi": 67,
@@ -6590,9 +6728,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "5a2a563ed82385ae4d373ac9dab96fb9058f02ae5f66bf80f41d0223eaf5da38",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "3fae7000dfe2c7ae8c67c7d3f76440af6c8b04808558d8d2635b13be8ae0ee75",
           "losslessFile": "047_g4.flac",
-          "losslessSha256": "f80cbeebf09dc01c25bdbbf0275b248d65553e52bb0f7e41d0d93c05fb52bf1e"
+          "losslessSha256": "ad46fa89c2e9ef1277cff4eab86500e12a60c9372687c8fb70c3513fc4fe5e83"
         },
         {
           "midi": 68,
@@ -6637,9 +6776,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "d7c9af77705450bd92d0a08a3ac39177ac014d490faf2fe4aa510f6c90b28863",
+          "attackMaxAbsError": 1.1893280316144228e-07,
+          "sha256": "8625f35daf829978429a1fd631894521c1f33e8a4524e7265924ab780ed06d62",
           "losslessFile": "048_gs4.flac",
-          "losslessSha256": "56250d22da3aeaf662a6cf65027e80eac50bda7f5498e0374e867015ee1a5cdf"
+          "losslessSha256": "617defac7aff8d62daf369c9f64b174b5eaaa996ece80b2597ddc5fb94f68971"
         },
         {
           "midi": 69,
@@ -6684,9 +6824,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "f19ffe0b1ac733d50a31ea92dcf49ab15c5e4b8d211880a8d6ca81cd2f6808bb",
+          "attackMaxAbsError": 1.1893280316144228e-07,
+          "sha256": "3035a9df1860660d37c2f14156a92d89198f68ff861e41223f5e5132d088a527",
           "losslessFile": "049_a4.flac",
-          "losslessSha256": "bd0fbcc56b1d35beb3c8233792bf054a41b6c63d1e3b4e1bb4e6edbd0c691c23"
+          "losslessSha256": "f8be814b5d63cf53ab93b44931606c450425adc9e4963f8a2944410857b6a0fd"
         },
         {
           "midi": 70,
@@ -6731,9 +6872,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "44d3a76d9d0a5f1b7607ca2a7469f3ed96288716cd2f499b934007adb0da9dff",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "76133db79dacc773ce8be6a96741763334e56302392efe57211c7f835058b88b",
           "losslessFile": "050_as4.flac",
-          "losslessSha256": "1ac878d4c6c40a7a743d03db0439b049197b3a7640e3c416e531f740719fda65"
+          "losslessSha256": "4baf5571ca08d2cdb8e7b6de92fcb51283f56d71dff687ceb913a8342966675e"
         },
         {
           "midi": 71,
@@ -6778,9 +6920,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "aec88c40cceb0f9c678ed5d89aec96240ed5a55156e8b5daa1db6132b42c1aac",
+          "attackMaxAbsError": 1.1878000805154443e-07,
+          "sha256": "f064995adc70a1dc6231dd69255e207863e434c5eae6f8770642dffe7db58353",
           "losslessFile": "051_b4.flac",
-          "losslessSha256": "bb41a9675d0eff0b459e4b6ba4174f49e61a09cb4ad4b77fbb30bfc88480a8f7"
+          "losslessSha256": "e3b434ba8ffcaae46851e0f60e9553f7fe62ad672aff3a246fdba55a3c73bec6"
         },
         {
           "midi": 72,
@@ -6825,9 +6968,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897100193891674e-07,
-          "sha256": "fc04386682b448a4c1de6af2beb31170886c34832da93735db8083b1aafe66ad",
+          "attackMaxAbsError": 1.1875818017870188e-07,
+          "sha256": "c6ab9d98499cc5a8510ca6caa8097f0cf3e8456e3894d84df73b3484918e8ff9",
           "losslessFile": "052_c5.flac",
-          "losslessSha256": "d8a6e6ce3fb992a1af1a3e603dfe3d47f18d23240c0d23b8ad2a048eac609a25"
+          "losslessSha256": "49289d3dafb9af9ce1c12d944dfddb553cef5e041b40a95d5fb4b9a5a373f91b"
         },
         {
           "midi": 73,
@@ -6872,9 +7016,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "d788bb375abcc368afdf4362fbfe878068bd524f41fb13218d21e4112f0be95a",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "27e79f788e72894e4b9444052b381a47cff2fc5fbe10e695d472ba4af497b9c5",
           "losslessFile": "053_cs5.flac",
-          "losslessSha256": "1a1392c928ba76ec8fccb95ec49906a05803212591848a6077ecd7421abcd57a"
+          "losslessSha256": "e780437eaf4460359992af7bfd7ec1b36fc615bd49540890754012868c87fef4"
         },
         {
           "midi": 74,
@@ -6919,9 +7064,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "a1a599742f7f2cb18b8db51e7cae147316311c58a93cf740e7796c909b739405",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "eb4e3605c7c0550dfbb32edcebad63bccc5380e0a31beac0dd0c503d7abdb3aa",
           "losslessFile": "054_d5.flac",
-          "losslessSha256": "1e48214a8f7859944b4d47104a06a0b976d7b8154a4f8b66a1c7349b5012a4c3"
+          "losslessSha256": "b5c7efe25ad5b39f63a5c92873033f9e509b1ed5ad575a009f99eef5104a6f8e"
         },
         {
           "midi": 75,
@@ -6966,9 +7112,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "1067af9a670b97275be915c0a65702b1e0f67e6622ba3b44da58361e379ff3b2",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "09d116dd8dde31733b5ddb45bf9b3a9646630992861b4e57f220e5378aef8e10",
           "losslessFile": "055_ds5.flac",
-          "losslessSha256": "ce4bc64c9ed9ea25672f7793516a4aff6564ef4885c3eacb511089bb68211583"
+          "losslessSha256": "012adce2c935504db62d747a2a7c78ce49ae9bbd50b4e1fc53bbc748939ad04c"
         },
         {
           "midi": 76,
@@ -7013,9 +7160,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897623153345194e-07,
-          "sha256": "84745bb148d859cb41f695b33574cf4d1f7e657e0d85a90c6d0ad23197f9f960",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "d4a557432871c69183267b29c2161ce7713cd5389b87b4e6328c25b350a654f6",
           "losslessFile": "056_e5.flac",
-          "losslessSha256": "6e666e606a63e76c383c656e8d52d4bc2bfc5c011efa8d1095a4327a431c0f09"
+          "losslessSha256": "de5205511aace0acac5082355dc940cc7d4ad4c7d62e0960bce30498b7c122c5"
         },
         {
           "midi": 77,
@@ -7060,9 +7208,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "c16f064bbe21384ba440060a2be9075981dc16547ab1fb26485b9d3196aa5b6a",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "8cf389ea81b100539c382dc5ea8c6ce2fe9a721c1ec3b12e9982f81221997b6c",
           "losslessFile": "057_f5.flac",
-          "losslessSha256": "02ce76fdc3e10c7ceccb09557c5d2fc13e36dbbac854aa597aa821f195a86469"
+          "losslessSha256": "0639017cda2a69beefddd95ea6f3877855ed9ecbe36350a7e71977544c8a837c"
         },
         {
           "midi": 78,
@@ -7107,9 +7256,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "1cd297a71ab34381b2b6202a7b246adfc61e9de20671da1c460e2670e42dd416",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "dbc2e5cd72867a556c6d7231fe8006d4b94bfb7ae6e8fd26c18e0ffcc21cb613",
           "losslessFile": "058_fs5.flac",
-          "losslessSha256": "8e1f3185d260077cf621e91df93931bf7ecde995c8e18cec0cbb491a02c64acd"
+          "losslessSha256": "fd531addf5ebc076a32db92595d3dab25c895dde93e05d90fe804961b57269f8"
         },
         {
           "midi": 79,
@@ -7154,9 +7304,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "5698789b1ba833d89a8bc17235d0b69384d3dabc824c4c566881a43a914d9290",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "5ea69ef9db89951e425e83f06ca78eb9a86a0049722eaf367c5b6747e12d8ccd",
           "losslessFile": "059_g5.flac",
-          "losslessSha256": "39299c2d1756afad07151ca67ddbc7aba051d16d2bc669a6512fc3abae4c0bb1"
+          "losslessSha256": "c53edb0ad1660d396298d41d81c679a2224d9e087b480cc021952984f951d95e"
         },
         {
           "midi": 80,
@@ -7201,9 +7352,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "171da2353e989dc93f80823f50e8c8400e9ad017e1bb4a700338a958f57e0eb5",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "2968c0170a8bc4a9716764de446a2d9c5c269cfd79ddefc8b09a5085c8cbc3b8",
           "losslessFile": "060_gs5.flac",
-          "losslessSha256": "3056a3f66d3e3667cfeba4ec8e3656caf319165db82ace2016442e571a4913bd"
+          "losslessSha256": "76064b580a63175766307458250252744874a36a4ed1be87eeaf03b6d6231be9"
         },
         {
           "midi": 81,
@@ -7248,9 +7400,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "0ba449466b44c43264c1e5490c782ab4f971363c30457cd0a943119bdbeccd98",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "83f2b6c90705046a1d8cdc001a0af2f9a092998afd7a9c443ec84f2717c9f041",
           "losslessFile": "061_a5.flac",
-          "losslessSha256": "a8357526369bde8e143667e12f0ba314b0e71337c7a1379aed8bdfa7adf633d0"
+          "losslessSha256": "ea83b7b968961e4c3d8e304ab429ae8571d9c568fd9c48b9cccf8cd798faa979"
         },
         {
           "midi": 82,
@@ -7295,9 +7448,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "c84a12c70998a3eb2652ecf5f8ddda11185d4d1906785077d2264d477d81a2d0",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "78f8263fbc7ea43b4b63a63b74c237b6920502456a54b5f414d0c6313a17f153",
           "losslessFile": "062_as5.flac",
-          "losslessSha256": "844976de8c46e94da21d315608f3b67ba4205dc6b4ae6284a7e32bc64b4064fd"
+          "losslessSha256": "0464000eb89a2f069776bc2193c0c0604110061654b69d3ac3876a37a164d54c"
         },
         {
           "midi": 83,
@@ -7342,9 +7496,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "1eda2d73b65a7a2d921771094ac63f8b7d80e6cf5e2e244aa671c7511ccb5301",
+          "attackMaxAbsError": 1.188382157124579e-07,
+          "sha256": "d5d045feef757ee5edc7783d9436df9e0d294a818bdba17703993b0d66ed836b",
           "losslessFile": "063_b5.flac",
-          "losslessSha256": "ef426126ea8f9fc5bb7fed804581de88ec788cbae257e84cedd5d378f4af1249"
+          "losslessSha256": "1c21e8efd7a7dfc24f06edf6693cc30b0eed2c4221000af6bb1163ff80a90d21"
         },
         {
           "midi": 84,
@@ -7389,9 +7544,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "f47f0b9c0b8db7de685478225bd1428ddcaa1727f9618356c50fa11851b1381f",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "3b93d7fbc6c50b48237864ceca5a283d4e575c76aaa9ae9954360898b11fcbcc",
           "losslessFile": "064_c6.flac",
-          "losslessSha256": "40603243150272510c7bf055d7feecedc793d9845c904e12d495e11f76e68f23"
+          "losslessSha256": "41477a8b84cbacf3aab2aa792b87482dfa696e728704da2bcf2e828bbb84ad1a"
         }
       ]
     },
@@ -7455,9 +7611,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "10e8c5000ed2f2247352d9b99e0bc80bea9dc13b5524cdc826b56bea3703243f",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "5849ac4be672b7128a923a8a153f54b51d2958883ef94a5147e1b4b6a0523981",
           "losslessFile": "020_e2.flac",
-          "losslessSha256": "daeec5852f04fecfa826860eee02437e981d5fcd73d94a915598d020f09edc6d"
+          "losslessSha256": "8e6d32268c563e361cea8765c261fbb80ad7b9662abd0c10891763d91c893758"
         },
         {
           "midi": 41,
@@ -7502,9 +7659,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "0b70632e093608a0fe617faf2c15f60981e27fd351ad4a9030472372f03020f4",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "90e4002badaa9e72cd2349142342de00988a41e9a6ba0e0ba3bdb2fc34f96169",
           "losslessFile": "021_f2.flac",
-          "losslessSha256": "dd1c552cbb2e2495c05a0ba9c9a1f5107f3e7856d20345352e1c69c21c28f910"
+          "losslessSha256": "1ae6bb9f5a672718a86e45a3ea4056789530ce2451e61e4228bdf470bed02c81"
         },
         {
           "midi": 42,
@@ -7549,9 +7707,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "9b5762ad65b2452f73ff2bb7d8de5b8b9f6860938b6bfa90ee3fbbe77ec4afa1",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "60f26ecce263efd1749b35b0777d177709a9c455f5a2134eda09ed3fbbbe9d6e",
           "losslessFile": "022_fs2.flac",
-          "losslessSha256": "466385036e99474a12875edfa2f68f24079b1e404fd6956899e0a4da4319c7ba"
+          "losslessSha256": "761f7f2f4c1ff9d46c0a7e28a872eac88e7d2abc5f93e271cc55bf50ee35ab07"
         },
         {
           "midi": 43,
@@ -7596,9 +7755,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897418517037295e-07,
-          "sha256": "779eb7f6e24daa680545a26c82d80e00fb8e63276e6504e7dc5f57cf756aac33",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "b723b7486961b0acf604f147dc5aa086093444e700cd501f4c0b335eb2cc3023",
           "losslessFile": "023_g2.flac",
-          "losslessSha256": "a6fdc25c0f8bdad2fbd110f3a6640c97d66b41a5d1bc39cb625ca93a88aeaecc"
+          "losslessSha256": "40d515c5d185a98b1ad51320594f264789253a8aa8ea8985a4b64d142976a6ee"
         },
         {
           "midi": 44,
@@ -7643,9 +7803,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "d200d6c8f98caef3e9ba6fe44c7a769527f8b11fe33a57450fb1913a0ce7474c",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "85f0d6f9eb9839fe2051e01aad275bfbcac70d68f06a32172dd3da546d550bdc",
           "losslessFile": "024_gs2.flac",
-          "losslessSha256": "6cd9c79e45f29394a9f8562391c73b4d1976ec11330805efd3356228df51c878"
+          "losslessSha256": "d258ba89d4e6303952a1da8c0dc2ae19a5c69f50dd2e0051d862f23c737fabb8"
         },
         {
           "midi": 45,
@@ -7690,9 +7851,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "bc08ae2ed742d5bc1040eefda19f6240c96909a7ab0702f6c181989336a813cf",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "31f17bd4a1094732b6dff5f546444f8d68c6c52cce196b32019d70453525209f",
           "losslessFile": "025_a2.flac",
-          "losslessSha256": "3644c6413fd4cb8ca77ad366cbfe9b56915145b579d5d67417321ebd67b3f191"
+          "losslessSha256": "0cd60c1a44704a19875d4fd6b4e20d9d7041b0cdf0b5ef2413d415ed5f0d2c1b"
         },
         {
           "midi": 46,
@@ -7737,9 +7899,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "3d23a09367d9956bb9e8dae01044b6d5257ef83717061479d821727e09af83f3",
+          "attackMaxAbsError": 1.1876363714691252e-07,
+          "sha256": "5d374e19e9079555bdbaa52848e5b7654804dccc4004070d508e658e57582a2f",
           "losslessFile": "026_as2.flac",
-          "losslessSha256": "5a39388660a64370b708a2a7dd954084658d82f713f602b2aa070366ce496297"
+          "losslessSha256": "6a7d1282636a037f4c5c47f1d1b0ee7de211441156e1ece81ae9b4235b04001c"
         },
         {
           "midi": 47,
@@ -7784,9 +7947,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "1fd87bd476bf5a7ea81033efde24092faf5aacf07d39e88105f1ae6a2faf59a3",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "b65a127e8e1c6072ea83d097d50a979794f13bf7f4bae64a92340366bebeb87e",
           "losslessFile": "027_b2.flac",
-          "losslessSha256": "769211dee87f2d933a342a28079aebb469511812cad56bb490a550966baece02"
+          "losslessSha256": "17e96b8498f169e18e91588d8494b07792a10ffa1acae9d644508ad7a8321585"
         },
         {
           "midi": 48,
@@ -7831,9 +7995,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "ad0f3648484a33722120df91cef853fbaf360b3be630db6c5a7014c4033e2256",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "14d7c870962936bfd370f00d7e9116640ee4b2f46e269c86e9c24c848690b622",
           "losslessFile": "028_c3.flac",
-          "losslessSha256": "c47f610037521372cdaf9a73d0c266f55bb362cab698abdc24b7fdde81274a7b"
+          "losslessSha256": "1933d59b58afabd65b5a8b7b6435bef46ab28bd14bee66c343d023eee619bf18"
         },
         {
           "midi": 49,
@@ -7878,9 +8043,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897327567567118e-07,
-          "sha256": "04602aacacbaf82432f7054c644b9b9b44912629e14fde456a71052673efd109",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "79e617dc287c8abd0dd24c573778fe3a68366c79a136361fd81649ba6071f698",
           "losslessFile": "029_cs3.flac",
-          "losslessSha256": "34cc683f119e899fab7e5c3e0d8d6a3cb9ad52c1f63988abe57d694e98e565e2"
+          "losslessSha256": "d8ee33b85cec6f34c962b9b7c3095101ea3301b7a0fc877ed9b4fa3ce0fd38d2"
         },
         {
           "midi": 50,
@@ -7925,9 +8091,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "84097e6fdd2862f929026678b13c8e5fee57c0735dd6e89ffc31dcd58db0b1e0",
+          "attackMaxAbsError": 1.1888914741575718e-07,
+          "sha256": "800ba8c440b322f450ff0c2e5b8f3b11eeda68b031d5454f101d2a0ea52cdcd0",
           "losslessFile": "030_d3.flac",
-          "losslessSha256": "4825980db247199b93ef63efa3a79dd020f6bc6738fd64d38595301c6850d7ef"
+          "losslessSha256": "299a286facdaabed07c8e3c55e49846a723cca2377cdbe021fd82e57fbe095a4"
         },
         {
           "midi": 51,
@@ -7972,9 +8139,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "eb303bde94d17490a3a122c8e16ba0de3cfd14070c043008256795c57a5f38ac",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "1ee95a5db27cb73972c32024bb2456b9cf0c05760a2ffa07cb56c1f842b9e466",
           "losslessFile": "031_ds3.flac",
-          "losslessSha256": "f4ba29b6af1b7cf3baf021355cfa955fb714b1a4899bf21f1823d2f833452ed5"
+          "losslessSha256": "383d180c0c60bbd2000ac501bf69974697c512a0bbd108cb0a09a08ac8c804e1"
         },
         {
           "midi": 52,
@@ -8019,9 +8187,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "5e64c7c1ff547aadf0c4f7cfb2e088148237384ff5bad54725ab2e2b36d5f0f9",
+          "attackMaxAbsError": 1.18921889225021e-07,
+          "sha256": "4cd5a6e8cada0dd94dc1dc278d05ec00a5ee6a448180b161af2375ff01784cd9",
           "losslessFile": "032_e3.flac",
-          "losslessSha256": "bbfae433f8d1a829ccb09adb453e4fd27cd435ba45f14ddc0e9c0054e3def956"
+          "losslessSha256": "ebc0edb531762c92099eb93d88ee776b6cadc80ac9c6375a95dc598bda9d705a"
         },
         {
           "midi": 53,
@@ -8066,9 +8235,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "353243c1856cb8b9b6d6cb4f507ac91f740b507007e8db26757051062eafd836",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "e1b36ce84dd700bcacb2da1426eac1688e5d7038b05e41e3e0b4f68b3eb1bc3c",
           "losslessFile": "033_f3.flac",
-          "losslessSha256": "4ebd4071a48e4cb6273b85f5d8b3fa2f21ee82a025a3042b00ed19d9b654aca9"
+          "losslessSha256": "35852e116277ec4d12d07e82a4bd0b453832e8fa64b3a1e9cfd91b9854898b25"
         },
         {
           "midi": 54,
@@ -8113,9 +8283,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897566309926333e-07,
-          "sha256": "3845ca5eba07b92bdcbf85ad2fc60c06857c7dc08445604f836d6dc992e87321",
+          "attackMaxAbsError": 1.1833617463707924e-07,
+          "sha256": "fb623ad2ecd7320ce8712279449396fbe5b9101b292755f94b4469e8cd6a7730",
           "losslessFile": "034_fs3.flac",
-          "losslessSha256": "977a87a70c350db7816bc581e47b254b91b58acdc96d0cc05b9db4f52d099472"
+          "losslessSha256": "1e15543d53d8cb30f73cb4559f6b96d71ec34ecb3fafd5746f715ca0e44660bc"
         },
         {
           "midi": 55,
@@ -8160,9 +8331,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "ef6c73884f6f9e09ad255cbaa98238372ba9ae39d6841b7340866f9b7fd2bc52",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "bfec40854e363d1a3a5b98da641689034f018e5bb12ba388d3fa0c32267cebab",
           "losslessFile": "035_g3.flac",
-          "losslessSha256": "c6bec1e2dbb2f6b32483143cd2ccd5bd15b440dcb968b43b099b3227b931f26c"
+          "losslessSha256": "862f9bf0ab8320e049f71a16faca02d5356f73582607c97df2168a4efce87ccc"
         },
         {
           "midi": 56,
@@ -8207,9 +8379,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897623153345194e-07,
-          "sha256": "4aff2517956484bdecb6892043a11403c8ed5c87480b9b63a280675a684a4c48",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "cfbc19fa4da690360bb98460cbfe308574ef2eaf6e9a3e48929a5f77d7197335",
           "losslessFile": "036_gs3.flac",
-          "losslessSha256": "a9a6060fa33c38aa8a718b93461cc64d2b5d1ac1b69a92c35e8ec9d18d704c2f"
+          "losslessSha256": "9f69740fc79bc7f02faf6ec8d7e7f947d93b9d1aa4dc3d4a88cb1a9e1bf7bcb9"
         },
         {
           "midi": 57,
@@ -8254,9 +8427,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "72b83e81a336292ca3874b18d8d78aead673850207251c0ec8e5cc855807bc7c",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "aa4e7c2c3ddc69421a827a4dc1ac73dd3b735c7f3de5906c459e4a40171a2f75",
           "losslessFile": "037_a3.flac",
-          "losslessSha256": "43b3abfa7fc54ee43540a24f24bf6f0fd1870be681ac9c8246a8d983b44f7818"
+          "losslessSha256": "eabd15d15630fe1fefe32cf2de59e15f1bcc0e72685b76772f930e78f9cff31b"
         },
         {
           "midi": 58,
@@ -8301,9 +8475,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "e674b6a2221575eddc42d029ce5abd78f7f83501e00bcaff60ebec8ad7e5a9bd",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "ddfcb65b079e911e3c5a5e500349928cc7d4087fd7316d064aefecb5614f5c1e",
           "losslessFile": "038_as3.flac",
-          "losslessSha256": "386bad12fe79057dc3608e7d460a31ea21aa8dbe59a632a7a1e354dad1695fe6"
+          "losslessSha256": "472525518b8545a7f40ee5ec55ef34d80acd96fb96660ccf59daffa90954d995"
         },
         {
           "midi": 59,
@@ -8348,9 +8523,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "4b220010bc18a953ce54c3fc42ab843ea2b39b828b86f972bfd8de375ec25a56",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "0fcce55537a95fd10b5362c5f164a81841dc6958099663161264abf498b938f2",
           "losslessFile": "039_b3.flac",
-          "losslessSha256": "4c16efc3b5599bf43f0ed54778905db33f4066bccdf531b8ea95b1ad88f91090"
+          "losslessSha256": "ebb1d484681d1a8aef339ce7cb61478cba59b1987cb5dc677b7a65a5363c0f53"
         },
         {
           "midi": 60,
@@ -8395,9 +8571,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897532203875016e-07,
-          "sha256": "a3322ef75cbaad845a7718258c807145a824f6642e5acb393b1135780b38f98f",
+          "attackMaxAbsError": 1.1827796697616577e-07,
+          "sha256": "8d56de6ca3171f856b6f97b09938875664602ddd4b74ab5f3b3ca7aea7fe5f16",
           "losslessFile": "040_c4.flac",
-          "losslessSha256": "3380b690205d058d15241fbe1e68a5d30bcbbd5bcc9797c9cd01ddaf7b4bc38f"
+          "losslessSha256": "a44e96cb9d1b17d7d829e5c35b4b8a9bfb07ba5b0e82334cd60213adcdca9476"
         },
         {
           "midi": 61,
@@ -8442,9 +8619,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189752651953313e-07,
-          "sha256": "155ab1f0279388fb6f43e5eddcc81277db02835bbbf44b8ee8b5a66891a23445",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "7689451ce0d2211081093cbdce89d3d7ef0a321f0dd174c87523722aa57f0626",
           "losslessFile": "041_cs4.flac",
-          "losslessSha256": "2af4df4ccef1def124a78e8feaa0a9d8bf72a9b05f5e710bb0f72d57afae49ea"
+          "losslessSha256": "84ef0e4fa19622e246838fcd645b81bfb39e9a1d17685e8f86c52149c6d44327"
         },
         {
           "midi": 62,
@@ -8489,9 +8667,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "5c0280e24a471bef10aec0333e2abf4d4a35b0d1841b24265a22149a76151d37",
+          "attackMaxAbsError": 1.1865631677210331e-07,
+          "sha256": "96eb18fdb8b0caebe3defa92cad59b03a6ae123a8c6879496cedd8cefb16c1ce",
           "losslessFile": "042_d4.flac",
-          "losslessSha256": "e3c6511930acbfe52b48e25e7b031d214501327554f08a5b8a4d9b544d918735"
+          "losslessSha256": "6876a7b337cb7b3077765461f69c0f32436fafcba83662b3629801ff7d2ba19b"
         },
         {
           "midi": 63,
@@ -8536,9 +8715,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189739577966975e-07,
-          "sha256": "fb2bd3697a755f0959787d9ff5fd94af95161a41674c8cff9dc634bc6185090b",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "dfbb6ea56a560f5e969f4c8fc1b403a1bf17a41620424a2de7aca797467e1ff7",
           "losslessFile": "043_ds4.flac",
-          "losslessSha256": "a8dca9c031a4a64005a240293a907b3e59aeadf181e1fbb12eb514a1fc376d14"
+          "losslessSha256": "c9e4c5cbb2cd60d9902055bb2ac51be41085c326c4af2a9c0a26e8bb7c73d3cb"
         },
         {
           "midi": 64,
@@ -8583,9 +8763,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897191143361852e-07,
-          "sha256": "5dbc9b4aff22937a4b78effdd7eb4b552109ab4442022f37049c1abfb4a216d8",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "51573f07786521175ff76fa268e04526f5e853af2fb34bd5658304d68f693cd2",
           "losslessFile": "044_e4.flac",
-          "losslessSha256": "1c477c3dd8cd3057a086104411812becc8334b76cea0b5df3da9ad08c0bc1344"
+          "losslessSha256": "84a4f6f1c13bc1ecaa26a76817417fb138c23f3226448abac90140865ec46693"
         },
         {
           "midi": 65,
@@ -8630,9 +8811,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "284a5402c83953c019f8f1035ca96334177e44eb3f4283d882910a7a54af6bad",
+          "attackMaxAbsError": 1.1868542060256004e-07,
+          "sha256": "653ac9a13d5aeb7f1e8c0d198415e79b908462f78bd6d8b71b93dd9b359f86bf",
           "losslessFile": "045_f4.flac",
-          "losslessSha256": "72265c4883b1a4b493376f7a71119cb6a6bb773470987f6a11f9db519da268b4"
+          "losslessSha256": "5bd10bcee3ef909e55e656ae437ec1c63652f1eee2b8341656bb1cfb76c03df8"
         },
         {
           "midi": 66,
@@ -8677,9 +8859,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189691829495132e-07,
-          "sha256": "004cd84d9d30f8982022b37c4663b0ca37bedd2fb9850bf735013bff17abbd51",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "f20bb21c7093b8c521139559afbd6aa736e04d458864b33bf48e3ea3805e4d27",
           "losslessFile": "046_fs4.flac",
-          "losslessSha256": "5ba9ffe34f9d6eb51affd188994724b9345be37ce888956fa2fc509629ba0bb8"
+          "losslessSha256": "422bfed12223523e9885ea2b6794011c1bbec937a3c337946086105d08f090f0"
         },
         {
           "midi": 67,
@@ -8724,9 +8907,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "e3607c27b582c009f3ad0524c8bfe051c825397f64a8f41e8802a35f855fd567",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "cebf6a247b3f5e83222ae9607aa3fae7da9a6419ebeab3f6eddd167d2485d8ca",
           "losslessFile": "047_g4.flac",
-          "losslessSha256": "093c42b28dcdddde33085fa5540bf2da83c1349e5f2f697a989ed96412b73c2c"
+          "losslessSha256": "4d3911eeb599255c34940867ad8a3c550f7793c0c5b2cc8021e8299299dc12c5"
         },
         {
           "midi": 68,
@@ -8771,9 +8955,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "da037983c0df2db3ad7f4e066de7fc933977d72e86bdec621103aff364cbbaaf",
+          "attackMaxAbsError": 1.1877273209393024e-07,
+          "sha256": "62bc6bbc408d482c61458c5e9e030a94b54c50f96dd6cef031d0fed6e50e5b31",
           "losslessFile": "048_gs4.flac",
-          "losslessSha256": "170c82bfaa5f1592a8bc3b21329965a059a17c248b3e53af3fcf970aadc1ee18"
+          "losslessSha256": "e84cdf72f1ede07238698da64d09c3e751cc9f6d399b7a74a4808ba21a2d9a57"
         },
         {
           "midi": 69,
@@ -8818,9 +9003,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "b17f07aedbe5a44036d7b76c2baed283bdb82369f15cee35606ec6051fee17d0",
+          "attackMaxAbsError": 1.1862721294164658e-07,
+          "sha256": "2a9b1ddf6a3989a20ef1e03d731d06e6a951f6e40b22b1d29cf71b0caf2f71d1",
           "losslessFile": "049_a4.flac",
-          "losslessSha256": "ad958fc78955e87d4cfa076317ac0ac2691e9768c0689d5dfb248a6955144ef9"
+          "losslessSha256": "b6c7475f0ae485a68632ae928171fb4f10c534f83b7ef2b5d39f49e371e74163"
         },
         {
           "midi": 70,
@@ -8865,9 +9051,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "b5783133900c34e81b28a17f4e55a83469240e7d80401d2a4f0170769bd952f4",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "7fddb713949bf578e5665564d10828ae5076b3588a51dfe22703503190c732c4",
           "losslessFile": "050_as4.flac",
-          "losslessSha256": "2e60dbfb04c6226ff66ef9a413bcdeca0f42e687aa48b3b1761254366fd4fa6a"
+          "losslessSha256": "7ce48588afc9b6416eb37bd62421abd1ad57be2229a0c924ab3308b5b44e77ba"
         },
         {
           "midi": 71,
@@ -8912,9 +9099,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1896781870746054e-07,
-          "sha256": "e14e6f36dae54de0c34aa68f960bceab3621d57f4c649607261f53c954733390",
+          "attackMaxAbsError": 1.183943822979927e-07,
+          "sha256": "84fbdbd43445574bb4ea69f7ba5b762bc91221aba2d6436e6b599e997c8cdd88",
           "losslessFile": "051_b4.flac",
-          "losslessSha256": "e663cb55dd0259f5bd01c80a18312b00f89062a2ecf1abd1acc451724a6336f4"
+          "losslessSha256": "1ab7db4f8f38ea2492243f7ee3fa02b46e9df781dd522e3e7dd1a8e521a79d3b"
         },
         {
           "midi": 72,
@@ -8959,9 +9147,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "3f0d4a8549cf68a16eaeab9bdfe085f7a1edfb1d7d57799b8dd72a5d80022d37",
+          "attackMaxAbsError": 1.1810334399342537e-07,
+          "sha256": "11c4123598fe76e76967daa006bea7f5c2bbd0fbc037f93eab96cc9def860ba2",
           "losslessFile": "052_c5.flac",
-          "losslessSha256": "659d485796586ee51f026955f1f6cf3396f974cb8134e0d41d9692e86667398d"
+          "losslessSha256": "3dc8eb3dde66acc87ee730fbd2fd7ea4119dedf647851808d88c994ecdd3e03f"
         },
         {
           "midi": 73,
@@ -9006,9 +9195,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "b88b6144dbfcdb3a48cf97e21d2f42393d0fab40cf23db10d471c65526419189",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "acad622d1a094694b0aa61329f0ba0c0f885527289b8867085b208455d2bcfc0",
           "losslessFile": "053_cs5.flac",
-          "losslessSha256": "edcddaaff02ca0449586577af6aa0445fec8a8f291b40bce4c43012ce2de2ddb"
+          "losslessSha256": "da0d6f70995208b73f53315e4f76401cfb3060b5ed7ee1091c9e09a055a89c12"
         },
         {
           "midi": 74,
@@ -9053,9 +9243,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "09cb2a73fd0e955a5edcbad9a31f8eedd695cec68a36b3de6182a8ecf8ec94da",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "4fb845990c3eaa496e7f8c6ce2f750cb804291bfa6d8ee134a99b512c1b9a0b1",
           "losslessFile": "054_d5.flac",
-          "losslessSha256": "77d215ae174c5f8e0dd8e1b6550fc140ba058745fd75d18a3a4a22eab152482f"
+          "losslessSha256": "c64eb6aff4fbb495fbf53bce74c27dc754c0dde2b775196f33fe232b64691217"
         },
         {
           "midi": 75,
@@ -9100,9 +9291,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "354f8649451f08d05f76f3eb57ed5262d7379a53c86fe01c7c4577b54f4f2132",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "27937d3d1db72b92d93ab46fa29cfb4050d40f7fb2934bbbce6fdbc43ce49608",
           "losslessFile": "055_ds5.flac",
-          "losslessSha256": "49e0d6de41922ae9332d5b5c75fe248efd0e704795715197d5a8664b8290f2ae"
+          "losslessSha256": "e1302a3c4a6ee3455301e0cc803c148b497224cc76c7eb4fae3c37e2d9dbdaa8"
         },
         {
           "midi": 76,
@@ -9147,9 +9339,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "bfed87315f3e133f166fe7b52e2418e1b47095404e6338468e645f45051d88bb",
+          "attackMaxAbsError": 1.1868542060256004e-07,
+          "sha256": "cddffca18d54fbf1a5149b155b2366c68136f05dae6fa5634fa831529028497a",
           "losslessFile": "056_e5.flac",
-          "losslessSha256": "86fd8b7c8c256fe482ec7af99492fd6949f191a720a7604c142727a474d5c824"
+          "losslessSha256": "3a0a656515e5dee2ae86c28763337c561ac33d3da092791df2d41ee8be290e6c"
         },
         {
           "midi": 77,
@@ -9194,9 +9387,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "52f6a4a8588dc575440f4e1507620da6c104b32c459c00a95fd460d68409f57a",
+          "attackMaxAbsError": 1.1792872101068497e-07,
+          "sha256": "fbf3dfe0e277b45420dd8bb523636f7915cc93202cb8df83782dd7e2046850ca",
           "losslessFile": "057_f5.flac",
-          "losslessSha256": "efa6ad0fecb4d21b9db100d9de4689a63502a75e0e8b65cddf84cc77ccfc4d72"
+          "losslessSha256": "4031adcec11513f10b7c1141159ef618354c6caf1dfde57af1aa54ce52febe2c"
         },
         {
           "midi": 78,
@@ -9241,9 +9435,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189691829495132e-07,
-          "sha256": "d8b94cc3c9407219d362b4551735732da64f3c5314bebebe8d35cc15351a4823",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "8be249f887baf672c0b24dc4106c78146d5f29a224e6b0cee7d323e1779defc9",
           "losslessFile": "058_fs5.flac",
-          "losslessSha256": "ea65fb177f182c6791e1a12202a40e60690d75d5fcc0a6f023f2232c12960e5d"
+          "losslessSha256": "c867ae46eb5a6644ce2d79079df8593459f232227f494bd5c0fe8cf09f95aacf"
         },
         {
           "midi": 79,
@@ -9288,9 +9483,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "25a228f1366b30ee64b498ffcae16d96aa58301784e7a80a430b3bae97909ab7",
+          "attackMaxAbsError": 1.1890369933098555e-07,
+          "sha256": "ec04e9aadbcac1529034c1539d5a16425e56bbb506b6dd5f3eadb85b473b1602",
           "losslessFile": "059_g5.flac",
-          "losslessSha256": "0992b4c8c2dc200a86418630a93d2b505e1912ccaef59531c0d8c507247524b9"
+          "losslessSha256": "eeb6cbd305b45a2cf3351bb047880be8d70090f0b3401f469be7aface8bbf29c"
         },
         {
           "midi": 80,
@@ -9335,9 +9531,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "00c6c76368d49d9fe90a3d1d7db4916317c38da3f850c8ec07a25026c8ce5754",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "5a2f3618a452824f24c9f521db4b554c9a04ac40618702967d10df1053b0d4ed",
           "losslessFile": "060_gs5.flac",
-          "losslessSha256": "ba64656e307a41eb456693877f87cc7bee19edad6f292fff00be5da75f465105"
+          "losslessSha256": "0c0eb7e6970ffc4f2fe0df7664f3d143db10c46e6214e313d3bb1c799da10f4e"
         },
         {
           "midi": 81,
@@ -9382,9 +9579,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1896736396010965e-07,
-          "sha256": "07df0330d8038f2dfcc86d7af57e2942b31fcaf2342f1e784a6c740d32e3a09b",
+          "attackMaxAbsError": 1.189255272038281e-07,
+          "sha256": "706f96146038826d507ba80b3b759bd76d7c9045f276dc4f7a96a5216875adb1",
           "losslessFile": "061_a5.flac",
-          "losslessSha256": "ec3c624b5059a92f053f81146b3f77c240a88f1006e781935b889d53c80eb62b"
+          "losslessSha256": "224101ce2a74afa94c8f77de44da4dfbfb3570fc77ff417961be2357a90c7df2"
         },
         {
           "midi": 82,
@@ -9429,9 +9627,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897327567567118e-07,
-          "sha256": "b77bac9878fd011ee88f4506b1efb196285ac5e5c8ba20b3cd4e7b93a581da3b",
+          "attackMaxAbsError": 1.1842348612844944e-07,
+          "sha256": "e7195ce620fe5d9cb2537ce48125e16f74835017ba2d6940c449f749a3203a77",
           "losslessFile": "062_as5.flac",
-          "losslessSha256": "eaa3c137ec06fe7b00a11ae9075480b2e3d9ed33690056e22138af1371a1f78d"
+          "losslessSha256": "8f0caf285893a887ae33217f95344869e4604aa67178c315f52fb6be6b96e8a2"
         },
         {
           "midi": 83,
@@ -9476,9 +9675,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "17ba81e2fc8982f29934ee729148d675f8c74a41d5c710bfe05e8d21046d4473",
+          "attackMaxAbsError": 1.1877273209393024e-07,
+          "sha256": "a8e69af948124f0520e4391e6670a031f4e89801ba556f994217ac0ed87e7a93",
           "losslessFile": "063_b5.flac",
-          "losslessSha256": "bab6832978f95a471091b8c370f086375af1ae61393d07fe2146f8c941a9f3d5"
+          "losslessSha256": "2929c59eab7db147b37495bc2c9c670371d9b4859a1ffaf6c6f2fd91a8159e59"
         },
         {
           "midi": 84,
@@ -9523,9 +9723,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897350304934662e-07,
-          "sha256": "a03d839a78647aff68a33bca4f968d7cd6ba15a18766304a9e15620f9d12262f",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "947d422d10444cdf7f0ad54254ba3b6380f9dd740df242a52bbe24a5e2b737f6",
           "losslessFile": "064_c6.flac",
-          "losslessSha256": "fa2a3103b82d1d40ac78117393f0d7145f3f2d35191f242a2a8679a86840a130"
+          "losslessSha256": "7ea836022b00278e79e0e50d7625154020e7815002a253a8bf8bfb7c550f1b48"
         },
         {
           "midi": 85,
@@ -9570,9 +9771,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897191143361852e-07,
-          "sha256": "6a6a120f1d4ec481e07163cc28c9e630e32f716a70659de60035ec671ba5bbec",
+          "attackMaxAbsError": 1.1851079761981964e-07,
+          "sha256": "5563b49e00d79f290071ffea06ba7f67efd75c7f1d8ee1fb31365197afcc9ef8",
           "losslessFile": "065_cs6.flac",
-          "losslessSha256": "39998f076aec992805b08ab6bc141115a81f3cea35d067903b5746be44237c17"
+          "losslessSha256": "bdd490139faef351cd0435dd81e89d7915a2153b3a9965fe41141edafbc56c67"
         },
         {
           "midi": 86,
@@ -9617,9 +9819,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "726eed14f0695265c215e9a43dd9c600abe7cf101c043d012a5b5307ec58a404",
+          "attackMaxAbsError": 1.1856900528073311e-07,
+          "sha256": "5d8d55cc15d96ee66a6944978814f003a1091b8ab627c56ec3b8b16b9a16cf32",
           "losslessFile": "066_d6.flac",
-          "losslessSha256": "650c27198912e98db3e7b1529386cc6e0cbf6f36d57e32ad50b0092bc168cd35"
+          "losslessSha256": "b681e4387144acc8c271b96ec219cd187e4503833bdf1c5f049013af80047066"
         }
       ]
     },
@@ -9683,9 +9886,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "6fff07f94509d57866e844577f716358b8a2b2936088ea6ed6678c4868937b54",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "60761ddd4ee028ddfc593d536316875701f0b9d3fc450ca7d589062ba2b63604",
           "losslessFile": "020_e2.flac",
-          "losslessSha256": "cf7a22c54116222350e8e5d6eaf438117e1a7271c1940c1196f10d7930f90627"
+          "losslessSha256": "4e123c98a17a9bfdc9eff3214f08d0ddb91e761d0d330d1e93c40f6e3f6b649e"
         },
         {
           "midi": 41,
@@ -9730,9 +9934,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "6a866267e4757cdb00add447d1fc78d04a74a45984f701e54c24068a0055b38f",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "6565a4b103569552ca81320b7b024e6aa4d2cc7d383fcca5250911f8504ef841",
           "losslessFile": "021_f2.flac",
-          "losslessSha256": "cdeecc0f030580bac1baab68f4a3166626d7f207ac0ee6d9c3478722b13ca9fc"
+          "losslessSha256": "1ceafc69f3fe15879c565e45556415b458d80e0416d13a0868acc1b056d9e23f"
         },
         {
           "midi": 42,
@@ -9777,9 +9982,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "d29f56c94def858fc68b646419b061d25b77e2e28281619d93eb7f7a6bc25c61",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "878e09316d4cefe615be7e96547ff0dac5a5ba087d0d74b000920b8620ece35d",
           "losslessFile": "022_fs2.flac",
-          "losslessSha256": "d768321ae7f9a7e87812087bbbc67d2d8c0b547c9fd9ea9630917ac4377f0571"
+          "losslessSha256": "048c9370ea2fd47e44aa56f23275d25c8751f25cdf1e5f9c7aace15afaf40b05"
         },
         {
           "midi": 43,
@@ -9824,9 +10030,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "8669f5d4d18c630ee69aa510e4ffe0e52c77dc07231ed1f690f7fe06b257a2f2",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "f3c486f01fcdb310aff85fa3811e29610b73d9d811048c97f3cc8deea1ad6270",
           "losslessFile": "023_g2.flac",
-          "losslessSha256": "bfed8382170ab8435e13c2407a42e5a40100cfc6e9b9680524c7849bee2bd430"
+          "losslessSha256": "693165d044b34181bb25fc786fbe8aff9e7707552a43742118a95d4e6179c9dd"
         },
         {
           "midi": 44,
@@ -9871,9 +10078,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "d78266877d826c43d66fa0aa54c5904147be77730f395eb02f911910fc526973",
+          "attackMaxAbsError": 1.1888914741575718e-07,
+          "sha256": "17dbbc39cc3393829c84e46bfefdae01642dfab256f752b450d23d632265bb0e",
           "losslessFile": "024_gs2.flac",
-          "losslessSha256": "77448a38be1cf85b79081373a555ff668c62c804d0f2653b4578a30680c3bb76"
+          "losslessSha256": "213dbb71e6261ddfae91c70c9dba441c4880248344e98882118411535d841028"
         },
         {
           "midi": 45,
@@ -9918,9 +10126,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "44ee1dc2d4e082bc63a0154e0a0be88c5df855839938371b2cb5edb5612a2018",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "6d03d67a20c307301a807390382c8373fe25888a3bb245f7085c62e1b0e5782e",
           "losslessFile": "025_a2.flac",
-          "losslessSha256": "5d28107766e7fd3453c2b38b121ed06b3d908ae755788e3b2c717a6eb9c37a39"
+          "losslessSha256": "33315d57790aaee926e7eab9c30a5d3239110e92efdb620872053dfee831763d"
         },
         {
           "midi": 46,
@@ -9965,9 +10174,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "855dfa907fbaed9639e7973ff7201b020568f43eebc77585e690e5a5296454bf",
+          "attackMaxAbsError": 1.1888914741575718e-07,
+          "sha256": "758702ed289f4d30c67c4999fc76c7ee167460a58c93b7e7cbcc6baac5a1f8b9",
           "losslessFile": "026_as2.flac",
-          "losslessSha256": "3ca8c9c5e15b93e08af2ab19a61936c8016f3e93a1f0c7c887006522a7b86fd6"
+          "losslessSha256": "4f20c80c203655bc2d9a9dfac1f0eca1e88f2b25dc2e513957c88f9c30c13356"
         },
         {
           "midi": 47,
@@ -10012,9 +10222,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897452623088611e-07,
-          "sha256": "c32f5f72335602211d20b1db02a75da4124d952732ae5e9a5d1f0dcfa0f25ff3",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "41720f26df3762d9f7d261a27b5932917418669033324e8fdd334292c4952a4d",
           "losslessFile": "027_b2.flac",
-          "losslessSha256": "9687809afc132c6e31fe83a2d38e38f886c5148a311529025b0e1575f4ef53eb"
+          "losslessSha256": "4d8893600dea5b9d5eddf4261a57d8dd1ee6ce708eeec16fa6b0a2692deca163"
         },
         {
           "midi": 48,
@@ -10059,9 +10270,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "3611c30b982ceca3d43a4c0a7af30ba5f950ca3178558ff1f0894802303084d3",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "5ade9f11cda35d090879f4e3454588fd7fb68c4f4446b7260154bc4b0552c614",
           "losslessFile": "028_c3.flac",
-          "losslessSha256": "81bf05f73591cabbc4142af6a35ae3b0686c4fa22d6d8c7cd274634abea2dda8"
+          "losslessSha256": "0e1ec9a6ad9b06609b5dababc5ab1391c20d90530284b6a1e7a1815c41375129"
         },
         {
           "midi": 49,
@@ -10106,9 +10318,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "e3375dad5666ab3499a08ebca85dcfab04e1c1e344321bbca3818de5593b2504",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "892fc9c27939c43ff4aea791a623c49a9d7c4f8993591da785cc23911b6d964c",
           "losslessFile": "029_cs3.flac",
-          "losslessSha256": "1f5543300503ac0366ed19554f2b4b210983ef70709bfe6567ff89eb1d199a11"
+          "losslessSha256": "fd53ea4d26d9bad62f35833d06dc6efd02f57049bce8f87d6f16b0bd5b4e8bac"
         },
         {
           "midi": 50,
@@ -10153,9 +10366,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "a19cfe2a43d0d9dff718595fa893bab43a08d938be66132523dbf93ebe5311b6",
+          "attackMaxAbsError": 1.1893280316144228e-07,
+          "sha256": "20ca8e4607d50fffddc9393a407e90b218beb902dc1ad19de68ed239183d1d39",
           "losslessFile": "030_d3.flac",
-          "losslessSha256": "6ec0f9f4899f08ae9a564199298856847c9366b3271b7bf97876cf8f60aa0320"
+          "losslessSha256": "bf86d1deccc0417acb7ed60ba5932a5c5536973bd13c4ac652d4dc679b1956c6"
         },
         {
           "midi": 51,
@@ -10200,9 +10414,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "27094797b69e35dda563055ac011d96d37bd0ff139be45e69ddb3a0a16cdb90d",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "0ecb2720ea7c9ed8b299e23a20ff5298ab9772cdb42ce9129f2ab2420a93c2fc",
           "losslessFile": "031_ds3.flac",
-          "losslessSha256": "f05feac80aabb887e16ea6dc8b4047330b48eb548ba528a597592b1934ea4251"
+          "losslessSha256": "be2eb93e4f4179c3bb5dc28892d0c1d27a326d1cb26a75390bdd54502b399300"
         },
         {
           "midi": 52,
@@ -10247,9 +10462,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897577678610105e-07,
-          "sha256": "1c8103f18b1b40770f10cca08db5f5c7b7fda0c8401678eb752d538fafb366e9",
+          "attackMaxAbsError": 1.1883093975484371e-07,
+          "sha256": "a843daf456ee31ddd2ceba070b6b82c0c703e4e73d84335f149e9dc2673d4338",
           "losslessFile": "032_e3.flac",
-          "losslessSha256": "bb45156e4fdaafaedbd846e9a45d22e60b4547735351d45538fe0781477c334f"
+          "losslessSha256": "00e1f64d3986f776d366d2efd78d1610bb3207f0f25ee59d9933bc6f19998b6a"
         },
         {
           "midi": 53,
@@ -10294,9 +10510,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897282092832029e-07,
-          "sha256": "99e1e8a031d3b4107d3fb62194a683a8a077bc428850d989eecfa7242775a8a4",
+          "attackMaxAbsError": 1.1875363270519301e-07,
+          "sha256": "e5547b751e605d1b8ac7d0c0c003d7d6a870a0224897d036751d2c9225bf837d",
           "losslessFile": "033_f3.flac",
-          "losslessSha256": "bf272061ec246b44780f2ea2398afe473e8b169b154a442ec9bd0dcb4ab625bb"
+          "losslessSha256": "d8e1e027f3b0b9fbaf0ace63fd5f98f085ded9ae34d8361251a908984659446a"
         },
         {
           "midi": 54,
@@ -10341,9 +10558,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "97e0019276fbd72febf690e7edc9e31f05753a5a75efa09ae56653ab529300a4",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "0b5298750ec7c28d48e0bffcdd1d485ad519a0e8611f5193197d3f5231d3397d",
           "losslessFile": "034_fs3.flac",
-          "losslessSha256": "de9cb6e458e8a90bb8aa62f3b0356ba6c1e07a37fffb52903554624344f812dd"
+          "losslessSha256": "2879c1a94eba6a29ea8848d762d73af25b58b2cad8a1f02e2d43d11f4f02a7e3"
         },
         {
           "midi": 55,
@@ -10388,9 +10606,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "9835c09c1a09fcd1c8db52b23755ca8f805c347d169ebe4f4e73904bd0fb593a",
+          "attackMaxAbsError": 1.189155227621086e-07,
+          "sha256": "ad1e38f7d46644dc13a00361decf81462f9cc4dea5129ce432255c0fdebf1219",
           "losslessFile": "035_g3.flac",
-          "losslessSha256": "b529720237430fce269d8b26f7c9a98bb25fbecb354f697a0b03ae99fd471ffd"
+          "losslessSha256": "6887b316f44885f2cf63ffe6065cd87c11594457e2a8044722d37091402234ea"
         },
         {
           "midi": 56,
@@ -10435,9 +10654,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "75a90bd069decafc70d3c3d4670ccd23374bbeff0cf8f9a936a0c8c777dc1f45",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "d974ee5fba11ec75c224aba76d0722c2c794ddff5e6613cdfedb40b3ba74bdcd",
           "losslessFile": "036_gs3.flac",
-          "losslessSha256": "b3e151694cf83504eeafbb624e5a1fad3aa18ae66e7f3c2c047ae7ce6190aafc"
+          "losslessSha256": "b03ba9976f5be5033fc80567ddc6daacee64e398d9a4b6d2a3910b6812c80609"
         },
         {
           "midi": 57,
@@ -10482,9 +10702,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "e8110b4de8e486223ee9c2bb7b045545b1b95b1339fabfef88c5dd5dd8fc4b35",
+          "attackMaxAbsError": 1.18881871458143e-07,
+          "sha256": "2591faadaf60ce75793d2431957e911691ceea494f0f7101b3f79ca63fb72a78",
           "losslessFile": "037_a3.flac",
-          "losslessSha256": "f2f0109d12c3966be874a3eed2b7f68d73b759ba90a99053269e01dd40ffa3b1"
+          "losslessSha256": "8504c1b1ce6e971244354bd45975b0b08a2808d8ad4120c41b0c6ca55a278bbd"
         },
         {
           "midi": 58,
@@ -10529,9 +10750,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "7bd66847037bda16f0492e111038946d3a4ab990b86e6f0d888323eb7d54e953",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "4dd189f4a89eb72868c5cb38662d55f48bd22053cde66b59c1a7881b5f23ff20",
           "losslessFile": "038_as3.flac",
-          "losslessSha256": "d6f547cc270398fad85c9d8db510531acda1189b426b6ada4ecb8a516a355aea"
+          "losslessSha256": "d14b0a03b67ecd0b570ac4cd3bf58476821ecfb9896fafe3b495476e9bfc02d1"
         },
         {
           "midi": 59,
@@ -10576,9 +10798,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897617469003308e-07,
-          "sha256": "67fc30d744841210056f41bf0ce34a4f0c0d5fcf470700375e47fe5f20747b72",
+          "attackMaxAbsError": 1.1881638783961535e-07,
+          "sha256": "154af61d5f8f3c39929cb7ec1af439df120afc5674bce4f87bb573fe7fb05e72",
           "losslessFile": "039_b3.flac",
-          "losslessSha256": "e4cfc067140d0295c15a63740d41c6518d693f272cf8d183e19f674ed892e1ef"
+          "losslessSha256": "dc6a59b61f949115784d28a36b61afb4b0c5f51ae6a45d618ba738bc22222923"
         },
         {
           "midi": 60,
@@ -10623,9 +10846,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "a672256d3040abe7aa2d5475a3d19273291a78d0dd96703c85f5fa723a1ac06f",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "d91f9e07eacd62aee031d7c198d4fc26995bfc2de69fbf55e6f4a132d903d4a7",
           "losslessFile": "040_c4.flac",
-          "losslessSha256": "4e0a23d076b87596833afebd7e1e6f460e9df3de48a031940d5c1ffa0cdc3d82"
+          "losslessSha256": "b575f6a99d50298b068d3cab98cef37196b8ba55d4bfadc844610b93ea93df5b"
         },
         {
           "midi": 61,
@@ -10670,9 +10894,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "590c66fdbee86120b0cb3ed59dd1d2545e4bfe85020dbff1b225e13cf338fbfc",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "fecdb7967e89d70047d6194cab98027a6938946d1a07fbe00c75387add63e9c4",
           "losslessFile": "041_cs4.flac",
-          "losslessSha256": "1df93416310db077986da3aeaf177e8857af98baa6ac25267a8f48aab929f0b3"
+          "losslessSha256": "cd98eb22f0ffac261f5fb3e7658b2946b24240ffbc81356ae4b06ff0b2043680"
         },
         {
           "midi": 62,
@@ -10717,9 +10942,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "42967fcc7c233399fe248848c2547d89b5ee6b9c8863f4846c585280d8f4507c",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "ccfe581796662e4ae9499b8b927983c35f863cec56718af97bd7fe5b89fb9672",
           "losslessFile": "042_d4.flac",
-          "losslessSha256": "54b9b85088495c17b65573c71f5519686d163fcc637e9d1ebfe89744371b7164"
+          "losslessSha256": "85fc979c1d6ed19fb3863167afa5096272b1c9d80c93e7a7ce4effa0e859e276"
         },
         {
           "midi": 63,
@@ -10764,9 +10990,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "2d36fcab3c7ad997aecbca71fd316b9415d3c88eaa69e83bd32460b7ab072183",
+          "attackMaxAbsError": 1.1880183592438698e-07,
+          "sha256": "29a55888dabebb86827cad7245b6d6e623666b4071fee1f29fb43c2f2fcaccb5",
           "losslessFile": "043_ds4.flac",
-          "losslessSha256": "96843402ce0e0ca4dcf8a4cab15064f275c18dbeab77d35020d18410130e9c19"
+          "losslessSha256": "81424d748e53e5dbbf2c2409c33afe45ccdce60a4b0700aba3e6db92d23ec0d9"
         },
         {
           "midi": 64,
@@ -10811,9 +11038,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "7e861babe2ffab6f400f160ed31e803e55e04e57402777888aa84ab16768f4c0",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "1ed78521fec03119c2457c87a639e0ddb231b4421060db94a57fba01a706605a",
           "losslessFile": "044_e4.flac",
-          "losslessSha256": "5f5ad8995350f4c9ec2d19d0746c0af3130b9ca5cf0295b40cd3ab4f18566fe0"
+          "losslessSha256": "d28fc0bab535a0bf4b42072be56aec5bcf8179193cdda727f98dafdbe3e45fc4"
         },
         {
           "midi": 65,
@@ -10858,9 +11086,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897543572558789e-07,
-          "sha256": "b7175a1f340a18eaf939a98f87f4d46ffce1a7d7236278f6f7199c979c334f57",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "d679e96daff882123cd082c6afc340f85e996c38697edf417fe7bebcb40a8d02",
           "losslessFile": "045_f4.flac",
-          "losslessSha256": "5d1e7ad2a85d0c5484872e79c65d05d3ebb9c8788958c025989d8a77c3c1aaf5"
+          "losslessSha256": "38685f7525d449b6b03f01e561831667f2762f69b3ab658eed2530d63695990a"
         },
         {
           "midi": 66,
@@ -10905,9 +11134,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "5eb33f229b926459a8c6f66a76c76fc6b933e475e7ec01e8c369d289401e788d",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "9ced43a712b52bf9b51422133028bef02097ceade140174a273c707479034561",
           "losslessFile": "046_fs4.flac",
-          "losslessSha256": "32e40adfbb7211d7efd11833438b1ee9036e3ecbd7a657d715e42dba04d17a1b"
+          "losslessSha256": "73c07117e1033579d9302f64e5f03c26d6fbb35a3ca972627b16faa557b58193"
         },
         {
           "midi": 67,
@@ -10952,9 +11182,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "ce0e43496c570c46c4c7644c784c49eb49f9642a46809e0e7b0ddc0a34637ef2",
+          "attackMaxAbsError": 1.1888630524481414e-07,
+          "sha256": "333c984573957ba4c8e06d8449907b8c1a71d26100b3fa6b2567f0439048704b",
           "losslessFile": "047_g4.flac",
-          "losslessSha256": "f0a0a24cf25381fafe4ea7347981b569a085f25dbcd2e5ae72de821f60d15f7b"
+          "losslessSha256": "e2ecf8f8306dc3a56e4193c21c3bf59227ec4b56885ed4b54b4dcd3a0860929c"
         },
         {
           "midi": 68,
@@ -10999,9 +11230,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "b76e69e52e7233c6ca3c8ac088b5a30cb56bb49925140c52038fcb2a58501229",
+          "attackMaxAbsError": 1.1894735507667065e-07,
+          "sha256": "0c459dc796e8d9b46088f524e12be808aafb377c12adc832dc01b9382d919c20",
           "losslessFile": "048_gs4.flac",
-          "losslessSha256": "1e5f9a88e48cf64dce40f96215562e6ed234867b945faddc367e86bb5210765c"
+          "losslessSha256": "47564d4e3714980bc77d1b02086868af5f1dd7ae156ee53eff14cae8b3e0bf1c"
         },
         {
           "midi": 69,
@@ -11046,9 +11278,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "4f6539706f83453c9429f1f63e84937ca9a311b3961b69eba08f7302c1d428df",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "46f0d45d377eee6f081d1e1b1e28194e5ae10a2a6f339c9b17a233d5be61f281",
           "losslessFile": "049_a4.flac",
-          "losslessSha256": "40d77113d470120b77890a1ec343180339a855ae899285b0b241c6d0149aa44b"
+          "losslessSha256": "79557ccd21e7eea50a88002225ef2f1ba1e458fbbd4a63987d10a42c905f2d12"
         },
         {
           "midi": 70,
@@ -11093,9 +11326,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897611784661422e-07,
-          "sha256": "0921352ae5dfb1199ae8876ed2181d7ea1a1f7c63a6177da3cc961e3f5c630bd",
+          "attackMaxAbsError": 1.1888914741575718e-07,
+          "sha256": "910123446d64b173130488addad807d8148e6bc73338e3f15190fc5155d0ce23",
           "losslessFile": "050_as4.flac",
-          "losslessSha256": "a6b07d83853363267fbe161296d09cf23d022a964d621c1ccc31824d60a8458c"
+          "losslessSha256": "fe3b73653b18abc8bf17c05ed09888c5974a5e72bf876ed353389238f2166644"
         },
         {
           "midi": 71,
@@ -11140,9 +11374,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897373042302206e-07,
-          "sha256": "a7524b48db6f8462d7f47270fc9abfe6fbf07fa465bcb357d858902a65dd91f3",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "c66d38f2e8e3a9d8e97dae89c0247a75f2e7b9f1a1d86f985217ef22e8227b25",
           "losslessFile": "051_b4.flac",
-          "losslessSha256": "b0d1b8b476ed4ebc8d39e52c9bf5c3fe39ae32d82748dee88d2d0117f39ca008"
+          "losslessSha256": "e71a8673322cf366e680d1a165d9ba7803d93e4ed45b3f49274bc80d165ab32f"
         },
         {
           "midi": 72,
@@ -11187,9 +11422,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "52cf38d4412ffd440ed4b07627d956bc0c73f8f24661c4baf05316b559b40a2b",
+          "attackMaxAbsError": 1.189255272038281e-07,
+          "sha256": "9cb4bd7917c2082363c9cf24562c11ae638b6716b7fe57df071dbecd5106f68b",
           "losslessFile": "052_c5.flac",
-          "losslessSha256": "01adcb847c3eeff22bbcfd6981aa8ebcd3511f2c7741e0e3db50c0ac74efde14"
+          "losslessSha256": "2b6439657cab10ccbfe26332229eb8b6d3230156bfa89afa97bfe23f43c07469"
         },
         {
           "midi": 73,
@@ -11234,9 +11470,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "ba7c5b05716887caa11cfc019ce868d023fdb98eb51d1ec0296ae86e2e370c3e",
+          "attackMaxAbsError": 1.1890369933098555e-07,
+          "sha256": "fc495f97aaee1bbb45cd19afa16b417550b0e7a9418f81b8223ed3e4f0b5ea0e",
           "losslessFile": "053_cs5.flac",
-          "losslessSha256": "a9bfe56d8f658be579203411a1a790e3b4930c13443b6f4250f9f6cb057336c4"
+          "losslessSha256": "59bc16e636e05e0b909fc87899ba5d2ec494c6876646b92e2261796431664a84"
         },
         {
           "midi": 74,
@@ -11281,9 +11518,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "5ced737377f84a1e5a30757fe22be9954ab7d648153741effaed7e5f45ca2a38",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "17b7e092b9b6052957739811c6a2c258b7b31a5fd6556d0a7972f8e03e694e6e",
           "losslessFile": "054_d5.flac",
-          "losslessSha256": "8906b1028d4b8915135c3db344bc49d62ddfb3e0c9565ffe255ccc59b84e57f3"
+          "losslessSha256": "daf24b0db58beaba45cac8cb29310a409951d175d1c38da5853e3e30ed62ac04"
         },
         {
           "midi": 75,
@@ -11328,9 +11566,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "62096af72348efc17a60ecec796bb400ba0918af86b187baffd7fe6ff2329245",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "3b74cdc0b1eb6c2006891b85844e2dbb9fe3b37af6747dee50fd3e760edbfe2a",
           "losslessFile": "055_ds5.flac",
-          "losslessSha256": "af8d82f63bb4591f2641e8f545196fde7ce7445f19d0fa35be2b7b80ebbf93ea"
+          "losslessSha256": "55ae391ad64d5a7e69616f8c6973879d0eaaba2d9ccb86ba44bb5969d72331b8"
         },
         {
           "midi": 76,
@@ -11375,9 +11614,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "e4720f12c144a1bdb2d00f14853b9d7a48e34219f37819b6d8621c518ef893b4",
+          "attackMaxAbsError": 1.1886004358530045e-07,
+          "sha256": "b98b81f90ef3a823858b71b4bd9a1856510836bac44204f7b6fb897cfb0ab9d9",
           "losslessFile": "056_e5.flac",
-          "losslessSha256": "86c6e2b477b505b0bdcfeedf9eeb5eb2a8f401afbc4c491b89e106aca78684ee"
+          "losslessSha256": "da8e79125f4eb0c51e4b9436f08e545cc18c14c32bc2ae268a00d29bfb4ba8dc"
         },
         {
           "midi": 77,
@@ -11422,9 +11662,10 @@
           ],
           "issues": [],
           "quantizationError": 1.189760041597765e-07,
-          "sha256": "6bf4052a28bf93b2a4ccf2222911f3b6207570d86b6ffed07e0f3c3120aabcf2",
+          "attackMaxAbsError": 1.1887459550052881e-07,
+          "sha256": "1f45f76f3b75609fe445547a2177fdbeda1d18696ee0c41f1ed82b3d2ae1cf1b",
           "losslessFile": "057_f5.flac",
-          "losslessSha256": "0e709b6a9486364069740893d2494ea30b4553fabe86d9e035c013543f5fe8f7"
+          "losslessSha256": "1936b8b611acd1b590b10b83d8815a40157b55db0d1f505b0d7abdcd1c4b5dd6"
         },
         {
           "midi": 78,
@@ -11469,9 +11710,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "24a202dce215439f9fcfccdfcecfd746ac03baee7da5db8a3c506e341b7f1e24",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "a188d3e148c470893043879df2b97cb46e318e190c63d115979027c657b01fe6",
           "losslessFile": "058_fs5.flac",
-          "losslessSha256": "09f98082d80570eadf78184c7f958c874dfe45bf4d4e09d362f1b5d38f8d80e4"
+          "losslessSha256": "76188a6e4761114f0a3eb3fd31b8e305e2b2172ef7ad851c7f0f1e0e78d4c3e1"
         },
         {
           "midi": 79,
@@ -11516,9 +11758,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "fe2940d648bb24afbe3bea8abcb53c8400ebae239b2b069f9e9609c744dbc41d",
+          "attackMaxAbsError": 1.189691829495132e-07,
+          "sha256": "1a031fdd7503e969b0b9a582b933773a5552169f4bf546c096de7813fada46a1",
           "losslessFile": "059_g5.flac",
-          "losslessSha256": "7f628c2c81b03fcc6156ba9a096d3b31c74a476c670be0bf9e4708bfdf406fc8"
+          "losslessSha256": "b7b9d7af76d2298088c2e21e280e13e113c385af1f633e08c7f1c627767bfd84"
         },
         {
           "midi": 80,
@@ -11563,9 +11806,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "cc96c1b8d17f4cd1c2e2efc19cf0cece698caf3b6deed473c2107ba9fcfd66ec",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "760b49526da40be267dcc666ed2859c9267578cdc879271137411b81e0998190",
           "losslessFile": "060_gs5.flac",
-          "losslessSha256": "616b4a9bb60a319387677c7f3c50981b3490e2d80452ec4a8df66a7b424ca327"
+          "losslessSha256": "f7586bf610ebe37308b6f110af4cb043a70cafe779a446b66bcfc8a0c1ec0ae8"
         },
         {
           "midi": 81,
@@ -11610,9 +11854,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897509466507472e-07,
-          "sha256": "de186507a52ad149488b6ac5889500b7d21ae56ce1c4880faf555909df8f44d3",
+          "attackMaxAbsError": 1.1888914741575718e-07,
+          "sha256": "72c85e056e9123b5c431026e6075328ea34de9c15d0047f4ab7b6a36417fab2a",
           "losslessFile": "061_a5.flac",
-          "losslessSha256": "2060ed730aa5ae5d5c3584d34bc06fa138c4dc6eeabd4488c0824a1121470efb"
+          "losslessSha256": "78b09a7d778960e48f861c1f1adf08695db9753bd8ce189e365baeb0773f66d0"
         },
         {
           "midi": 82,
@@ -11657,9 +11902,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897589047293877e-07,
-          "sha256": "bde515bb6cb13ae3fc8b59fe15a3930bfdce39a1ad1dff80681479e2ab3afc4c",
+          "attackMaxAbsError": 1.1874362826347351e-07,
+          "sha256": "edf3671a4336ccfb903f4f3cdaabc915a5dcc6264fd826ebd1e6f8199fa6069f",
           "losslessFile": "062_as5.flac",
-          "losslessSha256": "404ffab43e40441b5fc08df8ec76fe2c05f1c51ce66c34854fffa79541c23a3e"
+          "losslessSha256": "254f1cdf00cb4b46177032c3921e3d7af25ab4f2efb3eab37b0c1df59d9c85f0"
         },
         {
           "midi": 83,
@@ -11704,9 +11950,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897554941242561e-07,
-          "sha256": "182faaf0e5a6d7009de1195549de3ae821d7cdef28e5b3383f3451fdd537ceac",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "7f97648bf03d721366d6a425026f7603bbd36ce74dc6280e64116adc3216da71",
           "losslessFile": "063_b5.flac",
-          "losslessSha256": "6ab18039c8205ee7cbfafb205ca09dc321abb2700069b0577243555e181eca52"
+          "losslessSha256": "c202c400702796ae29462b8ae8dbe66016e58489e16c90da043c0d1684137e4c"
         },
         {
           "midi": 84,
@@ -11751,9 +11998,10 @@
           ],
           "issues": [],
           "quantizationError": 1.1897463991772383e-07,
-          "sha256": "e595c114f741ddcca628ddf21281164ef3f2c569cf228be68750eb23191ddc16",
+          "attackMaxAbsError": 1.1891825124621391e-07,
+          "sha256": "ff94c3133e6b9a1ad68639cff9cc0f8557eaa94c6fa4f0c6fe48e552380db672",
           "losslessFile": "064_c6.flac",
-          "losslessSha256": "873103b11986bcb1fc1372520266b6ac702e2df416a64e32038f0cda67cfdb33"
+          "losslessSha256": "f7db78b4a5f830cb609c6403287a6cddde6aaea11f99ff4bdfa7db564c31509b"
         }
       ]
     }

@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
       data = data.toString().replace(init, hook + (req.headers.referer?.includes('render-test') ? 'cacheElements();' : init));
       data = data.replace('function playSampledDrum(id, velocity) {', 'function playSampledDrum(id, velocity) { (window.sampledDrumInputs ||= []).push({id, velocity, time:performance.now()});');
       data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {',
-        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { if (window.bassDemoHits) window.bassDemoHits.push({midi, velocity, sampleSet, when, time:performance.now()});');
+        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { if (window.bassDemoHits) window.bassDemoHits.push({midi, velocity, sampleSet, when, time:Number.isFinite(when) ? when * 1000 : performance.now()});');
     }
     if (path.extname(file) === '.html') data = data.toString().replace('</head>', '<script src="/assets/sound/game-sfx.js" defer></script></head>');
     const type = {'.html':'text/html; charset=utf-8', '.js':'text/javascript', '.css':'text/css', '.ogg':'audio/ogg', '.webp':'image/webp'}[path.extname(file)];
@@ -127,7 +127,7 @@ const server = http.createServer((req, res) => {
         await pause(250);
         await (touch ? element.tap() : element.click());
       };
-      if (touch) await press('button[data-key-size-close]:not(.key-size-backdrop)');
+      assert.equal(await page.$eval('#keySizeModal', modal => modal.classList.contains('hidden')), true);
       const check = async (name, action) => {
         await pause(200);
         await page.evaluate(() => { audioAudit.sfx = 0; audioAudit.instrument = 0; window.sampledDrumInputs = []; });
@@ -180,11 +180,12 @@ const server = http.createServer((req, res) => {
       await check('Korean percussion', () => press('#drumPads button'));
       const janggu = touch ? 'janggu-samul' : 'janggu-sanjo';
       await page.evaluate(id => window.playbackTest.selectModel(id), janggu);
-      await page.select('#jangguDemoSelect', touch ? '세마치 · 너영나영' : '굿거리 · 산도깨비');
+      assert.equal(await page.$('#jangguDemoSelect'), null);
+      const jangguDemoSelector = touch ? '[data-janggu-demo="1"]' : '[data-janggu-demo="2"]';
       await page.evaluate(() => { window.sampledDrumInputs = []; });
-      if (touch) await press('#drumDemoButton');
+      if (touch) await press(jangguDemoSelector);
       else {
-        await page.focus('#drumDemoButton');
+        await page.focus(jangguDemoSelector);
         await page.keyboard.press('Space');
       }
       await page.waitForFunction(() => document.querySelector('#jangguDemoCue').textContent === '덩'
@@ -192,14 +193,16 @@ const server = http.createServer((req, res) => {
       const firstJangguHit = await page.evaluate(() => window.sampledDrumInputs[0].id);
       assert.equal(firstJangguHit, touch ? 'compound' : 'low-high-open');
       if (touch) {
-        await page.select('#jangguDemoSelect', '자진모리 · 남생아 놀아라');
+        await press('[data-janggu-demo="0"]');
+        assert.equal(await page.$eval(jangguDemoSelector, button => button.getAttribute('aria-pressed')), 'false');
+        await press('[data-janggu-demo="0"]');
         assert.equal(await page.$eval('#jangguDemoCue', element => element.textContent), '');
       } else {
         await page.waitForFunction(() => document.querySelector('#drumDemoLabel').textContent === '시범 연주');
         const strokes = await page.evaluate(() => window.sampledDrumInputs.map(hit => hit.id));
         assert.equal(strokes.length, 16);
-        assert.equal(strokes.filter(id => id === 'low-high-bounce').length, 3);
-        assert.deepEqual(strokes.slice(-2), ['low-open', 'high-center']);
+        assert.equal(strokes.filter(id => id === 'low-high-bounce').length, 4);
+        assert.deepEqual(strokes.slice(-2), ['low-open', 'low-high-bounce']);
       }
       await press('[data-family="guitar"]');
       await press('[data-guitar-mode="chords"]');
@@ -310,17 +313,18 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       await press('[data-family="bass"]');
       await page.evaluate(() => { window.bassDemoHits = []; });
+      assert.equal(await page.$eval('[data-bass-demo="slap"] b', label => label.textContent), 'Rio Funk');
       await press('[data-bass-demo="slap"]');
-      await page.waitForFunction(() => document.querySelector('.key[data-midi="40"].demo-hit'));
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="43"].demo-hit'));
       assert.equal(await page.$eval('#articulationButtons [aria-pressed="true"]', button => button.textContent), '슬랩');
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('[data-bass-demo="slap"]').getAttribute('aria-pressed') === 'false');
         const slap = await page.evaluate(() => window.bassDemoHits);
-        assert.equal(slap.length, 45);
-        assert.deepEqual(slap.slice(0, 3).map(hit => hit.midi), [40, 50, 52]);
-        assert.deepEqual([0, 11, 22, 33, 44].map(index => slap[index].midi), [40, 38, 35, 36, 40]);
-        assert.ok(Math.abs(slap.at(-1).time - slap[0].time - 16 * 60000 / 92) < 250);
-        assert.equal(slap.filter(hit => hit.velocity < .3).length, 12);
+        assert.equal(slap.length, 41);
+        assert.deepEqual(slap.slice(0, 3).map(hit => hit.midi), [43, 53, 55]);
+        assert.deepEqual([0, 9, 20, 29, 40].map(index => slap[index].midi), [43, 59, 43, 59, 43]);
+        assert.ok(Math.abs(slap.at(-1).time - slap[0].time - 16 * 60000 / 110) < 250);
+        assert.ok(slap.every(hit => hit.midi >= 41 && hit.midi <= 60));
         assert.ok(slap.every(hit => hit.sampleSet.endsWith('-slap')));
       }
       await page.evaluate(() => { window.bassDemoHits = []; });

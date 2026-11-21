@@ -6,6 +6,35 @@
     const BOTH_KEYS = [["Space", "Space"], ["B", "KeyB"], ["N", "KeyN"]];
     function isJanggu(id) { return id === "janggu-samul" || id === "janggu-sanjo"; }
 
+    const STUDENT_PADS = {
+        "janggu-samul": ["compound", "low-open", "high-center", "high-flam", "high-bounce"],
+        "janggu-sanjo": ["low-high-open", "low-open", "high-center", "high-flam-rim", "low-high-bounce"],
+        "buk-samul": ["main", "side"], "buk-sori": ["main-lh", "main-rh", "rim"],
+        sogo: ["main", "edge-1"], kkwaenggwari: ["open", "muted"], jing: ["open", "mute"],
+        "ritual-signals": ["bak", "chuk", "eo"]
+    };
+    // Source variants remain available to recordings; pupils see basic actions.
+    // Basic drum strokes: National Gugak Center, 교과서 표준악보집 (민속악 장단 및 사물놀이).
+    // Sori-buk hand roles: https://www.gugak.go.kr/ency/topic/view/2124
+    const BASIC_NAMES = {
+        "buk-samul": { main: "북면 치기 · 둥", side: "북통 치기 · 딱" },
+        "buk-sori": { "main-lh": "손으로 북면 치기", "main-rh": "채로 북면 치기", rim: "채로 테 치기" },
+        sogo: { main: "북면 치기", "edge-1": "테 치기" },
+        kkwaenggwari: { open: "열어치기", muted: "막아치기" },
+        jing: { open: "징 치기", mute: "울림 막기" }
+    };
+    function studentPads(modelId, pads, kit) {
+        const ids = STUDENT_PADS[modelId] || (kit ? ["kick", "snare", "hat", "openhat", "hightom", "lowtom", "crash", "ride"] : null);
+        if (!ids) return pads;
+        return ids.map(id => pads.find(pad => pad.id === id)).filter(Boolean).map(function (pad, index) {
+            if (modelId === "ritual-signals" && pad.id === "eo") return Object.assign({}, pad, { name: "어", key: "D", code: "KeyD" });
+            const name = BASIC_NAMES[modelId]?.[pad.id];
+            if (!name) return pad;
+            const binding = modelId === "buk-sori" ? [LEFT_KEYS[0], RIGHT_KEYS[0], RIGHT_KEYS[1]][index] : LEFT_KEYS[index];
+            return Object.assign({}, pad, { name, gueum: name, key: binding[0], code: binding[1] });
+        });
+    }
+
     function bindJanggu(pads) {
         const count = { "궁편": 0, "채편": 0, "양편": 0 };
         return pads.map(function (pad) {
@@ -17,17 +46,20 @@
 
     function groups(modelId, pads, kit) {
         if (isJanggu(modelId)) return [
-            { id: "both", title: "양편 함께 · 합장단 (덩)", hint: "궁편과 채편 동시 타격 · 양손 또는 Space / B / F", pads: pads.filter(p => p.family === "양편") },
-            { id: "left", title: "왼쪽 · 궁편 (쿵)", hint: modelId === "janggu-sanjo" ? "왼손 손치기 · 쿵 / 구궁" : "왼손 궁채 · 쿵 / 구궁", pads: pads.filter(p => p.family === "궁편") },
-            { id: "right", title: "오른쪽 · 채편 (덕)", hint: "오른손 열채 · 덕 / 기덕 / 더러러러", pads: pads.filter(p => p.family === "채편") }
+            { id: "both", title: "양손 함께", pads: pads.filter(pad => pad.family === "양편") },
+            { id: "left", title: "왼손 · 궁편", pads: pads.filter(pad => pad.family === "궁편") },
+            { id: "right", title: "오른손 · 채편", pads: pads.filter(pad => pad.family === "채편") }
+        ];
+        if (modelId === "buk-sori") return [
+            { id: "left", title: "왼손 · 손바닥", pads: pads.filter(pad => pad.id === "main-lh") },
+            { id: "right", title: "오른손 · 북채", pads: pads.filter(pad => pad.id !== "main-lh") }
         ];
         if (kit) {
             const pick = ids => ids.map(id => pads.find(p => p.id === id)).filter(Boolean);
             return [
-                { id: "cymbals", title: "심벌", pads: pick(["hat", "crash", "ride"]) },
-                { id: "toms", title: "탐", pads: pick(["hightom", "midtom", "lowtom"]) },
+                { id: "cymbals", title: "하이햇 · 심벌", pads: pick(["hat", "openhat", "crash", "ride"]) },
+                { id: "toms", title: "탐", pads: pick(["hightom", "lowtom"]) },
                 { id: "core", title: "킥 · 스네어", pads: pick(["kick", "snare"]) },
-                { id: "techniques", title: "세부 주법", pads: pick(["pedalhat", "openhat", "ridebell", "ghost", "rimshot", "sidestick", "rimclick"]) }
             ];
         }
         return [{ id: "all", title: "", pads: pads }];
@@ -79,6 +111,7 @@
             drawing = '<circle cx="23" cy="23" r="18"/><circle cx="23" cy="23" r="14" opacity=".5"/>';
             if (modelId === "sogo") drawing += '<path d="M20 41v5h6v-5"/>';
             drawing += hand ? HAND : '<path d="m42 37 17-30 4 2-17 30Z" fill="currentColor"/>';
+            drawing += '<circle cx="' + (/edge|rim|side/.test(id) ? '7' : '23') + '" cy="23" r="3" fill="currentColor"/>';
             if (/muted|damp/.test(id)) drawing += '<path d="m11 35 24-24" stroke-width="3"/>';
         } else if (/hat|crash|ride/.test(id)) {
             tool = id === "pedalhat" ? "발 페달" : id === "ridebell" ? "스틱 · 벨" : "스틱";
@@ -91,7 +124,10 @@
             tool = "발 페달";
             drawing = '<circle cx="30" cy="23" r="19"/><circle cx="30" cy="23" r="15" opacity=".5"/><path d="M15 36 9 44m36-8 6 8M30 23v16m-5 6 5-8 7 7Z"/><circle cx="30" cy="23" r="3" fill="currentColor"/>';
         } else if (/kkwaenggwari|jing/.test(modelId)) {
-            drawing = '<circle cx="23" cy="25" r="18"/><circle cx="23" cy="25" r="13" opacity=".5"/><path d="M17 7V3h12v4"/>' + MALLET;
+            const stop = id === "mute" || id === "damp";
+            tool = stop ? "손으로 울림 막기" : "채";
+            drawing = '<circle cx="23" cy="25" r="18"/><circle cx="23" cy="25" r="13" opacity=".5"/><path d="M17 7V3h12v4"/>' + (stop ? HAND : MALLET);
+            if (/mute|damp/.test(id)) drawing += '<path d="m10 38 26-26" stroke-width="3"/>';
         } else {
             if (/tom|snare|rim|ghost|sidestick/.test(id)) tool = "스틱";
             drawing = '<ellipse cx="27" cy="15" rx="21" ry="9"/><path d="M6 15v18c0 12 42 12 42 0V15M12 23v12m10-10v13m10-13v13m10-15v12"/><path d="m35 17 25-13"/>';
@@ -102,5 +138,5 @@
             svg: '<svg class="pad-icon" viewBox="0 0 72 48" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + drawing + '</svg>'
         };
     }
-    window.PAD_PRESENTATION = Object.freeze({ isJanggu: isJanggu, bindJanggu: bindJanggu, groups: groups, icon: icon });
+    window.PAD_PRESENTATION = Object.freeze({ isJanggu, bindJanggu, studentPads, groups, icon });
 })();

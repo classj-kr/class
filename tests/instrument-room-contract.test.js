@@ -126,10 +126,8 @@ test('keyboard models use compact per-note Ogg multisamples with recorded range 
   assert.match(app, /const first = state\.keyboardStartMidi/);
 });
 
-test('plucked keyboards decay without an ADSR sustain stage', () => {
-  assert.match(app, /sampleSet === "clavinet"/);
-  assert.match(app, /sampleSet === "harpsichord"/);
-  assert.match(app, /gain\.gain\.exponentialRampToValueAtTime\(\.0001, now \+ decay\)/);
+test('recorded keyboards retain their own attack and decay', () => {
+  assert.doesNotMatch(app, /pluckedKeyboardDecay|percussiveDecay/);
   assert.match(app, /NO_PIANO_SUSTAIN_MODELS = new Set\(\["harpsichord", "clavinet", "hammond-organ", "pipe-organ"\]\)/);
   assert.match(app, /event\.code === "Space" && supportsPianoSustain\(\)/);
 });
@@ -328,9 +326,10 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
   assert.match(app, /function decodedBufferActiveRms\(buffer\)/);
   assert.match(app, /Math\.max\(requestedGain, quietSampleFloor\)/, 'quiet samples must be raised without lowering louder samples');
   assert.match(app, /const safeGain = \.92 \/ decodedBufferPeak\(buffer\)/);
-  assert.match(app, /source\.connect\(state\.limiter\)/, 'every dry voice must retain shared peak protection');
+  assert.match(app, /source\.connect\(state\.limiter\)/, 'the existing dry mix retains shared peak protection');
+  assert.match(app, /source\.connect\(gain\)\.connect\(state\.recordedSampleGuard\)/, 'recordings retain a separate transparent peak guard');
   assert.doesNotMatch(app, /source\.connect\(state\.masterGain\)/);
-  assert.match(app, /connectFastToMix\(gain, sampleConfig\?\.roomSend \?\? \(heldTone \? \.16 : \.035\)\)/, 'sustained and plucked samples retain their room sends');
+  assert.doesNotMatch(app, /connectFastToMix\(gain, sampleConfig/, 'recordings must not acquire synthetic room sends');
   assert.doesNotMatch(app, /Recorded samples already contain their own body and room tone/);
   assert.match(app, /const calibratedGain = Math\.pow/);
   assert.match(app, /gainDb: -5\.68/);

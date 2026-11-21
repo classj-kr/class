@@ -1,7 +1,7 @@
 (function () {
     "use strict";
-    // Times are quarter-note beats. Each excerpt has four complete measures,
-    // followed by a tonic on the first beat of measure five, with no count-in.
+    // Times are quarter-note beats. Most excerpts use four measures and a
+    // closing note; the organ's free opening spells out its fermatas below.
     function melody(rows, gate = .94, transpose = 0) {
         return rows.map(([beat, midi, length, velocity = .7]) =>
             [beat, [midi + transpose], velocity, length * gate]);
@@ -57,7 +57,28 @@
     const superstition = [riffA, riffB, riffA, riffB].flatMap((bar, i) =>
         bar.map(([beat, midi, length, velocity]) => [i * 4 + swing(beat), [midi], velocity, length]));
     superstition.push([16,[39],.85,1]);
+    // Bach, BWV 565: the three octave calls, diminished arpeggio and open-D
+    // resolution. The mordents are played A–G–A, not an upper-neighbour trill.
+    // Fermatas are expanded for a short, recognisable free-time demonstration.
+    // Source: Breitkopf & Härtel, 1867, opening transcribed here:
+    // https://commons.wikimedia.org/wiki/File:Toccata-Fugue-BWV565_Bach-intro.svg
+    const toccata = [];
+    function organCall(beat, high, descending) {
+        [[0, high, .085], [.09, high - 2, .085], [.18, high, .92],
+            ...descending.map(([offset, distance, length]) => [offset, high + distance, length])]
+            .forEach(([offset, midi, length]) => toccata.push([beat + offset, [midi - 12, midi], .58, length]));
+    }
+    const organDescent = [[1.35,-2,.065],[1.42,-4,.065],[1.49,-5,.065],
+        [1.56,-7,.075],[1.64,-8,.14],[1.8,-7,.5]];
+    organCall(0,81,organDescent);
+    organCall(2.5,69,[[1.35,-5,.13],[1.5,-4,.13],[1.65,-8,.13],[1.8,-7,.5]]);
+    organCall(5,57,organDescent);
+    toccata.push([7.65,[38],.56,3.5]);
+    [49,52,55,58,61,64].forEach((midi,index) =>
+        toccata.push([7.7 + index * .12,[midi],.52,1.95 - index * .12]));
+    toccata.push([9.8,[38,50,57,62],.58,1.9]);
     const demos = {
+        "pipe-organ": [{title:"토카타와 푸가 라단조 · BWV 565",bpm:72,notes:toccata,endBeat:12}],
         clavinet: [{title:"Superstition",bpm:100,notes:superstition,endBeat:17}],
         oboe: [{title:"가브리엘의 오보에",bpm:72,notes:melody(gabriel),endBeat:17,articulation:"sustain"}],
         "english-horn": [{title:"신세계 교향곡 · 라르고",bpm:56,notes:melody(largo),endBeat:17,articulation:"sustain"}],

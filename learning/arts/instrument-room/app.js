@@ -116,11 +116,11 @@
         "fretless-bass-finger": Object.freeze({ id: "fretless-bass-finger", root: "assets/audio/fretless-bass-finger/", min: 28, max: 63, fileMin: 21, step: 1, gainDb: 4.0, revision: "20260901-fretless-finger-v3" }),
         "fretless-bass-pick": Object.freeze({ id: "fretless-bass-pick", root: "assets/audio/fretless-bass-pick/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 2.5 }),
         "fretless-bass-slap": Object.freeze({ id: "fretless-bass-slap", root: "assets/audio/fretless-bass-slap/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 10.0 }),
-        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.28, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.3, retriggerReleaseSeconds: .07, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.22, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.22, retriggerReleaseSeconds: .045, revision: "20261121-body-release-v3", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
-        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.4, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.44, retriggerReleaseSeconds: .10, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
-        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.32, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.36, retriggerReleaseSeconds: .08, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
-        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.4, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.46, retriggerReleaseSeconds: .10, revision: "20261121-body-release-v3", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sc": Object.freeze({ id: "guitar-cubase-sc", root: "assets/audio/guitar-cubase-sc/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.28, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.3, retriggerReleaseSeconds: .07, revision: "20261121-original-onset-ogg-v5", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-hellrazer": Object.freeze({ id: "guitar-cubase-hellrazer", root: "assets/audio/guitar-cubase-hellrazer/", min: 25, max: 88, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.22, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.22, retriggerReleaseSeconds: .045, revision: "20261121-original-onset-ogg-v5", anchors: Object.freeze([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88]) }),
+        "guitar-cubase-l": Object.freeze({ id: "guitar-cubase-l", root: "assets/audio/guitar-cubase-l/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.4, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.44, retriggerReleaseSeconds: .10, revision: "20261121-original-onset-ogg-v5", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
+        "guitar-cubase-sh": Object.freeze({ id: "guitar-cubase-sh", root: "assets/audio/guitar-cubase-sh/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.32, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.36, retriggerReleaseSeconds: .08, revision: "20261121-original-onset-ogg-v5", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
+        "guitar-cubase-t": Object.freeze({ id: "guitar-cubase-t", root: "assets/audio/guitar-cubase-t/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 0, startOffset: 0, fileExtension: "ogg", recordedPluck: true, minBodySeconds: 0.4, preserveRecordedTone: true, roomSend: 0, releaseSeconds: 0.46, retriggerReleaseSeconds: .10, revision: "20261121-original-onset-ogg-v5", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
         "harp": Object.freeze({ id: "harp", root: "assets/audio/harp/", min: 25, max: 102, fileMin: 21, step: 1, gainDb: 14.0, revision: "20261121-complete-release" }),
         "piccolo-trumpet": Object.freeze({ id: "piccolo-trumpet", root: "assets/audio/piccolo-trumpet/", min: 52, max: 100, fileMin: 21, step: 1, gainDb: 1.5 }),
         "glockenspiel": Object.freeze({ id: "glockenspiel", root: "assets/audio/glockenspiel/", min: 79, max: 95, fileMin: 21, step: 1, gainDb: 33.1 })
@@ -198,7 +198,7 @@
     // Each hit is [beat within the bar, pads, velocity]. Fractional jazz beats swing.
     const DRUM_DEMOS = {
         "rock-kit": {
-            bpm: 112,
+            bpm: 96,
             groove: [[0, "kick hat"], [.5, "hat", .56], [1, "snare hat"], [1.5, "hat", .56], [2, "kick hat"], [2.5, "kick hat", .64], [3, "snare hat"], [3.5, "hat", .56]],
             fill: [[3, "snare"], [3.25, "hightom"], [3.5, "lowtom"], [3.75, "lowtom", .68]]
         },
@@ -223,9 +223,12 @@
             fill: [[3, "pedalhat snare", .72], [3 + 1/3, "snare", .5], [3 + 2/3, "openhat", .72]]
         },
         "metal-kit": {
-            bpm: 124,
-            groove: [[0, "kick"], [1, "snare"], [2, "kick"], [2.5, "kick", .75], [3, "snare"]],
-            fill: [[3, "snare hat"], [3.25, "hightom"], [3.5, "midtom"], [3.75, "lowtom"]]
+            bpm: 168,
+            groove: Array.from({length:16}, function (_, index) {
+                const parts = "kick" + (index % 2 === 0 ? " ride" : "") + (index === 4 || index === 12 ? " snare" : "");
+                return [index / 4, parts, index % 2 === 0 ? .88 : .73];
+            }),
+            fill: [[3, "snare crash"], [3.25, "hightom kick"], [3.5, "midtom kick"], [3.75, "lowtom kick"]]
         },
         "drum-808": {
             bpm: 84,
@@ -241,29 +244,32 @@
 
     // Three subdivisions per beat. Basic patterns follow the National Gugak Center teaching materials.
     const JANGGU_DEMOS = [
-        { name: "자진모리 · 남생아 놀아라", bpm: 92, beats: 4, strokes: ["덩", "", "", "덩", "", "", "덩", "", "덕", "쿵"] },
-        { name: "세마치 · 너영나영", bpm: 84, beats: 3, strokes: ["덩", "", "", "덩", "", "덕", "쿵", "덕"] },
-        { name: "굿거리 · 산도깨비", bpm: 72, beats: 4, strokes: ["덩", "", "기덕", "쿵", "더러러러", "", "쿵", "", "기덕", "쿵", "더러러러"], closing: "덕" }
+        { name: "자진모리", bpm: 112, beats: 4, strokes: ["덩", "", "", "덩", "", "", "덩", "", "덕", "쿵", "", ""] },
+        { name: "세마치", bpm: 88, beats: 3, strokes: ["덩", "", "", "덩", "", "덕", "쿵", "덕", ""] },
+        // 3 subdivisions x 4 beats; the full final roll is retained.
+        // KBS/국립국악원 교육 자료의 기본 굿거리형을 두 번 반복한다.
+        { name: "굿거리", bpm: 72, beats: 4, strokes: ["덩", "", "기덕", "쿵", "", "더러러러", "쿵", "", "기덕", "쿵", "", "더러러러"] }
     ];
 
     const BILLIE_JEAN_BAR = [42, 37, 40, 42, 40, 37, 35, 37].map(function (midi, index) {
         return [index / 2, midi, index % 2 ? .68 : .8, .38];
     });
-    // Can’t Stop: use the attack of a slap sample for each muted stroke.
-    function cantStopBar(root, firstPop, secondPop, pickup = root) {
-        return [
-            [0, root, .85, .4], [.5, firstPop, .8, .4], [1, secondPop, .9, .4], [1.5, root, .77, .4],
-            [2, root, .85, .18], [2.25, firstPop, .8, .18], [2.5, root, .26, .04, true],
-            [2.75, secondPop, .9, .18], [3, root, .26, .04, true], [3.25, secondPop, .26, .04, true],
-            [3.5, pickup, .82, .35]
-        ];
-    }
+    // Rio Funk: the opening two-bar slap theme, repeated once. The low G,
+    // thumbed F/G, popped Bb/C and chromatic B–Bb turn use native samples.
+    // https://www.didatticadelbassoelettrico.it/wp-content/uploads/2024/08/Rio-Funk-Bass-Tabs.pdf
+    const RIO_FUNK_A = [
+        [0,43,.86,.36],[.5,53,.72,.34],[1,55,.8,.34],[1.5,53,.72,.34],
+        [2,58,.88,.16],[2.25,60,.66,.32],[2.75,58,.82,.15],
+        [3.25,60,.86,.15],[3.75,58,.8,.16]
+    ];
+    const RIO_FUNK_B = [
+        [0,59,.65,.16],[.25,58,.7,.16],[.5,53,.8,.36],[1,55,.79,.36],[1.5,53,.73,.36],
+        [2,58,.85,.16],[2.25,59,.63,.16],[2.5,58,.69,.16],[2.75,55,.8,.16],
+        [3.5,41,.76,.16],[3.75,41,.8,.16]
+    ];
     const BASS_DEMOS = {
         finger: { bpm: 117, root: 42, bars: Array(4).fill(BILLIE_JEAN_BAR) },
-        slap: { bpm: 92, root: 40, bars: [
-            cantStopBar(40, 50, 52), cantStopBar(38, 50, 52, 33),
-            cantStopBar(35, 47, 47), cantStopBar(36, 48, 48, 33)
-        ] }
+        slap: { bpm: 110, root: 43, bars: [RIO_FUNK_A, RIO_FUNK_B, RIO_FUNK_A, RIO_FUNK_B] }
     };
     // The opening riff uses two strings a fourth apart. Beat positions
     // include the pickup into the second measure and the final G dyad.
@@ -311,14 +317,24 @@
             return [bar * 4 + index * .5, [midi], index === 0 ? .8 : .69, index === 0 ? 3.7 : 1.15];
         });
     });
-    // Opening four measures, sounding guitar pitches (guitar notation is 8va).
-    // https://guitardownunder.com/_scores/shape-of-my-heart.pdf
+    // Four bars of the recorded fingerpicked intro, quarter note = 84.
+    // Three independent strings: the .75/1.25/1.75 attacks are sixteenth-note
+    // syncopations, not whole beats. A string rings until its next pluck.
+    // Publisher's guitar-part preview: playournotes.com, score 2484, bars 1–4.
     const SHAPE_OF_MY_HEART = [
-        [0, 69, 2.5], [1, 54, .5], [1.5, 61, 2], [2.5, 69, 1.5], [3.5, 52, 1.5],
-        [4, 68, 2.5], [5, 52, .5], [5.5, 61, 2], [6.5, 68, 1.5], [7.5, 50, 1.5],
-        [8, 66, 2.5], [9, 50, .5], [9.5, 59, 2], [10.5, 66, 1.5], [11.5, 50, .5],
-        [12, 49, 4], [12, 66, 2], [13, 59, 1], [14, 65, 2], [15, 59, 1]
-    ].map(function ([beat, midi, length]) { return [beat, [midi], midi < 59 ? .77 : .72, length]; });
+        [0,69,2],[.5,54,5],[.75,61,3],[1.25,69,2],[1.75,52,5],
+        [2,68,2],[2.5,52,5],[2.75,61,3],[3.25,68,2],
+        [4,66,2],[4.5,50,5],[4.75,59,3],[5.25,66,2],[5.75,50,5],
+        [6,66,2],[6,49,5],[6.5,59,3],[6.75,49,5],[7,65,2],[7.5,49,5],
+        [8,69,2],[8.5,54,5],[8.75,62,3],[9.25,69,2],[9.75,52,5],
+        [10,68,2],[10.5,52,5],[10.75,61,3],[11.25,68,2],
+        [12,66,2],[12.5,50,5],[12.75,59,3],[13.25,66,2],[13.75,50,5],
+        [14,66,2],[14,49,5],[14.5,59,3],[14.75,49,5],[15,65,2],[15.5,49,5]
+    ].map(function ([beat, midi, string], index, notes) {
+        const next = notes.slice(index + 1).find(function (note) { return note[2] === string; });
+        return [beat, [midi], string === 5 ? .67 : string === 3 ? .62 : .76,
+            (next ? next[0] : 17) - beat, false, undefined, string];
+    });
     // Upper melody of Tchaikovsky's Op. 71a, No. 2b, first four theme
     // measures. Read from the Jurgenson full score, pp. 46–47.
     // https://s9.imslp.org/files/imglnks/usimg/c/c5/IMSLP03208-Tchaikovsky-Op71aFS.pdf
@@ -468,11 +484,13 @@
     function activeDrums() {
         const defaultParts = ["kick", "snare", "hat", "openhat", "hightom", "lowtom", "crash", "ride"];
         const modelId = state.currentModel && state.currentModel.id;
-        if (KOREAN_PERCUSSION_PADS[modelId]) return window.PAD_PRESENTATION.isJanggu(modelId)
-            ? window.PAD_PRESENTATION.bindJanggu(KOREAN_PERCUSSION_PADS[modelId]) : KOREAN_PERCUSSION_PADS[modelId];
-        if (STATION_DRUMS[modelId]) return STATION_DRUMS[modelId];
+        if (KOREAN_PERCUSSION_PADS[modelId]) {
+            const pads = window.PAD_PRESENTATION.studentPads(modelId, KOREAN_PERCUSSION_PADS[modelId]);
+            return window.PAD_PRESENTATION.isJanggu(modelId) ? window.PAD_PRESENTATION.bindJanggu(pads) : pads;
+        }
+        if (STATION_DRUMS[modelId]) return window.PAD_PRESENTATION.studentPads(modelId, STATION_DRUMS[modelId]);
         const parts = DRUM_KIT_PARTS[modelId] || defaultParts;
-        return parts.map(function (id) { return DRUMS.find(function (drum) { return drum.id === id; }); }).filter(Boolean);
+        return window.PAD_PRESENTATION.studentPads(modelId, parts.map(function (id) { return DRUMS.find(function (drum) { return drum.id === id; }); }).filter(Boolean), Boolean(DRUM_KIT_PARTS[modelId]));
     }
     const INSTRUMENT_COPY = {
         piano: { name: "피아노", badge: "88건반", family: "KEYBOARD", model: "A0–C8", description: "A0–C8 전 음역을 건반마다 연주할 수 있어요." },
@@ -619,6 +637,7 @@
         guitarKey: "C",
         guitarKeyMode: "major",
         guitarChordIndex: 0,
+        jangguDemoIndex: 0,
         articulation: "finger",
         keyboardStartMidi: 60,
         keyboardCenterFrame: 0,
@@ -632,6 +651,7 @@
         masterLowShelf: null,
         masterPresence: null,
         limiter: null,
+        recordedSampleGuard: null,
         reverb: null,
         reverbGain: null,
         noiseBuffer: null,
@@ -692,7 +712,7 @@
             "articulationButtons", "articulationHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
-            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "melodyDemoControls", "melodyDemoButtons", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
+            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "jangguDemoControls", "jangguDemoChoices", "jangguDemoCue", "bassDemoControls", "melodyDemoControls", "melodyDemoButtons", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
     }
@@ -741,7 +761,7 @@
         root.style.setProperty("--black-width", (PIANO_BLACK_KEY_MM.width * factor).toFixed(2) + "px");
         root.style.setProperty("--black-height", (PIANO_BLACK_KEY_MM.length * BLACK_KEY_LENGTH_SCALE * factor).toFixed(2) + "px");
         const percent = Math.round(state.keyboardScale * 100) + "%";
-        if (elements.keySizeReadout) elements.keySizeReadout.textContent = state.screenCalibrated ? percent : "보정 필요";
+        if (elements.keySizeReadout) elements.keySizeReadout.textContent = percent;
         if (elements.keyScaleOutput) elements.keyScaleOutput.textContent = percent;
         if (elements.keyScaleSlider) elements.keyScaleSlider.value = String(Math.round(state.keyboardScale * 100));
         if (shouldRender && elements.keyboard && elements.keyboard.children.length) renderKeyboard();
@@ -812,6 +832,7 @@
             state.masterLowShelf = context.createBiquadFilter();
             state.masterPresence = context.createBiquadFilter();
             state.limiter = context.createDynamicsCompressor();
+            state.recordedSampleGuard = context.createWaveShaper();
             state.reverb = context.createConvolver();
             state.reverbGain = context.createGain();
 
@@ -834,6 +855,20 @@
             state.limiter.attack.value = .002;
             state.limiter.release.value = .1;
             state.reverbGain.gain.value = .1;
+
+            // Unity below the per-voice ceiling, with a bounded soft knee for
+            // summed notes. Unlike DynamicsCompressorNode this has no attack
+            // envelope, makeup gain or look-ahead that can change a fresh pluck.
+            const sampleGuardCurve = new Float32Array(65537);
+            for (let index = 0; index < sampleGuardCurve.length; index += 1) {
+                const value = index * 2 / (sampleGuardCurve.length - 1) - 1;
+                const amplitude = Math.abs(value);
+                const knee = Math.max(0, (amplitude - .92) / .08);
+                sampleGuardCurve[index] = amplitude <= .92 ? value
+                    : Math.sign(value) * (.92 + .08 * knee + .02 * knee ** 2 - .04 * knee ** 3);
+            }
+            state.recordedSampleGuard.curve = sampleGuardCurve;
+            state.recordedSampleGuard.connect(state.masterGain);
 
             const impulseLength = Math.floor(context.sampleRate * 1.7);
             const impulse = context.createBuffer(2, impulseLength, context.sampleRate);
@@ -1087,31 +1122,35 @@
         }, PIANO_SAMPLES[0]);
     }
 
-    function releasePianoVoice(voice, quick) {
+    function releasePianoVoice(voice, quick, when) {
         if (!voice || (voice.released && !quick) || !state.audioContext) return;
         voice.released = true;
         if (voice.pendingReleaseTimer) {
             window.clearTimeout(voice.pendingReleaseTimer);
             voice.pendingReleaseTimer = 0;
         }
-        const now = state.audioContext.currentTime;
+        const now = Math.max(state.audioContext.currentTime, when ?? state.audioContext.currentTime);
         const sampleConfig = KEYBOARD_SAMPLE_SETS[voice.sampleSet];
         // A brief key tap must retain the recorded pluck's body. Damp that same
         // continuous recording afterwards; splicing in its four-second tail
         // removed the body and attached an unrelated, already-decayed sound.
         // Retriggers, palm mutes and explicit stops still damp immediately.
-        const releaseAt = !quick && sampleConfig?.recordedPluck
+        const releaseAt = !quick && when === undefined && sampleConfig?.recordedPluck
             ? Math.max(now, voice.startedAt + sampleConfig.minBodySeconds)
             : now;
         const release = quick ? (sampleConfig?.retriggerReleaseSeconds ?? (voice.sampledPiano ? .035 : .08))
             : sampleConfig?.releaseSeconds ?? (isElectricBassPluckSample(voice.sampleSet) ? BASS_PLUCK_RELEASE_SECONDS
             : voice.heldTone ? .32
             : (voice.sampledPiano ? .16 : .86));
+        const stopAt = releaseAt + release * 1.2;
+        // A retrigger/stop may shorten a planned release, never extend it.
+        if (voice.stopAt !== undefined && voice.stopAt <= stopAt) return;
+        voice.stopAt = stopAt;
         if (typeof voice.gain.gain.cancelAndHoldAtTime === "function") voice.gain.gain.cancelAndHoldAtTime(releaseAt);
         else voice.gain.gain.cancelScheduledValues(releaseAt);
         voice.gain.gain.setTargetAtTime(.0001, releaseAt, release / 5);
         state.pianoReleaseVoices.add(voice);
-        try { voice.source.stop(releaseAt + release * 1.2); } catch (error) {}
+        try { voice.source.stop(stopAt); } catch (error) {}
     }
 
     function samplePianoNoteOn(midi, velocity) {
@@ -1123,20 +1162,12 @@
         if (existing) releasePianoVoice(existing, true);
         const source = context.createBufferSource();
         const gain = context.createGain();
-        const panner = typeof context.createStereoPanner === "function" ? context.createStereoPanner() : null;
         const peak = Math.min(.62, Math.max(.16, velocity * .58));
         const now = context.currentTime;
         source.buffer = buffer;
         source.playbackRate.value = Math.pow(2, (midi - sample.midi) / 12);
-        gain.gain.setValueAtTime(.0001, now);
-        gain.gain.exponentialRampToValueAtTime(peak, now + .004);
-        gain.gain.exponentialRampToValueAtTime(peak * .82, now + .18);
-        source.connect(gain);
-        if (panner) {
-            panner.pan.value = Math.max(-.32, Math.min(.32, (midi - 60) / 80));
-            gain.connect(panner);
-            connectToMix(panner, .12);
-        } else connectToMix(gain, .12);
+        gain.gain.setValueAtTime(peak, now);
+        source.connect(gain).connect(state.recordedSampleGuard);
         const voice = { source, gain, released: false, held: false };
         state.pianoVoices.set(midi, voice);
         source.onended = function () {
@@ -1437,12 +1468,6 @@
         });
     }
 
-    function pluckedKeyboardDecay(sampleSet) {
-        if (sampleSet === "clavinet") return 1.65;
-        if (sampleSet === "harpsichord") return 3.4;
-        return 0;
-    }
-
     function isElectricBassPluckSample(sampleSet) {
         return /^(?:p-bass|j-bass|active-bass|fretless-bass)-(?:finger|pick)$/.test(sampleSet || "");
     }
@@ -1455,17 +1480,17 @@
     function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {
         const context = ensureAudio();
         if (!context || !buffer) return;
+        const now = when ?? context.currentTime;
         const heldTone = sampleSet === "hammond-organ" || sampleSet === "pipe-organ" || ["flute", "oboe", "trumpet", "piccolo-trumpet", "clarinet", "bass-clarinet", "piccolo-flute", "french-horn", "english-horn", "soprano-sax", "saxophone", "tenor-sax", "baritone-sax", "bassoon", "contrabassoon", "flugelhorn", "alto-trombone", "trombone", "bass-trombone", "euphonium", "tuba", "violin", "viola", "cello", "upright-bass", "haegeum", "haegeum-vibrato", "daegeum", "daegeum-vibrato", "hyangpiri", "hyangpiri-vibrato", "taepyeongso", "yanggeum-tremolo", "ajaeng", "ajaeng-vibrato", "sogeum", "danso", "danso-vibrato", "hun", "ocarina", "recorder-piccolo", "recorder-soprano", "recorder-alto", "recorder-tenor"].includes(sampleSet);
         const existing = state.pianoVoices.get(midi);
-        if (existing) releasePianoVoice(existing, !existing.heldTone && !ONE_SHOT_SAMPLE_SETS.has(existing.sampleSet));
+        if (existing) releasePianoVoice(existing, !existing.heldTone && !ONE_SHOT_SAMPLE_SETS.has(existing.sampleSet), now);
         if (isElectricBassSample(sampleSet)) {
             state.pianoVoices.forEach(function (other) {
-                if (isElectricBassSample(other.sampleSet)) releasePianoVoice(other, true);
+                if (isElectricBassSample(other.sampleSet)) releasePianoVoice(other, true, now);
             });
         }
         const source = context.createBufferSource();
         const gain = context.createGain();
-        const now = when ?? context.currentTime;
         const sampleConfig = KEYBOARD_SAMPLE_SETS[sampleSet];
         const highNoteCompensation = sampleConfig?.preserveRecordedTone ? 1 : 1 + Math.max(0, midi - 60) / 64;
         const calibratedGain = Math.pow(10, ((sampleConfig && sampleConfig.gainDb) || 0) / 20);
@@ -1473,7 +1498,6 @@
         const peak = sampleSet.startsWith("guitar-cubase-")
             ? volumeOnlyGain(buffer, velocityGain * calibratedGain)
             : upwardBalancedGain(buffer, velocityGain * calibratedGain, velocityGain);
-        const decay = pluckedKeyboardDecay(sampleSet);
         source.buffer = buffer;
         const tuningCents = Number(sampleConfig?.anchorTuningCents?.[anchor] || 0);
         source.playbackRate.value = Math.pow(2, (midi - anchor + tuningCents / 100) / 12);
@@ -1483,17 +1507,11 @@
             source.loopStart = region.start;
             source.loopEnd = region.end;
         }
-        gain.gain.setValueAtTime(.0001, now);
-        gain.gain.exponentialRampToValueAtTime(peak, now + .0025);
-        if (decay) {
-            gain.gain.exponentialRampToValueAtTime(Math.max(.0001, peak * .68), now + .045);
-            gain.gain.exponentialRampToValueAtTime(.0001, now + decay);
-        }
-        source.connect(gain);
-        // Guitar files already contain the player's effects. Keep those intact;
-        // other sampled instruments retain their existing room sends.
-        connectFastToMix(gain, sampleConfig?.roomSend ?? (heldTone ? .16 : .035));
-        const voice = { source, gain, anchor, sampleSet, heldTone, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, recordedGain: peak, released: false, held: false, percussiveDecay: decay, startedAt: now, pendingReleaseTimer: 0 };
+        // Every recorded instrument supplies its own attack, decay and room
+        // sound. Add only a constant playing level and bounded peak protection.
+        gain.gain.setValueAtTime(peak, now);
+        source.connect(gain).connect(state.recordedSampleGuard);
+        const voice = { source, gain, anchor, sampleSet, heldTone, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, recordedGain: peak, released: false, held: false, startedAt: now, pendingReleaseTimer: 0 };
         state.pianoVoices.set(midi, voice);
         source.onended = function () {
             state.pianoReleaseVoices.delete(voice);
@@ -1503,7 +1521,6 @@
         const configuredOffset = sampleConfig && Number.isFinite(sampleConfig.startOffset) ? Math.max(0, sampleConfig.startOffset) : null;
         const startOffset = configuredOffset === null ? decodedBufferStartOffset(buffer) : configuredOffset;
         source.start(now, Math.min(startOffset, Math.max(0, buffer.duration - .01)));
-        if (decay) source.stop(now + decay + .08);
         return voice;
     }
     function ensureStringEngine() {
@@ -1816,7 +1833,7 @@
         if (!selected || selected.available && !selected.available.includes(id)) return false;
         if (["hat", "pedalhat", "openhat"].includes(id)) chokeOpenHat();
         const koreanMetal = selected.id === "korean-kkwaenggwari" || selected.id === "korean-jing";
-        if (koreanMetal && (id === "damp" || id === "mute")) chokeKoreanMetal(selected.id);
+        if (koreanMetal && (id === "damp" || id === "mute" || id === "muted")) chokeKoreanMetal(selected.id);
         const daechwitaBrass = selected.id === "korean-daechwita" && (id === "nabal" || id === "nagak");
         if (daechwitaBrass) chokeDaechwitaBrass();
         loadDrumSample(id).then(function (sample) {
@@ -1835,7 +1852,7 @@
                 : sampledVelocity * Math.pow(10, gainDb / 20);
             gain.gain.value = balancedDrumGain(sample.buffer, requestedGain, sampledVelocity, id, current.id);
             source.connect(gain);
-            connectFastToMix(gain, 0);
+            gain.connect(state.recordedSampleGuard);
             if (id === "openhat") {
                 const voice = { source, gain };
                 state.openHatVoices.add(voice);
@@ -1867,7 +1884,7 @@
             const current = drumSampleConfig();
             if (current && current.id === selected.id) {
                 if (state.currentModel && state.currentModel.station) elements.noteReadout.textContent = "음원을 불러오지 못했어요";
-                else triggerDrum(id, velocity);
+                else showToast("원음을 불러오지 못했어요. 다시 눌러 주세요.");
             }
         });
         return true;
@@ -2049,6 +2066,12 @@
                 section.appendChild(item);
             });
             elements.detailArticle.appendChild(section);
+        });
+        [elements.stationSource, elements.orchestralSource].forEach(function (source) {
+            if (source.classList.contains('hidden')) return;
+            const credit = source.cloneNode(true);
+            credit.removeAttribute('id');
+            elements.detailArticle.appendChild(credit);
         });
         elements.detailArticle.scrollTop = 0;
     }
@@ -2650,21 +2673,21 @@
         drumDemoRun.timers.forEach(function (timer) { window.clearTimeout(timer); });
         drumDemoRun.pads.forEach(function (pad) { pad.classList.remove("demo-hit"); });
         drumDemoRun = null;
+        elements.jangguDemoChoices.querySelectorAll('button').forEach(function (button) { button.setAttribute('aria-pressed', 'false'); });
         elements.drumDemoLabel.textContent = "시범 연주";
         elements.jangguDemoCue.textContent = "";
     }
 
     function playDrumDemo() {
         if (window.PAD_PRESENTATION.isJanggu(state.currentModel?.id)) {
-            const demo = JANGGU_DEMOS[elements.jangguDemoSelect.selectedIndex];
-            const pads = new Map(activeDrums().map(function (pad) { return [pad.gueum, pad.id]; }));
+            const demo = JANGGU_DEMOS[state.jangguDemoIndex];
+            const pads = new Map(KOREAN_PERCUSSION_PADS[state.currentModel.id].map(function (pad) { return [pad.gueum, pad.id]; }));
             const hits = [];
             const cycles = 2;
             for (let cycle = 0; cycle < cycles; cycle += 1) {
                 demo.strokes.forEach(function (stroke, index) {
                     if (!stroke) return;
-                    const closing = demo.closing && cycle === cycles - 1 && index === demo.strokes.length - 1;
-                    const cue = closing ? demo.closing : stroke;
+                    const cue = stroke;
                     hits.push([cycle * demo.beats + index / 3, pads.get(cue), index === 0 ? .86 : .72, cue]);
                 });
             }
@@ -2691,6 +2714,9 @@
         }));
         const run = { timers: [], pads };
         drumDemoRun = run;
+        if (window.PAD_PRESENTATION.isJanggu(state.currentModel?.id)) {
+            elements.jangguDemoChoices.children[state.jangguDemoIndex]?.setAttribute('aria-pressed', 'true');
+        }
 
         const sounds = new Set(hits.flatMap(function (hit) { return hit[1].split(" "); }));
         const config = drumSampleConfig();
@@ -2711,8 +2737,10 @@
                     const pad = pads.get(id);
                     triggerDrumV2(id, velocity);
                     pulseInstrumentPart(id);
-                    pad.classList.add("demo-hit");
-                    run.timers.push(window.setTimeout(function () { pad.classList.remove("demo-hit"); }, flashMs));
+                    if (pad) {
+                        pad.classList.add("demo-hit");
+                        run.timers.push(window.setTimeout(function () { pad.classList.remove("demo-hit"); }, flashMs));
+                    }
                 });
             }
             const time = beat * beatMs;
@@ -2815,6 +2843,7 @@
     }
 
     async function playKeyboardDemo(button, bpm, notes, endBeat) {
+        stopKeyboardDemo();
         const run = { button, timers: [], keys: new Map(), voices: new Set() };
         keyboardDemoRun = run;
         setDemoButtonPlaying(button, true);
@@ -2841,23 +2870,35 @@
         stopKeyboardCentering();
         viewport.scrollLeft = lowKey.offsetLeft + Math.min(0, (highKey.offsetLeft + highKey.offsetWidth - lowKey.offsetLeft - viewport.clientWidth) / 2);
 
-        notes.forEach(function ([beat, pitches, velocity, duration, muted, attack]) {
-            function hit() {
-                const when = pitches.length > 1 ? state.audioContext.currentTime + .008 : undefined;
-                const voices = pitches.map(function (midi) {
-                    const sample = samples.get(midi);
-                    const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet, when);
-                    if (attack === "slide" && voice) {
-                        const rate = Math.pow(2, (midi - sample.anchor) / 12);
-                        voice.source.playbackRate.setValueAtTime(rate * Math.pow(2, -2 / 12), voice.startedAt);
-                        voice.source.playbackRate.exponentialRampToValueAtTime(rate, voice.startedAt + .045);
-                    }
-                    run.voices.add(voice);
-                    return voice;
-                });
-                const keys = muted ? [] : pitches.map(function (midi) {
-                    return elements.keyboard.querySelector('[data-midi="' + midi + '"]');
-                });
+        // The audio clock owns every onset and note-off. Browser timers only
+        // paint keys; a slow frame or scroll must never change the music.
+        const context = state.audioContext;
+        const origin = context.currentTime + .08;
+        const paintAt = function (when, paint) {
+            run.timers.push(window.setTimeout(function () {
+                if (keyboardDemoRun === run) paint();
+            }, Math.max(0, (when - context.currentTime) * 1000)));
+        };
+        notes.forEach(function ([beat, pitches, velocity, duration, muted, attack, string]) {
+            const when = origin + beat * beatMs / 1000;
+            const off = origin + Math.min(endBeat, beat + duration) * beatMs / 1000;
+            const voices = pitches.map(function (midi) {
+                const sample = samples.get(midi);
+                const voice = startConcertGrandSample(midi, velocity, sample.anchor, sample.buffer, sample.sampleSet, when);
+                if (attack === "slide" && voice) {
+                    const rate = Math.pow(2, (midi - sample.anchor) / 12);
+                    voice.source.playbackRate.setValueAtTime(rate * Math.pow(2, -2 / 12), when);
+                    voice.source.playbackRate.exponentialRampToValueAtTime(rate, when + .045);
+                }
+                run.voices.add(voice);
+                voice.source.addEventListener("ended", function () { run.voices.delete(voice); });
+                releasePianoVoice(voice, Number.isInteger(string) || muted || attack === "palm-mute", off);
+                return voice;
+            });
+            const keys = muted ? [] : pitches.map(function (midi) {
+                return elements.keyboard.querySelector('[data-midi="' + midi + '"]');
+            });
+            paintAt(when, function () {
                 if (keys.length) {
                     const left = keys[0].offsetLeft;
                     const right = keys.at(-1).offsetLeft + keys.at(-1).offsetWidth;
@@ -2872,22 +2913,16 @@
                 if (muted) noteActivity("고스트 노트", velocity);
                 else if (pitches.length === 1) noteActivity(core.noteLabel(pitches[0]), velocity, pitches[0]);
                 else noteActivity(pitches.map(core.noteLabel).join(" + "), velocity);
-                run.timers.push(window.setTimeout(function () {
-                    keys.forEach(function (key) {
-                        if (run.keys.get(key) !== voices) return;
-                        run.keys.delete(key);
-                        key.classList.remove("demo-hit");
-                    });
-                    voices.forEach(function (voice) {
-                        run.voices.delete(voice);
-                        releasePianoVoice(voice, muted || attack === "palm-mute");
-                    });
-                }, duration * beatMs));
-            }
-            if (beat === 0) hit();
-            else run.timers.push(window.setTimeout(hit, beat * beatMs));
+            });
+            paintAt(off, function () {
+                keys.forEach(function (key) {
+                    if (run.keys.get(key) !== voices) return;
+                    run.keys.delete(key);
+                    key.classList.remove("demo-hit");
+                });
+            });
         });
-        run.timers.push(window.setTimeout(stopKeyboardDemo, endBeat * beatMs));
+        paintAt(origin + endBeat * beatMs / 1000, stopKeyboardDemo);
     }
 
     function renderDrumPads() {
@@ -2896,22 +2931,17 @@
         const presentation = window.PAD_PRESENTATION;
         const modelId = state.currentModel && state.currentModel.id;
         const janggu = presentation.isJanggu(modelId);
-        const demo = janggu ? JANGGU_DEMOS[elements.jangguDemoSelect.selectedIndex] : DRUM_DEMOS[modelId];
-        elements.drumDemoButton.classList.toggle("hidden", !demo);
+        const demo = janggu ? JANGGU_DEMOS[state.jangguDemoIndex] : DRUM_DEMOS[modelId];
+        elements.drumDemoButton.classList.toggle("hidden", !demo || janggu);
         elements.jangguDemoControls.classList.toggle("hidden", !janggu);
         const kit = Boolean(DRUM_KIT_PARTS[modelId]);
         elements.drumPads.classList.toggle("spatial-pads", janggu || kit);
         elements.drumPads.classList.toggle("janggu-pads", janggu);
+        elements.drumPads.classList.toggle("hand-pads", modelId === "buk-sori");
         elements.drumPads.classList.toggle("kit-pads", kit);
         elements.drumPads.setAttribute("aria-label", janggu ? "장구 패드 · 연주자 기준 왼쪽 궁편, 오른쪽 채편" : "타악기 연주 패드");
         elements.drumPads.classList.toggle("extended", drums.length >= 9);
         elements.drumPads.classList.toggle("korean-articulations", Boolean(state.currentModel && KOREAN_PERCUSSION_PADS[state.currentModel.id]));
-        if (janggu) {
-            const guide = document.createElement("p");
-            guide.className = "janggu-guide";
-            guide.textContent = "연주자 기준 · 왼쪽은 궁편, 오른쪽은 채편";
-            elements.drumPads.appendChild(guide);
-        }
         presentation.groups(modelId, drums, kit).forEach(function (group) {
             let container = elements.drumPads;
             if (group.title) {
@@ -2954,7 +2984,7 @@
                 const visual = presentation.icon(modelId, drum);
                 button.setAttribute("aria-label", drum.name + " · 키보드 " + drum.key + " 키");
                 const gueumMarkup = drum.gueum
-                    ? "<b class=\"pad-gueum\">" + drum.gueum + "</b><span class=\"pad-subname\">" + drum.name + "</span>"
+                    ? "<b class=\"pad-gueum\">" + drum.gueum + "</b>"
                     : "<b>" + drum.name + "</b>";
                 button.innerHTML = "<span class=\"pad-top\">" + visual.svg + "<kbd class=\"pad-key\" aria-hidden=\"true\">" + drum.key + "</kbd></span>" + gueumMarkup;
                 const play = function (velocity) {
@@ -3220,7 +3250,7 @@
         const tag = event.target && event.target.tagName;
         const textEntry = tag === "TEXTAREA" || tag === "SELECT" || (tag === "INPUT" && event.target.type !== "range");
         if (textEntry) return;
-        if (event.code === "Space" && (event.target === elements.drumDemoButton || event.target.closest?.("#melodyDemoButtons button"))) return;
+        if (event.code === "Space" && (event.target === elements.drumDemoButton || event.target.closest?.("#melodyDemoButtons button, #jangguDemoChoices button"))) return;
         if (state.instrument === "guitar" && state.guitarMode === "chords" && tag !== "INPUT") {
             const degree = event.code.match(/^(?:Digit|Numpad)([1-7])$/);
             if (degree || event.code === "ArrowDown" || event.code === "ArrowUp") {
@@ -3294,11 +3324,20 @@
         elements.bassDemoControls.querySelectorAll("[data-bass-demo]").forEach(function (button) {
             button.addEventListener("click", function () { playBassDemo(button); });
         });
-        JANGGU_DEMOS.forEach(function (demo) {
-            elements.jangguDemoSelect.add(new Option(demo.name));
-        });
-        elements.jangguDemoSelect.addEventListener("change", function () {
-            stopDrumDemo();
+        JANGGU_DEMOS.forEach(function (demo, index) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "key-size-button";
+            button.textContent = demo.name;
+            button.dataset.jangguDemo = String(index);
+            button.setAttribute("aria-label", demo.name + " 시범 연주");
+            button.setAttribute("aria-pressed", "false");
+            button.addEventListener("click", function () {
+                if (drumDemoRun && state.jangguDemoIndex === index) { stopDrumDemo(); return; }
+                state.jangguDemoIndex = index;
+                playDrumDemo();
+            });
+            elements.jangguDemoChoices.appendChild(button);
         });
         elements.drumDemoButton.addEventListener("click", playDrumDemo);
         elements.keySizeButton.addEventListener("click", openKeySizeDialog);
@@ -3461,7 +3500,6 @@
         renderDrumPads();
         bindEvents();
         selectFamily("keyboard");
-        if (isTouchKeyboardDevice() && !state.screenCalibrated) window.requestAnimationFrame(openKeySizeDialog);
         animateVisual();
     }
 

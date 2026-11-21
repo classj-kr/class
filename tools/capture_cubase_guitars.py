@@ -3,7 +3,7 @@
 Each note is held for four seconds, followed by six seconds for its release.
 Input: full-{SC,Hellrazer,L,SH,T}.wav, 48 kHz stereo floating point.
 The original renders stay untouched. No pitch shifting or per-note normalization.
-The primary files use lossless 24-bit FLAC; existing Ogg files are left untouched.
+Lossless 24-bit FLAC masters stay in ignored outputs; only Ogg ships to the site.
 """
 from __future__ import annotations
 
@@ -14,6 +14,7 @@ import math
 from pathlib import Path
 import struct
 import subprocess
+import time
 
 import numpy as np
 
@@ -77,7 +78,7 @@ def pitch_partials(values, midi):
     return rows
 
 
-def build(model, source, destination, report_dir):
+def build(model, source, destination, report_dir, archive_dir):
     lo, hi = MODELS[model]
     path = source / f"full-{model}.wav"
     values = decode(path)
@@ -87,8 +88,10 @@ def build(model, source, destination, report_dir):
     raw_peak = float(np.max(np.abs(values)))
     # One constant for the entire instrument preserves the recorded dynamics.
     gain = min(1., .80 / max(raw_peak, 1e-12))
-    folder = destination / f"guitar-cubase-{model.lower()}"
+    folder = archive_dir / f"guitar-cubase-{model.lower()}"
     folder.mkdir(parents=True, exist_ok=True)
+    public_folder = destination / folder.name
+    public_folder.mkdir(parents=True, exist_ok=True)
     rows = []
     for index, midi in enumerate(range(lo, hi + 1)):
         slot = values[index * 10 * RATE:(index + 1) * 10 * RATE]
@@ -102,14 +105,29 @@ def build(model, source, destination, report_dir):
         audible = np.flatnonzero(np.max(np.abs(audio), axis=1) > 10 ** (-85 / 20))
         end = min(len(audio), max(int(4.2 * RATE), int(audible[-1]) + int(.15 * RATE)))
         audio = audio[:end]
-        fade_in, fade_out = int(.0005 * RATE), int(.01 * RATE)
-        audio[:fade_in] *= np.linspace(0, 1, fade_in)[:, None]
+        # The recorded attack is authoritative. Never fade in a sampled pluck.
+        fade_out = int(.01 * RATE)
         audio[-fade_out:] *= np.linspace(1, 0, fade_out)[:, None]
         target = folder / filename(midi)
-        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "f32le", "-ar", str(RATE), "-ac", "2", "-i", "pipe:0", "-c:a", "flac", "-sample_fmt", "s32", "-compression_level", "8", str(target)], input=audio.astype(np.float32).tobytes(), check=True)
+        encoded = subprocess.check_output(["ffmpeg", "-nostdin", "-v", "error", "-f", "f32le", "-ar", str(RATE), "-ac", "2", "-i", "pipe:0", "-c:a", "flac", "-sample_fmt", "s32", "-compression_level", "8", "-f", "flac", "pipe:1"], input=audio.astype(np.float32).tobytes())
+        for attempt in range(5):
+            try:
+                target.write_bytes(encoded)
+                break
+            except OSError:
+                if attempt == 4:
+                    raise
+                time.sleep(.15)
         delivered = decode(target)
         quantization_error = float(np.max(np.abs(delivered - audio)))
         assert quantization_error <= 2 ** -23, f"{model}/{midi}: lossy conversion"
+        attack_frames = min(int(.04 * RATE), len(delivered))
+        original_attack = slot[trim:trim + attack_frames] * gain
+        attack_error = float(np.max(np.abs(delivered[:attack_frames] - original_attack)))
+        assert attack_error <= 2 ** -23, f"{model}/{midi}: altered original attack"
+        public_target = public_folder / target.with_suffix('.ogg').name
+        ogg = subprocess.check_output(["ffmpeg", "-nostdin", "-v", "error", "-i", str(target), "-c:a", "libvorbis", "-q:a", "8", "-f", "ogg", "pipe:1"])
+        public_target.write_bytes(ogg)
         partials = pitch_partials(delivered, midi)
         matched = [p for p in partials if abs(p["cents"]) < 40 and p["relativeAmplitude"] > .025]
         env = np.max(np.abs(delivered), axis=1)
@@ -129,7 +147,8 @@ def build(model, source, destination, report_dir):
             issues.append("peak-review")
         if ending > .0001:
             issues.append("tail-review")
-        rows.append(dict(midi=midi, file=target.name, rawOnsetMs=round(onset / RATE * 1000, 3), removedLeadingMs=round(trim / RATE * 1000, 3), onsetMs=round(decoded_onset * 1000, 3), durationSeconds=round(len(delivered) / RATE, 4), peak=round(decoded_peak, 6), endingRms=round(ending, 8), partials=partials, issues=issues, quantizationError=quantization_error, sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
+        rows.append(dict(midi=midi, file=target.name, rawOnsetMs=round(onset / RATE * 1000, 3), removedLeadingMs=round(trim / RATE * 1000, 3), onsetMs=round(decoded_onset * 1000, 3), durationSeconds=round(len(delivered) / RATE, 4), peak=round(decoded_peak, 6), endingRms=round(ending, 8), partials=partials, issues=issues, quantizationError=quantization_error, attackMaxAbsError=attack_error, sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
+        rows[-1].update(losslessFile=target.name, losslessSha256=rows[-1]['sha256'], file=public_target.name, sha256=hashlib.sha256(ogg).hexdigest())
     result = dict(model=model, sourceFile=path.name, sourceSha256=hashlib.sha256(path.read_bytes()).hexdigest(), minMidi=lo, maxMidi=hi, notes=len(rows), sourceDurationSeconds=duration, sourcePeak=raw_peak, instrumentGain=gain, holdSeconds=4, tailSeconds=6, velocity=96, sampleRate=RATE, channels=2, pitchShiftedNotes=0, rows=rows)
     report_dir.mkdir(parents=True, exist_ok=True)
     (report_dir / f"{model}.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -144,15 +163,16 @@ if __name__ == "__main__":
     parser.add_argument("--models", nargs="+", choices=list(MODELS), default=list(MODELS))
     parser.add_argument("--destination", type=Path, default=ROOT / "learning/arts/instrument-room/assets/audio")
     parser.add_argument("--report-dir", type=Path, default=ROOT / "outputs/qa/cubase-guitars")
+    parser.add_argument("--archive-dir", type=Path, default=ROOT / "outputs/audio-masters/cubase-guitars")
     args = parser.parse_args()
     if args.write_midi:
         write_midi(args.write_midi)
     else:
         if not args.source:
             parser.error("source directory is required to split renders")
-        results = [build(model, args.source, args.destination, args.report_dir) for model in args.models]
+        results = [build(model, args.source, args.destination, args.report_dir, args.archive_dir) for model in args.models]
         if any(row["issues"] for result in results for row in result["rows"]):
             raise SystemExit("Audio review required; see the per-instrument reports")
         if set(args.models) == set(MODELS):
-            manifest = dict(captureDate="2026-11-21", tempoBpm=120, slotSeconds=10, totalNotes=sum(result["notes"] for result in results), pitchShiftedNotes=0, format="48 kHz stereo 24-bit FLAC; original Ogg retained as compatibility fallback", instruments=results)
+            manifest = dict(captureDate="2026-11-21", tempoBpm=120, slotSeconds=10, totalNotes=sum(result["notes"] for result in results), pitchShiftedNotes=0, format="48 kHz stereo Ogg Vorbis q8; lossless masters local-only; capture metrics measured before encoding", instruments=results)
             (args.destination / "guitar-cubase-capture.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")

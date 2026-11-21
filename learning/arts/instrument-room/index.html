@@ -7,13 +7,13 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20261121-demo-controls-v5">
+    <link rel="stylesheet" href="styles.css?v=20261121-student-cleanup-v7">
     <script src="instrument-core.js?v=20261118-power-chords" defer></script>
     <script src="instrument-details.js?v=20261121-guitar-lossless-v3" defer></script>
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
-    <script src="pad-presentation.js?v=20261015-orchestral-v1" defer></script>
-    <script src="melody-demos.js?v=20261121-famous-themes-v1" defer></script>
-    <script src="app.js?v=20261121-ogg-only-history-cleanup" defer></script>
+    <script src="pad-presentation.js?v=20261121-student-pads-v3" defer></script>
+    <script src="melody-demos.js?v=20261121-organ-toccata-v2" defer></script>
+    <script src="app.js?v=20261121-demo-clock-rhythm-v12" defer></script>
   <link rel="stylesheet" href="/assets/study-worlds.css?v=20261121-2">
 </head>
 <body data-study-world="music" data-sfx-clicks="none" data-sfx-feedback="none">
@@ -163,14 +163,14 @@
                     </div>
                     <div id="bassDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="베이스 시범 연주">
                         <button class="key-size-button" type="button" data-bass-demo="finger" aria-pressed="false"><span>핑거</span><b>Billie Jean</b></button>
-                        <button class="key-size-button" type="button" data-bass-demo="slap" aria-pressed="false"><span>슬랩</span><b>Can’t Stop</b></button>
+                        <button class="key-size-button" type="button" data-bass-demo="slap" aria-pressed="false"><span>슬랩</span><b>Rio Funk</b></button>
                     </div>
                     <div id="guitarDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="기타 시범 연주">
                         <button id="guitarDemoButton" class="key-size-button" type="button" aria-pressed="false"><span>시범 연주</span><b id="guitarDemoTitle"></b></button>
                     </div>
                     <button id="drumDemoButton" class="key-size-button hidden" type="button"><span id="drumDemoLabel">시범 연주</span></button>
                     <div id="jangguDemoControls" class="janggu-demo-controls hidden">
-                        <select id="jangguDemoSelect" aria-label="시범 장단"></select>
+                        <div id="jangguDemoChoices" role="group" aria-label="장단 시범"></div>
                         <span id="jangguDemoCue"></span>
                     </div>
                     <div id="rangeLegend" class="range-legend hidden"><i></i><span id="rangeReadout"></span></div>
@@ -200,9 +200,11 @@
                 </div>
                 <div id="drumPads" class="drum-pads hidden" role="group" aria-label="드럼 패드"></div>
             </section>
+        </main>
+    </div>
+    <div hidden aria-hidden="true">
             <p id="stationSource" class="station-source hidden">박·축·어와 대취타 악기 소리: <a href="https://www.gugak.go.kr/digitaleum/front/monotone/list.do" target="_blank" rel="noopener noreferrer">국립국악원 국악기 디지털 음원</a> · 공공누리 제1유형(출처표시)</p>
             <p id="orchestralSource" class="station-source hidden">오케스트라 타악기 소리: <a href="https://github.com/sgossner/VSCO-2-CE" target="_blank" rel="noopener noreferrer">Versilian Studios · VSCO 2 Community Edition</a> · CC0</p>
-        </main>
     </div>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 

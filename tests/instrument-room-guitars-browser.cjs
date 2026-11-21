@@ -22,6 +22,7 @@ for (const item of manifest.instruments) {
     assert.deepEqual(row.issues, [], item.model + '/' + row.midi);
     assert.ok(row.onsetMs < 27 && row.endingRms < .0001, JSON.stringify(row));
     assert.ok(row.quantizationError <= 2 ** -23, '24-bit lossless conversion');
+    assert.ok(row.attackMaxAbsError <= 2 ** -23, item.model + '/' + row.midi + ': original attack changed during capture');
     const file = fs.readFileSync(path.join(audioRoot, 'guitar-cubase-' + item.model.toLowerCase(), row.file));
     assert.equal(crypto.createHash('sha256').update(file).digest('hex'), row.sha256);
   }
@@ -95,7 +96,19 @@ const server = http.createServer((req, res) => {
             peak = Math.max(peak, Math.abs(values[i]));
             if (i < 9600) energy += values[i] ** 2;
           }
-          row.renders.push({midi,peak,rms:Math.sqrt(energy / 9600)});
+          // Compare the very first 40 ms against the decoded recording, not
+          // just its later body. This catches a compressor's startup envelope
+          // even when the steady-state waveform is almost identical.
+          let onsetEnergy = 0, onsetError = 0;
+          for (let channel = 0; channel < 2; channel++) {
+            const original = buffer.getChannelData(channel), actual = output.getChannelData(channel);
+            for (let i = 0; i < 1920; i++) {
+              const expected = original[i] * first.recordedGain;
+              onsetEnergy += expected ** 2;
+              onsetError += (actual[i] - expected) ** 2;
+            }
+          }
+          row.renders.push({midi,peak,rms:Math.sqrt(energy / 9600),onsetRelativeError:Math.sqrt(onsetError / onsetEnergy)});
           if (midi === 55) {
             const natural = new OfflineAudioContext(2, 96000, 48000);
             window.AudioContext = function () { return natural; };
@@ -120,7 +133,7 @@ const server = http.createServer((req, res) => {
             }
             row.tapTailRatio = Math.sqrt(actual / reference);
 
-            async function renderShortTap(release, quick = false) {
+            async function renderShortTap(release, quick = false, layers = 1) {
               const ctx = new OfflineAudioContext(2, 72000, 48000);
               window.AudioContext = function () { return ctx; };
               ctx.resume = () => Promise.resolve();
@@ -130,6 +143,11 @@ const server = http.createServer((req, res) => {
               a.ensureAudio();
               window.AudioContext = NativeContext;
               const note = a.startConcertGrandSample(55, .8, 55, buffer, config.id);
+              for (let layer = 1; layer < layers; layer++) {
+                // Fully correlated notes are a stronger peak stress than an
+                // ordinary chord: the output still needs bounded headroom.
+                a.startConcertGrandSample(55 + layer, .8, 55 + layer, buffer, config.id);
+              }
               if (note.source.loop) throw new Error(model + ': plucked sample loops');
               if (release == null) return ctx.startRendering();
               const suspended = ctx.suspend(release), rendering = ctx.startRendering();
@@ -152,6 +170,11 @@ const server = http.createServer((req, res) => {
             row.shortTapBodyRatio = Math.sqrt(tapBody / heldBody);
             row.explicitMuteRatio = Math.sqrt(muteBody / heldBody);
             row.shortTapLateRms = Math.sqrt(tail / 14400);
+            const chord = await renderShortTap(null, false, 8);
+            row.overlapPeak = 0;
+            for (let channel = 0; channel < 2; channel++) for (const value of chord.getChannelData(channel)) {
+              row.overlapPeak = Math.max(row.overlapPeak, Math.abs(value));
+            }
           }
         }
         results.push(row);
@@ -161,15 +184,17 @@ const server = http.createServer((req, res) => {
     assert.equal(results.reduce((n,r) => n+r.decoded,0), 248);
     for (const row of results) for (const render of row.renders) {
       assert.ok(render.peak < .99 && render.rms > .001, JSON.stringify({model:row.model,...render}));
+      assert.ok(render.onsetRelativeError < .00001, row.model + '/' + render.midi + ': altered the original first 40 ms');
     }
     for (const row of results) assert.ok(row.tapTailRatio < .015, row.model + ': key-up damps the note after its short recorded release');
     for (const row of results) {
       assert.ok(row.shortTapBodyRatio > .98, row.model + ': quick key-up removed the original pluck body');
       assert.ok(row.explicitMuteRatio < .15, row.model + ': explicit damping must bypass the pluck body protection');
       assert.ok(row.shortTapLateRms < .00001, row.model + ': short taps must not hang like a sustain pedal');
+      assert.ok(row.overlapPeak <= .981, row.model + ': overlapping notes bypassed peak protection');
     }
     assert.deepEqual(errors, []);
-    // An unsupported lossless decoder must use the supplied Ogg fallback.
+    // Production playback must work without ever decoding a lossless master.
     const fallbackPage = await browser.newPage();
     await fallbackPage.evaluateOnNewDocument(() => {
       const decode = AudioContext.prototype.decodeAudioData;
@@ -189,7 +214,7 @@ const server = http.createServer((req, res) => {
       const sample = await guitarTest.loadConcertGrandSample(40);
       return {rejections:flacRejections, id:sample.sampleSet, duration:sample.buffer.duration};
     });
-    assert.equal(fallback.rejections, 0);
+    assert.equal(fallback.rejections, 0, "FLAC must never be requested or decoded");
     assert.ok(fallback.duration > 4);
     assert.equal(fallback.id, 'guitar-cubase-sc');
     await fallbackPage.close();

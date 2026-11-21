@@ -251,7 +251,8 @@ input[type="range"] { width: 100%; height: 20px; margin: 0; accent-color: var(--
 .play-toolbar > div:first-child { display: flex; align-items: center; gap: 10px; }
 .play-toolbar span { color: var(--muted); font-size: 11px; }.play-toolbar small { color: var(--accent); font-size: 10px; font-weight: 800; }
 .janggu-demo-controls { display: flex; align-items: center; gap: 6px; min-width: 0; }
-.janggu-demo-controls select { min-width: 0; max-width: 100%; min-height: 28px; border: 1px solid var(--line); border-radius: 6px; background: #101719; color: inherit; font: inherit; font-size: 12px; }
+#jangguDemoChoices { display: flex; flex-wrap: wrap; gap: 8px; }
+#jangguDemoChoices button { margin: 0; min-height: 44px; font-size: 16px; }
 .play-toolbar #jangguDemoCue { min-width: 4em; color: var(--accent); font-weight: 800; white-space: nowrap; }
 .range-legend { margin-left: auto; display: flex; align-items: center; gap: 7px; min-width: 0; }
 .range-legend i { width: 18px; height: 11px; flex: 0 0 auto; border-radius: 3px; background: repeating-linear-gradient(135deg,#39413f 0 3px,#252b2a 3px 6px); border: 1px solid #55605d; }
@@ -807,3 +808,50 @@ body.detail-open { overflow: hidden; }
 }
 
 .console-head { gap: 6px; }
+
+/* Student-facing controls: readable names and a small set of basic sounds. */
+.instrument-tabs button { grid-template-columns: 20px minmax(0, 1fr); column-gap: 6px; padding: 7px; }
+.tab-icon { width: 20px; height: 24px; }
+.instrument-tabs b { font-size: 16px; }
+.instrument-tabs small, .model-chooser button > span, .visual-label > span,
+.control-eyebrow, .performance-rail > span, .pad-subname, .janggu-guide { display: none; }
+.model-chooser button { min-width: 132px; }
+.model-chooser button b { font-size: 16px; }
+.visual-label b { font-size: 16px; }
+.technique-hint, .control-set > p { font-size: 14px; line-height: 1.5; color: #c0ceca; }
+.drum-pad b, .drum-pads.korean-articulations .drum-pad b,
+.drum-pads.spatial-pads .drum-pad b { font-size: 18px; line-height: 1.4; }
+.drum-pads.spatial-pads.janggu-pads .drum-pad { grid-column: auto; min-height: 110px; padding: 14px; }
+.janggu-pads .pad-gueum { font-size: 24px !important; }
+.pad-group h3 { font-size: 16px; margin-bottom: 8px; }
+.pad-group-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pad-key { font-size: 16px; }
+.station-source { font-size: 14px; line-height: 1.7; color: #c4d1cc; }
+.play-toolbar:has(> .hidden):not(:has(> :not(.hidden):not(.screen-reader-only))) { display: none; }
+@media (max-width: 1000px) {
+    .instrument-tabs { display: flex; overflow-x: auto; scroll-snap-type: x proximity; }
+    .instrument-tabs button { flex: 0 0 110px; scroll-snap-align: start; }
+}
+@media (max-width: 520px) {
+    .play-toolbar { flex-wrap: wrap; gap: 8px; padding: 8px; }
+    .drum-pads.spatial-pads.janggu-pads .drum-pad { min-height: 96px; }
+    .key-size-button, .key-size-button b, .key-size-button span { font-size: 14px; }
+}
+
+.janggu-pads .pad-group { display: grid; grid-template-rows: auto minmax(0,1fr); }
+.janggu-pads .pad-group-left { grid-column: 1; }
+.janggu-pads .pad-group-right { grid-column: 2; }
+.janggu-pads .pad-group-left .pad-group-grid { grid-template-columns: 1fr; }
+.janggu-pads .pad-group-right .pad-group-grid { grid-template-columns: 1fr; }
+.janggu-pads .pad-group-both .pad-group-grid { grid-template-columns: 1fr; }
+.drum-pads.spatial-pads.janggu-pads .drum-pad { min-height: 76px; }
+.janggu-pads .pad-group-left .drum-pad { min-height: 100%; }
+.drum-pads.hand-pads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.hand-pads .pad-group-left { grid-column: 1; }
+.hand-pads .pad-group-right { grid-column: 2; }
+.hand-pads .pad-group-grid { grid-template-columns: 1fr; }
+.korean-articulations:not(.janggu-pads) .pad-gueum { font-size: 18px; }
+.kit-readout { display: none; }
+.korean-room-switch button { font-size: 14px; min-height: 44px; }
+.articulation-buttons button, .mode-switch button { font-size: 16px; min-height: 44px; }
+.instrument-layer-label { font-size: 14px; }
