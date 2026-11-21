@@ -351,7 +351,9 @@
     "author": "Bearas",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Baltis_amber_road.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Baltis_amber_road.jpg",
+    "representative": false,
+    "exclusionReason": "장소의 특징 대신 광역 지도만 보여 발견 사진에서 제외"
   },
   "giants-causeway": {
     "author": "code poet on flickr.",
@@ -375,7 +377,9 @@
     "author": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "friesland-terp": {
     "author": "Sandra Buhmann",
@@ -509,7 +513,9 @@
     "author": "National Aeronautics and Space Administration (NASA), collage by Dylan240.",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Aral_Sea_1964_vs._August_25,_2026.png"
+    "source": "https://commons.wikimedia.org/wiki/File:Aral_Sea_1964_vs._August_25,_2026.png",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "pula-arena": {
     "author": "Olgierd Rudak",
@@ -975,7 +981,9 @@
     "author": "Jacques Descloitres, MODIS Rapid Response Team, NASA/sh",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Nile_River_and_delta_from_orbit.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Nile_River_and_delta_from_orbit.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "giza-pyramids": {
     "author": "KennyOMG",
@@ -1251,7 +1259,9 @@
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lago_de_Atitlan_seen_from_orbit.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Lago_de_Atitlan_seen_from_orbit.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "danakil-depression": {
     "author": "Thomas Fuhrmann",
@@ -1285,7 +1295,9 @@
     "author": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "mahabalipuram-shore": {
     "author": "Swarna1311",
@@ -1297,7 +1309,9 @@
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Bab-el-Mandeb_And_Red_Sea_NASA_photo.webp"
+    "source": "https://commons.wikimedia.org/wiki/File:Bab-el-Mandeb_And_Red_Sea_NASA_photo.webp",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "socotra-dragon-trees": {
     "author": "Alex38",
@@ -1321,7 +1335,9 @@
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lake_tana.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Lake_tana.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "brihadisvara-thanjavur": {
     "author": "Original: Rainer Halama Derivative work: UnpetitproleX",
@@ -1418,7 +1434,9 @@
     "author": "Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "chimborazo": {
     "author": "Dick Culbert from Gibsons, B.C., Canada",
@@ -1556,13 +1574,17 @@
     "author": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Namib_desert_MODIS.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Namib_desert_MODIS.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "atacama-desert": {
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Atacama.png"
+    "source": "https://commons.wikimedia.org/wiki/File:Atacama.png",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "uluru": {
     "author": "Ek2030372672",
@@ -1616,7 +1638,9 @@
     "author": "Jacques Descloitres, MODIS Rapid Response Team, NASA/GSFC",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:StraitOfMagellan.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:StraitOfMagellan.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "nordkapp": {
     "author": "Perlblau",
@@ -1670,7 +1694,9 @@
     "author": "This image was taken by the NASA Expedition 19 crew.",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Island.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Island.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "madagascar": {
     "author": "Bernard Gagnon",
@@ -1814,7 +1840,9 @@
     "author": "NASA/GSFC/JPL/MISR-Team",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Bering_Strait.jpeg"
+    "source": "https://commons.wikimedia.org/wiki/File:Bering_Strait.jpeg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "strait-of-dover": {
     "author": "NASA",
@@ -1824,7 +1852,9 @@
     "kind": "photo",
     "caption": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
+    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "rhine-river": {
     "author": "Lucazzitto",
@@ -1842,19 +1872,25 @@
     "author": "Terra (EOS AM-1) satellite",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "danube_delta": {
     "author": "European Space Agency",
     "license": "Attribution",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Danube_Delta_ESA23450088.jpeg"
+    "source": "https://commons.wikimedia.org/wiki/File:Danube_Delta_ESA23450088.jpeg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "black-sea": {
     "author": "The SeaWiFS Project",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "niagara_falls": {
     "author": "Saffron Blaze",
@@ -1866,7 +1902,9 @@
     "author": "Jeff Schmaltz, MODIS Rapid Response Team, NASA/GSFC",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "rocky-mountains": {
     "author": "Hogs555",
@@ -1884,25 +1922,33 @@
     "author": "SeaWiFS Project, NASA/Goddard Space Flight Center, and ORBIMAGE",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Satellite_View_of_Japan_1999.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Satellite_View_of_Japan_1999.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "gibraltar_strait": {
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:STS059-238-074_Strait_of_Gibraltar.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:STS059-238-074_Strait_of_Gibraltar.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "tibetan-plateau": {
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "nile_delta": {
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Nile_delta_landsat_false_color.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Nile_delta_landsat_false_color.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "mississippi_mouth": {
     "author": "NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team",
@@ -1912,13 +1958,17 @@
     "kind": "photo",
     "caption": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
+    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "himalayas": {
     "author": "NASA Landsat image",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders,_annotated_with_major_rivers.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders,_annotated_with_major_rivers.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "indus-river": {
     "author": "Heavyrunner",
@@ -1930,25 +1980,33 @@
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:PersianGulf_vue_satellite_du_golfe_persique.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:PersianGulf_vue_satellite_du_golfe_persique.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "strait-of-hormuz": {
     "author": "MODIS Land Rapid Response Team, NASA GSFC",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Hormuz_and_Musandam_Peninsula_(MODIS_2018-12-10).jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Hormuz_and_Musandam_Peninsula_(MODIS_2018-12-10).jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "sahara": {
     "author": "Project Apollo Archive",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "hawaiian_islands": {
     "author": "Jacques Descloitres",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Hawaje-NoRedLine.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Hawaje-NoRedLine.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "deccan-plateau": {
     "author": "Federal government of the United States",
@@ -1958,7 +2016,9 @@
     "kind": "photo",
     "caption": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
+    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "mekong-river": {
     "author": "Bjørn Christian Tørrissen",
@@ -1974,7 +2034,9 @@
     "kind": "photo",
     "caption": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
+    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "malacca_strait": {
     "author": "MODIS Land Rapid Response Team, NASA GSFC",
@@ -1984,7 +2046,9 @@
     "kind": "photo",
     "caption": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
+    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "malay_archipelago": {
     "author": "MODIS Land Rapid Response Team, NASA GSFC",
@@ -1994,7 +2058,9 @@
     "kind": "photo",
     "caption": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
+    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "great_rift_valley": {
     "author": "Bett Duncan",
@@ -2038,7 +2104,9 @@
     "author": "Astronaut photograph ISS008-E-21752",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Istanbul_and_Bosporus_big.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Istanbul_and_Bosporus_big.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "crimea_peninsula": {
     "author": "Andy Shustykevych",
@@ -2062,19 +2130,25 @@
     "author": "NASA Earth Observatory images by Joshu…",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Umnak_oli_2014123_lrg.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Umnak_oli_2014123_lrg.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "aegean_islands": {
     "author": "NASA",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:ISS-59_Aegean_Sea,_Greece_and_Italy_with_Sicily.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:ISS-59_Aegean_Sea,_Greece_and_Italy_with_Sicily.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "yellow-river": {
     "author": "NASA Earth Observatory images by Laure…",
     "license": "Public domain",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Building_Up_the_Yellow_River_Delta.jpeg"
+    "source": "https://commons.wikimedia.org/wiki/File:Building_Up_the_Yellow_River_Delta.jpeg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "mississippi-river": {
     "author": "U.S. Fish and Wildlife Service - Midwe…",
@@ -2086,13 +2160,17 @@
     "author": "European Space Agency",
     "license": "Attribution",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Deep_blue_Red_Sea_reefs.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Deep_blue_Red_Sea_reefs.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "caribbean-sea": {
     "author": "European Union, Copernicus Sentinel-2…",
     "license": "Attribution",
     "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:The_San_Bernardo_Archipelago_in_the_Caribbean_Sea_(Copernicus_2024-01-13).jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:The_San_Bernardo_Archipelago_in_the_Caribbean_Sea_(Copernicus_2024-01-13).jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "patagonia": {
     "author": "GerthMichael",
@@ -2104,7 +2182,9 @@
     "author": "Coordenação-Geral de Observação da Terra",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Amazon_River_mouth_on_the_Atlantic.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Amazon_River_mouth_on_the_Atlantic.jpg",
+    "representative": false,
+    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
   },
   "hunt-cod": {
     "author": "Wilhelm Thomas Fiege",

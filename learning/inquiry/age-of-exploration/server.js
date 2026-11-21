@@ -148,11 +148,12 @@ const PHOTO_CREDITS = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'c
 
 function photoCreditFor(id) {
   const credit = PHOTO_CREDITS[id];
-  if (!credit) return '';
+  if (!credit || credit.representative === false) return '';
   return `${credit.kind === 'map' ? '지도' : '사진'} ${credit.author} · ${credit.license} · 위키미디어 공용`;
 }
 
 function landmarkArtUrl(id) {
+  if (PHOTO_CREDITS[id]?.representative === false) return null;
   try {
     const file = path.join(LANDMARK_ART_DIR, `${id}.webp`);
     const stat = fs.statSync(file);
@@ -1346,7 +1347,8 @@ for(const room of Object.values(store.state?.rooms||{})){
   const progresses=Object.values(room.progress||{}).map(player=>player?.[mission?.id]?.placeStudy);
   if(mission?.studyTargets){
     const changed=PlaceStudy.refreshMission(mission,studyTarget,studyQuestionPool(),progresses);
-    if(PlaceStudy.refreshLearningMetadata(mission,studyTarget)||changed)store.scheduleSave();
+    const mediaChanged=PlaceStudy.refreshReadingMedia(mission,studyTarget);
+    if(PlaceStudy.refreshLearningMetadata(mission,studyTarget)||changed||mediaChanged)store.scheduleSave();
   }
 }
 function buildStudyTargets(keys) {

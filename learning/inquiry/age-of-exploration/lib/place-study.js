@@ -78,4 +78,18 @@ function refreshLearningMetadata(mission,resolveTarget){
   }
   return changed;
 }
-module.exports={QUESTION_COUNT,QUESTIONS_VERSION,questionsVersionFor,INSTRUCTIONS,createQuestions,normalizeProgress,publicState,publicSession,issue,answer,upgradeMission,refreshMission,refreshLearningMetadata};
+// 저장된 미션의 사진도 현재 선정 결과를 따른다. 문제와 응답·진행 상태는 그대로 유지한다.
+function refreshReadingMedia(mission,resolveTarget){
+  let changed=false;
+  const keys=['image','imageCredit','imageKind','imageChanges','imageCaption','imageSource','imageLicenseUrl'];
+  for(const target of mission?.studyTargets||[]){
+    if(!target.reading)continue;
+    const fresh=resolveTarget(target.key)?.reading;
+    if(!fresh)continue;
+    for(const key of keys){
+      if(target.reading[key]!==fresh[key]){target.reading[key]=fresh[key];changed=true;}
+    }
+  }
+  return changed;
+}
+module.exports={QUESTION_COUNT,QUESTIONS_VERSION,questionsVersionFor,INSTRUCTIONS,createQuestions,normalizeProgress,publicState,publicSession,issue,answer,upgradeMission,refreshMission,refreshLearningMetadata,refreshReadingMedia};
