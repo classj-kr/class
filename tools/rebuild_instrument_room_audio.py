@@ -134,6 +134,11 @@ FIRST_INDEX = {
     "recorder-tenor": 1,
 }
 
+# Bowed cello's exported note names are an octave above the sounding notes.
+# Keep source segments and existing output filenames stable after correcting
+# the app's anchor range to the actual pitches. Pizzicato is already correct.
+FILE_MIDI_OFFSETS = {"cello": 12}
+
 
 CONFIG_RE = re.compile(
     r'"(?P<key>[^"]+)": Object\.freeze\(\{ id: "(?P<id>[^"]+)", '
@@ -180,12 +185,13 @@ def main() -> None:
             raise FileNotFoundError(source)
         destination.mkdir(parents=True, exist_ok=True)
         for midi in range(minimum, maximum + 1):
+            file_midi = midi + FILE_MIDI_OFFSETS.get(sample_id, 0)
             if sample_id in FIRST_INDEX:
                 source_index = FIRST_INDEX[sample_id] + midi - minimum
             else:
-                source_index = midi - 20 if sample_id in FULL_GRID else midi - minimum + 1
-            output_index = midi - 20
-            output = destination / f"{output_index:03d}_{note_name(midi)}.ogg"
+                source_index = file_midi - 20 if sample_id in FULL_GRID else midi - minimum + 1
+            output_index = file_midi - 20
+            output = destination / f"{output_index:03d}_{note_name(file_midi)}.ogg"
             encode(source, output, (source_index - 1) * 10.0)
             rebuilt += 1
         print(f"{sample_id}: {maximum - minimum + 1}", flush=True)

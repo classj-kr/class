@@ -88,9 +88,12 @@
         "flugelhorn": Object.freeze({ id: "flugelhorn", root: "assets/audio/flugelhorn/", min: 52, max: 92, fileMin: 21, step: 1, gainDb: -5.56 }),
         "viola": Object.freeze({ id: "viola", root: "assets/audio/viola/", min: 48, max: 108, fileMin: 21, step: 1, gainDb: 0.59, revision: "20260901-viola-v2" }),
         "viola-pizz": Object.freeze({ id: "viola-pizz", root: "assets/audio/viola-pizz/", min: 48, max: 89, fileMin: 21, step: 1, gainDb: 9.0 }),
-        "violin": Object.freeze({ id: "violin", root: "assets/audio/violin/", min: 55, max: 108, fileMin: 21, step: 1, gainDb: 1.45, revision: "20260901-violin-v2" }),
+        // Bowed loops end before the recorded release, so tied notes stay audible.
+        "violin": Object.freeze({ id: "violin", root: "assets/audio/violin/", min: 55, max: 108, fileMin: 21, step: 1, gainDb: 1.45, loopEnd: 3.8, revision: "20260901-violin-v2" }),
         "violin-pizz": Object.freeze({ id: "violin-pizz", root: "assets/audio/violin-pizz/", min: 55, max: 100, fileMin: 21, step: 1, gainDb: 9.0 }),
-        "cello": Object.freeze({ id: "cello", root: "assets/audio/cello/", min: 48, max: 108, fileMin: 21, step: 1, gainDb: -3.85 }),
+        // The bowed cello render sounds one octave below its exported filenames.
+        // Keep those files intact and index them by their measured sounding pitch.
+        "cello": Object.freeze({ id: "cello", root: "assets/audio/cello/", min: 36, max: 96, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -3.85, loopEnd: 3.8 }),
         "cello-pizz": Object.freeze({ id: "cello-pizz", root: "assets/audio/cello-pizz/", min: 48, max: 73, fileMin: 21, step: 1, gainDb: 9.0 }),
         "upright-bass": Object.freeze({ id: "upright-bass", root: "assets/audio/upright-bass/", min: 52, max: 108, fileMin: 21, step: 1, gainDb: -4.1 }),
         "upright-bass-pizz": Object.freeze({ id: "upright-bass-pizz", root: "assets/audio/upright-bass-pizz/", min: 52, max: 108, fileMin: 21, step: 1, gainDb: 1.16 }),
@@ -358,11 +361,13 @@
     // Bach, BWV 1068 Air: first four measures, transposed from D to C
     // and down an octave for the violin G-string register (G3–G4).
     // Public-domain melody source: Mutopia-2008/10/28-1534.
+    // Give the grace notes a notated 32nd-note slot; a 40 ms bowed sample
+    // cannot speak clearly. Keep the following strong beats in place.
     const AIR_ON_G_STRING = [
         [0, 64, 4.5],
-        [4.5, 69, .25], [4.75, 65, .21], [4.96, 64, .04],
+        [4.5, 69, .25], [4.75, 65, .125], [4.875, 64, .125],
         [5, 62, .25], [5.25, 60, .25], [5.5, 59, .25], [5.75, 60, .25],
-        [6, 59, .94], [6.94, 57, .06], [7, 55, 1],
+        [6, 59, .875], [6.875, 57, .125], [7, 55, 1],
         [8, 67, 2.25], [10.25, 64, .25], [10.5, 58, .25], [10.75, 57, .25],
         [11, 62, .25], [11.25, 61, .25], [11.5, 67, .25], [11.75, 65, .25],
         [12, 65, 2.25], [14.25, 62, .25], [14.5, 57, .25], [14.75, 55, .25],
@@ -376,7 +381,7 @@
             { title: "백조", bpm: 80, notes: THE_SWAN, endBeat: 25, articulation: "sustain" }
         ],
         violin: [
-            { title: "G선상의 아리아", bpm: 64, notes: AIR_ON_G_STRING, endBeat: 17, articulation: "sustain" }
+            { title: "G선상의 아리아", bpm: 48, notes: AIR_ON_G_STRING, endBeat: 17, articulation: "sustain" }
         ],
         glockenspiel: [
             { title: "사탕요정의 춤", bpm: 88, notes: SUGAR_PLUM_FAIRY, endBeat: 8.5 },
@@ -1208,8 +1213,9 @@
 
     function concertGrandSampleFile(anchor, config) {
         const sampleConfig = config || sampledPianoConfig();
-        const index = String(anchor - (sampleConfig.fileMin || sampleConfig.min) + 1).padStart(3, "0");
-        const note = core.noteLabel(anchor).toLowerCase().replace("♯", "s");
+        const fileMidi = anchor + (sampleConfig.fileMidiOffset || 0);
+        const index = String(fileMidi - (sampleConfig.fileMin || sampleConfig.min) + 1).padStart(3, "0");
+        const note = core.noteLabel(fileMidi).toLowerCase().replace("♯", "s");
         return index + "_" + note + ".ogg";
     }
 

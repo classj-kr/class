@@ -5,6 +5,7 @@ from __future__ import annotations
 from audit_sample_fidelity import compare, decode
 from rebuild_instrument_room_audio import (
     AUDIO,
+    FILE_MIDI_OFFSETS,
     FIRST_INDEX,
     FULL_GRID,
     MIXDOWN,
@@ -28,13 +29,14 @@ def main() -> None:
         representatives = sorted({minimum, (minimum + maximum) // 2, maximum})
         scores: list[float] = []
         for midi in representatives:
+            file_midi = midi + FILE_MIDI_OFFSETS.get(sample_id, 0)
             if sample_id in FIRST_INDEX:
                 source_index = FIRST_INDEX[sample_id] + midi - minimum
             else:
-                source_index = midi - 20 if sample_id in FULL_GRID else midi - minimum + 1
+                source_index = file_midi - 20 if sample_id in FULL_GRID else midi - minimum + 1
             source_start = (source_index - 1) * 10.0
-            output_index = midi - 20
-            sample = AUDIO / folder / f"{output_index:03d}_{note_name(midi)}.ogg"
+            output_index = file_midi - 20
+            sample = AUDIO / folder / f"{output_index:03d}_{note_name(file_midi)}.ogg"
             if not sample.exists():
                 print(f"MISSING {sample_id} midi={midi} file={sample.name}")
                 missing += 1

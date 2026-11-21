@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
     if (error) return res.writeHead(404).end();
     if (file.endsWith('instrument-room' + path.sep + 'app.js')) {
       data = data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
-        'window.demoTest = { state, selectModel }; document.addEventListener("DOMContentLoaded", init);');
+        'window.demoTest = { state, selectModel, loadConcertGrandSample }; document.addEventListener("DOMContentLoaded", init);');
       data = data.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {',
         'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.demoHits.push({midi, anchor, sampleSet, time:performance.now()});');
     }
@@ -37,6 +37,58 @@ const server = http.createServer((req, res) => {
       await page.setViewport({ width, height: 900, isMobile: width < 500, hasTouch: width < 500 });
       await page.evaluateOnNewDocument(() => { window.demoHits = []; });
       await page.goto('http://127.0.0.1:' + server.address().port + '/learning/arts/instrument-room/', { waitUntil: 'networkidle0' });
+      if (width > 500) {
+        // Check decoded audio, not only MIDI labels: mislabeled cello exports
+        // previously passed all keyboard/demo assertions while sounding -12.
+        const pitches = await page.evaluate(async () => {
+          function fundamental(buffer) {
+            const samples = buffer.getChannelData(0);
+            const stride = Math.max(1, Math.floor(buffer.sampleRate / 12000));
+            const rate = buffer.sampleRate / stride;
+            const start = Math.floor(buffer.sampleRate * .45);
+            const window = 2048;
+            const limit = Math.ceil(rate / 50);
+            const difference = new Float64Array(limit + 1);
+            let sum = 0;
+            for (let lag = 1; lag <= limit; lag++) {
+              let square = 0;
+              for (let i = 0; i < window; i++) {
+                const delta = samples[start + i * stride] - samples[start + (i + lag) * stride];
+                square += delta * delta;
+              }
+              sum += square;
+              difference[lag] = sum ? square * lag / sum : 1;
+            }
+            for (let lag = Math.floor(rate / 1500); lag < limit; lag++) {
+              if (difference[lag] >= .15) continue;
+              while (lag + 1 < limit && difference[lag + 1] < difference[lag]) lag++;
+              const left = difference[lag - 1], center = difference[lag], right = difference[lag + 1];
+              const interpolated = lag + (left - right) / (2 * (left - 2 * center + right));
+              return rate / interpolated;
+            }
+            throw new Error('No stable fundamental found');
+          }
+          document.querySelector('[data-family="strings"]').click();
+          const results = [];
+          for (const [model, articulation, midi] of [
+            ['cello', 'sustain', 48], ['cello', 'sustain', 55],
+            ['cello', 'sustain', 67], ['cello', 'sustain', 79],
+            ['cello', 'pizzicato', 67], ['violin', 'sustain', 64]
+          ]) {
+            demoTest.selectModel(model);
+            demoTest.state.articulation = articulation;
+            const sample = await demoTest.loadConcertGrandSample(midi);
+            results.push({ model, articulation, midi, hz: fundamental(sample.buffer) });
+          }
+          return results;
+        });
+        for (const pitch of pitches) {
+          const expected = 440 * 2 ** ((pitch.midi - 69) / 12);
+          const cents = 1200 * Math.log2(pitch.hz / expected);
+          assert.ok(Math.abs(cents) < 45, JSON.stringify({ ...pitch, cents }));
+        }
+        console.log('Decoded cello, cello pizzicato and violin fundamentals match their keys');
+      }
       await page.evaluate(() => {
         document.querySelector('[data-family="percussion"]').click();
         demoTest.selectModel('glockenspiel');
@@ -76,7 +128,7 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       for (const [model, title, firstNote, lastNote, count, length] of [
         ['cello', '백조', 67, 55, 20, 24 * 60000 / 80],
-        ['violin', 'G선상의 아리아', 64, 60, 28, 16 * 60000 / 64]
+        ['violin', 'G선상의 아리아', 64, 60, 28, 16 * 60000 / 48]
       ]) {
         await page.evaluate(id => {
           document.querySelector('[data-family="strings"]').click();
@@ -93,7 +145,7 @@ const server = http.createServer((req, res) => {
         await new Promise(resolve => setTimeout(resolve, 1400));
         const sustained = await page.evaluate(id => {
           const voice = [...demoTest.state.pianoVoices.values()].find(voice => voice.sampleSet === id && !voice.released);
-          return Boolean(voice && voice.source.loop && document.querySelector('.key.demo-hit'));
+          return Boolean(voice && voice.source.loop && voice.source.loopEnd === 3.8 && document.querySelector('.key.demo-hit'));
         }, model);
         assert.ok(sustained, title + ' holds a recorded bowed note');
         if (width > 500) {
@@ -103,6 +155,12 @@ const server = http.createServer((req, res) => {
           assert.equal(hits.at(-1).midi, lastNote);
           assert.ok(hits.every(hit => hit.sampleSet === model && hit.anchor === hit.midi));
           assert.ok(Math.abs(hits.at(-1).time - hits[0].time - length) < 250);
+          if (model === 'violin') {
+            const beats = [0, 4.5, 4.75, 4.875, 5, 5.25, 5.5, 5.75, 6, 6.875, 7,
+              8, 10.25, 10.5, 10.75, 11, 11.25, 11.5, 11.75,
+              12, 14.25, 14.5, 14.75, 15, 15.25, 15.5, 15.75, 16];
+            hits.forEach((hit, index) => assert.ok(Math.abs(hit.time - hits[0].time - beats[index] * 1250) < 100));
+          }
         } else {
           await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
         }
