@@ -1,5 +1,6 @@
-# Local-only Claude Code permission state (differs per machine/session)
+# Local Claude Code settings and worktrees
 .claude/settings.local.json
+/.claude/worktrees/
 
 # Conversation attachments can contain personal information; keep them local.
 /.codex-remote-attachments/
