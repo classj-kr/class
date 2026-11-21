@@ -109,11 +109,12 @@ const server = http.createServer((req, res) => {
             const paused = natural.suspend(.25), playing = natural.startRendering();
             await paused;
             a.pianoNoteOff(midi);
-            if (voice.released) throw new Error(model + ': a short tap choked the recorded pluck');
+            if (!voice.released) throw new Error(model + ': key-up left the guitar sustaining');
+            if (![...a.state.pianoReleaseVoices].some(tail => tail.releaseTail)) throw new Error(model + ': missing recorded release tail');
             await OfflineAudioContext.prototype.resume.call(natural);
             const output = await playing;
             let actual = 0, reference = 0;
-            for (let i=24000;i<72000;i++) {
+            for (let i=48000;i<72000;i++) {
               actual += output.getChannelData(0)[i] ** 2;
               reference += buffer.getChannelData(0)[i] ** 2;
             }
@@ -128,7 +129,7 @@ const server = http.createServer((req, res) => {
     for (const row of results) for (const render of row.renders) {
       assert.ok(render.peak < .99 && render.rms > .001, JSON.stringify({model:row.model,...render}));
     }
-    for (const row of results) assert.ok(row.tapTailRatio > .3, row.model + ': original resonance after a short tap');
+    for (const row of results) assert.ok(row.tapTailRatio < .015, row.model + ': key-up damps the note after its short recorded release');
     assert.deepEqual(errors, []);
     // An unsupported lossless decoder must use the supplied Ogg fallback.
     const fallbackPage = await browser.newPage();

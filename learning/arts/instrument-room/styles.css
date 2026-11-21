@@ -260,9 +260,11 @@ input[type="range"] { width: 100%; height: 20px; margin: 0; accent-color: var(--
 .key-size-button span { font-size: 9px; font-weight: 800; }.key-size-button b { color: var(--accent); font-size: 10px; }
 .keyboard-demo-controls { display: flex; align-items: center; gap: 6px; }
 .keyboard-demo-controls button { margin-left: 0; }
-.keyboard-demo-controls select { min-width: 0; max-width: 190px; min-height: 30px; padding: 2px 6px; border: 1px solid var(--line); border-radius: 6px; background: #101719; color: var(--text); font: inherit; font-size: 12px; }
 .play-toolbar.melody-demo-visible { flex-wrap: wrap; }
-#melodyDemoControls { flex: 0 0 100%; padding-block: 6px; }
+#melodyDemoControls { flex: 0 1 auto; min-width: 0; padding-block: 6px; flex-wrap: wrap; }
+.demo-group-label { font-weight: 800; white-space: nowrap; }
+.demo-song-buttons { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.demo-song-buttons button { min-height: 36px; }
 #drumDemoButton { margin-left: 0; }
 .keyboard-demo-controls button[aria-pressed="true"] { background: rgba(142,240,198,.2); border-color: var(--accent); }
 .keyboard-range-controls { display: flex; align-items: center; gap: 3px; }
@@ -527,8 +529,6 @@ body.key-size-open { overflow: hidden; }
 
 .control-panel { overflow: auto; }
 .control-set { align-content: start; }
-.fx-strip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding-top: 7px; border-top: 1px solid var(--line); }
-.fx-strip label span { font-size: 8px; }
 .classical-controls { align-content: start; }
 
 
@@ -548,7 +548,6 @@ body.key-size-open { overflow: hidden; }
     .control-panel { max-height: none; padding: 6px 10px; }
     .control-set { min-height: 0; }
     .drum-pads.extended { grid-template-columns: repeat(3, 1fr); overflow-x: visible; }
-    .fx-strip { grid-template-columns: repeat(3,1fr); }
 }
 @media (max-width: 520px) {
 .mallet-render.timpani span { position: absolute; z-index: 4; top: 30px; width: 175px; height: 135px; border-radius: 50%; background: transparent; }
@@ -634,13 +633,6 @@ body.key-size-open { overflow: hidden; }
     .pad-group p { font-size: 8.5px; margin-bottom: 3px; }
 }
 
-.keyboard-patch-controls { display: grid; gap: 7px; padding-top: 7px; border-top: 1px solid var(--line); }
-.keyboard-patch-controls label { display: grid; gap: 2px; }
-.keyboard-patch-controls label span { display: flex; justify-content: space-between; color: var(--muted); font-size: 9px; font-weight: 800; }
-.keyboard-patch-controls output { color: var(--accent); }
-.drawbars { height: 58px; display: grid; grid-template-columns: repeat(9,1fr); gap: 5px; padding: 7px 8px; border-radius: 8px; background: #070a0b; }
-.drawbars i { position: relative; border-radius: 3px; background: linear-gradient(90deg,#1a1e1f,#52595a,#151819); }
-.drawbars i::after { content: ""; position: absolute; left: -1px; right: -1px; top: calc((8 - var(--draw)) * 5px); height: 9px; border-radius: 3px; background: #e7dfcb; box-shadow: 0 2px 4px #000; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; animation-duration: .001ms !important; }
 }

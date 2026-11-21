@@ -95,20 +95,19 @@ const server = http.createServer((req, res) => {
       });
       const layout = await page.evaluate(() => {
         const controls = document.querySelector('#melodyDemoControls');
-        const button = document.querySelector('#melodyDemoButton').getBoundingClientRect();
+        const button = document.querySelector('#melodyDemoButtons button').getBoundingClientRect();
         const toolbar = controls.parentElement.getBoundingClientRect();
-        const select = document.querySelector('#melodyDemoSelect').getBoundingClientRect();
-        return { left: button.left - toolbar.left, fits: select.right <= toolbar.right, text: controls.textContent };
+        const buttons = [...document.querySelectorAll('#melodyDemoButtons button')].map(el => el.getBoundingClientRect());
+        return { left: controls.getBoundingClientRect().left - toolbar.left, fits: buttons.every(rect => rect.right <= toolbar.right && rect.left >= toolbar.left), text: controls.textContent };
       });
       assert.ok(layout.left >= 0 && layout.left < 20);
       assert.ok(layout.fits);
       assert.doesNotMatch(layout.text, /BPM/);
-      assert.deepEqual(await page.$$eval('#melodyDemoSelect option', options => options.map(option => option.textContent)), ['사탕요정의 춤', '마술피리 · 마법의 종']);
+      assert.deepEqual(await page.$$eval('#melodyDemoButtons button b', options => options.map(option => option.textContent)), ['사탕요정의 춤', '마술피리 · 마법의 종']);
       for (const song of ['0', '1']) {
-        await page.select('#melodyDemoSelect', song);
-        await page.evaluate(() => { window.demoHits = []; document.querySelector('#melodyDemoButton').click(); });
+        await page.evaluate(index => { window.demoHits = []; document.querySelector('[data-melody-demo="' + index + '"]').click(); }, song);
         await page.waitForFunction(() => document.querySelector('.key.demo-hit'));
-        await page.waitForFunction(() => document.querySelector('#melodyDemoButton').getAttribute('aria-pressed') === 'false');
+        await page.waitForFunction(() => !document.querySelector('#melodyDemoButtons [aria-pressed="true"]'));
         const hits = await page.evaluate(() => demoHits);
         assert.ok(hits.every(hit => hit.sampleSet === 'glockenspiel' && hit.midi === hit.anchor && hit.midi >= 79 && hit.midi <= 95));
         assert.equal(hits[0].midi, song === '0' ? 91 : 84);
@@ -116,14 +115,16 @@ const server = http.createServer((req, res) => {
         assert.equal(hits.length, song === '0' ? 21 : 24);
         assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       }
-      await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
+      await page.evaluate(() => document.querySelector('#melodyDemoButtons button').click());
       await page.waitForFunction(() => document.querySelector('.key.demo-hit'));
-      await page.select('#melodyDemoSelect', '0');
-      assert.equal(await page.$eval('#melodyDemoButton', button => button.getAttribute('aria-pressed')), 'false');
+      await page.evaluate(() => document.querySelector('[data-melody-demo="1"]').click());
+      assert.equal(await page.$eval('[data-melody-demo="0"]', button => button.getAttribute('aria-pressed')), 'false');
+      assert.equal(await page.$$eval('#melodyDemoButtons [aria-pressed="true"]', buttons => buttons.length), 1);
+      await page.evaluate(() => document.querySelector('[data-melody-demo="1"]').click());
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
-      await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
+      await page.evaluate(() => document.querySelector('#melodyDemoButtons button').click());
       await page.waitForFunction(() => document.querySelector('.key.demo-hit'));
-      await page.evaluate(() => document.querySelector('[data-family="keyboard"]').click());
+      await page.evaluate(() => document.querySelector('[data-family="bass"]').click());
       assert.equal(await page.$eval('#melodyDemoControls', controls => controls.classList.contains('hidden')), true);
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       for (const [model, title, firstNote, lastNote, count, length] of [
@@ -137,8 +138,8 @@ const server = http.createServer((req, res) => {
             .find(button => button.textContent === '피치카토').click();
           window.demoHits = [];
         }, model);
-        assert.equal(await page.$eval('#melodyDemoSelect option', option => option.textContent), title);
-        await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
+        assert.equal(await page.$eval('#melodyDemoButtons button b', option => option.textContent), title);
+        await page.evaluate(() => document.querySelector('#melodyDemoButtons button').click());
         await page.waitForFunction(midi => document.querySelector('.key[data-midi="' + midi + '"].demo-hit'), {}, firstNote);
         assert.equal(await page.$eval('#classicalArticulationButtons [aria-pressed="true"]', button => button.textContent), '활긋기');
         assert.equal(await page.evaluate(() => demoHits[0].sampleSet), model);
@@ -149,7 +150,7 @@ const server = http.createServer((req, res) => {
         }, model);
         assert.ok(sustained, title + ' holds a recorded bowed note');
         if (width > 500) {
-          await page.waitForFunction(() => document.querySelector('#melodyDemoButton').getAttribute('aria-pressed') === 'false');
+          await page.waitForFunction(() => !document.querySelector('#melodyDemoButtons [aria-pressed="true"]'));
           const hits = await page.evaluate(() => demoHits);
           assert.equal(hits.length, count);
           assert.equal(hits.at(-1).midi, lastNote);
@@ -162,7 +163,7 @@ const server = http.createServer((req, res) => {
             hits.forEach((hit, index) => assert.ok(Math.abs(hit.time - hits[0].time - beats[index] * 1250) < 100));
           }
         } else {
-          await page.evaluate(() => document.querySelector('#melodyDemoButton').click());
+          await page.evaluate(() => document.querySelector('#melodyDemoButtons button').click());
         }
         assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       }

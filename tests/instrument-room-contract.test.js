@@ -86,10 +86,9 @@ test('keyboard library matches the twelve supplied keyboard instruments', () => 
   ]) {
     assert.match(app, new RegExp(`id: "${model}"`));
   }
-  assert.match(app, /AP · ACOUSTIC/);
-  assert.match(app, /EP · TINE/);
-  assert.match(app, /HYBRID · LA/);
-  assert.match(app, /ORGAN · TONEWHEEL/);
+  for (const [id, tag] of [['concert-grand','CONCERT GRAND'], ['tine-ep','RHODES ELECTRIC PIANO'], ['hybrid-la-rhodes','PIANO + RHODES'], ['hammond-organ','HAMMOND ORGAN'], ['oboe','OBOE'], ['english-horn','ENGLISH HORN'], ['french-horn','FRENCH HORN']]) {
+    assert.equal(runtime.modelById(id).tag, tag);
+  }
 });
 
 test('keyboard models use compact per-note Ogg multisamples with recorded range metadata', () => {
@@ -428,8 +427,8 @@ test('percussion library includes dedicated kits and essential orchestral instru
   assert.match(app, /function playSampledDrum/);
   assert.match(app, /preloadDrumSamples\(\)/);
   assert.match(app, /typeof current\.gainDb === "number"/);
-  assert.match(app, /ACOUSTIC DRUM KIT/);
-  assert.match(app, /drumSystemDescription\.classList\.toggle\("hidden", !copy\[1\]\)/);
+  assert.match(app, /elements\.drumSystemLabel\.textContent = model\.tag/);
+  assert.match(app, /drumSystemDescription\.classList\.toggle\("hidden", !description\)/);
   assert.doesNotMatch(app, /Cubase|AD2 MAP/);
   assert.doesNotMatch(app, /사용자가 제공한|AD2 MIDI 키맵/);
   assert.match(css, /#drumControls\.sampled-kit label \{ display: none; \}/);
@@ -494,7 +493,7 @@ test('string and expressive families expose virtual-instrument presentation', ()
     assert.match(app, new RegExp(`id: "${model}"`));
   }
   assert.match(html, /id="classicalControls"/);
-  assert.match(html, /id="guitarFxControls"/);
+  assert.doesNotMatch(html, /id="guitarFxControls"|id="keyboardPatchControls"|id="drumResonanceSlider"|id="drumToneSlider"/);
   assert.doesNotMatch(html, /id="soundPresetGroup"/);
   assert.match(html, /id="physicalStringControls"/);
   assert.doesNotMatch(html, /expression-tabs|expression-actions/);

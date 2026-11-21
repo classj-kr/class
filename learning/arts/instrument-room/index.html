@@ -7,12 +7,13 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20261121-guitar-lossless-v3">
+    <link rel="stylesheet" href="styles.css?v=20261121-demo-controls-v5">
     <script src="instrument-core.js?v=20261118-power-chords" defer></script>
     <script src="instrument-details.js?v=20261121-guitar-lossless-v3" defer></script>
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
     <script src="pad-presentation.js?v=20261015-orchestral-v1" defer></script>
-    <script src="app.js?v=20261121-guitar-lossless-v3" defer></script>
+    <script src="melody-demos.js?v=20261121-famous-themes-v1" defer></script>
+    <script src="app.js?v=20261121-demo-controls-release-v5" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
     <div class="room-glow" aria-hidden="true"></div>
@@ -122,7 +123,6 @@
                             </div>
                         </div>
                         <div id="pianoControls" class="control-set">
-                            <div id="keyboardPatchControls" class="keyboard-patch-controls hidden"></div>
                             <button id="sustainButton" class="sustain-button" type="button" aria-pressed="false"><span>서스테인</span><b>SPACE</b></button>
                             <p>길게 누르거나 고정해서 사용할 수 있어요.</p>
                         </div>
@@ -137,7 +137,6 @@
                                 <label><span>댐핑 <output id="muteOutput">10</output></span><input id="muteSlider" type="range" min="0" max="82" value="10"></label>
                                 <label><span>피킹 위치 <output id="pickOutput">28</output></span><input id="pickSlider" type="range" min="8" max="90" value="28"></label>
                                 <label><span>드라이브 <output id="driveOutput">8</output></span><input id="driveSlider" type="range" min="0" max="65" value="8"></label>
-                                <div id="guitarFxControls" class="fx-strip hidden"><label><span>디스토션 <output>0</output></span><input type="range" min="0" max="100" value="0"></label><label><span>딜레이 <output>18</output></span><input type="range" min="0" max="100" value="18"></label><label><span>리버브 <output>12</output></span><input type="range" min="0" max="100" value="12"></label></div>
                             </div>
                         </div>
                         <div id="classicalControls" class="control-set classical-controls hidden">
@@ -147,10 +146,8 @@
                                 <p id="classicalArticulationHint" class="technique-hint"></p>
                             </section>
                         </div>
-                        <div id="drumControls" class="control-set hidden">
-                            <div class="kit-readout"><span id="drumSystemLabel">MODAL KIT</span><b id="drumSystemDescription">막과 금속의 공명을 계산해 소리를 만들어요.</b></div>
-                            <label><span><i id="drumResonanceLabel">공명</i> <output id="drumResonanceOutput">58</output></span><input id="drumResonanceSlider" type="range" min="20" max="90" value="58"></label>
-                            <label><span><i id="drumToneLabel">밝기</i> <output id="drumToneOutput">62</output></span><input id="drumToneSlider" type="range" min="20" max="95" value="62"></label>
+                        <div id="drumControls" class="control-set sampled-kit hidden">
+                            <div class="kit-readout"><span id="drumSystemLabel">타악기</span><b id="drumSystemDescription">악기의 실제 소리를 들어 보세요.</b></div>
                         </div>
                     </aside>
                 </div>
@@ -160,8 +157,8 @@
                 <div class="play-toolbar">
                     <small id="noteReadout" class="screen-reader-only" aria-live="polite">준비됨</small>
                     <div id="melodyDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="시범 연주">
-                        <button id="melodyDemoButton" class="key-size-button" type="button" aria-pressed="false"><span>시범 연주</span></button>
-                        <select id="melodyDemoSelect" aria-label="시범곡 선택"></select>
+                        <span class="demo-group-label">시범 연주</span>
+                        <div id="melodyDemoButtons" class="demo-song-buttons"></div>
                     </div>
                     <div id="bassDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="베이스 시범 연주">
                         <button class="key-size-button" type="button" data-bass-demo="finger" aria-pressed="false"><span>핑거</span><b>Billie Jean</b></button>
