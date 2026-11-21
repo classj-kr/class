@@ -106,13 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
                `<path class="${cls}" d="${head}"/>`;
     }
 
+    // 미끄러지다 멈춘 뒤에는 정지 마찰력이 미는 힘만큼만 생긴다.
+    const stoppedNow = a => a.motion === 'slower' && !a.reachedEnd && simTime >= a.stopTime - 1e-9;
+    const frictionNow = a => (stoppedNow(a) ? Math.min(a.F, a.fMax) : a.friction);
+
     function renderMain(a, st) {
+        const fr = frictionNow(a), netNow = a.F - fr;
         let out = '';
         out += `<text class="read-text" x="20" y="24">속력 ${st.v.toFixed(1)} m/s</text>`;
         out += `<text class="part-label" x="440" y="24" text-anchor="end">이동 거리 ${st.x.toFixed(1)} m · 시간 ${simTime.toFixed(1)} 초</text>`;
         // how long an arrow of a given size is, stated once
         out += `<line class="scale-bar" x1="20" y1="44" x2="${20 + 10 * PX_PER_N}" y2="44"/>`;
-        out += `<text class="scale-text" x="${24 + 10 * PX_PER_N}" y="48">화살표 이 길이가 10 N</text>`;
+        out += `<text class="scale-text" x="${24 + 10 * PX_PER_N}" y="48">가로 화살표 10 N</text>`;
 
         // the floor, textured to match how slippery it is
         out += `<line class="floor" x1="20" y1="${GROUND_Y}" x2="450" y2="${GROUND_Y}"/>`;
@@ -133,12 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         out += arrow(cx, GROUND_Y, cx, GROUND_Y + 14, 'arrow-vert');
         if (a.F > 0) out += arrow(right, CY, right + a.F * PX_PER_N, CY, 'arrow-push');
         // 마찰력은 밀기 시작해야 생긴다. 밀기 전에 길이를 보이면 답이 된다.
-        if (pushed() && a.friction > 0) out += arrow(left, CY, left - a.friction * PX_PER_N, CY, 'arrow-fric');
+        if (pushed() && fr > 0) out += arrow(left, CY, left - fr * PX_PER_N, CY, 'arrow-fric');
 
         // The arrows carry no text of their own. The crate roams the whole
         // track, so any label pinned to it collides with something sooner or
         // later; this table sits where the crate can never reach.
-        [['미는 힘', a.F, '#0284c7'], ['마찰력', pushed() ? a.friction : null, '#ea580c'],
+        [['미는 힘', a.F, '#0284c7'], ['마찰력', pushed() ? fr : null, '#ea580c'],
          ['수직항력', a.weight, '#7c9aa6'], ['무게', a.weight, '#7c9aa6']]
             .forEach(([name, value, colour], i) => {
                 const x = 214 + (i % 2) * 104, y = 44 + Math.floor(i / 2) * 18;
@@ -156,10 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         out += `<text class="part-label" x="${TRACK_X1 + 8}" y="162">m</text>`;
 
-        const balanced = Math.abs(a.net) < 1e-9;
-        const tone = balanced ? '#059669' : a.net > 0 ? '#0284c7' : '#ea580c';
+        const balanced = Math.abs(netNow) < 1e-9;
+        const tone = balanced ? '#059669' : netNow > 0 ? '#0284c7' : '#ea580c';
         if (pushed()) out += `<text class="balance-text" fill="${tone}" x="20" y="190">` +
-               `미는 힘 ${a.F} N ${balanced ? '=' : a.net > 0 ? '>' : '<'} 마찰력 ${fmt(a.friction)} N → 알짜힘 ${fmt(Math.abs(a.net))} N${balanced ? ' (평형)' : ''}</text>`;
+               `미는 힘 ${a.F} N ${balanced ? '=' : netNow > 0 ? '>' : '<'} 마찰력 ${fmt(fr)} N → 알짜힘 ${fmt(Math.abs(netNow))} N${balanced ? ' (평형)' : ''}</text>`;
         if (done) out += `<text class="note-text" x="20" y="206">${MOTION_NOTE[a.motion]}</text>`;
         window.scienceScene.render(mainGroup,out);
     }
@@ -170,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rest: '알짜힘이 0이라 멈춘 채로 있습니다. 마찰력이 미는 힘만큼만 생겼습니다.',
         constant: '알짜힘이 0이라 속력이 변하지 않습니다. 힘이 평형이어도 움직일 수 있습니다.',
         faster: '알짜힘이 앞으로 작용해 속력이 점점 커집니다.',
-        slower: '알짜힘이 뒤로 작용해 속력이 점점 줄어들다가 멈춥니다.',
+        slower: '알짜힘이 뒤로 작용해 멈춥니다. 멈춘 뒤 마찰력은 미는 힘과 같습니다.',
     };
 
     function renderGraph(a, st) {
@@ -224,7 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
         startOutput.textContent = `${a.v0.toFixed(1)} m/s`;
         stageBadge.textContent = done ? `${a.floorName} · ${MOTION_NAME[a.motion]}` : a.floorName;
         window.scienceScene.render(dataNote, done
-            ? '<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p><p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>'
+            ? (stoppedNow(a)
+                ? '<p>미는 힘: ' + a.F + ' N · 미끄러지는 동안 마찰력: ' + fmt(a.friction) + ' N</p><p>멈춘 뒤 마찰력: ' + fmt(frictionNow(a)) + ' N · 알짜힘 0 N</p>'
+                : '<p>미는 힘: ' + a.F + ' N · 마찰력: ' + fmt(a.friction) + ' N</p><p>알짜힘: ' + fmt(a.net) + ' N · ' + MOTION_NAME[a.motion] + '</p>')
             : '<p>미는 힘: ' + a.F + ' N · 상자 ' + a.m + ' kg · 처음 속력 ' + a.v0.toFixed(1) + ' m/s</p>');
         return { a, st };
     }

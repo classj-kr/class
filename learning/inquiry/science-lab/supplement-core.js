@@ -544,7 +544,7 @@ function animB_solute(s,k,ph,prev){
  o+=animB_t(large?'남은 양이 더 많음':'모두 녹음',125,268,{size:15,c:'#1f4f5c',w:700,op:res})+animB_t(large?'남은 양이 더 적음':'모두 녹음',335,268,{size:15,c:'#1f4f5c',w:700,op:res});
  return o;
 }
-function animB_floatLevel(s){return s.water==='more'?84:120;}
+function animB_floatLevel(s){return s.water==='more'?64:150;}
 function animB_floatY(s){const strength=(s.amount==='more'?2:1)/(s.water==='more'?2:1),lv=animB_floatLevel(s);return strength>1?lv-6:strength<1?lv+17:lv+9;}
 function animB_float(s,k,ph,prev){
  const f=animB_f,strength=(s.amount==='more'?2:1)/(s.water==='more'?2:1),higher=strength>1,lower=strength<1,play=k<1;
@@ -554,8 +554,8 @@ function animB_float(s,k,ph,prev){
  const yAt=(lv,fin)=>{if(!play)return fin;const u=animB_seg(k,.15,1);if(u<=0)return -25;if(u<.22)return -25+(lv+25)*(u/.22)**2;const v=(u-.22)/.78;return fin+(lv-fin)*Math.exp(-4*v)*Math.cos(9*v)*(1-animB_seg(v,.9,1));};
  const ripple=(x,lv)=>{if(!play)return '';const u=animB_seg(k,.32,.7);if(u<=0||u>=1)return '';return `<ellipse cx="${f(x)}" cy="${f(lv)}" rx="${f(16+u*36)}" ry="${f(3+u*4)}" fill="none" stroke="#fff" stroke-width="2" opacity="${(1-u).toFixed(2)}"/>`;};
  let o='';
- const L=animB_beaker(60,top,W,bottom,120,'#d6eaf2'),R=animB_beaker(270,top,W,bottom,rl,'#d6eaf2');
- o+=L.back+egg(125,yAt(120,129))+ripple(125,120)+L.front;
+ const L=animB_beaker(60,top,W,bottom,150,'#d6eaf2'),R=animB_beaker(270,top,W,bottom,rl,'#d6eaf2');
+ o+=L.back+egg(125,yAt(150,159))+ripple(125,150)+L.front;
  o+=R.back+egg(335,yAt(rl,animB_floatY({...s})))+ripple(335,rl)+R.front;
  o+=animB_t('기준 설탕물',125,38,{size:15,w:700})+animB_t('비교 설탕물',335,38,{size:15,w:700});
  o+=animB_t(higher?'더 높이 뜸':lower?'더 아래에 놓임':'뜨는 정도 같음',335,272,{size:15,c:'#1f4f5c',w:700,op:play?animB_seg(k,.86,1):1});

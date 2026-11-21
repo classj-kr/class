@@ -112,7 +112,7 @@ newton-prism|백색광의 색별 굴절 분산~#q1;단색광은 다시 굴절해
 infection-prevention|거리 증가에 따른 분무 흔적 감소~#q4;접촉 순서와 연결된 전파 경로~#q2,@route-transfer;같은 시간 비누 세척의 잔류 로션 감소~#q3
 mendeleev|화합물 비와 반응성의 반복으로 세로줄 분류~#q1;원자량 순서와 주기적 성질을 함께 적용~#q2;빈칸의 원자량 범위와 화합물식 예측~#q3,#q4,@formula-transfer;화합물 구성으로 원소 동정 및 수소와 알칼리금속 차이~@identify-evidence,@hydrogen-comparison;현대 주기율표의 원자번호 기준과 18족~@outcome-modern-periodic
 speaker-lab|전류 반전으로 자기력 방향 반전~#q1;피복 제거 후 전기 연결~#q2;주파수 증가와 진동수 및 음높이 증가~#q3;자석 제거 시 진동 약화와 직류의 지속 왕복 없음~#q4,@dc;같은 전류에서 감은 수 증가와 자기력 증가~@outcome-speaker-turns
-wireless-power|자기선속 변화가 수신 전압을 만듦~#q1;일정 직류는 지속 유도하지 않고 켜고 끌 때 극성 반대~#q2,@transient;코일 각도와 거리의 결합 및 LED 문턱 구별~#q3,@distance;수신 전압 제곱에 따른 저항 전력~#q4
+wireless-power|자기 선속 변화가 수신 전압을 만듦~#q1;일정 직류는 지속 유도하지 않고 켜고 끌 때 극성 반대~#q2,@transient;코일 각도와 거리의 결합 및 LED 문턱 구별~#q3,@distance;수신 전압 제곱에 따른 저항 전력~#q4
 magnetic-brake|도체의 닫힌 경로에서 맴돌이전류 제동~#q1,@insulator;낙하 자석의 자기장 변화와 비자성 물체 비교~#q2;자기제동력은 운동의 반대 방향~#q3,@upward;역학적 에너지 감소가 열로 전환~#q4
 transistor-speaker|증폭 에너지는 전지에서 공급~#q1;입출력 진폭비 이득과 출력 한계~#q2,@repair;입력 감소로 잘림 감소~#q3;왜곡 없는 증폭은 주파수 유지~@frequency
 soap-film|두 경계 반사광의 중첩~#q1;앞뒤 반사의 위상 반전 차이~#q2;파장 굴절률과 보강 간섭 두께~#q3,@wavelength;두께0에 가까울 때 반사 상쇄~#q4;배수로 높이별 두께와 무늬 변화~@height
@@ -142,7 +142,7 @@ centrifuge-design|회전축 중심의 대칭 질량 배치~#q1,@tube;회전수 �
 organic-builder|수소 제거와 이중결합으로 알코올에서 알데하이드~#q1;중성 산소의 결합차수 제한~#q2;카복실기 전체와 알코올 수산기 구별~#q3;분자식이 같아도 연결 구조가 다름~#q4;원자 추가 제거와 분자식 변화~@methane,@acid;카복실산과 알코올 수용액의 액성 차이~@outcome-organic-acidity
 dna-structure|상보적 염기와 두 가닥의 대응~#q1,#q6;염기쌍과 뉴클레오타이드 당 인산 개수~#q5,@common-count;바깥 골격과 안쪽 염기쌍~#q7;같은 조성도 서열이 다를 수 있음~#q4,#q8,@common-sequence;GC AT 수소결합 수와 비율~#q2,@fraction,@replace;가닥 사이 결합만 끊으면 골격 유지~#q3
 protein-folding|선형 사슬 수를 뺀 펩타이드 결합 수~#q1,@three,@cut;접힘만 풀리면 아미노산 서열 유지~#q2;여러 사슬의 사차 구조~#q3;한 사슬 국소 나선의 이차 구조~#q4
-organelle-builder|미토콘드리아 내막과 타이라코이드막의 ATP 합성효소~#q1;양성자 기울기에 따른 합성효소 이동 방향~#q2,@artificial;크리스타 그라나 및 막 구획 수~#q3,@cross;막 누출로 기울기와 ATP 구동력 감소~#q4
+organelle-builder|미토콘드리아 내막과 틸라코이드막의 ATP 합성효소~#q1;양성자 기울기에 따른 합성효소 이동 방향~#q2,@artificial;크리스타 그라나 및 막 구획 수~#q3,@cross;막 누출로 기울기와 ATP 구동력 감소~#q4
 hydride-boiling|분자량과 분산력의 끓는점 경향~#q1;극성 분자의 추가 쌍극자 힘~#q2;암모니아의 수소결합과 예외적인 높은 끓는점~#q3,#q4;끓음은 공유결합이 아닌 분자 사이 변화~#q3
 fuel-comparison|발열 엔탈피 부호와 방출열량~#q1;몰당 질량당 부피당 에너지의 서로 다른 순위~#q2,#q3;장치 효율과 유용에너지 및 필요 연료 질량~#q4,@mass;직접 CO2와 연료 전과정 배출 구별~@carbon
 mcu-sampling|맥파 주기와 분당 횟수~#q1,@period;샘플 간격으로 같은 위상만 읽는 누락~#q2;수집 빈도와 표본수~@rate;배선과 읽기 핀 불일치의 오류~#q4;같은 음원 거리 조건에서 차음 후 소리 감소~@outcome-soundproofing

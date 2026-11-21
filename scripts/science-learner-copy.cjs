@@ -35,7 +35,7 @@ const notes={
  'pedigree-lab':'돌연변이 없이 X 염색체 열성 형질이 전달되는 경우를 비교합니다.',
  'mcu-sampling':'조건을 바꾼 가상 센서 신호를 비교합니다.',
  'smart-pot':'수분값은 건조·젖은 기준 사이의 상대 척도입니다.',
- 'organelle-builder':'엽록체의 내막과 타이라코이드 막을 구별하세요.',
+ 'organelle-builder':'엽록체의 내막과 틸라코이드 막을 구별하세요.',
  'protein-folding':'접힘이 풀릴 때 사슬과 펩타이드 결합도 끊어지는지 비교하세요.'
 };
 module.exports={intro:r=>{if(!intros[r.slug])throw Error('Missing learner instructions: '+r.slug);return intros[r.slug];},note:r=>notes[r.slug]?`<p class="model-note">${notes[r.slug]}</p>`:''};
