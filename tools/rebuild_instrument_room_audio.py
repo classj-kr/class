@@ -134,10 +134,18 @@ FIRST_INDEX = {
     "recorder-tenor": 1,
 }
 
-# Bowed cello's exported note names are an octave above the sounding notes.
-# Keep source segments and existing output filenames stable after correcting
-# the app's anchor range to the actual pitches. Pizzicato is already correct.
-FILE_MIDI_OFFSETS = {"cello": 12}
+# Rendered filenames can differ by octaves from the sounding pitches. Preserve
+# source segments and filenames while indexing the app by concert pitch.
+FILE_MIDI_OFFSETS = {
+    "cello": 12, "baritone-sax": 12, "bass-clarinet": 12,
+    "bass-trombone": 12, "contrabassoon": 12, "euphonium": 12,
+    "french-horn": 12, "tenor-sax": 12, "trombone": 12,
+    "tuba": 24, "upright-bass": 24, "upright-bass-pizz": 24,
+    "xylophone": -12,
+}
+
+# Five seconds cuts the recorder before note-off, and truncates low harp tails.
+SAMPLE_DURATIONS = {"recorder-alto": 9.75, "recorder-tenor": 9.75, "harp": 9.75, "pipe-organ": 9.75}
 
 
 CONFIG_RE = re.compile(
@@ -161,11 +169,12 @@ def configs() -> dict[str, tuple[str, int, int]]:
     }
 
 
-def encode(source: Path, destination: Path, start: float) -> None:
+def encode(source: Path, destination: Path, start: float, duration: float = 5.0) -> None:
     subprocess.run(
         [
             "ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
-            "-ss", f"{start:.3f}", "-i", str(source), "-t", "5.000",
+            "-ss", f"{start:.3f}", "-i", str(source), "-t", f"{duration:.3f}",
+            "-af", f"afade=t=out:st={duration-.02:.3f}:d=0.02",
             "-map_metadata", "-1", "-c:a", "libopus", "-b:a", BITRATE,
             "-vbr", "on", "-compression_level", "10", "-application", "audio",
             "-ar", "48000", "-ac", "2", "-y", str(destination),
@@ -192,7 +201,7 @@ def main() -> None:
                 source_index = file_midi - 20 if sample_id in FULL_GRID else midi - minimum + 1
             output_index = file_midi - 20
             output = destination / f"{output_index:03d}_{note_name(file_midi)}.ogg"
-            encode(source, output, (source_index - 1) * 10.0)
+            encode(source, output, (source_index - 1) * 10.0, SAMPLE_DURATIONS.get(sample_id, 5.0))
             rebuilt += 1
         print(f"{sample_id}: {maximum - minimum + 1}", flush=True)
     print(f"rebuilt={rebuilt} bitrate={BITRATE}")

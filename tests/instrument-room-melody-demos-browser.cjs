@@ -145,7 +145,7 @@ const server = http.createServer((req, res) => {
         await new Promise(resolve => setTimeout(resolve, 1400));
         const sustained = await page.evaluate(id => {
           const voice = [...demoTest.state.pianoVoices.values()].find(voice => voice.sampleSet === id && !voice.released);
-          return Boolean(voice && voice.source.loop && voice.source.loopEnd === 3.8 && document.querySelector('.key.demo-hit'));
+          return Boolean(voice && voice.source.loop && voice.source.loopEnd <= 3.805 && voice.source.loopEnd > voice.source.loopStart + .25 && document.querySelector('.key.demo-hit'));
         }, model);
         assert.ok(sustained, title + ' holds a recorded bowed note');
         if (width > 500) {

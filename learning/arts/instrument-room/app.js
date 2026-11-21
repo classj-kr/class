@@ -32,7 +32,7 @@
         "hybrid-la-rhodes": Object.freeze({ id: "hybrid-la-rhodes", root: "assets/audio/hybrid-la-rhodes/", min: 21, max: 108, fileMin: 21, step: 1, gainDb: 6.04 }),
         "hybrid-la-mks": Object.freeze({ id: "hybrid-la-mks", root: "assets/audio/hybrid-la-mks/", min: 21, max: 108, fileMin: 21, step: 1, gainDb: 5.82 }),
         "hammond-organ": Object.freeze({ id: "hammond-organ", root: "assets/audio/hammond-organ/", min: 36, max: 96, fileMin: 21, step: 1, gainDb: 4.94 }),
-        "pipe-organ": Object.freeze({ id: "pipe-organ", root: "assets/audio/pipe-organ/", min: 36, max: 96, fileMin: 21, step: 1, gainDb: 7.72 }),
+        "pipe-organ": Object.freeze({ id: "pipe-organ", root: "assets/audio/pipe-organ/", min: 36, max: 96, fileMin: 21, step: 1, gainDb: 7.72, revision: "20261121-complete-release" }),
         "haegeum": Object.freeze({ id: "haegeum", root: "assets/audio/haegeum/", min: 55, max: 79, fileMin: 21, step: 1, gainDb: -1.46, startOffset: 0, loopStart: 1.1, loopEnd: 3.85 }),
         "haegeum-vibrato": Object.freeze({ id: "haegeum-vibrato", root: "assets/audio/haegeum-vibrato/", min: 59, max: 79, fileMin: 21, step: 1, gainDb: -1.63, startOffset: 0, loopStart: 1.1, loopEnd: 3.8 }),
         "daegeum": Object.freeze({ id: "daegeum", root: "assets/audio/daegeum/", min: 59, max: 89, fileMin: 21, step: 1, gainDb: -5.69, startOffset: 0, loopStart: 1.1, loopEnd: 3.8 }),
@@ -64,27 +64,27 @@
         "ocarina": Object.freeze({ id: "ocarina", root: "assets/audio/ocarina/", min: 60, max: 86, fileMin: 21, step: 1, gainDb: -4.5, startOffset: 0, loopStart: 1.1, loopEnd: 3.8 }),
         "recorder-piccolo": Object.freeze({ id: "recorder-piccolo", root: "assets/audio/recorder-piccolo/", min: 77, max: 104, fileMin: 21, step: 1, gainDb: 0.7 }),
         "recorder-soprano": Object.freeze({ id: "recorder-soprano", root: "assets/audio/recorder-soprano/", min: 72, max: 101, fileMin: 21, step: 1, gainDb: 2.0 }),
-        "recorder-alto": Object.freeze({ id: "recorder-alto", root: "assets/audio/recorder-alto/", min: 65, max: 89, fileMin: 21, step: 1, gainDb: 7.1 }),
-        "recorder-tenor": Object.freeze({ id: "recorder-tenor", root: "assets/audio/recorder-tenor/", min: 60, max: 84, fileMin: 21, step: 1, gainDb: 6.2 }),
+        "recorder-alto": Object.freeze({ id: "recorder-alto", root: "assets/audio/recorder-alto/", min: 65, max: 89, fileMin: 21, step: 1, gainDb: 7.1, revision: "20261121-complete-release" }),
+        "recorder-tenor": Object.freeze({ id: "recorder-tenor", root: "assets/audio/recorder-tenor/", min: 60, max: 84, fileMin: 21, step: 1, gainDb: 6.2, revision: "20261121-complete-release" }),
         "flute": Object.freeze({ id: "flute", root: "assets/audio/flute/", min: 60, max: 96, fileMin: 21, step: 1, gainDb: 6.83 }),
         "oboe": Object.freeze({ id: "oboe", root: "assets/audio/oboe/", min: 58, max: 91, fileMin: 21, step: 1, gainDb: 4.35 }),
         "trumpet": Object.freeze({ id: "trumpet", root: "assets/audio/trumpet/", min: 52, max: 97, fileMin: 21, step: 1, gainDb: -2.92 }),
         "clarinet": Object.freeze({ id: "clarinet", root: "assets/audio/clarinet/", min: 50, max: 88, fileMin: 21, step: 1, gainDb: 2.89 }),
-        "bass-clarinet": Object.freeze({ id: "bass-clarinet", root: "assets/audio/bass-clarinet/", min: 44, max: 95, fileMin: 21, step: 1, gainDb: 0.05 }),
+        "bass-clarinet": Object.freeze({ id: "bass-clarinet", root: "assets/audio/bass-clarinet/", min: 32, max: 83, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: 0.05 }),
         "piccolo-flute": Object.freeze({ id: "piccolo-flute", root: "assets/audio/piccolo-flute/", min: 72, max: 108, fileMin: 21, step: 1, gainDb: 9.0 }),
-        "french-horn": Object.freeze({ id: "french-horn", root: "assets/audio/french-horn/", min: 47, max: 93, fileMin: 21, step: 1, gainDb: -2.93 }),
+        "french-horn": Object.freeze({ id: "french-horn", root: "assets/audio/french-horn/", min: 35, max: 81, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -2.93 }),
         "english-horn": Object.freeze({ id: "english-horn", root: "assets/audio/english-horn/", min: 52, max: 83, fileMin: 21, step: 1, gainDb: 4.38 }),
         "soprano-sax": Object.freeze({ id: "soprano-sax", root: "assets/audio/soprano-sax/", min: 53, max: 94, fileMin: 21, step: 1, gainDb: -1.38 }),
         "saxophone": Object.freeze({ id: "saxophone", root: "assets/audio/alto-sax/", min: 46, max: 92, fileMin: 21, step: 1, gainDb: -0.11 }),
-        "tenor-sax": Object.freeze({ id: "tenor-sax", root: "assets/audio/tenor-sax/", min: 53, max: 102, fileMin: 21, step: 1, gainDb: 0.37 }),
-        "baritone-sax": Object.freeze({ id: "baritone-sax", root: "assets/audio/baritone-sax/", min: 45, max: 100, fileMin: 21, step: 1, gainDb: -0.93 }),
+        "tenor-sax": Object.freeze({ id: "tenor-sax", root: "assets/audio/tenor-sax/", min: 41, max: 90, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: 0.37 }),
+        "baritone-sax": Object.freeze({ id: "baritone-sax", root: "assets/audio/baritone-sax/", min: 33, max: 88, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -0.93 }),
         "bassoon": Object.freeze({ id: "bassoon", root: "assets/audio/bassoon/", min: 34, max: 75, fileMin: 21, step: 1, gainDb: 6.91 }),
-        "contrabassoon": Object.freeze({ id: "contrabassoon", root: "assets/audio/contrabassoon/", min: 32, max: 80, fileMin: 21, step: 1, gainDb: -2.46 }),
+        "contrabassoon": Object.freeze({ id: "contrabassoon", root: "assets/audio/contrabassoon/", min: 20, max: 68, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -2.46 }),
         "alto-trombone": Object.freeze({ id: "alto-trombone", root: "assets/audio/alto-trombone/", min: 45, max: 88, fileMin: 21, step: 1, gainDb: -4.59 }),
-        "trombone": Object.freeze({ id: "trombone", root: "assets/audio/tenor-trombone/", min: 52, max: 97, fileMin: 21, step: 1, gainDb: -5.68 }),
-        "bass-trombone": Object.freeze({ id: "bass-trombone", root: "assets/audio/bass-trombone/", min: 35, max: 92, fileMin: 21, step: 1, gainDb: -3.85 }),
-        "tuba": Object.freeze({ id: "tuba", root: "assets/audio/bass-tuba/", min: 40, max: 96, fileMin: 21, step: 1, gainDb: -4.31 }),
-        "euphonium": Object.freeze({ id: "euphonium", root: "assets/audio/euphonium/", min: 40, max: 94, fileMin: 21, step: 1, gainDb: -2.93 }),
+        "trombone": Object.freeze({ id: "trombone", root: "assets/audio/tenor-trombone/", min: 40, max: 85, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -5.68 }),
+        "bass-trombone": Object.freeze({ id: "bass-trombone", root: "assets/audio/bass-trombone/", min: 23, max: 80, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -3.85 }),
+        "tuba": Object.freeze({ id: "tuba", root: "assets/audio/bass-tuba/", min: 16, max: 72, fileMin: 21, fileMidiOffset: 24, step: 1, gainDb: -4.31 }),
+        "euphonium": Object.freeze({ id: "euphonium", root: "assets/audio/euphonium/", min: 28, max: 82, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -2.93 }),
         "flugelhorn": Object.freeze({ id: "flugelhorn", root: "assets/audio/flugelhorn/", min: 52, max: 92, fileMin: 21, step: 1, gainDb: -5.56 }),
         "viola": Object.freeze({ id: "viola", root: "assets/audio/viola/", min: 48, max: 108, fileMin: 21, step: 1, gainDb: 0.59, revision: "20260901-viola-v2" }),
         "viola-pizz": Object.freeze({ id: "viola-pizz", root: "assets/audio/viola-pizz/", min: 48, max: 89, fileMin: 21, step: 1, gainDb: 9.0 }),
@@ -95,12 +95,12 @@
         // Keep those files intact and index them by their measured sounding pitch.
         "cello": Object.freeze({ id: "cello", root: "assets/audio/cello/", min: 36, max: 96, fileMin: 21, fileMidiOffset: 12, step: 1, gainDb: -3.85, loopEnd: 3.8 }),
         "cello-pizz": Object.freeze({ id: "cello-pizz", root: "assets/audio/cello-pizz/", min: 48, max: 73, fileMin: 21, step: 1, gainDb: 9.0 }),
-        "upright-bass": Object.freeze({ id: "upright-bass", root: "assets/audio/upright-bass/", min: 52, max: 108, fileMin: 21, step: 1, gainDb: -4.1 }),
-        "upright-bass-pizz": Object.freeze({ id: "upright-bass-pizz", root: "assets/audio/upright-bass-pizz/", min: 52, max: 108, fileMin: 21, step: 1, gainDb: 1.16 }),
+        "upright-bass": Object.freeze({ id: "upright-bass", root: "assets/audio/upright-bass/", min: 28, max: 84, fileMin: 21, fileMidiOffset: 24, step: 1, gainDb: -4.1 }),
+        "upright-bass-pizz": Object.freeze({ id: "upright-bass-pizz", root: "assets/audio/upright-bass-pizz/", min: 28, max: 84, fileMin: 21, fileMidiOffset: 24, step: 1, gainDb: 1.16 }),
         "timpani": Object.freeze({ id: "timpani", root: "assets/audio/timpani/", min: 36, max: 53, fileMin: 21, step: 1, gainDb: 6.5 }),
         "marimba": Object.freeze({ id: "marimba", root: "assets/audio/marimba/", min: 36, max: 96, fileMin: 21, step: 1, gainDb: 7.0 }),
         "vibraphone": Object.freeze({ id: "vibraphone", root: "assets/audio/vibraphone/", min: 53, max: 89, fileMin: 21, step: 1, gainDb: 5.5 }),
-        "xylophone": Object.freeze({ id: "xylophone", root: "assets/audio/xylophone/", min: 48, max: 89, fileMin: 21, step: 1, gainDb: 6.5 }),
+        "xylophone": Object.freeze({ id: "xylophone", root: "assets/audio/xylophone/", min: 60, max: 101, fileMin: 21, fileMidiOffset: -12, step: 1, gainDb: 6.5 }),
         "p-bass-finger": Object.freeze({ id: "p-bass-finger", root: "assets/audio/p-bass-finger-v4/", min: 28, max: 63, fileMin: 21, step: 1, gainDb: 2.6, revision: "20260901-p-finger-v4" }),
         "p-bass-pick": Object.freeze({ id: "p-bass-pick", root: "assets/audio/p-bass-pick-v4/", min: 28, max: 63, fileMin: 21, step: 1, gainDb: 0.4, revision: "20260901-p-pick-v4" }),
         "p-bass-slap": Object.freeze({ id: "p-bass-slap", root: "assets/audio/p-bass-slap-v4/", min: 28, max: 62, fileMin: 21, step: 1, gainDb: 8.6, revision: "20260901-p-slap-v4" }),
@@ -121,7 +121,7 @@
         "guitar-hollow": Object.freeze({ id: "guitar-hollow", root: "assets/audio/guitar-hollow/", min: 40, max: 86, fileMin: 21, step: 1, gainDb: 13.0, startOffset: 0, revision: "20260902-hollow-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86]) }),
         "guitar-nylon": Object.freeze({ id: "guitar-nylon", root: "assets/audio/guitar-nylon/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 16.5, startOffset: 0, revision: "20260902-nylon-tone-v4", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
         "guitar-steel": Object.freeze({ id: "guitar-steel", root: "assets/audio/guitar-steel/", min: 40, max: 84, fileMin: 21, step: 1, gainDb: 25.0, startOffset: 0, revision: "20260902-steel-tone-v2", anchors: Object.freeze([40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]) }),
-        "harp": Object.freeze({ id: "harp", root: "assets/audio/harp/", min: 25, max: 102, fileMin: 21, step: 1, gainDb: 14.0 }),
+        "harp": Object.freeze({ id: "harp", root: "assets/audio/harp/", min: 25, max: 102, fileMin: 21, step: 1, gainDb: 14.0, revision: "20261121-complete-release" }),
         "piccolo-trumpet": Object.freeze({ id: "piccolo-trumpet", root: "assets/audio/piccolo-trumpet/", min: 52, max: 100, fileMin: 21, step: 1, gainDb: 1.5 }),
         "glockenspiel": Object.freeze({ id: "glockenspiel", root: "assets/audio/glockenspiel/", min: 79, max: 95, fileMin: 21, step: 1, gainDb: 33.1 })
     });
@@ -505,7 +505,7 @@
             { id: "j-bass", name: "J-Style 4", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-j-style.webp", badge: "FINGER · PICK · SLAP", model: "J-STYLE 4", range: [28, 67], size: "전체 길이 약 117 cm", visualScale: .83, scalePercent: 65, description: "J-Style은 Fender Jazz Bass에서 유래한 계열명입니다. 전용 핑거·피크·슬랩 원음을 주법별로 연주해요." },
             { id: "active-bass", name: "Modern Active 5", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-active-five.webp", badge: "FINGER · PICK · SLAP", model: "MODERN ACTIVE 5", range: [23, 72], size: "전체 길이 약 118 cm", visualScale: .84, scalePercent: 66, description: "5현 액티브 베이스의 핑거·피크·슬랩 원음을 낮은 B음부터 연주해요." },
             { id: "fretless-bass", name: "Fretless 4", tag: "ELECTRIC BASS", engine: "bass", stage: "bass", art: "assets/instruments/bass-fretless.webp", badge: "FINGER · PICK · SLAP", model: "FRETLESS 4", range: [28, 67], size: "전체 길이 약 116 cm", visualScale: .82, scalePercent: 64, description: "프렛리스 베이스의 핑거·피크·슬랩 원음을 주법별로 바꾸어 연주해요." },
-            { id: "upright-bass", name: "콘트라베이스", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/double-bass-expressive.webp", badge: "57-NOTE SUSTAIN · 57-NOTE PIZZ", model: "DOUBLE BASS", range: [52, 108], size: "전체 높이 약 180 cm", visualScale: 1, scalePercent: 100, expression: "보우 압력", description: "콘트라베이스 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
+            { id: "upright-bass", name: "콘트라베이스", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/double-bass-expressive.webp", badge: "57-NOTE SUSTAIN · 57-NOTE PIZZ", model: "DOUBLE BASS", range: [28, 84], size: "전체 높이 약 180 cm", visualScale: 1, scalePercent: 100, expression: "보우 압력", description: "콘트라베이스 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
             { id: "s-style", name: "Rock S-Style", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-s-style.webp", badge: "4 × 47-NOTE OGG · EXTENDED", model: "ROCK S-STYLE", range: [40, 88], size: "전체 길이 약 100 cm", visualScale: .7, scalePercent: 56, guitar: true, description: "S-Style 기타의 클린·블루스·펑크·록 원음 47개씩을 E2–D6에 정확히 대응하고 위 음역만 확장해 연주해요." },
             { id: "metal-seven", name: "Modern Metal 7", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-metal-seven.webp", badge: "45-NOTE OGG · EXTENDED", model: "MODERN METAL 7", range: [35, 88], size: "전체 길이 약 103 cm", visualScale: .72, scalePercent: 57, guitar: true, description: "Superstrat 원음 45개를 E2–C6에 정확히 대응하고 7현 기타의 연주 음역까지 확장해 연주해요." },
             { id: "hollow-jazz", name: "Hollowbody Jazz", tag: "ELECTRIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-hollowbody-jazz.webp", badge: "47-NOTE OGG · EXTENDED", model: "JAZZ ARCHTOP", range: [40, 88], size: "전체 길이 약 105 cm", visualScale: .73, scalePercent: 58, guitar: true, description: "할로우바디 원음 47개를 E2–D6에 정확히 대응하고 높은 음역만 확장해 연주해요." },
@@ -513,7 +513,7 @@
             { id: "classical-guitar", name: "Classical Nylon", tag: "ACOUSTIC GUITAR", engine: "guitar", stage: "guitar", art: "assets/instruments/guitar-classical-nylon.webp", badge: "45-NOTE OGG · EXTENDED", model: "CLASSICAL", range: [40, 88], size: "전체 길이 약 99 cm", visualScale: .69, scalePercent: 55, guitar: true, description: "나일론 기타 원음 45개를 E2–C6에 정확히 대응하고 높은 음역만 확장해 연주해요." },
             { id: "violin", name: "바이올린", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/violin-expressive-v2.webp", badge: "54-NOTE SUSTAIN · 46-NOTE PIZZ", model: "VIOLIN", range: [55, 108], size: "전체 길이 약 59 cm", visualScale: .48, scalePercent: 33, expression: "보우 압력", description: "바이올린 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
             { id: "viola", name: "비올라", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/viola-expressive-v2.webp", badge: "61-NOTE SUSTAIN · 42-NOTE PIZZ", model: "VIOLA", range: [48, 108], size: "전체 길이 약 66 cm", visualScale: .53, scalePercent: 37, expression: "보우 압력", description: "비올라 서스테인과 피치카토를 주법 버튼으로 바꾸어 실제 샘플로 연주해요." },
-            { id: "cello", name: "첼로", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/cello-expressive.webp", badge: "61-NOTE SUSTAIN · 26-NOTE PIZZ", model: "CELLO", range: [48, 108], size: "전체 높이 약 121 cm", visualScale: .78, scalePercent: 67, expression: "보우 압력", description: "첼로 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
+            { id: "cello", name: "첼로", tag: "BOWED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/cello-expressive.webp", badge: "61-NOTE SUSTAIN · 26-NOTE PIZZ", model: "CELLO", range: [36, 96], size: "전체 높이 약 121 cm", visualScale: .78, scalePercent: 67, expression: "보우 압력", description: "첼로 서스테인과 피치카토를 실제 샘플로 바꾸어 연주해요." },
             { id: "harp", name: "하프", tag: "PLUCKED STRING", engine: "guitar", stage: "classical", art: "assets/instruments/harp-concert-v2.webp", badge: "78-NOTE OGG", model: "CONCERT PEDAL HARP", range: [25, 102], size: "전체 높이 약 180 cm", visualScale: .82, scalePercent: 100, expression: "뜯는 강도", description: "콘서트 하프 원음 C♯1–F♯7을 반음마다 연주하며 자연 감쇠를 그대로 들어요." }
         ],
         woodwind: [
@@ -527,24 +527,24 @@
             { id: "oboe", name: "오보에", tag: "DOUBLE REED", engine: "guitar", stage: "wind", art: "assets/instruments/oboe-expressive.webp", badge: "34-NOTE OGG", model: "OBOE", range: [58, 91], size: "전체 길이 약 65 cm", visualScale: .45, scalePercent: 36, expression: "호흡 압력", description: "새 오보에 원음 A♯3–G6을 반음마다 연주해요." },
             { id: "english-horn", name: "잉글리시 호른", tag: "DOUBLE REED · ALTO", engine: "guitar", stage: "wind", art: "assets/instruments/english-horn-expressive-v2.webp", badge: "42-NOTE OGG", model: "ENGLISH HORN", range: [49, 90], size: "전체 길이 약 81 cm", visualScale: .54, scalePercent: 45, expression: "호흡 압력", description: "오보에보다 낮고 어두운 잉글리시 호른 원음을 연주해요." },
             { id: "clarinet", name: "클라리넷", tag: "SINGLE REED", engine: "guitar", stage: "wind", art: "assets/instruments/clarinet-expressive.webp", badge: "48-NOTE OGG", model: "CLARINET", range: [48, 95], size: "전체 길이 약 66 cm", visualScale: .46, scalePercent: 37, expression: "호흡 압력", description: "클라리넷 원음 C3–B6을 반음마다 연주해요." },
-            { id: "bass-clarinet", name: "베이스 클라리넷", tag: "SINGLE REED · BASS", engine: "guitar", stage: "wind", art: "assets/instruments/bass-clarinet-expressive-v2.webp", badge: "52-NOTE OGG", model: "BASS CLARINET", range: [44, 95], size: "전체 높이 약 95 cm", visualScale: .61, scalePercent: 53, expression: "호흡 압력", description: "깊은 저음부터 높은 음까지 베이스 클라리넷 원음을 연주해요." },
+            { id: "bass-clarinet", name: "베이스 클라리넷", tag: "SINGLE REED · BASS", engine: "guitar", stage: "wind", art: "assets/instruments/bass-clarinet-expressive-v2.webp", badge: "52-NOTE OGG", model: "BASS CLARINET", range: [32, 83], size: "전체 높이 약 95 cm", visualScale: .61, scalePercent: 53, expression: "호흡 압력", description: "깊은 저음부터 높은 음까지 베이스 클라리넷 원음을 연주해요." },
             { id: "bassoon", name: "바순", tag: "DOUBLE REED · BASS", engine: "guitar", stage: "wind", art: "assets/instruments/bassoon-expressive.webp", badge: "48-NOTE OGG", model: "BASSOON", range: [44, 91], size: "전체 높이 약 134 cm", visualScale: .78, scalePercent: 74, expression: "호흡 압력", description: "바순 원음 G♯2–G6을 반음마다 연주해요." },
-            { id: "contrabassoon", name: "콘트라바순", tag: "DOUBLE REED · CONTRABASS", engine: "guitar", stage: "wind", art: "assets/instruments/contrabassoon-expressive.webp", badge: "49-NOTE OGG", model: "CONTRABASSOON", range: [32, 80], size: "전체 높이 약 160 cm", visualScale: .91, scalePercent: 88, expression: "호흡 압력", description: "콘트라바순 원음 G♯1–G♯5을 반음마다 연주해요." },
+            { id: "contrabassoon", name: "콘트라바순", tag: "DOUBLE REED · CONTRABASS", engine: "guitar", stage: "wind", art: "assets/instruments/contrabassoon-expressive.webp", badge: "49-NOTE OGG", model: "CONTRABASSOON", range: [21, 68], size: "전체 높이 약 160 cm", visualScale: .91, scalePercent: 88, expression: "호흡 압력", description: "콘트라바순 원음 A0–G♯4을 반음마다 연주해요." },
             { id: "soprano-sax", name: "소프라노 색소폰", tag: "SINGLE REED · SOPRANO", engine: "guitar", stage: "wind", art: "assets/instruments/soprano-sax-expressive-v2.webp", badge: "42-NOTE OGG", model: "SOPRANO SAX", range: [53, 94], size: "전체 길이 약 65 cm", visualScale: .45, scalePercent: 36, expression: "호흡 압력", description: "곧고 밝은 소프라노 색소폰 원음을 연주해요." },
             { id: "saxophone", name: "알토 색소폰", tag: "SINGLE REED · ALTO", engine: "guitar", stage: "wind", art: "assets/instruments/alto-sax-expressive.webp", badge: "47-NOTE OGG", model: "ALTO SAX", range: [46, 92], size: "전체 높이 약 65 cm", visualScale: .46, scalePercent: 36, expression: "호흡 압력", description: "알토 색소폰 원음 A♯2–G♯6을 반음마다 연주해요." },
-            { id: "tenor-sax", name: "테너 색소폰", tag: "SINGLE REED · TENOR", engine: "guitar", stage: "wind", art: "assets/instruments/tenor-sax-expressive-v2.webp", badge: "50-NOTE OGG", model: "TENOR SAX", range: [53, 102], size: "전체 높이 약 79 cm", visualScale: .53, scalePercent: 44, expression: "호흡 압력", description: "테너 색소폰 원음 F3–F♯7을 반음마다 연주해요." },
-            { id: "baritone-sax", name: "바리톤 색소폰", tag: "SINGLE REED · BARITONE", engine: "guitar", stage: "wind", art: "assets/instruments/baritone-sax-expressive-v2.webp", badge: "56-NOTE OGG", model: "BARITONE SAX", range: [45, 100], size: "전체 높이 약 110 cm", visualScale: .68, scalePercent: 61, expression: "호흡 압력", description: "바리톤 색소폰 원음 A2–E7을 반음마다 연주해요." }
+            { id: "tenor-sax", name: "테너 색소폰", tag: "SINGLE REED · TENOR", engine: "guitar", stage: "wind", art: "assets/instruments/tenor-sax-expressive-v2.webp", badge: "50-NOTE OGG", model: "TENOR SAX", range: [41, 90], size: "전체 높이 약 79 cm", visualScale: .53, scalePercent: 44, expression: "호흡 압력", description: "테너 색소폰 원음 F2–F♯6을 반음마다 연주해요." },
+            { id: "baritone-sax", name: "바리톤 색소폰", tag: "SINGLE REED · BARITONE", engine: "guitar", stage: "wind", art: "assets/instruments/baritone-sax-expressive-v2.webp", badge: "56-NOTE OGG", model: "BARITONE SAX", range: [33, 88], size: "전체 높이 약 110 cm", visualScale: .68, scalePercent: 61, expression: "호흡 압력", description: "바리톤 색소폰 원음 A1–E6을 반음마다 연주해요." }
         ],
         brass: [
             { id: "trumpet", name: "트럼펫", tag: "HIGH BRASS", engine: "guitar", stage: "brass", art: "assets/instruments/trumpet-expressive.webp", badge: "46-NOTE OGG", model: "TRUMPET", range: [52, 97], size: "외형 길이 약 48 cm", visualScale: .38, scalePercent: 27, expression: "호흡 압력", description: "트럼펫 원음 E3–C♯7을 반음마다 연주해요." },
             { id: "piccolo-trumpet", name: "피콜로 트럼펫", tag: "HIGH BRASS · PICCOLO", engine: "guitar", stage: "brass", art: "assets/instruments/piccolo-trumpet-expressive.webp", badge: "49-NOTE OGG", model: "PICCOLO TRUMPET", range: [52, 100], size: "외형 길이 약 46 cm", visualScale: .34, scalePercent: 26, expression: "호흡 압력", description: "피콜로 트럼펫 원음 E3–E7을 반음마다 연주해요." },
             { id: "flugelhorn", name: "플뤼겔호른", tag: "CONICAL BRASS · SOPRANO", engine: "guitar", stage: "brass", art: "assets/instruments/flugelhorn-expressive.webp", badge: "41-NOTE OGG", model: "FLUGELHORN", range: [52, 92], size: "외형 길이 약 47 cm", visualScale: .4, scalePercent: 29, expression: "호흡 압력", description: "넓은 원뿔관의 부드러운 플뤼겔호른 원음 E3–G♯6을 연주해요." },
-            { id: "french-horn", name: "호른", tag: "ORCHESTRAL BRASS", engine: "guitar", stage: "brass", art: "assets/instruments/french-horn-expressive.webp", badge: "47-NOTE OGG", model: "FRENCH HORN", range: [47, 93], size: "벨 포함 너비 약 58 cm", visualScale: .42, scalePercent: 32, expression: "호흡 압력", description: "호른 원음 B2–A6을 반음마다 연주해요." },
+            { id: "french-horn", name: "호른", tag: "ORCHESTRAL BRASS", engine: "guitar", stage: "brass", art: "assets/instruments/french-horn-expressive.webp", badge: "47-NOTE OGG", model: "FRENCH HORN", range: [35, 81], size: "벨 포함 너비 약 58 cm", visualScale: .42, scalePercent: 32, expression: "호흡 압력", description: "호른 원음 B1–A5을 반음마다 연주해요." },
             { id: "alto-trombone", name: "알토 트롬본", tag: "SLIDE BRASS · ALTO", engine: "guitar", stage: "brass", art: "assets/instruments/alto-trombone-expressive-v2.webp", badge: "44-NOTE OGG", model: "ALTO TROMBONE", range: [45, 88], size: "전체 길이 약 90 cm", visualScale: .58, scalePercent: 50, expression: "호흡 압력", description: "가볍고 높은 알토 트롬본 원음을 연주해요." },
-            { id: "trombone", name: "테너 트롬본", tag: "SLIDE BRASS · TENOR", engine: "guitar", stage: "brass", art: "assets/instruments/trombone-expressive.webp", badge: "46-NOTE OGG", model: "TENOR TROMBONE", range: [52, 97], size: "슬라이드 닫힘 약 114 cm", visualScale: .7, scalePercent: 63, expression: "호흡 압력", description: "테너 트롬본 원음 E3–C♯7을 반음마다 연주해요." },
-            { id: "bass-trombone", name: "베이스 트롬본", tag: "SLIDE BRASS · BASS", engine: "guitar", stage: "brass", art: "assets/instruments/bass-trombone-expressive-v2.webp", badge: "58-NOTE OGG", model: "BASS TROMBONE", range: [35, 92], size: "전체 길이 약 120 cm", visualScale: .74, scalePercent: 67, expression: "호흡 압력", description: "넓고 무거운 베이스 트롬본 원음을 연주해요." },
-            { id: "euphonium", name: "유포니움", tag: "CONICAL BRASS · TENOR", engine: "guitar", stage: "brass", art: "assets/instruments/euphonium-expressive.webp", badge: "55-NOTE OGG", model: "EUPHONIUM", range: [40, 94], size: "전체 높이 약 66 cm", visualScale: .5, scalePercent: 41, expression: "호흡 압력", description: "둥글고 유연한 유포니움 원음 E2–A♯6을 반음마다 연주해요." },
-            { id: "tuba", name: "베이스 튜바", tag: "LOW BRASS", engine: "guitar", stage: "brass", art: "assets/instruments/tuba-expressive-v2.webp", badge: "57-NOTE OGG", model: "BASS TUBA", range: [40, 96], size: "전체 높이 약 100 cm", visualScale: .62, scalePercent: 56, expression: "호흡 압력", description: "베이스 튜바 원음 E2–C7을 반음마다 연주해요." }
+            { id: "trombone", name: "테너 트롬본", tag: "SLIDE BRASS · TENOR", engine: "guitar", stage: "brass", art: "assets/instruments/trombone-expressive.webp", badge: "46-NOTE OGG", model: "TENOR TROMBONE", range: [40, 85], size: "슬라이드 닫힘 약 114 cm", visualScale: .7, scalePercent: 63, expression: "호흡 압력", description: "테너 트롬본 원음 E2–C♯6을 반음마다 연주해요." },
+            { id: "bass-trombone", name: "베이스 트롬본", tag: "SLIDE BRASS · BASS", engine: "guitar", stage: "brass", art: "assets/instruments/bass-trombone-expressive-v2.webp", badge: "58-NOTE OGG", model: "BASS TROMBONE", range: [23, 80], size: "전체 길이 약 120 cm", visualScale: .74, scalePercent: 67, expression: "호흡 압력", description: "넓고 무거운 베이스 트롬본 원음을 연주해요." },
+            { id: "euphonium", name: "유포니움", tag: "CONICAL BRASS · TENOR", engine: "guitar", stage: "brass", art: "assets/instruments/euphonium-expressive.webp", badge: "55-NOTE OGG", model: "EUPHONIUM", range: [28, 82], size: "전체 높이 약 66 cm", visualScale: .5, scalePercent: 41, expression: "호흡 압력", description: "둥글고 유연한 유포니움 원음 E1–A♯5을 반음마다 연주해요." },
+            { id: "tuba", name: "베이스 튜바", tag: "LOW BRASS", engine: "guitar", stage: "brass", art: "assets/instruments/tuba-expressive-v2.webp", badge: "57-NOTE OGG", model: "BASS TUBA", range: [21, 72], size: "전체 높이 약 100 cm", visualScale: .62, scalePercent: 56, expression: "호흡 압력", description: "베이스 튜바 원음 A0–C5을 반음마다 연주해요." }
         ],
         percussion: [
             { id: "rock-kit", name: "Rock Kit", tag: "DRUM SET", engine: "drums", stage: "drums", art: "assets/instruments/drum-rock-kit.webp", badge: "15-PAD", model: "ROCK", description: "Rock 킷의 고스트노트·사이드스틱·림샷·풋/오픈 하이햇과 3개의 탐까지 실제 원샷으로 연주해요." },
@@ -556,7 +556,7 @@
             { id: "glockenspiel", name: "글로켄슈필", tag: "건반 타악기", engine: "drums", stage: "metal", art: "assets/instruments/glockenspiel-concert.webp", pitched: true, range: [79, 108], size: "본체 너비 약 80 cm", visualScale: .54, scalePercent: 23, badge: "17-NOTE SOURCE · EXTENDED", model: "GLOCKENSPIEL", description: "글로켄슈필 원음 G5–B6을 바탕으로 악기의 높은 음역까지 확장해 연주해요." },
             { id: "marimba", name: "마림바", tag: "건반 타악기", engine: "drums", stage: "mallet", art: "assets/instruments/marimba-concert.webp", pitched: true, range: [36, 96], size: "본체 너비 약 250 cm", visualScale: .9, scalePercent: 71, badge: "61-NOTE OGG", model: "MARIMBA", description: "마림바 원음 C2–C7을 반음마다 연주해요." },
             { id: "vibraphone", name: "비브라폰", tag: "건반 타악기", engine: "drums", stage: "metal", art: "assets/instruments/vibraphone-concert.webp", pitched: true, range: [53, 89], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "37-NOTE OGG", model: "VIBRAPHONE", description: "비브라폰 원음 F3–F6을 반음마다 연주해요." },
-            { id: "xylophone", name: "실로폰", tag: "건반 타악기", engine: "drums", stage: "mallet", art: "assets/instruments/xylophone-compact-concert.webp", pitched: true, range: [48, 89], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "42-NOTE OGG", model: "XYLOPHONE", description: "실로폰 원음 C3–F6을 반음마다 연주해요." },
+            { id: "xylophone", name: "실로폰", tag: "건반 타악기", engine: "drums", stage: "mallet", art: "assets/instruments/xylophone-compact-concert.webp", pitched: true, range: [60, 101], size: "본체 너비 약 140 cm", visualScale: .72, scalePercent: 40, badge: "42-NOTE OGG", model: "XYLOPHONE", description: "실로폰 원음 C4–F7을 반음마다 연주해요." },
             { id: "orchestral-percussion", name: "오케스트라 타악 편성", tag: "오케스트라 타악", engine: "drums", stage: "orchestral", station: "orchestral", badge: "다섯 악기의 실제 소리", model: "스네어드럼 · 베이스드럼 · 서스펜디드 심벌 · 탐탐 · 트라이앵글", parts: [
                 { id: "orchestral-snare", name: "스네어드럼", art: "assets/instruments/orchestral-snare.webp", scale: .88 },
                 { id: "orchestral-bass-drum", name: "베이스드럼", art: "assets/instruments/orchestral-bass-drum.webp", scale: 1.04 },
@@ -644,6 +644,8 @@
         sampleActiveRms: new WeakMap(),
         sampleBodyRms: new WeakMap(),
         sampleStartOffsets: new WeakMap(),
+        sampleSustainLoops: new WeakMap(),
+        pianoReleaseVoices: new Set(),
         keyboardSampleLoads: new Map(),
         sampleCacheOpening: null,
         rangePreloadToken: 0,
@@ -944,6 +946,87 @@
         return bodyRms;
     }
 
+    function decodedBufferSustainLoop(buffer, config) {
+        const cached = state.sampleSustainLoops.get(buffer);
+        if (cached) return cached;
+        const channels = Array.from({ length: buffer.numberOfChannels }, function (_, i) { return buffer.getChannelData(i); });
+        const size = Math.max(1, Math.round(buffer.sampleRate * .05));
+        const levels = [];
+        const channelPeaks = channels.map(function () { return 0; });
+        for (let start = 0; start < buffer.length; start += size) {
+            const end = Math.min(buffer.length, start + size);
+            let energy = 0;
+            channels.forEach(function (channel, index) {
+                let channelEnergy = 0;
+                for (let i = start; i < end; i += 1) channelEnergy += channel[i] * channel[i];
+                channelPeaks[index] = Math.max(channelPeaks[index], Math.sqrt(channelEnergy / (end - start)));
+                energy += channelEnergy;
+            });
+            levels.push(Math.sqrt(energy / ((end - start) * channels.length)));
+        }
+        const threshold = Math.max(...levels) * .18;
+        let lastStrong = levels.length - 1;
+        while (lastStrong > 0 && levels[lastStrong] < threshold) lastStrong -= 1;
+        // Stop inside the sounding body, before the recorded note-off/reverb.
+        // Some bowed notes finish after 1.5 s; others sustain beyond 5 s.
+        let end = Math.max(.3, Math.min(config.loopEnd || buffer.duration - .08, (lastStrong + 1) * .05 - .1));
+        while (end > .35) {
+            const index = Math.max(1, Math.floor(end / .05) - 1);
+            // Include the possible +4 ms zero-crossing adjustment in the guard.
+            const finish = Math.min(buffer.length, Math.floor((end + .004) * buffer.sampleRate));
+            const begin = Math.max(0, finish - size);
+            let energy = 0;
+            let channelsSounding = true;
+            channels.forEach(function (channel, index) {
+                let channelEnergy = 0;
+                for (let i = begin; i < finish; i += 1) channelEnergy += channel[i] * channel[i];
+                if (Math.sqrt(channelEnergy / (finish - begin)) < channelPeaks[index] * .18) channelsSounding = false;
+                energy += channelEnergy;
+            });
+            const endingLevel = Math.sqrt(energy / ((finish - begin) * channels.length));
+            if (channelsSounding && Math.min(levels[index], levels[index - 1], endingLevel) >= threshold) break;
+            end -= .05;
+        }
+        let start = Math.max(0, Math.min(config.loopStart || 1.2, end - .35));
+        while (start < end - .4) {
+            const begin = Math.floor((start + .02) * buffer.sampleRate);
+            const sounding = channels.every(function (channel, index) {
+                let energy = 0;
+                for (let i = begin; i < begin + size; i += 1) energy += channel[i] * channel[i];
+                return Math.sqrt(energy / size) >= channelPeaks[index] * .1;
+            });
+            if (sounding) break;
+            start += .05;
+        }
+        function quietCrossing(time) {
+            const target = Math.round(time * buffer.sampleRate);
+            const radius = Math.round(buffer.sampleRate * .004);
+            let best = target, score = Infinity;
+            for (let i = Math.max(1, target - radius); i < Math.min(buffer.length - 1, target + radius); i += 1) {
+                if (channels[0][i - 1] > 0 || channels[0][i] < 0) continue;
+                const value = channels.reduce(function (sum, channel) { return sum + Math.abs(channel[i]); }, 0);
+                if (value < score) { best = i; score = value; }
+            }
+            return best / buffer.sampleRate;
+        }
+        const region = { start: quietCrossing(start), end: quietCrossing(end) };
+        // Blend the decoded loop's last 20 ms into its head. The wrap resumes
+        // after that blended head, so neither a click nor a silent tail repeats.
+        // Only this private decoded buffer changes; source recordings stay intact.
+        const fade = Math.min(Math.round(buffer.sampleRate * .02), Math.floor((region.end - region.start) * buffer.sampleRate / 4));
+        const head = Math.round(region.start * buffer.sampleRate);
+        const tail = Math.round(region.end * buffer.sampleRate) - fade;
+        channels.forEach(function (channel) {
+            for (let i = 0; i < fade; i += 1) {
+                const mix = (i + 1) / fade;
+                channel[tail + i] = channel[tail + i] * (1 - mix) + channel[head + i] * mix;
+            }
+        });
+        region.start += fade / buffer.sampleRate;
+        state.sampleSustainLoops.set(buffer, region);
+        return region;
+    }
+
     function balancedDrumGain(buffer, requestedGain, velocity, id, sampleSet) {
         const bodyRms = decodedBufferBodyRms(buffer);
         if (bodyRms < .000001) return volumeOnlyGain(buffer, requestedGain);
@@ -1006,7 +1089,7 @@
     }
 
     function releasePianoVoice(voice, quick) {
-        if (!voice || voice.released || !state.audioContext) return;
+        if (!voice || (voice.released && !quick) || !state.audioContext) return;
         voice.released = true;
         if (voice.pendingReleaseTimer) {
             window.clearTimeout(voice.pendingReleaseTimer);
@@ -1015,11 +1098,13 @@
         const now = state.audioContext.currentTime;
         const release = quick ? (voice.sampledPiano ? .035 : .08)
             : isElectricBassPluckSample(voice.sampleSet) ? BASS_PLUCK_RELEASE_SECONDS
+            : voice.heldTone ? .32
             : (voice.sampledPiano ? .16 : .86);
         if (typeof voice.gain.gain.cancelAndHoldAtTime === "function") voice.gain.gain.cancelAndHoldAtTime(now);
         else voice.gain.gain.cancelScheduledValues(now);
         voice.gain.gain.setTargetAtTime(.0001, now, release / 5);
-        window.setTimeout(function () { try { voice.source.stop(); } catch (error) {} }, Math.ceil(release * 1200));
+        state.pianoReleaseVoices.add(voice);
+        try { voice.source.stop(now + release * 1.2); } catch (error) {}
     }
 
     function samplePianoNoteOn(midi, velocity) {
@@ -1047,7 +1132,10 @@
         } else connectToMix(gain, .12);
         const voice = { source, gain, released: false, held: false };
         state.pianoVoices.set(midi, voice);
-        source.onended = function () { if (state.pianoVoices.get(midi) === voice) state.pianoVoices.delete(midi); };
+        source.onended = function () {
+            state.pianoReleaseVoices.delete(voice);
+            if (state.pianoVoices.get(midi) === voice) state.pianoVoices.delete(midi);
+        };
         source.start(now, Math.min(decodedBufferStartOffset(buffer), Math.max(0, buffer.duration - .01)));
         return true;
     }
@@ -1281,6 +1369,7 @@
     }
 
     function preloadRemainingRange(config, center) {
+        if (sampledPianoConfig()?.id !== config.id) return;
         const token = state.rangePreloadToken += 1;
         const range = currentPitchRange();
         const start = Math.max(range.start, config.min);
@@ -1351,8 +1440,9 @@
     function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {
         const context = ensureAudio();
         if (!context || !buffer) return;
+        const heldTone = sampleSet === "hammond-organ" || sampleSet === "pipe-organ" || ["flute", "oboe", "trumpet", "piccolo-trumpet", "clarinet", "bass-clarinet", "piccolo-flute", "french-horn", "english-horn", "soprano-sax", "saxophone", "tenor-sax", "baritone-sax", "bassoon", "contrabassoon", "flugelhorn", "alto-trombone", "trombone", "bass-trombone", "euphonium", "tuba", "violin", "viola", "cello", "upright-bass", "haegeum", "haegeum-vibrato", "daegeum", "daegeum-vibrato", "hyangpiri", "hyangpiri-vibrato", "taepyeongso", "yanggeum-tremolo", "ajaeng", "ajaeng-vibrato", "sogeum", "danso", "danso-vibrato", "hun", "ocarina", "recorder-piccolo", "recorder-soprano", "recorder-alto", "recorder-tenor"].includes(sampleSet);
         const existing = state.pianoVoices.get(midi);
-        if (existing) releasePianoVoice(existing, true);
+        if (existing) releasePianoVoice(existing, !existing.heldTone);
         if (isElectricBassSample(sampleSet)) {
             state.pianoVoices.forEach(function (other) {
                 if (isElectricBassSample(other.sampleSet)) releasePianoVoice(other, true);
@@ -1367,13 +1457,13 @@
         const velocityGain = Math.max(.08, Math.min(1.7, Math.pow(velocity, .9) * 1.22 * highNoteCompensation));
         const peak = upwardBalancedGain(buffer, velocityGain * calibratedGain, velocityGain);
         const decay = pluckedKeyboardDecay(sampleSet);
-        const heldTone = sampleSet === "hammond-organ" || sampleSet === "pipe-organ" || ["flute", "oboe", "trumpet", "piccolo-trumpet", "clarinet", "bass-clarinet", "piccolo-flute", "french-horn", "english-horn", "soprano-sax", "saxophone", "tenor-sax", "baritone-sax", "bassoon", "contrabassoon", "flugelhorn", "alto-trombone", "trombone", "bass-trombone", "euphonium", "tuba", "violin", "viola", "cello", "upright-bass", "haegeum", "haegeum-vibrato", "daegeum", "daegeum-vibrato", "hyangpiri", "hyangpiri-vibrato", "taepyeongso", "yanggeum-tremolo", "ajaeng", "ajaeng-vibrato", "sogeum", "danso", "danso-vibrato", "hun", "ocarina", "recorder-piccolo", "recorder-soprano", "recorder-alto", "recorder-tenor"].includes(sampleSet);
         source.buffer = buffer;
         source.playbackRate.value = Math.pow(2, (midi - anchor) / 12);
         if (heldTone && buffer.duration > 1.25) {
+            const region = decodedBufferSustainLoop(buffer, sampleConfig || {});
             source.loop = true;
-            source.loopStart = Math.min((sampleConfig && sampleConfig.loopStart) || 1.2, buffer.duration * .72);
-            source.loopEnd = Math.max(source.loopStart + .25, Math.min((sampleConfig && sampleConfig.loopEnd) || buffer.duration - .08, buffer.duration - .08));
+            source.loopStart = region.start;
+            source.loopEnd = region.end;
         }
         gain.gain.setValueAtTime(.0001, now);
         gain.gain.exponentialRampToValueAtTime(peak, now + .0025);
@@ -1384,10 +1474,13 @@
         source.connect(gain);
         // Preserve the dry sample's level and tone, add the original short room,
         // and leave only peak protection after the upward-only calibration.
-        connectFastToMix(gain, .035);
-        const voice = { source, gain, anchor, sampleSet, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, released: false, held: false, percussiveDecay: decay, startedAt: now, pendingReleaseTimer: 0 };
+        connectFastToMix(gain, heldTone ? .16 : .035);
+        const voice = { source, gain, anchor, sampleSet, heldTone, sampleKey: sampleSet + ":" + anchor, sampledPiano: true, released: false, held: false, percussiveDecay: decay, startedAt: now, pendingReleaseTimer: 0 };
         state.pianoVoices.set(midi, voice);
-        source.onended = function () { if (state.pianoVoices.get(midi) === voice) state.pianoVoices.delete(midi); };
+        source.onended = function () {
+            state.pianoReleaseVoices.delete(voice);
+            if (state.pianoVoices.get(midi) === voice) state.pianoVoices.delete(midi);
+        };
         const configuredOffset = sampleConfig && Number.isFinite(sampleConfig.startOffset) ? Math.max(0, sampleConfig.startOffset) : null;
         const startOffset = configuredOffset === null ? decodedBufferStartOffset(buffer) : configuredOffset;
         source.start(now, Math.min(startOffset, Math.max(0, buffer.duration - .01)));
@@ -2298,6 +2391,7 @@
         chokeDaechwitaBrass();
         Array.from(state.koreanMetalVoices.keys()).forEach(chokeKoreanMetal);
         state.pianoVoices.forEach(function (voice) { releasePianoVoice(voice, true); });
+        Array.from(state.pianoReleaseVoices).forEach(function (voice) { releasePianoVoice(voice, true); });
         if (state.stringNode) state.stringNode.port.postMessage({ type: "allOff" });
         if (state.drumNode) state.drumNode.port.postMessage({ type: "allOff" });
         document.querySelectorAll(".key.active,.drum-pad.active").forEach(function (item) { item.classList.remove("active"); });
