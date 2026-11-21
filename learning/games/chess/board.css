@@ -2,8 +2,11 @@
 :where(.chess-surface) .chessboard{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:min(70dvh,calc(100dvw - 350px));max-width:720px;aspect-ratio:1;border:9px ridge #65401f;box-shadow:0 14px 34px #000,inset 0 0 0 1px #000;user-select:none;touch-action:manipulation}
 :where(.chess-surface) .square{position:relative;display:grid;place-items:center;min-width:0;padding:0;border:0;cursor:pointer;color:#1b1b1b}
 /* 체스판은 대회용 비닐 판처럼 크림·초록(장기·바둑은 나무판). 나뭇결로 바꿨다가 초록 판이 낫다고 해 되돌림(2026-11-21). */
-:where(.chess-surface) .square.light{background:var(--light)}
-:where(.chess-surface) .square.dark{background:var(--dark)}
+/* 비닐판의 고운 잔결(무늬로 보이면 실패: 명암 차 2~3%)과 위에서 비치는 빛이 아래로 살짝 빠지는 것만 덧입힌다. */
+:where(.chess-surface) .chessboard{position:relative;--chess-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .3 0 0 0 -.15'/%3E%3C/filter%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.3 0 0 0 .15'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23w)'/%3E%3Crect width='160' height='160' filter='url(%23b)'/%3E%3C/svg%3E")}
+:where(.chess-surface) .chessboard::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(165deg,#ffffff12,#ffffff00 42%,#00000000 60%,#00000014)}
+:where(.chess-surface) .square.light{background:var(--chess-grain) 0 0/160px 160px,var(--light)}
+:where(.chess-surface) .square.dark{background:var(--chess-grain) 80px 40px/160px 160px,var(--dark)}
 :where(.chess-surface) .square:focus-visible{outline:4px solid #65b9ff;outline-offset:-4px;z-index:8}
 :where(.chess-surface) .square.selected::before{content:"";position:absolute;inset:5%;border:4px solid #ffd950;background:#ffdf543f;z-index:1}
 :where(.chess-surface) .square.last::before{content:"";position:absolute;inset:0;background:#f6e75c66;z-index:0}
