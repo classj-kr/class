@@ -43,6 +43,7 @@ services:
     buildFilter:
       paths:
         - scripts/build-render-assets.mjs
+        - game-hub-server/render-asset-links.mjs
         - assets/**/*.avif
         - assets/**/*.gif
         - assets/**/*.ico

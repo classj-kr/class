@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { pruneRenderArtifact } from "./render-prune.mjs";
 import { installDependencies } from "./render-dependency-cache.mjs";
+import { linkDuplicateAssets } from "./render-asset-links.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ARITHMETIC_DIR = path.resolve(SCRIPT_DIR, "../learning/literacy-numeracy/arithmetics");
@@ -153,6 +154,8 @@ function main() {
       console.log(`[deploy]   removed ${target} (${(bytes / 1024 / 1024).toFixed(1)} MB)`);
     }
     console.log(`[deploy] Removed ${removedTargets} development-only paths (${(removedBytes / 1024 / 1024).toFixed(1)} MB) before upload.`);
+    const { linkedFiles, savedBytes } = linkDuplicateAssets(path.resolve(SCRIPT_DIR, ".."), ["assets", "learning"]);
+    console.log(`[deploy] Shared ${linkedFiles} identical static files (${savedBytes} bytes) before upload.`);
   }
 }
 

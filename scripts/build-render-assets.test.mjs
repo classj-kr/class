@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -33,17 +33,28 @@ test("asset build copies voyage media once and writes the deployment manifest", 
     const runtimeAsset = "learning/books/images/page.webp";
     const avatar = "apps/classtools/assets/avatars/cat.webp";
     const voyageTile = "learning/inquiry/age-of-exploration/public/assets/maps/tiles/tile_0_0.webp";
-    const trackedFiles = [runtimeAsset, avatar, voyageTile];
+    const identicalTile = voyageTile.replace("tile_0_0", "tile_1_0");
+    const differentTile = voyageTile.replace("tile_0_0", "tile_2_0");
+    const trackedFiles = [runtimeAsset, avatar, voyageTile, identicalTile, differentTile];
     for (const file of trackedFiles) {
       const absolute = path.join(root, file);
       mkdirSync(path.dirname(absolute), { recursive: true });
-      writeFileSync(absolute, file);
+      writeFileSync(absolute, file === identicalTile ? voyageTile : file);
     }
     const manifest = buildRenderAssets({ repositoryRoot: root, outputDirectory: output, trackedFiles });
-    assert.equal(manifest.fileCount, 3);
+    assert.equal(manifest.fileCount, 5);
+    assert.equal(manifest.linkedFiles, 1);
+    assert.equal(manifest.savedBytes, Buffer.byteLength(voyageTile));
     assert.equal(existsSync(path.join(output, runtimeAsset)), true);
     assert.equal(existsSync(path.join(output, "assets", "avatars", "cat.webp")), true);
-    assert.equal(readFileSync(path.join(output, "learn/world-voyage/assets/maps/tiles/tile_0_0.webp"), "utf8"), voyageTile);
+    const [original, identical, different] = [voyageTile, identicalTile, differentTile]
+      .map(file => path.join(output, assetDestinations(file)[0]));
+    assert.equal(readFileSync(original, "utf8"), voyageTile);
+    assert.equal(readFileSync(identical, "utf8"), voyageTile);
+    assert.equal(readFileSync(different, "utf8"), differentTile);
+    assert.equal(statSync(original, { bigint: true }).ino, statSync(identical, { bigint: true }).ino);
+    assert.notEqual(statSync(original, { bigint: true }).ino, statSync(different, { bigint: true }).ino);
+    assert.equal(statSync(path.join(root, voyageTile)).nlink, 1);
     assert.equal(existsSync(path.join(output, voyageTile)), false);
     assert.equal(JSON.parse(readFileSync(path.join(output, "__asset-manifest.json"), "utf8")).commit, "local");
   } finally {

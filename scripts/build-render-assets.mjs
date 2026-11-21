@@ -2,15 +2,11 @@ import { execFileSync } from "node:child_process";
 import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { linkDuplicateAssets, STATIC_ASSET_EXTENSIONS } from "../game-hub-server/render-asset-links.mjs";
 
 const SCRIPT_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
 const REPOSITORY_ROOT = path.resolve(SCRIPT_DIRECTORY, "..");
 const DEFAULT_OUTPUT = path.join(REPOSITORY_ROOT, ".render-assets");
-const ASSET_EXTENSIONS = new Set([
-  ".avif", ".bin", ".geojson", ".gif", ".glb", ".gltf", ".ico", ".jpeg", ".jpg",
-  ".m4a", ".mp3", ".mp4", ".ogg", ".otf", ".png", ".svg", ".ttf", ".wav",
-  ".webm", ".webp", ".woff", ".woff2",
-]);
 const EXCLUDED_PREFIXES = [
   "learning/literacy-numeracy/phonics-site/",
   "learning/inquiry/age-of-exploration/public/assets/currents/source/",
@@ -28,7 +24,7 @@ export function assetDestinations(relativePath) {
   if (normalized.split("/").some((part) =>
     ["tools", "_tools", "_check", "scratch", "node_modules", ".git", ".openai", ".wrangler", "tests"].includes(part))) return [];
   if (EXCLUDED_PREFIXES.some((prefix) => normalized.startsWith(prefix))) return [];
-  if (!ASSET_EXTENSIONS.has(path.posix.extname(normalized).toLowerCase())) return [];
+  if (!STATIC_ASSET_EXTENSIONS.has(path.posix.extname(normalized).toLowerCase())) return [];
 
   if (normalized.startsWith("apps/classtools/assets/avatars/")) {
     return [`assets/avatars/${normalized.slice("apps/classtools/assets/avatars/".length)}`];
@@ -70,9 +66,12 @@ export function buildRenderAssets({ repositoryRoot = REPOSITORY_ROOT, outputDire
     }
   }
 
+  const { linkedFiles, savedBytes } = linkDuplicateAssets(outputDirectory, ["assets", "learning", "learn"]);
   const manifest = {
     commit: process.env.RENDER_GIT_COMMIT || "local",
     fileCount,
+    linkedFiles,
+    savedBytes,
   };
   writeFileSync(path.join(outputDirectory, "__asset-manifest.json"), `${JSON.stringify(manifest)}\n`);
   writeFileSync(path.join(outputDirectory, "index.html"), "<!doctype html><meta charset=\"utf-8\"><title>ClassJ assets</title><p>ClassJ static assets</p>\n");
@@ -83,5 +82,5 @@ const isDirectRun = process.argv[1]
   && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isDirectRun) {
   const manifest = buildRenderAssets();
-  console.log(`[assets] Prepared ${manifest.fileCount} CDN files.`);
+  console.log(`[assets] Prepared ${manifest.fileCount} CDN paths, sharing ${manifest.linkedFiles} duplicates (${manifest.savedBytes} bytes).`);
 }
