@@ -1,10 +1,10 @@
 // 악기실(instrument-room)의 대분류·악기·주법을 그대로 옮긴 목록.
 // 악기실 app.js의 MODEL_LIBRARY·KEYBOARD_SAMPLE_SETS·DRUM_SAMPLE_SETS와 맞춰 고친다.
 (function (root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports ? require("../shared/guitar-samples.js") : root.GuitarSamples);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.BeatCatalog = api;
-})(globalThis, function () {
+})(globalThis, function (guitars) {
   "use strict";
   // 소리 묶음: [폴더, 낮은 음, 높은 음, 보정 dB, 옵션]  L=길게 끌면 반복 구간 사용, rev=파일 판
   const L = { loop: true };
@@ -54,14 +54,8 @@
     "active-bass-slap": ["active-bass-slap", 23, 62, 10],
     "fretless-bass-finger": ["fretless-bass-finger", 28, 63, 4, { rev: "20260901-fretless-finger-v3" }],
     "fretless-bass-pick": ["fretless-bass-pick", 28, 62, 2.5], "fretless-bass-slap": ["fretless-bass-slap", 28, 62, 10],
-    "guitar-s-clean": ["guitar-s-clean", 40, 86, 5.5, { rev: "20260902-clean-tone-v4" }],
-    "guitar-s-blues": ["guitar-s-blues", 40, 86, 4, { rev: "20260902-blues-tone-v4" }],
-    "guitar-s-funk": ["guitar-s-funk", 40, 86, 25.1, { rev: "20260902-funk-tone-v4" }],
-    "guitar-s-rock": ["guitar-s-rock", 40, 86, 2, { rev: "20260902-rock-tone-v4" }],
-    "guitar-superstrat": ["guitar-superstrat", 40, 84, -1.5, { rev: "20260902-superstrat-tone-v4" }],
-    "guitar-hollow": ["guitar-hollow", 40, 86, 13, { rev: "20260902-hollow-tone-v4" }],
-    "guitar-nylon": ["guitar-nylon", 40, 84, 16.5, { rev: "20260902-nylon-tone-v4" }],
-    "guitar-steel": ["guitar-steel", 40, 84, 25, { rev: "20260902-steel-tone-v2" }],
+    ...Object.fromEntries(guitars.models.map((guitar) => [guitar.bank,
+      [guitar.bank, guitar.min, guitar.max, 0, { rev: guitars.revision, guitar }]])),
   };
 
   // 드럼 세트 줄(위→아래): 심벌 → 하이햇 → 탐(높은 것부터) → 스네어 주법 → 킥.
@@ -97,10 +91,10 @@
 
   const CATEGORIES = [
     { id: "korean", name: "국악기", models: [
-      arts("gayageum", "산조가야금", [["pluck", "기본 뜯기", "gayageum"], ["slow-vibrato", "느린 농현", "gayageum-slow-vibrato"], ["fast-vibrato", "빠른 농현", "gayageum-fast-vibrato"], ["roll", "트레몰로", "gayageum-roll"], ["bend-down", "퇴성", "gayageum-bend-down"], ["bend-up", "추성", "gayageum-bend-up"]]),
+      arts("gayageum", "산조가야금", [["pluck", "뜯기", "gayageum"], ["slow-vibrato", "느린 농현", "gayageum-slow-vibrato"], ["fast-vibrato", "빠른 농현", "gayageum-fast-vibrato"], ["roll", "연튕김", "gayageum-roll"], ["bend-down", "퇴성", "gayageum-bend-down"], ["bend-up", "추성", "gayageum-bend-up"]]),
       one("gayageum-25", "25현가야금"),
       arts("geomungo", "거문고", [["pluck", "기본 뜯기", "geomungo"], ["light-vibrato", "잔농현", "geomungo-light-vibrato"], ["deep-vibrato", "깊은 농현", "geomungo-deep-vibrato"]]),
-      arts("yanggeum", "양금", [["pluck", "기본 타현", "yanggeum"], ["tremolo", "트레몰로", "yanggeum-tremolo"]]),
+      arts("yanggeum", "양금", [["pluck", "채로 치기", "yanggeum"], ["tremolo", "트레몰로", "yanggeum-tremolo"]]),
       breathy("haegeum", "해금", "기본 활긋기"), breathy("ajaeng", "아쟁", "기본 활긋기"),
       breathy("daegeum", "대금"), one("sogeum", "소금"), breathy("danso", "단소"), one("hun", "훈"),
       breathy("hyangpiri", "향피리"), one("taepyeongso", "태평소"),
@@ -138,11 +132,7 @@
       electric("p-bass", "P-Style 4", "p-bass"), electric("j-bass", "J-Style 4", "j-bass"), electric("active-bass", "Modern Active 5", "active-bass"),
       electric("fretless-bass", "Fretless 4", "fretless-bass"), bowed("upright-bass", "콘트라베이스"),
     ] },
-    { id: "guitar", name: "기타", models: [
-      arts("s-style", "Rock S-Style", [["clean", "클린", "guitar-s-clean"], ["blues", "블루스", "guitar-s-blues"], ["funk", "펑크", "guitar-s-funk"], ["rock", "록", "guitar-s-rock"]]),
-      one("metal-seven", "Modern Metal 7", "guitar-superstrat"), one("hollow-jazz", "Hollowbody Jazz", "guitar-hollow"),
-      one("dreadnought", "Dreadnought", "guitar-steel"), one("classical-guitar", "Classical Nylon", "guitar-nylon"),
-    ] },
+    { id: "guitar", name: "기타", models: guitars.models.map(({id, name, bank}) => one(id, name, bank)) },
     { id: "keyboard", name: "건반", pedal: true, models: [
       one("concert-grand", "콘서트 그랜드"), one("upright-piano", "업라이트 피아노"), one("harpsichord", "하프시코드"),
       one("tine-ep", "펜더 로즈"), one("reed-ep", "월리처"), one("clavinet", "클라비넷"), one("fm-dx7", "FM 피아노 · DX7"),
@@ -156,7 +146,6 @@
     "concert-grand": KEYS, "upright-piano": KEYS, harpsichord: KEYS, "tine-ep": KEYS, "reed-ep": KEYS, clavinet: KEYS,
     "fm-dx7": KEYS, jd800: KEYS, "hybrid-la-rhodes": KEYS, "hybrid-la-mks": KEYS, "hammond-organ": KEYS, "pipe-organ": KEYS,
     "p-bass": [28, 67], "j-bass": [28, 67], "active-bass": [23, 72], "fretless-bass": [28, 67], "upright-bass": [52, 108],
-    "s-style": [40, 88], "metal-seven": [35, 88], "hollow-jazz": [40, 88], dreadnought: [40, 88], "classical-guitar": [40, 88],
     violin: [55, 108], viola: [48, 108], cello: [48, 108], harp: [25, 102],
     "piccolo-flute": [72, 108], flute: [60, 96], ocarina: [60, 86], "recorder-piccolo": [77, 104], "recorder-soprano": [72, 101],
     "recorder-alto": [65, 89], "recorder-tenor": [60, 84], oboe: [58, 91], "english-horn": [49, 90], clarinet: [48, 95],

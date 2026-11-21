@@ -14,6 +14,19 @@ test("catalog keeps the instrument room categories in order", () => {
   assert.deepEqual(B.CATEGORIES.map((c) => c.name), ["국악기", "현악기", "목관악기", "금관악기", "타악기", "드럼", "베이스", "기타", "건반"]);
 });
 
+test("saved Rock techniques use the shared track name without losing notes", () => {
+  for (const art of ["clean", "blues", "funk", "rock"]) {
+    const notes = [{ step: 0, pitch: 55, len: 1 }, { step: 2, pitch: 88, len: 3 }];
+    const tracks = [{ ...B.track("g1", "guitar/s-style", art, notes), volume: .45 }];
+    const [track] = B.validate({ ...B.initial, tracks }).tracks;
+    assert.equal(B.model(track).name, "Rock");
+    assert.equal(track.art, "");
+    assert.equal(track.volume, .45);
+    assert.deepEqual(track.notes, notes);
+    assert.equal(B.anchor(B.sound(track), 88), 86);
+  }
+});
+
 test("a new note replaces overlapping notes on the same row only", () => {
   const notes = [{ step: 0, pitch: 60, len: 4 }, { step: 0, pitch: 62, len: 4 }];
   const out = B.placeNote(notes, { step: 2, pitch: 60, len: 2 });

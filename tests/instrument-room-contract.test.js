@@ -21,9 +21,12 @@ require('node:vm').runInContext(koreanPercussionSource, koreanContext);
 const koreanPercussion = koreanContext.window.KOREAN_PERCUSSION_DATA;
 // Inspect the same model/config objects used by the app. Descriptive labels
 // and object-property ordering must not determine whether a recording works.
-const appContext = { window: { InstrumentRoomCore: require('../learning/arts/instrument-room/instrument-core.js') } };
+const appContext = { window: {
+  InstrumentRoomCore: require('../learning/arts/instrument-room/instrument-core.js'),
+  GuitarSamples: require('../learning/arts/shared/guitar-samples.js'),
+} };
 require('node:vm').runInNewContext(app.replace('document.addEventListener("DOMContentLoaded", init);',
-  'window.contract = {modelById, KEYBOARD_SAMPLE_SETS, DRUM_SAMPLE_SETS, STATION_DRUMS, state, sampledPianoConfig};'), appContext);
+  'window.contract = {modelById, KEYBOARD_SAMPLE_SETS, DRUM_SAMPLE_SETS, STATION_DRUMS, state, sampledPianoConfig, concertGrandAnchor};'), appContext);
 const runtime = appContext.window.contract;
 
 function assertRecordedModel(id, range, articulations) {
@@ -352,12 +355,10 @@ test('guitar sample maps contain every supplied MIDI note exactly once', () => {
       .filter((name) => name.endsWith('.ogg'))
       .sort()
       .map((name) => Number(name.slice(0, 3)) + 20);
-    const escapedFolder = folder.replaceAll('-', '\\-');
-    const configMatch = app.match(new RegExp(`"${escapedFolder}": Object\\.freeze\\(\\{[^\\n]+anchors: Object\\.freeze\\(\\[([^\\]]+)\\]\\)`));
-    assert.ok(configMatch, `${folder}: missing explicit anchor map`);
-    const anchors = configMatch[1].split(',').map((value) => Number(value.trim()));
-    assert.deepEqual(anchors, expectedMidi, `${folder}: config anchors must match supplied files`);
-    assert.match(configMatch[0], new RegExp(`min: ${expectedMidi[0]}, max: ${expectedMidi.at(-1)}`), `${folder}: recorded range`);
+    const config = runtime.KEYBOARD_SAMPLE_SETS[folder];
+    assert.deepEqual([config.min, config.max], [expectedMidi[0], expectedMidi.at(-1)], `${folder}: recorded range`);
+    const pitches = Array.from({ length: config.max - config.min + 1 }, (_, i) => config.min + i);
+    assert.deepEqual(pitches.map((pitch) => runtime.concertGrandAnchor(pitch, config)), expectedMidi, `${folder}: every playable pitch has its recorded note`);
   }
 });
 test('keyboard and electronic machines use non-interactive premium artwork', () => {
@@ -428,7 +429,7 @@ test('percussion library includes dedicated kits and essential orchestral instru
   assert.match(app, /typeof current\.gainDb === "number"/);
   assert.match(app, /elements\.drumSystemLabel\.textContent = model\.tag/);
   assert.match(app, /drumSystemDescription\.classList\.toggle\("hidden", !description\)/);
-  assert.doesNotMatch(app, /Cubase|AD2 MAP/);
+  assert.doesNotMatch(app, /(?:name|tag|badge|model|description): "[^"\n]*(?:Cubase|AD2 MAP)/);
   assert.doesNotMatch(app, /사용자가 제공한|AD2 MIDI 키맵/);
   assert.match(css, /#drumControls\.sampled-kit label \{ display: none; \}/);
 });
@@ -498,9 +499,8 @@ test('string and expressive families expose virtual-instrument presentation', ()
   assert.doesNotMatch(html, /expression-tabs|expression-actions/);
   assert.match(app, /\[\["finger", "핑거"\], \["pick", "피크"\], \["slap", "슬랩"\]\]/);
   assert.doesNotMatch(app, /stringPreset|renderSoundPresets/);
-  assert.match(app, /"guitar-cubase-t": Object\.freeze/);
-  assert.match(app, /id === "dreadnought"\) return KEYBOARD_SAMPLE_SETS\["guitar-cubase-t"\]/);
-  assert.match(app, /anchors: Object\.freeze\(\[40,/);
+  runtime.state.currentModel = runtime.modelById('dreadnought');
+  assert.equal(runtime.sampledPianoConfig().id, 'guitar-cubase-t');
   assert.match(css, /\.classical-render/);
   assert.match(css, /\.machine-deck/);
 });

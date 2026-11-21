@@ -58,7 +58,9 @@ def main() -> None:
         path=ROOM/"assets/audio"/group/name
         original=read(path)
         if group=="gayageum-25":source=MIXDOWN/"25-strings gayageum.mp3";source_start=(midi-43)*10
-        elif group=="guitar-steel":source=MIXDOWN/"guitar steel.mp3";source_start=(midi-40)*10
+        elif group=="guitar-cubase-t":
+            source=ROOT/"outputs/guitar-recording-20261121/full-range/full-T.wav"
+            source_start=(midi-40)*10
         else:source=MIXDOWN/"contrabass pizz.mp3";source_start=(midi+24-21)*10
         reference=decode(source,"ffmpeg",source_start,5,RATE)
         correlation=compare(reference,original)["correlation"]

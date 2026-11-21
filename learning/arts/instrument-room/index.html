@@ -13,7 +13,8 @@
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
     <script src="pad-presentation.js?v=20261121-drum-articulations-v4" defer></script>
     <script src="melody-demos.js?v=20261121-complete-phrases-v6" defer></script>
-    <script src="app.js?v=20261121-original-capture-level-v18" defer></script>
+    <script src="../shared/guitar-samples.js?v=20261121" defer></script>
+    <script src="app.js?v=20261121-shared-guitars-v19" defer></script>
   <link rel="stylesheet" href="/assets/study-worlds.css?v=20261121-2">
 </head>
 <body data-study-world="music" data-sfx-clicks="none" data-sfx-feedback="none">
@@ -28,55 +29,55 @@
             <nav class="instrument-tabs" aria-label="악기 대분류 선택">
                 <button type="button" data-family="korean" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="4.5" cy="12" rx="1.8" ry="6"/><ellipse cx="19.5" cy="12" rx="1.8" ry="6"/><path d="M4.5 7.5 C 9 9, 10.5 11, 12 11 C 13.5 11, 15 9, 19.5 7.5"/><path d="M4.5 16.5 C 9 15, 10.5 13, 12 13 C 13.5 13, 15 15, 19.5 16.5"/><line x1="6.3" y1="8" x2="17.7" y2="16"/><line x1="6.3" y1="16" x2="17.7" y2="8"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#korean"></use></svg>
                     </span>
                     <span class="tab-label"><b>국악기</b><small>KOREAN</small></span>
                 </button>
                 <button type="button" data-family="strings" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4M12 2v5"/><path d="M9 7c-2.2 0-3.5 1.2-3.5 2.8 0 1.5.8 2.2 1.4 2.7-.8.8-1.4 1.8-1.4 3.5 0 2.5 2.5 4 5.5 4s5.5-1.5 5.5-4c0-1.7-.6-2.7-1.4-3.5.6-.5 1.4-1.2 1.4-2.7 0-1.6-1.3-2.8-3.5-2.8"/><path d="M10.2 13.2c.6.4.6 1.2 0 1.6M13.8 13.2c-.6.4-.6 1.2 0 1.6"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#strings"></use></svg>
                     </span>
                     <span class="tab-label"><b>현악기</b><small>STRINGS</small></span>
                 </button>
                 <button type="button" data-family="woodwind" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.5h18"/><line x1="5.5" y1="11" x2="5.5" y2="16"/><circle cx="9.5" cy="10" r="1.2" fill="currentColor"/><circle cx="12.5" cy="10" r="1.2" fill="currentColor"/><circle cx="15.5" cy="10" r="1.2" fill="currentColor"/><circle cx="18.5" cy="10" r="1.2" fill="currentColor"/><path d="M21 12v3"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#woodwind"></use></svg>
                     </span>
                     <span class="tab-label"><b>목관악기</b><small>WOODWIND</small></span>
                 </button>
                 <button type="button" data-family="brass" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h12"/><path d="M14 13c2.6 0 4.5-1.6 5.5-4.5h1.5v9H19.5c-1-2.9-2.9-4.5-5.5-4.5"/><line x1="7" y1="8" x2="7" y2="13"/><line x1="9.5" y1="8" x2="9.5" y2="13"/><line x1="12" y1="8" x2="12" y2="13"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="9.5" cy="7" r="1" fill="currentColor"/><circle cx="12" cy="7" r="1" fill="currentColor"/><path d="M4 13v2a2 2 0 0 0 2 2h5"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#brass"></use></svg>
                     </span>
                     <span class="tab-label"><b>금관악기</b><small>BRASS</small></span>
                 </button>
                 <button type="button" data-family="percussion" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4.5" y1="6" x2="4.5" y2="18"/><line x1="9" y1="7" x2="9" y2="17"/><line x1="13.5" y1="8" x2="13.5" y2="16"/><line x1="18" y1="9" x2="18" y2="15"/><line x1="6" y1="5" x2="19" y2="18"/><circle cx="6" cy="5" r="1.5" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#percussion"></use></svg>
                     </span>
                     <span class="tab-label"><b>타악기</b><small>PERCUSSION</small></span>
                 </button>
                 <button type="button" data-family="drums" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="8" rx="8" ry="3.2"/><path d="M4 8v7c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2V8"/><line x1="6.5" y1="10.5" x2="6.5" y2="16"/><line x1="12" y1="11.2" x2="12" y2="18.2"/><line x1="17.5" y1="10.5" x2="17.5" y2="16"/><line x1="3" y1="4" x2="9.5" y2="7.5"/><line x1="21" y1="4" x2="14.5" y2="7.5"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#drums"></use></svg>
                     </span>
                     <span class="tab-label"><b>드럼</b><small>DRUMS</small></span>
                 </button>
                 <button type="button" data-family="bass" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8.5" r="2.5" fill="currentColor"/><path d="M8 8.5a5 5 0 0 1 7.2 4.2c0 3.2-3 5.8-7.2 7.8"/><circle cx="18" cy="8" r="1.3" fill="currentColor"/><circle cx="18" cy="13.5" r="1.3" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#bass"></use></svg>
                     </span>
                     <span class="tab-label"><b>베이스</b><small>BASS</small></span>
                 </button>
                 <button type="button" data-family="guitar" aria-selected="false">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 4.5l-3.5 3.5"/><path d="M21 3l-1.5 1.5"/><path d="M16 8l-2 2c-.8-.4-1.8-.3-2.5.4l-4.2 4.2c-1.3 1.3-1.3 3.5 0 4.8s3.5 1.3 4.8 0l4.2-4.2c.7-.7.8-1.7.4-2.5l2-2"/><circle cx="10.8" cy="16.2" r="1.4" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#guitar"></use></svg>
                     </span>
                     <span class="tab-label"><b>기타</b><small>GUITAR</small></span>
                 </button>
                 <button class="active" type="button" data-family="keyboard" aria-selected="true">
                     <span class="tab-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><line x1="7.5" y1="4" x2="7.5" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="16.5" y1="4" x2="16.5" y2="20"/><rect x="6" y="4" width="3" height="8" rx="1" fill="currentColor"/><rect x="15" y="4" width="3" height="8" rx="1" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#keyboard"></use></svg>
                     </span>
                     <span class="tab-label"><b>건반</b><small>KEYS</small></span>
                 </button>

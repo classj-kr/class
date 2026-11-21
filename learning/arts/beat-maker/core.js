@@ -42,7 +42,18 @@
   const cache = new Map();
   function sound(t) {
     const k = t.instrument + "|" + t.art;
-    if (cache.has(k)) return cache.get(k);
+    if (!cache.has(k)) cache.set(k, buildSound(t, k));
+    const snd = cache.get(k);
+    // Versions 2 and 3 allowed MIDI 88 for every guitar. Keep those notes
+    // editable in existing songs, using the closest recorded sample.
+    if (snd.guitar && snd.hi < 88) {
+      for (let pitch = 88; pitch > snd.hi; pitch--) {
+        if (t.notes?.some((note) => note.pitch === pitch)) return { ...snd, hi: pitch };
+      }
+    }
+    return snd;
+  }
+  function buildSound(t, k) {
     const model = K.MODELS[t.instrument];
     let out;
     if (model.pads) {
@@ -59,12 +70,11 @@
       const [dir, min, max, gainDb, opt = {}] = K.SETS[art.set];
       // lo~hi: 찍을 수 있는 음역(악기실과 같음), min~max: 실제로 녹음된 음.
       const [lo, hi] = K.RANGES[model.id] || [min, max];
-      out = { pads: false, key: k, set: art.set, dir, min, max, lo, hi, gainDb, rev: opt.rev,
+      out = { pads: false, key: k, set: art.set, dir, min, max, lo, hi, gainDb, rev: opt.rev, guitar: opt.guitar,
         held: K.HELD.has(art.set), loopStart: opt.loop ? 1.1 : 1.2, loopEnd: opt.loop ? 3.8 : 0,
         startAtZero: K.START_AT_ZERO.test(art.set), decay: K.DECAY[art.set] || 0,
         oneShot: K.ONE_SHOT.has(art.set), view: Math.round((lo + hi) / 2) };
     }
-    cache.set(k, out);
     return out;
   }
   const model = (t) => K.MODELS[t.instrument];
@@ -165,6 +175,7 @@
     const ids = new Set();
     for (const t of s.tracks) {
       const m = K.MODELS[t?.instrument];
+      if (t?.instrument === "guitar/s-style" && ["clean", "blues", "funk", "rock"].includes(t.art)) t.art = "";
       if (!m || typeof t.id !== "string" || !/^[a-z0-9-]{1,40}$/.test(t.id) || ids.has(t.id) ||
         typeof t.art !== "string" || (m.arts && !m.arts.some((a) => a.id === t.art)) ||
         !(t.volume >= 0 && t.volume <= 1) || typeof t.mute !== "boolean" || typeof t.solo !== "boolean" ||
@@ -189,7 +200,7 @@
   function changeInstrument(t, instrument, art) {
     const from = sound(t);
     const next = { ...t, instrument, art: art ?? (K.MODELS[instrument].arts ? K.MODELS[instrument].arts[0].id : "") };
-    const to = sound(next);
+    const to = sound({ ...next, notes: [] });
     if (from.pads || to.pads) t.notes = from.pads && to.pads && from.rows.length === to.rows.length && from.kit === to.kit ? t.notes : [];
     else
       t.notes = t.notes.map((n) => {

@@ -42,7 +42,7 @@ function wav(channels,rate,file){
         const context=new OfflineAudioContext(2,24000,24000);context.resume=()=>Promise.resolve();
         window.AudioContext=function(){return context;};
         a.state.audioContext=null;a.state.pianoVoices.clear();
-        a.state.currentModel={id:item.group==='guitar-steel'?'dreadnought':item.group==='upright-bass-pizz'?'upright-bass':item.group};
+        a.state.currentModel={id:item.group==='guitar-cubase-t'?'dreadnought':item.group==='upright-bass-pizz'?'upright-bass':item.group};
         a.state.articulation=item.group==='upright-bass-pizz'?'pizzicato':'pluck';
         const sample=await a.loadConcertGrandSample(item.midi);window.AudioContext=Native;
         const voice=a.startConcertGrandSample(item.midi,.8,sample.anchor,sample.buffer,sample.sampleSet);

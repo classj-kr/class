@@ -1,10 +1,10 @@
 {
   "originalCandidates": [
     {"group":"gayageum-25","midi":57,"resolution":"verify-harmonics"},
-    {"group":"guitar-steel","midi":42,"resolution":"verify-harmonics"},
-    {"group":"guitar-steel","midi":47,"resolution":"verify-harmonics"},
-    {"group":"guitar-steel","midi":63,"resolution":"verify-harmonics"},
-    {"group":"guitar-steel","midi":72,"resolution":"verify-harmonics"},
+    {"group":"guitar-cubase-t","midi":42,"resolution":"verify-harmonics"},
+    {"group":"guitar-cubase-t","midi":47,"resolution":"verify-harmonics"},
+    {"group":"guitar-cubase-t","midi":63,"resolution":"verify-harmonics"},
+    {"group":"guitar-cubase-t","midi":72,"resolution":"verify-harmonics"},
     {"group":"upright-bass-pizz","midi":42,"resolution":"use-stable-anchor"},
     {"group":"upright-bass-pizz","midi":66,"resolution":"verify-harmonics"},
     {"group":"upright-bass-pizz","midi":67,"resolution":"verify-harmonics"},

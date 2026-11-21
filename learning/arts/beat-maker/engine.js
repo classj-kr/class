@@ -1,15 +1,18 @@
 (function () {
   "use strict";
   const B = window.BeatCore;
+  const guitars = window.GuitarSamples;
   const buffers = new Map(), loads = new Map();
   let ctx = null, mix = null;
 
-  // 악기실과 같은 출력: 샘플은 원래 소리 그대로 피크 보호(리미터)만 거치고, 짧은 방 울림을 조금 섞는다.
   function mixer(audio) {
+    const recorded = audio.createWaveShaper();
+    recorded.curve = guitars.peakCurve();
+    recorded.connect(audio.destination);
     const limiter = audio.createDynamicsCompressor();
     limiter.threshold.value = -3; limiter.knee.value = 1; limiter.ratio.value = 20;
     limiter.attack.value = 0.002; limiter.release.value = 0.1;
-    limiter.connect(audio.destination);
+    limiter.connect(recorded);
     const reverb = audio.createConvolver(), wet = audio.createGain();
     const length = Math.floor(audio.sampleRate * 1.7), impulse = audio.createBuffer(2, length, audio.sampleRate);
     for (let c = 0; c < 2; c++) {
@@ -19,8 +22,10 @@
     reverb.buffer = impulse;
     wet.gain.value = 0.1;
     reverb.connect(wet).connect(limiter);
-    return { input: limiter, reverb, chokes: new Map() };
+    return { input: limiter, recorded, reverb, chokes: new Map() };
   }
+
+  const trackDestination = (m, snd) => snd.guitar ? m.recorded : m.input;
   function context() {
     if (!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); mix = mixer(ctx); }
     if (ctx.state === "suspended") ctx.resume();
@@ -136,10 +141,20 @@
       return;
     }
     const a = B.anchor(snd, pitch), velocity = 0.8;
+    src.playbackRate.value = Math.pow(2, (pitch - a) / 12);
+    if (snd.guitar) {
+      const performance = Math.pow(velocity, .9) * 1.22;
+      const level = volumeOnly(buffer, performance / snd.guitar.captureGain) * gain;
+      const releaseAt = at + seconds;
+      env.gain.setValueAtTime(level, at);
+      env.gain.setTargetAtTime(.0001, releaseAt, snd.guitar.release / 5);
+      src.start(at, 0);
+      src.stop(releaseAt + snd.guitar.release * 1.2);
+      return;
+    }
     const high = 1 + Math.max(0, pitch - 60) / 64;
     const perf = Math.max(0.08, Math.min(1.7, Math.pow(velocity, 0.9) * 1.22 * high));
     const level = upwardGain(buffer, perf * Math.pow(10, (snd.gainDb || 0) / 20), perf) * gain;
-    src.playbackRate.value = Math.pow(2, (pitch - a) / 12);
     if (snd.held && buffer.duration > 1.25) {
       src.loop = true;
       src.loopStart = Math.min(snd.loopStart, buffer.duration * 0.72);
@@ -177,8 +192,9 @@
     load(snd, pitch).then(() => {
       const g = audio.createGain();
       g.gain.value = volume;
-      g.connect(mix.input);
-      voice(audio, mix, g, snd, pitch, audio.currentTime + 0.01, snd.pads ? 0.45 : 0.9);
+      g.connect(trackDestination(mix, snd));
+      const length = snd.guitar ? guitars.previewBodySeconds : snd.pads ? .45 : .9;
+      voice(audio, mix, g, snd, pitch, audio.currentTime + 0.01, length);
     }).catch(() => window.dispatchEvent(new Event("beatsoundfail")));
   }
 
@@ -192,9 +208,18 @@
   }
   const stepSeconds = (song) => 60 / song.bpm / 4;
   function trackGain(t) {
-    let g = player.gains.get(t.id);
-    if (!g) { g = ctx.createGain(); g.connect(mix.input); player.gains.set(t.id, g); }
-    return g;
+    const destination = trackDestination(mix, B.sound(t));
+    let route = player.gains.get(t.id);
+    if (!route) {
+      route = { gain: ctx.createGain(), destination: null };
+      player.gains.set(t.id, route);
+    }
+    if (route.destination !== destination) {
+      route.gain.disconnect();
+      route.gain.connect(destination);
+      route.destination = destination;
+    }
+    return route.gain;
   }
   function sync(song) {
     // 재생 중 빠르기를 바꾸면 지금 칸에서 그대로 이어지게 시작 시각을 다시 잡는다.
@@ -248,7 +273,7 @@
   function stop() {
     player.playing = false;
     clearInterval(player.timer);
-    for (const g of player.gains.values()) g.disconnect();
+    for (const route of player.gains.values()) route.gain.disconnect();
     player.gains.clear();
     if (mix) mix.chokes.clear();
   }
@@ -272,8 +297,8 @@
     for (const t of B.audible(song.tracks)) {
       const g = off.createGain();
       g.gain.value = t.volume;
-      g.connect(m.input);
       const snd = B.sound(t);
+      g.connect(trackDestination(m, snd));
       for (const n of [...t.notes].sort((x, y) => x.step - y.step)) voice(off, m, g, snd, n.pitch, n.step * dt + B.swingDelay(song, n.step, dt) + 0.05, B.soundingSteps(t, n, B.stepsPerBar(song)) * dt, B.velGain(n));
     }
     return off.startRendering();

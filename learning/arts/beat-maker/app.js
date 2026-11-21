@@ -121,7 +121,7 @@
       return `
       <div class="track" data-id="${t.id}" style="--c:${B.COLORS[i]}">
         <div class="track-controls">
-          <span class="dot" aria-hidden="true">${i + 1}</span>
+          <span class="track-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="../shared/instrument-icons.svg?v=20261121#${m.cat.id}"></use></svg></span>
           <select class="inst" aria-label="${i + 1}번 트랙 악기">${instOptions}</select>
           ${arts ? `<select class="art" aria-label="${i + 1}번 트랙 주법">${arts.map((a) => `<option value="${a.id}">${a.name}</option>`).join("")}</select>` : ""}
           ${B.hasPedal(t) ? `<button class="pedal small wide" aria-label="${i + 1}번 트랙 서스테인 페달">페달</button>` : ""}
