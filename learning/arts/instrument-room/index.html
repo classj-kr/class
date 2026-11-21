@@ -7,12 +7,12 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20261121-demo-position">
+    <link rel="stylesheet" href="styles.css?v=20261121-glockenspiel-demos">
     <script src="instrument-core.js?v=20261118-power-chords" defer></script>
     <script src="instrument-details.js?v=20261015-orchestral-v1" defer></script>
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
     <script src="pad-presentation.js?v=20261015-orchestral-v1" defer></script>
-    <script src="app.js?v=20261121-demo-position" defer></script>
+    <script src="app.js?v=20261121-glockenspiel-demos" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
     <div class="room-glow" aria-hidden="true"></div>
@@ -164,6 +164,10 @@
             <section id="playSurface" class="play-surface" aria-label="악기 연주 영역">
                 <div class="play-toolbar">
                     <small id="noteReadout" class="screen-reader-only" aria-live="polite">준비됨</small>
+                    <div id="melodyDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="시범 연주">
+                        <button id="melodyDemoButton" class="key-size-button" type="button" aria-pressed="false"><span>시범 연주</span></button>
+                        <select id="melodyDemoSelect" aria-label="시범곡 선택"></select>
+                    </div>
                     <div id="bassDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="베이스 시범 연주">
                         <button class="key-size-button" type="button" data-bass-demo="finger" aria-pressed="false"><span>핑거</span><b>Billie Jean</b></button>
                         <button class="key-size-button" type="button" data-bass-demo="slap" aria-pressed="false"><span>슬랩</span><b>Can’t Stop</b></button>

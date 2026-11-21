@@ -261,6 +261,9 @@ input[type="range"] { width: 100%; height: 20px; margin: 0; accent-color: var(--
 .key-size-button span { font-size: 9px; font-weight: 800; }.key-size-button b { color: var(--accent); font-size: 10px; }
 .keyboard-demo-controls { display: flex; align-items: center; gap: 6px; }
 .keyboard-demo-controls button { margin-left: 0; }
+.keyboard-demo-controls select { min-width: 0; max-width: 190px; min-height: 30px; padding: 2px 6px; border: 1px solid var(--line); border-radius: 6px; background: #101719; color: var(--text); font: inherit; font-size: 12px; }
+.play-toolbar.melody-demo-visible { flex-wrap: wrap; }
+#melodyDemoControls { flex: 0 0 100%; padding-block: 6px; }
 #drumDemoButton { margin-left: 0; }
 .keyboard-demo-controls button[aria-pressed="true"] { background: rgba(142,240,198,.2); border-color: var(--accent); }
 .keyboard-range-controls { display: flex; align-items: center; gap: 3px; }

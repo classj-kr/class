@@ -318,6 +318,37 @@
             return [beat + index * .012, [midi], velocity - index * .026, duration];
         });
     });
+    // Upper melody of Tchaikovsky's Op. 71a, No. 2b, first four theme
+    // measures. Read from the Jurgenson full score, pp. 46–47.
+    // https://s9.imslp.org/files/imglnks/usimg/c/c5/IMSLP03208-Tchaikovsky-Op71aFS.pdf
+    const SUGAR_PLUM_FAIRY = [
+        [0, 91, .25], [.25, 88, .25], [.5, 91, .5], [1, 90, .5],
+        [1.5, 87, .5], [2, 88, .5], [2.5, 86, .25], [2.75, 86, .25], [3, 86, .5],
+        [3.5, 85, .25], [3.75, 85, .25], [4, 85, .5],
+        [4.5, 84, .25], [4.75, 84, .25], [5, 84, .5],
+        [5.5, 83, .25], [5.75, 88, .25], [6, 84, .25], [6.25, 88, .25], [6.5, 83, .5],
+        [7.5, 88, 1]
+    ].map(function ([beat, midi, length]) {
+        return [beat, [midi], .68, beat === 7.5 ? length : length * .55];
+    });
+    // Mozart, K. 620, Act I finale, "Das klinget so herrlich".
+    // Original melody in F, raised an octave into the recorded G5–B6 range.
+    const MAGIC_BELLS = [
+        [0, 84, .5], [.5, 82, .5],
+        [1, 81, 1], [2, 89, 1], [3, 93, 1], [4, 84, .5], [4.5, 81, .5],
+        [5, 82, 1], [6, 91, 1], [7, 94, 1], [8, 82, .5], [8.5, 81, .5],
+        [9, 79, 1], [10, 88, 1], [11, 91, 1], [12, 88, 1],
+        [13, 89, .5], [13.5, 93, .5], [14, 89, .5], [14.5, 93, .5],
+        [15, 89, 1], [16, 84, .5], [16.5, 82, .5], [17, 89, 1]
+    ].map(function ([beat, midi, length]) {
+        return [beat, [midi], .68, beat === 17 ? length : length * .72];
+    });
+    const MELODY_DEMOS = {
+        glockenspiel: [
+            { title: "사탕요정의 춤", bpm: 88, notes: SUGAR_PLUM_FAIRY, endBeat: 8.5 },
+            { title: "마술피리 · 마법의 종", bpm: 100, notes: MAGIC_BELLS, endBeat: 18 }
+        ]
+    };
     const GUITAR_DEMOS = {
         "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16, preset: "rock" },
         "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
@@ -632,7 +663,7 @@
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
-            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
+            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "melodyDemoControls", "melodyDemoButton", "melodyDemoSelect", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
     }
@@ -2645,6 +2676,30 @@
         return playKeyboardDemo(button, demo.bpm, demo.notes, demo.endBeat);
     }
 
+    function renderMelodyDemos() {
+        const modelId = state.currentModel?.id;
+        const demos = MELODY_DEMOS[modelId];
+        elements.melodyDemoControls.classList.toggle("hidden", !demos);
+        elements.melodyDemoControls.parentElement.classList.toggle("melody-demo-visible", Boolean(demos));
+        if (!demos || elements.melodyDemoSelect.dataset.model === modelId) return;
+        elements.melodyDemoSelect.replaceChildren();
+        demos.forEach(function (demo, index) {
+            elements.melodyDemoSelect.add(new Option(demo.title, String(index)));
+        });
+        elements.melodyDemoSelect.dataset.model = modelId;
+    }
+
+    function playMelodyDemo() {
+        const demo = MELODY_DEMOS[state.currentModel?.id]?.[elements.melodyDemoSelect.value];
+        if (!demo || !ensureAudio()) return;
+        if (keyboardDemoRun?.button === elements.melodyDemoButton) {
+            stopKeyboardDemo();
+            return;
+        }
+        allNotesOff();
+        return playKeyboardDemo(elements.melodyDemoButton, demo.bpm, demo.notes, demo.endBeat);
+    }
+
     async function playKeyboardDemo(button, bpm, notes, endBeat) {
         const run = { button, timers: [], keys: new Map(), voices: new Set() };
         keyboardDemoRun = run;
@@ -2951,6 +3006,7 @@
         const chords = state.instrument === "guitar" && state.guitarMode === "chords";
         elements.keyboardViewport.classList.toggle("hidden", drums || chords);
         elements.bassDemoControls.classList.toggle("hidden", state.instrument !== "bass");
+        renderMelodyDemos();
         const guitarDemo = GUITAR_DEMOS[state.currentModel?.id];
         elements.guitarDemoControls.classList.toggle("hidden", !guitarDemo);
         elements.guitarDemoTitle.textContent = guitarDemo?.title || "";
@@ -3150,6 +3206,8 @@
     }
 
     function bindEvents() {
+        elements.melodyDemoButton.addEventListener("click", playMelodyDemo);
+        elements.melodyDemoSelect.addEventListener("change", stopKeyboardDemo);
         elements.guitarDemoButton.addEventListener("click", playGuitarDemo);
         elements.bassDemoControls.querySelectorAll("[data-bass-demo]").forEach(function (button) {
             button.addEventListener("click", function () { playBassDemo(button); });
