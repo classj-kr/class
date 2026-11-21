@@ -443,9 +443,9 @@ body.pr-racing #settingsButton, body.pr-racing .actions, body.pr-racing #coachCa
 }
 
 /* 판은 블록을 늘어놓은 바닥: 연 칸은 블록을 들어낸 움푹한 바닥(틈 없이 이어짐), 덮인 칸은 바닥에 그림자를 드리운 나무 블록. */
-.mine-board { border-radius: 6px; background: #ecd5a8; box-shadow: 0 0 0 3px #ecd5a8, inset 0 3px 8px rgba(92, 52, 18, .38), 0 0 0 4px rgba(52, 24, 6, .55); }
+.mine-board { border-radius: 6px; background: #d9bb84; box-shadow: 0 0 0 3px #d9bb84, inset 0 3px 8px rgba(92, 52, 18, .38), 0 0 0 4px rgba(52, 24, 6, .55); }
 .mb-cell:not(.open) { box-shadow: inset 0 2px rgba(255,236,196,.55), inset 0 -3px rgba(52,24,6,.45), 1px 3px 3px rgba(70, 36, 10, .45); z-index: 1; }
-.mb-cell.open { background: transparent; box-shadow: inset 0 0 0 .5px rgba(150, 105, 55, .22); animation: none; }
+.mb-cell.open { background: #f1ddb3; box-shadow: inset 0 1px 1px rgba(110, 70, 30, .18); animation: none; }
 .mb-cell.open::before { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; background: linear-gradient(150deg, #c08a52, #8a5428); box-shadow: inset 0 2px rgba(255,236,196,.55), inset 0 -3px rgba(52,24,6,.45); animation: lift-block .34s ease-out both; animation-delay: var(--delay, 0ms); }
 @keyframes lift-block { 0% { opacity: 1; transform: none; } 45% { opacity: 1; transform: translateY(-18%) scale(1.12); } 100% { opacity: 0; transform: translateY(-34%) scale(1.18) rotate(-6deg); } }
 .mb-cell.open.mine { background: #e2c58f; }
