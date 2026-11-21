@@ -346,6 +346,12 @@
             color: #5a2d0c;
         }
 
+        .sphinx-rule-card p { margin: 8px 0; }
+        .sphinx-rule-card details { margin-top: 10px; }
+        .sphinx-rule-card summary { cursor: pointer; font-weight: 700; color: #5a2d0c; }
+        .sphinx-rule-card ol { padding-left: 22px; margin: 8px 0; }
+        .sphinx-rule-card li + li { margin-top: 7px; }
+
         .solo-rules-dialog.sphinx-rules-dialog {
             padding: 24px;
             color: #2b1c0e;
@@ -1040,25 +1046,62 @@ body.pr-racing .sphinx-hint-toggle, body.pr-racing .solo-only { display: none !i
         dialog.innerHTML = `
             <h2 class="question-text" tabindex="-1" autofocus>HOW TO PLAY</h2>
             <div style="text-align:left;line-height:1.65;margin:10px auto;max-width:640px">
-                <p style="margin:0 0 8px;">스핑크스의 질문은 글이 길지만, <strong>방정식(x, y) 없이 초등학생 방법(다리 묶기)</strong>으로 아주 쉽게 풀 수 있어요!</p>
+                <p style="margin:0 0 8px;">네 질문을 차례로 풀어 스핑크스에게 도전하세요. <strong>동그라미와 다리 선을 그려 보고, 수가 바뀌는 규칙을 찾아보세요.</strong> 찾은 방법이 다른 수에서도 맞는지 확인해 보세요.</p>
                 <div class="sphinx-rule-card">
-                    <strong>1단계 · 스핑크스의 수수께끼</strong><br>
-                    아침(👶아기=4발) → 낮(🚶어른=2발) → 밤(🦯노인+지팡이=3발)로 걷는 존재는 바로 스핑크스 앞에 선 사람, <strong>「자신」</strong>입니다.
+                    <strong>1단계 · 말의 뜻을 바꾸어 생각하기</strong>
+                    <p>같은 존재가 아침에는 네 발, 낮에는 두 발, 밤에는 세 발로 걸어요. 여기서 아침·낮·밤은 무엇을 빗댄 말일까요?</p>
+                    <details><summary>생각을 이어 가는 질문</summary>
+                        <ol>
+                            <li>하루의 흐름을 아주 긴 시간으로 늘려 상상해 보세요. 처음·한창·마지막에는 어떤 변화가 있을까요?</li>
+                            <li>걷는 모습을 떠올려 보세요. 몸의 다른 부분이나 도구가 땅을 짚는 수도 함께 셀 수 있을까요?</li>
+                            <li>떠올린 존재가 세 조건을 모두 만족하는지 한 가지씩 확인해 보세요.</li>
+                        </ol>
+                    </details>
                 </div>
                 <div class="sphinx-rule-card">
-                    <strong>2단계 · 모두 다리 2개라고 상상하기</strong> (예: 모두 5마리, 다리 16개)<br>
-                    ① 5마리 모두 다리가 2개라면 <strong>5 × 2 = 10개</strong>예요.<br>
-                    ② 남는 다리 <strong>16 − 10 = 6개</strong>를 <strong>2개씩 묶어(6 ÷ 2 = 3)</strong> 붙여 주면 다리 4개 괴물은 <strong>3마리</strong>!
+                    <strong>2단계 · 한 마리씩 바꾸며 규칙 찾기</strong>
+                    <p>괴물이 모두 5마리라고 해 보세요. 다리가 4개인 괴물이 한 마리씩 늘어나면 전체 다리 수는 어떻게 바뀔까요?</p>
+                    <details><summary>그림으로 실험하기</summary>
+                        <ol>
+                            <li>동그라미 5개에 다리를 2개씩 그리세요. 전체 다리는 몇 개인가요?</li>
+                            <li>한 마리의 다리를 4개로 바꾸어 세어 보세요. 한 마리를 더 바꾸면 어떻게 되나요?</li>
+                            <li>4발 괴물이 0마리·1마리·2마리일 때의 전체 다리 수를 나란히 적어 보세요. 일정하게 늘어나는 수를 찾았나요?</li>
+                            <li>문제의 전체 다리 수까지 몇 번 바꾸어야 할까요? 그 횟수는 무엇을 뜻할까요?</li>
+                        </ol>
+                        <details><summary>찾은 방법 확인하기</summary>
+                            <p>구한 수만큼 4발 괴물을 그리고, 나머지는 2발로 그려 보세요. 괴물 수와 다리 수가 문제의 두 조건에 모두 맞나요? 괴물이 6마리일 때도 같은 방법을 써 보세요.</p>
+                        </details>
+                    </details>
                 </div>
                 <div class="sphinx-rule-card">
-                    <strong>3단계 · 줄어든 다리 수만 보기</strong><br>
-                    2마리가 다리 3개가 되어 <strong>2개 늘어났는데도</strong> 전체 다리가 줄어들었다면, 4발 괴물이 2발이 되면서 <strong>1마리당 2개씩 줄었기 때문</strong>이에요!<br>
-                    👉 <strong>(처음 다리 + 2 − 나중 다리) ÷ 2</strong> = 처음 4발 괴물 수!
+                    <strong>3단계 · 두 가지 변화를 나누어 살펴보기</strong>
+                    <p>4발이 2발이 되는 변화와, 두 마리가 2발에서 3발이 되는 변화가 함께 일어나요. 각각 전체 다리 수에 어떤 영향을 줄까요?</p>
+                    <details><summary>한 가지 변화씩 따라가기</summary>
+                        <ol>
+                            <li>4발 괴물 한 마리가 2발이 되는 그림을 그리세요. 두 마리라면 다리는 얼마나 달라질까요?</li>
+                            <li>이번에는 2발 괴물 두 마리만 3발로 바꾸세요. 이 변화만 일어난다면 처음 다리 수는 어떻게 될까요?</li>
+                            <li>그때 예상한 다리 수와 문제의 나중 다리 수를 비교해 보세요. 그 차이는 어떤 변화가 만든 것일까요?</li>
+                            <li>한 마리가 변할 때의 차이를 몇 묶음 모아야 그 차이가 될까요? 묶음 수로 무엇을 알 수 있나요?</li>
+                        </ol>
+                        <details><summary>찾은 방법 확인하기</summary>
+                            <p>처음에 4발 괴물이 1마리인 경우와 2마리인 경우를 만들어 두 변화를 모두 적용해 보세요. 찾은 방법으로 처음 마리 수를 되짚을 수 있나요?</p>
+                        </details>
+                    </details>
                 </div>
                 <div class="sphinx-rule-card">
-                    <strong>4단계 · 1마리당 6개씩 늘어나는 규칙</strong><br>
-                    처음 4발 괴물 1마리는 다리가 2개 줄지만(−2), 아기 4발 괴물이 2마리 태어나(+8) <strong>1마리당 다리가 꼭 6개씩 늘어나요!</strong><br>
-                    👉 <strong>(나중 다리 − 4 − 처음 다리) ÷ 6</strong> = 처음 4발 괴물 수!
+                    <strong>4단계 · 한 가족의 변화를 한 묶음으로 보기</strong>
+                    <p>처음 4발 괴물 한 마리가 자라고, 그 한 마리마다 4발 아기 둘이 태어나요. 처음 한 마리를 기준으로 보면 전체 다리 수는 얼마나 달라질까요?</p>
+                    <details><summary>작은 경우부터 표로 만들기</summary>
+                        <ol>
+                            <li>처음 4발 괴물 한 마리의 다리 수를 적으세요. 자란 뒤의 다리와 새로 태어난 아기 둘의 다리를 함께 세어 비교하세요.</li>
+                            <li>처음 4발 괴물이 2마리·3마리인 경우도 그리세요. 처음과 나중 다리 수의 차이를 표로 만들면 어떤 규칙이 보이나요?</li>
+                            <li>문제에는 2발 괴물 네 마리가 3발이 되는 변화도 있어요. 이 변화로 늘어난 다리를 따로 떼어 생각하려면 나중 다리 수를 어떻게 다루어야 할까요?</li>
+                            <li>남은 다리 수의 변화를 한 가족의 변화만큼씩 묶어 보세요. 묶음 수가 처음 4발 괴물 수가 되는 이유를 설명해 보세요.</li>
+                        </ol>
+                        <details><summary>찾은 방법 확인하기</summary>
+                            <p>구한 마리 수로 성장·아기 탄생·3발로 바뀌기를 모두 따라가 보세요. 나중 다리 수가 맞나요? 친구에게 계산 순서와 그 순서가 필요한 이유를 말해 보세요.</p>
+                        </details>
+                    </details>
                 </div>
                 <div style="margin-top:10px; padding-top:8px; border-top:1px solid rgba(147,103,45,.35); color:rgba(87,63,35,.72); font-size:12px; line-height:1.5; text-align:center;">
                     문제 화면의 <strong>「💡 힌트」</strong> 버튼을 누르면 그 문제의 숫자로 한 걸음씩 계산 순서를 보여줍니다.<br>
