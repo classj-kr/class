@@ -1,0 +1,686 @@
+{
+  "date": "2026-11-21",
+  "scope": "숨겼던 40곳을 실제 장소를 확인한 풍경 사진으로 교체",
+  "photos": [
+    {
+      "id": "lake-baikal",
+      "sourceTitle": "File:Lake Baikal in winter.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Lake_Baikal_in_winter.jpg",
+      "author": "Sergey Pesterev",
+      "license": "CC BY-SA 4.0",
+      "caption": "겨울에 얼어붙은 바이칼호. 투명한 얼음의 갈라진 틈과 호숫가 산이 보입니다.",
+      "sourceDescription": "Frozen lake Baikal near Olkhon island.",
+      "dimensions": [
+        1280,
+        854
+      ],
+      "sha256": "cfbf7008d603926132f1891042807f1a32f9c771698bf016b6135b33c3cee569",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg",
+      "previousSha256": "e2339d5558fd9b404c2da3b6fac99c98b3e24861047202389ceb2eef070d9cc3",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "aral-sea",
+      "sourceTitle": "File:Moynaq, Aral Sea (6226807306).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Moynaq,_Aral_Sea_(6226807306).jpg",
+      "author": "Arian Zwegers",
+      "license": "CC BY 2.0",
+      "caption": "물이 물러난 아랄해 남부 무이나크에 남은 어선입니다. 20세기 이후의 환경 변화를 보여주는 모습입니다.",
+      "sourceDescription": "Derelict ships at the Moynaq ship graveyard, on what was once the bed of the Aral Sea",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "5b2ecee4be3b975b9c871803a6c6438fe498e596732b3b2e2947f112af7ad23a",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Aral_Sea_1964_vs._August_25,_2026.png",
+      "previousSha256": "c97d90e41cccbb3557d23eee5bd35c1454f512cda46690c1565ba25ab61cfbc8",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "lake-chad",
+      "sourceTitle": "File:An evergreen lake chad shore (detilt).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:An_evergreen_lake_chad_shore_(detilt).jpg",
+      "author": "File:An evergreen lake chad shore.jpg: Coolthoom1\nremoving tilt: Hike395",
+      "license": "CC BY-SA 4.0",
+      "caption": "차드호의 물가에 풀과 나무가 자라는 습지입니다.",
+      "sourceDescription": "An evergreen lake chad shore with pasturing cows",
+      "dimensions": [
+        1280,
+        578
+      ],
+      "sha256": "3c810a97d89be9021c9511e24087b81b823a6095f82ccf8eaa19ba078c0cc17d",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg",
+      "previousSha256": "0082b3dfbd740404e176cfd1de1b3a5d87522e20e06390e63cf761ba4d98c67c",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "bab-el-mandeb",
+      "sourceTitle": "File:Perim Island and coastal Yemen.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Perim_Island_and_coastal_Yemen.jpg",
+      "author": "Michael Kleiner (photo taken 19.02.2007, uploaded 25.06.2007)",
+      "license": "Public domain",
+      "caption": "바브엘만데브 해협의 페림섬과 예멘 해안입니다.",
+      "sourceDescription": "Photograph showing the northern part of Perim Island in the Strait of Bab el-Mandeb, with the mountains of the Sheikh Said Peninsula (Yemen) in the background. Taken in 2007.",
+      "dimensions": [
+        1024,
+        685
+      ],
+      "sha256": "71d8e6817b44321c9868711f1ffedd920e3cafcf0d97886175a942e27b41ca48",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Bab-el-Mandeb_And_Red_Sea_NASA_photo.webp",
+      "previousSha256": "89757bc8e0223ee7d1b911c3db0e50985b65095fcb9e1279f33b2842dcf062d7",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "lake-tana",
+      "sourceTitle": "File:ET Amhara asv2018-02 img040 Lake Tana at Gorgora.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:ET_Amhara_asv2018-02_img040_Lake_Tana_at_Gorgora.jpg",
+      "author": "A.Savin",
+      "license": "FAL",
+      "caption": "에티오피아 고르고라에서 바라본 타나호의 수면과 작은 섬입니다.",
+      "sourceDescription": "Mendaba Monastery at Lake Tana at Gorgora near Gondar, Ethiopia",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "sha256": "bf65c2d141db4bd43a522a6bf5d61f209b502fc835828ecdedd48eab03a29790",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Lake_tana.jpg",
+      "previousSha256": "f19cde921b5416206bde800a76416781663ee9bf82a8a36bcd8d75fbaae995b9",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "lake-victoria",
+      "sourceTitle": "File:Early morning fishing at Lake Victoria.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Early_morning_fishing_at_Lake_Victoria.jpg",
+      "author": "Franklin Amulyoto",
+      "license": "CC BY-SA 4.0",
+      "caption": "빅토리아호에서 새벽에 배를 타고 고기를 잡는 사람들입니다.",
+      "sourceDescription": "This is an image of \"African people at work\" from",
+      "dimensions": [
+        1280,
+        813
+      ],
+      "sha256": "1d60718033bc8a1e3b6957ee3e2f536dbb9a21c9548da3e6ff3775c2d0de20cf",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg",
+      "previousSha256": "20e02c1afb482a8d4ffb57886c4f6761dbb0d423163d19155929d14cde6a6c9c",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "atacama-desert",
+      "sourceTitle": "File:Valle de la Luna, San Pedro de Atacama, Chile, 2016-02-01, DD 182-184 HDR.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Valle_de_la_Luna,_San_Pedro_de_Atacama,_Chile,_2016-02-01,_DD_182-184_HDR.JPG",
+      "author": "Diego Delso",
+      "license": "CC BY-SA 4.0",
+      "caption": "아타카마 사막의 달의 골짜기. 메마른 모래와 바위 지형이 이어집니다.",
+      "sourceDescription": "Valle de la Luna, San Pedro de Atacama, Chile",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "a5cc0803f26f64b568995aef38dc187959350e9c639ed1d37b1e0f002be4329c",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Atacama.png",
+      "previousSha256": "1015aebe1dfa68b2350a501f8c1c420037c9fe87f49d9dbe17d77e9796acecc0",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "strait-of-magellan",
+      "sourceTitle": "File:Estreito de Magalhães - panoramio.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Estreito_de_Magalh%C3%A3es_-_panoramio.jpg",
+      "author": "Elvis Boaventura",
+      "license": "CC BY 3.0",
+      "caption": "칠레 쪽 해안에서 바라본 마젤란 해협입니다.",
+      "sourceDescription": "Estreito de Magalhães a San Gregorio",
+      "dimensions": [
+        1280,
+        840
+      ],
+      "sha256": "f8472ef89cb04a624f32f24ead5ca1c7bf72befbd8b29afd899f1e44590e2cb3",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:StraitOfMagellan.jpg",
+      "previousSha256": "e60fa93fb51c8c413c62db27508290703c9b3d9f57936211c7ac8fe1ff9cb1e5",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "saint-helena",
+      "sourceTitle": "File:Overlooking Jamestown from the south.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Overlooking_Jamestown_from_the_south.jpg",
+      "author": "Kevstan",
+      "license": "CC BY-SA 4.0",
+      "caption": "세인트헬레나섬의 깊은 골짜기에 자리한 제임스타운입니다. 오늘날의 모습입니다.",
+      "sourceDescription": "View of Jamestown Saint Helena from the south in March 2020. The town is full of well-preserved Georgian buildings, crowded in a long, narrow valley between steep barren hills leading to the sea",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "157ba9fac614d53f29f1a0c6cda6ed4bac50a1fa247de56dac7ab2738310611f",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Island.jpg",
+      "previousSha256": "2f1eee365f38dd05a3a4755795fcc2566509d1a188cbafb1fd450b0c8449d852",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "bering_strait",
+      "sourceTitle": "File:Little Diomede Island 2018 Drone Photo.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Little_Diomede_Island_2018_Drone_Photo.jpg",
+      "author": "Walter Holt Rose",
+      "license": "CC BY-SA 4.0",
+      "caption": "베링 해협의 리틀다이오미드섬. 가파른 섬 기슭에 마을이 모여 있습니다.",
+      "sourceDescription": "One of the most remote villages in the Bering Strait Region, Little Diomede Island is less than 2 miles from the international date line and Russia.",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b53e597a04ad38bb19b2cb98a0adf98e266d270003240472bac17457efb79fc7",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Bering_Strait.jpeg",
+      "previousSha256": "14d5aeacf5a086a699e46ec130213dc540de40fbe394e02052cf2d9eaed0b9e2",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "strait-of-dover",
+      "sourceTitle": "File:South Foreland Lighthouse and cliffs from Strait of Dover 1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:South_Foreland_Lighthouse_and_cliffs_from_Strait_of_Dover_1.jpg",
+      "author": "Nilfanion",
+      "license": "CC BY-SA 4.0",
+      "caption": "도버 해협에서 바라본 영국의 흰 절벽과 사우스포어랜드 등대입니다.",
+      "sourceDescription": "South Foreland Lighthouse and the White Cliffs, seen from a cross-channel ferry.",
+      "dimensions": [
+        1280,
+        895
+      ],
+      "sha256": "0c334ba8da8a6d0d2cc5c5ff8d0298d636382a0ee8af18ade01c42294f0b30ec",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Strait_of_Dover_MODIS.jpg",
+      "previousSha256": "8aec9a4aba0a39c23abf4e0f04caf942a6c9a5960cfe760c34a583b51c2f62d6",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "alps",
+      "sourceTitle": "File:Gorner Glacier.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Gorner_Glacier.jpg",
+      "author": "OlhaSolodenko",
+      "license": "CC BY-SA 4.0",
+      "caption": "알프스의 몬테로사 산군과 골짜기를 따라 흐르는 고르너 빙하입니다.",
+      "sourceDescription": "Magnificent panorama of the Pennine Alps with famous Gorner Glacier and impressive snow capped mountains Monte Rosa Massif close to Zermatt, Switzerland",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "85003566ce050e3dc545e2420c8c01a19a911dde91d12004386c159f78f76584",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg",
+      "previousSha256": "cbfa6b933e337e4857282ded0e961635fabc09cf53b7f70fbf8f35240868e857",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "black-sea",
+      "sourceTitle": "File:Sosopol Schwarzes Meer.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:Sosopol_Schwarzes_Meer.JPG",
+      "author": "Julian Nyča",
+      "license": "CC BY-SA 4.0",
+      "caption": "불가리아 소조폴의 바위 해안에서 바라본 흑해입니다.",
+      "sourceDescription": "Steilküste am Schwarzen Meer südlich von Sosopol.",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "39af4a83293615c2638fb698ea673fbf0373007ccc70ab4de64719e5654d3dca",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg",
+      "previousSha256": "b8374f5dfc854f834064c1b36d35bf8c31c2f5e6e0ec6588ef0e1893f04b06b6",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "gibraltar_strait",
+      "sourceTitle": "File:From Tarifa to Morocco-3415.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:From_Tarifa_to_Morocco-3415.jpg",
+      "author": "Isiwal",
+      "license": "CC BY-SA 4.0",
+      "caption": "스페인 타리파에서 지브롤터 해협 건너편 모로코를 바라본 모습입니다.",
+      "sourceDescription": "View from Tarifa over the strait of Gibraltar to Morocco",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "7e5cca3ec13cfb816faca1518e3811450ba3718e4742cc6fda7ee609b189cd9d",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:STS059-238-074_Strait_of_Gibraltar.jpg",
+      "previousSha256": "31755f5ab89042c059cdd40342b94cef8e40189a84576f6d1702a8e7d3fe0b0e",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "tibetan-plateau",
+      "sourceTitle": "File:Tibetan Plateau landscape.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tibetan_Plateau_landscape.jpg",
+      "author": "Jan Kranendonk (https://www.jankranendonk.nl)",
+      "license": "CC BY-SA 4.0",
+      "caption": "시가체로 가는 길의 티베트고원. 나무가 드문 높은 땅과 산들이 펼쳐집니다.",
+      "sourceDescription": "Tibetan Plateau landscape between Nepal and Xigatze",
+      "dimensions": [
+        1280,
+        862
+      ],
+      "sha256": "1f20ae2f52c324dfaeb7940823968f39dcc2a659ef137ea69565928c46e06797",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg",
+      "previousSha256": "3713791b11d3e3390cbdbab8cde9d47655ec362bf83b83c66ca80e1f0fc0e5e8",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "himalayas",
+      "sourceTitle": "File:Mountains in snow, Mountain lake, Chola Valley, Nepal, Himalayas.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mountains_in_snow,_Mountain_lake,_Chola_Valley,_Nepal,_Himalayas.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "caption": "네팔 쿰부 지역의 히말라야 봉우리와 빙하 지형입니다.",
+      "sourceDescription": "Mountains in snow. Mountain lake. View to the east on descending from Cho La Pass into Chola Valley, 5,200 metres (17,100 ft) a. s. l. Glacial lake, rocks covered with snow, Ama Dablam (6,810 metres (22,343 ft)) and other Himalayan peaks to the south of the Great Himalayan Range in Mahalangur Himal. Nepal, Himalayas.",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "ecf3e53a42dacd617b9705e044b69b61a18f60def5b7e3304238b039c6c41305",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders,_annotated_with_major_rivers.jpg",
+      "previousSha256": "d0c55cb9ef8524130f5a8fb123027c31fa1d42ba941d8e47d94f28b80ab2b737",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "persian-gulf",
+      "sourceTitle": "File:Dhow, Qatar.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Dhow,_Qatar.jpg",
+      "author": "Raf24~commonswiki",
+      "license": "CC BY-SA 4.0",
+      "caption": "카타르 앞 페르시아만을 지나는 전통 범선 다우입니다.",
+      "sourceDescription": "Dhow on Persian Gulf near the coast of Doha",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "62236fc7d6f4fb4d2c9b0ee36b9b71bddfde4580d2b389e14463824e94a47b30",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:PersianGulf_vue_satellite_du_golfe_persique.jpg",
+      "previousSha256": "01bfcd2ae80c8e52f97c21f20427b106d28a123cd7233243c2e1856985cb7db8",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "strait-of-hormuz",
+      "sourceTitle": "File:Dhow in the fjords of Khasab, Oman - panoramio.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Dhow_in_the_fjords_of_Khasab,_Oman_-_panoramio.jpg",
+      "author": "Banja-Frans Mulder",
+      "license": "CC BY 3.0",
+      "caption": "호르무즈 해협 입구, 오만 무산담반도의 바위 해안과 전통 배입니다.",
+      "sourceDescription": "Dhow in the fjords of Khasab, Oman",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "8269c27ac2730999d19bd48b4e271174ff3f7b9dc54feccd0a7c6c3494be4e8e",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Strait_of_Hormuz_and_Musandam_Peninsula_(MODIS_2018-12-10).jpg",
+      "previousSha256": "eab3a975b9b9df6e5924583c411492c193c350c30c0510a2bf44956c4bad1c9b",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "sahara",
+      "sourceTitle": "File:Tassili Sahara 74.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tassili_Sahara_74.jpg",
+      "author": "Septfontaine",
+      "license": "CC BY-SA 3.0",
+      "caption": "사하라 사막의 일부인 알제리 타실리나제르. 모래와 바위가 함께 드러나 있습니다.",
+      "sourceDescription": "Location: On the southeastern edge of Tassili n'Ajjer, northwest of Djanet\nThe prevailing wind in the Sahara is the northeast trade wind (Harmattan). During the early Quaternary period, there were times when it blew much stronger than it does today. The sand in this picture was probably blown at that time from the Erg Ubari and Erg Murzouk areas in southwestern Libya across the gently ascending plateau of the Tassili n'Ajjer and deposited here, in the lee behind the mountain ridge.\n\nThe rounded boulders in the foreground are the result of insolation weathering. The large temperature differences between day and night build up tension in the rock, especially on protruding parts. These splinter off, and as the boulder becomes smaller and smaller, its shape becomes more and more rounded.",
+      "dimensions": [
+        1280,
+        866
+      ],
+      "sha256": "fdc5837a998402affa1f62acab14d8b8d765f2b938e20ceb15ddb0df6c22d960",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
+      "previousSha256": "8a9b7d8fc851692c770e7131f6899a72919eb9b4681073d054d281fbd4b81430",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "hawaiian_islands",
+      "sourceTitle": "File:Mauna Kea and Mauna Loa from Air.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mauna_Kea_and_Mauna_Loa_from_Air.jpg",
+      "author": "Mds08011",
+      "license": "CC BY 4.0",
+      "caption": "하와이섬의 마우나케아와 마우나로아 화산이 구름 위로 솟아 있습니다.",
+      "sourceDescription": "Mauna Kea and Mauna loa summits seen from an airplane",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "2fce20c8be5ba54092def60c7ee2561e216c6fb7bb06576545bfd6e361404f8d",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Hawaje-NoRedLine.jpg",
+      "previousSha256": "8b58389ebf5767d6c19e513649c160149605c94428f228191cf6ff644d5acdce",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "deccan-plateau",
+      "sourceTitle": "File:Deccan Traps.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Deccan_Traps.jpg",
+      "author": "Shyamal L.",
+      "license": "CC0",
+      "caption": "데칸고원에서 용암이 굳어 만들어진 층과 계단 모양의 언덕을 볼 수 있습니다.",
+      "sourceDescription": "Deccan Traps",
+      "dimensions": [
+        1280,
+        900
+      ],
+      "sha256": "d51eb0b4fad258acd8854ecc5a953a65996de395599dafa7d30e9272ef99119e",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Deccan.jpg",
+      "previousSha256": "46b9f6402535223e8f4e37c0a97220c03b9f3582a3f2ba15972a776b0451cefd",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "bosporus",
+      "sourceTitle": "File:Bosphorus Bridge - Connecting Europe and Asia (8394710078).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Bosphorus_Bridge_-_Connecting_Europe_and_Asia_(8394710078).jpg",
+      "author": "Jorge Láscar from Australia",
+      "license": "CC BY 2.0",
+      "caption": "오늘날 보스포루스 해협의 넓은 물길입니다. 멀리 유럽과 아시아를 잇는 다리가 보입니다.",
+      "sourceDescription": "The Bosphorus Bridge, also called the First Bosphorus Bridge is one of two suspension bridges spanning the Bosphorus strait in Istanbul, Turkey; thus connecting Europe and Asia (the other one is the Fatih Sultan Mehmet Bridge, which is called the Second Bosphorus Bridge.) The bridge is located between Ortaköy (on the European side) and Beylerbeyi (on the Asian side).\nIt is a gravity anchored suspension bridge with steel towers and inclined hangers. The aerodynamic deck hangs on zigzag steel cables. It is 1,560 m (5,118 ft) long with a deck width of 33.40 m (110 ft). The distance between the towers (main span) is 1,074 m (3,524 ft) and the total height of the towers is 165 m (541 ft). The clearance of the bridge from sea level is 64 m (210 ft).\n\nThe Bosphorus Bridge had the 4th longest suspension bridge span in the world when it was completed in 1973, and the longest outside the United States. At present, it is the 21st longest suspension bridge span in the world. [Wikipedia.org]",
+      "dimensions": [
+        1280,
+        850
+      ],
+      "sha256": "1c3ffb971c0e07e61c0726fd73c9dbab08274700e08230827c83c65f9b5059fe",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Istanbul_and_Bosporus_big.jpg",
+      "previousSha256": "0df1774cb2514a989920e239845662629330093387b68c6024ea745442539abe",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "aleutian_islands",
+      "sourceTitle": "File:Shishaldin Isanotski And Roundtop Volcanoes In The Aleutian Islands, Alaska.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Shishaldin_Isanotski_And_Roundtop_Volcanoes_In_The_Aleutian_Islands,_Alaska.jpg",
+      "author": "Allan Shimada, NOAA NMFS/OST/AMD.",
+      "license": "Public domain",
+      "caption": "알류샨 열도의 우니마크섬. 눈 덮인 시샬딘 화산과 이웃 화산들이 보입니다.",
+      "sourceDescription": "Shishaldin, Isanotski, and Roundtop Volcanoes lined up in a row on a rare crystal clear Aleutian day. Alaska, Aleutian Islands.",
+      "dimensions": [
+        1280,
+        672
+      ],
+      "sha256": "8af36dc49a4c160793883ea80593e2ee4232b1ae14508886e1711a236812014c",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Umnak_oli_2014123_lrg.jpg",
+      "previousSha256": "7fb0fd6b3cb353244a71db5baf5b6b07c572af882d95af2e67d311be6be4cc62",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "yellow-river",
+      "sourceTitle": "File:Yellow River - panoramio.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Yellow_River_-_panoramio.jpg",
+      "author": "fading",
+      "license": "CC BY-SA 3.0",
+      "caption": "황허의 누런 물이 산지 사이로 흐르는 모습입니다.",
+      "sourceDescription": "Yellow River",
+      "dimensions": [
+        1280,
+        791
+      ],
+      "sha256": "78635dfd603f5e745e5d7763e432b948d35de124a50c397cee257ac706fe78ea",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Building_Up_the_Yellow_River_Delta.jpeg",
+      "previousSha256": "8413bb3505d3598f4b922da5c39e3be42a56c149e8e8ccc9197699d5c39df018",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "red-sea",
+      "sourceTitle": "File:Nuweiba, Mountains, Red Sea, Sinai, Egypt.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Nuweiba,_Mountains,_Red_Sea,_Sinai,_Egypt.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "caption": "이집트 누에바의 홍해 해안. 메마른 바위산이 바닷가까지 이어집니다.",
+      "sourceDescription": "Turquoise waters of Red Sea edged by beaches and rimmed on both sides by barren, rugged mountain chains give Nuweiba the attractive setting. Nuweiba, Sinai, Egypt.",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "3aebb6c87c7aca710a84790b0238dea9b4d1dbf1a08536ddb2f3458a63bb336f",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Deep_blue_Red_Sea_reefs.jpg",
+      "previousSha256": "d180e3b164387bc37727fb2728b2926f9cc97e256989225b5943e44433b812ee",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "caribbean-sea",
+      "sourceTitle": "File:Petit St. Vincent Island Resort - The Grenadines, St. Vincent, Caribbean..jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Petit_St._Vincent_Island_Resort_-_The_Grenadines,_St._Vincent,_Caribbean..jpg",
+      "author": "Semark77",
+      "license": "CC BY-SA 3.0",
+      "caption": "카리브해 그레나딘 제도의 프티세인트빈센트섬과 얕은 바닷물입니다.",
+      "sourceDescription": "Petit Saint Vincent",
+      "dimensions": [
+        1280,
+        852
+      ],
+      "sha256": "88b77c87e6fd778d3689cd05e9bc61de2ac765e3a6dec3298431717ff0d5e989",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:The_San_Bernardo_Archipelago_in_the_Caribbean_Sea_(Copernicus_2024-01-13).jpg",
+      "previousSha256": "035b4bbf0b0c78558a6509907ca38ab44eb4b1ee09147d11e38dc6985073dbdd",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "namib-desert",
+      "sourceTitle": "File:Sandwich Harbour (2006) 22.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Sandwich_Harbour_(2006)_22.jpg",
+      "author": "LBM1948",
+      "license": "CC BY-SA 4.0",
+      "caption": "나미브 사막의 모래언덕이 대서양과 바로 맞닿는 샌드위치하버 해안입니다.",
+      "sourceDescription": "Dunes and beach. Sandwich Harbour, Erongo, Namibia",
+      "dimensions": [
+        1060,
+        704
+      ],
+      "sha256": "7415727b17fe2c754adedb1ffc08b41192bb66394119c9ccb0039da2de3b878b",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Namib_desert_MODIS.jpg",
+      "previousSha256": "3934aa34328b64c9a6aade140159dfa39cf935171e5277924246b9b72932e984",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "amazon_mouth",
+      "sourceTitle": "File:O Rio e a Mata.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:O_Rio_e_a_Mata.jpg",
+      "author": "Rui Brandão Photo",
+      "license": "CC BY-SA 4.0",
+      "caption": "아마존강 하구의 바이리키 제도. 흙빛 강물과 물가의 숲, 강을 오가는 작은 배가 보입니다.",
+      "sourceDescription": "Arquipélago do Bailique, Macapá, Amapá, Brasil. Barco navega junto à margem do rio Amazonas, já muito próximo da sua foz.",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "ba0b8d96ac932b6d4dc11cedb4d83b0ed46afe59eecf564159bc0c911075fc28",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Amazon_River_mouth_on_the_Atlantic.jpg",
+      "previousSha256": "3560c1360aa939618920251d3972f5d230e993f945b41d6b8c747d81661428a7",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "baltic-amber-coast",
+      "sourceTitle": "File:Калининградская область. Берег Балтийского моря. Искатель янтаря.JPG",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C._%D0%91%D0%B5%D1%80%D0%B5%D0%B3_%D0%91%D0%B0%D0%BB%D1%82%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BC%D0%BE%D1%80%D1%8F._%D0%98%D1%81%D0%BA%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D1%8F%D0%BD%D1%82%D0%B0%D1%80%D1%8F.JPG",
+      "author": "Маслова Людмила",
+      "license": "CC BY-SA 4.0",
+      "caption": "발트해 칼리닌그라드 해안에서 파도가 밀어 올린 호박을 찾는 사람입니다.",
+      "sourceDescription": "Kaliningrad region. The shore of the Baltic Sea. Finder amber.",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "f33182b785a565245cddeda85c43e90feb351b75d691ea0234f43bd120d741e6",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Baltis_amber_road.jpg",
+      "previousSha256": "67570636978a04caf90c4411976c522103b0208feeeea27e7cb510d97353da07",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "suez-isthmus",
+      "sourceTitle": "File:Suez Canal Desert.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Suez_Canal_Desert.jpg",
+      "author": "Totoyba2",
+      "license": "CC BY-SA 4.0",
+      "caption": "오늘날 수에즈 지협의 사막과 운하입니다. 1520년에는 운하가 없었습니다.",
+      "sourceDescription": "Overlooking view during our ship bulk for channelling this canal.",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "sha256": "32b6d7a07869cdf86f8621c0a5bc37141810cef921e31b73189ff101a3dcf483",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Nile_River_and_delta_from_orbit.jpg",
+      "previousSha256": "12ef64d07f67922bc4dda126b42ad07e66f1a1b69209f7566e2b445ada840f12",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "lake-atitlan",
+      "sourceTitle": "File:1 lake atitlan panorama 2009.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:1_lake_atitlan_panorama_2009.jpg",
+      "author": "chensiyuan",
+      "license": "CC BY-SA 4.0",
+      "caption": "화산 봉우리로 둘러싸인 과테말라의 아티틀란호입니다.",
+      "sourceDescription": "View of Lake Atitlan and the Atitlán volcano (center) in Guatemala, 2009. In the foreground, the town of San Antonio Palopó.",
+      "dimensions": [
+        1280,
+        665
+      ],
+      "sha256": "cebc6744ee1d0f43dc8f23ec625ddda28bff9012eefee51b187921909d088994",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Lago_de_Atitlan_seen_from_orbit.jpg",
+      "previousSha256": "49766684271ef14b112d23f87e7715d5d2fef39c5749eaef275dcb426b8fa784",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "caspian-sea",
+      "sourceTitle": "File:Caspian coast in Hovsan, Azerbaijan.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Caspian_coast_in_Hovsan,_Azerbaijan.jpg",
+      "author": "Interfase",
+      "license": "Public domain",
+      "caption": "아제르바이잔 회브산에서 본 카스피해의 넓은 수면과 자갈 해안입니다.",
+      "sourceDescription": "Caspian coast in Hovsan, Azerbaijan",
+      "dimensions": [
+        1280,
+        718
+      ],
+      "sha256": "c02f94edb17c2679f77e8743ea6b420a2cfddb815be9d2fe72de725b3eee3952",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg",
+      "previousSha256": "4205b840316068202babadd86c49b49a33c3c6c55aef780e61a6c065690718d4",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "japanese_archipelago",
+      "sourceTitle": "File:Hayashima(Izu-Islands).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Hayashima(Izu-Islands).jpg",
+      "author": "E-190",
+      "license": "CC BY-SA 3.0",
+      "caption": "일본 열도의 일부인 이즈 제도. 니지마와 하야시마가 바다를 사이에 두고 보입니다.",
+      "sourceDescription": "早島 (東京都新島村・式根島ぐんじ山展望台から撮影, 左側は新島) Hayashima Island (Izu-Islands, Tokyo, JAPAN)",
+      "dimensions": [
+        640,
+        480
+      ],
+      "sha256": "c69ecc9bba9d140c535cc33210941983c0b4baf879c288fdd3f3a5709cf8b2c9",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Satellite_View_of_Japan_1999.jpg",
+      "previousSha256": "465aedc8f90f28f7ddeb38a0a847bb9cc91d6e774f4496c61a3f7b84145750f1",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "danube_delta",
+      "sourceTitle": "File:Danube Delta Distributary.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Danube_Delta_Distributary.jpg",
+      "author": "Iryna Bondar",
+      "license": "CC BY-SA 4.0",
+      "caption": "도나우강 삼각주의 갈라진 물길과 물가의 숲입니다. 얕은 물길을 소들이 건너고 있습니다.",
+      "sourceDescription": "Cows crossing one of Danube delta's distributarys",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "5c9c3bd7e1d5bc21afab474e9bc36577d4732794b27991201908d38706d1f7f5",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Danube_Delta_ESA23450088.jpeg",
+      "previousSha256": "59f3a66a32b7a620655ac0e0757f63f02e2da63a74f59a89c0508e0c57d5381e",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "nile_delta",
+      "sourceTitle": "File:RashidNileMouth.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:RashidNileMouth.jpg",
+      "author": "Roland Unger",
+      "license": "CC BY-SA 3.0",
+      "caption": "나일강 삼각주의 로제타 물길이 지중해로 들어가는 하구입니다.",
+      "sourceDescription": "Mouth of the Nile into the Mediterranean Sea, Rashid, Egypt",
+      "dimensions": [
+        800,
+        530
+      ],
+      "sha256": "c60f836f26e43bd7b8480dd1277560878cb90d9650874e2c9ea27b0af62ff631",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Nile_delta_landsat_false_color.jpg",
+      "previousSha256": "7a8abca0dfb80b37e16efcad34eec724dc3b1652422d452b4e6262cf7d16c382",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "mississippi_mouth",
+      "sourceTitle": "File:Mississippi River Delta (15964562676).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Delta_(15964562676).jpg",
+      "author": "U.S. Geological Survey from Reston, VA, USA",
+      "license": "Public domain",
+      "caption": "미시시피강 하구의 습지와 여러 갈래 물길을 낮은 고도에서 촬영한 사진입니다.",
+      "sourceDescription": "Happy Birthday Mississippi — Today's your b-day (197 years young). On this date in 1817, you became the 20th state in the Nation. While there's \"humpback humpback eyes\" in this photo, we know there's plenty of wildlife for us to dote upon. \n\nThis is an aerial view of subsiding marshes in the Mississippi River Delta. This region contains vast areas of marshes, swamps, and barrier islands—important habitat for wildlife, as nursery grounds for marine life, and as protective buffers against storms and hurricanes. Unfortunately, rapid land subsidence due to sediment compaction and dewatering increases the rate of submergence in this deltaic system. Photo credit: Karen McKee, USGS.",
+      "dimensions": [
+        1280,
+        958
+      ],
+      "sha256": "a1396941d39180323ad7051ec2751c28e31b3a12c14618958e003b45723e6a04",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Delta_(ASTER).jpg",
+      "previousSha256": "d21bafc4a7f2ebbd2d0fea007193e9866ddcc46f0d34d24594144a044bef456e",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "panama_isthmus",
+      "sourceTitle": "File:03-045-DCMH San Lorenzo de Chagres (20).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:03-045-DCMH_San_Lorenzo_de_Chagres_(20).jpg",
+      "author": "Jaime Massot Hernández",
+      "license": "CC BY-SA 4.0",
+      "caption": "파나마 지협 북쪽의 차그레스강 하구와 숲입니다.",
+      "sourceDescription": "Jaime Massot Hernández Panamá R.P:",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "c3f200e5d6426ceaa8edc7071e8c3b9ab29c0929712a7b7c317386ba31091895",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Panama_in_March_2003.jpg",
+      "previousSha256": "5bec18dc52038514ccc69514aed0913b2209c2703105c576a58644c2de55b6fc",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "malay_archipelago",
+      "sourceTitle": "File:The Other Side of Wayag Island.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Other_Side_of_Wayag_Island.jpg",
+      "author": "Rolandandika",
+      "license": "CC BY-SA 4.0",
+      "caption": "말레이 제도 동쪽, 라자암팟의 와야그 군도. 숲으로 덮인 작은 섬들 사이로 바닷길이 이어집니다.",
+      "sourceDescription": "Wayag Islands is also one of the icons of Raja Ampat. Lines of coral clad in green in the middle of a blue sea that presents extraordinary panoramic views make Raja Ampat so worldwide.",
+      "dimensions": [
+        1280,
+        854
+      ],
+      "sha256": "0544e0dd68b7fcfca573c50de5a7e934ea6be1f49641f9dc9ffd1b73be6b710b",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Lesser_Sunda_Islands,_Indonesia_(MODIS_2024-09-08).jpg",
+      "previousSha256": "dc5da6e838cb83a8f2fcadec5cfe9f295842e27ba2f75ff2bf4ed279b4d3d91b",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "aegean_islands",
+      "sourceTitle": "File:Faros Sifnos Cyclades.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Faros_Sifnos_Cyclades.jpg",
+      "author": "Luca Conti from Senigallia, Italy",
+      "license": "CC BY 2.0",
+      "caption": "에게해 제도의 시프노스섬 해안과 작은 항구입니다.",
+      "sourceDescription": "Baie et port de Faros, Sifnos, Cyclades, Greece",
+      "dimensions": [
+        1024,
+        458
+      ],
+      "sha256": "6aa0f099fafb44c36210386e0d01a11300c6af0e11c3e3afd1912d93c52a4cf0",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:ISS-59_Aegean_Sea,_Greece_and_Italy_with_Sicily.jpg",
+      "previousSha256": "196e190db6303bf49dc6ea1a14cde4dbc986713ceef5521276c636d20967adef",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    },
+    {
+      "id": "malacca_strait",
+      "sourceTitle": "File:Tanjung Tuan seen from Sri Purnama Beach.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Tanjung_Tuan_seen_from_Sri_Purnama_Beach.jpg",
+      "author": "AyyanD",
+      "license": "CC BY-SA 4.0",
+      "caption": "말레이반도의 라차도곶(탄중투안)과 말라카 해협의 해안입니다.",
+      "sourceDescription": "Tanjung Tuan, an exclave of Malacca (under the jurisdiction of Alor Gajah District) seen from Sri Purnama Beach, nearby Teluk Kemang, Port Dickson District, Negeri Sembilan, Malaysia.",
+      "dimensions": [
+        1280,
+        769
+      ],
+      "sha256": "8ddd3fa6847cda0496dcb89155ba7647c1b80caa2e8aef0693c4f6f7c83ae3f4",
+      "previousSource": "https://commons.wikimedia.org/wiki/File:Strait_of_Malacca_(MODIS_2025-08-25).jpg",
+      "previousSha256": "d4d0f8e98c7870e161fd372aa30c0874c824b49b9da108605184cc5a50e709c3",
+      "review": "장소·대상·촬영 시점의 설명과 이용 조건 대조, 실제 후보 이미지 시각 확인, 원본 구도 유지"
+    }
+  ]
+}

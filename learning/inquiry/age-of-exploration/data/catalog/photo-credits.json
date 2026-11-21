@@ -348,12 +348,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Klju%C4%8Devskaja_za_v%C3%BDchodu_slunce.jpg"
   },
   "baltic-amber-coast": {
-    "author": "Bearas",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Baltis_amber_road.jpg",
-    "representative": false,
-    "exclusionReason": "장소의 특징 대신 광역 지도만 보여 발견 사진에서 제외"
+    "author": "Маслова Людмила",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C._%D0%91%D0%B5%D1%80%D0%B5%D0%B3_%D0%91%D0%B0%D0%BB%D1%82%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%BC%D0%BE%D1%80%D1%8F._%D0%98%D1%81%D0%BA%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D1%8F%D0%BD%D1%82%D0%B0%D1%80%D1%8F.JPG",
+    "kind": "photo",
+    "caption": "발트해 칼리닌그라드 해안에서 파도가 밀어 올린 호박을 찾는 사람입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "giants-causeway": {
     "author": "code poet on flickr.",
@@ -374,12 +378,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Zesp%C3%B3%C5%82_Zamku_Krzy%C5%BCackiego_MALBORK_01.jpg"
   },
   "lake-baikal": {
-    "author": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Baikal.A2001296.0420.250m-NASA.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Sergey Pesterev",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lake_Baikal_in_winter.jpg",
+    "kind": "photo",
+    "caption": "겨울에 얼어붙은 바이칼호. 투명한 얼음의 갈라진 틈과 호숫가 산이 보입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "friesland-terp": {
     "author": "Sandra Buhmann",
@@ -510,12 +518,16 @@
     "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
   },
   "aral-sea": {
-    "author": "National Aeronautics and Space Administration (NASA), collage by Dylan240.",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Aral_Sea_1964_vs._August_25,_2026.png",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Arian Zwegers",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moynaq,_Aral_Sea_(6226807306).jpg",
+    "kind": "photo",
+    "caption": "물이 물러난 아랄해 남부 무이나크에 남은 어선입니다. 20세기 이후의 환경 변화를 보여주는 모습입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "pula-arena": {
     "author": "Olgierd Rudak",
@@ -978,12 +990,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Huangshan_pic_4.jpg"
   },
   "suez-isthmus": {
-    "author": "Jacques Descloitres, MODIS Rapid Response Team, NASA/sh",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Nile_River_and_delta_from_orbit.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Totoyba2",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Suez_Canal_Desert.jpg",
+    "kind": "photo",
+    "caption": "오늘날 수에즈 지협의 사막과 운하입니다. 1520년에는 운하가 없었습니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "giza-pyramids": {
     "author": "KennyOMG",
@@ -1256,12 +1272,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Copan_sculpture.jpg"
   },
   "lake-atitlan": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lago_de_Atitlan_seen_from_orbit.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "chensiyuan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:1_lake_atitlan_panorama_2009.jpg",
+    "kind": "photo",
+    "caption": "화산 봉우리로 둘러싸인 과테말라의 아티틀란호입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "danakil-depression": {
     "author": "Thomas Fuhrmann",
@@ -1292,12 +1312,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mount_Mayon_Cagsawa_field_view_close-up_(Busay,_Daraga,_Albay;_04-21-2023).jpg"
   },
   "lake-chad": {
-    "author": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "File:An evergreen lake chad shore.jpg: Coolthoom1\nremoving tilt: Hike395",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:An_evergreen_lake_chad_shore_(detilt).jpg",
+    "kind": "photo",
+    "caption": "차드호의 물가에 풀과 나무가 자라는 습지입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "mahabalipuram-shore": {
     "author": "Swarna1311",
@@ -1306,12 +1330,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Shore_Temple_-Mamallapuram_-Tamil_Nadu_-N-TN-C55.jpg"
   },
   "bab-el-mandeb": {
-    "author": "NASA",
+    "author": "Michael Kleiner (photo taken 19.02.2007, uploaded 25.06.2007)",
     "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Bab-el-Mandeb_And_Red_Sea_NASA_photo.webp",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Perim_Island_and_coastal_Yemen.jpg",
+    "kind": "photo",
+    "caption": "바브엘만데브 해협의 페림섬과 예멘 해안입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "socotra-dragon-trees": {
     "author": "Alex38",
@@ -1332,12 +1360,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Volcan_Masaya2.jpg"
   },
   "lake-tana": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lake_tana.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "A.Savin",
+    "license": "FAL",
+    "licenseUrl": "http://artlibre.org/licence/lal/en",
+    "source": "https://commons.wikimedia.org/wiki/File:ET_Amhara_asv2018-02_img040_Lake_Tana_at_Gorgora.jpg",
+    "kind": "photo",
+    "caption": "에티오피아 고르고라에서 바라본 타나호의 수면과 작은 섬입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "brihadisvara-thanjavur": {
     "author": "Original: Rainer Halama Derivative work: UnpetitproleX",
@@ -1431,12 +1463,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Lobo_marino_(Zalophus_californianus_wollebaeki),_Punta_Pitt,_isla_de_San_Crist%C3%B3bal,_islas_Gal%C3%A1pagos,_Ecuador,_2015-07-24,_DD_11.JPG"
   },
   "lake-victoria": {
-    "author": "Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:ISS042-E-263206_-_View_of_Earth.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Franklin Amulyoto",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Early_morning_fishing_at_Lake_Victoria.jpg",
+    "kind": "photo",
+    "caption": "빅토리아호에서 새벽에 배를 타고 고기를 잡는 사람들입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "chimborazo": {
     "author": "Dick Culbert from Gibsons, B.C., Canada",
@@ -1571,20 +1607,28 @@
     "source": "https://commons.wikimedia.org/wiki/File:Ha%CA%BBamonga.jpg"
   },
   "namib-desert": {
-    "author": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Namib_desert_MODIS.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "LBM1948",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sandwich_Harbour_(2006)_22.jpg",
+    "kind": "photo",
+    "caption": "나미브 사막의 모래언덕이 대서양과 바로 맞닿는 샌드위치하버 해안입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "atacama-desert": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Atacama.png",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Valle_de_la_Luna,_San_Pedro_de_Atacama,_Chile,_2016-02-01,_DD_182-184_HDR.JPG",
+    "kind": "photo",
+    "caption": "아타카마 사막의 달의 골짜기. 메마른 모래와 바위 지형이 이어집니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "uluru": {
     "author": "Ek2030372672",
@@ -1635,12 +1679,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Perito_Moreno_Glacier_2023.jpg"
   },
   "strait-of-magellan": {
-    "author": "Jacques Descloitres, MODIS Rapid Response Team, NASA/GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:StraitOfMagellan.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Elvis Boaventura",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Estreito_de_Magalh%C3%A3es_-_panoramio.jpg",
+    "kind": "photo",
+    "caption": "칠레 쪽 해안에서 바라본 마젤란 해협입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "nordkapp": {
     "author": "Perlblau",
@@ -1691,12 +1739,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Reed_boat_of_floating_islands_on_Lake_Titicaka.jpg"
   },
   "saint-helena": {
-    "author": "This image was taken by the NASA Expedition 19 crew.",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Island.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Kevstan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Overlooking_Jamestown_from_the_south.jpg",
+    "kind": "photo",
+    "caption": "세인트헬레나섬의 깊은 골짜기에 자리한 제임스타운입니다. 오늘날의 모습입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "madagascar": {
     "author": "Bernard Gagnon",
@@ -1837,24 +1889,28 @@
     "source": "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
   },
   "bering_strait": {
-    "author": "NASA/GSFC/JPL/MISR-Team",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Bering_Strait.jpeg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Walter Holt Rose",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Little_Diomede_Island_2018_Drone_Photo.jpg",
+    "kind": "photo",
+    "caption": "베링 해협의 리틀다이오미드섬. 가파른 섬 기슭에 마을이 모여 있습니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "strait-of-dover": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Dover_MODIS.jpg",
+    "author": "Nilfanion",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:South_Foreland_Lighthouse_and_cliffs_from_Strait_of_Dover_1.jpg",
     "kind": "photo",
-    "caption": "영국과 프랑스 사이의 도버 해협을 촬영한 위성사진입니다.",
+    "caption": "도버 해협에서 바라본 영국의 흰 절벽과 사우스포어랜드 등대입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "rhine-river": {
     "author": "Lucazzitto",
@@ -1869,28 +1925,40 @@
     "source": "https://commons.wikimedia.org/wiki/File:Yaroslavl._Volga_River._Cathedral_of_the_Dormition_P5212700_2200.jpg"
   },
   "alps": {
-    "author": "Terra (EOS AM-1) satellite",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Alps_2007-03-13_10.10UTC_1px-250m.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "OlhaSolodenko",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gorner_Glacier.jpg",
+    "kind": "photo",
+    "caption": "알프스의 몬테로사 산군과 골짜기를 따라 흐르는 고르너 빙하입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "danube_delta": {
-    "author": "European Space Agency",
-    "license": "Attribution",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Danube_Delta_ESA23450088.jpeg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Iryna Bondar",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Danube_Delta_Distributary.jpg",
+    "kind": "photo",
+    "caption": "도나우강 삼각주의 갈라진 물길과 물가의 숲입니다. 얕은 물길을 소들이 건너고 있습니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "black-sea": {
-    "author": "The SeaWiFS Project",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:The_Danube_Spills_into_the_Black_Sea.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Julian Nyča",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sosopol_Schwarzes_Meer.JPG",
+    "kind": "photo",
+    "caption": "불가리아 소조폴의 바위 해안에서 바라본 흑해입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "niagara_falls": {
     "author": "Saffron Blaze",
@@ -1899,12 +1967,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:3Falls_Niagara.jpg"
   },
   "caspian-sea": {
-    "author": "Jeff Schmaltz, MODIS Rapid Response Team, NASA/GSFC",
+    "author": "Interfase",
     "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Caspian_Sea_from_orbit.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Caspian_coast_in_Hovsan,_Azerbaijan.jpg",
+    "kind": "photo",
+    "caption": "아제르바이잔 회브산에서 본 카스피해의 넓은 수면과 자갈 해안입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "rocky-mountains": {
     "author": "Hogs555",
@@ -1919,56 +1991,76 @@
     "source": "https://commons.wikimedia.org/wiki/File:Blue_Ridge_Parkway_Sunset_(43691100).jpeg"
   },
   "japanese_archipelago": {
-    "author": "SeaWiFS Project, NASA/Goddard Space Flight Center, and ORBIMAGE",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Satellite_View_of_Japan_1999.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "E-190",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Hayashima(Izu-Islands).jpg",
+    "kind": "photo",
+    "caption": "일본 열도의 일부인 이즈 제도. 니지마와 하야시마가 바다를 사이에 두고 보입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "gibraltar_strait": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:STS059-238-074_Strait_of_Gibraltar.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Isiwal",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:From_Tarifa_to_Morocco-3415.jpg",
+    "kind": "photo",
+    "caption": "스페인 타리파에서 지브롤터 해협 건너편 모로코를 바라본 모습입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "tibetan-plateau": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Himalaya_composite.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Jan Kranendonk (https://www.jankranendonk.nl)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tibetan_Plateau_landscape.jpg",
+    "kind": "photo",
+    "caption": "시가체로 가는 길의 티베트고원. 나무가 드문 높은 땅과 산들이 펼쳐집니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "nile_delta": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Nile_delta_landsat_false_color.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Roland Unger",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:RashidNileMouth.jpg",
+    "kind": "photo",
+    "caption": "나일강 삼각주의 로제타 물길이 지중해로 들어가는 하구입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "mississippi_mouth": {
-    "author": "NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team",
+    "author": "U.S. Geological Survey from Reston, VA, USA",
     "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Delta_(ASTER).jpg",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Delta_(15964562676).jpg",
     "kind": "photo",
-    "caption": "미시시피강 하구의 갈라진 물길과 퇴적지. ASTER 위성사진(2001년, 합성색)입니다.",
+    "caption": "미시시피강 하구의 습지와 여러 갈래 물길을 낮은 고도에서 촬영한 사진입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "himalayas": {
-    "author": "NASA Landsat image",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders,_annotated_with_major_rivers.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mountains_in_snow,_Mountain_lake,_Chola_Valley,_Nepal,_Himalayas.jpg",
+    "kind": "photo",
+    "caption": "네팔 쿰부 지역의 히말라야 봉우리와 빙하 지형입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "indus-river": {
     "author": "Heavyrunner",
@@ -1977,48 +2069,64 @@
     "source": "https://commons.wikimedia.org/wiki/File:Nanga_Parbat_Indus_Gorge.jpg"
   },
   "persian-gulf": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:PersianGulf_vue_satellite_du_golfe_persique.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Raf24~commonswiki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dhow,_Qatar.jpg",
+    "kind": "photo",
+    "caption": "카타르 앞 페르시아만을 지나는 전통 범선 다우입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "strait-of-hormuz": {
-    "author": "MODIS Land Rapid Response Team, NASA GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Hormuz_and_Musandam_Peninsula_(MODIS_2018-12-10).jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Banja-Frans Mulder",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dhow_in_the_fjords_of_Khasab,_Oman_-_panoramio.jpg",
+    "kind": "photo",
+    "caption": "호르무즈 해협 입구, 오만 무산담반도의 바위 해안과 전통 배입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "sahara": {
-    "author": "Project Apollo Archive",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Sahara_real_color.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Septfontaine",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tassili_Sahara_74.jpg",
+    "kind": "photo",
+    "caption": "사하라 사막의 일부인 알제리 타실리나제르. 모래와 바위가 함께 드러나 있습니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "hawaiian_islands": {
-    "author": "Jacques Descloitres",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Hawaje-NoRedLine.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Mds08011",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mauna_Kea_and_Mauna_Loa_from_Air.jpg",
+    "kind": "photo",
+    "caption": "하와이섬의 마우나케아와 마우나로아 화산이 구름 위로 솟아 있습니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "deccan-plateau": {
-    "author": "Federal government of the United States",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Deccan.jpg",
+    "author": "Shyamal L.",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Deccan_Traps.jpg",
     "kind": "photo",
-    "caption": "인도반도 내부에 펼쳐진 데칸고원의 위성사진입니다.",
+    "caption": "데칸고원에서 용암이 굳어 만들어진 층과 계단 모양의 언덕을 볼 수 있습니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "mekong-river": {
     "author": "Bjørn Christian Tørrissen",
@@ -2027,40 +2135,40 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mekong-River-Near-Luang-Prabang.jpg"
   },
   "panama_isthmus": {
-    "author": "Jeff Schmaltz, MODIS Rapid Response Team, NASA/GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Panama_in_March_2003.jpg",
+    "author": "Jaime Massot Hernández",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:03-045-DCMH_San_Lorenzo_de_Chagres_(20).jpg",
     "kind": "photo",
-    "caption": "파나마 지협의 위성사진. 두 바다 사이에 놓인 좁은 육지가 보입니다.",
+    "caption": "파나마 지협 북쪽의 차그레스강 하구와 숲입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "malacca_strait": {
-    "author": "MODIS Land Rapid Response Team, NASA GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Strait_of_Malacca_(MODIS_2025-08-25).jpg",
+    "author": "AyyanD",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tanjung_Tuan_seen_from_Sri_Purnama_Beach.jpg",
     "kind": "photo",
-    "caption": "말레이반도와 수마트라섬 사이의 믈라카 해협을 촬영한 위성사진입니다.",
+    "caption": "말레이반도의 라차도곶(탄중투안)과 말라카 해협의 해안입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "malay_archipelago": {
-    "author": "MODIS Land Rapid Response Team, NASA GSFC",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Lesser_Sunda_Islands,_Indonesia_(MODIS_2024-09-08).jpg",
+    "author": "Rolandandika",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Other_Side_of_Wayag_Island.jpg",
     "kind": "photo",
-    "caption": "말레이 제도의 일부인 소순다 열도의 위성사진. 길게 이어진 섬들이 보입니다.",
+    "caption": "말레이 제도 동쪽, 라자암팟의 와야그 군도. 숲으로 덮인 작은 섬들 사이로 바닷길이 이어집니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
     "preserveFrame": true,
-    "changes": "원본 구도 유지 · 크기 축소 · WebP 변환",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "great_rift_valley": {
     "author": "Bett Duncan",
@@ -2101,12 +2209,16 @@
     "changes": "원본 구도 유지 · 크기 축소 · WebP 변환"
   },
   "bosporus": {
-    "author": "Astronaut photograph ISS008-E-21752",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Istanbul_and_Bosporus_big.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Jorge Láscar from Australia",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bosphorus_Bridge_-_Connecting_Europe_and_Asia_(8394710078).jpg",
+    "kind": "photo",
+    "caption": "오늘날 보스포루스 해협의 넓은 물길입니다. 멀리 유럽과 아시아를 잇는 다리가 보입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "crimea_peninsula": {
     "author": "Andy Shustykevych",
@@ -2127,28 +2239,40 @@
     "source": "https://commons.wikimedia.org/wiki/File:Palawan,_Puerto_Princesa_Runway,_Antonio_Bautista_Air_Base,_PAF,_Philippines.jpg"
   },
   "aleutian_islands": {
-    "author": "NASA Earth Observatory images by Joshu…",
+    "author": "Allan Shimada, NOAA NMFS/OST/AMD.",
     "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Umnak_oli_2014123_lrg.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Shishaldin_Isanotski_And_Roundtop_Volcanoes_In_The_Aleutian_Islands,_Alaska.jpg",
+    "kind": "photo",
+    "caption": "알류샨 열도의 우니마크섬. 눈 덮인 시샬딘 화산과 이웃 화산들이 보입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "aegean_islands": {
-    "author": "NASA",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:ISS-59_Aegean_Sea,_Greece_and_Italy_with_Sicily.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Luca Conti from Senigallia, Italy",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Faros_Sifnos_Cyclades.jpg",
+    "kind": "photo",
+    "caption": "에게해 제도의 시프노스섬 해안과 작은 항구입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "yellow-river": {
-    "author": "NASA Earth Observatory images by Laure…",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Building_Up_the_Yellow_River_Delta.jpeg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "fading",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Yellow_River_-_panoramio.jpg",
+    "kind": "photo",
+    "caption": "황허의 누런 물이 산지 사이로 흐르는 모습입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "mississippi-river": {
     "author": "U.S. Fish and Wildlife Service - Midwe…",
@@ -2157,20 +2281,28 @@
     "source": "https://commons.wikimedia.org/wiki/File:Mississippi_River_Bluff_(22154759891).jpg"
   },
   "red-sea": {
-    "author": "European Space Agency",
-    "license": "Attribution",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Deep_blue_Red_Sea_reefs.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nuweiba,_Mountains,_Red_Sea,_Sinai,_Egypt.jpg",
+    "kind": "photo",
+    "caption": "이집트 누에바의 홍해 해안. 메마른 바위산이 바닷가까지 이어집니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "caribbean-sea": {
-    "author": "European Union, Copernicus Sentinel-2…",
-    "license": "Attribution",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:The_San_Bernardo_Archipelago_in_the_Caribbean_Sea_(Copernicus_2024-01-13).jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Semark77",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Petit_St._Vincent_Island_Resort_-_The_Grenadines,_St._Vincent,_Caribbean..jpg",
+    "kind": "photo",
+    "caption": "카리브해 그레나딘 제도의 프티세인트빈센트섬과 얕은 바닷물입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "patagonia": {
     "author": "GerthMichael",
@@ -2179,12 +2311,16 @@
     "source": "https://commons.wikimedia.org/wiki/File:Patagonia_1.jpg"
   },
   "amazon_mouth": {
-    "author": "Coordenação-Geral de Observação da Terra",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Amazon_River_mouth_on_the_Atlantic.jpg",
-    "representative": false,
-    "exclusionReason": "위성·궤도·합성 영상은 발견 장소의 대표사진과 보조사진에서 제외"
+    "author": "Rui Brandão Photo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:O_Rio_e_a_Mata.jpg",
+    "kind": "photo",
+    "caption": "아마존강 하구의 바이리키 제도. 흙빛 강물과 물가의 숲, 강을 오가는 작은 배가 보입니다.",
+    "changes": "원본 구도와 종횡비 유지 · 긴 변 1280px 이내 축소 · WebP 변환",
+    "preserveFrame": true,
+    "representative": true,
+    "reviewedAt": "2026-11-21"
   },
   "hunt-cod": {
     "author": "Wilhelm Thomas Fiege",

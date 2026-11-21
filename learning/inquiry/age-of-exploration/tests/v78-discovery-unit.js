@@ -54,7 +54,7 @@ assert.match(pitchLake.source, /File:Pitch_Lake_1\.JPG$/, '아스팔트 호수�
 assert.notEqual(pitchLake.kind, 'map');
 assert.equal(fs.readFileSync(path.join(photoDir, 'trinidad-pitch-lake.webp')).toString('ascii', 8, 12), 'WEBP');
 for (const id of ['grand-banks-cod', 'santorini', 'guanahani-island', 'strait-of-dover']) {
-  assert.equal(credits[id].kind, 'map', `${id} 위치도는 사진으로 안내하면 안 됨`);
+  assert.equal(credits[id].kind, 'photo', `${id}에는 장소의 특징을 보여주는 사진을 써야 함`);
 }
 
 const byReach = {};
