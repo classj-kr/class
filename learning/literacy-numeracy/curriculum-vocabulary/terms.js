@@ -152,7 +152,7 @@ window.CurriculumTerms = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=fef1278b",
+  "words": "words-6-2.js?v=0d5357a2",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
@@ -399,7 +399,7 @@ window.CurriculumTermsPreview = {
   ]
  },
  "6-2": {
-  "words": "words-6-2.js?v=fef1278b",
+  "words": "words-6-2.js?v=0d5357a2",
   "figures": [
    "figures/6-2/kor.js?v=d047a8b2",
    "figures/6-2/math-1.js?v=485ef86c",
