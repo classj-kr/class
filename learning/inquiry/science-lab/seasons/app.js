@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
         summer: { label: '여름', hint: '6월 21일', dec: TILT_REAL, colour: '#ea580c', ink: '#c2410c' },
         winter: { label: '겨울', hint: '12월 21일', dec: -TILT_REAL, colour: '#0284c7', ink: '#0369a1' },
     };
+    // 서울(동경 127°)은 한국 표준시 기준선(동경 135°)보다 서쪽이라 태양이 낮 12시 반쯤 남중한다.
+    // 그날의 균시차까지 더한 남중 시각: 하지 12시 34분, 동지 12시 30분, 춘분·추분 무렵 12시 32분.
+    const noonClock = dec => dec > 1 ? 12 + 34 / 60 : dec < -1 ? 12 + 30 / 60 : 12 + 32 / 60;
     const TILTS = [0, 23.44];
     const SPOTS = {
         summer: { label: '여름 자리', hint: '북반구가 태양 쪽으로', sign: 1 },
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // altitude and azimuth (south = 0, east negative) of the sun at clock hour h
     function sunAt(hour, dec, lat = LAT) {
-        const H = 15 * (hour - 12) * D2R, d = dec * D2R, p = lat * D2R;
+        const H = 15 * (hour - noonClock(dec)) * D2R, d = dec * D2R, p = lat * D2R;
         const sinAlt = Math.sin(p) * Math.sin(d) + Math.cos(p) * Math.cos(d) * Math.cos(H);
         const alt = Math.asin(Math.max(-1, Math.min(1, sinAlt))) * R2D;
         const cosAlt = Math.cos(alt * D2R);
@@ -69,8 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ------------------------------------------------------------ models */
     function analysePath(s = state) {
         const season = SEASONS[s.season];
-        const len = dayLength(season.dec);
-        const rise = 12 - len / 2, set = 12 + len / 2;
+        // 일출·일몰은 태양 윗가장자리가 지평선에 닿는 때(대기 굴절 포함, 고도 −0.83°)
+        const c = (Math.sin(-0.833 * D2R) - Math.sin(LAT * D2R) * Math.sin(season.dec * D2R)) / (Math.cos(LAT * D2R) * Math.cos(season.dec * D2R));
+        const len = 2 * Math.acos(Math.max(-1, Math.min(1, c))) * R2D / 15;
+        const rise = noonClock(season.dec) - len / 2, set = noonClock(season.dec) + len / 2;
         const noon = noonAlt(season.dec);
         const verdict = noon >= 70 ? 'high' : noon >= 45 ? 'mid' : 'low';
         const shadow = 1 / Math.tan(noon * D2R);      // metre stick at noon
@@ -124,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.prediction = null;
         window.scienceInvalidatePrediction?.();
         const list = state.mode === 'path' ? PRED_PATH : PRED_ORBIT;
-        predictionLegend.textContent = state.mode === 'path' ? '정오에 태양은 얼마나 높이 있을까요?' : '이 자리에서 서울은 어느 계절일까요?';
+        predictionLegend.textContent = state.mode === 'path' ? '태양이 남중할 때 얼마나 높이 있을까요?' : '이 자리에서 서울은 어느 계절일까요?';
         predictionArea.innerHTML = list.map(o => `<button type="button" data-prediction="${o.value}">${o.label}</button>`).join('');
         predictionArea.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
             state.prediction = button.dataset.prediction; window.scienceInvalidatePrediction?.();
@@ -133,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------- visuals */
-    const hourText = h => { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return `${hh < 12 ? '오전' : '오후'} ${hh % 12 === 0 ? 12 : hh % 12}시${mm ? ` ${String(mm).padStart(2, '0')}분` : ''}`; };
+    const hourText = h => { const t = Math.round(h * 60), hh = Math.floor(t / 60), mm = t % 60; return `${hh < 12 ? '오전' : '오후'} ${hh % 12 === 0 ? 12 : hh % 12}시${mm ? ` ${String(mm).padStart(2, '0')}분` : ''}`; };
 
     function renderPath(a, p) {
         const hour=pathHour(a,p),q=sunAt(hour,a.season.dec),HY=236;
@@ -155,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 남중 고도·그림자 값은 하루를 다 흘려 본 뒤에만(예상의 답이므로)
         if(p<1)return out;
         out+='<text class="verdict-text" x="20" y="18">'+a.season.label+' · 남중 고도 '+Math.round(a.noon)+'° · 낮 '+a.len.toFixed(1)+'시간 ('+hourText(a.rise)+' ~ '+hourText(a.set)+')</text>';
-        out+='<text class="note-text" x="20" y="319">1 m 막대의 정오 그림자: '+a.shadow.toFixed(2)+' m · 태양이 높을수록 그림자가 짧습니다</text>';
+        out+='<text class="note-text" x="20" y="319">1 m 막대의 남중 때 그림자: '+a.shadow.toFixed(2)+' m · 태양이 높을수록 그림자가 짧습니다</text>';
         return out;
     }
 
@@ -197,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // right: the same bundle of light landing on Seoul's ground at noon
         const GX = 300, GW = 140, GY = 168;
         out += `<line class="horizon-line" x1="${GX}" y1="${GY}" x2="${GX + GW}" y2="${GY}"/>`;
-        out += `<text class="sky-text" x="${GX}" y="52">서울 정오의 햇빛</text>`;
+        out += `<text class="sky-text" x="${GX}" y="52">서울 남중 때의 햇빛</text>`;
         const alt = a.noon * D2R, beam = 30;
         const patch = Math.min(GW - 10, beam / Math.sin(alt));
         const cx = GX + GW / 2;
@@ -286,11 +291,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const hour = pathHour(a, state.progress);
             const q = sunAt(hour, a.season.dec);
             return `<div class="data-row"><span class="data-name">계절</span><span class="data-val">${a.season.label} (${a.season.hint}) · 서울</span></div>` +
-                `<div class="data-row"><span class="data-name">모형의 일출·일몰</span><span class="data-val">${hourText(a.rise)} ~ ${hourText(a.set)} · 낮 ${a.len.toFixed(1)}시간</span></div>` +
+                `<div class="data-row"><span class="data-name">일출·일몰</span><span class="data-val">${hourText(a.rise)} ~ ${hourText(a.set)} · 낮 ${a.len.toFixed(1)}시간</span></div>` +
                 `<div class="data-row"><span class="data-name">남중 고도</span><span class="data-val">${a.noon.toFixed(1)}°</span></div>` +
                 `<div class="data-row"><span class="data-name">지금</span><span class="data-val">${hourText(hour)} · ${q.alt > 0 ? `높이 ${q.alt.toFixed(0)}°` : '지평선 아래'}</span></div>` +
-                `<div class="data-row match"><span class="data-name">정오 그림자</span><span class="data-val">1 m 막대에 ${a.shadow.toFixed(2)} m</span></div>` +
-                `<p>태양이 가장 높을 때를 12시로 놓은 모형이며 실제 시계 시각과 다릅니다. 긴 그림자는 화면에 맞춰 줄여 그리지만 표시값은 막대 길이에 대한 실제 비율입니다.</p>`;
+                `<div class="data-row match"><span class="data-name">남중 때 그림자</span><span class="data-val">1 m 막대에 ${a.shadow.toFixed(2)} m</span></div>` +
+                `<p>서울은 한국 표준시의 기준 경도보다 서쪽에 있어 태양이 낮 12시 반쯤 가장 높이 뜹니다. 긴 그림자는 화면에 맞춰 줄여 그리지만 표시값은 막대 길이에 대한 실제 비율입니다.</p>`;
         }
         return `<div class="data-row"><span class="data-name">자전축</span><span class="data-val">${state.tilt === TILT_REAL ? '23.5' : state.tilt}° 기울어진 채 공전</span></div>` +
             `<div class="data-row"><span class="data-name">${a.spot.label}</span><span class="data-val">남중 고도 ${a.noon.toFixed(1)}° · 낮 ${a.len.toFixed(1)}시간</span></div>` +
@@ -348,8 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 : state.prediction === a.verdict ? '예상이 맞았습니다.' : '예상과 다른 결과입니다.';
             const others = Object.entries(SEASONS).filter(([k]) => k !== state.season).map(([, se]) => `${se.label} ${Math.round(noonAlt(se.dec))}°`).join(', ');
             explanation.textContent =
-                `${a.season.label} 서울에서 태양은 ${hourText(a.rise)}에 떠 ${hourText(a.set)}에 지므로 낮이 ${a.len.toFixed(1)}시간이고, 정오에는 ${Math.round(a.noon)}° 높이까지 오릅니다(다른 계절은 ${others}). ` +
-                `1 m 막대의 정오 그림자가 ${a.shadow.toFixed(2)} m인 것으로도 높이를 알 수 있습니다. ` +
+                `${a.season.label} 서울에서 태양은 ${hourText(a.rise)}에 떠 ${hourText(a.set)}에 지므로 낮이 ${a.len.toFixed(1)}시간이고, 남중할 때는 ${Math.round(a.noon)}° 높이까지 오릅니다(다른 계절은 ${others}). ` +
+                `1 m 막대의 남중 때 그림자가 ${a.shadow.toFixed(2)} m인 것으로도 높이를 알 수 있습니다. ` +
                 (a.verdict === 'high' ? '태양이 높이 떠 햇빛이 곧게 비치고 낮도 길어 가장 덥습니다.' : a.verdict === 'low' ? '태양이 낮게 떠 햇빛이 비스듬히 비치고 낮도 짧아 가장 춥습니다.' : '여름과 겨울의 중간으로, 낮과 밤의 길이가 거의 같습니다.');
             return;
         }
