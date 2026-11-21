@@ -455,6 +455,10 @@ registerSiteIcons(app, SITE_ROOT);
 // Reuse the existing small walk atlases without requiring access to the voyage game.
 app.use("/assets/avatar-walk", express.static(path.join(SITE_ROOT, "learning", "inquiry", "age-of-exploration", "public", "assets", "avatar-sprites"), staticAssetOptions));
 app.use("/assets/avatars", express.static(path.join(SITE_ROOT, "apps", "classtools", "assets", "avatars"), staticAssetOptions));
+app.get([
+  "/assets/fonts/classj-gyeongpil/ClassJGyeongpilMyeongjo-Regular.ttf",
+  "/assets/fonts/classj-pen-m/ClassJPenM-Regular.ttf",
+], (req, res) => res.redirect(302, req.path.replace(/\.ttf\/?$/i, ".zip")));
 app.use("/assets", express.static(path.join(SITE_ROOT, "assets"), staticAssetOptions));
 app.get("/robots.txt", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, must-revalidate");

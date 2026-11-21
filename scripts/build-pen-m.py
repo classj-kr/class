@@ -7,8 +7,10 @@ import json
 from pathlib import Path
 from fontTools.fontBuilder import FontBuilder
 from fontTools.ttLib import TTFont
+from install_font import original_font, write_install_zip
 
 ROOT = Path(__file__).resolve().parent.parent
+WEB_OUTPUT = ROOT / 'assets/fonts/classj-pen-m'
 spec = importlib.util.spec_from_file_location('base_builder', ROOT / 'scripts/build-handwriting-font.py')
 base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
@@ -21,7 +23,7 @@ def main():
     p.add_argument('--ttf-only', action='store_true', help='Fast local proof build; omit WOFF2')
     p.add_argument('--brotli-quality', type=int, choices=range(12), default=9,
                    help='Lossless WOFF2 compression effort; does not change glyphs')
-    p.add_argument('--output', type=Path, default=ROOT / 'assets/fonts/classj-pen-m')
+    p.add_argument('--output', type=Path, default=WEB_OUTPUT)
     args = p.parse_args()
     base.SOURCE = ROOT / 'assets/fonts/classj-pen-m/source.js'
     source_hash = hashlib.sha256(base.SOURCE.read_bytes()).hexdigest()
@@ -59,7 +61,10 @@ def main():
     fb.setupMaxp()
     fb.font.recalcTimestamp = False
     fb.font['head'].created = fb.font['head'].modified = 3876854400
-    ttf = args.output / 'ClassJPenM-Regular.ttf'
+    web_output = args.output.resolve() == WEB_OUTPUT
+    name = 'ClassJPenM-Regular.ttf'
+    ttf = original_font(WEB_OUTPUT, name) if web_output else args.output / name
+    ttf.parent.mkdir(parents=True, exist_ok=True)
     woff = args.output / 'ClassJPenM-Regular.woff2'
     fb.save(ttf)
     print('TTF built', flush=True)
@@ -92,6 +97,10 @@ def main():
                 'compatibilityJamo': sum(0x3131 <= cp <= 0x3163 for cp in cmap),
                 'sourceSha256': source_hash, 'ttfBytes': ttf.stat().st_size,
                 'woff2Bytes': None if args.ttf_only else woff.stat().st_size}
+    if web_output and not args.specimen_only and not args.ttf_only:
+        archive = write_install_zip(ttf, WEB_OUTPUT)
+        manifest['installZip'] = archive.name
+        manifest['installZipBytes'] = archive.stat().st_size
     (args.output / 'font-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(manifest), flush=True)
 

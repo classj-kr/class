@@ -15,8 +15,10 @@ import subprocess
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.ttLib import TTFont
+from install_font import original_font, write_install_zip
 
 ROOT = Path(__file__).resolve().parent.parent
+WEB_OUTPUT = ROOT / 'assets/fonts/classj-gyeongpil'
 SOURCE = ROOT / 'learning/literacy-numeracy/handwriting/font-source.js'
 FAMILY = 'ClassJ Gyeongpil Myeongjo'
 SAMPLES = ['가나다라마바사아자차카타파하', '아야어여오요우유으이',
@@ -61,7 +63,7 @@ def glyph(contours):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--output', type=Path, default=ROOT / 'assets/fonts/classj-gyeongpil')
+    parser.add_argument('--output', type=Path, default=WEB_OUTPUT)
     parser.add_argument('--preview', type=Path)
     parser.add_argument('--specimen-only', action='store_true')
     parser.add_argument('--chars', default='', help='Additional characters for a specimen subset')
@@ -105,7 +107,10 @@ def main():
     fb.font.recalcTimestamp = False
     timestamp = int(datetime(2026, 10, 28, tzinfo=timezone.utc).timestamp()) + 2082844800
     fb.font['head'].created = fb.font['head'].modified = timestamp
-    ttf = args.output / 'ClassJGyeongpilMyeongjo-Regular.ttf'
+    web_output = args.output.resolve() == WEB_OUTPUT
+    name = 'ClassJGyeongpilMyeongjo-Regular.ttf'
+    ttf = original_font(WEB_OUTPUT, name) if web_output else args.output / name
+    ttf.parent.mkdir(parents=True, exist_ok=True)
     woff = args.output / 'ClassJGyeongpilMyeongjo-Regular.woff2'
     fb.save(ttf)
     print('TTF built', flush=True)
@@ -134,6 +139,10 @@ def main():
     manifest = {'family': FAMILY, 'version': '1.000', 'hangulSyllables': sum(0xac00<=cp<=0xd7a3 for cp in cmap),
                 'compatibilityJamo': sum(0x3131<=cp<=0x3163 for cp in cmap), 'sourceSha256': source_hash,
                 'ttfBytes': ttf.stat().st_size, 'woff2Bytes': woff.stat().st_size}
+    if web_output and not args.specimen_only:
+        archive = write_install_zip(ttf, WEB_OUTPUT)
+        manifest['installZip'] = archive.name
+        manifest['installZipBytes'] = archive.stat().st_size
     (args.output / 'font-manifest.json').write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
     if args.preview:
         from PIL import Image, ImageDraw, ImageFont

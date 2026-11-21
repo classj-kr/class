@@ -15,6 +15,7 @@ from PIL import Image, ImageDraw, ImageFont
 from scipy.spatial import cKDTree
 from skimage.morphology import skeletonize
 from fontTools.ttLib import TTFont
+from install_font import load_install_font
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'outputs/handwriting/pen-m'
@@ -134,7 +135,7 @@ def fit(iterations=12, holdout=False):
 def review():
     refs = references()
     report = json.loads((OUT / 'fit-report.json').read_text(encoding='utf-8'))
-    after = ROOT / 'assets/fonts/classj-pen-m/ClassJPenM-Regular.ttf'
+    after = load_install_font(ROOT / 'assets/fonts/classj-pen-m', 'ClassJPenM-Regular.ttf')
     before = OUT / 'before.ttf'
     rows = []
     for char, ref in refs.items():

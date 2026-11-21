@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+from install_font import load_install_font
 
 sys.stdout.reconfigure(encoding='utf-8')
 ROOT = Path(__file__).resolve().parent.parent
@@ -118,10 +119,11 @@ def review(font, before, output, old_label='1.2', new_label='1.3'):
 
 if __name__ == '__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--font',type=Path,default=ROOT/'assets/fonts/classj-pen-m/ClassJPenM-Regular.ttf')
+    parser.add_argument('--font',type=Path)
     parser.add_argument('--before',type=Path,default=OUT/'before.ttf')
     parser.add_argument('--output',type=Path,default=OUT)
     parser.add_argument('--old-label',default='1.2')
     parser.add_argument('--new-label',default='1.3')
     args=parser.parse_args()
-    review(args.font,args.before,args.output,args.old_label,args.new_label)
+    font = args.font or load_install_font(ROOT / 'assets/fonts/classj-pen-m', 'ClassJPenM-Regular.ttf')
+    review(font,args.before,args.output,args.old_label,args.new_label)

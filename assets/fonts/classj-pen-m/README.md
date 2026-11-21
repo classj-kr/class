@@ -2,7 +2,7 @@
 
 DX경필명조 M의 공개 비교 견본을 참고해 기존 자체 펜글씨의 획 굵기, 곡률, 자모 배치와 연결을 다듬은 별도 서체 시안이다. DX경필명조 정품 파일이나 그 M 웨이트가 아니다. 원본 글꼴의 윤곽을 복사하거나 Bold 파일을 변환한 결과물이 아니다.
 
-- `ClassJPenM-Regular.ttf`: 설치·문서용 글꼴. 내부 패밀리는 `ClassJ Pen M`, 무게 값은 500이다.
+- [설치·문서용 ZIP](ClassJPenM-Regular.zip)은 `ClassJPenM-Regular.ttf`를 담는다. 내부 패밀리는 `ClassJ Pen M`, 무게 값은 500이다. 로컬 TTF는 `references/fonts/classj-pen-m/`에 둔다.
 - `ClassJPenM-Regular.woff2`: 웹폰트.
 - `preview.html`: 글자 크기를 바꾸고 문장을 직접 입력하는 로컬 견본.
 - `source.js`: 모든 음절을 구성하는 자모 중심선, 맥락별 보정값과 펜 윤곽 생성기. 획순은 기존 자체 중심선의 순서를 유지한다.

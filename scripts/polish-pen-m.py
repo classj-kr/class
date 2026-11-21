@@ -16,6 +16,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy.ndimage import gaussian_filter, map_coordinates
 from skimage.registration import optical_flow_tvl1
+from install_font import load_install_font
 
 sys.stdout.reconfigure(encoding='utf-8')
 ROOT=Path(__file__).resolve().parent.parent
@@ -91,8 +92,9 @@ def run(font,amount,limit):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--font',type=Path,default=ROOT/'assets/fonts/classj-pen-m/ClassJPenM-Regular.ttf')
+    parser.add_argument('--font',type=Path)
     parser.add_argument('--amount',type=float,default=.8)
     parser.add_argument('--limit',type=float,default=6)
     args=parser.parse_args()
-    run(args.font,args.amount,args.limit)
+    font = args.font or load_install_font(ROOT / 'assets/fonts/classj-pen-m', 'ClassJPenM-Regular.ttf')
+    run(font,args.amount,args.limit)
