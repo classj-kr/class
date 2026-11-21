@@ -315,11 +315,13 @@
     // Kosma's complete A phrase in E minor, pickup through the minor cadence.
     // New Real Book lead sheet, transposed from G minor; chord melody voicings.
     const AUTUMN_LEAVES = [
-        [0,[59],.92],[1,[61],.92],[2,[62],.92],
-        [3,[67,45,55,60],5],[8,[57],.92],[9,[59],.92],[10,[60],.92],
-        [11,[66,43,54,59],3],[14,[66],2],[16,[55],.92],[17,[57],.92],[18,[59],.92],
-        [19,[64,42,52,57],5],[24,[54],.92],[25,[56],.92],[26,[58],.92],
-        [27,[59,40,55,62],4]
+        [0,[64],.92],[1,[66],.92],[2,[67],.92],
+        [3,[72,45,55,60],5],[7,[50,54,60],.92],
+        [8,[62],.92],[9,[64],.92],[10,[66],.92],
+        [11,[71,43,54,59],2],[13,[71],3],[15,[48,55,59],.92],
+        [16,[60],.92],[17,[62],.92],[18,[64],.92],
+        [19,[69,42,52,57],5],[23,[47,51,57],.92],
+        [24,[59],.92],[25,[61],.92],[26,[63],.92],[27,[64,40,55,62],4]
     ].map(function ([beat, pitches, length]) { return [beat, pitches, .7, length]; });
     const HOTEL_CALIFORNIA = [
         [47, 54, 59, 62, 66, 62, 59, 54],
@@ -429,7 +431,7 @@
     const GUITAR_DEMOS = {
         "s-style": { title: "Smoke on the Water", bpm: 112, notes: SMOKE_ON_THE_WATER, endBeat: 16 },
         "metal-seven": { title: "Enter Sandman", bpm: 123, notes: ENTER_SANDMAN, endBeat: 17 },
-        "hollow-jazz": { title: "Autumn Leaves", bpm: 112, notes: AUTUMN_LEAVES, endBeat: 31.5 },
+        "hollow-jazz": { title: "Autumn Leaves", bpm: 112, notes: AUTUMN_LEAVES, endBeat: 32 },
         dreadnought: { title: "Hotel California", bpm: 75, notes: HOTEL_CALIFORNIA, endBeat: 32.75 },
         "classical-guitar": { title: "Shape of My Heart · 레옹", bpm: 84, notes: SHAPE_OF_MY_HEART, endBeat: 17 }
     };

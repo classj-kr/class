@@ -279,13 +279,13 @@ const server = http.createServer((req, res) => {
       assert.equal(await page.$eval('#guitarDemoTitle', label => label.textContent), 'Autumn Leaves');
       await page.evaluate(() => { window.bassDemoHits = []; });
       await press('#guitarDemoButton');
-      await page.waitForFunction(() => document.querySelector('.key[data-midi="59"].demo-hit'));
+      await page.waitForFunction(() => document.querySelector('.key[data-midi="64"].demo-hit'));
       assert.equal(await page.evaluate(() => window.bassDemoHits[0].sampleSet), 'guitar-cubase-sh');
       if (!touch) {
         await page.waitForFunction(() => document.querySelector('#guitarDemoButton').getAttribute('aria-pressed') === 'false');
         const theme = await page.evaluate(() => window.bassDemoHits);
-        assert.deepEqual(theme.slice(0,7).map(hit => hit.midi), [59,61,62,67,45,55,60]);
-        assert.deepEqual(theme.slice(-4).map(hit => hit.midi), [59,40,55,62]);
+        assert.deepEqual(theme.slice(0,7).map(hit => hit.midi), [64,66,67,72,45,55,60]);
+        assert.deepEqual(theme.slice(-4).map(hit => hit.midi), [64,40,55,62]);
         assert.ok(Math.abs(theme.at(-1).time - theme[0].time - 27 * 60000 / 112) < 250);
       }
       await page.evaluate(() => window.playbackTest.selectModel('dreadnought'));
