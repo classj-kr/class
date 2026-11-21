@@ -1,7 +1,7 @@
 // 학습 진도를 브라우저가 아니라 계정별 서버 저장 공간에 두는지 실제 화면으로 확인한다(예술·탐구 묶음 B).
 // 앱마다: 로그인 계정으로 진도가 남는 가장 작은 행동을 하고 → 서버에 있고 브라우저(localStorage)에는 없고
 // → 다른 브라우저에서 같은 계정으로 열면 되살아나고 → 게스트는 같은 행동을 해도 어디에도 남지 않는지 본다.
-// 대상: 청음(ear-training), 조형 원리(design-principles), 클래식(classical-music), 미술관(museum), 조각 공원(park), 지구본 학습(atlas).
+// 대상: 청음(ear-training), 클래식(classical-music), 미술관(museum), 조각 공원(park), 지구본 학습(atlas).
 // 음악 작업실(music-studio)은 어느 쪽도 불러 쓰지 않는 파일이라(index.html 이 청음으로 넘김) 화면 검사가 없다.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -11,7 +11,7 @@ const { chromium } = require('../game-hub-server/node_modules/playwright');
 
 const root = path.resolve(__dirname, '..');
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
-const LEGACY_KEYS = ['earTraining.v2', 'art-composition-studio-v2', 'classics-bank-progress-v1', 'museumFinaleRoomsV2', 'parkFinaleStampV1', 'classj-atlas-progress-2022-v1', 'musicLabPractice'];
+const LEGACY_KEYS = ['earTraining.v2', 'classics-bank-progress-v1', 'museumFinaleRoomsV2', 'parkFinaleStampV1', 'classj-atlas-progress-2022-v1', 'musicLabPractice'];
 const legacyKeys = (page) => page.evaluate((keys) => Object.keys(localStorage).filter((k) => keys.includes(k)), LEGACY_KEYS);
 const errors = [];
 
@@ -83,30 +83,6 @@ async function earTraining(browser, h) {
   await second.context.close();
 
   await asGuest(browser, h, url, (p) => openFirstLesson(p, 0));
-}
-
-/* 조형 원리 작업실 -------------------------------------------------------- */
-async function designPrinciples(browser, h) {
-  const url = '/learning/arts/art-theory/design-principles/';
-  const shapes = (page) => page.evaluate(() => document.querySelectorAll('#canvas [data-object]').length);
-  const { context, page } = await openPage(browser, h, url, { signedIn: true });
-  await waitFor('작업판 준비', () => shapes(page).then((n) => n === 4));
-  await page.click('[data-add="square"]');
-  assert.equal(await shapes(page), 5);
-  await waitFor('구성 저장', async () => (await h.items('design-principles')).studio?.items?.length === 5);
-  assert.equal(await page.textContent('#storageStatus'), '내 계정에 저장됨');
-  assert.deepEqual(await legacyKeys(page), []);
-  await context.close();
-
-  const second = await openPage(browser, h, url, { signedIn: true });
-  await waitFor('다른 브라우저에서 구성 되살림', () => shapes(second.page).then((n) => n === 5));
-  await second.context.close();
-
-  await asGuest(browser, h, url, async (p) => {
-    await waitFor('작업판 준비(게스트)', () => shapes(p).then((n) => n === 4));
-    await p.click('[data-add="square"]');
-    assert.match(await p.textContent('#storageStatus'), /저장되지 않습니다/);
-  });
 }
 
 /* 클래식 음악 감상실 ------------------------------------------------------ */
@@ -336,7 +312,7 @@ async function atlas(browser, h) {
   const h = await startHarness();
   let browser;
   const only = process.argv.slice(2);
-  const suites = { 'ear-training': earTraining, 'design-principles': designPrinciples, 'classical-music': classicalMusic, museum, park, atlas };
+  const suites = { 'ear-training': earTraining, 'classical-music': classicalMusic, museum, park, atlas };
   try {
     browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
     for (const [name, run] of Object.entries(suites)) {

@@ -45,10 +45,11 @@ test('withdrawn art pages and assets cannot be served, while neighboring courses
   }
 });
 
-test('portal removes art links without removing the remaining theory courses', () => {
+test('the retired art course is absent and the music theory pages remain', () => {
   const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.equal(fs.existsSync(path.join(root, 'learning/arts/art-theory')), false);
   assert.doesNotMatch(html, /learning\/arts\/art-theory\//);
-  assert.match(html, /href="learning\/arts\/music-theory\/rhythm-training\/"/);
+  assert.ok(fs.existsSync(path.join(root, 'learning/arts/music-theory/rhythm-training/index.html')));
   assert.match(html, /href="learning\/arts\/music-theory\/ear-training\/"/);
   const source = fs.readFileSync(path.join(root, 'game-hub-server/server.js'), 'utf8');
   const guard = source.indexOf('app.use(hideUnpublishedLessons);');

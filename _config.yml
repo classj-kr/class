@@ -1,4 +1,3 @@
-# GitHub Pages must not publish the withdrawn art course.
 # Retain the standard exclusions for Jekyll 3 as well as Jekyll 4.
 exclude:
   - .sass-cache/
@@ -11,4 +10,3 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - learning/arts/art-theory/
