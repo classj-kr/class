@@ -7,12 +7,12 @@
     <title>악기</title>
     <meta name="description" content="최적화된 콘서트 그랜드 멀티샘플과 다양한 악기를 바로 연주하는 디지털 악기실">
     <link rel="preload" href="instrument-worklet-v2.js?v=20260824-fast-adsr" as="script">
-    <link rel="stylesheet" href="styles.css?v=20261118-power-chords">
+    <link rel="stylesheet" href="styles.css?v=20261121-demo-position">
     <script src="instrument-core.js?v=20261118-power-chords" defer></script>
     <script src="instrument-details.js?v=20261015-orchestral-v1" defer></script>
     <script src="korean-percussion-data.js?v=20261014-janggu-gueum-v5" defer></script>
     <script src="pad-presentation.js?v=20261015-orchestral-v1" defer></script>
-    <script src="app.js?v=20261118-acoustic-riff" defer></script>
+    <script src="app.js?v=20261121-demo-position" defer></script>
 </head>
 <body data-sfx-clicks="none" data-sfx-feedback="none">
     <div class="room-glow" aria-hidden="true"></div>
@@ -171,11 +171,11 @@
                     <div id="guitarDemoControls" class="keyboard-demo-controls hidden" role="group" aria-label="기타 시범 연주">
                         <button id="guitarDemoButton" class="key-size-button" type="button" aria-pressed="false"><span>시범 연주</span><b id="guitarDemoTitle"></b></button>
                     </div>
+                    <button id="drumDemoButton" class="key-size-button hidden" type="button"><span id="drumDemoLabel">시범 연주</span></button>
                     <div id="jangguDemoControls" class="janggu-demo-controls hidden">
                         <select id="jangguDemoSelect" aria-label="시범 장단"></select>
                         <span id="jangguDemoCue"></span>
                     </div>
-                    <button id="drumDemoButton" class="key-size-button hidden" type="button"><span id="drumDemoLabel">시범 연주</span><b id="drumDemoTempo"></b></button>
                     <div id="rangeLegend" class="range-legend hidden"><i></i><span id="rangeReadout"></span></div>
                     <button id="keySizeButton" class="key-size-button" type="button" aria-haspopup="dialog"><span>건반 크기</span><b id="keySizeReadout">100%</b></button>
                     <div id="keyboardRangeControls" class="keyboard-range-controls" aria-label="컴퓨터 자판 음역 이동">

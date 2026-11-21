@@ -138,6 +138,13 @@ const server = http.createServer((req, res) => {
         return audit;
       };
       await press('[data-family="drums"]');
+      const demoToolbar = await page.evaluate(() => {
+        const toolbar = document.querySelector('.play-toolbar');
+        const button = document.querySelector('#drumDemoButton');
+        return { left: button.getBoundingClientRect().left - toolbar.getBoundingClientRect().left, text: toolbar.textContent };
+      });
+      assert.ok(demoToolbar.left >= 0 && demoToolbar.left < 20, 'Demo button stays at the left edge');
+      assert.doesNotMatch(demoToolbar.text, /BPM/);
       const pointerHit = await check('drum kick', () => press('[data-drum="kick"]'));
       const keyHit = await check('computer keyboard', () => page.keyboard.press('a'));
       assert.equal(pointerHit.drumInputs[0].velocity,keyHit.drumInputs[0].velocity,'Mouse/touch pads must not be quieter than keyboard hits');
@@ -150,7 +157,6 @@ const server = http.createServer((req, res) => {
           [...document.querySelectorAll('#modelChooser button b')].find(label => label.textContent === 'Funk Kit').closest('button').click();
           window.sampledDrumInputs = [];
         });
-        assert.equal(await page.$eval('#drumDemoTempo', element => element.textContent), '104 BPM');
         await press('#drumDemoButton');
         await page.waitForFunction(() => document.querySelector('[data-drum="crash"]').classList.contains('demo-hit'));
         const hits = await page.evaluate(() => window.sampledDrumInputs);
@@ -173,7 +179,6 @@ const server = http.createServer((req, res) => {
       const janggu = touch ? 'janggu-samul' : 'janggu-sanjo';
       await page.evaluate(id => window.playbackTest.selectModel(id), janggu);
       await page.select('#jangguDemoSelect', touch ? '세마치 · 너영나영' : '굿거리 · 산도깨비');
-      assert.equal(await page.$eval('#drumDemoTempo', element => element.textContent), touch ? '84 BPM' : '72 BPM');
       await page.evaluate(() => { window.sampledDrumInputs = []; });
       if (touch) await press('#drumDemoButton');
       else {
@@ -187,7 +192,6 @@ const server = http.createServer((req, res) => {
       if (touch) {
         await page.select('#jangguDemoSelect', '자진모리 · 남생아 놀아라');
         assert.equal(await page.$eval('#jangguDemoCue', element => element.textContent), '');
-        assert.equal(await page.$eval('#drumDemoTempo', element => element.textContent), '92 BPM');
       } else {
         await page.waitForFunction(() => document.querySelector('#drumDemoLabel').textContent === '시범 연주');
         const strokes = await page.evaluate(() => window.sampledDrumInputs.map(hit => hit.id));

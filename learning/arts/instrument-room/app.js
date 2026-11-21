@@ -632,7 +632,7 @@
             "articulationButtons", "articulationHint", "soundPresetGroup", "soundPresetButtons", "soundPresetHint", "physicalStringControls", "toneSlider", "toneOutput", "muteSlider", "muteOutput", "pickSlider", "pickOutput",
             "driveSlider", "driveOutput", "drumResonanceSlider", "drumResonanceOutput", "drumToneSlider", "drumToneOutput",
             "noteReadout", "rangeLegend", "rangeReadout", "keySizeButton", "keySizeReadout", "keyboardRangeControls", "keyboardRangeReadout", "octaveDown", "whiteKeyDown", "whiteKeyUp", "octaveUp", "keyboardViewport",
-            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "drumDemoTempo", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
+            "keyboard", "chordSurface", "chordPads", "guitarKeySelect", "guitarPadPlay", "guitarStrumZone", "guitarSelectedChord", "drumPads", "drumDemoButton", "drumDemoLabel", "jangguDemoControls", "jangguDemoSelect", "jangguDemoCue", "bassDemoControls", "guitarDemoControls", "guitarDemoButton", "guitarDemoTitle", "toast", "instrumentInfoButton", "instrumentDetailModal", "instrumentDetailDialog", "detailFamily", "detailTitle", "detailSubtitle", "detailPrevious", "detailNext", "detailClose", "detailArtworkFrame", "detailArtwork", "detailArtworkLayers", "detailArtworkFallback", "detailPartPicker", "detailFacts", "detailArticle",
             "keySizeModal", "keySizeDialog", "calibrationCard", "calibrationSlider", "calibrationStatus", "calibrationReset", "calibrationSave", "keyScaleSlider", "keyScaleOutput"
         ].forEach(function (id) { elements[id] = document.getElementById(id); });
     }
@@ -2730,7 +2730,6 @@
         const demo = janggu ? JANGGU_DEMOS[elements.jangguDemoSelect.selectedIndex] : DRUM_DEMOS[modelId];
         elements.drumDemoButton.classList.toggle("hidden", !demo);
         elements.jangguDemoControls.classList.toggle("hidden", !janggu);
-        elements.drumDemoTempo.textContent = demo ? demo.bpm + " BPM" : "";
         const kit = Boolean(DRUM_KIT_PARTS[modelId]);
         elements.drumPads.classList.toggle("spatial-pads", janggu || kit);
         elements.drumPads.classList.toggle("janggu-pads", janggu);
@@ -3160,7 +3159,6 @@
         });
         elements.jangguDemoSelect.addEventListener("change", function () {
             stopDrumDemo();
-            elements.drumDemoTempo.textContent = JANGGU_DEMOS[this.selectedIndex].bpm + " BPM";
         });
         elements.drumDemoButton.addEventListener("click", playDrumDemo);
         elements.keySizeButton.addEventListener("click", openKeySizeDialog);
