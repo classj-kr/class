@@ -29,3 +29,6 @@
 :where(.chess-surface) #board .moving-ghost,:where(.chess-surface) #board .capture-ghost{position:absolute;left:9%;top:9%;pointer-events:none}
 :where(.chess-surface) #board .capture-ghost{z-index:2}
 
+/* 승격: 새 말이 튀어나오는 순간의 금빛 고리와 별 조각(motion.js) */
+:where(.chess-surface) .promotion-burst{position:absolute;inset:4%;z-index:5;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#fff6c8cc 0 22%,#ffd95066 45%,#ffd95000 70%);box-shadow:0 0 0 3px #ffe08a,0 0 22px 6px #ffd950aa}
+:where(.chess-surface) .promotion-spark{position:absolute;left:50%;top:50%;z-index:6;width:13%;aspect-ratio:1;pointer-events:none;background:#fff3b0;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);filter:drop-shadow(0 0 4px #ffd950)}
