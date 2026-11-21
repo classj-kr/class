@@ -17,7 +17,7 @@ const server=http.createServer((req,res)=>{
     if(file.endsWith('instrument-room'+path.sep+'app.js')) {
       if(process.env.DRUM_SOURCE) data=fs.readFileSync(process.env.DRUM_SOURCE);
       data=data.toString().replace('document.addEventListener("DOMContentLoaded", init);',
-        'window.drumAudit={state,DRUM_SAMPLE_SETS,AD2_DRUM_ARTICULATIONS,balancedDrumGain,decodedBufferPeak,decodedBufferBodyRms,playSampledDrum,ensureAudio};cacheElements();');
+        'window.drumAudit={state,DRUM_SAMPLE_SETS,AD2_DRUM_ARTICULATIONS,balancedDrumGain,decodedBufferPeak,decodedBufferBodyRms,playSampledDrum,loadDrumSample,ensureAudio};cacheElements();');
     }
     res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.ogg':'audio/ogg'})[path.extname(file)]||'application/octet-stream'}).end(data);
   });
@@ -67,7 +67,7 @@ function wav(samples,file) {
           return context.startRendering();
         }
         for(const [piece,buffer] of buffers) {
-          const requested=.8*Math.pow(10,(config.gainDb+(config.pieceBoostDb?.[piece]||0))/20);
+          const requested=.8*Math.pow(10,config.gainDb/20);
           const gain=a.balancedDrumGain(buffer,requested,.8,piece,config.id);
           const softGain=a.balancedDrumGain(buffer,requested*.5,.4,piece,config.id);
           if(!(softGain<gain))throw new Error(kit+'/'+piece+': velocity dynamics lost');
@@ -85,7 +85,21 @@ function wav(samples,file) {
         const data=Array.from(mix.getChannelData(0),(value,i)=>(value+mix.getChannelData(1)[i])/2);
         mixes.push({kit,...measure(mix),loud,samples:data});
       }
-      return {rows,mixes};
+      const attacks=[];
+      for(const piece of ['yonggo','jabara']) {
+        const context=new OfflineAudioContext(2,48000,48000);
+        context.resume=()=>Promise.resolve();
+        window.AudioContext=function(){return context;};
+        a.state.audioContext=null;a.state.currentModel={id:'daechwita-station'};
+        a.ensureAudio();window.AudioContext=Native;
+        const sample=await a.loadDrumSample(piece);
+        a.playSampledDrum(piece,.8);await Promise.resolve();
+        const rendered=await context.startRendering();
+        const channel=rendered.getChannelData(0),peak=a.decodedBufferPeak(rendered);
+        const onset=channel.findIndex(value=>Math.abs(value)>peak*.02)/rendered.sampleRate;
+        attacks.push({piece,offset:sample.offset,onset,peak});
+      }
+      return {rows,mixes,attacks};
     });
     const prefix=process.env.DRUM_REPORT_PREFIX||(process.env.DRUM_AUDIT_ONLY?'audit':'after');
     for(const mix of result.mixes) {wav(mix.samples,path.join(output,prefix+'-'+mix.kit+'.wav'));delete mix.samples;}
@@ -96,18 +110,31 @@ function wav(samples,file) {
       if(!process.env.DRUM_AUDIT_ONLY) {
         for(const key of ['full','limited']) {
           assert.ok(parts.snare[key].body>parts.ride[key].body*1.5,kit+': snare must lead the ride in '+key+' output');
+          assert.ok(parts.snare[key].body>parts.hat[key].body*2.5,kit+': hi-hat must sit under the backbeat in '+key+' output');
           assert.ok(parts.crash[key].body>parts.ride[key].body*1.3,kit+': ride must not overpower crash');
           assert.ok(parts.ghost[key].body<parts.snare[key].body*.6,kit+': ghost notes retain their soft articulation');
         }
         assert.ok(parts.kick.full.body>parts.ride.full.body*2,kit+': kick must lead the ride');
+        assert.ok(parts.snare.full.body>parts.ride.full.body*4,kit+': ride must sit under the backbeat');
         // A bass drum naturally loses its fundamental in this bandwidth test;
         // require an audible attack, not a high-frequency spectrum like a cymbal.
         assert.ok(parts.kick.limited.body>.014,kit+': kick attack survives reduced bass response');
         assert.ok(parts.kick.full.body>.08 && parts.snare.full.body>.085,kit+': core drums cannot be faint');
-        for(const row of Object.values(parts)) assert.ok(row.full.peak<.93&&row.full.body>.012,kit+'/'+row.piece+': audible with headroom');
+        for(const row of Object.values(parts)) {
+          // A foot-closed hat is intentionally softer than a stick strike.
+          const minimumBody=row.piece==='pedalhat'?.008:.012;
+          assert.ok(row.full.peak<.93&&row.full.body>minimumBody,kit+'/'+row.piece+': audible with headroom');
+        }
       }
     }
     if(!process.env.DRUM_AUDIT_ONLY)for(const mix of result.mixes)assert.ok(mix.peak<1&&mix.loud.peak<1,mix.kit+': groove must not clip at normal or maximum velocity');
+    for(const attack of result.attacks) {
+      console.log(attack.piece,JSON.stringify(attack));
+      if(!process.env.DRUM_AUDIT_ONLY) {
+        assert.ok(attack.offset>.4,attack.piece+': skips the complete leading silence');
+        assert.ok(attack.onset>=0&&attack.onset<.02&&attack.peak>.01,attack.piece+': audible attack within 20 ms through the output chain');
+      }
+    }
     console.log(result.rows.length+' real pad samples; '+result.mixes.length+' combined grooves rendered');
   }finally{if(browser)await browser.close();server.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

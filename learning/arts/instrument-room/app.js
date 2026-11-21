@@ -412,17 +412,6 @@
         "drums-808": 4.10
     });
 
-    // Measured peak level of each source file puts closed hi-hat 20+ dB under the
-    // kick/snare in several kits, well past the rest of the kit's spread. Nudge just
-    // that piece back up rather than re-touching the whole kit's printed balance.
-    const DRUM_PIECE_BOOST_DB = Object.freeze({
-        "drums-rock": Object.freeze({ hat: 8 }),
-        "drums-metal": Object.freeze({ hat: 8 }),
-        "drums-pop": Object.freeze({ hat: 8, openhat: 8 }),
-        "drums-funk": Object.freeze({ hat: 8 }),
-        "drums-linn": Object.freeze({ hat: 8 })
-    });
-
     // RMS bounds for the loudest 100 ms of a strike at full velocity. Kick and
     // snare carry the groove; sustained cymbals must not mask their attacks.
     // These are gain-only trims for drum kits, not Korean/orchestral percussion.
@@ -430,17 +419,17 @@
         kick: [.24, .28], snare: [.18, .20], rimshot: [.19, .22],
         ghost: [.026, .034], sidestick: [.065, .085], rimclick: [.065, .085],
         hightom: [.11, .14], midtom: [.11, .14], lowtom: [.12, .15],
-        hat: [.045, .055], pedalhat: [.035, .045], openhat: [.05, .065],
-        crash: [.08, .095], ride: [.04, .05], ridebell: [.045, .055]
+        hat: [.03, .04], pedalhat: [.025, .032], openhat: [.035, .045],
+        crash: [.08, .095], ride: [.025, .034], ridebell: [.032, .04]
     });
 
     const DRUM_SAMPLE_SETS = Object.freeze({
-        "rock-kit": Object.freeze({ id: "drums-rock", root: "assets/audio/drums-rock/", gainDb: DRUM_KIT_GAIN_DB["drums-rock"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-rock"] }),
-        "metal-kit": Object.freeze({ id: "drums-metal", root: "assets/audio/drums-metal/", gainDb: DRUM_KIT_GAIN_DB["drums-metal"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-metal"] }),
-        "pop-kit": Object.freeze({ id: "drums-pop", root: "assets/audio/drums-pop/", gainDb: DRUM_KIT_GAIN_DB["drums-pop"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-pop"] }),
+        "rock-kit": Object.freeze({ id: "drums-rock", root: "assets/audio/drums-rock/", gainDb: DRUM_KIT_GAIN_DB["drums-rock"] }),
+        "metal-kit": Object.freeze({ id: "drums-metal", root: "assets/audio/drums-metal/", gainDb: DRUM_KIT_GAIN_DB["drums-metal"] }),
+        "pop-kit": Object.freeze({ id: "drums-pop", root: "assets/audio/drums-pop/", gainDb: DRUM_KIT_GAIN_DB["drums-pop"] }),
         "jazz-kit": Object.freeze({ id: "drums-jazz", root: "assets/audio/drums-jazz/", gainDb: DRUM_KIT_GAIN_DB["drums-jazz"] }),
-        "funk-kit": Object.freeze({ id: "drums-funk", root: "assets/audio/drums-funk/", gainDb: DRUM_KIT_GAIN_DB["drums-funk"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-funk"] }),
-        "linn-machine": Object.freeze({ id: "drums-linn", root: "assets/audio/drums-linn/", gainDb: DRUM_KIT_GAIN_DB["drums-linn"], pieceBoostDb: DRUM_PIECE_BOOST_DB["drums-linn"] }),
+        "funk-kit": Object.freeze({ id: "drums-funk", root: "assets/audio/drums-funk/", gainDb: DRUM_KIT_GAIN_DB["drums-funk"] }),
+        "linn-machine": Object.freeze({ id: "drums-linn", root: "assets/audio/drums-linn/", gainDb: DRUM_KIT_GAIN_DB["drums-linn"] }),
         "drum-808": Object.freeze({ id: "drums-808", root: "assets/audio/drums-808/", gainDb: DRUM_KIT_GAIN_DB["drums-808"] }),
         "orchestral-percussion": Object.freeze({ id: "orchestral-percussion", root: "assets/audio/orchestral-percussion/", available: Object.freeze(["orchestral-snare", "orchestral-bass-drum", "orchestral-suspended-cymbal", "orchestral-tamtam", "orchestral-triangle"]) })
     });
@@ -1608,16 +1597,10 @@
         if (!buffer || !buffer.numberOfChannels) return 0;
         const channel0 = buffer.getChannelData(0);
         const channel1 = buffer.numberOfChannels > 1 ? buffer.getChannelData(1) : null;
-        let peak = 0;
-        const scanLen = Math.min(channel0.length, Math.floor(buffer.sampleRate * 0.4));
-        for (let i = 0; i < scanLen; i++) {
-            const v0 = Math.abs(channel0[i]);
-            if (v0 > peak) peak = v0;
-            if (channel1) {
-                const v1 = Math.abs(channel1[i]);
-                if (v1 > peak) peak = v1;
-            }
-        }
+        // Yonggo and jabara begin after 0.4 s; a capped scan misses their
+        // entire attack and used to play the leading silence on every hit.
+        const scanLen = channel0.length;
+        const peak = decodedBufferPeak(buffer);
         if (peak < 0.005) return 0;
         const threshold = Math.max(0.0015, peak * 0.02);
         for (let i = 0; i < scanLen; i++) {
@@ -1731,7 +1714,7 @@
             const source = context.createBufferSource();
             const gain = context.createGain();
             const baseGainDb = typeof current.gainDb === "number" ? current.gainDb : Number((current.gainDb && current.gainDb[id]) || 0);
-            const gainDb = baseGainDb + Number((current.pieceBoostDb && current.pieceBoostDb[id]) || 0);
+            const gainDb = baseGainDb;
             source.buffer = sample.buffer;
             const sampledVelocity = Math.max(.08, Math.min(1.2, velocity));
             const koreanPercussion = current.id.indexOf("korean-") === 0;

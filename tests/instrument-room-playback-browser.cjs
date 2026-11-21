@@ -74,7 +74,7 @@ const server = http.createServer((req, res) => {
       for (const [kit, piece] of [['jazz-kit','rimclick'], ['metal-kit','pedalhat'], ['pop-kit','pedalhat'], ['funk-kit','hat']]) {
         const config = a.DRUM_SAMPLE_SETS[kit];
         const buffer = await decoder.decodeAudioData(await (await fetch(config.root + piece + '.ogg')).arrayBuffer());
-        const requested = .8 * Math.pow(10, (config.gainDb + (config.pieceBoostDb?.[piece] || 0)) / 20);
+        const requested = .8 * Math.pow(10, config.gainDb / 20);
         const gain = a.balancedDrumGain(buffer, requested, .8, piece, config.id);
         const context = new OfflineAudioContext(2, buffer.length, buffer.sampleRate);
         const source = context.createBufferSource(), output = context.createGain();
@@ -82,13 +82,15 @@ const server = http.createServer((req, res) => {
         source.connect(output).connect(context.destination); source.start();
         const audio = await context.startRendering();
         results.push({kit,piece,rms:a.decodedBufferBodyRms(audio),peak:a.decodedBufferPeak(audio),boostDb:20*Math.log10(gain/requested)});
-        const soft = a.balancedDrumGain(buffer, 0, .8, 'ghost', config.id);
+        const soft = a.balancedDrumGain(buffer, requested * .5, .4, piece, config.id);
         if (!(soft < gain)) throw new Error('Soft articulation lost: ' + kit);
       }
       return results;
     });
     for (const row of rendered) {
-      assert.ok(row.rms > (row.kit ? .025 : .015), JSON.stringify(row));
+      // Timekeeping cymbals now sit below the backbeat; still reject silence.
+      const minimumRms = row.kit && !['hat', 'pedalhat'].includes(row.piece) ? .025 : .015;
+      assert.ok(row.rms > minimumRms, JSON.stringify(row));
       assert.ok(row.peak <= .921, JSON.stringify(row));
       if (row.id) assert.ok(row.offset > .8, JSON.stringify(row));
     }
