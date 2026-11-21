@@ -79,10 +79,11 @@
     organCall(4.5,69,false,true);
     organCall(9,57,false,true);
     organCall(13.5,57,true,false);
-    toccata.push([18,[38],.56,6.7]);
+    // The pedal D is tied through the cadence: keep one continuous source.
+    toccata.push([18,[38],.56,7.5]);
     [49,52,55,58,61,64].forEach((midi,index) =>
         toccata.push([18.15+index*.16,[midi],.52,2.8-index*.16]));
-    toccata.push([22,[38,50,57,62],.58,3]);
+    toccata.push([22,[50,57,62],.58,3]);
     // Concert-pitch solo excerpts, without orchestral lead-ins.
     // Horn: K.495/III pickup + mm.1–8, Eb horn part transposed down a sixth.
     // https://www.mfiles.co.uk/scores/mozart-horn-concerto4-3-rondo-horn-solo.pdf

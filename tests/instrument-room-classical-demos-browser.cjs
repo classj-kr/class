@@ -28,7 +28,7 @@ function wave(pcm){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(pcm.
  await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
  try{
   browser=await puppeteer.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'});
-  for(const width of [1366,390])await Promise.all(Object.entries(plans).map(async([id,plan])=>{
+  for(const width of [1366,390])await Promise.all(Object.entries(plans).filter(([id])=>!process.env.CLASSICAL_MODEL||id===process.env.CLASSICAL_MODEL).map(async([id,plan])=>{
    const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.setViewport({width,height:900,isMobile:width<500,hasTouch:width<500});
    await page.goto('http://127.0.0.1:'+server.address().port+room,{waitUntil:'networkidle0'});
@@ -46,7 +46,7 @@ function wave(pcm){const h=Buffer.alloc(44);h.write('RIFF');h.writeUInt32LE(pcm.
     hits.forEach((n,i)=>{assert.equal(n.midi,expected[i][1],id+'/'+i);assert.ok(Math.abs(n.when-hits[0].when-expected[i][0]*60/plan.bpm)<1/48000,id+' score timing '+i);});
    }
    if(id==='pipe-organ'){
-    assert.equal(hits.length,61);for(const time of [0,4.5,9,13.5])assert.ok(hits.some(n=>Math.abs(n.when-hits[0].when-time)<1e-8));
+    assert.equal(hits.length,60);assert.equal(hits.filter(n=>n.midi===38&&n.when-hits[0].when>=18-1e-8).length,1);for(const time of [0,4.5,9,13.5])assert.ok(hits.some(n=>Math.abs(n.when-hits[0].when-time)<1e-8));
     assert.ok(Math.abs(hits.at(-1).when-hits[0].when-22)<1e-8);
    }
    await page.waitForFunction(()=>document.querySelector('#melodyDemoButtons button').getAttribute('aria-pressed')==='false',{timeout:35000});

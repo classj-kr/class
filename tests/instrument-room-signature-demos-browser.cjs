@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
       bytes = bytes.toString().replace('document.addEventListener("DOMContentLoaded", init);',
         'window.signatureTest={state,selectModel,KEYBOARD_SAMPLE_SETS,BASS_DEMOS};window.signatureHits=[];document.addEventListener("DOMContentLoaded", init);');
       bytes = bytes.replace('function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) {',
-        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.signatureHits.push({midi,anchor,sampleSet});');
+        'function startConcertGrandSample(midi, velocity, anchor, buffer, sampleSet, when) { window.signatureHits.push({midi,anchor,sampleSet,when});');
     }
     const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.ogg': 'audio/ogg', '.flac': 'audio/flac', '.webp': 'image/webp', '.woff2': 'font/woff2' };
     res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' }).end(bytes);
@@ -78,7 +78,7 @@ async function shot(page, name) {
       const hits = await page.evaluate(() => signatureHits);
       assert.ok(hits.every(hit => hit.midi === hit.anchor && (organ ? hit.sampleSet === 'pipe-organ' : hit.sampleSet.endsWith('-slap'))), JSON.stringify({ kind, width, unexpected: hits.filter(hit => hit.midi !== hit.anchor || (organ ? hit.sampleSet !== 'pipe-organ' : !hit.sampleSet.endsWith('-slap'))) }));
       assert.deepEqual(hits.slice(0, organ ? 6 : 3).map(hit => hit.midi), organ ? [69,81,67,79,69,81] : [40,50,52]);
-      if (organ) assert.deepEqual(hits.slice(-4).map(hit => hit.midi), [38,50,57,62]);
+      if (organ) { assert.equal(hits.filter(hit=>hit.midi===38&&hit.when-hits[0].when>=18-1e-8).length,1); assert.deepEqual(hits.slice(-3).map(hit => hit.midi), [50,57,62]); }
       else { assert.equal(hits.length, 47); assert.equal(hits.at(-1).midi, 40); }
       assert.equal(await page.$$('.key.demo-hit').then(keys => keys.length), 0);
       // A second click stops; selecting another family must also stop a run.
