@@ -443,13 +443,20 @@ body.pr-racing #settingsButton, body.pr-racing .actions, body.pr-racing #coachCa
 }
 
 /* 판은 블록을 늘어놓은 바닥: 연 칸은 블록을 들어낸 움푹한 바닥(틈 없이 이어짐), 덮인 칸은 바닥에 그림자를 드리운 나무 블록. */
-.mine-board { border-radius: 6px; background: #d9bb84; box-shadow: 0 0 0 3px #d9bb84, inset 0 3px 8px rgba(92, 52, 18, .38), 0 0 0 4px rgba(52, 24, 6, .55); }
-.mb-cell:not(.open) { box-shadow: inset 0 2px rgba(255,236,196,.55), inset 0 -3px rgba(52,24,6,.45), 1px 3px 3px rgba(70, 36, 10, .45); z-index: 1; }
-.mb-cell.open { background: #f1ddb3; box-shadow: inset 0 1px 1px rgba(110, 70, 30, .18); animation: none; }
-.mb-cell.open::before { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; background: linear-gradient(150deg, #c08a52, #8a5428); box-shadow: inset 0 2px rgba(255,236,196,.55), inset 0 -3px rgba(52,24,6,.45); animation: lift-block .34s ease-out both; animation-delay: var(--delay, 0ms); }
+.mine-board { border-radius: 6px; background: #e2cfa6; box-shadow: 0 0 0 3px #e2cfa6, inset 0 3px 8px rgba(92, 52, 18, .38), 0 0 0 4px rgba(52, 24, 6, .55); }
+.mb-cell:not(.open) { background: linear-gradient(180deg, rgba(255,250,232,.55) 0%, rgba(255,246,220,.18) 38%, rgba(255,255,255,0) 40%, rgba(0,0,0,0) 70%, rgba(80,40,8,.22) 100%), linear-gradient(var(--tone, transparent), var(--tone, transparent)), url(../assets/wood/goban.webp?v=2) var(--grain-x, 0) var(--grain-y, 0) / 360% 360%, #d5a458; box-shadow: inset 0 0 0 1px rgba(120,70,20,.55), inset 1px 2px 0 rgba(255,248,226,.85), inset -1px -3px 0 rgba(110,60,15,.45), 1px 3px 3px rgba(70, 36, 10, .45); z-index: 1; }
+.mb-cell:nth-child(3n+1) { --grain-x: 37%; } .mb-cell:nth-child(3n+2) { --grain-x: 71%; } .mb-cell:nth-child(5n+1) { --grain-y: 23%; } .mb-cell:nth-child(5n+3) { --grain-y: 64%; } .mb-cell:nth-child(7n+2) { --grain-x: 92%; --grain-y: 41%; }
+.mb-cell.open { background: #f8ecd2; box-shadow: inset 0 1px 1px rgba(110, 70, 30, .18); animation: none; }
+.mb-cell.open::before { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; background: linear-gradient(180deg, rgba(255,250,232,.55) 0%, rgba(255,246,220,.18) 38%, rgba(255,255,255,0) 40%, rgba(0,0,0,0) 70%, rgba(80,40,8,.22) 100%), linear-gradient(var(--tone, transparent), var(--tone, transparent)), url(../assets/wood/goban.webp?v=2) var(--grain-x, 0) var(--grain-y, 0) / 360% 360%, #d5a458; box-shadow: inset 0 0 0 1px rgba(120,70,20,.55), inset 1px 2px 0 rgba(255,248,226,.85), inset -1px -3px 0 rgba(110,60,15,.45); animation: lift-block .34s ease-out both; animation-delay: var(--delay, 0ms); }
 @keyframes lift-block { 0% { opacity: 1; transform: none; } 45% { opacity: 1; transform: translateY(-18%) scale(1.12); } 100% { opacity: 0; transform: translateY(-34%) scale(1.18) rotate(-6deg); } }
 .mb-cell.open.mine { background: #e2c58f; }
 .mb-cell.open.hit { background: #e0322b; box-shadow: inset 0 0 0 2px #7a120d; animation: blast .5s ease-out both; }
 .mb-cell.open.boom { animation: blast-small .32s ease-out both; }
 .mb-cell.open.nudge { animation: nudge .28s ease-in-out; }
 @media (prefers-reduced-motion: reduce) { .mb-cell.open::before { display: none; } }
+
+/* 블록 칠: 나뭇결과 밝기는 두고 빛깔만 물들인다(color 섞기). */
+.mb-cell:not(.open), .mb-cell.open::before { background-blend-mode: normal, color, normal; }
+.mine-board[data-tone="green"] { --tone: #5d8a5c; }
+.mine-board[data-tone="blue"] { --tone: #5a7699; }
+.mine-board[data-tone="plum"] { --tone: #80648c; }

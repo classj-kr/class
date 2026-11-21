@@ -357,6 +357,9 @@
     counts = null;
     startCell = -1;
     resetState();
+    // 새 판마다 블록 칠을 바꾼다(나무 그대로·초록·파랑·자주 중 직전과 다른 것). 같은 판 다시 풀기는 그대로.
+    const tones = ['wood', 'green', 'blue', 'plum'].filter(tone => tone !== boardElement.dataset.tone);
+    boardElement.dataset.tone = tones[Math.floor(Math.random() * tones.length)];
     setStatus('READY');
     refreshDefaultCoach();
   }
