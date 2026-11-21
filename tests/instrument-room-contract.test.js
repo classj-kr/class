@@ -293,16 +293,16 @@ test('completed orchestral renders use compact note-grid Ogg samples', () => {
     ['fretless-bass-finger', 36, '008_e1.ogg', '043_ds4.ogg'],
     ['fretless-bass-pick', 35, '008_e1.ogg', '042_d4.ogg'],
     ['fretless-bass-slap', 35, '008_e1.ogg', '042_d4.ogg'],
-    ['guitar-cubase-sc', 47, '020_e2.flac', '066_d6.flac'],
-    ['guitar-cubase-hellrazer', 64, '005_cs1.flac', '068_e6.flac'],
-    ['guitar-cubase-sh', 47, '020_e2.flac', '066_d6.flac'],
-    ['guitar-cubase-l', 45, '020_e2.flac', '064_c6.flac'],
-    ['guitar-cubase-t', 45, '020_e2.flac', '064_c6.flac'],
+    ['guitar-cubase-sc', 47, '020_e2.ogg', '066_d6.ogg'],
+    ['guitar-cubase-hellrazer', 64, '005_cs1.ogg', '068_e6.ogg'],
+    ['guitar-cubase-sh', 47, '020_e2.ogg', '066_d6.ogg'],
+    ['guitar-cubase-l', 45, '020_e2.ogg', '064_c6.ogg'],
+    ['guitar-cubase-t', 45, '020_e2.ogg', '064_c6.ogg'],
     ['harp', 78, '005_cs1.ogg', '082_fs7.ogg'],
     ['piccolo-trumpet', 49, '032_e3.ogg', '080_e7.ogg']
   ]) {
     const sampleRoot = path.join(root, 'assets', 'audio', folder);
-    const extension = folder.startsWith('guitar-cubase-') ? '.flac' : '.ogg';
+    const extension = folder.startsWith('guitar-cubase-') ? '.ogg' : '.ogg';
     const samples = fs.readdirSync(sampleRoot).filter((name) => name.endsWith(extension)).sort();
     assert.equal(samples.length, count, folder);
     assert.equal(samples[0], first, folder);
@@ -350,7 +350,7 @@ test('guitar sample maps contain every supplied MIDI note exactly once', () => {
   ]) {
     const sampleRoot = path.join(root, 'assets', 'audio', folder);
     const expectedMidi = fs.readdirSync(sampleRoot)
-      .filter((name) => name.endsWith('.flac'))
+      .filter((name) => name.endsWith('.ogg'))
       .sort()
       .map((name) => Number(name.slice(0, 3)) + 20);
     const escapedFolder = folder.replaceAll('-', '\\-');

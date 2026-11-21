@@ -72,3 +72,6 @@ docs/science-lab-audit-2026-10-11/apparatus-visual-review/screenshots.json
 docs/science-lab-audit-2026-10-17/device-check/*.json
 docs/science-lab-audit-2026-10-18/core-results-full/*.json
 docs/science-lab-audit-2026-10-18/motion-controls/*.json
+
+# Lossless masters stay local; publish Ogg only.
+*.flac

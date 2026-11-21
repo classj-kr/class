@@ -189,7 +189,8 @@ const server = http.createServer((req, res) => {
       const sample = await guitarTest.loadConcertGrandSample(40);
       return {rejections:flacRejections, id:sample.sampleSet, duration:sample.buffer.duration};
     });
-    assert.ok(fallback.rejections > 0 && fallback.duration > 4);
+    assert.equal(fallback.rejections, 0);
+    assert.ok(fallback.duration > 4);
     assert.equal(fallback.id, 'guitar-cubase-sc');
     await fallbackPage.close();
     console.log(JSON.stringify({passed:true,decoded:248,models:results},null,2));
