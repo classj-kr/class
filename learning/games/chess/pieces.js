@@ -1,4 +1,4 @@
-/* One set of chess pieces for online games, rules and AI lessons. */
+/* 정석(스턴턴) 모양을 새로 그린 말(2026-11-21: 홈 그은 비숍·고리 나이트·받침 줄무늬가 어수선하다고 해 바꿈). One set of chess pieces for online games, rules and AI lessons. */
 (()=>{
 function pieceSvg(piece, extraClass = "", decorative = false) {
   if (!piece) return "";
@@ -6,12 +6,12 @@ function pieceSvg(piece, extraClass = "", decorative = false) {
   const type = piece[1];
   const label = `${piece[0] === "w" ? "백" : "흑"} ${({K:"킹",Q:"퀸",R:"룩",B:"비숍",N:"나이트",P:"폰"})[type]}`;
   const shapes = {
-    P: '<circle class="piece-body" cx="32" cy="17" r="9"/><path class="piece-body" d="M22 31q10-8 20 0l3 13H19zM15 48h34l4 8H11z"/><path class="piece-detail" d="M20 44h24M15 52h34"/>',
-    R: '<path class="piece-body" d="M14 9h9v8h7V9h8v8h7V9h7v18l-7 6 4 16H15l4-16-7-6V9z"/><path class="piece-detail" d="M18 27h28M19 34h26M15 49h34M11 56h42"/><path class="piece-body" d="M11 49h42v7H11z"/>',
-    N: '<path class="piece-body" d="M15 54h38l-4-9H25c2-9 8-12 15-17l-4-7 10 3 2-11C35 8 20 16 18 31l6 7-8 8z"/><circle cx="34" cy="18" r="2.2" fill="var(--piece-edge)"/><path class="piece-detail" d="M21 31l9 1M18 46h31M14 54h39"/>',
-    B: '<path class="piece-body" d="M32 7c8 7 12 13 5 21 7 5 9 12 7 18H20c-2-6 0-13 7-18-7-8-3-14 5-21zM15 47h34l4 9H11z"/><path class="piece-detail" d="M37 14L27 29M21 45h22M15 52h34"/>',
-    Q: '<path class="piece-body" d="M13 18l9 9 10-15 10 15 9-9-5 28H18zM14 47h36l4 9H10z"/><circle class="piece-body" cx="12" cy="15" r="4"/><circle class="piece-body" cx="32" cy="9" r="4"/><circle class="piece-body" cx="52" cy="15" r="4"/><path class="piece-detail" d="M18 39h28M15 51h34"/>',
-    K: '<path class="piece-detail" d="M32 4v15M25 11h14"/><path class="piece-body" d="M24 19h16l5 10-6 8 6 10H19l6-10-6-8zM14 47h36l4 9H10z"/><path class="piece-detail" d="M21 28h22M20 45h24M15 52h34"/>'
+    P: '<path class="piece-body" d="M27 27h10c0 8 3 14 9 21H18c6-7 9-13 9-21z"/><path class="piece-body" d="M14 48h36a3 3 0 0 1 3 3v5H11v-5a3 3 0 0 1 3-3z"/><path class="piece-body" d="M23 24h18a2.2 2.2 0 0 1 0 4.4H23a2.2 2.2 0 0 1 0-4.4z"/><circle class="piece-body" cx="32" cy="15" r="8"/>',
+    R: '<path class="piece-body" d="M20 22h24l2 22H18z"/><path class="piece-body" d="M14 48h36a3 3 0 0 1 3 3v5H11v-5a3 3 0 0 1 3-3z"/><path class="piece-body" d="M15 43.5h34v4.5H15z"/><path class="piece-body" d="M15 8h7v5h5V8h10v5h5V8h7v10l-4 4H19l-4-4z"/><path class="piece-detail" d="M19 22h26"/>',
+    N: '<path class="piece-body" d="M18 48C17 41 21 36 27 32C23 33.5 18 34.5 14 33.5C10.5 32.5 9.5 29 11 26C14 21 20 15.5 25 12.5L28.5 5L33 10.5C42 12.5 48.5 22 49 34C49.3 39 48.5 44 47 48z"/><path class="piece-body" d="M14 48h36a3 3 0 0 1 3 3v5H11v-5a3 3 0 0 1 3-3z"/><path class="piece-detail" d="M36 14c5 4 8 10 9 18"/><circle cx="24.5" cy="18.5" r="1.8" fill="var(--piece-edge)"/><circle cx="13.6" cy="28" r="1.1" fill="var(--piece-edge)"/>',
+    B: '<path class="piece-body" d="M24 42h16c0 2.5 2 4.5 6 6H18c4-1.5 6-3.5 6-6z"/><path class="piece-body" d="M14 48h36a3 3 0 0 1 3 3v5H11v-5a3 3 0 0 1 3-3z"/><path class="piece-body" d="M21 37.6h22a2.2 2.2 0 0 1 0 4.4H21a2.2 2.2 0 0 1 0-4.4z"/><path class="piece-body" d="M32 11c-7 6-11 12-11 18 0 4 3 7 6 8.6h10c3-1.6 6-4.6 6-8.6 0-6-4-12-11-18z"/><circle class="piece-body" cx="32" cy="8" r="3.4"/><path class="piece-detail" d="M36 18l-6 8"/>',
+    Q: '<path class="piece-body" d="M24 42h16c0 2.5 2 4.5 6 6H18c4-1.5 6-3.5 6-6z"/><path class="piece-body" d="M14 48h36a3 3 0 0 1 3 3v5H11v-5a3 3 0 0 1 3-3z"/><path class="piece-body" d="M21 37.6h22a2.2 2.2 0 0 1 0 4.4H21a2.2 2.2 0 0 1 0-4.4z"/><path class="piece-body" d="M19 38L12 16L19.5 30L22 12L27.5 27L32 10L36.5 27L42 12L44.5 30L52 16L45 38z"/><circle class="piece-body" cx="12" cy="15" r="3"/><circle class="piece-body" cx="22" cy="11" r="3"/><circle class="piece-body" cx="32" cy="9" r="3"/><circle class="piece-body" cx="42" cy="11" r="3"/><circle class="piece-body" cx="52" cy="15" r="3"/>',
+    K: '<path class="piece-body" d="M24 42h16c0 2.5 2 4.5 6 6H18c4-1.5 6-3.5 6-6z"/><path class="piece-body" d="M14 48h36a3 3 0 0 1 3 3v5H11v-5a3 3 0 0 1 3-3z"/><path class="piece-body" d="M21 37.6h22a2.2 2.2 0 0 1 0 4.4H21a2.2 2.2 0 0 1 0-4.4z"/><path class="piece-body" d="M22.5 22h19c2 5 1 10.5-2.5 15.6H25c-3.5-5.1-4.5-10.6-2.5-15.6z"/><path class="piece-body" d="M25.5 22.5c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5z"/><path class="piece-body" d="M30 2.5h4v4h4v4h-4v5.5h-4v-5.5h-4v-4h4z"/>'
   };
   const accessibility=decorative?'aria-hidden="true"':`role="img" aria-label="${label}"`;
   // 왼쪽 위에서 빛을 받은 명암. 말마다 같은 id 라 첫 정의를 함께 쓴다(board.css 의 --piece-fill 이 가리킨다).
@@ -19,7 +19,7 @@ function pieceSvg(piece, extraClass = "", decorative = false) {
     ? '<stop offset="0" stop-color="#ffffff"/><stop offset=".42" stop-color="#f3e9cc"/><stop offset="1" stop-color="#b9a479"/>'
     : '<stop offset="0" stop-color="#6a7a92"/><stop offset=".42" stop-color="#2c384b"/><stop offset="1" stop-color="#0c1119"/>';
   const defs = `<defs><linearGradient id="chess-shade-${color}" gradientUnits="userSpaceOnUse" x1="14" y1="6" x2="50" y2="60">${shade}</linearGradient></defs>`;
-  return `<svg class="piece-svg ${color} ${extraClass}" viewBox="0 0 64 64" ${accessibility}>${defs}${shapes[type]}</svg>`;
+  return `<svg class="piece-svg ${color} ${extraClass}" viewBox="3 1 58 58" ${accessibility}>${defs}${shapes[type]}</svg>`;
 }
 
 window.ClassChessPieces={svg:pieceSvg};
