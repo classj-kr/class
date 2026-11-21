@@ -436,7 +436,7 @@
     const KOREAN_PERCUSSION_PADS = window.KOREAN_PERCUSSION_DATA ? window.KOREAN_PERCUSSION_DATA.pads : Object.freeze({});
     const KOREAN_PERCUSSION_SAMPLE_SETS = window.KOREAN_PERCUSSION_DATA ? window.KOREAN_PERCUSSION_DATA.samples : Object.freeze({});
     const STATION_SAMPLE_SETS = Object.freeze({
-        "ritual-signals": Object.freeze({ id: "korean-ritual-signals", root: "assets/audio/ritual-signals/", available: Object.freeze(["bak", "chuk", "eo", "eo-strike", "eo-scrape"]) }),
+        "ritual-signals": Object.freeze({ id: "korean-ritual-signals", root: "assets/audio/ritual-signals/", revision: "20261121-eo-scrape-only", available: Object.freeze(["bak", "chuk", "eo", "eo-strike", "eo-scrape"]) }),
         "daechwita-station": Object.freeze({ id: "korean-daechwita", root: "assets/audio/daechwita/", available: Object.freeze(["nabal", "nagak", "yonggo", "jabara", "jing"]) })
     });
 
@@ -1626,7 +1626,7 @@
         });
         if (state.drumSampleLoads.has(key)) return state.drumSampleLoads.get(key);
         const sampleRevision = "?v=" + encodeURIComponent(
-            [AUDIO_SAMPLE_REVISION, config.id.startsWith("drums-") ? AD2_DRUM_SAMPLE_REVISION : ""].filter(Boolean).join("-")
+            [AUDIO_SAMPLE_REVISION, config.id.startsWith("drums-") ? AD2_DRUM_SAMPLE_REVISION : "", config.revision].filter(Boolean).join("-")
         );
         const task = fetchSampleData(config.root + id + ".ogg" + sampleRevision)
             .then(function (data) { return context.decodeAudioData(data); })

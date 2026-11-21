@@ -37,6 +37,8 @@ function wav(samples,file) {
   try {
     browser=await puppeteer.launch({headless:true,executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'});
     const page=await browser.newPage();
+    let scrapeUrl;
+    page.on('request',request=>{if(request.url().includes('/eo-scrape.ogg'))scrapeUrl=request.url();});
     await page.goto('http://127.0.0.1:'+server.address().port+room);
     const result=await page.evaluate(async()=>{
       const a=drumAudit, Native=AudioContext, decoder=new OfflineAudioContext(2,48000,48000), rows=[], mixes=[];
@@ -99,7 +101,23 @@ function wav(samples,file) {
         const onset=channel.findIndex(value=>Math.abs(value)>peak*.02)/rendered.sampleRate;
         attacks.push({piece,offset:sample.offset,onset,peak});
       }
-      return {rows,mixes,attacks};
+      // The scrape pad used to include the preceding head strike. Match its
+      // first 400 ms against the scraping-only section of the complete source.
+      a.state.currentModel={id:'ritual-signals'};
+      const scrape=await a.loadDrumSample('eo-scrape');
+      const complete=await decoder.decodeAudioData(await (await fetch('assets/audio/ritual-signals/eo.ogg')).arrayBuffer());
+      const actual=scrape.buffer.getChannelData(0),reference=complete.getChannelData(0);
+      const rate=scrape.buffer.sampleRate;
+      let similarity=0;
+      for(let shift=-Math.ceil(rate*.01);shift<=Math.ceil(rate*.01);shift++) {
+        let dot=0,left=0,right=0;
+        for(let i=Math.round(rate*.015);i<Math.round(rate*.4);i+=4) {
+          const x=actual[i],y=reference[Math.round(rate*2.95)+shift+i];
+          dot+=x*y;left+=x*x;right+=y*y;
+        }
+        similarity=Math.max(similarity,dot/Math.sqrt(left*right));
+      }
+      return {rows,mixes,attacks,scrape:{duration:scrape.buffer.duration,similarity}};
     });
     const prefix=process.env.DRUM_REPORT_PREFIX||(process.env.DRUM_AUDIT_ONLY?'audit':'after');
     for(const mix of result.mixes) {wav(mix.samples,path.join(output,prefix+'-'+mix.kit+'.wav'));delete mix.samples;}
@@ -135,6 +153,10 @@ function wav(samples,file) {
         assert.ok(attack.onset>=0&&attack.onset<.02&&attack.peak>.01,attack.piece+': audible attack within 20 ms through the output chain');
       }
     }
+    assert.ok(result.scrape.duration>.55&&result.scrape.duration<.65,'scrape contains only one scraping gesture');
+    assert.ok(result.scrape.similarity>.8,'scrape begins with the source scraping gesture, without a head strike');
+    assert.match(scrapeUrl,/eo-scrape-only/,'cached combined strike/scrape file must not be reused');
+    console.log('Isolated eo scrape',JSON.stringify(result.scrape));
     console.log(result.rows.length+' real pad samples; '+result.mixes.length+' combined grooves rendered');
   }finally{if(browser)await browser.close();server.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
